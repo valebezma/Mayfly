@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="wizardControlRecoverer.BackButtonToolTipText" xml:space="preserve">
+    <value>Вернуться на предыдущую страницу</value>
+  </data>
+  <data name="wizardControlRecoverer.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="wizardControlRecoverer.FinishButtonText" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="wizardControlRecoverer.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="wizardPageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="wizardPageInit.Text" xml:space="preserve">
+    <value>Исходное состояние</value>
+  </data>
+  <data name="wizardPageExtraLoading.Text" xml:space="preserve">
+    <value>Загрузка дополнительной информации</value>
+  </data>
+  <data name="wizardPageExtraSpecies.Text" xml:space="preserve">
+    <value>Содержание дополнительной информации</value>
+  </data>
+  <data name="wizardPageCoordination.Text" xml:space="preserve">
+    <value>Соответствие таксонов</value>
+  </data>
+  <data name="wizardPagePriority.Text" xml:space="preserve">
+    <value>Порядок восстановления</value>
+  </data>
+  <data name="wizardPageTotals.Text" xml:space="preserve">
+    <value>Все готово</value>
+  </data>
+  <data name="wizardControlRecoverer.Title" xml:space="preserve">
+    <value>Мастер восстановления массы</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Вы можете автоматически установить соответствие таксонов используя ранее установленные связи.</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Выберите требуемый уровень качества восстановления, чтобы оценивать силу связи регрессионных моделей либо точность измерения массы в категориях.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Требуемое качество восстановления, %</value>
+  </data>
+  <data name="checkBoxUseMemberedAssociation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>296, 19</value>
+  </data>
+  <data name="checkBoxUseMemberedAssociation.Text" xml:space="preserve">
+    <value>Использовать ранее установленные соответсвия</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Данные о питании содержат описание фрагментов. Этот мастер восстановит массу особей в соответствии с описанием их фрагментов. Нажмите "Далее", чтобы ознакомиться с количественной информацией о фрагментах.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Текущее состояние данных отображено в таблице. Количество особей, требующих дополнительных данных о массе, приведено в последнем столбце. Нажмите 'Далее', чтобы перейти к загрузке дополнительных данных.</value>
+  </data>
+  <data name="spreadSheetInit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 291</value>
+  </data>
+  <data name="columnInitSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnInitCount.HeaderText" xml:space="preserve">
+    <value>Обнаружено фрагментов</value>
+  </data>
+  <data name="columnInitUnweighted.HeaderText" xml:space="preserve">
+    <value>Особей не взвешено</value>
+  </data>
+  <data name="columnInitAbstract.HeaderText" xml:space="preserve">
+    <value>Особей не указано</value>
+  </data>
+  <data name="columnInitUnweightedTotal.HeaderText" xml:space="preserve">
+    <value>Всего невзвешенных особей</value>
+  </data>
+  <data name="pictureBoxCheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
+        QVQ4T2MgBXScSJGp/1/PBOUSB9qOp/q1n0j53X48ZV/vsWQhqDB+0HQsQbflWMLXluOJ/0G4+VjiVKgU
+        btB+OEqw8WjsXSD+D8Wf6w9Fa0GlcYD/DIy1h6O21h2J+g/Gh6P+1R+NDoHKMjBUHg3TqT4c5gLlwkHV
+        obB6oPh/GK46HNYLlWJgKNsfKFN2IOBV+YHAf0A8Oe1MGitY/ECAJxD/LT8Y+B+KD9Xvt2cBawKBkv0+
+        rUD8H473eR8v3edjX7zP5x1CzOdZyX4vCagWCMjd5sFXsNd9T+E+j/9Y8V6PX0X7PWygylEByAm5e1ym
+        5u1x+Y+OgeIFUGW4QdYux8zsXY6/snc7/gfhrN0Oq6BShEHaTlu7jF22FzJ22mwIXaXFBhUecMDAAABF
+        8q2mGceWOQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonAddNatural.Text" xml:space="preserve">
+    <value>Добавить данные</value>
+  </data>
+  <data name="labelLoaded.Text" xml:space="preserve">
+    <value>Дополнительные карточки содержат данные о {0} таксонах / видах.
+{1} видов являются общими с пробами питания.</value>
+  </data>
+  <data name="labelLoading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 15</value>
+  </data>
+  <data name="labelLoading.Text" xml:space="preserve">
+    <value>Загрузка карточек...</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Перетащите сюда и отпустите карточки или нажмите кнопку "Добавить данные", чтобы добавить дополнительную информацию о естественных размерах особей. Используйте карточки бентоса из условий, сходных с теми, в которых был собран материал питания.</value>
+  </data>
+  <data name="checkBoxUseRawMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 19</value>
+  </data>
+  <data name="checkBoxUseRawMass.Text" xml:space="preserve">
+    <value>Использовать также упрощенную среднюю массу</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Здесь представлена информация, содержащаяся в дополнительных карточках. Вернитесь, чтобы загрузить больше карточек или продолжите, чтобы перейти к установлению соответствия таксонов. Применение упрощенной средней массы позволит восстановить массу особей даже если не возможно построить модель (если установлено соответсвие таксонов).</value>
+  </data>
+  <data name="columnExtraSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnExtraCount.HeaderText" xml:space="preserve">
+    <value>Выборка</value>
+  </data>
+  <data name="columnExtraRaw.HeaderText" xml:space="preserve">
+    <value>Упрощенная средняя масса, мг</value>
+  </data>
+  <data name="buttonSetCoordination.Text" xml:space="preserve">
+    <value>Установить соответствие</value>
+  </data>
+  <data name="buttonResetCoo.Text" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Здесь вы можете установить соответствие таксонов в пробах питания и пробах бентоса, для этого нажмите "Установить соответсвие" выбрав нужную строку. Нажмите "Сбросить", чтобы установить изначальные значения по принципу соответствия видовых названий.</value>
+  </data>
+  <data name="columnAsscSpecies.HeaderText" xml:space="preserve">
+    <value>Таксон / вид</value>
+  </data>
+  <data name="columnAsscAssociate.HeaderText" xml:space="preserve">
+    <value>Соответствующий таксон / вид</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 15</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Качество согласно порядка применения</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Всего особей для восстановления</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Каждая из измеренных величин, общих для проб питания и бентосных проб, представлена колонкой. Значения в них отражают количество (и долю от общего числа) особей, масса которых может быть реконструирована. Переместите столбец при помощи мыши, чтобы изменить порядок применения соответствующего подхода.</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Исследуя питание после завершения, вы можете ознакомиться с изменениями. Также вы можете провести полный анализ питания.</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Отметив флажок "Составить протокол", вы получите исчерпывающий отчет о том, как масса отдельных особей была посчитана.</value>
+  </data>
+  <data name="checkBoxExploreDiet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 19</value>
+  </data>
+  <data name="checkBoxExploreDiet.Text" xml:space="preserve">
+    <value>Исследовать питание после завершения</value>
+  </data>
+  <data name="checkBoxReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 19</value>
+  </data>
+  <data name="checkBoxReport.Text" xml:space="preserve">
+    <value>Составить протокол</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Все готово, чтобы приступить к восстановлению массы. Значения массы видов и проб также будут пересчитаны. Нажмите "Готово", чтобы завершить.</value>
+  </data>
+  <data name="columnPriSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnPriRecoverable.HeaderText" xml:space="preserve">
+    <value>Пригодно, экз.</value>
+  </data>
+  <data name="columnPriRecoverableP.HeaderText" xml:space="preserve">
+    <value>Пригодно, %</value>
+  </data>
+  <data name="columnPriQuality.HeaderText" xml:space="preserve">
+    <value>Качество, %</value>
+  </data>
+  <data name="columnPriLength.HeaderText" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="columnPriRaw.HeaderText" xml:space="preserve">
+    <value>Упрощенная масса</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+</root>

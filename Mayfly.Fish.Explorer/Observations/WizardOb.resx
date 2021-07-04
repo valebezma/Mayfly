@@ -1,0 +1,1500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizardControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="wizardControl1.FinishButtonText" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="wizardControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="wizardControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonClearPhantoms.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonClearPhantoms.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonClearPhantoms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 319</value>
+  </data>
+  <data name="buttonClearPhantoms.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
+  </data>
+  <data name="buttonClearPhantoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonClearPhantoms.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonClearPhantoms.Text" xml:space="preserve">
+    <value>Archive all</value>
+  </data>
+  <data name="&gt;&gt;buttonClearPhantoms.Name" xml:space="preserve">
+    <value>buttonClearPhantoms</value>
+  </data>
+  <data name="&gt;&gt;buttonClearPhantoms.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClearPhantoms.Parent" xml:space="preserve">
+    <value>wizardPagePhantoms</value>
+  </data>
+  <data name="&gt;&gt;buttonClearPhantoms.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="listViewPhantoms.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="columnHeaderTime.Text" xml:space="preserve">
+    <value>Last saved</value>
+  </data>
+  <data name="columnHeaderTime.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="columnHeaderGears.Text" xml:space="preserve">
+    <value>Gears</value>
+  </data>
+  <data name="columnHeaderGears.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeaderActions.Text" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="columnHeaderActions.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="listViewPhantoms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 51</value>
+  </data>
+  <data name="listViewPhantoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 262</value>
+  </data>
+  <data name="listViewPhantoms.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;listViewPhantoms.Name" xml:space="preserve">
+    <value>listViewPhantoms</value>
+  </data>
+  <data name="&gt;&gt;listViewPhantoms.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewPhantoms.Parent" xml:space="preserve">
+    <value>wizardPagePhantoms</value>
+  </data>
+  <data name="&gt;&gt;listViewPhantoms.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Unfinished surveys are detected. Select one to proceed with finishing it. Double click will forward you to schedule page. Select none and click 'Next' to start new survey.</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>wizardPagePhantoms</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="wizardPagePhantoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPagePhantoms.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="wizardPagePhantoms.Text" xml:space="preserve">
+    <value>Surveys detected</value>
+  </data>
+  <data name="&gt;&gt;wizardPagePhantoms.Name" xml:space="preserve">
+    <value>wizardPagePhantoms</value>
+  </data>
+  <data name="&gt;&gt;wizardPagePhantoms.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEB3YXRpbnZlbnQsIFZlcnNpb249MS4wLjQuMCwgQ3VsdHVyZT1u
+        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAXTWF5Zmx5LldhdGVycy5XYXRlcnNLZXkDAAAA
+        F0RhdGFTZXQuUmVtb3RpbmdWZXJzaW9uCVhtbFNjaGVtYQtYbWxEaWZmR3JhbQMBAQ5TeXN0ZW0uVmVy
+        c2lvbgIAAAAJAwAAAAYEAAAAiRs8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtMTYiPz4N
+        Cjx4czpzY2hlbWEgaWQ9IldhdGVyc0tleSIgeG1sbnM9IiIgeG1sbnM6eHM9Imh0dHA6Ly93d3cudzMu
+        b3JnLzIwMDEvWE1MU2NoZW1hIiB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206
+        eG1sLW1zZGF0YSI+DQogIDx4czplbGVtZW50IG5hbWU9IldhdGVyc0tleSIgbXNkYXRhOklzRGF0YVNl
+        dD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0icnUtUlUiPg0KICAgIDx4czpjb21wbGV4VHlwZT4NCiAgICAg
+        IDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+DQogICAgICAgIDx4
+        czplbGVtZW50IG5hbWU9IldhdGVyIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5cGU+DQogICAgICAg
+        ICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IklEIiBtc2Rh
+        dGE6QXV0b0luY3JlbWVudD0idHJ1ZSIgbXNkYXRhOkF1dG9JbmNyZW1lbnRTZWVkPSItMSIgbXNkYXRh
+        OkF1dG9JbmNyZW1lbnRTdGVwPSItMSIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNl
+        PSIiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlR5cGUiIHR5cGU9InhzOmludCIg
+        ZGVmYXVsdD0iMSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAg
+        ICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IldhdGVyIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIi
+        IG1pbk9jY3Vycz0iMCI+DQogICAgICAgICAgICAgICAgPHhzOnNpbXBsZVR5cGU+DQogICAgICAgICAg
+        ICAgICAgICA8eHM6cmVzdHJpY3Rpb24gYmFzZT0ieHM6c3RyaW5nIj4NCiAgICAgICAgICAgICAgICAg
+        ICAgPHhzOm1heExlbmd0aCB2YWx1ZT0iMjU1IiAvPg0KICAgICAgICAgICAgICAgICAgPC94czpyZXN0
+        cmljdGlvbj4NCiAgICAgICAgICAgICAgICA8L3hzOnNpbXBsZVR5cGU+DQogICAgICAgICAgICAgIDwv
+        eHM6ZWxlbWVudD4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iT3V0ZmxvdyIgdHlwZT0i
+        eHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAg
+        ICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTW91dGhDb2FzdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFy
+        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
+        bmFtZT0iTW91dGhUb01vdXRoIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
+        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJMZW5ndGgi
+        IHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
+        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkFsdGl0dWRlIiB0eXBlPSJ4czpkb3VibGUi
+        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8
+        eHM6ZWxlbWVudCBuYW1lPSJBcmVhIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3Bh
+        Y2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBcmVh
+        RGVhZCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0i
+        MCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iVm9sdW1lIiB0eXBlPSJ4czpkb3Vi
+        bGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAg
+        ICA8eHM6ZWxlbWVudCBuYW1lPSJWb2x1bWVEZWFkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJn
+        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
+        YW1lPSJEZXB0aE1heCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1p
+        bk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRGVwdGhNaWQiIHR5
+        cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQog
+        ICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkZsb3dhZ2UiIHR5cGU9InhzOmRvdWJsZSIgbXNk
+        YXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czpl
+        bGVtZW50IG5hbWU9IkN5Y2xpbmciIHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
+        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlZlZ2V0
+        YXRpb24iIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAi
+        IC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkNvbnN1bXB0aW9uIiB0eXBlPSJ4czpk
+        b3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJTbG9wZSIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0
+        TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFt
+        ZT0iV2F0ZXJzaGVkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWlu
+        T2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJLaW5kIiB0eXBlPSJ4
+        czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJCdWlsdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFt
+        ZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAg
+        ICAgICAgPC94czpjb21wbGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpj
+        aG9pY2U+DQogICAgPC94czpjb21wbGV4VHlwZT4NCiAgICA8eHM6dW5pcXVlIG5hbWU9IkNvbnN0cmFp
+        bnQxIiBtc2RhdGE6UHJpbWFyeUtleT0idHJ1ZSI+DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4v
+        L1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhwYXRoPSJJRCIgLz4NCiAgICA8L3hzOnVuaXF1ZT4N
+        CiAgICA8eHM6a2V5cmVmIG5hbWU9IkZLX1dhdGVyX1dhdGVyIiByZWZlcj0iQ29uc3RyYWludDEiIG1z
+        ZGF0YTpBY2NlcHRSZWplY3RSdWxlPSJDYXNjYWRlIiBtc2RhdGE6RGVsZXRlUnVsZT0iU2V0TnVsbCI+
+        DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4vL1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhw
+        YXRoPSJPdXRmbG93IiAvPg0KICAgIDwveHM6a2V5cmVmPg0KICA8L3hzOmVsZW1lbnQ+DQo8L3hzOnNj
+        aGVtYT4GBQAAAIABPGRpZmZncjpkaWZmZ3JhbSB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jv
+        c29mdC1jb206eG1sLW1zZGF0YSIgeG1sbnM6ZGlmZmdyPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29t
+        OnhtbC1kaWZmZ3JhbS12MSIgLz4EAwAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZf
+        QnVpbGQJX1JldmlzaW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
+</value>
+  </data>
+  <data name="waterSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 51</value>
+  </data>
+  <data name="waterSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 23</value>
+  </data>
+  <data name="waterSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Name" xml:space="preserve">
+    <value>waterSelector</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Type" xml:space="preserve">
+    <value>Mayfly.Waters.Controls.WaterSelector, watinvent, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Parent" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Type in common information such as water and investigator for setting it in resulting cards.</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxInvestigator.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxInvestigator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 80</value>
+  </data>
+  <data name="textBoxInvestigator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 23</value>
+  </data>
+  <data name="textBoxInvestigator.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxInvestigator.Name" xml:space="preserve">
+    <value>textBoxInvestigator</value>
+  </data>
+  <data name="&gt;&gt;textBoxInvestigator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxInvestigator.Parent" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;textBoxInvestigator.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 83</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 15</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Investigator</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelWater.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWater.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 54</value>
+  </data>
+  <data name="labelWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
+  </data>
+  <data name="labelWater.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelWater.Text" xml:space="preserve">
+    <value>Water object</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Name" xml:space="preserve">
+    <value>labelWater</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Parent" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;labelWater.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="wizardPageCommon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageCommon.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="wizardPageCommon.Text" xml:space="preserve">
+    <value>Survey requisites</value>
+  </data>
+  <data name="&gt;&gt;wizardPageCommon.Name" xml:space="preserve">
+    <value>wizardPageCommon</value>
+  </data>
+  <data name="&gt;&gt;wizardPageCommon.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="flowLayoutPanelRounds.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="buttonAddFleet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAddFleet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonAddFleet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 3, 3</value>
+  </data>
+  <data name="buttonAddFleet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="buttonAddFleet.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonAddFleet.Text" xml:space="preserve">
+    <value>Add new fleet</value>
+  </data>
+  <data name="&gt;&gt;buttonAddFleet.Name" xml:space="preserve">
+    <value>buttonAddFleet</value>
+  </data>
+  <data name="&gt;&gt;buttonAddFleet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddFleet.Parent" xml:space="preserve">
+    <value>flowLayoutPanelRounds</value>
+  </data>
+  <data name="&gt;&gt;buttonAddFleet.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelRounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 303</value>
+  </data>
+  <data name="flowLayoutPanelRounds.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 15</value>
+  </data>
+  <data name="flowLayoutPanelRounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 53</value>
+  </data>
+  <data name="flowLayoutPanelRounds.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelRounds.Name" xml:space="preserve">
+    <value>flowLayoutPanelRounds</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelRounds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelRounds.Parent" xml:space="preserve">
+    <value>wizardPageGears</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelRounds.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.Text" xml:space="preserve">
+    <value>Fill the list of gears in use. If there are more than dozen gears split it into different fleets using controls under grid. Use selectors for switching fleets.</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesSelectionInstruction.Name" xml:space="preserve">
+    <value>labelSpeciesSelectionInstruction</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesSelectionInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesSelectionInstruction.Parent" xml:space="preserve">
+    <value>wizardPageGears</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesSelectionInstruction.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="spreadSheetGears.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="columnSampler.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnSampler.HeaderText" xml:space="preserve">
+    <value>Sampler</value>
+  </data>
+  <metadata name="columnMesh.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnMesh.HeaderText" xml:space="preserve">
+    <value>Mesh</value>
+  </data>
+  <data name="columnMesh.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="columnLength.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnLength.HeaderText" xml:space="preserve">
+    <value>Length, m</value>
+  </data>
+  <data name="columnLength.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="columnHeight.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnHeight.HeaderText" xml:space="preserve">
+    <value>Height, m</value>
+  </data>
+  <data name="columnHeight.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="spreadSheetGears.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spreadSheetGears.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="spreadSheetGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 15</value>
+  </data>
+  <data name="spreadSheetGears.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <metadata name="contextGear.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>794, 17</value>
+  </metadata>
+  <data name="contextMoveTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="contextMoveTo.Text" xml:space="preserve">
+    <value>Move to</value>
+  </data>
+  <data name="contextGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 26</value>
+  </data>
+  <data name="&gt;&gt;contextGear.Name" xml:space="preserve">
+    <value>contextGear</value>
+  </data>
+  <data name="&gt;&gt;contextGear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetGears.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 243</value>
+  </data>
+  <data name="spreadSheetGears.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetGears.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGears.Name" xml:space="preserve">
+    <value>spreadSheetGears</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGears.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGears.Parent" xml:space="preserve">
+    <value>wizardPageGears</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGears.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="wizardPageGears.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageGears.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardPageGears.Text" xml:space="preserve">
+    <value>Fleet description</value>
+  </data>
+  <data name="&gt;&gt;wizardPageGears.Name" xml:space="preserve">
+    <value>wizardPageGears</value>
+  </data>
+  <data name="&gt;&gt;wizardPageGears.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="comboBoxFleet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="comboBoxFleet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 319</value>
+  </data>
+  <data name="comboBoxFleet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 15</value>
+  </data>
+  <data name="comboBoxFleet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 23</value>
+  </data>
+  <data name="comboBoxFleet.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFleet.Name" xml:space="preserve">
+    <value>comboBoxFleet</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFleet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFleet.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFleet.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonPrintCribnote.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonPrintCribnote.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonPrintCribnote.Location" type="System.Drawing.Point, System.Drawing">
+    <value>443, 319</value>
+  </data>
+  <data name="buttonPrintCribnote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="buttonPrintCribnote.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="buttonPrintCribnote.Text" xml:space="preserve">
+    <value>Print crib note</value>
+  </data>
+  <data name="&gt;&gt;buttonPrintCribnote.Name" xml:space="preserve">
+    <value>buttonPrintCribnote</value>
+  </data>
+  <data name="&gt;&gt;buttonPrintCribnote.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPrintCribnote.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;buttonPrintCribnote.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxControl.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxControl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 319</value>
+  </data>
+  <data name="checkBoxControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="checkBoxControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxControl.Text" xml:space="preserve">
+    <value>Display total catch</value>
+  </data>
+  <data name="checkBoxControl.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;checkBoxControl.Name" xml:space="preserve">
+    <value>checkBoxControl</value>
+  </data>
+  <data name="&gt;&gt;checkBoxControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxControl.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;checkBoxControl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonClearSchedule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonClearSchedule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonClearSchedule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 319</value>
+  </data>
+  <data name="buttonClearSchedule.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
+  </data>
+  <data name="buttonClearSchedule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="buttonClearSchedule.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="buttonClearSchedule.Text" xml:space="preserve">
+    <value>Clear schedule</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSchedule.Name" xml:space="preserve">
+    <value>buttonClearSchedule</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSchedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSchedule.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;buttonClearSchedule.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Select operating fleet and fill schedule. Enter date and time in first column and select event for gears by pointing cells in corresponding column.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="spreadSheetSchedule.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="columnTimepoint.HeaderText" xml:space="preserve">
+    <value>When</value>
+  </data>
+  <data name="columnTimepoint.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="ColumnEnvironment.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnEnvironment.HeaderText" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="spreadSheetSchedule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="spreadSheetSchedule.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 3</value>
+  </data>
+  <data name="spreadSheetSchedule.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <metadata name="contextTimepoint.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>294, 17</value>
+  </metadata>
+  <data name="contextWeather.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="contextWeather.Text" xml:space="preserve">
+    <value>Input weather</value>
+  </data>
+  <data name="contextExportCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="contextExportCards.Text" xml:space="preserve">
+    <value>Export cards...</value>
+  </data>
+  <data name="contextTimepoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 48</value>
+  </data>
+  <data name="&gt;&gt;contextTimepoint.Name" xml:space="preserve">
+    <value>contextTimepoint</value>
+  </data>
+  <data name="&gt;&gt;contextTimepoint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetSchedule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 256</value>
+  </data>
+  <data name="spreadSheetSchedule.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetSchedule.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSchedule.Name" xml:space="preserve">
+    <value>spreadSheetSchedule</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSchedule.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSchedule.Parent" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSchedule.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="wizardPageSchedule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageSchedule.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="wizardPageSchedule.Text" xml:space="preserve">
+    <value>Fishing schedule</value>
+  </data>
+  <data name="&gt;&gt;wizardPageSchedule.Name" xml:space="preserve">
+    <value>wizardPageSchedule</value>
+  </data>
+  <data name="&gt;&gt;wizardPageSchedule.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="checkBoxSpcReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxSpcReport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSpcReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxSpcReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 231</value>
+  </data>
+  <data name="checkBoxSpcReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 19</value>
+  </data>
+  <data name="checkBoxSpcReport.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxSpcReport.Text" xml:space="preserve">
+    <value>Show species stats report</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpcReport.Name" xml:space="preserve">
+    <value>checkBoxSpcReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpcReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpcReport.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSpcReport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxGearReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxGearReport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGearReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGearReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 206</value>
+  </data>
+  <data name="checkBoxGearReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 19</value>
+  </data>
+  <data name="checkBoxGearReport.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxGearReport.Text" xml:space="preserve">
+    <value>Show gear stats report</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGearReport.Name" xml:space="preserve">
+    <value>checkBoxGearReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGearReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGearReport.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGearReport.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxKeep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxKeep.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxKeep.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxKeep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 256</value>
+  </data>
+  <data name="checkBoxKeep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 19</value>
+  </data>
+  <data name="checkBoxKeep.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxKeep.Text" xml:space="preserve">
+    <value>Keep observations file</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKeep.Name" xml:space="preserve">
+    <value>checkBoxKeep</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKeep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKeep.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;checkBoxKeep.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonExport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonExport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 165</value>
+  </data>
+  <data name="buttonExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonExport.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonExport.Text" xml:space="preserve">
+    <value>Export cards</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Name" xml:space="preserve">
+    <value>buttonExport</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;buttonExport.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonSaveAppData.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="buttonSaveAppData.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSaveAppData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 136</value>
+  </data>
+  <data name="buttonSaveAppData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonSaveAppData.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonSaveAppData.Text" xml:space="preserve">
+    <value>Continue later</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAppData.Name" xml:space="preserve">
+    <value>buttonSaveAppData</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAppData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAppData.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveAppData.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Select options to rule your survey data. You may postpone finishing it or export cards to fish cards collection. In the latter case survey file will be deleted unless flag above being checked.</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="wizardPageSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageSave.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="wizardPageSave.Text" xml:space="preserve">
+    <value>Finish survey</value>
+  </data>
+  <data name="&gt;&gt;wizardPageSave.Name" xml:space="preserve">
+    <value>wizardPageSave</value>
+  </data>
+  <data name="&gt;&gt;wizardPageSave.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>614, 511</value>
+  </data>
+  <data name="wizardControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardControl1.Title" xml:space="preserve">
+    <value>Survey wizard</value>
+  </data>
+  <data name="&gt;&gt;wizardControl1.Name" xml:space="preserve">
+    <value>wizardControl1</value>
+  </data>
+  <data name="&gt;&gt;wizardControl1.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;wizardControl1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="contextCatch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>171, 17</value>
+  </metadata>
+  <data name="contextSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextSet.Text" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="contextInspect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextInspect.Text" xml:space="preserve">
+    <value>Inspect</value>
+  </data>
+  <data name="contextRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextRemove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="contextLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextLocation.Text" xml:space="preserve">
+    <value>Set location</value>
+  </data>
+  <data name="contextEditCatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextEditCatch.Text" xml:space="preserve">
+    <value>Edit catch</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 6</value>
+  </data>
+  <data name="contextClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="contextCatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 148</value>
+  </data>
+  <data name="&gt;&gt;contextCatch.Name" xml:space="preserve">
+    <value>contextCatch</value>
+  </data>
+  <data name="&gt;&gt;contextCatch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="fbDialogSaveCards.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="fbDialogSaveCards.Description" xml:space="preserve">
+    <value>Select folder to place cards with observation data</value>
+  </data>
+  <metadata name="tdLoadCards.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>581, 17</value>
+  </metadata>
+  <data name="tdbLoad.Text" xml:space="preserve">
+    <value>Load cards</value>
+  </data>
+  <data name="tdbOpenFolder.Text" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="tdLoadCards.Content" xml:space="preserve">
+    <value>Do you want to load exported cards in Fish Explorer?</value>
+  </data>
+  <data name="tdLoadCards.MainInstruction" xml:space="preserve">
+    <value>Load exported cards?</value>
+  </data>
+  <metadata name="tdClearSchedule.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>441, 17</value>
+  </metadata>
+  <data name="tdbClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="tdbCancel.Text" xml:space="preserve">
+    <value>taskDialogButton2</value>
+  </data>
+  <data name="tdClearSchedule.Content" xml:space="preserve">
+    <value>Schedule contains some catches. Are you sure you want to clear it anyway?</value>
+  </data>
+  <data name="tdClearSchedule.MainInstruction" xml:space="preserve">
+    <value>Clear non-void schedule?</value>
+  </data>
+  <metadata name="tdClose.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>701, 17</value>
+  </metadata>
+  <data name="tdbArchive.Text" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="tdbShelve.Text" xml:space="preserve">
+    <value>Continue later</value>
+  </data>
+  <data name="tdbExport.Text" xml:space="preserve">
+    <value>Export cards</value>
+  </data>
+  <data name="tdClose.Content" xml:space="preserve">
+    <value>You did not finish observations wizard work completely. Do you want to save unfinished data or export already completed cards?</value>
+  </data>
+  <data name="tdClose.ExpandedControlText" xml:space="preserve">
+    <value>Be carefull</value>
+  </data>
+  <data name="tdClose.ExpandedInformation" xml:space="preserve">
+    <value>When export cards you delete observations file. To avoid this click "Cancel" and check "Keep observations file" box.</value>
+  </data>
+  <data name="tdClose.MainInstruction" xml:space="preserve">
+    <value>Data is incomplete. What to do?</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Mesh</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Length, m</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Height, m</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>614, 511</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>630, 550</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderTime.Name" xml:space="preserve">
+    <value>columnHeaderTime</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderGears.Name" xml:space="preserve">
+    <value>columnHeaderGears</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderGears.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderActions.Name" xml:space="preserve">
+    <value>columnHeaderActions</value>
+  </data>
+  <data name="&gt;&gt;columnHeaderActions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSampler.Name" xml:space="preserve">
+    <value>columnSampler</value>
+  </data>
+  <data name="&gt;&gt;columnSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnMesh.Name" xml:space="preserve">
+    <value>columnMesh</value>
+  </data>
+  <data name="&gt;&gt;columnMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLength.Name" xml:space="preserve">
+    <value>columnLength</value>
+  </data>
+  <data name="&gt;&gt;columnLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeight.Name" xml:space="preserve">
+    <value>columnHeight</value>
+  </data>
+  <data name="&gt;&gt;columnHeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMoveTo.Name" xml:space="preserve">
+    <value>contextMoveTo</value>
+  </data>
+  <data name="&gt;&gt;contextMoveTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnTimepoint.Name" xml:space="preserve">
+    <value>columnTimepoint</value>
+  </data>
+  <data name="&gt;&gt;columnTimepoint.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetCalendarColumn, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColumnEnvironment.Name" xml:space="preserve">
+    <value>ColumnEnvironment</value>
+  </data>
+  <data name="&gt;&gt;ColumnEnvironment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextWeather.Name" xml:space="preserve">
+    <value>contextWeather</value>
+  </data>
+  <data name="&gt;&gt;contextWeather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextExportCards.Name" xml:space="preserve">
+    <value>contextExportCards</value>
+  </data>
+  <data name="&gt;&gt;contextExportCards.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextSet.Name" xml:space="preserve">
+    <value>contextSet</value>
+  </data>
+  <data name="&gt;&gt;contextSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextInspect.Name" xml:space="preserve">
+    <value>contextInspect</value>
+  </data>
+  <data name="&gt;&gt;contextInspect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextRemove.Name" xml:space="preserve">
+    <value>contextRemove</value>
+  </data>
+  <data name="&gt;&gt;contextRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextLocation.Name" xml:space="preserve">
+    <value>contextLocation</value>
+  </data>
+  <data name="&gt;&gt;contextLocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextEditCatch.Name" xml:space="preserve">
+    <value>contextEditCatch</value>
+  </data>
+  <data name="&gt;&gt;contextEditCatch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextClear.Name" xml:space="preserve">
+    <value>contextClear</value>
+  </data>
+  <data name="&gt;&gt;contextClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fbDialogSaveCards.Name" xml:space="preserve">
+    <value>fbDialogSaveCards</value>
+  </data>
+  <data name="&gt;&gt;fbDialogSaveCards.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tdLoadCards.Name" xml:space="preserve">
+    <value>tdLoadCards</value>
+  </data>
+  <data name="&gt;&gt;tdLoadCards.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbLoad.Name" xml:space="preserve">
+    <value>tdbLoad</value>
+  </data>
+  <data name="&gt;&gt;tdbLoad.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbOpenFolder.Name" xml:space="preserve">
+    <value>tdbOpenFolder</value>
+  </data>
+  <data name="&gt;&gt;tdbOpenFolder.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdClearSchedule.Name" xml:space="preserve">
+    <value>tdClearSchedule</value>
+  </data>
+  <data name="&gt;&gt;tdClearSchedule.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbClear.Name" xml:space="preserve">
+    <value>tdbClear</value>
+  </data>
+  <data name="&gt;&gt;tdbClear.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbCancel.Name" xml:space="preserve">
+    <value>tdbCancel</value>
+  </data>
+  <data name="&gt;&gt;tdbCancel.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdClose.Name" xml:space="preserve">
+    <value>tdClose</value>
+  </data>
+  <data name="&gt;&gt;tdClose.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbArchive.Name" xml:space="preserve">
+    <value>tdbArchive</value>
+  </data>
+  <data name="&gt;&gt;tdbArchive.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbShelve.Name" xml:space="preserve">
+    <value>tdbShelve</value>
+  </data>
+  <data name="&gt;&gt;tdbShelve.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbExport.Name" xml:space="preserve">
+    <value>tdbExport</value>
+  </data>
+  <data name="&gt;&gt;tdbExport.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
+    <value>tdbCancelClose</value>
+  </data>
+  <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WizardOb</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

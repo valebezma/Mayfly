@@ -1,0 +1,3237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="buttonNgavt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonNgavt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 608</value>
+  </data>
+  <data name="buttonNgavt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonNgavt.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="buttonNgavt.Text" xml:space="preserve">
+    <value>Метод НГАВТ</value>
+  </data>
+  <data name="&gt;&gt;buttonNgavt.Name" xml:space="preserve">
+    <value>buttonNgavt</value>
+  </data>
+  <data name="&gt;&gt;buttonNgavt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonNgavt.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;buttonNgavt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonGGI.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonGGI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 608</value>
+  </data>
+  <data name="buttonGGI.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="buttonGGI.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="buttonGGI.Text" xml:space="preserve">
+    <value>Метод ГГИ</value>
+  </data>
+  <data name="&gt;&gt;buttonGGI.Name" xml:space="preserve">
+    <value>buttonGGI</value>
+  </data>
+  <data name="&gt;&gt;buttonGGI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonGGI.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;buttonGGI.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelTemperature.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTemperature.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 377</value>
+  </data>
+  <data name="labelTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="labelTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="labelTemperature.Text" xml:space="preserve">
+    <value>Температура воды, °С</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Name" xml:space="preserve">
+    <value>labelTemperature</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelTemperature.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxTemperature.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxTemperature.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 374</value>
+  </data>
+  <data name="textBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxTemperature.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="textBoxTemperature.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTemperature.Name" xml:space="preserve">
+    <value>textBoxTemperature</value>
+  </data>
+  <data name="&gt;&gt;textBoxTemperature.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTemperature.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxTemperature.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelChannel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelChannel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelChannel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelChannel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 233</value>
+  </data>
+  <data name="labelChannel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelChannel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 15</value>
+  </data>
+  <data name="labelChannel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelChannel.Text" xml:space="preserve">
+    <value>Параметры русла</value>
+  </data>
+  <data name="&gt;&gt;labelChannel.Name" xml:space="preserve">
+    <value>labelChannel</value>
+  </data>
+  <data name="&gt;&gt;labelChannel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelChannel.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelChannel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelVelocity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelVelocity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelVelocity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 325</value>
+  </data>
+  <data name="labelVelocity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 13</value>
+  </data>
+  <data name="labelVelocity.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelVelocity.Text" xml:space="preserve">
+    <value>Средняя скорость течения, м/с</value>
+  </data>
+  <data name="&gt;&gt;labelVelocity.Name" xml:space="preserve">
+    <value>labelVelocity</value>
+  </data>
+  <data name="&gt;&gt;labelVelocity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelVelocity.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelVelocity.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelDepth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDepth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 299</value>
+  </data>
+  <data name="labelDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 13</value>
+  </data>
+  <data name="labelDepth.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="labelDepth.Text" xml:space="preserve">
+    <value>Средняя глубина в створе, м</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Name" xml:space="preserve">
+    <value>labelDepth</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWidth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 273</value>
+  </data>
+  <data name="labelWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="labelWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="labelWidth.Text" xml:space="preserve">
+    <value>Ширина русла, м</value>
+  </data>
+  <data name="&gt;&gt;labelWidth.Name" xml:space="preserve">
+    <value>labelWidth</value>
+  </data>
+  <data name="&gt;&gt;labelWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWidth.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelWidth.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelWaterSpend.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWaterSpend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWaterSpend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 351</value>
+  </data>
+  <data name="labelWaterSpend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 13</value>
+  </data>
+  <data name="labelWaterSpend.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labelWaterSpend.Text" xml:space="preserve">
+    <value>Расход воды в русле, м³/с</value>
+  </data>
+  <data name="&gt;&gt;labelWaterSpend.Name" xml:space="preserve">
+    <value>labelWaterSpend</value>
+  </data>
+  <data name="&gt;&gt;labelWaterSpend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWaterSpend.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelWaterSpend.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 195</value>
+  </data>
+  <data name="labelWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 13</value>
+  </data>
+  <data name="labelWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="labelWeight.Text" xml:space="preserve">
+    <value>Масса перемещаемого грунта, т</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Name" xml:space="preserve">
+    <value>labelWeight</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelDensity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 169</value>
+  </data>
+  <data name="labelDensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 13</value>
+  </data>
+  <data name="labelDensity.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="labelDensity.Text" xml:space="preserve">
+    <value>Объемная масса грунта, т/м³</value>
+  </data>
+  <data name="&gt;&gt;labelDensity.Name" xml:space="preserve">
+    <value>labelDensity</value>
+  </data>
+  <data name="&gt;&gt;labelDensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDensity.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelDensity.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="textBoxVelocity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxVelocity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 322</value>
+  </data>
+  <data name="textBoxVelocity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxVelocity.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="textBoxVelocity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxVelocity.Name" xml:space="preserve">
+    <value>textBoxVelocity</value>
+  </data>
+  <data name="&gt;&gt;textBoxVelocity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxVelocity.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxVelocity.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBoxDepth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 296</value>
+  </data>
+  <data name="textBoxDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxDepth.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="textBoxDepth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Name" xml:space="preserve">
+    <value>textBoxDepth</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="textBoxWidth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 270</value>
+  </data>
+  <data name="textBoxWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxWidth.Name" xml:space="preserve">
+    <value>textBoxWidth</value>
+  </data>
+  <data name="&gt;&gt;textBoxWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWidth.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxWidth.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="textBoxWaterSpend.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxWaterSpend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 348</value>
+  </data>
+  <data name="textBoxWaterSpend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxWaterSpend.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="textBoxWaterSpend.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaterSpend.Name" xml:space="preserve">
+    <value>textBoxWaterSpend</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaterSpend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaterSpend.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxWaterSpend.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxWeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 192</value>
+  </data>
+  <data name="textBoxWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="textBoxWeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Name" xml:space="preserve">
+    <value>textBoxWeight</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="textBoxDensity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 166</value>
+  </data>
+  <data name="textBoxDensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxDensity.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxDensity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDensity.Name" xml:space="preserve">
+    <value>textBoxDensity</value>
+  </data>
+  <data name="&gt;&gt;textBoxDensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDensity.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxDensity.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelWorks.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWorks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelWorks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWorks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="labelWorks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 15</value>
+  </data>
+  <data name="labelWorks.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelWorks.Text" xml:space="preserve">
+    <value>Параметры работ</value>
+  </data>
+  <data name="&gt;&gt;labelWorks.Name" xml:space="preserve">
+    <value>labelWorks</value>
+  </data>
+  <data name="&gt;&gt;labelWorks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWorks.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelWorks.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="labelDuration.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDuration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDuration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 143</value>
+  </data>
+  <data name="labelDuration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 13</value>
+  </data>
+  <data name="labelDuration.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelDuration.Text" xml:space="preserve">
+    <value>Продолжительность разработки, ч</value>
+  </data>
+  <data name="&gt;&gt;labelDuration.Name" xml:space="preserve">
+    <value>labelDuration</value>
+  </data>
+  <data name="&gt;&gt;labelDuration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDuration.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelDuration.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="labelPerformance.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPerformance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPerformance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 91</value>
+  </data>
+  <data name="labelPerformance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 13</value>
+  </data>
+  <data name="labelPerformance.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelPerformance.Text" xml:space="preserve">
+    <value>Производительность машины, м³/час</value>
+  </data>
+  <data name="&gt;&gt;labelPerformance.Name" xml:space="preserve">
+    <value>labelPerformance</value>
+  </data>
+  <data name="&gt;&gt;labelPerformance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPerformance.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelPerformance.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="labelPerformanceSecondly.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelPerformanceSecondly.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelPerformanceSecondly.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 117</value>
+  </data>
+  <data name="labelPerformanceSecondly.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 13</value>
+  </data>
+  <data name="labelPerformanceSecondly.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelPerformanceSecondly.Text" xml:space="preserve">
+    <value>Производительность машины, м³/с</value>
+  </data>
+  <data name="&gt;&gt;labelPerformanceSecondly.Name" xml:space="preserve">
+    <value>labelPerformanceSecondly</value>
+  </data>
+  <data name="&gt;&gt;labelPerformanceSecondly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPerformanceSecondly.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelPerformanceSecondly.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="labelVolume.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelVolume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="labelVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 13</value>
+  </data>
+  <data name="labelVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelVolume.Text" xml:space="preserve">
+    <value>Объем извлекаемого грунта, м³</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Name" xml:space="preserve">
+    <value>labelVolume</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="textBoxDuration.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxDuration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 140</value>
+  </data>
+  <data name="textBoxDuration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxDuration.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="textBoxDuration.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDuration.Name" xml:space="preserve">
+    <value>textBoxDuration</value>
+  </data>
+  <data name="&gt;&gt;textBoxDuration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDuration.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxDuration.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="textBoxPerformance.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxPerformance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 88</value>
+  </data>
+  <data name="textBoxPerformance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxPerformance.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxPerformance.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformance.Name" xml:space="preserve">
+    <value>textBoxPerformance</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformance.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformance.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="textBoxPerformanceSecondly.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxPerformanceSecondly.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 114</value>
+  </data>
+  <data name="textBoxPerformanceSecondly.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxPerformanceSecondly.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="textBoxPerformanceSecondly.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformanceSecondly.Name" xml:space="preserve">
+    <value>textBoxPerformanceSecondly</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformanceSecondly.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformanceSecondly.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxPerformanceSecondly.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="textBoxVolume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 62</value>
+  </data>
+  <data name="textBoxVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxVolume.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Name" xml:space="preserve">
+    <value>textBoxVolume</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Parent" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="tabPageInitials.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageInitials.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 25</value>
+  </data>
+  <data name="tabPageInitials.Size" type="System.Drawing.Size, System.Drawing">
+    <value>538, 659</value>
+  </data>
+  <data name="tabPageInitials.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageInitials.Text" xml:space="preserve">
+    <value>Сведения из документации</value>
+  </data>
+  <data name="&gt;&gt;tabPageInitials.Name" xml:space="preserve">
+    <value>tabPageInitials</value>
+  </data>
+  <data name="&gt;&gt;tabPageInitials.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageInitials.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageInitials.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericUpDownFi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownFi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 114</value>
+  </data>
+  <data name="numericUpDownFi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="numericUpDownFi.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="numericUpDownFi.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFi.Name" xml:space="preserve">
+    <value>numericUpDownFi</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFi.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 62</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="numericUpDownTurbulentWidth.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownTurbulentWidth.Name" xml:space="preserve">
+    <value>numericUpDownTurbulentWidth</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownTurbulentWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownTurbulentWidth.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownTurbulentWidth.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 117</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Угол отвала, °</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label36.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label36.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 13</value>
+  </data>
+  <data name="label36.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Ширина взмученного потока, м</value>
+  </data>
+  <data name="&gt;&gt;label36.Name" xml:space="preserve">
+    <value>label36</value>
+  </data>
+  <data name="&gt;&gt;label36.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 91</value>
+  </data>
+  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 13</value>
+  </data>
+  <data name="label33.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Степень стеснения русла</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 143</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 13</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Коэффициент уноса грунта, %</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxStreamObstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxStreamObstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 88</value>
+  </data>
+  <data name="textBoxStreamObstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxStreamObstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxStreamObstruction.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamObstruction.Name" xml:space="preserve">
+    <value>textBoxStreamObstruction</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamObstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamObstruction.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamObstruction.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxEntrainment.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxEntrainment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 140</value>
+  </data>
+  <data name="textBoxEntrainment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxEntrainment.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="textBoxEntrainment.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxEntrainment.Name" xml:space="preserve">
+    <value>textBoxEntrainment</value>
+  </data>
+  <data name="&gt;&gt;textBoxEntrainment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxEntrainment.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxEntrainment.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 221</value>
+  </data>
+  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 13</value>
+  </data>
+  <data name="label32.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Общая концентрация в створе работ, г/м³</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 273</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 13</value>
+  </data>
+  <data name="label29.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Концентрация контрольных частиц в створе работ, г/м³</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxDpNgavtGeneral.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxDpNgavtGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 218</value>
+  </data>
+  <data name="textBoxDpNgavtGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxDpNgavtGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="textBoxDpNgavtGeneral.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavtGeneral.Name" xml:space="preserve">
+    <value>textBoxDpNgavtGeneral</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavtGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavtGeneral.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavtGeneral.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="textBoxDpNgavt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxDpNgavt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 270</value>
+  </data>
+  <data name="textBoxDpNgavt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxDpNgavt.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxDpNgavt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavt.Name" xml:space="preserve">
+    <value>textBoxDpNgavt</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavt.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxDpNgavt.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label35.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 15</value>
+  </data>
+  <data name="label35.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Параметры воздействия</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 181</value>
+  </data>
+  <data name="label26.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 15</value>
+  </data>
+  <data name="label26.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Общие показатели</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 247</value>
+  </data>
+  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 13</value>
+  </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label28.Text" xml:space="preserve">
+    <value>Гидравлическая крупность частиц, мм/с</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxHydraulicSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxHydraulicSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 244</value>
+  </data>
+  <data name="textBoxHydraulicSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxHydraulicSize.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="textBoxHydraulicSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxHydraulicSize.Name" xml:space="preserve">
+    <value>textBoxHydraulicSize</value>
+  </data>
+  <data name="&gt;&gt;textBoxHydraulicSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxHydraulicSize.Parent" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxHydraulicSize.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tabPageNgavtInitials.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageNgavtInitials.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 25</value>
+  </data>
+  <data name="tabPageNgavtInitials.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageNgavtInitials.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabPageNgavtInitials.Text" xml:space="preserve">
+    <value>Исходные данные</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtInitials.Name" xml:space="preserve">
+    <value>tabPageNgavtInitials</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtInitials.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtInitials.Parent" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtInitials.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="spreadSheetNgavt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="columnStretch.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnStretch.HeaderText" xml:space="preserve">
+    <value>Положение створа, м</value>
+  </data>
+  <metadata name="ColumnStretchVelocity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnStretchVelocity.HeaderText" xml:space="preserve">
+    <value>Скорость, м/с</value>
+  </data>
+  <metadata name="ColumnStretchDepth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnStretchDepth.HeaderText" xml:space="preserve">
+    <value>Глубина, м</value>
+  </data>
+  <metadata name="ColumnStretchRatio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnStretchRatio.HeaderText" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <metadata name="ColumnStretchSuspense.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnStretchSuspense.HeaderText" xml:space="preserve">
+    <value>Мутность, г/м³</value>
+  </data>
+  <data name="spreadSheetNgavt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="spreadSheetNgavt.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="spreadSheetNgavt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 547</value>
+  </data>
+  <data name="spreadSheetNgavt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetNgavt.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetNgavt.Name" xml:space="preserve">
+    <value>spreadSheetNgavt</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetNgavt.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetNgavt.Parent" xml:space="preserve">
+    <value>tabPageProfiles</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetNgavt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageProfiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageProfiles.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 25, 25</value>
+  </data>
+  <data name="tabPageProfiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageProfiles.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPageProfiles.Text" xml:space="preserve">
+    <value>Контрольные срезы</value>
+  </data>
+  <data name="&gt;&gt;tabPageProfiles.Name" xml:space="preserve">
+    <value>tabPageProfiles</value>
+  </data>
+  <data name="&gt;&gt;tabPageProfiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageProfiles.Parent" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabPageProfiles.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="chart2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="chart2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 114</value>
+  </data>
+  <data name="chart2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 461</value>
+  </data>
+  <data name="chart2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chart2.Text" xml:space="preserve">
+    <value>chart2</value>
+  </data>
+  <data name="&gt;&gt;chart2.Name" xml:space="preserve">
+    <value>chart2</value>
+  </data>
+  <data name="&gt;&gt;chart2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;chart2.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;chart2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 15</value>
+  </data>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Итоговые размеры поля мутности</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 91</value>
+  </data>
+  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 13</value>
+  </data>
+  <data name="label30.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Протяженность, м</value>
+  </data>
+  <data name="&gt;&gt;label30.Name" xml:space="preserve">
+    <value>label30</value>
+  </data>
+  <data name="&gt;&gt;label30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 89</value>
+  </data>
+  <data name="textBoxLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxLength.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxLength.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Name" xml:space="preserve">
+    <value>textBoxLength</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
+  </data>
+  <data name="label31.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Летальная мутность, г/м³</value>
+  </data>
+  <data name="&gt;&gt;label31.Name" xml:space="preserve">
+    <value>label31</value>
+  </data>
+  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericUpDownDisperse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownDisperse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 63</value>
+  </data>
+  <data name="numericUpDownDisperse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="numericUpDownDisperse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericUpDownDisperse.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDisperse.Name" xml:space="preserve">
+    <value>numericUpDownDisperse</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDisperse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDisperse.Parent" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDisperse.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabPageNgavtResults.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageNgavtResults.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 25</value>
+  </data>
+  <data name="tabPageNgavtResults.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageNgavtResults.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageNgavtResults.Text" xml:space="preserve">
+    <value>Результат</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtResults.Name" xml:space="preserve">
+    <value>tabPageNgavtResults</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtResults.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtResults.Parent" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavtResults.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 629</value>
+  </data>
+  <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl2.Name" xml:space="preserve">
+    <value>tabControl2</value>
+  </data>
+  <data name="&gt;&gt;tabControl2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl2.Parent" xml:space="preserve">
+    <value>tabPageNgavt</value>
+  </data>
+  <data name="&gt;&gt;tabControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageNgavt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageNgavt.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>15, 15, 15, 15</value>
+  </data>
+  <data name="tabPageNgavt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>538, 659</value>
+  </data>
+  <data name="tabPageNgavt.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabPageNgavt.Text" xml:space="preserve">
+    <value>Метод НГАВТ</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavt.Name" xml:space="preserve">
+    <value>tabPageNgavt</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavt.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageNgavt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelGgiWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGgiWeight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGgiWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 143</value>
+  </data>
+  <data name="labelGgiWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 13</value>
+  </data>
+  <data name="labelGgiWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelGgiWeight.Text" xml:space="preserve">
+    <value>Масса грунта, поступающего в поток, т</value>
+  </data>
+  <data name="&gt;&gt;labelGgiWeight.Name" xml:space="preserve">
+    <value>labelGgiWeight</value>
+  </data>
+  <data name="&gt;&gt;labelGgiWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGgiWeight.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;labelGgiWeight.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxGgiWeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxGgiWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 140</value>
+  </data>
+  <data name="textBoxGgiWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxGgiWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxGgiWeight.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiWeight.Name" xml:space="preserve">
+    <value>textBoxGgiWeight</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiWeight.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiWeight.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelGgiGeneral.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGgiGeneral.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelGgiGeneral.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGgiGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 103</value>
+  </data>
+  <data name="labelGgiGeneral.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labelGgiGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 15</value>
+  </data>
+  <data name="labelGgiGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelGgiGeneral.Text" xml:space="preserve">
+    <value>Общие показатели</value>
+  </data>
+  <data name="&gt;&gt;labelGgiGeneral.Name" xml:space="preserve">
+    <value>labelGgiGeneral</value>
+  </data>
+  <data name="&gt;&gt;labelGgiGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGgiGeneral.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;labelGgiGeneral.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labeGgiWorks.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labeGgiWorks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labeGgiWorks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labeGgiWorks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="labeGgiWorks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="labeGgiWorks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 15</value>
+  </data>
+  <data name="labeGgiWorks.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labeGgiWorks.Text" xml:space="preserve">
+    <value>Параметры воздействия</value>
+  </data>
+  <data name="&gt;&gt;labeGgiWorks.Name" xml:space="preserve">
+    <value>labeGgiWorks</value>
+  </data>
+  <data name="&gt;&gt;labeGgiWorks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labeGgiWorks.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;labeGgiWorks.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelZ.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelZ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="labelZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
+  </data>
+  <data name="labelZ.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelZ.Text" xml:space="preserve">
+    <value>Коэффициент взмучивания, %</value>
+  </data>
+  <data name="&gt;&gt;labelZ.Name" xml:space="preserve">
+    <value>labelZ</value>
+  </data>
+  <data name="&gt;&gt;labelZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelZ.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;labelZ.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelGgiDisperse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGgiDisperse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGgiDisperse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 169</value>
+  </data>
+  <data name="labelGgiDisperse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 13</value>
+  </data>
+  <data name="labelGgiDisperse.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="labelGgiDisperse.Text" xml:space="preserve">
+    <value>Дополнительная мутность в створе работ, г/м³</value>
+  </data>
+  <data name="&gt;&gt;labelGgiDisperse.Name" xml:space="preserve">
+    <value>labelGgiDisperse</value>
+  </data>
+  <data name="&gt;&gt;labelGgiDisperse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGgiDisperse.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;labelGgiDisperse.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxZ.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 62</value>
+  </data>
+  <data name="textBoxZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxZ.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="textBoxZ.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxZ.Name" xml:space="preserve">
+    <value>textBoxZ</value>
+  </data>
+  <data name="&gt;&gt;textBoxZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxZ.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxZ.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxGgiDisperse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxGgiDisperse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 166</value>
+  </data>
+  <data name="textBoxGgiDisperse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxGgiDisperse.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="textBoxGgiDisperse.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiDisperse.Name" xml:space="preserve">
+    <value>textBoxGgiDisperse</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiDisperse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiDisperse.Parent" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;textBoxGgiDisperse.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageGgiInitials.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageGgiInitials.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 25</value>
+  </data>
+  <data name="tabPageGgiInitials.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageGgiInitials.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPageGgiInitials.Text" xml:space="preserve">
+    <value>Исходные данные</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgiInitials.Name" xml:space="preserve">
+    <value>tabPageGgiInitials</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgiInitials.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgiInitials.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgiInitials.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>317, 558</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Сумма, %</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPageGrains</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxTotalSeparate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="textBoxTotalSeparate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 555</value>
+  </data>
+  <data name="textBoxTotalSeparate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxTotalSeparate.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxTotalSeparate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTotalSeparate.Name" xml:space="preserve">
+    <value>textBoxTotalSeparate</value>
+  </data>
+  <data name="&gt;&gt;textBoxTotalSeparate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTotalSeparate.Parent" xml:space="preserve">
+    <value>tabPageGrains</value>
+  </data>
+  <data name="&gt;&gt;textBoxTotalSeparate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="spreadSheetGrain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="ColumnGrainMin.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainMin.HeaderText" xml:space="preserve">
+    <value>Фракция от, мм</value>
+  </data>
+  <metadata name="ColumnGrainMax.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainMax.HeaderText" xml:space="preserve">
+    <value>Фракция до, мм</value>
+  </data>
+  <metadata name="ColumnGrainSize.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainSize.HeaderText" xml:space="preserve">
+    <value>Расчетный размер частиц, мм</value>
+  </data>
+  <metadata name="ColumnGrainKT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainKT.HeaderText" xml:space="preserve">
+    <value>Поправочный коэффициент на рабочую температуру</value>
+  </data>
+  <metadata name="ColumnGrainHydraulicSize.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainHydraulicSize.HeaderText" xml:space="preserve">
+    <value>Гидравлическая крупность фракции, мм/с</value>
+  </data>
+  <data name="ColumnGrainHydraulicSize.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <metadata name="ColumnGrainSeparate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainSeparate.HeaderText" xml:space="preserve">
+    <value>Массовая доля фракции, %</value>
+  </data>
+  <metadata name="ColumnGrainWeight.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainWeight.HeaderText" xml:space="preserve">
+    <value>Масса фракции, т</value>
+  </data>
+  <metadata name="ColumnGrainSpread.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGrainSpread.HeaderText" xml:space="preserve">
+    <value>Протяженность зоны полного осаждения фракции, м</value>
+  </data>
+  <data name="ColumnGrainSpread.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="spreadSheetGrain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="spreadSheetGrain.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="spreadSheetGrain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 518</value>
+  </data>
+  <data name="spreadSheetGrain.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetGrain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGrain.Name" xml:space="preserve">
+    <value>spreadSheetGrain</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGrain.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGrain.Parent" xml:space="preserve">
+    <value>tabPageGrains</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGrain.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonSetDefaultGrains.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonSetDefaultGrains.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 552</value>
+  </data>
+  <data name="buttonSetDefaultGrains.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="buttonSetDefaultGrains.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonSetDefaultGrains.Text" xml:space="preserve">
+    <value>Задать стандартный грансостав</value>
+  </data>
+  <data name="&gt;&gt;buttonSetDefaultGrains.Name" xml:space="preserve">
+    <value>buttonSetDefaultGrains</value>
+  </data>
+  <data name="&gt;&gt;buttonSetDefaultGrains.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSetDefaultGrains.Parent" xml:space="preserve">
+    <value>tabPageGrains</value>
+  </data>
+  <data name="&gt;&gt;buttonSetDefaultGrains.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageGrains.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageGrains.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 25, 25</value>
+  </data>
+  <data name="tabPageGrains.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageGrains.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageGrains.Text" xml:space="preserve">
+    <value>Расчет зон</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrains.Name" xml:space="preserve">
+    <value>tabPageGrains</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrains.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrains.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrains.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxShowSeparates.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxShowSeparates.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxShowSeparates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 552</value>
+  </data>
+  <data name="checkBoxShowSeparates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 23</value>
+  </data>
+  <data name="checkBoxShowSeparates.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxShowSeparates.Text" xml:space="preserve">
+    <value>Отображать расчет массы осаждений</value>
+  </data>
+  <data name="checkBoxShowSeparates.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSeparates.Name" xml:space="preserve">
+    <value>checkBoxShowSeparates</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSeparates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSeparates.Parent" xml:space="preserve">
+    <value>tabPageSedimentation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowSeparates.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="spreadSheetSedimentation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="ColumnSedLength.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedLength.HeaderText" xml:space="preserve">
+    <value>Протяженность, м</value>
+  </data>
+  <metadata name="ColumnSedSquare.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedSquare.HeaderText" xml:space="preserve">
+    <value>Площадь, м²</value>
+  </data>
+  <metadata name="ColumnSedWeight.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedWeight.HeaderText" xml:space="preserve">
+    <value>Масса осевшего грунта, т</value>
+  </data>
+  <metadata name="ColumnSedWeightIntegral.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedWeightIntegral.HeaderText" xml:space="preserve">
+    <value>Интегральная масса осевшего грунта, т</value>
+  </data>
+  <data name="ColumnSedWeightIntegral.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <metadata name="ColumnSedWeightTransit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedWeightTransit.HeaderText" xml:space="preserve">
+    <value>Масса транзитного грунта, т</value>
+  </data>
+  <metadata name="ColumnSedSuspended.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedSuspended.HeaderText" xml:space="preserve">
+    <value>Полная дополнительная мутность, г/м³</value>
+  </data>
+  <data name="ColumnSedSuspended.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <metadata name="ColumnSedDensity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedDensity.HeaderText" xml:space="preserve">
+    <value>Плотность отложений, т/м³</value>
+  </data>
+  <metadata name="ColumnSedVolume.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedVolume.HeaderText" xml:space="preserve">
+    <value>Объем заиления, м³</value>
+  </data>
+  <metadata name="ColumnSedWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSedWidth.HeaderText" xml:space="preserve">
+    <value>Толщина наилка, мм</value>
+  </data>
+  <data name="spreadSheetSedimentation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 28</value>
+  </data>
+  <data name="spreadSheetSedimentation.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="spreadSheetSedimentation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>444, 518</value>
+  </data>
+  <data name="spreadSheetSedimentation.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetSedimentation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSedimentation.Name" xml:space="preserve">
+    <value>spreadSheetSedimentation</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSedimentation.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSedimentation.Parent" xml:space="preserve">
+    <value>tabPageSedimentation</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSedimentation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageSedimentation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSedimentation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 25, 25</value>
+  </data>
+  <data name="tabPageSedimentation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageSedimentation.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tabPageSedimentation.Text" xml:space="preserve">
+    <value>Расчет осаждений</value>
+  </data>
+  <data name="&gt;&gt;tabPageSedimentation.Name" xml:space="preserve">
+    <value>tabPageSedimentation</value>
+  </data>
+  <data name="&gt;&gt;tabPageSedimentation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSedimentation.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageSedimentation.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label39.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label39.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 178</value>
+  </data>
+  <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 13</value>
+  </data>
+  <data name="label39.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label39.Text" xml:space="preserve">
+    <value>Протяженность наилка (толще летального), м</value>
+  </data>
+  <data name="&gt;&gt;label39.Name" xml:space="preserve">
+    <value>label39</value>
+  </data>
+  <data name="&gt;&gt;label39.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label39.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label38.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 90</value>
+  </data>
+  <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 13</value>
+  </data>
+  <data name="label38.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Протяженность поля мутности (выше летальной), м</value>
+  </data>
+  <data name="&gt;&gt;label38.Name" xml:space="preserve">
+    <value>label38</value>
+  </data>
+  <data name="&gt;&gt;label38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label38.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxLethalLengthOfSquare.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxLethalLengthOfSquare.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 176</value>
+  </data>
+  <data name="textBoxLethalLengthOfSquare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxLethalLengthOfSquare.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxLethalLengthOfSquare.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLengthOfSquare.Name" xml:space="preserve">
+    <value>textBoxLethalLengthOfSquare</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLengthOfSquare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLengthOfSquare.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLengthOfSquare.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxLethalLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxLethalLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 88</value>
+  </data>
+  <data name="textBoxLethalLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxLethalLength.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxLethalLength.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLength.Name" xml:space="preserve">
+    <value>textBoxLethalLength</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLength.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalLength.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxSmooth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxSmooth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxSmooth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 558</value>
+  </data>
+  <data name="checkBoxSmooth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 17</value>
+  </data>
+  <data name="checkBoxSmooth.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="checkBoxSmooth.Text" xml:space="preserve">
+    <value>Игнорировать формальность расчетов</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSmooth.Name" xml:space="preserve">
+    <value>checkBoxSmooth</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSmooth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSmooth.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSmooth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="chart1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="chart1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 228</value>
+  </data>
+  <data name="chart1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 317</value>
+  </data>
+  <data name="chart1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="chart1.Text" xml:space="preserve">
+    <value>chart1</value>
+  </data>
+  <data name="&gt;&gt;chart1.Name" xml:space="preserve">
+    <value>chart1</value>
+  </data>
+  <data name="&gt;&gt;chart1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;chart1.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;chart1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 25</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 15</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Итоговые размеры летальных областей</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 205</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 13</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Площадь наилка (толще летального), м²</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 117</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 13</value>
+  </data>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Объем мутности (выше летальной), м³</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="textBoxLethalSquare.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxLethalSquare.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 202</value>
+  </data>
+  <data name="textBoxLethalSquare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxLethalSquare.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="textBoxLethalSquare.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalSquare.Name" xml:space="preserve">
+    <value>textBoxLethalSquare</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalSquare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalSquare.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalSquare.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxLethalVolume.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxLethalVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 114</value>
+  </data>
+  <data name="textBoxLethalVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="textBoxLethalVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="textBoxLethalVolume.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalVolume.Name" xml:space="preserve">
+    <value>textBoxLethalVolume</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalVolume.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;textBoxLethalVolume.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 153</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 13</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Летальная толщина наилка, мм</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
+  </data>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Летальная мутность, г/м³</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="numericUpDownLethalSilt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownLethalSilt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 150</value>
+  </data>
+  <data name="numericUpDownLethalSilt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="numericUpDownLethalSilt.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericUpDownLethalSilt.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalSilt.Name" xml:space="preserve">
+    <value>numericUpDownLethalSilt</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalSilt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalSilt.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalSilt.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="numericUpDownLethalDisperse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="numericUpDownLethalDisperse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 62</value>
+  </data>
+  <data name="numericUpDownLethalDisperse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="numericUpDownLethalDisperse.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericUpDownLethalDisperse.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalDisperse.Name" xml:space="preserve">
+    <value>numericUpDownLethalDisperse</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalDisperse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalDisperse.Parent" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLethalDisperse.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tabPageResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageResult.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 25</value>
+  </data>
+  <data name="tabPageResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 603</value>
+  </data>
+  <data name="tabPageResult.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabPageResult.Text" xml:space="preserve">
+    <value>Результат</value>
+  </data>
+  <data name="&gt;&gt;tabPageResult.Name" xml:space="preserve">
+    <value>tabPageResult</value>
+  </data>
+  <data name="&gt;&gt;tabPageResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageResult.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageResult.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 629</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>tabPageGgi</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageGgi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageGgi.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>15, 15, 15, 15</value>
+  </data>
+  <data name="tabPageGgi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>538, 659</value>
+  </data>
+  <data name="tabPageGgi.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPageGgi.Text" xml:space="preserve">
+    <value>Метод ГГИ</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgi.Name" xml:space="preserve">
+    <value>tabPageGgi</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgi.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageGgi.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 34</value>
+  </data>
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>546, 685</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="новыйToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="новыйToolStripMenuItem.Text" xml:space="preserve">
+    <value>Новый расчет</value>
+  </data>
+  <data name="menuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemOpen.Text" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="menuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemSaveAs.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemPrint.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="toolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="toolStripMenuItemExit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="toolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="toolStripMenuItemFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="toolStripMenuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="toolStripMenuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="сервисToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="сервисToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сервис</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 24</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 739</value>
+  </data>
+  <data name="statusStrip1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 10, 0, 0</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 22</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>60</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>584, 761</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>600, 700</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Sedimentation Calculator</value>
+  </data>
+  <data name="&gt;&gt;columnStretch.Name" xml:space="preserve">
+    <value>columnStretch</value>
+  </data>
+  <data name="&gt;&gt;columnStretch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchVelocity.Name" xml:space="preserve">
+    <value>ColumnStretchVelocity</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchVelocity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchDepth.Name" xml:space="preserve">
+    <value>ColumnStretchDepth</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchRatio.Name" xml:space="preserve">
+    <value>ColumnStretchRatio</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchRatio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchSuspense.Name" xml:space="preserve">
+    <value>ColumnStretchSuspense</value>
+  </data>
+  <data name="&gt;&gt;ColumnStretchSuspense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainMin.Name" xml:space="preserve">
+    <value>ColumnGrainMin</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainMin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainMax.Name" xml:space="preserve">
+    <value>ColumnGrainMax</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSize.Name" xml:space="preserve">
+    <value>ColumnGrainSize</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainKT.Name" xml:space="preserve">
+    <value>ColumnGrainKT</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainKT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainHydraulicSize.Name" xml:space="preserve">
+    <value>ColumnGrainHydraulicSize</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainHydraulicSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSeparate.Name" xml:space="preserve">
+    <value>ColumnGrainSeparate</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSeparate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainWeight.Name" xml:space="preserve">
+    <value>ColumnGrainWeight</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSpread.Name" xml:space="preserve">
+    <value>ColumnGrainSpread</value>
+  </data>
+  <data name="&gt;&gt;ColumnGrainSpread.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedLength.Name" xml:space="preserve">
+    <value>ColumnSedLength</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedSquare.Name" xml:space="preserve">
+    <value>ColumnSedSquare</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedSquare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeight.Name" xml:space="preserve">
+    <value>ColumnSedWeight</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeightIntegral.Name" xml:space="preserve">
+    <value>ColumnSedWeightIntegral</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeightIntegral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeightTransit.Name" xml:space="preserve">
+    <value>ColumnSedWeightTransit</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWeightTransit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedSuspended.Name" xml:space="preserve">
+    <value>ColumnSedSuspended</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedSuspended.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedDensity.Name" xml:space="preserve">
+    <value>ColumnSedDensity</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedDensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedVolume.Name" xml:space="preserve">
+    <value>ColumnSedVolume</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWidth.Name" xml:space="preserve">
+    <value>ColumnSedWidth</value>
+  </data>
+  <data name="&gt;&gt;ColumnSedWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemFile.Name" xml:space="preserve">
+    <value>toolStripMenuItemFile</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemOpen.Name" xml:space="preserve">
+    <value>menuItemOpen</value>
+  </data>
+  <data name="&gt;&gt;menuItemOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemSave.Name" xml:space="preserve">
+    <value>menuItemSave</value>
+  </data>
+  <data name="&gt;&gt;menuItemSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemSaveAs.Name" xml:space="preserve">
+    <value>menuItemSaveAs</value>
+  </data>
+  <data name="&gt;&gt;menuItemSaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemPrint.Name" xml:space="preserve">
+    <value>menuItemPrint</value>
+  </data>
+  <data name="&gt;&gt;menuItemPrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemExit.Name" xml:space="preserve">
+    <value>toolStripMenuItemExit</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;сервисToolStripMenuItem.Name" xml:space="preserve">
+    <value>сервисToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;сервисToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemSettings.Name" xml:space="preserve">
+    <value>toolStripMenuItemSettings</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;новыйToolStripMenuItem.Name" xml:space="preserve">
+    <value>новыйToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;новыйToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

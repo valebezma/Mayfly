@@ -1,0 +1,658 @@
+﻿namespace FisheryStock.Fish
+{
+    partial class Settings
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            this.tabControl_settings = new System.Windows.Forms.TabControl();
+            this.tabPageCommon = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxInheritGrowthRegressions = new System.Windows.Forms.CheckBox();
+            this.labelRefWatersLocation = new System.Windows.Forms.Label();
+            this.buttonBrowseWaters = new System.Windows.Forms.Button();
+            this.textBoxWaters = new System.Windows.Forms.TextBox();
+            this.buttonOpenWaters = new System.Windows.Forms.Button();
+            this.labelRefFish = new System.Windows.Forms.Label();
+            this.buttonBrowseNutrients = new System.Windows.Forms.Button();
+            this.buttonBrowseSpecies = new System.Windows.Forms.Button();
+            this.textBoxNutrients = new System.Windows.Forms.TextBox();
+            this.textBoxSpecies = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelRefSpeciesLocationFish = new System.Windows.Forms.Label();
+            this.buttonOpenNutrients = new System.Windows.Forms.Button();
+            this.buttonOpenSpecies = new System.Windows.Forms.Button();
+            this.textBoxJuv = new System.Windows.Forms.TextBox();
+            this.labelJuv = new System.Windows.Forms.Label();
+            this.textBoxMale = new System.Windows.Forms.TextBox();
+            this.labelMale = new System.Windows.Forms.Label();
+            this.textBoxFemale = new System.Windows.Forms.TextBox();
+            this.labelFemale = new System.Windows.Forms.Label();
+            this.labelInputFish = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPageFishery = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDownCatchLimit = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelExposure = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelHeight = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelLength = new System.Windows.Forms.Label();
+            this.numericUpDownCatchability = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownStdSoak = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSelectivity = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDriftnetOpening = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownStdHeight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownSeinOpening = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownStdLength = new System.Windows.Forms.NumericUpDown();
+            this.tabPageService = new System.Windows.Forms.TabPage();
+            this.labelInterface = new System.Windows.Forms.Label();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.textBoxLicensee = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.tabControl_settings.SuspendLayout();
+            this.tabPageCommon.SuspendLayout();
+            this.tabPageFishery.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCatchLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCatchability)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdSoak)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSelectivity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDriftnetOpening)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeinOpening)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdLength)).BeginInit();
+            this.tabPageService.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tabControl_settings
+            // 
+            resources.ApplyResources(this.tabControl_settings, "tabControl_settings");
+            this.tabControl_settings.Controls.Add(this.tabPageCommon);
+            this.tabControl_settings.Controls.Add(this.tabPageFishery);
+            this.tabControl_settings.Controls.Add(this.tabPageService);
+            this.tabControl_settings.Name = "tabControl_settings";
+            this.tabControl_settings.SelectedIndex = 0;
+            // 
+            // tabPageCommon
+            // 
+            resources.ApplyResources(this.tabPageCommon, "tabPageCommon");
+            this.tabPageCommon.Controls.Add(this.label1);
+            this.tabPageCommon.Controls.Add(this.checkBoxInheritGrowthRegressions);
+            this.tabPageCommon.Controls.Add(this.labelRefWatersLocation);
+            this.tabPageCommon.Controls.Add(this.buttonBrowseWaters);
+            this.tabPageCommon.Controls.Add(this.textBoxWaters);
+            this.tabPageCommon.Controls.Add(this.buttonOpenWaters);
+            this.tabPageCommon.Controls.Add(this.labelRefFish);
+            this.tabPageCommon.Controls.Add(this.buttonBrowseNutrients);
+            this.tabPageCommon.Controls.Add(this.buttonBrowseSpecies);
+            this.tabPageCommon.Controls.Add(this.textBoxNutrients);
+            this.tabPageCommon.Controls.Add(this.textBoxSpecies);
+            this.tabPageCommon.Controls.Add(this.label14);
+            this.tabPageCommon.Controls.Add(this.labelRefSpeciesLocationFish);
+            this.tabPageCommon.Controls.Add(this.buttonOpenNutrients);
+            this.tabPageCommon.Controls.Add(this.buttonOpenSpecies);
+            this.tabPageCommon.Controls.Add(this.textBoxJuv);
+            this.tabPageCommon.Controls.Add(this.labelJuv);
+            this.tabPageCommon.Controls.Add(this.textBoxMale);
+            this.tabPageCommon.Controls.Add(this.labelMale);
+            this.tabPageCommon.Controls.Add(this.textBoxFemale);
+            this.tabPageCommon.Controls.Add(this.labelFemale);
+            this.tabPageCommon.Controls.Add(this.labelInputFish);
+            this.tabPageCommon.Controls.Add(this.label6);
+            this.tabPageCommon.Name = "tabPageCommon";
+            this.tabPageCommon.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // checkBoxInheritGrowthRegressions
+            // 
+            resources.ApplyResources(this.checkBoxInheritGrowthRegressions, "checkBoxInheritGrowthRegressions");
+            this.checkBoxInheritGrowthRegressions.Name = "checkBoxInheritGrowthRegressions";
+            this.checkBoxInheritGrowthRegressions.UseVisualStyleBackColor = true;
+            // 
+            // labelRefWatersLocation
+            // 
+            resources.ApplyResources(this.labelRefWatersLocation, "labelRefWatersLocation");
+            this.labelRefWatersLocation.Name = "labelRefWatersLocation";
+            // 
+            // buttonBrowseWaters
+            // 
+            resources.ApplyResources(this.buttonBrowseWaters, "buttonBrowseWaters");
+            this.buttonBrowseWaters.Name = "buttonBrowseWaters";
+            this.buttonBrowseWaters.UseVisualStyleBackColor = true;
+            this.buttonBrowseWaters.Click += new System.EventHandler(this.buttonBrowseWaters_Click);
+            // 
+            // textBoxWaters
+            // 
+            resources.ApplyResources(this.textBoxWaters, "textBoxWaters");
+            this.textBoxWaters.Name = "textBoxWaters";
+            this.textBoxWaters.ReadOnly = true;
+            // 
+            // buttonOpenWaters
+            // 
+            resources.ApplyResources(this.buttonOpenWaters, "buttonOpenWaters");
+            this.buttonOpenWaters.Name = "buttonOpenWaters";
+            this.buttonOpenWaters.UseVisualStyleBackColor = true;
+            this.buttonOpenWaters.Click += new System.EventHandler(this.buttonOpenWaters_Click);
+            // 
+            // labelRefFish
+            // 
+            resources.ApplyResources(this.labelRefFish, "labelRefFish");
+            this.labelRefFish.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelRefFish.Name = "labelRefFish";
+            // 
+            // buttonBrowseNutrients
+            // 
+            resources.ApplyResources(this.buttonBrowseNutrients, "buttonBrowseNutrients");
+            this.buttonBrowseNutrients.Name = "buttonBrowseNutrients";
+            this.buttonBrowseNutrients.UseVisualStyleBackColor = true;
+            this.buttonBrowseNutrients.Click += new System.EventHandler(this.buttonBrowseNutrients_Click);
+            // 
+            // buttonBrowseSpecies
+            // 
+            resources.ApplyResources(this.buttonBrowseSpecies, "buttonBrowseSpecies");
+            this.buttonBrowseSpecies.Name = "buttonBrowseSpecies";
+            this.buttonBrowseSpecies.UseVisualStyleBackColor = true;
+            this.buttonBrowseSpecies.Click += new System.EventHandler(this.buttonBrowseSpecies_Click);
+            // 
+            // textBoxNutrients
+            // 
+            resources.ApplyResources(this.textBoxNutrients, "textBoxNutrients");
+            this.textBoxNutrients.Name = "textBoxNutrients";
+            this.textBoxNutrients.ReadOnly = true;
+            // 
+            // textBoxSpecies
+            // 
+            resources.ApplyResources(this.textBoxSpecies, "textBoxSpecies");
+            this.textBoxSpecies.Name = "textBoxSpecies";
+            this.textBoxSpecies.ReadOnly = true;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // labelRefSpeciesLocationFish
+            // 
+            resources.ApplyResources(this.labelRefSpeciesLocationFish, "labelRefSpeciesLocationFish");
+            this.labelRefSpeciesLocationFish.Name = "labelRefSpeciesLocationFish";
+            // 
+            // buttonOpenNutrients
+            // 
+            resources.ApplyResources(this.buttonOpenNutrients, "buttonOpenNutrients");
+            this.buttonOpenNutrients.Name = "buttonOpenNutrients";
+            this.buttonOpenNutrients.UseVisualStyleBackColor = true;
+            this.buttonOpenNutrients.Click += new System.EventHandler(this.buttonOpenNutrients_Click);
+            // 
+            // buttonOpenSpecies
+            // 
+            resources.ApplyResources(this.buttonOpenSpecies, "buttonOpenSpecies");
+            this.buttonOpenSpecies.Name = "buttonOpenSpecies";
+            this.buttonOpenSpecies.UseVisualStyleBackColor = true;
+            this.buttonOpenSpecies.Click += new System.EventHandler(this.buttonOpenSpecies_Click);
+            // 
+            // textBoxJuv
+            // 
+            resources.ApplyResources(this.textBoxJuv, "textBoxJuv");
+            this.textBoxJuv.Name = "textBoxJuv";
+            this.textBoxJuv.Leave += new System.EventHandler(this.textBoxSigns_Leave);
+            // 
+            // labelJuv
+            // 
+            resources.ApplyResources(this.labelJuv, "labelJuv");
+            this.labelJuv.Name = "labelJuv";
+            // 
+            // textBoxMale
+            // 
+            resources.ApplyResources(this.textBoxMale, "textBoxMale");
+            this.textBoxMale.Name = "textBoxMale";
+            this.textBoxMale.Leave += new System.EventHandler(this.textBoxSigns_Leave);
+            // 
+            // labelMale
+            // 
+            resources.ApplyResources(this.labelMale, "labelMale");
+            this.labelMale.Name = "labelMale";
+            // 
+            // textBoxFemale
+            // 
+            resources.ApplyResources(this.textBoxFemale, "textBoxFemale");
+            this.textBoxFemale.Name = "textBoxFemale";
+            this.textBoxFemale.Leave += new System.EventHandler(this.textBoxSigns_Leave);
+            // 
+            // labelFemale
+            // 
+            resources.ApplyResources(this.labelFemale, "labelFemale");
+            this.labelFemale.Name = "labelFemale";
+            // 
+            // labelInputFish
+            // 
+            resources.ApplyResources(this.labelInputFish, "labelInputFish");
+            this.labelInputFish.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelInputFish.Name = "labelInputFish";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // tabPageFishery
+            // 
+            resources.ApplyResources(this.tabPageFishery, "tabPageFishery");
+            this.tabPageFishery.Controls.Add(this.label12);
+            this.tabPageFishery.Controls.Add(this.numericUpDownCatchLimit);
+            this.tabPageFishery.Controls.Add(this.label15);
+            this.tabPageFishery.Controls.Add(this.label2);
+            this.tabPageFishery.Controls.Add(this.label13);
+            this.tabPageFishery.Controls.Add(this.labelExposure);
+            this.tabPageFishery.Controls.Add(this.label9);
+            this.tabPageFishery.Controls.Add(this.label17);
+            this.tabPageFishery.Controls.Add(this.label16);
+            this.tabPageFishery.Controls.Add(this.label5);
+            this.tabPageFishery.Controls.Add(this.label8);
+            this.tabPageFishery.Controls.Add(this.labelHeight);
+            this.tabPageFishery.Controls.Add(this.label7);
+            this.tabPageFishery.Controls.Add(this.labelLength);
+            this.tabPageFishery.Controls.Add(this.numericUpDownCatchability);
+            this.tabPageFishery.Controls.Add(this.numericUpDownStdSoak);
+            this.tabPageFishery.Controls.Add(this.numericUpDownSelectivity);
+            this.tabPageFishery.Controls.Add(this.numericUpDownDriftnetOpening);
+            this.tabPageFishery.Controls.Add(this.numericUpDownStdHeight);
+            this.tabPageFishery.Controls.Add(this.numericUpDownSeinOpening);
+            this.tabPageFishery.Controls.Add(this.numericUpDownStdLength);
+            this.tabPageFishery.Name = "tabPageFishery";
+            this.tabPageFishery.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // numericUpDownCatchLimit
+            // 
+            resources.ApplyResources(this.numericUpDownCatchLimit, "numericUpDownCatchLimit");
+            this.numericUpDownCatchLimit.DecimalPlaces = 1;
+            this.numericUpDownCatchLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCatchLimit.Name = "numericUpDownCatchLimit";
+            this.numericUpDownCatchLimit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label15.Name = "label15";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label2.Name = "label2";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // labelExposure
+            // 
+            resources.ApplyResources(this.labelExposure, "labelExposure");
+            this.labelExposure.Name = "labelExposure";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // labelHeight
+            // 
+            resources.ApplyResources(this.labelHeight, "labelHeight");
+            this.labelHeight.Name = "labelHeight";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // labelLength
+            // 
+            resources.ApplyResources(this.labelLength, "labelLength");
+            this.labelLength.Name = "labelLength";
+            // 
+            // numericUpDownCatchability
+            // 
+            resources.ApplyResources(this.numericUpDownCatchability, "numericUpDownCatchability");
+            this.numericUpDownCatchability.DecimalPlaces = 2;
+            this.numericUpDownCatchability.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownCatchability.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownCatchability.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownCatchability.Name = "numericUpDownCatchability";
+            this.numericUpDownCatchability.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            // 
+            // numericUpDownStdSoak
+            // 
+            resources.ApplyResources(this.numericUpDownStdSoak, "numericUpDownStdSoak");
+            this.numericUpDownStdSoak.DecimalPlaces = 2;
+            this.numericUpDownStdSoak.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownStdSoak.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownStdSoak.Name = "numericUpDownStdSoak";
+            // 
+            // numericUpDownSelectivity
+            // 
+            resources.ApplyResources(this.numericUpDownSelectivity, "numericUpDownSelectivity");
+            this.numericUpDownSelectivity.DecimalPlaces = 2;
+            this.numericUpDownSelectivity.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownSelectivity.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownSelectivity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownSelectivity.Name = "numericUpDownSelectivity";
+            this.numericUpDownSelectivity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            // 
+            // numericUpDownDriftnetOpening
+            // 
+            resources.ApplyResources(this.numericUpDownDriftnetOpening, "numericUpDownDriftnetOpening");
+            this.numericUpDownDriftnetOpening.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownDriftnetOpening.Name = "numericUpDownDriftnetOpening";
+            this.numericUpDownDriftnetOpening.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownStdHeight
+            // 
+            resources.ApplyResources(this.numericUpDownStdHeight, "numericUpDownStdHeight");
+            this.numericUpDownStdHeight.DecimalPlaces = 2;
+            this.numericUpDownStdHeight.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDownStdHeight.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownStdHeight.Name = "numericUpDownStdHeight";
+            // 
+            // numericUpDownSeinOpening
+            // 
+            resources.ApplyResources(this.numericUpDownSeinOpening, "numericUpDownSeinOpening");
+            this.numericUpDownSeinOpening.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownSeinOpening.Name = "numericUpDownSeinOpening";
+            this.numericUpDownSeinOpening.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownStdLength
+            // 
+            resources.ApplyResources(this.numericUpDownStdLength, "numericUpDownStdLength");
+            this.numericUpDownStdLength.DecimalPlaces = 2;
+            this.numericUpDownStdLength.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDownStdLength.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownStdLength.Name = "numericUpDownStdLength";
+            // 
+            // tabPageService
+            // 
+            resources.ApplyResources(this.tabPageService, "tabPageService");
+            this.tabPageService.Controls.Add(this.labelInterface);
+            this.tabPageService.Controls.Add(this.textBoxUser);
+            this.tabPageService.Controls.Add(this.textBoxLicensee);
+            this.tabPageService.Controls.Add(this.label3);
+            this.tabPageService.Controls.Add(this.label4);
+            this.tabPageService.Name = "tabPageService";
+            this.tabPageService.UseVisualStyleBackColor = true;
+            // 
+            // labelInterface
+            // 
+            resources.ApplyResources(this.labelInterface, "labelInterface");
+            this.labelInterface.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelInterface.Name = "labelInterface";
+            // 
+            // textBoxUser
+            // 
+            resources.ApplyResources(this.textBoxUser, "textBoxUser");
+            this.textBoxUser.Name = "textBoxUser";
+            // 
+            // textBoxLicensee
+            // 
+            resources.ApplyResources(this.textBoxLicensee, "textBoxLicensee");
+            this.textBoxLicensee.Name = "textBoxLicensee";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // buttonCancel
+            // 
+            resources.ApplyResources(this.buttonCancel, "buttonCancel");
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonOK
+            // 
+            resources.ApplyResources(this.buttonOK, "buttonOK");
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // Settings
+            // 
+            this.AcceptButton = this.buttonOK;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
+            this.Controls.Add(this.buttonOK);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.tabControl_settings);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Settings";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.tabControl_settings.ResumeLayout(false);
+            this.tabPageCommon.ResumeLayout(false);
+            this.tabPageCommon.PerformLayout();
+            this.tabPageFishery.ResumeLayout(false);
+            this.tabPageFishery.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCatchLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCatchability)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdSoak)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSelectivity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDriftnetOpening)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeinOpening)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStdLength)).EndInit();
+            this.tabPageService.ResumeLayout(false);
+            this.tabPageService.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TabPage tabPageCommon;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label labelInputFish;
+        private System.Windows.Forms.Label labelJuv;
+        private System.Windows.Forms.Label labelMale;
+        private System.Windows.Forms.Label labelFemale;
+        private System.Windows.Forms.Label labelRefFish;
+        private System.Windows.Forms.Label labelRefSpeciesLocationFish;
+        private System.Windows.Forms.Button buttonOpenSpecies;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button buttonOpenNutrients;
+        private System.Windows.Forms.Label labelRefWatersLocation;
+        private System.Windows.Forms.Button buttonOpenWaters;
+        private System.Windows.Forms.TabPage tabPageFishery;
+        private System.Windows.Forms.Button buttonBrowseWaters;
+        private System.Windows.Forms.TextBox textBoxWaters;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelExposure;
+        private System.Windows.Forms.Label labelHeight;
+        private System.Windows.Forms.Label labelLength;
+        private System.Windows.Forms.NumericUpDown numericUpDownStdSoak;
+        private System.Windows.Forms.NumericUpDown numericUpDownStdHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownStdLength;
+        private System.Windows.Forms.TabControl tabControl_settings;
+        private System.Windows.Forms.TextBox textBoxJuv;
+        private System.Windows.Forms.TextBox textBoxMale;
+        private System.Windows.Forms.TextBox textBoxFemale;
+        private System.Windows.Forms.TextBox textBoxSpecies;
+        private System.Windows.Forms.Button buttonBrowseSpecies;
+        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonBrowseNutrients;
+        private System.Windows.Forms.TextBox textBoxNutrients;
+        private System.Windows.Forms.TabPage tabPageService;
+        private System.Windows.Forms.Label labelInterface;
+        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxLicensee;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDownCatchability;
+        private System.Windows.Forms.NumericUpDown numericUpDownSelectivity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxInheritGrowthRegressions;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDownDriftnetOpening;
+        private System.Windows.Forms.NumericUpDown numericUpDownSeinOpening;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numericUpDownCatchLimit;
+    }
+}

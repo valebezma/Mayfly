@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F8B4096-F027-4CB6-97B9-95AD14E434D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.Benthos.Explorer</RootNamespace>
+    <AssemblyName>bexplore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>..\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AeroWizard, Version=1.2.3.22616, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Mayfly\CurrentBuild\bin\AeroWizard.dll</HintPath>
+    </Reference>
+    <Reference Include="Meta.Numerics, Version=4.0.7.0, Culture=neutral, PublicKeyToken=67d25c65a6631347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Meta.Numerics.4.0.7\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\CardStack.Artefacts.cs" />
+    <Compile Include="Extensions\CardStack.cs" />
+    <Compile Include="Extensions\CardStack.Report.cs" />
+    <Compile Include="Extensions\Data.Bio.cs" />
+    <Compile Include="Extensions\Data.cs" />
+    <Compile Include="Extensions\CardRow.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\LogRow.cs" />
+    <Compile Include="Extensions\SpeciesRow.cs" />
+    <Compile Include="Extensions\TaxaRow.cs" />
+    <Compile Include="Heads.cs" />
+    <Compile Include="MainForm.Artefacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Cards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Individuals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Species.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Artefact.Designer.cs">
+      <DependentUpon>Artefact.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Community.Designer.cs">
+      <DependentUpon>Community.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Community.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Community.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeciesSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeciesSelector.Designer.cs">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface.Designer.cs">
+      <DependentUpon>Interface.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Process.Designer.cs">
+      <DependentUpon>Process.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Process.ru.Designer.cs">
+      <DependentUpon>Process.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Diet\WizardRecoverer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diet\WizardRecoverer.Designer.cs">
+      <DependentUpon>WizardRecoverer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Artefact.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Artefact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.ru.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Process.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Process.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Process.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Process.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Community.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Community.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Community.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Community.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeciesSelector.resx">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeciesSelector.ru.resx">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diet\WizardRecoverer.resx">
+      <DependentUpon>WizardRecoverer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diet\WizardRecoverer.ru.resx">
+      <DependentUpon>WizardRecoverer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly.Benthos\Mayfly.Benthos.csproj">
+      <Project>{D24B93AD-74BA-4B29-9B1A-CA197FA56EAB}</Project>
+      <Name>Mayfly.Benthos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Wild\Mayfly.Wild.csproj">
+      <Project>{17FD0EB5-FA78-442A-94C6-5DEF4897A569}</Project>
+      <Name>Mayfly.Wild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Species\Mayfly.Species.csproj">
+      <Project>{F076B272-8967-4030-A1CD-A08E5EA6625D}</Project>
+      <Name>Mayfly.Species</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Waters\Mayfly.Waters.csproj">
+      <Project>{FDA7F1CC-8CF3-435C-84E9-7B1692E4A4C4}</Project>
+      <Name>Mayfly.Waters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Mathematics\Mayfly.Mathematics.csproj">
+      <Project>{13A45B99-320D-40DC-81D0-38C42E9B6DCA}</Project>
+      <Name>Mayfly.Mathematics</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
+      <Name>Mayfly</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bexplore.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

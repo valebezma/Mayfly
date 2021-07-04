@@ -1,0 +1,45 @@
+﻿using System;
+using System.Windows.Forms;
+using Mayfly;
+
+namespace Mayfly.Species
+{
+    static class Program
+    {
+        /// <summary>
+        /// Главная точка входа для приложения.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] arguments)
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            //arguments = new string[] { "compare", "Отряд Веснянки (Plecoptera) - Жильцова Л. А..sps" };
+            if (arguments.Length > 0)
+            {
+                switch (arguments[0])
+                {
+                    case "compare":
+                        Application.Run(new Key(arguments[1]));
+                        break;
+                    case "updown":
+                        _Species _Species = new _Species();
+                        _Species.ReadXml(arguments[1]);
+                        //preview = preview.Replace("{title}", Interface.ShortName(arguments[1]));
+                        Print _print = new Print(_Species.ClassicKey());
+                        _print.StartPosition = FormStartPosition.CenterScreen; 
+                        Application.Run(_print);
+                        break;
+                    default:
+                        Application.Run(new Key(arguments[0]));
+                        break;
+                }
+            }
+            else
+            {
+                Application.Run(new MainForm());
+            }
+        }
+    }
+}

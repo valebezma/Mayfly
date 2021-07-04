@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61F54E80-3955-4817-97BB-3D511DD57D70}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.ManualLicenser</RootNamespace>
+    <AssemblyName>mayflycoworker</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly.Benthos\Mayfly.Benthos.csproj">
+      <Project>{d24b93ad-74ba-4b29-9b1a-ca197fa56eab}</Project>
+      <Name>Mayfly.Benthos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Fish.Explorer\Mayfly.Fish.Explorer.csproj">
+      <Project>{fa027c2b-ade1-4157-9b21-b903b3edca17}</Project>
+      <Name>Mayfly.Fish.Explorer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Fish\Mayfly.Fish.csproj">
+      <Project>{edafc0ae-1bab-47b7-86e1-1319d1696779}</Project>
+      <Name>Mayfly.Fish</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Plankton\Mayfly.Plankton.csproj">
+      <Project>{bd41944e-a69e-406a-a068-7b544ae3bf60}</Project>
+      <Name>Mayfly.Plankton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Waters\Mayfly.Waters.csproj">
+      <Project>{fda7f1cc-8cf3-435c-84e9-7b1692e4a4c4}</Project>
+      <Name>Mayfly.Waters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Wild\Mayfly.Wild.csproj">
+      <Project>{17fd0eb5-fa78-442a-94c6-5def4897a569}</Project>
+      <Name>Mayfly.Wild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
+      <Name>Mayfly</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Paragraph3_2" xml:space="preserve">
+    <value>Inclusiveness (I) is part of sample was being measured. Model quality is calculated when last is available. It (Q) is calculated as square root of model's determination multiplied by remain of deviatons fraction:</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Data Rating Report</value>
+  </data>
+  <data name="Paragraph1_1" xml:space="preserve">
+    <value>Rate (R) is calculated as a product of gathering rate (G) and treatment rate (T):</value>
+  </data>
+  <data name="EquationB" xml:space="preserve">
+    <value>is runouts fraction</value>
+  </data>
+  <data name="EquationMesh" xml:space="preserve">
+    <value>mesh</value>
+  </data>
+  <data name="EquationWhere" xml:space="preserve">
+    <value>, where</value>
+  </data>
+  <data name="Paragraph2_3" xml:space="preserve">
+    <value>Mesh frequency (F) is calculated from mean pace of mesh size (P) as follows:</value>
+  </data>
+  <data name="Paragraph2_1" xml:space="preserve">
+    <value>Gathering rate assumed 1 for gear types except passive ones and equals mean between average mesh row width (W) and frequency (F) factors for passive ones:</value>
+  </data>
+  <data name="Paragraph2_4" xml:space="preserve">
+    <value>Finally, gathering rates are following:</value>
+  </data>
+  <data name="TitleG" xml:space="preserve">
+    <value>Gathering Rating</value>
+  </data>
+  <data name="Paragraph3_1" xml:space="preserve">
+    <value>Treatment rate (T) of species depends on length measurement inclusiveness (I), growth (g) and weight (w) models quality by following equation:</value>
+  </data>
+  <data name="TitleT" xml:space="preserve">
+    <value>Treatment Rating</value>
+  </data>
+  <data name="Column1_6" xml:space="preserve">
+    <value>Mesh frequency factor (F)</value>
+  </data>
+  <data name="Column1_2" xml:space="preserve">
+    <value>Gear type classes (meshes)</value>
+  </data>
+  <data name="Column1_5" xml:space="preserve">
+    <value>Mean mesh pace (P)</value>
+  </data>
+  <data name="Column1_4" xml:space="preserve">
+    <value>Range width rate (W)</value>
+  </data>
+  <data name="Column1_3" xml:space="preserve">
+    <value>Row width (max to min ratio)</value>
+  </data>
+  <data name="Paragraph1_2" xml:space="preserve">
+    <value>Finally, total rate is calculated as:</value>
+  </data>
+  <data name="Paragraph2_2" xml:space="preserve">
+    <value>Row width (W) is calculated as a remain of minimal to maximal mesh size ratio divided 0.9 (which is limit to that ratio):</value>
+  </data>
+  <data name="Column1_1" xml:space="preserve">
+    <value>Gear type</value>
+  </data>
+  <data name="Column1_7" xml:space="preserve">
+    <value>Gathering rate (G)</value>
+  </data>
+  <data name="Column2_1" xml:space="preserve">
+    <value>Inclusiveness (I)</value>
+  </data>
+  <data name="Column2_2" xml:space="preserve">
+    <value>Growth model</value>
+  </data>
+  <data name="Column2_3" xml:space="preserve">
+    <value>Weight model</value>
+  </data>
+  <data name="Column2_4" xml:space="preserve">
+    <value>Species rate (T)</value>
+  </data>
+  <data name="Column2_5" xml:space="preserve">
+    <value>Runouts fraction (b)</value>
+  </data>
+  <data name="Column2_6" xml:space="preserve">
+    <value>r&lt;sup&gt;2&lt;/sup&gt;</value>
+  </data>
+  <data name="Table1" xml:space="preserve">
+    <value>Gathering rate calculation</value>
+  </data>
+  <data name="Table2" xml:space="preserve">
+    <value>Treatment rate calculation</value>
+  </data>
+</root>

@@ -1,0 +1,3984 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxType.Items" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="comboBoxType.Items1" xml:space="preserve">
+    <value>Creecks, Streams and Rivers</value>
+  </data>
+  <data name="comboBoxType.Items2" xml:space="preserve">
+    <value>Lakes</value>
+  </data>
+  <data name="comboBoxType.Items3" xml:space="preserve">
+    <value>Dams and Ponds</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="comboBoxType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 62</value>
+  </data>
+  <data name="comboBoxType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="comboBoxType.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxType.Name" xml:space="preserve">
+    <value>comboBoxType</value>
+  </data>
+  <data name="&gt;&gt;comboBoxType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxType.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;comboBoxType.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="labelType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="labelType.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="&gt;&gt;labelType.Name" xml:space="preserve">
+    <value>labelType</value>
+  </data>
+  <data name="&gt;&gt;labelType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelType.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;labelType.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tabControlFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="outflowSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 150</value>
+  </data>
+  <data name="outflowSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 20</value>
+  </data>
+  <data name="outflowSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;outflowSelector.Name" xml:space="preserve">
+    <value>outflowSelector</value>
+  </data>
+  <data name="&gt;&gt;outflowSelector.Type" xml:space="preserve">
+    <value>Mayfly.Waters.Controls.WaterSelector, watinvent, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;outflowSelector.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;outflowSelector.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCumulative.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="checkBoxCumulative.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCumulative.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxCumulative.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 176</value>
+  </data>
+  <data name="checkBoxCumulative.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 17</value>
+  </data>
+  <data name="checkBoxCumulative.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkBoxCumulative.Text" xml:space="preserve">
+    <value>Including</value>
+  </data>
+  <data name="checkBoxCumulative.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCumulative.Name" xml:space="preserve">
+    <value>checkBoxCumulative</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCumulative.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCumulative.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCumulative.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 177</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Inflows of</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items" xml:space="preserve">
+    <value>all orders</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items1" xml:space="preserve">
+    <value>1st order</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items2" xml:space="preserve">
+    <value>2-го порядка</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items3" xml:space="preserve">
+    <value>3-го порядка</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 175</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="domainUpDownInflowOrder.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;domainUpDownInflowOrder.Name" xml:space="preserve">
+    <value>domainUpDownInflowOrder</value>
+  </data>
+  <data name="&gt;&gt;domainUpDownInflowOrder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DomainUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;domainUpDownInflowOrder.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;domainUpDownInflowOrder.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 109</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 15</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Drainage System Section</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxMouthToMouth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxMouthToMouth.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxMouthToMouth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 230</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="checkBoxMouthToMouth.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Text" xml:space="preserve">
+    <value>Inflow / Dam is</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMouthToMouth.Name" xml:space="preserve">
+    <value>checkBoxMouthToMouth</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMouthToMouth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMouthToMouth.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMouthToMouth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxBank.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxBank.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxBank.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxBank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 203</value>
+  </data>
+  <data name="checkBoxBank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 17</value>
+  </data>
+  <data name="checkBoxBank.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="checkBoxBank.Text" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBank.Name" xml:space="preserve">
+    <value>checkBoxBank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBank.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBank.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxOutflow.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxOutflow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxOutflow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 152</value>
+  </data>
+  <data name="checkBoxOutflow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="checkBoxOutflow.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxOutflow.Text" xml:space="preserve">
+    <value>Outflow</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOutflow.Name" xml:space="preserve">
+    <value>checkBoxOutflow</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOutflow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOutflow.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOutflow.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>340, 231</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>km from mouth</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="R61.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R61.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R61.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R61.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 231</value>
+  </data>
+  <data name="R61.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R61.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="R61.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R61.Name" xml:space="preserve">
+    <value>R61</value>
+  </data>
+  <data name="&gt;&gt;R61.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R61.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;R61.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="comboBoxBank.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxBank.Items" xml:space="preserve">
+    <value>Левый</value>
+  </data>
+  <data name="comboBoxBank.Items1" xml:space="preserve">
+    <value>Правый</value>
+  </data>
+  <data name="comboBoxBank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 201</value>
+  </data>
+  <data name="comboBoxBank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 21</value>
+  </data>
+  <data name="comboBoxBank.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Name" xml:space="preserve">
+    <value>comboBoxBank</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 231</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBoxFromMouth2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxFromMouth2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 228</value>
+  </data>
+  <data name="textBoxFromMouth2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxFromMouth2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxFromMouth2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth2.Name" xml:space="preserve">
+    <value>textBoxFromMouth2</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth2.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="textBoxFromMouth1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxFromMouth1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 228</value>
+  </data>
+  <data name="textBoxFromMouth1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxFromMouth1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="textBoxFromMouth1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth1.Name" xml:space="preserve">
+    <value>textBoxFromMouth1</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth1.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;textBoxFromMouth1.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 15</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>General Information</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="tabPageWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageWater.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 419</value>
+  </data>
+  <data name="tabPageWater.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageWater.Text" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="&gt;&gt;tabPageWater.Name" xml:space="preserve">
+    <value>tabPageWater</value>
+  </data>
+  <data name="&gt;&gt;tabPageWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageWater.Parent" xml:space="preserve">
+    <value>tabControlFilter</value>
+  </data>
+  <data name="&gt;&gt;tabPageWater.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 15</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Stream Hydrology</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxStreamWatershed1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamWatershed1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 89</value>
+  </data>
+  <data name="textBoxStreamWatershed1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamWatershed1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="textBoxStreamWatershed1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed1.Name" xml:space="preserve">
+    <value>textBoxStreamWatershed1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed1.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxStreamConsumption1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamConsumption1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 115</value>
+  </data>
+  <data name="textBoxStreamConsumption1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamConsumption1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="textBoxStreamConsumption1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption1.Name" xml:space="preserve">
+    <value>textBoxStreamConsumption1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption1.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxStreamConsumption2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamConsumption2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 115</value>
+  </data>
+  <data name="textBoxStreamConsumption2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamConsumption2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxStreamConsumption2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption2.Name" xml:space="preserve">
+    <value>textBoxStreamConsumption2</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption2.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamConsumption2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxStreamWatershed2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamWatershed2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 89</value>
+  </data>
+  <data name="textBoxStreamWatershed2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamWatershed2.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxStreamWatershed2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed2.Name" xml:space="preserve">
+    <value>textBoxStreamWatershed2</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed2.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamWatershed2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxStreamSlope.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStreamSlope.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxStreamSlope.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 169</value>
+  </data>
+  <data name="checkBoxStreamSlope.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
+  </data>
+  <data name="checkBoxStreamSlope.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="checkBoxStreamSlope.Text" xml:space="preserve">
+    <value>Average slope, ‰</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamSlope.Name" xml:space="preserve">
+    <value>checkBoxStreamSlope</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamSlope.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamSlope.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamSlope.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxStreamLength1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamLength1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 63</value>
+  </data>
+  <data name="textBoxStreamLength1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamLength1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxStreamLength1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength1.Name" xml:space="preserve">
+    <value>textBoxStreamLength1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength1.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxStreamVolume.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStreamVolume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxStreamVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 143</value>
+  </data>
+  <data name="checkBoxStreamVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 17</value>
+  </data>
+  <data name="checkBoxStreamVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="checkBoxStreamVolume.Text" xml:space="preserve">
+    <value>Annual runoff, km³</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamVolume.Name" xml:space="preserve">
+    <value>checkBoxStreamVolume</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamVolume.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamVolume.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="textBoxStreamLength2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamLength2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 63</value>
+  </data>
+  <data name="textBoxStreamLength2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamLength2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxStreamLength2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength2.Name" xml:space="preserve">
+    <value>textBoxStreamLength2</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength2.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamLength2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkBoxStreamConsumption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStreamConsumption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxStreamConsumption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 117</value>
+  </data>
+  <data name="checkBoxStreamConsumption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 17</value>
+  </data>
+  <data name="checkBoxStreamConsumption.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkBoxStreamConsumption.Text" xml:space="preserve">
+    <value>Annual consumption, m³ / sec</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamConsumption.Name" xml:space="preserve">
+    <value>checkBoxStreamConsumption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamConsumption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamConsumption.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamConsumption.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="R11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 66</value>
+  </data>
+  <data name="R11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="R11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="R11.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;R11.Name" xml:space="preserve">
+    <value>R11</value>
+  </data>
+  <data name="&gt;&gt;R11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R11.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R11.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="checkBoxStreamLength.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStreamLength.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxStreamLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="checkBoxStreamLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="checkBoxStreamLength.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxStreamLength.Text" xml:space="preserve">
+    <value>Length, km</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamLength.Name" xml:space="preserve">
+    <value>checkBoxStreamLength</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamLength.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamLength.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="R21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R21.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 92</value>
+  </data>
+  <data name="R21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="R21.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="R21.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;R21.Name" xml:space="preserve">
+    <value>R21</value>
+  </data>
+  <data name="&gt;&gt;R21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R21.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R21.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="textBoxStreamVolume2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamVolume2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 141</value>
+  </data>
+  <data name="textBoxStreamVolume2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamVolume2.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="textBoxStreamVolume2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume2.Name" xml:space="preserve">
+    <value>textBoxStreamVolume2</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume2.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume2.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="R52.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R52.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R52.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R52.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 170</value>
+  </data>
+  <data name="R52.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R52.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="R52.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R52.Name" xml:space="preserve">
+    <value>R52</value>
+  </data>
+  <data name="&gt;&gt;R52.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R52.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R52.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="R31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R31.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 118</value>
+  </data>
+  <data name="R31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="R31.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="R31.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;R31.Name" xml:space="preserve">
+    <value>R31</value>
+  </data>
+  <data name="&gt;&gt;R31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R31.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R31.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="R41.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R41.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R41.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R41.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 144</value>
+  </data>
+  <data name="R41.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="R41.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="R41.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;R41.Name" xml:space="preserve">
+    <value>R41</value>
+  </data>
+  <data name="&gt;&gt;R41.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R41.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R41.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="R42.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R42.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R42.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R42.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 144</value>
+  </data>
+  <data name="R42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R42.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="R42.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R42.Name" xml:space="preserve">
+    <value>R42</value>
+  </data>
+  <data name="&gt;&gt;R42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R42.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R42.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="R51.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R51.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R51.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R51.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 170</value>
+  </data>
+  <data name="R51.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="R51.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="R51.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;R51.Name" xml:space="preserve">
+    <value>R51</value>
+  </data>
+  <data name="&gt;&gt;R51.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R51.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R51.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="textBoxStreamSlope1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamSlope1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 167</value>
+  </data>
+  <data name="textBoxStreamSlope1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamSlope1.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="textBoxStreamSlope1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope1.Name" xml:space="preserve">
+    <value>textBoxStreamSlope1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope1.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope1.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="R32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R32.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 118</value>
+  </data>
+  <data name="R32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R32.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="R32.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R32.Name" xml:space="preserve">
+    <value>R32</value>
+  </data>
+  <data name="&gt;&gt;R32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R32.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R32.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="textBoxStreamSlope2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamSlope2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 167</value>
+  </data>
+  <data name="textBoxStreamSlope2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamSlope2.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="textBoxStreamSlope2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope2.Name" xml:space="preserve">
+    <value>textBoxStreamSlope2</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope2.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamSlope2.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="textBoxStreamVolume1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxStreamVolume1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 141</value>
+  </data>
+  <data name="textBoxStreamVolume1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxStreamVolume1.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="textBoxStreamVolume1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume1.Name" xml:space="preserve">
+    <value>textBoxStreamVolume1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume1.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;textBoxStreamVolume1.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="R12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 66</value>
+  </data>
+  <data name="R12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R12.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="R12.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R12.Name" xml:space="preserve">
+    <value>R12</value>
+  </data>
+  <data name="&gt;&gt;R12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R12.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R12.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="R22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="R22.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="R22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="R22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 92</value>
+  </data>
+  <data name="R22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="R22.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="R22.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;R22.Name" xml:space="preserve">
+    <value>R22</value>
+  </data>
+  <data name="&gt;&gt;R22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R22.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;R22.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="checkBoxStreamWatershed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxStreamWatershed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxStreamWatershed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 91</value>
+  </data>
+  <data name="checkBoxStreamWatershed.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="checkBoxStreamWatershed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="checkBoxStreamWatershed.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxStreamWatershed.Text" xml:space="preserve">
+    <value>Watershed area, km²</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamWatershed.Name" xml:space="preserve">
+    <value>checkBoxStreamWatershed</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamWatershed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamWatershed.Parent" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;checkBoxStreamWatershed.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="tabPageStream.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageStream.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageStream.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 419</value>
+  </data>
+  <data name="tabPageStream.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageStream.Text" xml:space="preserve">
+    <value>Stream</value>
+  </data>
+  <data name="&gt;&gt;tabPageStream.Name" xml:space="preserve">
+    <value>tabPageStream</value>
+  </data>
+  <data name="&gt;&gt;tabPageStream.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageStream.Parent" xml:space="preserve">
+    <value>tabControlFilter</value>
+  </data>
+  <data name="&gt;&gt;tabPageStream.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Lake Hydrology</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxLakeKind.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeKind.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeKind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="checkBoxLakeKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="checkBoxLakeKind.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxLakeKind.Text" xml:space="preserve">
+    <value>Lake kind</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeKind.Name" xml:space="preserve">
+    <value>checkBoxLakeKind</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeKind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeKind.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeKind.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxLakeWatershed1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeWatershed1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 115</value>
+  </data>
+  <data name="textBoxLakeWatershed1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeWatershed1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxLakeWatershed1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed1.Name" xml:space="preserve">
+    <value>textBoxLakeWatershed1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxLakeAltitude1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeAltitude1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 89</value>
+  </data>
+  <data name="textBoxLakeAltitude1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeAltitude1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxLakeAltitude1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude1.Name" xml:space="preserve">
+    <value>textBoxLakeAltitude1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxLakeArea1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeArea1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 141</value>
+  </data>
+  <data name="textBoxLakeArea1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeArea1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxLakeArea1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea1.Name" xml:space="preserve">
+    <value>textBoxLakeArea1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxLakeWatershed2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeWatershed2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 115</value>
+  </data>
+  <data name="textBoxLakeWatershed2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeWatershed2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="textBoxLakeWatershed2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed2.Name" xml:space="preserve">
+    <value>textBoxLakeWatershed2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeWatershed2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxLakeAltitude2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeAltitude2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 89</value>
+  </data>
+  <data name="textBoxLakeAltitude2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeAltitude2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="textBoxLakeAltitude2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude2.Name" xml:space="preserve">
+    <value>textBoxLakeAltitude2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeAltitude2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxLakeArea2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeArea2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 141</value>
+  </data>
+  <data name="textBoxLakeArea2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeArea2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="textBoxLakeArea2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea2.Name" xml:space="preserve">
+    <value>textBoxLakeArea2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeArea2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="textBoxLakeDepthMax1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeDepthMax1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 193</value>
+  </data>
+  <data name="textBoxLakeDepthMax1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeDepthMax1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxLakeDepthMax1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax1.Name" xml:space="preserve">
+    <value>textBoxLakeDepthMax1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 118</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxLakeDepthMax2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeDepthMax2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 193</value>
+  </data>
+  <data name="textBoxLakeDepthMax2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeDepthMax2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="textBoxLakeDepthMax2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax2.Name" xml:space="preserve">
+    <value>textBoxLakeDepthMax2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMax2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 92</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="comboBoxLakeKind.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxLakeKind.Items" xml:space="preserve">
+    <value>Drainage bonded</value>
+  </data>
+  <data name="comboBoxLakeKind.Items1" xml:space="preserve">
+    <value>Inland</value>
+  </data>
+  <data name="comboBoxLakeKind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 63</value>
+  </data>
+  <data name="comboBoxLakeKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 21</value>
+  </data>
+  <data name="comboBoxLakeKind.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLakeKind.Name" xml:space="preserve">
+    <value>comboBoxLakeKind</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLakeKind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLakeKind.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;comboBoxLakeKind.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="L11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 144</value>
+  </data>
+  <data name="L11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="L11.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="L11.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;L11.Name" xml:space="preserve">
+    <value>L11</value>
+  </data>
+  <data name="&gt;&gt;L11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L11.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L11.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="L31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L31.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 196</value>
+  </data>
+  <data name="L31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="L31.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="L31.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;L31.Name" xml:space="preserve">
+    <value>L31</value>
+  </data>
+  <data name="&gt;&gt;L31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L31.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L31.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 221</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.Text" xml:space="preserve">
+    <value>Mean depth, m</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMid.Name" xml:space="preserve">
+    <value>checkBoxLakeDepthMid</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMid.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMid.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="textBoxLakeVolume2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeVolume2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 167</value>
+  </data>
+  <data name="textBoxLakeVolume2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeVolume2.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="textBoxLakeVolume2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume2.Name" xml:space="preserve">
+    <value>textBoxLakeVolume2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume2.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="checkBoxLakeVolume.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeVolume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 169</value>
+  </data>
+  <data name="checkBoxLakeVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="checkBoxLakeVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="checkBoxLakeVolume.Text" xml:space="preserve">
+    <value>Body volume, km³</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeVolume.Name" xml:space="preserve">
+    <value>checkBoxLakeVolume</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeVolume.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeVolume.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="textBoxLakeDepthMid2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeDepthMid2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 219</value>
+  </data>
+  <data name="textBoxLakeDepthMid2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeDepthMid2.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="textBoxLakeDepthMid2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid2.Name" xml:space="preserve">
+    <value>textBoxLakeDepthMid2</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid2.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid2.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="L21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L21.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 170</value>
+  </data>
+  <data name="L21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="L21.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="L21.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;L21.Name" xml:space="preserve">
+    <value>L21</value>
+  </data>
+  <data name="&gt;&gt;L21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L21.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L21.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="checkBoxLakeWatershed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeWatershed.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeWatershed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 117</value>
+  </data>
+  <data name="checkBoxLakeWatershed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="checkBoxLakeWatershed.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxLakeWatershed.Text" xml:space="preserve">
+    <value>Watershed area, km²</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeWatershed.Name" xml:space="preserve">
+    <value>checkBoxLakeWatershed</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeWatershed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeWatershed.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeWatershed.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 195</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.Text" xml:space="preserve">
+    <value>Maximum depth, m</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMax.Name" xml:space="preserve">
+    <value>checkBoxLakeDepthMax</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMax.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeDepthMax.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="checkBoxLakeAltitude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeAltitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeAltitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 91</value>
+  </data>
+  <data name="checkBoxLakeAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 17</value>
+  </data>
+  <data name="checkBoxLakeAltitude.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxLakeAltitude.Text" xml:space="preserve">
+    <value>Altitude, m (above sea)</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeAltitude.Name" xml:space="preserve">
+    <value>checkBoxLakeAltitude</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeAltitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeAltitude.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeAltitude.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 118</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="L41.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L41.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L41.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L41.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 222</value>
+  </data>
+  <data name="L41.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="L41.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="L41.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;L41.Name" xml:space="preserve">
+    <value>L41</value>
+  </data>
+  <data name="&gt;&gt;L41.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L41.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L41.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 92</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="checkBoxLakeArea.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxLakeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxLakeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 143</value>
+  </data>
+  <data name="checkBoxLakeArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="checkBoxLakeArea.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxLakeArea.Text" xml:space="preserve">
+    <value>Surface area, km²</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeArea.Name" xml:space="preserve">
+    <value>checkBoxLakeArea</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeArea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeArea.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLakeArea.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="L12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 144</value>
+  </data>
+  <data name="L12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="L12.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="L12.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;L12.Name" xml:space="preserve">
+    <value>L12</value>
+  </data>
+  <data name="&gt;&gt;L12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L12.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L12.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="L32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L32.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 196</value>
+  </data>
+  <data name="L32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="L32.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="L32.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;L32.Name" xml:space="preserve">
+    <value>L32</value>
+  </data>
+  <data name="&gt;&gt;L32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L32.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L32.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="textBoxLakeVolume1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeVolume1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 167</value>
+  </data>
+  <data name="textBoxLakeVolume1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeVolume1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxLakeVolume1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume1.Name" xml:space="preserve">
+    <value>textBoxLakeVolume1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeVolume1.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="L42.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L42.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L42.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L42.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 222</value>
+  </data>
+  <data name="L42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="L42.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="L42.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;L42.Name" xml:space="preserve">
+    <value>L42</value>
+  </data>
+  <data name="&gt;&gt;L42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L42.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L42.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="textBoxLakeDepthMid1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLakeDepthMid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 219</value>
+  </data>
+  <data name="textBoxLakeDepthMid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxLakeDepthMid1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="textBoxLakeDepthMid1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid1.Name" xml:space="preserve">
+    <value>textBoxLakeDepthMid1</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid1.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;textBoxLakeDepthMid1.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="L22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="L22.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="L22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="L22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 170</value>
+  </data>
+  <data name="L22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="L22.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="L22.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;L22.Name" xml:space="preserve">
+    <value>L22</value>
+  </data>
+  <data name="&gt;&gt;L22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;L22.Parent" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;L22.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="tabPageLake.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageLake.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageLake.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 419</value>
+  </data>
+  <data name="tabPageLake.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageLake.Text" xml:space="preserve">
+    <value>Lake</value>
+  </data>
+  <data name="&gt;&gt;tabPageLake.Name" xml:space="preserve">
+    <value>tabPageLake</value>
+  </data>
+  <data name="&gt;&gt;tabPageLake.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLake.Parent" xml:space="preserve">
+    <value>tabControlFilter</value>
+  </data>
+  <data name="&gt;&gt;tabPageLake.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxTankKind.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankKind.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankKind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="checkBoxTankKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 17</value>
+  </data>
+  <data name="checkBoxTankKind.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="checkBoxTankKind.Text" xml:space="preserve">
+    <value>Reservoir kind</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankKind.Name" xml:space="preserve">
+    <value>checkBoxTankKind</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankKind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankKind.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankKind.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBoxTankKind.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxTankKind.Items" xml:space="preserve">
+    <value>Artificial Lake</value>
+  </data>
+  <data name="comboBoxTankKind.Items1" xml:space="preserve">
+    <value>River Dam</value>
+  </data>
+  <data name="comboBoxTankKind.Items2" xml:space="preserve">
+    <value>Pond</value>
+  </data>
+  <data name="comboBoxTankKind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 63</value>
+  </data>
+  <data name="comboBoxTankKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 21</value>
+  </data>
+  <data name="comboBoxTankKind.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTankKind.Name" xml:space="preserve">
+    <value>comboBoxTankKind</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTankKind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTankKind.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTankKind.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 15</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Reservoir Hydrology</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxTankArea1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankArea1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 141</value>
+  </data>
+  <data name="textBoxTankArea1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankArea1.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="textBoxTankArea1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea1.Name" xml:space="preserve">
+    <value>textBoxTankArea1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxTankVolume1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankVolume1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 167</value>
+  </data>
+  <data name="textBoxTankVolume1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankVolume1.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="textBoxTankVolume1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume1.Name" xml:space="preserve">
+    <value>textBoxTankVolume1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxTankVolume2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankVolume2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 167</value>
+  </data>
+  <data name="textBoxTankVolume2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankVolume2.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="textBoxTankVolume2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume2.Name" xml:space="preserve">
+    <value>textBoxTankVolume2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankVolume2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxTankArea2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankArea2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 141</value>
+  </data>
+  <data name="textBoxTankArea2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankArea2.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBoxTankArea2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea2.Name" xml:space="preserve">
+    <value>textBoxTankArea2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankArea2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBoxTankLength1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankLength1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 89</value>
+  </data>
+  <data name="textBoxTankLength1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankLength1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxTankLength1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength1.Name" xml:space="preserve">
+    <value>textBoxTankLength1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="checkBoxTankCycling.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankCycling.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankCycling.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 273</value>
+  </data>
+  <data name="checkBoxTankCycling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="checkBoxTankCycling.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="checkBoxTankCycling.Text" xml:space="preserve">
+    <value>Cycling value</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankCycling.Name" xml:space="preserve">
+    <value>checkBoxTankCycling</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankCycling.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankCycling.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankCycling.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkBoxTankFlowage.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankFlowage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankFlowage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 247</value>
+  </data>
+  <data name="checkBoxTankFlowage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
+  </data>
+  <data name="checkBoxTankFlowage.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="checkBoxTankFlowage.Text" xml:space="preserve">
+    <value>Flowage value</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankFlowage.Name" xml:space="preserve">
+    <value>checkBoxTankFlowage</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankFlowage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankFlowage.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankFlowage.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxTankAltitude1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankAltitude1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 115</value>
+  </data>
+  <data name="textBoxTankAltitude1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankAltitude1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="textBoxTankAltitude1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude1.Name" xml:space="preserve">
+    <value>textBoxTankAltitude1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="checkBoxTankDepthMid.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankDepthMid.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankDepthMid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 221</value>
+  </data>
+  <data name="checkBoxTankDepthMid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="checkBoxTankDepthMid.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="checkBoxTankDepthMid.Text" xml:space="preserve">
+    <value>Mean depth, m</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMid.Name" xml:space="preserve">
+    <value>checkBoxTankDepthMid</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMid.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMid.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBoxTankLength2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankLength2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 89</value>
+  </data>
+  <data name="textBoxTankLength2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankLength2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxTankLength2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength2.Name" xml:space="preserve">
+    <value>textBoxTankLength2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankLength2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="checkBoxTankDepthMax.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankDepthMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankDepthMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 195</value>
+  </data>
+  <data name="checkBoxTankDepthMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 17</value>
+  </data>
+  <data name="checkBoxTankDepthMax.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="checkBoxTankDepthMax.Text" xml:space="preserve">
+    <value>Maximum depth, m</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMax.Name" xml:space="preserve">
+    <value>checkBoxTankDepthMax</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMax.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankDepthMax.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="T11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T11.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 92</value>
+  </data>
+  <data name="T11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T11.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="T11.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T11.Name" xml:space="preserve">
+    <value>T11</value>
+  </data>
+  <data name="&gt;&gt;T11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T11.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T11.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxTankAltitude2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankAltitude2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 115</value>
+  </data>
+  <data name="textBoxTankAltitude2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankAltitude2.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxTankAltitude2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude2.Name" xml:space="preserve">
+    <value>textBoxTankAltitude2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankAltitude2.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="checkBoxTankVolume.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankVolume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankVolume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 169</value>
+  </data>
+  <data name="checkBoxTankVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 17</value>
+  </data>
+  <data name="checkBoxTankVolume.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="checkBoxTankVolume.Text" xml:space="preserve">
+    <value>Body volume at normal level,  km³</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankVolume.Name" xml:space="preserve">
+    <value>checkBoxTankVolume</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankVolume.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankVolume.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="T31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T31.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 144</value>
+  </data>
+  <data name="T31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T31.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="T31.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T31.Name" xml:space="preserve">
+    <value>T31</value>
+  </data>
+  <data name="&gt;&gt;T31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T31.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T31.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="checkBoxTankArea.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 143</value>
+  </data>
+  <data name="checkBoxTankArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 17</value>
+  </data>
+  <data name="checkBoxTankArea.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="checkBoxTankArea.Text" xml:space="preserve">
+    <value>Surface area at normal level, km²</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankArea.Name" xml:space="preserve">
+    <value>checkBoxTankArea</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankArea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankArea.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankArea.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="T21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T21.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 118</value>
+  </data>
+  <data name="T21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T21.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="T21.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T21.Name" xml:space="preserve">
+    <value>T21</value>
+  </data>
+  <data name="&gt;&gt;T21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T21.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T21.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="checkBoxTankAltitude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankAltitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankAltitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 117</value>
+  </data>
+  <data name="checkBoxTankAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
+  </data>
+  <data name="checkBoxTankAltitude.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxTankAltitude.Text" xml:space="preserve">
+    <value>Normal water level, m (above sea)</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankAltitude.Name" xml:space="preserve">
+    <value>checkBoxTankAltitude</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankAltitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankAltitude.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankAltitude.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="textBoxTankDepthMax2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankDepthMax2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 193</value>
+  </data>
+  <data name="textBoxTankDepthMax2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankDepthMax2.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="textBoxTankDepthMax2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax2.Name" xml:space="preserve">
+    <value>textBoxTankDepthMax2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax2.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="checkBoxTankLength.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxTankLength.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxTankLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 91</value>
+  </data>
+  <data name="checkBoxTankLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="checkBoxTankLength.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxTankLength.Text" xml:space="preserve">
+    <value>Length, km</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankLength.Name" xml:space="preserve">
+    <value>checkBoxTankLength</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankLength.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;checkBoxTankLength.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="textBoxTankDepthMid2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankDepthMid2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 219</value>
+  </data>
+  <data name="textBoxTankDepthMid2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankDepthMid2.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="textBoxTankDepthMid2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid2.Name" xml:space="preserve">
+    <value>textBoxTankDepthMid2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid2.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="T41.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T41.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T41.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T41.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 170</value>
+  </data>
+  <data name="T41.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T41.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="T41.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T41.Name" xml:space="preserve">
+    <value>T41</value>
+  </data>
+  <data name="&gt;&gt;T41.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T41.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T41.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="T51.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T51.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T51.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T51.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 196</value>
+  </data>
+  <data name="T51.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T51.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="T51.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T51.Name" xml:space="preserve">
+    <value>T51</value>
+  </data>
+  <data name="&gt;&gt;T51.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T51.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T51.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="T82.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T82.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T82.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T82.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 274</value>
+  </data>
+  <data name="T82.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T82.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="T82.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T82.Name" xml:space="preserve">
+    <value>T82</value>
+  </data>
+  <data name="&gt;&gt;T82.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T82.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T82.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="T61.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T61.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T61.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T61.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 222</value>
+  </data>
+  <data name="T61.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T61.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="T61.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T61.Name" xml:space="preserve">
+    <value>T61</value>
+  </data>
+  <data name="&gt;&gt;T61.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T61.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T61.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="T72.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T72.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T72.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T72.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 248</value>
+  </data>
+  <data name="T72.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T72.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="T72.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T72.Name" xml:space="preserve">
+    <value>T72</value>
+  </data>
+  <data name="&gt;&gt;T72.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T72.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T72.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="T71.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T71.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T71.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T71.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 248</value>
+  </data>
+  <data name="T71.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T71.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="T71.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T71.Name" xml:space="preserve">
+    <value>T71</value>
+  </data>
+  <data name="&gt;&gt;T71.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T71.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T71.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="T62.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T62.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T62.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T62.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 222</value>
+  </data>
+  <data name="T62.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T62.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="T62.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T62.Name" xml:space="preserve">
+    <value>T62</value>
+  </data>
+  <data name="&gt;&gt;T62.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T62.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T62.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T52.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T52.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T52.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T52.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 196</value>
+  </data>
+  <data name="T52.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T52.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="T52.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T52.Name" xml:space="preserve">
+    <value>T52</value>
+  </data>
+  <data name="&gt;&gt;T52.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T52.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T52.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="T81.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T81.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T81.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T81.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 274</value>
+  </data>
+  <data name="T81.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="T81.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="T81.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="&gt;&gt;T81.Name" xml:space="preserve">
+    <value>T81</value>
+  </data>
+  <data name="&gt;&gt;T81.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T81.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T81.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="textBoxTankCycling1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankCycling1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 271</value>
+  </data>
+  <data name="textBoxTankCycling1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankCycling1.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="textBoxTankCycling1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling1.Name" xml:space="preserve">
+    <value>textBoxTankCycling1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling1.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="textBoxTankFlowage2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankFlowage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 245</value>
+  </data>
+  <data name="textBoxTankFlowage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankFlowage2.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="textBoxTankFlowage2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage2.Name" xml:space="preserve">
+    <value>textBoxTankFlowage2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage2.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="textBoxTankFlowage1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankFlowage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 245</value>
+  </data>
+  <data name="textBoxTankFlowage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankFlowage1.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="textBoxTankFlowage1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage1.Name" xml:space="preserve">
+    <value>textBoxTankFlowage1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankFlowage1.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="textBoxTankCycling2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankCycling2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 271</value>
+  </data>
+  <data name="textBoxTankCycling2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankCycling2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="textBoxTankCycling2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling2.Name" xml:space="preserve">
+    <value>textBoxTankCycling2</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling2.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankCycling2.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="T42.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T42.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T42.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T42.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 170</value>
+  </data>
+  <data name="T42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T42.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="T42.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T42.Name" xml:space="preserve">
+    <value>T42</value>
+  </data>
+  <data name="&gt;&gt;T42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T42.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T42.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="T12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T12.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 92</value>
+  </data>
+  <data name="T12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T12.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="T12.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T12.Name" xml:space="preserve">
+    <value>T12</value>
+  </data>
+  <data name="&gt;&gt;T12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T12.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T12.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="textBoxTankDepthMid1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankDepthMid1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 219</value>
+  </data>
+  <data name="textBoxTankDepthMid1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankDepthMid1.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="textBoxTankDepthMid1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid1.Name" xml:space="preserve">
+    <value>textBoxTankDepthMid1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMid1.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="textBoxTankDepthMax1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxTankDepthMax1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 193</value>
+  </data>
+  <data name="textBoxTankDepthMax1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxTankDepthMax1.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="textBoxTankDepthMax1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax1.Name" xml:space="preserve">
+    <value>textBoxTankDepthMax1</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax1.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;textBoxTankDepthMax1.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="T22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T22.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 118</value>
+  </data>
+  <data name="T22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T22.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="T22.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T22.Name" xml:space="preserve">
+    <value>T22</value>
+  </data>
+  <data name="&gt;&gt;T22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T22.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T22.ZOrder" xml:space="preserve">
+    <value>41</value>
+  </data>
+  <data name="T32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="T32.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="T32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="T32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 144</value>
+  </data>
+  <data name="T32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 13</value>
+  </data>
+  <data name="T32.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="T32.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;T32.Name" xml:space="preserve">
+    <value>T32</value>
+  </data>
+  <data name="&gt;&gt;T32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T32.Parent" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;T32.ZOrder" xml:space="preserve">
+    <value>42</value>
+  </data>
+  <data name="tabPageTank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageTank.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageTank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 419</value>
+  </data>
+  <data name="tabPageTank.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageTank.Text" xml:space="preserve">
+    <value>Reservoir</value>
+  </data>
+  <data name="&gt;&gt;tabPageTank.Name" xml:space="preserve">
+    <value>tabPageTank</value>
+  </data>
+  <data name="&gt;&gt;tabPageTank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageTank.Parent" xml:space="preserve">
+    <value>tabControlFilter</value>
+  </data>
+  <data name="&gt;&gt;tabPageTank.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControlFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="tabControlFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 445</value>
+  </data>
+  <data name="tabControlFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControlFilter.Name" xml:space="preserve">
+    <value>tabControlFilter</value>
+  </data>
+  <data name="&gt;&gt;tabControlFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlFilter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlFilter.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 466</value>
+  </data>
+  <data name="buttonApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonApply.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Name" xml:space="preserve">
+    <value>buttonApply</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonApply.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>407, 466</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxAutoApply.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxAutoApply.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 470</value>
+  </data>
+  <data name="checkBoxAutoApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="checkBoxAutoApply.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxAutoApply.Text" xml:space="preserve">
+    <value>Apply values automatically</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoApply.Name" xml:space="preserve">
+    <value>checkBoxAutoApply</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoApply.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAutoApply.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>64</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>494, 501</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Water objects filter</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SpeciesKey" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SpeciesKey" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SpeciesKey" msprop:Generator_UserDSName="SpeciesKey">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Species" msprop:Generator_TableClassName="SpeciesDataTable" msprop:Generator_TableVarName="tableSpecies" msprop:Generator_TablePropName="Species" msprop:Generator_RowDeletingName="SpeciesRowDeleting" msprop:Generator_RowChangingName="SpeciesRowChanging" msprop:Generator_RowEvHandlerName="SpeciesRowChangeEventHandler" msprop:Generator_RowDeletedName="SpeciesRowDeleted" msprop:Generator_UserTableName="Species" msprop:Generator_RowChangedName="SpeciesRowChanged" msprop:Generator_RowEvArgName="SpeciesRowChangeEvent" msprop:Generator_RowClassName="SpeciesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Species" msprop:Generator_ColumnVarNameInTable="columnSpecies" msprop:Generator_ColumnPropNameInRow="Species" msprop:Generator_ColumnPropNameInTable="SpeciesColumn" msprop:Generator_UserColumnName="Species" type="xs:string" minOccurs="0" />
+              <xs:element name="Local" msprop:Generator_ColumnVarNameInTable="columnLocal" msprop:Generator_ColumnPropNameInRow="Local" msprop:Generator_ColumnPropNameInTable="LocalColumn" msprop:Generator_UserColumnName="Local" type="xs:string" minOccurs="0" />
+              <xs:element name="Reference" msprop:Generator_ColumnVarNameInTable="columnReference" msprop:Generator_ColumnPropNameInRow="Reference" msprop:Generator_ColumnPropNameInTable="ReferenceColumn" msprop:Generator_UserColumnName="Reference" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="PhilogeneticRate" msprop:Generator_ColumnVarNameInTable="columnPhilogeneticRate" msprop:Generator_ColumnPropNameInRow="PhilogeneticRate" msprop:Generator_ColumnPropNameInTable="PhilogeneticRateColumn" msprop:Generator_UserColumnName="PhilogeneticRate" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Taxa" msprop:Generator_TableClassName="TaxaDataTable" msprop:Generator_TableVarName="tableTaxa" msprop:Generator_TablePropName="Taxa" msprop:Generator_RowDeletingName="TaxaRowDeleting" msprop:Generator_RowChangingName="TaxaRowChanging" msprop:Generator_RowEvHandlerName="TaxaRowChangeEventHandler" msprop:Generator_RowDeletedName="TaxaRowDeleted" msprop:Generator_UserTableName="Taxa" msprop:Generator_RowChangedName="TaxaRowChanged" msprop:Generator_RowEvArgName="TaxaRowChangeEvent" msprop:Generator_RowClassName="TaxaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="BasID" msprop:Generator_ColumnVarNameInTable="columnBasID" msprop:Generator_ColumnPropNameInRow="BasID" msprop:Generator_ColumnPropNameInTable="BasIDColumn" msprop:Generator_UserColumnName="BasID" type="xs:int" />
+              <xs:element name="Taxon" msprop:Generator_ColumnVarNameInTable="columnTaxon" msprop:Generator_ColumnPropNameInRow="Taxon" msprop:Generator_ColumnPropNameInTable="TaxonColumn" msprop:Generator_UserColumnName="Taxon" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Base" msprop:Generator_TableClassName="BaseDataTable" msprop:Generator_TableVarName="tableBase" msprop:Generator_TablePropName="Base" msprop:Generator_RowDeletingName="BaseRowDeleting" msprop:Generator_RowChangingName="BaseRowChanging" msprop:Generator_RowEvHandlerName="BaseRowChangeEventHandler" msprop:Generator_RowDeletedName="BaseRowDeleted" msprop:Generator_UserTableName="Base" msprop:Generator_RowChangedName="BaseRowChanged" msprop:Generator_RowEvArgName="BaseRowChangeEvent" msprop:Generator_RowClassName="BaseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Base" msprop:Generator_ColumnVarNameInTable="columnBase" msprop:Generator_ColumnPropNameInRow="Base" msprop:Generator_ColumnPropNameInTable="BaseColumn" msprop:Generator_UserColumnName="Base" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rep" msprop:Generator_TableClassName="RepDataTable" msprop:Generator_TableVarName="tableRep" msprop:Generator_TablePropName="Rep" msprop:Generator_RowDeletingName="RepRowDeleting" msprop:Generator_RowChangingName="RepRowChanging" msprop:Generator_RowEvHandlerName="RepRowChangeEventHandler" msprop:Generator_RowDeletedName="RepRowDeleted" msprop:Generator_UserTableName="Rep" msprop:Generator_RowChangedName="RepRowChanged" msprop:Generator_RowEvArgName="RepRowChangeEvent" msprop:Generator_RowClassName="RepRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TaxID" msprop:Generator_ColumnVarNameInTable="columnTaxID" msprop:Generator_ColumnPropNameInRow="TaxID" msprop:Generator_ColumnPropNameInTable="TaxIDColumn" msprop:Generator_UserColumnName="TaxID" type="xs:int" />
+              <xs:element name="SpcID" msprop:Generator_ColumnVarNameInTable="columnSpcID" msprop:Generator_ColumnPropNameInRow="SpcID" msprop:Generator_ColumnPropNameInTable="SpcIDColumn" msprop:Generator_UserColumnName="SpcID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Step" msprop:Generator_TableClassName="StepDataTable" msprop:Generator_TableVarName="tableStep" msprop:Generator_TablePropName="Step" msprop:Generator_RowDeletingName="StepRowDeleting" msprop:Generator_RowChangingName="StepRowChanging" msprop:Generator_RowEvHandlerName="StepRowChangeEventHandler" msprop:Generator_RowDeletedName="StepRowDeleted" msprop:Generator_UserTableName="Step" msprop:Generator_RowChangedName="StepRowChanged" msprop:Generator_RowEvArgName="StepRowChangeEvent" msprop:Generator_RowClassName="StepRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Entry" msprop:Generator_ColumnVarNameInTable="columnEntry" msprop:Generator_ColumnPropNameInRow="Entry" msprop:Generator_ColumnPropNameInTable="EntryColumn" msprop:Generator_UserColumnName="Entry" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Feature" msprop:Generator_TableClassName="FeatureDataTable" msprop:Generator_TableVarName="tableFeature" msprop:Generator_TablePropName="Feature" msprop:Generator_RowDeletingName="FeatureRowDeleting" msprop:Generator_RowChangingName="FeatureRowChanging" msprop:Generator_RowEvHandlerName="FeatureRowChangeEventHandler" msprop:Generator_RowDeletedName="FeatureRowDeleted" msprop:Generator_UserTableName="Feature" msprop:Generator_RowChangedName="FeatureRowChanged" msprop:Generator_RowEvArgName="FeatureRowChangeEvent" msprop:Generator_RowClassName="FeatureRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="StpID" msdata:Caption="DefinitionID" msprop:Generator_ColumnVarNameInTable="columnStpID" msprop:Generator_ColumnPropNameInRow="StpID" msprop:Generator_ColumnPropNameInTable="StpIDColumn" msprop:Generator_UserColumnName="StpID" type="xs:int" minOccurs="0" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="State" msprop:Generator_TableClassName="StateDataTable" msprop:Generator_TableVarName="tableState" msprop:Generator_TablePropName="State" msprop:Generator_RowDeletingName="StateRowDeleting" msprop:Generator_RowChangingName="StateRowChanging" msprop:Generator_RowEvHandlerName="StateRowChangeEventHandler" msprop:Generator_RowDeletedName="StateRowDeleted" msprop:Generator_UserTableName="State" msprop:Generator_RowChangedName="StateRowChanged" msprop:Generator_RowEvArgName="StateRowChangeEvent" msprop:Generator_RowClassName="StateRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="FeaID" msdata:Caption="FeatureID" msprop:Generator_ColumnVarNameInTable="columnFeaID" msprop:Generator_ColumnPropNameInRow="FeaID" msprop:Generator_ColumnPropNameInTable="FeaIDColumn" msprop:Generator_UserColumnName="FeaID" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Goto" msprop:Generator_ColumnVarNameInTable="columnGoto" msprop:Generator_ColumnPropNameInRow="Goto" msprop:Generator_ColumnPropNameInTable="GotoColumn" msprop:Generator_UserColumnName="Goto" type="xs:int" minOccurs="0" />
+              <xs:element name="TaxID" msprop:Generator_ColumnVarNameInTable="columnTaxID" msprop:Generator_ColumnPropNameInRow="TaxID" msprop:Generator_ColumnPropNameInTable="TaxIDColumn" msprop:Generator_UserColumnName="TaxID" type="xs:int" minOccurs="0" />
+              <xs:element name="SpcID" msprop:Generator_ColumnVarNameInTable="columnSpcID" msprop:Generator_ColumnPropNameInRow="SpcID" msprop:Generator_ColumnPropNameInTable="SpcIDColumn" msprop:Generator_UserColumnName="SpcID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Image" msprop:Generator_TableClassName="ImageDataTable" msprop:Generator_TableVarName="tableImage" msprop:Generator_RowChangedName="ImageRowChanged" msprop:Generator_TablePropName="Image" msprop:Generator_RowDeletingName="ImageRowDeleting" msprop:Generator_RowChangingName="ImageRowChanging" msprop:Generator_RowEvHandlerName="ImageRowChangeEventHandler" msprop:Generator_RowDeletedName="ImageRowDeleted" msprop:Generator_RowClassName="ImageRow" msprop:Generator_UserTableName="Image" msprop:Generator_RowEvArgName="ImageRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Label" msprop:Generator_ColumnVarNameInTable="columnLabel" msprop:Generator_ColumnPropNameInRow="Label" msprop:Generator_ColumnPropNameInTable="LabelColumn" msprop:Generator_UserColumnName="Label" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Bitmap" msprop:Generator_ColumnVarNameInTable="columnBitmap" msprop:Generator_ColumnPropNameInRow="Bitmap" msprop:Generator_ColumnPropNameInTable="BitmapColumn" msprop:Generator_UserColumnName="Bitmap" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Svg" msprop:Generator_ColumnVarNameInTable="columnSvg" msprop:Generator_ColumnPropNameInRow="Svg" msprop:Generator_ColumnPropNameInTable="SvgColumn" msprop:Generator_UserColumnName="Svg" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Illustration" msprop:Generator_TableClassName="IllustrationDataTable" msprop:Generator_TableVarName="tableIllustration" msprop:Generator_TablePropName="Illustration" msprop:Generator_RowDeletingName="IllustrationRowDeleting" msprop:Generator_RowChangingName="IllustrationRowChanging" msprop:Generator_RowEvHandlerName="IllustrationRowChangeEventHandler" msprop:Generator_RowDeletedName="IllustrationRowDeleted" msprop:Generator_UserTableName="Illustration" msprop:Generator_RowChangedName="IllustrationRowChanged" msprop:Generator_RowEvArgName="IllustrationRowChangeEvent" msprop:Generator_RowClassName="IllustrationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SttID" msprop:Generator_ColumnVarNameInTable="columnSttID" msprop:Generator_ColumnPropNameInRow="SttID" msprop:Generator_ColumnPropNameInTable="SttIDColumn" msprop:Generator_UserColumnName="SttID" type="xs:int" minOccurs="0" />
+              <xs:element name="FeaID" msprop:Generator_ColumnVarNameInTable="columnFeaID" msprop:Generator_ColumnPropNameInRow="FeaID" msprop:Generator_ColumnPropNameInTable="FeaIDColumn" msprop:Generator_UserColumnName="FeaID" type="xs:int" minOccurs="0" />
+              <xs:element name="ImgID" msprop:Generator_ColumnVarNameInTable="columnImgID" msprop:Generator_ColumnPropNameInRow="ImgID" msprop:Generator_ColumnPropNameInTable="ImgIDColumn" msprop:Generator_UserColumnName="ImgID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Synonymy" msprop:Generator_TableClassName="SynonymyDataTable" msprop:Generator_TableVarName="tableSynonymy" msprop:Generator_RowChangedName="SynonymyRowChanged" msprop:Generator_TablePropName="Synonymy" msprop:Generator_RowDeletingName="SynonymyRowDeleting" msprop:Generator_RowChangingName="SynonymyRowChanging" msprop:Generator_RowEvHandlerName="SynonymyRowChangeEventHandler" msprop:Generator_RowDeletedName="SynonymyRowDeleted" msprop:Generator_RowClassName="SynonymyRow" msprop:Generator_UserTableName="Synonymy" msprop:Generator_RowEvArgName="SynonymyRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MajID" msprop:Generator_ColumnVarNameInTable="columnMajID" msprop:Generator_ColumnPropNameInRow="MajID" msprop:Generator_ColumnPropNameInTable="MajIDColumn" msprop:Generator_UserColumnName="MajID" type="xs:int" />
+              <xs:element name="MinID" msprop:Generator_ColumnVarNameInTable="columnMinID" msprop:Generator_ColumnPropNameInRow="MinID" msprop:Generator_ColumnPropNameInTable="MinIDColumn" msprop:Generator_UserColumnName="MinID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Species" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Taxa_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Taxa" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Base_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Base" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Step_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Step" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Feature_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Feature" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="State_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//State" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Image_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Image" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Synonymy_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Synonymy" />
+      <xs:field xpath="MajID" />
+      <xs:field xpath="MinID" />
+    </xs:unique>
+    <xs:keyref name="FK_Species_Synonymy" refer="Constraint1" msprop:rel_Generator_UserChildTable="Synonymy" msprop:rel_Generator_ChildPropName="GetSynonymyRowsByFK_Species_Synonymy" msprop:rel_Generator_UserRelationName="FK_Species_Synonymy" msprop:rel_Generator_RelationVarName="relationFK_Species_Synonymy" msprop:rel_Generator_UserParentTable="Species" msprop:rel_Generator_ParentPropName="SpeciesRowByFK_Species_Synonymy">
+      <xs:selector xpath=".//Synonymy" />
+      <xs:field xpath="MinID" />
+    </xs:keyref>
+    <xs:keyref name="Species_Synonymy" refer="Constraint1" msprop:rel_Generator_UserChildTable="Synonymy" msprop:rel_Generator_ChildPropName="GetSynonymyRowsBySpecies_Synonymy" msprop:rel_Generator_UserRelationName="Species_Synonymy" msprop:rel_Generator_RelationVarName="relationSpecies_Synonymy" msprop:rel_Generator_UserParentTable="Species" msprop:rel_Generator_ParentPropName="SpeciesRowBySpecies_Synonymy" msdata:UpdateRule="None" msdata:DeleteRule="None">
+      <xs:selector xpath=".//Synonymy" />
+      <xs:field xpath="MajID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Species_Representative" refer="Constraint1" msprop:rel_Generator_UserChildTable="Rep" msprop:rel_Generator_ChildPropName="GetRepRows" msprop:rel_Generator_UserRelationName="FK_Species_Representative" msprop:rel_Generator_ParentPropName="SpeciesRow" msprop:rel_Generator_RelationVarName="relationFK_Species_Representative" msprop:rel_Generator_UserParentTable="Species">
+      <xs:selector xpath=".//Rep" />
+      <xs:field xpath="SpcID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Taxa_Representative" refer="Taxa_Constraint1" msprop:rel_Generator_UserChildTable="Rep" msprop:rel_Generator_ChildPropName="GetRepRows" msprop:rel_Generator_UserRelationName="FK_Taxa_Representative" msprop:rel_Generator_ParentPropName="TaxaRow" msprop:rel_Generator_RelationVarName="relationFK_Taxa_Representative" msprop:rel_Generator_UserParentTable="Taxa">
+      <xs:selector xpath=".//Rep" />
+      <xs:field xpath="TaxID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Base_Taxa" refer="Base_Constraint1" msprop:rel_Generator_UserChildTable="Taxa" msprop:rel_Generator_ChildPropName="GetTaxaRows" msprop:rel_Generator_UserRelationName="FK_Base_Taxa" msprop:rel_Generator_RelationVarName="relationFK_Base_Taxa" msprop:rel_Generator_UserParentTable="Base" msprop:rel_Generator_ParentPropName="BaseRow" msdata:AcceptRejectRule="Cascade">
+      <xs:selector xpath=".//Taxa" />
+      <xs:field xpath="BasID" />
+    </xs:keyref>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Taxa_State" msdata:parent="Taxa" msdata:child="State" msdata:parentkey="ID" msdata:childkey="TaxID" msprop:Generator_UserChildTable="State" msprop:Generator_ChildPropName="GetStateRows" msprop:Generator_UserRelationName="Taxa_State" msprop:Generator_ParentPropName="TaxaRow" msprop:Generator_RelationVarName="relationTaxa_State" msprop:Generator_UserParentTable="Taxa" />
+      <msdata:Relationship name="Species_State" msdata:parent="Species" msdata:child="State" msdata:parentkey="ID" msdata:childkey="SpcID" msprop:Generator_UserChildTable="State" msprop:Generator_ChildPropName="GetStateRows" msprop:Generator_UserRelationName="Species_State" msprop:Generator_ParentPropName="SpeciesRow" msprop:Generator_RelationVarName="relationSpecies_State" msprop:Generator_UserParentTable="Species" />
+      <msdata:Relationship name="Feature_State" msdata:parent="Feature" msdata:child="State" msdata:parentkey="ID" msdata:childkey="FeaID" msprop:Generator_UserChildTable="State" msprop:Generator_ChildPropName="GetStateRows" msprop:Generator_UserRelationName="Feature_State" msprop:Generator_ParentPropName="FeatureRow" msprop:Generator_RelationVarName="relationFeature_State" msprop:Generator_UserParentTable="Feature" />
+      <msdata:Relationship name="Definition_State" msdata:parent="Step" msdata:child="State" msdata:parentkey="ID" msdata:childkey="Goto" msprop:Generator_UserChildTable="State" msprop:Generator_ChildPropName="GetStateRows" msprop:Generator_UserRelationName="Definition_State" msprop:Generator_ParentPropName="DefinitionRow" msprop:Generator_RelationVarName="relationDefinition_State" msprop:Generator_UserParentTable="Step" />
+      <msdata:Relationship name="Image_Illustration" msdata:parent="Image" msdata:child="Illustration" msdata:parentkey="ID" msdata:childkey="ImgID" msprop:Generator_UserChildTable="Illustration" msprop:Generator_ChildPropName="GetIllustrationRows" msprop:Generator_UserRelationName="Image_Illustration" msprop:Generator_ParentPropName="ImageRow" msprop:Generator_RelationVarName="relationImage_Illustration" msprop:Generator_UserParentTable="Image" />
+      <msdata:Relationship name="Feature_Illustration" msdata:parent="Feature" msdata:child="Illustration" msdata:parentkey="ID" msdata:childkey="FeaID" msprop:Generator_UserChildTable="Illustration" msprop:Generator_ChildPropName="GetIllustrationRows" msprop:Generator_UserRelationName="Feature_Illustration" msprop:Generator_ParentPropName="FeatureRow" msprop:Generator_RelationVarName="relationFeature_Illustration" msprop:Generator_UserParentTable="Feature" />
+      <msdata:Relationship name="State_Illustration" msdata:parent="State" msdata:child="Illustration" msdata:parentkey="ID" msdata:childkey="SttID" msprop:Generator_UserChildTable="Illustration" msprop:Generator_ChildPropName="GetIllustrationRows" msprop:Generator_UserRelationName="State_Illustration" msprop:Generator_ParentPropName="StateRow" msprop:Generator_RelationVarName="relationState_Illustration" msprop:Generator_UserParentTable="State" />
+      <msdata:Relationship name="Step_Feature" msdata:parent="Step" msdata:child="Feature" msdata:parentkey="ID" msdata:childkey="StpID" msprop:Generator_UserChildTable="Feature" msprop:Generator_ChildPropName="GetFeatureRows" msprop:Generator_UserRelationName="Step_Feature" msprop:Generator_ParentPropName="StepRow" msprop:Generator_RelationVarName="relationStep_Feature" msprop:Generator_UserParentTable="Step" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

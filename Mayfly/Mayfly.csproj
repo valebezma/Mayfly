@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF568DDE-2B92-44CF-AB69-5BE2EC239C0E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly</RootNamespace>
+    <AssemblyName>Mayfly</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>2aac1461</NuGetPackageImportStamp>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.1.11\lib\net40\AeroWizard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\IconLib\AuthorAttribute.cs" />
+    <Compile Include="Components\IconLib\BitmapEncoders\BMPEncoder.cs" />
+    <Compile Include="Components\IconLib\BitmapEncoders\ImageEncoder.cs" />
+    <Compile Include="Components\IconLib\BitmapEncoders\PNGEncoder.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\EuclideanQuantizer.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\FloydSteinbergDithering.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\IColorQuantizer.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\IDithering.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\IPaletteQuantizer.cs" />
+    <Compile Include="Components\IconLib\ColorProcessing\OctreeQuantizer.cs" />
+    <Compile Include="Components\IconLib\Enums.cs" />
+    <Compile Include="Components\IconLib\Exceptions\IconNameAlreadyExistException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\ImageAlreadyExistsException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\ImageTooBigException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidFileException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidICLFileException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidIconFormatSelectionException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidIconSelectionException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidMultiIconFileException.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidMultiIconMaskBitmap.cs" />
+    <Compile Include="Components\IconLib\Exceptions\InvalidPixelFormatException.cs" />
+    <Compile Include="Components\IconLib\IconImage.cs" />
+    <Compile Include="Components\IconLib\LibraryFormats\IconFormat.cs" />
+    <Compile Include="Components\IconLib\LibraryFormats\ILibraryFormat.cs" />
+    <Compile Include="Components\IconLib\LibraryFormats\NEFormat.cs" />
+    <Compile Include="Components\IconLib\LibraryFormats\PEFormat.cs" />
+    <Compile Include="Components\IconLib\MultiIcon.cs" />
+    <Compile Include="Components\IconLib\Resource.Designer.cs" />
+    <Compile Include="Components\IconLib\SingleIcon.cs" />
+    <Compile Include="Components\IconLib\Structs.cs" />
+    <Compile Include="Components\IconLib\Tools.cs" />
+    <Compile Include="Components\IconLib\Win32.cs" />
+    <Compile Include="Controls\BufferedPaint\BufferedPainter.cs" />
+    <Compile Include="Controls\BufferedPaint\Interop.cs" />
+    <Compile Include="Controls\ComboBoxItem.cs" />
+    <Compile Include="Controls\GroupedComboBox.cs" />
+    <Compile Include="Controls\ListViewItemAddedEventHandler.cs" />
+    <Compile Include="Controls\MultiStringSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ProcessLook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ProcessLook.Designer.cs">
+      <DependentUpon>ProcessLook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\Controls\WaypointControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Geographics\Controls\WaypointControl.Designer.cs">
+      <DependentUpon>WaypointControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\Coordinate.cs" />
+    <Compile Include="Geographics\ListLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geographics\ListLocation.Designer.cs">
+      <DependentUpon>ListLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\ListPolygons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geographics\ListPolygons.Designer.cs">
+      <DependentUpon>ListPolygons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\ListTracks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geographics\ListTracks.Designer.cs">
+      <DependentUpon>ListTracks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\ListWaypoints.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Geographics\ListWaypoints.Designer.cs">
+      <DependentUpon>ListWaypoints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geographics\Polygon.cs" />
+    <Compile Include="Geographics\Service.cs" />
+    <Compile Include="Geographics\Track.cs" />
+    <Compile Include="Geographics\Waypoint.cs" />
+    <Compile Include="Components\Notification.cs" />
+    <Compile Include="Components\StringCipher.cs" />
+    <Compile Include="Controls\ColumnProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ColumnProperties.Designer.cs">
+      <DependentUpon>ColumnProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\COMTypes.cs" />
+    <Compile Include="Controls\ColumnPicker.cs" />
+    <Compile Include="Controls\Filtering\Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Filtering\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filtering\Filtering.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Filtering.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filtering\FilterUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filtering\FilterUnit.Designer.cs">
+      <DependentUpon>FilterUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpreadSheet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SpreadSheetCalendarColumn.cs" />
+    <Compile Include="Controls\SpreadSheetIconTextBoxColumn.cs" />
+    <Compile Include="Controls\Taskbar.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Report.Printing.cs" />
+    <Compile Include="Reporting\Report.Table.cs" />
+    <Compile Include="Resources\FriendlyUnits.Designer.cs">
+      <DependentUpon>FriendlyUnits.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\FriendlyUnits.ru.Designer.cs">
+      <DependentUpon>FriendlyUnits.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\License.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>License.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SearchResultSorter.cs" />
+    <Compile Include="Resources\Sounds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sounds.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Log.cs" />
+    <Compile Include="Service\Server.cs" />
+    <Compile Include="Software\ActionLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\ActionLogs.Designer.cs">
+      <DependentUpon>ActionLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Software\Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ChartExtensions.cs" />
+    <Compile Include="Extensions\DataGridViewExtensions.cs" />
+    <Compile Include="Extensions\DataTableExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Resources\DateTime.Designer.cs">
+      <DependentUpon>DateTime.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\DateTime.ru.Designer.cs">
+      <DependentUpon>DateTime.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Software\License.cs">
+      <DependentUpon>License.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Software\License.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>License.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Software\FeatureAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\FeatureAdd.Designer.cs">
+      <DependentUpon>FeatureAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Licensing.cs" />
+    <Compile Include="Software\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Software\ShellLink.cs" />
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Service\Constants.cs" />
+    <Compile Include="Controls\SortableListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressCircle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressCircle.designer.cs">
+      <DependentUpon>ProgressCircle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchBox.Designer.cs">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProcessDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service\FileSystem.cs" />
+    <Compile Include="Service\IconExtraction\IconExtractor.cs" />
+    <Compile Include="Service\IconExtraction\IconUtil.cs" />
+    <Compile Include="Service\IconExtraction\NativeMethods.cs" />
+    <Compile Include="Components\OmniSorter.cs" />
+    <Compile Include="Reporting\Report.cs" />
+    <Compile Include="Resources\TaskDialogs.Designer.cs">
+      <DependentUpon>TaskDialogs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controls\Status.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Status.Designer.cs">
+      <DependentUpon>Status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Interface.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interface.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Software\SharedAssemblyInfo.cs" />
+    <Compile Include="Components\TaskDialogs\AdditionalVisualStyleElements.cs" />
+    <Compile Include="Components\TaskDialogs\AnimationResource.cs" />
+    <Compile Include="Components\TaskDialogs\ButtonType.cs" />
+    <Compile Include="Components\TaskDialogs\ComCtlv6ActivationContext.cs" />
+    <Compile Include="Components\TaskDialogs\CredentialDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\CredentialDialog.designer.cs">
+      <DependentUpon>CredentialDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\CredentialException.cs" />
+    <Compile Include="Components\TaskDialogs\DialogHelper.cs" />
+    <Compile Include="Components\TaskDialogs\DownlevelTextMode.cs" />
+    <Compile Include="Components\TaskDialogs\ExpandButtonClickedEventArgs.cs" />
+    <Compile Include="Components\TaskDialogs\ExtendedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\Glass.cs" />
+    <Compile Include="Components\TaskDialogs\GlobalSuppressions.cs" />
+    <Compile Include="Components\TaskDialogs\HyperlinkClickedEventArgs.cs" />
+    <Compile Include="Components\TaskDialogs\InputDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\InputDialog.designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\InputDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\InputDialogForm.designer.cs">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\Interop\ComDlgResources.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\COMGuids.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\ErrorHelper.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\IProgressDialog.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\ShellComInterfaces.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\ShellWrapperDefinitions.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\Win32Resources.cs" />
+    <Compile Include="Components\TaskDialogs\Interop\WindowHandleWrapper.cs" />
+    <Compile Include="Components\TaskDialogs\NativeMethods.cs" />
+    <Compile Include="Components\TaskDialogs\OkButtonClickedEventArgs.cs" />
+    <Compile Include="Components\TaskDialogs\ProgressBarState.cs" />
+    <Compile Include="Components\TaskDialogs\ProgressBarStyle.cs" />
+    <Compile Include="Components\TaskDialogs\ProgressDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\ProgressDialog.designer.cs" />
+    <Compile Include="Components\TaskDialogs\SafeHandles.cs" />
+    <Compile Include="Components\TaskDialogs\ShellAnimation.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\TaskDialog.designer.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\TaskDialogButtonStyle.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogDesigner.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogIcon.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\TaskDialogItem.designer.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogItemClickedEventArgs.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogItemCollection.cs" />
+    <Compile Include="Components\TaskDialogs\TaskDialogRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TaskDialogs\TimerEventArgs.cs" />
+    <Compile Include="Service\Service.cs" />
+    <Compile Include="Software\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\About.designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettingInterface.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\IconLib\Resource.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ColumnProperties.resx">
+      <DependentUpon>ColumnProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ColumnProperties.ru.resx">
+      <DependentUpon>ColumnProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filtering\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filtering\Filter.ru.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filtering\Filtering.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Filtering.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filtering\FilterUnit.resx">
+      <DependentUpon>FilterUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filtering\FilterUnit.ru.resx">
+      <DependentUpon>FilterUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProcessLook.resx">
+      <DependentUpon>ProcessLook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpreadSheet.resx">
+      <DependentUpon>SpreadSheet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpreadSheet.ru.resx">
+      <DependentUpon>SpreadSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\Controls\WaypointControl.resx">
+      <DependentUpon>WaypointControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\Controls\WaypointControl.ru.resx">
+      <DependentUpon>WaypointControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListLocation.resx">
+      <DependentUpon>ListLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListLocation.ru.resx">
+      <DependentUpon>ListLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListPolygons.resx">
+      <DependentUpon>ListPolygons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListPolygons.ru.resx">
+      <DependentUpon>ListPolygons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListTracks.resx">
+      <DependentUpon>ListTracks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListTracks.ru.resx">
+      <DependentUpon>ListTracks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListWaypoints.resx">
+      <DependentUpon>ListWaypoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Geographics\ListWaypoints.ru.resx">
+      <DependentUpon>ListWaypoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FriendlyUnits.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendlyUnits.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FriendlyUnits.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendlyUnits.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\License.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>License.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\License.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Report.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Report.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Report.ru.resx" />
+    <EmbeddedResource Include="Resources\Sounds.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\ActionLogs.resx">
+      <DependentUpon>ActionLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\ActionLogs.ru.resx">
+      <DependentUpon>ActionLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\Error.ru.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DateTime.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTime.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DateTime.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateTime.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\About.ru.resx">
+      <DependentUpon>About.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Status.resx">
+      <DependentUpon>Status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.ru.resx" />
+    <EmbeddedResource Include="Resources\TaskDialogs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TaskDialogs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TaskDialogs\ExtendedForm.resx">
+      <DependentUpon>ExtendedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TaskDialogs\InputDialogForm.resx">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TaskDialogs\ProgressDialog.resx" />
+    <EmbeddedResource Include="Software\FeatureAdd.resx">
+      <DependentUpon>FeatureAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\FeatureAdd.ru.resx">
+      <DependentUpon>FeatureAdd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\New.png" />
+    <None Include="Resources\Open.png" />
+    <None Include="Resources\Paste.png" />
+    <None Include="Resources\Print.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Report.png" />
+    <None Include="Resources\Blank.png" />
+    <None Include="Resources\Attention.png" />
+    <None Include="Resources\Check.png" />
+    <Content Include="Resources\Copy.png" />
+    <Content Include="Resources\Cut.png" />
+    <None Include="Resources\Error.wav" />
+    <None Include="Resources\Funnel.png" />
+    <None Include="Resources\FunnelArrow.png" />
+    <None Include="Resources\FunnelMinus.png" />
+    <None Include="Resources\FunnelPencil.png" />
+    <None Include="Resources\FunnelPlus.png" />
+    <None Include="Resources\Flag.png" />
+    <None Include="Resources\NoneRed.png" />
+    <Content Include="Resources\Preview.png" />
+    <None Include="Resources\Reports.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\StandardSound.wav" />
+    <None Include="Resources\Table.png" />
+    <None Include="Resources\Wrong.wav" />
+    <None Include="Resources\tray_icon.ico" />
+    <None Include="Resources\Warning.png" />
+    <None Include="Resources\tray_icon.png" />
+    <Content Include="Components\TaskDialogs\CredentialDialog.bmp" />
+    <Content Include="Components\TaskDialogs\InputDialog.bmp" />
+    <Content Include="Components\TaskDialogs\ProgressDialog.bmp" />
+    <Content Include="Components\TaskDialogs\TaskDialog.bmp" />
+    <Content Include="Components\TaskDialogs\VistaFolderBrowserDialog.bmp" />
+    <Content Include="Components\TaskDialogs\VistaOpenFileDialog.bmp" />
+    <Content Include="Components\TaskDialogs\VistaSaveFileDialog.bmp" />
+    <None Include="Software\License.xsc">
+      <DependentUpon>License.xsd</DependentUpon>
+    </None>
+    <None Include="Software\License.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>License.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Software\License.xss">
+      <DependentUpon>License.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

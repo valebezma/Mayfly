@@ -1,0 +1,3244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;labelFecundityRel.Name" xml:space="preserve">
+    <value>labelFecundityRel</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ToolStripMenuItemDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACLUlE
+        QVQ4T52TvY/ScBjHuVIRKHA9JAgnL+VoC7TX0kLLS6EvFBTa0uj5J7gYF+PsfpOTMrg4ORgHY+LCYJwc
+        TYyJiYuDLu7GxHgxd/Hnr5fA8TZcrsmnzfN9nufTNPnVBwDw2ZYljGzr3ciyTNu2EC87L75eb+DvD67f
+        hU9g9vt/HNs5cMaOf9Owohro7YNbe8PhjfuzzBOgkDuabk6bbRXoxuBkNLIeus6yhKyIwY5umo5tHxmG
+        +Wwu8G5QkIa0jN5gqnR1oOkGuOk6b1x3jHl9uaWGhpb1UtXNY1luPmJ4KbIkmAElAcgD3egfa5oJxq77
+        oq3ovKJoE7XbBbwoTWhG2F7cWRJ4dFR1S9fNCvykT41mB9TqjSOxXvtJM9zrYokLrc4vFYtUBcngq9Lf
+        tqICvlr7RhQr8U1za4FHXZIIurT/mePFf1AEJLkFGJb7uml2LRBrcp4us1+g4KRcYV8lkmkplyenglgH
+        VIm9tzq/VJRZLpUlih9yBQrAt79Pp3bjkVgM244nsPwe/VQQ6r8pRsgu7pwtC61grkA/T10r/NrnxB8s
+        V2VmvQiOB0MhLMZVxY/pDPEkU6DnZ2Qu2M0STjJFAIpmAUmXD0NY9PQMzEBRPwJzkiSp71F8J1/ipNMj
+        f9rE8XggkUgexq9cBXmi+DYYjtCRGL72T+D4jr/RaE+waFgu8c0zgUcmT9UuBS4/9m0hmh9Fo7N8FXih
+        CIKE5/Vi8yJsDM8P8P0HLGwR4Wl3ICYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInfection.Name" xml:space="preserve">
+    <value>spreadSheetInfection</value>
+  </data>
+  <data name="&gt;&gt;labelSection.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBoxIntermediate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFermentation.Name" xml:space="preserve">
+    <value>comboBoxFermentation</value>
+  </data>
+  <data name="&gt;&gt;tabPageTrophics.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelRegID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelConditionFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 159</value>
+  </data>
+  <data name="buttonAddTrophics.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumedMass.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
+    <value>tdbDiscard</value>
+  </data>
+  <data name="&gt;&gt;labelGonadosomatic.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;labelTractContent.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="textBoxComments.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="labelSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 170</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSampleMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelFermentation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelRegID.Name" xml:space="preserve">
+    <value>labelRegID</value>
+  </data>
+  <data name="buttonReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="labelConsumedMass.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxAge.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityAbs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelConsumptionIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="&gt;&gt;textBoxMeanEggMass.Name" xml:space="preserve">
+    <value>textBoxMeanEggMass</value>
+  </data>
+  <data name="labelFecundityAbs.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="comboBoxFullness.Items3" xml:space="preserve">
+    <value>3 | Moderate filling</value>
+  </data>
+  <data name="spreadSheetAddt.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="textBoxConditionSoma.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;labelOrgan.Name" xml:space="preserve">
+    <value>labelOrgan</value>
+  </data>
+  <data name="textBoxCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="textBoxEggSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;textBoxMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumptionIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMaturity.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="comboBoxOrgan.Items3" xml:space="preserve">
+    <value>Ureter</value>
+  </data>
+  <data name="labelComments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="comboBoxFullness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 194</value>
+  </data>
+  <data name="&gt;&gt;labelAge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEggMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;tabControlInd.Name" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrowth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelEggMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Total length, mm</value>
+  </data>
+  <data name="labelComments.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="labelGonadMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 194</value>
+  </data>
+  <data name="labelFecundity.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaturity.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="comboBoxGender.Items" xml:space="preserve">
+    <value>Juvenile (juv.)</value>
+  </data>
+  <data name="&gt;&gt;labelConsumedMass.Name" xml:space="preserve">
+    <value>labelConsumedMass</value>
+  </data>
+  <data name="tabPageGrowth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="labelFullness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="labelAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="&gt;&gt;labelEgg.Name" xml:space="preserve">
+    <value>labelEgg</value>
+  </data>
+  <data name="&gt;&gt;tabPageFecundity.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityAbs.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tabPageFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxGonadSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="labelSomaticMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelRegID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSampleMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxIntermediate.Text" xml:space="preserve">
+    <value>has symptoms of next stage</value>
+  </data>
+  <data name="buttonAddTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelTractCondition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndexSoma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxGonadSampleMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="labelFermentation.Text" xml:space="preserve">
+    <value>Digestion state</value>
+  </data>
+  <data name="textBoxConditionSoma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="comboBoxSection.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;tabPageTrophics.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="comboBoxFullness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 21</value>
+  </data>
+  <data name="labelFecundity.Text" xml:space="preserve">
+    <value>Fecundity measures</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTrophics.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Parasites information</value>
+  </data>
+  <data name="labelConsumedMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 92</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumptionIndex.Name" xml:space="preserve">
+    <value>textBoxConsumptionIndex</value>
+  </data>
+  <data name="&gt;&gt;textBoxSomaticMass.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaturity.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxFermentation.Items3" xml:space="preserve">
+    <value>3 | Half-digested organisms</value>
+  </data>
+  <data name="buttonTrophics.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="textBoxMeanEggMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="comboBoxFatness.Items1" xml:space="preserve">
+    <value>1 | Fine fat ribbon</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabPageFecundity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxGonadSampleMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelGonadSampleMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelTractContent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
+    <value>textBox2</value>
+  </data>
+  <data name="&gt;&gt;tabControlInd.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="tabPageTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="&gt;&gt;comboBoxOrgan.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSample.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="textBoxGonadIndex.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;labelEgg.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="textBoxConditionSoma.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelSex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="&gt;&gt;textBoxMeanEggMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBoxAge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelAge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 99</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="&gt;&gt;ColumnRadius.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="labelFecundityAbs.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="labelTractContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 130</value>
+  </data>
+  <data name="labelConditionFactor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelMass.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="textBoxGonadSampleMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;speciesTrophics.Name" xml:space="preserve">
+    <value>speciesTrophics</value>
+  </data>
+  <data name="&gt;&gt;textBoxSomaticMass.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="labelMaturity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelEgg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetTrophics.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="buttonBlank.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBoxGender.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 21</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Additional values</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFatness.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelConsumedMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxMaturity.Items2" xml:space="preserve">
+    <value>3 | Gonads take from ⅓ to ½ of peritoneal cavity</value>
+  </data>
+  <data name="spreadSheet1.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxLength.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="textBoxCondition.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;labelMass.Name" xml:space="preserve">
+    <value>labelMass</value>
+  </data>
+  <data name="tabPageGrowth.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelGonadSample.Text" xml:space="preserve">
+    <value>Eggs quantity in sample</value>
+  </data>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 62</value>
+  </data>
+  <data name="buttonBlank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="labelFecundityRel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelConditionFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="labelFecundityAbs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="&gt;&gt;tabControlInd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Total length, mm</value>
+  </data>
+  <data name="ColumnInfQuantity.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="textBoxCondition.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelEggSize.Text" xml:space="preserve">
+    <value>Mean egg diameter, µm</value>
+  </data>
+  <data name="comboBoxOrgan.Items5" xml:space="preserve">
+    <value>Kidneys</value>
+  </data>
+  <data name="&gt;&gt;buttonTrophics.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="comboBoxFullness.Items1" xml:space="preserve">
+    <value>1 | Solitary</value>
+  </data>
+  <data name="labelGonadosomatic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="textBoxGonadSample.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labelFecundity.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="ColumnInfID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="&gt;&gt;labelMaturity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelComments.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFullness.Name" xml:space="preserve">
+    <value>comboBoxFullness</value>
+  </data>
+  <data name="textBoxMass.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 230</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelEgg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="comboBoxMaturity.Items4" xml:space="preserve">
+    <value>5 | Spawning species</value>
+  </data>
+  <data name="labelGonadosomatic.Text" xml:space="preserve">
+    <value>Gonadosomatic index</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Name" xml:space="preserve">
+    <value>textBoxLength</value>
+  </data>
+  <data name="&gt;&gt;currentSectionToolStripMenuItem.Name" xml:space="preserve">
+    <value>currentSectionToolStripMenuItem</value>
+  </data>
+  <data name="labelMass.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="spreadSheetAddt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="buttonTrophics.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemPaste.Name" xml:space="preserve">
+    <value>ToolStripMenuItemPaste</value>
+  </data>
+  <data name="&gt;&gt;labelConditionFactor.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="comboBoxFatness.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGender.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="spreadSheetInfection.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="comboBoxOrgan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 21</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFatness.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="labelEgg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 15</value>
+  </data>
+  <data name="textBoxGonadMass.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelTractContent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tabPageAddt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelOrgan.Text" xml:space="preserve">
+    <value>Organ</value>
+  </data>
+  <data name="&gt;&gt;labelConsumedMass.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSection.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelSex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labelTractContent.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxFatness.Items4" xml:space="preserve">
+    <value>4 | Intestine almost entirely covered with fat</value>
+  </data>
+  <data name="&gt;&gt;tabPageTrophics.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboBoxSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 21</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecunditySoma.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;labelFermentation.Name" xml:space="preserve">
+    <value>labelFermentation</value>
+  </data>
+  <data name="labelGonadMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="labelConsumptionIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 92</value>
+  </data>
+  <data name="textBoxComments.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;tabPageFecundity.Name" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="ColumnTrpMass.HeaderText" xml:space="preserve">
+    <value>Mass, mg</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 6</value>
+  </data>
+  <data name="tabPageTrophics.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFullness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelRegID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;tabPageAddt.Name" xml:space="preserve">
+    <value>tabPageAddt</value>
+  </data>
+  <data name="textBoxConditionSoma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 182</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInfection.Parent" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="&gt;&gt;labelGonadMass.Name" xml:space="preserve">
+    <value>labelGonadMass</value>
+  </data>
+  <data name="textBoxMeanEggMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSection.Name" xml:space="preserve">
+    <value>comboBoxSection</value>
+  </data>
+  <data name="labelConsumptionIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTrophics.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="labelEggMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxAbsoluteFecundity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;loadFromCardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelEgg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAddTrophics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 462</value>
+  </data>
+  <data name="&gt;&gt;labelConditionFactor.Name" xml:space="preserve">
+    <value>labelConditionFactor</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumedMass.Name" xml:space="preserve">
+    <value>textBoxConsumedMass</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndexSoma.Name" xml:space="preserve">
+    <value>textBoxGonadIndexSoma</value>
+  </data>
+  <data name="labelFecundityAbs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelConditionFactor.Text" xml:space="preserve">
+    <value>Condition factor</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfQuantity.Name" xml:space="preserve">
+    <value>ColumnInfQuantity</value>
+  </data>
+  <data name="textBoxEggSize.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="labelFatness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 65</value>
+  </data>
+  <data name="textBoxLength.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="labelFullness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 197</value>
+  </data>
+  <data name="comboBoxOrgan.Items" xml:space="preserve">
+    <value>Vestiture</value>
+  </data>
+  <data name="ColumnTrpMass.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="&gt;&gt;textBoxAbsoluteFecundity.Name" xml:space="preserve">
+    <value>textBoxAbsoluteFecundity</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="ToolStripMenuItemKeys.Text" xml:space="preserve">
+    <value>Open species key</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelFecundityAbs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 285</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Name" xml:space="preserve">
+    <value>spreadSheet1</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="labelEgg.Text" xml:space="preserve">
+    <value>Egg parameters</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelAge.Text" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="&gt;&gt;labelFullness.Name" xml:space="preserve">
+    <value>labelFullness</value>
+  </data>
+  <data name="labelMaturity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTractCondition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="labelEggSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFBA.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="comboBoxFermentation.Items5" xml:space="preserve">
+    <value>5 | Indeterminable mass</value>
+  </data>
+  <data name="labelOrgan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labelGonadMass.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFatness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="allSectionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save all sections</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="labelFecundity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="textBoxMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 156</value>
+  </data>
+  <data name="buttonAddParasite.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaturity.Name" xml:space="preserve">
+    <value>comboBoxMaturity</value>
+  </data>
+  <data name="checkBoxIntermediate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="labelRegID.Text" xml:space="preserve">
+    <value>Sample #</value>
+  </data>
+  <data name="labelSex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxConditionSoma.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelMass.Text" xml:space="preserve">
+    <value>Full mass, g</value>
+  </data>
+  <data name="spreadSheetTrophics.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labelGonadMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGonadosomatic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 311</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Name" xml:space="preserve">
+    <value>buttonReport</value>
+  </data>
+  <data name="&gt;&gt;labelTractCondition.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="labelConditionFactor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;labelRegID.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="textBoxMeanEggMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonAddParasite.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="comboBoxMaturity.Items5" xml:space="preserve">
+    <value>6 | Spawned out species, inflamed gonads</value>
+  </data>
+  <data name="comboBoxOrgan.Items2" xml:space="preserve">
+    <value>Gills</value>
+  </data>
+  <data name="&gt;&gt;tabControlInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="textBoxRegID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="comboBoxFullness.Items5" xml:space="preserve">
+    <value>5 | Tension</value>
+  </data>
+  <data name="&gt;&gt;contextLog.Name" xml:space="preserve">
+    <value>contextLog</value>
+  </data>
+  <data name="labelEggMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 444</value>
+  </data>
+  <data name="textBoxGonadSampleMass.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelTractContent.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSampleMass.Name" xml:space="preserve">
+    <value>labelGonadSampleMass</value>
+  </data>
+  <data name="spreadSheet1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 65, 45, 45</value>
+  </data>
+  <data name="comboBoxOrgan.Items6" xml:space="preserve">
+    <value>Hepar</value>
+  </data>
+  <data name="&gt;&gt;labelSomaticMass.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="labelSex.Text" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="&gt;&gt;labelSection.Name" xml:space="preserve">
+    <value>labelSection</value>
+  </data>
+  <data name="tabPageFecundity.Text" xml:space="preserve">
+    <value>Fecundity</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityAbs.Name" xml:space="preserve">
+    <value>labelFecundityAbs</value>
+  </data>
+  <data name="labelFecundityRel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;labelOrgan.Parent" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="textBoxEggSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="ColumnTrpSpecies.HeaderText" xml:space="preserve">
+    <value>Taxa / Species</value>
+  </data>
+  <data name="labelSex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 13</value>
+  </data>
+  <data name="spreadSheetAddt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;labelMaturity.Name" xml:space="preserve">
+    <value>labelMaturity</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="textBoxConsumptionIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="tabPageAddt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="labelComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 233</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSample.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelRegID.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfSpecies.Name" xml:space="preserve">
+    <value>ColumnInfSpecies</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;tabPageAddt.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="textBoxTL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 96</value>
+  </data>
+  <data name="spreadSheetInfection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 96</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTrophics.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColumnAddtValue.Name" xml:space="preserve">
+    <value>ColumnAddtValue</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndex.Name" xml:space="preserve">
+    <value>textBoxGonadIndex</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="&gt;&gt;buttonAddParasite.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageFecundity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFatness.Name" xml:space="preserve">
+    <value>comboBoxFatness</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;labelFullness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAddParasite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGonadosomatic.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spreadSheet1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 383</value>
+  </data>
+  <data name="ColumnAddtVariable.HeaderText" xml:space="preserve">
+    <value>Variable</value>
+  </data>
+  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelFBA.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFermentation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labelSomaticMass.Name" xml:space="preserve">
+    <value>labelSomaticMass</value>
+  </data>
+  <data name="textBoxMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="tabPageGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="currentSectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save current section</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="textBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelEggSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFecundityRel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 337</value>
+  </data>
+  <data name="textBoxEggSize.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddParasite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="comboBoxFermentation.Items1" xml:space="preserve">
+    <value>1 | Good preserved organisms</value>
+  </data>
+  <data name="labelSection.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndex.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="textBoxGonadIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="spreadSheetAddt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 423</value>
+  </data>
+  <data name="&gt;&gt;labelEggMass.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelLength.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelTractContent.Text" xml:space="preserve">
+    <value>Separate section</value>
+  </data>
+  <data name="comboBoxOrgan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 62</value>
+  </data>
+  <data name="&gt;&gt;labelEggSize.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Name" xml:space="preserve">
+    <value>labelComments</value>
+  </data>
+  <data name="&gt;&gt;labelLength.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="&gt;&gt;tdbCancel.Name" xml:space="preserve">
+    <value>tdbCancel</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFermentation.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="comboBoxFermentation.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpMass.Name" xml:space="preserve">
+    <value>ColumnTrpMass</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecundity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEggMass.Name" xml:space="preserve">
+    <value>labelEggMass</value>
+  </data>
+  <data name="&gt;&gt;labelSomaticMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ColumnInfQuantity.HeaderText" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="labelSomaticMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 185</value>
+  </data>
+  <data name="ColumnTrpQuantity.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="comboBoxFermentation.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelFBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 15</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="labelGonadosomatic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="spreadSheet1.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="comboBoxFermentation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 21</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxCondition.Name" xml:space="preserve">
+    <value>textBoxCondition</value>
+  </data>
+  <data name="&gt;&gt;labelAge.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTrophics.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemIndividuals.Name" xml:space="preserve">
+    <value>ToolStripMenuItemIndividuals</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFermentation.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="comboBoxFatness.Items5" xml:space="preserve">
+    <value>5 | Entire intestine is filled with a thick layer of fat</value>
+  </data>
+  <data name="&gt;&gt;labelAge.Name" xml:space="preserve">
+    <value>labelAge</value>
+  </data>
+  <data name="&gt;&gt;buttonAddParasite.Parent" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="comboBoxFullness.Items2" xml:space="preserve">
+    <value>2 | Small filling</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 65</value>
+  </data>
+  <data name="textBoxGonadMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;labelConsumptionIndex.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;contextLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxFermentation.Items" xml:space="preserve">
+    <value>0 | Empty</value>
+  </data>
+  <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="&gt;&gt;comboBoxOrgan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadMass.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="comboBoxMaturity.Items1" xml:space="preserve">
+    <value>2 | Small gonads, do not fill pertoneal cavity</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPageAddt</value>
+  </data>
+  <data name="&gt;&gt;labelFBA.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;contextSaveTrophics.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>534, 612</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 15</value>
+  </data>
+  <data name="textBoxCondition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="comboBoxOrgan.Items4" xml:space="preserve">
+    <value>Excretory bladder</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="textBoxGonadSampleMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 217</value>
+  </data>
+  <data name="labelSex.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonAddParasite.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 282</value>
+  </data>
+  <data name="&gt;&gt;labelFecundity.Name" xml:space="preserve">
+    <value>labelFecundity</value>
+  </data>
+  <data name="labelFullness.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;labelOrgan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheet1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 105</value>
+  </data>
+  <data name="comboBoxGender.Items1" xml:space="preserve">
+    <value>Male (M)</value>
+  </data>
+  <data name="comboBoxFullness.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="textBoxRegID.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelGonadMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxMass.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="textBoxAge.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="tabPageParasites.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="labelFBA.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelSomaticMass.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="comboBoxSection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecundity.Name" xml:space="preserve">
+    <value>textBoxRelativeFecundity</value>
+  </data>
+  <data name="textBoxLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 122</value>
+  </data>
+  <data name="&gt;&gt;labelEggSize.Name" xml:space="preserve">
+    <value>labelEggSize</value>
+  </data>
+  <data name="labelMaturity.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>447, 577</value>
+  </data>
+  <data name="labelOrgan.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSampleMass.Name" xml:space="preserve">
+    <value>textBoxGonadSampleMass</value>
+  </data>
+  <data name="labelTractCondition.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxMeanEggMass.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="loadFromCardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="labelFermentation.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="spreadSheetAddt.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="textBoxRelativeFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxGonadSample.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 243</value>
+  </data>
+  <data name="&gt;&gt;textBoxAbsoluteFecundity.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSample.Name" xml:space="preserve">
+    <value>labelGonadSample</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSample.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labelConsumptionIndex.Text" xml:space="preserve">
+    <value>Consumption index, ‱</value>
+  </data>
+  <data name="&gt;&gt;buttonTrophics.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelTractCondition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxSomaticMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEggMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxGonadMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;labelConsumptionIndex.Name" xml:space="preserve">
+    <value>labelConsumptionIndex</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecunditySoma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageAddt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetTrophics.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;labelFatness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxGonadSample.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelEgg.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxGonadSample.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="comboBoxGender.Items2" xml:space="preserve">
+    <value>Female (F)</value>
+  </data>
+  <data name="&gt;&gt;labelSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelMaturity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;tdbSave.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="textBoxTL.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxEggSize.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadMass.Name" xml:space="preserve">
+    <value>textBoxGonadMass</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="textBoxConsumptionIndex.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ColumnInfComments.HeaderText" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="buttonReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 577</value>
+  </data>
+  <data name="&gt;&gt;labelEggSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxMass.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="ColumnTrpID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="&gt;&gt;labelTractCondition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;labelConditionFactor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxRelativeFecundity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonTrophics.Text" xml:space="preserve">
+    <value>Trophics data</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEggSize.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="comboBoxSection.Items3" xml:space="preserve">
+    <value>Fore intestine</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="tabControlInd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;labelSomaticMass.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="labelFullness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxOrgan.Items10" xml:space="preserve">
+    <value>Musculature</value>
+  </data>
+  <data name="comboBoxOrgan.Items11" xml:space="preserve">
+    <value>Eye-lens</value>
+  </data>
+  <data name="comboBoxOrgan.Items12" xml:space="preserve">
+    <value>Corpus vitreum</value>
+  </data>
+  <data name="&gt;&gt;labelOrgan.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxFatness.Items3" xml:space="preserve">
+    <value>3 | Broad fat ribbon</value>
+  </data>
+  <data name="spreadSheet1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;labelGonadosomatic.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="labelConsumedMass.Text" xml:space="preserve">
+    <value>Consumed mass, mg</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="textBoxConsumedMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 89</value>
+  </data>
+  <data name="&gt;&gt;labelFecundity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxFatness.Items" xml:space="preserve">
+    <value>0 | No fat on intestine</value>
+  </data>
+  <data name="buttonAddParasite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 3, 3, 45</value>
+  </data>
+  <data name="tabPageTrophics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTrophics.Name" xml:space="preserve">
+    <value>spreadSheetTrophics</value>
+  </data>
+  <data name="labelFBA.Text" xml:space="preserve">
+    <value>Full biological assessment</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAddTrophics.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;textBoxAbsoluteFecundity.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;labelTractCondition.Name" xml:space="preserve">
+    <value>labelTractCondition</value>
+  </data>
+  <data name="&gt;&gt;labelRegID.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSampleMass.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="tabPageGrowth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxRelativeFecundity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelGonadSampleMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxGonadIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 308</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Text" xml:space="preserve">
+    <value>Individuals log</value>
+  </data>
+  <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelConsumedMass.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="textBoxGonadMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSample.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="checkBoxIntermediate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSample.Name" xml:space="preserve">
+    <value>textBoxGonadSample</value>
+  </data>
+  <data name="labelTractContent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="labelAge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpSpecies.Name" xml:space="preserve">
+    <value>ColumnTrpSpecies</value>
+  </data>
+  <data name="&gt;&gt;speciesParasites.Name" xml:space="preserve">
+    <value>speciesParasites</value>
+  </data>
+  <data name="comboBoxOrgan.Items1" xml:space="preserve">
+    <value>Opercles</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;tabPageParasites.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelGonadSampleMass.Text" xml:space="preserve">
+    <value>Sample mass, g</value>
+  </data>
+  <data name="buttonReport.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="labelEggSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 418</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityRel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;labelFermentation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelLength.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
+    <value>tabPageAddt</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfComments.Name" xml:space="preserve">
+    <value>ColumnInfComments</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Name" xml:space="preserve">
+    <value>textBoxComments</value>
+  </data>
+  <data name="&gt;&gt;labelFullness.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelMaturity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFatness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="comboBoxSection.Items2" xml:space="preserve">
+    <value>Stomach</value>
+  </data>
+  <data name="&gt;&gt;labelFermentation.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="textBoxSomaticMass.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;labelFatness.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;labelFBA.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxFatness.Items2" xml:space="preserve">
+    <value>2 | Narrow fat ribbon</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityRel.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelFecundity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxConsumptionIndex.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="tabPageParasites.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxGonadMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 191</value>
+  </data>
+  <data name="buttonBlank.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonAddTrophics.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="spreadSheetAddt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 65, 45, 45</value>
+  </data>
+  <data name="&gt;&gt;currentSectionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGender.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumedMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxMaturity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 88</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelFullness.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="ColumnTrpQuantity.HeaderText" xml:space="preserve">
+    <value>Quantity, ind.</value>
+  </data>
+  <data name="currentSectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="labelSection.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFecundityRel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="labelGonadMass.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="labelTractContent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 25, 0, 25</value>
+  </data>
+  <data name="&gt;&gt;textBoxConditionSoma.Name" xml:space="preserve">
+    <value>textBoxConditionSoma</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecundity.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="labelConsumptionIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;tabPageParasites.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelGonadSampleMass.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="spreadSheetInfection.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxIntermediate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 115</value>
+  </data>
+  <data name="labelFecundityRel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 260</value>
+  </data>
+  <data name="textBoxConsumedMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelEggMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGonadosomatic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpConsumption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheet1.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="buttonBlank.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="labelSomaticMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="comboBoxSection.Items1" xml:space="preserve">
+    <value>Oesophagus</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTrophics.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;ColumnAddtVariable.Name" xml:space="preserve">
+    <value>ColumnAddtVariable</value>
+  </data>
+  <data name="labelGonadSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 13</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="taskDialogSaveChanges.WindowTitle" xml:space="preserve">
+    <value>Fish Reader</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpConsumption.Name" xml:space="preserve">
+    <value>ColumnTrpConsumption</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>550, 650</value>
+  </data>
+  <data name="labelFecundity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 154</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTrophics.Name" xml:space="preserve">
+    <value>buttonAddTrophics</value>
+  </data>
+  <data name="tabPageParasites.Text" xml:space="preserve">
+    <value>Parasites</value>
+  </data>
+  <data name="tabPageAddt.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 25, 25</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumptionIndex.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;labelSex.Name" xml:space="preserve">
+    <value>labelSex</value>
+  </data>
+  <data name="textBoxTL.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageFecundity.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSample.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="labelGonadMass.Text" xml:space="preserve">
+    <value>Gonad mass, g</value>
+  </data>
+  <data name="&gt;&gt;labelEggSize.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelRegID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="comboBoxOrgan.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;ColumnAddtVariable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="comboBoxOrgan.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="labelGonadosomatic.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACG0lE
+        QVQ4T6WR30tTYRjHzx/R3+GdEl0IdSG0oDDWhRd50X5ICRGGBV5oEDlB68LSDPulR09RusQdWxpDVzhd
+        aUwij2ttJ6tpTLfVabnmVt+e9z07Zw2ipF54eN/3nPf7+T4/BAD/FYI4Po9h+Rmkied8H/IEIY7PYWAs
+        gFvup7gx4kf/vWlcu+vDVekxeoYmcUV8hMuDXtIXAX9b+cIPZHN5aJltJD9l8SHxBVUWO/slCMNykD9i
+        yyE6zRiVZ8yzfdAJ7es2Nkm8tpHB63epEuBPGRQK35H9ViBxzhSr8c/lgNsPZvljxzmZR8elXohjT+Ci
+        vZ1Cy5A4bYg1rKhpLEUSqNpv0wHX7/s54NelO+s1c+eE7qyoKYTCGwgsraHSUgT03fFxEXNWYinuvBxN
+        ov1iLy509ZQ5h8KbCL78iKm5tyUAG4uxuHOOaubOW4ibYt15nsT+hThGfRHqQRFQnCccbTLsFK/I3dbq
+        MRumsJpJzJz9i3FMBlYx4FkuZcAAee5MNdOokqxhvGYNypsoXigqZhZjeDgbw8h0DNJUBOLECiqNJjKA
+        3rDyUVkb2nDoWAssR8+gpu409h05ierDjdhzsAG7DzhKADpUdPS5EX2fxuo6uapJ1DWeR2e/l9cqecME
+        aMLZTje6pRBcNxcMQIUB2MUux1u6YWvuQv0pF/9pdRoZNPP7XitlUHuCZ2CIOcA4/Gv89uPOA8JPWXod
+        OLVGynsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecunditySoma.Name" xml:space="preserve">
+    <value>textBoxRelativeFecunditySoma</value>
+  </data>
+  <data name="&gt;&gt;comboBoxOrgan.Name" xml:space="preserve">
+    <value>comboBoxOrgan</value>
+  </data>
+  <data name="labelEgg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrowth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ColumnRadius.Name" xml:space="preserve">
+    <value>ColumnRadius</value>
+  </data>
+  <data name="&gt;&gt;taskDialogSaveChanges.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;textBoxEggSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxGender.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelFatness.Name" xml:space="preserve">
+    <value>labelFatness</value>
+  </data>
+  <data name="labelFatness.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelGonadosomatic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxSection.Items" xml:space="preserve">
+    <value>Oral cavity</value>
+  </data>
+  <data name="labelGonadSample.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBoxFullness.Items4" xml:space="preserve">
+    <value>4 | Much (full section)</value>
+  </data>
+  <data name="checkBoxIntermediate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFecundityAbs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInfection.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxFullness.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="comboBoxFatness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 62</value>
+  </data>
+  <data name="&gt;&gt;textBoxSomaticMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 334</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemKeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelFecundity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 308</value>
+  </data>
+  <data name="comboBoxMaturity.Items3" xml:space="preserve">
+    <value>4 | Ganods take up to ⅔ of peritoneal cavity</value>
+  </data>
+  <data name="&gt;&gt;textBoxSomaticMass.Name" xml:space="preserve">
+    <value>textBoxSomaticMass</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;labelFBA.Name" xml:space="preserve">
+    <value>labelFBA</value>
+  </data>
+  <data name="&gt;&gt;labelTractContent.Name" xml:space="preserve">
+    <value>labelTractContent</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxComments.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabPageFecundity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFermentation.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="spreadSheetInfection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="labelOrgan.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpQuantity.Name" xml:space="preserve">
+    <value>ColumnTrpQuantity</value>
+  </data>
+  <data name="labelFullness.Text" xml:space="preserve">
+    <value>Filling degree</value>
+  </data>
+  <data name="labelLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 125</value>
+  </data>
+  <data name="labelEgg.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="tabPageParasites.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemKeys.Name" xml:space="preserve">
+    <value>ToolStripMenuItemKeys</value>
+  </data>
+  <data name="labelConsumedMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 13</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="labelConditionFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 13</value>
+  </data>
+  <data name="spreadSheetTrophics.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 3</value>
+  </data>
+  <data name="labelGonadSample.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxFatness.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="ColumnRadius.HeaderText" xml:space="preserve">
+    <value>Radius, mm</value>
+  </data>
+  <data name="&gt;&gt;labelLength.Name" xml:space="preserve">
+    <value>labelLength</value>
+  </data>
+  <data name="labelComments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFatness.Text" xml:space="preserve">
+    <value>Fatness</value>
+  </data>
+  <data name="&gt;&gt;textBoxTL.Name" xml:space="preserve">
+    <value>textBoxTL</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumedMass.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecundity.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelGonadSampleMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 13</value>
+  </data>
+  <data name="&gt;&gt;labelConsumptionIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnAddtValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxMeanEggMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxMeanEggMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSample.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxRelativeFecundity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 334</value>
+  </data>
+  <data name="labelConsumedMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="labelTractContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 15</value>
+  </data>
+  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="labelFullness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
+  </data>
+  <data name="comboBoxFermentation.Items2" xml:space="preserve">
+    <value>2 | Slightly digested organisms</value>
+  </data>
+  <data name="tabPageTrophics.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="buttonBlank.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;labelEggMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxRegID.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="loadFromCardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load from card</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="comboBoxMaturity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 21</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndexSoma.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="labelSomaticMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDelete.Name" xml:space="preserve">
+    <value>ToolStripMenuItemDelete</value>
+  </data>
+  <data name="ColumnTrpID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelConditionFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 159</value>
+  </data>
+  <data name="labelTractCondition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntermediate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSampleMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speciesTrophics.Type" xml:space="preserve">
+    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.2.7.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="textBoxGonadIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBoxTL.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGender.Name" xml:space="preserve">
+    <value>comboBoxGender</value>
+  </data>
+  <data name="&gt;&gt;textBoxEggSize.Name" xml:space="preserve">
+    <value>textBoxEggSize</value>
+  </data>
+  <data name="labelAge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGonadSample.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="tabPageGrowth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>502, 533</value>
+  </data>
+  <data name="tabPageParasites.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="ColumnInfID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Name" xml:space="preserve">
+    <value>buttonBlank</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPageFecundity.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="textBoxGonadSampleMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTrophics.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntermediate.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;textBoxCondition.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxGender.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndex.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;textBoxConsumptionIndex.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;loadFromCardToolStripMenuItem.Name" xml:space="preserve">
+    <value>loadFromCardToolStripMenuItem</value>
+  </data>
+  <data name="labelFecundity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelConsumedMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxOrgan.Parent" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="comboBoxSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 167</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxRelativeFecunditySoma.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxRegID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 62</value>
+  </data>
+  <data name="comboBoxOrgan.Items8" xml:space="preserve">
+    <value>Intestines</value>
+  </data>
+  <data name="textBoxConsumptionIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="labelSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityRel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;labelMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxRegID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxConditionSoma.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="ToolStripMenuItemKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="&gt;&gt;labelAge.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;textBoxCondition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;buttonAddParasite.Name" xml:space="preserve">
+    <value>buttonAddParasite</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntermediate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="spreadSheetTrophics.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetInfection.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;labelMaturity.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPageParasites.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxFatness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 21</value>
+  </data>
+  <data name="comboBoxOrgan.Items7" xml:space="preserve">
+    <value>Stomach</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrowth.Parent" xml:space="preserve">
+    <value>tabControlInd</value>
+  </data>
+  <data name="&gt;&gt;labelConsumptionIndex.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;tabPageParasites.Name" xml:space="preserve">
+    <value>tabPageParasites</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFermentation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxOrgan.Items9" xml:space="preserve">
+    <value>Сердце, околосердечная сумка</value>
+  </data>
+  <data name="spreadSheetInfection.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;speciesParasites.Type" xml:space="preserve">
+    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.2.7.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxAbsoluteFecundity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelFatness.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelEgg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 378</value>
+  </data>
+  <data name="labelFecundityAbs.Text" xml:space="preserve">
+    <value>Absolute fecundity</value>
+  </data>
+  <data name="textBoxConsumedMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndexSoma.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="&gt;&gt;contextSaveTrophics.Name" xml:space="preserve">
+    <value>contextSaveTrophics</value>
+  </data>
+  <data name="label16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFecundityRel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxMaturity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxTL.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 99</value>
+  </data>
+  <data name="&gt;&gt;ColumnTrpID.Name" xml:space="preserve">
+    <value>ColumnTrpID</value>
+  </data>
+  <data name="textBoxMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelEggSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spreadSheetTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 201</value>
+  </data>
+  <data name="&gt;&gt;textBoxAge.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="labelOrgan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="&gt;&gt;labelConditionFactor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonTrophics.Name" xml:space="preserve">
+    <value>buttonTrophics</value>
+  </data>
+  <data name="contextSaveTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 76</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="comboBoxMaturity.Items" xml:space="preserve">
+    <value>1 | Juvenile species</value>
+  </data>
+  <data name="labelMaturity.Text" xml:space="preserve">
+    <value>Maturity stage</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Name" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;labelFBA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBoxGender.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 62</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxConsumedMass.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelGonadosomatic.Name" xml:space="preserve">
+    <value>labelGonadosomatic</value>
+  </data>
+  <data name="labelFecundityRel.Text" xml:space="preserve">
+    <value>Relative fecundity</value>
+  </data>
+  <data name="comboBoxFullness.Items" xml:space="preserve">
+    <value>0 | Empty</value>
+  </data>
+  <data name="&gt;&gt;labelLength.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;taskDialogSaveChanges.Name" xml:space="preserve">
+    <value>taskDialogSaveChanges</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="labelConsumptionIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="tabPageGrowth.Text" xml:space="preserve">
+    <value>Growth*</value>
+  </data>
+  <data name="spreadSheetInfection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 363</value>
+  </data>
+  <data name="&gt;&gt;textBoxEggSize.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="ColumnTrpConsumption.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="taskDialogSaveChanges.MainInstruction" xml:space="preserve">
+    <value>Save changes?</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSection.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="textBoxGonadIndex.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="tabPageTrophics.Text" xml:space="preserve">
+    <value>Trophics</value>
+  </data>
+  <data name="&gt;&gt;textBoxAge.Name" xml:space="preserve">
+    <value>textBoxAge</value>
+  </data>
+  <data name="&gt;&gt;textBoxCondition.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Obligatory notes</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonTrophics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 462</value>
+  </data>
+  <data name="textBoxTL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelSomaticMass.Text" xml:space="preserve">
+    <value>Somatic mass, g</value>
+  </data>
+  <data name="labelComments.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="textBoxRegID.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="comboBoxSection.Items5" xml:space="preserve">
+    <value>Large intestine</value>
+  </data>
+  <data name="&gt;&gt;labelSex.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="textBoxMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="tabControlInd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="textBoxSomaticMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 182</value>
+  </data>
+  <data name="textBoxRelativeFecundity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spreadSheet1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="labelSection.Text" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="&gt;&gt;textBoxRegID.Name" xml:space="preserve">
+    <value>textBoxRegID</value>
+  </data>
+  <data name="labelGonadMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelTractCondition.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelRegID.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxAge.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;textBoxRegID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tdbSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxTL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSection.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="labelMaturity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 91</value>
+  </data>
+  <data name="labelFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 15</value>
+  </data>
+  <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyToolStripMenuItem</value>
+  </data>
+  <data name="buttonTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="&gt;&gt;comboBoxMaturity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGonadMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="textBoxGonadSample.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="labelLength.Text" xml:space="preserve">
+    <value>Standard length, mm</value>
+  </data>
+  <data name="labelOrgan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="buttonReport.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tdbCancel.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="ColumnTrpConsumption.HeaderText" xml:space="preserve">
+    <value>Consumption, ‰</value>
+  </data>
+  <data name="labelLength.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonAddParasite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 465</value>
+  </data>
+  <data name="allSectionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="textBoxGonadMass.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="spreadSheetTrophics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 255</value>
+  </data>
+  <data name="textBoxEggSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;labelMass.Parent" xml:space="preserve">
+    <value>tabPageGeneral</value>
+  </data>
+  <data name="textBoxCondition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 156</value>
+  </data>
+  <data name="textBoxAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="textBoxRelativeFecunditySoma.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxFermentation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 221</value>
+  </data>
+  <data name="&gt;&gt;allSectionsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="checkBoxIntermediate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelTractCondition.Text" xml:space="preserve">
+    <value>Digestive system</value>
+  </data>
+  <data name="spreadSheetAddt.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxRelativeFecundity.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="tabPageAddt.Text" xml:space="preserve">
+    <value>Additional values</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+  <data name="textBoxMeanEggMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 441</value>
+  </data>
+  <data name="textBoxConsumptionIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 89</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Name" xml:space="preserve">
+    <value>spreadSheetAddt</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="textBoxGonadIndexSoma.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Growth values</value>
+  </data>
+  <data name="comboBoxMaturity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBoxMaturity.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxGonadSampleMass.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="buttonBlank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>335, 577</value>
+  </data>
+  <data name="&gt;&gt;tdbSave.Name" xml:space="preserve">
+    <value>tdbSave</value>
+  </data>
+  <data name="labelMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
+  </data>
+  <data name="buttonReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxRegID.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="comboBoxSection.Items4" xml:space="preserve">
+    <value>Mid-intestine</value>
+  </data>
+  <data name="labelTractCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="labelEggMass.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;labelFecundityAbs.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelEgg.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxComments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 3</value>
+  </data>
+  <data name="tabPageAddt.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFullness.Parent" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="&gt;&gt;buttonTrophics.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="comboBoxFermentation.Items4" xml:space="preserve">
+    <value>4 | Intensly digested organisms</value>
+  </data>
+  <data name="textBoxGonadIndex.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelFBA.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="spreadSheetAddt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 65</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGender.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACX0lE
+        QVQ4T6WSa0hTYRjHD/TBvhRdqE99Koi+RFFB9SGjUAsvLYzEjMxFTKVkk6XpSC1N0eVtadqMvAw1b5Uo
+        KUUiJI7uGs7oIpEauZa1s3nP4tc5RwZNBgW98OPA+77/3/O8D0cA/gufmz3tOXTdzqS1KhVtTMh2X3c8
+        CC21RXoJPFQVHMdpr2PSfoORwXySNUEUZeu5ZjRgyk6SCVwsYEZsZs7VxIyzHku5nqnxGpJjVbbXvSlc
+        OBtKinoH9p6TjHesRxt9SMotEsjhOVcDZTkn6LPmI34qYWzQwAfrKdoqVMRG+VOXto4XRQLxx0K8BU01
+        BQsC8RbGtGgy9JEYEiI4Hx+OXqNCpw4lLiqAYu0GRRAZ7O8tqK80Mis2MuswMzWai+NVAraa1QoD1avo
+        K1/GU5OfEpYJ2L3VW2Ax5zDtqGJ6OIupN2eYfHkEsX05hdUd5JpbuXi1kRSjBV1mBbGpJqIT87wFlaWZ
+        TIyYmBzUMPEsFPejbXy5u0YJe9bc/E+crhmGx5xExF0iLMYgby8IKgrTEd9m4X4ShLt7M67OtYxUC0pl
+        eVXe6VEwN3QxMGRXwg96bRwIV8vHglCal8q3/nO4ujYh3luJo9mPoZuC0vaP+V98d0uVPzsZeG/H2v+R
+        4CgdQVJ4/8HD+O/Zi1B8OQnH4zgpvIKvLUsZrV2CrUxAK71ZbtvTwXWpgxJLJ23dNuUrs2vLRoQrGYnK
+        D+KZsgeNNLA/Kz+0vlPCzff7aOh47iUILEw/Lf1hKtThgYTt26kcyNOW3+yp5gtFIA/CF0elacsX/obP
+        8L+D8Bsb4cocWY3wtQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="&gt;&gt;allSectionsToolStripMenuItem.Name" xml:space="preserve">
+    <value>allSectionsToolStripMenuItem</value>
+  </data>
+  <data name="buttonAddTrophics.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="spreadSheetInfection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;tabPageGeneral.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 15</value>
+  </data>
+  <data name="labelEggMass.Text" xml:space="preserve">
+    <value>Mean egg mass, µg</value>
+  </data>
+  <data name="&gt;&gt;labelGonadMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelFermentation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 224</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 62</value>
+  </data>
+  <data name="tabControlInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>510, 559</value>
+  </data>
+  <data name="taskDialogSaveChanges.Content" xml:space="preserve">
+    <value>Some changes were made. Would you like to save them?</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxMass.Name" xml:space="preserve">
+    <value>textBoxMass</value>
+  </data>
+  <data name="&gt;&gt;textBoxLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxFullness.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="textBoxConsumedMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;tabPageAddt.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBoxConditionSoma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAddParasite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonTrophics.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="tabControlInd.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelGonadSample.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 246</value>
+  </data>
+  <data name="&gt;&gt;textBoxMeanEggMass.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelFBA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="&gt;&gt;cutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIntermediate.Name" xml:space="preserve">
+    <value>checkBoxIntermediate</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelFecundity.Parent" xml:space="preserve">
+    <value>tabPageFecundity</value>
+  </data>
+  <data name="labelGonadSampleMass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;labelTractContent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnInfSpecies.HeaderText" xml:space="preserve">
+    <value>Taxa / Species</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInfection.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="labelFatness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAge.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="cutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="&gt;&gt;labelSex.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxTL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxAge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 96</value>
+  </data>
+  <data name="textBoxSomaticMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGonadSampleMass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 220</value>
+  </data>
+  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 142</value>
+  </data>
+  <data name="labelFatness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEggSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 13</value>
+  </data>
+  <data name="labelGonadSample.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelConsumptionIndex.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;cutToolStripMenuItem.Name" xml:space="preserve">
+    <value>cutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ColumnInfID.Name" xml:space="preserve">
+    <value>ColumnInfID</value>
+  </data>
+  <data name="&gt;&gt;tabPageTrophics.Name" xml:space="preserve">
+    <value>tabPageTrophics</value>
+  </data>
+  <data name="tabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="&gt;&gt;tabPageGrowth.Name" xml:space="preserve">
+    <value>tabPageGrowth</value>
+  </data>
+  <data name="textBoxConditionSoma.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxEggSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 415</value>
+  </data>
+  <data name="textBoxComments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxSomaticMass.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="labelFermentation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="&gt;&gt;labelGonadSampleMass.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="spreadSheetTrophics.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <metadata name="taskDialogSaveChanges.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>129, 17</value>
+  </metadata>
+  <metadata name="ColumnInfQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTrpConsumption.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTrpID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTrpQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnTrpMass.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>57</value>
+  </metadata>
+  <metadata name="ColumnAddtVariable.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="speciesTrophics.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>473, 17</value>
+  </metadata>
+  <metadata name="contextSaveTrophics.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>310, 17</value>
+  </metadata>
+  <metadata name="speciesParasites.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>610, 17</value>
+  </metadata>
+  <metadata name="ColumnAddtValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="contextLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="ColumnTrpSpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnInfID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnRadius.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnInfComments.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnInfSpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

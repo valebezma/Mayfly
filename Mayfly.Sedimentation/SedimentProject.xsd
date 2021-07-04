@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SedimentProject" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SedimentProject" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SedimentProject" msprop:Generator_UserDSName="SedimentProject">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Project" msprop:Generator_TableClassName="ProjectDataTable" msprop:Generator_TableVarName="tableProject" msprop:Generator_RowChangedName="ProjectRowChanged" msprop:Generator_TablePropName="Project" msprop:Generator_RowDeletingName="ProjectRowDeleting" msprop:Generator_RowChangingName="ProjectRowChanging" msprop:Generator_RowEvHandlerName="ProjectRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjectRowDeleted" msprop:Generator_RowClassName="ProjectRow" msprop:Generator_UserTableName="Project" msprop:Generator_RowEvArgName="ProjectRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Start" msprop:Generator_ColumnVarNameInTable="columnStart" msprop:Generator_ColumnPropNameInRow="Start" msprop:Generator_ColumnPropNameInTable="StartColumn" msprop:Generator_UserColumnName="Start" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="End" msprop:Generator_ColumnVarNameInTable="columnEnd" msprop:Generator_ColumnPropNameInRow="End" msprop:Generator_ColumnPropNameInTable="EndColumn" msprop:Generator_UserColumnName="End" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_UserColumnName="Volume" type="xs:double" minOccurs="0" />
+              <xs:element name="Performance" msprop:Generator_ColumnVarNameInTable="columnPerformance" msprop:Generator_ColumnPropNameInRow="Performance" msprop:Generator_ColumnPropNameInTable="PerformanceColumn" msprop:Generator_UserColumnName="Performance" type="xs:double" minOccurs="0" />
+              <xs:element name="Density" msprop:Generator_ColumnVarNameInTable="columnDensity" msprop:Generator_ColumnPropNameInRow="Density" msprop:Generator_ColumnPropNameInTable="DensityColumn" msprop:Generator_UserColumnName="Density" type="xs:double" minOccurs="0" />
+              <xs:element name="Z" msprop:Generator_ColumnVarNameInTable="columnZ" msprop:Generator_ColumnPropNameInRow="Z" msprop:Generator_ColumnPropNameInTable="ZColumn" msprop:Generator_UserColumnName="Z" type="xs:double" minOccurs="0" />
+              <xs:element name="LateralFlow" msdata:Caption="Width" msprop:Generator_ColumnVarNameInTable="columnLateralFlow" msprop:Generator_ColumnPropNameInRow="LateralFlow" msprop:Generator_ColumnPropNameInTable="LateralFlowColumn" msprop:Generator_UserColumnName="LateralFlow" type="xs:double" minOccurs="0" />
+              <xs:element name="WorkLongitude" msdata:Caption="Width" msprop:Generator_ColumnVarNameInTable="columnWorkLongitude" msprop:Generator_ColumnPropNameInRow="WorkLongitude" msprop:Generator_ColumnPropNameInTable="WorkLongitudeColumn" msprop:Generator_UserColumnName="WorkLongitude" type="xs:double" minOccurs="0" />
+              <xs:element name="WorkWidth" msdata:Caption="Width" msprop:Generator_ColumnVarNameInTable="columnWorkWidth" msprop:Generator_ColumnPropNameInRow="WorkWidth" msprop:Generator_ColumnPropNameInTable="WorkWidthColumn" msprop:Generator_UserColumnName="WorkWidth" type="xs:double" minOccurs="0" />
+              <xs:element name="LeftGap" msprop:Generator_ColumnVarNameInTable="columnLeftGap" msprop:Generator_ColumnPropNameInRow="LeftGap" msprop:Generator_ColumnPropNameInTable="LeftGapColumn" msprop:Generator_UserColumnName="LeftGap" type="xs:double" minOccurs="0" />
+              <xs:element name="Width" msprop:Generator_ColumnVarNameInTable="columnWidth" msprop:Generator_ColumnPropNameInRow="Width" msprop:Generator_ColumnPropNameInTable="WidthColumn" msprop:Generator_UserColumnName="Width" type="xs:double" minOccurs="0" />
+              <xs:element name="Depth" msprop:Generator_ColumnVarNameInTable="columnDepth" msprop:Generator_ColumnPropNameInRow="Depth" msprop:Generator_ColumnPropNameInTable="DepthColumn" msprop:Generator_UserColumnName="Depth" type="xs:double" minOccurs="0" />
+              <xs:element name="Velocity" msprop:Generator_ColumnVarNameInTable="columnVelocity" msprop:Generator_ColumnPropNameInRow="Velocity" msprop:Generator_ColumnPropNameInTable="VelocityColumn" msprop:Generator_UserColumnName="Velocity" type="xs:double" minOccurs="0" />
+              <xs:element name="Temperature" msprop:Generator_ColumnVarNameInTable="columnTemperature" msprop:Generator_ColumnPropNameInRow="Temperature" msprop:Generator_ColumnPropNameInTable="TemperatureColumn" msprop:Generator_UserColumnName="Temperature" type="xs:double" minOccurs="0" />
+              <xs:element name="LoadNatural" msprop:Generator_ColumnVarNameInTable="columnLoadNatural" msprop:Generator_ColumnPropNameInRow="LoadNatural" msprop:Generator_ColumnPropNameInTable="LoadNaturalColumn" msprop:Generator_UserColumnName="LoadNatural" type="xs:double" minOccurs="0" />
+              <xs:element name="TurbulentWidth" msprop:Generator_ColumnVarNameInTable="columnTurbulentWidth" msprop:Generator_ColumnPropNameInRow="TurbulentWidth" msprop:Generator_ColumnPropNameInTable="TurbulentWidthColumn" msprop:Generator_UserColumnName="TurbulentWidth" type="xs:double" minOccurs="0" />
+              <xs:element name="Fi" msprop:Generator_ColumnVarNameInTable="columnFi" msprop:Generator_ColumnPropNameInRow="Fi" msprop:Generator_ColumnPropNameInTable="FiColumn" msprop:Generator_UserColumnName="Fi" type="xs:double" minOccurs="0" />
+              <xs:element name="d" msprop:Generator_ColumnVarNameInTable="columnd" msprop:Generator_ColumnPropNameInRow="d" msprop:Generator_ColumnPropNameInTable="dColumn" msprop:Generator_UserColumnName="d" type="xs:double" minOccurs="0" />
+              <xs:element name="ControlPart" msprop:Generator_ColumnVarNameInTable="columnControlPart" msprop:Generator_ColumnPropNameInRow="ControlPart" msprop:Generator_ColumnPropNameInTable="ControlPartColumn" msprop:Generator_UserColumnName="ControlPart" type="xs:double" minOccurs="0" />
+              <xs:element name="Water" msprop:Generator_ColumnVarNameInTable="columnWater" msprop:Generator_ColumnPropNameInRow="Water" msprop:Generator_ColumnPropNameInTable="WaterColumn" msprop:Generator_UserColumnName="Water" type="xs:string" minOccurs="0" />
+              <xs:element name="Stretch" msprop:Generator_ColumnVarNameInTable="columnStretch" msprop:Generator_ColumnPropNameInRow="Stretch" msprop:Generator_ColumnPropNameInTable="StretchColumn" msprop:Generator_UserColumnName="Stretch" type="xs:string" minOccurs="0" />
+              <xs:element name="WorkType" msprop:Generator_ColumnVarNameInTable="columnWorkType" msprop:Generator_ColumnPropNameInRow="WorkType" msprop:Generator_ColumnPropNameInTable="WorkTypeColumn" msprop:Generator_UserColumnName="WorkType" type="xs:string" minOccurs="0" />
+              <xs:element name="Composition" msprop:Generator_TableClassName="CompositionDataTable" msprop:Generator_TableVarName="tableComposition" msprop:Generator_RowChangedName="CompositionRowChanged" msprop:Generator_TablePropName="Composition" msprop:Generator_RowDeletingName="CompositionRowDeleting" msprop:Generator_RowChangingName="CompositionRowChanging" msprop:Generator_RowEvHandlerName="CompositionRowChangeEventHandler" msprop:Generator_RowDeletedName="CompositionRowDeleted" msprop:Generator_RowClassName="CompositionRow" msprop:Generator_UserTableName="Composition" msprop:Generator_RowEvArgName="CompositionRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="ProjectData_Composition" msdata:parent="Project" msdata:child="Composition" msdata:parentkey="ID" msdata:childkey="ProjectID" msprop:Generator_UserChildTable="Composition" msprop:Generator_ChildPropName="GetCompositionRows" msprop:Generator_UserRelationName="ProjectData_Composition" msprop:Generator_RelationVarName="relationProjectData_Composition" msprop:Generator_UserParentTable="Project" msprop:Generator_ParentPropName="ProjectRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProjectID" msprop:Generator_ColumnVarNameInTable="columnProjectID" msprop:Generator_ColumnPropNameInRow="ProjectID" msprop:Generator_ColumnPropNameInTable="ProjectIDColumn" msprop:Generator_UserColumnName="ProjectID" type="xs:int" minOccurs="0" />
+                    <xs:element name="FractionFrom" msprop:Generator_ColumnVarNameInTable="columnFractionFrom" msprop:Generator_ColumnPropNameInRow="FractionFrom" msprop:Generator_ColumnPropNameInTable="FractionFromColumn" msprop:Generator_UserColumnName="FractionFrom" type="xs:double" minOccurs="0" />
+                    <xs:element name="FractionTo" msprop:Generator_ColumnVarNameInTable="columnFractionTo" msprop:Generator_ColumnPropNameInRow="FractionTo" msprop:Generator_ColumnPropNameInTable="FractionToColumn" msprop:Generator_UserColumnName="FractionTo" type="xs:double" minOccurs="0" />
+                    <xs:element name="Separate" msprop:Generator_ColumnVarNameInTable="columnSeparate" msprop:Generator_ColumnPropNameInRow="Separate" msprop:Generator_ColumnPropNameInTable="SeparateColumn" msprop:Generator_UserColumnName="Separate" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Section" msprop:Generator_TableClassName="SectionDataTable" msprop:Generator_TableVarName="tableSection" msprop:Generator_TablePropName="Section" msprop:Generator_RowDeletingName="SectionRowDeleting" msprop:Generator_RowChangingName="SectionRowChanging" msprop:Generator_RowEvHandlerName="SectionRowChangeEventHandler" msprop:Generator_RowDeletedName="SectionRowDeleted" msprop:Generator_UserTableName="Section" msprop:Generator_RowChangedName="SectionRowChanged" msprop:Generator_RowEvArgName="SectionRowChangeEvent" msprop:Generator_RowClassName="SectionRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Project_Ngavt" msdata:parent="Project" msdata:child="Section" msdata:parentkey="ID" msdata:childkey="ProjectID" msprop:Generator_UserChildTable="Section" msprop:Generator_ChildPropName="GetSectionRows" msprop:Generator_UserRelationName="Project_Ngavt" msprop:Generator_RelationVarName="relationProject_Ngavt" msprop:Generator_UserParentTable="Project" msprop:Generator_ParentPropName="ProjectRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+                    <xs:element name="ProjectID" msdata:Caption="PrjID" msprop:Generator_ColumnVarNameInTable="columnProjectID" msprop:Generator_ColumnPropNameInRow="ProjectID" msprop:Generator_ColumnPropNameInTable="ProjectIDColumn" msprop:Generator_UserColumnName="ProjectID" type="xs:int" minOccurs="0" />
+                    <xs:element name="Distance" msprop:Generator_ColumnVarNameInTable="columnDistance" msprop:Generator_ColumnPropNameInRow="Distance" msprop:Generator_ColumnPropNameInTable="DistanceColumn" msprop:Generator_UserColumnName="Distance" type="xs:double" minOccurs="0" />
+                    <xs:element name="Depth" msprop:Generator_ColumnVarNameInTable="columnDepth" msprop:Generator_ColumnPropNameInRow="Depth" msprop:Generator_ColumnPropNameInTable="DepthColumn" msprop:Generator_UserColumnName="Depth" type="xs:double" minOccurs="0" />
+                    <xs:element name="Velocity" msprop:Generator_ColumnVarNameInTable="columnVelocity" msprop:Generator_ColumnPropNameInRow="Velocity" msprop:Generator_ColumnPropNameInTable="VelocityColumn" msprop:Generator_UserColumnName="Velocity" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Zone" msprop:Generator_TableClassName="ZoneDataTable" msprop:Generator_TableVarName="tableZone" msprop:Generator_TablePropName="Zone" msprop:Generator_RowDeletingName="ZoneRowDeleting" msprop:Generator_RowChangingName="ZoneRowChanging" msprop:Generator_RowEvHandlerName="ZoneRowChangeEventHandler" msprop:Generator_RowDeletedName="ZoneRowDeleted" msprop:Generator_UserTableName="Zone" msprop:Generator_RowChangedName="ZoneRowChanged" msprop:Generator_RowEvArgName="ZoneRowChangeEvent" msprop:Generator_RowClassName="ZoneRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Project_Zone" msdata:parent="Project" msdata:child="Zone" msdata:parentkey="ID" msdata:childkey="ProjectID" msprop:Generator_UserChildTable="Zone" msprop:Generator_ChildPropName="GetZoneRows" msprop:Generator_UserRelationName="Project_Zone" msprop:Generator_RelationVarName="relationProject_Zone" msprop:Generator_UserParentTable="Project" msprop:Generator_ParentPropName="ProjectRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProjectID" msprop:Generator_ColumnVarNameInTable="columnProjectID" msprop:Generator_ColumnPropNameInRow="ProjectID" msprop:Generator_ColumnPropNameInTable="ProjectIDColumn" msprop:Generator_UserColumnName="ProjectID" type="xs:int" minOccurs="0" />
+                    <xs:element name="From" msprop:Generator_ColumnVarNameInTable="columnFrom" msprop:Generator_ColumnPropNameInRow="From" msprop:Generator_ColumnPropNameInTable="FromColumn" msprop:Generator_UserColumnName="From" type="xs:double" minOccurs="0" />
+                    <xs:element name="To" msprop:Generator_ColumnVarNameInTable="columnTo" msprop:Generator_ColumnPropNameInRow="To" msprop:Generator_ColumnPropNameInTable="ToColumn" msprop:Generator_UserColumnName="To" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CriticalLoad" msprop:Generator_TableClassName="CriticalLoadDataTable" msprop:Generator_TableVarName="tableCriticalLoad" msprop:Generator_RowChangedName="CriticalLoadRowChanged" msprop:Generator_TablePropName="CriticalLoad" msprop:Generator_RowDeletingName="CriticalLoadRowDeleting" msprop:Generator_RowChangingName="CriticalLoadRowChanging" msprop:Generator_RowEvHandlerName="CriticalLoadRowChangeEventHandler" msprop:Generator_RowDeletedName="CriticalLoadRowDeleted" msprop:Generator_RowClassName="CriticalLoadRow" msprop:Generator_UserTableName="CriticalLoad" msprop:Generator_RowEvArgName="CriticalLoadRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Project_CriticalLoad" msdata:parent="Project" msdata:child="CriticalLoad" msdata:parentkey="ID" msdata:childkey="ProjectID" msprop:Generator_UserChildTable="CriticalLoad" msprop:Generator_ChildPropName="GetCriticalLoadRows" msprop:Generator_UserRelationName="Project_CriticalLoad" msprop:Generator_RelationVarName="relationProject_CriticalLoad" msprop:Generator_UserParentTable="Project" msprop:Generator_ParentPropName="ProjectRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProjectID" msprop:Generator_ColumnVarNameInTable="columnProjectID" msprop:Generator_ColumnPropNameInRow="ProjectID" msprop:Generator_ColumnPropNameInTable="ProjectIDColumn" msprop:Generator_UserColumnName="ProjectID" type="xs:int" minOccurs="0" />
+                    <xs:element name="From" msprop:Generator_ColumnVarNameInTable="columnFrom" msprop:Generator_ColumnPropNameInRow="From" msprop:Generator_ColumnPropNameInTable="FromColumn" msprop:Generator_UserColumnName="From" type="xs:double" minOccurs="0" />
+                    <xs:element name="To" msprop:Generator_ColumnVarNameInTable="columnTo" msprop:Generator_ColumnPropNameInRow="To" msprop:Generator_ColumnPropNameInTable="ToColumn" msprop:Generator_UserColumnName="To" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CriticalSilt" msprop:Generator_TableClassName="CriticalSiltDataTable" msprop:Generator_TableVarName="tableCriticalSilt" msprop:Generator_TablePropName="CriticalSilt" msprop:Generator_RowDeletingName="CriticalSiltRowDeleting" msprop:Generator_RowChangingName="CriticalSiltRowChanging" msprop:Generator_RowEvHandlerName="CriticalSiltRowChangeEventHandler" msprop:Generator_RowDeletedName="CriticalSiltRowDeleted" msprop:Generator_UserTableName="CriticalSilt" msprop:Generator_RowChangedName="CriticalSiltRowChanged" msprop:Generator_RowEvArgName="CriticalSiltRowChangeEvent" msprop:Generator_RowClassName="CriticalSiltRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <msdata:Relationship name="Project_CriticalSilt" msdata:parent="Project" msdata:child="CriticalSilt" msdata:parentkey="ID" msdata:childkey="ProjectID" msprop:Generator_UserChildTable="CriticalSilt" msprop:Generator_ChildPropName="GetCriticalSiltRows" msprop:Generator_UserRelationName="Project_CriticalSilt" msprop:Generator_RelationVarName="relationProject_CriticalSilt" msprop:Generator_UserParentTable="Project" msprop:Generator_ParentPropName="ProjectRow" />
+                  </xs:appinfo>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProjectID" msprop:Generator_ColumnVarNameInTable="columnProjectID" msprop:Generator_ColumnPropNameInRow="ProjectID" msprop:Generator_ColumnPropNameInTable="ProjectIDColumn" msprop:Generator_UserColumnName="ProjectID" type="xs:int" minOccurs="0" />
+                    <xs:element name="From" msprop:Generator_ColumnVarNameInTable="columnFrom" msprop:Generator_ColumnPropNameInRow="From" msprop:Generator_ColumnPropNameInTable="FromColumn" msprop:Generator_UserColumnName="From" type="xs:double" minOccurs="0" />
+                    <xs:element name="To" msprop:Generator_ColumnVarNameInTable="columnTo" msprop:Generator_ColumnPropNameInRow="To" msprop:Generator_ColumnPropNameInTable="ToColumn" msprop:Generator_UserColumnName="To" type="xs:double" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Section_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Section" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Project" />
+      <xs:field xpath="ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

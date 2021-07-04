@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColAsc" xml:space="preserve">
+    <value>Associated species</value>
+  </data>
+  <data name="ColDiet" xml:space="preserve">
+    <value>Species / taxa of diet</value>
+  </data>
+  <data name="ColFragments" xml:space="preserve">
+    <value>Fragments count</value>
+  </data>
+  <data name="ColIdenticFor" xml:space="preserve">
+    <value>Individuals count</value>
+  </data>
+  <data name="ColIndex" xml:space="preserve">
+    <value>Consumption index, ×10&lt;sup&gt;-4&lt;/sup&gt;</value>
+  </data>
+  <data name="ColMeanMass" xml:space="preserve">
+    <value>Mean mass, mg</value>
+  </data>
+  <data name="ColPredator" xml:space="preserve">
+    <value>Predator info</value>
+  </data>
+  <data name="ColRecMass" xml:space="preserve">
+    <value>Recovered individual mass, mg</value>
+  </data>
+  <data name="ColSample" xml:space="preserve">
+    <value>Total sample</value>
+  </data>
+  <data name="ColTotalMass" xml:space="preserve">
+    <value>Total mass, mg</value>
+  </data>
+  <data name="ColUnw" xml:space="preserve">
+    <value>Weight unknown for</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Weight recovery protocol</value>
+  </data>
+  <data name="RecPar1" xml:space="preserve">
+    <value>Species has {0} unweighted individuals. It is {1:P1} of total fragments discovered.</value>
+  </data>
+  <data name="RecParAbstract" xml:space="preserve">
+    <value>Information on individuals is absent in {0} log entries. Their total quantity is {1} ind. Total mass of that entries equals {2} × {3} = {4} mg.</value>
+  </data>
+  <data name="RecParAsc" xml:space="preserve">
+    <value>Associated species are: {0}.</value>
+  </data>
+  <data name="RecParCategory" xml:space="preserve">
+    <value>Weight of {0} ({1:P1}) individuals is recovered by their {2} using category's mean weight.</value>
+  </data>
+  <data name="RecParLength" xml:space="preserve">
+    <value>Weight of {0} ({1:P1}) individuals is recovered from their length using equation:</value>
+  </data>
+  <data name="RecParLength2" xml:space="preserve">
+    <value>where W - mass, mg; L - length, mm. R² of model equals {0:N1} (&lt;i&gt;p&lt;/i&gt;={1:G2}).</value>
+  </data>
+  <data name="RecParNoAsc" xml:space="preserve">
+    <value>No species are associated. Weight can not be obtained.</value>
+  </data>
+  <data name="RecParRaw" xml:space="preserve">
+    <value>Weight of {0} ({1:P1}) individuals is set as mean for entire species, which is {2} mg. Total mass of these individuals equals {3} × {4} = {5} mg.</value>
+  </data>
+  <data name="RecParTotal" xml:space="preserve">
+    <value>Totally {0} individuals weight was recovered. They form {1:P1} of unweighted individuals.</value>
+  </data>
+  <data name="RecParVar" xml:space="preserve">
+    <value>Weight of {0} ({1:P1}) individuals is recovered from their {2} using equation:</value>
+  </data>
+  <data name="RecParVar2" xml:space="preserve">
+    <value>where W - mass, mg; X - {0}. R² of model equals {1:N1} (&lt;i&gt;p&lt;/i&gt;={2:G2}).</value>
+  </data>
+  <data name="Section1Title" xml:space="preserve">
+    <value>Data used for recovery</value>
+  </data>
+  <data name="Section2Title" xml:space="preserve">
+    <value>Taxa association</value>
+  </data>
+  <data name="Section3Title" xml:space="preserve">
+    <value>Weight recovery by diet species</value>
+  </data>
+  <data name="Section4Title" xml:space="preserve">
+    <value>Recovery results per capita</value>
+  </data>
+  <data name="TableAscHeader" xml:space="preserve">
+    <value>Table of taxa / species association</value>
+  </data>
+  <data name="TableLenHeader" xml:space="preserve">
+    <value>Weight recovery from individual length</value>
+  </data>
+  <data name="TableRecHeader" xml:space="preserve">
+    <value>Weight recovery from {0}</value>
+  </data>
+</root>

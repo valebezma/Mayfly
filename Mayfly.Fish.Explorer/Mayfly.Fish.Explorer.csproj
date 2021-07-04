@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA027C2B-ADE1-4157-9B21-B903B3EDCA17}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.Fish.Explorer</RootNamespace>
+    <AssemblyName>fexplore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>..\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>55FB94C7A2A9728919BE9496BADE8646B7B3608E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Mayfly.Fish.Explorer_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AeroWizard, Version=1.2.3.22616, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Mayfly\CurrentBuild\bin\AeroWizard.dll</HintPath>
+    </Reference>
+    <Reference Include="Meta.Numerics, Version=4.0.7.0, Culture=neutral, PublicKeyToken=67d25c65a6631347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Meta.Numerics.4.0.7\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\CardStack.Statistics.cs" />
+    <Compile Include="Extensions\CardStack.Statistics.Mass.cs" />
+    <Compile Include="Extensions\CardStack.Statistics.Quantity.cs" />
+    <Compile Include="Extensions\IndividualRegSorter.cs" />
+    <Compile Include="Compositions\AgeKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compositions\AgeKeyForm.Designer.cs">
+      <DependentUpon>AgeKeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\CardStack.Compositions.cs" />
+    <Compile Include="Compositions\AgeKey.cs" />
+    <Compile Include="Compositions\Cohort.cs" />
+    <Compile Include="Compositions\CompositionEqualizer.cs" />
+    <Compile Include="Compositions\VirtualCohort.cs" />
+    <Compile Include="Compositions\PredictionModel.cs" />
+    <Compile Include="Compositions\YieldPerRecruitModel.cs" />
+    <Compile Include="Extensions\CardStack.cs" />
+    <Compile Include="Extensions\Data.cs" />
+    <Compile Include="Extensions\CardStack.Artefacts.cs" />
+    <Compile Include="Extensions\CardStack.Reports.cs" />
+    <Compile Include="Extensions\Data.Bio.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Resources\Reports\Extrapolation1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Extrapolation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\GearStats1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GearStats.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\SpeciesStats1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeciesStats.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardExtrapolations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardExtrapolations.Designer.cs">
+      <DependentUpon>WizardExtrapolations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardPrediction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardPrediction.Designer.cs">
+      <DependentUpon>WizardPrediction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMSY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMSY.Designer.cs">
+      <DependentUpon>WizardMSY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMSYR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMSYR.Designer.cs">
+      <DependentUpon>WizardMSYR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardVirtualPopulation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardVirtualPopulation.Designer.cs">
+      <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardGrowth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardGrowth.Designer.cs">
+      <DependentUpon>WizardGrowth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMortalityCohorts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMortalityCohorts.Designer.cs">
+      <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardStock.Designer.cs">
+      <DependentUpon>WizardStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardExtrapolation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardExtrapolation.Designer.cs">
+      <DependentUpon>WizardExtrapolation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compositions\GillnetSelectivityModel.cs" />
+    <Compile Include="MainForm.Artefacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Cards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Individuals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Species.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.GearStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.SpeciesStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Stratified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Reports\AgeLengthKey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgeLengthKey.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\CatchComposition.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CatchComposition.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Export.ru.Designer.cs">
+      <DependentUpon>Export.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Export.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Export.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Extrapolations.Designer.cs">
+      <DependentUpon>Extrapolations.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\GrowthCohorts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GrowthCohorts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Mortality.ru.Designer.cs">
+      <DependentUpon>Mortality.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Mortality.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mortality.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\MortalityCohorts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MortalityCohorts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Selectivity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Selectivity.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\StockComposition.ru.Designer.cs">
+      <DependentUpon>StockComposition.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\StockComposition.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockComposition.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\TreatmentSuggestion.ru.Designer.cs">
+      <DependentUpon>TreatmentSuggestion.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\TreatmentSuggestion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TreatmentSuggestion.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\VPA.ru.Designer.cs">
+      <DependentUpon>VPA.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\VPA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VPA.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\MSYR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MSYR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Bio\WizardExport2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Bio\WizardExport2.Designer.cs">
+      <DependentUpon>WizardExport2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\WizardCommunityComposition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizardCommunityComposition.Designer.cs">
+      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardCommunity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardCommunity.Designer.cs">
+      <DependentUpon>WizardCommunity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMortality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardMortality.Designer.cs">
+      <DependentUpon>WizardMortality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\WizardCatchesComposition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizardCatchesComposition.Designer.cs">
+      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardCatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Composition\WizardCatch.Designer.cs">
+      <DependentUpon>WizardCatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Survey\WizardSpawning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Survey\WizardSpawning.Designer.cs">
+      <DependentUpon>WizardSpawning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardGrowthCohorts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardGrowthCohorts.Designer.cs">
+      <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\Catch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\Catch.designer.cs">
+      <DependentUpon>Catch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\ExpressCatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\ExpressCatch.Designer.cs">
+      <DependentUpon>ExpressCatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\Individuals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\Individuals.Designer.cs">
+      <DependentUpon>Individuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\StratifiedControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\StratifiedControl.Designer.cs">
+      <DependentUpon>StratifiedControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\CardRow.cs" />
+    <Compile Include="Observations\Surveys.cs">
+      <DependentUpon>Surveys.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\Surveys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Surveys.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\Gear.cs" />
+    <Compile Include="Observations\Environment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\Environment.Designer.cs">
+      <DependentUpon>Environment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Observations\WizardOb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observations\WizardOb.Designer.cs">
+      <DependentUpon>WizardOb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Growth.ru.Designer.cs">
+      <DependentUpon>Growth.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Growth.Designer.cs">
+      <DependentUpon>Growth.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Community.ru.Designer.cs">
+      <DependentUpon>Community.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Community.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Community.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\GearSelection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GearSelection.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\GearClass.ru.Designer.cs">
+      <DependentUpon>GearClass.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\GearClass.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GearClass.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\WizardGearSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\WizardGearSet.Designer.cs">
+      <DependentUpon>WizardGearSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardSelectivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardSelectivity.Designer.cs">
+      <DependentUpon>WizardSelectivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardTac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\Fishery\WizardTac.Designer.cs">
+      <DependentUpon>WizardTac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Artefact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Artefact.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Rate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rate.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Reports.Designer.cs">
+      <DependentUpon>Reports.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Reports.ru.Designer.cs">
+      <DependentUpon>Reports.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Resources\Interface\Interface.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interface.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Process.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Process.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Process.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Process.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="Resources\Interface\Interface.Designer.cs">
+      <DependentUpon>Interface.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Compositions\VirtualPopulation.cs" />
+    <EmbeddedResource Include="Compositions\AgeKeyForm.resx">
+      <DependentUpon>AgeKeyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compositions\AgeKeyForm.ru.resx">
+      <DependentUpon>AgeKeyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearStats.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GearStats1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearStats.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\SpeciesStats.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpeciesStats1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\SpeciesStats.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolations.resx">
+      <DependentUpon>WizardExtrapolations.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolations.ru.resx">
+      <DependentUpon>WizardExtrapolations.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardPrediction.resx">
+      <DependentUpon>WizardPrediction.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMSY.resx">
+      <DependentUpon>WizardMSY.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMSYR.resx">
+      <DependentUpon>WizardMSYR.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardVirtualPopulation.resx">
+      <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardGrowth.resx">
+      <DependentUpon>WizardGrowth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardGrowth.ru.resx">
+      <DependentUpon>WizardGrowth.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMortalityCohorts.resx">
+      <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMortalityCohorts.ru.resx">
+      <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardStock.resx">
+      <DependentUpon>WizardStock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardStock.ru.resx">
+      <DependentUpon>WizardStock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolation.resx">
+      <DependentUpon>WizardExtrapolation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolation.ru.resx">
+      <DependentUpon>WizardExtrapolation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardVirtualPopulation.ru.resx">
+      <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\AgeLengthKey.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgeLengthKey.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\AgeLengthKey.ru.resx" />
+    <EmbeddedResource Include="Resources\Reports\CatchComposition.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CatchComposition.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\CatchComposition.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Export.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Export.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Export.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Export.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Extrapolations.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Extrapolations.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Extrapolations.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GrowthCohorts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GrowthCohorts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Mortality.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mortality.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Mortality.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mortality.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\MortalityCohorts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MortalityCohorts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Selectivity.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Selectivity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\StockComposition.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StockComposition.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\StockComposition.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StockComposition.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\TreatmentSuggestion.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TreatmentSuggestion.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\TreatmentSuggestion.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TreatmentSuggestion.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\VPA.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VPA.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\VPA.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VPA.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\MSYR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MSYR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Bio\WizardExport2.resx">
+      <DependentUpon>WizardExport2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Bio\WizardExport2.ru.resx">
+      <DependentUpon>WizardExport2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardCommunityComposition.resx">
+      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardCommunityComposition.ru.resx">
+      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardCommunity.resx">
+      <DependentUpon>WizardCommunity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardCommunity.ru.resx">
+      <DependentUpon>WizardCommunity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMortality.resx">
+      <DependentUpon>WizardMortality.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardMortality.ru.resx">
+      <DependentUpon>WizardMortality.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardCatchesComposition.resx">
+      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardCatchesComposition.ru.resx">
+      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardCatch.resx">
+      <DependentUpon>WizardCatch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Composition\WizardCatch.ru.resx">
+      <DependentUpon>WizardCatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Survey\WizardSpawning.resx">
+      <DependentUpon>WizardSpawning.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardGrowthCohorts.resx">
+      <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardGrowthCohorts.ru.resx">
+      <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Catch.resx">
+      <DependentUpon>Catch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Catch.ru.resx">
+      <DependentUpon>Catch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\ExpressCatch.resx">
+      <DependentUpon>ExpressCatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Individuals.resx">
+      <DependentUpon>Individuals.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Individuals.ru.resx">
+      <DependentUpon>Individuals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\StratifiedControl.resx">
+      <DependentUpon>StratifiedControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\StratifiedControl.ru.resx">
+      <DependentUpon>StratifiedControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Environment.resx">
+      <DependentUpon>Environment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\Environment.ru.resx">
+      <DependentUpon>Environment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\WizardOb.resx">
+      <DependentUpon>WizardOb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Observations\WizardOb.ru.resx">
+      <DependentUpon>WizardOb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Growth.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Growth.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Growth.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Growth.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Community.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Community.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Community.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Community.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearSelection.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GearSelection.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearSelection.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearClass.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GearClass.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\GearClass.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GearClass.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardGearSet.resx">
+      <DependentUpon>WizardGearSet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\WizardGearSet.ru.resx">
+      <DependentUpon>WizardGearSet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardSelectivity.resx">
+      <DependentUpon>WizardSelectivity.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\Fishery\WizardTac.resx">
+      <DependentUpon>WizardTac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Artefact.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Artefact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Artefact.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Process.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Process.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Interface.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Process.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Process.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Interface.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Common.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Common.ru.resx" />
+    <EmbeddedResource Include="Resources\Reports\Rate.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rate.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Rate.ru.resx" />
+    <EmbeddedResource Include="Resources\Reports\Reports.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Reports.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Reports.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Reports.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Extrapolation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Extrapolation1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Extrapolation.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Observations\Surveys.xsc">
+      <DependentUpon>Surveys.xsd</DependentUpon>
+    </None>
+    <None Include="Observations\Surveys.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Surveys.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly.Benthos.Explorer\Mayfly.Benthos.Explorer.csproj">
+      <Project>{8f8b4096-f027-4cb6-97b9-95ad14e434d9}</Project>
+      <Name>Mayfly.Benthos.Explorer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Benthos\Mayfly.Benthos.csproj">
+      <Project>{d24b93ad-74ba-4b29-9b1a-ca197fa56eab}</Project>
+      <Name>Mayfly.Benthos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Wild\Mayfly.Wild.csproj">
+      <Project>{17FD0EB5-FA78-442A-94C6-5DEF4897A569}</Project>
+      <Name>Mayfly.Wild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Fish\Mayfly.Fish.csproj">
+      <Project>{EDAFC0AE-1BAB-47B7-86E1-1319D1696779}</Project>
+      <Name>Mayfly.Fish</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Species\Mayfly.Species.csproj">
+      <Project>{F076B272-8967-4030-A1CD-A08E5EA6625D}</Project>
+      <Name>Mayfly.Species</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Waters\Mayfly.Waters.csproj">
+      <Project>{FDA7F1CC-8CF3-435C-84E9-7B1692E4A4C4}</Project>
+      <Name>Mayfly.Waters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Mathematics\Mayfly.Mathematics.csproj">
+      <Project>{13A45B99-320D-40DC-81D0-38C42E9B6DCA}</Project>
+      <Name>Mayfly.Mathematics</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
+      <Name>Mayfly</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 с пакетом обновления 1 %28SP1%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Установщик Windows 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Mayfly.Mathematics">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Observations\Surveys.xss">
+      <DependentUpon>Surveys.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fexplore.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

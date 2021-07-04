@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F076B272-8967-4030-A1CD-A08E5EA6625D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.Species</RootNamespace>
+    <AssemblyName>spinvent</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>..\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\DefinitionEventHandler.cs" />
+    <Compile Include="Controls\Feature.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Feature.Designer.cs">
+      <DependentUpon>Feature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DefinitionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DefinitionPanel.Designer.cs">
+      <DependentUpon>DefinitionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\State.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\State.Designer.cs">
+      <DependentUpon>State.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StateClickedEventHandler.cs" />
+    <Compile Include="Controls\StateEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StateEditor.Designer.cs">
+      <DependentUpon>StateEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeciesSorter.cs" />
+    <Compile Include="Systematics\AddSpecies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\AddSpecies.Designer.cs">
+      <DependentUpon>AddSpecies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fits.Designer.cs">
+      <DependentUpon>Fits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnosis.Designer.cs">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\MainForm.General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\MainForm.Key.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\MainForm.List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\Resources\Diagnosis.Designer.cs">
+      <DependentUpon>Diagnosis.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface.Designer.cs">
+      <DependentUpon>Interface.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface.ru.Designer.cs">
+      <DependentUpon>Interface.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Systematics\Resources\Messages.Designer.cs">
+      <DependentUpon>Messages.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Systematics\Resources\Messages.ru.Designer.cs">
+      <DependentUpon>Messages.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SpeciesCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeciesCard.Designer.cs">
+      <DependentUpon>SpeciesCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeciesKey.cs">
+      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SpeciesKey.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\EditFeature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\EditFeature.Designer.cs">
+      <DependentUpon>EditFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\EditSpecies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\EditSpecies.Designer.cs">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\EditTaxon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\EditTaxon.Designer.cs">
+      <DependentUpon>EditTaxon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Systematics\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Systematics\Resources\Interface.Designer.cs">
+      <DependentUpon>Interface.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpeciesSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SpeciesSelector.Designer.cs">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettings.cs" />
+    <EmbeddedResource Include="Controls\Feature.resx">
+      <DependentUpon>Feature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DefinitionPanel.resx">
+      <DependentUpon>DefinitionPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DefinitionPanel.ru.resx">
+      <DependentUpon>DefinitionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\State.resx">
+      <DependentUpon>State.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StateEditor.resx">
+      <DependentUpon>StateEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\AddSpecies.resx">
+      <DependentUpon>AddSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\AddSpecies.ru.resx">
+      <DependentUpon>AddSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fits.resx">
+      <DependentUpon>Fits.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fits.ru.resx">
+      <DependentUpon>Fits.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnosis.resx">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnosis.ru.resx">
+      <DependentUpon>Diagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.ru.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Diagnosis.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Diagnosis.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Diagnosis.ru.resx" />
+    <EmbeddedResource Include="Resources\Interface.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Messages.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeciesCard.resx">
+      <DependentUpon>SpeciesCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeciesCard.ru.resx">
+      <DependentUpon>SpeciesCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpeciesSelector.resx">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SpeciesSelector.ru.resx">
+      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\EditFeature.resx">
+      <DependentUpon>EditFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\EditSpecies.resx">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\EditSpecies.ru.resx">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\EditTaxon.resx">
+      <DependentUpon>EditTaxon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\EditTaxon.ru.resx">
+      <DependentUpon>EditTaxon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\MainForm.ru.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Interface.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Systematics\Resources\Interface.ru.resx" />
+    <None Include="SpeciesKey.xsc">
+      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    </None>
+    <None Include="SpeciesKey.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SpeciesKey.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SpeciesKey.xss">
+      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{FF568DDE-2B92-44CF-AB69-5BE2EC239C0E}</Project>
+      <Name>Mayfly</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrongthesis.wav" />
+    <None Include="Resources\newthesis.wav" />
+    <None Include="Resources\nextthesis.wav" />
+    <None Include="Resources\hover.png" />
+    <None Include="Resources\common.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starfilled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\curled1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hovered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addnew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\attached.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spinvent.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>Общее</value>
+  </data>
+  <data name="tabPageFecundity.Text" xml:space="preserve">
+    <value>Плодовитость</value>
+  </data>
+  <data name="tabPageGrowth.Text" xml:space="preserve">
+    <value>Рост*</value>
+  </data>
+  <data name="tabPageTrophics.Text" xml:space="preserve">
+    <value>Питание</value>
+  </data>
+  <data name="tabPageParasites.Text" xml:space="preserve">
+    <value>Паразиты</value>
+  </data>
+  <data name="tabPageAddt.Text" xml:space="preserve">
+    <value>Дополнительные значения</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelConditionFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="labelConditionFactor.Text" xml:space="preserve">
+    <value>Упитанность</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="labelComments.Text" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="labelFBA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 15</value>
+  </data>
+  <data name="labelFBA.Text" xml:space="preserve">
+    <value>Полный биологический анализ</value>
+  </data>
+  <data name="labelRegID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 13</value>
+  </data>
+  <data name="labelRegID.Text" xml:space="preserve">
+    <value>Номер пробы</value>
+  </data>
+  <data name="labelAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="labelAge.Text" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="labelSomaticMass.Text" xml:space="preserve">
+    <value>Масса порки, г</value>
+  </data>
+  <data name="labelMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="labelMass.Text" xml:space="preserve">
+    <value>Полная масса, г</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Полная длина, мм</value>
+  </data>
+  <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 13</value>
+  </data>
+  <data name="labelLength.Text" xml:space="preserve">
+    <value>Стандартная длина, мм</value>
+  </data>
+  <data name="checkBoxIntermediate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 17</value>
+  </data>
+  <data name="checkBoxIntermediate.Text" xml:space="preserve">
+    <value>имеет признаки следующей стадии</value>
+  </data>
+  <data name="comboBoxMaturity.Items" xml:space="preserve">
+    <value>1 | Неполовозрелые особи</value>
+  </data>
+  <data name="comboBoxMaturity.Items1" xml:space="preserve">
+    <value>2 | Гонады малы, не заполняют брюшную полость</value>
+  </data>
+  <data name="comboBoxMaturity.Items2" xml:space="preserve">
+    <value>3 | Гонады занимаю от ⅓ до ½ брюшной полости</value>
+  </data>
+  <data name="comboBoxMaturity.Items3" xml:space="preserve">
+    <value>4 | Гонады занимают до ⅔ брюшной полости</value>
+  </data>
+  <data name="comboBoxMaturity.Items4" xml:space="preserve">
+    <value>5 | Текучие особи</value>
+  </data>
+  <data name="comboBoxMaturity.Items5" xml:space="preserve">
+    <value>6 | Отнерестившиеся особи, гонады воспалены</value>
+  </data>
+  <data name="comboBoxGender.Items" xml:space="preserve">
+    <value>Ювенильная особь (juv.)</value>
+  </data>
+  <data name="comboBoxGender.Items1" xml:space="preserve">
+    <value>Самец (M)</value>
+  </data>
+  <data name="comboBoxGender.Items2" xml:space="preserve">
+    <value>Самка (F)</value>
+  </data>
+  <data name="labelMaturity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
+  </data>
+  <data name="labelMaturity.Text" xml:space="preserve">
+    <value>Стадия зрелости</value>
+  </data>
+  <data name="labelSex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="labelSex.Text" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="labelEgg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 15</value>
+  </data>
+  <data name="labelEgg.Text" xml:space="preserve">
+    <value>Параметры икринок</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 15</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Обязательные отметки</value>
+  </data>
+  <data name="labelFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 15</value>
+  </data>
+  <data name="labelFecundity.Text" xml:space="preserve">
+    <value>Измерения плодовитости</value>
+  </data>
+  <data name="labelEggMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 13</value>
+  </data>
+  <data name="labelEggMass.Text" xml:space="preserve">
+    <value>Средняя масса икринки, мг</value>
+  </data>
+  <data name="labelEggSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 13</value>
+  </data>
+  <data name="labelEggSize.Text" xml:space="preserve">
+    <value>Средний диаметр икринки, мкм</value>
+  </data>
+  <data name="labelGonadSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 13</value>
+  </data>
+  <data name="labelGonadSample.Text" xml:space="preserve">
+    <value>Количество гамет в пробе</value>
+  </data>
+  <data name="labelGonadSampleMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 13</value>
+  </data>
+  <data name="labelGonadSampleMass.Text" xml:space="preserve">
+    <value>Масса пробы на плодовитость, г</value>
+  </data>
+  <data name="labelFecundityAbs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 13</value>
+  </data>
+  <data name="labelFecundityAbs.Text" xml:space="preserve">
+    <value>Абсолютная плодовитость</value>
+  </data>
+  <data name="labelGonadosomatic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 13</value>
+  </data>
+  <data name="labelGonadosomatic.Text" xml:space="preserve">
+    <value>Коэффициент зрелости</value>
+  </data>
+  <data name="labelFecundityRel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 13</value>
+  </data>
+  <data name="labelFecundityRel.Text" xml:space="preserve">
+    <value>Относительная плодовитость</value>
+  </data>
+  <data name="labelGonadMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 13</value>
+  </data>
+  <data name="labelGonadMass.Text" xml:space="preserve">
+    <value>Масса гонад, г</value>
+  </data>
+  <data name="ColumnRadius.HeaderText" xml:space="preserve">
+    <value>Радиус, мм</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Полная длина, мм</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Значения роста</value>
+  </data>
+  <data name="comboBoxSection.Items" xml:space="preserve">
+    <value>Ротовая полость</value>
+  </data>
+  <data name="comboBoxSection.Items1" xml:space="preserve">
+    <value>Пищевод</value>
+  </data>
+  <data name="comboBoxSection.Items2" xml:space="preserve">
+    <value>Желудок</value>
+  </data>
+  <data name="comboBoxSection.Items3" xml:space="preserve">
+    <value>Передняя кишка</value>
+  </data>
+  <data name="comboBoxSection.Items4" xml:space="preserve">
+    <value>Средняя кишка</value>
+  </data>
+  <data name="comboBoxSection.Items5" xml:space="preserve">
+    <value>Задняя кишка</value>
+  </data>
+  <data name="ColumnTrpSpecies.HeaderText" xml:space="preserve">
+    <value>Таксон / Вид</value>
+  </data>
+  <data name="ColumnTrpQuantity.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="ColumnTrpMass.HeaderText" xml:space="preserve">
+    <value>Масса, мг</value>
+  </data>
+  <data name="ColumnTrpConsumption.HeaderText" xml:space="preserve">
+    <value>Потребление, ‱</value>
+  </data>
+  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 142</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsSAAALEgHS3X78AAACG0lE
+        QVQ4T6WR30tTYRjHzx/R3+GdEl0IdSG0oDDWhRd50X5ICRGGBV5oEDlB68LSDPulR09RusQdWxpDVzhd
+        aUwij2ttJ6tpTLfVabnmVt+e9z07Zw2ipF54eN/3nPf7+T4/BAD/FYI4Po9h+Rmkied8H/IEIY7PYWAs
+        gFvup7gx4kf/vWlcu+vDVekxeoYmcUV8hMuDXtIXAX9b+cIPZHN5aJltJD9l8SHxBVUWO/slCMNykD9i
+        yyE6zRiVZ8yzfdAJ7es2Nkm8tpHB63epEuBPGRQK35H9ViBxzhSr8c/lgNsPZvljxzmZR8elXohjT+Ci
+        vZ1Cy5A4bYg1rKhpLEUSqNpv0wHX7/s54NelO+s1c+eE7qyoKYTCGwgsraHSUgT03fFxEXNWYinuvBxN
+        ov1iLy509ZQ5h8KbCL78iKm5tyUAG4uxuHOOaubOW4ibYt15nsT+hThGfRHqQRFQnCccbTLsFK/I3dbq
+        MRumsJpJzJz9i3FMBlYx4FkuZcAAee5MNdOokqxhvGYNypsoXigqZhZjeDgbw8h0DNJUBOLECiqNJjKA
+        3rDyUVkb2nDoWAssR8+gpu409h05ierDjdhzsAG7DzhKADpUdPS5EX2fxuo6uapJ1DWeR2e/l9cqecME
+        aMLZTje6pRBcNxcMQIUB2MUux1u6YWvuQv0pF/9pdRoZNPP7XitlUHuCZ2CIOcA4/Gv89uPOA8JPWXod
+        OLVGynsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Text" xml:space="preserve">
+    <value>Журнал особей</value>
+  </data>
+  <data name="ToolStripMenuItemKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemKeys.Text" xml:space="preserve">
+    <value>Открыть определитель</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 6</value>
+  </data>
+  <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="cutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вырезать</value>
+  </data>
+  <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsSAAALEgHS3X78AAACX0lE
+        QVQ4T6WSa0hTYRjHD/TBvhRdqE99Koi+RFFB9SGjUAsvLYzEjMxFTKVkk6XpSC1N0eVtadqMvAw1b5Uo
+        KUUiJI7uGs7oIpEauZa1s3nP4tc5RwZNBgW98OPA+77/3/O8D0cA/gufmz3tOXTdzqS1KhVtTMh2X3c8
+        CC21RXoJPFQVHMdpr2PSfoORwXySNUEUZeu5ZjRgyk6SCVwsYEZsZs7VxIyzHku5nqnxGpJjVbbXvSlc
+        OBtKinoH9p6TjHesRxt9SMotEsjhOVcDZTkn6LPmI34qYWzQwAfrKdoqVMRG+VOXto4XRQLxx0K8BU01
+        BQsC8RbGtGgy9JEYEiI4Hx+OXqNCpw4lLiqAYu0GRRAZ7O8tqK80Mis2MuswMzWai+NVAraa1QoD1avo
+        K1/GU5OfEpYJ2L3VW2Ax5zDtqGJ6OIupN2eYfHkEsX05hdUd5JpbuXi1kRSjBV1mBbGpJqIT87wFlaWZ
+        TIyYmBzUMPEsFPejbXy5u0YJe9bc/E+crhmGx5xExF0iLMYgby8IKgrTEd9m4X4ShLt7M67OtYxUC0pl
+        eVXe6VEwN3QxMGRXwg96bRwIV8vHglCal8q3/nO4ujYh3luJo9mPoZuC0vaP+V98d0uVPzsZeG/H2v+R
+        4CgdQVJ4/8HD+O/Zi1B8OQnH4zgpvIKvLUsZrV2CrUxAK71ZbtvTwXWpgxJLJ23dNuUrs2vLRoQrGYnK
+        D+KZsgeNNLA/Kz+0vlPCzff7aOh47iUILEw/Lf1hKtThgYTt26kcyNOW3+yp5gtFIA/CF0elacsX/obP
+        8L+D8Bsb4cocWY3wtQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsSAAALEgHS3X78AAACLUlE
+        QVQ4T52TvY/ScBjHuVIRKHA9JAgnL+VoC7TX0kLLS6EvFBTa0uj5J7gYF+PsfpOTMrg4ORgHY+LCYJwc
+        TYyJiYuDLu7GxHgxd/Hnr5fA8TZcrsmnzfN9nufTNPnVBwDw2ZYljGzr3ciyTNu2EC87L75eb+DvD67f
+        hU9g9vt/HNs5cMaOf9Owohro7YNbe8PhjfuzzBOgkDuabk6bbRXoxuBkNLIeus6yhKyIwY5umo5tHxmG
+        +Wwu8G5QkIa0jN5gqnR1oOkGuOk6b1x3jHl9uaWGhpb1UtXNY1luPmJ4KbIkmAElAcgD3egfa5oJxq77
+        oq3ovKJoE7XbBbwoTWhG2F7cWRJ4dFR1S9fNCvykT41mB9TqjSOxXvtJM9zrYokLrc4vFYtUBcngq9Lf
+        tqICvlr7RhQr8U1za4FHXZIIurT/mePFf1AEJLkFGJb7uml2LRBrcp4us1+g4KRcYV8lkmkplyenglgH
+        VIm9tzq/VJRZLpUlih9yBQrAt79Pp3bjkVgM244nsPwe/VQQ6r8pRsgu7pwtC61grkA/T10r/NrnxB8s
+        V2VmvQiOB0MhLMZVxY/pDPEkU6DnZ2Qu2M0STjJFAIpmAUmXD0NY9PQMzEBRPwJzkiSp71F8J1/ipNMj
+        f9rE8XggkUgexq9cBXmi+DYYjtCRGL72T+D4jr/RaE+waFgu8c0zgUcmT9UuBS4/9m0hmh9Fo7N8FXih
+        CIKE5/Vi8yJsDM8P8P0HLGwR4Wl3ICYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="labelTractContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 15</value>
+  </data>
+  <data name="labelTractContent.Text" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="labelFatness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="labelFatness.Text" xml:space="preserve">
+    <value>Жирность</value>
+  </data>
+  <data name="labelTractCondition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 15</value>
+  </data>
+  <data name="labelTractCondition.Text" xml:space="preserve">
+    <value>Пищеварительный тракт</value>
+  </data>
+  <data name="buttonAddTrophics.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="buttonTrophics.Text" xml:space="preserve">
+    <value>Данные питания</value>
+  </data>
+  <data name="labelConsumedMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 13</value>
+  </data>
+  <data name="labelConsumedMass.Text" xml:space="preserve">
+    <value>Потребленная масса, мг</value>
+  </data>
+  <data name="labelConsumptionIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="labelConsumptionIndex.Text" xml:space="preserve">
+    <value>Потребление, ‱</value>
+  </data>
+  <data name="comboBoxFermentation.Items" xml:space="preserve">
+    <value>0 | Пусто</value>
+  </data>
+  <data name="comboBoxFermentation.Items1" xml:space="preserve">
+    <value>1 | Организмы хорошей сохранности</value>
+  </data>
+  <data name="comboBoxFermentation.Items2" xml:space="preserve">
+    <value>2 | Организмы слегка переварены</value>
+  </data>
+  <data name="comboBoxFermentation.Items3" xml:space="preserve">
+    <value>3 | Организмы полупереваренные</value>
+  </data>
+  <data name="comboBoxFermentation.Items4" xml:space="preserve">
+    <value>4 | Организмы сильно переваренные</value>
+  </data>
+  <data name="comboBoxFermentation.Items5" xml:space="preserve">
+    <value>5 | Неопределимая масса</value>
+  </data>
+  <data name="comboBoxFatness.Items" xml:space="preserve">
+    <value>0 | Жира на кишке нет</value>
+  </data>
+  <data name="comboBoxFatness.Items1" xml:space="preserve">
+    <value>1 | Тонкая шнуровидная полоска жира</value>
+  </data>
+  <data name="comboBoxFatness.Items2" xml:space="preserve">
+    <value>2 | Неширокая полоска жира</value>
+  </data>
+  <data name="comboBoxFatness.Items3" xml:space="preserve">
+    <value>3 | Широкая полоса жира</value>
+  </data>
+  <data name="comboBoxFatness.Items4" xml:space="preserve">
+    <value>4 | Кишка почти целиком покрыта жиром</value>
+  </data>
+  <data name="comboBoxFatness.Items5" xml:space="preserve">
+    <value>5 | Весь кишечник залит толстым слоем жира</value>
+  </data>
+  <data name="comboBoxFullness.Items" xml:space="preserve">
+    <value>0 | Пусто</value>
+  </data>
+  <data name="comboBoxFullness.Items1" xml:space="preserve">
+    <value>1 | Единично</value>
+  </data>
+  <data name="comboBoxFullness.Items2" xml:space="preserve">
+    <value>2 | Малое наполнение</value>
+  </data>
+  <data name="comboBoxFullness.Items3" xml:space="preserve">
+    <value>3 | Среднее наполнение</value>
+  </data>
+  <data name="comboBoxFullness.Items4" xml:space="preserve">
+    <value>4 | Много (полный отдел)</value>
+  </data>
+  <data name="comboBoxFullness.Items5" xml:space="preserve">
+    <value>5 | Масса (отдел растянут)</value>
+  </data>
+  <data name="labelFermentation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="labelFermentation.Text" xml:space="preserve">
+    <value>Переваренность</value>
+  </data>
+  <data name="labelSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labelSection.Text" xml:space="preserve">
+    <value>Отдел</value>
+  </data>
+  <data name="labelFullness.Text" xml:space="preserve">
+    <value>Наполнение</value>
+  </data>
+  <data name="buttonAddParasite.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="ColumnInfSpecies.HeaderText" xml:space="preserve">
+    <value>Таксон / вид</value>
+  </data>
+  <data name="ColumnInfQuantity.HeaderText" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="ColumnInfComments.HeaderText" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="labelOrgan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labelOrgan.Text" xml:space="preserve">
+    <value>Орган</value>
+  </data>
+  <data name="comboBoxOrgan.Items" xml:space="preserve">
+    <value>Наружные покровы тела, кожа</value>
+  </data>
+  <data name="comboBoxOrgan.Items1" xml:space="preserve">
+    <value>Жаберные крышки</value>
+  </data>
+  <data name="comboBoxOrgan.Items2" xml:space="preserve">
+    <value>Жабры</value>
+  </data>
+  <data name="comboBoxOrgan.Items3" xml:space="preserve">
+    <value>Мочеточники</value>
+  </data>
+  <data name="comboBoxOrgan.Items4" xml:space="preserve">
+    <value>Мочевой пузырь</value>
+  </data>
+  <data name="comboBoxOrgan.Items5" xml:space="preserve">
+    <value>Почки</value>
+  </data>
+  <data name="comboBoxOrgan.Items6" xml:space="preserve">
+    <value>Печень</value>
+  </data>
+  <data name="comboBoxOrgan.Items7" xml:space="preserve">
+    <value>Желудок</value>
+  </data>
+  <data name="comboBoxOrgan.Items8" xml:space="preserve">
+    <value>Кишечник</value>
+  </data>
+  <data name="comboBoxOrgan.Items10" xml:space="preserve">
+    <value>Мускулатура</value>
+  </data>
+  <data name="comboBoxOrgan.Items11" xml:space="preserve">
+    <value>Хрусталик</value>
+  </data>
+  <data name="comboBoxOrgan.Items12" xml:space="preserve">
+    <value>Стекловидное тело</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 15</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Информация о паразитах</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Дополнительные значения</value>
+  </data>
+  <data name="ColumnAddtVariable.HeaderText" xml:space="preserve">
+    <value>Параметр</value>
+  </data>
+  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="buttonReport.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="contextSaveTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 76</value>
+  </data>
+  <data name="loadFromCardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 22</value>
+  </data>
+  <data name="loadFromCardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить из карточки</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 6</value>
+  </data>
+  <data name="currentSectionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 22</value>
+  </data>
+  <data name="currentSectionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить текущий раздел</value>
+  </data>
+  <data name="allSectionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 22</value>
+  </data>
+  <data name="allSectionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить все разделы</value>
+  </data>
+  <data name="taskDialogSaveChanges.Content" xml:space="preserve">
+    <value>С момента последнего сохранения были произведены изменения. Сохранить эти изменения?</value>
+  </data>
+  <data name="taskDialogSaveChanges.MainInstruction" xml:space="preserve">
+    <value>Сохранить изменения?</value>
+  </data>
+  <data name="tdbSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Не сохранять</value>
+  </data>
+</root>

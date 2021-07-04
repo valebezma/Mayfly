@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17FD0EB5-FA78-442A-94C6-5DEF4897A569}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.Wild</RootNamespace>
+    <AssemblyName>Mayfly.Wild</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Meta.Numerics, Version=4.0.7.0, Culture=neutral, PublicKeyToken=67d25c65a6631347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Meta.Numerics.4.0.7\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Artefact.cs" />
+    <Compile Include="Bio\ContuniousBio.cs" />
+    <Compile Include="Bio\Data.cs" />
+    <Compile Include="CardStack\CardStack.Compositions.cs" />
+    <Compile Include="CardStack\CardStack.cs" />
+    <Compile Include="CardStack\CardStack.Statistics.cs" />
+    <Compile Include="Compositions\AgeComposition.cs" />
+    <Compile Include="Compositions\LengthComposition.cs" />
+    <Compile Include="Compositions\SpeciesComposition.cs" />
+    <Compile Include="Compositions\TaxaComposition.cs" />
+    <Compile Include="Data.cs">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data.Designer.cs">
+      <DependentUpon>Data.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EnvironmentMonitor.cs" />
+    <Compile Include="Extensions\Data.Reporting.cs" />
+    <Compile Include="Forms\AboutData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutData.Designer.cs">
+      <DependentUpon>AboutData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogReference.Designer.cs">
+      <DependentUpon>DialogReference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Resources\Interface\Diversity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Diversity.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\FriendlyUnits.ru.Designer.cs">
+      <DependentUpon>FriendlyUnits.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\FriendlyUnits.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FriendlyUnits.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Powered.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Powered.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Powered.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Powered.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Age.cs" />
+    <Compile Include="AquaState.cs" />
+    <Compile Include="Forms\Calculator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Calculator.designer.cs">
+      <DependentUpon>Calculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compositions\Category.cs" />
+    <Compile Include="Controls\ColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColorPicker.designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CompositionComparison.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CompositionComparison.Designer.cs">
+      <DependentUpon>CompositionComparison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bio\DescriptiveBio.cs" />
+    <Compile Include="Bio\IBioable.cs" />
+    <Compile Include="Bio\IBio.cs" />
+    <Compile Include="Resources\Interface\Clouds.Designer.cs">
+      <DependentUpon>Clouds.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\Clouds.ru.Designer.cs">
+      <DependentUpon>Clouds.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Compositions\Composition.cs" />
+    <Compile Include="Controls\AquaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AquaControl.Designer.cs">
+      <DependentUpon>AquaControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WeatherControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WeatherControl.Designer.cs">
+      <DependentUpon>WeatherControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogModel.Designer.cs">
+      <DependentUpon>DialogModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\MassRecover.Designer.cs">
+      <DependentUpon>MassRecover.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\MassRecover.ru.Designer.cs">
+      <DependentUpon>MassRecover.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Caption.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Caption.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DiversityExtensions.cs" />
+    <Compile Include="Resources\Interface\Permissions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Permissions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Card.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Card.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Header.ru.Designer.cs">
+      <DependentUpon>Header.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Header.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Header.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Section.Designer.cs">
+      <DependentUpon>Section.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\Section.ru.Designer.cs">
+      <DependentUpon>Section.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compositions\CompositionMatch.cs" />
+    <Compile Include="Forms\DialogTaxonChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogTaxonChange.Designer.cs">
+      <DependentUpon>DialogTaxonChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Prompt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Prompt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ScoutSettingsAgent.cs" />
+    <Compile Include="Substrate.cs">
+      <DependentUpon>Substrate.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SizeGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SizeGroup.Designer.cs">
+      <DependentUpon>SizeGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StratifiedSample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\StratifiedSample.Designer.cs">
+      <DependentUpon>StratifiedSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InputControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputControl.Designer.cs">
+      <DependentUpon>InputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\Process.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Process.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="Sex.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Interface\Interface.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interface.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogStratified.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogStratified.Designer.cs">
+      <DependentUpon>DialogStratified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Resources\Interface\Sex.Designer.cs">
+      <DependentUpon>Sex.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\Sex.ru.Designer.cs">
+      <DependentUpon>Sex.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Samplers.cs">
+      <DependentUpon>Samplers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Samplers.Designer.cs">
+      <DependentUpon>Samplers.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Substrate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Substrate.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectionValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectionValue.Designer.cs">
+      <DependentUpon>SelectionValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface\WaterColor.ru.Designer.cs">
+      <DependentUpon>WaterColor.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Interface\WaterColor.Designer.cs">
+      <DependentUpon>WaterColor.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Weather.cs" />
+    <Compile Include="WeatherEvents.cs">
+      <DependentUpon>WeatherEvents.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherEvents.Designer.cs">
+      <DependentUpon>WeatherEvents.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly.Species\Mayfly.Species.csproj">
+      <Project>{f076b272-8967-4030-a1cd-a08e5ea6625d}</Project>
+      <Name>Mayfly.Species</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Mathematics\Mayfly.Mathematics.csproj">
+      <Project>{13A45B99-320D-40DC-81D0-38C42E9B6DCA}</Project>
+      <Name>Mayfly.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly.Waters\Mayfly.Waters.csproj">
+      <Project>{fda7f1cc-8cf3-435c-84e9-7b1692e4a4c4}</Project>
+      <Name>Mayfly.Waters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
+      <Name>Mayfly</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AboutData.resx">
+      <DependentUpon>AboutData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutData.ru.resx">
+      <DependentUpon>AboutData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogReference.resx">
+      <DependentUpon>DialogReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Diversity.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Diversity.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\FriendlyUnits.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendlyUnits.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\FriendlyUnits.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FriendlyUnits.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Powered.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Powered.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Powered.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Powered.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Calculator.resx">
+      <DependentUpon>Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Calculator.ru.resx">
+      <DependentUpon>Calculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompositionComparison.ru.resx">
+      <DependentUpon>CompositionComparison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AquaControl.ru.resx">
+      <DependentUpon>AquaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CompositionComparison.resx">
+      <DependentUpon>CompositionComparison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Clouds.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Clouds.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Clouds.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Clouds.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AquaControl.resx">
+      <DependentUpon>AquaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WeatherControl.resx">
+      <DependentUpon>WeatherControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WeatherControl.ru.resx">
+      <DependentUpon>WeatherControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SizeGroup.resx">
+      <DependentUpon>SizeGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\StratifiedSample.resx">
+      <DependentUpon>StratifiedSample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogModel.resx">
+      <DependentUpon>DialogModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputControl.resx">
+      <DependentUpon>InputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InputControl.ru.resx">
+      <DependentUpon>InputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\MassRecover.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MassRecover.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\MassRecover.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MassRecover.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Caption.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Caption.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Caption.ru.resx" />
+    <EmbeddedResource Include="Resources\Common.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Common.ru.resx" />
+    <EmbeddedResource Include="Resources\Interface\Interface.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Interface.ru.resx" />
+    <EmbeddedResource Include="Resources\Interface\Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Messages.ru.resx" />
+    <EmbeddedResource Include="Resources\Interface\Permissions.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Permissions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Permissions.ru.resx" />
+    <EmbeddedResource Include="Resources\Interface\Process.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Process.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Process.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Card.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Card.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Card.ru.resx" />
+    <EmbeddedResource Include="Resources\Reports\Header.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Header.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Header.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Header.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Sex.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sex.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Sex.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sex.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Section.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Section.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\Section.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Section.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectionValue.resx">
+      <DependentUpon>SelectionValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectionValue.ru.resx">
+      <DependentUpon>SelectionValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogStratified.resx">
+      <DependentUpon>DialogStratified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogStratified.ru.resx">
+      <DependentUpon>DialogStratified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogTaxonChange.resx">
+      <DependentUpon>DialogTaxonChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogTaxonChange.ru.resx">
+      <DependentUpon>DialogTaxonChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\WaterColor.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WaterColor.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface\WaterColor.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WaterColor.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogModel.ru.resx">
+      <DependentUpon>DialogModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Prompt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Prompt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Prompt.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data.xsc">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </None>
+    <None Include="Data.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Data.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data.xss">
+      <DependentUpon>Data.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Samplers.xsc">
+      <DependentUpon>Samplers.xsd</DependentUpon>
+    </None>
+    <None Include="Samplers.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Samplers.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Samplers.xss">
+      <DependentUpon>Samplers.xsd</DependentUpon>
+    </None>
+    <None Include="Substrate.xsc">
+      <DependentUpon>Substrate.xsd</DependentUpon>
+    </None>
+    <None Include="Substrate.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Substrate.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Substrate.xss">
+      <DependentUpon>Substrate.xsd</DependentUpon>
+    </None>
+    <None Include="WeatherEvents.xsc">
+      <DependentUpon>WeatherEvents.xsd</DependentUpon>
+    </None>
+    <None Include="WeatherEvents.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WeatherEvents.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WeatherEvents.xss">
+      <DependentUpon>WeatherEvents.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewLog.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(OutDir)InsertIcons.exe" "$(TargetPath)" "$(ProjectDir)ico"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,394 @@
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using FisheryStock.Gears;
+using Mayfly;
+using Mayfly.Species;
+using Mayfly.Waters;
+
+namespace FisheryStock.Fish
+{
+    public abstract class AppProperties
+    {
+        public static string Extension = ".fcd";
+
+        public static string Filter = Resources.Info.Description + "|*" + Extension;
+
+        private static OpenFileDialog _OpenDialog;
+
+        private static SaveFileDialog _SaveDialog;
+
+        public static OpenFileDialog OpenDialog
+        {
+            get
+            {
+                if (_OpenDialog == null)
+                {
+                    _OpenDialog = Dialog.OpenDialog(Resources.Info.Open, Filter);
+                    _OpenDialog.FileOk += new System.ComponentModel.CancelEventHandler(_OpenDialog_FileOk);
+                }
+                return _OpenDialog;
+            }
+        }
+
+        static void _OpenDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveDialog.InitialDirectory = Interface.FolderName(((OpenFileDialog)sender).FileName);
+        }
+
+        public static SaveFileDialog SaveDialog
+        {
+            get
+            {
+                if (_SaveDialog == null)
+                {
+                    _SaveDialog = Dialog.SaveDialog(Resources.Info.Save, Filter);
+                    _SaveDialog.InitialDirectory = FisheryStock.AppProperties.Cards;
+                    _SaveDialog.FileOk += new System.ComponentModel.CancelEventHandler(_SaveDialog_FileOk);
+                }
+                return _SaveDialog;
+            }
+        }
+
+        static void _SaveDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            OpenDialog.InitialDirectory = Interface.FolderName(((SaveFileDialog)sender).FileName);
+        }
+
+
+        private static _Sampler _SamplersIndex;
+
+        public static _Sampler SamplersIndex
+        {
+            get
+            {
+                if (_SamplersIndex == null)
+                {
+                    _SamplersIndex = new _Sampler();
+                    _SamplersIndex.ReadXml(Service.LocalizedPath(@"Samplers\Fish.ini"));
+                }
+                return _SamplersIndex;
+            }
+        }
+
+        public static int SelectedSamplerID
+        {
+            get { return (int)Service.GetValue(AppRegistry.Path, AppRegistry.Sampler); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.Sampler, value); }
+        }
+
+
+        public static string SpeciesIndexPath
+        {
+            get
+            {
+                string result = (string)Service.GetValue(AppRegistry.Path, AppRegistry.Species);
+
+                if (result == null)
+                {
+                    goto OpenDialog;
+                }
+
+                if (result == string.Empty)
+                {
+                    goto OpenDialog;
+                }
+
+                if (new FileInfo(result).Exists)
+                {
+                    return result;
+                }
+                else
+                {
+                    goto OpenDialog;
+                }
+
+            OpenDialog:
+
+                OpenFileDialog SetSpecies = Mayfly.Species.AppProperties.OpenDialog;
+
+                if (SetSpecies.ShowDialog() == DialogResult.OK)
+                {
+                    SpeciesIndexPath = SetSpecies.FileName;
+                    return SpeciesIndexPath;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            set
+            {
+                Service.SetValue(AppRegistry.Path, AppRegistry.Species, value);
+            }
+        }
+
+        private static _Species _SpeciesIndex;
+
+        public static _Species SpeciesIndex
+        {
+            get
+            {
+                if (_SpeciesIndex == null)
+                {
+                    _SpeciesIndex = new _Species();
+                    _SpeciesIndex.ReadXml(SpeciesIndexPath);
+                }
+                return _SpeciesIndex;
+            }
+
+            set
+            {
+                _SpeciesIndex = value;
+            }
+        }
+
+
+        public static string WatersIndexPath
+        {
+            get
+            {
+                string result = (string)Service.GetValue(AppRegistry.Path, AppRegistry.Waters);
+
+                if (result == null)
+                {
+                    goto OpenDialog;
+                }
+
+                if (result == string.Empty)
+                {
+                    goto OpenDialog;
+                }
+
+                if (new FileInfo(result).Exists)
+                {
+                    return result;
+                }
+                else
+                {
+                    goto OpenDialog;
+                }
+
+            OpenDialog:
+
+                OpenFileDialog SetWaters = Mayfly.Waters.AppProperties.OpenDialog;
+
+                if (SetWaters.ShowDialog() == DialogResult.OK)
+                {
+                    WatersIndexPath = SetWaters.FileName;
+                    return WatersIndexPath;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            set
+            {
+                Service.SetValue(AppRegistry.Path, AppRegistry.Waters, value);
+            }
+        }
+
+        private static _Water _WatersIndex;
+
+        public static _Water WatersIndex
+        {
+            get
+            {
+                if (_WatersIndex == null)
+                {
+                    _WatersIndex = new _Water();
+                    _WatersIndex.ReadXml(WatersIndexPath);
+                }
+                return _WatersIndex;
+            }
+
+            set
+            {
+                _WatersIndex = value;
+            }
+        }
+
+        public static int SelectedWaterID
+        {
+            get { return (int)Service.GetValue(AppRegistry.Path, AppRegistry.Water); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.Water, value); }
+        }
+
+
+        public static string[] SignFemale
+        {
+            get { return (string[])Service.GetValue(AppRegistry.Path, AppRegistry.SignFemale); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.SignFemale, value); }
+        }
+
+        public static string[] SignMale
+        {
+            get { return (string[])Service.GetValue(AppRegistry.Path, AppRegistry.SignMale); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.SignMale, value); }
+        }
+
+        public static string[] SignJuv
+        {
+            get { return (string[])Service.GetValue(AppRegistry.Path, AppRegistry.SignJuv); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.SignJuv, value); }
+        }
+
+        public static bool InheritGrowth
+        {
+            get
+            {
+                return Convert.ToBoolean(Service.GetValue(AppRegistry.Path, AppRegistry.InheritGrowth));
+            }
+
+            set
+            {
+                Service.SetValue(AppRegistry.Path, AppRegistry.InheritGrowth, value);
+            }
+        }
+
+
+        public static string NutrientsIndexPath
+        {
+            get
+            {
+                string result = (string)Service.GetValue(AppRegistry.Path, AppRegistry.Nutrients);
+
+                if (result == null)
+                {
+                    goto OpenDialog;
+                }
+
+                if (result == string.Empty)
+                {
+                    goto OpenDialog;
+                }
+
+                if (new FileInfo(result).Exists)
+                {
+                    return result;
+                }
+                else
+                {
+                    goto OpenDialog;
+                }
+
+            OpenDialog:
+
+                OpenFileDialog SetSpecies = Mayfly.Species.AppProperties.OpenDialog;
+
+                if (SetSpecies.ShowDialog() == DialogResult.OK)
+                {
+                    NutrientsIndexPath = SetSpecies.FileName;
+                    return NutrientsIndexPath;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            set 
+            {
+                Service.SetValue(AppRegistry.Path, AppRegistry.Nutrients, value);
+            }
+        }
+
+        private static _Species _NutritionIndex;
+
+        public static _Species NutritionIndex
+        {
+            get
+            {
+                if (_NutritionIndex == null)
+                {
+                    _NutritionIndex = new _Species();
+                    _NutritionIndex.ReadXml(NutrientsIndexPath);
+                }
+                return _NutritionIndex;
+            }
+        }
+
+
+        public static double SeinDefaultOpening
+        {
+            get { return (double)((int)Service.GetValue(AppRegistry.Path, AppRegistry.SeinDefaultOpening)) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.SeinDefaultOpening, (int)(value * 100)); }
+        }
+
+        public static double DriftnetDefaultOpening
+        {
+            get { return (double)((int)Service.GetValue(AppRegistry.Path, AppRegistry.DriftnetDefaultOpening)) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.DriftnetDefaultOpening, (int)(value * 100)); }
+        }
+
+        public static double GillnetStdLength
+        {
+            get { return (double)((int)Service.GetValue(AppRegistry.Path, AppRegistry.GillnetStdLength)) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.GillnetStdLength, (int)(value * 100)); }
+        }
+
+        public static double GillnetStdHeight
+        {
+            get { return (double)((int)Service.GetValue(AppRegistry.Path, AppRegistry.GillnetStdHeight)) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.GillnetStdHeight, (int)(value * 100)); }
+        }
+
+        public static int GillnetStdExposure
+        {
+            get { return (int)Service.GetValue(AppRegistry.Path, AppRegistry.GillnetStdExposure); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.GillnetStdExposure, value); }
+        }
+
+        public static double DefaultCatchability
+        {
+            get { return (double)(int)Service.GetValue(AppRegistry.Path, AppRegistry.DefaultCatchability) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.DefaultCatchability, (int)(value * 100)); }
+        }
+
+        public static double DefaultSelectivity
+        {
+            get { return (double)(int)Service.GetValue(AppRegistry.Path, AppRegistry.DefaultSelectivity) / 100; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.DefaultSelectivity, (int)value * 100); }
+        }
+
+        public static double DefaultCatchLimitPercentage
+        {
+            get { return (double)(int)Service.GetValue(AppRegistry.Path, AppRegistry.DefaultCatchLimitPercentage) / 1000; }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.DefaultCatchLimitPercentage, (int)(value * 1000)); }
+        }
+
+
+        public static string[] AdditionalFactors
+        {
+            get 
+            {
+                return (string[])Service.GetValue(AppRegistry.Path, AppRegistry.AdditionalFactors); 
+            }
+            set
+            {
+                Service.SetValue(AppRegistry.Path, AppRegistry.AdditionalFactors, value);
+            }
+        }
+
+        public static string[] CurrentFactors
+        {
+            get { return (string[])Service.GetValue(AppRegistry.Path, AppRegistry.CurrentFactors); }
+            set { Service.SetValue(AppRegistry.Path, AppRegistry.CurrentFactors, value); }
+        }
+
+
+        public static double EUValue(FishingEffort Effort)
+        {
+            switch (Effort)
+            {
+                case FishingEffort.Square: return 10000;
+                case FishingEffort.Volume: return 1000;
+                case FishingEffort.Relative: return (double)(GillnetStdLength * GillnetStdHeight * GillnetStdExposure);
+                default: return 1;
+            }
+        }
+    }
+}

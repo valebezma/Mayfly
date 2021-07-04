@@ -1,0 +1,171 @@
+﻿using System;
+using System.Windows.Forms;
+using Mayfly;
+
+namespace FisheryStock.Fish
+{
+    public partial class Settings : Form
+    {
+        #region Constructors
+
+        public Settings()
+        {
+            InitializeComponent();
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void LoadSettings()
+        {
+            textBoxLicensee.Text = FisheryStock.AppProperties.Licensee;
+            textBoxUser.Text = FisheryStock.AppProperties.Username;
+
+            if (!tabPageCommon.IsDisposed)
+            {
+                textBoxWaters.Text = AppProperties.WatersIndexPath;
+                textBoxSpecies.Text = AppProperties.SpeciesIndexPath;
+                textBoxNutrients.Text = AppProperties.NutrientsIndexPath;
+
+                textBoxFemale.Text = Service.FromStringArray(AppProperties.SignFemale, Interface.StdSeparator);
+                textBoxMale.Text = Service.FromStringArray(AppProperties.SignMale, Interface.StdSeparator);
+                textBoxJuv.Text = Service.FromStringArray(AppProperties.SignJuv, Interface.StdSeparator);
+
+                checkBoxInheritGrowthRegressions.Checked = AppProperties.InheritGrowth;
+            }
+
+            if (!tabPageFishery.IsDisposed)
+            {
+                numericUpDownSeinOpening.Value = (decimal)AppProperties.SeinDefaultOpening * 100;
+                numericUpDownDriftnetOpening.Value = (decimal)AppProperties.DriftnetDefaultOpening * 100;
+
+                numericUpDownStdLength.Value = (decimal)AppProperties.GillnetStdLength;
+                numericUpDownStdHeight.Value = (decimal)AppProperties.GillnetStdHeight;
+                numericUpDownStdSoak.Value = AppProperties.GillnetStdExposure;
+
+                numericUpDownSelectivity.Value = (decimal)AppProperties.DefaultSelectivity;
+                numericUpDownCatchability.Value = (decimal)AppProperties.DefaultCatchability;
+                numericUpDownCatchLimit.Value = (decimal)AppProperties.DefaultCatchLimitPercentage * 100;
+            }
+        }
+
+        private void SaveSettings()
+        {
+            FisheryStock.AppProperties.Licensee = textBoxLicensee.Text;
+            FisheryStock.AppProperties.Username = textBoxUser.Text;
+
+            if (!tabPageCommon.IsDisposed)
+            {
+                AppProperties.WatersIndexPath = textBoxWaters.Text;
+                AppProperties.SpeciesIndexPath = textBoxSpecies.Text;
+                AppProperties.NutrientsIndexPath = textBoxNutrients.Text;
+
+                AppProperties.SignFemale = Service.ToStringArray(textBoxFemale.Text, Interface.StdSeparator);
+                AppProperties.SignMale = Service.ToStringArray(textBoxMale.Text, Interface.StdSeparator);
+                AppProperties.SignJuv = Service.ToStringArray(textBoxJuv.Text, Interface.StdSeparator);
+
+                AppProperties.InheritGrowth = checkBoxInheritGrowthRegressions.Checked;
+            }
+
+            if (!tabPageFishery.IsDisposed)
+            {
+                AppProperties.SeinDefaultOpening = ((double)numericUpDownSeinOpening.Value) / 100;
+                AppProperties.DriftnetDefaultOpening = ((double)numericUpDownDriftnetOpening.Value) / 100;
+
+                AppProperties.GillnetStdLength = (double)numericUpDownStdLength.Value;
+                AppProperties.GillnetStdHeight = (double)numericUpDownStdHeight.Value;
+                AppProperties.GillnetStdExposure = (int)numericUpDownStdSoak.Value;
+
+                AppProperties.DefaultSelectivity = (double)numericUpDownSelectivity.Value;
+                AppProperties.DefaultCatchability = (double)numericUpDownCatchability.Value;
+                AppProperties.DefaultCatchLimitPercentage = ((double)numericUpDownCatchLimit.Value) / 100;
+            }
+        }
+
+        #endregion
+
+        #region Interface logics
+
+        private void textBoxSigns_Leave(object sender, EventArgs e)
+        {
+            foreach (char currentSymbol in Interface.SymbolsSeparators)
+            { ((TextBox)sender).Text = ((TextBox)sender).Text.Replace(currentSymbol.ToString(), Interface.StdSeparator); }
+
+            foreach (char currentSymbol in Interface.SymbolsForbidden)
+            { ((TextBox)sender).Text = ((TextBox)sender).Text.Replace(currentSymbol.ToString(), ""); }
+
+            while (((TextBox)sender).Text.Contains(Interface.StdSeparator + Interface.StdSeparator))
+            { ((TextBox)sender).Text = ((TextBox)sender).Text.Replace(Interface.StdSeparator + Interface.StdSeparator, Interface.StdSeparator); }
+
+            while (((TextBox)sender).Text.Contains("  "))
+            { ((TextBox)sender).Text = ((TextBox)sender).Text.Replace("  ", " "); }
+        }
+
+        public void buttonBrowseWaters_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Browser = new OpenFileDialog();
+            Browser.Filter = Mayfly.Waters.AppProperties.Filter;
+            Browser.Title = Mayfly.Waters.Resources.Info.Point;
+            if (Browser.ShowDialog() == DialogResult.OK)
+            {
+                AppProperties.WatersIndexPath = Browser.FileName;
+                textBoxWaters.Text = AppProperties.WatersIndexPath;
+            }
+        }
+
+        private void buttonOpenWaters_Click(object sender, EventArgs e)
+        { 
+            Service.RunFile(textBoxWaters.Text); 
+        }
+
+        public void buttonBrowseSpecies_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Browser = new OpenFileDialog();
+            Browser.Filter = Mayfly.Species.AppProperties.Filter;
+            Browser.Title = Mayfly.Species.Resources.Info.Point;
+            if (Browser.ShowDialog() == DialogResult.OK)
+            {
+                AppProperties.SpeciesIndexPath = Browser.FileName;
+                textBoxSpecies.Text = AppProperties.SpeciesIndexPath;
+            }
+        }
+
+        private void buttonOpenSpecies_Click(object sender, EventArgs e)
+        { 
+            Service.RunFile(textBoxSpecies.Text);
+        }
+
+        public void buttonOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK; 
+            SaveSettings();
+            Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void buttonBrowseNutrients_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Browser = new OpenFileDialog();
+            Browser.Filter = Mayfly.Waters.AppProperties.Filter;
+            Browser.Title = Mayfly.Species.Resources.Info.Point;
+            if (Browser.ShowDialog() == DialogResult.OK)
+            {
+                Fish.AppProperties.NutrientsIndexPath = Browser.FileName;
+                textBoxNutrients.Text = Fish.AppProperties.NutrientsIndexPath;
+            }
+        }
+
+        private void buttonOpenNutrients_Click(object sender, EventArgs e)
+        {
+            Service.RunFile(textBoxNutrients.Text);
+        }
+
+        #endregion
+    }
+}

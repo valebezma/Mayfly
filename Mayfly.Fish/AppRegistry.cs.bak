@@ -1,0 +1,45 @@
+﻿namespace FisheryStock.Fish
+{
+    public abstract class AppRegistry
+    {
+        public static string Path = @"Software\Mayfly Software\FisheryStock\Fish";
+
+        public static string Species = "Species";
+
+        public static string Waters = "Waters";
+
+        public static string SignFemale = "SignFemale";
+
+        public static string SignMale = "SignMale";
+
+        public static string SignJuv = "SignJuv";
+
+        public static string Nutrients = "Nutrients";
+
+        public static string InheritGrowth = "InheritGrowth";
+
+        public static string DriftnetDefaultOpening = "DriftnetDefaultOpening";
+
+        public static string SeinDefaultOpening = "SeinDefaultOpening";
+
+        public static string GillnetStdLength = "GillnetStdLength";
+
+        public static string GillnetStdHeight = "GillnetStdHeight";
+
+        public static string GillnetStdExposure = "GillnetStdExposure";
+
+        public static string DefaultSelectivity = "DefaultSelectivity";
+
+        public static string DefaultCatchability = "DefaultCatchability";
+
+        public static string DefaultCatchLimitPercentage = "DefaultCatchLimitPercentage";
+
+        public static string Water = "Water";
+
+        public static string Sampler = "Sampler";
+
+        public static string AdditionalFactors = "AddFactors";
+
+        public static string CurrentFactors = "CurrentFactors";
+    }
+}

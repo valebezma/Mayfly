@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers VerifyAssembly="true" VerifyIgnoreCodes="0x80131869">
+  <Costura IncludeDebugSymbols='false'>
+    <Unmanaged32Assemblies>
+      Mayfly
+    </Unmanaged32Assemblies>
+    <Unmanaged64Assemblies>
+      Mayfly
+    </Unmanaged64Assemblies>
+  </Costura>
+</Weavers>

@@ -1,0 +1,2731 @@
+﻿using Mayfly.FisheryStock;
+using Mayfly.Geographics;
+using Mayfly.Species;
+using Mayfly.TaskDialogs;
+using Mayfly.Update;
+using Mayfly.Waters;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace Mayfly.Fish
+{
+    public partial class Card : Form
+    {
+        #region Properties
+
+        private string fileName;
+
+        private string SpeciesToOpen;
+
+        public string FileName
+        {
+            set
+            {
+                if (value == null)
+                {
+                    Text = Mayfly.Service.WindowTitle(Resources.Info.New, Resources.Info.Name);
+                }
+                else
+                {
+                    Text = Mayfly.Service.WindowTitle(value, Resources.Info.Name);
+                }
+                fileName = value;
+            }
+
+            get
+            {
+                return fileName;
+            }
+        }
+
+        public Data Data { get; set; }
+
+        public Samplers.SamplerRow SelectedSampler
+        {
+            get
+            {
+                return comboBoxSampler.SelectedItem as Samplers.SamplerRow;
+            }
+
+            set
+            {
+                comboBoxSampler.SelectedItem = value;
+            }
+        }
+
+        public string SelectedSamplerType
+        {
+            get
+            {
+                if (SelectedSampler == null || SelectedSampler.IsKindNull())
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return SelectedSampler.Kind;
+                }
+            }
+        }
+
+        public bool IsChanged { get; set; }
+
+        public int SpeciesCount
+        {
+            get
+            {
+                return SpeciesList.Length;
+            }
+        }
+
+        public string[] SpeciesList
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
+                {
+                    if (gridRow.Cells[ColumnSpecies.Name].Value != null)
+                    {
+                        string speciesName = gridRow.Cells[ColumnSpecies.Name].Value.ToString();
+                        if (!result.Contains(speciesName))
+                        {
+                            result.Add(speciesName);
+                        }
+                    }
+                }
+                return result.ToArray();
+            }
+        }
+
+        private double Mass
+        {
+            get
+            {
+                double result = 0;
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
+                {
+                    if (gridRow.Cells[ColumnMass.Name].Value != null)
+                    {
+                        result += (double)gridRow.Cells[ColumnMass.Name].Value;
+                    }
+                }
+                return result;
+            }
+        }
+
+        private double Quantity
+        {
+            get
+            {
+                double result = 0;
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
+                {
+                    if (gridRow.Cells[ColumnQuantity.Name].Value != null)
+                    {
+                        result += (int)gridRow.Cells[ColumnQuantity.Name].Value;
+                    }
+                }
+                return result;
+            }
+        }
+
+        private bool AllowEffortCalculation { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public Card()
+        {
+            InitializeComponent();
+
+            Data = new Data();
+            FileName = null;
+
+            waterSelector.CreateList();
+            waterSelector.Index = UserSettings.WatersIndex;
+            AllowEffortCalculation = false;
+
+            if (UserSettings.WatersIndex != null && UserSettings.SelectedWaterID != 0)
+            {
+                WatersKey.WaterRow selectedWater = UserSettings.WatersIndex.Water.FindByID(
+                    UserSettings.SelectedWaterID);
+
+                if (selectedWater != null)
+                {
+                    waterSelector.WaterObject = selectedWater;
+                }
+            }
+
+            maskedTextBoxLatitude.Mask = Coordinate.LatitudeMask;
+            maskedTextBoxLongitude.Mask = Coordinate.LongitudeMask;
+
+            comboBoxSampler.DataSource = UserSettings.SamplersIndex.Sampler.Select();
+            comboBoxSampler.SelectedIndex = -1;
+            samplerChanged(comboBoxSampler, new EventArgs());
+
+            if (UserSettings.SelectedSamplerID != 0)
+            {
+                SelectedSampler = Service.Sampler(UserSettings.SelectedSamplerID);
+            }
+
+            if (UserSettings.SelectedDate != null)
+            {
+                dateTimePickerDate.Value = UserSettings.SelectedDate;
+            }
+
+            colorPickerWaterColor.AddWaterColors();
+            colorPickerWaterColor.SelectedIndex = -1;
+            trackBarCloudage.Value = 0;
+
+            comboBoxEvent.DataSource = FisheryStock.UserSettings.Weather.Event.Select(null, "ID desc");
+            comboBoxEventDiscretion.DataSource = FisheryStock.UserSettings.Weather.Discretion.Select(null, "ID desc");
+            comboBoxEvent.SelectedIndex = -1;
+            comboBoxEvent_SelectedIndexChanged(comboBoxEvent, new EventArgs());
+
+            ColumnSpecies.ValueType = typeof(string);
+            ColumnQuantity.ValueType = typeof(int);
+            ColumnMass.ValueType = typeof(double);
+            speciesLogger.CreateList();
+            speciesLogger.Index = UserSettings.SpeciesIndex;
+            ColumnQuantity.ReadOnly = UserSettings.FixTotals;
+            ColumnMass.ReadOnly = UserSettings.FixTotals;
+            GetSpeciesList();
+
+            tabPageEnvironment.Parent = null;
+
+            tabPageFactors.Parent = null;
+            spreadSheetAddt.StringVariants = FisheryStock.UserSettings.AddtFactors;
+            ColumnAddtFactor.ValueType = typeof(string);
+            ColumnAddtValue.ValueType = typeof(double);
+
+            UpdateStatus();
+            AllowEffortCalculation = true;
+            IsChanged = false;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void Clear()
+        {
+            FileName = null;
+
+
+            waterSelector.WaterObject = null;
+            dateTimePickerDate.Value = DateTime.Today;
+            maskedTextBoxTime.Text = string.Empty;
+            maskedTextBoxLatitude.Text = string.Empty;
+            maskedTextBoxLongitude.Text = string.Empty;
+            textBoxAltitude.Text = string.Empty;
+            textBoxComments.Text = string.Empty;
+
+            #region Sampler info
+
+            textBoxLength.Text = string.Empty;
+            textBoxOpening.Text = string.Empty;
+            textBoxHeight.Text = string.Empty;
+            textBoxSquare.Text = string.Empty;
+
+            textBoxMesh.Text = string.Empty;
+            textBoxHook.Text = string.Empty;
+            maskedTextBoxOperation.Text = string.Empty;
+            textBoxVelocity.Text = string.Empty;
+            textBoxExposure.Text = string.Empty;
+            textBoxDepth.Text = string.Empty;
+
+            #endregion
+
+            #region Water Conditions
+
+            textBoxTempBottom.Text = string.Empty;
+            textBoxTempSurface.Text = string.Empty;
+            textBoxFlowRate.Text = string.Empty;
+            textBoxLimpidity.Text = string.Empty;
+            colorPickerWaterColor.SelectedIndex = -1;
+            checkBoxOdor.CheckState = CheckState.Indeterminate;
+            checkBoxSewage.CheckState = CheckState.Indeterminate;
+            checkBoxFoam.CheckState = CheckState.Indeterminate;
+            checkBoxTurbidity.CheckState = CheckState.Indeterminate;
+            textBoxConductivity.Text = string.Empty;
+            textBoxDissolvedOxygen.Text = string.Empty;
+            textBoxOxygenSaturation.Text = string.Empty;
+            textBoxpH.Text = string.Empty;
+
+            #endregion
+
+            #region Weather
+
+            textBoxHumidity.Text = string.Empty;
+            textBoxTemperature.Text = string.Empty;
+            textBoxBaro.Text = string.Empty;
+            textBoxWindRate.Text = string.Empty;
+            textBoxWindDirection.Text = string.Empty;
+            checkBoxCloudage.Checked = false;
+            trackBarCloudage.Value = 0;
+            comboBoxEvent.SelectedIndex = -1;
+
+            #endregion
+
+            spreadSheetLog.Rows.Clear();
+            spreadSheetAddt.Rows.Clear();
+
+            Data = new Data();
+        }
+
+        private void Clear(DataGridViewRow LogGridRow)
+        {
+            if (LogGridRow.Cells[ColumnID.Index].Value != null)
+            {
+                Data.LogRow logRow = Data.Log.FindByID((int)LogGridRow.Cells[ColumnID.Index].Value);
+                Data.SpeciesRow spcRow = logRow.SpeciesRow;
+                logRow.Delete();
+                spcRow.Delete();
+            }
+        }
+
+        public void UpdateStatus()
+        {
+            statusCard.Default = StatusLog.Text =
+				SpeciesCount.ToString(Mayfly.FisheryStock.Resources.Interface.SpeciesCount);
+            StatusMass.Text = Mass.ToString(Resources.Interface.MassStatus);
+            StatusCount.Text = Quantity.ToString(FisheryStock.Resources.Interface.QuantityStatus);
+        }
+
+        private void Save()
+        {
+            SaveData();
+            UserSettings.SaveDialog.FileName =
+                FileSystem.SuggestName(FileSystem.FolderName(UserSettings.SaveDialog.FileName),
+                Data.SuggestedName);
+
+            if (UserSettings.SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                Save(UserSettings.SaveDialog.FileName);
+            }
+        }
+
+        private void Save(string fileName)
+        {
+            Data.SaveToFile(fileName);
+            statusCard.Message(FisheryStock.Resources.Messages.Saved);
+            FileName = fileName;
+            IsChanged = false;
+
+            SaveOpenings();
+        }
+
+        private void SaveOpenings()
+        {
+            if (!Data.SingleCardRow.IsOpeningNull() && !Data.SingleCardRow.IsLengthNull())
+            {
+                double opening = Data.SingleCardRow.Opening / Data.SingleCardRow.Length;
+                if (Service.DefaultOpening(Data.SingleCardRow.Sampler) != opening)
+                {
+                    // TODO:
+                    // What to do? Just replace?
+                    // Data.SingleCardRow.Opening / Data.SingleCardRow.Length
+                }
+            }
+        }
+
+        private void SaveData()
+        {
+            Data.CardRow cardRow = SaveCardRow();
+            Data.InfoRow infoRow = Data.GetInfoRow(cardRow);
+
+            #region Save environment data
+
+            Data.Environment.Clear();
+            Data.EnvironmentRow newEnvironmentRow = Data.Environment.NewEnvironmentRow();
+            newEnvironmentRow.CardRow = cardRow;
+            bool containsEnvironment = false;
+
+            #region Water conditions
+
+            if (textBoxTempBottom.Text == string.Empty)
+            {
+                newEnvironmentRow.SetTemperatureBottomNull();
+            }
+            else
+            {
+                newEnvironmentRow.TemperatureBottom = double.Parse(textBoxTempBottom.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxTempSurface.Text == string.Empty)
+            {
+                newEnvironmentRow.SetTemperatureSurfaceNull();
+            }
+            else
+            {
+                newEnvironmentRow.TemperatureSurface = double.Parse(textBoxTempSurface.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxFlowRate.Text == string.Empty)
+            {
+                newEnvironmentRow.SetFlowRateNull();
+            }
+            else
+            {
+                newEnvironmentRow.FlowRate = double.Parse(textBoxFlowRate.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxLimpidity.Text == string.Empty)
+            {
+                newEnvironmentRow.SetLimpidityNull();
+            }
+            else
+            {
+                newEnvironmentRow.Limpidity = double.Parse(textBoxLimpidity.Text);
+                containsEnvironment = true;
+            }
+
+            if (colorPickerWaterColor.SelectedIndex == -1)
+            {
+                newEnvironmentRow.SetColourNull();
+            }
+            else
+            {
+                newEnvironmentRow.Colour = colorPickerWaterColor.SelectedIndex;
+                containsEnvironment = true;
+            }
+
+            if (checkBoxOdor.CheckState == CheckState.Indeterminate)
+            {
+                newEnvironmentRow.SetOdorNull();
+            }
+            else
+            {
+                newEnvironmentRow.Odor = checkBoxOdor.Checked;
+                containsEnvironment = true;
+            }
+
+            if (checkBoxSewage.CheckState == CheckState.Indeterminate)
+            {
+                newEnvironmentRow.SetSewageNull();
+            }
+            else
+            {
+                newEnvironmentRow.Sewage = checkBoxSewage.Checked;
+                containsEnvironment = true;
+            }
+
+            if (checkBoxFoam.CheckState == CheckState.Indeterminate)
+            {
+                newEnvironmentRow.SetFoamNull();
+            }
+            else
+            {
+                newEnvironmentRow.Foam = checkBoxFoam.Checked;
+                containsEnvironment = true;
+            }
+
+            if (checkBoxTurbidity.CheckState == CheckState.Indeterminate)
+            {
+                newEnvironmentRow.SetTurbidityNull();
+            }
+            else
+            {
+                newEnvironmentRow.Turbidity = checkBoxTurbidity.Checked;
+                containsEnvironment = true;
+            }
+
+            if (textBoxConductivity.Text == string.Empty)
+            {
+                newEnvironmentRow.SetConductivityNull();
+            }
+            else
+            {
+                newEnvironmentRow.Conductivity = double.Parse(textBoxConductivity.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxDissolvedOxygen.Text == string.Empty)
+            {
+                newEnvironmentRow.SetDissolvedOxygenNull();
+            }
+            else
+            {
+                newEnvironmentRow.DissolvedOxygen = double.Parse(textBoxDissolvedOxygen.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxOxygenSaturation.Text == string.Empty)
+            {
+                newEnvironmentRow.SetOxygenSaturationNull();
+            }
+            else
+            {
+                newEnvironmentRow.OxygenSaturation = double.Parse(textBoxOxygenSaturation.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxpH.Text == string.Empty)
+            {
+                newEnvironmentRow.SetpHNull();
+            }
+            else
+            {
+                newEnvironmentRow.pH = double.Parse(textBoxpH.Text);
+                containsEnvironment = true;
+            }
+
+            #endregion
+
+            #region Weather
+
+            if (textBoxHumidity.Text == string.Empty)
+            {
+                newEnvironmentRow.SetHumidityNull();
+            }
+            else
+            {
+                newEnvironmentRow.Humidity = double.Parse(textBoxHumidity.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxTemperature.Text == string.Empty)
+            {
+                newEnvironmentRow.SetTemperatureAirNull();
+            }
+            else
+            {
+                newEnvironmentRow.TemperatureAir = double.Parse(textBoxTemperature.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxBaro.Text == string.Empty)
+            {
+                newEnvironmentRow.SetAirPressureNull();
+            }
+            else
+            {
+                newEnvironmentRow.AirPressure = double.Parse(textBoxBaro.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxWindRate.Text == string.Empty)
+            {
+                newEnvironmentRow.SetWindRateNull();
+            }
+            else
+            {
+                newEnvironmentRow.WindRate = double.Parse(textBoxWindRate.Text);
+                containsEnvironment = true;
+            }
+
+            if (textBoxWindDirection.Text == string.Empty)
+            {
+                newEnvironmentRow.SetWindDirectionNull();
+            }
+            else
+            {
+                newEnvironmentRow.WindDirection = int.Parse(textBoxWindDirection.Text);
+                containsEnvironment = true;
+            }
+
+            if (checkBoxCloudage.Checked)
+            {
+                newEnvironmentRow.Cloudage = (double)trackBarCloudage.Value;
+                containsEnvironment = true;
+            }
+            else
+            {
+                newEnvironmentRow.SetCloudageNull();
+            }
+
+            if (comboBoxEvent.SelectedIndex == -1)
+            {
+                newEnvironmentRow.SetEventNull();
+            }
+            else
+            {
+                newEnvironmentRow.Event = ((Weather.EventRow)comboBoxEvent.SelectedItem).ID;
+                containsEnvironment = true;
+            }
+
+            if (comboBoxEventDegree.SelectedIndex == -1)
+            {
+                newEnvironmentRow.SetEventDegreeNull();
+            }
+            else
+            {
+                newEnvironmentRow.EventDegree = ((Weather.DegreeRow)comboBoxEventDegree.SelectedItem).ID;
+                containsEnvironment = true;
+            }
+
+            if (comboBoxEventDiscretion.SelectedIndex == -1)
+            {
+                newEnvironmentRow.SetEventDiscretionNull();
+            }
+            else
+            {
+                newEnvironmentRow.EventDiscretion = ((Weather.DiscretionRow)comboBoxEventDiscretion.SelectedItem).ID;
+                containsEnvironment = true;
+            }
+
+            if (comboBoxAdditionalEvent.SelectedIndex == -1)
+            {
+                newEnvironmentRow.SetAdditionalEventNull();
+            }
+            else
+            {
+                newEnvironmentRow.AdditionalEvent = ((Weather.EventRow)comboBoxAdditionalEvent.SelectedItem).ID;
+                containsEnvironment = true;
+            }
+
+            #endregion
+
+            if (containsEnvironment)
+            {
+                Data.Environment.AddEnvironmentRow(newEnvironmentRow);
+            }
+
+            #endregion
+
+            #region Save factors values
+
+            Data.FactorValue.Clear();
+            Data.Factor.Clear();
+
+            foreach (DataGridViewRow gridRow in spreadSheetAddt.Rows)
+            {
+                if (gridRow.IsNewRow) continue;
+
+                if (gridRow.Cells[ColumnAddtFactor.Index].Value == null) continue;
+
+                if (gridRow.Cells[ColumnAddtValue.Index].Value == null) continue;
+
+                string factorName = (string)gridRow.Cells[ColumnAddtFactor.Index].Value;
+
+                double factorValue = (double)gridRow.Cells[ColumnAddtValue.Index].Value;
+
+                Data.FactorValue.AddFactorValueRow(Data.SingleCardRow, Data.Factor.AddFactorRow(factorName), factorValue);
+
+                if (!FisheryStock.UserSettings.AddtFactors.Contains(factorName))
+                {
+                    List<string> factors = new List<string>();
+                    factors.AddRange(FisheryStock.UserSettings.AddtFactors);
+                    factors.Add(factorName);
+                    FisheryStock.UserSettings.AddtFactors = factors.ToArray();
+                }
+            }
+
+            #endregion
+
+            SaveLog();
+
+            if (Quantity > 0)
+            {
+                infoRow.Quantity = Quantity;
+            }
+
+            if (Mass > 0)
+            {
+                infoRow.Mass = Math.Round(Mass, 3);
+            }
+
+            Data.ClearUseless();
+        }
+
+        public Data.CardRow SaveCardRow()
+        {
+            Data.InfoRow infoRow = Data.GetInfoRow(Data.SingleCardRow);
+
+            #region Header
+
+            if (Data.SingleCardRow.IsInvestigatorNull())
+            {
+                Data.SingleCardRow.Investigator = Mayfly.UserSettings.Username;
+            }
+
+            if (!waterSelector.IsWaterSelected)
+            {
+                UserSettings.SelectedWaterID = 0;
+                Data.SingleCardRow.SetWaterIDNull();
+                goto WaterSkip;
+            }
+            else
+            {
+                if (Data.SingleCardRow.IsWaterIDNull())
+                {
+                    goto WaterSave;
+                }
+
+                if (Data.SingleCardRow.WaterID == waterSelector.WaterObject.ID)
+                {
+                    UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
+                    goto WaterSkip;
+                }
+
+                goto WaterSave;
+            }
+
+        WaterSave:
+
+            Data.WaterRow newWaterRow = Data.Water.NewWaterRow();
+            newWaterRow.ID = waterSelector.WaterObject.ID;
+            newWaterRow.Type = waterSelector.WaterObject.Type;
+            if (!waterSelector.WaterObject.IsWaterNull())
+            {
+                newWaterRow.Water = waterSelector.WaterObject.Water;
+            }
+
+            Data.Water.AddWaterRow(newWaterRow);
+            Data.SingleCardRow.WaterRow = newWaterRow;
+            UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
+
+        WaterSkip:
+
+            #endregion
+
+            #region Position and Time
+
+            Data.SingleCardRow.DateTime = new DateTime(dateTimePickerDate.Value.Year, dateTimePickerDate.Value.Month, dateTimePickerDate.Value.Day);
+            if (maskedTextBoxTime.Text.Length == 4)
+            {
+                Data.SingleCardRow.DateTime = Data.SingleCardRow.DateTime.AddHours(double.Parse(maskedTextBoxTime.Text.Substring(0, 2)));
+                Data.SingleCardRow.DateTime = Data.SingleCardRow.DateTime.AddMinutes(double.Parse(maskedTextBoxTime.Text.Substring(2, 2)));
+                UserSettings.SelectedDate = Data.SingleCardRow.DateTime;
+            }
+
+            if (maskedTextBoxLatitude.Text == string.Empty)
+            {
+                Data.SingleCardRow.SetLatitudeNull();
+            }
+            else
+            {
+                Coordinate latitude = new Coordinate(maskedTextBoxLatitude.Text, false,
+                    labelLat.Text == Coordinate.dirS);
+                Data.SingleCardRow.Latitude = latitude.Degrees;
+            }
+
+            if (maskedTextBoxLongitude.Text == string.Empty)
+            {
+                Data.SingleCardRow.SetLongitudeNull();
+            }
+            else
+            {
+                Coordinate longitude = new Coordinate(maskedTextBoxLongitude.Text, true,
+                    labelLng.Text == Coordinate.dirW);
+                Data.SingleCardRow.Longitude = longitude.Degrees;
+            }
+
+            if (textBoxAltitude.Text == string.Empty)
+            {
+                Data.SingleCardRow.SetAltitudeNull();
+            }
+            else
+            {
+                Data.SingleCardRow.Altitude = double.Parse(textBoxAltitude.Text);
+            }
+
+            #endregion
+
+            #region Sampling
+
+            SaveSamplerValues();
+
+            #endregion
+
+            #region Comments
+
+            textBoxComments.Text = textBoxComments.Text.Trim();
+
+            if (textBoxComments.Text == string.Empty)
+            {
+                Data.SingleCardRow.SetCommentsNull();
+            }
+            else
+            {
+                Data.SingleCardRow.Comments = textBoxComments.Text;
+            }
+
+            #endregion
+
+            return Data.SingleCardRow;
+        }
+
+        private void SaveSamplerValues()
+        {
+            Data.InfoRow infoRow = Data.GetInfoRow(Data.SingleCardRow);
+
+            if (SelectedSampler == null)
+            {
+                Data.SingleCardRow.SetSamplerNull();
+                infoRow.SetSamplerNull();
+                UserSettings.SelectedSamplerID = 0;
+            }
+            else
+            {
+                Data.SingleCardRow.Sampler = UserSettings.SelectedSamplerID = SelectedSampler.ID;
+                infoRow.Sampler = SelectedSampler.Sampler;
+
+                if (!textBoxMesh.Enabled || textBoxMesh.Text == string.Empty)
+                {
+                    Data.SingleCardRow.SetMeshNull();
+                }
+                else
+                {
+                    Data.SingleCardRow.Mesh = int.Parse(textBoxMesh.Text);
+                }
+            }
+
+            if (SelectedSamplerType.Contains("L") && textBoxLength.Text != string.Empty)
+            {
+                Data.SingleCardRow.Length = double.Parse(textBoxLength.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetLengthNull();
+            }
+
+            if (SelectedSamplerType.Contains("O") && textBoxOpening.Text != string.Empty)
+            {
+                Data.SingleCardRow.Opening = double.Parse(textBoxOpening.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetOpeningNull();
+            }
+
+            if (SelectedSamplerType.Contains("H") && textBoxHeight.Text != string.Empty)
+            {
+                Data.SingleCardRow.Height = double.Parse(textBoxHeight.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetHeightNull();
+            }
+
+            if (textBoxDepth.Text != string.Empty)
+            {
+                Data.SingleCardRow.Depth = double.Parse(textBoxDepth.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetDepthNull();
+            }
+
+            if (SelectedSamplerType.Contains("S") && textBoxSquare.Text != string.Empty)
+            {
+                Data.SingleCardRow.Square = double.Parse(textBoxSquare.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetSquareNull();
+            }
+
+            if (SelectedSamplerType.Contains("M") && textBoxMesh.Text != string.Empty)
+            {
+                Data.SingleCardRow.Mesh = int.Parse(textBoxMesh.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetMeshNull();
+            }
+
+            if (SelectedSamplerType.Contains("J") && textBoxHook.Text != string.Empty)
+            {
+                Data.SingleCardRow.Hook = int.Parse(textBoxHook.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetHookNull();
+            }
+
+            if (SelectedSamplerType.Contains("T") && maskedTextBoxOperation.Text != string.Empty)
+            {
+                if (maskedTextBoxOperation.Text.Length < 5)
+                {
+                    Data.SingleCardRow.SetTimeNull();
+                }
+                else
+                {
+                    int Hours = int.Parse(maskedTextBoxOperation.Text.Substring(0, 3));
+                    int Minutes = int.Parse(maskedTextBoxOperation.Text.Substring(3, 2));
+                    Data.SingleCardRow.Time = Hours + ((double)Minutes / 60);
+                }
+            }
+            else
+            {
+                Data.SingleCardRow.SetTimeNull();
+            }
+
+            if (SelectedSamplerType.Contains("V") && textBoxVelocity.Text != string.Empty)
+            {
+                Data.SingleCardRow.Velocity = double.Parse(textBoxVelocity.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetVelocityNull();
+            }
+
+            if (SelectedSamplerType.Contains("E") && textBoxExposure.Text != string.Empty)
+            {
+                Data.SingleCardRow.Exposure = double.Parse(textBoxExposure.Text);
+            }
+            else
+            {
+                Data.SingleCardRow.SetExposureNull();
+            }
+        }
+
+        private void SaveLog()
+        {
+            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
+            {
+                if (gridRow.IsNewRow) continue;
+
+                SaveLogRow(gridRow);
+            }
+        }
+
+        private void HandleLogRow(DataGridViewRow gridRow)
+        {
+            // If it is new row - end of function.
+            if (gridRow.IsNewRow)
+            {
+                return;
+            }
+
+            // If row is empty - delete the row and end the function
+            if (FisheryStock.Service.IsRowEmpty(gridRow))
+            {
+                spreadSheetLog.Rows.Remove(gridRow);
+                return;
+            }
+
+            // If species is not set - light 'Not identified'
+            if (gridRow.Cells[ColumnSpecies.Index].Value == null)
+            {
+                gridRow.Cells[ColumnSpecies.Index].Value = Species.Resources.Interface.UnidentifiedTitle;
+            }
+
+            // Searching for the duplicates (on 'Species' column)
+            bool containsDuplicates = false;
+
+            for (int i = 0; i < spreadSheetLog.RowCount; i++)
+            {
+                DataGridViewRow currentGridRow = spreadSheetLog.Rows[i];
+
+                if (currentGridRow.IsNewRow)
+                {
+                    continue;
+                }
+
+                if (currentGridRow == gridRow)
+                {
+                    continue;
+                }
+
+                if (object.Equals(gridRow.Cells[ColumnSpecies.Index].Value, currentGridRow.Cells[ColumnSpecies.Index].Value))
+                {
+                    int Q = 0;
+                    double W = 0;
+
+                    if (gridRow.Cells[ColumnQuantity.Index].Value != null)
+                    {
+                        Q += (int)gridRow.Cells[ColumnQuantity.Name].Value;
+                    }
+
+                    if (gridRow.Cells[ColumnMass.Index].Value != null)
+                    {
+                        if (gridRow.Cells[ColumnQuantity.Index].Value != null &&
+                            (int)gridRow.Cells[ColumnQuantity.Index].Value == 1 &&
+                            LogRow(gridRow).GetIndividualRows().Length == 0)
+                        {
+                            Data.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                            newIndividualRow.LogRow = LogRow(gridRow);
+                            newIndividualRow.Mass = (double)gridRow.Cells[ColumnMass.Index].Value;
+                            Data.Individual.AddIndividualRow(newIndividualRow);
+                        }
+
+                        W += (double)gridRow.Cells[ColumnMass.Name].Value;
+                    }
+
+                    if (currentGridRow.Cells[ColumnQuantity.Index].Value != null)
+                    {
+                        Q += (int)currentGridRow.Cells[ColumnQuantity.Name].Value;
+                    }
+
+                    if (currentGridRow.Cells[ColumnMass.Index].Value != null)
+                    {
+                        if (currentGridRow.Cells[ColumnQuantity.Index].Value != null &&
+                            (int)currentGridRow.Cells[ColumnQuantity.Index].Value == 1 &&
+                            LogRow(currentGridRow).GetIndividualRows().Length == 0)
+                        {
+                            Data.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                            newIndividualRow.LogRow = LogRow(gridRow);
+                            if (gridRow.Cells[ColumnMass.Index].Value != null)
+                            {
+                                newIndividualRow.Mass = (double)gridRow.Cells[ColumnMass.Index].Value;
+                            }
+                            newIndividualRow.Comments = FisheryStock.Resources.Interface.DuplicateDefaultComment;
+                            Data.Individual.AddIndividualRow(newIndividualRow);
+                        }
+
+                        W += (double)currentGridRow.Cells[ColumnMass.Name].Value;
+                    }
+
+                    if (Q > 0)
+                    {
+                        gridRow.Cells[ColumnQuantity.Index].Value = Q;
+                    }
+
+                    if (W > 0)
+                    {
+                        gridRow.Cells[ColumnMass.Index].Value = W;
+                    }
+
+                    foreach (Data.IndividualRow individualRow in LogRow(currentGridRow).GetIndividualRows())
+                    {
+                        individualRow.LogRow = LogRow(gridRow);
+                    }
+
+                    spreadSheetLog.Rows.Remove(currentGridRow);
+                    Clear(currentGridRow);
+                    i--;
+                    containsDuplicates = true;
+                }
+            }
+
+            if (containsDuplicates)
+            {
+                statusCard.Default = SpeciesCount.ToString(Mayfly.FisheryStock.Resources.Interface.SpeciesCount);
+                statusCard.Message(string.Format(FisheryStock.Resources.Messages.DuplicateSummed, gridRow.Cells[ColumnSpecies.Index].Value));
+            }
+        }
+
+        private void HandleFactorRow(DataGridViewRow gridRow)
+        {
+            if (gridRow.IsNewRow)
+            {
+                return;
+            }
+
+            if (gridRow.Cells[ColumnAddtFactor.Index].Value == null ||
+                (string)gridRow.Cells[ColumnAddtFactor.Index].Value == string.Empty)
+            {
+                statusCard.Message(FisheryStock.Resources.Messages.FactorNameRequired);
+            }
+
+            for (int i = 0; i < spreadSheetAddt.RowCount; i++)
+            {
+                DataGridViewRow currentGridRow = spreadSheetAddt.Rows[i];
+
+                if (currentGridRow.IsNewRow)
+                {
+                    continue;
+                }
+
+                if (currentGridRow == gridRow)
+                {
+                    continue;
+                }
+
+                if (object.Equals(gridRow.Cells[ColumnAddtFactor.Index].Value,
+                    currentGridRow.Cells[ColumnAddtFactor.Index].Value))
+                {
+                    if (gridRow.Cells[ColumnAddtValue.Index].Value == null)
+                    {
+                        gridRow.Cells[ColumnAddtValue.Index].Value =
+                            currentGridRow.Cells[ColumnAddtValue.Index].Value;
+                    }
+
+                    spreadSheetAddt.Rows.Remove(currentGridRow);
+                    i--;
+                }
+            }
+        }
+
+        private Data.LogRow LogRow(DataGridViewRow gridRow)
+        {
+            return LogRow(Data, gridRow);
+        }
+
+        private Data.LogRow LogRow(Data data, DataGridViewRow gridRow)
+        {
+            Data.LogRow result;
+
+            if (data == Data)
+            {
+                if (gridRow.Cells[ColumnID.Index].Value != null)
+                {
+                    result = data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value);
+                    if (result != null)
+                    {
+                        goto Saving;
+                    }
+                }
+            }
+
+            result = data.Log.NewLogRow();
+            result.CardRow = data.SingleCardRow;
+
+        Saving:
+
+            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.Equivalent(
+                    gridRow.Cells[ColumnSpecies.Index].Value.ToString());
+
+            if (speciesRow == null)
+            {
+                // There is no such species in reference
+                if ((string)gridRow.Cells[ColumnSpecies.Index].Value ==
+                    Species.Resources.Interface.UnidentifiedTitle)
+                {
+                    result.SetSpcIDNull();
+                }
+                else
+                {
+                    Data.SpeciesRow newSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(
+                        null, (string)gridRow.Cells[ColumnSpecies.Index].Value.ToString());
+                    result.SpcID = newSpeciesRow.ID;
+                }
+            }
+            else
+            {
+                // There is such species in reference you using
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
+                if (existingSpeciesRow == null)
+                {
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
+                }
+                result.SpeciesRow = existingSpeciesRow;
+            }
+
+            if (gridRow.Cells[ColumnQuantity.Index].Value == null)
+            {
+                result.SetQuantityNull();
+            }
+            else
+            {
+                result.Quantity = (int)gridRow.Cells[ColumnQuantity.Index].Value;
+            }
+
+            if (gridRow.Cells[ColumnMass.Index].Value == null)
+            {
+                result.SetMassNull();
+            }
+            else
+            {
+                result.Mass = (double)gridRow.Cells[ColumnMass.Index].Value;
+            }
+
+            return result;
+        }
+
+        private Data.LogRow SaveLogRow(DataGridViewRow gridRow)
+        {
+            return SaveLogRow(Data, gridRow);
+        }
+
+        private Data.LogRow SaveLogRow(Data data, DataGridViewRow gridRow)
+        {
+            Data.LogRow result = LogRow(data, gridRow);
+            if (data.Log.Rows.IndexOf(result) == -1) data.Log.AddLogRow(result);
+            if (data == Data) gridRow.Cells[ColumnID.Index].Value = result.ID;
+            return result;
+        }
+
+        public void LoadData(string fileName)
+        {
+            Clear();
+            Data = new Data();
+            Data.Read(fileName);
+            LoadData();
+            FileName = fileName;
+
+            IsChanged = false;
+        }
+
+        private void LoadData()
+        {
+            #region Position and Time
+
+            if (Data.SingleCardRow.IsDateTimeNull())
+            {
+                dateTimePickerDate.Value = DateTime.Today;
+                maskedTextBoxTime.Text = string.Empty;
+            }
+            else
+            {
+                dateTimePickerDate.Value = Data.SingleCardRow.DateTime;
+
+                if (Data.SingleCardRow.DateTime.TimeOfDay == TimeSpan.Zero)
+                {
+                    maskedTextBoxTime.Text = string.Empty;
+                }
+                else
+                {
+                    maskedTextBoxTime.Text = Data.SingleCardRow.DateTime.ToString("HHmm");
+                }
+            }
+
+            if (Data.SingleCardRow.IsLatitudeNull())
+            {
+                maskedTextBoxLatitude.Text = string.Empty;
+            }
+            else
+            {
+                Coordinate lat = new Coordinate(Data.SingleCardRow.Latitude, false);
+                maskedTextBoxLatitude.Text = lat.ToText();
+                if (lat.Degrees < 0)
+                {
+                    labelLat.Text = Coordinate.dirS;
+                }
+                else
+                {
+                    labelLat.Text = Coordinate.dirN;
+                }
+            }
+
+            if (Data.SingleCardRow.IsLongitudeNull())
+            {
+                maskedTextBoxLongitude.Text = string.Empty;
+            }
+            else
+            {
+                Coordinate lng = new Coordinate(Data.SingleCardRow.Longitude, true);
+                maskedTextBoxLongitude.Text = lng.ToText();
+                if (lng.Degrees < 0)
+                {
+                    labelLng.Text = Coordinate.dirW;
+                }
+                else
+                {
+                    labelLng.Text = Coordinate.dirE;
+                }
+            }
+
+            if (Data.SingleCardRow.IsAltitudeNull())
+            {
+                textBoxAltitude.Text = string.Empty;
+            }
+            else
+            {
+                textBoxAltitude.Text = Data.SingleCardRow.Altitude.ToString();
+            }
+
+            #endregion
+
+            #region Sampling Way
+
+            AllowEffortCalculation = false;
+
+            if (Data.SingleCardRow.IsSamplerNull())
+            {
+                comboBoxSampler.SelectedIndex = -1;
+            }
+            else
+            {
+                SelectedSampler = Service.Sampler(Data.SingleCardRow.Sampler);
+            }
+
+
+            if (Data.SingleCardRow.IsLengthNull())
+            {
+                textBoxLength.Text = string.Empty;
+            }
+            else
+            {
+                textBoxLength.Text = Data.SingleCardRow.Length.ToString();
+            }
+
+            if (Data.SingleCardRow.IsOpeningNull())
+            {
+                textBoxOpening.Text = string.Empty;
+            }
+            else
+            {
+                textBoxOpening.Text = Data.SingleCardRow.Opening.ToString();
+            }
+
+            if (Data.SingleCardRow.IsHeightNull())
+            {
+                textBoxHeight.Text = string.Empty;
+            }
+            else
+            {
+                textBoxHeight.Text = Data.SingleCardRow.Height.ToString();
+            }
+
+            if (Data.SingleCardRow.IsSquareNull())
+            {
+                textBoxSquare.Text = string.Empty;
+            }
+            else
+            {
+                textBoxSquare.Text = Data.SingleCardRow.Square.ToString();
+            }
+
+            if (Data.SingleCardRow.IsMeshNull())
+            {
+                textBoxMesh.Text = string.Empty;
+            }
+            else
+            {
+                textBoxMesh.Text = Data.SingleCardRow.Mesh.ToString();
+            }
+
+            if (Data.SingleCardRow.IsHookNull())
+            {
+                textBoxHook.Text = string.Empty;
+            }
+            else
+            {
+                textBoxHook.Text = Data.SingleCardRow.Hook.ToString();
+            }
+
+            if (Data.SingleCardRow.IsTimeNull())
+            {
+                maskedTextBoxOperation.Text = string.Empty;
+            }
+            else
+            {
+                int hours = (int)Math.Floor(Data.SingleCardRow.Time);
+                int minutes = (int)Math.Round((Data.SingleCardRow.Time - hours) * 60);
+                maskedTextBoxOperation.Text = hours.ToString("000") + minutes.ToString("00");
+            }
+
+            if (Data.SingleCardRow.IsVelocityNull())
+            {
+                textBoxVelocity.Text = string.Empty;
+            }
+            else
+            {
+                textBoxVelocity.Text = Data.SingleCardRow.Velocity.ToString();
+            }
+
+            if (Data.SingleCardRow.IsExposureNull())
+            {
+                textBoxExposure.Text = string.Empty;
+            }
+            else
+            {
+                textBoxExposure.Text = Data.SingleCardRow.Exposure.ToString();
+            }
+
+            if (Data.SingleCardRow.IsDepthNull())
+            {
+                textBoxDepth.Text = string.Empty;
+            }
+            else
+            {
+                textBoxDepth.Text = Data.SingleCardRow.Depth.ToString();
+            }
+
+            #endregion
+
+            if (Data.SingleCardRow.IsWaterIDNull())
+            {
+                waterSelector.WaterObject = null;
+            }
+            else
+            {
+                WatersKey.WaterRow waterRow = UserSettings.WatersIndex.Water.FindByID(
+                    Data.SingleCardRow.WaterID);
+                if (waterRow == null)
+                {
+                    waterRow = UserSettings.WatersIndex.Water.NewWaterRow();
+                    waterRow.ID = Data.SingleCardRow.WaterRow.ID;
+                    waterRow.Water = Data.SingleCardRow.WaterRow.Water;
+                    waterRow.Type = Data.SingleCardRow.WaterRow.Type;
+
+                    waterSelector.WaterObject = waterRow;
+                }
+                else
+                {
+                    waterSelector.WaterObject = waterRow;
+                }
+            }
+
+            AllowEffortCalculation = true;
+
+            samplerChanged(comboBoxSampler, new EventArgs());
+
+            Sampler_ValueChanged(textBoxExposure, new EventArgs());
+
+            if (Data.SingleCardRow.IsCommentsNull())
+            {
+                textBoxComments.Text = string.Empty;
+            }
+            else
+            {
+                textBoxComments.Text = Data.SingleCardRow.Comments;
+            }
+
+            if (Data.Environment.Count == 0)
+            {
+                tabPageEnvironment.Parent = null;
+                goto SkipEnvironment;
+            }
+
+            tabPageEnvironment.Parent = tabControl;
+
+            Data.EnvironmentRow environmentRow = Data.Environment[0];
+
+            #region Water Conditions
+
+            if (environmentRow.IsTemperatureBottomNull())
+            {
+                textBoxTempBottom.Text = string.Empty;
+            }
+            else
+            {
+                textBoxTempBottom.Text = environmentRow.TemperatureBottom.ToString();
+            }
+
+            if (environmentRow.IsTemperatureSurfaceNull())
+            {
+                textBoxTempSurface.Text = string.Empty;
+            }
+            else
+            {
+                textBoxTempSurface.Text = environmentRow.TemperatureSurface.ToString();
+            }
+
+            if (environmentRow.IsFlowRateNull())
+            {
+                textBoxFlowRate.Text = string.Empty;
+            }
+            else
+            {
+                textBoxFlowRate.Text = environmentRow.FlowRate.ToString();
+            }
+
+            if (environmentRow.IsLimpidityNull())
+            {
+                textBoxLimpidity.Text = string.Empty;
+            }
+            else
+            {
+                textBoxLimpidity.Text = environmentRow.Limpidity.ToString();
+            }
+
+            if (environmentRow.IsColourNull())
+            {
+                colorPickerWaterColor.SelectedIndex = -1;
+            }
+            else
+            {
+                colorPickerWaterColor.SelectedIndex = environmentRow.Colour;
+            }
+
+            if (environmentRow.IsOdorNull())
+            {
+                checkBoxOdor.CheckState = CheckState.Indeterminate;
+            }
+            else
+            {
+                checkBoxOdor.Checked = environmentRow.Odor;
+            }
+
+            if (environmentRow.IsSewageNull())
+            {
+                checkBoxSewage.CheckState = CheckState.Indeterminate;
+            }
+            else
+            {
+                checkBoxSewage.Checked = environmentRow.Sewage;
+            }
+
+            if (environmentRow.IsFoamNull())
+            {
+                checkBoxFoam.CheckState = CheckState.Indeterminate;
+            }
+            else
+            {
+                checkBoxFoam.Checked = environmentRow.Foam;
+            }
+
+            if (environmentRow.IsTurbidityNull())
+            {
+                checkBoxTurbidity.CheckState = CheckState.Indeterminate;
+            }
+            else
+            {
+                checkBoxTurbidity.Checked = environmentRow.Turbidity;
+            }
+
+            if (environmentRow.IsConductivityNull())
+            {
+                textBoxConductivity.Text = string.Empty;
+            }
+            else
+            {
+                textBoxConductivity.Text = environmentRow.Conductivity.ToString();
+            }
+
+            if (environmentRow.IsDissolvedOxygenNull())
+            {
+                textBoxDissolvedOxygen.Text = string.Empty;
+            }
+            else
+            {
+                textBoxDissolvedOxygen.Text = environmentRow.DissolvedOxygen.ToString();
+            }
+
+            if (environmentRow.IsOxygenSaturationNull())
+            {
+                textBoxOxygenSaturation.Text = string.Empty;
+            }
+            else
+            {
+                textBoxOxygenSaturation.Text = environmentRow.OxygenSaturation.ToString();
+            }
+
+            if (environmentRow.IspHNull())
+            {
+                textBoxpH.Text = string.Empty;
+            }
+            else
+            {
+                textBoxpH.Text = environmentRow.pH.ToString();
+            }
+
+            #endregion
+
+            #region Weather
+
+            if (environmentRow.IsHumidityNull())
+            {
+                textBoxHumidity.Text = string.Empty;
+            }
+            else
+            {
+                textBoxHumidity.Text = environmentRow.Humidity.ToString();
+            }
+
+            if (environmentRow.IsTemperatureAirNull())
+            {
+                textBoxTemperature.Text = string.Empty;
+            }
+            else
+            {
+                textBoxTemperature.Text = environmentRow.TemperatureAir.ToString();
+            }
+
+            if (environmentRow.IsAirPressureNull())
+            {
+                textBoxBaro.Text = string.Empty;
+            }
+            else
+            {
+                textBoxBaro.Text = environmentRow.AirPressure.ToString();
+            }
+
+            if (environmentRow.IsWindRateNull())
+            {
+                textBoxWindRate.Text = string.Empty;
+            }
+            else
+            {
+                textBoxWindRate.Text = environmentRow.WindRate.ToString();
+            }
+
+            if (environmentRow.IsWindDirectionNull())
+            {
+                textBoxWindDirection.Text = string.Empty;
+            }
+            else
+            {
+                textBoxWindDirection.Text = environmentRow.WindDirection.ToString();
+            }
+
+            if (environmentRow.IsCloudageNull())
+            {
+                checkBoxCloudage.Checked = false;
+            }
+            else
+            {
+                checkBoxCloudage.Checked = true;
+                trackBarCloudage.Value = (int)environmentRow.Cloudage;
+            }
+
+            if (environmentRow.IsEventNull())
+            {
+                comboBoxEvent.SelectedIndex = -1;
+            }
+            else
+            {
+                comboBoxEvent.SelectedItem = FisheryStock.UserSettings.Weather.Event.FindByID(environmentRow.Event);
+            }
+
+            if (environmentRow.IsEventDegreeNull())
+            {
+                comboBoxEventDegree.SelectedIndex = -1;
+            }
+            else
+            {
+                comboBoxEventDegree.SelectedItem = FisheryStock.UserSettings.Weather.Degree.FindByID(environmentRow.EventDegree);
+            }
+
+            if (environmentRow.IsEventDiscretionNull())
+            {
+                comboBoxEventDiscretion.SelectedIndex = -1;
+            }
+            else
+            {
+                comboBoxEventDiscretion.SelectedItem = FisheryStock.UserSettings.Weather.Discretion.FindByID(environmentRow.EventDiscretion);
+            }
+
+            if (environmentRow.IsAdditionalEventNull())
+            {
+                comboBoxAdditionalEvent.SelectedIndex = -1;
+            }
+            else
+            {
+                comboBoxAdditionalEvent.SelectedItem = FisheryStock.UserSettings.Weather.Event.FindByID(environmentRow.AdditionalEvent);
+            }
+
+            #endregion
+
+        SkipEnvironment:
+
+            spreadSheetLog.Rows.Clear();
+            InsertLogRows(Data, 0);
+
+            #region Factors
+
+            spreadSheetAddt.Rows.Clear();
+            if (Data.Factor.Count > 0)
+            {
+                tabPageFactors.Parent = tabControl;
+                foreach (Data.FactorValueRow factorValueRow in Data.FactorValue)
+                {
+                    DataGridViewRow gridRow = new DataGridViewRow();
+                    gridRow.CreateCells(spreadSheetAddt);
+                    gridRow.Cells[ColumnAddtFactor.Index].Value = factorValueRow.FactorRow.Factor;
+                    gridRow.Cells[ColumnAddtValue.Index].Value = factorValueRow.Value;
+
+                    spreadSheetAddt.Rows.Add(gridRow);
+                }
+            }
+            else
+            {
+                tabPageFactors.Parent = null;
+            }
+
+            #endregion
+
+            UpdateStatus();
+            IsChanged = false;
+        }
+
+        private void InsertLogRows(Data data, int rowIndex)
+        {
+            if (rowIndex == -1)
+            {
+                rowIndex = spreadSheetLog.RowCount - 1;
+            }
+
+            foreach (Data.LogRow logRow in data.Log.Rows)
+            {
+                InsertLogRow(logRow, rowIndex);
+
+                if (rowIndex < spreadSheetLog.RowCount - 1)
+                {
+                    rowIndex++;
+                }
+            }
+        }
+
+        private void InsertLogRow(Data.LogRow logRow, int rowIndex)
+        {
+            DataGridViewRow gridRow = new DataGridViewRow();
+            gridRow.CreateCells(spreadSheetLog);
+            gridRow.Cells[ColumnID.Index].Value = logRow.ID;
+            gridRow.Cells[ColumnSpecies.Index].Value = logRow.SpeciesRow.Species;
+            if (!logRow.IsQuantityNull()) gridRow.Cells[ColumnQuantity.Index].Value = logRow.Quantity;
+            if (!logRow.IsMassNull()) gridRow.Cells[ColumnMass.Index].Value = logRow.Mass;
+            if (!logRow.IsCommentsNull())
+            {
+                gridRow.Cells[ColumnMass.Index].ToolTipText = logRow.Comments;
+            }
+            spreadSheetLog.Rows.Insert(rowIndex, gridRow);
+            HandleLogRow(gridRow);
+        }
+
+        public static bool IsDataPresented(string text)
+        {
+            try
+            {
+                Data data = new Data();
+                data.ReadXml(new StringReader(text));
+                return data.Log.Count > 0;
+            }
+            catch { return false; }
+        }
+
+        private DialogResult CheckAndSave()
+        {
+            DialogResult result = DialogResult.None;
+
+            if (IsChanged)
+            {
+                TaskDialogButton tdbPressed = taskDialogSaveChanges.ShowDialog(this);
+
+                if (tdbPressed == tdbSave)
+                {
+                    ToolStripMenuItemSave_Click(ToolStripMenuItemSave, new EventArgs());
+                    result = DialogResult.OK;
+                }
+                else if (tdbPressed == tdbDiscard)
+                {
+                    IsChanged = false;
+                    result = DialogResult.No;
+                }
+                else if (tdbPressed == tdbCancelClose)
+                {
+                    result = DialogResult.Cancel;
+                }
+            }
+
+            return result;
+        }
+
+        private void GetSpeciesList()
+        {
+            while (contextMenuStripSpecies.Items.Count > 4)
+            {
+                contextMenuStripSpecies.Items.RemoveAt(4);
+            }
+
+            ToolStripMenuItemAllSpecies.DropDownItems.Clear();
+
+            foreach (SpeciesKey.SpeciesRow speciesRow in (SpeciesKey.SpeciesRow[])
+                UserSettings.SpeciesIndex.Species.Select(string.Empty, "Species asc"))
+            {
+                ToolStripItem SpeciesItem = new ToolStripMenuItem();
+                SpeciesItem.Tag = speciesRow;
+                SpeciesItem.Text = SpeciesKey.SpeciesFullName(speciesRow);
+                SpeciesItem.Click += new EventHandler(speciesItem_Click);
+                ToolStripMenuItemAllSpecies.DropDownItems.Add(SpeciesItem);
+            }
+
+            foreach (SpeciesKey.BaseRow baseRow in UserSettings.SpeciesIndex.Base.Rows)
+            {
+                ToolStripMenuItem baseItem = new ToolStripMenuItem();
+                baseItem.Text = baseRow.Base;
+
+                foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
+                {
+                    ToolStripMenuItem taxaItem = new ToolStripMenuItem();
+                    taxaItem.Text = taxaRow.Taxon;
+
+                    foreach (SpeciesKey.RepresentativeRow representativeRow in taxaRow.GetRepresentativeRows())
+                    {
+                        ToolStripItem speciesItem = new ToolStripMenuItem();
+                        speciesItem.Tag = representativeRow.SpeciesRow;
+                        speciesItem.Text = SpeciesKey.SpeciesShortName(representativeRow.SpeciesRow);
+                        speciesItem.Click += new EventHandler(speciesItem_Click);
+                        ToolStripMenuItemAllSpecies.DropDownItems.Add(speciesItem);
+
+                        taxaItem.DropDownItems.Add(speciesItem);
+                    }
+
+                    Mayfly.Service.SortItems(taxaItem);
+                    baseItem.DropDownItems.Add(taxaItem);
+                }
+
+                Mayfly.Service.SortItems(baseItem);
+                contextMenuStripSpecies.Items.Add(baseItem);
+            }
+        }
+
+        public int InsertSpecies(string species)
+        {
+            int speciesIndex = -1;
+
+            // Try to find species in the list
+            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
+            {
+                if (gridRow.Cells[ColumnSpecies.Index].Value == null) continue;
+
+                if (object.Equals(gridRow.Cells[ColumnSpecies.Index].Value, species))
+                {
+                    speciesIndex = gridRow.Index;
+                    break;
+                }
+            }
+
+            // If there is no such species - insert the new row
+            if (speciesIndex == -1)
+            {
+                Data.Species.Rows.Add(null, species);
+                speciesIndex = spreadSheetLog.Rows.Add(null, species);
+            }
+
+            // Select the new row and its first cell
+            spreadSheetLog.ClearSelection();
+            spreadSheetLog.Rows[speciesIndex].Selected = true;
+            spreadSheetLog.CurrentCell = spreadSheetLog.Rows[speciesIndex].Cells[ColumnSpecies.Index];
+
+            // Then insert species in selected cell
+            speciesLogger.InsertSpeciesHere(species);
+
+            return speciesIndex;
+        }
+
+        private void gpsData_Drop(string[] filenames)
+        {
+            Waypoints waypoints = new Waypoints(filenames);
+            waypoints.DesktopLocation = Mayfly.Service.FriendlyDesktopLocation(maskedTextBoxLatitude, new Point(0, maskedTextBoxLatitude.Height + 5), waypoints.Size);
+            waypoints.WaypointSelected += new Waypoints.WaypointEventHandler(waypoints_WaypointSelected);
+            waypoints.Show(this);
+        }
+
+        private void waypoints_WaypointSelected(object sender, WaypointEventArgs e)
+        {
+            Waypoint waypoint = e.Point;
+
+            if (waypoint.IsTimeMarkNull)
+            {
+                maskedTextBoxTime.Text = string.Empty;
+            }
+            else
+            {
+                dateTimePickerDate.Value = waypoint.TimeMark;
+                maskedTextBoxTime.Text = waypoint.TimeMark.ToString("hhmm");
+            }
+
+            if (waypoint.IsLatitudeNull)
+            {
+                maskedTextBoxLatitude.Text = string.Empty;
+            }
+            else
+            {
+                maskedTextBoxLatitude.Text = waypoint.Latitude.ToText();
+                if (waypoint.Latitude.Degrees < 0)
+                {
+                    labelLat.Text = Coordinate.dirS;
+                }
+            }
+
+            if (waypoint.IsLongitudeNull)
+            {
+                maskedTextBoxLongitude.Text = string.Empty;
+            }
+            else
+            {
+                maskedTextBoxLongitude.Text = waypoint.Longitude.ToText();
+                if (waypoint.Longitude.Degrees < 0)
+                {
+                    labelLng.Text = Coordinate.dirW;
+                }
+            }
+
+            if (waypoint.IsAltitudeNull)
+            {
+                textBoxAltitude.Text = string.Empty;
+            }
+            else
+            {
+                textBoxAltitude.Text = waypoint.Altitude.ToString();
+            }
+
+            if (waypoint.IsNameNull) { }
+            else
+            {
+                if (textBoxComments.Text == string.Empty)
+                {
+                    textBoxComments.Text = waypoint.Name;
+                }
+            }
+
+            tabControl.SelectedTab = tabPageSampling;
+        }
+
+        public void OpenSpecies(string species)
+        {
+            SpeciesToOpen = species;
+            Load += new EventHandler(CardOpenSpecies_Load);
+        }
+
+        #endregion
+
+        private void Card_Load(object sender, EventArgs e)
+        {
+            IsChanged = false;
+
+            UpdateInspector.CheckForUpdates(Application.ExecutablePath);
+        }
+
+        private void CardOpenSpecies_Load(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tabPageLog;
+            InsertSpecies(SpeciesToOpen);
+            if (!UserSettings.AutoLogOpen) ToolStripMenuItemIndividuals_Click(spreadSheetLog, new EventArgs());
+
+            IsChanged = false;
+        }
+
+        private void Card_SizeChanged(object sender, EventArgs e)
+        {
+            labelArea.Visible = textBoxArea.Visible =
+                labelVolume.Visible = textBoxVolume.Visible =
+                labelEfforts.Visible = textBoxEfforts.Visible = (Height >= 714);
+        }
+
+        private void Card_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = (CheckAndSave() == DialogResult.Cancel);
+        }
+
+        private void ValueChanged(object sender, EventArgs e)
+        {
+            IsChanged = true;
+        }
+
+        private void Value_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Mayfly.Service.HandleInput((Control)sender, e, typeof(double));
+        }
+
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Mayfly.Service.HandleInput((ComboBox)sender, e);
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == tabPageLog)
+            {
+                spreadSheetLog.Focus();
+            }
+        }
+
+        #region File menu
+
+        private void ToolStripMenuItemNew_Click(object sender, EventArgs e)
+        {
+            if (CheckAndSave() != DialogResult.Cancel)
+            {
+                Clear();
+                IsChanged = false;
+            }
+        }
+
+        private void ToolStripMenuItemOpen_Click(object sender, EventArgs e)
+        {
+            if (UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (UserSettings.OpenDialog.FileName == FileName)
+                {
+                    statusCard.Message(FisheryStock.Resources.Messages.AlreadyOpened);
+                }
+                else
+                {
+                    if (CheckAndSave() != DialogResult.Cancel)
+                    {
+                        LoadData(UserSettings.OpenDialog.FileName);
+                    }
+                }
+            }
+        }
+
+        private void ToolStripMenuItemSave_Click(object sender, EventArgs e)
+        {
+            if (FileName == null)
+            {
+                Save();
+            }
+            else
+            {
+                Save(FileName);
+            }
+        }
+
+        private void ToolStripMenuItemSaveAs_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void ToolStripMenuItemPrintPreview_Click(object sender, EventArgs e)
+        {
+            if (IsChanged)
+            {
+                SaveData();
+            }
+
+            Data.HTML(FileSystem.ShortName(FileName)).Preview(this);
+        }
+
+        private void ToolStripMenuItemPrint_Click(object sender, EventArgs e)
+        {
+            if (IsChanged)
+            {
+                SaveData();
+            }
+
+            if (ModifierKeys == Keys.Control)
+            {
+                Data.HTML(FileSystem.ShortName(FileName)).PrintNow();
+            }
+            else
+            {
+                Data.HTML(FileSystem.ShortName(FileName)).Print();
+            }
+        }
+
+        private void ToolStripMenuItemLogBlank_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                Data.BlankLog.PrintNow();
+            }
+            else
+            {
+                Data.BlankLog.Print();
+            }
+        }
+
+        private void ToolStripMenuItemCardBlank_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                Data.BlankCard.PrintNow();
+            }
+            else
+            {
+                Data.BlankCard.Print();
+            }
+        }
+
+        private void ToolStripMenuItemIndividualsLogBlank_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                Data.BlankIndividuals.PrintNow();
+            }
+            else
+            {
+                Data.BlankIndividuals.Print();
+            }
+        }
+
+        private void ToolStripMenuItemIndividualProfileBlank_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                Data.BlankIndividual.PrintNow();
+            }
+            else
+            {
+                Data.BlankIndividual.Print();
+            }
+        }
+
+        private void ToolStripMenuItemClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
+
+        #region Data menu
+
+        private void addEnvironmentalDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabPageEnvironment.Parent = tabControl;
+            tabControl.SelectedTab = tabPageEnvironment;
+        }
+
+        private void addFactorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabPageFactors.Parent = tabControl;
+            tabControl.SelectedTab = tabPageFactors;
+        }
+
+        private void ToolStripMenuItemGPSImport_Click(object sender, EventArgs e)
+        {
+            if (Geographics.UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                gpsData_Drop(Mayfly.Geographics.UserSettings.OpenDialog.FileNames);
+            }
+        }
+
+        #endregion
+
+        #region Service menu
+
+        private void ToolStripMenuItemWatersRef_Click(object sender, EventArgs e)
+        {
+            FileSystem.RunFile(UserSettings.WatersIndexPath);
+        }
+
+        private void ToolStripMenuItemSpeciesRef_Click(object sender, EventArgs e)
+        {
+            FileSystem.RunFile(UserSettings.SpeciesIndexPath);
+        }
+
+        private void ToolStripMenuItemSettings_Click(object sender, EventArgs e)
+        {
+            WriteMode writeMode = Geographics.UserSettings.SelectedWriteMode;
+            string currentWaters = UserSettings.WatersIndexPath;
+            string currentSpecies = UserSettings.SpeciesIndexPath;
+
+            Settings settings = new Settings();
+            if (settings.ShowDialog() == DialogResult.OK)
+            {
+                if (currentWaters != UserSettings.WatersIndexPath)
+                {
+                    UserSettings.WatersIndex = null;
+                    waterSelector.Index = UserSettings.WatersIndex;
+                }
+
+                if (currentSpecies != UserSettings.SpeciesIndexPath)
+                {
+                    UserSettings.SpeciesIndex = null;
+                    GetSpeciesList();
+                }
+
+                if (writeMode != Mayfly.Geographics.UserSettings.SelectedWriteMode)
+                {
+                    if (maskedTextBoxLatitude.Text != string.Empty)
+                    {
+                        Coordinate latitude = new Coordinate(maskedTextBoxLatitude.Text, false,
+                            labelLat.Text == Coordinate.dirS, writeMode);
+                        maskedTextBoxLatitude.Text = latitude.ToText();
+                    }
+
+                    maskedTextBoxLatitude.Mask = Coordinate.LatitudeMask;
+
+                    if (maskedTextBoxLongitude.Text != string.Empty)
+                    {
+                        Coordinate longitude = new Coordinate(maskedTextBoxLongitude.Text, true,
+                            labelLng.Text == Coordinate.dirW, writeMode);
+                        maskedTextBoxLongitude.Text = longitude.ToText();
+                    }
+
+                    maskedTextBoxLongitude.Mask = Coordinate.LongitudeMask;
+                }
+            }
+        }
+
+        private void ToolStripMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.SetPowered(Properties.Resources.sriif, Resources.Info.Remark);
+            about.SetIcon(Mayfly.Service.GetIcon(Application.ExecutablePath, 0));
+            about.ShowDialog();
+        }
+
+        #endregion
+
+        #region Sampling tab logics
+
+        private void waterSelector_WaterSelected(object sender, WaterSelectEventArgs e)
+        {
+            statusCard.Message(FisheryStock.Resources.Messages.WaterSet);
+            Sampler_ValueChanged(sender, e);
+        }
+
+        private void labelDirection_Click(object sender, EventArgs e)
+        {
+            (sender as Label).Text = Coordinate.ReverseLabel((sender as Label).Text);
+        }
+
+        private void gpsData_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                if (FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                    Mayfly.Geographics.UserSettings.Extensions).Length > 0)
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+            }
+        }
+
+        private void gpsData_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] gpsFileNames = FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                    Mayfly.Geographics.UserSettings.Extensions);
+
+                if (gpsFileNames.Length > 0)
+                {
+                    e.Effect = DragDropEffects.None;
+                    gpsData_Drop(gpsFileNames);
+                }
+            }
+        }
+
+
+        private void samplerChanged(object sender, EventArgs e)
+        {
+            labelLength.Enabled = textBoxLength.Enabled = SelectedSamplerType.Contains("L");
+            labelOpening.Enabled = textBoxOpening.Enabled = SelectedSamplerType.Contains("O");
+            labelHeight.Enabled = textBoxHeight.Enabled = SelectedSamplerType.Contains("H");
+            labelSquare.Enabled = textBoxSquare.Enabled = SelectedSamplerType.Contains("S");
+
+            labelMesh.Enabled = textBoxMesh.Enabled = SelectedSamplerType.Contains("M");
+            labelHook.Enabled = textBoxHook.Enabled = SelectedSamplerType.Contains("J");
+
+            labelOperation.Enabled = maskedTextBoxOperation.Enabled = SelectedSamplerType.Contains("T");
+            labelVelocity.Enabled = textBoxVelocity.Enabled = SelectedSamplerType.Contains("V");
+            labelExposure.Enabled = textBoxExposure.Enabled = SelectedSamplerType.Contains("E");
+            textBoxExposure.ReadOnly = SelectedSamplerType.Contains("V") && SelectedSamplerType.Contains("T");
+
+            Sampler_ValueChanged(sender, e);
+        }
+
+        private void Sampler_ValueChanged(object sender, EventArgs e)
+        {
+            if (AllowEffortCalculation)
+            {
+                SaveSamplerValues();
+
+                if (textBoxOpening.Enabled)
+                {
+                    if (textBoxLength.Text == string.Empty)
+                    {
+                        pictureBoxWarnOpening.Visible = false;
+                        pictureBoxWarnExposure.Visible = false;
+                    }
+                    else
+                    {
+                        if (textBoxOpening.Text == string.Empty)
+                        {
+                            pictureBoxWarnOpening.Visible = true;
+                            statusCard.Message(Resources.Messages.EffectiveEmpty);
+                        }
+                        else
+                        {
+                            if (Convert.ToDouble(textBoxOpening.Text) >=
+                                Convert.ToDouble(textBoxLength.Text))
+                            {
+                                pictureBoxWarnOpening.Visible = true;
+                                statusCard.Message(Resources.Messages.EffectiveError);
+                            }
+                            else
+                            {
+                                pictureBoxWarnOpening.Visible = false;
+                            }
+                        }
+
+
+                        if (textBoxExposure.Text != string.Empty &&
+                            Convert.ToDouble(textBoxExposure.Text) < 2 * Convert.ToDouble(textBoxLength.Text) / Math.PI)
+                        {
+                            pictureBoxWarnExposure.Visible = true;
+                            statusCard.Message(Resources.Messages.SeinSpreadError);
+                        }
+                        else
+                        {
+                            pictureBoxWarnExposure.Visible = false;
+                        }
+                    }
+                }
+                else
+                {
+                    pictureBoxWarnOpening.Visible = false;
+                    pictureBoxWarnExposure.Visible = false;
+                }
+
+                if (textBoxExposure.Enabled && textBoxExposure.ReadOnly)
+                {
+                    textBoxExposure.Text = Service.Exposure(Data.SingleCardRow).ToString("0.####");
+                }
+
+                textBoxEfforts.Text = Data.GetEffort(Data.SingleCardRow, EffortVariant.Efforts).ToString("0.####");
+                textBoxArea.Text = Data.GetEffort(Data.SingleCardRow, EffortVariant.Square).ToString("0.####");
+                textBoxVolume.Text = Data.GetEffort(Data.SingleCardRow, EffortVariant.Volume).ToString("0.####");
+            }
+
+            IsChanged = true;
+        }
+
+        private void SamplerValue_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!((TextBox)sender).Enabled)
+            {
+                ((TextBox)sender).Text = string.Empty;
+            }
+        }
+
+        private void maskedTextBoxOperation_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!((MaskedTextBox)sender).Enabled)
+            {
+                ((MaskedTextBox)sender).Text = string.Empty;
+            }
+        }
+
+
+        private void pictureBoxWarnOpening_MouseHover(object sender, EventArgs e)
+        {
+            if (textBoxOpening.Text == string.Empty)
+            {
+                toolTipAttention.ToolTipTitle = Resources.Messages.EffectiveEmpty;
+                toolTipAttention.Show(Resources.Messages.FixEmptyOpening,
+                    textBoxOpening, 0, textBoxOpening.Height);
+            }
+            else
+            {
+                toolTipAttention.ToolTipTitle = Resources.Messages.EffectiveError;
+                toolTipAttention.Show(string.Format(Resources.Messages.FixOpening,
+                    textBoxOpening.Text, textBoxLength.Text),
+                    textBoxOpening, 0, textBoxOpening.Height);
+            }
+        }
+
+        private void pictureBoxWarnOpening_MouseLeave(object sender, EventArgs e)
+        {
+            toolTipAttention.Hide(textBoxOpening);
+        }
+
+        private void pictureBoxWarnOpening_DoubleClick(object sender, EventArgs e)
+        {
+            textBoxOpening.Text = (Convert.ToDouble(textBoxLength.Text) *
+                Service.DefaultOpening(SelectedSampler.ID)).ToString(Mayfly.Service.Mask(0));
+        }
+
+
+        private void pictureBoxWarnExposure_MouseHover(object sender, EventArgs e)
+        {
+            toolTipAttention.ToolTipTitle = Resources.Messages.SeinSpreadError;
+            toolTipAttention.Show(string.Format(Resources.Messages.FixSpread,
+                textBoxExposure.Text, textBoxLength.Text),
+                textBoxExposure, 0, textBoxExposure.Height);
+        }
+
+        private void pictureBoxWarnExposure_MouseLeave(object sender, EventArgs e)
+        {
+            toolTipAttention.Hide(textBoxExposure);
+        }
+
+        private void pictureBoxWarnExposure_DoubleClick(object sender, EventArgs e)
+        {
+            textBoxExposure.Text = Math.Ceiling(2 * Convert.ToDouble(textBoxLength.Text) / Math.PI).ToString(Mayfly.Service.Mask(0));
+        }
+
+        #endregion
+
+        #region Weather tab logics
+
+        private void trackBarClouds_Scroll(object sender, EventArgs e)
+        {
+            toolTipAttention.ToolTipTitle = checkBoxCloudage.Text;
+            toolTipAttention.Show(Mayfly.Service.CloudageName(trackBarCloudage.Value),
+                trackBarCloudage, 0, trackBarCloudage.Height, 1500);
+            ValueChanged(sender, e);
+        }
+
+        private void checkBoxCloudage_CheckedChanged(object sender, EventArgs e)
+        {
+            trackBarCloudage.Enabled = checkBoxCloudage.Checked;
+            ValueChanged(sender, e);
+        }
+
+        private void comboBoxEvent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxEventDegree.Enabled = FisheryStock.UserSettings.Weather.IsDegreeAvailable(
+                (Weather.EventRow)comboBoxEvent.SelectedValue);
+            comboBoxEventDegree.DataSource = FisheryStock.UserSettings.Weather.AvailableDegrees(
+                (Weather.EventRow)comboBoxEvent.SelectedValue);
+            comboBoxEventDegree.SelectedIndex = -1;
+
+            comboBoxEventDiscretion.Enabled = FisheryStock.UserSettings.Weather.IsDiscretionAvailable(
+                (Weather.EventRow)comboBoxEvent.SelectedValue);
+            comboBoxEventDiscretion.SelectedIndex = -1;
+
+            comboBoxAdditionalEvent.Enabled = FisheryStock.UserSettings.Weather.IsAdditionalEventAvailable(
+                (Weather.EventRow)comboBoxEvent.SelectedValue);
+            comboBoxAdditionalEvent.DataSource = FisheryStock.UserSettings.Weather.AvailableAdditionalEvents(
+                (Weather.EventRow)comboBoxEvent.SelectedValue);
+            comboBoxAdditionalEvent.SelectedIndex = -1;
+            ValueChanged(sender, e);
+        }
+
+        private void comboBoxEventDegree_EnabledChanged(object sender, EventArgs e)
+        {
+            labelEventDegree.Enabled = comboBoxEventDegree.Enabled;
+        }
+
+        private void comboBoxEventDiscretion_EnabledChanged(object sender, EventArgs e)
+        {
+            labelEventDiscretion.Enabled = comboBoxEventDiscretion.Enabled;
+        }
+
+        private void comboBoxAdditionalEvent_EnabledChanged(object sender, EventArgs e)
+        {
+            labelAdditionalEvent.Enabled = comboBoxAdditionalEvent.Enabled;
+        }
+
+        private void textBoxWindRate_TextChanged(object sender, EventArgs e)
+        {
+            ValueChanged(sender, e);
+            textBoxWindDirection.Enabled = textBoxWindRate.Text != string.Empty;
+        }
+
+        private void textBoxWindDirection_EnabledChanged(object sender, EventArgs e)
+        {
+            labelWindDirection.Enabled = textBoxWindRate.Enabled;
+        }
+
+        #endregion
+
+        #region Log tab logics
+
+        #region Entering value logics
+
+        private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (spreadSheetLog.CurrentCell != null && Mayfly.Service.IsNumberNeeded(spreadSheetLog.CurrentCell.OwningColumn.ValueType))
+            {
+                Value_KeyPress(sender, e);
+            }
+        }
+
+        private void speciesLogger_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
+        {
+            HandleLogRow(e.Cell.OwningRow);
+            ValueChanged(sender, e);
+
+            if (UserSettings.AutoLogOpen)
+            {
+                spreadSheetLog.ClearSelection();
+                e.Cell.OwningRow.Selected = true;
+                ToolStripMenuItemIndividuals_Click(ToolStripMenuItemIndividuals, new EventArgs());
+            }
+        }
+
+        #endregion
+
+        #region Log grid logics
+
+        private void spreadSheetLog_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            IsChanged = true;
+            HandleLogRow(spreadSheetLog.Rows[e.RowIndex]);
+        }
+
+        private void spreadSheetLog_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateStatus();
+        }
+
+        private void spreadSheetLog_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            Clear(e.Row);
+            IsChanged = true;
+            UpdateStatus();
+        }
+
+        private void spreadSheetLog_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            UpdateStatus();
+            IsChanged = true;
+        }
+
+        private void spreadSheetLog_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            UpdateStatus();
+            IsChanged = true;
+        }
+
+        #endregion
+
+        #region Log menu logics
+
+        private void contextMenuStripLog_Opening(object sender, CancelEventArgs e)
+        {
+            ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() &&
+                Data.ContainsLog(Clipboard.GetText());
+        }
+
+        private void ToolStripMenuItemIndividuals_Click(object sender, EventArgs e)
+        {
+            spreadSheetLog.EndEdit();
+
+            foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
+            {
+                if (gridRow.Cells[ColumnSpecies.Name].Value != null)
+                {
+                    Individuals individuals = new Individuals(SaveLogRow(gridRow));
+                    individuals.LogLine = gridRow;
+                    individuals.Location = Mayfly.Service.FriendlyDesktopLocation(gridRow, individuals.Size);
+                    individuals.FormClosing += new FormClosingEventHandler(individuals_FormClosing);
+                    individuals.Show(this);
+                }
+            }
+        }
+
+        private void individuals_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Individuals individuals = sender as Individuals;
+            if (individuals.DialogResult == DialogResult.OK)
+            {
+                IsChanged |= individuals.ChangesWereMade;
+            }
+        }
+
+        private void ToolStripMenuItemCut_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItemCopy_Click(sender, e);
+            ToolStripMenuItemDelete_Click(sender, e);
+        }
+
+        private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
+        {
+            Data clipData = new Data();
+            Data.CardRow clipCardRow = clipData.Card.NewCardRow();
+            clipData.Card.AddCardRow(clipCardRow);
+
+            foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows)
+            {
+                if (selectedRow.IsNewRow)
+                {
+                    continue;
+                }
+
+                Data.LogRow clipLogRow = LogRow(clipData, selectedRow);
+
+                if (selectedRow.Cells[ColumnID.Index].Value != null)
+                {
+                    Data.LogRow logRow = Data.Log.FindByID((int)selectedRow.Cells[ColumnID.Index].Value);
+
+                    if (logRow != null)
+                    {
+                        foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                        {
+                            Data.CopyIndividualData(individualRow, clipLogRow);
+                        }
+
+                        foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+                        {
+                            Data.StratifiedRow clipStratifiedRow = clipData.Stratified.NewStratifiedRow();
+
+                            clipStratifiedRow.Class = stratifiedRow.Class;
+                            if (!stratifiedRow.IsCountNull()) clipStratifiedRow.Count = stratifiedRow.Count;
+                            clipStratifiedRow.LogRow = clipLogRow;
+                            clipData.Stratified.AddStratifiedRow(clipStratifiedRow);
+                        }
+                    }
+                }
+            }
+
+            Clipboard.SetText(clipData.GetXml());
+        }
+
+        private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
+        {
+            Data clipData = new Data();
+            clipData.ReadXml(new StringReader(Clipboard.GetText()));
+
+            int rowIndex = spreadSheetLog.SelectedRows[0].Index;
+
+            foreach (Data.LogRow clipLogRow in clipData.Log)
+            {
+                // Copy from Clipboard Data to local Data
+                Data.LogRow logRow = Data.Log.NewLogRow();
+                if (!clipLogRow.IsQuantityNull()) logRow.Quantity = clipLogRow.Quantity;
+                if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
+                logRow.CardRow = Data.SingleCardRow;
+
+                SpeciesKey.SpeciesRow clipSpeciesRow = UserSettings.SpeciesIndex.Equivalent(clipLogRow.SpeciesRow.Species);
+
+                if (clipSpeciesRow == null)
+                {
+                    Data.SpeciesRow newSpeciesRow = Data.Species.AddSpeciesRow(
+                        clipLogRow.SpeciesRow.Species);
+
+                    logRow.SpcID = newSpeciesRow.ID;
+                }
+                else
+                {
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
+                    {
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
+                    }
+                    logRow.SpcID = clipSpeciesRow.ID;
+                }
+
+                Data.Log.AddLogRow(logRow);
+
+                foreach (Data.IndividualRow clipIndividualRow in clipLogRow.GetIndividualRows())
+                {
+                    Data.CopyIndividualData(clipIndividualRow, logRow);
+                }
+
+                foreach (Data.StratifiedRow clipStratifiedRow in clipData.Stratified)
+                {
+                    Data.StratifiedRow stratifiedRow = Data.Stratified.NewStratifiedRow();
+                    stratifiedRow.Class = clipStratifiedRow.Class;
+                    if (!clipStratifiedRow.IsCountNull()) stratifiedRow.Count = clipStratifiedRow.Count;
+                    stratifiedRow.LogRow = logRow;
+                    Data.Stratified.AddStratifiedRow(stratifiedRow);
+                }
+
+                InsertLogRow(logRow, rowIndex);
+
+                if (rowIndex < spreadSheetLog.RowCount - 1)
+                {
+                    rowIndex++;
+                }
+            }
+
+            IsChanged = true;
+            UpdateStatus();
+            Clipboard.Clear();
+        }
+
+        private void ToolStripMenuItemDelete_Click(object sender, EventArgs e)
+        {
+            int rowsToDelete = spreadSheetLog.SelectedRows.Count;
+            while (rowsToDelete > 0)
+            {
+                Clear(spreadSheetLog.SelectedRows[0]);
+                spreadSheetLog.Rows.Remove(spreadSheetLog.SelectedRows[0]);
+                rowsToDelete--;
+            }
+
+            IsChanged = true;
+            UpdateStatus();
+        }
+
+        private void ToolStripMenuItemKey_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                if (UserSettings.SpeciesIndexPath != null)
+                {
+                    DefineByKey(UserSettings.SpeciesIndexPath);
+                }
+                else
+                {
+                    if (Species.UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DefineByKey(Species.UserSettings.OpenDialog.FileName);
+                    }
+                }
+            }
+            else
+            {
+                if (Species.UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DefineByKey(Species.UserSettings.OpenDialog.FileName);
+                }
+            }
+        }
+
+        private void ToolStripMenuItemSpeciesKey_Click(object sender, EventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                // PS: Is it nessecary to launch key for every selected row?
+                foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows)
+                {
+                    if (UserSettings.SpeciesIndexPath != null)
+                    {
+                        FindInKey(UserSettings.SpeciesIndexPath, selectedRow);
+                    }
+                    else
+                    {
+                        if (Species.UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            FindInKey(Species.UserSettings.OpenDialog.FileName, selectedRow);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (UserSettings.SpeciesIndexPath != null)
+                {
+                    Species.UserSettings.OpenDialog.InitialDirectory =
+                        new FileInfo(UserSettings.SpeciesIndexPath).DirectoryName;
+                }
+
+                foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows)
+                {
+                    if (Species.UserSettings.OpenDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        FindInKey(Species.UserSettings.OpenDialog.FileName, selectedRow);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        private void buttonAddSpecies_Click(object sender, EventArgs e)
+        {
+            contextMenuStripSpecies.Show(buttonAdd, new Point(0, 0), ToolStripDropDownDirection.AboveRight);
+        }
+
+        private void speciesItem_Click(object sender, EventArgs e)
+        {
+            InsertSpecies(((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag).Species);
+        }
+
+        private void DefineByKey(string fileName)
+        {
+            Species.MainForm speciesKey = new Species.MainForm(fileName);
+            if (speciesKey.Data.Key.IsAvailable)
+            {
+                speciesKey.PreventChanges();
+                speciesKey.LoadKey();
+                if (speciesKey.ShowDialog() == DialogResult.OK)
+                {
+                    InsertSpecies(speciesKey.DefinedSpecies.Species);
+                }
+            }
+            else
+            {
+                speciesKey.Dispose();
+            }
+        }
+
+        private void FindInKey(string fileName, DataGridViewRow gridRow)
+        {
+            Species.MainForm speciesKey = new Species.MainForm(fileName);
+            if (speciesKey.Data.Key.IsAvailable)
+            {
+                speciesKey.PreventChanges();
+                speciesKey.LoadKey();
+                if (gridRow.Cells[ColumnSpecies.Name].Value != null)
+                {
+                    speciesKey.ActThesis(gridRow.Cells[ColumnSpecies.Index].Value as string);
+                }
+
+                if (speciesKey != null && speciesKey.ShowDialog() == DialogResult.OK)
+                {
+                    gridRow.Cells[ColumnSpecies.Index].Value =
+                        speciesKey.DefinedSpecies.Species;
+                    IsChanged = true;
+                }
+            }
+            else
+            {
+                speciesKey.Dispose();
+            }
+        }
+
+        #endregion
+
+        #region Factors tab logics
+
+        private void spreadSheetAddt_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            IsChanged = true;
+            HandleFactorRow(spreadSheetAddt.Rows[e.RowIndex]);
+        }
+
+        #endregion
+    }
+}

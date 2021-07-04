@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="wizardControl.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="wizardControl.FinishButtonText" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="wizardControl.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Мы готовы установить программное обеспечения Mayfly на ваш компьютер.
+Этот мастер проведет вас через процесс установки. Кликните 'Далее' чтобы прочесть лицензионное соглашение.</value>
+  </data>
+  <data name="wizardPageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Выберите продукт, который вы хотите скачать и установить. Затем нажмите "Далее", чтобы перейти к Лицензионному соглашению.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Продукт</value>
+  </data>
+  <data name="wizardPageProduct.Text" xml:space="preserve">
+    <value>Выберите продукт</value>
+  </data>
+  <data name="labelEula.Text" xml:space="preserve">
+    <value>Внимательно прочтите лицензионное соглашение. Нажмите 'Согласен' если соглашаетесь со всеми положениями, иначе нажмите 'Отмена'.</value>
+  </data>
+  <data name="wizardPageEula.Text" xml:space="preserve">
+    <value>Лицензионное соглашение</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Выберите язык интерфейса, затем кликните "Далее" чтобы продолжить установку.</value>
+  </data>
+  <data name="labelLangInstruction.Text" xml:space="preserve">
+    <value>Укажите ваше имя в поле ниже. Оно будет использоваться во всех ваших данных. Также вам следует использовать его для разблокировки новых возможностей.</value>
+  </data>
+  <data name="checkBoxOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 19</value>
+  </data>
+  <data name="checkBoxOptions.Text" xml:space="preserve">
+    <value>Указать другие опции установки</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Ваше имя</value>
+  </data>
+  <data name="labelLang.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 15</value>
+  </data>
+  <data name="labelLang.Text" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="wizardPageLanguage.Text" xml:space="preserve">
+    <value>Персональные настройки</value>
+  </data>
+  <data name="checkBoxDesktop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 19</value>
+  </data>
+  <data name="checkBoxDesktop.Text" xml:space="preserve">
+    <value>Рабочий стол</value>
+  </data>
+  <data name="checkBoxStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 19</value>
+  </data>
+  <data name="checkBoxStart.Text" xml:space="preserve">
+    <value>Меню 'Пуск'</value>
+  </data>
+  <data name="labelShortcutInstruction.Text" xml:space="preserve">
+    <value>Выберите где вы хотите поместить ярлыки приложений. Мы рекомендуем поместить их хотя бы в меню 'Пуск'.</value>
+  </data>
+  <data name="wizardPageShortcuts.Text" xml:space="preserve">
+    <value>Ярлыки приложений</value>
+  </data>
+  <data name="radioFiletypeKeep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 19</value>
+  </data>
+  <data name="radioFiletypeKeep.Text" xml:space="preserve">
+    <value>Оставить текущую регистрацию</value>
+  </data>
+  <data name="radioFileTypeAsk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 19</value>
+  </data>
+  <data name="radioFileTypeAsk.Text" xml:space="preserve">
+    <value>Спрашивать меня в каждом случае</value>
+  </data>
+  <data name="radioFileTypeReass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 19</value>
+  </data>
+  <data name="radioFileTypeReass.Text" xml:space="preserve">
+    <value>Перерегистрировать тип файлов</value>
+  </data>
+  <data name="checkBoxRegPropHandler.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 19</value>
+  </data>
+  <data name="checkBoxRegPropHandler.Text" xml:space="preserve">
+    <value>Зарегистрировать обработчики свойств</value>
+  </data>
+  <data name="checkBoxRegFileType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 19</value>
+  </data>
+  <data name="checkBoxRegFileType.Text" xml:space="preserve">
+    <value>Зарегистрировать типы файлов</value>
+  </data>
+  <data name="labelFileTypeExists.Text" xml:space="preserve">
+    <value>Выберите вариант действий в случае если типы уже зарегистрированы.</value>
+  </data>
+  <data name="labelFileTypes.Text" xml:space="preserve">
+    <value>Выберите чтобы зарегистрировать типы файлов и обработчики их свойств.</value>
+  </data>
+  <data name="wizardPageFiletypes.Text" xml:space="preserve">
+    <value>Типы файлов</value>
+  </data>
+  <data name="labelGetInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="labelGetInstruction.Text" xml:space="preserve">
+    <value>Процесс установки</value>
+  </data>
+  <data name="wizardPageGet.Text" xml:space="preserve">
+    <value>Скачивание и установка</value>
+  </data>
+  <data name="labelDone.Text" xml:space="preserve">
+    <value>Мы закончили установку программного обеспечения Mayfly на ваш компьютер. Вы можете приступить к его использованию.</value>
+  </data>
+  <data name="wizardPageDone.Text" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="wizardControl.Title" xml:space="preserve">
+    <value>Установка программного обеспечения Mayfly</value>
+  </data>
+  <data name="tdbKeep.Text" xml:space="preserve">
+    <value>Сохранить текущую</value>
+  </data>
+  <data name="tdbReassoc.Text" xml:space="preserve">
+    <value>Установить новую</value>
+  </data>
+  <data name="taskDialogReassoc.Content" xml:space="preserve">
+    <value>Тип файлов {0} ({1}) уже привязан к другому приложению. Хотите сохранить существующую привязку или соотнести этот тип файлов с новым приложением?</value>
+  </data>
+  <data name="taskDialogReassoc.ExpandedControlText" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="taskDialogReassoc.ExpandedInformation" xml:space="preserve">
+    <value>Ранее привязанное приложение расположено в
+{0}</value>
+  </data>
+  <data name="taskDialogReassoc.MainInstruction" xml:space="preserve">
+    <value>Сохранить или переустановить привязку?</value>
+  </data>
+</root>

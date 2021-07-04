@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;ToolStripMenuItemPasteValue.Name" xml:space="preserve">
+    <value>ToolStripMenuItemPasteValue</value>
+  </data>
+  <data name="&gt;&gt;ColumnLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 518</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewColumn1.Name" xml:space="preserve">
+    <value>dataGridViewColumn1</value>
+  </data>
+  <data name="&gt;&gt;inputDialogDupl.Name" xml:space="preserve">
+    <value>inputDialogDupl</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDuplicate.Name" xml:space="preserve">
+    <value>ToolStripMenuItemDuplicate</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
+    <value>buttonAdd</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemSaveVars.Name" xml:space="preserve">
+    <value>ToolStripMenuItemSaveVars</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 6</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
+    <value>buttonOK</value>
+  </data>
+  <data name="textBoxComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 70</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemClearValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToolStripMenuItemCut.ShowShortcutKeys" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToolStripMenuItemCopy.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDuplicate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxWarningQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonBlank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="inputDialogDupl.Input" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="ToolStripMenuItemClearColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.ShowShortcutKeys" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="contextMenuStripInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 142</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="textBoxComments.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelQuantity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 387</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxWarningQuantity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="labelQuantity.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ToolStripMenuItemCopyValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="labelQuantity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemLength.Name" xml:space="preserve">
+    <value>ToolStripMenuItemLength</value>
+  </data>
+  <data name="ToolStripMenuItemCut.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+X</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="ToolStripMenuItemClearValue.Text" xml:space="preserve">
+    <value>Clear value</value>
+  </data>
+  <data name="buttonReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="textBoxComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 426</value>
+  </data>
+  <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Individuals Log</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemNewVar.Name" xml:space="preserve">
+    <value>ToolStripMenuItemNewVar</value>
+  </data>
+  <data name="&gt;&gt;ColumnComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemRemove.Text" xml:space="preserve">
+    <value>Delete variable</value>
+  </data>
+  <data name="labelQuantity.Text" xml:space="preserve">
+    <value>Total count, ind.</value>
+  </data>
+  <data name="ToolStripMenuItemClearValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="spreadSheetLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ColumnFrequency.Name" xml:space="preserve">
+    <value>ColumnFrequency</value>
+  </data>
+  <data name="inputDialogDupl.WindowTitle" xml:space="preserve">
+    <value>Benthos Reader</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownQuantity.Name" xml:space="preserve">
+    <value>numericUpDownQuantity</value>
+  </data>
+  <data name="ColumnLength.HeaderText" xml:space="preserve">
+    <value>Length, µm</value>
+  </data>
+  <data name="numericUpDownQuantity.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemInd.Name" xml:space="preserve">
+    <value>ToolStripMenuItemInd</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="labelComments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="buttonBlank.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;taskDialogSave.Name" xml:space="preserve">
+    <value>taskDialogSave</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripVar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ToolStripMenuItemPasteValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="buttonBlank.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="labelComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 429</value>
+  </data>
+  <data name="&gt;&gt;tdbSaveAllIndividuals.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColumnComments.Name" xml:space="preserve">
+    <value>ColumnComments</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCopy.Name" xml:space="preserve">
+    <value>ToolStripMenuItemCopy</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnLength.Name" xml:space="preserve">
+    <value>ColumnLength</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemClearValue.Name" xml:space="preserve">
+    <value>ToolStripMenuItemClearValue</value>
+  </data>
+  <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
+    <value>tdbCancelClose</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Name" xml:space="preserve">
+    <value>buttonBlank</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="numericUpDownQuantity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 385</value>
+  </data>
+  <data name="ToolStripMenuItemLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="taskDialogSave.Content" xml:space="preserve">
+    <value>There are some unsaved individuals. Do you want to save them?</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="menuItemAddQ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 22</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="tdbSaveAllIndividuals.Text" xml:space="preserve">
+    <value>Save All</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemClearColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnComments.HeaderText" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="textBoxComments.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ToolStripMenuItemInd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelComments.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ColumnID.Name" xml:space="preserve">
+    <value>ColumnID</value>
+  </data>
+  <data name="ColumnID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonBlank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 518</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownQuantity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelQuantity.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCopy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemPasteValue.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownQuantity.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;menuItemAddQ.Name" xml:space="preserve">
+    <value>menuItemAddQ</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 350</value>
+  </data>
+  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
+    <value>spreadSheetLog</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="taskDialogSave.MainInstruction" xml:space="preserve">
+    <value>Save unsaved individuals?</value>
+  </data>
+  <data name="buttonReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klE
+        QVQ4T6WQ3UuTYRiH/RM8CQo9GIaCVHRSeRATYlK96Rxzrb3bmF+vH1NkvjpJlq5m2nLIrDRipWQfthUt
+        KUmdDlarFayO6mQRFEX7N8bVMyEhfIOsgx/3w4/ruXieuwT4r2iWO4lmuZNsHfL5POFwmNuZMJF0iKvJ
+        cS6vjOJfGsIb68N9pwN10UP0dVTgGgJdpU4MmEmMkfmRIvUtwbPPj7n7cY5r76YYz/jxrnhQb/QXse2C
+        aCxKIBBgIu4l/T1JfbDut3RvtKI8bMcxIAtcQ1CuKxcDfPd7SXxZ3ry08fX5VoqClnvNmNqMRWy7IB6P
+        o6oqPREX8U/RTcGZW424HtnoWHXR86Id57ydWqNe4BqCXztom7Wx8OEmV7Ih8e9RRlJn8az20flEQb5u
+        Y3/NviK2XVDcgaIoOKabmH0f5tKb8/hfDqMmPHQvdeJcdGKZaqJsb5nANQQVVRUUCgXMoQYm347hTw8z
+        uN6P+2kXzQ9cmOcsGC82ULqrVOAagrXEGrJdRho5zoVXPoaSA/Quu2mNtWCdt3Jyph7pnPRnQfWBanK5
+        HHr1KIPi2c4FB/aIjHX6NKaJRk75JGoVPZJREriGIJvNYjKbqOk6gsMjY1ZM1FkMHD52iKqDlezR7cZw
+        wkBwMihwDcG/RrP8+1DyE8vXvS+HvqjRAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxWarningQuantity.Name" xml:space="preserve">
+    <value>pictureBoxWarningQuantity</value>
+  </data>
+  <data name="labelQuantity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="buttonReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ToolStripMenuItemInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="labelComments.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 518</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripVar.Name" xml:space="preserve">
+    <value>contextMenuStripVar</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemPaste.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlE
+        QVQ4T52RTS8DURSGm0isJJKqIhVSob5FsGl8bkSREJb1B3Rp5x/Y+AP+gSL2YuGjFK1GEG2qEaIl1NdM
+        Z6alXbzuuWNGW7OyeHLvPec973knYwJgSGDV4mS8/OA00hCGRYINRa+27Ljxd4DuRhrCsMgGXAyID6NQ
+        XicR9FaSictI+6fAhCW0MbzdiJwyy9FSUK9YX/AgmMgd8FogPbl0g/SbnsJdrC94MEEpbYruOJBLz7Gu
+        iaOm6NRSlObPFBt4aJOcHEdOntENsqlppJMuLYUnfyZ/uIw2xPZbkZOmkRWnfg0+Jji3/nYtRZmRwWJw
+        zco2jSErTOLrfVw3+EqOcpSHEZCGtAUGrGAmZ9rw+TiMTGIImfggFuZrOZn7fpX4AO6O2rQU5nyDpdBG
+        FeRYH5RoN5RIJ+RwB0eJdKk1ItYD6bpXS7HEDdjFRo4JvwPSuQOpkB2pYD1SgTr9E6RQA+/JF82QL1sQ
+        P2zSUtjIYOVss5oNNkA8tkE8rIZ4YIXgs+oGor+G98iUEE/tCK3zFCtkEH0+aeIiYb8Swl4FhF2zeupY
+        1J6PsLIFVUj47DwFGRx5l8vxH2hW/43/A6ZvlRapM1wurqMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Name" xml:space="preserve">
+    <value>labelComments</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripInd.Name" xml:space="preserve">
+    <value>contextMenuStripInd</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="numericUpDownQuantity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="contextMenuStripVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 76</value>
+  </data>
+  <data name="contextMenuStripValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 70</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemRemove.Name" xml:space="preserve">
+    <value>ToolStripMenuItemRemove</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemNewVar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemPaste.Name" xml:space="preserve">
+    <value>ToolStripMenuItemPaste</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxWarningQuantity.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="inputDialogDupl.MainInstruction" xml:space="preserve">
+    <value>Duplicating individual record</value>
+  </data>
+  <data name="&gt;&gt;labelQuantity.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="buttonReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="ColumnWidth.HeaderText" xml:space="preserve">
+    <value>Width, µm</value>
+  </data>
+  <data name="buttonBlank.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericUpDownQuantity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 20</value>
+  </data>
+  <data name="ToolStripMenuItemSaveVars.Text" xml:space="preserve">
+    <value>Remember variables set</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelQuantity.Name" xml:space="preserve">
+    <value>labelQuantity</value>
+  </data>
+  <data name="buttonReport.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;menuItemAddQ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripValue.Name" xml:space="preserve">
+    <value>contextMenuStripValue</value>
+  </data>
+  <data name="ColumnID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ToolStripMenuItemLength.Text" xml:space="preserve">
+    <value>Length, µm</value>
+  </data>
+  <data name="ToolStripMenuItemInd.Text" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="spreadSheetLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>433, 340</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDelete.Name" xml:space="preserve">
+    <value>ToolStripMenuItemDelete</value>
+  </data>
+  <data name="&gt;&gt;buttonReport.Name" xml:space="preserve">
+    <value>buttonReport</value>
+  </data>
+  <data name="labelComments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 518</value>
+  </data>
+  <data name="labelQuantity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnFrequency.HeaderText" xml:space="preserve">
+    <value>Quantity of identic individuals</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 6</value>
+  </data>
+  <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 76</value>
+  </data>
+  <data name="buttonAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelComments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ToolStripMenuItemNewVar.Text" xml:space="preserve">
+    <value>New variable</value>
+  </data>
+  <data name="buttonBlank.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHbSURBVDhPlZDdS1pxGMf9p2YsAm96sVG7GMUCe7HN
+        i8LYAovdONqu28Uo6CLqZqyNGBhbF5o5kTLL6XZKjWo5tHeLOfIlT2r57ff8zlFPVLIOfM/zxuf7PPxU
+        ALi6X77VMEGhuuKskkqJDGnkvIbq4qySSgkBnsBuSVR/W9iExRnC9JyAj7Ne0rASJnGQEjlyUBmL38QX
+        F6of9+CzVRhh5f0NxqbmYfdsoLZtgC55x1qSga7XTHNVZ98QRehfvOFRaXBZkAxq20xo0puhfmSgtmTw
+        RG/iRcuzQXh/hdBqeEU1OoyveSwwOJcvIC1eILB9gpXg3k0DdZ1O+37Sgub2fri9q7B9X4L2qRFi9hLJ
+        zAX+JvM4jOcQjZ3DvXaAB43PywYMVqvrdRj/ZKMmfMI6qhrasf47yuE4h7OIHp9ja0/EwurRdQP6MRMN
+        QdWNXXio7YTHFyxv/ifD+yKCkTM4105vGpC+OvzUhJgrKM7OIsLO5nD0DD+303AG0rcbzNh/gL2XBCdk
+        WLGZ4JXNFDNI3m4w+sHKX7y4WTo7I29OYXkjBXcoCYcQr2zAX1ux2U+bGbzIYFcgAbs/VtnAHwzDF9qB
+        W4jA6QvDvhyGzUP6A6usOw1o8L+SOKiuAJXqCB432BYeAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="taskDialogSave.WindowTitle" xml:space="preserve">
+    <value>Benthos Reader</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="spreadSheetLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="ToolStripMenuItemCopyValue.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonBlank.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;inputDialogDupl.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.InputDialog, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemRemove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="ToolStripMenuItemDuplicate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="&gt;&gt;ColumnFrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnComments.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <data name="menuItemAddQ.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="inputDialogDupl.MaxLength" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ColumnWidth.Name" xml:space="preserve">
+    <value>ColumnWidth</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="inputDialogDupl.Content" xml:space="preserve">
+    <value>Enter number of copies you want to create. Only visible variables will be copied.</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Name" xml:space="preserve">
+    <value>textBoxComments</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemPasteValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdd.Name" xml:space="preserve">
+    <value>contextMenuStripAdd</value>
+  </data>
+  <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
+    <value>tdbDiscard</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="ToolStripMenuItemSaveVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemSaveVars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnFrequency.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxComments.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxComments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>484, 562</value>
+  </data>
+  <data name="ToolStripMenuItemNewVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 22</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ToolStripMenuItemRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="buttonBlank.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="spreadSheetLog.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="ToolStripMenuItemClearColumn.Text" xml:space="preserve">
+    <value>Clear column</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="buttonReport.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="ToolStripMenuItemInd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDownQuantity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 387</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCopyValue.Name" xml:space="preserve">
+    <value>ToolStripMenuItemCopyValue</value>
+  </data>
+  <data name="&gt;&gt;tdbSaveAllIndividuals.Name" xml:space="preserve">
+    <value>tdbSaveAllIndividuals</value>
+  </data>
+  <data name="labelQuantity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCopyValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.ShowShortcutKeys" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 6</value>
+  </data>
+  <data name="&gt;&gt;taskDialogSave.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemClearColumn.Name" xml:space="preserve">
+    <value>ToolStripMenuItemClearColumn</value>
+  </data>
+  <data name="ToolStripMenuItemDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="&gt;&gt;labelComments.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCut.Name" xml:space="preserve">
+    <value>ToolStripMenuItemCut</value>
+  </data>
+  <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.24.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="ColumnID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="contextMenuStripVar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>533, 17</value>
+  </metadata>
+  <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>700, 17</value>
+  </metadata>
+  <metadata name="ColumnComments.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="contextMenuStripAdd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>196, 17</value>
+  </metadata>
+  <metadata name="inputDialogDupl.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>834, 17</value>
+  </metadata>
+  <metadata name="ColumnLength.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="contextMenuStripInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>367, 17</value>
+  </metadata>
+  <metadata name="ColumnFrequency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="contextMenuStripValue.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>58</value>
+  </metadata>
+</root>

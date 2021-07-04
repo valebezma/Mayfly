@@ -1,0 +1,1057 @@
+﻿using System;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using Mayfly.ScopeTranslator;
+using FisheryStock.Benthos;
+using Mayfly.Species;
+using Mayfly;
+using System.ComponentModel;
+
+namespace FisheryStock.Fish
+{
+    public partial class Individual : Form
+    {
+        #region Properties
+
+        private Data.IndividualRow IndRow;
+
+        private Data.GutDataTable Gut
+        {
+            get 
+            {
+                return ((Data)IndRow.Table.DataSet).Gut; 
+            }
+        }
+
+        private Data.TrophicsDataTable Trophics
+        {
+            get 
+            {
+                return ((Data)IndRow.Table.DataSet).Trophics;
+            }
+        }
+
+        public DataGridViewRow LogRow;
+
+        private ScopeCalculator SizeTranslator;
+
+        public int SelectedPart = 3;
+
+        private ToolTip Notification = new ToolTip();
+
+        public bool IsChanged { get; set; }
+
+        private bool AllowSpeciesSuggestion { get; set; }
+
+        public double Length
+        {
+            get
+            {
+                if (textBoxLength.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxLength.Text);
+            }
+            set
+            {
+                textBoxLength.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double Mass
+        {
+            get
+            {
+                if (textBoxMass.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxMass.Text);
+            }
+            set
+            {
+                textBoxMass.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public Age Age
+        {
+            get
+            {
+                if (textBoxAge.Text == string.Empty) return null;
+                else return new Age(textBoxAge.Text);
+            }
+            set
+            {
+                textBoxAge.Text = value.ToString();
+            }
+        }
+
+        public Gender Gender
+        {
+            get
+            {
+                return new Gender(comboBoxGender.SelectedIndex);
+            }
+            set
+            {
+                comboBoxGender.SelectedIndex = value.Value;
+            }
+        }
+
+        public int Maturity
+        {
+            get
+            {
+                return comboBoxMaturity.SelectedIndex + 1;
+            }
+            set
+            {
+                comboBoxMaturity.SelectedIndex = value - 1;
+            }
+        }
+
+        public double GonadMass
+        {
+            get
+            {
+                if (textBoxGonadMass.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxGonadMass.Text);
+            }
+            set
+            {
+                textBoxGonadMass.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double GonadSampleMass
+        {
+            get
+            {
+                if (textBoxGonadSampleMass.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxGonadSampleMass.Text);
+            }
+            set
+            {
+                textBoxGonadSampleMass.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public int GonadSample
+        {
+            get
+            {
+                if (textBoxGonadSample.Text == string.Empty) return 0;
+                else return int.Parse(textBoxGonadSample.Text);
+            }
+            set
+            {
+                textBoxGonadMass.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double GonadsValue
+        {
+            get
+            {
+                if (textBoxGonadsValue.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxGonadsValue.Text);
+            }
+            set
+            {
+                textBoxGonadsValue.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double EggSize
+        {
+            get
+            {
+                if (textBoxEggSize.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxEggSize.Text);
+            }
+            set
+            {
+                textBoxEggSize.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double RelativeFertility
+        {
+            get
+            {
+                if (textBoxEggPerGramm.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxEggPerGramm.Text);
+            }
+            set
+            {
+                textBoxEggPerGramm.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double AbsoluteFertility
+        {
+            get
+            {
+                if (textBoxEggs.Text == string.Empty) return 0;
+                else return double.Parse(textBoxEggs.Text);
+            }
+            set
+            {
+                textBoxEggs.Text = value.ToString();
+            }
+        }
+
+        public double AveEggMass
+        {
+            get
+            {
+                if (textBoxAveEggMass.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxAveEggMass.Text);
+            }
+            set
+            {
+                textBoxAveEggMass.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public double ConsumptionIndex
+        {
+            get
+            {
+                if (textBoxConsumptionIndex.Text == string.Empty) return double.NaN;
+                else return Convert.ToDouble(textBoxConsumptionIndex.Text);
+            }
+
+            set
+            {
+                textBoxConsumptionIndex.Text = value.ToString(Interface.Mask2);
+            }
+        }
+
+        public int Fatness
+        {
+            get
+            {
+                return comboBoxFatness.SelectedIndex;
+            }
+            set
+            {
+                comboBoxFatness.SelectedIndex = value;
+            }
+        }
+
+        public double FoodRecoveredMass
+        {
+            get
+            {
+                SaveGutPart();
+
+                double result = 0;
+                foreach (Data.GutRow _Gut in IndRow.GetGutRows())
+                {
+                    foreach (Data.TrophicsRow _Trophics in _Gut.GetTrophicsRows())
+                    {
+                        if (!_Trophics.IsMassNull())
+                        {
+                            result += _Trophics.Mass;
+                        }
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Individual(Data.IndividualRow _IndividualRow)
+        {
+            IndRow = _IndividualRow;
+            InitializeComponent();
+            Service.Shine(listViewSpecies.Handle);
+            Text = string.Format(Resources.Interface.IndWindow,
+                _Species.SpeciesFullName(AppProperties.SpeciesIndex.Equivalent(IndRow.LogRow.SpeciesRow)));            
+            LoadData();
+            AllowSpeciesSuggestion = true;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void LoadData()
+        {
+            #region General
+
+            if (IndRow.IsLengthNull()) textBoxLength.Text = string.Empty;
+            else Length = IndRow.Length;
+
+            if (IndRow.IsMassNull()) textBoxMass.Text = string.Empty;
+            else Mass = IndRow.Mass;
+
+            if (IndRow.IsAgeNull()) textBoxAge.Text = string.Empty;
+            else Age = new Age(IndRow.Age);
+
+            #endregion
+
+            #region Fertility
+
+            if (IndRow.IsSexNull()) comboBoxGender.SelectedIndex = -1;
+            else Gender = new Gender(IndRow.Sex);
+
+            if (IndRow.IsMaturityNull()) comboBoxMaturity.SelectedIndex = -1;
+            else Maturity = IndRow.Maturity;
+
+            if (IndRow.IsGonadMassNull()) textBoxGonadMass.Text = string.Empty;
+            else GonadMass = IndRow.GonadMass;
+
+            if (IndRow.IsGonadSampleMassNull()) textBoxGonadSampleMass.Text = string.Empty;
+            else GonadSampleMass = IndRow.GonadSampleMass;
+
+            if (IndRow.IsGonadSampleNull()) textBoxGonadSample.Text = string.Empty;
+            else GonadSample = IndRow.GonadSample;
+
+            if (IndRow.IsEggSizeNull()) textBoxEggSize.Text = string.Empty;
+            else EggSize = IndRow.EggSize;
+
+            #endregion
+
+            #region Alimentation
+
+            //if (IndRow.IsGutMassNull()) textBoxGutMass.Text = string.Empty;
+            //else GutMass = IndRow.GutMass;
+
+            if (IndRow.IsFatnessNull()) comboBoxFatness.SelectedIndex = -1;
+            else Fatness = IndRow.Fatness;
+
+            if (IndRow.GetGutRows().Length == 0) 
+            { 
+                ClearGutPart();
+            }
+            else 
+            { 
+                LoadGutPart(IndRow.GetGutRows()[0]); 
+            }
+
+            #endregion
+        }
+
+        private void SaveData()
+        {
+            #region General
+
+            if (textBoxLength.Text == string.Empty) IndRow.SetLengthNull();
+            else IndRow.Length = Length;
+
+            if (textBoxMass.Text == string.Empty) IndRow.SetMassNull();
+            else IndRow.Mass = Mass;
+
+            if (textBoxAge.Text == string.Empty) IndRow.SetAgeNull();
+            else IndRow.Age = Age.Value;
+
+            #endregion
+
+            #region Fertility
+
+            if (comboBoxGender.SelectedIndex == -1) IndRow.SetSexNull();
+            else IndRow.Sex = Gender.Value;
+
+            if (comboBoxMaturity.SelectedIndex == -1) IndRow.SetMaturityNull();
+            else IndRow.Maturity = Maturity;
+
+            if (textBoxGonadMass.Text == string.Empty) IndRow.SetGonadMassNull();
+            else IndRow.GonadMass = GonadMass;
+
+            if (textBoxGonadSampleMass.Text == string.Empty) IndRow.SetGonadSampleMassNull();
+            else IndRow.GonadSampleMass = GonadSampleMass;
+
+            if (textBoxGonadSample.Text == string.Empty) IndRow.SetGonadSampleNull();
+            else IndRow.GonadSample = GonadSample;
+
+            if (textBoxEggSize.Text == string.Empty) IndRow.SetEggSizeNull();
+            else IndRow.EggSize = EggSize;
+
+            #endregion
+
+            #region Alimentation
+
+            if (comboBoxFatness.SelectedIndex == -1) IndRow.SetFatnessNull();
+            else IndRow.Fatness = Fatness;
+
+            SaveGutPart();
+
+            #endregion
+        }
+
+        private void ClearGutPart()
+        {
+            //LoadGutPicture(SelectedPart);
+            comboBoxFullness.SelectedIndex = -1;
+            comboBoxFermentation.SelectedIndex = -1;
+            GridItems.Rows.Clear();
+        }
+
+        private void SaveGutPart()
+        {
+            Data.GutRow GutRow = Gut.FindByIndPart(IndRow.ID, SelectedPart);
+            if (GutRow == null)
+            {
+                GutRow = Gut.NewGutRow();
+                GutRow.IndividualRow = IndRow;
+                GutRow.Part = SelectedPart;
+                Gut.AddGutRow(GutRow);
+            }
+
+            if (comboBoxFullness.SelectedIndex == -1) GutRow.SetFullnessNull();
+            else GutRow.Fullness = comboBoxFullness.SelectedIndex;
+
+            if (comboBoxFermentation.SelectedIndex == -1) GutRow.SetFermentationNull();
+            else GutRow.Fermentation = comboBoxFermentation.SelectedIndex;
+
+            foreach (DataGridViewRow CurrentRow in GridItems.Rows)
+            {
+                if (CurrentRow.IsNewRow) continue;
+
+                SaveItemRow(CurrentRow, GutRow);
+            }
+
+            if (GutRow.IsFermentationNull() && GutRow.IsFullnessNull() &&
+                GutRow.GetTrophicsRows().Length == 0) 
+            {
+                GutRow.Delete();
+            }
+            else { }
+        }
+
+        private Data.TrophicsRow SaveItemRow(DataGridViewRow GridRow, Data.GutRow GutRow)
+        {
+            Data.TrophicsRow result;
+
+            // Set row
+            if (GridRow.Cells[ColumnItemID.Index].Value == null)
+            {
+                result = Trophics.NewTrophicsRow();
+                result.GutRow = GutRow;
+                Trophics.AddTrophicsRow(result);
+                GridRow.Cells[ColumnItemID.Name].Value = result.ID;
+            }
+            else
+            {
+                result = Trophics.FindByID((int)GridRow.Cells[ColumnItemID.Index].Value);
+            }
+
+            // Set values
+
+            if (GridRow.Cells[ColumnFoodItem.Index].Value == null) result.SetItemNull();
+            else result.Item = (string)GridRow.Cells[ColumnFoodItem.Index].Value;
+
+            if (GridRow.Cells[ColumnItemSize.Index].Value == null) result.SetSizeNull();
+            else result.Size = (double)GridRow.Cells[ColumnItemSize.Index].Value;
+
+            if (GridRow.Cells[ColumnItemMass.Index].Value == null) result.SetMassNull();
+            else result.Mass = (double)GridRow.Cells[ColumnItemMass.Index].Value;
+
+            if (result.IsItemNull() && result.IsSizeNull() && result.IsMassNull())
+            {
+                result.Delete();
+                if (!GridRow.IsNewRow) GridItems.Rows.Remove(GridRow);
+                return null;
+            }
+            else return result;
+        }
+
+        private void LoadGutPart(Data.GutRow GutRow)
+        {
+            //LoadGutPicture(GutRow.Part);
+
+            if (GutRow.IsFullnessNull()) comboBoxFullness.SelectedIndex = -1;
+            else comboBoxFullness.SelectedIndex = GutRow.Fullness;
+
+            if (GutRow.IsFermentationNull()) comboBoxFermentation.SelectedIndex = -1;
+            else comboBoxFermentation.SelectedIndex = GutRow.Fermentation;
+
+            GridItems.Rows.Clear();
+
+            foreach (Data.TrophicsRow Item in GutRow.GetTrophicsRows())
+            {
+                DataGridViewRow NewItemRow = new DataGridViewRow();
+                NewItemRow.CreateCells(GridItems);
+                NewItemRow.Cells[ColumnItemID.Index].Value = Item.ID;
+                if (!Item.IsItemNull()) NewItemRow.Cells[ColumnFoodItem.Index].Value = Item.Item;
+                if (!Item.IsSizeNull()) NewItemRow.Cells[ColumnItemSize.Index].Value = Item.Size;
+                if (!Item.IsMassNull()) NewItemRow.Cells[ColumnItemMass.Index].Value = Item.Mass;
+                GridItems.Rows.Add(NewItemRow);
+            }
+        }
+
+        //private void LoadGutPicture(int Part)
+        //{
+        //    switch (Part)
+        //    {
+        //        case 0: pictureBoxPart.Image = Fish.Properties.Resources._000_lar; break;
+        //        case 1: pictureBoxPart.Image = Fish.Properties.Resources._001_oes; break;
+        //        case 2: pictureBoxPart.Image = Fish.Properties.Resources._002_sto; break;
+        //        case 3: pictureBoxPart.Image = Fish.Properties.Resources._003_for; break;
+        //        case 4: pictureBoxPart.Image = Fish.Properties.Resources._004_mid; break;
+        //        case 5: pictureBoxPart.Image = Fish.Properties.Resources._005_col; break;
+        //    }
+        //}
+
+        private void SwitchGonads(bool IsMatured)
+        {
+            textBoxGonadsValue.Enabled =
+            textBoxGonadMass.Enabled = textBoxGonadSample.Enabled =
+            textBoxGonadSampleMass.Enabled = textBoxEggs.Enabled =
+            textBoxEggPerGramm.Enabled =
+            label7.Enabled = label6.Enabled =
+            label9.Enabled = label10.Enabled = label11.Enabled =
+            label12.Enabled = label18.Enabled = label14.Enabled = IsMatured;
+        }
+
+        private void SwitchFertility(bool IsFemale)
+        {
+            textBoxEggSize.Enabled =
+            textBoxAveEggMass.Enabled =
+            label13.Enabled = label17.Enabled =
+            label19.Enabled = IsFemale;
+        }
+
+        #endregion
+
+        #region Interface logics
+
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                ((ComboBox)sender).SelectedIndex = -1;
+            }
+        }
+
+        private void Value_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool EnteredCorrect =
+                Mayfly.Interface.SymbolsAllowed.Contains(e.KeyChar) ||
+                e.KeyChar == (char)Keys.Back;
+
+            if (EnteredCorrect)
+            {
+                Notification.Hide(this);
+            }
+            else
+            {
+                Control Sender = (Control)sender;
+                Notification.ToolTipTitle = Mayfly.Resources.Interface.IncorrectSymbol;
+                Notification.Show(String.Format(Mayfly.Resources.Interface.OnlyNumbersAcceptable, e.KeyChar),
+                    Sender, Sender.Width / 2, Sender.Height, 1500);
+            }
+
+            e.Handled = !EnteredCorrect;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            Close();
+        }
+
+        #region General tab
+
+        private void textBoxLength_TextChanged(object sender, EventArgs e)
+        { if (LogRow != null) LogRow.Cells["ColumnLength"].Value = Length; }
+
+        private void textBoxAge_TextChanged(object sender, EventArgs e)
+        { 
+            if (LogRow != null)  LogRow.Cells["ColumnAge"].Value = Age.ToString(); 
+        }
+
+        private void textBoxMass_TextChanged(object sender, EventArgs e)
+        {
+            textBoxGonads_TextChanged(sender, e);
+            ConsumptionIndex = FoodRecoveredMass / Mass;
+            if (LogRow != null) LogRow.Cells["ColumnMass"].Value = Mass;
+        }
+
+        #endregion
+
+        #region Fertility tab
+
+        private void comboBoxGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (Gender.Value)
+            {
+                case 0:
+                    label5.Enabled = comboBoxMaturity.Enabled = false;
+                    Maturity = 1;
+                    SwitchGonads(false);
+                    SwitchFertility(false);
+                    break;
+                case 1:
+                    label5.Enabled = comboBoxMaturity.Enabled = true;
+                    SwitchGonads(true);
+                    SwitchFertility(false);
+                    break;
+                case 2:
+                    label5.Enabled = comboBoxMaturity.Enabled = true;
+                    SwitchGonads(true);
+                    SwitchFertility(true);
+                    break;
+            }
+
+            if (LogRow != null) LogRow.Cells["ColumnSex"].Value = Gender.ToSymbol();
+        }
+
+        private void comboBoxMaturity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LogRow != null)
+            {
+                if (comboBoxMaturity.SelectedIndex == -1) LogRow.Cells["ColumnMaturity"].Value = null;
+                else LogRow.Cells["ColumnMaturity"].Value = Maturity;
+            }
+        }
+
+        private void textBoxGonads_TextChanged(object sender, EventArgs e)
+        {
+            GonadsValue = GonadMass / Mass;
+            RelativeFertility = GonadSample / GonadSampleMass;
+            AveEggMass = GonadSampleMass * 1000 / GonadSample;
+            AbsoluteFertility = GonadMass * RelativeFertility;
+        }
+
+        #endregion
+
+        #region Alimentation tab
+
+        private void comboBoxSection_ValueChanged(object sender, EventArgs e)
+        {
+            // Save current set values
+            SaveGutPart();
+
+            // Change part index to selected
+            SelectedPart = trackBar1.Value;
+
+            // Load new values if exist
+            Data.GutRow GutRow = Gut.FindByIndPart(IndRow.ID, SelectedPart);
+            if (GutRow == null)
+            {
+                ClearGutPart();
+            }
+            else
+            {
+                LoadGutPart(GutRow);
+            }
+        }
+
+        #region Food components grid
+
+        private void ToolStripMenuItemCalc_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc");
+        }
+
+        private void ToolStripMenuItemMicrometer_Click(object sender, EventArgs e)
+        {
+            if (SizeTranslator == null)
+            {
+                SizeTranslator = new ScopeCalculator(GridItems.CurrentCell);
+                SizeTranslator.FormClosed += HeadSizeTranslator_FormClosed;
+                SizeTranslator.Show(this);
+                SizeTranslator.numericUpDownTicks.Focus();
+            }
+        }
+
+        private void HeadSizeTranslator_FormClosed(object sender, FormClosedEventArgs e)
+        { 
+            SizeTranslator = null; 
+        }
+
+        private void ToolStripMenuItemDrop_Click(object sender, EventArgs e)
+        { 
+            GridItems.CurrentCell.Value = 0;
+        }
+
+        private void GridItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridItems[e.ColumnIndex, e.RowIndex].Value != null) 
+            {
+                string Entered = GridItems[e.ColumnIndex, e.RowIndex].Value.ToString();
+                if (Entered == string.Empty) 
+                { 
+                    GridItems[e.ColumnIndex, e.RowIndex].Value = null; 
+                }
+                else
+                {
+                    if (e.ColumnIndex == ColumnFoodItem.Index)
+                    { }
+
+                    if (e.ColumnIndex == ColumnItemSize.Index)
+                    {
+                        GridItems[e.ColumnIndex, e.RowIndex].Value = Convert.ToDouble(GridItems[e.ColumnIndex, e.RowIndex].Value);
+                    }
+
+                    if (e.ColumnIndex == ColumnItemMass.Index)
+                    {
+                        GridItems[e.ColumnIndex, e.RowIndex].Value = Convert.ToDouble(GridItems[e.ColumnIndex, e.RowIndex].Value);
+                        textBox2.Text = FoodRecoveredMass.ToString("0.00");
+                        textBoxMass_TextChanged(sender, e);
+                    }
+                }
+            }
+        }
+
+        private void GridItems_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            ToolStripMenuItemMicrometer.Enabled = (e.ColumnIndex == ColumnItemSize.Index);
+        }
+
+        private void GridItems_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (textBoxValue == null)
+            {
+                textBoxValue = e.Control as TextBox;
+                textBoxValue.PreviewKeyDown += textBoxValue_PreviewKeyDown;
+                textBoxValue.KeyPress += textBoxValue_KeyPress;
+                textBoxValue.TextChanged += textBoxValue_TextChanged;
+                textBoxValue.Leave += textBoxValue_Leave;
+            }
+            else 
+            {
+                textBoxValue = e.Control as TextBox; 
+            }
+        }
+
+        private void GridItems_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.F4:
+                    ToolStripMenuItemRepeatTaxa_Click(sender, new EventArgs());
+                    break;
+                case Keys.F3:
+                    int CurrentColumn = GridItems.CurrentCell.ColumnIndex;
+                    if (CurrentColumn < GridItems.Columns.Count - 1) CurrentColumn++;
+                    GridItems.CurrentCell = Mayfly.Service.FirstClearCell(GridItems.Columns[CurrentColumn]);
+                    break;
+                case Keys.Delete:
+                case Keys.Back:
+                    foreach (DataGridViewCell SelectedCell in GridItems.SelectedCells)
+                    {
+                        if (SelectedCell.OwningColumn == ColumnFoodItem)
+                        {
+                            SelectedCell.Value = Benthos.Resources.Interface.UnidentifiedTitle;
+                        }
+                    }
+
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Entering value logics
+
+        TextBox textBoxValue;
+
+        private void textBoxValue_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (GridItems.CurrentCell.ColumnIndex == ColumnFoodItem.Index)
+            {
+                switch (e.KeyData)
+                {
+                    case Keys.Down:
+                        if (listViewSpecies.Visible && listViewSpecies.Items.Count > 0)
+                        {
+                            listViewSpecies.Focus();
+                            listViewSpecies.Items[0].Selected = true;
+                        }
+                        break;
+                    case Keys.Up:
+                        if (listViewSpecies.Visible && listViewSpecies.Items.Count > 0)
+                        {
+                            listViewSpecies.Focus();
+                            listViewSpecies.Items[listViewSpecies.Items.Count - 1].Selected = true;
+                            listViewSpecies.Items[listViewSpecies.Items.Count - 1].Focused = true;
+                            listViewSpecies.Items[listViewSpecies.Items.Count - 1].EnsureVisible();
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void textBoxValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (GridItems.CurrentCell.OwningColumn == ColumnFoodItem)
+            {
+                return;
+            }
+
+            //if (GridItems.CurrentCell.OwningColumn == ColumnComments)
+            //{
+            //    return;
+            //}
+            
+            Value_KeyPress(sender, e);
+        }
+
+        private void textBoxValue_Leave(object sender, EventArgs e)
+        {
+            if (ActiveControl == listViewSpecies) { }
+            else { listViewSpecies.Visible = false; }
+        }
+
+        private void textBoxValue_TextChanged(object sender, EventArgs e)
+        {
+            if (GridItems.CurrentCell.ColumnIndex == ColumnFoodItem.Index)
+            {
+                if (textBoxValue.Text == string.Empty) GridItems.CurrentCell.Value = null;
+                IsChanged = true;
+
+                if (AllowSpeciesSuggestion && textBoxValue.Text.Length > 1)
+                {
+                    AllowSpeciesSuggestion = false;
+                    BackgroundWorker listLoader = new BackgroundWorker();
+                    listLoader.WorkerReportsProgress = false;
+                    listLoader.DoWork += new DoWorkEventHandler(listLoader_DoWork);
+                    listLoader.RunWorkerCompleted += new RunWorkerCompletedEventHandler(listLoader_RunWorkerCompleted);
+                    listLoader.RunWorkerAsync(textBoxValue.Text);
+                }
+            }
+        }
+
+        private string LastSelectedSpecies;
+
+        private void AssignSpecies()
+        {
+            if (GridItems.CurrentCell.ColumnIndex == ColumnFoodItem.Index)
+            {
+                GridItems.CurrentCell.Value = LastSelectedSpecies;
+                listViewSpecies.Visible = false;
+                IsChanged = true;
+            }
+        }
+
+        private void listLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = AppProperties.NutritionIndex.SpeciesItems((string)e.Argument); 
+        }
+
+        private void listLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ListViewItem[] result = e.Result as ListViewItem[];
+            if (result.Length > 0)
+            {
+                foreach (ListViewItem Item in listViewSpecies.Items)
+                {
+                    if (!result.Contains(Item))
+                    { listViewSpecies.Items.Remove(Item); }
+                }
+
+                foreach (ListViewItem Item in result)
+                {
+                    if (!listViewSpecies.Items.Contains(Item))
+                    { listViewSpecies.Items.Add(Item); }
+                }
+
+                if (!listViewSpecies.Visible)
+                {
+                    Point BoxLocation = PointToClient(
+                        textBoxValue.Parent.PointToScreen(textBoxValue.Location));
+                    listViewSpecies.Location = new Point(
+                        BoxLocation.X - 3, BoxLocation.Y + textBoxValue.Height + 3);
+
+                    listViewSpecies.Visible = true;
+                }
+
+                //listViewSpecies.Width = ColumnFoodItem.Width;
+                if (result.Length > 4)
+                {
+                    listViewSpecies.Columns[0].Width = listViewSpecies.Width - 2 -
+                         SystemInformation.VerticalScrollBarWidth;
+                }
+                else { listViewSpecies.Columns[0].Width = listViewSpecies.Width - 2; }
+
+            }
+            else
+            {
+                listViewSpecies_Leave(listViewSpecies, new EventArgs());
+            }
+
+            AllowSpeciesSuggestion = true;
+        }
+
+        private void listViewSpecies_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                listViewSpecies.Visible = false;
+            }
+        }
+
+        private void listViewSpecies_ItemActivate(object sender, EventArgs e)
+        {
+            LastSelectedSpecies =
+                (listViewSpecies.SelectedItems[0].Tag as _Species.SpeciesRow).Species;
+            AssignSpecies();
+        }
+
+        private void listViewSpecies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewSpecies.SelectedItems.Count > 0)
+            {
+                _Species.SpeciesRow SelectedRow = listViewSpecies.SelectedItems[0].Tag
+                    as _Species.SpeciesRow;
+
+                AllowSpeciesSuggestion = false;
+                GridItems.CurrentCell.Value = SelectedRow.Species;
+                AllowSpeciesSuggestion = true;
+            }
+        }
+
+        private void listViewSpecies_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!listViewSpecies.Visible)
+            {
+                AllowSpeciesSuggestion = true;
+                if (ActiveControl == textBoxValue) { }
+                else GridItems.Focus();
+            }
+        }
+
+        private void listViewSpecies_Leave(object sender, EventArgs e)
+        {
+            listViewSpecies.Visible = false;
+        }
+
+        #endregion
+
+        #endregion
+
+        private void ToolStripMenuItemRepeatTaxa_Click(object sender, EventArgs e)
+        {
+            if (GridItems.CurrentCell.OwningRow.IsNewRow)
+            {
+                int InsertionPosition = GridItems.RowCount - 1;
+                DataGridViewRow ReplyRow = new DataGridViewRow();
+                ReplyRow.CreateCells(GridItems, new object[] { null, LastSelectedSpecies });
+                GridItems.Rows.Insert(InsertionPosition, ReplyRow);
+                GridItems.CurrentCell = GridItems.Rows[InsertionPosition].Cells[ColumnFoodItem.Index];
+            }
+        }
+
+        private void ToolStripMenuItemDeleteCase_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow CurrentSelectedRow in GridItems.SelectedRows)
+            {
+                GridItems.Rows.Remove(CurrentSelectedRow);
+            }
+            IsChanged = true;
+            textBoxMass_TextChanged(sender, e);
+        }
+
+        private void ToolStripMenuItemKeys_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow CurrentSelectedRow in GridItems.SelectedRows)
+            {
+                if (Mayfly.Species.AppProperties.OpenDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Key SpeciesDefiner = new Key(Mayfly.Species.AppProperties.OpenDialog.FileName);
+                    if (CurrentSelectedRow.Cells[ColumnFoodItem.Name].Value != null)
+                        SpeciesDefiner.LoadThesis(CurrentSelectedRow.Cells[ColumnFoodItem.Index].Value as string);
+                    if (SpeciesDefiner.DialogResult != DialogResult.Cancel)
+                        if (SpeciesDefiner.ShowDialog() == DialogResult.OK)
+                        {
+                            CurrentSelectedRow.Cells[ColumnFoodItem.Index].Value =
+                                SpeciesDefiner.DefinedSpecies.Species;
+                            IsChanged = true;
+                        }
+                }
+            }
+        }
+
+        private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
+        {
+            Service.PasteToGrid(GridItems);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Service.CopyFromGrid(GridItems);
+        }
+
+        #endregion
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 6;
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 5;
+        }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 4;
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 3;
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 2;
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 1;
+        }
+
+        private void recoverMassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MassRecovery MR = new MassRecovery();
+
+            if (MR.ShowDialog(this) == DialogResult.OK)
+            {
+                if (MR.Regr == null) return;
+
+                foreach (DataGridViewRow CurrentSelectedRow in GridItems.SelectedRows)
+                {
+                    if (CurrentSelectedRow.Cells[ColumnItemSize.Index].Value == null) continue;
+
+                    //CurrentSelectedRow.Cells[ColumnItemMass.Index].Value = MR.Regr.Trend.Y((double)CurrentSelectedRow.Cells[ColumnItemSize.Index].Value);
+                }
+
+                textBox2.Text = FoodRecoveredMass.ToString("0.00");
+                ConsumptionIndex = FoodRecoveredMass / Mass; 
+            }
+        }
+
+        private void GridItems_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo info = GridItems.HitTest(e.X, e.Y);
+                switch (info.Type)
+                {
+                    case DataGridViewHitTestType.RowHeader:
+                        if (!GridItems.Rows[info.RowIndex].Selected)
+                        {
+                            if (Control.ModifierKeys != Keys.Control)
+                            {
+                                foreach (DataGridViewRow row in GridItems.Rows)
+                                {
+                                    row.Selected = false;
+                                }
+                            }
+                            GridItems.Rows[info.RowIndex].Selected = true;
+                        }
+                        contextMenuStripLog.Show(GridItems, e.X, e.Y);
+                        break;
+                }
+            }
+        }
+    }
+}

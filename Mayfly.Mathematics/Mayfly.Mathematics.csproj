@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{13A45B99-320D-40DC-81D0-38C42E9B6DCA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mayfly.Mathematics</RootNamespace>
+    <AssemblyName>Mayfly.Mathematics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\bin</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Mayfly\CurrentBuild\rel</OutputPath>
+    <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Meta.Numerics, Version=4.0.7.0, Culture=neutral, PublicKeyToken=67d25c65a6631347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Meta.Numerics.4.0.7\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Charts\ChartProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\ChartProperties.Designer.cs">
+      <DependentUpon>ChartProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Functor\Functor.cs" />
+    <Compile Include="Charts\Functor\FunctorProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Functor\FunctorProperties.Designer.cs">
+      <DependentUpon>FunctorProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DataTable.cs" />
+    <Compile Include="Extensions\MetaExtensions.cs" />
+    <Compile Include="Resources\FormatNotice.ru.Designer.cs">
+      <DependentUpon>FormatNotice.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\FormatNotice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormatNotice.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\RegressionType.ru.Designer.cs">
+      <DependentUpon>RegressionType.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\RegressionType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RegressionType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Anova.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Anova.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Regression\GeneralLinearRegression.cs" />
+    <Compile Include="Statistics\Regression\NonlinearRegression.cs" />
+    <Compile Include="Statistics\Regression\Regression.cs" />
+    <Compile Include="Statistics\Regression\RegressionProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\Regression\RegressionProperties.Designer.cs">
+      <DependentUpon>RegressionProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Regression\Regressions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\Regression\Regressions.Designer.cs">
+      <DependentUpon>Regressions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Sample\SampleDisplay.cs" />
+    <Compile Include="Data\Semipivot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\Semipivot.Designer.cs">
+      <DependentUpon>Semipivot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MathAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions\DataGridView.cs" />
+    <Compile Include="Resources\Chaddock.ru.Designer.cs">
+      <DependentUpon>Chaddock.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Statistics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statistics.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Statistics.ru.Designer.cs">
+      <DependentUpon>Statistics.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Chaddock.Designer.cs">
+      <DependentUpon>Chaddock.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Charts\ErrorBarType.cs" />
+    <Compile Include="Data\Pivot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\Pivot.Designer.cs">
+      <DependentUpon>Pivot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserSettings.cs" />
+    <Compile Include="Statistics\Sample\SampleProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\Sample\SampleProperties.Designer.cs">
+      <DependentUpon>SampleProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ColumnSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\ColumnSelection.Designer.cs">
+      <DependentUpon>ColumnSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Histogram\Histogram.cs" />
+    <Compile Include="Charts\Histogram\HistogramProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Histogram\HistogramProperties.Designer.cs">
+      <DependentUpon>HistogramProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Histogram\HistogramEventHandler.cs" />
+    <Compile Include="Charts\Histogram\HistogramSeparation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Histogram\HistogramSeparation.Designer.cs">
+      <DependentUpon>HistogramSeparation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\Regression\RegressionSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\Regression\RegressionSelection.Designer.cs">
+      <DependentUpon>RegressionSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\ScatterplotSeparation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\ScatterplotSeparation.Designer.cs">
+      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\Scatterplot.cs" />
+    <Compile Include="Charts\Scatterplot\ScatterplotEventHandler.cs" />
+    <Compile Include="Charts\Scatterplot\ScatterplotProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\ScatterplotProperties.Designer.cs">
+      <DependentUpon>ScatterplotProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\ScatterplotColumnSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\Scatterplot\ScatterplotColumnSelection.Designer.cs">
+      <DependentUpon>ScatterplotColumnSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Plot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Charts\Plot.Designer.cs">
+      <DependentUpon>Plot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Interface.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interface.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Charts\ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Charts\ChartProperties.resx">
+      <DependentUpon>ChartProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\ChartProperties.ru.resx">
+      <DependentUpon>ChartProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Functor\FunctorProperties.resx">
+      <DependentUpon>FunctorProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Functor\FunctorProperties.ru.resx">
+      <DependentUpon>FunctorProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Histogram\HistogramProperties.ru.resx">
+      <DependentUpon>HistogramProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotProperties.ru.resx">
+      <DependentUpon>ScatterplotProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FormatNotice.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormatNotice.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\FormatNotice.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormatNotice.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.ru.resx" />
+    <EmbeddedResource Include="Resources\RegressionType.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegressionType.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\RegressionType.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegressionType.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Anova.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Anova.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Anova.ru.resx" />
+    <EmbeddedResource Include="Statistics\Regression\RegressionProperties.resx">
+      <DependentUpon>RegressionProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Regression\RegressionProperties.ru.resx">
+      <DependentUpon>RegressionProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Regression\Regressions.resx">
+      <DependentUpon>Regressions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Pivot.ru.resx">
+      <DependentUpon>Pivot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Semipivot.resx">
+      <DependentUpon>Semipivot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\MathAdapter.resx">
+      <DependentUpon>MathAdapter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\MathAdapter.ru.resx">
+      <DependentUpon>MathAdapter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Chaddock.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chaddock.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Statistics.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Statistics.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Statistics.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Chaddock.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chaddock.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Sample\SampleProperties.resx">
+      <DependentUpon>SampleProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Sample\SampleProperties.ru.resx">
+      <DependentUpon>SampleProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ColumnSelection.resx">
+      <DependentUpon>ColumnSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ColumnSelection.ru.resx">
+      <DependentUpon>ColumnSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Histogram\HistogramProperties.resx">
+      <DependentUpon>HistogramProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Histogram\HistogramSeparation.resx">
+      <DependentUpon>HistogramSeparation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Histogram\HistogramSeparation.ru.resx">
+      <DependentUpon>HistogramSeparation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Regression\RegressionSelection.resx">
+      <DependentUpon>RegressionSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\Regression\RegressionSelection.ru.resx">
+      <DependentUpon>RegressionSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotSeparation.resx">
+      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotSeparation.ru.resx">
+      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotProperties.resx">
+      <DependentUpon>ScatterplotProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotColumnSelection.resx">
+      <DependentUpon>ScatterplotColumnSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotColumnSelection.ru.resx">
+      <DependentUpon>ScatterplotColumnSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.ru.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Plot.resx">
+      <DependentUpon>Plot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Interface.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Charts\Plot.ru.resx">
+      <DependentUpon>Plot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Pivot.resx">
+      <DependentUpon>Pivot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Semipivot.ru.resx">
+      <DependentUpon>Semipivot.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Lower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Upper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\None.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Level4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rows.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Columns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Charts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoneGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoneRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mayfly\Mayfly.csproj">
+      <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
+      <Name>Mayfly</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
