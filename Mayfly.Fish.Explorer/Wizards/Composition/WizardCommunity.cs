@@ -175,7 +175,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void communityCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            Structure = gearWizard.SelectedData.GetCommunityComposition();
+            Structure = gearWizard.SelectedData.GetCommunityComposition(gearWizard.SelectedUnit.Variant);
         }
 
         private void communityCalculator_ProgressChanged(object sender, ProgressChangedEventArgs e)

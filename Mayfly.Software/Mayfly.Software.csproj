@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mayfly.Software</RootNamespace>
     <AssemblyName>mayflysoftware</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,15 +42,20 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="AeroWizard">
-      <HintPath>..\..\..\..\..\..\Mayfly\bin\AeroWizard.dll</HintPath>
+    <Reference Include="AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.2.9\lib\net45\AeroWizard.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.1.6.2\lib\portable-net+sl+win+wpa+wp\Costura.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Mayfly\CurrentBuild\bin\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -61,17 +67,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Install\Install.cs" />
-    <Compile Include="Install\WizardInstall.cs">
+    <Compile Include="Install.cs" />
+    <Compile Include="WizardInstall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Install\WizardInstall.Designer.cs">
+    <Compile Include="WizardInstall.Designer.cs">
       <DependentUpon>WizardInstall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Install\WizardUninstall.cs">
+    <Compile Include="WizardUninstall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Install\WizardUninstall.Designer.cs">
+    <Compile Include="WizardUninstall.Designer.cs">
       <DependentUpon>WizardUninstall.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -105,34 +111,28 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="Update\ReleaseNotes.cs">
+    <Compile Include="Update.cs" />
+    <Compile Include="UpdateArgs.cs" />
+    <Compile Include="WizardUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Update\ReleaseNotes.Designer.cs">
-      <DependentUpon>ReleaseNotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Update\Update.cs" />
-    <Compile Include="Update\UpdateArgs.cs" />
-    <Compile Include="Update\WizardUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Update\WizardUpdate.Designer.cs">
+    <Compile Include="WizardUpdate.Designer.cs">
       <DependentUpon>WizardUpdate.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Install\WizardInstall.resx">
+    <EmbeddedResource Include="WizardInstall.resx">
       <DependentUpon>WizardInstall.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Install\WizardInstall.ru.resx">
+    <EmbeddedResource Include="WizardInstall.ru.resx">
       <DependentUpon>WizardInstall.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Install\WizardUninstall.resx">
+    <EmbeddedResource Include="WizardUninstall.resx">
       <DependentUpon>WizardUninstall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Install\WizardUninstall.ru.resx">
+    <EmbeddedResource Include="WizardUninstall.ru.resx">
       <DependentUpon>WizardUninstall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -152,20 +152,15 @@
       <LastGenOutput>Update.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Update.ru.resx" />
-    <EmbeddedResource Include="Update\ReleaseNotes.resx">
-      <DependentUpon>ReleaseNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Update\ReleaseNotes.ru.resx">
-      <DependentUpon>ReleaseNotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Update\WizardUpdate.resx">
+    <EmbeddedResource Include="WizardUpdate.resx">
       <DependentUpon>WizardUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Update\WizardUpdate.ru.resx">
+    <EmbeddedResource Include="WizardUpdate.ru.resx">
       <DependentUpon>WizardUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Scheme.xsc">
       <DependentUpon>Scheme.xsd</DependentUpon>

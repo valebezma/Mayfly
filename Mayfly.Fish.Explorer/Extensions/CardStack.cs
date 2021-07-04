@@ -214,6 +214,18 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
+        public static double GetAverageAbundance(this CardStack stack, Data.SpeciesRow speciesRow, ExpressionVariant variant)
+        {
+            double result = 0.0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                result += logRow.GetAbundance(variant);
+            }
+
+            return result / (double)stack.Count;
+        }
+
         public static double GetTotalBiomass(this CardStack stack)
         {
             double result = 0.0;
@@ -233,6 +245,18 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetBiomass();
+            }
+
+            return result / (double)stack.Count;
+        }
+
+        public static double GetAverageBiomass(this CardStack stack, Data.SpeciesRow speciesRow, ExpressionVariant variant)
+        {
+            double result = 0.0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                result += logRow.GetBiomass(variant);
             }
 
             return result / (double)stack.Count;

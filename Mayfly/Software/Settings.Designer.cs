@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPagePrint = new System.Windows.Forms.TabPage();
@@ -35,35 +36,41 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
+            this.maskedPass = new System.Windows.Forms.MaskedTextBox();
+            this.checkBoxCredentials = new System.Windows.Forms.CheckBox();
             this.listViewLicenses = new System.Windows.Forms.ListView();
             this.columnHeaderFeature = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderExpire = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonUnlock = new System.Windows.Forms.Button();
-            this.buttonGrant = new System.Windows.Forms.Button();
+            this.buttonLogin = new System.Windows.Forms.Button();
             this.labelFeaturesInstruction = new System.Windows.Forms.Label();
-            this.labelFeatures = new System.Windows.Forms.Label();
+            this.labelPass = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelPersonal = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxUseUnsafeConnection = new System.Windows.Forms.CheckBox();
+            this.labelUpdates = new System.Windows.Forms.Label();
             this.labelUpdatePolicy = new System.Windows.Forms.Label();
             this.comboBoxUpdatePolicy = new System.Windows.Forms.ComboBox();
-            this.comboBoxKeepLog = new System.Windows.Forms.ComboBox();
-            this.labelLogSize = new System.Windows.Forms.Label();
-            this.buttonOpenLog = new System.Windows.Forms.Button();
-            this.buttonClearLog = new System.Windows.Forms.Button();
-            this.labelPerformance = new System.Windows.Forms.Label();
-            this.checkBoxLogSend = new System.Windows.Forms.CheckBox();
-            this.checkBoxKeepLog = new System.Windows.Forms.CheckBox();
-            this.checkBoxLog = new System.Windows.Forms.CheckBox();
+            this.labelDiagnosics = new System.Windows.Forms.Label();
+            this.checkBoxShareDiagnostics = new System.Windows.Forms.CheckBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.checkBoxUseUnsafeConnection = new System.Windows.Forms.CheckBox();
+            this.taskDialogNameMismatch = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbMismatchSupport = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbMismatchCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbMismatchReplace = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.taskDialogLogout = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbSignoutCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbSignoutConfirm = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tabControlSettings.SuspendLayout();
             this.tabPagePrint.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +95,7 @@
             // comboBoxCulture
             // 
             resources.ApplyResources(this.comboBoxCulture, "comboBoxCulture");
-            this.comboBoxCulture.DisplayMember = "DisplayName";
+            this.comboBoxCulture.DisplayMember = "NativeName";
             this.comboBoxCulture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCulture.FormattingEnabled = true;
             this.comboBoxCulture.Name = "comboBoxCulture";
@@ -106,17 +113,45 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBoxLogin);
+            this.tabPage1.Controls.Add(this.maskedPass);
+            this.tabPage1.Controls.Add(this.checkBoxCredentials);
             this.tabPage1.Controls.Add(this.listViewLicenses);
-            this.tabPage1.Controls.Add(this.buttonUnlock);
-            this.tabPage1.Controls.Add(this.buttonGrant);
+            this.tabPage1.Controls.Add(this.buttonLogin);
             this.tabPage1.Controls.Add(this.labelFeaturesInstruction);
-            this.tabPage1.Controls.Add(this.labelFeatures);
+            this.tabPage1.Controls.Add(this.labelPass);
+            this.tabPage1.Controls.Add(this.labelEmail);
             this.tabPage1.Controls.Add(this.labelUsername);
+            this.tabPage1.Controls.Add(this.textBoxEmail);
             this.tabPage1.Controls.Add(this.textBoxUsername);
             this.tabPage1.Controls.Add(this.labelPersonal);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxLogin
+            // 
+            resources.ApplyResources(this.pictureBoxLogin, "pictureBoxLogin");
+            this.pictureBoxLogin.Name = "pictureBoxLogin";
+            this.pictureBoxLogin.TabStop = false;
+            // 
+            // maskedPass
+            // 
+            resources.ApplyResources(this.maskedPass, "maskedPass");
+            this.maskedPass.AsciiOnly = true;
+            this.maskedPass.HidePromptOnLeave = true;
+            this.maskedPass.Name = "maskedPass";
+            this.maskedPass.PasswordChar = '*';
+            this.maskedPass.ReadOnly = true;
+            this.maskedPass.DoubleClick += new System.EventHandler(this.textBoxEmail_DoubleClick);
+            // 
+            // checkBoxCredentials
+            // 
+            resources.ApplyResources(this.checkBoxCredentials, "checkBoxCredentials");
+            this.checkBoxCredentials.Name = "checkBoxCredentials";
+            this.checkBoxCredentials.UseVisualStyleBackColor = true;
+            this.checkBoxCredentials.CheckedChanged += new System.EventHandler(this.checkBoxCredentials_CheckedChanged);
+            this.checkBoxCredentials.Click += new System.EventHandler(this.checkBoxCredentials_Click);
             // 
             // listViewLicenses
             // 
@@ -125,15 +160,11 @@
             this.listViewLicenses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderFeature,
             this.columnHeaderExpire});
-            this.listViewLicenses.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewLicenses.Groups"))),
-            ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewLicenses.Groups1")))});
             this.listViewLicenses.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewLicenses.HideSelection = false;
             this.listViewLicenses.Name = "listViewLicenses";
             this.listViewLicenses.UseCompatibleStateImageBehavior = false;
             this.listViewLicenses.View = System.Windows.Forms.View.Details;
-            this.listViewLicenses.ItemActivate += new System.EventHandler(this.listViewLicenses_ItemActivate);
             // 
             // columnHeaderFeature
             // 
@@ -143,34 +174,39 @@
             // 
             resources.ApplyResources(this.columnHeaderExpire, "columnHeaderExpire");
             // 
-            // buttonUnlock
+            // buttonLogin
             // 
-            resources.ApplyResources(this.buttonUnlock, "buttonUnlock");
-            this.buttonUnlock.Name = "buttonUnlock";
-            this.buttonUnlock.UseVisualStyleBackColor = true;
-            this.buttonUnlock.Click += new System.EventHandler(this.buttonUnlock_Click);
-            // 
-            // buttonGrant
-            // 
-            resources.ApplyResources(this.buttonGrant, "buttonGrant");
-            this.buttonGrant.Name = "buttonGrant";
-            this.buttonGrant.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonLogin, "buttonLogin");
+            this.buttonLogin.FlatAppearance.BorderSize = 0;
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // labelFeaturesInstruction
             // 
             resources.ApplyResources(this.labelFeaturesInstruction, "labelFeaturesInstruction");
             this.labelFeaturesInstruction.Name = "labelFeaturesInstruction";
             // 
-            // labelFeatures
+            // labelPass
             // 
-            resources.ApplyResources(this.labelFeatures, "labelFeatures");
-            this.labelFeatures.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelFeatures.Name = "labelFeatures";
+            resources.ApplyResources(this.labelPass, "labelPass");
+            this.labelPass.Name = "labelPass";
+            // 
+            // labelEmail
+            // 
+            resources.ApplyResources(this.labelEmail, "labelEmail");
+            this.labelEmail.Name = "labelEmail";
             // 
             // labelUsername
             // 
             resources.ApplyResources(this.labelUsername, "labelUsername");
             this.labelUsername.Name = "labelUsername";
+            // 
+            // textBoxEmail
+            // 
+            resources.ApplyResources(this.textBoxEmail, "textBoxEmail");
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.ReadOnly = true;
+            this.textBoxEmail.DoubleClick += new System.EventHandler(this.textBoxEmail_DoubleClick);
             // 
             // textBoxUsername
             // 
@@ -187,26 +223,26 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.checkBoxUseUnsafeConnection);
-            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.labelUpdates);
             this.tabPage2.Controls.Add(this.labelUpdatePolicy);
             this.tabPage2.Controls.Add(this.comboBoxUpdatePolicy);
-            this.tabPage2.Controls.Add(this.comboBoxKeepLog);
-            this.tabPage2.Controls.Add(this.labelLogSize);
-            this.tabPage2.Controls.Add(this.buttonOpenLog);
-            this.tabPage2.Controls.Add(this.buttonClearLog);
-            this.tabPage2.Controls.Add(this.labelPerformance);
-            this.tabPage2.Controls.Add(this.checkBoxLogSend);
-            this.tabPage2.Controls.Add(this.checkBoxKeepLog);
-            this.tabPage2.Controls.Add(this.checkBoxLog);
+            this.tabPage2.Controls.Add(this.labelDiagnosics);
+            this.tabPage2.Controls.Add(this.checkBoxShareDiagnostics);
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // checkBoxUseUnsafeConnection
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.checkBoxUseUnsafeConnection, "checkBoxUseUnsafeConnection");
+            this.checkBoxUseUnsafeConnection.Name = "checkBoxUseUnsafeConnection";
+            this.checkBoxUseUnsafeConnection.UseVisualStyleBackColor = true;
+            // 
+            // labelUpdates
+            // 
+            resources.ApplyResources(this.labelUpdates, "labelUpdates");
+            this.labelUpdates.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelUpdates.Name = "labelUpdates";
             // 
             // labelUpdatePolicy
             // 
@@ -223,64 +259,19 @@
             resources.GetString("comboBoxUpdatePolicy.Items1"),
             resources.GetString("comboBoxUpdatePolicy.Items2")});
             this.comboBoxUpdatePolicy.Name = "comboBoxUpdatePolicy";
+            this.comboBoxUpdatePolicy.SelectedIndexChanged += new System.EventHandler(this.comboBoxUpdatePolicy_SelectedIndexChanged);
             // 
-            // comboBoxKeepLog
+            // labelDiagnosics
             // 
-            resources.ApplyResources(this.comboBoxKeepLog, "comboBoxKeepLog");
-            this.comboBoxKeepLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxKeepLog.FormattingEnabled = true;
-            this.comboBoxKeepLog.Items.AddRange(new object[] {
-            resources.GetString("comboBoxKeepLog.Items"),
-            resources.GetString("comboBoxKeepLog.Items1"),
-            resources.GetString("comboBoxKeepLog.Items2"),
-            resources.GetString("comboBoxKeepLog.Items3")});
-            this.comboBoxKeepLog.Name = "comboBoxKeepLog";
+            resources.ApplyResources(this.labelDiagnosics, "labelDiagnosics");
+            this.labelDiagnosics.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelDiagnosics.Name = "labelDiagnosics";
             // 
-            // labelLogSize
+            // checkBoxShareDiagnostics
             // 
-            resources.ApplyResources(this.labelLogSize, "labelLogSize");
-            this.labelLogSize.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelLogSize.Name = "labelLogSize";
-            // 
-            // buttonOpenLog
-            // 
-            resources.ApplyResources(this.buttonOpenLog, "buttonOpenLog");
-            this.buttonOpenLog.Name = "buttonOpenLog";
-            this.buttonOpenLog.UseVisualStyleBackColor = true;
-            this.buttonOpenLog.Click += new System.EventHandler(this.buttonOpenLog_Click);
-            // 
-            // buttonClearLog
-            // 
-            resources.ApplyResources(this.buttonClearLog, "buttonClearLog");
-            this.buttonClearLog.Name = "buttonClearLog";
-            this.buttonClearLog.UseVisualStyleBackColor = true;
-            this.buttonClearLog.Click += new System.EventHandler(this.buttonClearLog_Click);
-            // 
-            // labelPerformance
-            // 
-            resources.ApplyResources(this.labelPerformance, "labelPerformance");
-            this.labelPerformance.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelPerformance.Name = "labelPerformance";
-            // 
-            // checkBoxLogSend
-            // 
-            resources.ApplyResources(this.checkBoxLogSend, "checkBoxLogSend");
-            this.checkBoxLogSend.Name = "checkBoxLogSend";
-            this.checkBoxLogSend.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxKeepLog
-            // 
-            resources.ApplyResources(this.checkBoxKeepLog, "checkBoxKeepLog");
-            this.checkBoxKeepLog.Name = "checkBoxKeepLog";
-            this.checkBoxKeepLog.UseVisualStyleBackColor = true;
-            this.checkBoxKeepLog.CheckedChanged += new System.EventHandler(this.checkBoxKeepLog_CheckedChanged);
-            // 
-            // checkBoxLog
-            // 
-            resources.ApplyResources(this.checkBoxLog, "checkBoxLog");
-            this.checkBoxLog.Name = "checkBoxLog";
-            this.checkBoxLog.UseVisualStyleBackColor = true;
-            this.checkBoxLog.CheckedChanged += new System.EventHandler(this.checkBoxLog_CheckedChanged);
+            resources.ApplyResources(this.checkBoxShareDiagnostics, "checkBoxShareDiagnostics");
+            this.checkBoxShareDiagnostics.Name = "checkBoxShareDiagnostics";
+            this.checkBoxShareDiagnostics.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
@@ -304,15 +295,46 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
-            // checkBoxUseUnsafeConnection
+            // taskDialogNameMismatch
             // 
-            resources.ApplyResources(this.checkBoxUseUnsafeConnection, "checkBoxUseUnsafeConnection");
-            this.checkBoxUseUnsafeConnection.Name = "checkBoxUseUnsafeConnection";
-            this.checkBoxUseUnsafeConnection.UseVisualStyleBackColor = true;
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchSupport);
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchCancel);
+            this.taskDialogNameMismatch.Buttons.Add(this.tdbMismatchReplace);
+            this.taskDialogNameMismatch.CenterParent = true;
+            resources.ApplyResources(this.taskDialogNameMismatch, "taskDialogNameMismatch");
+            this.taskDialogNameMismatch.ExpandFooterArea = true;
+            // 
+            // tdbMismatchSupport
+            // 
+            resources.ApplyResources(this.tdbMismatchSupport, "tdbMismatchSupport");
+            // 
+            // tdbMismatchCancel
+            // 
+            this.tdbMismatchCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
+            resources.ApplyResources(this.tdbMismatchCancel, "tdbMismatchCancel");
+            // 
+            // tdbMismatchReplace
+            // 
+            this.tdbMismatchReplace.Default = true;
+            resources.ApplyResources(this.tdbMismatchReplace, "tdbMismatchReplace");
+            // 
+            // taskDialogLogout
+            // 
+            this.taskDialogLogout.Buttons.Add(this.tdbSignoutCancel);
+            this.taskDialogLogout.Buttons.Add(this.tdbSignoutConfirm);
+            this.taskDialogLogout.CenterParent = true;
+            resources.ApplyResources(this.taskDialogLogout, "taskDialogLogout");
+            // 
+            // tdbSignoutCancel
+            // 
+            resources.ApplyResources(this.tdbSignoutCancel, "tdbSignoutCancel");
+            // 
+            // tdbSignoutConfirm
+            // 
+            resources.ApplyResources(this.tdbSignoutConfirm, "tdbSignoutConfirm");
             // 
             // Settings
             // 
-            this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
@@ -328,6 +350,7 @@
             this.tabPagePrint.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -348,24 +371,29 @@
         protected System.Windows.Forms.TextBox textBoxUsername;
         protected System.Windows.Forms.Label labelPersonal;
         private System.Windows.Forms.TabPage tabPage2;
-        protected System.Windows.Forms.Label label3;
+        protected System.Windows.Forms.Label labelUpdates;
         protected System.Windows.Forms.Label labelUpdatePolicy;
         protected System.Windows.Forms.ComboBox comboBoxUpdatePolicy;
-        private System.Windows.Forms.ComboBox comboBoxKeepLog;
-        protected System.Windows.Forms.Label labelLogSize;
-        protected System.Windows.Forms.Button buttonOpenLog;
-        protected System.Windows.Forms.Button buttonClearLog;
-        protected System.Windows.Forms.Label labelPerformance;
-        protected System.Windows.Forms.CheckBox checkBoxLogSend;
-        protected System.Windows.Forms.CheckBox checkBoxKeepLog;
-        protected System.Windows.Forms.CheckBox checkBoxLog;
-        protected System.Windows.Forms.Label labelFeatures;
-        protected System.Windows.Forms.Label labelFeaturesInstruction;
-        protected System.Windows.Forms.Button buttonGrant;
-        protected System.Windows.Forms.Button buttonUnlock;
+        protected System.Windows.Forms.Label labelDiagnosics;
         protected System.Windows.Forms.ListView listViewLicenses;
         protected System.Windows.Forms.ColumnHeader columnHeaderFeature;
         private System.Windows.Forms.ColumnHeader columnHeaderExpire;
         protected System.Windows.Forms.CheckBox checkBoxUseUnsafeConnection;
+        protected System.Windows.Forms.CheckBox checkBoxShareDiagnostics;
+        protected System.Windows.Forms.Button buttonLogin;
+        protected System.Windows.Forms.Label labelFeaturesInstruction;
+        private TaskDialogs.TaskDialog taskDialogNameMismatch;
+        private TaskDialogs.TaskDialogButton tdbMismatchCancel;
+        private TaskDialogs.TaskDialogButton tdbMismatchReplace;
+        private TaskDialogs.TaskDialogButton tdbMismatchSupport;
+        protected System.Windows.Forms.CheckBox checkBoxCredentials;
+        protected System.Windows.Forms.Label labelPass;
+        protected System.Windows.Forms.Label labelEmail;
+        protected System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.MaskedTextBox maskedPass;
+        private System.Windows.Forms.PictureBox pictureBoxLogin;
+        private TaskDialogs.TaskDialog taskDialogLogout;
+        private TaskDialogs.TaskDialogButton tdbSignoutCancel;
+        private TaskDialogs.TaskDialogButton tdbSignoutConfirm;
     }
 }

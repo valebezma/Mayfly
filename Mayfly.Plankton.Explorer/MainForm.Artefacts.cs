@@ -88,7 +88,7 @@ namespace Mayfly.Plankton.Explorer
             else
             {
                 gridRow.Cells[gridColumnShowing.Index].Value = speciesRow.FullName;
-                ((TextAndImageCell)gridRow.Cells[gridColumnShowing.Index]).Image = Mayfly.Properties.Resources.Check;
+                ((TextAndImageCell)gridRow.Cells[gridColumnShowing.Index]).Image = Mayfly.Resources.Icons.Check;
             }
         }
     }

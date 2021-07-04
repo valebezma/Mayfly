@@ -5,11 +5,12 @@ using System.IO;
 using System.Net;
 using System.Net.Cache;
 using System.Windows.Forms;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Mayfly.TaskDialogs;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using System.Net.Security;
 
 namespace Mayfly.Software
 {
@@ -17,52 +18,62 @@ namespace Mayfly.Software
     {
         public static string ServerUpdate = Server.ServerHttps + "/get/updates/current";
 
-        public static Stream GetFromServer(Uri uri)
+        public static string DownloadFile(Uri uri)
+        {
+            return DownloadFile(uri, Path.Combine(FileSystem.TempFolder, Path.GetFileName(uri.LocalPath)));
+        }
+
+        public static string DownloadFile(Uri uri, string filename)
         {
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-            WebRequest request = WebRequest.Create(uri);
-            request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-            if (UserSettings.UseUnsafeConnection) { ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications); }
+            WebClient webClient = new WebClient();
+            webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+            if (UserSettings.UseUnsafeConnection) {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
+            }
 
-            try { return request.GetResponse().GetResponseStream(); }
-            catch (Exception)  { return null; }
+            try {
+                webClient.DownloadFile(uri, filename);
+                return filename;
+            } catch (Exception) { 
+                return string.Empty; }
         }
 
-        public static Scheme GetScheme()
+        private static Scheme GetScheme(string connectionString, params string[] tableNames)
         {
-            Stream stream = GetFromServer(new Uri(Server.ServerHttps + "/get/updates/scheme.xml"));
-            if (stream == null) return null;
             Scheme result = new Scheme();
-            result.ReadXml(stream);
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            foreach (string tableName in tableNames)
+            {
+                try
+                {
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, connection);
+                    adapter.Fill(result, tableName);
+                }
+                catch { }
+            }
+
             return result;
+        }
+
+        internal static Scheme GetScheme(params string[] tableNames)
+        {
+            return GetScheme(
+                string.Format(
+                    @"Server={0};user={1};password={2};database={3}",
+                    Server.Domain, "mayfly-software", "UBY-3b4-Etj-GeP", "mayfly-products"),
+                tableNames
+                );
         }
 
         public static List<CultureInfo> GetAvailableCultures()
         {
             List<CultureInfo> result = new List<CultureInfo>();
-
-            try
-            {
-                Stream stream = GetFromServer(Server.GetUri(Server.ServerHttps + "/get/updates", "locals.dat"));
-
-                StreamReader reader = new StreamReader(stream);
-                string[] culturesList = reader.ReadToEnd().TrimEnd(Environment.NewLine.ToArray()).Split(Environment.NewLine.ToArray());
-
-                foreach (string line in culturesList)
-                {
-                    try
-                    {
-                        CultureInfo ci = new CultureInfo(line);
-                        result.Add(ci);
-                    }
-                    catch { }
-                }
-            }
-            catch
-            { }
-
+            result.Add(new CultureInfo("ru"));
             return result;
         }
 
@@ -79,7 +90,11 @@ namespace Mayfly.Software
         /// <param name="chain"></param>
         /// <param name="sslPolicyErrors"></param>
         /// <returns>true</returns>
-        private static bool AcceptAllCertifications(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+        private static bool AcceptAllCertifications(
+            object sender, 
+            System.Security.Cryptography.X509Certificates.X509Certificate certification, 
+            System.Security.Cryptography.X509Certificates.X509Chain chain, 
+            SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
@@ -94,21 +109,19 @@ namespace Mayfly.Software
             return (products.Length == 1 && products[0] == product);
         }
 
-
         public static bool IsRunning(string path)
         {
             if (Path.GetExtension(path) != ".exe") return false;
             string exe = Path.GetFileNameWithoutExtension(path);
             string fld = Path.GetDirectoryName(path);
 
-            foreach(Process p in Process.GetProcessesByName(exe))
+            foreach (Process p in Process.GetProcessesByName(exe))
             {
                 if (p.MainModule.FileName.ToLower() == path.ToLower()) return true;
             }
 
             return false;
         }
-
 
         private delegate bool CheckChecker(CheckBox checkBox);
 
@@ -125,7 +138,7 @@ namespace Mayfly.Software
             }
         }
 
-        private delegate void StatusUpdater(Label labelStatus, string status);
+        public delegate void StatusUpdater(Label labelStatus, string status);
 
         public static void UpdateStatus(Label labelStatus, string status)
         {

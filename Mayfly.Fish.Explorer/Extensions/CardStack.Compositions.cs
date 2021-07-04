@@ -13,6 +13,11 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
+        public static SpeciesComposition GetCommunityComposition(this CardStack stack, ExpressionVariant variant)
+        {
+            return stack.GetCommunityComposition(Fish.UserSettings.SpeciesIndex, variant);
+        }
+
         public static SpeciesComposition GetCommunityComposition(this CardStack stack)
         {
             return stack.GetCommunityComposition(Fish.UserSettings.SpeciesIndex);
@@ -32,6 +37,32 @@ namespace Mayfly.Fish.Explorer
                 category.Mass = stack.Mass(speciesRow);
                 category.Abundance = stack.GetAverageAbundance(speciesRow);
                 category.Biomass = stack.GetAverageBiomass(speciesRow);
+
+                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
+                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
+
+            }
+
+            result.SamplesCount = stack.Count;
+            result.Sort();
+
+            return result;
+        }
+
+        public static SpeciesComposition GetCommunityComposition(this CardStack stack, Species.SpeciesKey key, ExpressionVariant variant)
+        {
+            SpeciesComposition result = stack.GetCommunityCompositionFrame();
+
+            foreach (SpeciesSwarm category in result)
+            {
+                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
+
+                category.DataRow = key.Species.FindBySpecies(speciesRow.Species);
+
+                category.Quantity = (int)stack.Quantity(speciesRow);
+                category.Mass = stack.Mass(speciesRow);
+                category.Abundance = stack.GetAverageAbundance(speciesRow, variant);
+                category.Biomass = stack.GetAverageBiomass(speciesRow, variant);
 
                 category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
                     stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));

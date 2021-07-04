@@ -109,8 +109,6 @@ namespace Mayfly.Wild
 
         public void RefreshBios()
         {
-            if (!Licensing.Verify("Bios")) return;
-
             MassModels.Refresh();
             GrowthModels.Refresh();
             MassGrowthModels.Refresh();
@@ -152,8 +150,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return (Licensing.Verify("Bios") &&
-                    ((this.GrowthModels.ExternalScatterplots.Count +
+                return (this.GrowthModels != null && ((this.GrowthModels.ExternalScatterplots.Count +
                     this.MassModels.ExternalScatterplots.Count) > 0));
             }
         }

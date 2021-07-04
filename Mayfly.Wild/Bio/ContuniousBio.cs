@@ -275,8 +275,6 @@ namespace Mayfly.Wild
 
         public double GetValue(string name, double x, bool inversed)
         {
-            if (!Licensing.Verify("Bios")) return double.NaN;
-
             if (this.Denied) return double.NaN;
 
             Scatterplot scatter = GetCombinedScatterplot(name);

@@ -10,6 +10,10 @@ using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Waters;
 using System.Resources;
+using System.Diagnostics;
+using System.Xml;
+using System.Text;
+using System.Reflection;
 
 namespace Mayfly.Wild
 {
@@ -1240,6 +1244,14 @@ namespace Mayfly.Wild
                     result += Solitary.WaterRow.Presentation + " ";
                 }
 
+                foreach (char s in Path.GetInvalidFileNameChars())
+                {
+                    if (result.Contains(s))
+                    {
+                        result = result.Replace(s, ' ');
+                    }
+                }
+
                 return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
             }
             else
@@ -1311,7 +1323,16 @@ namespace Mayfly.Wild
         {
             try
             {
-                base.ReadXml(fileName);
+                foreach (DataTable dt in Tables)
+                {
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        dc.ColumnMapping = MappingType.Attribute;
+                    }
+                }
+
+                ReadXml(fileName);
+
 
                 foreach (CardRow cardRow in this.Card)
                 {
@@ -1338,6 +1359,27 @@ namespace Mayfly.Wild
 
         public void WriteToFile(string fileName)
         {
+            foreach (DataTable dt in Tables)
+            {
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    dc.ColumnMapping = MappingType.Attribute;
+                }
+            }
+
+            //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
+            //xmlWriter.IndentChar = ' ';
+            //xmlWriter.Indentation = 4;
+            //xmlWriter.WriteStartElement("meta");
+            //Version libVersion = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
+            //xmlWriter.WriteAttributeString("version", libVersion.ToString());
+            //xmlWriter.WriteAttributeString("saved", DateTime.UtcNow.ToString("s"));
+            //xmlWriter.WriteEndElement();
+            //this.WriteXml(xmlWriter);
+            //xmlWriter.Close();
+
+            ////WriteXml(fileName);
+
             File.WriteAllText(fileName, GetXml());
         }
 

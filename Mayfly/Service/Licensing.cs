@@ -1,104 +1,159 @@
 ﻿using Mayfly.Software;
 using Microsoft.Win32;
 using System;
-using System.IO;
-using System.Threading;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Net;
+using System.Windows.Forms;
 
 namespace Mayfly
 {
     public static class Licensing
     {
-        public static bool VerifyAll(params string[] features)
-        {
-            bool result = true;
-            for (int i = 0; i < features.Length; i++) {
-                bool ver = Verify(features[i]);
-                if (!ver) return false;
-                result &= ver;
-            }
-            return result;
-        }
-
-        public static bool VerifyAny(params string[] features)
-        {
-            for (int i = 0; i < features.Length; i++) {
-                if (Verify(features[i])) return true;
-            }
-            return false;
-        }
-
         public static bool Verify(string feature)
         {
-            foreach (License.UserLicenseRow licRow in InstalledLicenses.UserLicense.FindByFeature(feature))
+            foreach (License lic in InstalledLicenses)
             {
-                if (licRow.IsValid) return true;
+                if (lic.Feature != feature) continue;
+                if (lic.IsValid) return true;
             }
 
             return false;
         }
 
-        public static bool VerifyApp(string feature)
-        {
-            if (Verify(feature))
-            {
-                return true;
-            }
-            else
-            {
-                License.UserLicenseRow[] features = InstalledLicenses.UserLicense.FindByFeature(feature);
-                FeatureAdd licadd = features.Length > 0 ? new FeatureAdd(features[0]) : new FeatureAdd();
-                return licadd.ShowDialog() == DialogResult.OK;
-            }
-        }
+        internal static List<License> installedLicenses;
 
-        static License installedLicenses;
-
-        public static License InstalledLicenses
+        public static License[] InstalledLicenses
         {
             get
             {
                 if (installedLicenses == null)
                 {
-                    installedLicenses = new License();
+                    installedLicenses = new List<License>();
 
                     RegistryKey reg = Registry.CurrentUser.OpenSubKey(UserSettingPaths.KeyLicenses);
 
-                    if (reg == null) return installedLicenses;
+                    if (reg == null) return installedLicenses.ToArray();
 
-                    foreach (string value in reg.GetValueNames())
+                    foreach (string value in reg.GetSubKeyNames())
                     {
                         try
                         {
-                            string serial = StringCipher.Decrypt(value, UserSettings.Username);
-                            string licxml = StringCipher.Decrypt((string)reg.GetValue(value), serial);
-                            License lic = new License();
-                            lic.ReadXml(new StringReader(licxml));
-                            License.UserLicenseRow licRow = lic.UserLicense[0];
-                            //lic.UserLicense.RemoveUserLicenseRow(licRow);
-                            installedLicenses.UserLicense.AddUserLicenseRow(
-                                licRow.Licensee, licRow.Feature, licRow.Expires, licRow.Serial);
+                            RegistryKey regLic = reg.OpenSubKey(value);
+                            string feature = value;
+                            License lic = new License(StringCipher.Decrypt((string)regLic.GetValue("License"), feature));
+                            installedLicenses.Add(lic);
                         }
                         catch { continue; }
                     }
                 }
 
-                return installedLicenses;
+                return installedLicenses.ToArray();
             }
         }
 
-
-        private static void InstallLicense(string serial)
+        internal static void InspectLicenses()
         {
-            // Some logics which contacting activation server with serial and get request with 
-            // treat terms: Who, What feature, When expires.
+            bool shouldUpdate = false;
 
-            License lic = new License();
+            foreach (License lic in InstalledLicenses)
+            {
+                shouldUpdate = lic.ExpiresIn.TotalDays < (lic.Autorenewal ? 0 : 8);
+                if (shouldUpdate) break;
+            }
 
-            UserSetting.SetValue(UserSettingPaths.KeyLicenses,
-                StringCipher.Encrypt(serial, UserSettings.Username),
-                StringCipher.Encrypt(lic.GetXml(), serial));
+            if (!shouldUpdate) shouldUpdate |= (DateTime.Now - UserSettings.LastLicenseCheckup).TotalHours > 12;
+
+            if (shouldUpdate)
+            {
+                InstallLicenses();
+
+                foreach (License lic in InstalledLicenses)
+                {
+                    double u = lic.ExpiresIn.TotalDays;
+
+                    if (u < (lic.Autorenewal ? -1 : 0))
+                    {
+                        lic.Uninstall();
+                        Notification.ShowNotification(
+                            Resources.License.LicenseExpired, string.Format(Resources.License.LicenseExpiredInstruction, lic.Feature));
+                    }
+                    else if (!lic.Autorenewal && u < 8)
+                    {
+                        Notification.ShowNotification(
+                            Resources.License.LicenseExpiresSoon, string.Format(
+                                Resources.License.LicenseExpiresSoonInstruction,
+                                lic.Feature, lic.ExpiresIn.TotalDays < 1 ?
+                                Resources.License.LicenseExpiresSoonInstructionToday :
+                                string.Format(Resources.License.LicenseExpiresSoonInstructionIn, (int)lic.ExpiresIn.TotalDays)
+                                )
+                            );
+                    }
+                }
+            }
+        }
+
+        internal static void InstallLicenses()
+        {
+            InstallLicenses(GetLicenses(UserSettings.Credential));
+        }
+
+        internal static void InstallLicenses(License[] lics)
+        {
+            if (lics != null)
+            {
+                foreach (License lic in lics)
+                {
+                    lic.Install();
+                }
+            }
+        }
+
+        internal static License[] GetLicenses(NetworkCredential credentials)
+        {
+            Uri uri = Server.GetUri(Server.ServerHttps, "php/customer/getlicense.php");
+            Dictionary<string, string> licenseRequestParameters = new Dictionary<string, string>();
+            licenseRequestParameters.Add("email", credentials.UserName);
+            licenseRequestParameters.Add("password", credentials.Password);
+            licenseRequestParameters.Add("hid", Hardware.HardwareID);
+            licenseRequestParameters.Add("uninstall", "0");
+            string[] response = Server.GetText(uri, licenseRequestParameters);
+
+            UserSettings.LastLicenseCheckup = DateTime.Now;
+
+            if (response == null)
+            {
+                return null;
+            }
+
+            List<License> result = new List<License>();
+
+            foreach (string lic in response)
+            {
+                result.Add(new License(lic));
+            }
+
+            Log.Write("Licenses successfully received");
+
+            return result.ToArray();
+        }
+
+        internal static void SendUninstall(NetworkCredential credentials)
+        {
+            if (UserSettings.Credential == null) return;
+
+            Uri uri = Server.GetUri(Server.ServerHttps, "php/customer/getlicense.php");
+            Dictionary<string, string> licenseRequestParameters = new Dictionary<string, string>();
+            licenseRequestParameters.Add("email", credentials.UserName);
+            licenseRequestParameters.Add("password", credentials.Password);
+            licenseRequestParameters.Add("hid", Hardware.HardwareID);
+            licenseRequestParameters.Add("uninstall", "1");
+            string[] response = Server.GetText(uri, licenseRequestParameters);
+
+            //if (response == null) return;
+
+            //if (response.Length == 0) return;
+
+            //return response.Length > 0 && response[0].Length > 1 && response[0].Substring(0, 2) == "OK";
         }
 
 
@@ -118,15 +173,15 @@ namespace Mayfly
 
         public static void SetControlsAvailability(bool available, params Control[] controls)
         {
-            foreach (Control control in controls)
-            {
-                control.Visible = available;
-            }
+            //foreach (Control control in controls)
+            //{
+            //    control.Visible = available;
+            //}
         }
 
         public static void SetControlsAvailability(string feature, params Control[] controls)
         {
-            SetControlsAvailability(Verify(feature), controls);
+            //SetControlsAvailability(Verify(feature), controls);
         }
 
         public static void SetTabsAvailability(bool available, params TabPage[] tabs)
@@ -142,16 +197,14 @@ namespace Mayfly
             SetTabsAvailability(Verify(feature), tabs);
         }
 
-
         public static void SetMenuClickability(bool available, params ToolStripItem[] items)
         {
-            foreach (ToolStripItem item in items)
-            {
-                item.Enabled = available;
-            }
+            //foreach (ToolStripItem item in items)
+            //{
+            //    item.Enabled = available;
+            //}
         }
 
-        //public static void SetControlsClickability(bool available, params Control[] ctrls)
         public static void SetControlsClickability(bool available, Control.ControlCollection ctrls)
         {
             foreach (Control c in ctrls)
@@ -206,14 +259,3 @@ namespace Mayfly
         }
     }
 }
-
-//namespace Mayfly
-//{
-//    public enum LicenseStatus
-//    {
-//        Invalid,
-//        Valid,
-//        Expired,
-//        Outlive
-//    }
-//}

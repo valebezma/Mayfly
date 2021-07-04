@@ -117,30 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ProductNotMatch" xml:space="preserve">
-    <value>Ключ не подходит к установленному продукту.
-Запустите новую установку, чтобы использовать этот ключ.</value>
-  </data>
   <data name="ExpiresInstruction" xml:space="preserve">
     <value>Ваша лицензия на {0} истекает через {1} дней. Нажмите, чтобы получить новый ключ.</value>
   </data>
   <data name="ExpiresSoon" xml:space="preserve">
     <value>Лицензия скоро истекает</value>
   </data>
-  <data name="NotValid" xml:space="preserve">
-    <value>Лицензия недействительна.
-Вам нужна новая :(</value>
+  <data name="LicenseCancelled" xml:space="preserve">
+    <value>Ключ недействителен</value>
   </data>
-  <data name="UserNotMatch" xml:space="preserve">
-    <value>Этот ключ - не ваш.
-Запустите новую установку, чтобы использовать этот ключ.</value>
+  <data name="LicenseExpiredInstruction" xml:space="preserve">
+    <value>Введенный ключ недействителен</value>
   </data>
-  <data name="Valid" xml:space="preserve">
-    <value>Лицензией на использование {0}
-обладает {1}</value>
+  <data name="LicenseInstalledInstruction" xml:space="preserve">
+    <value>Ключ уже установлен</value>
   </data>
-  <data name="ValidSubscription" xml:space="preserve">
-    <value>Лицензией на использование {0} 
-до {1:D} обладает {2}</value>
+  <data name="LicenseNotActivated" xml:space="preserve">
+    <value>Не активирован</value>
+  </data>
+  <data name="LicenseWrong" xml:space="preserve">
+    <value>Неверный ключ</value>
+  </data>
+  <data name="LicenseWrongOwnerInstruction" xml:space="preserve">
+    <value>Ключ выдан другому пользователю</value>
   </data>
 </root>

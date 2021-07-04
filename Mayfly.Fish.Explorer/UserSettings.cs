@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
                     new UserSetting(UserSettingPaths.MemWaterArea, 10000000),
                     new UserSetting(UserSettingPaths.MemWaterDepth, 250),
                     new UserSetting(Wild.UserSettingPaths.Dominance, 2),
-                    new UserSetting(Wild.UserSettingPaths.Diversity, Wild.DiversityIndex.D1963_Shannon),
+                    new UserSetting(Wild.UserSettingPaths.Diversity, DiversityIndex.D1963_Shannon),
                     new UserSetting(UserSettingPaths.SuggestAge, true),
                     new UserSetting(Wild.UserSettingPaths.SuggestMass, true),
                     new UserSetting(Wild.UserSettingPaths.VisualConfirmation, true),

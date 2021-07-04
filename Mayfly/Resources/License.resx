@@ -117,33 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DaysForm" xml:space="preserve">
-    <value>0;1;2|today;tomorrow;days</value>
+  <data name="LicenseExpiresSoonInstruction" xml:space="preserve">
+    <value>License for {0} expires {1}. Renew subscription to stay tuned.</value>
   </data>
-  <data name="ProductNotMatch" xml:space="preserve">
-    <value>Product doesn't match.
-Use install tool to use this key.</value>
-  </data>
-  <data name="ExpiresInstruction" xml:space="preserve">
-    <value>Your {0} license will expires in {1} days. Click here to get new license key.</value>
-  </data>
-  <data name="ExpiresSoon" xml:space="preserve">
+  <data name="LicenseExpiresSoon" xml:space="preserve">
     <value>License expires soon</value>
   </data>
-  <data name="NotValid" xml:space="preserve">
-    <value>License is invalid.
-You need to get new one :(</value>
+  <data name="LicenseCancelled" xml:space="preserve">
+    <value>Key failed</value>
   </data>
-  <data name="UserNotMatch" xml:space="preserve">
-    <value>It is not your license key.
-Use install tool to use this key.</value>
+  <data name="LicenseExpiredInstruction" xml:space="preserve">
+    <value>License for {0} expired. Renew subscription to stay tuned.</value>
   </data>
-  <data name="Valid" xml:space="preserve">
-    <value>License to use {0}
-is granted to {1}</value>
+  <data name="LicenseInstalledInstruction" xml:space="preserve">
+    <value>Key is installed already</value>
   </data>
-  <data name="ValidSubscription" xml:space="preserve">
-    <value>License to use {0} until {1:D} 
-is granted to {2}</value>
+  <data name="LicenseWrong" xml:space="preserve">
+    <value>Wrong Key</value>
+  </data>
+  <data name="LicenseWrongOwnerInstruction" xml:space="preserve">
+    <value>Key is granted to other user</value>
+  </data>
+  <data name="LicenseNotActivated" xml:space="preserve">
+    <value>Not activated yet</value>
+  </data>
+  <data name="LicenseExpired" xml:space="preserve">
+    <value>License expired</value>
+  </data>
+  <data name="LicenseExpiresSoonInstructionIn" xml:space="preserve">
+    <value>in {0} days</value>
+  </data>
+  <data name="LicenseExpiresSoonInstructionToday" xml:space="preserve">
+    <value>today</value>
   </data>
 </root>

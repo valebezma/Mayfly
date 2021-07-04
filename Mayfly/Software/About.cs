@@ -69,7 +69,7 @@ namespace Mayfly.Software
 
         private void buttonFeedback_Click(object sender, EventArgs e)
         {
-            Server.SendEmail("feedback@mayfly.ru", 
+            Server.SendEmail(Server.GetEmail("feedback"), 
                 string.Format(Resources.Interface.FeedbackSubject, EntryAssemblyInfo.Title, UserSettings.Username),
                 string.Format(Resources.Interface.FeedbackBody, UserSettings.Username, EntryAssemblyInfo.Title));
         }

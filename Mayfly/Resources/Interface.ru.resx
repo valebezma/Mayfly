@@ -126,6 +126,9 @@
   <data name="EmptyValue" xml:space="preserve">
     <value>Пустое поле</value>
   </data>
+  <data name="ExpirationMask" xml:space="preserve">
+    <value>1;2;5|день;дня;дней</value>
+  </data>
   <data name="FeedbackBody" xml:space="preserve">
     <value>Добрый день, меня зовут {0}.
 

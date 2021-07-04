@@ -156,6 +156,12 @@
   <data name="StartGroupRemoved" xml:space="preserve">
     <value>Start goup removed</value>
   </data>
+  <data name="UninstallDone" xml:space="preserve">
+    <value>Uninstall is done</value>
+  </data>
+  <data name="UninstallTemp" xml:space="preserve">
+    <value>Cash is cleared</value>
+  </data>
   <data name="UnregFileType" xml:space="preserve">
     <value>File type unregistered: {0}</value>
   </data>

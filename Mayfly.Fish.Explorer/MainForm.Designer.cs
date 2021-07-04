@@ -4043,15 +4043,15 @@
             // 
             // mathCard
             // 
-            this.mathCard.Sheet = this.spreadSheetCard;
+            this.mathCard.Sheet = null;
             // 
             // mathLog
             // 
-            this.mathLog.Sheet = this.spreadSheetLog;
+            this.mathLog.Sheet = null;
             // 
             // mathInd
             // 
-            this.mathInd.Sheet = this.spreadSheetInd;
+            this.mathInd.Sheet = null;
             // 
             // notify
             // 

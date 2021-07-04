@@ -52,8 +52,8 @@
             // 
             // dateTimePickerDate
             // 
-            resources.ApplyResources(this.dateTimePickerDate, "dateTimePickerDate");
             this.dateTimePickerDate.AllowDrop = true;
+            resources.ApplyResources(this.dateTimePickerDate, "dateTimePickerDate");
             this.dateTimePickerDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.ValueChanged += new System.EventHandler(this.dateTimePickerDate_ValueChanged);
@@ -65,8 +65,8 @@
             // 
             // maskedTextBoxLongitude
             // 
-            resources.ApplyResources(this.maskedTextBoxLongitude, "maskedTextBoxLongitude");
             this.maskedTextBoxLongitude.AllowDrop = true;
+            resources.ApplyResources(this.maskedTextBoxLongitude, "maskedTextBoxLongitude");
             this.maskedTextBoxLongitude.Name = "maskedTextBoxLongitude";
             this.maskedTextBoxLongitude.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.maskedTextBoxLongitude.TextChanged += new System.EventHandler(this.value_Changed);
@@ -74,8 +74,8 @@
             // 
             // maskedTextBoxLatitude
             // 
-            resources.ApplyResources(this.maskedTextBoxLatitude, "maskedTextBoxLatitude");
             this.maskedTextBoxLatitude.AllowDrop = true;
+            resources.ApplyResources(this.maskedTextBoxLatitude, "maskedTextBoxLatitude");
             this.maskedTextBoxLatitude.Name = "maskedTextBoxLatitude";
             this.maskedTextBoxLatitude.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.maskedTextBoxLatitude.TextChanged += new System.EventHandler(this.value_Changed);
@@ -105,71 +105,71 @@
             // 
             // textBoxAltitude
             // 
-            resources.ApplyResources(this.textBoxAltitude, "textBoxAltitude");
             this.textBoxAltitude.AllowDrop = true;
+            resources.ApplyResources(this.textBoxAltitude, "textBoxAltitude");
             this.textBoxAltitude.Name = "textBoxAltitude";
             this.textBoxAltitude.TextChanged += new System.EventHandler(this.value_Changed);
             this.textBoxAltitude.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextItemGet,
             this.contextItemOpen,
             this.toolStripSeparator1,
             this.setFormatToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // contextItemGet
             // 
-            resources.ApplyResources(this.contextItemGet, "contextItemGet");
             this.contextItemGet.Name = "contextItemGet";
+            resources.ApplyResources(this.contextItemGet, "contextItemGet");
             this.contextItemGet.Click += new System.EventHandler(this.contextItemGet_Click);
             // 
             // contextItemOpen
             // 
-            resources.ApplyResources(this.contextItemOpen, "contextItemOpen");
             this.contextItemOpen.Name = "contextItemOpen";
+            resources.ApplyResources(this.contextItemOpen, "contextItemOpen");
             this.contextItemOpen.Click += new System.EventHandler(this.contextItemOpen_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // setFormatToolStripMenuItem
             // 
-            resources.ApplyResources(this.setFormatToolStripMenuItem, "setFormatToolStripMenuItem");
             this.setFormatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.degreesToolStripMenuItem,
             this.degreesAndMinutesToolStripMenuItem,
             this.degreesMinutesAndSecondsToolStripMenuItem});
             this.setFormatToolStripMenuItem.Name = "setFormatToolStripMenuItem";
+            resources.ApplyResources(this.setFormatToolStripMenuItem, "setFormatToolStripMenuItem");
             // 
             // degreesToolStripMenuItem
             // 
-            resources.ApplyResources(this.degreesToolStripMenuItem, "degreesToolStripMenuItem");
             this.degreesToolStripMenuItem.Name = "degreesToolStripMenuItem";
+            resources.ApplyResources(this.degreesToolStripMenuItem, "degreesToolStripMenuItem");
             this.degreesToolStripMenuItem.Click += new System.EventHandler(this.degreesToolStripMenuItem_Click);
             // 
             // degreesAndMinutesToolStripMenuItem
             // 
-            resources.ApplyResources(this.degreesAndMinutesToolStripMenuItem, "degreesAndMinutesToolStripMenuItem");
             this.degreesAndMinutesToolStripMenuItem.Name = "degreesAndMinutesToolStripMenuItem";
+            resources.ApplyResources(this.degreesAndMinutesToolStripMenuItem, "degreesAndMinutesToolStripMenuItem");
             this.degreesAndMinutesToolStripMenuItem.Click += new System.EventHandler(this.degreesAndMinutesToolStripMenuItem_Click);
             // 
             // degreesMinutesAndSecondsToolStripMenuItem
             // 
-            resources.ApplyResources(this.degreesMinutesAndSecondsToolStripMenuItem, "degreesMinutesAndSecondsToolStripMenuItem");
             this.degreesMinutesAndSecondsToolStripMenuItem.Name = "degreesMinutesAndSecondsToolStripMenuItem";
+            resources.ApplyResources(this.degreesMinutesAndSecondsToolStripMenuItem, "degreesMinutesAndSecondsToolStripMenuItem");
             this.degreesMinutesAndSecondsToolStripMenuItem.Click += new System.EventHandler(this.degreesMinutesAndSecondsToolStripMenuItem_Click);
             // 
             // WaypointControl
             // 
-            resources.ApplyResources(this, "$this");
             this.AllowDrop = true;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ContextMenuStrip = this.contextMenuStrip1;

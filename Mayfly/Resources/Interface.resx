@@ -218,4 +218,7 @@ I have some issues on {1} to discuss with you:
   <data name="FileSaveAny" xml:space="preserve">
     <value>Save file in any of supported formats</value>
   </data>
+  <data name="ExpirationMask" xml:space="preserve">
+    <value>0 day(-s)</value>
+  </data>
 </root>

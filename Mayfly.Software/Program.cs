@@ -20,7 +20,7 @@ namespace Mayfly.Software
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
             //Mayfly.Service.ResetUICulture();
 
-            //arguments = new string[] { "-checkup", "Complex Fishery Desktop" };
+            //arguments = new string[] { "-remove", "Fishery Desktop" };
 
             if (arguments.Length == 0)
             {
@@ -31,11 +31,11 @@ namespace Mayfly.Software
                 switch (arguments[0].Trim())
                 {
                     case "-checkup":
-                        Update.CheckUpdates(arguments[1].Trim());
+                        Update.RunUpdates(arguments[1].Trim(), false);
                         break;
 
                     case "-update":
-                        Update.DoUpdates(arguments[1].Trim());
+                        Update.RunUpdates(arguments[1].Trim(), true);
                         break;
 
                     case "-remove":

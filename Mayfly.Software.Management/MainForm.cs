@@ -13,7 +13,7 @@ namespace Mayfly.Software.Management
 {
     public partial class MainForm : Form
     {
-        Scheme SchemeData { get; set; }
+        Scheme SchemeData { get { return Service.ProductSchemeServer.SchemeData; } }
 
         Scheme.ProductRow SelectedProductRow { get; set; }
 
@@ -39,8 +39,7 @@ namespace Mayfly.Software.Management
                 label.UpdateStatus(0);
             }
 
-            SchemeData = Software.Service.GetScheme();
-
+            Service.ProductSchemeServer = new UpdateServer();
             UpdateAll();
         }
 
@@ -265,6 +264,8 @@ namespace Mayfly.Software.Management
                 Scheme.SatelliteRow satRow = SchemeData.Satellite.AddSatelliteRow(SelectedFileRow, sat, loc);
                 if (!loc) satRow.SetLocalizableNull();
             }
+
+            //Service.ProductSchemeServer.UpdateDatabaseTable("Satellite");
         }
 
         private void UpdateExtensions()
@@ -297,6 +298,8 @@ namespace Mayfly.Software.Management
 
                 SchemeData.FileType.AddFileTypeRow(extRow);
             }
+
+            //Service.ProductSchemeServer.UpdateDatabaseTable("FileType");
         }
 
 
@@ -326,7 +329,7 @@ namespace Mayfly.Software.Management
 
             if (roller.ShowDialog(this) == DialogResult.OK)
             {
-                SchemeData.WriteXml(Path.Combine(Application.StartupPath, "scheme", string.Format("{0:yyyy-MM-dd-HH-mm}.xml", DateTime.Now)));
+                //SchemeData.WriteXml(Path.Combine(Application.StartupPath, "scheme", string.Format("{0:yyyy-MM-dd-HH-mm}.xml", DateTime.Now)));
                 Close();
             }
             else
@@ -346,7 +349,7 @@ namespace Mayfly.Software.Management
         {
             if (inputProduct.ShowDialog(this) == DialogResult.OK)
             {
-                Scheme.ProductRow productRow = SchemeData.Product.AddProductRow(inputProduct.Input);
+                Scheme.ProductRow productRow = SchemeData.Product.AddProductRow(inputProduct.Input, string.Empty);
                 listViewProducts.CreateItem(productRow.ID.ToString(), productRow.Name);
             }
         }
@@ -439,7 +442,7 @@ namespace Mayfly.Software.Management
                 }
                 else
                 { 
-                    Scheme.FeatureRow featureRow = SchemeData.Feature.FindByProdIDFileID(SelectedProductRow.ID, SelectedFileRow.ID);
+                    Scheme.FeatureRow featureRow = SchemeData.Feature.FindByProductIDFileID(SelectedProductRow.ID, SelectedFileRow.ID);
                     SchemeData.Feature.RemoveFeatureRow(featureRow);
                 }
 
@@ -540,7 +543,7 @@ namespace Mayfly.Software.Management
 
             string version = (string)spreadSheetVer[columnVer.Index, e.RowIndex].Value;
 
-            Scheme.VersionRow versionRow = SchemeData.Version.FindByFileIDVersion(listViewFiles.GetID(), version);
+            Scheme.VersionRow versionRow = SchemeData.Version.FindByFileVersion(SelectedFileRow.File, version);
 
             if (versionRow == null)
             {
@@ -552,6 +555,9 @@ namespace Mayfly.Software.Management
 
             if (spreadSheetVer[columnVerNotes.Index, e.RowIndex].Value == null) { versionRow.SetChangesNull(); }
             else { versionRow.Changes = (string)spreadSheetVer[columnVerNotes.Index, e.RowIndex].Value; }
+
+            if (spreadSheetVer[columnVerPublished.Index, e.RowIndex].Value == null) { versionRow.SetPublishedNull(); }
+            else { versionRow.Published = Convert.ToDateTime(spreadSheetVer[columnVerPublished.Index, e.RowIndex].Value); }
 
         }
 
@@ -574,6 +580,23 @@ namespace Mayfly.Software.Management
                 spreadSheetVer.AllowUserToAddRows = false;
                 newversioninputstarted = false;
             }
+        }
+
+        private void saveSchemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText("xml.xml", SchemeData.GetXml());
+            File.WriteAllText("xml_schema.xml", SchemeData.GetXmlSchema());
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Service.ProductSchemeServer.Close();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //if (Service.ProductSchemeServer.IsConnected) UpdateAll();
+            //else Close();
         }
     }
 }

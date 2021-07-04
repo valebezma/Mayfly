@@ -72,9 +72,9 @@ namespace Mayfly.ManualLicenser
 
             switch (feature)
             {
-                case "1":
-                    InstallLicense();
-                    break;
+                //case "1":
+                //    InstallLicense();
+                //    break;
 
                 case "2":
                     ResetSign();
@@ -107,84 +107,6 @@ namespace Mayfly.ManualLicenser
                 case "9":
                     ConvertPlankton();
                     break;
-            }
-
-            goto Start;
-        }
-
-        static void InstallLicense()
-        {
-            Console.WriteLine();
-            Console.WriteLine("===== LICENSE UNLOCK =====");
-
-        Start:
-            Console.WriteLine();
-            Console.Write("Type feature to unlock (? for hint): ");
-            string feature = Console.ReadLine();
-
-            if (feature == "?")
-            {
-                Console.Write("Available features are:\r\n\tBios\r\n\tFishery Scientist\r\n\tFishery Scientist +\r\n\tStatistics\r\n\tTaxonomist\r\n\r\n");
-                goto Start;
-            }
-
-        Date:
-            Console.Write("Type expiration date: ");
-            string date = Console.ReadLine();
-
-            DateTime exp = DateTime.Today;
-            try
-            {
-                exp = Convert.ToDateTime(date);
-                //Console.WriteLine("Expairation date will be set on {0:G}", exp);
-            }
-            catch
-            {
-                Console.WriteLine("\r\nCan't recognize date from '{0}'. Retry.", date);
-                goto Date;
-            }
-
-            //Serial:
-            //Console.Write("Type serial number: ");
-
-            string serial = "man";
-            string source = "qwertyuiopasdfghjklzxcvbnm";
-            Random r = new Random();
-
-            while (serial.Length < 25)
-            {
-                //serial += Console.ReadKey().KeyChar;
-                serial += source[r.Next(source.Length)];
-            }
-
-            Console.WriteLine();
-
-            Console.Write("\r\nParameters of license are:\r\n\tUser: {0}\r\n\tFeature: {1}\r\n\tExpiration date: {2:G}\r\n\tSerial number: {3}\r\n\r\nDo you confirm setting following license (y)? ",
-                UserSettings.Username, feature, exp, serial);
-
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                License result = new License();
-                result.UserLicense.AddUserLicenseRow(UserSettings.Username, feature, exp, serial);
-
-                License.UserLicenseRow License = result.UserLicense[0];
-
-                UserSetting.SetValue(UserSettingPaths.KeyLicenses,
-                    StringCipher.Encrypt(License.Serial, UserSettings.Username),
-                    StringCipher.Encrypt(License.Table.DataSet.GetXml(), License.Serial));
-
-                Console.WriteLine("\r\nFeature\"{0}\" manually installed.", License.Feature);
-                Log.Write(EventType.Maintenance, "Feature\"{0}\" manually installed with serial number {1}.", License.Feature, License.Serial);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.Write("\r\nDone. Exit procedure (y)? ");
-
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                return;
             }
 
             goto Start;

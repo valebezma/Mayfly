@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
             : this()
         {
             Data = data.GetStack();
-            Allowed = new Wild.Data();
+            Allowed = new Data();
             Log.Write(EventType.WizardStarted, "Bio export wizard is started.");
         }
 

@@ -559,7 +559,7 @@ namespace Mayfly.Fish
                     Data.Solitary.ExactArea = 10000d * double.Parse(textBoxExactArea.Text);
             }
 
-            if (SelectedSampler.EffortFormula.Contains("H") && textBoxHeight.Text.IsDoubleConvertible())
+            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("H") && textBoxHeight.Text.IsDoubleConvertible())
             {
                 Data.Solitary.Height = double.Parse(textBoxHeight.Text);
             }
@@ -577,7 +577,7 @@ namespace Mayfly.Fish
                 Data.Solitary.SetDepthNull();
             }
 
-            if (SelectedSampler.EffortFormula.Contains("M") && textBoxMesh.Text.IsDoubleConvertible())
+            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("M") && textBoxMesh.Text.IsDoubleConvertible())
             {
                 Data.Solitary.Mesh = int.Parse(textBoxMesh.Text);
             }
@@ -586,7 +586,7 @@ namespace Mayfly.Fish
                 Data.Solitary.SetMeshNull();
             }
 
-            if (SelectedSampler.EffortFormula.Contains("J") && textBoxHook.Text.IsDoubleConvertible())
+            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("J") && textBoxHook.Text.IsDoubleConvertible())
             {
                 Data.Solitary.Hook = (int)double.Parse(textBoxHook.Text);
             }
@@ -597,7 +597,7 @@ namespace Mayfly.Fish
 
             if (Data.Solitary.IsExactAreaNull())
             {
-                if (SelectedSampler.EffortFormula.Contains("L") && textBoxLength.Text.IsDoubleConvertible())
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("L") && textBoxLength.Text.IsDoubleConvertible())
                 {
                     Data.Solitary.Length = double.Parse(textBoxLength.Text);
                 }
@@ -606,7 +606,7 @@ namespace Mayfly.Fish
                     Data.Solitary.SetLengthNull();
                 }
 
-                if (SelectedSampler.EffortFormula.Contains("O") && textBoxOpening.Text.IsDoubleConvertible())
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("O") && textBoxOpening.Text.IsDoubleConvertible())
                 {
                     Data.Solitary.Opening = double.Parse(textBoxOpening.Text);
                 }
@@ -615,7 +615,7 @@ namespace Mayfly.Fish
                     Data.Solitary.SetOpeningNull();
                 }
 
-                if (SelectedSampler.EffortFormula.Contains("S") && textBoxSquare.Text.IsDoubleConvertible())
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("S") && textBoxSquare.Text.IsDoubleConvertible())
                 {
                     Data.Solitary.Square = double.Parse(textBoxSquare.Text);
                 }
@@ -624,7 +624,7 @@ namespace Mayfly.Fish
                     Data.Solitary.SetSquareNull();
                 }
 
-                if (SelectedSampler.EffortFormula.Contains("T"))
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("T"))
                 {
                     Data.Solitary.Span = (int)(waypointControl1.Waypoint.TimeMark - dateTimePickerStart.Value).TotalMinutes;
                 }
@@ -633,7 +633,7 @@ namespace Mayfly.Fish
                     Data.Solitary.SetSpanNull();
                 }
 
-                if (SelectedSampler.EffortFormula.Contains("V") && textBoxVelocity.Text.IsDoubleConvertible())
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("V") && textBoxVelocity.Text.IsDoubleConvertible())
                 {
                     Data.Solitary.Velocity = double.Parse(textBoxVelocity.Text);
                 }
@@ -642,7 +642,7 @@ namespace Mayfly.Fish
                     Data.Solitary.SetVelocityNull();
                 }
 
-                if (SelectedSampler.EffortFormula.Contains("E") && textBoxExposure.Text.IsDoubleConvertible())
+                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("E") && textBoxExposure.Text.IsDoubleConvertible())
                 {
                     Data.Solitary.Exposure = double.Parse(textBoxExposure.Text);
                 }

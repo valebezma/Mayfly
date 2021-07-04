@@ -127,6 +127,12 @@
   <data name="menuItemUpdate.Text" xml:space="preserve">
     <value>Update and close</value>
   </data>
+  <data name="saveSchemeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 22</value>
+  </data>
+  <data name="saveSchemeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save scheme</value>
+  </data>
   <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 22</value>
   </data>
@@ -429,6 +435,9 @@
   <data name="spreadSheetVer.Size" type="System.Drawing.Size, System.Drawing">
     <value>410, 462</value>
   </data>
+  <data name="spreadSheetVer.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetVer.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -436,7 +445,7 @@
     <value>spreadSheetVer</value>
   </data>
   <data name="&gt;&gt;spreadSheetVer.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetVer.Parent" xml:space="preserve">
     <value>tabPageVersions</value>
@@ -495,6 +504,9 @@
   <data name="spreadSheetSat.Size" type="System.Drawing.Size, System.Drawing">
     <value>410, 462</value>
   </data>
+  <data name="spreadSheetSat.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetSat.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
@@ -502,7 +514,7 @@
     <value>spreadSheetSat</value>
   </data>
   <data name="&gt;&gt;spreadSheetSat.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetSat.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -639,6 +651,9 @@
   <data name="spreadSheetExt.Size" type="System.Drawing.Size, System.Drawing">
     <value>410, 462</value>
   </data>
+  <data name="spreadSheetExt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetExt.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
@@ -646,7 +661,7 @@
     <value>spreadSheetExt</value>
   </data>
   <data name="&gt;&gt;spreadSheetExt.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetExt.Parent" xml:space="preserve">
     <value>tabPage2</value>
@@ -998,6 +1013,12 @@
   <data name="&gt;&gt;menuItemUpdate.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;saveSchemeToolStripMenuItem.Name" xml:space="preserve">
+    <value>saveSchemeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;saveSchemeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemClose.Name" xml:space="preserve">
     <value>menuItemClose</value>
   </data>
@@ -1104,7 +1125,7 @@
     <value>inputProduct</value>
   </data>
   <data name="&gt;&gt;inputProduct.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.InputDialog, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.InputDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;openFile.Name" xml:space="preserve">
     <value>openFile</value>

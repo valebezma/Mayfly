@@ -21,23 +21,11 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
 
             tabPageTreat.Parent =
-                Licensing.Verify("Fishery Scientist") ?
-                tabControl : null;
-
-            tabPageGamingAge.Parent =
+                tabPageGamingAge.Parent =
                 tabPageGamingMeasure.Parent =
                 tabPageWizards.Parent =
                 tabPageCatchability.Parent =
-                Licensing.Verify("Fishery Scientist +") ?
-                tabControl : null;
-
-            tabPagePrediction.Parent =
-                Licensing.Verify("Bios") ?
-                tabControl : null;
-
-            buttonMath.Visible =
-                label1.Visible =
-                Licensing.Verify("Statictics");
+                Licensing.Verify("Fishery Scientist") ? tabControl : null;
 
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
@@ -53,7 +41,7 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
 
-            if (Licensing.Verify("Fishery Scientist +"))
+            if (Licensing.Verify("Fishery Scientist"))
             {
                 speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
                 speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
@@ -67,7 +55,7 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadSettings()
         {
-            if (Licensing.Verify("Fishery Scientist +"))
+            if (Licensing.Verify("Fishery Scientist"))
             {
                 spreadSheetAge.Rows.Clear();
                 spreadSheetMeasure.Rows.Clear();
@@ -96,7 +84,7 @@ namespace Mayfly.Fish.Explorer
                 comboBoxAlk.SelectedIndex = (int)UserSettings.SelectedAgeLengthKeyType;
             }
 
-            if (Licensing.Verify("Bios"))
+            if (Licensing.Verify("Fishery Scientist"))
             {
                 checkBoxSuggest.Checked = (UserSettings.AgeSuggest || UserSettings.MassSuggest);
                 checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;

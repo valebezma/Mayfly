@@ -28,14 +28,17 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            Licensing.SetMenuAvailability("Bios",
-                menuItemExportSpec, menuItemImportSpec, toolStripSeparator11);
-
-            Licensing.SetTabsAvailability("Bios",
+            Licensing.SetTabsAvailability("Fishery Scientist",
                 tabPageSpcLW, tabPageSpcAL);
 
-            Licensing.SetMenuAvailability(Licensing.VerifyAny("Fishery Scientist", "Fishery Scientist +"),
-                menuItemGearStats, menuItemSpcStats, menuItemArtefactsSearch, toolStripSeparator2,
+            Licensing.SetMenuAvailability("Fishery Scientist",
+                menuItemExportSpec,
+                menuItemImportSpec, 
+                toolStripSeparator11,
+                menuItemGearStats,
+                menuItemSpcStats,
+                menuItemArtefactsSearch, 
+                toolStripSeparator2,
                 menuItemComCom,
                 menuSurvey,
                 menuFishery,
@@ -46,22 +49,16 @@ namespace Mayfly.Fish.Explorer
                 menuItemSpcCpues,
                 menuItemSpcStrates,
                 menuItemSpcModels,
-                toolStripSeparator13);
-
-            Licensing.SetControlsAvailability(Licensing.VerifyAny("Fishery Scientist", "Fishery Scientist +"),
-                buttonCardDetails,
-                buttonSpcDetails);
-
-            Licensing.SetMenuAvailability("Fishery Scientist +",
+                toolStripSeparator13,
                 menuModels,
                 menuItemMortality,
                 menuItemSelectivity,
-                menuItemVpa);
-
-            Licensing.SetMenuAvailability(Licensing.VerifyAll("Fishery Scientist +", "Bios"),
+                menuItemVpa,
                 menuItemGrowth);
 
-            //Software.Service.Verify("Bios");
+            Licensing.SetControlsAvailability("Fishery Scientist",
+                buttonCardDetails,
+                buttonSpcDetails);
 
 
             Fish.UserSettings.Interface.OpenDialog.Multiselect = true;
@@ -190,11 +187,6 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            //labelRate.Visible =
-            //    labelRateValue.Visible =
-            //    chartRate.Visible =
-            //    Licensing.VerifyAny("Fishery Scientist", "Fishery Scientist +") && UserSettings.RateData;
-
             plotStrates.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
             plotStrates.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
             plotStrates.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
@@ -212,7 +204,7 @@ namespace Mayfly.Fish.Explorer
             FullStack = new CardStack(); //.ConvertFrom(data);
             AllowedStack = new CardStack();
 
-            if (Licensing.Verify("Bios"))
+            if (Licensing.Verify("Fishery Scientist"))
             {
                 data.InitializeBio();
                 data.MassModels.VisualConfirmation =
@@ -353,8 +345,13 @@ namespace Mayfly.Fish.Explorer
         }
 
 
+        //DateTime started = DateTime.Now;
+        //TimeSpan ts = TimeSpan.Zero;
+
         private void dataLoader_DoWork(object sender, DoWorkEventArgs e)
         {
+            //started = DateTime.Now;
+            
             string[] filenames = (string[])e.Argument;
 
             for (int i = 0; i < filenames.Length; i++)
@@ -415,6 +412,9 @@ namespace Mayfly.Fish.Explorer
 
         private void dataLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            //ts = DateTime.Now - started;
+            //MessageBox.Show(string.Format("Loaded in {0}.", ts));
+
             spreadSheetCard.StopProcessing();
             UpdateSummary();
         }
@@ -422,7 +422,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Bios"))
+            if (!Licensing.Verify("Fishery Scientist"))
             {
                 e.Cancel = true;
                 return;
@@ -539,7 +539,11 @@ namespace Mayfly.Fish.Explorer
         {
             if (fbdBackup.ShowDialog(this) == DialogResult.OK)
             {
-                foreach (Data.CardRow cardRow in data.Card)
+                if (ModifierKeys.HasFlag(Keys.Shift))
+                {
+                    data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
+                }
+                else foreach (Data.CardRow cardRow in data.Card)
                 {
                     Data _data = cardRow.SingleCardDataset();
                     string filename = FileSystem.SuggestName(fbdBackup.SelectedPath, _data.GetSuggestedName());
@@ -903,45 +907,7 @@ namespace Mayfly.Fish.Explorer
         private void listViewInvestigators_ItemActivate(object sender, EventArgs e)
         {
             spreadSheetCard.EnsureFilter(columnCardInvestigator, listViewInvestigators.FocusedItem.Text, loaderCard, menuItemLoadCards_Click);
-        }
-        
-
-
-        private void rateCalculator_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //if (!Licensing.VerifyAny("Fishery Scientist", "Fishery Scientist +"))
-            //{
-            //    e.Cancel = true;
-            //    return;
-            //}
-
-            //FullStack.GetRate();
-        }
-
-        private void rateCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            //double r = FullStack.GetRate();
-
-            //labelRateValue.Visible =
-            //    chartRate.Visible =
-            //    !double.IsNaN(r);
-
-            //if (!double.IsNaN(r))
-            //{
-            //    chartRate.Series[0].AnimateChart(r, labelRateValue, .65);
-            //}
-
-            //if (UserSettings.CheckArtefacts)
-            //{
-            //    processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
-            //    artefactFinder.RunWorkerAsync();
-            //}
-            //else
-            //{
-            //    IsBusy = false;
-            //    processDisplay.StopProcessing();
-            //}
-        }
+        }  
 
         #endregion        
 
@@ -1046,7 +1012,7 @@ namespace Mayfly.Fish.Explorer
 
         private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.VerifyAny("Fishery Scientist", "Fishery Scientist +"))
+            if (!Licensing.Verify("Fishery Scientist"))
             {
                 e.Cancel = true;
                 return;
@@ -2440,15 +2406,15 @@ namespace Mayfly.Fish.Explorer
 
         private void models_Changed(object sender, EventArgs e)
         {
-            if (!Licensing.Verify("Bios")) return;
-            //labelModelsSelectSpecies.Visible = SelectedStatSpc == null;
+            if (!Licensing.Verify("Fishery Scientist")) return;
 
             labelAL.Enabled = labelALInstruction.Enabled = SelectedStatSpc != null;
             labelLW.Enabled = labelLWInstruction.Enabled = SelectedStatSpc != null;
 
-            //if (SelectedStatSpc == null) {
-            //    return;
-            //}
+            if (SelectedStatSpc == null)
+            {
+                return;
+            }
 
             spreadSheetSpcStats.Enabled = false;
 
@@ -2927,7 +2893,7 @@ namespace Mayfly.Fish.Explorer
 
         private void specTipper_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Bios")) return;
+            if (!Licensing.Verify("Fishery Scientist")) return;
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
@@ -3126,7 +3092,7 @@ namespace Mayfly.Fish.Explorer
 
         private void specUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Bios")) return;
+            if (!Licensing.Verify("Fishery Scientist")) return;
 
             Data.SpeciesRow specisRow = (Data.SpeciesRow)e.Argument;
             e.Result = specisRow;

@@ -190,6 +190,12 @@ namespace Mayfly
             GetKey(path, folders).SetValue(key, value);
         }
 
+        public static void Remove(string path, string key)
+        {
+            RegistryKey regKey = GetKey(path, new string[] { });
+            if (regKey.GetValue(key) != null) regKey.DeleteValue(key);
+        }
+
         public static void Remove(string path, string[] folders, string key)
         {
             RegistryKey regKey = GetKey(path, folders);
@@ -198,30 +204,9 @@ namespace Mayfly
 
         public static RegistryKey GetKey(string path, string[] folders)
         {
-            RegistryKey rk = Registry.CurrentUser.CreateSubKey(path);
+            if (folders.Length == 0) return Registry.CurrentUser.CreateSubKey(path);
 
-            List<string> subKeyNames = new List<string>(rk.GetSubKeyNames());
-
-            path += "\\" + folders[0];
-            List<string> rest = new List<string>();
-            for (int i = 1; i < folders.Length; i++)
-            {
-                rest.Add(folders[i]);
-            }
-
-            if (!subKeyNames.Contains(folders[0]))
-            {
-                Registry.CurrentUser.CreateSubKey(path);
-            }
-
-            if (folders.Length == 1)
-            {
-                return Registry.CurrentUser.CreateSubKey(path);
-            }
-            else
-            {
-                return GetKey(path, rest.ToArray());
-            }
+            return Registry.CurrentUser.CreateSubKey(path + "\\" + folders.Merge("\\"));
         }
     }
 

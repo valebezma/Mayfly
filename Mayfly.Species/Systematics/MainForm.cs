@@ -39,11 +39,9 @@ namespace Mayfly.Species.Systematics
                 label.UpdateStatus(0);
             }
 
-            if (!Licensing.Verify("Taxonomist"))
-            {
-                tabPageKey.Parent = null;
-                tabPagePictures.Parent = null;
-            }
+
+            tabPageKey.Parent = null;
+            tabPagePictures.Parent = null;
         }
 
         public MainForm(string filename)

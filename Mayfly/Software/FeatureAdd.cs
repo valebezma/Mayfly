@@ -12,7 +12,7 @@ namespace Mayfly.Software
 {
     public partial class FeatureAdd : Form
     {
-        public License.UserLicenseRow License;
+        public License License;
 
 
 
@@ -21,33 +21,31 @@ namespace Mayfly.Software
             InitializeComponent();
         }
 
-        public FeatureAdd(License.UserLicenseRow installedLicense)
-            : this()
-        {
-            License = installedLicense;
+        //public FeatureAdd(License installedLicense)
+        //    : this()
+        //{
+        //    License = installedLicense;
 
-            Text = License.Feature;
-            labelInstruction.Visible = false;
-            maskedSn.ReadOnly = true;
-            pictureBoxSn.Visible = false;
+        //    Text = License.Feature;
+        //    labelInstruction.Visible = false;
+        //    maskedSn.ReadOnly = true;
+        //    pictureBoxSn.Visible = false;
 
 
-            maskedSn.Text = License.Serial;
-            UpdateLicense();
-            buttonAdd.Visible = false;
-        }
+        //    maskedSn.Text = License.Serial;
+        //    UpdateLicense();
+        //    buttonAdd.Visible = buttonGrant.Visible = false;
+        //}
 
         private void UpdateLicense()
         {
             textBoxFeature.Text = License.Feature;
-            textBoxLicensee.Text = License.Licensee;
-            textBoxExpires.Text = License.Expires.ToLongDateString();
+            textBoxExpires.Text = License.Acquired > DateTime.UtcNow ? Resources.License.LicenseNotActivated : License.Expires.ToLongDateString();
         }
 
         private void ClearLicense()
         {
             textBoxFeature.Text = string.Empty;
-            textBoxLicensee.Text = string.Empty;
             textBoxExpires.Text = string.Empty;
             maskedSn.Enabled = true;
 
@@ -58,20 +56,15 @@ namespace Mayfly.Software
 
         private void maskedSn_TextChanged(object sender, EventArgs e)
         {
+            pictureBoxSn.Image = null;
+
             if (!maskedSn.ReadOnly && maskedSn.Text.Length == 25)
             {
-                pictureBoxSn.Image = null;
                 Application.UseWaitCursor = true;
                 backgroundSerial.RunWorkerAsync(maskedSn.Text.ToLowerInvariant());
             }
-            else if (maskedSn.Text.Length == 0)
-            {
-                pictureBoxSn.Image = null;
-                ClearLicense();
-            }
             else
             {
-                pictureBoxSn.Image = Resources.Icons.NoneRed;
                 ClearLicense();
             }
         }
@@ -79,49 +72,73 @@ namespace Mayfly.Software
         private void backgroundSerial_DoWork(object sender, DoWorkEventArgs e)
         {
             string serial = (string)e.Argument;
-
-            throw new Exception("Activation server is offline");
-
-            //License result = new Software.License();
-            //result.UserLicense.AddUserLicenseRow("Безматерных Валентин", "Bios", new DateTime(2025, 12, 31), maskedSn.Text);
-            //e.Result = result.UserLicense[0];
+            e.Result = Licensing.VerifyLicense(serial);
         }
 
         private void backgroundSerial_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (!e.Cancelled)
-            {
-                License = (License.UserLicenseRow)e.Result;
-                buttonAdd.Enabled = false;
+            Application.UseWaitCursor = false;
+            ClearLicense();
 
-                if (e.Result == null)
+            if (e.Cancelled)
+            {
+                return;
+            }
+
+            if (e.Result == null)
+            {
+                pictureBoxSn.Image = Resources.Icons.NoneRed;
+                Service.PlaySound(Resources.Sounds.Wrong);
+                return;
+            }
+
+            License = (License)e.Result;
+
+            foreach (License lic in Licensing.InstalledLicenses)
+            {
+                if (lic.Serial == License.Serial)
                 {
-                    pictureBoxSn.Image = Resources.Icons.NoneRed;
-                    ClearLicense();
-                    Mayfly.Service.PlaySound(Resources.Sounds.Wrong);
-                }
-                else
-                {
-                    pictureBoxSn.Image = Resources.Icons.Check;
-                    UpdateLicense();
-                    buttonAdd.Enabled = true;
+                    Notification.ShowNotification(
+                        Resources.License.LicenseWrong,
+                        Resources.License.LicenseInstalledInstruction);
+                    return;
                 }
             }
 
-            Application.UseWaitCursor = false;
+            if (License.Licensee != UserSettings.Username)
+            {
+                pictureBoxSn.Image = Resources.Icons.NoneRed;
+                Notification.ShowNotification(
+                        Resources.License.LicenseWrong,
+                        Resources.License.LicenseWrongOwnerInstruction);
+                return;
+            }
+
+            if (License.Expires < DateTime.Today)
+            {
+                pictureBoxSn.Image = Resources.Icons.NoneRed;
+                Notification.ShowNotification(
+                        Resources.License.LicenseWrong,
+                        Resources.License.LicenseExpiredInstruction);
+                return;
+            }
+
+            pictureBoxSn.Image = Resources.Icons.Check;
+            UpdateLicense();
+
+            buttonAdd.Enabled = true;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (License == null) return;
 
-            UserSetting.SetValue(UserSettingPaths.KeyLicenses, 
-                StringCipher.Encrypt(License.Serial, UserSettings.Username), 
-                StringCipher.Encrypt(License.Table.DataSet.GetXml(), License.Serial));
+            if (License.Install())
+            {
+                Log.Write(EventType.Maintenance, "Feature\"{0}\" installed with serial number {1}.", License.Feature, License.Serial);
+                DialogResult = DialogResult.OK;
+            }
 
-            Log.Write(EventType.Maintenance, "Feature\"{0}\" installed with serial number {1}.", License.Feature, License.Serial);
-
-            DialogResult = DialogResult.OK;
             Close();
         }
     }

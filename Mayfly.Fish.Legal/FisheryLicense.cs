@@ -292,8 +292,8 @@ namespace Mayfly.Fish.Legal
 
                 ((TextAndImageCell)gridRow.Cells[ColumnRest.Index]).Image =
                     quoteRow.Mass >= w ?
-                    Mayfly.Properties.Resources.Check :
-                    Mayfly.Properties.Resources.NoneRed;
+                    Mayfly.Resources.Icons.Check :
+                    Mayfly.Resources.Icons.NoneRed;
             }
 
 

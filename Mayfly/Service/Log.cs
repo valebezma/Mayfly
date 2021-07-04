@@ -1,36 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 
 namespace Mayfly
 {
     public abstract class Log
     {
-        public static string FolderPath
-        {
-            get
-            {
-                return Path.Combine(FileSystem.UserFolder, "logs", UserSettings.Product);
-            }
-        }
-
-        public static string CurrentFile
-        {
-            get
-            {
-                if (!Directory.Exists(FolderPath)) Directory.CreateDirectory(FolderPath);
-                return Path.Combine(FolderPath, string.Format("{0:yyyy-MM-dd}.log", DateTime.Today));
-            }
-        }
-
-
-
         private static void Write(UserActionEventArgs e)
         {
-            if (!UserSettings.Log) return;
-            if (!File.Exists(CurrentFile)) { File.Create(CurrentFile).Close(); }
-            File.AppendAllText(CurrentFile, e.GetLogLine().Replace(Environment.NewLine, " ") + Environment.NewLine);
+            if (!UserSettings.ShareDiagnostics) return;
+            Uri uri = Server.GetUri(Server.ServerHttps, "php/log.php");
+            Dictionary<string, string> logParameters = new Dictionary<string, string>();
+            logParameters.Add("logevent", e.GetLogLine());
+            logParameters.Add("login", "mayfly-logger");
+            logParameters.Add("password", "qe4-nsw-wv8-WrC");
+            try { Server.GetText(uri, logParameters); } catch { }
         }
 
         public static void Write(string message)
@@ -55,98 +39,20 @@ namespace Mayfly
 
         public static void Write(Exception e)
         {
-            Write(EventType.ExceptionThrown, string.Format("Exception is thrown: {0}.", e.Message));
+            Write(EventType.ExceptionThrown, string.Format("Exception is thrown: {0}", e.Message));
         }
 
         public static void WriteAppStarted()
         {
-            Write(EventType.ApplicationStarted, "{0} session #{1} is started.", EntryAssemblyInfo.Title, Process.GetCurrentProcess().Id);
+            Write(EventType.ApplicationStarted, string.Empty);
             Server.CheckUpdates(UserSettings.Product);
             Service.ResetUICulture();
-            SendLog();
+            Licensing.InspectLicenses();
         }
 
         public static void WriteAppEnded()
         {
-            if (UserSettings.LogSpan == 0)
-            {
-                File.Delete(CurrentFile);
-            }
-            else
-            {
-                Write(EventType.ApplicationEnded, "{0} session #{1} is ended.", EntryAssemblyInfo.Title, Process.GetCurrentProcess().Id);
-            }
-        }
-
-
-        public static void ClearLog()
-        {
-            ClearLog(DateTime.Today.AddHours(12).AddDays(-UserSettings.LogSpan));
-        }
-
-        public static void ClearLog(DateTime safeDate)
-        {
-            foreach (string filename in Directory.GetFiles(FolderPath, "*.log"))
-            {
-                if (File.GetCreationTime(filename).Date < safeDate.Date)
-                {
-                    File.Delete(filename);
-                }
-            }
-        }
-
-        public static void SendLog()
-        {
-            // If send is off stop procedure
-            if (!UserSettings.LogSend) return;
-
-            // Remember when we last time send logs
-            DateTime lastDgn = UserSettings.LogSentLast;
-
-            // If it was today - stop procedure
-            if ((DateTime.Today - lastDgn) == TimeSpan.Zero) return;
-
-            // If it was earlier than today - start cycle from last departure day until today
-            for (DateTime dt = lastDgn; dt < DateTime.Today; dt = dt.AddDays(1))
-            {
-                string logfilepath = Path.Combine(FolderPath, string.Format("{0:yyyy-MM-dd}.log", dt));
-                if (File.Exists(logfilepath)) Server.UploadFileAsinc(logfilepath, Server.GetUri(Server.ServerLog, Path.GetFileName(logfilepath)));
-            }
-
-            // When ended - set new las departure value
-            UserSettings.LogSentLast = DateTime.Today;
-        }
-
-        public static UserActionEventArgs[] GetEventsLog(UserActionEventArgsSearchTerms e)
-        {
-            List<UserActionEventArgs> result = new List<UserActionEventArgs>();
-
-            if (Directory.Exists(FolderPath))
-            foreach (string filename in Directory.GetFiles(FolderPath, "*.log"))
-            {
-                if (File.GetCreationTime(filename).Date.Date < e.FromDate.Date) continue;
-                if (File.GetCreationTime(filename).Date.Date > e.ToDate.Date) continue;
-
-                string[] loglines = File.ReadAllLines(filename);
-
-                foreach (string logline in loglines)
-                {
-                    if (string.IsNullOrEmpty(logline)) continue;
-                    UserActionEventArgs actionEvent = UserActionEventArgs.GetFromLine(logline);
-                    if (e.Type != EventType.AllEvents && actionEvent.Type != e.Type) continue;
-                    if (actionEvent.EventTime < e.FromDate) continue;
-                    if (actionEvent.EventTime > e.ToDate) continue;
-                    if (e.ProcessID != -1 && actionEvent.ProcessID != e.ProcessID) continue;
-                    result.Add(actionEvent);
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public static UserActionEventArgs[] GetEventsLog()
-        {
-            return GetEventsLog(new UserActionEventArgsSearchTerms());
+            Write(EventType.ApplicationEnded, string.Empty);
         }
 
         public static EventType GetType(string eventCode)
@@ -230,9 +136,15 @@ namespace Mayfly
     {
         public string User { get; set; }
 
+        public string HardwareID { get; set; }
+
         public DateTime EventTime { get; set; }
 
         public string Feature { get; set; }
+
+        public string Version { get; set; }
+
+        public string Product { get; set; }
 
         public int ProcessID { get; set; }
 
@@ -242,9 +154,12 @@ namespace Mayfly
 
         private UserActionEventArgs()
         {
+            HardwareID = Hardware.HardwareID;
+            EventTime = DateTime.UtcNow;
+            Product = UserSettings.Product;
+            Feature = Process.GetCurrentProcess().ProcessName;
+            Version = EntryAssemblyInfo.Version;
             User = UserSettings.Username;
-            EventTime = DateTime.Now;
-            Feature = string.Format("{0} ({1})", EntryAssemblyInfo.Title, UserSettings.Product);
             ProcessID = Process.GetCurrentProcess().Id;
             Type = EventType.AllEvents;
             EventDescription = string.Empty;
@@ -263,54 +178,14 @@ namespace Mayfly
 
         public string GetLogLine()
         {
-            return string.Format("{0:s}\t{1}\t{2}\t{3:000000}\t{4}\t{5}",
-                EventTime, Feature, User, ProcessID, Log.ToString(Type), EventDescription);
+            return GetLogLine(';');
         }
 
-        public override string ToString()
+        public string GetLogLine(char delimiter)
         {
-            return string.Format("{0}: {1}", EventTime, EventDescription.Replace(Environment.NewLine, " "));
-        }
-
-        public static UserActionEventArgs GetFromLine(string logline)
-        {
-            string[] values = logline.Split('\t');
-
-            UserActionEventArgs result = new UserActionEventArgs
-            {
-                EventTime = Convert.ToDateTime(values[0]),
-                Feature = values[1],
-                User = values[2],
-                ProcessID = Convert.ToInt32(values[3]),
-                Type = Log.GetType(values[4]),
-                EventDescription = values[5],
-            };
-
-            return result;
-        }
-    }
-
-    public class UserActionEventArgsSearchTerms
-    {
-        public DateTime FromDate;
-
-        public DateTime ToDate;
-
-        public EventType Type;
-
-        public int ProcessID = -1;
-
-        public UserActionEventArgsSearchTerms(DateTime from, DateTime to, EventType type)
-        {
-            FromDate = from;
-            ToDate = to;
-            Type = type;
-        }
-
-        public UserActionEventArgsSearchTerms() :
-            this(DateTime.Today.AddDays(-1), DateTime.Now, EventType.AllEvents)
-        {
-            ProcessID = Process.GetCurrentProcess().Id;
+            return string.Format("{0:s}" + delimiter + "{1}" + delimiter + "{2}" + delimiter + "{3}" +
+                delimiter + "{4}" + delimiter + "{5:000000}" + delimiter + "{6}" + delimiter + "{7}" + delimiter + "{8}",
+                EventTime, Product, Feature, Version, User, ProcessID, Log.ToString(Type), EventDescription, HardwareID);
         }
     }
 

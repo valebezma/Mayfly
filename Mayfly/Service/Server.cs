@@ -1,26 +1,24 @@
-﻿using Mayfly.Software;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Cache;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Net.Security;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Mayfly
 {
     public abstract class Server
     {
-        public static string ServerHttps = "https://mayfly.ru";
+        public static string Domain = "mayfly.software";
 
-        public static string ServerLog = "ftp://mayfly.ru/log/" + UserSettings.Product + "/" + UserSettings.Username + "/" + Environment.MachineName;
+        public static string ServerHttps = "http://" + Domain;
 
 
-        public static NetworkCredential GetAppCredentials()
+        public static string GetEmail(string box)
         {
-            return new NetworkCredential("u0851741_mayfly", "_Ysel266");
+            return box + "@" + Domain;
         }
 
         public static Uri GetUri(string server, string filename)
@@ -47,11 +45,8 @@ namespace Mayfly
         public static bool FileExists(Uri uri)
         {
             bool result = true;
-
             WebRequest webRequest = WebRequest.Create(uri);
-            //webRequest.Credentials = GetAppCredentials();
             webRequest.Timeout = 1200;
-            //webRequest.Method = "HEAD";
 
             try
             {
@@ -65,114 +60,6 @@ namespace Mayfly
 
             return result;
         }
-
-        public static void UploadFile(string localpath, Uri ftppath)
-        {
-            UploadFile(File.ReadAllBytes(localpath), ftppath);
-        }
-
-        public static void UploadFile(byte[] content, Uri ftppath)
-        {
-            try
-            {
-                FtpWebResponse response = null;
-
-                EnsurePathToLoad(ftppath);
-
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftppath);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = GetAppCredentials();
-                request.ContentLength = content.Length;
-                Stream stream = request.GetRequestStream();
-                stream.Write(content, 0, content.Length);
-                stream.Close();
-                response = (FtpWebResponse)request.GetResponse();
-
-                Log.Write(EventType.Maintenance, "File {0} sent with response {1}", Path.GetFileName(ftppath.LocalPath), response.StatusDescription.Trim());
-            }
-            catch (WebException e)
-            {
-                Log.Write(EventType.ExceptionThrown, ((FtpWebResponse)e.Response).StatusDescription.Trim());
-            }
-        }
-
-        public static void EnsurePathToLoad(Uri ftppath)
-        {
-            try
-            {
-                FtpWebResponse response = null;
-
-                Uri curruri = new Uri("ftp://" + ftppath.Host + "/");
-
-                for (int i = 1; i < ftppath.Segments.Length - 1; i++)
-                {
-                    try
-                    {
-                        curruri = new Uri(curruri.OriginalString + ftppath.Segments[i]);
-                        FtpWebRequest requestf = (FtpWebRequest)WebRequest.Create(curruri);
-                        requestf.Method = WebRequestMethods.Ftp.MakeDirectory;
-                        requestf.Credentials = GetAppCredentials();
-                        response = (FtpWebResponse)requestf.GetResponse();
-                    }
-                    catch //(WebException e)
-                    {
-                        //Log.Write(EventType.ExceptionThrown, "Path not created: {0}", ((FtpWebResponse)e.Response).StatusDescription.Trim());
-                    }
-                }
-
-                Log.Write(EventType.Maintenance, "Path [{0}] successfully created", ftppath.OriginalString);
-            }
-            catch (WebException e)
-            {
-                Log.Write(EventType.ExceptionThrown, ((FtpWebResponse)e.Response).StatusDescription.Trim());
-            }
-        }
-
-        public static void UploadFileAsinc(string localpath, Uri ftppath)
-        {
-            Task.Run(() => UploadFile(localpath, ftppath));
-        }
-
-        public static void UploadFileAsinc(byte[] content, Uri ftppath)
-        {
-            Task.Run(() => UploadFile(content, ftppath));
-        }
-
-
-
-        //public static Development GetScheme()
-        //{
-        //    return GetScheme(GetUri(ServerHttps, SchemeFile));
-        //}
-
-        //public static Development GetScheme(CultureInfo ci)
-        //{
-        //    return GetScheme(GetUri(ServerHttps, SchemeFile, ci));
-        //}
-
-        //public static Development GetScheme(Uri uri)
-        //{
-        //    WebRequest request = WebRequest.Create(uri);
-        //    request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-
-        //    try
-        //    {
-        //        using (WebResponse response = request.GetResponse())
-        //        {
-        //            Stream stream = response.GetResponseStream();
-
-        //            if (stream == null) return null;
-
-        //            Development result = new Development();
-        //            result.ReadXml(stream);
-        //            return result;
-        //        }
-        //    }
-        //    catch// (Exception e)
-        //    {
-        //        return null;
-        //    }
-        //}
 
 
 
@@ -205,68 +92,90 @@ namespace Mayfly
             FileSystem.RunFile(Path.Combine(FileSystem.ProgramFolder, "mayflysoftware.exe"), "-update", product);
         }
 
-        public static UpdatePolicy GetUpdatePolicy(string product)
+        private static bool AcceptAllCertifications(object sender, X509Certificate certification, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
-            return (UpdatePolicy)Convert.ToInt32(UserSetting.GetValue(UserSettingPaths.KeyFeatures, product, UserSettingPaths.UpdatePolicy));
+            return true;
         }
 
-        public static void SetUpdatePolicy(string product, UpdatePolicy policy)
+        public static string[] GetText(Uri uri)
         {
-            UserSetting.SetValue(UserSettingPaths.KeyFeatures, product, UserSettingPaths.UpdatePolicy, (int)policy);
-            CheckUpdates(product);
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            if (UserSettings.UseUnsafeConnection) { 
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
+            }
+
+            WebRequest webRequest = WebRequest.Create(uri);
+            webRequest.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+
+            List<string> result = new List<string>();
+
+            try
+            {
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream stream = webResponse.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                while (!reader.EndOfStream)
+                {
+                    result.Add(reader.ReadLine());
+                }
+            }
+            catch { return null; }
+
+            return result.ToArray();
         }
 
-        //public static string UpdaterPath
-        //{
-        //    get
-        //    {
-        //        return Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.FullName,
-        //            "mayflyinstall.exe");
-        //    }
-        //}
+        public static string[] GetText(Uri uri, Dictionary<string, string> values)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            if (UserSettings.UseUnsafeConnection)
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
+            }
+            
 
-        //public static void PerformUpdates()
-        //{
-        //    PerformUpdates(UserSettings.Product);
-        //}
+            WebRequest webRequest = WebRequest.CreateHttp(uri);
+            webRequest.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
 
-        //public static void PerformUpdates(string product)
-        //{
-        //    if (GetUpdatePolicy(product) == UpdatePolicy.Off)
-        //        return;
+            List<string> result = new List<string>();
 
-        //    UpdateInspector updateInspector = new UpdateInspector(product);
-        //    updateInspector.CheckedEvent += updateInspector_CheckedEvent;
-        //    updateInspector.Run();
-        //}
+            try
+            {
+                webRequest.Method = "POST";
+                string sName = "";
+                foreach (var value in values)
+                {
+                    sName += value.Key + "=" + value.Value + "&";
+                }
+                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(sName);
+                webRequest.ContentType = "application/x-www-form-urlencoded";
+                webRequest.ContentLength = byteArray.Length;
+                using (Stream dataStream = webRequest.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                }
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream stream = webResponse.GetResponseStream();
+                StreamReader reader = new StreamReader(stream);
+                while (!reader.EndOfStream)
+                {
+                    result.Add(reader.ReadLine());
+                }
+            }
+            catch
+            {
+                return null; 
+            }
 
-        //private static void updateInspector_CheckedEvent(UpdateEventArgs e)
-        //{
-        //    if (e == null || !e.IsUpdateAvailable)
-        //        return;
-
-        //    switch (GetUpdatePolicy(e.Product))
-        //    {
-        //        case UpdatePolicy.CheckAndNotice:
-        //            Notification.ShowNotificationAction(
-        //                string.Format(Resources.Interface.UpdateAvailability, e.Product),
-        //                Resources.Interface.UpdateInstruction,
-        //                () => { FileSystem.RunFile(UpdaterPath, "\"-update\" \"" + e.Product + "\""); });
-        //            break;
-
-        //        case UpdatePolicy.AutoUpdate:
-        //            FileSystem.RunFile(UpdaterPath, "\"-silent\" \"" + e.Product + "\"");
-        //            //Application.Exit();
-
-        //            break;
-        //    }
-        //}
+            return result.ToArray();
+        }
     }
 
     public enum UpdatePolicy
     {
         Off,
         CheckAndNotice,
-        AutoUpdate
+        CheckAndRun
     }
 }

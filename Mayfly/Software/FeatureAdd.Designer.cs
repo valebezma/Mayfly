@@ -35,11 +35,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.backgroundSerial = new System.ComponentModel.BackgroundWorker();
             this.labelExpires = new System.Windows.Forms.Label();
-            this.labelLicensee = new System.Windows.Forms.Label();
-            this.textBoxLicensee = new System.Windows.Forms.TextBox();
             this.textBoxFeature = new System.Windows.Forms.TextBox();
             this.labelFeature = new System.Windows.Forms.Label();
             this.textBoxExpires = new System.Windows.Forms.TextBox();
+            this.buttonGrant = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,17 +79,6 @@
             resources.ApplyResources(this.labelExpires, "labelExpires");
             this.labelExpires.Name = "labelExpires";
             // 
-            // labelLicensee
-            // 
-            resources.ApplyResources(this.labelLicensee, "labelLicensee");
-            this.labelLicensee.Name = "labelLicensee";
-            // 
-            // textBoxLicensee
-            // 
-            resources.ApplyResources(this.textBoxLicensee, "textBoxLicensee");
-            this.textBoxLicensee.Name = "textBoxLicensee";
-            this.textBoxLicensee.ReadOnly = true;
-            // 
             // textBoxFeature
             // 
             resources.ApplyResources(this.textBoxFeature, "textBoxFeature");
@@ -108,18 +96,23 @@
             this.textBoxExpires.Name = "textBoxExpires";
             this.textBoxExpires.ReadOnly = true;
             // 
+            // buttonGrant
+            // 
+            resources.ApplyResources(this.buttonGrant, "buttonGrant");
+            this.buttonGrant.Name = "buttonGrant";
+            this.buttonGrant.UseVisualStyleBackColor = true;
+            // 
             // FeatureAdd
             // 
             this.AcceptButton = this.buttonAdd;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.buttonGrant);
             this.Controls.Add(this.labelExpires);
             this.Controls.Add(this.labelFeature);
-            this.Controls.Add(this.labelLicensee);
             this.Controls.Add(this.textBoxFeature);
             this.Controls.Add(this.textBoxExpires);
-            this.Controls.Add(this.textBoxLicensee);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.pictureBoxSn);
             this.Controls.Add(this.maskedSn);
@@ -143,10 +136,9 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.ComponentModel.BackgroundWorker backgroundSerial;
         private System.Windows.Forms.Label labelExpires;
-        private System.Windows.Forms.Label labelLicensee;
-        private System.Windows.Forms.TextBox textBoxLicensee;
         private System.Windows.Forms.TextBox textBoxFeature;
         private System.Windows.Forms.Label labelFeature;
         private System.Windows.Forms.TextBox textBoxExpires;
+        protected System.Windows.Forms.Button buttonGrant;
     }
 }

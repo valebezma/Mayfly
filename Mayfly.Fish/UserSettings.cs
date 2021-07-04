@@ -23,7 +23,7 @@ namespace Mayfly.Fish
         {
             Wild.UserSettings.Initialize();
 
-            UserSetting.InitializeRegistry(Path, System.Reflection.Assembly.GetCallingAssembly(),
+            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
                 new UserSetting[] { new UserSetting(Wild.UserSettingPaths.Sampler, 710),
                     new UserSetting(Wild.UserSettingPaths.Water, 0),
                     new UserSetting(Wild.UserSettingPaths.FixTotals, true),

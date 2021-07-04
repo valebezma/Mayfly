@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using Mayfly.Geographics;
 using System.Windows.Forms;
+using System.Net;
 
 namespace Mayfly
 {
@@ -31,28 +32,10 @@ namespace Mayfly
             set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.User, value); }
         }
 
-        public static bool Log
+        public static bool ShareDiagnostics
         {
-            get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Log)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Log, value.ToString()); }
-        }
-
-        public static int LogSpan
-        {
-            get { return Convert.ToInt32(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSpan)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSpan, value); }
-        }
-
-        public static bool LogSend
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSend)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSend, value.ToString()); }
-        }
-
-        public static DateTime LogSentLast
-        {
-            get { return Convert.ToDateTime(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSentLast)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.LogSentLast, value.ToString("s")); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.ShareDiagnostics)); }
+            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.ShareDiagnostics, value.ToString()); }
         }
 
         public static string FormatCoordinate
@@ -82,14 +65,56 @@ namespace Mayfly
 
         public static UpdatePolicy UpdatePolicy
         {
-            get  { return Server.GetUpdatePolicy(Product); }
-            set { Server.SetUpdatePolicy(Product, value);  }
+            get { return (UpdatePolicy)Convert.ToInt32(UserSetting.GetValue(UserSettingPaths.KeyFeatures, UserSettingPaths.UpdatePolicy)); }
+            set
+            {
+                UserSetting.SetValue(UserSettingPaths.KeyFeatures, UserSettingPaths.UpdatePolicy, (int)value);
+                Server.CheckUpdates(Product);
+            }
         }
 
         public static bool UseUnsafeConnection
         {
             get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.UseUnsafeConnection)); }
             set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.UseUnsafeConnection, value.ToString()); }
+        }
+
+        public static NetworkCredential Credential
+        {
+            get
+            {
+                try
+                {
+                    object o = UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential);
+                    if (o == null) return null;
+                    string value = o.ToString();
+                    if (string.IsNullOrEmpty(value)) return null;
+                    value = StringCipher.Decrypt(value, UserSettings.Username);
+                    string[] values = value.Split(';');
+                    return new NetworkCredential(values[0], values[1]);
+                }
+                catch { return null; }
+            }
+
+            set
+            {
+                if (value == null)
+                {
+                    UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential, string.Empty);
+                }
+                else
+                {
+                    string cred = value.UserName + ";" + value.Password;
+                    cred = StringCipher.Encrypt(cred, UserSettings.Username);
+                    UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential, cred);
+                }
+            }
+        }
+
+        public static DateTime LastLicenseCheckup
+        {
+            get { return Convert.ToDateTime(UserSetting.GetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup)); }
+            set { UserSetting.SetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup, value); }
         }
 
 
@@ -119,13 +144,11 @@ namespace Mayfly
         public static string User = "User";
         public static string Language = "Language";
 
-        public static string Log = "Log";
-        public static string LogSpan = "LogSpan";
-        public static string LogSend = "LogSend";
-        public static string LogSentLast = "LogSentLast";
-
+        public static string ShareDiagnostics = "ShareDiagnostics";
         public static string UpdatePolicy = "UpdatePolicy";
+        public static string LastLicenseCheckup = "LastLicenseCheckup";
         public static string UseUnsafeConnection = "UseUnsafeConnection";
+        public static string Credential = "Credential";
 
         public static string FormatColumn = "FormatColumn";
         public static string FormatCoordinate = "FormatCoordinate";

@@ -776,7 +776,8 @@ namespace Mayfly.Mathematics.Charts
                     {
                         LastSelectedScatterplot = sample as Scatterplot;
 
-                        if (LastSelectedScatterplot.Trend != null) {
+                        if (LastSelectedScatterplot.Trend != null)
+                        {
                             LastSelectedScatterplot.Trend.IsCursorFunctionDragging = LastSelectedScatterplot.Trend.Properties.AllowCursors &&
                                 LastSelectedScatterplot.Trend.IsMouseAboveFunction(e);
 
@@ -1257,12 +1258,11 @@ namespace Mayfly.Mathematics.Charts
 
                 double w = this.Width;
 
-                try
+                if (this.Visible)
                 {
                     w = chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Maximum) -
                         chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Minimum);
                 }
-                catch { }
 
                 if (IsChronic)
                 {
@@ -1280,12 +1280,11 @@ namespace Mayfly.Mathematics.Charts
 
                 double h = this.Height;
 
-                try
+                if (this.Visible)
                 {
                     h = chartArea.AxisY.ValueToPixelPosition(AxisYMin) -
                         chartArea.AxisY.ValueToPixelPosition(AxisYMax);
                 }
-                catch { }
 
                 chartArea.AxisY.AdjustIntervals(h, AxisYInterval);
 
@@ -1323,7 +1322,7 @@ namespace Mayfly.Mathematics.Charts
                         case DateTimeIntervalType.Days:
                             DateTime dateTimeD = DateTime.FromOADate(AxisXMin);
                             AxisXMin = Math.Floor(dateTimeD.ToOADate());
-                            
+
                             dateTimeD = DateTime.FromOADate(AxisXMax);
                             AxisXMax = Math.Ceiling(dateTimeD.ToOADate()) + ChartAreas[0].AxisX.IntervalOffset;
                             break;
@@ -1331,7 +1330,7 @@ namespace Mayfly.Mathematics.Charts
                             DateTime dateTimeW = DateTime.FromOADate(AxisXMin);
                             dateTimeW = dateTimeW.AddDays(-7 + dateTimeW.DayOfWeek.CompareTo(CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) + 1);
                             AxisXMin = dateTimeW.ToOADate();
-                            
+
                             dateTimeW = DateTime.FromOADate(AxisXMax);
                             dateTimeW = dateTimeW.AddDays(dateTimeW.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 1);
                             AxisXMax = dateTimeW.ToOADate() + ChartAreas[0].AxisX.IntervalOffset;
@@ -1340,7 +1339,7 @@ namespace Mayfly.Mathematics.Charts
                             DateTime dateTimeM = DateTime.FromOADate(AxisXMax);
                             dateTimeM = dateTimeM.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(dateTimeM.Year, dateTimeM.Month) - dateTimeM.Day);
                             AxisXMax = dateTimeM.ToOADate();
-                            
+
                             dateTimeM = DateTime.FromOADate(AxisXMin);
                             dateTimeM = dateTimeM.AddDays(-dateTimeM.Day + 1);
                             AxisXMin = dateTimeM.ToOADate();
@@ -1349,7 +1348,7 @@ namespace Mayfly.Mathematics.Charts
                             DateTime dateTimeY = DateTime.FromOADate(AxisXMax);
                             dateTimeY = dateTimeY.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInYear(dateTimeY.Year) - dateTimeY.DayOfYear);
                             AxisXMax = dateTimeY.ToOADate();
-                            
+
                             dateTimeY = DateTime.FromOADate(AxisXMin);
                             dateTimeY = dateTimeY.AddDays(-dateTimeY.DayOfYear + 1);
                             AxisXMin = dateTimeY.ToOADate();
@@ -1643,7 +1642,7 @@ namespace Mayfly.Mathematics.Charts
 
             if (AxisY2AutoInterval && AxisY2Max - AxisY2Min > 0)
             {
-                double g =  Mayfly.Service.GetAutoInterval(AxisY2Max - AxisY2Min);
+                double g = Mayfly.Service.GetAutoInterval(AxisY2Max - AxisY2Min);
                 if (g > 0) AxisY2Interval = g;
             }
 
@@ -1894,12 +1893,15 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                if (IsDistinguishingMode) {
+                if (IsDistinguishingMode)
+                {
                     scatterplot.Series.MarkerColor = scatterplot.Series.MarkerBorderColor = UserSettings.DistinguishColorSelected;
                     if (scatterplot.Properties.ShowTrend) scatterplot.Trend.Series.Color = UserSettings.DistinguishColorSelected.Darker();
                     scatterplot.Series.SmartLabelStyle.CalloutLineColor = scatterplot.Series.LabelForeColor = Color.Black;
                     scatterplot.Series.SmartLabelStyle.CalloutStyle = LabelCalloutStyle.Underlined;
-                } else {
+                }
+                else
+                {
                     scatterplot.Series.MarkerColor = scatterplot.Series.MarkerBorderColor;
                     if (scatterplot.Properties.ShowTrend) scatterplot.Trend.Series.Color = scatterplot.Trend.Properties.TrendColor;
                     scatterplot.Series.SmartLabelStyle.CalloutLineColor = scatterplot.Series.LabelForeColor = Color.Black;
@@ -1908,9 +1910,12 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Histogramma histogram in SelectedHistograms)
             {
-                if (IsDistinguishingMode) {
+                if (IsDistinguishingMode)
+                {
                     histogram.DataSeries.Color = histogram.DataSeries.BorderColor = UserSettings.DistinguishColorSelected;
-                } else {
+                }
+                else
+                {
                     histogram.DataSeries.BorderColor = Color.DarkGray;
                 }
             }
@@ -2207,12 +2212,12 @@ namespace Mayfly.Mathematics.Charts
             result.Text = title;
             result.Controls.Add(this);
             this.Dock = DockStyle.Fill;
-            
+
             AxisXMin = min;
             AxisXInterval = interval;
 
             Update(this, new EventArgs());
-             
+
             if (modal)
             {
                 result.ShowDialog();
@@ -2366,7 +2371,7 @@ namespace Mayfly.Mathematics.Charts
                         break;
                 }
             }
-            
+
             if (GetSample(series) is Histogramma)
             {
                 Histogramma histogram = GetSample(series) as Histogramma;
@@ -2414,7 +2419,7 @@ namespace Mayfly.Mathematics.Charts
                         break;
                 }
             }
-            
+
             //if (GetSample(series) is Evaluation)
             //{
             //    Evaluation evaluation = GetSample(series) as Evaluation;
@@ -2563,7 +2568,7 @@ namespace Mayfly.Mathematics.Charts
 
         private void contextChart_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            contextChartSeparate.Enabled = 
+            contextChartSeparate.Enabled =
                 (Scatterplots.Count > 1 && Scatterplots.Count < 25) ||
                 (Histograms.Count > 1 && Histograms.Count < 25);
         }

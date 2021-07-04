@@ -25,16 +25,13 @@ namespace Mayfly.Plankton.Explorer
 
         private void LoadSettings()
         {
-            if (Licensing.Verify("Bios"))
-            {
-                checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
+            checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
 
-                foreach (string bio in UserSettings.Bios)
-                {
-                    ListViewItem li = listViewBio.CreateItem(bio,
-                        Path.GetFileNameWithoutExtension(bio));
-                    listViewBio.Items.Add(li);
-                }
+            foreach (string bio in UserSettings.Bios)
+            {
+                ListViewItem li = listViewBio.CreateItem(bio,
+                    Path.GetFileNameWithoutExtension(bio));
+                listViewBio.Items.Add(li);
             }
 
             comboBoxDominance.SelectedIndex = Wild.UserSettings.Dominance;

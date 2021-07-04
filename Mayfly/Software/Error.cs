@@ -23,13 +23,13 @@ namespace Mayfly.Software
         {
             Exception = exception;
 
-            textBoxStackTrace.AppendText("Session log:" + Environment.NewLine);
-            foreach (UserActionEventArgs e in Log.GetEventsLog()) {
-                textBoxStackTrace.AppendText("   " + e.ToString() + Environment.NewLine);
-            }
+            //textBoxStackTrace.AppendText("Session log:" + Environment.NewLine);
+            //foreach (UserActionEventArgs e in Log.GetEventsLog()) {
+            //    textBoxStackTrace.AppendText("   " + e.ToString() + Environment.NewLine);
+            //}
 
 
-            textBoxStackTrace.AppendText(Environment.NewLine);
+            //textBoxStackTrace.AppendText(Environment.NewLine);
             textBoxStackTrace.AppendText("Debugging log:" + Environment.NewLine);
             textBoxStackTrace.AppendText(Exception.StackTrace);
         }
@@ -41,10 +41,9 @@ namespace Mayfly.Software
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
-            Server.SendEmail("error@mayfly.ru",
+            Server.SendEmail(Server.GetEmail("error"),
                 string.Format(Resources.Interface.ErrorReportSubject, EntryAssemblyInfo.Title),
-                string.Format(Resources.Interface.ErrorReportBody, EntryAssemblyInfo.Title, Exception.Message, Exception.StackTrace),
-                Log.FolderPath);
+                string.Format(Resources.Interface.ErrorReportBody, EntryAssemblyInfo.Title, Exception.Message, Exception.StackTrace));
             Close();
         }
 

@@ -98,7 +98,7 @@ namespace Mayfly.Fish.Explorer
             result.Cells[columnIndID.Index].Value = individualRow.ID;
             UpdateIndividualRow(result, individualRow);
 
-            if (Licensing.Verify("Bios"))
+            if (Licensing.Verify("Fishery Scientist"))
             {
                 if (UserSettings.AgeSuggest) SetIndividualAgeTip(result, individualRow);
                 if (UserSettings.MassSuggest) SetIndividualMassTip(result, individualRow);

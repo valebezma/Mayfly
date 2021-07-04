@@ -183,7 +183,9 @@ namespace Mayfly.Software.Management
 
         private void buttonScheme_Click(object sender, EventArgs e)
         {
-            Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
+            //Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
+
+            Service.ProductSchemeServer.UpdateDatabase();
 
             wizardPageStart.NextPage = wizardPageDone;
             wizardControl.NextPage();
@@ -263,7 +265,7 @@ namespace Mayfly.Software.Management
         private void wizardPageUpload_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
         {
 
-            serverfiles = Service.GetFilenames(Server.GetUri(Service.FtpServer, "current/"));
+            serverfiles = Service.GetFilenames(Server.GetUri(Service.FtpUpdatesServer, "current/"));
 
             progressUpload.Maximum =
                 (checkBoxBackup.Checked ? serverfiles.Length : 0) + // For backing up files
@@ -304,8 +306,8 @@ namespace Mayfly.Software.Management
                 {
                     Software.Service.UpdateStatus(labelUpStatus, "Backing up feature ({0})", filename);
 
-                    Uri uri = Server.GetUri(Service.FtpServer, "current/" + filename);
-                    Uri hisUri = Server.GetUri(Service.FtpServer, backupUri + filename);
+                    Uri uri = Server.GetUri(Service.FtpUpdatesServer, "current/" + filename);
+                    Uri hisUri = Server.GetUri(Service.FtpUpdatesServer, backupUri + filename);
                     Service.Move(uri, hisUri);
 
                     fileCount++;
@@ -313,8 +315,8 @@ namespace Mayfly.Software.Management
                 }
 
                 //Service.Move(
-                //    Server.GetUri("ftp://mayfly.ru/get/software", "mayflysoftware.exe"),
-                //    Server.GetUri("ftp://mayfly.ru/get/software/history", backupUri + "inst.exe"));
+                //    Server.GetUri("ftp://" + Server.Domain + "/get/software", "mayflysoftware.exe"),
+                //    Server.GetUri("ftp://" + Server.Domain + "/get/software/history", backupUri + "inst.exe"));
             }
 
             Software.Service.UpdateStatus(labelUpStatus, "Packing and sending new features");
@@ -333,8 +335,8 @@ namespace Mayfly.Software.Management
 
                 string alias = fileRow.File.Replace(new FileInfo(fileRow.File).Extension, ".zip");
                 string[] files = fileRow.GetFilesList();
-                Uri uri = Server.GetUri(Service.FtpServer, "current/" + alias);
-                Server.UploadFile(Service.PackFiles(files), uri);
+                Uri uri = Server.GetUri(Service.FtpUpdatesServer, "current/" + alias);
+                Service.UploadFile(Service.PackFiles(files), uri);
                 fileCount++;
 
                 ((BackgroundWorker)sender).ReportProgress(fileCount);
@@ -346,7 +348,7 @@ namespace Mayfly.Software.Management
                     string[] locFiles = fileRow.GetFilesList(ci);
 
                     Uri locUri = Server.GetLocalizedUri(uri, ci);
-                    Server.UploadFile(Service.PackFiles(locFiles), locUri);
+                    Service.UploadFile(Service.PackFiles(locFiles), locUri);
                     fileCount++;
 
                     ((BackgroundWorker)sender).ReportProgress(fileCount);
@@ -357,8 +359,9 @@ namespace Mayfly.Software.Management
             FileSystem.ClearTemp();
             fileCount++; ((BackgroundWorker)sender).ReportProgress(fileCount);
 
-            Software.Service.UpdateStatus(labelUpStatus, "Uploading scheme file");
-            Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
+            Software.Service.UpdateStatus(labelUpStatus, "Updating scheme database");
+            //Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
+            Service.ProductSchemeServer.UpdateDatabase();
             fileCount++; ((BackgroundWorker)sender).ReportProgress(fileCount);
         }
 
@@ -390,7 +393,7 @@ namespace Mayfly.Software.Management
 
         private void buttonFtp_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Service.FtpServer);
+            FileSystem.RunFile(Service.FtpUpdatesServer);
         }
     }
 }

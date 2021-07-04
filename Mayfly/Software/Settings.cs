@@ -5,6 +5,8 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Mayfly.TaskDialogs;
+using System.Net;
 
 namespace Mayfly.Software
 {
@@ -13,81 +15,35 @@ namespace Mayfly.Software
         public Settings()
         {
             InitializeComponent();
+            listViewLicenses.Shine();
 
-            //comboBoxCulture.Items.Add("System UI language");
             comboBoxCulture.Items.Add(CultureInfo.GetCultureInfo("en"));
 
             foreach (string dir in Directory.GetDirectories(Application.StartupPath))
             {
-                try {
+                try
+                {
                     CultureInfo cult = CultureInfo.GetCultureInfo(Path.GetFileNameWithoutExtension(dir));
-                    comboBoxCulture.Items.Add(cult); }
+                    comboBoxCulture.Items.Add(cult);
+                }
                 catch { }
             }
 
             comboBoxCulture.SelectedItem = UserSettings.Language.Equals(CultureInfo.InvariantCulture) ?
                 comboBoxCulture.Items[0] : UserSettings.Language;
 
-
-
             textBoxUsername.Text = UserSettings.Username;
-            listViewLicenses.Shine();
-            bool hasexp = false;
-            List<string> loadedfeatures = new List<string>();
-            foreach (License.UserLicenseRow licRow in Licensing.InstalledLicenses.UserLicense.Select(null, "Expires Desc")) {
-                if (loadedfeatures.Contains(licRow.Feature) && !licRow.IsValid) continue;
-                ListViewItem li = new ListViewItem(licRow.Feature);
-                li.Name = licRow.ID.ToString();
-                li.SubItems.Add(licRow.Expires.ToLongDateString());
-                listViewLicenses.Items.Add(li);
-                li.Group = licRow.IsValid ?
-                    listViewLicenses.GetGroup("groupValid") :
-                    listViewLicenses.GetGroup("groupExpired");
-                hasexp |= !licRow.IsValid;
-                loadedfeatures.Add(licRow.Feature);
-            }
-            listViewLicenses.ShowGroups = hasexp;
 
+            UpdateCredentials(UserSettings.Credential);
 
-
-            comboBoxUpdatePolicy.Enabled = 
-                UserSettings.Username != Resources.Interface.UserUnknown;            
-            comboBoxUpdatePolicy.SelectedIndex = comboBoxUpdatePolicy.Enabled ? 
+            comboBoxUpdatePolicy.Enabled =
+                UserSettings.Username != Resources.Interface.UserUnknown;
+            comboBoxUpdatePolicy.SelectedIndex = comboBoxUpdatePolicy.Enabled ?
                 (int)UserSettings.UpdatePolicy : 0;
 
             checkBoxUseUnsafeConnection.Checked = UserSettings.UseUnsafeConnection;
 
-
-            checkBoxLog.Checked = UserSettings.Log;
-            checkBoxKeepLog.Checked = UserSettings.LogSpan > 0;
-            comboBoxKeepLog.SelectedIndex = (UserSettings.LogSpan == 1) ? 0 :
-                (UserSettings.LogSpan == 7) ? 1 :
-                (UserSettings.LogSpan == 30) ? 2 :
-                (UserSettings.LogSpan == 365) ? 3 : -1;
-            checkBoxLogSend.Checked = UserSettings.LogSend;
-
-            if (checkBoxLog.Checked)
-            {
-                DirectoryInfo di = new DirectoryInfo(Log.FolderPath);
-                if (di.Exists)
-                {
-                    long size = di.GetSize();
-                    buttonClearLog.Enabled = size > 0;
-                    labelLogSize.ResetFormatted(Mayfly.Service.GetFriendlyBytes(size));
-                }
-                else
-                {
-                    labelLogSize.Text = string.Empty;
-                }
-
-                buttonOpenLog.Enabled = File.Exists(Log.CurrentFile);
-            }
-            else
-            {
-                labelLogSize.Text = string.Empty;
-                buttonClearLog.Enabled = false;
-                buttonOpenLog.Enabled = false;
-            }
+            checkBoxShareDiagnostics.Checked = UserSettings.ShareDiagnostics;
         }
 
 
@@ -96,25 +52,62 @@ namespace Mayfly.Software
             tabControlSettings.SelectedTab = tabPage1;
         }
 
+        private void UpdateCredentials(NetworkCredential cred)
+        {
+            checkBoxCredentials.Checked = cred != null;
+
+            if (cred == null)
+            {
+                pictureBoxLogin.Image = null;
+                textBoxEmail.ReadOnly =
+                    maskedPass.ReadOnly = false;
+            }
+            else
+            {
+                textBoxEmail.Text = cred.UserName;
+                maskedPass.Text = cred.Password;
+                pictureBoxLogin.Image = Resources.Icons.Check;
+                textBoxEmail.ReadOnly =
+                    maskedPass.ReadOnly = true;
+                buttonLogin.Enabled = false;
+
+                UpdateLicenses();
+            }
+        }
+
+        private void UpdateLicenses()
+        {
+            listViewLicenses.Items.Clear();
+
+            foreach (License lic in Licensing.InstalledLicenses)
+            {
+                if (!lic.IsValid) continue;
+
+                ListViewItem li = new ListViewItem(lic.Feature);
+                li.Name = lic.Feature.ToString();
+                li.SubItems.Add(((int)lic.ExpiresIn.TotalDays).ToCorrectString(Resources.Interface.ExpirationMask));
+                listViewLicenses.Items.Add(li);
+            }
+        }
+
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
             UserSettings.Language = comboBoxCulture.SelectedIndex == 0 ? CultureInfo.InvariantCulture : (CultureInfo)comboBoxCulture.SelectedItem;
-
             UserSettings.UpdatePolicy = (UpdatePolicy)comboBoxUpdatePolicy.SelectedIndex;
-
-            UserSettings.Log = checkBoxLog.Checked;
-            UserSettings.LogSpan = (!checkBoxKeepLog.Checked || comboBoxKeepLog.SelectedIndex == -1) ? 0 :
-                comboBoxKeepLog.SelectedIndex == 0 ? 1 :
-                comboBoxKeepLog.SelectedIndex == 1 ? 7 :
-                comboBoxKeepLog.SelectedIndex == 2 ? 30 :
-                comboBoxKeepLog.SelectedIndex == 3 ? 365 : 0;
-            UserSettings.LogSend = checkBoxLogSend.Checked;
-
             UserSettings.UseUnsafeConnection = checkBoxUseUnsafeConnection.Checked;
+            UserSettings.ShareDiagnostics = checkBoxShareDiagnostics.Checked;
 
+            if (!checkBoxCredentials.Checked)
+            {
+                Licensing.SendUninstall(UserSettings.Credential);
+                UserSettings.Credential = null;
+                foreach (License lic in Licensing.InstalledLicenses)
+                {
+                    lic.Uninstall();
+                }
+            }
             Service.ResetUICulture();
-
             Log.Write(EventType.Maintenance, "Mayfly settings changed");
         }
 
@@ -133,68 +126,106 @@ namespace Mayfly.Software
 
 
 
-        private void buttonUnlock_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
-            FeatureAdd add = new FeatureAdd();
-            add.SetFriendlyDesktopLocation(buttonUnlock, FormLocation.NextToHost);
-            if (add.ShowDialog(this) == DialogResult.OK)
+            NetworkCredential cred = new NetworkCredential(textBoxEmail.Text, maskedPass.Text);
+
+            License[] lics = Licensing.GetLicenses(cred);
+
+            if (lics == null) // Licenses can not be received
             {
-                ListViewItem li = new ListViewItem(add.License.Feature);
-                li.SubItems.Add(add.License.Expires.ToShortDateString());
-                listViewLicenses.Items.Add(li);
+                pictureBoxLogin.Image = Resources.Icons.NoneRed;
+                listViewLicenses.Items.Clear();
+                return;
+            }
+            else // Licenses are received
+            {
+                if (lics.Length > 0 && lics[0].Licensee != UserSettings.Username) // Username  in Settings and at Server does not match
+                {
+                    TaskDialogButton tdbMismatch = taskDialogNameMismatch.ShowDialog(this);
+
+                    if (tdbMismatch == tdbMismatchReplace)
+                    {
+                        UserSettings.Username = lics[0].Licensee;
+                        textBoxUsername.Text = UserSettings.Username;
+                    }
+                    else if (tdbMismatch == tdbMismatchSupport)
+                    {
+                        Server.SendEmail(Server.GetEmail("feedback"),
+                            string.Format(Resources.Interface.FeedbackSubject, EntryAssemblyInfo.Title, UserSettings.Username),
+                            string.Format(Resources.Interface.FeedbackBody, UserSettings.Username, EntryAssemblyInfo.Title));
+                        return;
+                    }
+                    else if (tdbMismatch == tdbMismatchCancel)
+                    {
+                        checkBoxCredentials.Checked = false;
+                        return;
+                    }
+                }
+
+                // Remember correct credentials
+                UserSettings.Credential = cred;
+
+                // Install licenses
+                Licensing.InstallLicenses(lics);
+
+                // Update form
+                pictureBoxLogin.Image = Resources.Icons.Check;
+                textBoxEmail.ReadOnly = maskedPass.ReadOnly = true;
+                buttonLogin.Enabled = false;
+                UpdateLicenses();
             }
         }
 
-        private void listViewLicenses_ItemActivate(object sender, EventArgs e)
+        private void comboBoxUpdatePolicy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (ListViewItem li in listViewLicenses.SelectedItems)
+
+        }
+
+        private void checkBoxCredentials_Click(object sender, EventArgs e)
+        { }
+
+        private void checkBoxCredentials_CheckedChanged(object sender, EventArgs e)
+        {
+            if (listViewLicenses.Items.Count > 0 && !checkBoxCredentials.Checked)
             {
-                FeatureAdd add = new FeatureAdd(Licensing.InstalledLicenses.UserLicense.FindByFeature(li.Text)[0]);
-                add.SetFriendlyDesktopLocation(li);
-                add.ShowDialog(this);
+                TaskDialogButton tdbLogout = taskDialogLogout.ShowDialog(this);
+                if (tdbLogout == tdbSignoutCancel)
+                {
+                    checkBoxCredentials.CheckedChanged -= checkBoxCredentials_CheckedChanged;
+                    checkBoxCredentials.Checked = true;
+                    checkBoxCredentials.CheckedChanged += checkBoxCredentials_CheckedChanged;
+                    return;
+                }
             }
-        }
 
+            labelEmail.Enabled =
+                textBoxEmail.Enabled =
+                labelPass.Enabled =
+                maskedPass.Enabled =
+                buttonLogin.Enabled =
+                labelFeaturesInstruction.Enabled =
+                listViewLicenses.Enabled = checkBoxCredentials.Checked;
 
-        private void buttonClearLog_Click(object sender, EventArgs e)
-        {
-            Directory.Delete(Log.FolderPath, true);
-            labelLogSize.Text = string.Empty;
-            buttonClearLog.Enabled = false;
-            buttonOpenLog.Enabled = false;
-        }
-
-        private void buttonOpenLog_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys.HasFlag(Keys.Control))
+            if (checkBoxCredentials.Checked)
             {
-                if (ModifierKeys.HasFlag(Keys.Shift))
-                {
-                    FileSystem.RunFile(Log.FolderPath);
-                }
-                else
-                {
-                    FileSystem.RunFile(Log.FolderPath);
-                }
+                textBoxEmail.ReadOnly =
+                    maskedPass.ReadOnly = false;
             }
             else
             {
-                ActionLogs actionsLog = new ActionLogs();
-                actionsLog.SetFriendlyDesktopLocation(buttonOpenLog, FormLocation.NextToHost);
-                actionsLog.ShowDialog();
+                textBoxEmail.Text =
+                    maskedPass.Text = string.Empty;
+                pictureBoxLogin.Image = null;
+                listViewLicenses.Items.Clear();
             }
         }
 
-        private void checkBoxKeepLog_CheckedChanged(object sender, EventArgs e)
+        private void textBoxEmail_DoubleClick(object sender, EventArgs e)
         {
-            comboBoxKeepLog.Enabled =
-            checkBoxLogSend.Enabled = 
-            buttonClearLog.Enabled = checkBoxKeepLog.Checked;
-        }
-
-        private void checkBoxLog_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxKeepLog.Enabled = checkBoxLog.Checked;
+            textBoxEmail.ReadOnly = 
+            maskedPass.ReadOnly = false;
+            buttonLogin.Enabled = true;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Mayfly.Plankton.Explorer
 
         public static void Initialize()
         {
-            UserSetting.InitializeRegistry(Path, System.Reflection.Assembly.GetCallingAssembly(),
+            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
                 new UserSetting[] {
                     new UserSetting(Wild.UserSettingPaths.Dominance, 2),
                     new UserSetting(Wild.UserSettingPaths.Diversity, DiversityIndex.D1963_Shannon)});

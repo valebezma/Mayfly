@@ -58,9 +58,8 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
-      <HintPath>..\packages\AeroWizard.2.1.11\lib\net40\AeroWizard.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.2.9\lib\net45\AeroWizard.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
@@ -71,6 +70,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -238,12 +239,6 @@
     </Compile>
     <Compile Include="Service\Log.cs" />
     <Compile Include="Service\Server.cs" />
-    <Compile Include="Software\ActionLogs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Software\ActionLogs.Designer.cs">
-      <DependentUpon>ActionLogs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Software\Error.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,21 +261,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Software\License.cs">
-      <DependentUpon>License.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Software\License.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>License.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Software\FeatureAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Software\FeatureAdd.Designer.cs">
-      <DependentUpon>FeatureAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Service\Licensing.cs" />
+    <Compile Include="Software\Hardware.cs" />
+    <Compile Include="Software\License.cs" />
     <Compile Include="Software\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,12 +494,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Software\ActionLogs.resx">
-      <DependentUpon>ActionLogs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Software\ActionLogs.ru.resx">
-      <DependentUpon>ActionLogs.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Software\Error.resx">
       <DependentUpon>Error.cs</DependentUpon>
     </EmbeddedResource>
@@ -567,14 +544,9 @@
       <DependentUpon>InputDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\TaskDialogs\ProgressDialog.resx" />
-    <EmbeddedResource Include="Software\FeatureAdd.resx">
-      <DependentUpon>FeatureAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Software\FeatureAdd.ru.resx">
-      <DependentUpon>FeatureAdd.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\PrimaryKeyHS.png" />
     <None Include="packages.config" />
     <None Include="Resources\Delete.png" />
     <None Include="Resources\New.png" />
@@ -612,17 +584,6 @@
     <Content Include="Components\TaskDialogs\VistaFolderBrowserDialog.bmp" />
     <Content Include="Components\TaskDialogs\VistaOpenFileDialog.bmp" />
     <Content Include="Components\TaskDialogs\VistaSaveFileDialog.bmp" />
-    <None Include="Software\License.xsc">
-      <DependentUpon>License.xsd</DependentUpon>
-    </None>
-    <None Include="Software\License.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>License.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Software\License.xss">
-      <DependentUpon>License.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Shell32">

@@ -120,16 +120,10 @@
   <data name="labelInstruction.Text" xml:space="preserve">
     <value>Введите приобретенный ранее ключ, чтобы разблокировать необходимые функции. Вводите ключ аккуратно и не перепутайте свой ключ с чьим-либо еще.</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>361, 255</value>
-  </data>
-  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
-  </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>Разблокировать</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelExpires.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
   </data>
@@ -137,10 +131,10 @@
     <value>На срок до</value>
   </data>
   <data name="labelLicensee.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 13</value>
+    <value>89, 13</value>
   </data>
   <data name="labelLicensee.Text" xml:space="preserve">
-    <value>Лицензиат</value>
+    <value>Дата активации</value>
   </data>
   <data name="labelFeature.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
@@ -148,7 +142,10 @@
   <data name="labelFeature.Text" xml:space="preserve">
     <value>Возможность</value>
   </data>
+  <data name="buttonGrant.Text" xml:space="preserve">
+    <value>Получить ключ</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Разблокировка возможности</value>
+    <value>Разблокировка компонента</value>
   </data>
 </root>

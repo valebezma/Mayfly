@@ -1,35 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace Mayfly.Software
 {
-    partial class License
+    public class License
     {
-        partial class UserLicenseDataTable
+        public string Licensee;
+
+        public string Feature;
+
+        public DateTime Expiration 
         {
-            public UserLicenseRow[] FindByFeature(string feature)
+            get; private set;
+        }
+
+        public bool Autorenewal { get; set; }
+
+        public TimeSpan ExpiresIn 
+        {
+            get
             {
-                List<UserLicenseRow> result = new List<License.UserLicenseRow>();
-
-                foreach (UserLicenseRow licRow in this.Rows)
-                {
-                    if (licRow.Feature == feature)
-                        result.Add(licRow);
-                }
-
-                return result.ToArray();
+                return Expiration - DateTime.Today;
             }
         }
 
-        partial class UserLicenseRow
+        public bool IsValid 
         {
-            public bool IsValid
+            get
             {
-                get
-                {
-                    return this.Expires >= DateTime.Today.AddDays(1);
-                }
+                return this.ExpiresIn.TotalDays > (Autorenewal ? -1 : 0);
             }
+        }
+
+        public License(string licstring)
+        {
+            string[] licvalues = licstring.Split(';');
+
+            Licensee = licvalues[0];
+            Feature = licvalues[1];
+            Expiration = DateTime.Parse(licvalues[2]);
+            Autorenewal = bool.Parse(licvalues[3]);
+        }
+
+        internal void Install()
+        {
+            UserSetting.SetValue(
+                UserSettingPaths.KeyLicenses,
+                this.Feature,
+                "License",
+                StringCipher.Encrypt(this.ToString(), this.Feature)
+                       );
+
+            Licensing.installedLicenses = null;
+        }
+
+        internal void Uninstall()
+        {
+            UserSetting.ClearFolder(UserSettingPaths.KeyLicenses, this.Feature);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0};{1};{2};{3}", Licensee, Feature, Expiration, Autorenewal);
         }
     }
 }

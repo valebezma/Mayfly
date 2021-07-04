@@ -301,8 +301,12 @@ namespace Mayfly
         public static string ResolveShortcut(string path)
         {
             ShellLink shell = new ShellLink();
-            shell.Open(path);
-            return shell.Target;
+            try {
+                shell.Open(path);
+                return shell.Target;
+            } catch {
+                return string.Empty;
+            }
         }
 
         public static bool RunFile(string fileName)

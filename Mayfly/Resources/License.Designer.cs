@@ -19,7 +19,7 @@ namespace Mayfly.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class License {
@@ -61,79 +61,101 @@ namespace Mayfly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0;1;2|today;tomorrow;days.
+        ///   Looks up a localized string similar to Key failed.
         /// </summary>
-        public static string DaysForm {
+        public static string LicenseCancelled {
             get {
-                return ResourceManager.GetString("DaysForm", resourceCulture);
+                return ResourceManager.GetString("LicenseCancelled", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your {0} license will expires in {1} days. Click here to get new license key..
+        ///   Looks up a localized string similar to License expired.
         /// </summary>
-        public static string ExpiresInstruction {
+        public static string LicenseExpired {
             get {
-                return ResourceManager.GetString("ExpiresInstruction", resourceCulture);
+                return ResourceManager.GetString("LicenseExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License for {0} expired. Renew subscription to stay tuned..
+        /// </summary>
+        public static string LicenseExpiredInstruction {
+            get {
+                return ResourceManager.GetString("LicenseExpiredInstruction", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to License expires soon.
         /// </summary>
-        public static string ExpiresSoon {
+        public static string LicenseExpiresSoon {
             get {
-                return ResourceManager.GetString("ExpiresSoon", resourceCulture);
+                return ResourceManager.GetString("LicenseExpiresSoon", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License is invalid.
-        ///You need to get new one :(.
+        ///   Looks up a localized string similar to License for {0} expires {1}. Renew subscription to stay tuned..
         /// </summary>
-        public static string NotValid {
+        public static string LicenseExpiresSoonInstruction {
             get {
-                return ResourceManager.GetString("NotValid", resourceCulture);
+                return ResourceManager.GetString("LicenseExpiresSoonInstruction", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product doesn&apos;t match.
-        ///Use install tool to use this key..
+        ///   Looks up a localized string similar to in {0} days.
         /// </summary>
-        public static string ProductNotMatch {
+        public static string LicenseExpiresSoonInstructionIn {
             get {
-                return ResourceManager.GetString("ProductNotMatch", resourceCulture);
+                return ResourceManager.GetString("LicenseExpiresSoonInstructionIn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It is not your license key.
-        ///Use install tool to use this key..
+        ///   Looks up a localized string similar to today.
         /// </summary>
-        public static string UserNotMatch {
+        public static string LicenseExpiresSoonInstructionToday {
             get {
-                return ResourceManager.GetString("UserNotMatch", resourceCulture);
+                return ResourceManager.GetString("LicenseExpiresSoonInstructionToday", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License to use {0}
-        ///is granted to {1}.
+        ///   Looks up a localized string similar to Key is installed already.
         /// </summary>
-        public static string Valid {
+        public static string LicenseInstalledInstruction {
             get {
-                return ResourceManager.GetString("Valid", resourceCulture);
+                return ResourceManager.GetString("LicenseInstalledInstruction", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License to use {0} until {1:D} 
-        ///is granted to {2}.
+        ///   Looks up a localized string similar to Not activated yet.
         /// </summary>
-        public static string ValidSubscription {
+        public static string LicenseNotActivated {
             get {
-                return ResourceManager.GetString("ValidSubscription", resourceCulture);
+                return ResourceManager.GetString("LicenseNotActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong Key.
+        /// </summary>
+        public static string LicenseWrong {
+            get {
+                return ResourceManager.GetString("LicenseWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key is granted to other user.
+        /// </summary>
+        public static string LicenseWrongOwnerInstruction {
+            get {
+                return ResourceManager.GetString("LicenseWrongOwnerInstruction", resourceCulture);
             }
         }
     }

@@ -163,7 +163,7 @@ namespace Mayfly.Geographics
 
         public static string ReverseCardinal(string cardinal)
         {
-            switch (cardinal)
+            switch (cardinal.Trim())
             {
                 case "E": return "W";
                 case "W": return "E";

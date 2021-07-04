@@ -41,6 +41,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSchemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -108,6 +109,7 @@
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemUpdate,
+            this.saveSchemeToolStripMenuItem,
             this.menuItemClose});
             this.menuFile.Name = "menuFile";
             resources.ApplyResources(this.menuFile, "menuFile");
@@ -117,6 +119,12 @@
             this.menuItemUpdate.Name = "menuItemUpdate";
             resources.ApplyResources(this.menuItemUpdate, "menuItemUpdate");
             this.menuItemUpdate.Click += new System.EventHandler(this.menuItemUpdate_Click);
+            // 
+            // saveSchemeToolStripMenuItem
+            // 
+            this.saveSchemeToolStripMenuItem.Name = "saveSchemeToolStripMenuItem";
+            resources.ApplyResources(this.saveSchemeToolStripMenuItem, "saveSchemeToolStripMenuItem");
+            this.saveSchemeToolStripMenuItem.Click += new System.EventHandler(this.saveSchemeToolStripMenuItem_Click);
             // 
             // menuItemClose
             // 
@@ -370,6 +378,7 @@
             this.listViewFiles.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewFiles.Groups"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewFiles.Groups1")))});
+            this.listViewFiles.HideSelection = false;
             this.listViewFiles.MultiSelect = false;
             this.listViewFiles.Name = "listViewFiles";
             this.listViewFiles.TileSize = new System.Drawing.Size(150, 25);
@@ -402,6 +411,7 @@
             this.columnProduct});
             this.listViewProducts.ContextMenuStrip = this.contextProduct;
             this.listViewProducts.FullRowSelect = true;
+            this.listViewProducts.HideSelection = false;
             resources.ApplyResources(this.listViewProducts, "listViewProducts");
             this.listViewProducts.MultiSelect = false;
             this.listViewProducts.Name = "listViewProducts";
@@ -464,6 +474,8 @@
             this.Controls.Add(this.listViewFiles);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -531,6 +543,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtPreviewTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtPreviewDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtFullDetails;
+        private System.Windows.Forms.ToolStripMenuItem saveSchemeToolStripMenuItem;
     }
 }
 

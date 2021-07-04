@@ -114,7 +114,7 @@ namespace Mayfly.Fish
         {
             Samplers.SamplerRow samplerRow = cardRow.GetSamplerRow();
             string result = full ? samplerRow.Sampler : samplerRow.ShortName;
-            result += cardRow.GetGearClass();
+            result += " " + cardRow.GetGearClass();
             return result;
         }
 
@@ -477,12 +477,35 @@ namespace Mayfly.Fish
         /// 
         /// </summary>
         /// <param name="logRow"></param>
+        /// <returns>Quantity per cubic meter in individuals</returns>
+        public static double GetAbundance(this Data.LogRow logRow, ExpressionVariant variant)
+        {
+            if (logRow.IsQuantityNull()) return double.NaN;
+            return (double)logRow.Quantity / logRow.CardRow.GetEffort(variant);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
         public static double GetBiomass(this Data.LogRow logRow)
         {
             if (logRow.IsMassNull()) return double.NaN;
 
             return logRow.Mass / logRow.CardRow.GetEffort();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logRow"></param>
+        /// <returns>Mass per cubic meter in grams</returns>
+        public static double GetBiomass(this Data.LogRow logRow, ExpressionVariant variant)
+        {
+            if (logRow.IsMassNull()) return double.NaN;
+
+            return logRow.Mass / logRow.CardRow.GetEffort(variant);
         }
 
         //public static SpeciesKey GetSpeciesKey(this Data.SpeciesRow[] dataSpcRows)

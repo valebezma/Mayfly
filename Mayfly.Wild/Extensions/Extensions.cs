@@ -65,15 +65,9 @@ namespace Mayfly.Wild
 
             if (entries == null) return result.ToArray();
 
-            if (Licensing.Verify("Bios"))
-            {
-                result.AddRange(FileSystem.MaskedNames(entries, Wild.UserSettings.InterfaceBio.Extension));
-            }
+            result.AddRange(FileSystem.MaskedNames(entries, Wild.UserSettings.InterfaceBio.Extension));
 
-            //result.AddRange(FileSystem.MaskedNames(entries, Wild.UserSettings.InterfacePermission.Extension));
-
-            if (extension != Wild.UserSettings.InterfaceBio.Extension)// && 
-                //extension != Wild.UserSettings.InterfacePermission.Extension)
+            if (extension != Wild.UserSettings.InterfaceBio.Extension)
             {
                 result.AddRange(FileSystem.MaskedNames(entries, extension));
             }

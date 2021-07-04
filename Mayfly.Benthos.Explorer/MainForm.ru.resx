@@ -979,7 +979,7 @@
     <value>150, 22</value>
   </data>
   <data name="menuItemLicenses.Text" xml:space="preserve">
-    <value>Возможности</value>
+    <value>Компоненты</value>
   </data>
   <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 22</value>

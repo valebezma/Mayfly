@@ -117,373 +117,373 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelAltitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 54</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBoxAltitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLatitude.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBoxAltitude.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="contextItemGet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="&gt;&gt;labelDate.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelLat.Name" xml:space="preserve">
-    <value>labelLat</value>
-  </data>
-  <data name="labelLatitude.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;contextItemGet.Name" xml:space="preserve">
-    <value>contextItemGet</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerDate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelLatitude.Text" xml:space="preserve">
-    <value>Coordinates</value>
-  </data>
-  <data name="&gt;&gt;degreesMinutesAndSecondsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelLat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;labelLatitude.Name" xml:space="preserve">
-    <value>labelLatitude</value>
-  </data>
-  <data name="&gt;&gt;labelAltitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="degreesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>WaypointControl</value>
-  </data>
-  <data name="dateTimePickerDate.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;labelLatitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;degreesAndMinutesToolStripMenuItem.Name" xml:space="preserve">
-    <value>degreesAndMinutesToolStripMenuItem</value>
-  </data>
-  <data name="maskedTextBoxLongitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="labelAltitude.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelDate.Text" xml:space="preserve">
-    <value>Date and exact sampling time</value>
-  </data>
-  <data name="labelLng.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="textBoxAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="&gt;&gt;labelLat.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="labelLat.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="&gt;&gt;labelAltitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="degreesMinutesAndSecondsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextItemGet.Text" xml:space="preserve">
-    <value>Get location</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="labelDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 13</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLongitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="maskedTextBoxLatitude.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="labelAltitude.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLatitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="maskedTextBoxLatitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="labelLatitude.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLongitude.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="labelDate.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;labelLatitude.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="labelDate.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="maskedTextBoxLongitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 25</value>
-  </data>
-  <data name="&gt;&gt;labelLng.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLongitude.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLatitude.Name" xml:space="preserve">
-    <value>maskedTextBoxLatitude</value>
-  </data>
-  <data name="&gt;&gt;labelLatitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxAltitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="dateTimePickerDate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="labelLng.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
-  </data>
-  <data name="&gt;&gt;degreesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="dateTimePickerDate.CustomFormat" xml:space="preserve">
     <value>dd.MM.yyyy (ddd) HH:mm</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
-  </data>
-  <data name="&gt;&gt;labelDate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="degreesMinutesAndSecondsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Degrees, minutes and seconds</value>
-  </data>
-  <data name="degreesAndMinutesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Degrees and minutes</value>
-  </data>
-  <data name="maskedTextBoxLongitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 20</value>
-  </data>
-  <data name="contextItemOpen.Text" xml:space="preserve">
-    <value>Open location...</value>
-  </data>
-  <data name="&gt;&gt;textBoxAltitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;degreesToolStripMenuItem.Name" xml:space="preserve">
-    <value>degreesToolStripMenuItem</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 6</value>
-  </data>
-  <data name="labelAltitude.Text" xml:space="preserve">
-    <value>Altitude, m above sea</value>
-  </data>
-  <data name="labelAltitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dateTimePickerDate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;setFormatToolStripMenuItem.Name" xml:space="preserve">
-    <value>setFormatToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;maskedTextBoxLatitude.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelLat.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;labelLng.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="textBoxAltitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 51</value>
-  </data>
-  <data name="&gt;&gt;labelLat.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;setFormatToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="contextItemOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="&gt;&gt;labelAltitude.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dateTimePickerDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 0</value>
   </data>
   <data name="dateTimePickerDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 20</value>
   </data>
-  <data name="&gt;&gt;labelLng.Name" xml:space="preserve">
-    <value>labelLng</value>
-  </data>
-  <data name="&gt;&gt;labelAltitude.Name" xml:space="preserve">
-    <value>labelAltitude</value>
-  </data>
-  <data name="labelLng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dateTimePickerDate.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
   <data name="&gt;&gt;dateTimePickerDate.Name" xml:space="preserve">
     <value>dateTimePickerDate</value>
   </data>
-  <data name="labelLatitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
+  <data name="&gt;&gt;dateTimePickerDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="maskedTextBoxLongitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="&gt;&gt;dateTimePickerDate.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="labelLng.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;dateTimePickerDate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="maskedTextBoxLatitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 25</value>
+  <data name="labelDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;degreesAndMinutesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labelDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
   </data>
-  <data name="labelLng.Text" xml:space="preserve">
-    <value> E</value>
+  <data name="labelDate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 13</value>
   </data>
-  <data name="degreesAndMinutesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
+  <data name="labelDate.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="labelLatitude.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="&gt;&gt;contextItemOpen.Name" xml:space="preserve">
-    <value>contextItemOpen</value>
-  </data>
-  <data name="setFormatToolStripMenuItem.Text" xml:space="preserve">
-    <value>Set format</value>
-  </data>
-  <data name="&gt;&gt;contextItemGet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="labelDate.Text" xml:space="preserve">
+    <value>Date and exact sampling time</value>
   </data>
   <data name="&gt;&gt;labelDate.Name" xml:space="preserve">
     <value>labelDate</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 71</value>
-  </data>
-  <data name="&gt;&gt;contextItemOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="setFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="dateTimePickerDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 0</value>
-  </data>
-  <data name="labelLatitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;degreesMinutesAndSecondsToolStripMenuItem.Name" xml:space="preserve">
-    <value>degreesMinutesAndSecondsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;labelLng.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
-    <value>contextMenuStrip1</value>
-  </data>
-  <data name="labelLat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 28</value>
-  </data>
   <data name="&gt;&gt;labelDate.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelDate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="maskedTextBoxLongitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="maskedTextBoxLongitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 25</value>
+  </data>
+  <data name="maskedTextBoxLongitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
   </data>
   <data name="maskedTextBoxLongitude.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="degreesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Degrees</value>
+  <data name="maskedTextBoxLongitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
-  <data name="labelAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 13</value>
+  <data name="&gt;&gt;maskedTextBoxLongitude.Name" xml:space="preserve">
+    <value>maskedTextBoxLongitude</value>
   </data>
-  <data name="labelLat.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="&gt;&gt;maskedTextBoxLongitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLongitude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLongitude.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="maskedTextBoxLatitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 25</value>
   </data>
   <data name="maskedTextBoxLatitude.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
   </data>
+  <data name="maskedTextBoxLatitude.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="maskedTextBoxLatitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLatitude.Name" xml:space="preserve">
+    <value>maskedTextBoxLatitude</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLatitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLatitude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;maskedTextBoxLatitude.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelAltitude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelAltitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAltitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 54</value>
+  </data>
+  <data name="labelAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="labelAltitude.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="labelAltitude.Text" xml:space="preserve">
+    <value>Altitude, m above sea</value>
+  </data>
+  <data name="&gt;&gt;labelAltitude.Name" xml:space="preserve">
+    <value>labelAltitude</value>
+  </data>
+  <data name="&gt;&gt;labelAltitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAltitude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelAltitude.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelLatitude.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLatitude.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLatitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="labelLatitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 13</value>
+  </data>
+  <data name="labelLatitude.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labelLatitude.Text" xml:space="preserve">
+    <value>Coordinates</value>
+  </data>
+  <data name="&gt;&gt;labelLatitude.Name" xml:space="preserve">
+    <value>labelLatitude</value>
+  </data>
+  <data name="&gt;&gt;labelLatitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLatitude.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelLatitude.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelLat.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 28</value>
+  </data>
+  <data name="labelLat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 13</value>
+  </data>
+  <data name="labelLat.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="labelLat.Text" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="&gt;&gt;labelLat.Name" xml:space="preserve">
+    <value>labelLat</value>
+  </data>
   <data name="&gt;&gt;labelLat.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;labelLat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelLat.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelLng.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="labelLng.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="labelLng.Location" type="System.Drawing.Point, System.Drawing">
     <value>295, 28</value>
   </data>
-  <data name="&gt;&gt;dateTimePickerDate.Parent" xml:space="preserve">
+  <data name="labelLng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="labelLng.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="labelLng.Text" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="&gt;&gt;labelLng.Name" xml:space="preserve">
+    <value>labelLng</value>
+  </data>
+  <data name="&gt;&gt;labelLng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLng.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelLng.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="textBoxAltitude.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="textBoxAltitude.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 51</value>
+  </data>
+  <data name="textBoxAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxAltitude.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="textBoxAltitude.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxAltitude.Name" xml:space="preserve">
+    <value>textBoxAltitude</value>
+  </data>
+  <data name="&gt;&gt;textBoxAltitude.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxAltitude.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxAltitude.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;textBoxAltitude.Name" xml:space="preserve">
-    <value>textBoxAltitude</value>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="contextItemGet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="contextItemGet.Text" xml:space="preserve">
+    <value>Get location</value>
   </data>
-  <data name="labelDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 2</value>
+  <data name="contextItemOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
   </data>
-  <data name="&gt;&gt;maskedTextBoxLongitude.Name" xml:space="preserve">
-    <value>maskedTextBoxLongitude</value>
+  <data name="contextItemOpen.Text" xml:space="preserve">
+    <value>Open location...</value>
   </data>
-  <data name="labelLng.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 6</value>
+  </data>
+  <data name="degreesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="degreesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Degrees</value>
+  </data>
+  <data name="degreesAndMinutesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="degreesAndMinutesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Degrees and minutes</value>
+  </data>
+  <data name="degreesMinutesAndSecondsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="degreesMinutesAndSecondsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Degrees, minutes and seconds</value>
+  </data>
+  <data name="setFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="setFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set format</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 76</value>
   </data>
-  <data name="labelLat.Text" xml:space="preserve">
-    <value> N</value>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 71</value>
+  </data>
+  <data name="&gt;&gt;contextItemGet.Name" xml:space="preserve">
+    <value>contextItemGet</value>
+  </data>
+  <data name="&gt;&gt;contextItemGet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextItemOpen.Name" xml:space="preserve">
+    <value>contextItemOpen</value>
+  </data>
+  <data name="&gt;&gt;contextItemOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;setFormatToolStripMenuItem.Name" xml:space="preserve">
+    <value>setFormatToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;setFormatToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;degreesToolStripMenuItem.Name" xml:space="preserve">
+    <value>degreesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;degreesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;degreesAndMinutesToolStripMenuItem.Name" xml:space="preserve">
+    <value>degreesAndMinutesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;degreesAndMinutesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;degreesMinutesAndSecondsToolStripMenuItem.Name" xml:space="preserve">
+    <value>degreesMinutesAndSecondsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;degreesMinutesAndSecondsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WaypointControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
