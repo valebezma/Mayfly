@@ -411,6 +411,9 @@
   <data name="comboBoxDateFormat.Items10" xml:space="preserve">
     <value>Decades</value>
   </data>
+  <data name="comboBoxDateFormat.Items11" xml:space="preserve">
+    <value>Friendly</value>
+  </data>
   <data name="comboBoxDateFormat.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 141</value>
   </data>

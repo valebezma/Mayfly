@@ -394,7 +394,7 @@ namespace Mayfly.Benthos.Explorer
 
         private void menuItemBriefSpecies_Click(object sender, EventArgs e)
         {
-            Report report = new Report(Resources.Reports.Community.Title);
+            Report report = new Report(Resources.Reports.Cenosis.Title);
             FullStack.AddBrief(report, null);
             report.Run();
         }
@@ -1116,7 +1116,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (baseSpc == null)
             {
-                composition = FullStack.GetCommunityComposition(SpeciesIndex);
+                composition = FullStack.GetCenosisComposition(SpeciesIndex);
             }
             else
             {
@@ -1264,7 +1264,7 @@ namespace Mayfly.Benthos.Explorer
                 Composition composition;
 
                 if (baseLog == null) {
-                    composition = stack.GetCommunityComposition(SpeciesIndex);
+                    composition = stack.GetCenosisComposition(SpeciesIndex);
                 } else {
                     composition = stack.GetTaxonomicComposition(baseLog);
                 }
@@ -1281,7 +1281,7 @@ namespace Mayfly.Benthos.Explorer
             Composition composition;
 
             if (baseLog == null) {
-                composition = FullStack.GetCommunityCompositionFrame();
+                composition = FullStack.GetCenosisCompositionFrame();
             } else {
                 composition = FullStack.GetTaxonomicCompositionFrame(baseLog);
             }

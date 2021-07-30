@@ -19,9 +19,6 @@ namespace Mayfly.Extensions
             {
                 switch (args[1])
                 {
-                    case "friendly":
-                        return dt.GetDatesDescription();
-
                     case "daytime":
                         return dt.GetDayPeriod();
 
@@ -75,8 +72,7 @@ namespace Mayfly.Extensions
                 {
                     case "a": // AGO
                         TimeSpan span = DateTime.Now - dt;
-
-                        return "";
+                        return span.ToString();
 
                     case "sec":
                         return dt.ToString("ss");
@@ -107,6 +103,9 @@ namespace Mayfly.Extensions
 
                     case "decade":
                         return string.Format(Resources.DateTime.DecadeMask, (dt.Year / 10));
+
+                    case "friendly":
+                        return dt.GetDatesDescription();
 
                     default:
                         return dt.ToString(format);
@@ -210,6 +209,9 @@ namespace Mayfly.Extensions
                     case PeriodType.Decades:
                         result += "decade";
                         break;
+                    default:
+                        result += "friendly";
+                        break;
                 }
 
             return result;
@@ -295,14 +297,22 @@ namespace Mayfly.Extensions
 
             List<DateTime> dates = new List<DateTime>(datesList);
             dates.Sort();
-            //if (dates.Last() - dates.First() < TimeSpan.FromDays(365)) {
+            if (dates.Last() - dates.First() < TimeSpan.FromDays(365))
+            {
                 return dates.GetDatesDescription(dates.Last());
-            //} else {
-            //    return dates.GetDatesDescription(DateTime.Today);
-            //}
+            }
+            else
+            {
+                return dates.GetDatesDescription(DateTime.Today);
+            }
         }
 
         public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now)
+        {
+            return dates.GetDatesDescription(now, 2);
+        }
+
+        public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now, int allowedGap)
         {
             List<DateTime> futureDates = new List<DateTime>();
             List<DateTime> lastYearDates = new List<DateTime>();
@@ -323,21 +333,13 @@ namespace Mayfly.Extensions
 
             if (previousDates.Count > 0)
             {
-                List<int> years = new List<int>();
-
-                foreach (DateTime dt in previousDates)
-                {
-                    if (years.Contains(dt.Year)) continue;
-                    years.Add(dt.Year);
-                }
-
-                years.Sort();
+                int[] years = GetYears(previousDates);
 
                 result += years[0];
-                if (years.Count > 1) result += ", ";
+                if (years.Length > 1) result += ", ";
                 bool gapStarted = false;
 
-                for (int i = 1; i < years.Count; i++)
+                for (int i = 1; i < years.Length; i++)
                 {
                     if (years[i] == years[i - 1] + 1)
                     {
@@ -370,47 +372,103 @@ namespace Mayfly.Extensions
             
             if (lastYearDates.Count > 0)
             {
-                lastYearDates.Sort();
-
-                result += lastYearDates[0].ToString("d") + (lastYearDates.Count == 1 ? "" : ", ");
-                //result += lastYearDates.Count == 1 ? lastYearDates[0].ToString("D") : lastYearDates[0].ToString("d") + ", ";
-                bool gapStarted = false;
-
-                for (int i = 1; i < lastYearDates.Count; i++)
+                foreach (DateTime[] bunch in lastYearDates.GetDatesBunches(allowedGap))
                 {
-                    if (lastYearDates[i].Date - lastYearDates[i - 1].Date <= TimeSpan.FromDays(1))
-                    {
-                        if (result.Last() != '—') {
-                            gapStarted = true;
-                            result = result.TrimEnd(", ".ToCharArray());
-                            result += "—";
-                        }
-                        continue;
-                    }
-
-                    if (gapStarted) {
-                        gapStarted = false;
-                        i--;
-                        //result += lastYearDates[i - 1].ToString("m");
-                        //result += ", ";
-                    }
-
-                    // if it is last date or next date is from next year - write full date,
-                    // otherwise - write only day and month
-                    //result += (i == lastYearDates.Count - 1) || lastYearDates[i + 1].Year > lastYearDates[i].Year ?
-                    //    lastYearDates[i].ToString("D") : lastYearDates[i].ToString("M");
-                    result += lastYearDates[i].ToString("d");
-                    result += ", ";
-                }
-
-                if (gapStarted)
-                {
-                    result += lastYearDates.Last().ToString("d");
-                    result += ", ";
+                    result += bunch.GetDatesRangeDescription() + ", ";
                 }
             }
 
             return result.TrimEnd(", ".ToCharArray());
+        }
+
+        public static List<DateTime[]> GetDatesBunches(this IEnumerable<DateTime> unsortedDates)
+        {
+            return unsortedDates.GetDatesBunches(2);
+        }
+
+        public static List<DateTime[]> GetDatesBunches(this IEnumerable<DateTime> unsortedDates, int allowedGap)
+        {
+            List<DateTime[]> result = new List<DateTime[]>();
+
+            List<DateTime> dates = new List<DateTime>();
+            dates.AddRange(unsortedDates);
+            dates.Sort();
+
+            List<DateTime> bunch = new List<DateTime>();
+
+            // collect bunch of dates 
+            for (int i = 0; i < dates.Count; i++)
+            {
+                if (bunch.Count == 0)
+                {
+                    bunch.Add(dates[i]);
+                    continue;
+                }
+
+                if (dates[i].Date - dates[i - 1].Date <= TimeSpan.FromDays(allowedGap))
+                {
+                    bunch.Add(dates[i].Date);
+                }
+                else
+                {
+                    DateTime[] cc = new DateTime[bunch.Count];
+                    bunch.CopyTo(cc);
+                    result.Add(cc);
+                    bunch.Clear();
+                    i--;
+                }
+            }
+
+            if (bunch.Count > 0)
+            {
+                DateTime[] cc = new DateTime[bunch.Count];
+                bunch.CopyTo(cc);
+                result.Add(cc);
+            }
+
+            return result;
+        }
+
+        public static string GetDatesRangeDescription(this IEnumerable<DateTime> dates)
+        {
+            List<DateTime> bunch = new List<DateTime>();
+            bunch.AddRange(dates);
+            bunch.Sort();
+
+            DateTime startDate = bunch[0];
+            DateTime endDate = bunch.Last();
+
+            string format;
+            bool dayFirst = DateTimeFormatInfo.CurrentInfo.MonthDayPattern.StartsWith("d");
+            string dayPart = "dd";
+            string monthPart = "MMM";
+            string yearPart = "yyyy";
+
+            if (bunch.Count == 1)
+            {
+                format = dayFirst ? "{0:"+ dayPart + " MMMM yyyy}" : "{0:MMMM " + dayPart + ", yyyy}";
+                return string.Format(format, startDate);
+            }
+            else
+            {
+                if (startDate.Year == endDate.Year)
+                {
+                    if (startDate.Month == endDate.Month)
+                    {
+                        format = dayFirst ? "{0:" + dayPart + "}—{1:" + dayPart + " " + monthPart + " " + yearPart + "}" : "{0:" + monthPart + " " + dayPart + "}—{1:" + dayPart + ", " + yearPart + "}";
+                    }
+                    else
+                    {
+                        format = dayFirst ? "{0:" + dayPart + " " + monthPart + "} — {1:" + dayPart + " " + monthPart + " " + yearPart + "}" : "{0:" + monthPart + " " + dayPart + "} — {1:" + monthPart + " " + dayPart + ", " + yearPart + "}";
+                    }
+                }
+                else
+                {
+                    format = dayFirst ? "{0:" + dayPart + " " + monthPart + " " + yearPart + "} — {1:" + dayPart + " " + monthPart + " " + yearPart + "}" : "{0:" + monthPart + " " + dayPart + ", " + yearPart + "} — {1:" + monthPart + " " + dayPart + ", " + yearPart + "}";
+                }
+
+                return string.Format(format, startDate, endDate);
+            }
         }
 
 

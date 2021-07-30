@@ -595,7 +595,7 @@ namespace Mayfly.Fish
 
             if (level.HasFlag(CardReportLevel.Note))
             {
-                report.AddSubtitle(Wild.Resources.Reports.Header.SampleNote);
+                report.AddSectionTitle(Wild.Resources.Reports.Header.SampleNote);
 
                 #region Common
 
@@ -753,7 +753,7 @@ namespace Mayfly.Fish
             {
                 Data.LogRow[] LogRows = cardRow.GetLogRows();
 
-                report.AddSubtitle(resources.GetString("tabPageLog.Text"));
+                report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
                 if (LogRows.Length == 0)
                 {
@@ -779,7 +779,7 @@ namespace Mayfly.Fish
             if ((individualRows.Count + stratifiedRows.Count) > 0 && (level.HasFlag(CardReportLevel.Individuals) || level.HasFlag(CardReportLevel.Stratified)))
             {
                 if (UserSettings.BreakBeforeIndividuals) { report.BreakPage(); }
-                report.AddSubtitle(Wild.Resources.Reports.Header.IndividualsLog);
+                report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
                     string speciesPresentation = logRow.SpeciesRow.GetKeyRecord(UserSettings.SpeciesIndex).ScientificNameReport;

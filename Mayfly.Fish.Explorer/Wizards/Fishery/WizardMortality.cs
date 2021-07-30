@@ -54,6 +54,8 @@ namespace Mayfly.Fish.Explorer.Fishery
         private WizardMortality()
         {
             InitializeComponent();
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardMortality(CardStack data, Data.SpeciesRow speciesRow) : this()
@@ -92,7 +94,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddEffortDescription(report);
+                gearWizard.AddSummarySection(report);
             }
 
             if (checkBoxAge.Checked)

@@ -123,7 +123,7 @@ namespace Mayfly.Plankton.Explorer
 
             if (baseSpc == null)
             {
-                Composition speciesComposition = data.GetCommunityComposition();
+                Composition speciesComposition = data.GetCenosisComposition();
 
                 for (int i = 0; i < speciesComposition.Count; i++)
                 {

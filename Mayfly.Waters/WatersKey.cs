@@ -606,7 +606,7 @@ namespace Mayfly.Waters
 
             public void AddStreamBlock(Report report)
             {
-                report.AddSubtitle3(string.Format(Resources.Reports.Title,
+                report.AddSectionTitle(string.Format(Resources.Reports.Title,
                     this.FullName));
 
                 ResourceManager resources = new ResourceManager(typeof(CardStream));
@@ -753,7 +753,7 @@ namespace Mayfly.Waters
 
             public void AddWatershedBlock(Report report)
             {
-                report.AddSubtitle3(string.Format(Resources.Reports.TitleWatershed, this.FullName, this.Description));
+                report.AddSectionTitle(string.Format(Resources.Reports.TitleWatershed, this.FullName, this.Description));
 
                 ResourceManager resources = new ResourceManager(typeof(CardStream));
 
@@ -958,7 +958,7 @@ namespace Mayfly.Waters
                 ResourceManager LakeResources = new ResourceManager(typeof(CardLake));
                 ResourceManager TankResources = new ResourceManager(typeof(CardTank));
 
-                report.AddSubtitle("Watercourses Drenaige System");
+                report.AddSectionTitle("Watercourses Drenaige System");
                 Report.Table table1 = new Report.Table();
                 table1.AddHeader(new string[] { "№",
                     (string)StreamResources.GetObject("labelName.Text"),
@@ -984,7 +984,7 @@ namespace Mayfly.Waters
                 {
                     report.BreakPage();
 
-                    report.AddSubtitle("Lakes");
+                    report.AddSectionTitle("Lakes");
                     Report.Table table2 = new Report.Table();
                     table2.AddHeader(new string[] { "№",
                         (string)LakeResources.GetObject("labelName.Text"),
@@ -1005,7 +1005,7 @@ namespace Mayfly.Waters
                 {
                     report.BreakPage();
 
-                    report.AddSubtitle("Reservoirs");
+                    report.AddSectionTitle("Reservoirs");
                     Report.Table table3 = new Report.Table();
                     // TODO: Create resources!!!
                     table3.AddHeader(new string[] { "№",

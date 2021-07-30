@@ -218,7 +218,7 @@ namespace Mayfly.Software.Locals
         {
             if (!ContainsRes(resxFile)) return;
 
-            report.AddSubtitle3("Resource file: {0}", Path.GetFileNameWithoutExtension(resxFile));
+            report.AddSectionTitle("Resource file: {0}", Path.GetFileNameWithoutExtension(resxFile));
 
             ResXResourceReader resxReader = new ResXResourceReader(resxFile);
             ResXResourceReader resxReaderLoc = new ResXResourceReader(Stream.Null);

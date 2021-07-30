@@ -140,12 +140,14 @@ namespace Mayfly.Fish.Explorer
                 this.Text = EntryAssemblyInfo.Title;
                 labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
 
-                labelDatesValue.Text = Constants.Null;
-                labelCardsValue.Text = Constants.Null;
-                labelCards.Text = string.Empty;
+                //labelDatesValue.Text = Constants.Null;
+                labelCardCountValue.Text = Constants.Null;
+                //labelCards.Text = string.Empty;
 
                 statusQuantity.ResetFormatted(Constants.Null);
                 statusMass.ResetFormatted(Constants.Null);
+                labelWgtValue.Text = Constants.Null;
+                labelQtyValue.Text = Constants.Null;
 
                 IsBusy = false;
             }
@@ -167,12 +169,19 @@ namespace Mayfly.Fish.Explorer
 
                 #region Update general values
 
-                labelCardsValue.Text = data.Card.Count.ToString();
+                labelCardCountValue.Text = data.Card.Count.ToString();
                 string formatted = data.Card.Count.ToCorrectString(new ResourceManager(typeof(MainForm)).GetString("labelCards.Text"));
-                labelCards.Text = formatted.Substring(formatted.IndexOf(' ') + 1);
+                //labelCards.Text = formatted.Substring(formatted.IndexOf(' ') + 1);
 
 
-                labelDatesValue.Text = data.GetDates().GetDatesDescription();
+                listViewDates.Items.Clear();
+                foreach (DateTime[] bunch in data.GetDates().GetDatesBunches())
+                {
+                    ListViewItem li = listViewDates.CreateItem(bunch.GetDatesRangeDescription());
+                    li.Tag = bunch;
+                }
+
+                //labelDatesValue.Text = data.GetDates().GetDatesRangeDescription();
 
                 //if (FullStack.GetDates().Count() > 1)
                 //{

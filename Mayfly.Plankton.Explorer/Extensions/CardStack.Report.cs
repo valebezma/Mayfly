@@ -14,21 +14,21 @@ namespace Mayfly.Plankton.Explorer
         //{
         //    stack.AddCommon(report);
 
-        //    SpeciesComposition spc = stack.GetCommunityComposition();
+        //    SpeciesComposition spc = stack.GetCenosisComposition();
 
-        //    Report.Table table1 = new Report.Table(Resources.Reports.Community.Header1);
+        //    Report.Table table1 = new Report.Table(Resources.Reports.Cenosis.Header1);
 
         //    table1.StartRow();
-        //    table1.AddCellPrompt(Resources.Reports.Community.SpeciesCount,
+        //    table1.AddCellPrompt(Resources.Reports.Cenosis.SpeciesCount,
         //        stack.SpeciesWealth);
         //    table1.EndRow();
         //    table1.StartRow();
-        //    table1.AddCellPrompt(Resources.Reports.Community.Dominants,
+        //    table1.AddCellPrompt(Resources.Reports.Cenosis.Dominants,
         //        spc.GetDominantNames().Merge(" + "));
         //    table1.EndRow();
         //    report.AddTable(table1);
 
-        //    Report.Table table2 = new Report.Table(Resources.Reports.Community.Header2);
+        //    Report.Table table2 = new Report.Table(Resources.Reports.Cenosis.Header2);
 
         //    table2.StartRow();
         //    table2.AddHeaderCell(baseRow == null ? Wild.Resources.Reports.Common.Species : baseRow.Base, .5);
@@ -58,13 +58,13 @@ namespace Mayfly.Plankton.Explorer
         //        }
 
         //        table2.StartRow();
-        //        table2.AddCell(Resources.Reports.Community.Total);
+        //        table2.AddCell(Resources.Reports.Cenosis.Total);
         //        table2.AddCellRight(tax.TotalAbundance, "N0");
         //        table2.AddCellRight(tax.TotalBiomass, "N2");
         //        table2.EndRow();
 
         //        table2.StartRow();
-        //        table2.AddCell(Resources.Reports.Community.TotalFeed);
+        //        table2.AddCell(Resources.Reports.Cenosis.TotalFeed);
         //        table2.AddCellRight(tax.TotalAbundance - (coarse == null ? 0 : coarse.Abundance), "N0");
         //        table2.AddCellRight(tax.TotalBiomass - (coarse == null ? 0 : coarse.Biomass), "N2");
         //        table2.EndRow();
@@ -84,7 +84,7 @@ namespace Mayfly.Plankton.Explorer
         //        }
 
         //        table2.StartRow();
-        //        table2.AddCell(Resources.Reports.Community.Total);
+        //        table2.AddCell(Resources.Reports.Cenosis.Total);
         //        table2.AddCellRight(spc.TotalAbundance, "N0");
         //        table2.AddCellRight(spc.TotalBiomass, "N2");
         //        table2.EndRow();

@@ -2,7 +2,7 @@
 {
     partial class CardStack
     {
-        public SpeciesComposition GetCommunityCompositionFrame()
+        public SpeciesComposition GetCenosisCompositionFrame()
         {
             SpeciesComposition result = new SpeciesComposition(string.Empty, this.GetSpecies().Length);
 
@@ -18,9 +18,9 @@
             return result;
         }
 
-        public SpeciesComposition GetCommunityComposition(Data addData, SpeciesComposition example)
+        public SpeciesComposition GetCenosisComposition(Data addData, SpeciesComposition example)
         {
-            SpeciesComposition result = this.GetCommunityCompositionFrame(example);
+            SpeciesComposition result = this.GetCenosisCompositionFrame(example);
 
             foreach (Category category in result)
             {
@@ -40,7 +40,7 @@
             return result;
         }
 
-        public SpeciesComposition GetCommunityCompositionFrame(SpeciesComposition example)
+        public SpeciesComposition GetCenosisCompositionFrame(SpeciesComposition example)
         {
             SpeciesComposition result = new SpeciesComposition(string.Empty, example.Count);
 
@@ -57,7 +57,7 @@
 
         public TaxaComposition GetTaxonomicCompositionFrame(Species.SpeciesKey.BaseRow baseRow)
         {
-            SpeciesComposition spc = GetCommunityCompositionFrame();
+            SpeciesComposition spc = GetCenosisCompositionFrame();
             TaxaComposition result = new TaxaComposition(spc, baseRow, true);
             return result;
         }

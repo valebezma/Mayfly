@@ -226,7 +226,7 @@
             this.menuItemLoadLog = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLoadIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.allSpeciesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCommunity = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBrief = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBriefSpecies = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -1402,7 +1402,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
             this.menuItemSample,
-            this.menuItemCommunity,
+            this.menuItemCenosis,
             this.menuItemCards,
             this.menuItemSpc,
             this.menuItemLog,
@@ -1532,12 +1532,12 @@
             resources.ApplyResources(this.allSpeciesToolStripMenuItem, "allSpeciesToolStripMenuItem");
             this.allSpeciesToolStripMenuItem.Click += new System.EventHandler(this.menuItemLoadInd_Click);
             // 
-            // menuItemCommunity
+            // menuItemCenosis
             // 
-            this.menuItemCommunity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemCenosis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemBrief});
-            this.menuItemCommunity.Name = "menuItemCommunity";
-            resources.ApplyResources(this.menuItemCommunity, "menuItemCommunity");
+            this.menuItemCenosis.Name = "menuItemCenosis";
+            resources.ApplyResources(this.menuItemCenosis, "menuItemCenosis");
             // 
             // menuItemBrief
             // 
@@ -2146,7 +2146,7 @@
         private Controls.SpreadSheetIconTextBoxColumn columnArtefactValidName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactN;
         private System.Windows.Forms.ToolStripMenuItem allSpeciesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuItemCommunity;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
         private System.Windows.Forms.ToolStripMenuItem menuItemBrief;
         private System.Windows.Forms.ToolStripMenuItem menuItemBriefSpecies;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;

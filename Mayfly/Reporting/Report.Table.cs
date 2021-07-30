@@ -319,6 +319,11 @@ namespace Mayfly
 
 
 
+            public void AddCellSider(object value)
+            {
+                AddCell(value, ReportCellClass.Sider);
+            }
+
             public void AddCellRight(object value)
             {
                 AddCell(value, ReportCellClass.Right);
@@ -481,6 +486,7 @@ namespace Mayfly
         Comment = 0x10,    // Little font
         Input = 0x20,      // User input on paper forms
         Hand = 0x40,        // User input appears in handwritten manner
-        Overlay = 0x80
+        Overlay = 0x80,
+        Sider = 0x3
     }
 }

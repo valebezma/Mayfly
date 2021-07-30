@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBoxDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBoxDiversity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 318</value>
+  </data>
+  <data name="textBoxDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBoxDiversity.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="textBoxDiversity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBoxDiversity.Name" xml:space="preserve">
+    <value>textBoxDiversity</value>
+  </data>
+  <data name="&gt;&gt;textBoxDiversity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDiversity.Parent" xml:space="preserve">
+    <value>pageCenosis</value>
+  </data>
+  <data name="&gt;&gt;textBoxDiversity.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelDiversity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDiversity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDiversity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 321</value>
+  </data>
+  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 15</value>
+  </data>
+  <data name="labelDiversity.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="labelDiversity.Text" xml:space="preserve">
+    <value>Cenosis diversity</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Name" xml:space="preserve">
+    <value>labelDiversity</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Parent" xml:space="preserve">
+    <value>pageCenosis</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelSpeciesCompositionInstruction.Text" xml:space="preserve">
+    <value>Cenosis composition is catches composition divided by catchability coefficients. You can change catchability by typing in corresponding column.</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesCompositionInstruction.Name" xml:space="preserve">
+    <value>labelSpeciesCompositionInstruction</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesCompositionInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesCompositionInstruction.Parent" xml:space="preserve">
+    <value>pageCenosis</value>
+  </data>
+  <data name="&gt;&gt;labelSpeciesCompositionInstruction.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="spreadSheetCenosis.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ColumnCommSpecies.HeaderText" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="ColumnCommSpecies.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="ColumnCommQ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnCommQ.HeaderText" xml:space="preserve">
+    <value>Catchability</value>
+  </data>
+  <data name="ColumnCommAbundance.HeaderText" xml:space="preserve">
+    <value>Abundance, ind./{0}</value>
+  </data>
+  <data name="ColumnCommAbundanceP.HeaderText" xml:space="preserve">
+    <value>Abundance, %</value>
+  </data>
+  <data name="ColumnCommBiomass.HeaderText" xml:space="preserve">
+    <value>Biomass, kg/{0}</value>
+  </data>
+  <data name="ColumnCommBiomassP.HeaderText" xml:space="preserve">
+    <value>Biomass, %</value>
+  </data>
+  <metadata name="ColumnCommOccurrence.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnCommOccurrence.HeaderText" xml:space="preserve">
+    <value>Occurrence, %</value>
+  </data>
+  <metadata name="ColumnCommDominance.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnCommDominance.HeaderText" xml:space="preserve">
+    <value>Dominance</value>
+  </data>
+  <data name="spreadSheetCenosis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="spreadSheetCenosis.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="spreadSheetCenosis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 262</value>
+  </data>
+  <data name="spreadSheetCenosis.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetCenosis.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCenosis.Name" xml:space="preserve">
+    <value>spreadSheetCenosis</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCenosis.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCenosis.Parent" xml:space="preserve">
+    <value>pageCenosis</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCenosis.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pageCenosis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="pageCenosis.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="pageCenosis.Text" xml:space="preserve">
+    <value>Cenosis composition</value>
+  </data>
+  <data name="&gt;&gt;pageCenosis.Name" xml:space="preserve">
+    <value>pageCenosis</value>
+  </data>
+  <data name="&gt;&gt;pageCenosis.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="checkBoxFractions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxFractions.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxFractions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxFractions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 50</value>
+  </data>
+  <data name="checkBoxFractions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="checkBoxFractions.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkBoxFractions.Text" xml:space="preserve">
+    <value>Fractions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Name" xml:space="preserve">
+    <value>checkBoxFractions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxPUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxPUE.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxPUE.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxPUE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 50</value>
+  </data>
+  <data name="checkBoxPUE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="checkBoxPUE.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxPUE.Text" xml:space="preserve">
+    <value>Per 1 {0}</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Name" xml:space="preserve">
+    <value>checkBoxPUE</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelClasses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelClasses.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelClasses.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelClasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 54</value>
+  </data>
+  <data name="labelClasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="labelClasses.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelClasses.Text" xml:space="preserve">
+    <value>Parameter:</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Name" xml:space="preserve">
+    <value>labelClasses</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxParameter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="comboBoxParameter.Items" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="comboBoxParameter.Items1" xml:space="preserve">
+    <value>Mass</value>
+  </data>
+  <data name="comboBoxParameter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 51</value>
+  </data>
+  <data name="comboBoxParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="comboBoxParameter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Name" xml:space="preserve">
+    <value>comboBoxParameter</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelClassesInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelClassesInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelClassesInstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelClassesInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="labelClassesInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelClassesInstruction.Text" xml:space="preserve">
+    <value>Sample compositions of all gear classes are presented here. You can change display value with controls below.</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Name" xml:space="preserve">
+    <value>labelClassesInstruction</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="spreadSheetComposition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="columnComposition.HeaderText" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="columnComposition.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 88</value>
+  </data>
+  <data name="spreadSheetComposition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 15</value>
+  </data>
+  <data name="spreadSheetComposition.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="spreadSheetComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 254</value>
+  </data>
+  <data name="spreadSheetComposition.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetComposition.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Name" xml:space="preserve">
+    <value>spreadSheetComposition</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pageComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="pageComposition.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="pageComposition.Text" xml:space="preserve">
+    <value>Composition of gear classes catches</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Name" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="wizardExplorer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="wizardExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="labelStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 45</value>
+  </data>
+  <data name="labelStart.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>This page is for service purpose only.</value>
+  </data>
+  <data name="labelStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Name" xml:space="preserve">
+    <value>labelStart</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Parent" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="wizardPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="wizardPage1.Text" xml:space="preserve">
+    <value>Initial page</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Catches composition averaged between gear classes is presented below. To see values on particular gear class return to previous page.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>pageCatches</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="spreadSheetCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ColumnCatchesSpecies.HeaderText" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="ColumnCatchesSpecies.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="ColumnCatchesAbundance.HeaderText" xml:space="preserve">
+    <value>NPUE, ind./{0}</value>
+  </data>
+  <data name="ColumnCatchesAbundanceP.HeaderText" xml:space="preserve">
+    <value>NPUE, %</value>
+  </data>
+  <data name="ColumnCatchesBiomass.HeaderText" xml:space="preserve">
+    <value>BPUE, kg/{0}</value>
+  </data>
+  <data name="ColumnCatchesBiomassP.HeaderText" xml:space="preserve">
+    <value>BPUE, %</value>
+  </data>
+  <metadata name="ColumnCatchesSex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnCatchesSex.HeaderText" xml:space="preserve">
+    <value>Sexual composition, juv. : M : F</value>
+  </data>
+  <data name="ColumnCatchesSex.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="spreadSheetCatches.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="spreadSheetCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
+  </data>
+  <data name="spreadSheetCatches.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="spreadSheetCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 292</value>
+  </data>
+  <data name="spreadSheetCatches.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetCatches.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Name" xml:space="preserve">
+    <value>spreadSheetCatches</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Parent" xml:space="preserve">
+    <value>pageCatches</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pageCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="pageCatches.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="pageCatches.Text" xml:space="preserve">
+    <value>Catches composition</value>
+  </data>
+  <data name="&gt;&gt;pageCatches.Name" xml:space="preserve">
+    <value>pageCatches</value>
+  </data>
+  <data name="&gt;&gt;pageCatches.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>614, 511</value>
+  </data>
+  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>Cenosis composition wizard</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
+    <value>wizardExplorer</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="calculatorCenosis.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="mathComposition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>185, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>54</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>614, 511</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>630, 550</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;columnComposition.Name" xml:space="preserve">
+    <value>columnComposition</value>
+  </data>
+  <data name="&gt;&gt;columnComposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;calculatorCenosis.Name" xml:space="preserve">
+    <value>calculatorCenosis</value>
+  </data>
+  <data name="&gt;&gt;calculatorCenosis.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mathComposition.Name" xml:space="preserve">
+    <value>mathComposition</value>
+  </data>
+  <data name="&gt;&gt;mathComposition.Type" xml:space="preserve">
+    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesSpecies.Name" xml:space="preserve">
+    <value>ColumnCatchesSpecies</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesAbundance.Name" xml:space="preserve">
+    <value>ColumnCatchesAbundance</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesAbundance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesAbundanceP.Name" xml:space="preserve">
+    <value>ColumnCatchesAbundanceP</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesAbundanceP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesBiomass.Name" xml:space="preserve">
+    <value>ColumnCatchesBiomass</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesBiomass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesBiomassP.Name" xml:space="preserve">
+    <value>ColumnCatchesBiomassP</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesBiomassP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesSex.Name" xml:space="preserve">
+    <value>ColumnCatchesSex</value>
+  </data>
+  <data name="&gt;&gt;ColumnCatchesSex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommSpecies.Name" xml:space="preserve">
+    <value>ColumnCommSpecies</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommQ.Name" xml:space="preserve">
+    <value>ColumnCommQ</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommQ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommAbundance.Name" xml:space="preserve">
+    <value>ColumnCommAbundance</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommAbundance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommAbundanceP.Name" xml:space="preserve">
+    <value>ColumnCommAbundanceP</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommAbundanceP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommBiomass.Name" xml:space="preserve">
+    <value>ColumnCommBiomass</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommBiomass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommBiomassP.Name" xml:space="preserve">
+    <value>ColumnCommBiomassP</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommBiomassP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommOccurrence.Name" xml:space="preserve">
+    <value>ColumnCommOccurrence</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommOccurrence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommDominance.Name" xml:space="preserve">
+    <value>ColumnCommDominance</value>
+  </data>
+  <data name="&gt;&gt;ColumnCommDominance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WizardCenosisComposition</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

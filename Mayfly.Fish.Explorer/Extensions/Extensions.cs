@@ -17,19 +17,10 @@ namespace Mayfly.Fish.Explorer
 {
     public static class Extensions
     {
-        public static void AddCatchDescription(this Composition composition, Data data, Report report,
+        public static void AddSummarySection(this Composition composition, Data data, Report report,
             string aunit, string bunit)
         {
-            report.AddParagraph(
-                string.Format(Resources.Reports.Community.ParagraphBio,
-                composition.Count,
-                data.Species.FindBySpecies(composition.MostAbundant.Name).ToHTML(),
-                composition.MostAbundant.Quantity,
-                composition.MostAbundant.Quantity / composition.TotalQuantity,
-                report.NextTableNumber)
-                );
-
-            composition.AddCatchDescription(data, report, aunit, bunit,
+            Report.Table table = composition.GetSummaryTable(data, report, aunit, bunit,
                 Mayfly.Service.GetFormat("spreadSheetSelectivity", "columnSelectivityLength", "G"),
                 Mayfly.Service.GetFormat("spreadSheetSelectivity", "columnSelectivityMass", "G"),
                 Mayfly.Service.GetFormat("spreadSheetSelectivity", "columnSelectivityB", "N3"),
@@ -38,23 +29,17 @@ namespace Mayfly.Fish.Explorer
                 Mayfly.Service.GetFormat("spreadSheetSelectivity", "columnSelectivityNPer", "P1"),
                 Mayfly.Service.GetFormat("spreadSheetSelectivity", "columnSelectivityBPer", "P1")
                 );
+
+            report.AddTable(table);
         }
 
-        public static void AddCatchDescription(this Composition composition, Data data, Report report,
+        public static Report.Appendix GetSummaryTable(this Composition composition, Data data, Report report,
             string aunit, string bunit,
             string lengthformat, string massformat, string bformat,
             string npueformat, string bpueformat,
             string npformat, string bpformat)
         {
-            if (composition.TotalQuantity < 1)
-            {
-                report.AddParagraph(
-                    string.Format(Resources.Reports.GearClass.Paragraph2_1, composition.Name)
-                    );
-                return;
-            }
-
-            Report.Table table1 = new Report.Table(string.Format(Resources.Reports.GearClass.Table2, composition.Name));
+            Report.Appendix table1 = new Report.Appendix(Resources.Reports.Section.Catches.Table_1, composition.Name);
 
             table1.StartRow();
 
@@ -83,7 +68,7 @@ namespace Mayfly.Fish.Explorer
                 if (species.Quantity < 1) continue;
 
                 table1.StartRow();                
-                table1.AddCell(data.Species.FindBySpecies(species.Name).ToShortHTML());
+                table1.AddCellSider(data.Species.FindBySpecies(species.Name).ToShortHTML());
 
                 table1.AddCellValue(new SampleDisplay(species.LengthSample), lengthformat);
                 table1.AddCellValue(new SampleDisplay(species.MassSample), massformat);
@@ -112,14 +97,16 @@ namespace Mayfly.Fish.Explorer
             table1.EndRow();
 
             //report.AddParagraph(
-            //    string.Format(Resources.Reports.Community.ParagraphCatches, report.NextTableNumber)
+            //    string.Format(Resources.Reports.Cenosis.ParagraphCatches, report.NextTableNumber)
             //    );
 
-            report.AddTable(table1);
+            return table1;
 
-            report.AddComment(string.Format(Resources.Reports.Common.FormatNotice,
-                Mathematics.Resources.FormatNotice.ResourceManager.GetString(lengthformat),
-                Mathematics.Resources.FormatNotice.ResourceManager.GetString(massformat)));
+            //report.AddTable(table1);
+
+            //report.AddComment(string.Format(Resources.Reports.Common.FormatNotice,
+            //    Mathematics.Resources.FormatNotice.ResourceManager.GetString(lengthformat),
+            //    Mathematics.Resources.FormatNotice.ResourceManager.GetString(massformat)));
         }
 
         //public static void AddCompositionReport(this Composition compos, Report report, CardStack data,
@@ -131,7 +118,7 @@ namespace Mayfly.Fish.Explorer
         //public static void AddCompositionReport(this Composition compos, Report report, CardStack data,
         //    string unit, string formatn, string formatb, string formatp)
         //{
-        //    Report.Table table1 = new Report.Table(Resources.Reports.Community.TableCatches);
+        //    Report.Table table1 = new Report.Table(Resources.Reports.Cenosis.TableCatches);
 
         //    table1.StartRow();
         //    table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .25, 2);
@@ -169,7 +156,7 @@ namespace Mayfly.Fish.Explorer
         //    table1.EndRow();
         //    report.AddTable(table1);
 
-        //    report.AddComment(string.Format(Resources.Reports.Community.CatchesNotice,
+        //    report.AddComment(string.Format(Resources.Reports.Cenosis.CatchesNotice,
         //        unit));
         //}
 

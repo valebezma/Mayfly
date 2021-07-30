@@ -83,14 +83,14 @@ namespace Mayfly.Benthos.Explorer
             return result / (double)stack.Count;
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack)
         {
-            return stack.GetCommunityComposition(Benthos.UserSettings.SpeciesIndex);
+            return stack.GetCenosisComposition(Benthos.UserSettings.SpeciesIndex);
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, Species.SpeciesKey key)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
         {
-            SpeciesComposition result = stack.GetCommunityCompositionFrame();
+            SpeciesComposition result = stack.GetCenosisCompositionFrame();
 
             foreach (SpeciesSwarm category in result)
             {
@@ -116,7 +116,7 @@ namespace Mayfly.Benthos.Explorer
 
         public static TaxaComposition GetTaxonomicComposition(this CardStack stack, Species.SpeciesKey.BaseRow baseRow)
         {
-            SpeciesComposition spc = stack.GetCommunityComposition((Species.SpeciesKey)baseRow.Table.DataSet);
+            SpeciesComposition spc = stack.GetCenosisComposition((Species.SpeciesKey)baseRow.Table.DataSet);
 
             TaxaComposition result = new TaxaComposition(spc, baseRow);
 

@@ -114,7 +114,7 @@ namespace Mayfly
         public static DateTime LastLicenseCheckup
         {
             get { return Convert.ToDateTime(UserSetting.GetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup, value); }
+            set { UserSetting.SetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup, value.ToString("s")); }
         }
 
 
@@ -151,6 +151,7 @@ namespace Mayfly
         public static string Credential = "Credential";
 
         public static string FormatColumn = "FormatColumn";
+        public static string CheckState = "CheckState";
         public static string FormatCoordinate = "FormatCoordinate";
     }
 }

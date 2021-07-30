@@ -132,7 +132,8 @@
             resources.GetString("comboBoxDateFormat.Items7"),
             resources.GetString("comboBoxDateFormat.Items8"),
             resources.GetString("comboBoxDateFormat.Items9"),
-            resources.GetString("comboBoxDateFormat.Items10")});
+            resources.GetString("comboBoxDateFormat.Items10"),
+            resources.GetString("comboBoxDateFormat.Items11")});
             this.comboBoxDateFormat.Name = "comboBoxDateFormat";
             this.comboBoxDateFormat.SelectedIndexChanged += new System.EventHandler(this.comboBoxDateFormat_SelectedIndexChanged);
             // 

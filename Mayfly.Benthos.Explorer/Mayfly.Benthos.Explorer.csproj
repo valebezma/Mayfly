@@ -105,15 +105,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Community.Designer.cs">
-      <DependentUpon>Community.resx</DependentUpon>
+    <Compile Include="Resources\Reports\Cenosis.Designer.cs">
+      <DependentUpon>Cenosis.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Community.ru.Designer.cs">
+    <Compile Include="Resources\Reports\Cenosis.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Community.ru.resx</DependentUpon>
+      <DependentUpon>Cenosis.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
@@ -193,13 +193,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Process.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Community.resx">
+    <EmbeddedResource Include="Resources\Reports\Cenosis.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Community.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cenosis.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Community.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Cenosis.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Community.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cenosis.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

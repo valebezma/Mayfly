@@ -249,7 +249,7 @@ namespace Mayfly.Mathematics.Statistics
 
             foreach (Regression regression in Regressions)
             {
-                report.AddSubtitle3(regression.Name);
+                report.AddSectionTitle(regression.Name);
 
                 report.AddParagraph("Выборка составила {0} экз. Уравнение зависимости массы от длины имеет вид",
                     regression.Data.Count);

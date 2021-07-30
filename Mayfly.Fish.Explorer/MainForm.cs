@@ -66,6 +66,7 @@ namespace Mayfly.Fish.Explorer
             listViewWaters.Shine();
             listViewSamplers.Shine();
             listViewInvestigators.Shine();
+            listViewDates.Shine();
 
             spreadSheetArtefactCard.UpdateStatus();
             spreadSheetArtefactSpecies.UpdateStatus();
@@ -446,6 +447,8 @@ namespace Mayfly.Fish.Explorer
                 double q = FullStack.Quantity();
                 double w = FullStack.Mass();
 
+                labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
+                labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
                 statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
                 statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
 
@@ -712,15 +715,16 @@ namespace Mayfly.Fish.Explorer
 
         #region Fishery
 
-        private void menuItemGearClass_Click(object sender, EventArgs e)
+        private void menuItemCenosis_Click(object sender, EventArgs e)
         {
-            WizardGearClass selectivityWizard = new WizardGearClass(AllowedStack);
-            selectivityWizard.Show();
+            WizardCenosis wizard = new WizardCenosis(AllowedStack);
+            wizard.Show();
         }
 
-        private void menuItemCommunity_Click(object sender, EventArgs e)
+        private void speciesComposition_Click(object sender, EventArgs e)
         {
-            WizardCommunity wizard = new WizardCommunity(AllowedStack);
+            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            WizardStockComposition wizard = new WizardStockComposition(AllowedStack, speciesRow);
             wizard.Show();
         }
 
@@ -737,13 +741,6 @@ namespace Mayfly.Fish.Explorer
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardGrowthCohorts wizard = new WizardGrowthCohorts(AllowedStack, speciesRow);
-            wizard.Show();
-        }
-
-        private void speciesComposition_Click(object sender, EventArgs e)
-        {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardStockComposition wizard = new WizardStockComposition(AllowedStack, speciesRow);
             wizard.Show();
         }
 
@@ -876,13 +873,20 @@ namespace Mayfly.Fish.Explorer
             if (e.GetOperableFilenames(Fish.UserSettings.Interface.Extension).Length > 0)
             {
                 e.Effect = DragDropEffects.All;
-                labelCards.ForeColor = labelCardsValue.ForeColor = Color.LightGray;
+
+                foreach (Control ctrl in tabPageInfo.Controls)
+                {
+                    ctrl.ForeColor = Color.LightGray;
+                }
             }
         }
 
         private void cards_DragLeave(object sender, EventArgs e)
         {
-            labelCards.ForeColor = labelCardsValue.ForeColor = SystemColors.ControlText;
+            foreach (Control ctrl in tabPageInfo.Controls)
+            {
+                ctrl.ForeColor = SystemColors.ControlText;
+            }
         }
         
 
@@ -907,7 +911,13 @@ namespace Mayfly.Fish.Explorer
         private void listViewInvestigators_ItemActivate(object sender, EventArgs e)
         {
             spreadSheetCard.EnsureFilter(columnCardInvestigator, listViewInvestigators.FocusedItem.Text, loaderCard, menuItemLoadCards_Click);
-        }  
+        }
+
+        private void listViewDates_ItemActivate(object sender, EventArgs e)
+        {
+            DateTime[] dt = (DateTime[])listViewDates.FocusedItem.Tag;
+            spreadSheetCard.EnsureFilter(columnCardWhen, dt[0].ToOADate(), dt[dt.Length - 1].ToOADate() + 1, loaderCard, menuItemLoadCards_Click);
+        }
 
         #endregion        
 
@@ -1756,7 +1766,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (SelectedSamplerType == FishSamplerType.None)
             {
-                Report report = new Report(Resources.Reports.GearStats.Title);
+                Report report = new Report(Resources.Reports.Title.GearStats);
                 AllowedStack.AddCommon(report);
                 AllowedStack.Sort();
                 AllowedStack.AddGearStatsReport(report);
@@ -1765,7 +1775,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.GearStats.Title_1, SelectedSamplerType.ToDisplay()));
+                Report report = new Report(string.Format(Resources.Reports.Title.GearStatsSingleType, SelectedSamplerType.ToDisplay()));
                 CardStack gearStack = AllowedStack.GetStack(SelectedSamplerType);
                 gearStack.AddCommon(report);
                 gearStack.Sort();
@@ -1833,7 +1843,7 @@ namespace Mayfly.Fish.Explorer
 
             if (baseSpc == null)
             {
-                Composition speciesComposition = AllowedStack.GetCommunityComposition();
+                Composition speciesComposition = AllowedStack.GetCenosisComposition();
                 for (int i = 0; i < speciesComposition.Count; i++)
                 {
                     DataGridViewRow gridRow = new DataGridViewRow();
@@ -2723,12 +2733,7 @@ namespace Mayfly.Fish.Explorer
                 AllowedStack.Sort();
                 AllowedStack.AddSpeciesStatsReport(report, lvl);
                 report.EndBranded();
-                report.Run();                
-
-                //Report report1 = new Report(string.Format(Resources.Reports.SpeciesStats.Header4, Service.Localize(data.Individual.AgeColumn.Caption)));
-                //AllowedStack.AddSpeciesSurveySuggestionReport(report1);
-                //report1.EndBranded();
-                //report1.Run();
+                report.Run();  
             }
             else
             {
@@ -3006,6 +3011,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     // Reset Total mass status text
                     statusMass.ResetFormatted(AllowedStack.Mass());
+                    labelWgtValue.Text = Wild.Service.GetFriendlyMass(AllowedStack.Mass() * 1000);
                 }
 
             }
@@ -3484,7 +3490,7 @@ namespace Mayfly.Fish.Explorer
                 Composition composition;
 
                 if (baseSpc == null) {
-                    composition = stack.GetCommunityComposition();
+                    composition = stack.GetCenosisComposition();
                 } else {
                     composition = stack.GetTaxonomicComposition(baseSpc);
                 }
@@ -3502,7 +3508,7 @@ namespace Mayfly.Fish.Explorer
             Composition composition;
 
             if (baseSpc == null) {
-                composition = AllowedStack.GetCommunityCompositionFrame();
+                composition = AllowedStack.GetCenosisCompositionFrame();
             } else {
                 composition = AllowedStack.GetTaxonomicCompositionFrame(baseSpc);
             }

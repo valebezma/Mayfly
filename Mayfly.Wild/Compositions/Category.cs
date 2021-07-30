@@ -345,7 +345,7 @@ namespace Mayfly.Wild
 
         public double Sanders_1960()
         {
-            // Sanders H.L. Benthic studies in Buzzards Bay. III. The soft-bottom community. //Limnol. Oceanogr. 1960. V. 5. № 2.                    
+            // Sanders H.L. Benthic studies in Buzzards Bay. III. The soft-bottom cenosis. //Limnol. Oceanogr. 1960. V. 5. № 2.                    
             //double r = 0;
             //for (int i = 10; i > 0; i--)
             //{

@@ -964,6 +964,12 @@ namespace Mayfly.Wild
                 return refEntry == null ? this.Species : refEntry.FullName;
             }
 
+            public string GetShortName(SpeciesKey key)
+            {
+                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
+                return refEntry == null ? this.Species : refEntry.Local;
+            }
+
             public string GetFullNameReport(SpeciesKey key)
             {
                 SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);

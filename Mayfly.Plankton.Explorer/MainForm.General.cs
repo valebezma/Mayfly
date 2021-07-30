@@ -28,7 +28,7 @@ namespace Mayfly.Plankton.Explorer
 
             set
             {
-                menuItemCommunity.Enabled = 
+                menuItemCenosis.Enabled = 
                     !value;
                 tabControl.AllowDrop =
                     spreadSheetInd.Enabled = 
@@ -68,7 +68,7 @@ namespace Mayfly.Plankton.Explorer
 
                 menuItemSaveSet.Enabled =
                 menuItemSample.Enabled =
-                menuItemCommunity.Enabled =
+                menuItemCenosis.Enabled =
                     !value;
             }
         }
@@ -220,7 +220,7 @@ namespace Mayfly.Plankton.Explorer
         private void briefBase_Click(object sender, EventArgs e)
         {
             //SpeciesKey.BaseRow baseRow = (SpeciesKey.BaseRow)((ToolStripMenuItem)sender).Tag;
-            //Report report = new Report(Resources.Reports.Community.Title);
+            //Report report = new Report(Resources.Reports.Cenosis.Title);
             //FullStack.AddBrief(report, baseRow);
             //report.Run();
         }

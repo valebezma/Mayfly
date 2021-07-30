@@ -249,6 +249,7 @@ namespace Mayfly.Extensions
                 (object sender, EventArgs e) => { original.Sync(form); });
             form.LocationChanged += new EventHandler(
                 (object sender, EventArgs e) => { original.Sync(form); });
+            //original.VisibleChanged += new EventHandler((object sender, EventArgs e) => { form.Visible = original.Visible; });
 
 
             foreach (Control c in form.Controls.OfType<WizardControl>())
@@ -265,6 +266,12 @@ namespace Mayfly.Extensions
             original.Hide();
         }
 
+        public static Form GetForm(this Control ctrl)
+        {
+            object o = ctrl.Parent;
+            return (o is Form) ? (Form)o : GetForm((Control)o);
+        }
+
         public static void EnsureSelected(this WizardControl ctrl, WizardPage page)
         {
             if (ctrl.SelectedPage == null) return;
@@ -278,6 +285,78 @@ namespace Mayfly.Extensions
             while (ctrl.SelectedPage != page) {
                 ctrl.NextPage();
             }
+        }
+
+
+
+        public static void SaveAllCheckStates(this Form form)
+        {
+            SaveAllCheckStates(form.Controls);
+        }
+
+        public static void SaveAllCheckStates(this Control.ControlCollection collection)
+        {
+            foreach (Control ctrl in collection)
+            {
+                if (ctrl is CheckBox)
+                {
+                    ((CheckBox)ctrl).SaveCheckState();
+                }
+                else if (ctrl is WizardControl)
+                {
+                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages)
+                    {
+                        SaveAllCheckStates(wzrdPage.Controls);
+                    }
+                }
+                else if (ctrl.Controls.Count > 0)
+                {
+                    SaveAllCheckStates(ctrl.Controls);
+                }
+            }
+        }
+
+        public static void RestoreAllCheckStates(this Form form)
+        {
+            RestoreAllCheckStates(form.Controls);
+            form.FormClosing += Form_FormClosing;
+        }
+
+        private static void Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ((Form)sender).SaveAllCheckStates();
+        }
+
+        public static void RestoreAllCheckStates(this Control.ControlCollection collection)
+        {
+            foreach (Control ctrl in collection)
+            {
+                if (ctrl is CheckBox)
+                {
+                    ((CheckBox)ctrl).RestoreCheckState();
+                }
+                else if (ctrl is WizardControl)
+                {
+                    foreach (WizardPage wzrdPage in ((WizardControl)ctrl).Pages)
+                    {
+                        RestoreAllCheckStates(wzrdPage.Controls);
+                    }
+                }
+                else if (ctrl.Controls.Count > 0)
+                {
+                    RestoreAllCheckStates(ctrl.Controls);
+                }
+            }
+        }
+
+        public static void SaveCheckState(this CheckBox checkBox)
+        {
+            Service.SaveCheckState(GetForm(checkBox).Name, checkBox.Name, checkBox.CheckState);
+        }
+
+        public static void RestoreCheckState(this CheckBox checkBox)
+        {
+            checkBox.CheckState = Service.GetCheckState(GetForm(checkBox).Name, checkBox.Name);
         }
     }
 }

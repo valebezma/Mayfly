@@ -312,9 +312,9 @@ namespace Mayfly.Sedimentation
                 table1.EndRow();
                 report.AddTable(table1);
 
-                report.AddSubtitle("Материал и методы");
+                report.AddSectionTitle("Материал и методы");
 
-                report.AddSubtitle3("Исходные данные и их производные, принятые для моделирования");
+                report.AddSectionTitle("Исходные данные и их производные, принятые для моделирования");
 
                 #region Initials
 
@@ -469,7 +469,7 @@ namespace Mayfly.Sedimentation
 
                 if (methods)
                 {
-                    report.AddSubtitle3("Методы");
+                    report.AddSectionTitle("Методы");
 
                     #region Methods
 
@@ -671,11 +671,11 @@ namespace Mayfly.Sedimentation
                     #endregion
                 }
 
-                report.AddSubtitle("Результаты");
+                report.AddSectionTitle("Результаты");
 
                 if (impact)
                 {
-                    report.AddSubtitle3(resources.GetString("checkBoxImpact.Text"));
+                    report.AddSectionTitle(resources.GetString("checkBoxImpact.Text"));
 
                     if (model is ModelNgavt)
                     {
@@ -930,7 +930,7 @@ namespace Mayfly.Sedimentation
 
                 if (criticals && this.GetCriticalLoadRows().Length > 0)
                 {
-                    report.AddSubtitle3(resources.GetString("checkBoxCriticals.Text"));
+                    report.AddSectionTitle(resources.GetString("checkBoxCriticals.Text"));
 
                     #region Criticals
 

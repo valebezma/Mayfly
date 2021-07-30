@@ -892,12 +892,12 @@ namespace Mayfly.Benthos.Explorer
             RecoveredIndividualRows.Clear();
             Report = new Report(Wild.Resources.Interface.MassRecover.Header);
 
-            Report.AddSubtitle(Wild.Resources.Interface.MassRecover.Section1Title);
+            Report.AddSectionTitle(Wild.Resources.Interface.MassRecover.Section1Title);
             NaturalData.GetStack().AddCommon(Report);
 
             #region Association
 
-            Report.AddSubtitle(Wild.Resources.Interface.MassRecover.Section2Title);
+            Report.AddSectionTitle(Wild.Resources.Interface.MassRecover.Section2Title);
 
             // table of Associates
             Report.Table table1 = new Report.Table(Wild.Resources.Interface.MassRecover.TableAscHeader);
@@ -941,14 +941,14 @@ namespace Mayfly.Benthos.Explorer
 
             #endregion
 
-            Report.AddSubtitle(Wild.Resources.Interface.MassRecover.Section3Title);
+            Report.AddSectionTitle(Wild.Resources.Interface.MassRecover.Section3Title);
 
             foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
             {
                 Data.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
                 if (speciesRow == null) continue;
 
-                Report.AddSubtitle3(speciesRow.Species);
+                Report.AddSectionTitle(speciesRow.Species);
 
                 List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
 

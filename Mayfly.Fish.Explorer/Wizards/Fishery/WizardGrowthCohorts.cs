@@ -36,6 +36,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             WeightModels = new List<Scatterplot>();
 
             ColumnCohAge.ValueType = typeof(Age);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardGrowthCohorts(CardStack data, Data.SpeciesRow speciesRow) : this()

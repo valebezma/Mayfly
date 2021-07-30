@@ -22,22 +22,31 @@ namespace Mayfly.Wild
             return value.ToStratifiedDots(0);
         }
 
-        public static string ToStratifiedDots(this int value, int maxlength)
+        public static string ToStratifiedDots(this int value, int maxlength) // Should return some divs with classes 'dot10', 'dot9' etc.
         {
             string result = string.Empty;
 
             // 1 - Find tens
             int tens = value / 10;
 
-            // 2 - Find rest of tens
-            int rest = value - tens * 10;
-
             int currlength = 0;
+
+            result += "<div class='counter-container'>";
 
             for (int i = 0; i < tens; i++)
             {
                 currlength++;
-                result += string.Format("<img src='{0}\\interface\\reports\\img\\dots\\10.png'>", Application.StartupPath);
+
+                result += "<div class='counter'>";
+
+                for (int c = 1; c <= 4; c++) {
+                    result += "<div class='point count-" + c + "'></div>";
+                }
+                for (int c = 5; c <= 10; c++) {
+                    result += "<div class='bar count-" + c + "'></div>";
+                }
+
+                result += "</div>";
 
                 if (maxlength > 0 && currlength == maxlength)
                 {
@@ -45,9 +54,25 @@ namespace Mayfly.Wild
                     currlength = 0;
                 }
             }
-            
-            if (rest > 0) 
-                result += string.Format("<img src='{0}\\interface\\reports\\img\\dots\\{1}.png'>", Application.StartupPath, rest);
+
+            // 2 - Find rest of tens
+            int rest = value % 10;
+
+            if (rest > 0)
+            {
+                result += "<div class='counter'>";
+
+                for (int c = 1; c <= rest; c++) {
+                    result += "<div class='point count-" + c + "'></div>";
+                }
+                for (int c = 5; c <= rest; c++) {
+                    result += "<div class='bar count-" + c + "'></div>";
+                }
+
+                result += "</div>";
+            }
+
+            result += "</div>";
 
             return result;
         }

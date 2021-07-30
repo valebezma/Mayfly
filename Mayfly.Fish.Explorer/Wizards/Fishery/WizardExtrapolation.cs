@@ -110,6 +110,8 @@ namespace Mayfly.Fish.Explorer.Fishery
                 typeof(int);
 
             //pageComposition.Suppress = true;
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardExtrapolation(CardStack data, Data.SpeciesRow speciesRow) : this()
@@ -241,7 +243,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddEffortDescription(report);
+                gearWizard.AddSummarySection(report);
             }
 
             if (checkBoxAbundance.Checked)
@@ -286,8 +288,8 @@ namespace Mayfly.Fish.Explorer.Fishery
                     SpeciesRow.ToHTML(), gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
-                table1.AddHeaderCell(Resources.Reports.GearStats.ColumnGearClass, .25, 2);
-                table1.AddHeaderCell(string.Format(Resources.Reports.GearStats.ColumnEfforts, gearWizard.SelectedUnit.Unit), 2, CellSpan.Rows);
+                table1.AddHeaderCell(Resources.Reports.Column.GearClass, .25, 2);
+                table1.AddHeaderCell(string.Format(Resources.Reports.Column.Efforts, gearWizard.SelectedUnit.Unit), 2, CellSpan.Rows);
                 table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCatch, 2);
                 table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCpue, 2);
                 table1.EndRow();

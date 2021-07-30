@@ -471,7 +471,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 CardStack stack = data.GetStack().GetStack(field, variant);
 
-                Composition composition = stack.GetCommunityComposition();
+                Composition composition = stack.GetCenosisComposition();
                 composition.Name = variant.ToString();
                 result.Add(composition);
             }
@@ -482,7 +482,7 @@ namespace Mayfly.Plankton.Explorer
         private void comparerLog_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             CompositionComparison comcom = new CompositionComparison(
-                data.GetStack().GetCommunityCompositionFrame(),
+                data.GetStack().GetCenosisCompositionFrame(),
                 (List<Composition>)e.Result);
 
             comcom.UpdateCompositionAppearance();

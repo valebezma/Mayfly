@@ -93,6 +93,8 @@ namespace Mayfly.Fish.Explorer.Survey
 
             ColumnOperations.ValueType =
                 typeof(int);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardGearSet(CardStack data)
@@ -142,9 +144,9 @@ namespace Mayfly.Fish.Explorer.Survey
         }
 
 
-        public void AddEffortDescription(Report report)
+        public void AddSummarySection(Report report)
         {
-            SelectedData.AddEffortsReport(report, SelectedSamplerType, SelectedUnit);
+            SelectedData.AddEffortsSection(report, SelectedSamplerType, SelectedUnit);
         }
 
 
@@ -317,11 +319,6 @@ namespace Mayfly.Fish.Explorer.Survey
             }
         }
         
-
-        private void pageEfforts_Initialize(object sender, WizardPageInitEventArgs e)
-        {
-            if (checkBoxSpatial.Enabled) checkBoxSpatial.Checked = UserSettings.MemorizedWeightType.HasFlag(GearWeightType.SpatialRatio);
-        }
 
         private void checkBoxSpatial_EnabledChanged(object sender, EventArgs e)
         {

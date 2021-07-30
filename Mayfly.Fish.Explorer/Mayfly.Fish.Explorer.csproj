@@ -127,15 +127,65 @@
     <Compile Include="Extensions\CardStack.Reports.cs" />
     <Compile Include="Extensions\Data.Bio.cs" />
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Resources\Reports\Column.Designer.cs">
+      <DependentUpon>Column.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Column.ru.Designer.cs">
+      <DependentUpon>Column.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\SampleDetailed.Designer.cs">
+      <DependentUpon>SampleDetailed.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Title.ru.Designer.cs">
+      <DependentUpon>Title.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Title.Designer.cs">
+      <DependentUpon>Title.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Reports\Extrapolation1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Extrapolation.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\GearStats1.Designer.cs">
+    <Compile Include="Resources\Reports\Section\Catches.ru.Designer.cs">
+      <DependentUpon>Catches.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GearStats.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\Catches.Designer.cs">
+      <DependentUpon>Catches.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\Cenosis.Designer.cs">
+      <DependentUpon>Cenosis.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\Efforts.ru.Designer.cs">
+      <DependentUpon>Efforts.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\Efforts.Designer.cs">
+      <DependentUpon>Efforts.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\SampleSize.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleSize.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Reports\SpeciesStats1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -184,11 +234,11 @@
     <Compile Include="Wizards\Fishery\WizardMortalityCohorts.Designer.cs">
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Composition\WizardStock.cs">
+    <Compile Include="Wizards\Summary\WizardPopulation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Composition\WizardStock.Designer.cs">
-      <DependentUpon>WizardStock.cs</DependentUpon>
+    <Compile Include="Wizards\Summary\WizardPopulation.Designer.cs">
+      <DependentUpon>WizardPopulation.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizards\Fishery\WizardExtrapolation.cs">
       <SubType>Form</SubType>
@@ -274,12 +324,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Selectivity.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\StockComposition.ru.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\StockComposition.ru.Designer.cs">
       <DependentUpon>StockComposition.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\StockComposition.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\StockComposition.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StockComposition.resx</DependentUpon>
@@ -315,17 +365,17 @@
     <Compile Include="Wizards\Bio\WizardExport2.Designer.cs">
       <DependentUpon>WizardExport2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\WizardCommunityComposition.cs">
+    <Compile Include="Wizards\WizardCenosisComposition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\WizardCommunityComposition.Designer.cs">
-      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+    <Compile Include="Wizards\WizardCenosisComposition.Designer.cs">
+      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Composition\WizardCommunity.cs">
+    <Compile Include="Wizards\Summary\WizardCenosis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Composition\WizardCommunity.Designer.cs">
-      <DependentUpon>WizardCommunity.cs</DependentUpon>
+    <Compile Include="Wizards\Summary\WizardCenosis.Designer.cs">
+      <DependentUpon>WizardCenosis.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizards\Fishery\WizardMortality.cs">
       <SubType>Form</SubType>
@@ -338,12 +388,6 @@
     </Compile>
     <Compile Include="Wizards\WizardCatchesComposition.Designer.cs">
       <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wizards\Composition\WizardCatch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Wizards\Composition\WizardCatch.Designer.cs">
-      <DependentUpon>WizardCatch.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizards\Survey\WizardSpawning.cs">
       <SubType>Form</SubType>
@@ -413,27 +457,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Community.ru.Designer.cs">
-      <DependentUpon>Community.ru.resx</DependentUpon>
+    <Compile Include="Resources\Reports\Section\Cenosis.ru.Designer.cs">
+      <DependentUpon>Cenosis.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Community.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\Community.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Community.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\GearSelection.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\GearSelection.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GearSelection.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\GearClass.ru.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\GearClass.ru.Designer.cs">
       <DependentUpon>GearClass.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\GearClass.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\GearClass.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GearClass.resx</DependentUpon>
@@ -466,17 +510,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\Rate.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\Rate.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Rate.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Reports\Reports.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\Reports.Designer.cs">
       <DependentUpon>Reports.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Reports.ru.Designer.cs">
+    <Compile Include="Resources\Reports\Absolete\Reports.ru.Designer.cs">
       <DependentUpon>Reports.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -526,11 +570,55 @@
       <DependentUpon>AgeKeyForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearStats.resx">
+    <EmbeddedResource Include="Resources\Reports\Column.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>GearStats1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Column.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearStats.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Column.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Column.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\SampleDetailed.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SampleDetailed.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\SampleDetailed.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Title.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Title.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Title.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Title.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Catches.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Catches.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Catches.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Catches.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Cenosis.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Cenosis.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Efforts.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Efforts.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Efforts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Efforts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\SampleSize.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SampleSize.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\SampleSize.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\SpeciesStats.resx">
@@ -580,12 +668,12 @@
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardStock.resx">
-      <DependentUpon>WizardStock.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\Summary\WizardPopulation.resx">
+      <DependentUpon>WizardPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardStock.ru.resx">
-      <DependentUpon>WizardStock.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\Summary\WizardPopulation.ru.resx">
+      <DependentUpon>WizardPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolation.resx">
@@ -651,11 +739,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Selectivity.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\StockComposition.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\StockComposition.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StockComposition.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\StockComposition.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\StockComposition.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StockComposition.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -687,19 +775,19 @@
       <DependentUpon>WizardExport2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCommunityComposition.resx">
-      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\WizardCenosisComposition.resx">
+      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCommunityComposition.ru.resx">
-      <DependentUpon>WizardCommunityComposition.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\WizardCenosisComposition.ru.resx">
+      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardCommunity.resx">
-      <DependentUpon>WizardCommunity.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\Summary\WizardCenosis.resx">
+      <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardCommunity.ru.resx">
-      <DependentUpon>WizardCommunity.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\Summary\WizardCenosis.ru.resx">
+      <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\Fishery\WizardMortality.resx">
@@ -716,13 +804,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\WizardCatchesComposition.ru.resx">
       <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardCatch.resx">
-      <DependentUpon>WizardCatch.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Composition\WizardCatch.ru.resx">
-      <DependentUpon>WizardCatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\Survey\WizardSpawning.resx">
       <DependentUpon>WizardSpawning.cs</DependentUpon>
@@ -789,29 +870,29 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Growth.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Community.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Section\Cenosis.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Community.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>Cenosis.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Community.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\Community.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Community.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearSelection.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\GearSelection.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GearSelection.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearSelection.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\GearSelection.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearClass.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\GearClass.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GearClass.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\GearClass.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\GearClass.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GearClass.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -862,16 +943,16 @@
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Common.ru.resx" />
-    <EmbeddedResource Include="Resources\Reports\Rate.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\Rate.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Rate.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Rate.ru.resx" />
-    <EmbeddedResource Include="Resources\Reports\Reports.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\Rate.ru.resx" />
+    <EmbeddedResource Include="Resources\Reports\Absolete\Reports.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Reports.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Reports.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Absolete\Reports.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Reports.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -997,6 +1078,7 @@
   <ItemGroup>
     <None Include="Resources\fexplore.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

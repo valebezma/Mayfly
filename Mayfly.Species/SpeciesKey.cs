@@ -486,13 +486,13 @@ namespace Mayfly.Species
 
                     if (!this.IsSpeciesNull())
                     {
-                        result += "<em>" + this.Species + "</em>";
+                        result += "<span class='latin'>" + this.Species + "</span>";
                     }
 
                     foreach (string serviceWord in new string[] { "gr.", "morpha", "ex gr.", "nov.", "sp.", "sp. n." })
                     {
                         result = result.Replace(" " + serviceWord + " ",
-                            "</em> " + serviceWord + " <em>");
+                            "<span class='latin-inside'> " + serviceWord + " </span>");
                     }
 
                     return string.IsNullOrWhiteSpace(result) ? Resources.Interface.UnidentifiedTitle : result;

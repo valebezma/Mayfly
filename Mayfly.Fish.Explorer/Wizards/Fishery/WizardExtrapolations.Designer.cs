@@ -62,7 +62,7 @@
             this.pageReport = new AeroWizard.WizardPage();
             this.checkBoxAbundance = new System.Windows.Forms.CheckBox();
             this.checkBoxStocks = new System.Windows.Forms.CheckBox();
-            this.checkBoxCommunity = new System.Windows.Forms.CheckBox();
+            this.checkBoxCenosis = new System.Windows.Forms.CheckBox();
             this.checkBoxCPUE = new System.Windows.Forms.CheckBox();
             this.checkBoxCatches = new System.Windows.Forms.CheckBox();
             this.labelReport = new System.Windows.Forms.Label();
@@ -299,7 +299,7 @@
             // 
             this.pageReport.Controls.Add(this.checkBoxAbundance);
             this.pageReport.Controls.Add(this.checkBoxStocks);
-            this.pageReport.Controls.Add(this.checkBoxCommunity);
+            this.pageReport.Controls.Add(this.checkBoxCenosis);
             this.pageReport.Controls.Add(this.checkBoxCPUE);
             this.pageReport.Controls.Add(this.checkBoxCatches);
             this.pageReport.Controls.Add(this.labelReport);
@@ -324,13 +324,13 @@
             this.checkBoxStocks.Name = "checkBoxStocks";
             this.checkBoxStocks.UseVisualStyleBackColor = true;
             // 
-            // checkBoxCommunity
+            // checkBoxCenosis
             // 
-            resources.ApplyResources(this.checkBoxCommunity, "checkBoxCommunity");
-            this.checkBoxCommunity.Checked = true;
-            this.checkBoxCommunity.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCommunity.Name = "checkBoxCommunity";
-            this.checkBoxCommunity.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxCenosis, "checkBoxCenosis");
+            this.checkBoxCenosis.Checked = true;
+            this.checkBoxCenosis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCenosis.Name = "checkBoxCenosis";
+            this.checkBoxCenosis.UseVisualStyleBackColor = true;
             // 
             // checkBoxCPUE
             // 
@@ -404,7 +404,7 @@
         private System.Windows.Forms.Label labelStart;
         private AeroWizard.WizardPage pageReport;
         private System.ComponentModel.BackgroundWorker reporter;
-        private System.Windows.Forms.CheckBox checkBoxCommunity;
+        private System.Windows.Forms.CheckBox checkBoxCenosis;
         private System.Windows.Forms.CheckBox checkBoxCPUE;
         private System.Windows.Forms.CheckBox checkBoxCatches;
         private System.Windows.Forms.Label labelReport;

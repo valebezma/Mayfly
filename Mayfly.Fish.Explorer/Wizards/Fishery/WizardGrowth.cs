@@ -45,6 +45,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             columnCrossN.ValueType = typeof(int);
             columnCrossLength.ValueType =
             columnCrossMass.ValueType = typeof(SampleDisplay);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardGrowth(CardStack data, Data.SpeciesRow speciesRow)

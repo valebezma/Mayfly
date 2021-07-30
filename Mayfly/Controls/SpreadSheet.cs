@@ -1984,6 +1984,11 @@ namespace Mayfly.Controls
 
         private FilterEventArgs FilteringArgs;
 
+        public void EnsureFilter(DataGridViewColumn dataGridViewColumn, double startValue, double endValue, BackgroundWorker backgroundWorker, EventHandler launchHandler)
+        {
+            EnsureFilter(new FilterEventArgs(new DataGridViewColumn[] { dataGridViewColumn }, new string[] { startValue.ToString(), endValue.ToString() }, backgroundWorker), launchHandler);
+        }
+
         public void EnsureFilter(DataGridViewColumn[] dataGridViewColumns, string[] values, BackgroundWorker backgroundWorker, EventHandler launchHandler)
         {
             EnsureFilter(new FilterEventArgs(dataGridViewColumns, values, backgroundWorker), launchHandler);
@@ -2001,8 +2006,8 @@ namespace Mayfly.Controls
 
         private void EnsureFilter(FilterEventArgs e, EventHandler launchHandler)
         {
-            if (e.DataGridViewColumns.Length != e.Values.Length)
-                throw new ArgumentException("Columns and Values should be the same length.");
+            //if (e.DataGridViewColumns.Length != e.Values.Length)
+            //    throw new ArgumentException("Columns and Values should be the same length.");
 
             foreach (DataGridViewColumn gridColumn in e.DataGridViewColumns)
             {
@@ -2082,28 +2087,47 @@ namespace Mayfly.Controls
         public void OpenFilter(DataGridViewColumn gridColumn, object value, bool dropPrevious)
         {
             OpenFilter(gridColumn, value, false, dropPrevious);
+            Filter.Apply();
         }
 
         public void OpenFilter(DataGridViewColumn gridColumn, object value, bool negative, bool dropPrevious)
         {
             OpenFilter(dropPrevious);
             Filter.AddFilter(gridColumn, value, negative);
+            Filter.Apply();
         }
 
         public void OpenFilter(DataGridViewColumn gridColumn, double min, double max, bool dropPrevious)
         {
             OpenFilter(dropPrevious);
             Filter.AddFilter(gridColumn, min, max);
+            Filter.Apply();
         }
 
         public void OpenFilter(DataGridViewColumn[] gridColumns, object[] values, bool dropPrevious)
         {
-            OpenFilter(dropPrevious);
-            for (int i = 0; i < gridColumns.Length; i++)
+            if (gridColumns.Length == 1)
             {
-                Filter.AddFilter(gridColumns[i], values[i]);
+                double min = double.MaxValue;
+                double max = double.MinValue;
+
+                foreach (object o in values)
+                {
+                    min = Math.Min(min, o.ToDouble());
+                    max = Math.Max(max, o.ToDouble());
+                }
+
+                OpenFilter(gridColumns[0], min, max, dropPrevious);
             }
-            Filter.Apply();
+            else
+            {
+                OpenFilter(dropPrevious);
+                for (int i = 0; i < gridColumns.Length; i++)
+                {
+                    Filter.AddFilter(gridColumns[i], values[i]);
+                }
+                Filter.Apply();
+            }
         }
 
         public void OpenFilter(DataGridViewColumn[] gridColumns, object[] values)

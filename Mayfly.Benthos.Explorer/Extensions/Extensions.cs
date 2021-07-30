@@ -26,7 +26,7 @@ namespace Mayfly.Benthos.Explorer
         public static void AddCompositionReport(this Composition compos, Report report, CardStack data,
             string formatn, string formatb, string formatp)
         {
-            Report.Table table1 = new Report.Table(Resources.Reports.Community.Header2);
+            Report.Table table1 = new Report.Table(Resources.Reports.Cenosis.Header2);
 
             table1.StartRow();
             table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .5, 2);

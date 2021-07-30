@@ -47,6 +47,8 @@ namespace Mayfly.Fish.Explorer.Survey
                 ColumnCatchesCategory.ValueType =
                 ColumnCatchesSex.ValueType =
                 typeof(string);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardCatchesComposition(CardStack data, Data.SpeciesRow speciesRow, Composition _example) : this()
@@ -163,19 +165,19 @@ namespace Mayfly.Fish.Explorer.Survey
                 PageBreakOption.Landscape);
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App1,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.GearStats.ColumnGearClass,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Column.GearClass,
                 ValueVariant.Quantity, string.Empty);
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App2,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.GearStats.ColumnGearClass,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Column.GearClass,
                 ValueVariant.Mass, "N3");
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App3,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.GearStats.ColumnGearClass,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Column.GearClass,
                 ValueVariant.Abundance, ColumnCatchesAbundance.DefaultCellStyle.Format);
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App4,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.GearStats.ColumnGearClass,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Column.GearClass,
                 ValueVariant.Biomass, ColumnCatchesBiomass.DefaultCellStyle.Format);
 
             report.EndBranded();

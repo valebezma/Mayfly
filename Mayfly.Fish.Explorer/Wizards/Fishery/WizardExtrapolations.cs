@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private WizardGearSet gearWizard;
 
-        private WizardCommunityComposition compositionWizard;
+        private WizardCenosisComposition compositionWizard;
 
         public double Area 
         {
@@ -79,6 +79,8 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             ColumnGamingAge.ValueType = 
                 typeof(Age);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardExtrapolations(CardStack data)
@@ -155,25 +157,38 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddEffortDescription(report);
+                gearWizard.AddSummarySection(report);
             }
 
             if (checkBoxCatches.Checked)
             {
-                compositionWizard.CatchesComposition.AddCatchDescription(Data.Parent, report,
+                compositionWizard.CatchesComposition.AddSummarySection(Data.Parent, report,
                     gearWizard.AbundanceUnits, gearWizard.BiomassUnits);
 
                 //compositionWizard.AddCatchesComposition(report);
             }
 
-            if (checkBoxCommunity.Checked)
+            if (checkBoxCenosis.Checked)
             {
-                compositionWizard.AddEstimatedComposition(report);
+                compositionWizard.AddSummarySection(report);
             }
 
             if (checkBoxStocks.Checked)
             {
                 AddStock(report);
+            }
+
+            if (checkBoxCPUE.Checked)
+            {
+                foreach (Report.Appendix app in compositionWizard.GetCpueAppendices())
+                {
+                    report.AddAppendix(app);
+                }
+            }
+
+            if (checkBoxAbundance.Checked)
+            {
+                compositionWizard.AddAbundanceAppendices(report);
             }
 
             return report;
@@ -385,7 +400,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (compositionWizard == null)
             {
-                compositionWizard = new WizardCommunityComposition(Data);
+                compositionWizard = new WizardCenosisComposition(Data);
                 compositionWizard.Returned += compositionWizard_Returned;
                 compositionWizard.Finished += compositionWizard_Finished;
             }
@@ -532,26 +547,13 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<Report> result = new List<Report>();
-
-            result.Add(GetReport());
-
-            if (checkBoxCPUE.Checked) {
-                result.Add(compositionWizard.GetCpueAppendices());
-            }
-
-            if (checkBoxAbundance.Checked) {
-                result.Add(compositionWizard.GetAbundanceAppendices());
-            }
-
-            e.Result = result.ToArray();
+            e.Result = GetReport();
         }
 
         private void reporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Report rep in (Report[])e.Result) {
-                rep.Run();
-            }
+            ((Report)e.Result).Run();
+
             Log.Write(EventType.WizardEnded, "Extrapolations wizard is finished for with result {1:N2} t.",
                 GamingStocks.GetTotalMass());
             pageReport.SetNavigation(true);

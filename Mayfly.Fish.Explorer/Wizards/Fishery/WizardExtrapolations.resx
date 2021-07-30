@@ -437,7 +437,7 @@ First, you need to specify gear and water parameters.</value>
     <value>27</value>
   </data>
   <data name="labelStocksInstruction.Text" xml:space="preserve">
-    <value>Abundances, biomasses and total stock sizes of all community species are presented below. To change gaming stock correct gaming measure or maturation age.</value>
+    <value>Abundances, biomasses and total stock sizes of all cenosis species are presented below. To change gaming stock correct gaming measure or maturation age.</value>
   </data>
   <data name="&gt;&gt;labelStocksInstruction.Name" xml:space="preserve">
     <value>labelStocksInstruction</value>
@@ -616,43 +616,43 @@ First, you need to specify gear and water parameters.</value>
   <data name="&gt;&gt;checkBoxStocks.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkBoxCommunity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxCenosis.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="checkBoxCommunity.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxCenosis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxCommunity.Enabled" type="System.Boolean, mscorlib">
+  <data name="checkBoxCenosis.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="checkBoxCommunity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxCenosis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxCommunity.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkBoxCenosis.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 188</value>
   </data>
-  <data name="checkBoxCommunity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxCenosis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
-  <data name="checkBoxCommunity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 19</value>
   </data>
-  <data name="checkBoxCommunity.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBoxCenosis.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="checkBoxCommunity.Text" xml:space="preserve">
-    <value>Community composition</value>
+  <data name="checkBoxCenosis.Text" xml:space="preserve">
+    <value>Cenosis composition</value>
   </data>
-  <data name="&gt;&gt;checkBoxCommunity.Name" xml:space="preserve">
-    <value>checkBoxCommunity</value>
+  <data name="&gt;&gt;checkBoxCenosis.Name" xml:space="preserve">
+    <value>checkBoxCenosis</value>
   </data>
-  <data name="&gt;&gt;checkBoxCommunity.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxCenosis.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxCommunity.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxCenosis.Parent" xml:space="preserve">
     <value>pageReport</value>
   </data>
-  <data name="&gt;&gt;checkBoxCommunity.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxCenosis.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="checkBoxCPUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

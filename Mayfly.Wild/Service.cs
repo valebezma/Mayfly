@@ -143,7 +143,7 @@ namespace Mayfly.Wild
             Report.Table table = new Report.Table(title);
             Interval strate = Interval.FromEndpointAndWidth(min, interval);
             int lineLimiter = 0;
-            table.AddHeaderColumns(22);
+            table.AddHeaderColumns(stratesInRow * 2 + 2);
             table.StartRow();
             table.AddCell();
             string subline = string.Empty;
@@ -152,7 +152,6 @@ namespace Mayfly.Wild
             {
                 strate = Interval.FromEndpointAndWidth(l, interval);
                 table.WriteLine("<td class='strate value' colspan='2'>{0}</td>", getQ.Invoke(l));
-
                 subline += string.Format("<td class='strate' colspan='2'>{0}</td>", strate.LeftEndpoint);
 
                 lineLimiter++;
@@ -168,15 +167,14 @@ namespace Mayfly.Wild
                         string.Format("<td class='strate' colspan='2'>{0}</td>", strate.RightEndpoint);
                     table.WriteLine(subline);
                     table.EndRow();
+                    subline = string.Empty;
+                    lineLimiter = 0;
 
-                    if (strate.RightEndpoint < max)
+                    if (strate.RightEndpoint <= max)
                     {
                         table.StartRow();
                         table.AddCell();
-                        subline = string.Empty;
                     }
-
-                    lineLimiter = 0;
                 }
             }
 

@@ -440,6 +440,11 @@ namespace Mayfly.Fish
             return spcRow.GetFullName(UserSettings.SpeciesIndex);
         }
 
+        public static string GetShortName(this Data.SpeciesRow spcRow)
+        {
+            return spcRow.GetShortName(UserSettings.SpeciesIndex);
+        }
+
         /// <summary>
         /// Return universal species Name formatted for HTML
         /// </summary>

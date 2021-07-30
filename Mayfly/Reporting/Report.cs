@@ -56,6 +56,11 @@ namespace Mayfly
                 AddStyleSheet(css);
             }
 
+            if (opt.HasFlag(PageBreakOption.Landscape))
+            {
+                AddStyleSheet("appendix.css");
+            }
+
             foreach (string css in styles) {
                 AddStyleSheet(css);
             }
@@ -136,6 +141,12 @@ namespace Mayfly
             }
         }
 
+        public void AddLocalScript(string script)
+        {
+            string path = Path.Combine(Application.StartupPath, @"interface\reports\js\", script.Substring(0, script.IndexOf(".js") + 3));
+            AddScript(path);
+        }
+
 
 
         public void AddHeader(string text)
@@ -148,22 +159,22 @@ namespace Mayfly
             WriteLine("<h1>{0}</h1>", string.Format(format, values));
         }
 
-        public void AddSubtitle(string text)
+        public void AddChapterTitle(string text)
         {
             WriteLine("<h2>{0}</h2>", text);
         }
 
-        public void AddSubtitle(string format, params string[] values)
+        public void AddChapterTitle(string format, params string[] values)
         {
             WriteLine("<h2>{0}</h2>", string.Format(format, values));
         }
 
-        public void AddSubtitle3(string text)
+        public void AddSectionTitle(string text)
         {
             WriteLine("<h3>{0}</h3>", text);
         }
 
-        public void AddSubtitle3(string format, params string[] values)
+        public void AddSectionTitle(string format, params string[] values)
         {
             WriteLine("<h3>{0}</h3>", string.Format(format, values));
         }
@@ -224,16 +235,19 @@ namespace Mayfly
 
         public void AddEquation(string latex, string lineEnd)
         {
-            AddScript(@"math\MathJax.js?config=TeX-AMS_HTML");
+            AddScript(@"https://polyfill.io/v3/polyfill.min.js?features=es6");
+            AddScript(@"https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js");
+            //AddScript(@"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/MathJax.js?config=TeX-AMS_HTML");
+            //AddScript(@"math\MathJax.js?config=TeX-AMS_HTML");
 
             if (this.UseEquationNumeration)
             {
-                WriteLine("<p>$$" + latex + lineEnd + "\\tag {" + NextEquationNumber + "} $$</p>");
+                WriteLine(@"<p>$$" + latex + lineEnd + "\\tag {" + NextEquationNumber + "} $$</p>");
                 NextEquationNumber++;
             }
             else
             {
-                WriteLine("<p>$$" + latex + lineEnd + "$$</p>");
+                WriteLine(@"<p>$$" + latex + lineEnd + "$$</p>");
             }
         }
 
@@ -310,7 +324,7 @@ namespace Mayfly
         {
             if (References.Count > 0)
             {
-                this.AddSubtitle(Resources.Report.Cited);
+                this.AddSectionTitle(Resources.Report.Cited);
 
                 foreach (string reference in References)
                 {
@@ -365,20 +379,7 @@ namespace Mayfly
             }
 
             foreach (string script in Scripts) {
-
-                try
-                {
-                    string path = Path.Combine(Application.StartupPath, @"interface\reports\js\", script.Substring(0, script.IndexOf(".js") + 3));
-
-                    if (File.Exists(path)) result.WriteLine(
-                        "<script type='text/javascript' src='{0}'></script>",
-                        Path.Combine(Application.StartupPath, @"interface\reports\js\", script)
-                        );
-                }
-                catch
-                {
-                    result.WriteLine(script);
-                }
+                    result.WriteLine("<script type='text/javascript' src='{0}'></script>", script);
             }
 
             result.WriteLine("</head>");

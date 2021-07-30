@@ -48,6 +48,7 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 sampleMass = Math.Round(sampleMass, 3);
+                totalMass = Math.Round(totalMass, 3);
 
                 artefact.Mass = totalMass;
                 artefact.UnsampledMass = totalMass - sampleMass;

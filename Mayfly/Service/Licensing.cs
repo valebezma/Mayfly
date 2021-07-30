@@ -110,11 +110,12 @@ namespace Mayfly
 
         internal static License[] GetLicenses(NetworkCredential credentials)
         {
-            Uri uri = Server.GetUri(Server.ServerHttps, "php/customer/getlicense.php");
+            Uri uri = Server.GetUri(Server.ServerHttps, "php/software/get_license.php");
             Dictionary<string, string> licenseRequestParameters = new Dictionary<string, string>();
             licenseRequestParameters.Add("email", credentials.UserName);
             licenseRequestParameters.Add("password", credentials.Password);
             licenseRequestParameters.Add("hid", Hardware.HardwareID);
+            licenseRequestParameters.Add("hname", Environment.MachineName);
             licenseRequestParameters.Add("uninstall", "0");
             string[] response = Server.GetText(uri, licenseRequestParameters);
 

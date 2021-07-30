@@ -311,6 +311,40 @@ namespace Mayfly
             }
         }
 
+
+        public static CheckState GetCheckState(string formName, string checkBoxName)
+        {
+            return GetCheckState(formName, checkBoxName, CheckState.Checked);
+        }
+
+        public static CheckState GetCheckState(string formName, string checkBoxName, CheckState defaultState)
+        {
+            object result = UserSetting.GetValue(UserSettingPaths.KeyUI,
+                new string[] { UserSettingPaths.CheckState, formName }, checkBoxName);
+
+            if (result == null)
+            {
+                return defaultState;
+            }
+            else
+            {
+                return (CheckState)Convert.ToInt32(result);
+            }
+        }
+
+        public static void SaveCheckState(string formName, string checkBoxName, CheckState state)
+        {
+            UserSetting.SetValue(UserSettingPaths.KeyUI,
+                new string[] { UserSettingPaths.CheckState, formName },
+                checkBoxName, (int)state);
+        }
+
+
+
+
+
+
+
         public static string GetPlaceableLink(string link, string text)
         {
             return string.Format(@"<a target='_blank\' href='{0}'>{1}</a>", link, text);

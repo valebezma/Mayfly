@@ -83,14 +83,14 @@ namespace Mayfly.Plankton.Explorer
             return result / (double)stack.Count;
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack)
         {
-            return stack.GetCommunityComposition(Plankton.UserSettings.SpeciesIndex);
+            return stack.GetCenosisComposition(Plankton.UserSettings.SpeciesIndex);
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, Species.SpeciesKey key)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
         {
-            SpeciesComposition result = stack.GetCommunityCompositionFrame();
+            SpeciesComposition result = stack.GetCenosisCompositionFrame();
 
             foreach (SpeciesSwarm category in result)
             {

@@ -56,7 +56,7 @@ namespace Mayfly.Benthos
 
             if (level.HasFlag(CardReportLevel.Note))
             {
-                report.AddSubtitle(Wild.Resources.Reports.Header.SampleNote);
+                report.AddSectionTitle(Wild.Resources.Reports.Header.SampleNote);
 
                 #region Common
 
@@ -243,7 +243,7 @@ namespace Mayfly.Benthos
             {
                 Data.LogRow[] logRows = cardRow.GetLogRows(Wild.UserSettings.LogOrder);
 
-                report.AddSubtitle(resources.GetString("tabPageLog.Text"));
+                report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
                 if (logRows.Length == 0)
                 {
@@ -267,7 +267,7 @@ namespace Mayfly.Benthos
                 if (level.HasFlag(CardReportLevel.Individuals))
                 {
                     if (UserSettings.BreakBeforeIndividuals) { report.BreakPage(); }
-                    report.AddSubtitle(Wild.Resources.Reports.Header.IndividualsLog);
+                    report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
                     foreach (Data.LogRow logRow in cardRow.GetLogRows())
                     {
                         logRow.AddReport(report);

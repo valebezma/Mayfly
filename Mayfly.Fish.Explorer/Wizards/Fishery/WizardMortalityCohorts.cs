@@ -38,6 +38,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Unused = new List<Scatterplot>();
 
             ColumnCohAge.ValueType = typeof(Age);
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardMortalityCohorts(CardStack data, Data.SpeciesRow speciesRow) : this()

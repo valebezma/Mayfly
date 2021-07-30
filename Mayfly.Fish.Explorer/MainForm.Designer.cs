@@ -154,8 +154,7 @@
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSpawning = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFishery = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGearClass = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCommunity = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemComposition = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemGrowth = new System.Windows.Forms.ToolStripMenuItem();
@@ -165,6 +164,7 @@
             this.menuItemMortalitySustainable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMortalityCohorts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSelectivity = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemStock = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExtrapolation = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExtrapolationAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,12 +220,16 @@
             this.statusMass = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageInfo = new System.Windows.Forms.TabPage();
-            this.labelCards = new System.Windows.Forms.Label();
-            this.labelCardsValue = new System.Windows.Forms.Label();
+            this.labelWgt = new System.Windows.Forms.Label();
+            this.labelWgtValue = new System.Windows.Forms.Label();
+            this.labelQty = new System.Windows.Forms.Label();
+            this.labelQtyValue = new System.Windows.Forms.Label();
             this.labelArtefacts = new System.Windows.Forms.Label();
             this.pictureBoxArtefacts = new System.Windows.Forms.PictureBox();
             this.listViewInvestigators = new System.Windows.Forms.ListView();
             this.columnInvestigator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewDates = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewSamplers = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewWaters = new System.Windows.Forms.ListView();
@@ -234,8 +238,9 @@
             this.labelSamplers = new System.Windows.Forms.Label();
             this.labelWaters = new System.Windows.Forms.Label();
             this.labelCollectors = new System.Windows.Forms.Label();
-            this.labelDates = new System.Windows.Forms.Label();
-            this.labelDatesValue = new System.Windows.Forms.Label();
+            this.labelCardCount = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelCardCountValue = new System.Windows.Forms.Label();
             this.tabPageArtefacts = new System.Windows.Forms.TabPage();
             this.tabControlArtefacts = new System.Windows.Forms.TabControl();
             this.tabPageArtefactCards = new System.Windows.Forms.TabPage();
@@ -832,28 +837,22 @@
             // menuFishery
             // 
             this.menuFishery.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemGearClass,
-            this.menuItemCommunity,
+            this.menuItemCenosis,
             this.menuItemComposition,
             this.toolStripSeparator7,
             this.menuItemGrowth,
             this.menuItemMortality,
             this.menuItemSelectivity,
+            this.toolStripSeparator22,
             this.menuItemStock});
             this.menuFishery.Name = "menuFishery";
             resources.ApplyResources(this.menuFishery, "menuFishery");
             // 
-            // menuItemGearClass
+            // menuItemCenosis
             // 
-            this.menuItemGearClass.Name = "menuItemGearClass";
-            resources.ApplyResources(this.menuItemGearClass, "menuItemGearClass");
-            this.menuItemGearClass.Click += new System.EventHandler(this.menuItemGearClass_Click);
-            // 
-            // menuItemCommunity
-            // 
-            this.menuItemCommunity.Name = "menuItemCommunity";
-            resources.ApplyResources(this.menuItemCommunity, "menuItemCommunity");
-            this.menuItemCommunity.Click += new System.EventHandler(this.menuItemCommunity_Click);
+            this.menuItemCenosis.Name = "menuItemCenosis";
+            resources.ApplyResources(this.menuItemCenosis, "menuItemCenosis");
+            this.menuItemCenosis.Click += new System.EventHandler(this.menuItemCenosis_Click);
             // 
             // menuItemComposition
             // 
@@ -905,6 +904,11 @@
             // 
             this.menuItemSelectivity.Name = "menuItemSelectivity";
             resources.ApplyResources(this.menuItemSelectivity, "menuItemSelectivity");
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
             // 
             // menuItemStock
             // 
@@ -1280,18 +1284,22 @@
             // tabPageInfo
             // 
             this.tabPageInfo.AllowDrop = true;
-            this.tabPageInfo.Controls.Add(this.labelCards);
-            this.tabPageInfo.Controls.Add(this.labelCardsValue);
+            this.tabPageInfo.Controls.Add(this.labelWgt);
+            this.tabPageInfo.Controls.Add(this.labelWgtValue);
+            this.tabPageInfo.Controls.Add(this.labelQty);
+            this.tabPageInfo.Controls.Add(this.labelQtyValue);
             this.tabPageInfo.Controls.Add(this.labelArtefacts);
             this.tabPageInfo.Controls.Add(this.pictureBoxArtefacts);
             this.tabPageInfo.Controls.Add(this.listViewInvestigators);
+            this.tabPageInfo.Controls.Add(this.listViewDates);
             this.tabPageInfo.Controls.Add(this.listViewSamplers);
             this.tabPageInfo.Controls.Add(this.listViewWaters);
             this.tabPageInfo.Controls.Add(this.labelSamplers);
             this.tabPageInfo.Controls.Add(this.labelWaters);
             this.tabPageInfo.Controls.Add(this.labelCollectors);
-            this.tabPageInfo.Controls.Add(this.labelDates);
-            this.tabPageInfo.Controls.Add(this.labelDatesValue);
+            this.tabPageInfo.Controls.Add(this.labelCardCount);
+            this.tabPageInfo.Controls.Add(this.label12);
+            this.tabPageInfo.Controls.Add(this.labelCardCountValue);
             resources.ApplyResources(this.tabPageInfo, "tabPageInfo");
             this.tabPageInfo.Name = "tabPageInfo";
             this.tabPageInfo.UseVisualStyleBackColor = true;
@@ -1299,16 +1307,25 @@
             this.tabPageInfo.DragEnter += new System.Windows.Forms.DragEventHandler(this.cards_DragEnter);
             this.tabPageInfo.DragLeave += new System.EventHandler(this.cards_DragLeave);
             // 
-            // labelCards
+            // labelWgt
             // 
-            resources.ApplyResources(this.labelCards, "labelCards");
-            this.labelCards.Name = "labelCards";
+            resources.ApplyResources(this.labelWgt, "labelWgt");
+            this.labelWgt.Name = "labelWgt";
             // 
-            // labelCardsValue
+            // labelWgtValue
             // 
-            resources.ApplyResources(this.labelCardsValue, "labelCardsValue");
-            this.labelCardsValue.Name = "labelCardsValue";
-            this.labelCardsValue.DoubleClick += new System.EventHandler(this.menuItemLoadCards_Click);
+            resources.ApplyResources(this.labelWgtValue, "labelWgtValue");
+            this.labelWgtValue.Name = "labelWgtValue";
+            // 
+            // labelQty
+            // 
+            resources.ApplyResources(this.labelQty, "labelQty");
+            this.labelQty.Name = "labelQty";
+            // 
+            // labelQtyValue
+            // 
+            resources.ApplyResources(this.labelQtyValue, "labelQtyValue");
+            this.labelQtyValue.Name = "labelQtyValue";
             // 
             // labelArtefacts
             // 
@@ -1342,6 +1359,26 @@
             // columnInvestigator
             // 
             resources.ApplyResources(this.columnInvestigator, "columnInvestigator");
+            // 
+            // listViewDates
+            // 
+            resources.ApplyResources(this.listViewDates, "listViewDates");
+            this.listViewDates.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewDates.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listViewDates.FullRowSelect = true;
+            this.listViewDates.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listViewDates.HideSelection = false;
+            this.listViewDates.Name = "listViewDates";
+            this.listViewDates.ShowGroups = false;
+            this.listViewDates.TileSize = new System.Drawing.Size(230, 25);
+            this.listViewDates.UseCompatibleStateImageBehavior = false;
+            this.listViewDates.View = System.Windows.Forms.View.Tile;
+            this.listViewDates.ItemActivate += new System.EventHandler(this.listViewDates_ItemActivate);
+            // 
+            // columnHeader1
+            // 
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // listViewSamplers
             // 
@@ -1408,15 +1445,21 @@
             resources.ApplyResources(this.labelCollectors, "labelCollectors");
             this.labelCollectors.Name = "labelCollectors";
             // 
-            // labelDates
+            // labelCardCount
             // 
-            resources.ApplyResources(this.labelDates, "labelDates");
-            this.labelDates.Name = "labelDates";
+            resources.ApplyResources(this.labelCardCount, "labelCardCount");
+            this.labelCardCount.Name = "labelCardCount";
             // 
-            // labelDatesValue
+            // label12
             // 
-            resources.ApplyResources(this.labelDatesValue, "labelDatesValue");
-            this.labelDatesValue.Name = "labelDatesValue";
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // labelCardCountValue
+            // 
+            resources.ApplyResources(this.labelCardCountValue, "labelCardCountValue");
+            this.labelCardCountValue.Name = "labelCardCountValue";
+            this.labelCardCountValue.DoubleClick += new System.EventHandler(this.menuItemLoadCards_Click);
             // 
             // tabPageArtefacts
             // 
@@ -4170,9 +4213,7 @@
         private System.Windows.Forms.ListView listViewWaters;
         private System.Windows.Forms.ColumnHeader columnHeaderWaterName;
         private System.Windows.Forms.Label labelWaters;
-        private System.Windows.Forms.Label labelDatesValue;
         private System.Windows.Forms.Label labelCollectors;
-        private System.Windows.Forms.Label labelDates;
         private System.Windows.Forms.ImageList imageListWaters;
         private System.Windows.Forms.ToolStripMenuItem menuFishery;
         private Mayfly.Controls.SpreadSheet spreadSheetInd;
@@ -4307,7 +4348,7 @@
         private TaskDialogs.TaskDialogButton tdbRecoverContinue;
         private TaskDialogs.TaskDialogButton tdbRecoverCancel;
         private System.Windows.Forms.ToolStripMenuItem contextCardOpenFolder;
-        private System.Windows.Forms.ToolStripMenuItem menuItemCommunity;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
         private System.ComponentModel.BackgroundWorker artefactFinder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolationAll;
@@ -4340,7 +4381,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemSurveyInput;
         private System.ComponentModel.BackgroundWorker modelCalc;
         private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGearClass;
         private System.ComponentModel.BackgroundWorker calcModel;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -4572,8 +4612,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedInterval;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedTo;
-        private System.Windows.Forms.Label labelCards;
-        private System.Windows.Forms.Label labelCardsValue;
+        private System.Windows.Forms.Label labelCardCountValue;
         private Wild.Controls.StratifiedSample stratifiedSample;
         private System.Windows.Forms.ToolStripMenuItem stratifiedSamplesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printStratifiedSamplesToolStripMenuItem;
@@ -4592,5 +4631,14 @@
         private System.Windows.Forms.ToolStripMenuItem fecundityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem growthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem parasitesToolStripMenuItem;
+        private System.Windows.Forms.ListView listViewDates;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelCardCount;
+        private System.Windows.Forms.Label labelWgt;
+        private System.Windows.Forms.Label labelWgtValue;
+        private System.Windows.Forms.Label labelQty;
+        private System.Windows.Forms.Label labelQtyValue;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
     }
 }

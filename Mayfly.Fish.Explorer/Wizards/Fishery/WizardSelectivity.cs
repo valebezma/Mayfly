@@ -58,7 +58,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddEffortDescription(report);
+                gearWizard.AddSummarySection(report);
             }
 
             if (checkBoxLength.Checked)
@@ -70,9 +70,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 CatchesComposition.SeparateCompositions.ToArray().AddCompositionTable(report, 
                     string.Format(Resources.Reports.Selectivity.Table1, SpeciesRow.ToHTML()),
-                    CatchesComposition.Name, 
-                    Resources.Reports.GearStats.ColumnGearClass, 
-                    ValueVariant.Abundance, "N3");
+                    CatchesComposition.Name, Resources.Reports.Column.GearClass, ValueVariant.Abundance, "N3");
 
                 report.AddParagraph(Resources.Reports.Selectivity.Paragraph2, report.NextTableNumber);
 

@@ -9,7 +9,7 @@ namespace Mayfly
         private static void Write(UserActionEventArgs e)
         {
             if (!UserSettings.ShareDiagnostics) return;
-            Uri uri = Server.GetUri(Server.ServerHttps, "php/log.php");
+            Uri uri = Server.GetUri(Server.ServerHttps, "php/software/log.php");
             Dictionary<string, string> logParameters = new Dictionary<string, string>();
             logParameters.Add("logevent", e.GetLogLine());
             logParameters.Add("login", "mayfly-logger");

@@ -232,7 +232,7 @@
             this.menuItemSpcSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpcDiversity = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCommunity = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemService = new System.Windows.Forms.ToolStripMenuItem();
@@ -1546,15 +1546,15 @@
             // menuItemLog
             // 
             this.menuItemLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemCommunity});
+            this.menuItemCenosis});
             this.menuItemLog.Name = "menuItemLog";
             resources.ApplyResources(this.menuItemLog, "menuItemLog");
             // 
-            // menuItemCommunity
+            // menuItemCenosis
             // 
-            this.menuItemCommunity.Name = "menuItemCommunity";
-            resources.ApplyResources(this.menuItemCommunity, "menuItemCommunity");
-            this.menuItemCommunity.Click += new System.EventHandler(this.menuItemComCom_Click);
+            this.menuItemCenosis.Name = "menuItemCenosis";
+            resources.ApplyResources(this.menuItemCenosis, "menuItemCenosis");
+            this.menuItemCenosis.Click += new System.EventHandler(this.menuItemComCom_Click);
             // 
             // menuItemIndividuals
             // 
@@ -2017,7 +2017,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGrade;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
-        private System.Windows.Forms.ToolStripMenuItem menuItemCommunity;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
         private System.ComponentModel.BackgroundWorker comparerLog;
         private System.ComponentModel.BackgroundWorker backSpecSheetLoader;
         private System.Windows.Forms.ToolStripMenuItem menuItemExportSpec;

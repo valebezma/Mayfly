@@ -815,10 +815,10 @@
   <data name="menuItemBrief.Text" xml:space="preserve">
     <value>Краткий отчет</value>
   </data>
-  <data name="menuItemCommunity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 20</value>
   </data>
-  <data name="menuItemCommunity.Text" xml:space="preserve">
+  <data name="menuItemCenosis.Text" xml:space="preserve">
     <value>Донные сообщества</value>
   </data>
   <data name="menuItemAssignVariants.Size" type="System.Drawing.Size, System.Drawing">

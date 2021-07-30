@@ -290,7 +290,7 @@ namespace Mayfly.Fish.Explorer
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Selectivity.Column2_1, .2, 2);
-            table1.AddHeaderCell(Resources.Reports.GearStats.ColumnGearClass, Dimension);
+            table1.AddHeaderCell(Resources.Reports.Column.GearClass, Dimension);
             table1.AddHeaderCell(Resources.Reports.Selectivity.Column2_2, 2, CellSpan.Rows);
             table1.EndRow();
 

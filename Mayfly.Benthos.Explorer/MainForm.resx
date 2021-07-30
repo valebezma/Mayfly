@@ -2408,13 +2408,13 @@
     <value>173, 22</value>
   </data>
   <data name="menuItemBrief.Text" xml:space="preserve">
-    <value>Community report</value>
+    <value>Cenosis report</value>
   </data>
-  <data name="menuItemCommunity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 20</value>
   </data>
-  <data name="menuItemCommunity.Text" xml:space="preserve">
-    <value>Benthic community</value>
+  <data name="menuItemCenosis.Text" xml:space="preserve">
+    <value>Benthic cenosis</value>
   </data>
   <data name="menuItemAssignVariants.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 22</value>
@@ -3413,10 +3413,10 @@
   <data name="&gt;&gt;allSpeciesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemCommunity.Name" xml:space="preserve">
-    <value>menuItemCommunity</value>
+  <data name="&gt;&gt;menuItemCenosis.Name" xml:space="preserve">
+    <value>menuItemCenosis</value>
   </data>
-  <data name="&gt;&gt;menuItemCommunity.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItemCenosis.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemBrief.Name" xml:space="preserve">

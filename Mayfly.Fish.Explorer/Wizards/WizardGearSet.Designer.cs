@@ -95,7 +95,6 @@
             this.pageEfforts.Name = "pageEfforts";
             resources.ApplyResources(this.pageEfforts, "pageEfforts");
             this.pageEfforts.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageEfforts_Commit);
-            this.pageEfforts.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.pageEfforts_Initialize);
             // 
             // checkBoxSpatial
             // 

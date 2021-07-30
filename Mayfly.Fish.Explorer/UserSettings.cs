@@ -22,7 +22,7 @@ namespace Mayfly.Fish.Explorer
         {
             Wild.UserSettings.Initialize();
 
-            UserSetting.InitializeRegistry(Path,Assembly.GetCallingAssembly(),
+            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
                 new UserSetting[] {
                     new UserSetting(UserSettingPaths.DefaultCatchability, 20),
                     new UserSetting(UserSettingPaths.MemCategorization, 1),
@@ -42,7 +42,7 @@ namespace Mayfly.Fish.Explorer
 
         public static object GetValue(string path, string key)
         {
-            if (UserSetting.InitializationRequired(Path, 
+            if (UserSetting.InitializationRequired(Path,
                 Assembly.GetCallingAssembly()))
             {
                 Initialize();
@@ -123,7 +123,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                string[] values = (string[]) UserSetting.GetValue(Path, Wild.UserSettingPaths.Bios);
+                string[] values = (string[])UserSetting.GetValue(Path, Wild.UserSettingPaths.Bios);
                 return values.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension);
             }
 
@@ -158,7 +158,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
         }
-        
+
 
 
         //public static CategoryType MemorizedCategorization
@@ -169,23 +169,25 @@ namespace Mayfly.Fish.Explorer
 
         public static FishSamplerType MemorizedSamplerType
         {
-            get {
-                object o = GetValue(Path, UserSettingPaths.MemSamplerType);
-                if (o == null) return FishSamplerType.None;
-                else return (FishSamplerType)(int)o; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.MemSamplerType, (int)value); }
-        }
-
-        public static GearWeightType MemorizedWeightType
-        {
             get
             {
                 object o = GetValue(Path, UserSettingPaths.MemSamplerType);
-                if (o == null) return GearWeightType.None;
-                else return (GearWeightType)(int)o;
+                if (o == null) return FishSamplerType.None;
+                else return (FishSamplerType)(int)o;
             }
-            set { UserSetting.SetValue(Path, UserSettingPaths.MemWeightType, (int)value); }
+            set { UserSetting.SetValue(Path, UserSettingPaths.MemSamplerType, (int)value); }
         }
+
+        //public static GearWeightType MemorizedWeightType
+        //{
+        //    get
+        //    {
+        //        object o = GetValue(Path, UserSettingPaths.MemWeightType);
+        //        if (o == null) return GearWeightType.None;
+        //        else return (GearWeightType)(int)o;
+        //    }
+        //    set { UserSetting.SetValue(Path, UserSettingPaths.MemWeightType, (int)value); }
+        //}
 
         public static double MemorizedWaterArea
         {
@@ -213,55 +215,55 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        public static bool MemorizedMassRecoveryUseRaw
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-                Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.UseRaw));
-            }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                Wild.UserSettingPaths.UseRaw, value);
-            }
-        }
+        //public static bool MemorizedMassRecoveryUseRaw
+        //{
+        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
+        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.UseRaw));
+        //    }
+        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
+        //        Wild.UserSettingPaths.UseRaw, value);
+        //    }
+        //}
 
-        public static bool MemorizedMassRecoveryRestoreAssociation
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-                Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RestoreAssociation));
-            }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                Wild.UserSettingPaths.RestoreAssociation, value);
-            }
-        }
+        //public static bool MemorizedMassRecoveryRestoreAssociation
+        //{
+        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
+        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RestoreAssociation));
+        //    }
+        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
+        //        Wild.UserSettingPaths.RestoreAssociation, value);
+        //    }
+        //}
 
-        public static bool MemorizedMassRecoveryProtocol
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-                Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Protocol));
-            }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                Wild.UserSettingPaths.Protocol, value);
-            }
-        }
+        //public static bool MemorizedMassRecoveryProtocol
+        //{
+        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
+        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Protocol));
+        //    }
+        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
+        //        Wild.UserSettingPaths.Protocol, value);
+        //    }
+        //}
 
-        public static bool MemorizedMassRecoveryExplore
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-                Wild.UserSettingPaths.MassRestoration, UserSettingPaths.Explore));
-            }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                UserSettingPaths.Explore, value);
-            }
-        }
+        //public static bool MemorizedMassRecoveryExplore
+        //{
+        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
+        //        Wild.UserSettingPaths.MassRestoration, UserSettingPaths.Explore));
+        //    }
+        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
+        //        UserSettingPaths.Explore, value);
+        //    }
+        //}
 
-        public static double MemorizedMassRecoveryRequiredStrength
-        {
-            get { return (double)(int) UserSetting.GetValue(Path,
-                Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RequiredStrength) / 100;
-            }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                Wild.UserSettingPaths.RequiredStrength, (int)(value * 100));
-            }
-        }
+        //public static double MemorizedMassRecoveryRequiredStrength
+        //{
+        //    get { return (double)(int) UserSetting.GetValue(Path,
+        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RequiredStrength) / 100;
+        //    }
+        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
+        //        Wild.UserSettingPaths.RequiredStrength, (int)(value * 100));
+        //    }
+        //}
 
 
         public static int RequiredClassSize { get { return 10; } }
@@ -277,9 +279,9 @@ namespace Mayfly.Fish.Explorer
             set { UserSetting.SetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType, (int)value); }
         }
 
-//public static DistributionType SelectionCurveType { get { return DistributionType.Normal; } }
+        //public static DistributionType SelectionCurveType { get { return DistributionType.Normal; } }
 
-public static Color ModelColor { get { return Color.CadetBlue; } }
+        public static Color ModelColor { get { return Color.CadetBlue; } }
     }
 
     public abstract class UserSettingPaths

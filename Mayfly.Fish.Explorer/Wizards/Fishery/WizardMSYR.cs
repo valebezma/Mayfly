@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGrowth.Checked)
             {
-                report.AddSubtitle3(
+                report.AddSectionTitle(
                     string.Format(Resources.Reports.Growth.Title,
                     SpeciesRow.ToHTML()));
                 growthWizard.AddGrowth(report);
@@ -70,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxYR.Checked)
             {
-                report.AddSubtitle3(Resources.Reports.MSYR.Title1);
+                report.AddSectionTitle(Resources.Reports.MSYR.Title1);
 
                 report.AddParagraph(
                     string.Format(Resources.Reports.MSYR.Paragraph1, model.Tr, model.Tc, model.M));

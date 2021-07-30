@@ -772,9 +772,9 @@ namespace Mayfly.Extensions
         
         
 
-        public static Composition GetCommunityComposition(this Data data)
+        public static Composition GetCenosisComposition(this Data data)
         {
-            return data.GetStack().GetCommunityComposition();
+            return data.GetStack().GetCenosisComposition();
         }
 
         public static void AddSpeciesMenus(this ToolStripMenuItem item, CardStack stack, EventHandler command)

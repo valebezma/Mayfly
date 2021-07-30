@@ -13,19 +13,19 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, ExpressionVariant variant)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, ExpressionVariant variant)
         {
-            return stack.GetCommunityComposition(Fish.UserSettings.SpeciesIndex, variant);
+            return stack.GetCenosisComposition(Fish.UserSettings.SpeciesIndex, variant);
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack)
         {
-            return stack.GetCommunityComposition(Fish.UserSettings.SpeciesIndex);
+            return stack.GetCenosisComposition(Fish.UserSettings.SpeciesIndex);
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, Species.SpeciesKey key)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
         {
-            SpeciesComposition result = stack.GetCommunityCompositionFrame();
+            SpeciesComposition result = stack.GetCenosisCompositionFrame();
 
             foreach (SpeciesSwarm category in result)
             {
@@ -49,9 +49,9 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, Species.SpeciesKey key, ExpressionVariant variant)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key, ExpressionVariant variant)
         {
-            SpeciesComposition result = stack.GetCommunityCompositionFrame();
+            SpeciesComposition result = stack.GetCenosisCompositionFrame();
 
             foreach (SpeciesSwarm category in result)
             {
@@ -75,7 +75,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static SpeciesComposition GetCommunityComposition(this CardStack stack, SpeciesComposition example)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, SpeciesComposition example)
         {
             SpeciesComposition result = new SpeciesComposition(string.Empty, example.Count);
 
@@ -105,7 +105,7 @@ namespace Mayfly.Fish.Explorer
 
         public static TaxaComposition GetTaxonomicComposition(this CardStack stack, Species.SpeciesKey.BaseRow baseRow)
         {
-            SpeciesComposition spc = stack.GetCommunityComposition((Species.SpeciesKey)baseRow.Table.DataSet);
+            SpeciesComposition spc = stack.GetCenosisComposition((Species.SpeciesKey)baseRow.Table.DataSet);
 
             TaxaComposition result = new TaxaComposition(spc, baseRow);
 
@@ -429,7 +429,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (CardStack classedStack in classedStacks)
             {
-                Composition classComposition = classedStack.GetCommunityComposition(example);
+                Composition classComposition = classedStack.GetCenosisComposition(example);
                 classComposition.Name = classedStack.Name;
                 classComposition.Weight =
                     (weight.HasFlag(GearWeightType.Effort) ? classedStack.GetEffort(classedStack.GetSamplers()[0].GetSamplerType(), variant) : 1) /

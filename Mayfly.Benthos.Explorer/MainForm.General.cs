@@ -35,7 +35,7 @@ namespace Mayfly.Benthos.Explorer
 
             set
             {
-                menuItemCommunity.Enabled = 
+                menuItemCenosis.Enabled = 
                     !value;
 
                 tabControl.AllowDrop =
@@ -76,7 +76,7 @@ namespace Mayfly.Benthos.Explorer
 
                 menuItemSaveSet.Enabled =
                 menuItemSample.Enabled =
-                menuItemCommunity.Enabled =
+                menuItemCenosis.Enabled =
                     !value;
             }
         }
@@ -226,7 +226,7 @@ namespace Mayfly.Benthos.Explorer
         private void briefBase_Click(object sender, EventArgs e)
         {
             Species.SpeciesKey.BaseRow baseRow = (Species.SpeciesKey.BaseRow)((ToolStripMenuItem)sender).Tag;
-            Report report = new Report(Resources.Reports.Community.Title);
+            Report report = new Report(Resources.Reports.Cenosis.Title);
             FullStack.AddBrief(report, baseRow);
             report.Run();
         }

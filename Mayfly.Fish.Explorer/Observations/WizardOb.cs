@@ -1025,7 +1025,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
                 if (checkBoxGearReport.Checked)
                 {
-                    Report report = new Report(Resources.Reports.GearStats.Title);
+                    Report report = new Report(Resources.Reports.Title.GearStats);
                     CardStack stack = Survey.GetCombinedData().GetStack();
                     stack.AddCommon(report);
                     stack.Sort();

@@ -54,6 +54,8 @@ namespace Mayfly.Fish.Explorer.Fishery
         private WizardVirtualPopulation()
         {
             InitializeComponent();
+
+            this.RestoreAllCheckStates();
         }
 
         public WizardVirtualPopulation(CardStack data, Data.SpeciesRow speciesRow) : this()
@@ -91,19 +93,19 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCatchHistory.Checked)
             {
-                report.AddSubtitle3(Resources.Reports.VPA.Header1);
+                report.AddSectionTitle(Resources.Reports.VPA.Header1);
                 AddHistory(report);
             }
 
             if (checkBoxMortality.Checked)
             {
-                report.AddSubtitle3(Resources.Reports.VPA.Header2);
+                report.AddSectionTitle(Resources.Reports.VPA.Header2);
                 AddMortality(report);
             }
 
             if (checkBoxVpa.Checked)
             {
-                report.AddSubtitle3(Resources.Reports.VPA.Header3);
+                report.AddSectionTitle(Resources.Reports.VPA.Header3);
                 AddVpa(report);
             }
 
