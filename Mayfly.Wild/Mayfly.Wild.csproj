@@ -67,6 +67,7 @@
     <Compile Include="CardStack\CardStack.cs" />
     <Compile Include="CardStack\CardStack.Statistics.cs" />
     <Compile Include="Compositions\AgeComposition.cs" />
+    <Compile Include="Compositions\CompositionColumn.cs" />
     <Compile Include="Compositions\LengthComposition.cs" />
     <Compile Include="Compositions\SpeciesComposition.cs" />
     <Compile Include="Compositions\TaxaComposition.cs" />

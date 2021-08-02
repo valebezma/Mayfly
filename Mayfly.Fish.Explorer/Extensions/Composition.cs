@@ -44,7 +44,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Scatterplot[] GetCatchCurve(this Composition composition, bool isChronic, int _break)
         {
-            if (composition is Cohort &&    isChronic)
+            if (composition is Cohort && isChronic)
                 throw new ArgumentException("Only this provide chronic catch curves.");
 
             BivariateSample unusedAbundances = new BivariateSample();
@@ -136,95 +136,97 @@ namespace Mayfly.Fish.Explorer
         {
             if (composition.Count == 0) return null;
 
-            Report.Table table = new Report.Table(tableCaption);
+            return GetTable(new Composition[] { composition }, tableCaption, siderCaption, "", content);
 
-            table.StartRow();
+            //Report.Table table = new Report.Table(tableCaption);
 
-            table.AddHeaderCell(siderCaption, .25, 2);
+            //table.StartRow();
 
-            if (content.HasFlag(CompositionColumn.LengthSample))
-            {
-                table.AddHeaderCell(Wild.Resources.Reports.Caption.Length + Constants.NoticeHolder, .12, 2);
-                table.AddNotice(Resources.Reports.Notice.SampleFormat, 
-                    Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleLength.ToLowerInvariant())));
-            }
+            //table.AddHeaderCell(siderCaption, .25, 2);
 
-            if (content.HasFlag(CompositionColumn.MassSample))
-            {
-                table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass + Constants.NoticeHolder, .12, 2);
-                table.AddNotice(Resources.Reports.Notice.SampleFormat, 
-                    Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleMass.ToLowerInvariant())));
-            }
+            //if (content.HasFlag(CompositionColumn.LengthSample))
+            //{
+            //    table.AddHeaderCell(Wild.Resources.Reports.Caption.Length + Constants.NoticeHolder, .12, 2);
+            //    table.AddNotice(Resources.Reports.Notice.SampleFormat,
+            //        Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleLength.ToLowerInvariant())));
+            //}
 
-            int u = (content.HasFlag(CompositionColumn.SampleSize) ? 1 : 0) + (content.HasFlag(CompositionColumn.CPUE) ? 1 : 0) + (content.HasFlag(CompositionColumn.Percentage) ? 1 : 0);
-            table.AddHeaderCell(Wild.Resources.Reports.Caption.Quantity, u);
-            table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass, u);
-            if (content.HasFlag(CompositionColumn.SexualRatio))
-            {
-                table.AddHeaderCell(Resources.Reports.Caption.SexualRatio + Constants.NoticeHolder, .12, 2);
-                table.AddNotice(Resources.Reports.Notice.SexualLegend, Sex.Juvenile, Sex.Male, Sex.Female);
-            }
-            table.EndRow();
+            //if (content.HasFlag(CompositionColumn.MassSample))
+            //{
+            //    table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass + Constants.NoticeHolder, .12, 2);
+            //    table.AddNotice(Resources.Reports.Notice.SampleFormat,
+            //        Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleMass.ToLowerInvariant())));
+            //}
 
-            table.StartRow();
+            //int u = (content.HasFlag(CompositionColumn.Quantity) ? 1 : 0) + (content.HasFlag(CompositionColumn.Abundance) ? 1 : 0) + (content.HasFlag(CompositionColumn.AbundanceFraction) ? 1 : 0);
+            //table.AddHeaderCell(Wild.Resources.Reports.Caption.Quantity, u);
+            //table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass, u);
+            //if (content.HasFlag(CompositionColumn.SexRatio))
+            //{
+            //    table.AddHeaderCell(Resources.Reports.Caption.SexualRatio + Constants.NoticeHolder, .12, 2);
+            //    table.AddNotice(Resources.Reports.Notice.SexualLegend, Sex.Juvenile, Sex.Male, Sex.Female);
+            //}
+            //table.EndRow();
 
-            if (content.HasFlag(CompositionColumn.SampleSize)) table.AddHeaderCell(Resources.Reports.Common.Ind);
-            if (content.HasFlag(CompositionColumn.CPUE))
-            {
-                table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Ind, composition.Unit, Constants.NoticeHolder));
-                table.AddNotice(Resources.Reports.Notice.NPUE, composition.Unit, composition.Unit);
-            }
-            if (content.HasFlag(CompositionColumn.Percentage)) table.AddHeaderCell("%");
+            //table.StartRow();
 
-            if (content.HasFlag(CompositionColumn.SampleSize)) table.AddHeaderCell(Resources.Reports.Common.Kg);
-            if (content.HasFlag(CompositionColumn.CPUE))
-            {
-                table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Kg, composition.Unit, Constants.NoticeHolder));
-                table.AddNotice(Resources.Reports.Notice.BPUE, composition.Unit, composition.Unit);
-            }
-            if (content.HasFlag(CompositionColumn.Percentage)) table.AddHeaderCell("%");
+            //if (content.HasFlag(CompositionColumn.Quantity)) table.AddHeaderCell(Resources.Reports.Common.Ind);
+            //if (content.HasFlag(CompositionColumn.Abundance))
+            //{
+            //    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Ind, composition.Unit, Constants.NoticeHolder));
+            //    table.AddNotice(Resources.Reports.Notice.NPUE, composition.Unit, composition.Unit);
+            //}
+            //if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddHeaderCell("%");
 
-            table.EndRow();
+            //if (content.HasFlag(CompositionColumn.Quantity)) table.AddHeaderCell(Resources.Reports.Common.Kg);
+            //if (content.HasFlag(CompositionColumn.Abundance))
+            //{
+            //    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Kg, composition.Unit, Constants.NoticeHolder));
+            //    table.AddNotice(Resources.Reports.Notice.BPUE, composition.Unit, composition.Unit);
+            //}
+            //if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddHeaderCell("%");
 
-            foreach (Category category in composition)
-            {
-                if (category.Quantity < 1) continue;
+            //table.EndRow();
 
-                table.StartRow();
-                table.AddCellSider(category);
+            //foreach (Category category in composition)
+            //{
+            //    if (category.Quantity < 1) continue;
 
-                if (content.HasFlag(CompositionColumn.LengthSample)) table.AddCellValue(new SampleDisplay(category.LengthSample), composition.FormatSampleLength);
-                if (content.HasFlag(CompositionColumn.MassSample)) table.AddCellValue(new SampleDisplay(category.MassSample), composition.FormatSampleMass);
+            //    table.StartRow();
+            //    table.AddCellSider(category);
 
-                if (content.HasFlag(CompositionColumn.SampleSize)) table.AddCellRight(category.Quantity);
-                if (content.HasFlag(CompositionColumn.CPUE)) table.AddCellRight(category.Abundance, composition.AbundanceFormat);
-                if (content.HasFlag(CompositionColumn.Percentage)) table.AddCellRight(category.AbundanceFraction, composition.AbundanceFractionFormat);
+            //    if (content.HasFlag(CompositionColumn.LengthSample)) table.AddCellValue(new SampleDisplay(category.LengthSample), composition.FormatSampleLength);
+            //    if (content.HasFlag(CompositionColumn.MassSample)) table.AddCellValue(new SampleDisplay(category.MassSample), composition.FormatSampleMass);
 
-                if (content.HasFlag(CompositionColumn.SampleSize)) table.AddCellRight(category.Mass, composition.MassFormat);
-                if (content.HasFlag(CompositionColumn.CPUE)) table.AddCellRight(category.Biomass, composition.BiomassFormat);
-                if (content.HasFlag(CompositionColumn.Percentage)) table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
+            //    if (content.HasFlag(CompositionColumn.Quantity)) table.AddCellRight(category.Quantity);
+            //    if (content.HasFlag(CompositionColumn.Abundance)) table.AddCellRight(category.Abundance, composition.AbundanceFormat);
+            //    if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddCellRight(category.AbundanceFraction, composition.AbundanceFractionFormat);
 
-                if (content.HasFlag(CompositionColumn.SexualRatio)) table.AddCellValue(category.GetSexualComposition());
+            //    if (content.HasFlag(CompositionColumn.Quantity)) table.AddCellRight(category.Mass, composition.MassFormat);
+            //    if (content.HasFlag(CompositionColumn.Abundance)) table.AddCellRight(category.Biomass, composition.BiomassFormat);
+            //    if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
+
+            //    if (content.HasFlag(CompositionColumn.SexRatio)) table.AddCellValue(category.GetSexualComposition());
 
 
-                table.EndRow();
-            }
+            //    table.EndRow();
+            //}
 
-            table.StartRow();
-            table.AddCell(Mayfly.Resources.Interface.Total);
+            //table.StartRow();
+            //table.AddCell(Mayfly.Resources.Interface.Total);
 
-            if (content.HasFlag(CompositionColumn.LengthSample)) table.AddCell();
-            if (content.HasFlag(CompositionColumn.MassSample)) table.AddCell();
-            if (content.HasFlag(CompositionColumn.SampleSize)) table.AddCellRight(composition.TotalQuantity);
-            if (content.HasFlag(CompositionColumn.CPUE)) table.AddCellRight(composition.TotalAbundance, composition.AbundanceFormat);
-            if (content.HasFlag(CompositionColumn.Percentage)) table.AddCellRight(1, composition.AbundanceFractionFormat);
-            if (content.HasFlag(CompositionColumn.SampleSize)) table.AddCellRight(composition.TotalMass, composition.MassFormat);
-            if (content.HasFlag(CompositionColumn.CPUE)) table.AddCellRight(composition.TotalBiomass, composition.BiomassFormat);
-            if (content.HasFlag(CompositionColumn.Percentage)) table.AddCellRight(1, composition.BiomassFractionFormat);
-            if (content.HasFlag(CompositionColumn.SexualRatio)) table.AddCell();
-            table.EndRow();
+            //if (content.HasFlag(CompositionColumn.LengthSample)) table.AddCell();
+            //if (content.HasFlag(CompositionColumn.MassSample)) table.AddCell();
+            //if (content.HasFlag(CompositionColumn.Quantity)) table.AddCellRight(composition.TotalQuantity);
+            //if (content.HasFlag(CompositionColumn.Abundance)) table.AddCellRight(composition.TotalAbundance, composition.AbundanceFormat);
+            //if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddCellRight(1, composition.AbundanceFractionFormat);
+            //if (content.HasFlag(CompositionColumn.Quantity)) table.AddCellRight(composition.TotalMass, composition.MassFormat);
+            //if (content.HasFlag(CompositionColumn.Abundance)) table.AddCellRight(composition.TotalBiomass, composition.BiomassFormat);
+            //if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddCellRight(1, composition.BiomassFractionFormat);
+            //if (content.HasFlag(CompositionColumn.SexRatio)) table.AddCell();
+            //table.EndRow();
 
-            return table;
+            //return table;
         }
 
         /// <summary>
@@ -236,13 +238,16 @@ namespace Mayfly.Fish.Explorer
         public static Report.Table GetStandardCatchesTable(this Composition composition, string tableCaption, string siderCaption)
         {
             return composition.GetTable(tableCaption,
-                CompositionColumn.LengthSample | CompositionColumn.MassSample | CompositionColumn.SampleSize |
-                CompositionColumn.CPUE | CompositionColumn.Percentage | CompositionColumn.SexualRatio,
+                CompositionColumn.LengthSample | CompositionColumn.MassSample | 
+                CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction | 
+                CompositionColumn.Mass | CompositionColumn.Biomass | CompositionColumn.BiomassFraction |
+                CompositionColumn.SexRatio,
                 siderCaption);
         }
+
         public static Report.Table GetStandardCatchesTable(this Composition composition, string tableCaption)
         {
-            return composition.GetStandardCatchesTable(tableCaption);
+            return composition.GetStandardCatchesTable(tableCaption, composition.Name);
         }
 
 
@@ -251,7 +256,7 @@ namespace Mayfly.Fish.Explorer
         {
             string categoryType = composition.GetCategoryType();
 
-            report.AddSectionTitle(Resources.Reports.Section.Population.Subtitle, categoryType);
+            report.AddSectionTitle(Resources.Reports.Section.Population.Header, categoryType);
 
             report.AddParagraph(Resources.Reports.Section.Population.Paragraph1, categoryType, speciesRow.ToHTML(), report.NextTableNumber);
 
@@ -274,96 +279,255 @@ namespace Mayfly.Fish.Explorer
             }
 
             Report.Table tableCatches = composition.GetTable(
-                string.Format(Resources.Reports.Section.Population.Table1, categoryType),
-                CompositionColumn.SampleSize | CompositionColumn.CPUE | CompositionColumn.Percentage, 
+                string.Format(Resources.Reports.Section.Population.Table, categoryType),
+                CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction,
                 composition.Name);
 
             report.AddTable(tableCatches);
         }
 
-        public static void AddTable(this Composition[] compositions, Report report, 
-            string tableCaption, string sideHeader, string separatesHeader, ValueVariant valueVariant, string format)
+        //public static Report.Table GetRoutineTable(this Composition[] compositions, string tableCaption, string sideHeader, string separatesHeader, Wild.CompositionColumn content, string format)
+        //{
+        //    Report.Table table = new Report.Table(tableCaption);
+
+        //    table.StartRow();
+        //    table.AddHeaderCell(sideHeader, .15, 2);
+        //    table.AddHeaderCell(separatesHeader, compositions.Length);
+        //    table.EndRow();
+
+        //    table.StartRow();
+
+        //    foreach (Composition composition in compositions)
+        //    {
+        //        bool rec = (composition is AgeComposition) && ((AgeComposition)composition).IsRecovered;
+        //        bool add = composition.AdditionalDistributedMass > 0;
+
+        //        table.AddHeaderCell(composition.Name + (rec ? Constants.NoticeHolder : string.Empty) + (add ? Constants.NoticeHolder : string.Empty));
+        //        if (rec) table.AddNotice(Resources.Reports.CatchComposition.Notice2);
+        //        if (add) table.AddNotice(Resources.Reports.CatchComposition.Notice3);
+        //    }
+
+        //    table.EndRow();
+
+        //    Composition example = compositions[0];
+
+        //    for (int i = 0; i < example.Count; i++)
+        //    {
+        //        table.StartRow();
+        //        table.AddCellValue(example[i].Name);
+        //        for (int j = 0; j < compositions.Length; j++)
+        //        {
+        //            double value = 0;
+
+        //            switch (content)
+        //            {
+        //                case Wild.CompositionColumn.Quantity:
+        //                    value = compositions[j][i].Quantity;
+        //                    break;
+        //                case Wild.CompositionColumn.Mass:
+        //                    value = compositions[j][i].Mass;
+        //                    break;
+        //                case Wild.CompositionColumn.Abundance:
+        //                    value = compositions[j][i].Abundance;
+        //                    break;
+        //                case Wild.CompositionColumn.Biomass:
+        //                    value = compositions[j][i].Biomass;
+        //                    break;
+        //            }
+
+        //            if (value > 0) { table.AddCellRight(value, format); }
+        //            else { table.AddCell(); }
+        //        }
+        //        table.EndRow();
+        //    }
+
+        //    table.StartRow();
+        //    table.AddCell(Mayfly.Resources.Interface.Total);
+        //    for (int j = 0; j < compositions.Length; j++)
+        //    {
+        //        double value = 0;
+
+        //        switch (content)
+        //        {
+        //            case Wild.CompositionColumn.Quantity:
+        //                value = compositions[j].TotalQuantity;
+        //                break;
+        //            case Wild.CompositionColumn.Mass:
+        //                value = compositions[j].TotalMass;
+        //                break;
+        //            case Wild.CompositionColumn.Abundance:
+        //                value = compositions[j].TotalAbundance;
+        //                break;
+        //            case Wild.CompositionColumn.Biomass:
+        //                value = compositions[j].TotalBiomass;
+        //                break;
+        //        }
+
+        //        table.AddCellRight(value, format);
+        //    }
+        //    table.EndRow();
+
+        //    return table;
+        //}
+
+
+
+
+
+
+
+
+
+        public static Report.Table GetTable(this Composition[] compositions, string tableCaption, string siderCaption, string separatesHeader, CompositionColumn content)
         {
+            int n = 0;
+
+            if (content.HasFlag(CompositionColumn.LengthSample)) n++;
+            if (content.HasFlag(CompositionColumn.MassSample)) n++;
+            if (content.HasFlag(CompositionColumn.Quantity)) n++;
+            if (content.HasFlag(CompositionColumn.Abundance)) n++;
+            if (content.HasFlag(CompositionColumn.AbundanceFraction)) n++;
+            if (content.HasFlag(CompositionColumn.Mass)) n++;
+            if (content.HasFlag(CompositionColumn.Biomass)) n++;
+            if (content.HasFlag(CompositionColumn.BiomassFraction)) n++;
+            if (content.HasFlag(CompositionColumn.SexRatio)) n++;
+
+            if (n == 0) return null;
+
             Report.Table table = new Report.Table(tableCaption);
 
+            // Header top level
+
             table.StartRow();
-            table.AddHeaderCell(sideHeader, .15, 2);
-            table.AddHeaderCell(separatesHeader, compositions.Length);
+            table.AddHeaderCell(siderCaption, .15, compositions.Length > 1 ? 4 : 2);
+
+            if (compositions.Length > 1)
+            {
+                table.AddHeaderCell(separatesHeader, compositions.Length * n);
+                table.EndRow();
+
+                // Header middle level
+
+                table.StartRow();
+
+                foreach (Composition composition in compositions)
+                {
+                    bool rec = (composition is AgeComposition) && ((AgeComposition)composition).IsRecovered;
+                    bool add = composition.AdditionalDistributedMass > 0;
+
+                    table.AddHeaderCell(composition.Name + (rec ? Constants.NoticeHolder : string.Empty) + (add ? Constants.NoticeHolder : string.Empty), n);
+
+                    if (rec) table.AddNotice(Resources.Reports.CatchComposition.Notice2);
+                    if (add) table.AddNotice(Resources.Reports.CatchComposition.Notice3);
+                }
+
+                table.EndRow();
+
+                // Header bottom level
+
+                table.StartRow();
+            }
+
+            foreach (Composition composition in compositions)
+            {
+                if (content.HasFlag(CompositionColumn.LengthSample))
+                {
+                    table.AddHeaderCell(Wild.Resources.Reports.Caption.Length + Constants.NoticeHolder, .12, 2);
+                    table.AddNotice(Resources.Reports.Notice.SampleFormat,
+                        Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleLength.ToLowerInvariant())));
+                }
+
+                if (content.HasFlag(CompositionColumn.MassSample))
+                {
+                    table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass + Constants.NoticeHolder, .12, 2);
+                    table.AddNotice(Resources.Reports.Notice.SampleFormat,
+                        Mathematics.Resources.FormatNotice.ResourceManager.GetString(Mayfly.Service.StripNumbers(composition.FormatSampleMass.ToLowerInvariant())));
+                }
+
+                int q = (content.HasFlag(CompositionColumn.Quantity) ? 1 : 0) + (content.HasFlag(CompositionColumn.Abundance) ? 1 : 0) + (content.HasFlag(CompositionColumn.AbundanceFraction) ? 1 : 0);
+                if (q > 0) table.AddHeaderCell(Wild.Resources.Reports.Caption.Quantity, q);
+
+                int w = (content.HasFlag(CompositionColumn.Mass) ? 1 : 0) + (content.HasFlag(CompositionColumn.Biomass) ? 1 : 0) + (content.HasFlag(CompositionColumn.BiomassFraction) ? 1 : 0);
+                if (w > 0) table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass, w);
+
+                if (content.HasFlag(CompositionColumn.SexRatio))
+                {
+                    table.AddHeaderCell(Resources.Reports.Caption.SexualRatio + Constants.NoticeHolder, .12, 2);
+                    table.AddNotice(Resources.Reports.Notice.SexualLegend, Sex.Juvenile, Sex.Male, Sex.Female);
+                }
+            }
             table.EndRow();
 
             table.StartRow();
 
             foreach (Composition composition in compositions)
             {
-                bool rec = (composition is AgeComposition) && ((AgeComposition)composition).IsRecovered;
-                bool add = composition.AdditionalDistributedMass > 0;
+                if (content.HasFlag(CompositionColumn.Quantity)) table.AddHeaderCell(Resources.Reports.Common.Ind);
+                if (content.HasFlag(CompositionColumn.Abundance))
+                {
+                    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Ind, composition.Unit, Constants.NoticeHolder));
+                    table.AddNotice(Resources.Reports.Notice.NPUE, composition.Unit, composition.Unit);
+                }
+                if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddHeaderCell("%");
 
-                table.AddHeaderCell(composition.Name + (rec ? Constants.NoticeHolder : string.Empty) + (add ? Constants.NoticeHolder : string.Empty));
-                if (rec) table.AddNotice(Resources.Reports.CatchComposition.Notice2);
-                if (add) table.AddNotice(Resources.Reports.CatchComposition.Notice3);
+                if (content.HasFlag(CompositionColumn.Mass)) table.AddHeaderCell(Resources.Reports.Common.Kg);
+                if (content.HasFlag(CompositionColumn.Biomass))
+                {
+                    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Kg, composition.Unit, Constants.NoticeHolder));
+                    table.AddNotice(Resources.Reports.Notice.BPUE, composition.Unit, composition.Unit);
+                }
+                if (content.HasFlag(CompositionColumn.BiomassFraction)) table.AddHeaderCell("%");
             }
 
             table.EndRow();
 
-            Composition example = compositions[0];
-
-            for (int i = 0; i < example.Count; i++)
+            for (int i = 0; i < compositions[0].Count; i++)
             {
+                if (compositions.Length == 1 && compositions[0][i].Quantity == 0) continue;
+
                 table.StartRow();
-                table.AddCellValue(example[i].Name);
-                for (int j = 0; j < compositions.Length; j++)
+                table.AddCellSider(compositions[0][i]);
+
+                foreach (Composition composition in compositions)
                 {
-                    double value = 0;
+                    Category category = composition[i];
 
-                    switch (valueVariant)
-                    {
-                        case ValueVariant.Quantity:
-                            value = compositions[j][i].Quantity;
-                            break;
-                        case ValueVariant.Mass:
-                            value = compositions[j][i].Mass;
-                            break;
-                        case ValueVariant.Abundance:
-                            value = compositions[j][i].Abundance;
-                            break;
-                        case ValueVariant.Biomass:
-                            value = compositions[j][i].Biomass;
-                            break;
-                    }
+                    if (content.HasFlag(CompositionColumn.LengthSample)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.LengthSample), composition.FormatSampleLength);
+                    if (content.HasFlag(CompositionColumn.MassSample)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.MassSample), composition.FormatSampleMass);
 
-                    if (value > 0) { table.AddCellRight(value, format); }
-                    else { table.AddCell(); }
+                    if (content.HasFlag(CompositionColumn.Quantity)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Quantity);
+                    if (content.HasFlag(CompositionColumn.Abundance)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Abundance, composition.AbundanceFormat);
+                    if (content.HasFlag(CompositionColumn.AbundanceFraction)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.AbundanceFraction, composition.AbundanceFractionFormat);
+
+                    if (content.HasFlag(CompositionColumn.Mass)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Mass, composition.MassFormat);
+                    if (content.HasFlag(CompositionColumn.Biomass)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Biomass, composition.BiomassFormat);
+                    if (content.HasFlag(CompositionColumn.BiomassFraction)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
+
+                    if (content.HasFlag(CompositionColumn.SexRatio)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(category.GetSexualComposition());
                 }
+
                 table.EndRow();
             }
 
             table.StartRow();
             table.AddCell(Mayfly.Resources.Interface.Total);
-            for (int j = 0; j < compositions.Length; j++)
+
+
+            foreach (Composition composition in compositions)
             {
-                double value = 0;
-
-                switch (valueVariant)
-                {
-                    case ValueVariant.Quantity:
-                        value = compositions[j].TotalQuantity;
-                        break;
-                    case ValueVariant.Mass:
-                        value = compositions[j].TotalMass;
-                        break;
-                    case ValueVariant.Abundance:
-                        value = compositions[j].TotalAbundance;
-                        break;
-                    case ValueVariant.Biomass:
-                        value = compositions[j].TotalBiomass;
-                        break;
-                }
-
-                table.AddCellRight(value, format);
+                if (content.HasFlag(CompositionColumn.LengthSample)) table.AddCell();
+                if (content.HasFlag(CompositionColumn.MassSample)) table.AddCell();
+                if (content.HasFlag(CompositionColumn.Quantity)) table.AddCellRight(composition.TotalQuantity);
+                if (content.HasFlag(CompositionColumn.Abundance)) table.AddCellRight(composition.TotalAbundance, composition.AbundanceFormat);
+                if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddCellRight(1, composition.AbundanceFractionFormat);
+                if (content.HasFlag(CompositionColumn.Mass)) table.AddCellRight(composition.TotalMass, composition.MassFormat);
+                if (content.HasFlag(CompositionColumn.Biomass)) table.AddCellRight(composition.TotalBiomass, composition.BiomassFormat);
+                if (content.HasFlag(CompositionColumn.BiomassFraction)) table.AddCellRight(1, composition.BiomassFractionFormat);
+                if (content.HasFlag(CompositionColumn.SexRatio)) table.AddCell();
             }
             table.EndRow();
 
-            report.AddTable(table);
+            return table;
         }
     }
 }

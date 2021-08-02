@@ -128,7 +128,7 @@ namespace Mayfly.Fish.Explorer.Fishery
                 SpeciesRow.ToHTML(), report.NextTableNumber);
 
             Report.Table table = PseudoCohort.GetTable(string.Format(Resources.Reports.Growth.Table1,
-                SpeciesRow.ToHTML()), CompositionColumn.SampleSize | CompositionColumn.LengthSample | CompositionColumn.MassSample, PseudoCohort.Name);
+                SpeciesRow.ToHTML()), CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, PseudoCohort.Name);
 
             report.AddTable(table);
         }

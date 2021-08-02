@@ -60,14 +60,14 @@ namespace Mayfly.Wild
 
         public void UpdateCompositionAppearance()
         {
-            UpdateCompositionAppearance(ColumnSpeciesA, ValueVariant.Abundance, "N1");
-            UpdateCompositionAppearance(columnSpeciesB, ValueVariant.Biomass, "N3");
-            UpdateCompositionAppearance(columnSpeciesO, ValueVariant.Occurrence, "P1");
-            UpdateCompositionAppearance(columnSpeciesD, ValueVariant.Dominance, "N3");
+            UpdateCompositionAppearance(ColumnSpeciesA, CompositionColumn.Abundance, "N1");
+            UpdateCompositionAppearance(columnSpeciesB, CompositionColumn.Biomass, "N3");
+            UpdateCompositionAppearance(columnSpeciesO, CompositionColumn.Occurrence, "P1");
+            UpdateCompositionAppearance(columnSpeciesD, CompositionColumn.Dominance, "N3");
         }
 
         private void UpdateCompositionAppearance(DataGridViewColumn columnSpecies,
-            ValueVariant variant, string format)
+            CompositionColumn variant, string format)
         {
             SpreadSheet spreadSheet = (SpreadSheet)columnSpecies.DataGridView;
 

@@ -9,7 +9,7 @@ namespace Mayfly.Wild
 {
     public static class Extensions
     {
-        public static void UpdateValues(this Composition[] compositions, SpreadSheet sheet, DataGridViewColumn columnNames, ValueVariant vv)
+        public static void UpdateValues(this Composition[] compositions, SpreadSheet sheet, DataGridViewColumn columnNames, CompositionColumn vv)
         {
             foreach (Composition comp in compositions)
             {

@@ -454,7 +454,7 @@ namespace Mayfly.Wild
         /// </summary>
         /// <param name="sheet">SpreadSheet to update</param>
         /// <param name="vv">Value to display</param>
-        public void UpdateValues(SpreadSheet sheet, DataGridViewColumn columnNames, ValueVariant vv)
+        public void UpdateValues(SpreadSheet sheet, DataGridViewColumn columnNames, CompositionColumn vv)
         {
             UpdateValues(columnNames, sheet.GetColumn(this.Name), vv);
         }
@@ -464,13 +464,13 @@ namespace Mayfly.Wild
         /// </summary>
         /// <param name="columnNames">Column containing categories names</param>
         /// <param name="vv">Value to display</param>
-        public void UpdateValues(DataGridViewColumn columnNames, ValueVariant vv)
+        public void UpdateValues(DataGridViewColumn columnNames, CompositionColumn vv)
         {
             SpreadSheet sheet = (SpreadSheet)columnNames.DataGridView;
             UpdateValues(columnNames, sheet.GetColumn(this.Name), vv);
         }
         
-        public void UpdateValues(DataGridViewColumn columnNames, DataGridViewColumn col, ValueVariant vv)
+        public void UpdateValues(DataGridViewColumn columnNames, DataGridViewColumn col, CompositionColumn vv)
         {
             SpreadSheet sheet = (SpreadSheet)columnNames.DataGridView;
 

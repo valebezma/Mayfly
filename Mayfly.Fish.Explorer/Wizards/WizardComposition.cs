@@ -417,23 +417,28 @@ namespace Mayfly.Fish.Explorer.Survey
             report.AddSectionTitle(Resources.Reports.CatchComposition.AppendixHeader1,
                     CategoryType, SpeciesRow.ToHTML());
 
-            CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App1,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass,
-                ValueVariant.Quantity, string.Empty);
+            report.AddAppendix(
+                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App1,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass, Wild.CompositionColumn.Quantity)
+                );
 
-            CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App2,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass,
-                ValueVariant.Mass, "N3");
 
-            CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App3,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass,
-                ValueVariant.Abundance, ColumnNPUE.DefaultCellStyle.Format);
+            report.AddAppendix(
+                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App2,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass, CompositionColumn.Mass)
+                );
 
-            CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App4,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass,
-                ValueVariant.Biomass, ColumnBPUE.DefaultCellStyle.Format);
 
-            report.EndBranded();
+            report.AddAppendix(
+                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App3,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass, CompositionColumn.Abundance)
+                );
+
+
+            report.AddAppendix(
+                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App4,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass, CompositionColumn.Biomass)
+                );
         }
 
         public void AddAgeRecoveryRoutines(Report report)
@@ -453,8 +458,6 @@ namespace Mayfly.Fish.Explorer.Survey
 
                 //ageComposition.AddReport(report, string.Format(Resources.Reports.Selectivity.Table2, classComposition.Name), gearWizard.SelectedUnit.Unit);
             }
-
-            report.EndBranded();
         }
 
 

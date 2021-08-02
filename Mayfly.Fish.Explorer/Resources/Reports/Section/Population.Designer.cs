@@ -61,6 +61,15 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Composition Summary.
+        /// </summary>
+        internal static string Header {
+            get {
+                return ResourceManager.GetString("Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given..
         /// </summary>
         internal static string Paragraph1 {
@@ -88,20 +97,11 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Composition Summary.
-        /// </summary>
-        internal static string Subtitle {
-            get {
-                return ResourceManager.GetString("Subtitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Catches {0} composition.
         /// </summary>
-        internal static string Table1 {
+        internal static string Table {
             get {
-                return ResourceManager.GetString("Table1", resourceCulture);
+                return ResourceManager.GetString("Table", resourceCulture);
             }
         }
     }

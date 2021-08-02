@@ -129,60 +129,60 @@ namespace Mayfly.Wild
             return Name; // +": " + (Quantity > 0 ? string.Format("{0} inds. / {1:N3} inds./UE ({2:P1})", Quantity, Abundance, AbundanceFraction) : "None");
         }
 
-        public static ValueVariant GetValueVariant(bool quantitative, bool pereffort, bool fraction)
+        public static CompositionColumn GetValueVariant(bool quantitative, bool pereffort, bool fraction)
         {
             if (fraction)
             {
-                if (quantitative) return ValueVariant.AbundanceFraction;
-                else return ValueVariant.BiomassFraction;
+                if (quantitative) return CompositionColumn.AbundanceFraction;
+                else return CompositionColumn.BiomassFraction;
             }
             else if (pereffort)
             {
-                if (quantitative) return ValueVariant.Abundance;
-                else return ValueVariant.Biomass;
+                if (quantitative) return CompositionColumn.Abundance;
+                else return CompositionColumn.Biomass;
             }
             else
             {
-                if (quantitative) return ValueVariant.Quantity;
-                else return ValueVariant.Mass;
+                if (quantitative) return CompositionColumn.Quantity;
+                else return CompositionColumn.Mass;
             }
         }
 
-        public object GetValue(ValueVariant vv)
+        public object GetValue(CompositionColumn vv)
         {
             object value = null;
 
             switch (vv)
             {
-                case ValueVariant.Quantity:
+                case CompositionColumn.Quantity:
                     value = this.Quantity;
                     break;
 
-                case ValueVariant.Mass:
+                case CompositionColumn.Mass:
                     value = this.Mass;
                     break;
 
-                case ValueVariant.Abundance:
+                case CompositionColumn.Abundance:
                     value = this.Abundance;
                     break;
 
-                case ValueVariant.Biomass:
+                case CompositionColumn.Biomass:
                     value = this.Biomass;
                     break;
 
-                case ValueVariant.AbundanceFraction:
+                case CompositionColumn.AbundanceFraction:
                     value = this.AbundanceFraction;
                     break;
 
-                case ValueVariant.BiomassFraction:
+                case CompositionColumn.BiomassFraction:
                     value = this.BiomassFraction;
                     break;
 
-                case ValueVariant.Occurrence:
+                case CompositionColumn.Occurrence:
                     value = this.Occurrence;
                     break;
 
-                case ValueVariant.Dominance:
+                case CompositionColumn.Dominance:
                     value = this.Dominance;
                     break;
             }
@@ -437,17 +437,5 @@ namespace Mayfly.Wild
         }
 
         #endregion
-    }
-
-    public enum ValueVariant
-    {
-        Quantity,
-        Mass,
-        Abundance,
-        Biomass,
-        AbundanceFraction,
-        BiomassFraction,
-        Occurrence,
-        Dominance
-    }
+    }   
 }

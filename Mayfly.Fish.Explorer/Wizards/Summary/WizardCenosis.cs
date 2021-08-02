@@ -107,19 +107,6 @@ namespace Mayfly.Fish.Explorer.Survey
                 {
                     if (composition.TotalQuantity < 1) continue;
 
-                    composition.SetFormats(
-                        columnSelectivityNpue.DefaultCellStyle.Format, 
-                        columnSelectivityNPer.DefaultCellStyle.Format, 
-
-                        columnSelectivityB.DefaultCellStyle.Format, 
-                        columnSelectivityBpue.DefaultCellStyle.Format,
-                        columnSelectivityBPer.DefaultCellStyle.Format,
-
-                        columnSelectivityLength.DefaultCellStyle.Format,
-                        columnSelectivityMass.DefaultCellStyle.Format,
-
-                        gearWizard.SelectedUnit.Unit);
-
                     report.AddAppendix(
                         composition.GetStandardCatchesTable(
                             string.Format(Resources.Reports.Section.Catches.TableSingleClass, composition.Name), 
@@ -284,6 +271,22 @@ namespace Mayfly.Fish.Explorer.Survey
         private void compositionWizard_Finished(object sender, EventArgs e)
         {
             this.Replace(compositionWizard);
+
+            foreach (Composition composition in compositionWizard.CatchesComposition.SeparateCompositions)
+            {
+                composition.SetFormats(
+                    columnSelectivityNpue.DefaultCellStyle.Format,
+                    columnSelectivityNPer.DefaultCellStyle.Format,
+
+                    columnSelectivityB.DefaultCellStyle.Format,
+                    columnSelectivityBpue.DefaultCellStyle.Format,
+                    columnSelectivityBPer.DefaultCellStyle.Format,
+
+                    columnSelectivityLength.DefaultCellStyle.Format,
+                    columnSelectivityMass.DefaultCellStyle.Format,
+
+                    gearWizard.SelectedUnit.Unit);
+            }
 
             checkBoxAppCatches.Enabled =
                 compositionWizard.CatchesComposition.SeparateCompositions.Count > 1;
