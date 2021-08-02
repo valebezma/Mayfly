@@ -16,11 +16,11 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private WizardGearSet gearWizard;
 
-        private WizardCenosisComposition compositionWizard;
+        private WizardComposition compositionWizard;
 
         public CardStack SelectedStack { get; private set; }
 
-        private SpeciesComposition Structure;
+        public SpeciesComposition NaturalComposition;
 
 
 
@@ -40,21 +40,6 @@ namespace Mayfly.Fish.Explorer.Survey
             columnSelectivityBPer.ValueType =
             columnSelectivityBpue.ValueType = typeof(double);
 
-            columnBioB.ValueType =
-                typeof(double);
-
-            columnBioLength.ValueType =
-                columnBioMass.ValueType =
-                typeof(SampleDisplay);
-
-            columnBioN.ValueType =
-                typeof(int);
-
-            columnBioSpecies.ValueType =
-                typeof(string);
-
-            labelBioInstruction.ResetFormatted(spreadSheetBiology.RowVisibilityKey);
-
             this.RestoreAllCheckStates();
         }
 
@@ -67,6 +52,19 @@ namespace Mayfly.Fish.Explorer.Survey
 
 
 
+
+
+        private void RecalculateCenosis()
+        {
+            for (int i = 0; i < NaturalComposition.Count; i++)
+            {
+                double catchability = Service.GetCatchability(gearWizard.SelectedSamplerType, compositionWizard.CatchesComposition[i].Name);
+                NaturalComposition[i].Abundance = compositionWizard.CatchesComposition[i].Abundance / catchability;
+                //NaturalComposition[i].Abundance = Math.Round(CatchesComposition[i].Abundance / catchability, 0);
+                NaturalComposition[i].Biomass = compositionWizard.CatchesComposition[i].Biomass / catchability;
+            }
+        }
+        
         private Report GetReport()
         {
             Report report = new Report(Resources.Reports.Title.RepCenosis);
@@ -77,61 +75,21 @@ namespace Mayfly.Fish.Explorer.Survey
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddSummarySection(report);
+                gearWizard.AddEffortSection(report);
             }
 
             int catchesTableNo = -1;
 
             if (checkBoxCatches.Checked)
             {
-                report.AddSectionTitle(Resources.Reports.Section.Catches.Subtitle);
-
-                report.AddParagraph(
-                    string.Format(Resources.Reports.Section.Catches.Paragraph_2,
-                    compositionWizard.CatchesComposition.Count,
-                    Data.Parent.Species.FindBySpecies(compositionWizard.CatchesComposition.MostAbundant.Name).ToHTML(),
-                    compositionWizard.CatchesComposition.MostAbundant.Quantity,
-                    compositionWizard.CatchesComposition.MostAbundant.Quantity / compositionWizard.CatchesComposition.TotalQuantity,
-                    report.NextTableNumber)
-                    );
-
-                Report.Table tableCatches = compositionWizard.CatchesComposition.GetSummaryTable(Data.Parent, report,
-                    gearWizard.AbundanceUnits, 
-                    gearWizard.BiomassUnits,
-                    columnSelectivityLength.DefaultCellStyle.Format, 
-                    columnSelectivityMass.DefaultCellStyle.Format,
-                    columnSelectivityB.DefaultCellStyle.Format, 
-                    columnSelectivityNpue.DefaultCellStyle.Format,
-                    columnSelectivityBpue.DefaultCellStyle.Format,
-                    columnSelectivityNPer.DefaultCellStyle.Format, 
-                    columnSelectivityBPer.DefaultCellStyle.Format);
-
                 catchesTableNo = report.NextTableNumber;
 
-                report.AddTable(tableCatches);
-
-                report.AddComment(string.Format(Resources.Reports.Common.FormatNotice,
-                    Mathematics.Resources.FormatNotice.ResourceManager.GetString(columnSelectivityLength.DefaultCellStyle.Format),
-                    Mathematics.Resources.FormatNotice.ResourceManager.GetString(columnSelectivityMass.DefaultCellStyle.Format)));
-
-                
-
-                //if (compositionWizard.CatchesComposition.NonEmptyCount > 1)
-                //{
-                //    Data.SpeciesRow mostAbundant = Data.Parent.Species.FindBySpecies(compositionWizard.CatchesComposition.MostAbundant.Name);
-                //    Data.SpeciesRow mostAbundantByMass = Data.Parent.Species.FindBySpecies(compositionWizard.CatchesComposition.MostAbundantByMass.Name);
-
-                //    report.AddParagraph(
-                //        string.Format(Resources.Reports.GearClass.Paragraph2,
-                //            mostAbundant.ToHTML(), composition.MostAbundant.AbundanceFraction,
-                //            mostAbundantByMass.ToHTML(), composition.MostAbundantByMass.BiomassFraction)
-                //            );
-                //}
+                compositionWizard.AddCatchesSection(report);
             }
 
             if (checkBoxCenosis.Checked)
             {
-                compositionWizard.AddSummarySection(report);
+                AddCenosisSection(report);
             }
 
             // Start Appendices
@@ -147,28 +105,23 @@ namespace Mayfly.Fish.Explorer.Survey
 
                 foreach (Composition composition in compositionWizard.CatchesComposition.SeparateCompositions)
                 {
-                    if (composition.TotalQuantity < 1)
-                    {
-                        //report.AddParagraph(
-                        //    string.Format(Resources.Reports.Section.Catches.Paragraph_1, composition.Name)
-                        //    );
-                        continue;
-                    }
+                    if (composition.TotalQuantity < 1) continue;
 
-                    //composition.Name = string.Format("{0} {1}", gearWizard.SelectedSamplerType.ToDisplay(), composition.Name);
-
-                    Report.Appendix tableSingleClassCatches =  composition.GetSummaryTable(Data.Parent, report,
+                    composition.SetFormats(
                         gearWizard.AbundanceUnits, 
                         gearWizard.BiomassUnits,
+
                         columnSelectivityLength.DefaultCellStyle.Format,
                         columnSelectivityMass.DefaultCellStyle.Format,
-                        columnSelectivityB.DefaultCellStyle.Format, 
+
                         columnSelectivityNpue.DefaultCellStyle.Format, 
-                        columnSelectivityBpue.DefaultCellStyle.Format,
                         columnSelectivityNPer.DefaultCellStyle.Format, 
+
+                        columnSelectivityB.DefaultCellStyle.Format, 
+                        columnSelectivityBpue.DefaultCellStyle.Format,
                         columnSelectivityBPer.DefaultCellStyle.Format);
 
-                    report.AddAppendix(tableSingleClassCatches);
+                    report.AddAppendix(composition.GetClassicCatchesTable(Data.Parent));
 
                     report.AddComment(string.Format("Notification as in table {0}", catchesTableNo));
                 }
@@ -194,6 +147,29 @@ namespace Mayfly.Fish.Explorer.Survey
             return report;
         }
 
+        public void AddCenosisSection(Report report)
+        {
+            NaturalComposition.SetFormats(
+                gearWizard.AbundanceUnits,
+                gearWizard.BiomassUnits,
+
+                "", "",
+
+                ColumnCompositionA.DefaultCellStyle.Format,
+                ColumnCompositionAP.DefaultCellStyle.Format,
+
+                "",
+                ColumnCompositionB.DefaultCellStyle.Format,
+                ColumnCompositionBP.DefaultCellStyle.Format,
+
+                ColumnCompositionOccurrance.DefaultCellStyle.Format,
+                ColumnCompositionDominance.DefaultCellStyle.Format);
+
+            NaturalComposition.AppendCenosisSectionTo(report,
+                gearWizard.SelectedSamplerType,
+                gearWizard.SelectedUnit);
+        }
+
 
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -216,22 +192,32 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void gearWizard_AfterDataSelected(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(pageSelectivity);
+            wizardExplorer.EnsureSelected(pageGearClass);
             this.Replace(gearWizard);
+
+            NaturalComposition = gearWizard.SelectedData.GetCenosisCompositionFrame();
 
             comboBoxDataset.DataSource = gearWizard.SelectedStacks;
 
-            pageSelectivity.SetNavigation(true);
             comboBoxDataset.SelectedIndex = 0;
 
             columnSelectivityNpue.ResetFormatted(gearWizard.SelectedUnit.Unit);
             columnSelectivityBpue.ResetFormatted(gearWizard.SelectedUnit.Unit);
+            ColumnCompositionA.ResetFormatted(gearWizard.SelectedUnit.Unit);
+            ColumnCompositionB.ResetFormatted(gearWizard.SelectedUnit.Unit);
         }
+
+        private void structureCalculator_DoWork(object sender, DoWorkEventArgs e)
+        { }
+
+        private void structureCalculator_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        { }
+
+        private void structureCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        { }
 
         private void comboBoxDataset_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pageSelectivity.SetNavigation(false);
-
             spreadSheetSelectivity.Rows.Clear();
             labelNoticeGearsSelectivity.Text = Wild.Resources.Interface.Interface.GetData;
             labelNoticeGearsSelectivity.Visible = true;
@@ -244,22 +230,21 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void selectivityCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            Composition composition = SelectedStack.GetCenosisComposition();
+            SpeciesComposition composition = SelectedStack.GetCenosisComposition();
             composition.Weight = SelectedStack.GetEffort(gearWizard.SelectedSamplerType, gearWizard.SelectedUnit.Variant);
-
             e.Result = composition;
         }
 
         private void selectivityCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Category species in (Composition)e.Result)
+            foreach (SpeciesSwarm species in (SpeciesComposition)e.Result)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
 
                 gridRow.Height = spreadSheetSelectivity.RowTemplate.Height;
 
                 gridRow.CreateCells(spreadSheetSelectivity);
-                gridRow.Cells[columnSelectivitySpecies.Index].Value = species.Name;
+                gridRow.Cells[columnSelectivitySpecies.Index].Value = species.GetLocalName();
                 gridRow.Cells[columnSelectivityLength.Index].Value = new SampleDisplay(species.LengthSample);
                 gridRow.Cells[columnSelectivityMass.Index].Value = new SampleDisplay(species.MassSample);
                 gridRow.Cells[columnSelectivityN.Index].Value = species.Quantity;
@@ -275,8 +260,6 @@ namespace Mayfly.Fish.Explorer.Survey
             labelNoticeGearsSelectivity.Visible = spreadSheetSelectivity.RowCount == 0;
 
             comboBoxDataset.Enabled = true;
-
-            pageSelectivity.SetNavigation(true);
         }
 
         private void pageSelectivity_Rollback(object sender, WizardPageConfirmEventArgs e)
@@ -286,16 +269,38 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void pageSelectivity_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            pageBiology.SetNavigation(false);
             checkBoxAppCPUE.Enabled = gearWizard.IsMultipleClasses;
+
+            if (compositionWizard == null)
+            {
+                compositionWizard = new WizardComposition(Data, NaturalComposition);
+                compositionWizard.Returned += compositionWizard_Returned;
+                compositionWizard.Finished += compositionWizard_Finished;
+            }
+
+            compositionWizard.Replace(this);
+            compositionWizard.Run(gearWizard); //, Structure);
+        }
+
+        private void compositionWizard_Returned(object sender, EventArgs e)
+        {
+            this.Sync(gearWizard);
+            wizardExplorer.EnsureSelected(pageGearClass);
+            this.Replace(compositionWizard);
+        }
+
+        private void compositionWizard_Finished(object sender, EventArgs e)
+        {
+            this.Replace(compositionWizard);
+
+            checkBoxAppCatches.Enabled =
+                compositionWizard.CatchesComposition.SeparateCompositions.Count > 1;
             calculatorCenosis.RunWorkerAsync();
         }
 
-
-
-        private void cenosisCalculator_DoWork(object sender, DoWorkEventArgs e)
+        private void pageComposition_Rollback(object sender, WizardPageConfirmEventArgs e)
         {
-            Structure = gearWizard.SelectedData.GetCenosisComposition(gearWizard.SelectedUnit.Variant);
+            if (this.Visible) compositionWizard.Replace(this);
         }
 
         private void cenosisCalculator_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -303,75 +308,59 @@ namespace Mayfly.Fish.Explorer.Survey
             Taskbar.SetProgressValue(this.Handle, (ulong)e.ProgressPercentage, (ulong)100);
         }
 
+        private void cenosisCalculator_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RecalculateCenosis();
+        }
+
         private void cenosisCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Structure.SetLines(columnBioSpecies);
+            NaturalComposition.SetLines(ColumnCompositionSpecies);
 
-            for (int i = 0; i < Structure.Count; i++)
+            spreadSheetComposition.ClearInsertedColumns();
+
+            for (int i = 0; i < NaturalComposition.Count; i++)
             {
-                if (Structure[i].Quantity == 0)
+                spreadSheetComposition[ColumnCompositionA.Index, i].Value = NaturalComposition[i].Abundance;
+                spreadSheetComposition[ColumnCompositionAP.Index, i].Value = NaturalComposition[i].AbundanceFraction;
+                spreadSheetComposition[ColumnCompositionB.Index, i].Value = NaturalComposition[i].Biomass;
+                spreadSheetComposition[ColumnCompositionBP.Index, i].Value = NaturalComposition[i].BiomassFraction;
+                spreadSheetComposition[ColumnCompositionQ.Index, i].Value = 
+                    Service.GetCatchability(gearWizard.SelectedSamplerType, NaturalComposition[i].Name);
+                spreadSheetComposition[ColumnCompositionOccurrance.Index, i].Value = NaturalComposition[i].Occurrence;
+                spreadSheetComposition[ColumnCompositionDominance.Index, i].Value = NaturalComposition[i].Dominance;
+            }
+
+            textBoxDiversity.Text = NaturalComposition.Diversity.ToString("N3");
+
+            pageComposition.SetNavigation(true);
+        }
+
+        private void spreadSheetComposition_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == ColumnCompositionQ.Index && spreadSheetComposition.ContainsFocus)
+            {
+                if (spreadSheetComposition[e.ColumnIndex, e.RowIndex].Value == null)
                 {
-                    spreadSheetBiology[columnBioLength.Index, i].Value = null;
-                    spreadSheetBiology[columnBioMass.Index, i].Value = null;
-                    spreadSheetBiology[columnBioN.Index, i].Value = null;
-                    spreadSheetBiology[columnBioB.Index, i].Value = null;
+                    spreadSheetComposition[e.ColumnIndex, e.RowIndex].Value =
+                        Service.GetCatchability(gearWizard.SelectedSamplerType, NaturalComposition[e.RowIndex].Name);
                 }
                 else
                 {
-                    spreadSheetBiology[columnBioLength.Index, i].Value = new SampleDisplay(Structure[i].LengthSample);
-                    spreadSheetBiology[columnBioMass.Index, i].Value = new SampleDisplay(Structure[i].MassSample);
-                    spreadSheetBiology[columnBioN.Index, i].Value = Structure[i].Quantity;
-                    spreadSheetBiology[columnBioB.Index, i].Value = Structure[i].Mass;
+                    double value = (double)spreadSheetComposition[e.ColumnIndex, e.RowIndex].Value;
+                    Service.SaveCatchability(gearWizard.SelectedSamplerType, NaturalComposition[e.RowIndex].Name, value);
+
+                    RecalculateCenosis();
                 }
 
-                spreadSheetBiology.Rows[i].Height = spreadSheetBiology.RowTemplate.Height;
-                spreadSheetBiology.Rows[i].DefaultCellStyle.ForeColor =
-                    Structure[i].Quantity == 0 ? Constants.InfantColor : spreadSheetBiology.ForeColor;
-            }
-
-            pageBiology.SetNavigation(true);
-        }
-
-        private void pageBiology_Commit(object sender, WizardPageConfirmEventArgs e)
-        {
-            // Change Structure according to hidden rows
-            foreach (DataGridViewRow gridRow in spreadSheetBiology.Rows)
-            {
-                if (spreadSheetBiology.IsHidden(gridRow))
+                for (int i = 0; i < NaturalComposition.Count; i++)
                 {
-                    Category spc = Structure.GetCategory((string)gridRow.Cells[columnBioSpecies.Index].Value);
-                    Structure.Remove(spc);
+                    spreadSheetComposition[ColumnCompositionA.Index, i].Value = NaturalComposition[i].Abundance;
+                    spreadSheetComposition[ColumnCompositionAP.Index, i].Value = NaturalComposition[i].AbundanceFraction;
+                    spreadSheetComposition[ColumnCompositionB.Index, i].Value = NaturalComposition[i].Biomass;
+                    spreadSheetComposition[ColumnCompositionBP.Index, i].Value = NaturalComposition[i].BiomassFraction;
                 }
             }
-
-            if (compositionWizard == null)
-            {
-                compositionWizard = new WizardCenosisComposition(Data);
-                compositionWizard.Returned += compositionWizard_Returned;
-                compositionWizard.Finished += compositionWizard_Finished;
-            }
-
-            compositionWizard.Replace(this);
-            compositionWizard.Run(gearWizard, Structure);
-        }
-
-        private void compositionWizard_Returned(object sender, EventArgs e)
-        {
-            this.Sync(gearWizard);
-            wizardExplorer.EnsureSelected(pageBiology);
-            this.Replace(compositionWizard);
-        }
-
-        private void compositionWizard_Finished(object sender, EventArgs e)
-        {
-            this.Replace(compositionWizard);
-            checkBoxAppCatches.Enabled =
-                compositionWizard.CatchesComposition.SeparateCompositions.Count > 1;
-        }
-
-        private void pageReport_Rollback(object sender, WizardPageConfirmEventArgs e)
-        {
-            if (this.Visible) compositionWizard.Replace(this);
         }
 
         private void checkBoxCatches_CheckedChanged(object sender, EventArgs e)
@@ -405,8 +394,7 @@ namespace Mayfly.Fish.Explorer.Survey
         {
             ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
-            Log.Write(EventType.WizardEnded, "Cenosis wizard is finished, dominants are {0}.", 
-                Structure.GetDominantNames().Merge());
+            Log.Write(EventType.WizardEnded, "Cenosis wizard is finished.");
             if (!UserSettings.KeepWizard) Close();
         }
 

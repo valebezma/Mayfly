@@ -152,7 +152,7 @@ namespace Mayfly.Fish.Explorer
                 IsBusy = false;
             }
             else
-            {                
+            {
                 UserSettings.Interface.SaveDialog.FileName = FullStack.FriendlyName;
                 this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
 
@@ -221,7 +221,8 @@ namespace Mayfly.Fish.Explorer
 
                 listViewInvestigators.Items.Clear();
 
-                foreach (string investigator in FullStack.GetInvestigators()) {
+                foreach (string investigator in FullStack.GetInvestigators())
+                {
                     listViewInvestigators.CreateItem(investigator, investigator);
                 }
 
@@ -230,18 +231,18 @@ namespace Mayfly.Fish.Explorer
 
                 #endregion
 
-                menuItemLoadIndividuals.AddSpeciesMenus(AllowedStack, speciesInd_Click);
-                menuItemGrowthCrossSection.AddSpeciesMenus(AllowedStack, speciesGrowth_Click);
-                menuItemGrowthCohorts.AddSpeciesMenus(AllowedStack, speciesGrowthCohorts_Click);
-                menuItemComposition.AddSpeciesMenus(AllowedStack, speciesComposition_Click);
-                menuItemMortalitySustainable.AddSpeciesMenus(AllowedStack, speciesMortality_Click);
-                menuItemMortalityCohorts.AddSpeciesMenus(AllowedStack, speciesMortalityCohorts_Click);
-                menuItemSelectivity.AddSpeciesMenus(AllowedStack, speciesSelectivity_Click);
-                menuItemExtrapolation.AddSpeciesMenus(AllowedStack, speciesStockExtrapolation_Click);
-                menuItemVpa.AddSpeciesMenus(AllowedStack, speciesStockVpa_Click);
-                menuItemMSYR.AddSpeciesMenus(AllowedStack, speciesMSYR_Click);
-                menuItemMSY.AddSpeciesMenus(AllowedStack, speciesMSY_Click);
-                menuItemPrediction.AddSpeciesMenus(AllowedStack, speciesPrediction_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemLoadIndividuals, speciesInd_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemGrowthCrossSection, speciesGrowth_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemMortalitySustainable, speciesMortality_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemMortalityCohorts, speciesMortalityCohorts_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemSelectivity, speciesSelectivity_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemExtrapolation, speciesStockExtrapolation_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemVpa, speciesStockVpa_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemMSYR, speciesMSYR_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemMSY, speciesMSY_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
                 if (!modelCalc.IsBusy && !IsClosing)
                 {

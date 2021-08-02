@@ -237,7 +237,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             CatchModels.Clear();
             Unused.Clear();
 
-            foreach (AgeComposition cohort in Cohorts)
+            foreach (Cohort cohort in Cohorts)
             {
                 Scatterplot[] cohortCurves = cohort.GetCatchCurve(true, (int)e.Argument);
 

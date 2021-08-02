@@ -9,7 +9,7 @@ namespace Mayfly.Wild.Controls
     {
         public event EventHandler Changed;
 
-        public Weather Weather { get; set; }
+        public WeatherState Weather { get; set; }
 
         public bool IsWeatherAvailable
         {
@@ -26,7 +26,7 @@ namespace Mayfly.Wild.Controls
         {
             InitializeComponent();
 
-            Weather = new Weather();
+            Weather = new WeatherState();
 
             trackBarCloudage.Value = 0;
 
@@ -38,7 +38,7 @@ namespace Mayfly.Wild.Controls
 
         public WeatherControl(string value) : this()
         {
-            Weather = new Weather(value);
+            Weather = new WeatherState(value);
             UpdateValues();
         }
 

@@ -28,26 +28,19 @@ namespace Mayfly
 
         public void Run()
         {
-            Log.Write(EventType.ReportBuilt, String.Format("Report is built: {0}.", this.Title));            
+            Log.Write(EventType.ReportBuilt, String.Format("Report is built: {0}.", this.Title));
 
-            if (Form.ModifierKeys.HasFlag(Keys.Control | Keys.Shift))
+            if (Form.ModifierKeys.HasFlag(Keys.Control))
             {
-                PrintNow();
+                Save();
+            }
+            else if (Form.ModifierKeys.HasFlag(Keys.Shift))
+            {
+                Print();
             }
             else
             {
-                if (Form.ModifierKeys.HasFlag(Keys.Control))
-                {
-                    Save();
-                }
-                else if (Form.ModifierKeys.HasFlag(Keys.Shift))
-                {
-                    Print();
-                }
-                else
-                {
-                    Preview();
-                }
+                Preview();
             }
         }
 
@@ -64,12 +57,12 @@ namespace Mayfly
 
         public void Preview()
         {
-            //ReportForm preview = new ReportForm(this);
-            //preview.ShowDialog(owner);
-
             string filename = FileSystem.GetTempFileName(".html");
-            this.WriteToFile(filename);
+            this.WriteToFile(filename, false);
             FileSystem.RunFile(filename);
+
+            //Reporting.PreviewForm preview = new Reporting.PreviewForm(this, false);
+            //preview.ShowDialog();
         }
 
         public void Print()
@@ -77,17 +70,9 @@ namespace Mayfly
             string filename = FileSystem.GetTempFileName(".html");
             this.WriteToFile(filename, true);
             FileSystem.RunFile(filename);
-        }
 
-        void PrintNow()
-        {
-            string filename = FileSystem.GetTempFileName(".html");
-            this.WriteToFile(filename, true);
-            FileSystem.RunFile(filename);
-
-            //WebBrowser webBrowser = new WebBrowser();
-            //webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(PrintDocumentNow);
-            //webBrowser.DocumentText = this.GetFileContent();
+            //Reporting.PreviewForm preview = new Reporting.PreviewForm(this, true);
+            //preview.ShowDialog();
         }
     }
 }

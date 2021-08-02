@@ -50,7 +50,7 @@ namespace Mayfly.Wild
             Oldest = (Age)Math.Max(Oldest.Years, item.Age.Years);
         }
 
-        public Mathematics.Charts.Histogramma GetHistogram()
+        public Histogramma GetHistogram()
         {
             Sample s = new Sample();
             s.Name = this.Name;

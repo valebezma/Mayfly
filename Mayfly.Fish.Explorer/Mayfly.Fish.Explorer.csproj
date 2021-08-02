@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mayfly.Fish.Explorer</RootNamespace>
     <AssemblyName>fexplore</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -41,7 +41,7 @@
     <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
@@ -104,9 +104,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compositions\CompositionColumn.cs" />
     <Compile Include="Extensions\CardStack.Statistics.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Mass.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Quantity.cs" />
+    <Compile Include="Extensions\Category.cs" />
+    <Compile Include="Extensions\Cohort.cs" />
     <Compile Include="Extensions\IndividualRegSorter.cs" />
     <Compile Include="Compositions\AgeKeyForm.cs">
       <SubType>Form</SubType>
@@ -126,7 +129,13 @@
     <Compile Include="Extensions\CardStack.Artefacts.cs" />
     <Compile Include="Extensions\CardStack.Reports.cs" />
     <Compile Include="Extensions\Data.Bio.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\Composition.cs" />
+    <Compile Include="Extensions\SpeciesComposition.cs" />
+    <Compile Include="Resources\Reports\PopulationCompositionType.Designer.cs">
+      <DependentUpon>PopulationCompositionType.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Reports\Column.Designer.cs">
       <DependentUpon>Column.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -134,6 +143,11 @@
     </Compile>
     <Compile Include="Resources\Reports\Column.ru.Designer.cs">
       <DependentUpon>Column.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Section\Population.Designer.cs">
+      <DependentUpon>Population.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -365,12 +379,6 @@
     <Compile Include="Wizards\Bio\WizardExport2.Designer.cs">
       <DependentUpon>WizardExport2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\WizardCenosisComposition.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Wizards\WizardCenosisComposition.Designer.cs">
-      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
-    </Compile>
     <Compile Include="Wizards\Summary\WizardCenosis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,11 +391,11 @@
     <Compile Include="Wizards\Fishery\WizardMortality.Designer.cs">
       <DependentUpon>WizardMortality.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\WizardCatchesComposition.cs">
+    <Compile Include="Wizards\WizardComposition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\WizardCatchesComposition.Designer.cs">
-      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+    <Compile Include="Wizards\WizardComposition.Designer.cs">
+      <DependentUpon>WizardComposition.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizards\Survey\WizardSpawning.cs">
       <SubType>Form</SubType>
@@ -570,6 +578,13 @@
       <DependentUpon>AgeKeyForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\PopulationCompositionType.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\PopulationCompositionType.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PopulationCompositionType.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Column.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Column.Designer.cs</LastGenOutput>
@@ -577,6 +592,13 @@
     <EmbeddedResource Include="Resources\Reports\Column.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Column.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Population.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Population.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Section\Population.ru.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Section\SampleDetailed.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -775,13 +797,6 @@
       <DependentUpon>WizardExport2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCenosisComposition.resx">
-      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCenosisComposition.ru.resx">
-      <DependentUpon>WizardCenosisComposition.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Wizards\Summary\WizardCenosis.resx">
       <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -798,12 +813,12 @@
       <DependentUpon>WizardMortality.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCatchesComposition.resx">
-      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\WizardComposition.resx">
+      <DependentUpon>WizardComposition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardCatchesComposition.ru.resx">
-      <DependentUpon>WizardCatchesComposition.cs</DependentUpon>
+    <EmbeddedResource Include="Wizards\WizardComposition.ru.resx">
+      <DependentUpon>WizardComposition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizards\Survey\WizardSpawning.resx">
       <DependentUpon>WizardSpawning.cs</DependentUpon>
@@ -982,6 +997,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Observations\Surveys.xsc">
       <DependentUpon>Surveys.xsd</DependentUpon>
     </None>

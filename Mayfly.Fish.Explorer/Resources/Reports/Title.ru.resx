@@ -138,7 +138,10 @@
   <data name="HeaderEfforts" xml:space="preserve">
     <value>Усилие</value>
   </data>
-  <data name="StockComposition" xml:space="preserve">
-    <value>Структура стада {0}</value>
+  <data name="RepCenosis" xml:space="preserve">
+    <value>Рыбохозяйственная характеристика</value>
+  </data>
+  <data name="RepPopulation" xml:space="preserve">
+    <value>Структура популяции {0}</value>
   </data>
 </root>

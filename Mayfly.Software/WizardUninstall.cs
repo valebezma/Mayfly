@@ -136,22 +136,6 @@ namespace Mayfly.Software
             catch { }
 
             Service.AppendStatus(textBoxStatus, Resources.Interface.UninstallDone);
-
-            // Clearing logs
-
-            try
-            {
-                Log.SendLog();
-
-                if (Service.IsLast(Product))
-                {
-                    Directory.Delete(Path.Combine(FileSystem.UserFolder, "logs"), true);
-                }
-                else
-                {
-                    Log.ClearLog(Product, DateTime.Today.AddDays(1));
-                }
-            } catch { }
         }  
 
 

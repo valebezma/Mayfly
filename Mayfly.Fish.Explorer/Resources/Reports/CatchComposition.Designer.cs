@@ -115,15 +115,6 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * – CPUE displays {0} category presence in a harvest of 1 {1}..
-        /// </summary>
-        internal static string Notice1 {
-            get {
-                return ResourceManager.GetString("Notice1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to * – Age category quantity recovered by length-age key..
         /// </summary>
         internal static string Notice2 {
@@ -142,83 +133,11 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given..
-        /// </summary>
-        internal static string Paragraph1 {
-            get {
-                return ResourceManager.GetString("Paragraph1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Age composition of {0} was obtained using growth model:.
-        /// </summary>
-        internal static string Paragraph2 {
-            get {
-                return ResourceManager.GetString("Paragraph2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Described model is based on data provided by {0} ({1})..
-        /// </summary>
-        internal static string Paragraph3 {
-            get {
-                return ResourceManager.GetString("Paragraph3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Catches {0} composition.
-        /// </summary>
-        internal static string Table1 {
-            get {
-                return ResourceManager.GetString("Table1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Population {0} composition.
         /// </summary>
         internal static string TablePopulation {
             get {
                 return ResourceManager.GetString("TablePopulation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Study of {0} composition of {1} population.
-        /// </summary>
-        internal static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to age.
-        /// </summary>
-        internal static string TypeAge {
-            get {
-                return ResourceManager.GetString("TypeAge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to length.
-        /// </summary>
-        internal static string TypeLength {
-            get {
-                return ResourceManager.GetString("TypeLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to special.
-        /// </summary>
-        internal static string TypeSpecies {
-            get {
-                return ResourceManager.GetString("TypeSpecies", resourceCulture);
             }
         }
     }

@@ -28,11 +28,11 @@ namespace Mayfly.Species
 
             public bool Includes(string species)
             {
-            //    return Includes(species, false);
-            //}
+                //    return Includes(species, false);
+                //}
 
-            //public bool Includes(string species, bool suggest)
-            //{
+                //public bool Includes(string species, bool suggest)
+                //{
                 foreach (RepRow repRow in this.GetRepRows())
                 {
                     if (repRow.SpeciesRow.Species == species)
@@ -890,7 +890,7 @@ namespace Mayfly.Species
             table1.StartHeader();
             table1.AddHeaderCell("No", .05);
             table1.AddHeaderCell("Species");
-            for(int i = 0; i < this.Base.Count; i++)
+            for (int i = 0; i < this.Base.Count; i++)
             {
                 table1.AddHeaderCell(this.Base[i].Base);
             }

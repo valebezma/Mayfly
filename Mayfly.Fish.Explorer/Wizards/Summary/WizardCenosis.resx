@@ -147,7 +147,7 @@
     <value>50, 50</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 75</value>
+    <value>610, 75</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="labelStart.TabIndex" type="System.Int32, mscorlib">
@@ -172,7 +172,7 @@
     <value>0</value>
   </data>
   <data name="pageStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+    <value>737, 407</value>
   </data>
   <data name="pageStart.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -193,7 +193,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNoticeGearsSelectivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 210</value>
+    <value>283, 235</value>
   </data>
   <data name="labelNoticeGearsSelectivity.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 15</value>
@@ -217,7 +217,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelNoticeGearsSelectivity.Parent" xml:space="preserve">
-    <value>pageSelectivity</value>
+    <value>pageGearClass</value>
   </data>
   <data name="&gt;&gt;labelNoticeGearsSelectivity.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -232,7 +232,7 @@
     <value>-3, 0</value>
   </data>
   <data name="labelSelectivityGroupInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 30</value>
+    <value>710, 30</value>
   </data>
   <data name="labelSelectivityGroupInstruction.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -247,7 +247,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelSelectivityGroupInstruction.Parent" xml:space="preserve">
-    <value>pageSelectivity</value>
+    <value>pageGearClass</value>
   </data>
   <data name="&gt;&gt;labelSelectivityGroupInstruction.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -256,7 +256,7 @@
     <value>Top</value>
   </data>
   <data name="comboBoxDataset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 51</value>
+    <value>287, 51</value>
   </data>
   <data name="comboBoxDataset.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 23</value>
@@ -271,7 +271,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxDataset.Parent" xml:space="preserve">
-    <value>pageSelectivity</value>
+    <value>pageGearClass</value>
   </data>
   <data name="&gt;&gt;comboBoxDataset.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelSelectivityGroupSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 54</value>
+    <value>167, 54</value>
   </data>
   <data name="labelSelectivityGroupSelect.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 15</value>
@@ -304,7 +304,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelSelectivityGroupSelect.Parent" xml:space="preserve">
-    <value>pageSelectivity</value>
+    <value>pageGearClass</value>
   </data>
   <data name="&gt;&gt;labelSelectivityGroupSelect.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -328,19 +328,19 @@
     <value>Quantity, ind.</value>
   </data>
   <data name="columnSelectivityNpue.HeaderText" xml:space="preserve">
-    <value>Abundance, ind./{0}</value>
+    <value>NPUE, ind./{0}</value>
   </data>
   <data name="columnSelectivityNPer.HeaderText" xml:space="preserve">
-    <value>Abundance fraction, %</value>
+    <value>NPUE, %</value>
   </data>
   <data name="columnSelectivityB.HeaderText" xml:space="preserve">
     <value>Mass, kg</value>
   </data>
   <data name="columnSelectivityBpue.HeaderText" xml:space="preserve">
-    <value>Biomass, kg/{0}</value>
+    <value>BPUE, kg/{0}</value>
   </data>
   <data name="columnSelectivityBPer.HeaderText" xml:space="preserve">
-    <value>Biomass fraction, %</value>
+    <value>BPUE, %</value>
   </data>
   <data name="spreadSheetSelectivity.Location" type="System.Drawing.Point, System.Drawing">
     <value>-3, 92</value>
@@ -352,7 +352,7 @@
     <value>12</value>
   </data>
   <data name="spreadSheetSelectivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 250</value>
+    <value>710, 300</value>
   </data>
   <data name="spreadSheetSelectivity.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -367,117 +367,186 @@
     <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetSelectivity.Parent" xml:space="preserve">
-    <value>pageSelectivity</value>
+    <value>pageGearClass</value>
   </data>
   <data name="&gt;&gt;spreadSheetSelectivity.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="pageSelectivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+  <data name="pageGearClass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
   </data>
-  <data name="pageSelectivity.TabIndex" type="System.Int32, mscorlib">
+  <data name="pageGearClass.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="pageSelectivity.Text" xml:space="preserve">
-    <value>Gear class catch description</value>
+  <data name="pageGearClass.Text" xml:space="preserve">
+    <value>Catch description by gear class</value>
   </data>
-  <data name="&gt;&gt;pageSelectivity.Name" xml:space="preserve">
-    <value>pageSelectivity</value>
+  <data name="&gt;&gt;pageGearClass.Name" xml:space="preserve">
+    <value>pageGearClass</value>
   </data>
-  <data name="&gt;&gt;pageSelectivity.Type" xml:space="preserve">
+  <data name="&gt;&gt;pageGearClass.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
-  <data name="labelBioInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="textBoxDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="labelBioInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="textBoxDiversity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>462, 368</value>
   </data>
-  <data name="labelBioInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="textBoxDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="labelBioInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 30</value>
+  <data name="textBoxDiversity.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
-  <data name="labelBioInstruction.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+  <data name="textBoxDiversity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="labelBioInstruction.Text" xml:space="preserve">
-    <value>Information on species samples is given below. Proceed to calculate composition of catch averaged by gear class. Use {0} to exclude species from analysis.</value>
+  <data name="&gt;&gt;textBoxDiversity.Name" xml:space="preserve">
+    <value>textBoxDiversity</value>
   </data>
-  <data name="&gt;&gt;labelBioInstruction.Name" xml:space="preserve">
-    <value>labelBioInstruction</value>
+  <data name="&gt;&gt;textBoxDiversity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelBioInstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;textBoxDiversity.Parent" xml:space="preserve">
+    <value>pageComposition</value>
   </data>
-  <data name="&gt;&gt;labelBioInstruction.Parent" xml:space="preserve">
-    <value>pageBiology</value>
-  </data>
-  <data name="&gt;&gt;labelBioInstruction.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxDiversity.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="spreadSheetBiology.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="columnBioSpecies.HeaderText" xml:space="preserve">
-    <value>Species</value>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="columnBioLength.HeaderText" xml:space="preserve">
-    <value>Length, mm</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 0</value>
   </data>
-  <data name="columnBioMass.HeaderText" xml:space="preserve">
-    <value>Individual mass, g</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 30</value>
   </data>
-  <data name="columnBioN.HeaderText" xml:space="preserve">
-    <value>Quantity, ind.</value>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="columnBioB.HeaderText" xml:space="preserve">
-    <value>Mass, kg</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Cenosis composition is catches composition divided by catchability coefficients. You can change catchability by typing in corresponding column.</value>
   </data>
-  <data name="spreadSheetBiology.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 40</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="spreadSheetBiology.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 10, 3, 10</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="spreadSheetBiology.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>pageComposition</value>
   </data>
-  <data name="spreadSheetBiology.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 313</value>
-  </data>
-  <data name="spreadSheetBiology.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="spreadSheetBiology.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetBiology.Name" xml:space="preserve">
-    <value>spreadSheetBiology</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetBiology.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetBiology.Parent" xml:space="preserve">
-    <value>pageBiology</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetBiology.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="pageBiology.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="pageBiology.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="pageBiology.Text" xml:space="preserve">
-    <value>Combined biological features</value>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;pageBiology.Name" xml:space="preserve">
-    <value>pageBiology</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>167, 371</value>
   </data>
-  <data name="&gt;&gt;pageBiology.Type" xml:space="preserve">
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 15</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Cenosis diversity</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="spreadSheetComposition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ColumnCompositionSpecies.HeaderText" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="ColumnCompositionSpecies.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="ColumnCompositionQ.HeaderText" xml:space="preserve">
+    <value>Catchability</value>
+  </data>
+  <data name="ColumnCompositionA.HeaderText" xml:space="preserve">
+    <value>Abundance, ind./{0}</value>
+  </data>
+  <data name="ColumnCompositionAP.HeaderText" xml:space="preserve">
+    <value>Abundance, %</value>
+  </data>
+  <data name="ColumnCompositionB.HeaderText" xml:space="preserve">
+    <value>Biomass, kg/{0}</value>
+  </data>
+  <data name="ColumnCompositionBP.HeaderText" xml:space="preserve">
+    <value>Biomass, %</value>
+  </data>
+  <data name="ColumnCompositionOccurrance.HeaderText" xml:space="preserve">
+    <value>Occurrence, %</value>
+  </data>
+  <data name="ColumnCompositionDominance.HeaderText" xml:space="preserve">
+    <value>Dominance</value>
+  </data>
+  <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 50</value>
+  </data>
+  <data name="spreadSheetComposition.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="spreadSheetComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 312</value>
+  </data>
+  <data name="spreadSheetComposition.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetComposition.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Name" xml:space="preserve">
+    <value>spreadSheetComposition</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pageComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageComposition.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="pageComposition.Text" xml:space="preserve">
+    <value>Cenosis State</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Name" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="checkBoxAppCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -490,7 +559,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAppCatches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 156</value>
+    <value>243, 156</value>
   </data>
   <data name="checkBoxAppCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -523,7 +592,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelReport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 50</value>
+    <value>135, 50</value>
   </data>
   <data name="labelReport.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 15</value>
@@ -556,7 +625,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAppAB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 252</value>
+    <value>243, 252</value>
   </data>
   <data name="checkBoxAppAB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -592,7 +661,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAppCPUE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 188</value>
+    <value>243, 188</value>
   </data>
   <data name="checkBoxAppCPUE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -631,13 +700,13 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxCenosis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 220</value>
+    <value>203, 220</value>
   </data>
   <data name="checkBoxCenosis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
   <data name="checkBoxCenosis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 19</value>
+    <value>120, 19</value>
   </data>
   <data name="checkBoxCenosis.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -667,7 +736,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxCatches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 124</value>
+    <value>203, 124</value>
   </data>
   <data name="checkBoxCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -703,7 +772,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxGears.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 92</value>
+    <value>203, 92</value>
   </data>
   <data name="checkBoxGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -730,7 +799,7 @@
     <value>6</value>
   </data>
   <data name="pageReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+    <value>737, 407</value>
   </data>
   <data name="pageReport.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -745,7 +814,7 @@
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 511</value>
+    <value>784, 561</value>
   </data>
   <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -774,6 +843,9 @@
   <metadata name="calculatorSelectivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>281, 17</value>
   </metadata>
+  <metadata name="calculatorStructure.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -784,7 +856,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>614, 511</value>
+    <value>784, 561</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>630, 550</value>
@@ -846,34 +918,52 @@
   <data name="&gt;&gt;columnSelectivityBPer.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnBioSpecies.Name" xml:space="preserve">
-    <value>columnBioSpecies</value>
+  <data name="&gt;&gt;ColumnCompositionSpecies.Name" xml:space="preserve">
+    <value>ColumnCompositionSpecies</value>
   </data>
-  <data name="&gt;&gt;columnBioSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnCompositionSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnBioLength.Name" xml:space="preserve">
-    <value>columnBioLength</value>
+  <data name="&gt;&gt;ColumnCompositionQ.Name" xml:space="preserve">
+    <value>ColumnCompositionQ</value>
   </data>
-  <data name="&gt;&gt;columnBioLength.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnCompositionQ.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnBioMass.Name" xml:space="preserve">
-    <value>columnBioMass</value>
+  <data name="&gt;&gt;ColumnCompositionA.Name" xml:space="preserve">
+    <value>ColumnCompositionA</value>
   </data>
-  <data name="&gt;&gt;columnBioMass.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnCompositionA.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnBioN.Name" xml:space="preserve">
-    <value>columnBioN</value>
+  <data name="&gt;&gt;ColumnCompositionAP.Name" xml:space="preserve">
+    <value>ColumnCompositionAP</value>
   </data>
-  <data name="&gt;&gt;columnBioN.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnCompositionAP.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnBioB.Name" xml:space="preserve">
-    <value>columnBioB</value>
+  <data name="&gt;&gt;ColumnCompositionB.Name" xml:space="preserve">
+    <value>ColumnCompositionB</value>
   </data>
-  <data name="&gt;&gt;columnBioB.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnCompositionB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionBP.Name" xml:space="preserve">
+    <value>ColumnCompositionBP</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionBP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionOccurrance.Name" xml:space="preserve">
+    <value>ColumnCompositionOccurrance</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionOccurrance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionDominance.Name" xml:space="preserve">
+    <value>ColumnCompositionDominance</value>
+  </data>
+  <data name="&gt;&gt;ColumnCompositionDominance.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;calculatorCenosis.Name" xml:space="preserve">
@@ -892,6 +982,12 @@
     <value>calculatorSelectivity</value>
   </data>
   <data name="&gt;&gt;calculatorSelectivity.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;calculatorStructure.Name" xml:space="preserve">
+    <value>calculatorStructure</value>
+  </data>
+  <data name="&gt;&gt;calculatorStructure.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -58,7 +58,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddSummarySection(report);
+                gearWizard.AddEffortSection(report);
             }
 
             if (checkBoxLength.Checked)
@@ -68,15 +68,17 @@ namespace Mayfly.Fish.Explorer.Fishery
                     SpeciesRow.ToHTML(), report.NextTableNumber)
                     );
 
-                CatchesComposition.SeparateCompositions.ToArray().AddCompositionTable(report, 
+                CatchesComposition.SeparateCompositions.ToArray().AddTable(report, 
                     string.Format(Resources.Reports.Selectivity.Table1, SpeciesRow.ToHTML()),
                     CatchesComposition.Name, Resources.Reports.Column.GearClass, ValueVariant.Abundance, "N3");
 
                 report.AddParagraph(Resources.Reports.Selectivity.Paragraph2, report.NextTableNumber);
 
-                CatchesComposition.AddReport(report, 
-                    string.Format(Resources.Reports.Selectivity.Table2, SpeciesRow.ToHTML()), 
-                    gearWizard.SelectedUnit.Unit);
+                Report.Table table2 = CatchesComposition.GetTable(
+                    string.Format(Resources.Reports.Selectivity.Table2, SpeciesRow.ToHTML()),
+                    CompositionColumn.CPUE | CompositionColumn.Percentage);
+
+                report.AddTable(table2);
             }
 
             if (checkBoxSelectivity.Checked)
@@ -104,8 +106,11 @@ namespace Mayfly.Fish.Explorer.Fishery
                     report.NextTableNumber)
                     );
 
-                Structure.AddReport(report, string.Format(Resources.Reports.Selectivity.Table5,
-                    SpeciesRow.ToHTML()), gearWizard.SelectedUnit.Unit);
+                Report.Table table5 = Structure.GetTable(
+                    string.Format(Resources.Reports.Selectivity.Table5, SpeciesRow.ToHTML()),
+                    CompositionColumn.CPUE | CompositionColumn.Percentage);
+
+                report.AddTable(table5);
             }
 
             return report;

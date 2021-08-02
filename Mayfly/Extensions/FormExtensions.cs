@@ -112,6 +112,14 @@ namespace Mayfly.Extensions
             form.SetAboveRightLocation(objectPositionOnScreen);
         }
 
+        public static void SetMaximumDesktopView(this Form form, int margin)
+        {
+            form.StartPosition = FormStartPosition.Manual;
+            form.DesktopLocation = new Point(margin, margin);
+            form.Size = new Size(Screen.GetWorkingArea(form).Width - 2 * margin,
+                Screen.GetWorkingArea(form).Height - 2 * margin);
+        }
+
         #endregion
 
         public static void Expand(this Form form)
@@ -280,6 +288,7 @@ namespace Mayfly.Extensions
 
             while (ctrl.SelectedPage != ctrl.Pages[0]) {
                 ctrl.PreviousPage();
+                if (ctrl.SelectedPage == page) return;
             }
 
             while (ctrl.SelectedPage != page) {

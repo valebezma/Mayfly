@@ -43,10 +43,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.wizardExplorer = new AeroWizard.WizardControl();
             this.pageStart = new AeroWizard.WizardPage();
             this.labelStart = new System.Windows.Forms.Label();
-            this.pageSelectivity = new AeroWizard.WizardPage();
+            this.pageGearClass = new AeroWizard.WizardPage();
             this.labelNoticeGearsSelectivity = new System.Windows.Forms.Label();
             this.labelSelectivityGroupInstruction = new System.Windows.Forms.Label();
             this.comboBoxDataset = new System.Windows.Forms.ComboBox();
@@ -61,14 +64,19 @@
             this.columnSelectivityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSelectivityBpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSelectivityBPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pageBiology = new AeroWizard.WizardPage();
-            this.labelBioInstruction = new System.Windows.Forms.Label();
-            this.spreadSheetBiology = new Mayfly.Controls.SpreadSheet();
-            this.columnBioSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnBioLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnBioMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnBioN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnBioB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pageComposition = new AeroWizard.WizardPage();
+            this.textBoxDiversity = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.spreadSheetComposition = new Mayfly.Controls.SpreadSheet();
+            this.ColumnCompositionSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionAP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionBP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionOccurrance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCompositionDominance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageReport = new AeroWizard.WizardPage();
             this.checkBoxAppCatches = new System.Windows.Forms.CheckBox();
             this.labelReport = new System.Windows.Forms.Label();
@@ -80,12 +88,13 @@
             this.calculatorCenosis = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
             this.calculatorSelectivity = new System.ComponentModel.BackgroundWorker();
+            this.calculatorStructure = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
-            this.pageSelectivity.SuspendLayout();
+            this.pageGearClass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSelectivity)).BeginInit();
-            this.pageBiology.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetBiology)).BeginInit();
+            this.pageComposition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetComposition)).BeginInit();
             this.pageReport.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,8 +104,8 @@
             this.wizardExplorer.BackColor = System.Drawing.Color.White;
             this.wizardExplorer.Name = "wizardExplorer";
             this.wizardExplorer.Pages.Add(this.pageStart);
-            this.wizardExplorer.Pages.Add(this.pageSelectivity);
-            this.wizardExplorer.Pages.Add(this.pageBiology);
+            this.wizardExplorer.Pages.Add(this.pageGearClass);
+            this.wizardExplorer.Pages.Add(this.pageComposition);
             this.wizardExplorer.Pages.Add(this.pageReport);
             this.wizardExplorer.Cancelling += new System.ComponentModel.CancelEventHandler(this.wizardExplorer_Cancelling);
             // 
@@ -112,17 +121,17 @@
             resources.ApplyResources(this.labelStart, "labelStart");
             this.labelStart.Name = "labelStart";
             // 
-            // pageSelectivity
+            // pageGearClass
             // 
-            this.pageSelectivity.Controls.Add(this.labelNoticeGearsSelectivity);
-            this.pageSelectivity.Controls.Add(this.labelSelectivityGroupInstruction);
-            this.pageSelectivity.Controls.Add(this.comboBoxDataset);
-            this.pageSelectivity.Controls.Add(this.labelSelectivityGroupSelect);
-            this.pageSelectivity.Controls.Add(this.spreadSheetSelectivity);
-            this.pageSelectivity.Name = "pageSelectivity";
-            resources.ApplyResources(this.pageSelectivity, "pageSelectivity");
-            this.pageSelectivity.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageSelectivity_Commit);
-            this.pageSelectivity.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageSelectivity_Rollback);
+            this.pageGearClass.Controls.Add(this.labelNoticeGearsSelectivity);
+            this.pageGearClass.Controls.Add(this.labelSelectivityGroupInstruction);
+            this.pageGearClass.Controls.Add(this.comboBoxDataset);
+            this.pageGearClass.Controls.Add(this.labelSelectivityGroupSelect);
+            this.pageGearClass.Controls.Add(this.spreadSheetSelectivity);
+            this.pageGearClass.Name = "pageGearClass";
+            resources.ApplyResources(this.pageGearClass, "pageGearClass");
+            this.pageGearClass.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageSelectivity_Commit);
+            this.pageGearClass.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageSelectivity_Rollback);
             // 
             // labelNoticeGearsSelectivity
             // 
@@ -167,7 +176,6 @@
             this.spreadSheetSelectivity.RowHeadersVisible = false;
             this.spreadSheetSelectivity.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.spreadSheetSelectivity.RowTemplate.Height = 35;
-            this.spreadSheetSelectivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // columnSelectivitySpecies
             // 
@@ -247,80 +255,111 @@
             this.columnSelectivityBPer.Name = "columnSelectivityBPer";
             this.columnSelectivityBPer.ReadOnly = true;
             // 
-            // pageBiology
+            // pageComposition
             // 
-            this.pageBiology.Controls.Add(this.labelBioInstruction);
-            this.pageBiology.Controls.Add(this.spreadSheetBiology);
-            this.pageBiology.Name = "pageBiology";
-            resources.ApplyResources(this.pageBiology, "pageBiology");
-            this.pageBiology.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageBiology_Commit);
+            this.pageComposition.Controls.Add(this.textBoxDiversity);
+            this.pageComposition.Controls.Add(this.label1);
+            this.pageComposition.Controls.Add(this.label2);
+            this.pageComposition.Controls.Add(this.spreadSheetComposition);
+            this.pageComposition.Name = "pageComposition";
+            resources.ApplyResources(this.pageComposition, "pageComposition");
+            this.pageComposition.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Rollback);
             // 
-            // labelBioInstruction
+            // textBoxDiversity
             // 
-            resources.ApplyResources(this.labelBioInstruction, "labelBioInstruction");
-            this.labelBioInstruction.Name = "labelBioInstruction";
+            resources.ApplyResources(this.textBoxDiversity, "textBoxDiversity");
+            this.textBoxDiversity.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxDiversity.Name = "textBoxDiversity";
+            this.textBoxDiversity.ReadOnly = true;
             // 
-            // spreadSheetBiology
+            // label1
             // 
-            this.spreadSheetBiology.AllowUserToHideRows = true;
-            resources.ApplyResources(this.spreadSheetBiology, "spreadSheetBiology");
-            this.spreadSheetBiology.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnBioSpecies,
-            this.columnBioLength,
-            this.columnBioMass,
-            this.columnBioN,
-            this.columnBioB});
-            this.spreadSheetBiology.DefaultDecimalPlaces = 0;
-            this.spreadSheetBiology.Name = "spreadSheetBiology";
-            this.spreadSheetBiology.RowHeadersVisible = false;
-            this.spreadSheetBiology.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.spreadSheetBiology.RowTemplate.Height = 35;
-            this.spreadSheetBiology.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
-            // columnBioSpecies
+            // label2
             // 
-            this.columnBioSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // spreadSheetComposition
+            // 
+            resources.ApplyResources(this.spreadSheetComposition, "spreadSheetComposition");
+            this.spreadSheetComposition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnCompositionSpecies,
+            this.ColumnCompositionQ,
+            this.ColumnCompositionA,
+            this.ColumnCompositionAP,
+            this.ColumnCompositionB,
+            this.ColumnCompositionBP,
+            this.ColumnCompositionOccurrance,
+            this.ColumnCompositionDominance});
+            this.spreadSheetComposition.DefaultDecimalPlaces = 2;
+            this.spreadSheetComposition.Name = "spreadSheetComposition";
+            this.spreadSheetComposition.RowHeadersVisible = false;
+            this.spreadSheetComposition.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetComposition_CellValueChanged);
+            // 
+            // ColumnCompositionSpecies
+            // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnBioSpecies.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.columnBioSpecies, "columnBioSpecies");
-            this.columnBioSpecies.Name = "columnBioSpecies";
-            this.columnBioSpecies.ReadOnly = true;
+            this.ColumnCompositionSpecies.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ColumnCompositionSpecies.Frozen = true;
+            resources.ApplyResources(this.ColumnCompositionSpecies, "ColumnCompositionSpecies");
+            this.ColumnCompositionSpecies.Name = "ColumnCompositionSpecies";
+            this.ColumnCompositionSpecies.ReadOnly = true;
             // 
-            // columnBioLength
+            // ColumnCompositionQ
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Format = "G";
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnBioLength.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.columnBioLength, "columnBioLength");
-            this.columnBioLength.Name = "columnBioLength";
-            this.columnBioLength.ReadOnly = true;
+            dataGridViewCellStyle11.Format = "N2";
+            this.ColumnCompositionQ.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(this.ColumnCompositionQ, "ColumnCompositionQ");
+            this.ColumnCompositionQ.Name = "ColumnCompositionQ";
             // 
-            // columnBioMass
+            // ColumnCompositionA
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Format = "G";
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnBioMass.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.columnBioMass, "columnBioMass");
-            this.columnBioMass.Name = "columnBioMass";
-            this.columnBioMass.ReadOnly = true;
+            dataGridViewCellStyle12.Format = "N0";
+            this.ColumnCompositionA.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(this.ColumnCompositionA, "ColumnCompositionA");
+            this.ColumnCompositionA.Name = "ColumnCompositionA";
+            this.ColumnCompositionA.ReadOnly = true;
             // 
-            // columnBioN
+            // ColumnCompositionAP
             // 
-            dataGridViewCellStyle13.Format = "N0";
-            this.columnBioN.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.columnBioN, "columnBioN");
-            this.columnBioN.Name = "columnBioN";
-            this.columnBioN.ReadOnly = true;
+            dataGridViewCellStyle13.Format = "P1";
+            this.ColumnCompositionAP.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(this.ColumnCompositionAP, "ColumnCompositionAP");
+            this.ColumnCompositionAP.Name = "ColumnCompositionAP";
+            this.ColumnCompositionAP.ReadOnly = true;
             // 
-            // columnBioB
+            // ColumnCompositionB
             // 
             dataGridViewCellStyle14.Format = "N3";
-            this.columnBioB.DefaultCellStyle = dataGridViewCellStyle14;
-            resources.ApplyResources(this.columnBioB, "columnBioB");
-            this.columnBioB.Name = "columnBioB";
-            this.columnBioB.ReadOnly = true;
+            this.ColumnCompositionB.DefaultCellStyle = dataGridViewCellStyle14;
+            resources.ApplyResources(this.ColumnCompositionB, "ColumnCompositionB");
+            this.ColumnCompositionB.Name = "ColumnCompositionB";
+            this.ColumnCompositionB.ReadOnly = true;
+            // 
+            // ColumnCompositionBP
+            // 
+            dataGridViewCellStyle15.Format = "P1";
+            this.ColumnCompositionBP.DefaultCellStyle = dataGridViewCellStyle15;
+            resources.ApplyResources(this.ColumnCompositionBP, "ColumnCompositionBP");
+            this.ColumnCompositionBP.Name = "ColumnCompositionBP";
+            this.ColumnCompositionBP.ReadOnly = true;
+            // 
+            // ColumnCompositionOccurrance
+            // 
+            dataGridViewCellStyle16.Format = "P1";
+            this.ColumnCompositionOccurrance.DefaultCellStyle = dataGridViewCellStyle16;
+            resources.ApplyResources(this.ColumnCompositionOccurrance, "ColumnCompositionOccurrance");
+            this.ColumnCompositionOccurrance.Name = "ColumnCompositionOccurrance";
+            // 
+            // ColumnCompositionDominance
+            // 
+            dataGridViewCellStyle17.Format = "N3";
+            this.ColumnCompositionDominance.DefaultCellStyle = dataGridViewCellStyle17;
+            resources.ApplyResources(this.ColumnCompositionDominance, "ColumnCompositionDominance");
+            this.ColumnCompositionDominance.Name = "ColumnCompositionDominance";
             // 
             // pageReport
             // 
@@ -334,7 +373,6 @@
             this.pageReport.Name = "pageReport";
             resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
-            this.pageReport.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Rollback);
             // 
             // checkBoxAppCatches
             // 
@@ -411,6 +449,14 @@
             this.calculatorSelectivity.DoWork += new System.ComponentModel.DoWorkEventHandler(this.selectivityCalculator_DoWork);
             this.calculatorSelectivity.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.selectivityCalculator_RunWorkerCompleted);
             // 
+            // calculatorStructure
+            // 
+            this.calculatorStructure.WorkerReportsProgress = true;
+            this.calculatorStructure.WorkerSupportsCancellation = true;
+            this.calculatorStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.structureCalculator_DoWork);
+            this.calculatorStructure.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.structureCalculator_ProgressChanged);
+            this.calculatorStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.structureCalculator_RunWorkerCompleted);
+            // 
             // WizardCenosis
             // 
             resources.ApplyResources(this, "$this");
@@ -419,11 +465,12 @@
             this.Name = "WizardCenosis";
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).EndInit();
             this.pageStart.ResumeLayout(false);
-            this.pageSelectivity.ResumeLayout(false);
-            this.pageSelectivity.PerformLayout();
+            this.pageGearClass.ResumeLayout(false);
+            this.pageGearClass.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSelectivity)).EndInit();
-            this.pageBiology.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetBiology)).EndInit();
+            this.pageComposition.ResumeLayout(false);
+            this.pageComposition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetComposition)).EndInit();
             this.pageReport.ResumeLayout(false);
             this.pageReport.PerformLayout();
             this.ResumeLayout(false);
@@ -434,9 +481,6 @@
 
         private AeroWizard.WizardControl wizardExplorer;
         private System.ComponentModel.BackgroundWorker calculatorCenosis;
-        private AeroWizard.WizardPage pageBiology;
-        public Controls.SpreadSheet spreadSheetBiology;
-        private System.Windows.Forms.Label labelBioInstruction;
         private System.ComponentModel.BackgroundWorker reporter;
         private AeroWizard.WizardPage pageReport;
         private System.Windows.Forms.Label labelReport;
@@ -447,7 +491,7 @@
         private AeroWizard.WizardPage pageStart;
         private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.CheckBox checkBoxAppAB;
-        private AeroWizard.WizardPage pageSelectivity;
+        private AeroWizard.WizardPage pageGearClass;
         private System.Windows.Forms.Label labelNoticeGearsSelectivity;
         private System.Windows.Forms.Label labelSelectivityGroupInstruction;
         public System.Windows.Forms.ComboBox comboBoxDataset;
@@ -464,10 +508,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityB;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBpue;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBPer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnBioSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnBioLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnBioMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnBioN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnBioB;
+        private AeroWizard.WizardPage pageComposition;
+        private System.Windows.Forms.TextBox textBoxDiversity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private Controls.SpreadSheet spreadSheetComposition;
+        private System.ComponentModel.BackgroundWorker calculatorStructure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionAP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionBP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionOccurrance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionDominance;
     }
 }

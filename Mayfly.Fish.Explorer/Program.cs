@@ -16,7 +16,7 @@ namespace Mayfly.Fish.Explorer
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
             Log.WriteAppStarted();
-            
+
             if (args.Length == 0)
             {
                 Application.Run(new MainForm());

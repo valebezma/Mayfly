@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer.Fishery
     {
         public CardStack Data { get; set; }
 
-        private WizardCatchesComposition ageCompositionWizard;
+        private WizardComposition ageCompositionWizard;
 
         private WizardGearSet gearWizard
         {
@@ -94,17 +94,22 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddSummarySection(report);
+                gearWizard.AddEffortSection(report);
             }
 
             if (checkBoxAge.Checked)
             {
-                ageCompositionWizard.AddCatchesDescription(report);
+                ageCompositionWizard.AddCompositionSection(report);
             }
 
             if (checkBoxMortality.Checked)
             {
                 AddMortality(report);
+            }
+
+            if (checkBoxAppT.Checked)
+            {
+                ageCompositionWizard.AddCatchesRoutines(report);
             }
 
             report.EndBranded();
@@ -128,10 +133,10 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            ageCompositionWizard = new WizardCatchesComposition(Data, SpeciesRow, AgeStructure);
+            ageCompositionWizard = new WizardComposition(Data, AgeStructure, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
             ageCompositionWizard.Finished += compositionWizard_Finished;
             ageCompositionWizard.Replace(this);
-            ageCompositionWizard.Run();
+            ageCompositionWizard.Run(gearWizard);
         }
         
 
@@ -249,24 +254,12 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<Report> result = new List<Report>();
-
-            result.Add(GetReport());
-
-            if (checkBoxAppT.Checked)
-            {
-                ageCompositionWizard.GetCatchesRoutines();
-            }
-
-            e.Result = result.ToArray();
+            e.Result = GetReport();
         }
 
         private void reporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Report rep in (Report[])e.Result)
-            {
-                rep.Run();
-            }
+            ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
             Log.Write(EventType.WizardEnded, "Motrality wizard is finished for {0} with Z = {1:N4}, S = {2:N4} and Fi = {3:N4}.",
                 SpeciesRow.Species, Z, S, Fi);

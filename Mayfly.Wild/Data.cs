@@ -406,11 +406,11 @@ namespace Mayfly.Wild
                 }
             }
 
-            public Weather WeatherConditions
+            public WeatherState WeatherConditions
             {
                 get
                 {
-                    return this.IsWeatherNull() ? null : new Weather(this.Weather);
+                    return this.IsWeatherNull() ? null : new WeatherState(this.Weather);
                 }
             }
 
@@ -949,7 +949,7 @@ namespace Mayfly.Wild
                     spcRow = key.Species.NewSpeciesRow();
                     spcRow.Species = this.Species;
                 }
-                
+
                 return spcRow;
             }
 

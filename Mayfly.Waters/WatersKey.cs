@@ -288,7 +288,8 @@ namespace Mayfly.Waters
                     {
                         switch ((WaterType)this.Type)
                         {
-                            case WaterType.Tank: if (this.IsKindNull())
+                            case WaterType.Tank:
+                                if (this.IsKindNull())
                                 {
                                     return String.Format(Resources.Interface.TitleTank,
                                         this.Water);
@@ -516,7 +517,8 @@ namespace Mayfly.Waters
             {
                 List<string> result = new List<string>();
                 WaterRow outflow = this;
-                while (outflow != null) {
+                while (outflow != null)
+                {
                     result.Add(outflow.FullName);
                     outflow = outflow.GetOutflow();
                 }
@@ -962,7 +964,7 @@ namespace Mayfly.Waters
                 Report.Table table1 = new Report.Table();
                 table1.AddHeader(new string[] { "№",
                     (string)StreamResources.GetObject("labelName.Text"),
-                    (string)StreamResources.GetObject("labelOutflow.Text"),	
+                    (string)StreamResources.GetObject("labelOutflow.Text"),
                     (string)StreamResources.GetObject("labelBank.Text"),
                     (string)StreamResources.GetObject("labelMouthToMouth.Text"),
                     (string)StreamResources.GetObject("labelLength.Text"),

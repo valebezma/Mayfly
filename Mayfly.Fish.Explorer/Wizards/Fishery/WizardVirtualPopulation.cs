@@ -134,7 +134,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             report.AddParagraph(Resources.Reports.VPA.Paragraph1,
                 SpeciesRow.ToHTML(), report.NextTableNumber);
 
-            AnnualCompositions.AddCompositionTable(report, 
+            AnnualCompositions.AddTable(report, 
                 string.Format(Resources.Reports.VPA.Table1, SpeciesRow.ToHTML(), AnnualCompositions[0].Name, AnnualCompositions.Last().Name), 
                 Resources.Reports.Growth.Column1,
                 Resources.Reports.VPA.Column2, ValueVariant.Quantity, "N0");
@@ -175,7 +175,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             //Report.Table table1 = new Report.Table, AnnualCompositions[0].Name, AnnualCompositions.Last().Name);
 
-            Survivors.ToArray().AddCompositionTable(report,
+            Survivors.ToArray().AddTable(report,
                 string.Format(Resources.Reports.VPA.Table4, SpeciesRow.ToHTML()),
                 Resources.Reports.Growth.Column1,
                 Resources.Reports.VPA.Column2, 
@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             //Report.Table table1 = new Report.Table(Resources.Reports.VPA.Table5,                ,
             //    SpeciesRow.GetReportFullPresentation(), AnnualCompositions[0].Name, AnnualCompositions.Last().Name);
-            Survivors.ToArray().AddCompositionTable(report, 
+            Survivors.ToArray().AddTable(report, 
                 string.Format(Resources.Reports.VPA.Table5, SpeciesRow.ToHTML()),
                 Resources.Reports.Growth.Column1,
                 Resources.Reports.VPA.Column2, 

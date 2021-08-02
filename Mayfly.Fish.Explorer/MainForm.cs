@@ -87,7 +87,7 @@ namespace Mayfly.Fish.Explorer
             columnCardWater.ValueType = typeof(string);
             columnCardWhen.ValueType = typeof(DateTime);
             columnCardWhere.ValueType = typeof(Waypoint);
-            ColumnCardWeather.ValueType = typeof(Weather);
+            ColumnCardWeather.ValueType = typeof(WeatherState);
             ColumnCardTempSurface.ValueType = typeof(double);
             columnCardGear.ValueType = typeof(string);
             columnCardMesh.ValueType = typeof(int);

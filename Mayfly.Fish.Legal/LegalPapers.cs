@@ -183,7 +183,7 @@ namespace Mayfly.Fish.Legal
                 result.AddTable(ReportExtensions.GetAskBlock("сотрудниками",
                     this.LicenseRow.Holder,
                     "полное наименование научной организации"));
-                
+
                 decimal w = 0;
 
                 int index = 0;
@@ -293,7 +293,7 @@ namespace Mayfly.Fish.Legal
                             Resources.NoteContent.CaptionMass,
                             "Условия транспортировки, вид тары, её количество"
                         }, new double[] { width_no, 0, 0, width_mass, 0 });
-                        
+
                         w = 0;
                         index = 0;
 
@@ -304,7 +304,7 @@ namespace Mayfly.Fish.Legal
                             table7.StartRow();
                             table7.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
                             table7.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
-                            if (index == 0) { table7.AddCell(this.Conservant, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows); }                            
+                            if (index == 0) { table7.AddCell(this.Conservant, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows); }
                             table7.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                             if (index == 0) { table7.AddCell(this.Dish, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows); }
                             table7.EndRow();
@@ -345,7 +345,7 @@ namespace Mayfly.Fish.Legal
                             "Место возвращения водных биологических ресурсов<small>(рыбохозяйственная зона (подзона), географические координаты или водный объект рыбохозяйственного значения)</small>",
                             Resources.NoteContent.CaptionMass
                         }, new double[] { width_no, 0, 0, 0, width_mass });
-                        
+
                         w = 0;
                         index = 0;
 
@@ -356,7 +356,8 @@ namespace Mayfly.Fish.Legal
                             table2.StartRow();
                             table2.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
                             table2.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
-                            if (index == 0) {
+                            if (index == 0)
+                            {
                                 table2.AddCell(this.Date.ToString("d"), Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows);
                                 table2.AddCell(this.Water, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows);
                             }
@@ -397,7 +398,7 @@ namespace Mayfly.Fish.Legal
                             "Дата и время уничтожения водных биоресурсов",
                             Resources.NoteContent.CaptionMass
                         }, new double[] { width_no, 0, 0, 0, 0, width_mass });
-                        
+
                         w = 0;
                         index = 0;
 
@@ -415,7 +416,7 @@ namespace Mayfly.Fish.Legal
                                 table3.AddCell(this.Utilization == 0 ? this.Water : string.Empty, Legal.LegalNote.InputClass, this.SpeciesInCatch, CellSpan.Rows);
                                 table3.AddCell(this.Utilization == 0 ? this.Date.ToString("d") : string.Empty, Legal.LegalNote.InputClass, this.SpeciesInCatch, CellSpan.Rows);
                             }
-                            
+
                             table3.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                             table3.EndRow();
 
@@ -443,7 +444,7 @@ namespace Mayfly.Fish.Legal
                             Resources.NoteContent.CaptionMass
                         },
                             new double[] { width_no, 0, width_mass });
-                        
+
                         w = 0;
                         index = 0;
 
@@ -487,7 +488,7 @@ namespace Mayfly.Fish.Legal
                             "Ф.И.О., должность, реквизиты доверенности (договора) научной организации, наименование и сведения документа, удостоверяющего личность уполномоченного лица",
                             Resources.NoteContent.CaptionMass
                         }, new double[] { width_no, 0, 0, width_mass });
-                        
+
                         w = 0;
                         index = 0;
 
@@ -507,7 +508,7 @@ namespace Mayfly.Fish.Legal
                                         (this.IsExpeditorRequisitesNull() ? string.Empty : this.ExpeditorRequisites),
                                         Legal.LegalNote.InputClass, this.SpeciesInCatch, CellSpan.Rows);
                                 }
-                                
+
                                 table5.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                                 table5.EndRow();
 

@@ -198,7 +198,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             GrowthModels.Clear();
             WeightModels.Clear();
-            foreach (AgeComposition cohort in Cohorts)
+            foreach (Cohort cohort in Cohorts)
             {
                 Scatterplot growth = cohort.GetGrowthScatterplot(true);
                 if (growth != null)

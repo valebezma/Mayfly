@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace Mayfly.Wild
 {
-    public class Weather : IFormattable
+    public class WeatherState : IFormattable
     {
         public double Humidity { get; set; }
 
@@ -47,7 +47,7 @@ namespace Mayfly.Wild
 
 
 
-        public Weather()
+        public WeatherState()
         {
             Humidity = double.NaN;
             Temperature = double.NaN;
@@ -62,7 +62,7 @@ namespace Mayfly.Wild
             AdditionalEvent = -1;
         }
 
-        public Weather(string value) : this()
+        public WeatherState(string value) : this()
         {
             string[] parameters = value.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 

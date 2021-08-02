@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using Mayfly.Software;
 using System.Drawing.IconLib;
+using System.Text.RegularExpressions;
 
 namespace Mayfly
 {
@@ -220,6 +221,24 @@ namespace Mayfly
             value += letters[index % letters.Length];
 
             return value;
+        }
+
+        public static string SanitizePath(string path, char replaceChar)
+        {
+            string dir = Path.GetDirectoryName(path);
+            foreach (char c in Path.GetInvalidPathChars())
+                dir = dir.Replace(c, replaceChar);
+
+            string name = Path.GetFileName(path);
+            foreach (char c in Path.GetInvalidFileNameChars())
+                name = name.Replace(c, replaceChar);
+
+            return dir + name;
+        }
+
+        public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
 
         #endregion

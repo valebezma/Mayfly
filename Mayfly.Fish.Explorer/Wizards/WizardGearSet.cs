@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer.Survey
         }
 
 
-        public void AddSummarySection(Report report)
+        public void AddEffortSection(Report report)
         {
             SelectedData.AddEffortsSection(report, SelectedSamplerType, SelectedUnit);
         }

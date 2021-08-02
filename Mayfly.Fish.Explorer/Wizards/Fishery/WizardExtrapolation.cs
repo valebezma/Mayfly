@@ -24,7 +24,7 @@ namespace Mayfly.Fish.Explorer.Fishery
     {
         public CardStack Data { get; set; }
 
-        private WizardCatchesComposition compositionWizard;
+        private WizardComposition compositionWizard;
 
         private WizardGearSet gearWizard;
 
@@ -243,7 +243,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddSummarySection(report);
+                gearWizard.AddEffortSection(report);
             }
 
             if (checkBoxAbundance.Checked)
@@ -259,7 +259,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 if (checkBoxCatches.Checked)
                 {
-                    compositionWizard.AddCatchesDescription(report);
+                    compositionWizard.AddCompositionSection(report);
                 }
 
                 AddComposition(report);
@@ -268,6 +268,12 @@ namespace Mayfly.Fish.Explorer.Fishery
                 //{
                 //    compositionWizard.AddCatchesRoutines(report);
                 //}
+            }
+
+
+            if (checkBoxApp.Checked)
+            {
+                compositionWizard.AddCatchesRoutines(report);
             }
 
             report.EndBranded();
@@ -673,7 +679,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             wizardExplorer.NextPage();
 
-            compositionWizard = new WizardCatchesComposition(Data, SpeciesRow, example);
+            compositionWizard = new WizardComposition(Data, example, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
             compositionWizard.Returned += compositionWizard_Returned;
             compositionWizard.Finished += compositionWizard_Finished;
             compositionWizard.Replace(this);
@@ -817,22 +823,12 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<Report> result = new List<Report>();
-
-            result.Add(GetReport());
-
-            if (checkBoxApp.Checked) {
-                result.Add(compositionWizard.GetCatchesRoutines());
-            }
-
-            e.Result = result.ToArray();
+            e.Result = GetReport();
         }
 
         private void reporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Report rep in (Report[])e.Result) {
-                rep.Run();
-            }
+            ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
             Log.Write(EventType.WizardEnded, "Extrapolation wizard is finished for {0} with result {1:N2} t.",
                 SpeciesRow.Species, StockMass / 1000.0);

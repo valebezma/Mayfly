@@ -1,1 +1,3 @@
-﻿
+﻿namespace Mayfly.Wild
+{
+}

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Environment));
-            Mayfly.Wild.Weather weather1 = new Mayfly.Wild.Weather();
+            Mayfly.Wild.WeatherState weather1 = new Mayfly.Wild.WeatherState();
             this.labelWaterConds = new System.Windows.Forms.Label();
             this.textBoxTempSurface = new System.Windows.Forms.TextBox();
             this.labelTemperatureSurface = new System.Windows.Forms.Label();

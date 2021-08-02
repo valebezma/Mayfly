@@ -59,8 +59,8 @@
             // 
             // wizardExplorer
             // 
-            resources.ApplyResources(this.wizardExplorer, "wizardExplorer");
             this.wizardExplorer.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.wizardExplorer, "wizardExplorer");
             this.wizardExplorer.Name = "wizardExplorer";
             this.wizardExplorer.Pages.Add(this.pageStart);
             this.wizardExplorer.Pages.Add(this.pageLength);
@@ -70,9 +70,9 @@
             // 
             // pageStart
             // 
-            resources.ApplyResources(this.pageStart, "pageStart");
             this.pageStart.Controls.Add(this.labelStart);
             this.pageStart.Name = "pageStart";
+            resources.ApplyResources(this.pageStart, "pageStart");
             this.pageStart.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageStart_Commit);
             // 
             // labelStart
@@ -82,10 +82,10 @@
             // 
             // pageLength
             // 
-            resources.ApplyResources(this.pageLength, "pageLength");
             this.pageLength.Controls.Add(this.labelLength);
             this.pageLength.Controls.Add(this.plotL);
             this.pageLength.Name = "pageLength";
+            resources.ApplyResources(this.pageLength, "pageLength");
             this.pageLength.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLength_Commit);
             this.pageLength.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLength_Rollback);
             // 
@@ -108,10 +108,10 @@
             // 
             // pageAge
             // 
-            resources.ApplyResources(this.pageAge, "pageAge");
             this.pageAge.Controls.Add(this.plotT);
             this.pageAge.Controls.Add(this.label1);
             this.pageAge.Name = "pageAge";
+            resources.ApplyResources(this.pageAge, "pageAge");
             this.pageAge.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageAge_Rollback);
             // 
             // plotT
@@ -132,7 +132,6 @@
             // 
             // pageReport
             // 
-            resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Controls.Add(this.checkBoxAge);
             this.pageReport.Controls.Add(this.checkBoxLength);
             this.pageReport.Controls.Add(this.checkBoxAppKeys);
@@ -141,6 +140,7 @@
             this.pageReport.Controls.Add(this.labelReport);
             this.pageReport.Controls.Add(this.checkBoxGears);
             this.pageReport.Name = "pageReport";
+            resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
             // 
             // checkBoxAge

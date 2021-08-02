@@ -41,7 +41,7 @@ namespace Mayfly.Fish.Explorer.Survey
                 ColumnEnvTempSurface.ValueType =
                 ColumnEnvWind.ValueType = typeof(double);
 
-            ColumnEnvPrecips.ValueType = typeof(Weather);
+            ColumnEnvPrecips.ValueType = typeof(WeatherState);
 
             this.RestoreAllCheckStates();
         }

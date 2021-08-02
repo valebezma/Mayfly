@@ -132,43 +132,16 @@
   <data name="App1" xml:space="preserve">
     <value>Количество особей разных {0} категорий в уловах {1} разных классов орудий лова, экз.</value>
   </data>
-  <data name="Notice1" xml:space="preserve">
-    <value>* – Улов на усилие отражает представленность {0} категории в улове 1 {1}.</value>
-  </data>
-  <data name="Paragraph1" xml:space="preserve">
-    <value>Уловы {0} категорий (выраженные из количества и массы) на единицу усилия и {0} структура уловов представлены в таблице {2}. Также для каждой {0} категории приведены доли ювенильных особей и особей обоих полов.</value>
-  </data>
-  <data name="Paragraph3" xml:space="preserve">
-    <value>Описанная модель основана на данных, предоставленных {0} ({1}).</value>
-  </data>
-  <data name="Table1" xml:space="preserve">
-    <value>{0} структура уловов</value>
-  </data>
-  <data name="TablePopulation" xml:space="preserve">
-    <value>{0} структура популяции</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Оценка {0} структуры популяции {1}</value>
+  <data name="AppendixHeader2" xml:space="preserve">
+    <value>Приложения. Размерно-возрастные ключи, использованные в расчете возрастной структуры уловов {0}</value>
   </data>
   <data name="Notice2" xml:space="preserve">
     <value>* – Численность возрастной категории восстановлено с помощью размерно-возрастного ключа.</value>
   </data>
-  <data name="TypeAge" xml:space="preserve">
-    <value>возрастная</value>
-  </data>
-  <data name="TypeLength" xml:space="preserve">
-    <value>размерная</value>
-  </data>
-  <data name="TypeSpecies" xml:space="preserve">
-    <value>видовая</value>
-  </data>
   <data name="Notice3" xml:space="preserve">
     <value>* – структура была распространена на всю выборку.</value>
   </data>
-  <data name="AppendixHeader2" xml:space="preserve">
-    <value>Приложения. Размерно-возрастные ключи, использованные в расчете возрастной структуры уловов {0}</value>
-  </data>
-  <data name="Paragraph2" xml:space="preserve">
-    <value>Возрастная структура {0} была оценена с использованием модели:</value>
+  <data name="TablePopulation" xml:space="preserve">
+    <value>{0} структура популяции</value>
   </data>
 </root>

@@ -35,7 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             Mayfly.Wild.AquaState aquaState2 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.Weather weather2 = new Mayfly.Wild.Weather();
+            Mayfly.Wild.WeatherState weather2 = new Mayfly.Wild.Weather();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();

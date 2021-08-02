@@ -2,6 +2,10 @@
 
 namespace Mayfly.Wild
 {
+}
+
+namespace Mayfly.Wild
+{
     public partial class WeatherEvents
     {
         partial class ValueDataTable

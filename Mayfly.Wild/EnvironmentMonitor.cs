@@ -20,7 +20,7 @@ namespace Mayfly.Wild
 
 
 
-        public void Add(Weather w, AquaState a)
+        public void Add(WeatherState w, AquaState a)
         {
             this.Add(new EnvironmentState(this.Where, w, a));
         }
@@ -32,13 +32,13 @@ namespace Mayfly.Wild
 
         public DateTime When { get { return Where.TimeMark; } }
 
-        public Weather StateOfWeather;
+        public WeatherState StateOfWeather;
 
         public AquaState StateOfWater;
 
 
 
-        public EnvironmentState(Waypoint where, Weather stateOfWeather, AquaState stateOfWater)
+        public EnvironmentState(Waypoint where, WeatherState stateOfWeather, AquaState stateOfWater)
         {
             Where = where;
             StateOfWeather = stateOfWeather;

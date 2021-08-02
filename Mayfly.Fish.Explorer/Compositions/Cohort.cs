@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mayfly.Wild;
-using System.Globalization;
-using Meta.Numerics.Statistics;
+﻿using Mayfly.Mathematics.Charts;
 using Mayfly.Mathematics.Statistics;
+using Mayfly.Wild;
+using Meta.Numerics.Statistics;
+using System;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Mayfly.Fish.Explorer
 {
     public class Cohort : AgeComposition
     {
+        /// <summary>
+        /// Year of cohort release
+        /// </summary>
         public int Birth { get; set; }
 
         //public double[] Survivors { get; internal set; }
         //public AgeGroup[] Survivors { get; internal set; }
         public AgeComposition Survivors { get; internal set; }
 
+        /// <summary>
+        /// Fishery mortality rates
+        /// </summary>
         public double[] F { get; internal set; }
 
 
@@ -27,10 +30,10 @@ namespace Mayfly.Fish.Explorer
         {
             Birth = birth;
             F = new double[Count];
-            //Survivors = new double[Count];
             Survivors = new AgeComposition(
                 string.Format("Survivors of {0} generation", birth),
-                composition.Youngest, composition.Oldest);
+                composition.Youngest,
+                composition.Oldest);
         }
 
 
@@ -112,6 +115,98 @@ namespace Mayfly.Fish.Explorer
             }
 
             return table1;
+        }
+
+        public Scatterplot GetGrowthScatterplot()
+        {
+            return this.GetGrowthScatterplot(false);
+        }
+
+        public Scatterplot GetGrowthScatterplot(bool isChronic)
+        {
+            if (isChronic)
+                throw new ArgumentException("Only thiss provide chronic growth charts.");
+
+            BivariateSample sample = new BivariateSample(
+                isChronic ? "Year" : Wild.Resources.Reports.Caption.Age,
+                Wild.Resources.Reports.Caption.Length);
+
+            foreach (AgeGroup cat in this)
+            {
+                if (cat.LengthSample == null) continue;
+                if (cat.LengthSample.Count == 0) continue;
+
+                double x = cat.Age.Years;
+                double y = cat.LengthSample.Mean;
+
+                if (isChronic)
+                {
+                    x += this.Birth;
+                    x = new DateTime((int)x, 3, 1).ToOADate();
+                }
+
+                sample.Add(x, y);
+            }
+
+            if (sample.Count == 0) return null;
+
+            Scatterplot result = new Scatterplot(sample, this.Name);
+            result.IsChronic = isChronic;
+            result.Properties.ShowTrend = true;
+            result.Properties.SelectedApproximationType = TrendType.Growth;
+            return result;
+        }
+
+        public Scatterplot GetHistory(bool isChronic)
+        {
+            BivariateSample data = new BivariateSample();
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this[i].Quantity == 0) continue;
+
+                double x = this[i].Age;
+
+                if (isChronic)
+                {
+                    x += this.Birth;
+                    x = Fish.Explorer.Service.GetCatchDate((int)x).ToOADate();
+                }
+
+                data.Add(x, (double)this[i].Quantity / 1000);
+            }
+
+            Scatterplot result = new Scatterplot(data, this.Name);
+            result.Series.ChartType = SeriesChartType.Line;
+            result.IsChronic = isChronic;
+
+            return result;
+        }
+
+        public Scatterplot GetSurvivorsHistory(bool isChronic)
+        {
+            BivariateSample data = new BivariateSample();
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this.Survivors[i].Quantity == 0) continue;
+
+                double x = this[i].Age;
+
+                if (isChronic)
+                {
+                    x += this.Birth;
+                    x = Fish.Explorer.Service.GetCatchDate((int)x).ToOADate();
+                }
+
+                data.Add(x, (double)this.Survivors[i].Quantity / 1000);
+            }
+
+            Scatterplot result = new Scatterplot(data, this.Name);
+            result.Series.ChartType = SeriesChartType.Line;
+            result.IsChronic = isChronic;
+
+            return result;
         }
     }
 }

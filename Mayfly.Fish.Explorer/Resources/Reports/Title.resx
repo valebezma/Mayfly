@@ -150,7 +150,7 @@
   <data name="RepCenosis" xml:space="preserve">
     <value>Cenosis Summary</value>
   </data>
-  <data name="StockComposition" xml:space="preserve">
+  <data name="RepPopulation" xml:space="preserve">
     <value>{0} stock composition</value>
   </data>
 </root>

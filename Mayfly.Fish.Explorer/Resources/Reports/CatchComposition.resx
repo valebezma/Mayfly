@@ -129,46 +129,19 @@
   <data name="App2" xml:space="preserve">
     <value>Masses of {0} categories in {1} catches of different gear class, kg</value>
   </data>
-  <data name="Notice2" xml:space="preserve">
-    <value>* – Age category quantity recovered by length-age key.</value>
-  </data>
   <data name="App1" xml:space="preserve">
     <value>Quantities of {0} categories in {1} catches of different gear class, ind.</value>
-  </data>
-  <data name="Notice1" xml:space="preserve">
-    <value>* – CPUE displays {0} category presence in a harvest of 1 {1}.</value>
-  </data>
-  <data name="Paragraph1" xml:space="preserve">
-    <value>Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given.</value>
-  </data>
-  <data name="Paragraph3" xml:space="preserve">
-    <value>Described model is based on data provided by {0} ({1}).</value>
-  </data>
-  <data name="Table1" xml:space="preserve">
-    <value>Catches {0} composition</value>
-  </data>
-  <data name="TablePopulation" xml:space="preserve">
-    <value>Population {0} composition</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Study of {0} composition of {1} population</value>
-  </data>
-  <data name="TypeAge" xml:space="preserve">
-    <value>age</value>
-  </data>
-  <data name="TypeLength" xml:space="preserve">
-    <value>length</value>
-  </data>
-  <data name="TypeSpecies" xml:space="preserve">
-    <value>special</value>
-  </data>
-  <data name="Notice3" xml:space="preserve">
-    <value>* – composition was distributed on whole sample.</value>
   </data>
   <data name="AppendixHeader2" xml:space="preserve">
     <value>Appendices. Age-length keys for calculation of age compositions of {0} catches</value>
   </data>
-  <data name="Paragraph2" xml:space="preserve">
-    <value>Age composition of {0} was obtained using growth model:</value>
+  <data name="Notice2" xml:space="preserve">
+    <value>* – Age category quantity recovered by length-age key.</value>
+  </data>
+  <data name="Notice3" xml:space="preserve">
+    <value>* – composition was distributed on whole sample.</value>
+  </data>
+  <data name="TablePopulation" xml:space="preserve">
+    <value>Population {0} composition</value>
   </data>
 </root>

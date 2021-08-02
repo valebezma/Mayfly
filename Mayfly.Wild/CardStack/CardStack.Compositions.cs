@@ -4,7 +4,7 @@
     {
         public SpeciesComposition GetCenosisCompositionFrame()
         {
-            SpeciesComposition result = new SpeciesComposition(string.Empty, this.GetSpecies().Length);
+            SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, this.GetSpecies().Length);
 
             foreach (Data.SpeciesRow speciesRow in this.GetSpecies())
             {

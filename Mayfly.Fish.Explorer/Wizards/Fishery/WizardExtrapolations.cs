@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private WizardGearSet gearWizard;
 
-        private WizardCenosisComposition compositionWizard;
+        private WizardComposition compositionWizard;
 
         public double Area 
         {
@@ -100,7 +100,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void UpdateStocks() 
         {
-            foreach (Category species in compositionWizard.NaturalComposition)
+            foreach (Category species in compositionWizard.CatchesComposition)
             {
                 double s = (gearWizard.SelectedUnit.Variant == ExpressionVariant.Square ? Area : Volume) 
                     / gearWizard.SelectedUnit.UnitCost;
@@ -109,17 +109,17 @@ namespace Mayfly.Fish.Explorer.Fishery
                 species.Mass = (species.Biomass * s);
             }
 
-            for (int i = 0 ; i < compositionWizard.NaturalComposition.Count ; i++)
+            for (int i = 0 ; i < compositionWizard.CatchesComposition.Count ; i++)
             {
-                spreadSheetStocks[ColumnN.Index, i].Value = compositionWizard.NaturalComposition[i].Quantity / 1000.0;
-                spreadSheetStocks[ColumnB.Index, i].Value = compositionWizard.NaturalComposition[i].Mass / 1000.0;
+                spreadSheetStocks[ColumnN.Index, i].Value = compositionWizard.CatchesComposition[i].Quantity / 1000.0;
+                spreadSheetStocks[ColumnB.Index, i].Value = compositionWizard.CatchesComposition[i].Mass / 1000.0;
             }
         }
 
         private void UpdateGamingStock(int i) 
         {
             Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(
-                compositionWizard.NaturalComposition[i].Name);            
+                compositionWizard.CatchesComposition[i].Name);            
 
             if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null)
             {
@@ -157,20 +157,17 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxGears.Checked)
             {
-                gearWizard.AddSummarySection(report);
+                gearWizard.AddEffortSection(report);
             }
 
             if (checkBoxCatches.Checked)
             {
-                compositionWizard.CatchesComposition.AddSummarySection(Data.Parent, report,
-                    gearWizard.AbundanceUnits, gearWizard.BiomassUnits);
-
-                //compositionWizard.AddCatchesComposition(report);
+                compositionWizard.AddCatchesSection(report);
             }
 
             if (checkBoxCenosis.Checked)
             {
-                compositionWizard.AddSummarySection(report);
+                //compositionWizard.AddCenosisSection(report);
             }
 
             if (checkBoxStocks.Checked)
@@ -233,15 +230,15 @@ namespace Mayfly.Fish.Explorer.Fishery
             table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnMss);
             table1.EndRow();
 
-            for (int i = 0; i < compositionWizard.NaturalComposition.Count; i++)
+            for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)
             {
                 Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(
-                    compositionWizard.NaturalComposition[i].Name);
+                    compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();
                 table1.AddCell(speciesRow.ToShortHTML());
-                table1.AddCellRight(compositionWizard.NaturalComposition[i].Quantity / 1000, ColumnN.DefaultCellStyle.Format);
-                table1.AddCellRight(compositionWizard.NaturalComposition[i].Mass / 1000, ColumnB.DefaultCellStyle.Format);
+                table1.AddCellRight(compositionWizard.CatchesComposition[i].Quantity / 1000, ColumnN.DefaultCellStyle.Format);
+                table1.AddCellRight(compositionWizard.CatchesComposition[i].Mass / 1000, ColumnB.DefaultCellStyle.Format);
 
                 if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null)
                 {
@@ -271,8 +268,8 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             table1.StartRow();
             table1.AddCell(Mayfly.Resources.Interface.Total);
-            table1.AddCellRight(compositionWizard.NaturalComposition.GetTotalQuantity() / 1000, ColumnN.DefaultCellStyle.Format);
-            table1.AddCellRight(compositionWizard.NaturalComposition.GetTotalMass() / 1000, ColumnB.DefaultCellStyle.Format);
+            table1.AddCellRight(compositionWizard.CatchesComposition.GetTotalQuantity() / 1000, ColumnN.DefaultCellStyle.Format);
+            table1.AddCellRight(compositionWizard.CatchesComposition.GetTotalMass() / 1000, ColumnB.DefaultCellStyle.Format);
             table1.AddCell();
             table1.AddCellRight((double)GamingStocks.GetTotalQuantity() / 1000, ColumnN.DefaultCellStyle.Format);
             table1.AddCellRight(GamingStocks.GetTotalMass() / 1000, ColumnB.DefaultCellStyle.Format);
@@ -304,8 +301,8 @@ namespace Mayfly.Fish.Explorer.Fishery
                 return;
 
             Composition populationComposition = (Composition)e.Result;
-            Category stock = compositionWizard.NaturalComposition.GetCategory(populationComposition.Name);
-            int i = compositionWizard.NaturalComposition.IndexOf(stock);
+            Category stock = compositionWizard.CatchesComposition.GetCategory(populationComposition.Name);
+            int i = compositionWizard.CatchesComposition.IndexOf(stock);
 
             if (populationComposition == null)
             {
@@ -354,7 +351,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                     if (reached == null)
                     {
-                        if (sizeClass * 10.0 < compositionWizard.NaturalComposition[i].LengthSample.Minimum)
+                        if (sizeClass * 10.0 < compositionWizard.CatchesComposition[i].LengthSample.Minimum)
                         {
                             f_n = f_b = 1;
                         }
@@ -400,13 +397,13 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (compositionWizard == null)
             {
-                compositionWizard = new WizardCenosisComposition(Data);
+                compositionWizard = new WizardComposition(Data, gearWizard.SelectedData.GetCenosisCompositionFrame());
                 compositionWizard.Returned += compositionWizard_Returned;
                 compositionWizard.Finished += compositionWizard_Finished;
             }
 
             compositionWizard.Replace(this);
-            compositionWizard.Run(gearWizard, null);
+            compositionWizard.Run(gearWizard);
 
             checkBoxCatches_CheckedChanged(sender, e);
         }
@@ -421,30 +418,30 @@ namespace Mayfly.Fish.Explorer.Fishery
         private void compositionWizard_Finished(object sender, EventArgs e)
         {
             this.Replace(compositionWizard);
-            compositionWizard.NaturalComposition.SetLines(ColumnSpecies);
+            compositionWizard.CatchesComposition.SetLines(ColumnSpecies);
 
             GamingStocks = new List<Category>();
 
-            foreach (Category species in compositionWizard.NaturalComposition)
+            foreach (Category species in compositionWizard.CatchesComposition)
             {
                 GamingStocks.Add(new SpeciesSwarm(species.Name));
             }
 
-            for (int i = 0; i < compositionWizard.NaturalComposition.Count; i++)
+            for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)
             {
-                spreadSheetStocks[ColumnAbundance.Index, i].Value = compositionWizard.NaturalComposition[i].Abundance;
-                spreadSheetStocks[ColumnBiomass.Index, i].Value = compositionWizard.NaturalComposition[i].Biomass;
+                spreadSheetStocks[ColumnAbundance.Index, i].Value = compositionWizard.CatchesComposition[i].Abundance;
+                spreadSheetStocks[ColumnBiomass.Index, i].Value = compositionWizard.CatchesComposition[i].Biomass;
 
                 // Update remembered gaming limits
 
                 if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null) continue;
                 if (spreadSheetStocks[ColumnGamingAge.Index, i].Value != null) continue;
 
-                double measure = Service.GetMeasure(compositionWizard.NaturalComposition[i].Name);
+                double measure = Service.GetMeasure(compositionWizard.CatchesComposition[i].Name);
 
                 if (double.IsNaN(measure))
                 {
-                    Age gamingAge = Service.GetGamingAge(compositionWizard.NaturalComposition[i].Name);
+                    Age gamingAge = Service.GetGamingAge(compositionWizard.CatchesComposition[i].Name);
 
                     if (gamingAge != null)
                     {

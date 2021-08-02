@@ -224,7 +224,7 @@ namespace Mayfly.Fish.Explorer
         public void AddAppendix(Report report, string appName, string separatesHeader,
             ValueVariant valueVariant, string format)
         {
-            SeparateCompositions.ToArray().AddCompositionTable(report, appName, this.Name, 
+            SeparateCompositions.ToArray().AddTable(report, appName, this.Name, 
                 separatesHeader, valueVariant, format);
         }
 

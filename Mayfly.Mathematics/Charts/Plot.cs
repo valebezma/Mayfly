@@ -1258,11 +1258,11 @@ namespace Mayfly.Mathematics.Charts
 
                 double w = this.Width;
 
-                if (this.Visible)
-                {
-                    w = chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Maximum) -
-                        chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Minimum);
-                }
+                //if (this.Visible)
+                //{
+                //    w = chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Maximum) -
+                //        chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Minimum);
+                //}
 
                 if (IsChronic)
                 {
@@ -1280,11 +1280,11 @@ namespace Mayfly.Mathematics.Charts
 
                 double h = this.Height;
 
-                if (this.Visible)
-                {
-                    h = chartArea.AxisY.ValueToPixelPosition(AxisYMin) -
-                        chartArea.AxisY.ValueToPixelPosition(AxisYMax);
-                }
+                //if (this.Visible)
+                //{
+                //    h = chartArea.AxisY.ValueToPixelPosition(AxisYMin) -
+                //        chartArea.AxisY.ValueToPixelPosition(AxisYMax);
+                //}
 
                 chartArea.AxisY.AdjustIntervals(h, AxisYInterval);
 

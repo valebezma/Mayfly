@@ -6,11 +6,39 @@ using System.Threading.Tasks;
 using Mayfly.Wild;
 using Meta.Numerics;
 using Mayfly.Extensions;
+using System.Windows.Forms;
 
 namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
+        {
+            for (int i = 0; i < item.DropDownItems.Count; i++)
+            {
+                if (item.DropDownItems[i].Tag != null)
+                {
+                    item.DropDownItems.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator))
+            {
+                item.DropDownItems.Add(new ToolStripSeparator());
+            }
+
+            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            {
+                ToolStripItem _item = new ToolStripMenuItem();
+                _item.Tag = speciesRow;
+                _item.Text = speciesRow.GetFullName();
+                _item.Click += command;
+                item.DropDownItems.Add(_item);
+            }
+
+        }
+
         public static Data.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
         {
             return stack.GetSpeciesCaught(1);

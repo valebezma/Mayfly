@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="E" xml:space="preserve">
+  <data name="e" xml:space="preserve">
     <value>экстремальные значения</value>
   </data>
-  <data name="G" xml:space="preserve">
+  <data name="g" xml:space="preserve">
     <value>средняя, стандартная ошибка и экстремальные значения</value>
   </data>
-  <data name="Q" xml:space="preserve">
+  <data name="q" xml:space="preserve">
     <value>средняя и экстремальные значения</value>
   </data>
-  <data name="S" xml:space="preserve">
+  <data name="s" xml:space="preserve">
     <value>средняя и стандартная ошибка</value>
   </data>
 </root>

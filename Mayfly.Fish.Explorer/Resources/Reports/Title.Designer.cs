@@ -162,9 +162,9 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         /// <summary>
         ///   Looks up a localized string similar to {0} stock composition.
         /// </summary>
-        public static string StockComposition {
+        public static string RepPopulation {
             get {
-                return ResourceManager.GetString("StockComposition", resourceCulture);
+                return ResourceManager.GetString("RepPopulation", resourceCulture);
             }
         }
     }

@@ -125,7 +125,7 @@ namespace Mayfly.Fish.Explorer.Observations
                     {
                         Data.WaterRow wr = data.Water.NewWaterRow();
                         if (!comRow.IsWaterTypeNull()) wr.Type = comRow.WaterType;
-                        if (!comRow.IsWaterNameNull()) wr.Water= comRow.WaterName;
+                        if (!comRow.IsWaterNameNull()) wr.Water = comRow.WaterName;
                         data.Water.AddWaterRow(wr);
                         data.Solitary.WaterRow = wr;
                     }
@@ -163,11 +163,11 @@ namespace Mayfly.Fish.Explorer.Observations
                 return string.Format(Resources.Interface.Interface.TimepointDescription, this.Timepoint);
             }
 
-            public Weather WeatherConditions
+            public WeatherState WeatherConditions
             {
                 get
                 {
-                    return this.IsWeatherNull() ? null : new Weather(this.Weather);
+                    return this.IsWeatherNull() ? null : new WeatherState(this.Weather);
                 }
             }
         }

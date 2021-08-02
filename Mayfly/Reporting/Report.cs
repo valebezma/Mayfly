@@ -67,7 +67,11 @@ namespace Mayfly
 
             StartPage(opt);
 
-            if (!string.IsNullOrWhiteSpace(this.Title)) this.WriteLine("<h1>{0}</h1>", this.Title);
+            if (!string.IsNullOrWhiteSpace(this.Title))
+            {
+                this.WriteLine("<h1>{0}</h1>", this.Title);
+                this.Title = Service.StripHTML(this.Title);
+            }
         }
 
         public Report(string title, params string[] styles) : this(title, PageBreakOption.None, styles) { }
@@ -167,6 +171,11 @@ namespace Mayfly
         public void AddChapterTitle(string format, params string[] values)
         {
             WriteLine("<h2>{0}</h2>", string.Format(format, values));
+        }
+
+        public void AddSectionTitle()
+        {
+            AddSectionTitle("!!! Insert Section Caption Here");
         }
 
         public void AddSectionTitle(string text)
