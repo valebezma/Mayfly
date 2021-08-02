@@ -259,7 +259,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 if (checkBoxCatches.Checked)
                 {
-                    compositionWizard.AddCompositionSection(report);
+                    compositionWizard.AppendPopulationSectionTo(report);
                 }
 
                 AddComposition(report);
@@ -294,8 +294,8 @@ namespace Mayfly.Fish.Explorer.Fishery
                     SpeciesRow.ToHTML(), gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
-                table1.AddHeaderCell(Resources.Reports.Column.GearClass, .25, 2);
-                table1.AddHeaderCell(string.Format(Resources.Reports.Column.Efforts, gearWizard.SelectedUnit.Unit), 2, CellSpan.Rows);
+                table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25, 2);
+                table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, gearWizard.SelectedUnit.Unit), 2, CellSpan.Rows);
                 table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCatch, 2);
                 table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCpue, 2);
                 table1.EndRow();

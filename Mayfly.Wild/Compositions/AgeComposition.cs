@@ -19,7 +19,7 @@ namespace Mayfly.Wild
         {
             if (start > end)
             {
-                Mayfly.Notification.ShowNotification(Resources.Interface.Messages.AgeInacceptable, Resources.Interface.Messages.AgeInacceptableInstruction);
+                Notification.ShowNotification(Resources.Interface.Messages.AgeInacceptable, Resources.Interface.Messages.AgeInacceptableInstruction);
                 throw new AgeArgumentException("Inacceptable age limits");
             }
 

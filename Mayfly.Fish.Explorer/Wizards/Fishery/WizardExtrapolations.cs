@@ -162,7 +162,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCatches.Checked)
             {
-                compositionWizard.AddCatchesSection(report);
+                compositionWizard.AppendCatchesSectionTo(report);
             }
 
             if (checkBoxCenosis.Checked)
@@ -177,7 +177,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCPUE.Checked)
             {
-                foreach (Report.Appendix app in compositionWizard.GetCpueAppendices())
+                foreach (Report.Table app in compositionWizard.GetCpueAppendices())
                 {
                     report.AddAppendix(app);
                 }

@@ -16,83 +16,96 @@ namespace Mayfly
 
         public int NextTableNumber { get; private set; }
 
-        public void AddTable(Table table) => AddTable(table, classid: table.Class == ReportTableClass.None ? string.Empty : table.Class.ToString().ToLower());
 
-        public void AddTable(Table table, string classid)
+
+        public void AddTable(Table table, string classid, string caption)
         {
             if (table == null) return;
 
+            WriteLine(string.IsNullOrWhiteSpace(classid) ? "<table>" : "<table class='{0}'>", classid);
 
-            this.WriteLine(string.IsNullOrWhiteSpace(classid) ? "<table>" : "<table class='{0}'>", classid);
-
-            if (!string.IsNullOrWhiteSpace(table.Caption))
+            if (!string.IsNullOrWhiteSpace(caption))
             {
-                if (this.UseTableNumeration)
+                this.WriteLine("<caption>{0}:</caption>", caption);
+            }
+
+            string tableBody = table.ToString();
+            string noticeHolder = string.Empty;
+
+            while (tableBody.Contains(Constants.NoticeHolder))
+            {
+                int holderPlace = tableBody.IndexOf(Constants.NoticeHolder);
+                tableBody = tableBody.Remove(holderPlace, Constants.NoticeHolder.Length);
+                noticeHolder += "*";
+                tableBody = tableBody.Insert(holderPlace, noticeHolder);
+            }
+
+            this.WriteLine(tableBody);
+
+            this.WriteLine("</table>");
+            
+            string combinedNotice = string.Empty;
+            noticeHolder = string.Empty;
+
+            foreach (string notice in table.Notices)
+            {
+                if (!string.IsNullOrWhiteSpace(notice))
                 {
-                    this.WriteLine("<caption>{0}:</caption>", 
-                        string.Format(Resources.Report.TableHeader, this.NextTableNumber, table.Caption));
-                    this.NextTableNumber++;
-                }
-                else
-                {
-                    this.WriteLine("<caption>{0}:</caption>",
-                        table.Caption);
+                    noticeHolder += "*";
+                    combinedNotice += noticeHolder + " – " + notice + "; ";
                 }
             }
 
-            this.WriteLine(table.ToString());
-            this.WriteLine("</table>");
+            if (!string.IsNullOrWhiteSpace(combinedNotice))
+            {
+                combinedNotice = combinedNotice.TrimEnd(' ',';') + ".";
+                AddComment(combinedNotice, true);
+            }
         }
 
-        public void AddAppendix(Appendix appendix)
+        public void AddTable(Table table, string classid)
         {
-            WriteLine("<table class='{0}'>", arg0: appendix.Class.ToString().ToLower());
+            AddTable(table, classid, UseTableNumeration ? string.Format(Resources.Report.TableHeader, this.NextTableNumber, table.Caption) : table.Caption);
 
-            if (!string.IsNullOrWhiteSpace(appendix.Caption))
+            if (this.UseTableNumeration)
             {
-                this.WriteLine("<caption>{0}:</caption>", string.Format(Resources.Report.AppendixTableHeader,
-                    Service.GetLetter(NextAppendixNumber), appendix.Caption));
-
-                NextAppendixNumber++;
+                NextTableNumber++;
             }
-
-            this.WriteLine(appendix.ToString());
-            this.WriteLine("</table>");
         }
+
+        public void AddTable(Table table)
+        {
+            AddTable(table, string.Empty);
+        }
+
+        public void AddAppendix(Table table)
+        {
+            AddTable(table, "big", string.Format(Resources.Report.AppendixTableHeader, Service.GetLetter(NextAppendixNumber), table.Caption));
+            NextAppendixNumber++;
+        }
+
+
 
         public class Table : StringWriter
         {
-            public ReportTableClass Class; // = ReportTableClass.None;
-
             public string Caption;
 
+            public List<string> Notices;
 
 
-            public Table(ReportTableClass tableclass, string caption)
-            {
-                Class = tableclass;
-                if (!string.IsNullOrWhiteSpace(caption)) Caption = caption;
-            }
-
-            public Table(ReportTableClass tableclass, string captionformat, params object[] values)
-                : this(tableclass, string.Format(captionformat, values))
-            { }
-
-            public Table()
-                : this(ReportTableClass.None, string.Empty)
-            { }
-
-            public Table(ReportTableClass tableclass)
-                : this(tableclass, string.Empty)
-            { }
 
             public Table(string caption)
-                : this(ReportTableClass.None, caption)
-            { }
+            {
+                if (!string.IsNullOrWhiteSpace(caption)) Caption = caption;
 
-            public Table(string format, params object[] values)
-                : this(ReportTableClass.None, format, values)
-            { }
+                Notices = new List<string>();
+            }
+
+            public Table(string captionformat, params object[] values)
+                : this(string.Format(captionformat, values)) { }
+
+            public Table()
+                : this(string.Empty) { }
 
 
 
@@ -282,7 +295,7 @@ namespace Mayfly
             public void AddCell(object value, ReportCellClass classid, int span, CellSpan direction)
             {
                 this.WriteLine("<td " +
-                    (classid == ReportCellClass.None ? string.Empty : "class='" + classid.ToString().Replace(",",string.Empty).ToLower() + "'") +
+                    (classid == ReportCellClass.None ? string.Empty : "class='" + classid.ToString().Replace(",", string.Empty).ToLower() + "'") +
                     (span > 1 ? (direction == CellSpan.Columns ? "colspan" : "rowspan") + "='" + span + "'" : string.Empty) +
                     ">" + (value == null ? string.Empty : value.ToString().Replace(Environment.NewLine, "<br>")) + "</td>");
             }
@@ -433,11 +446,21 @@ namespace Mayfly
                 WriteLine("</tfoot>");
             }
 
+            public void AddNotice(string notice)
+            {
+                Notices.Add(notice);
+            }
+
+            public void AddNotice(string format, params object[] values)
+            {
+                Notices.Add(string.Format(format, values));
+            }
+
 
 
             public static Table GetLinedTable(string[] prompts, string[] values)
             {
-                Table result = new Table(ReportTableClass.Fill);
+                Table result = new Table();
 
                 for (int i = 0; i < prompts.Length; i++)
                 {
@@ -449,25 +472,14 @@ namespace Mayfly
                 return result;
             }
         }
-
-        public class Appendix : Table
-        {
-            public Appendix(string caption)
-                : base(ReportTableClass.Big, caption)
-            { }
-
-            public Appendix(string format, params object[] values)
-                : base(ReportTableClass.Big, format, values)
-            { }
-        }
     }
 
-    public enum ReportTableClass
-    {
-        None,
-        Big,
-        Fill
-    }
+    //public enum ReportTableClass
+    //{
+    //    None,
+    //    Big,
+    //    Fill
+    //}
 
     public enum CellSpan
     {

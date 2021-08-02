@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Notice1" xml:space="preserve">
-    <value>*** – CPUE displays {2} category presence in a harvest of 1 {3}.</value>
-  </data>
   <data name="Paragraph1" xml:space="preserve">
     <value>Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given.</value>
   </data>

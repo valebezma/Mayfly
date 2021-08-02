@@ -263,6 +263,7 @@
             this.pageComposition.Controls.Add(this.spreadSheetComposition);
             this.pageComposition.Name = "pageComposition";
             resources.ApplyResources(this.pageComposition, "pageComposition");
+            this.pageComposition.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Commit);
             this.pageComposition.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Rollback);
             // 
             // textBoxDiversity

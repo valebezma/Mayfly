@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bpue" xml:space="preserve">
-    <value>CPUE (by mass)</value>
+  <data name="SampleFormat" xml:space="preserve">
+    <value>в каждой ячейке отражены следующие значения: {0}</value>
   </data>
-  <data name="m2" xml:space="preserve">
-    <value>m²</value>
+  <data name="NPUE" xml:space="preserve">
+    <value>{0} равен улову одной {1}</value>
   </data>
-  <data name="MassUnits" xml:space="preserve">
-    <value>Mass, kg</value>
+  <data name="Abundance" xml:space="preserve">
+    <value>количество особей вида на участке среды, эквивалентном одному {0} (что равняется {1:N1} м³).</value>
   </data>
-  <data name="Npue" xml:space="preserve">
-    <value>CPUE (by number)</value>
+  <data name="BPUE" xml:space="preserve">
+    <value>{0} равен улову одной {1}</value>
   </data>
-  <data name="Ind" xml:space="preserve">
-    <value>ind.</value>
+  <data name="SexualLegend" xml:space="preserve">
+    <value>полы обозначены следующим образом: {0:c} : {1:c} : {2:c}</value>
   </data>
-  <data name="Kg" xml:space="preserve">
-    <value>kg</value>
+  <data name="Biomass" xml:space="preserve">
+    <value>ихтиомасса вида на участке среды, эквивалентном одному {0} (что равняется {1:N1} м³).</value>
   </data>
-  <data name="StratifiedCribnote" xml:space="preserve">
-    <value>Stratified crib note (cm)</value>
+  <data name="Dominance" xml:space="preserve">
+    <value>индекс доминирования рассчитан по ({0}).</value>
   </data>
 </root>

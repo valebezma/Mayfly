@@ -83,6 +83,7 @@ namespace Mayfly.Fish.Explorer.Survey
         }
 
 
+
         public void Run(WizardGearSet _gearWizard)
         {
             gearWizard = _gearWizard;
@@ -98,39 +99,68 @@ namespace Mayfly.Fish.Explorer.Survey
         }
 
 
-
-
-        public void AddCatchesSection(Report report)
+        private void UpdateResults()
         {
-            CatchesComposition.SetFormats(
-                gearWizard.AbundanceUnits,
-                gearWizard.BiomassUnits,
+            for (int i = 0; i < CatchesComposition.Count; i++)
+            {
+                if (CatchesComposition[i].Quantity == 0)
+                {
+                    spreadSheetCatches[ColumnNPUE.Index, i].Value = null;
+                    spreadSheetCatches[ColumnNPUEF.Index, i].Value = null;
+                    spreadSheetCatches[ColumnBPUE.Index, i].Value = null;
+                    spreadSheetCatches[ColumnBPUEF.Index, i].Value = null;
+                }
+                else
+                {
+                    spreadSheetCatches[ColumnNPUE.Index, i].Value = CatchesComposition[i].Abundance;
+                    spreadSheetCatches[ColumnNPUEF.Index, i].Value = CatchesComposition[i].AbundanceFraction;
+                    spreadSheetCatches[ColumnBPUE.Index, i].Value = CatchesComposition[i].Biomass;
+                    spreadSheetCatches[ColumnBPUEF.Index, i].Value = CatchesComposition[i].BiomassFraction;
+                }
 
-                ColumnL.DefaultCellStyle.Format,
-                ColumnW.DefaultCellStyle.Format,
-
-                ColumnNPUE.DefaultCellStyle.Format,
-                ColumnNPUEF.DefaultCellStyle.Format,
-
-                ColumnB.DefaultCellStyle.Format,
-                ColumnBPUE.DefaultCellStyle.Format,
-                ColumnBPUEF.DefaultCellStyle.Format);
-
-            CatchesComposition.AppendCatchesSectionTo(report, Data.Parent);
-
+                spreadSheetCatches.Rows[i].DefaultCellStyle.ForeColor =
+                    CatchesComposition[i].Quantity == 0 ? Constants.InfantColor : spreadSheetCatches.ForeColor;
+            }
         }
 
-        public Report.Appendix[] GetCpueAppendices()
+        internal void Split(int j)
         {
-            List<Report.Appendix> result = new List<Report.Appendix>();
+            CatchesComposition.Split(j, Service.GetMeasure(SpeciesRow.Species) * 10);
+            CatchesComposition.SetLines(columnComposition);
+            CatchesComposition.SetLines(ColumnCategory);
+            CatchesComposition.SeparateCompositions.ToArray().UpdateValues(spreadSheetComposition, columnComposition, 
+                Category.GetValueVariant(comboBoxParameter.SelectedIndex == 0,
+                checkBoxPUE.Checked, checkBoxFractions.Checked));
+
+            UpdateResults();
+
+            spreadSheetComposition.ClearSelection();
+            spreadSheetComposition.Rows[j].Selected = true;
+        }
+
+        public void AppendCatchesSectionTo(Report report)
+        {
+            CatchesComposition.AppendCatchesSectionTo(report);
+        }
+
+        public void AppendPopulationSectionTo(Report report)
+        {
+            CatchesComposition.AppendPopulationSectionTo(report, SpeciesRow, Data.Parent);
+        }
+
+
+
+        public Report.Table[] GetCpueAppendices()
+        {
+            List<Report.Table> result = new List<Report.Table>();
 
             #region A
 
-            Report.Appendix a = new Report.Appendix(Resources.Reports.Title.AppA);
+            Report.Table a = new Report.Table(Resources.Reports.Title.AppA);
 
             a.StartRow();
             a.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            a.AddHeaderCell(Resources.Reports.Column.GearClass, CatchesComposition.Dimension * 2);
+            a.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
             a.EndRow();
 
             a.StartRow();
@@ -186,11 +216,11 @@ namespace Mayfly.Fish.Explorer.Survey
 
             #region B
 
-            Report.Appendix b = new Report.Appendix(Resources.Reports.Title.AppB);
+            Report.Table b = new Report.Table(Resources.Reports.Title.AppB);
 
             b.StartRow();
             b.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            b.AddHeaderCell(Resources.Reports.Column.GearClass, CatchesComposition.Dimension * 2);
+            b.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
             b.EndRow();
 
             b.StartRow();
@@ -246,11 +276,11 @@ namespace Mayfly.Fish.Explorer.Survey
 
             #region E
 
-            Report.Appendix e = new Report.Appendix(Resources.Reports.Title.AppC);
+            Report.Table e = new Report.Table(Resources.Reports.Title.AppC);
 
             e.StartRow();
             e.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            e.AddHeaderCell(Resources.Reports.Column.GearClass, CatchesComposition.Dimension * 2);
+            e.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
             e.EndRow();
 
             e.StartRow();
@@ -382,43 +412,25 @@ namespace Mayfly.Fish.Explorer.Survey
             //#endregion
         }
 
-        public void AddCompositionSection(Report report)
-        {
-            CatchesComposition.SetFormats(
-                gearWizard.AbundanceUnits,
-                gearWizard.BiomassUnits,
-
-                "",
-                "",
-
-                ColumnNPUE.DefaultCellStyle.Format,
-                ColumnNPUEF.DefaultCellStyle.Format,
-
-                ColumnB.DefaultCellStyle.Format,
-                ColumnBPUE.DefaultCellStyle.Format,
-                ColumnBPUEF.DefaultCellStyle.Format);
-            CatchesComposition.AppendPopulationSectionTo(report, Data.Parent, SpeciesRow, gearWizard.SelectedUnit);
-        }
-
         public void AddCatchesRoutines(Report report)
         {
             report.AddSectionTitle(Resources.Reports.CatchComposition.AppendixHeader1,
                     CategoryType, SpeciesRow.ToHTML());
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App1,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Column.GearClass,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass,
                 ValueVariant.Quantity, string.Empty);
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App2,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Column.GearClass,
+                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass,
                 ValueVariant.Mass, "N3");
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App3,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Column.GearClass,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass,
                 ValueVariant.Abundance, ColumnNPUE.DefaultCellStyle.Format);
 
             CatchesComposition.AddAppendix(report, string.Format(Resources.Reports.CatchComposition.App4,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Column.GearClass,
+                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass,
                 ValueVariant.Biomass, ColumnBPUE.DefaultCellStyle.Format);
 
             report.EndBranded();
@@ -443,46 +455,6 @@ namespace Mayfly.Fish.Explorer.Survey
             }
 
             report.EndBranded();
-        }
-
-
-        private void UpdateResults()
-        {
-            for (int i = 0; i < CatchesComposition.Count; i++)
-            {
-                if (CatchesComposition[i].Quantity == 0)
-                {
-                    spreadSheetCatches[ColumnNPUE.Index, i].Value = null;
-                    spreadSheetCatches[ColumnNPUEF.Index, i].Value = null;
-                    spreadSheetCatches[ColumnBPUE.Index, i].Value = null;
-                    spreadSheetCatches[ColumnBPUEF.Index, i].Value = null;
-                }
-                else
-                {
-                    spreadSheetCatches[ColumnNPUE.Index, i].Value = CatchesComposition[i].Abundance;
-                    spreadSheetCatches[ColumnNPUEF.Index, i].Value = CatchesComposition[i].AbundanceFraction;
-                    spreadSheetCatches[ColumnBPUE.Index, i].Value = CatchesComposition[i].Biomass;
-                    spreadSheetCatches[ColumnBPUEF.Index, i].Value = CatchesComposition[i].BiomassFraction;
-                }
-
-                spreadSheetCatches.Rows[i].DefaultCellStyle.ForeColor =
-                    CatchesComposition[i].Quantity == 0 ? Constants.InfantColor : spreadSheetCatches.ForeColor;
-            }
-        }
-
-        internal void Split(int j)
-        {
-            CatchesComposition.Split(j, Service.GetMeasure(SpeciesRow.Species) * 10);
-            CatchesComposition.SetLines(columnComposition);
-            CatchesComposition.SetLines(ColumnCategory);
-            CatchesComposition.SeparateCompositions.ToArray().UpdateValues(spreadSheetComposition, columnComposition, 
-                Category.GetValueVariant(comboBoxParameter.SelectedIndex == 0,
-                checkBoxPUE.Checked, checkBoxFractions.Checked));
-
-            UpdateResults();
-
-            spreadSheetComposition.ClearSelection();
-            spreadSheetComposition.Rows[j].Selected = true;
         }
 
 
@@ -540,9 +512,6 @@ namespace Mayfly.Fish.Explorer.Survey
                 Calculated.Invoke(this, e);
             }
         }
-
-
-
 
         private void WizardCatchesComposition_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -671,6 +640,19 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void pageCatches_Commit(object sender, WizardPageConfirmEventArgs e)
         {
+            CatchesComposition.SetFormats(
+                ColumnNPUE.DefaultCellStyle.Format,
+                ColumnNPUEF.DefaultCellStyle.Format,
+
+                ColumnB.DefaultCellStyle.Format,
+                ColumnBPUE.DefaultCellStyle.Format,
+                ColumnBPUEF.DefaultCellStyle.Format,
+
+                ColumnL.DefaultCellStyle.Format,
+                ColumnW.DefaultCellStyle.Format,
+
+                gearWizard.SelectedUnit.Unit);
+
             if (Finished != null)
             {
                 Finished.Invoke(sender, e);

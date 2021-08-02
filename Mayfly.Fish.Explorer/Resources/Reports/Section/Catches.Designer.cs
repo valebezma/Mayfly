@@ -61,47 +61,56 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample from {0} class is empty..
+        ///   Looks up a localized string similar to Combined Catches Summary.
         /// </summary>
-        internal static string Paragraph_1 {
+        internal static string Header {
             get {
-                return ResourceManager.GetString("Paragraph_1", resourceCulture);
+                return ResourceManager.GetString("Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Classes Catches Tables.
+        /// </summary>
+        internal static string HeaderSingleClass {
+            get {
+                return ResourceManager.GetString("HeaderSingleClass", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to There are {0} species registered in catches. Most numerous sample is of {1} ({2} ind., which is {3:P1} of total sample). Species&apos; samples sizes and also biological estimates are given in table {4}..
         /// </summary>
-        internal static string Paragraph_2 {
+        internal static string ParagraphDescription {
             get {
-                return ResourceManager.GetString("Paragraph_2", resourceCulture);
+                return ResourceManager.GetString("ParagraphDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Combined Catches Summary.
+        ///   Looks up a localized string similar to Sample from {0} class is empty..
         /// </summary>
-        internal static string Subtitle {
+        internal static string ParagraphEmpty {
             get {
-                return ResourceManager.GetString("Subtitle", resourceCulture);
+                return ResourceManager.GetString("ParagraphEmpty", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of different classes catch description.
+        ///   Looks up a localized string similar to Description of species samples.
         /// </summary>
-        internal static string Subtitle_single {
+        internal static string Table {
             get {
-                return ResourceManager.GetString("Subtitle_single", resourceCulture);
+                return ResourceManager.GetString("Table", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic description of species samples from {0}.
+        ///   Looks up a localized string similar to Description of species samples from {0}.
         /// </summary>
-        internal static string Table_1 {
+        internal static string TableSingleClass {
             get {
-                return ResourceManager.GetString("Table_1", resourceCulture);
+                return ResourceManager.GetString("TableSingleClass", resourceCulture);
             }
         }
     }

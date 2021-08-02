@@ -1909,12 +1909,12 @@ namespace Mayfly.Controls
 
         public void AddToReport(Report result)
         {
-            result.AddTable(GetReport());
+            result.AddTable(GetReport(), "big");
         }
 
         public Report.Table GetReport()
         {
-            Report.Table result = new Report.Table(ReportTableClass.Big);
+            Report.Table result = new Report.Table();
 
             result.StartRow();
 

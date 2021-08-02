@@ -330,7 +330,7 @@ namespace Mayfly.Fish.Legal
                     LicenseRow.Requisites, 
                     waters.Merge(),
                     string.Format("{0:d} - {1:d}", dateStarted.Value.Date, dateUntil.Value.Date) }
-                    ));
+                    ), "fill");
 
             double totalMass1 = 0;
             double totalMass2 = 0;

@@ -99,7 +99,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxAge.Checked)
             {
-                ageCompositionWizard.AddCompositionSection(report);
+                ageCompositionWizard.AppendPopulationSectionTo(report);
             }
 
             if (checkBoxMortality.Checked)

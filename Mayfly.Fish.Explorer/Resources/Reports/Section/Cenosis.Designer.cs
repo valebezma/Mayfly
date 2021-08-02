@@ -61,38 +61,20 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Catchability.
+        ///   Looks up a localized string similar to Compiled Cenosis Summary.
         /// </summary>
-        public static string ColumnCatchability {
+        public static string Header {
             get {
-                return ResourceManager.GetString("ColumnCatchability", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to * – Dominance index is calculated as described in ({0})..
-        /// </summary>
-        public static string Notice_1 {
-            get {
-                return ResourceManager.GetString("Notice_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ** – Abundance and biomass displays species presence in a piece of natural habitat equivalent to 1 {0} (which is {1:N1} {2})..
-        /// </summary>
-        public static string Notice_2 {
-            get {
-                return ResourceManager.GetString("Notice_2", resourceCulture);
+                return ResourceManager.GetString("Header", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Cenosis composition is based on estimated abundance and biomass of each species . These values are computed as follows: in each gear class CPUE of species summed for all gear classes and divided by catchability for {0}:.
         /// </summary>
-        public static string Paragraph_1 {
+        public static string Paragraph1 {
             get {
-                return ResourceManager.GetString("Paragraph_1", resourceCulture);
+                return ResourceManager.GetString("Paragraph1", resourceCulture);
             }
         }
         
@@ -100,9 +82,9 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         ///   Looks up a localized string similar to where CPUE — catch per effort, q — catchability. 
         ///Resulting abundances and biomasses of all species and estimated composition of cenosis are given in table {0}. Also occurrence and dominance indices are given..
         /// </summary>
-        public static string Paragraph_2 {
+        public static string Paragraph2 {
             get {
-                return ResourceManager.GetString("Paragraph_2", resourceCulture);
+                return ResourceManager.GetString("Paragraph2", resourceCulture);
             }
         }
         
@@ -110,27 +92,18 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         ///   Looks up a localized string similar to Cenosis diversity is estimated as described in ({0}) and equals {1}.
         ///Calculations of each species abundance and biomass are given in appendices..
         /// </summary>
-        public static string Paragraph_3 {
+        public static string Paragraph3 {
             get {
-                return ResourceManager.GetString("Paragraph_3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Compiled Cenosis Summary.
-        /// </summary>
-        public static string Subtitle {
-            get {
-                return ResourceManager.GetString("Subtitle", resourceCulture);
+                return ResourceManager.GetString("Paragraph3", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Cenosis composition.
         /// </summary>
-        public static string Table_1 {
+        public static string Table {
             get {
-                return ResourceManager.GetString("Table_1", resourceCulture);
+                return ResourceManager.GetString("Table", resourceCulture);
             }
         }
     }

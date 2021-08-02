@@ -85,6 +85,8 @@ namespace Mayfly.Fish.Explorer
 
                 Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
 
+                if (category.DataRow != null) category1.DataRow = category.DataRow;
+
                 if (speciesRow == null) continue;
 
                 category1.Quantity = (int)stack.Quantity(speciesRow);

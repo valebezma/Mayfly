@@ -53,9 +53,16 @@ namespace Mayfly.Wild
             Name = species;
         }
 
-        public SpeciesSwarm(SpeciesKey.SpeciesRow dataRow) : this(dataRow.Species)
+        public override Category GetEmptyCopy()
         {
-            DataRow = dataRow;
+            SpeciesSwarm result = new SpeciesSwarm(this.Name);
+            if (this.DataRow != null) result.DataRow = this.DataRow;
+            return result;
+        }
+
+        public override string ToString()
+        {
+            return (DataRow == null ? base.ToString() : DataRow.ShortNameReport);
         }
     }
 }

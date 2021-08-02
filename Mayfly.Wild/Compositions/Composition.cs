@@ -443,7 +443,7 @@ namespace Mayfly.Wild
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(gridColumn.DataGridView);
-                gridRow.Cells[gridColumn.Index].Value = this[i].Name;
+                gridRow.Cells[gridColumn.Index].Value = this[i];
                 gridRow.Height = gridColumn.DataGridView.RowTemplate.Height;
                 gridColumn.DataGridView.Rows.Add(gridRow);
             }
@@ -478,7 +478,7 @@ namespace Mayfly.Wild
             {
                 foreach (DataGridViewRow gridRow in sheet.Rows)
                 {
-                    if (gridRow.Cells[columnNames.Index].Value.Equals(cat.Name))
+                    if (((Category)gridRow.Cells[columnNames.Index].Value).ToString().Equals(cat.ToString()))
                     {
                         object value = cat.GetValue(vv);
 
@@ -499,25 +499,23 @@ namespace Mayfly.Wild
 
         public void SetFormats(params string[] formats)
         {
-            if (formats.Length > 0) UnitAbundance = formats[0];
-            if (formats.Length > 1) UnitBiomass = formats[1];
+            if (formats.Length > 0) AbundanceFormat = formats[0];
+            if (formats.Length > 1) AbundanceFractionFormat = formats[1];
 
-            if (formats.Length > 2) FormatSampleLength = formats[2];
-            if (formats.Length > 3) FormatSampleMass = formats[3];
+            if (formats.Length > 2) MassFormat = formats[2];
+            if (formats.Length > 3) BiomassFormat = formats[3];
+            if (formats.Length > 4) BiomassFractionFormat = formats[4];
 
-            if (formats.Length > 4) AbundanceFormat = formats[4];
-            if (formats.Length > 5) AbundanceFractionFormat = formats[5];
+            if (formats.Length > 5) FormatSampleLength = formats[5];
+            if (formats.Length > 6) FormatSampleMass = formats[6];
 
-            if (formats.Length > 6) MassFormat = formats[6];
-            if (formats.Length > 7) BiomassFormat = formats[7];
-            if (formats.Length > 8) BiomassFractionFormat = formats[8];
+            if (formats.Length > 7) Unit = formats[7];
 
-            if (formats.Length > 9) OccuranceFormat = formats[9];
-            if (formats.Length > 10) DominanceFormat = formats[10];
+            if (formats.Length > 8) OccuranceFormat = formats[8];
+            if (formats.Length > 9) DominanceFormat = formats[9];
         }
 
-        public string UnitAbundance;
-        public string UnitBiomass; 
+        public string Unit; 
 
         public string FormatSampleLength = "g";
         public string FormatSampleMass = "g";

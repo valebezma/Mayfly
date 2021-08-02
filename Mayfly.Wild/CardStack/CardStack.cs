@@ -537,7 +537,7 @@ namespace Mayfly.Wild
             _values.Add(samplers);
             _values.AddRange(values);
 
-            report.AddTable(Report.Table.GetLinedTable(_prompts.ToArray(), _values.ToArray()));
+            report.AddTable(Report.Table.GetLinedTable(_prompts.ToArray(), _values.ToArray()), "fill");
                         
             if (!string.IsNullOrWhiteSpace(notice)) {
                 report.AddComment(notice);

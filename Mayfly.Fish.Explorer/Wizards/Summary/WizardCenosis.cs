@@ -84,7 +84,7 @@ namespace Mayfly.Fish.Explorer.Survey
             {
                 catchesTableNo = report.NextTableNumber;
 
-                compositionWizard.AddCatchesSection(report);
+                compositionWizard.AppendCatchesSectionTo(report);
             }
 
             if (checkBoxCenosis.Checked)
@@ -101,29 +101,30 @@ namespace Mayfly.Fish.Explorer.Survey
 
             if (checkBoxAppCatches.Checked)
             {
-                report.AddSectionTitle(string.Format(Resources.Reports.Section.Catches.Subtitle_single, gearWizard.SelectedSamplerType.ToDisplay()));
+                report.AddSectionTitle(string.Format(Resources.Reports.Section.Catches.HeaderSingleClass, gearWizard.SelectedSamplerType.ToDisplay()));
 
                 foreach (Composition composition in compositionWizard.CatchesComposition.SeparateCompositions)
                 {
                     if (composition.TotalQuantity < 1) continue;
 
                     composition.SetFormats(
-                        gearWizard.AbundanceUnits, 
-                        gearWizard.BiomassUnits,
-
-                        columnSelectivityLength.DefaultCellStyle.Format,
-                        columnSelectivityMass.DefaultCellStyle.Format,
-
                         columnSelectivityNpue.DefaultCellStyle.Format, 
                         columnSelectivityNPer.DefaultCellStyle.Format, 
 
                         columnSelectivityB.DefaultCellStyle.Format, 
                         columnSelectivityBpue.DefaultCellStyle.Format,
-                        columnSelectivityBPer.DefaultCellStyle.Format);
+                        columnSelectivityBPer.DefaultCellStyle.Format,
 
-                    report.AddAppendix(composition.GetClassicCatchesTable(Data.Parent));
+                        columnSelectivityLength.DefaultCellStyle.Format,
+                        columnSelectivityMass.DefaultCellStyle.Format,
 
-                    report.AddComment(string.Format("Notification as in table {0}", catchesTableNo));
+                        gearWizard.SelectedUnit.Unit);
+
+                    report.AddAppendix(
+                        composition.GetStandardCatchesTable(
+                            string.Format(Resources.Reports.Section.Catches.TableSingleClass, composition.Name), 
+                            Wild.Resources.Reports.Caption.Species)
+                        );
                 }
             }
 
@@ -131,7 +132,7 @@ namespace Mayfly.Fish.Explorer.Survey
             {
                 report.AddSectionTitle(Resources.Reports.Title.AppCompositionSpreadsheets);
 
-                foreach (Report.Appendix app in compositionWizard.GetCpueAppendices())
+                foreach (Report.Table app in compositionWizard.GetCpueAppendices())
                 {
                     report.AddAppendix(app);
                 }
@@ -149,22 +150,6 @@ namespace Mayfly.Fish.Explorer.Survey
 
         public void AddCenosisSection(Report report)
         {
-            NaturalComposition.SetFormats(
-                gearWizard.AbundanceUnits,
-                gearWizard.BiomassUnits,
-
-                "", "",
-
-                ColumnCompositionA.DefaultCellStyle.Format,
-                ColumnCompositionAP.DefaultCellStyle.Format,
-
-                "",
-                ColumnCompositionB.DefaultCellStyle.Format,
-                ColumnCompositionBP.DefaultCellStyle.Format,
-
-                ColumnCompositionOccurrance.DefaultCellStyle.Format,
-                ColumnCompositionDominance.DefaultCellStyle.Format);
-
             NaturalComposition.AppendCenosisSectionTo(report,
                 gearWizard.SelectedSamplerType,
                 gearWizard.SelectedUnit);
@@ -195,7 +180,7 @@ namespace Mayfly.Fish.Explorer.Survey
             wizardExplorer.EnsureSelected(pageGearClass);
             this.Replace(gearWizard);
 
-            NaturalComposition = gearWizard.SelectedData.GetCenosisCompositionFrame();
+            
 
             comboBoxDataset.DataSource = gearWizard.SelectedStacks;
 
@@ -205,16 +190,23 @@ namespace Mayfly.Fish.Explorer.Survey
             columnSelectivityBpue.ResetFormatted(gearWizard.SelectedUnit.Unit);
             ColumnCompositionA.ResetFormatted(gearWizard.SelectedUnit.Unit);
             ColumnCompositionB.ResetFormatted(gearWizard.SelectedUnit.Unit);
+
+            pageGearClass.SetNavigation(false);
+            calculatorStructure.RunWorkerAsync();
         }
 
         private void structureCalculator_DoWork(object sender, DoWorkEventArgs e)
-        { }
+        {
+            NaturalComposition = gearWizard.SelectedData.GetCenosisComposition();
+        }
 
         private void structureCalculator_ProgressChanged(object sender, ProgressChangedEventArgs e)
         { }
 
         private void structureCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        { }
+        {
+            pageGearClass.SetNavigation(true);
+        }
 
         private void comboBoxDataset_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -244,7 +236,7 @@ namespace Mayfly.Fish.Explorer.Survey
                 gridRow.Height = spreadSheetSelectivity.RowTemplate.Height;
 
                 gridRow.CreateCells(spreadSheetSelectivity);
-                gridRow.Cells[columnSelectivitySpecies.Index].Value = species.GetLocalName();
+                gridRow.Cells[columnSelectivitySpecies.Index].Value = species;
                 gridRow.Cells[columnSelectivityLength.Index].Value = new SampleDisplay(species.LengthSample);
                 gridRow.Cells[columnSelectivityMass.Index].Value = new SampleDisplay(species.MassSample);
                 gridRow.Cells[columnSelectivityN.Index].Value = species.Quantity;
@@ -361,6 +353,25 @@ namespace Mayfly.Fish.Explorer.Survey
                     spreadSheetComposition[ColumnCompositionBP.Index, i].Value = NaturalComposition[i].BiomassFraction;
                 }
             }
+        }
+
+        private void pageComposition_Commit(object sender, WizardPageConfirmEventArgs e)
+        {
+            NaturalComposition.SetFormats(
+
+                ColumnCompositionA.DefaultCellStyle.Format,
+                ColumnCompositionAP.DefaultCellStyle.Format,
+
+                "",
+                ColumnCompositionB.DefaultCellStyle.Format,
+                ColumnCompositionBP.DefaultCellStyle.Format,
+
+                "", "",
+
+                gearWizard.SelectedUnit.Unit,
+
+                ColumnCompositionOccurrance.DefaultCellStyle.Format,
+                ColumnCompositionDominance.DefaultCellStyle.Format);
         }
 
         private void checkBoxCatches_CheckedChanged(object sender, EventArgs e)

@@ -68,12 +68,12 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxLength.Checked)
             {
-                lengthCompositionWizard.AddCompositionSection(report);
+                lengthCompositionWizard.AppendPopulationSectionTo(report);
             }
 
             if (checkBoxAge.Checked)
             {
-                ageCompositionWizard.AddCompositionSection(report);
+                ageCompositionWizard.AppendPopulationSectionTo(report);
             }
 
             if (checkBoxAppL.Checked | checkBoxAppT.Checked | checkBoxAppKeys.Checked)
@@ -113,8 +113,13 @@ namespace Mayfly.Fish.Explorer.Fishery
             LengthStructure = Data.GetLengthCompositionFrame(SpeciesRow, UserSettings.SizeInterval);
             LengthStructure.Name = Fish.Resources.Common.SizeUnits;
 
-            AgeStructure = Data.GetAgeCompositionFrame(SpeciesRow);
-            AgeStructure.Name = Wild.Resources.Reports.Caption.Age;
+            try
+            {
+                AgeStructure = Data.GetAgeCompositionFrame(SpeciesRow);
+                AgeStructure.Name = Wild.Resources.Reports.Caption.Age;
+            }
+            catch
+            { }
         }
 
         private void structureCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -146,6 +151,8 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void gearWizard_AfterDataSelected(object sender, EventArgs e)
         {
+            checkBoxAge_CheckedChanged(sender, e);
+            checkBoxLength_CheckedChanged(sender, e);
 
             if (lengthCompositionWizard == null)
             {
@@ -285,13 +292,13 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void checkBoxLength_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppL.Enabled = checkBoxLength.Checked && gearWizard.IsMultipleClasses;
+            checkBoxAppL.Enabled = checkBoxLength.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
         }
 
         private void checkBoxAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppT.Enabled = checkBoxAge.Checked && gearWizard.IsMultipleClasses;
-            checkBoxAppKeys.Enabled = checkBoxAge.Checked && gearWizard.IsMultipleClasses;
+            checkBoxAppT.Enabled = checkBoxAge.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
+            checkBoxAppKeys.Enabled = checkBoxAge.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
         }
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)

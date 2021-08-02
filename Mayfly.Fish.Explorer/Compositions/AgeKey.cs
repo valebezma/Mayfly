@@ -288,9 +288,9 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Report.Appendix GetReport()
+        public Report.Table GetReport()
         {
-            Report.Appendix table1 = new Report.Appendix(Resources.Reports.AgeLengthKey.Title, Name);
+            Report.Table table1 = new Report.Table(Resources.Reports.AgeLengthKey.Title, Name);
 
             table1.StartRow();
             table1.AddHeaderCell(Fish.Resources.Common.SizeUnits, .15, 2);

@@ -8,7 +8,7 @@
 
             foreach (Data.SpeciesRow speciesRow in this.GetSpecies())
             {
-                SpeciesSwarm category = new SpeciesSwarm(speciesRow.Species);
+                SpeciesSwarm category = new SpeciesSwarm(speciesRow.Species);                
                 category.LengthSample = this.Lengths(speciesRow);
                 category.MassSample = this.Masses(speciesRow);
                 category.SamplesCount = this.GetLogRows(speciesRow).Length;

@@ -241,6 +241,11 @@ namespace Mayfly
             return Regex.Replace(input, "<.*?>", String.Empty);
         }
 
+        public static string StripNumbers(string input)
+        {
+            return Regex.Replace(input, @"[\d-]", string.Empty);
+        }
+
         #endregion
 
 

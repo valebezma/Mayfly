@@ -89,9 +89,9 @@ namespace Mayfly.Wild
 
         public string ToString(string format, IFormatProvider provider)
         {
-            switch (format)
+            switch (format.ToLower())
             {
-                case "L":
+                case "l":
                     switch (Value)
                     {
                         case 2:
@@ -104,7 +104,7 @@ namespace Mayfly.Wild
                             return string.Empty;
                     }
 
-                case "C":
+                case "c":
                     switch (Value)
                     {
                         case 2:

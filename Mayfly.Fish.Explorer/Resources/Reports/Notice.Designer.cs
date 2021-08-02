@@ -22,24 +22,24 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Column {
+    public class Notice {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Column() {
+        internal Notice() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Reports.Column", typeof(Column).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Reports.Notice", typeof(Notice).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,56 +61,65 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Catch.
+        ///   Looks up a localized string similar to species number in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³).
         /// </summary>
-        internal static string Catch {
+        public static string Abundance {
             get {
-                return ResourceManager.GetString("Catch", resourceCulture);
+                return ResourceManager.GetString("Abundance", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cpue.
+        ///   Looks up a localized string similar to species ichtyomass in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³).
         /// </summary>
-        internal static string CpueAccr {
+        public static string Biomass {
             get {
-                return ResourceManager.GetString("CpueAccr", resourceCulture);
+                return ResourceManager.GetString("Biomass", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Efforts, {0}.
+        ///   Looks up a localized string similar to {0} equals yield of one {1}.
         /// </summary>
-        internal static string Efforts {
+        public static string BPUE {
             get {
-                return ResourceManager.GetString("Efforts", resourceCulture);
+                return ResourceManager.GetString("BPUE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fraction of total applied effort, %.
+        ///   Looks up a localized string similar to dominance index is calculated as described in ({0}).
         /// </summary>
-        internal static string Fraction {
+        public static string Dominance {
             get {
-                return ResourceManager.GetString("Fraction", resourceCulture);
+                return ResourceManager.GetString("Dominance", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gear class.
+        ///   Looks up a localized string similar to {0} equals yield of one {1}.
         /// </summary>
-        internal static string GearClass {
+        public static string NPUE {
             get {
-                return ResourceManager.GetString("GearClass", resourceCulture);
+                return ResourceManager.GetString("NPUE", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operations.
+        ///   Looks up a localized string similar to each cell contains following values: {0}.
         /// </summary>
-        internal static string Ops {
+        public static string SampleFormat {
             get {
-                return ResourceManager.GetString("Ops", resourceCulture);
+                return ResourceManager.GetString("SampleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sexes are marked as follows: {0:c} : {1:c} : {2:c}.
+        /// </summary>
+        public static string SexualLegend {
+            get {
+                return ResourceManager.GetString("SexualLegend", resourceCulture);
             }
         }
     }

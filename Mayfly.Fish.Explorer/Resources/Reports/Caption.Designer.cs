@@ -22,24 +22,24 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Common {
+    internal class Caption {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Common() {
+        internal Caption() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Reports.Common", typeof(Common).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Reports.Caption", typeof(Caption).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,65 +61,74 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CPUE (by mass).
+        ///   Looks up a localized string similar to Catch.
         /// </summary>
-        public static string Bpue {
+        internal static string Catch {
             get {
-                return ResourceManager.GetString("Bpue", resourceCulture);
+                return ResourceManager.GetString("Catch", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ind..
+        ///   Looks up a localized string similar to Catchability.
         /// </summary>
-        public static string Ind {
+        internal static string Catchability {
             get {
-                return ResourceManager.GetString("Ind", resourceCulture);
+                return ResourceManager.GetString("Catchability", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to kg.
+        ///   Looks up a localized string similar to CPUE.
         /// </summary>
-        public static string Kg {
+        internal static string CpueAccr {
             get {
-                return ResourceManager.GetString("Kg", resourceCulture);
+                return ResourceManager.GetString("CpueAccr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to m².
+        ///   Looks up a localized string similar to Efforts, {0}.
         /// </summary>
-        public static string m2 {
+        internal static string Efforts {
             get {
-                return ResourceManager.GetString("m2", resourceCulture);
+                return ResourceManager.GetString("Efforts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mass, kg.
+        ///   Looks up a localized string similar to Fraction of total applied effort, %.
         /// </summary>
-        public static string MassUnits {
+        internal static string Fraction {
             get {
-                return ResourceManager.GetString("MassUnits", resourceCulture);
+                return ResourceManager.GetString("Fraction", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CPUE (by number).
+        ///   Looks up a localized string similar to Gear class.
         /// </summary>
-        public static string Npue {
+        internal static string GearClass {
             get {
-                return ResourceManager.GetString("Npue", resourceCulture);
+                return ResourceManager.GetString("GearClass", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stratified crib note (cm).
+        ///   Looks up a localized string similar to Operations.
         /// </summary>
-        public static string StratifiedCribnote {
+        internal static string Ops {
             get {
-                return ResourceManager.GetString("StratifiedCribnote", resourceCulture);
+                return ResourceManager.GetString("Ops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sexual ratio.
+        /// </summary>
+        internal static string SexualRatio {
+            get {
+                return ResourceManager.GetString("SexualRatio", resourceCulture);
             }
         }
     }

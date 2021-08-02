@@ -120,8 +120,11 @@
   <data name="Catch" xml:space="preserve">
     <value>Catch</value>
   </data>
+  <data name="Catchability" xml:space="preserve">
+    <value>Catchability</value>
+  </data>
   <data name="CpueAccr" xml:space="preserve">
-    <value>Cpue</value>
+    <value>CPUE</value>
   </data>
   <data name="Efforts" xml:space="preserve">
     <value>Efforts, {0}</value>
@@ -134,5 +137,8 @@
   </data>
   <data name="Ops" xml:space="preserve">
     <value>Operations</value>
+  </data>
+  <data name="SexualRatio" xml:space="preserve">
+    <value>Sexual ratio</value>
   </data>
 </root>

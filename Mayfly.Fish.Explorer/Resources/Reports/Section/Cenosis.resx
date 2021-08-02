@@ -117,30 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Table_1" xml:space="preserve">
+  <data name="Table" xml:space="preserve">
     <value>Cenosis composition</value>
   </data>
-  <data name="Notice_2" xml:space="preserve">
-    <value>** – Abundance and biomass displays species presence in a piece of natural habitat equivalent to 1 {0} (which is {1:N1} {2}).</value>
-  </data>
-  <data name="Paragraph_1" xml:space="preserve">
+  <data name="Paragraph1" xml:space="preserve">
     <value>Cenosis composition is based on estimated abundance and biomass of each species . These values are computed as follows: in each gear class CPUE of species summed for all gear classes and divided by catchability for {0}:</value>
   </data>
-  <data name="Paragraph_2" xml:space="preserve">
+  <data name="Paragraph2" xml:space="preserve">
     <value>where CPUE — catch per effort, q — catchability. 
 Resulting abundances and biomasses of all species and estimated composition of cenosis are given in table {0}. Also occurrence and dominance indices are given.</value>
   </data>
-  <data name="Paragraph_3" xml:space="preserve">
+  <data name="Paragraph3" xml:space="preserve">
     <value>Cenosis diversity is estimated as described in ({0}) and equals {1}.
 Calculations of each species abundance and biomass are given in appendices.</value>
   </data>
-  <data name="Notice_1" xml:space="preserve">
-    <value>* – Dominance index is calculated as described in ({0}).</value>
-  </data>
-  <data name="Subtitle" xml:space="preserve">
+  <data name="Header" xml:space="preserve">
     <value>Compiled Cenosis Summary</value>
-  </data>
-  <data name="ColumnCatchability" xml:space="preserve">
-    <value>Catchability</value>
   </data>
 </root>

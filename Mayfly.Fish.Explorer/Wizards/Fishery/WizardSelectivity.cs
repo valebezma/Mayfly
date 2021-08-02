@@ -70,13 +70,13 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 CatchesComposition.SeparateCompositions.ToArray().AddTable(report, 
                     string.Format(Resources.Reports.Selectivity.Table1, SpeciesRow.ToHTML()),
-                    CatchesComposition.Name, Resources.Reports.Column.GearClass, ValueVariant.Abundance, "N3");
+                    CatchesComposition.Name, Resources.Reports.Caption.GearClass, ValueVariant.Abundance, "N3");
 
                 report.AddParagraph(Resources.Reports.Selectivity.Paragraph2, report.NextTableNumber);
 
                 Report.Table table2 = CatchesComposition.GetTable(
                     string.Format(Resources.Reports.Selectivity.Table2, SpeciesRow.ToHTML()),
-                    CompositionColumn.CPUE | CompositionColumn.Percentage);
+                    CompositionColumn.CPUE | CompositionColumn.Percentage, CatchesComposition.Name);
 
                 report.AddTable(table2);
             }
@@ -108,7 +108,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 Report.Table table5 = Structure.GetTable(
                     string.Format(Resources.Reports.Selectivity.Table5, SpeciesRow.ToHTML()),
-                    CompositionColumn.CPUE | CompositionColumn.Percentage);
+                    CompositionColumn.CPUE | CompositionColumn.Percentage, Structure.Name);
 
                 report.AddTable(table5);
             }

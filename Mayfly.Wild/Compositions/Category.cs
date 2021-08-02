@@ -126,7 +126,7 @@ namespace Mayfly.Wild
 
         public override string ToString()
         {
-            return Name +": " + (Quantity > 0 ? string.Format("{0} inds. / {1:N3} inds./UE ({2:P1})", Quantity, Abundance, AbundanceFraction) : "None");
+            return Name; // +": " + (Quantity > 0 ? string.Format("{0} inds. / {1:N3} inds./UE ({2:P1})", Quantity, Abundance, AbundanceFraction) : "None");
         }
 
         public static ValueVariant GetValueVariant(bool quantitative, bool pereffort, bool fraction)

@@ -131,18 +131,28 @@
     <Compile Include="Extensions\Data.Bio.cs" />
     <Compile Include="Extensions\Composition.cs" />
     <Compile Include="Extensions\SpeciesComposition.cs" />
+    <Compile Include="Resources\Reports\Notice.ru.Designer.cs">
+      <DependentUpon>Notice.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Reports\Notice.Designer.cs">
+      <DependentUpon>Notice.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Reports\PopulationCompositionType.Designer.cs">
       <DependentUpon>PopulationCompositionType.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Column.Designer.cs">
-      <DependentUpon>Column.resx</DependentUpon>
+    <Compile Include="Resources\Reports\Caption.Designer.cs">
+      <DependentUpon>Caption.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Reports\Column.ru.Designer.cs">
-      <DependentUpon>Column.ru.resx</DependentUpon>
+    <Compile Include="Resources\Reports\Caption.ru.Designer.cs">
+      <DependentUpon>Caption.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -578,6 +588,14 @@
       <DependentUpon>AgeKeyForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Notice.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notice.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Notice.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notice.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\PopulationCompositionType.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -585,13 +603,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>PopulationCompositionType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Column.resx">
+    <EmbeddedResource Include="Resources\Reports\Caption.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Column.Designer.cs</LastGenOutput>
+      <LastGenOutput>Caption.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Column.ru.resx">
+    <EmbeddedResource Include="Resources\Reports\Caption.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Column.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>Caption.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Section\Population.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -357,10 +357,10 @@ namespace Mayfly.Fish.Explorer
                 Report.Table table1 = new Report.Table(Resources.Reports.Section.Efforts.Table_1, samplerType.ToDisplay());
 
                 table1.StartRow();
-                table1.AddHeaderCell(Resources.Reports.Column.GearClass, .25);
-                table1.AddHeaderCell(Resources.Reports.Column.Ops);
-                table1.AddHeaderCell(string.Format(Resources.Reports.Column.Efforts, ue.Unit));
-                table1.AddHeaderCell(Resources.Reports.Column.Fraction);
+                table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25);
+                table1.AddHeaderCell(Resources.Reports.Caption.Ops);
+                table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, ue.Unit));
+                table1.AddHeaderCell(Resources.Reports.Caption.Fraction);
                 table1.EndRow();
 
                 foreach (string mesh in classes)
@@ -409,9 +409,9 @@ namespace Mayfly.Fish.Explorer
 
             table1.StartRow();
             table1.AddHeaderCell(Fish.Resources.Reports.Card.Mesh, .25, 2);
-            table1.AddHeaderCell(string.Format(Resources.Reports.Column.Efforts, ue.Unit), 2, CellSpan.Rows);
-            table1.AddHeaderCell(Resources.Reports.Column.Catch, 2);
-            table1.AddHeaderCell(Resources.Reports.Column.CpueAccr, 2);
+            table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, ue.Unit), 2, CellSpan.Rows);
+            table1.AddHeaderCell(Resources.Reports.Caption.Catch, 2);
+            table1.AddHeaderCell(Resources.Reports.Caption.CpueAccr, 2);
             table1.EndRow();
 
             table1.StartRow();

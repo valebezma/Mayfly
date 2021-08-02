@@ -117,29 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Table_1" xml:space="preserve">
+  <data name="Table" xml:space="preserve">
     <value>Структура сообщества</value>
   </data>
-  <data name="Subtitle" xml:space="preserve">
+  <data name="Header" xml:space="preserve">
     <value>Оценка структуры сообщества</value>
   </data>
-  <data name="Notice_2" xml:space="preserve">
-    <value>** – Численность и биомасса отражают представленность вида на участке среды, эквивалентном 1 {0} (что равняется {1:N1} {2}).</value>
-  </data>
-  <data name="Paragraph_1" xml:space="preserve">
+  <data name="Paragraph1" xml:space="preserve">
     <value>Структура сообщества основана на численности и биомассе каждого вида. Эти значения вычислены следующим образом: для каждого класса орудий и вида улов на усилие суммируется для всех классов орудий и делятся на коэффициент уловистости {0}:</value>
   </data>
-  <data name="Paragraph_2" xml:space="preserve">
+  <data name="Paragraph2" xml:space="preserve">
     <value>где CPUE — улов на усилие, q — уловистость. Конечные показатели численности и биомассы всех видов и структура сообщества приведены в таблице {0}. Также приведены показатели встречаемости и индексы доминирования.</value>
   </data>
-  <data name="Paragraph_3" xml:space="preserve">
-    <value>Разнообразие сообщества рассчитано по ({0}) и равняется {1}.&lt;br/&gt;
-Расчеты численности и биомассы каждого вида приведены в приложениях.</value>
-  </data>
-  <data name="Notice_1" xml:space="preserve">
-    <value>* – Индекс доминирования рассчитан по ({0}).</value>
-  </data>
-  <data name="ColumnCatchability" xml:space="preserve">
-    <value>Уловистость</value>
+  <data name="Paragraph3" xml:space="preserve">
+    <value>Разнообразие сообщества рассчитано по ({0}) и равняется {1}. Расчеты численности и биомассы каждого вида приведены в приложениях.</value>
   </data>
 </root>

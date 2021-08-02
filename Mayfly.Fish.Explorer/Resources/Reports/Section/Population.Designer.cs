@@ -61,15 +61,6 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Section {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *** – CPUE displays {2} category presence in a harvest of 1 {3}..
-        /// </summary>
-        internal static string Notice1 {
-            get {
-                return ResourceManager.GetString("Notice1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given..
         /// </summary>
         internal static string Paragraph1 {

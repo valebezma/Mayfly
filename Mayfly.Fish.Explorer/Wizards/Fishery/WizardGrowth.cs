@@ -127,37 +127,10 @@ namespace Mayfly.Fish.Explorer.Fishery
             report.AddParagraph(Resources.Reports.Growth.Paragraph1,
                 SpeciesRow.ToHTML(), report.NextTableNumber);
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Growth.Table1,
-                SpeciesRow.ToHTML());
+            Report.Table table = PseudoCohort.GetTable(string.Format(Resources.Reports.Growth.Table1,
+                SpeciesRow.ToHTML()), CompositionColumn.SampleSize | CompositionColumn.LengthSample | CompositionColumn.MassSample, PseudoCohort.Name);
 
-            table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Growth.Column1);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Quantity);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Length + " *");
-            table1.AddHeaderCell(Fish.Resources.Reports.Caption.Mass + " **");
-            table1.EndRow();
-
-            foreach (Category category in PseudoCohort)
-            {
-                table1.StartRow();
-                table1.AddCell(category.Name);
-                table1.AddCellRight(category.Quantity, columnCrossN.DefaultCellStyle.Format);
-                table1.AddCellValue(new SampleDisplay(category.LengthSample), columnCrossLength.DefaultCellStyle.Format);
-                table1.AddCellValue(new SampleDisplay(category.MassSample), columnCrossMass.DefaultCellStyle.Format);
-                table1.EndRow();
-            }
-
-            table1.StartRow();
-            table1.AddCell(Mayfly.Resources.Interface.Total);
-            table1.AddCellRight(PseudoCohort.TotalQuantity, columnCrossN.DefaultCellStyle.Format);
-            table1.AddCell();
-            table1.AddCell();
-            table1.EndRow();
-            report.AddTable(table1);
-
-            report.AddComment(string.Format(Resources.Reports.Common.FormatNotice,
-                Mathematics.Resources.FormatNotice.ResourceManager.GetString(columnCrossLength.DefaultCellStyle.Format),
-                Mathematics.Resources.FormatNotice.ResourceManager.GetString(columnCrossMass.DefaultCellStyle.Format)));
+            report.AddTable(table);
         }
 
         public void AddGrowth(Report report)

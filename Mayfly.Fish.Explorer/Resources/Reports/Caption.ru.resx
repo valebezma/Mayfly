@@ -120,6 +120,9 @@
   <data name="Catch" xml:space="preserve">
     <value>Улов</value>
   </data>
+  <data name="Catchability" xml:space="preserve">
+    <value>Уловистость</value>
+  </data>
   <data name="CpueAccr" xml:space="preserve">
     <value>Улов на усилие</value>
   </data>
@@ -134,5 +137,8 @@
   </data>
   <data name="Ops" xml:space="preserve">
     <value>Операций</value>
+  </data>
+  <data name="SexualRatio" xml:space="preserve">
+    <value>Отношение полов</value>
   </data>
 </root>

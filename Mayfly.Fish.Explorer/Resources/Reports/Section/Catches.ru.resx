@@ -117,16 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Paragraph_1" xml:space="preserve">
-    <value>Выборка из {0} пуста.</value>
-  </data>
-  <data name="Subtitle" xml:space="preserve">
+  <data name="Header" xml:space="preserve">
     <value>Сводка по уловам</value>
   </data>
-  <data name="Subtitle_single" xml:space="preserve">
+  <data name="HeaderSingleClass" xml:space="preserve">
     <value>Описание улова разных классов {0}</value>
   </data>
-  <data name="Table_1" xml:space="preserve">
+  <data name="ParagraphDescription" xml:space="preserve">
+    <value>В улове присутствовали представители {0} видов. Наиболее многочисленный вид - {1} ({2} экз., что составляет {3:P1} общей выборки). Размеры видовых выборок, а такж их биологические параметры приведены в таблице {4}.</value>
+  </data>
+  <data name="ParagraphEmpty" xml:space="preserve">
+    <value>Выборка из {0} пуста.</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Краткое описание видовых выборок</value>
+  </data>
+  <data name="TableSingleClass" xml:space="preserve">
     <value>Краткое описание видовых выборок в уловах {0}</value>
   </data>
 </root>

@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Bpue" xml:space="preserve">
-    <value>CPUE (by mass)</value>
+  <data name="SampleFormat" xml:space="preserve">
+    <value>each cell contains following values: {0}</value>
   </data>
-  <data name="m2" xml:space="preserve">
-    <value>m²</value>
+  <data name="NPUE" xml:space="preserve">
+    <value>{0} equals yield of one {1}</value>
   </data>
-  <data name="MassUnits" xml:space="preserve">
-    <value>Mass, kg</value>
+  <data name="Dominance" xml:space="preserve">
+    <value>dominance index is calculated as described in ({0})</value>
   </data>
-  <data name="Npue" xml:space="preserve">
-    <value>CPUE (by number)</value>
+  <data name="Abundance" xml:space="preserve">
+    <value>species number in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³)</value>
   </data>
-  <data name="Ind" xml:space="preserve">
-    <value>ind.</value>
+  <data name="BPUE" xml:space="preserve">
+    <value>{0} equals yield of one {1}</value>
   </data>
-  <data name="Kg" xml:space="preserve">
-    <value>kg</value>
+  <data name="SexualLegend" xml:space="preserve">
+    <value>sexes are marked as follows: {0:c} : {1:c} : {2:c}</value>
   </data>
-  <data name="StratifiedCribnote" xml:space="preserve">
-    <value>Stratified crib note (cm)</value>
+  <data name="Biomass" xml:space="preserve">
+    <value>species ichtyomass in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³)</value>
   </data>
 </root>
