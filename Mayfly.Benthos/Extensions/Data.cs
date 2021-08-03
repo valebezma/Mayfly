@@ -32,7 +32,6 @@ namespace Mayfly.Benthos
 
             foreach (Data.LogRow logRow in data.Log)
             {
-                if (logRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!logRow.IsMassNull()) continue;
                 if (!result.Contains(logRow.SpeciesRow))
                 {
@@ -49,7 +48,6 @@ namespace Mayfly.Benthos
 
             foreach (Data.IndividualRow individualRow in data.Individual)
             {
-                if (individualRow.LogRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!individualRow.IsMassNull()) continue;
                 if (!result.Contains(individualRow.LogRow.SpeciesRow))
                 {
@@ -144,7 +142,7 @@ namespace Mayfly.Benthos
             {
                 SpeciesKey.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
 
-                speciesRow.Species = dataSpcRow.Species;
+                speciesRow.Name = dataSpcRow.Species;
 
                 SpeciesKey.SpeciesRow equivalentRow = dataSpcRow.KeyRecord;
 

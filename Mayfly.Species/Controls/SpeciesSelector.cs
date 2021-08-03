@@ -226,7 +226,7 @@ namespace Mayfly.Species
             }
             else
             {
-                InsertSpeciesHere(speciesRow.Name);
+                InsertSpeciesHere(speciesRow.ScientificName);
             }
         }
 
@@ -340,7 +340,7 @@ namespace Mayfly.Species
                     ToolStripItem speciesItem = new ToolStripMenuItem
                     {
                         Tag = speciesRow,
-                        Text = speciesRow.FullName
+                        Text = speciesRow.ShortName
                     };
                     speciesItem.Click += new EventHandler(speciesItem_Click);
                     toolStripMenuItemAll.DropDownItems.Add(speciesItem);
@@ -368,7 +368,7 @@ namespace Mayfly.Species
                         ToolStripItem speciesItem = new ToolStripMenuItem
                         {
                             Tag = representativeRow.SpeciesRow,
-                            Text = representativeRow.SpeciesRow.FullName
+                            Text = representativeRow.SpeciesRow.ShortName
                         };
                         speciesItem.Click += new EventHandler(speciesItem_Click);
 
@@ -530,7 +530,7 @@ namespace Mayfly.Species
                 ToolStripDropDownItem speciesItem = new ToolStripMenuItem
                 {
                     Tag = speciesRow,
-                    Text = speciesRow.FullName
+                    Text = speciesRow.ShortName
                 };
                 speciesItem.Click += new EventHandler(speciesItem_Click);
                 recentSpeciesItems.Add(speciesItem);
@@ -857,7 +857,7 @@ namespace Mayfly.Species
                     }
                     else
                     {
-                        Grid.CurrentCell.Value = speciesRow.Name;
+                        Grid.CurrentCell.Value = speciesRow.ScientificName;
                     }
 
                     AllowSuggest = true;

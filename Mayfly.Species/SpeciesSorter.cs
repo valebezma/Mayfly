@@ -29,16 +29,16 @@ namespace Mayfly.Species
             if (x.IsPhilogeneticRateNull() || y.IsPhilogeneticRateNull())
             {
                 return string.Compare(
-                    x.Species.Replace(" gr.", string.Empty),
-                    y.Species.Replace(" gr.", string.Empty));
+                    x.Name.Replace(" gr.", string.Empty),
+                    y.Name.Replace(" gr.", string.Empty));
             }
             else
             {
                 int phr = string.Compare(
                     x.PhilogeneticRate, y.PhilogeneticRate);
                 return phr == 0 ? string.Compare(
-                    x.Species.Replace(" gr.", string.Empty),
-                    y.Species.Replace(" gr.", string.Empty)) : phr;
+                    x.Name.Replace(" gr.", string.Empty),
+                    y.Name.Replace(" gr.", string.Empty)) : phr;
             }
         }
     }

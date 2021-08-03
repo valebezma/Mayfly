@@ -23,8 +23,7 @@ namespace Mayfly.Species
 
             this.Text = speciesRow.FullName;
 
-            labelSpecies.Text = speciesRow.IsSpeciesNull() ? 
-                Constants.Null : speciesRow.Species;
+            labelSpecies.Text = speciesRow.Name;
 
             labelReference.Text = speciesRow.IsReferenceNull() ? 
                 Constants.Null : speciesRow.Reference;

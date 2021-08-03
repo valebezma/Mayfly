@@ -694,14 +694,14 @@ namespace Mayfly.Species
         {
             try
             {
-                //foreach (System.Data.DataTable dt in this.Tables)
-                //{
-                //    foreach (System.Data.DataColumn dc in dt.Columns)
-                //    {
-                //        if (dc.ColumnName == "Local") continue;
-                //        dc.ColumnMapping = System.Data.MappingType.Attribute;
-                //    }
-                //}
+                foreach (System.Data.DataTable dt in this.Tables)
+                {
+                    foreach (System.Data.DataColumn dc in dt.Columns)
+                    {
+                        if (dc.ColumnName == "Local") continue;
+                        dc.ColumnMapping = System.Data.MappingType.Attribute;
+                    }
+                }
 
                 ReadXml(fileName);
             }
