@@ -201,7 +201,7 @@ namespace Mayfly.Fish.Explorer
             plotAL.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
             plotAL.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
 
-            data = new Data();
+            data = new Data(Fish.UserSettings.SpeciesIndex);
             FullStack = new CardStack(); //.ConvertFrom(data);
             AllowedStack = new CardStack();
 
@@ -2737,7 +2737,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.SpeciesStats.Title_1, SelectedStatSpc.ToHTML()));
+                Report report = new Report(string.Format(Resources.Reports.SpeciesStats.Title_1, SelectedStatSpc.KeyRecord.FullNameReport));
                 AllowedStack.AddCommon(report, SelectedStatSpc);
                 AllowedStack.Sort();
                 AllowedStack.AddSpeciesStatsReport(report, SelectedStatSpc, lvl);

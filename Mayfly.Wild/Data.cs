@@ -19,6 +19,357 @@ namespace Mayfly.Wild
 {
     public partial class Data
     {
+        private SpeciesKey key;
+
+        public CardRow Solitary
+        {
+            get
+            {
+                if (Card.Rows.Count == 0)
+                {
+                    CardRow result = Card.NewCardRow();
+                    Card.AddCardRow(result);
+                    return result;
+                }
+                else
+                {
+                    return Card[0];
+                }
+            }
+        }
+
+
+
+        public Data(SpeciesKey _key) : this()
+        {
+            key = _key;
+        }
+
+
+
+        /// <summary>
+        /// Get suggested name for file with extension
+        /// </summary>
+        public string GetSuggestedName(string extension)
+        {
+            return GetSuggestedName(extension, string.Empty);
+        }
+
+        /// <summary>
+        /// Get suggested name for file with extension and gear code
+        /// </summary>
+        public string GetSuggestedName(string extension, string gearCode)
+        {
+            string result = string.Empty;
+
+            if (Card.Count == 1)
+            {
+                if (!Solitary.IsWhenNull())
+                {
+                    result += Solitary.When.ToString("yyyy-MM-dd") + " ";
+                }
+
+                if (!Solitary.IsLabelNull())
+                {
+                    result += Solitary.Label + " ";
+                }
+
+                if (!string.IsNullOrWhiteSpace(gearCode))
+                {
+                    result += gearCode + " ";
+                }
+
+                if (!Solitary.IsWaterIDNull())
+                {
+                    result += Solitary.WaterRow.Presentation + " ";
+                }
+
+                foreach (char s in Path.GetInvalidFileNameChars())
+                {
+                    if (result.Contains(s))
+                    {
+                        result = result.Replace(s, ' ');
+                    }
+                }
+
+                return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+
+
+        public void ClearUseless()
+        {
+            for (int i = 0; i < Water.Count; i++)
+            {
+                if (Water[i].GetCardRows().Length == 0)
+                {
+                    Water.RemoveWaterRow(Water[i]);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < Species.Count; i++)
+            {
+                if (Species[i].GetLogRows().Length == 0)
+                {
+                    Species.RemoveSpeciesRow(Species[i]);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < Value.Count; i++)
+            {
+                if (Value[i].IndividualRow == null)
+                {
+                    Value.RemoveValueRow(Value[i]);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < Variable.Count; i++)
+            {
+                if (Variable[i].GetValueRows().Count() == 0)
+                {
+                    Variable.RemoveVariableRow(Variable[i]);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < Intestine.Count; i++)
+            {
+                if (Intestine[i].IndividualRow == null)
+                {
+                    Intestine.RemoveIntestineRow(Intestine[i]);
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < Organ.Count; i++)
+            {
+                if (Organ[i].IndividualRow == null)
+                {
+                    Organ.RemoveOrganRow(Organ[i]);
+                    i--;
+                }
+            }
+        }
+
+        public bool Read(string fileName)
+        {
+            try
+            {
+                foreach (DataTable dt in Tables)
+                {
+                    foreach (DataColumn dc in dt.Columns)
+                    {
+                        dc.ColumnMapping = MappingType.Attribute;
+                    }
+                }
+
+                ReadXml(fileName);
+
+
+                foreach (CardRow cardRow in this.Card)
+                {
+                    cardRow.Path = fileName;
+
+                    try
+                    {
+                        string author = StringCipher.Decrypt(cardRow.Sign, cardRow.When.ToString("s"));
+                        cardRow.Investigator = string.IsNullOrWhiteSpace(author) ? Mayfly.Resources.Interface.InvestigatorNotApproved : author;
+                    }
+                    catch
+                    {
+                        cardRow.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
+                    }
+                }
+
+                return Card.Count > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void WriteToFile(string fileName)
+        {
+            foreach (DataTable dt in Tables)
+            {
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    dc.ColumnMapping = MappingType.Attribute;
+                }
+            }
+
+            //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
+            //xmlWriter.IndentChar = ' ';
+            //xmlWriter.Indentation = 4;
+            //xmlWriter.WriteStartElement("meta");
+            //Version libVersion = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
+            //xmlWriter.WriteAttributeString("version", libVersion.ToString());
+            //xmlWriter.WriteAttributeString("saved", DateTime.UtcNow.ToString("s"));
+            //xmlWriter.WriteEndElement();
+            //this.WriteXml(xmlWriter);
+            //xmlWriter.Close();
+
+            ////WriteXml(fileName);
+
+            File.WriteAllText(fileName, GetXml());
+        }
+
+        public static Data FromClipboard()
+        {
+            Data data = new Data();
+
+            data.ReadXml(new StringReader(Clipboard.GetText()));
+
+            try
+            {
+                data.Solitary.Investigator = StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
+            }
+            catch
+            {
+                data.Solitary.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
+            }
+
+            return data;
+        }
+
+        public string[] GetFilenames()
+        {
+            List<string> filenames = new List<string>();
+
+            foreach (Data.CardRow cardRow in this.Card)
+            {
+                if (cardRow.Path == null) continue;
+                if (!filenames.Contains(cardRow.Path))
+                    filenames.Add(cardRow.Path);
+            }
+
+            return filenames.ToArray();
+        }
+
+
+
+        public CardStack GetStack()
+        {
+            return new CardStack(this);
+        }
+
+        public CardStack GetNotIncluded(CardStack stack)
+        {
+            CardStack result = new CardStack();
+
+            foreach (Data.CardRow cardRow in this.Card)
+            {
+                if (stack.Contains(cardRow)) continue;
+                result.Add(cardRow);
+            }
+
+            return result;
+        }
+
+
+
+        public bool IsDataPresented(DataColumn dataColumn, IndividualRow[] individualRows)
+        {
+            foreach (IndividualRow individualRow in individualRows)
+            {
+                if (!individualRow.IsNull(dataColumn)) return true;
+            }
+            return false;
+        }
+
+        public bool IsLoaded(string fileName)
+        {
+            foreach (Data.CardRow cardRow in this.Card)
+            {
+                if (cardRow.Path == null) continue;
+                if (cardRow.Path == fileName) return true;
+            }
+
+            return false;
+        }
+
+        public static bool ContainsLog(string xml)
+        {
+            try
+            {
+                Data data = new Data();
+                data.ReadXml(new StringReader(xml));
+                return data.Log.Count > 0;
+            }
+            catch { return false; }
+        }
+
+        public static bool ContainsIndividuals(string xml)
+        {
+            try
+            {
+                Data data = new Data();
+                data.ReadXml(new StringReader(xml));
+                return data.Individual.Count > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public new Data Copy()
+        {
+            Data result = (Data)((DataSet)this).Copy();
+            result.InitializeBio();
+            result.RefreshBios();
+            return result;
+        }
+
+        public CardRow[] CopyTo(Data extData)
+        {
+            return this.CopyTo(extData, true);
+        }
+
+        public CardRow[] CopyTo(Data extData, bool inheritPath)
+        {
+            List<Data.CardRow> result = new List<Data.CardRow>();
+
+            foreach (Data.FactorRow factorRow in this.Factor)
+            {
+                if (extData.Factor.FindByFactor(factorRow.Factor) == null)
+                {
+                    Data.FactorRow newFactorRow = extData.Factor.NewFactorRow();
+                    newFactorRow.Factor = factorRow.Factor;
+                    extData.Factor.AddFactorRow(newFactorRow);
+                }
+            }
+
+            foreach (Data.CardRow cardRow in this.Card)
+            {
+                Data.CardRow newCardRow = cardRow.CopyTo(extData);
+
+                result.Add(newCardRow);
+
+                try { newCardRow.ID = cardRow.ID; }
+                catch { }
+
+                if (cardRow.Path != null && inheritPath)
+                {
+                    newCardRow.Path = cardRow.Path;
+                    newCardRow.SamplerPresentation = cardRow.SamplerPresentation;
+                }
+            }
+
+            return result.ToArray();
+        }
+
+
         partial class IntestineDataTable
         {
             public IntestineRow FindByID(int id)
@@ -731,19 +1082,19 @@ namespace Mayfly.Wild
             }
 
 
-            public Report.Table GetLogReport(SpeciesKey key, string massCaption, string logTitle)
+            public Report.Table GetLogReport(string massCaption, string logTitle)
             {
-                return this.GetLogRows().GetSpeciesLogReportTable(key, massCaption, logTitle);
+                return this.GetLogRows().GetSpeciesLogReportTable(((Data)Table.DataSet).key, massCaption, logTitle);
             }
 
-            public Report.Table GetLogReport(SpeciesKey key, string massCaption)
+            public Report.Table GetLogReport(string massCaption)
             {
-                return GetLogReport(key, massCaption, string.Empty);
+                return GetLogReport(massCaption, string.Empty);
             }
 
-            public Report.Table GetLogReport(SpeciesKey key)
+            public Report.Table GetLogReport()
             {
-                return GetLogReport(key, string.Empty, string.Empty);
+                return GetLogReport(string.Empty, string.Empty);
             }
         }
 
@@ -913,18 +1264,6 @@ namespace Mayfly.Wild
 
         partial class SpeciesRow
         {
-            public IndividualRow[] GetIndividualRows()
-            {
-                List<IndividualRow> result = new List<IndividualRow>();
-
-                foreach (LogRow logRow in this.GetLogRows())
-                {
-                    result.AddRange(logRow.GetIndividualRows());
-                }
-
-                return result.ToArray();
-            }
-
             public int TotalQuantity
             {
                 get
@@ -940,52 +1279,31 @@ namespace Mayfly.Wild
                 }
             }
 
-            public SpeciesKey.SpeciesRow GetKeyRecord(SpeciesKey key)
+            public SpeciesKey.SpeciesRow KeyRecord
             {
-                SpeciesKey.SpeciesRow spcRow = key.Species.FindBySpecies(this.Species);
-
-                if (spcRow == null)
+                get
                 {
-                    spcRow = key.Species.NewSpeciesRow();
-                    spcRow.Species = this.Species;
+                    return ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
+                }
+            }
+
+
+
+            public IndividualRow[] GetIndividualRows()
+            {
+                List<IndividualRow> result = new List<IndividualRow>();
+
+                foreach (LogRow logRow in this.GetLogRows())
+                {
+                    result.AddRange(logRow.GetIndividualRows());
                 }
 
-                return spcRow;
+                return result.ToArray();
             }
 
             public override string ToString()
             {
                 return this.IsSpeciesNull() ? Mayfly.Species.Resources.Interface.UnidentifiedTitle : this.Species;
-            }
-
-            public string GetFullName(SpeciesKey key)
-            {
-                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
-                return refEntry == null ? this.Species : refEntry.FullName;
-            }
-
-            public string GetShortName(SpeciesKey key)
-            {
-                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
-                return refEntry == null ? this.Species : refEntry.Local;
-            }
-
-            public string GetFullNameReport(SpeciesKey key)
-            {
-                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
-                return refEntry == null ? this.Species : refEntry.FullNameReport;
-            }
-
-            public string GetShortNameReport(SpeciesKey key)
-            {
-                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
-                return refEntry == null ? this.Species : refEntry.ShortNameReport;
-            }
-
-            public string GetScientificNameReport(SpeciesKey key)
-            {
-                SpeciesKey.SpeciesRow refEntry = key.Species.FindBySpecies(this.Species);
-                return refEntry == null ? this.Species : refEntry.ScientificNameReport;
             }
         }
 
@@ -1192,347 +1510,6 @@ namespace Mayfly.Wild
                     return Interval.FromEndpointAndWidth(this.Class, this.LogRow.Interval - .001);
                 }
             }
-        }
-
-
-
-        public CardRow Solitary
-        {
-            get
-            {
-                if (Card.Rows.Count == 0)
-                {
-                    CardRow result = Card.NewCardRow();
-                    Card.AddCardRow(result);
-                    return result;
-                }
-                else
-                {
-                    return Card[0];
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get suggested name for file with extension
-        /// </summary>
-        public string GetSuggestedName(string extension)
-        {
-            return GetSuggestedName(extension, string.Empty);
-        }
-
-        /// <summary>
-        /// Get suggested name for file with extension and gear code
-        /// </summary>
-        public string GetSuggestedName(string extension, string gearCode)
-        {
-            string result = string.Empty;
-
-            if (Card.Count == 1)
-            {
-                if (!Solitary.IsWhenNull())
-                {
-                    result += Solitary.When.ToString("yyyy-MM-dd") + " ";
-                }
-
-                if (!Solitary.IsLabelNull())
-                {
-                    result += Solitary.Label + " ";
-                }
-
-                if (!string.IsNullOrWhiteSpace(gearCode))
-                {
-                    result += gearCode + " ";
-                }
-
-                if (!Solitary.IsWaterIDNull())
-                {
-                    result += Solitary.WaterRow.Presentation + " ";
-                }
-
-                foreach (char s in Path.GetInvalidFileNameChars())
-                {
-                    if (result.Contains(s))
-                    {
-                        result = result.Replace(s, ' ');
-                    }
-                }
-
-                return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
-            }
-            else
-            {
-                return result;
-            }
-        }
-
-
-
-        public void ClearUseless()
-        {
-            for (int i = 0; i < Water.Count; i++)
-            {
-                if (Water[i].GetCardRows().Length == 0)
-                {
-                    Water.RemoveWaterRow(Water[i]);
-                    i--;
-                }
-            }
-
-            for (int i = 0; i < Species.Count; i++)
-            {
-                if (Species[i].GetLogRows().Length == 0)
-                {
-                    Species.RemoveSpeciesRow(Species[i]);
-                    i--;
-                }
-            }
-
-            for (int i = 0; i < Value.Count; i++)
-            {
-                if (Value[i].IndividualRow == null)
-                {
-                    Value.RemoveValueRow(Value[i]);
-                    i--;
-                }
-            }
-
-            for (int i = 0; i < Variable.Count; i++)
-            {
-                if (Variable[i].GetValueRows().Count() == 0)
-                {
-                    Variable.RemoveVariableRow(Variable[i]);
-                    i--;
-                }
-            }
-
-            for (int i = 0; i < Intestine.Count; i++)
-            {
-                if (Intestine[i].IndividualRow == null)
-                {
-                    Intestine.RemoveIntestineRow(Intestine[i]);
-                    i--;
-                }
-            }
-
-            for (int i = 0; i < Organ.Count; i++)
-            {
-                if (Organ[i].IndividualRow == null)
-                {
-                    Organ.RemoveOrganRow(Organ[i]);
-                    i--;
-                }
-            }
-        }
-
-        public bool Read(string fileName)
-        {
-            try
-            {
-                foreach (DataTable dt in Tables)
-                {
-                    foreach (DataColumn dc in dt.Columns)
-                    {
-                        dc.ColumnMapping = MappingType.Attribute;
-                    }
-                }
-
-                ReadXml(fileName);
-
-
-                foreach (CardRow cardRow in this.Card)
-                {
-                    cardRow.Path = fileName;
-
-                    try
-                    {
-                        string author = StringCipher.Decrypt(cardRow.Sign, cardRow.When.ToString("s"));
-                        cardRow.Investigator = string.IsNullOrWhiteSpace(author) ? Mayfly.Resources.Interface.InvestigatorNotApproved : author;
-                    }
-                    catch
-                    {
-                        cardRow.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
-                    }
-                }
-
-                return Card.Count > 0;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public void WriteToFile(string fileName)
-        {
-            foreach (DataTable dt in Tables)
-            {
-                foreach (DataColumn dc in dt.Columns)
-                {
-                    dc.ColumnMapping = MappingType.Attribute;
-                }
-            }
-
-            //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
-            //xmlWriter.IndentChar = ' ';
-            //xmlWriter.Indentation = 4;
-            //xmlWriter.WriteStartElement("meta");
-            //Version libVersion = new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion);
-            //xmlWriter.WriteAttributeString("version", libVersion.ToString());
-            //xmlWriter.WriteAttributeString("saved", DateTime.UtcNow.ToString("s"));
-            //xmlWriter.WriteEndElement();
-            //this.WriteXml(xmlWriter);
-            //xmlWriter.Close();
-
-            ////WriteXml(fileName);
-
-            File.WriteAllText(fileName, GetXml());
-        }
-
-        public static Data FromClipboard()
-        {
-            Data data = new Data();
-
-            data.ReadXml(new StringReader(Clipboard.GetText()));
-
-            try
-            {
-                data.Solitary.Investigator = StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
-            }
-            catch
-            {
-                data.Solitary.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
-            }
-
-            return data;
-        }
-
-        public string[] GetFilenames()
-        {
-            List<string> filenames = new List<string>();
-
-            foreach (Data.CardRow cardRow in this.Card)
-            {
-                if (cardRow.Path == null) continue;
-                if (!filenames.Contains(cardRow.Path))
-                    filenames.Add(cardRow.Path);
-            }
-
-            return filenames.ToArray();
-        }
-
-
-
-        public CardStack GetStack()
-        {
-            return new CardStack(this);
-        }
-
-        public CardStack GetNotIncluded(CardStack stack)
-        {
-            CardStack result = new CardStack();
-
-            foreach (Data.CardRow cardRow in this.Card)
-            {
-                if (stack.Contains(cardRow)) continue;
-                result.Add(cardRow);
-            }
-
-            return result;
-        }
-
-
-
-        public bool IsDataPresented(DataColumn dataColumn, IndividualRow[] individualRows)
-        {
-            foreach (IndividualRow individualRow in individualRows)
-            {
-                if (!individualRow.IsNull(dataColumn)) return true;
-            }
-            return false;
-        }
-
-        public bool IsLoaded(string fileName)
-        {
-            foreach (Data.CardRow cardRow in this.Card)
-            {
-                if (cardRow.Path == null) continue;
-                if (cardRow.Path == fileName) return true;
-            }
-
-            return false;
-        }
-
-        public static bool ContainsLog(string xml)
-        {
-            try
-            {
-                Data data = new Data();
-                data.ReadXml(new StringReader(xml));
-                return data.Log.Count > 0;
-            }
-            catch { return false; }
-        }
-
-        public static bool ContainsIndividuals(string xml)
-        {
-            try
-            {
-                Data data = new Data();
-                data.ReadXml(new StringReader(xml));
-                return data.Individual.Count > 0;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-        public new Data Copy()
-        {
-            Data result = (Data)((DataSet)this).Copy();
-            result.InitializeBio();
-            result.RefreshBios();
-            return result;
-        }
-
-        public CardRow[] CopyTo(Data extData)
-        {
-            return this.CopyTo(extData, true);
-        }
-
-        public CardRow[] CopyTo(Data extData, bool inheritPath)
-        {
-            List<Data.CardRow> result = new List<Data.CardRow>();
-
-            foreach (Data.FactorRow factorRow in this.Factor)
-            {
-                if (extData.Factor.FindByFactor(factorRow.Factor) == null)
-                {
-                    Data.FactorRow newFactorRow = extData.Factor.NewFactorRow();
-                    newFactorRow.Factor = factorRow.Factor;
-                    extData.Factor.AddFactorRow(newFactorRow);
-                }
-            }
-
-            foreach (Data.CardRow cardRow in this.Card)
-            {
-                Data.CardRow newCardRow = cardRow.CopyTo(extData);
-
-                result.Add(newCardRow);
-
-                try { newCardRow.ID = cardRow.ID; }
-                catch { }
-
-                if (cardRow.Path != null && inheritPath)
-                {
-                    newCardRow.Path = cardRow.Path;
-                    newCardRow.SamplerPresentation = cardRow.SamplerPresentation;
-                }
-            }
-
-            return result.ToArray();
         }
     }
 

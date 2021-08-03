@@ -435,38 +435,6 @@ namespace Mayfly.Fish
 
 
 
-        public static string GetFullName(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetFullName(UserSettings.SpeciesIndex);
-        }
-
-        public static string GetShortName(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetShortName(UserSettings.SpeciesIndex);
-        }
-
-        /// <summary>
-        /// Return universal species Name formatted for HTML
-        /// </summary>
-        /// <param name="spcRow"></param>
-        /// <returns></returns>
-        public static string ToHTML(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetFullNameReport(UserSettings.SpeciesIndex);
-        }
-
-        /// <summary>
-        /// Return short species Name formatted for HTML
-        /// </summary>
-        /// <param name="spcRow"></param>
-        /// <returns></returns>
-        public static string ToShortHTML(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetShortNameReport(UserSettings.SpeciesIndex);
-        }
-
-
-
         /// <summary>
         /// 
         /// </summary>

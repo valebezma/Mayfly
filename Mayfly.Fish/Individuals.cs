@@ -325,7 +325,7 @@ namespace Mayfly.Fish
             {
                 if (logRow == LogRow) continue;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.GetFullName());
+                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.FullName);
                 item.Tag = logRow;
                 item.Click += redefineDomesticSpecies_Click;
                 contextItemRedefine.DropDownItems.Insert(0, item);

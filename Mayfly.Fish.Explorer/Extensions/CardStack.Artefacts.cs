@@ -271,7 +271,7 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            string result = "<span class = 'hl'>" + SpeciesRow.ToShortHTML() + ": </span>";
+            string result = "<span class = 'hl'>" + SpeciesRow.KeyRecord.ShortName + ": </span>";
             //string result = "[" + SpeciesRow.GetReportFullPresentation() + "]: ";
 
             //if (IndividualsMissing > 0)

@@ -62,7 +62,7 @@ namespace Mayfly.Wild
 
         public override string ToString()
         {
-            return (DataRow == null ? base.ToString() : DataRow.ShortNameReport);
+            return (DataRow == null ? base.ToString() : DataRow.ShortName);
         }
     }
 }

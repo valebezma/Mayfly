@@ -32,7 +32,7 @@ namespace Mayfly.Fish.Explorer
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;
-                _item.Text = speciesRow.GetFullName();
+                _item.Text = speciesRow.KeyRecord.FullName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }

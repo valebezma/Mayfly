@@ -76,7 +76,7 @@ namespace Mayfly.Fish.Explorer.Survey
         public WizardComposition(CardStack data, Composition frame, Data.SpeciesRow speciesRow, CompositionColumn column) : this(data, frame)
         {
             SpeciesRow = speciesRow;
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
 
             ColumnL.Visible = column.HasFlag(CompositionColumn.LengthSample);
             ColumnW.Visible = column.HasFlag(CompositionColumn.MassSample);
@@ -150,194 +150,197 @@ namespace Mayfly.Fish.Explorer.Survey
 
 
 
-        public Report.Table[] GetCpueAppendices()
-        {
-            List<Report.Table> result = new List<Report.Table>();
+        //public Report.Table[] GetCpueAppendices()
+        //{
+        //    List<Report.Table> result = new List<Report.Table>();
 
-            #region A
+        //    #region A
 
-            Report.Table a = new Report.Table(Resources.Reports.Title.AppA);
+        //    Report.Table a_ = CatchesComposition.SeparateCompositions.ToArray().GetTable(CompositionColumn.Quantity | CompositionColumn.Mass,
+        //        Resources.Reports.Title.AppA, Wild.Resources.Reports.Caption.Species, Resources.Reports.Caption.GearClass);
 
-            a.StartRow();
-            a.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            a.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
-            a.EndRow();
+        //    Report.Table a = new Report.Table(Resources.Reports.Title.AppA);
 
-            a.StartRow();
-            foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
-            {
-                a.AddHeaderCell(gearClasscomposition.Name, 2);
-            }
-            a.EndRow();
+        //    a.StartRow();
+        //    a.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
+        //    a.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
+        //    a.EndRow();
 
-            a.StartRow();
-            for (int i = 0; i < CatchesComposition.Dimension; i++)
-            {
-                a.AddHeaderCell(string.Format("N, {0}", Resources.Reports.Common.Ind));
-                a.AddHeaderCell(string.Format("B, {0}", Resources.Reports.Common.Kg));
-            }
-            a.EndRow();
+        //    a.StartRow();
+        //    foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
+        //    {
+        //        a.AddHeaderCell(gearClasscomposition.Name, 2);
+        //    }
+        //    a.EndRow();
 
-            for (int i = 0; i < CatchesComposition.Count; i++)
-            {
-                Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
+        //    a.StartRow();
+        //    for (int i = 0; i < CatchesComposition.Dimension; i++)
+        //    {
+        //        a.AddHeaderCell(string.Format("N, {0}", Resources.Reports.Common.Ind));
+        //        a.AddHeaderCell(string.Format("B, {0}", Resources.Reports.Common.Kg));
+        //    }
+        //    a.EndRow();
 
-                a.StartRow();
-                a.AddCell(speciesRow.ToShortHTML());
-                for (int j = 0; j < CatchesComposition.Dimension; j++)
-                {
-                    if (CatchesComposition[j, i].Quantity > 0)
-                    {
-                        a.AddCellRight(CatchesComposition[j, i].Quantity, "N0");
-                        a.AddCellRight(CatchesComposition[j, i].Mass, "N3");
-                    }
-                    else
-                    {
-                        a.AddCell();
-                        a.AddCell();
-                    }
-                }
-                a.EndRow();
+        //    for (int i = 0; i < CatchesComposition.Count; i++)
+        //    {
+        //        Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
 
-            }
+        //        a.StartRow();
+        //        a.AddCell(speciesRow.KeyRecord.ShortName);
+        //        for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //        {
+        //            if (CatchesComposition[j, i].Quantity > 0)
+        //            {
+        //                a.AddCellRight(CatchesComposition[j, i].Quantity, "N0");
+        //                a.AddCellRight(CatchesComposition[j, i].Mass, "N3");
+        //            }
+        //            else
+        //            {
+        //                a.AddCell();
+        //                a.AddCell();
+        //            }
+        //        }
+        //        a.EndRow();
 
-            a.StartRow();
-            a.AddCell(Mayfly.Resources.Interface.Total);
-            for (int j = 0; j < CatchesComposition.Dimension; j++)
-            {
-                a.AddCellRight(CatchesComposition.GetComposition(j).TotalQuantity);
-                a.AddCellRight(CatchesComposition.GetComposition(j).TotalMass);
-            }
-            a.EndRow();
+        //    }
 
-            #endregion
+        //    a.StartRow();
+        //    a.AddCell(Mayfly.Resources.Interface.Total);
+        //    for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //    {
+        //        a.AddCellRight(CatchesComposition.GetComposition(j).TotalQuantity);
+        //        a.AddCellRight(CatchesComposition.GetComposition(j).TotalMass);
+        //    }
+        //    a.EndRow();
 
-            result.Add(a);
+        //    #endregion
 
-            #region B
+        //    result.Add(a);
 
-            Report.Table b = new Report.Table(Resources.Reports.Title.AppB);
+        //    #region B
 
-            b.StartRow();
-            b.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            b.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
-            b.EndRow();
+        //    Report.Table b = new Report.Table(Resources.Reports.Title.AppB);
 
-            b.StartRow();
-            foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
-            {
-                b.AddHeaderCell(gearClasscomposition.Name, 2);
-            }
-            b.EndRow();
+        //    b.StartRow();
+        //    b.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
+        //    b.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
+        //    b.EndRow();
 
-            b.StartRow();
-            for (int i = 0; i < CatchesComposition.Dimension; i++)
-            {
-                b.AddHeaderCell(string.Format("N, {0} / {1}", Resources.Reports.Common.Ind, gearWizard.SelectedUnit.Unit));
-                b.AddHeaderCell(string.Format("B, {0} / {1}", Resources.Reports.Common.Kg, gearWizard.SelectedUnit.Unit));
-            }
-            b.EndRow();
+        //    b.StartRow();
+        //    foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
+        //    {
+        //        b.AddHeaderCell(gearClasscomposition.Name, 2);
+        //    }
+        //    b.EndRow();
 
-            for (int i = 0; i < CatchesComposition.Count; i++)
-            {
-                Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
+        //    b.StartRow();
+        //    for (int i = 0; i < CatchesComposition.Dimension; i++)
+        //    {
+        //        b.AddHeaderCell(string.Format("N, {0} / {1}", Resources.Reports.Common.Ind, gearWizard.SelectedUnit.Unit));
+        //        b.AddHeaderCell(string.Format("B, {0} / {1}", Resources.Reports.Common.Kg, gearWizard.SelectedUnit.Unit));
+        //    }
+        //    b.EndRow();
 
-                b.StartRow();
-                b.AddCell(speciesRow.ToShortHTML());
-                for (int j = 0; j < CatchesComposition.Dimension; j++)
-                {
-                    if (CatchesComposition[j, i].Quantity > 0)
-                    {
-                        b.AddCellRight(CatchesComposition[j, i].Abundance, "N1");
-                        b.AddCellRight(CatchesComposition[j, i].Biomass, "N2");
-                    }
-                    else
-                    {
-                        b.AddCell();
-                        b.AddCell();
-                    }
-                }
-                b.EndRow();
+        //    for (int i = 0; i < CatchesComposition.Count; i++)
+        //    {
+        //        Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
 
-            }
+        //        b.StartRow();
+        //        b.AddCell(speciesRow.KeyRecord.ShortName);
+        //        for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //        {
+        //            if (CatchesComposition[j, i].Quantity > 0)
+        //            {
+        //                b.AddCellRight(CatchesComposition[j, i].Abundance, "N1");
+        //                b.AddCellRight(CatchesComposition[j, i].Biomass, "N2");
+        //            }
+        //            else
+        //            {
+        //                b.AddCell();
+        //                b.AddCell();
+        //            }
+        //        }
+        //        b.EndRow();
 
-            b.StartRow();
-            b.AddCell(Mayfly.Resources.Interface.Total);
-            for (int j = 0; j < CatchesComposition.Dimension; j++)
-            {
-                b.AddCellRight(CatchesComposition.GetComposition(j).TotalAbundance, "N0");
-                b.AddCellRight(CatchesComposition.GetComposition(j).TotalBiomass, "N2");
-            }
-            b.EndRow();
+        //    }
 
-            #endregion
+        //    b.StartRow();
+        //    b.AddCell(Mayfly.Resources.Interface.Total);
+        //    for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //    {
+        //        b.AddCellRight(CatchesComposition.GetComposition(j).TotalAbundance, "N0");
+        //        b.AddCellRight(CatchesComposition.GetComposition(j).TotalBiomass, "N2");
+        //    }
+        //    b.EndRow();
 
-            result.Add(b);
+        //    #endregion
 
-            #region E
+        //    result.Add(b);
 
-            Report.Table e = new Report.Table(Resources.Reports.Title.AppC);
+        //    #region E
 
-            e.StartRow();
-            e.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
-            e.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
-            e.EndRow();
+        //    Report.Table e = new Report.Table(Resources.Reports.Title.AppC);
 
-            e.StartRow();
-            foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
-            {
-                e.AddHeaderCell(gearClasscomposition.Name, 2);
-            }
-            e.EndRow();
+        //    e.StartRow();
+        //    e.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 3);
+        //    e.AddHeaderCell(Resources.Reports.Caption.GearClass, CatchesComposition.Dimension * 2);
+        //    e.EndRow();
 
-            e.StartRow();
-            for (int i = 0; i < CatchesComposition.Dimension; i++)
-            {
-                //e.AddHeaderCell(string.Format("{0}, %", Wild.Resources.Reports.Caption.Abundance));
-                //e.AddHeaderCell(string.Format("{0}, %", Wild.Resources.Reports.Caption.Biomass));
-                e.AddHeaderCell("N, %");
-                e.AddHeaderCell("B, %");
-            }
-            e.EndRow();
+        //    e.StartRow();
+        //    foreach (Composition gearClasscomposition in CatchesComposition.SeparateCompositions)
+        //    {
+        //        e.AddHeaderCell(gearClasscomposition.Name, 2);
+        //    }
+        //    e.EndRow();
 
-            for (int i = 0; i < CatchesComposition.Count; i++)
-            {
-                Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
+        //    e.StartRow();
+        //    for (int i = 0; i < CatchesComposition.Dimension; i++)
+        //    {
+        //        //e.AddHeaderCell(string.Format("{0}, %", Wild.Resources.Reports.Caption.Abundance));
+        //        //e.AddHeaderCell(string.Format("{0}, %", Wild.Resources.Reports.Caption.Biomass));
+        //        e.AddHeaderCell("N, %");
+        //        e.AddHeaderCell("B, %");
+        //    }
+        //    e.EndRow();
 
-                e.StartRow();
-                e.AddCell(speciesRow.ToShortHTML());
-                for (int j = 0; j < CatchesComposition.Dimension; j++)
-                {
-                    if (CatchesComposition[j, i].Quantity > 0)
-                    {
-                        e.AddCellRight(CatchesComposition[j, i].AbundanceFraction * 100, "N1");
-                        e.AddCellRight(CatchesComposition[j, i].BiomassFraction * 100, "N1");
-                    }
-                    else
-                    {
-                        e.AddCell();
-                        e.AddCell();
-                    }
-                }
-                e.EndRow();
+        //    for (int i = 0; i < CatchesComposition.Count; i++)
+        //    {
+        //        Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
 
-            }
+        //        e.StartRow();
+        //        e.AddCell(speciesRow.KeyRecord.ShortName);
+        //        for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //        {
+        //            if (CatchesComposition[j, i].Quantity > 0)
+        //            {
+        //                e.AddCellRight(CatchesComposition[j, i].AbundanceFraction * 100, "N1");
+        //                e.AddCellRight(CatchesComposition[j, i].BiomassFraction * 100, "N1");
+        //            }
+        //            else
+        //            {
+        //                e.AddCell();
+        //                e.AddCell();
+        //            }
+        //        }
+        //        e.EndRow();
 
-            e.StartRow();
-            e.AddCell(Mayfly.Resources.Interface.Total);
-            for (int j = 0; j < CatchesComposition.Dimension; j++)
-            {
-                e.AddCellRight(100, "N1");
-                e.AddCellRight(100, "N1");
-            }
-            e.EndRow();
+        //    }
 
-            #endregion
+        //    e.StartRow();
+        //    e.AddCell(Mayfly.Resources.Interface.Total);
+        //    for (int j = 0; j < CatchesComposition.Dimension; j++)
+        //    {
+        //        e.AddCellRight(100, "N1");
+        //        e.AddCellRight(100, "N1");
+        //    }
+        //    e.EndRow();
 
-            result.Add(e);
+        //    #endregion
 
-            return result.ToArray();
-        }
+        //    result.Add(e);
+
+        //    return result.ToArray();
+        //}
 
         public void AddAbundanceAppendices(Report report)
         {
@@ -348,7 +351,7 @@ namespace Mayfly.Fish.Explorer.Survey
             //for (int i = 0; i < CatchesComposition.Count; i++)
             //{
             //    Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(CatchesComposition[i].Name);
-            //    report.AddSectionTitle(speciesRow.ToHTML());
+            //    report.AddSectionTitle(speciesRow.KeyRecord.FullNameReport);
 
             //    double catchability = Service.GetCatchability(gearWizard.SelectedSamplerType, CatchesComposition[i].Name);
 
@@ -412,39 +415,41 @@ namespace Mayfly.Fish.Explorer.Survey
             //#endregion
         }
 
-        public void AddCatchesRoutines(Report report)
+        public void AppendCalculationSectionTo(Report report, string sectionTitle)
         {
-            report.AddSectionTitle(Resources.Reports.CatchComposition.AppendixHeader1,
-                    CategoryType, SpeciesRow.ToHTML());
+            if (CatchesComposition.SeparateCompositions.Count > 6) report.BreakPage(PageBreakOption.Landscape);
+
+            report.AddSectionTitle(sectionTitle);
+
+            string tail = (SpeciesRow == null) ? "Species" : string.Format(Resources.Reports.CatchComposition.TableHeaderTail, CategoryType, SpeciesRow.KeyRecord.FullNameReport);
 
             report.AddAppendix(
-                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App1,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass, Wild.CompositionColumn.Quantity)
+                CatchesComposition.GetAppendix(CompositionColumn.Quantity | CompositionColumn.Mass,
+                string.Format(Resources.Reports.CatchComposition.TableSampleSize, tail),
+                Resources.Reports.Caption.GearClass)
                 );
 
 
             report.AddAppendix(
-                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App2,
-                CategoryType, SpeciesRow.ToHTML()), Resources.Reports.Caption.GearClass, CompositionColumn.Mass)
+                CatchesComposition.GetAppendix(CompositionColumn.Abundance | CompositionColumn.Biomass,
+                string.Format(Resources.Reports.CatchComposition.TableCPUE, tail, gearWizard.SelectedUnit.Unit), 
+                Resources.Reports.Caption.GearClass)
                 );
 
 
             report.AddAppendix(
-                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App3,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass, CompositionColumn.Abundance)
+                CatchesComposition.GetAppendix(CompositionColumn.AbundanceFraction | CompositionColumn.BiomassFraction,
+                string.Format(Resources.Reports.CatchComposition.TableFraction, tail, gearWizard.SelectedUnit.Unit),
+                Resources.Reports.Caption.GearClass)
                 );
 
-
-            report.AddAppendix(
-                CatchesComposition.GetAppendix(string.Format(Resources.Reports.CatchComposition.App4,
-                CategoryType, SpeciesRow.ToHTML(), gearWizard.SelectedUnit.Unit), Resources.Reports.Caption.GearClass, CompositionColumn.Biomass)
-                );
+            if (CatchesComposition.SeparateCompositions.Count > 6) report.BreakPage(PageBreakOption.None);
         }
 
         public void AddAgeRecoveryRoutines(Report report)
         {
             report.AddSectionTitle(Resources.Reports.CatchComposition.AppendixHeader2,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             foreach (Composition classComposition in CatchesComposition.SeparateCompositions)
             {

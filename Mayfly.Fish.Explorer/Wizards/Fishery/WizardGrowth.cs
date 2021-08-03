@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
 
             Log.Write(EventType.WizardStarted, "Growth wizard is started for {0}.", 
                 speciesRow.Species);
@@ -97,7 +97,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(string.Format(
                 Resources.Reports.Growth.Title,
-                SpeciesRow.ToHTML()));
+                SpeciesRow.KeyRecord.FullNameReport));
             Data.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -125,10 +125,12 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddData(Report report)
         {
             report.AddParagraph(Resources.Reports.Growth.Paragraph1,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
-            Report.Table table = PseudoCohort.GetTable(string.Format(Resources.Reports.Growth.Table1,
-                SpeciesRow.ToHTML()), CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, PseudoCohort.Name);
+            Report.Table table = PseudoCohort.GetTable(
+                CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, 
+                string.Format(Resources.Reports.Growth.Table1, SpeciesRow.KeyRecord.FullNameReport), 
+                PseudoCohort.Name);
 
             report.AddTable(table);
         }
@@ -152,7 +154,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         private void categoryCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
             PseudoCohort = Data.GetSampleAgeComposition(SpeciesRow);
-            PseudoCohort.Name = string.Format("{0} stock cross section", SpeciesRow.GetFullName());            
+            PseudoCohort.Name = string.Format("{0} stock cross section", SpeciesRow.KeyRecord.FullName);            
         }
 
         private void categoryCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

@@ -307,7 +307,7 @@ namespace Mayfly.Fish.Explorer
             // Quantity
 
             table1.StartRow();
-            table1.AddCellValue(Wild.Resources.Reports.Caption.Quantity, Count + 3, CellSpan.Columns);
+            table1.AddCellValue(Wild.Resources.Reports.Caption.QuantityUnit, Count + 3, CellSpan.Columns);
             table1.EndRow();
 
             for (int lc = 0; lc < untreatedTtl.Count; lc++)

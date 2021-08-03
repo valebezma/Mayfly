@@ -119,9 +119,9 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
-            labelStockInstruction.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
+            labelStockInstruction.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             Log.Write(EventType.WizardStarted, "Extrapolation wizard is started for {0}.", speciesRow.Species);
         }
@@ -233,7 +233,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Extrapolation.Title,
-                    SpeciesRow.ToHTML()));
+                    SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -254,7 +254,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             if (checkBoxComposition.Checked)
             {
                 report.AddParagraph(Resources.Reports.Extrapolation.Paragraph1,
-                    SpeciesRow.ToHTML(), gearWizard.SelectedSamplerType.ToDisplay(),
+                    SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
                     compositionWizard.CategoryType);
 
                 if (checkBoxCatches.Checked)
@@ -273,7 +273,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxApp.Checked)
             {
-                compositionWizard.AddCatchesRoutines(report);
+                compositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "", SpeciesRow.KeyRecord.FullNameReport));
             }
 
             report.EndBranded();
@@ -287,11 +287,11 @@ namespace Mayfly.Fish.Explorer.Fishery
             {
                 report.AddParagraph(Resources.Reports.Extrapolation.Paragraph2 +
                     (gearWizard.IsSpatialOn ? Resources.Reports.Extrapolation.Paragraph2_1 : string.Empty),
-                    SpeciesRow.ToHTML(), Catchability, SpeciesRow.ToHTML(), report.NextTableNumber,
+                    SpeciesRow.KeyRecord.FullNameReport, Catchability, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber,
                     (gearWizard.IsSpatialOn ? (report.NextTableNumber - 1).ToString() : string.Empty));
 
                 Report.Table table1 = new Report.Table(Resources.Reports.Extrapolation.Table1,
-                    SpeciesRow.ToHTML(), gearWizard.SelectedSamplerType.ToDisplay());
+                    SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
                 table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25, 2);
@@ -339,7 +339,7 @@ namespace Mayfly.Fish.Explorer.Fishery
                 report.AddParagraph(Resources.Reports.Extrapolation.Paragraph3,
                     catches[0].Abundance, gearWizard.AbundanceUnits,
                     catches[0].Biomass, gearWizard.BiomassUnits,
-                    SpeciesRow.ToHTML(), Catchability);
+                    SpeciesRow.KeyRecord.FullNameReport, Catchability);
             }
 
             report.AddParagraph(Resources.Reports.Extrapolation.Paragraph4);
@@ -410,7 +410,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             }
 
             report.AddParagraph(Resources.Reports.Extrapolation.Paragraph6,
-                waterSize, SpeciesRow.ToHTML());
+                waterSize, SpeciesRow.KeyRecord.FullNameReport);
 
             switch (gearWizard.SelectedUnit.Variant)
             {
@@ -537,7 +537,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != ExpressionVariant.Square;
 
-            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.GetFullName());
+            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.KeyRecord.FullName);
 
             this.Replace(gearWizard);
             //if (wizardExplorer.SelectedPage != pageCpue) wizardExplorer.SetSelectedPage(pageCpue);

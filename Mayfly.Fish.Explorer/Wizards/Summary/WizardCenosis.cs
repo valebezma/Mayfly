@@ -89,13 +89,16 @@ namespace Mayfly.Fish.Explorer.Survey
 
             if (checkBoxCenosis.Checked)
             {
-                AddCenosisSection(report);
+                NaturalComposition.AppendCenosisSectionTo(report,
+                    gearWizard.SelectedSamplerType,
+                    gearWizard.SelectedUnit);
             }
 
             // Start Appendices
 
             if (checkBoxAppCatches.Checked | checkBoxAppCPUE.Checked | checkBoxAppAB.Checked)
             {
+                report.BreakPage(PageBreakOption.Odd);
                 report.AddChapterTitle(Resources.Reports.Title.Appendices);
             }
 
@@ -117,12 +120,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
             if (checkBoxAppCPUE.Checked)
             {
-                report.AddSectionTitle(Resources.Reports.Title.AppCompositionSpreadsheets);
-
-                foreach (Report.Table app in compositionWizard.GetCpueAppendices())
-                {
-                    report.AddAppendix(app);
-                }
+                compositionWizard.AppendCalculationSectionTo(report, Resources.Reports.Title.AppCompositionSpreadsheets);
             }
 
             if (checkBoxAppAB.Checked)
@@ -133,13 +131,6 @@ namespace Mayfly.Fish.Explorer.Survey
             report.EndBranded();
 
             return report;
-        }
-
-        public void AddCenosisSection(Report report)
-        {
-            NaturalComposition.AppendCenosisSectionTo(report,
-                gearWizard.SelectedSamplerType,
-                gearWizard.SelectedUnit);
         }
 
 

@@ -45,7 +45,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
         }
 
 
@@ -54,7 +54,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(string.Format(
                 Resources.Reports.GrowthCohorts.Title,
-                SpeciesRow.ToHTML()));
+                SpeciesRow.KeyRecord.FullNameReport));
             Data.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -82,10 +82,10 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.GrowthCohorts.Paragraph1,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.GrowthCohorts.Table1,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Growth.Column1, .2, 2);
@@ -120,11 +120,11 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddGrowth(Report report)
         {
             report.AddParagraph(Resources.Reports.GrowthCohorts.Paragraph2,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
 
             Report.Table table1 = new Report.Table(Resources.Reports.GrowthCohorts.Table2,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.GrowthCohorts.Column1, .2);
@@ -153,11 +153,11 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddMass(Report report)
         {
             report.AddParagraph(Resources.Reports.GrowthCohorts.Paragraph3,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"W = {q} \times {L^{b}}");
 
             Report.Table table1 = new Report.Table(Resources.Reports.GrowthCohorts.Table3,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Growth.Column1, .2);

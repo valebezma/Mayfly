@@ -67,8 +67,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             buttonVpa.Enabled =
                 buttonGrowth.Enabled = true;
@@ -118,7 +118,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                     string.Format(Resources.Reports.MSYR.Title,
-                    SpeciesRow.ToHTML()));
+                    SpeciesRow.KeyRecord.FullNameReport));
 
             report.UseTableNumeration = true;
 

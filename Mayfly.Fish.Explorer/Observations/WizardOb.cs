@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer.Observations
             foreach (DataGridViewRow gridRow in spreadSheetGears.Rows)
             {
                 if (gridRow.IsNewRow) continue;
-                gridRow.HeaderCell.Value = Mayfly.Service.GetLetter(gridRow.Index);
+                gridRow.HeaderCell.Value = gridRow.Index.ToLetter();
             }
 
             buttonAddFleet.Enabled = (Survey.EmptyFleetCount == 0);
@@ -622,7 +622,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
         private void spreadSheetGears_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.HeaderCell.Value = Mayfly.Service.GetLetter(e.Row.Index);
+            e.Row.HeaderCell.Value = e.Row.Index.ToLetter();
         }
 
         private void spreadSheetGears_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -630,7 +630,7 @@ namespace Mayfly.Fish.Explorer.Observations
             if (e.RowIndex == -1) return;
             if (spreadSheetGears.Rows[e.RowIndex].IsNewRow) return;
             if (spreadSheetGears.Rows[e.RowIndex].HeaderCell.Value == null)
-                spreadSheetGears.Rows[e.RowIndex].HeaderCell.Value = Mayfly.Service.GetLetter(e.RowIndex);
+                spreadSheetGears.Rows[e.RowIndex].HeaderCell.Value = e.RowIndex.ToLetter();
             SaveGear(spreadSheetGears.Rows[e.RowIndex]);
 
             wizardPageGears.AllowNext = Survey.Gear.Count > 0;

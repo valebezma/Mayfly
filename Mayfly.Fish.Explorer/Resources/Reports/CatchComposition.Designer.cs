@@ -61,43 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quantities of {0} categories in {1} catches of different gear class, ind..
-        /// </summary>
-        internal static string App1 {
-            get {
-                return ResourceManager.GetString("App1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Masses of {0} categories in {1} catches of different gear class, kg.
-        /// </summary>
-        internal static string App2 {
-            get {
-                return ResourceManager.GetString("App2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CPUE (by number) of {0} categories in {1} catches of different gear class, ind./{2}.
-        /// </summary>
-        internal static string App3 {
-            get {
-                return ResourceManager.GetString("App3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CPUE (by mass) of {0} categories in {1} catches of different gear class, kg/{2}.
-        /// </summary>
-        internal static string App4 {
-            get {
-                return ResourceManager.GetString("App4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Appendices. Source data for calculation averaged {0} composition of {1} catches..
+        ///   Looks up a localized string similar to Source data for calculation averaged {0} composition of {1} catches.
         /// </summary>
         internal static string AppendixHeader1 {
             get {
@@ -106,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appendices. Age-length keys for calculation of age compositions of {0} catches.
+        ///   Looks up a localized string similar to Age-length keys for calculation of age compositions of {0} catches.
         /// </summary>
         internal static string AppendixHeader2 {
             get {
@@ -115,7 +79,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * – Age category quantity recovered by length-age key..
+        ///   Looks up a localized string similar to age category quantity recovered by length-age key.
         /// </summary>
         internal static string Notice2 {
             get {
@@ -124,11 +88,38 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to * – composition was distributed on whole sample..
+        ///   Looks up a localized string similar to composition was distributed on whole sample.
         /// </summary>
         internal static string Notice3 {
             get {
                 return ResourceManager.GetString("Notice3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPUE of {0} in catches of different gear class.
+        /// </summary>
+        internal static string TableCPUE {
+            get {
+                return ResourceManager.GetString("TableCPUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} composition in catches of different gear class.
+        /// </summary>
+        internal static string TableFraction {
+            get {
+                return ResourceManager.GetString("TableFraction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of {0} categories in {1} catches.
+        /// </summary>
+        internal static string TableHeaderTail {
+            get {
+                return ResourceManager.GetString("TableHeaderTail", resourceCulture);
             }
         }
         
@@ -138,6 +129,15 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         internal static string TablePopulation {
             get {
                 return ResourceManager.GetString("TablePopulation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantities and masses of {0} in catches of different gear class.
+        /// </summary>
+        internal static string TableSampleSize {
+            get {
+                return ResourceManager.GetString("TableSampleSize", resourceCulture);
             }
         }
     }

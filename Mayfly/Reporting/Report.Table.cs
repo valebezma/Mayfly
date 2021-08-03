@@ -29,36 +29,30 @@ namespace Mayfly
                 this.WriteLine("<caption>{0}:</caption>", caption);
             }
 
-            string tableBody = table.ToString();
-            string noticeHolder = string.Empty;
+            //string tableBody = table.ToString();
+            //while (tableBody.Contains(Constants.NoticeHolder))
+            //{
+            //    int holderPlace = tableBody.IndexOf(Constants.NoticeHolder);
+            //    tableBody = tableBody.Remove(holderPlace, Constants.NoticeHolder.Length);
+            //    tableBody = tableBody.Insert(holderPlace, string.Format("<sup>{0}</sup>", noticeCount.ToLetter().ToLowerInvariant()));
+            //    noticeCount++;
+            //}
 
-            while (tableBody.Contains(Constants.NoticeHolder))
-            {
-                int holderPlace = tableBody.IndexOf(Constants.NoticeHolder);
-                tableBody = tableBody.Remove(holderPlace, Constants.NoticeHolder.Length);
-                noticeHolder += "*";
-                tableBody = tableBody.Insert(holderPlace, noticeHolder);
-            }
+            //this.WriteLine(tableBody);
 
-            this.WriteLine(tableBody);
+            this.WriteLine(table.ToString());
 
             this.WriteLine("</table>");
-            
-            string combinedNotice = string.Empty;
-            noticeHolder = string.Empty;
 
-            foreach (string notice in table.Notices)
+            string combinedNotice = string.Empty;
+            foreach (Table.Notice notice in table.Notices)
             {
-                if (!string.IsNullOrWhiteSpace(notice))
-                {
-                    noticeHolder += "*";
-                    combinedNotice += noticeHolder + " – " + notice + "; ";
-                }
+                combinedNotice += notice + "; ";
             }
 
             if (!string.IsNullOrWhiteSpace(combinedNotice))
             {
-                combinedNotice = combinedNotice.TrimEnd(' ',';') + ".";
+                combinedNotice = combinedNotice.TrimEnd(' ', ';') + ".";
                 AddComment(combinedNotice, true);
             }
         }
@@ -80,7 +74,7 @@ namespace Mayfly
 
         public void AddAppendix(Table table)
         {
-            AddTable(table, "big", string.Format(Resources.Report.AppendixTableHeader, Service.GetLetter(NextAppendixNumber), table.Caption));
+            AddTable(table, "big", string.Format(Resources.Report.AppendixTableHeader, NextAppendixNumber.ToLetter(), table.Caption));
             NextAppendixNumber++;
         }
 
@@ -90,7 +84,7 @@ namespace Mayfly
         {
             public string Caption;
 
-            public List<string> Notices;
+            public List<Notice> Notices;
 
 
 
@@ -98,7 +92,7 @@ namespace Mayfly
             {
                 if (!string.IsNullOrWhiteSpace(caption)) Caption = caption;
 
-                Notices = new List<string>();
+                Notices = new List<Notice>();
             }
 
             public Table(string captionformat, params object[] values)
@@ -446,14 +440,21 @@ namespace Mayfly
                 WriteLine("</tfoot>");
             }
 
-            public void AddNotice(string notice)
+            public Notice AddNotice(string notice)
             {
-                Notices.Add(notice);
+                foreach (Notice _notice in Notices)
+                {
+                    if (_notice.Text == notice) return _notice;
+                }
+
+                Notice result = new Notice(Notices.Count, notice);
+                Notices.Add(result);
+                return result;
             }
 
-            public void AddNotice(string format, params object[] values)
+            public Notice AddNotice(string format, params object[] values)
             {
-                Notices.Add(string.Format(format, values));
+                return AddNotice(string.Format(format, values));
             }
 
 
@@ -470,6 +471,26 @@ namespace Mayfly
                 }
 
                 return result;
+            }
+
+            public class Notice
+            {
+                public int Number;
+
+                public string Text;
+
+                public string Holder { get { return string.Format("<sup>{0}</sup>", Number.ToLetter().ToLowerInvariant()); } }
+
+                public Notice(int no, string text)
+                {
+                    Number = no;
+                    Text = text;
+                }
+
+                public override string ToString()
+                {
+                    return string.Format("{0} – {1}", Holder, Text);
+                }
             }
         }
     }

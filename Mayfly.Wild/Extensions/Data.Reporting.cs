@@ -158,7 +158,7 @@ namespace Mayfly.Wild
 
             table.AddHeader(new string[]{
                             Resources.Reports.Caption.Species,
-                            Resources.Reports.Caption.Quantity,
+                            Resources.Reports.Caption.QuantityUnit,
                             string.IsNullOrEmpty(massCaption) ? Resources.Reports.Caption.Mass : massCaption },
                         new double[] { .50 });
 
@@ -172,7 +172,7 @@ namespace Mayfly.Wild
                 //table.StartCellOfClass("left", 
                 //    logRow.SpeciesRow.GetKeyRecord(key).ReportShortPresentation);
 
-                string logEntry = logRow.SpeciesRow.GetKeyRecord(key).ScientificNameReport;
+                string logEntry = logRow.SpeciesRow.KeyRecord.ScientificNameReport;
 
                 if (!logRow.IsCommentsNull())
                 {

@@ -600,6 +600,51 @@ namespace Mayfly.Extensions
             }
         }
 
+        public static string ToLetter(this int index)
+        {
+            const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            var value = "";
+
+            if (index >= letters.Length)
+                value += letters[index / letters.Length - 1];
+
+            value += letters[index % letters.Length];
+
+            return value;
+        }
+
+        public static string ToRoman(this int arabic)
+        {
+            StringBuilder retVal = new StringBuilder();
+            if (arabic < 0)
+                throw new ArgumentOutOfRangeException("arabic", arabic, "Argument should be positive");
+            ProcessMagnitude(retVal, ref arabic, 1000, 'M');
+            ProcessMagnitude(retVal, ref arabic, 500, 'D');
+            ProcessMagnitude(retVal, ref arabic, 100, 'C');
+            ProcessMagnitude(retVal, ref arabic, 50, 'L');
+            ProcessMagnitude(retVal, ref arabic, 10, 'X');
+            ProcessMagnitude(retVal, ref arabic, 5, 'V');
+            ProcessMagnitude(retVal, ref arabic, 1, 'I');
+            retVal.Replace("IIII", "IV");
+            retVal.Replace("VIV", "IX");
+            retVal.Replace("XXXX", "XL");
+            retVal.Replace("LXL", "XC");
+            retVal.Replace("CCCC", "CD");
+            retVal.Replace("DCD", "CM");
+
+            return retVal.ToString();
+        }
+
+        private static void ProcessMagnitude(StringBuilder retVal, ref int value, int magnitude, char letter)
+        {
+            while (value >= magnitude)
+            {
+                value -= magnitude;
+                retVal.Append(letter);
+            }
+        }
+
         public static string MeanFormat(this IEnumerable<double> values)
         {
             return Mayfly.Service.Mask(values.Precision());

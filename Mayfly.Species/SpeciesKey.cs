@@ -88,7 +88,7 @@ namespace Mayfly.Species
                 foreach (SpeciesRow speciesRow in Rows)
                 {
                     //if (speciesRow.IsSpeciesNull()) continue
-                    if (speciesRow.FullNameReport.ToUpperInvariant().Contains(name.ToUpperInvariant()))
+                    if (speciesRow.FullName.ToUpperInvariant().Contains(name.ToUpperInvariant()))
                     {
                         result.Add(speciesRow);
                     }
@@ -395,6 +395,34 @@ namespace Mayfly.Species
                 }
             }
 
+            public SpeciesRow[] Synonyms
+            {
+                get
+                {
+                    List<SpeciesRow> result = new List<SpeciesRow>();
+                    if (this.MajorSynonym != null) result.Add(this.MajorSynonym);
+                    result.AddRange(this.MinorSynonyms);
+                    return result.ToArray();
+                }
+            }
+
+            public SpeciesRow[] MinorSynonyms
+            {
+                get
+                {
+                    List<SpeciesRow> result = new List<SpeciesRow>();
+
+                    foreach (SynonymyRow synRow in this.GetSynonymyRowsBySpecies_Synonymy())
+                    {
+                        result.Add(synRow.SpeciesRowByFK_Species_Synonymy);
+                        result.AddRange(synRow.SpeciesRowByFK_Species_Synonymy.MinorSynonyms);
+                    }
+
+
+                    return result.ToArray();
+                }
+            }
+
             public string[] ToolTip
             {
                 get
@@ -424,70 +452,29 @@ namespace Mayfly.Species
                 }
             }
 
-            /// <summary>
-            /// Return full species Name including scientific name, local name and reference
-            /// </summary>
-            public string FullName
+
+
+            public string ShortName
             {
                 get
                 {
-                    string result = string.Empty;
-
-                    if (!this.IsSpeciesNull())
-                    {
-                        result += this.Species;
-                    }
-
-                    if (!this.IsLocalNull())
-                    {
-                        result += " (" + this.Local + ")";
-                    }
-
-                    if (!this.IsReferenceNull())
-                    {
-                        result += " " + this.Reference;
-                    }
-
-                    return string.IsNullOrWhiteSpace(result) ? Resources.Interface.UnidentifiedTitle : result;
+                    return Local;
                 }
             }
 
-            /// <summary>
-            /// Return full species Name including scientific name, local name and reference formatted for HTML
-            /// </summary>
-            public string FullNameReport
+            public string ScientificName
             {
                 get
                 {
-                    string result = this.ScientificNameReport;
-
-                    if (!this.IsLocalNull())
-                    {
-                        result += " (" + this.Local + ")";
-                    }
-
-                    if (!this.IsReferenceNull())
-                    {
-                        result += " " + this.Reference;
-                    }
-
-                    return result;
+                    return Species;
                 }
             }
 
-            /// <summary>
-            /// Returns Scientifica name formatted for HTML
-            /// </summary>
             public string ScientificNameReport
             {
                 get
                 {
-                    string result = string.Empty;
-
-                    if (!this.IsSpeciesNull())
-                    {
-                        result += "<span class='latin'>" + this.Species + "</span>";
-                    }
+                    string result = string.Format("<span class='latin'>{0}</span>", ScientificName);
 
                     foreach (string serviceWord in new string[] { "gr.", "morpha", "ex gr.", "nov.", "sp.", "sp. n." })
                     {
@@ -499,17 +486,49 @@ namespace Mayfly.Species
                 }
             }
 
-            /// <summary>
-            /// Returns Local name or Scientific (if species has no local name) formatted for HTML
-            /// </summary>
-            public string ShortNameReport
+            public string FullName
             {
                 get
                 {
-                    if (this.IsLocalNull()) { return ScientificNameReport; }
-                    return this.Local;
+                    string result = string.Empty;
+
+                    if (!this.IsLocalNull())
+                    {
+                        result += this.Local;
+                    }
+
+                    if (!this.IsSpeciesNull())
+                    {
+                        result += " " + this.Species;
+                    }
+
+                    if (!this.IsReferenceNull())
+                    {
+                        result += " " + this.Reference;
+                    }
+
+                    return result.Trim();
                 }
             }
+
+            public string FullNameReport
+            {
+                get
+                {
+                    string result = Local;
+
+                    result += " " + ScientificNameReport;
+
+                    if (!this.IsReferenceNull())
+                    {
+                        result += " " + this.Reference;
+                    }
+
+                    return result.Trim();
+                }
+            }
+
+
 
             public TaxaRow GetTaxon(BaseRow baseRow)
             {
@@ -529,34 +548,6 @@ namespace Mayfly.Species
                 ((SpeciesKey)this.Table.DataSet).Rep.Select(
                     string.Format("TaxID = {0} AND SpcID = {1}",
                     taxaRow.ID, this.ID))[0].Delete();
-            }
-
-            public SpeciesRow[] Synonyms
-            {
-                get
-                {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
-                    if (this.MajorSynonym != null) result.Add(this.MajorSynonym);
-                    result.AddRange(this.MinorSynonyms);
-                    return result.ToArray();
-                }
-            }
-
-            public SpeciesRow[] MinorSynonyms
-            {
-                get
-                {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
-
-                    foreach (SynonymyRow synRow in this.GetSynonymyRowsBySpecies_Synonymy())
-                    {
-                        result.Add(synRow.SpeciesRowByFK_Species_Synonymy);
-                        result.AddRange(synRow.SpeciesRowByFK_Species_Synonymy.MinorSynonyms);
-                    }
-
-
-                    return result.ToArray();
-                }
             }
         }
 

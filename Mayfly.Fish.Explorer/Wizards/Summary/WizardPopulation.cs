@@ -40,8 +40,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             pageStart.SetNavigation(false);
 
@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public Report GetReport() 
         {
-            Report report = new Report(string.Format(Resources.Reports.Title.RepPopulation, SpeciesRow.ToHTML()));
+            Report report = new Report(string.Format(Resources.Reports.Title.RepPopulation, SpeciesRow.KeyRecord.FullNameReport));
             
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -78,17 +78,18 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxAppL.Checked | checkBoxAppT.Checked | checkBoxAppKeys.Checked)
             {
+                report.BreakPage(PageBreakOption.Odd);
                 report.AddChapterTitle(Resources.Reports.Title.Appendices);
             }
 
             if (checkBoxAppL.Checked)
             {
-                lengthCompositionWizard.AddCatchesRoutines(report);
+                lengthCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "length", SpeciesRow.KeyRecord.FullNameReport));
             }
 
             if (checkBoxAppT.Checked)
             {
-                ageCompositionWizard.AddCatchesRoutines(report);
+                ageCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "age", SpeciesRow.KeyRecord.FullNameReport));
             }
 
             if (checkBoxAppKeys.Checked)

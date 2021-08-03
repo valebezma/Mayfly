@@ -47,8 +47,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
         }
 
 
@@ -57,7 +57,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(string.Format(
                 Resources.Reports.MortalityCohorts.Title,
-                SpeciesRow.ToHTML()));
+                SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -80,10 +80,10 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.MortalityCohorts.Paragraph1,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.MortalityCohorts.Table1,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Growth.Column1, .2, 2);
@@ -112,11 +112,11 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddMortality(Report report)
         {
             report.AddParagraph(Resources.Reports.MortalityCohorts.Paragraph2,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"CPUE(%) = a \times e^{-{Z} \times {t}}");
 
             Report.Table table1 = new Report.Table(Resources.Reports.MortalityCohorts.Table2,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.GrowthCohorts.Column1, .2);

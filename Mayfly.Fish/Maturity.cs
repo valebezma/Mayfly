@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
@@ -95,13 +96,13 @@ namespace Mayfly.Fish
             if (IsIntermediate)
             {
                 if (Value < 6)
-                    return Mayfly.Service.ArabicToRoman(Value) + "–" + Mayfly.Service.ArabicToRoman(Value + 1);
+                    return Value.ToRoman() + "–" + (Value + 1).ToRoman();
                 else
-                    return Mayfly.Service.ArabicToRoman(Value) + "–" + Mayfly.Service.ArabicToRoman(2);
+                    return Value.ToRoman() + "–" + (2).ToRoman();
             }
             else
             {
-                return Mayfly.Service.ArabicToRoman(Value);
+                return Value.ToRoman();
             }
         }
 

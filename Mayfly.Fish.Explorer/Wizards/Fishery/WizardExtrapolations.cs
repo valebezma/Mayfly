@@ -177,10 +177,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCPUE.Checked)
             {
-                foreach (Report.Table app in compositionWizard.GetCpueAppendices())
-                {
-                    report.AddAppendix(app);
-                }
+                compositionWizard.AppendCalculationSectionTo(report, "");
             }
 
             if (checkBoxAbundance.Checked)
@@ -236,7 +233,7 @@ namespace Mayfly.Fish.Explorer.Fishery
                     compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();
-                table1.AddCell(speciesRow.ToShortHTML());
+                table1.AddCell(speciesRow.KeyRecord.ShortName);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Quantity / 1000, ColumnN.DefaultCellStyle.Format);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Mass / 1000, ColumnB.DefaultCellStyle.Format);
 

@@ -153,8 +153,8 @@ namespace Mayfly.Extensions
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;
-                SpeciesKey.SpeciesRow refSpecies = speciesRow.GetKeyRecord();
-                _item.Text = refSpecies == null ? speciesRow.Species : speciesRow.GetKeyRecord().FullName;
+                SpeciesKey.SpeciesRow refSpecies = speciesRow.KeyRecord;
+                _item.Text = refSpecies == null ? speciesRow.Species : refSpecies.FullName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }

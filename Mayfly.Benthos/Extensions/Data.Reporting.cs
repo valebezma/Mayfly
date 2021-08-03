@@ -40,7 +40,7 @@ namespace Mayfly.Benthos
         /// <param name="report"></param>
         public static void AddReport(this Data.LogRow logRow, Report report)
         {
-            string speciesPresentation = logRow.SpeciesRow.GetKeyRecord(UserSettings.SpeciesIndex).ScientificNameReport;
+            string speciesPresentation = logRow.SpeciesRow.KeyRecord.ScientificNameReport;
             logRow.AddReport(report, speciesPresentation);
         }
 
@@ -252,7 +252,7 @@ namespace Mayfly.Benthos
                 else
                 {
                     //report.BreakPage();
-                    report.AddTable(cardRow.GetLogReport(UserSettings.SpeciesIndex, resources.GetString("ColumnMass.HeaderText"), string.Empty));
+                    report.AddTable(cardRow.GetLogReport(resources.GetString("ColumnMass.HeaderText"), string.Empty));
                 }
             }
 

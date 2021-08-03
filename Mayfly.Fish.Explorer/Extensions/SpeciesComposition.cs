@@ -34,8 +34,8 @@ namespace Mayfly.Fish.Explorer
 
             //    report.AddParagraph(
             //        string.Format(Resources.Reports.GearClass.Paragraph2,
-            //            mostAbundant.ToHTML(), composition.MostAbundant.AbundanceFraction,
-            //            mostAbundantByMass.ToHTML(), composition.MostAbundantByMass.BiomassFraction)
+            //            mostAbundant.KeyRecord.FullNameReport, composition.MostAbundant.AbundanceFraction,
+            //            mostAbundantByMass.KeyRecord.FullNameReport, composition.MostAbundantByMass.BiomassFraction)
             //  
             //} 
 
@@ -68,13 +68,16 @@ namespace Mayfly.Fish.Explorer
             table.AddHeaderCell(Wild.Resources.Reports.Caption.Abundance, 2);
             table.AddHeaderCell(Wild.Resources.Reports.Caption.Biomass, 2);
             table.AddHeaderCell(Wild.Resources.Reports.Caption.Occurrence, 2, CellSpan.Rows);
-            table.AddHeaderCell(Wild.Resources.Reports.Caption.Dominance + Constants.NoticeHolder, 2, CellSpan.Rows);
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.Dominance + 
+                table.AddNotice(string.Format(Resources.Reports.Notice.Dominance, UserSettings.DominanceIndexName)).Holder, 2, CellSpan.Rows);
             table.EndRow();
 
             table.StartRow();
-            table.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ? Constants.NoticeHolder : string.Empty));
+            table.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ? 
+                table.AddNotice(Resources.Reports.Notice.Abundance, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
-            table.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ? Constants.NoticeHolder : string.Empty));
+            table.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ?
+                table.AddNotice(Resources.Reports.Notice.Biomass, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
             table.EndRow();
 
@@ -101,14 +104,12 @@ namespace Mayfly.Fish.Explorer
             table.AddCellRight(1, composition.BiomassFractionFormat);
             table.AddCell();
             table.AddCell();
-            table.EndRow();
-
-            table.AddNotice(string.Format(Resources.Reports.Notice.Dominance, UserSettings.DominanceIndexName));
+            table.EndRow();            
 
             if (ue.Variant == ExpressionVariant.Efforts)
             {
-                table.AddNotice(Resources.Reports.Notice.Abundance, ue.Unit, ue.UnitCost);
-                table.AddNotice(Resources.Reports.Notice.Biomass, ue.Unit, ue.UnitCost);
+                ;
+                ;
             }
 
             report.AddTable(table);

@@ -193,7 +193,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
                 spreadSheetEfforts[ColumnClass.Index, i].ToolTipText =
                     speciesOfInterestIsPresent ? string.Empty : 
-                    string.Format(Resources.Interface.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.GetFullName(), 
+                    string.Format(Resources.Interface.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.KeyRecord.FullName, 
                     classedStacks[i].Name, spreadSheetEfforts.RowVisibilityKey);
 
             }

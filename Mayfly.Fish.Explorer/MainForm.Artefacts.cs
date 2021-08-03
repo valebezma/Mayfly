@@ -105,7 +105,7 @@ namespace Mayfly.Fish.Explorer
 
                 //    gridRow.Cells[columnArtefactDetailed.Index].ToolTipText = //artefact.ToString();
                 //        string.Format(Resources.Artefact.Specimen,
-                //        artefact.SpeciesRow.GetFullName(), artefact.Quantity,
+                //        artefact.SpeciesRow.KeyRecord.FullName, artefact.Quantity,
                 //        artefact.QuantityIndividuals, artefact.QuantityStratified, artefact.IndividualsMissing);
                 //}
                 //else

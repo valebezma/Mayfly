@@ -63,8 +63,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             Log.Write(EventType.WizardStarted, "VPA wizard is started for {0}.", 
                 speciesRow.Species);
@@ -86,7 +86,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                 string.Format(Resources.Reports.VPA.Title,
-                SpeciesRow.ToHTML()));
+                SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -132,13 +132,14 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             // Year-based catches
             report.AddParagraph(Resources.Reports.VPA.Paragraph1,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             report.AddAppendix(
                 AnnualCompositions.GetTable(
-                    string.Format(Resources.Reports.VPA.Table1, SpeciesRow.ToHTML(), AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
-                    Resources.Reports.Growth.Column1, Resources.Reports.VPA.Column2, Wild.CompositionColumn.Quantity)
-                );
+                    CompositionColumn.Quantity,
+                    string.Format(Resources.Reports.VPA.Table1, SpeciesRow.KeyRecord.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
+                    Resources.Reports.Growth.Column1, Resources.Reports.VPA.Column2)
+                    );
 
             //// Cohort-arranged catches
             //report.AddParagraph(Resources.Reports.VPA.Paragraph2,
@@ -170,46 +171,24 @@ namespace Mayfly.Fish.Explorer.Fishery
                 report.NextTableNumber);
 
             report.AddTable(
-                Survivors.ToArray().GetTable(string.Format(Resources.Reports.VPA.Table4, SpeciesRow.ToHTML()),
-                Resources.Reports.Growth.Column1, Resources.Reports.VPA.Column2, Wild.CompositionColumn.Quantity)
+                Survivors.ToArray().GetTable(
+                    CompositionColumn.Quantity,
+                    string.Format(Resources.Reports.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
+                    Resources.Reports.Growth.Column1, 
+                    Resources.Reports.VPA.Column2)
                 );
 
             report.AddParagraph(Resources.Reports.VPA.Paragraph5,
-                SpeciesRow.ToHTML(), report.NextTableNumber);
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             report.AddTable(
                 Survivors.ToArray().GetTable(
-                    string.Format(Resources.Reports.VPA.Table5, SpeciesRow.ToHTML()), Resources.Reports.Growth.Column1, Resources.Reports.VPA.Column2, Wild.CompositionColumn.Mass)
+                    CompositionColumn.Mass,
+                    string.Format(Resources.Reports.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
+                    Resources.Reports.Growth.Column1, 
+                    Resources.Reports.VPA.Column2)
                 );
         }
-
-        //public Report.Table GetVpaTable(Cohort coh)
-        //{
-        //    Report.Table table1 = new Report.Table(Resources.Reports.VPA.Table3, coh.Name, SpeciesRow.GetReportFullPresentation());
-
-        //    table1.StartRow();
-        //    table1.AddTableHeaderCell(Resources.Reports.Growth.Column1, .2);
-        //    table1.AddTableHeaderCell(Resources.Reports.VPA.Column2);
-        //    table1.AddTableHeaderCell(Resources.Reports.VPA.Column3);
-        //    table1.AddTableHeaderCell(Resources.Reports.VPA.Column4);
-        //    table1.AddTableHeaderCell(Resources.Reports.VPA.Column5);
-        //    table1.EndRow();
-
-        //    for (int i = 0; i < coh.Count; i++)
-        //    {
-        //        if (coh[i].Quantity == 0) continue;
-
-        //        table1.StartRow();
-        //        table1.AddCellValue(coh[i].Name);
-        //        table1.AddCellValue(coh.GetCatchYear(i));
-        //        table1.AddCellRight(coh[i].Quantity, "N0");
-        //        table1.AddCellRight(coh.F[i], ColumnVpaF.DefaultCellStyle.Format);
-        //        table1.AddCellRight(coh.Survivors[i].Quantity, "N0");
-        //        table1.EndRow();
-        //    }
-
-        //    return table1;
-        //}
 
 
 

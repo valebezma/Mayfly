@@ -84,7 +84,7 @@ namespace Mayfly.Wild
 
             table.AddHeader(new string[]{
                             Resources.Reports.Caption.Species,
-                            Resources.Reports.Caption.Quantity,
+                            Resources.Reports.Caption.QuantityUnit,
                             massCaption }, new double[] { .5 });
 
             for (int i = 1; i <= lines; i++)

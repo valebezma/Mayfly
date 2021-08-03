@@ -221,9 +221,9 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Report.Table GetAppendix(string appName, string separatesHeader, CompositionColumn valueVariant)
+        public Report.Table GetAppendix(CompositionColumn valueVariant, string appName, string separatesHeader)
         {
-            return SeparateCompositions.ToArray().GetTable(appName, this.Name, separatesHeader, valueVariant);
+            return SeparateCompositions.ToArray().GetTable(valueVariant, appName, this.Name, separatesHeader);
         }
 
 

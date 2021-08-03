@@ -39,8 +39,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             Age ga = Service.GetGamingAge(SpeciesRow.Species);
             if (ga != null) textBoxTr.Value = ga;
@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                     string.Format(Resources.Reports.MSYR.Title,
-                    SpeciesRow.ToHTML()));
+                    SpeciesRow.KeyRecord.FullNameReport));
 
             report.UseTableNumeration = true;
 
@@ -63,7 +63,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             {
                 report.AddSectionTitle(
                     string.Format(Resources.Reports.Growth.Title,
-                    SpeciesRow.ToHTML()));
+                    SpeciesRow.KeyRecord.FullNameReport));
                 growthWizard.AddGrowth(report);
                 growthWizard.AddMass(report);
             }

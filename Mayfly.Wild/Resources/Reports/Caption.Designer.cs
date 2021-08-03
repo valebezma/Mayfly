@@ -124,11 +124,20 @@ namespace Mayfly.Wild.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mass, g.
+        ///   Looks up a localized string similar to Mass.
         /// </summary>
         public static string Mass {
             get {
                 return ResourceManager.GetString("Mass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mass, g.
+        /// </summary>
+        public static string MassUnit {
+            get {
+                return ResourceManager.GetString("MassUnit", resourceCulture);
             }
         }
         
@@ -142,11 +151,20 @@ namespace Mayfly.Wild.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quantity, ind..
+        ///   Looks up a localized string similar to Quantity.
         /// </summary>
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity, ind..
+        /// </summary>
+        public static string QuantityUnit {
+            get {
+                return ResourceManager.GetString("QuantityUnit", resourceCulture);
             }
         }
         

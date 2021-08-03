@@ -124,7 +124,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sexual ratio.
+        ///   Looks up a localized string similar to Sex ratio.
         /// </summary>
         internal static string SexualRatio {
             get {

@@ -63,8 +63,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.GetFullName());
-            labelStart.ResetFormatted(SpeciesRow.GetFullName());
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
 
             pageStart.SetNavigation(false);
 
@@ -87,7 +87,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Mortality.Title,
-                    SpeciesRow.ToHTML()));
+                    SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -109,7 +109,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxAppT.Checked)
             {
-                ageCompositionWizard.AddCatchesRoutines(report);
+                ageCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "age", SpeciesRow.KeyRecord.FullNameReport));
             }
 
             report.EndBranded();
@@ -121,7 +121,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             report.AddParagraph(Resources.Reports.Mortality.Paragraph1, CatchCurve.Regression, 
                 (Age)CatchCurve.Left, (Age)CatchCurve.Right,
-                SpeciesRow.ToHTML());
+                SpeciesRow.KeyRecord.FullNameReport);
             report.AddEquation(CatchCurve.Regression.GetEquation("CPUE(%)", "t"));
 
             report.AddParagraph(Resources.Reports.Mortality.Paragraph2, Z);

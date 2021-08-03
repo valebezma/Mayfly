@@ -130,7 +130,7 @@ namespace Mayfly.Fish.Explorer
         //        A += a;
         //        M += m;
 
-        //        table1.AddCell(speciesRow.ToShortHTML());
+        //        table1.AddCell(speciesRow.KeyRecord.ShortName);
         //        table1.AddCellRight(q > 0 ? q.ToString() : Constants.Null);
         //        table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
         //        table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
@@ -178,7 +178,7 @@ namespace Mayfly.Fish.Explorer
             table1.StartRow();
             table1.AddHeaderCell(Fish.Resources.Reports.Card.Mesh, .05, 2, CellSpan.Rows);
             table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .2, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Quantity, 4);
+            table1.AddHeaderCell(Wild.Resources.Reports.Caption.QuantityUnit, 4);
             table1.AddHeaderCell(Resources.Reports.Common.MassUnits, 2, CellSpan.Rows);
             table1.EndRow();
 
@@ -222,7 +222,7 @@ namespace Mayfly.Fish.Explorer
                     A += a;
                     M += m;
 
-                    table1.AddCell(speciesRow.ToShortHTML());
+                    table1.AddCell(speciesRow.KeyRecord.ShortName);
                     table1.AddCellRight(q > 0 ? q.ToString() : Constants.Null);
                     table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
                     table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
@@ -275,7 +275,7 @@ namespace Mayfly.Fish.Explorer
                     A += a;
                     M += m;
 
-                    table1.AddCell(speciesRow.ToShortHTML());
+                    table1.AddCell(speciesRow.KeyRecord.ShortName);
                     table1.AddCellRight(q > 0 ? q.ToString() : Constants.Null);
                     table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
                     table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
@@ -320,7 +320,7 @@ namespace Mayfly.Fish.Explorer
                     bool justregistered = logRow.DetailedQuantity== 0;
 
                     report.AddParagraph(Resources.Reports.Section.SampleDetailed.Paragraph_2 + (justregistered ? " " + Resources.Reports.Section.SampleDetailed.Paragraph_2_1 : string.Empty),
-                        logRow.SpeciesRow.ToHTML(),
+                        logRow.SpeciesRow.KeyRecord.FullNameReport,
                         logRow.IsQuantityNull() ? Constants.Null : logRow.Quantity.ToString(),
                         logRow.IsMassNull() ? Constants.Null : logRow.Mass.ToString());
 
@@ -405,7 +405,7 @@ namespace Mayfly.Fish.Explorer
 
             string[] classes = stack.Classes(samplerType);
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Title.CpueSpc, speciesRow.ToHTML(), samplerType.ToDisplay());
+            Report.Table table1 = new Report.Table(Resources.Reports.Title.CpueSpc, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay());
 
             table1.StartRow();
             table1.AddHeaderCell(Fish.Resources.Reports.Card.Mesh, .25, 2);
@@ -520,7 +520,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.SpeciesRow speciesRow in speciesRows)
             {
                 // TODO: Skip if no samples?
-                Report.Table cribnote = Wild.Service.GetStratifiedNote(string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesRow.ToHTML()),
+                Report.Table cribnote = Wild.Service.GetStratifiedNote(string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesRow.KeyRecord.FullNameReport),
                     stack.LengthMin(speciesRow), stack.LengthMax(speciesRow), UserSettings.SizeInterval, (l) =>
                     {
                         Interval strate = Interval.FromEndpointAndWidth(l, UserSettings.SizeInterval);
@@ -581,7 +581,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
             {
-                report.AddChapterTitle(speciesRow.ToHTML());
+                report.AddChapterTitle(speciesRow.KeyRecord.FullNameReport);
                 stack.AddSpeciesStatsReport(report, speciesRow, level);
             }
 
@@ -595,7 +595,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddSectionTitle(Resources.Reports.SpeciesStats.Header1);
 
                 report.AddParagraph(Resources.Reports.SpeciesStats.Paragraph1,
-                    speciesRow.ToHTML(),
+                    speciesRow.KeyRecord.FullNameReport,
                     stack.Quantity(speciesRow),
                     stack.QuantitySampled(speciesRow),
                     stack.Measured(speciesRow) + stack.QuantityStratified(speciesRow),
@@ -630,7 +630,7 @@ namespace Mayfly.Fish.Explorer
                         cardRow,
                         cardRow.GetEffort(),
                         cardRow.GetGearType().GetDefaultUnitEffort().Unit,
-                        speciesRow.ToHTML(),
+                        speciesRow.KeyRecord.FullNameReport,
                         logRow.IsQuantityNull() ? Constants.Null : logRow.Quantity.ToString(),
                         logRow.IsMassNull() ? Constants.Null : logRow.Mass.ToString());
 
@@ -681,7 +681,7 @@ namespace Mayfly.Fish.Explorer
                 if (crib == null) continue;
 
                 //report.BreakPage(PageBreakOption.Odd);
-                report.AddSectionTitle(speciesRow.ToHTML());
+                report.AddSectionTitle(speciesRow.KeyRecord.FullNameReport);
                 report.AddCribnote(crib);
             }
 

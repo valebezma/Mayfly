@@ -79,16 +79,6 @@ namespace Mayfly.Benthos
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="spcRow"></param>
-        /// <returns>Index record for corresponding species</returns>
-        public static SpeciesKey.SpeciesRow GetKeyRecord(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetKeyRecord(Benthos.UserSettings.SpeciesIndex);
-        }
-
         public static double GetAverageMass(this Data.SpeciesRow spcRow)
         {
             double result = 0;
@@ -109,23 +99,6 @@ namespace Mayfly.Benthos
             {
                 return double.NaN;
             }
-        }
-
-
-
-        public static string GetFullName(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetFullName(UserSettings.SpeciesIndex);
-        }
-
-        public static string GetReportFullPresentation(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetFullNameReport(UserSettings.SpeciesIndex);
-        }
-
-        public static string GetReportShortPresentation(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetScientificNameReport(UserSettings.SpeciesIndex);
         }
 
 

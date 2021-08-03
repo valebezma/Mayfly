@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="App3" xml:space="preserve">
-    <value>CPUE (by number) of {0} categories in {1} catches of different gear class, ind./{2}</value>
+  <data name="TableCPUE" xml:space="preserve">
+    <value>CPUE of {0} in catches of different gear class</value>
   </data>
-  <data name="App4" xml:space="preserve">
-    <value>CPUE (by mass) of {0} categories in {1} catches of different gear class, kg/{2}</value>
+  <data name="TableFraction" xml:space="preserve">
+    <value>{0} composition in catches of different gear class</value>
   </data>
   <data name="AppendixHeader1" xml:space="preserve">
-    <value>Appendices. Source data for calculation averaged {0} composition of {1} catches.</value>
+    <value>Source data for calculation averaged {0} composition of {1} catches</value>
   </data>
-  <data name="App2" xml:space="preserve">
-    <value>Masses of {0} categories in {1} catches of different gear class, kg</value>
-  </data>
-  <data name="App1" xml:space="preserve">
-    <value>Quantities of {0} categories in {1} catches of different gear class, ind.</value>
+  <data name="TableSampleSize" xml:space="preserve">
+    <value>Quantities and masses of {0} in catches of different gear class</value>
   </data>
   <data name="AppendixHeader2" xml:space="preserve">
-    <value>Appendices. Age-length keys for calculation of age compositions of {0} catches</value>
+    <value>Age-length keys for calculation of age compositions of {0} catches</value>
   </data>
   <data name="Notice2" xml:space="preserve">
-    <value>* – Age category quantity recovered by length-age key.</value>
+    <value>age category quantity recovered by length-age key</value>
   </data>
   <data name="Notice3" xml:space="preserve">
-    <value>* – composition was distributed on whole sample.</value>
+    <value>composition was distributed on whole sample</value>
   </data>
   <data name="TablePopulation" xml:space="preserve">
     <value>Population {0} composition</value>
+  </data>
+  <data name="TableHeaderTail" xml:space="preserve">
+    <value>of {0} categories in {1} catches</value>
   </data>
 </root>

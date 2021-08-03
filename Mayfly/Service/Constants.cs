@@ -56,9 +56,6 @@ namespace Mayfly
         public static string TotalOrMean
         { get { return string.Format("{0} / {1}", Resources.Interface.Total, Resources.Interface.Mean); } }
 
-        public static string NoticeHolder
-        { get { return "<*>"; } }
-
         public static Color InfantColor
         {
             get
