@@ -110,8 +110,8 @@ namespace Mayfly.Species.Systematics
 
                     foreach (SpeciesKey.TaxaRow taxaRow in taxaRows)
                     {
-                        ListViewGroup taxonGroup = new ListViewGroup(taxaRow.Taxon);
-                        taxonGroup.Name = taxaRow.Taxon;
+                        ListViewGroup taxonGroup = new ListViewGroup(taxaRow.TaxonName);
+                        taxonGroup.Name = taxaRow.TaxonName;
                         taxonGroup.HeaderAlignment = HorizontalAlignment.Center;
                         listViewRepresence.Groups.Add(taxonGroup);
                     }

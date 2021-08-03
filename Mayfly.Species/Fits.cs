@@ -39,12 +39,13 @@ namespace Mayfly.Species
             foreach (SpeciesKey.StateRow stateRow in
                 Panel.CurrentStep.ForestandingSpeciesStates)
             {
-                ListViewItem item = new ListViewItem();
-                item.Tag = stateRow;
-                item.Name = stateRow.ID.ToString();
+                ListViewItem item = new ListViewItem
+                {
+                    Tag = stateRow,
+                    Name = stateRow.ID.ToString(),
+                    Text = stateRow.SpeciesRow.Name
+                };
 
-                item.Text = stateRow.SpeciesRow.Species;
-                
                 if (stateRow.SpeciesRow.GetStateRows().Length > 1)
                 {
                     item.SubItems.Add(string.Format("{0}: {1}...", 

@@ -12,6 +12,14 @@ namespace Mayfly.Species
     {
         partial class TaxaRow : IComparable<TaxaRow>
         {
+            public string TaxonName
+            {
+                get
+                {
+                    return IsLocalNull() ? Name : Mayfly.Service.GetLocalizedValue(Local);
+                }
+            }
+
             public SpeciesRow[] GetSpecies()
             {
                 List<SpeciesRow> result = new List<SpeciesRow>();
@@ -24,7 +32,7 @@ namespace Mayfly.Species
                 return result.ToArray();
             }
 
-            public string FullName => string.Format("{0} {1}", this.BaseRow.Base, this.Taxon);
+            public string FullName => string.Format("{0} {1}", this.BaseRow.BaseName, TaxonName);
 
             public bool Includes(string species)
             {
@@ -35,7 +43,7 @@ namespace Mayfly.Species
                 //{
                 foreach (RepRow repRow in this.GetRepRows())
                 {
-                    if (repRow.SpeciesRow.Species == species)
+                    if (repRow.SpeciesRow.Name == species)
                         return true;
 
                     //if (suggest && Genus(repRow.SpeciesRow.Species) == Genus(species))
@@ -47,14 +55,8 @@ namespace Mayfly.Species
 
             public int CompareTo(TaxaRow other)
             {
-                if (!this.IsTaxonNull() && !other.IsTaxonNull())
-                {
-                    return this.Taxon.CompareTo(other.Taxon);
-                }
-                else
-                {
-                    return 0;
-                }
+                int n = this.Name.CompareTo(other.Name);
+                return this.IsIndexNull() ? n : (other.IsIndexNull() ? n : Index.CompareTo(other.Index));
             }
         }
 
@@ -69,13 +71,10 @@ namespace Mayfly.Species
                 {
                     foreach (SpeciesRow speciesRow in Rows)
                     {
-                        if (!speciesRow.IsSpeciesNull())
-                        {
-                            if (speciesRow.Species.Contains(spcName))
+                            if (speciesRow.Name.Contains(spcName))
                             {
                                 result.Add(speciesRow);
                             }
-                        }
                     }
                 }
                 return result.ToArray();
@@ -120,11 +119,8 @@ namespace Mayfly.Species
                     List<string> result = new List<string>();
                     foreach (SpeciesRow speciesRow in Rows)
                     {
-                        if (!speciesRow.IsSpeciesNull())
-                        {
-                            string genus = speciesRow.Species.Split(' ')[0];
+                            string genus = speciesRow.Name.Split(' ')[0];
                             if (!result.Contains(genus)) result.Add(genus);
-                        }
                     }
                     return result.ToArray();
                 }
@@ -134,12 +130,7 @@ namespace Mayfly.Species
             {
                 foreach (SpeciesRow speciesRow in Rows)
                 {
-                    if (speciesRow.IsSpeciesNull())
-                    {
-                        continue;
-                    }
-
-                    if (speciesRow.Species == value)
+                    if (speciesRow.Name == value)
                     {
                         return speciesRow;
                     }
@@ -155,8 +146,16 @@ namespace Mayfly.Species
 
         }
 
-        partial class BaseRow
+        partial class BaseRow : IComparable<BaseRow>
         {
+            public string BaseName
+            {
+                get
+                {
+                    return IsLocalNull() ? Name : Mayfly.Service.GetLocalizedValue(Local);
+                }
+            }
+
             public SpeciesRow[] Varia
             {
                 get
@@ -171,6 +170,13 @@ namespace Mayfly.Species
                     return result.ToArray();
                 }
             }
+
+            public int CompareTo(BaseRow other)
+            {
+                int n = this.Name.CompareTo(other.Name);
+                return this.IsIndexNull() ? n : (other.IsIndexNull() ? n : Index.CompareTo(other.Index));
+            }
+
         }
 
         partial class StepRow
@@ -427,10 +433,11 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    List<string> result = new List<string>();
-
-                    result.Add(this.FullName);
-                    result.Add(string.Empty);
+                    List<string> result = new List<string>
+                    {
+                        this.FullName,
+                        string.Empty
+                    };
 
                     foreach (RepRow repRow in this.GetRepRows())
                     {
@@ -458,7 +465,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return Local;
+                    return IsLocalNull() ? string.Empty : Mayfly.Service.GetLocalizedValue(Local);
                 }
             }
 
@@ -466,7 +473,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return Species;
+                    return Name;
                 }
             }
 
@@ -490,24 +497,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    string result = string.Empty;
-
-                    if (!this.IsLocalNull())
-                    {
-                        result += this.Local;
-                    }
-
-                    if (!this.IsSpeciesNull())
-                    {
-                        result += " " + this.Species;
-                    }
-
-                    if (!this.IsReferenceNull())
-                    {
-                        result += " " + this.Reference;
-                    }
-
-                    return result.Trim();
+                    return string.Format("{0} {1} {2}", ShortName, ScientificName, IsReferenceNull() ? string.Empty : Reference).Trim();
                 }
             }
 
@@ -515,16 +505,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    string result = Local;
-
-                    result += " " + ScientificNameReport;
-
-                    if (!this.IsReferenceNull())
-                    {
-                        result += " " + this.Reference;
-                    }
-
-                    return result.Trim();
+                    return string.Format("{0} {1} {2}", ShortName, ScientificNameReport, IsReferenceNull() ? string.Empty : Reference).Trim();
                 }
             }
 
@@ -534,7 +515,7 @@ namespace Mayfly.Species
             {
                 foreach (TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    if (taxaRow.Includes(this.Species))
+                    if (taxaRow.Includes(this.Name))
                     {
                         return taxaRow;
                     }
@@ -652,7 +633,7 @@ namespace Mayfly.Species
 
                     if (!this.IsTaxIDNull())
                     {
-                        result += this.TaxaRow.Taxon + ": ";
+                        result += this.TaxaRow.TaxonName + ": ";
                     }
 
                     if (this.IsGotoNull())
@@ -663,7 +644,7 @@ namespace Mayfly.Species
                         }
                         else
                         {
-                            result += this.SpeciesRow.Species + " ";
+                            result += this.SpeciesRow.Name + " ";
                         }
                     }
                     else
@@ -711,12 +692,33 @@ namespace Mayfly.Species
 
         public void Read(string fileName)
         {
-            try { ReadXml(fileName); }
+            try
+            {
+                //foreach (System.Data.DataTable dt in this.Tables)
+                //{
+                //    foreach (System.Data.DataColumn dc in dt.Columns)
+                //    {
+                //        if (dc.ColumnName == "Local") continue;
+                //        dc.ColumnMapping = System.Data.MappingType.Attribute;
+                //    }
+                //}
+
+                ReadXml(fileName);
+            }
             catch { Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", fileName); }
         }
 
         public void SaveToFile(string fileName)
         {
+            foreach (System.Data.DataTable dt in this.Tables)
+            {
+                foreach (System.Data.DataColumn dc in dt.Columns)
+                {
+                    if (dc.ColumnName == "Local") continue;
+                    dc.ColumnMapping = System.Data.MappingType.Attribute;
+                }
+            }
+
             File.WriteAllText(fileName, GetXml());
         }
 
@@ -735,14 +737,14 @@ namespace Mayfly.Species
 
             foreach (SpeciesRow speciesRow in Species)
             {
-                if (speciesRow.Species.EndsWith("sp.")) continue;
+                if (speciesRow.Name.EndsWith("sp.")) continue;
 
-                SpeciesRow destRow = key.Species.FindBySpecies(speciesRow.Species);
+                SpeciesRow destRow = key.Species.FindBySpecies(speciesRow.Name);
 
                 if (destRow == null)
                 {
                     destRow = key.Species.NewSpeciesRow();
-                    destRow.Species = speciesRow.Species;
+                    destRow.Name = speciesRow.Name;
                     if (!speciesRow.IsDescriptionNull()) destRow.Description = speciesRow.Description;
                     if (!speciesRow.IsReferenceNull()) destRow.Reference = speciesRow.Reference;
                     if (!speciesRow.IsLocalNull()) destRow.Local = speciesRow.Local;
@@ -796,17 +798,13 @@ namespace Mayfly.Species
 
         public SpeciesRow[] CloseRelatives(SpeciesRow speciesRow)
         {
-            if (speciesRow.IsSpeciesNull()) return null;
-
             List<SpeciesRow> result = new List<SpeciesRow>();
 
-            string genus = Genus(speciesRow.Species);
+            string genus = Genus(speciesRow.Name);
 
             foreach (SpeciesRow currentSpeciesRow in Species.Rows)
             {
-                if (currentSpeciesRow.IsSpeciesNull()) continue;
-
-                if (Genus(currentSpeciesRow.Species) == genus &&
+                if (Genus(currentSpeciesRow.Name) == genus &&
                     !result.Contains(currentSpeciesRow))
                 {
                     result.Add(currentSpeciesRow);
@@ -874,7 +872,7 @@ namespace Mayfly.Species
         {
             report.AddHeader(Resources.Interface.SpeciesListCaption);
 
-            //this.Base.Columns["Name"].GetStrings(true);
+            //this.BaseName.Columns["Name"].GetStrings(true);
 
             Report.Table table1 = new Report.Table();
 
@@ -883,7 +881,7 @@ namespace Mayfly.Species
             table1.AddHeaderCell("Species");
             for (int i = 0; i < this.Base.Count; i++)
             {
-                table1.AddHeaderCell(this.Base[i].Base);
+                table1.AddHeaderCell(this.Base[i].BaseName);
             }
             table1.EndHeader();
 
@@ -900,8 +898,8 @@ namespace Mayfly.Species
                 //foreach (RepRow repRow in speciesRow.GetRepRows())
                 //{
                 //    reps += string.Format("{0} {1}<br>",
-                //        repRow.TaxaRow.BaseRow.Base,
-                //        repRow.TaxaRow.Taxon);
+                //        repRow.TaxaRow.BaseRow.BaseName,
+                //        repRow.TaxaRow.TaxonName);
                 //}
                 //report.AddParagraphClass("description", reps);
 
@@ -916,7 +914,7 @@ namespace Mayfly.Species
                 for (int i = 0; i < this.Base.Count; i++)
                 {
                     SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(this.Base[i]);
-                    table1.AddCell(taxaRow == null ? "" : taxaRow.Taxon);
+                    table1.AddCell(taxaRow == null ? "" : taxaRow.TaxonName);
                 }
 
 

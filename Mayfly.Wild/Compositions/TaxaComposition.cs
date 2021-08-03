@@ -16,14 +16,12 @@ namespace Mayfly.Wild
         { }
 
         public TaxaComposition(SpeciesComposition speciesComposition, SpeciesKey.BaseRow baseRow, bool includeEmpty)
-            : base(baseRow.Base)
+            : base(baseRow.BaseName)
         {
 
             foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
             {
                 SpeciesSwarmPool taxaCategory = new SpeciesSwarmPool(taxaRow);
-
-                SpeciesKey.SpeciesRow[] reps = taxaRow.GetSpecies();
                 List<SpeciesSwarm> swarms = new List<SpeciesSwarm>();
 
                 List<double> abundances = new List<double>();
@@ -120,7 +118,7 @@ namespace Mayfly.Wild
             Name = name;
         }
 
-        public SpeciesSwarmPool(SpeciesKey.TaxaRow dataRow) : this(dataRow.Taxon)
+        public SpeciesSwarmPool(SpeciesKey.TaxaRow dataRow) : this(dataRow.TaxonName)
         {
             DataRow = dataRow;
         }

@@ -21,7 +21,7 @@ namespace Mayfly.Species.Systematics
 
             SpeciesRow = speciesRow;
 
-            if (!SpeciesRow.IsSpeciesNull()) textBoxScientific.Text = SpeciesRow.Species;
+            textBoxScientific.Text = SpeciesRow.Name;
             if (!SpeciesRow.IsLocalNull()) textBoxLocal.Text = SpeciesRow.Local;
             if (!SpeciesRow.IsReferenceNull()) textBoxReference.Text = SpeciesRow.Reference;
 
@@ -32,7 +32,7 @@ namespace Mayfly.Species.Systematics
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            SpeciesRow.Species = textBoxScientific.Text;
+            SpeciesRow.Name = textBoxScientific.Text;
 
             if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetLocalNull();
             else SpeciesRow.Local = textBoxLocal.Text;

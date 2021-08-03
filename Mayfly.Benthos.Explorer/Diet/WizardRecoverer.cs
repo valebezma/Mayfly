@@ -845,8 +845,10 @@ namespace Mayfly.Benthos.Explorer
             {
                 if (gridCell.OwningColumn == columnAsscAssociate)
                 {
-                    if (spreadSheetAssociation.CurrentCell.Tag is Data.SpeciesRow[])
-                        tagged.AddRange((Data.SpeciesRow[])spreadSheetAssociation.CurrentCell.Tag);
+                    if (spreadSheetAssociation.CurrentCell.Tag is Data.SpeciesRow[] v)
+                    {
+                        tagged.AddRange(v);
+                    }
                 }
             }
             taxaSelector.SelectedSpecies = tagged.ToArray();

@@ -57,9 +57,9 @@ namespace Mayfly.Fish.Explorer.Observations
                 double result = 0;
                 foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
                 {
-                    if (gridRow.Cells[ColumnMass.Name].Value is double)
+                    if (gridRow.Cells[ColumnMass.Name].Value is double @double)
                     {
-                        result += (double)gridRow.Cells[ColumnMass.Name].Value;
+                        result += @double;
                     }
                 }
                 return result;
@@ -73,9 +73,9 @@ namespace Mayfly.Fish.Explorer.Observations
                 double result = 0;
                 foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
                 {
-                    if (gridRow.Cells[ColumnQuantity.Name].Value is int)
+                    if (gridRow.Cells[ColumnQuantity.Name].Value is int @int)
                     {
-                        result += (int)gridRow.Cells[ColumnQuantity.Name].Value;
+                        result += @int;
                     }
                 }
                 return result;
@@ -187,10 +187,10 @@ namespace Mayfly.Fish.Explorer.Observations
             else
             {
                 // There is such species in reference you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -236,7 +236,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
         private Data.LogRow GetLogRow(Data data, DataGridViewRow gridRow)
         {
-            Data.LogRow result = null;
+            Data.LogRow result;
 
             if (gridRow.Cells[ColumnID.Index].Value == null ||
                 data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value) == null)
@@ -637,9 +637,9 @@ namespace Mayfly.Fish.Explorer.Observations
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

@@ -137,7 +137,6 @@ namespace Mayfly.Wild
 
             foreach (Data.LogRow logRow in this.GetLogRows())
             {
-                if (logRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!result.Contains(logRow.SpeciesRow.Species))
                 {
                     result.Add(logRow.SpeciesRow.Species);
@@ -455,7 +454,7 @@ namespace Mayfly.Wild
                 {
                     foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
                     {
-                        if (speciesRow.Species == logRow.SpeciesRow.Species)
+                        if (speciesRow.Name == logRow.SpeciesRow.Species)
                         {
                             result++;
                             goto Next;

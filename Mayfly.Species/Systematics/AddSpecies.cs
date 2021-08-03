@@ -32,7 +32,7 @@ namespace Mayfly.Species
 
             SpeciesRow = speciesRow;
 
-            if (!SpeciesRow.IsSpeciesNull()) textBoxScientific.Text = SpeciesRow.Species;
+            textBoxScientific.Text = SpeciesRow.Name;
             if (!SpeciesRow.IsLocalNull()) textBoxLocal.Text = SpeciesRow.Local;
             if (!SpeciesRow.IsReferenceNull()) textBoxReference.Text = SpeciesRow.Reference;
             if (!SpeciesRow.IsDescriptionNull()) textBoxDescription.Text = SpeciesRow.Description;
@@ -58,7 +58,7 @@ namespace Mayfly.Species
                 baseButton.AutoSize = true;
                 baseButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
                 baseButton.Name = baseRow.ID.ToString();
-                baseButton.Text = string.Format(Resources.Interface.TaxaSelect, baseRow.Base);
+                baseButton.Text = string.Format(Resources.Interface.TaxaSelect, baseRow.BaseName);
                 baseButton.FlatStyle = FlatStyle.System;
 
                 ContextMenuStrip baseMenu = new ContextMenuStrip();
@@ -83,7 +83,7 @@ namespace Mayfly.Species
                             ((ToolStripMenuItem)baseMenu.Items[i]).Checked = false;
                         }
 
-                        baseButton.Text = string.Format(Resources.Interface.TaxaSelect, baseRow.Base);
+                        baseButton.Text = string.Format(Resources.Interface.TaxaSelect, baseRow.BaseName);
                     }
                 });
                 baseMenu.Items.Add(otheritem);
@@ -97,7 +97,7 @@ namespace Mayfly.Species
 
                 foreach (SpeciesKey.TaxaRow taxaRow in taxaRows)
                 {
-                    ToolStripMenuItem item = new ToolStripMenuItem(taxaRow.Taxon);
+                    ToolStripMenuItem item = new ToolStripMenuItem(taxaRow.TaxonName);
                     item.CheckOnClick = true;
                     item.CheckedChanged += ((o, e) =>
                     {
@@ -119,13 +119,13 @@ namespace Mayfly.Species
                                 ((ToolStripMenuItem)baseMenu.Items[i]).Checked = false;
                             }
 
-                            baseButton.Text = string.Format("{0} {1}", baseRow.Base, taxaRow.Taxon);
+                            baseButton.Text = string.Format("{0} {1}", baseRow.BaseName, taxaRow.TaxonName);
                         }
                     });
                     item.Name = taxaRow.ID.ToString();
                     baseMenu.Items.Add(item);
 
-                    if (!SpeciesRow.IsSpeciesNull()) item.Checked = taxaRow.Includes(SpeciesRow.Species);
+                    item.Checked = taxaRow.Includes(SpeciesRow.Name);
                 }
 
                 baseButton.Click += ((o, e) =>
@@ -143,7 +143,7 @@ namespace Mayfly.Species
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            SpeciesRow.Species = textBoxScientific.Text;
+            SpeciesRow.Name = textBoxScientific.Text;
 
             if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetLocalNull();
             else SpeciesRow.Local = textBoxLocal.Text;

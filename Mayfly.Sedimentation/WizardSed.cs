@@ -1258,7 +1258,7 @@ namespace Mayfly.Sedimentation
 
         private void calcGgiModel_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            int i = e.ProgressPercentage;
+            //int i = e.ProgressPercentage;
         }
 
         private void calcGgiModel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

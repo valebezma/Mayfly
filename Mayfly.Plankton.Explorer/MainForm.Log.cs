@@ -148,7 +148,7 @@ namespace Mayfly.Plankton.Explorer
             A = Math.Round(A / data.Card.Count, 3);
             B = Math.Round(B / data.Card.Count, 3);
 
-            result.Cells[columnSpcSpc.Index].Value = taxaRow.Taxon;
+            result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
             if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
             if (A > 0) result.Cells[columnSpcAbundance.Index].Value = A;
             if (B > 0) result.Cells[columnSpcBiomass.Index].Value = B;
@@ -242,7 +242,7 @@ namespace Mayfly.Plankton.Explorer
 
             SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-            result.Cells[columnLogSpc.Index].Value = taxaRow.Taxon;
+            result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
 
             result.Cells[columnLogAbundance.Index].Value = A;
             result.Cells[columnLogBiomass.Index].Value = B;

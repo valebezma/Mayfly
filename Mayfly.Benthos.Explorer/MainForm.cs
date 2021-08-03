@@ -216,7 +216,7 @@ namespace Mayfly.Benthos.Explorer
                                 cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerRow().Sampler;
                             }
 
-                            Data.CardRow[] cardRows = _data.CopyTo(data);
+                            //Data.CardRow[] cardRows = _data.CopyTo(data);
                         }
                     }
                 }
@@ -567,11 +567,15 @@ namespace Mayfly.Benthos.Explorer
 
                     foreach (Artefact artefact in (Artefact[])e.Result)
                     {
-                        if (artefact is CardArtefact)
-                            cardArtefacts.Add((CardArtefact)artefact);
+                        if (artefact is CardArtefact artefact1)
+                        {
+                            cardArtefacts.Add(artefact1);
+                        }
 
-                        if (artefact is SpeciesArtefact)
-                            spcArtefacts.Add((SpeciesArtefact)artefact);
+                        if (artefact is SpeciesArtefact artefact2)
+                        {
+                            spcArtefacts.Add(artefact2);
+                        }
                     }
 
                     tabPageArtefacts.Parent = tabControl;
@@ -870,9 +874,9 @@ namespace Mayfly.Benthos.Explorer
             if (e.ColumnIndex == -1) return;
             if (e.RowIndex == -1) return;
 
-            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age)
+            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age age)
             {
-                if (((Age)spreadSheetInd[e.ColumnIndex, e.RowIndex].Value).Gain)
+                if (age.Gain)
                 {
                     spreadSheetInd[e.ColumnIndex, e.RowIndex].Style.Padding = new Padding(0, 0, 2, 0);
                 }
@@ -1149,10 +1153,10 @@ namespace Mayfly.Benthos.Explorer
                 gridRow.Cells[columnSpcOccurrence.Index].Value = composition[i].Occurrence;
                 gridRow.Cells[columnSpcDominance.Index].Value = composition[i].Dominance;
 
-                if (composition is TaxaComposition)
+                if (composition is TaxaComposition composition1)
                 {
-                    gridRow.Cells[columnSpcDiversityA.Index].Value = ((TaxaComposition)composition)[i].DiversityA;
-                    gridRow.Cells[columnSpcDiversityB.Index].Value = ((TaxaComposition)composition)[i].DiversityB;
+                    gridRow.Cells[columnSpcDiversityA.Index].Value = composition1[i].DiversityA;
+                    gridRow.Cells[columnSpcDiversityB.Index].Value = composition1[i].DiversityB;
                 }
 
                 result.Add(gridRow);
@@ -1204,7 +1208,7 @@ namespace Mayfly.Benthos.Explorer
                 foreach (Data.SpeciesRow speciesRow in data.Species)
                 {
                     Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
-                    newSpeciesRow.Species = speciesRow.Species;
+                    newSpeciesRow.Name = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }
 

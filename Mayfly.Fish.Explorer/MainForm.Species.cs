@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
             {
                 comboBoxSpcTaxa.Items.Add(baseRow);
 
-                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.Base);
+                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
                 item.Click += BaseItem_Click;
                 item.Tag = baseRow;
                 menuItemSpcTaxa.DropDownItems.Add(item);
@@ -80,7 +80,7 @@ namespace Mayfly.Fish.Explorer
             //Q /= Data.GetStack().Card.Count;
             //W /= Data.GetStack().Card.Count;
 
-            result.Cells[columnSpcSpc.Index].Value = taxaRow.Taxon;
+            result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
             if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
             if (W > 0) result.Cells[columnSpcMass.Index].Value = W;
 

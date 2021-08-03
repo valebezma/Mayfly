@@ -22,7 +22,7 @@ namespace Mayfly.Species
         {
             set
             {
-                this.ResetText(value == null ? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
+                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 fileName = value;
             }
 
@@ -281,16 +281,20 @@ namespace Mayfly.Species
         {
             foreach (SpeciesKey.BaseRow baseRow in Data.Base.Rows)
             {
-                TreeNode baseNode = new TreeNode();
-                baseNode.Tag = baseRow;
-                baseNode.Text = baseRow.Base;
+                TreeNode baseNode = new TreeNode
+                {
+                    Tag = baseRow,
+                    Text = baseRow.BaseName
+                };
                 treeViewTaxa.Nodes.Add(baseNode);
 
                 foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    TreeNode taxaNode = new TreeNode();
-                    taxaNode.Tag = taxaRow;
-                    taxaNode.Text = taxaRow.Taxon;
+                    TreeNode taxaNode = new TreeNode
+                    {
+                        Tag = taxaRow,
+                        Text = taxaRow.TaxonName
+                    };
                     baseNode.Nodes.Add(taxaNode);
                 }                
             }
@@ -328,7 +332,7 @@ namespace Mayfly.Species
                     }
                     else
                     {
-                        item.Group = listViewRepresence.CreateGroup(taxaRow.Taxon);
+                        item.Group = listViewRepresence.CreateGroup(taxaRow.TaxonName);
                         item.Group.Tag = taxaRow;
                     }
                 }
@@ -418,8 +422,8 @@ namespace Mayfly.Species
             ToolStripItem result = new ToolStripMenuItem();
             result.Name = stateRow.ID.ToString();
             result.Text = stateRow.TaxaRow.GetStateRows().Length == 1 ?
-                stateRow.TaxaRow.Taxon :
-                string.Format("{0} ({1}: {2}...)", stateRow.TaxaRow.Taxon, stateRow.FeatureRow.Title,
+                stateRow.TaxaRow.TaxonName :
+                string.Format("{0} ({1}: {2}...)", stateRow.TaxaRow.TaxonName, stateRow.FeatureRow.Title,
                     stateRow.Description.Substring(0, Math.Min(15, stateRow.Description.Length)));
             result.Click += eventHandler;
             return result;
@@ -456,8 +460,8 @@ namespace Mayfly.Species
             result.Name = stateRow.ID.ToString();
 
             result.Text = stateRow.SpeciesRow.GetStateRows().Length == 1 ?
-                stateRow.SpeciesRow.Species :
-                string.Format("{0} ({1}: {2}...)", stateRow.SpeciesRow.Species, stateRow.FeatureRow.Title,
+                stateRow.SpeciesRow.Name :
+                string.Format("{0} ({1}: {2}...)", stateRow.SpeciesRow.Name, stateRow.FeatureRow.Title,
                 stateRow.Description.Substring(0, Math.Min(15, stateRow.Description.Length)));
 
             result.Click += eventHandler;
@@ -521,7 +525,7 @@ namespace Mayfly.Species
         {
             foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
             {
-                ListViewItem item = listViewFits.CreateItem(speciesRow);
+                listViewFits.CreateItem(speciesRow);
             }
 
             labelFitCount.UpdateStatus(listViewFits.Items.Count);

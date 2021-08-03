@@ -22,8 +22,8 @@ namespace Mayfly.Benthos.Explorer
         {
             SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
 
-            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.Base,
-                baseRow.Base, typeof(string), 0);
+            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
+                baseRow.BaseName, typeof(string), 0);
 
             foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
             {
@@ -43,7 +43,7 @@ namespace Mayfly.Benthos.Explorer
                 SpeciesKey.TaxaRow taxaRow = SpeciesIndex.GetTaxon(species, baseRow);
 
                 gridRow.Cells[gridColumn.Index].Value = (taxaRow == null) ?
-                    Species.Resources.Interface.Varia : taxaRow.Taxon;
+                    Species.Resources.Interface.Varia : taxaRow.TaxonName;
             }
         }
 

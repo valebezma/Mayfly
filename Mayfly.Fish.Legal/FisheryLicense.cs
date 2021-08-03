@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Legal
         {
             set
             {
-                this.ResetText(value == null ? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
+                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 fileName = value;
             }
 

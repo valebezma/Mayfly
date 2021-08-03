@@ -157,9 +157,9 @@ namespace Mayfly.Fish.Explorer.Fishery
                 {
                     Composition comp = CatchesComposition.GetComposition(i);
 
-                    if (comp is LengthComposition)
+                    if (comp is LengthComposition composition)
                     {
-                        _catches.Add((LengthComposition)comp);
+                        _catches.Add(composition);
                         _meshes.Add(gearWizard.SelectedStacks[i][0].Mesh);
                     }
                 }

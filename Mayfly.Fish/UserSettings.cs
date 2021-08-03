@@ -72,6 +72,18 @@ namespace Mayfly.Fish
                 if (samplersIndex == null)
                 {
                     samplersIndex = new Samplers();
+
+                    foreach (System.Data.DataTable dt in samplersIndex.Tables)
+                    {
+                        foreach (System.Data.DataColumn dc in dt.Columns)
+                        {
+                            if (dc.ColumnName == "Display") continue;
+                            if (dc.ColumnName == "Name") continue;
+
+                            dc.ColumnMapping = System.Data.MappingType.Attribute;
+                        }
+                    }
+
                     samplersIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\samplerfish.ini"));
                 }
                 return samplersIndex;

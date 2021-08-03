@@ -120,7 +120,7 @@ namespace Mayfly.Wild
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = taxaRow;
-                _item.Text = taxaRow.Taxon;
+                _item.Text = taxaRow.TaxonName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }
@@ -147,7 +147,7 @@ namespace Mayfly.Wild
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = baseRow;
-                _item.Text = baseRow.Base;
+                _item.Text = baseRow.BaseName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }

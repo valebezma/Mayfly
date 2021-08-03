@@ -27,8 +27,7 @@ namespace Mayfly.Fish
 
                 speciesRow.Species = dataSpcRow.Species;
 
-                SpeciesKey.SpeciesRow equivalentRow = Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    dataSpcRow.Species);
+                SpeciesKey.SpeciesRow equivalentRow = dataSpcRow.KeyRecord;
 
                 if (equivalentRow != null)
                 {

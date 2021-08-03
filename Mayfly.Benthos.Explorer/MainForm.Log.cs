@@ -111,7 +111,7 @@ namespace Mayfly.Benthos.Explorer
         //    //A = Math.Round(A / data.Card.Count, 3);
         //    //B = Math.Round(B / data.Card.Count, 3);
 
-        //    result.Cells[columnSpcSpc.Index].Value = taxaRow.Taxon;
+        //    result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
 
         //    if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
         //    if (Q > 0) result.Cells[columnSpcMass.Index].Value = M;
@@ -220,7 +220,7 @@ namespace Mayfly.Benthos.Explorer
 
             SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-            result.Cells[columnLogSpc.Index].Value = taxaRow.Taxon;
+            result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
 
             result.Cells[columnLogQuantity.Index].Value = (int)q;
             result.Cells[columnLogMass.Index].Value = w;

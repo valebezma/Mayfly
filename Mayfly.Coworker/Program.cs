@@ -17,7 +17,7 @@ namespace Mayfly.ManualLicenser
 {
     class Program
     {
-        static void Main(string[] args)
+        static void main()
         {
         //Console.WriteLine("Continue to grant license to {0}.", UserSettings.Username);
         Enter:
@@ -913,7 +913,7 @@ namespace Mayfly.ManualLicenser
 
                         foreach (ExcelWorksheet sheet in package.Workbook.Worksheets)
                         {
-                            Data data = ConvertPlankton(sheet, destination, lomo);
+                            Data data = convertPlankton(sheet, destination, lomo);
 
                             if (data != null && data.Solitary.Quantity > 0)
                             {
@@ -946,8 +946,13 @@ namespace Mayfly.ManualLicenser
             goto Start;
         }
 
-        static Wild.Data ConvertPlankton(ExcelWorksheet sheet, string destination, bool lomo)
+        static Data convertPlankton(ExcelWorksheet sheet, string destination, bool lomo)
         {
+            if (destination is null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
             bool present = false;
 
             for (int row = 1; row < 320; row++)
@@ -1125,9 +1130,8 @@ namespace Mayfly.ManualLicenser
 
                                 // Place individual measurements
 
-                                double convert = 1; // inverse size units in 1 mm
-                                if (sheet.Cells[row + 1, col].Value.ToString() == "х4") convert = lomo ? convert = (1d / 40d) : (1d / 61d);
-                                else if (sheet.Cells[row + 1, col].Value.ToString() == "х0,8") convert = 1d / 12d;
+                                double convert = (sheet.Cells[row + 1, col].Value.ToString() == "х4") ? (lomo ? (1d / 40d) : (1d / 61d)) : 
+                                    ((sheet.Cells[row + 1, col].Value.ToString() == "х0,8") ? 1d / 12d : 1);
 
                                 for (int r = row + 2; r <= row + 2 + lines; r++)
                                 {

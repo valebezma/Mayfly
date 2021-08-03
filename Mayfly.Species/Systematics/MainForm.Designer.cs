@@ -179,23 +179,20 @@
             // 
             // menuItemNew
             // 
-            this.menuItemNew.Image = global::Mayfly.Resources.Icons.New;
-            this.menuItemNew.Name = "menuItemNew";
             resources.ApplyResources(this.menuItemNew, "menuItemNew");
+            this.menuItemNew.Name = "menuItemNew";
             this.menuItemNew.Click += new System.EventHandler(this.menuItemNew_Click);
             // 
             // menuItemOpen
             // 
-            this.menuItemOpen.Image = global::Mayfly.Resources.Icons.Open;
-            this.menuItemOpen.Name = "menuItemOpen";
             resources.ApplyResources(this.menuItemOpen, "menuItemOpen");
+            this.menuItemOpen.Name = "menuItemOpen";
             this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
             // 
             // menuItemSave
             // 
-            this.menuItemSave.Image = global::Mayfly.Resources.Icons.Save;
-            this.menuItemSave.Name = "menuItemSave";
             resources.ApplyResources(this.menuItemSave, "menuItemSave");
+            this.menuItemSave.Name = "menuItemSave";
             this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
             // 
             // menuItemSaveAs
@@ -211,16 +208,14 @@
             // 
             // menuItemPreview
             // 
-            this.menuItemPreview.Image = global::Mayfly.Resources.Icons.Preview;
-            this.menuItemPreview.Name = "menuItemPreview";
             resources.ApplyResources(this.menuItemPreview, "menuItemPreview");
+            this.menuItemPreview.Name = "menuItemPreview";
             this.menuItemPreview.Click += new System.EventHandler(this.menuItemPreview_Click);
             // 
             // menuItemPrint
             // 
-            this.menuItemPrint.Image = global::Mayfly.Resources.Icons.Print;
-            this.menuItemPrint.Name = "menuItemPrint";
             resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
+            this.menuItemPrint.Name = "menuItemPrint";
             this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
             // 
             // toolStripSeparator8
@@ -301,9 +296,8 @@
             // 
             // menuItemSettings
             // 
-            this.menuItemSettings.Image = global::Mayfly.Resources.Icons.Settings;
-            this.menuItemSettings.Name = "menuItemSettings";
             resources.ApplyResources(this.menuItemSettings, "menuItemSettings");
+            this.menuItemSettings.Name = "menuItemSettings";
             this.menuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);
             // 
             // menuItemAbout
@@ -347,6 +341,7 @@
             this.columnHeader5,
             this.columnHeader6});
             this.listViewMinor.FullRowSelect = true;
+            this.listViewMinor.HideSelection = false;
             this.listViewMinor.Name = "listViewMinor";
             this.listViewMinor.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewMinor.UseCompatibleStateImageBehavior = false;
@@ -381,6 +376,7 @@
             this.columnHeaderSpeciesName,
             this.columnHeaderReference});
             this.listViewRepresence.FullRowSelect = true;
+            this.listViewRepresence.HideSelection = false;
             this.listViewRepresence.Name = "listViewRepresence";
             this.listViewRepresence.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewRepresence.UseCompatibleStateImageBehavior = false;
@@ -459,6 +455,7 @@
             this.listViewEngagement.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewEngagement.Groups"))),
             ((System.Windows.Forms.ListViewGroup)(resources.GetObject("listViewEngagement.Groups1")))});
+            this.listViewEngagement.HideSelection = false;
             this.listViewEngagement.Name = "listViewEngagement";
             this.listViewEngagement.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewEngagement.UseCompatibleStateImageBehavior = false;
@@ -516,6 +513,7 @@
             // listViewImages
             // 
             resources.ApplyResources(this.listViewImages, "listViewImages");
+            this.listViewImages.HideSelection = false;
             this.listViewImages.Name = "listViewImages";
             this.listViewImages.UseCompatibleStateImageBehavior = false;
             // 

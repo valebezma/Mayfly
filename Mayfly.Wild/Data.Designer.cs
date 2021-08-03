@@ -961,6 +961,7 @@ namespace Mayfly.Wild {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnSpecies.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5087,28 +5088,11 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Species {
                 get {
-                    try {
-                        return ((string)(this[this.tableSpecies.SpeciesColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Species\' in table \'Species\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableSpecies.SpeciesColumn]));
                 }
                 set {
                     this[this.tableSpecies.SpeciesColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSpeciesNull() {
-                return this.IsNull(this.tableSpecies.SpeciesColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSpeciesNull() {
-                this[this.tableSpecies.SpeciesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

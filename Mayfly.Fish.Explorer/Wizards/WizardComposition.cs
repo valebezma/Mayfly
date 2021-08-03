@@ -590,18 +590,18 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void contextShowCalculation_Click(object sender, EventArgs e)
         {
-            if (selectedShoal is AgeKey)
+            if (selectedShoal is AgeKey key)
             {
-                ((AgeKey)selectedShoal).ShowDialog();
+                key.ShowDialog();
             }
-            else if (selectedShoal is AgeComposition)
+            else if (selectedShoal is AgeComposition ageComposition)
             {
-                ((AgeComposition)selectedShoal).GetHistogram().ShowOnChart(true);
+                ageComposition.GetHistogram().ShowOnChart(true);
             }
 
-            if (selectedShoal is LengthComposition)
+            if (selectedShoal is LengthComposition lenComposition)
             {
-                ((LengthComposition)selectedShoal).GetHistogram().ShowOnChart(true);
+                lenComposition.GetHistogram().ShowOnChart(true);
             }
         }
 
@@ -609,13 +609,12 @@ namespace Mayfly.Fish.Explorer.Survey
         {
             int ri = spreadSheetComposition.SelectedRows[0].Index;
 
-            if (CatchesComposition[ri] is AgeGroup)
+            if (CatchesComposition[ri] is AgeGroup age)
             {
-                AgeGroup age = (AgeGroup)CatchesComposition[ri];
                 double measure = Service.GetMeasure(SpeciesRow.Species) * 10;
 
                 contextCompositionSplit.Enabled = (!double.IsNaN(measure) &&
-                    age.LengthSample.Count > 0 && 
+                    age.LengthSample.Count > 0 &&
                     (age.LengthSample.Maximum >= measure &&
                     age.LengthSample.Minimum <= measure));
             }

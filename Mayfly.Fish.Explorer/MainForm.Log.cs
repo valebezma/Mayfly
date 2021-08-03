@@ -67,7 +67,7 @@ namespace Mayfly.Fish.Explorer
 
             SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-            result.Cells[columnLogSpc.Index].Value = taxaRow.Taxon;
+            result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
 
             result.Cells[columnLogQuantity.Index].Value = Q;
             result.Cells[columnLogMass.Index].Value = W;

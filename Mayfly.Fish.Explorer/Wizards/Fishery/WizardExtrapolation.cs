@@ -204,7 +204,7 @@ namespace Mayfly.Fish.Explorer.Fishery
                 //{
                 //    case CategoryType.Age:
 
-                //        Age age = Service.GetGamingAge(SpeciesRow.Species);
+                //        Age age = Service.GetGamingAge(SpeciesRow.Name);
                 //        if (age != null)
                 //        {
                 //            spreadSheetStock.Rows[i].Selected = age <= new Age(Stock[i].Name);
@@ -214,7 +214,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
                 //    case CategoryType.Length:
 
-                //        double sizeClass = Service.GetMeasure(SpeciesRow.Species);
+                //        double sizeClass = Service.GetMeasure(SpeciesRow.Name);
                 //        if (!double.IsNaN(sizeClass))
                 //        {
                 //            string categoryName = sizeClass.ToString(Resources.Interface.SizeClassMask);
@@ -229,7 +229,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             spreadSheetStock_SelectionChanged(spreadSheetStock, new EventArgs());
         }
 
-        private Report GetReport()
+        public Report GetReport()
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Extrapolation.Title,
@@ -504,6 +504,22 @@ namespace Mayfly.Fish.Explorer.Fishery
                     compositionWizard.CategoryType, selectedCategories.Merge(", "), selectedQuantity, selectedMass);
         }
 
+        public void RunComposition(Composition example)
+        {
+            pageCategory.NextPage = pageComposition;
+            pageComposition.NextPage = pageReport;
+            checkBoxComposition.Enabled = true;
+            checkBoxComposition.Checked = true;
+
+            wizardExplorer.NextPage();
+
+            compositionWizard = new WizardComposition(Data, example, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
+            compositionWizard.Returned += compositionWizard_Returned;
+            compositionWizard.Finished += compositionWizard_Finished;
+            compositionWizard.Replace(this);
+            compositionWizard.Run(gearWizard);
+        }
+
         
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -670,22 +686,6 @@ namespace Mayfly.Fish.Explorer.Fishery
             RunComposition(example);
         }
 
-        private void RunComposition(Composition example)
-        {
-            pageCategory.NextPage = pageComposition;
-            pageComposition.NextPage = pageReport;
-            checkBoxComposition.Enabled = true;
-            checkBoxComposition.Checked = true;
-
-            wizardExplorer.NextPage();
-
-            compositionWizard = new WizardComposition(Data, example, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
-            compositionWizard.Returned += compositionWizard_Returned;
-            compositionWizard.Finished += compositionWizard_Finished;
-            compositionWizard.Replace(this);
-            compositionWizard.Run(gearWizard);
-        }
-
         private void pageCategory_Commit(object sender, WizardPageConfirmEventArgs e)
         { }
 
@@ -756,9 +756,8 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             int ri = spreadSheetStock.SelectedRows[0].Index;
 
-            if (compositionWizard.CatchesComposition[ri] is AgeGroup)
+            if (compositionWizard.CatchesComposition[ri] is AgeGroup age)
             {
-                AgeGroup age = (AgeGroup)compositionWizard.CatchesComposition[ri];
                 double measure = Service.GetMeasure(SpeciesRow.Species) * 10;
 
                 contextStockSplit.Enabled = (!double.IsNaN(measure) &&

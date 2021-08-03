@@ -402,7 +402,7 @@ namespace Mayfly.Fish.Explorer
                                 cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerSign();
                             }
 
-                            Data.CardRow[] cardRows = _data.CopyTo(data);
+                            //Data.CardRow[] cardRows = _data.CopyTo(data);
                         }
                     }
                 }
@@ -1054,14 +1054,14 @@ namespace Mayfly.Fish.Explorer
 
                         foreach (Artefact artefact in (Artefact[])e.Result)
                         {
-                            if (artefact is CardArtefact)
-                                cardArtefacts.Add((CardArtefact)artefact);
+                            if (artefact is CardArtefact artefact1)
+                                cardArtefacts.Add(artefact1);
 
-                            if (artefact is SpeciesArtefact)
-                                spcArtefacts.Add((SpeciesArtefact)artefact);
+                            if (artefact is SpeciesArtefact artefact2)
+                                spcArtefacts.Add(artefact2);
 
-                            if (artefact is IndividualArtefact)
-                                indArtefacts.Add((IndividualArtefact)artefact);
+                            if (artefact is IndividualArtefact artefact3)
+                                indArtefacts.Add(artefact3);
                         }
 
                         tabPageArtefacts.Parent = tabControl;
@@ -1372,13 +1372,13 @@ namespace Mayfly.Fish.Explorer
         private void gear_Changed(object sender, EventArgs e)
         {
             if (spreadSheetGearStats.SelectedRows.Count == 0 ||
-                !(spreadSheetGearStats[ColumnGearStats.Index, spreadSheetGearStats.SelectedRows[0].Index].Value is FishSamplerTypeDisplay))
+                !(spreadSheetGearStats[ColumnGearStats.Index, spreadSheetGearStats.SelectedRows[0].Index].Value is FishSamplerTypeDisplay display))
             {
                 SelectedSamplerType = FishSamplerType.None;
             }
             else
             {
-                SelectedSamplerType = ((FishSamplerTypeDisplay)spreadSheetGearStats[ColumnGearStats.Index, spreadSheetGearStats.SelectedRows[0].Index].Value).Type;
+                SelectedSamplerType = display.Type;
             }
 
             comboBoxCatchesMesh.DataSource = AllowedStack.Classes(SelectedSamplerType);
@@ -1567,9 +1567,8 @@ namespace Mayfly.Fish.Explorer
             switch (htResult.ChartElementType)
             {
                 case ChartElementType.DataPoint:
-                    if (htResult.Series.Points[htResult.PointIndex].Tag is Data.CardRow)
+                    if (htResult.Series.Points[htResult.PointIndex].Tag is Data.CardRow cardRow)
                     {
-                        Data.CardRow cardRow = (Data.CardRow)htResult.Series.Points[htResult.PointIndex].Tag;
                         FileSystem.RunFile(cardRow.Path);
                         //string cardName = Data.GetStack().GetInfoRow(cardRow).FileName;
                         //Fish.Service.RunCard(cardName);
@@ -1929,8 +1928,8 @@ namespace Mayfly.Fish.Explorer
         private void BaseItem_Click(object sender, EventArgs e)
         {
             SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
-            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.Base,
-                baseRow.Base, typeof(string), 0);
+            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
+                baseRow.BaseName, typeof(string), 0);
 
             foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
             {
@@ -1955,7 +1954,7 @@ namespace Mayfly.Fish.Explorer
                 else
                 {
                     SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.Taxon;
+                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
                 }
             }
         }
@@ -1968,13 +1967,13 @@ namespace Mayfly.Fish.Explorer
         {
             // Make a selection
             if (spreadSheetSpcStats.SelectedRows.Count == 0 ||
-                !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow))
+                !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow row))
             {
                 SelectedStatSpc = null;
             }
             else
             {
-                SelectedStatSpc = (Data.SpeciesRow)spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value;
+                SelectedStatSpc = row;
             }
 
             // Totals

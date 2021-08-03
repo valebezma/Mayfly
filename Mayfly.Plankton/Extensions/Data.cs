@@ -29,7 +29,7 @@ namespace Mayfly.Plankton
             {
                 SpeciesKey.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
 
-                speciesRow.Species = dataSpcRow.Species;
+                speciesRow.Name = dataSpcRow.Species;
 
                 SpeciesKey.SpeciesRow equivalentRow = Plankton.UserSettings.SpeciesIndex.Species.FindBySpecies(
                     dataSpcRow.Species);
@@ -106,7 +106,6 @@ namespace Mayfly.Plankton
 
             foreach (Data.LogRow logRow in data.Log)
             {
-                if (logRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!result.Contains(logRow.SpeciesRow.Species))
                 {
                     result.Add(logRow.SpeciesRow.Species);
@@ -122,7 +121,6 @@ namespace Mayfly.Plankton
 
             foreach (Data.LogRow logRow in data.Log)
             {
-                if (logRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!logRow.IsMassNull()) continue;
                 if (!result.Contains(logRow.SpeciesRow))
                 {
@@ -139,7 +137,6 @@ namespace Mayfly.Plankton
 
             foreach (Data.IndividualRow individualRow in data.Individual)
             {
-                if (individualRow.LogRow.SpeciesRow.IsSpeciesNull()) continue;
                 if (!individualRow.IsMassNull()) continue;
                 if (!result.Contains(individualRow.LogRow.SpeciesRow))
                 {
@@ -182,17 +179,6 @@ namespace Mayfly.Plankton
 
             return 0;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="spcRow"></param>
-        /// <returns>Index record for corresponding species</returns>
-        public static SpeciesKey.SpeciesRow GetKeyRecord(this Data.SpeciesRow spcRow)
-        {
-            return spcRow.GetKeyRecord(Plankton.UserSettings.SpeciesIndex);
-        }
-
 
 
         /// <summary>

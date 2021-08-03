@@ -97,16 +97,16 @@ namespace Mayfly.Fish.Explorer.Fishery
             {
                 if (spreadSheetReference.Rows[i].IsNewRow) continue;
                 double f = 0;
-                if (spreadSheetReference[ColumnRefF.Index, i].Value is double)
+                if (spreadSheetReference[ColumnRefF.Index, i].Value is double @double)
                 {
-                    f = (double)spreadSheetReference[ColumnRefF.Index, i].Value;
+                    f = @double;
                 }
                 VirtualCohort.F[i] = f;
 
                 double w = 0;
-                if (spreadSheetReference[ColumnRefW.Index, i].Value is double)
+                if (spreadSheetReference[ColumnRefW.Index, i].Value is double double1)
                 {
-                    w = (double)spreadSheetReference[ColumnRefW.Index, i].Value;
+                    w = double1;
                 }
                 VirtualCohort.Masses[i] = w;
             }

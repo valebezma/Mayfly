@@ -68,14 +68,14 @@ namespace Mayfly.Benthos
 
                     if (gridRow.Cells[ColumnMass.Index].Value == null) continue;
 
-                    if (gridRow.Cells[ColumnMass.Index].Value is double)
+                    if (gridRow.Cells[ColumnMass.Index].Value is double @double)
                     {
                         int ic = 1;
 
                         if (gridRow.Cells[ColumnFrequency.Index].Value != null)
                             ic = (int)gridRow.Cells[ColumnFrequency.Index].Value;
 
-                        result += ic * (double)gridRow.Cells[ColumnMass.Index].Value;
+                        result += ic * @double;
                     }
                 }
 
@@ -494,9 +494,9 @@ namespace Mayfly.Benthos
 
             if (LogLine != null)
             {
-                if (LogLine.DataGridView.FindForm() is Card)
+                if (LogLine.DataGridView.FindForm() is Card card)
                 {
-                    ((Card)LogLine.DataGridView.FindForm()).UpdateStatus();
+                    card.UpdateStatus();
                 }
 
                 //if (Updater != null)
@@ -1068,8 +1068,7 @@ namespace Mayfly.Benthos
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
                 if (gridRow.IsNewRow) continue;
-
-                Data.IndividualRow newIndividualRow = SaveIndividualRow(clipData, clipLogRow, gridRow);
+                SaveIndividualRow(clipData, clipLogRow, gridRow);
             }
 
             Clipboard.SetText(clipData.GetXml());

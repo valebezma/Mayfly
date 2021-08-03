@@ -63,9 +63,10 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(
                     string.Format(Resources.Reports.MSYR.Title,
-                    SpeciesRow.KeyRecord.FullNameReport));
-
-            report.UseTableNumeration = true;
+                    SpeciesRow.KeyRecord.FullNameReport))
+            {
+                UseTableNumeration = true
+            };
 
             report.EndBranded();
 

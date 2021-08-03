@@ -163,7 +163,7 @@ namespace Mayfly
                     result.Add(reader.ReadLine());
                 }
             }
-            catch (Exception ex)
+            catch// (Exception ex)
             {
                 return null; 
             }

@@ -1076,8 +1076,12 @@ namespace Mayfly.Wild
 
             public int CompareTo(object o)
             {
-                if (o is CardRow) return this.CompareTo((CardRow)o);
-                if (o is DateTime) return DateTime.Compare(this.When, (DateTime)o);
+                if (o is CardRow row)
+                {
+                    return this.CompareTo(row);
+                }
+
+                if (o is DateTime time) return DateTime.Compare(this.When, time);
                 return 0;
             }
 
@@ -1303,7 +1307,7 @@ namespace Mayfly.Wild
 
             public override string ToString()
             {
-                return this.IsSpeciesNull() ? Mayfly.Species.Resources.Interface.UnidentifiedTitle : this.Species;
+                return this.Species;
             }
         }
 

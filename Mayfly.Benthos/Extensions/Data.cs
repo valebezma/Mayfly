@@ -146,8 +146,7 @@ namespace Mayfly.Benthos
 
                 speciesRow.Species = dataSpcRow.Species;
 
-                SpeciesKey.SpeciesRow equivalentRow = Benthos.UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    dataSpcRow.Species);
+                SpeciesKey.SpeciesRow equivalentRow = dataSpcRow.KeyRecord;
 
                 if (equivalentRow != null)
                 {

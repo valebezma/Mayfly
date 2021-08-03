@@ -68,7 +68,7 @@ namespace Mayfly.Software.Management
 
             foreach (Scheme.ProductRow productRow in SchemeData.Product)
             {
-                ListViewItem li = listViewProducts.CreateItem(productRow.ID.ToString(), productRow.Name);
+                listViewProducts.CreateItem(productRow.ID.ToString(), productRow.Name);
             }
 
             labelProductCount.UpdateStatus(SchemeData.Product.Count);

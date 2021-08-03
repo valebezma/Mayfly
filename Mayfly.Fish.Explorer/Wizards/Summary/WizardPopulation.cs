@@ -293,13 +293,13 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void checkBoxLength_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppL.Enabled = checkBoxLength.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
+            checkBoxAppL.Enabled = checkBoxLength.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
         }
 
         private void checkBoxAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppT.Enabled = checkBoxAge.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
-            checkBoxAppKeys.Enabled = checkBoxAge.Checked && (gearWizard == null ? true : gearWizard.IsMultipleClasses);
+            checkBoxAppT.Enabled = checkBoxAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
+            checkBoxAppKeys.Enabled = checkBoxAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
         }
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)

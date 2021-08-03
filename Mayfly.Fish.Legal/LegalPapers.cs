@@ -131,7 +131,7 @@ namespace Mayfly.Fish.Legal
 
                 LegalNote result = new LegalNote(header);
 
-                Report.Table table = new Report.Table(ReportTableClass.Fill);
+                Report.Table table = new Report.Table();
 
                 table.StartRow();
                 table.AddCell(this.Date.ToString("d"), Legal.LegalNote.InputClass | ReportCellClass.Centered);
@@ -183,14 +183,13 @@ namespace Mayfly.Fish.Legal
                 result.AddTable(ReportExtensions.GetAskBlock("сотрудниками",
                     this.LicenseRow.Holder,
                     "полное наименование научной организации"));
-
-                decimal w = 0;
-
-                int index = 0;
-
                 double width_no = .05;
                 double width_mass = .15;
 
+
+                int index;
+
+                decimal w;
                 switch ((LegalNoteType)this.Content)
                 {
                     case LegalNoteType.Catch:
@@ -551,7 +550,7 @@ namespace Mayfly.Fish.Legal
                 result.AddParagraph("Настоящий акт составлен в 2 экземплярах.");
                 result.AddParagraph("Подписи присутствующих при составлении акта*:");
 
-                Report.Table table9 = new Report.Table(ReportTableClass.Fill);
+                Report.Table table9 = new Report.Table();
 
                 table9.AddHeader(.6, 0, .3);
 
@@ -585,7 +584,7 @@ namespace Mayfly.Fish.Legal
 
                 result.AddParagraph("Подпись ответственного лица научной организации:");
 
-                Report.Table table10 = new Report.Table(ReportTableClass.Fill);
+                Report.Table table10 = new Report.Table();
 
                 table10.AddHeader(.6, 0, .3);
 

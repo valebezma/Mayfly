@@ -10,10 +10,12 @@ namespace Mayfly
         {
             if (!UserSettings.ShareDiagnostics) return;
             Uri uri = Server.GetUri(Server.ServerHttps, "php/software/log.php");
-            Dictionary<string, string> logParameters = new Dictionary<string, string>();
-            logParameters.Add("logevent", e.GetLogLine());
-            logParameters.Add("login", "mayfly-logger");
-            logParameters.Add("password", "qe4-nsw-wv8-WrC");
+            Dictionary<string, string> logParameters = new Dictionary<string, string>
+            {
+                { "logevent", e.GetLogLine() },
+                { "login", "mayfly-logger" },
+                { "password", "qe4-nsw-wv8-WrC" }
+            };
             try { Server.GetText(uri, logParameters); } catch { }
         }
 

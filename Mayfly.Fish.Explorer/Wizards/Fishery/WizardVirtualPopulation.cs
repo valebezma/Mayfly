@@ -97,11 +97,10 @@ namespace Mayfly.Fish.Explorer.Fishery
                 AddHistory(report);
             }
 
-            if (checkBoxMortality.Checked)
-            {
-                report.AddSectionTitle(Resources.Reports.VPA.Header2);
-                AddMortality(report);
-            }
+            //if (checkBoxMortality.Checked)
+            //{
+            //    report.AddSectionTitle(Resources.Reports.VPA.Header2);
+            //}
 
             if (checkBoxVpa.Checked)
             {
@@ -149,11 +148,6 @@ namespace Mayfly.Fish.Explorer.Fishery
             //    SpeciesRow.GetReportFullPresentation()));
             //Population.ToArray().AddCompositionTable(report, Resources.Reports.Growth.Column1,
             //    Resources.Reports.GrowthCohorts.Column1, ValueVariant.Quantity, "N0");
-        }
-
-        public void AddMortality(Report report)
-        {
-
         }
 
         public void AddVpa(Report report)
@@ -402,10 +396,10 @@ namespace Mayfly.Fish.Explorer.Fishery
             //pageCatches.AllowNext = AnnualCompositions.Length > 0;
             //labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            //double m = Service.GetNaturalMortality(SpeciesRow.Species);
+            //double m = Service.GetNaturalMortality(SpeciesRow.Name);
             //if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            //double f = Service.GetFishingMortality(SpeciesRow.Species);
+            //double f = Service.GetFishingMortality(SpeciesRow.Name);
             //if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             ////pageCohorts.SetNavigation(true);

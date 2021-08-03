@@ -443,10 +443,7 @@ namespace Mayfly.Fish.Legal
 
                 Data data = new Data();
 
-                if (data.Read(filenames[i]))
-                {
-                    Data.CardRow[] cardRows = data.CopyTo(Data);
-                }
+                data.Read(filenames[i]);
 
                 //(sender as BackgroundWorker).ReportProgress(i + 1);
             }

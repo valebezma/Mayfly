@@ -135,7 +135,7 @@ namespace Mayfly.Plankton.Explorer
                             cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerRow().Sampler;
                         }
 
-                        Data.CardRow[] cardRows = _data.CopyTo(data);
+                        //Data.CardRow[] cardRows = _data.CopyTo(data);
                     }
                 }
 
@@ -407,8 +407,8 @@ namespace Mayfly.Plankton.Explorer
         private void BaseItem_Click(object sender, EventArgs e)
         {
             SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
-            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.Base,
-                baseRow.Base, typeof(string), 0);
+            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
+                baseRow.BaseName, typeof(string), 0);
 
             foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
             {
@@ -433,7 +433,7 @@ namespace Mayfly.Plankton.Explorer
                 else
                 {
                     SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.Taxon;
+                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
                 }
             }
         }
@@ -769,7 +769,7 @@ namespace Mayfly.Plankton.Explorer
                 foreach (Data.SpeciesRow speciesRow in data.Species)
                 {
                     Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
-                    newSpeciesRow.Species = speciesRow.Species;
+                    newSpeciesRow.Name = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }
 
@@ -995,9 +995,9 @@ namespace Mayfly.Plankton.Explorer
             if (e.ColumnIndex == -1) return;
             if (e.RowIndex == -1) return;
 
-            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age)
+            if (spreadSheetInd[e.ColumnIndex, e.RowIndex].Value is Age age)
             {
-                if (((Age)spreadSheetInd[e.ColumnIndex, e.RowIndex].Value).Gain)
+                if (age.Gain)
                 {
                     spreadSheetInd[e.ColumnIndex, e.RowIndex].Style.Padding = new Padding(0, 0, 2, 0);
                 }

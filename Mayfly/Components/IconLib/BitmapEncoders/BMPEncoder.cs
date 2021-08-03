@@ -67,8 +67,6 @@ namespace System.Drawing.IconLib.BitmapEncoders
 
         public unsafe override void Write(Stream stream)
         {
-            BinaryReader br = new BinaryReader(stream);
-
             // BitmapInfoHeader
             mHeader.Write(stream);
 

@@ -76,9 +76,9 @@ namespace Mayfly.Fish
 
                     if (gridRow.Cells[ColumnMass.Index].Value == null) return double.NaN;
 
-                    if (gridRow.Cells[ColumnMass.Index].Value is double)
+                    if (gridRow.Cells[ColumnMass.Index].Value is double @double)
                     {
-                        result += (double)gridRow.Cells[ColumnMass.Index].Value;
+                        result += @double;
                     }
                 }
 
@@ -351,12 +351,12 @@ namespace Mayfly.Fish
             foreach (SpeciesKey.BaseRow baseRow in UserSettings.SpeciesIndex.Base.Rows)
             {
                 ToolStripMenuItem baseItem = new ToolStripMenuItem();
-                baseItem.Text = baseRow.Base;
+                baseItem.Text = baseRow.BaseName;
 
                 foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
                     ToolStripMenuItem taxaItem = new ToolStripMenuItem();
-                    taxaItem.Text = taxaRow.Taxon;
+                    taxaItem.Text = taxaRow.TaxonName;
 
                     foreach (SpeciesKey.RepRow representativeRow in taxaRow.GetRepRows())
                     {
@@ -422,7 +422,7 @@ namespace Mayfly.Fish
             //logRow.SpeciesRow = speciesRow
 
             Card card = (Card)this.Owner;
-            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow.Species)));
+            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow.Name)));
             UpdateRedefineList();
         }
 
@@ -650,9 +650,9 @@ namespace Mayfly.Fish
 
             if (LogLine != null)
             {
-                if (LogLine.DataGridView.FindForm() is Card)
+                if (LogLine.DataGridView.FindForm() is Card card)
                 {
-                    ((Card)LogLine.DataGridView.FindForm()).UpdateStatus();
+                    card.UpdateStatus();
                 }
 
                 if (Updater != null)
@@ -800,7 +800,7 @@ namespace Mayfly.Fish
                 individualRow.Comments = (string)gridRow.Cells[ColumnComments.Index].Value;
             }
 
-            SaveAddtValues(data, individualRow, gridRow);
+            SaveAddtValues(individualRow, gridRow);
 
             return individualRow;
         }
@@ -828,7 +828,7 @@ namespace Mayfly.Fish
             return individualRow;
         }
 
-        private void SaveAddtValues(Data data, Data.IndividualRow individualRow, DataGridViewRow gridRow)
+        private void SaveAddtValues(Data.IndividualRow individualRow, DataGridViewRow gridRow)
         {
             foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
             {
@@ -1320,8 +1320,7 @@ namespace Mayfly.Fish
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
                 if (gridRow.IsNewRow) continue;
-
-                Data.IndividualRow newIndividualRow = SaveIndividualRow(clipData, clipLogRow, gridRow);
+                SaveIndividualRow(clipData, clipLogRow, gridRow);
             }
 
             Clipboard.SetText(clipData.GetXml());
