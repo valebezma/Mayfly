@@ -209,13 +209,11 @@ namespace Mayfly
         {
             if (addNaticeLabel)
             {
-                AddParagraphClass("notice",
-                    string.Format("<strong>{0}. </strong> {1}", Resources.Interface.Comments, text));
+                AddParagraphClass("notice", string.Format("<span class='label'>{0}.</span>{1}", Resources.Interface.Comments, text));
             }
             else
             {
-                AddParagraphClass("notice",
-                    text);
+                AddParagraphClass("notice", text);
             }
         }
 

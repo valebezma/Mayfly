@@ -29,30 +29,19 @@ namespace Mayfly
                 this.WriteLine("<caption>{0}:</caption>", caption);
             }
 
-            //string tableBody = table.ToString();
-            //while (tableBody.Contains(Constants.NoticeHolder))
-            //{
-            //    int holderPlace = tableBody.IndexOf(Constants.NoticeHolder);
-            //    tableBody = tableBody.Remove(holderPlace, Constants.NoticeHolder.Length);
-            //    tableBody = tableBody.Insert(holderPlace, string.Format("<sup>{0}</sup>", noticeCount.ToLetter().ToLowerInvariant()));
-            //    noticeCount++;
-            //}
+            WriteLine(table.ToString());
 
-            //this.WriteLine(tableBody);
-
-            this.WriteLine(table.ToString());
-
-            this.WriteLine("</table>");
+            WriteLine("</table>");
 
             string combinedNotice = string.Empty;
             foreach (Table.Notice notice in table.Notices)
             {
-                combinedNotice += notice + "; ";
+                combinedNotice += notice + ";<br />";
             }
 
             if (!string.IsNullOrWhiteSpace(combinedNotice))
             {
-                combinedNotice = combinedNotice.TrimEnd(' ', ';') + ".";
+                combinedNotice = combinedNotice.TrimEnd(";<br />".ToCharArray()) + ".";
                 AddComment(combinedNotice, true);
             }
         }

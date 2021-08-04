@@ -402,7 +402,7 @@ namespace Mayfly.Fish.Explorer
                                 cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerSign();
                             }
 
-                            //Data.CardRow[] cardRows = _data.CopyTo(data);
+                            _data.CopyTo(data);
                         }
                     }
                 }

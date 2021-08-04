@@ -36,7 +36,7 @@ namespace Mayfly.Fish.Explorer
                     new UserSetting(Wild.UserSettingPaths.AutoLoadBio, false),
                     new UserSetting(UserSettingPaths.SizeInterval, 1000),
                     new UserSetting(UserSettingPaths.KeepWizard, false),
-                    new UserSetting(UserSettingPaths.SelectedAgeLengthKeyType, 2)
+                    new UserSetting(UserSettingPaths.SelectedAgeLengthKeyType, 1)
                 });
         }
 
