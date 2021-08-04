@@ -14,15 +14,15 @@ namespace Mayfly.Fish.Explorer.Fishery
     {
         public CardStack Data { get; set; }
 
-        private WizardComposition lengthCompositionWizard;
-
         private WizardComposition ageCompositionWizard;
 
         private WizardGearSet gearWizard { get; set; }
 
+
+
         public Data.SpeciesRow SpeciesRow;
 
-        public LengthComposition LengthStructure;
+        public SpeciesSwarm Swarm;
 
         public AgeComposition AgeStructure;
 
@@ -40,8 +40,9 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            labelBasic.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
 
             pageStart.SetNavigation(false);
 
@@ -57,7 +58,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             Report report = new Report(string.Format(Resources.Reports.Title.RepPopulation, SpeciesRow.KeyRecord.FullNameReport));
             
-            gearWizard.SelectedData.AddCommon(report, SpeciesRow);
+            Data.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
 
@@ -66,25 +67,15 @@ namespace Mayfly.Fish.Explorer.Fishery
                 gearWizard.AddEffortSection(report);
             }
 
-            if (checkBoxLength.Checked)
-            {
-                lengthCompositionWizard.AppendPopulationSectionTo(report);
-            }
-
             if (checkBoxAge.Checked)
             {
                 ageCompositionWizard.AppendPopulationSectionTo(report);
             }
 
-            if (checkBoxAppL.Checked | checkBoxAppT.Checked | checkBoxAppKeys.Checked)
+            if (checkBoxAppT.Checked | checkBoxAppKeys.Checked)
             {
                 report.BreakPage(PageBreakOption.Odd);
                 report.AddChapterTitle(Resources.Reports.Title.Appendices);
-            }
-
-            if (checkBoxAppL.Checked)
-            {
-                lengthCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "length", SpeciesRow.KeyRecord.FullNameReport));
             }
 
             if (checkBoxAppT.Checked)
@@ -111,8 +102,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void structureCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            LengthStructure = Data.GetLengthCompositionFrame(SpeciesRow, UserSettings.SizeInterval);
-            LengthStructure.Name = Fish.Resources.Common.SizeUnits;
+            Swarm = Data.GetSwarm(SpeciesRow);
 
             try
             {
@@ -120,28 +110,36 @@ namespace Mayfly.Fish.Explorer.Fishery
                 AgeStructure.Name = Wild.Resources.Reports.Caption.Age;
             }
             catch
-            { }
+            {
+                e.Cancel = true;
+            }
         }
 
         private void structureCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            plotL.AxisXInterval = LengthStructure.Interval;
-
+            pageStart.SetNavigation(true);
+            //pageBasic.SetNavigation(AgeStructure != null);
             pageAge.Suppress = AgeStructure == null;
             checkBoxAge.Checked = AgeStructure != null;
-            pageStart.SetNavigation(true);
         } 
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (gearWizard == null)
-            {
-                gearWizard = new WizardGearSet(Data, SpeciesRow);
-                gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
-                gearWizard.Returned += gearWizard_Returned;
-            }
+        }
 
-            gearWizard.Replace(this);
+        private void PageBasic_Commit(object sender, WizardPageConfirmEventArgs e)
+        {
+            if (AgeStructure != null)
+            {
+                if (gearWizard == null)
+                {
+                    gearWizard = new WizardGearSet(Data, SpeciesRow);
+                    gearWizard.AfterDataSelected += gearWizard_AfterDataSelected;
+                    gearWizard.Returned += gearWizard_Returned;
+                }
+
+                gearWizard.Replace(this);
+            }
         }
 
         private void gearWizard_Returned(object sender, EventArgs e)
@@ -153,77 +151,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         private void gearWizard_AfterDataSelected(object sender, EventArgs e)
         {
             checkBoxAge_CheckedChanged(sender, e);
-            checkBoxLength_CheckedChanged(sender, e);
 
-            if (lengthCompositionWizard == null)
-            {
-                lengthCompositionWizard = new WizardComposition(Data, LengthStructure, SpeciesRow, CompositionColumn.MassSample);
-                lengthCompositionWizard.Finished += lengthCompositionWizard_Finished;
-                lengthCompositionWizard.Returned += LengthCompositionWizard_Returned;
-            }
-
-            lengthCompositionWizard.Replace(gearWizard);
-
-            //this.Replace(gearWizard);
-            //lengthCompositionWizard.Replace(this);
-
-            lengthCompositionWizard.Run(gearWizard);
-        }
-
-        private void LengthCompositionWizard_Returned(object sender, EventArgs e)
-        {
-            //this.Replace(lengthCompositionWizard);
-            //gearWizard.Replace(this);
-
-            gearWizard.Replace(lengthCompositionWizard);
-        }
-
-        private void lengthCompositionWizard_Finished(object sender, EventArgs e)
-        {
-            this.Replace(lengthCompositionWizard);
-            wizardExplorer.EnsureSelected(pageLength);
-
-            checkBoxLength_CheckedChanged(sender, e);
-
-            plotL.Series.Clear();
-
-            Series hist = new Series();
-            hist.ChartType = SeriesChartType.Column;
-
-            double minx = double.MaxValue;
-            double maxx = 0;
-            double maxy = 0;
-
-            foreach (SizeClass sizeClass in lengthCompositionWizard.CatchesComposition)
-            {
-                hist.Points.AddXY(sizeClass.Size.Midpoint, sizeClass.AbundanceFraction);
-
-                minx = Math.Min(minx, sizeClass.Size.LeftEndpoint);
-                maxx = Math.Max(maxx, sizeClass.Size.RightEndpoint);
-                maxy = Math.Max(maxy, sizeClass.AbundanceFraction);
-            }
-
-            plotL.Series.Add(hist);
-
-            plotL.AxisXMin = minx;
-            plotL.AxisXMax = maxx;
-            plotL.AxisYMin = 0.0;
-            plotL.AxisYMax = maxy;
-
-            plotL.Remaster();
-        }
-
-        private void pageLength_Rollback(object sender, WizardPageConfirmEventArgs e)
-        {
-            if (this.Visible)
-            {
-                e.Cancel = true;
-                lengthCompositionWizard.Replace(this);
-            }
-        }
-
-        private void pageLength_Commit(object sender, WizardPageConfirmEventArgs e)
-        {
             if (AgeStructure == null) return;
 
             if (ageCompositionWizard == null)
@@ -239,8 +167,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private void AgeCompositionWizard_Returned(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(pageLength);
-            this.Replace(ageCompositionWizard);
+            gearWizard.Replace(ageCompositionWizard);
         }
 
         private void ageCompositionWizard_Finished(object sender, EventArgs e)
@@ -283,17 +210,20 @@ namespace Mayfly.Fish.Explorer.Fishery
             if (this.Visible) ageCompositionWizard.Replace(this);
         } 
 
+        private void PageReport_Rollback(object sender, WizardPageConfirmEventArgs e)
+        {
+            //if (AgeStructure != null)
+            //{
+            //if (this.Visible) ageCompositionWizard.Replace(this);
+            //}
+        }
+
         private void checkBox_EnabledChanged(object sender, EventArgs e)
         {
             if (!((CheckBox)sender).Enabled)
             {
                 ((CheckBox)sender).Checked = false;
             }
-        }
-
-        private void checkBoxLength_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxAppL.Enabled = checkBoxLength.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
         }
 
         private void checkBoxAge_CheckedChanged(object sender, EventArgs e)
@@ -320,10 +250,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             pageReport.SetNavigation(true);  
             
-            Log.Write(EventType.WizardEnded, "Stock composition wizard is finished for {0}, dominants are {1}, so {2} are too.",
-                SpeciesRow.Species, 
-                lengthCompositionWizard != null ? lengthCompositionWizard.CatchesComposition.GetDominants().Merge() : Constants.Null,
-                ageCompositionWizard != null ? ageCompositionWizard.CatchesComposition.GetDominants().Merge() : Constants.Null);
+            Log.Write(EventType.WizardEnded, "Stock composition wizard is finished for {0}.", SpeciesRow.Species);
             if (!UserSettings.KeepWizard) Close();
         }
 

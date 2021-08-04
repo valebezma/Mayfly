@@ -37,7 +37,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
             foreach (Data.SpeciesRow speciesRow in Data.Species)
             {
-                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.FullName);
+                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.ShortName);
             }
 
             UpdateSample(SelectedSpecies);

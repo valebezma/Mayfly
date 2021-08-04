@@ -325,7 +325,7 @@ namespace Mayfly.Fish
             {
                 if (logRow == LogRow) continue;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.FullName);
+                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.ShortName);
                 item.Tag = logRow;
                 item.Click += redefineDomesticSpecies_Click;
                 contextItemRedefine.DropDownItems.Insert(0, item);
@@ -340,7 +340,7 @@ namespace Mayfly.Fish
                 {
                     ToolStripItem speciesItem = new ToolStripMenuItem();
                     speciesItem.Tag = speciesRow;
-                    speciesItem.Text = speciesRow.FullName;
+                    speciesItem.Text = speciesRow.ShortName;
                     speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
                     contextRedefineAll.DropDownItems.Add(speciesItem);
                 }
@@ -362,7 +362,7 @@ namespace Mayfly.Fish
                     {
                         ToolStripItem speciesItem = new ToolStripMenuItem();
                         speciesItem.Tag = representativeRow.SpeciesRow;
-                        speciesItem.Text = representativeRow.SpeciesRow.FullName;
+                        speciesItem.Text = representativeRow.SpeciesRow.ShortName;
                         speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
 
                         taxaItem.DropDownItems.Add(speciesItem);

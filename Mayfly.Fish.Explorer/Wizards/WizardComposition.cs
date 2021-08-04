@@ -76,7 +76,7 @@ namespace Mayfly.Fish.Explorer.Survey
         public WizardComposition(CardStack data, Composition frame, Data.SpeciesRow speciesRow, CompositionColumn column) : this(data, frame)
         {
             SpeciesRow = speciesRow;
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
 
             ColumnL.Visible = column.HasFlag(CompositionColumn.LengthSample);
             ColumnW.Visible = column.HasFlag(CompositionColumn.MassSample);

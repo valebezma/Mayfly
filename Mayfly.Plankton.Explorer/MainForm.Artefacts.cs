@@ -62,8 +62,7 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private void GetSpeciesFullName(DataGridViewRow gridRow,
-            DataGridViewColumn gridColumnTyping, DataGridViewColumn gridColumnShowing)
+        private void GetSpeciesFullName(DataGridViewRow gridRow, DataGridViewColumn gridColumnTyping, DataGridViewColumn gridColumnShowing)
         {
             if (gridRow.Cells[gridColumnTyping.Index].Value == null)
             {

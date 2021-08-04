@@ -45,7 +45,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
         }
 
 

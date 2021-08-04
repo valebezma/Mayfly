@@ -119,9 +119,9 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
-            labelStockInstruction.ResetFormatted(SpeciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            labelStockInstruction.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
 
             Log.Write(EventType.WizardStarted, "Extrapolation wizard is started for {0}.", speciesRow.Species);
         }
@@ -553,7 +553,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != ExpressionVariant.Square;
 
-            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.KeyRecord.FullName);
+            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.KeyRecord.ShortName);
 
             this.Replace(gearWizard);
             //if (wizardExplorer.SelectedPage != pageCpue) wizardExplorer.SetSelectedPage(pageCpue);

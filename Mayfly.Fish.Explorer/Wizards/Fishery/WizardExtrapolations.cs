@@ -394,7 +394,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (compositionWizard == null)
             {
-                compositionWizard = new WizardComposition(Data, gearWizard.SelectedData.GetCenosisCompositionFrame());
+                compositionWizard = new WizardComposition(Data, gearWizard.SelectedData.GetBasicCenosisComposition());
                 compositionWizard.Returned += compositionWizard_Returned;
                 compositionWizard.Finished += compositionWizard_Finished;
             }
@@ -421,7 +421,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             foreach (Category species in compositionWizard.CatchesComposition)
             {
-                GamingStocks.Add(new SpeciesSwarm(species.Name));
+                GamingStocks.Add(species);
             }
 
             for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)

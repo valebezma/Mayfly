@@ -774,7 +774,7 @@ namespace Mayfly.Extensions
 
         public static Composition GetCenosisComposition(this Data data)
         {
-            return data.GetStack().GetCenosisComposition();
+            return data.GetStack().GetBasicCenosisComposition();
         }
 
         public static void AddSpeciesMenus(this ToolStripMenuItem item, CardStack stack, EventHandler command)

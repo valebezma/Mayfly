@@ -45,11 +45,11 @@ namespace Mayfly.Wild
 
         // Fractions
 
-        public double Juveniles { get; private set; }
+        public double Juveniles { get; set; }
 
-        public double Males { get; private set; }
+        public double Males { get; set; }
 
-        public double Females { get; private set; }
+        public double Females { get; set; }
 
         // Samples
 
@@ -102,26 +102,22 @@ namespace Mayfly.Wild
 
         public void SetSexualComposition(double juveniles, double males, double females)
         {
-            double total = juveniles + males + females;
-
-            Juveniles = juveniles / total;
-            Males = males / total;
-            Females = females / total;
+            Juveniles = juveniles;
+            Males = males;
+            Females = females;
         }
 
         public void SetSexualComposition(int juveniles, int males, int females)
         {
-            int total = juveniles + males + females;
-
-            Juveniles = (double)juveniles / (double)total;
-            Males = (double)males / (double)total;
-            Females = (double)females / (double)total;
+            Juveniles = juveniles;
+            Males = males;
+            Females = females;
         }
 
         public string GetSexualComposition()
         {
-            return double.IsNaN(Juveniles + Males + Females) ? Constants.Null : string.Format("{0:P0} : {1:P0} : {2:P0}", Juveniles, Males, Females);
-            //return double.IsNaN(Juveniles + Males + Females) ? Constants.Null : string.Format("{0:P0} ← {1:P0} → {2:P0}", Males, Juveniles, Females);
+            double total = Juveniles + Males + Females;
+            return double.IsNaN(Juveniles + Males + Females) ? Constants.Null : string.Format("{0:P0} : {1:P0} : {2:P0}", Juveniles / total, Males / total, Females / total);
         }
 
         public override string ToString()

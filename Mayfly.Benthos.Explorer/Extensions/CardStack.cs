@@ -85,44 +85,12 @@ namespace Mayfly.Benthos.Explorer
 
         public static SpeciesComposition GetCenosisComposition(this CardStack stack)
         {
-            return stack.GetCenosisComposition(Benthos.UserSettings.SpeciesIndex);
-        }
-
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
-        {
-            SpeciesComposition result = stack.GetCenosisCompositionFrame();
+            SpeciesComposition result = stack.GetBasicCenosisComposition();
 
             foreach (SpeciesSwarm category in result)
             {
-                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
-
-                category.DataRow = key.Species.FindBySpecies(speciesRow.Species);
-
-                category.Quantity = (int)stack.Quantity(speciesRow);
-                category.Mass = stack.Mass(speciesRow);
-                category.Abundance = stack.GetAverageAbundance(speciesRow);
-                category.Biomass = stack.GetAverageBiomass(speciesRow);
-
-                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
-
-            }
-
-            result.SamplesCount = stack.Count;
-            result.Sort();
-
-            return result;
-        }
-
-        public static TaxaComposition GetTaxonomicComposition(this CardStack stack, Species.SpeciesKey.BaseRow baseRow)
-        {
-            SpeciesComposition spc = stack.GetCenosisComposition((Species.SpeciesKey)baseRow.Table.DataSet);
-
-            TaxaComposition result = new TaxaComposition(spc, baseRow);
-
-            foreach (SpeciesSwarmPool pool in result)
-            {
-                pool.SamplesCount = stack.GetOccurrenceCases(pool.SpeciesRows);
+                category.Abundance = stack.GetAverageAbundance(category.SpeciesRow);
+                category.Biomass = stack.GetAverageBiomass(category.SpeciesRow);
             }
 
             return result;

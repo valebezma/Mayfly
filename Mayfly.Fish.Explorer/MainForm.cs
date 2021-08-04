@@ -1842,7 +1842,7 @@ namespace Mayfly.Fish.Explorer
 
             if (baseSpc == null)
             {
-                Composition speciesComposition = AllowedStack.GetCenosisComposition();
+                Composition speciesComposition = AllowedStack.GetBasicCenosisComposition();
                 for (int i = 0; i < speciesComposition.Count; i++)
                 {
                     DataGridViewRow gridRow = new DataGridViewRow();
@@ -1901,7 +1901,7 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    gridRow.Cells[columnSpcValid.Index].Value = speciesRow.FullName;
+                    gridRow.Cells[columnSpcValid.Index].Value = speciesRow.ScientificName;
                 }
             }
         }
@@ -3489,7 +3489,7 @@ namespace Mayfly.Fish.Explorer
                 Composition composition;
 
                 if (baseSpc == null) {
-                    composition = stack.GetCenosisComposition();
+                    composition = stack.GetBasicCenosisComposition();
                 } else {
                     composition = stack.GetTaxonomicComposition(baseSpc);
                 }
@@ -3507,9 +3507,9 @@ namespace Mayfly.Fish.Explorer
             Composition composition;
 
             if (baseSpc == null) {
-                composition = AllowedStack.GetCenosisCompositionFrame();
+                composition = AllowedStack.GetBasicCenosisComposition();
             } else {
-                composition = AllowedStack.GetTaxonomicCompositionFrame(baseSpc);
+                composition = AllowedStack.GetTaxonomicComposition(baseSpc);
             }
 
             CompositionComparison comcom = new CompositionComparison(

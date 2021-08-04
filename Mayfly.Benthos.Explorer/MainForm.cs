@@ -1120,7 +1120,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (baseSpc == null)
             {
-                composition = FullStack.GetCenosisComposition(SpeciesIndex);
+                composition = FullStack.GetCenosisComposition();
             }
             else
             {
@@ -1268,7 +1268,7 @@ namespace Mayfly.Benthos.Explorer
                 Composition composition;
 
                 if (baseLog == null) {
-                    composition = stack.GetCenosisComposition(SpeciesIndex);
+                    composition = stack.GetCenosisComposition();
                 } else {
                     composition = stack.GetTaxonomicComposition(baseLog);
                 }
@@ -1285,9 +1285,9 @@ namespace Mayfly.Benthos.Explorer
             Composition composition;
 
             if (baseLog == null) {
-                composition = FullStack.GetCenosisCompositionFrame();
+                composition = FullStack.GetBasicCenosisComposition();
             } else {
-                composition = FullStack.GetTaxonomicCompositionFrame(baseLog);
+                composition = FullStack.GetTaxonomicComposition(baseLog);
             }
 
             CompositionComparison comcom = new CompositionComparison(

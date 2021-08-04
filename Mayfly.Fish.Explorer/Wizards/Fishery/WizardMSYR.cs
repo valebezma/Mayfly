@@ -39,8 +39,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
 
             Age ga = Service.GetGamingAge(SpeciesRow.Species);
             if (ga != null) textBoxTr.Value = ga;

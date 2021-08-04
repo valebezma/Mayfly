@@ -133,7 +133,7 @@ namespace Mayfly.Extensions
             return result;
         }
         
-        public static void AddSpeciesMenus(this ToolStripMenuItem item, CardStack stack, EventHandler command)
+        public static void PopulateSpeciesMenus(this ToolStripMenuItem item, CardStack stack, EventHandler command)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {

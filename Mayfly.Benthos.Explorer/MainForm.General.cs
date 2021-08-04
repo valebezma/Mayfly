@@ -204,7 +204,7 @@ namespace Mayfly.Benthos.Explorer
 
                 #endregion
 
-                menuItemLoadIndividuals.AddSpeciesMenus(FullStack, speciesInd_Click);
+                menuItemLoadIndividuals.PopulateSpeciesMenus(FullStack, speciesInd_Click);
 
                 if (!modelCalc.IsBusy && !IsClosing)
                 {

@@ -175,7 +175,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void structureCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            NaturalComposition = gearWizard.SelectedData.GetCenosisComposition();
+            NaturalComposition = gearWizard.SelectedData.GetBasicCenosisComposition();
         }
 
         private void structureCalculator_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -200,7 +200,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void selectivityCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            SpeciesComposition composition = SelectedStack.GetCenosisComposition();
+            SpeciesComposition composition = SelectedStack.GetBasicCenosisComposition();
             composition.Weight = SelectedStack.GetEffort(gearWizard.SelectedSamplerType, gearWizard.SelectedUnit.Variant);
             e.Result = composition;
         }

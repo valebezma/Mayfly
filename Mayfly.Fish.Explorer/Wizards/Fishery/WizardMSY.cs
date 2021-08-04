@@ -67,8 +67,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
 
             buttonVpa.Enabled =
                 buttonGrowth.Enabled = true;

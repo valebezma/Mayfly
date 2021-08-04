@@ -444,7 +444,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(SpeciesKey.SpeciesRow[] speciesRows)
+        public int GetOccurrenceCases(Data.SpeciesRow[] speciesRows)
         {
             int result = 0;
 
@@ -452,9 +452,9 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+                    foreach (Data.SpeciesRow speciesRow in speciesRows)
                     {
-                        if (speciesRow.Name == logRow.SpeciesRow.Species)
+                        if (speciesRow == logRow.SpeciesRow)
                         {
                             result++;
                             goto Next;

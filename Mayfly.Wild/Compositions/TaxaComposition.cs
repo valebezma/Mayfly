@@ -11,13 +11,10 @@ namespace Mayfly.Wild
 {
     public class TaxaComposition : Composition
     {
-        private TaxaComposition(string name)
-            : base(name)
-        { }
-
         public TaxaComposition(SpeciesComposition speciesComposition, SpeciesKey.BaseRow baseRow, bool includeEmpty)
             : base(baseRow.BaseName)
         {
+            List<SpeciesSwarm> essentials = new List<SpeciesSwarm>();
 
             foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
             {
@@ -40,6 +37,8 @@ namespace Mayfly.Wild
 
                     abundances.Add(speciesSwarm.Abundance);
                     biomasses.Add(speciesSwarm.Biomass);
+
+                    essentials.Add(speciesSwarm);
                 }
 
                 taxaCategory.SpeciesSwarms = swarms.ToArray();
@@ -49,15 +48,15 @@ namespace Mayfly.Wild
                 if (includeEmpty || taxaCategory.Quantity > 0) this.AddCategory(taxaCategory);
             }
 
-
             SpeciesSwarmPool varia = new SpeciesSwarmPool(Species.Resources.Interface.Varia);
 
             SpeciesKey.SpeciesRow[] various = baseRow.Varia;
             List<SpeciesSwarm> variaswarms = new List<SpeciesSwarm>();
 
+
             foreach (SpeciesSwarm speciesSwarm in speciesComposition)
             {
-                if (!various.Contains(speciesSwarm.DataRow)) continue;
+                if (essentials.Contains(speciesSwarm)) continue;
 
                 variaswarms.Add(speciesSwarm);
 
@@ -90,15 +89,15 @@ namespace Mayfly.Wild
     {
         public SpeciesKey.TaxaRow DataRow { get; set; }
 
-        public SpeciesKey.SpeciesRow[] SpeciesRows
+        public Data.SpeciesRow[] SpeciesRows
         {
             get
             {
-                List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+                List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
 
                 foreach (SpeciesSwarm swarm in SpeciesSwarms)
                 {
-                    if (swarm.DataRow != null) result.Add(swarm.DataRow);
+                    result.Add(swarm.SpeciesRow);
                 }
 
                 return result.ToArray();

@@ -38,8 +38,8 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(SpeciesRow.KeyRecord.FullName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.FullName, SpeciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(SpeciesRow.KeyRecord.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName, SpeciesRow.KeyRecord.ShortName);
 
             Log.Write(EventType.WizardStarted, "Selectivity wizard is started for {0}.", 
                 speciesRow.Species);

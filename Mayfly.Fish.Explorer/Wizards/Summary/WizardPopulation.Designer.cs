@@ -32,26 +32,27 @@
             this.wizardExplorer = new AeroWizard.WizardControl();
             this.pageStart = new AeroWizard.WizardPage();
             this.labelStart = new System.Windows.Forms.Label();
-            this.pageLength = new AeroWizard.WizardPage();
-            this.labelLength = new System.Windows.Forms.Label();
-            this.plotL = new Mayfly.Mathematics.Charts.Plot();
+            this.pageBasic = new AeroWizard.WizardPage();
+            this.labelBasic = new System.Windows.Forms.Label();
             this.pageAge = new AeroWizard.WizardPage();
             this.plotT = new Mayfly.Mathematics.Charts.Plot();
             this.label1 = new System.Windows.Forms.Label();
             this.pageReport = new AeroWizard.WizardPage();
             this.checkBoxAge = new System.Windows.Forms.CheckBox();
-            this.checkBoxLength = new System.Windows.Forms.CheckBox();
             this.checkBoxAppKeys = new System.Windows.Forms.CheckBox();
             this.checkBoxAppT = new System.Windows.Forms.CheckBox();
-            this.checkBoxAppL = new System.Windows.Forms.CheckBox();
             this.labelReport = new System.Windows.Forms.Label();
             this.checkBoxGears = new System.Windows.Forms.CheckBox();
             this.structureCalculator = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
+            this.labelBiomass = new System.Windows.Forms.Label();
+            this.labelAbundance = new System.Windows.Forms.Label();
+            this.labelLength = new System.Windows.Forms.Label();
+            this.buttonW = new System.Windows.Forms.Button();
+            this.buttonL = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
-            this.pageLength.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.plotL)).BeginInit();
+            this.pageBasic.SuspendLayout();
             this.pageAge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).BeginInit();
             this.pageReport.SuspendLayout();
@@ -63,7 +64,7 @@
             resources.ApplyResources(this.wizardExplorer, "wizardExplorer");
             this.wizardExplorer.Name = "wizardExplorer";
             this.wizardExplorer.Pages.Add(this.pageStart);
-            this.wizardExplorer.Pages.Add(this.pageLength);
+            this.wizardExplorer.Pages.Add(this.pageBasic);
             this.wizardExplorer.Pages.Add(this.pageAge);
             this.wizardExplorer.Pages.Add(this.pageReport);
             this.wizardExplorer.Cancelling += new System.ComponentModel.CancelEventHandler(this.wizardExplorer_Cancelling);
@@ -80,31 +81,22 @@
             resources.ApplyResources(this.labelStart, "labelStart");
             this.labelStart.Name = "labelStart";
             // 
-            // pageLength
+            // pageBasic
             // 
-            this.pageLength.Controls.Add(this.labelLength);
-            this.pageLength.Controls.Add(this.plotL);
-            this.pageLength.Name = "pageLength";
-            resources.ApplyResources(this.pageLength, "pageLength");
-            this.pageLength.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLength_Commit);
-            this.pageLength.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLength_Rollback);
+            this.pageBasic.Controls.Add(this.buttonL);
+            this.pageBasic.Controls.Add(this.buttonW);
+            this.pageBasic.Controls.Add(this.labelBiomass);
+            this.pageBasic.Controls.Add(this.labelAbundance);
+            this.pageBasic.Controls.Add(this.labelLength);
+            this.pageBasic.Controls.Add(this.labelBasic);
+            this.pageBasic.Name = "pageBasic";
+            resources.ApplyResources(this.pageBasic, "pageBasic");
+            this.pageBasic.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageBasic_Commit);
             // 
-            // labelLength
+            // labelBasic
             // 
-            resources.ApplyResources(this.labelLength, "labelLength");
-            this.labelLength.Name = "labelLength";
-            // 
-            // plotL
-            // 
-            resources.ApplyResources(this.plotL, "plotL");
-            this.plotL.AxisXAutoInterval = false;
-            this.plotL.AxisXAutoMaximum = false;
-            this.plotL.AxisXAutoMinimum = false;
-            this.plotL.AxisYAutoMaximum = false;
-            this.plotL.AxisYAutoMinimum = false;
-            this.plotL.Name = "plotL";
-            this.plotL.ShowLegend = false;
-            this.plotL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            resources.ApplyResources(this.labelBasic, "labelBasic");
+            this.labelBasic.Name = "labelBasic";
             // 
             // pageAge
             // 
@@ -133,15 +125,14 @@
             // pageReport
             // 
             this.pageReport.Controls.Add(this.checkBoxAge);
-            this.pageReport.Controls.Add(this.checkBoxLength);
             this.pageReport.Controls.Add(this.checkBoxAppKeys);
             this.pageReport.Controls.Add(this.checkBoxAppT);
-            this.pageReport.Controls.Add(this.checkBoxAppL);
             this.pageReport.Controls.Add(this.labelReport);
             this.pageReport.Controls.Add(this.checkBoxGears);
             this.pageReport.Name = "pageReport";
             resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
+            this.pageReport.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageReport_Rollback);
             // 
             // checkBoxAge
             // 
@@ -152,16 +143,6 @@
             this.checkBoxAge.UseVisualStyleBackColor = true;
             this.checkBoxAge.CheckedChanged += new System.EventHandler(this.checkBoxAge_CheckedChanged);
             this.checkBoxAge.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
-            // 
-            // checkBoxLength
-            // 
-            resources.ApplyResources(this.checkBoxLength, "checkBoxLength");
-            this.checkBoxLength.Checked = true;
-            this.checkBoxLength.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLength.Name = "checkBoxLength";
-            this.checkBoxLength.UseVisualStyleBackColor = true;
-            this.checkBoxLength.CheckedChanged += new System.EventHandler(this.checkBoxLength_CheckedChanged);
-            this.checkBoxLength.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxAppKeys
             // 
@@ -176,13 +157,6 @@
             this.checkBoxAppT.Name = "checkBoxAppT";
             this.checkBoxAppT.UseVisualStyleBackColor = true;
             this.checkBoxAppT.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
-            // 
-            // checkBoxAppL
-            // 
-            resources.ApplyResources(this.checkBoxAppL, "checkBoxAppL");
-            this.checkBoxAppL.Name = "checkBoxAppL";
-            this.checkBoxAppL.UseVisualStyleBackColor = true;
-            this.checkBoxAppL.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // labelReport
             // 
@@ -206,6 +180,33 @@
             this.reporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reporter_DoWork);
             this.reporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reporter_RunWorkerCompleted);
             // 
+            // labelBiomass
+            // 
+            resources.ApplyResources(this.labelBiomass, "labelBiomass");
+            this.labelBiomass.Name = "labelBiomass";
+            // 
+            // labelAbundance
+            // 
+            resources.ApplyResources(this.labelAbundance, "labelAbundance");
+            this.labelAbundance.Name = "labelAbundance";
+            // 
+            // labelLength
+            // 
+            resources.ApplyResources(this.labelLength, "labelLength");
+            this.labelLength.Name = "labelLength";
+            // 
+            // buttonW
+            // 
+            resources.ApplyResources(this.buttonW, "buttonW");
+            this.buttonW.Name = "buttonW";
+            this.buttonW.UseVisualStyleBackColor = true;
+            // 
+            // buttonL
+            // 
+            resources.ApplyResources(this.buttonL, "buttonL");
+            this.buttonL.Name = "buttonL";
+            this.buttonL.UseVisualStyleBackColor = true;
+            // 
             // WizardStockComposition
             // 
             resources.ApplyResources(this, "$this");
@@ -214,8 +215,8 @@
             this.Name = "WizardStockComposition";
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).EndInit();
             this.pageStart.ResumeLayout(false);
-            this.pageLength.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.plotL)).EndInit();
+            this.pageBasic.ResumeLayout(false);
+            this.pageBasic.PerformLayout();
             this.pageAge.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).EndInit();
             this.pageReport.ResumeLayout(false);
@@ -233,17 +234,19 @@
         private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.Label labelReport;
         private System.Windows.Forms.CheckBox checkBoxGears;
-        private System.Windows.Forms.CheckBox checkBoxAppL;
-        private System.Windows.Forms.CheckBox checkBoxLength;
         private System.ComponentModel.BackgroundWorker reporter;
-        private AeroWizard.WizardPage pageLength;
         private AeroWizard.WizardPage pageAge;
-        private Mathematics.Charts.Plot plotL;
-        private System.Windows.Forms.Label labelLength;
         private Mathematics.Charts.Plot plotT;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxAge;
         private System.Windows.Forms.CheckBox checkBoxAppT;
         private System.Windows.Forms.CheckBox checkBoxAppKeys;
+        private AeroWizard.WizardPage pageBasic;
+        private System.Windows.Forms.Label labelBasic;
+        private System.Windows.Forms.Label labelBiomass;
+        private System.Windows.Forms.Label labelAbundance;
+        private System.Windows.Forms.Label labelLength;
+        private System.Windows.Forms.Button buttonL;
+        private System.Windows.Forms.Button buttonW;
     }
 }

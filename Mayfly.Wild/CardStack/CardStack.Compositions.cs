@@ -2,63 +2,44 @@
 {
     partial class CardStack
     {
-        public SpeciesComposition GetCenosisCompositionFrame()
+        public SpeciesSwarm GetSwarm(Data.SpeciesRow speciesRow)
         {
-            SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, this.GetSpecies().Length);
-
-            foreach (Data.SpeciesRow speciesRow in this.GetSpecies())
+            return new SpeciesSwarm(speciesRow)
             {
-                SpeciesSwarm category = new SpeciesSwarm(speciesRow.Species);                
-                category.LengthSample = this.Lengths(speciesRow);
-                category.MassSample = this.Masses(speciesRow);
-                category.SamplesCount = this.GetLogRows(speciesRow).Length;
-                result.AddCategory(category);
-            }
-
-            return result;
+                LengthSample = Lengths(speciesRow),
+                MassSample = Masses(speciesRow),
+                SamplesCount = GetLogRows(speciesRow).Length,
+                Quantity = (int)Quantity(speciesRow),
+                Mass = Mass(speciesRow),
+                Juveniles = this.Quantity(speciesRow, Sex.Juvenile),
+                Males = this.Quantity(speciesRow, Sex.Male),
+                Females = this.Quantity(speciesRow, Sex.Female)                
+            };
         }
 
-        public SpeciesComposition GetCenosisComposition(Data addData, SpeciesComposition example)
+        public SpeciesComposition GetBasicCenosisComposition()
         {
-            SpeciesComposition result = this.GetCenosisCompositionFrame(example);
+            SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, GetSpecies().Length);
 
-            foreach (Category category in result)
+            foreach (Data.SpeciesRow speciesRow in GetSpecies())
             {
-                Data.SpeciesRow speciesRow = Parent.Species.FindBySpecies(category.Name);
-
-                if (speciesRow == null) continue;
-
-                category.Quantity = (int)this.Quantity(speciesRow);
-                category.Mass = this.Mass(speciesRow);
-                category.SetSexualComposition(this.Quantity(speciesRow, Sex.Juvenile),
-                    this.Quantity(speciesRow, Sex.Male), this.Quantity(speciesRow, Sex.Female));
-                category.SamplesCount = this.GetLogRows(speciesRow).Length;
+                result.AddCategory(GetSwarm(speciesRow));
             }
 
             result.SamplesCount = this.Count;
-
+            result.Sort();
             return result;
         }
 
-        public SpeciesComposition GetCenosisCompositionFrame(SpeciesComposition example)
+        public TaxaComposition GetTaxonomicComposition(Species.SpeciesKey.BaseRow baseRow)
         {
-            SpeciesComposition result = new SpeciesComposition(string.Empty, example.Count);
+            TaxaComposition result = new TaxaComposition(GetBasicCenosisComposition(), baseRow, true);
 
-            foreach (Category categoy in example)
+            foreach (SpeciesSwarmPool pool in result)
             {
-                Category category = new Category(categoy.Name);
-                result.AddCategory(category);
+                pool.SamplesCount = GetOccurrenceCases(pool.SpeciesRows);
             }
 
-            return result;
-        }
-
-
-
-        public TaxaComposition GetTaxonomicCompositionFrame(Species.SpeciesKey.BaseRow baseRow)
-        {
-            SpeciesComposition spc = GetCenosisCompositionFrame();
-            TaxaComposition result = new TaxaComposition(spc, baseRow, true);
             return result;
         }
     }

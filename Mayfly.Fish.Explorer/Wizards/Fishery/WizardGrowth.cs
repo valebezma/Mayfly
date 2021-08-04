@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.FullName);
+            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
 
             Log.Write(EventType.WizardStarted, "Growth wizard is started for {0}.", 
                 speciesRow.Species);
@@ -154,7 +154,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         private void categoryCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
             PseudoCohort = Data.GetSampleAgeComposition(SpeciesRow);
-            PseudoCohort.Name = string.Format("{0} stock cross section", SpeciesRow.KeyRecord.FullName);            
+            PseudoCohort.Name = string.Format("{0} stock cross section", SpeciesRow.KeyRecord.ShortName);            
         }
 
         private void categoryCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
