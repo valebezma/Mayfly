@@ -22,6 +22,8 @@ namespace Mayfly.Fish.Explorer.Survey
 
         public SpeciesComposition NaturalComposition;
 
+        SpeciesSwarm selectedSwarm;
+
 
 
         private WizardCenosis()
@@ -39,6 +41,9 @@ namespace Mayfly.Fish.Explorer.Survey
             columnSelectivityB.ValueType =
             columnSelectivityBPer.ValueType =
             columnSelectivityBpue.ValueType = typeof(double);
+
+            comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
+            comboBoxDiversity.SelectedIndex = (int)Wild.UserSettings.Diversity;
 
             this.RestoreAllCheckStates();
         }
@@ -96,13 +101,13 @@ namespace Mayfly.Fish.Explorer.Survey
 
             // Start Appendices
 
-            if (checkBoxAppCatches.Checked | checkBoxAppCPUE.Checked | checkBoxAppAB.Checked)
+            if (checkBoxByClass.Checked | checkBoxSpreadsheets.Checked | checkBoxAppExample.Checked)
             {
                 report.BreakPage(PageBreakOption.Odd);
                 report.AddChapterTitle(Resources.Reports.Chapter.Appendices);
             }
 
-            if (checkBoxAppCatches.Checked)
+            if (checkBoxByClass.Checked)
             {
                 report.AddSectionTitle(string.Format(Resources.Reports.Sections.Catches.HeaderSingleClass, gearWizard.SelectedSamplerType.ToDisplay()));
 
@@ -118,19 +123,25 @@ namespace Mayfly.Fish.Explorer.Survey
                 }
             }
 
-            if (checkBoxAppCPUE.Checked)
+            if (checkBoxSpreadsheets.Checked)
             {
                 compositionWizard.AppendCalculationSectionTo(report);
             }
 
-            if (checkBoxAppAB.Checked)
+            if (checkBoxAppExample.Checked)
             {
-                compositionWizard.AddAbundanceAppendices(report);
+                AddCalculation(report, selectedSwarm);
             }
 
             report.EndBranded();
 
             return report;
+        }
+
+        public void AddCalculation(Report report, SpeciesSwarm swarm)
+        {
+            report.AddSectionTitle("Calculation Example");
+            report.AddParagraph("Calculation example not implemented yet.");
         }
 
 
@@ -239,7 +250,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
         private void pageSelectivity_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            checkBoxAppCPUE.Enabled = gearWizard.IsMultipleClasses;
+            checkBoxAppExample.Enabled = gearWizard.IsMultipleClasses;
 
             if (compositionWizard == null)
             {
@@ -279,7 +290,7 @@ namespace Mayfly.Fish.Explorer.Survey
                     gearWizard.SelectedUnit.Unit);
             }
 
-            checkBoxAppCatches.Enabled =
+            checkBoxByClass.Enabled =
                 compositionWizard.CatchesComposition.SeparateCompositions.Count > 1;
             calculatorCenosis.RunWorkerAsync();
         }
@@ -317,8 +328,7 @@ namespace Mayfly.Fish.Explorer.Survey
                 spreadSheetComposition[ColumnCompositionDominance.Index, i].Value = NaturalComposition[i].Dominance;
             }
 
-            textBoxDiversity.Text = NaturalComposition.Diversity.ToString("N3");
-
+            ComboBoxDiversity_SelectedIndexChanged(sender, e);
             pageComposition.SetNavigation(true);
         }
 
@@ -349,6 +359,12 @@ namespace Mayfly.Fish.Explorer.Survey
             }
         }
 
+        private void ComboBoxDiversity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxDiversity.ContainsFocus) Wild.UserSettings.Diversity = (DiversityIndex)comboBoxDiversity.SelectedIndex;
+            textBoxDiversity.Text = NaturalComposition == null ? string.Empty : NaturalComposition.Diversity.ToString("N3");
+        }
+
         private void pageComposition_Commit(object sender, WizardPageConfirmEventArgs e)
         {
             NaturalComposition.SetFormats(
@@ -366,11 +382,13 @@ namespace Mayfly.Fish.Explorer.Survey
 
                 ColumnCompositionOccurrance.DefaultCellStyle.Format,
                 ColumnCompositionDominance.DefaultCellStyle.Format);
+
+            comboBoxExample.DataSource = NaturalComposition;
         }
 
         private void checkBoxCatches_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppCatches.Enabled = checkBoxAppCPUE.Enabled = checkBoxCatches.Checked && gearWizard.IsMultipleClasses;
+            checkBoxByClass.Enabled = checkBoxAppExample.Enabled = checkBoxCatches.Checked && gearWizard.IsMultipleClasses;
         }
 
         private void checkBox_EnabledChanged(object sender, EventArgs e)
@@ -406,6 +424,16 @@ namespace Mayfly.Fish.Explorer.Survey
         private void wizardExplorer_Cancelling(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CheckBoxAppExample_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxExample.Enabled = checkBoxAppExample.Checked;
+        }
+
+        private void ComboBoxExample_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedSwarm = (SpeciesSwarm)comboBoxExample.SelectedItem;
         }
     }
 }

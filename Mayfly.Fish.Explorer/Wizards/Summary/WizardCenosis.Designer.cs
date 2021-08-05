@@ -65,6 +65,7 @@
             this.columnSelectivityBpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSelectivityBPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageComposition = new AeroWizard.WizardPage();
+            this.comboBoxDiversity = new System.Windows.Forms.ComboBox();
             this.textBoxDiversity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,10 +79,11 @@
             this.ColumnCompositionOccurrance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCompositionDominance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageReport = new AeroWizard.WizardPage();
-            this.checkBoxAppCatches = new System.Windows.Forms.CheckBox();
+            this.comboBoxExample = new System.Windows.Forms.ComboBox();
+            this.checkBoxSpreadsheets = new System.Windows.Forms.CheckBox();
+            this.checkBoxByClass = new System.Windows.Forms.CheckBox();
             this.labelReport = new System.Windows.Forms.Label();
-            this.checkBoxAppAB = new System.Windows.Forms.CheckBox();
-            this.checkBoxAppCPUE = new System.Windows.Forms.CheckBox();
+            this.checkBoxAppExample = new System.Windows.Forms.CheckBox();
             this.checkBoxCenosis = new System.Windows.Forms.CheckBox();
             this.checkBoxCatches = new System.Windows.Forms.CheckBox();
             this.checkBoxGears = new System.Windows.Forms.CheckBox();
@@ -257,6 +259,7 @@
             // 
             // pageComposition
             // 
+            this.pageComposition.Controls.Add(this.comboBoxDiversity);
             this.pageComposition.Controls.Add(this.textBoxDiversity);
             this.pageComposition.Controls.Add(this.label1);
             this.pageComposition.Controls.Add(this.label2);
@@ -265,6 +268,14 @@
             resources.ApplyResources(this.pageComposition, "pageComposition");
             this.pageComposition.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Commit);
             this.pageComposition.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Rollback);
+            // 
+            // comboBoxDiversity
+            // 
+            resources.ApplyResources(this.comboBoxDiversity, "comboBoxDiversity");
+            this.comboBoxDiversity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDiversity.FormattingEnabled = true;
+            this.comboBoxDiversity.Name = "comboBoxDiversity";
+            this.comboBoxDiversity.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDiversity_SelectedIndexChanged);
             // 
             // textBoxDiversity
             // 
@@ -364,10 +375,11 @@
             // 
             // pageReport
             // 
-            this.pageReport.Controls.Add(this.checkBoxAppCatches);
+            this.pageReport.Controls.Add(this.comboBoxExample);
+            this.pageReport.Controls.Add(this.checkBoxSpreadsheets);
+            this.pageReport.Controls.Add(this.checkBoxByClass);
             this.pageReport.Controls.Add(this.labelReport);
-            this.pageReport.Controls.Add(this.checkBoxAppAB);
-            this.pageReport.Controls.Add(this.checkBoxAppCPUE);
+            this.pageReport.Controls.Add(this.checkBoxAppExample);
             this.pageReport.Controls.Add(this.checkBoxCenosis);
             this.pageReport.Controls.Add(this.checkBoxCatches);
             this.pageReport.Controls.Add(this.checkBoxGears);
@@ -375,36 +387,38 @@
             resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
             // 
-            // checkBoxAppCatches
+            // comboBoxExample
             // 
-            resources.ApplyResources(this.checkBoxAppCatches, "checkBoxAppCatches");
-            this.checkBoxAppCatches.Checked = true;
-            this.checkBoxAppCatches.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAppCatches.Name = "checkBoxAppCatches";
-            this.checkBoxAppCatches.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.comboBoxExample, "comboBoxExample");
+            this.comboBoxExample.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxExample.FormattingEnabled = true;
+            this.comboBoxExample.Name = "comboBoxExample";
+            this.comboBoxExample.SelectedIndexChanged += new System.EventHandler(this.ComboBoxExample_SelectedIndexChanged);
+            // 
+            // checkBoxSpreadsheets
+            // 
+            resources.ApplyResources(this.checkBoxSpreadsheets, "checkBoxSpreadsheets");
+            this.checkBoxSpreadsheets.Name = "checkBoxSpreadsheets";
+            this.checkBoxSpreadsheets.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxByClass
+            // 
+            resources.ApplyResources(this.checkBoxByClass, "checkBoxByClass");
+            this.checkBoxByClass.Name = "checkBoxByClass";
+            this.checkBoxByClass.UseVisualStyleBackColor = true;
             // 
             // labelReport
             // 
             resources.ApplyResources(this.labelReport, "labelReport");
             this.labelReport.Name = "labelReport";
             // 
-            // checkBoxAppAB
+            // checkBoxAppExample
             // 
-            resources.ApplyResources(this.checkBoxAppAB, "checkBoxAppAB");
-            this.checkBoxAppAB.Checked = true;
-            this.checkBoxAppAB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAppAB.Name = "checkBoxAppAB";
-            this.checkBoxAppAB.UseVisualStyleBackColor = true;
-            this.checkBoxAppAB.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
-            // 
-            // checkBoxAppCPUE
-            // 
-            resources.ApplyResources(this.checkBoxAppCPUE, "checkBoxAppCPUE");
-            this.checkBoxAppCPUE.Checked = true;
-            this.checkBoxAppCPUE.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAppCPUE.Name = "checkBoxAppCPUE";
-            this.checkBoxAppCPUE.UseVisualStyleBackColor = true;
-            this.checkBoxAppCPUE.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            resources.ApplyResources(this.checkBoxAppExample, "checkBoxAppExample");
+            this.checkBoxAppExample.Name = "checkBoxAppExample";
+            this.checkBoxAppExample.UseVisualStyleBackColor = true;
+            this.checkBoxAppExample.CheckedChanged += new System.EventHandler(this.CheckBoxAppExample_CheckedChanged);
+            this.checkBoxAppExample.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxCenosis
             // 
@@ -485,21 +499,26 @@
         private System.ComponentModel.BackgroundWorker reporter;
         private AeroWizard.WizardPage pageReport;
         private System.Windows.Forms.Label labelReport;
-        private System.Windows.Forms.CheckBox checkBoxAppCPUE;
+        private System.Windows.Forms.CheckBox checkBoxAppExample;
         private System.Windows.Forms.CheckBox checkBoxCenosis;
         private System.Windows.Forms.CheckBox checkBoxCatches;
         private System.Windows.Forms.CheckBox checkBoxGears;
         private AeroWizard.WizardPage pageStart;
         private System.Windows.Forms.Label labelStart;
-        private System.Windows.Forms.CheckBox checkBoxAppAB;
         private AeroWizard.WizardPage pageGearClass;
         private System.Windows.Forms.Label labelNoticeGearsSelectivity;
         private System.Windows.Forms.Label labelSelectivityGroupInstruction;
         public System.Windows.Forms.ComboBox comboBoxDataset;
         private System.Windows.Forms.Label labelSelectivityGroupSelect;
         public Controls.SpreadSheet spreadSheetSelectivity;
-        private System.Windows.Forms.CheckBox checkBoxAppCatches;
+        private System.Windows.Forms.CheckBox checkBoxByClass;
         private System.ComponentModel.BackgroundWorker calculatorSelectivity;
+        private AeroWizard.WizardPage pageComposition;
+        private System.Windows.Forms.TextBox textBoxDiversity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private Controls.SpreadSheet spreadSheetComposition;
+        private System.ComponentModel.BackgroundWorker calculatorStructure;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivitySpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityMass;
@@ -509,12 +528,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityB;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBpue;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBPer;
-        private AeroWizard.WizardPage pageComposition;
-        private System.Windows.Forms.TextBox textBoxDiversity;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private Controls.SpreadSheet spreadSheetComposition;
-        private System.ComponentModel.BackgroundWorker calculatorStructure;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionQ;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionA;
@@ -523,5 +536,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionBP;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionOccurrance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionDominance;
+        private System.Windows.Forms.ComboBox comboBoxDiversity;
+        private System.Windows.Forms.ComboBox comboBoxExample;
+        private System.Windows.Forms.CheckBox checkBoxSpreadsheets;
     }
 }

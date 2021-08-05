@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Combined Catches Summary.
+        ///   Looks up a localized string similar to Catches Summary.
         /// </summary>
         internal static string Header {
             get {
@@ -70,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Classes Catches Tables.
+        ///   Looks up a localized string similar to Description of Catch of {0} Classes.
         /// </summary>
         internal static string HeaderSingleClass {
             get {

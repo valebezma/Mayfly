@@ -142,23 +142,23 @@
   <data name="labelClassesInstruction.Text" xml:space="preserve">
     <value>Ниже представлена структура выборки по разным классам орудий. Отображаемый параметр можно выбрать с помощью выпадающего списка ниже.</value>
   </data>
-  <data name="contextShowCalculation.Text" xml:space="preserve">
-    <value>Показать расчет</value>
-  </data>
   <data name="columnComposition.HeaderText" xml:space="preserve">
     <value>Категория</value>
-  </data>
-  <data name="contextCompositionSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 22</value>
-  </data>
-  <data name="contextCompositionSplit.Text" xml:space="preserve">
-    <value>Разделить по промысловой мере</value>
   </data>
   <data name="contextComposition.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 26</value>
   </data>
   <data name="pageComposition.Text" xml:space="preserve">
     <value>Структура выборки разных классов орудий</value>
+  </data>
+  <data name="contextShowCalculation.Text" xml:space="preserve">
+    <value>Показать расчет</value>
+  </data>
+  <data name="contextCompositionSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 22</value>
+  </data>
+  <data name="contextCompositionSplit.Text" xml:space="preserve">
+    <value>Разделить по промысловой мере</value>
   </data>
   <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
     <value>Вернуться на предыдущий этап</value>
@@ -172,28 +172,40 @@
   <data name="wizardExplorer.NextButtonText" xml:space="preserve">
     <value>Далее</value>
   </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>Мастер оценки структуры {0}</value>
+  </data>
+  <data name="pageCatches.Text" xml:space="preserve">
+    <value>Характеристика уловов</value>
+  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Здесь представлена структура уловов, усредненная по набору классов орудий лова. Чтобы увидеть структуру отдельных классов, вернитесь на шаг назад.</value>
   </data>
-  <data name="ColumnCatchesAbundance.HeaderText" xml:space="preserve">
+  <data name="ColumnL.HeaderText" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="ColumnW.HeaderText" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="ColumnN.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="ColumnNPUE.HeaderText" xml:space="preserve">
     <value>Улов на усилие, экз./{0}</value>
   </data>
-  <data name="ColumnCatchesAbundanceP.HeaderText" xml:space="preserve">
-    <value>Улов на усилие, % численности</value>
+  <data name="ColumnNPUEF.HeaderText" xml:space="preserve">
+    <value>Улов на усилие, %</value>
   </data>
-  <data name="ColumnCatchesBiomass.HeaderText" xml:space="preserve">
-    <value>Улов на усилие, кг/{0}</value>
+  <data name="ColumnB.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
   </data>
-  <data name="ColumnCatchesBiomassP.HeaderText" xml:space="preserve">
-    <value>Улова на усилие, % биомассы</value>
+  <data name="ColumnBPUE.HeaderText" xml:space="preserve">
+    <value>Масса улова на усилие, кг/{0}</value>
   </data>
-  <data name="ColumnCatchesSex.HeaderText" xml:space="preserve">
-    <value>Половая структура, juv. : M : F</value>
+  <data name="ColumnBPUEF.HeaderText" xml:space="preserve">
+    <value>Масса улова на усилие, %</value>
   </data>
-  <data name="pageCatches.Text" xml:space="preserve">
-    <value>Структура уловов</value>
-  </data>
-  <data name="wizardExplorer.Title" xml:space="preserve">
-    <value>Мастер оценки структуры {0}</value>
+  <data name="ColumnSexRatio.HeaderText" xml:space="preserve">
+    <value>Половой состав, juv. : M : F</value>
   </data>
 </root>

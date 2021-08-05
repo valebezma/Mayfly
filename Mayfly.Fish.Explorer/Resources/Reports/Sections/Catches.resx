@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Header" xml:space="preserve">
-    <value>Combined Catches Summary</value>
+    <value>Catches Summary</value>
   </data>
   <data name="HeaderSingleClass" xml:space="preserve">
-    <value>{0} Classes Catches Tables</value>
+    <value>Description of Catch of {0} Classes</value>
   </data>
   <data name="ParagraphDescription" xml:space="preserve">
     <value>There are {0} species registered in catches. Most numerous sample is of {1} ({2} ind., which is {3:P1} of total sample). Species' samples sizes and also biological estimates are given in table {4}.</value>

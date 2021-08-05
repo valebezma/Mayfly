@@ -182,7 +182,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxAbundance.Checked)
             {
-                compositionWizard.AddAbundanceAppendices(report);
+                //compositionWizard.AddAbundanceAppendices(report);
             }
 
             return report;

@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardComposition));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pageComposition = new AeroWizard.WizardPage();
             this.buttonEqChart = new System.Windows.Forms.Button();
             this.checkBoxFractions = new System.Windows.Forms.CheckBox();
@@ -51,6 +51,7 @@
             this.spreadSheetComposition = new Mayfly.Controls.SpreadSheet();
             this.contextAgeReconstruction = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextShowCalculation = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnComposition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextComposition = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextCompositionSplit = new System.Windows.Forms.ToolStripMenuItem();
             this.wizardExplorer = new AeroWizard.WizardControl();
@@ -58,8 +59,6 @@
             this.pageCatches = new AeroWizard.WizardPage();
             this.label1 = new System.Windows.Forms.Label();
             this.spreadSheetCatches = new Mayfly.Controls.SpreadSheet();
-            this.calculatorStructure = new System.ComponentModel.BackgroundWorker();
-            this.columnComposition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnW = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +69,7 @@
             this.ColumnBPUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBPUEF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSexRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calculatorStructure = new System.ComponentModel.BackgroundWorker();
             this.pageComposition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetComposition)).BeginInit();
             this.contextAgeReconstruction.SuspendLayout();
@@ -81,6 +81,7 @@
             // 
             // pageComposition
             // 
+            resources.ApplyResources(this.pageComposition, "pageComposition");
             this.pageComposition.Controls.Add(this.buttonEqChart);
             this.pageComposition.Controls.Add(this.checkBoxFractions);
             this.pageComposition.Controls.Add(this.checkBoxPUE);
@@ -89,7 +90,6 @@
             this.pageComposition.Controls.Add(this.labelClassesInstruction);
             this.pageComposition.Controls.Add(this.spreadSheetComposition);
             this.pageComposition.Name = "pageComposition";
-            resources.ApplyResources(this.pageComposition, "pageComposition");
             this.pageComposition.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Rollback);
             // 
             // buttonEqChart
@@ -148,29 +148,38 @@
             // 
             // contextAgeReconstruction
             // 
+            resources.ApplyResources(this.contextAgeReconstruction, "contextAgeReconstruction");
             this.contextAgeReconstruction.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextShowCalculation});
             this.contextAgeReconstruction.Name = "contextMenuStripAgeReconstruction";
-            resources.ApplyResources(this.contextAgeReconstruction, "contextAgeReconstruction");
             // 
             // contextShowCalculation
             // 
-            this.contextShowCalculation.Name = "contextShowCalculation";
             resources.ApplyResources(this.contextShowCalculation, "contextShowCalculation");
+            this.contextShowCalculation.Name = "contextShowCalculation";
             this.contextShowCalculation.Click += new System.EventHandler(this.contextShowCalculation_Click);
+            // 
+            // columnComposition
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnComposition.DefaultCellStyle = dataGridViewCellStyle12;
+            this.columnComposition.Frozen = true;
+            resources.ApplyResources(this.columnComposition, "columnComposition");
+            this.columnComposition.Name = "columnComposition";
+            this.columnComposition.ReadOnly = true;
             // 
             // contextComposition
             // 
+            resources.ApplyResources(this.contextComposition, "contextComposition");
             this.contextComposition.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextCompositionSplit});
             this.contextComposition.Name = "contextMenuStripSplit";
-            resources.ApplyResources(this.contextComposition, "contextComposition");
             this.contextComposition.Opening += new System.ComponentModel.CancelEventHandler(this.contextComposition_Opening);
             // 
             // contextCompositionSplit
             // 
-            this.contextCompositionSplit.Name = "contextCompositionSplit";
             resources.ApplyResources(this.contextCompositionSplit, "contextCompositionSplit");
+            this.contextCompositionSplit.Name = "contextCompositionSplit";
             this.contextCompositionSplit.Click += new System.EventHandler(this.menuCompositionSplit_Click);
             // 
             // wizardExplorer
@@ -185,16 +194,16 @@
             // 
             // wizardPage1
             // 
-            this.wizardPage1.Name = "wizardPage1";
             resources.ApplyResources(this.wizardPage1, "wizardPage1");
+            this.wizardPage1.Name = "wizardPage1";
             this.wizardPage1.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.wizardPage1_Initialize);
             // 
             // pageCatches
             // 
+            resources.ApplyResources(this.pageCatches, "pageCatches");
             this.pageCatches.Controls.Add(this.label1);
             this.pageCatches.Controls.Add(this.spreadSheetCatches);
             this.pageCatches.Name = "pageCatches";
-            resources.ApplyResources(this.pageCatches, "pageCatches");
             this.pageCatches.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageCatches_Commit);
             this.pageCatches.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageCatches_Rollback);
             // 
@@ -224,27 +233,10 @@
             this.spreadSheetCatches.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.spreadSheetCatches.RowTemplate.Height = 35;
             // 
-            // calculatorStructure
-            // 
-            this.calculatorStructure.WorkerReportsProgress = true;
-            this.calculatorStructure.WorkerSupportsCancellation = true;
-            this.calculatorStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.calculatorStructure_DoWork);
-            this.calculatorStructure.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.calculatorStructure_ProgressChanged);
-            this.calculatorStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.calculatorStructure_RunWorkerCompleted);
-            // 
-            // columnComposition
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnComposition.DefaultCellStyle = dataGridViewCellStyle1;
-            this.columnComposition.Frozen = true;
-            resources.ApplyResources(this.columnComposition, "columnComposition");
-            this.columnComposition.Name = "columnComposition";
-            this.columnComposition.ReadOnly = true;
-            // 
             // ColumnCategory
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnCategory.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnCategory.DefaultCellStyle = dataGridViewCellStyle13;
             this.ColumnCategory.Frozen = true;
             resources.ApplyResources(this.ColumnCategory, "ColumnCategory");
             this.ColumnCategory.Name = "ColumnCategory";
@@ -252,79 +244,87 @@
             // 
             // ColumnL
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "g1";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnL.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Format = "g1";
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnL.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.ColumnL, "ColumnL");
             this.ColumnL.Name = "ColumnL";
             this.ColumnL.ReadOnly = true;
             // 
             // ColumnW
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "g1";
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnW.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Format = "g1";
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnW.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.ColumnW, "ColumnW");
             this.ColumnW.Name = "ColumnW";
             this.ColumnW.ReadOnly = true;
             // 
             // ColumnN
             // 
-            dataGridViewCellStyle5.Format = "N0";
-            this.ColumnN.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Format = "N0";
+            this.ColumnN.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.ColumnN, "ColumnN");
             this.ColumnN.Name = "ColumnN";
             this.ColumnN.ReadOnly = true;
             // 
             // ColumnNPUE
             // 
-            dataGridViewCellStyle6.Format = "N3";
-            this.ColumnNPUE.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle17.Format = "N3";
+            this.ColumnNPUE.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.ColumnNPUE, "ColumnNPUE");
             this.ColumnNPUE.Name = "ColumnNPUE";
             this.ColumnNPUE.ReadOnly = true;
             // 
             // ColumnNPUEF
             // 
-            dataGridViewCellStyle7.Format = "P1";
-            this.ColumnNPUEF.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle18.Format = "P1";
+            this.ColumnNPUEF.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.ColumnNPUEF, "ColumnNPUEF");
             this.ColumnNPUEF.Name = "ColumnNPUEF";
             this.ColumnNPUEF.ReadOnly = true;
             // 
             // ColumnB
             // 
-            dataGridViewCellStyle8.Format = "N3";
-            this.ColumnB.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle19.Format = "N3";
+            this.ColumnB.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.ColumnB, "ColumnB");
             this.ColumnB.Name = "ColumnB";
             this.ColumnB.ReadOnly = true;
             // 
             // ColumnBPUE
             // 
-            dataGridViewCellStyle9.Format = "N3";
-            this.ColumnBPUE.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle20.Format = "N3";
+            this.ColumnBPUE.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.ColumnBPUE, "ColumnBPUE");
             this.ColumnBPUE.Name = "ColumnBPUE";
             this.ColumnBPUE.ReadOnly = true;
             // 
             // ColumnBPUEF
             // 
-            dataGridViewCellStyle10.Format = "P1";
-            this.ColumnBPUEF.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle21.Format = "P1";
+            this.ColumnBPUEF.DefaultCellStyle = dataGridViewCellStyle21;
             resources.ApplyResources(this.ColumnBPUEF, "ColumnBPUEF");
             this.ColumnBPUEF.Name = "ColumnBPUEF";
             this.ColumnBPUEF.ReadOnly = true;
             // 
             // ColumnSexRatio
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnSexRatio.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnSexRatio.DefaultCellStyle = dataGridViewCellStyle22;
             resources.ApplyResources(this.ColumnSexRatio, "ColumnSexRatio");
             this.ColumnSexRatio.Name = "ColumnSexRatio";
             this.ColumnSexRatio.ReadOnly = true;
+            // 
+            // calculatorStructure
+            // 
+            this.calculatorStructure.WorkerReportsProgress = true;
+            this.calculatorStructure.WorkerSupportsCancellation = true;
+            this.calculatorStructure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.calculatorStructure_DoWork);
+            this.calculatorStructure.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.calculatorStructure_ProgressChanged);
+            this.calculatorStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.calculatorStructure_RunWorkerCompleted);
             // 
             // WizardComposition
             // 

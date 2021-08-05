@@ -132,8 +132,11 @@
   <data name="pageStart.Text" xml:space="preserve">
     <value>Приступим</value>
   </data>
-  <data name="pageBiology.Text" xml:space="preserve">
-    <value>Биологические особенности видов</value>
+  <data name="pageGearClass.Text" xml:space="preserve">
+    <value>Описание улова разных классов</value>
+  </data>
+  <data name="pageComposition.Text" xml:space="preserve">
+    <value>Характеристика сообщества</value>
   </data>
   <data name="pageReport.Text" xml:space="preserve">
     <value>Составление отчета</value>
@@ -142,67 +145,123 @@
     <value>Мастер оценки структуры сообщества</value>
   </data>
   <data name="labelStart.Text" xml:space="preserve">
-    <value>Этот мастер проведет вас через процесс составления отчета о структуре сообщества. Для начала, вам необходимо выбрать данные для анализа.</value>
+    <value>Этот мастер проведет вас через процесс составления характеристики сообщества. 
+Для начала вам необходимо выбрать данные для анализа.</value>
   </data>
-  <data name="labelBioInstruction.Text" xml:space="preserve">
-    <value>Здесь представлена информация о выборках видов. Для расчета структуры уловов, перейдите на следующий экран. Для исключения вида из анализа, нажмите {0}.</value>
+  <data name="labelNoticeGearsSelectivity.Text" xml:space="preserve">
+    <value>Нет данных...</value>
+  </data>
+  <data name="labelSelectivityGroupInstruction.Text" xml:space="preserve">
+    <value>Сведения о выборках видов в уловах разных классов орудий лова приведены ниже. Для просмотра значений конкретного класса орудий выберите его в выпадающем списке. Нажмите "Далее" для продолжения.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="spreadSheetBiology.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 311</value>
+  <data name="labelSelectivityGroupSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
   </data>
-  <data name="columnBioSpecies.HeaderText" xml:space="preserve">
+  <data name="labelSelectivityGroupSelect.Text" xml:space="preserve">
+    <value>Класс орудий:</value>
+  </data>
+  <data name="columnSelectivitySpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
   </data>
-  <data name="columnBioN.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="columnBioB.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="columnBioLength.HeaderText" xml:space="preserve">
+  <data name="columnSelectivityLength.HeaderText" xml:space="preserve">
     <value>Длина, мм</value>
   </data>
-  <data name="columnBioMass.HeaderText" xml:space="preserve">
-    <value>Индивидуальная масса, г</value>
+  <data name="columnSelectivityMass.HeaderText" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="columnSelectivityN.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="columnSelectivityNpue.HeaderText" xml:space="preserve">
+    <value>Улов на усилие, экз./{0}</value>
+  </data>
+  <data name="columnSelectivityNPer.HeaderText" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
+  <data name="columnSelectivityB.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
+  </data>
+  <data name="columnSelectivityBpue.HeaderText" xml:space="preserve">
+    <value>Масса улова на усилие, кг/{0}</value>
+  </data>
+  <data name="columnSelectivityBPer.HeaderText" xml:space="preserve">
+    <value>Масса улова на усилие, %</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Структура сообщества определяется по структуре уловов и коэффициенту уловистости орудий лова. Изменить коэффициент уловистости можно в таблице ниже.</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Разнообразие сообщества</value>
+  </data>
+  <data name="ColumnCompositionSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="ColumnCompositionQ.HeaderText" xml:space="preserve">
+    <value>Уловистость</value>
+  </data>
+  <data name="ColumnCompositionA.HeaderText" xml:space="preserve">
+    <value>Численность, экз./{0}</value>
+  </data>
+  <data name="ColumnCompositionAP.HeaderText" xml:space="preserve">
+    <value>Численность, %</value>
+  </data>
+  <data name="ColumnCompositionB.HeaderText" xml:space="preserve">
+    <value>Биомасса, кг/{0}</value>
+  </data>
+  <data name="ColumnCompositionBP.HeaderText" xml:space="preserve">
+    <value>Биомасса, %</value>
+  </data>
+  <data name="ColumnCompositionOccurrance.HeaderText" xml:space="preserve">
+    <value>Встречаемость, %</value>
+  </data>
+  <data name="ColumnCompositionDominance.HeaderText" xml:space="preserve">
+    <value>Индекс доминирования</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="comboBoxExample.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxSpreadsheets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 19</value>
+  </data>
+  <data name="checkBoxSpreadsheets.Text" xml:space="preserve">
+    <value>Приложения с таблицами расчетов</value>
+  </data>
+  <data name="checkBoxByClass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 19</value>
+  </data>
+  <data name="checkBoxByClass.Text" xml:space="preserve">
+    <value>Приложения по каждому классу орудий</value>
   </data>
   <data name="labelReport.Text" xml:space="preserve">
     <value>Укажите, какие части следует включить в отчет.</value>
   </data>
-  <data name="checkBoxAbundance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 19</value>
+  <data name="checkBoxAppExample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 19</value>
   </data>
-  <data name="checkBoxAbundance.Text" xml:space="preserve">
-    <value>Приложения с расчетом численности и биомассы</value>
-  </data>
-  <data name="checkBoxAppendices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 19</value>
-  </data>
-  <data name="checkBoxAppendices.Text" xml:space="preserve">
-    <value>Приложения с расчетом уловов на усилие</value>
+  <data name="checkBoxAppExample.Text" xml:space="preserve">
+    <value>Приложение с примером расчета</value>
   </data>
   <data name="checkBoxCenosis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 19</value>
+    <value>183, 19</value>
   </data>
   <data name="checkBoxCenosis.Text" xml:space="preserve">
-    <value>Структура сообщества</value>
+    <value>Характеристика сообщества</value>
   </data>
   <data name="checkBoxCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 19</value>
+    <value>155, 19</value>
   </data>
   <data name="checkBoxCatches.Text" xml:space="preserve">
-    <value>Структура уловов</value>
-  </data>
-  <data name="checkBoxBiology.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 19</value>
-  </data>
-  <data name="checkBoxBiology.Text" xml:space="preserve">
-    <value>Основные биологические характеристики видов</value>
+    <value>Характеристика уловов</value>
   </data>
   <data name="checkBoxGears.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 19</value>
+    <value>142, 19</value>
   </data>
   <data name="checkBoxGears.Text" xml:space="preserve">
-    <value>Описание орудий лова</value>
+    <value>Характеристика лова</value>
   </data>
 </root>

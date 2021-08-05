@@ -117,344 +117,455 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonEqChart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="ColumnB.HeaderText" xml:space="preserve">
+    <value>Mass, kg</value>
   </data>
-  <data name="buttonEqChart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonEqChart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>607, 376</value>
-  </data>
-  <data name="buttonEqChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+  <data name="&gt;&gt;spreadSheetCatches.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonEqChart.TabIndex" type="System.Int32, mscorlib">
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="buttonEqChart.Text" xml:space="preserve">
-    <value>Show chart</value>
-  </data>
-  <data name="&gt;&gt;buttonEqChart.Name" xml:space="preserve">
-    <value>buttonEqChart</value>
-  </data>
-  <data name="&gt;&gt;buttonEqChart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonEqChart.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;buttonEqChart.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBoxFractions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="checkBoxFractions.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="checkBoxFractions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxFractions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>383, 50</value>
-  </data>
-  <data name="checkBoxFractions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="checkBoxFractions.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="checkBoxFractions.Text" xml:space="preserve">
-    <value>Fractions</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFractions.Name" xml:space="preserve">
-    <value>checkBoxFractions</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFractions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFractions.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFractions.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBoxPUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="checkBoxPUE.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="checkBoxPUE.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxPUE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>464, 50</value>
-  </data>
-  <data name="checkBoxPUE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="checkBoxPUE.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="checkBoxPUE.Text" xml:space="preserve">
-    <value>Per 1 {0}</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPUE.Name" xml:space="preserve">
-    <value>checkBoxPUE</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPUE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPUE.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPUE.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelClasses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelClasses.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelClasses.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelClasses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 54</value>
-  </data>
-  <data name="labelClasses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 15</value>
-  </data>
-  <data name="labelClasses.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="labelClasses.Text" xml:space="preserve">
-    <value>Parameter:</value>
-  </data>
-  <data name="&gt;&gt;labelClasses.Name" xml:space="preserve">
-    <value>labelClasses</value>
-  </data>
-  <data name="&gt;&gt;labelClasses.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelClasses.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;labelClasses.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="comboBoxParameter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="comboBoxParameter.Items" xml:space="preserve">
-    <value>Quantity</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelClassesInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxParameter.Items1" xml:space="preserve">
     <value>Mass</value>
   </data>
-  <data name="comboBoxParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 50</value>
-  </data>
-  <data name="comboBoxParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
-  </data>
-  <data name="comboBoxParameter.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;comboBoxParameter.Name" xml:space="preserve">
-    <value>comboBoxParameter</value>
-  </data>
-  <data name="&gt;&gt;comboBoxParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxParameter.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;comboBoxParameter.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="labelClassesInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="labelClassesInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelClassesInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="labelClassesInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>707, 30</value>
-  </data>
-  <data name="labelClassesInstruction.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="labelClassesInstruction.Text" xml:space="preserve">
-    <value>Sample compositions of all gear classes are presented here. You can change display value with controls below.</value>
-  </data>
-  <data name="&gt;&gt;labelClassesInstruction.Name" xml:space="preserve">
-    <value>labelClassesInstruction</value>
-  </data>
-  <data name="&gt;&gt;labelClassesInstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelClassesInstruction.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;labelClassesInstruction.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="spreadSheetComposition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <metadata name="contextAgeReconstruction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="contextShowCalculation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="contextShowCalculation.Text" xml:space="preserve">
-    <value>Show calculation</value>
-  </data>
-  <data name="contextAgeReconstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 26</value>
-  </data>
-  <data name="&gt;&gt;contextAgeReconstruction.Name" xml:space="preserve">
-    <value>contextAgeReconstruction</value>
-  </data>
-  <data name="&gt;&gt;contextAgeReconstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="columnComposition.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 93</value>
-  </data>
-  <data name="spreadSheetComposition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 15, 3, 15</value>
-  </data>
-  <data name="spreadSheetComposition.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <metadata name="contextComposition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>375, 17</value>
-  </metadata>
-  <data name="contextCompositionSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
-  </data>
-  <data name="contextCompositionSplit.Text" xml:space="preserve">
-    <value>Split by measure</value>
-  </data>
-  <data name="contextComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 26</value>
-  </data>
-  <data name="&gt;&gt;contextComposition.Name" xml:space="preserve">
-    <value>contextComposition</value>
-  </data>
-  <data name="&gt;&gt;contextComposition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="spreadSheetComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>707, 277</value>
-  </data>
-  <data name="spreadSheetComposition.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="spreadSheetComposition.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetComposition.Name" xml:space="preserve">
-    <value>spreadSheetComposition</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetComposition.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetComposition.Parent" xml:space="preserve">
-    <value>pageComposition</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetComposition.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="pageComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 400</value>
-  </data>
   <data name="pageComposition.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="pageComposition.Text" xml:space="preserve">
-    <value>Composition in samples of different gears</value>
+  <data name="&gt;&gt;contextCompositionSplit.Name" xml:space="preserve">
+    <value>contextCompositionSplit</value>
   </data>
-  <data name="&gt;&gt;pageComposition.Name" xml:space="preserve">
-    <value>pageComposition</value>
+  <data name="&gt;&gt;ColumnN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pageComposition.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  <data name="&gt;&gt;ColumnB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
-    <value>Return to previous step</value>
+  <data name="checkBoxFractions.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="wizardExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="ColumnNPUEF.HeaderText" xml:space="preserve">
+    <value>NPUE, %</value>
   </data>
-  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
-    <value>Next</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="spreadSheetCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>707, 335</value>
   </data>
-  <data name="wizardExplorer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="wizardExplorer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="wizardPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 400</value>
-  </data>
-  <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="wizardPage1.Text" xml:space="preserve">
-    <value>wizardPage1</value>
-  </data>
-  <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
-    <value>wizardPage1</value>
-  </data>
-  <data name="&gt;&gt;wizardPage1.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>707, 30</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;checkBoxPUE.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Catches composition averaged between gear classes is presented below. To see values on particular gear class return to previous page.</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="pageComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 400</value>
+  </data>
+  <data name="&gt;&gt;ColumnN.Name" xml:space="preserve">
+    <value>ColumnN</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="comboBoxParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="comboBoxParameter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;ColumnBPUEF.Name" xml:space="preserve">
+    <value>ColumnBPUEF</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>707, 30</value>
+  </data>
+  <data name="wizardExplorer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="contextComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 26</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>{0} composition wizard</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="spreadSheetCatches.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetCatches.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="wizardExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;contextAgeReconstruction.Name" xml:space="preserve">
+    <value>contextAgeReconstruction</value>
+  </data>
+  <data name="buttonEqChart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="contextCompositionSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="ColumnCategory.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelClasses.Text" xml:space="preserve">
+    <value>Parameter:</value>
+  </data>
+  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="wizardPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 400</value>
+  </data>
+  <data name="&gt;&gt;buttonEqChart.Name" xml:space="preserve">
+    <value>buttonEqChart</value>
+  </data>
+  <data name="checkBoxPUE.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;pageCatches.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="labelClasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 54</value>
+  </data>
+  <data name="ColumnBPUE.HeaderText" xml:space="preserve">
+    <value>BPUE, kg/{0}</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="labelClassesInstruction.Text" xml:space="preserve">
+    <value>Sample compositions of all gear classes are presented here. You can change display value with controls below.</value>
+  </data>
+  <data name="spreadSheetComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>707, 277</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Name" xml:space="preserve">
+    <value>checkBoxFractions</value>
+  </data>
+  <data name="&gt;&gt;columnComposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBoxFractions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelClassesInstruction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ColumnBPUE.Name" xml:space="preserve">
+    <value>ColumnBPUE</value>
+  </data>
+  <data name="buttonEqChart.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Parent" xml:space="preserve">
+    <value>pageCatches</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;ColumnW.Name" xml:space="preserve">
+    <value>ColumnW</value>
+  </data>
+  <data name="checkBoxPUE.Text" xml:space="preserve">
+    <value>Per 1 {0}</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Name" xml:space="preserve">
+    <value>spreadSheetComposition</value>
+  </data>
+  <data name="&gt;&gt;contextShowCalculation.Name" xml:space="preserve">
+    <value>contextShowCalculation</value>
+  </data>
+  <data name="checkBoxPUE.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelClasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 15</value>
+  </data>
+  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>781, 554</value>
+  </data>
+  <data name="&gt;&gt;ColumnBPUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetComposition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 15</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkBoxFractions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="spreadSheetCatches.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelClasses.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="buttonEqChart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;contextShowCalculation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnCategory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnNPUEF.Name" xml:space="preserve">
+    <value>ColumnNPUEF</value>
+  </data>
+  <data name="checkBoxFractions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 50</value>
+  </data>
+  <data name="labelClassesInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>707, 30</value>
+  </data>
+  <data name="labelClasses.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="pageComposition.Text" xml:space="preserve">
+    <value>Composition of catches by gear class</value>
+  </data>
+  <data name="&gt;&gt;buttonEqChart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardPage1.Text" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="labelClasses.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;contextAgeReconstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextCompositionSplit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSexRatio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnW.HeaderText" xml:space="preserve">
+    <value>Individual mass, g</value>
+  </data>
+  <data name="spreadSheetComposition.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;ColumnBPUEF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Name" xml:space="preserve">
+    <value>spreadSheetCatches</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonEqChart.Text" xml:space="preserve">
+    <value>Show chart</value>
+  </data>
+  <data name="pageCatches.Text" xml:space="preserve">
+    <value>Catches summary</value>
+  </data>
+  <data name="wizardExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="checkBoxFractions.Text" xml:space="preserve">
+    <value>Fractions</value>
+  </data>
+  <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 93</value>
+  </data>
+  <data name="labelClasses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="spreadSheetComposition.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;contextComposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnN.HeaderText" xml:space="preserve">
+    <value>Quantity, ind.</value>
+  </data>
+  <data name="ColumnSexRatio.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="checkBoxPUE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="pageCatches.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="ColumnL.HeaderText" xml:space="preserve">
+    <value>Length, mm</value>
+  </data>
+  <data name="&gt;&gt;contextComposition.Name" xml:space="preserve">
+    <value>contextComposition</value>
+  </data>
+  <data name="pageCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 400</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBoxFractions.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetComposition.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;pageCatches.Name" xml:space="preserve">
+    <value>pageCatches</value>
+  </data>
+  <data name="&gt;&gt;buttonEqChart.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WizardComposition</value>
+  </data>
+  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="&gt;&gt;calculatorStructure.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
+  </data>
+  <data name="checkBoxPUE.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="comboBoxParameter.Items" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="&gt;&gt;pageComposition.Name" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Name" xml:space="preserve">
+    <value>labelClassesInstruction</value>
+  </data>
+  <data name="&gt;&gt;ColumnCategory.Name" xml:space="preserve">
+    <value>ColumnCategory</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>pageCatches</value>
+  </data>
+  <data name="spreadSheetComposition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="comboBoxParameter.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;calculatorStructure.Name" xml:space="preserve">
+    <value>calculatorStructure</value>
+  </data>
+  <data name="&gt;&gt;comboBoxParameter.Name" xml:space="preserve">
+    <value>comboBoxParameter</value>
+  </data>
+  <data name="comboBoxParameter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>252, 50</value>
+  </data>
+  <data name="&gt;&gt;ColumnSexRatio.Name" xml:space="preserve">
+    <value>ColumnSexRatio</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
+    <value>wizardExplorer</value>
+  </data>
+  <data name="buttonEqChart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>607, 376</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="contextShowCalculation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="spreadSheetCatches.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Name" xml:space="preserve">
+    <value>checkBoxPUE</value>
+  </data>
+  <data name="columnComposition.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;ColumnNPUEF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ColumnCategory.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Catch composition averaged between gear classes is presented below. To see values on particular gear class return to previous page.</value>
+  </data>
+  <data name="labelClassesInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -462,232 +573,121 @@
   <data name="spreadSheetCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="ColumnCategory.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ColumnCategory.Width" type="System.Int32, mscorlib">
-    <value>150</value>
-  </data>
-  <metadata name="ColumnL.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnL.HeaderText" xml:space="preserve">
-    <value>Length, mm</value>
-  </data>
-  <metadata name="ColumnW.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnW.HeaderText" xml:space="preserve">
-    <value>Individual mass, g</value>
-  </data>
-  <metadata name="ColumnN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnN.HeaderText" xml:space="preserve">
-    <value>Quantity, ind.</value>
+  <data name="buttonEqChart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="ColumnNPUE.HeaderText" xml:space="preserve">
     <value>NPUE, ind./{0}</value>
   </data>
-  <data name="ColumnNPUEF.HeaderText" xml:space="preserve">
-    <value>NPUE, %</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>781, 554</value>
   </data>
-  <metadata name="ColumnB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnB.HeaderText" xml:space="preserve">
-    <value>Biomass, kg</value>
+  <data name="&gt;&gt;spreadSheetComposition.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="ColumnBPUE.HeaderText" xml:space="preserve">
-    <value>BPUE, kg/{0}</value>
+  <data name="checkBoxFractions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxPUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFractions.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;buttonEqChart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="contextShowCalculation.Text" xml:space="preserve">
+    <value>Show calculation</value>
+  </data>
+  <data name="labelClassesInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxPUE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>464, 50</value>
+  </data>
+  <data name="&gt;&gt;columnComposition.Name" xml:space="preserve">
+    <value>columnComposition</value>
+  </data>
+  <data name="contextAgeReconstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 26</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelClasses.Name" xml:space="preserve">
+    <value>labelClasses</value>
+  </data>
+  <data name="&gt;&gt;ColumnNPUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ColumnBPUEF.HeaderText" xml:space="preserve">
     <value>BPUE, %</value>
   </data>
-  <metadata name="ColumnSexRatio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
+    <value>Return to previous step</value>
+  </data>
+  <data name="&gt;&gt;ColumnB.Name" xml:space="preserve">
+    <value>ColumnB</value>
+  </data>
+  <data name="&gt;&gt;ColumnNPUE.Name" xml:space="preserve">
+    <value>ColumnNPUE</value>
+  </data>
+  <data name="&gt;&gt;ColumnW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelClassesInstruction.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ColumnL.Name" xml:space="preserve">
+    <value>ColumnL</value>
+  </data>
+  <data name="spreadSheetComposition.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;ColumnL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ColumnSexRatio.HeaderText" xml:space="preserve">
-    <value>Sexual composition, juv. : M : F</value>
+    <value>Sex ratio, juv. : M : F</value>
   </data>
-  <data name="ColumnSexRatio.Width" type="System.Int32, mscorlib">
-    <value>150</value>
+  <data name="contextCompositionSplit.Text" xml:space="preserve">
+    <value>Split by measure</value>
   </data>
-  <data name="spreadSheetCatches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 50</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>630, 550</value>
   </data>
-  <data name="spreadSheetCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 15</value>
-  </data>
-  <data name="spreadSheetCatches.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="spreadSheetCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>707, 335</value>
-  </data>
-  <data name="spreadSheetCatches.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="spreadSheetCatches.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCatches.Name" xml:space="preserve">
-    <value>spreadSheetCatches</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCatches.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCatches.Parent" xml:space="preserve">
-    <value>pageCatches</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCatches.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pageCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 400</value>
-  </data>
-  <data name="pageCatches.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="pageCatches.Text" xml:space="preserve">
-    <value>Catches composition</value>
-  </data>
-  <data name="&gt;&gt;pageCatches.Name" xml:space="preserve">
-    <value>pageCatches</value>
-  </data>
-  <data name="&gt;&gt;pageCatches.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>781, 554</value>
-  </data>
-  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="wizardExplorer.Title" xml:space="preserve">
-    <value>{0} composition wizard</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
-    <value>wizardExplorer</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
-    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
+  <metadata name="contextAgeReconstruction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="calculatorStructure.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>212, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="contextComposition.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>375, 17</value>
+  </metadata>
+  <metadata name="ColumnL.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>56</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>781, 554</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>630, 550</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;contextShowCalculation.Name" xml:space="preserve">
-    <value>contextShowCalculation</value>
-  </data>
-  <data name="&gt;&gt;contextShowCalculation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextCompositionSplit.Name" xml:space="preserve">
-    <value>contextCompositionSplit</value>
-  </data>
-  <data name="&gt;&gt;contextCompositionSplit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;calculatorStructure.Name" xml:space="preserve">
-    <value>calculatorStructure</value>
-  </data>
-  <data name="&gt;&gt;calculatorStructure.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnComposition.Name" xml:space="preserve">
-    <value>columnComposition</value>
-  </data>
-  <data name="&gt;&gt;columnComposition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnCategory.Name" xml:space="preserve">
-    <value>ColumnCategory</value>
-  </data>
-  <data name="&gt;&gt;ColumnCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnL.Name" xml:space="preserve">
-    <value>ColumnL</value>
-  </data>
-  <data name="&gt;&gt;ColumnL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnW.Name" xml:space="preserve">
-    <value>ColumnW</value>
-  </data>
-  <data name="&gt;&gt;ColumnW.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnN.Name" xml:space="preserve">
-    <value>ColumnN</value>
-  </data>
-  <data name="&gt;&gt;ColumnN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnNPUE.Name" xml:space="preserve">
-    <value>ColumnNPUE</value>
-  </data>
-  <data name="&gt;&gt;ColumnNPUE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnNPUEF.Name" xml:space="preserve">
-    <value>ColumnNPUEF</value>
-  </data>
-  <data name="&gt;&gt;ColumnNPUEF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnB.Name" xml:space="preserve">
-    <value>ColumnB</value>
-  </data>
-  <data name="&gt;&gt;ColumnB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnBPUE.Name" xml:space="preserve">
-    <value>ColumnBPUE</value>
-  </data>
-  <data name="&gt;&gt;ColumnBPUE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnBPUEF.Name" xml:space="preserve">
-    <value>ColumnBPUEF</value>
-  </data>
-  <data name="&gt;&gt;ColumnBPUEF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnSexRatio.Name" xml:space="preserve">
-    <value>ColumnSexRatio</value>
-  </data>
-  <data name="&gt;&gt;ColumnSexRatio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>WizardComposition</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <metadata name="ColumnB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSexRatio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnW.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>
