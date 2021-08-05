@@ -11,13 +11,15 @@ namespace Mayfly
     {
         public static bool Verify(string feature)
         {
-            foreach (License lic in InstalledLicenses)
-            {
-                if (lic.Feature != feature) continue;
-                if (lic.IsValid) return true;
-            }
+            return true;
 
-            return false;
+            //foreach (License lic in InstalledLicenses)
+            //{
+            //    if (lic.Feature != feature) continue;
+            //    if (lic.IsValid) return true;
+            //}
+
+            //return false;
         }
 
         internal static List<License> installedLicenses;

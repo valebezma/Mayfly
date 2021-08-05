@@ -118,13 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="e" xml:space="preserve">
-    <value>экстремальные значения</value>
+    <value>крайние значения</value>
   </data>
   <data name="g" xml:space="preserve">
-    <value>средняя, стандартная ошибка и экстремальные значения</value>
+    <value>средняя, стандартная ошибка и крайние значения</value>
+  </data>
+  <data name="m" xml:space="preserve">
+    <value>средняя</value>
   </data>
   <data name="q" xml:space="preserve">
-    <value>средняя и экстремальные значения</value>
+    <value>средняя и крайние значения</value>
   </data>
   <data name="s" xml:space="preserve">
     <value>средняя и стандартная ошибка</value>

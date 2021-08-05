@@ -1025,7 +1025,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
                 if (checkBoxGearReport.Checked)
                 {
-                    Report report = new Report(Resources.Reports.Title.GearStats);
+                    Report report = new Report(Resources.Reports.Header.StatsGear);
                     CardStack stack = Survey.GetCombinedData().GetStack();
                     stack.AddCommon(report);
                     stack.Sort();
@@ -1036,11 +1036,11 @@ namespace Mayfly.Fish.Explorer.Observations
 
                 if (checkBoxSpcReport.Checked)
                 {
-                    Report report = new Report(Resources.Reports.SpeciesStats.Title);
+                    Report report = new Report(Resources.Reports.Sections.SpeciesStats.Title);
                     CardStack stack = Survey.GetCombinedData().GetStack();
                     stack.AddCommon(report);
                     stack.Sort();
-                    stack.AddSpeciesStatsReport(report, SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion);
+                    stack.AddSpeciesStatsReport(report, SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion, ExpressionVariant.Efforts);
                     report.EndBranded();
                     report.Run();
                 }

@@ -91,14 +91,14 @@ namespace Mayfly.Fish.Explorer
 
         public Report.Table GetTable()
         {
-            Report.Table table1 = new Report.Table(Resources.Reports.VPA.Table3, this.Name);
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.VPA.Table3, this.Name);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Growth.Column1, .2);
-            table1.AddHeaderCell(Resources.Reports.VPA.Column2);
-            table1.AddHeaderCell(Resources.Reports.VPA.Column3);
-            table1.AddHeaderCell(Resources.Reports.VPA.Column4);
-            table1.AddHeaderCell(Resources.Reports.VPA.Column5);
+            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column3);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column4);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column5);
             table1.EndRow();
 
             for (int i = 0; i < this.Count; i++)

@@ -232,7 +232,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(
-                    string.Format(Resources.Reports.Extrapolation.Title,
+                    string.Format(Resources.Reports.Sections.Extrapolation.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -253,7 +253,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxComposition.Checked)
             {
-                report.AddParagraph(Resources.Reports.Extrapolation.Paragraph1,
+                report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph1,
                     SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
                     compositionWizard.CategoryType);
 
@@ -273,7 +273,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxApp.Checked)
             {
-                compositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "", SpeciesRow.KeyRecord.FullNameReport));
+                compositionWizard.AppendCalculationSectionTo(report);
             }
 
             report.EndBranded();
@@ -285,19 +285,19 @@ namespace Mayfly.Fish.Explorer.Fishery
         {
             if (gearWizard.IsMultipleClasses)
             {
-                report.AddParagraph(Resources.Reports.Extrapolation.Paragraph2 +
-                    (gearWizard.IsSpatialOn ? Resources.Reports.Extrapolation.Paragraph2_1 : string.Empty),
+                report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph2 +
+                    (gearWizard.IsSpatialOn ? Resources.Reports.Sections.Extrapolation.Paragraph2_1 : string.Empty),
                     SpeciesRow.KeyRecord.FullNameReport, Catchability, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber,
                     (gearWizard.IsSpatialOn ? (report.NextTableNumber - 1).ToString() : string.Empty));
 
-                Report.Table table1 = new Report.Table(Resources.Reports.Extrapolation.Table1,
+                Report.Table table1 = new Report.Table(Resources.Reports.Sections.Extrapolation.Table1,
                     SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
                 table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25, 2);
                 table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, gearWizard.SelectedUnit.Unit), 2, CellSpan.Rows);
-                table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCatch, 2);
-                table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnCpue, 2);
+                table1.AddHeaderCell(Resources.Reports.Sections.Extrapolation.ColumnCatch, 2);
+                table1.AddHeaderCell(Resources.Reports.Sections.Extrapolation.ColumnCpue, 2);
                 table1.EndRow();
 
                 table1.StartRow();
@@ -336,13 +336,13 @@ namespace Mayfly.Fish.Explorer.Fishery
             }
             else
             {
-                report.AddParagraph(Resources.Reports.Extrapolation.Paragraph3,
+                report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph3,
                     catches[0].Abundance, gearWizard.AbundanceUnits,
                     catches[0].Biomass, gearWizard.BiomassUnits,
                     SpeciesRow.KeyRecord.FullNameReport, Catchability);
             }
 
-            report.AddParagraph(Resources.Reports.Extrapolation.Paragraph4);
+            report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph4);
 
             if (gearWizard.IsMultipleClasses)
             {
@@ -396,20 +396,20 @@ namespace Mayfly.Fish.Explorer.Fishery
             switch (gearWizard.SelectedUnit.Variant)
             {
                 case ExpressionVariant.Efforts:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_E, Volume,
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_E, Volume,
                         gearWizard.SelectedUnit.Unit, gearWizard.SelectedUnit.UnitCost);
                     break;
 
                 case ExpressionVariant.Volume:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_V, Volume / 1000.0);
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_V, Volume / 1000.0);
                     break;
 
                 case ExpressionVariant.Square:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_S, Area / 10000.0);
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_S, Area / 10000.0);
                     break;
             }
 
-            report.AddParagraph(Resources.Reports.Extrapolation.Paragraph6,
+            report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph6,
                 waterSize, SpeciesRow.KeyRecord.FullNameReport);
 
             switch (gearWizard.SelectedUnit.Variant)
@@ -449,16 +449,16 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public void AddComposition(Report report)
         {
-            report.AddParagraph(Resources.Reports.Extrapolation.Paragraph7,
+            report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph7,
                 report.NextTableNumber);
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Extrapolation.Table2,
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.Extrapolation.Table2,
                 compositionWizard.CategoryType);
 
             table1.StartRow();
             table1.AddHeaderCell(compositionWizard.CatchesComposition.Name, .25, 2);
-            table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnStockN, 2);
-            table1.AddHeaderCell(Resources.Reports.Extrapolation.ColumnStockB, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolation.ColumnStockN, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolation.ColumnStockB, 2);
             table1.EndRow();
 
             table1.StartRow();
@@ -500,7 +500,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             report.AddTable(table1);
 
             if (selectedCategories.Count > 1)
-                report.AddParagraph(Resources.Reports.Extrapolation.Paragraph8,
+                report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph8,
                     compositionWizard.CategoryType, selectedCategories.Merge(", "), selectedQuantity, selectedMass);
         }
 

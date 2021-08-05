@@ -245,8 +245,8 @@ namespace Mayfly.Fish.Explorer
 
             table1.StartHeader();
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Selectivity.Column1_1, 2);
-            table1.AddHeaderCell(Resources.Reports.Selectivity.Column1_2, 4);
+            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_1, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_2, 4);
             table1.EndRow();
             table1.StartRow();
             table1.AddHeaderCell("m<sub>a</sub>");
@@ -289,9 +289,9 @@ namespace Mayfly.Fish.Explorer
             table1.StartHeader();
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Selectivity.Column2_1, .2, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column2_1, .2, 2);
             table1.AddHeaderCell(Resources.Reports.Caption.GearClass, Dimension);
-            table1.AddHeaderCell(Resources.Reports.Selectivity.Column2_2, 2, CellSpan.Rows);
+            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column2_2, 2, CellSpan.Rows);
             table1.EndRow();
 
             table1.StartRow();
@@ -322,7 +322,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             table1.StartRow();
-            table1.AddCellValue(Resources.Reports.Selectivity.Column2_3);
+            table1.AddCellValue(Resources.Reports.Sections.Selectivity.Column2_3);
             for (int j = 0; j < Dimension; j++)
             {
                 double o = OptimumLength(j);

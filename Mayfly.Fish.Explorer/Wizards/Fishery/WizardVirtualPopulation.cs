@@ -85,7 +85,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         private Report GetReport()
         {
             Report report = new Report(
-                string.Format(Resources.Reports.VPA.Title,
+                string.Format(Resources.Reports.Sections.VPA.Title,
                 SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -93,18 +93,18 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCatchHistory.Checked)
             {
-                report.AddSectionTitle(Resources.Reports.VPA.Header1);
+                report.AddSectionTitle(Resources.Reports.Sections.VPA.Header1);
                 AddHistory(report);
             }
 
             //if (checkBoxMortality.Checked)
             //{
-            //    report.AddSectionTitle(Resources.Reports.VPA.Header2);
+            //    report.AddSectionTitle(Resources.Reports.Sections.VPA.Header2);
             //}
 
             if (checkBoxVpa.Checked)
             {
-                report.AddSectionTitle(Resources.Reports.VPA.Header3);
+                report.AddSectionTitle(Resources.Reports.Sections.VPA.Header3);
                 AddVpa(report);
             }
 
@@ -112,7 +112,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             {
                 report.BreakPage();
 
-                report.AddHeader(Resources.Reports.VPA.TitleAppendices);
+                report.AddHeader(Resources.Reports.Sections.VPA.TitleAppendices);
 
                 foreach (Cohort coh in Population)
                 {
@@ -130,57 +130,57 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddHistory(Report report)
         {
             // Year-based catches
-            report.AddParagraph(Resources.Reports.VPA.Paragraph1,
+            report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph1,
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             report.AddAppendix(
                 AnnualCompositions.GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.VPA.Table1, SpeciesRow.KeyRecord.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
-                    Resources.Reports.Growth.Column1, Resources.Reports.VPA.Column2)
+                    string.Format(Resources.Reports.Sections.VPA.Table1, SpeciesRow.KeyRecord.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
+                    Resources.Reports.Sections.Growth.Column1, Resources.Reports.Sections.VPA.Column2)
                     );
 
             //// Cohort-arranged catches
-            //report.AddParagraph(Resources.Reports.VPA.Paragraph2,
+            //report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph2,
             //    SpeciesRow.GetReportFullPresentation(), report.NextTableNumber, report.NextTableNumber - 1));
 
-            //Report.Table table1 = new Report.Table(Resources.Reports.VPA.Table2,
+            //Report.Table table1 = new Report.Table(Resources.Reports.Sections.VPA.Table2,
             //    SpeciesRow.GetReportFullPresentation()));
-            //Population.ToArray().AddCompositionTable(report, Resources.Reports.Growth.Column1,
-            //    Resources.Reports.GrowthCohorts.Column1, ValueVariant.Quantity, "N0");
+            //Population.ToArray().AddCompositionTable(report, Resources.Reports.Sections.Growth.Column1,
+            //    Resources.Reports.Sections.GrowthCohorts.Column1, ValueVariant.Quantity, "N0");
         }
 
         public void AddVpa(Report report)
         {
-            report.AddParagraph(Resources.Reports.VPA.Paragraph3,
+            report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph3,
                 Population.NaturalMortality, ModelCohort.Name, report.NextTableNumber);
 
             report.AddTable(ModelCohort.GetTable());
 
-            report.AddComment(string.Format(Resources.Reports.VPA.NoticeF, numericUpDownF.Value), true);
+            report.AddComment(string.Format(Resources.Reports.Sections.VPA.NoticeF, numericUpDownF.Value), true);
 
             // Overall totals
 
-            report.AddParagraph(Resources.Reports.VPA.Paragraph4,
+            report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph4,
                 report.NextTableNumber);
 
             report.AddTable(
                 Survivors.ToArray().GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
-                    Resources.Reports.Growth.Column1, 
-                    Resources.Reports.VPA.Column2)
+                    string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
+                    Resources.Reports.Sections.Growth.Column1, 
+                    Resources.Reports.Sections.VPA.Column2)
                 );
 
-            report.AddParagraph(Resources.Reports.VPA.Paragraph5,
+            report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph5,
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             report.AddTable(
                 Survivors.ToArray().GetTable(
                     CompositionColumn.Mass,
-                    string.Format(Resources.Reports.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
-                    Resources.Reports.Growth.Column1, 
-                    Resources.Reports.VPA.Column2)
+                    string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
+                    Resources.Reports.Sections.Growth.Column1, 
+                    Resources.Reports.Sections.VPA.Column2)
                 );
         }
 

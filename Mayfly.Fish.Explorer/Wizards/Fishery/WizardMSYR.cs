@@ -54,7 +54,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(
-                    string.Format(Resources.Reports.MSYR.Title,
+                    string.Format(Resources.Reports.Sections.MSYR.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
 
             report.UseTableNumeration = true;
@@ -62,7 +62,7 @@ namespace Mayfly.Fish.Explorer.Fishery
             if (checkBoxGrowth.Checked)
             {
                 report.AddSectionTitle(
-                    string.Format(Resources.Reports.Growth.Title,
+                    string.Format(Resources.Reports.Sections.Growth.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
                 growthWizard.AddGrowth(report);
                 growthWizard.AddMass(report);
@@ -70,17 +70,17 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxYR.Checked)
             {
-                report.AddSectionTitle(Resources.Reports.MSYR.Title1);
+                report.AddSectionTitle(Resources.Reports.Sections.MSYR.Title1);
 
                 report.AddParagraph(
-                    string.Format(Resources.Reports.MSYR.Paragraph1, model.Tr, model.Tc, model.M));
+                    string.Format(Resources.Reports.Sections.MSYR.Paragraph1, model.Tr, model.Tc, model.M));
 
                 report.AddEquation(@"{B/R} = exp({-M} \times (T_c - T_r)) \times W_{inf.} \times \Big[ \frac{1}{Z} - \frac{3S}{Z + K} + \frac{3S^2}{Z + 2K} - \frac{S^3}{Z+3K} \Big]");
                 report.AddEquation(@"{S} = exp({-K} \times {T_c - t_0})");
                 report.AddEquation(@"{Y/R} = F \times {B/R}");
 
                 report.AddParagraph(
-                    string.Format(Resources.Reports.MSYR.Paragraph3,
+                    string.Format(Resources.Reports.Sections.MSYR.Paragraph3,
                     model.MaximumSustainableYieldPerRecruit,
                     model.FMSY,
                     model.OptimalBiomassPerRecruit,

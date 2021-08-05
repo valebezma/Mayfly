@@ -12,10 +12,10 @@ namespace Mayfly.Fish.Explorer
         /// <param name="report"></param>
         public static void AppendCatchesSectionTo(this Composition composition, Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Section.Catches.Header);
+            report.AddSectionTitle(Resources.Reports.Sections.Catches.Header);
 
             report.AddParagraph(
-                string.Format(Resources.Reports.Section.Catches.ParagraphDescription,
+                string.Format(Resources.Reports.Sections.Catches.ParagraphDescription,
                 composition.Count,
                 composition.MostAbundant,
                 composition.MostAbundant.Quantity,
@@ -39,7 +39,7 @@ namespace Mayfly.Fish.Explorer
             //  
             //} 
 
-            Report.Table tableCatches = composition.GetStandardCatchesTable(Resources.Reports.Section.Catches.Table);
+            Report.Table tableCatches = composition.GetStandardCatchesTable(Resources.Reports.Sections.Catches.Table);
             report.AddTable(tableCatches);
         }
 
@@ -52,18 +52,18 @@ namespace Mayfly.Fish.Explorer
         /// <param name="ue"></param>
         public static void AppendCenosisSectionTo(this SpeciesComposition composition, Report report, FishSamplerType samplerType, UnitEffort ue)
         {
-            report.AddSectionTitle(Resources.Reports.Section.Cenosis.Header);
+            report.AddSectionTitle(Resources.Reports.Sections.Cenosis.Header);
 
-            report.AddParagraph(Resources.Reports.Section.Cenosis.Paragraph1, samplerType.ToDisplay());
+            report.AddParagraph(Resources.Reports.Sections.Cenosis.Paragraph1, samplerType.ToDisplay());
 
-            report.AddEquation("\\text{Abundance} = \\frac{\\overline{CPUE}}{q}", ",");
+            report.AddEquation("\\text{" + Wild.Resources.Reports.Caption.Abundance + "} = \\frac{\\overline{CPUE}}{q}", ",");
 
-            report.AddParagraph(Resources.Reports.Section.Cenosis.Paragraph2, report.NextTableNumber);
+            report.AddParagraph(Resources.Reports.Sections.Cenosis.Paragraph2, report.NextTableNumber);
 
-            Report.Table table = new Report.Table(Resources.Reports.Section.Cenosis.Table);
+            Report.Table table = new Report.Table(Resources.Reports.Sections.Cenosis.Table);
 
             table.StartRow();
-            table.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .25, 2);
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .15, 2);
             table.AddHeaderCell(Resources.Reports.Caption.Catchability, 2, CellSpan.Rows);
             table.AddHeaderCell(Wild.Resources.Reports.Caption.Abundance, 2);
             table.AddHeaderCell(Wild.Resources.Reports.Caption.Biomass, 2);
@@ -74,10 +74,10 @@ namespace Mayfly.Fish.Explorer
 
             table.StartRow();
             table.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ? 
-                table.AddNotice(Resources.Reports.Notice.Abundance, ue.Unit, ue.UnitCost).Holder : string.Empty));
+                table.AddNotice(Resources.Reports.Notice.EffortHabitat, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
             table.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit + (ue.Variant == ExpressionVariant.Efforts ?
-                table.AddNotice(Resources.Reports.Notice.Biomass, ue.Unit, ue.UnitCost).Holder : string.Empty));
+                table.AddNotice(Resources.Reports.Notice.EffortHabitat, ue.Unit, ue.UnitCost).Holder : string.Empty));
             table.AddHeaderCell("%");
             table.EndRow();
 
@@ -114,7 +114,7 @@ namespace Mayfly.Fish.Explorer
 
             report.AddTable(table);
 
-            report.AddParagraph(Resources.Reports.Section.Cenosis.Paragraph3,
+            report.AddParagraph(Resources.Reports.Sections.Cenosis.Paragraph3,
                 Wild.Resources.Interface.Diversity.ResourceManager.GetString(Wild.UserSettings.Diversity.ToString()),
                 composition.Diversity);
         }

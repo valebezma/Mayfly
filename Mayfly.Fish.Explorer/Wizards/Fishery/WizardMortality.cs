@@ -86,7 +86,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(
-                    string.Format(Resources.Reports.Mortality.Title,
+                    string.Format(Resources.Reports.Sections.Mortality.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -109,7 +109,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxAppT.Checked)
             {
-                ageCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "age", SpeciesRow.KeyRecord.FullNameReport));
+                ageCompositionWizard.AppendCalculationSectionTo(report);
             }
 
             report.EndBranded();
@@ -119,12 +119,12 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public void AddMortality(Report report)
         {
-            report.AddParagraph(Resources.Reports.Mortality.Paragraph1, CatchCurve.Regression, 
+            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1, CatchCurve.Regression, 
                 (Age)CatchCurve.Left, (Age)CatchCurve.Right,
                 SpeciesRow.KeyRecord.FullNameReport);
             report.AddEquation(CatchCurve.Regression.GetEquation("CPUE(%)", "t"));
 
-            report.AddParagraph(Resources.Reports.Mortality.Paragraph2, Z);
+            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph2, Z);
             report.AddEquation(@"S = e^{-" + Z.ToString("N5") + "} = " + S.ToString("N5"));
             report.AddEquation(@"φ = 1 - " + S.ToString("N5") + " = " + Fi.ToString("N5"));
         }

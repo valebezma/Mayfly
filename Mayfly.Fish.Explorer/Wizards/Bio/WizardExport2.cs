@@ -37,7 +37,7 @@ namespace Mayfly.Fish.Explorer
 
         public Report GetReport()
         {
-            Report report = new Report(Resources.Reports.Export.Title);
+            Report report = new Report(Resources.Reports.Sections.Export.Title);
             
             report.UseTableNumeration = true;
 
@@ -60,11 +60,11 @@ namespace Mayfly.Fish.Explorer
 
         public void AddGrowth(Report report)
         {
-            report.AddParagraph(Resources.Reports.Export.Paragraph1,
+            report.AddParagraph(Resources.Reports.Sections.Export.Paragraph1,
                 report.NextTableNumber);
             report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Export.Table1);
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.Export.Table1);
 
             table1.StartRow();
             table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .4);
@@ -95,16 +95,16 @@ namespace Mayfly.Fish.Explorer
 
             report.AddTable(table1);
 
-            report.AddComment(Resources.Reports.Export.Comment, true);
+            report.AddComment(Resources.Reports.Sections.Export.Comment, true);
         }
 
         public void AddMass(Report report)
         {
-            //report.AddParagraph(Resources.Reports.Export.Paragraph2,
+            //report.AddParagraph(Resources.Reports.Sections.Export.Paragraph2,
             //    report.NextTableNumber);
             //report.AddEquation(@"W = {q}\times {L^{b}}");
 
-            //Report.Table table1 = new Report.Table(Resources.Reports.Export.Table2);
+            //Report.Table table1 = new Report.Table(Resources.Reports.Sections.Export.Table2);
 
             //table1.StartRow();
             //table1.AddHeaderCell(Wild.Resources.Reports.Common.Species, .4);
@@ -133,7 +133,7 @@ namespace Mayfly.Fish.Explorer
 
             //report.AddTable(table1);
 
-            //report.AddComment(Resources.Reports.Export.Comment, true);
+            //report.AddComment(Resources.Reports.Sections.Export.Comment, true);
         }
 
 

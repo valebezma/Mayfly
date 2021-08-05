@@ -67,7 +67,7 @@ namespace Mayfly.Fish.Explorer.Survey
         
         private Report GetReport()
         {
-            Report report = new Report(Resources.Reports.Title.RepCenosis);
+            Report report = new Report(Resources.Reports.Header.SummaryCenosis);
 
             gearWizard.SelectedData.AddCommon(report);
 
@@ -99,12 +99,12 @@ namespace Mayfly.Fish.Explorer.Survey
             if (checkBoxAppCatches.Checked | checkBoxAppCPUE.Checked | checkBoxAppAB.Checked)
             {
                 report.BreakPage(PageBreakOption.Odd);
-                report.AddChapterTitle(Resources.Reports.Title.Appendices);
+                report.AddChapterTitle(Resources.Reports.Chapter.Appendices);
             }
 
             if (checkBoxAppCatches.Checked)
             {
-                report.AddSectionTitle(string.Format(Resources.Reports.Section.Catches.HeaderSingleClass, gearWizard.SelectedSamplerType.ToDisplay()));
+                report.AddSectionTitle(string.Format(Resources.Reports.Sections.Catches.HeaderSingleClass, gearWizard.SelectedSamplerType.ToDisplay()));
 
                 foreach (Composition composition in compositionWizard.CatchesComposition.SeparateCompositions)
                 {
@@ -112,7 +112,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
                     report.AddAppendix(
                         composition.GetStandardCatchesTable(
-                            string.Format(Resources.Reports.Section.Catches.TableSingleClass, composition.Name), 
+                            string.Format(Resources.Reports.Sections.Catches.TableSingleClass, composition.Name), 
                             Wild.Resources.Reports.Caption.Species)
                         );
                 }
@@ -120,7 +120,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
             if (checkBoxAppCPUE.Checked)
             {
-                compositionWizard.AppendCalculationSectionTo(report, Resources.Reports.Title.AppCompositionSpreadsheets);
+                compositionWizard.AppendCalculationSectionTo(report);
             }
 
             if (checkBoxAppAB.Checked)

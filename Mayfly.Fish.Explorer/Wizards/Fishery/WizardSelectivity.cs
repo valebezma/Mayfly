@@ -50,7 +50,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         private Report GetReport()
         {
             Report report = new Report(
-                    string.Format(Resources.Reports.Selectivity.Title, 
+                    string.Format(Resources.Reports.Sections.Selectivity.Title, 
                     gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -63,21 +63,21 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxLength.Checked)
             {
-                report.AddParagraph(Resources.Reports.Selectivity.Paragraph1, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph1, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
                 report.AddTable(
                     CatchesComposition.SeparateCompositions.ToArray().GetTable( 
                         CompositionColumn.Abundance,
-                        string.Format(Resources.Reports.Selectivity.Table1, SpeciesRow.KeyRecord.FullNameReport),
+                        string.Format(Resources.Reports.Sections.Selectivity.Table1, SpeciesRow.KeyRecord.FullNameReport),
                         CatchesComposition.Name, Resources.Reports.Caption.GearClass)
                     );
 
-                report.AddParagraph(Resources.Reports.Selectivity.Paragraph2, report.NextTableNumber);
+                report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph2, report.NextTableNumber);
 
                 report.AddTable(
                     CatchesComposition.GetTable(
                         CompositionColumn.Abundance | CompositionColumn.AbundanceFraction,
-                        string.Format(Resources.Reports.Selectivity.Table2, SpeciesRow.KeyRecord.FullNameReport),
+                        string.Format(Resources.Reports.Sections.Selectivity.Table2, SpeciesRow.KeyRecord.FullNameReport),
                         CatchesComposition.Name)
                     );
             }
@@ -85,31 +85,31 @@ namespace Mayfly.Fish.Explorer.Fishery
             if (checkBoxSelectivity.Checked)
             {
                 report.AddParagraph(
-                    string.Format(Resources.Reports.Selectivity.Paragraph3,
+                    string.Format(Resources.Reports.Sections.Selectivity.Paragraph3,
                     report.NextTableNumber - 2, report.NextTableNumber));
 
-                Selectivity.AddReport1(report, string.Format(Resources.Reports.Selectivity.Table3,
+                Selectivity.AddReport1(report, string.Format(Resources.Reports.Sections.Selectivity.Table3,
                     SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay()));
 
                 report.AddParagraph(
-                    string.Format(Resources.Reports.Selectivity.Paragraph4, 
+                    string.Format(Resources.Reports.Sections.Selectivity.Paragraph4, 
                     report.NextTableNumber - 1, Selectivity.SelectionFactor, 
                     Selectivity.StandardDeviation,report.NextTableNumber));
 
-                Selectivity.AddReport2(report, string.Format(Resources.Reports.Selectivity.Table4,
+                Selectivity.AddReport2(report, string.Format(Resources.Reports.Sections.Selectivity.Table4,
                     SpeciesRow.KeyRecord.FullNameReport));
             }
 
             if (checkBoxPopulation.Checked)
             {
                 report.AddParagraph(
-                    string.Format(Resources.Reports.Selectivity.Paragraph5,
+                    string.Format(Resources.Reports.Sections.Selectivity.Paragraph5,
                     report.NextTableNumber)
                     );
 
                 Report.Table table5 = Structure.GetTable(
                     CompositionColumn.Abundance | CompositionColumn.AbundanceFraction, 
-                    string.Format(Resources.Reports.Selectivity.Table5, SpeciesRow.KeyRecord.FullNameReport),
+                    string.Format(Resources.Reports.Sections.Selectivity.Table5, SpeciesRow.KeyRecord.FullNameReport),
                     Structure.Name
                     );
 

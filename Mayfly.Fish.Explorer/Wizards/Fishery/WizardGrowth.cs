@@ -96,7 +96,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(string.Format(
-                Resources.Reports.Growth.Title,
+                Resources.Reports.Sections.Growth.Title,
                 SpeciesRow.KeyRecord.FullNameReport));
             Data.AddCommon(report, SpeciesRow);
 
@@ -124,12 +124,12 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public void AddData(Report report)
         {
-            report.AddParagraph(Resources.Reports.Growth.Paragraph1,
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1,
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             Report.Table table = PseudoCohort.GetTable(
                 CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, 
-                string.Format(Resources.Reports.Growth.Table1, SpeciesRow.KeyRecord.FullNameReport), 
+                string.Format(Resources.Reports.Sections.Growth.Table1, SpeciesRow.KeyRecord.FullNameReport), 
                 PseudoCohort.Name);
 
             report.AddTable(table);
@@ -138,14 +138,14 @@ namespace Mayfly.Fish.Explorer.Fishery
         public void AddGrowth(Report report)
         {
             if (GrowthModel.IsRegressionOK) {
-                report.AddParagraph(Resources.Reports.Growth.Paragraph2, GrowthModel.Regression);
+                report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, GrowthModel.Regression);
                 report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
             }
         }
 
         public void AddMass(Report report)
         {
-            report.AddParagraph(Resources.Reports.Growth.Paragraph3, WeightModel.Regression);
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, WeightModel.Regression);
             report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
         }
 

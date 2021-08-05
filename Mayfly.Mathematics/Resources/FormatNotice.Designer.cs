@@ -79,6 +79,15 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to mean.
+        /// </summary>
+        public static string m {
+            get {
+                return ResourceManager.GetString("m", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to mean and extrema.
         /// </summary>
         public static string q {

@@ -24,7 +24,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return string.Format(Resources.Interface.Interface.BioFormat, Dates.GetDatesDescription(DateTime.Now), Places.Merge());
+                return string.Format(Resources.Interface.Interface.BioFormat, Dates.GetDatesDescription(), Places.Merge());
             }
         }
 

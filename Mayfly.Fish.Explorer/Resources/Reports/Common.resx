@@ -135,7 +135,4 @@
   <data name="Kg" xml:space="preserve">
     <value>kg</value>
   </data>
-  <data name="StratifiedCribnote" xml:space="preserve">
-    <value>Stratified crib note (cm)</value>
-  </data>
 </root>

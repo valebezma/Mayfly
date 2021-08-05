@@ -58,8 +58,6 @@ namespace Mayfly.Wild
     {
         public Data.SpeciesRow SpeciesRow { get; set; }
 
-        public new string Name { get { return SpeciesRow.KeyRecord.Name; } }
-
 
 
         public SpeciesSwarm(Data.SpeciesRow dataRow)
@@ -70,12 +68,13 @@ namespace Mayfly.Wild
         public override Category GetEmptyCopy()
         {
             SpeciesSwarm result = new SpeciesSwarm(SpeciesRow);
+            result.Name = Name;
             return result;
         }
 
         public override string ToString()
         {
-            return (SpeciesRow.KeyRecord.ShortName);
+            return Name == SpeciesRow.Species ? (SpeciesRow.KeyRecord.ShortName) : Name;
         }
     }
 }

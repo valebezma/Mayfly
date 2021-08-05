@@ -415,31 +415,36 @@ namespace Mayfly.Fish.Explorer.Survey
             //#endregion
         }
 
-        public void AppendCalculationSectionTo(Report report, string sectionTitle)
+        public void AppendCalculationSectionTo(Report report)
         {
             if (CatchesComposition.SeparateCompositions.Count > 6) report.BreakPage(PageBreakOption.Landscape);
 
-            report.AddSectionTitle(sectionTitle);
+            string holder = (SpeciesRow == null) ?  Wild.Resources.Reports.Caption.Species :
+                string.Format(Resources.Reports.Table.CategoriesHolder, CategoryType, SpeciesRow.KeyRecord.FullNameReport);
 
-            string tail = (SpeciesRow == null) ? "Species" : string.Format(Resources.Reports.CatchComposition.TableHeaderTail, CategoryType, SpeciesRow.KeyRecord.FullNameReport);
+            string sectionTitle = string.Format(Resources.Reports.Section.TablesCompositionCatches,
+                (SpeciesRow == null) ? Wild.Resources.Reports.Caption.Species : CategoryType, 
+                (SpeciesRow == null) ? gearWizard.SelectedSamplerType.ToDisplay() : SpeciesRow.KeyRecord.FullNameReport);
+
+            report.AddSectionTitle(sectionTitle);
 
             report.AddAppendix(
                 CatchesComposition.GetAppendix(CompositionColumn.Quantity | CompositionColumn.Mass,
-                string.Format(Resources.Reports.CatchComposition.TableSampleSize, tail),
+                string.Format(Resources.Reports.Table.SampleSizeClasses, holder),
                 Resources.Reports.Caption.GearClass)
                 );
 
 
             report.AddAppendix(
                 CatchesComposition.GetAppendix(CompositionColumn.Abundance | CompositionColumn.Biomass,
-                string.Format(Resources.Reports.CatchComposition.TableCPUE, tail, gearWizard.SelectedUnit.Unit), 
+                string.Format(Resources.Reports.Table.CpueClasses, holder), 
                 Resources.Reports.Caption.GearClass)
                 );
 
 
             report.AddAppendix(
                 CatchesComposition.GetAppendix(CompositionColumn.AbundanceFraction | CompositionColumn.BiomassFraction,
-                string.Format(Resources.Reports.CatchComposition.TableFraction, tail, gearWizard.SelectedUnit.Unit),
+                string.Format(Resources.Reports.Table.FractionClasses, holder),
                 Resources.Reports.Caption.GearClass)
                 );
 
@@ -448,8 +453,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
         public void AddAgeRecoveryRoutines(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.CatchComposition.AppendixHeader2,
-                SpeciesRow.KeyRecord.FullNameReport);
+            report.AddSectionTitle(Resources.Reports.Section.TablesALK, SpeciesRow.KeyRecord.FullNameReport);
 
             foreach (Composition classComposition in CatchesComposition.SeparateCompositions)
             {
@@ -461,7 +465,7 @@ namespace Mayfly.Fish.Explorer.Survey
 
                 report.AddTable(ageComposition.GetReport());
 
-                //ageComposition.AddReport(report, string.Format(Resources.Reports.Selectivity.Table2, classComposition.Name), gearWizard.SelectedUnit.Unit);
+                //ageComposition.AddReport(report, string.Format(Resources.Reports.Sections.Selectivity.Table2, classComposition.Name), gearWizard.SelectedUnit.Unit);
             }
         }
 

@@ -89,6 +89,8 @@ namespace Mayfly.Wild
 
         public string ToString(string format, IFormatProvider provider)
         {
+            if (format == null) format = string.Empty;
+
             switch (format.ToLower())
             {
                 case "l":

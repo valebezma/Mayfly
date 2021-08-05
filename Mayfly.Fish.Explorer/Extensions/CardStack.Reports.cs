@@ -80,9 +80,6 @@ namespace Mayfly.Fish.Explorer
 
         public static void AddGearStatsReport(this CardStack stack, Report report)
         {
-            report.UseTableNumeration = true;
-            //stack.AddSampleSizeReport(report);
-
             foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
             {
                 report.AddChapterTitle(samplerType.ToDisplay());
@@ -158,7 +155,7 @@ namespace Mayfly.Fish.Explorer
 
             #region Sample Size
 
-            report.AddSectionTitle(Resources.Reports.Section.SampleSize.Subtitle);
+            report.AddSectionTitle(Resources.Reports.Sections.SampleSize.Subtitle);
 
             CardStack samplerData = stack.GetStack(samplerType);
 
@@ -171,7 +168,7 @@ namespace Mayfly.Fish.Explorer
             //    samplerData.SamplerClasses(samplerType).Last(), ue.UnitDescription)
             //    );
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Section.SampleSize.Table_1);
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.SampleSize.Table);
 
             table1.StartHeader();
 
@@ -301,13 +298,13 @@ namespace Mayfly.Fish.Explorer
 
             #region Sample Detailed
 
-            report.AddSectionTitle(Resources.Reports.Section.SampleDetailed.Subtitle);
+            report.AddSectionTitle(Resources.Reports.Sections.SampleDetailed.Subtitle);
             int no = 1;
             foreach (Data.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
 
-                report.AddParagraph(no + ") " + Resources.Reports.Section.SampleDetailed.Paragraph_1 + (cardRow.Quantity == 0 ? " " + Resources.Reports.Section.SampleDetailed.Paragraph_1_1 : string.Empty),
+                report.AddParagraph(no + ") " + Resources.Reports.Sections.SampleDetailed.Paragraph_1 + (cardRow.Quantity == 0 ? " " + Resources.Reports.Sections.SampleDetailed.Paragraph_1_1 : string.Empty),
                     cardRow, 
                     cardRow.GetEffort(), 
                     cardRow.GetGearType().GetDefaultUnitEffort().Unit);
@@ -319,7 +316,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     bool justregistered = logRow.DetailedQuantity== 0;
 
-                    report.AddParagraph(Resources.Reports.Section.SampleDetailed.Paragraph_2 + (justregistered ? " " + Resources.Reports.Section.SampleDetailed.Paragraph_2_1 : string.Empty),
+                    report.AddParagraph(Resources.Reports.Sections.SampleDetailed.Paragraph_2 + (justregistered ? " " + Resources.Reports.Sections.SampleDetailed.Paragraph_2_1 : string.Empty),
                         logRow.SpeciesRow.KeyRecord.FullNameReport,
                         logRow.IsQuantityNull() ? Constants.Null : logRow.Quantity.ToString(),
                         logRow.IsMassNull() ? Constants.Null : logRow.Mass.ToString());
@@ -342,19 +339,16 @@ namespace Mayfly.Fish.Explorer
             double totalE = samplerData.GetEffort(samplerType, ue.Variant);
             string[] classes = stack.Classes(samplerType);
 
-            report.AddSectionTitle(Resources.Reports.Section.Efforts.Subtitle);
-            //report.AddSubtitle3(Resources.Reports.GearStats.HeaderEfforts);
+            report.AddSectionTitle(Resources.Reports.Sections.Efforts.Header);
 
             if (classes.Length > 1)
             {
-                report.AddParagraph(
-                    string.Format(Resources.Reports.Section.Efforts.Paragraph_1,
+                report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph1,
                     samplerType.ToDisplay(), classes.Length,
-                    samplerData.SamplerClasses(samplerType)[0],
-                    samplerData.SamplerClasses(samplerType).Last(), ue.UnitDescription)
-                    );
+                    samplerData.SamplerClasses(samplerType)[0], samplerData.SamplerClasses(samplerType).Last(),
+                    ue.UnitDescription, report.NextTableNumber);
 
-                Report.Table table1 = new Report.Table(Resources.Reports.Section.Efforts.Table_1, samplerType.ToDisplay());
+                Report.Table table1 = new Report.Table(Resources.Reports.Sections.Efforts.Table, samplerType.ToDisplay());
 
                 table1.StartRow();
                 table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25);
@@ -387,124 +381,14 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                report.AddParagraph(Resources.Reports.Section.Efforts.Paragraph_2, samplerType.ToDisplay(), ue.UnitDescription, totalE, ue.Unit);
+                report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph2,
+                    samplerType.ToDisplay(), ue.UnitDescription, totalE, ue.Unit);
             }
         }
         
         #endregion
 
         #region Species stats
-
-        public static void AddSpcCpue(this CardStack stack, Report report, Data.SpeciesRow speciesRow,
-            FishSamplerType samplerType, UnitEffort ue)
-        {
-            CardStack samplerData = stack.GetStack(samplerType, ue.Variant);
-
-            if (samplerData.Count == 0) return;
-            if (samplerData.Quantity(speciesRow) == 0) return;
-
-            string[] classes = stack.Classes(samplerType);
-
-            Report.Table table1 = new Report.Table(Resources.Reports.Title.CpueSpc, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay());
-
-            table1.StartRow();
-            table1.AddHeaderCell(Fish.Resources.Reports.Card.Mesh, .25, 2);
-            table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, ue.Unit), 2, CellSpan.Rows);
-            table1.AddHeaderCell(Resources.Reports.Caption.Catch, 2);
-            table1.AddHeaderCell(Resources.Reports.Caption.CpueAccr, 2);
-            table1.EndRow();
-
-            table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Common.Ind);
-            table1.AddHeaderCell(Resources.Reports.Common.Kg);
-            table1.AddHeaderCell(Resources.Reports.Common.Ind + " / " + ue.Unit);
-            table1.AddHeaderCell(Resources.Reports.Common.Kg + " / " + ue.Unit);
-            table1.EndRow();
-
-            double E = 0.0;
-            double Q = 0.0;
-            double W = 0.0;
-            int Index = 0;
-            double QpE = 0.0;
-            double WpE = 0.0;
-
-
-            if (classes.Length > 1)
-            {
-                foreach (string mesh in classes)
-                {
-                    CardStack meshData = stack.GetStack(samplerType, mesh);
-
-                    double q = meshData.Quantity(speciesRow);
-
-                    if (q == 0) continue;
-
-                    double e = meshData.GetEffort(samplerType);
-                    double w = meshData.Mass(speciesRow);
-
-                    E += e;
-                    Q += q;
-                    W += w;
-                    QpE += (q / e);
-                    WpE += (w / e);
-
-                    table1.StartRow();
-                    table1.AddCellValue(meshData.Name);
-                    table1.AddCellRight(e, Mayfly.Service.Mask(3));
-                    table1.AddCellRight(q);
-                    table1.AddCellRight(w, Mayfly.Service.Mask(3));
-                    table1.AddCellRight(q / e, Mayfly.Service.Mask(3));
-                    table1.AddCellRight(w / e, Mayfly.Service.Mask(3));
-                    table1.EndRow();
-
-                    Index++;
-                }
-
-                table1.StartFooter();
-
-                table1.StartRow();
-                table1.AddCell(Mayfly.Resources.Interface.Total);
-                table1.AddCellRight(E, Mayfly.Service.Mask(3));
-                table1.AddCellRight(Q);
-                table1.AddCellRight(W.ToString(Mayfly.Service.Mask(3)));
-                table1.AddCellRight(Constants.Null);
-                table1.AddCellRight(Constants.Null);
-                table1.EndRow();
-
-                table1.StartRow();
-                table1.AddCell(Mayfly.Resources.Interface.Mean);
-                //table1.AddCell(Resources.Reports.Reports.CpueMean);
-                //table1.AddCellRight(Constants.Null);
-                //table1.AddCellRight(Constants.Null);
-                //table1.AddCellRight(Constants.Null);
-                table1.AddCellRight(E / (double)classes.Length, Mayfly.Service.Mask(3));
-                table1.AddCellRight(Q / (double)classes.Length, Mayfly.Service.Mask(1));
-                table1.AddCellRight(W / (double)classes.Length, Mayfly.Service.Mask(3));
-                table1.AddCellRight(QpE / (double)classes.Length, Mayfly.Service.Mask(3));
-                table1.AddCellRight(WpE / (double)classes.Length, Mayfly.Service.Mask(3));
-                table1.EndRow();
-
-                table1.EndFooter();
-            }
-            else
-            {
-                double q = samplerData.Quantity(speciesRow);
-
-                double e = samplerData.GetEffort(samplerType);
-                double w = samplerData.Mass(speciesRow);
-
-                table1.StartRow();
-                table1.AddCell(Resources.Interface.Interface.AllDataCombined);
-                table1.AddCellRight(e, Mayfly.Service.Mask(3));
-                table1.AddCellRight(q);
-                table1.AddCellRight(w, Mayfly.Service.Mask(3));
-                table1.AddCellRight(q / e, Mayfly.Service.Mask(3));
-                table1.AddCellRight(w / e, Mayfly.Service.Mask(3));
-                table1.EndRow();
-            }
-
-            report.AddTable(table1);
-        }
 
         #region Stratified tables
 
@@ -515,7 +399,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Report GetStratifiedCribnote(this CardStack stack, Data.SpeciesRow[] speciesRows)
         {
-            Report report = new Report(Resources.Reports.Common.StratifiedCribnote, "strates.css");
+            Report report = new Report(Resources.Reports.Header.StratifiedCribnote, "strates.css");
 
             foreach (Data.SpeciesRow speciesRow in speciesRows)
             {
@@ -550,9 +434,9 @@ namespace Mayfly.Fish.Explorer
 
         //public static Report GetTreatmentNote(this CardStack stack, Data.SpeciesRow[] speciesRows, System.Data.DataColumn column)
         //{
-        //    Report report = new Report(string.Format(Resources.Reports.TreatmentSuggestion.Title, Service.Localize(column.Caption)));
+        //    Report report = new Report(string.Format(Resources.Reports.Sections.TreatmentSuggestion.Title, Service.Localize(column.Caption)));
 
-        //    report.AddParagraph(Resources.Reports.TreatmentSuggestion.Par1, Service.Localize(column.Caption));
+        //    report.AddParagraph(Resources.Reports.Sections.TreatmentSuggestion.Par1, Service.Localize(column.Caption));
 
         //    foreach (Data.SpeciesRow speciesRow in speciesRows)
         //    {
@@ -574,7 +458,7 @@ namespace Mayfly.Fish.Explorer
 
         //#endregion
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level)
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
         {
             bool num = report.UseTableNumeration;
             report.UseTableNumeration = true;
@@ -582,19 +466,19 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
             {
                 report.AddChapterTitle(speciesRow.KeyRecord.FullNameReport);
-                stack.AddSpeciesStatsReport(report, speciesRow, level);
+                stack.AddSpeciesStatsReport(report, speciesRow, level, variant);
             }
 
             report.UseTableNumeration = num;
         }
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, Data.SpeciesRow speciesRow, SpeciesStatsLevel level)
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, Data.SpeciesRow speciesRow, SpeciesStatsLevel level, ExpressionVariant variant)
         {
             if (level.HasFlag(SpeciesStatsLevel.Totals))
             {
-                report.AddSectionTitle(Resources.Reports.SpeciesStats.Header1);
+                report.AddSectionTitle(Resources.Reports.Sections.SpeciesStats.Header1);
 
-                report.AddParagraph(Resources.Reports.SpeciesStats.Paragraph1,
+                report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph1,
                     speciesRow.KeyRecord.FullNameReport,
                     stack.Quantity(speciesRow),
                     stack.QuantitySampled(speciesRow),
@@ -607,18 +491,60 @@ namespace Mayfly.Fish.Explorer
 
                 if (a > 0)
                 {
-                    report.AddParagraph(Resources.Reports.SpeciesStats.Paragraph1_1, a);
+                    report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph1_1, a);
                 }
 
                 foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
                 {
-                    stack.AddSpcCpue(report, speciesRow, samplerType, samplerType.GetDefaultUnitEffort());
+                    CardStack samplerData = stack.GetStack(samplerType, variant);
+
+                    if (samplerData.Count == 0) continue;
+                    if (samplerData.Quantity(speciesRow) == 0) continue;
+
+                    string[] classes = stack.Classes(samplerType);
+
+                    UnitEffort ue = new UnitEffort(samplerType, variant);
+
+                    SpeciesComposition compos = new SpeciesComposition();
+                    compos.Unit = ue.Unit;
+
+                    if (classes.Length > 1)
+                    {
+                        foreach (string mesh in classes)
+                        {
+                            CardStack meshData = stack.GetStack(samplerType, mesh);
+
+                            double q = meshData.Quantity(speciesRow);
+
+                            if (q == 0) continue;
+
+                            SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
+                            swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
+                            swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
+                            swarm.Name = mesh;
+
+                            compos.AddCategory(swarm);
+                        }
+                    }
+                    else
+                    {
+                        SpeciesSwarm swarm = samplerData.GetSwarm(speciesRow);
+                        swarm.Abundance = samplerData.GetAverageAbundance(speciesRow);
+                        swarm.Biomass = samplerData.GetAverageBiomass(speciesRow);
+
+                        compos.AddCategory(swarm);
+                    }
+
+                    report.AddTable(compos.GetTable(CompositionColumn.LengthSample | CompositionColumn.MassSample |
+                        CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.Mass | CompositionColumn.Biomass,
+                        string.Format(Resources.Reports.Table.SampleSizeClasses, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay()),
+                        Resources.Reports.Caption.GearClass));
                 }
             }
 
             if (level.HasFlag(SpeciesStatsLevel.Detailed))
             {
-                report.AddSectionTitle(Resources.Reports.SpeciesStats.Header2);
+                report.AddSectionTitle(Resources.Reports.Sections.SpeciesStats.Header2);
                 int no = 1;
                 foreach (Data.CardRow cardRow in stack)
                 {
@@ -626,7 +552,7 @@ namespace Mayfly.Fish.Explorer
 
                     if (logRow == null) continue;
 
-                    report.AddParagraph(no + ") " + Resources.Reports.SpeciesStats.Paragraph2,
+                    report.AddParagraph(no + ") " + Resources.Reports.Sections.SpeciesStats.Paragraph2,
                         cardRow,
                         cardRow.GetEffort(),
                         cardRow.GetGearType().GetDefaultUnitEffort().Unit,
@@ -647,7 +573,7 @@ namespace Mayfly.Fish.Explorer
                 TreatmentSuggestion suggestion = stack.GetTreatmentSuggestion(speciesRow, stack.Parent.Individual.AgeColumn);
                 if (suggestion != null)
                 {
-                    report.AddSectionTitle(string.Format(Resources.Reports.SpeciesStats.Header3, Service.Localize(stack.Parent.Individual.AgeColumn.Caption)));
+                    report.AddSectionTitle(string.Format(Resources.Reports.Sections.SpeciesStats.Header3, Service.Localize(stack.Parent.Individual.AgeColumn.Caption)));
                     report.AddParagraph(suggestion.GetNote());
                 }
             }
@@ -658,8 +584,8 @@ namespace Mayfly.Fish.Explorer
 
                 if (crib != null)
                 {
-                    report.AddSectionTitle(Resources.Reports.SpeciesStats.Header4, Service.Localize(stack.Parent.Individual.AgeColumn.Caption));
-                    report.AddParagraph(Resources.Reports.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
+                    report.AddSectionTitle(Resources.Reports.Sections.SpeciesStats.Header4, Service.Localize(stack.Parent.Individual.AgeColumn.Caption));
+                    report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
                     report.AddCribnote(crib);
                 }
             }
@@ -672,7 +598,7 @@ namespace Mayfly.Fish.Explorer
             bool num = report.UseTableNumeration;
             report.UseTableNumeration = true;
 
-            report.AddParagraph(Resources.Reports.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
+            report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
             {
@@ -708,8 +634,8 @@ namespace Mayfly.Fish.Explorer
                         (mod > 0 ? (((reged + aged) > 0 ? "+" : string.Empty) + "[" + mod + "]") : string.Empty) +
                         "<br><br>" +
                         (has >= req ?
-                        (reged > 0 && mod < req ? string.Format(Resources.Reports.SpeciesStats.Tip1, reged) : Resources.Reports.SpeciesStats.Tip2) :
-                        has > 0 ? string.Format(Resources.Reports.SpeciesStats.Tip3, req - has) : Resources.Reports.SpeciesStats.Tip4);
+                        (reged > 0 && mod < req ? string.Format(Resources.Reports.Sections.SpeciesStats.Tip1, reged) : Resources.Reports.Sections.SpeciesStats.Tip2) :
+                        has > 0 ? string.Format(Resources.Reports.Sections.SpeciesStats.Tip3, req - has) : Resources.Reports.Sections.SpeciesStats.Tip4);
                 });
 
             return crib;

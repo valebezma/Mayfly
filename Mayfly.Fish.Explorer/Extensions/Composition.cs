@@ -113,11 +113,11 @@ namespace Mayfly.Fish.Explorer
 
             if (composition[0] is AgeGroup)
             {
-                return Resources.Reports.PopulationCompositionType.Age;
+                return Resources.PopulationCompositionType.Age;
             }
             else if (composition[0] is SizeClass)
             {
-                return Resources.Reports.PopulationCompositionType.Length;
+                return Resources.PopulationCompositionType.Length;
             }
 
             return string.Empty;
@@ -172,8 +172,8 @@ namespace Mayfly.Fish.Explorer
                     string header = composition.Name;
                     bool rec = (composition is AgeComposition) && ((AgeComposition)composition).IsRecovered;
                     bool add = composition.AdditionalDistributedMass > 0;
-                    if (rec) { header += table.AddNotice(Resources.Reports.CatchComposition.Notice2).Holder; }
-                    if (add) { header += table.AddNotice(Resources.Reports.CatchComposition.Notice3).Holder; }
+                    if (rec) { header += table.AddNotice(Resources.Reports.Sections.ALK.NoticeAlkApplied).Holder; }
+                    if (add) { header += table.AddNotice(Resources.Reports.Sections.ALK.NoticeBiomassSpread).Holder; }
                     table.AddHeaderCell(header, n);
                 }
 
@@ -206,7 +206,7 @@ namespace Mayfly.Fish.Explorer
 
                 if (content.HasFlag(CompositionColumn.SexRatio))
                 {
-                    table.AddHeaderCell(Resources.Reports.Caption.SexualRatio + table.AddNotice(Resources.Reports.Notice.SexualLegend, Sex.Juvenile, Sex.Male, Sex.Female).Holder, .12, 2);
+                    table.AddHeaderCell(Resources.Reports.Caption.SexRatio + table.AddNotice(Resources.Reports.Notice.SexRatioLegend, Sex.Juvenile, Sex.Male, Sex.Female).Holder, .12, 2);
                 }
             }
             table.EndRow();
@@ -218,7 +218,7 @@ namespace Mayfly.Fish.Explorer
                 if (content.HasFlag(CompositionColumn.Quantity)) table.AddHeaderCell(Resources.Reports.Common.Ind);
                 if (content.HasFlag(CompositionColumn.Abundance))
                 {
-                    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Ind, composition.Unit, table.AddNotice(Resources.Reports.Notice.NPUE, composition.Unit, composition.Unit).Holder));
+                    table.AddHeaderCell(string.Format("{0}/{1}", Resources.Reports.Common.Ind, composition.Unit));
                     ;
                 }
                 if (content.HasFlag(CompositionColumn.AbundanceFraction)) table.AddHeaderCell("%");
@@ -226,7 +226,7 @@ namespace Mayfly.Fish.Explorer
                 if (content.HasFlag(CompositionColumn.Mass)) table.AddHeaderCell(Resources.Reports.Common.Kg);
                 if (content.HasFlag(CompositionColumn.Biomass))
                 {
-                    table.AddHeaderCell(string.Format("{0}/{1}{2}", Resources.Reports.Common.Kg, composition.Unit, table.AddNotice(Resources.Reports.Notice.BPUE, composition.Unit, composition.Unit).Holder));                    
+                    table.AddHeaderCell(string.Format("{0}/{1}", Resources.Reports.Common.Kg, composition.Unit));                    
                 }
                 if (content.HasFlag(CompositionColumn.BiomassFraction)) table.AddHeaderCell("%");
             }
@@ -320,22 +320,22 @@ namespace Mayfly.Fish.Explorer
         {
             string categoryType = composition.GetCategoryType();
 
-            report.AddSectionTitle(Resources.Reports.Section.Population.Header, categoryType);
+            report.AddSectionTitle(Resources.Reports.Sections.Population.Header, categoryType);
 
-            report.AddParagraph(Resources.Reports.Section.Population.Paragraph1, categoryType, speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+            report.AddParagraph(Resources.Reports.Sections.Population.Paragraph1, categoryType, speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             if (composition is AgeComposition)
             {
                 if (UserSettings.AgeSuggest && data.GrowthModels.GetSpecies().Contains(speciesRow.Species))
                 {
-                    report.AddParagraph(Resources.Reports.Section.Population.Paragraph2,
+                    report.AddParagraph(Resources.Reports.Sections.Population.Paragraph2,
                             speciesRow.KeyRecord.FullNameReport);
 
                     report.AddEquation(data.GrowthModels.GetCombinedScatterplot(speciesRow.Species).Regression.GetEquation("L", "t", "N2"));
 
                     if (data.GrowthModels.GetExternalScatterplot(speciesRow.Species) != null)
                     {
-                        report.AddParagraph(Resources.Reports.Section.Population.Paragraph3,
+                        report.AddParagraph(Resources.Reports.Sections.Population.Paragraph3,
                             data.GrowthModels.Authors.Merge(),
                             data.GrowthModels.Description);
                     }
@@ -344,7 +344,7 @@ namespace Mayfly.Fish.Explorer
 
             Report.Table tableCatches = composition.GetTable(                
                 CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction,
-                string.Format(Resources.Reports.Section.Population.Table, categoryType));
+                string.Format(Resources.Reports.Sections.Population.Table, categoryType));
 
             report.AddTable(tableCatches);
         }

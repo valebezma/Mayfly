@@ -56,7 +56,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(string.Format(
-                Resources.Reports.MortalityCohorts.Title,
+                Resources.Reports.Sections.MortalityCohorts.Title,
                 SpeciesRow.KeyRecord.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
@@ -79,15 +79,15 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public void AddHistory(Report report)
         {
-            report.AddParagraph(Resources.Reports.MortalityCohorts.Paragraph1,
+            report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph1,
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
-            Report.Table table1 = new Report.Table(Resources.Reports.MortalityCohorts.Table1,
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table1,
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Growth.Column1, .2, 2);
-            table1.AddHeaderCell(Resources.Reports.GrowthCohorts.Column1, Cohorts.Count);
+            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, Cohorts.Count);
             table1.EndRow();
             table1.StartRow();
             foreach (Composition composition in Cohorts) {
@@ -111,15 +111,15 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public void AddMortality(Report report)
         {
-            report.AddParagraph(Resources.Reports.MortalityCohorts.Paragraph2,
+            report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph2,
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"CPUE(%) = a \times e^{-{Z} \times {t}}");
 
-            Report.Table table1 = new Report.Table(Resources.Reports.MortalityCohorts.Table2,
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table2,
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.GrowthCohorts.Column1, .2);
+            table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, .2);
             table1.AddHeaderCell("a");
             table1.AddHeaderCell("Z");
             table1.AddHeaderCell("ф");

@@ -56,7 +56,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         public Report GetReport() 
         {
-            Report report = new Report(string.Format(Resources.Reports.Title.RepPopulation, SpeciesRow.KeyRecord.FullNameReport));
+            Report report = new Report(string.Format(Resources.Reports.Header.SummaryPopulation, SpeciesRow.KeyRecord.FullNameReport));
             
             Data.AddCommon(report, SpeciesRow);
 
@@ -75,12 +75,12 @@ namespace Mayfly.Fish.Explorer.Fishery
             if (checkBoxAppT.Checked | checkBoxAppKeys.Checked)
             {
                 report.BreakPage(PageBreakOption.Odd);
-                report.AddChapterTitle(Resources.Reports.Title.Appendices);
+                report.AddChapterTitle(Resources.Reports.Chapter.Appendices);
             }
 
             if (checkBoxAppT.Checked)
             {
-                ageCompositionWizard.AppendCalculationSectionTo(report, string.Format(Resources.Reports.CatchComposition.AppendixHeader1, "age", SpeciesRow.KeyRecord.FullNameReport));
+                ageCompositionWizard.AppendCalculationSectionTo(report);
             }
 
             if (checkBoxAppKeys.Checked)

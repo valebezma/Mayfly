@@ -149,7 +149,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
         private Report GetReport() 
         {
-            Report report = new Report(Resources.Reports.Extrapolations.Title);
+            Report report = new Report(Resources.Reports.Sections.Extrapolations.Title);
 
             gearWizard.SelectedData.AddCommon(report);
 
@@ -177,7 +177,7 @@ namespace Mayfly.Fish.Explorer.Fishery
 
             if (checkBoxCPUE.Checked)
             {
-                compositionWizard.AppendCalculationSectionTo(report, "");
+                compositionWizard.AppendCalculationSectionTo(report);
             }
 
             if (checkBoxAbundance.Checked)
@@ -195,36 +195,36 @@ namespace Mayfly.Fish.Explorer.Fishery
             switch (gearWizard.SelectedUnit.Variant)
             {
                 case ExpressionVariant.Efforts:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_E, Volume,
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_E, Volume,
                         gearWizard.SelectedUnit.Unit, gearWizard.SelectedUnit.UnitCost);
                     break;
 
                 case ExpressionVariant.Volume:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_V, Volume / 1000.0);
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_V, Volume / 1000.0);
                     break;
 
                 case ExpressionVariant.Square:
-                    waterSize = string.Format(Resources.Reports.Extrapolation.Paragraph5_S, Area / 10000.0);
+                    waterSize = string.Format(Resources.Reports.Sections.Extrapolation.Paragraph5_S, Area / 10000.0);
                     break;
             }
 
-            report.AddParagraph(Resources.Reports.Extrapolations.Paragraph1,
+            report.AddParagraph(Resources.Reports.Sections.Extrapolations.Paragraph1,
                 waterSize, report.NextTableNumber);
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Extrapolations.Table1);
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.Extrapolations.Table1);
 
             table1.StartRow();
             table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .25, 2);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnRegistered, 2);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnGameTerm, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnGaming, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnRegistered, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnGameTerm, 2, CellSpan.Rows);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnGaming, 2);
             table1.EndRow();
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnQty);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnMss);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnQty);
-            table1.AddHeaderCell(Resources.Reports.Extrapolations.ColumnMss);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnQty);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnMss);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnQty);
+            table1.AddHeaderCell(Resources.Reports.Sections.Extrapolations.ColumnMss);
             table1.EndRow();
 
             for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)

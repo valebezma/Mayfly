@@ -13,7 +13,8 @@
                 Mass = Mass(speciesRow),
                 Juveniles = this.Quantity(speciesRow, Sex.Juvenile),
                 Males = this.Quantity(speciesRow, Sex.Male),
-                Females = this.Quantity(speciesRow, Sex.Female)                
+                Females = this.Quantity(speciesRow, Sex.Female),
+                Name = speciesRow.KeyRecord.Name
             };
         }
 

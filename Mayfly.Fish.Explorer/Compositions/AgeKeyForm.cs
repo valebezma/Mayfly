@@ -133,7 +133,7 @@ namespace Mayfly.Fish.Explorer
             //contextHideEmpty.Checked = true;
 
             plotT.Series.Clear();
-            plotT.Text = string.Format(Resources.Reports.AgeLengthKey.Title, key.Name);
+            plotT.Text = string.Format(Resources.Reports.Sections.ALK.Title, key.Name);
 
             Series hist1 = new Series();
             hist1.ChartType = SeriesChartType.StackedColumn;

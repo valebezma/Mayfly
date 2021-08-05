@@ -117,7 +117,7 @@ namespace Mayfly.Fish.Explorer.Fishery
         public Report GetReport()
         {
             Report report = new Report(
-                    string.Format(Resources.Reports.MSYR.Title,
+                    string.Format(Resources.Reports.Sections.MSYR.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
 
             report.UseTableNumeration = true;

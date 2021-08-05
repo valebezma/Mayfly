@@ -126,9 +126,9 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         /// <summary>
         ///   Looks up a localized string similar to Sex ratio.
         /// </summary>
-        internal static string SexualRatio {
+        internal static string SexRatio {
             get {
-                return ResourceManager.GetString("SexualRatio", resourceCulture);
+                return ResourceManager.GetString("SexRatio", resourceCulture);
             }
         }
     }

@@ -123,6 +123,9 @@
   <data name="g" xml:space="preserve">
     <value>mean, standard error and extrema</value>
   </data>
+  <data name="m" xml:space="preserve">
+    <value>mean</value>
+  </data>
   <data name="q" xml:space="preserve">
     <value>mean and extrema</value>
   </data>

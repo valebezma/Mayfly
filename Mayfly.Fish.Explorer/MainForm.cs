@@ -1765,7 +1765,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (SelectedSamplerType == FishSamplerType.None)
             {
-                Report report = new Report(Resources.Reports.Title.GearStats);
+                Report report = new Report(Resources.Reports.Header.StatsGear);
                 AllowedStack.AddCommon(report);
                 AllowedStack.Sort();
                 AllowedStack.AddGearStatsReport(report);
@@ -1774,7 +1774,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.Title.GearStatsSingleType, SelectedSamplerType.ToDisplay()));
+                Report report = new Report(string.Format(Resources.Reports.Header.StatsGearType, SelectedSamplerType.ToDisplay()));
                 CardStack gearStack = AllowedStack.GetStack(SelectedSamplerType);
                 gearStack.AddCommon(report);
                 gearStack.Sort();
@@ -2727,19 +2727,19 @@ namespace Mayfly.Fish.Explorer
             
             if (SelectedStatSpc == null)
             {
-                Report report = new Report(Resources.Reports.SpeciesStats.Title);
+                Report report = new Report(Resources.Reports.Sections.SpeciesStats.Title);
                 AllowedStack.AddCommon(report);
                 AllowedStack.Sort();
-                AllowedStack.AddSpeciesStatsReport(report, lvl);
+                AllowedStack.AddSpeciesStatsReport(report, lvl, SelectedCpueUE.Variant);
                 report.EndBranded();
                 report.Run();  
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.SpeciesStats.Title_1, SelectedStatSpc.KeyRecord.FullNameReport));
+                Report report = new Report(string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, SelectedStatSpc.KeyRecord.FullNameReport));
                 AllowedStack.AddCommon(report, SelectedStatSpc);
                 AllowedStack.Sort();
-                AllowedStack.AddSpeciesStatsReport(report, SelectedStatSpc, lvl);
+                AllowedStack.AddSpeciesStatsReport(report, SelectedStatSpc, lvl, SelectedCpueUE.Variant);
                 report.EndBranded();
                 report.Run();
             }
