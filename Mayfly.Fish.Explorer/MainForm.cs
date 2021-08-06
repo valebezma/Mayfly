@@ -28,7 +28,7 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            Mayfly.Service.SetMenuAvailability("Fishery Scientist",
+            UI.SetMenuAvailability("Fishery Scientist",
                 menuItemExportSpec,
                 menuItemImportSpec, 
                 toolStripSeparator11,
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                 menuItemVpa,
                 menuItemGrowth);
 
-            Mayfly.Service.SetControlsAvailability("Fishery Scientist",
+            UI.SetControlsAvailability("Fishery Scientist",
                 buttonCardDetails,
                 buttonSpcDetails);
 
@@ -1948,7 +1948,7 @@ namespace Mayfly.Fish.Explorer
             // Strates
             labelQualNotSelected.Visible = selectedStatSpc == null;
 
-            Mayfly.Service.SetControlsClickability(selectedStatSpc != null,
+            UI.SetControlClickability(selectedStatSpc != null,
                 labelQualTitle,
                 labelQualDescription,
                 labelQualify,

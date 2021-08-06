@@ -360,12 +360,12 @@ namespace Mayfly.Extensions
 
         public static void SaveCheckState(this CheckBox checkBox)
         {
-            Service.SaveCheckState(GetForm(checkBox).Name, checkBox.Name, checkBox.CheckState);
+            UI.SaveCheckState(GetForm(checkBox).Name, checkBox.Name, checkBox.CheckState);
         }
 
         public static void RestoreCheckState(this CheckBox checkBox)
         {
-            checkBox.CheckState = Service.GetCheckState(GetForm(checkBox).Name, checkBox.Name);
+            checkBox.CheckState = UI.GetCheckState(GetForm(checkBox).Name, checkBox.Name);
         }
     }
 }

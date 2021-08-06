@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Service\Log.cs" />
     <Compile Include="Service\Server.cs" />
+    <Compile Include="Service\UI.cs" />
     <Compile Include="Software\Error.cs">
       <SubType>Form</SubType>
     </Compile>

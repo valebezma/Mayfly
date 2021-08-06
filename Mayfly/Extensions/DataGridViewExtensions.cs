@@ -14,12 +14,12 @@ namespace Mayfly.Extensions
     {
         public static void SaveFormat(this DataGridViewColumn gridColumn)
         {
-            Service.SaveFormat(gridColumn.DataGridView.Name, gridColumn.Name, gridColumn.DefaultCellStyle.Format);
+            UI.SaveFormat(gridColumn.DataGridView.Name, gridColumn.Name, gridColumn.DefaultCellStyle.Format);
         }
 
         public static void RestoreFormat(this DataGridViewColumn gridColumn)
         {
-            string stored = Service.GetFormat(gridColumn.DataGridView.Name, gridColumn.Name);
+            string stored = UI.GetFormat(gridColumn.DataGridView.Name, gridColumn.Name, string.Empty);
             if (stored != string.Empty) 
                 gridColumn.DefaultCellStyle.Format = stored;
         }

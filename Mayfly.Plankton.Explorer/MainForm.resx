@@ -2810,10 +2810,6 @@
   <data name="tdSpecies.Content" xml:space="preserve">
     <value>Confirming this will process species rename operation for all of loaded cards.</value>
   </data>
-  <assembly alias="Mayfly" name="Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null" />
-  <data name="tdSpecies.MainIcon" type="Mayfly.TaskDialogs.TaskDialogIcon, Mayfly">
-    <value>Warning</value>
-  </data>
   <data name="tdSpecies.MainInstruction" xml:space="preserve">
     <value>Rename species in all of cards?</value>
   </data>
@@ -2835,9 +2831,6 @@
   <data name="tdLog.Content" xml:space="preserve">
     <value>It will change species in selected log entry.</value>
   </data>
-  <data name="tdLog.MainIcon" type="Mayfly.TaskDialogs.TaskDialogIcon, Mayfly">
-    <value>Warning</value>
-  </data>
   <data name="tdLog.MainInstruction" xml:space="preserve">
     <value>Rename species in log entry?</value>
   </data>
@@ -2852,9 +2845,6 @@
   </data>
   <data name="tdInd.Content" xml:space="preserve">
     <value>It will change species in selected log entry.</value>
-  </data>
-  <data name="tdInd.MainIcon" type="Mayfly.TaskDialogs.TaskDialogIcon, Mayfly">
-    <value>Warning</value>
   </data>
   <data name="tdInd.MainInstruction" xml:space="preserve">
     <value>Change individual specific possesion?</value>
