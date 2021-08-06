@@ -57,7 +57,7 @@ namespace Mayfly.Geographics
         public bool ReadOnly
         {
             get { return maskedTextBoxLatitude.ReadOnly; }
-            set { Licensing.SetControlsClickability(!value, this.Controls); }
+            set { Mayfly.Service.SetControlClickability(!value, this.Controls); }
         }
 
 

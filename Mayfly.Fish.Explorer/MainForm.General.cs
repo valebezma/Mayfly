@@ -137,17 +137,15 @@ namespace Mayfly.Fish.Explorer
 
             if (IsEmpty)
             {
-                this.Text = EntryAssemblyInfo.Title;
-                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
+                Text = EntryAssemblyInfo.Title;
 
-                //labelDatesValue.Text = Constants.Null;
+                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
                 labelCardCountValue.Text = Constants.Null;
-                //labelCards.Text = string.Empty;
+                labelWgtValue.Text = Constants.Null;
+                labelQtyValue.Text = Constants.Null;
 
                 statusQuantity.ResetFormatted(Constants.Null);
                 statusMass.ResetFormatted(Constants.Null);
-                labelWgtValue.Text = Constants.Null;
-                labelQtyValue.Text = Constants.Null;
 
                 IsBusy = false;
             }
@@ -167,12 +165,7 @@ namespace Mayfly.Fish.Explorer
                     gridColumn.Width = gridColumn.GetPreferredWidth(DataGridViewAutoSizeColumnMode.ColumnHeader, true);
                 }
 
-                #region Update general values
-
                 labelCardCountValue.Text = data.Card.Count.ToString();
-                string formatted = data.Card.Count.ToCorrectString(new ResourceManager(typeof(MainForm)).GetString("labelCards.Text"));
-                //labelCards.Text = formatted.Substring(formatted.IndexOf(' ') + 1);
-
 
                 listViewDates.Items.Clear();
                 foreach (DateTime[] bunch in data.GetDates().GetDatesBunches())
@@ -181,32 +174,10 @@ namespace Mayfly.Fish.Explorer
                     li.Tag = bunch;
                 }
 
-                //labelDatesValue.Text = data.GetDates().GetDatesRangeDescription();
-
-                //if (FullStack.GetDates().Count() > 1)
-                //{
-                //    labelDatesValue.ResetFormatted(FullStack.EarliestEvent, FullStack.LatestEvent);
-                //}
-                //else if (FullStack.GetDates().Count() == 1)
-                //{
-                //    labelDatesValue.Text = FullStack.EarliestEvent.ToString("D");
-                //}
-                //else
-                //{
-                //    labelDatesValue.Text = string.Empty;
-                //}
-
                 listViewWaters.Items.Clear();
                 foreach (Data.WaterRow waterRow in data.Water)
                 {
-                    if (waterRow.IsWaterNull())
-                    {
-                        listViewWaters.CreateItem(waterRow.ID.ToString(), Waters.Resources.Interface.Unnamed, waterRow.Type - 1);
-                    }
-                    else
-                    {
-                        listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.Water, waterRow.Type - 1);
-                    }
+                    listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.IsWaterNull() ? Waters.Resources.Interface.Unnamed : waterRow.Water, waterRow.Type - 1);
                 }
 
                 listViewSamplers.Items.Clear();
@@ -215,21 +186,11 @@ namespace Mayfly.Fish.Explorer
                     listViewSamplers.CreateItem(samplerRow.ID.ToString(), samplerRow.Sampler);
                 }
 
-                #endregion
-
-                #region Authorities
-
                 listViewInvestigators.Items.Clear();
-
                 foreach (string investigator in FullStack.GetInvestigators())
                 {
                     listViewInvestigators.CreateItem(investigator, investigator);
                 }
-
-                //Wild.UserSettings.InstalledPermissions.CheckAuthorization(
-                //    FullStack.GetInvestigators());
-
-                #endregion
 
                 AllowedStack.PopulateSpeciesMenu(menuItemLoadIndividuals, speciesInd_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemGrowthCrossSection, speciesGrowth_Click);

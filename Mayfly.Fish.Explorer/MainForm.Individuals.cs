@@ -151,9 +151,9 @@ namespace Mayfly.Fish.Explorer
             else individualRow.Age = age.Value;
 
             if ((tabPageSpcStats.Parent != null) && // If stats are loaded
-                (SelectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
+                (selectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
             {
-                models_Changed(this, new EventArgs());
+                strates_Changed(this, new EventArgs());
             }
 
             Sex sex = (Sex)gridRow.Cells[columnIndSex.Name].Value;

@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class Individuals : Form
     {

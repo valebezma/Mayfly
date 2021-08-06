@@ -939,22 +939,10 @@ namespace Mayfly.Extensions
                 return ((DateTime)value).ToOADate();
             }
 
-            if (value is int)
-            {
-                return (double)(int)value;
-            }
-
-            if (value is string)
-            {
-                try
-                {
-                    return Convert.ToDouble(value);
-                }
-                catch (FormatException)
-                {
-                    return (Convert.ToDateTime(value)).ToOADate();
-                }
-            }
+            //if (value is int)
+            //{
+            //    return (double)(int)value;
+            //}
 
             try
             {
@@ -962,6 +950,17 @@ namespace Mayfly.Extensions
             }
             catch (InvalidCastException)
             {
+                if (value is string)
+                {
+                    try
+                    {
+                        return Convert.ToDouble(value);
+                    }
+                    catch (FormatException)
+                    {
+                        return (Convert.ToDateTime(value)).ToOADate();
+                    }
+                }
                 return Convert.ToDouble(value);
             }
         }

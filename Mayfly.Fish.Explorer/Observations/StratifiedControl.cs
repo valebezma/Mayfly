@@ -12,7 +12,7 @@ using Mayfly.Controls;
 using Meta.Numerics;
 using Mayfly.Wild;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class StratifiedControl : Form
     {

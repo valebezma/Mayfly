@@ -1064,7 +1064,7 @@ namespace Mayfly.Mathematics.Charts
             functor.Container = this;
             //LastSelectedFunctor = functor;
             Series.Add(functor.Series);
-            functor.BuildSeries();
+            //functor.BuildSeries();
 
             if (CollectionChanged != null)
             {
@@ -1099,7 +1099,7 @@ namespace Mayfly.Mathematics.Charts
             Series.Add(histogram.DataSeries);
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
 
             //ShowLegend = Histograms.Count > 1;
 
@@ -1172,17 +1172,17 @@ namespace Mayfly.Mathematics.Charts
 
                 if (sample.Trend != null)
                 {
-                    sample.Trend.BuildSeries();
-                }
+                    sample.Trend.BuildSeries(sample.Series.YAxisType);
 
-                if (sample.Properties.ShowConfidenceBands)
-                {
-                    sample.BuildTrendBands();
-                }
+                    if (sample.Properties.ShowConfidenceBands)
+                    {
+                        sample.BuildTrendBands();
+                    }
 
-                if (sample.Properties.ShowPredictionBands)
-                {
-                    sample.BuildDataBands();
+                    if (sample.Properties.ShowPredictionBands)
+                    {
+                        sample.BuildDataBands();
+                    }
                 }
             }
 
@@ -1224,13 +1224,13 @@ namespace Mayfly.Mathematics.Charts
             e.Sample.BuildChart(this);
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
             if (AxisYAutoInterval)
             {
                 AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
             }
 
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
         }
 
         public void RefreshAxes()
@@ -1401,7 +1401,7 @@ namespace Mayfly.Mathematics.Charts
             }
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
             if (AxisYAutoInterval)
             {
                 double yint = AxisYMax - AxisYMin;
@@ -1411,7 +1411,7 @@ namespace Mayfly.Mathematics.Charts
             }
 
             //if (AxisY2AutoMinimum) { UpdateY2Min(); }
-            //if (AxisY2AutoMaximum) { UpdateY2Max(); }
+            if (AxisY2AutoMaximum) { UpdateY2Max(); }
             if (AxisY2AutoInterval)
             {
                 double y2int = AxisY2Max - AxisY2Min;
@@ -1638,7 +1638,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            AxisY2Max = maximum;
+            AxisY2Max = maximum == 0 ? 1 : maximum;
 
             if (AxisY2AutoInterval && AxisY2Max - AxisY2Min > 0)
             {
@@ -1646,7 +1646,7 @@ namespace Mayfly.Mathematics.Charts
                 if (g > 0) AxisY2Interval = g;
             }
 
-            double rest = Math.IEEERemainder(AxisY2Max, AxisY2Interval);
+            double rest = AxisY2Max % AxisY2Interval;
 
             if (rest > 0)
             {
@@ -1752,14 +1752,17 @@ namespace Mayfly.Mathematics.Charts
         {
             object sample = GetSample(name);
 
-            if (sample is Scatterplot)
+            if (sample != null)
             {
-                ((Scatterplot)sample).Dispose();
-            }
+                if (sample is Scatterplot)
+                {
+                    ((Scatterplot)sample).Dispose();
+                }
 
-            if (sample is Histogramma)
-            {
-                ((Histogramma)sample).Dispose();
+                if (sample is Histogramma)
+                {
+                    ((Histogramma)sample).Dispose();
+                }
             }
 
             if (removeChartArea)

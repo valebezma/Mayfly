@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Xml;
 using System.Text;
 using System.Reflection;
+using System.Globalization;
 
 namespace Mayfly.Wild
 {
@@ -1266,7 +1267,7 @@ namespace Mayfly.Wild
             public double DetailedMass => this.MassIndividuals + this.MassStratified;
         }
 
-        partial class SpeciesRow
+        partial class SpeciesRow : IFormattable
         {
             public int TotalQuantity
             {
@@ -1308,6 +1309,21 @@ namespace Mayfly.Wild
             public override string ToString()
             {
                 return this.Species;
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider)
+            {
+                switch (format.ToLowerInvariant())
+                {
+                    case "l":
+                        return this.KeyRecord.ShortName;
+
+                    case "s":
+                        return this.KeyRecord.ScientificName;
+
+                    default:
+                        return this.Species;
+                }
             }
         }
 

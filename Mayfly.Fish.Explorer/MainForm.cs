@@ -1,8 +1,8 @@
 ﻿using Mayfly.Controls;
 using Mayfly.Extensions;
-using Mayfly.Fish.Explorer.Fishery;
-using Mayfly.Fish.Explorer.Observations;
-using Mayfly.Fish.Explorer.Survey;
+using Mayfly.Fish.Explorer;
+using Mayfly.Fish.Explorer;
+using Mayfly.Fish.Explorer;
 using Mayfly.Geographics;
 using Mayfly.Mathematics.Charts;
 using Mayfly.Software;
@@ -28,10 +28,7 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            Licensing.SetTabsAvailability("Fishery Scientist",
-                tabPageSpcLW, tabPageSpcAL);
-
-            Licensing.SetMenuAvailability("Fishery Scientist",
+            Mayfly.Service.SetMenuAvailability("Fishery Scientist",
                 menuItemExportSpec,
                 menuItemImportSpec, 
                 toolStripSeparator11,
@@ -46,9 +43,7 @@ namespace Mayfly.Fish.Explorer
                 menuItemCardEfforts,
                 toolStripSeparator14,
                 menuItemSpcTotals,
-                menuItemSpcCpues,
                 menuItemSpcStrates,
-                menuItemSpcModels,
                 toolStripSeparator13,
                 menuModels,
                 menuItemMortality,
@@ -56,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                 menuItemVpa,
                 menuItemGrowth);
 
-            Licensing.SetControlsAvailability("Fishery Scientist",
+            Mayfly.Service.SetControlsAvailability("Fishery Scientist",
                 buttonCardDetails,
                 buttonSpcDetails);
 
@@ -188,18 +183,9 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            plotStrates.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
-            plotStrates.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
-            plotStrates.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
-
-            plotLW.AxisXInterval = UserSettings.SizeInterval;
-            plotLW.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
-            plotLW.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
-            plotLW.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
-
-            plotAL.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
-            plotAL.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
-            plotAL.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
+            plotQualify.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
+            plotQualify.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
+            plotQualify.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
 
             data = new Data(Fish.UserSettings.SpeciesIndex);
             FullStack = new CardStack(); //.ConvertFrom(data);
@@ -565,7 +551,7 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemExportBio_Click(object sender, EventArgs e)
         {
-            WizardExport2 exportWizard = new WizardExport2(data);
+            WizardExportBio exportWizard = new WizardExportBio(data);
             exportWizard.Show();
         }
 
@@ -589,56 +575,6 @@ namespace Mayfly.Fish.Explorer
         private void menuItemSample_DropDownOpening(object sender, EventArgs e)
         {
             menuItemLoadStratified.Enabled = data.Stratified.Count > 0;
-        }
-
-        private void menuItemGearStats_Click(object sender, EventArgs e)
-        {
-            tabPageGearStats.Parent = tabControl;
-            tabControl.SelectedTab = tabPageGearStats;
-
-            spreadSheetGearStats.Rows.Clear();
-            foreach (FishSamplerTypeDisplay samplerType in AllowedStack.GetSamplerTypeDisplays()) {
-                spreadSheetGearStats.Rows.Add(samplerType);
-            }
-            spreadSheetGearStats.Rows.Add(Mayfly.Resources.Interface.Total);
-
-            dateTimePickerCatches.MinDate = 
-                dateTimePickerEffort.MinDate = 
-                AllowedStack.EarliestEvent;
-
-            dateTimePickerCatches.MaxDate = 
-                dateTimePickerEffort.MaxDate =
-                AllowedStack.LatestEvent;
-
-            spreadSheetCatches.Rows.Clear();
-            spreadSheetEfforts.Rows.Clear();
-        }
-
-        private void menuItemSpcStats_Click(object sender, EventArgs e)
-        {
-            tabPageSpcStats.Parent = tabControl;
-            tabControl.SelectedTab = tabPageSpcStats;
-
-            spreadSheetSpcStats.Rows.Clear();
-            foreach (Data.SpeciesRow speciesRow in AllowedStack.GetSpecies())
-            {
-                spreadSheetSpcStats.Rows.Add(speciesRow);
-            }
-            spreadSheetSpcStats.Rows.Add(Mayfly.Resources.Interface.Total);
-
-
-            comboBoxCpueSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
-            comboBoxCpueSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxCpueSampler.DataSource)[0];
-            comboBoxCpueSampler_SelectedIndexChanged(comboBoxCpueSampler, e);
-
-            comboBoxTechSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
-            comboBoxTechSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxCpueSampler.DataSource)[0];
-
-            comboBoxStrateGearType.DataSource = AllowedStack.GetSamplerTypeDisplays();
-            comboBoxStrateGearType.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxStrateGearType.DataSource)[0];
-
-            ClearSpcStats();
-            species_Changed(spreadSheetSpcStats, e);
         }
 
         private void menuItemArtefacts_Click(object sender, EventArgs e)
@@ -703,6 +639,52 @@ namespace Mayfly.Fish.Explorer
             wizOb.Explorer = this;
             wizOb.Survey.Anamnesis = this.data;
             wizOb.Show();
+        }
+
+        private void menuItemGearStats_Click(object sender, EventArgs e)
+        {
+            tabPageGearStats.Parent = tabControl;
+            tabControl.SelectedTab = tabPageGearStats;
+
+            spreadSheetGearStats.Rows.Clear();
+            foreach (FishSamplerTypeDisplay samplerType in AllowedStack.GetSamplerTypeDisplays()) {
+                spreadSheetGearStats.Rows.Add(samplerType);
+            }
+            spreadSheetGearStats.Rows.Add(Mayfly.Resources.Interface.Total);
+
+            dateTimePickerCatches.MinDate = 
+                dateTimePickerEffort.MinDate = 
+                AllowedStack.EarliestEvent;
+
+            dateTimePickerCatches.MaxDate = 
+                dateTimePickerEffort.MaxDate =
+                AllowedStack.LatestEvent;
+
+            spreadSheetCatches.Rows.Clear();
+            spreadSheetEfforts.Rows.Clear();
+        }
+
+        private void menuItemSpcStats_Click(object sender, EventArgs e)
+        {
+            tabPageSpcStats.Parent = tabControl;
+            tabControl.SelectedTab = tabPageSpcStats;
+
+            spreadSheetSpcStats.Rows.Clear();
+            foreach (Data.SpeciesRow speciesRow in AllowedStack.GetSpecies())
+            {
+                spreadSheetSpcStats.Rows.Add(speciesRow);
+            }
+            spreadSheetSpcStats.Rows.Add(Mayfly.Resources.Interface.Total);
+
+
+            comboBoxTechSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
+            comboBoxTechSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxTechSampler.DataSource)[0];
+
+            comboBoxQualType.DataSource = AllowedStack.GetSamplerTypeDisplays();
+            comboBoxQualType.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxQualType.DataSource)[0];
+
+            ClearSpcStats();
+            species_Changed(spreadSheetSpcStats, e);
         }
 
         private void menuItemSpawning_Click(object sender, EventArgs e)
@@ -980,11 +962,7 @@ namespace Mayfly.Fish.Explorer
                 string species = (string)gridRow.Cells[columnArtefactSpecies.Index].Value;
                 Data.SpeciesRow speciesRow = data.Species.FindBySpecies(species);
 
-                //if (tabPageSpcModels.Parent == tabControlSpc) {
-                    tabControlSpc.SelectedTab = tabPageSpcAL;
-                //} else {
-                //    menuItemSpcModels_Click(sender, e);
-                //}
+                tabControlSpc.SelectedTab = tabPageSpcQualify;
 
                 spreadSheetSpcStats.ClearSelection();
                 for (int i = 0; i < spreadSheetSpcStats.RowCount; i++)
@@ -995,9 +973,6 @@ namespace Mayfly.Fish.Explorer
                         break;
                     }
                 }
-
-                //sortableSpecies.SelectedItems.Clear();
-                //sortableSpecies.FindItemWithText(speciesRow.Species).Selected = true;
             }
         }
 
@@ -1816,22 +1791,10 @@ namespace Mayfly.Fish.Explorer
             tabControlSpc.SelectedTab = tabPageSpcTotals;
         }
 
-        private void menuItemSpcCpues_Click(object sender, EventArgs e)
-        {
-            menuItemSpcStats_Click(sender, e);
-            tabControlSpc.SelectedTab = tabPageSpcCpue;
-        }
-
         private void menuItemSpcStrates_Click(object sender, EventArgs e)
         {
             menuItemSpcStats_Click(sender, e);
-            tabControlSpc.SelectedTab = tabPageSpcStrates;
-        }
-
-        private void menuItemSpcModels_Click(object sender, EventArgs e)
-        {
-            menuItemSpcStats_Click(sender, e);
-            tabControlSpc.SelectedTab = tabPageSpcAL;
+            tabControlSpc.SelectedTab = tabPageSpcQualify;
         }
 
 
@@ -1960,7 +1923,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         #endregion
-        
+
         #region Species stats
 
         private void species_Changed(object sender, EventArgs e)
@@ -1969,33 +1932,40 @@ namespace Mayfly.Fish.Explorer
             if (spreadSheetSpcStats.SelectedRows.Count == 0 ||
                 !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow row))
             {
-                SelectedStatSpc = null;
+                selectedStatSpc = null;
             }
             else
             {
-                SelectedStatSpc = row;
+                selectedStatSpc = row;
             }
 
             // Totals
             totals_Changed(sender, e);
 
-            // Cpues
-            cpue_Changed(sender, e);
-
             // Techniques
             tech_Changed(sender, e);
 
             // Strates
-            labelStratesSelectSpecies.Visible = SelectedStatSpc == null;
-            plotStrates.Visible = label25.Enabled = label26.Enabled =
-                SelectedStatSpc != null;
+            labelQualNotSelected.Visible = selectedStatSpc == null;
 
-            if (SelectedStatSpc != null)
+            Mayfly.Service.SetControlsClickability(selectedStatSpc != null,
+                labelQualTitle,
+                labelQualDescription,
+                labelQualify,
+                comboBoxQualValue,
+                labelQualSubset,
+                checkBoxQualType,
+                //comboBoxQualType,
+                checkBoxQualClass,
+                //comboBoxQualClass,
+                plotQualify);
+
+            if (selectedStatSpc != null)
             {
-                plotStrates.AxisXMin = Service.GetStrate(AllowedStack.LengthMin(SelectedStatSpc)).LeftEndpoint;
-                plotStrates.AxisXMax = Service.GetStrate(AllowedStack.LengthMax(SelectedStatSpc)).RightEndpoint;
-                plotStrates.AxisYMax = Math.Max(UserSettings.RequiredClassSize, 
-                    AllowedStack.GetLengthComposition(SelectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
+                plotQualify.AxisXMin = Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint;
+                plotQualify.AxisXMax = Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint;
+                plotQualify.AxisYMax = Math.Max(UserSettings.RequiredClassSize,
+                    AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
             }
 
             strates_Changed(sender, e);
@@ -2010,7 +1980,7 @@ namespace Mayfly.Fish.Explorer
         {
             string valueMask = "{0} ({1:P0})";
 
-            if (SelectedStatSpc == null)
+            if (selectedStatSpc == null)
             {
                 double total = AllowedStack.Quantity();
 
@@ -2069,16 +2039,16 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                double total = AllowedStack.Quantity(SelectedStatSpc);
+                double total = AllowedStack.Quantity(selectedStatSpc);
 
-                double n_str = AllowedStack.QuantityStratified(SelectedStatSpc);
-                double n_ind = AllowedStack.QuantityIndividual(SelectedStatSpc);
-                double n2 = AllowedStack.Measured(SelectedStatSpc);
-                double n3 = AllowedStack.Weighted(SelectedStatSpc);
-                double n35 = AllowedStack.Registered(SelectedStatSpc);
-                double n4 = AllowedStack.Aged(SelectedStatSpc);
-                double n5 = AllowedStack.Sexed(SelectedStatSpc);
-                double n6 = AllowedStack.Matured(SelectedStatSpc);
+                double n_str = AllowedStack.QuantityStratified(selectedStatSpc);
+                double n_ind = AllowedStack.QuantityIndividual(selectedStatSpc);
+                double n2 = AllowedStack.Measured(selectedStatSpc);
+                double n3 = AllowedStack.Weighted(selectedStatSpc);
+                double n35 = AllowedStack.Registered(selectedStatSpc);
+                double n4 = AllowedStack.Aged(selectedStatSpc);
+                double n5 = AllowedStack.Sexed(selectedStatSpc);
+                double n6 = AllowedStack.Matured(selectedStatSpc);
 
                 if (n_str > 0) textBoxSpcStrat.Text = string.Format(valueMask, n_str, n_str / total);
                 else textBoxSpcStrat.Text = Constants.Null;
@@ -2104,14 +2074,14 @@ namespace Mayfly.Fish.Explorer
                 if (n6 > 0) textBoxSpcM.Text = string.Format(valueMask, n6, n6 / total);
                 else textBoxSpcM.Text = Constants.Null;
 
-                double totalMass = AllowedStack.Mass(SelectedStatSpc);
+                double totalMass = AllowedStack.Mass(selectedStatSpc);
 
                 if (totalMass > 0)
                 {
                     textBoxSpcWTotal.Text = totalMass.ToString("N3");
-                    textBoxSpcWLog.Text = AllowedStack.MassIndividual(SelectedStatSpc).ToString("N3");
+                    textBoxSpcWLog.Text = AllowedStack.MassIndividual(selectedStatSpc).ToString("N3");
 
-                    double stratifiedMass = AllowedStack.MassStratified(SelectedStatSpc);
+                    double stratifiedMass = AllowedStack.MassStratified(selectedStatSpc);
 
                     if (stratifiedMass > 0) {
                         textBoxSpcWStrat.Text = stratifiedMass.ToString("N3");
@@ -2132,11 +2102,11 @@ namespace Mayfly.Fish.Explorer
                 chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = false;
 
-                DataPoint speciesPoint = GetSpeciesDataPoint(SelectedStatSpc, false);
+                DataPoint speciesPoint = GetSpeciesDataPoint(selectedStatSpc, false);
                 chartSpcStats.Series[0].Points.Add(speciesPoint);
 
                 DataPoint spacePoint = new DataPoint();
-                spacePoint.YValues[0] = AllowedStack.QuantitySampled() - AllowedStack.QuantitySampled(SelectedStatSpc);
+                spacePoint.YValues[0] = AllowedStack.QuantitySampled() - AllowedStack.QuantitySampled(selectedStatSpc);
                 spacePoint.Color = speciesPoint.Color.GetDesaturatedColor(.1);
                 chartSpcStats.Series[0].Points.Add(spacePoint);
             }
@@ -2200,91 +2170,18 @@ namespace Mayfly.Fish.Explorer
 
         private void label7_DoubleClick(object sender, EventArgs e)
         {
-            if (SelectedStatSpc == null)
+            if (selectedStatSpc == null)
             {
                 if (data.Stratified.Count == 0) return;
                 menuItemLoadStratified_Click(sender, e);
             }
             else
             {
-                if (AllowedStack.QuantityStratified(SelectedStatSpc) == 0) return;
+                if (AllowedStack.QuantityStratified(selectedStatSpc) == 0) return;
 
                 spreadSheetStratified.EnsureFilter(columnStratifiedSpc,
-                    SelectedStatSpc.Species, loaderStratified, menuItemLoadStratified_Click);
+                    selectedStatSpc.Species, loaderStratified, menuItemLoadStratified_Click);
             }
-        }
-
-        #endregion
-
-        #region Cpue
-
-        private void comboBoxCpueSampler_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedCpueSamplerType = comboBoxCpueSampler.SelectedValue == null ? 
-                FishSamplerType.None : ((FishSamplerTypeDisplay)comboBoxCpueSampler.SelectedValue).Type;
-
-            comboBoxCpueUE.Enabled = SelectedCpueSamplerType != FishSamplerType.None;
-            comboBoxCpueUE_SelectedIndexChanged(sender, e);
-
-            if (SelectedCpueSamplerType == FishSamplerType.None) return;
-            UnitEffort.SwitchUE(comboBoxCpueUE, SelectedCpueSamplerType);
-        }
-
-        private void comboBoxCpueUE_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedCpueUE = (UnitEffort)comboBoxCpueUE.SelectedItem;
-
-            string effortUnit = "?";
-
-            if (SelectedCpueUE != null) {
-                effortUnit = SelectedCpueUE.Unit;
-            }
-
-            columnCpueEffort.ResetFormatted(effortUnit);
-            columnCpueNpue.ResetFormatted(effortUnit);
-            columnCpueBpue.ResetFormatted(effortUnit);
-            labelNpue.ResetFormatted(effortUnit);
-            labelBpue.ResetFormatted(effortUnit);
-
-            cpue_Changed(sender, e);
-        }
-
-        private void cpue_Changed(object sender, EventArgs e)
-        {
-            spreadSheetCpue.Rows.Clear();
-
-            textBoxNpue.Text = string.Empty;
-            textBoxBpue.Text = string.Empty;
-
-            if (SelectedCpueSamplerType == FishSamplerType.None) return;
-            if (SelectedCpueUE == null) return;
-
-            CpueData = AllowedStack.GetStack(SelectedCpueSamplerType, SelectedCpueUE.Variant);
-
-            string[] meshValues = CpueData.Classes(SelectedCpueSamplerType);
-            Npue = 0.0;
-            Bpue = 0.0;
-
-            if (meshValues.Length == 0)
-            {
-                spreadSheetCpue.Rows.Add(GetCpueRow(CpueData));
-            }
-            else
-            {
-                foreach (string meshValue in meshValues)
-                {
-                    CardStack meshData = AllowedStack.GetStack(SelectedCpueSamplerType, meshValue);
-                    spreadSheetCpue.Rows.Add(GetCpueRow(meshData));
-                }
-
-                Npue /= meshValues.Length;
-                Bpue /= meshValues.Length;
-            }
-
-            labelCpueNoData.Visible = spreadSheetCpue.RowCount == 0;
-
-            textBoxNpue.Text = Npue.ToString(columnCpueNpue.DefaultCellStyle.Format);
-            textBoxBpue.Text = Bpue.ToString(columnCpueBpue.DefaultCellStyle.Format);
         }
 
         #endregion
@@ -2293,26 +2190,26 @@ namespace Mayfly.Fish.Explorer
 
         private void tech_Changed(object sender, EventArgs e)
         {
-            SelectedTechSamplerType = comboBoxTechSampler.SelectedValue == null ?
+            selectedTechSamplerType = comboBoxTechSampler.SelectedValue == null ?
                 FishSamplerType.None : ((FishSamplerTypeDisplay)comboBoxTechSampler.SelectedValue).Type;
 
             spreadSheetTech.Rows.Clear();
 
-            if (SelectedTechSamplerType == FishSamplerType.None) return;
+            if (selectedTechSamplerType == FishSamplerType.None) return;
 
-            TechData = FullStack.GetStack(SelectedTechSamplerType);
+            CardStack techStack = FullStack.GetStack(selectedTechSamplerType);
             
-            string[] meshValues = TechData.Classes(SelectedTechSamplerType);
+            string[] meshValues = techStack.Classes(selectedTechSamplerType);
 
             if (meshValues.Length == 0)
             {
-                spreadSheetTech.Rows.Add(GetTechRow(TechData));
+                spreadSheetTech.Rows.Add(GetTechRow(techStack));
             }
             else
             {
                 foreach (string meshValue in meshValues)
                 {
-                    CardStack meshData = FullStack.GetStack(SelectedTechSamplerType, meshValue);
+                    CardStack meshData = FullStack.GetStack(selectedTechSamplerType, meshValue);
                     spreadSheetTech.Rows.Add(GetTechRow(meshData));
                 }
             }
@@ -2326,18 +2223,18 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxStrateUseGearType_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxStrateGearType.Enabled = 
-                checkBoxStrateUseClass.Enabled = 
-                checkBoxStrateUseGearType.Checked;
+            comboBoxQualType.Enabled = 
+                checkBoxQualClass.Enabled = 
+                checkBoxQualType.Checked;
             
             strates_Changed(sender, e);
         }
 
         private void comboBoxStrateGearType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxStrateGearClass.DataSource = AllowedStack.Classes(((FishSamplerTypeDisplay)comboBoxStrateGearType.SelectedValue).Type);
+            comboBoxQualClass.DataSource = AllowedStack.Classes(((FishSamplerTypeDisplay)comboBoxQualType.SelectedValue).Type);
 
-            if (((int[])comboBoxStrateGearClass.DataSource).Length == 0)
+            if (((string[])comboBoxQualClass.DataSource).Length == 0)
             {
                 strates_Changed(sender, e);
             }
@@ -2345,38 +2242,31 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxStrateUseClass_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxStrateGearClass.Enabled = checkBoxStrateUseClass.Checked;
+            comboBoxQualClass.Enabled = checkBoxQualClass.Checked;
             strates_Changed(sender, e);
         }
 
         private void checkBoxStrateUseClass_EnabledChanged(object sender, EventArgs e)
         {
-            if (!checkBoxStrateUseClass.Enabled)
+            if (!checkBoxQualClass.Enabled)
             {
-                checkBoxStrateUseClass.Checked = false;
+                checkBoxQualClass.Checked = false;
             }
-        }
-
-        private void comboBoxStrateGearClass_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            strates_Changed(comboBoxStrateGearClass, e);
         }
 
         private void strates_Changed(object sender, EventArgs e)
         {
-            plotStrates.Clear();
-
-            if (SelectedStatSpc == null) return;
+            if (selectedStatSpc == null) return;
 
             CardStack countStack = AllowedStack;
 
-            if (checkBoxStrateUseGearType.Checked)
+            if (checkBoxQualType.Checked)
             {
-                FishSamplerType samplerType = ((FishSamplerTypeDisplay)comboBoxStrateGearType.SelectedValue).Type;
+                FishSamplerType samplerType = ((FishSamplerTypeDisplay)comboBoxQualType.SelectedValue).Type;
 
-                if (checkBoxStrateUseClass.Checked)
+                if (checkBoxQualClass.Checked)
                 {
-                    countStack = FullStack.GetStack(samplerType, comboBoxStrateGearClass.SelectedValue.ToString());
+                    countStack = FullStack.GetStack(samplerType, comboBoxQualClass.SelectedValue.ToString());
                 }
                 else
                 {
@@ -2384,23 +2274,26 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            LengthComposition sample = countStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.Interface.StratesSampled);
-            LengthComposition weighted = countStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.Interface.StratesWeighted);
-            LengthComposition registered = countStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.Interface.StratesRegistered);
-            LengthComposition aged = countStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged);
+            plotQualify.Remove(Resources.Interface.Interface.StratesSampled, false);
+            plotQualify.Remove(Resources.Interface.Interface.StratesWeighted, false);
+            plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
+            plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
 
-            if (sample.TotalQuantity > 0) plotStrates.AddSeries(sample.GetHistogram());
-            if (weighted.TotalQuantity > 0)  plotStrates.AddSeries(weighted.GetHistogram());
-            if (registered.TotalQuantity > 0) plotStrates.AddSeries(registered.GetHistogram());
-            if (aged.TotalQuantity > 0) plotStrates.AddSeries(aged.GetHistogram());
-            plotStrates.Remaster();
-        }
+            LengthComposition sample = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.Interface.StratesSampled);
+            LengthComposition weighted = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.Interface.StratesWeighted);
+            LengthComposition registered = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.Interface.StratesRegistered);
+            LengthComposition aged = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged);
 
-        private void plotStrates_CollectionChanged(object sender, EventArgs e)
-        {
+            if (sample.TotalQuantity > 0) plotQualify.AddSeries(sample.GetHistogram());
+            if (weighted.TotalQuantity > 0)  plotQualify.AddSeries(weighted.GetHistogram());
+            if (registered.TotalQuantity > 0) plotQualify.AddSeries(registered.GetHistogram());
+            if (aged.TotalQuantity > 0) plotQualify.AddSeries(aged.GetHistogram());
+
+            plotQualify.Remaster();
+
             Color startColor = Color.FromArgb(150, Color.Lavender);
 
-            foreach (Histogramma hist in plotStrates.Histograms)
+            foreach (Histogramma hist in plotQualify.Histograms)
             {
                 hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");//.ChartType = SeriesChartType.StackedColumn;
                 hist.Properties.Borders = false;
@@ -2417,222 +2310,124 @@ namespace Mayfly.Fish.Explorer
         {
             if (!Licensing.Verify("Fishery Scientist")) return;
 
-            labelAL.Enabled = labelALInstruction.Enabled = SelectedStatSpc != null;
-            labelLW.Enabled = labelLWInstruction.Enabled = SelectedStatSpc != null;
-
-            if (SelectedStatSpc == null)
+            if (selectedStatSpc == null)
             {
                 return;
             }
 
             spreadSheetSpcStats.Enabled = false;
 
-            Cursor = plotAL.Cursor = plotLW.Cursor = Cursors.WaitCursor;
-            plotAL.Clear();
-            plotLW.Clear(); // That bitch is killing my models
+            Cursor = plotQualify.Cursor = Cursors.WaitCursor;
+
+            plotQualify.AxisY2Title = comboBoxQualValue.SelectedIndex == 0 ? "Mass, g" : Wild.Resources.Reports.Caption.Age;
 
             if (calcModel.IsBusy) { calcModel.CancelAsync(); }
-            else { calcModel.RunWorkerAsync(SelectedStatSpc); }
+            else { calcModel.RunWorkerAsync(comboBoxQualValue.SelectedIndex); }
         }
 
         private void calcModel_DoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument == null)
             {
-                //e.Cancel = true; 
-
-                growthInternal = growthExternal = GrowthModel =
-                    massInternal = massExternal = MassModel =
-                    null;
-
+                internalModel = externalModel = combinedModel = null;
                 return;
             }
 
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
+            switch ((int)e.Argument)
+            {
+                case 0:
+                    internalModel = AllowedStack.Parent.MassModels.GetInternalScatterplot(selectedStatSpc.Species);
+                    externalModel = AllowedStack.Parent.MassModels.GetExternalScatterplot(selectedStatSpc.Species);
+                    combinedModel = AllowedStack.Parent.MassModels.GetCombinedScatterplot(selectedStatSpc.Species);
+                    break;
 
-            //data.GrowthModels.Refresh(speciesRow.Species);
-            growthInternal = AllowedStack.Parent.GrowthModels.GetInternalScatterplot(speciesRow.Species);
-            growthExternal = AllowedStack.Parent.GrowthModels.GetExternalScatterplot(speciesRow.Species);
-            GrowthModel = AllowedStack.Parent.GrowthModels.GetCombinedScatterplot(speciesRow.Species);
-
-            //data.MassModels.Refresh(speciesRow.Species);
-            massInternal = AllowedStack.Parent.MassModels.GetInternalScatterplot(speciesRow.Species);
-            massExternal = AllowedStack.Parent.MassModels.GetExternalScatterplot(speciesRow.Species);
-            MassModel = AllowedStack.Parent.MassModels.GetCombinedScatterplot(speciesRow.Species);
+                case 1:
+                    internalModel = AllowedStack.Parent.GrowthModels.GetInternalScatterplot(selectedStatSpc.Species);
+                    externalModel = AllowedStack.Parent.GrowthModels.GetExternalScatterplot(selectedStatSpc.Species);
+                    combinedModel = AllowedStack.Parent.GrowthModels.GetCombinedScatterplot(selectedStatSpc.Species);
+                    break;
+            }
         }
 
         private void calcModel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled) 
+            if (e.Cancelled)
             {
-                growthInternal = growthExternal = GrowthModel = 
-                    massInternal = massExternal = MassModel =
-                    null;
-
-                if (SelectedStatSpc != null)
+                if (selectedStatSpc != null)
                 {
-                    calcModel.RunWorkerAsync(SelectedStatSpc);
+                    calcModel.RunWorkerAsync(comboBoxQualValue.SelectedIndex);
                 }
 
                 return;
             }
 
-            // Check if species changed.
-            //if (SelectedStatSpc.Species != )
+            plotQualify.Remove("Bio", false);
+            plotQualify.Remove("Own data", false);
+            plotQualify.Remove("Model", false);
 
-            labelNoDataAL.Visible = GrowthModel == null;
-            plotAL.Visible = GrowthModel != null;
-            //plotAL.Clear();
-
-            if (growthExternal != null)
+            if (externalModel != null)
             {
-                growthExternal = growthExternal.Copy();
-                growthExternal.Series.Name =
-                    growthExternal.Properties.ScatterplotName =
-                    string.Format(Resources.Interface.Interface.SpecSheet, SelectedStatSpc.Species);
-                growthExternal.Properties.DataPointColor = Constants.InfantColor;
-                plotAL.AddSeries(growthExternal);
+                externalModel = externalModel.Copy();
+                externalModel.Series.Name = externalModel.Properties.ScatterplotName = "Bio";                    
+                externalModel.Properties.DataPointColor = Constants.InfantColor;
+                externalModel.Series.YAxisType = AxisType.Secondary;
+                plotQualify.AddSeries(externalModel);
             }
 
-            if (growthInternal != null)
+            if (internalModel != null)
             {
-                growthInternal = growthInternal.Copy();
-                growthInternal.Series.Name =
-                    growthInternal.Properties.ScatterplotName =
-                    string.Format(Resources.Interface.Interface.IntModel, SelectedStatSpc.Species);
-                growthInternal.Properties.DataPointColor = UserSettings.ModelColor;
-                plotAL.AddSeries(growthInternal);
+                internalModel = internalModel.Copy();
+                internalModel.Series.Name = internalModel.Properties.ScatterplotName = "Own data";
+                internalModel.Properties.DataPointColor = UserSettings.ModelColor;
+                internalModel.Series.YAxisType = AxisType.Secondary;
+                plotQualify.AddSeries(internalModel);
             }
 
-            if (GrowthModel != null)
+            if (combinedModel != null)
             {
-                plotAL.AddSeries(GrowthModel.Data.X.GetHistogram());
-
-                GrowthModel = GrowthModel.Copy();
-                GrowthModel.Properties.ShowTrend = true;
-                GrowthModel.Properties.SelectedApproximationType = AllowedStack.Parent.GrowthModels.Nature;
-                GrowthModel.Properties.DataPointColor = System.Drawing.Color.Transparent;
-                GrowthModel.Properties.TrendColor = UserSettings.ModelColor.Darker();
-                GrowthModel.Properties.ShowPredictionBands = true;
-                GrowthModel.Properties.HighlightRunouts = true;
-                //GrowthModel.Properties.AllowCursors = true;
-                plotAL.AddSeries(GrowthModel);
-            }
-
-            //statChartAL.Remaster();
-            plotAL.Update(this, new EventArgs());
-            if (plotAL.Scatterplots.Count > 0) plotAL.Rebuild(this, new EventArgs());
-
-
-            labelNoDataLW.Visible = MassModel == null;
-            plotLW.Visible = MassModel != null;
-
-            //plotLW.Clear();
-            //while (plotLW.Scatterplots.Count > 0) {
-            //    plotLW.Scatterplots[0].Dispose();
-            //}
-
-            if (massExternal != null)
-            {
-                massExternal = massExternal.Copy();
-                massExternal.Series.Name =
-                    massExternal.Properties.ScatterplotName =
-                    string.Format(Resources.Interface.Interface.SpecSheet, SelectedStatSpc.Species);
-                massExternal.Properties.DataPointColor = Constants.InfantColor;
-                plotLW.AddSeries(massExternal);
-            }
-
-            if (massInternal != null)
-            {
-                massInternal = massInternal.Copy();
-                massInternal.Series.Name =
-                    massInternal.Properties.ScatterplotName =
-                    string.Format(Resources.Interface.Interface.IntModel, SelectedStatSpc.Species);
-                massInternal.Properties.DataPointColor = UserSettings.ModelColor;
-                plotLW.AddSeries(massInternal);
-            }
-
-            if (MassModel != null)
-            {
-                plotLW.AddSeries(MassModel.Data.X.GetHistogram());
-                //plotLW.AxisXMin = Service.GetStrate(FullStack.LengthMin(SelectedStatSpc)).LeftEndpoint;
-                //plotLW.AxisXMax = Service.GetStrate(FullStack.LengthMax(SelectedStatSpc)).RightEndpoint;
                 //plotLW.AxisY2Max = Math.Max(UserSettings.RequiredClassSize,
                 //    FullStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return FullStack.Weighted(s, i); }, Resources.Interface.StratesWeighted).MostSampled.Quantity);
 
-                MassModel = MassModel.Copy();
-                MassModel.Properties.ShowTrend = true;
-                MassModel.Properties.SelectedApproximationType = AllowedStack.Parent.MassModels.Nature;
-                MassModel.Properties.DataPointColor = System.Drawing.Color.Transparent;
-                //weightInternal.Properties.DataPointColor = UserSettings.ModelColor.Darker();
-                MassModel.Properties.ShowPredictionBands = true;
-                MassModel.Properties.HighlightRunouts = true;
-                //WeightModel.Properties.AllowCursors = true;
-                plotLW.AddSeries(MassModel);
+                combinedModel = combinedModel.Copy();
+                combinedModel.Series.Name = combinedModel.Properties.ScatterplotName = "Model";
+                combinedModel.Series.YAxisType = AxisType.Secondary;
+                combinedModel.Properties.ShowTrend = true;
+                combinedModel.Properties.SelectedApproximationType = AllowedStack.Parent.MassModels.Nature;
+                combinedModel.Properties.DataPointColor = Color.Transparent;
+                combinedModel.Properties.ShowPredictionBands = true;
+                combinedModel.Properties.HighlightRunouts = true;
+                plotQualify.AddSeries(combinedModel);
             }
 
-            //plotWeight.Remaster();
-            plotLW.Update(this, new EventArgs());
-            if (plotLW.Scatterplots.Count > 0) plotLW.Rebuild(this, new EventArgs());
+            plotQualify.Remaster();
 
-            //buttonOutliersAL.Enabled = 
-            //    GrowthModel != null && GrowthModel.IsRegressionOK && GrowthModel.Regression.GetRunouts().Count > 0;
+            if (externalModel != null)
+            {
+                externalModel.Properties.DataPointColor = Constants.InfantColor;
+            }
+
+            if (internalModel != null)
+            {
+                internalModel.Properties.DataPointColor = UserSettings.ModelColor;
+            }
+
+            if (combinedModel != null)
+            {
+                combinedModel.Properties.DataPointColor = Color.Transparent;
+            }
+
+            plotQualify.Update(sender, e);
+
+            //if (plotQualify.Scatterplots.Count > 0) plotQualify.Rebuild(this, new EventArgs());
 
             //buttonOutliersLW.Enabled = 
             //    WeightModel != null && WeightModel.IsRegressionOK && WeightModel.Regression.GetRunouts().Count > 0;
 
-            //bool growthOK = (GrowthModel != null && GrowthModel.IsRegressionOK && !growthRunouts);
             //bool weightOK = (WeightModel != null && WeightModel.IsRegressionOK && !weigthRunouts);
 
-            //pictureBoxInput.Visible = labelInputGood.Visible = growthOK && weightOK;
 
-            Cursor = plotAL.Cursor = plotLW.Cursor = Cursors.Default;
+            Cursor = plotQualify.Cursor = Cursors.Default;
             spreadSheetSpcStats.Enabled = true;
-        }
-
-        private void plotAL_CollectionChanged(object sender, EventArgs e)
-        {
-            if (sender is Histogramma)
-            {
-                Color startColor = Color.Gray.Lighter();
-                double max = 0;
-
-                foreach (Histogramma hist in plotAL.Histograms)
-                {
-                    //hist.DataSeries.ChartType = SeriesChartType.Bar;
-                    hist.DataSeries.YAxisType = AxisType.Secondary;
-                    hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");
-                    hist.Properties.Borders = false;
-                    hist.Properties.DataPointColor = startColor;
-                    startColor = startColor.Darker();
-
-                    max = Math.Max(max, hist.Top);
-                }
-
-                plotAL.AxisY2Max = Math.Max(UserSettings.RequiredClassSize, max);
-            }
-        }
-
-        private void plotLW_CollectionChanged(object sender, EventArgs e)
-        {
-            if (sender is Histogramma)
-            {
-                Color startColor = Color.Gray.Lighter(); // Color.Gainsboro.Lighter();
-                double max = 0;
-
-                foreach (Histogramma hist in plotLW.Histograms)
-                {
-                    hist.DataSeries.YAxisType = AxisType.Secondary;
-                    hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");//.ChartType = SeriesChartType.StackedColumn;
-                    hist.Properties.DataPointColor = startColor;
-                    hist.Properties.Borders = false;
-                    startColor = startColor.Darker();
-
-                    max = Math.Max(max, hist.Top);
-                }
-
-                plotLW.AxisY2Max = Math.Max(UserSettings.RequiredClassSize, max);
-            }
         }
 
         private void buttonOutliersLW_Click(object sender, EventArgs e)
@@ -2667,7 +2462,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            if (GrowthModel != null)
+            if (combinedModel != null)
             {
                 //BivariateSample growthRun = GrowthModel.Regression.GetRunouts();
                 //if (growthRun != null)
@@ -2695,7 +2490,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            if (MassModel != null)
+            if (combinedModel != null)
             {
                 //BivariateSample weightRun = WeightModel.Regression.GetRunouts();
                 //if (weightRun != null)
@@ -2725,21 +2520,21 @@ namespace Mayfly.Fish.Explorer
         {
             SpeciesStatsLevel lvl = SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion;
             
-            if (SelectedStatSpc == null)
+            if (selectedStatSpc == null)
             {
                 Report report = new Report(Resources.Reports.Sections.SpeciesStats.Title);
                 AllowedStack.AddCommon(report);
                 AllowedStack.Sort();
-                AllowedStack.AddSpeciesStatsReport(report, lvl, SelectedCpueUE.Variant);
+                AllowedStack.AddSpeciesStatsReport(report, lvl, ExpressionVariant.Efforts);
                 report.EndBranded();
                 report.Run();  
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, SelectedStatSpc.KeyRecord.FullNameReport));
-                AllowedStack.AddCommon(report, SelectedStatSpc);
+                Report report = new Report(string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.KeyRecord.FullNameReport));
+                AllowedStack.AddCommon(report, selectedStatSpc);
                 AllowedStack.Sort();
-                AllowedStack.AddSpeciesStatsReport(report, SelectedStatSpc, lvl, SelectedCpueUE.Variant);
+                AllowedStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
                 report.EndBranded();
                 report.Run();
             }

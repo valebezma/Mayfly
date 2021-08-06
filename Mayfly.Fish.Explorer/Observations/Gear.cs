@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mayfly.Wild;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public enum EquipmentEvent
     {

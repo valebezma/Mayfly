@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class Catch : Form
     {

@@ -1,4 +1,4 @@
-﻿using Mayfly.Fish.Explorer.Observations;
+﻿using Mayfly.Fish.Explorer;
 using Mayfly.Wild;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
 using Mayfly.Extensions;
-using Mayfly.Fish.Explorer.Fishery;
+using Mayfly.Fish.Explorer;
 using Meta.Numerics;
 
 namespace Mayfly.Fish.Explorer

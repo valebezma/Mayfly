@@ -413,6 +413,12 @@ namespace Mayfly.Mathematics.Charts
                 statChart.UpdateYMax();
                 statChart.RefreshAxes();
             }
+
+            if (statChart.AxisY2AutoMaximum)
+            {
+                statChart.UpdateY2Max();
+                statChart.RefreshAxes();
+            }
         }
 
         private void Distribute(double minimum, DateTimeIntervalType interval)

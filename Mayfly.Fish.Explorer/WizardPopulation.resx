@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="wizardExplorer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="wizardExplorer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="wizardExplorer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="labelStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 75</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelStart.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>This wizard will help you to estimate length and age composition of {0} in survey period.</value>
+  </data>
+  <data name="labelStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Name" xml:space="preserve">
+    <value>labelStart</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Parent" xml:space="preserve">
+    <value>pageStart</value>
+  </data>
+  <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="pageStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageStart.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="pageStart.Text" xml:space="preserve">
+    <value>Let's start</value>
+  </data>
+  <data name="&gt;&gt;pageStart.Name" xml:space="preserve">
+    <value>pageStart</value>
+  </data>
+  <data name="&gt;&gt;pageStart.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="buttonL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 78</value>
+  </data>
+  <data name="buttonL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonL.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="buttonL.Text" xml:space="preserve">
+    <value>X: {0}</value>
+  </data>
+  <data name="buttonL.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonL.Name" xml:space="preserve">
+    <value>buttonL</value>
+  </data>
+  <data name="&gt;&gt;buttonL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonL.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;buttonL.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 137</value>
+  </data>
+  <data name="buttonT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonT.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="buttonT.Text" xml:space="preserve">
+    <value>X: {0}</value>
+  </data>
+  <data name="buttonT.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonT.Name" xml:space="preserve">
+    <value>buttonT</value>
+  </data>
+  <data name="&gt;&gt;buttonT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonT.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;buttonT.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 108</value>
+  </data>
+  <data name="buttonW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
+  </data>
+  <data name="buttonW.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="buttonW.Text" xml:space="preserve">
+    <value>X: {0}</value>
+  </data>
+  <data name="buttonW.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;buttonW.Name" xml:space="preserve">
+    <value>buttonW</value>
+  </data>
+  <data name="&gt;&gt;buttonW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonW.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;buttonW.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelT.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 141</value>
+  </data>
+  <data name="labelT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>28, 15</value>
+  </data>
+  <data name="labelT.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="labelT.Text" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="&gt;&gt;labelT.Name" xml:space="preserve">
+    <value>labelT</value>
+  </data>
+  <data name="&gt;&gt;labelT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelT.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelT.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelBiomass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelBiomass.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBiomass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBiomass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 188</value>
+  </data>
+  <data name="labelBiomass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 15</value>
+  </data>
+  <data name="labelBiomass.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="labelBiomass.Text" xml:space="preserve">
+    <value>Sample size</value>
+  </data>
+  <data name="&gt;&gt;labelBiomass.Name" xml:space="preserve">
+    <value>labelBiomass</value>
+  </data>
+  <data name="&gt;&gt;labelBiomass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBiomass.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelBiomass.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelW.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 112</value>
+  </data>
+  <data name="labelW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 15</value>
+  </data>
+  <data name="labelW.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="labelW.Text" xml:space="preserve">
+    <value>Mass</value>
+  </data>
+  <data name="&gt;&gt;labelW.Name" xml:space="preserve">
+    <value>labelW</value>
+  </data>
+  <data name="&gt;&gt;labelW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelW.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelW.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelL.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 82</value>
+  </data>
+  <data name="labelL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 15</value>
+  </data>
+  <data name="labelL.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="labelL.Text" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="&gt;&gt;labelL.Name" xml:space="preserve">
+    <value>labelL</value>
+  </data>
+  <data name="&gt;&gt;labelL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelL.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelL.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelBasic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBasic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 0</value>
+  </data>
+  <data name="labelBasic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 30</value>
+  </data>
+  <data name="labelBasic.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelBasic.Text" xml:space="preserve">
+    <value>Basic biological features of {0} sample are described below.</value>
+  </data>
+  <data name="&gt;&gt;labelBasic.Name" xml:space="preserve">
+    <value>labelBasic</value>
+  </data>
+  <data name="&gt;&gt;labelBasic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBasic.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelBasic.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="pageBasic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageBasic.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="pageBasic.Text" xml:space="preserve">
+    <value>Species sample description</value>
+  </data>
+  <data name="&gt;&gt;pageBasic.Name" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;pageBasic.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="spreadSheet1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Effort, {0}</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Number, ind.</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Mass, kg</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>NPUE, ind./{0}</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>BPUE, kg/{0}</value>
+  </data>
+  <data name="spreadSheet1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 55</value>
+  </data>
+  <data name="spreadSheet1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 317</value>
+  </data>
+  <data name="spreadSheet1.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheet1.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Name" xml:space="preserve">
+    <value>spreadSheet1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;spreadSheet1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 381</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 15</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Mean catch per unit of effort:</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>450, 378</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="textBox2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
+    <value>textBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>355, 381</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>ind./{0}</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>274, 378</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="textBox1.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>531, 381</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>kg/{0}</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="pageCpue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageCpue.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="pageCpue.Text" xml:space="preserve">
+    <value>Catches per unit effort</value>
+  </data>
+  <data name="&gt;&gt;pageCpue.Name" xml:space="preserve">
+    <value>pageCpue</value>
+  </data>
+  <data name="&gt;&gt;pageCpue.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="plotT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="plotT.AxisXTitle" xml:space="preserve">
+    <value>Age, years</value>
+  </data>
+  <data name="plotT.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="plotT.AxisYFormat" xml:space="preserve">
+    <value>P0</value>
+  </data>
+  <data name="plotT.AxisYTitle" xml:space="preserve">
+    <value>CPUE, %</value>
+  </data>
+  <data name="plotT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 55</value>
+  </data>
+  <data name="plotT.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 25, 3, 25</value>
+  </data>
+  <data name="plotT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 327</value>
+  </data>
+  <data name="plotT.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;plotT.Name" xml:space="preserve">
+    <value>plotT</value>
+  </data>
+  <data name="&gt;&gt;plotT.Type" xml:space="preserve">
+    <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;plotT.Parent" xml:space="preserve">
+    <value>pageAge</value>
+  </data>
+  <data name="&gt;&gt;plotT.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 30</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Age composition of stock is shown on histogram.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>pageAge</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pageAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageAge.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="pageAge.Text" xml:space="preserve">
+    <value>Age composition</value>
+  </data>
+  <data name="&gt;&gt;pageAge.Name" xml:space="preserve">
+    <value>pageAge</value>
+  </data>
+  <data name="&gt;&gt;pageAge.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="checkBoxAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxAge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAge.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxAge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 124</value>
+  </data>
+  <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 19</value>
+  </data>
+  <data name="checkBoxAge.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxAge.Text" xml:space="preserve">
+    <value>Age composition of catches</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAge.Name" xml:space="preserve">
+    <value>checkBoxAge</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAge.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxAppKeys.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxAppKeys.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAppKeys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAppKeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 188</value>
+  </data>
+  <data name="checkBoxAppKeys.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxAppKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 19</value>
+  </data>
+  <data name="checkBoxAppKeys.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxAppKeys.Text" xml:space="preserve">
+    <value>Appendices with length/age keys</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppKeys.Name" xml:space="preserve">
+    <value>checkBoxAppKeys</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppKeys.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppKeys.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppKeys.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxAppT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxAppT.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAppT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAppT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 156</value>
+  </data>
+  <data name="checkBoxAppT.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxAppT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 19</value>
+  </data>
+  <data name="checkBoxAppT.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxAppT.Text" xml:space="preserve">
+    <value>Appendices with age groups CPUE calculation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppT.Name" xml:space="preserve">
+    <value>checkBoxAppT</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppT.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAppT.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 50</value>
+  </data>
+  <data name="labelReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 15</value>
+  </data>
+  <data name="labelReport.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelReport.Text" xml:space="preserve">
+    <value>Select parts to include in the report:</value>
+  </data>
+  <data name="&gt;&gt;labelReport.Name" xml:space="preserve">
+    <value>labelReport</value>
+  </data>
+  <data name="&gt;&gt;labelReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelReport.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;labelReport.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBoxGears.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxGears.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxGears.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGears.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 92</value>
+  </data>
+  <data name="checkBoxGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxGears.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 19</value>
+  </data>
+  <data name="checkBoxGears.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxGears.Text" xml:space="preserve">
+    <value>Gear set description</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGears.Name" xml:space="preserve">
+    <value>checkBoxGears</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGears.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGears.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGears.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="pageReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="pageReport.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="pageReport.Text" xml:space="preserve">
+    <value>Report compilation</value>
+  </data>
+  <data name="&gt;&gt;pageReport.Name" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;pageReport.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
+  </data>
+  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>{0} Population Summary Wizard</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
+    <value>wizardExplorer</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="structureCalculator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="reporter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>158, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>56</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>630, 550</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;structureCalculator.Name" xml:space="preserve">
+    <value>structureCalculator</value>
+  </data>
+  <data name="&gt;&gt;structureCalculator.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;reporter.Name" xml:space="preserve">
+    <value>reporter</value>
+  </data>
+  <data name="&gt;&gt;reporter.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WizardStockComposition</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

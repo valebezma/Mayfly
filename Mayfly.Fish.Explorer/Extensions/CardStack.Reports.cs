@@ -39,7 +39,7 @@ namespace Mayfly.Fish.Explorer
 
             if (artefacts.Length > 0)
             {
-                warning = Resources.Artefact.ArtefactsFound + Environment.NewLine;
+                warning = Resources.Artefact.ArtefactsFound + System.Environment.NewLine;
 
                 foreach (Artefact artefact in artefacts)
                 {
@@ -47,7 +47,7 @@ namespace Mayfly.Fish.Explorer
                     if (speciesRow != null && artefact is SpeciesArtefact && ((SpeciesArtefact)artefact).SpeciesRow != speciesRow)
                         continue;
 
-                    warning += artefact.ToString() + Environment.NewLine;
+                    warning += artefact.ToString() + System.Environment.NewLine;
                 }
             }
 

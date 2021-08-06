@@ -13,7 +13,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Extensions;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class Environment : Form
     {

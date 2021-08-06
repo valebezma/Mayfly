@@ -11,7 +11,7 @@ using Mayfly.Controls;
 using Mayfly.Extensions;
 using Mayfly.Wild;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class ExpressCatch : Form
     {

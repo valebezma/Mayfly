@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Meta.Numerics.Statistics;
-using Mayfly.Fish.Explorer.Survey;
+using Mayfly.Fish.Explorer;
 using System.Linq;
 using Meta.Numerics;
 

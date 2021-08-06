@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="a" xml:space="preserve">
+    <value>все значения</value>
+  </data>
   <data name="e" xml:space="preserve">
     <value>крайние значения</value>
   </data>
@@ -126,10 +129,34 @@
   <data name="m" xml:space="preserve">
     <value>средняя</value>
   </data>
+  <data name="max" xml:space="preserve">
+    <value>максимальное значение</value>
+  </data>
+  <data name="min" xml:space="preserve">
+    <value>минимальное значение</value>
+  </data>
+  <data name="n" xml:space="preserve">
+    <value>размер выборки</value>
+  </data>
   <data name="q" xml:space="preserve">
     <value>средняя и крайние значения</value>
   </data>
   <data name="s" xml:space="preserve">
     <value>средняя и стандартная ошибка</value>
+  </data>
+  <data name="sd" xml:space="preserve">
+    <value>стандартное отклонение</value>
+  </data>
+  <data name="sdc" xml:space="preserve">
+    <value>откорректированное стандартное отклонение</value>
+  </data>
+  <data name="se" xml:space="preserve">
+    <value>стандартная ошибка</value>
+  </data>
+  <data name="se%" xml:space="preserve">
+    <value>относительная стандартная ошибка</value>
+  </data>
+  <data name="t" xml:space="preserve">
+    <value>сумма значений</value>
   </data>
 </root>

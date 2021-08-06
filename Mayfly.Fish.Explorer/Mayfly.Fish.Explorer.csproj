@@ -245,58 +245,58 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpeciesStats.resx</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardExtrapolations.cs">
+    <Compile Include="WizardExtrapolations.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardExtrapolations.Designer.cs">
+    <Compile Include="WizardExtrapolations.Designer.cs">
       <DependentUpon>WizardExtrapolations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardPrediction.cs">
+    <Compile Include="WizardPrediction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardPrediction.Designer.cs">
+    <Compile Include="WizardPrediction.Designer.cs">
       <DependentUpon>WizardPrediction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMSY.cs">
+    <Compile Include="WizardMSY.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMSY.Designer.cs">
+    <Compile Include="WizardMSY.Designer.cs">
       <DependentUpon>WizardMSY.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMSYR.cs">
+    <Compile Include="WizardMSYR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMSYR.Designer.cs">
+    <Compile Include="WizardMSYR.Designer.cs">
       <DependentUpon>WizardMSYR.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardVirtualPopulation.cs">
+    <Compile Include="WizardVirtualPopulation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardVirtualPopulation.Designer.cs">
+    <Compile Include="WizardVirtualPopulation.Designer.cs">
       <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardGrowth.cs">
+    <Compile Include="WizardGrowth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardGrowth.Designer.cs">
+    <Compile Include="WizardGrowth.Designer.cs">
       <DependentUpon>WizardGrowth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMortalityCohorts.cs">
+    <Compile Include="WizardMortalityCohorts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMortalityCohorts.Designer.cs">
+    <Compile Include="WizardMortalityCohorts.Designer.cs">
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Summary\WizardPopulation.cs">
+    <Compile Include="WizardPopulation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Summary\WizardPopulation.Designer.cs">
+    <Compile Include="WizardPopulation.Designer.cs">
       <DependentUpon>WizardPopulation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardExtrapolation.cs">
+    <Compile Include="WizardExtrapolation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardExtrapolation.Designer.cs">
+    <Compile Include="WizardExtrapolation.Designer.cs">
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
     </Compile>
     <Compile Include="Compositions\GillnetSelectivityModel.cs" />
@@ -397,40 +397,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MSYR.resx</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Bio\WizardExport2.cs">
+    <Compile Include="WizardExportBio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Bio\WizardExport2.Designer.cs">
-      <DependentUpon>WizardExport2.cs</DependentUpon>
+    <Compile Include="WizardExportBio.Designer.cs">
+      <DependentUpon>WizardExportBio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Summary\WizardCenosis.cs">
+    <Compile Include="WizardCenosis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Summary\WizardCenosis.Designer.cs">
+    <Compile Include="WizardCenosis.Designer.cs">
       <DependentUpon>WizardCenosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMortality.cs">
+    <Compile Include="WizardMortality.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardMortality.Designer.cs">
+    <Compile Include="WizardMortality.Designer.cs">
       <DependentUpon>WizardMortality.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\WizardComposition.cs">
+    <Compile Include="WizardComposition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\WizardComposition.Designer.cs">
+    <Compile Include="WizardComposition.Designer.cs">
       <DependentUpon>WizardComposition.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Survey\WizardSpawning.cs">
+    <Compile Include="WizardSpawning.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Survey\WizardSpawning.Designer.cs">
+    <Compile Include="WizardSpawning.Designer.cs">
       <DependentUpon>WizardSpawning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardGrowthCohorts.cs">
+    <Compile Include="WizardGrowthCohorts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardGrowthCohorts.Designer.cs">
+    <Compile Include="WizardGrowthCohorts.Designer.cs">
       <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
     </Compile>
     <Compile Include="Observations\Catch.cs">
@@ -473,10 +473,10 @@
     <Compile Include="Observations\Environment.Designer.cs">
       <DependentUpon>Environment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Observations\WizardOb.cs">
+    <Compile Include="WizardOb.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Observations\WizardOb.Designer.cs">
+    <Compile Include="WizardOb.Designer.cs">
       <DependentUpon>WizardOb.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\Reports\Sections\Growth.ru.Designer.cs">
@@ -504,22 +504,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GearClass.resx</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\WizardGearSet.cs">
+    <Compile Include="WizardGearSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\WizardGearSet.Designer.cs">
+    <Compile Include="WizardGearSet.Designer.cs">
       <DependentUpon>WizardGearSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardSelectivity.cs">
+    <Compile Include="WizardSelectivity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardSelectivity.Designer.cs">
+    <Compile Include="WizardSelectivity.Designer.cs">
       <DependentUpon>WizardSelectivity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardTac.cs">
+    <Compile Include="WizardTac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Wizards\Fishery\WizardTac.Designer.cs">
+    <Compile Include="WizardTac.Designer.cs">
       <DependentUpon>WizardTac.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\Artefact.Designer.cs">
@@ -696,63 +696,63 @@
     <EmbeddedResource Include="Resources\Reports\Sections\SpeciesStats.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolations.resx">
+    <EmbeddedResource Include="WizardExtrapolations.resx">
       <DependentUpon>WizardExtrapolations.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolations.ru.resx">
+    <EmbeddedResource Include="WizardExtrapolations.ru.resx">
       <DependentUpon>WizardExtrapolations.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardPrediction.resx">
+    <EmbeddedResource Include="WizardPrediction.resx">
       <DependentUpon>WizardPrediction.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMSY.resx">
+    <EmbeddedResource Include="WizardMSY.resx">
       <DependentUpon>WizardMSY.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMSYR.resx">
+    <EmbeddedResource Include="WizardMSYR.resx">
       <DependentUpon>WizardMSYR.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardVirtualPopulation.resx">
+    <EmbeddedResource Include="WizardVirtualPopulation.resx">
       <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardGrowth.resx">
+    <EmbeddedResource Include="WizardGrowth.resx">
       <DependentUpon>WizardGrowth.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardGrowth.ru.resx">
+    <EmbeddedResource Include="WizardGrowth.ru.resx">
       <DependentUpon>WizardGrowth.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMortalityCohorts.resx">
+    <EmbeddedResource Include="WizardMortalityCohorts.resx">
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMortalityCohorts.ru.resx">
+    <EmbeddedResource Include="WizardMortalityCohorts.ru.resx">
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Summary\WizardPopulation.resx">
+    <EmbeddedResource Include="WizardPopulation.resx">
       <DependentUpon>WizardPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Summary\WizardPopulation.ru.resx">
+    <EmbeddedResource Include="WizardPopulation.ru.resx">
       <DependentUpon>WizardPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolation.resx">
+    <EmbeddedResource Include="WizardExtrapolation.resx">
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardExtrapolation.ru.resx">
+    <EmbeddedResource Include="WizardExtrapolation.ru.resx">
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardVirtualPopulation.ru.resx">
+    <EmbeddedResource Include="WizardVirtualPopulation.ru.resx">
       <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -820,46 +820,46 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MSYR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Bio\WizardExport2.resx">
-      <DependentUpon>WizardExport2.cs</DependentUpon>
+    <EmbeddedResource Include="WizardExportBio.resx">
+      <DependentUpon>WizardExportBio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Bio\WizardExport2.ru.resx">
-      <DependentUpon>WizardExport2.cs</DependentUpon>
+    <EmbeddedResource Include="WizardExportBio.ru.resx">
+      <DependentUpon>WizardExportBio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Summary\WizardCenosis.resx">
+    <EmbeddedResource Include="WizardCenosis.resx">
       <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Summary\WizardCenosis.ru.resx">
+    <EmbeddedResource Include="WizardCenosis.ru.resx">
       <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMortality.resx">
+    <EmbeddedResource Include="WizardMortality.resx">
       <DependentUpon>WizardMortality.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardMortality.ru.resx">
+    <EmbeddedResource Include="WizardMortality.ru.resx">
       <DependentUpon>WizardMortality.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardComposition.resx">
+    <EmbeddedResource Include="WizardComposition.resx">
       <DependentUpon>WizardComposition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardComposition.ru.resx">
+    <EmbeddedResource Include="WizardComposition.ru.resx">
       <DependentUpon>WizardComposition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Survey\WizardSpawning.resx">
+    <EmbeddedResource Include="WizardSpawning.resx">
       <DependentUpon>WizardSpawning.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardGrowthCohorts.resx">
+    <EmbeddedResource Include="WizardGrowthCohorts.resx">
       <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardGrowthCohorts.ru.resx">
+    <EmbeddedResource Include="WizardGrowthCohorts.ru.resx">
       <DependentUpon>WizardGrowthCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -893,7 +893,7 @@
     <EmbeddedResource Include="Observations\Environment.ru.resx">
       <DependentUpon>Environment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Observations\WizardOb.resx">
+    <EmbeddedResource Include="WizardOb.resx">
       <DependentUpon>WizardOb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -904,7 +904,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Observations\WizardOb.ru.resx">
+    <EmbeddedResource Include="WizardOb.ru.resx">
       <DependentUpon>WizardOb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Sections\Growth.ru.resx">
@@ -929,19 +929,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GearClass.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardGearSet.resx">
+    <EmbeddedResource Include="WizardGearSet.resx">
       <DependentUpon>WizardGearSet.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\WizardGearSet.ru.resx">
+    <EmbeddedResource Include="WizardGearSet.ru.resx">
       <DependentUpon>WizardGearSet.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardSelectivity.resx">
+    <EmbeddedResource Include="WizardSelectivity.resx">
       <DependentUpon>WizardSelectivity.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Wizards\Fishery\WizardTac.resx">
+    <EmbeddedResource Include="WizardTac.resx">
       <DependentUpon>WizardTac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Artefact.resx">

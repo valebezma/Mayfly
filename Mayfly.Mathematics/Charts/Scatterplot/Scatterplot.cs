@@ -291,7 +291,7 @@ namespace Mayfly.Mathematics.Charts
                     Trend.FunctionInverse = Regression.PredictInversed;
                 }
 
-                Trend.BuildSeries();
+                Trend.BuildSeries(Series.YAxisType);
 
                 Trend.Properties.FunctionName = Properties.TrendName;
                 Trend.Properties.TrendWidth = Properties.TrendWidth;
@@ -443,7 +443,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     CalculateApproximation(Properties.SelectedApproximationType);
 
-                    Trend.BuildSeries();
+                    Trend.BuildSeries(Series.YAxisType);
 
                     if (Properties.ShowConfidenceBands)
                     {
@@ -586,6 +586,8 @@ namespace Mayfly.Mathematics.Charts
 
                     //TrendRange.Points.Add(dataPoint);
                 }
+
+                if (TrendRange != null) TrendRange.YAxisType = Series.YAxisType;
             }
             else
             {
@@ -641,6 +643,8 @@ namespace Mayfly.Mathematics.Charts
 
                     //DataRange.Points.Add(dataPoint);
                 }
+
+                if (DataRange != null) DataRange.YAxisType = Series.YAxisType;
             }
             else
             {
