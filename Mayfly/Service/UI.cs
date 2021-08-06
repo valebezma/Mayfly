@@ -99,10 +99,10 @@ namespace Mayfly
 
         public static void SetControlsAvailability(bool available, params Control[] controls)
         {
-            //foreach (Control control in controls)
-            //{
-            //    control.Visible = available;
-            //}
+            foreach (Control control in controls)
+            {
+                control.Visible = available;
+            }
         }
 
         public static void SetControlClickability(bool available, Control control)
