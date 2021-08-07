@@ -2371,6 +2371,7 @@ namespace Mayfly.Fish.Explorer
                 externalModel.Series.Name = externalModel.Properties.ScatterplotName = "Bio";                    
                 externalModel.Properties.DataPointColor = Constants.InfantColor;
                 externalModel.Series.YAxisType = AxisType.Secondary;
+                externalModel.TransposeCharting = comboBoxQualValue.SelectedIndex == 1;
                 plotQualify.AddSeries(externalModel);
             }
 
@@ -2380,6 +2381,7 @@ namespace Mayfly.Fish.Explorer
                 internalModel.Series.Name = internalModel.Properties.ScatterplotName = "Own data";
                 internalModel.Properties.DataPointColor = UserSettings.ModelColor;
                 internalModel.Series.YAxisType = AxisType.Secondary;
+                internalModel.TransposeCharting = comboBoxQualValue.SelectedIndex == 1;
                 plotQualify.AddSeries(internalModel);
             }
 
@@ -2396,6 +2398,7 @@ namespace Mayfly.Fish.Explorer
                 combinedModel.Properties.DataPointColor = Color.Transparent;
                 combinedModel.Properties.ShowPredictionBands = true;
                 combinedModel.Properties.HighlightRunouts = true;
+                combinedModel.TransposeCharting = comboBoxQualValue.SelectedIndex == 1;
                 plotQualify.AddSeries(combinedModel);
             }
 

@@ -1172,6 +1172,7 @@ namespace Mayfly.Mathematics.Charts
 
                 if (sample.Trend != null)
                 {
+                    sample.Trend.TransposeCharting = sample.TransposeCharting;
                     sample.Trend.BuildSeries(sample.Series.YAxisType);
 
                     if (sample.Properties.ShowConfidenceBands)

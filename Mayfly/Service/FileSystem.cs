@@ -509,7 +509,7 @@ namespace Mayfly
 
         public static FileSystemInterface InterfaceReport = new FileSystemInterface(".html");
 
-        public static FileSystemInterface InterfaceSheets = new FileSystemInterface(null, ".csv", ".txt", ".prn", ".Rda");
+        public static FileSystemInterface InterfaceSheets = new FileSystemInterface(null, ".csv", ".xml", ".txt", ".prn", ".Rda");
     }
 
     public class FileSystemInterface
@@ -524,7 +524,7 @@ namespace Mayfly
 
         public SaveFileDialog SaveDialog { get; set; }
 
-        public SaveFileDialog SaveAsDialog { get; set; }
+        public SaveFileDialog ExportDialog { get; set; }
         
         //public string InitialDirectory { get; set; }
 
@@ -575,11 +575,11 @@ namespace Mayfly
 
             if (SaveExtensions.Length > 1)
             {
-                SaveAsDialog = new SaveFileDialog();
-                SaveAsDialog.Filter = FileSystem.FilterFromExt(false, SaveExtensions);
-                SaveAsDialog.Title = Resources.Interface.FileSaveAny;
-                SaveAsDialog.FilterIndex = 0;
-                SaveAsDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
+                ExportDialog = new SaveFileDialog();
+                ExportDialog.Filter = FileSystem.FilterFromExt(false, SaveExtensions);
+                ExportDialog.Title = Resources.Interface.FileSaveAny;
+                ExportDialog.FilterIndex = 0;
+                ExportDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
                 //SaveAsDialog.InitialDirectory = InitialDirectory;
             }
         }
@@ -594,7 +594,7 @@ namespace Mayfly
         void saveDialog_FileOk(object sender, CancelEventArgs e)
         {
             SaveDialog.InitialDirectory = FileSystem.FolderName(((SaveFileDialog)sender).FileName);
-            if (SaveAsDialog != null) SaveAsDialog.InitialDirectory = SaveDialog.InitialDirectory;
+            if (ExportDialog != null) ExportDialog.InitialDirectory = SaveDialog.InitialDirectory;
         }
     }
 }

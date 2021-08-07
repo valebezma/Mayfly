@@ -1568,13 +1568,13 @@ namespace Mayfly.Benthos
         {
             SaveData();
 
-            UserSettings.Interface.SaveAsDialog.FileName =
+            UserSettings.Interface.ExportDialog.FileName =
                 FileSystem.SuggestName(FileSystem.FolderName(UserSettings.Interface.SaveDialog.FileName),
                 Data.GetSuggestedName());
 
-            if (UserSettings.Interface.SaveAsDialog.ShowDialog() == DialogResult.OK)
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                Write(UserSettings.Interface.SaveAsDialog.FileName);
+                Write(UserSettings.Interface.ExportDialog.FileName);
             }
         }
 

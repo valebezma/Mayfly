@@ -16,6 +16,8 @@ namespace Mayfly.Mathematics.Charts
     {
         public string Name { get; private set; }
 
+        public bool TransposeCharting { get; set; }
+
         public Plot Container { set; get; }
 
 
@@ -192,8 +194,17 @@ namespace Mayfly.Mathematics.Charts
                     x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
                 {
                     DataPoint dataPoint = new DataPoint(Series);
-                    dataPoint.XValue = x;
-                    dataPoint.YValues[0] = y;
+
+                    if (TransposeCharting)
+                    {
+                        dataPoint.XValue = y;
+                        dataPoint.YValues[0] = x;
+                    }
+                    else
+                    {
+                        dataPoint.XValue = x;
+                        dataPoint.YValues[0] = y;
+                    }
 
                     Series.Points.Add(dataPoint);
                 }

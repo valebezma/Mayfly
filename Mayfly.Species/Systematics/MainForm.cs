@@ -125,15 +125,15 @@ namespace Mayfly.Species.Systematics
 
         private void menuItemSaveAs_Click(object sender, EventArgs e)
         {
-            if (UserSettings.Interface.SaveAsDialog.ShowDialog() == DialogResult.OK)
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                switch (Path.GetExtension(UserSettings.Interface.SaveAsDialog.FileName))
+                switch (Path.GetExtension(UserSettings.Interface.ExportDialog.FileName))
                 {
                     case ".sps":
-                        Save(UserSettings.Interface.SaveAsDialog.FileName);
+                        Save(UserSettings.Interface.ExportDialog.FileName);
                         break;
                     case ".html":
-                        File.WriteAllText(UserSettings.Interface.SaveAsDialog.FileName,
+                        File.WriteAllText(UserSettings.Interface.ExportDialog.FileName,
                             Data.Report.ToString(), Encoding.UTF8);
                         break;
                 }
