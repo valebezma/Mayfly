@@ -71,7 +71,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return this.IsNameNull() ? Constants.Null : Mayfly.Service.GetLocalizedValue(this.Name);
+                    return this.IsNameNull() ? Constants.Null : this.Name.GetLocalizedValue();
                 }
             }
 
@@ -79,7 +79,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return IsTypeNull() ? Constants.Null : Mayfly.Service.GetLocalizedValue(TypeRow.Display);
+                    return IsTypeNull() ? Constants.Null : TypeRow.Display.GetLocalizedValue();
                 }
             }
 

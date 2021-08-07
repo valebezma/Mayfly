@@ -109,9 +109,9 @@ namespace Mayfly.Software
 
                         if (label != null) Service.UpdateStatus(label, Resources.Interface.UpdateDownloadLoc, feature, ci.Name);
 
-                        if (!Directory.Exists(Path.Combine(FileSystem.TempFolder, ci.Name)))
+                        if (!Directory.Exists(Path.Combine(IO.TempFolder, ci.Name)))
                         {
-                            Directory.CreateDirectory(Path.Combine(FileSystem.TempFolder, ci.Name));
+                            Directory.CreateDirectory(Path.Combine(IO.TempFolder, ci.Name));
                         }
                         tempFileName = Service.DownloadFile(loc);
                     }
@@ -133,7 +133,7 @@ namespace Mayfly.Software
             {
                 FileInfo fi = new FileInfo(tempFile);
                 if (label != null) Service.UpdateStatus(label, Resources.Interface.UpdateInstalling, fi.Name);
-                FileSystem.UnpackFiles(tempFile, updates.ProductFolder);
+                IO.UnpackFiles(tempFile, updates.ProductFolder);
 
                 if (Service.GetAvailableCultures().
                     Contains(CultureInfo.CurrentCulture))
@@ -142,7 +142,7 @@ namespace Mayfly.Software
                     fi = new FileInfo(tempFile.Insert(tempFile.LastIndexOf('\\'), '\\' + ci.Name));
                     if (fi.Exists)
                     {
-                        FileSystem.UnpackFiles(fi.FullName, updates.ProductFolder);
+                        IO.UnpackFiles(fi.FullName, updates.ProductFolder);
                     }
                 }
 
@@ -153,7 +153,7 @@ namespace Mayfly.Software
                 }
             }
 
-            FileSystem.ClearTemp();
+            IO.ClearTemp();
         }
     }
 }

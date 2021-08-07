@@ -601,7 +601,7 @@ namespace Mayfly.Controls
             {
                     try
                     {
-                        e.Value = Mayfly.Extensions.Extensions.ToSmallValueString((double)e.Value, e.CellStyle.Format);
+                        e.Value = ((double)e.Value).ToSmallValueString(e.CellStyle.Format);
                         e.FormattingApplied = true;
                     }
                     catch
@@ -684,8 +684,8 @@ namespace Mayfly.Controls
                 hit.Type == DataGridViewHitTestType.Cell &&
                 this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
             {
-                string[] filenames = FileSystem.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
-                    FileSystem.InterfaceLocation.OpenExtensions);
+                string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
+                    IO.InterfaceLocation.OpenExtensions);
 
                 if (filenames.Length > 0)
                 {
@@ -2976,9 +2976,9 @@ namespace Mayfly.Controls
 
         public void ItemSave_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceSheets.ExportDialog.ShowDialog(this.FindForm()) == DialogResult.OK)
+            if (IO.InterfaceSheets.ExportDialog.ShowDialog(this.FindForm()) == DialogResult.OK)
             {
-                this.SaveToFile(FileSystem.InterfaceSheets.ExportDialog.FileName);
+                this.SaveToFile(IO.InterfaceSheets.ExportDialog.FileName);
             }
         }
 

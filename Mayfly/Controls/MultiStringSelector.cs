@@ -97,7 +97,7 @@ namespace Mayfly.Controls
 
         public MultiStringSelector() : base()
         {
-            this.Separator = Constants.StdSeparator;
+            this.Separator = Constants.ElementSeparator;
 
             listLoader = new BackgroundWorker();
             listLoader.WorkerSupportsCancellation = true;

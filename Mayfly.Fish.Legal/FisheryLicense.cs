@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Legal
         {
             set
             {
-                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 fileName = value;
             }
 
@@ -496,7 +496,7 @@ namespace Mayfly.Fish.Legal
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                if (FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                if (IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
                     Fish.UserSettings.Interface.Extension).Length > 0)
                 {
                     e.Effect = DragDropEffects.Copy;
@@ -509,7 +509,7 @@ namespace Mayfly.Fish.Legal
             SaveValues();
 
             WizardNotes addNotes = new WizardNotes(LicenseRow);
-            addNotes.LoadCards(FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop), Fish.UserSettings.Interface.Extension));
+            addNotes.LoadCards(IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop), Fish.UserSettings.Interface.Extension));
             addNotes.FormClosed += addNotes_FormClosed;
             addNotes.Show(this);
         }

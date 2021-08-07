@@ -43,16 +43,16 @@ namespace Mayfly.Wild
             {
                 case "Wealth":
                 case "Quantity":
-                    result = Mayfly.Service.Mask(0);
+                    result = "N0";
                     break;
                 case "Abundance":
-                    result = Mayfly.Service.Mask(1);
+                    result = "N1";
                     break;
                 case "DiversityA":
                 case "DiversityB":
                 case "Biomass":
                 case "Mass":
-                    result = Mayfly.Service.Mask(3);
+                    result = "N3";
                     break;
             }
 
@@ -419,7 +419,7 @@ namespace Mayfly.Wild
 
         public static string GetReferencePath(string path, string key, OpenFileDialog openDialog, string defaultName, Uri uri)
         {
-            string filepath = FileSystem.GetPath(UserSetting.GetValue(path, key));
+            string filepath = IO.GetPath(UserSetting.GetValue(path, key));
             if (filepath != null) return filepath;
 
             DialogReference dr = new DialogReference(openDialog, defaultName, uri);

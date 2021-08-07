@@ -23,7 +23,7 @@ namespace Mayfly.Software
         {
             get
             {
-                return Path.Combine(FileSystem.ProgramFolder, Product);
+                return Path.Combine(IO.ProgramFolder, Product);
             }
         }
 
@@ -73,7 +73,7 @@ namespace Mayfly.Software
                 {
                     Install.UnregisterApp(filename);
                     Install.RemoveShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), filename);
-                    Service.AppendStatus(textBoxStatus, Resources.Interface.RemoveShortcuts, fileRow.IsFriendlyNameNull() ? fileRow.File : Mayfly.Service.GetLocalizedValue(fileRow.FriendlyName));
+                    Service.AppendStatus(textBoxStatus, Resources.Interface.RemoveShortcuts, fileRow.IsFriendlyNameNull() ? fileRow.File : Text.GetLocalizedValue(fileRow.FriendlyName));
                 }
 
 
@@ -122,7 +122,7 @@ namespace Mayfly.Software
             // Clearing temp folder
             try
             {
-                FileSystem.ClearTemp();
+                IO.ClearTemp();
                 Service.AppendStatus(textBoxStatus, Resources.Interface.UninstallTemp);
             }
             catch { }

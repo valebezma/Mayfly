@@ -155,7 +155,7 @@ namespace Mayfly.Fish.Explorer
                 this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
-                    data.Card.Count, FileSystem.GetCommonPath(FullStack.GetFilenames()));
+                    data.Card.Count, IO.GetCommonPath(FullStack.GetFilenames()));
 
                 spreadSheetCard.ClearInsertedColumns();
 

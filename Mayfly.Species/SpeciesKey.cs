@@ -16,7 +16,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? Name : Mayfly.Service.GetLocalizedValue(Local);
+                    return IsLocalNull() ? Name : Local.GetLocalizedValue();
                 }
             }
 
@@ -152,7 +152,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? Name : Mayfly.Service.GetLocalizedValue(Local);
+                    return IsLocalNull() ? Name : Local.GetLocalizedValue();
                 }
             }
 
@@ -465,7 +465,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? string.Empty : Mayfly.Service.GetLocalizedValue(Local);
+                    return IsLocalNull() ? string.Empty : Local.GetLocalizedValue();
                 }
             }
 
@@ -675,7 +675,7 @@ namespace Mayfly.Species
         {
             get
             {
-                Report report = new Report(FileSystem.GetFriendlyFiletypeName(UserSettings.Interface.Extension), "key.css");
+                Report report = new Report(IO.GetFriendlyFiletypeName(UserSettings.Interface.Extension), "key.css");
 
                 if (Species.Count > 0)
                 {

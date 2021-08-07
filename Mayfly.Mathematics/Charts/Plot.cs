@@ -2624,11 +2624,11 @@ namespace Mayfly.Mathematics.Charts
 
         private void contextChartImage_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfacePictures.SaveDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfacePictures.SaveDialog.ShowDialog() == DialogResult.OK)
             {
                 ChartImageFormat format = ChartImageFormat.Png;
 
-                switch (Path.GetExtension(FileSystem.InterfacePictures.SaveDialog.FileName))
+                switch (Path.GetExtension(IO.InterfacePictures.SaveDialog.FileName))
                 {
                     case ".png":
                         format = ChartImageFormat.Png;
@@ -2638,7 +2638,7 @@ namespace Mayfly.Mathematics.Charts
                         break;
                 }
 
-                SaveImage(new StreamWriter(FileSystem.InterfacePictures.SaveDialog.FileName).BaseStream, format);
+                SaveImage(new StreamWriter(IO.InterfacePictures.SaveDialog.FileName).BaseStream, format);
             }
         }
 

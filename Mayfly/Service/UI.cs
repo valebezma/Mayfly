@@ -186,6 +186,32 @@ namespace Mayfly
         {
             //SetControlsAvailability(Licensing.Verify(feature), controls);
         }
+
+        private static void DrawDropBox(Control control, Rectangle rectangle, string message)
+        {
+            Graphics DropBox = control.CreateGraphics();
+
+            Color Back = Color.FromArgb(220, Color.White);
+            DropBox.FillRectangle(new SolidBrush(Back), rectangle);
+
+            using (Pen Border = new Pen(Color.Gray, 2))
+            {
+                Border.DashStyle = DashStyle.Dash;
+                Border.Alignment = PenAlignment.Inset;
+                DropBox.DrawRectangle(Border, rectangle);
+            }
+
+            StringFormat SF = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+            DropBox.DrawString(message,
+                SystemInformation.MenuFont,
+                Brushes.Gray,
+                rectangle,
+                SF);
+        }
     }
 }
         

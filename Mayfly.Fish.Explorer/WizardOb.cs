@@ -16,9 +16,9 @@ namespace Mayfly.Fish.Explorer
     {
         internal MainForm Explorer { get; set; }
 
-        string storage { get { return Path.Combine(FileSystem.UserFolder, "surveys"); } }
+        string storage { get { return Path.Combine(IO.UserFolder, "surveys"); } }
 
-        string archive { get { return Path.Combine(FileSystem.UserFolder, "surveyarchive"); } }
+        string archive { get { return Path.Combine(IO.UserFolder, "surveyarchive"); } }
 
         string filename { get; set; }
 

@@ -273,7 +273,7 @@ namespace Mayfly.Fish.Explorer
             }
             else if (checkBoxPUE.Checked)
             {
-                spreadSheetComposition.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
+                spreadSheetComposition.DefaultCellStyle.Format = "N3";
             }
             else
             {
@@ -284,7 +284,7 @@ namespace Mayfly.Fish.Explorer
                         break;
 
                     case 1:
-                        spreadSheetComposition.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
+                        spreadSheetComposition.DefaultCellStyle.Format = "N3";
                         break;
                 }
             }

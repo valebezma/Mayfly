@@ -535,7 +535,7 @@ namespace Mayfly.Fish.Explorer
                 else foreach (Data.CardRow cardRow in data.Card)
                 {
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = FileSystem.SuggestName(fbdBackup.SelectedPath, _data.GetSuggestedName());
+                    string filename = IO.SuggestName(fbdBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                 }
             }
@@ -939,7 +939,7 @@ namespace Mayfly.Fish.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetArtefactCard.SelectedRows)
             {
                 Data.CardRow cardRow = (Data.CardRow)gridRow.Cells[columnArtCardName.Index].Value;
-                FileSystem.RunFile(cardRow.Path);
+                IO.RunFile(cardRow.Path);
             }
         }
 
@@ -1293,7 +1293,7 @@ namespace Mayfly.Fish.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
             {
                 Data.CardRow cardRow = CardRow(gridRow);
-                FileSystem.RunFile(cardRow.Path);
+                IO.RunFile(cardRow.Path);
             }
         }
 
@@ -1307,7 +1307,7 @@ namespace Mayfly.Fish.Explorer
                 if (!filenames.Contains("\"" + cardRow.Path + "\"")) filenames.Add("\"" + cardRow.Path + "\"");
             }
 
-            FileSystem.RunFile(Application.ExecutablePath, filenames.ToArray());
+            IO.RunFile(Application.ExecutablePath, filenames.ToArray());
             //MainForm newMain = new MainForm(filenames.ToArray());
             //newMain.Show();
         }
@@ -1326,7 +1326,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             foreach (string dir in directories) {
-                FileSystem.RunFile(dir);
+                IO.RunFile(dir);
             }
         }
 
@@ -1544,7 +1544,7 @@ namespace Mayfly.Fish.Explorer
                 case ChartElementType.DataPoint:
                     if (htResult.Series.Points[htResult.PointIndex].Tag is Data.CardRow cardRow)
                     {
-                        FileSystem.RunFile(cardRow.Path);
+                        IO.RunFile(cardRow.Path);
                         //string cardName = Data.GetStack().GetInfoRow(cardRow).FileName;
                         //Fish.Service.RunCard(cardName);
                         //spreadSheetCard.EnsureFilter(columnCardID, cardRow.ID, loaderCard, menuItemLoadCards_Click);
@@ -3090,7 +3090,7 @@ namespace Mayfly.Fish.Explorer
             
             foreach (Data.LogRow logRow in selectedLogRows)
             {
-                Mayfly.FileSystem.RunFile(logRow.CardRow.Path,
+                Mayfly.IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.SpeciesRow.Species });
 
                 // TODO: select row in a log
@@ -3112,7 +3112,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (string dir in directories)
             {
-                FileSystem.RunFile(dir);
+                IO.RunFile(dir);
             }
         }
 
@@ -3262,7 +3262,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (Data.LogRow logRow in selectedLogRows)
             {
-                Mayfly.FileSystem.RunFile(logRow.CardRow.Path,
+                Mayfly.IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.SpeciesRow.Species });
             }
         }

@@ -319,7 +319,7 @@ namespace Mayfly.ManualLicenser
                 foreach (Data.CardRow cardRow in bio.Card)
                 {
                     Data data = cardRow.SingleCardDataset();
-                    string filename = FileSystem.SuggestName(destination, data.GetSuggestedName(ext));
+                    string filename = IO.SuggestName(destination, data.GetSuggestedName(ext));
                     data.WriteToFile(Path.Combine(destination, filename));
 
                     Console.Write("\r\nCard {0} is written", filename);

@@ -335,6 +335,16 @@ namespace Mayfly
                 AddCell(value.ToSmallValueString(format), ReportCellClass.Right);
             }
 
+            public void AddCellRight(double value, int decimals)
+            {
+                AddCell(value.ToSmallValueString(decimals.GetFormat()), ReportCellClass.Right);
+            }
+
+            public void AddCellRight(double value, int decimals, bool bold)
+            {
+                AddCellRight(value.ToSmallValueString(decimals.GetFormat()), bold);
+            }
+
             public void AddCellRight(decimal value, string format)
             {
                 AddCellRight((double)value, format);

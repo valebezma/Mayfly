@@ -318,9 +318,9 @@ namespace Mayfly.Fish.Explorer
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = FileSystem.SuggestName(
+            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
                 Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
-                FileSystem.GetFriendlyCommonName(Allowed.GetFilenames())
+                IO.GetFriendlyCommonName(Allowed.GetFilenames())
                 );
 
             if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)

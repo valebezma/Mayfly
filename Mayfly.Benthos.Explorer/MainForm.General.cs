@@ -143,7 +143,7 @@ namespace Mayfly.Benthos.Explorer
                 this.ResetText(FullStack.FriendlyName, DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
-                    data.Card.Count, FileSystem.GetCommonPath(FullStack.GetFilenames()));
+                    data.Card.Count, IO.GetCommonPath(FullStack.GetFilenames()));
 
                 spreadSheetCard.ClearInsertedColumns();
 
@@ -479,28 +479,12 @@ namespace Mayfly.Benthos.Explorer
                 columnCardDepth.Visible = false;
 
             columnCardSquare.HeaderText = Resources.Interface.DietSquare;
-            columnCardSquare.DefaultCellStyle.Format = Mayfly.Service.Mask(0);
-
             columnCardAbundance.HeaderText = Resources.Interface.DietAbundance;
-
-            string dietFormat = "N2";
-
             columnCardBiomass.HeaderText = Resources.Interface.DietBiomass;
-            columnCardBiomass.DefaultCellStyle.Format = dietFormat;
-
             columnSpcAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnSpcAbundance.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
-
             columnSpcBiomass.HeaderText = Resources.Interface.DietTxBiomass;
-            columnSpcBiomass.DefaultCellStyle.Format = dietFormat;
-
             columnLogAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnLogAbundance.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
-
             columnLogBiomass.HeaderText = Resources.Interface.DietTxBiomass;
-            columnLogBiomass.DefaultCellStyle.Format = dietFormat;
-
-            //menuItemLoadCards_Click(this, new EventArgs());
         }
     }
 }

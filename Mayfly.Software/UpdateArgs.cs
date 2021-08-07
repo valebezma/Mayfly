@@ -16,7 +16,7 @@ namespace Mayfly.Software
     {
         public string Product { get; private set; }
 
-        public string ProductFolder { get { return Path.Combine(FileSystem.ProgramFolder, Product); } }
+        public string ProductFolder { get { return Path.Combine(IO.ProgramFolder, Product); } }
 
         public bool IsUpdateAvailable
         {

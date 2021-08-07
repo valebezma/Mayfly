@@ -36,7 +36,7 @@ namespace Mayfly.Species
             foreach (SpeciesKey.RepRow repRow in reps)
             {
                 labelTaxa.Text += repRow.TaxaRow.FullName+
-                    (reps.Length > 6 ? Constants.StdSeparator : Constants.Break);
+                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
             }
 
             labelDescription.Text = speciesRow.IsDescriptionNull() ?
@@ -47,7 +47,7 @@ namespace Mayfly.Species
             foreach (SpeciesKey.SpeciesRow syn in syns)
             {
                 labelSynonyms.Text += syn.FullName+
-                    (reps.Length > 6 ? Constants.StdSeparator : Constants.Break);
+                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
             }
         }
 

@@ -22,7 +22,7 @@ namespace Mayfly.Species
         {
             set
             {
-                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 fileName = value;
             }
 

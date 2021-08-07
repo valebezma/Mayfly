@@ -32,7 +32,7 @@ namespace Mayfly.Geographics
         /// </summary>
         public double Radians 
         {
-            get { return Mayfly.Service.ConvertDegreesToRadians(Degrees); }
+            get { return Mayfly.Service.DegreesToRadians(Degrees); }
         }
 
         /// <summary>

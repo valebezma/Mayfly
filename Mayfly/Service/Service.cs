@@ -19,8 +19,6 @@ namespace Mayfly
 {
     public abstract class Service
     {
-        #region
-
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
@@ -49,13 +47,6 @@ namespace Mayfly
                     SendKeys.SendWait(inputString);
                 }
             }
-        }
-
-        public static string GetSeparator(CultureInfo ci)
-        {
-            if (ci.NumberFormat.NumberDecimalSeparator == ",")
-                return "; ";
-            else return ", ";
         }
 
         public static string GetValue(string path, uint index)
@@ -103,37 +94,6 @@ namespace Mayfly
             player.Play();
         }
 
-        public static string Mask(int decimals)
-        {
-            return "N" + decimals.ToString();
-        }
-
-        private static void DrawDropBox(Control control, Rectangle rectangle, string message)
-        {
-            Graphics DropBox = control.CreateGraphics();
-
-            Color Back = Color.FromArgb(220, Color.White);
-            DropBox.FillRectangle(new SolidBrush(Back), rectangle);
-
-            using (Pen Border = new Pen(Color.Gray, 2))
-            {
-                Border.DashStyle = DashStyle.Dash;
-                Border.Alignment = PenAlignment.Inset;
-                DropBox.DrawRectangle(Border, rectangle);
-            }
-
-            StringFormat SF = new StringFormat
-            {
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center
-            };
-            DropBox.DrawString(message,
-                SystemInformation.MenuFont,
-                Brushes.Gray,
-                rectangle,
-                SF);
-        }
-
         public static bool Available(Type type)
         {
             try
@@ -153,67 +113,6 @@ namespace Mayfly
             {
                 return false;
             }
-        }
-
-        #endregion
-
-        #region Conversion
-
-        /// <summary>
-        /// Converts Degrees to Radians
-        /// </summary>
-        /// <param name="degrees">Degrees</param>
-        /// <returns></returns>
-        public static double ConvertDegreesToRadians(float degrees)
-        {
-            return ConvertDegreesToRadians((double)degrees);
-        }
-
-        public static double ConvertDegreesToRadians(double degrees)
-        {
-            return ((Math.PI / (double)180) * degrees);
-        }
-
-        public static TimeSpan SpanFromHours(double hours)
-        {
-            return new TimeSpan((int)hours, (int) ((hours - (int)hours) * 60), 0);
-        }
-
-        public static string SanitizePath(string path, char replaceChar)
-        {
-            string dir = Path.GetDirectoryName(path);
-            foreach (char c in Path.GetInvalidPathChars())
-                dir = dir.Replace(c, replaceChar);
-
-            string name = Path.GetFileName(path);
-            foreach (char c in Path.GetInvalidFileNameChars())
-                name = name.Replace(c, replaceChar);
-
-            return dir + name;
-        }
-
-        public static string StripHTML(string input)
-        {
-            return Regex.Replace(input, "<.*?>", String.Empty);
-        }
-
-        public static string StripNumbers(string input)
-        {
-            return Regex.Replace(input, @"[\d-]", string.Empty);
-        }
-
-        #endregion
-
-
-
-        public static void Delay(int ms, EventHandler f)
-        {
-            var tmp = new System.Windows.Forms.Timer { Interval = ms };
-            tmp.Tick += new EventHandler((o, e) => { 
-                tmp.Enabled = false;
-                f.Invoke(o, e); 
-            });
-            tmp.Enabled = true;
         }
 
 
@@ -252,48 +151,15 @@ namespace Mayfly
             return bmp.GetPixel(0, 0);
         }
 
-
-
-        public static string GetPlaceableLink(string link, string text)
+        public static double DegreesToRadians(float degrees)
         {
-            return string.Format(@"<a target='_blank\' href='{0}'>{1}</a>", link, text);
+            return DegreesToRadians((double)degrees);
         }
 
-        public static string GetLocalizedValue(string value)
+        public static double DegreesToRadians(double degrees)
         {
-            return GetLocalizedValue(value, CultureInfo.CurrentCulture);
+            return ((Math.PI / (double)180) * degrees);
         }
-
-        public static string GetLocalizedValue(string value, CultureInfo ci)
-        {
-            string result = string.Empty;
-
-            CultureInfo currentci = CultureInfo.InvariantCulture;
-
-            foreach (string line in value.Split(new[] { "\r\n", "\r", "\n" },
-                StringSplitOptions.RemoveEmptyEntries))
-            {
-                string line1 = line;
-                if (line.Length > 3 && line[2] == ':')
-                {
-                    try
-                    {
-                        currentci = new CultureInfo(line.Substring(0, 2));
-                        line1 = line.Substring(3).Trim();
-                    }
-                    catch { }
-                }
-
-                if (currentci.Equals(ci))
-                    result += line1;
-            }
-
-            if (string.IsNullOrWhiteSpace(result) && !ci.Equals(CultureInfo.InvariantCulture)) return GetLocalizedValue(value, CultureInfo.InvariantCulture);
-            else return result;
-        }
-
-
-        #region Auto intervals and formats
 
         public static double GetAutoInterval(double range)
         {
@@ -402,26 +268,6 @@ namespace Mayfly
             return result;
         }
 
-        #endregion
-
-
-        public static string GetFriendlyBytes(long size)
-        {
-            if (size < 750) // Less than 750 bytes
-            {
-                return string.Format(Resources.FriendlyUnits.b, size);
-            }
-            else if (size < 768000)
-            {
-                return string.Format(Resources.FriendlyUnits.bKilo, (double)size / 1024);
-            }
-            else
-            {
-                return string.Format(Resources.FriendlyUnits.bMega, (double)size / 1024);
-            }
-        }
-
-
         public static void ResetUICulture()
         {
             CultureInfo ci = UserSettings.Language;
@@ -433,13 +279,39 @@ namespace Mayfly
                 CultureInfo.DefaultThreadCurrentUICulture = ci;
         }
 
-
         public static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             Log.Write(e.Exception);
             Error error = new Error(e.Exception);
             error.ShowDialog();
         }
+
+
+        //public static string GetFriendlyBytes(long size)
+        //{
+        //    if (size < 750) // Less than 750 bytes
+        //    {
+        //        return string.Format(Resources.FriendlyUnits.b, size);
+        //    }
+        //    else if (size < 768000)
+        //    {
+        //        return string.Format(Resources.FriendlyUnits.bKilo, (double)size / 1024);
+        //    }
+        //    else
+        //    {
+        //        return string.Format(Resources.FriendlyUnits.bMega, (double)size / 1024);
+        //    }
+        //}
+
+        //public static void Delay(int ms, EventHandler f)
+        //{
+        //    var tmp = new System.Windows.Forms.Timer { Interval = ms };
+        //    tmp.Tick += new EventHandler((o, e) => { 
+        //        tmp.Enabled = false;
+        //        f.Invoke(o, e); 
+        //    });
+        //    tmp.Enabled = true;
+        //}
     }
 }
         

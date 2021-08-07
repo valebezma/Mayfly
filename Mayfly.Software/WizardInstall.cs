@@ -23,7 +23,7 @@ namespace Mayfly.Software
         {
             get
             {
-                return Path.Combine(FileSystem.ProgramFolder, SelectedProduct.Name);
+                return Path.Combine(IO.ProgramFolder, SelectedProduct.Name);
             }
         }
 
@@ -61,15 +61,15 @@ namespace Mayfly.Software
                     {
                         string startMenu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Mayfly", SelectedProduct.Name);
                         if (!Directory.Exists(startMenu)) Directory.CreateDirectory(startMenu);
-                        Install.AddShortcut(startMenu + "\\" + Mayfly.Service.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
-                            Path.Combine(InstallPath, fileRow.File), Mayfly.Service.GetLocalizedValue(fileRow.ShortcutTip, lang));
+                        Install.AddShortcut(startMenu + "\\" + Text.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
+                            Path.Combine(InstallPath, fileRow.File), Text.GetLocalizedValue(fileRow.ShortcutTip, lang));
                     }
 
                     if (desktop)
                     {
                         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                        Install.AddShortcut(desktopPath + "\\" + Mayfly.Service.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
-                            Path.Combine(InstallPath, fileRow.File), Mayfly.Service.GetLocalizedValue(fileRow.ShortcutTip, lang));
+                        Install.AddShortcut(desktopPath + "\\" + Text.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
+                            Path.Combine(InstallPath, fileRow.File), Text.GetLocalizedValue(fileRow.ShortcutTip, lang));
                     }
                 }
             }
@@ -84,7 +84,7 @@ namespace Mayfly.Software
                     {
                         //if (Path.GetExtension(fileRow.File) != ".exe") continue;
 
-                        Service.UpdateStatus(labelStatus, Resources.Interface.RegFileType, Mayfly.Service.GetLocalizedValue(filetypeRow.FriendlyName, lang));
+                        Service.UpdateStatus(labelStatus, Resources.Interface.RegFileType, Text.GetLocalizedValue(filetypeRow.FriendlyName, lang));
 
                         // If FileType is already set with other binary - ask for reassociation
 
@@ -99,7 +99,7 @@ namespace Mayfly.Software
                         if (string.Equals(application, Path.Combine(InstallPath, fileRow.File))) continue;
 
                         taskDialogReassoc.Content = string.Format(
-                            new ResourceManager(this.GetType()).GetString("taskDialogReassoc.Content"), Mayfly.Service.GetLocalizedValue(filetypeRow.FriendlyName, lang), filetypeRow.Extension);
+                            new ResourceManager(this.GetType()).GetString("taskDialogReassoc.Content"), Text.GetLocalizedValue(filetypeRow.FriendlyName, lang), filetypeRow.Extension);
                         taskDialogReassoc.ExpandedInformation = string.Format(
                             new ResourceManager(this.GetType()).GetString("taskDialogReassoc.ExpandedInformation"), application);
                         
@@ -107,7 +107,7 @@ namespace Mayfly.Software
 
                         Associate:
 
-                        Install.RegisterFileType(filetypeRow.Extension, filetypeRow.ProgID, Mayfly.Service.GetLocalizedValue(filetypeRow.FriendlyName, lang),
+                        Install.RegisterFileType(filetypeRow.Extension, filetypeRow.ProgID, Text.GetLocalizedValue(filetypeRow.FriendlyName, lang),
                             Path.Combine(InstallPath, fileRow.File) + "," + filetypeRow.IconIndex);
 
                         Install.RegisterVerb(filetypeRow.ProgID, "open", Resources.Interface.VerbOpen,
@@ -115,7 +115,7 @@ namespace Mayfly.Software
 
                         foreach (Scheme.AddVerbRow addVerbRow in filetypeRow.GetAddVerbRows())
                         {
-                            Install.RegisterVerb(filetypeRow.ProgID, addVerbRow.Verb, Mayfly.Service.GetLocalizedValue(addVerbRow.FriendlyName, lang),
+                            Install.RegisterVerb(filetypeRow.ProgID, addVerbRow.Verb, Text.GetLocalizedValue(addVerbRow.FriendlyName, lang),
                                 string.Format("{0}\\{1} \"%1\" \"-{2}\"", InstallPath, fileRow.File, addVerbRow.Verb), true);
                         }
                     }
@@ -295,12 +295,12 @@ namespace Mayfly.Software
 
                     try
                     {
-                        if (!Directory.Exists(Path.Combine(FileSystem.TempFolder, lang.Name)))
+                        if (!Directory.Exists(Path.Combine(IO.TempFolder, lang.Name)))
                         {
-                            Directory.CreateDirectory(Path.Combine(FileSystem.TempFolder, lang.Name));
+                            Directory.CreateDirectory(Path.Combine(IO.TempFolder, lang.Name));
                         }
                         
-                        Service.DownloadFile(loc, Path.Combine(FileSystem.TempFolder, lang.TwoLetterISOLanguageName, Path.GetFileName(uri.LocalPath)));
+                        Service.DownloadFile(loc, Path.Combine(IO.TempFolder, lang.TwoLetterISOLanguageName, Path.GetFileName(uri.LocalPath)));
                     }
                     catch (WebException) { }
                 }
@@ -317,12 +317,12 @@ namespace Mayfly.Software
             {
                 FileInfo fi = new FileInfo(tempFile);
                 Service.UpdateStatus(labelStatus, Resources.Interface.Installing, fi.Name);
-                FileSystem.UnpackFiles(tempFile, InstallPath);
+                IO.UnpackFiles(tempFile, InstallPath);
 
                 if (lang != CultureInfo.InvariantCulture)
                 {
                     fi = new FileInfo(tempFile.Insert(tempFile.LastIndexOf('\\'), '\\' + lang.Name));
-                    FileSystem.UnpackFiles(fi.FullName, InstallPath);
+                    IO.UnpackFiles(fi.FullName, InstallPath);
                 }
 
                 progress++; 
@@ -363,7 +363,7 @@ namespace Mayfly.Software
                     new UserSetting(UserSettingPaths.UpdatePolicy, (int)UpdatePolicy.CheckAndNotice)
                 });
 
-            FileSystem.ClearTemp();
+            IO.ClearTemp();
         }
     }
 

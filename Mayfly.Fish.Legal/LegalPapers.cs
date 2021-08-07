@@ -236,7 +236,7 @@ namespace Mayfly.Fish.Legal
                         switch ((LegalNoteType)secondNote.Content)
                         {
                             case LegalNoteType.Release:
-                                result.AddReferenceNotes("ВБР выпущены в водоемы в количестве", q.ToString(), "шт. (или", w.ToString(Mayfly.Service.Mask(1)), "кг)");
+                                result.AddReferenceNotes("ВБР выпущены в водоемы в количестве", q.ToString(), "шт. (или", w.ToString(Textual.Mask(1)), "кг)");
                                 result.AddReferenceNotes("(акт возвращения ВБР в среду обитания №", secondNote.No.ToString(), "от", secondNote.Date.ToShortDateString(), ")");
 
                                 result.AddReferenceNotes("ВБР уничтожены в количестве", string.Empty, "шт. (или", string.Empty, "кг)");
@@ -251,7 +251,7 @@ namespace Mayfly.Fish.Legal
                                 result.AddReferenceNotes("ВБР выпущены в водоемы в количестве", string.Empty, "шт. (или", string.Empty, "кг)");
                                 result.AddReferenceNotes("(акт возвращения ВБР в среду обитания №", string.Empty, "от", string.Empty, ")");
 
-                                result.AddReferenceNotes("ВБР уничтожены в количестве", q.ToString(), "шт. (или", w.ToString(Mayfly.Service.Mask(1)), "кг)");
+                                result.AddReferenceNotes("ВБР уничтожены в количестве", q.ToString(), "шт. (или", w.ToString(Textual.Mask(1)), "кг)");
                                 result.AddReferenceNotes("(акт уничтожения №", secondNote.No.ToString(), "от", secondNote.Date.ToShortDateString(), ")");
 
                                 result.AddReferenceNotes("ВБР отобраны для транспортировки в количестве", string.Empty, "шт. (или", string.Empty, "кг)");
@@ -265,7 +265,7 @@ namespace Mayfly.Fish.Legal
                                 result.AddReferenceNotes("ВБР уничтожены в количестве", string.Empty, "шт. (или", string.Empty, "кг)");
                                 result.AddReferenceNotes("(акт уничтожения №", string.Empty, "от", string.Empty, ")");
 
-                                result.AddReferenceNotes("ВБР отобраны для транспортировки в количестве", q.ToString(), "шт. (или", w.ToString(Mayfly.Service.Mask(1)), "кг)");
+                                result.AddReferenceNotes("ВБР отобраны для транспортировки в количестве", q.ToString(), "шт. (или", w.ToString(Textual.Mask(1)), "кг)");
                                 result.AddReferenceNotes("(акт отбора биологических образцов №", secondNote.No.ToString(), "от", secondNote.Date.ToShortDateString(), ")");
                                 break;
                         }

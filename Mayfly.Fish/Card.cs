@@ -30,7 +30,7 @@ namespace Mayfly.Fish
         {
             set
             {
-                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
                 fileName = value;
             }
@@ -1309,7 +1309,7 @@ namespace Mayfly.Fish
         //private void HandlePolygon(Polygon polygon)
         //{
         //    PreciseAreaMode = true;
-        //    textBoxExactArea.Text = (polygon.Area / 10000d).ToString(Mayfly.Service.Mask(4));
+        //    textBoxExactArea.Text = (polygon.Area / 10000d).ToString(Textual.Mask(4));
         //    SetEndpoint(polygon.Points.Last());
         //}
 
@@ -1521,7 +1521,7 @@ namespace Mayfly.Fish
             SaveData();
 
             UserSettings.Interface.ExportDialog.FileName =
-                FileSystem.SuggestName(FileSystem.FolderName(UserSettings.Interface.SaveDialog.FileName),
+                IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
                 Data.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
@@ -1588,9 +1588,9 @@ namespace Mayfly.Fish
 
         private void menuItemLocation_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                waypointControl1.SelectGPS(FileSystem.InterfaceLocation.OpenDialog.FileNames);
+                waypointControl1.SelectGPS(IO.InterfaceLocation.OpenDialog.FileNames);
             }
         }
 
@@ -1600,12 +1600,12 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemWatersRef_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Wild.UserSettings.WatersIndexPath);
+            IO.RunFile(Wild.UserSettings.WatersIndexPath);
         }
 
         private void ToolStripMenuItemSpeciesRef_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(UserSettings.SpeciesIndexPath);
+            IO.RunFile(UserSettings.SpeciesIndexPath);
         }
 
         private void ToolStripMenuItemSettings_Click(object sender, EventArgs e)
@@ -1724,7 +1724,7 @@ namespace Mayfly.Fish
             {
                 Polygon poly = (Polygon)e.LocationObject;
                 PreciseAreaMode = true;
-                textBoxExactArea.Text = (poly.Area / 10000d).ToString(Mayfly.Service.Mask(4));
+                textBoxExactArea.Text = (poly.Area / 10000d).ToString(4.GetFormat());
                 SetEndpoint(poly.Points.Last());
 
                 //HandlePolygon((Polygon)e.LocationObject);
@@ -1754,9 +1754,9 @@ namespace Mayfly.Fish
                     // Just insert exposure value
                     SetEndpoint(wpts.Last());
 
-                    textBoxExposure.Text = Track.TotalLength(tracks).ToString(Mayfly.Service.Mask(1));
+                    textBoxExposure.Text = Track.TotalLength(tracks).ToString("N1");
                     if (SelectedSampler.EffortFormula.Contains("T")) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
-                    if (SelectedSampler.EffortFormula.Contains("V")) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString(Mayfly.Service.Mask(3));
+                    if (SelectedSampler.EffortFormula.Contains("V")) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
                 }
                 else if (tdb == tdbAsPoly)
                 {
@@ -1770,7 +1770,7 @@ namespace Mayfly.Fish
                     }
 
                     PreciseAreaMode = true;
-                    textBoxExactArea.Text = (s / 10000d).ToString(Mayfly.Service.Mask(4));
+                    textBoxExactArea.Text = (s / 10000d).ToString(4.GetFormat());
                     SetEndpoint(wpts.Last());
 
                     //HandlePolygon(new Polygon(track));
@@ -1960,7 +1960,7 @@ namespace Mayfly.Fish
         private void pictureBoxWarnOpening_DoubleClick(object sender, EventArgs e)
         {
             textBoxOpening.Text = (Convert.ToDouble(textBoxLength.Text) *
-                Service.DefaultOpening(SelectedSampler.ID)).ToString(Mayfly.Service.Mask(0));
+                Service.DefaultOpening(SelectedSampler.ID)).ToString("N0");
         }
 
 
@@ -1979,7 +1979,7 @@ namespace Mayfly.Fish
 
         private void pictureBoxWarnExposure_DoubleClick(object sender, EventArgs e)
         {
-            textBoxExposure.Text = Math.Ceiling(2 * Convert.ToDouble(textBoxLength.Text) / Math.PI).ToString(Mayfly.Service.Mask(0));
+            textBoxExposure.Text = Math.Ceiling(2 * Convert.ToDouble(textBoxLength.Text) / Math.PI).ToString("N0");
         }
 
         #endregion

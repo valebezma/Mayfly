@@ -57,7 +57,7 @@ namespace Mayfly.Extensions
 
                     if (name.IsAcceptable())
                     {
-                        sample.Name = name + Constants.StdSeparator + group;
+                        sample.Name = name + Constants.ElementSeparator + group;
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace Mayfly.Extensions
                     {
                         result.AddRange(GetSamples(gridColumn, groupColumns,
                             groupColumns[groupColumns.IndexOf(groupColumn) + 1],
-                            rows, name + Constants.StdSeparator + group, includeSmall));
+                            rows, name + Constants.ElementSeparator + group, includeSmall));
                     }
                     else
                     {

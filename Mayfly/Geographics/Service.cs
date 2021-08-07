@@ -492,9 +492,9 @@ namespace Mayfly.Geographics
 
         public static void SaveWaypoints(Waypoint[] points)
         {
-            if (FileSystem.InterfaceLocation.SaveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (IO.InterfaceLocation.SaveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string filename = FileSystem.InterfaceLocation.SaveDialog.FileName;
+                string filename = IO.InterfaceLocation.SaveDialog.FileName;
 
                 throw new NotImplementedException();
             }

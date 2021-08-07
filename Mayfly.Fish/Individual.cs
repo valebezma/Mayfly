@@ -1623,7 +1623,7 @@ namespace Mayfly.Fish
         {
             spreadSheetTrophics.Enabled = false;
 
-            foreach (string fileName in FileSystem.MaskedNames(
+            foreach (string fileName in IO.MaskedNames(
                 (string[])e.Data.GetData(DataFormats.FileDrop), 
                 Wild.UserSettings.Interface.OpenExtensions))
             {

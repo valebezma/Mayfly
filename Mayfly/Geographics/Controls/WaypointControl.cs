@@ -213,8 +213,8 @@ namespace Mayfly.Geographics
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                if (FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
-                    FileSystem.InterfaceLocation.OpenExtensions).Length > 0)
+                if (IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                    IO.InterfaceLocation.OpenExtensions).Length > 0)
                 {
                     e.Effect = DragDropEffects.Copy;
                 }
@@ -225,8 +225,8 @@ namespace Mayfly.Geographics
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string[] fileNames = FileSystem.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
-                    FileSystem.InterfaceLocation.OpenExtensions);
+                string[] fileNames = IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                    IO.InterfaceLocation.OpenExtensions);
 
                 if (fileNames.Length > 0)
                 {
@@ -266,9 +266,9 @@ namespace Mayfly.Geographics
 
         private void contextItemOpen_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                SelectGPS(Mayfly.FileSystem.InterfaceLocation.OpenDialog.FileNames);
+                SelectGPS(Mayfly.IO.InterfaceLocation.OpenDialog.FileNames);
             }
         }
 

@@ -23,7 +23,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return FileSystem.GetCommonPath(this.GetFilenames());
+                return IO.GetCommonPath(this.GetFilenames());
             }
         }
 

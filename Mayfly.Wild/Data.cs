@@ -622,7 +622,7 @@ namespace Mayfly.Wild
                 set
                 {
                     path = value;
-                    tableCard.CommonPath = FileSystem.GetCommonPath(((Data)this.tableCard.DataSet).GetFilenames());
+                    tableCard.CommonPath = IO.GetCommonPath(((Data)this.tableCard.DataSet).GetFilenames());
                 }
             }
 

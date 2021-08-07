@@ -212,7 +212,7 @@ namespace Mayfly.Plankton.Explorer
                 foreach (Data.CardRow cardRow in data.Card)
                 {
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = FileSystem.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
+                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
             }
@@ -384,7 +384,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 SpeciesKey speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
-                Mayfly.FileSystem.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
+                Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
             }
         }
 
@@ -703,11 +703,11 @@ namespace Mayfly.Plankton.Explorer
 
                 if (DietExplorer && !cardRow.IsLabelNull())
                 {
-                    FileSystem.RunFile(cardRow.Path, new string[] { "diet", cardRow.Label });
+                    IO.RunFile(cardRow.Path, new string[] { "diet", cardRow.Label });
                 }
                 else
                 {
-                    FileSystem.RunFile(cardRow.Path);
+                    IO.RunFile(cardRow.Path);
                 }
             }
         }
@@ -924,7 +924,7 @@ namespace Mayfly.Plankton.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
                 Data.LogRow logRow = GetLogRow(gridRow);
-                Mayfly.FileSystem.RunFile(logRow.CardRow.Path, logRow.SpeciesRow.Species);
+                Mayfly.IO.RunFile(logRow.CardRow.Path, logRow.SpeciesRow.Species);
             }
         }
 
@@ -1131,7 +1131,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 Data.IndividualRow individualRow = GetIndividualRow(gridRow);
 
-                Mayfly.FileSystem.RunFile(individualRow.LogRow.CardRow.Path,
+                Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
                     individualRow.LogRow.SpeciesRow.Species);
 
                 // TODO: select row in a log

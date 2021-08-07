@@ -94,9 +94,9 @@ namespace Mayfly.Geographics
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (Track track in Service.GetTracks(FileSystem.InterfaceLocation.OpenDialog.FileNames))
+                foreach (Track track in Service.GetTracks(IO.InterfaceLocation.OpenDialog.FileNames))
                 {
                     PlaceTrack(track);
                 }

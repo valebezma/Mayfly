@@ -144,6 +144,8 @@
     <Compile Include="Controls\ProcessLook.Designer.cs">
       <DependentUpon>ProcessLook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\NumberExtensions.cs" />
     <Compile Include="Geographics\Controls\WaypointControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -311,7 +313,7 @@
     <Compile Include="Controls\ProcessDisplay.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Service\FileSystem.cs" />
+    <Compile Include="Service\IO.cs" />
     <Compile Include="Service\IconExtraction\IconExtractor.cs" />
     <Compile Include="Service\IconExtraction\IconUtil.cs" />
     <Compile Include="Service\IconExtraction\NativeMethods.cs" />

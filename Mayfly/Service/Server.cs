@@ -16,11 +16,6 @@ namespace Mayfly
         public static string ServerHttps = "http://" + Domain;
 
 
-        public static string GetEmail(string box)
-        {
-            return box + "@" + Domain;
-        }
-
         public static Uri GetUri(string server, string filename)
         {
             return new Uri(server + "/" + filename);
@@ -42,6 +37,7 @@ namespace Mayfly
             return loc;
         }
 
+
         public static bool FileExists(Uri uri)
         {
             bool result = true;
@@ -62,6 +58,10 @@ namespace Mayfly
         }
 
 
+        public static string GetEmail(string box)
+        {
+            return box + "@" + Domain;
+        }
 
         public static void SendEmail(string mailto, string subject, string body)
         {
@@ -76,26 +76,26 @@ namespace Mayfly
             {
                 cmd += string.Format("&attachment={0}", attachment);
             }
-            FileSystem.RunFile(cmd);
+            IO.RunFile(cmd);
 
         }
-
 
 
         public static void CheckUpdates(string product)
         {
-            FileSystem.RunFile(Path.Combine(FileSystem.ProgramFolder, "mayflysoftware.exe"), "-checkup", product);
+            IO.RunFile(Path.Combine(IO.ProgramFolder, "mayflysoftware.exe"), "-checkup", product);
         }
 
         public static void DoUpdates(string product)
         {
-            FileSystem.RunFile(Path.Combine(FileSystem.ProgramFolder, "mayflysoftware.exe"), "-update", product);
+            IO.RunFile(Path.Combine(IO.ProgramFolder, "mayflysoftware.exe"), "-update", product);
         }
 
         private static bool AcceptAllCertifications(object sender, X509Certificate certification, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
+
 
         public static string[] GetText(Uri uri)
         {
