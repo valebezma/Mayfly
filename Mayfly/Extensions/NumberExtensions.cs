@@ -36,6 +36,8 @@ namespace Mayfly.Extensions
 
         public static string ToLetter(this int index)
         {
+            //CultureInfo.CurrentCulture.TextInfo.ListSeparator
+
             const string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
             var value = "";

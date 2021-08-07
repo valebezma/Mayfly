@@ -49,7 +49,7 @@ namespace Mayfly
             Write(EventType.ApplicationStarted, string.Empty);
             Server.CheckUpdates(UserSettings.Product);
             Service.ResetUICulture();
-            Licensing.InspectLicenses();
+            Licensing.InspectLicensesExpiration();
         }
 
         public static void WriteAppEnded()

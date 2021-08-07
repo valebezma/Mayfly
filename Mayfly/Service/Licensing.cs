@@ -43,6 +43,7 @@ namespace Mayfly
                             RegistryKey regLic = reg.OpenSubKey(value);
                             string feature = value;
                             License lic = new License(StringCipher.Decrypt((string)regLic.GetValue("License"), feature));
+                            if (!lic.IsValid) continue;
                             installedLicenses.Add(lic);
                         }
                         catch { continue; }
@@ -53,7 +54,7 @@ namespace Mayfly
             }
         }
 
-        internal static void InspectLicenses()
+        internal static void InspectLicensesExpiration()
         {
             bool shouldUpdate = false;
 
