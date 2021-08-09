@@ -160,6 +160,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\preader.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Mayfly.Mathematics\Mayfly.Mathematics.csproj">
       <Project>{13a45b99-320d-40dc-81d0-38c42e9b6dca}</Project>
       <Name>Mayfly.Mathematics</Name>
@@ -180,9 +183,6 @@
       <Project>{ff568dde-2b92-44cf-ab69-5be2ec239c0e}</Project>
       <Name>Mayfly</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\preader.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

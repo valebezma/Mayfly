@@ -124,7 +124,7 @@ namespace Mayfly.Software
                 wizardPageGet.AllowNext = true;
                 wizardControlUpdate.NextPage();
 
-                FileSystem.ClearTemp();
+                IO.ClearTemp();
             }
             else
             {

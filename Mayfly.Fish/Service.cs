@@ -70,7 +70,7 @@ namespace Mayfly.Fish
 
         public static void SaveEquipment()
         {
-            UserSettings.Equipment.WriteXml(System.IO.Path.Combine(Mayfly.FileSystem.UserFolder, "equipment.ini"));
+            UserSettings.Equipment.WriteXml(System.IO.Path.Combine(Mayfly.IO.UserFolder, "equipment.ini"));
         }
     }
 }

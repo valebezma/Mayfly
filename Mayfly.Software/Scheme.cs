@@ -46,11 +46,11 @@ namespace Mayfly.Software
             {
                 List<string> result = new List<string>();
 
-                FileSystem.AppendPath(result, this.File);
+                IO.AppendPath(result, this.File);
 
                 foreach (SatelliteRow satRow in this.GetSatelliteRows())
                 {
-                    FileSystem.AppendPath(result, satRow.Path);
+                    IO.AppendPath(result, satRow.Path);
                 }
 
                 return result.ToArray();
@@ -60,7 +60,7 @@ namespace Mayfly.Software
             {
                 List<string> result = new List<string>();
 
-                FileSystem.AppendPath(result, Path.Combine(cultureInfo.Name, Path.GetFileNameWithoutExtension(File) + ".resources.dll"));
+                IO.AppendPath(result, Path.Combine(cultureInfo.Name, Path.GetFileNameWithoutExtension(File) + ".resources.dll"));
 
                 foreach (SatelliteRow satRow in this.GetSatelliteRows())
                 {
@@ -68,12 +68,12 @@ namespace Mayfly.Software
                     {
                         if (Path.GetExtension(satRow.Path) == ".exe")
                         {
-                            FileSystem.AppendPath(result, Path.Combine(cultureInfo.Name,
+                            IO.AppendPath(result, Path.Combine(cultureInfo.Name,
                                 Path.GetFileNameWithoutExtension(satRow.Path) + ".resources.dll"));
                         }
                         else
                         {
-                            FileSystem.AppendPath(result, Path.Combine(cultureInfo.Name,
+                            IO.AppendPath(result, Path.Combine(cultureInfo.Name,
                                 satRow.Path));
                         }
                     }
@@ -172,7 +172,7 @@ namespace Mayfly.Software
             public string GetChanges()
             {
                 if (this.IsChangesNull()) { return Resources.Update.ChangesNotDescribed + Environment.NewLine; }
-                else { return Mayfly.Service.GetLocalizedValue(this.Changes) + Environment.NewLine; }
+                else { return Text.GetLocalizedValue(this.Changes) + Environment.NewLine; }
             }
         }
 

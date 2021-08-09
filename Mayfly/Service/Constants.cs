@@ -15,7 +15,8 @@ namespace Mayfly
         { get { return "\n"; } }
 
         public static string Numbers
-        { get { return "1234567890-%"; } }
+        { get { return CultureInfo.CurrentCulture.NumberFormat.NativeDigits +
+                    CultureInfo.CurrentCulture.NumberFormat.NegativeSign + "%"; } }
 
         public static string Forbidden
         { get { return @"@#^&_+<>/:{}[]"; } }
@@ -26,8 +27,14 @@ namespace Mayfly
         public static string Null
         { get { return "—"; } }
 
-        public static string StdSeparator
-        { get { return Service.GetSeparator(CultureInfo.CurrentCulture); } }
+        public static string ElementSeparator
+        {
+            get
+            {
+                // CultureInfo.CurrentCulture.TextInfo.ListSeparator
+                return (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ",") ? "; " : ", ";
+            }
+        }
 
         public static string Check
         { get { return "✓"; } }

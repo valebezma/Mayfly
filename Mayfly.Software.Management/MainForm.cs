@@ -29,7 +29,7 @@ namespace Mayfly.Software.Management
             listViewFiles.Shine();
 
             openFile.InitialDirectory = Application.StartupPath;
-            openFile.Filter = FileSystem.FilterFromExt(".exe", ".dll");
+            openFile.Filter = IO.FilterFromExt(".exe", ".dll");
 
             columnExtIndex.ValueType = typeof(int);
 

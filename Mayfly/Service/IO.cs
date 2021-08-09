@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Mayfly
 {
-    public static class FileSystem
+    public static class IO
     {
         public static string FilterFromExt(string extension)
         {
@@ -120,7 +120,7 @@ namespace Mayfly
 
         public static string GetNewFileCaption(string extension)
         {
-            return string.Format(Resources.Interface.FileNew, FileSystem.GetFriendlyFiletypeName(extension).ToLower());
+            return string.Format(Resources.Interface.FileNew, IO.GetFriendlyFiletypeName(extension).ToLower());
         }
 
         
@@ -261,7 +261,7 @@ namespace Mayfly
 
         public static string GetFriendlyCommonName(IEnumerable<string> entries)
         {
-            string commonPath = FileSystem.GetCommonPath(entries);
+            string commonPath = IO.GetCommonPath(entries);
             if (string.IsNullOrWhiteSpace(commonPath)) return string.Empty;
             string directory = Path.GetDirectoryName(commonPath);
             return Path.GetFileName(directory);
@@ -451,7 +451,7 @@ namespace Mayfly
 
         public static string PackFiles(string[] files)
         {
-            string result = FileSystem.GetTempFileName(".zip");
+            string result = IO.GetTempFileName(".zip");
             PackFiles(files, result);
             return result;
         }
@@ -509,7 +509,7 @@ namespace Mayfly
 
         public static FileSystemInterface InterfaceReport = new FileSystemInterface(".html");
 
-        public static FileSystemInterface InterfaceSheets = new FileSystemInterface(null, ".csv", ".txt", ".prn", ".Rda");
+        public static FileSystemInterface InterfaceSheets = new FileSystemInterface(null, ".csv", ".xml", ".txt", ".prn", ".Rda");
     }
 
     public class FileSystemInterface
@@ -524,7 +524,7 @@ namespace Mayfly
 
         public SaveFileDialog SaveDialog { get; set; }
 
-        public SaveFileDialog SaveAsDialog { get; set; }
+        public SaveFileDialog ExportDialog { get; set; }
         
         //public string InitialDirectory { get; set; }
 
@@ -559,27 +559,27 @@ namespace Mayfly
         private void ResetDialogs()
         {
             OpenDialog = new OpenFileDialog();
-            OpenDialog.Filter = FileSystem.FilterFromExt(OpenExtensions);
+            OpenDialog.Filter = IO.FilterFromExt(OpenExtensions);
             OpenDialog.Title = OpenExtensions.Length == 1 ?
-                string.Format(Resources.Interface.FileOpen, FileSystem.GetFriendlyFiletypeName(Extension)) :
+                string.Format(Resources.Interface.FileOpen, IO.GetFriendlyFiletypeName(Extension)) :
                 Resources.Interface.FileOpenAny;
             OpenDialog.FilterIndex = OpenExtensions.Length == 1 ? 0 : 1;
             OpenDialog.FileOk += new CancelEventHandler(openDialog_FileOk);
             //OpenDialog.InitialDirectory = InitialDirectory;
 
             SaveDialog = new SaveFileDialog();
-            SaveDialog.Filter = FileSystem.FilterFromExt(Extension);
-            SaveDialog.Title = string.Format(Resources.Interface.FileSave, FileSystem.GetFriendlyFiletypeName(Extension));
+            SaveDialog.Filter = IO.FilterFromExt(Extension);
+            SaveDialog.Title = string.Format(Resources.Interface.FileSave, IO.GetFriendlyFiletypeName(Extension));
             SaveDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
             //SaveDialog.InitialDirectory = InitialDirectory;
 
             if (SaveExtensions.Length > 1)
             {
-                SaveAsDialog = new SaveFileDialog();
-                SaveAsDialog.Filter = FileSystem.FilterFromExt(false, SaveExtensions);
-                SaveAsDialog.Title = Resources.Interface.FileSaveAny;
-                SaveAsDialog.FilterIndex = 0;
-                SaveAsDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
+                ExportDialog = new SaveFileDialog();
+                ExportDialog.Filter = IO.FilterFromExt(false, SaveExtensions);
+                ExportDialog.Title = Resources.Interface.FileSaveAny;
+                ExportDialog.FilterIndex = 0;
+                ExportDialog.FileOk += new CancelEventHandler(saveDialog_FileOk);
                 //SaveAsDialog.InitialDirectory = InitialDirectory;
             }
         }
@@ -588,13 +588,13 @@ namespace Mayfly
 
         void openDialog_FileOk(object sender, CancelEventArgs e)
         {
-            OpenDialog.InitialDirectory = FileSystem.FolderName(((OpenFileDialog)sender).FileName);
+            OpenDialog.InitialDirectory = IO.FolderName(((OpenFileDialog)sender).FileName);
         }
 
         void saveDialog_FileOk(object sender, CancelEventArgs e)
         {
-            SaveDialog.InitialDirectory = FileSystem.FolderName(((SaveFileDialog)sender).FileName);
-            if (SaveAsDialog != null) SaveAsDialog.InitialDirectory = SaveDialog.InitialDirectory;
+            SaveDialog.InitialDirectory = IO.FolderName(((SaveFileDialog)sender).FileName);
+            if (ExportDialog != null) ExportDialog.InitialDirectory = SaveDialog.InitialDirectory;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Mayfly
             if (!string.IsNullOrWhiteSpace(this.Title))
             {
                 this.WriteLine("<h1>{0}</h1>", this.Title);
-                this.Title = Service.StripHTML(this.Title);
+                this.Title = this.Title.StripHTML();
             }
         }
 
@@ -296,6 +296,13 @@ namespace Mayfly
             WriteLine("        context{0}.drawImage(img{1}, 0, 0)", id, id);
             WriteLine("    };");
             WriteLine("</script>");
+        }
+
+
+
+        public void AddLink(string link, string text)
+        {
+            Write(@"<a target='_blank\' href='{0}'>{1}</a>", link, text);
         }
 
 

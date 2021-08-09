@@ -18,7 +18,7 @@ namespace Mayfly.Software
         public static void RemoveShortcut(string folderpath, string targetFile)
         {
             foreach (FileInfo link in new DirectoryInfo(folderpath).GetFiles("*.lnk")) {
-                if (FileSystem.ResolveShortcut(link.FullName) == targetFile) {
+                if (IO.ResolveShortcut(link.FullName) == targetFile) {
                     File.Delete(link.FullName);
                 }
             }

@@ -759,7 +759,7 @@ namespace Mayfly.Fish
 
         private void buttonOpenDiet_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(textBoxDiet.Text);
+            IO.RunFile(textBoxDiet.Text);
         }
 
         private void buttonBrowseParasites_Click(object sender, EventArgs e)
@@ -773,7 +773,7 @@ namespace Mayfly.Fish
 
         private void buttonOpenParasites_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(textBoxParasites.Text);
+            IO.RunFile(textBoxParasites.Text);
         }
 
         private void buttonGearsClear_Click(object sender, EventArgs e)

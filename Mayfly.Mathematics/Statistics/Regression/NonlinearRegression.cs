@@ -21,16 +21,7 @@ namespace Mayfly.Mathematics.Statistics
             : this(data)
         {
             type = _type;
-
-
-            //try
-            //{
-            //fit = data.NonlinearRegression(f, this.GetInitials());
-            //}
-            //catch
-            //{
-            fit = Data.GetMeasurements().FitToFunction(f, this.GetInitials());
-            //}
+            fit = data.NonlinearRegression(f, this.GetInitials());
         }
 
         public abstract double[] GetInitials();
@@ -116,29 +107,31 @@ namespace Mayfly.Mathematics.Statistics
 
         public override double[] GetInitials()
         {
-            // lmax is just max of L
-            double lmax = Data.Y.Maximum;
+            return new double[] { 1.0, -1.0, 0.0 };
 
-            // lmax is mean of 5 maximal;
-            if (Data.Count > 15)
-            {
-                lmax = new Sample(
-                    Data.Y
-                    .OrderByDescending(t => t)
-                    .Take(5)).Mean;
-            }
+            //// lmax is just max of L
+            //double lmax = Data.Y.Maximum;
 
-            BivariateSample lin = Data.Copy();
-            lin.Y.Transform((v) => { return -Math.Log(1.0 - v / lmax); });
-            Linear linreg = new Linear(lin);
+            //// lmax is mean of 5 maximal;
+            //if (Data.Count > 15)
+            //{
+            //    lmax = new Sample(
+            //        Data.Y
+            //        .OrderByDescending(t => t)
+            //        .Take(5)).Mean;
+            //}
 
-            if (double.IsNaN(linreg.A)) return new double[] { lmax, 1.0, 0.0 };
-            else return new double[] { lmax, linreg.B, -linreg.A / linreg.B };
+            //BivariateSample lin = Data.Copy();
+            //lin.Y.Transform((v) => { return -Math.Log(1.0 - v / lmax); });
+            //Linear linreg = new Linear(lin);
 
-            //return new double[] { lmax, linreg.B };
+            //if (double.IsNaN(linreg.A)) return new double[] { lmax, 1.0, 0.0 };
+            //else return new double[] { lmax, linreg.B, -linreg.A / linreg.B };
 
-            //if (double.IsNaN(linreg.B)) return new double[] { lmax, 1.0 };
-            //else return new double[] { lmax, linreg.B };
+            ////return new double[] { lmax, linreg.B };
+
+            ////if (double.IsNaN(linreg.B)) return new double[] { lmax, 1.0 };
+            ////else return new double[] { lmax, linreg.B };
         }
     }
 }

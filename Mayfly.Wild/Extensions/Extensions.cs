@@ -90,11 +90,11 @@ namespace Mayfly.Wild
 
             if (entries == null) return result.ToArray();
 
-            result.AddRange(FileSystem.MaskedNames(entries, Wild.UserSettings.InterfaceBio.Extension));
+            result.AddRange(IO.MaskedNames(entries, Wild.UserSettings.InterfaceBio.Extension));
 
             if (extension != Wild.UserSettings.InterfaceBio.Extension)
             {
-                result.AddRange(FileSystem.MaskedNames(entries, extension));
+                result.AddRange(IO.MaskedNames(entries, extension));
             }
 
             return result.ToArray();

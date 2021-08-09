@@ -132,7 +132,7 @@ namespace Mayfly.Fish.Explorer
         //        table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
         //        table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
         //        table1.AddCellRight(a > 0 ? a.ToString() : Constants.Null);
-        //        table1.AddCellRight(m, Mayfly.Service.Mask(3));
+        //        table1.AddCellRight(m, Textual.Mask(3));
 
         //        table1.EndRow();
         //    }
@@ -143,7 +143,7 @@ namespace Mayfly.Fish.Explorer
         //    table1.AddCellRight(L > 0 ? L.ToString() : Constants.Null, true);
         //    table1.AddCellRight(W > 0 ? W.ToString() : Constants.Null, true);
         //    table1.AddCellRight(A > 0 ? A.ToString() : Constants.Null, true);
-        //    table1.AddCellRight(M, Mayfly.Service.Mask(3), true);
+        //    table1.AddCellRight(M, Textual.Mask(3), true);
         //    table1.EndRow();
 
         //    report.AddTable(table1);
@@ -224,7 +224,7 @@ namespace Mayfly.Fish.Explorer
                     table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
                     table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
                     table1.AddCellRight(a > 0 ? a.ToString() : Constants.Null);
-                    table1.AddCellRight(m.ToString(Mayfly.Service.Mask(3)));
+                    table1.AddCellRight(m, 3);
 
                     table1.EndRow();
                 }
@@ -237,7 +237,7 @@ namespace Mayfly.Fish.Explorer
                     table1.AddCellRight(L > 0 ? L.ToString() : Constants.Null, true);
                     table1.AddCellRight(W > 0 ? W.ToString() : Constants.Null, true);
                     table1.AddCellRight(A > 0 ? A.ToString() : Constants.Null, true);
-                    table1.AddCellRight(M.ToString(Mayfly.Service.Mask(3)), true);
+                    table1.AddCellRight(M, 3, true);
                     table1.EndRow();
                 }
             }
@@ -277,7 +277,7 @@ namespace Mayfly.Fish.Explorer
                     table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
                     table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
                     table1.AddCellRight(a > 0 ? a.ToString() : Constants.Null);
-                    table1.AddCellRight(m, Mayfly.Service.Mask(3));
+                    table1.AddCellRight(m, 3);
 
                     table1.EndRow();
                 }
@@ -288,7 +288,7 @@ namespace Mayfly.Fish.Explorer
                 table1.AddCellRight(L > 0 ? L.ToString() : Constants.Null, true);
                 table1.AddCellRight(W > 0 ? W.ToString() : Constants.Null, true);
                 table1.AddCellRight(A > 0 ? A.ToString() : Constants.Null, true);
-                table1.AddCellRight(M, Mayfly.Service.Mask(3), true);
+                table1.AddCellRight(M, "N3", true);
                 table1.EndRow();
             }
 

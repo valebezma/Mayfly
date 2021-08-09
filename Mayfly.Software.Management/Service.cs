@@ -18,7 +18,7 @@ namespace Mayfly.Software.Management
 
         public static string PackFiles(string[] files)
         {
-            string result = FileSystem.GetTempFileName(".zip");
+            string result = IO.GetTempFileName(".zip");
             ZipArchive zip = ZipFile.Open(result, ZipArchiveMode.Create);
             foreach (string file in files)
             {

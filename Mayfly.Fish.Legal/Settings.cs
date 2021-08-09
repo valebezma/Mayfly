@@ -99,9 +99,9 @@ namespace Mayfly.Fish.Legal
 
         private void buttonStamp_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfacePictures.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfacePictures.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxStamp.Text = FileSystem.InterfacePictures.OpenDialog.FileName;
+                textBoxStamp.Text = IO.InterfacePictures.OpenDialog.FileName;
             }
         }
 
@@ -112,9 +112,9 @@ namespace Mayfly.Fish.Legal
 
         private void buttonFaximile_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfacePictures.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfacePictures.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxFaximile.Text = FileSystem.InterfacePictures.OpenDialog.FileName;
+                textBoxFaximile.Text = IO.InterfacePictures.OpenDialog.FileName;
             }
         }
 

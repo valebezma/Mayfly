@@ -20,7 +20,7 @@ namespace Mayfly.Software
 
         public static string DownloadFile(Uri uri)
         {
-            return DownloadFile(uri, Path.Combine(FileSystem.TempFolder, Path.GetFileName(uri.LocalPath)));
+            return DownloadFile(uri, Path.Combine(IO.TempFolder, Path.GetFileName(uri.LocalPath)));
         }
 
         public static string DownloadFile(Uri uri, string filename)

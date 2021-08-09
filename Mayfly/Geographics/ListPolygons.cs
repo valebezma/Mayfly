@@ -84,9 +84,9 @@ namespace Mayfly.Geographics
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (Polygon polygon in Service.GetPolygons(FileSystem.InterfaceLocation.OpenDialog.FileNames))
+                foreach (Polygon polygon in Service.GetPolygons(IO.InterfaceLocation.OpenDialog.FileNames))
                 {
                     PlacePolygon(polygon);
                 }

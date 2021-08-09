@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-
-namespace Mayfly.Wild
-{
-}
+using Mayfly.Extensions;
 
 namespace Mayfly.Wild
 {
@@ -82,7 +79,7 @@ namespace Mayfly.Wild
     
         partial class EventRow
         {
-            public string Display { get { return Mayfly.Service.GetLocalizedValue(this.Name); } }
+            public string Display { get { return this.Name.GetLocalizedValue(); } }
 
             private WeatherEvents.ValueDataTable Value
             {
@@ -196,12 +193,12 @@ namespace Mayfly.Wild
 
         partial class DegreeRow
         {
-            public string Display { get { return Mayfly.Service.GetLocalizedValue(this.Name); } }
+            public string Display { get { return this.Name.GetLocalizedValue(); } }
         }
 
         partial class DiscretionRow
         {
-            public string Display { get { return Mayfly.Service.GetLocalizedValue(this.Name); } }
+            public string Display { get { return this.Name.GetLocalizedValue(); } }
         }
     }
 }

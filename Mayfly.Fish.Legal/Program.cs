@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Mayfly.Fish.Explorer.Observations;
+using Mayfly.Fish.Explorer;
 
 namespace Mayfly.Fish.Legal
 {

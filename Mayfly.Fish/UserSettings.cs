@@ -107,7 +107,7 @@ namespace Mayfly.Fish
                 {
                     equiment = new Equipment();
 
-                    string path = System.IO.Path.Combine(FileSystem.UserFolder, "equipment.ini");
+                    string path = System.IO.Path.Combine(IO.UserFolder, "equipment.ini");
 
                     if (File.Exists(path))
                     {

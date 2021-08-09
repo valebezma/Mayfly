@@ -316,17 +316,17 @@ namespace Mayfly.Fish.Explorer
                     table1.AddCellValue(_catch.Name);
                     table1.AddCellRight(_catch.Index, columnCpueEffort.DefaultCellStyle.Format);
 
-                    table1.AddCellRight(_catch.Quantity, Mayfly.Service.Mask(0));
-                    table1.AddCellRight(_catch.Mass, Mayfly.Service.Mask(3));
-                    table1.AddCellRight(_catch.Abundance, Mayfly.Service.Mask(3));
-                    table1.AddCellRight(_catch.Biomass, Mayfly.Service.Mask(3));
+                    table1.AddCellRight(_catch.Quantity, 0);
+                    table1.AddCellRight(_catch.Mass, 3);
+                    table1.AddCellRight(_catch.Abundance, 3);
+                    table1.AddCellRight(_catch.Biomass, 3);
 
                     table1.EndRow();
                 }
 
                 table1.StartRow();
                 table1.AddCell(Mayfly.Resources.Interface.Total);
-                table1.AddCellRight(Constants.Null); //gearWizard.TotalEffort, Mayfly.Service.Mask(3));
+                table1.AddCellRight(Constants.Null); //gearWizard.TotalEffort, Textual.Mask(3));
                 table1.AddCellRight(catches.GetTotalQuantity());
                 table1.AddCellRight(catches.GetTotalMass());
                 table1.AddCellRight(Constants.Null);
@@ -477,7 +477,7 @@ namespace Mayfly.Fish.Explorer
                 table1.StartRow();
                 table1.AddCellValue(compositionWizard.CatchesComposition[i].Name);
                 table1.AddCellRight(Stock[i].Quantity > 0 ? compositionWizard.CatchesComposition[i].AbundanceFraction.ToString(columnStockNP.DefaultCellStyle.Format) : Constants.Null);
-                table1.AddCellRight(Stock[i].Quantity > 0 ? Stock[i].Quantity.ToString(Mayfly.Service.Mask(0)) : Constants.Null);
+                table1.AddCellRight(Stock[i].Quantity > 0 ? Stock[i].Quantity.ToString("N0") : Constants.Null);
                 table1.AddCellRight(Stock[i].Mass > 0 ? compositionWizard.CatchesComposition[i].BiomassFraction.ToString(columnStockBP.DefaultCellStyle.Format) : Constants.Null);
                 table1.AddCellRight(Stock[i].Mass > 0 ? Stock[i].Mass.ToString("N1") : Constants.Null);
                 table1.EndRow();
@@ -493,9 +493,9 @@ namespace Mayfly.Fish.Explorer
             table1.StartRow();
             table1.AddCell(Mayfly.Resources.Interface.Total);
             table1.AddCellRight(1, columnStockNP.DefaultCellStyle.Format);
-            table1.AddCellRight(Stock.TotalQuantity, Mayfly.Service.Mask(0));
+            table1.AddCellRight(Stock.TotalQuantity, 0);
             table1.AddCellRight(1, columnStockBP.DefaultCellStyle.Format);
-            table1.AddCellRight(Stock.TotalMass, "N1");
+            table1.AddCellRight(Stock.TotalMass, 1);
             table1.EndRow();
             report.AddTable(table1);
 

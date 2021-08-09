@@ -46,7 +46,7 @@ namespace Mayfly.Benthos.Explorer
             columnPriRecoverable.ValueType = typeof(int);
             columnPriRecoverableP.ValueType = typeof(double);
 
-            openNatural.Filter = FileSystem.FilterFromExt(
+            openNatural.Filter = IO.FilterFromExt(
                 Benthos.UserSettings.Interface.Extension, 
                 Wild.UserSettings.InterfaceBio.Extension);
 
@@ -666,7 +666,7 @@ namespace Mayfly.Benthos.Explorer
         {
             if (openNatural.ShowDialog(this) == DialogResult.OK)
             {
-                CardsToLoad.AddRange(FileSystem.MaskedNames(openNatural.FileNames,
+                CardsToLoad.AddRange(IO.MaskedNames(openNatural.FileNames,
                     new string[] { Benthos.UserSettings.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
                 LoadCards();
             }
@@ -751,7 +751,7 @@ namespace Mayfly.Benthos.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e)
         {
             string[] droppedNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string[] fileNames = FileSystem.MaskedNames(droppedNames, new string[] { Benthos.UserSettings.Interface.Extension, Mayfly.Wild.UserSettings.InterfaceBio.Extension });
+            string[] fileNames = IO.MaskedNames(droppedNames, new string[] { Benthos.UserSettings.Interface.Extension, Mayfly.Wild.UserSettings.InterfaceBio.Extension });
             CardsToLoad.AddRange(fileNames);
             LoadCards();
         }
@@ -1026,10 +1026,10 @@ namespace Mayfly.Benthos.Explorer
                                     table2.StartRow();
                                     if (individualRow.LogRow.CardRow.Comments == predator) table2.AddCellValue(Constants.RepeatedValue);
                                     else { predator = individualRow.LogRow.CardRow.Comments; table2.AddCell(predator); }
-                                    table2.AddCellRight(individualRow.Length, Mayfly.Service.Mask(1));
-                                    table2.AddCellRight(individualRow.Mass, Mayfly.Service.Mask(5));
+                                    table2.AddCellRight(individualRow.Length, 1);
+                                    table2.AddCellRight(individualRow.Mass, 5);
                                     table2.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table2.AddCellRight(individualRow.Mass * count, Mayfly.Service.Mask(5));
+                                    table2.AddCellRight(individualRow.Mass * count, 5);
                                     table2.EndRow();
 
                                     recovered += count;
@@ -1042,7 +1042,7 @@ namespace Mayfly.Benthos.Explorer
                                 table2.AddCell();
                                 table2.AddCell();
                                 table2.AddCellRight(totalCount);
-                                table2.AddCellRight(totalMass, Mayfly.Service.Mask(2));
+                                table2.AddCellRight(totalMass, 2);
                                 table2.EndFooter();
 
                                 Report.AddTable(table2);
@@ -1144,9 +1144,9 @@ namespace Mayfly.Benthos.Explorer
                                     if (individualRow.LogRow.CardRow.Comments == predator) table3.AddCellValue(Constants.RepeatedValue);
                                     else { predator = individualRow.LogRow.CardRow.Comments; table3.AddCell(predator); }
                                     table3.AddCellRight(BadData.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID).Value);
-                                    table3.AddCellRight(individualRow.Mass, Mayfly.Service.Mask(5));
+                                    table3.AddCellRight(individualRow.Mass, 5);
                                     table3.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table3.AddCellRight(individualRow.Mass * count, Mayfly.Service.Mask(2));
+                                    table3.AddCellRight(individualRow.Mass * count, 2);
                                     table3.EndRow();
 
                                     totalMass += individualRow.Mass * count;
@@ -1159,7 +1159,7 @@ namespace Mayfly.Benthos.Explorer
                                 table3.AddCell();
                                 table3.AddCell();
                                 table3.AddCellRight(totalCount);
-                                table3.AddCellRight(totalMass, Mayfly.Service.Mask(2));
+                                table3.AddCellRight(totalMass, 2);
                                 table3.EndFooter();
                                 Report.AddTable(table3);
                             }
@@ -1214,9 +1214,9 @@ namespace Mayfly.Benthos.Explorer
                                     if (individualRow.LogRow.CardRow.Comments == predator) table4.AddCellValue(Constants.RepeatedValue);
                                     else { predator = individualRow.LogRow.CardRow.Comments; table4.AddCell(predator); }
                                     table4.AddCellRight(individualRow[dataColumn.ColumnName]);
-                                    table4.AddCellRight(individualRow.Mass, Mayfly.Service.Mask(5));
+                                    table4.AddCellRight(individualRow.Mass, 5);
                                     table4.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table4.AddCellRight(individualRow.Mass * count, Mayfly.Service.Mask(5));
+                                    table4.AddCellRight(individualRow.Mass * count, 5);
                                     table4.EndRow();
 
                                     totalMass += individualRow.Mass * count;
@@ -1229,7 +1229,7 @@ namespace Mayfly.Benthos.Explorer
                                 table4.AddCell();
                                 table4.AddCell();
                                 table4.AddCellRight(totalCount);
-                                table4.AddCellRight(totalMass, Mayfly.Service.Mask(2));
+                                table4.AddCellRight(totalMass, 2);
                                 table4.EndFooter();
                                 Report.AddTable(table4);
                             }

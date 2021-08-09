@@ -81,8 +81,6 @@ namespace Mayfly.Software
 
             foreach (License lic in Licensing.InstalledLicenses)
             {
-                if (!lic.IsValid) continue;
-
                 ListViewItem li = new ListViewItem(lic.Feature);
                 li.Name = lic.Feature.ToString();
                 li.SubItems.Add(((int)lic.ExpiresIn.TotalDays).ToCorrectString(Resources.Interface.ExpirationMask));

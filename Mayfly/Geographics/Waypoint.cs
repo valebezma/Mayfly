@@ -5,6 +5,7 @@ using System.Text;
 using System.Globalization;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Mayfly.Extensions;
 
 namespace Mayfly.Geographics
 {
@@ -310,7 +311,7 @@ namespace Mayfly.Geographics
             return center;
         }
 
-        #region Link
+
 
         public Uri GetLink()
         {
@@ -321,11 +322,18 @@ namespace Mayfly.Geographics
                 this.Longitude.Degrees, this.Latitude.Degrees));
         }
 
-        public string GetPlaceableLink(string format)
+        public string GetHTMLReference(string format)
         {
             if (IsEmpty) return string.Empty;
-            return Mayfly.Service.GetPlaceableLink(GetLink().OriginalString, this.ToString(format));
+            return GetLink().GetHTMLReference(ToString(format));
         }
+
+        public string GetHTMLReference()
+        {
+            return GetHTMLReference(UserSettings.FormatCoordinate);
+        }
+
+
 
         public static Uri GetLink(IEnumerable<Waypoint> locations)
         {
@@ -350,11 +358,9 @@ namespace Mayfly.Geographics
                 center.Longitude.Degrees, center.Latitude.Degrees, path));
         }
 
-        public static string GetPlaceableLink(IEnumerable<Waypoint> locations, string format)
+        public static string GetHTMLReference(IEnumerable<Waypoint> locations, string format)
         {
-            return Mayfly.Service.GetPlaceableLink(GetLink(locations).OriginalString, Waypoint.GetCenterOf(locations).ToString(format));
+            return GetLink(locations).GetHTMLReference(Waypoint.GetCenterOf(locations).ToString(format));
         }
-
-        #endregion
     }
 }

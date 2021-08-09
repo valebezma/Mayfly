@@ -954,7 +954,7 @@ namespace Mayfly.Waters
         {
             get
             {
-                Report report = new Report(FileSystem.GetFriendlyFiletypeName(UserSettings.Interface.Extension));
+                Report report = new Report(IO.GetFriendlyFiletypeName(UserSettings.Interface.Extension));
 
                 ResourceManager StreamResources = new ResourceManager(typeof(CardStream));
                 ResourceManager LakeResources = new ResourceManager(typeof(CardLake));

@@ -943,15 +943,15 @@ namespace Mayfly.Mathematics
 
         private void ItemSave_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceSheets.SaveDialog.ShowDialog(this.sheet.FindForm()) == DialogResult.OK)
+            if (IO.InterfaceSheets.ExportDialog.ShowDialog(this.sheet.FindForm()) == DialogResult.OK)
             {
                 if (OperatingSheet != null && OperatingSheet.Visible)
                 {
-                    OperatingSheet.SaveToFile(FileSystem.InterfaceSheets.SaveDialog.FileName);
+                    OperatingSheet.SaveToFile(IO.InterfaceSheets.ExportDialog.FileName);
                 }
                 else
                 {
-                    Sheet.SaveToFile(FileSystem.InterfaceSheets.SaveDialog.FileName);
+                    Sheet.SaveToFile(IO.InterfaceSheets.ExportDialog.FileName);
                 }
             }
         }
