@@ -76,7 +76,7 @@ namespace Mayfly.Wild
             //    }
             //}
         }
-    
+
         partial class EventRow
         {
             public string Display { get { return this.Name.GetLocalizedValue(); } }

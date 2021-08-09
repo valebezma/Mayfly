@@ -164,16 +164,8 @@ namespace Mayfly.Wild
         {
             try
             {
-                foreach (DataTable dt in Tables)
-                {
-                    foreach (DataColumn dc in dt.Columns)
-                    {
-                        dc.ColumnMapping = MappingType.Attribute;
-                    }
-                }
-
+                this.SetAttributable();
                 ReadXml(fileName);
-
 
                 foreach (CardRow cardRow in this.Card)
                 {
@@ -200,14 +192,6 @@ namespace Mayfly.Wild
 
         public void WriteToFile(string fileName)
         {
-            foreach (DataTable dt in Tables)
-            {
-                foreach (DataColumn dc in dt.Columns)
-                {
-                    dc.ColumnMapping = MappingType.Attribute;
-                }
-            }
-
             //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
             //xmlWriter.IndentChar = ' ';
             //xmlWriter.Indentation = 4;

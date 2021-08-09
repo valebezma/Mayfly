@@ -694,15 +694,7 @@ namespace Mayfly.Species
         {
             try
             {
-                foreach (System.Data.DataTable dt in this.Tables)
-                {
-                    foreach (System.Data.DataColumn dc in dt.Columns)
-                    {
-                        if (dc.ColumnName == "Local") continue;
-                        dc.ColumnMapping = System.Data.MappingType.Attribute;
-                    }
-                }
-
+                this.SetAttributable();
                 ReadXml(fileName);
             }
             catch { Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", fileName); }
@@ -710,15 +702,6 @@ namespace Mayfly.Species
 
         public void SaveToFile(string fileName)
         {
-            foreach (System.Data.DataTable dt in this.Tables)
-            {
-                foreach (System.Data.DataColumn dc in dt.Columns)
-                {
-                    if (dc.ColumnName == "Local") continue;
-                    dc.ColumnMapping = System.Data.MappingType.Attribute;
-                }
-            }
-
             File.WriteAllText(fileName, GetXml());
         }
 

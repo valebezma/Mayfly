@@ -135,7 +135,7 @@ namespace Mayfly.Plankton
                 }
                 else
                 {
-                    textBoxVolume.Text = (value * 1000d).ToString(Textual.Mask(2));
+                    textBoxVolume.Text = (value * 1000d).ToString("N2");
 
                     if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
                     {
