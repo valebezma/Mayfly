@@ -396,10 +396,10 @@ namespace Mayfly.Fish.Explorer
             //pageCatches.AllowNext = AnnualCompositions.Length > 0;
             //labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            //double m = Service.GetNaturalMortality(SpeciesRow.Name);
+            //double m = Service.GetNaturalMortality(SpeciesRow.Species);
             //if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            //double f = Service.GetFishingMortality(SpeciesRow.Name);
+            //double f = Service.GetFishingMortality(SpeciesRow.Species);
             //if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             ////pageCohorts.SetNavigation(true);

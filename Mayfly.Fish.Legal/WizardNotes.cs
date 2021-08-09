@@ -376,7 +376,7 @@ namespace Mayfly.Fish.Legal
                 {
                     Species.SpeciesKey.SpeciesRow refSpeciesRow =
                         Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(species);
-                    speciesRow = Paper.Species.AddSpeciesRow(species, refSpeciesRow.Local);
+                    speciesRow = Paper.Species.AddSpeciesRow(species, refSpeciesRow.Name);
                 }
 
                 LegalPapers.CatchRow catchRow = Paper.Catch.NewCatchRow();

@@ -26,19 +26,19 @@ namespace Mayfly.Species
 
         public int Compare(SpeciesKey.SpeciesRow x, SpeciesKey.SpeciesRow y)
         {
-            if (x.IsPhilogeneticRateNull() || y.IsPhilogeneticRateNull())
+            if (x.IsIndexNull() || y.IsIndexNull())
             {
                 return string.Compare(
-                    x.Name.Replace(" gr.", string.Empty),
-                    y.Name.Replace(" gr.", string.Empty));
+                    x.Species.Replace(" gr.", string.Empty),
+                    y.Species.Replace(" gr.", string.Empty));
             }
             else
             {
                 int phr = string.Compare(
-                    x.PhilogeneticRate, y.PhilogeneticRate);
+                    x.Index, y.Index);
                 return phr == 0 ? string.Compare(
-                    x.Name.Replace(" gr.", string.Empty),
-                    y.Name.Replace(" gr.", string.Empty)) : phr;
+                    x.Species.Replace(" gr.", string.Empty),
+                    y.Species.Replace(" gr.", string.Empty)) : phr;
             }
         }
     }

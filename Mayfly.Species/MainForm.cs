@@ -120,7 +120,7 @@ namespace Mayfly.Species
 
         public bool InWork { get; private set; }
 
-        public SpeciesKey.SpeciesRow SelectedSpecies { get; private set; }
+        public SpeciesKey.SpeciesRow SelectedSpeciesRow { get; private set; }
 
         public MainForm()
         { 
@@ -256,7 +256,7 @@ namespace Mayfly.Species
         {
             if (((Form)sender).DialogResult == DialogResult.OK)
             {
-                SelectedSpecies = ((SpeciesCard)sender).SpeciesRow;
+                SelectedSpeciesRow = ((SpeciesCard)sender).SpeciesRow;
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -460,8 +460,8 @@ namespace Mayfly.Species
             result.Name = stateRow.ID.ToString();
 
             result.Text = stateRow.SpeciesRow.GetStateRows().Length == 1 ?
-                stateRow.SpeciesRow.Name :
-                string.Format("{0} ({1}: {2}...)", stateRow.SpeciesRow.Name, stateRow.FeatureRow.Title,
+                stateRow.SpeciesRow.Species :
+                string.Format("{0} ({1}: {2}...)", stateRow.SpeciesRow.Species, stateRow.FeatureRow.Title,
                 stateRow.Description.Substring(0, Math.Min(15, stateRow.Description.Length)));
 
             result.Click += eventHandler;

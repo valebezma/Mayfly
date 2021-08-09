@@ -16,7 +16,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? Name : Local.GetLocalizedValue();
+                    return IsNameNull() ? Taxon : Name.GetLocalizedValue();
                 }
             }
 
@@ -43,7 +43,7 @@ namespace Mayfly.Species
                 //{
                 foreach (RepRow repRow in this.GetRepRows())
                 {
-                    if (repRow.SpeciesRow.Name == species)
+                    if (repRow.SpeciesRow.Species == species)
                         return true;
 
                     //if (suggest && Genus(repRow.SpeciesRow.Species) == Genus(species))
@@ -71,10 +71,10 @@ namespace Mayfly.Species
                 {
                     foreach (SpeciesRow speciesRow in Rows)
                     {
-                            if (speciesRow.Name.Contains(spcName))
-                            {
-                                result.Add(speciesRow);
-                            }
+                        if (speciesRow.Species.Contains(spcName))
+                        {
+                            result.Add(speciesRow);
+                        }
                     }
                 }
                 return result.ToArray();
@@ -119,8 +119,8 @@ namespace Mayfly.Species
                     List<string> result = new List<string>();
                     foreach (SpeciesRow speciesRow in Rows)
                     {
-                            string genus = speciesRow.Name.Split(' ')[0];
-                            if (!result.Contains(genus)) result.Add(genus);
+                        string genus = speciesRow.Species.Split(' ')[0];
+                        if (!result.Contains(genus)) result.Add(genus);
                     }
                     return result.ToArray();
                 }
@@ -130,7 +130,7 @@ namespace Mayfly.Species
             {
                 foreach (SpeciesRow speciesRow in Rows)
                 {
-                    if (speciesRow.Name == value)
+                    if (speciesRow.Species == value)
                     {
                         return speciesRow;
                     }
@@ -152,7 +152,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? Name : Local.GetLocalizedValue();
+                    return IsNameNull() ? Base : Name.GetLocalizedValue();
                 }
             }
 
@@ -465,7 +465,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsLocalNull() ? string.Empty : Local.GetLocalizedValue();
+                    return IsNameNull() ? Species : Name.GetLocalizedValue();
                 }
             }
 
@@ -473,7 +473,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return Name;
+                    return Species;
                 }
             }
 
@@ -515,7 +515,7 @@ namespace Mayfly.Species
             {
                 foreach (TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    if (taxaRow.Includes(this.Name))
+                    if (taxaRow.Includes(this.Species))
                     {
                         return taxaRow;
                     }
@@ -644,7 +644,7 @@ namespace Mayfly.Species
                         }
                         else
                         {
-                            result += this.SpeciesRow.Name + " ";
+                            result += this.SpeciesRow.Species + " ";
                         }
                     }
                     else
@@ -720,17 +720,17 @@ namespace Mayfly.Species
 
             foreach (SpeciesRow speciesRow in Species)
             {
-                if (speciesRow.Name.EndsWith("sp.")) continue;
+                if (speciesRow.Species.EndsWith("sp.")) continue;
 
-                SpeciesRow destRow = key.Species.FindBySpecies(speciesRow.Name);
+                SpeciesRow destRow = key.Species.FindBySpecies(speciesRow.Species);
 
                 if (destRow == null)
                 {
                     destRow = key.Species.NewSpeciesRow();
-                    destRow.Name = speciesRow.Name;
+                    destRow.Species = speciesRow.Species;
                     if (!speciesRow.IsDescriptionNull()) destRow.Description = speciesRow.Description;
                     if (!speciesRow.IsReferenceNull()) destRow.Reference = speciesRow.Reference;
-                    if (!speciesRow.IsLocalNull()) destRow.Local = speciesRow.Local;
+                    if (!speciesRow.IsNameNull()) destRow.Name = speciesRow.Name;
 
                     if (inspect)
                     {
@@ -783,11 +783,11 @@ namespace Mayfly.Species
         {
             List<SpeciesRow> result = new List<SpeciesRow>();
 
-            string genus = Genus(speciesRow.Name);
+            string genus = Genus(speciesRow.Species);
 
             foreach (SpeciesRow currentSpeciesRow in Species.Rows)
             {
-                if (Genus(currentSpeciesRow.Name) == genus &&
+                if (Genus(currentSpeciesRow.Species) == genus &&
                     !result.Contains(currentSpeciesRow))
                 {
                     result.Add(currentSpeciesRow);

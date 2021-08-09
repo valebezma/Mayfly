@@ -38,7 +38,7 @@ namespace Mayfly.Species.Systematics
             textBoxDescription.Text = StateRow.Description;
 
             labelSpecies.Visible = !StateRow.IsSpcIDNull();
-            if (!StateRow.IsSpcIDNull()) labelSpecies.Text = StateRow.SpeciesRow.Name;
+            if (!StateRow.IsSpcIDNull()) labelSpecies.Text = StateRow.SpeciesRow.Species;
 
             SetAppear();
         }

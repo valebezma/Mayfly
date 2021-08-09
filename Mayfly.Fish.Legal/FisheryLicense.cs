@@ -161,7 +161,7 @@ namespace Mayfly.Fish.Legal
                 if (speciesRow == null)
                 {
                     Species.SpeciesKey.SpeciesRow refSpecies = speciesLogger.Find(species);
-                    speciesRow = Paper.Species.AddSpeciesRow(species, refSpecies == null ? species : refSpecies.Local);
+                    speciesRow = Paper.Species.AddSpeciesRow(species, refSpecies == null ? species : refSpecies.Name);
                 }
 
                 LegalPapers.QuoteRow quoteRow = LicenseRow.GetQuoteRow(species);
@@ -277,7 +277,7 @@ namespace Mayfly.Fish.Legal
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCatches);
-                gridRow.Cells[ColumnSpecies.Index].Value = quoteRow.SpeciesRow.Local;
+                gridRow.Cells[ColumnSpecies.Index].Value = quoteRow.SpeciesRow.Name;
                 gridRow.Cells[ColumnQuote1.Index].Value = quoteRow.Mass;
                 if (q > 0) gridRow.Cells[ColumnQuantity.Index].Value = q;
                 if (w > 0) gridRow.Cells[ColumnMass.Index].Value = w;
@@ -359,7 +359,7 @@ namespace Mayfly.Fish.Legal
                     double w2 = (double)quoteRow.CaughtMass(LicenseRow.Issued, dateUntil.Value.Date);
 
                     table1.StartRow();
-                    table1.AddCell(quoteRow.SpeciesRow.Local);
+                    table1.AddCell(quoteRow.SpeciesRow.Name);
                     table1.AddCellRight(q == 0 ? Constants.Null : q.ToString());
                     table1.AddCellRight(w1, ColumnMass.DefaultCellStyle.Format);
                     table1.AddCellRight(w2, ColumnCumulate.DefaultCellStyle.Format);
@@ -673,7 +673,7 @@ namespace Mayfly.Fish.Legal
                     decimal w2 = quoteRow.CaughtMass(LicenseRow.Issued, dateUntil.Value.Date);
 
                     body += String.Format("{0,-20}{1,15}{2,15}{3,15}{4,15}\r\n",
-                        quoteRow.SpeciesRow.Local,
+                        quoteRow.SpeciesRow.Name,
                         q,
                         w1.ToString("N1"),
                         w2.ToString("N1"),
@@ -731,13 +731,13 @@ namespace Mayfly.Fish.Legal
             //        decimal w = quoteRow.CaughtMass(calendarCatch.SelectionStart.Date, calendarCatch.SelectionEnd.Date);
 
             //        body += string.Format("{0}\t\t\t{1}\t{2:N2}\t{3:P1}\r\n",
-            //            quoteRow.SpeciesRow.Local,
+            //            quoteRow.SpeciesRow.Name,
             //            q,
             //            w,
             //            w / quoteRow.Mass);
 
             //        table1.StartRow();
-            //        table1.AddCell(quoteRow.SpeciesRow.Local);
+            //        table1.AddCell(quoteRow.SpeciesRow.Name);
             //        table1.AddCellRight(q.ToDouble(), ColumnQuantity.DefaultCellStyle.Format);
             //        table1.AddCellRight(w.ToDouble(), ColumnMass.DefaultCellStyle.Format);
             //        table1.AddCellRight((w / quoteRow.Mass).ToDouble(), ColumnFraction.DefaultCellStyle.Format);

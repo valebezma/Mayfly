@@ -769,7 +769,7 @@ namespace Mayfly.Plankton.Explorer
                 foreach (Data.SpeciesRow speciesRow in data.Species)
                 {
                     Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
-                    newSpeciesRow.Name = speciesRow.Species;
+                    newSpeciesRow.Species = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }
 

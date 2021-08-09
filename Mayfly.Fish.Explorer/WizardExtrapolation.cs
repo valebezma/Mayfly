@@ -204,7 +204,7 @@ namespace Mayfly.Fish.Explorer
                 //{
                 //    case CategoryType.Age:
 
-                //        Age age = Service.GetGamingAge(SpeciesRow.Name);
+                //        Age age = Service.GetGamingAge(SpeciesRow.Species);
                 //        if (age != null)
                 //        {
                 //            spreadSheetStock.Rows[i].Selected = age <= new Age(Stock[i].Name);
@@ -214,7 +214,7 @@ namespace Mayfly.Fish.Explorer
 
                 //    case CategoryType.Length:
 
-                //        double sizeClass = Service.GetMeasure(SpeciesRow.Name);
+                //        double sizeClass = Service.GetMeasure(SpeciesRow.Species);
                 //        if (!double.IsNaN(sizeClass))
                 //        {
                 //            string categoryName = sizeClass.ToString(Resources.Interface.SizeClassMask);

@@ -3475,7 +3475,7 @@ namespace Mayfly.Fish.Legal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLocalNull() {
+            public bool IsNameNull() {
                 return this.IsNull(this.tableSpecies.LocalColumn);
             }
             

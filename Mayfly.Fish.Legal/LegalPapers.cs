@@ -217,7 +217,7 @@ namespace Mayfly.Fish.Legal
 
                             table1.StartRow();
                             table1.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                            table1.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                            table1.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
                             table1.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                             table1.EndRow();
 
@@ -302,7 +302,7 @@ namespace Mayfly.Fish.Legal
 
                             table7.StartRow();
                             table7.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                            table7.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                            table7.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
                             if (index == 0) { table7.AddCell(this.Conservant, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows); }
                             table7.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                             if (index == 0) { table7.AddCell(this.Dish, Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows); }
@@ -354,7 +354,7 @@ namespace Mayfly.Fish.Legal
 
                             table2.StartRow();
                             table2.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                            table2.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                            table2.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
                             if (index == 0)
                             {
                                 table2.AddCell(this.Date.ToString("d"), Legal.LegalNote.InputClass | ReportCellClass.Centered, this.SpeciesInCatch, CellSpan.Rows);
@@ -407,7 +407,7 @@ namespace Mayfly.Fish.Legal
 
                             table3.StartRow();
                             table3.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                            table3.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                            table3.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
 
                             if (index == 0)
                             {
@@ -455,7 +455,7 @@ namespace Mayfly.Fish.Legal
 
                                 table4.StartRow();
                                 table4.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                                table4.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                                table4.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
                                 table4.AddCell(catchRow.Mass.ToString("N1"), Legal.LegalNote.InputClass | ReportCellClass.Right);
                                 table4.EndRow();
 
@@ -498,7 +498,7 @@ namespace Mayfly.Fish.Legal
                                 w += catchRow.Mass;
 
                                 table5.AddCell(index + 1, Legal.LegalNote.InputClass | ReportCellClass.Right);
-                                table5.AddCell(catchRow.SpeciesRow.Local, Legal.LegalNote.InputClass);
+                                table5.AddCell(catchRow.SpeciesRow.Name, Legal.LegalNote.InputClass);
 
                                 if (index == 0)
                                 {

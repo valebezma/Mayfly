@@ -129,8 +129,7 @@ namespace Mayfly.Extensions
 
             CultureInfo currentci = CultureInfo.InvariantCulture;
 
-            foreach (string line in value.Split(new[] { "\r\n", "\r", "\n" },
-                StringSplitOptions.RemoveEmptyEntries))
+            foreach (string line in value.Split(';'))
             {
                 string line1 = line;
                 if (line.Length > 3 && line[2] == ':')

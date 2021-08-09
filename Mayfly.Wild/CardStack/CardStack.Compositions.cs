@@ -11,7 +11,7 @@
                 SamplesCount = GetLogRows(speciesRow).Length,
                 Quantity = (int)Quantity(speciesRow),
                 Mass = Mass(speciesRow),
-                Name = speciesRow.KeyRecord.Name
+                Name = speciesRow.KeyRecord.Species
             };
 
             result.SetSexualComposition(

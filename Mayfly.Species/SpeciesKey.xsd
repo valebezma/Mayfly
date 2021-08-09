@@ -16,11 +16,11 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
-              <xs:element name="Local" msprop:Generator_ColumnVarNameInTable="columnLocal" msprop:Generator_ColumnPropNameInRow="Local" msprop:Generator_ColumnPropNameInTable="LocalColumn" msprop:Generator_UserColumnName="Local" type="xs:string" minOccurs="0" />
+              <xs:element name="Species" msprop:Generator_ColumnVarNameInTable="columnSpecies" msprop:Generator_ColumnPropNameInRow="Species" msprop:Generator_ColumnPropNameInTable="SpeciesColumn" msprop:Generator_UserColumnName="Species" type="xs:string" />
               <xs:element name="Reference" msprop:Generator_ColumnVarNameInTable="columnReference" msprop:Generator_ColumnPropNameInRow="Reference" msprop:Generator_ColumnPropNameInTable="ReferenceColumn" msprop:Generator_UserColumnName="Reference" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
-              <xs:element name="PhilogeneticRate" msprop:Generator_ColumnVarNameInTable="columnPhilogeneticRate" msprop:Generator_ColumnPropNameInRow="PhilogeneticRate" msprop:Generator_ColumnPropNameInTable="PhilogeneticRateColumn" msprop:Generator_UserColumnName="PhilogeneticRate" type="xs:string" minOccurs="0" />
+              <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -30,9 +30,9 @@
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="BasID" msprop:Generator_ColumnVarNameInTable="columnBasID" msprop:Generator_ColumnPropNameInRow="BasID" msprop:Generator_ColumnPropNameInTable="BasIDColumn" msprop:Generator_UserColumnName="BasID" type="xs:int" />
               <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:int" minOccurs="0" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
+              <xs:element name="Taxon" msprop:Generator_ColumnVarNameInTable="columnTaxon" msprop:Generator_ColumnPropNameInRow="Taxon" msprop:Generator_ColumnPropNameInTable="TaxonColumn" msprop:Generator_UserColumnName="Taxon" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
-              <xs:element name="Local" msprop:Generator_ColumnVarNameInTable="columnLocal" msprop:Generator_ColumnPropNameInRow="Local" msprop:Generator_ColumnPropNameInTable="LocalColumn" msprop:Generator_UserColumnName="Local" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -41,8 +41,8 @@
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
               <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:int" minOccurs="0" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" />
-              <xs:element name="Local" msprop:Generator_ColumnVarNameInTable="columnLocal" msprop:Generator_ColumnPropNameInRow="Local" msprop:Generator_ColumnPropNameInTable="LocalColumn" msprop:Generator_UserColumnName="Local" type="xs:string" minOccurs="0" />
+              <xs:element name="Base" msprop:Generator_ColumnVarNameInTable="columnBase" msprop:Generator_ColumnPropNameInRow="Base" msprop:Generator_ColumnPropNameInTable="BaseColumn" msprop:Generator_UserColumnName="Base" type="xs:string" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

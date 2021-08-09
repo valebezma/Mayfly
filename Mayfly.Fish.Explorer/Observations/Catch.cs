@@ -187,10 +187,10 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 // There is such species in reference you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -637,9 +637,9 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

@@ -802,11 +802,11 @@ namespace Mayfly.Fish
             else
             {
                 // There is such species in reference you using
-                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
+                if (data.Species.FindBySpecies(currentSpecies.Species) == null)
                 {
-                    data.Species.AddSpeciesRow(currentSpecies.Name);
+                    data.Species.AddSpeciesRow(currentSpecies.Species);
                 }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
+                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Species);
             }
 
             if (gridRow.Cells[ColumnTrpQuantity.Index].Value == null)
@@ -994,11 +994,11 @@ namespace Mayfly.Fish
             else
             {
                 // There is such species in reference you using
-                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
+                if (data.Species.FindBySpecies(currentSpecies.Species) == null)
                 {
-                    data.Species.AddSpeciesRow(currentSpecies.Name);
+                    data.Species.AddSpeciesRow(currentSpecies.Species);
                 }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
+                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Species);
             }
 
             if (gridRow.Cells[ColumnInfQuantity.Index].Value == null)
@@ -1491,9 +1491,9 @@ namespace Mayfly.Fish
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(currentSpeciesRow.Name) == null)
+                    if (Data.Species.FindBySpecies(currentSpeciesRow.Species) == null)
                     {
-                        Data.Species.Rows.Add(currentSpeciesRow.ID, currentSpeciesRow.Name);
+                        Data.Species.Rows.Add(currentSpeciesRow.ID, currentSpeciesRow.Species);
                     }
                     logRow.SpcID = currentSpeciesRow.ID;
                 }

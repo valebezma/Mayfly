@@ -238,7 +238,7 @@ namespace Mayfly.Species
 
                 SpeciesKey.SpeciesRow typedSpecies = Index.Species.FindBySpecies(species);
                 if (typedSpecies != null && typedSpecies.MajorSynonym != null) {
-                    species = typedSpecies.MajorSynonym.Name;
+                    species = typedSpecies.MajorSynonym.Species;
                 }
 
                 Grid.CurrentCell.Value = species;
@@ -255,7 +255,7 @@ namespace Mayfly.Species
             SpeciesKey.SpeciesRow typedSpecies = Index.Species.FindBySpecies(species);
             if (typedSpecies != null && typedSpecies.MajorSynonym != null)
             {
-                species = typedSpecies.MajorSynonym.Name;
+                species = typedSpecies.MajorSynonym.Species;
             }
 
             // Try to find species in the list
@@ -419,7 +419,7 @@ namespace Mayfly.Species
             {
                 if (speciesKey.ShowDialog() == DialogResult.OK)
                 {
-                    gridRow.Cells[ColumnName].Value = speciesKey.SelectedSpecies.Name;
+                    gridRow.Cells[ColumnName].Value = speciesKey.SelectedSpeciesRow.Species;
                 }
             }
             else
@@ -427,12 +427,12 @@ namespace Mayfly.Species
                 string species = (string)gridRow.Cells[ColumnName].Value;
                 speciesKey.ToSpecies(species);
 
-                if (speciesKey.SelectedSpecies == null)
+                if (speciesKey.SelectedSpeciesRow == null)
                 {
                     speciesKey.Visible = false;
                     if (speciesKey.ShowDialog() == DialogResult.OK)
                     {
-                        gridRow.Cells[ColumnName].Value = speciesKey.SelectedSpecies.Name;
+                        gridRow.Cells[ColumnName].Value = speciesKey.SelectedSpeciesRow.Species;
                     }
                 }
             }
@@ -444,7 +444,7 @@ namespace Mayfly.Species
 
             if (speciesKey.ShowDialog() == DialogResult.OK)
             {
-                InsertSpecies(speciesKey.SelectedSpecies.Name);
+                InsertSpecies(speciesKey.SelectedSpeciesRow.Species);
             }
         }
 
@@ -458,7 +458,7 @@ namespace Mayfly.Species
             {
                 ListViewItem item = new ListViewItem
                 {
-                    Text = SuggestFullNames ? speciesRow.FullName : speciesRow.Name,
+                    Text = SuggestFullNames ? speciesRow.FullName : speciesRow.Species,
                     Tag = speciesRow,
                     ToolTipText = speciesRow.ToolTip.Merge(Constants.Break)
                 };
@@ -469,7 +469,7 @@ namespace Mayfly.Species
 
             foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
             {
-                string genus = SpeciesKey.Genus(speciesRow.Name);
+                string genus = SpeciesKey.Genus(speciesRow.Species);
                 if (genus == null) continue;
                 if (genera.Contains(genus)) continue;
                 genera.Add(genus);
@@ -915,7 +915,7 @@ namespace Mayfly.Species
 
         private void speciesItem_Click(object sender, EventArgs e)
         {
-            InsertSpecies(((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag).Name);
+            InsertSpecies(((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag).Species);
         }
 
         private void ToolStripMenuItemKey_Click(object sender, EventArgs e)

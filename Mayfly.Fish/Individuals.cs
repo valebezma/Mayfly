@@ -422,7 +422,7 @@ namespace Mayfly.Fish
             //logRow.SpeciesRow = speciesRow
 
             Card card = (Card)this.Owner;
-            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow.Name)));
+            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow.Species)));
             UpdateRedefineList();
         }
 

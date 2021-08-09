@@ -722,15 +722,15 @@ namespace Mayfly.Species {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnLocal;
+            private global::System.Data.DataColumn columnSpecies;
             
             private global::System.Data.DataColumn columnReference;
             
+            private global::System.Data.DataColumn columnName;
+            
             private global::System.Data.DataColumn columnDescription;
             
-            private global::System.Data.DataColumn columnPhilogeneticRate;
+            private global::System.Data.DataColumn columnIndex;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -775,17 +775,9 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn SpeciesColumn {
                 get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LocalColumn {
-                get {
-                    return this.columnLocal;
+                    return this.columnSpecies;
                 }
             }
             
@@ -799,6 +791,14 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DescriptionColumn {
                 get {
                     return this.columnDescription;
@@ -807,9 +807,9 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PhilogeneticRateColumn {
+            public global::System.Data.DataColumn IndexColumn {
                 get {
-                    return this.columnPhilogeneticRate;
+                    return this.columnIndex;
                 }
             }
             
@@ -850,15 +850,15 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SpeciesRow AddSpeciesRow(string Name, string Local, string Reference, string Description, string PhilogeneticRate) {
+            public SpeciesRow AddSpeciesRow(string Species, string Reference, string Name, string Description, string Index) {
                 SpeciesRow rowSpeciesRow = ((SpeciesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Name,
-                        Local,
+                        Species,
                         Reference,
+                        Name,
                         Description,
-                        PhilogeneticRate};
+                        Index};
                 rowSpeciesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSpeciesRow);
                 return rowSpeciesRow;
@@ -889,11 +889,11 @@ namespace Mayfly.Species {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnName = base.Columns["Name"];
-                this.columnLocal = base.Columns["Local"];
+                this.columnSpecies = base.Columns["Species"];
                 this.columnReference = base.Columns["Reference"];
+                this.columnName = base.Columns["Name"];
                 this.columnDescription = base.Columns["Description"];
-                this.columnPhilogeneticRate = base.Columns["PhilogeneticRate"];
+                this.columnIndex = base.Columns["Index"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -901,16 +901,16 @@ namespace Mayfly.Species {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnLocal = new global::System.Data.DataColumn("Local", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocal);
+                this.columnSpecies = new global::System.Data.DataColumn("Species", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecies);
                 this.columnReference = new global::System.Data.DataColumn("Reference", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReference);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
-                this.columnPhilogeneticRate = new global::System.Data.DataColumn("PhilogeneticRate", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPhilogeneticRate);
+                this.columnIndex = new global::System.Data.DataColumn("Index", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIndex);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -918,7 +918,7 @@ namespace Mayfly.Species {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnName.AllowDBNull = false;
+                this.columnSpecies.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1058,11 +1058,11 @@ namespace Mayfly.Species {
             
             private global::System.Data.DataColumn columnIndex;
             
+            private global::System.Data.DataColumn columnTaxon;
+            
             private global::System.Data.DataColumn columnName;
             
             private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnLocal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1123,6 +1123,14 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TaxonColumn {
+                get {
+                    return this.columnTaxon;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -1134,14 +1142,6 @@ namespace Mayfly.Species {
             public global::System.Data.DataColumn DescriptionColumn {
                 get {
                     return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LocalColumn {
-                get {
-                    return this.columnLocal;
                 }
             }
             
@@ -1182,15 +1182,15 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TaxaRow AddTaxaRow(BaseRow parentBaseRowByFK_Base_Taxa, int Index, string Name, string Description, string Local) {
+            public TaxaRow AddTaxaRow(BaseRow parentBaseRowByFK_Base_Taxa, int Index, string Taxon, string Name, string Description) {
                 TaxaRow rowTaxaRow = ((TaxaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Index,
+                        Taxon,
                         Name,
-                        Description,
-                        Local};
+                        Description};
                 if ((parentBaseRowByFK_Base_Taxa != null)) {
                     columnValuesArray[1] = parentBaseRowByFK_Base_Taxa[0];
                 }
@@ -1226,9 +1226,9 @@ namespace Mayfly.Species {
                 this.columnID = base.Columns["ID"];
                 this.columnBasID = base.Columns["BasID"];
                 this.columnIndex = base.Columns["Index"];
+                this.columnTaxon = base.Columns["Taxon"];
                 this.columnName = base.Columns["Name"];
                 this.columnDescription = base.Columns["Description"];
-                this.columnLocal = base.Columns["Local"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1240,12 +1240,12 @@ namespace Mayfly.Species {
                 base.Columns.Add(this.columnBasID);
                 this.columnIndex = new global::System.Data.DataColumn("Index", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIndex);
+                this.columnTaxon = new global::System.Data.DataColumn("Taxon", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxon);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
-                this.columnLocal = new global::System.Data.DataColumn("Local", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1254,7 +1254,7 @@ namespace Mayfly.Species {
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnBasID.AllowDBNull = false;
-                this.columnName.AllowDBNull = false;
+                this.columnTaxon.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1392,9 +1392,9 @@ namespace Mayfly.Species {
             
             private global::System.Data.DataColumn columnIndex;
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnBase;
             
-            private global::System.Data.DataColumn columnLocal;
+            private global::System.Data.DataColumn columnName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1447,17 +1447,17 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn BaseColumn {
                 get {
-                    return this.columnName;
+                    return this.columnBase;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn LocalColumn {
+            public global::System.Data.DataColumn NameColumn {
                 get {
-                    return this.columnLocal;
+                    return this.columnName;
                 }
             }
             
@@ -1498,13 +1498,13 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BaseRow AddBaseRow(int Index, string Name, string Local) {
+            public BaseRow AddBaseRow(int Index, string Base, string Name) {
                 BaseRow rowBaseRow = ((BaseRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Index,
-                        Name,
-                        Local};
+                        Base,
+                        Name};
                 rowBaseRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBaseRow);
                 return rowBaseRow;
@@ -1536,8 +1536,8 @@ namespace Mayfly.Species {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnIndex = base.Columns["Index"];
+                this.columnBase = base.Columns["Base"];
                 this.columnName = base.Columns["Name"];
-                this.columnLocal = base.Columns["Local"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1547,10 +1547,10 @@ namespace Mayfly.Species {
                 base.Columns.Add(this.columnID);
                 this.columnIndex = new global::System.Data.DataColumn("Index", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIndex);
+                this.columnBase = new global::System.Data.DataColumn("Base", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBase);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnLocal = new global::System.Data.DataColumn("Local", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLocal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1558,7 +1558,7 @@ namespace Mayfly.Species {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
-                this.columnName.AllowDBNull = false;
+                this.columnBase.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3789,28 +3789,12 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Name {
+            public string Species {
                 get {
-                    return ((string)(this[this.tableSpecies.NameColumn]));
+                    return ((string)(this[this.tableSpecies.SpeciesColumn]));
                 }
                 set {
-                    this[this.tableSpecies.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Local {
-                get {
-                    try {
-                        return ((string)(this[this.tableSpecies.LocalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Local\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.LocalColumn] = value;
+                    this[this.tableSpecies.SpeciesColumn] = value;
                 }
             }
             
@@ -3832,6 +3816,22 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecies.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Species\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecies.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Description {
                 get {
                     try {
@@ -3848,30 +3848,18 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PhilogeneticRate {
+            public string Index {
                 get {
                     try {
-                        return ((string)(this[this.tableSpecies.PhilogeneticRateColumn]));
+                        return ((string)(this[this.tableSpecies.IndexColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PhilogeneticRate\' in table \'Species\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Index\' in table \'Species\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSpecies.PhilogeneticRateColumn] = value;
+                    this[this.tableSpecies.IndexColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLocalNull() {
-                return this.IsNull(this.tableSpecies.LocalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLocalNull() {
-                this[this.tableSpecies.LocalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3888,6 +3876,18 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableSpecies.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableSpecies.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableSpecies.DescriptionColumn);
             }
@@ -3900,14 +3900,14 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPhilogeneticRateNull() {
-                return this.IsNull(this.tableSpecies.PhilogeneticRateColumn);
+            public bool IsIndexNull() {
+                return this.IsNull(this.tableSpecies.IndexColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPhilogeneticRateNull() {
-                this[this.tableSpecies.PhilogeneticRateColumn] = global::System.Convert.DBNull;
+            public void SetIndexNull() {
+                this[this.tableSpecies.IndexColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4009,9 +4009,25 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Taxon {
+                get {
+                    return ((string)(this[this.tableTaxa.TaxonColumn]));
+                }
+                set {
+                    this[this.tableTaxa.TaxonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableTaxa.NameColumn]));
+                    try {
+                        return ((string)(this[this.tableTaxa.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Taxa\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableTaxa.NameColumn] = value;
@@ -4031,22 +4047,6 @@ namespace Mayfly.Species {
                 }
                 set {
                     this[this.tableTaxa.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Local {
-                get {
-                    try {
-                        return ((string)(this[this.tableTaxa.LocalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Local\' in table \'Taxa\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTaxa.LocalColumn] = value;
                 }
             }
             
@@ -4075,6 +4075,18 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableTaxa.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableTaxa.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableTaxa.DescriptionColumn);
             }
@@ -4083,18 +4095,6 @@ namespace Mayfly.Species {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDescriptionNull() {
                 this[this.tableTaxa.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLocalNull() {
-                return this.IsNull(this.tableTaxa.LocalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLocalNull() {
-                this[this.tableTaxa.LocalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4163,28 +4163,28 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Name {
+            public string Base {
                 get {
-                    return ((string)(this[this.tableBase.NameColumn]));
+                    return ((string)(this[this.tableBase.BaseColumn]));
                 }
                 set {
-                    this[this.tableBase.NameColumn] = value;
+                    this[this.tableBase.BaseColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Local {
+            public string Name {
                 get {
                     try {
-                        return ((string)(this[this.tableBase.LocalColumn]));
+                        return ((string)(this[this.tableBase.NameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Local\' in table \'Base\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Base\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBase.LocalColumn] = value;
+                    this[this.tableBase.NameColumn] = value;
                 }
             }
             
@@ -4202,14 +4202,14 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsLocalNull() {
-                return this.IsNull(this.tableBase.LocalColumn);
+            public bool IsNameNull() {
+                return this.IsNull(this.tableBase.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetLocalNull() {
-                this[this.tableBase.LocalColumn] = global::System.Convert.DBNull;
+            public void SetNameNull() {
+                this[this.tableBase.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

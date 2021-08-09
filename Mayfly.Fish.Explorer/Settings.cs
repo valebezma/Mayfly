@@ -103,13 +103,13 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadAge(SpeciesKey.SpeciesRow speciesRow)
         {
-            Age age = Service.GetGamingAge(speciesRow.Name);
+            Age age = Service.GetGamingAge(speciesRow.Species);
 
             if (age == null) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetAge);
-            gridRow.Cells[ColumnAgeSpecies.Index].Value = speciesRow.Name;
+            gridRow.Cells[ColumnAgeSpecies.Index].Value = speciesRow.Species;
             gridRow.Cells[ColumnAgeValue.Index].Value = age;
 
             spreadSheetAge.Rows.Add(gridRow);
@@ -117,12 +117,12 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadMeasure(SpeciesKey.SpeciesRow speciesRow)
         {
-            double measure = Service.GetMeasure(speciesRow.Name);
+            double measure = Service.GetMeasure(speciesRow.Species);
             if (double.IsNaN(measure)) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetMeasure);
-            gridRow.Cells[ColumnMeasureSpecies.Index].Value = speciesRow.Name;
+            gridRow.Cells[ColumnMeasureSpecies.Index].Value = speciesRow.Species;
             gridRow.Cells[ColumnMeasureValue.Index].Value = measure;
 
             spreadSheetMeasure.Rows.Add(gridRow);
@@ -138,12 +138,12 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadCatchability(SpeciesKey.SpeciesRow speciesRow, Samplers.SamplerRow samplerRow)
         {
-            double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Name);
+            double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Species);
             if (catchability == UserSettings.DefaultCatchability) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetCatchability);
-            gridRow.Cells[columnCatchabilitySpecies.Index].Value = speciesRow.Name;
+            gridRow.Cells[columnCatchabilitySpecies.Index].Value = speciesRow.Species;
             gridRow.Cells[columnCatchabilityValue.Index].Value = catchability;
             gridRow.Tag = samplerRow;
             spreadSheetCatchability.Rows.Add(gridRow);

@@ -23,13 +23,13 @@ namespace Mayfly.Species
 
             this.Text = speciesRow.FullName;
 
-            labelSpecies.Text = speciesRow.Name;
+            labelSpecies.Text = speciesRow.Species;
 
             labelReference.Text = speciesRow.IsReferenceNull() ? 
                 Constants.Null : speciesRow.Reference;
 
-            labelLocal.Text = speciesRow.IsLocalNull() ? 
-                Constants.Null : speciesRow.Local;
+            labelLocal.Text = speciesRow.IsNameNull() ? 
+                Constants.Null : speciesRow.Name;
 
             labelTaxa.Text = string.Empty;
             SpeciesKey.RepRow[] reps = speciesRow.GetRepRows();
