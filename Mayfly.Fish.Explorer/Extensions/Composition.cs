@@ -255,7 +255,7 @@ namespace Mayfly.Fish.Explorer
                     if (content.HasFlag(CompositionColumn.Biomass)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Biomass, composition.BiomassFormat);
                     if (content.HasFlag(CompositionColumn.BiomassFraction)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
 
-                    if (content.HasFlag(CompositionColumn.SexRatio)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(category.GetSexualComposition());
+                    if (content.HasFlag(CompositionColumn.SexRatio)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(category.Sexes, composition.SexFormat);
                 }
 
                 table.EndRow();

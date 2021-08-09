@@ -337,12 +337,12 @@ namespace Mayfly
 
             public void AddCellRight(double value, int decimals)
             {
-                AddCell(value.ToSmallValueString(decimals.GetFormat()), ReportCellClass.Right);
+                AddCell(value.ToSmallValueString(decimals), ReportCellClass.Right);
             }
 
             public void AddCellRight(double value, int decimals, bool bold)
             {
-                AddCellRight(value.ToSmallValueString(decimals.GetFormat()), bold);
+                AddCellRight(value.ToSmallValueString(decimals), bold);
             }
 
             public void AddCellRight(decimal value, string format)

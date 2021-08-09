@@ -190,15 +190,15 @@ namespace Mayfly.Wild
 
         public Sample Masses(Data.SpeciesRow speciesRow)
         {
-
-            if (speciesRow == null) return new Sample();
-
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                if (individualRow.IsMassNull()) continue;
-                result.Add(individualRow.Mass);
+                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                {
+                    if (individualRow.IsMassNull()) continue;
+                    result.Add(individualRow.Mass);
+                }
             }
 
             return new Sample(result.ToArray());

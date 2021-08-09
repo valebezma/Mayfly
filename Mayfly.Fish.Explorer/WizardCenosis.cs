@@ -235,6 +235,7 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnSelectivityB.Index].Value = species.Mass;
                 gridRow.Cells[columnSelectivityBPer.Index].Value = species.BiomassFraction;
                 gridRow.Cells[columnSelectivityBpue.Index].Value = species.Biomass;
+                gridRow.Cells[columnSelectivitySex.Index].Value = species.Sexes;
 
                 spreadSheetSelectivity.Rows.Add(gridRow);
             }
@@ -288,7 +289,8 @@ namespace Mayfly.Fish.Explorer
                     columnSelectivityLength.DefaultCellStyle.Format,
                     columnSelectivityMass.DefaultCellStyle.Format,
 
-                    gearWizard.SelectedUnit.Unit);
+                    gearWizard.SelectedUnit.Unit,
+                    columnSelectivitySex.DefaultCellStyle.Format);
             }
 
             checkBoxByClass.Enabled =
@@ -377,9 +379,9 @@ namespace Mayfly.Fish.Explorer
                 ColumnCompositionB.DefaultCellStyle.Format,
                 ColumnCompositionBP.DefaultCellStyle.Format,
 
-                "", "",
+                "", "", 
 
-                gearWizard.SelectedUnit.Unit,
+                gearWizard.SelectedUnit.Unit, "",
 
                 ColumnCompositionOccurrance.DefaultCellStyle.Format,
                 ColumnCompositionDominance.DefaultCellStyle.Format);

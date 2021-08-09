@@ -1,0 +1,8 @@
+﻿table.fill td.overlay {
+    vertical-align: baseline;
+}
+
+table.fill img {
+    position: absolute;
+    z-index: 500;
+}

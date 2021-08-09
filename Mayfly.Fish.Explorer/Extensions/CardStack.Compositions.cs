@@ -322,15 +322,77 @@ namespace Mayfly.Fish.Explorer
         }
 
 
+        //public static SpeciesComposition GetClassedComposition(this CardStack[] classedStacks, Data.SpeciesRow speciesRow, FishSamplerType samplerType, ExpressionVariant variant)
+        //{
+        //    SpeciesComposition result = new SpeciesComposition();
 
-        public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow, double totalMass)
+        //    if (classedStacks.Length > 1)
+        //    {
+        //        foreach (string mesh in classes)
+        //        {
+        //            CardStack meshData = stack.GetStack(samplerType, mesh);
+
+        //            double q = meshData.Quantity(speciesRow);
+
+        //            if (q == 0) continue;
+
+        //            SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
+        //            swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
+        //            swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
+        //            swarm.Name = mesh;
+
+        //            result.AddCategory(swarm);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        SpeciesSwarm swarm = samplerData.GetSwarm(speciesRow);
+        //        swarm.Abundance = samplerData.GetAverageAbundance(speciesRow);
+        //        swarm.Biomass = samplerData.GetAverageBiomass(speciesRow);
+
+        //        result.AddCategory(swarm);
+        //    }
+
+        //    result.Unit = new UnitEffort(samplerType, variant).Unit;
+        //    return result;
+        //}
+
+
+        public static SpeciesComposition GetClassedComposition(this IEnumerable<CardStack> classedStacks, Data.SpeciesRow speciesRow, FishSamplerType samplerType, UnitEffort ue)
         {
-            CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
-                speciesRow);
-            result.ScaleUp(totalMass);
+            SpeciesComposition result = new SpeciesComposition();
+
+            if (classedStacks.Count() > 1)
+            {
+                foreach (CardStack meshData in classedStacks)
+                {
+                    double q = meshData.Quantity(speciesRow);
+
+                    if (q == 0) continue;
+
+                    SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
+                    swarm.Index = meshData.GetEffort(samplerType, ue.Variant);
+                    //swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
+                    //swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
+                    swarm.Name = meshData.Name;
+
+                    result.AddCategory(swarm);
+                }
+            }
+            else
+            {
+                SpeciesSwarm swarm = classedStacks.First().GetSwarm(speciesRow);
+                swarm.Index = classedStacks.First().GetEffort(samplerType, ue.Variant);
+                swarm.Name = classedStacks.First().Name;
+
+                result.AddCategory(swarm);
+            }
+
+            result.Unit = ue.Unit;
             return result;
         }
+
+
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
             GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow)
@@ -356,6 +418,15 @@ namespace Mayfly.Fish.Explorer
 
             result.GetWeighted();
 
+            return result;
+        }
+
+        public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
+            GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow, double totalMass)
+        {
+            CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
+                speciesRow);
+            result.ScaleUp(totalMass);
             return result;
         }
 

@@ -66,7 +66,7 @@ namespace Mayfly.Mathematics.Statistics
             //textBoxCV.Text = Sample.GetVariation().ToString("P2");
             textBoxStdDeviation.Text = Service.PresentError(Sample.StandardDeviation);
 
-            textBoxSkewness.Text = Sample.Skewness.ToString(4.GetFormat());
+            textBoxSkewness.Text = Sample.Skewness.ToString("N4");
             //textBoxKurtosis.Text = Sample.GetKurtosis().ToString(Textual.Mask(4));
 
             if (Sample.Count >= 3)
@@ -74,7 +74,7 @@ namespace Mayfly.Mathematics.Statistics
                 TestResult testResult = Sample.KolmogorovSmirnovTest(
                     new NormalDistribution(Sample.Mean, Sample.CorrectedStandardDeviation));
 
-                textBoxNormality.Text = testResult.Statistic.Value.ToString(4.GetFormat());
+                textBoxNormality.Text = testResult.Statistic.Value.ToString("N4");
 
                 if (testResult.Probability > UserSettings.DefaultAlpha)
                 {

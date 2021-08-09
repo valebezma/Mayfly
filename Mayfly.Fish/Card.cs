@@ -1724,7 +1724,7 @@ namespace Mayfly.Fish
             {
                 Polygon poly = (Polygon)e.LocationObject;
                 PreciseAreaMode = true;
-                textBoxExactArea.Text = (poly.Area / 10000d).ToString(4.GetFormat());
+                textBoxExactArea.Text = (poly.Area / 10000d).ToString("N4");
                 SetEndpoint(poly.Points.Last());
 
                 //HandlePolygon((Polygon)e.LocationObject);
@@ -1770,7 +1770,7 @@ namespace Mayfly.Fish
                     }
 
                     PreciseAreaMode = true;
-                    textBoxExactArea.Text = (s / 10000d).ToString(4.GetFormat());
+                    textBoxExactArea.Text = (s / 10000d).ToString("N4");
                     SetEndpoint(wpts.Last());
 
                     //HandlePolygon(new Polygon(track));

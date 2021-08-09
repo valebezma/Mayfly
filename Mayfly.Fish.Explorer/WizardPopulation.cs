@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
+using Mayfly.Mathematics.Statistics;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -23,6 +24,8 @@ namespace Mayfly.Fish.Explorer
         public Data.SpeciesRow SpeciesRow;
 
         public SpeciesSwarm Swarm;
+
+        SpeciesComposition SelectivityDisplay;
 
         public AgeComposition AgeStructure;
 
@@ -46,7 +49,7 @@ namespace Mayfly.Fish.Explorer
 
             pageStart.SetNavigation(false);
 
-            Log.Write(EventType.WizardStarted, "Stock composition wizard is started for {0}.", 
+            Log.Write(EventType.WizardStarted, "Stock composition wizard is started for {0}.",
                 speciesRow.Species);
 
             structureCalculator.RunWorkerAsync();
@@ -54,10 +57,10 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Report GetReport() 
+        public Report GetReport()
         {
             Report report = new Report(string.Format(Resources.Reports.Header.SummaryPopulation, SpeciesRow.KeyRecord.FullNameReport));
-            
+
             Data.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -93,7 +96,7 @@ namespace Mayfly.Fish.Explorer
             return report;
         }
 
-        public void SetGearSet(WizardGearSet _gearWizard) 
+        public void SetGearSet(WizardGearSet _gearWizard)
         {
             gearWizard = _gearWizard;
         }
@@ -122,12 +125,12 @@ namespace Mayfly.Fish.Explorer
 
             labelBasic.ResetFormatted(Swarm);
 
-            buttonL.Text = new Mathematics.Statistics.SampleDisplay(Swarm.LengthSample).ToString("s");
-            buttonW.Text = new Mathematics.Statistics.SampleDisplay(Swarm.MassSample).ToString("s");
+            buttonL.Text = new SampleDisplay(Swarm.LengthSample).ToString("s");
+            buttonW.Text = new SampleDisplay(Swarm.MassSample).ToString("s");
 
             pageAge.Suppress = AgeStructure == null;
             checkBoxAge.Checked = AgeStructure != null;
-        } 
+        }
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
@@ -135,7 +138,7 @@ namespace Mayfly.Fish.Explorer
 
         private void PageBasic_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (AgeStructure != null)
+            if (Visible)
             {
                 if (gearWizard == null)
                 {
@@ -156,42 +159,116 @@ namespace Mayfly.Fish.Explorer
 
         private void gearWizard_AfterDataSelected(object sender, EventArgs e)
         {
+            wizardExplorer.EnsureSelected(pageCpue);
             this.Replace(gearWizard);
+
+            columnSelectivityNpue.ResetFormatted(gearWizard.SelectedUnit.Unit);
+            columnSelectivityBpue.ResetFormatted(gearWizard.SelectedUnit.Unit);
+            labelNpueUnit.ResetFormatted(gearWizard.SelectedUnit.Unit);
+            labelBpueUnit.ResetFormatted(gearWizard.SelectedUnit.Unit);
+
+            selectivityCalculator.RunWorkerAsync();
+        }
+
+        private void PageCpue_Rollback(object sender, WizardPageConfirmEventArgs e)
+        {
+            if (Visible)
+            {
+                gearWizard.Replace(this);
+            }
+        }
+
+        private void SelectivityCalculator_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SelectivityDisplay = gearWizard.SelectedStacks.GetClassedComposition(SpeciesRow, gearWizard.SelectedSamplerType, gearWizard.SelectedUnit);
+            Swarm.Abundance = SelectivityDisplay.TotalAbundance / SelectivityDisplay.Count;
+            Swarm.Biomass = SelectivityDisplay.TotalBiomass / SelectivityDisplay.Count;
+        }
+
+        private void SelectivityCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            spreadSheetSelectivity.Rows.Clear();
+
+            foreach (SpeciesSwarm species in SelectivityDisplay)
+            {
+                DataGridViewRow gridRow = new DataGridViewRow();
+
+                gridRow.Height = spreadSheetSelectivity.RowTemplate.Height;
+                gridRow.CreateCells(spreadSheetSelectivity);
+
+                gridRow.Cells[columnSelectivityClass.Index].Value = species;
+                gridRow.Cells[columnSelectivityL.Index].Value = new SampleDisplay(species.LengthSample);
+                gridRow.Cells[columnSelectivityW.Index].Value = new SampleDisplay(species.MassSample);
+                gridRow.Cells[columnSelectivityN.Index].Value = species.Quantity;
+                gridRow.Cells[columnSelectivityNpue.Index].Value = species.Abundance;
+                gridRow.Cells[columnSelectivityB.Index].Value = species.Mass;
+                gridRow.Cells[columnSelectivityBpue.Index].Value = species.Biomass;
+                gridRow.Cells[columnSelectivitySex.Index].Value = species.Sexes;
+
+                spreadSheetSelectivity.Rows.Add(gridRow);
+            }
+
+            textBoxNpue.ResetFormatted(Swarm.Abundance);
+            textBoxBpue.ResetFormatted(Swarm.Biomass);
         }
 
         private void PageCpue_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            checkBoxAge_CheckedChanged(sender, e);
-
-            if (AgeStructure == null) return;
-
-            if (ageCompositionWizard == null)
+            if (Visible)
             {
-                ageCompositionWizard = new WizardComposition(Data, AgeStructure, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
-                ageCompositionWizard.Returned += AgeCompositionWizard_Returned;
-                ageCompositionWizard.Finished += ageCompositionWizard_Finished;
-            }
+                checkBoxAge_CheckedChanged(sender, e);
 
-            ageCompositionWizard.Replace(this);
-            ageCompositionWizard.Run(gearWizard);
+                if (AgeStructure == null) return;
+
+                if (ageCompositionWizard == null)
+                {
+                    ageCompositionWizard = new WizardComposition(Data, AgeStructure, SpeciesRow, CompositionColumn.MassSample | CompositionColumn.LengthSample);
+                    ageCompositionWizard.Returned += AgeCompositionWizard_Returned;
+                    ageCompositionWizard.Finished += ageCompositionWizard_Finished;
+                }
+
+                ageCompositionWizard.Replace(this);
+                ageCompositionWizard.Run(gearWizard);
+            }
         }
 
         private void AgeCompositionWizard_Returned(object sender, EventArgs e)
         {
+            wizardExplorer.EnsureSelected(pageCpue);
             this.Replace(ageCompositionWizard);
         }
 
         private void ageCompositionWizard_Finished(object sender, EventArgs e)
         {
-            this.Replace(ageCompositionWizard);
             wizardExplorer.EnsureSelected(pageAge);
+            this.Replace(ageCompositionWizard);
 
             checkBoxAge_CheckedChanged(sender, e);
 
             plotT.Series.Clear();
 
-            Series hist = new Series();
-            hist.ChartType = SeriesChartType.Column;
+            //Series hist = new Series();
+            //hist.ChartType = SeriesChartType.Column;
+
+            //double minx = double.MaxValue;
+            //double maxx = 0;
+            //double maxy = 0;
+
+            //foreach (AgeGroup ageGroup in ageCompositionWizard.CatchesComposition)
+            //{
+            //    hist.Points.AddXY(ageGroup.Age.Years + .5, ageGroup.AbundanceFraction);
+
+            //    minx = Math.Min(minx, ageGroup.Age.Years);
+            //    maxx = Math.Max(maxx, ageGroup.Age.Years);
+            //    maxy = Math.Max(maxy, ageGroup.AbundanceFraction);
+            //}
+
+            //plotT.Series.Add(hist);
+
+            Series all = new Series() { ChartType = SeriesChartType.StackedColumn };
+            Series juv = new Series() { ChartType = SeriesChartType.StackedColumn };
+            Series mal = new Series() { ChartType = SeriesChartType.StackedColumn };
+            Series fem = new Series() { ChartType = SeriesChartType.StackedColumn };
 
             double minx = double.MaxValue;
             double maxx = 0;
@@ -199,14 +276,24 @@ namespace Mayfly.Fish.Explorer
 
             foreach (AgeGroup ageGroup in ageCompositionWizard.CatchesComposition)
             {
-                hist.Points.AddXY(ageGroup.Age.Years + .5, ageGroup.AbundanceFraction);
+                double total = ageGroup.Quantity;
+
+                //if (total == 0) continue;
+
+                //if (juvN > 0) { juv.Points.AddXY(ageGroup.Age.Years + .5, juvN); }
+                //if (malN > 0) { mal.Points.AddXY(ageGroup.Age.Years + .5, malN); }
+                //if (femN > 0) { fem.Points.AddXY(ageGroup.Age.Years + .5, femN); }
+                //all.Points.AddXY(ageGroup.Age.Years + .5, total - juvN - malN - femN);
 
                 minx = Math.Min(minx, ageGroup.Age.Years);
                 maxx = Math.Max(maxx, ageGroup.Age.Years);
-                maxy = Math.Max(maxy, ageGroup.AbundanceFraction);
+                maxy = Math.Max(maxy, total);
             }
 
-            plotT.Series.Add(hist);
+            plotT.Series.Add(all);
+            plotT.Series.Add(juv);
+            plotT.Series.Add(mal);
+            plotT.Series.Add(fem);
 
             plotT.AxisXMin = minx;
             plotT.AxisXMax = maxx;
@@ -218,8 +305,11 @@ namespace Mayfly.Fish.Explorer
 
         private void pageAge_Rollback(object sender, WizardPageConfirmEventArgs e)
         {
-            if (this.Visible) ageCompositionWizard.Replace(this);
-        } 
+            if (Visible)
+            {
+                ageCompositionWizard.Replace(this);
+            }
+        }
 
         private void PageReport_Rollback(object sender, WizardPageConfirmEventArgs e)
         {
@@ -247,7 +337,6 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(false);
             reporter.RunWorkerAsync();
-            e.Cancel = true;
         }
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)
@@ -259,8 +348,8 @@ namespace Mayfly.Fish.Explorer
         {
             ((Report)e.Result).Run();
 
-            pageReport.SetNavigation(true);  
-            
+            pageReport.SetNavigation(true);
+
             Log.Write(EventType.WizardEnded, "Stock composition wizard is finished for {0}.", SpeciesRow.Species);
             if (!UserSettings.KeepWizard) Close();
         }

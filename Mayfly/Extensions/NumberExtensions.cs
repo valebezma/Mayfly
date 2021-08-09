@@ -98,6 +98,12 @@ namespace Mayfly.Extensions
             return result;
         }
 
+        public static string ToSmallValueString(this double value, int decimals)
+        {
+            string format = "N" + decimals;
+            return value.ToSmallValueString(format);
+        }
+
         public static bool IsDoubleConvertible(this Type type)
         {
             if (type == null) return false;

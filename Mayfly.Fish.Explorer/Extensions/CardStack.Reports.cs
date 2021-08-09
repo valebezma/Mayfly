@@ -494,52 +494,14 @@ namespace Mayfly.Fish.Explorer
                     report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph1_1, a);
                 }
 
-                foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
-                {
-                    CardStack samplerData = stack.GetStack(samplerType, variant);
-
-                    if (samplerData.Count == 0) continue;
-                    if (samplerData.Quantity(speciesRow) == 0) continue;
-
-                    string[] classes = stack.Classes(samplerType);
-
-                    UnitEffort ue = new UnitEffort(samplerType, variant);
-
-                    SpeciesComposition compos = new SpeciesComposition();
-                    compos.Unit = ue.Unit;
-
-                    if (classes.Length > 1)
-                    {
-                        foreach (string mesh in classes)
-                        {
-                            CardStack meshData = stack.GetStack(samplerType, mesh);
-
-                            double q = meshData.Quantity(speciesRow);
-
-                            if (q == 0) continue;
-
-                            SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
-                            swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
-                            swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
-                            swarm.Name = mesh;
-
-                            compos.AddCategory(swarm);
-                        }
-                    }
-                    else
-                    {
-                        SpeciesSwarm swarm = samplerData.GetSwarm(speciesRow);
-                        swarm.Abundance = samplerData.GetAverageAbundance(speciesRow);
-                        swarm.Biomass = samplerData.GetAverageBiomass(speciesRow);
-
-                        compos.AddCategory(swarm);
-                    }
-
-                    report.AddTable(compos.GetTable(CompositionColumn.LengthSample | CompositionColumn.MassSample |
-                        CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.Mass | CompositionColumn.Biomass,
-                        string.Format(Resources.Reports.Table.SampleSizeClasses, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay()),
-                        Resources.Reports.Caption.GearClass));
-                }
+                //foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
+                //{
+                //    SpeciesComposition compos = stack.GetClassedComposition(speciesRow, samplerType, variant);
+                //    report.AddTable(compos.GetTable(CompositionColumn.LengthSample | CompositionColumn.MassSample |
+                //        CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.Mass | CompositionColumn.Biomass,
+                //        string.Format(Resources.Reports.Table.SampleSizeClasses, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay()),
+                //        Resources.Reports.Caption.GearClass));
+                //}
             }
 
             if (level.HasFlag(SpeciesStatsLevel.Detailed))

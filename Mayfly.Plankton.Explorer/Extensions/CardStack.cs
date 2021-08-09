@@ -103,8 +103,10 @@ namespace Mayfly.Plankton.Explorer
                 category.Abundance = stack.GetAverageAbundance(speciesRow);
                 category.Biomass = stack.GetAverageBiomass(speciesRow);
 
-                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
+                category.SetSexualComposition(
+                    stack.Quantity(speciesRow, Sex.Juvenile),
+                    stack.Quantity(speciesRow, Sex.Male),
+                    stack.Quantity(speciesRow, Sex.Female));
 
             }
 

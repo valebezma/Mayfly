@@ -91,6 +91,7 @@ namespace Mayfly.Fish.Explorer
                 table.AddCellRight(species.Biomass, composition.BiomassFormat);
                 table.AddCellRight(species.BiomassFraction, composition.BiomassFractionFormat);
                 table.AddCellRight(species.Occurrence, composition.OccuranceFormat);
+                table.AddCellRight(species.Occurrence, composition.OccuranceFormat);
                 table.AddCellRight(species.Dominance, composition.DominanceFormat);
                 table.EndRow();
             }

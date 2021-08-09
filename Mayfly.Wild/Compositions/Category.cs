@@ -20,8 +20,10 @@ namespace Mayfly.Wild
             set
             {
                 index = value;
-                this.Abundance = this.Quantity / value; // Math.Round(this.Quantity / value, 0);
-                this.Biomass = this.Mass / value;
+
+                Abundance = Quantity / value; // Math.Round(this.Quantity / value, 0);
+                Biomass = Mass / value;
+                if (Sexes != null) Sexes.Weight = value;
             }
         }
 
@@ -45,13 +47,7 @@ namespace Mayfly.Wild
 
         // Fractions
 
-        public double Juveniles { get; set; }
-
-        public double Males { get; set; }
-
-        public double Females { get; set; }
-
-        // Samples
+        public Composition Sexes { get; set; }
 
         public Sample AbundanceSample { get; set; }
 
@@ -64,9 +60,9 @@ namespace Mayfly.Wild
         public Category()
         {
             Name = string.Empty;
+
             MassSample = new Sample();
             LengthSample = new Sample();
-            //Biomass = Abundance = Juveniles = Males = Females = double.NaN;
         }
 
         public Category(string name)
@@ -89,35 +85,24 @@ namespace Mayfly.Wild
             return new Category(this.Name);
         }
 
-        public void Reset()
+        public void SetSexualComposition(Category juveniles, Category males, Category females)
         {
-            Quantity = 0;
+            Sexes = new Composition("Sexual ratio", 3);
+            Sexes.AddCategory(juveniles);
+            Sexes.AddCategory(males);
+            Sexes.AddCategory(females);
 
-            Mass =
-            Juveniles =
-            Males =
-            Females =
-            0;
+            //Index = index;
         }
 
-        public void SetSexualComposition(double juveniles, double males, double females)
+        public void SetSexualComposition(int j, int m, int f)
         {
-            Juveniles = juveniles;
-            Males = males;
-            Females = females;
-        }
+            Sexes = new Composition("Sexual ratio", 3);
+            Sexes.AddCategory(new Category(Resources.Interface.Sex.Juvenile) { Quantity = j });
+            Sexes.AddCategory(new Category(Resources.Interface.Sex.Male) { Quantity = m });
+            Sexes.AddCategory(new Category(Resources.Interface.Sex.Female) { Quantity = f });
 
-        public void SetSexualComposition(int juveniles, int males, int females)
-        {
-            Juveniles = juveniles;
-            Males = males;
-            Females = females;
-        }
-
-        public string GetSexualComposition()
-        {
-            double total = Juveniles + Males + Females;
-            return double.IsNaN(Juveniles + Males + Females) ? Constants.Null : string.Format("{0:P0} : {1:P0} : {2:P0}", Juveniles / total, Males / total, Females / total);
+            Index = index;
         }
 
         public override string ToString()

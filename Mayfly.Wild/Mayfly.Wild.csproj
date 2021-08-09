@@ -575,6 +575,9 @@
     <None Include="Data.xss">
       <DependentUpon>Data.xsd</DependentUpon>
     </None>
+    <None Include="interface\weatherevts.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Samplers.xsc">
       <DependentUpon>Samplers.xsd</DependentUpon>
@@ -624,7 +627,14 @@
   <ItemGroup>
     <None Include="Resources\NewLog.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="interface\reports\css\wild\key.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="interface\reports\css\wild\strates.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

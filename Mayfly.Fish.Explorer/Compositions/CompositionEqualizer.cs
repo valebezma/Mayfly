@@ -79,18 +79,6 @@ namespace Mayfly.Fish.Explorer
 
         public void GetWeighted()
         {
-            GetSummed();
-
-            for (int i = 0; i < this.Count; i++)
-            {
-                this[i].Abundance /= this.Dimension;
-                this[i].Biomass /= this.Dimension;
-                //this[i].Abundance = Convert.ToDouble((int)this[i].Abundance + 1);
-            }
-        }
-
-        public void GetSummed()
-        {
             this.SamplesCount = 0;
 
             foreach (Composition composition in SeparateCompositions)
@@ -100,19 +88,21 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < this.Count; i++)
             {
-                this[i].Abundance = 0;
-                this[i].Biomass = 0;
-
-                double j = 0;
-                double m = 0;
-                double f = 0;
-
                 this[i].Quantity = 0;
                 this[i].Mass = 0;
                 this[i].Abundance = 0;
                 this[i].Biomass = 0;
 
                 this[i].SamplesCount = 0;
+
+                this[i].MassSample = new Sample();
+                this[i].LengthSample = new Sample();
+
+                this[i].Sexes = new Composition();
+
+                Category j = new Category();
+                Category m = new Category();
+                Category f = new Category();
 
                 foreach (Composition composition in SeparateCompositions)
                 {
@@ -121,57 +111,42 @@ namespace Mayfly.Fish.Explorer
                     this[i].Abundance += composition[i].Abundance;
                     this[i].Biomass += composition[i].Biomass;
 
+                    this[i].SamplesCount += composition[i].SamplesCount;
+
                     this[i].MassSample.Add(composition[i].MassSample);
                     this[i].LengthSample.Add(composition[i].LengthSample);
 
-                    this[i].SamplesCount += composition[i].SamplesCount;
+                    if (composition[i].Sexes != null)
+                    {
+                        j.Quantity += composition[i].Sexes[0].Quantity;
+                        j.Mass += composition[i].Sexes[0].Mass;
+                        j.Abundance += composition[i].Sexes[0].Abundance;
+                        j.Biomass += composition[i].Sexes[0].Biomass;
 
-                    // TODO: except non treated classes?
+                        m.Quantity += composition[i].Sexes[1].Quantity;
+                        m.Mass += composition[i].Sexes[1].Mass;
+                        m.Abundance += composition[i].Sexes[1].Abundance;
+                        m.Biomass += composition[i].Sexes[1].Biomass;
 
-                    if (double.IsNaN(composition[i].Juveniles)) continue;
-                    if (double.IsNaN(composition[i].Males)) continue;
-                    if (double.IsNaN(composition[i].Females)) continue;
-
-                    j += (composition[i].Juveniles / composition.Weight);
-                    m += (composition[i].Males / composition.Weight);
-                    f += (composition[i].Females / composition.Weight);
+                        f.Quantity += composition[i].Sexes[2].Quantity;
+                        f.Abundance += composition[i].Sexes[2].Abundance;
+                        f.Mass += composition[i].Sexes[2].Mass;
+                        f.Biomass += composition[i].Sexes[2].Biomass;
+                    }
                 }
 
                 this[i].SetSexualComposition(j, m, f);
             }
-        }
 
-        public void GetSummed(List<double> values)
-        {
             for (int i = 0; i < this.Count; i++)
             {
-                this[i].Abundance = 0;
-                this[i].Biomass = 0;
-
-                double j = 0;
-                double m = 0;
-                double f = 0;
-
-                //foreach (Composition composition in compositions)
-                for (int k = 0; k < this.Dimension; k++)
+                this[i].Abundance /= this.Dimension;
+                this[i].Biomass /= this.Dimension;
+                foreach (Category cat in this[i].Sexes)
                 {
-                    Composition composition = SeparateCompositions[k];
-
-                    this[i].Quantity += composition[i].Quantity;
-                    this[i].Mass += composition[i].Mass;
-                    this[i].Abundance += composition[i].Abundance * values[k];
-                    this[i].Biomass += composition[i].Biomass * values[k];
-
-                    if (double.IsNaN(composition[i].Juveniles)) continue;
-                    if (double.IsNaN(composition[i].Males)) continue;
-                    if (double.IsNaN(composition[i].Females)) continue;
-
-                    j += (composition[i].Juveniles / composition.Weight * values[k]);
-                    m += (composition[i].Males / composition.Weight * values[k]);
-                    f += (composition[i].Females / composition.Weight * values[k]);
+                    cat.Abundance /= this.Dimension;
+                    cat.Biomass /= this.Dimension;
                 }
-
-                this[i].SetSexualComposition(j, m, f);
             }
         }
 

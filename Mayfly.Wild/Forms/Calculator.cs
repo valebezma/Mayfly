@@ -208,7 +208,7 @@ namespace Mayfly.Wild
 
             if (IsCellSet)
             {
-                Cell.OwningColumn.DefaultCellStyle.Format = Precision.GetFormat();
+                Cell.OwningColumn.DefaultCellStyle.Format = "N" + Precision;
             }
         }
 

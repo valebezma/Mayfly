@@ -55,7 +55,6 @@ namespace Mayfly.Fish.Explorer
 
             columnComposition.ValueType =
                 ColumnCategory.ValueType =
-                ColumnSexRatio.ValueType =
                 typeof(string);
 
             this.RestoreAllCheckStates();
@@ -240,7 +239,7 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetCatches[ColumnB.Index, i].Value = CatchesComposition[i].Mass;
                 spreadSheetCatches[ColumnBPUE.Index, i].Value = CatchesComposition[i].Biomass;
                 spreadSheetCatches[ColumnBPUEF.Index, i].Value = CatchesComposition[i].BiomassFraction;
-                spreadSheetCatches[ColumnSexRatio.Index, i].Value = CatchesComposition[i].GetSexualComposition();
+                spreadSheetCatches[ColumnSexRatio.Index, i].Value = CatchesComposition[i].Sexes;
 
                 spreadSheetCatches.Rows[i].DefaultCellStyle.ForeColor =
                     CatchesComposition[i].Quantity == 0 ? Constants.InfantColor : spreadSheetCatches.ForeColor;
@@ -395,7 +394,8 @@ namespace Mayfly.Fish.Explorer
                 ColumnL.DefaultCellStyle.Format,
                 ColumnW.DefaultCellStyle.Format,
 
-                gearWizard.SelectedUnit.Unit);
+                gearWizard.SelectedUnit.Unit,
+                ColumnSexRatio.DefaultCellStyle.Format);
 
             if (Finished != null)
             {

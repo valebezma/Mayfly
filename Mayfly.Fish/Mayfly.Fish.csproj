@@ -279,6 +279,9 @@
     <None Include="Equipment.xss">
       <DependentUpon>Equipment.xsd</DependentUpon>
     </None>
+    <None Include="interface\samplerfish.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Resources\sriif.png" />
   </ItemGroup>

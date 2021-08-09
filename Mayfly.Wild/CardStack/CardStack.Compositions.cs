@@ -4,18 +4,22 @@
     {
         public SpeciesSwarm GetSwarm(Data.SpeciesRow speciesRow)
         {
-            return new SpeciesSwarm(speciesRow)
+            SpeciesSwarm result = new SpeciesSwarm(speciesRow)
             {
                 LengthSample = Lengths(speciesRow),
                 MassSample = Masses(speciesRow),
                 SamplesCount = GetLogRows(speciesRow).Length,
                 Quantity = (int)Quantity(speciesRow),
                 Mass = Mass(speciesRow),
-                Juveniles = this.Quantity(speciesRow, Sex.Juvenile),
-                Males = this.Quantity(speciesRow, Sex.Male),
-                Females = this.Quantity(speciesRow, Sex.Female),
                 Name = speciesRow.KeyRecord.Name
             };
+
+            result.SetSexualComposition(
+                this.Quantity(speciesRow, Sex.Juvenile),
+                this.Quantity(speciesRow, Sex.Male),
+                this.Quantity(speciesRow, Sex.Female));
+
+            return result;
         }
 
         public SpeciesComposition GetBasicCenosisComposition()

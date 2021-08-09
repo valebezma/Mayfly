@@ -281,20 +281,29 @@ namespace Mayfly.Extensions
             return (o is Form) ? (Form)o : GetForm((Control)o);
         }
 
+        //public static void EnsureSelected(this WizardControl ctrl, WizardPage page, bool forward)
         public static void EnsureSelected(this WizardControl ctrl, WizardPage page)
         {
             if (ctrl.SelectedPage == null) return;
 
             if (ctrl.SelectedPage == page) return;
 
-            while (ctrl.SelectedPage != ctrl.Pages[0]) {
-                ctrl.PreviousPage();
-                if (ctrl.SelectedPage == page) return;
-            }
+            //else
+            //{
+                while (ctrl.SelectedPage != ctrl.Pages[0])
+                {
+                    ctrl.PreviousPage();
+                    if (ctrl.SelectedPage == page) return;
+                }
+            //}
 
-            while (ctrl.SelectedPage != page) {
-                ctrl.NextPage();
-            }
+            //if (forward)
+            //{
+                while (ctrl.SelectedPage != page)
+                {
+                    ctrl.NextPage();
+                }
+            //}
         }
 
 
