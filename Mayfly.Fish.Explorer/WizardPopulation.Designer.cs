@@ -46,6 +46,19 @@
             this.labelW = new System.Windows.Forms.Label();
             this.labelL = new System.Windows.Forms.Label();
             this.labelBasic = new System.Windows.Forms.Label();
+            this.pageCpue = new AeroWizard.WizardPage();
+            this.spreadSheet1 = new Mayfly.Controls.SpreadSheet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pageAge = new AeroWizard.WizardPage();
             this.plotT = new Mayfly.Mathematics.Charts.Plot();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,27 +70,14 @@
             this.checkBoxGears = new System.Windows.Forms.CheckBox();
             this.structureCalculator = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
-            this.pageCpue = new AeroWizard.WizardPage();
-            this.spreadSheet1 = new Mayfly.Controls.SpreadSheet();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageBasic.SuspendLayout();
+            this.pageCpue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheet1)).BeginInit();
             this.pageAge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).BeginInit();
             this.pageReport.SuspendLayout();
-            this.pageCpue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheet1)).BeginInit();
             this.SuspendLayout();
             // 
             // wizardExplorer
@@ -161,6 +161,109 @@
             resources.ApplyResources(this.labelBasic, "labelBasic");
             this.labelBasic.Name = "labelBasic";
             // 
+            // pageCpue
+            // 
+            this.pageCpue.Controls.Add(this.spreadSheet1);
+            this.pageCpue.Controls.Add(this.label2);
+            this.pageCpue.Controls.Add(this.textBox2);
+            this.pageCpue.Controls.Add(this.label3);
+            this.pageCpue.Controls.Add(this.textBox1);
+            this.pageCpue.Controls.Add(this.label4);
+            this.pageCpue.Name = "pageCpue";
+            resources.ApplyResources(this.pageCpue, "pageCpue");
+            this.pageCpue.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageCpue_Commit);
+            // 
+            // spreadSheet1
+            // 
+            resources.ApplyResources(this.spreadSheet1, "spreadSheet1");
+            this.spreadSheet1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.spreadSheet1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.spreadSheet1.DefaultDecimalPlaces = 0;
+            this.spreadSheet1.Name = "spreadSheet1";
+            this.spreadSheet1.ReadOnly = true;
+            this.spreadSheet1.RowHeadersVisible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle2.Format = "N3";
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewCellStyle3.Format = "N3";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewCellStyle4.Format = "N3";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewCellStyle5.Format = "N3";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // pageAge
             // 
             this.pageAge.Controls.Add(this.plotT);
@@ -243,108 +346,6 @@
             this.reporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reporter_DoWork);
             this.reporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reporter_RunWorkerCompleted);
             // 
-            // pageCpue
-            // 
-            this.pageCpue.Controls.Add(this.spreadSheet1);
-            this.pageCpue.Controls.Add(this.label2);
-            this.pageCpue.Controls.Add(this.textBox2);
-            this.pageCpue.Controls.Add(this.label3);
-            this.pageCpue.Controls.Add(this.textBox1);
-            this.pageCpue.Controls.Add(this.label4);
-            this.pageCpue.Name = "pageCpue";
-            resources.ApplyResources(this.pageCpue, "pageCpue");
-            // 
-            // spreadSheet1
-            // 
-            resources.ApplyResources(this.spreadSheet1, "spreadSheet1");
-            this.spreadSheet1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.spreadSheet1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.spreadSheet1.DefaultDecimalPlaces = 0;
-            this.spreadSheet1.Name = "spreadSheet1";
-            this.spreadSheet1.ReadOnly = true;
-            this.spreadSheet1.RowHeadersVisible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewCellStyle2.Format = "N3";
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewCellStyle3.Format = "N3";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewCellStyle4.Format = "N3";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewCellStyle5.Format = "N3";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            // 
-            // textBox2
-            // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            // 
             // WizardStockComposition
             // 
             resources.ApplyResources(this, "$this");
@@ -355,13 +356,13 @@
             this.pageStart.ResumeLayout(false);
             this.pageBasic.ResumeLayout(false);
             this.pageBasic.PerformLayout();
+            this.pageCpue.ResumeLayout(false);
+            this.pageCpue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheet1)).EndInit();
             this.pageAge.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).EndInit();
             this.pageReport.ResumeLayout(false);
             this.pageReport.PerformLayout();
-            this.pageCpue.ResumeLayout(false);
-            this.pageCpue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheet1)).EndInit();
             this.ResumeLayout(false);
 
         }

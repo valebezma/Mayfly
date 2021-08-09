@@ -150,11 +150,16 @@ namespace Mayfly.Fish.Explorer
 
         private void gearWizard_Returned(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(pageStart);
+            wizardExplorer.EnsureSelected(pageBasic);
             this.Replace(gearWizard);
         }
 
         private void gearWizard_AfterDataSelected(object sender, EventArgs e)
+        {
+            this.Replace(gearWizard);
+        }
+
+        private void PageCpue_Commit(object sender, WizardPageConfirmEventArgs e)
         {
             checkBoxAge_CheckedChanged(sender, e);
 
@@ -173,7 +178,7 @@ namespace Mayfly.Fish.Explorer
 
         private void AgeCompositionWizard_Returned(object sender, EventArgs e)
         {
-            gearWizard.Replace(ageCompositionWizard);
+            this.Replace(ageCompositionWizard);
         }
 
         private void ageCompositionWizard_Finished(object sender, EventArgs e)
