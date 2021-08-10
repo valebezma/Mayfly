@@ -110,12 +110,17 @@ namespace Mayfly.Extensions
 
         public static string StripHTML(this string input)
         {
-            return Regex.Replace(input, "<.*?>", String.Empty);
+            return Regex.Replace(input, "<.*?>", string.Empty);
         }
 
         public static string StripNumbers(this string input)
         {
             return Regex.Replace(input, @"[\d-]", string.Empty);
+        }
+
+        public static string StripNonNumbers(this string input)
+        {
+            return Regex.Replace(input, @"[^\d]", string.Empty);
         }
 
         public static string GetLocalizedValue(this string value)

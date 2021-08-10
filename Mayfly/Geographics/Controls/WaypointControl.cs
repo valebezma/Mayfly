@@ -13,7 +13,21 @@ namespace Mayfly.Geographics
 
         public event LocationDataEventHandler LocationImported;
 
-        public Waypoint Waypoint { get; set; }
+        Waypoint waypoint;
+
+        public Waypoint Waypoint
+        {
+            get
+            {
+                return waypoint;
+            }
+
+            set
+            {
+                waypoint = value;
+                UpdateValues();
+            }
+        }
 
         string dateTimeFormat;
 
@@ -41,13 +55,15 @@ namespace Mayfly.Geographics
                 coordinateFormat = value;
 
                 maskedTextBoxLatitude.Mask = Coordinate.GetMask(coordinateFormat);
-                if (maskedTextBoxLatitude.Text.IsAcceptable()) {
+                if (maskedTextBoxLatitude.Text.IsAcceptable())
+                {
                     //Coordinate latitude = new Coordinate(maskedTextBoxLatitude.Text, false, labelLat.Text == Mayfly.Geographics.Formats.dirS, coordinateFormat);
                     maskedTextBoxLatitude.Text = Waypoint.Latitude.ToMaskedText(coordinateFormat);
                 }
 
                 maskedTextBoxLongitude.Mask = Coordinate.GetMask(coordinateFormat);
-                if (maskedTextBoxLongitude.Text.IsAcceptable()) {
+                if (maskedTextBoxLongitude.Text.IsAcceptable())
+                {
                     //Coordinate longitude = new Coordinate(maskedTextBoxLongitude.Text, true, labelLng.Text == Mayfly.Geographics.Formats.dirW, coordinateFormat);
                     maskedTextBoxLongitude.Text = Waypoint.Longitude.ToMaskedText(coordinateFormat);
                 }
@@ -149,7 +165,7 @@ namespace Mayfly.Geographics
 
             if (textBoxAltitude.Text.IsDoubleConvertible()) { Waypoint.Altitude = double.Parse(textBoxAltitude.Text); }
             else { Waypoint.Altitude = double.NaN; }
-            
+
             Waypoint.TimeMark = dateTimePickerDate.Value;
         }
 
@@ -177,9 +193,7 @@ namespace Mayfly.Geographics
                 if (!coord.IsUnknown)
                 {
                     Log.Write(coord.ToString());
-                    Waypoint = new Waypoint(coord.Latitude, coord.Longitude, DateTime.Now);
-                    Waypoint.Altitude = coord.Altitude;
-                    UpdateValues();
+                    Waypoint = new Waypoint(coord.Latitude, coord.Longitude, DateTime.Now) { Altitude = coord.Altitude };
                 }
             }
         }
@@ -219,6 +233,13 @@ namespace Mayfly.Geographics
                     e.Effect = DragDropEffects.Copy;
                 }
             }
+            else if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                if (Waypoint.Parse((string)e.Data.GetData(DataFormats.StringFormat)) != null)
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+            }
         }
 
         private void locationData_DragDrop(object sender, DragEventArgs e)
@@ -227,12 +248,11 @@ namespace Mayfly.Geographics
             {
                 string[] fileNames = IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
                     IO.InterfaceLocation.OpenExtensions);
-
-                if (fileNames.Length > 0)
-                {
-                    e.Effect = DragDropEffects.None;
-                    locationData_Selected(fileNames);
-                }
+                locationData_Selected(fileNames);
+            }
+            else if (e.Data.GetDataPresent(DataFormats.StringFormat))
+            {
+                Waypoint = Waypoint.Parse((string)e.Data.GetData(DataFormats.StringFormat));
             }
         }
 
@@ -254,7 +274,6 @@ namespace Mayfly.Geographics
         private void waypoints_WaypointSelected(object sender, LocationEventArgs e)
         {
             Waypoint = (Waypoint)e.LocationObject;
-            UpdateValues();
         }
 
         private void dateTimePickerDate_ValueChanged(object sender, EventArgs e)

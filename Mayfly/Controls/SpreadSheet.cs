@@ -382,7 +382,7 @@ namespace Mayfly.Controls
         {
             base.OnEditingControlShowing(e);
 
-            if (e.Control is TextBox) 
+            if (e.Control is TextBox)
             {
                 TextBox editBox = e.Control as TextBox;
                 editBox.KeyPress += editingControl_KeyPress;
@@ -452,8 +452,8 @@ namespace Mayfly.Controls
 
                 checkBoxHider.Visible = true;
                 Rectangle rect = this.GetColumnDisplayRectangle(RowVisibilityColumn.Index, true);
-                checkBoxHider.Location = new Point(rect.Location.X + rect.Width / 2 - checkBoxHider.Width / 2, 
-                    rect.Location.Y + base.ColumnHeadersHeight /2 - checkBoxHider.Height / 2);   
+                checkBoxHider.Location = new Point(rect.Location.X + rect.Width / 2 - checkBoxHider.Width / 2,
+                    rect.Location.Y + base.ColumnHeadersHeight / 2 - checkBoxHider.Height / 2);
                 checkBoxHider.BringToFront();
 
                 foreach (DataGridViewRow gridRow in Rows)
@@ -599,15 +599,15 @@ namespace Mayfly.Controls
             }
             else if (Columns[e.ColumnIndex].ValueType == typeof(double))
             {
-                    try
-                    {
-                        e.Value = ((double)e.Value).ToSmallValueString(e.CellStyle.Format);
-                        e.FormattingApplied = true;
-                    }
-                    catch
-                    {
-                        e.FormattingApplied = false;
-                    }
+                try
+                {
+                    e.Value = ((double)e.Value).ToSmallValueString(e.CellStyle.Format);
+                    e.FormattingApplied = true;
+                }
+                catch
+                {
+                    e.FormattingApplied = false;
+                }
             }
 
             DataGridViewCell gridCell = this[e.ColumnIndex, e.RowIndex];
@@ -622,7 +622,7 @@ namespace Mayfly.Controls
                 DataGridViewContentAlignment.MiddleCenter;
 
             e.CellStyle.ForeColor = showNormal ?
-                gridCell.InheritedStyle.ForeColor : 
+                gridCell.InheritedStyle.ForeColor :
                 Mayfly.Constants.InfantColor;
 
             base.OnCellFormatting(e);
@@ -655,19 +655,34 @@ namespace Mayfly.Controls
             Point hitPoint = this.PointToClient(new Point(drgevent.X, drgevent.Y));
             HitTestInfo hit = this.HitTest(hitPoint.X, hitPoint.Y);
 
-            Log.Write(hit.ToString());
+            //Log.Write(hit.ToString());
 
-            if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
-                hit.Type == DataGridViewHitTestType.Cell &&
-                this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            if (hit.Type == DataGridViewHitTestType.Cell)
             {
-                drgevent.Effect = DragDropEffects.Link;
+                if (Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+                {
+                    if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false))
+                    {
+                        drgevent.Effect = DragDropEffects.Link;
+                    }
+                    else if (drgevent.Data.GetDataPresent(DataFormats.StringFormat, true))
+                    {
+                        drgevent.Effect = DragDropEffects.Link;
+                    }
+                }
             }
+
+            //if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
+            //    hit.Type == DataGridViewHitTestType.Cell &&
+            //    this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            //{
+            //    drgevent.Effect = DragDropEffects.Link;
+            //}
             //else
             //{
             //    drgevent.Effect = DragDropEffects.None;
             //}
-            
+
             base.OnDragOver(drgevent);
         }
 
@@ -679,31 +694,60 @@ namespace Mayfly.Controls
 
             Point hitPoint = this.PointToClient(new Point(drgevent.X, drgevent.Y));
             HitTestInfo hit = this.HitTest(hitPoint.X, hitPoint.Y);
-            
-            if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
-                hit.Type == DataGridViewHitTestType.Cell &&
-                this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+
+            if (hit.Type == DataGridViewHitTestType.Cell)
             {
-                string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
-                    IO.InterfaceLocation.OpenExtensions);
+                dropCell = this[hit.ColumnIndex, hit.RowIndex];
 
-                if (filenames.Length > 0)
+                if (Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
                 {
-                    drgevent.Effect = DragDropEffects.None;
+                    if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false))
+                    {
+                        string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
+                            IO.InterfaceLocation.OpenExtensions);
 
-                    ListLocation locationSelection = new ListLocation(filenames);
-                    dropCell = this[hit.ColumnIndex, hit.RowIndex];
-                    locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
-                    locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
-                    locationSelection.ShowDialog(this);
-                    
-                    //ListWaypoints waypoints = new ListWaypoints(filenames);
-                    //waypoints.Tag = this[hit.ColumnIndex, hit.RowIndex];
-                    //waypoints.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
-                    //waypoints.WaypointSelected += new LocationEventHandler(waypoints_WaypointSelected);
-                    //waypoints.Show(this);
+                        if (filenames.Length > 0)
+                        {
+                            drgevent.Effect = DragDropEffects.None;
+
+                            ListLocation locationSelection = new ListLocation(filenames);
+                            locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+                            locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
+                            locationSelection.ShowDialog(this);
+                        }
+
+                    }
+                    else if (drgevent.Data.GetDataPresent(DataFormats.StringFormat, true))
+                    {
+                        dropCell.Value = Waypoint.Parse((string)drgevent.Data.GetData(DataFormats.StringFormat));
+                    }
                 }
             }
+
+            //if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
+            //    hit.Type == DataGridViewHitTestType.Cell &&
+            //    this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            //{
+            //    string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
+            //        IO.InterfaceLocation.OpenExtensions);
+
+            //    if (filenames.Length > 0)
+            //    {
+            //        drgevent.Effect = DragDropEffects.None;
+
+            //        ListLocation locationSelection = new ListLocation(filenames);
+            //        dropCell = this[hit.ColumnIndex, hit.RowIndex];
+            //        locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+            //        locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
+            //        locationSelection.ShowDialog(this);
+
+            //        //ListWaypoints waypoints = new ListWaypoints(filenames);
+            //        //waypoints.Tag = this[hit.ColumnIndex, hit.RowIndex];
+            //        //waypoints.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+            //        //waypoints.WaypointSelected += new LocationEventHandler(waypoints_WaypointSelected);
+            //        //waypoints.Show(this);
+            //    }
+            //}
         }
 
         private void waypoints_WaypointSelected(object sender, LocationEventArgs e)

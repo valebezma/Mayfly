@@ -293,9 +293,8 @@ namespace Mayfly.Extensions
                 {
                     gridCell.Value = Convert.ChangeType(value, gridCell.OwningColumn.ValueType);
                 }
-                catch //(InvalidCastException)
+                catch
                 {
-                    //    gridCell.Value = null;
                     try
                     {
                         MethodInfo parseMethod = gridCell.OwningColumn.ValueType.GetMethod("Parse");

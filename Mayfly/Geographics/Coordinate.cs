@@ -3,19 +3,10 @@ using System.Linq;
 using Mayfly;
 using System.Globalization;
 using System.ComponentModel;
+using Mayfly.Extensions;
 
 namespace Mayfly.Geographics
 {
-    ///// <summary>
-    ///// Mode for displaying coordinates
-    ///// </summary>
-    //public enum CoordinateFormat
-    //{
-    //    Degrees,
-    //    DegreesMinutes, 
-    //    DegreesMinutesSeconds 
-    //};
-
     public class Coordinate : IComparable, IFormattable
     {
         /// <summary>
@@ -38,10 +29,9 @@ namespace Mayfly.Geographics
         /// <summary>
         /// Minutes value of coordinate (decimal)
         /// </summary>
-        public double Minutes 
+        public double Minutes
         {
-            get; 
-            set; 
+            get { return Math.Round((Math.Abs(Degrees) % 1) * 60, 4); }
         }
         
         /// <summary>
@@ -49,8 +39,7 @@ namespace Mayfly.Geographics
         /// </summary>
         public double Seconds 
         {
-            get;
-            set;
+            get { return Math.Round((Minutes % 1) * 60, 2); }
         }
 
         public string Cardinal { get; private set; }
@@ -61,7 +50,6 @@ namespace Mayfly.Geographics
         {
             Degrees = value;
             Cardinal = islongitude ? (value > 0 ? "E": "W") : (value > 0 ? "N": "S");
-            Reset();
         }
 
         public Coordinate(object value, bool islongitude)  : this(Convert.ToDouble(value, CultureInfo.InvariantCulture), islongitude) {  }
@@ -82,20 +70,15 @@ namespace Mayfly.Geographics
                 switch (format)
                 {
                     case "d":
-                        Degrees = Math.Round(double.Parse(stringValue) / 1000000, 6);
-                        Minutes = Math.Round((Degrees - Math.Floor(Degrees)) * 60, 4);
-                        Seconds = Math.Round((Minutes - Math.Floor(Minutes)) * 60, 2);
+                        Degrees = double.Parse(stringValue) / 1000000;
                         break;
                     case "dm":
-                        Minutes = Math.Round(double.Parse(stringValue.Substring(3, 6)) / 10000, 4);
-                        Degrees = Math.Round(double.Parse(stringValue.Substring(0, 3)) + (Minutes / 60), 6);
-
-                        Seconds = Math.Round((Minutes - Math.Floor(Minutes)) * 60, 2);
+                        Degrees = double.Parse(stringValue.Substring(0, 3)) + (double.Parse(stringValue.Substring(3, 6)) / 10000) / 60;
                         break;
                     case "dms":
-                        Seconds = Math.Round(double.Parse(stringValue.Substring(5, 4)) / 100, 2);
-                        Minutes = Math.Round(double.Parse(stringValue.Substring(3, 2)) + (Seconds / 60), 4);
-                        Degrees = Math.Round(double.Parse(stringValue.Substring(0, 3)) + (Minutes / 60), 6);
+                        double sec = double.Parse(stringValue.Substring(5, 4)) / 100;
+                        double min = double.Parse(stringValue.Substring(3, 2)) + sec / 60;
+                        Degrees = double.Parse(stringValue.Substring(0, 3)) + min / 60;
                         break;
                 }
             }
@@ -105,15 +88,9 @@ namespace Mayfly.Geographics
                 Degrees = -Degrees;
             }
 
+            Cardinal = islongitude ? (Degrees > 0 ? "E" : "W") : (Degrees > 0 ? "N" : "S");
         }
 
-        
-
-        public void Reset()
-        {
-            Minutes = (Math.Abs(Degrees) - Math.Floor(Math.Abs(Degrees))) * 60;
-            Seconds = (Math.Abs(Minutes) - Math.Floor(Math.Abs(Minutes))) * 60;
-        }
 
         /// <summary>
         /// Returns coordinate textual presentation w/o direction mark
@@ -122,43 +99,45 @@ namespace Mayfly.Geographics
         /// <returns></returns>
         public string ToMaskedText(string format)
         {
-            string result = string.Empty;
+            return ToString(format).StripNonNumbers();
 
-            switch (format)
-            {
-                case "d":
-                    result = Math.Abs(Degrees).ToString("000.000000");
-                    break;
-                case "dm":
-                    result = Math.Floor(Math.Abs(Degrees)).ToString("000");
-                    result += Minutes.ToString("00.0000");
-                    break;
-                case "dms":
-                    result = Math.Floor(Math.Abs(Degrees)).ToString("000");
-                    result += Math.Floor(Minutes).ToString("00");
-                    result += Seconds.ToString("00.00");
-                    break;
-                default:
-                    result = Math.Abs(Degrees).ToString(format);
-                    break;
-            }
+            //string result;
 
-            while (result.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator))
-            {
-                result = result.Remove(result.IndexOf(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator), 1);
-            }
+            //switch (format)
+            //{
+            //    case "d":
+            //        result = Math.Abs(Degrees).ToString("000.000000");
+            //        break;
+            //    case "dm":
+            //        result = Math.Floor(Math.Abs(Degrees)).ToString("000");
+            //        result += Minutes.ToString("00.0000");
+            //        break;
+            //    case "dms":
+            //        result = Math.Floor(Math.Abs(Degrees)).ToString("000");
+            //        result += Math.Floor(Minutes).ToString("00");
+            //        result += Seconds.ToString("00.00");
+            //        break;
+            //    default:
+            //        result = Math.Abs(Degrees).ToString(format);
+            //        break;
+            //}
 
-            if (result.Length > 9)
-            {
-                result = result.Substring(0, 8);
-            }
+            //while (result.Contains(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator))
+            //{
+            //    result = result.Remove(result.IndexOf(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator), 1);
+            //}
 
-            while (result.Length < 9)
-            {
-                result += "0";
-            }
+            //if (result.Length > 9)
+            //{
+            //    result = result.Substring(0, 8);
+            //}
 
-            return result;
+            //while (result.Length < 9)
+            //{
+            //    result += "0";
+            //}
+
+            //return result;
         }
 
         public static string ReverseCardinal(string cardinal)
@@ -308,48 +287,20 @@ namespace Mayfly.Geographics
         {
             format = format.ToLowerInvariant();
 
-            string result = this.Cardinal;
-
             switch (format)
             {
                 case "d":
+                    return string.Format("{0}{1:000.000000}°", Cardinal, Math.Abs(Degrees));
+
                 case "dm":
+                    return string.Format("{0}{1:000}° {2:00.0000}'", Cardinal, Math.Floor(Math.Abs(Degrees)), Minutes);
+
                 case "dms":
+                    return string.Format("{0}{1:000}° {2:00}' {3:00.00}\"", Cardinal, Math.Floor(Math.Abs(Degrees)), Math.Floor(Minutes), Seconds);
 
-                    string coordinate = ToMaskedText(format);
-                    string mask = GetMask(format);
-                    int index = 0;
-
-                    for (int i = 0; i < mask.Length; i++)
-                    {
-                        if (mask[i] == '0')
-                        {
-                            try
-                            {
-                                result += coordinate[index];
-                            }
-                            catch
-                            {
-                                result += "0";
-                            }
-
-                            index++;
-                        }
-                        else
-                        {
-                            result += mask[i];
-                        }
-                    }
-                    //result = result.Trim(new char[] { '0' });
-                    break;
                 default:
-                    result = Math.Abs(Degrees).ToString(format);
-                    break;
+                    return string.Format("{0:" + format + "}°", Degrees);
             }
-
-            //result += this.DirectionMark;
-            return result.Replace(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator,
-                ((CultureInfo)provider).NumberFormat.NumberDecimalSeparator);
         }
 
         #endregion
