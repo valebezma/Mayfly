@@ -535,7 +535,7 @@
     <value>Mass, g</value>
   </data>
   <data name="plotAW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 55</value>
+    <value>-1, 55</value>
   </data>
   <data name="plotAW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 25, 3, 25</value>
