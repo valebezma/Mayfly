@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
+using Mayfly.Mathematics;
 using Mayfly.Mathematics.Statistics;
 
 namespace Mayfly.Fish.Explorer
@@ -125,8 +126,8 @@ namespace Mayfly.Fish.Explorer
 
             labelBasic.ResetFormatted(Swarm);
 
-            buttonL.Text = new SampleDisplay(Swarm.LengthSample).ToString("s");
-            buttonW.Text = new SampleDisplay(Swarm.MassSample).ToString("s");
+            buttonL.ResetFormatted(new SampleDisplay(Swarm.LengthSample).ToString("s"));
+            buttonW.ResetFormatted(new SampleDisplay(Swarm.MassSample).ToString("s"));
 
             pageAge.Suppress = AgeStructure == null;
             checkBoxAge.Checked = AgeStructure != null;
@@ -357,6 +358,20 @@ namespace Mayfly.Fish.Explorer
         private void wizardExplorer_Cancelling(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ButtonL_Click(object sender, EventArgs e)
+        {
+            SampleProperties lengthForm = new SampleProperties(Swarm.LengthSample);
+            lengthForm.SetFriendlyDesktopLocation(buttonL);
+            lengthForm.ShowDialog();
+        }
+
+        private void ButtonW_Click(object sender, EventArgs e)
+        {
+            SampleProperties massForm = new SampleProperties(Swarm.MassSample);
+            massForm.SetFriendlyDesktopLocation(buttonW);
+            massForm.ShowDialog();
         }
     }
 }

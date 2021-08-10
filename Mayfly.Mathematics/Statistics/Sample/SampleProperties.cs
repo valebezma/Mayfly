@@ -30,20 +30,16 @@ namespace Mayfly.Mathematics.Statistics
 
 
 
-        public SampleProperties(IEnumerable<double> values)
+        public SampleProperties(Sample sample)
         {
             InitializeComponent();
-            Sample = new Sample(values);
-            SampleDisplay = new SampleDisplay(Sample);
             ConfidenceLevel = 1 - UserSettings.DefaultAlpha;
-
+            Sample = sample;
+            SampleDisplay = new SampleDisplay(Sample);
             UpdateValues();
         }
 
-        public SampleProperties(Sample sample) : this((IEnumerable<double>)sample)
-        {
-            UpdateValues();
-        }
+        public SampleProperties(IEnumerable<double> values) : this(new Sample(values)) { }
 
 
 

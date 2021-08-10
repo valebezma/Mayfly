@@ -183,20 +183,23 @@
   <data name="&gt;&gt;pageStart.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
+  <data name="buttonL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="buttonL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 78</value>
+    <value>252, 162</value>
   </data>
   <data name="buttonL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>200, 23</value>
   </data>
   <data name="buttonL.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
   <data name="buttonL.Text" xml:space="preserve">
-    <value>X: {0}</value>
+    <value>Length, mm: {0}</value>
   </data>
   <data name="buttonL.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -213,50 +216,23 @@
   <data name="&gt;&gt;buttonL.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 137</value>
-  </data>
-  <data name="buttonT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
-  </data>
-  <data name="buttonT.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="buttonT.Text" xml:space="preserve">
-    <value>X: {0}</value>
-  </data>
-  <data name="buttonT.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;buttonT.Name" xml:space="preserve">
-    <value>buttonT</value>
-  </data>
-  <data name="&gt;&gt;buttonT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonT.Parent" xml:space="preserve">
-    <value>pageBasic</value>
-  </data>
-  <data name="&gt;&gt;buttonT.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="buttonW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="buttonW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 108</value>
+    <value>252, 192</value>
   </data>
   <data name="buttonW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>200, 23</value>
   </data>
   <data name="buttonW.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
   <data name="buttonW.Text" xml:space="preserve">
-    <value>X: {0}</value>
+    <value>Individual mass, g: {0}</value>
   </data>
   <data name="buttonW.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -271,139 +247,7 @@
     <value>pageBasic</value>
   </data>
   <data name="&gt;&gt;buttonW.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelT.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 141</value>
-  </data>
-  <data name="labelT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 15</value>
-  </data>
-  <data name="labelT.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="labelT.Text" xml:space="preserve">
-    <value>Age</value>
-  </data>
-  <data name="&gt;&gt;labelT.Name" xml:space="preserve">
-    <value>labelT</value>
-  </data>
-  <data name="&gt;&gt;labelT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelT.Parent" xml:space="preserve">
-    <value>pageBasic</value>
-  </data>
-  <data name="&gt;&gt;labelT.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="labelBiomass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelBiomass.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelBiomass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelBiomass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 188</value>
-  </data>
-  <data name="labelBiomass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 15</value>
-  </data>
-  <data name="labelBiomass.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="labelBiomass.Text" xml:space="preserve">
-    <value>Sample size</value>
-  </data>
-  <data name="&gt;&gt;labelBiomass.Name" xml:space="preserve">
-    <value>labelBiomass</value>
-  </data>
-  <data name="&gt;&gt;labelBiomass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelBiomass.Parent" xml:space="preserve">
-    <value>pageBasic</value>
-  </data>
-  <data name="&gt;&gt;labelBiomass.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="labelW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelW.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 112</value>
-  </data>
-  <data name="labelW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 15</value>
-  </data>
-  <data name="labelW.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="labelW.Text" xml:space="preserve">
-    <value>Mass</value>
-  </data>
-  <data name="&gt;&gt;labelW.Name" xml:space="preserve">
-    <value>labelW</value>
-  </data>
-  <data name="&gt;&gt;labelW.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelW.Parent" xml:space="preserve">
-    <value>pageBasic</value>
-  </data>
-  <data name="&gt;&gt;labelW.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="labelL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelL.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 82</value>
-  </data>
-  <data name="labelL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 15</value>
-  </data>
-  <data name="labelL.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="labelL.Text" xml:space="preserve">
-    <value>Length</value>
-  </data>
-  <data name="&gt;&gt;labelL.Name" xml:space="preserve">
-    <value>labelL</value>
-  </data>
-  <data name="&gt;&gt;labelL.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelL.Parent" xml:space="preserve">
-    <value>pageBasic</value>
-  </data>
-  <data name="&gt;&gt;labelL.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="labelBasic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -418,7 +262,7 @@
     <value>5</value>
   </data>
   <data name="labelBasic.Text" xml:space="preserve">
-    <value>Basic biological features of {0} sample are described below.</value>
+    <value>Basic biological features of {0} sample are described below. Click on sample button to see its descriptive statistics.</value>
   </data>
   <data name="&gt;&gt;labelBasic.Name" xml:space="preserve">
     <value>labelBasic</value>
@@ -430,7 +274,7 @@
     <value>pageBasic</value>
   </data>
   <data name="&gt;&gt;labelBasic.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="pageBasic.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 407</value>
@@ -1026,24 +870,6 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="&gt;&gt;structureCalculator.Name" xml:space="preserve">
-    <value>structureCalculator</value>
-  </data>
-  <data name="&gt;&gt;structureCalculator.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;reporter.Name" xml:space="preserve">
-    <value>reporter</value>
-  </data>
-  <data name="&gt;&gt;reporter.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;selectivityCalculator.Name" xml:space="preserve">
-    <value>selectivityCalculator</value>
-  </data>
-  <data name="&gt;&gt;selectivityCalculator.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;columnSelectivityClass.Name" xml:space="preserve">
     <value>columnSelectivityClass</value>
   </data>
@@ -1091,6 +917,24 @@
   </data>
   <data name="&gt;&gt;columnSelectivitySex.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;structureCalculator.Name" xml:space="preserve">
+    <value>structureCalculator</value>
+  </data>
+  <data name="&gt;&gt;structureCalculator.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;reporter.Name" xml:space="preserve">
+    <value>reporter</value>
+  </data>
+  <data name="&gt;&gt;reporter.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectivityCalculator.Name" xml:space="preserve">
+    <value>selectivityCalculator</value>
+  </data>
+  <data name="&gt;&gt;selectivityCalculator.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WizardStockComposition</value>

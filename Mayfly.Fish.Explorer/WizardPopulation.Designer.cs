@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardStockComposition));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 15D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 16D);
@@ -41,26 +47,24 @@
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(5D, 16D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(6D, 7D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(7D, 5D);
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.wizardExplorer = new AeroWizard.WizardControl();
             this.pageStart = new AeroWizard.WizardPage();
             this.labelStart = new System.Windows.Forms.Label();
             this.pageBasic = new AeroWizard.WizardPage();
             this.buttonL = new System.Windows.Forms.Button();
-            this.buttonT = new System.Windows.Forms.Button();
             this.buttonW = new System.Windows.Forms.Button();
-            this.labelT = new System.Windows.Forms.Label();
-            this.labelBiomass = new System.Windows.Forms.Label();
-            this.labelW = new System.Windows.Forms.Label();
-            this.labelL = new System.Windows.Forms.Label();
             this.labelBasic = new System.Windows.Forms.Label();
             this.pageCpue = new AeroWizard.WizardPage();
             this.labelCpueDescription = new System.Windows.Forms.Label();
             this.spreadSheetSelectivity = new Mayfly.Controls.SpreadSheet();
+            this.columnSelectivityClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityW = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityNpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivityBpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSelectivitySex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxBpue = new System.Windows.Forms.TextBox();
             this.labelNpueUnit = new System.Windows.Forms.Label();
@@ -78,14 +82,6 @@
             this.structureCalculator = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
             this.selectivityCalculator = new System.ComponentModel.BackgroundWorker();
-            this.columnSelectivityClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityW = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityNpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivityBpue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSelectivitySex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageBasic.SuspendLayout();
@@ -123,12 +119,7 @@
             // pageBasic
             // 
             this.pageBasic.Controls.Add(this.buttonL);
-            this.pageBasic.Controls.Add(this.buttonT);
             this.pageBasic.Controls.Add(this.buttonW);
-            this.pageBasic.Controls.Add(this.labelT);
-            this.pageBasic.Controls.Add(this.labelBiomass);
-            this.pageBasic.Controls.Add(this.labelW);
-            this.pageBasic.Controls.Add(this.labelL);
             this.pageBasic.Controls.Add(this.labelBasic);
             this.pageBasic.Name = "pageBasic";
             resources.ApplyResources(this.pageBasic, "pageBasic");
@@ -139,38 +130,14 @@
             resources.ApplyResources(this.buttonL, "buttonL");
             this.buttonL.Name = "buttonL";
             this.buttonL.UseVisualStyleBackColor = true;
-            // 
-            // buttonT
-            // 
-            resources.ApplyResources(this.buttonT, "buttonT");
-            this.buttonT.Name = "buttonT";
-            this.buttonT.UseVisualStyleBackColor = true;
+            this.buttonL.Click += new System.EventHandler(this.ButtonL_Click);
             // 
             // buttonW
             // 
             resources.ApplyResources(this.buttonW, "buttonW");
             this.buttonW.Name = "buttonW";
             this.buttonW.UseVisualStyleBackColor = true;
-            // 
-            // labelT
-            // 
-            resources.ApplyResources(this.labelT, "labelT");
-            this.labelT.Name = "labelT";
-            // 
-            // labelBiomass
-            // 
-            resources.ApplyResources(this.labelBiomass, "labelBiomass");
-            this.labelBiomass.Name = "labelBiomass";
-            // 
-            // labelW
-            // 
-            resources.ApplyResources(this.labelW, "labelW");
-            this.labelW.Name = "labelW";
-            // 
-            // labelL
-            // 
-            resources.ApplyResources(this.labelL, "labelL");
-            this.labelL.Name = "labelL";
+            this.buttonW.Click += new System.EventHandler(this.ButtonW_Click);
             // 
             // labelBasic
             // 
@@ -213,6 +180,69 @@
             this.spreadSheetSelectivity.ReadOnly = true;
             this.spreadSheetSelectivity.RowHeadersVisible = false;
             this.spreadSheetSelectivity.RowTemplate.Height = 35;
+            // 
+            // columnSelectivityClass
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSelectivityClass.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.columnSelectivityClass, "columnSelectivityClass");
+            this.columnSelectivityClass.Name = "columnSelectivityClass";
+            this.columnSelectivityClass.ReadOnly = true;
+            // 
+            // columnSelectivityW
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "g";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnSelectivityW.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.columnSelectivityW, "columnSelectivityW");
+            this.columnSelectivityW.Name = "columnSelectivityW";
+            this.columnSelectivityW.ReadOnly = true;
+            // 
+            // columnSelectivityL
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "g";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnSelectivityL.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.columnSelectivityL, "columnSelectivityL");
+            this.columnSelectivityL.Name = "columnSelectivityL";
+            this.columnSelectivityL.ReadOnly = true;
+            // 
+            // columnSelectivityN
+            // 
+            dataGridViewCellStyle4.Format = "N0";
+            this.columnSelectivityN.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.columnSelectivityN, "columnSelectivityN");
+            this.columnSelectivityN.Name = "columnSelectivityN";
+            this.columnSelectivityN.ReadOnly = true;
+            // 
+            // columnSelectivityB
+            // 
+            resources.ApplyResources(this.columnSelectivityB, "columnSelectivityB");
+            this.columnSelectivityB.Name = "columnSelectivityB";
+            this.columnSelectivityB.ReadOnly = true;
+            // 
+            // columnSelectivityNpue
+            // 
+            resources.ApplyResources(this.columnSelectivityNpue, "columnSelectivityNpue");
+            this.columnSelectivityNpue.Name = "columnSelectivityNpue";
+            this.columnSelectivityNpue.ReadOnly = true;
+            // 
+            // columnSelectivityBpue
+            // 
+            resources.ApplyResources(this.columnSelectivityBpue, "columnSelectivityBpue");
+            this.columnSelectivityBpue.Name = "columnSelectivityBpue";
+            this.columnSelectivityBpue.ReadOnly = true;
+            // 
+            // columnSelectivitySex
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "P0";
+            this.columnSelectivitySex.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.columnSelectivitySex, "columnSelectivitySex");
+            this.columnSelectivitySex.Name = "columnSelectivitySex";
+            this.columnSelectivitySex.ReadOnly = true;
             // 
             // label2
             // 
@@ -258,17 +288,22 @@
             this.plotT.AxisXAutoMinimum = false;
             this.plotT.AxisYAutoMaximum = false;
             this.plotT.AxisYAutoMinimum = false;
+            chartArea1.Name = "ChartArea1";
+            this.plotT.ChartAreas.Add(chartArea1);
             this.plotT.Name = "plotT";
+            series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series1.Name = "juv";
             series1.Points.Add(dataPoint1);
             series1.Points.Add(dataPoint2);
             series1.Points.Add(dataPoint3);
+            series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series2.Name = "m";
             series2.Points.Add(dataPoint4);
             series2.Points.Add(dataPoint5);
             series2.Points.Add(dataPoint6);
+            series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series3.Name = "f";
             series3.Points.Add(dataPoint7);
@@ -348,69 +383,6 @@
             this.selectivityCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SelectivityCalculator_DoWork);
             this.selectivityCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SelectivityCalculator_RunWorkerCompleted);
             // 
-            // columnSelectivityClass
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSelectivityClass.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.columnSelectivityClass, "columnSelectivityClass");
-            this.columnSelectivityClass.Name = "columnSelectivityClass";
-            this.columnSelectivityClass.ReadOnly = true;
-            // 
-            // columnSelectivityW
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "g";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnSelectivityW.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.columnSelectivityW, "columnSelectivityW");
-            this.columnSelectivityW.Name = "columnSelectivityW";
-            this.columnSelectivityW.ReadOnly = true;
-            // 
-            // columnSelectivityL
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "g";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnSelectivityL.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.columnSelectivityL, "columnSelectivityL");
-            this.columnSelectivityL.Name = "columnSelectivityL";
-            this.columnSelectivityL.ReadOnly = true;
-            // 
-            // columnSelectivityN
-            // 
-            dataGridViewCellStyle4.Format = "N0";
-            this.columnSelectivityN.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.columnSelectivityN, "columnSelectivityN");
-            this.columnSelectivityN.Name = "columnSelectivityN";
-            this.columnSelectivityN.ReadOnly = true;
-            // 
-            // columnSelectivityB
-            // 
-            resources.ApplyResources(this.columnSelectivityB, "columnSelectivityB");
-            this.columnSelectivityB.Name = "columnSelectivityB";
-            this.columnSelectivityB.ReadOnly = true;
-            // 
-            // columnSelectivityNpue
-            // 
-            resources.ApplyResources(this.columnSelectivityNpue, "columnSelectivityNpue");
-            this.columnSelectivityNpue.Name = "columnSelectivityNpue";
-            this.columnSelectivityNpue.ReadOnly = true;
-            // 
-            // columnSelectivityBpue
-            // 
-            resources.ApplyResources(this.columnSelectivityBpue, "columnSelectivityBpue");
-            this.columnSelectivityBpue.Name = "columnSelectivityBpue";
-            this.columnSelectivityBpue.ReadOnly = true;
-            // 
-            // columnSelectivitySex
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "P0";
-            this.columnSelectivitySex.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.columnSelectivitySex, "columnSelectivitySex");
-            this.columnSelectivitySex.Name = "columnSelectivitySex";
-            this.columnSelectivitySex.ReadOnly = true;
-            // 
             // WizardStockComposition
             // 
             resources.ApplyResources(this, "$this");
@@ -420,7 +392,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).EndInit();
             this.pageStart.ResumeLayout(false);
             this.pageBasic.ResumeLayout(false);
-            this.pageBasic.PerformLayout();
             this.pageCpue.ResumeLayout(false);
             this.pageCpue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSelectivity)).EndInit();
@@ -450,13 +421,8 @@
         private System.Windows.Forms.CheckBox checkBoxAppKeys;
         private AeroWizard.WizardPage pageBasic;
         private System.Windows.Forms.Label labelBasic;
-        private System.Windows.Forms.Label labelBiomass;
-        private System.Windows.Forms.Label labelW;
-        private System.Windows.Forms.Label labelL;
         private System.Windows.Forms.Button buttonL;
         private System.Windows.Forms.Button buttonW;
-        private System.Windows.Forms.Button buttonT;
-        private System.Windows.Forms.Label labelT;
         private AeroWizard.WizardPage pageCpue;
         private Controls.SpreadSheet spreadSheetSelectivity;
         private System.Windows.Forms.Label label2;
