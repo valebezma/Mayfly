@@ -90,7 +90,21 @@ namespace Mayfly.Fish.Explorer
 
         public double GetWeight(Age age)
         {
-            return 2;
+            if (GrowthModel == null)
+                throw new ArgumentNullException();
+
+            if (!GrowthModel.IsRegressionOK)
+                throw new ArgumentNullException();
+
+            if (WeightModel == null)
+                throw new ArgumentNullException();
+
+            if (!WeightModel.IsRegressionOK)
+                throw new ArgumentNullException();
+
+            double l = GrowthModel.Regression.Predict(age.Years + .5);
+            double w = WeightModel.Regression.Predict(l);
+            return w;
         }
 
 
