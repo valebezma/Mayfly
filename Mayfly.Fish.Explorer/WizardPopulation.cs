@@ -90,7 +90,7 @@ namespace Mayfly.Fish.Explorer
 
         public double GetWeight(Age age)
         {
-            return 1;
+            return 2;
         }
 
 
