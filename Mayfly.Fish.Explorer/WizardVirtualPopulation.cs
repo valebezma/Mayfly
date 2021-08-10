@@ -414,7 +414,7 @@ namespace Mayfly.Fish.Explorer
         private void annual_Click(object sender, EventArgs e)
         {
             CardStack annualStack = (CardStack)((ToolStripMenuItem)sender).Tag;
-            WizardStockComposition wizard = new WizardStockComposition(annualStack, SpeciesRow);
+            WizardPopulation wizard = new WizardPopulation(annualStack, SpeciesRow);
             //wizard.SetGearSet(gearWizard);
             wizard.Show();
         }

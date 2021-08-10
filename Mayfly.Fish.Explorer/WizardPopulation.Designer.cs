@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Fish.Explorer
 {
-    partial class WizardStockComposition
+    partial class WizardPopulation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardStockComposition));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardPopulation));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 15D);
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 16D);
@@ -54,6 +53,17 @@
             this.buttonL = new System.Windows.Forms.Button();
             this.buttonW = new System.Windows.Forms.Button();
             this.labelBasic = new System.Windows.Forms.Label();
+            this.pageLW = new AeroWizard.WizardPage();
+            this.buttonLW = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.statChartLW = new Mayfly.Mathematics.Charts.Plot();
+            this.pageAL = new AeroWizard.WizardPage();
+            this.buttonAL = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.statChartAL = new Mayfly.Mathematics.Charts.Plot();
+            this.pageAW = new AeroWizard.WizardPage();
+            this.plotAW = new Mayfly.Mathematics.Charts.Plot();
+            this.label7 = new System.Windows.Forms.Label();
             this.pageCpue = new AeroWizard.WizardPage();
             this.labelCpueDescription = new System.Windows.Forms.Label();
             this.spreadSheetSelectivity = new Mayfly.Controls.SpreadSheet();
@@ -70,23 +80,56 @@
             this.labelNpueUnit = new System.Windows.Forms.Label();
             this.textBoxNpue = new System.Windows.Forms.TextBox();
             this.labelBpueUnit = new System.Windows.Forms.Label();
+            this.pageLength = new AeroWizard.WizardPage();
+            this.pictureBoxWarn = new System.Windows.Forms.PictureBox();
+            this.labelWarn = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.plotC = new Mayfly.Mathematics.Charts.Plot();
+            this.pageSelection = new AeroWizard.WizardPage();
+            this.textBoxSD = new System.Windows.Forms.TextBox();
+            this.labelSD = new System.Windows.Forms.Label();
+            this.textBoxSF = new System.Windows.Forms.TextBox();
+            this.labelSF = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.plotS = new Mayfly.Mathematics.Charts.Plot();
+            this.pageLengthPopulation = new AeroWizard.WizardPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.plotP = new Mayfly.Mathematics.Charts.Plot();
             this.pageAge = new AeroWizard.WizardPage();
             this.plotT = new Mayfly.Mathematics.Charts.Plot();
+            this.comboBoxParameter = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelChartSource = new System.Windows.Forms.Label();
             this.pageReport = new AeroWizard.WizardPage();
+            this.checkBoxLW = new System.Windows.Forms.CheckBox();
             this.checkBoxAge = new System.Windows.Forms.CheckBox();
             this.checkBoxAppKeys = new System.Windows.Forms.CheckBox();
+            this.checkBoxAL = new System.Windows.Forms.CheckBox();
             this.checkBoxAppT = new System.Windows.Forms.CheckBox();
             this.labelReport = new System.Windows.Forms.Label();
             this.checkBoxGears = new System.Windows.Forms.CheckBox();
             this.structureCalculator = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
-            this.selectivityCalculator = new System.ComponentModel.BackgroundWorker();
+            this.classesCalculator = new System.ComponentModel.BackgroundWorker();
+            this.selectionCalculator = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageBasic.SuspendLayout();
+            this.pageLW.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statChartLW)).BeginInit();
+            this.pageAL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statChartAL)).BeginInit();
+            this.pageAW.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotAW)).BeginInit();
             this.pageCpue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSelectivity)).BeginInit();
+            this.pageLength.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotC)).BeginInit();
+            this.pageSelection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotS)).BeginInit();
+            this.pageLengthPopulation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotP)).BeginInit();
             this.pageAge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).BeginInit();
             this.pageReport.SuspendLayout();
@@ -99,7 +142,13 @@
             this.wizardExplorer.Name = "wizardExplorer";
             this.wizardExplorer.Pages.Add(this.pageStart);
             this.wizardExplorer.Pages.Add(this.pageBasic);
+            this.wizardExplorer.Pages.Add(this.pageLW);
+            this.wizardExplorer.Pages.Add(this.pageAL);
+            this.wizardExplorer.Pages.Add(this.pageAW);
             this.wizardExplorer.Pages.Add(this.pageCpue);
+            this.wizardExplorer.Pages.Add(this.pageLength);
+            this.wizardExplorer.Pages.Add(this.pageSelection);
+            this.wizardExplorer.Pages.Add(this.pageLengthPopulation);
             this.wizardExplorer.Pages.Add(this.pageAge);
             this.wizardExplorer.Pages.Add(this.pageReport);
             this.wizardExplorer.Cancelling += new System.ComponentModel.CancelEventHandler(this.wizardExplorer_Cancelling);
@@ -143,6 +192,87 @@
             // 
             resources.ApplyResources(this.labelBasic, "labelBasic");
             this.labelBasic.Name = "labelBasic";
+            // 
+            // pageLW
+            // 
+            this.pageLW.Controls.Add(this.buttonLW);
+            this.pageLW.Controls.Add(this.label5);
+            this.pageLW.Controls.Add(this.statChartLW);
+            this.pageLW.Name = "pageLW";
+            resources.ApplyResources(this.pageLW, "pageLW");
+            this.pageLW.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageLW_Rollback);
+            // 
+            // buttonLW
+            // 
+            resources.ApplyResources(this.buttonLW, "buttonLW");
+            this.buttonLW.Name = "buttonLW";
+            this.buttonLW.UseVisualStyleBackColor = true;
+            this.buttonLW.Click += new System.EventHandler(this.buttonLW_Click);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // statChartLW
+            // 
+            resources.ApplyResources(this.statChartLW, "statChartLW");
+            this.statChartLW.AxisXAutoMinimum = false;
+            this.statChartLW.AxisYAutoMinimum = false;
+            this.statChartLW.Name = "statChartLW";
+            this.statChartLW.ShowLegend = false;
+            this.statChartLW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
+            // pageAL
+            // 
+            this.pageAL.Controls.Add(this.buttonAL);
+            this.pageAL.Controls.Add(this.label6);
+            this.pageAL.Controls.Add(this.statChartAL);
+            this.pageAL.Name = "pageAL";
+            resources.ApplyResources(this.pageAL, "pageAL");
+            // 
+            // buttonAL
+            // 
+            resources.ApplyResources(this.buttonAL, "buttonAL");
+            this.buttonAL.Name = "buttonAL";
+            this.buttonAL.UseVisualStyleBackColor = true;
+            this.buttonAL.Click += new System.EventHandler(this.buttonAL_Click);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // statChartAL
+            // 
+            resources.ApplyResources(this.statChartAL, "statChartAL");
+            this.statChartAL.AxisXAutoMinimum = false;
+            this.statChartAL.AxisYAutoMinimum = false;
+            this.statChartAL.Name = "statChartAL";
+            this.statChartAL.ShowLegend = false;
+            this.statChartAL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
+            // pageAW
+            // 
+            this.pageAW.Controls.Add(this.plotAW);
+            this.pageAW.Controls.Add(this.label7);
+            this.pageAW.Name = "pageAW";
+            resources.ApplyResources(this.pageAW, "pageAW");
+            this.pageAW.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageAW_Commit);
+            // 
+            // plotAW
+            // 
+            resources.ApplyResources(this.plotAW, "plotAW");
+            this.plotAW.AxisXAutoMinimum = false;
+            this.plotAW.AxisYAutoMinimum = false;
+            this.plotAW.Name = "plotAW";
+            this.plotAW.ShowLegend = false;
+            this.plotAW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
             // pageCpue
             // 
@@ -273,10 +403,129 @@
             resources.ApplyResources(this.labelBpueUnit, "labelBpueUnit");
             this.labelBpueUnit.Name = "labelBpueUnit";
             // 
+            // pageLength
+            // 
+            this.pageLength.Controls.Add(this.pictureBoxWarn);
+            this.pageLength.Controls.Add(this.labelWarn);
+            this.pageLength.Controls.Add(this.label9);
+            this.pageLength.Controls.Add(this.plotC);
+            this.pageLength.Name = "pageLength";
+            resources.ApplyResources(this.pageLength, "pageLength");
+            this.pageLength.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageLength_Commit);
+            this.pageLength.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageLength_Rollback);
+            // 
+            // pictureBoxWarn
+            // 
+            resources.ApplyResources(this.pictureBoxWarn, "pictureBoxWarn");
+            this.pictureBoxWarn.Name = "pictureBoxWarn";
+            this.pictureBoxWarn.TabStop = false;
+            // 
+            // labelWarn
+            // 
+            resources.ApplyResources(this.labelWarn, "labelWarn");
+            this.labelWarn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelWarn.Name = "labelWarn";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // plotC
+            // 
+            resources.ApplyResources(this.plotC, "plotC");
+            this.plotC.AxisXAutoInterval = false;
+            this.plotC.Name = "plotC";
+            this.plotC.ShowLegend = true;
+            this.plotC.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
+            // pageSelection
+            // 
+            this.pageSelection.Controls.Add(this.textBoxSD);
+            this.pageSelection.Controls.Add(this.labelSD);
+            this.pageSelection.Controls.Add(this.textBoxSF);
+            this.pageSelection.Controls.Add(this.labelSF);
+            this.pageSelection.Controls.Add(this.label3);
+            this.pageSelection.Controls.Add(this.plotS);
+            this.pageSelection.Name = "pageSelection";
+            resources.ApplyResources(this.pageSelection, "pageSelection");
+            this.pageSelection.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageSelection_Commit);
+            // 
+            // textBoxSD
+            // 
+            resources.ApplyResources(this.textBoxSD, "textBoxSD");
+            this.textBoxSD.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxSD.Name = "textBoxSD";
+            this.textBoxSD.ReadOnly = true;
+            // 
+            // labelSD
+            // 
+            resources.ApplyResources(this.labelSD, "labelSD");
+            this.labelSD.Name = "labelSD";
+            // 
+            // textBoxSF
+            // 
+            resources.ApplyResources(this.textBoxSF, "textBoxSF");
+            this.textBoxSF.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxSF.Name = "textBoxSF";
+            this.textBoxSF.ReadOnly = true;
+            // 
+            // labelSF
+            // 
+            resources.ApplyResources(this.labelSF, "labelSF");
+            this.labelSF.Name = "labelSF";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // plotS
+            // 
+            resources.ApplyResources(this.plotS, "plotS");
+            this.plotS.AxisXAutoInterval = false;
+            this.plotS.AxisXAutoMaximum = false;
+            this.plotS.AxisXAutoMinimum = false;
+            this.plotS.AxisYAutoMaximum = false;
+            this.plotS.AxisYAutoMinimum = false;
+            this.plotS.AxisYInterval = 0.1D;
+            this.plotS.AxisYMax = 1D;
+            this.plotS.Name = "plotS";
+            this.plotS.ShowLegend = true;
+            this.plotS.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
+            // pageLengthPopulation
+            // 
+            this.pageLengthPopulation.Controls.Add(this.label4);
+            this.pageLengthPopulation.Controls.Add(this.plotP);
+            this.pageLengthPopulation.Name = "pageLengthPopulation";
+            resources.ApplyResources(this.pageLengthPopulation, "pageLengthPopulation");
+            this.pageLengthPopulation.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLengthPopulation_Commit);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // plotP
+            // 
+            resources.ApplyResources(this.plotP, "plotP");
+            this.plotP.AxisXAutoInterval = false;
+            this.plotP.AxisXAutoMaximum = false;
+            this.plotP.AxisXAutoMinimum = false;
+            this.plotP.AxisYAutoMaximum = false;
+            this.plotP.AxisYAutoMinimum = false;
+            this.plotP.AxisYMax = 1D;
+            this.plotP.Name = "plotP";
+            this.plotP.ShowLegend = true;
+            this.plotP.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            // 
             // pageAge
             // 
             this.pageAge.Controls.Add(this.plotT);
+            this.pageAge.Controls.Add(this.comboBoxParameter);
             this.pageAge.Controls.Add(this.label1);
+            this.pageAge.Controls.Add(this.labelChartSource);
             this.pageAge.Name = "pageAge";
             resources.ApplyResources(this.pageAge, "pageAge");
             this.pageAge.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageAge_Rollback);
@@ -288,22 +537,17 @@
             this.plotT.AxisXAutoMinimum = false;
             this.plotT.AxisYAutoMaximum = false;
             this.plotT.AxisYAutoMinimum = false;
-            chartArea1.Name = "ChartArea1";
-            this.plotT.ChartAreas.Add(chartArea1);
             this.plotT.Name = "plotT";
-            series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series1.Name = "juv";
             series1.Points.Add(dataPoint1);
             series1.Points.Add(dataPoint2);
             series1.Points.Add(dataPoint3);
-            series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series2.Name = "m";
             series2.Points.Add(dataPoint4);
             series2.Points.Add(dataPoint5);
             series2.Points.Add(dataPoint6);
-            series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series3.Name = "f";
             series3.Points.Add(dataPoint7);
@@ -315,15 +559,33 @@
             this.plotT.ShowLegend = false;
             this.plotT.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
             // 
+            // comboBoxParameter
+            // 
+            resources.ApplyResources(this.comboBoxParameter, "comboBoxParameter");
+            this.comboBoxParameter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxParameter.FormattingEnabled = true;
+            this.comboBoxParameter.Items.AddRange(new object[] {
+            resources.GetString("comboBoxParameter.Items"),
+            resources.GetString("comboBoxParameter.Items1")});
+            this.comboBoxParameter.Name = "comboBoxParameter";
+            this.comboBoxParameter.SelectedIndexChanged += new System.EventHandler(this.comboBoxParameter_SelectedIndexChanged);
+            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // labelChartSource
+            // 
+            resources.ApplyResources(this.labelChartSource, "labelChartSource");
+            this.labelChartSource.Name = "labelChartSource";
+            // 
             // pageReport
             // 
+            this.pageReport.Controls.Add(this.checkBoxLW);
             this.pageReport.Controls.Add(this.checkBoxAge);
             this.pageReport.Controls.Add(this.checkBoxAppKeys);
+            this.pageReport.Controls.Add(this.checkBoxAL);
             this.pageReport.Controls.Add(this.checkBoxAppT);
             this.pageReport.Controls.Add(this.labelReport);
             this.pageReport.Controls.Add(this.checkBoxGears);
@@ -331,6 +593,14 @@
             resources.ApplyResources(this.pageReport, "pageReport");
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
             this.pageReport.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.PageReport_Rollback);
+            // 
+            // checkBoxLW
+            // 
+            resources.ApplyResources(this.checkBoxLW, "checkBoxLW");
+            this.checkBoxLW.Checked = true;
+            this.checkBoxLW.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLW.Name = "checkBoxLW";
+            this.checkBoxLW.UseVisualStyleBackColor = true;
             // 
             // checkBoxAge
             // 
@@ -348,6 +618,14 @@
             this.checkBoxAppKeys.Name = "checkBoxAppKeys";
             this.checkBoxAppKeys.UseVisualStyleBackColor = true;
             this.checkBoxAppKeys.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            // 
+            // checkBoxAL
+            // 
+            resources.ApplyResources(this.checkBoxAL, "checkBoxAL");
+            this.checkBoxAL.Checked = true;
+            this.checkBoxAL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAL.Name = "checkBoxAL";
+            this.checkBoxAL.UseVisualStyleBackColor = true;
             // 
             // checkBoxAppT
             // 
@@ -378,24 +656,45 @@
             this.reporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reporter_DoWork);
             this.reporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reporter_RunWorkerCompleted);
             // 
-            // selectivityCalculator
+            // classesCalculator
             // 
-            this.selectivityCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SelectivityCalculator_DoWork);
-            this.selectivityCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SelectivityCalculator_RunWorkerCompleted);
+            this.classesCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.classesCalculator_DoWork);
+            this.classesCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.classesCalculator_RunWorkerCompleted);
             // 
-            // WizardStockComposition
+            // selectionCalculator
+            // 
+            this.selectionCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SelectionCalculator_DoWork);
+            this.selectionCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SelectionCalculator_RunWorkerCompleted);
+            // 
+            // WizardPopulation
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.wizardExplorer);
-            this.Name = "WizardStockComposition";
+            this.Name = "WizardPopulation";
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).EndInit();
             this.pageStart.ResumeLayout(false);
             this.pageBasic.ResumeLayout(false);
+            this.pageLW.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.statChartLW)).EndInit();
+            this.pageAL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.statChartAL)).EndInit();
+            this.pageAW.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.plotAW)).EndInit();
             this.pageCpue.ResumeLayout(false);
             this.pageCpue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSelectivity)).EndInit();
+            this.pageLength.ResumeLayout(false);
+            this.pageLength.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotC)).EndInit();
+            this.pageSelection.ResumeLayout(false);
+            this.pageSelection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plotS)).EndInit();
+            this.pageLengthPopulation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.plotP)).EndInit();
             this.pageAge.ResumeLayout(false);
+            this.pageAge.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotT)).EndInit();
             this.pageReport.ResumeLayout(false);
             this.pageReport.PerformLayout();
@@ -430,7 +729,7 @@
         private System.Windows.Forms.Label labelNpueUnit;
         private System.Windows.Forms.TextBox textBoxNpue;
         private System.Windows.Forms.Label labelBpueUnit;
-        private System.ComponentModel.BackgroundWorker selectivityCalculator;
+        private System.ComponentModel.BackgroundWorker classesCalculator;
         private System.Windows.Forms.Label labelCpueDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityW;
@@ -440,5 +739,36 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityNpue;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBpue;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivitySex;
+        private System.Windows.Forms.Label labelChartSource;
+        private System.Windows.Forms.ComboBox comboBoxParameter;
+        private AeroWizard.WizardPage pageSelection;
+        private System.Windows.Forms.TextBox textBoxSD;
+        private System.Windows.Forms.Label labelSD;
+        private System.Windows.Forms.TextBox textBoxSF;
+        private System.Windows.Forms.Label labelSF;
+        private System.Windows.Forms.Label label3;
+        private Mathematics.Charts.Plot plotS;
+        private AeroWizard.WizardPage pageLengthPopulation;
+        private System.Windows.Forms.Label label4;
+        private Mathematics.Charts.Plot plotP;
+        private AeroWizard.WizardPage pageLength;
+        private System.Windows.Forms.PictureBox pictureBoxWarn;
+        private System.Windows.Forms.Label labelWarn;
+        private System.Windows.Forms.Label label9;
+        private Mathematics.Charts.Plot plotC;
+        private System.ComponentModel.BackgroundWorker selectionCalculator;
+        private AeroWizard.WizardPage pageAL;
+        private AeroWizard.WizardPage pageLW;
+        private AeroWizard.WizardPage pageAW;
+        public Mathematics.Charts.Plot statChartLW;
+        private System.Windows.Forms.Button buttonLW;
+        private System.Windows.Forms.Label label5;
+        private Mathematics.Charts.Plot statChartAL;
+        private System.Windows.Forms.Button buttonAL;
+        private System.Windows.Forms.Label label6;
+        private Mathematics.Charts.Plot plotAW;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox checkBoxLW;
+        private System.Windows.Forms.CheckBox checkBoxAL;
     }
 }

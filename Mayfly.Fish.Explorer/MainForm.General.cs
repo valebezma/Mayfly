@@ -193,12 +193,10 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 AllowedStack.PopulateSpeciesMenu(menuItemLoadIndividuals, speciesInd_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemGrowthCrossSection, speciesGrowth_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMortalitySustainable, speciesMortality_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMortalityCohorts, speciesMortalityCohorts_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemSelectivity, speciesSelectivity_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemExtrapolation, speciesStockExtrapolation_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemVpa, speciesStockVpa_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMSYR, speciesMSYR_Click);

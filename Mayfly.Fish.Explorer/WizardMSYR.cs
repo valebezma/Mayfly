@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Explorer
 
         public Data.SpeciesRow SpeciesRow;
 
-        WizardGrowth growthWizard;
+        WizardPopulation growthWizard;
 
         WizardMortality mortalityWizard;
 
@@ -97,7 +97,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonGrowth_Click(object sender, EventArgs e)
         {
-            growthWizard = new WizardGrowth(Data, SpeciesRow);
+            growthWizard = new WizardPopulation(Data, SpeciesRow);
             growthWizard.Calculated += growthWizard_ModelConfirmed;
             growthWizard.Replace(this);
         }

@@ -47,7 +47,6 @@ namespace Mayfly.Fish.Explorer
                 toolStripSeparator13,
                 menuModels,
                 menuItemMortality,
-                menuItemSelectivity,
                 menuItemVpa,
                 menuItemGrowth);
 
@@ -706,18 +705,12 @@ namespace Mayfly.Fish.Explorer
         private void speciesComposition_Click(object sender, EventArgs e)
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardStockComposition wizard = new WizardStockComposition(AllowedStack, speciesRow);
+            WizardPopulation wizard = new WizardPopulation(AllowedStack, speciesRow);
             wizard.Show();
         }
 
 
 
-        private void speciesGrowth_Click(object sender, EventArgs e)
-        {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardGrowth wizard = new WizardGrowth(AllowedStack, speciesRow);
-            wizard.Show();
-        }
 
         private void speciesGrowthCohorts_Click(object sender, EventArgs e)
         {
@@ -737,13 +730,6 @@ namespace Mayfly.Fish.Explorer
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardMortalityCohorts wizard = new WizardMortalityCohorts(AllowedStack, speciesRow);
-            wizard.Show();
-        }
-
-        private void speciesSelectivity_Click(object sender, EventArgs e)
-        {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardSelectivity wizard = new WizardSelectivity(AllowedStack, speciesRow);
             wizard.Show();
         }
 

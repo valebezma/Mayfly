@@ -229,6 +229,7 @@ namespace Mayfly.Fish.Explorer
                     typeof(double), spreadSheetComposition.ColumnCount, 75).ReadOnly = true;
             }
 
+
             for (int i = 0; i < CatchesComposition.Count; i++)
             {
                 spreadSheetCatches[ColumnL.Index, i].Value = new SampleDisplay(CatchesComposition[i].LengthSample);
@@ -250,6 +251,7 @@ namespace Mayfly.Fish.Explorer
 
             UpdateResults();
             comboBoxParameter.SelectedIndex = 0;
+            displayParameter_Changed(sender, e);
 
             if (Calculated != null)
             {

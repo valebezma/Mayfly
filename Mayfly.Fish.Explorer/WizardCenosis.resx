@@ -230,7 +230,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="labelSelectivityGroupInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="labelSelectivityGroupInstruction.Size" type="System.Drawing.Size, System.Drawing">
     <value>710, 30</value>
@@ -257,7 +257,7 @@ First, you have to select data to explore.</value>
     <value>Top</value>
   </data>
   <data name="comboBoxDataset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 51</value>
+    <value>290, 51</value>
   </data>
   <data name="comboBoxDataset.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 23</value>
@@ -287,7 +287,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="labelSelectivityGroupSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 54</value>
+    <value>170, 54</value>
   </data>
   <data name="labelSelectivityGroupSelect.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 15</value>
@@ -350,7 +350,7 @@ First, you have to select data to explore.</value>
     <value>Sex ratio, juv. : M : F</value>
   </data>
   <data name="spreadSheetSelectivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 92</value>
+    <value>0, 92</value>
   </data>
   <data name="spreadSheetSelectivity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 15</value>
@@ -919,6 +919,66 @@ First, you have to select data to explore.</value>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
+  <data name="&gt;&gt;columnSelectivitySpecies.Name" xml:space="preserve">
+    <value>columnSelectivitySpecies</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityLength.Name" xml:space="preserve">
+    <value>columnSelectivityLength</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityMass.Name" xml:space="preserve">
+    <value>columnSelectivityMass</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityN.Name" xml:space="preserve">
+    <value>columnSelectivityN</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNpue.Name" xml:space="preserve">
+    <value>columnSelectivityNpue</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNpue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNPer.Name" xml:space="preserve">
+    <value>columnSelectivityNPer</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNPer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityB.Name" xml:space="preserve">
+    <value>columnSelectivityB</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBpue.Name" xml:space="preserve">
+    <value>columnSelectivityBpue</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBpue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBPer.Name" xml:space="preserve">
+    <value>columnSelectivityBPer</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBPer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySex.Name" xml:space="preserve">
+    <value>columnSelectivitySex</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ColumnCompositionSpecies.Name" xml:space="preserve">
     <value>ColumnCompositionSpecies</value>
   </data>
@@ -990,66 +1050,6 @@ First, you have to select data to explore.</value>
   </data>
   <data name="&gt;&gt;calculatorStructure.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySpecies.Name" xml:space="preserve">
-    <value>columnSelectivitySpecies</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityLength.Name" xml:space="preserve">
-    <value>columnSelectivityLength</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityMass.Name" xml:space="preserve">
-    <value>columnSelectivityMass</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityN.Name" xml:space="preserve">
-    <value>columnSelectivityN</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNpue.Name" xml:space="preserve">
-    <value>columnSelectivityNpue</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNpue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNPer.Name" xml:space="preserve">
-    <value>columnSelectivityNPer</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNPer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityB.Name" xml:space="preserve">
-    <value>columnSelectivityB</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBpue.Name" xml:space="preserve">
-    <value>columnSelectivityBpue</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBpue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBPer.Name" xml:space="preserve">
-    <value>columnSelectivityBPer</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBPer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySex.Name" xml:space="preserve">
-    <value>columnSelectivitySex</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WizardCenosis</value>
