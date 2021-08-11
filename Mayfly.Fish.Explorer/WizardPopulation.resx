@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 233</value>
+    <value>200, 236</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 169</value>
+    <value>200, 172</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjust.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 201</value>
+    <value>240, 204</value>
   </data>
   <data name="checkBoxLengthAdjust.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 265</value>
+    <value>240, 268</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 66</value>
+    <value>50, 69</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>
@@ -2236,68 +2236,29 @@ Pick options you want to include in current research.</value>
   <data name="&gt;&gt;pageAgeAdjusted.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
-  <data name="checkBoxLW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="checkBoxLW.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxLW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxLW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 122</value>
-  </data>
-  <data name="checkBoxLW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 10</value>
-  </data>
-  <data name="checkBoxLW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 19</value>
-  </data>
-  <data name="checkBoxLW.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="checkBoxLW.Text" xml:space="preserve">
-    <value>Length-to-Mass regression parameters</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLW.Name" xml:space="preserve">
-    <value>checkBoxLW</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLW.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLW.Parent" xml:space="preserve">
-    <value>pageReport</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLW.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxReportAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="checkBoxReportAge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxReportAge.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="checkBoxReportAge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 237</value>
+    <value>200, 218</value>
   </data>
   <data name="checkBoxReportAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
   <data name="checkBoxReportAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 19</value>
+    <value>176, 19</value>
   </data>
   <data name="checkBoxReportAge.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>19</value>
   </data>
   <data name="checkBoxReportAge.Text" xml:space="preserve">
-    <value>Age composition of catches</value>
+    <value>Population age composition</value>
   </data>
   <data name="&gt;&gt;checkBoxReportAge.Name" xml:space="preserve">
     <value>checkBoxReportAge</value>
@@ -2309,115 +2270,223 @@ Pick options you want to include in current research.</value>
     <value>pageReport</value>
   </data>
   <data name="&gt;&gt;checkBoxReportAge.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxReportLength.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="checkBoxReportLength.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxReportLength.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxReportLength.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 154</value>
+  </data>
+  <data name="checkBoxReportLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxReportLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 19</value>
+  </data>
+  <data name="checkBoxReportLength.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="checkBoxReportLength.Text" xml:space="preserve">
+    <value>Population length composition</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportLength.Name" xml:space="preserve">
+    <value>checkBoxReportLength</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportLength.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportLength.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkBoxAppKeys.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxReportLengthAdjusted.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="checkBoxAppKeys.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxReportLengthAdjusted.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxAppKeys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxReportLengthAdjusted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAppKeys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 301</value>
+  <data name="checkBoxReportLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 186</value>
   </data>
-  <data name="checkBoxAppKeys.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxReportLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
-  <data name="checkBoxAppKeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 19</value>
+  <data name="checkBoxReportLengthAdjusted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 19</value>
   </data>
-  <data name="checkBoxAppKeys.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="checkBoxReportLengthAdjusted.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
-  <data name="checkBoxAppKeys.Text" xml:space="preserve">
-    <value>Appendices with length/age keys</value>
+  <data name="checkBoxReportLengthAdjusted.Text" xml:space="preserve">
+    <value>Selectivity model and adjusted composition</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppKeys.Name" xml:space="preserve">
-    <value>checkBoxAppKeys</value>
+  <data name="&gt;&gt;checkBoxReportLengthAdjusted.Name" xml:space="preserve">
+    <value>checkBoxReportLengthAdjusted</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppKeys.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportLengthAdjusted.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppKeys.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportLengthAdjusted.Parent" xml:space="preserve">
     <value>pageReport</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppKeys.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportLengthAdjusted.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="checkBoxAL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxReportAgeAdjusted.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="checkBoxAL.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxReportAgeAdjusted.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxAL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxReportAgeAdjusted.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 90</value>
+  <data name="checkBoxReportAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 314</value>
   </data>
-  <data name="checkBoxAL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxReportAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
-  <data name="checkBoxAL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 19</value>
+  <data name="checkBoxReportAgeAdjusted.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 19</value>
   </data>
-  <data name="checkBoxAL.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="checkBoxReportAgeAdjusted.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
-  <data name="checkBoxAL.Text" xml:space="preserve">
-    <value>Growth curve parameters</value>
+  <data name="checkBoxReportAgeAdjusted.Text" xml:space="preserve">
+    <value>Mortality model and adjusted composition</value>
   </data>
-  <data name="&gt;&gt;checkBoxAL.Name" xml:space="preserve">
-    <value>checkBoxAL</value>
+  <data name="&gt;&gt;checkBoxReportAgeAdjusted.Name" xml:space="preserve">
+    <value>checkBoxReportAgeAdjusted</value>
   </data>
-  <data name="&gt;&gt;checkBoxAL.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeAdjusted.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxAL.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeAdjusted.Parent" xml:space="preserve">
     <value>pageReport</value>
   </data>
-  <data name="&gt;&gt;checkBoxAL.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeAdjusted.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkBoxAppT.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxReportAgeKeys.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="checkBoxAppT.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxReportAgeKeys.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxAppT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxReportAgeKeys.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAppT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 269</value>
+  <data name="checkBoxReportAgeKeys.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 282</value>
   </data>
-  <data name="checkBoxAppT.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxReportAgeKeys.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
-  <data name="checkBoxAppT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 19</value>
+  <data name="checkBoxReportAgeKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 19</value>
   </data>
-  <data name="checkBoxAppT.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBoxReportAgeKeys.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="checkBoxAppT.Text" xml:space="preserve">
-    <value>Appendices with age groups CPUE calculation</value>
+  <data name="checkBoxReportAgeKeys.Text" xml:space="preserve">
+    <value>Appendices with length/age keys</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppT.Name" xml:space="preserve">
-    <value>checkBoxAppT</value>
+  <data name="&gt;&gt;checkBoxReportAgeKeys.Name" xml:space="preserve">
+    <value>checkBoxReportAgeKeys</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppT.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeKeys.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppT.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeKeys.Parent" xml:space="preserve">
     <value>pageReport</value>
   </data>
-  <data name="&gt;&gt;checkBoxAppT.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportAgeKeys.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="checkBoxReportBasic.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="checkBoxReportBasic.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxReportBasic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxReportBasic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 90</value>
+  </data>
+  <data name="checkBoxReportBasic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxReportBasic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 19</value>
+  </data>
+  <data name="checkBoxReportBasic.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxReportBasic.Text" xml:space="preserve">
+    <value>Basic biological information</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportBasic.Name" xml:space="preserve">
+    <value>checkBoxReportBasic</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportBasic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportBasic.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportBasic.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 250</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 10</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 19</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxReportAgeCPUE.Text" xml:space="preserve">
+    <value>Appendices with age groups CPUE calculation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportAgeCPUE.Name" xml:space="preserve">
+    <value>checkBoxReportAgeCPUE</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportAgeCPUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportAgeCPUE.Parent" xml:space="preserve">
+    <value>pageReport</value>
+  </data>
+  <data name="&gt;&gt;checkBoxReportAgeCPUE.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="labelReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -2447,43 +2516,43 @@ Pick options you want to include in current research.</value>
     <value>pageReport</value>
   </data>
   <data name="&gt;&gt;labelReport.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
-  <data name="checkBoxGears.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxReportGears.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="checkBoxGears.AutoSize" type="System.Boolean, mscorlib">
+  <data name="checkBoxReportGears.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="checkBoxGears.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxReportGears.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxGears.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 154</value>
+  <data name="checkBoxReportGears.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 122</value>
   </data>
-  <data name="checkBoxGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkBoxReportGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
   </data>
-  <data name="checkBoxGears.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxReportGears.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 19</value>
   </data>
-  <data name="checkBoxGears.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkBoxReportGears.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="checkBoxGears.Text" xml:space="preserve">
+  <data name="checkBoxReportGears.Text" xml:space="preserve">
     <value>Gear set description</value>
   </data>
-  <data name="&gt;&gt;checkBoxGears.Name" xml:space="preserve">
-    <value>checkBoxGears</value>
+  <data name="&gt;&gt;checkBoxReportGears.Name" xml:space="preserve">
+    <value>checkBoxReportGears</value>
   </data>
-  <data name="&gt;&gt;checkBoxGears.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportGears.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxGears.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkBoxReportGears.Parent" xml:space="preserve">
     <value>pageReport</value>
   </data>
-  <data name="&gt;&gt;checkBoxGears.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;checkBoxReportGears.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="pageReport.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 407</value>

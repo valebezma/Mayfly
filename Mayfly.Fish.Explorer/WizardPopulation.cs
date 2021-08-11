@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer
 
             report.UseTableNumeration = true;
 
-            if (checkBoxGears.Checked)
+            if (checkBoxReportGears.Checked)
             {
                 gearWizard.AddEffortSection(report);
             }
@@ -154,18 +154,18 @@ namespace Mayfly.Fish.Explorer
                 ageCompositionWizard.AppendPopulationSectionTo(report);
             }
 
-            if (checkBoxAppT.Checked | checkBoxAppKeys.Checked)
+            if (checkBoxReportAgeCPUE.Checked | checkBoxReportAgeKeys.Checked)
             {
                 report.BreakPage(PageBreakOption.Odd);
                 report.AddChapterTitle(Resources.Reports.Chapter.Appendices);
             }
 
-            if (checkBoxAppT.Checked)
+            if (checkBoxReportAgeCPUE.Checked)
             {
                 ageCompositionWizard.AppendCalculationSectionTo(report);
             }
 
-            if (checkBoxAppKeys.Checked)
+            if (checkBoxReportAgeKeys.Checked)
             {
                 ageCompositionWizard.AddAgeRecoveryRoutines(report);
             }
@@ -301,14 +301,20 @@ namespace Mayfly.Fish.Explorer
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            //pageSelectionSource.Suppress =
-            //    pageSelection.Suppress =
-            //    pageLengthAdjusted.Suppress = 
-            //    !checkBoxLengthAdjust.Checked;
+            pageLength.Suppress =
+                !checkBoxLength.Checked;
 
-            //pageMortality.Suppress =
-            //    pageAgeAdjusted.Suppress =
-            //    !checkBoxAgeAdjusted.Checked;
+            pageSelectionSource.Suppress =
+                pageSelection.Suppress =
+                pageLengthAdjusted.Suppress =
+                !checkBoxLengthAdjust.Checked;
+
+            pageAge.Suppress =
+                !checkBoxAge.Checked;
+
+            pageMortality.Suppress =
+                pageAgeAdjusted.Suppress =
+                !checkBoxAgeAdjusted.Checked;
         }
 
 
@@ -361,7 +367,7 @@ namespace Mayfly.Fish.Explorer
             #region Age to Length
 
             statChartAL.Visible = GrowthModel != null;
-            buttonAL.Enabled = checkBoxAL.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
+            buttonAL.Enabled = checkBoxReportBasic.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
 
             statChartAL.Clear();
 
@@ -565,7 +571,7 @@ namespace Mayfly.Fish.Explorer
 
         private void gearWizard_Returned(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(pageBasic);
+            wizardExplorer.EnsureSelected(pageModelAW);
             this.Replace(gearWizard);
         }
 
@@ -629,9 +635,9 @@ namespace Mayfly.Fish.Explorer
 
         private void pageCpue_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (checkBoxLength.Checked)
+            if (Visible)
             {
-                if (Visible)
+                if (checkBoxLength.Checked)
                 {
                     if (lengthCompositionWizard == null)
                     {
@@ -643,10 +649,10 @@ namespace Mayfly.Fish.Explorer
                     lengthCompositionWizard.Replace(this);
                     lengthCompositionWizard.Run(gearWizard);
                 }
-            }
-            else
-            {
-                wizardExplorer.EnsureSelected(pageAge);
+                //else
+                //{
+                //    wizardExplorer.EnsureSelected(pageAge);
+                //}
             }
         }
 
@@ -760,11 +766,19 @@ namespace Mayfly.Fish.Explorer
         {
             if (!checkBoxLengthAdjust.Checked)
             {
-                while (wizardExplorer.SelectedPage != pageAge)
-                {
-                    wizardExplorer.NextPage();
-                }
+                pageLengthAdjusted_Commit(sender, e);
             }
+        }
+
+        private void pageSelectionSource_Initialize(object sender, WizardPageInitEventArgs e)
+        {
+            //if (!checkBoxLengthAdjust.Checked)
+            //{
+            //    while (wizardExplorer.SelectedPage != pageAge)
+            //    {
+            //        wizardExplorer.NextPage();
+            //    }
+            //}
         }
 
 
@@ -883,9 +897,9 @@ namespace Mayfly.Fish.Explorer
 
         private void pageLengthAdjusted_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (checkBoxAge.Checked)
+            if (Visible)
             {
-                if (Visible)
+                if (checkBoxAge.Checked)
                 {
                     if (ageCompositionWizard == null)
                     {
@@ -897,10 +911,10 @@ namespace Mayfly.Fish.Explorer
                     ageCompositionWizard.Replace(this);
                     ageCompositionWizard.Run(gearWizard);
                 }
-            }
-            else
-            {
-                wizardExplorer.EnsureSelected(pageReport);
+                //else
+                //{
+                //    wizardExplorer.EnsureSelected(pageReport);
+                //}
             }
         }
 
@@ -908,7 +922,7 @@ namespace Mayfly.Fish.Explorer
 
         private void ageCompositionWizard_Returned(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(pageLengthAdjusted);
+            wizardExplorer.EnsureSelected(checkBoxLengthAdjust.Checked ? pageLengthAdjusted : pageLength);
             this.Replace(ageCompositionWizard);
         }
 
@@ -986,19 +1000,23 @@ namespace Mayfly.Fish.Explorer
         }
 
         private void pageAge_Commit(object sender, WizardPageConfirmEventArgs e)
+        {        }
+
+
+
+        private void pageMortality_Initialize(object sender, WizardPageInitEventArgs e)
         {
-            if (!checkBoxAgeAdjusted.Checked)
-            {
-                while (wizardExplorer.SelectedPage != pageReport)
-                {
-                    wizardExplorer.NextPage();
-                }
-            }
+            // fires at backward move too!!!
+            //if (!checkBoxAgeAdjusted.Checked)
+            //{
+            //    while (wizardExplorer.SelectedPage != pageReport)
+            //    {
+            //        wizardExplorer.NextPage();
+            //    }
+            //}
         }
 
-
-
-        private void pageMortalityChart_Rollback(object sender, WizardPageConfirmEventArgs e)
+        private void pageMortality_Rollback(object sender, WizardPageConfirmEventArgs e)
         {
             if (MortalityReturned != null)
             {
@@ -1077,8 +1095,8 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxReportAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAppT.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
-            checkBoxAppKeys.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
+            checkBoxReportAgeCPUE.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
+            checkBoxReportAgeKeys.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
         }
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
