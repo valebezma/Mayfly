@@ -59,7 +59,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private void RecalculateCenosis()
+        private void recalculateCenosis()
         {
             for (int i = 0; i < NaturalComposition.Count; i++)
             {
@@ -70,7 +70,7 @@ namespace Mayfly.Fish.Explorer
             }
         }
         
-        private Report GetReport()
+        public Report GetReport()
         {
             Report report = new Report(Resources.Reports.Header.SummaryCenosis);
 
@@ -83,12 +83,8 @@ namespace Mayfly.Fish.Explorer
                 gearWizard.AddEffortSection(report);
             }
 
-            int catchesTableNo = -1;
-
             if (checkBoxCatches.Checked)
             {
-                catchesTableNo = report.NextTableNumber;
-
                 compositionWizard.AppendCatchesSectionTo(report);
             }
 
@@ -140,7 +136,7 @@ namespace Mayfly.Fish.Explorer
 
         public void AddCalculation(Report report, SpeciesSwarm swarm)
         {
-            throw new NotImplementedException("Calculation example not implemented yet.");
+            //throw new NotImplementedException("Calculation example not implemented yet.");
             report.AddSectionTitle("Calculation Example");
             report.AddParagraph("Calculation example not implemented yet.");
         }
@@ -221,9 +217,10 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (SpeciesSwarm species in (SpeciesComposition)e.Result)
             {
-                DataGridViewRow gridRow = new DataGridViewRow();
-
-                gridRow.Height = spreadSheetSelectivity.RowTemplate.Height;
+                DataGridViewRow gridRow = new DataGridViewRow
+                {
+                    Height = spreadSheetSelectivity.RowTemplate.Height
+                };
 
                 gridRow.CreateCells(spreadSheetSelectivity);
                 gridRow.Cells[columnSelectivitySpecies.Index].Value = species;
@@ -310,7 +307,7 @@ namespace Mayfly.Fish.Explorer
 
         private void cenosisCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            RecalculateCenosis();
+            recalculateCenosis();
         }
 
         private void cenosisCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -331,7 +328,7 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetComposition[ColumnCompositionDominance.Index, i].Value = NaturalComposition[i].Dominance;
             }
 
-            ComboBoxDiversity_SelectedIndexChanged(sender, e);
+            comboBoxDiversity_SelectedIndexChanged(sender, e);
             pageComposition.SetNavigation(true);
         }
 
@@ -349,7 +346,7 @@ namespace Mayfly.Fish.Explorer
                     double value = (double)spreadSheetComposition[e.ColumnIndex, e.RowIndex].Value;
                     Service.SaveCatchability(gearWizard.SelectedSamplerType, NaturalComposition[e.RowIndex].Name, value);
 
-                    RecalculateCenosis();
+                    recalculateCenosis();
                 }
 
                 for (int i = 0; i < NaturalComposition.Count; i++)
@@ -362,7 +359,7 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void ComboBoxDiversity_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxDiversity_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxDiversity.ContainsFocus) Wild.UserSettings.Diversity = (DiversityIndex)comboBoxDiversity.SelectedIndex;
             textBoxDiversity.Text = NaturalComposition == null ? string.Empty : NaturalComposition.Diversity.ToString("N3");
@@ -429,12 +426,12 @@ namespace Mayfly.Fish.Explorer
             Close();
         }
 
-        private void CheckBoxAppExample_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxAppExample_CheckedChanged(object sender, EventArgs e)
         {
             comboBoxExample.Enabled = checkBoxAppExample.Checked;
         }
 
-        private void ComboBoxExample_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxExample_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedSwarm = (SpeciesSwarm)comboBoxExample.SelectedItem;
         }

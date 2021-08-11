@@ -65,7 +65,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
+            setCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
             result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
 
@@ -122,7 +122,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
+            setCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
             return result;
         }

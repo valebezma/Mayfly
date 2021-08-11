@@ -170,53 +170,53 @@ namespace Mayfly.Fish.Explorer
             // Change info in IndGrid
             foreach (DataGridViewRow indGridRow in IndividualRows(cardRow))
             {
-                SetCardValue(cardRow, indGridRow, spreadSheetInd.GetInsertedColumns());
+                setCardValue(cardRow, indGridRow, spreadSheetInd.GetInsertedColumns());
             }
 
-            RememberChanged(cardRow);
+            rememberChanged(cardRow);
         }
 
         private void UpdateCardRow(Data.CardRow cardRow, DataGridViewRow result)
         {
-            SetCardValue(cardRow, result, columnCardID, "ID");
-            SetCardValue(cardRow, result, columnCardInvestigator, "Investigator");
-            SetCardValue(cardRow, result, columnCardLabel, "Label");
-            SetCardValue(cardRow, result, columnCardWater, "Water");
-            SetCardValue(cardRow, result, columnCardWhen, "When");
-            SetCardValue(cardRow, result, columnCardWhere, "Where");
+            setCardValue(cardRow, result, columnCardID, "ID");
+            setCardValue(cardRow, result, columnCardInvestigator, "Investigator");
+            setCardValue(cardRow, result, columnCardLabel, "Label");
+            setCardValue(cardRow, result, columnCardWater, "Water");
+            setCardValue(cardRow, result, columnCardWhen, "When");
+            setCardValue(cardRow, result, columnCardWhere, "Where");
 
-            SetCardValue(cardRow, result, ColumnCardWeather, "Weather");
-            SetCardValue(cardRow, result, ColumnCardTempSurface, "Surface");
+            setCardValue(cardRow, result, ColumnCardWeather, "Weather");
+            setCardValue(cardRow, result, ColumnCardTempSurface, "Surface");
 
-            SetCardValue(cardRow, result, columnCardGear, "Gear");
-            SetCardValue(cardRow, result, columnCardMesh, "Mesh");
-            SetCardValue(cardRow, result, columnCardHook, "Hook");
-            SetCardValue(cardRow, result, columnCardLength, "Length");
-            SetCardValue(cardRow, result, columnCardOpening, "Opening");
-            SetCardValue(cardRow, result, columnCardHeight, "Height");
-            SetCardValue(cardRow, result, columnCardSquare, "Square");
-            SetCardValue(cardRow, result, columnCardSpan, "Span");
-            SetCardValue(cardRow, result, columnCardVelocity, "Velocity");
-            SetCardValue(cardRow, result, columnCardExposure, "Exposure");
+            setCardValue(cardRow, result, columnCardGear, "Gear");
+            setCardValue(cardRow, result, columnCardMesh, "Mesh");
+            setCardValue(cardRow, result, columnCardHook, "Hook");
+            setCardValue(cardRow, result, columnCardLength, "Length");
+            setCardValue(cardRow, result, columnCardOpening, "Opening");
+            setCardValue(cardRow, result, columnCardHeight, "Height");
+            setCardValue(cardRow, result, columnCardSquare, "Square");
+            setCardValue(cardRow, result, columnCardSpan, "Span");
+            setCardValue(cardRow, result, columnCardVelocity, "Velocity");
+            setCardValue(cardRow, result, columnCardExposure, "Exposure");
 
             //if (Wild.UserSettings.InstalledPermissions.IsPermitted(cardRow.Investigator))
             //{
-                SetCardValue(cardRow, result, columnCardEffort, "Effort");
-                SetCardValue(cardRow, result, columnCardDepth, "Depth");
-                SetCardValue(cardRow, result, columnCardWealth, "Wealth");
-                SetCardValue(cardRow, result, columnCardQuantity, "Quantity");
-                SetCardValue(cardRow, result, columnCardMass, "Mass");
-                SetCardValue(cardRow, result, columnCardAbundance, "Abundance");
-                SetCardValue(cardRow, result, columnCardBiomass, "Biomass");
-                SetCardValue(cardRow, result, columnCardDiversityA, "DiversityA");
-                SetCardValue(cardRow, result, columnCardDiversityB, "DiversityB");
+                setCardValue(cardRow, result, columnCardEffort, "Effort");
+                setCardValue(cardRow, result, columnCardDepth, "Depth");
+                setCardValue(cardRow, result, columnCardWealth, "Wealth");
+                setCardValue(cardRow, result, columnCardQuantity, "Quantity");
+                setCardValue(cardRow, result, columnCardMass, "Mass");
+                setCardValue(cardRow, result, columnCardAbundance, "Abundance");
+                setCardValue(cardRow, result, columnCardBiomass, "Biomass");
+                setCardValue(cardRow, result, columnCardDiversityA, "DiversityA");
+                setCardValue(cardRow, result, columnCardDiversityB, "DiversityB");
             //}
 
-            SetCardValue(cardRow, result, columnCardComments, "Comments");
+            setCardValue(cardRow, result, columnCardComments, "Comments");
 
             foreach (Data.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
             {
-                SetCardValue(cardRow, result, spreadSheetCard.GetColumn(factorValueRow.FactorRow.Factor));
+                setCardValue(cardRow, result, spreadSheetCard.GetColumn(factorValueRow.FactorRow.Factor));
             }
         }
     }

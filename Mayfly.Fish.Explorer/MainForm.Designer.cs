@@ -30,89 +30,89 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 45D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1000D, 5D);
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle111 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle112 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle113 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle114 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle115 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle116 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle117 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle118 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle119 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle120 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle121 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle122 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle123 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle124 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle125 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle126 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle127 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle128 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle129 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle130 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle131 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle132 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle133 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle134 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle135 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle136 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle137 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle138 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle139 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle140 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle141 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle142 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle143 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle144 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle145 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle146 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 45D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1000D, 5D);
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAddData = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,7 +149,6 @@
             this.menuItemGrowth = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGrowthCohorts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMortality = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemMortalitySustainable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMortalityCohorts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemStock = new System.Windows.Forms.ToolStripMenuItem();
@@ -828,15 +827,9 @@
             // menuItemMortality
             // 
             this.menuItemMortality.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemMortalitySustainable,
             this.menuItemMortalityCohorts});
             this.menuItemMortality.Name = "menuItemMortality";
             resources.ApplyResources(this.menuItemMortality, "menuItemMortality");
-            // 
-            // menuItemMortalitySustainable
-            // 
-            this.menuItemMortalitySustainable.Name = "menuItemMortalitySustainable";
-            resources.ApplyResources(this.menuItemMortalitySustainable, "menuItemMortalitySustainable");
             // 
             // menuItemMortalityCohorts
             // 
@@ -1440,9 +1433,9 @@
             // columnArtCardName
             // 
             this.columnArtCardName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle74.Format = "S";
-            this.columnArtCardName.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Format = "S";
+            this.columnArtCardName.DefaultCellStyle = dataGridViewCellStyle1;
             this.columnArtCardName.FillWeight = 250F;
             resources.ApplyResources(this.columnArtCardName, "columnArtCardName");
             this.columnArtCardName.Name = "columnArtCardName";
@@ -1450,9 +1443,9 @@
             // 
             // columnArtCardOddMass
             // 
-            dataGridViewCellStyle75.Format = "N3";
-            dataGridViewCellStyle75.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtCardOddMass.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle2.Format = "N3";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtCardOddMass.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.columnArtCardOddMass, "columnArtCardOddMass");
             this.columnArtCardOddMass.Image = null;
             this.columnArtCardOddMass.Name = "columnArtCardOddMass";
@@ -1460,8 +1453,8 @@
             // 
             // columnArtCardEffort
             // 
-            dataGridViewCellStyle76.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtCardEffort.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtCardEffort.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.columnArtCardEffort, "columnArtCardEffort");
             this.columnArtCardEffort.Image = null;
             this.columnArtCardEffort.Name = "columnArtCardEffort";
@@ -1546,8 +1539,8 @@
             // columnArtefactSpecies
             // 
             this.columnArtefactSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnArtefactSpecies.DefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnArtefactSpecies.DefaultCellStyle = dataGridViewCellStyle4;
             this.columnArtefactSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnArtefactSpecies, "columnArtefactSpecies");
             this.columnArtefactSpecies.Name = "columnArtefactSpecies";
@@ -1555,16 +1548,16 @@
             // 
             // columnArtefactN
             // 
-            dataGridViewCellStyle78.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactN.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactN.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.columnArtefactN, "columnArtefactN");
             this.columnArtefactN.Name = "columnArtefactN";
             this.columnArtefactN.ReadOnly = true;
             // 
             // columnArtefactDetailed
             // 
-            dataGridViewCellStyle79.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactDetailed.DefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactDetailed.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.columnArtefactDetailed, "columnArtefactDetailed");
             this.columnArtefactDetailed.Image = null;
             this.columnArtefactDetailed.Name = "columnArtefactDetailed";
@@ -1573,8 +1566,8 @@
             // 
             // columnArtefactLength
             // 
-            dataGridViewCellStyle80.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactLength.DefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactLength.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.columnArtefactLength, "columnArtefactLength");
             this.columnArtefactLength.Image = null;
             this.columnArtefactLength.Name = "columnArtefactLength";
@@ -1583,8 +1576,8 @@
             // 
             // columnArtefactMass
             // 
-            dataGridViewCellStyle81.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactMass.DefaultCellStyle = dataGridViewCellStyle81;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactMass.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.columnArtefactMass, "columnArtefactMass");
             this.columnArtefactMass.Image = null;
             this.columnArtefactMass.Name = "columnArtefactMass";
@@ -1593,8 +1586,8 @@
             // 
             // columnArtefactAge
             // 
-            dataGridViewCellStyle82.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactAge.DefaultCellStyle = dataGridViewCellStyle82;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactAge.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.columnArtefactAge, "columnArtefactAge");
             this.columnArtefactAge.Image = null;
             this.columnArtefactAge.Name = "columnArtefactAge";
@@ -1657,8 +1650,8 @@
             // columnArtefactIndSpecies
             // 
             this.columnArtefactIndSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnArtefactIndSpecies.DefaultCellStyle = dataGridViewCellStyle83;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnArtefactIndSpecies.DefaultCellStyle = dataGridViewCellStyle10;
             this.columnArtefactIndSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnArtefactIndSpecies, "columnArtefactIndSpecies");
             this.columnArtefactIndSpecies.Name = "columnArtefactIndSpecies";
@@ -1666,8 +1659,8 @@
             // 
             // columnArtefactIndRegID
             // 
-            dataGridViewCellStyle84.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactIndRegID.DefaultCellStyle = dataGridViewCellStyle84;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactIndRegID.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.columnArtefactIndRegID, "columnArtefactIndRegID");
             this.columnArtefactIndRegID.Image = null;
             this.columnArtefactIndRegID.Name = "columnArtefactIndRegID";
@@ -1676,8 +1669,8 @@
             // 
             // columnArtefactIndDietUnw
             // 
-            dataGridViewCellStyle85.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactIndDietUnw.DefaultCellStyle = dataGridViewCellStyle85;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.columnArtefactIndDietUnw.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.columnArtefactIndDietUnw, "columnArtefactIndDietUnw");
             this.columnArtefactIndDietUnw.Image = null;
             this.columnArtefactIndDietUnw.Name = "columnArtefactIndDietUnw";
@@ -1748,8 +1741,8 @@
             // 
             // ColumnGearStats
             // 
-            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnGearStats.DefaultCellStyle = dataGridViewCellStyle86;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnGearStats.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.ColumnGearStats, "ColumnGearStats");
             this.ColumnGearStats.Name = "ColumnGearStats";
             this.ColumnGearStats.ReadOnly = true;
@@ -1839,8 +1832,8 @@
             // 
             // columnEffortMesh
             // 
-            dataGridViewCellStyle87.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnEffortMesh.DefaultCellStyle = dataGridViewCellStyle87;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnEffortMesh.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.columnEffortMesh, "columnEffortMesh");
             this.columnEffortMesh.Name = "columnEffortMesh";
             this.columnEffortMesh.ReadOnly = true;
@@ -1853,16 +1846,16 @@
             // 
             // columnEffort
             // 
-            dataGridViewCellStyle88.Format = "N2";
-            this.columnEffort.DefaultCellStyle = dataGridViewCellStyle88;
+            dataGridViewCellStyle15.Format = "N2";
+            this.columnEffort.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.columnEffort, "columnEffort");
             this.columnEffort.Name = "columnEffort";
             this.columnEffort.ReadOnly = true;
             // 
             // columnEffortEO
             // 
-            dataGridViewCellStyle89.Format = "N3";
-            this.columnEffortEO.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle16.Format = "N3";
+            this.columnEffortEO.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.columnEffortEO, "columnEffortEO");
             this.columnEffortEO.Name = "columnEffortEO";
             this.columnEffortEO.ReadOnly = true;
@@ -1890,41 +1883,41 @@
             // chartSchedule
             // 
             resources.ApplyResources(this.chartSchedule, "chartSchedule");
-            chartArea3.AxisX.Interval = 10D;
-            chartArea3.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea3.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea3.AxisX.IsLabelAutoFit = false;
-            chartArea3.AxisX.IsStartedFromZero = false;
-            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisX.MajorTickMark.Interval = 10D;
-            chartArea3.AxisX.Maximum = 100D;
-            chartArea3.AxisX.Minimum = 10D;
-            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisX.MinorTickMark.Enabled = true;
-            chartArea3.AxisX.MinorTickMark.Interval = 5D;
-            chartArea3.AxisX.Title = "Gear mesh, mm";
-            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
-            chartArea3.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea3.AxisY.IsStartedFromZero = false;
-            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisY.Maximum = 12D;
-            chartArea3.AxisY.Minimum = 0D;
-            chartArea3.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea3.AxisY.ScaleBreakStyle.MaxNumberOfBreaks = 5;
-            chartArea3.AxisY.Title = "Date";
-            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
-            chartArea3.CursorY.IsUserSelectionEnabled = true;
-            chartArea3.Name = "ChartArea1";
-            this.chartSchedule.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.Interval = 10D;
+            chartArea1.AxisX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MajorTickMark.Interval = 10D;
+            chartArea1.AxisX.Maximum = 100D;
+            chartArea1.AxisX.Minimum = 10D;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisX.MinorTickMark.Enabled = true;
+            chartArea1.AxisX.MinorTickMark.Interval = 5D;
+            chartArea1.AxisX.Title = "Gear mesh, mm";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.Maximum = 12D;
+            chartArea1.AxisY.Minimum = 0D;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea1.AxisY.ScaleBreakStyle.MaxNumberOfBreaks = 5;
+            chartArea1.AxisY.Title = "Date";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            chartArea1.CursorY.IsUserSelectionEnabled = true;
+            chartArea1.Name = "ChartArea1";
+            this.chartSchedule.ChartAreas.Add(chartArea1);
             this.chartSchedule.Name = "chartSchedule";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series4.Name = "Series1";
-            series4.YValuesPerPoint = 2;
-            this.chartSchedule.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            this.chartSchedule.Series.Add(series1);
             this.chartSchedule.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chartSchedule_AxisViewChanged);
             this.chartSchedule.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chartSchedule_MouseDoubleClick);
             // 
@@ -1994,8 +1987,8 @@
             // 
             // columnCatchSpc
             // 
-            dataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCatchSpc.DefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCatchSpc.DefaultCellStyle = dataGridViewCellStyle17;
             this.columnCatchSpc.FillWeight = 86.8969F;
             resources.ApplyResources(this.columnCatchSpc, "columnCatchSpc");
             this.columnCatchSpc.Name = "columnCatchSpc";
@@ -2012,8 +2005,8 @@
             // columnCatchW
             // 
             this.columnCatchW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle91.Format = "N3";
-            this.columnCatchW.DefaultCellStyle = dataGridViewCellStyle91;
+            dataGridViewCellStyle18.Format = "N3";
+            this.columnCatchW.DefaultCellStyle = dataGridViewCellStyle18;
             this.columnCatchW.FillWeight = 75F;
             resources.ApplyResources(this.columnCatchW, "columnCatchW");
             this.columnCatchW.Name = "columnCatchW";
@@ -2052,9 +2045,9 @@
             // 
             // ColumnSpcStat
             // 
-            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle92.Format = "l";
-            this.ColumnSpcStat.DefaultCellStyle = dataGridViewCellStyle92;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.Format = "l";
+            this.ColumnSpcStat.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.ColumnSpcStat, "ColumnSpcStat");
             this.ColumnSpcStat.Name = "ColumnSpcStat";
             this.ColumnSpcStat.ReadOnly = true;
@@ -2257,41 +2250,41 @@
             // 
             resources.ApplyResources(this.chartSpcStats, "chartSpcStats");
             this.chartSpcStats.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.Area3DStyle.WallWidth = 1;
-            chartArea4.InnerPlotPosition.Auto = false;
-            chartArea4.InnerPlotPosition.Height = 100F;
-            chartArea4.InnerPlotPosition.Width = 100F;
-            chartArea4.Name = "ChartAreaSample";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 100F;
-            chartArea4.Position.Width = 100F;
-            this.chartSpcStats.ChartAreas.Add(chartArea4);
-            legend2.Alignment = System.Drawing.StringAlignment.Far;
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.IsEquallySpacedItems = true;
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartSpcStats.Legends.Add(legend2);
+            chartArea2.Area3DStyle.WallWidth = 1;
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 100F;
+            chartArea2.InnerPlotPosition.Width = 100F;
+            chartArea2.Name = "ChartAreaSample";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 100F;
+            chartArea2.Position.Width = 100F;
+            this.chartSpcStats.ChartAreas.Add(chartArea2);
+            legend1.Alignment = System.Drawing.StringAlignment.Far;
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.IsEquallySpacedItems = true;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartSpcStats.Legends.Add(legend1);
             this.chartSpcStats.Name = "chartSpcStats";
-            series5.BorderColor = System.Drawing.Color.Transparent;
-            series5.ChartArea = "ChartAreaSample";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.CustomProperties = "DoughnutRadius=30, PieDrawingStyle=Concave, CollectedThreshold=5";
-            series5.Font = new System.Drawing.Font("Segoe UI", 7F);
-            series5.Legend = "Legend1";
-            series5.Name = "Sample";
-            dataPoint5.CustomProperties = "OriginalPointIndex=0";
-            dataPoint5.Label = "Abramis brama";
-            dataPoint6.CustomProperties = "OriginalPointIndex=1";
-            dataPoint6.Label = "Abramis sapa";
-            series5.Points.Add(dataPoint5);
-            series5.Points.Add(dataPoint6);
-            series5.SmartLabelStyle.AllowOutsidePlotArea = System.Windows.Forms.DataVisualization.Charting.LabelOutsidePlotAreaStyle.No;
-            series5.SmartLabelStyle.MovingDirection = ((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles)(((((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Right | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Left) 
+            series2.BorderColor = System.Drawing.Color.Transparent;
+            series2.ChartArea = "ChartAreaSample";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.CustomProperties = "DoughnutRadius=30, PieDrawingStyle=Concave, CollectedThreshold=5";
+            series2.Font = new System.Drawing.Font("Segoe UI", 7F);
+            series2.Legend = "Legend1";
+            series2.Name = "Sample";
+            dataPoint1.CustomProperties = "OriginalPointIndex=0";
+            dataPoint1.Label = "Abramis brama";
+            dataPoint2.CustomProperties = "OriginalPointIndex=1";
+            dataPoint2.Label = "Abramis sapa";
+            series2.Points.Add(dataPoint1);
+            series2.Points.Add(dataPoint2);
+            series2.SmartLabelStyle.AllowOutsidePlotArea = System.Windows.Forms.DataVisualization.Charting.LabelOutsidePlotAreaStyle.No;
+            series2.SmartLabelStyle.MovingDirection = ((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles)(((((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Right | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Left) 
             | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.TopRight) 
             | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.BottomLeft) 
             | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.BottomRight)));
-            this.chartSpcStats.Series.Add(series5);
+            this.chartSpcStats.Series.Add(series2);
             // 
             // tabPageSpcTech
             // 
@@ -2353,8 +2346,8 @@
             // 
             // ColumnSpcTechClass
             // 
-            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpcTechClass.DefaultCellStyle = dataGridViewCellStyle93;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpcTechClass.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.ColumnSpcTechClass, "ColumnSpcTechClass");
             this.ColumnSpcTechClass.Name = "ColumnSpcTechClass";
             this.ColumnSpcTechClass.ReadOnly = true;
@@ -2485,14 +2478,14 @@
             this.plotQualify.AxisYAutoMinimum = false;
             this.plotQualify.BackColor = System.Drawing.SystemColors.Window;
             this.plotQualify.Name = "plotQualify";
-            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series6.BorderWidth = 2;
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.Name = "Limiter";
-            series6.Points.Add(dataPoint7);
-            series6.Points.Add(dataPoint8);
-            this.plotQualify.Series.Add(series6);
+            series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series3.BorderWidth = 2;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Name = "Limiter";
+            series3.Points.Add(dataPoint3);
+            series3.Points.Add(dataPoint4);
+            this.plotQualify.Series.Add(series3);
             this.plotQualify.ShowLegend = false;
             this.plotQualify.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
             // 
@@ -2562,9 +2555,9 @@
             // 
             // columnCardID
             // 
-            dataGridViewCellStyle94.Format = "N0";
-            dataGridViewCellStyle94.NullValue = null;
-            this.columnCardID.DefaultCellStyle = dataGridViewCellStyle94;
+            dataGridViewCellStyle21.Format = "N0";
+            dataGridViewCellStyle21.NullValue = null;
+            this.columnCardID.DefaultCellStyle = dataGridViewCellStyle21;
             resources.ApplyResources(this.columnCardID, "columnCardID");
             this.columnCardID.Name = "columnCardID";
             this.columnCardID.ReadOnly = true;
@@ -2572,8 +2565,8 @@
             // 
             // columnCardInvestigator
             // 
-            dataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardInvestigator.DefaultCellStyle = dataGridViewCellStyle95;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardInvestigator.DefaultCellStyle = dataGridViewCellStyle22;
             this.columnCardInvestigator.FillWeight = 150F;
             resources.ApplyResources(this.columnCardInvestigator, "columnCardInvestigator");
             this.columnCardInvestigator.Name = "columnCardInvestigator";
@@ -2581,8 +2574,8 @@
             // 
             // columnCardWater
             // 
-            dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardWater.DefaultCellStyle = dataGridViewCellStyle96;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardWater.DefaultCellStyle = dataGridViewCellStyle23;
             this.columnCardWater.FillWeight = 200F;
             resources.ApplyResources(this.columnCardWater, "columnCardWater");
             this.columnCardWater.Name = "columnCardWater";
@@ -2590,17 +2583,17 @@
             // 
             // columnCardLabel
             // 
-            dataGridViewCellStyle97.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardLabel.DefaultCellStyle = dataGridViewCellStyle97;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardLabel.DefaultCellStyle = dataGridViewCellStyle24;
             resources.ApplyResources(this.columnCardLabel, "columnCardLabel");
             this.columnCardLabel.Name = "columnCardLabel";
             // 
             // columnCardWhen
             // 
-            dataGridViewCellStyle98.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle98.Format = "g";
-            dataGridViewCellStyle98.NullValue = null;
-            this.columnCardWhen.DefaultCellStyle = dataGridViewCellStyle98;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.Format = "g";
+            dataGridViewCellStyle25.NullValue = null;
+            this.columnCardWhen.DefaultCellStyle = dataGridViewCellStyle25;
             this.columnCardWhen.FillWeight = 150F;
             resources.ApplyResources(this.columnCardWhen, "columnCardWhen");
             this.columnCardWhen.Name = "columnCardWhen";
@@ -2608,15 +2601,15 @@
             // 
             // columnCardWhere
             // 
-            dataGridViewCellStyle99.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnCardWhere.DefaultCellStyle = dataGridViewCellStyle99;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnCardWhere.DefaultCellStyle = dataGridViewCellStyle26;
             resources.ApplyResources(this.columnCardWhere, "columnCardWhere");
             this.columnCardWhere.Name = "columnCardWhere";
             // 
             // ColumnCardWeather
             // 
-            dataGridViewCellStyle100.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnCardWeather.DefaultCellStyle = dataGridViewCellStyle100;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnCardWeather.DefaultCellStyle = dataGridViewCellStyle27;
             resources.ApplyResources(this.ColumnCardWeather, "ColumnCardWeather");
             this.ColumnCardWeather.Name = "ColumnCardWeather";
             // 
@@ -2627,8 +2620,8 @@
             // 
             // columnCardGear
             // 
-            dataGridViewCellStyle101.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardGear.DefaultCellStyle = dataGridViewCellStyle101;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardGear.DefaultCellStyle = dataGridViewCellStyle28;
             this.columnCardGear.FillWeight = 200F;
             resources.ApplyResources(this.columnCardGear, "columnCardGear");
             this.columnCardGear.Name = "columnCardGear";
@@ -2636,15 +2629,15 @@
             // 
             // columnCardMesh
             // 
-            dataGridViewCellStyle102.Format = "0";
-            this.columnCardMesh.DefaultCellStyle = dataGridViewCellStyle102;
+            dataGridViewCellStyle29.Format = "0";
+            this.columnCardMesh.DefaultCellStyle = dataGridViewCellStyle29;
             resources.ApplyResources(this.columnCardMesh, "columnCardMesh");
             this.columnCardMesh.Name = "columnCardMesh";
             // 
             // columnCardHook
             // 
-            dataGridViewCellStyle103.Format = "0";
-            this.columnCardHook.DefaultCellStyle = dataGridViewCellStyle103;
+            dataGridViewCellStyle30.Format = "0";
+            this.columnCardHook.DefaultCellStyle = dataGridViewCellStyle30;
             resources.ApplyResources(this.columnCardHook, "columnCardHook");
             this.columnCardHook.Name = "columnCardHook";
             // 
@@ -2665,17 +2658,17 @@
             // 
             // columnCardSquare
             // 
-            dataGridViewCellStyle104.Format = "N2";
-            this.columnCardSquare.DefaultCellStyle = dataGridViewCellStyle104;
+            dataGridViewCellStyle31.Format = "N2";
+            this.columnCardSquare.DefaultCellStyle = dataGridViewCellStyle31;
             resources.ApplyResources(this.columnCardSquare, "columnCardSquare");
             this.columnCardSquare.Name = "columnCardSquare";
             // 
             // columnCardSpan
             // 
-            dataGridViewCellStyle105.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle105.Format = "HH:mm";
-            dataGridViewCellStyle105.NullValue = null;
-            this.columnCardSpan.DefaultCellStyle = dataGridViewCellStyle105;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.Format = "HH:mm";
+            dataGridViewCellStyle32.NullValue = null;
+            this.columnCardSpan.DefaultCellStyle = dataGridViewCellStyle32;
             resources.ApplyResources(this.columnCardSpan, "columnCardSpan");
             this.columnCardSpan.Name = "columnCardSpan";
             // 
@@ -2702,64 +2695,64 @@
             // 
             // columnCardWealth
             // 
-            dataGridViewCellStyle106.Format = "N0";
-            this.columnCardWealth.DefaultCellStyle = dataGridViewCellStyle106;
+            dataGridViewCellStyle33.Format = "N0";
+            this.columnCardWealth.DefaultCellStyle = dataGridViewCellStyle33;
             resources.ApplyResources(this.columnCardWealth, "columnCardWealth");
             this.columnCardWealth.Name = "columnCardWealth";
             this.columnCardWealth.ReadOnly = true;
             // 
             // columnCardQuantity
             // 
-            dataGridViewCellStyle107.Format = "N0";
-            this.columnCardQuantity.DefaultCellStyle = dataGridViewCellStyle107;
+            dataGridViewCellStyle34.Format = "N0";
+            this.columnCardQuantity.DefaultCellStyle = dataGridViewCellStyle34;
             resources.ApplyResources(this.columnCardQuantity, "columnCardQuantity");
             this.columnCardQuantity.Name = "columnCardQuantity";
             this.columnCardQuantity.ReadOnly = true;
             // 
             // columnCardMass
             // 
-            dataGridViewCellStyle108.Format = "N3";
-            this.columnCardMass.DefaultCellStyle = dataGridViewCellStyle108;
+            dataGridViewCellStyle35.Format = "N3";
+            this.columnCardMass.DefaultCellStyle = dataGridViewCellStyle35;
             resources.ApplyResources(this.columnCardMass, "columnCardMass");
             this.columnCardMass.Name = "columnCardMass";
             this.columnCardMass.ReadOnly = true;
             // 
             // columnCardAbundance
             // 
-            dataGridViewCellStyle109.Format = "N2";
-            this.columnCardAbundance.DefaultCellStyle = dataGridViewCellStyle109;
+            dataGridViewCellStyle36.Format = "N2";
+            this.columnCardAbundance.DefaultCellStyle = dataGridViewCellStyle36;
             resources.ApplyResources(this.columnCardAbundance, "columnCardAbundance");
             this.columnCardAbundance.Name = "columnCardAbundance";
             this.columnCardAbundance.ReadOnly = true;
             // 
             // columnCardBiomass
             // 
-            dataGridViewCellStyle110.Format = "N3";
-            this.columnCardBiomass.DefaultCellStyle = dataGridViewCellStyle110;
+            dataGridViewCellStyle37.Format = "N3";
+            this.columnCardBiomass.DefaultCellStyle = dataGridViewCellStyle37;
             resources.ApplyResources(this.columnCardBiomass, "columnCardBiomass");
             this.columnCardBiomass.Name = "columnCardBiomass";
             this.columnCardBiomass.ReadOnly = true;
             // 
             // columnCardDiversityA
             // 
-            dataGridViewCellStyle111.Format = "N3";
-            this.columnCardDiversityA.DefaultCellStyle = dataGridViewCellStyle111;
+            dataGridViewCellStyle38.Format = "N3";
+            this.columnCardDiversityA.DefaultCellStyle = dataGridViewCellStyle38;
             resources.ApplyResources(this.columnCardDiversityA, "columnCardDiversityA");
             this.columnCardDiversityA.Name = "columnCardDiversityA";
             this.columnCardDiversityA.ReadOnly = true;
             // 
             // columnCardDiversityB
             // 
-            dataGridViewCellStyle112.Format = "N3";
-            this.columnCardDiversityB.DefaultCellStyle = dataGridViewCellStyle112;
+            dataGridViewCellStyle39.Format = "N3";
+            this.columnCardDiversityB.DefaultCellStyle = dataGridViewCellStyle39;
             resources.ApplyResources(this.columnCardDiversityB, "columnCardDiversityB");
             this.columnCardDiversityB.Name = "columnCardDiversityB";
             this.columnCardDiversityB.ReadOnly = true;
             // 
             // columnCardComments
             // 
-            dataGridViewCellStyle113.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardComments.DefaultCellStyle = dataGridViewCellStyle113;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardComments.DefaultCellStyle = dataGridViewCellStyle40;
             resources.ApplyResources(this.columnCardComments, "columnCardComments");
             this.columnCardComments.Name = "columnCardComments";
             // 
@@ -2881,38 +2874,38 @@
             // 
             // columnSpcSpc
             // 
-            dataGridViewCellStyle114.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpcSpc.DefaultCellStyle = dataGridViewCellStyle114;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSpcSpc.DefaultCellStyle = dataGridViewCellStyle41;
             this.columnSpcSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnSpcSpc, "columnSpcSpc");
             this.columnSpcSpc.Name = "columnSpcSpc";
             // 
             // columnSpcValid
             // 
-            dataGridViewCellStyle115.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpcValid.DefaultCellStyle = dataGridViewCellStyle115;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSpcValid.DefaultCellStyle = dataGridViewCellStyle42;
             this.columnSpcValid.FillWeight = 250F;
             resources.ApplyResources(this.columnSpcValid, "columnSpcValid");
             this.columnSpcValid.Name = "columnSpcValid";
             // 
             // columnSpcQuantity
             // 
-            dataGridViewCellStyle116.Format = "N0";
-            this.columnSpcQuantity.DefaultCellStyle = dataGridViewCellStyle116;
+            dataGridViewCellStyle43.Format = "N0";
+            this.columnSpcQuantity.DefaultCellStyle = dataGridViewCellStyle43;
             resources.ApplyResources(this.columnSpcQuantity, "columnSpcQuantity");
             this.columnSpcQuantity.Name = "columnSpcQuantity";
             // 
             // columnSpcMass
             // 
-            dataGridViewCellStyle117.Format = "N3";
-            this.columnSpcMass.DefaultCellStyle = dataGridViewCellStyle117;
+            dataGridViewCellStyle44.Format = "N3";
+            this.columnSpcMass.DefaultCellStyle = dataGridViewCellStyle44;
             resources.ApplyResources(this.columnSpcMass, "columnSpcMass");
             this.columnSpcMass.Name = "columnSpcMass";
             // 
             // columnSpcOccurrence
             // 
-            dataGridViewCellStyle118.Format = "P1";
-            this.columnSpcOccurrence.DefaultCellStyle = dataGridViewCellStyle118;
+            dataGridViewCellStyle45.Format = "P1";
+            this.columnSpcOccurrence.DefaultCellStyle = dataGridViewCellStyle45;
             resources.ApplyResources(this.columnSpcOccurrence, "columnSpcOccurrence");
             this.columnSpcOccurrence.Name = "columnSpcOccurrence";
             // 
@@ -2979,8 +2972,8 @@
             // 
             // columnLogSpc
             // 
-            dataGridViewCellStyle119.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnLogSpc.DefaultCellStyle = dataGridViewCellStyle119;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnLogSpc.DefaultCellStyle = dataGridViewCellStyle46;
             this.columnLogSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnLogSpc, "columnLogSpc");
             this.columnLogSpc.Name = "columnLogSpc";
@@ -2988,8 +2981,8 @@
             // 
             // columnLogQuantity
             // 
-            dataGridViewCellStyle120.Format = "0";
-            this.columnLogQuantity.DefaultCellStyle = dataGridViewCellStyle120;
+            dataGridViewCellStyle47.Format = "0";
+            this.columnLogQuantity.DefaultCellStyle = dataGridViewCellStyle47;
             resources.ApplyResources(this.columnLogQuantity, "columnLogQuantity");
             this.columnLogQuantity.Name = "columnLogQuantity";
             this.columnLogQuantity.ReadOnly = true;
@@ -3088,8 +3081,8 @@
             // 
             // columnStratifiedID
             // 
-            dataGridViewCellStyle121.NullValue = null;
-            this.columnStratifiedID.DefaultCellStyle = dataGridViewCellStyle121;
+            dataGridViewCellStyle48.NullValue = null;
+            this.columnStratifiedID.DefaultCellStyle = dataGridViewCellStyle48;
             resources.ApplyResources(this.columnStratifiedID, "columnStratifiedID");
             this.columnStratifiedID.Name = "columnStratifiedID";
             this.columnStratifiedID.ReadOnly = true;
@@ -3104,8 +3097,8 @@
             // 
             // columnStratifiedSpc
             // 
-            dataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnStratifiedSpc.DefaultCellStyle = dataGridViewCellStyle122;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnStratifiedSpc.DefaultCellStyle = dataGridViewCellStyle49;
             this.columnStratifiedSpc.FillWeight = 250F;
             resources.ApplyResources(this.columnStratifiedSpc, "columnStratifiedSpc");
             this.columnStratifiedSpc.Name = "columnStratifiedSpc";
@@ -3119,8 +3112,8 @@
             // 
             // columnStratifiedMass
             // 
-            dataGridViewCellStyle123.Format = "N3";
-            this.columnStratifiedMass.DefaultCellStyle = dataGridViewCellStyle123;
+            dataGridViewCellStyle50.Format = "N3";
+            this.columnStratifiedMass.DefaultCellStyle = dataGridViewCellStyle50;
             resources.ApplyResources(this.columnStratifiedMass, "columnStratifiedMass");
             this.columnStratifiedMass.Name = "columnStratifiedMass";
             this.columnStratifiedMass.ReadOnly = true;
@@ -3237,8 +3230,8 @@
             // 
             // columnIndID
             // 
-            dataGridViewCellStyle124.NullValue = null;
-            this.columnIndID.DefaultCellStyle = dataGridViewCellStyle124;
+            dataGridViewCellStyle51.NullValue = null;
+            this.columnIndID.DefaultCellStyle = dataGridViewCellStyle51;
             resources.ApplyResources(this.columnIndID, "columnIndID");
             this.columnIndID.Name = "columnIndID";
             this.columnIndID.ReadOnly = true;
@@ -3253,8 +3246,8 @@
             // 
             // columnIndSpecies
             // 
-            dataGridViewCellStyle125.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnIndSpecies.DefaultCellStyle = dataGridViewCellStyle125;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnIndSpecies.DefaultCellStyle = dataGridViewCellStyle52;
             this.columnIndSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnIndSpecies, "columnIndSpecies");
             this.columnIndSpecies.Name = "columnIndSpecies";
@@ -3267,8 +3260,8 @@
             // 
             // columnIndMass
             // 
-            dataGridViewCellStyle126.Format = "N0";
-            this.columnIndMass.DefaultCellStyle = dataGridViewCellStyle126;
+            dataGridViewCellStyle53.Format = "N0";
+            this.columnIndMass.DefaultCellStyle = dataGridViewCellStyle53;
             resources.ApplyResources(this.columnIndMass, "columnIndMass");
             this.columnIndMass.Name = "columnIndMass";
             // 
@@ -3279,115 +3272,115 @@
             // 
             // columnIndCondition
             // 
-            dataGridViewCellStyle127.Format = "N2";
-            this.columnIndCondition.DefaultCellStyle = dataGridViewCellStyle127;
+            dataGridViewCellStyle54.Format = "N2";
+            this.columnIndCondition.DefaultCellStyle = dataGridViewCellStyle54;
             resources.ApplyResources(this.columnIndCondition, "columnIndCondition");
             this.columnIndCondition.Name = "columnIndCondition";
             this.columnIndCondition.ReadOnly = true;
             // 
             // columnIndConditionSoma
             // 
-            dataGridViewCellStyle128.Format = "N2";
-            this.columnIndConditionSoma.DefaultCellStyle = dataGridViewCellStyle128;
+            dataGridViewCellStyle55.Format = "N2";
+            this.columnIndConditionSoma.DefaultCellStyle = dataGridViewCellStyle55;
             resources.ApplyResources(this.columnIndConditionSoma, "columnIndConditionSoma");
             this.columnIndConditionSoma.Name = "columnIndConditionSoma";
             this.columnIndConditionSoma.ReadOnly = true;
             // 
             // columnIndRegID
             // 
-            dataGridViewCellStyle129.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndRegID.DefaultCellStyle = dataGridViewCellStyle129;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndRegID.DefaultCellStyle = dataGridViewCellStyle56;
             resources.ApplyResources(this.columnIndRegID, "columnIndRegID");
             this.columnIndRegID.Name = "columnIndRegID";
             // 
             // columnIndAge
             // 
-            dataGridViewCellStyle130.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle130.Format = "0+";
-            dataGridViewCellStyle130.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.columnIndAge.DefaultCellStyle = dataGridViewCellStyle130;
+            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle57.Format = "0+";
+            dataGridViewCellStyle57.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.columnIndAge.DefaultCellStyle = dataGridViewCellStyle57;
             resources.ApplyResources(this.columnIndAge, "columnIndAge");
             this.columnIndAge.Name = "columnIndAge";
             // 
             // columnIndGeneration
             // 
-            dataGridViewCellStyle131.Format = "0000";
-            this.columnIndGeneration.DefaultCellStyle = dataGridViewCellStyle131;
+            dataGridViewCellStyle58.Format = "0000";
+            this.columnIndGeneration.DefaultCellStyle = dataGridViewCellStyle58;
             resources.ApplyResources(this.columnIndGeneration, "columnIndGeneration");
             this.columnIndGeneration.Name = "columnIndGeneration";
             this.columnIndGeneration.ReadOnly = true;
             // 
             // columnIndSex
             // 
-            dataGridViewCellStyle132.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndSex.DefaultCellStyle = dataGridViewCellStyle132;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndSex.DefaultCellStyle = dataGridViewCellStyle59;
             resources.ApplyResources(this.columnIndSex, "columnIndSex");
             this.columnIndSex.Name = "columnIndSex";
             // 
             // columnIndMaturity
             // 
-            dataGridViewCellStyle133.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndMaturity.DefaultCellStyle = dataGridViewCellStyle133;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndMaturity.DefaultCellStyle = dataGridViewCellStyle60;
             resources.ApplyResources(this.columnIndMaturity, "columnIndMaturity");
             this.columnIndMaturity.Name = "columnIndMaturity";
             // 
             // columnIndGonadMass
             // 
-            dataGridViewCellStyle134.Format = "N1";
-            this.columnIndGonadMass.DefaultCellStyle = dataGridViewCellStyle134;
+            dataGridViewCellStyle61.Format = "N1";
+            this.columnIndGonadMass.DefaultCellStyle = dataGridViewCellStyle61;
             resources.ApplyResources(this.columnIndGonadMass, "columnIndGonadMass");
             this.columnIndGonadMass.Name = "columnIndGonadMass";
             // 
             // columnIndGonadSampleMass
             // 
-            dataGridViewCellStyle135.Format = "N3";
-            this.columnIndGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle135;
+            dataGridViewCellStyle62.Format = "N3";
+            this.columnIndGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle62;
             resources.ApplyResources(this.columnIndGonadSampleMass, "columnIndGonadSampleMass");
             this.columnIndGonadSampleMass.Name = "columnIndGonadSampleMass";
             // 
             // columnIndGonadSample
             // 
-            dataGridViewCellStyle136.Format = "N0";
-            this.columnIndGonadSample.DefaultCellStyle = dataGridViewCellStyle136;
+            dataGridViewCellStyle63.Format = "N0";
+            this.columnIndGonadSample.DefaultCellStyle = dataGridViewCellStyle63;
             resources.ApplyResources(this.columnIndGonadSample, "columnIndGonadSample");
             this.columnIndGonadSample.Name = "columnIndGonadSample";
             // 
             // columnIndFecundityAbs
             // 
-            dataGridViewCellStyle137.Format = "N0";
-            this.columnIndFecundityAbs.DefaultCellStyle = dataGridViewCellStyle137;
+            dataGridViewCellStyle64.Format = "N0";
+            this.columnIndFecundityAbs.DefaultCellStyle = dataGridViewCellStyle64;
             resources.ApplyResources(this.columnIndFecundityAbs, "columnIndFecundityAbs");
             this.columnIndFecundityAbs.Name = "columnIndFecundityAbs";
             this.columnIndFecundityAbs.ReadOnly = true;
             // 
             // columnIndFecundityRelative
             // 
-            dataGridViewCellStyle138.Format = "N0";
-            this.columnIndFecundityRelative.DefaultCellStyle = dataGridViewCellStyle138;
+            dataGridViewCellStyle65.Format = "N0";
+            this.columnIndFecundityRelative.DefaultCellStyle = dataGridViewCellStyle65;
             resources.ApplyResources(this.columnIndFecundityRelative, "columnIndFecundityRelative");
             this.columnIndFecundityRelative.Name = "columnIndFecundityRelative";
             this.columnIndFecundityRelative.ReadOnly = true;
             // 
             // columnIndFecundityRelativeSoma
             // 
-            dataGridViewCellStyle139.Format = "N0";
-            this.columnIndFecundityRelativeSoma.DefaultCellStyle = dataGridViewCellStyle139;
+            dataGridViewCellStyle66.Format = "N0";
+            this.columnIndFecundityRelativeSoma.DefaultCellStyle = dataGridViewCellStyle66;
             resources.ApplyResources(this.columnIndFecundityRelativeSoma, "columnIndFecundityRelativeSoma");
             this.columnIndFecundityRelativeSoma.Name = "columnIndFecundityRelativeSoma";
             this.columnIndFecundityRelativeSoma.ReadOnly = true;
             // 
             // columnIndGonadIndex
             // 
-            dataGridViewCellStyle140.Format = "P1";
-            this.columnIndGonadIndex.DefaultCellStyle = dataGridViewCellStyle140;
+            dataGridViewCellStyle67.Format = "P1";
+            this.columnIndGonadIndex.DefaultCellStyle = dataGridViewCellStyle67;
             resources.ApplyResources(this.columnIndGonadIndex, "columnIndGonadIndex");
             this.columnIndGonadIndex.Name = "columnIndGonadIndex";
             this.columnIndGonadIndex.ReadOnly = true;
             // 
             // columnIndGonadIndexSoma
             // 
-            dataGridViewCellStyle141.Format = "P1";
-            this.columnIndGonadIndexSoma.DefaultCellStyle = dataGridViewCellStyle141;
+            dataGridViewCellStyle68.Format = "P1";
+            this.columnIndGonadIndexSoma.DefaultCellStyle = dataGridViewCellStyle68;
             resources.ApplyResources(this.columnIndGonadIndexSoma, "columnIndGonadIndexSoma");
             this.columnIndGonadIndexSoma.Name = "columnIndGonadIndexSoma";
             this.columnIndGonadIndexSoma.ReadOnly = true;
@@ -3399,39 +3392,39 @@
             // 
             // columnIndFat
             // 
-            dataGridViewCellStyle142.Format = "N0";
-            this.columnIndFat.DefaultCellStyle = dataGridViewCellStyle142;
+            dataGridViewCellStyle69.Format = "N0";
+            this.columnIndFat.DefaultCellStyle = dataGridViewCellStyle69;
             resources.ApplyResources(this.columnIndFat, "columnIndFat");
             this.columnIndFat.Name = "columnIndFat";
             // 
             // columnIndConsumed
             // 
-            dataGridViewCellStyle143.Format = "N1";
-            this.columnIndConsumed.DefaultCellStyle = dataGridViewCellStyle143;
+            dataGridViewCellStyle70.Format = "N1";
+            this.columnIndConsumed.DefaultCellStyle = dataGridViewCellStyle70;
             resources.ApplyResources(this.columnIndConsumed, "columnIndConsumed");
             this.columnIndConsumed.Name = "columnIndConsumed";
             this.columnIndConsumed.ReadOnly = true;
             // 
             // columnIndConsumptionIndex
             // 
-            dataGridViewCellStyle144.Format = "N2";
-            this.columnIndConsumptionIndex.DefaultCellStyle = dataGridViewCellStyle144;
+            dataGridViewCellStyle71.Format = "N2";
+            this.columnIndConsumptionIndex.DefaultCellStyle = dataGridViewCellStyle71;
             resources.ApplyResources(this.columnIndConsumptionIndex, "columnIndConsumptionIndex");
             this.columnIndConsumptionIndex.Name = "columnIndConsumptionIndex";
             this.columnIndConsumptionIndex.ReadOnly = true;
             // 
             // columnIndDietItems
             // 
-            dataGridViewCellStyle145.Format = "N0";
-            this.columnIndDietItems.DefaultCellStyle = dataGridViewCellStyle145;
+            dataGridViewCellStyle72.Format = "N0";
+            this.columnIndDietItems.DefaultCellStyle = dataGridViewCellStyle72;
             resources.ApplyResources(this.columnIndDietItems, "columnIndDietItems");
             this.columnIndDietItems.Name = "columnIndDietItems";
             this.columnIndDietItems.ReadOnly = true;
             // 
             // columnIndComments
             // 
-            dataGridViewCellStyle146.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnIndComments.DefaultCellStyle = dataGridViewCellStyle146;
+            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnIndComments.DefaultCellStyle = dataGridViewCellStyle73;
             resources.ApplyResources(this.columnIndComments, "columnIndComments");
             this.columnIndComments.Name = "columnIndComments";
             // 
@@ -3551,84 +3544,84 @@
             // 
             this.loaderCard.WorkerReportsProgress = true;
             this.loaderCard.DoWork += new System.ComponentModel.DoWorkEventHandler(this.cardLoader_DoWork);
-            this.loaderCard.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderCard.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderCard.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.cardLoader_RunWorkerCompleted);
             // 
             // dataSaver
             // 
             this.dataSaver.WorkerReportsProgress = true;
             this.dataSaver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dataSaver_DoWork);
-            this.dataSaver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.dataSaver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.dataSaver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dataSaver_RunWorkerCompleted);
             // 
             // loaderSpc
             // 
             this.loaderSpc.WorkerReportsProgress = true;
-            this.loaderSpc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SpcLoader_DoWork);
-            this.loaderSpc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.loaderSpc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SpcLoader_RunWorkerCompleted);
+            this.loaderSpc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.spcLoader_DoWork);
+            this.loaderSpc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
+            this.loaderSpc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.spcLoader_RunWorkerCompleted);
             // 
             // loaderSpcList
             // 
             this.loaderSpcList.WorkerReportsProgress = true;
             this.loaderSpcList.DoWork += new System.ComponentModel.DoWorkEventHandler(this.spcListLoader_DoWork);
-            this.loaderSpcList.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderSpcList.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderSpcList.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.spcListLoader_RunWorkerCompleted);
             // 
             // loaderLog
             // 
             this.loaderLog.WorkerReportsProgress = true;
-            this.loaderLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LogLoader_DoWork);
-            this.loaderLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.loaderLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LogLoader_RunWorkerCompleted);
+            this.loaderLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.logLoader_DoWork);
+            this.loaderLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
+            this.loaderLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.logLoader_RunWorkerCompleted);
             // 
             // loaderInd
             // 
             this.loaderInd.WorkerReportsProgress = true;
             this.loaderInd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.indLoader_DoWork);
-            this.loaderInd.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderInd.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderInd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.indLoader_RunWorkerCompleted);
             // 
             // loaderData
             // 
             this.loaderData.WorkerReportsProgress = true;
             this.loaderData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dataLoader_DoWork);
-            this.loaderData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dataLoader_RunWorkerCompleted);
             // 
             // loaderStratified
             // 
             this.loaderStratified.WorkerReportsProgress = true;
             this.loaderStratified.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedLoader_DoWork);
-            this.loaderStratified.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderStratified.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderStratified.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.stratifiedLoader_RunWorkerCompleted);
             // 
             // loaderIndSimulated
             // 
             this.loaderIndSimulated.WorkerReportsProgress = true;
             this.loaderIndSimulated.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedSimulator_DoWork);
-            this.loaderIndSimulated.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderIndSimulated.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderIndSimulated.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.stratifiedSimulator_RunWorkerCompleted);
             // 
             // loaderIndExtended
             // 
             this.loaderIndExtended.WorkerReportsProgress = true;
             this.loaderIndExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.indExtender_DoWork);
-            this.loaderIndExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderIndExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderIndExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // loaderLogExtended
             // 
             this.loaderLogExtended.WorkerReportsProgress = true;
-            this.loaderLogExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LogExtender_DoWork);
-            this.loaderLogExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderLogExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.logExtender_DoWork);
+            this.loaderLogExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderLogExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // loaderStratifiedExtended
             // 
             this.loaderStratifiedExtended.WorkerReportsProgress = true;
             this.loaderStratifiedExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedExtender_DoWork);
-            this.loaderStratifiedExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderStratifiedExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderStratifiedExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // fbdBackup
@@ -3641,7 +3634,7 @@
             this.dietCompiler.WorkerReportsProgress = true;
             this.dietCompiler.WorkerSupportsCancellation = true;
             this.dietCompiler.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dietCompiler_DoWork);
-            this.dietCompiler.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.dietCompiler.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.dietCompiler.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dietCompiler_RunWorkerCompleted);
             // 
             // artefactFinder
@@ -3653,14 +3646,14 @@
             // 
             this.specTipper.WorkerReportsProgress = true;
             this.specTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.specTipper_DoWork);
-            this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.specTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.specTipper_RunWorkerCompleted);
             // 
             // comparerLog
             // 
             this.comparerLog.WorkerReportsProgress = true;
             this.comparerLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.comparerLog_DoWork);
-            this.comparerLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.comparerLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.comparerLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.comparerLog_RunWorkerCompleted);
             // 
             // specUpdater
@@ -3673,7 +3666,7 @@
             // 
             this.modelCalc.WorkerReportsProgress = true;
             this.modelCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalc_DoWork);
-            this.modelCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.modelCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.modelCalc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.modelCalc_RunWorkerCompleted);
             // 
             // calcModel
@@ -3791,8 +3784,8 @@
             this.Controls.Add(this.tabControl);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.tabControl.ResumeLayout(false);
@@ -4043,7 +4036,6 @@
         private TaskDialogs.TaskDialogButton tdbSpecCancel;
         private System.Windows.Forms.ToolStripStatusLabel statusBio;
         private System.Windows.Forms.ToolStripMenuItem menuItemMortality;
-        private System.Windows.Forms.ToolStripMenuItem menuItemMortalitySustainable;
         private System.Windows.Forms.ToolStripMenuItem menuItemGrowth;
         private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
         private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;

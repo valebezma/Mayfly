@@ -326,14 +326,8 @@
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 6</value>
   </data>
-  <data name="menuItemGrowthCrossSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="menuItemGrowthCrossSection.Text" xml:space="preserve">
-    <value>Cross section</value>
-  </data>
   <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
     <value>By cohorts</value>
@@ -343,12 +337,6 @@
   </data>
   <data name="menuItemGrowth.Text" xml:space="preserve">
     <value>Growth*</value>
-  </data>
-  <data name="menuItemMortalitySustainable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="menuItemMortalitySustainable.Text" xml:space="preserve">
-    <value>Cross section</value>
   </data>
   <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -361,12 +349,6 @@
   </data>
   <data name="menuItemMortality.Text" xml:space="preserve">
     <value>Mortality*</value>
-  </data>
-  <data name="menuItemSelectivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="menuItemSelectivity.Text" xml:space="preserve">
-    <value>Gear selectivity*</value>
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 6</value>
@@ -1117,7 +1099,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAATgBMwE4ATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAUABMwFAATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -9044,12 +9026,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemGrowth.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemGrowthCrossSection.Name" xml:space="preserve">
-    <value>menuItemGrowthCrossSection</value>
-  </data>
-  <data name="&gt;&gt;menuItemGrowthCrossSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;menuItemGrowthCohorts.Name" xml:space="preserve">
     <value>menuItemGrowthCohorts</value>
   </data>
@@ -9062,22 +9038,10 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemMortality.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemMortalitySustainable.Name" xml:space="preserve">
-    <value>menuItemMortalitySustainable</value>
-  </data>
-  <data name="&gt;&gt;menuItemMortalitySustainable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;menuItemMortalityCohorts.Name" xml:space="preserve">
     <value>menuItemMortalityCohorts</value>
   </data>
   <data name="&gt;&gt;menuItemMortalityCohorts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemSelectivity.Name" xml:space="preserve">
-    <value>menuItemSelectivity</value>
-  </data>
-  <data name="&gt;&gt;menuItemSelectivity.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator22.Name" xml:space="preserve">

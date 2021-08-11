@@ -77,7 +77,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (DataGridViewColumn gridColumn in spreadSheetStratified.GetInsertedColumns())
             {
-                SetCardValue(logRow.CardRow, result, gridColumn);
+                setCardValue(logRow.CardRow, result, gridColumn);
             }
 
             return result;

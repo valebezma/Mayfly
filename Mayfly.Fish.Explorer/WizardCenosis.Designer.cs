@@ -283,7 +283,7 @@
             this.comboBoxDiversity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDiversity.FormattingEnabled = true;
             this.comboBoxDiversity.Name = "comboBoxDiversity";
-            this.comboBoxDiversity.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDiversity_SelectedIndexChanged);
+            this.comboBoxDiversity.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiversity_SelectedIndexChanged);
             // 
             // textBoxDiversity
             // 
@@ -401,7 +401,7 @@
             this.comboBoxExample.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxExample.FormattingEnabled = true;
             this.comboBoxExample.Name = "comboBoxExample";
-            this.comboBoxExample.SelectedIndexChanged += new System.EventHandler(this.ComboBoxExample_SelectedIndexChanged);
+            this.comboBoxExample.SelectedIndexChanged += new System.EventHandler(this.comboBoxExample_SelectedIndexChanged);
             // 
             // checkBoxSpreadsheets
             // 
@@ -425,7 +425,7 @@
             resources.ApplyResources(this.checkBoxAppExample, "checkBoxAppExample");
             this.checkBoxAppExample.Name = "checkBoxAppExample";
             this.checkBoxAppExample.UseVisualStyleBackColor = true;
-            this.checkBoxAppExample.CheckedChanged += new System.EventHandler(this.CheckBoxAppExample_CheckedChanged);
+            this.checkBoxAppExample.CheckedChanged += new System.EventHandler(this.checkBoxAppExample_CheckedChanged);
             this.checkBoxAppExample.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxCenosis

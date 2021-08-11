@@ -22,8 +22,6 @@ namespace Mayfly.Fish.Explorer
 
         WizardPopulation growthWizard;
 
-        WizardMortality mortalityWizard;
-
         YieldPerRecruitModel model;
 
 
@@ -55,9 +53,10 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.KeyRecord.FullNameReport));
-
-            report.UseTableNumeration = true;
+                    SpeciesRow.KeyRecord.FullNameReport))
+            {
+                UseTableNumeration = true
+            };
 
             if (checkBoxGrowth.Checked)
             {
@@ -65,7 +64,6 @@ namespace Mayfly.Fish.Explorer
                     string.Format(Resources.Reports.Sections.Growth.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
                 growthWizard.AddGrowth(report);
-                growthWizard.AddMass(report);
             }
 
             if (checkBoxYR.Checked)
@@ -98,7 +96,7 @@ namespace Mayfly.Fish.Explorer
         private void buttonGrowth_Click(object sender, EventArgs e)
         {
             growthWizard = new WizardPopulation(Data, SpeciesRow);
-            growthWizard.Calculated += growthWizard_ModelConfirmed;
+            growthWizard.ModelsCalculated += growthWizard_ModelConfirmed;
             growthWizard.Replace(this);
         }
 
@@ -130,21 +128,21 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonMortality_Click(object sender, EventArgs e)
         {
-            mortalityWizard = new WizardMortality(Data, SpeciesRow);
-            mortalityWizard.Calculated += mortalityWizard_ModelConfirmed;
-            mortalityWizard.Replace(this);
+            growthWizard = new WizardPopulation(Data, SpeciesRow);
+            growthWizard.MortalityCalculated += mortalityWizard_MortalityCalculated;
+            growthWizard.Replace(this);
         }
 
-        private void mortalityWizard_ModelConfirmed(object sender, EventArgs e)
+        private void mortalityWizard_MortalityCalculated(object sender, EventArgs e)
         {
-            this.Replace(mortalityWizard);
+            this.Replace(growthWizard);
 
-            if (mortalityWizard.YoungestCaught != null)
+            if (growthWizard.YoungestCaught != null)
             {
-                textBoxTc.Value = model.Tc = mortalityWizard.YoungestCaught.Age;
+                textBoxTc.Value = model.Tc = growthWizard.YoungestCaught.Age;
             }
 
-            mortalityWizard.Close();
+            growthWizard.Close();
         }
 
         private void ages_Changed(object sender, EventArgs e)
