@@ -66,10 +66,10 @@
             this.columnSelectivityBPer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSelectivitySex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageComposition = new AeroWizard.WizardPage();
-            this.comboBoxDiversity = new System.Windows.Forms.ComboBox();
+            this.comboBoxDiversityMethod = new System.Windows.Forms.ComboBox();
             this.textBoxDiversity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelDiversity = new System.Windows.Forms.Label();
             this.spreadSheetComposition = new Mayfly.Controls.SpreadSheet();
             this.ColumnCompositionSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCompositionQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +92,7 @@
             this.reporter = new System.ComponentModel.BackgroundWorker();
             this.calculatorSelectivity = new System.ComponentModel.BackgroundWorker();
             this.calculatorStructure = new System.ComponentModel.BackgroundWorker();
+            this.labelDiversityMethod = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageGearClass.SuspendLayout();
@@ -267,23 +268,24 @@
             // 
             // pageComposition
             // 
-            this.pageComposition.Controls.Add(this.comboBoxDiversity);
+            this.pageComposition.Controls.Add(this.comboBoxDiversityMethod);
             this.pageComposition.Controls.Add(this.textBoxDiversity);
             this.pageComposition.Controls.Add(this.label1);
-            this.pageComposition.Controls.Add(this.label2);
+            this.pageComposition.Controls.Add(this.labelDiversityMethod);
+            this.pageComposition.Controls.Add(this.labelDiversity);
             this.pageComposition.Controls.Add(this.spreadSheetComposition);
             this.pageComposition.Name = "pageComposition";
             resources.ApplyResources(this.pageComposition, "pageComposition");
             this.pageComposition.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Commit);
             this.pageComposition.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageComposition_Rollback);
             // 
-            // comboBoxDiversity
+            // comboBoxDiversityMethod
             // 
-            resources.ApplyResources(this.comboBoxDiversity, "comboBoxDiversity");
-            this.comboBoxDiversity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDiversity.FormattingEnabled = true;
-            this.comboBoxDiversity.Name = "comboBoxDiversity";
-            this.comboBoxDiversity.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiversity_SelectedIndexChanged);
+            resources.ApplyResources(this.comboBoxDiversityMethod, "comboBoxDiversityMethod");
+            this.comboBoxDiversityMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDiversityMethod.FormattingEnabled = true;
+            this.comboBoxDiversityMethod.Name = "comboBoxDiversityMethod";
+            this.comboBoxDiversityMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxDiversity_SelectedIndexChanged);
             // 
             // textBoxDiversity
             // 
@@ -297,10 +299,10 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // label2
+            // labelDiversity
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.labelDiversity, "labelDiversity");
+            this.labelDiversity.Name = "labelDiversity";
             // 
             // spreadSheetComposition
             // 
@@ -480,6 +482,11 @@
             this.calculatorStructure.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.structureCalculator_ProgressChanged);
             this.calculatorStructure.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.structureCalculator_RunWorkerCompleted);
             // 
+            // labelDiversityMethod
+            // 
+            resources.ApplyResources(this.labelDiversityMethod, "labelDiversityMethod");
+            this.labelDiversityMethod.Name = "labelDiversityMethod";
+            // 
             // WizardCenosis
             // 
             resources.ApplyResources(this, "$this");
@@ -524,7 +531,7 @@
         private AeroWizard.WizardPage pageComposition;
         private System.Windows.Forms.TextBox textBoxDiversity;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelDiversity;
         private Controls.SpreadSheet spreadSheetComposition;
         private System.ComponentModel.BackgroundWorker calculatorStructure;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionSpecies;
@@ -535,7 +542,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionBP;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionOccurrance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCompositionDominance;
-        private System.Windows.Forms.ComboBox comboBoxDiversity;
+        private System.Windows.Forms.ComboBox comboBoxDiversityMethod;
         private System.Windows.Forms.ComboBox comboBoxExample;
         private System.Windows.Forms.CheckBox checkBoxSpreadsheets;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivitySpecies;
@@ -548,5 +555,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBpue;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivityBPer;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSelectivitySex;
+        private System.Windows.Forms.Label labelDiversityMethod;
     }
 }

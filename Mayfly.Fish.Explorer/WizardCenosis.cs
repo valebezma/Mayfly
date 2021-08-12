@@ -42,8 +42,8 @@ namespace Mayfly.Fish.Explorer
             columnSelectivityBPer.ValueType =
             columnSelectivityBpue.ValueType = typeof(double);
 
-            comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
-            comboBoxDiversity.SelectedIndex = (int)Wild.UserSettings.Diversity;
+            comboBoxDiversityMethod.DataSource = Wild.Service.GetDiversityIndices();
+            comboBoxDiversityMethod.SelectedIndex = (int)Wild.UserSettings.Diversity;
 
             this.RestoreAllCheckStates();
         }
@@ -361,7 +361,7 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxDiversity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxDiversity.ContainsFocus) Wild.UserSettings.Diversity = (DiversityIndex)comboBoxDiversity.SelectedIndex;
+            if (comboBoxDiversityMethod.ContainsFocus) Wild.UserSettings.Diversity = (DiversityIndex)comboBoxDiversityMethod.SelectedIndex;
             textBoxDiversity.Text = NaturalComposition == null ? string.Empty : NaturalComposition.Diversity.ToString("N3");
         }
 

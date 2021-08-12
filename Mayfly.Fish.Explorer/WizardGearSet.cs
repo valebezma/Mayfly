@@ -107,7 +107,7 @@ namespace Mayfly.Fish.Explorer
             comboBoxGearType.SelectedIndex = comboBoxGearType.FindString(new FishSamplerTypeDisplay(UserSettings.MemorizedSamplerType).ToString());
             if (comboBoxGearType.SelectedValue == null) { comboBoxGearType.SelectedIndex = 0; }
 
-            pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
+            //pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
         }
 
         public WizardGearSet(CardStack data, Data.SpeciesRow speciesRow)
@@ -213,6 +213,16 @@ namespace Mayfly.Fish.Explorer
             wizardExplorer.NextPage();
         }
 
+        private void PageEfforts_Rollback(object sender, WizardPageConfirmEventArgs e)
+        {
+            e.Cancel = true;
+
+            if (Returned != null)
+            {
+                Returned.Invoke(sender, e);
+            }
+        }
+
         private void comboBoxGear_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxGearType.SelectedValue == null) { return; }
@@ -229,16 +239,13 @@ namespace Mayfly.Fish.Explorer
                 labelEffortTotal.ResetFormatted(SelectedUnit.Unit);
             }
 
-            pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
+            //pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
 
             if (EffortUnitChanged != null)
             {
                 EffortUnitChanged.Invoke(sender, e);
             }
-        }
 
-        private void pageSampler_Commit(object sender, WizardPageConfirmEventArgs e)
-        {
             pageEfforts.SetNavigation(false);
 
             spreadSheetEfforts.Rows.Clear();
@@ -246,8 +253,6 @@ namespace Mayfly.Fish.Explorer
 
             comboBoxGearType.Enabled = comboBoxUE.Enabled = comboBoxGearType.Enabled = false;
             labelNoticeGears.Visible = true;
-
-            UserSettings.MemorizedSamplerType = ((FishSamplerTypeDisplay)comboBoxGearType.SelectedValue).Type;
 
             calculatorEffort.RunWorkerAsync();
         }
@@ -307,18 +312,7 @@ namespace Mayfly.Fish.Explorer
             {
                 AfterEffortCalculated.Invoke(sender, e);
             }
-        }
-
-        private void pageSampler_Rollback(object sender, WizardPageConfirmEventArgs e)
-        {
-            e.Cancel = true;
-
-            if (Returned != null)
-            {
-                Returned.Invoke(sender, e);
-            }
-        }
-        
+        }        
 
         private void checkBoxSpatial_EnabledChanged(object sender, EventArgs e)
         {
@@ -456,6 +450,8 @@ namespace Mayfly.Fish.Explorer
 
             Log.Write("Gear set is specified: {0}.",
                 this.SelectedData.SamplerClasses(this.SelectedSamplerType).Merge());
+
+            UserSettings.MemorizedSamplerType = ((FishSamplerTypeDisplay)comboBoxGearType.SelectedValue).Type;
         }
     }
 }

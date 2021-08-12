@@ -291,13 +291,21 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxLength_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxLengthAdjust.Enabled = checkBoxLength.Checked;
+            checkBoxLengthAdjusted.Enabled =
+                checkBoxLength.Checked;
         }
+
+        private void checkBoxLengthAdjusted_CheckedChanged(object sender, EventArgs e)
+        { }
 
         private void checkBoxAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxAgeAdjusted.Enabled = checkBoxAge.Checked;
+            checkBoxAgeAdjusted.Enabled =
+                checkBoxAge.Checked;
         }
+
+        private void checkBoxAgeAdjusted_CheckedChanged(object sender, EventArgs e)
+        { }
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
@@ -307,7 +315,7 @@ namespace Mayfly.Fish.Explorer
             pageSelectionSource.Suppress =
                 pageSelection.Suppress =
                 pageLengthAdjusted.Suppress =
-                !checkBoxLengthAdjust.Checked;
+                !checkBoxLengthAdjusted.Checked;
 
             pageAge.Suppress =
                 !checkBoxAge.Checked;
@@ -315,6 +323,18 @@ namespace Mayfly.Fish.Explorer
             pageMortality.Suppress =
                 pageAgeAdjusted.Suppress =
                 !checkBoxAgeAdjusted.Checked;
+
+            checkBoxReportLength.Enabled =
+                checkBoxLength.Checked;
+
+            checkBoxReportLengthAdjusted.Enabled =
+                checkBoxLengthAdjusted.Checked;
+
+            checkBoxReportAge.Enabled =
+                checkBoxAge.Checked;
+
+            checkBoxReportAgeAdjusted.Enabled =
+                checkBoxAgeAdjusted.Checked;
         }
 
 
@@ -352,7 +372,6 @@ namespace Mayfly.Fish.Explorer
         private void structureCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pageStart.SetNavigation(true);
-            //pageBasic.SetNavigation(AgeStructure != null);
 
             labelBasicInstruction.ResetFormatted(Swarm);
 
@@ -363,11 +382,10 @@ namespace Mayfly.Fish.Explorer
                 checkBoxReportAge.Checked = 
                 AgeStructure != null;
 
-
             #region Age to Length
 
             statChartAL.Visible = GrowthModel != null;
-            buttonAL.Enabled = checkBoxReportBasic.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
+            buttonAL.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
 
             statChartAL.Clear();
 
@@ -410,7 +428,7 @@ namespace Mayfly.Fish.Explorer
             #region Length to Mass
 
             statChartLW.Visible = WeightModel != null;
-            buttonLW.Enabled = checkBoxLW.Enabled = WeightModel != null && WeightModel.IsRegressionOK;
+            buttonLW.Enabled = WeightModel != null && WeightModel.IsRegressionOK;
 
             statChartLW.Clear();
 
@@ -738,7 +756,7 @@ namespace Mayfly.Fish.Explorer
             plotSelectionSource.AxisYMax = max;
             plotSelectionSource.Remaster();
 
-            pageSelectionSource.AllowNext = false;
+            pageSelectionSource.SetNavigation(false);
             selectionCalculator.RunWorkerAsync();
         }
 
@@ -764,7 +782,7 @@ namespace Mayfly.Fish.Explorer
 
         private void pageLength_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (!checkBoxLengthAdjust.Checked)
+            if (!checkBoxLengthAdjusted.Checked)
             {
                 pageLengthAdjusted_Commit(sender, e);
             }
@@ -821,7 +839,6 @@ namespace Mayfly.Fish.Explorer
 
         private void selectionCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            pageSelectionSource.AllowNext = SelectivityModel != null;
             labelSelectionSourceWarn.Visible = pictureBoxSelectionSourceWarn.Visible = (SelectivityModel == null);
 
             if (SelectivityModel != null)
@@ -893,6 +910,19 @@ namespace Mayfly.Fish.Explorer
                 plotLengthAdjusted.Remaster();
                 plotLengthAdjusted.Remaster();
             }
+
+            pageSelectionSource.SetNavigation(true);
+            pageLengthAdjusted.Suppress = 
+                pageSelection.Suppress =
+                SelectivityModel == null;
+        }
+
+        private void pageSelectionSource_Commit(object sender, WizardPageConfirmEventArgs e)
+        {
+            if (pageLengthAdjusted.Suppress)
+            {
+                pageLengthAdjusted_Commit(sender, e);
+            }
         }
 
         private void pageLengthAdjusted_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -922,7 +952,7 @@ namespace Mayfly.Fish.Explorer
 
         private void ageCompositionWizard_Returned(object sender, EventArgs e)
         {
-            wizardExplorer.EnsureSelected(checkBoxLengthAdjust.Checked ? pageLengthAdjusted : pageLength);
+            wizardExplorer.EnsureSelected(checkBoxLengthAdjusted.Checked ? (pageLengthAdjusted.Suppress ? pageSelectionSource : pageLengthAdjusted) : pageLength);
             this.Replace(ageCompositionWizard);
         }
 
@@ -1093,10 +1123,21 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
+        private void checkBoxReportLength_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxReportLengthAdjusted.Enabled = 
+                checkBoxLengthAdjusted.Checked && checkBoxReportLength.Checked;
+        }
+
         private void checkBoxReportAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxReportAgeCPUE.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
-            checkBoxReportAgeKeys.Enabled = checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
+            checkBoxReportAgeAdjusted.Enabled = 
+                checkBoxAgeAdjusted.Checked && checkBoxReportAge.Checked;
+
+            checkBoxReportAgeCPUE.Enabled = 
+                checkBoxReportAgeKeys.Enabled = 
+                checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
+
         }
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)

@@ -50,7 +50,7 @@
             this.pageStart = new AeroWizard.WizardPage();
             this.checkBoxAge = new System.Windows.Forms.CheckBox();
             this.checkBoxLength = new System.Windows.Forms.CheckBox();
-            this.checkBoxLengthAdjust = new System.Windows.Forms.CheckBox();
+            this.checkBoxLengthAdjusted = new System.Windows.Forms.CheckBox();
             this.checkBoxAgeAdjusted = new System.Windows.Forms.CheckBox();
             this.labelStart = new System.Windows.Forms.Label();
             this.pageBasic = new AeroWizard.WizardPage();
@@ -125,6 +125,10 @@
             this.plotAgeAdjusted = new Mayfly.Mathematics.Charts.Plot();
             this.labelAgeAdjustedInstruction = new System.Windows.Forms.Label();
             this.pageReport = new AeroWizard.WizardPage();
+            this.checkBoxReportAge = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportLength = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportLengthAdjusted = new System.Windows.Forms.CheckBox();
+            this.checkBoxReportAgeAdjusted = new System.Windows.Forms.CheckBox();
             this.checkBoxReportAgeKeys = new System.Windows.Forms.CheckBox();
             this.checkBoxReportBasic = new System.Windows.Forms.CheckBox();
             this.checkBoxReportAgeCPUE = new System.Windows.Forms.CheckBox();
@@ -134,10 +138,6 @@
             this.reporter = new System.ComponentModel.BackgroundWorker();
             this.classesCalculator = new System.ComponentModel.BackgroundWorker();
             this.selectionCalculator = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxReportAge = new System.Windows.Forms.CheckBox();
-            this.checkBoxReportLength = new System.Windows.Forms.CheckBox();
-            this.checkBoxReportLengthAdjusted = new System.Windows.Forms.CheckBox();
-            this.checkBoxReportAgeAdjusted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageBasic.SuspendLayout();
@@ -192,7 +192,7 @@
             // 
             this.pageStart.Controls.Add(this.checkBoxAge);
             this.pageStart.Controls.Add(this.checkBoxLength);
-            this.pageStart.Controls.Add(this.checkBoxLengthAdjust);
+            this.pageStart.Controls.Add(this.checkBoxLengthAdjusted);
             this.pageStart.Controls.Add(this.checkBoxAgeAdjusted);
             this.pageStart.Controls.Add(this.labelStart);
             this.pageStart.Name = "pageStart";
@@ -215,16 +215,18 @@
             this.checkBoxLength.Name = "checkBoxLength";
             this.checkBoxLength.CheckedChanged += new System.EventHandler(this.checkBoxLength_CheckedChanged);
             // 
-            // checkBoxLengthAdjust
+            // checkBoxLengthAdjusted
             // 
-            resources.ApplyResources(this.checkBoxLengthAdjust, "checkBoxLengthAdjust");
-            this.checkBoxLengthAdjust.Name = "checkBoxLengthAdjust";
-            this.checkBoxLengthAdjust.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            resources.ApplyResources(this.checkBoxLengthAdjusted, "checkBoxLengthAdjusted");
+            this.checkBoxLengthAdjusted.Name = "checkBoxLengthAdjusted";
+            this.checkBoxLengthAdjusted.CheckedChanged += new System.EventHandler(this.checkBoxLengthAdjusted_CheckedChanged);
+            this.checkBoxLengthAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxAgeAdjusted
             // 
             resources.ApplyResources(this.checkBoxAgeAdjusted, "checkBoxAgeAdjusted");
             this.checkBoxAgeAdjusted.Name = "checkBoxAgeAdjusted";
+            this.checkBoxAgeAdjusted.CheckedChanged += new System.EventHandler(this.checkBoxAgeAdjusted_CheckedChanged);
             this.checkBoxAgeAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // labelStart
@@ -521,6 +523,7 @@
             this.pageSelectionSource.Controls.Add(this.plotSelectionSource);
             this.pageSelectionSource.Name = "pageSelectionSource";
             resources.ApplyResources(this.pageSelectionSource, "pageSelectionSource");
+            this.pageSelectionSource.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageSelectionSource_Commit);
             this.pageSelectionSource.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.pageSelectionSource_Initialize);
             // 
             // pictureBoxSelectionSourceWarn
@@ -816,9 +819,45 @@
             this.pageReport.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Commit);
             this.pageReport.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageReport_Rollback);
             // 
+            // checkBoxReportAge
+            // 
+            resources.ApplyResources(this.checkBoxReportAge, "checkBoxReportAge");
+            this.checkBoxReportAge.Checked = true;
+            this.checkBoxReportAge.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxReportAge.Name = "checkBoxReportAge";
+            this.checkBoxReportAge.CheckedChanged += new System.EventHandler(this.checkBoxReportAge_CheckedChanged);
+            this.checkBoxReportAge.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            // 
+            // checkBoxReportLength
+            // 
+            resources.ApplyResources(this.checkBoxReportLength, "checkBoxReportLength");
+            this.checkBoxReportLength.Checked = true;
+            this.checkBoxReportLength.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxReportLength.Name = "checkBoxReportLength";
+            this.checkBoxReportLength.CheckedChanged += new System.EventHandler(this.checkBoxReportLength_CheckedChanged);
+            this.checkBoxReportLength.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            // 
+            // checkBoxReportLengthAdjusted
+            // 
+            resources.ApplyResources(this.checkBoxReportLengthAdjusted, "checkBoxReportLengthAdjusted");
+            this.checkBoxReportLengthAdjusted.Checked = true;
+            this.checkBoxReportLengthAdjusted.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxReportLengthAdjusted.Name = "checkBoxReportLengthAdjusted";
+            this.checkBoxReportLengthAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            // 
+            // checkBoxReportAgeAdjusted
+            // 
+            resources.ApplyResources(this.checkBoxReportAgeAdjusted, "checkBoxReportAgeAdjusted");
+            this.checkBoxReportAgeAdjusted.Checked = true;
+            this.checkBoxReportAgeAdjusted.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxReportAgeAdjusted.Name = "checkBoxReportAgeAdjusted";
+            this.checkBoxReportAgeAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
+            // 
             // checkBoxReportAgeKeys
             // 
             resources.ApplyResources(this.checkBoxReportAgeKeys, "checkBoxReportAgeKeys");
+            this.checkBoxReportAgeKeys.Checked = true;
+            this.checkBoxReportAgeKeys.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxReportAgeKeys.Name = "checkBoxReportAgeKeys";
             this.checkBoxReportAgeKeys.UseVisualStyleBackColor = true;
             this.checkBoxReportAgeKeys.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
@@ -834,6 +873,8 @@
             // checkBoxReportAgeCPUE
             // 
             resources.ApplyResources(this.checkBoxReportAgeCPUE, "checkBoxReportAgeCPUE");
+            this.checkBoxReportAgeCPUE.Checked = true;
+            this.checkBoxReportAgeCPUE.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxReportAgeCPUE.Name = "checkBoxReportAgeCPUE";
             this.checkBoxReportAgeCPUE.UseVisualStyleBackColor = true;
             this.checkBoxReportAgeCPUE.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
@@ -846,6 +887,8 @@
             // checkBoxReportGears
             // 
             resources.ApplyResources(this.checkBoxReportGears, "checkBoxReportGears");
+            this.checkBoxReportGears.Checked = true;
+            this.checkBoxReportGears.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxReportGears.Name = "checkBoxReportGears";
             this.checkBoxReportGears.UseVisualStyleBackColor = true;
             this.checkBoxReportGears.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
@@ -869,30 +912,6 @@
             // 
             this.selectionCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.selectionCalculator_DoWork);
             this.selectionCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.selectionCalculator_RunWorkerCompleted);
-            // 
-            // checkBoxReportAge
-            // 
-            resources.ApplyResources(this.checkBoxReportAge, "checkBoxReportAge");
-            this.checkBoxReportAge.Checked = true;
-            this.checkBoxReportAge.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxReportAge.Name = "checkBoxReportAge";
-            // 
-            // checkBoxReportLength
-            // 
-            resources.ApplyResources(this.checkBoxReportLength, "checkBoxReportLength");
-            this.checkBoxReportLength.Checked = true;
-            this.checkBoxReportLength.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxReportLength.Name = "checkBoxReportLength";
-            // 
-            // checkBoxReportLengthAdjusted
-            // 
-            resources.ApplyResources(this.checkBoxReportLengthAdjusted, "checkBoxReportLengthAdjusted");
-            this.checkBoxReportLengthAdjusted.Name = "checkBoxReportLengthAdjusted";
-            // 
-            // checkBoxReportAgeAdjusted
-            // 
-            resources.ApplyResources(this.checkBoxReportAgeAdjusted, "checkBoxReportAgeAdjusted");
-            this.checkBoxReportAgeAdjusted.Name = "checkBoxReportAgeAdjusted";
             // 
             // WizardPopulation
             // 
@@ -1016,7 +1035,7 @@
         private System.Windows.Forms.CheckBox checkBoxAge;
         private System.Windows.Forms.CheckBox checkBoxLength;
         private System.Windows.Forms.CheckBox checkBoxAgeAdjusted;
-        private System.Windows.Forms.CheckBox checkBoxLengthAdjust;
+        private System.Windows.Forms.CheckBox checkBoxLengthAdjusted;
         private System.Windows.Forms.TextBox textBoxS;
         private System.Windows.Forms.Label labelSLabel;
         private System.Windows.Forms.Label labelZLabel;

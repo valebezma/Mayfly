@@ -121,12 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextEffortMerge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="contextEffortMerge.Text" xml:space="preserve">
-    <value>Merge selected groups</value>
-  </data>
   <data name="contextEffort.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 26</value>
   </data>
@@ -136,16 +130,136 @@
   <data name="&gt;&gt;contextEffort.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="contextEffortMerge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="contextEffortMerge.Text" xml:space="preserve">
+    <value>Merge selected groups</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelGear.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelGear.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelGear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelGear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 53</value>
+  </data>
+  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 15</value>
+  </data>
+  <data name="labelGear.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelGear.Text" xml:space="preserve">
+    <value>Gear type</value>
+  </data>
+  <data name="&gt;&gt;labelGear.Name" xml:space="preserve">
+    <value>labelGear</value>
+  </data>
+  <data name="&gt;&gt;labelGear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelGear.Parent" xml:space="preserve">
+    <value>pageEfforts</value>
+  </data>
+  <data name="&gt;&gt;labelGear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelEU.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="labelEU.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelEU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelEU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 82</value>
+  </data>
+  <data name="labelEU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="labelEU.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelEU.Text" xml:space="preserve">
+    <value>Effort unit</value>
+  </data>
+  <data name="&gt;&gt;labelEU.Name" xml:space="preserve">
+    <value>labelEU</value>
+  </data>
+  <data name="&gt;&gt;labelEU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEU.Parent" xml:space="preserve">
+    <value>pageEfforts</value>
+  </data>
+  <data name="&gt;&gt;labelEU.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxGearType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="comboBoxGearType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 50</value>
+  </data>
+  <data name="comboBoxGearType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="comboBoxGearType.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGearType.Name" xml:space="preserve">
+    <value>comboBoxGearType</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGearType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGearType.Parent" xml:space="preserve">
+    <value>pageEfforts</value>
+  </data>
+  <data name="&gt;&gt;comboBoxGearType.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBoxUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="comboBoxUE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>310, 79</value>
+  </data>
+  <data name="comboBoxUE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="comboBoxUE.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUE.Name" xml:space="preserve">
+    <value>comboBoxUE</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUE.Parent" xml:space="preserve">
+    <value>pageEfforts</value>
+  </data>
+  <data name="&gt;&gt;comboBoxUE.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="checkBoxSpatial.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxSpatial.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxSpatial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 287</value>
+    <value>203, 337</value>
   </data>
   <data name="checkBoxSpatial.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 19</value>
@@ -166,13 +280,13 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;checkBoxSpatial.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="textBoxEffort.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="textBoxEffort.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 319</value>
+    <value>435, 369</value>
   </data>
   <data name="textBoxEffort.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 10, 3, 15</value>
@@ -196,11 +310,8 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;textBoxEffort.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
-  <metadata name="labelNoticeGears.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="labelNoticeGears.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -208,7 +319,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNoticeGears.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 159</value>
+    <value>273, 212</value>
   </data>
   <data name="labelNoticeGears.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 15</value>
@@ -235,7 +346,7 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;labelNoticeGears.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="labelEffortTotal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -247,10 +358,10 @@
     <value>NoControl</value>
   </data>
   <data name="labelEffortTotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 322</value>
+    <value>200, 372</value>
   </data>
   <data name="labelEffortTotal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 15</value>
+    <value>123, 15</value>
   </data>
   <data name="labelEffortTotal.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -268,7 +379,7 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;labelEffortTotal.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="labelEffortInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -280,13 +391,13 @@
     <value>0, 0</value>
   </data>
   <data name="labelEffortInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 45</value>
+    <value>710, 30</value>
   </data>
   <data name="labelEffortInstruction.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="labelEffortInstruction.Text" xml:space="preserve">
-    <value>Information on efforts of different classes of selected gear type is presented below.</value>
+    <value>To continue with analysis and report select gear type, data on which will be processed. Select effort unit - parameter to evaluate fishing effort. For active gears it is real value of fished area or volume. For passive ones conventional (standard) effort units are used. Information on efforts of different classes of selected gear type is presented below.</value>
   </data>
   <data name="&gt;&gt;labelEffortInstruction.Name" xml:space="preserve">
     <value>labelEffortInstruction</value>
@@ -298,7 +409,7 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;labelEffortInstruction.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="spreadSheetEfforts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -334,13 +445,19 @@
     <value>False</value>
   </data>
   <data name="spreadSheetEfforts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 65</value>
+    <value>0, 120</value>
+  </data>
+  <data name="spreadSheetEfforts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 15, 0, 15</value>
   </data>
   <data name="spreadSheetEfforts.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
   <data name="spreadSheetEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 202</value>
+    <value>710, 199</value>
+  </data>
+  <data name="spreadSheetEfforts.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="spreadSheetEfforts.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -349,16 +466,16 @@
     <value>spreadSheetEfforts</value>
   </data>
   <data name="&gt;&gt;spreadSheetEfforts.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetEfforts.Parent" xml:space="preserve">
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;spreadSheetEfforts.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="pageEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+    <value>737, 407</value>
   </data>
   <data name="pageEfforts.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -370,199 +487,7 @@
     <value>pageEfforts</value>
   </data>
   <data name="&gt;&gt;pageEfforts.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <metadata name="pageSampler.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="labelGearInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="labelGearInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelGearInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="labelGearInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 30</value>
-  </data>
-  <data name="labelGearInstruction.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelGearInstruction.Text" xml:space="preserve">
-    <value>To continue with analysis and report select gear type, data on which will be processed.</value>
-  </data>
-  <data name="&gt;&gt;labelGearInstruction.Name" xml:space="preserve">
-    <value>labelGearInstruction</value>
-  </data>
-  <data name="&gt;&gt;labelGearInstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelGearInstruction.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelGearInstruction.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelEUInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="labelEUInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelEUInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 100</value>
-  </data>
-  <data name="labelEUInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 60</value>
-  </data>
-  <data name="labelEUInstruction.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelEUInstruction.Text" xml:space="preserve">
-    <value>Select effort unit - parameter to evaluate fishing effort. For active gears it is real value of fished area or volume. For passive ones conventional (standard) effort units are used.</value>
-  </data>
-  <data name="&gt;&gt;labelEUInstruction.Name" xml:space="preserve">
-    <value>labelEUInstruction</value>
-  </data>
-  <data name="&gt;&gt;labelEUInstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEUInstruction.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelEUInstruction.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelGear.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelGear.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelGear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelGear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 54</value>
-  </data>
-  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
-  </data>
-  <data name="labelGear.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelGear.Text" xml:space="preserve">
-    <value>Gear type:</value>
-  </data>
-  <data name="&gt;&gt;labelGear.Name" xml:space="preserve">
-    <value>labelGear</value>
-  </data>
-  <data name="&gt;&gt;labelGear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelGear.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelGear.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelEU.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="labelEU.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelEU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelEU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 186</value>
-  </data>
-  <data name="labelEU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 15</value>
-  </data>
-  <data name="labelEU.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="labelEU.Text" xml:space="preserve">
-    <value>Effort unit:</value>
-  </data>
-  <data name="&gt;&gt;labelEU.Name" xml:space="preserve">
-    <value>labelEU</value>
-  </data>
-  <data name="&gt;&gt;labelEU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelEU.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;labelEU.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="comboBoxGearType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="comboBoxGearType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 52</value>
-  </data>
-  <data name="comboBoxGearType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 23</value>
-  </data>
-  <data name="comboBoxGearType.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGearType.Name" xml:space="preserve">
-    <value>comboBoxGearType</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGearType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGearType.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGearType.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="comboBoxUE.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="comboBoxUE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 183</value>
-  </data>
-  <data name="comboBoxUE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 23</value>
-  </data>
-  <data name="comboBoxUE.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUE.Name" xml:space="preserve">
-    <value>comboBoxUE</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUE.Parent" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;comboBoxUE.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="pageSampler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="pageSampler.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="pageSampler.Text" xml:space="preserve">
-    <value>Data selection and grouping</value>
-  </data>
-  <data name="&gt;&gt;pageSampler.Name" xml:space="preserve">
-    <value>pageSampler</value>
-  </data>
-  <data name="&gt;&gt;pageSampler.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
     <value>Return to previous step</value>
@@ -582,6 +507,54 @@
   <data name="wizardExplorer.NextButtonText" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="&gt;&gt;labelStart.Name" xml:space="preserve">
+    <value>labelStart</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Parent" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="wizardPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>737, 407</value>
+  </data>
+  <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="wizardPage1.Text" xml:space="preserve">
+    <value>Initial page</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
+    <value>wizardPage1</value>
+  </data>
+  <data name="&gt;&gt;wizardPage1.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
+  </data>
+  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>Gear selection</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
+    <value>wizardExplorer</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="labelStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -589,7 +562,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 50</value>
+    <value>135, 50</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 45</value>
@@ -615,42 +588,6 @@
   <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="wizardPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="wizardPage1.Text" xml:space="preserve">
-    <value>Initial page</value>
-  </data>
-  <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
-    <value>wizardPage1</value>
-  </data>
-  <data name="&gt;&gt;wizardPage1.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 511</value>
-  </data>
-  <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="wizardExplorer.Title" xml:space="preserve">
-    <value>Gear selection</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Name" xml:space="preserve">
-    <value>wizardExplorer</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
-    <value>AeroWizard.WizardControl, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="calculatorEffort.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 17</value>
   </metadata>
@@ -667,10 +604,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>614, 511</value>
+    <value>784, 561</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>630, 550</value>
+    <value>800, 600</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
@@ -685,7 +622,7 @@
     <value>ColumnClass</value>
   </data>
   <data name="&gt;&gt;ColumnClass.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ColumnOperations.Name" xml:space="preserve">
     <value>ColumnOperations</value>

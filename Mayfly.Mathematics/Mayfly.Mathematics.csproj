@@ -111,6 +111,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Anova.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Statistics1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Statistics.resx</DependentUpon>
+    </Compile>
     <Compile Include="Statistics\Regression\GeneralLinearRegression.cs" />
     <Compile Include="Statistics\Regression\NonlinearRegression.cs" />
     <Compile Include="Statistics\Regression\Regression.cs" />
@@ -141,11 +146,6 @@
       <DependentUpon>Chaddock.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Resources\Statistics.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Statistics.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Statistics.ru.Designer.cs">
       <DependentUpon>Statistics.ru.resx</DependentUpon>
