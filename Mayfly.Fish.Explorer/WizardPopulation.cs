@@ -196,6 +196,9 @@ namespace Mayfly.Fish.Explorer
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, WeightModel.Regression);
             report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
 
+
+            WeightModel.AddPowerPlot(report, string.Format("{0} weigth model", SpeciesRow.KeyRecord.FullNameReport));
+
             if (GrowthModel.IsRegressionOK) {
                 report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, GrowthModel.Regression);
                 report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
