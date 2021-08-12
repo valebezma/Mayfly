@@ -79,8 +79,10 @@ namespace Mayfly.Fish.Explorer
             Scatterplot useful = new Scatterplot(usedAbundances, composition.Name);
             if (isChronic) useful.Series.ChartType = SeriesChartType.Line;
             useful.IsChronic = isChronic;
-            Scatterplot unused = new Scatterplot(unusedAbundances, composition.Name + " (unused)");
-            unused.IsChronic = isChronic;
+            Scatterplot unused = new Scatterplot(unusedAbundances, composition.Name + " (unused)")
+            {
+                IsChronic = isChronic
+            };
 
             return new Scatterplot[] { unused, useful };
         }
@@ -135,7 +137,7 @@ namespace Mayfly.Fish.Explorer
         /// <param name="separatesHeader"></param>
         /// <param name="content"></param>
         /// <returns></returns>
-        public static Report.Table GetTable(this Composition[] compositions, CompositionColumn content, string tableCaption, string siderCaption, string separatesHeader)
+        public static Report.Table GetTable(this IEnumerable<Composition> compositions, CompositionColumn content, string tableCaption, string siderCaption, string separatesHeader)
         {
             int n = 0;
 
@@ -156,11 +158,11 @@ namespace Mayfly.Fish.Explorer
             // Header top level
 
             table.StartRow();
-            table.AddHeaderCell(siderCaption, .15, compositions.Length > 1 ? 4 : 2);
+            table.AddHeaderCell(siderCaption, .15, compositions.Count() > 1 ? 4 : 2);
 
-            if (compositions.Length > 1)
+            if (compositions.Count() > 1)
             {
-                table.AddHeaderCell(separatesHeader, compositions.Length * n);
+                table.AddHeaderCell(separatesHeader, compositions.Count() * n);
                 table.EndRow();
 
                 // Header middle level
@@ -233,12 +235,12 @@ namespace Mayfly.Fish.Explorer
 
             table.EndRow();
 
-            for (int i = 0; i < compositions[0].Count; i++)
+            for (int i = 0; i < compositions.First().Count; i++)
             {
-                if (compositions.Length == 1 && compositions[0][i].Quantity == 0) continue;
+                if (compositions.Count() == 1 && compositions.First()[i].Quantity == 0) continue;
 
                 table.StartRow();
-                table.AddCellSider(compositions[0][i]);
+                table.AddCellSider(compositions.First()[i]);
 
                 foreach (Composition composition in compositions)
                 {
@@ -316,15 +318,16 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static void AppendPopulationSectionTo(this Composition composition, Report report, Data.SpeciesRow speciesRow, Data data)
+        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, Data.SpeciesRow speciesRow, Data data)
         {
             string categoryType = composition.GetCategoryType();
 
             report.AddSectionTitle(Resources.Reports.Sections.Population.Header, categoryType);
 
-            report.AddParagraph(Resources.Reports.Sections.Population.Paragraph1, categoryType, speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+            report.AddParagraph(Resources.Reports.Sections.Population.Paragraph1, categoryType, 
+                speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
-            if (composition is AgeComposition)
+            if (composition[0] is AgeGroup)
             {
                 if (UserSettings.AgeSuggest && data.GrowthModels.GetSpecies().Contains(speciesRow.Species))
                 {
@@ -342,9 +345,11 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            Report.Table tableCatches = composition.GetTable(                
-                CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction,
-                string.Format(Resources.Reports.Sections.Population.Table, categoryType));
+            Report.Table tableCatches = composition.GetStandardCatchesTable(string.Format(Resources.Reports.Sections.Population.Table, categoryType));
+            //.GetTable(                
+            //    CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction |
+            //    CompositionColumn.Mass | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
+            //    string.Format(Resources.Reports.Sections.Population.Table, categoryType));
 
             report.AddTable(tableCatches);
         }

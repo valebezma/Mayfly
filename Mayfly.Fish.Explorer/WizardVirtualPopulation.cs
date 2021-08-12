@@ -82,7 +82,7 @@ namespace Mayfly.Fish.Explorer
             //gearWizard.Replace(this);
         }
 
-        private Report GetReport()
+        public Report GetReport()
         {
             Report report = new Report(
                 string.Format(Resources.Reports.Sections.VPA.Title,
@@ -165,7 +165,7 @@ namespace Mayfly.Fish.Explorer
                 report.NextTableNumber);
 
             report.AddTable(
-                Survivors.ToArray().GetTable(
+                Survivors.GetTable(
                     CompositionColumn.Quantity,
                     string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
                     Resources.Reports.Sections.Growth.Column1, 
@@ -176,7 +176,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
             report.AddTable(
-                Survivors.ToArray().GetTable(
+                Survivors.GetTable(
                     CompositionColumn.Mass,
                     string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
                     Resources.Reports.Sections.Growth.Column1, 
@@ -349,9 +349,11 @@ namespace Mayfly.Fish.Explorer
                 DataGridViewColumn stockCol = spreadSheetStock.InsertColumn(annualComposition.Name, typeof(double), "N1");
                 stockCol.SortMode = DataGridViewColumnSortMode.NotSortable;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(annualComposition.Name);
-                item.Text = string.Format(Wild.Resources.Interface.Interface.AnnualSurveyItem, annualComposition.Name);
-                item.Tag = AnnualStacks.First(c => c.Name == annualComposition.Name);
+                ToolStripMenuItem item = new ToolStripMenuItem(annualComposition.Name)
+                {
+                    Text = string.Format(Wild.Resources.Interface.Interface.AnnualSurveyItem, annualComposition.Name),
+                    Tag = AnnualStacks.First(c => c.Name == annualComposition.Name)
+                };
                 item.Click += annual_Click;
                 contextAnnuals.Items.Add(item);
             }

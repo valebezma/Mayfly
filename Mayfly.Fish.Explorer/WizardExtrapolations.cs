@@ -162,7 +162,7 @@ namespace Mayfly.Fish.Explorer
 
             if (checkBoxCatches.Checked)
             {
-                compositionWizard.AppendCatchesSectionTo(report);
+                compositionWizard.AppendSpeciesCatchesSectionTo(report);
             }
 
             if (checkBoxCenosis.Checked)

@@ -17,6 +17,8 @@ namespace Mayfly.Wild
 
         public AgeComposition(string name, Age start, Age end)
         {
+            if (start.Years < 0) start = new Age(0);
+
             if (start > end)
             {
                 Notification.ShowNotification(Resources.Interface.Messages.AgeInacceptable, Resources.Interface.Messages.AgeInacceptableInstruction);
@@ -52,8 +54,10 @@ namespace Mayfly.Wild
 
         public Histogramma GetHistogram()
         {
-            Sample s = new Sample();
-            s.Name = this.Name;
+            Sample s = new Sample
+            {
+                Name = this.Name
+            };
 
             foreach (AgeGroup age in this)
             {

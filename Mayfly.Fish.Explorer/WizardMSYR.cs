@@ -63,7 +63,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddSectionTitle(
                     string.Format(Resources.Reports.Sections.Growth.Title,
                     SpeciesRow.KeyRecord.FullNameReport));
-                growthWizard.AddGrowth(report);
+                growthWizard.AppendBasicSectionTo(report);
             }
 
             if (checkBoxYR.Checked)
@@ -137,9 +137,9 @@ namespace Mayfly.Fish.Explorer
         {
             this.Replace(growthWizard);
 
-            if (growthWizard.YoungestCaught != null)
+            if (growthWizard.TotalMortalityModel.YoungestCaught != null)
             {
-                textBoxTc.Value = model.Tc = growthWizard.YoungestCaught.Age;
+                textBoxTc.Value = model.Tc = growthWizard.TotalMortalityModel.YoungestCaught.Age;
             }
 
             growthWizard.Close();

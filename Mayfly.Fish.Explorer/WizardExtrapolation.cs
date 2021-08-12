@@ -259,7 +259,7 @@ namespace Mayfly.Fish.Explorer
 
                 if (checkBoxCatches.Checked)
                 {
-                    compositionWizard.AppendPopulationSectionTo(report);
+                    compositionWizard.AppendCategorialCatchesSectionTo(report);
                 }
 
                 AddComposition(report);

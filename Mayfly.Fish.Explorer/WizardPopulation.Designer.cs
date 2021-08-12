@@ -110,6 +110,8 @@
             this.labelAgeInstruction = new System.Windows.Forms.Label();
             this.labelAgeSource = new System.Windows.Forms.Label();
             this.pageMortality = new AeroWizard.WizardPage();
+            this.pictureMortalityWarn = new System.Windows.Forms.PictureBox();
+            this.labelMortalityWarn = new System.Windows.Forms.Label();
             this.textBoxS = new System.Windows.Forms.TextBox();
             this.labelSLabel = new System.Windows.Forms.Label();
             this.labelZLabel = new System.Windows.Forms.Label();
@@ -161,6 +163,7 @@
             this.pageAge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotAge)).BeginInit();
             this.pageMortality.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMortalityWarn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plotMortality)).BeginInit();
             this.pageAgeAdjusted.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotAgeAdjusted)).BeginInit();
@@ -219,14 +222,12 @@
             // 
             resources.ApplyResources(this.checkBoxLengthAdjusted, "checkBoxLengthAdjusted");
             this.checkBoxLengthAdjusted.Name = "checkBoxLengthAdjusted";
-            this.checkBoxLengthAdjusted.CheckedChanged += new System.EventHandler(this.checkBoxLengthAdjusted_CheckedChanged);
             this.checkBoxLengthAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxAgeAdjusted
             // 
             resources.ApplyResources(this.checkBoxAgeAdjusted, "checkBoxAgeAdjusted");
             this.checkBoxAgeAdjusted.Name = "checkBoxAgeAdjusted";
-            this.checkBoxAgeAdjusted.CheckedChanged += new System.EventHandler(this.checkBoxAgeAdjusted_CheckedChanged);
             this.checkBoxAgeAdjusted.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // labelStart
@@ -692,6 +693,8 @@
             // 
             // pageMortality
             // 
+            this.pageMortality.Controls.Add(this.pictureMortalityWarn);
+            this.pageMortality.Controls.Add(this.labelMortalityWarn);
             this.pageMortality.Controls.Add(this.textBoxS);
             this.pageMortality.Controls.Add(this.labelSLabel);
             this.pageMortality.Controls.Add(this.labelZLabel);
@@ -708,6 +711,18 @@
             this.pageMortality.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageMortality_Commit);
             this.pageMortality.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.pageMortality_Initialize);
             this.pageMortality.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageMortality_Rollback);
+            // 
+            // pictureMortalityWarn
+            // 
+            resources.ApplyResources(this.pictureMortalityWarn, "pictureMortalityWarn");
+            this.pictureMortalityWarn.Name = "pictureMortalityWarn";
+            this.pictureMortalityWarn.TabStop = false;
+            // 
+            // labelMortalityWarn
+            // 
+            resources.ApplyResources(this.labelMortalityWarn, "labelMortalityWarn");
+            this.labelMortalityWarn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelMortalityWarn.Name = "labelMortalityWarn";
             // 
             // textBoxS
             // 
@@ -949,6 +964,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.plotAge)).EndInit();
             this.pageMortality.ResumeLayout(false);
             this.pageMortality.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureMortalityWarn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plotMortality)).EndInit();
             this.pageAgeAdjusted.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plotAgeAdjusted)).EndInit();
@@ -1052,5 +1068,7 @@
         private System.Windows.Forms.CheckBox checkBoxReportLength;
         private System.Windows.Forms.CheckBox checkBoxReportLengthAdjusted;
         private System.Windows.Forms.CheckBox checkBoxReportAgeAdjusted;
+        private System.Windows.Forms.PictureBox pictureMortalityWarn;
+        private System.Windows.Forms.Label labelMortalityWarn;
     }
 }

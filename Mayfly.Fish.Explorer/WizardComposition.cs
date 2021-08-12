@@ -137,14 +137,14 @@ namespace Mayfly.Fish.Explorer
             spreadSheetComposition.Rows[j].Selected = true;
         }
 
-        public void AppendCatchesSectionTo(Report report)
+        public void AppendSpeciesCatchesSectionTo(Report report)
         {
-            CatchesComposition.AppendCatchesSectionTo(report);
+            CatchesComposition.AppendSpeciesCatchesSectionTo(report);
         }
 
-        public void AppendPopulationSectionTo(Report report)
+        public void AppendCategorialCatchesSectionTo(Report report)
         {
-            CatchesComposition.AppendPopulationSectionTo(report, SpeciesRow, Data.Parent);
+            CatchesComposition.AppendCategorialCatchesSectionTo(report, SpeciesRow, Data.Parent);
         }
 
         public void AppendCalculationSectionTo(Report report)

@@ -10,7 +10,7 @@ namespace Mayfly.Fish.Explorer
         /// </summary>
         /// <param name="data"></param>
         /// <param name="report"></param>
-        public static void AppendCatchesSectionTo(this Composition composition, Report report)
+        public static void AppendSpeciesCatchesSectionTo(this Composition composition, Report report)
         {
             report.AddSectionTitle(Resources.Reports.Sections.Catches.Header);
 

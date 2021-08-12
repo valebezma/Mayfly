@@ -94,7 +94,7 @@ namespace Mayfly.Fish
                 }
             }
 
-            //comboBox.SelectedIndex = comboBox.FindStringExact(samplerType.GetDefaultUnitEffort().UnitDescription);
+            if (comboBox.SelectedIndex == -1) comboBox.SelectedIndex = comboBox.FindStringExact(samplerType.GetDefaultUnitEffort().UnitDescription);
         }
 
         private static string GetUnitDescription(FishSamplerType samplerType, ExpressionVariant variant)

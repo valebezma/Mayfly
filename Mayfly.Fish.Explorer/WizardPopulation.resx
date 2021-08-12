@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 248</value>
+    <value>200, 253</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 184</value>
+    <value>200, 189</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 216</value>
+    <value>240, 221</value>
   </data>
   <data name="checkBoxLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 280</value>
+    <value>240, 285</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 81</value>
+    <value>50, 86</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>
@@ -315,7 +315,7 @@ Pick options you want to include in current research.</value>
     <value>4</value>
   </data>
   <data name="pageStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageStart.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1047,7 +1047,7 @@ Pick options you want to include in current research.</value>
     <value>P0</value>
   </data>
   <data name="plotLength.AxisYTitle" xml:space="preserve">
-    <value>CPUE, ind/{0}</value>
+    <value>CPUE, %</value>
   </data>
   <data name="plotLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 100</value>
@@ -1056,7 +1056,7 @@ Pick options you want to include in current research.</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 292</value>
+    <value>710, 442</value>
   </data>
   <data name="plotLength.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1167,7 +1167,7 @@ Pick options you want to include in current research.</value>
     <value>3</value>
   </data>
   <data name="pageLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageLength.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1205,7 +1205,7 @@ Pick options you want to include in current research.</value>
     <value>NoControl</value>
   </data>
   <data name="pictureBoxSelectionSourceWarn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 372</value>
+    <value>0, 522</value>
   </data>
   <data name="pictureBoxSelectionSourceWarn.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -1244,7 +1244,7 @@ Pick options you want to include in current research.</value>
     <value>NoControl</value>
   </data>
   <data name="labelSelectionSourceWarn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 373</value>
+    <value>24, 523</value>
   </data>
   <data name="labelSelectionSourceWarn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
@@ -1323,7 +1323,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotSelectionSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+    <value>710, 454</value>
   </data>
   <data name="plotSelectionSource.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1341,7 +1341,7 @@ Try to merge some mesh values</value>
     <value>3</value>
   </data>
   <data name="pageSelectionSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageSelectionSource.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1359,7 +1359,7 @@ Try to merge some mesh values</value>
     <value>Bottom</value>
   </data>
   <data name="textBoxSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 369</value>
+    <value>435, 519</value>
   </data>
   <data name="textBoxSD.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 15</value>
@@ -1395,7 +1395,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 372</value>
+    <value>200, 522</value>
   </data>
   <data name="labelSD.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 15</value>
@@ -1422,7 +1422,7 @@ Try to merge some mesh values</value>
     <value>Bottom</value>
   </data>
   <data name="textBoxSF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 343</value>
+    <value>435, 493</value>
   </data>
   <data name="textBoxSF.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1455,7 +1455,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelSF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 346</value>
+    <value>200, 496</value>
   </data>
   <data name="labelSF.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 15</value>
@@ -1530,7 +1530,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 275</value>
+    <value>710, 425</value>
   </data>
   <data name="plotSelection.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -1548,7 +1548,7 @@ Try to merge some mesh values</value>
     <value>5</value>
   </data>
   <data name="pageSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageSelection.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1605,7 +1605,7 @@ Try to merge some mesh values</value>
     <value>P0</value>
   </data>
   <data name="plotLengthAdjusted.AxisYTitle" xml:space="preserve">
-    <value>Frequency, %</value>
+    <value>CPUE, ind./{0}</value>
   </data>
   <data name="plotLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 50</value>
@@ -1614,7 +1614,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotLengthAdjusted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+    <value>710, 454</value>
   </data>
   <data name="plotLengthAdjusted.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1632,7 +1632,7 @@ Try to merge some mesh values</value>
     <value>1</value>
   </data>
   <data name="pageLengthAdjusted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageLengthAdjusted.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1668,7 +1668,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 292</value>
+    <value>710, 442</value>
   </data>
   <data name="plotAge.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1779,7 +1779,7 @@ Try to merge some mesh values</value>
     <value>3</value>
   </data>
   <data name="pageAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageAge.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1793,11 +1793,104 @@ Try to merge some mesh values</value>
   <data name="&gt;&gt;pageAge.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
+  <data name="pictureMortalityWarn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="pictureMortalityWarn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
+        QVQ4T52T3UvTURjH9y9EdtPM6a0kpNVFImwT3Y/eRqJggWGUhqvmdKF50agUk3L25ls4LxaWxJj621y+
+        LG2Izr3kXJa2ShYIGRFUI7QoL76d5+hsv+imfvCFw3me7+ec5znPTwZAImO1UcPUwuRjim2I1rSn+TM/
+        0ZjKZG5sbFq13nuA4dEn8AeecdGa9ihGOZQrAWyYezo7LXCN+GEVF1Hb9RFnb8e4yq6/R2vvSziHp0E5
+        lBuHxAFmCoijL9BkXcKxhi+o6/7OQutfZdsKcvULqGyeh80VjkPMLCTjNdPV6OT67igKTMsovLgEfesK
+        ou9W8fUHUN78GdnlYajPhKC7GoL4yBsvR0OAFqrPYo/gQE0U2guL0Na+RvGlD8g//wmCcRkZx98ipzyE
+        fSemsbdkAtcsM7wn5CWAj5pkaIlAqJqHYCAtwGKLsBt8w9raT5TWuLBd+RCK/H6mPhTo3byx5CVAjDp9
+        uHoOat0scnVhZJ8McsCbVxEOqGpwY8uuNsjVIuQqG9IP9fPXIe8mQDgXRM6pIPaUTCIlX5QATDcmsDWr
+        nZmdkCv7kH5QlAB4CaWmIDKPepAmiOy6dgnA2DCOpMw27FANI1k5CG3FmKQE3sSmrhmk7XciJW+AnbR+
+        g/nncxxQVjvCAO1QKN1QqNy4cisgaSJ/RseQF4WGcSjyHAzg4AAyrwNGsW13F1JVHhTrfeh3Tv1+RhoG
+        tuCD1Cs+RZHBg2TVEOrMATgeR+Eai6KoQkRS1l1m9qPHPisdpA3A5igPDE6h/k4AR3ST2KnpQIbQgYLT
+        93H55gw72fv3UU6A/N/PlCgW/IffGbJfMUye8eXDyuYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="pictureMortalityWarn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureMortalityWarn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 522</value>
+  </data>
+  <data name="pictureMortalityWarn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="pictureMortalityWarn.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureMortalityWarn.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="pictureMortalityWarn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pictureMortalityWarn.Name" xml:space="preserve">
+    <value>pictureMortalityWarn</value>
+  </data>
+  <data name="&gt;&gt;pictureMortalityWarn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureMortalityWarn.Parent" xml:space="preserve">
+    <value>pageMortality</value>
+  </data>
+  <data name="&gt;&gt;pictureMortalityWarn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelMortalityWarn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="labelMortalityWarn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelMortalityWarn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt</value>
+  </data>
+  <data name="labelMortalityWarn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelMortalityWarn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 524</value>
+  </data>
+  <data name="labelMortalityWarn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 15, 3, 0</value>
+  </data>
+  <data name="labelMortalityWarn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 26</value>
+  </data>
+  <data name="labelMortalityWarn.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="labelMortalityWarn.Text" xml:space="preserve">
+    <value>Selected age of full exploitation does not support mortality estimation.
+Age composition adjustment will be skipped. Try to select another age</value>
+  </data>
+  <data name="labelMortalityWarn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;labelMortalityWarn.Name" xml:space="preserve">
+    <value>labelMortalityWarn</value>
+  </data>
+  <data name="&gt;&gt;labelMortalityWarn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMortalityWarn.Parent" xml:space="preserve">
+    <value>pageMortality</value>
+  </data>
+  <data name="&gt;&gt;labelMortalityWarn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="textBoxS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="textBoxS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 369</value>
+    <value>435, 490</value>
   </data>
   <data name="textBoxS.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1818,7 +1911,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;textBoxS.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="labelSLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -1830,7 +1923,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelSLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 372</value>
+    <value>200, 493</value>
   </data>
   <data name="labelSLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 15</value>
@@ -1854,7 +1947,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;labelSLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labelZLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -1866,7 +1959,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelZLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 314</value>
+    <value>200, 435</value>
   </data>
   <data name="labelZLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 15</value>
@@ -1890,13 +1983,13 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;labelZLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="textBoxFi.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="textBoxFi.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 340</value>
+    <value>435, 461</value>
   </data>
   <data name="textBoxFi.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1917,13 +2010,13 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;textBoxFi.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="textBoxZ.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="textBoxZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 311</value>
+    <value>435, 432</value>
   </data>
   <data name="textBoxZ.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1944,7 +2037,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;textBoxZ.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="labelFiLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -1956,7 +2049,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelFiLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 343</value>
+    <value>200, 464</value>
   </data>
   <data name="labelFiLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 15</value>
@@ -1980,7 +2073,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;labelFiLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="comboBoxMortalityAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -2004,7 +2097,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;comboBoxMortalityAge.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="labelMortalityAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -2037,7 +2130,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;labelMortalityAge.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="buttonMortality.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -2046,7 +2139,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="buttonMortality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 369</value>
+    <value>585, 519</value>
   </data>
   <data name="buttonMortality.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 15</value>
@@ -2070,7 +2163,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;buttonMortality.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="labelMortalityInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2100,7 +2193,7 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;labelMortalityInstruction.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="plotMortality.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2121,7 +2214,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 200</value>
+    <value>710, 321</value>
   </data>
   <data name="plotMortality.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2136,10 +2229,10 @@ Try to merge some mesh values</value>
     <value>pageMortality</value>
   </data>
   <data name="&gt;&gt;plotMortality.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="pageMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageMortality.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -2157,7 +2250,7 @@ Try to merge some mesh values</value>
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
-    <value>Length, mm</value>
+    <value>Age, years</value>
   </data>
   <data name="plotAgeAdjusted.AxisY2Title" xml:space="preserve">
     <value />
@@ -2166,7 +2259,7 @@ Try to merge some mesh values</value>
     <value>P0</value>
   </data>
   <data name="plotAgeAdjusted.AxisYTitle" xml:space="preserve">
-    <value>Frequency, %</value>
+    <value>CPUE, ind./{0}</value>
   </data>
   <data name="plotAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 50</value>
@@ -2175,7 +2268,7 @@ Try to merge some mesh values</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotAgeAdjusted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+    <value>710, 454</value>
   </data>
   <data name="plotAgeAdjusted.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2223,7 +2316,7 @@ Try to merge some mesh values</value>
     <value>1</value>
   </data>
   <data name="pageAgeAdjusted.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageAgeAdjusted.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2247,7 +2340,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 218</value>
+    <value>200, 293</value>
   </data>
   <data name="checkBoxReportAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2283,7 +2376,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 154</value>
+    <value>200, 229</value>
   </data>
   <data name="checkBoxReportLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2319,7 +2412,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 186</value>
+    <value>240, 261</value>
   </data>
   <data name="checkBoxReportLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2355,7 +2448,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 250</value>
+    <value>240, 325</value>
   </data>
   <data name="checkBoxReportAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2391,7 +2484,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportAgeKeys.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 314</value>
+    <value>240, 389</value>
   </data>
   <data name="checkBoxReportAgeKeys.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2430,7 +2523,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportBasic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 90</value>
+    <value>200, 165</value>
   </data>
   <data name="checkBoxReportBasic.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2466,7 +2559,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportAgeCPUE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 282</value>
+    <value>240, 357</value>
   </data>
   <data name="checkBoxReportAgeCPUE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2499,7 +2592,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="labelReport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 50</value>
+    <value>135, 125</value>
   </data>
   <data name="labelReport.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 15</value>
@@ -2532,7 +2625,7 @@ Try to merge some mesh values</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxReportGears.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 122</value>
+    <value>200, 197</value>
   </data>
   <data name="checkBoxReportGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -2559,7 +2652,7 @@ Try to merge some mesh values</value>
     <value>8</value>
   </data>
   <data name="pageReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageReport.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -2574,7 +2667,7 @@ Try to merge some mesh values</value>
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 561</value>
+    <value>784, 711</value>
   </data>
   <data name="wizardExplorer.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2616,7 +2709,7 @@ Try to merge some mesh values</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 561</value>
+    <value>784, 711</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 600</value>

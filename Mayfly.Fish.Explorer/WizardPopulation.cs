@@ -29,11 +29,13 @@ namespace Mayfly.Fish.Explorer
 
         public SpeciesSwarm Swarm { set; get; }
 
-        public GillnetSelectivityModel SelectivityModel { set; get; }
-
         public LengthComposition LengthStructure { set; get; }
 
+        public GillnetSelectivityModel SelectivityModel { set; get; }
+
         public AgeComposition AgeStructure { set; get; }
+
+        public ExponentialMortalityModel TotalMortalityModel { set; get; }
 
         public Scatterplot GrowthModel { get; private set; }
         Scatterplot growthInternal;
@@ -53,24 +55,6 @@ namespace Mayfly.Fish.Explorer
         public event EventHandler MortalityReturned;
 
         public event EventHandler MortalityCalculated;
-
-        public Scatterplot unused;
-
-        public Scatterplot CatchCurve { get; private set; }
-
-        public AgeGroup YoungestCaught
-        {
-            get
-            {
-                return (AgeGroup)comboBoxMortalityAge.SelectedItem;
-            }
-        }
-
-        public double Z { get; set; }
-
-        public double Fi { get; set; }
-
-        public double S { get; set; }
 
 
 
@@ -144,14 +128,34 @@ namespace Mayfly.Fish.Explorer
 
             report.UseTableNumeration = true;
 
-            if (checkBoxReportGears.Checked)
+            if (checkBoxReportBasic.Checked)
             {
-                gearWizard.AddEffortSection(report);
+                AppendBasicSectionTo(report);
+
+                if (checkBoxReportGears.Checked)
+                {
+                    gearWizard.AddEffortSection(report);
+                }
+            }
+
+            if (checkBoxReportLength.Checked)
+            {
+                lengthCompositionWizard.AppendCategorialCatchesSectionTo(report);
+
+                if (checkBoxReportLengthAdjusted.Checked)
+                {
+                    AddSelectivity(report);
+                }
             }
 
             if (checkBoxReportAge.Checked)
             {
-                ageCompositionWizard.AppendPopulationSectionTo(report);
+                ageCompositionWizard.AppendCategorialCatchesSectionTo(report);
+
+                if (checkBoxReportAgeAdjusted.Checked)
+                {
+                    AddMortality(report);
+                }
             }
 
             if (checkBoxReportAgeCPUE.Checked | checkBoxReportAgeKeys.Checked)
@@ -170,24 +174,34 @@ namespace Mayfly.Fish.Explorer
                 ageCompositionWizard.AddAgeRecoveryRoutines(report);
             }
 
-            if (true)
-            {
-                AddGrowth(report);
-            }
-
-            if (true)
-            {
-                AddSelectivity(report);
-            }
-
-            if (true)
-            {
-                AddMortality(report);
-            }
-
             report.EndBranded();
 
             return report;
+        }
+
+        public void AppendBasicSectionTo(Report report)
+        {
+            report.AddSectionTitle(Resources.Reports.Sections.Growth.Title, SpeciesRow.KeyRecord.FullNameReport);
+
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1,
+                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+
+            Report.Table table = AgeStructure.GetTable(
+                CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, 
+                string.Format(Resources.Reports.Sections.Growth.Table1, SpeciesRow.KeyRecord.FullNameReport), 
+                AgeStructure.Name);
+
+            report.AddTable(table);
+
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, WeightModel.Regression);
+            report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
+
+            if (GrowthModel.IsRegressionOK) {
+                report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, GrowthModel.Regression);
+                report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
+            }
+
+            // Add Calculation of total averaged CPUE
         }
 
         public void AddSelectivity(Report report)
@@ -199,7 +213,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph1, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
                 report.AddTable(
-                    lengthCompositionWizard.CatchesComposition.SeparateCompositions.ToArray().GetTable( 
+                    lengthCompositionWizard.CatchesComposition.SeparateCompositions.GetTable( 
                         CompositionColumn.Abundance,
                         string.Format(Resources.Reports.Sections.Selectivity.Table1, SpeciesRow.KeyRecord.FullNameReport),
                          lengthCompositionWizard.CatchesComposition.Name, Resources.Reports.Caption.GearClass)
@@ -215,7 +229,7 @@ namespace Mayfly.Fish.Explorer
                     );
             }
 
-            if (true)
+            if (SelectivityModel != null)
             {
                 report.AddParagraph(
                     string.Format(Resources.Reports.Sections.Selectivity.Paragraph3,
@@ -254,37 +268,14 @@ namespace Mayfly.Fish.Explorer
         {
             report.AddSectionTitle(Resources.Reports.Sections.Mortality.Title, SpeciesRow.KeyRecord.FullNameReport);
 
-            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1, CatchCurve.Regression, 
-                (Age)CatchCurve.Left, (Age)CatchCurve.Right,
+            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1, TotalMortalityModel.Exploited.Regression, 
+                (Age)TotalMortalityModel.Exploited.Left, (Age)TotalMortalityModel.Exploited.Right,
                 SpeciesRow.KeyRecord.FullNameReport);
-            report.AddEquation(CatchCurve.Regression.GetEquation("CPUE(%)", "t"));
+            report.AddEquation(TotalMortalityModel.Exploited.Regression.GetEquation("CPUE(%)", "t"));
 
-            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph2, Z);
-            report.AddEquation(@"S = e^{-" + Z.ToString("N5") + "} = " + S.ToString("N5"));
-            report.AddEquation(@"φ = 1 - " + S.ToString("N5") + " = " + Fi.ToString("N5"));
-        }
-
-        public void AddGrowth(Report report)
-        {
-            report.AddSectionTitle(Resources.Reports.Sections.Growth.Title, SpeciesRow.KeyRecord.FullNameReport);
-
-            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
-
-            Report.Table table = AgeStructure.GetTable(
-                CompositionColumn.Quantity | CompositionColumn.LengthSample | CompositionColumn.MassSample, 
-                string.Format(Resources.Reports.Sections.Growth.Table1, SpeciesRow.KeyRecord.FullNameReport), 
-                AgeStructure.Name);
-
-            report.AddTable(table);
-
-            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, WeightModel.Regression);
-            report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
-
-            if (GrowthModel.IsRegressionOK) {
-                report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, GrowthModel.Regression);
-                report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
-            }
+            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph2, TotalMortalityModel.Z);
+            report.AddEquation(@"S = e^{-" + TotalMortalityModel.Z.ToString("N5") + "} = " + TotalMortalityModel.S.ToString("N5"));
+            report.AddEquation(@"φ = 1 - " + TotalMortalityModel.S.ToString("N5") + " = " + TotalMortalityModel.Fi.ToString("N5"));
         }
 
 
@@ -295,17 +286,11 @@ namespace Mayfly.Fish.Explorer
                 checkBoxLength.Checked;
         }
 
-        private void checkBoxLengthAdjusted_CheckedChanged(object sender, EventArgs e)
-        { }
-
         private void checkBoxAge_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxAgeAdjusted.Enabled =
                 checkBoxAge.Checked;
         }
-
-        private void checkBoxAgeAdjusted_CheckedChanged(object sender, EventArgs e)
-        { }
 
         private void pageStart_Commit(object sender, WizardPageConfirmEventArgs e)
         {
@@ -603,6 +588,10 @@ namespace Mayfly.Fish.Explorer
             labelNpueUnit.ResetFormatted(gearWizard.SelectedUnit.Unit);
             labelBpueUnit.ResetFormatted(gearWizard.SelectedUnit.Unit);
 
+            plotLengthAdjusted.AxisYTitle = 
+                plotAgeAdjusted.AxisYTitle =
+                columnSelectivityNpue.HeaderText;
+
             classesCalculator.RunWorkerAsync();
         }
 
@@ -667,10 +656,10 @@ namespace Mayfly.Fish.Explorer
                     lengthCompositionWizard.Replace(this);
                     lengthCompositionWizard.Run(gearWizard);
                 }
-                //else
-                //{
-                //    wizardExplorer.EnsureSelected(pageAge);
-                //}
+                else
+                {
+                    pageLengthAdjusted_Commit(sender, e);
+                }
             }
         }
 
@@ -709,9 +698,6 @@ namespace Mayfly.Fish.Explorer
 
             comboBoxLengthSource.SelectedIndex = 0;
             comboBoxLengthSource_SelectedIndexChanged(sender, e);
-
-
-
 
             plotSelectionSource.Clear();
 
@@ -772,7 +758,6 @@ namespace Mayfly.Fish.Explorer
         {
             plotLength.Series.Clear();
             Series all = new Series() { ChartType = SeriesChartType.Column };
-            plotLength.AxisY2Title = "";
             foreach (SizeClass sizeClass in lengthCompositionWizard.CatchesComposition)
             {
                 all.Points.AddXY(sizeClass.Size.Midpoint, comboBoxLengthSource.SelectedIndex == 0 ? sizeClass.AbundanceFraction : sizeClass.BiomassFraction);
@@ -834,7 +819,6 @@ namespace Mayfly.Fish.Explorer
                 }
                 catch { }
             }
-
         }
 
         private void selectionCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -886,19 +870,19 @@ namespace Mayfly.Fish.Explorer
                 };
                 foreach (SizeClass size in lengthCompositionWizard.CatchesComposition)
                 {
-                    catches.Points.AddXY(size.Size.Midpoint, size.AbundanceFraction);
-                    max = Math.Max(max, size.AbundanceFraction);
+                    catches.Points.AddXY(size.Size.Midpoint, size.Abundance);
+                    max = Math.Max(max, size.Abundance);
                 }
 
                 Series pop = new Series
                 {
-                    Name = Resources.Interface.Interface.CatchesCorrected,
+                    Name = Resources.Interface.Interface.CatchesAdjusted,
                     ChartType = SeriesChartType.Column
                 };
                 foreach (SizeClass size in LengthStructure)
                 {
-                    pop.Points.AddXY(size.Size.Midpoint, size.AbundanceFraction);
-                    max = Math.Max(max, size.AbundanceFraction);
+                    pop.Points.AddXY(size.Size.Midpoint, size.Abundance);
+                    max = Math.Max(max, size.Abundance);
                 }
 
                 plotLengthAdjusted.AxisYMax = max;
@@ -906,8 +890,6 @@ namespace Mayfly.Fish.Explorer
                 plotLengthAdjusted.RefreshAxes();
                 plotLengthAdjusted.Series.Add(catches);
                 plotLengthAdjusted.Series.Add(pop);
-
-                plotLengthAdjusted.Remaster();
                 plotLengthAdjusted.Remaster();
             }
 
@@ -941,10 +923,6 @@ namespace Mayfly.Fish.Explorer
                     ageCompositionWizard.Replace(this);
                     ageCompositionWizard.Run(gearWizard);
                 }
-                //else
-                //{
-                //    wizardExplorer.EnsureSelected(pageReport);
-                //}
             }
         }
 
@@ -1008,8 +986,6 @@ namespace Mayfly.Fish.Explorer
             //Series mal = new Series() { ChartType = SeriesChartType.Column, BorderColor = System.Drawing.Color.Black, Color = System.Drawing.Color.DodgerBlue };
             //Series fem = new Series() { ChartType = SeriesChartType.Column, BorderColor = System.Drawing.Color.Black, Color = System.Drawing.Color.Coral };
 
-            plotAge.AxisY2Title = "";
-
             foreach (AgeGroup ageGroup in ageCompositionWizard.CatchesComposition)
             {
                 double total = comboBoxAgeSource.SelectedIndex == 0 ? ageGroup.AbundanceFraction : ageGroup.BiomassFraction;
@@ -1056,57 +1032,101 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxMortalityAge_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Scatterplot[] res = ageCompositionWizard.CatchesComposition.GetCatchCurve(comboBoxMortalityAge.SelectedIndex);
-
-            unused = res[0];
-            CatchCurve = res[1];
+            TotalMortalityModel = ExponentialMortalityModel.FromComposition(ageCompositionWizard.CatchesComposition, comboBoxMortalityAge.SelectedIndex);
 
             plotMortality.Clear();
 
-            if (unused != null)
+            if (TotalMortalityModel != null)
             {
-                //unused.Properties.DataPointColor = Color.LightCoral;
-                plotMortality.AddSeries(unused);
+                if (TotalMortalityModel.Unexploited != null)
+                {
+                    plotMortality.AddSeries(TotalMortalityModel.Unexploited);
+                }
+
+                plotMortality.AddSeries(TotalMortalityModel.Exploited);
+                plotMortality.ShowLegend = false;
+                plotMortality.Remaster();
+
+                textBoxZ.Text = TotalMortalityModel.Z.ToString("N4");
+                textBoxFi.Text = TotalMortalityModel.Fi.ToString("N4");
+                textBoxS.Text = TotalMortalityModel.S.ToString("N4");
             }
-
-            if (CatchCurve != null)
+            else
             {
-                //Model.Properties.DataPointColor = Color.DarkRed;
-                CatchCurve.Properties.ShowTrend = true;
-                CatchCurve.Properties.SelectedApproximationType = TrendType.Exponential;
-                plotMortality.AddSeries(CatchCurve);
-            }
-
-            plotMortality.Visible = unused != null && CatchCurve != null;
-
-            plotMortality.ShowLegend = false;
-            plotMortality.Remaster();
-
-            if (CatchCurve.IsRegressionOK)
-            {
-                Z = -CatchCurve.Regression.Parameter(1);
-                S = Math.Exp(-Z);
-                Fi = 1 - S;
-
-                textBoxZ.Text = Z.ToString("N4");
-                textBoxFi.Text = Fi.ToString("N4");
-                textBoxS.Text = S.ToString("N4");
-            } else {
-                textBoxZ.Text = 
-                    textBoxFi.Text = 
+                textBoxZ.Text =
+                    textBoxFi.Text =
                     textBoxS.Text = Constants.Null;
             }
+
+            plotMortality.Visible = TotalMortalityModel != null && TotalMortalityModel.Unexploited != null;
+
+            buttonMortality.Enabled =
+                TotalMortalityModel != null;
+
+            pictureMortalityWarn.Visible =
+                labelMortalityWarn.Visible =
+                pageAgeAdjusted.Suppress =
+                TotalMortalityModel == null;
         }
 
         private void buttonMortality_Click(object sender, EventArgs e)
         {
-            plotMortality.OpenRegressionProperties(CatchCurve);
+            plotMortality.OpenRegressionProperties(TotalMortalityModel.Exploited);
         }
 
         private void pageMortality_Commit(object sender, WizardPageConfirmEventArgs e)
         {
             if (ModelsCalculated != null) {
                 ModelsCalculated.Invoke(sender, e);
+            }
+
+            if (TotalMortalityModel != null)
+            {
+                for (int i = 0; i < AgeStructure.Count; i++)
+                {
+                    double a = TotalMortalityModel.Exploited.Regression.Predict(AgeStructure[i].Age.Value);
+                    double w = (ageCompositionWizard.CatchesComposition[i].Quantity > 0) ?
+                        (ageCompositionWizard.CatchesComposition[i].Abundance / ageCompositionWizard.CatchesComposition[i].Biomass) : 0.0;
+                    AgeStructure[i].Abundance = a;
+                    AgeStructure[i].Biomass = w * a;
+                }
+
+                plotAgeAdjusted.Series.Clear();
+
+                plotAgeAdjusted.AxisXInterval = plotAge.AxisXInterval;
+                plotAgeAdjusted.AxisXMin = plotAge.AxisXMin;
+                plotAgeAdjusted.AxisXMax = plotAge.AxisXMax;
+
+                double max = 0;
+
+                Series catches = new Series
+                {
+                    Name = Resources.Interface.Interface.Catches,
+                    ChartType = SeriesChartType.Column
+                };
+                foreach (AgeGroup group in ageCompositionWizard.CatchesComposition)
+                {
+                    catches.Points.AddXY(group.Age.Value, group.Abundance);
+                    max = Math.Max(max, group.Abundance);
+                }
+
+                Series pop = new Series
+                {
+                    Name = Resources.Interface.Interface.CatchesAdjusted,
+                    ChartType = SeriesChartType.Column
+                };
+                foreach (AgeGroup group in AgeStructure)
+                {
+                    pop.Points.AddXY(group.Age.Value, group.Abundance);
+                    max = Math.Max(max, group.Abundance);
+                }
+
+                plotAgeAdjusted.AxisYMax = max;
+                plotAgeAdjusted.RecalculateAxesProperties();
+                plotAgeAdjusted.RefreshAxes();
+                plotAgeAdjusted.Series.Add(catches);
+                plotAgeAdjusted.Series.Add(pop);
+                plotAgeAdjusted.Remaster();
             }
         }
 

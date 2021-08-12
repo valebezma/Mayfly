@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compositions\MortalityModel.cs" />
     <Compile Include="Extensions\CardStack.Statistics.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Mass.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Quantity.cs" />
