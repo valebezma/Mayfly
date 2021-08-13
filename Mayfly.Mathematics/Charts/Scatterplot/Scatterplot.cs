@@ -11,6 +11,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Extensions;
 using Meta.Numerics;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using RDotNet;
+using System.IO;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -55,6 +57,8 @@ namespace Mayfly.Mathematics.Charts
 
         public double Bottom { get; set; }
 
+        public bool TransposeCharting { get; set; }
+
         public ChartArea ChartArea
         {
             get
@@ -92,6 +96,7 @@ namespace Mayfly.Mathematics.Charts
 
         public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn)
         {
+            TransposeCharting = false;
             ColumnX = xColumn;
             ColumnX.DataGridView.CellValueChanged += new DataGridViewCellEventHandler(CellValueChanged);
             ColumnY = yColumn;
@@ -104,43 +109,20 @@ namespace Mayfly.Mathematics.Charts
         }
 
         public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn,
-            List<DataGridViewColumn> labelColumns)
+            List<DataGridViewColumn> labelColumns) : this(xColumn, yColumn)
         {
-            ColumnX = xColumn;
-            ColumnX.DataGridView.CellValueChanged += new DataGridViewCellEventHandler(CellValueChanged);
-
-            ColumnY = yColumn;
-
             ColumnsLabels = labelColumns;
-
-            Labels = new List<List<string>>();
-            Data = new BivariateSample(xColumn.HeaderText, yColumn.HeaderText);
-
-            GetData();
-
-            Properties = new ScatterplotProperties(this);
-            this.Name = Properties.ScatterplotName = yColumn.HeaderText;
-
-            BuildSeries();
         }
 
         public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn,
-            string name)
+            string name) : this(xColumn, yColumn)
         {
-            ColumnX = xColumn;
-            ColumnX.DataGridView.CellValueChanged += new DataGridViewCellEventHandler(CellValueChanged);
-            ColumnY = yColumn;
-            ColumnY.DataGridView.CellValueChanged += new DataGridViewCellEventHandler(CellValueChanged);
-            Labels = new List<List<string>>();
-            Data = new BivariateSample(xColumn.HeaderText, yColumn.HeaderText);
-            GetData();
-            Properties = new ScatterplotProperties(this);
-            BuildSeries();
             this.Name = Properties.ScatterplotName = name;
         }
 
         public Scatterplot(BivariateSample bivariateSample, string name, List<List<string>> labels)
         {
+            TransposeCharting = false;
             Labels = labels;
             Data = bivariateSample;
             Properties = new ScatterplotProperties(this);
@@ -148,14 +130,8 @@ namespace Mayfly.Mathematics.Charts
             BuildSeries();
         }
 
-        public Scatterplot(BivariateSample bivariateSample, string name)
-        {
-            Labels = new List<List<string>>();
-            Data = bivariateSample;
-            Properties = new ScatterplotProperties(this);
-            this.Name = Properties.ScatterplotName = name;
-            BuildSeries();
-        }
+        public Scatterplot(BivariateSample bivariateSample, string name) :
+            this(bivariateSample, name, new List<List<string>>()) { }
 
         public void Dispose()
         {
@@ -291,7 +267,7 @@ namespace Mayfly.Mathematics.Charts
                     Trend.FunctionInverse = Regression.PredictInversed;
                 }
 
-                Trend.BuildSeries();
+                Trend.BuildSeries(Series.YAxisType);
 
                 Trend.Properties.FunctionName = Properties.TrendName;
                 Trend.Properties.TrendWidth = Properties.TrendWidth;
@@ -443,7 +419,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     CalculateApproximation(Properties.SelectedApproximationType);
 
-                    Trend.BuildSeries();
+                    Trend.BuildSeries(Series.YAxisType);
 
                     if (Properties.ShowConfidenceBands)
                     {
@@ -488,7 +464,9 @@ namespace Mayfly.Mathematics.Charts
 
             for (int i = 0; i < Data.Count; i++)
             {
-                DataPoint dataPoint = new DataPoint(Data.X.ElementAt(i), Data.Y.ElementAt(i));
+                DataPoint dataPoint = TransposeCharting ?
+                    new DataPoint(Data.Y.ElementAt(i), Data.X.ElementAt(i)) :
+                    new DataPoint(Data.X.ElementAt(i), Data.Y.ElementAt(i));
 
                 //if (IsChronic)
                 //{
@@ -531,10 +509,20 @@ namespace Mayfly.Mathematics.Charts
 
             if (Data.Count > 0)
             {
-                Left = Data.X.Minimum;
-                Bottom = Data.Y.Minimum;
-                Top = Data.Y.Maximum;
-                Right = Data.X.Maximum;
+                if (TransposeCharting)
+                {
+                    Left = Data.Y.Minimum;
+                    Right = Data.Y.Maximum;
+                    Bottom = Data.X.Minimum;
+                    Top = Data.X.Maximum;
+                }
+                else
+                {
+                    Left = Data.X.Minimum;
+                    Right = Data.X.Maximum;
+                    Bottom = Data.Y.Minimum;
+                    Top = Data.Y.Maximum;
+                }
             }
         }
 
@@ -586,6 +574,8 @@ namespace Mayfly.Mathematics.Charts
 
                     //TrendRange.Points.Add(dataPoint);
                 }
+
+                if (TrendRange != null) TrendRange.YAxisType = Series.YAxisType;
             }
             else
             {
@@ -641,6 +631,8 @@ namespace Mayfly.Mathematics.Charts
 
                     //DataRange.Points.Add(dataPoint);
                 }
+
+                if (DataRange != null) DataRange.YAxisType = Series.YAxisType;
             }
             else
             {
@@ -705,6 +697,41 @@ namespace Mayfly.Mathematics.Charts
             chartForm.StatChart.Remaster();
             chartForm.Show();
         }
+
+        //public void AddPowerPlot(Report report, string caption)
+        //{
+        //    REngine.SetEnvironmentVariables();
+        //    REngine engine = REngine.GetInstance();
+        //    string svg = IO.GetTempFileName();
+
+        //    var drawPowerChart = engine.Evaluate(File.ReadAllText(@"interface\reports\scripts\power.R")).AsFunction();
+
+        //    var xvalues = engine.CreateNumericVector(Data.X);
+        //    var yvalues = engine.CreateNumericVector(Data.Y);
+        //    var xlabel = engine.CreateCharacter(Data.X.Name);
+        //    var ylabel = engine.CreateCharacter(Data.Y.Name);
+        //    var width = engine.CreateNumeric(16);
+        //    var height = engine.CreateNumeric(16);
+        //    var detailed = engine.CreateLogical(false);
+        //    var path = engine.CreateCharacter(svg);
+
+        //    drawPowerChart.Invoke(new SymbolicExpression[] { xvalues, yvalues, xlabel, ylabel, width, height, path, detailed });
+
+        //    foreach (string line in File.ReadAllLines(svg))
+        //    {
+        //        report.WriteLine(line);
+        //    }
+
+        //    report.AddParagraphClass("picturecaption", caption);
+        //}
+
+
+
+
+
+
+
+
 
         public void GetData()
         {

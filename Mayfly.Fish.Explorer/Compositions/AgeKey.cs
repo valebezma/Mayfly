@@ -290,13 +290,13 @@ namespace Mayfly.Fish.Explorer
 
         public Report.Table GetReport()
         {
-            Report.Table table1 = new Report.Table(Resources.Reports.AgeLengthKey.Title, Name);
+            Report.Table table1 = new Report.Table(Resources.Reports.Sections.ALK.Title, Name);
 
             table1.StartRow();
             table1.AddHeaderCell(Fish.Resources.Common.SizeUnits, .15, 2);
-            //table1.AddHeaderCell(Resources.Reports.AgeLengthKey.Sample, 2);
-            table1.AddHeaderCell(Resources.Reports.AgeLengthKey.Treated, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Resources.Reports.AgeLengthKey.Untreated, 2, CellSpan.Rows);
+            //table1.AddHeaderCell(Resources.Reports.Sections.ALK.Sample, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.ALK.Treated, 2, CellSpan.Rows);
+            table1.AddHeaderCell(Resources.Reports.Sections.ALK.Untreated, 2, CellSpan.Rows);
             table1.AddHeaderCell(Wild.Resources.Reports.Caption.Age, Count);
             table1.EndRow();
 
@@ -343,7 +343,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             table1.StartRow();
-            table1.AddCell(Resources.Reports.AgeLengthKey.Total, 3, CellSpan.Columns);
+            table1.AddCell(Resources.Reports.Sections.ALK.Total, 3, CellSpan.Columns);
             for (int ac = 0; ac < measured.Count; ac++)
             {
                 if (measured[ac].Quantity > 0) table1.AddCellRight(measured[ac].Quantity);
@@ -401,7 +401,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             table1.StartRow();
-            table1.AddCell(Resources.Reports.AgeLengthKey.Total, 3, CellSpan.Columns);
+            table1.AddCell(Resources.Reports.Sections.ALK.Total, 3, CellSpan.Columns);
             for (int ac = 0; ac < measured.Count; ac++)
             {
                 if (measured[ac].Mass > 0) table1.AddCellRight(measured[ac].Mass, "N3");

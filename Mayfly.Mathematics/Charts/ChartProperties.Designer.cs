@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartProperties));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageChart = new System.Windows.Forms.TabPage();
+            this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonFont = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBoxFont = new System.Windows.Forms.TextBox();
@@ -126,6 +127,7 @@
             // 
             // tabPageChart
             // 
+            this.tabPageChart.Controls.Add(this.buttonPrint);
             this.tabPageChart.Controls.Add(this.buttonFont);
             this.tabPageChart.Controls.Add(this.checkBox1);
             this.tabPageChart.Controls.Add(this.textBoxFont);
@@ -136,6 +138,13 @@
             resources.ApplyResources(this.tabPageChart, "tabPageChart");
             this.tabPageChart.Name = "tabPageChart";
             this.tabPageChart.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrint
+            // 
+            resources.ApplyResources(this.buttonPrint, "buttonPrint");
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // buttonFont
             // 
@@ -866,5 +875,6 @@
         internal System.Windows.Forms.TextBox textBoxY2Title;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button buttonPrint;
     }
 }

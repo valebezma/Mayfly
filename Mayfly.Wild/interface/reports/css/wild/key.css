@@ -1,0 +1,129 @@
+﻿body{
+	font-family: Segoe UI;
+}
+
+div.sheet{
+	page-break-inside: avoid;
+	page-break-before: always;
+	/*border: red solid 1px;*/
+}
+
+div.sheet:first-child{
+	page-break-before: avoid;
+}
+
+h1{
+    text-align: left;
+    font-size: 12pt;
+	text-transform: uppercase;
+	margin: 0px 0px 10mm;
+}
+
+table{
+	width: 100%;
+    /*table-layout: fixed;*/
+	empty-cells: show;
+	border-collapse: collapse;
+    font-size: 10pt;
+}
+
+table caption{
+	text-transform: uppercase;
+	margin: 5px 0px 5px 0px;
+    text-align: left;
+}
+
+tr{
+	page-break-inside: avoid;
+}
+
+tr.key{
+	height: 55mm;
+}
+
+tr.space{
+	height: 10mm;
+}
+
+td{
+	padding: 10px;
+	vertical-align: top;
+	max-height: 50mm;
+	/*border: solid 1px;*/
+}
+
+td.no{
+	text-align: right;
+	font-weight: bold;
+}
+
+td.key{
+}
+
+td.image{
+}
+
+ul.key{
+	
+}
+
+p.description {
+	margin-left: 10mm;
+	font-size: 8pt;
+}
+
+p.splink{
+    text-align: left;
+	font-weight: bold;
+}
+
+p.taxlink{
+    text-align: left;
+	font-weight: bold;
+}
+
+p.goto{
+    text-align: right;
+    overflow: hidden;
+}
+
+p.goto span {
+    float: left;
+    padding: 0 .2em 0 0;
+    margin: 0;
+}
+
+p.goto span + span {
+    float: right;
+    padding: 0 0 0 .2em;
+    margin: 0;
+}
+
+p.goto:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    height: 1em;
+    border-bottom: 1px dotted;
+}
+
+canvas {
+	width: 320px;
+	height: 185px;
+	border: 1px solid;
+	/*margin-left:auto;
+	margin-right:auto;*/
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+ 
+a:visited {
+	color: black;
+}
+
+a:hover {
+	color: gray;
+}

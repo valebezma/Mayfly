@@ -35,11 +35,11 @@ namespace Mayfly.Wild
             OpenDialog = openDialog;
             DefaultName = defaultName;
             DownloadUri = uri;
-            FileTypeFriendlyName = FileSystem.GetFriendlyFiletypeName(Path.GetExtension(DefaultName));
+            FileTypeFriendlyName = IO.GetFriendlyFiletypeName(Path.GetExtension(DefaultName));
             //FileTypeIcon = Mayfly.Service.GetIcon(FileSystem.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
 
             labelGetInstruction.ResetFormatted(FileTypeFriendlyName, DownloadUri);
-            Icon extIcon = Mayfly.Service.GetIcon(FileSystem.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
+            Icon extIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
             if (extIcon != null) pictureIcon.Image = extIcon.ToBitmap();
 
             ResetDialog();
@@ -49,7 +49,7 @@ namespace Mayfly.Wild
 
         private void ResetDialog()
         {
-            taskDialogMissingReference.CustomMainIcon = Mayfly.Service.GetIcon(FileSystem.GetIconSource(Path.GetExtension(DefaultName)), new Size(32, 32));
+            taskDialogMissingReference.CustomMainIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(32, 32));
             taskDialogMissingReference.MainInstruction = string.Format(taskDialogMissingReference.MainInstruction, FileTypeFriendlyName);
             tdbBrowse.CommandLinkNote = string.Format(tdbBrowse.CommandLinkNote, FileTypeFriendlyName);
             tdbDownload.CommandLinkNote = string.Format(tdbDownload.CommandLinkNote, FileTypeFriendlyName);

@@ -73,7 +73,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (item == menuItemSurveyInput) continue;
                     if (item == menuItemSpawning) continue;
-                    item.Enabled = !allowedempty;
+                    item.Enabled = !allowedEmpty;
                 }
             }
         }
@@ -82,24 +82,24 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return allowedempty;
+                return allowedEmpty;
             }
 
             set
             {
-                allowedempty = value;
+                allowedEmpty = value;
 
                 menuSample.Enabled =
-                    menuFishery.Enabled = !allowedempty;
+                    menuFishery.Enabled = !allowedEmpty;
 
-                menuItemMSYR.Enabled = !allowedempty;
+                menuItemMSYR.Enabled = !allowedEmpty;
 
-                menuItemExportSpec.Enabled = !allowedempty;
+                menuItemExportSpec.Enabled = !allowedEmpty;
 
                 foreach (ToolStripItem item in menuSurvey.DropDownItems)
                 {
                     if (item == menuItemSurveyInput) continue;
-                    item.Enabled = !allowedempty;
+                    item.Enabled = !allowedEmpty;
                 }
             }
         }
@@ -108,26 +108,20 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return ChangedCards.Count > 0;
+                return changedCards.Count > 0;
             }
         }
 
-
-
-        List<Data.LogRow> selectedLogRows;
-
+        private List<Data.LogRow> selectedLogRows;
         bool busy;
-
         bool empty;
+        bool allowedEmpty;
+        private List<Data.CardRow> changedCards = new List<Data.CardRow>();
 
-        bool allowedempty;
-
-        List<Data.CardRow> ChangedCards = new List<Data.CardRow>();
-
-        bool IsClosing = false;
+        bool isClosing = false;
 
 
-        private void UpdateSummary()
+        private void updateSummary()
         {
             FullStack = new CardStack(data.Card);
             AllowedStack = new CardStack(data.Card); //, true);
@@ -137,17 +131,15 @@ namespace Mayfly.Fish.Explorer
 
             if (IsEmpty)
             {
-                this.Text = EntryAssemblyInfo.Title;
-                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
+                Text = EntryAssemblyInfo.Title;
 
-                //labelDatesValue.Text = Constants.Null;
+                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
                 labelCardCountValue.Text = Constants.Null;
-                //labelCards.Text = string.Empty;
+                labelWgtValue.Text = Constants.Null;
+                labelQtyValue.Text = Constants.Null;
 
                 statusQuantity.ResetFormatted(Constants.Null);
                 statusMass.ResetFormatted(Constants.Null);
-                labelWgtValue.Text = Constants.Null;
-                labelQtyValue.Text = Constants.Null;
 
                 IsBusy = false;
             }
@@ -157,7 +149,7 @@ namespace Mayfly.Fish.Explorer
                 this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
-                    data.Card.Count, FileSystem.GetCommonPath(FullStack.GetFilenames()));
+                    data.Card.Count, IO.GetCommonPath(FullStack.GetFilenames()));
 
                 spreadSheetCard.ClearInsertedColumns();
 
@@ -167,12 +159,7 @@ namespace Mayfly.Fish.Explorer
                     gridColumn.Width = gridColumn.GetPreferredWidth(DataGridViewAutoSizeColumnMode.ColumnHeader, true);
                 }
 
-                #region Update general values
-
                 labelCardCountValue.Text = data.Card.Count.ToString();
-                string formatted = data.Card.Count.ToCorrectString(new ResourceManager(typeof(MainForm)).GetString("labelCards.Text"));
-                //labelCards.Text = formatted.Substring(formatted.IndexOf(' ') + 1);
-
 
                 listViewDates.Items.Clear();
                 foreach (DateTime[] bunch in data.GetDates().GetDatesBunches())
@@ -181,32 +168,10 @@ namespace Mayfly.Fish.Explorer
                     li.Tag = bunch;
                 }
 
-                //labelDatesValue.Text = data.GetDates().GetDatesRangeDescription();
-
-                //if (FullStack.GetDates().Count() > 1)
-                //{
-                //    labelDatesValue.ResetFormatted(FullStack.EarliestEvent, FullStack.LatestEvent);
-                //}
-                //else if (FullStack.GetDates().Count() == 1)
-                //{
-                //    labelDatesValue.Text = FullStack.EarliestEvent.ToString("D");
-                //}
-                //else
-                //{
-                //    labelDatesValue.Text = string.Empty;
-                //}
-
                 listViewWaters.Items.Clear();
                 foreach (Data.WaterRow waterRow in data.Water)
                 {
-                    if (waterRow.IsWaterNull())
-                    {
-                        listViewWaters.CreateItem(waterRow.ID.ToString(), Waters.Resources.Interface.Unnamed, waterRow.Type - 1);
-                    }
-                    else
-                    {
-                        listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.Water, waterRow.Type - 1);
-                    }
+                    listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.IsWaterNull() ? Waters.Resources.Interface.Unnamed : waterRow.Water, waterRow.Type - 1);
                 }
 
                 listViewSamplers.Items.Clear();
@@ -215,36 +180,23 @@ namespace Mayfly.Fish.Explorer
                     listViewSamplers.CreateItem(samplerRow.ID.ToString(), samplerRow.Sampler);
                 }
 
-                #endregion
-
-                #region Authorities
-
                 listViewInvestigators.Items.Clear();
-
                 foreach (string investigator in FullStack.GetInvestigators())
                 {
                     listViewInvestigators.CreateItem(investigator, investigator);
                 }
 
-                //Wild.UserSettings.InstalledPermissions.CheckAuthorization(
-                //    FullStack.GetInvestigators());
-
-                #endregion
-
                 AllowedStack.PopulateSpeciesMenu(menuItemLoadIndividuals, speciesInd_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemGrowthCrossSection, speciesGrowth_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemMortalitySustainable, speciesMortality_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMortalityCohorts, speciesMortalityCohorts_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemSelectivity, speciesSelectivity_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemExtrapolation, speciesStockExtrapolation_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemVpa, speciesStockVpa_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMSYR, speciesMSYR_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMSY, speciesMSY_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
-                if (!modelCalc.IsBusy && !IsClosing)
+                if (!modelCalc.IsBusy && !isClosing)
                 {
                     IsBusy = true;
                     processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
@@ -280,7 +232,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private DialogResult CheckAndSave()
+        public DialogResult CheckAndSave()
         {
             if (IsChanged)
             {
@@ -300,10 +252,10 @@ namespace Mayfly.Fish.Explorer
             return DialogResult.No;
         }
 
-        private void SaveCards()
+        public void SaveCards()
         {
             IsBusy = true;
-            spreadSheetCard.StartProcessing(ChangedCards.Count, Wild.Resources.Interface.Process.CardsSaving);
+            spreadSheetCard.StartProcessing(changedCards.Count, Wild.Resources.Interface.Process.CardsSaving);
             dataSaver.RunWorkerAsync();
         }  
 
@@ -316,7 +268,7 @@ namespace Mayfly.Fish.Explorer
         }
                 
 
-        private bool LoadCardAddt(SpreadSheet spreadSheet)
+        private bool loadCardAddt(SpreadSheet spreadSheet)
         {
             SelectionValue selectionValue = new SelectionValue(spreadSheetCard);
             selectionValue.Picker.UserSelectedColumns = spreadSheet.GetInsertedColumns();
@@ -346,21 +298,21 @@ namespace Mayfly.Fish.Explorer
             return newInserted;
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns)
+        private void setCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns)
         {
             foreach (DataGridViewColumn gridColumn in gridColumns)
             {
                 if (gridColumn.Name.StartsWith("Var_")) continue;
-                SetCardValue(cardRow, gridRow, gridColumn);
+                setCardValue(cardRow, gridRow, gridColumn);
             }
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn)
+        private void setCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn)
         {
-            SetCardValue(cardRow, gridRow, gridColumn, gridColumn.Name);
+            setCardValue(cardRow, gridRow, gridColumn, gridColumn.Name);
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn, string field)
+        private void setCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn, string field)
         {
             gridRow.Cells[gridColumn.Index].Value = cardRow.Get(field);
 
@@ -375,9 +327,9 @@ namespace Mayfly.Fish.Explorer
         private delegate void ValueSetEventHandler(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns);
 
 
-        private void RememberChanged(Data.CardRow cardRow)
+        private void rememberChanged(Data.CardRow cardRow)
         {
-            if (!ChangedCards.Contains(cardRow)) { ChangedCards.Add(cardRow); }
+            if (!changedCards.Contains(cardRow)) { changedCards.Add(cardRow); }
             menuItemSave.Enabled = IsChanged;
         }
     }

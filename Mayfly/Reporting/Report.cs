@@ -70,7 +70,7 @@ namespace Mayfly
             if (!string.IsNullOrWhiteSpace(this.Title))
             {
                 this.WriteLine("<h1>{0}</h1>", this.Title);
-                this.Title = Service.StripHTML(this.Title);
+                this.Title = this.Title.StripHTML();
             }
         }
 
@@ -209,13 +209,11 @@ namespace Mayfly
         {
             if (addNaticeLabel)
             {
-                AddParagraphClass("notice",
-                    string.Format("<strong>{0}. </strong> {1}", Resources.Interface.Comments, text));
+                AddParagraphClass("notice", string.Format("<span class='label'>{0}.</span>{1}", Resources.Interface.Comments, text));
             }
             else
             {
-                AddParagraphClass("notice",
-                    text);
+                AddParagraphClass("notice", text);
             }
         }
 
@@ -300,11 +298,35 @@ namespace Mayfly
             WriteLine("</script>");
         }
 
+        public void AddImage(string svg, string caption)
+        {
+            WriteLine("<img>");
+            //StartDiv("figure");
+            WriteLine(File.ReadAllText(svg));
+            AddParagraphClass("figure-label", caption);
+            //CloseDiv();
+            WriteLine("</img>");
+        }
 
+
+
+        public void AddLink(string link, string text)
+        {
+            Write(@"<a target='_blank\' href='{0}'>{1}</a>", link, text);
+        }
+
+
+
+        public void StartDiv(string classid)
+        {
+            WriteLine("<div class='" + classid + "'>");
+        }
 
         public void StartPage(PageBreakOption opt)
         {
-            WriteLine("<div class=" + (opt.HasFlag(PageBreakOption.Landscape) ? "'sheet landscape'" : (opt.HasFlag(PageBreakOption.Odd) ? "'sheet odd'" : "'sheet'")) + ">");
+            StartDiv("sheet" + 
+                (opt.HasFlag(PageBreakOption.Landscape) ?  " landscape" : 
+                (opt.HasFlag(PageBreakOption.Odd) ? " odd" : "")));
         }
 
         public void StartPage()

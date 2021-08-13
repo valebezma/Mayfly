@@ -1,0 +1,47 @@
+﻿h1 {
+    text-align: center;
+}
+
+table {
+    font-size: 9pt;
+    border-style: none;
+    border-color: black;
+}
+
+table th {
+    border-color: black;
+}
+
+table td {
+    border-color: black;
+}
+
+table.fill {
+    border-style: none;
+}
+
+table.fill td {
+    border-style: none;
+}
+
+table.fill td.comment {
+    text-align: center;
+}
+
+table td.input {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+
+    color: darkslateblue;
+    /*vertical-align: bottom;*/
+}
+
+table td.hand {
+
+    padding-bottom: 0;
+
+    font-family: Hand;
+    font-size: 12pt;
+    font-weight: 500;
+}

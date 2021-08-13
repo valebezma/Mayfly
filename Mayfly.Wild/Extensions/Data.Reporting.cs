@@ -106,7 +106,7 @@ namespace Mayfly.Wild
                         }
                         else
                         {
-                            table.AddCellRight(data.Value.FindByIndIDVarID(individualRow.ID, variable.ID).Value, Mayfly.Service.Mask(2));
+                            table.AddCellRight(data.Value.FindByIndIDVarID(individualRow.ID, variable.ID).Value, 2);
                         }
                     }
 
@@ -199,7 +199,7 @@ namespace Mayfly.Wild
                 }
                 else
                 {
-                    table.AddCellRight(logRow.Mass, Mayfly.Service.Mask(2));
+                    table.AddCellRight(logRow.Mass, 2);
                     w += logRow.Mass;
                 }
 
@@ -210,7 +210,7 @@ namespace Mayfly.Wild
             table.StartRow();
             table.AddCell(Mayfly.Resources.Interface.Total);
             table.AddCellRight(q);
-            table.AddCellRight(w, Mayfly.Service.Mask(2));
+            table.AddCellRight(w, 2);
             table.EndRow();
             table.EndFooter();
 

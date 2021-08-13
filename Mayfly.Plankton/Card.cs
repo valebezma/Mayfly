@@ -26,7 +26,7 @@ namespace Mayfly.Plankton
         {
             set
             {
-                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 fileName = value;
             }
 
@@ -135,7 +135,7 @@ namespace Mayfly.Plankton
                 }
                 else
                 {
-                    textBoxVolume.Text = (value * 1000d).ToString(Mayfly.Service.Mask(2));
+                    textBoxVolume.Text = (value * 1000d).ToString("N2");
 
                     if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
                     {
@@ -732,10 +732,10 @@ namespace Mayfly.Plankton
             else
             {
                 // There is such species in reference you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -1212,7 +1212,7 @@ namespace Mayfly.Plankton
             SaveData();
 
             UserSettings.Interface.SaveDialog.FileName =
-                FileSystem.SuggestName(FileSystem.FolderName(UserSettings.Interface.SaveDialog.FileName),
+                IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
                 Data.GetSuggestedName());
 
             if (UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
@@ -1308,9 +1308,9 @@ namespace Mayfly.Plankton
 
         private void menuItemLocation_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                waypointControl1.SelectGPS(FileSystem.InterfaceLocation.OpenDialog.FileNames);
+                waypointControl1.SelectGPS(IO.InterfaceLocation.OpenDialog.FileNames);
             }
         }
 
@@ -1320,12 +1320,12 @@ namespace Mayfly.Plankton
 
         private void ToolStripMenuItemWatersRef_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Wild.UserSettings.WatersIndexPath);
+            IO.RunFile(Wild.UserSettings.WatersIndexPath);
         }
 
         private void ToolStripMenuItemSpeciesRef_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(UserSettings.SpeciesIndexPath);
+            IO.RunFile(UserSettings.SpeciesIndexPath);
         }
 
         private void ToolStripMenuItemSettings_Click(object sender, EventArgs e)
@@ -1775,9 +1775,9 @@ namespace Mayfly.Plankton
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

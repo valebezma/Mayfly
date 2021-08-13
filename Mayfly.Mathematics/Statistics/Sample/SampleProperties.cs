@@ -30,20 +30,16 @@ namespace Mayfly.Mathematics.Statistics
 
 
 
-        public SampleProperties(IEnumerable<double> values)
+        public SampleProperties(Sample sample)
         {
             InitializeComponent();
-            Sample = new Sample(values);
-            SampleDisplay = new SampleDisplay(Sample);
             ConfidenceLevel = 1 - UserSettings.DefaultAlpha;
-
+            Sample = sample;
+            SampleDisplay = new SampleDisplay(Sample);
             UpdateValues();
         }
 
-        public SampleProperties(Sample sample) : this((IEnumerable<double>)sample)
-        {
-            UpdateValues();
-        }
+        public SampleProperties(IEnumerable<double> values) : this(new Sample(values)) { }
 
 
 
@@ -66,15 +62,15 @@ namespace Mayfly.Mathematics.Statistics
             //textBoxCV.Text = Sample.GetVariation().ToString("P2");
             textBoxStdDeviation.Text = Service.PresentError(Sample.StandardDeviation);
 
-            textBoxSkewness.Text = Sample.Skewness.ToString(Mayfly.Service.Mask(4));
-            //textBoxKurtosis.Text = Sample.GetKurtosis().ToString(Mayfly.Service.Mask(4));
+            textBoxSkewness.Text = Sample.Skewness.ToString("N4");
+            //textBoxKurtosis.Text = Sample.GetKurtosis().ToString(Textual.Mask(4));
 
             if (Sample.Count >= 3)
             {
                 TestResult testResult = Sample.KolmogorovSmirnovTest(
                     new NormalDistribution(Sample.Mean, Sample.CorrectedStandardDeviation));
 
-                textBoxNormality.Text = testResult.Statistic.Value.ToString(Mayfly.Service.Mask(4));
+                textBoxNormality.Text = testResult.Statistic.Value.ToString("N4");
 
                 if (testResult.Probability > UserSettings.DefaultAlpha)
                 {

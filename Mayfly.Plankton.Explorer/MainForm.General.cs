@@ -126,7 +126,7 @@ namespace Mayfly.Plankton.Explorer
             }
             else
             {
-                string friendly = FileSystem.GetFriendlyCommonName(data.GetFilenames());
+                string friendly = IO.GetFriendlyCommonName(data.GetFilenames());
 
                 if (string.IsNullOrWhiteSpace(friendly))
                 {
@@ -290,7 +290,7 @@ namespace Mayfly.Plankton.Explorer
         public void LoadCards(string[] entries)
         {
             IsBusy = true;
-            string[] filenames = FileSystem.MaskedNames(entries, Plankton.UserSettings.Interface.Extension);
+            string[] filenames = IO.MaskedNames(entries, Plankton.UserSettings.Interface.Extension);
             spreadSheetCard.StartProcessing(filenames.Length, Wild.Resources.Interface.Process.CardsLoading);
             loaderData.RunWorkerAsync(filenames);
         }
@@ -545,7 +545,7 @@ namespace Mayfly.Plankton.Explorer
                 columnCardDepth.Visible = false;
 
             columnCardVolume.HeaderText = Resources.Interface.DietVolume;
-            columnCardVolume.DefaultCellStyle.Format = Mayfly.Service.Mask(0);
+            columnCardVolume.DefaultCellStyle.Format = Textual.Mask(0);
 
             columnCardAbundance.HeaderText = Resources.Interface.DietAbundance;
 
@@ -555,13 +555,13 @@ namespace Mayfly.Plankton.Explorer
             columnCardBiomass.DefaultCellStyle.Format = dietFormat;
 
             columnSpcAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnSpcAbundance.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
+            columnSpcAbundance.DefaultCellStyle.Format = Textual.Mask(3);
 
             columnSpcBiomass.HeaderText = Resources.Interface.DietTxBiomass;
             columnSpcBiomass.DefaultCellStyle.Format = dietFormat;
 
             columnLogAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnLogAbundance.DefaultCellStyle.Format = Mayfly.Service.Mask(3);
+            columnLogAbundance.DefaultCellStyle.Format = Textual.Mask(3);
 
             columnLogBiomass.HeaderText = Resources.Interface.DietTxBiomass;
             columnLogBiomass.DefaultCellStyle.Format = dietFormat;

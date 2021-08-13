@@ -1311,10 +1311,10 @@
   <data name="checkBoxStrateUseClass.Text" xml:space="preserve">
     <value>Класс орудий</value>
   </data>
-  <data name="plotStrates.AxisXTitle" xml:space="preserve">
+  <data name="plotQualify.AxisXTitle" xml:space="preserve">
     <value>Длина, мм</value>
   </data>
-  <data name="plotStrates.AxisYTitle" xml:space="preserve">
+  <data name="plotQualify.AxisYTitle" xml:space="preserve">
     <value>Выборка, экз.</value>
   </data>
   <data name="tabPageSpcLW.Text" xml:space="preserve">

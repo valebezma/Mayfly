@@ -5,6 +5,7 @@ using System.Text;
 using System.Globalization;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Mayfly.Extensions;
 
 namespace Mayfly.Geographics
 {
@@ -80,6 +81,67 @@ namespace Mayfly.Geographics
                     Latitude.Degrees, Longitude.Degrees, Altitude 
                 });
             }
+        }
+
+        public static Waypoint Parse(string value)
+        {
+            try
+            {
+                foreach (string element in new string[] { ", ", " ", "°", "'", "`", "\"" })
+                {
+                    value = value.Replace(element, ";");
+                }
+
+                value = value.ToLowerInvariant().Replace(",", ".");
+
+                string[] elements = value.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+                //Coordinate lat = new Coordinate(0, false);
+                //Coordinate lng = new Coordinate(0, true);
+
+                string format = "d";
+                string lt = string.Empty;
+                string ln = string.Empty;
+
+                switch (elements.Length)
+                {
+                    case 0:
+                        return Waypoint.Empty;
+
+                    case 2:
+                        lt = "0" + elements[0];
+                        ln = elements[1];
+                        if (ln.Substring(0, ln.IndexOf('.')).StripNonNumbers().Length == 2) ln = "0" + ln;
+                        break;
+
+                    case 4:
+                        format = "dm";
+                        lt = "0" + elements[0] + elements[1];
+                        if (elements[2].StripNonNumbers().Length == 2) elements[2] = "0" + elements[2];
+                        ln = elements[2] + elements[3];
+                        break;
+
+                    case 6:
+                        format = "dms";
+                        lt = "0" + elements[0] + elements[1] + elements[2];
+                        if (elements[3].StripNonNumbers().Length == 2) elements[3] = "0" + elements[3];
+                        ln = elements[3] + elements[4] + elements[5];
+                        break;
+
+                    case 8:
+                        format = "dms";
+                        lt = elements[0] + "0" + elements[1] + elements[2] + elements[3];
+                        if (elements[4].StripNonNumbers().Length == 2) elements[4] = "0" + elements[4];
+                        ln = elements[4] + "0" + elements[5] + elements[6] + elements[7];
+                        break;
+                }
+
+                Coordinate lat = new Coordinate(lt.StripNonNumbers(), false, format, lt.Contains('-') | lt.Contains('s'));
+                Coordinate lng = new Coordinate(ln.StripNonNumbers(), true, format, ln.Contains('-') | ln.Contains('w'));
+
+                return new Waypoint(lat, lng);
+            }
+            catch { return null; }
         }
 
         #region IFormattable
@@ -310,7 +372,7 @@ namespace Mayfly.Geographics
             return center;
         }
 
-        #region Link
+
 
         public Uri GetLink()
         {
@@ -321,11 +383,18 @@ namespace Mayfly.Geographics
                 this.Longitude.Degrees, this.Latitude.Degrees));
         }
 
-        public string GetPlaceableLink(string format)
+        public string GetHTMLReference(string format)
         {
             if (IsEmpty) return string.Empty;
-            return Mayfly.Service.GetPlaceableLink(GetLink().OriginalString, this.ToString(format));
+            return GetLink().GetHTMLReference(ToString(format));
         }
+
+        public string GetHTMLReference()
+        {
+            return GetHTMLReference(UserSettings.FormatCoordinate);
+        }
+
+
 
         public static Uri GetLink(IEnumerable<Waypoint> locations)
         {
@@ -350,11 +419,9 @@ namespace Mayfly.Geographics
                 center.Longitude.Degrees, center.Latitude.Degrees, path));
         }
 
-        public static string GetPlaceableLink(IEnumerable<Waypoint> locations, string format)
+        public static string GetHTMLReference(IEnumerable<Waypoint> locations, string format)
         {
-            return Mayfly.Service.GetPlaceableLink(GetLink(locations).OriginalString, Waypoint.GetCenterOf(locations).ToString(format));
+            return GetLink(locations).GetHTMLReference(Waypoint.GetCenterOf(locations).ToString(format));
         }
-
-        #endregion
     }
 }

@@ -23,7 +23,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return FileSystem.GetCommonPath(this.GetFilenames());
+                return IO.GetCommonPath(this.GetFilenames());
             }
         }
 
@@ -180,6 +180,8 @@ namespace Mayfly.Wild
         public Data.LogRow[] GetLogRows(Data.SpeciesRow speciesRow)
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
+
+
 
             foreach (Data.LogRow logRow in Parent.Log)
             {
@@ -444,7 +446,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(SpeciesKey.SpeciesRow[] speciesRows)
+        public int GetOccurrenceCases(Data.SpeciesRow[] speciesRows)
         {
             int result = 0;
 
@@ -452,9 +454,9 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+                    foreach (Data.SpeciesRow speciesRow in speciesRows)
                     {
-                        if (speciesRow.Name == logRow.SpeciesRow.Species)
+                        if (speciesRow == logRow.SpeciesRow)
                         {
                             result++;
                             goto Next;

@@ -68,7 +68,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                table2.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetPlaceableLink(Mayfly.UserSettings.FormatCoordinate), 2);
+                table2.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(Mayfly.UserSettings.FormatCoordinate), 2);
             }
             table2.EndRow();
 
@@ -618,7 +618,7 @@ namespace Mayfly.Fish
                 table1.EndRow();
 
                 table1.StartRow();
-                table1.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetPlaceableLink(Mayfly.UserSettings.FormatCoordinate), 2);
+                table1.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(Mayfly.UserSettings.FormatCoordinate), 2);
                 table1.EndRow();
                 report.AddTable(table1);
 
@@ -923,7 +923,7 @@ namespace Mayfly.Fish
                 ResourceManager resources = new ResourceManager(typeof(Card));
                 Report report = new Report(string.Format(
                     "<span class='pretitle'>{0}.</span> [<span style='float:right'>]</span>",
-                    FileSystem.GetFriendlyFiletypeName(Fish.UserSettings.Interface.Extension)));
+                    IO.GetFriendlyFiletypeName(Fish.UserSettings.Interface.Extension)));
 
                 #region Common upper part
 

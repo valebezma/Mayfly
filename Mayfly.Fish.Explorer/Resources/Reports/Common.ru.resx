@@ -135,7 +135,4 @@
   <data name="Kg" xml:space="preserve">
     <value>кг</value>
   </data>
-  <data name="StratifiedCribnote" xml:space="preserve">
-    <value>Шпаргалка по размерному ряду (см)</value>
-  </data>
 </root>

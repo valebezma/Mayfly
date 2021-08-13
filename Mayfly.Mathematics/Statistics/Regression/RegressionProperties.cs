@@ -59,9 +59,9 @@ namespace Mayfly.Mathematics.Statistics
             domainParameters.SelectedIndex = 0;
 
 
-            //textBoxSSR.Text = Regression.ResidualSS.ToString(Mayfly.Service.Mask(Regression.Data.Y.Precision()));
-            //textBoxSSY.Text = Regression.TotalSS.ToString(Mayfly.Service.Mask(Regression.Data.Y.Precision()));
-            //textBoxSE.Text = Regression.StandardError.ToString(Mayfly.Service.Mask(4));
+            //textBoxSSR.Text = Regression.ResidualSS.ToString(Textual.Mask(Regression.Data.Y.Precision()));
+            //textBoxSSY.Text = Regression.TotalSS.ToString(Textual.Mask(Regression.Data.Y.Precision()));
+            //textBoxSE.Text = Regression.StandardError.ToString(Textual.Mask(4));
 
             //double r = Regression.Determination;
             //textBoxDC.Text = r.ToString("N4");
@@ -70,7 +70,7 @@ namespace Mayfly.Mathematics.Statistics
             ////labelR2.CenterWith(chartR2);
 
             //TestResult test = Regression.Fit.GoodnessOfFit;
-            //textBoxF.Text = test.Statistic.ToString(Mayfly.Service.Mask(4));
+            //textBoxF.Text = test.Statistic.ToString(Textual.Mask(4));
 
             //if (test.IsPassed())
             //{

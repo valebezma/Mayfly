@@ -1,0 +1,236 @@
+table {
+
+    width: 100%;
+    table-layout: fixed;
+    empty-cells: show;
+
+    border: solid 2px;
+    border-collapse: collapse;
+    border-color: #D3D3D3;
+
+    margin-bottom: 2mm;
+
+    font-size: 6pt;
+
+    /* page-break-inside: avoid; */
+}
+
+table.fill {
+    border: none;
+}
+
+table.fill td {
+    border: none;
+    border-bottom: 1px solid;
+    border-color: #D3D3D3;
+}
+
+table caption {
+
+    font-size: 9pt;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    text-align: left;
+
+    margin: 5px 0px 5px 0px;
+    page-break-inside: avoid;
+}
+
+/* table tbody {
+    border: solid 2px;
+	border-color: #D3D3D3;
+} */
+
+thead {
+    display: table-header-group;
+}
+
+tfoot {
+    font-weight: bold;
+}
+
+th {
+    padding: 1.5mm;
+    border: 1px solid;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 400;
+
+    border-color: #D3D3D3;
+}
+
+tr {
+    /* display: block; */
+    page-break-inside: avoid;
+}
+
+
+
+td {
+    padding: 1mm;
+    border: 1px solid;
+
+    vertical-align: top;
+    text-align: left;
+    /*white-space: nowrap;*/
+    border-color: #D3D3D3;
+}
+ 
+td.sider {
+    text-align: left;
+    line-height: 2em;
+}
+
+td.centered {
+    vertical-align:middle;
+    text-align: center;
+}
+
+td.right {
+    vertical-align:middle;
+    text-align: right;
+    padding-right: 2ch;
+}
+
+span.value {
+    color: black;
+}
+
+span.right {
+    float: right;
+    vertical-align: bottom;
+    font-weight: bold;
+}
+
+td.bold {
+    font-weight: bold;
+}
+
+td.comment {
+    font-size: 7pt;
+}
+
+
+
+td.appendix {
+    vertical-align: middle;
+    text-align: left;
+
+    border: none;
+
+    color: #D3D3D3;
+}
+
+td.equation {
+    vertical-align: middle;
+    border-width: 0px;
+    text-align: center;
+}
+
+
+td.strat {
+
+    border: none;
+    vertical-align: top;
+    padding-top: 1mm;
+    text-align: center;
+    border-bottom: solid 2px;
+}
+
+td.stratend {
+
+    border: right;
+    vertical-align: top;
+    padding-top: 1mm;
+    text-align: center;
+    border-left: 0px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;
+}
+
+td.stratvalue {
+
+    border: none;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: solid 2px;
+    word-wrap: break-word;
+
+    color: black;
+    border-color: #D3D3D3;
+}
+
+
+
+td.rowgroup {
+    text-transform: uppercase;
+    border: 1px solid;
+    vertical-align: top;
+    text-align: left;
+
+    border-color: #D3D3D3;
+    background-color: #D3D3D3;
+    color: white;
+}
+
+
+
+tfoot {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+tfoot td {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+
+table.big {
+    /*page-break-before: always;*/
+    page-break-inside: avoid;
+}
+
+table.big:first-child {
+    /*page-break-before: avoid;*/
+}
+
+table.big td {
+    overflow: hidden;
+}
+
+
+table.airy {
+    border: none;
+    page-break-inside: auto;
+}
+
+table.airy td {
+    border: none;
+    padding: 5mm;
+}
+
+
+table.ruler {
+    width: 100%;
+}
+
+table.ruler tr {
+    height: 12mm;
+}
+
+/* Spans */
+
+span.leftcomment {
+    vertical-align: middle;
+    text-align: left;
+    font-size: 6pt;
+    color: black;
+}
+
+span.pretitle {
+    color: #D3D3D3;
+    font-weight: normal;
+}

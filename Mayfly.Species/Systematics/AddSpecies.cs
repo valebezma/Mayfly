@@ -32,8 +32,8 @@ namespace Mayfly.Species
 
             SpeciesRow = speciesRow;
 
-            textBoxScientific.Text = SpeciesRow.Name;
-            if (!SpeciesRow.IsLocalNull()) textBoxLocal.Text = SpeciesRow.Local;
+            textBoxScientific.Text = SpeciesRow.Species;
+            if (!SpeciesRow.IsNameNull()) textBoxLocal.Text = SpeciesRow.Name;
             if (!SpeciesRow.IsReferenceNull()) textBoxReference.Text = SpeciesRow.Reference;
             if (!SpeciesRow.IsDescriptionNull()) textBoxDescription.Text = SpeciesRow.Description;
 
@@ -125,7 +125,7 @@ namespace Mayfly.Species
                     item.Name = taxaRow.ID.ToString();
                     baseMenu.Items.Add(item);
 
-                    item.Checked = taxaRow.Includes(SpeciesRow.Name);
+                    item.Checked = taxaRow.Includes(SpeciesRow.Species);
                 }
 
                 baseButton.Click += ((o, e) =>
@@ -143,10 +143,10 @@ namespace Mayfly.Species
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            SpeciesRow.Name = textBoxScientific.Text;
+            SpeciesRow.Species = textBoxScientific.Text;
 
-            if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetLocalNull();
-            else SpeciesRow.Local = textBoxLocal.Text;
+            if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetNameNull();
+            else SpeciesRow.Name = textBoxLocal.Text;
 
             if (!textBoxReference.Text.IsAcceptable()) SpeciesRow.SetReferenceNull();
             else SpeciesRow.Reference = textBoxReference.Text;

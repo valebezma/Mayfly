@@ -235,7 +235,7 @@ namespace Mayfly.Mathematics
 
                     if (name.IsAcceptable())
                     {
-                        bivariateSample.X.Name = name + Constants.StdSeparator + group;
+                        bivariateSample.X.Name = name + Constants.ElementSeparator + group;
                     }
                     else
                     {
@@ -250,7 +250,7 @@ namespace Mayfly.Mathematics
                     {
                         result.AddRange(GetSamples(xColumn, yColumn, groupColumns,
                             groupColumns[groupColumns.IndexOf(groupColumn) + 1],
-                            rows, name + Constants.StdSeparator + group));
+                            rows, name + Constants.ElementSeparator + group));
                     }
                     else
                     {

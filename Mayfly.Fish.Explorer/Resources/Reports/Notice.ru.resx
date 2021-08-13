@@ -120,22 +120,13 @@
   <data name="SampleFormat" xml:space="preserve">
     <value>в каждой ячейке отражены следующие значения: {0}</value>
   </data>
-  <data name="NPUE" xml:space="preserve">
-    <value>{0} равен улову одной {1}</value>
+  <data name="EffortHabitat" xml:space="preserve">
+    <value>участок среды, эквивалентный одной {0} (что равняется {1:N1} м³)</value>
   </data>
-  <data name="Abundance" xml:space="preserve">
-    <value>количество особей вида на участке среды, эквивалентном одному {0} (что равняется {1:N1} м³).</value>
-  </data>
-  <data name="BPUE" xml:space="preserve">
-    <value>{0} равен улову одной {1}</value>
-  </data>
-  <data name="SexualLegend" xml:space="preserve">
-    <value>полы обозначены следующим образом: {0:c} : {1:c} : {2:c}</value>
-  </data>
-  <data name="Biomass" xml:space="preserve">
-    <value>ихтиомасса вида на участке среды, эквивалентном одному {0} (что равняется {1:N1} м³).</value>
+  <data name="SexRatioLegend" xml:space="preserve">
+    <value>полы обозначены следующим образом: {0} : {1} : {2}</value>
   </data>
   <data name="Dominance" xml:space="preserve">
-    <value>индекс доминирования рассчитан по ({0}).</value>
+    <value>индекс доминирования рассчитан по ({0})</value>
   </data>
 </root>

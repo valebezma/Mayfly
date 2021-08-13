@@ -6,32 +6,28 @@ namespace Mayfly.Software
 {
     public class License
     {
-        public string Licensee;
+        public string Licensee { get; set; }
 
-        public string Feature;
+        public string Feature { get; set; }
 
-        public DateTime Expiration 
-        {
-            get; private set;
-        }
+        public DateTime Expiration { get; private set; }
 
         public bool Autorenewal { get; set; }
 
-        public TimeSpan ExpiresIn 
+        public string HardwareID { get; set; }
+
+        public TimeSpan ExpiresIn { get { return Expiration - DateTime.Today; } }
+
+        public bool IsValid
         {
             get
             {
-                return Expiration - DateTime.Today;
+                return HardwareID == Hardware.HardwareID && 
+                    ExpiresIn.TotalDays > (Autorenewal ? -1 : 0);
             }
         }
 
-        public bool IsValid 
-        {
-            get
-            {
-                return this.ExpiresIn.TotalDays > (Autorenewal ? -1 : 0);
-            }
-        }
+
 
         public License(string licstring)
         {
@@ -41,6 +37,7 @@ namespace Mayfly.Software
             Feature = licvalues[1];
             Expiration = DateTime.Parse(licvalues[2]);
             Autorenewal = bool.Parse(licvalues[3]);
+            HardwareID = licvalues[4];
         }
 
         internal void Install()
@@ -62,7 +59,7 @@ namespace Mayfly.Software
 
         public override string ToString()
         {
-            return string.Format("{0};{1};{2};{3}", Licensee, Feature, Expiration, Autorenewal);
+            return string.Format("{0};{1};{2};{3};{4}", Licensee, Feature, Expiration, Autorenewal, HardwareID);
         }
     }
 }

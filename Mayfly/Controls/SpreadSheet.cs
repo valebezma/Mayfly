@@ -9,6 +9,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Globalization;
 using Mayfly.Geographics;
+using System.Text;
 
 namespace Mayfly.Controls
 {
@@ -381,7 +382,7 @@ namespace Mayfly.Controls
         {
             base.OnEditingControlShowing(e);
 
-            if (e.Control is TextBox) 
+            if (e.Control is TextBox)
             {
                 TextBox editBox = e.Control as TextBox;
                 editBox.KeyPress += editingControl_KeyPress;
@@ -451,8 +452,8 @@ namespace Mayfly.Controls
 
                 checkBoxHider.Visible = true;
                 Rectangle rect = this.GetColumnDisplayRectangle(RowVisibilityColumn.Index, true);
-                checkBoxHider.Location = new Point(rect.Location.X + rect.Width / 2 - checkBoxHider.Width / 2, 
-                    rect.Location.Y + base.ColumnHeadersHeight /2 - checkBoxHider.Height / 2);   
+                checkBoxHider.Location = new Point(rect.Location.X + rect.Width / 2 - checkBoxHider.Width / 2,
+                    rect.Location.Y + base.ColumnHeadersHeight / 2 - checkBoxHider.Height / 2);
                 checkBoxHider.BringToFront();
 
                 foreach (DataGridViewRow gridRow in Rows)
@@ -598,15 +599,15 @@ namespace Mayfly.Controls
             }
             else if (Columns[e.ColumnIndex].ValueType == typeof(double))
             {
-                    try
-                    {
-                        e.Value = Mayfly.Extensions.Extensions.ToSmallValueString((double)e.Value, e.CellStyle.Format);
-                        e.FormattingApplied = true;
-                    }
-                    catch
-                    {
-                        e.FormattingApplied = false;
-                    }
+                try
+                {
+                    e.Value = ((double)e.Value).ToSmallValueString(e.CellStyle.Format);
+                    e.FormattingApplied = true;
+                }
+                catch
+                {
+                    e.FormattingApplied = false;
+                }
             }
 
             DataGridViewCell gridCell = this[e.ColumnIndex, e.RowIndex];
@@ -621,7 +622,7 @@ namespace Mayfly.Controls
                 DataGridViewContentAlignment.MiddleCenter;
 
             e.CellStyle.ForeColor = showNormal ?
-                gridCell.InheritedStyle.ForeColor : 
+                gridCell.InheritedStyle.ForeColor :
                 Mayfly.Constants.InfantColor;
 
             base.OnCellFormatting(e);
@@ -654,19 +655,34 @@ namespace Mayfly.Controls
             Point hitPoint = this.PointToClient(new Point(drgevent.X, drgevent.Y));
             HitTestInfo hit = this.HitTest(hitPoint.X, hitPoint.Y);
 
-            Log.Write(hit.ToString());
+            //Log.Write(hit.ToString());
 
-            if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
-                hit.Type == DataGridViewHitTestType.Cell &&
-                this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            if (hit.Type == DataGridViewHitTestType.Cell)
             {
-                drgevent.Effect = DragDropEffects.Link;
+                if (Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+                {
+                    if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false))
+                    {
+                        drgevent.Effect = DragDropEffects.Link;
+                    }
+                    else if (drgevent.Data.GetDataPresent(DataFormats.StringFormat, true))
+                    {
+                        drgevent.Effect = DragDropEffects.Link;
+                    }
+                }
             }
+
+            //if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
+            //    hit.Type == DataGridViewHitTestType.Cell &&
+            //    this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            //{
+            //    drgevent.Effect = DragDropEffects.Link;
+            //}
             //else
             //{
             //    drgevent.Effect = DragDropEffects.None;
             //}
-            
+
             base.OnDragOver(drgevent);
         }
 
@@ -678,31 +694,60 @@ namespace Mayfly.Controls
 
             Point hitPoint = this.PointToClient(new Point(drgevent.X, drgevent.Y));
             HitTestInfo hit = this.HitTest(hitPoint.X, hitPoint.Y);
-            
-            if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
-                hit.Type == DataGridViewHitTestType.Cell &&
-                this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+
+            if (hit.Type == DataGridViewHitTestType.Cell)
             {
-                string[] filenames = FileSystem.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
-                    FileSystem.InterfaceLocation.OpenExtensions);
+                dropCell = this[hit.ColumnIndex, hit.RowIndex];
 
-                if (filenames.Length > 0)
+                if (Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
                 {
-                    drgevent.Effect = DragDropEffects.None;
+                    if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false))
+                    {
+                        string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
+                            IO.InterfaceLocation.OpenExtensions);
 
-                    ListLocation locationSelection = new ListLocation(filenames);
-                    dropCell = this[hit.ColumnIndex, hit.RowIndex];
-                    locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
-                    locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
-                    locationSelection.ShowDialog(this);
-                    
-                    //ListWaypoints waypoints = new ListWaypoints(filenames);
-                    //waypoints.Tag = this[hit.ColumnIndex, hit.RowIndex];
-                    //waypoints.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
-                    //waypoints.WaypointSelected += new LocationEventHandler(waypoints_WaypointSelected);
-                    //waypoints.Show(this);
+                        if (filenames.Length > 0)
+                        {
+                            drgevent.Effect = DragDropEffects.None;
+
+                            ListLocation locationSelection = new ListLocation(filenames);
+                            locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+                            locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
+                            locationSelection.ShowDialog(this);
+                        }
+
+                    }
+                    else if (drgevent.Data.GetDataPresent(DataFormats.StringFormat, true))
+                    {
+                        dropCell.Value = Waypoint.Parse((string)drgevent.Data.GetData(DataFormats.StringFormat));
+                    }
                 }
             }
+
+            //if (drgevent.Data.GetDataPresent(DataFormats.FileDrop, false) &&
+            //    hit.Type == DataGridViewHitTestType.Cell &&
+            //    this.Columns[hit.ColumnIndex].ValueType == typeof(Waypoint))
+            //{
+            //    string[] filenames = IO.MaskedNames((string[])drgevent.Data.GetData(DataFormats.FileDrop),
+            //        IO.InterfaceLocation.OpenExtensions);
+
+            //    if (filenames.Length > 0)
+            //    {
+            //        drgevent.Effect = DragDropEffects.None;
+
+            //        ListLocation locationSelection = new ListLocation(filenames);
+            //        dropCell = this[hit.ColumnIndex, hit.RowIndex];
+            //        locationSelection.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+            //        locationSelection.LocationSelected += new LocationEventHandler(waypoints_WaypointSelected);
+            //        locationSelection.ShowDialog(this);
+
+            //        //ListWaypoints waypoints = new ListWaypoints(filenames);
+            //        //waypoints.Tag = this[hit.ColumnIndex, hit.RowIndex];
+            //        //waypoints.SetFriendlyDesktopLocation(this[hit.ColumnIndex, hit.RowIndex]);
+            //        //waypoints.WaypointSelected += new LocationEventHandler(waypoints_WaypointSelected);
+            //        //waypoints.Show(this);
+            //    }
+            //}
         }
 
         private void waypoints_WaypointSelected(object sender, LocationEventArgs e)
@@ -1610,7 +1655,7 @@ namespace Mayfly.Controls
         public DataTable GetData(IEnumerable gridColumns, bool includeInvisibleColumns,
             IEnumerable gridRows, bool includeInvisibleRows)
         {
-            DataTable table = new DataTable();
+            DataTable table = new DataTable("ExportData");
 
             foreach (DataGridViewColumn gridColumn in gridColumns)
             {
@@ -2975,9 +3020,9 @@ namespace Mayfly.Controls
 
         public void ItemSave_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceSheets.SaveDialog.ShowDialog(this.FindForm()) == DialogResult.OK)
+            if (IO.InterfaceSheets.ExportDialog.ShowDialog(this.FindForm()) == DialogResult.OK)
             {
-                this.SaveToFile(FileSystem.InterfaceSheets.SaveDialog.FileName);
+                this.SaveToFile(IO.InterfaceSheets.ExportDialog.FileName);
             }
         }
 
@@ -3241,6 +3286,152 @@ namespace Mayfly.Controls
         }
 
         #endregion
+
+
+
+
+
+
+
+
+        public void SaveToFile(string fileName)
+        {
+            StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.Default);
+
+            switch (Path.GetExtension(fileName))
+            {
+                case ".csv":
+                    streamWriter.Write(SeparatedValues(CultureInfo.CurrentCulture.TextInfo.ListSeparator));
+                    //streamWriter.Write(sheet.SeparatedValues(";"));
+                    break;
+                case ".txt":
+                    streamWriter.Write(SeparatedValues(Constants.Tab));
+                    break;
+                case ".prn":
+                    streamWriter.Write(PrintableFile());
+                    break;
+                case ".xml":
+                    GetData().WriteXml(streamWriter);
+                    break;
+            }
+
+            streamWriter.Flush();
+            streamWriter.Close();
+        }
+
+        public string SeparatedValues(string separator)
+        {
+            return SeparatedValues(separator, !Form.ModifierKeys.HasFlag(Keys.Control), false, false);
+        }
+
+        public string SeparatedValues(string separator, bool formatted,
+            bool includeInvisibleColumns, bool includeInvisibleRows)
+        {
+            StringWriter result = new StringWriter();
+
+            string headerText = string.Empty;
+
+            for (int i = 0; i <= ColumnCount - 1; i++)
+            {
+                if (includeInvisibleColumns || Columns[i].Visible)
+                {
+                    if (i > 0) headerText += separator;
+                    headerText += ValueToFile(Columns[i].HeaderText, separator);
+                }
+            }
+
+            result.WriteLine(headerText);
+
+            foreach (DataGridViewRow gridRow in Rows)
+            {
+                if (gridRow.IsNewRow) continue;
+
+                if (!(includeInvisibleRows || gridRow.Visible)) continue;
+
+                string rowValues = string.Empty;
+
+                for (int i = 0; i <= ColumnCount - 1; i++)
+                {
+                    if (!(includeInvisibleColumns || Columns[i].Visible)) continue;
+
+                    if (i > 0) rowValues += separator;
+
+                    if (gridRow.Cells[i].Value == null) continue;
+
+                    rowValues += ValueToFile(formatted ? gridRow.Cells[i].FormattedValue : gridRow.Cells[i].Value, separator);
+                }
+
+                result.WriteLine(rowValues);
+            }
+
+            return result.ToString();
+        }
+
+        public string PrintableFile()
+        {
+            StringWriter result = new StringWriter();
+
+            List<int> lengths = new List<int>();
+
+            string headerText = string.Empty;
+
+            for (int i = 0; i <= ColumnCount - 1; i++)
+            {
+                if (!Columns[i].Visible) continue;
+
+                object[] values = Columns[i].GetValues(true, false).ToArray();
+
+                int length = Columns[i].HeaderText.Length;
+
+                foreach (object value in values)
+                {
+                    length = System.Math.Max(length, value.ToString().Length);
+                }
+
+                lengths.Add(length);
+            }
+
+            for (int i = 0; i <= ColumnCount - 1; i++)
+            {
+                if (!Columns[i].Visible) continue;
+
+                headerText += string.Format("{0,-" + lengths[i] + "}", Columns[i].HeaderText);
+            }
+
+            result.WriteLine(headerText);
+
+            foreach (DataGridViewRow gridRow in Rows)
+            {
+                if (gridRow.IsNewRow) continue;
+
+                if (!gridRow.Visible) continue;
+
+                string rowValues = string.Empty;
+
+                for (int i = 0; i <= ColumnCount - 1; i++)
+                {
+                    if (!Columns[i].Visible) continue;
+
+                    rowValues += string.Format("{0,-" + lengths[i] + "}", gridRow.Cells[i].Value);
+                }
+
+                result.WriteLine(rowValues);
+            }
+
+            return result.ToString();
+        }
+
+        private static string ValueToFile(object value, string separator)
+        {
+            if (value == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return value.ToString().Replace(separator, string.Empty);
+            }
+        }
     }
 
     public delegate void GridColumnRenameEventHandler(object sender, GridColumnRenameEventArgs e);

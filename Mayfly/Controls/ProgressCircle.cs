@@ -235,10 +235,10 @@ namespace Mayfly.Controls
 
             for (int i = 0; i < m_SpokesCount; i++)
             {
-                PointF pt1 = new PointF(m_InnerRadius * (float)Math.Cos(Service.ConvertDegreesToRadians(angle)), m_InnerRadius *
-                    (float)Math.Sin(Service.ConvertDegreesToRadians(angle)));
-                PointF pt2 = new PointF(m_OuterRadius * (float)Math.Cos(Service.ConvertDegreesToRadians(angle)), m_OuterRadius * 
-                    (float)Math.Sin(Service.ConvertDegreesToRadians(angle)));
+                PointF pt1 = new PointF(m_InnerRadius * (float)Math.Cos(Service.DegreesToRadians(angle)), m_InnerRadius *
+                    (float)Math.Sin(Service.DegreesToRadians(angle)));
+                PointF pt2 = new PointF(m_OuterRadius * (float)Math.Cos(Service.DegreesToRadians(angle)), m_OuterRadius * 
+                    (float)Math.Sin(Service.DegreesToRadians(angle)));
 
                 pt1.X += m_CentrePt.X;
                 pt1.Y += m_CentrePt.Y;

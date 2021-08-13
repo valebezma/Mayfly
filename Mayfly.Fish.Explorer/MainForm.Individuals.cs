@@ -104,7 +104,7 @@ namespace Mayfly.Fish.Explorer
                 if (UserSettings.MassSuggest) SetIndividualMassTip(result, individualRow);
             }
 
-            SetCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
+            setCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
             return result;
         }
 
@@ -151,9 +151,9 @@ namespace Mayfly.Fish.Explorer
             else individualRow.Age = age.Value;
 
             if ((tabPageSpcStats.Parent != null) && // If stats are loaded
-                (SelectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
+                (selectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
             {
-                models_Changed(this, new EventArgs());
+                strates_Changed(this, new EventArgs());
             }
 
             Sex sex = (Sex)gridRow.Cells[columnIndSex.Name].Value;
@@ -244,7 +244,7 @@ namespace Mayfly.Fish.Explorer
 
             #endregion
 
-            RememberChanged(individualRow.LogRow.CardRow);
+            rememberChanged(individualRow.LogRow.CardRow);
 
             return individualRow;
         }
@@ -353,7 +353,7 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnIndAge.Index].Value = age;
                 Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
 
-                SetCardValue(stratifiedRow.LogRow.CardRow, gridRow, spreadSheetInd.GetInsertedColumns());
+                setCardValue(stratifiedRow.LogRow.CardRow, gridRow, spreadSheetInd.GetInsertedColumns());
 
                 result.Add(gridRow);
             }

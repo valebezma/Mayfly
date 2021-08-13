@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Mayfly.Fish.Explorer.Observations {
+namespace Mayfly.Fish.Explorer {
     
     
     /// <summary>

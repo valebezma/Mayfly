@@ -125,15 +125,15 @@ namespace Mayfly.Species.Systematics
 
         private void menuItemSaveAs_Click(object sender, EventArgs e)
         {
-            if (UserSettings.Interface.SaveAsDialog.ShowDialog() == DialogResult.OK)
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                switch (Path.GetExtension(UserSettings.Interface.SaveAsDialog.FileName))
+                switch (Path.GetExtension(UserSettings.Interface.ExportDialog.FileName))
                 {
                     case ".sps":
-                        Save(UserSettings.Interface.SaveAsDialog.FileName);
+                        Save(UserSettings.Interface.ExportDialog.FileName);
                         break;
                     case ".html":
-                        File.WriteAllText(UserSettings.Interface.SaveAsDialog.FileName,
+                        File.WriteAllText(UserSettings.Interface.ExportDialog.FileName,
                             Data.Report.ToString(), Encoding.UTF8);
                         break;
                 }
@@ -321,7 +321,7 @@ namespace Mayfly.Species.Systematics
                         ? row
                         : (SpeciesKey.TaxaRow)item.Group.Tag;
                     taskDialogDeleteSpecies.Content = string.Format(Resources.Messages.DeleteSpeciesContent,
-                        speciesRow.Name, taxaRow.TaxonName);
+                        speciesRow.Species, taxaRow.TaxonName);
 
                     TaskDialogButton b = taskDialogDeleteSpecies.ShowDialog(this);
 
@@ -464,7 +464,7 @@ namespace Mayfly.Species.Systematics
                     {
                         taskDialogReassociateSpecies.Content = string.Format(
                             Resources.Messages.SpeciesReassociateContent,
-                            speciesRow.Name, associatedTaxon.TaxonName, destinationTaxon.TaxonName);
+                            speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName);
 
                         TaskDialogButton b = taskDialogReassociateSpecies.ShowDialog(this);
 
@@ -489,7 +489,7 @@ namespace Mayfly.Species.Systematics
                             //UpdateSpeciesItems(speciesRow);
 
                             status.Message(string.Format(Resources.Messages.SpeciesReassociated,
-                                speciesRow.Name, associatedTaxon.TaxonName, destinationTaxon.TaxonName));
+                                speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName));
                         }
                     }
                 }
@@ -528,13 +528,13 @@ namespace Mayfly.Species.Systematics
                             {
                                 e.Effect = DragDropEffects.Link;
                                 status.StatusLog.Text = string.Format(Resources.Messages.AssociateTip,
-                                    speciesRow.Name, destTaxon.TaxonName);
+                                    speciesRow.Species, destTaxon.TaxonName);
                             }
                             else
                             {
                                 e.Effect = DragDropEffects.Copy;
                                 status.StatusLog.Text = string.Format(Resources.Messages.ReassociateTip,
-                                    speciesRow.Name, taxaRow.TaxonName, destTaxon.TaxonName);
+                                    speciesRow.Species, taxaRow.TaxonName, destTaxon.TaxonName);
                             }
                         }
                     }
@@ -666,7 +666,7 @@ namespace Mayfly.Species.Systematics
                         {
                             e.Effect = DragDropEffects.Link;
                             status.StatusLog.Text = string.Format(Resources.Messages.AssociateTip,
-                                speciesRow.Name, destSpeciesRow.Name);
+                                speciesRow.Species, destSpeciesRow.Species);
                         }
                     }
                 }

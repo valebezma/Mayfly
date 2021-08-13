@@ -50,7 +50,7 @@ namespace Mayfly.Fish.Explorer
             TotalMassRow = new DataGridViewRow();
             TotalMassRow.CreateCells(spreadSheet, Resources.Interface.Interface.TotalMass);
             TotalMassRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            TotalMassRow.DefaultCellStyle.Format = Mayfly.Service.Mask(3);            
+            TotalMassRow.DefaultCellStyle.Format = "N3";            
             spreadSheet.Rows.Add(TotalMassRow);
         }
 
@@ -133,7 +133,7 @@ namespace Mayfly.Fish.Explorer
             //contextHideEmpty.Checked = true;
 
             plotT.Series.Clear();
-            plotT.Text = string.Format(Resources.Reports.AgeLengthKey.Title, key.Name);
+            plotT.Text = string.Format(Resources.Reports.Sections.ALK.Title, key.Name);
 
             Series hist1 = new Series();
             hist1.ChartType = SeriesChartType.StackedColumn;

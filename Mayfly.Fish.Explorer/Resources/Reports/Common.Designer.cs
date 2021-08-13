@@ -113,14 +113,5 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
                 return ResourceManager.GetString("Npue", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stratified crib note (cm).
-        /// </summary>
-        public static string StratifiedCribnote {
-            get {
-                return ResourceManager.GetString("StratifiedCribnote", resourceCulture);
-            }
-        }
     }
 }

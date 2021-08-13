@@ -117,16 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="a" xml:space="preserve">
+    <value>all values</value>
+  </data>
   <data name="e" xml:space="preserve">
     <value>extrema</value>
   </data>
   <data name="g" xml:space="preserve">
     <value>mean, standard error and extrema</value>
   </data>
+  <data name="m" xml:space="preserve">
+    <value>mean</value>
+  </data>
+  <data name="max" xml:space="preserve">
+    <value>maximal value</value>
+  </data>
+  <data name="min" xml:space="preserve">
+    <value>minimal value</value>
+  </data>
+  <data name="n" xml:space="preserve">
+    <value>sample size</value>
+  </data>
   <data name="q" xml:space="preserve">
     <value>mean and extrema</value>
   </data>
   <data name="s" xml:space="preserve">
     <value>mean and standard error</value>
+  </data>
+  <data name="sd" xml:space="preserve">
+    <value>standard deviation</value>
+  </data>
+  <data name="sdc" xml:space="preserve">
+    <value>corrected standard deviation</value>
+  </data>
+  <data name="se" xml:space="preserve">
+    <value>standard error</value>
+  </data>
+  <data name="se%" xml:space="preserve">
+    <value>relative standard error</value>
+  </data>
+  <data name="t" xml:space="preserve">
+    <value>total</value>
   </data>
 </root>

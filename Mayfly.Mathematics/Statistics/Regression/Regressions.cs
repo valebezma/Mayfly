@@ -75,7 +75,7 @@ namespace Mayfly.Mathematics.Statistics
 
                 //buttonCommon.Enabled = true;
 
-                //textBoxCoincidenceP.Text = Pool.Coincidence.Probability.ToString(Mayfly.Service.Mask(4));
+                //textBoxCoincidenceP.Text = Pool.Coincidence.Probability.ToString(Textual.Mask(4));
 
                 //if (Pool.Coincidence.Probability > UserSettings.DefaultAlpha)
                 //{

@@ -120,22 +120,13 @@
   <data name="SampleFormat" xml:space="preserve">
     <value>each cell contains following values: {0}</value>
   </data>
-  <data name="NPUE" xml:space="preserve">
-    <value>{0} equals yield of one {1}</value>
-  </data>
   <data name="Dominance" xml:space="preserve">
     <value>dominance index is calculated as described in ({0})</value>
   </data>
-  <data name="Abundance" xml:space="preserve">
-    <value>species number in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³)</value>
+  <data name="EffortHabitat" xml:space="preserve">
+    <value>a piece of natural habitat equivalent to one {0} (which is {1:N1} m³)</value>
   </data>
-  <data name="BPUE" xml:space="preserve">
-    <value>{0} equals yield of one {1}</value>
-  </data>
-  <data name="SexualLegend" xml:space="preserve">
-    <value>sexes are marked as follows: {0:c} : {1:c} : {2:c}</value>
-  </data>
-  <data name="Biomass" xml:space="preserve">
-    <value>species ichtyomass in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³)</value>
+  <data name="SexRatioLegend" xml:space="preserve">
+    <value>sexes are marked as follows: {0} : {1} : {2}</value>
   </data>
 </root>

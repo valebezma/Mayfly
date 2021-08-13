@@ -31,7 +31,7 @@ namespace Mayfly.Reporting
             Uri = uri;
         }
 
-        public PreviewForm(Report report, bool print) : this(FileSystem.GetTempFileName(".html"))
+        public PreviewForm(Report report, bool print) : this(IO.GetTempFileName(".html"))
         {
             Report = report;
             AutoPrint = print;

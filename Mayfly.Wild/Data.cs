@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Xml;
 using System.Text;
 using System.Reflection;
+using System.Globalization;
 
 namespace Mayfly.Wild
 {
@@ -163,16 +164,8 @@ namespace Mayfly.Wild
         {
             try
             {
-                foreach (DataTable dt in Tables)
-                {
-                    foreach (DataColumn dc in dt.Columns)
-                    {
-                        dc.ColumnMapping = MappingType.Attribute;
-                    }
-                }
-
+                this.SetAttributable();
                 ReadXml(fileName);
-
 
                 foreach (CardRow cardRow in this.Card)
                 {
@@ -199,14 +192,6 @@ namespace Mayfly.Wild
 
         public void WriteToFile(string fileName)
         {
-            foreach (DataTable dt in Tables)
-            {
-                foreach (DataColumn dc in dt.Columns)
-                {
-                    dc.ColumnMapping = MappingType.Attribute;
-                }
-            }
-
             //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
             //xmlWriter.IndentChar = ' ';
             //xmlWriter.Indentation = 4;
@@ -621,7 +606,7 @@ namespace Mayfly.Wild
                 set
                 {
                     path = value;
-                    tableCard.CommonPath = FileSystem.GetCommonPath(((Data)this.tableCard.DataSet).GetFilenames());
+                    tableCard.CommonPath = IO.GetCommonPath(((Data)this.tableCard.DataSet).GetFilenames());
                 }
             }
 
@@ -1266,7 +1251,7 @@ namespace Mayfly.Wild
             public double DetailedMass => this.MassIndividuals + this.MassStratified;
         }
 
-        partial class SpeciesRow
+        partial class SpeciesRow : IFormattable
         {
             public int TotalQuantity
             {
@@ -1308,6 +1293,21 @@ namespace Mayfly.Wild
             public override string ToString()
             {
                 return this.Species;
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider)
+            {
+                switch (format.ToLowerInvariant())
+                {
+                    case "l":
+                        return this.KeyRecord.ShortName;
+
+                    case "s":
+                        return this.KeyRecord.ScientificName;
+
+                    default:
+                        return this.Species;
+                }
             }
         }
 

@@ -8,6 +8,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Globalization;
 using System.Resources;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
@@ -172,8 +173,7 @@ namespace Mayfly.Fish
         public static string ToDisplay(this FishSamplerType type)
         {
             if (type == FishSamplerType.None) return string.Empty;
-            return Mayfly.Service.GetLocalizedValue(
-                UserSettings.SamplersIndex.Type.FindByID((int)type).Display);
+            return UserSettings.SamplersIndex.Type.FindByID((int)type).Display.GetLocalizedValue();
         }
     }
 

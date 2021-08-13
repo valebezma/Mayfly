@@ -24,7 +24,7 @@ namespace Mayfly.Waters
         {
             set
             {
-                this.ResetText(value == null ? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
+                this.ResetText(value == null ? IO.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
                 fileName = value;
             }
             get

@@ -16,6 +16,8 @@ namespace Mayfly.Mathematics.Charts
     {
         public string Name { get; private set; }
 
+        public bool TransposeCharting { get; set; }
+
         public Plot Container { set; get; }
 
 
@@ -165,29 +167,19 @@ namespace Mayfly.Mathematics.Charts
             else return FunctionInverse.Invoke(x);            
         }
 
-        public void BuildSeries()
-        {
-            if (Container == null) BuildSeries(0, 1, 0, 1);
-            //else BuildSeries(
-            //    Container.AxisXMin, Container.AxisXMax,
-            //    Container.AxisYMin, Container.AxisYMax);
-            else BuildSeries(
-                AxisX.Minimum, AxisX.Maximum,
-                AxisY.Minimum, AxisY.Maximum);
-        }
-
-        public void BuildSeries(double xMin, double xMax, double yMin, double yMax)
+        public void BuildSeries(double xMin, double xMax, double yMin, double yMax, AxisType axisType)
         {
             if (Series == null)
             {
                 Series = new Series(this.Name);
                 Series.ChartType = SeriesChartType.Line;
-                //Series.IsVisibleInLegend = false;
             }
             else
             {
                 Series.Points.Clear();
             }
+
+            Series.YAxisType = axisType;
 
             double xInterval = (xMax - xMin) / splineStep;
             double yInterval = (yMax - yMin) / splineStep;
@@ -202,12 +194,34 @@ namespace Mayfly.Mathematics.Charts
                     x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
                 {
                     DataPoint dataPoint = new DataPoint(Series);
-                    dataPoint.XValue = x;
-                    dataPoint.YValues[0] = y;
+
+                    if (TransposeCharting)
+                    {
+                        dataPoint.XValue = y;
+                        dataPoint.YValues[0] = x;
+                    }
+                    else
+                    {
+                        dataPoint.XValue = x;
+                        dataPoint.YValues[0] = y;
+                    }
 
                     Series.Points.Add(dataPoint);
                 }
             }
+        }
+
+        public void BuildSeries(AxisType axisType)
+        {
+            if (Container == null) BuildSeries(0, 1, 0, 1, axisType);
+            else BuildSeries(
+                AxisX.Minimum, AxisX.Maximum,
+                AxisY.Minimum, AxisY.Maximum, axisType);
+        }
+
+        public void BuildSeries()
+        {
+            BuildSeries(AxisType.Primary);
         }
 
         public void Update(object sender, EventArgs e)

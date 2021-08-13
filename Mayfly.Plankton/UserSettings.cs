@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
+using Mayfly.Extensions;
 
 namespace Mayfly.Plankton
 {
@@ -62,7 +63,9 @@ namespace Mayfly.Plankton
                 if (samplersIndex == null)
                 {
                     samplersIndex = new Samplers();
+                    samplersIndex.SetAttributable();
                     samplersIndex.ReadXml(@"interface\samplerplankton.ini");
+                    //samplersIndex.WriteXml(@"interface\samplerplankton.ini");
                 }
                 return samplersIndex;
             }

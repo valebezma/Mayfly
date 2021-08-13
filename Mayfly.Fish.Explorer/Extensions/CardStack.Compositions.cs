@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Meta.Numerics.Statistics;
-using Mayfly.Fish.Explorer.Survey;
+using Mayfly.Fish.Explorer;
 using System.Linq;
 using Meta.Numerics;
 
@@ -13,108 +13,43 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
+        //public static SpeciesComposition GetCenosisComposition(this CardStack stack)
+        //{
+        //    SpeciesComposition result = stack.GetBasicCenosisComposition();
+
+        //    foreach (SpeciesSwarm category in result)
+        //    {
+        //        category.Abundance = stack.GetAverageAbundance(category.SpeciesRow);
+        //        category.Biomass = stack.GetAverageBiomass(category.SpeciesRow);
+        //    }
+
+        //    return result;
+        //}
+
         public static SpeciesComposition GetCenosisComposition(this CardStack stack, ExpressionVariant variant)
         {
-            return stack.GetCenosisComposition(Fish.UserSettings.SpeciesIndex, variant);
-        }
-
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack)
-        {
-            return stack.GetCenosisComposition(Fish.UserSettings.SpeciesIndex);
-        }
-
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
-        {
-            SpeciesComposition result = stack.GetCenosisCompositionFrame();
+            SpeciesComposition result = stack.GetBasicCenosisComposition();
 
             foreach (SpeciesSwarm category in result)
             {
-                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
-
-                category.DataRow = key.Species.FindBySpecies(speciesRow.Species);
-
-                category.Quantity = (int)stack.Quantity(speciesRow);
-                category.Mass = stack.Mass(speciesRow);
-                category.Abundance = stack.GetAverageAbundance(speciesRow);
-                category.Biomass = stack.GetAverageBiomass(speciesRow);
-
-                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
-
+                category.Abundance = stack.GetAverageAbundance(category.SpeciesRow, variant);
+                category.Biomass = stack.GetAverageBiomass(category.SpeciesRow, variant);
             }
-
-            result.SamplesCount = stack.Count;
-            result.Sort();
-
-            return result;
-        }
-
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key, ExpressionVariant variant)
-        {
-            SpeciesComposition result = stack.GetCenosisCompositionFrame();
-
-            foreach (SpeciesSwarm category in result)
-            {
-                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
-
-                category.DataRow = key.Species.FindBySpecies(speciesRow.Species);
-
-                category.Quantity = (int)stack.Quantity(speciesRow);
-                category.Mass = stack.Mass(speciesRow);
-                category.Abundance = stack.GetAverageAbundance(speciesRow, variant);
-                category.Biomass = stack.GetAverageBiomass(speciesRow, variant);
-
-                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
-
-            }
-
-            result.SamplesCount = stack.Count;
-            result.Sort();
 
             return result;
         }
 
         public static SpeciesComposition GetCenosisComposition(this CardStack stack, SpeciesComposition example)
         {
-            SpeciesComposition result = new SpeciesComposition(string.Empty, example.Count);
+            SpeciesComposition result = example.GetEmptyCopy();
 
-            foreach (SpeciesSwarm category in example)
+            for (int i = 0; i < example.Count; i++)
             {
-                SpeciesSwarm category1 = new SpeciesSwarm(category.Name);
-
-                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
-
-                if (category.DataRow != null) category1.DataRow = category.DataRow;
-
-                if (speciesRow == null) continue;
-
-                category1.Quantity = (int)stack.Quantity(speciesRow);
-                category1.Mass = stack.Mass(speciesRow);
-                category1.MassSample = stack.MassSample(speciesRow);
-                category1.LengthSample = stack.LengthSample(speciesRow);
-                category1.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
-                category1.SamplesCount = stack.GetLogRows(speciesRow).Length;
-
-                result.AddCategory(category1);
+                result.AddCategory(stack.GetSwarm(result[0].SpeciesRow));
+                result.RemoveAt(0);
             }
 
             result.SamplesCount = stack.Count;
-
-            return result;
-        }
-
-        public static TaxaComposition GetTaxonomicComposition(this CardStack stack, Species.SpeciesKey.BaseRow baseRow)
-        {
-            SpeciesComposition spc = stack.GetCenosisComposition((Species.SpeciesKey)baseRow.Table.DataSet);
-
-            TaxaComposition result = new TaxaComposition(spc, baseRow);
-
-            foreach (SpeciesSwarmPool pool in result)
-            {
-                pool.SamplesCount = stack.GetOccurrenceCases(pool.SpeciesRows);
-            }
 
             return result;
         }
@@ -387,15 +322,77 @@ namespace Mayfly.Fish.Explorer
         }
 
 
+        //public static SpeciesComposition GetClassedComposition(this CardStack[] classedStacks, Data.SpeciesRow speciesRow, FishSamplerType samplerType, ExpressionVariant variant)
+        //{
+        //    SpeciesComposition result = new SpeciesComposition();
 
-        public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow, double totalMass)
+        //    if (classedStacks.Length > 1)
+        //    {
+        //        foreach (string mesh in classes)
+        //        {
+        //            CardStack meshData = stack.GetStack(samplerType, mesh);
+
+        //            double q = meshData.Quantity(speciesRow);
+
+        //            if (q == 0) continue;
+
+        //            SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
+        //            swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
+        //            swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
+        //            swarm.Name = mesh;
+
+        //            result.AddCategory(swarm);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        SpeciesSwarm swarm = samplerData.GetSwarm(speciesRow);
+        //        swarm.Abundance = samplerData.GetAverageAbundance(speciesRow);
+        //        swarm.Biomass = samplerData.GetAverageBiomass(speciesRow);
+
+        //        result.AddCategory(swarm);
+        //    }
+
+        //    result.Unit = new UnitEffort(samplerType, variant).Unit;
+        //    return result;
+        //}
+
+
+        public static SpeciesComposition GetClassedComposition(this IEnumerable<CardStack> classedStacks, Data.SpeciesRow speciesRow, FishSamplerType samplerType, UnitEffort ue)
         {
-            CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
-                speciesRow);
-            result.ScaleUp(totalMass);
+            SpeciesComposition result = new SpeciesComposition();
+
+            if (classedStacks.Count() > 1)
+            {
+                foreach (CardStack meshData in classedStacks)
+                {
+                    double q = meshData.Quantity(speciesRow);
+
+                    if (q == 0) continue;
+
+                    SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
+                    swarm.Index = meshData.GetEffort(samplerType, ue.Variant);
+                    //swarm.Abundance = meshData.GetAverageAbundance(speciesRow);
+                    //swarm.Biomass = meshData.GetAverageBiomass(speciesRow);
+                    swarm.Name = meshData.Name;
+
+                    result.AddCategory(swarm);
+                }
+            }
+            else
+            {
+                SpeciesSwarm swarm = classedStacks.First().GetSwarm(speciesRow);
+                swarm.Index = classedStacks.First().GetEffort(samplerType, ue.Variant);
+                swarm.Name = classedStacks.First().Name;
+
+                result.AddCategory(swarm);
+            }
+
+            result.Unit = ue.Unit;
             return result;
         }
+
+
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
             GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow)
@@ -425,13 +422,24 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
+            GearWeightType weight, ExpressionVariant variant, Composition example, Data.SpeciesRow speciesRow, double totalMass)
+        {
+            CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
+                speciesRow);
+            result.ScaleUp(totalMass);
+            return result;
+        }
+
+
+
+        public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
             GearWeightType weight, ExpressionVariant variant, SpeciesComposition example)
         {
             CompositionEqualizer result = new CompositionEqualizer(example);
 
             foreach (CardStack classedStack in classedStacks)
             {
-                Composition classComposition = classedStack.GetCenosisComposition(example);
+                Composition classComposition = GetCenosisComposition(classedStack, example);
                 classComposition.Name = classedStack.Name;
                 classComposition.Weight =
                     (weight.HasFlag(GearWeightType.Effort) ? classedStack.GetEffort(classedStack.GetSamplers()[0].GetSamplerType(), variant) : 1) /

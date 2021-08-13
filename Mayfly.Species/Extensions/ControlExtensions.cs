@@ -12,7 +12,7 @@ namespace Mayfly.Extensions
     {
         public static ListViewItem CreateItem(this ListView listView, SpeciesKey.SpeciesRow speciesRow)
         {
-            ListViewItem result = listView.CreateItem(speciesRow.ID.ToString(), speciesRow.Name);
+            ListViewItem result = listView.CreateItem(speciesRow.ID.ToString(), speciesRow.Species);
             result.UpdateItem(speciesRow);
             result.Tag = speciesRow;
             return result;
@@ -21,7 +21,7 @@ namespace Mayfly.Extensions
         public static void UpdateItem(this ListViewItem item, SpeciesKey.SpeciesRow speciesRow)
         {
             item.Name = speciesRow.ID.ToString();
-            item.Text = speciesRow.Name;
+            item.Text = speciesRow.Species;
             item.UpdateItem(new object[] { speciesRow.IsReferenceNull() ? string.Empty : speciesRow.Reference });
         }
     }

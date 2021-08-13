@@ -61,33 +61,6 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to species number in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³).
-        /// </summary>
-        public static string Abundance {
-            get {
-                return ResourceManager.GetString("Abundance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to species ichtyomass in a piece of natural habitat equivalent to one {0} (which is {1:N1} m³).
-        /// </summary>
-        public static string Biomass {
-            get {
-                return ResourceManager.GetString("Biomass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} equals yield of one {1}.
-        /// </summary>
-        public static string BPUE {
-            get {
-                return ResourceManager.GetString("BPUE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to dominance index is calculated as described in ({0}).
         /// </summary>
         public static string Dominance {
@@ -97,11 +70,11 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} equals yield of one {1}.
+        ///   Looks up a localized string similar to a piece of natural habitat equivalent to one {0} (which is {1:N1} m³).
         /// </summary>
-        public static string NPUE {
+        public static string EffortHabitat {
             get {
-                return ResourceManager.GetString("NPUE", resourceCulture);
+                return ResourceManager.GetString("EffortHabitat", resourceCulture);
             }
         }
         
@@ -115,11 +88,11 @@ namespace Mayfly.Fish.Explorer.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sexes are marked as follows: {0:c} : {1:c} : {2:c}.
+        ///   Looks up a localized string similar to sexes are marked as follows: {0} : {1} : {2}.
         /// </summary>
-        public static string SexualLegend {
+        public static string SexRatioLegend {
             get {
-                return ResourceManager.GetString("SexualLegend", resourceCulture);
+                return ResourceManager.GetString("SexRatioLegend", resourceCulture);
             }
         }
     }

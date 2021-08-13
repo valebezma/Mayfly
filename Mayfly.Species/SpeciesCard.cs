@@ -23,20 +23,20 @@ namespace Mayfly.Species
 
             this.Text = speciesRow.FullName;
 
-            labelSpecies.Text = speciesRow.Name;
+            labelSpecies.Text = speciesRow.Species;
 
             labelReference.Text = speciesRow.IsReferenceNull() ? 
                 Constants.Null : speciesRow.Reference;
 
-            labelLocal.Text = speciesRow.IsLocalNull() ? 
-                Constants.Null : speciesRow.Local;
+            labelLocal.Text = speciesRow.IsNameNull() ? 
+                Constants.Null : speciesRow.Name;
 
             labelTaxa.Text = string.Empty;
             SpeciesKey.RepRow[] reps = speciesRow.GetRepRows();
             foreach (SpeciesKey.RepRow repRow in reps)
             {
                 labelTaxa.Text += repRow.TaxaRow.FullName+
-                    (reps.Length > 6 ? Constants.StdSeparator : Constants.Break);
+                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
             }
 
             labelDescription.Text = speciesRow.IsDescriptionNull() ?
@@ -47,7 +47,7 @@ namespace Mayfly.Species
             foreach (SpeciesKey.SpeciesRow syn in syns)
             {
                 labelSynonyms.Text += syn.FullName+
-                    (reps.Length > 6 ? Constants.StdSeparator : Constants.Break);
+                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
             }
         }
 

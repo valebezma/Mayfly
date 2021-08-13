@@ -24,7 +24,7 @@ namespace Mayfly.Benthos.Explorer
         {
             stack.AddCommon(report);
 
-            SpeciesComposition spc = stack.GetCenosisComposition();
+            SpeciesComposition spc = stack.GetBasicCenosisComposition();
 
             Report.Table table1 = new Report.Table(Resources.Reports.Cenosis.Header1);
 

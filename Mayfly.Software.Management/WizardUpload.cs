@@ -356,7 +356,7 @@ namespace Mayfly.Software.Management
             }
 
             Software.Service.UpdateStatus(labelUpStatus, "Clearing local temporary files");
-            FileSystem.ClearTemp();
+            IO.ClearTemp();
             fileCount++; ((BackgroundWorker)sender).ReportProgress(fileCount);
 
             Software.Service.UpdateStatus(labelUpStatus, "Updating scheme database");
@@ -388,12 +388,12 @@ namespace Mayfly.Software.Management
 
         private void buttonWebsite_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Server.ServerHttps);
+            IO.RunFile(Server.ServerHttps);
         }
 
         private void buttonFtp_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Service.FtpUpdatesServer);
+            IO.RunFile(Service.FtpUpdatesServer);
         }
     }
 }

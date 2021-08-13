@@ -34,7 +34,7 @@ namespace Mayfly.Wild
             }
         }
 
-        double _weight;
+        double _weight = 1;
 
 
 
@@ -349,8 +349,66 @@ namespace Mayfly.Wild
 
         public virtual string ToString(string format, IFormatProvider provider)
         {
-            return string.Format(Resources.Interface.Interface.ResourceManager.GetString("CompositionPresentation",
-                (CultureInfo)provider), Name, Count);
+            if (TotalQuantity == 0) return Constants.Null;
+
+            string result = string.Empty;
+            switch (format)
+            {
+                //case "q":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.Quantity.ToString("N0") + " : ";
+                //    }
+                //    break;
+
+                //case "m":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.Mass.ToString("N2") + " : ";
+                //    }
+                //    break;
+
+                //case "a":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.Abundance.ToString("G2") + " : ";
+                //    }
+                //    break;
+
+                //case "b":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.Biomass.ToString("G2") + " : ";
+                //    }
+                //    break;
+
+                //case "a%":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.AbundanceFraction.ToString("P1") + " : ";
+                //    }
+                //    break;
+
+                //case "b%":
+                //    foreach (Category cat in this)
+                //    {
+                //        result += cat.BiomassFraction.ToString("P1") + " : ";
+                //    }
+                //    break;
+
+                case "":
+                    return string.Format(Resources.Interface.Interface.ResourceManager.GetString("CompositionPresentation",
+                        (CultureInfo)provider), Name, Count);
+
+                default:
+                    foreach (Category cat in this)
+                    {
+                        result += cat.AbundanceFraction.ToString(format) + " : ";
+                    }
+                    break;
+            }
+
+            return result.TrimEnd(' ', ':');
         }
 
         public virtual string ToString(string format)
@@ -511,8 +569,10 @@ namespace Mayfly.Wild
 
             if (formats.Length > 7) Unit = formats[7];
 
-            if (formats.Length > 8) OccuranceFormat = formats[8];
-            if (formats.Length > 9) DominanceFormat = formats[9];
+            if (formats.Length > 8) SexFormat = formats[8];
+
+            if (formats.Length > 9) OccuranceFormat = formats[9];
+            if (formats.Length > 10) DominanceFormat = formats[10];
         }
 
         public string Unit; 
@@ -529,5 +589,7 @@ namespace Mayfly.Wild
 
         public string OccuranceFormat = "n2";
         public string DominanceFormat = "n2";
+
+        public string SexFormat = "p1";
     }
 }

@@ -1,0 +1,136 @@
+﻿body {
+    font-family: 'Common';
+    font-weight: 350;
+    color: black;
+    text-align: left;
+}
+
+/*Pages*/
+
+div.sheet {
+    page-break-before: always;
+}
+
+div.sheet:first-child {
+    page-break-before: avoid;
+}
+
+div.odd {
+    page-break-before: right;
+}
+
+
+@media screen {
+
+    div.sheet {
+        margin: auto;
+        padding: 2cm;
+        width: 21cm;
+    }
+
+    div.landscape {
+        margin: auto;
+        width: 297mm;
+        padding: 2cm;
+    }
+
+}
+
+@media print {
+
+    a {
+        text-decoration: none;
+    }
+}
+
+@page {
+    margin: 20mm;
+    /*size: landscape;*/
+}
+
+@page:first {
+    /*size: portrait;*/
+}
+
+/*Text styles*/
+
+h1 {
+    font-size: 16pt;
+    text-transform: uppercase;
+    margin: 0 0 2cm 0;
+    page-break-before: always;
+    page-break-inside: avoid;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: center;
+    /* text-transform: uppercase; */
+    margin: 3cm 0 2cm 0;
+    page-break-inside: avoid;
+}
+
+.sheet *:first-child,
+.landscape *:first-child  {
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 12pt;
+    /* text-transform: uppercase; */
+    margin: 2cm 0 1cm 0;
+    page-break-inside: avoid;
+}
+
+p {
+    font-size: 9pt;
+}
+
+/* p:first-letter {
+    text-transform: uppercase;
+} */
+
+p.notice {
+    font-size: 6pt;
+    /* font-weight: 250; */
+    padding-left: 8em;
+    text-indent: -8em;
+}
+
+p.notice .label {
+    float: left;
+    font-weight: 600;
+    min-width: 8em;
+}
+
+p.footer {
+    margin-top: 1cm;
+    font-size: 6pt;
+    font-weight: 300;
+}
+
+p.value {
+    margin: 0;
+}
+
+span.latin {
+    /* font-family: 'Minion Pro'; */
+    font-style: italic;    
+}
+
+span.latin-inside {
+    /* font-family: 'Minion Pro'; */
+    font-style: normal;
+}
+
+.picture {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+.picture-label {
+    margin-top: 1cm;
+    text-align:center;
+}

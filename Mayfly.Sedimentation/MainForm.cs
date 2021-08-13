@@ -21,7 +21,7 @@ namespace Mayfly.Sedimentation
         {
             set
             {
-                this.ResetText(value == null ? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
+                this.ResetText(value == null ? IO.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
                 fileName = value;
             }
 
@@ -1354,7 +1354,7 @@ namespace Mayfly.Sedimentation
 
         private void новыйToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Mayfly.FileSystem.RunFile(Application.ExecutablePath, "-run");
+            Mayfly.IO.RunFile(Application.ExecutablePath, "-run");
         }
 
         private void menuItemOpen_Click(object sender, EventArgs e)

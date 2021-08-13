@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
+using Mayfly.Extensions;
 
 namespace Mayfly.Benthos
 {
@@ -64,6 +65,7 @@ namespace Mayfly.Benthos
                 if (samplersIndex == null)
                 {
                     samplersIndex = new Samplers();
+                    samplersIndex.SetAttributable();
                     samplersIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\samplerbenthos.ini"));
                 }
                 return samplersIndex;

@@ -19,8 +19,7 @@ namespace Mayfly.Wild
                 }
             }
 
-            if (result.Count > 0) return new Sample(result.ToArray());
-            else return null;
+            return new Sample(result.ToArray()) { Name = Resources.Reports.Caption.Length };
         }
 
         public double LengthAverage(Data.SpeciesRow speciesRow)
@@ -191,18 +190,18 @@ namespace Mayfly.Wild
 
         public Sample Masses(Data.SpeciesRow speciesRow)
         {
-
-            if (speciesRow == null) return new Sample();
-
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                if (individualRow.IsMassNull()) continue;
-                result.Add(individualRow.Mass);
+                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                {
+                    if (individualRow.IsMassNull()) continue;
+                    result.Add(individualRow.Mass);
+                }
             }
 
-            return new Sample(result.ToArray());
+            return new Sample(result.ToArray()) { Name = Resources.Reports.Caption.MassUnit };
         }
 
 

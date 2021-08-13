@@ -323,7 +323,7 @@ namespace Mayfly.Benthos.Explorer
                 foreach (Data.CardRow cardRow in data.Card)
                 {
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = FileSystem.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
+                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
             }
@@ -494,7 +494,7 @@ namespace Mayfly.Benthos.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetArtefactCard.SelectedRows)
             {
                 Data.CardRow cardRow = (Data.CardRow)gridRow.Cells[columnArtCardName.Index].Value;
-                FileSystem.RunFile(cardRow.Path);
+                IO.RunFile(cardRow.Path);
             }
         }
 
@@ -751,11 +751,11 @@ namespace Mayfly.Benthos.Explorer
 
                 if (DietExplorer && !cardRow.IsLabelNull())
                 {
-                    FileSystem.RunFile(cardRow.Path, new string[] { "diet", cardRow.Label });
+                    IO.RunFile(cardRow.Path, new string[] { "diet", cardRow.Label });
                 }
                 else
                 {
-                    FileSystem.RunFile(cardRow.Path);
+                    IO.RunFile(cardRow.Path);
                 }
             }
         }
@@ -1017,7 +1017,7 @@ namespace Mayfly.Benthos.Explorer
             {
                 Data.IndividualRow individualRow = IndividualRow(gridRow);
 
-                Mayfly.FileSystem.RunFile(individualRow.LogRow.CardRow.Path,
+                Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
                     individualRow.LogRow.SpeciesRow.Species);
 
                 // TODO: select row in a log
@@ -1063,7 +1063,7 @@ namespace Mayfly.Benthos.Explorer
             {
                 SpeciesKey speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
-                Mayfly.FileSystem.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
+                Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
             }
         }
 
@@ -1120,7 +1120,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (baseSpc == null)
             {
-                composition = FullStack.GetCenosisComposition(SpeciesIndex);
+                composition = FullStack.GetCenosisComposition();
             }
             else
             {
@@ -1208,7 +1208,7 @@ namespace Mayfly.Benthos.Explorer
                 foreach (Data.SpeciesRow speciesRow in data.Species)
                 {
                     Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
-                    newSpeciesRow.Name = speciesRow.Species;
+                    newSpeciesRow.Species = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }
 
@@ -1244,7 +1244,7 @@ namespace Mayfly.Benthos.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
                 Data.LogRow logRow = GetLogRow(gridRow);
-                FileSystem.RunFile(logRow.CardRow.Path, logRow.SpeciesRow.Species);
+                IO.RunFile(logRow.CardRow.Path, logRow.SpeciesRow.Species);
             }
         }
 
@@ -1268,7 +1268,7 @@ namespace Mayfly.Benthos.Explorer
                 Composition composition;
 
                 if (baseLog == null) {
-                    composition = stack.GetCenosisComposition(SpeciesIndex);
+                    composition = stack.GetCenosisComposition();
                 } else {
                     composition = stack.GetTaxonomicComposition(baseLog);
                 }
@@ -1285,9 +1285,9 @@ namespace Mayfly.Benthos.Explorer
             Composition composition;
 
             if (baseLog == null) {
-                composition = FullStack.GetCenosisCompositionFrame();
+                composition = FullStack.GetBasicCenosisComposition();
             } else {
-                composition = FullStack.GetTaxonomicCompositionFrame(baseLog);
+                composition = FullStack.GetTaxonomicComposition(baseLog);
             }
 
             CompositionComparison comcom = new CompositionComparison(
@@ -1455,16 +1455,16 @@ namespace Mayfly.Benthos.Explorer
                 if (!filenames.Contains("\"" + cardRow.Path + "\"")) filenames.Add("\"" + cardRow.Path + "\"");
             }
 
-            FileSystem.RunFile(Application.ExecutablePath, filenames.ToArray());
+            IO.RunFile(Application.ExecutablePath, filenames.ToArray());
             //MainForm newMain = new MainForm(filenames.ToArray());
             //newMain.Show();
         }
 
         private void menuItemExportBio_Click(object sender, EventArgs e)
         {
-            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = FileSystem.SuggestName(
+            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
                 Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
-                FileSystem.GetFriendlyCommonName(data.GetFilenames())
+                IO.GetFriendlyCommonName(data.GetFilenames())
                 );
 
             if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)

@@ -40,29 +40,41 @@ namespace Mayfly.Wild
 
             return result.ToArray();
         }
+
+        public SpeciesComposition GetEmptyCopy()
+        {
+            SpeciesComposition result = new SpeciesComposition(string.Empty, Count);
+
+            foreach (SpeciesSwarm category in this)
+            {
+                result.AddCategory(category.GetEmptyCopy());
+            }
+
+            return result;
+        }
     }
 
     public class SpeciesSwarm : Category
     {
-        public SpeciesKey.SpeciesRow DataRow { get; set; }
+        public Data.SpeciesRow SpeciesRow { get; set; }
 
 
 
-        public SpeciesSwarm(string species)
+        public SpeciesSwarm(Data.SpeciesRow dataRow)
         {
-            Name = species;
+            SpeciesRow = dataRow;
         }
 
         public override Category GetEmptyCopy()
         {
-            SpeciesSwarm result = new SpeciesSwarm(this.Name);
-            if (this.DataRow != null) result.DataRow = this.DataRow;
+            SpeciesSwarm result = new SpeciesSwarm(SpeciesRow);
+            result.Name = Name;
             return result;
         }
 
         public override string ToString()
         {
-            return (DataRow == null ? base.ToString() : DataRow.ShortName);
+            return Name == SpeciesRow.Species ? (SpeciesRow.KeyRecord.ShortName) : Name;
         }
     }
 }

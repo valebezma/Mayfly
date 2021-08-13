@@ -12,7 +12,7 @@ using Mayfly.Controls;
 using Meta.Numerics;
 using Mayfly.Wild;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class StratifiedControl : Form
     {
@@ -37,7 +37,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
             foreach (Data.SpeciesRow speciesRow in Data.Species)
             {
-                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.FullName);
+                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.ShortName);
             }
 
             UpdateSample(SelectedSpecies);

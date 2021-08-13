@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class Catch : Form
     {
@@ -187,10 +187,10 @@ namespace Mayfly.Fish.Explorer.Observations
             else
             {
                 // There is such species in reference you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -637,9 +637,9 @@ namespace Mayfly.Fish.Explorer.Observations
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

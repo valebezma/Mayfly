@@ -123,9 +123,9 @@ namespace Mayfly.Geographics
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (Waypoint WPT in Service.GetWaypoints(FileSystem.InterfaceLocation.OpenDialog.FileNames))
+                foreach (Waypoint WPT in Service.GetWaypoints(IO.InterfaceLocation.OpenDialog.FileNames))
                 {
                     PlaceWaypoint(WPT);
                 }

@@ -130,7 +130,7 @@ namespace Mayfly.Controls
             }
 
 
-            // If symbol is decinal separator
+            // If symbol is decimal separator
             if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol) ||
                 CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator.Contains(symbol))
             {

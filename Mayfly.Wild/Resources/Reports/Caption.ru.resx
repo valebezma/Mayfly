@@ -139,12 +139,18 @@
     <value>Длина, мм</value>
   </data>
   <data name="Mass" xml:space="preserve">
+    <value>Масса</value>
+  </data>
+  <data name="MassUnit" xml:space="preserve">
     <value>Масса, г</value>
   </data>
   <data name="Occurrence" xml:space="preserve">
     <value>Встречаемость, %</value>
   </data>
   <data name="Quantity" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="QuantityUnit" xml:space="preserve">
     <value>Количество, экз.</value>
   </data>
   <data name="Species" xml:space="preserve">

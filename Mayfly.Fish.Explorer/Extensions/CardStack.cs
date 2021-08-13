@@ -32,7 +32,7 @@ namespace Mayfly.Fish.Explorer
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;
-                _item.Text = speciesRow.KeyRecord.FullName;
+                _item.Text = speciesRow.KeyRecord.ShortName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }
@@ -591,28 +591,28 @@ namespace Mayfly.Fish.Explorer
 
             if (this.Registered > 0)
             {
-                rec.Add(string.Format(Resources.Reports.TreatmentSuggestion.Untreated,
+                rec.Add(string.Format(Resources.Reports.Sections.TreatmentSuggestion.Untreated,
                     this.Registered));
 
                 if (this.Primaries.Length > 0)
                 {
-                    rec.Add(string.Format(Resources.Reports.TreatmentSuggestion.Pri,
+                    rec.Add(string.Format(Resources.Reports.Sections.TreatmentSuggestion.Pri,
                         TreatmentSuggestion.GetTags(this.Primaries).Merge(", ")));
                 }
 
                 if (this.Secondaries.Length > 0)
                 {
-                    rec.Add(Resources.Reports.TreatmentSuggestion.Sec_start);
+                    rec.Add(Resources.Reports.Sections.TreatmentSuggestion.Sec_start);
 
                     for (int i = 0; i < this.Secondaries.Length; i++)
                     {
-                        rec.Add(string.Format(Resources.Reports.TreatmentSuggestion.Sec, i + 2, TreatmentSuggestion.GetTags(this.Secondaries[i]).Merge(", ")));
+                        rec.Add(string.Format(Resources.Reports.Sections.TreatmentSuggestion.Sec, i + 2, TreatmentSuggestion.GetTags(this.Secondaries[i]).Merge(", ")));
                     }
                 }
 
                 if (this.Ignorables.Length > 0)
                 {
-                    rec.Add(string.Format(Resources.Reports.TreatmentSuggestion.Ign,
+                    rec.Add(string.Format(Resources.Reports.Sections.TreatmentSuggestion.Ign,
                         TreatmentSuggestion.GetTags(this.Ignorables).Merge(", ")));
                 }
 

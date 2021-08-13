@@ -7,6 +7,7 @@ using Mayfly.Extensions;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Data;
 
 namespace Mayfly.Wild
 {
@@ -185,7 +186,7 @@ namespace Mayfly.Wild
                 if (weatherIndex == null)
                 {
                     weatherIndex = new WeatherEvents();
-
+                    weatherIndex.SetAttributable();
                     try { weatherIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\weatherevts.ini")); }
                     catch { Log.Write(EventType.Maintenance, "Can't read weather file."); }
                 }

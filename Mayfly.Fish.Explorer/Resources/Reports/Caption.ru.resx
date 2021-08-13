@@ -138,7 +138,7 @@
   <data name="Ops" xml:space="preserve">
     <value>Операций</value>
   </data>
-  <data name="SexualRatio" xml:space="preserve">
-    <value>Отношение полов</value>
+  <data name="SexRatio" xml:space="preserve">
+    <value>Половой состав</value>
   </data>
 </root>

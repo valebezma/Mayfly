@@ -7,43 +7,21 @@ namespace Mayfly.Fish.Explorer
 {
     partial class MainForm
     {
-        private Data.SpeciesRow selectedSpc;
+        Data.SpeciesRow selectedStatSpc;
 
-        private Data.SpeciesRow SelectedStatSpc
-        {
-            set
-            {
-                selectedSpc = value;
-            }
+        FishSamplerType selectedTechSamplerType;
 
-            get
-            {
-                return selectedSpc;
-            }
-        }
+        Scatterplot combinedModel;
 
+        Scatterplot internalModel;
 
-
-        private FishSamplerType SelectedCpueSamplerType { get; set; }
-
-        private UnitEffort SelectedCpueUE { get; set; }
-
-        private CardStack CpueData;
-
-        private FishSamplerType SelectedTechSamplerType { get; set; }
-
-        private CardStack TechData;
-
-        
-        private double Npue;
-
-        private double Bpue;
+        Scatterplot externalModel;
 
 
 
         private void GetFilteredList(DataGridViewColumn gridColumn)
         {
-            if (SelectedStatSpc == null)
+            if (selectedStatSpc == null)
             {
                 spreadSheetInd.EnsureFilter(gridColumn, null, loaderInd,
                     menuItemIndAll_Click);
@@ -51,7 +29,7 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 spreadSheetInd.EnsureFilter(new DataGridViewColumn[] { columnIndSpecies, gridColumn },
-                    new string[] { SelectedStatSpc.Species, null }, loaderInd,
+                    new string[] { selectedStatSpc.Species, null }, loaderInd,
                     menuItemIndAll_Click);
             }
         }
@@ -93,32 +71,6 @@ namespace Mayfly.Fish.Explorer
             return dataPoint;
         }
 
-        private DataGridViewRow GetCpueRow(CardStack stack)
-        {
-            double effort = stack.GetEffort(SelectedCpueSamplerType, SelectedCpueUE.Variant);
-
-            DataGridViewRow result = new DataGridViewRow();
-            result.CreateCells(spreadSheetCpue);
-            result.Cells[columnCpueMesh.Index].Value = stack.Name;
-            result.Cells[columnCpueEffort.Index].Value = effort;
-            double quantity = (SelectedStatSpc == null) ? stack.Quantity() : stack.Quantity(SelectedStatSpc);
-
-            if (quantity > 0)
-            {
-                double mass = (SelectedStatSpc == null) ? stack.Mass() : stack.Mass(SelectedStatSpc);
-
-                Npue += quantity / effort;
-                Bpue += mass / effort;
-
-                result.Cells[columnCpueN.Index].Value = quantity;
-                result.Cells[columnCpueW.Index].Value = mass;
-                result.Cells[columnCpueNpue.Index].Value = quantity / effort;
-                result.Cells[columnCpueBpue.Index].Value = mass / effort;
-            }
-
-            return result;
-        }
-
         private DataGridViewRow GetTechRow(CardStack stack)
         {
             string format = "{0} ({1})";
@@ -127,7 +79,7 @@ namespace Mayfly.Fish.Explorer
             result.CreateCells(spreadSheetTech);
             result.Cells[ColumnSpcTechClass.Index].Value = stack.Name;
             result.Cells[ColumnSpcTechOps.Index].Value = stack.Count;
-            double quantity = (SelectedStatSpc == null) ? stack.Quantity() : stack.Quantity(SelectedStatSpc);
+            double quantity = (selectedStatSpc == null) ? stack.Quantity() : stack.Quantity(selectedStatSpc);
 
             if (quantity > 0)
             {
@@ -148,7 +100,7 @@ namespace Mayfly.Fish.Explorer
                     int stratified = 0;
                     int individuals = 0;
 
-                    if (SelectedStatSpc == null)
+                    if (selectedStatSpc == null)
                     {
                         bool all_totalled = true;
 
@@ -165,7 +117,7 @@ namespace Mayfly.Fish.Explorer
                     }
                     else
                     {
-                        Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, SelectedStatSpc.ID);
+                        Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, selectedStatSpc.ID);
 
                         if (logRow == null) continue;
 
@@ -195,20 +147,5 @@ namespace Mayfly.Fish.Explorer
 
             return result;
         }
-
-        
-
-        
-        public Scatterplot GrowthModel { get; private set; }
-
-        Scatterplot growthInternal;
-
-        Scatterplot growthExternal;
-
-        public Scatterplot MassModel { get; private set; }
-
-        Scatterplot massInternal;
-
-        Scatterplot massExternal;
     }
 }

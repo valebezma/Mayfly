@@ -138,7 +138,7 @@
   <data name="Ops" xml:space="preserve">
     <value>Operations</value>
   </data>
-  <data name="SexualRatio" xml:space="preserve">
+  <data name="SexRatio" xml:space="preserve">
     <value>Sex ratio</value>
   </data>
 </root>

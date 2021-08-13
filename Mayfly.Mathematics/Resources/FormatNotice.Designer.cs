@@ -61,6 +61,15 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to all values.
+        /// </summary>
+        public static string a {
+            get {
+                return ResourceManager.GetString("a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to extrema.
         /// </summary>
         public static string e {
@@ -79,6 +88,42 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to mean.
+        /// </summary>
+        public static string m {
+            get {
+                return ResourceManager.GetString("m", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to maximal value.
+        /// </summary>
+        public static string max {
+            get {
+                return ResourceManager.GetString("max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minimal value.
+        /// </summary>
+        public static string min {
+            get {
+                return ResourceManager.GetString("min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sample size.
+        /// </summary>
+        public static string n {
+            get {
+                return ResourceManager.GetString("n", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to mean and extrema.
         /// </summary>
         public static string q {
@@ -93,6 +138,51 @@ namespace Mayfly.Mathematics.Resources {
         public static string s {
             get {
                 return ResourceManager.GetString("s", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to standard deviation.
+        /// </summary>
+        public static string sd {
+            get {
+                return ResourceManager.GetString("sd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to corrected standard deviation.
+        /// </summary>
+        public static string sdc {
+            get {
+                return ResourceManager.GetString("sdc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to standard error.
+        /// </summary>
+        public static string se {
+            get {
+                return ResourceManager.GetString("se", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to relative standard error.
+        /// </summary>
+        public static string se_ {
+            get {
+                return ResourceManager.GetString("se%", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to total.
+        /// </summary>
+        public static string t {
+            get {
+                return ResourceManager.GetString("t", resourceCulture);
             }
         }
     }

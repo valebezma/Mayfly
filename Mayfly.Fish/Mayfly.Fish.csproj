@@ -57,8 +57,9 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Meta.Numerics, Version=4.0.7.0, Culture=neutral, PublicKeyToken=67d25c65a6631347, processorArchitecture=MSIL">
-      <HintPath>..\packages\Meta.Numerics.4.0.7\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
+    <Reference Include="Meta.Numerics, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Mayfly\CurrentBuild\bin\Meta.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -277,6 +278,9 @@
     </None>
     <None Include="Equipment.xss">
       <DependentUpon>Equipment.xsd</DependentUpon>
+    </None>
+    <None Include="interface\samplerfish.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Resources\sriif.png" />

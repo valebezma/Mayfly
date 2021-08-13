@@ -51,10 +51,10 @@ namespace Mayfly.Mathematics.Statistics
 
             if (format == string.Empty)
             {
-                format = "X";
+                format = "x";
             }
 
-            format = format.ToUpper().Trim();
+            format = format.ToLower().Trim();
 
             if (Sample.Count == 0)
             {
@@ -72,27 +72,27 @@ namespace Mayfly.Mathematics.Statistics
 
                 if (j > -1) numformat = format.Substring(j);
 
-                numformat = "N" + numformat;
+                numformat = "n" + numformat;
 
 
                 switch (format.Substring(0, j < 0 ? format.Length : j))
                 {
-                    case "MIN": // Minimum
+                    case "min": // Minimum
                         return Sample.Minimum.ToString(provider);
 
-                    case "MAX": // Maximum
+                    case "max": // Maximum
                         return Sample.Maximum.ToString(provider);
 
-                    case "SD": // Standard deviation
+                    case "sd": // Standard deviation
                         return Sample.Count > 2 ? Service.PresentError(Sample.StandardDeviation, numformat) : double.NaN.ToString();
 
-                    case "SDC": // Standard deviation (corrected)
+                    case "sdc": // Standard deviation (corrected)
                         return Sample.Count > 2 ? Service.PresentError(Sample.CorrectedStandardDeviation, numformat) : double.NaN.ToString();
 
-                    case "SE": // Standard error
+                    case "se": // Standard error
                         return Sample.Count > 2 ? Service.PresentError(Sample.PopulationMean.Uncertainty, numformat) : double.NaN.ToString();
 
-                    case "SE%": // Relative standard error
+                    case "se%": // Relative standard error
                         return Sample.Count > 2 ? Sample.PopulationMean.RelativeUncertainty.ToString("P1") : double.NaN.ToString();
 
                     //case "ME": // Margins of error
@@ -115,19 +115,19 @@ namespace Mayfly.Mathematics.Statistics
 
                         switch (format[0])
                         {
-                            case 'N': // Sample size
+                            case 'n': // Sample size
                                 return Sample.Count.ToString(provider);
 
-                            case 'A': // All values
+                            case 'a': // All values
                                 return Sample.Merge(numformat, provider);
 
                             default:
                                 switch (format[0])
                                 {
-                                    case 'T': // Total
+                                    case 't': // Total
                                         return Sample.Sum().ToString(numformat, provider);
 
-                                    case 'M': // Mean
+                                    case 'm': // Mean
                                         return Sample.Mean.ToString(numformat, provider);
 
                                     default:
@@ -139,15 +139,15 @@ namespace Mayfly.Mathematics.Statistics
                                         {
                                             switch (format[0])
                                             {
-                                                case 'E': // Extremal values
+                                                case 'e': // Extremal values
                                                     return Sample.Minimum.ToString(numformat, provider) +
                                                         " — " + Sample.Maximum.ToString(numformat, provider);
 
-                                                case 'Q': // Mean + extremal values
+                                                case 'q': // Mean + extremal values
                                                     return Sample.Mean.ToString(numformat, provider) + Environment.NewLine +
                                                         this.ToString(numformat.Replace('N', 'E'));
 
-                                                case 'S': // Mean and standard error
+                                                case 's': // Mean and standard error
                                                     return Sample.Mean.ToString(numformat, provider) + (
                                                         Sample.Count == 2 ? string.Empty : " ± " +
                                                         Service.PresentError(
@@ -161,7 +161,7 @@ namespace Mayfly.Mathematics.Statistics
                                                 //            Sample.MarginOfError(UserSettings.DefaultConfidenceLevel), provider)
                                                 //        );
 
-                                                case 'G': // Mean and standard error + extremal values
+                                                case 'g': // Mean and standard error + extremal values
                                                     return
                                                         Sample.Mean.ToString(numformat, provider) + (
                                                         Sample.Count == 2 ? string.Empty : " ± " +

@@ -11,6 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Mathematics.Statistics;
 using Mayfly.Extensions;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using RDotNet;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -1064,7 +1065,7 @@ namespace Mayfly.Mathematics.Charts
             functor.Container = this;
             //LastSelectedFunctor = functor;
             Series.Add(functor.Series);
-            functor.BuildSeries();
+            //functor.BuildSeries();
 
             if (CollectionChanged != null)
             {
@@ -1099,7 +1100,7 @@ namespace Mayfly.Mathematics.Charts
             Series.Add(histogram.DataSeries);
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
 
             //ShowLegend = Histograms.Count > 1;
 
@@ -1172,17 +1173,18 @@ namespace Mayfly.Mathematics.Charts
 
                 if (sample.Trend != null)
                 {
-                    sample.Trend.BuildSeries();
-                }
+                    sample.Trend.TransposeCharting = sample.TransposeCharting;
+                    sample.Trend.BuildSeries(sample.Series.YAxisType);
 
-                if (sample.Properties.ShowConfidenceBands)
-                {
-                    sample.BuildTrendBands();
-                }
+                    if (sample.Properties.ShowConfidenceBands)
+                    {
+                        sample.BuildTrendBands();
+                    }
 
-                if (sample.Properties.ShowPredictionBands)
-                {
-                    sample.BuildDataBands();
+                    if (sample.Properties.ShowPredictionBands)
+                    {
+                        sample.BuildDataBands();
+                    }
                 }
             }
 
@@ -1224,13 +1226,13 @@ namespace Mayfly.Mathematics.Charts
             e.Sample.BuildChart(this);
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
             if (AxisYAutoInterval)
             {
                 AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
             }
 
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
         }
 
         public void RefreshAxes()
@@ -1401,7 +1403,7 @@ namespace Mayfly.Mathematics.Charts
             }
 
             if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); }
+            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
             if (AxisYAutoInterval)
             {
                 double yint = AxisYMax - AxisYMin;
@@ -1411,7 +1413,7 @@ namespace Mayfly.Mathematics.Charts
             }
 
             //if (AxisY2AutoMinimum) { UpdateY2Min(); }
-            //if (AxisY2AutoMaximum) { UpdateY2Max(); }
+            if (AxisY2AutoMaximum) { UpdateY2Max(); }
             if (AxisY2AutoInterval)
             {
                 double y2int = AxisY2Max - AxisY2Min;
@@ -1638,7 +1640,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            AxisY2Max = maximum;
+            AxisY2Max = maximum == 0 ? 1 : maximum;
 
             if (AxisY2AutoInterval && AxisY2Max - AxisY2Min > 0)
             {
@@ -1646,7 +1648,7 @@ namespace Mayfly.Mathematics.Charts
                 if (g > 0) AxisY2Interval = g;
             }
 
-            double rest = Math.IEEERemainder(AxisY2Max, AxisY2Interval);
+            double rest = AxisY2Max % AxisY2Interval;
 
             if (rest > 0)
             {
@@ -1752,14 +1754,17 @@ namespace Mayfly.Mathematics.Charts
         {
             object sample = GetSample(name);
 
-            if (sample is Scatterplot)
+            if (sample != null)
             {
-                ((Scatterplot)sample).Dispose();
-            }
+                if (sample is Scatterplot)
+                {
+                    ((Scatterplot)sample).Dispose();
+                }
 
-            if (sample is Histogramma)
-            {
-                ((Histogramma)sample).Dispose();
+                if (sample is Histogramma)
+                {
+                    ((Histogramma)sample).Dispose();
+                }
             }
 
             if (removeChartArea)
@@ -2181,31 +2186,6 @@ namespace Mayfly.Mathematics.Charts
             SeriesShowSelected();
         }
 
-        public void SetPrinterFriendly()
-        {
-            // Loop through all series
-            int hatchingIndex = 1;
-            Array hatchingValues = Enum.GetValues(typeof(ChartHatchStyle));
-            foreach (Series series in Series)
-            {
-                // Loop through all data points
-                foreach (DataPoint point in series.Points)
-                {
-                    // Set point colors and hatching
-                    point.BorderColor = Color.Black;
-                    point.Color = Color.White;
-                    point.BackSecondaryColor = Color.Black;
-                    point.BackHatchStyle = (ChartHatchStyle)hatchingValues.GetValue(hatchingIndex);
-                }
-
-                hatchingIndex++;
-                if (hatchingIndex >= hatchingValues.Length)
-                {
-                    hatchingIndex = 1;
-                }
-            }
-        }
-
         public void ShowOnChart(bool modal, string title, double min, double interval)
         {
             Form result = new Form();
@@ -2228,23 +2208,87 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public void SetSize(float height, float width)
+        public BivariateSample GetDataPointValues(Series series)
         {
-            float dx, dy;
-
-            Graphics g = this.CreateGraphics();
-            try
+            BivariateSample result = new BivariateSample();
+            
+            foreach (DataPoint dp in series.Points)
             {
-                dx = g.DpiX;
-                dy = g.DpiY;
-            }
-            finally
-            {
-                g.Dispose();
+                result.Add(dp.XValue, dp.YValues[0]);
             }
 
-            this.FindForm().Width = (int)(width * dx * 0.0393701);
-            this.FindForm().Height = (int)(height * dy * 0.0393701);
+            return result;
+        }
+
+        public string GetVector(double width, double height)
+        {
+            string svg = IO.GetTempFileName(".svg");
+
+            REngine.SetEnvironmentVariables();
+            REngine engine = REngine.GetInstance();
+
+            engine.Evaluate(string.Format("options(OutDec= '{0}')", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator));
+            engine.Evaluate(string.Format("svg('{0}', width = {1} / 2.54, height = {2} / 2.54, pointsize = {3})", 
+                svg.Replace('\\', '/'), width, height, 8));
+            engine.Evaluate("par(mfrow = c(1, 1))");
+            engine.Evaluate("par(mar = c(3, 3, 0, 3) + 1.1, cex = 1)");
+            engine.Evaluate(string.Format("plot(NULL, bty = 'n', xlab = '{0}', ylab = '{1}', xlim=c({2}, {3}), ylim=c({4}, {5}))",
+                AxisXTitle, AxisYTitle, AxisXMin, AxisXMax, AxisYMin, AxisYMax)
+                );
+
+            ApplyPaletteColors();
+
+            foreach (Series series in this.Series)
+            {
+                BivariateSample data = GetDataPointValues(series);
+                var xvalues = engine.CreateNumericVector(data.X);
+                var yvalues = engine.CreateNumericVector(data.Y);
+                engine.SetSymbol("xvalues", xvalues);
+                engine.SetSymbol("yvalues", yvalues);
+                Color col = series.Color;
+                if (col.Name == "0") col = series.MarkerBorderColor;
+                if (col.Name == "0") col = Color.Black;
+
+                switch (series.ChartType)
+                {
+                    case SeriesChartType.Column:
+                        engine.Evaluate(string.Format("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = rgb({0}, {1}, {2}, {3}))",
+                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        break;
+
+                    case SeriesChartType.Line:
+                    case SeriesChartType.Area:
+                        engine.Evaluate(string.Format("lines(yvalues ~ xvalues, col = rgb({0}, {1}, {2}, {3}))",
+                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        break;
+
+                    case SeriesChartType.Point:
+                        engine.Evaluate(string.Format("points(yvalues ~ xvalues, pch = 1, col = rgb({0}, {1}, {2}, {3}))",
+                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        break;
+                }
+            }
+
+            engine.Evaluate("dev.off()");
+            return svg;
+        }
+
+        public Report GetPrintable(double width, double height)
+        {
+            Report report = new Report(string.Empty);
+            report.AddImage(GetVector(width, height), Text);
+            report.EndBranded();
+            return report;
+        }
+
+        public void Print(double width, double height)
+        {
+            GetPrintable(width, height).Run();
+        }
+
+        public void Print()
+        {
+            Print(15, 20);
         }
 
 
@@ -2296,6 +2340,7 @@ namespace Mayfly.Mathematics.Charts
                 functor.Properties.BringToFront();
             }
         }
+
 
 
 
@@ -2618,52 +2663,20 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        private void contextChartImage_Click(object sender, EventArgs e)
-        {
-            if (FileSystem.InterfacePictures.SaveDialog.ShowDialog() == DialogResult.OK)
-            {
-                ChartImageFormat format = ChartImageFormat.Png;
-
-                switch (Path.GetExtension(FileSystem.InterfacePictures.SaveDialog.FileName))
-                {
-                    case ".png":
-                        format = ChartImageFormat.Png;
-                        break;
-                    case ".jpg":
-                        format = ChartImageFormat.Jpeg;
-                        break;
-                }
-
-                SaveImage(new StreamWriter(FileSystem.InterfacePictures.SaveDialog.FileName).BaseStream, format);
-            }
-        }
 
         private void contextSizeA4_Click(object sender, EventArgs e)
         {
-            this.SetSize(255, 170);
+            Print(15, 20);
         }
 
         private void contextSizeA5_Click(object sender, EventArgs e)
         {
-            this.SetSize(127.5F, 170);
+            Print(15, 10);
         }
 
         private void contextSizeA6_Click(object sender, EventArgs e)
         {
-            this.SetSize(127.5F, 85);
-        }
-
-        private void contextChartPrint_Click(object sender, EventArgs e)
-        {
-            Printing.Print(true);
-        }
-
-        private void contextChartCopy_Click(object sender, EventArgs e)
-        {
-            Stream stream = new MemoryStream();
-            SaveImage(stream, ChartImageFormat.Png);
-            Image image = Image.FromStream(stream);
-            Clipboard.SetImage(image);
+            Print(10, 10);
         }
 
         #endregion

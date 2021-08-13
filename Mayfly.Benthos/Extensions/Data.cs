@@ -142,14 +142,14 @@ namespace Mayfly.Benthos
             {
                 SpeciesKey.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
 
-                speciesRow.Name = dataSpcRow.Species;
+                speciesRow.Species = dataSpcRow.Species;
 
                 SpeciesKey.SpeciesRow equivalentRow = dataSpcRow.KeyRecord;
 
                 if (equivalentRow != null)
                 {
                     if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
-                    if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
+                    if (!equivalentRow.IsNameNull()) speciesRow.Name = equivalentRow.Name;
                 }
 
                 //var logRows = dataSpcRow.GetLogRows();

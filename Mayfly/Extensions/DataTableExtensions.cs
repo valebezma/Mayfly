@@ -191,5 +191,17 @@ namespace Mayfly.Extensions
 
             return values;
         }
+
+        public static void SetAttributable(this DataSet dataset, params string[] exceptColumn)
+        {
+            foreach (DataTable dt in dataset.Tables)
+            {
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    if (exceptColumn.Contains(dc.ColumnName)) continue;
+                    dc.ColumnMapping = MappingType.Attribute;
+                }
+            }
+        }
     }
 }

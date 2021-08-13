@@ -28,7 +28,7 @@ namespace Mayfly.Benthos
         {
             set
             {
-                this.ResetText(value ?? FileSystem.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
                 fileName = value;
             }
@@ -153,7 +153,7 @@ namespace Mayfly.Benthos
                 }
                 else
                 {
-                    textBoxSquare.Text = value.ToString();//Mayfly.Service.Mask(4));
+                    textBoxSquare.Text = value.ToString();//Textual.Mask(4));
 
                     if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
                     {
@@ -889,10 +889,10 @@ namespace Mayfly.Benthos
             else
             {
                 // There is such species in reference you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -1568,13 +1568,13 @@ namespace Mayfly.Benthos
         {
             SaveData();
 
-            UserSettings.Interface.SaveAsDialog.FileName =
-                FileSystem.SuggestName(FileSystem.FolderName(UserSettings.Interface.SaveDialog.FileName),
+            UserSettings.Interface.ExportDialog.FileName =
+                IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
                 Data.GetSuggestedName());
 
-            if (UserSettings.Interface.SaveAsDialog.ShowDialog() == DialogResult.OK)
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                Write(UserSettings.Interface.SaveAsDialog.FileName);
+                Write(UserSettings.Interface.ExportDialog.FileName);
             }
         }
 
@@ -1631,9 +1631,9 @@ namespace Mayfly.Benthos
 
         private void menuItemLocation_Click(object sender, EventArgs e)
         {
-            if (FileSystem.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                waypointControl1.SelectGPS(FileSystem.InterfaceLocation.OpenDialog.FileNames);
+                waypointControl1.SelectGPS(IO.InterfaceLocation.OpenDialog.FileNames);
             }
         }
 
@@ -1643,12 +1643,12 @@ namespace Mayfly.Benthos
 
         private void menuItemWaters_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(Wild.UserSettings.WatersIndexPath);
+            IO.RunFile(Wild.UserSettings.WatersIndexPath);
         }
 
         private void menuItemSpecies_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(UserSettings.SpeciesIndexPath, "-edit");
+            IO.RunFile(UserSettings.SpeciesIndexPath, "-edit");
         }
 
         private void menuItemSettings_Click(object sender, EventArgs e)
@@ -2182,9 +2182,9 @@ namespace Mayfly.Benthos
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

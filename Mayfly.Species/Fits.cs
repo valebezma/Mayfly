@@ -43,7 +43,7 @@ namespace Mayfly.Species
                 {
                     Tag = stateRow,
                     Name = stateRow.ID.ToString(),
-                    Text = stateRow.SpeciesRow.Name
+                    Text = stateRow.SpeciesRow.Species
                 };
 
                 if (stateRow.SpeciesRow.GetStateRows().Length > 1)

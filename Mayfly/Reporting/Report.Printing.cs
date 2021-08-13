@@ -46,20 +46,20 @@ namespace Mayfly
 
         void Save()
         {
-            FileSystem.InterfaceReport.SaveDialog.FileName = Title;
+            IO.InterfaceReport.SaveDialog.FileName = Title;
 
-            if (FileSystem.InterfaceReport.SaveDialog.ShowDialog() == DialogResult.OK)
+            if (IO.InterfaceReport.SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                this.WriteToFile(FileSystem.InterfaceReport.SaveDialog.FileName);
-                FileSystem.RunFile(FileSystem.InterfaceReport.SaveDialog.FileName);
+                this.WriteToFile(IO.InterfaceReport.SaveDialog.FileName);
+                IO.RunFile(IO.InterfaceReport.SaveDialog.FileName);
             }
         }
 
         public void Preview()
         {
-            string filename = FileSystem.GetTempFileName(".html");
+            string filename = IO.GetTempFileName(".html");
             this.WriteToFile(filename, false);
-            FileSystem.RunFile(filename);
+            IO.RunFile(filename);
 
             //Reporting.PreviewForm preview = new Reporting.PreviewForm(this, false);
             //preview.ShowDialog();
@@ -67,9 +67,9 @@ namespace Mayfly
 
         public void Print()
         {
-            string filename = FileSystem.GetTempFileName(".html");
+            string filename = IO.GetTempFileName(".html");
             this.WriteToFile(filename, true);
-            FileSystem.RunFile(filename);
+            IO.RunFile(filename);
 
             //Reporting.PreviewForm preview = new Reporting.PreviewForm(this, true);
             //preview.ShowDialog();

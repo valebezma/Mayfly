@@ -7,7 +7,7 @@ using Mayfly.Geographics;
 using Mayfly.Wild;
 using System.Globalization;
 
-namespace Mayfly.Fish.Explorer.Observations
+namespace Mayfly.Fish.Explorer
 {
     public partial class Surveys
     {
@@ -148,7 +148,7 @@ namespace Mayfly.Fish.Explorer.Observations
                         case EquipmentEvent.Inspection:
                         case EquipmentEvent.Removing:
                             Data data = actionRow.GetCatchData();
-                            string filename = FileSystem.SuggestName(path, data.GetSuggestedName());
+                            string filename = IO.SuggestName(path, data.GetSuggestedName());
                             data.WriteToFile(Path.Combine(path, filename));
                             result.Add(Path.Combine(path, filename));
                             break;
@@ -197,7 +197,7 @@ namespace Mayfly.Fish.Explorer.Observations
 
             foreach (Data data in GetCards())
             {
-                string filename = FileSystem.SuggestName(path, data.GetSuggestedName());
+                string filename = IO.SuggestName(path, data.GetSuggestedName());
                 data.WriteToFile(Path.Combine(path, filename));
                 result.Add(Path.Combine(path, filename));
             }

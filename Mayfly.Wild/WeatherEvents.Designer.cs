@@ -20,7 +20,7 @@ namespace Mayfly.Wild {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("Weather")]
+    [global::System.Xml.Serialization.XmlRootAttribute("WeatherEvents")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class WeatherEvents : global::System.Data.DataSet {
         
@@ -32,13 +32,13 @@ namespace Mayfly.Wild {
         
         private ValueDataTable tableValue;
         
-        private global::System.Data.DataRelation relationFK_Events_Value1;
-        
         private global::System.Data.DataRelation relationFK_Discretion_Value;
         
         private global::System.Data.DataRelation relationFK_Degree_Value;
         
         private global::System.Data.DataRelation relationFK_Events_Value;
+        
+        private global::System.Data.DataRelation relationFK_Events_Value1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -274,16 +274,16 @@ namespace Mayfly.Wild {
                     this.tableValue.InitVars();
                 }
             }
-            this.relationFK_Events_Value1 = this.Relations["FK_Events_Value1"];
             this.relationFK_Discretion_Value = this.Relations["FK_Discretion_Value"];
             this.relationFK_Degree_Value = this.Relations["FK_Degree_Value"];
             this.relationFK_Events_Value = this.Relations["FK_Events_Value"];
+            this.relationFK_Events_Value1 = this.Relations["FK_Events_Value1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "Weather";
+            this.DataSetName = "WeatherEvents";
             this.Prefix = "";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -296,13 +296,6 @@ namespace Mayfly.Wild {
             this.tableValue = new ValueDataTable();
             base.Tables.Add(this.tableValue);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Events_Value1", new global::System.Data.DataColumn[] {
-                        this.tableEvent.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableValue.AdditionalEventColumn});
-            this.tableValue.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Discretion_Value", new global::System.Data.DataColumn[] {
                         this.tableDiscretion.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableValue.DiscretionColumn});
@@ -324,10 +317,13 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Events_Value1 = new global::System.Data.DataRelation("FK_Events_Value1", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Events_Value1", new global::System.Data.DataColumn[] {
                         this.tableEvent.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableValue.AdditionalEventColumn}, false);
-            this.Relations.Add(this.relationFK_Events_Value1);
+                        this.tableValue.AdditionalEventColumn});
+            this.tableValue.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Discretion_Value = new global::System.Data.DataRelation("FK_Discretion_Value", new global::System.Data.DataColumn[] {
                         this.tableDiscretion.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableValue.DiscretionColumn}, false);
@@ -340,6 +336,10 @@ namespace Mayfly.Wild {
                         this.tableEvent.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableValue.EventColumn}, false);
             this.Relations.Add(this.relationFK_Events_Value);
+            this.relationFK_Events_Value1 = new global::System.Data.DataRelation("FK_Events_Value1", new global::System.Data.DataColumn[] {
+                        this.tableEvent.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableValue.AdditionalEventColumn}, false);
+            this.Relations.Add(this.relationFK_Events_Value1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1657,23 +1657,23 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ValueRow[] GetValueRowsByFK_Events_Value1() {
-                if ((this.Table.ChildRelations["FK_Events_Value1"] == null)) {
-                    return new ValueRow[0];
-                }
-                else {
-                    return ((ValueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Events_Value1"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ValueRow[] GetValueRowsByFK_Events_Value() {
                 if ((this.Table.ChildRelations["FK_Events_Value"] == null)) {
                     return new ValueRow[0];
                 }
                 else {
                     return ((ValueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Events_Value"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ValueRow[] GetValueRowsByFK_Events_Value1() {
+                if ((this.Table.ChildRelations["FK_Events_Value1"] == null)) {
+                    return new ValueRow[0];
+                }
+                else {
+                    return ((ValueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Events_Value1"])));
                 }
             }
         }
@@ -1910,17 +1910,6 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EventRow EventsRowByFK_Events_Value1 {
-                get {
-                    return ((EventRow)(this.GetParentRow(this.Table.ParentRelations["FK_Events_Value1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Events_Value1"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DiscretionRow DiscretionRow {
                 get {
                     return ((DiscretionRow)(this.GetParentRow(this.Table.ParentRelations["FK_Discretion_Value"])));
@@ -1949,6 +1938,17 @@ namespace Mayfly.Wild {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Events_Value"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EventRow EventsRowByFK_Events_Value1 {
+                get {
+                    return ((EventRow)(this.GetParentRow(this.Table.ParentRelations["FK_Events_Value1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Events_Value1"]);
                 }
             }
             

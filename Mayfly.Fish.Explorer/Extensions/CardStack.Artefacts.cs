@@ -277,7 +277,7 @@ namespace Mayfly.Fish.Explorer
             //if (IndividualsMissing > 0)
             //{
             //    result += string.Format( Resources.Artefact.Specimen,
-            //         SpeciesRow.Name, Quantity,
+            //         SpeciesRow.Species, Quantity,
             //         QuantityIndividuals, QuantityStratified, IndividualsMissing) + "; ";
             //}
 

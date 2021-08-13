@@ -295,98 +295,102 @@ namespace Mayfly.Extensions
         {
             if (datesList.Count() == 0) return string.Empty;
 
-            List<DateTime> dates = new List<DateTime>(datesList);
-            dates.Sort();
-            if (dates.Last() - dates.First() < TimeSpan.FromDays(365))
-            {
-                return dates.GetDatesDescription(dates.Last());
-            }
-            else
-            {
-                return dates.GetDatesDescription(DateTime.Today);
-            }
-        }
-
-        public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now)
-        {
-            return dates.GetDatesDescription(now, 2);
-        }
-
-        public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now, int allowedGap)
-        {
-            List<DateTime> futureDates = new List<DateTime>();
-            List<DateTime> lastYearDates = new List<DateTime>();
-            List<DateTime> previousDates = new List<DateTime>();
-
-            foreach (DateTime dt in dates)
-            {
-                if (dt > now) {
-                    futureDates.Add(dt);
-                } else if (now - dt <= TimeSpan.FromDays(365)) {
-                    lastYearDates.Add(dt);
-                } else {
-                    previousDates.Add(dt);
-                }
-            }
+            //List<DateTime> dates = new List<DateTime>(datesList);
+            //dates.Sort();
+            //if (dates.Last() - dates.First() < TimeSpan.FromDays(365))
+            //{
+            //    return dates.GetDatesDescription(dates.Last());
+            //}
+            //else
+            //{
+            //    return dates.GetDatesDescription(DateTime.Today);
+            //}
 
             string result = string.Empty;
 
-            if (previousDates.Count > 0)
+            foreach (DateTime[] bunch in datesList.GetDatesBunches())
             {
-                int[] years = GetYears(previousDates);
-
-                result += years[0];
-                if (years.Length > 1) result += ", ";
-                bool gapStarted = false;
-
-                for (int i = 1; i < years.Length; i++)
-                {
-                    if (years[i] == years[i - 1] + 1)
-                    {
-                        if (result.Last() != '—') {
-                            gapStarted = true;
-                            result = result.TrimEnd(", ".ToCharArray());
-                            result += "—";
-                        }
-                        continue;
-                    }
-
-                    if (gapStarted) {
-                        gapStarted = false;
-                        result += years[i - 1];
-                        result += ", ";
-                    }
-
-                    result += years[i];
-                    result += ", ";
-                }
-
-                if (gapStarted)
-                {
-                    result += years.Last();
-                    result += ", ";
-                }
-                
-                result += ", ";
-            }
-            
-            if (lastYearDates.Count > 0)
-            {
-                foreach (DateTime[] bunch in lastYearDates.GetDatesBunches(allowedGap))
-                {
-                    result += bunch.GetDatesRangeDescription() + ", ";
-                }
+                result += bunch.GetDatesRangeDescription() + ", ";
             }
 
-            return result.TrimEnd(", ".ToCharArray());
+            return result;
         }
+
+        //public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now)
+        //{
+        //    return dates.GetDatesDescription(now, 2);
+        //}
+
+        //public static string GetDatesDescription(this IEnumerable<DateTime> dates, DateTime now, int allowedGap)
+        //{
+        //    List<DateTime> futureDates = new List<DateTime>();
+        //    List<DateTime> lastYearDates = new List<DateTime>();
+        //    List<DateTime> previousDates = new List<DateTime>();
+
+        //    foreach (DateTime dt in dates)
+        //    {
+        //        if (dt > now) {
+        //            futureDates.Add(dt);
+        //        } else if (now - dt <= TimeSpan.FromDays(365)) {
+        //            lastYearDates.Add(dt);
+        //        } else {
+        //            previousDates.Add(dt);
+        //        }
+        //    }
+
+        //    string result = string.Empty;
+
+        //    if (previousDates.Count > 0)
+        //    {
+        //        int[] years = GetYears(previousDates);
+
+        //        result += years[0];
+        //        if (years.Length > 1) result += ", ";
+        //        bool gapStarted = false;
+
+        //        for (int i = 1; i < years.Length; i++)
+        //        {
+        //            if (years[i] == years[i - 1] + 1)
+        //            {
+        //                if (result.Last() != '—') {
+        //                    gapStarted = true;
+        //                    result = result.TrimEnd(", ".ToCharArray());
+        //                    result += "—";
+        //                }
+        //                continue;
+        //            }
+
+        //            if (gapStarted) {
+        //                gapStarted = false;
+        //                result += years[i - 1];
+        //                result += ", ";
+        //            }
+
+        //            result += years[i];
+        //            result += ", ";
+        //        }
+
+        //        if (gapStarted)
+        //        {
+        //            result += years.Last();
+        //            result += ", ";
+        //        }
+
+        //        result += ", ";
+        //    }
+
+        //    if (lastYearDates.Count > 0)
+        //    {
+        //        foreach (DateTime[] bunch in lastYearDates.GetDatesBunches(allowedGap))
+        //        {
+        //            result += bunch.GetDatesRangeDescription() + ", ";
+        //        }
+        //    }
+
+        //    return result.TrimEnd(", ".ToCharArray());
+        //}
 
         public static List<DateTime[]> GetDatesBunches(this IEnumerable<DateTime> unsortedDates)
-        {
-            return unsortedDates.GetDatesBunches(2);
-        }
-
-        public static List<DateTime[]> GetDatesBunches(this IEnumerable<DateTime> unsortedDates, int allowedGap)
         {
             List<DateTime[]> result = new List<DateTime[]>();
 
@@ -405,7 +409,7 @@ namespace Mayfly.Extensions
                     continue;
                 }
 
-                if (dates[i].Date - dates[i - 1].Date <= TimeSpan.FromDays(allowedGap))
+                if (dates[i].Date - dates[i - 1].Date <= TimeSpan.FromDays(3)) // Allowed days gap
                 {
                     bunch.Add(dates[i].Date);
                 }
@@ -446,7 +450,7 @@ namespace Mayfly.Extensions
 
             if (bunch.Count == 1)
             {
-                format = dayFirst ? "{0:"+ dayPart + " MMMM yyyy}" : "{0:MMMM " + dayPart + ", yyyy}";
+                format = dayFirst ? "{0:"+ dayPart + " "+ monthPart + " "+ yearPart + "}" : "{0:"+ monthPart + " " + dayPart + ", "+ yearPart+"}";
                 return string.Format(format, startDate);
             }
             else

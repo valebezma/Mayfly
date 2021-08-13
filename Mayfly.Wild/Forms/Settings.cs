@@ -73,7 +73,7 @@ namespace Mayfly.Wild
 
         private void buttonOpenWaters_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(textBoxWaters.Text); 
+            IO.RunFile(textBoxWaters.Text); 
         }
 
         private void buttonBrowseSpecies_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace Mayfly.Wild
 
         private void buttonOpenSpecies_Click(object sender, EventArgs e)
         {
-            FileSystem.RunFile(textBoxSpecies.Text);
+            IO.RunFile(textBoxSpecies.Text);
         }
 
         private void checkBoxSpeciesExpand_CheckedChanged(object sender, EventArgs e)

@@ -90,21 +90,23 @@ namespace Mayfly.Plankton.Explorer
 
         public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
         {
-            SpeciesComposition result = stack.GetCenosisCompositionFrame();
+            SpeciesComposition result = stack.GetBasicCenosisComposition();
 
             foreach (SpeciesSwarm category in result)
             {
                 Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
 
-                category.DataRow = key.Species.FindBySpecies(speciesRow.Species);
+                category.SpeciesRow = key.Species.FindBySpecies(speciesRow.Species);
 
                 category.Quantity = (int)stack.Quantity(speciesRow);
                 category.Mass = stack.Mass(speciesRow);
                 category.Abundance = stack.GetAverageAbundance(speciesRow);
                 category.Biomass = stack.GetAverageBiomass(speciesRow);
 
-                category.SetSexualComposition(stack.Quantity(speciesRow, Sex.Juvenile),
-                    stack.Quantity(speciesRow, Sex.Male), stack.Quantity(speciesRow, Sex.Female));
+                category.SetSexualComposition(
+                    stack.Quantity(speciesRow, Sex.Juvenile),
+                    stack.Quantity(speciesRow, Sex.Male),
+                    stack.Quantity(speciesRow, Sex.Female));
 
             }
 

@@ -81,7 +81,7 @@ namespace Mayfly.Benthos
 
                 table1.StartRow();
                 table1.AddCellPrompt(Wild.Resources.Reports.Card.Where,
-                    cardRow.IsWhereNull() ? Constants.Null : cardRow.Position.GetPlaceableLink(Mayfly.UserSettings.FormatCoordinate), 2);
+                    cardRow.IsWhereNull() ? Constants.Null : cardRow.Position.GetHTMLReference(), 2);
                 table1.EndRow();
                 report.AddTable(table1);
 
@@ -123,7 +123,7 @@ namespace Mayfly.Benthos
                     }
                     else
                     {
-                        table2.AddCellPrompt(resources.GetString("labelSquare.Text"), cardRow.Square, Mayfly.Service.Mask(4));
+                        table2.AddCellPrompt(resources.GetString("labelSquare.Text"), cardRow.Square, "N4");
 
                         switch (SelectedSampler.GetSamplerType())
                         {
@@ -359,7 +359,7 @@ namespace Mayfly.Benthos
                 ResourceManager resources = new ResourceManager(typeof(Card));
                 Report report = new Report(string.Format(
                     "<span class='pretitle'>{0}.</span> [<span style='float:right'>]</span>",
-                    FileSystem.GetFriendlyFiletypeName(Benthos.UserSettings.Interface.Extension)));
+                    IO.GetFriendlyFiletypeName(Benthos.UserSettings.Interface.Extension)));
 
                 #region Common upper part
 

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
@@ -72,18 +73,7 @@ namespace Mayfly.Fish
                 if (samplersIndex == null)
                 {
                     samplersIndex = new Samplers();
-
-                    foreach (System.Data.DataTable dt in samplersIndex.Tables)
-                    {
-                        foreach (System.Data.DataColumn dc in dt.Columns)
-                        {
-                            if (dc.ColumnName == "Display") continue;
-                            if (dc.ColumnName == "Name") continue;
-
-                            dc.ColumnMapping = System.Data.MappingType.Attribute;
-                        }
-                    }
-
+                    samplersIndex.SetAttributable();
                     samplersIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\samplerfish.ini"));
                 }
                 return samplersIndex;
@@ -107,7 +97,7 @@ namespace Mayfly.Fish
                 {
                     equiment = new Equipment();
 
-                    string path = System.IO.Path.Combine(FileSystem.UserFolder, "equipment.ini");
+                    string path = System.IO.Path.Combine(IO.UserFolder, "equipment.ini");
 
                     if (File.Exists(path))
                     {

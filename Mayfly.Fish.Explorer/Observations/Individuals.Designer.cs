@@ -1,4 +1,4 @@
-﻿namespace Mayfly.Fish.Explorer.Observations
+﻿namespace Mayfly.Fish.Explorer
 {
     partial class Individuals
     {
