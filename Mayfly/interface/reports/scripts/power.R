@@ -26,16 +26,11 @@ function(
   y.model <- 10 ^ log.y.model
   y.model.ci <- 10 ^ predict(fit, data.frame(log.x = log.x.model), interval = "confidence")
   
-  if (!is.null(path))
-  {
-    svg(
-      path,
-      width = width / 2.54,
-      height = height / 2.54
-      # pointsize = fontsize,
-      # family = fontname
-    )
-  }
+  svg(
+    path,
+    width = width / 2.54,
+    height = height / 2.54
+  )
   
   if (detailed)
   {
@@ -163,8 +158,5 @@ function(
           adj = 0.1, cex = bigcex)
   }
   
-  if (!is.null(path))
-  {
-    dev.off()
-  }
+  dev.off()
 }

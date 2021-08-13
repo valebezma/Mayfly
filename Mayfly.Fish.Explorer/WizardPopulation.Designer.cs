@@ -60,11 +60,11 @@
             this.pageModelLW = new AeroWizard.WizardPage();
             this.buttonLW = new System.Windows.Forms.Button();
             this.labelWLInstruction = new System.Windows.Forms.Label();
-            this.statChartLW = new Mayfly.Mathematics.Charts.Plot();
+            this.plotLW = new Mayfly.Mathematics.Charts.Plot();
             this.pageModelAL = new AeroWizard.WizardPage();
             this.buttonAL = new System.Windows.Forms.Button();
             this.labelALInstruction = new System.Windows.Forms.Label();
-            this.statChartAL = new Mayfly.Mathematics.Charts.Plot();
+            this.plotAL = new Mayfly.Mathematics.Charts.Plot();
             this.pageModelAW = new AeroWizard.WizardPage();
             this.plotAW = new Mayfly.Mathematics.Charts.Plot();
             this.labelAWInstruction = new System.Windows.Forms.Label();
@@ -144,9 +144,9 @@
             this.pageStart.SuspendLayout();
             this.pageBasic.SuspendLayout();
             this.pageModelLW.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.statChartLW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotLW)).BeginInit();
             this.pageModelAL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.statChartAL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotAL)).BeginInit();
             this.pageModelAW.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotAW)).BeginInit();
             this.pageCpue.SuspendLayout();
@@ -267,7 +267,7 @@
             // 
             this.pageModelLW.Controls.Add(this.buttonLW);
             this.pageModelLW.Controls.Add(this.labelWLInstruction);
-            this.pageModelLW.Controls.Add(this.statChartLW);
+            this.pageModelLW.Controls.Add(this.plotLW);
             this.pageModelLW.Name = "pageModelLW";
             resources.ApplyResources(this.pageModelLW, "pageModelLW");
             this.pageModelLW.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLW_Rollback);
@@ -284,20 +284,20 @@
             resources.ApplyResources(this.labelWLInstruction, "labelWLInstruction");
             this.labelWLInstruction.Name = "labelWLInstruction";
             // 
-            // statChartLW
+            // plotLW
             // 
-            resources.ApplyResources(this.statChartLW, "statChartLW");
-            this.statChartLW.AxisXAutoMinimum = false;
-            this.statChartLW.AxisYAutoMinimum = false;
-            this.statChartLW.Name = "statChartLW";
-            this.statChartLW.ShowLegend = false;
-            this.statChartLW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            resources.ApplyResources(this.plotLW, "plotLW");
+            this.plotLW.AxisXAutoMinimum = false;
+            this.plotLW.AxisYAutoMinimum = false;
+            this.plotLW.Name = "plotLW";
+            this.plotLW.ShowLegend = false;
+            this.plotLW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
             // 
             // pageModelAL
             // 
             this.pageModelAL.Controls.Add(this.buttonAL);
             this.pageModelAL.Controls.Add(this.labelALInstruction);
-            this.pageModelAL.Controls.Add(this.statChartAL);
+            this.pageModelAL.Controls.Add(this.plotAL);
             this.pageModelAL.Name = "pageModelAL";
             resources.ApplyResources(this.pageModelAL, "pageModelAL");
             // 
@@ -313,14 +313,14 @@
             resources.ApplyResources(this.labelALInstruction, "labelALInstruction");
             this.labelALInstruction.Name = "labelALInstruction";
             // 
-            // statChartAL
+            // plotAL
             // 
-            resources.ApplyResources(this.statChartAL, "statChartAL");
-            this.statChartAL.AxisXAutoMinimum = false;
-            this.statChartAL.AxisYAutoMinimum = false;
-            this.statChartAL.Name = "statChartAL";
-            this.statChartAL.ShowLegend = false;
-            this.statChartAL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            resources.ApplyResources(this.plotAL, "plotAL");
+            this.plotAL.AxisXAutoMinimum = false;
+            this.plotAL.AxisYAutoMinimum = false;
+            this.plotAL.Name = "plotAL";
+            this.plotAL.ShowLegend = false;
+            this.plotAL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
             // 
             // pageModelAW
             // 
@@ -939,9 +939,9 @@
             this.pageStart.PerformLayout();
             this.pageBasic.ResumeLayout(false);
             this.pageModelLW.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.statChartLW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotLW)).EndInit();
             this.pageModelAL.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.statChartAL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotAL)).EndInit();
             this.pageModelAW.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plotAW)).EndInit();
             this.pageCpue.ResumeLayout(false);
@@ -1033,7 +1033,7 @@
         private AeroWizard.WizardPage pageModelAW;
         private System.Windows.Forms.Button buttonLW;
         private System.Windows.Forms.Label labelWLInstruction;
-        private Mathematics.Charts.Plot statChartAL;
+        private Mathematics.Charts.Plot plotAL;
         private System.Windows.Forms.Button buttonAL;
         private System.Windows.Forms.Label labelALInstruction;
         private Mathematics.Charts.Plot plotAW;
@@ -1047,7 +1047,7 @@
         private Mathematics.Charts.Plot plotMortality;
         private System.Windows.Forms.Label labelMortalityInstruction;
         private System.Windows.Forms.Label labelAgeAdjustedInstruction;
-        private Mathematics.Charts.Plot statChartLW;
+        private Mathematics.Charts.Plot plotLW;
         private System.Windows.Forms.CheckBox checkBoxAge;
         private System.Windows.Forms.CheckBox checkBoxLength;
         private System.Windows.Forms.CheckBox checkBoxAgeAdjusted;

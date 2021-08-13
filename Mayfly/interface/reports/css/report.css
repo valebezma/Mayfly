@@ -123,3 +123,14 @@ span.latin-inside {
     /* font-family: 'Minion Pro'; */
     font-style: normal;
 }
+
+.picture {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+
+.picture-label {
+    margin-top: 1cm;
+    text-align:center;
+}

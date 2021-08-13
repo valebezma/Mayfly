@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 253</value>
+    <value>200, 254</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 189</value>
+    <value>200, 190</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 221</value>
+    <value>240, 222</value>
   </data>
   <data name="checkBoxLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 285</value>
+    <value>240, 286</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 86</value>
+    <value>50, 87</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>
@@ -426,7 +426,7 @@ Pick options you want to include in current research.</value>
     <value>2</value>
   </data>
   <data name="pageBasic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageBasic.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -450,7 +450,7 @@ Pick options you want to include in current research.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonLW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 369</value>
+    <value>585, 519</value>
   </data>
   <data name="buttonLW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 15</value>
@@ -506,47 +506,50 @@ Pick options you want to include in current research.</value>
   <data name="&gt;&gt;labelWLInstruction.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="statChartLW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="plotLW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="statChartLW.AxisXTitle" xml:space="preserve">
+  <data name="plotLW.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
-  <data name="statChartLW.AxisY2Title" xml:space="preserve">
+  <data name="plotLW.AxisY2Title" xml:space="preserve">
     <value />
   </data>
-  <data name="statChartLW.AxisYFormat" xml:space="preserve">
+  <data name="plotLW.AxisYFormat" xml:space="preserve">
     <value>N0</value>
   </data>
-  <data name="statChartLW.AxisYTitle" xml:space="preserve">
+  <data name="plotLW.AxisYTitle" xml:space="preserve">
     <value>Mass, g</value>
   </data>
-  <data name="statChartLW.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="plotLW.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 50</value>
   </data>
-  <data name="statChartLW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="plotLW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 25, 0, 15</value>
   </data>
-  <data name="statChartLW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+  <data name="plotLW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 454</value>
   </data>
-  <data name="statChartLW.TabIndex" type="System.Int32, mscorlib">
+  <data name="plotLW.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;statChartLW.Name" xml:space="preserve">
-    <value>statChartLW</value>
+  <data name="plotLW.Text" xml:space="preserve">
+    <value>{0} weight model</value>
   </data>
-  <data name="&gt;&gt;statChartLW.Type" xml:space="preserve">
+  <data name="&gt;&gt;plotLW.Name" xml:space="preserve">
+    <value>plotLW</value>
+  </data>
+  <data name="&gt;&gt;plotLW.Type" xml:space="preserve">
     <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;statChartLW.Parent" xml:space="preserve">
+  <data name="&gt;&gt;plotLW.Parent" xml:space="preserve">
     <value>pageModelLW</value>
   </data>
-  <data name="&gt;&gt;statChartLW.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;plotLW.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="pageModelLW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageModelLW.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -570,7 +573,7 @@ Pick options you want to include in current research.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonAL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 369</value>
+    <value>585, 519</value>
   </data>
   <data name="buttonAL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 15</value>
@@ -626,47 +629,50 @@ Pick options you want to include in current research.</value>
   <data name="&gt;&gt;labelALInstruction.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="statChartAL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="plotAL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="statChartAL.AxisXTitle" xml:space="preserve">
+  <data name="plotAL.AxisXTitle" xml:space="preserve">
     <value>Age</value>
   </data>
-  <data name="statChartAL.AxisY2Title" xml:space="preserve">
+  <data name="plotAL.AxisY2Title" xml:space="preserve">
     <value />
   </data>
-  <data name="statChartAL.AxisYFormat" xml:space="preserve">
+  <data name="plotAL.AxisYFormat" xml:space="preserve">
     <value>N0</value>
   </data>
-  <data name="statChartAL.AxisYTitle" xml:space="preserve">
+  <data name="plotAL.AxisYTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
-  <data name="statChartAL.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="plotAL.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 50</value>
   </data>
-  <data name="statChartAL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="plotAL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 25, 0, 15</value>
   </data>
-  <data name="statChartAL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+  <data name="plotAL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>710, 454</value>
   </data>
-  <data name="statChartAL.TabIndex" type="System.Int32, mscorlib">
+  <data name="plotAL.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;statChartAL.Name" xml:space="preserve">
-    <value>statChartAL</value>
+  <data name="plotAL.Text" xml:space="preserve">
+    <value>{0} linear growth model</value>
   </data>
-  <data name="&gt;&gt;statChartAL.Type" xml:space="preserve">
+  <data name="&gt;&gt;plotAL.Name" xml:space="preserve">
+    <value>plotAL</value>
+  </data>
+  <data name="&gt;&gt;plotAL.Type" xml:space="preserve">
     <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;statChartAL.Parent" xml:space="preserve">
+  <data name="&gt;&gt;plotAL.Parent" xml:space="preserve">
     <value>pageModelAL</value>
   </data>
-  <data name="&gt;&gt;statChartAL.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;plotAL.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="pageModelAL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageModelAL.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -702,10 +708,13 @@ Pick options you want to include in current research.</value>
     <value>0, 25, 0, 15</value>
   </data>
   <data name="plotAW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 304</value>
+    <value>710, 454</value>
   </data>
   <data name="plotAW.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="plotAW.Text" xml:space="preserve">
+    <value>{0} mass growth model</value>
   </data>
   <data name="&gt;&gt;plotAW.Name" xml:space="preserve">
     <value>plotAW</value>
@@ -750,7 +759,7 @@ Pick options you want to include in current research.</value>
     <value>1</value>
   </data>
   <data name="pageModelAW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 407</value>
+    <value>737, 557</value>
   </data>
   <data name="pageModelAW.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>

@@ -241,7 +241,6 @@
       <DependentUpon>PreviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reporting\Report.Printing.cs" />
-    <Compile Include="Reporting\Report.Chart.cs" />
     <Compile Include="Reporting\Report.Table.cs" />
     <Compile Include="Resources\FriendlyUnits.Designer.cs">
       <DependentUpon>FriendlyUnits.resx</DependentUpon>

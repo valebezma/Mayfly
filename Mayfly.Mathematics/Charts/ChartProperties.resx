@@ -121,10 +121,35 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonPrint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 342</value>
+  </data>
+  <data name="buttonPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonPrint.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="buttonPrint.Text" xml:space="preserve">
+    <value>print</value>
+  </data>
+  <data name="&gt;&gt;buttonPrint.Name" xml:space="preserve">
+    <value>buttonPrint</value>
+  </data>
+  <data name="&gt;&gt;buttonPrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPrint.Parent" xml:space="preserve">
+    <value>tabPageChart</value>
+  </data>
+  <data name="&gt;&gt;buttonPrint.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonFont.Location" type="System.Drawing.Point, System.Drawing">
     <value>375, 117</value>
   </data>
@@ -134,7 +159,6 @@
   <data name="buttonFont.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 22</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonFont.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
@@ -151,7 +175,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;buttonFont.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -178,7 +202,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="textBoxFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -208,7 +232,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;textBoxFont.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="textBoxName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -232,7 +256,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;textBoxName.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,7 +283,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,7 +316,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,7 +343,7 @@
     <value>tabPageChart</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tabPageChart.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -628,7 +652,7 @@
     <value>3, 25, 3, 25</value>
   </data>
   <data name="label_title.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label_title.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1411,7 +1435,7 @@
     <value>3, 25, 3, 25</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1918,7 +1942,7 @@
     <value>3, 25, 3, 25</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

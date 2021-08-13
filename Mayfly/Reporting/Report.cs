@@ -298,6 +298,14 @@ namespace Mayfly
             WriteLine("</script>");
         }
 
+        public void AddImage(string svg, string caption)
+        {
+            StartDiv("picture");
+            WriteLine(File.ReadAllText(svg));
+            AddParagraphClass("picture-label", caption);
+            CloseDiv();
+        }
+
 
 
         public void AddLink(string link, string text)
@@ -307,9 +315,16 @@ namespace Mayfly
 
 
 
+        public void StartDiv(string classid)
+        {
+            WriteLine("<div class='" + classid + "'>");
+        }
+
         public void StartPage(PageBreakOption opt)
         {
-            WriteLine("<div class=" + (opt.HasFlag(PageBreakOption.Landscape) ? "'sheet landscape'" : (opt.HasFlag(PageBreakOption.Odd) ? "'sheet odd'" : "'sheet'")) + ">");
+            StartDiv("sheet" + 
+                (opt.HasFlag(PageBreakOption.Landscape) ?  " landscape" : 
+                (opt.HasFlag(PageBreakOption.Odd) ? " odd" : "")));
         }
 
         public void StartPage()

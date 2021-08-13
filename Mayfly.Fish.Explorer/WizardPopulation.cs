@@ -73,11 +73,14 @@ namespace Mayfly.Fish.Explorer
             wizardExplorer.ResetTitle(SpeciesRow.KeyRecord.ShortName);
             labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
             labelBasicInstruction.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            plotLW.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            plotAL.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            plotAW.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
 
             pageStart.SetNavigation(false);
 
-            statChartAL.Clear();
-            statChartLW.Clear();
+            plotAL.Clear();
+            plotLW.Clear();
             buttonAL.Enabled = buttonLW.Enabled = false;
 
             Log.Write(EventType.WizardStarted, "Stock composition wizard is started for {0}.",
@@ -196,8 +199,7 @@ namespace Mayfly.Fish.Explorer
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, WeightModel.Regression);
             report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
 
-
-            WeightModel.AddPowerPlot(report, string.Format("{0} weigth model", SpeciesRow.KeyRecord.FullNameReport));
+            report.AddImage(plotLW.GetVector(10, 10), plotLW.Text);
 
             if (GrowthModel.IsRegressionOK) {
                 report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, GrowthModel.Regression);
@@ -372,10 +374,10 @@ namespace Mayfly.Fish.Explorer
 
             #region Age to Length
 
-            statChartAL.Visible = GrowthModel != null;
+            plotAL.Visible = GrowthModel != null;
             buttonAL.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
 
-            statChartAL.Clear();
+            plotAL.Clear();
 
             if (growthExternal != null)
             {
@@ -384,7 +386,7 @@ namespace Mayfly.Fish.Explorer
                     growthExternal.Properties.ScatterplotName =
                     string.Format(Resources.Interface.Interface.SpecSheet, SpeciesRow.Species);
                 growthExternal.Properties.DataPointColor = Constants.InfantColor;
-                statChartAL.AddSeries(growthExternal);
+                plotAL.AddSeries(growthExternal);
             }
 
             if (growthInternal != null)
@@ -394,7 +396,7 @@ namespace Mayfly.Fish.Explorer
                     growthInternal.Properties.ScatterplotName =
                     string.Format(Resources.Interface.Interface.IntModel, SpeciesRow.Species);
                 growthInternal.Properties.DataPointColor = UserSettings.ModelColor;
-                statChartAL.AddSeries(growthInternal);
+                plotAL.AddSeries(growthInternal);
             }
 
             if (GrowthModel != null)
@@ -404,21 +406,21 @@ namespace Mayfly.Fish.Explorer
                 GrowthModel.Properties.SelectedApproximationType = Data.Parent.GrowthModels.Nature;
                 GrowthModel.Properties.DataPointColor = System.Drawing.Color.Transparent;
                 GrowthModel.Properties.TrendColor = UserSettings.ModelColor.Darker();
-                statChartAL.AddSeries(GrowthModel);
+                plotAL.AddSeries(GrowthModel);
             }
 
             //statChartAL.Refresh();
-            statChartAL.Update(this, new EventArgs());
-            if (statChartAL.Scatterplots.Count > 0) statChartAL.Rebuild(this, new EventArgs());
+            plotAL.Update(this, new EventArgs());
+            if (plotAL.Scatterplots.Count > 0) plotAL.Rebuild(this, new EventArgs());
 
             #endregion
 
             #region Length to Mass
 
-            statChartLW.Visible = WeightModel != null;
+            plotLW.Visible = WeightModel != null;
             buttonLW.Enabled = WeightModel != null && WeightModel.IsRegressionOK;
 
-            statChartLW.Clear();
+            plotLW.Clear();
 
             if (weightExternal != null)
             {
@@ -427,7 +429,7 @@ namespace Mayfly.Fish.Explorer
                     weightExternal.Properties.ScatterplotName =
                     string.Format(Resources.Interface.Interface.SpecSheet, SpeciesRow.Species);
                 weightExternal.Properties.DataPointColor = Constants.InfantColor;
-                statChartLW.AddSeries(weightExternal);
+                plotLW.AddSeries(weightExternal);
             }
 
             if (weightInternal != null)
@@ -437,7 +439,7 @@ namespace Mayfly.Fish.Explorer
                     weightInternal.Properties.ScatterplotName =
                     string.Format(Resources.Interface.Interface.IntModel, SpeciesRow.Species);
                 weightInternal.Properties.DataPointColor = UserSettings.ModelColor;
-                statChartLW.AddSeries(weightInternal);
+                plotLW.AddSeries(weightInternal);
             }
 
             if (WeightModel != null)
@@ -447,12 +449,12 @@ namespace Mayfly.Fish.Explorer
                 WeightModel.Properties.SelectedApproximationType = Data.Parent.MassModels.Nature;
                 WeightModel.Properties.DataPointColor = System.Drawing.Color.Transparent;
                 WeightModel.Properties.TrendColor = UserSettings.ModelColor.Darker();
-                statChartLW.AddSeries(WeightModel);
+                plotLW.AddSeries(WeightModel);
             }
 
             //statChartLW.Refresh();
-            statChartLW.Update(this, new EventArgs());
-            if (statChartLW.Scatterplots.Count > 0) statChartLW.Rebuild(this, new EventArgs());
+            plotLW.Update(this, new EventArgs());
+            if (plotLW.Scatterplots.Count > 0) plotLW.Rebuild(this, new EventArgs());
 
             pageModelAL.SetNavigation(true);
 
@@ -544,12 +546,12 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonAL_Click(object sender, EventArgs e)
         {
-            statChartAL.OpenRegressionProperties(GrowthModel);
+            plotAL.OpenRegressionProperties(GrowthModel);
         }
 
         private void buttonLW_Click(object sender, EventArgs e)
         {
-            statChartLW.OpenRegressionProperties(WeightModel);
+            plotLW.OpenRegressionProperties(WeightModel);
         }
 
         private void pageAW_Commit(object sender, WizardPageConfirmEventArgs e)
