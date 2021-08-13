@@ -33,7 +33,7 @@ namespace Mayfly.Fish.Explorer
 
         WizardVirtualPopulation vpaWizard;
 
-        WizardGrowth growthWizard;
+        WizardPopulation growthWizard;
 
         private XY msy;
 
@@ -175,11 +175,11 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonGrowth_Click(object sender, EventArgs e)
         {
-            growthWizard = new WizardGrowth(Data, SpeciesRow);
-            growthWizard.Returned += growthWizard_Returned;
-            growthWizard.Calculated += growthWizard_ModelConfirmed;
+            growthWizard = new WizardPopulation(Data, SpeciesRow);
+            growthWizard.ModelsReturned += growthWizard_Returned;
+            growthWizard.ModelsCalculated += growthWizard_ModelConfirmed;
             growthWizard.Replace(this);
-            growthWizard.Run();
+            growthWizard.RunModels();
         }
 
         private void growthWizard_Returned(object sender, EventArgs e)

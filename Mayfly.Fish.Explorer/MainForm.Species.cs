@@ -30,7 +30,7 @@ namespace Mayfly.Fish.Explorer
                 comboBoxSpcTaxa.Items.Add(baseRow);
 
                 ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
-                item.Click += BaseItem_Click;
+                item.Click += baseItem_Click;
                 item.Tag = baseRow;
                 menuItemSpcTaxa.DropDownItems.Add(item);
             }

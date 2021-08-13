@@ -11,6 +11,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Extensions;
 using Meta.Numerics;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using RDotNet;
+using System.IO;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -695,6 +697,41 @@ namespace Mayfly.Mathematics.Charts
             chartForm.StatChart.Remaster();
             chartForm.Show();
         }
+
+        //public void AddPowerPlot(Report report, string caption)
+        //{
+        //    REngine.SetEnvironmentVariables();
+        //    REngine engine = REngine.GetInstance();
+        //    string svg = IO.GetTempFileName();
+
+        //    var drawPowerChart = engine.Evaluate(File.ReadAllText(@"interface\reports\scripts\power.R")).AsFunction();
+
+        //    var xvalues = engine.CreateNumericVector(Data.X);
+        //    var yvalues = engine.CreateNumericVector(Data.Y);
+        //    var xlabel = engine.CreateCharacter(Data.X.Name);
+        //    var ylabel = engine.CreateCharacter(Data.Y.Name);
+        //    var width = engine.CreateNumeric(16);
+        //    var height = engine.CreateNumeric(16);
+        //    var detailed = engine.CreateLogical(false);
+        //    var path = engine.CreateCharacter(svg);
+
+        //    drawPowerChart.Invoke(new SymbolicExpression[] { xvalues, yvalues, xlabel, ylabel, width, height, path, detailed });
+
+        //    foreach (string line in File.ReadAllLines(svg))
+        //    {
+        //        report.WriteLine(line);
+        //    }
+
+        //    report.AddParagraphClass("picturecaption", caption);
+        //}
+
+
+
+
+
+
+
+
 
         public void GetData()
         {

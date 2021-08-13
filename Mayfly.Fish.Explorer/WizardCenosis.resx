@@ -194,7 +194,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="labelNoticeGearsSelectivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 235</value>
+    <value>273, 234</value>
   </data>
   <data name="labelNoticeGearsSelectivity.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 15</value>
@@ -230,7 +230,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="labelSelectivityGroupInstruction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="labelSelectivityGroupInstruction.Size" type="System.Drawing.Size, System.Drawing">
     <value>710, 30</value>
@@ -257,10 +257,10 @@ First, you have to select data to explore.</value>
     <value>Top</value>
   </data>
   <data name="comboBoxDataset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 51</value>
+    <value>310, 50</value>
   </data>
   <data name="comboBoxDataset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 23</value>
+    <value>200, 23</value>
   </data>
   <data name="comboBoxDataset.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -287,16 +287,16 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="labelSelectivityGroupSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 54</value>
+    <value>200, 53</value>
   </data>
   <data name="labelSelectivityGroupSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+    <value>59, 15</value>
   </data>
   <data name="labelSelectivityGroupSelect.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
   <data name="labelSelectivityGroupSelect.Text" xml:space="preserve">
-    <value>Gear class:</value>
+    <value>Gear class</value>
   </data>
   <data name="&gt;&gt;labelSelectivityGroupSelect.Name" xml:space="preserve">
     <value>labelSelectivityGroupSelect</value>
@@ -350,16 +350,16 @@ First, you have to select data to explore.</value>
     <value>Sex ratio, juv. : M : F</value>
   </data>
   <data name="spreadSheetSelectivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 92</value>
+    <value>0, 91</value>
   </data>
   <data name="spreadSheetSelectivity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 15, 3, 15</value>
+    <value>0, 15, 0, 15</value>
   </data>
   <data name="spreadSheetSelectivity.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="spreadSheetSelectivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 300</value>
+    <value>710, 301</value>
   </data>
   <data name="spreadSheetSelectivity.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -394,35 +394,35 @@ First, you have to select data to explore.</value>
   <data name="&gt;&gt;pageGearClass.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
-  <data name="comboBoxDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="comboBoxDiversityMethod.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="comboBoxDiversity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>279, 368</value>
+  <data name="comboBoxDiversityMethod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 340</value>
   </data>
-  <data name="comboBoxDiversity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
+  <data name="comboBoxDiversityMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 23</value>
   </data>
-  <data name="comboBoxDiversity.TabIndex" type="System.Int32, mscorlib">
+  <data name="comboBoxDiversityMethod.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
-  <data name="&gt;&gt;comboBoxDiversity.Name" xml:space="preserve">
-    <value>comboBoxDiversity</value>
+  <data name="&gt;&gt;comboBoxDiversityMethod.Name" xml:space="preserve">
+    <value>comboBoxDiversityMethod</value>
   </data>
-  <data name="&gt;&gt;comboBoxDiversity.Type" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxDiversityMethod.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBoxDiversity.Parent" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxDiversityMethod.Parent" xml:space="preserve">
     <value>pageComposition</value>
   </data>
-  <data name="&gt;&gt;comboBoxDiversity.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;comboBoxDiversityMethod.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="textBoxDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="textBoxDiversity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 368</value>
+    <value>435, 369</value>
   </data>
   <data name="textBoxDiversity.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -475,38 +475,71 @@ First, you have to select data to explore.</value>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelDiversityMethod.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelDiversityMethod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelDiversityMethod.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 371</value>
+  <data name="labelDiversityMethod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 343</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 15</value>
+  <data name="labelDiversityMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 15</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelDiversityMethod.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Cenosis diversity calculated as</value>
+  <data name="labelDiversityMethod.Text" xml:space="preserve">
+    <value>Diversity method</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+  <data name="&gt;&gt;labelDiversityMethod.Name" xml:space="preserve">
+    <value>labelDiversityMethod</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelDiversityMethod.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelDiversityMethod.Parent" xml:space="preserve">
     <value>pageComposition</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelDiversityMethod.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="labelDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelDiversity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelDiversity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelDiversity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 372</value>
+  </data>
+  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="labelDiversity.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="labelDiversity.Text" xml:space="preserve">
+    <value>Diversity</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Name" xml:space="preserve">
+    <value>labelDiversity</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.Parent" xml:space="preserve">
+    <value>pageComposition</value>
+  </data>
+  <data name="&gt;&gt;labelDiversity.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="spreadSheetComposition.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -539,13 +572,16 @@ First, you have to select data to explore.</value>
     <value>Dominance</value>
   </data>
   <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, 50</value>
+    <value>0, 45</value>
+  </data>
+  <data name="spreadSheetComposition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 15, 0, 15</value>
   </data>
   <data name="spreadSheetComposition.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="spreadSheetComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>710, 312</value>
+    <value>707, 277</value>
   </data>
   <data name="spreadSheetComposition.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -563,7 +599,7 @@ First, you have to select data to explore.</value>
     <value>pageComposition</value>
   </data>
   <data name="&gt;&gt;spreadSheetComposition.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="pageComposition.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 407</value>
@@ -584,7 +620,7 @@ First, you have to select data to explore.</value>
     <value>Top</value>
   </data>
   <data name="comboBoxExample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 250</value>
+    <value>458, 248</value>
   </data>
   <data name="comboBoxExample.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 23</value>
@@ -614,7 +650,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxSpreadsheets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 188</value>
+    <value>240, 186</value>
   </data>
   <data name="checkBoxSpreadsheets.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -650,7 +686,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxByClass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 156</value>
+    <value>240, 154</value>
   </data>
   <data name="checkBoxByClass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -716,7 +752,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxAppExample.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 252</value>
+    <value>240, 250</value>
   </data>
   <data name="checkBoxAppExample.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -755,7 +791,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxCenosis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 220</value>
+    <value>200, 218</value>
   </data>
   <data name="checkBoxCenosis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -791,7 +827,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxCatches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 124</value>
+    <value>200, 122</value>
   </data>
   <data name="checkBoxCatches.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -827,7 +863,7 @@ First, you have to select data to explore.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxGears.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 92</value>
+    <value>200, 90</value>
   </data>
   <data name="checkBoxGears.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -919,6 +955,66 @@ First, you have to select data to explore.</value>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
+  <data name="&gt;&gt;columnSelectivitySpecies.Name" xml:space="preserve">
+    <value>columnSelectivitySpecies</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityLength.Name" xml:space="preserve">
+    <value>columnSelectivityLength</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityLength.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityMass.Name" xml:space="preserve">
+    <value>columnSelectivityMass</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityN.Name" xml:space="preserve">
+    <value>columnSelectivityN</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNpue.Name" xml:space="preserve">
+    <value>columnSelectivityNpue</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNpue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNPer.Name" xml:space="preserve">
+    <value>columnSelectivityNPer</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityNPer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityB.Name" xml:space="preserve">
+    <value>columnSelectivityB</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBpue.Name" xml:space="preserve">
+    <value>columnSelectivityBpue</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBpue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBPer.Name" xml:space="preserve">
+    <value>columnSelectivityBPer</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivityBPer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySex.Name" xml:space="preserve">
+    <value>columnSelectivitySex</value>
+  </data>
+  <data name="&gt;&gt;columnSelectivitySex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ColumnCompositionSpecies.Name" xml:space="preserve">
     <value>ColumnCompositionSpecies</value>
   </data>
@@ -990,66 +1086,6 @@ First, you have to select data to explore.</value>
   </data>
   <data name="&gt;&gt;calculatorStructure.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySpecies.Name" xml:space="preserve">
-    <value>columnSelectivitySpecies</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityLength.Name" xml:space="preserve">
-    <value>columnSelectivityLength</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityLength.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityMass.Name" xml:space="preserve">
-    <value>columnSelectivityMass</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityN.Name" xml:space="preserve">
-    <value>columnSelectivityN</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNpue.Name" xml:space="preserve">
-    <value>columnSelectivityNpue</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNpue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNPer.Name" xml:space="preserve">
-    <value>columnSelectivityNPer</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityNPer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityB.Name" xml:space="preserve">
-    <value>columnSelectivityB</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBpue.Name" xml:space="preserve">
-    <value>columnSelectivityBpue</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBpue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBPer.Name" xml:space="preserve">
-    <value>columnSelectivityBPer</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivityBPer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySex.Name" xml:space="preserve">
-    <value>columnSelectivitySex</value>
-  </data>
-  <data name="&gt;&gt;columnSelectivitySex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WizardCenosis</value>

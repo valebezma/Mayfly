@@ -1,20 +1,12 @@
 ﻿using AeroWizard;
 using Mayfly.Extensions;
-using Mayfly.Fish.Explorer;
 using Mayfly.Mathematics.Charts;
-using Mayfly.Mathematics.Statistics;
 using Mayfly.Wild;
+using Meta.Numerics.Statistics;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Meta.Numerics.Functions;
-using System.Drawing;
-using Functor = Mayfly.Mathematics.Charts.Functor;
-using Meta.Numerics;
-using Meta.Numerics.Statistics;
-using System.Linq;
-using Mayfly.Fish.Explorer;
 
 namespace Mayfly.Fish.Explorer
 {

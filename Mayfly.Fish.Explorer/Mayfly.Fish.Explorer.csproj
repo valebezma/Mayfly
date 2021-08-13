@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compositions\MortalityModel.cs" />
     <Compile Include="Extensions\CardStack.Statistics.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Mass.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Quantity.cs" />
@@ -276,12 +277,6 @@
     <Compile Include="WizardVirtualPopulation.Designer.cs">
       <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
     </Compile>
-    <Compile Include="WizardGrowth.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WizardGrowth.Designer.cs">
-      <DependentUpon>WizardGrowth.cs</DependentUpon>
-    </Compile>
     <Compile Include="WizardMortalityCohorts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,12 +405,6 @@
     <Compile Include="WizardCenosis.Designer.cs">
       <DependentUpon>WizardCenosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="WizardMortality.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WizardMortality.Designer.cs">
-      <DependentUpon>WizardMortality.cs</DependentUpon>
-    </Compile>
     <Compile Include="WizardComposition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,12 +499,6 @@
     </Compile>
     <Compile Include="WizardGearSet.Designer.cs">
       <DependentUpon>WizardGearSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WizardSelectivity.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WizardSelectivity.Designer.cs">
-      <DependentUpon>WizardSelectivity.cs</DependentUpon>
     </Compile>
     <Compile Include="WizardTac.cs">
       <SubType>Form</SubType>
@@ -721,14 +704,6 @@
       <DependentUpon>WizardVirtualPopulation.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WizardGrowth.resx">
-      <DependentUpon>WizardGrowth.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WizardGrowth.ru.resx">
-      <DependentUpon>WizardGrowth.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="WizardMortalityCohorts.resx">
       <DependentUpon>WizardMortalityCohorts.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -837,14 +812,6 @@
       <DependentUpon>WizardCenosis.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WizardMortality.resx">
-      <DependentUpon>WizardMortality.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WizardMortality.ru.resx">
-      <DependentUpon>WizardMortality.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="WizardComposition.resx">
       <DependentUpon>WizardComposition.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -936,10 +903,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WizardGearSet.ru.resx">
       <DependentUpon>WizardGearSet.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WizardSelectivity.resx">
-      <DependentUpon>WizardSelectivity.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WizardTac.resx">

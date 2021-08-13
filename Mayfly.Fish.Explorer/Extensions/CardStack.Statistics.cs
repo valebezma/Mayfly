@@ -7,6 +7,18 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
+        public static double Mesh(this CardStack stack)
+        {
+            Sample result = new Sample();
+
+            foreach (Data.CardRow cardRow in stack)
+            {
+                if (!cardRow.IsMeshNull()) result.Add(cardRow.Mesh);
+            }
+
+            return result.Mean;
+        }
+
         public static Sample LengthSample(this CardStack stack, Data.SpeciesRow speciesRow)
         {
             List<double> result = new List<double>();

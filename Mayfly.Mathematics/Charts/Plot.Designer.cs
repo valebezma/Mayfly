@@ -37,13 +37,10 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.contextChartSeparate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.contextChartResize = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextChartPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSizeA4 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSizeA5 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSizeA6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextChartImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextChartPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextChartCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplot = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextScatterplotProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplotAddTrend = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +66,8 @@
             this.contextHistogramDistinguish = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogramDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogramCopyValues = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextHistogramCopyAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextHistogramCopyDatapoints = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.contextHistogramStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogramDescriptive = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,8 +85,6 @@
             this.contextEvalUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.contextFunctor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextFunctorProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextHistogramCopyAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextHistogramCopyDatapoints = new System.Windows.Forms.ToolStripMenuItem();
             this.contextChart.SuspendLayout();
             this.contextScatterplot.SuspendLayout();
             this.contextHistogram.SuspendLayout();
@@ -105,10 +102,7 @@
             this.toolStripSeparator2,
             this.contextChartSeparate,
             this.toolStripSeparator4,
-            this.contextChartResize,
-            this.contextChartImage,
-            this.contextChartPrint,
-            this.contextChartCopy});
+            this.contextChartPrint});
             this.contextChart.Name = "contextMenuStrip_chart";
             resources.ApplyResources(this.contextChart, "contextChart");
             this.contextChart.Opening += new System.ComponentModel.CancelEventHandler(this.contextChart_Opening);
@@ -148,14 +142,14 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
-            // contextChartResize
+            // contextChartPrint
             // 
-            this.contextChartResize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextChartPrint.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextSizeA4,
             this.contextSizeA5,
             this.contextSizeA6});
-            this.contextChartResize.Name = "contextChartResize";
-            resources.ApplyResources(this.contextChartResize, "contextChartResize");
+            this.contextChartPrint.Name = "contextChartPrint";
+            resources.ApplyResources(this.contextChartPrint, "contextChartPrint");
             // 
             // contextSizeA4
             // 
@@ -174,27 +168,6 @@
             this.contextSizeA6.Name = "contextSizeA6";
             resources.ApplyResources(this.contextSizeA6, "contextSizeA6");
             this.contextSizeA6.Click += new System.EventHandler(this.contextSizeA6_Click);
-            // 
-            // contextChartImage
-            // 
-            this.contextChartImage.Image = global::Mayfly.Resources.Icons.Save;
-            this.contextChartImage.Name = "contextChartImage";
-            resources.ApplyResources(this.contextChartImage, "contextChartImage");
-            this.contextChartImage.Click += new System.EventHandler(this.contextChartImage_Click);
-            // 
-            // contextChartPrint
-            // 
-            this.contextChartPrint.Image = global::Mayfly.Resources.Icons.Print;
-            this.contextChartPrint.Name = "contextChartPrint";
-            resources.ApplyResources(this.contextChartPrint, "contextChartPrint");
-            this.contextChartPrint.Click += new System.EventHandler(this.contextChartPrint_Click);
-            // 
-            // contextChartCopy
-            // 
-            this.contextChartCopy.Image = global::Mayfly.Resources.Icons.Copy;
-            this.contextChartCopy.Name = "contextChartCopy";
-            resources.ApplyResources(this.contextChartCopy, "contextChartCopy");
-            this.contextChartCopy.Click += new System.EventHandler(this.contextChartCopy_Click);
             // 
             // contextScatterplot
             // 
@@ -379,6 +352,18 @@
             resources.ApplyResources(this.contextHistogramCopyValues, "contextHistogramCopyValues");
             this.contextHistogramCopyValues.Click += new System.EventHandler(this.contextHistogamCopyValues_Click);
             // 
+            // ContextHistogramCopyAll
+            // 
+            this.ContextHistogramCopyAll.Name = "ContextHistogramCopyAll";
+            resources.ApplyResources(this.ContextHistogramCopyAll, "ContextHistogramCopyAll");
+            this.ContextHistogramCopyAll.Click += new System.EventHandler(this.contextHistogamCopyValues_Click);
+            // 
+            // ContextHistogramCopyDatapoints
+            // 
+            this.ContextHistogramCopyDatapoints.Name = "ContextHistogramCopyDatapoints";
+            resources.ApplyResources(this.ContextHistogramCopyDatapoints, "ContextHistogramCopyDatapoints");
+            this.ContextHistogramCopyDatapoints.Click += new System.EventHandler(this.ContextHistogramCopyDatapoints_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -482,18 +467,6 @@
             this.contextFunctorProperties.Name = "contextFunctorProperties";
             resources.ApplyResources(this.contextFunctorProperties, "contextFunctorProperties");
             this.contextFunctorProperties.Click += new System.EventHandler(this.contextFunctorProperties_Click);
-            // 
-            // ContextHistogramCopyAll
-            // 
-            this.ContextHistogramCopyAll.Name = "ContextHistogramCopyAll";
-            resources.ApplyResources(this.ContextHistogramCopyAll, "ContextHistogramCopyAll");
-            this.ContextHistogramCopyAll.Click += new System.EventHandler(this.contextHistogamCopyValues_Click);
-            // 
-            // ContextHistogramCopyDatapoints
-            // 
-            this.ContextHistogramCopyDatapoints.Name = "ContextHistogramCopyDatapoints";
-            resources.ApplyResources(this.ContextHistogramCopyDatapoints, "ContextHistogramCopyDatapoints");
-            this.ContextHistogramCopyDatapoints.Click += new System.EventHandler(this.ContextHistogramCopyDatapoints_Click);
             this.contextChart.ResumeLayout(false);
             this.contextScatterplot.ResumeLayout(false);
             this.contextHistogram.ResumeLayout(false);
@@ -510,8 +483,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextChartProperties;
         private System.Windows.Forms.ToolStripMenuItem contextChartAxes;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem contextChartPrint;
-        private System.Windows.Forms.ToolStripMenuItem contextChartCopy;
         private System.Windows.Forms.ContextMenuStrip contextScatterplot;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotProperties;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -542,7 +513,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextHistogramDescriptive;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotApart;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramApart;
-        private System.Windows.Forms.ToolStripMenuItem contextChartImage;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotFindValue;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotAddTrend;
@@ -556,7 +526,7 @@
         private System.Windows.Forms.ToolStripMenuItem contextEvalApart;
         private System.Windows.Forms.ToolStripMenuItem contextEvalUpdate;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotTrendCompare;
-        private System.Windows.Forms.ToolStripMenuItem contextChartResize;
+        private System.Windows.Forms.ToolStripMenuItem contextChartPrint;
         private System.Windows.Forms.ToolStripMenuItem contextSizeA4;
         private System.Windows.Forms.ToolStripMenuItem contextSizeA5;
         private System.Windows.Forms.ToolStripMenuItem contextSizeA6;

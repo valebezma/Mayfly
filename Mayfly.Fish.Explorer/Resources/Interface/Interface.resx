@@ -144,8 +144,8 @@
   <data name="Catches" xml:space="preserve">
     <value>Catches</value>
   </data>
-  <data name="CatchesCorrected" xml:space="preserve">
-    <value>Population</value>
+  <data name="CatchesAdjusted" xml:space="preserve">
+    <value>Adjusted catches</value>
   </data>
   <data name="CohortPresentation" xml:space="preserve">
     <value>Generation of {0}</value>

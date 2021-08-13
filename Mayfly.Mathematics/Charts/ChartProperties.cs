@@ -241,5 +241,10 @@ namespace Mayfly.Mathematics.Charts
         {
             if (!checkBoxXLog.Enabled) checkBoxXLog.Checked = false;
         }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            plot.Print();
+        }
     }
 }

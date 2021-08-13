@@ -118,74 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="contextChart.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>598, 17</value>
+    <value>17, 173</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="contextChartProperties.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
   <data name="contextChartProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="contextChartProperties.Text" xml:space="preserve">
     <value>Properties</value>
   </data>
   <data name="contextChartAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="contextChartAxes.Text" xml:space="preserve">
     <value>Axis properties</value>
   </data>
   <data name="contextChartAdjustAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="contextChartAdjustAxes.Text" xml:space="preserve">
     <value>Adjust axes automatically</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 6</value>
+    <value>206, 6</value>
   </data>
   <data name="contextChartSeparate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="contextChartSeparate.Text" xml:space="preserve">
     <value>Show separately</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 6</value>
-  </data>
-  <data name="contextChartResize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
-  </data>
-  <data name="contextChartResize.Text" xml:space="preserve">
-    <value>Resize chart</value>
-  </data>
-  <data name="contextChartImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
-  </data>
-  <data name="contextChartImage.Text" xml:space="preserve">
-    <value>Save image...</value>
-  </data>
-  <data name="contextChartPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
-  </data>
-  <data name="contextChartPrint.Text" xml:space="preserve">
-    <value>Print...</value>
-  </data>
-  <data name="contextChartCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 22</value>
-  </data>
-  <data name="contextChartCopy.Text" xml:space="preserve">
-    <value>Copy chart</value>
-  </data>
-  <data name="contextChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 192</value>
-  </data>
-  <data name="&gt;&gt;contextChart.Name" xml:space="preserve">
-    <value>contextChart</value>
-  </data>
-  <data name="&gt;&gt;contextChart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>206, 6</value>
   </data>
   <data name="contextSizeA4.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 22</value>
@@ -205,8 +172,23 @@
   <data name="contextSizeA6.Text" xml:space="preserve">
     <value>Fit corner of A4 page</value>
   </data>
+  <data name="contextChartPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="contextChartPrint.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="contextChart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 126</value>
+  </data>
+  <data name="&gt;&gt;contextChart.Name" xml:space="preserve">
+    <value>contextChart</value>
+  </data>
+  <data name="&gt;&gt;contextChart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="contextScatterplot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>447, 17</value>
+    <value>17, 134</value>
   </metadata>
   <data name="contextScatterplotProperties.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -251,11 +233,59 @@
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 6</value>
   </data>
+  <data name="contextScatterplotDescriptiveX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 22</value>
+  </data>
+  <data name="contextScatterplotDescriptiveX.Text" xml:space="preserve">
+    <value>X descriptive</value>
+  </data>
+  <data name="contextScatterplotDescriptiveX.ToolTipText" xml:space="preserve">
+    <value>Press Ctrl for clipping</value>
+  </data>
+  <data name="contextScatterplotDescriptiveY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 22</value>
+  </data>
+  <data name="contextScatterplotDescriptiveY.Text" xml:space="preserve">
+    <value>Y descriptive</value>
+  </data>
+  <data name="contextScatterplotDescriptiveY.ToolTipText" xml:space="preserve">
+    <value>Press Ctrl for clipping</value>
+  </data>
+  <data name="contextScatterplotTrend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 22</value>
+  </data>
+  <data name="contextScatterplotTrend.Text" xml:space="preserve">
+    <value>Trend</value>
+  </data>
+  <data name="contextScatterplotTrendCompare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 22</value>
+  </data>
+  <data name="contextScatterplotTrendCompare.Text" xml:space="preserve">
+    <value>Compare trends</value>
+  </data>
   <data name="contextScatterplotStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
   </data>
   <data name="contextScatterplotStatistics.Text" xml:space="preserve">
     <value>Statistics</value>
+  </data>
+  <data name="contextScatterplotMerge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="contextScatterplotMerge.Text" xml:space="preserve">
+    <value>Merge</value>
+  </data>
+  <data name="contextScatterplotSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="contextScatterplotSplit.Text" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="contextScatterplotHistogramX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="contextScatterplotHistogramX.Text" xml:space="preserve">
+    <value>To histogram by abscissa values</value>
   </data>
   <data name="contextScatterplotTransform.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
@@ -300,56 +330,8 @@
   <data name="&gt;&gt;contextScatterplot.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="contextScatterplotDescriptiveX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
-  </data>
-  <data name="contextScatterplotDescriptiveX.Text" xml:space="preserve">
-    <value>X descriptive</value>
-  </data>
-  <data name="contextScatterplotDescriptiveX.ToolTipText" xml:space="preserve">
-    <value>Press Ctrl for clipping</value>
-  </data>
-  <data name="contextScatterplotDescriptiveY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
-  </data>
-  <data name="contextScatterplotDescriptiveY.Text" xml:space="preserve">
-    <value>Y descriptive</value>
-  </data>
-  <data name="contextScatterplotDescriptiveY.ToolTipText" xml:space="preserve">
-    <value>Press Ctrl for clipping</value>
-  </data>
-  <data name="contextScatterplotTrend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
-  </data>
-  <data name="contextScatterplotTrend.Text" xml:space="preserve">
-    <value>Trend</value>
-  </data>
-  <data name="contextScatterplotTrendCompare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
-  </data>
-  <data name="contextScatterplotTrendCompare.Text" xml:space="preserve">
-    <value>Compare trends</value>
-  </data>
-  <data name="contextScatterplotMerge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 22</value>
-  </data>
-  <data name="contextScatterplotMerge.Text" xml:space="preserve">
-    <value>Merge</value>
-  </data>
-  <data name="contextScatterplotSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 22</value>
-  </data>
-  <data name="contextScatterplotSplit.Text" xml:space="preserve">
-    <value>Split</value>
-  </data>
-  <data name="contextScatterplotHistogramX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 22</value>
-  </data>
-  <data name="contextScatterplotHistogramX.Text" xml:space="preserve">
-    <value>To histogram by abscissa values</value>
-  </data>
   <metadata name="contextHistogram.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>298, 17</value>
+    <value>17, 95</value>
   </metadata>
   <data name="contextHistogramProperties.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -381,6 +363,28 @@
   <data name="contextHistogramDelete.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="ContextHistogramCopyAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ContextHistogramCopyAll.Text" xml:space="preserve">
+    <value>Copy all values</value>
+  </data>
+  <data name="ContextHistogramCopyAll.ToolTipText" xml:space="preserve">
+    <value>Use [Shift] to include titles</value>
+  </data>
+  <data name="ContextHistogramCopyDatapoints.ShortcutKeyDisplayString" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ContextHistogramCopyDatapoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="ContextHistogramCopyDatapoints.Text" xml:space="preserve">
+    <value>Copy datapoint values</value>
+  </data>
+  <data name="ContextHistogramCopyDatapoints.ToolTipText" xml:space="preserve">
+    <value>Use [Shift] to include titles
+Also use [Ctrl] to get relative frequences</value>
+  </data>
   <data name="contextHistogramCopyValues.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
   </data>
@@ -390,11 +394,23 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 6</value>
   </data>
+  <data name="contextHistogramDescriptive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="contextHistogramDescriptive.Text" xml:space="preserve">
+    <value>Descriptive</value>
+  </data>
   <data name="contextHistogramStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
   </data>
   <data name="contextHistogramStatistics.Text" xml:space="preserve">
     <value>Statistics</value>
+  </data>
+  <data name="contextHistogramSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 22</value>
+  </data>
+  <data name="contextHistogramSplit.Text" xml:space="preserve">
+    <value>Split</value>
   </data>
   <data name="contextHistogramTransform.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
@@ -439,20 +455,8 @@
   <data name="&gt;&gt;contextHistogram.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="contextHistogramDescriptive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 22</value>
-  </data>
-  <data name="contextHistogramDescriptive.Text" xml:space="preserve">
-    <value>Descriptive</value>
-  </data>
-  <data name="contextHistogramSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 22</value>
-  </data>
-  <data name="contextHistogramSplit.Text" xml:space="preserve">
-    <value>Split</value>
-  </data>
   <metadata name="contextEvaluation.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 17</value>
+    <value>17, 56</value>
   </metadata>
   <data name="contextEvalProperties.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -474,6 +478,12 @@
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 6</value>
+  </data>
+  <data name="contextEvalPointDescriptive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="contextEvalPointDescriptive.Text" xml:space="preserve">
+    <value>Data point descriptive</value>
   </data>
   <data name="contextEvalStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
@@ -518,12 +528,6 @@
   <data name="&gt;&gt;contextEvaluation.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="contextEvalPointDescriptive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
-  </data>
-  <data name="contextEvalPointDescriptive.Text" xml:space="preserve">
-    <value>Data point descriptive</value>
-  </data>
   <metadata name="contextFunctor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -541,28 +545,6 @@
   </data>
   <data name="&gt;&gt;contextFunctor.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ContextHistogramCopyAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ContextHistogramCopyAll.Text" xml:space="preserve">
-    <value>Copy all values</value>
-  </data>
-  <data name="ContextHistogramCopyAll.ToolTipText" xml:space="preserve">
-    <value>Use [Shift] to include titles</value>
-  </data>
-  <data name="ContextHistogramCopyDatapoints.ShortcutKeyDisplayString" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ContextHistogramCopyDatapoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
-  </data>
-  <data name="ContextHistogramCopyDatapoints.Text" xml:space="preserve">
-    <value>Copy datapoint values</value>
-  </data>
-  <data name="ContextHistogramCopyDatapoints.ToolTipText" xml:space="preserve">
-    <value>Use [Shift] to include titles
-Also use [Ctrl] to get relative frequences</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -606,10 +588,10 @@ Also use [Ctrl] to get relative frequences</value>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;contextChartResize.Name" xml:space="preserve">
-    <value>contextChartResize</value>
+  <data name="&gt;&gt;contextChartPrint.Name" xml:space="preserve">
+    <value>contextChartPrint</value>
   </data>
-  <data name="&gt;&gt;contextChartResize.Type" xml:space="preserve">
+  <data name="&gt;&gt;contextChartPrint.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;contextSizeA4.Name" xml:space="preserve">
@@ -628,24 +610,6 @@ Also use [Ctrl] to get relative frequences</value>
     <value>contextSizeA6</value>
   </data>
   <data name="&gt;&gt;contextSizeA6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextChartImage.Name" xml:space="preserve">
-    <value>contextChartImage</value>
-  </data>
-  <data name="&gt;&gt;contextChartImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextChartPrint.Name" xml:space="preserve">
-    <value>contextChartPrint</value>
-  </data>
-  <data name="&gt;&gt;contextChartPrint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextChartCopy.Name" xml:space="preserve">
-    <value>contextChartCopy</value>
-  </data>
-  <data name="&gt;&gt;contextChartCopy.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;contextScatterplotProperties.Name" xml:space="preserve">
@@ -786,6 +750,18 @@ Also use [Ctrl] to get relative frequences</value>
   <data name="&gt;&gt;contextHistogramCopyValues.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ContextHistogramCopyAll.Name" xml:space="preserve">
+    <value>ContextHistogramCopyAll</value>
+  </data>
+  <data name="&gt;&gt;ContextHistogramCopyAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ContextHistogramCopyDatapoints.Name" xml:space="preserve">
+    <value>ContextHistogramCopyDatapoints</value>
+  </data>
+  <data name="&gt;&gt;ContextHistogramCopyDatapoints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
@@ -874,18 +850,6 @@ Also use [Ctrl] to get relative frequences</value>
     <value>contextFunctorProperties</value>
   </data>
   <data name="&gt;&gt;contextFunctorProperties.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ContextHistogramCopyAll.Name" xml:space="preserve">
-    <value>ContextHistogramCopyAll</value>
-  </data>
-  <data name="&gt;&gt;ContextHistogramCopyAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ContextHistogramCopyDatapoints.Name" xml:space="preserve">
-    <value>ContextHistogramCopyDatapoints</value>
-  </data>
-  <data name="&gt;&gt;ContextHistogramCopyDatapoints.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

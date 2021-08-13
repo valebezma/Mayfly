@@ -147,12 +147,9 @@
             this.menuItemComposition = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemGrowth = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGrowthCrossSection = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGrowthCohorts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMortality = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemMortalitySustainable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMortalityCohorts = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSelectivity = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemStock = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExtrapolation = new System.Windows.Forms.ToolStripMenuItem();
@@ -794,7 +791,6 @@
             this.toolStripSeparator7,
             this.menuItemGrowth,
             this.menuItemMortality,
-            this.menuItemSelectivity,
             this.toolStripSeparator22,
             this.menuItemStock});
             this.menuFishery.Name = "menuFishery";
@@ -819,15 +815,9 @@
             // menuItemGrowth
             // 
             this.menuItemGrowth.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemGrowthCrossSection,
             this.menuItemGrowthCohorts});
             this.menuItemGrowth.Name = "menuItemGrowth";
             resources.ApplyResources(this.menuItemGrowth, "menuItemGrowth");
-            // 
-            // menuItemGrowthCrossSection
-            // 
-            this.menuItemGrowthCrossSection.Name = "menuItemGrowthCrossSection";
-            resources.ApplyResources(this.menuItemGrowthCrossSection, "menuItemGrowthCrossSection");
             // 
             // menuItemGrowthCohorts
             // 
@@ -837,25 +827,14 @@
             // menuItemMortality
             // 
             this.menuItemMortality.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemMortalitySustainable,
             this.menuItemMortalityCohorts});
             this.menuItemMortality.Name = "menuItemMortality";
             resources.ApplyResources(this.menuItemMortality, "menuItemMortality");
-            // 
-            // menuItemMortalitySustainable
-            // 
-            this.menuItemMortalitySustainable.Name = "menuItemMortalitySustainable";
-            resources.ApplyResources(this.menuItemMortalitySustainable, "menuItemMortalitySustainable");
             // 
             // menuItemMortalityCohorts
             // 
             this.menuItemMortalityCohorts.Name = "menuItemMortalityCohorts";
             resources.ApplyResources(this.menuItemMortalityCohorts, "menuItemMortalityCohorts");
-            // 
-            // menuItemSelectivity
-            // 
-            this.menuItemSelectivity.Name = "menuItemSelectivity";
-            resources.ApplyResources(this.menuItemSelectivity, "menuItemSelectivity");
             // 
             // toolStripSeparator22
             // 
@@ -3565,84 +3544,84 @@
             // 
             this.loaderCard.WorkerReportsProgress = true;
             this.loaderCard.DoWork += new System.ComponentModel.DoWorkEventHandler(this.cardLoader_DoWork);
-            this.loaderCard.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderCard.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderCard.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.cardLoader_RunWorkerCompleted);
             // 
             // dataSaver
             // 
             this.dataSaver.WorkerReportsProgress = true;
             this.dataSaver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dataSaver_DoWork);
-            this.dataSaver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.dataSaver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.dataSaver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dataSaver_RunWorkerCompleted);
             // 
             // loaderSpc
             // 
             this.loaderSpc.WorkerReportsProgress = true;
-            this.loaderSpc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SpcLoader_DoWork);
-            this.loaderSpc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.loaderSpc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SpcLoader_RunWorkerCompleted);
+            this.loaderSpc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.spcLoader_DoWork);
+            this.loaderSpc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
+            this.loaderSpc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.spcLoader_RunWorkerCompleted);
             // 
             // loaderSpcList
             // 
             this.loaderSpcList.WorkerReportsProgress = true;
             this.loaderSpcList.DoWork += new System.ComponentModel.DoWorkEventHandler(this.spcListLoader_DoWork);
-            this.loaderSpcList.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderSpcList.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderSpcList.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.spcListLoader_RunWorkerCompleted);
             // 
             // loaderLog
             // 
             this.loaderLog.WorkerReportsProgress = true;
-            this.loaderLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LogLoader_DoWork);
-            this.loaderLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
-            this.loaderLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LogLoader_RunWorkerCompleted);
+            this.loaderLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.logLoader_DoWork);
+            this.loaderLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
+            this.loaderLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.logLoader_RunWorkerCompleted);
             // 
             // loaderInd
             // 
             this.loaderInd.WorkerReportsProgress = true;
             this.loaderInd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.indLoader_DoWork);
-            this.loaderInd.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderInd.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderInd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.indLoader_RunWorkerCompleted);
             // 
             // loaderData
             // 
             this.loaderData.WorkerReportsProgress = true;
             this.loaderData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dataLoader_DoWork);
-            this.loaderData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dataLoader_RunWorkerCompleted);
             // 
             // loaderStratified
             // 
             this.loaderStratified.WorkerReportsProgress = true;
             this.loaderStratified.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedLoader_DoWork);
-            this.loaderStratified.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderStratified.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderStratified.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.stratifiedLoader_RunWorkerCompleted);
             // 
             // loaderIndSimulated
             // 
             this.loaderIndSimulated.WorkerReportsProgress = true;
             this.loaderIndSimulated.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedSimulator_DoWork);
-            this.loaderIndSimulated.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderIndSimulated.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderIndSimulated.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.stratifiedSimulator_RunWorkerCompleted);
             // 
             // loaderIndExtended
             // 
             this.loaderIndExtended.WorkerReportsProgress = true;
             this.loaderIndExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.indExtender_DoWork);
-            this.loaderIndExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderIndExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderIndExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // loaderLogExtended
             // 
             this.loaderLogExtended.WorkerReportsProgress = true;
-            this.loaderLogExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LogExtender_DoWork);
-            this.loaderLogExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderLogExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.logExtender_DoWork);
+            this.loaderLogExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderLogExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // loaderStratifiedExtended
             // 
             this.loaderStratifiedExtended.WorkerReportsProgress = true;
             this.loaderStratifiedExtended.DoWork += new System.ComponentModel.DoWorkEventHandler(this.stratifiedExtender_DoWork);
-            this.loaderStratifiedExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.loaderStratifiedExtended.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.loaderStratifiedExtended.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.extender_RunWorkerCompleted);
             // 
             // fbdBackup
@@ -3655,7 +3634,7 @@
             this.dietCompiler.WorkerReportsProgress = true;
             this.dietCompiler.WorkerSupportsCancellation = true;
             this.dietCompiler.DoWork += new System.ComponentModel.DoWorkEventHandler(this.dietCompiler_DoWork);
-            this.dietCompiler.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.dietCompiler.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.dietCompiler.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dietCompiler_RunWorkerCompleted);
             // 
             // artefactFinder
@@ -3667,14 +3646,14 @@
             // 
             this.specTipper.WorkerReportsProgress = true;
             this.specTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.specTipper_DoWork);
-            this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.specTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.specTipper_RunWorkerCompleted);
             // 
             // comparerLog
             // 
             this.comparerLog.WorkerReportsProgress = true;
             this.comparerLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.comparerLog_DoWork);
-            this.comparerLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.comparerLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.comparerLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.comparerLog_RunWorkerCompleted);
             // 
             // specUpdater
@@ -3687,7 +3666,7 @@
             // 
             this.modelCalc.WorkerReportsProgress = true;
             this.modelCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalc_DoWork);
-            this.modelCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.ProgressChanged);
+            this.modelCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.modelCalc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.modelCalc_RunWorkerCompleted);
             // 
             // calcModel
@@ -3805,8 +3784,8 @@
             this.Controls.Add(this.tabControl);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.tabControl.ResumeLayout(false);
@@ -3904,7 +3883,6 @@
         private System.Windows.Forms.ImageList imageListWaters;
         private System.Windows.Forms.ToolStripMenuItem menuFishery;
         private Mayfly.Controls.SpreadSheet spreadSheetInd;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSelectivity;
         private TaskDialogs.TaskDialog taskDialogSave;
         private TaskDialogs.TaskDialogButton tdbSaveAll;
         private TaskDialogs.TaskDialogButton tdbDiscard;
@@ -4058,9 +4036,7 @@
         private TaskDialogs.TaskDialogButton tdbSpecCancel;
         private System.Windows.Forms.ToolStripStatusLabel statusBio;
         private System.Windows.Forms.ToolStripMenuItem menuItemMortality;
-        private System.Windows.Forms.ToolStripMenuItem menuItemMortalitySustainable;
         private System.Windows.Forms.ToolStripMenuItem menuItemGrowth;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCrossSection;
         private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
         private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
         private System.Windows.Forms.ToolStripMenuItem menuSurvey;

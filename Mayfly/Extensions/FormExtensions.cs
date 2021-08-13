@@ -299,9 +299,10 @@ namespace Mayfly.Extensions
 
             //if (forward)
             //{
-                while (ctrl.SelectedPage != page)
+                while (ctrl.SelectedPage != ctrl.Pages[ctrl.Pages.Count() - 1])
                 {
                     ctrl.NextPage();
+                    if (ctrl.SelectedPage == page) return;
                 }
             //}
         }

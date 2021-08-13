@@ -142,11 +142,11 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Population.
+        ///   Looks up a localized string similar to Adjusted catches.
         /// </summary>
-        internal static string CatchesCorrected {
+        internal static string CatchesAdjusted {
             get {
-                return ResourceManager.GetString("CatchesCorrected", resourceCulture);
+                return ResourceManager.GetString("CatchesAdjusted", resourceCulture);
             }
         }
         
