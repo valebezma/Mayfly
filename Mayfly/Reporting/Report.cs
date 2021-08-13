@@ -300,10 +300,12 @@ namespace Mayfly
 
         public void AddImage(string svg, string caption)
         {
-            StartDiv("picture");
+            WriteLine("<img>");
+            //StartDiv("figure");
             WriteLine(File.ReadAllText(svg));
-            AddParagraphClass("picture-label", caption);
-            CloseDiv();
+            AddParagraphClass("figure-label", caption);
+            //CloseDiv();
+            WriteLine("</img>");
         }
 
 

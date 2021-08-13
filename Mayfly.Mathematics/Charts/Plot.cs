@@ -2222,14 +2222,12 @@ namespace Mayfly.Mathematics.Charts
 
         public string GetVector(double width, double height)
         {
-            string svg = IO.GetTempFileName();
+            string svg = IO.GetTempFileName(".svg");
 
             REngine.SetEnvironmentVariables();
             REngine engine = REngine.GetInstance();
 
             engine.Evaluate(string.Format("options(OutDec= '{0}')", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator));
-engine.Evaluate(string.Format("fontname = 'FiraGo'", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator));
-
             engine.Evaluate(string.Format("svg('{0}', width = {1} / 2.54, height = {2} / 2.54, pointsize = {3})", 
                 svg.Replace('\\', '/'), width, height, 8));
             engine.Evaluate("par(mfrow = c(1, 1))");
@@ -2237,6 +2235,8 @@ engine.Evaluate(string.Format("fontname = 'FiraGo'", CultureInfo.CurrentUICultur
             engine.Evaluate(string.Format("plot(NULL, bty = 'n', xlab = '{0}', ylab = '{1}', xlim=c({2}, {3}), ylim=c({4}, {5}))",
                 AxisXTitle, AxisYTitle, AxisXMin, AxisXMax, AxisYMin, AxisYMax)
                 );
+
+            ApplyPaletteColors();
 
             foreach (Series series in this.Series)
             {
