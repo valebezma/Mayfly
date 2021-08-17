@@ -11,9 +11,9 @@ div.sheet {
     page-break-before: always;
 }
 
-div.sheet:first-child {
-    page-break-before: avoid;
-}
+    div.sheet:first-child {
+        page-break-before: avoid;
+    }
 
 div.odd {
     page-break-before: right;
@@ -33,7 +33,6 @@ div.odd {
         width: 297mm;
         padding: 2cm;
     }
-
 }
 
 @media print {
@@ -72,51 +71,56 @@ h2 {
 }
 
 .sheet *:first-child,
-.landscape *:first-child  {
+.landscape *:first-child {
     margin-top: 0;
 }
 
 h3 {
     font-size: 12pt;
-    /* text-transform: uppercase; */
     margin: 2cm 0 1cm 0;
     page-break-inside: avoid;
+}
+
+h3::first-letter {
+    text-transform: uppercase;
 }
 
 p {
     font-size: 9pt;
 }
 
-/* p:first-letter {
-    text-transform: uppercase;
-} */
+    p.notice {
+        font-size: 6pt;
+        /* font-weight: 250; */
+        padding-left: 8em;
+        text-indent: -8em;
+    }
 
-p.notice {
-    font-size: 6pt;
-    /* font-weight: 250; */
-    padding-left: 8em;
-    text-indent: -8em;
-}
+        p.notice .label {
+            float: left;
+            font-weight: 600;
+            min-width: 8em;
+        }
 
-p.notice .label {
-    float: left;
-    font-weight: 600;
-    min-width: 8em;
-}
+    p.footer {
+        margin-top: 1cm;
+        font-size: 6pt;
+        font-weight: 300;
+    }
 
-p.footer {
-    margin-top: 1cm;
-    font-size: 6pt;
-    font-weight: 300;
-}
+    p.value {
+        margin: 0;
+    }
 
-p.value {
-    margin: 0;
-}
+    p.warning {
+        padding: 5mm;
+        border: solid 1px;
+        border-color: #D3D3D3;
+    }
 
 span.latin {
     /* font-family: 'Minion Pro'; */
-    font-style: italic;    
+    font-style: italic;
 }
 
 span.latin-inside {
@@ -124,13 +128,13 @@ span.latin-inside {
     font-style: normal;
 }
 
-.picture {
+.figure {
     text-align: center;
     align-content: center;
     margin: auto;
 }
 
-.picture-label {
-    margin-top: 1cm;
-    text-align:center;
+.figure-label {
+    margin-bottom: 1cm;
+    text-align: center;
 }

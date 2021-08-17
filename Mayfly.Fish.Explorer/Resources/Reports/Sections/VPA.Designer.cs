@@ -61,6 +61,15 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age.
+        /// </summary>
+        internal static string Column1 {
+            get {
+                return ResourceManager.GetString("Column1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Year.
         /// </summary>
         internal static string Column2 {

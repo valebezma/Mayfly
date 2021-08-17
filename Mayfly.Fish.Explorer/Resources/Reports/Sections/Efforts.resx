@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Header" xml:space="preserve">
-    <value>Gears and Efforts Summary</value>
+    <value>Gears and efforts summary</value>
   </data>
   <data name="Paragraph1" xml:space="preserve">
     <value>{0} of {1} classes from {2} to {3} were used. Applied by different gear classes efforts expressed as {4} given in table {5}.</value>

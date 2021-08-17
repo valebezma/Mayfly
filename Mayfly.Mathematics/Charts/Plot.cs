@@ -2236,37 +2236,83 @@ namespace Mayfly.Mathematics.Charts
                 AxisXTitle, AxisYTitle, AxisXMin, AxisXMax, AxisYMin, AxisYMax)
                 );
 
-            ApplyPaletteColors();
+            List<string> seriesNames = new List<string>();
+            engine.Evaluate("cols = c()");
+            engine.Evaluate("ltys = c()");
+            engine.Evaluate("lwds = c()");
+            engine.Evaluate("pchs = c()");
+            engine.Evaluate("fills = c()");
+            engine.Evaluate("borders = c()");
 
             foreach (Series series in this.Series)
             {
+                if (series.Points.Count == 0) continue;
+
+                seriesNames.Add(series.Name);
+
                 BivariateSample data = GetDataPointValues(series);
+
                 var xvalues = engine.CreateNumericVector(data.X);
                 var yvalues = engine.CreateNumericVector(data.Y);
                 engine.SetSymbol("xvalues", xvalues);
                 engine.SetSymbol("yvalues", yvalues);
+
                 Color col = series.Color;
                 if (col.Name == "0") col = series.MarkerBorderColor;
                 if (col.Name == "0") col = Color.Black;
 
+                engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                engine.Evaluate("cols = c(cols, col1)");
+
                 switch (series.ChartType)
                 {
                     case SeriesChartType.Column:
-                        engine.Evaluate(string.Format("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = rgb({0}, {1}, {2}, {3}))",
-                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        engine.Evaluate("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = col1)");
+                        engine.Evaluate("pchs = c(pchs, NA)");
+                        engine.Evaluate("ltys = c(ltys, NA)");
+                        engine.Evaluate("fills = c(fills, col)");
+                        engine.Evaluate("borders = c(borders, 'black')");
+                        engine.Evaluate("lwds = c(lwds, NA)");
                         break;
 
                     case SeriesChartType.Line:
                     case SeriesChartType.Area:
-                        engine.Evaluate(string.Format("lines(yvalues ~ xvalues, col = rgb({0}, {1}, {2}, {3}))",
-                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        engine.Evaluate("lines(yvalues ~ xvalues, col = col1)");
+                        engine.Evaluate("pchs = c(pchs, NA)");
+                        engine.Evaluate("ltys = c(ltys, 1)");
+                        engine.Evaluate("fills = c(fills, NA)");
+                        engine.Evaluate("borders = c(borders, NA)");
+                        engine.Evaluate("lwds = c(lwds, 2)");
                         break;
 
                     case SeriesChartType.Point:
-                        engine.Evaluate(string.Format("points(yvalues ~ xvalues, pch = 1, col = rgb({0}, {1}, {2}, {3}))",
-                            ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        engine.Evaluate("points(yvalues ~ xvalues, pch = 1, col = col1)");
+                        engine.Evaluate("pchs = c(pchs, 1)");
+                        engine.Evaluate("ltys = c(ltys, NA)");
+                        engine.Evaluate("fills = c(fills, NA)");
+                        engine.Evaluate("borders = c(borders, NA)");
+                        engine.Evaluate("lwds = c(lwds, NA)");
                         break;
                 }
+            }
+
+            if (Series.Count > 1)
+            {
+                var names = engine.CreateCharacterVector(seriesNames);
+                engine.SetSymbol("names", names);
+                engine.Evaluate("legend(x = 'topright', legend = names, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds)");
+
+                //legend(x, y = NULL, legend, fill = NULL, col = par("col"),
+                //         border = "black", lty, lwd, pch,
+                //angle = 45, density = NULL, bty = "o", bg = par("bg"),
+                //box.lwd = par("lwd"), box.lty = par("lty"), box.col = par("fg"),
+                //pt.bg = NA, cex = 1, pt.cex = cex, pt.lwd = lwd,
+                //xjust = 0, yjust = 1, x.intersp = 1, y.intersp = 1,
+                //adj = c(0, 0.5), text.width = NULL, text.col = par("col"),
+                //text.font = NULL, merge = do.lines && has.pch, trace = FALSE,
+                //plot = TRUE, ncol = 1, horiz = FALSE, title = NULL,
+                //inset = 0, xpd, title.col = text.col, title.adj = 0.5,
+                //seg.len = 2)
             }
 
             engine.Evaluate("dev.off()");
@@ -2275,6 +2321,8 @@ namespace Mayfly.Mathematics.Charts
 
         public Report GetPrintable(double width, double height)
         {
+            ApplyPaletteColors();
+
             Report report = new Report(string.Empty);
             report.AddImage(GetVector(width, height), Text);
             report.EndBranded();

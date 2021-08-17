@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Composition Summary.
+        ///   Looks up a localized string similar to {0} composition summary.
         /// </summary>
         internal static string Header {
             get {
@@ -75,6 +75,15 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         internal static string Paragraph1 {
             get {
                 return ResourceManager.GetString("Paragraph1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Averaged by gear class composition is depicted in figure {0}..
+        /// </summary>
+        internal static string Paragraph1_1 {
+            get {
+                return ResourceManager.GetString("Paragraph1_1", resourceCulture);
             }
         }
         

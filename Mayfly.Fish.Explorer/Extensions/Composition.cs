@@ -327,6 +327,8 @@ namespace Mayfly.Fish.Explorer
             report.AddParagraph(Resources.Reports.Sections.Population.Paragraph1, categoryType, 
                 speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
 
+            Report.Table tableCatches;
+
             if (composition[0] is AgeGroup)
             {
                 if (UserSettings.AgeSuggest && data.GrowthModels.GetSpecies().Contains(speciesRow.Species))
@@ -343,13 +345,18 @@ namespace Mayfly.Fish.Explorer
                             data.GrowthModels.Description);
                     }
                 }
-            }
 
-            Report.Table tableCatches = composition.GetStandardCatchesTable(string.Format(Resources.Reports.Sections.Population.Table, categoryType));
-            //.GetTable(                
-            //    CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction |
-            //    CompositionColumn.Mass | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
-            //    string.Format(Resources.Reports.Sections.Population.Table, categoryType));
+                tableCatches = composition.GetStandardCatchesTable(
+                    string.Format(Resources.Reports.Sections.Population.Table, categoryType));
+            }
+            else
+            {
+                tableCatches = composition.GetTable(
+                    CompositionColumn.MassSample | CompositionColumn.SexRatio | 
+                    CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.AbundanceFraction |
+                    CompositionColumn.Mass | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
+                    string.Format(Resources.Reports.Sections.Population.Table, categoryType));
+            }
 
             report.AddTable(tableCatches);
         }

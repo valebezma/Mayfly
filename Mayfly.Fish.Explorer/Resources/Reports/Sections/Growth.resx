@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Column1" xml:space="preserve">
-    <value>Age</value>
-  </data>
-  <data name="Table1" xml:space="preserve">
-    <value>Basic biological parameters of {0}</value>
+  <data name="Paragraph3" xml:space="preserve">
+    <value>Growth (according to von Bertalanffy) curve is depicted in figure {0} and described as:</value>
   </data>
   <data name="Paragraph2" xml:space="preserve">
-    <value>Growth curve is model ({0}) described with following equation:</value>
-  </data>
-  <data name="Paragraph1" xml:space="preserve">
-    <value>Basic biological features, e. g. mean length and mass, of {0} of different ages are given in table {1}.</value>
-  </data>
-  <data name="Paragraph3" xml:space="preserve">
-    <value>Equation of mass to length regression ({0}) is:</value>
+    <value>Length-to-mass regression depicted in figure {0} and described as:</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Growth parameters of {0}</value>
+    <value>Basic biological parameters of {0}</value>
+  </data>
+  <data name="Paragraph1" xml:space="preserve">
+    <value>Specimen of {0} in catches were from {1} to {2} mm in length ({3:N1} mm in average). Individual mass ranged from {4} to {5} g ({6:N1} g in average).</value>
+  </data>
+  <data name="Paragraph4" xml:space="preserve">
+    <value>Combined weight growth model is depicted in figure {0}.</value>
+  </data>
+  <data name="Paragraph5" xml:space="preserve">
+    <value>Failed to calculate growth parameters.</value>
+  </data>
+  <data name="Paragraph6" xml:space="preserve">
+    <value>Mean catch per effort unit of {0} equals {1:N2} ind./{2} (or {3:N2} kg/{2}). Basic biological parameters of {0} catches in different classes of {4} are given in table {5}.</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Basic biological parameters of {0} catches in different classes of {1}</value>
   </data>
 </root>

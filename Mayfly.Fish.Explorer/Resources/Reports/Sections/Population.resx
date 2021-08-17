@@ -130,6 +130,9 @@
     <value>Age composition of {0} was obtained using growth model:</value>
   </data>
   <data name="Header" xml:space="preserve">
-    <value>{0} Composition Summary</value>
+    <value>{0} composition summary</value>
+  </data>
+  <data name="Paragraph1_1" xml:space="preserve">
+    <value>Averaged by gear class composition is depicted in figure {0}.</value>
   </data>
 </root>

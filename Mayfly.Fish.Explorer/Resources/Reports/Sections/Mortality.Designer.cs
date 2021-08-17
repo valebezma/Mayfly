@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Catch curve ({0}) is built on values of CPUE of {1} to {2} age groups of {3} and is described with following equation:.
+        ///   Looks up a localized string similar to Catch curve is built on values of CPUE of {0} to {1} age groups of {2} and is described with following equation:.
         /// </summary>
         internal static string Paragraph1 {
             get {
@@ -70,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to So, Instantaneous mortality rate Z equals {0:N4}. Therefore survival rate (S) and real mortality (φ) are:.
+        ///   Looks up a localized string similar to So, instantaneous mortality rate (Z) equals {0:N4}. Therefore, survival rate (S) and real mortality (φ) are:.
         /// </summary>
         internal static string Paragraph2 {
             get {
@@ -79,7 +79,16 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mortality rates of {0}.
+        ///   Looks up a localized string similar to Adjusted age composition of {0} population is depicted in figure {1}..
+        /// </summary>
+        internal static string Paragraph3 {
+            get {
+                return ResourceManager.GetString("Paragraph3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age composition adjustment using mortality estimate.
         /// </summary>
         internal static string Title {
             get {

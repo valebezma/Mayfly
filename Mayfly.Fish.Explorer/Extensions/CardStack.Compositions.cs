@@ -366,9 +366,9 @@ namespace Mayfly.Fish.Explorer
             {
                 foreach (CardStack meshData in classedStacks)
                 {
-                    double q = meshData.Quantity(speciesRow);
+                    //double q = meshData.Quantity(speciesRow);
 
-                    if (q == 0) continue;
+                    //if (q == 0) continue;
 
                     SpeciesSwarm swarm = meshData.GetSwarm(speciesRow);
                     swarm.Index = meshData.GetEffort(samplerType, ue.Variant);

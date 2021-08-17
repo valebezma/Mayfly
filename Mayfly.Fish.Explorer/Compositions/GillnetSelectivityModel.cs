@@ -239,24 +239,24 @@ namespace Mayfly.Fish.Explorer
             return s / max;
         }
 
-        public void AddReport1(Report report, string tableheader)
+        public Report.Table GetReportTable(string tableheader)
         {
-            Report.Table table1 = new Report.Table(tableheader);
+            Report.Table table = new Report.Table(tableheader);
 
-            table1.StartHeader();
-            table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_1, 2);
-            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_2, 4);
-            table1.EndRow();
-            table1.StartRow();
-            table1.AddHeaderCell("m<sub>a</sub>");
-            table1.AddHeaderCell("m<sub>b</sub>");
-            table1.AddHeaderCell("L<sub>m<sub>a</sub></sub>");
-            table1.AddHeaderCell("L<sub>m<sub>b</sub></sub>");
-            table1.AddHeaderCell("SF");
-            table1.AddHeaderCell("SD");
-            table1.EndRow();
-            table1.EndHeader();
+            table.StartHeader();
+            table.StartRow();
+            table.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_1, 2);
+            table.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column1_2, 4);
+            table.EndRow();
+            table.StartRow();
+            table.AddHeaderCell("m<sub>a</sub>");
+            table.AddHeaderCell("m<sub>b</sub>");
+            table.AddHeaderCell("L<sub>m<sub>a</sub></sub>");
+            table.AddHeaderCell("L<sub>m<sub>b</sub></sub>");
+            table.AddHeaderCell("SF");
+            table.AddHeaderCell("SD");
+            table.EndRow();
+            table.EndHeader();
 
             for (int i = 0; i < Catches.Count - 1; i++)
             {
@@ -267,19 +267,19 @@ namespace Mayfly.Fish.Explorer
 
                 GillnetPairSelectivityModel model = new GillnetPairSelectivityModel(ca, ma, cb, mb);
 
-                table1.StartRow();
+                table.StartRow();
 
-                table1.AddCellValue(ma);
-                table1.AddCellValue(mb);
-                table1.AddCellRight(model.dista.Mean, "N1");
-                table1.AddCellRight(model.distb.Mean, "N1");
-                table1.AddCellRight(model.SelectionFactor, "N4");
-                table1.AddCellRight(model.StandardDeviation, "N4");
+                table.AddCellValue(ma, "N2");
+                table.AddCellValue(mb, "N2");
+                table.AddCellRight(model.dista.Mean, "N1");
+                table.AddCellRight(model.distb.Mean, "N1");
+                table.AddCellRight(model.SelectionFactor, "N4");
+                table.AddCellRight(model.StandardDeviation, "N4");
 
-                table1.EndRow(); 
+                table.EndRow(); 
             }
 
-            report.AddTable(table1);
+            return table;
         }
 
         public void AddReport2(Report report, string tableheader)

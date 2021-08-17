@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, spreadSheetCohorts.InsertedColumnCount);
             table1.EndRow();
             table1.StartRow();
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2);
             table1.AddHeaderCell("q");
             table1.AddHeaderCell("b");
             table1.EndRow();

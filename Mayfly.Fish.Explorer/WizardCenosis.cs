@@ -402,9 +402,8 @@ namespace Mayfly.Fish.Explorer
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
         {
             pageReport.SetNavigation(false);
-            checkBoxCatches_CheckedChanged(sender, e);
+            //checkBoxCatches_CheckedChanged(sender, e);
             reporter.RunWorkerAsync();
-
             e.Cancel = true;
         }
 

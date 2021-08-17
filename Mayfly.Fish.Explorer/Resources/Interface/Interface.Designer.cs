@@ -124,6 +124,33 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Combined data.
+        /// </summary>
+        internal static string BioCombined {
+            get {
+                return ResourceManager.GetString("BioCombined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loaded data.
+        /// </summary>
+        internal static string BioLoaded {
+            get {
+                return ResourceManager.GetString("BioLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bio.
+        /// </summary>
+        internal static string BioReference {
+            get {
+                return ResourceManager.GetString("BioReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caught in {0} at {1:f}.
         /// </summary>
         internal static string CatchDescription {
@@ -187,15 +214,6 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} data.
-        /// </summary>
-        internal static string IntModel {
-            get {
-                return ResourceManager.GetString("IntModel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mass growth model of {0}.
         /// </summary>
         internal static string MassGrowth {
@@ -238,15 +256,6 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         internal static string SpeciesOfInterestIsAbsent {
             get {
                 return ResourceManager.GetString("SpeciesOfInterestIsAbsent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} bio.
-        /// </summary>
-        internal static string SpecSheet {
-            get {
-                return ResourceManager.GetString("SpecSheet", resourceCulture);
             }
         }
         

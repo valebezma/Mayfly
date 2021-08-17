@@ -137,7 +137,7 @@ namespace Mayfly.Fish.Explorer
                 AnnualCompositions.GetTable(
                     CompositionColumn.Quantity,
                     string.Format(Resources.Reports.Sections.VPA.Table1, SpeciesRow.KeyRecord.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
-                    Resources.Reports.Sections.Growth.Column1, Resources.Reports.Sections.VPA.Column2)
+                    Resources.Reports.Sections.VPA.Column1, Resources.Reports.Sections.VPA.Column2)
                     );
 
             //// Cohort-arranged catches
@@ -168,7 +168,7 @@ namespace Mayfly.Fish.Explorer
                 Survivors.GetTable(
                     CompositionColumn.Quantity,
                     string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
-                    Resources.Reports.Sections.Growth.Column1, 
+                    Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );
 
@@ -179,7 +179,7 @@ namespace Mayfly.Fish.Explorer
                 Survivors.GetTable(
                     CompositionColumn.Mass,
                     string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
-                    Resources.Reports.Sections.Growth.Column1, 
+                    Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );
         }

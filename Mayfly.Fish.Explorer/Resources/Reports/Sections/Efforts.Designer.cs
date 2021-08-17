@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gears and Efforts Summary.
+        ///   Looks up a localized string similar to Gears and efforts summary.
         /// </summary>
         internal static string Header {
             get {

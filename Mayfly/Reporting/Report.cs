@@ -16,7 +16,11 @@ namespace Mayfly
 
         public bool UseEquationNumeration { get; set; }
 
+        public bool UseFigureNumeration { get; set; }
+
         public int NextEquationNumber { get; private set; }
+
+        public int NextFigureNumber { get; private set; }
 
         public int NextAppendixNumber { get; private set; }
 
@@ -41,10 +45,12 @@ namespace Mayfly
             //CustomHeadStrings = new List<string>();
 
             NextTableNumber = 1;
+            NextFigureNumber = 1;
             NextEquationNumber = 1;
             NextAppendixNumber = 0;
 
             UseEquationNumeration = true;
+            UseFigureNumeration = true;
             UseTableNumeration = false;
         }
 
@@ -300,12 +306,24 @@ namespace Mayfly
 
         public void AddImage(string svg, string caption)
         {
-            WriteLine("<img>");
-            //StartDiv("figure");
-            WriteLine(File.ReadAllText(svg));
-            AddParagraphClass("figure-label", caption);
-            //CloseDiv();
-            WriteLine("</img>");
+            //WriteLine("<img>");
+            StartDiv("figure");
+
+            string svgContent = File.ReadAllText(svg);
+            svgContent = svgContent.Replace("glyph", "glyph-" + NextFigureNumber + "-");
+
+            WriteLine(svgContent);
+            if (UseFigureNumeration)
+            {
+                AddParagraphClass("figure-label", string.Format("Figure {0} - {1}.", NextFigureNumber, caption));
+                NextFigureNumber++;
+            }
+            else
+            {
+                AddParagraphClass("figure-label", caption);
+            }
+            CloseDiv();
+            //WriteLine("</img>");
         }
 
 
