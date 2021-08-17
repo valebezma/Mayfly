@@ -200,4 +200,10 @@
   <data name="FleetMask" xml:space="preserve">
     <value>Набор {0}</value>
   </data>
+  <data name="CatchCurve" xml:space="preserve">
+    <value>Возрастные группы в промысле</value>
+  </data>
+  <data name="CatchCurveUnused" xml:space="preserve">
+    <value>Возрастные группы до промысла</value>
+  </data>
 </root>

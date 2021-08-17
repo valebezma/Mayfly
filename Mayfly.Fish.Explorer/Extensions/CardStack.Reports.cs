@@ -333,10 +333,49 @@ namespace Mayfly.Fish.Explorer
             #endregion
         }
 
+        public static Report.Table GetEffortsTable(this IEnumerable<CardStack> stacks, FishSamplerType samplerType, UnitEffort ue)
+        {
+            Report.Table table = new Report.Table(Resources.Reports.Sections.Efforts.Table, samplerType.ToDisplay());
+
+            table.StartRow();
+            table.AddHeaderCell(Resources.Reports.Caption.GearClass, .25);
+            table.AddHeaderCell(Resources.Reports.Caption.Ops);
+            table.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, ue.Unit));
+            table.AddHeaderCell(Resources.Reports.Caption.Fraction);
+            table.EndRow();
+
+            List<double> efforts = new List<double>();
+
+            foreach (CardStack meshData in stacks)
+            {
+                efforts.Add(meshData.GetEffort(samplerType, ue.Variant));
+            }
+
+            int i = 0;
+
+            foreach (CardStack meshData in stacks)
+            {
+                table.StartRow();
+                table.AddCellValue(meshData.Name);
+                table.AddCellRight(meshData.Count);
+                table.AddCellRight(efforts[i], "N3");
+                table.AddCellRight(efforts[i] / efforts.Sum(), "P1");
+                table.EndRow();
+                i++;
+            }
+
+            table.StartRow();
+            table.AddCell(Mayfly.Resources.Interface.Total);
+            table.AddCellRight(stacks.Count());
+            table.AddCellRight(efforts.Sum(), "N3");
+            table.AddCellRight(1, "P1");
+            table.EndRow();
+
+            return table;
+        }
+
         public static void AddEffortsSection(this CardStack stack, Report report, FishSamplerType samplerType, UnitEffort ue)
         {
-            CardStack samplerData = stack.GetStack(samplerType, ue.Variant);
-            double totalE = samplerData.GetEffort(samplerType, ue.Variant);
             string[] classes = stack.Classes(samplerType);
 
             report.AddSectionTitle(Resources.Reports.Sections.Efforts.Header);
@@ -345,44 +384,15 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph1,
                     samplerType.ToDisplay(), classes.Length,
-                    samplerData.SamplerClasses(samplerType)[0], samplerData.SamplerClasses(samplerType).Last(),
+                    classes[0], classes.Last(),
                     ue.UnitDescription, report.NextTableNumber);
 
-                Report.Table table1 = new Report.Table(Resources.Reports.Sections.Efforts.Table, samplerType.ToDisplay());
-
-                table1.StartRow();
-                table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25);
-                table1.AddHeaderCell(Resources.Reports.Caption.Ops);
-                table1.AddHeaderCell(string.Format(Resources.Reports.Caption.Efforts, ue.Unit));
-                table1.AddHeaderCell(Resources.Reports.Caption.Fraction);
-                table1.EndRow();
-
-                foreach (string mesh in classes)
-                {
-                    CardStack meshData = samplerData.GetStack(samplerType, mesh);
-
-                    table1.StartRow();
-                    table1.AddCellValue(meshData.Name);
-                    double e = meshData.GetEffort(samplerType, ue.Variant);
-                    table1.AddCellRight(meshData.Count);
-                    table1.AddCellRight(e, "N3");
-                    table1.AddCellRight(e / totalE, "P1");
-                    table1.EndRow();
-                }
-
-                table1.StartRow();
-                table1.AddCell(Mayfly.Resources.Interface.Total);
-                table1.AddCellRight(samplerData.Count);
-                table1.AddCellRight(totalE, "N3");
-                table1.AddCellRight(1, "P1");
-                table1.EndRow();
-
-                report.AddTable(table1);
+                report.AddTable(stack.GetClassedStacks(samplerType).GetEffortsTable(samplerType, ue));
             }
             else
             {
                 report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph2,
-                    samplerType.ToDisplay(), ue.UnitDescription, totalE, ue.Unit);
+                    samplerType.ToDisplay(), ue.UnitDescription, stack.GetEffort(samplerType, ue.Variant), ue.Unit);
             }
         }
         

@@ -284,6 +284,15 @@ namespace Mayfly.Fish.Explorer
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph3,
                 SpeciesRow.KeyRecord.ShortName, report.NextFigureNumber);
             report.AddImage(plotAgeAdjusted.GetVector(17, 7), plotAgeAdjusted.Text);
+
+
+            Composition[] comps = new Composition[] { ageCompositionWizard.CatchesComposition, AgeStructure };
+
+            report.AddTable(
+                comps.GetTable(CompositionColumn.Abundance | CompositionColumn.AbundanceFraction | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
+                plotAgeAdjusted.Text, AgeStructure.Name, "Data / Model"));
+
+
         }
 
 
@@ -604,8 +613,11 @@ namespace Mayfly.Fish.Explorer
             plotSelection.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay());
 
             plotLengthAdjusted.AxisYTitle = 
+                plotMortality.AxisYTitle = 
                 plotAgeAdjusted.AxisYTitle =
                 columnSelectivityNpue.HeaderText;
+
+            if (AgeStructure != null) AgeStructure.Unit = gearWizard.SelectedUnit.Unit;
 
             classesCalculator.RunWorkerAsync();
         }

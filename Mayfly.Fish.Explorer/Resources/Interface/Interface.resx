@@ -215,4 +215,10 @@ To eliminate it from further analysis hold {2}.</value>
   <data name="BioReference" xml:space="preserve">
     <value>Bio</value>
   </data>
+  <data name="CatchCurve" xml:space="preserve">
+    <value>Fully exploited age groups</value>
+  </data>
+  <data name="CatchCurveUnused" xml:space="preserve">
+    <value>Unexploited age groups</value>
+  </data>
 </root>

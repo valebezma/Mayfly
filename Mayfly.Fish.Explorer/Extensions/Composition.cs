@@ -76,10 +76,10 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            Scatterplot useful = new Scatterplot(usedAbundances, composition.Name);
+            Scatterplot useful = new Scatterplot(usedAbundances, Resources.Interface.Interface.CatchCurve);
             if (isChronic) useful.Series.ChartType = SeriesChartType.Line;
             useful.IsChronic = isChronic;
-            Scatterplot unused = new Scatterplot(unusedAbundances, composition.Name + " (unused)")
+            Scatterplot unused = new Scatterplot(unusedAbundances, Resources.Interface.Interface.CatchCurveUnused)
             {
                 IsChronic = isChronic
             };
@@ -246,18 +246,18 @@ namespace Mayfly.Fish.Explorer
                 {
                     Category category = composition[i];
 
-                    if (content.HasFlag(CompositionColumn.LengthSample)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.LengthSample), composition.FormatSampleLength);
-                    if (content.HasFlag(CompositionColumn.MassSample)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.MassSample), composition.FormatSampleMass);
+                    if (content.HasFlag(CompositionColumn.LengthSample)) if (category.LengthSample == null) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.LengthSample), composition.FormatSampleLength);
+                    if (content.HasFlag(CompositionColumn.MassSample)) if (category.MassSample == null) table.AddCell(); else table.AddCellValue(new SampleDisplay(category.MassSample), composition.FormatSampleMass);
 
                     if (content.HasFlag(CompositionColumn.Quantity)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Quantity);
-                    if (content.HasFlag(CompositionColumn.Abundance)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Abundance, composition.AbundanceFormat);
-                    if (content.HasFlag(CompositionColumn.AbundanceFraction)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.AbundanceFraction, composition.AbundanceFractionFormat);
+                    if (content.HasFlag(CompositionColumn.Abundance)) if (category.Abundance == 0) table.AddCell(); else table.AddCellRight(category.Abundance, composition.AbundanceFormat);
+                    if (content.HasFlag(CompositionColumn.AbundanceFraction)) if (category.Abundance == 0) table.AddCell(); else table.AddCellRight(category.AbundanceFraction, composition.AbundanceFractionFormat);
 
-                    if (content.HasFlag(CompositionColumn.Mass)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Mass, composition.MassFormat);
-                    if (content.HasFlag(CompositionColumn.Biomass)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.Biomass, composition.BiomassFormat);
-                    if (content.HasFlag(CompositionColumn.BiomassFraction)) if (category.Quantity == 0) table.AddCell(); else table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
+                    if (content.HasFlag(CompositionColumn.Mass)) if (category.Mass == 0) table.AddCell(); else table.AddCellRight(category.Mass, composition.MassFormat);
+                    if (content.HasFlag(CompositionColumn.Biomass)) if (category.Biomass == 0) table.AddCell(); else table.AddCellRight(category.Biomass, composition.BiomassFormat);
+                    if (content.HasFlag(CompositionColumn.BiomassFraction)) if (category.Biomass == 0) table.AddCell(); else table.AddCellRight(category.BiomassFraction, composition.BiomassFractionFormat);
 
-                    if (content.HasFlag(CompositionColumn.SexRatio)) if (category.Quantity == 0) table.AddCell(); else table.AddCellValue(category.Sexes, composition.SexFormat);
+                    if (content.HasFlag(CompositionColumn.SexRatio)) if (category.Sexes.TotalQuantity == 0) table.AddCell(); else table.AddCellValue(category.Sexes, composition.SexFormat);
                 }
 
                 table.EndRow();

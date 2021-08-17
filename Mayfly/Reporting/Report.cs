@@ -315,7 +315,7 @@ namespace Mayfly
             WriteLine(svgContent);
             if (UseFigureNumeration)
             {
-                AddParagraphClass("figure-label", string.Format("Figure {0} - {1}.", NextFigureNumber, caption));
+                AddParagraphClass("figure-label", string.Format("Figure {0} — {1}.", NextFigureNumber, caption));
                 NextFigureNumber++;
             }
             else

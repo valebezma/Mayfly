@@ -151,6 +151,24 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fully exploited age groups.
+        /// </summary>
+        internal static string CatchCurve {
+            get {
+                return ResourceManager.GetString("CatchCurve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexploited age groups.
+        /// </summary>
+        internal static string CatchCurveUnused {
+            get {
+                return ResourceManager.GetString("CatchCurveUnused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Caught in {0} at {1:f}.
         /// </summary>
         internal static string CatchDescription {

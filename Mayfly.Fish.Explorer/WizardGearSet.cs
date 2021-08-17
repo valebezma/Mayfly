@@ -146,6 +146,26 @@ namespace Mayfly.Fish.Explorer
 
         public void AddEffortSection(Report report)
         {
+            report.AddSectionTitle(Resources.Reports.Sections.Efforts.Header);
+
+            if (SelectedStacks.Count > 1)
+            {
+                string[] classes = SelectedData.SamplerClasses(SelectedSamplerType);
+                report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph1,
+                    SelectedSamplerType.ToDisplay(), 
+                    classes.Length, classes[0], classes.Last(),
+                    SelectedUnit.UnitDescription, report.NextTableNumber);
+
+                report.AddTable(SelectedStacks.GetEffortsTable(SelectedSamplerType, SelectedUnit));
+            }
+            else
+            {
+                report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph2,
+                    SelectedSamplerType.ToDisplay(), SelectedUnit.UnitDescription,
+                    SelectedData.GetEffort(SelectedSamplerType, SelectedUnit.Variant), SelectedUnit.Unit);
+            }
+
+
             SelectedData.AddEffortsSection(report, SelectedSamplerType, SelectedUnit);
         }
 
@@ -350,19 +370,26 @@ namespace Mayfly.Fish.Explorer
         {
             CardStack mergedData = new CardStack();
 
-            string title = string.Empty;
+            //string title = string.Empty;
             int groups = spreadSheetEfforts.SelectedRows.Count;
             int groupsCount = spreadSheetEfforts.SelectedRows.Count;
             int insertionPosition = spreadSheetEfforts.RowCount;
             double value = 0;
+
+            string firstName = string.Empty;
+            string lastName = string.Empty;
 
             for (int i = 0; i < spreadSheetEfforts.RowCount; i++)
             {
                 if (spreadSheetEfforts.Rows[i].Selected)
                 {
                     if (i < insertionPosition) insertionPosition = i;
+
+                    if (string.IsNullOrEmpty(firstName)) firstName = classedStacks[i].Name;
+                    lastName = classedStacks[i].Name;
+
                     mergedData.Merge(classedStacks[i]);
-                    title += classedStacks[i].Name;
+                    //title += classedStacks[i].Name;
                     value += (double)spreadSheetEfforts[ColumnSpatialWeight.Index, i].Value;
 
                     spreadSheetEfforts.Rows.RemoveAt(i);
@@ -378,12 +405,12 @@ namespace Mayfly.Fish.Explorer
 
             double effort = mergedData.GetEffort(SelectedSamplerType, SelectedUnit.Variant);
 
-            mergedData.Name = title;
+            mergedData.Name = string.Format("{0}—{1}", firstName, lastName);
             classedStacks.Insert(insertionPosition, mergedData);
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetEfforts);
-            gridRow.Cells[ColumnClass.Index].Value = title;
+            gridRow.Cells[ColumnClass.Index].Value = mergedData.Name;
             gridRow.Cells[ColumnOperations.Index].Value = mergedData.Count;
             gridRow.Cells[ColumnEffort.Index].Value = effort;
 

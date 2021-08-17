@@ -26,7 +26,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return string.Format("{0}–{0}+", Years);
+                return string.Format("{0}—{0}+", Years);
             }
         }
 
