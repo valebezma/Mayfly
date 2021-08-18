@@ -44,8 +44,8 @@ namespace Mayfly.Mathematics.Statistics
             protected set { type = value; }
         }
 
-        public FitResult fit;
-        public FitResult Fit {
+        public ResidualsResult fit;
+        public ResidualsResult Fit {
             get { return fit; }
             protected set { fit = value; }
         }
@@ -86,7 +86,7 @@ namespace Mayfly.Mathematics.Statistics
         public abstract string GetEquation(string y, string x, string format);
 
 
-
+        
         public abstract double Predict(double x);
 
         public abstract double PredictInversed(double y);
@@ -102,7 +102,7 @@ namespace Mayfly.Mathematics.Statistics
             return fit.Parameters[i].Estimate;
         }
 
-        public double Parameter(int i)
+        public virtual double Parameter(int i)
         {
             return Estimate(i).Value;
         }
@@ -157,10 +157,10 @@ namespace Mayfly.Mathematics.Statistics
             {
                 switch (type)
                 {
-                    case TrendType.Auto:
-                    case TrendType.Linear:
-                        //result = Linear(data);
-                        break;
+                    //case TrendType.Auto:
+                    //case TrendType.Linear:
+                    //    result = Linear(data);
+                    //    break;
 
                     case TrendType.Quadratic:
                         result = new Polynom(data, 2);
@@ -190,7 +190,7 @@ namespace Mayfly.Mathematics.Statistics
                         result = new Growth(data);
                         break;
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -198,7 +198,7 @@ namespace Mayfly.Mathematics.Statistics
                 result = null;
             }
 
-            if (result == null || result.Fit == null)
+            if (result == null)
             {
                 Log.Write("Failed to build {0} fit on {1} datapoints.", type, data.Count);
                 result = null;

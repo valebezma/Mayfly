@@ -8,13 +8,13 @@ namespace Mayfly.Mathematics.Statistics
 {
     public abstract class GeneralLinearRegression : Regression
     {
-        public GeneralLinearRegressionResult GlmFit { get { return (GeneralLinearRegressionResult)fit; } }
+        public GeneralLinearRegressionResult LinearFit { get { return (GeneralLinearRegressionResult)fit; } }
 
         public string DeterminationStrength
         {
             get
             {
-                double r = GlmFit.RSquared;
+                double r = LinearFit.RSquared;
 
                 if (r < 0.1)
                 {
@@ -56,7 +56,7 @@ namespace Mayfly.Mathematics.Statistics
             //else pp = "p = " + pp;
 
             return string.Format("{0}: {1} (n = {2}, r² = {3:N3})",
-                this.Name, this.GetEquation("y", "x", format), data.Count, GlmFit.RSquared);
+                this.Name, this.GetEquation("y", "x", format), data.Count, LinearFit.RSquared);
         }
 
         public override void GetReport(Report report)
@@ -125,16 +125,16 @@ namespace Mayfly.Mathematics.Statistics
 
             table1.StartRow();
             table1.AddCellValue("a");
-            table1.AddCellRight(GlmFit.Intercept.Value, "G3");
-            table1.AddCellRight(GlmFit.Intercept.Uncertainty, "G3");
+            table1.AddCellRight(LinearFit.Intercept.Value, "G3");
+            table1.AddCellRight(LinearFit.Intercept.Uncertainty, "G3");
             table1.AddCellRight(double.NaN, "G3");
             table1.EndRow();
 
             table1.StartRow();
             table1.AddCellValue("b");
-            table1.AddCellRight(GlmFit.Parameters[1].Estimate.Value, "G3");
-            table1.AddCellRight(GlmFit.Parameters[1].Estimate.Uncertainty, "G3");
-            table1.AddCellRight(GlmFit.Anova.Factor.Result.Probability, "G3");
+            table1.AddCellRight(LinearFit.Parameters[1].Estimate.Value, "G3");
+            table1.AddCellRight(LinearFit.Parameters[1].Estimate.Uncertainty, "G3");
+            table1.AddCellRight(LinearFit.Anova.Factor.Result.Probability, "G3");
             table1.EndRow();
 
             report.AddTable(table1);
@@ -147,7 +147,7 @@ namespace Mayfly.Mathematics.Statistics
             table2.AddCellPrompt("Regresson standard error", double.NaN);
             table2.EndRow();
             table2.StartRow();
-            table2.AddCellPrompt("Determination (<i>r</i>²)", string.Format("{0:N3} ({1})", GlmFit.RSquared, this.DeterminationStrength));
+            table2.AddCellPrompt("Determination (<i>r</i>²)", string.Format("{0:N3} ({1})", LinearFit.RSquared, this.DeterminationStrength));
             table2.EndRow();
             report.AddTable(table2);
         }

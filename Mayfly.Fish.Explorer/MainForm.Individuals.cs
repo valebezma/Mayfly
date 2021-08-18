@@ -405,9 +405,6 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            gridRow.Cells[columnIndAge.Index].Style.ForeColor =
-                gridRow.Cells[columnIndAge.Index].Value == null ? Constants.InfantColor : gridRow.DefaultCellStyle.ForeColor;
-
             if (gridRow.Cells[columnIndAge.Index].Value != null)
             {
                 return;
@@ -428,7 +425,6 @@ namespace Mayfly.Fish.Explorer
                     double.IsNaN(ageValue) ?
                     Wild.Resources.Interface.Interface.SuggestionUnavailable : " " + age.ToString() + " ");
                 Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-                //gridRow.Cells[columnIndAge.Index].
 
                 gridRow.Cells[columnIndGeneration.Index].SetNullValue(
                     double.IsNaN(ageValue) ?

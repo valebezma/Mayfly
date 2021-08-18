@@ -69,6 +69,28 @@ namespace Mayfly.Extensions
             return result;
         }
 
+        public static BivariateSample GetAveragedByX(this BivariateSample sample, double pace)
+        {
+            BivariateSample result = new BivariateSample();
+
+            for (double x = sample.X.Minimum; x < sample.X.Maximum; x += pace)
+            {
+                Interval interval = Interval.FromEndpointAndWidth(x, pace);
+
+                Sample y = new Sample();
+
+                for (int i = 0; i < sample.X.Count; i++)
+                {
+                    if (interval.LeftClosedContains(sample.X.ElementAt(i)))
+                        y.Add(sample.Y.ElementAt(i));
+                }
+
+                result.Add(x, y.Mean);
+            }
+
+            return result;
+        }
+
         public static Sample GetSabsample(this Sample sample, Interval interval)
         {
             List<double> result = new List<double>();

@@ -31,7 +31,7 @@ namespace Mayfly.Mathematics.Charts
 
         public Regression Regression { get; set; }
 
-        public bool IsRegressionOK { get { return Regression != null && Regression.Fit != null; } }
+        public bool IsRegressionOK { get { return Regression != null; } }
 
         public BivariateSample Data { get; set; }
 
@@ -591,24 +591,24 @@ namespace Mayfly.Mathematics.Charts
 
         public void BuildDataBands(double xMin, double xMax, double yMin, double yMax)
         {
+            if (DataRange == null)
+            {
+                DataRange = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ScatterplotName))
+                {
+                    ChartType = SeriesChartType.SplineRange,
+                    BorderDashStyle = ChartDashStyle.Dash,
+                    IsVisibleInLegend = false,
+                    Color = Color.Transparent,
+                    YValuesPerPoint = 2
+                };
+            }
+            else
+            {
+                DataRange.Points.Clear();
+            }
+
             if (this.IsRegressionOK)
             {
-                if (DataRange == null)
-                {
-                    DataRange = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ScatterplotName))
-                    {
-                        ChartType = SeriesChartType.SplineRange,
-                        BorderDashStyle = ChartDashStyle.Dash,
-                        IsVisibleInLegend = false,
-                        Color = Color.Transparent,
-                        YValuesPerPoint = 2
-                    };
-                }
-                else
-                {
-                    DataRange.Points.Clear();
-                }
-
                 double xInterval = (xMax - xMin) / splineStep;
                 double yInterval = (yMax - yMin) / splineStep;
 
