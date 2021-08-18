@@ -405,6 +405,9 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
+            gridRow.Cells[columnIndAge.Index].Style.ForeColor =
+                gridRow.Cells[columnIndAge.Index].Value == null ? Constants.InfantColor : gridRow.DefaultCellStyle.ForeColor;
+
             if (gridRow.Cells[columnIndAge.Index].Value != null)
             {
                 return;

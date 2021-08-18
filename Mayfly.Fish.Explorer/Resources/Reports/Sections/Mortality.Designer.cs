@@ -79,7 +79,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adjusted age composition of {0} population is depicted in figure {1}..
+        ///   Looks up a localized string similar to Adjusted age composition of {0} population is given in table {1} and depicted in figure {2}..
         /// </summary>
         internal static string Paragraph3 {
             get {

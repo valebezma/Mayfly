@@ -137,7 +137,8 @@ namespace Mayfly.Fish.Explorer
         /// <param name="separatesHeader"></param>
         /// <param name="content"></param>
         /// <returns></returns>
-        public static Report.Table GetTable(this IEnumerable<Composition> compositions, CompositionColumn content, string tableCaption, string siderCaption, string separatesHeader)
+        public static Report.Table GetTable(this IEnumerable<Composition> compositions, CompositionColumn content,
+            string tableCaption, string siderCaption, string separatesHeader)
         {
             int n = 0;
 
@@ -156,23 +157,27 @@ namespace Mayfly.Fish.Explorer
             Report.Table table = new Report.Table(tableCaption);
 
             // Header top level
+            //bool separatesHeaderNeeded =  && !string.IsNullOrWhiteSpace(separatesHeader); 
 
             table.StartRow();
-            table.AddHeaderCell(siderCaption, .15, compositions.Count() > 1 ? 4 : 2);
+            table.AddHeaderCell(siderCaption, .15, compositions.Count() == 1 ? 2 : (string.IsNullOrWhiteSpace(separatesHeader) ? 3 : 4));
 
             if (compositions.Count() > 1)
             {
-                table.AddHeaderCell(separatesHeader, compositions.Count() * n);
-                table.EndRow();
+                if (!string.IsNullOrWhiteSpace(separatesHeader))
+                {
+                    table.AddHeaderCell(separatesHeader, compositions.Count() * n);
+                    table.EndRow();
 
-                // Header middle level
+                    // Header middle level
 
-                table.StartRow();
+                    table.StartRow();
+                }
 
                 foreach (Composition composition in compositions)
                 {
                     string header = composition.Name;
-                    bool rec = (composition is AgeComposition) && ((AgeComposition)composition).IsRecovered;
+                    bool rec = (composition is AgeComposition composition1) && composition1.IsRecovered;
                     bool add = composition.AdditionalDistributedMass > 0;
                     if (rec) { header += table.AddNotice(Resources.Reports.Sections.ALK.NoticeAlkApplied).Holder; }
                     if (add) { header += table.AddNotice(Resources.Reports.Sections.ALK.NoticeBiomassSpread).Holder; }

@@ -271,8 +271,8 @@ namespace Mayfly.Fish.Explorer
         {
             report.AddSectionTitle(Resources.Reports.Sections.Mortality.Title, SpeciesRow.KeyRecord.FullNameReport);
 
-            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1, 
-                (Age)TotalMortalityModel.Exploited.Left, (Age)TotalMortalityModel.Exploited.Right, 
+            report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1,
+                (Age)TotalMortalityModel.Exploited.Left, (Age)TotalMortalityModel.Exploited.Right,
                 SpeciesRow.KeyRecord.ShortName);
             report.AddEquation(TotalMortalityModel.Exploited.Regression.GetEquation("NPUE", "t"));
             report.AddImage(plotMortality.GetVector(17, 7), plotMortality.Text);
@@ -282,17 +282,13 @@ namespace Mayfly.Fish.Explorer
             report.AddEquation(@"φ = 1 - " + TotalMortalityModel.S.ToString("N5") + " = " + TotalMortalityModel.Fi.ToString("N5"));
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph3,
-                SpeciesRow.KeyRecord.ShortName, report.NextFigureNumber);
-            report.AddImage(plotAgeAdjusted.GetVector(17, 7), plotAgeAdjusted.Text);
-
-
-            Composition[] comps = new Composition[] { ageCompositionWizard.CatchesComposition, AgeStructure };
+                SpeciesRow.KeyRecord.ShortName, report.NextTableNumber, report.NextFigureNumber);
 
             report.AddTable(
-                comps.GetTable(CompositionColumn.Abundance | CompositionColumn.AbundanceFraction | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
-                plotAgeAdjusted.Text, AgeStructure.Name, "Data / Model"));
-
-
+                new Composition[] { ageCompositionWizard.CatchesComposition, AgeStructure }.GetTable(
+                    CompositionColumn.Abundance | CompositionColumn.AbundanceFraction | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
+                plotAgeAdjusted.Text, Wild.Resources.Reports.Caption.Age, string.Empty));
+            report.AddImage(plotAgeAdjusted.GetVector(17, 7), plotAgeAdjusted.Text);
         }
 
 
@@ -1115,11 +1111,14 @@ namespace Mayfly.Fish.Explorer
                 for (int i = 0; i < AgeStructure.Count; i++)
                 {
                     double a = TotalMortalityModel.Exploited.Regression.Predict(AgeStructure[i].Age.Value);
-                    double w = (ageCompositionWizard.CatchesComposition[i].Quantity > 0) ?
-                        (ageCompositionWizard.CatchesComposition[i].Abundance / ageCompositionWizard.CatchesComposition[i].Biomass) : 0.0;
+                    double w = ageCompositionWizard.CatchesComposition[i].MassSample.Count > 0 ? ageCompositionWizard.CatchesComposition[i].MassSample.Mean :
+                        (ageCompositionWizard.CatchesComposition[i].Quantity > 0 ? (ageCompositionWizard.CatchesComposition[i].Abundance / ageCompositionWizard.CatchesComposition[i].Biomass) : 0);
                     AgeStructure[i].Abundance = a;
                     AgeStructure[i].Biomass = w * a;
                 }
+
+                ageCompositionWizard.CatchesComposition.Name = "Age composition of catches";
+                AgeStructure.Name = "Adjusted age composition";
 
                 plotAgeAdjusted.Series.Clear();
 
