@@ -1167,6 +1167,9 @@ namespace Mayfly.Mathematics.Charts
 
         public void Rebuild(object sender, EventArgs e)
         {
+            // TODO: Remove Update if bad.
+            Update(sender, e);
+
             foreach (Scatterplot sample in Scatterplots)
             {
                 sample.BuildSeries();
@@ -1207,8 +1210,6 @@ namespace Mayfly.Mathematics.Charts
 
             //}
 
-            // TODO: Remove Update if bad.
-            Update(sender, e);
 
             if (Updated != null)
             {

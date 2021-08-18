@@ -167,7 +167,7 @@ namespace Mayfly.Mathematics.Charts
             else return FunctionInverse.Invoke(x);            
         }
 
-        public void BuildSeries(double xMin, double xMax, double yMin, double yMax, AxisType axisType)
+        public void BuildSeries(AxisType axisType)
         {
             if (Series == null)
             {
@@ -181,42 +181,60 @@ namespace Mayfly.Mathematics.Charts
 
             Series.YAxisType = axisType;
 
-            double xInterval = (xMax - xMin) / splineStep;
-            double yInterval = (yMax - yMin) / splineStep;
-
-            for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
+            if (Container == null)
             {
-                double y = Predict(x);
-                if (double.IsInfinity(y)) continue;
-                if (double.IsNaN(y)) continue;
+                BuildSeries(0, 1, 0, 1);
+            }
+            else
+            {
 
-                if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
-                    x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
-                {
-                    DataPoint dataPoint = new DataPoint(Series);
-
-                    if (TransposeCharting)
-                    {
-                        dataPoint.XValue = y;
-                        dataPoint.YValues[0] = x;
-                    }
-                    else
-                    {
-                        dataPoint.XValue = x;
-                        dataPoint.YValues[0] = y;
-                    }
-
-                    Series.Points.Add(dataPoint);
-                }
+                BuildSeries(
+                    AxisX.Minimum, AxisX.Maximum,
+                    AxisY.Minimum, AxisY.Maximum);
             }
         }
 
-        public void BuildSeries(AxisType axisType)
+        public void BuildSeries(double xMin, double xMax, double yMin, double yMax)
         {
-            if (Container == null) BuildSeries(0, 1, 0, 1, axisType);
-            else BuildSeries(
-                AxisX.Minimum, AxisX.Maximum,
-                AxisY.Minimum, AxisY.Maximum, axisType);
+            double xInterval = (xMax - xMin) / splineStep;
+            double yInterval = (yMax - yMin) / splineStep;
+
+            if (TransposeCharting)
+            {
+                for (double x = yMin - 5 * yInterval; x <= yMax + 5 * yInterval; x += yInterval)
+                {
+                    double y = Predict(x);
+                    if (double.IsInfinity(y)) continue;
+                    if (double.IsNaN(y)) continue;
+
+                    if (x > yMin - 5 * yInterval && x < yMax + 5 * yInterval &&
+                        y > xMin - 5 * xInterval && y < xMax + 5 * xInterval)
+                    {
+                        DataPoint dataPoint = new DataPoint(Series);
+                        dataPoint.XValue = y;
+                        dataPoint.YValues[0] = x;
+                        Series.Points.Add(dataPoint);
+                    }
+                }
+            }
+            else
+            {
+                for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
+                {
+                    double y = Predict(x);
+                    if (double.IsInfinity(y)) continue;
+                    if (double.IsNaN(y)) continue;
+
+                    if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
+                        x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
+                    {
+                        DataPoint dataPoint = new DataPoint(Series);
+                        dataPoint.XValue = x;
+                        dataPoint.YValues[0] = y;
+                        Series.Points.Add(dataPoint);
+                    }
+                }
+            }
         }
 
         public void BuildSeries()

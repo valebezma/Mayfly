@@ -3,18 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Meta.Numerics;
+using RDotNet;
 
 namespace Mayfly.Mathematics.Statistics
 {
     public abstract class GeneralLinearRegression : Regression
     {
-        public GeneralLinearRegressionResult LinearFit { get { return (GeneralLinearRegressionResult)fit; } }
+        public double RSquared { get; internal set; }
 
         public string DeterminationStrength
         {
             get
             {
-                double r = LinearFit.RSquared;
+                double r = RSquared;
 
                 if (r < 0.1)
                 {
@@ -56,7 +57,7 @@ namespace Mayfly.Mathematics.Statistics
             //else pp = "p = " + pp;
 
             return string.Format("{0}: {1} (n = {2}, r² = {3:N3})",
-                this.Name, this.GetEquation("y", "x", format), data.Count, LinearFit.RSquared);
+                this.Name, this.GetEquation("y", "x", format), data.Count, RSquared);
         }
 
         public override void GetReport(Report report)
@@ -87,69 +88,121 @@ namespace Mayfly.Mathematics.Statistics
 
     public class Linear : GeneralLinearRegression
     {
-        public double A { get { return Parameter(0); } }
+        public double Intercept { get; private set; }
 
-        public double B { get { return Parameter(1); } }
+        public double Slope { get; private set; }
 
-
+        REngine engine;
 
         public Linear(BivariateSample data)
             : base(data)
         {
             this.Type = TrendType.Linear;
             fit = data.LinearRegression();
+
+            REngine.SetEnvironmentVariables();
+            engine = REngine.GetInstance();
+
+            var xvalues = engine.CreateNumericVector(data.X);
+            engine.SetSymbol("xvalues", xvalues);
+
+            var yvalues = engine.CreateNumericVector(data.Y);
+            engine.SetSymbol("yvalues", yvalues);
+
+            engine.Evaluate("fit = lm(formula = yvalues ~ xvalues)");
+            NumericVector _params = engine.Evaluate("params = coef(fit)").AsNumeric();
+            Intercept = _params[0];
+            Slope = _params[1];
+
+            RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
         }
 
 
 
         public override double Predict(double x)
         {
-            return A + B * x;
+            return Intercept + Slope * x;
         }
 
         public override double PredictInversed(double y)
         {
-            return (y - A) / B;
+            return (y - Intercept) / Slope;
+        }
+
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            var xvalues = engine.CreateNumericVector(x);
+            engine.SetSymbol("_xvalues", xvalues);
+
+            var alpha = engine.CreateNumeric(level);
+            engine.SetSymbol("alpha", alpha);
+
+            NumericMatrix predictions = engine.Evaluate(
+                "predict(fit, data.frame(Length.mm = xs), interval = 'prediction', level = alpha)").AsNumericMatrix();
+            List<Interval> result = new List<Interval>();
+            for (int i = 0; i < predictions.RowCount; i++)
+            {
+                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+            }            
+            return result.ToArray();
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            var xvalues = engine.CreateNumericVector(x);
+            engine.SetSymbol("_xvalues", xvalues);
+
+            var alpha = engine.CreateNumeric(level);
+            engine.SetSymbol("alpha", alpha);
+
+            NumericMatrix predictions = engine.Evaluate(
+                "predict(fit, data.frame(Length.mm = xs), interval = 'confidence', level = alpha)").AsNumericMatrix();
+            List<Interval> result = new List<Interval>();
+            for (int i = 0; i < predictions.RowCount; i++)
+            {
+                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+            }
+            return result.ToArray();
         }
 
         public override string GetEquation(string y, string x, string format)
         {
-            return y + " = " + A.ToString(format) + (B > 0 ? "+" : "-") +
-                Math.Abs(B).ToString(format) + " " + x;
+            return y + " = " + Intercept.ToString(format) + (Slope > 0 ? "+" : "-") +
+                Math.Abs(Slope).ToString(format) + " " + x;
         }
 
         public void AddSummary(Report report)
         {
-            Report.Table table1 = new Report.Table("Parameters");
-            table1.AddHeader("Parameter", "Value", "Standard Error", "p");
+            //Report.Table table1 = new Report.Table("Parameters");
+            //table1.AddHeader("Parameter", "Value", "Standard Error", "p");
 
-            table1.StartRow();
-            table1.AddCellValue("a");
-            table1.AddCellRight(LinearFit.Intercept.Value, "G3");
-            table1.AddCellRight(LinearFit.Intercept.Uncertainty, "G3");
-            table1.AddCellRight(double.NaN, "G3");
-            table1.EndRow();
+            //table1.StartRow();
+            //table1.AddCellValue("a");
+            //table1.AddCellRight(Intercept.Value, "G3");
+            //table1.AddCellRight(Intercept.Uncertainty, "G3");
+            //table1.AddCellRight(double.NaN, "G3");
+            //table1.EndRow();
 
-            table1.StartRow();
-            table1.AddCellValue("b");
-            table1.AddCellRight(LinearFit.Parameters[1].Estimate.Value, "G3");
-            table1.AddCellRight(LinearFit.Parameters[1].Estimate.Uncertainty, "G3");
-            table1.AddCellRight(LinearFit.Anova.Factor.Result.Probability, "G3");
-            table1.EndRow();
+            //table1.StartRow();
+            //table1.AddCellValue("b");
+            //table1.AddCellRight(LinearFit.Parameters[1].Estimate.Value, "G3");
+            //table1.AddCellRight(LinearFit.Parameters[1].Estimate.Uncertainty, "G3");
+            //table1.AddCellRight(LinearFit.Anova.Factor.Result.Probability, "G3");
+            //table1.EndRow();
 
-            report.AddTable(table1);
+            //report.AddTable(table1);
 
-            Report.Table table2 = new Report.Table("Summary");
-            table2.StartRow();
-            table2.AddCellPrompt("Data points number (<i>n</i>)", this.Data.X.Count);
-            table2.EndRow();
-            table2.StartRow();
-            table2.AddCellPrompt("Regresson standard error", double.NaN);
-            table2.EndRow();
-            table2.StartRow();
-            table2.AddCellPrompt("Determination (<i>r</i>²)", string.Format("{0:N3} ({1})", LinearFit.RSquared, this.DeterminationStrength));
-            table2.EndRow();
-            report.AddTable(table2);
+            //Report.Table table2 = new Report.Table("Summary");
+            //table2.StartRow();
+            //table2.AddCellPrompt("Data points number (<i>n</i>)", this.Data.X.Count);
+            //table2.EndRow();
+            //table2.StartRow();
+            //table2.AddCellPrompt("Regresson standard error", double.NaN);
+            //table2.EndRow();
+            //table2.StartRow();
+            //table2.AddCellPrompt("Determination (<i>r</i>²)", string.Format("{0:N3} ({1})", LinearFit.RSquared, this.DeterminationStrength));
+            //table2.EndRow();
+            //report.AddTable(table2);
         }
 
         public override void GetReport(Report report)
@@ -168,9 +221,9 @@ namespace Mayfly.Mathematics.Statistics
     {
         public Linear LogModel;
 
-        public double A { get { return LogModel.A; } }
+        public double A { get { return LogModel.Intercept; } }
 
-        public double B { get { return LogModel.B; } }
+        public double B { get { return LogModel.Slope; } }
 
 
 
@@ -206,6 +259,16 @@ namespace Mayfly.Mathematics.Statistics
                 10);
         }
 
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            return LogModel.GetPredictionInterval(Math.Log10(x), level);
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            return LogModel.GetPredictionInterval(Math.Log10(x), level);
+        }
+
         public override void GetReport(Report report)
         {
             report.UseEquationNumeration = true;
@@ -226,9 +289,9 @@ namespace Mayfly.Mathematics.Statistics
     {
         public Linear LogModel;
 
-        public double A { get { return LogModel.A; } }
+        public double A { get { return LogModel.Intercept; } }
 
-        public double B { get { return LogModel.B; } }
+        public double B { get { return LogModel.Slope; } }
 
 
 
@@ -260,6 +323,26 @@ namespace Mayfly.Mathematics.Statistics
             return LogModel.PredictInversed(Math.Log(y));
         }
 
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            Interval[] linPrediction = LogModel.GetPredictionInterval(x, level);
+
+            return Interval.FromEndpoints(
+                Math.Pow(Math.E, linPrediction.LeftEndpoint),
+                Math.Pow(Math.E, linPrediction.RightEndpoint)
+                );
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            Interval[] linPrediction = LogModel.GetConfidenceInterval(x, level);
+
+            return Interval.FromEndpoints(
+                Math.Pow(Math.E, linPrediction.LeftEndpoint),
+                Math.Pow(Math.E, linPrediction.RightEndpoint)
+                );
+        }
+
         public override void GetReport(Report report)
         {
             report.UseEquationNumeration = true;
@@ -280,9 +363,9 @@ namespace Mayfly.Mathematics.Statistics
     {
         public Linear LogModel;
 
-        public double A { get { return Math.Pow(10.0, LogModel.A); } }
+        public double A { get { return Math.Pow(10.0, LogModel.Intercept); } }
 
-        public double B { get { return LogModel.B; } }
+        public double B { get { return LogModel.Slope; } }
 
 
 
@@ -317,6 +400,24 @@ namespace Mayfly.Mathematics.Statistics
             return Math.Pow(
                 LogModel.PredictInversed(Math.Log10(y)),
                 10);
+        }
+
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            Interval[] linPrediction = LogModel.GetPredictionInterval(Math.Log10(x), level);
+            return Interval.FromEndpoints(
+                Math.Pow(10, linPrediction.LeftEndpoint),
+                Math.Pow(10, linPrediction.RightEndpoint)
+                );
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            Interval[] linPrediction = LogModel.GetConfidenceInterval(Math.Log10(x), level);
+            return Interval.FromEndpoints(
+                Math.Pow(10, linPrediction.LeftEndpoint),
+                Math.Pow(10, linPrediction.RightEndpoint)
+                );
         }
 
         public override void GetReport(Report report)
@@ -389,6 +490,16 @@ namespace Mayfly.Mathematics.Statistics
         public override double PredictInversed(double y)
         {
             return double.NaN;
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddSummary(Report report)

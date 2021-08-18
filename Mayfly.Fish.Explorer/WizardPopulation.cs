@@ -211,7 +211,7 @@ namespace Mayfly.Fish.Explorer
             // LW model
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, report.NextFigureNumber);
             report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
-            report.AddImage(plotLW.GetVector(17, 17), plotLW.Text);
+            report.AddImage(plotLW.GetVector(17, 10), plotLW.Text);
 
             if (GrowthModel.IsRegressionOK) {
 
@@ -219,12 +219,12 @@ namespace Mayfly.Fish.Explorer
                 report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, 
                     report.NextFigureNumber);
                 report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
-                report.AddImage(plotAL.GetVector(17, 17), plotAL.Text);
+                report.AddImage(plotAL.GetVector(17, 10), plotAL.Text);
 
                 // AW model
                 report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph4,
                     report.NextFigureNumber);
-                report.AddImage(plotAW.GetVector(17, 17), plotAW.Text);
+                report.AddImage(plotAW.GetVector(17, 10), plotAW.Text);
             }
             else
             {
@@ -1117,9 +1117,6 @@ namespace Mayfly.Fish.Explorer
                     AgeStructure[i].Biomass = w * a;
                 }
 
-                ageCompositionWizard.CatchesComposition.Name = "Age composition of catches";
-                AgeStructure.Name = "Adjusted age composition";
-
                 plotAgeAdjusted.Series.Clear();
 
                 plotAgeAdjusted.AxisXInterval = plotAge.AxisXInterval;
@@ -1197,6 +1194,9 @@ namespace Mayfly.Fish.Explorer
             {
                 plot.Remaster();
             }
+
+            if (ageCompositionWizard != null) ageCompositionWizard.CatchesComposition.Name = "Age composition of catches";
+            if (AgeStructure != null) AgeStructure.Name = "Adjusted age composition";
 
             pageReport.SetNavigation(false);
             reporter.RunWorkerAsync();

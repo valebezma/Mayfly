@@ -296,6 +296,7 @@ namespace Mayfly.Mathematics.Charts
 
                 TrendRange.BorderColor = Properties.DataPointColor;
                 TrendRange.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
+                TrendRange.YAxisType = Series.YAxisType;
             }
             else
             {
@@ -319,6 +320,7 @@ namespace Mayfly.Mathematics.Charts
                 DataRange.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
                 DataRange.BackHatchStyle = Properties.HighlightRunouts ? ChartHatchStyle.Percent05 : ChartHatchStyle.None;
                 DataRange.BackSecondaryColor = Properties.DataPointColor;
+                DataRange.YAxisType = Series.YAxisType;
 
                 if (Properties.HighlightRunouts) // Colorize runouts
                 {
@@ -526,13 +528,14 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+
+
         public void BuildTrendBands()
         {
-            BuildTrendBands(Container.AxisXMin, Container.AxisXMax,
-                Container.AxisYMin, Container.AxisYMax);
+            BuildTrendBands(Container.AxisXMin, Container.AxisXMax);
         }
 
-        public void BuildTrendBands(double xMin, double xMax, double yMin, double yMax)
+        public void BuildTrendBands(double xMin, double xMax)
         {
             if (this.IsRegressionOK)
             {
@@ -553,21 +556,20 @@ namespace Mayfly.Mathematics.Charts
                 }
 
                 double xInterval = (xMax - xMin) / splineStep;
-                double yInterval = (yMax - yMin) / splineStep;
 
                 for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
                 {
-                    //UncertainValue s = Regression.GetConfidenceInterval(x, Properties.ConfidenceLevel);
+                    //Interval s = Regression.GetConfidenceInterval(x);
 
-                    //double lowerY = s.Value - s.Uncertainty;
+                    //double lowerY = s.LeftEndpoint;
                     //if (double.IsInfinity(lowerY)) continue;
                     //if (double.IsNaN(lowerY)) continue;
 
-                    //double upperY = s.Value + s.Uncertainty;
+                    //double upperY = s.RightEndpoint;
                     //if (double.IsInfinity(upperY)) continue;
                     //if (double.IsNaN(upperY)) continue;
 
-                    //DataPoint dataPoint = new DataPoint(TrendRange);
+                    //DataPoint dataPoint = new DataPoint(DataRange);
                     //dataPoint.XValue = x;
                     //dataPoint.YValues[0] = lowerY;
                     //dataPoint.YValues[1] = upperY;
@@ -583,13 +585,9 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public void BuildDataBands()
-        {
-            BuildDataBands(Container.AxisXMin, Container.AxisXMax, 
-                Container.AxisYMin, Container.AxisYMax);
-        }
 
-        public void BuildDataBands(double xMin, double xMax, double yMin, double yMax)
+
+        public void BuildDataBands()
         {
             if (DataRange == null)
             {
@@ -606,33 +604,41 @@ namespace Mayfly.Mathematics.Charts
             {
                 DataRange.Points.Clear();
             }
+            
+            DataRange.YAxisType = Series.YAxisType;
 
+            BuildDataBands(Container.AxisXMin, Container.AxisXMax);
+        }
+
+        public void BuildDataBands(double xMin, double xMax)
+        {
             if (this.IsRegressionOK)
             {
                 double xInterval = (xMax - xMin) / splineStep;
-                double yInterval = (yMax - yMin) / splineStep;
+                List<double> xvalues = new List<double>();
 
                 for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
                 {
-                    //UncertainValue s = Regression.GetPredictionInterval(x, Properties.ConfidenceLevel);
-
-                    //double lowerY = s.Value - s.Uncertainty;
-                    //if (double.IsInfinity(lowerY)) continue;
-                    //if (double.IsNaN(lowerY)) continue;
-
-                    //double upperY = s.Value + s.Uncertainty;
-                    //if (double.IsInfinity(upperY)) continue;
-                    //if (double.IsNaN(upperY)) continue;
-
-                    //DataPoint dataPoint = new DataPoint(DataRange);
-                    //dataPoint.XValue = x;
-                    //dataPoint.YValues[0] = lowerY;
-                    //dataPoint.YValues[1] = upperY;
-
-                    //DataRange.Points.Add(dataPoint);
+                    xvalues.Add(x);
                 }
 
-                if (DataRange != null) DataRange.YAxisType = Series.YAxisType;
+                foreach (Interval s in Regression.GetPredictionInterval(xvalues.ToArray(), Properties.ConfidenceLevel))
+                {
+                    double lowerY = s.LeftEndpoint;
+                    if (double.IsInfinity(lowerY)) continue;
+                    if (double.IsNaN(lowerY)) continue;
+
+                    double upperY = s.RightEndpoint;
+                    if (double.IsInfinity(upperY)) continue;
+                    if (double.IsNaN(upperY)) continue;
+
+                    DataPoint dataPoint = new DataPoint(DataRange);
+                    dataPoint.XValue = x;
+                    dataPoint.YValues[0] = lowerY;
+                    dataPoint.YValues[1] = upperY;
+
+                    DataRange.Points.Add(dataPoint);
+                }
             }
             else
             {

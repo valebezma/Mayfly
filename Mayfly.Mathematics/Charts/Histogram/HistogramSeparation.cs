@@ -309,7 +309,7 @@ namespace Mayfly.Mathematics.Charts
                                 BS.Add(CurrentOverallData.Data.X.ElementAt(k),
                                     CurrentOverallData.Data.Y.ElementAt(k));
 
-                                double R = new Linear(BS).B;
+                                double R = new Linear(BS).Slope;
                                 if (R < LowestB)
                                 {
                                     First = i;
@@ -388,11 +388,11 @@ namespace Mayfly.Mathematics.Charts
 
             Linear line = (Linear)CurrentSelectedData.Regression;
 
-            buttonNext.Enabled = line.B < 0;
+            buttonNext.Enabled = line.Slope < 0;
 
             CurrentSelectedData.Trend.Series.IsVisibleInLegend = false;
 
-            if (line.B < 0)
+            if (line.Slope < 0)
             {
                 List<double> SelectedFrequences = new List<double>();
 
@@ -402,8 +402,8 @@ namespace Mayfly.Mathematics.Charts
                     GridLog.Rows[GridLog.Rows.Add()].Selected = true;
                 }
 
-                double Mean = -line.A / line.B;
-                double StdDev = Math.Sqrt(-ParentChart.AxisXInterval / line.B);
+                double Mean = -line.Intercept / line.Slope;
+                double StdDev = Math.Sqrt(-ParentChart.AxisXInterval / line.Slope);
                 double Count = double.NaN;
                 double SeparationIndex = double.NaN;
 
@@ -428,8 +428,8 @@ namespace Mayfly.Mathematics.Charts
                     {
                         double ClassBottom = CombinedHistogram.DataSeries.Points[i].XValue - ParentChart.AxisXInterval / 2;
 
-                        dLN.Add(line.A +
-                            line.B * ClassBottom);
+                        dLN.Add(line.Intercept +
+                            line.Slope * ClassBottom);
 
                         if (i == 0 || Math.Exp(LN[i - 1] + dLN[i]) == 0)
                         {

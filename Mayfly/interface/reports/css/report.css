@@ -132,6 +132,7 @@ span.latin-inside {
     text-align: center;
     align-content: center;
     margin: auto;
+    page-break-inside:avoid;
 }
 
 .figure-label {

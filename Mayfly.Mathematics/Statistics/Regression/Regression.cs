@@ -228,6 +228,10 @@ namespace Mayfly.Mathematics.Statistics
             result.Name = commonName.TrimEnd(" +".ToCharArray());
             return result;
         }
+
+        internal abstract Interval[] GetPredictionInterval(double[] x, double level);
+
+        internal abstract Interval[] GetConfidenceInterval(double[] x, double level);
     }
 
     //public class RegressionPool

@@ -152,7 +152,7 @@ namespace Mayfly.Fish.Explorer
             {
                 string[] classes = SelectedData.SamplerClasses(SelectedSamplerType);
                 report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph1,
-                    SelectedSamplerType.ToDisplay(), 
+                    SelectedSamplerType.ToDisplay(),
                     classes.Length, classes[0], classes.Last(),
                     SelectedUnit.UnitDescription, report.NextTableNumber);
 
@@ -166,7 +166,7 @@ namespace Mayfly.Fish.Explorer
             }
 
 
-            SelectedData.AddEffortsSection(report, SelectedSamplerType, SelectedUnit);
+            //SelectedData.AddEffortsSection(report, SelectedSamplerType, SelectedUnit);
         }
 
 

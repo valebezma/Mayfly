@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mayfly.Extensions;
 using RDotNet;
+using Meta.Numerics;
 
 namespace Mayfly.Mathematics.Statistics
 {
@@ -58,7 +59,9 @@ namespace Mayfly.Mathematics.Statistics
 
         public override string GetEquation(string y, string x, string format)
         {
-            return y + string.Format("{0} = \\frac{1:" + format + "}{ 1 + e^{-{2:" + format + "} (x - {3:" + format + "})}}", y, L, K, X0);
+            return y + @" = \frac{" + L.ToString(format) + "}{ 1 + e^{-" +
+                   K.ToString(format) + " (x - " + X0.ToString(format) + ")}}";
+
         }
 
         public override double Predict(IReadOnlyList<double> p, double x)
@@ -79,6 +82,16 @@ namespace Mayfly.Mathematics.Statistics
         public override double[] GetInitials()
         {
             return new double[] { 1.0, 1.0, 0.0 };
+        }
+
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -122,7 +135,8 @@ namespace Mayfly.Mathematics.Statistics
 
         public override string GetEquation(string y, string x, string format)
         {
-            return string.Format("{0} = {1:" + format + "} \\times (1 - e^{-{2:" + format + "} \\times ({3} - {4:" + format + "})})", y, Linf, K, x, T0);
+            return y + @" = " + Linf.ToString(format) + " (1 - e^{-" +
+                K.ToString(format) + " (" + x + " - " + T0.ToString(format) + @")})";
         }
 
         public override double Predict(IReadOnlyList<double> p, double t)
@@ -137,8 +151,8 @@ namespace Mayfly.Mathematics.Statistics
 
         public override double PredictInversed(double y)
         {
-            if (fit == null) return double.NaN;
-            return T0 - Math.Log((Linf - y) / Linf) / -K;
+            //if (fit == null) return double.NaN;
+            return T0 - Math.Log((Linf - y) / Linf) / K;
             //return Math.Log((Linf - y) / Linf) / K;
         }
 
@@ -164,8 +178,18 @@ namespace Mayfly.Mathematics.Statistics
             lin.Y.Transform((v) => { return -Math.Log(1.0 - v / lmax); });
             Linear linreg = new Linear(lin);
 
-            if (double.IsNaN(linreg.A)) return new double[] { lmax, .3, 0.0 };
-            else return new double[] { lmax, .3 /*linreg.B*/, -linreg.A / linreg.B };
+            if (double.IsNaN(linreg.Intercept)) return new double[] { lmax, .3, 0.0 };
+            else return new double[] { lmax, .3 /*linreg.B*/, -linreg.Intercept / linreg.Slope };
+        }
+
+        internal override Interval[] GetPredictionInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override Interval[] GetConfidenceInterval(double[] x, double level)
+        {
+            throw new NotImplementedException();
         }
     }
 }
