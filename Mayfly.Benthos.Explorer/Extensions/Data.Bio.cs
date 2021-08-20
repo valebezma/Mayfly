@@ -511,7 +511,7 @@ namespace Mayfly.Extensions
                 {
                     Power dw = new Power(dSample);
 
-                    if (dw.B < 2 || dw.B > 4)
+                    if (dw.Slope < 2 || dw.Slope > 4)
                     {
                         data.Species.RemoveSpeciesRow(speciesRow);
                         i--;

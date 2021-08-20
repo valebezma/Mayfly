@@ -96,6 +96,7 @@
       <DependentUpon>FunctorProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\DataTable.cs" />
+    <Compile Include="Extensions\Distribution.cs" />
     <Compile Include="Extensions\MetaExtensions.cs" />
     <Compile Include="Resources\FormatNotice.ru.Designer.cs">
       <DependentUpon>FormatNotice.ru.resx</DependentUpon>

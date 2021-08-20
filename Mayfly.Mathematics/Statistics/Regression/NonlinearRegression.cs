@@ -10,14 +10,10 @@ namespace Mayfly.Mathematics.Statistics
 {
     public abstract class NonlinearRegression : Regression
     {
-        NonlinearRegressionResult NonlinearFit { get { return (NonlinearRegressionResult)fit; } }
-
-        public List<double> Parameters;
-
         public NonlinearRegression(BivariateSample data)
             : base(data)
         {
-            Parameters = new List<double>();
+            Parameters.AddRange(GetInitials());
         }
 
         public NonlinearRegression(BivariateSample data, TrendType _type)
@@ -33,29 +29,36 @@ namespace Mayfly.Mathematics.Statistics
 
         public override double Predict(double x)
         {
-            return NonlinearFit.Predict(x);
-        }
-
-        public override double Parameter(int i)
-        {
-            return Parameters[i];
+            return Predict(Parameters, x);
         }
     }
 
     public class Logistic : NonlinearRegression
     {
-        public double L { get { return Parameter(0); } }
+        public double L { get { return Parameters[0]; } }
 
-        public double K { get { return Parameter(1); } }
+        public double K { get { return Parameters[1]; } }
 
-        public double X0 { get { return Parameter(2); } }
-
+        public double X0 { get { return Parameters[2]; } }
 
         public Logistic(BivariateSample data)
             : base(data, TrendType.Logistic)
-        { }
+        {
+            var xvalues = engine.CreateNumericVector(data.X);
+            engine.SetSymbol("xvalues", xvalues);
 
+            var yvalues = engine.CreateNumericVector(data.Y);
+            engine.SetSymbol("yvalues", yvalues);
 
+            var starts = engine.CreateNumericVector(Parameters);
+            engine.SetSymbol("starts", starts);
+
+            engine.Evaluate("fit = nls(yvalues ~ L / (1.0 + exp(-K * (xvalues - x0))), start = c('L' = starts[1], 'K' = starts[2], 'x0' = starts[3]))");
+            NumericVector _params = engine.Evaluate("params = coef(fit)").AsNumeric();
+
+            Parameters.Clear();
+            foreach (double param in _params) { Parameters.Add(param); }
+        }
 
         public override string GetEquation(string y, string x, string format)
         {
@@ -69,11 +72,6 @@ namespace Mayfly.Mathematics.Statistics
             return p[0] / (1.0 + Math.Exp(-p[1] * (x - p[2])));
         }
 
-        //public override double Predict(double x)
-        //{
-        //    return Predict(new double[] { L, K, X0 }, x);
-        //}
-
         public override double PredictInversed(double y)
         {
             return X0 + Math.Log(L / y - 1) / -K;
@@ -83,55 +81,34 @@ namespace Mayfly.Mathematics.Statistics
         {
             return new double[] { 1.0, 1.0, 0.0 };
         }
-
-        internal override Interval[] GetPredictionInterval(double[] x, double level)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal override Interval[] GetConfidenceInterval(double[] x, double level)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class Growth : NonlinearRegression
     {
-        public double Linf { get { return Parameter(0); } }
+        public double Linf { get { return Parameters[0]; } }
 
-        public double K { get { return Parameter(1); } }
+        public double K { get { return Parameters[1]; } }
 
-        public double T0 { get { return Parameter(2); } }
-
+        public double T0 { get { return Parameters[2]; } }
 
         public Growth(BivariateSample data)
-            : base(data/*.GetAveragedByX(1)*/, TrendType.Growth)
+            : base(data, TrendType.Growth)
         {
-            REngine.SetEnvironmentVariables();
-            REngine engine = REngine.GetInstance();
+            var xvalues = engine.CreateNumericVector(data.X);
+            engine.SetSymbol("xvalues", xvalues);
 
-            var age = engine.CreateNumericVector(data.X);
-            engine.SetSymbol("age", age);
+            var yvalues = engine.CreateNumericVector(data.Y);
+            engine.SetSymbol("yvalues", yvalues);
 
-            var len = engine.CreateNumericVector(data.Y);
-            engine.SetSymbol("len", len);
+            var starts = engine.CreateNumericVector(Parameters);
+            engine.SetSymbol("starts", starts);
 
-            //var starts = engine.CreateNumericVector(GetInitials());
-            //engine.SetSymbol("starts", starts);
-
-            engine.Evaluate("library(FSA)");
-            engine.Evaluate("starts = vbStarts(formula = len ~ age)");
-            engine.Evaluate("starts[2] = .3");
-
-            //engine.Evaluate("fit = nls(len ~ Linf * (1.0 - exp(-K * (age - t0))), start = c('Linf' = starts[1], 'K' = starts[2], 't0' = starts[3]))");
-            engine.Evaluate("fit = nls(len ~ Linf * (1.0 - exp(-K * (age - t0))), start = starts)");
+            engine.Evaluate("fit = nls(yvalues ~ Linf * (1.0 - exp(-K * (xvalues - t0))), start = c('Linf' = starts[1], 'K' = starts[2], 't0' = starts[3]))");
             NumericVector _params = engine.Evaluate("params = coef(fit)").AsNumeric();
 
             Parameters.Clear();
             foreach (double param in _params) { Parameters.Add(param); }
         }
-
-
 
         public override string GetEquation(string y, string x, string format)
         {
@@ -144,52 +121,62 @@ namespace Mayfly.Mathematics.Statistics
             return p[0] * (1.0 - Math.Exp(-p[1] * (t - p[2])));
         }
 
-        public override double Predict(double t)
-        {
-            return Predict(Parameters, t);
-        }
-
         public override double PredictInversed(double y)
         {
-            //if (fit == null) return double.NaN;
             return T0 - Math.Log((Linf - y) / Linf) / K;
-            //return Math.Log((Linf - y) / Linf) / K;
+        }
+
+        public override Interval[] GetInterval(double[] x, double level, IntervalType type)
+        {
+            //if (type == IntervalType.Prediction)
+            //    throw new ArgumentException("Prediction interval can't be obtained for nonlinear regression model.");
+
+            var xvalues = engine.CreateNumericVector(x);
+            engine.SetSymbol("axis", xvalues);
+
+            var alpha = engine.CreateNumeric(level);
+            engine.SetSymbol("alpha", alpha);
+
+            engine.Evaluate("require(investr)");
+            NumericMatrix predictions = engine.Evaluate(
+                "predFit(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+            List<Interval> result = new List<Interval>();
+            for (int i = 0; i < predictions.RowCount; i++)
+            {
+                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+            }
+            return result.ToArray();
         }
 
         public override double[] GetInitials()
         {
-            //double[] result = new double[] { 1.0, -1.0, 0.0 };
+            engine.Evaluate("library(FSA)");
+            engine.Evaluate("starts = vbStarts(formula = yvalues ~ xvalues)");
+            engine.Evaluate("starts[2] = .3");
+            return engine.Evaluate("starts").AsNumeric().ToArray();
 
-            //return result;
+            ////double[] result = new double[] { 1.0, -1.0, 0.0 };
 
-            // lmax is just max of L
-            double lmax = Data.Y.Maximum;
+            ////return result;
 
-            // lmax is mean of 5 maximal;
-            if (Data.Count > 15)
-            {
-                lmax = new Sample(
-                    Data.Y
-                    .OrderByDescending(t => t)
-                    .Take(5)).Mean;
-            }
+            //// lmax is just max of L
+            //double lmax = Data.Y.Maximum;
 
-            BivariateSample lin = Data.Copy();
-            lin.Y.Transform((v) => { return -Math.Log(1.0 - v / lmax); });
-            Linear linreg = new Linear(lin);
+            //// lmax is mean of 5 maximal;
+            //if (Data.Count > 15)
+            //{
+            //    lmax = new Sample(
+            //        Data.Y
+            //        .OrderByDescending(t => t)
+            //        .Take(5)).Mean;
+            //}
 
-            if (double.IsNaN(linreg.Intercept)) return new double[] { lmax, .3, 0.0 };
-            else return new double[] { lmax, .3 /*linreg.B*/, -linreg.Intercept / linreg.Slope };
-        }
+            //BivariateSample lin = Data.Copy();
+            //lin.Y.Transform((v) => { return -Math.Log(1.0 - v / lmax); });
+            //Linear linreg = new Linear(lin);
 
-        internal override Interval[] GetPredictionInterval(double[] x, double level)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal override Interval[] GetConfidenceInterval(double[] x, double level)
-        {
-            throw new NotImplementedException();
+            //if (double.IsNaN(linreg.Intercept)) return new double[] { lmax, .3, 0.0 };
+            //else return new double[] { lmax, .3 /*linreg.B*/, -linreg.Intercept / linreg.Slope };
         }
     }
 }

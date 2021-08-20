@@ -280,8 +280,6 @@ namespace Mayfly.Fish.Explorer
         }
 
         //public static DistributionType SelectionCurveType { get { return DistributionType.Normal; } }
-
-        public static Color ModelColor { get { return Color.CadetBlue; } }
     }
 
     public abstract class UserSettingPaths

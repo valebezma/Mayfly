@@ -17,6 +17,8 @@ namespace Mayfly.Fish.Explorer
 
         Scatterplot externalModel;
 
+        DataQualificationWay selectedQualificationWay;
+
 
 
         private void GetFilteredList(DataGridViewColumn gridColumn)
@@ -147,5 +149,12 @@ namespace Mayfly.Fish.Explorer
 
             return result;
         }
+    }
+
+    public enum DataQualificationWay
+    {
+        None = -1,
+        WeightOfLength = 0,
+        AgeOfLength = 1
     }
 }

@@ -490,6 +490,18 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        public bool HasSecondaryYAxis
+        {
+            get
+            {
+                foreach (Series series in Series)
+                {
+                    if (series.YAxisType == AxisType.Secondary) return true;
+                }
+                return false;
+            }
+        }
+
         [DefaultValue(false)]
         public bool IsChronic
         {
@@ -1150,13 +1162,14 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Scatterplot sample in Scatterplots)
             {
-                sample.Properties.DataPointColor = Series[sample.Series.Name].Color;
-                if (sample.Properties.ShowTrend) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                if (sample.Properties.DataPointColor == Color.SeaGreen) sample.Properties.DataPointColor = sample.Series.Color;
+                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                sample.Series.Color = Color.Transparent;
             }
 
             foreach (Histogramma sample in Histograms)
             {
-                sample.Properties.DataPointColor = Series[sample.DataSeries.Name].Color;
+                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.DataSeries.Name].Color;
             }
 
             //foreach (Evaluation sample in Evaluations)
@@ -1174,6 +1187,16 @@ namespace Mayfly.Mathematics.Charts
             {
                 sample.BuildSeries();
 
+                if (sample.Trend != null) sample.Trend.Series.Points.Clear();
+                if (sample.TrendRange != null) sample.TrendRange.Points.Clear();
+                if (sample.LowerPredictionBand != null) sample.LowerPredictionBand.Points.Clear();
+                if (sample.UpperPredictionBand != null) sample.UpperPredictionBand.Points.Clear();
+            }
+
+            RecalculateAxesProperties();
+
+            foreach (Scatterplot sample in Scatterplots)
+            {
                 if (sample.Trend != null)
                 {
                     sample.Trend.TransposeCharting = sample.TransposeCharting;
@@ -1190,8 +1213,6 @@ namespace Mayfly.Mathematics.Charts
                     }
                 }
             }
-
-            RecalculateAxesProperties();
 
             foreach (Functor sample in Functors)
             {
@@ -1627,7 +1648,6 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (series.YAxisType == AxisType.Secondary)
                 {
-
                     if (series.Points == null)
                     {
                         maximum = 1;
@@ -1688,7 +1708,8 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (sample.Series == series) return sample;
                 if (sample.Trend != null && sample.Trend.Series == series) return sample;
-                if (sample.DataRange == series) return sample;
+                if (sample.UpperPredictionBand == series) return sample;
+                if (sample.LowerPredictionBand == series) return sample;
                 if (sample.TrendRange == series) return sample;
             }
 
@@ -1886,11 +1907,14 @@ namespace Mayfly.Mathematics.Charts
 
             //foreach (Functor functor in Functors)
             //{
-            //    if (IsDistinguishingMode) {
+            //    if (IsDistinguishingMode)
+            //    {
             //        functor.Series.BorderColor =
             //        functor.Series.SmartLabelStyle.CalloutLineColor =
-            //        functor.Series.LabelForeColor = UserSettings.DistinguishColorDeselected;
-            //    } else {
+            //        functor.Series.LabelForeColor = Constants.InfantColor;
+            //    }
+            //    else
+            //    {
             //        functor.Series.SmartLabelStyle.CalloutLineColor =
             //        functor.Series.LabelForeColor = Color.Black;
             //        functor.Update(this, new EventArgs());
@@ -1918,11 +1942,14 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (IsDistinguishingMode)
                 {
-                    histogram.DataSeries.Color = histogram.DataSeries.BorderColor = UserSettings.DistinguishColorSelected;
+                    histogram.DataSeries.Color = 
+                        histogram.DataSeries.BorderColor = 
+                        UserSettings.DistinguishColorSelected;
                 }
                 else
                 {
-                    histogram.DataSeries.BorderColor = Color.DarkGray;
+                    histogram.DataSeries.Color = histogram.Properties.DataPointColor;
+                    histogram.DataSeries.BorderColor = Color.Black;
                 }
             }
         }
@@ -1937,7 +1964,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     functor.Series.BorderColor =
                     functor.Series.SmartLabelStyle.CalloutLineColor =
-                    functor.Series.LabelForeColor = UserSettings.DistinguishColorDeselected;
+                    functor.Series.LabelForeColor = Constants.InfantColor;
                 }
                 else
                 {
@@ -1957,11 +1984,11 @@ namespace Mayfly.Mathematics.Charts
                 {
                     scatterplot.Series.MarkerBorderColor =
                     scatterplot.Series.SmartLabelStyle.CalloutLineColor =
-                    scatterplot.Series.LabelForeColor = UserSettings.DistinguishColorDeselected;
+                    scatterplot.Series.LabelForeColor = Constants.InfantColor;
 
                     if (scatterplot.Properties.ShowTrend)
                     {
-                        scatterplot.Trend.Series.Color = UserSettings.DistinguishColorDeselected;
+                        scatterplot.Trend.Series.Color = Constants.InfantColor;
                     }
                 }
                 else
@@ -1982,7 +2009,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     histogram.DataSeries.Color =
                     histogram.DataSeries.BorderColor =
-                    histogram.DataSeries.LabelForeColor = UserSettings.DistinguishColorDeselected;
+                    histogram.DataSeries.LabelForeColor = Constants.InfantColor;
                 }
             }
         }
@@ -2245,75 +2272,89 @@ namespace Mayfly.Mathematics.Charts
             engine.Evaluate("fills = c()");
             engine.Evaluate("borders = c()");
 
-            foreach (Series series in this.Series)
+            AxisType type = AxisType.Primary;
+
+            for (int i = 0; i < Series.Count; i++)
             {
-                if (series.Points.Count == 0) continue;
-
-                seriesNames.Add(series.Name);
-
-                BivariateSample data = GetDataPointValues(series);
-
-                var xvalues = engine.CreateNumericVector(data.X);
-                var yvalues = engine.CreateNumericVector(data.Y);
-                engine.SetSymbol("xvalues", xvalues);
-                engine.SetSymbol("yvalues", yvalues);
+                Series series = Series[i];
 
                 Color col = series.Color;
-                if (col.Name == "0") col = series.MarkerBorderColor;
-                if (col.Name == "0") col = Color.Black;
+                if (col.Name == "Transparent") col = series.MarkerBorderColor;
 
-                engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
-                engine.Evaluate("cols = c(cols, col1)");
-
-                switch (series.ChartType)
+                if (series.YAxisType == type && series.Points.Count > 0 && col.Name != "Transparent")
                 {
-                    case SeriesChartType.Column:
-                        engine.Evaluate("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = col1)");
-                        engine.Evaluate("pchs = c(pchs, NA)");
-                        engine.Evaluate("ltys = c(ltys, NA)");
-                        engine.Evaluate("fills = c(fills, col)");
-                        engine.Evaluate("borders = c(borders, 'black')");
-                        engine.Evaluate("lwds = c(lwds, NA)");
-                        break;
+                    BivariateSample data = GetDataPointValues(series);
 
-                    case SeriesChartType.Line:
-                    case SeriesChartType.Area:
-                        engine.Evaluate("lines(yvalues ~ xvalues, col = col1)");
-                        engine.Evaluate("pchs = c(pchs, NA)");
-                        engine.Evaluate("ltys = c(ltys, 1)");
-                        engine.Evaluate("fills = c(fills, NA)");
-                        engine.Evaluate("borders = c(borders, NA)");
-                        engine.Evaluate("lwds = c(lwds, 2)");
-                        break;
+                    var xvalues = engine.CreateNumericVector(data.X);
+                    var yvalues = engine.CreateNumericVector(data.Y);
+                    engine.SetSymbol("xvalues", xvalues);
+                    engine.SetSymbol("yvalues", yvalues);
+                    engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
 
-                    case SeriesChartType.Point:
-                        engine.Evaluate("points(yvalues ~ xvalues, pch = 1, col = col1)");
-                        engine.Evaluate("pchs = c(pchs, 1)");
-                        engine.Evaluate("ltys = c(ltys, NA)");
-                        engine.Evaluate("fills = c(fills, NA)");
-                        engine.Evaluate("borders = c(borders, NA)");
-                        engine.Evaluate("lwds = c(lwds, NA)");
-                        break;
+                    if (series.IsVisibleInLegend)
+                    {
+                        seriesNames.Add(string.IsNullOrWhiteSpace(series.LegendText) ? series.Name : series.LegendText);
+                        engine.Evaluate("cols = c(cols, col1)");
+                    }
+
+                    switch (series.ChartType)
+                    {
+                        case SeriesChartType.Column:
+                            engine.Evaluate("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = col1, border = " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
+                            if (series.IsVisibleInLegend)
+                            {
+                                engine.Evaluate("pchs = c(pchs, NA)");
+                                engine.Evaluate("ltys = c(ltys, NA)");
+                                engine.Evaluate("fills = c(fills, col1)");
+                                engine.Evaluate("borders = c(borders, " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
+                                engine.Evaluate("lwds = c(lwds, NA)");
+                            }
+                            break;
+
+                        case SeriesChartType.Line:
+                        case SeriesChartType.Area:
+                            engine.Evaluate("lines(yvalues ~ xvalues, col = col1, lty = " + (series.BorderDashStyle == ChartDashStyle.Dash ? "2" : "1") + ")");
+                            if (series.IsVisibleInLegend)
+                            {
+                                engine.Evaluate("pchs = c(pchs, NA)");
+                                engine.Evaluate("ltys = c(ltys, " + (series.BorderDashStyle == ChartDashStyle.Dash ? "2" : "1") + ")");
+                                engine.Evaluate("fills = c(fills, NA)");
+                                engine.Evaluate("borders = c(borders, NA)");
+                                engine.Evaluate("lwds = c(lwds, 2)");
+                            }
+                            break;
+
+                        case SeriesChartType.Point:
+                            engine.Evaluate("points(yvalues ~ xvalues, pch = 1, col = col1)");
+                            if (series.IsVisibleInLegend)
+                            {
+                                engine.Evaluate("pchs = c(pchs, 1)");
+                                engine.Evaluate("ltys = c(ltys, NA)");
+                                engine.Evaluate("fills = c(fills, NA)");
+                                engine.Evaluate("borders = c(borders, NA)");
+                                engine.Evaluate("lwds = c(lwds, NA)");
+                            }
+                            break;
+                    }
+                }
+
+                if (i == Series.Count - 1 && HasSecondaryYAxis && type == AxisType.Primary)
+                {
+                    type = AxisType.Secondary;
+                    i = 0;
+
+                    engine.Evaluate("par(new = TRUE)");
+                    engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
+                    engine.Evaluate("axis(side = 4)");
+                    engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
                 }
             }
 
-            if (Series.Count > 1)
+            if (ShowLegend)
             {
                 var names = engine.CreateCharacterVector(seriesNames);
                 engine.SetSymbol("names", names);
                 engine.Evaluate("legend(x = 'topright', legend = names, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds)");
-
-                //legend(x, y = NULL, legend, fill = NULL, col = par("col"),
-                //         border = "black", lty, lwd, pch,
-                //angle = 45, density = NULL, bty = "o", bg = par("bg"),
-                //box.lwd = par("lwd"), box.lty = par("lty"), box.col = par("fg"),
-                //pt.bg = NA, cex = 1, pt.cex = cex, pt.lwd = lwd,
-                //xjust = 0, yjust = 1, x.intersp = 1, y.intersp = 1,
-                //adj = c(0, 0.5), text.width = NULL, text.col = par("col"),
-                //text.font = NULL, merge = do.lines && has.pch, trace = FALSE,
-                //plot = TRUE, ncol = 1, horiz = FALSE, title = NULL,
-                //inset = 0, xpd, title.col = text.col, title.adj = 0.5,
-                //seg.len = 2)
             }
 
             engine.Evaluate("dev.off()");
@@ -2417,52 +2458,29 @@ namespace Mayfly.Mathematics.Charts
             if (GetSample(series) is Scatterplot)
             {
                 Scatterplot scatterplot = GetSample(series) as Scatterplot;
-                switch (e.Button)
+                if (ModifierKeys.HasFlag(Keys.Control))
                 {
-                    case MouseButtons.Left:
-                        if (ModifierKeys.HasFlag(Keys.Control))
-                        {
-                            if (SelectedScatterplots.Contains(scatterplot))
-                            {
-                                SelectedScatterplots.Remove(scatterplot);
-                            }
-                            else
-                            {
-                                SelectedScatterplots.Add(scatterplot);
-                            }
-                        }
-                        else
-                        {
-                            SelectedScatterplots.Clear();
-                            SelectedScatterplots.Add(scatterplot);
-                        }
+                    if (SelectedScatterplots.Contains(scatterplot))
+                    {
+                        SelectedScatterplots.Remove(scatterplot);
+                    }
+                    else
+                    {
+                        SelectedScatterplots.Add(scatterplot);
+                    }
+                }
+                else
+                {
+                    SelectedScatterplots.Clear();
+                    SelectedScatterplots.Add(scatterplot);
+                }
 
-                        LastSelectedScatterplot = scatterplot;
-                        SeriesShowSelected();
-                        break;
+                LastSelectedScatterplot = scatterplot;
+                SeriesShowSelected();
 
-                    case MouseButtons.Right:
-                        if (ModifierKeys.HasFlag(Keys.Control))
-                        {
-                            if (!SelectedScatterplots.Contains(scatterplot))
-                            {
-                                SelectedScatterplots.Add(scatterplot);
-                            }
-                        }
-                        else
-                        {
-                            if (!SelectedScatterplots.Contains(scatterplot))
-                            {
-                                SelectedScatterplots.Clear();
-                                SelectedScatterplots.Add(scatterplot);
-                            }
-                        }
-
-                        LastSelectedScatterplot = scatterplot;
-                        SeriesShowSelected();
-
-                        contextScatterplot.Show(this, e.Location);
-                        break;
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextScatterplot.Show(this, e.Location);
                 }
             }
 
@@ -3035,28 +3053,28 @@ namespace Mayfly.Mathematics.Charts
 
         private void contextHistogramAddFit_Click(object sender, EventArgs e)
         {
-            //foreach (Histogramma histogram in SelectedHistograms)
-            //{
-            //    if (histogram.Data != null && histogram.Properties.ShowFit)
-            //    {
-            //        if (!histogram.Properties.Visible)
-            //        {
-            //            histogram.Properties.SetFriendlyDesktopLocation(contextHistogram);
-            //            histogram.Properties.Show();
-            //        }
-            //        else
-            //        {
-            //            histogram.Properties.BringToFront();
-            //        }
+            foreach (Histogramma histogram in SelectedHistograms)
+            {
+                if (histogram.Data != null && histogram.Properties.ShowFit)
+                {
+                    if (!histogram.Properties.Visible)
+                    {
+                        histogram.Properties.SetFriendlyDesktopLocation(contextHistogram);
+                        histogram.Properties.Show();
+                    }
+                    else
+                    {
+                        histogram.Properties.BringToFront();
+                    }
 
-            //        histogram.Properties.ShowFitTab();
-            //    }
-            //    else
-            //    {
-            //        histogram.Properties.ShowFit = true;
-            //        histogram.Update(sender, e);
-            //    }
-            //}
+                    histogram.Properties.ShowFitTab();
+                }
+                else
+                {
+                    histogram.Properties.ShowFit = true;
+                    histogram.Update(sender, e);
+                }
+            }
         }
 
         private void contextHistogramDistinguish_CheckedChanged(object sender, EventArgs e)

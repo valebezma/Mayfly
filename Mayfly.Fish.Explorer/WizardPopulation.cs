@@ -403,7 +403,7 @@ namespace Mayfly.Fish.Explorer
                 growthInternal.Series.Name =
                     growthInternal.Properties.ScatterplotName =
                     Resources.Interface.Interface.BioLoaded;
-                growthInternal.Properties.DataPointColor = UserSettings.ModelColor;
+                growthInternal.Properties.DataPointColor = Constants.MotiveColor;
                 plotAL.AddSeries(growthInternal);
             }
 
@@ -416,7 +416,7 @@ namespace Mayfly.Fish.Explorer
                 GrowthModel.Properties.ShowTrend = true;
                 GrowthModel.Properties.SelectedApproximationType = Data.Parent.GrowthModels.Nature;
                 GrowthModel.Properties.DataPointColor = Color.Transparent;
-                GrowthModel.Properties.TrendColor = UserSettings.ModelColor.Darker();
+                GrowthModel.Properties.TrendColor = Constants.MotiveColor.Darker();
                 plotAL.AddSeries(GrowthModel);
             }
 
@@ -449,7 +449,7 @@ namespace Mayfly.Fish.Explorer
                 weightInternal.Series.Name =
                     weightInternal.Properties.ScatterplotName =
                     Resources.Interface.Interface.BioLoaded;
-                weightInternal.Properties.DataPointColor = UserSettings.ModelColor;
+                weightInternal.Properties.DataPointColor = Constants.MotiveColor;
                 plotLW.AddSeries(weightInternal);
             }
 
@@ -462,7 +462,7 @@ namespace Mayfly.Fish.Explorer
                 WeightModel.Properties.ShowTrend = true;
                 WeightModel.Properties.SelectedApproximationType = Data.Parent.MassModels.Nature;
                 WeightModel.Properties.DataPointColor = Color.Transparent;
-                WeightModel.Properties.TrendColor = UserSettings.ModelColor.Darker();
+                WeightModel.Properties.TrendColor = Constants.MotiveColor.Darker();
                 plotLW.AddSeries(WeightModel);
             }
 
@@ -495,7 +495,7 @@ namespace Mayfly.Fish.Explorer
                 weightGrowthInternal.Series.Name =
                     weightGrowthInternal.Properties.ScatterplotName =
                     Resources.Interface.Interface.BioLoaded;
-                weightGrowthInternal.Properties.DataPointColor = UserSettings.ModelColor;
+                weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
                 plotAW.AddSeries(weightGrowthInternal);
             }
 
@@ -517,7 +517,7 @@ namespace Mayfly.Fish.Explorer
                     }
                         );
 
-                weightGrowth.Properties.TrendColor = UserSettings.ModelColor.Darker();
+                weightGrowth.Properties.TrendColor = Constants.MotiveColor.Darker();
                 plotAW.AddSeries(weightGrowth);
             }
 

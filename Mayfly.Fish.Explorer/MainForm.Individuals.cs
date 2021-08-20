@@ -330,7 +330,7 @@ namespace Mayfly.Fish.Explorer
 
                 gridRow.CreateCells(spreadSheetInd);
                 gridRow.ReadOnly = true;
-                gridRow.DefaultCellStyle.ForeColor = Color.DarkGray;
+                gridRow.DefaultCellStyle.ForeColor = Constants.InfantColor; // Color.DarkGray;
 
                 //gridRow.Cells[columnIndID.Index].Value;
 

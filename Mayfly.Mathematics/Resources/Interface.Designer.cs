@@ -259,7 +259,7 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Prediction Bands.
+        ///   Looks up a localized string similar to {0:P3} prediction interval of {1}.
         /// </summary>
         public static string PredictionBands {
             get {

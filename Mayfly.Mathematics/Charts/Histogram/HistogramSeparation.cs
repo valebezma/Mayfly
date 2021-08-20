@@ -531,7 +531,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 Combined = new Series(Resources.Interface.CombinedDistribution);
                 Combined.ChartType = SeriesChartType.Line;
-                Combined.Color = Color.Red;
+                Combined.Color = Constants.MotiveColor;
                 Combined.BorderWidth = 2;
                 ParentChart.Series.Add(Combined);
             }

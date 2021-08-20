@@ -16,11 +16,15 @@ namespace Mayfly.Mathematics.Charts
     {
         public Plot Container { set; get; }
 
+        public ContinuousDistribution Distribution;
+
         public HistogramProperties Properties { get; set; }
 
         public Sample Data { get; set; }
 
         public Series DataSeries { get; set; }
+
+        public Series FitSeries { get; set; }
 
         public bool IsChronic { get; set; }
 
@@ -59,7 +63,7 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        //public CalloutAnnotation FitAnnotation { get; set; }
+        public CalloutAnnotation FitAnnotation { get; set; }
 
         public event HistogramEventHandler ValueChanged;
 
@@ -208,78 +212,78 @@ namespace Mayfly.Mathematics.Charts
             DataSeries.SetCustomProperty("PointWidth",
                 Properties.PointWidth.ToString("0.00", CultureInfo.InvariantCulture));
 
-            //if (Properties.ShowFit)
-            //{
-            //    CalculateApproximation(Properties.SelectedApproximationType);
+            if (Properties.ShowFit)
+            {
+                CalculateApproximation(Properties.SelectedApproximationType);
 
-            //    if (Distribution != null)
-            //    {
-            //        BuildFit(Container.AxisXMin, Container.AxisXMax);
+                if (Distribution != null)
+                {
+                    BuildFit(Container.AxisXMin, Container.AxisXMax);
 
-            //        FitSeries.Name = Properties.FitName;
-            //        FitSeries.BorderWidth = Properties.FitWidth;
+                    FitSeries.Name = Properties.FitName;
+                    FitSeries.BorderWidth = Properties.FitWidth;
 
-            //        if (Container.IsDistinguishingMode)
-            //        {
-            //            FitSeries.Color = Color.DarkSalmon;
-            //        }
-            //        else
-            //        {
-            //            FitSeries.Color = Properties.FitColor;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    if (FitSeries != null)
-            //    {
-            //        Container.Series.Remove(FitSeries);
-            //        FitSeries = null;
-            //    }
-            //}
+                    if (Container.IsDistinguishingMode)
+                    {
+                        FitSeries.Color = UserSettings.DistinguishColorSelected;
+                    }
+                    else
+                    {
+                        FitSeries.Color = Properties.FitColor;
+                    }
+                }
+            }
+            else
+            {
+                if (FitSeries != null)
+                {
+                    Container.Series.Remove(FitSeries);
+                    FitSeries = null;
+                }
+            }
 
-            //if (Properties.ShowAnnotation)
-            //{
-            //    if (FitAnnotation == null)
-            //    {
-            //        FitAnnotation = new CalloutAnnotation();
+            if (Properties.ShowAnnotation)
+            {
+                if (FitAnnotation == null)
+                {
+                    FitAnnotation = new CalloutAnnotation();
 
-            //        FitAnnotation.BackColor = Container.ChartAreas[0].BackColor;
-            //        FitAnnotation.Name = Properties.HistogramName;
-            //        FitAnnotation.IsSizeAlwaysRelative = false;
-            //        FitAnnotation.CalloutStyle = CalloutStyle.Rectangle;
-            //        FitAnnotation.Alignment = ContentAlignment.MiddleCenter;
-            //        FitAnnotation.AllowMoving = true;
-            //        FitAnnotation.AxisX = Container.ChartAreas[0].AxisX;
-            //        FitAnnotation.AxisY = Container.ChartAreas[0].AxisY;
-            //        FitAnnotation.X = Left + 3 * (Right - Left) / 4;
-            //        FitAnnotation.Y = Container.AxisXInterval * Data.Count *
-            //            Distribution.ProbabilityDensity(FitAnnotation.X);
-            //        Container.Annotations.Add(FitAnnotation);
-            //    }
+                    FitAnnotation.BackColor = Container.ChartAreas[0].BackColor;
+                    FitAnnotation.Name = Properties.HistogramName;
+                    FitAnnotation.IsSizeAlwaysRelative = false;
+                    FitAnnotation.CalloutStyle = CalloutStyle.Rectangle;
+                    FitAnnotation.Alignment = ContentAlignment.MiddleCenter;
+                    FitAnnotation.AllowMoving = true;
+                    FitAnnotation.AxisX = Container.ChartAreas[0].AxisX;
+                    FitAnnotation.AxisY = Container.ChartAreas[0].AxisY;
+                    FitAnnotation.X = Left + 3 * (Right - Left) / 4;
+                    FitAnnotation.Y = Container.AxisXInterval * Data.Count *
+                        Distribution.ProbabilityDensity(FitAnnotation.X);
+                    Container.Annotations.Add(FitAnnotation);
+                }
 
-            //    FitAnnotation.Font = Container.Font;
-            //    FitAnnotation.Visible = true;
-            //    FitAnnotation.Text = Properties.FitName;
+                FitAnnotation.Font = Container.Font;
+                FitAnnotation.Visible = true;
+                FitAnnotation.Text = Properties.FitName;
 
-            //    if (Properties.ShowCount)
-            //    {
-            //        FitAnnotation.Text += Constants.Break + "N = " + Data.Count;
-            //    }
+                if (Properties.ShowCount)
+                {
+                    FitAnnotation.Text += Constants.Break + "n = " + Data.Count;
+                }
 
-            //    if (Properties.ShowFitResult)
-            //    {
-            //        TestResult testResult = Data.KolmogorovSmirnovTest(Distribution);
-            //        FitAnnotation.Text += Constants.Break + string.Format(Resources.Interface.FitAnnotation, testResult.Probability);
-            //    }
-            //}
-            //else
-            //{
-            //    if (FitAnnotation != null)
-            //    {
-            //        FitAnnotation.Visible = false;
-            //    }
-            //}
+                if (Properties.ShowFitResult)
+                {
+                    TestResult testResult = Data.KolmogorovSmirnovTest(Distribution);
+                    FitAnnotation.Text += Constants.Break + string.Format(Resources.Interface.FitAnnotation, testResult.Probability);
+                }
+            }
+            else
+            {
+                if (FitAnnotation != null)
+                {
+                    FitAnnotation.Visible = false;
+                }
+            }
         }
 
         #region
@@ -340,11 +344,11 @@ namespace Mayfly.Mathematics.Charts
 
         #endregion
 
-        //public void CalculateApproximation(DistributionType type)
-        //{
-        //    if (Data == null) return;
-        //    Distribution = DistributionExtensions.GetDistribution(type, Data);
-        //}
+        public void CalculateApproximation(DistributionType type)
+        {
+            if (Data == null) return;
+            Distribution = DistributionExtensions.GetDistribution(type, Data);
+        }
 
         //public Histogram Copy()
         //{
@@ -477,35 +481,35 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        //public void BuildFit(double xMin, double xMax)
-        //{
-        //    if (FitSeries == null)
-        //    {
-        //        FitSeries = new Series(Properties.FitName);
-        //        FitSeries.ChartType = SeriesChartType.Line;
-        //    }
-        //    else
-        //    {
-        //        FitSeries.Points.Clear();
-        //    }
+        public void BuildFit(double xMin, double xMax)
+        {
+            if (FitSeries == null)
+            {
+                FitSeries = new Series(Properties.FitName);
+                FitSeries.ChartType = SeriesChartType.Line;
+            }
+            else
+            {
+                FitSeries.Points.Clear();
+            }
 
-        //    if (Distribution == null) return;
+            if (Distribution == null) return;
 
-        //    for (double i = xMin - Container.AxisXInterval; i <= xMax; i += (Container.AxisXInterval / 100))
-        //    {
-        //        DataPoint dataPoint = new DataPoint();
-        //        dataPoint.XValue = i + Container.AxisXInterval / 2;
-        //        double y = Container.AxisXInterval * Data.Count * Distribution.ProbabilityDensity(i);
-        //        if (double.IsInfinity(y)) continue;
-        //        dataPoint.YValues[0] = y;
-        //        FitSeries.Points.Add(dataPoint);
-        //    }
+            for (double i = xMin - Container.AxisXInterval; i <= xMax; i += (Container.AxisXInterval / 100))
+            {
+                DataPoint dataPoint = new DataPoint();
+                dataPoint.XValue = i + Container.AxisXInterval / 2;
+                double y = Container.AxisXInterval * Data.Count * Distribution.ProbabilityDensity(i);
+                if (double.IsInfinity(y)) continue;
+                dataPoint.YValues[0] = y;
+                FitSeries.Points.Add(dataPoint);
+            }
 
-        //    if (Container.Series.FindByName(FitSeries.Name) == null)
-        //    {
-        //        Container.Series.Add(FitSeries);
-        //    }
-        //}
+            if (Container.Series.FindByName(FitSeries.Name) == null)
+            {
+                Container.Series.Add(FitSeries);
+            }
+        }
 
         private void Properties_ValueChanged(object sender, HistogramEventArgs e)
         {

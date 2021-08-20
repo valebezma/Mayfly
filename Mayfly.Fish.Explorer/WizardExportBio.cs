@@ -236,11 +236,11 @@ namespace Mayfly.Fish.Explorer
                 //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ?
                 //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-                gridRow.Cells[ColumnWeightQ.Index].Value = regression.A;
+                gridRow.Cells[ColumnWeightQ.Index].Value = regression.Intercept;
                 //gridRow.Cells[ColumnWeightQ.Index].Style.ForeColor = regression.IsSignificant(0) ?
                 //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-                gridRow.Cells[ColumnWeightB.Index].Value = regression.B;
+                gridRow.Cells[ColumnWeightB.Index].Value = regression.Slope;
                 //gridRow.Cells[ColumnWeightB.Index].Style.ForeColor = regression.IsSignificant(1) ?
                 //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
@@ -286,7 +286,7 @@ namespace Mayfly.Fish.Explorer
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Growth;
                 scatter.Properties.ShowPredictionBands = true;
-                scatter.Properties.HighlightRunouts = true;
+                scatter.Properties.HighlightOutliers = true;
                 scatter.Properties.ShowCount = true;
                 scatter.ShowOnChart();
             }
@@ -302,7 +302,7 @@ namespace Mayfly.Fish.Explorer
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Power;
                 scatter.Properties.ShowPredictionBands = true;
-                scatter.Properties.HighlightRunouts = true;
+                scatter.Properties.HighlightOutliers = true;
                 scatter.Properties.ShowCount = true;
                 scatter.ShowOnChart();
             }

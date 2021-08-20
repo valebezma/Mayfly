@@ -91,10 +91,10 @@ namespace Mayfly.Mathematics.Charts
             set { checkBoxPI.Checked = value; }
         }
 
-        public bool HighlightRunouts
+        public bool HighlightOutliers
         {
-            get { return ShowTrend && checkBoxRunouts.Checked; }
-            set { checkBoxRunouts.Checked = value; }
+            get { return ShowTrend && checkBoxOutliers.Checked; }
+            set { checkBoxOutliers.Checked = value; }
         }
 
         public Color DataPointColor
@@ -280,7 +280,7 @@ namespace Mayfly.Mathematics.Charts
                 numericUpDownConfidenceLevel.Enabled = 
                 (ShowPredictionBands || ShowConfidenceBands);
 
-            checkBoxRunouts.Enabled = ShowPredictionBands;
+            checkBoxOutliers.Enabled = ShowPredictionBands;
 
             valueChanged(sender, e);
         }

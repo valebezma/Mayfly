@@ -119,7 +119,7 @@ namespace Mayfly.Extensions
 
         public static StripLine AddStripLine(this Axis axis, double value, string label)
         {
-            return axis.AddStripLine(value, label, Color.Red);
+            return axis.AddStripLine(value, label, Constants.MotiveColor);
         }
 
         public static StripLine AddStripLine(this Axis axis, double value, string label, Color color)

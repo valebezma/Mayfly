@@ -17,19 +17,13 @@ namespace Mayfly.Mathematics.Charts
             InitializeComponent();
 
             plot = _plot;
-            plot.CollectionChanged += plot_CollectionChanged;
+            plot.Updated += plot_CollectionChanged;
+            tabPageY2.Parent = null;
         }
 
         void plot_CollectionChanged(object sender, EventArgs e)
         {
-            bool axis2 = false;
-
-            foreach (Series series in plot.Series)
-            {
-                axis2 |= series.YAxisType == AxisType.Secondary;
-            }
-
-            tabPageY2.Parent = axis2 ? tabControl : null;
+            tabPageY2.Parent = plot.HasSecondaryYAxis ? tabControl : null;
         }
 
 

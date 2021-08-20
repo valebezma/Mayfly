@@ -142,9 +142,9 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    table1.AddCellValue(model.Parameter(0));
-                    double z = -model.Parameter(1);
-                    table1.AddCellValue(model.Parameter(1));
+                    table1.AddCellValue(model.Parameters[0]);
+                    double z = -model.Parameters[1];
+                    table1.AddCellValue(model.Parameters[1]);
                     table1.AddCellValue(Math.Exp(z));
                     table1.AddCellValue(1.0 - Math.Exp(z));
                 }

@@ -254,7 +254,7 @@ namespace Mayfly.Mathematics.Charts
 
             if (Container.IsDistinguishingMode)
             {
-                Series.Color = Color.DarkSalmon;
+                Series.Color = Constants.MotiveColor;
             }
             else
             {

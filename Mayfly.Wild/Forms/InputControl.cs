@@ -76,7 +76,7 @@ namespace Mayfly.Wild
             Scatterplot.Properties.ShowTrend = true;
             Scatterplot.Properties.SelectedApproximationType = Mathematics.Statistics.TrendType.Power;
             Scatterplot.Properties.ShowPredictionBands = true;
-            Scatterplot.Properties.HighlightRunouts = true;
+            Scatterplot.Properties.HighlightOutliers = true;
         }
 
         private void backgroundChartBuilder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
