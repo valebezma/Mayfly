@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Wild;
+using Mayfly.Mathematics.Statistics;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -11,11 +12,7 @@ namespace Mayfly.Fish.Explorer
 
         FishSamplerType selectedTechSamplerType;
 
-        Scatterplot combinedModel;
-
-        Scatterplot internalModel;
-
-        Scatterplot externalModel;
+        ContinuousBio model;
 
         DataQualificationWay selectedQualificationWay;
 

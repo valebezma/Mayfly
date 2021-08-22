@@ -159,7 +159,7 @@ namespace Mayfly.Mathematics.Charts
         {
             Scatterplot = scatterplot;
             TrendColor = DataPointColor.Darker();
-            checkBoxShowTrend.Enabled = scatterplot.Data.Count > UserSettings.StrongSampleSize;
+            checkBoxShowTrend.Enabled = scatterplot.Calc.Data.Count > UserSettings.StrongSampleSize;
         }
 
 

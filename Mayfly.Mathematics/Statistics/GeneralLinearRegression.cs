@@ -289,11 +289,11 @@ namespace Mayfly.Mathematics.Statistics
             return result.ToArray();
         }
 
-        public override Interval[] GetInterval(double[] x, double level, IntervalType type)
+        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
         {
             Sample s = new Sample(x);
             s.Transform(TransformX);
-            Interval[] result = BackTransform(LinearizedModel.GetInterval(s.ToArray(), level, type));
+            Interval[] result = BackTransform(LinearizedModel.getInterval(s.ToArray(), level, type));
             return result;
         }
 

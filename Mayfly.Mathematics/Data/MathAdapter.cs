@@ -643,10 +643,10 @@ namespace Mayfly.Mathematics
                         scatterplot.Properties.ShowExplained = 
                         (columnSelection.AutoTrend && variants.Count < 4);
 
-                    if (scatterplot.Data.Count < UserSettings.StrongSampleSize) continue;
+                    if (scatterplot.Calc.Data.Count < UserSettings.StrongSampleSize) continue;
 
                     if (Form.ModifierKeys.HasFlag(Keys.Control) &&
-                        scatterplot.Data.Count < UserSettings.SoftSampleSize)
+                        scatterplot.Calc.Data.Count < UserSettings.SoftSampleSize)
                     {
                         continue;
                     }

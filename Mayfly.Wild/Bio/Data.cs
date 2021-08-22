@@ -9,11 +9,9 @@ namespace Mayfly.Wild
 {
     partial class Data
     {
-        public ContinuousBio MassModels;
+        public List<ContinuousBio> MassModels;
 
-        public ContinuousBio GrowthModels;
-
-        public ContinuousBio MassGrowthModels;
+        public List<ContinuousBio> GrowthModels;
 
         public string[] GetAuthors()
         {
@@ -54,22 +52,15 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public DataRow[] GetBioRows(string species)
+        public double GetIndividualValue(IndividualRow individualRow, string field)
         {
-            return Species.FindBySpecies(species).GetIndividualRows();
-        }
-
-        public double GetIndividualValue(DataRow dataRow, string field)
-        {
-            IndividualRow individualRow = (IndividualRow)dataRow;
-
             if (individualRow.Table.Columns[field] != null && !individualRow.IsNull(field))
             {
                 return (double)individualRow[field];
             }
-            else if (this.Variable.FindByVarName(field) != null)
+            else if (Variable.FindByVarName(field) != null)
             {
-                return (double)this.Value.FindByIndIDVarID(individualRow.ID, this.Variable.FindByVarName(field).ID).Value;
+                return (double)Value.FindByIndIDVarID(individualRow.ID, Variable.FindByVarName(field).ID).Value;
             }
             else
             {
@@ -77,54 +68,45 @@ namespace Mayfly.Wild
             }
         }
 
-        public bool IsBioLoaded
-        {
-            get
-            {
-                return (MassModels.ExternalScatterplots.Count) > 0;
-            }
-        }
-
         public void InitializeBio()
         {
-            MassModels = new ContinuousBio(this, this.Species.GetSorted(),
-                Individual.LengthColumn, Individual.MassColumn, TrendType.Power);
-            MassModels.DisplayNameY = Resources.Reports.Caption.Mass;
-            MassModels.DisplayNameX = Resources.Reports.Caption.Length;
+            MassModels = new List<ContinuousBio>();
+            GrowthModels = new List<ContinuousBio>();
 
-            GrowthModels = new ContinuousBio(this, Species.GetSorted(),
-                Individual.AgeColumn, Individual.LengthColumn, TrendType.Growth);
-            GrowthModels.DisplayNameY = Resources.Reports.Caption.Length;
-            GrowthModels.DisplayNameX = Resources.Reports.Caption.Age;
+            foreach (SpeciesRow speciesRow in this.Species.Rows)
+            {
+                MassModels.Add(
+                    new ContinuousBio(this, speciesRow, Individual.LengthColumn, Individual.MassColumn, TrendType.Power) 
+                    {
+                        DisplayNameX = Resources.Reports.Caption.Length, 
+                        DisplayNameY = Resources.Reports.Caption.Mass
+                    }
+                );
 
-            MassGrowthModels = new ContinuousBio(this, Species.GetSorted(),
-                Individual.AgeColumn, Individual.MassColumn, TrendType.Linear);
-            MassGrowthModels.DisplayNameY = Resources.Reports.Caption.Mass;
-            MassGrowthModels.DisplayNameX = Resources.Reports.Caption.Age;
-
-            //WeightModels.RefreshMeta();
-            //GrowthModels.RefreshMeta();
-            //WeightGrowthModels.RefreshMeta();
+                GrowthModels.Add(
+                    new ContinuousBio(this, speciesRow, Individual.AgeColumn, Individual.LengthColumn, TrendType.Growth)
+                    {
+                        DisplayNameX = Resources.Reports.Caption.Age, 
+                        DisplayNameY = Resources.Reports.Caption.Length
+                    }
+                );
+            }
         }
 
         public void RefreshBios()
         {
-            MassModels.Refresh();
-            GrowthModels.Refresh();
-            MassGrowthModels.Refresh();
-        }
+            foreach (ContinuousBio bio in MassModels)
+            {
+                bio.RefreshModel();
+            }
 
-        public IBio GetBio(string species, string x, string y)
-        {
-            return null;
+            foreach (ContinuousBio bio in GrowthModels)
+            {
+                bio.RefreshModel();
+            }
         }
 
         public void ImportBio(string fileName)
-        {
-            this.ImportBio(fileName, true);
-        }
-
-        public void ImportBio(string fileName, bool clear)
         {
             Data data = new Data();
             string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
@@ -132,11 +114,17 @@ namespace Mayfly.Wild
             data.Solitary.Investigator = StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
             data.InitializeBio();
 
-            data.MassModels.VisualConfirmation = false;
-            data.GrowthModels.VisualConfirmation = false;
+            foreach (ContinuousBio exbio in data.MassModels)
+            {
+                ContinuousBio inbio = FindMassModel(exbio.Species);
+                if (inbio != null) inbio.Involve(exbio);
+            }
 
-            MassModels.Involve(data.MassModels, clear);
-            GrowthModels.Involve(data.GrowthModels, clear);
+            foreach (ContinuousBio exbio in data.GrowthModels)
+            {
+                ContinuousBio inbio = FindGrowthModel(exbio.Species);
+                if (inbio != null) inbio.Involve(exbio);
+            }
 
             Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(fileName));
         }
@@ -146,13 +134,14 @@ namespace Mayfly.Wild
             File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
         }
 
-        public bool BioLoaded
+        public ContinuousBio FindMassModel(string speceis)
         {
-            get
-            {
-                return (this.GrowthModels != null && ((this.GrowthModels.ExternalScatterplots.Count +
-                    this.MassModels.ExternalScatterplots.Count) > 0));
-            }
+            return Bio.Find(MassModels, speceis);
+        }
+
+        public ContinuousBio FindGrowthModel(string speceis)
+        {
+            return Bio.Find(GrowthModels, speceis);
         }
     }
 }

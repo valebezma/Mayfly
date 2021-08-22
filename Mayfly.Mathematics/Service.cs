@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Mayfly.Mathematics.Statistics;
 using System.Globalization;
 using Meta.Numerics;
+using RDotNet;
 
 namespace Mayfly.Mathematics
 {
@@ -571,6 +572,15 @@ namespace Mayfly.Mathematics
             {
                 return value.ToString(format, provider);
             }
+        }
+
+
+        public static void InstallRequiredPackages(this REngine engine, params string[] package)
+        {
+            var packagelist = engine.CreateCharacterVector(package);
+            engine.SetSymbol("list.of.packages", packagelist);
+            engine.Evaluate("new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[, 'Package'])]");
+            engine.Evaluate("if (length(new.packages)) install.packages(new.packages)");
         }
     }
 }

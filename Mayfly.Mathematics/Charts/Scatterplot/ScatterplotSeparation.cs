@@ -243,7 +243,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 foreach (Scatterplot scatterplot in Subsamples)
                 {
-                    Chart.Remove(scatterplot.Name);
+                    Chart.Remove(scatterplot.Properties.ScatterplotName);
                 }
                 Console.WriteLine("Series cleared.");
             }

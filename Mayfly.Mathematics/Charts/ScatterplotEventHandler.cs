@@ -1,5 +1,4 @@
 ﻿using System;
-using Meta.Numerics.Statistics;
 
 namespace Mayfly.Mathematics.Charts
 {

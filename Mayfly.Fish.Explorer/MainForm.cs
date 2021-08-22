@@ -187,19 +187,26 @@ namespace Mayfly.Fish.Explorer
             FullStack = new CardStack(); //.ConvertFrom(data);
             AllowedStack = new CardStack();
 
-            if (Licensing.Verify("Fishery Scientist"))
-            {
-                data.InitializeBio();
-                data.MassModels.VisualConfirmation =
-                    data.GrowthModels.VisualConfirmation =
-                    UserSettings.VisualConfirmation;
+            //// Will do nothing
+            //if (Licensing.Verify("Fishery Scientist"))
+            //{
+            //    data.InitializeBio();
 
-                if (UserSettings.AutoLoadBio)
-                {
-                    processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
-                    LoadCards(UserSettings.Bios);
-                }
-            }
+            //    foreach (ContinuousBio bio in data.MassModels)
+            //    {
+            //        bio.VisualConfirmation = UserSettings.VisualConfirmation; 
+            //    }
+            //    foreach (ContinuousBio bio in data.GrowthModels)
+            //    {
+            //        bio.VisualConfirmation = UserSettings.VisualConfirmation; 
+            //    }
+
+            //    if (UserSettings.AutoLoadBio)
+            //    {
+            //        processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
+            //        LoadCards(UserSettings.Bios);
+            //    }
+            //}
 
             IsEmpty = true;
             IsAllowedEmpty = true;
@@ -411,15 +418,17 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            int i = 0;
-            foreach (Data.SpeciesRow speciesRow in data.Species.GetSorted())
-            {
-                data.GrowthModels.Refresh(speciesRow.Species);
-                data.MassModels.Refresh(speciesRow.Species);
+            data.RefreshBios();
 
-                i++;
-                ((BackgroundWorker)sender).ReportProgress(i);
-            }
+            //int i = 0;
+            //foreach (Data.SpeciesRow speciesRow in data.Species.GetSorted())
+            //{
+            //    data.GrowthModels.Refresh(speciesRow.Species);
+            //    data.MassModels.Refresh(speciesRow.Species);
+
+            //    i++;
+            //    ((BackgroundWorker)sender).ReportProgress(i);
+            //}
         }
 
         private void modelCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -2320,19 +2329,15 @@ namespace Mayfly.Fish.Explorer
             switch (selectedQualificationWay)
             {
                 case DataQualificationWay.WeightOfLength:
-                    internalModel = AllowedStack.Parent.MassModels.GetInternalScatterplot(selectedStatSpc.Species);
-                    externalModel = AllowedStack.Parent.MassModels.GetExternalScatterplot(selectedStatSpc.Species);
-                    combinedModel = AllowedStack.Parent.MassModels.GetCombinedScatterplot(selectedStatSpc.Species);
+                    model = data.FindMassModel(selectedStatSpc.Species);
                     break;
 
                 case DataQualificationWay.AgeOfLength:
-                    internalModel = AllowedStack.Parent.GrowthModels.GetInternalScatterplot(selectedStatSpc.Species);
-                    externalModel = AllowedStack.Parent.GrowthModels.GetExternalScatterplot(selectedStatSpc.Species);
-                    combinedModel = AllowedStack.Parent.GrowthModels.GetCombinedScatterplot(selectedStatSpc.Species);
+                    model = data.FindGrowthModel(selectedStatSpc.Species);
                     break;
 
                 default:
-                    internalModel = externalModel = combinedModel = null;
+                    model = null;
                     return;
             }
         }
@@ -2353,52 +2358,53 @@ namespace Mayfly.Fish.Explorer
             plotQualify.Remove("Own data", false);
             plotQualify.Remove("Model", false);
 
-            if (externalModel != null && externalModel.IsRegressionOK)
+            if (model != null)
             {
-                externalModel = externalModel.Copy();
-                externalModel.Series.Name = externalModel.Properties.ScatterplotName = "Bio";    
-                externalModel.Series.YAxisType = AxisType.Secondary;
-                externalModel.Properties.DataPointColor = Constants.InfantColor;  
-                externalModel.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                plotQualify.AddSeries(externalModel);
-            }
+                if (model.ExternalData != null)
+                {
+                    Scatterplot ext = new Scatterplot(model.ExternalData);
+                    ext.Series.Name = ext.Properties.ScatterplotName = "Bio";
+                    ext.Series.YAxisType = AxisType.Secondary;
+                    ext.Properties.DataPointColor = Constants.InfantColor;
+                    ext.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    plotQualify.AddSeries(ext);
+                }
 
-            if (internalModel != null && internalModel.IsRegressionOK)
-            {
-                internalModel = internalModel.Copy();
-                internalModel.Series.Name = internalModel.Properties.ScatterplotName = "Own data";
-                internalModel.Series.YAxisType = AxisType.Secondary;
-                internalModel.Properties.DataPointColor = Constants.MotiveColor;
-                internalModel.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                plotQualify.AddSeries(internalModel);
-            }
+                if (model.InternalData != null)
+                {
+                    Scatterplot inter = new Scatterplot(model.InternalData);
+                    inter.Series.Name = inter.Properties.ScatterplotName = "Own data";
+                    inter.Series.YAxisType = AxisType.Secondary;
+                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    inter.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    plotQualify.AddSeries(inter);
+                }
 
-            if (combinedModel != null && combinedModel.IsRegressionOK)
-            {
-                //plotLW.AxisY2Max = Math.Max(UserSettings.RequiredClassSize,
-                //    FullStack.GetStatisticComposition(SelectedStatSpc, (s, i) => { return FullStack.Weighted(s, i); }, Resources.Interface.StratesWeighted).MostSampled.Quantity);
-
-                combinedModel = combinedModel.Copy();
-                combinedModel.Series.Name = combinedModel.Properties.ScatterplotName = "Model";
-                combinedModel.Series.YAxisType = AxisType.Secondary;
-                combinedModel.Properties.ShowTrend = true;
-                combinedModel.Properties.SelectedApproximationType = selectedQualificationWay == 0 ? data.MassModels.Nature : data.GrowthModels.Nature;
-                combinedModel.Properties.ConfidenceLevel = .99;
-                combinedModel.Properties.ShowPredictionBands = true;
-                combinedModel.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
-                combinedModel.Properties.DataPointColor = Color.Transparent;
-                combinedModel.Properties.TrendColor = Constants.MotiveColor;
-                combinedModel.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                plotQualify.AddSeries(combinedModel);
+                if (model.CombinedData != null)
+                {
+                    Scatterplot combi = new Scatterplot(model.CombinedData);
+                    combi.Series.Name = combi.Properties.ScatterplotName = "Model";
+                    combi.Series.YAxisType = AxisType.Secondary;
+                    combi.Properties.ShowTrend = true;
+                    combi.Properties.SelectedApproximationType = model.Nature;
+                    combi.Properties.ConfidenceLevel = .99;
+                    combi.Properties.ShowPredictionBands = true;
+                    combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+                    combi.Properties.DataPointColor = Color.Transparent;
+                    combi.Properties.TrendColor = Constants.MotiveColor;
+                    combi.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    plotQualify.AddSeries(combi);
+                }
             }
 
             plotQualify.Remaster();
 
-            checkBoxQualOutliers.Enabled = 
-                buttonQualOutliers.Enabled = 
-                (combinedModel != null && combinedModel.IsRegressionOK &&
-                combinedModel.Regression.outliers != null &&   
-                combinedModel.Regression.outliers.Count > 0);
+            checkBoxQualOutliers.Enabled =
+                buttonQualOutliers.Enabled =
+                (model.CombinedData != null &&
+                model.CombinedData.IsRegressionOK &&
+                model.CombinedData.Regression.outliers != null &&
+                model.CombinedData.Regression.outliers.Count > 0);
 
             Cursor = plotQualify.Cursor = Cursors.Default;
             spreadSheetSpcStats.Enabled =
@@ -2408,7 +2414,7 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxQualOutliers_CheckedChanged(object sender, EventArgs e)
         {
-            if (combinedModel != null) combinedModel.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+            if (plotQualify.GetSample("Model") != null) ((Scatterplot)plotQualify.GetSample("Model")).Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
         }
 
         private void buttonQualOutliers_Click(object sender, EventArgs e)
@@ -2431,9 +2437,9 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            if (combinedModel != null)
+            if (model.CombinedData != null)
             {
-                foreach (var pair in combinedModel.Regression.outliers)
+                foreach (var pair in model.CombinedData.Regression.outliers)
                 {
                     indRows.AddRange(data.GetIndividuals(selectedStatSpc,
                         (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
@@ -2834,7 +2840,8 @@ namespace Mayfly.Fish.Explorer
 
             if (UserSettings.MassSuggest)
             {
-                data.MassModels.Refresh(specisRow.Species);
+                data.FindMassModel(specisRow.Species).RefreshModel();
+                //data.MassModels.Refresh(specisRow.Species);
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
                 {
@@ -2845,7 +2852,8 @@ namespace Mayfly.Fish.Explorer
 
             if (UserSettings.AgeSuggest)
             {
-                data.GrowthModels.Refresh(specisRow.Species);
+                data.FindGrowthModel(specisRow.Species).RefreshModel();
+                //data.GrowthModels.Refresh(specisRow.Species);
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
                 {

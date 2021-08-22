@@ -43,12 +43,12 @@ namespace Mayfly.Fish.Explorer
 
             Allowed.GetStack().AddCommon(report);
 
-            if (Allowed.GrowthModels.InternalScatterplots.Count > 0)
+            if (Allowed.GrowthModels.InternalData.Count > 0)
             {
                 AddGrowth(report);
             }
 
-            if (Allowed.MassModels.InternalScatterplots.Count > 0)
+            if (Allowed.MassModels.InternalData.Count > 0)
             {
                 AddMass(report);
             }
@@ -75,7 +75,7 @@ namespace Mayfly.Fish.Explorer
             table1.AddHeaderCell("t<sub>0</sub>");
             table1.EndRow();
 
-            foreach (Scatterplot scatter in Allowed.GrowthModels.InternalScatterplots)
+            foreach (Scatterplot scatter in Allowed.GrowthModels.InternalData)
             {
                 if (!scatter.IsRegressionOK) continue;
 
@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Scatterplot scatter in Allowed.GrowthModels.InternalScatterplots)
+            foreach (Scatterplot scatter in Allowed.GrowthModels.InternalData)
             {
                 if (!scatter.IsRegressionOK) continue;
 
@@ -217,10 +217,10 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetGrowth.Rows.Add(gridRow);
             }
 
-            labelNoDataGrowth.Visible = Allowed.GrowthModels.InternalScatterplots.Count == 0;
+            labelNoDataGrowth.Visible = Allowed.GrowthModels.InternalData.Count == 0;
 
 
-            foreach (Scatterplot scatter in Allowed.MassModels.InternalScatterplots)
+            foreach (Scatterplot scatter in Allowed.MassModels.InternalData)
             {
                 if (!scatter.IsRegressionOK) continue;
 
@@ -247,7 +247,7 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetWeight.Rows.Add(gridRow);
             }
 
-            labelNoDataWeight.Visible = Allowed.MassModels.InternalScatterplots.Count == 0;
+            labelNoDataWeight.Visible = Allowed.MassModels.InternalData.Count == 0;
 
             pageWeight.SetNavigation(true);
         }

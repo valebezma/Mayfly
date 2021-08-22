@@ -341,14 +341,9 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 gridRow.Cells[columnIndLength.Index].Value = stratifiedRow.SizeClass.Midpoint;
-
-                gridRow.Cells[columnIndMass.Index].Value = data.MassModels.GetValue(
-                    stratifiedRow.LogRow.SpeciesRow.Species, stratifiedRow.SizeClass.Midpoint);
-
+                gridRow.Cells[columnIndMass.Index].Value = data.FindMassModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
                 gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.Interface.SimulatedIndividual;
-
-                Age age = (Age)data.GrowthModels.GetValue(
-                    stratifiedRow.LogRow.SpeciesRow.Species, stratifiedRow.SizeClass.Midpoint, true);
+                Age age = (Age)data.FindGrowthModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint, true);
 
                 gridRow.Cells[columnIndAge.Index].Value = age;
                 Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
@@ -410,8 +405,7 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            double ageValue = data.GrowthModels.GetValue(
-                individualRow.Species, individualRow.Length, true);
+            double ageValue = data.FindGrowthModel(individualRow.Species).GetValue(individualRow.Length, true);
 
             if (double.IsNaN(ageValue))
             {
@@ -451,9 +445,7 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            double mass = data.MassModels.GetValue(
-                individualRow.Species,
-                individualRow.Length);
+            double mass = data.FindMassModel(individualRow.Species).GetValue(individualRow.Length);
 
             gridRow.Cells[columnIndMass.Index].SetNullValue(
                 double.IsNaN(mass) ?

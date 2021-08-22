@@ -187,7 +187,6 @@ namespace Mayfly.Mathematics.Charts
             }
             else
             {
-
                 BuildSeries(
                     AxisX.Minimum, AxisX.Maximum,
                     AxisY.Minimum, AxisY.Maximum);

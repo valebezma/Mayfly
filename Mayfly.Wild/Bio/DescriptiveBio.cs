@@ -5,230 +5,101 @@ using System.Data;
 
 namespace Mayfly.Wild
 {
-    public class DescriptiveBio : IBio
-    {
-        public IBioable Parent;
+    public class DescriptiveBio : Bio
+    {        
+        public Composition InternalData { get; private set; }
+
+        public Composition ExternalData { get; private set; }
+
+        public Composition CombinedData { get; private set; }
 
 
 
-        public DataColumn XSource;
-
-        public DataColumn YSource;
-
-        public string XName { get; set; }
-
-        public string YName { get; set; }
-
-
-        
-        public List<Composition> InternalDescriptives { get; private set; }
-
-        public List<Composition> ExternalDescriptives { get; private set; }
-
-        public List<Composition> CombinedDescriptives { get; private set; }
-
-
-
-        public DescriptiveBio(IBioable data, DataRow[] speciesRows, 
-            DataColumn xColumn, DataColumn yColumn)
+        public DescriptiveBio(Data data, Data.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn) :
+            base(data, speciesRow, yColumn)
         {
-            if (yColumn.DataType != typeof(double))
-                throw new FormatException();
-
-            Parent = data;
-
-            XSource = xColumn;
-            XName = xColumn.Caption;
-
-            YSource = yColumn;
-            YName = yColumn.Caption;
-
-            InternalDescriptives = new List<Composition>();
-            ExternalDescriptives = new List<Composition>();
-            CombinedDescriptives = new List<Composition>();
-
-            foreach (DataRow speciesRow in speciesRows)
-            {
-                Refresh(speciesRow["Species"].ToString());
-            }
+            nameX = xColumn.Caption;
+            RefreshModel();
         }
 
 
 
-        public bool IsAvailable(string name)
+        public override void RefreshModel()
         {
-            Composition composition = GetCombinedComposition(name);
-            return composition != null;
-        }
+            InternalData = new Composition(Species);
 
-        public string[] GetSpecies()
-        {
-            List<string> result = new List<string>();
-
-            foreach (Composition composition in InternalDescriptives)
+            foreach (string group in Parent.Individual.Columns[nameX].GetStrings(true))
             {
-                result.Add(composition.Name);
-            }
-
-            foreach (Composition composition in ExternalDescriptives)
-            {
-                if (!result.Contains(composition.Name))
-                    result.Add(composition.Name);
-            }
-
-            return result.ToArray();
-        }
-
-        public Composition GetInternalComposition(string name)
-        {
-            foreach (Composition composition in InternalDescriptives)
-            {
-                if (composition.Name == name)
-                {
-                    return composition;
-                }
-            }
-
-            return null;
-        }
-
-        public Composition GetExternalComposition(string name)
-        {
-            foreach (Composition composition in ExternalDescriptives)
-            {
-                if (composition.Name == name)
-                {
-                    return composition;
-                }
-            }
-
-            return null;
-        }
-
-        public Composition GetCombinedComposition(string name)
-        {
-            foreach (Composition composition in CombinedDescriptives)
-            {
-                if (composition.Name == name)
-                {
-                    return composition;
-                }
-            }
-
-            return null;
-        }
-
-
-
-        public double GetValue(string name, object x)
-        {
-            Composition composition = GetCombinedComposition(name);
-            if (composition == null) return double.NaN;
-            Category category = composition.GetCategory(x.ToString());
-            if (category == null) return double.NaN;
-
-            return category.MassSample.Mean;
-        }
-
-        public void Refresh()
-        {
-            foreach (Composition composition in this.InternalDescriptives)
-            {
-                Refresh(composition.Name);
-            }
-        }
-
-        public bool Refresh(string name)
-        {
-            Composition composition = GetInternalComposition(name);
-
-            if (composition == null) composition = new Composition(name);
-
-            foreach (string group in XSource.GetStrings(true))
-            {
-                List<DataRow> rows = Parent.GetBioRows(name).GetRows(XSource, group);
+                List<DataRow> rows = Parent.Individual.Columns[nameX].GetRows(group);
 
                 if (rows.Count >= Mathematics.UserSettings.StrongSampleSize)
                 {
-                    Category category = composition.GetCategory(group);
-                    if (category == null) category = new Category(name);
-                    category.MassSample = XSource.GetSample(rows);
+                    Category category = InternalData.GetCategory(group);
+                    if (category == null) category = new Category(group);
+                    category.MassSample = Parent.Individual.Columns[nameY].GetSample(rows);
                 }
             }
-
-            return true;
         }
 
-        public void Involve(DescriptiveBio external, bool clear)
+        public void Involve(DescriptiveBio bio)
         {
-            if (clear)
-            {
-                ExternalDescriptives.Clear();
+            if (bio == null) return;
 
-                foreach (Composition composition in external.InternalDescriptives)
-                {
-                    ExternalDescriptives.Add(composition);
-                }
+            if (ExternalData == null)
+            {
+                ExternalData = bio.InternalData;
             }
             else
             {
-                foreach (Composition composition in external.InternalDescriptives)
-                {
-                    Composition ext1 = GetExternalComposition(composition.Name);
+                ExternalData.Include(bio.InternalData);
+            }
 
-                    if (ext1 == null)
-                    {
-                        ExternalDescriptives.Add(composition);
-                    }
-                    else
-                    {
-                        ExternalDescriptives.Remove(ext1);
-                        ExternalDescriptives.Add(Combine(ext1, composition));
-                    }
+            foreach (string author in bio.Authors)
+            {
+                if (!Authors.Contains(author))
+                {
+                    Authors.Add(author);
                 }
             }
 
-            Recombine();
+            foreach (DateTime date in bio.Dates)
+            {
+                if (!Dates.Contains(date))
+                {
+                    Dates.Add(date);
+                }
+            }
+
+            foreach (string place in bio.Places)
+            {
+                if (!Places.Contains(place))
+                {
+                    Places.Add(place);
+                }
+            }
+
+            CombinedData = new Composition();
+            CombinedData.Include(InternalData);
+            CombinedData.Include(ExternalData);
         }
 
-        public void Recombine()
+        public override void Involve(Bio bio)
         {
-            CombinedDescriptives.Clear();
-
-            foreach (string name in GetSpecies())
+            if (bio is DescriptiveBio)
             {
-                CombinedDescriptives.Add(Combine(
-                    GetInternalComposition(name),
-                    GetExternalComposition(name)));
+                Involve((DescriptiveBio)bio);
+            }
+            else
+            {
+                throw new InvalidCastException("DescriptiveBio can involve only DescriptiveBio");
             }
         }
 
-        public Composition Combine(Composition original, Composition external)
+        public override double GetValue(object x)
         {
-            if (original == null) return external;
-
-            if (external == null) return original;
-
-            Composition result = new Composition(original.Name);
-
-            foreach (Category category in original)
-            {
-                result.AddCategory(category);
-            }
-
-            foreach (Category category in external)
-            {
-                if (result.ContainsNamed(category.Name))
-                {
-                    // cope samples
-                }
-                else
-                {
-                    result.AddCategory(category);
-                }
-            }
-
-            return result;
+            Category category = CombinedData.GetCategory(x.ToString());
+            if (category == null) return double.NaN;
+            return category.MassSample.Mean;
         }
     }
 }

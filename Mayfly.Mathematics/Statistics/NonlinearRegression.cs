@@ -14,6 +14,7 @@ namespace Mayfly.Mathematics.Statistics
             : base(data)
         {
             Parameters.AddRange(GetInitials());
+            engine.InstallRequiredPackages("investr");
         }
 
         public NonlinearRegression(BivariateSample data, TrendType _type)
@@ -94,6 +95,8 @@ namespace Mayfly.Mathematics.Statistics
         public Growth(BivariateSample data)
             : base(data, TrendType.Growth)
         {
+            engine.InstallRequiredPackages("FSA");
+
             var xvalues = engine.CreateNumericVector(data.X);
             engine.SetSymbol("xvalues", xvalues);
 
@@ -126,7 +129,7 @@ namespace Mayfly.Mathematics.Statistics
             return T0 - Math.Log((Linf - y) / Linf) / K;
         }
 
-        public override Interval[] GetInterval(double[] x, double level, IntervalType type)
+        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
         {
             //if (type == IntervalType.Prediction)
             //    throw new ArgumentException("Prediction interval can't be obtained for nonlinear regression model.");

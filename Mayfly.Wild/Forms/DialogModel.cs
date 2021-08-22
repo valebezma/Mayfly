@@ -15,23 +15,24 @@ namespace Mayfly.Wild
 
 
 
-        public ModelConfirm(Scatterplot scatterplot)
+        public ModelConfirm(BivariatePredictiveModel model)
         {
             InitializeComponent();
 
-            statChart1.AxisXTitle = scatterplot.Data.X.Name;
-            statChart1.AxisYTitle = scatterplot.Data.Y.Name;
+            Model = new Scatterplot(model);
+
+            statChart1.AxisXTitle = Model.Calc.Data.X.Name;
+            statChart1.AxisYTitle = Model.Calc.Data.Y.Name;
 
             statChart1.AxisXAutoMinimum = false;
             statChart1.AxisYAutoMinimum = false;
             statChart1.AxisXAutoInterval = true;
             statChart1.AxisYAutoInterval = true;
 
-            Model = scatterplot.Copy();
             Model.Properties.ShowTrend = true;
             Model.Properties.SelectedApproximationType = 
-                scatterplot.Regression == null ? TrendType.Linear :
-                scatterplot.Regression.Type;
+                model.Regression == null ? TrendType.Linear :
+                model.Regression.Type;
             Model.Properties.ShowPredictionBands = true;
 
             statChart1.AddSeries(Model);
@@ -41,16 +42,16 @@ namespace Mayfly.Wild
 
             statChart1.Remaster();
 
-            label1.ResetFormatted(statChart1.AxisXTitle, statChart1.AxisYTitle, scatterplot.Name);
-            labelInstruction.ResetFormatted(scatterplot.Name, statChart1.AxisYTitle, statChart1.AxisXTitle);
-            label2.ResetFormatted(scatterplot.Name, statChart1.AxisYTitle);
+            label1.ResetFormatted(statChart1.AxisXTitle, statChart1.AxisYTitle, model.Name);
+            labelInstruction.ResetFormatted(model.Name, statChart1.AxisYTitle, statChart1.AxisXTitle);
+            label2.ResetFormatted(model.Name, statChart1.AxisYTitle);
 
             Model.Updated += Scatterplot_Updated;
         }
 
         private void Scatterplot_Updated(object sender, ScatterplotEventArgs e)
         {
-            buttonOK.Enabled = (Model.Properties.ShowTrend && Model.IsRegressionOK);
+            buttonOK.Enabled = (Model.Properties.ShowTrend && Model.Calc.IsRegressionOK);
         }
 
         private void ModelConfirm_Load(object sender, EventArgs e)
@@ -65,8 +66,6 @@ namespace Mayfly.Wild
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
-        {
-            Model = Model.Copy();
-        }
+        { }
     }
 }
