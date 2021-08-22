@@ -7,22 +7,6 @@ using RDotNet;
 
 namespace Mayfly.Mathematics.Statistics
 {
-    public enum TrendType
-    {
-        Auto,
-
-        Linear,
-        Quadratic,
-        Cubic,
-
-        Power,
-        Exponential,
-        Logarithmic,
-        Logistic,
-
-        Growth
-    };
-
     public enum IntervalType
     {
         Prediction = 0,
@@ -165,7 +149,7 @@ namespace Mayfly.Mathematics.Statistics
         //    return Estimate(i).Value;
         //}
 
-        public virtual Interval[] GetInterval(double[] x, double level, IntervalType type)
+        internal virtual Interval[] getInterval(double[] x, double level, IntervalType type)
         {
             var xvalues = engine.CreateNumericVector(x);
             engine.SetSymbol("axis", xvalues);
@@ -183,9 +167,9 @@ namespace Mayfly.Mathematics.Statistics
             return result.ToArray();
         }
 
-        public Interval[] SetInterval(double[] x, double level, IntervalType type)
+        public Interval[] GetInterval(double[] x, double level, IntervalType type)
         {
-            Interval[] result = GetInterval(x, level, type);
+            Interval[] result = getInterval(x, level, type);
 
             if (type == IntervalType.Prediction)
             {

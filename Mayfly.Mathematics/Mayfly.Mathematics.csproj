@@ -133,9 +133,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Statistics.resx</DependentUpon>
     </Compile>
-    <Compile Include="Statistics\Regression\GeneralLinearRegression.cs" />
-    <Compile Include="Statistics\Regression\NonlinearRegression.cs" />
-    <Compile Include="Statistics\Regression\Regression.cs" />
+    <Compile Include="Statistics\BivariatePredictiveModel.cs" />
+    <Compile Include="Statistics\GeneralLinearRegression.cs" />
+    <Compile Include="Statistics\NonlinearRegression.cs" />
+    <Compile Include="Statistics\TrendType.cs" />
+    <Compile Include="Statistics\Regression.cs" />
     <Compile Include="Statistics\Regression\RegressionProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,7 +150,7 @@
     <Compile Include="Statistics\Regression\Regressions.Designer.cs">
       <DependentUpon>Regressions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Statistics\Sample\SampleDisplay.cs" />
+    <Compile Include="Statistics\SampleDisplay.cs" />
     <Compile Include="Data\Semipivot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,26 +204,14 @@
       <DependentUpon>HistogramProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Charts\Histogram\HistogramEventHandler.cs" />
-    <Compile Include="Charts\Histogram\HistogramSeparation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Charts\Histogram\HistogramSeparation.Designer.cs">
-      <DependentUpon>HistogramSeparation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Statistics\Regression\RegressionSelection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Statistics\Regression\RegressionSelection.Designer.cs">
       <DependentUpon>RegressionSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Scatterplot\ScatterplotSeparation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Charts\Scatterplot\ScatterplotSeparation.Designer.cs">
-      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Charts\Scatterplot\Scatterplot.cs" />
-    <Compile Include="Charts\Scatterplot\ScatterplotEventHandler.cs" />
+    <Compile Include="Charts\Scatterplot.cs" />
+    <Compile Include="Charts\ScatterplotEventHandler.cs" />
     <Compile Include="Charts\Scatterplot\ScatterplotProperties.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,23 +357,11 @@
     <EmbeddedResource Include="Charts\Histogram\HistogramProperties.resx">
       <DependentUpon>HistogramProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Histogram\HistogramSeparation.resx">
-      <DependentUpon>HistogramSeparation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Histogram\HistogramSeparation.ru.resx">
-      <DependentUpon>HistogramSeparation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Statistics\Regression\RegressionSelection.resx">
       <DependentUpon>RegressionSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Statistics\Regression\RegressionSelection.ru.resx">
       <DependentUpon>RegressionSelection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotSeparation.resx">
-      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotSeparation.ru.resx">
-      <DependentUpon>ScatterplotSeparation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Charts\Scatterplot\ScatterplotProperties.resx">
       <DependentUpon>ScatterplotProperties.cs</DependentUpon>

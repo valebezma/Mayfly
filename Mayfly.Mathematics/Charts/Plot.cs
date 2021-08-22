@@ -928,125 +928,6 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public void Remaster()
-        {
-            SetColorScheme();
-            Rebuild(this, new EventArgs());
-            Update(this, new EventArgs());
-        }
-
-        public void Update(object sender, EventArgs e)
-        {
-            if (FindForm() != null)
-            {
-                if (FindForm().Controls.Count == 1)
-                {
-                    FindForm().Text = Text;
-                }
-            }
-
-            if (ShowLegend)
-            {
-                if (Legends.Count == 0)
-                {
-                    Legends.Add("Common");
-                }
-            }
-            else
-            {
-                Legends.Clear();
-            }
-
-            foreach (Legend legend in Legends)
-            {
-                legend.Font = Font;
-                legend.Docking = Series.Count > 10 ? Docking.Right : Docking.Bottom;
-                legend.Alignment = Series.Count > 10 ? StringAlignment.Near : StringAlignment.Center;
-            }
-
-            if (SelectionCursor != null)
-            {
-                SelectionCursor.Interval = AxisXInterval / 100;
-            }
-
-            foreach (Functor sample in Functors)
-            {
-                sample.Update(this, new EventArgs());
-            }
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                sample.Update(this, new EventArgs());
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                sample.Update(this, new EventArgs());
-            }
-
-            //foreach (Evaluation sample in Evaluations)
-            //{
-            //    sample.Update(this, new EventArgs());
-            //}
-
-            foreach (Title title in Titles)
-            {
-                Font titleFont = new Font(Font.FontFamily, Font.Size + 2F, FontStyle.Bold);
-                title.Font = titleFont;
-            }
-
-            foreach (ChartArea chartArea in ChartAreas)
-            {
-                chartArea.AxisX.LabelStyle.Font =
-                chartArea.AxisX.TitleFont =
-                chartArea.AxisX2.LabelStyle.Font =
-                chartArea.AxisX2.TitleFont =
-                chartArea.AxisY.LabelStyle.Font =
-                chartArea.AxisY.TitleFont =
-                chartArea.AxisY2.LabelStyle.Font =
-                chartArea.AxisY2.TitleFont =
-                    this.Font;
-
-                foreach (Axis axis in chartArea.Axes)
-                {
-                    foreach (StripLine line in axis.StripLines)
-                    {
-                        line.Font = this.Font;
-                    }
-                }
-
-                // TODO: Place titles where they are needed
-                chartArea.AxisX.Title = AxisXTitle;
-                chartArea.AxisY.Title = AxisYTitle;
-                chartArea.AxisY2.Title = AxisY2Title;
-
-                chartArea.AxisY2.Enabled = string.IsNullOrEmpty(chartArea.AxisY2.Title) ?
-                    AxisEnabled.False : AxisEnabled.True;
-
-                chartArea.AxisX.LabelStyle.Format = AxisXFormat;
-                chartArea.AxisY.LabelStyle.Format = AxisYFormat;
-                chartArea.AxisY2.LabelStyle.Format = AxisY2Format;
-            }
-
-            ChartAreas[0].AxisY.ScaleBreakStyle.Enabled = AxisYAllowBreak;
-
-            if (AxisYAllowBreak)
-            {
-                ChartAreas[0].AxisY.ScaleBreakStyle.CollapsibleSpaceThreshold =
-                    AxisYScaleBreak;
-            }
-
-            if (Updated != null)
-            {
-                Updated.Invoke(this, new EventArgs());
-            }
-
-            if (AppearanceValueChanged != null)
-            {
-                AppearanceValueChanged.Invoke(this, new EventArgs());
-            }
-        }
-
         public void AddSeries(Scatterplot scatterplot)
         {
             if (IsChronic == scatterplot.IsChronic)
@@ -1151,6 +1032,13 @@ namespace Mayfly.Mathematics.Charts
         //    //ShowLegend = Evaluations.Count > 1;
         //}
 
+        public void Remaster()
+        {
+            SetColorScheme();
+            Rebuild(this, new EventArgs());
+            Update(this, new EventArgs());
+        }
+
         public void SetColorScheme()
         {
             ApplyPaletteColors();
@@ -1180,39 +1068,18 @@ namespace Mayfly.Mathematics.Charts
 
         public void Rebuild(object sender, EventArgs e)
         {
-            // TODO: Remove Update if bad.
-            Update(sender, e);
-
             foreach (Scatterplot sample in Scatterplots)
             {
                 sample.BuildSeries();
 
+                if (sample.PredictionBandLower != null) sample.PredictionBandLower.Points.Clear();
+                if (sample.PredictionBandUpper != null) sample.PredictionBandUpper.Points.Clear();
                 if (sample.Trend != null) sample.Trend.Series.Points.Clear();
-                if (sample.TrendRange != null) sample.TrendRange.Points.Clear();
-                if (sample.LowerPredictionBand != null) sample.LowerPredictionBand.Points.Clear();
-                if (sample.UpperPredictionBand != null) sample.UpperPredictionBand.Points.Clear();
+                if (sample.ConfidenceBandLower != null) sample.ConfidenceBandLower.Points.Clear();
+                if (sample.ConfidenceBandUpper != null) sample.ConfidenceBandUpper.Points.Clear();
             }
 
             RecalculateAxesProperties();
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Trend != null)
-                {
-                    sample.Trend.TransposeCharting = sample.TransposeCharting;
-                    sample.Trend.BuildSeries(sample.Series.YAxisType);
-
-                    if (sample.Properties.ShowConfidenceBands)
-                    {
-                        sample.BuildTrendBands();
-                    }
-
-                    if (sample.Properties.ShowPredictionBands)
-                    {
-                        sample.BuildDataBands();
-                    }
-                }
-            }
 
             foreach (Functor sample in Functors)
             {
@@ -1255,6 +1122,118 @@ namespace Mayfly.Mathematics.Charts
             }
 
             if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            if (FindForm() != null)
+            {
+                if (FindForm().Controls.Count == 1)
+                {
+                    FindForm().Text = Text;
+                }
+            }
+
+            if (ShowLegend)
+            {
+                if (Legends.Count == 0)
+                {
+                    Legends.Add("Common");
+                }
+            }
+            else
+            {
+                Legends.Clear();
+            }
+
+            foreach (Legend legend in Legends)
+            {
+                legend.Font = Font;
+                legend.Docking = Series.Count > 10 ? Docking.Right : Docking.Bottom;
+                legend.Alignment = Series.Count > 10 ? StringAlignment.Near : StringAlignment.Center;
+            }
+
+            if (SelectionCursor != null)
+            {
+                SelectionCursor.Interval = AxisXInterval / 100;
+            }
+
+            foreach (Scatterplot sample in Scatterplots)
+            {
+                sample.Update(this, new EventArgs());
+            }
+
+            foreach (Functor sample in Functors)
+            {
+                sample.Update(this, new EventArgs());
+            }
+
+            foreach (Histogramma sample in Histograms)
+            {
+                sample.Update(this, new EventArgs());
+            }
+
+            //foreach (Evaluation sample in Evaluations)
+            //{
+            //    sample.Update(this, new EventArgs());
+            //}
+
+            foreach (Title title in Titles)
+            {
+                Font titleFont = new Font(Font.FontFamily, Font.Size + 2F, FontStyle.Bold);
+                title.Font = titleFont;
+            }
+
+            foreach (ChartArea chartArea in ChartAreas)
+            {
+                chartArea.AxisX.LabelStyle.Font =
+                chartArea.AxisX.TitleFont =
+                chartArea.AxisX2.LabelStyle.Font =
+                chartArea.AxisX2.TitleFont =
+                chartArea.AxisY.LabelStyle.Font =
+                chartArea.AxisY.TitleFont =
+                chartArea.AxisY2.LabelStyle.Font =
+                chartArea.AxisY2.TitleFont =
+                    this.Font;
+
+                foreach (Axis axis in chartArea.Axes)
+                {
+                    foreach (StripLine line in axis.StripLines)
+                    {
+                        line.Font = this.Font;
+                    }
+                }
+
+                // TODO: Place titles where they are needed
+                chartArea.AxisX.Title = AxisXTitle;
+                chartArea.AxisY.Title = AxisYTitle;
+                chartArea.AxisY2.Title = AxisY2Title;
+
+                chartArea.AxisY2.Enabled = string.IsNullOrEmpty(chartArea.AxisY2.Title) ?
+                    AxisEnabled.False : AxisEnabled.True;
+
+                chartArea.AxisX.LabelStyle.Format = AxisXFormat;
+                chartArea.AxisY.LabelStyle.Format = AxisYFormat;
+                chartArea.AxisY2.LabelStyle.Format = AxisY2Format;
+            }
+
+            ChartAreas[0].AxisY.ScaleBreakStyle.Enabled = AxisYAllowBreak;
+
+            if (AxisYAllowBreak)
+            {
+                ChartAreas[0].AxisY.ScaleBreakStyle.CollapsibleSpaceThreshold =
+                    AxisYScaleBreak;
+            }
+
+            if (Updated != null)
+            {
+                Updated.Invoke(this, new EventArgs());
+            }
+
+            if (AppearanceValueChanged != null)
+            {
+                AppearanceValueChanged.Invoke(this, new EventArgs());
+            }
         }
 
         public void RefreshAxes()
@@ -1686,7 +1665,7 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Scatterplot sample in Scatterplots)
             {
-                if (sample.Name == name) return sample;
+                if (sample.Properties.ScatterplotName == name) return sample;
             }
 
             foreach (Histogramma sample in Histograms)
@@ -1707,10 +1686,11 @@ namespace Mayfly.Mathematics.Charts
             foreach (Scatterplot sample in Scatterplots)
             {
                 if (sample.Series == series) return sample;
+                if (sample.PredictionBandUpper == series) return sample;
+                if (sample.PredictionBandLower == series) return sample;
                 if (sample.Trend != null && sample.Trend.Series == series) return sample;
-                if (sample.UpperPredictionBand == series) return sample;
-                if (sample.LowerPredictionBand == series) return sample;
-                if (sample.TrendRange == series) return sample;
+                if (sample.ConfidenceBandUpper == series) return sample;
+                if (sample.ConfidenceBandLower == series) return sample;
             }
 
             foreach (Functor sample in Functors)
@@ -1721,7 +1701,7 @@ namespace Mayfly.Mathematics.Charts
             foreach (Histogramma sample in Histograms)
             {
                 if (sample.DataSeries == series) return sample;
-                //if (sample.FitSeries == series) return sample;
+                if (sample.FitSeries == series) return sample;
             }
 
             //foreach (Evaluation sample in Evaluations)
@@ -1826,7 +1806,7 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Scatterplot sample in Scatterplots)
             {
-                sample.ChartArea = SeparateChartArea(sample.Name);
+                sample.ChartArea = SeparateChartArea(sample.Properties.ScatterplotName);
             }
 
             foreach (Histogramma sample in Histograms)
@@ -2073,45 +2053,46 @@ namespace Mayfly.Mathematics.Charts
 
         public void LaunchSeparation(Scatterplot scatterplot)
         {
-            if (scatterplot.Separator == null)
-            {
-                ScatterplotSeparation separator = new ScatterplotSeparation(this, scatterplot);
-                separator.SetFriendlyDesktopLocation(FindForm(), FormLocation.NextToHost);
-                separator.FormClosed += new FormClosedEventHandler(Separator_FormClosed);
-                separator.Show(FindForm());
-                separator.AutoSeparate();
-            }
-            else
-            {
-                scatterplot.Separator.Show();
-            }
+            //if (scatterplot.Separator == null)
+            //{
+            //    ScatterplotSeparation separator = new ScatterplotSeparation(this, scatterplot);
+            //    separator.SetFriendlyDesktopLocation(FindForm(), FormLocation.NextToHost);
+            //    separator.FormClosed += new FormClosedEventHandler(Separator_FormClosed);
+            //    separator.Show(FindForm());
+            //    separator.AutoSeparate();
+            //}
+            //else
+            //{
+            //    scatterplot.Separator.Show();
+            //}
         }
 
-        private void Separator_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ScatterplotSeparation separator = (ScatterplotSeparation)sender;
+        //private void Separator_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    ScatterplotSeparation separator = (ScatterplotSeparation)sender;
 
-            if (separator.DialogResult == DialogResult.OK)
-            {
-                foreach (Scatterplot scatterplot in (separator.Subsamples))
-                {
-                    scatterplot.Properties.DataPointSize = separator.Sample.Properties.DataPointSize;
-                }
-                Remove(separator.Sample.Name, false);
-            }
-            else
-            {
-                foreach (Scatterplot scatterplot in (separator.Subsamples))
-                {
-                    Series.Remove(scatterplot.Series);
-                }
-                separator.Sample.Separator = null;
-            }
+        //    if (separator.DialogResult == DialogResult.OK)
+        //    {
+        //        foreach (Scatterplot scatterplot in (separator.Subsamples))
+        //        {
+        //            scatterplot.Properties.DataPointSize = separator.Sample.Properties.DataPointSize;
+        //        }
 
-            Series.Remove(separator.Centroids);
+        //        Remove(separator.Sample.Properties.ScatterplotName, false);
+        //    }
+        //    else
+        //    {
+        //        foreach (Scatterplot scatterplot in (separator.Subsamples))
+        //        {
+        //            Series.Remove(scatterplot.Series);
+        //        }
+        //        separator.Sample.Separator = null;
+        //    }
 
-            Update(sender, e);
-        }
+        //    Series.Remove(separator.Centroids);
+
+        //    Update(sender, e);
+        //}
 
         private void MoveSelection(PreviewKeyDownEventArgs e)
         {
@@ -2385,9 +2366,9 @@ namespace Mayfly.Mathematics.Charts
 
         public void OpenRegressionProperties(Scatterplot scatterplot)
         {
-            if (scatterplot.Regression == null) return;
+            if (!scatterplot.Calc.IsRegressionOK) return;
 
-            RegressionProperties properties = new RegressionProperties(scatterplot.Regression, false);
+            RegressionProperties properties = new RegressionProperties(scatterplot.Calc.Regression, false);
             properties.SetFriendlyDesktopLocation(contextScatterplot);
             properties.Show(this);
 
@@ -2772,7 +2753,7 @@ namespace Mayfly.Mathematics.Charts
             bool trended = false;
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                if (scatterplot.IsRegressionOK)
+                if (scatterplot.Calc.IsRegressionOK)
                 {
                     trended = true;
                     break;
@@ -2836,7 +2817,7 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                Remove(scatterplot.Name);
+                Remove(scatterplot.Properties.ScatterplotName);
             }
         }
 
@@ -2847,7 +2828,7 @@ namespace Mayfly.Mathematics.Charts
                 string result = string.Empty;
                 foreach (Scatterplot scatterplot in SelectedScatterplots)
                 {
-                    result += scatterplot.Data.X.ToString();
+                    result += new SampleDisplay(scatterplot.Calc.Data.X).ToString();
                     result += Constants.Break;
                 }
                 Clipboard.SetText(result.TrimEnd('\n'));
@@ -2856,7 +2837,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 foreach (Scatterplot scatterplot in SelectedScatterplots)
                 {
-                    SampleProperties properties = new SampleProperties(scatterplot.Data.X);
+                    SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.X);
                     properties.SetFriendlyDesktopLocation(contextScatterplot);
                     properties.Show();
                 }
@@ -2870,7 +2851,7 @@ namespace Mayfly.Mathematics.Charts
                 string result = string.Empty;
                 foreach (Scatterplot scatterplot in SelectedScatterplots)
                 {
-                    result += scatterplot.Data.Y.ToString();
+                    result += new SampleDisplay(scatterplot.Calc.Data.Y).ToString();
                     result += Constants.Break;
                 }
                 Clipboard.SetText(result.TrimEnd('\n'));
@@ -2879,7 +2860,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 foreach (Scatterplot scatterplot in SelectedScatterplots)
                 {
-                    SampleProperties properties = new SampleProperties(scatterplot.Data.Y);
+                    SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.Y);
                     properties.SetFriendlyDesktopLocation(contextScatterplot);
                     properties.Show();
                 }
@@ -2898,11 +2879,11 @@ namespace Mayfly.Mathematics.Charts
         {
             List<Regression> regressions = new List<Regression>();
 
-            foreach (Scatterplot scatterplot in /*Selected*/Scatterplots)
+            foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                if (scatterplot.IsRegressionOK)
+                if (scatterplot.Calc.IsRegressionOK)
                 {
-                    regressions.Add(scatterplot.Regression);
+                    regressions.Add(scatterplot.Calc.Regression);
                 }
             }
 
@@ -2919,9 +2900,9 @@ namespace Mayfly.Mathematics.Charts
             BivariateSample mergedBivariate = new BivariateSample(AxisXTitle, AxisYTitle);
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                for (int i = 0; i < scatterplot.Data.Count; i++)
+                for (int i = 0; i < scatterplot.Calc.Data.Count; i++)
                 {
-                    mergedBivariate.Add(scatterplot.Data.X.ElementAt(i), scatterplot.Data.Y.ElementAt(i));
+                    mergedBivariate.Add(scatterplot.Calc.Data.X.ElementAt(i), scatterplot.Calc.Data.Y.ElementAt(i));
                 }
             }
 
@@ -2943,7 +2924,7 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                Histogramma histogram = new Histogramma(AxisXTitle, scatterplot.Data.X, IsChronic);
+                Histogramma histogram = new Histogramma(AxisXTitle, scatterplot.Calc.Data.X, IsChronic);
                 histogram.ShowOnChart(this);
             }
         }
@@ -2972,7 +2953,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 scatterplot.GetData();
 
-                if (scatterplot.Data != null)
+                if (scatterplot.Calc.Data != null)
                 {
                     scatterplot.BuildSeries();
                 }
@@ -3165,9 +3146,9 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Histogramma histogram in SelectedHistograms)
             {
-                HistogramSeparation Separator = new HistogramSeparation(histogram, this);
-                histogram.Properties.SetFriendlyDesktopLocation(FindForm(), FormLocation.NextToHost);
-                Separator.Show();
+                //HistogramSeparation Separator = new HistogramSeparation(histogram, this);
+                //histogram.Properties.SetFriendlyDesktopLocation(FindForm(), FormLocation.NextToHost);
+                //Separator.Show();
             }
         }
 

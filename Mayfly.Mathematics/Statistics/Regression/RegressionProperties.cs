@@ -31,9 +31,16 @@ namespace Mayfly.Mathematics.Statistics
         public void ChangeRegression(object sender, ScatterplotEventArgs e)
         {
             if (IsDisposed) return;
-            Regression = e.Sample.Regression;
 
-            UpdateValues(); 
+            if (e.Sample.Calc.IsRegressionOK)
+            {
+                Regression = e.Sample.Calc.Regression;
+                UpdateValues();
+            }
+            else
+            {
+                Close();
+            }
         }
 
         private void UpdateValues()

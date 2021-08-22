@@ -1195,7 +1195,7 @@ namespace Mayfly.Wild
                                 return double.NaN;
                             }
 
-                            double meanWeight = ((Data)this.Table.DataSet).MassModels.GetValue(this.SpeciesRow.Species, individualRow.Length);
+                            double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.SpeciesRow.Species).GetValue(individualRow.Length);
 
                             if (double.IsNaN(meanWeight))
                             {
@@ -1228,7 +1228,7 @@ namespace Mayfly.Wild
 
                     foreach (StratifiedRow stratifiedRow in this.GetStratifiedRows())
                     {
-                        double meanWeight = ((Data)this.Table.DataSet).MassModels.GetValue(this.SpeciesRow.Species, stratifiedRow.SizeClass.Midpoint);
+                        double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
 
                         if (double.IsNaN(meanWeight))
                         {

@@ -142,8 +142,7 @@
       <DependentUpon>CompositionComparison.cs</DependentUpon>
     </Compile>
     <Compile Include="Bio\DescriptiveBio.cs" />
-    <Compile Include="Bio\IBioable.cs" />
-    <Compile Include="Bio\IBio.cs" />
+    <Compile Include="Bio\Bio.cs" />
     <Compile Include="Resources\Interface\Clouds.Designer.cs">
       <DependentUpon>Clouds.resx</DependentUpon>
       <AutoGen>True</AutoGen>

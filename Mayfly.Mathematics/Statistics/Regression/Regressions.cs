@@ -138,7 +138,7 @@ namespace Mayfly.Mathematics.Statistics
             foreach (Linear line in SelectedRegressions)
             {
                 Scatterplot scatterplot = new Scatterplot(line.Data, line.Name);
-                scatterplot.CalculateApproximation(line.Type);
+                scatterplot.Calc.Calculate(line.Type);
 
                 scatterplot.Properties.ShowTrend = 
                     scatterplot.Properties.ShowCount =
@@ -146,7 +146,7 @@ namespace Mayfly.Mathematics.Statistics
                     true;
 
                 if (Form.ModifierKeys.HasFlag(Keys.Control) &&
-                    scatterplot.Data.Count < UserSettings.SoftSampleSize)
+                    scatterplot.Calc.Data.Count < UserSettings.SoftSampleSize)
                 {
                     continue;
                 }

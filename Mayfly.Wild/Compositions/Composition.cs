@@ -344,6 +344,24 @@ namespace Mayfly.Wild
         }
 
 
+        public void Include(Composition external)
+        {
+            if (external == null) return;
+
+            foreach (Category category in external)
+            {
+                if (this.ContainsNamed(category.Name))
+                {
+                    // cope samples
+                }
+                else
+                {
+                    this.AddCategory(category);
+                }
+            }
+        }
+
+
 
         #region IFormattable
 
