@@ -61,16 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age.
-        /// </summary>
-        internal static string Column1 {
-            get {
-                return ResourceManager.GetString("Column1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Basic biological features, e. g. mean length and mass, of {0} of different ages are given in table {1}..
+        ///   Looks up a localized string similar to Specimen of {0} in catches were from {1} to {2} mm in length ({3:N1} mm in average). Individual mass ranged from {4} to {5} g ({6:N1} g in average)..
         /// </summary>
         internal static string Paragraph1 {
             get {
@@ -79,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Growth curve is model ({0}) described with following equation:.
+        ///   Looks up a localized string similar to Length-to-mass regression depicted in figure {0} and described as:.
         /// </summary>
         internal static string Paragraph2 {
             get {
@@ -88,7 +79,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Equation of mass to length regression ({0}) is:.
+        ///   Looks up a localized string similar to Growth (according to von Bertalanffy) curve is depicted in figure {0} and described as:.
         /// </summary>
         internal static string Paragraph3 {
             get {
@@ -97,16 +88,43 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic biological parameters of {0}.
+        ///   Looks up a localized string similar to Combined weight growth model is depicted in figure {0}..
         /// </summary>
-        internal static string Table1 {
+        internal static string Paragraph4 {
             get {
-                return ResourceManager.GetString("Table1", resourceCulture);
+                return ResourceManager.GetString("Paragraph4", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Growth parameters of {0}.
+        ///   Looks up a localized string similar to Failed to calculate growth parameters..
+        /// </summary>
+        internal static string Paragraph5 {
+            get {
+                return ResourceManager.GetString("Paragraph5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mean catch per effort unit of {0} equals {1:N2} ind./{2} (or {3:N2} kg/{2}). Basic biological parameters of {0} catches in different classes of {4} are given in table {5}..
+        /// </summary>
+        internal static string Paragraph6 {
+            get {
+                return ResourceManager.GetString("Paragraph6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic biological parameters of {0} catches in different classes of {1}.
+        /// </summary>
+        internal static string Table {
+            get {
+                return ResourceManager.GetString("Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic biological parameters of {0}.
         /// </summary>
         internal static string Title {
             get {

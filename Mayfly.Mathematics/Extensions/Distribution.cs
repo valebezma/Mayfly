@@ -6,11 +6,11 @@ namespace Mayfly.Extensions
 {
     public enum DistributionType
     {
-        Auto,
-        Normal,
-        Exponential,
-        Logistic,
-        Lognormal
+        Auto = 0,
+        Normal = 1,
+        Exponential = 2,
+        Logistic = 3,
+        Lognormal = 4,
     };
 
     public static class DistributionExtensions
@@ -27,8 +27,9 @@ namespace Mayfly.Extensions
                 case DistributionType.Logistic:
                     return new LogisticDistribution(sample.Mean, sample.StandardDeviation);
                 case DistributionType.Lognormal:
-                    Sample summary = sample.Logarithm();
-                    return new LognormalDistribution(summary.Mean, sample.StandardDeviation);
+                    Sample summary = sample.Copy();
+                    summary.Transform((x) => { return Math.Log(x); });
+                    return new LognormalDistribution(summary.Mean, summary.StandardDeviation);
                 case DistributionType.Normal:
                     return new NormalDistribution(sample.Mean, sample.StandardDeviation);
             }

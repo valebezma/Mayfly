@@ -254,7 +254,7 @@ namespace Mayfly.Mathematics.Charts
                 Centroids = new Series(Resources.Interface.Centroids);
                 Centroids.ChartType = SeriesChartType.Point;
                 Centroids.MarkerStyle = MarkerStyle.Cross;
-                Centroids.Color = Color.Red;
+                Centroids.Color = Constants.MotiveColor;
                 Centroids.MarkerBorderColor = Color.White;
                 Centroids.MarkerBorderWidth = 4;
                 Centroids.MarkerSize = 20;

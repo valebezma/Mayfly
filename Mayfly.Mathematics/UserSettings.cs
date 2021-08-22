@@ -22,8 +22,7 @@ namespace Mayfly.Mathematics
             UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
                 new UserSetting[] {
                     new UserSetting(UserSettingPaths.SampleAppearance, 0),
-                    new UserSetting(UserSettingPaths.SelectedSeriesColor, Color.Red.ToArgb()),
-                    new UserSetting(UserSettingPaths.UnselectedSeriesColor, Color.LightGray.ToArgb()),
+                    new UserSetting(UserSettingPaths.SelectedSeriesColor, Color.DarkSalmon.ToArgb()),
                     new UserSetting(UserSettingPaths.Alpha, 50),
                     new UserSetting(UserSettingPaths.ConfidenceLevel, 950),
                     new UserSetting(UserSettingPaths.RegressionMinimalCount, 5, true),
@@ -107,12 +106,6 @@ namespace Mayfly.Mathematics
         {
             get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.SelectedSeriesColor)); }
             set { UserSetting.SetValue(Path, UserSettingPaths.SelectedSeriesColor, value.ToArgb()); }
-        }
-
-        public static Color DistinguishColorDeselected
-        {
-            get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.UnselectedSeriesColor)); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.UnselectedSeriesColor, value.ToArgb()); }
         }
 
 
@@ -205,8 +198,6 @@ namespace Mayfly.Mathematics
         public static string SampleAppearance = "SampleAppearance";
 
         public static string SelectedSeriesColor = "SelectedSeriesColor";
-
-        public static string UnselectedSeriesColor = "UnselectedSeriesColor";
 
 
         public static string Alpha = "Alpha";

@@ -106,7 +106,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selectivity estimation is based on {0} catches of gillnets of different mesh sizes. Such data is herefore used and is presented in table {1}..
+        ///   Looks up a localized string similar to Selectivity estimation is based on {0} catches of gillnets of different mesh sizes. Such data is herefore used and is depicted in figure {1}..
         /// </summary>
         internal static string Paragraph1 {
             get {
@@ -124,7 +124,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optimum lengths and selectivity parameters (selection factor and standard deviation) were assessed from length frequency distribution (table {0}) for each mesh size combination (table {1})..
+        ///   Looks up a localized string similar to Optimum lengths and selectivity parameters (selection factor and standard deviation) were assessed from length frequency distribution (fig. {0}) for each mesh size combination (tab. {1})..
         /// </summary>
         internal static string Paragraph3 {
             get {
@@ -142,11 +142,20 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Averaged length composition is now adjusted by resultant selection ogive. Results are given in table {0}..
+        ///   Looks up a localized string similar to Averaged length composition is now adjusted by resultant selection ogive. Results are given in figure {0}..
         /// </summary>
         internal static string Paragraph5 {
             get {
                 return ResourceManager.GetString("Paragraph5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selectivity model could not be calculated using currently selected set of gears, so length composition was not adjusted..
+        /// </summary>
+        internal static string Paragraph6 {
+            get {
+                return ResourceManager.GetString("Paragraph6", resourceCulture);
             }
         }
         
@@ -196,7 +205,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimation of {0} selectivity of {1}.
+        ///   Looks up a localized string similar to Length composition adjustment using {0} selectivity model.
         /// </summary>
         internal static string Title {
             get {

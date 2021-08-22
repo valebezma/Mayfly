@@ -343,8 +343,10 @@
             this.ColumnSpcTechStratified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSpcTechLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageSpcQualify = new System.Windows.Forms.TabPage();
+            this.checkBoxQualOutliers = new System.Windows.Forms.CheckBox();
             this.labelQualSubset = new System.Windows.Forms.Label();
             this.labelQualify = new System.Windows.Forms.Label();
+            this.buttonQualOutliers = new System.Windows.Forms.Button();
             this.labelQualNotSelected = new System.Windows.Forms.Label();
             this.labelQualDescription = new System.Windows.Forms.Label();
             this.labelQualTitle = new System.Windows.Forms.Label();
@@ -2384,8 +2386,10 @@
             // 
             // tabPageSpcQualify
             // 
+            this.tabPageSpcQualify.Controls.Add(this.checkBoxQualOutliers);
             this.tabPageSpcQualify.Controls.Add(this.labelQualSubset);
             this.tabPageSpcQualify.Controls.Add(this.labelQualify);
+            this.tabPageSpcQualify.Controls.Add(this.buttonQualOutliers);
             this.tabPageSpcQualify.Controls.Add(this.labelQualNotSelected);
             this.tabPageSpcQualify.Controls.Add(this.labelQualDescription);
             this.tabPageSpcQualify.Controls.Add(this.labelQualTitle);
@@ -2399,6 +2403,13 @@
             this.tabPageSpcQualify.Name = "tabPageSpcQualify";
             this.tabPageSpcQualify.UseVisualStyleBackColor = true;
             // 
+            // checkBoxQualOutliers
+            // 
+            resources.ApplyResources(this.checkBoxQualOutliers, "checkBoxQualOutliers");
+            this.checkBoxQualOutliers.Name = "checkBoxQualOutliers";
+            this.checkBoxQualOutliers.UseVisualStyleBackColor = true;
+            this.checkBoxQualOutliers.CheckedChanged += new System.EventHandler(this.checkBoxQualOutliers_CheckedChanged);
+            // 
             // labelQualSubset
             // 
             resources.ApplyResources(this.labelQualSubset, "labelQualSubset");
@@ -2408,6 +2419,13 @@
             // 
             resources.ApplyResources(this.labelQualify, "labelQualify");
             this.labelQualify.Name = "labelQualify";
+            // 
+            // buttonQualOutliers
+            // 
+            this.buttonQualOutliers.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.buttonQualOutliers, "buttonQualOutliers");
+            this.buttonQualOutliers.Name = "buttonQualOutliers";
+            this.buttonQualOutliers.Click += new System.EventHandler(this.buttonQualOutliers_Click);
             // 
             // labelQualNotSelected
             // 
@@ -2427,9 +2445,9 @@
             // 
             // comboBoxQualType
             // 
+            resources.ApplyResources(this.comboBoxQualType, "comboBoxQualType");
             this.comboBoxQualType.DisplayMember = "Name";
             this.comboBoxQualType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxQualType, "comboBoxQualType");
             this.comboBoxQualType.Name = "comboBoxQualType";
             this.comboBoxQualType.ValueMember = "Type";
             this.comboBoxQualType.SelectedIndexChanged += new System.EventHandler(this.comboBoxStrateGearType_SelectedIndexChanged);
@@ -2444,11 +2462,12 @@
             resources.ApplyResources(this.comboBoxQualValue, "comboBoxQualValue");
             this.comboBoxQualValue.Name = "comboBoxQualValue";
             this.comboBoxQualValue.SelectedIndexChanged += new System.EventHandler(this.models_Changed);
+            this.comboBoxQualValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxQualValue_KeyPress);
             // 
             // comboBoxQualClass
             // 
-            this.comboBoxQualClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxQualClass, "comboBoxQualClass");
+            this.comboBoxQualClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxQualClass.FormattingEnabled = true;
             this.comboBoxQualClass.Name = "comboBoxQualClass";
             this.comboBoxQualClass.SelectedIndexChanged += new System.EventHandler(this.strates_Changed);
@@ -4272,5 +4291,7 @@
         private System.Windows.Forms.Label labelQualify;
         private System.Windows.Forms.Label labelQualSubset;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
+        private System.Windows.Forms.CheckBox checkBoxQualOutliers;
+        private System.Windows.Forms.Button buttonQualOutliers;
     }
 }

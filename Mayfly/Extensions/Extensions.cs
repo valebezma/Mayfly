@@ -85,6 +85,7 @@ namespace Mayfly.Extensions
 
         public static Color Darker(this Color color)
         {
+            if (color.ToString() == "0") return Color.Transparent;
             return color.Darker(.2);
         }
 

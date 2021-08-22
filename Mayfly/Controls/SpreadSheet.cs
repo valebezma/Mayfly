@@ -571,6 +571,24 @@ namespace Mayfly.Controls
 
         protected override void OnCellFormatting(DataGridViewCellFormattingEventArgs e)
         {
+            DataGridViewCell gridCell = this[e.ColumnIndex, e.RowIndex];
+
+            bool showNormal = e.Value != null || (
+                this.CurrentCell == gridCell &&
+                this.IsCurrentCellInEditMode
+                );
+
+            e.CellStyle.Alignment = showNormal ?
+                gridCell.InheritedStyle.Alignment :
+                DataGridViewContentAlignment.MiddleCenter;
+
+            e.CellStyle.ForeColor = showNormal ?
+                gridCell.InheritedStyle.ForeColor :
+                Constants.InfantColor;
+
+            //this[e.ColumnIndex, e.RowIndex].Style.ForeColor = this[e.ColumnIndex, e.RowIndex].Value == null ?
+            //    Constants.InfantColor : this.Rows[e.RowIndex].DefaultCellStyle.ForeColor;
+
             if (e.Value == null) { e.FormattingApplied = false; return; }
 
             if (Columns[e.ColumnIndex].ValueType == typeof(DateTime))
@@ -609,21 +627,6 @@ namespace Mayfly.Controls
                     e.FormattingApplied = false;
                 }
             }
-
-            DataGridViewCell gridCell = this[e.ColumnIndex, e.RowIndex];
-
-            bool showNormal = e.Value != null || (
-                this.CurrentCell == gridCell &&
-                this.IsCurrentCellInEditMode
-                );
-
-            e.CellStyle.Alignment = showNormal ?
-                gridCell.InheritedStyle.Alignment :
-                DataGridViewContentAlignment.MiddleCenter;
-
-            e.CellStyle.ForeColor = showNormal ?
-                gridCell.InheritedStyle.ForeColor :
-                Mayfly.Constants.InfantColor;
 
             base.OnCellFormatting(e);
         }

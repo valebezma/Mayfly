@@ -330,7 +330,7 @@ namespace Mayfly.Fish.Explorer
 
                 gridRow.CreateCells(spreadSheetInd);
                 gridRow.ReadOnly = true;
-                gridRow.DefaultCellStyle.ForeColor = Color.DarkGray;
+                gridRow.DefaultCellStyle.ForeColor = Constants.InfantColor; // Color.DarkGray;
 
                 //gridRow.Cells[columnIndID.Index].Value;
 
@@ -425,7 +425,6 @@ namespace Mayfly.Fish.Explorer
                     double.IsNaN(ageValue) ?
                     Wild.Resources.Interface.Interface.SuggestionUnavailable : " " + age.ToString() + " ");
                 Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-                //gridRow.Cells[columnIndAge.Index].
 
                 gridRow.Cells[columnIndGeneration.Index].SetNullValue(
                     double.IsNaN(ageValue) ?

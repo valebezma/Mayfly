@@ -31,7 +31,7 @@ namespace Mayfly.Mathematics.Charts
 
         public Regression Regression { get; set; }
 
-        public bool IsRegressionOK { get { return Regression != null && Regression.Fit != null; } }
+        public bool IsRegressionOK { get { return Regression != null; } }
 
         public BivariateSample Data { get; set; }
 
@@ -39,7 +39,9 @@ namespace Mayfly.Mathematics.Charts
 
         public Series Series { get; set; }
 
-        public Series DataRange { get; set; }
+        public Series UpperPredictionBand { get; set; }
+
+        public Series LowerPredictionBand { get; set; }
 
         public Functor Trend { get; set; }
 
@@ -71,7 +73,8 @@ namespace Mayfly.Mathematics.Charts
             set
             {
                 Series.ChartArea = value.Name;
-                if (DataRange != null) DataRange.ChartArea = value.Name;
+                if (UpperPredictionBand != null) UpperPredictionBand.ChartArea = value.Name;
+                if (LowerPredictionBand != null) LowerPredictionBand.ChartArea = value.Name;
                 if (Trend != null) Trend.ChartArea = value;
                 //if (TrendSeries != null) TrendSeries.ChartArea = value.Name;
                 if (TrendRange != null) TrendRange.ChartArea = value.Name;
@@ -87,8 +90,6 @@ namespace Mayfly.Mathematics.Charts
         public event ScatterplotEventHandler Updated;
 
         private bool disposed;
-
-        private static readonly int splineStep = 100;
 
         private TrendType model = TrendType.Auto;
 
@@ -158,10 +159,16 @@ namespace Mayfly.Mathematics.Charts
                             Container.Series.Remove(Series);
                             Series.Dispose();
 
-                            if (DataRange != null)
+                            if (UpperPredictionBand != null)
                             {
-                                Container.Series.Remove(DataRange);
-                                DataRange.Dispose();
+                                Container.Series.Remove(UpperPredictionBand);
+                                UpperPredictionBand.Dispose();
+                            }
+
+                            if (LowerPredictionBand != null)
+                            {
+                                Container.Series.Remove(LowerPredictionBand);
+                                LowerPredictionBand.Dispose();
                             }
 
                             if (Trend != null)
@@ -294,8 +301,9 @@ namespace Mayfly.Mathematics.Charts
                     Container.Series.Add(TrendRange);
                 }
 
-                TrendRange.BorderColor = Properties.DataPointColor;
+                TrendRange.BorderColor = Properties.TrendColor;
                 TrendRange.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
+                TrendRange.YAxisType = Series.YAxisType;
             }
             else
             {
@@ -310,46 +318,43 @@ namespace Mayfly.Mathematics.Charts
             {
                 BuildDataBands();
 
-                if (Container.Series.FindByName(DataRange.Name) == null)
+                if (Container.Series.FindByName(UpperPredictionBand.Name) == null)
                 {
-                    Container.Series.Add(DataRange);
+                    Container.Series.Add(UpperPredictionBand);
+                    Container.Series.Add(LowerPredictionBand);
                 }
 
-                DataRange.BorderColor = Properties.DataPointColor;
-                DataRange.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
-                DataRange.BackHatchStyle = Properties.HighlightRunouts ? ChartHatchStyle.Percent05 : ChartHatchStyle.None;
-                DataRange.BackSecondaryColor = Properties.DataPointColor;
-
-                if (Properties.HighlightRunouts) // Colorize runouts
+                foreach (Series band in new Series[] { UpperPredictionBand, LowerPredictionBand })
                 {
-                    //BivariateSample runouts = Regression.GetRunouts(Properties.ConfidenceLevel);
-
-                    //foreach (DataPoint dp in Series.Points)
-                    //{
-                    //    if (runouts != null && runouts.Contains(dp.XValue, dp.YValues[0]))
-                    //    {
-                    //        dp.MarkerColor = dp.MarkerBorderColor = Color.Red;
-                    //    }
-                    //    else
-                    //    {
-                    //        dp.MarkerColor = dp.MarkerBorderColor = Properties.DataPointColor;
-                    //    }
-                    //}
+                    band.BorderColor = band.Color = Properties.TrendColor;
+                    band.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
+                    //band.BackHatchStyle = Properties.HighlightOutliers ? ChartHatchStyle.Percent05 : ChartHatchStyle.None;
+                    //band.BackSecondaryColor = Properties.DataPointColor;
+                    band.YAxisType = Series.YAxisType;
                 }
-                else
+
+                foreach (DataPoint dp in Series.Points)
                 {
-                    //foreach (DataPoint dp in Series.Points)
-                    //{
-                    //    dp.MarkerColor = dp.MarkerBorderColor = Properties.DataPointColor;
-                    //}
+                    dp.MarkerColor = dp.MarkerBorderColor = 
+                        (Properties.HighlightOutliers && Regression.outliers != null && 
+                        Regression.outliers.Contains(
+                            TransposeCharting ? dp.YValues[0] : dp.XValue, 
+                            TransposeCharting ? dp.XValue : dp.YValues[0])) ?
+                        Color.Red : Properties.DataPointColor;
                 }
             }
             else
             {
-                if (DataRange != null)
+                if (UpperPredictionBand != null)
                 {
-                    Container.Series.Remove(DataRange);
-                    DataRange = null;
+                    Container.Series.Remove(UpperPredictionBand);
+                    UpperPredictionBand = null;
+                }
+
+                if (LowerPredictionBand != null)
+                {
+                    Container.Series.Remove(LowerPredictionBand);
+                    LowerPredictionBand = null;
                 }
             }
 
@@ -526,56 +531,103 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public void BuildTrendBands()
+        private void AddBandsTo(Series series, Statistics.IntervalType type)
         {
-            BuildTrendBands(Container.AxisXMin, Container.AxisXMax,
-                Container.AxisYMin, Container.AxisYMax);
+            double xMin = Container.AxisXMin;
+            double xMax = Container.AxisXMax;
+            double xInterval = (xMax - xMin) / 100;
+
+            List<double> xvalues = new List<double>();
+            for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
+            {
+                xvalues.Add(x);
+            }
+
+            Interval[] predictions = Regression.SetInterval(xvalues.ToArray(), Properties.ConfidenceLevel, type);
+
+            series.Points.Clear();
+
+            for (int i = 0; i < predictions.Length; i++)
+            {
+                double lowerY = predictions[i].LeftEndpoint;
+                if (double.IsInfinity(lowerY)) continue;
+                if (double.IsNaN(lowerY)) continue;
+
+                double upperY = predictions[i].RightEndpoint;
+                if (double.IsInfinity(upperY)) continue;
+                if (double.IsNaN(upperY)) continue;
+
+                series.Points.Add(new DataPoint(series)
+                {
+                    XValue = xvalues[i],
+                    YValues = new double[] { lowerY, upperY },
+                });
+
+                //series.Points.Add(new DataPoint(series)
+                //{
+                //    XValue = TransposeCharting ? lowerY : xvalues[i],
+                //    YValues = TransposeCharting ? new double[] { xvalues[i] } : new double[] { lowerY, upperY },
+                //});
+            }
         }
 
-        public void BuildTrendBands(double xMin, double xMax, double yMin, double yMax)
+        private void AddBandsTo(Series upperBand, Series lowerBand, Statistics.IntervalType type)
         {
-            if (this.IsRegressionOK)
+            double xMin = TransposeCharting ? (upperBand.YAxisType == AxisType.Primary ? Container.AxisYMin : Container.AxisY2Min) : Container.AxisXMin;
+            double xMax = TransposeCharting ? (upperBand.YAxisType == AxisType.Primary ? Container.AxisYMax : Container.AxisY2Max) : Container.AxisXMax;
+            double xInterval = (xMax - xMin) / 100;
+
+            List<double> xvalues = new List<double>();
+            for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
             {
-                if (TrendRange == null)
+                xvalues.Add(x);
+            }
+
+            Interval[] predictions = Regression.SetInterval(xvalues.ToArray(), Properties.ConfidenceLevel, type);
+
+            upperBand.Points.Clear();
+            lowerBand.Points.Clear();
+
+            for (int i = 0; i < predictions.Length; i++)
+            {
+                double lowerY = predictions[i].LeftEndpoint;
+                if (double.IsInfinity(lowerY)) continue;
+                if (double.IsNaN(lowerY)) continue;
+
+                double upperY = predictions[i].RightEndpoint;
+                if (double.IsInfinity(upperY)) continue;
+                if (double.IsNaN(upperY)) continue;
+
+                upperBand.Points.Add(TransposeCharting ? new DataPoint(upperY, xvalues[i]) : new DataPoint(xvalues[i], upperY));
+                lowerBand.Points.Add(TransposeCharting ? new DataPoint(lowerY, xvalues[i]) : new DataPoint(xvalues[i], lowerY));
+            }
+        }
+
+
+
+        public void BuildTrendBands()
+        {
+            if (TrendRange == null)
+            {
+                TrendRange = new Series(string.Format(Resources.Interface.ConfidenceBands, Properties.ScatterplotName))
                 {
-                    TrendRange = new Series(string.Format(Resources.Interface.ConfidenceBands, Properties.ScatterplotName))
-                    {
-                        IsVisibleInLegend = false,
-                        ChartType = SeriesChartType.SplineRange,
-                        BorderDashStyle = ChartDashStyle.Dash,
-                        Color = Color.Transparent,
-                        YValuesPerPoint = 2
-                    };
-                }
-                else
-                {
-                    TrendRange.Points.Clear();
-                }
+                    IsVisibleInLegend = false,
+                    ChartType = SeriesChartType.SplineArea,
+                    BorderDashStyle = ChartDashStyle.Dash,
+                    Color = Color.Transparent,
+                    YValuesPerPoint = 2
+                };
+            }
+            else
+            {
+                TrendRange.Points.Clear();
+            }
 
-                double xInterval = (xMax - xMin) / splineStep;
-                double yInterval = (yMax - yMin) / splineStep;
+            TrendRange.YAxisType = Series.YAxisType;
 
-                for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
-                {
-                    //UncertainValue s = Regression.GetConfidenceInterval(x, Properties.ConfidenceLevel);
-
-                    //double lowerY = s.Value - s.Uncertainty;
-                    //if (double.IsInfinity(lowerY)) continue;
-                    //if (double.IsNaN(lowerY)) continue;
-
-                    //double upperY = s.Value + s.Uncertainty;
-                    //if (double.IsInfinity(upperY)) continue;
-                    //if (double.IsNaN(upperY)) continue;
-
-                    //DataPoint dataPoint = new DataPoint(TrendRange);
-                    //dataPoint.XValue = x;
-                    //dataPoint.YValues[0] = lowerY;
-                    //dataPoint.YValues[1] = upperY;
-
-                    //TrendRange.Points.Add(dataPoint);
-                }
-
-                if (TrendRange != null) TrendRange.YAxisType = Series.YAxisType;
+            if (IsRegressionOK)
+            {
+                AddBandsTo(TrendRange, Statistics.IntervalType.Confidence);
             }
             else
             {
@@ -583,62 +635,59 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+
+
         public void BuildDataBands()
         {
-            BuildDataBands(Container.AxisXMin, Container.AxisXMax, 
-                Container.AxisYMin, Container.AxisYMax);
-        }
-
-        public void BuildDataBands(double xMin, double xMax, double yMin, double yMax)
-        {
-            if (this.IsRegressionOK)
+            if (UpperPredictionBand == null)
             {
-                if (DataRange == null)
+                UpperPredictionBand = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName))
                 {
-                    DataRange = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ScatterplotName))
-                    {
-                        ChartType = SeriesChartType.SplineRange,
-                        BorderDashStyle = ChartDashStyle.Dash,
-                        IsVisibleInLegend = false,
-                        Color = Color.Transparent,
-                        YValuesPerPoint = 2
-                    };
-                }
-                else
-                {
-                    DataRange.Points.Clear();
-                }
-
-                double xInterval = (xMax - xMin) / splineStep;
-                double yInterval = (yMax - yMin) / splineStep;
-
-                for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
-                {
-                    //UncertainValue s = Regression.GetPredictionInterval(x, Properties.ConfidenceLevel);
-
-                    //double lowerY = s.Value - s.Uncertainty;
-                    //if (double.IsInfinity(lowerY)) continue;
-                    //if (double.IsNaN(lowerY)) continue;
-
-                    //double upperY = s.Value + s.Uncertainty;
-                    //if (double.IsInfinity(upperY)) continue;
-                    //if (double.IsNaN(upperY)) continue;
-
-                    //DataPoint dataPoint = new DataPoint(DataRange);
-                    //dataPoint.XValue = x;
-                    //dataPoint.YValues[0] = lowerY;
-                    //dataPoint.YValues[1] = upperY;
-
-                    //DataRange.Points.Add(dataPoint);
-                }
-
-                if (DataRange != null) DataRange.YAxisType = Series.YAxisType;
+                    ChartType = SeriesChartType.Line,
+                    BorderDashStyle = ChartDashStyle.Dash,
+                    IsVisibleInLegend = true,
+                    //Color = Color.Transparent,
+                    YValuesPerPoint = 2
+                };
             }
             else
             {
-                if (DataRange != null) DataRange.Points.Clear();
+                UpperPredictionBand.Name = string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName);
+                UpperPredictionBand.Points.Clear();
+            }
+
+            if (LowerPredictionBand == null)
+            {
+                LowerPredictionBand = new Series(string.Format(Resources.Interface.PredictionBands + " (lower)", Properties.ConfidenceLevel, Properties.ScatterplotName))
+                {
+                    ChartType = SeriesChartType.Line,
+                    BorderDashStyle = ChartDashStyle.Dash,
+                    IsVisibleInLegend = false,
+                    //Color = Color.Transparent,
+                    YValuesPerPoint = 2
+                };
+            }
+            else
+            {
+                LowerPredictionBand.Points.Clear();
+            }
+
+            UpperPredictionBand.YAxisType = 
+                LowerPredictionBand.YAxisType = 
+                Series.YAxisType;
+
+            if (IsRegressionOK)
+            {
+                AddBandsTo(UpperPredictionBand, LowerPredictionBand, Statistics.IntervalType.Prediction);
+            }
+            else
+            {
+                if (UpperPredictionBand != null) UpperPredictionBand.Points.Clear();
             }
         }
+
+
+
 
         public Plot ShowOnChart()
         {
@@ -875,7 +924,8 @@ namespace Mayfly.Mathematics.Charts
             info.AddValue("ColumnY", ColumnY);
             info.AddValue("Data", Data);
             info.AddValue("Series", Series);
-            info.AddValue("DataRange", DataRange);
+            info.AddValue("UpperPredictionBand", UpperPredictionBand);
+            info.AddValue("LowerPredictionBand", LowerPredictionBand);
             info.AddValue("Trend", Trend);
             info.AddValue("TrendRange", TrendRange);
             info.AddValue("IsChronic", IsChronic);

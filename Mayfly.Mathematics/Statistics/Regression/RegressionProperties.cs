@@ -50,9 +50,9 @@ namespace Mayfly.Mathematics.Statistics
             textBoxN.Text = Regression.Data.Count.ToString();
             domainParameters.Items.Clear();
 
-            for (int i = 0; i < Regression.Fit.Parameters.Count; i++)
+            for (int i = 0; i < Regression.Parameters.Count; i++)
             {
-                domainParameters.Items.Add(Regression.Parameter(i).ToString("G3"));
+                domainParameters.Items.Add(Regression.Parameters[i].ToString("G3"));
             }
 
             domainParameters.Text = string.Empty;

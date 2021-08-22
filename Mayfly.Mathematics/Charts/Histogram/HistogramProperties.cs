@@ -63,21 +63,21 @@ namespace Mayfly.Mathematics.Charts
             set { colorDialogColumn.Color = panelMarkerColor.BackColor = value; }
         }
 
-        //public Color FitColor
-        //{
-        //    get { return colorDialogFit.Color; }
-        //    set
-        //    {
-        //        colorDialogFit.Color = value;
-        //        //if (ShowFit) panelFitColor.BackColor = value;
-        //    }
-        //}
+        public Color FitColor
+        {
+            get { return colorDialogFit.Color; }
+            set
+            {
+                colorDialogFit.Color = value;
+                //if (ShowFit) panelFitColor.BackColor = value;
+            }
+        }
 
-        //public int FitWidth
-        //{
-        //    get { return trackBarFitWidth.Value; }
-        //    set { trackBarFitWidth.Value = value; }
-        //}
+        public int FitWidth
+        {
+            get { return trackBarFitWidth.Value; }
+            set { trackBarFitWidth.Value = value; }
+        }
 
         public bool AllowBorder
         {
@@ -85,31 +85,31 @@ namespace Mayfly.Mathematics.Charts
             set { radioButtonLower.Enabled = radioButtonUpper.Enabled = label14.Enabled = value; }
         }
 
-        //public bool ShowFit
-        //{
-        //    get { return checkBoxShowFit.Checked && comboBoxFit.SelectedIndex > -1; }
-        //    set { checkBoxShowFit.Checked = value; }
-        //}
+        public bool ShowFit
+        {
+            get { return checkBoxShowFit.Checked && comboBoxFit.SelectedIndex > -1; }
+            set { checkBoxShowFit.Checked = value; }
+        }
 
-        //public bool ShowAnnotation
-        //{
-        //    get
-        //    {
-        //        return ShowCount; //ShowFit && (ShowCount || ShowFitResult);
-        //    }
-        //}
+        public bool ShowAnnotation
+        {
+            get
+            {
+                return ShowFit && (ShowCount || ShowFitResult);
+            }
+        }
 
-        //public bool ShowCount
-        //{
-        //    get { return ShowFit && checkBoxShowCount.Checked; }
-        //    set { checkBoxShowCount.Checked = value; }
-        //}
+        public bool ShowCount
+        {
+            get { return ShowFit && checkBoxShowCount.Checked; }
+            set { checkBoxShowCount.Checked = value; }
+        }
 
-        //public bool ShowFitResult
-        //{
-        //    get { return ShowFit && checkBoxShowFitResult.Checked; }
-        //    set { checkBoxShowFitResult.Checked = value; }
-        //}
+        public bool ShowFitResult
+        {
+            get { return ShowFit && checkBoxShowFitResult.Checked; }
+            set { checkBoxShowFitResult.Checked = value; }
+        }
 
         public BalanceSide SelectedClassBorderType
         {
@@ -133,6 +133,12 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        public DistributionType SelectedApproximationType
+        {
+            get { return (DistributionType)comboBoxFit.SelectedIndex; }
+            set { comboBoxFit.SelectedIndex = (int)value; }
+        }
+
         #endregion
 
         #region Constructors
@@ -141,7 +147,7 @@ namespace Mayfly.Mathematics.Charts
         {
             InitializeComponent();
             Histogram = histogram;
-            //SelectedApproximationType = DistributionType.Auto;
+            SelectedApproximationType = DistributionType.Auto;
         }
 
         #endregion

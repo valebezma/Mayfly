@@ -86,7 +86,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, Cohorts.Count);
             table1.EndRow();
             table1.StartRow();
@@ -142,9 +142,9 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    table1.AddCellValue(model.Parameter(0));
-                    double z = -model.Parameter(1);
-                    table1.AddCellValue(model.Parameter(1));
+                    table1.AddCellValue(model.Parameters[0]);
+                    double z = -model.Parameters[1];
+                    table1.AddCellValue(model.Parameters[1]);
                     table1.AddCellValue(Math.Exp(z));
                     table1.AddCellValue(1.0 - Math.Exp(z));
                 }

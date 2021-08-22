@@ -53,18 +53,16 @@
             this.checkBoxShowTrend = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBoxRunouts = new System.Windows.Forms.CheckBox();
+            this.checkBoxOutliers = new System.Windows.Forms.CheckBox();
             this.checkBoxPI = new System.Windows.Forms.CheckBox();
             this.checkBoxCI = new System.Windows.Forms.CheckBox();
             this.checkBoxShowExplained = new System.Windows.Forms.CheckBox();
             this.checkBoxShowCount = new System.Windows.Forms.CheckBox();
             this.tabPageInteraction = new System.Windows.Forms.TabPage();
-            this.panelColorUnselectedSeries = new System.Windows.Forms.Panel();
             this.panelColorSelectedSeries = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.checkBoxAllowCursors = new System.Windows.Forms.CheckBox();
             this.colorDialogMarker = new System.Windows.Forms.ColorDialog();
             this.colorDialogTrend = new System.Windows.Forms.ColorDialog();
@@ -89,7 +87,6 @@
             // 
             // tabPageAppearance
             // 
-            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
             this.tabPageAppearance.Controls.Add(this.panelTrendColor);
             this.tabPageAppearance.Controls.Add(this.trackBarTrendWidth);
             this.tabPageAppearance.Controls.Add(this.label23);
@@ -105,13 +102,15 @@
             this.tabPageAppearance.Controls.Add(this.label1);
             this.tabPageAppearance.Controls.Add(this.label20);
             this.tabPageAppearance.Controls.Add(this.trackBarMarkerSize);
+            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
             this.tabPageAppearance.Name = "tabPageAppearance";
             this.tabPageAppearance.UseVisualStyleBackColor = true;
             // 
             // panelTrendColor
             // 
-            resources.ApplyResources(this.panelTrendColor, "panelTrendColor");
+            this.panelTrendColor.BackColor = System.Drawing.Color.Maroon;
             this.panelTrendColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panelTrendColor, "panelTrendColor");
             this.panelTrendColor.Name = "panelTrendColor";
             this.panelTrendColor.Click += new System.EventHandler(this.panelTrendColor_Click);
             // 
@@ -157,9 +156,9 @@
             // 
             // panelMarkerColor
             // 
-            resources.ApplyResources(this.panelMarkerColor, "panelMarkerColor");
             this.panelMarkerColor.BackColor = System.Drawing.Color.SeaGreen;
             this.panelMarkerColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panelMarkerColor, "panelMarkerColor");
             this.panelMarkerColor.Name = "panelMarkerColor";
             this.panelMarkerColor.BackColorChanged += new System.EventHandler(this.panelMarkerColor_BackColorChanged);
             this.panelMarkerColor.Click += new System.EventHandler(this.panelMarkerColor_Click);
@@ -216,18 +215,18 @@
             // 
             // tabPageTrendline
             // 
-            resources.ApplyResources(this.tabPageTrendline, "tabPageTrendline");
             this.tabPageTrendline.Controls.Add(this.label5);
             this.tabPageTrendline.Controls.Add(this.numericUpDownConfidenceLevel);
             this.tabPageTrendline.Controls.Add(this.comboBoxTrend);
             this.tabPageTrendline.Controls.Add(this.checkBoxShowTrend);
             this.tabPageTrendline.Controls.Add(this.label9);
             this.tabPageTrendline.Controls.Add(this.label2);
-            this.tabPageTrendline.Controls.Add(this.checkBoxRunouts);
+            this.tabPageTrendline.Controls.Add(this.checkBoxOutliers);
             this.tabPageTrendline.Controls.Add(this.checkBoxPI);
             this.tabPageTrendline.Controls.Add(this.checkBoxCI);
             this.tabPageTrendline.Controls.Add(this.checkBoxShowExplained);
             this.tabPageTrendline.Controls.Add(this.checkBoxShowCount);
+            resources.ApplyResources(this.tabPageTrendline, "tabPageTrendline");
             this.tabPageTrendline.Name = "tabPageTrendline";
             this.tabPageTrendline.UseVisualStyleBackColor = true;
             // 
@@ -286,12 +285,12 @@
             this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Name = "label2";
             // 
-            // checkBoxRunouts
+            // checkBoxOutliers
             // 
-            resources.ApplyResources(this.checkBoxRunouts, "checkBoxRunouts");
-            this.checkBoxRunouts.Name = "checkBoxRunouts";
-            this.checkBoxRunouts.UseVisualStyleBackColor = true;
-            this.checkBoxRunouts.CheckedChanged += new System.EventHandler(this.valueChanged);
+            resources.ApplyResources(this.checkBoxOutliers, "checkBoxOutliers");
+            this.checkBoxOutliers.Name = "checkBoxOutliers";
+            this.checkBoxOutliers.UseVisualStyleBackColor = true;
+            this.checkBoxOutliers.CheckedChanged += new System.EventHandler(this.valueChanged);
             // 
             // checkBoxPI
             // 
@@ -323,29 +322,20 @@
             // 
             // tabPageInteraction
             // 
-            resources.ApplyResources(this.tabPageInteraction, "tabPageInteraction");
-            this.tabPageInteraction.Controls.Add(this.panelColorUnselectedSeries);
             this.tabPageInteraction.Controls.Add(this.panelColorSelectedSeries);
             this.tabPageInteraction.Controls.Add(this.label7);
             this.tabPageInteraction.Controls.Add(this.label8);
             this.tabPageInteraction.Controls.Add(this.label13);
-            this.tabPageInteraction.Controls.Add(this.label6);
             this.tabPageInteraction.Controls.Add(this.checkBoxAllowCursors);
+            resources.ApplyResources(this.tabPageInteraction, "tabPageInteraction");
             this.tabPageInteraction.Name = "tabPageInteraction";
             this.tabPageInteraction.UseVisualStyleBackColor = true;
             // 
-            // panelColorUnselectedSeries
-            // 
-            resources.ApplyResources(this.panelColorUnselectedSeries, "panelColorUnselectedSeries");
-            this.panelColorUnselectedSeries.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelColorUnselectedSeries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelColorUnselectedSeries.Name = "panelColorUnselectedSeries";
-            // 
             // panelColorSelectedSeries
             // 
-            resources.ApplyResources(this.panelColorSelectedSeries, "panelColorSelectedSeries");
             this.panelColorSelectedSeries.BackColor = System.Drawing.Color.Red;
             this.panelColorSelectedSeries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panelColorSelectedSeries, "panelColorSelectedSeries");
             this.panelColorSelectedSeries.Name = "panelColorSelectedSeries";
             // 
             // label7
@@ -364,11 +354,6 @@
             resources.ApplyResources(this.label13, "label13");
             this.label13.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label13.Name = "label13";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
             // 
             // checkBoxAllowCursors
             // 
@@ -433,14 +418,12 @@
         private System.Windows.Forms.ColorDialog colorDialogTrend;
         private System.Windows.Forms.TabPage tabPageInteraction;
         private System.Windows.Forms.CheckBox checkBoxAllowCursors;
-        private System.Windows.Forms.Panel panelColorUnselectedSeries;
         private System.Windows.Forms.Panel panelColorSelectedSeries;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox checkBoxRunouts;
+        private System.Windows.Forms.CheckBox checkBoxOutliers;
         private System.Windows.Forms.Panel panelTrendColor;
         private System.Windows.Forms.TrackBar trackBarTrendWidth;
         private System.Windows.Forms.Label label23;

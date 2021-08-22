@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2, 2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, spreadSheetCohorts.InsertedColumnCount);
             table1.EndRow();
             table1.StartRow();
@@ -141,9 +141,9 @@ namespace Mayfly.Fish.Explorer
 
                 table1.StartRow();
                 table1.AddCell(scatter.Name);
-                table1.AddCellValue(model.Parameter(0));
-                table1.AddCellValue(model.Parameter(1));
-                table1.AddCellValue(model.Parameter(2));
+                table1.AddCellValue(model.Parameters[0]);
+                table1.AddCellValue(model.Parameters[1]);
+                table1.AddCellValue(model.Parameters[2]);
                 table1.EndRow();
             }
 
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.KeyRecord.FullNameReport);
 
             table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.Growth.Column1, .2);
+            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2);
             table1.AddHeaderCell("q");
             table1.AddHeaderCell("b");
             table1.EndRow();
@@ -173,8 +173,8 @@ namespace Mayfly.Fish.Explorer
 
                 table1.StartRow();
                 table1.AddCell(scatter.Name);
-                table1.AddCellValue(model.Parameter(0).ToString("N4"));
-                table1.AddCellValue(model.Parameter(1).ToString("N4"));
+                table1.AddCellValue(model.Parameters[0].ToString("N4"));
+                table1.AddCellValue(model.Parameters[1].ToString("N4"));
                 table1.EndRow();
             }
 

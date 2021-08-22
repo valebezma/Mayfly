@@ -118,12 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Paragraph1" xml:space="preserve">
-    <value>Catch curve ({0}) is built on values of CPUE of {1} to {2} age groups of {3} and is described with following equation:</value>
+    <value>Catch curve is built on values of CPUE of {0} to {1} age groups of {2} and is described with following equation:</value>
   </data>
   <data name="Paragraph2" xml:space="preserve">
-    <value>So, Instantaneous mortality rate Z equals {0:N4}. Therefore survival rate (S) and real mortality (φ) are:</value>
+    <value>So, instantaneous mortality rate (Z) equals {0:N4}. Therefore, survival rate (S) and real mortality (φ) are:</value>
+  </data>
+  <data name="Paragraph3" xml:space="preserve">
+    <value>Adjusted age composition of {0} population is given in table {1} and depicted in figure {2}.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Mortality rates of {0}</value>
+    <value>Age composition adjustment using mortality estimate</value>
   </data>
 </root>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Meta.Numerics;
+using RDotNet;
 
 namespace Mayfly.Mathematics.Statistics
 {
@@ -21,6 +22,12 @@ namespace Mayfly.Mathematics.Statistics
 
         Growth
     };
+
+    public enum IntervalType
+    {
+        Prediction = 0,
+        Confidence = 1
+    }
 
     public abstract class Regression : IFormattable
     {
@@ -44,11 +51,11 @@ namespace Mayfly.Mathematics.Statistics
             protected set { type = value; }
         }
 
-        public FitResult fit;
-        public FitResult Fit {
-            get { return fit; }
-            protected set { fit = value; }
-        }
+        //public ResidualsResult fit;
+        //public ResidualsResult Fit {
+        //    get { return fit; }
+        //    protected set { fit = value; }
+        //}
 
         public string Equation
         {
@@ -58,17 +65,68 @@ namespace Mayfly.Mathematics.Statistics
             }
         }
 
+        public BivariateSample outliers;
+
+        internal REngine engine;
+
+        public List<double> Parameters;
+
+        public double RSquared { get; internal set; }
+
+        public string DeterminationStrength
+        {
+            get
+            {
+                double r = RSquared;
+
+                if (r < 0.1)
+                {
+                    return Resources.Chaddock.Strength0;
+                }
+                else if (r < 0.3)
+                {
+                    return Resources.Chaddock.Strength1;
+                }
+                else if (r < 0.5)
+                {
+                    return Resources.Chaddock.Strength2;
+                }
+                else if (r < 0.7)
+                {
+                    return Resources.Chaddock.Strength3;
+                }
+                else if (r < 0.9)
+                {
+                    return Resources.Chaddock.Strength4;
+                }
+                else
+                {
+                    return Resources.Chaddock.Strength5;
+                }
+            }
+        }
+
 
 
         public Regression()
         {
             type = TrendType.Linear;
+            Parameters = new List<double>();
         }
 
         public Regression(BivariateSample _data) : this()
         {
             data = _data;
             name = data.X.Name;
+
+            REngine.SetEnvironmentVariables();
+            engine = REngine.GetInstance();
+
+            var xvalues = engine.CreateNumericVector(data.X);
+            engine.SetSymbol("xvalues", xvalues);
+
+            var yvalues = engine.CreateNumericVector(data.Y);
+            engine.SetSymbol("yvalues", yvalues);
         }
 
 
@@ -86,25 +144,85 @@ namespace Mayfly.Mathematics.Statistics
         public abstract string GetEquation(string y, string x, string format);
 
 
-
+        
         public abstract double Predict(double x);
 
         public abstract double PredictInversed(double y);
 
-        public UncertainValue Estimate(int i)
+        //public UncertainValue Estimate(int i)
+        //{
+        //    if (fit == null)
+        //        throw new NullReferenceException("Fit does not exist.");
+
+        //    if (i < 0 || i > fit.Parameters.Count - 1)
+        //        throw new ArgumentException("There is no " + i + "th parameter in this model.");
+
+        //    return fit.Parameters[i].Estimate;
+        //}
+
+        //public virtual double Parameter(int i)
+        //{
+        //    return Estimate(i).Value;
+        //}
+
+        public virtual Interval[] GetInterval(double[] x, double level, IntervalType type)
         {
-            if (fit == null)
-                throw new NullReferenceException("Fit does not exist.");
+            var xvalues = engine.CreateNumericVector(x);
+            engine.SetSymbol("axis", xvalues);
 
-            if (i < 0 || i > fit.Parameters.Count - 1)
-                throw new ArgumentException("There is no " + i + "th parameter in this model.");
+            var alpha = engine.CreateNumeric(level);
+            engine.SetSymbol("alpha", alpha);
 
-            return fit.Parameters[i].Estimate;
+            NumericMatrix predictions = engine.Evaluate(
+                "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+            List<Interval> result = new List<Interval>();
+            for (int i = 0; i < predictions.RowCount; i++)
+            {
+                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+            }
+            return result.ToArray();
         }
 
-        public double Parameter(int i)
+        public Interval[] SetInterval(double[] x, double level, IntervalType type)
         {
-            return Estimate(i).Value;
+            Interval[] result = GetInterval(x, level, type);
+
+            if (type == IntervalType.Prediction)
+            {
+                outliers = new BivariateSample();
+
+                for (int i = 0; i < data.Count; i++)
+                {
+                    double _x = data.X.ElementAt(i);
+                    double _y = data.Y.ElementAt(i);
+
+                    for (int j = 0; j < x.Length - 1; j++)
+                    {
+                        if (x[j] <= _x && x[j + 1] > _x)
+                        {
+                            double xgap = x[j + 1] - x[j];
+                            double xtrack = _x - x[j];
+
+                            double ygap = result[j + 1].RightEndpoint - result[j].RightEndpoint;
+                            double ytrack = ygap * (xtrack / xgap);
+                            double upperband = result[j].RightEndpoint + ytrack;
+
+                            ygap = result[j + 1].LeftEndpoint - result[j].LeftEndpoint;
+                            ytrack = ygap * (xtrack / xgap);
+                            double lowerband = result[j].LeftEndpoint + ytrack;
+
+                            if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(_y))
+                            {
+                                outliers.Add(_x, _y);
+                            }
+                            break;
+                        }
+                    }
+
+                }
+            }
+
+            return result;
         }
 
 
@@ -157,10 +275,10 @@ namespace Mayfly.Mathematics.Statistics
             {
                 switch (type)
                 {
-                    case TrendType.Auto:
-                    case TrendType.Linear:
-                        //result = Linear(data);
-                        break;
+                    //case TrendType.Auto:
+                    //case TrendType.Linear:
+                    //    result = Linear(data);
+                    //    break;
 
                     case TrendType.Quadratic:
                         result = new Polynom(data, 2);
@@ -190,7 +308,7 @@ namespace Mayfly.Mathematics.Statistics
                         result = new Growth(data);
                         break;
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -198,7 +316,7 @@ namespace Mayfly.Mathematics.Statistics
                 result = null;
             }
 
-            if (result == null || result.Fit == null)
+            if (result == null)
             {
                 Log.Write("Failed to build {0} fit on {1} datapoints.", type, data.Count);
                 result = null;

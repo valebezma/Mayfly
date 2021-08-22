@@ -133,19 +133,22 @@
     <value>Optimum length, mm</value>
   </data>
   <data name="Paragraph1" xml:space="preserve">
-    <value>Selectivity estimation is based on {0} catches of gillnets of different mesh sizes. Such data is herefore used and is presented in table {1}.</value>
+    <value>Selectivity estimation is based on {0} catches of gillnets of different mesh sizes. Such data is herefore used and is depicted in figure {1}.</value>
   </data>
   <data name="Paragraph2" xml:space="preserve">
     <value>Catches of different mesh sizes averaged to obtain mean effort-weighted length composition. It is given in table {0}.</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
-    <value>Optimum lengths and selectivity parameters (selection factor and standard deviation) were assessed from length frequency distribution (table {0}) for each mesh size combination (table {1}).</value>
+    <value>Optimum lengths and selectivity parameters (selection factor and standard deviation) were assessed from length frequency distribution (fig. {0}) for each mesh size combination (tab. {1}).</value>
   </data>
   <data name="Paragraph4" xml:space="preserve">
     <value>Values from table {0} were used to estimate the common selectivity factor, the common standard deviation and optimum selection length per mesh size. The common selection factor are {1:N4} and common standard deviation is {2:N4}. Selection values for each length class and length optimum in each mesh size are given in table {3}.</value>
   </data>
   <data name="Paragraph5" xml:space="preserve">
-    <value>Averaged length composition is now adjusted by resultant selection ogive. Results are given in table {0}.</value>
+    <value>Averaged length composition is now adjusted by resultant selection ogive. Results are given in figure {0}.</value>
+  </data>
+  <data name="Paragraph6" xml:space="preserve">
+    <value>Selectivity model could not be calculated using currently selected set of gears, so length composition was not adjusted.</value>
   </data>
   <data name="Table1" xml:space="preserve">
     <value>Catches per unit of effort of {0} of different gear classes</value>
@@ -163,6 +166,6 @@
     <value>Selection adjusted length composition of {0} catches</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Estimation of {0} selectivity of {1}</value>
+    <value>Length composition adjustment using {0} selectivity model</value>
   </data>
 </root>

@@ -339,7 +339,7 @@
     <value>Growth*</value>
   </data>
   <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
     <value>By cohorts</value>
@@ -1099,7 +1099,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAUABMwFAATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAaABMwGgATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1543,7 +1543,7 @@
     <value>False</value>
   </data>
   <data name="statusProcess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>717, 19</value>
+    <value>516, 19</value>
   </data>
   <data name="statusProcess.Text" xml:space="preserve">
     <value>Processing:</value>
@@ -3935,6 +3935,39 @@
   <data name="&gt;&gt;tabPageSpcTech.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxQualOutliers.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="checkBoxQualOutliers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 214</value>
+  </data>
+  <data name="checkBoxQualOutliers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 24</value>
+  </data>
+  <data name="checkBoxQualOutliers.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="checkBoxQualOutliers.Text" xml:space="preserve">
+    <value>Highlight oultiers</value>
+  </data>
+  <data name="checkBoxQualOutliers.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualOutliers.Name" xml:space="preserve">
+    <value>checkBoxQualOutliers</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualOutliers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualOutliers.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualOutliers.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelQualSubset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <data name="labelQualSubset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3942,7 +3975,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelQualSubset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 237</value>
+    <value>48, 576</value>
   </data>
   <data name="labelQualSubset.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 13</value>
@@ -3963,7 +3996,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;labelQualSubset.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelQualify.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3993,7 +4026,37 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;labelQualify.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="buttonQualOutliers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonQualOutliers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 244</value>
+  </data>
+  <data name="buttonQualOutliers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 23</value>
+  </data>
+  <data name="buttonQualOutliers.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="buttonQualOutliers.Text" xml:space="preserve">
+    <value>Edit outliers</value>
+  </data>
+  <data name="buttonQualOutliers.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Name" xml:space="preserve">
+    <value>buttonQualOutliers</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="labelQualNotSelected.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -4026,7 +4089,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;labelQualNotSelected.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="labelQualDescription.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4056,7 +4119,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;labelQualDescription.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="labelQualTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4089,13 +4152,16 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;labelQualTitle.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
+  </data>
+  <data name="comboBoxQualType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="comboBoxQualType.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="comboBoxQualType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 267</value>
+    <value>144, 606</value>
   </data>
   <data name="comboBoxQualType.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 21</value>
@@ -4113,7 +4179,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;comboBoxQualType.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="comboBoxQualValue.Items" xml:space="preserve">
     <value>Mass</value>
@@ -4140,13 +4206,16 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;comboBoxQualValue.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
+  </data>
+  <data name="comboBoxQualClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="comboBoxQualClass.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="comboBoxQualClass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 294</value>
+    <value>144, 633</value>
   </data>
   <data name="comboBoxQualClass.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 21</value>
@@ -4164,7 +4233,10 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;comboBoxQualClass.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
+  </data>
+  <data name="checkBoxQualType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="checkBoxQualType.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -4173,7 +4245,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxQualType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 265</value>
+    <value>51, 604</value>
   </data>
   <data name="checkBoxQualType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 15, 15, 15</value>
@@ -4197,7 +4269,10 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;checkBoxQualType.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
+  </data>
+  <data name="checkBoxQualClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="checkBoxQualClass.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -4209,7 +4284,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxQualClass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 292</value>
+    <value>51, 631</value>
   </data>
   <data name="checkBoxQualClass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 15, 15, 15</value>
@@ -4233,7 +4308,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;checkBoxQualClass.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="plotQualify.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -4257,7 +4332,7 @@
     <value>2</value>
   </data>
   <data name="plotQualify.Text" xml:space="preserve">
-    <value>plot1</value>
+    <value>Data on {0} qualification chart</value>
   </data>
   <data name="&gt;&gt;plotQualify.Name" xml:space="preserve">
     <value>plotQualify</value>
@@ -4269,7 +4344,7 @@
     <value>tabPageSpcQualify</value>
   </data>
   <data name="&gt;&gt;plotQualify.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="tabPageSpcQualify.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

@@ -104,7 +104,7 @@ namespace Mayfly.Fish.Explorer
                     }
                     else if (t == 0 && o > 0)
                     {
-                        spreadSheet[gridColumn.Index, i].Style.ForeColor = Color.DarkGray;
+                        spreadSheet[gridColumn.Index, i].Style.ForeColor = Constants.InfantColor;
                         spreadSheet[gridColumn.Index, i].Value = o;
                     }
                     else if (t > 0 && o > 0)

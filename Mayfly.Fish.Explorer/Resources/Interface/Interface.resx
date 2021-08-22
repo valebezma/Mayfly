@@ -156,9 +156,6 @@
   <data name="EnoughStamp" xml:space="preserve">
     <value>Sufficient</value>
   </data>
-  <data name="IntModel" xml:space="preserve">
-    <value>{0} data</value>
-  </data>
   <data name="SelectivityOgive" xml:space="preserve">
     <value>Resultant ogive</value>
   </data>
@@ -171,9 +168,6 @@
   <data name="SpeciesOfInterestIsAbsent" xml:space="preserve">
     <value>{0} is absent in catches of {1}.
 To eliminate it from further analysis hold {2}.</value>
-  </data>
-  <data name="SpecSheet" xml:space="preserve">
-    <value>{0} bio</value>
   </data>
   <data name="StartifiedExtr" xml:space="preserve">
     <value>Minimal length class is {0} cm and maximal is {1} cm.</value>
@@ -211,5 +205,20 @@ To eliminate it from further analysis hold {2}.</value>
   </data>
   <data name="FleetMask" xml:space="preserve">
     <value>Fleet {0}</value>
+  </data>
+  <data name="BioCombined" xml:space="preserve">
+    <value>Combined data</value>
+  </data>
+  <data name="BioLoaded" xml:space="preserve">
+    <value>Loaded data</value>
+  </data>
+  <data name="BioReference" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="CatchCurve" xml:space="preserve">
+    <value>Fully exploited age groups</value>
+  </data>
+  <data name="CatchCurveUnused" xml:space="preserve">
+    <value>Unexploited age groups</value>
   </data>
 </root>

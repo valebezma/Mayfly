@@ -426,10 +426,15 @@ namespace Mayfly.Extensions
 
         public static void ResetFormatted(this Control label, params object[] values)
         {
-            if (label.FindForm() == null) label.Text = values.Merge();
-            else label.Text = string.Format(
-                new ResourceManager(label.FindForm().GetType()).GetString(label.Name + ".Text"),
-                values);
+            if (label.FindForm() == null)
+            {
+                label.Text = values.Merge();
+            }
+            else
+            {
+                string resString = new ResourceManager(label.FindForm().GetType()).GetString(label.Name + ".Text");
+                label.Text = resString == null ? values.Merge() : string.Format(resString, values);
+            }
         }
 
         //public static void ResetFormatted(this Control label, object value1, object value2)

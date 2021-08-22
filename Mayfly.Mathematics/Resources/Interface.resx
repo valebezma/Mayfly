@@ -154,7 +154,7 @@
     <value>Cluster {0}</value>
   </data>
   <data name="PredictionBands" xml:space="preserve">
-    <value>{0} Prediction Bands</value>
+    <value>{0:P3} prediction interval of {1}</value>
   </data>
   <data name="ConfidenceBands" xml:space="preserve">
     <value>{0} Confidence Bands</value>

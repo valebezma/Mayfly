@@ -52,7 +52,7 @@ namespace Mayfly.Fish.Explorer
 
             if (result.Exploited.IsRegressionOK)
             {
-                result.Z = -result.Exploited.Regression.Parameter(1);
+                result.Z = -result.Exploited.Regression.Parameters[1];
                 result.S = Math.Exp(-result.Z);
                 result.Fi = 1 - result.S;
                 return result;

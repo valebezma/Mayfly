@@ -193,6 +193,8 @@ namespace Mayfly.Wild
             {
                 if (scatterplot.Name == name)
                 {
+                    //if (scatterplot.Regression == null) return null;
+
                     return scatterplot;
                 }
             }

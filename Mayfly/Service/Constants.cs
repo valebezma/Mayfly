@@ -70,5 +70,13 @@ namespace Mayfly
                 return Color.LightGray;
             }
         }
+
+        public static Color MotiveColor
+        {
+            get
+            {
+                return Color.RoyalBlue;
+            }
+        }
     }
 }
