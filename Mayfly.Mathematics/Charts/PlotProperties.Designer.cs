@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Mathematics.Charts
 {
-    partial class ChartProperties
+    partial class PlotProperties
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChartProperties));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlotProperties));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageChart = new System.Windows.Forms.TabPage();
             this.buttonPrint = new System.Windows.Forms.Button();
@@ -161,20 +161,20 @@
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.ThreeState = true;
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckStateChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.value_Changed);
             // 
             // textBoxFont
             // 
             resources.ApplyResources(this.textBoxFont, "textBoxFont");
             this.textBoxFont.Name = "textBoxFont";
             this.textBoxFont.ReadOnly = true;
-            this.textBoxFont.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxFont.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // textBoxName
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxName.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label12
             // 
@@ -222,7 +222,7 @@
             resources.ApplyResources(this.checkBoxXLog, "checkBoxXLog");
             this.checkBoxXLog.Name = "checkBoxXLog";
             this.checkBoxXLog.UseVisualStyleBackColor = true;
-            this.checkBoxXLog.CheckedChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.checkBoxXLog.CheckedChanged += new System.EventHandler(this.value_Changed);
             this.checkBoxXLog.EnabledChanged += new System.EventHandler(this.checkBoxXLog_EnabledChanged);
             // 
             // checkBoxXMaxAuto
@@ -288,13 +288,13 @@
             // 
             resources.ApplyResources(this.textBoxXFormat, "textBoxXFormat");
             this.textBoxXFormat.Name = "textBoxXFormat";
-            this.textBoxXFormat.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxXFormat.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // textBoxXTitle
             // 
             resources.ApplyResources(this.textBoxXTitle, "textBoxXTitle");
             this.textBoxXTitle.Name = "textBoxXTitle";
-            this.textBoxXTitle.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxXTitle.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label13
             // 
@@ -328,7 +328,7 @@
             0,
             0,
             0});
-            this.numericUpDownXMax.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownXMax.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownXMin
             // 
@@ -345,7 +345,7 @@
             0,
             -2147483648});
             this.numericUpDownXMin.Name = "numericUpDownXMin";
-            this.numericUpDownXMin.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownXMin.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // label16
             // 
@@ -383,7 +383,7 @@
             resources.GetString("comboBoxTimeInterval.Items7"),
             resources.GetString("comboBoxTimeInterval.Items8")});
             this.comboBoxTimeInterval.Name = "comboBoxTimeInterval";
-            this.comboBoxTimeInterval.SelectedIndexChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.comboBoxTimeInterval.SelectedIndexChanged += new System.EventHandler(this.value_Changed);
             // 
             // dateTimePickerXMax
             // 
@@ -426,7 +426,7 @@
             // 
             resources.ApplyResources(this.textBoxYFormat, "textBoxYFormat");
             this.textBoxYFormat.Name = "textBoxYFormat";
-            this.textBoxYFormat.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxYFormat.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label17
             // 
@@ -443,7 +443,7 @@
             resources.ApplyResources(this.checkBoxYLog, "checkBoxYLog");
             this.checkBoxYLog.Name = "checkBoxYLog";
             this.checkBoxYLog.UseVisualStyleBackColor = true;
-            this.checkBoxYLog.CheckedChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.checkBoxYLog.CheckedChanged += new System.EventHandler(this.value_Changed);
             this.checkBoxYLog.EnabledChanged += new System.EventHandler(this.checkBoxYLog_EnabledChanged);
             // 
             // checkBoxYMaxAuto
@@ -531,7 +531,7 @@
             0,
             0,
             0});
-            this.numericUpDownYMax.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownYMax.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownYMin
             // 
@@ -548,7 +548,7 @@
             0,
             -2147483648});
             this.numericUpDownYMin.Name = "numericUpDownYMin";
-            this.numericUpDownYMin.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownYMin.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // label14
             // 
@@ -571,7 +571,7 @@
             // 
             resources.ApplyResources(this.textBoxYTitle, "textBoxYTitle");
             this.textBoxYTitle.Name = "textBoxYTitle";
-            this.textBoxYTitle.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxYTitle.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label11
             // 
@@ -598,7 +598,7 @@
             0,
             0,
             0});
-            this.numericUpDownScaleBreak.ValueChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.numericUpDownScaleBreak.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // label8
             // 
@@ -630,7 +630,7 @@
             // 
             resources.ApplyResources(this.textBoxY2Format, "textBoxY2Format");
             this.textBoxY2Format.Name = "textBoxY2Format";
-            this.textBoxY2Format.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxY2Format.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label18
             // 
@@ -722,7 +722,7 @@
             0,
             0,
             0});
-            this.numericUpDownY2Max.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownY2Max.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownY2Min
             // 
@@ -739,7 +739,7 @@
             0,
             -2147483648});
             this.numericUpDownY2Min.Name = "numericUpDownY2Min";
-            this.numericUpDownY2Min.ValueChanged += new System.EventHandler(this.Structure_ValueChanged);
+            this.numericUpDownY2Min.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // label22
             // 
@@ -755,7 +755,7 @@
             // 
             resources.ApplyResources(this.textBoxY2Title, "textBoxY2Title");
             this.textBoxY2Title.Name = "textBoxY2Title";
-            this.textBoxY2Title.TextChanged += new System.EventHandler(this.Appearance_ValueChanged);
+            this.textBoxY2Title.TextChanged += new System.EventHandler(this.value_Changed);
             // 
             // label24
             // 

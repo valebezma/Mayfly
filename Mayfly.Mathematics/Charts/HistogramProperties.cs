@@ -14,11 +14,7 @@ namespace Mayfly.Mathematics.Charts
 {
     public partial class HistogramProperties : Form
     {
-        #region Properties
-
         public event HistogramEventHandler ValueChanged;
-
-        public event HistogramEventHandler StructureChanged;
 
         public Histogramma Histogram { get; set; }
 
@@ -139,9 +135,7 @@ namespace Mayfly.Mathematics.Charts
             set { comboBoxFit.SelectedIndex = (int)value; }
         }
 
-        #endregion
 
-        #region Constructors
 
         public HistogramProperties(Histogramma histogram)
         {
@@ -150,9 +144,7 @@ namespace Mayfly.Mathematics.Charts
             SelectedApproximationType = DistributionType.Auto;
         }
 
-        #endregion
 
-        #region Methods
 
         public void ResetTitle()
         {
@@ -164,7 +156,7 @@ namespace Mayfly.Mathematics.Charts
             tabControl.SelectedTab = tabPageFitDistribution;
         }
 
-        #endregion
+
 
         private void valueChanged(object sender, EventArgs e)
         {
@@ -173,7 +165,7 @@ namespace Mayfly.Mathematics.Charts
                 ValueChanged.Invoke(sender, new HistogramEventArgs(Histogram));
             }
 
-            Histogram.Update(sender, e);
+            if (Histogram != null) Histogram.Update();
         }
 
         private void panelMarkerColor_Click(object sender, EventArgs e)
@@ -209,7 +201,7 @@ namespace Mayfly.Mathematics.Charts
             valueChanged(ActiveControl, e);
         }
 
-        private void HistogramProperties_FormClosing(object sender, FormClosingEventArgs e)
+        private void form_Closing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             Hide();
@@ -217,12 +209,10 @@ namespace Mayfly.Mathematics.Charts
 
         private void structureChanged(object sender, EventArgs e)
         {
-            if (StructureChanged != null && ActiveControl == (Control)sender)
+            if (ValueChanged != null && ActiveControl == (Control)sender)
             {
-                StructureChanged.Invoke(sender, new HistogramEventArgs(Histogram));
+                ValueChanged.Invoke(sender, new HistogramEventArgs(Histogram));
             }
-
-            Histogram.BuildChart();
         }
 
         private void checkBoxShowFit_CheckedChanged(object sender, EventArgs e)

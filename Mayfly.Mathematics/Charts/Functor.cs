@@ -24,7 +24,7 @@ namespace Mayfly.Mathematics.Charts
 
         public Series Series { get; set; }
 
-        public ChartArea ChartArea 
+        public ChartArea ChartArea
         {
             get
             {
@@ -69,8 +69,6 @@ namespace Mayfly.Mathematics.Charts
 
         public event EventHandler Updated;
 
-        private bool disposed;
-
         internal int splineStep = 500;
 
 
@@ -78,80 +76,14 @@ namespace Mayfly.Mathematics.Charts
         public Functor(string name, Func<double, double> f)
         {
             Name = name;
-            Function = f;
-
             Properties = new FunctorProperties(this);
-            Properties.ValueChanged += new EventHandler(Update);
-
-            this.Name = Properties.FunctionName = name;
-            this.BuildSeries();
+            Function = f;
         }
 
         public Functor(string name, Func<double, double> f, Func<double, double> invf)
             : this(name, f)
         {
             FunctionInverse = invf;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-
-            GC.SuppressFinalize(this);
-        }
-
-        ~Functor()
-        {
-            Dispose(false);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    if (Container != null)
-                    {
-                        if (!Container.IsDisposed && Series != null)
-                        {
-                            if (ArgumentStripLine != null)
-                            {
-                                Container.ChartAreas[Series.ChartArea].AxisX.StripLines.Remove(ArgumentStripLine);
-                                ArgumentStripLine.Dispose();
-                            }
-
-                            Container.Series.Remove(Series);
-                            Series.Dispose();
-
-                            if (FunctionStripLine != null)
-                            {
-                                Container.ChartAreas[Series.ChartArea].AxisX.StripLines.Remove(FunctionStripLine);
-                                FunctionStripLine.Dispose();
-                            }
-
-                            //if (Annotation != null)
-                            //{
-                            //    Container.Annotations.Remove(Annotation);
-                            //    Annotation.Dispose();
-                            //}
-
-                            //if (CursorAnnotation != null)
-                            //{
-                            //    Container.Annotations.Remove(CursorAnnotation);
-                            //    CursorAnnotation.Dispose();
-                            //}
-                        }
-
-                        Container.Functors.Remove(this);
-                    }
-
-                    Properties.Dispose();
-                    Properties = null;
-                }
-
-                disposed = true;
-            }
         }
 
 
@@ -164,14 +96,46 @@ namespace Mayfly.Mathematics.Charts
         public double PredictInversed(double x)
         {
             if (FunctionInverse == null) return double.NaN;
-            else return FunctionInverse.Invoke(x);            
+            else return FunctionInverse.Invoke(x);
         }
 
-        public void BuildSeries(AxisType axisType)
+        public void UpdateDataPoints(double xMin, double xMax, double yMin, double yMax)
         {
+            double xInterval = (xMax - xMin) / splineStep;
+            double yInterval = (yMax - yMin) / splineStep;
+
+            for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
+            {
+                double y = Predict(x);
+                if (double.IsInfinity(y)) continue;
+                if (double.IsNaN(y)) continue;
+
+                if (TransposeCharting)
+                {
+                    if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
+                        x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
+                    {
+                        Series.Points.Add(new DataPoint(x, y));
+                    }
+                }
+                else
+                {
+                    if (x > yMin - 5 * yInterval && x < yMax + 5 * yInterval &&
+                        y > xMin - 5 * xInterval && y < xMax + 5 * xInterval)
+                    {
+                        Series.Points.Add(new DataPoint(y, x));
+                    }
+                }
+            }
+        }
+
+        public void Update()
+        {
+            if (Container == null) return;
+
             if (Series == null)
             {
-                Series = new Series(this.Name);
+                Series = new Series(Properties.FunctionName);
                 Series.ChartType = SeriesChartType.Line;
             }
             else
@@ -179,133 +143,45 @@ namespace Mayfly.Mathematics.Charts
                 Series.Points.Clear();
             }
 
-            Series.YAxisType = axisType;
-
-            if (Container == null)
-            {
-                BuildSeries(0, 1, 0, 1);
-            }
-            else
-            {
-                BuildSeries(
-                    AxisX.Minimum, AxisX.Maximum,
-                    AxisY.Minimum, AxisY.Maximum);
-            }
-        }
-
-        public void BuildSeries(double xMin, double xMax, double yMin, double yMax)
-        {
-            double xInterval = (xMax - xMin) / splineStep;
-            double yInterval = (yMax - yMin) / splineStep;
-
-            if (TransposeCharting)
-            {
-                for (double x = yMin - 5 * yInterval; x <= yMax + 5 * yInterval; x += yInterval)
-                {
-                    double y = Predict(x);
-                    if (double.IsInfinity(y)) continue;
-                    if (double.IsNaN(y)) continue;
-
-                    if (x > yMin - 5 * yInterval && x < yMax + 5 * yInterval &&
-                        y > xMin - 5 * xInterval && y < xMax + 5 * xInterval)
-                    {
-                        DataPoint dataPoint = new DataPoint(Series);
-                        dataPoint.XValue = y;
-                        dataPoint.YValues[0] = x;
-                        Series.Points.Add(dataPoint);
-                    }
-                }
-            }
-            else
-            {
-                for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
-                {
-                    double y = Predict(x);
-                    if (double.IsInfinity(y)) continue;
-                    if (double.IsNaN(y)) continue;
-
-                    if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
-                        x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
-                    {
-                        DataPoint dataPoint = new DataPoint(Series);
-                        dataPoint.XValue = x;
-                        dataPoint.YValues[0] = y;
-                        Series.Points.Add(dataPoint);
-                    }
-                }
-            }
-        }
-
-        public void BuildSeries()
-        {
-            BuildSeries(AxisType.Primary);
-        }
-
-        public void Update(object sender, EventArgs e)
-        {
-            if (Container == null) return;
-
-            BuildSeries();
-
             this.Name = Properties.FunctionName;
             Series.Name = Properties.FunctionName;
-
             Series.BorderWidth = Properties.TrendWidth;
+            Series.Color = Container.IsDistinguishingMode ? (Constants.MotiveColor) : Properties.TrendColor;
 
-            if (Container.IsDistinguishingMode)
-            {
-                Series.Color = Constants.MotiveColor;
-            }
-            else
-            {
-                Series.Color = Properties.TrendColor;
-            }
-            
+            UpdateDataPoints(AxisX.Minimum, AxisX.Maximum, AxisY.Minimum, AxisY.Maximum);
+
             if (Properties.AllowCursors)
             {
-                ShowCursors();
+                if (ArgumentStripLine == null)
+                {
+                    double center = Container.AxisXMin + (Container.AxisXMax - Container.AxisXMin) / 2;
+
+                    ArgumentStripLine = AxisX.AddStripLine(center,
+                        center.ToString(Container.AxisXFormat), Series.Color);
+
+                    FunctionStripLine = AxisY.AddStripLine(Predict(center),
+                        Function.Invoke(center).ToString(Container.AxisYFormat), Series.Color);
+                }
             }
             else
             {
-                HideCursors();
+                if (ArgumentStripLine != null)
+                {
+                    AxisX.StripLines.Remove(ArgumentStripLine);
+                    ArgumentStripLine = null;
+                }
+
+                if (FunctionStripLine != null)
+                {
+                    AxisY.StripLines.Remove(FunctionStripLine);
+                    FunctionStripLine = null;
+                }
             }
 
             if (Updated != null)
             {
                 Updated.Invoke(this, new EventArgs());
             }
-        }
-
-
-        internal void HideCursors()
-        {
-            if (ArgumentStripLine != null)
-            {
-                AxisX.StripLines.Remove(ArgumentStripLine);
-                ArgumentStripLine = null;
-            }
-
-            if (FunctionStripLine != null)
-            {
-                AxisY.StripLines.Remove(FunctionStripLine);
-                FunctionStripLine = null;
-            }
-        }
-
-        public void ShowCursors()
-        {
-            if (ArgumentStripLine == null)
-            {
-                double center = Container.AxisXMin + (Container.AxisXMax - Container.AxisXMin) / 2;
-
-                ArgumentStripLine = AxisX.AddStripLine(center, 
-                    center.ToString(Container.AxisXFormat), Series.Color);
-
-                FunctionStripLine = AxisY.AddStripLine(Predict(center), 
-                    Function.Invoke(center).ToString(Container.AxisYFormat), Series.Color);
-            }
-
-            //ResetByArgumentCursor();
         }
 
 

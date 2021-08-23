@@ -82,17 +82,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Charts\ChartProperties.cs">
+    <Compile Include="Charts\PlotProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Charts\ChartProperties.Designer.cs">
-      <DependentUpon>ChartProperties.cs</DependentUpon>
+    <Compile Include="Charts\PlotProperties.Designer.cs">
+      <DependentUpon>PlotProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Functor\Functor.cs" />
-    <Compile Include="Charts\Functor\FunctorProperties.cs">
+    <Compile Include="Charts\Functor.cs" />
+    <Compile Include="Charts\FunctorProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Charts\Functor\FunctorProperties.Designer.cs">
+    <Compile Include="Charts\FunctorProperties.Designer.cs">
       <DependentUpon>FunctorProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\DataTable.cs" />
@@ -176,7 +176,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Charts\ErrorBarType.cs" />
     <Compile Include="Data\Pivot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,14 +195,14 @@
     <Compile Include="Data\ColumnSelection.Designer.cs">
       <DependentUpon>ColumnSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Histogram\Histogram.cs" />
-    <Compile Include="Charts\Histogram\HistogramProperties.cs">
+    <Compile Include="Charts\Histogram.cs" />
+    <Compile Include="Charts\HistogramProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Charts\Histogram\HistogramProperties.Designer.cs">
+    <Compile Include="Charts\HistogramProperties.Designer.cs">
       <DependentUpon>HistogramProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Histogram\HistogramEventHandler.cs" />
+    <Compile Include="Charts\HistogramEventHandler.cs" />
     <Compile Include="Statistics\Regression\RegressionSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,10 +211,10 @@
     </Compile>
     <Compile Include="Charts\Scatterplot.cs" />
     <Compile Include="Charts\ScatterplotEventHandler.cs" />
-    <Compile Include="Charts\Scatterplot\ScatterplotProperties.cs">
+    <Compile Include="Charts\ScatterplotProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Charts\Scatterplot\ScatterplotProperties.Designer.cs">
+    <Compile Include="Charts\ScatterplotProperties.Designer.cs">
       <DependentUpon>ScatterplotProperties.cs</DependentUpon>
     </Compile>
     <Compile Include="Charts\Scatterplot\ScatterplotColumnSelection.cs">
@@ -256,22 +255,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Charts\ChartProperties.resx">
-      <DependentUpon>ChartProperties.cs</DependentUpon>
+    <EmbeddedResource Include="Charts\PlotProperties.resx">
+      <DependentUpon>PlotProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\ChartProperties.ru.resx">
-      <DependentUpon>ChartProperties.cs</DependentUpon>
+    <EmbeddedResource Include="Charts\PlotProperties.ru.resx">
+      <DependentUpon>PlotProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Functor\FunctorProperties.resx">
+    <EmbeddedResource Include="Charts\FunctorProperties.resx">
       <DependentUpon>FunctorProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Functor\FunctorProperties.ru.resx">
+    <EmbeddedResource Include="Charts\FunctorProperties.ru.resx">
       <DependentUpon>FunctorProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Histogram\HistogramProperties.ru.resx">
+    <EmbeddedResource Include="Charts\HistogramProperties.ru.resx">
       <DependentUpon>HistogramProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotProperties.ru.resx">
+    <EmbeddedResource Include="Charts\ScatterplotProperties.ru.resx">
       <DependentUpon>ScatterplotProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\FormatNotice.ru.resx">
@@ -354,7 +353,7 @@
     <EmbeddedResource Include="Data\ColumnSelection.ru.resx">
       <DependentUpon>ColumnSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Histogram\HistogramProperties.resx">
+    <EmbeddedResource Include="Charts\HistogramProperties.resx">
       <DependentUpon>HistogramProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Statistics\Regression\RegressionSelection.resx">
@@ -363,7 +362,7 @@
     <EmbeddedResource Include="Statistics\Regression\RegressionSelection.ru.resx">
       <DependentUpon>RegressionSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Charts\Scatterplot\ScatterplotProperties.resx">
+    <EmbeddedResource Include="Charts\ScatterplotProperties.resx">
       <DependentUpon>ScatterplotProperties.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Charts\Scatterplot\ScatterplotColumnSelection.resx">
@@ -466,7 +465,10 @@
       <Name>Mayfly</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Charts\Functor\" />
+    <Folder Include="Charts\Histogram\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

@@ -54,6 +54,11 @@ namespace Mayfly.Extensions
             return ((x >= interval.LeftEndpoint) && (x < interval.RightEndpoint));
         }
 
+        public static bool RightClosedContains(this Interval interval, double x)
+        {
+            return ((x > interval.LeftEndpoint) && (x <= interval.RightEndpoint));
+        }
+
         public static BivariateSample GetCombinedBivariate(BivariateSample[] samples)
         {
             BivariateSample result = new BivariateSample();
