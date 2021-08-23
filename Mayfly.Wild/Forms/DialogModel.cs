@@ -36,10 +36,8 @@ namespace Mayfly.Wild
             Model.Properties.ShowPredictionBands = true;
 
             statChart1.AddSeries(Model);
-            statChart1.SetColorScheme();
             statChart1.AxisXMin = 0;
             statChart1.AxisYMin = 0;
-
             statChart1.Remaster();
 
             label1.ResetFormatted(statChart1.AxisXTitle, statChart1.AxisYTitle, model.Name);
@@ -56,7 +54,7 @@ namespace Mayfly.Wild
 
         private void ModelConfirm_Load(object sender, EventArgs e)
         {
-            statChart1.Update(statChart1.Properties, e);
+            statChart1.Remaster();
             this.BringToFront();  
         }
 

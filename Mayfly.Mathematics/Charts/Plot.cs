@@ -298,7 +298,6 @@ namespace Mayfly.Mathematics.Charts
         public double AxisYMax
         {
             set { try { Properties.numericUpDownYMax.Value = (decimal)value; } catch { } }
-
             get { return (double)Properties.numericUpDownYMax.Value; }
         }
 
@@ -657,7 +656,7 @@ namespace Mayfly.Mathematics.Charts
         {
             get
             {
-                double minimum = double.MaxValue;
+                double minimum = Histograms.Count > 0 ? 0 : double.MaxValue;
 
                 foreach (Scatterplot sample in Scatterplots)
                 {
@@ -686,21 +685,24 @@ namespace Mayfly.Mathematics.Charts
             {
                 double maximum = double.MinValue;
 
+                foreach (Histogramma sample in Histograms)
+                {
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Secondary) continue;
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
                 foreach (Scatterplot sample in Scatterplots)
                 {
                     if (sample.Calc == null) continue;
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Secondary) continue;
                     maximum = Math.Max(maximum, sample.Top);
                 }
 
-                foreach (Functor functor in Functors)
+                foreach (Functor sample in Functors)
                 {
-                    if (functor.FunctionStripLine == null) continue;
-                    maximum = Math.Max(maximum, functor.FunctionStripLine.IntervalOffset);
-                }
-
-                foreach (Histogramma sample in Histograms)
-                {
-                    maximum = Math.Max(maximum, sample.Top);
+                    if (sample.FunctionStripLine == null) continue;
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Secondary) continue;
+                    maximum = Math.Max(maximum, sample.FunctionStripLine.IntervalOffset);
                 }
 
                 if (maximum != double.MinValue)
@@ -718,21 +720,24 @@ namespace Mayfly.Mathematics.Charts
             {
                 double maximum = double.MinValue;
 
+                foreach (Histogramma sample in Histograms)
+                {
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Primary) continue;
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
                 foreach (Scatterplot sample in Scatterplots)
                 {
                     if (sample.Calc == null) continue;
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Primary) continue;
                     maximum = Math.Max(maximum, sample.Top);
                 }
 
-                foreach (Functor functor in Functors)
+                foreach (Functor sample in Functors)
                 {
-                    if (functor.FunctionStripLine == null) continue;
-                    maximum = Math.Max(maximum, functor.FunctionStripLine.IntervalOffset);
-                }
-
-                foreach (Histogramma sample in Histograms)
-                {
-                    maximum = Math.Max(maximum, sample.Top);
+                    if (sample.FunctionStripLine == null) continue;
+                    if (sample.Series != null && sample.Series.YAxisType == AxisType.Primary) continue;
+                    maximum = Math.Max(maximum, sample.FunctionStripLine.IntervalOffset);
                 }
 
                 if (maximum != double.MinValue)
@@ -1075,48 +1080,10 @@ namespace Mayfly.Mathematics.Charts
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);
-            Update(this, e);
+            Remaster();
         }
 
 
-
-        public void AddSeries(Scatterplot scatterplot)
-        {
-            if (IsChronic == scatterplot.IsChronic)
-            {
-                Scatterplots.Add(scatterplot);
-                scatterplot.Container = this;
-                LastSelectedScatterplot = scatterplot;
-
-                //if (Series.FindByName[scatterplot.Series.Name] != null)
-                //    Series.Remove(Series[scatterplot.Series.Name]);
-
-                Series.Add(scatterplot.Series);
-
-                if (CollectionChanged != null)
-                {
-                    CollectionChanged.Invoke(scatterplot, new ScatterplotEventArgs(scatterplot));
-                }
-            }
-
-            contextScatterplotTrendCompare.Enabled = Scatterplots.Count > 1;
-
-            //ShowLegend = Scatterplots.Count > 1;
-        }
-
-        public void AddSeries(Functor functor)
-        {
-            Functors.Add(functor);
-            functor.Container = this;
-            //LastSelectedFunctor = functor;
-            Series.Add(functor.Series);
-            //functor.BuildSeries();
-
-            if (CollectionChanged != null)
-            {
-                CollectionChanged.Invoke(functor, new EventArgs());
-            }
-        }
 
         public void AddSeries(Histogramma histogram)
         {
@@ -1132,11 +1099,40 @@ namespace Mayfly.Mathematics.Charts
 
             recalculateAxesProperties();
 
-            //ShowLegend = Histograms.Count > 1;
+            if (CollectionChanged != null)
+            {
+                CollectionChanged.Invoke(histogram, new EventArgs());
+            }
+        }
+
+        public void AddSeries(Scatterplot scatterplot)
+        {
+            if (IsChronic != scatterplot.IsChronic)
+                throw new ArgumentException("New series has different argument type.");
+
+            if (GetSample(scatterplot.Properties.ScatterplotName) != null)
+                return;
+
+            Scatterplots.Add(scatterplot);
+            scatterplot.Container = this;
+            LastSelectedScatterplot = scatterplot;
+
+            contextScatterplotTrendCompare.Enabled = Scatterplots.Count > 1;
 
             if (CollectionChanged != null)
             {
-                CollectionChanged.Invoke(histogram, new HistogramEventArgs(histogram));
+                CollectionChanged.Invoke(scatterplot, new EventArgs());
+            }
+        }
+
+        public void AddSeries(Functor functor)
+        {
+            Functors.Add(functor);
+            functor.Container = this;
+
+            if (CollectionChanged != null)
+            {
+                CollectionChanged.Invoke(functor, new EventArgs());
             }
         }
 
@@ -1286,7 +1282,7 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public void Update(object sender, EventArgs e)
+        public void Remaster()
         {
             #region Form header
 
@@ -1366,19 +1362,19 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (sample.Properties.DataPointColor == Color.SeaGreen) sample.Properties.DataPointColor = sample.Series.Color;
                 if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
-                sample.Series.Color = Color.Transparent;
+                sample.Update();
+                //sample.Series.Color = Color.Transparent;
+            }
+
+            foreach (Histogramma sample in Histograms)
+            {
+                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.Series.Name].Color;
                 sample.Update();
             }
 
             foreach (Functor sample in Functors)
             {
                 sample.Properties.TrendColor = Series[sample.Series.Name].Color;
-                sample.Update();
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.Series.Name].Color;
                 sample.Update();
             }
 
@@ -1522,7 +1518,7 @@ namespace Mayfly.Mathematics.Charts
             Scatterplots.Clear();
             Histograms.Clear();
             Functors.Clear();
-            Update(this, new EventArgs());
+            Remaster();
         }
 
         public void Remove(string name)
@@ -1557,7 +1553,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            Update(this, new EventArgs());
+            Remaster();
         }
 
         public void GetCursor()
@@ -1598,7 +1594,7 @@ namespace Mayfly.Mathematics.Charts
             //ShowLegend = false;
             ChartAreas.RemoveAt(0);
 
-            Update(this, new EventArgs());
+            Remaster();
         }
 
         private ChartArea SeparateChartArea(string name)
@@ -1959,7 +1955,7 @@ namespace Mayfly.Mathematics.Charts
             AxisXMin = min;
             AxisXInterval = interval;
 
-            Update(this, new EventArgs());
+            Remaster();
 
             if (modal)
             {
@@ -2448,7 +2444,7 @@ namespace Mayfly.Mathematics.Charts
             AxisYAutoMaximum = true;
             AxisYAutoInterval = true;
 
-            Update(sender, e);
+            Remaster();
         }
 
         private void contextChartSeparate_CheckedChanged(object sender, EventArgs e)
@@ -2462,7 +2458,7 @@ namespace Mayfly.Mathematics.Charts
                 SeriesMerge();
             }
 
-            Update(sender, e);
+            Remaster();
         }
 
 
@@ -2692,7 +2688,7 @@ namespace Mayfly.Mathematics.Charts
                     Plot statChart = scatterplot.ShowOnChart();
                     statChart.AxisXTitle = AxisXTitle;
                     statChart.AxisYTitle = AxisYTitle;
-                    statChart.Update(sender, e);
+                    statChart.Remaster();
                 }
             }
             else
@@ -2798,7 +2794,7 @@ namespace Mayfly.Mathematics.Charts
         private void contextHistogramDistinguish_CheckedChanged(object sender, EventArgs e)
         {
             IsDistinguishingMode = contextHistogramDistinguish.Checked;
-            if (!IsDistinguishingMode) Update(sender, e);
+            if (!IsDistinguishingMode) Remaster();
             SeriesShowSelected();
         }
 

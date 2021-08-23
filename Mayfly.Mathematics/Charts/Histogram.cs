@@ -10,7 +10,6 @@ using System.Security.Permissions;
 using System.Windows.Forms.DataVisualization.Charting;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using Meta.Numerics;
-using Mayfly.Extensions;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -133,8 +132,12 @@ namespace Mayfly.Mathematics.Charts
 
             if (Series == null)
             {
-                Series = new Series(Properties.HistogramName);
-                Series.ChartType = SeriesChartType.Column;
+                Series = new Series(Properties.HistogramName)
+                { 
+                    ChartType = SeriesChartType.Column
+                };
+
+                Container.Series.Add(Series);
             }
             else
             {
@@ -290,6 +293,8 @@ namespace Mayfly.Mathematics.Charts
             if (Distribute() == 0) return;
 
             // Create Datapoints
+            Series.Points.Clear();
+
             foreach (HistogramBin bin in this)
             {
                 DataPoint dataPoint = new DataPoint(bin.Interval.Midpoint, bin.Frequency);
@@ -390,7 +395,7 @@ namespace Mayfly.Mathematics.Charts
             result.StatChart.AxisXMin = min;
             result.StatChart.AxisXInterval = interval;
             result.StatChart.AddSeries(this);
-            result.StatChart.Update(result, new EventArgs());
+            result.StatChart.Remaster();
             //Updated += new HistogramEventHandler(result.StatChart.Update);
 
             if (modal)

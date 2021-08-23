@@ -174,13 +174,14 @@ namespace Mayfly.Fish.Explorer
             {
                 hist.Properties.Borders = false;
                 hist.Properties.DataPointColor = startColor;
+                hist.Properties.PointWidth = .5;
                 startColor = startColor.Darker();
             }
 
             foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
             {
                 plotQualify.AddSeries(hist);
-                hist.Series.SetCustomProperty("DrawSideBySide", "False");
+                //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
 
             //plotQualify.Remove("Bio", false);
@@ -188,17 +189,14 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove("Model", false);
 
             ext = new Scatterplot("Bio");
-            ext.Series.YAxisType = AxisType.Secondary;
             ext.Properties.DataPointColor = Constants.InfantColor;
             plotQualify.AddSeries(ext);
 
             inter = new Scatterplot("Own data");
-            inter.Series.YAxisType = AxisType.Secondary;
             inter.Properties.DataPointColor = Constants.MotiveColor;
             plotQualify.AddSeries(inter);
 
             combi = new Scatterplot("Model");
-            combi.Series.YAxisType = AxisType.Secondary;
             combi.Properties.ShowTrend = true;
             combi.Properties.ConfidenceLevel = .99;
             combi.Properties.ShowPredictionBands = true;

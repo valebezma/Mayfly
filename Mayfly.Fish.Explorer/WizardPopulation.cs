@@ -408,8 +408,8 @@ namespace Mayfly.Fish.Explorer
             }
 
             //statChartAL.Refresh();
-            plotAL.Update(this, new EventArgs());
-            if (plotAL.Scatterplots.Count > 0) plotAL.Rebuild(this, new EventArgs());
+            plotAL.Remaster();
+            if (plotAL.Scatterplots.Count > 0) plotAL.Remaster();
 
             #endregion
 
@@ -457,8 +457,8 @@ namespace Mayfly.Fish.Explorer
             }
 
             //statChartLW.Refresh();
-            plotLW.Update(this, new EventArgs());
-            if (plotLW.Scatterplots.Count > 0) plotLW.Rebuild(this, new EventArgs());
+            plotLW.Remaster();
+            if (plotLW.Scatterplots.Count > 0) plotLW.Remaster();
 
             pageModelAL.SetNavigation(true);
 
@@ -900,8 +900,6 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 plotLengthAdjusted.AxisYMax = max;
-                plotLengthAdjusted.RecalculateAxesProperties();
-                plotLengthAdjusted.RefreshAxes();
                 plotLengthAdjusted.Series.Add(catches);
                 plotLengthAdjusted.Series.Add(pop);
                 plotLengthAdjusted.Remaster();
@@ -1138,8 +1136,6 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 plotAgeAdjusted.AxisYMax = max;
-                plotAgeAdjusted.RecalculateAxesProperties();
-                plotAgeAdjusted.RefreshAxes();
                 plotAgeAdjusted.Series.Add(catches);
                 plotAgeAdjusted.Series.Add(pop);
                 plotAgeAdjusted.Remaster();

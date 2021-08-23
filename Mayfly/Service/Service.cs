@@ -163,6 +163,8 @@ namespace Mayfly
 
         public static double GetAutoInterval(double range)
         {
+            if (range == 0) return 1;
+
             double degree = Math.Log10(range);
             //degree = degree < 0 ? -Math.Ceiling(Math.Abs(degree)) : Math.Round(degree);
             degree = Math.Floor(degree);
@@ -172,16 +174,16 @@ namespace Mayfly
             return r / 2D;
         }
 
-        public static double GetAutoLeft(double x, double y)
+        public static double GetAutoLeft(double left, double right)
         {
-            double z = Mayfly.Service.GetAutoInterval(y - x);
-            return ((int)(x / z)) * z;
+            double z = GetAutoInterval(right - left);
+            return ((int)(left / z)) * z;
         }
 
-        public static double GetAutoRight(double x, double y)
+        public static double GetAutoRight(double left, double right)
         {
-            double z = Mayfly.Service.GetAutoInterval(y - x);
-            return ((int)(x / z) + 1) * z;
+            double z = GetAutoInterval(right - left);
+            return ((int)(right / z) + 1) * z;
         }
 
         public static string GetAutoFormat(double interval)

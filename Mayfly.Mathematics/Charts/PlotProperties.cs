@@ -59,7 +59,7 @@ namespace Mayfly.Mathematics.Charts
 
             if (((Control)sender).ContainsFocus)
             {
-                plot.Update(sender, e);
+                plot.Remaster();
             }
         }
 

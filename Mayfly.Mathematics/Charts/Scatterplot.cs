@@ -148,11 +148,12 @@ namespace Mayfly.Mathematics.Charts
                     MarkerStyle = MarkerStyle.Circle,
                     MarkerColor = Color.Transparent
                 };
-
-                UpdateDataPoints();
+                Container.Series.Add(Series);
             }
 
             if (Calc == null) return;
+            
+            UpdateDataPoints();
 
             Series.Name = Properties.ScatterplotName;
             Calc.Name = Properties.ScatterplotName;
@@ -193,7 +194,7 @@ namespace Mayfly.Mathematics.Charts
                     Trend.Properties.TrendWidth = Properties.TrendWidth;
                     Trend.Properties.TrendColor = Properties.TrendColor;
                     Trend.Properties.AllowCursors = Properties.AllowCursors;
-                    Trend.Update();
+                    Trend.Update(Series.YAxisType);
 
                     if (Properties.ShowConfidenceBands)
                     {
@@ -374,7 +375,7 @@ namespace Mayfly.Mathematics.Charts
                 else
                 {
                     Properties.ShowTrend = false;
-                    Properties.SelectedApproximationType = TrendType.Auto;
+                    //Properties.SelectedApproximationType = TrendType.Auto;
                     if (PredictionBandLower != null) PredictionBandLower.Points.Clear();
                     if (PredictionBandUpper != null) PredictionBandUpper.Points.Clear();
                     if (Trend != null) Trend.Series.Points.Clear();
@@ -504,7 +505,7 @@ namespace Mayfly.Mathematics.Charts
             }
             result.Text = Properties.ScatterplotName;
             result.StatChart.AddSeries(this);
-            result.StatChart.Update(this, new EventArgs());
+            result.StatChart.Remaster();
 
             if (modal)
             {
@@ -527,7 +528,7 @@ namespace Mayfly.Mathematics.Charts
                 chartForm.StatChart.AddSeries(scatterplot);
             }
 
-            chartForm.StatChart.Update(chartForm, new EventArgs());
+            chartForm.StatChart.Remaster();
             chartForm.Show();
         }
 
@@ -542,7 +543,7 @@ namespace Mayfly.Mathematics.Charts
                 chartForm.StatChart.AddSeries(scatterplot);
             }
 
-            chartForm.StatChart.Update(chartForm, new EventArgs());
+            chartForm.StatChart.Remaster();
             chartForm.Show();
         }
 
