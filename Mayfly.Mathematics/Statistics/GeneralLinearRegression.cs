@@ -62,8 +62,11 @@ namespace Mayfly.Mathematics.Statistics
         {
             Type = TrendType.Linear;
 
-            engine.Evaluate("fit = lm(formula = yvalues ~ xvalues)");
+            fit = engine.Evaluate("lm(formula = yvalues ~ xvalues)");
+            engine.SetSymbol("fit", fit);
+            Parameters.Clear();
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
             RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
         }
 

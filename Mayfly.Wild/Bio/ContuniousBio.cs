@@ -57,12 +57,14 @@ namespace Mayfly.Wild
             VisualConfirmation = true;
             Nature = type;
             nameX = xColumn.Caption;
-            RefreshModel();
+
+            RefreshInternal();
+            RefreshCombined();
         }
 
 
 
-        public override void RefreshModel()
+        public override void RefreshInternal()
         {
             BivariateSample biSample = new BivariateSample();
 
@@ -121,6 +123,11 @@ namespace Mayfly.Wild
                 }
             }
 
+            RefreshCombined();
+        }
+
+        public void RefreshCombined()
+        {
             BivariateSample sample = new BivariateSample();
             if (InternalData != null) sample.Add(InternalData.Data);
             if (ExternalData != null) sample.Add(ExternalData.Data);

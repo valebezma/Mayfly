@@ -181,32 +181,32 @@ namespace Mayfly.Extensions
                         natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
                     }
 
-                    Regression model = referenceData.MassModels.GetInternalScatterplot(assoc.ToArray()).Regression;
+                    //Regression model = referenceData.FindMassModel(assoc.ToArray()).Regression;
 
-                    //BivariateSample sample = referenceData.GetBivariate(natureRows.ToArray(),
-                    //    referenceData.Individual.LengthColumn, referenceData.Individual.MassColumn);
+                    ////BivariateSample sample = referenceData.GetBivariate(natureRows.ToArray(),
+                    ////    referenceData.Individual.LengthColumn, referenceData.Individual.MassColumn);
 
-                    //if (sample.Count >= Mayfly.Mathematics.UserSettings.StrongSampleSize)
-                    //{
-                    //    Power model = new Power(sample);
+                    ////if (sample.Count >= Mayfly.Mathematics.UserSettings.StrongSampleSize)
+                    ////{
+                    ////    Power model = new Power(sample);
 
-                        if (model != null)
-                        {
-                            List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
+                    //    if (model != null)
+                    //    {
+                    //        List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
 
-                            foreach (Data.IndividualRow individualRow in unweightedIndividuals)
-                            {
-                                if (individualRow.IsLengthNull()) continue;
-                                individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 5);
-                                recoveredRows.Add(individualRow);
-                            }
+                    //        foreach (Data.IndividualRow individualRow in unweightedIndividuals)
+                    //        {
+                    //            if (individualRow.IsLengthNull()) continue;
+                    //            individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 5);
+                    //            recoveredRows.Add(individualRow);
+                    //        }
 
-                            foreach (Data.IndividualRow individualRow in recoveredRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
-                    //}
+                    //        foreach (Data.IndividualRow individualRow in recoveredRows)
+                    //        {
+                    //            unweightedIndividuals.Remove(individualRow);
+                    //        }
+                    //    }
+                    ////}
                 }
 
                 #endregion

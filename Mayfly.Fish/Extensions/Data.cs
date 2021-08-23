@@ -610,7 +610,7 @@ namespace Mayfly.Fish
             if (indRow.IsMassNull()) return double.NaN;
             Data data = (Data)indRow.Table.DataSet;
             if (data.MassModels == null) return double.NaN;
-            double wm = data.MassModels.GetValue(indRow.Species, indRow.Length);
+            double wm = data.FindMassModel(indRow.Species).GetValue(indRow.Length);
             return indRow.Mass / wm;
         }
 

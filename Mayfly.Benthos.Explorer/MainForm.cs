@@ -181,21 +181,21 @@ namespace Mayfly.Benthos.Explorer
                 {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                    if (data.IsBioLoaded)
-                    {
-                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                    //if (data.IsBioLoaded)
+                    //{
+                    //    TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                        if (tdb != tdbSpecCancel)
-                        {
-                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                        }
-                    }
-                    else
-                    {
-                        data.ImportBio(filenames[i]);
-                    }
+                    //    if (tdb != tdbSpecCancel)
+                    //    {
+                    //        data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    data.ImportBio(filenames[i]);
+                    //}
 
-                    data.RefreshBios();
+                    //data.RefreshBios();
 
                     processDisplay.ResetStatus();
                 }
@@ -237,8 +237,8 @@ namespace Mayfly.Benthos.Explorer
             int i = 0;
             foreach (Data.SpeciesRow speciesRow in data.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
             {
-                data.MassModels.Refresh(speciesRow.Species);
-
+                ContinuousBio bio = data.FindMassModel(speciesRow.Species);
+                if (bio != null) bio.RefreshInternal();
                 i++;
                 ((BackgroundWorker)sender).ReportProgress(i);
             }

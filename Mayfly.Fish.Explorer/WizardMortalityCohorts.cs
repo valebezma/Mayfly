@@ -129,9 +129,9 @@ namespace Mayfly.Fish.Explorer
             foreach (Scatterplot scatter in CatchModels)
             {
                 table1.StartRow();
-                table1.AddCellValue(scatter.Name);
+                table1.AddCellValue(scatter.Properties.ScatterplotName);
 
-                Mathematics.Statistics.Regression model = scatter.Regression;
+                Mathematics.Statistics.Regression model = scatter.Calc.Regression;
 
                 if (model == null)
                 { 
@@ -241,11 +241,11 @@ namespace Mayfly.Fish.Explorer
             {
                 Scatterplot[] cohortCurves = cohort.GetCatchCurve(true, (int)e.Argument);
 
-                if (cohortCurves[0].Data.Count > 0) {
+                if (cohortCurves[0].Calc.Data.Count > 0) {
                     Unused.Add(cohortCurves[0]);
                 }
 
-                if (cohortCurves[1].Data.Count > 0) {
+                if (cohortCurves[1].Calc.Data.Count > 0) {
                     CatchModels.Add(cohortCurves[1]);
                 }
             }
@@ -270,7 +270,7 @@ namespace Mayfly.Fish.Explorer
                 scatter.Properties.SelectedApproximationType = TrendType.Exponential;
                 statChartMortality.AddSeries(scatter);
 
-                ToolStripMenuItem item = new ToolStripMenuItem(scatter.Name);
+                ToolStripMenuItem item = new ToolStripMenuItem(scatter.Properties.ScatterplotName);
                 item.Click += itemMortality_Click;
                 contextMortality.Items.Add(item);
             }

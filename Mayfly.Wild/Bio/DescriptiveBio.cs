@@ -19,12 +19,12 @@ namespace Mayfly.Wild
             base(data, speciesRow, yColumn)
         {
             nameX = xColumn.Caption;
-            RefreshModel();
+            RefreshInternal();
         }
 
 
 
-        public override void RefreshModel()
+        public override void RefreshInternal()
         {
             InternalData = new Composition(Species);
 

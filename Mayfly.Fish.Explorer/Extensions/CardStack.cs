@@ -453,9 +453,11 @@ namespace Mayfly.Fish.Explorer
                         // if there is such: checking number of points in it in current interval
                         // If no: just distributing
 
-                        if (stack.Parent.GrowthModels.IsAvailable(speciesRow.Species))
+                        ContinuousBio grBio = stack.Parent.FindGrowthModel(speciesRow.Species);
+
+                        if (grBio != null)
                         {
-                            Meta.Numerics.Statistics.Sample lengths = stack.Parent.GrowthModels.GetCombinedScatterplot(speciesRow.Species).Data.Y;
+                            Meta.Numerics.Statistics.Sample lengths = grBio.CombinedData.Data.Y;
 
                             // First - count number of same strated points in model
                             // If they are zero - add individual to primary

@@ -262,17 +262,19 @@ namespace Mayfly.Mathematics.Charts
                 if (Trend == null)
                 {
                     Trend = new Functor(Properties.TrendName, Calc.Regression.Predict, Calc.Regression.PredictInversed);
-                    Trend.TransposeCharting = this.TransposeCharting;
                     Container.AddSeries(Trend);
                 }
                 else
                 {
+                    Trend.Properties.FunctionName = Properties.TrendName;
                     Trend.Function = Calc.Regression.Predict;
                     Trend.FunctionInverse = Calc.Regression.PredictInversed;
                 }
+                
+                Trend.TransposeCharting = this.TransposeCharting;
 
                 Trend.BuildSeries(Series.YAxisType);
-                Trend.Properties.FunctionName = Properties.TrendName;
+
                 Trend.Properties.TrendWidth = Properties.TrendWidth;
                 Trend.Properties.TrendColor = Properties.TrendColor;
                 Trend.Properties.AllowCursors = Properties.AllowCursors;
@@ -502,7 +504,7 @@ namespace Mayfly.Mathematics.Charts
 
                 Series.Points.Add(dataPoint);
 
-                if (Labels.Count > 0)
+                if (Labels != null && Labels.Count > 0)
                 {
                     if (Labels[i].Count > 0)
                     {
@@ -565,7 +567,7 @@ namespace Mayfly.Mathematics.Charts
             double xInterval = (xMax - xMin) / 100;
 
             List<double> xvalues = new List<double>();
-            for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
+            for (double x = xMin/* - xInterval*/; x <= xMax/* + xInterval*/; x += xInterval)
             {
                 xvalues.Add(x);
             }

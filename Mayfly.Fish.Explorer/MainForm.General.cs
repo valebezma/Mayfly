@@ -204,7 +204,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            statusBio.Visible = data.BioLoaded;
+            //statusBio.Visible = data.BioLoaded;
         }
 
         private void speciesInd_Click(object sender, EventArgs e)

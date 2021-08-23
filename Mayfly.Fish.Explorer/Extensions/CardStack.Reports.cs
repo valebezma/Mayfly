@@ -597,7 +597,7 @@ namespace Mayfly.Fish.Explorer
                     int aged = stack.Aged(speciesRow, strate);
                     int reged = stack.QuantityRegisteredNonAged(speciesRow, strate);
                     int mod = 0;
-                    Mathematics.Charts.Scatterplot sca = stack.Parent.GrowthModels.GetExternalScatterplot(speciesRow.Species);
+                    var sca = stack.Parent.FindGrowthModel(speciesRow.Species).ExternalData;
                     if (sca != null) mod = sca.Data.Count((XY xy) => strate.LeftClosedContains(xy.Y));
                     int has = aged + reged + mod;
 

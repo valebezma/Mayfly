@@ -59,7 +59,7 @@ namespace Mayfly.Wild
 
         public abstract double GetValue(object x);
 
-        public abstract void RefreshModel();
+        public abstract void RefreshInternal();
 
         public abstract void Involve(Bio bio);
 

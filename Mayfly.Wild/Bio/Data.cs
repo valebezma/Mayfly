@@ -95,14 +95,21 @@ namespace Mayfly.Wild
 
         public void RefreshBios()
         {
-            foreach (ContinuousBio bio in MassModels)
+            if (MassModels == null)
             {
-                bio.RefreshModel();
+                InitializeBio();
             }
-
-            foreach (ContinuousBio bio in GrowthModels)
+            else
             {
-                bio.RefreshModel();
+                foreach (ContinuousBio bio in MassModels)
+                {
+                    bio.RefreshInternal();
+                }
+
+                foreach (ContinuousBio bio in GrowthModels)
+                {
+                    bio.RefreshInternal();
+                }
             }
         }
 

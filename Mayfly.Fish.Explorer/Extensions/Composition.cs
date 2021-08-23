@@ -336,18 +336,18 @@ namespace Mayfly.Fish.Explorer
 
             if (composition[0] is AgeGroup)
             {
-                if (UserSettings.AgeSuggest && data.GrowthModels.GetSpecies().Contains(speciesRow.Species))
+                ContinuousBio bio = data.FindGrowthModel(speciesRow.Species);
+
+                if (UserSettings.AgeSuggest && bio != null)
                 {
                     report.AddParagraph(Resources.Reports.Sections.Population.Paragraph2,
                             speciesRow.KeyRecord.FullNameReport);
 
-                    report.AddEquation(data.GrowthModels.GetCombinedScatterplot(speciesRow.Species).Regression.GetEquation("L", "t", "N2"));
+                    report.AddEquation(bio.CombinedData.Regression.GetEquation("L", "t", "N2"));
 
-                    if (data.GrowthModels.GetExternalScatterplot(speciesRow.Species) != null)
+                    if (bio.ExternalData != null)
                     {
-                        report.AddParagraph(Resources.Reports.Sections.Population.Paragraph3,
-                            data.GrowthModels.Authors.Merge(),
-                            data.GrowthModels.Description);
+                        report.AddParagraph(Resources.Reports.Sections.Population.Paragraph3, bio.Authors.Merge(), bio.Description);
                     }
                 }
 

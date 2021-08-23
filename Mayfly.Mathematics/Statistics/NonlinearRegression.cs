@@ -32,6 +32,25 @@ namespace Mayfly.Mathematics.Statistics
         {
             return Predict(Parameters, x);
         }
+
+        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
+        {
+            var xvalues = engine.CreateNumericVector(x);
+            engine.SetSymbol("axis", xvalues);
+
+            var alpha = engine.CreateNumeric(level);
+            engine.SetSymbol("alpha", alpha);
+
+            engine.Evaluate("require(investr)");
+            engine.SetSymbol("fit", fit);
+            NumericMatrix predictions = engine.Evaluate("predFit(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+            List<Interval> result = new List<Interval>();
+            for (int i = 0; i < predictions.RowCount; i++)
+            {
+                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+            }
+            return result.ToArray();
+        }
     }
 
     public class Logistic : NonlinearRegression
@@ -54,11 +73,10 @@ namespace Mayfly.Mathematics.Statistics
             var starts = engine.CreateNumericVector(Parameters);
             engine.SetSymbol("starts", starts);
 
-            engine.Evaluate("fit = nls(yvalues ~ L / (1.0 + exp(-K * (xvalues - x0))), start = c('L' = starts[1], 'K' = starts[2], 'x0' = starts[3]))");
-            NumericVector _params = engine.Evaluate("params = coef(fit)").AsNumeric();
-
+            fit = engine.Evaluate("nls(yvalues ~ L / (1.0 + exp(-K * (xvalues - x0))), start = c('L' = starts[1], 'K' = starts[2], 'x0' = starts[3]))");
+            engine.SetSymbol("fit", fit);
             Parameters.Clear();
-            foreach (double param in _params) { Parameters.Add(param); }
+            Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
         }
 
         public override string GetEquation(string y, string x, string format)
@@ -106,11 +124,10 @@ namespace Mayfly.Mathematics.Statistics
             var starts = engine.CreateNumericVector(Parameters);
             engine.SetSymbol("starts", starts);
 
-            engine.Evaluate("fit = nls(yvalues ~ Linf * (1.0 - exp(-K * (xvalues - t0))), start = c('Linf' = starts[1], 'K' = starts[2], 't0' = starts[3]))");
-            NumericVector _params = engine.Evaluate("params = coef(fit)").AsNumeric();
-
+            fit = engine.Evaluate("nls(yvalues ~ Linf * (1.0 - exp(-K * (xvalues - t0))), start = c('Linf' = starts[1], 'K' = starts[2], 't0' = starts[3]))");
+            engine.SetSymbol("fit", fit);
             Parameters.Clear();
-            foreach (double param in _params) { Parameters.Add(param); }
+            Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
         }
 
         public override string GetEquation(string y, string x, string format)
@@ -127,28 +144,6 @@ namespace Mayfly.Mathematics.Statistics
         public override double PredictInversed(double y)
         {
             return T0 - Math.Log((Linf - y) / Linf) / K;
-        }
-
-        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
-        {
-            //if (type == IntervalType.Prediction)
-            //    throw new ArgumentException("Prediction interval can't be obtained for nonlinear regression model.");
-
-            var xvalues = engine.CreateNumericVector(x);
-            engine.SetSymbol("axis", xvalues);
-
-            var alpha = engine.CreateNumeric(level);
-            engine.SetSymbol("alpha", alpha);
-
-            engine.Evaluate("require(investr)");
-            NumericMatrix predictions = engine.Evaluate(
-                "predFit(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
-            List<Interval> result = new List<Interval>();
-            for (int i = 0; i < predictions.RowCount; i++)
-            {
-                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
-            }
-            return result.ToArray();
         }
 
         public override double[] GetInitials()

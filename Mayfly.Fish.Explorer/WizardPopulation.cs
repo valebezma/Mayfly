@@ -38,16 +38,9 @@ namespace Mayfly.Fish.Explorer
 
         public ExponentialMortalityModel TotalMortalityModel { set; get; }
 
-        public Scatterplot GrowthModel { get; private set; }
-        Scatterplot growthInternal;
-        Scatterplot growthExternal;
+        public ContinuousBio GrowthModel { get; private set; }
 
-        public Scatterplot WeightModel { get; private set; }
-        Scatterplot weightInternal;
-        Scatterplot weightExternal;
-        
-        Scatterplot weightGrowthInternal;
-        Scatterplot weightGrowthExternal;
+        public ContinuousBio WeightModel { get; private set; }
 
         public event EventHandler ModelsReturned;
 
@@ -114,17 +107,17 @@ namespace Mayfly.Fish.Explorer
             if (GrowthModel == null)
                 throw new ArgumentNullException();
 
-            if (!GrowthModel.IsRegressionOK)
+            if (!GrowthModel.CombinedData.IsRegressionOK)
                 throw new ArgumentNullException();
 
             if (WeightModel == null)
                 throw new ArgumentNullException();
 
-            if (!WeightModel.IsRegressionOK)
+            if (!WeightModel.CombinedData.IsRegressionOK)
                 throw new ArgumentNullException();
 
-            double l = GrowthModel.Regression.Predict(age.Years + .5);
-            double w = WeightModel.Regression.Predict(l);
+            double l = GrowthModel.CombinedData.Regression.Predict(age.Years + .5);
+            double w = WeightModel.CombinedData.Regression.Predict(l);
             return w;
         }
 
@@ -210,15 +203,15 @@ namespace Mayfly.Fish.Explorer
 
             // LW model
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, report.NextFigureNumber);
-            report.AddEquation(WeightModel.Regression.GetEquation("W", "L"));
+            report.AddEquation(WeightModel.CombinedData.Regression.GetEquation("W", "L"));
             report.AddImage(plotLW.GetVector(17, 10), plotLW.Text);
 
-            if (GrowthModel.IsRegressionOK) {
+            if (GrowthModel.CombinedData.IsRegressionOK) {
 
                 // AL model
                 report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, 
                     report.NextFigureNumber);
-                report.AddEquation(GrowthModel.Regression.GetEquation("L", "t"));
+                report.AddEquation(GrowthModel.CombinedData.Regression.GetEquation("L", "t"));
                 report.AddImage(plotAL.GetVector(17, 10), plotAL.Text);
 
                 // AW model
@@ -274,7 +267,7 @@ namespace Mayfly.Fish.Explorer
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1,
                 (Age)TotalMortalityModel.Exploited.Left, (Age)TotalMortalityModel.Exploited.Right,
                 SpeciesRow.KeyRecord.ShortName);
-            report.AddEquation(TotalMortalityModel.Exploited.Regression.GetEquation("NPUE", "t"));
+            report.AddEquation(TotalMortalityModel.Exploited.Calc.Regression.GetEquation("NPUE", "t"));
             report.AddImage(plotMortality.GetVector(17, 7), plotMortality.Text);
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph2, TotalMortalityModel.Z, report.NextFigureNumber);
@@ -341,20 +334,11 @@ namespace Mayfly.Fish.Explorer
         {
             Swarm = Data.GetSwarm(SpeciesRow);
 
+            GrowthModel = Data.Parent.FindGrowthModel(SpeciesRow.Species);
+            WeightModel = Data.Parent.FindMassModel(SpeciesRow.Species);
+
             LengthStructure = Data.GetLengthCompositionFrame(SpeciesRow, UserSettings.SizeInterval);
             LengthStructure.Name = Fish.Resources.Common.SizeUnits;
-
-            growthInternal = Data.Parent.GrowthModels.GetInternalScatterplot(SpeciesRow.Species);
-            growthExternal = Data.Parent.GrowthModels.GetExternalScatterplot(SpeciesRow.Species);
-            GrowthModel = Data.Parent.GrowthModels.GetCombinedScatterplot(SpeciesRow.Species);
-
-            weightInternal = Data.Parent.MassModels.GetInternalScatterplot(SpeciesRow.Species);
-            weightExternal = Data.Parent.MassModels.GetExternalScatterplot(SpeciesRow.Species);
-            WeightModel = Data.Parent.MassModels.GetCombinedScatterplot(SpeciesRow.Species);
-
-            Data.Parent.MassGrowthModels.Refresh(SpeciesRow.Species);
-            weightGrowthInternal = Data.Parent.MassGrowthModels.GetInternalScatterplot(SpeciesRow.Species);
-            weightGrowthExternal = Data.Parent.MassGrowthModels.GetExternalScatterplot(SpeciesRow.Species);
 
             try
             {
@@ -383,41 +367,44 @@ namespace Mayfly.Fish.Explorer
             #region Age to Length
 
             plotAL.Visible = GrowthModel != null;
-            buttonAL.Enabled = GrowthModel != null && GrowthModel.IsRegressionOK;
+            buttonAL.Enabled = GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK;
 
             plotAL.Clear();
 
-            if (growthExternal != null)
-            {
-                growthExternal = growthExternal.Copy();
-                growthExternal.Series.Name =
-                    growthExternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioReference;
-                growthExternal.Properties.DataPointColor = Constants.InfantColor;
-                plotAL.AddSeries(growthExternal);
-            }
-
-            if (growthInternal != null)
-            {
-                growthInternal = growthInternal.Copy();
-                growthInternal.Series.Name =
-                    growthInternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioLoaded;
-                growthInternal.Properties.DataPointColor = Constants.MotiveColor;
-                plotAL.AddSeries(growthInternal);
-            }
-
             if (GrowthModel != null)
             {
-                GrowthModel = GrowthModel.Copy();
-                GrowthModel.Series.Name =
-                    WeightModel.Properties.ScatterplotName = 
-                    Resources.Interface.Interface.BioCombined;
-                GrowthModel.Properties.ShowTrend = true;
-                GrowthModel.Properties.SelectedApproximationType = Data.Parent.GrowthModels.Nature;
-                GrowthModel.Properties.DataPointColor = Color.Transparent;
-                GrowthModel.Properties.TrendColor = Constants.MotiveColor.Darker();
-                plotAL.AddSeries(GrowthModel);
+                if (GrowthModel.ExternalData != null)
+                {
+                    Scatterplot ext = new Scatterplot(GrowthModel.ExternalData);
+                    ext.Series.Name =
+                        ext.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioReference;
+                    ext.Properties.DataPointColor = Constants.InfantColor;
+                    plotAL.AddSeries(ext);
+                }
+
+                if (GrowthModel.InternalData != null)
+                {
+                    Scatterplot inter = new Scatterplot(GrowthModel.InternalData);
+                    inter.Series.Name =
+                        inter.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    plotAL.AddSeries(inter);
+                }
+
+                if (GrowthModel.CombinedData != null)
+                {
+                    Scatterplot combi = new Scatterplot(GrowthModel.CombinedData);
+                    combi.Series.Name =
+                        combi.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ShowTrend = true;
+                    combi.Properties.SelectedApproximationType = GrowthModel.Nature;
+                    combi.Properties.DataPointColor = Color.Transparent;
+                    combi.Properties.TrendColor = Constants.MotiveColor.Darker();
+                    plotAL.AddSeries(combi);
+                }
             }
 
             //statChartAL.Refresh();
@@ -429,41 +416,44 @@ namespace Mayfly.Fish.Explorer
             #region Length to Mass
 
             plotLW.Visible = WeightModel != null;
-            buttonLW.Enabled = WeightModel != null && WeightModel.IsRegressionOK;
+            buttonLW.Enabled = WeightModel != null && WeightModel.CombinedData.IsRegressionOK;
 
             plotLW.Clear();
 
-            if (weightExternal != null)
-            {
-                weightExternal = weightExternal.Copy();
-                weightExternal.Series.Name =
-                    weightExternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioReference;
-                weightExternal.Properties.DataPointColor = Constants.InfantColor;
-                plotLW.AddSeries(weightExternal);
-            }
-
-            if (weightInternal != null)
-            {
-                weightInternal = weightInternal.Copy();
-                weightInternal.Series.Name =
-                    weightInternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioLoaded;
-                weightInternal.Properties.DataPointColor = Constants.MotiveColor;
-                plotLW.AddSeries(weightInternal);
-            }
-
             if (WeightModel != null)
             {
-                WeightModel = WeightModel.Copy();
-                WeightModel.Series.Name =
-                    WeightModel.Properties.ScatterplotName = 
-                    Resources.Interface.Interface.BioCombined;
-                WeightModel.Properties.ShowTrend = true;
-                WeightModel.Properties.SelectedApproximationType = Data.Parent.MassModels.Nature;
-                WeightModel.Properties.DataPointColor = Color.Transparent;
-                WeightModel.Properties.TrendColor = Constants.MotiveColor.Darker();
-                plotLW.AddSeries(WeightModel);
+                if (WeightModel.ExternalData != null)
+                {
+                    Scatterplot ext = new Scatterplot(WeightModel.ExternalData);
+                    ext.Series.Name =
+                        ext.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioReference;
+                    ext.Properties.DataPointColor = Constants.InfantColor;
+                    plotLW.AddSeries(ext);
+                }
+
+                if (WeightModel.InternalData != null)
+                {
+                    Scatterplot inter = new Scatterplot(WeightModel.InternalData);
+                    inter.Series.Name =
+                        inter.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    plotLW.AddSeries(inter);
+                }
+
+                if (WeightModel.CombinedData != null)
+                {
+                    Scatterplot combi = new Scatterplot(WeightModel.CombinedData);
+                    combi.Series.Name =
+                        combi.Properties.ScatterplotName =
+                        Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ShowTrend = true;
+                    combi.Properties.SelectedApproximationType = WeightModel.Nature;
+                    combi.Properties.DataPointColor = Color.Transparent;
+                    combi.Properties.TrendColor = Constants.MotiveColor.Darker();
+                    plotLW.AddSeries(combi);
+                }
             }
 
             //statChartLW.Refresh();
@@ -478,52 +468,52 @@ namespace Mayfly.Fish.Explorer
 
             plotAW.Visible = (GrowthModel != null && WeightModel != null);
 
-            plotAW.Clear();
+            //plotAW.Clear();
 
-            if (weightGrowthExternal != null)
-            {
-                weightGrowthExternal.Series.Name =
-                    weightGrowthExternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioReference;
-                weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
-                plotAW.AddSeries(weightGrowthExternal);
-            }
+            //if (weightGrowthExternal != null)
+            //{
+            //    weightGrowthExternal.Series.Name =
+            //        weightGrowthExternal.Properties.ScatterplotName =
+            //        Resources.Interface.Interface.BioReference;
+            //    weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
+            //    plotAW.AddSeries(weightGrowthExternal);
+            //}
 
-            if (weightGrowthInternal != null)
-            {
-                weightGrowthInternal = weightGrowthInternal.Copy();
-                weightGrowthInternal.Series.Name =
-                    weightGrowthInternal.Properties.ScatterplotName =
-                    Resources.Interface.Interface.BioLoaded;
-                weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
-                plotAW.AddSeries(weightGrowthInternal);
-            }
+            //if (weightGrowthInternal != null)
+            //{
+            //    weightGrowthInternal = weightGrowthInternal.Copy();
+            //    weightGrowthInternal.Series.Name =
+            //        weightGrowthInternal.Properties.ScatterplotName =
+            //        Resources.Interface.Interface.BioLoaded;
+            //    weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
+            //    plotAW.AddSeries(weightGrowthInternal);
+            //}
 
-            if (GrowthModel != null && GrowthModel.IsRegressionOK &&
-                WeightModel != null && WeightModel.IsRegressionOK)
-            {
-                string name = string.Format(Resources.Interface.Interface.MassGrowth, SpeciesRow.Species);
+            //if (GrowthModel != null && GrowthModel.IsRegressionOK &&
+            //    WeightModel != null && WeightModel.IsRegressionOK)
+            //{
+            //    string name = string.Format(Resources.Interface.Interface.MassGrowth, SpeciesRow.Species);
 
-                Functor weightGrowth = new Functor(name,
-                    (t) =>
-                    {
-                        double l = GrowthModel.Regression.Predict(t);
-                        return WeightModel.Regression.Predict(l);
-                    },
-                    (w) =>
-                    {
-                        double l = WeightModel.Regression.PredictInversed(w);
-                        return GrowthModel.Regression.PredictInversed(l);
-                    }
-                        );
+            //    Functor weightGrowth = new Functor(name,
+            //        (t) =>
+            //        {
+            //            double l = GrowthModel.Regression.Predict(t);
+            //            return WeightModel.Regression.Predict(l);
+            //        },
+            //        (w) =>
+            //        {
+            //            double l = WeightModel.Regression.PredictInversed(w);
+            //            return GrowthModel.Regression.PredictInversed(l);
+            //        }
+            //            );
 
-                weightGrowth.Properties.TrendColor = Constants.MotiveColor.Darker();
-                plotAW.AddSeries(weightGrowth);
-            }
+            //    weightGrowth.Properties.TrendColor = Constants.MotiveColor.Darker();
+            //    plotAW.AddSeries(weightGrowth);
+            //}
 
-            //plotAW.Refresh();
-            plotAW.Update(this, new EventArgs());
-            if (plotAW.Scatterplots.Count > 0) plotAW.Rebuild(this, new EventArgs());
+            ////plotAW.Refresh();
+            //plotAW.Update(this, new EventArgs());
+            //if (plotAW.Scatterplots.Count > 0) plotAW.Rebuild(this, new EventArgs());
 
             pageModelAW.SetNavigation(true);
 
@@ -560,12 +550,12 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonAL_Click(object sender, EventArgs e)
         {
-            plotAL.OpenRegressionProperties(GrowthModel);
+            plotAL.OpenRegressionProperties((Scatterplot)plotAL.GetSample(Resources.Interface.Interface.BioCombined));
         }
 
         private void buttonLW_Click(object sender, EventArgs e)
         {
-            plotLW.OpenRegressionProperties(WeightModel);
+            plotLW.OpenRegressionProperties((Scatterplot)plotLW.GetSample(Resources.Interface.Interface.BioCombined));
         }
 
         private void pageAW_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -1110,7 +1100,7 @@ namespace Mayfly.Fish.Explorer
             {
                 for (int i = 0; i < AgeStructure.Count; i++)
                 {
-                    double a = TotalMortalityModel.Exploited.Regression.Predict(AgeStructure[i].Age.Value);
+                    double a = TotalMortalityModel.Exploited.Calc.Regression.Predict(AgeStructure[i].Age.Value);
                     double w = ageCompositionWizard.CatchesComposition[i].MassSample.Count > 0 ? ageCompositionWizard.CatchesComposition[i].MassSample.Mean :
                         (ageCompositionWizard.CatchesComposition[i].Quantity > 0 ? (ageCompositionWizard.CatchesComposition[i].Abundance / ageCompositionWizard.CatchesComposition[i].Biomass) : 0);
                     AgeStructure[i].Abundance = a;

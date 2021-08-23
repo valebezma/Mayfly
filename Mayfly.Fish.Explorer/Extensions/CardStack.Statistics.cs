@@ -157,10 +157,13 @@ namespace Mayfly.Fish.Explorer
                 a = Math.Min(a, individualRow.Age);
             }
 
-            if (key && stack.Parent.GrowthModels.IsAvailable(speciesRow.Species))
+
+            ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Species);
+
+            if (key && bio != null)
             {
                 double l = stack.LengthMin(speciesRow);
-                double t = stack.Parent.GrowthModels.GetValue(speciesRow.Species, l, true);
+                double t = bio.GetValue(l, true);
                 if (!double.IsNaN(t)) a = Math.Min(a, t);
             }
 
@@ -182,10 +185,12 @@ namespace Mayfly.Fish.Explorer
                 a = Math.Max(a, individualRow.Age);
             }
 
-            if (key && stack.Parent.GrowthModels.IsAvailable(speciesRow.Species))
+            ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Species);
+
+            if (key && bio != null)
             {
                 double l = stack.LengthMaxOfNonAged(speciesRow);
-                double t = stack.Parent.GrowthModels.GetValue(speciesRow.Species, l, true);
+                double t = bio.GetValue(l, true);
                 if (!double.IsNaN(t)) a = Math.Max(a, t);
             }
 
