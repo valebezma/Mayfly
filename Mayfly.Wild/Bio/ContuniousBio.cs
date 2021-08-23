@@ -186,7 +186,9 @@ namespace Mayfly.Wild
             //}
             //else // There is confirmed model for given species
             //{
-                return inversed ? CombinedData.Regression.PredictInversed(x) : CombinedData.Regression.Predict(x);
+
+            
+                return CombinedData.IsRegressionOK ? (inversed ? CombinedData.Regression.PredictInversed(x) : CombinedData.Regression.Predict(x)) : double.NaN;
             //}
         }
 

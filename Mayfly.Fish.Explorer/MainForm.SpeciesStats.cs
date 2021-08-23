@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Wild;
 using Mayfly.Mathematics.Statistics;
+using System.Drawing;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -12,11 +14,18 @@ namespace Mayfly.Fish.Explorer
 
         FishSamplerType selectedTechSamplerType;
 
-        ContinuousBio model;
+        Histogramma histSample;
+        Histogramma histWeighted;
+        Histogramma histRegistered;
+        Histogramma histAged;
 
         DataQualificationWay selectedQualificationWay;
 
+        ContinuousBio model;
 
+        Scatterplot ext;
+        Scatterplot inter;
+        Scatterplot combi;
 
         private void GetFilteredList(DataGridViewColumn gridColumn)
         {
@@ -145,6 +154,58 @@ namespace Mayfly.Fish.Explorer
             }
 
             return result;
+        }
+
+        private void initializeSpeciesStatsPlot()
+        {
+            //plotQualify.Remove(Resources.Interface.Interface.StratesSampled, false);
+            //plotQualify.Remove(Resources.Interface.Interface.StratesWeighted, false);
+            //plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
+            //plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
+
+            histSample = new Histogramma(Resources.Interface.Interface.StratesSampled);
+            histWeighted = new Histogramma(Resources.Interface.Interface.StratesWeighted);
+            histRegistered = new Histogramma(Resources.Interface.Interface.StratesRegistered);
+            histAged = new Histogramma(Resources.Interface.Interface.StratesAged);
+
+            Color startColor = Color.FromArgb(150, Color.Lavender);
+
+            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            {
+                hist.Properties.Borders = false;
+                hist.Properties.DataPointColor = startColor;
+                startColor = startColor.Darker();
+            }
+
+            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            {
+                plotQualify.AddSeries(hist);
+                hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");
+            }
+
+            //plotQualify.Remove("Bio", false);
+            //plotQualify.Remove("Own data", false);
+            //plotQualify.Remove("Model", false);
+
+            ext = new Scatterplot("Bio");
+            ext.Series.YAxisType = AxisType.Secondary;
+            ext.Properties.DataPointColor = Constants.InfantColor;
+            plotQualify.AddSeries(ext);
+
+            inter = new Scatterplot("Own data");
+            inter.Series.YAxisType = AxisType.Secondary;
+            inter.Properties.DataPointColor = Constants.MotiveColor;
+            plotQualify.AddSeries(inter);
+
+            combi = new Scatterplot("Model");
+            combi.Series.YAxisType = AxisType.Secondary;
+            combi.Properties.ShowTrend = true;
+            combi.Properties.ConfidenceLevel = .99;
+            combi.Properties.ShowPredictionBands = true;
+            combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+            combi.Properties.DataPointColor = Color.Transparent;
+            combi.Properties.TrendColor = Constants.MotiveColor;
+            plotQualify.AddSeries(combi);
         }
     }
 

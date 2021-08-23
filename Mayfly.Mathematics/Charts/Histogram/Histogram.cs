@@ -71,27 +71,21 @@ namespace Mayfly.Mathematics.Charts
 
         
 
-        public Histogramma()
-        {
-            Properties = new HistogramProperties(this);
-            Properties.ValueChanged += Properties_ValueChanged;
-            Properties.StructureChanged += Properties_StructureChanged;
-        }
-
-        public Histogramma(Sample sample)
-        {
-            Properties = new HistogramProperties(this);
-            Properties.HistogramName = sample.Name;
-            Properties.ValueChanged += new HistogramEventHandler(Properties_ValueChanged);
-            Properties.StructureChanged += Properties_StructureChanged;
-            Data = sample;
-        }
-
-        public Histogramma(string name, IEnumerable<double> values, bool isChronic)
+        public Histogramma(string name)
         {
             Properties = new HistogramProperties(this);
             Properties.HistogramName = name;
             Properties.ValueChanged += new HistogramEventHandler(Properties_ValueChanged);
+            Properties.StructureChanged += Properties_StructureChanged;
+        }
+
+        public Histogramma(Sample sample) : this(sample.Name)
+        {
+            Data = sample;
+        }
+
+        public Histogramma(string name, IEnumerable<double> values, bool isChronic) : this(new Sample(values) { Name = name })
+        {
             Data = new Sample(values);
             IsChronic = isChronic;
         }
@@ -189,6 +183,8 @@ namespace Mayfly.Mathematics.Charts
         public void Update(object sender, EventArgs e)
         {
             if (Container == null) return;
+
+            BuildChart();
 
             DataSeries.Name = DataSeries.LegendText =
                  Properties.HistogramName;
@@ -316,9 +312,8 @@ namespace Mayfly.Mathematics.Charts
         public Plot ShowOnChart(bool modal, string title, double min, double interval)
         {
             ChartForm result = new ChartForm(title);
-            result.StatChart.IsChronic = IsChronic;
             result.Text = Properties.HistogramName;
-
+            result.StatChart.IsChronic = IsChronic;
             result.StatChart.AxisXMin = min;
             result.StatChart.AxisXInterval = interval;
 
@@ -469,6 +464,8 @@ namespace Mayfly.Mathematics.Charts
         private void Distribute(double minimum, double interval)
         {
             Clear();
+
+            if (Data == null) return;
 
             for (double x = minimum; x < Data.Maximum; x += interval)
             {
