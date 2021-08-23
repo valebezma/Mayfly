@@ -53,6 +53,8 @@ namespace Mayfly.Mathematics.Statistics
 
         internal REngine engine;
 
+        internal SymbolicExpression fit;
+
         public List<double> Parameters;
 
         public double RSquared { get; internal set; }
@@ -157,6 +159,7 @@ namespace Mayfly.Mathematics.Statistics
             var alpha = engine.CreateNumeric(level);
             engine.SetSymbol("alpha", alpha);
 
+            engine.SetSymbol("fit", fit);
             NumericMatrix predictions = engine.Evaluate(
                 "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
             List<Interval> result = new List<Interval>();

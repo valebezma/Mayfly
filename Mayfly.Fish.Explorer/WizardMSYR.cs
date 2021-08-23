@@ -105,8 +105,8 @@ namespace Mayfly.Fish.Explorer
             this.Replace(growthWizard);
 
             model = new YieldPerRecruitModel(
-                (Power)growthWizard.WeightModel.Regression,
-                (Growth)growthWizard.GrowthModel.Regression);
+                (Power)growthWizard.WeightModel.CombinedData.Regression,
+                (Growth)growthWizard.GrowthModel.CombinedData.Regression);
 
             textBoxW.Value = model.W;
             textBoxK.Value = model.K;

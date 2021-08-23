@@ -350,21 +350,21 @@ namespace Mayfly.Fish.Explorer
                 {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                    if (data.IsBioLoaded)
-                    {
-                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                    //if (data.IsBioLoaded)
+                    //{
+                    //    TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                        if (tdb != tdbSpecCancel)
-                        {
-                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                        }
-                    }
-                    else
-                    {
-                        data.ImportBio(filenames[i]);
-                    }
+                    //    if (tdb != tdbSpecCancel)
+                    //    {
+                    //        data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    data.ImportBio(filenames[i]);
+                    //}
 
-                    data.RefreshBios();
+                    //data.RefreshBios();
 
                     processDisplay.ResetStatus();
                 }
@@ -2401,6 +2401,7 @@ namespace Mayfly.Fish.Explorer
 
             checkBoxQualOutliers.Enabled =
                 buttonQualOutliers.Enabled =
+                model != null &&
                 (model.CombinedData != null &&
                 model.CombinedData.IsRegressionOK &&
                 model.CombinedData.Regression.outliers != null &&
@@ -2840,7 +2841,7 @@ namespace Mayfly.Fish.Explorer
 
             if (UserSettings.MassSuggest)
             {
-                data.FindMassModel(specisRow.Species).RefreshModel();
+                data.FindMassModel(specisRow.Species).RefreshInternal();
                 //data.MassModels.Refresh(specisRow.Species);
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
@@ -2852,7 +2853,7 @@ namespace Mayfly.Fish.Explorer
 
             if (UserSettings.AgeSuggest)
             {
-                data.FindGrowthModel(specisRow.Species).RefreshModel();
+                data.FindGrowthModel(specisRow.Species).RefreshInternal();
                 //data.GrowthModels.Refresh(specisRow.Species);
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)

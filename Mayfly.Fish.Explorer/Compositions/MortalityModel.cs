@@ -48,11 +48,11 @@ namespace Mayfly.Fish.Explorer
 
             result.Exploited.Properties.ShowTrend = true;
             result.Exploited.Properties.SelectedApproximationType = TrendType.Exponential;
-            result.Exploited.CalculateApproximation(TrendType.Exponential);
+            result.Exploited.Calc.Calculate(TrendType.Exponential);
 
-            if (result.Exploited.IsRegressionOK)
+            if (result.Exploited.Calc.IsRegressionOK)
             {
-                result.Z = -result.Exploited.Regression.Parameters[1];
+                result.Z = -result.Exploited.Calc.Regression.Parameters[1];
                 result.S = Math.Exp(-result.Z);
                 result.Fi = 1 - result.S;
                 return result;

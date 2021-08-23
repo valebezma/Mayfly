@@ -613,8 +613,7 @@ namespace Mayfly.Fish.Explorer
                 SpeciesRow.Species);
 
             buttonLength.Enabled = Data.MeasuredAnyhow(SpeciesRow) > 0;
-            buttonAge.Enabled = Data.Aged(SpeciesRow) > 0 ||
-                Data.Parent.GrowthModels.IsAvailable(SpeciesRow.Species);
+            buttonAge.Enabled = Data.Aged(SpeciesRow) > 0 || Data.Parent.FindGrowthModel(SpeciesRow.Species) != null;
             buttonSex.Enabled = Data.Sexed(SpeciesRow) > 0;
         }
 

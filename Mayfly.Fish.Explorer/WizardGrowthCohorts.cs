@@ -135,16 +135,16 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Scatterplot scatter in GrowthModels)
             {
-                Mathematics.Statistics.Regression model = scatter.Regression;
+                //Mathematics.Statistics.Regression model = scatter.Regression;
 
-                if (model == null) continue;
+                //if (model == null) continue;
 
-                table1.StartRow();
-                table1.AddCell(scatter.Name);
-                table1.AddCellValue(model.Parameters[0]);
-                table1.AddCellValue(model.Parameters[1]);
-                table1.AddCellValue(model.Parameters[2]);
-                table1.EndRow();
+                //table1.StartRow();
+                //table1.AddCell(scatter.Name);
+                //table1.AddCellValue(model.Parameters[0]);
+                //table1.AddCellValue(model.Parameters[1]);
+                //table1.AddCellValue(model.Parameters[2]);
+                //table1.EndRow();
             }
 
             report.AddTable(table1);
@@ -152,33 +152,33 @@ namespace Mayfly.Fish.Explorer
 
         public void AddMass(Report report)
         {
-            report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph3,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
-            report.AddEquation(@"W = {q} \times {L^{b}}");
+            //report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph3,
+            //    SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+            //report.AddEquation(@"W = {q} \times {L^{b}}");
 
-            Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table3,
-                SpeciesRow.KeyRecord.FullNameReport);
+            //Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table3,
+            //    SpeciesRow.KeyRecord.FullNameReport);
 
-            table1.StartRow();
-            table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2);
-            table1.AddHeaderCell("q");
-            table1.AddHeaderCell("b");
-            table1.EndRow();
+            //table1.StartRow();
+            //table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2);
+            //table1.AddHeaderCell("q");
+            //table1.AddHeaderCell("b");
+            //table1.EndRow();
 
-            foreach (Scatterplot scatter in WeightModels)
-            {
-                Mathematics.Statistics.Regression model = scatter.Regression;
+            //foreach (Scatterplot scatter in WeightModels)
+            //{
+            //    Mathematics.Statistics.Regression model = scatter.Regression;
 
-                if (model == null) continue;
+            //    if (model == null) continue;
 
-                table1.StartRow();
-                table1.AddCell(scatter.Name);
-                table1.AddCellValue(model.Parameters[0].ToString("N4"));
-                table1.AddCellValue(model.Parameters[1].ToString("N4"));
-                table1.EndRow();
-            }
+            //    table1.StartRow();
+            //    table1.AddCell(scatter.Name);
+            //    table1.AddCellValue(model.Parameters[0].ToString("N4"));
+            //    table1.AddCellValue(model.Parameters[1].ToString("N4"));
+            //    table1.EndRow();
+            //}
 
-            report.AddTable(table1);
+            //report.AddTable(table1);
         }
 
 
@@ -260,7 +260,7 @@ namespace Mayfly.Fish.Explorer
                     scatter.Series.ChartType = SeriesChartType.Line;
                     statChartAL.AddSeries(scatter);
 
-                    ToolStripMenuItem item = new ToolStripMenuItem(scatter.Name);
+                    ToolStripMenuItem item = new ToolStripMenuItem(scatter.Properties.ScatterplotName);
                     item.Click += itemGrowth_Click;
                     contextGrowth.Items.Add(item);
                 }
@@ -285,7 +285,7 @@ namespace Mayfly.Fish.Explorer
                     scatter.Properties.SelectedApproximationType = TrendType.Power;
                     statChartLW.AddSeries(scatter);
 
-                    ToolStripMenuItem item = new ToolStripMenuItem(scatter.Name);
+                    ToolStripMenuItem item = new ToolStripMenuItem(scatter.Properties.ScatterplotName);
                     item.Click += itemMass_Click;
                     contextMass.Items.Add(item);
                 }
@@ -332,9 +332,9 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Scatterplot scatterplot in statChartAL.Scatterplots)
             {
-                if (scatterplot.IsRegressionOK)
+                if (scatterplot.Calc.IsRegressionOK)
                 {
-                    regressions.Add(scatterplot.Regression);
+                    regressions.Add(scatterplot.Calc.Regression);
                 }
             }
 
@@ -349,9 +349,9 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Scatterplot scatterplot in statChartLW.Scatterplots)
             {
-                if (scatterplot.IsRegressionOK)
+                if (scatterplot.Calc.IsRegressionOK)
                 {
-                    regressions.Add(scatterplot.Regression);
+                    regressions.Add(scatterplot.Calc.Regression);
                 }
             }
 

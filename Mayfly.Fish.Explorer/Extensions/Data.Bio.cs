@@ -54,32 +54,32 @@ namespace Mayfly.Fish.Explorer
             // if can't - delete species
             data.InitializeBio();
 
-            foreach (Data.SpeciesRow speciesRow in data.Species)
-            {
-                Scatterplot massScatter = data.MassModels.GetInternalScatterplot(speciesRow.Species);
+            //foreach (Data.SpeciesRow speciesRow in data.Species)
+            //{
+            //    Scatterplot massScatter = data.MassModels.GetInternalScatterplot(speciesRow.Species);
 
-                //if (massScatter == null || !massScatter.IsRegressionOK || !massScatter.Regression.IsSignificant())
-                //{
-                //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
-                //    {
-                //        individualRow.SetMassNull();
-                //    }
+            //    //if (massScatter == null || !massScatter.IsRegressionOK || !massScatter.Regression.IsSignificant())
+            //    //{
+            //    //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            //    //    {
+            //    //        individualRow.SetMassNull();
+            //    //    }
 
-                    data.MassModels.Refresh(speciesRow.Species);
-                //}
+            //        data.MassModels.Refresh(speciesRow.Species);
+            //    //}
 
-                Scatterplot ageScatter = data.GrowthModels.GetInternalScatterplot(speciesRow.Species);
+            //    Scatterplot ageScatter = data.GrowthModels.GetInternalScatterplot(speciesRow.Species);
 
-                //if (ageScatter == null || !ageScatter.IsRegressionOK || !ageScatter.Regression.IsSignificant())
-                //{
-                //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
-                //    {
-                //        individualRow.SetAgeNull();
-                //    }
+            //    //if (ageScatter == null || !ageScatter.IsRegressionOK || !ageScatter.Regression.IsSignificant())
+            //    //{
+            //    //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            //    //    {
+            //    //        individualRow.SetAgeNull();
+            //    //    }
 
-                    data.GrowthModels.Refresh(speciesRow.Species);
-                //}
-            }
+            //        data.GrowthModels.Refresh(speciesRow.Species);
+            //    //}
+            //}
 
             // Remove individuals
 

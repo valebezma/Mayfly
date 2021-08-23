@@ -50,7 +50,7 @@ namespace Mayfly.Fish.Explorer
                         return double.NaN;
                     }
 
-                    double mass = stack.Parent.MassModels.GetValue(logRow.SpeciesRow.Species, individualRow.Length);
+                    double mass = stack.Parent.FindMassModel(logRow.SpeciesRow.Species).GetValue(individualRow.Length);
 
                     if (double.IsNaN(mass))
                     {
@@ -91,8 +91,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
             {
-                double mass = stack.Parent.MassModels.GetValue(logRow.SpeciesRow.Species, 
-                    stratifiedRow.SizeClass.Midpoint);
+                double mass = stack.Parent.FindMassModel(logRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
 
                 if (double.IsNaN(mass))
                 {

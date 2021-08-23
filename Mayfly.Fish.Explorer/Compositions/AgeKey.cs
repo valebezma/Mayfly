@@ -94,7 +94,7 @@ namespace Mayfly.Fish.Explorer
                     {
                         treated[ac, lc].MassSample = stack.MassSample(speciesRow, size, age.Age);
                         double w = treated[ac, lc].MassSample.Count > 0 ? treated[ac, lc].MassSample.Mean :
-                            stack.Parent.MassModels.GetValue(speciesRow.Species, treatedTtl[lc].Size.Midpoint);
+                            stack.Parent.FindMassModel(speciesRow.Species).GetValue(treatedTtl[lc].Size.Midpoint);
                         treated[ac, lc].Mass = treated[ac, lc].Quantity * w / 1000.0;
                     }
                     else
@@ -143,9 +143,10 @@ namespace Mayfly.Fish.Explorer
 
                             case AgeLengthKeyType.Smooth:
                                 // If there is model - get all untreated as obtained if obtained age conforms
-                                if (stack.Parent.GrowthModels.IsAvailable(speciesRow.Species))
+                                ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Species);
+                                if (bio != null)
                                 {
-                                    double rec = stack.Parent.GrowthModels.GetValue(speciesRow.Species, size.Midpoint, true);
+                                    double rec = bio.GetValue(size.Midpoint, true);
 
                                     if (Math.Floor(rec) == age.Age.Years)
                                     {
@@ -162,7 +163,7 @@ namespace Mayfly.Fish.Explorer
                         if (p > 0)
                         {
                             obtained[ac, lc].Quantity = (int)((double)U * p);
-                            double mw = stack.Parent.MassModels.GetValue(speciesRow.Species, size.Midpoint);
+                            double mw = stack.Parent.FindMassModel(speciesRow.Species).GetValue(size.Midpoint);
                             obtained[ac, lc].Mass = obtained[ac, lc].Quantity * mw / 1000.0;
                         }
                     }
