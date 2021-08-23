@@ -245,9 +245,10 @@ namespace Mayfly.Mathematics.Charts
         {
             if (Container == null) return;
 
+            BuildSeries();
+
             this.Name = Properties.FunctionName;
             Series.Name = Properties.FunctionName;
-
 
             Series.BorderWidth = Properties.TrendWidth;
 

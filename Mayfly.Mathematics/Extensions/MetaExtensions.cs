@@ -105,8 +105,7 @@ namespace Mayfly.Extensions
 
         public static Mathematics.Charts.Histogramma GetHistogram(this Sample sample)
         {
-            Mathematics.Charts.Histogramma result = new Mathematics.Charts.Histogramma();
-            result.Data = sample;
+            Mathematics.Charts.Histogramma result = new Mathematics.Charts.Histogramma(sample);
             return result;
         }
     }

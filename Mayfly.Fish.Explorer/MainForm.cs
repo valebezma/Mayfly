@@ -676,13 +676,14 @@ namespace Mayfly.Fish.Explorer
             tabPageSpcStats.Parent = tabControl;
             tabControl.SelectedTab = tabPageSpcStats;
 
+            initializeSpeciesStatsPlot();
+
             spreadSheetSpcStats.Rows.Clear();
             foreach (Data.SpeciesRow speciesRow in AllowedStack.GetSpecies())
             {
                 spreadSheetSpcStats.Rows.Add(speciesRow);
             }
             spreadSheetSpcStats.Rows.Add(Mayfly.Resources.Interface.Total);
-
 
             comboBoxTechSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
             comboBoxTechSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxTechSampler.DataSource)[0];
@@ -1927,8 +1928,7 @@ namespace Mayfly.Fish.Explorer
                 plotQualify.ResetFormatted(selectedStatSpc.KeyRecord.ShortName);
                 plotQualify.AxisXMin = Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint;
                 plotQualify.AxisXMax = Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint;
-                plotQualify.AxisYMax = Math.Max(UserSettings.RequiredClassSize,
-                    AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
+                plotQualify.AxisYMax = Math.Max(UserSettings.RequiredClassSize, AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
             }
 
             // Totals
@@ -2258,37 +2258,22 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            plotQualify.Remove(Resources.Interface.Interface.StratesSampled, false);
-            plotQualify.Remove(Resources.Interface.Interface.StratesWeighted, false);
-            plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
-            plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
+            histSample.Data = 
+                countStack.GetStatisticComposition(selectedStatSpc,
+                (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.Interface.StratesSampled).GetHistogramSample();
 
-            LengthComposition sample = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.Interface.StratesSampled);
-            LengthComposition weighted = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.Interface.StratesWeighted);
-            LengthComposition registered = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.Interface.StratesRegistered);
-            LengthComposition aged = countStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged);
+            histWeighted.Data = 
+                countStack.GetStatisticComposition(selectedStatSpc,
+                (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.Interface.StratesWeighted).GetHistogramSample();
 
-            List<Histogramma> hists = new List<Histogramma>();
+            histRegistered.Data =
+                countStack.GetStatisticComposition(selectedStatSpc,
+                (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.Interface.StratesRegistered).GetHistogramSample();
 
-            if (sample.TotalQuantity > 0) hists.Add(sample.GetHistogram());
-            if (weighted.TotalQuantity > 0) hists.Add(weighted.GetHistogram());
-            if (registered.TotalQuantity > 0) hists.Add(registered.GetHistogram());
-            if (aged.TotalQuantity > 0) hists.Add(aged.GetHistogram());
+            histAged.Data = 
+                countStack.GetStatisticComposition(selectedStatSpc,
+                (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged).GetHistogramSample();
 
-            Color startColor = Color.FromArgb(150, Color.Lavender);
-
-            foreach (Histogramma hist in hists)
-            {                
-                hist.Properties.Borders = false;
-                hist.Properties.DataPointColor = startColor;
-                startColor = startColor.Darker();
-            }
-
-            foreach (Histogramma hist in hists)
-            {
-                plotQualify.AddSeries(hist);
-                hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");//.ChartType = SeriesChartType.StackedColumn;
-            }
             plotQualify.Remaster();
         }
 
@@ -2354,46 +2339,25 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            plotQualify.Remove("Bio", false);
-            plotQualify.Remove("Own data", false);
-            plotQualify.Remove("Model", false);
-
             if (model != null)
             {
                 if (model.ExternalData != null)
                 {
-                    Scatterplot ext = new Scatterplot(model.ExternalData);
-                    ext.Series.Name = ext.Properties.ScatterplotName = "Bio";
-                    ext.Series.YAxisType = AxisType.Secondary;
-                    ext.Properties.DataPointColor = Constants.InfantColor;
+                    ext.Calc = model.ExternalData;
                     ext.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                    plotQualify.AddSeries(ext);
                 }
 
                 if (model.InternalData != null)
                 {
-                    Scatterplot inter = new Scatterplot(model.InternalData);
-                    inter.Series.Name = inter.Properties.ScatterplotName = "Own data";
-                    inter.Series.YAxisType = AxisType.Secondary;
-                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    inter.Calc = model.InternalData;
                     inter.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                    plotQualify.AddSeries(inter);
                 }
 
                 if (model.CombinedData != null)
                 {
-                    Scatterplot combi = new Scatterplot(model.CombinedData);
-                    combi.Series.Name = combi.Properties.ScatterplotName = "Model";
-                    combi.Series.YAxisType = AxisType.Secondary;
-                    combi.Properties.ShowTrend = true;
+                    combi.Calc = model.CombinedData;
                     combi.Properties.SelectedApproximationType = model.Nature;
-                    combi.Properties.ConfidenceLevel = .99;
-                    combi.Properties.ShowPredictionBands = true;
-                    combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
-                    combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MotiveColor;
                     combi.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
-                    plotQualify.AddSeries(combi);
                 }
             }
 

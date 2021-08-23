@@ -96,17 +96,23 @@ namespace Mayfly.Mathematics.Charts
 
         
 
-        public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn)
+        public Scatterplot(string name)
         {
+            Properties = new ScatterplotProperties(this);
             TransposeCharting = false;
+            BuildSeries();
+            Series.Name = Properties.ScatterplotName = name;
+        }
+
+        public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn) : this("")
+        {
             ColumnX = xColumn;
             ColumnX.DataGridView.CellValueChanged += new DataGridViewCellEventHandler(CellValueChanged);
             ColumnY = yColumn;
+
             Labels = new List<List<string>>();
             Calc = new BivariatePredictiveModel(new BivariateSample(ColumnX.HeaderText, ColumnY.HeaderText), TrendType.Auto) { Name = yColumn.HeaderText };
-            Properties = new ScatterplotProperties(this);
             GetData();
-            BuildSeries();
         }
 
         public Scatterplot(DataGridViewColumn xColumn, DataGridViewColumn yColumn,
@@ -121,11 +127,9 @@ namespace Mayfly.Mathematics.Charts
             Calc.Name = Properties.ScatterplotName = name;
         }
 
-        public Scatterplot(BivariatePredictiveModel calc)
+        public Scatterplot(BivariatePredictiveModel calc) : this(calc.Name)
         {
-            TransposeCharting = false;
             Calc = calc;
-            Properties = new ScatterplotProperties(this);
             BuildSeries();
         }
 
@@ -232,13 +236,15 @@ namespace Mayfly.Mathematics.Charts
         public void Update(object sender, EventArgs e)
         {
             if (Container == null) return;
+            
+            Series.Name = Properties.ScatterplotName;
+            if (Calc != null) Calc.Name = Properties.ScatterplotName;
 
-            Calc.Name = Series.Name = Properties.ScatterplotName;
             Series.MarkerBorderColor = Container.IsDistinguishingMode ? Constants.InfantColor : Properties.DataPointColor;
             Series.MarkerSize = Properties.DataPointSize;
             Series.MarkerBorderWidth = Properties.DataPointBorderWidth;
 
-            if (Properties.ShowTrend)
+            if (Calc != null && Properties.ShowTrend)
             {
                 if (Calc.TrendType == TrendType.Auto || Calc.TrendType != Properties.SelectedApproximationType)
                 {
@@ -270,11 +276,9 @@ namespace Mayfly.Mathematics.Charts
                     Trend.Function = Calc.Regression.Predict;
                     Trend.FunctionInverse = Calc.Regression.PredictInversed;
                 }
-                
+                                
                 Trend.TransposeCharting = this.TransposeCharting;
-
                 Trend.BuildSeries(Series.YAxisType);
-
                 Trend.Properties.TrendWidth = Properties.TrendWidth;
                 Trend.Properties.TrendColor = Properties.TrendColor;
                 Trend.Properties.AllowCursors = Properties.AllowCursors;
@@ -474,6 +478,8 @@ namespace Mayfly.Mathematics.Charts
                 Series.Points.Clear();
             }
 
+            if (Calc == null) return;
+
             for (int i = 0; i < Calc.Data.Count; i++)
             {
                 DataPoint dataPoint = TransposeCharting ?
@@ -519,46 +525,6 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
         }
-
-        //private void AddBandsTo(Series series, Statistics.IntervalType type)
-        //{
-        //    double xMin = Container.AxisXMin;
-        //    double xMax = Container.AxisXMax;
-        //    double xInterval = (xMax - xMin) / 100;
-
-        //    List<double> xvalues = new List<double>();
-        //    for (double x = xMin - xInterval; x <= xMax + xInterval; x += xInterval)
-        //    {
-        //        xvalues.Add(x);
-        //    }
-
-        //    Interval[] predictions = Regression.GetInterval(xvalues.ToArray(), Properties.ConfidenceLevel, type);
-
-        //    series.Points.Clear();
-
-        //    for (int i = 0; i < predictions.Length; i++)
-        //    {
-        //        double lowerY = predictions[i].LeftEndpoint;
-        //        if (double.IsInfinity(lowerY)) continue;
-        //        if (double.IsNaN(lowerY)) continue;
-
-        //        double upperY = predictions[i].RightEndpoint;
-        //        if (double.IsInfinity(upperY)) continue;
-        //        if (double.IsNaN(upperY)) continue;
-
-        //        series.Points.Add(new DataPoint(series)
-        //        {
-        //            XValue = xvalues[i],
-        //            YValues = new double[] { lowerY, upperY },
-        //        });
-
-        //        //series.Points.Add(new DataPoint(series)
-        //        //{
-        //        //    XValue = TransposeCharting ? lowerY : xvalues[i],
-        //        //    YValues = TransposeCharting ? new double[] { xvalues[i] } : new double[] { lowerY, upperY },
-        //        //});
-        //    }
-        //}
 
         private void AddBandsTo(Series upperBand, Series lowerBand, Statistics.IntervalType type)
         {
@@ -676,7 +642,7 @@ namespace Mayfly.Mathematics.Charts
                 PredictionBandLower.YAxisType = 
                 Series.YAxisType;
 
-            if (Calc.IsRegressionOK)
+            if (Calc != null && Calc.IsRegressionOK)
             {
                 AddBandsTo(PredictionBandUpper, PredictionBandLower, Statistics.IntervalType.Prediction);
             }
@@ -746,33 +712,6 @@ namespace Mayfly.Mathematics.Charts
             chartForm.StatChart.Remaster();
             chartForm.Show();
         }
-
-        //public void AddPowerPlot(Report report, string caption)
-        //{
-        //    REngine.SetEnvironmentVariables();
-        //    REngine engine = REngine.GetInstance();
-        //    string svg = IO.GetTempFileName();
-
-        //    var drawPowerChart = engine.Evaluate(File.ReadAllText(@"interface\reports\scripts\power.R")).AsFunction();
-
-        //    var xvalues = engine.CreateNumericVector(Data.X);
-        //    var yvalues = engine.CreateNumericVector(Data.Y);
-        //    var xlabel = engine.CreateCharacter(Data.X.Name);
-        //    var ylabel = engine.CreateCharacter(Data.Y.Name);
-        //    var width = engine.CreateNumeric(16);
-        //    var height = engine.CreateNumeric(16);
-        //    var detailed = engine.CreateLogical(false);
-        //    var path = engine.CreateCharacter(svg);
-
-        //    drawPowerChart.Invoke(new SymbolicExpression[] { xvalues, yvalues, xlabel, ylabel, width, height, path, detailed });
-
-        //    foreach (string line in File.ReadAllLines(svg))
-        //    {
-        //        report.WriteLine(line);
-        //    }
-
-        //    report.AddParagraphClass("picturecaption", caption);
-        //}
 
 
 

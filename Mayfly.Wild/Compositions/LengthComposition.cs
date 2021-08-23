@@ -54,7 +54,7 @@ namespace Mayfly.Wild
             Maximum = Math.Max(Maximum, item.Size.LeftEndpoint);
         }
 
-        public Histogramma GetHistogram()
+        public Sample GetHistogramSample()
         {
             Sample s = new Sample();
             s.Name = this.Name;
@@ -66,7 +66,12 @@ namespace Mayfly.Wild
                 }
             }
 
-            return new Histogramma(s);
+            return s;
+        }
+
+        public Histogramma GetHistogram()
+        {
+            return new Histogramma(GetHistogramSample());
         }
     }
 
