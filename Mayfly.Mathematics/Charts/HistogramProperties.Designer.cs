@@ -336,7 +336,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
             this.Name = "HistogramProperties";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HistogramProperties_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_Closing);
             this.tabControl.ResumeLayout(false);
             this.tabPageAppearance.ResumeLayout(false);
             this.tabPageAppearance.PerformLayout();

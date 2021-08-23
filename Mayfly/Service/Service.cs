@@ -172,6 +172,18 @@ namespace Mayfly
             return r / 2D;
         }
 
+        public static double GetAutoLeft(double x, double y)
+        {
+            double z = Mayfly.Service.GetAutoInterval(y - x);
+            return ((int)(x / z)) * z;
+        }
+
+        public static double GetAutoRight(double x, double y)
+        {
+            double z = Mayfly.Service.GetAutoInterval(y - x);
+            return ((int)(x / z) + 1) * z;
+        }
+
         public static string GetAutoFormat(double interval)
         {
             string format = "N3";

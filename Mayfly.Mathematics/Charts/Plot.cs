@@ -31,7 +31,7 @@ namespace Mayfly.Mathematics.Charts
         #region New properties
 
         [Browsable(false)]
-        public ChartProperties Properties
+        public PlotProperties Properties
         {
             get
             {
@@ -589,6 +589,163 @@ namespace Mayfly.Mathematics.Charts
         //    get;
         //}
 
+        private double MostLeft
+        {
+            get
+            {
+                double minimum = double.MaxValue;
+
+                foreach (Scatterplot sample in Scatterplots)
+                {
+                    if (sample.Calc == null) continue;
+                    minimum = Math.Min(minimum, sample.Left);
+                }
+
+                foreach (Functor functor in Functors)
+                {
+                    if (functor.ArgumentStripLine == null) continue;                    
+                    minimum = Math.Min(minimum, functor.ArgumentStripLine.IntervalOffset);
+                }
+
+                foreach (Histogramma sample in Histograms)
+                {
+                    minimum = Math.Min(minimum, sample.Left);
+                }
+
+                if (minimum != double.MaxValue)
+                {
+                    return minimum;
+                }
+
+                return 0;
+            }
+        }
+
+        private double MostRight
+        {
+            get
+            {
+                double maximum = double.MinValue;
+
+                foreach (Scatterplot sample in Scatterplots)
+                {
+                    if (sample.Calc == null) continue;
+                    maximum = Math.Max(maximum, sample.Right);
+                }
+
+                foreach (Functor functor in Functors)
+                {
+                    if (functor.ArgumentStripLine == null) continue;
+                    maximum = Math.Max(maximum, functor.ArgumentStripLine.IntervalOffset);
+                }
+
+                foreach (Histogramma sample in Histograms)
+                {
+                    maximum = Math.Max(maximum, sample.Right);
+                }
+
+                if (maximum != double.MinValue)
+                {
+                    return maximum;
+                }
+
+                return 1;
+            }
+        }
+
+        private double MostBottom
+        {
+            get
+            {
+                double minimum = double.MaxValue;
+
+                foreach (Scatterplot sample in Scatterplots)
+                {
+                    if (sample.Calc == null) continue;
+                    minimum = Math.Min(minimum, sample.Bottom);
+                }
+
+                foreach (Functor functor in Functors)
+                {
+                    if (functor.FunctionStripLine == null) continue;                    
+                    minimum = Math.Min(minimum, functor.FunctionStripLine.IntervalOffset);
+                }
+
+                if (minimum != double.MaxValue)
+                {
+                    return minimum;
+                }
+
+                return 0;
+            }
+        }
+
+        private double MostTop
+        {
+            get
+            {
+                double maximum = double.MinValue;
+
+                foreach (Scatterplot sample in Scatterplots)
+                {
+                    if (sample.Calc == null) continue;
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
+                foreach (Functor functor in Functors)
+                {
+                    if (functor.FunctionStripLine == null) continue;
+                    maximum = Math.Max(maximum, functor.FunctionStripLine.IntervalOffset);
+                }
+
+                foreach (Histogramma sample in Histograms)
+                {
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
+                if (maximum != double.MinValue)
+                {
+                    return maximum;
+                }
+
+                return 1;
+            }
+        }
+
+        private double MostTop2
+        {
+            get
+            {
+                double maximum = double.MinValue;
+
+                foreach (Scatterplot sample in Scatterplots)
+                {
+                    if (sample.Calc == null) continue;
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
+                foreach (Functor functor in Functors)
+                {
+                    if (functor.FunctionStripLine == null) continue;
+                    maximum = Math.Max(maximum, functor.FunctionStripLine.IntervalOffset);
+                }
+
+                foreach (Histogramma sample in Histograms)
+                {
+                    maximum = Math.Max(maximum, sample.Top);
+                }
+
+                if (maximum != double.MinValue)
+                {
+                    return maximum;
+                }
+
+                return 1;
+            }
+        }
+
+
+
         public event EventHandler Updated;
 
         public event EventHandler CollectionChanged;
@@ -597,7 +754,7 @@ namespace Mayfly.Mathematics.Charts
 
         internal bool IsDistinguishingMode { get; set; }
 
-        private ChartProperties properties;
+        private PlotProperties properties;
 
         private bool isChronic;
 
@@ -624,7 +781,7 @@ namespace Mayfly.Mathematics.Charts
             SelectedScatterplots = new List<Scatterplot>();
             SelectedHistograms = new List<Histogramma>();
 
-            properties = new ChartProperties(this);
+            properties = new PlotProperties(this);
 
             IsChronic = false;
             //IsCursorArgumentDragging = false;
@@ -724,7 +881,7 @@ namespace Mayfly.Mathematics.Charts
                             SelectedHistograms.Add(sample as Histogramma);
                             LastSelectedHistogram = sample as Histogramma;
                             SeriesShowSelected();
-                            Annotation_MouseDoubleClick((sample as Histogramma).DataSeries);
+                            Annotation_MouseDoubleClick((sample as Histogramma).Series);
                         }
                         break;
 
@@ -918,8 +1075,7 @@ namespace Mayfly.Mathematics.Charts
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);
-
-            RefreshAxes();
+            Update(this, e);
         }
 
 
@@ -970,26 +1126,11 @@ namespace Mayfly.Mathematics.Charts
             if (GetSample(histogram.Properties.HistogramName) != null)
                 return;
 
-            if (Histograms.Count == 0)
-            {
-                if (AxisXAutoMinimum) AxisXMin = histogram.Left;
-                if (AxisXAutoMaximum) AxisXMax = histogram.Right;
-                if (AxisXAutoInterval) AxisXInterval = Mayfly.Service.GetAutoInterval(histogram.Right - histogram.Left);
-            }
-
             Histograms.Add(histogram);
             histogram.Container = this;
             LastSelectedHistogram = histogram;
 
-            if (AxisXAutoMinimum) { UpdateXMin(); }
-            if (AxisXAutoMaximum) { UpdateXMax(); }
-
-            histogram.BuildChart(this);
-            //histogram.ChartArea = "Common";
-            Series.Add(histogram.DataSeries);
-
-            if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
+            recalculateAxesProperties();
 
             //ShowLegend = Histograms.Count > 1;
 
@@ -1028,301 +1169,119 @@ namespace Mayfly.Mathematics.Charts
         //    //ShowLegend = Evaluations.Count > 1;
         //}
 
-        public void Remaster()
-        {
-            SetColorScheme();
-            Update(this, new EventArgs());
-        }
 
-
-
-        public void SetColorScheme()
-        {
-            ApplyPaletteColors();
-
-            foreach (Functor sample in Functors)
-            {
-                sample.Properties.TrendColor = Series[sample.Series.Name].Color;
-            }
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Properties.DataPointColor == Color.SeaGreen) sample.Properties.DataPointColor = sample.Series.Color;
-                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
-                sample.Series.Color = Color.Transparent;
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.DataSeries.Name].Color;
-            }
-
-            //foreach (Evaluation sample in Evaluations)
-            //{
-            //    sample.Properties.DataPointColor = Series[sample.DataSeries.Name].Color;
-            //}
-        }
-
-
-
-        //private void Rebuild(object sender, HistogramEventArgs e)
-        //{
-        //    e.Sample.BuildChart(this);
-
-        //    if (AxisYAutoMinimum) { UpdateYMin(); }
-        //    if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
-        //    if (AxisYAutoInterval)
-        //    {
-        //        AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
-        //    }
-
-        //    if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
-        //}
 
         void recalculateAxesProperties()
         {
-            if (AxisXAutoMinimum) { UpdateXMin(); }
-
-            if (AxisXAutoMaximum) { UpdateXMax(); }
-
-            if (AxisXAutoInterval)
+            if (IsChronic)
             {
-                double rest1 = 0.0;
-                double rest2 = 0.0;
+                //if (AxisXAutoInterval)
+                //{
+                //        TimeInterval = Mayfly.Service.GetAutoIntervalType(AxisXMax - AxisXMin);
+                //        AxisXFormat = Mayfly.Service.GetAutoFormat(TimeInterval);
+                //        //AxisXFormat = Mayfly.Service.GetAutoFormat(DateTime.FromOADate(AxisXMin), DateTime.FromOADate(AxisXMax));
 
-                if (IsChronic)
+                //        switch (TimeInterval)
+                //        {
+                //            case DateTimeIntervalType.Days:
+                //                DateTime dateTimeD = DateTime.FromOADate(AxisXMin);
+                //                AxisXMin = Math.Floor(dateTimeD.ToOADate());
+
+                //                dateTimeD = DateTime.FromOADate(AxisXMax);
+                //                AxisXMax = Math.Ceiling(dateTimeD.ToOADate()) + ChartAreas[0].AxisX.IntervalOffset;
+                //                break;
+                //            case DateTimeIntervalType.Weeks:
+                //                DateTime dateTimeW = DateTime.FromOADate(AxisXMin);
+                //                dateTimeW = dateTimeW.AddDays(-7 + dateTimeW.DayOfWeek.CompareTo(CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) + 1);
+                //                AxisXMin = dateTimeW.ToOADate();
+
+                //                dateTimeW = DateTime.FromOADate(AxisXMax);
+                //                dateTimeW = dateTimeW.AddDays(dateTimeW.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 1);
+                //                AxisXMax = dateTimeW.ToOADate() + ChartAreas[0].AxisX.IntervalOffset;
+                //                break;
+                //            case DateTimeIntervalType.Months:
+                //                DateTime dateTimeM = DateTime.FromOADate(AxisXMax);
+                //                dateTimeM = dateTimeM.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(dateTimeM.Year, dateTimeM.Month) - dateTimeM.Day);
+                //                AxisXMax = dateTimeM.ToOADate();
+
+                //                dateTimeM = DateTime.FromOADate(AxisXMin);
+                //                dateTimeM = dateTimeM.AddDays(-dateTimeM.Day + 1);
+                //                AxisXMin = dateTimeM.ToOADate();
+                //                break;
+                //            case DateTimeIntervalType.Years:
+                //                DateTime dateTimeY = DateTime.FromOADate(AxisXMax);
+                //                dateTimeY = dateTimeY.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInYear(dateTimeY.Year) - dateTimeY.DayOfYear);
+                //                AxisXMax = dateTimeY.ToOADate();
+
+                //                dateTimeY = DateTime.FromOADate(AxisXMin);
+                //                dateTimeY = dateTimeY.AddDays(-dateTimeY.DayOfYear + 1);
+                //                AxisXMin = dateTimeY.ToOADate();
+                //                break;
+                //        }
+
+                //        rest1 = Math.IEEERemainder(AxisXMin, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
+
+                //        if (AxisXAutoMinimum && rest1 < 0)
+                //        {
+                //            AxisXMin = AxisXMin + Math.Abs(rest1) - 1 / Mayfly.Service.GetAutoInterval(TimeInterval);
+                //        }
+
+                //        rest2 = Math.IEEERemainder(AxisXMax, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
+
+                //        if (AxisXAutoMaximum && rest2 > 0)
+                //        {
+                //            AxisXMax = AxisXMax + (1 / Mayfly.Service.GetAutoInterval(TimeInterval) - rest2);
+                //        }
+                //}
+            }
+            else
+            {
+                if (AxisXAutoMinimum)
                 {
-                    TimeInterval = Mayfly.Service.GetAutoIntervalType(AxisXMax - AxisXMin);
-                    AxisXFormat = Mayfly.Service.GetAutoFormat(TimeInterval);
-                    //AxisXFormat = Mayfly.Service.GetAutoFormat(DateTime.FromOADate(AxisXMin), DateTime.FromOADate(AxisXMax));
-
-                    switch (TimeInterval)
-                    {
-                        case DateTimeIntervalType.Days:
-                            DateTime dateTimeD = DateTime.FromOADate(AxisXMin);
-                            AxisXMin = Math.Floor(dateTimeD.ToOADate());
-
-                            dateTimeD = DateTime.FromOADate(AxisXMax);
-                            AxisXMax = Math.Ceiling(dateTimeD.ToOADate()) + ChartAreas[0].AxisX.IntervalOffset;
-                            break;
-                        case DateTimeIntervalType.Weeks:
-                            DateTime dateTimeW = DateTime.FromOADate(AxisXMin);
-                            dateTimeW = dateTimeW.AddDays(-7 + dateTimeW.DayOfWeek.CompareTo(CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) + 1);
-                            AxisXMin = dateTimeW.ToOADate();
-
-                            dateTimeW = DateTime.FromOADate(AxisXMax);
-                            dateTimeW = dateTimeW.AddDays(dateTimeW.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 1);
-                            AxisXMax = dateTimeW.ToOADate() + ChartAreas[0].AxisX.IntervalOffset;
-                            break;
-                        case DateTimeIntervalType.Months:
-                            DateTime dateTimeM = DateTime.FromOADate(AxisXMax);
-                            dateTimeM = dateTimeM.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(dateTimeM.Year, dateTimeM.Month) - dateTimeM.Day);
-                            AxisXMax = dateTimeM.ToOADate();
-
-                            dateTimeM = DateTime.FromOADate(AxisXMin);
-                            dateTimeM = dateTimeM.AddDays(-dateTimeM.Day + 1);
-                            AxisXMin = dateTimeM.ToOADate();
-                            break;
-                        case DateTimeIntervalType.Years:
-                            DateTime dateTimeY = DateTime.FromOADate(AxisXMax);
-                            dateTimeY = dateTimeY.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInYear(dateTimeY.Year) - dateTimeY.DayOfYear);
-                            AxisXMax = dateTimeY.ToOADate();
-
-                            dateTimeY = DateTime.FromOADate(AxisXMin);
-                            dateTimeY = dateTimeY.AddDays(-dateTimeY.DayOfYear + 1);
-                            AxisXMin = dateTimeY.ToOADate();
-                            break;
-                    }
-
-                    rest1 = Math.IEEERemainder(AxisXMin, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
-
-                    if (AxisXAutoMinimum && rest1 < 0)
-                    {
-                        AxisXMin = AxisXMin + Math.Abs(rest1) - 1 / Mayfly.Service.GetAutoInterval(TimeInterval);
-                    }
-
-                    rest2 = Math.IEEERemainder(AxisXMax, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
-
-                    if (AxisXAutoMaximum && rest2 > 0)
-                    {
-                        AxisXMax = AxisXMax + (1 / Mayfly.Service.GetAutoInterval(TimeInterval) - rest2);
-                    }
+                    AxisXMin = Mayfly.Service.GetAutoLeft(MostLeft, AxisXMax);
                 }
-                else
+
+                if (AxisXAutoMaximum)
+                {
+                    AxisXMax = Mayfly.Service.GetAutoRight(AxisXMin, MostRight);
+                }
+
+                if (AxisXAutoInterval)
                 {
                     AxisXInterval = Mayfly.Service.GetAutoInterval(AxisXMax - AxisXMin);
-                    AxisXFormat = Mayfly.Service.GetAutoFormat(AxisXInterval);
-
-                    rest1 = Math.IEEERemainder(AxisXMin, AxisXInterval);
-
-                    if (AxisXAutoMinimum && rest1 < 0)
-                    {
-                        AxisXMin = AxisXMin + Math.Abs(rest1) - AxisXInterval;
-                    }
-
-                    rest2 = Math.IEEERemainder(AxisXMax, AxisXInterval);
-
-                    if (AxisXAutoMaximum && rest2 > 0)
-                    {
-                        AxisXMax = AxisXMax + (AxisXInterval - rest2);
-                    }
-                }
-
-                if (AxisXAutoMinimum && rest1 > 0)
-                {
-                    AxisXMin = AxisXMin - rest1;
-                }
-
-                if (AxisXAutoMaximum && rest2 < 0)
-                {
-                    AxisXMax = AxisXMax - rest2;
                 }
             }
 
-            if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
+            foreach (Histogramma hist in Histograms)
+            {
+                hist.Distribute();
+            }
+
+            if (AxisYAutoMinimum)
+            {
+                AxisYMin = Mayfly.Service.GetAutoLeft(MostBottom, AxisYMax);
+            }
+
+            if (AxisYAutoMaximum)
+            {
+                AxisYMax = Mayfly.Service.GetAutoRight(AxisYMin, MostTop);
+            }
+
             if (AxisYAutoInterval)
             {
-                double yint = AxisYMax - AxisYMin;
-                if (yint == 0) yint = 1;
-                AxisYInterval = Mayfly.Service.GetAutoInterval(yint);
-                AxisYFormat = Mayfly.Service.GetAutoFormat(AxisYInterval);
+                AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
             }
 
-            //if (AxisY2AutoMinimum) { UpdateY2Min(); }
-            if (AxisY2AutoMaximum) { UpdateY2Max(); }
+
+            if (AxisY2AutoMaximum)
+            {
+                AxisY2Max = Mayfly.Service.GetAutoRight(AxisY2Min, MostTop2);
+            }
+
             if (AxisY2AutoInterval)
             {
-                double y2int = AxisY2Max - AxisY2Min;
-                if (y2int == 0) y2int = 1;
-                AxisY2Interval = Mayfly.Service.GetAutoInterval(y2int);
-                AxisY2Format = Mayfly.Service.GetAutoFormat(AxisY2Interval);
+                AxisY2Interval = Mayfly.Service.GetAutoInterval(AxisY2Max - AxisY2Min);
             }
-
-            RefreshAxes();
-        }
-
-        void recalculateAxesProperties(Axis axis)
-        {
-            if (AxisXAutoMinimum) { UpdateXMin(); }
-
-            if (AxisXAutoMaximum) { UpdateXMax(); }
-
-            if (AxisXAutoInterval)
-            {
-                double rest1 = 0.0;
-                double rest2 = 0.0;
-
-                if (IsChronic)
-                {
-                    TimeInterval = Mayfly.Service.GetAutoIntervalType(AxisXMax - AxisXMin);
-                    AxisXFormat = Mayfly.Service.GetAutoFormat(TimeInterval);
-                    //AxisXFormat = Mayfly.Service.GetAutoFormat(DateTime.FromOADate(AxisXMin), DateTime.FromOADate(AxisXMax));
-
-                    switch (TimeInterval)
-                    {
-                        case DateTimeIntervalType.Days:
-                            DateTime dateTimeD = DateTime.FromOADate(AxisXMin);
-                            AxisXMin = Math.Floor(dateTimeD.ToOADate());
-
-                            dateTimeD = DateTime.FromOADate(AxisXMax);
-                            AxisXMax = Math.Ceiling(dateTimeD.ToOADate()) + ChartAreas[0].AxisX.IntervalOffset;
-                            break;
-                        case DateTimeIntervalType.Weeks:
-                            DateTime dateTimeW = DateTime.FromOADate(AxisXMin);
-                            dateTimeW = dateTimeW.AddDays(-7 + dateTimeW.DayOfWeek.CompareTo(CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) + 1);
-                            AxisXMin = dateTimeW.ToOADate();
-
-                            dateTimeW = DateTime.FromOADate(AxisXMax);
-                            dateTimeW = dateTimeW.AddDays(dateTimeW.DayOfWeek - CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 1);
-                            AxisXMax = dateTimeW.ToOADate() + ChartAreas[0].AxisX.IntervalOffset;
-                            break;
-                        case DateTimeIntervalType.Months:
-                            DateTime dateTimeM = DateTime.FromOADate(AxisXMax);
-                            dateTimeM = dateTimeM.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(dateTimeM.Year, dateTimeM.Month) - dateTimeM.Day);
-                            AxisXMax = dateTimeM.ToOADate();
-
-                            dateTimeM = DateTime.FromOADate(AxisXMin);
-                            dateTimeM = dateTimeM.AddDays(-dateTimeM.Day + 1);
-                            AxisXMin = dateTimeM.ToOADate();
-                            break;
-                        case DateTimeIntervalType.Years:
-                            DateTime dateTimeY = DateTime.FromOADate(AxisXMax);
-                            dateTimeY = dateTimeY.AddDays(CultureInfo.CurrentCulture.Calendar.GetDaysInYear(dateTimeY.Year) - dateTimeY.DayOfYear);
-                            AxisXMax = dateTimeY.ToOADate();
-
-                            dateTimeY = DateTime.FromOADate(AxisXMin);
-                            dateTimeY = dateTimeY.AddDays(-dateTimeY.DayOfYear + 1);
-                            AxisXMin = dateTimeY.ToOADate();
-                            break;
-                    }
-
-                    rest1 = Math.IEEERemainder(AxisXMin, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
-
-                    if (AxisXAutoMinimum && rest1 < 0)
-                    {
-                        AxisXMin = AxisXMin + Math.Abs(rest1) - 1 / Mayfly.Service.GetAutoInterval(TimeInterval);
-                    }
-
-                    rest2 = Math.IEEERemainder(AxisXMax, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
-
-                    if (AxisXAutoMaximum && rest2 > 0)
-                    {
-                        AxisXMax = AxisXMax + (1 / Mayfly.Service.GetAutoInterval(TimeInterval) - rest2);
-                    }
-                }
-                else
-                {
-                    AxisXInterval = Mayfly.Service.GetAutoInterval(AxisXMax - AxisXMin);
-                    AxisXFormat = Mayfly.Service.GetAutoFormat(AxisXInterval);
-
-                    rest1 = Math.IEEERemainder(AxisXMin, AxisXInterval);
-
-                    if (AxisXAutoMinimum && rest1 < 0)
-                    {
-                        AxisXMin = AxisXMin + Math.Abs(rest1) - AxisXInterval;
-                    }
-
-                    rest2 = Math.IEEERemainder(AxisXMax, AxisXInterval);
-
-                    if (AxisXAutoMaximum && rest2 > 0)
-                    {
-                        AxisXMax = AxisXMax + (AxisXInterval - rest2);
-                    }
-                }
-
-                if (AxisXAutoMinimum && rest1 > 0)
-                {
-                    AxisXMin = AxisXMin - rest1;
-                }
-
-                if (AxisXAutoMaximum && rest2 < 0)
-                {
-                    AxisXMax = AxisXMax - rest2;
-                }
-            }
-
-            if (AxisYAutoMinimum) { UpdateYMin(); }
-            if (AxisYAutoMaximum) { UpdateYMax(); UpdateY2Max(); }
-            if (AxisYAutoInterval)
-            {
-                double yint = AxisYMax - AxisYMin;
-                if (yint == 0) yint = 1;
-                AxisYInterval = Mayfly.Service.GetAutoInterval(yint);
-                AxisYFormat = Mayfly.Service.GetAutoFormat(AxisYInterval);
-            }
-
-            //if (AxisY2AutoMinimum) { UpdateY2Min(); }
-            if (AxisY2AutoMaximum) { UpdateY2Max(); }
-            if (AxisY2AutoInterval)
-            {
-                double y2int = AxisY2Max - AxisY2Min;
-                if (y2int == 0) y2int = 1;
-                AxisY2Interval = Mayfly.Service.GetAutoInterval(y2int);
-                AxisY2Format = Mayfly.Service.GetAutoFormat(AxisY2Interval);
-            }
-
-            RefreshAxes();
         }
 
 
@@ -1389,90 +1348,43 @@ namespace Mayfly.Mathematics.Charts
                 chartArea.AxisY.IsLogarithmic = AxisYLogarithmic;
                 chartArea.AxisY.LabelStyle.Format = AxisYFormat;
 
-                chartArea.AxisY.ScaleBreakStyle.Enabled = AxisYAllowBreak;
-                chartArea.AxisY.ScaleBreakStyle.CollapsibleSpaceThreshold = AxisYScaleBreak;
-
                 chartArea.AxisY2.Minimum = AxisY2Min;
                 chartArea.AxisY2.Maximum = AxisY2Max;
                 chartArea.AxisY2.LabelStyle.Format = AxisY2Format;
 
-                #region Axis X
-
-                double w = this.Width;
-
-                //if (this.Visible)
-                //{
-                //    w = chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Maximum) -
-                //        chartArea.AxisX.ValueToPixelPosition(chartArea.AxisX.Minimum);
-                //}
-
-                if (IsChronic)
-                {
-                    chartArea.AxisX.IntervalType = TimeInterval;
-                    double round = Mayfly.Service.GetAutoInterval(TimeInterval);
-                    chartArea.AxisX.AdjustIntervals(w, round);
-                }
-                else
-                {
-                    chartArea.AxisX.IntervalType = DateTimeIntervalType.Number;
-                    chartArea.AxisX.AdjustIntervals(w, AxisXInterval);
-                }
-
-                #endregion
-
-                double h = this.Height;
-
-                //if (this.Visible)
-                //{
-                //    h = chartArea.AxisY.ValueToPixelPosition(AxisYMin) -
-                //        chartArea.AxisY.ValueToPixelPosition(AxisYMax);
-                //}
-
-                chartArea.AxisY.AdjustIntervals(h, AxisYInterval);
-
-                if (chartArea.AxisY2.Enabled == AxisEnabled.True)
-                {
-                    double intervals = (chartArea.AxisY.Maximum - chartArea.AxisY.Minimum) / chartArea.AxisY.Interval;
-                    double interval2 = (chartArea.AxisY2.Maximum - chartArea.AxisY2.Minimum) / intervals;
-                    chartArea.AxisY2.AdjustIntervals(h, interval2);
-                    chartArea.AxisY2.Maximum = chartArea.AxisY2.Minimum + intervals * interval2;
-                }
-
+                chartArea.AxisY.ScaleBreakStyle.Enabled = AxisYAllowBreak;
+                chartArea.AxisY.ScaleBreakStyle.CollapsibleSpaceThreshold = AxisYScaleBreak;
             }
 
             #endregion
 
             #region Samples
 
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                sample.BuildSeries();
-
-                if (sample.PredictionBandLower != null) sample.PredictionBandLower.Points.Clear();
-                if (sample.PredictionBandUpper != null) sample.PredictionBandUpper.Points.Clear();
-                if (sample.Trend != null) sample.Trend.Series.Points.Clear();
-                if (sample.ConfidenceBandLower != null) sample.ConfidenceBandLower.Points.Clear();
-                if (sample.ConfidenceBandUpper != null) sample.ConfidenceBandUpper.Points.Clear();
-            }
+            ApplyPaletteColors();
 
             foreach (Scatterplot sample in Scatterplots)
             {
-                sample.Update(this, new EventArgs());
+                if (sample.Properties.DataPointColor == Color.SeaGreen) sample.Properties.DataPointColor = sample.Series.Color;
+                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                sample.Series.Color = Color.Transparent;
+                sample.Update();
             }
-
 
             foreach (Functor sample in Functors)
             {
-                sample.Update(this, new EventArgs());
+                sample.Properties.TrendColor = Series[sample.Series.Name].Color;
+                sample.Update();
             }
 
             foreach (Histogramma sample in Histograms)
             {
-                sample.Update(this, new EventArgs());
+                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.Series.Name].Color;
+                sample.Update();
             }
 
             //foreach (Evaluation sample in Evaluations)
             //{
+            //    sample.Properties.DataPointColor = Series[sample.DataSeries.Name].Color;
             //    sample.Update(this, new EventArgs());
             //}
 
@@ -1535,256 +1447,10 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-
-
-
-
-
-        public void UpdateXMin()
-        {
-            double minimum = double.MaxValue;
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Calc != null)
-                {
-                    minimum = Math.Min(minimum, sample.Left);
-
-                    if (sample.Properties.ShowTrend && sample.Trend != null && sample.Trend.ArgumentStripLine != null)
-                    {
-                        minimum = Math.Min(minimum, sample.Trend.ArgumentStripLine.IntervalOffset);
-                    }
-                }
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                minimum = Math.Min(minimum, sample.Left);
-            }
-
-            if (minimum != double.MaxValue)
-            {
-                AxisXMin = minimum;
-            }
-
-            //double rest = 0.0;
-
-            //if (IsChronic)
-            //{
-            //    switch (TimeInterval)
-            //    {
-            //        case DateTimeIntervalType.Days:
-            //            DateTime dateTimeD = DateTime.FromOADate(AxisXMin);
-            //            AxisXMin = Math.Floor(dateTimeD.ToOADate());
-            //            return;
-            //        case DateTimeIntervalType.Weeks:
-            //            DateTime dateTimeW = DateTime.FromOADate(AxisXMin);
-            //            dateTimeW = dateTimeW.AddDays(-7 + dateTimeW.DayOfWeek.CompareTo(CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek) + 1);
-            //            AxisXMin = dateTimeW.ToOADate();
-            //            return;
-            //        case DateTimeIntervalType.Months:
-            //            DateTime dateTimeM = DateTime.FromOADate(AxisXMin);
-            //            dateTimeM = dateTimeM.AddDays(-dateTimeM.Day + 1);
-            //            AxisXMin = dateTimeM.ToOADate();
-            //            return;
-            //        case DateTimeIntervalType.Years:
-            //            DateTime dateTimeY = DateTime.FromOADate(AxisXMin);
-            //            dateTimeY = dateTimeY.AddDays(-dateTimeY.DayOfYear + 1);
-            //            AxisXMin = dateTimeY.ToOADate();
-            //            return;
-            //    }
-
-            //    rest = Math.IEEERemainder(AxisXMin, 1 / Mayfly.Service.GetAutoInterval(TimeInterval));
-
-            //    if (rest < 0)
-            //    {
-            //        AxisXMin = AxisXMin + Math.Abs(rest) - 1 / Mayfly.Service.GetAutoInterval(TimeInterval);
-            //    }
-            //}
-            //else
-            //{
-            //    rest = Math.IEEERemainder(AxisXMin, AxisXInterval);
-
-            //    if (rest < 0)
-            //    {
-            //        AxisXMin = AxisXMin + Math.Abs(rest) - AxisXInterval;
-            //    }
-            //}
-
-            //if (rest > 0)
-            //{
-            //    AxisXMin = AxisXMin - rest;
-            //}
-        }
-
-        public void UpdateXMax()
-        {
-            double maximum = double.MinValue;
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Calc != null)
-                {
-                    maximum = Math.Max(maximum, sample.Right);
-
-                    if (sample.Properties.ShowTrend && sample.Trend != null && sample.Trend.ArgumentStripLine != null)
-                    {
-                        maximum = Math.Max(maximum, sample.Trend.ArgumentStripLine.IntervalOffset);
-                    }
-                }
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                maximum = Math.Max(maximum, sample.Right);
-            }
-
-            if (maximum != double.MinValue)
-            {
-                AxisXMax = maximum;
-            }
-        }
-
-        public void UpdateYMin()
-        {
-            double minimum = double.MaxValue;
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Calc != null)
-                {
-                    minimum = Math.Min(minimum, sample.Bottom);
-
-                    if (sample.Trend != null && sample.Trend.FunctionStripLine != null)
-                    {
-                        minimum = Math.Min(minimum, sample.Trend.FunctionStripLine.IntervalOffset);
-                    }
-                }
-            }
-
-            if (minimum != double.MaxValue)
-            {
-                AxisYMin = minimum;
-            }
-
-            if (AxisYAutoInterval && AxisYMax - AxisYMin > 0)
-            {
-                AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
-            }
-
-            double rest = Math.IEEERemainder(AxisYMin, AxisYInterval);
-
-            if (rest < 0)
-            {
-                AxisYMin = AxisYMin + Math.Abs(rest) - AxisYInterval;
-            }
-
-            if (rest > 0)
-            {
-                AxisYMin = AxisYMin - rest;
-            }
-        }
-
-        public void UpdateYMax()
-        {
-            double maximum = 0;
-
-            foreach (Scatterplot sample in Scatterplots)
-            {
-                if (sample.Calc != null && sample.Series.YAxisType == AxisType.Primary) maximum = Math.Max(maximum, sample.Top);
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                maximum = Math.Max(maximum, sample.Top);
-            }
-
-            //foreach (Evaluation sample in Evaluations)
-            //{
-            //    maximum = Math.Max(maximum, sample.Top);
-            //}
-
-            //foreach (Series series in Series)
-            //{
-            //    if (series.Points == null)
-            //    {
-            //        maximum = 1;
-            //        continue;
-            //    }
-            //    foreach (DataPoint dataPoint in series.Points)
-            //    {
-            //        maximum = Math.Max(maximum, dataPoint.YValues.Max());
-            //    }
-            //}
-
-            //if (SelectedFunctionCursor != null)
-            //{
-            //    maximum = Math.Max(maximum, SelectedFunctionCursor.Position);
-            //}
-
-            AxisYMax = 1.1 * maximum;
-
-            if (AxisYAutoInterval && AxisYMax - AxisYMin > 0)
-            {
-                AxisYInterval = Mayfly.Service.GetAutoInterval(AxisYMax - AxisYMin);
-            }
-
-            double rest = Math.IEEERemainder(AxisYMax, AxisYInterval);
-
-            if (rest > 0)
-            {
-                AxisYMax = AxisYMax + (AxisYInterval - rest);
-            }
-
-            if (rest < 0)
-            {
-                AxisYMax = AxisYMax + Math.Abs(rest);
-            }
-        }
-
-        public void UpdateY2Max()
-        {
-            double maximum = 0;
-
-            foreach (Series series in Series)
-            {
-                if (series.YAxisType == AxisType.Secondary)
-                {
-                    if (series.Points == null)
-                    {
-                        maximum = 1;
-                        continue;
-                    }
-
-                    foreach (DataPoint dataPoint in series.Points)
-                    {
-                        maximum = Math.Max(maximum, dataPoint.YValues.Max());
-                    }
-                }
-            }
-
-            AxisY2Max = maximum == 0 ? 1 : maximum;
-
-            if (AxisY2AutoInterval && AxisY2Max - AxisY2Min > 0)
-            {
-                double g = Mayfly.Service.GetAutoInterval(AxisY2Max - AxisY2Min);
-                if (g > 0) AxisY2Interval = g;
-            }
-
-            double rest = AxisY2Max % AxisY2Interval;
-
-            if (rest > 0)
-            {
-                AxisY2Max = AxisY2Max + (AxisY2Interval - rest);
-            }
-
-            if (rest < 0)
-            {
-                AxisY2Max = AxisY2Max + Math.Abs(rest);
-            }
-        }
-
-
+        //public void Update()
+        //{
+        //    Update(this, new EventArgs);
+        //}
 
 
         public object GetSample(string name)
@@ -1819,15 +1485,15 @@ namespace Mayfly.Mathematics.Charts
                 if (sample.ConfidenceBandLower == series) return sample;
             }
 
+            foreach (Histogramma sample in Histograms)
+            {
+                if (sample.Series == series) return sample;
+                if (sample.Fit != null && sample.Fit.Series == series) return sample;
+            }
+
             foreach (Functor sample in Functors)
             {
                 if (sample.Series == series) return sample;
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                if (sample.DataSeries == series) return sample;
-                if (sample.FitSeries == series) return sample;
             }
 
             //foreach (Evaluation sample in Evaluations)
@@ -1852,25 +1518,11 @@ namespace Mayfly.Mathematics.Charts
 
         public void Clear()
         {
-            while (Functors.Count > 0)
-            {
-                Functors[0].Dispose();
-            }
-
-            while (Scatterplots.Count > 0)
-            {
-                Scatterplots[0].Dispose();
-            }
-
-            while (Histograms.Count > 0)
-            {
-                Histograms[0].Dispose();
-            }
-
-            //while (Evaluations.Count > 0)
-            //{
-            //    Evaluations[0].Dispose();
-            //}
+            Series.Clear();
+            Scatterplots.Clear();
+            Histograms.Clear();
+            Functors.Clear();
+            Update(this, new EventArgs());
         }
 
         public void Remove(string name)
@@ -1886,23 +1538,26 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (sample is Scatterplot)
                 {
-                    ((Scatterplot)sample).Dispose();
+                    Scatterplots.Remove((Scatterplot)sample);
                 }
 
                 if (sample is Histogramma)
                 {
-                    ((Histogramma)sample).Dispose();
+                    Histograms.Remove((Histogramma)sample);
                 }
             }
 
             if (removeChartArea)
             {
                 ChartArea HostArea = ChartAreas.FindByName(name);
+
                 if (HostArea != null)
                 {
                     ChartAreas.Remove(HostArea);
                 }
             }
+
+            Update(this, new EventArgs());
         }
 
         public void GetCursor()
@@ -1943,7 +1598,7 @@ namespace Mayfly.Mathematics.Charts
             //ShowLegend = false;
             ChartAreas.RemoveAt(0);
 
-            Remaster();
+            Update(this, new EventArgs());
         }
 
         private ChartArea SeparateChartArea(string name)
@@ -2048,14 +1703,14 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (IsDistinguishingMode)
                 {
-                    histogram.DataSeries.Color = 
-                        histogram.DataSeries.BorderColor = 
+                    histogram.Series.Color = 
+                        histogram.Series.BorderColor = 
                         UserSettings.DistinguishColorSelected;
                 }
                 else
                 {
-                    histogram.DataSeries.Color = histogram.Properties.DataPointColor;
-                    histogram.DataSeries.BorderColor = Color.Black;
+                    histogram.Series.Color = histogram.Properties.DataPointColor;
+                    histogram.Series.BorderColor = Color.Black;
                 }
             }
         }
@@ -2076,7 +1731,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     functor.Series.SmartLabelStyle.CalloutLineColor =
                     functor.Series.LabelForeColor = Color.Black;
-                    functor.Update(this, new EventArgs());
+                    functor.Update();
                 }
             }
 
@@ -2101,7 +1756,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     scatterplot.Series.SmartLabelStyle.CalloutLineColor =
                     scatterplot.Series.LabelForeColor = Color.Black;
-                    scatterplot.Update(this, new EventArgs());
+                    scatterplot.Update();
                 }
             }
 
@@ -2109,42 +1764,15 @@ namespace Mayfly.Mathematics.Charts
             {
                 Histogramma histogram = (Histogramma)sample;
 
-                histogram.DataSeries.BorderColor = Color.Black;
+                histogram.Series.BorderColor = Color.Black;
 
                 if (IsDistinguishingMode)
                 {
-                    histogram.DataSeries.Color =
-                    histogram.DataSeries.BorderColor =
-                    histogram.DataSeries.LabelForeColor = Constants.InfantColor;
+                    histogram.Series.Color =
+                    histogram.Series.BorderColor =
+                    histogram.Series.LabelForeColor = Constants.InfantColor;
                 }
             }
-        }
-
-        public void CopyTo(Plot statChart)
-        {
-            statChart.Font = Font;
-            statChart.IsChronic = IsChronic;
-            statChart.TimeInterval = TimeInterval;
-            statChart.Text = Text;
-            statChart.AxisXTitle = AxisXTitle;
-            statChart.AxisXMin = AxisXMin;
-            statChart.AxisXMax = AxisXMax;
-            statChart.AxisXInterval = AxisXInterval;
-            statChart.AxisXAutoMinimum = AxisXAutoMinimum;
-            statChart.AxisXAutoMaximum = AxisXAutoMaximum;
-            statChart.AxisXAutoInterval = AxisXAutoInterval;
-            statChart.AxisYTitle = AxisYTitle;
-            statChart.AxisYMin = AxisYMin;
-            statChart.AxisYMax = AxisYMax;
-            statChart.AxisYInterval = AxisYInterval;
-            statChart.AxisYAutoMinimum = AxisYAutoMinimum;
-            statChart.AxisYAutoMaximum = AxisYAutoMaximum;
-            statChart.AxisYAutoInterval = AxisYAutoInterval;
-            statChart.AxisYAllowBreak = AxisYAllowBreak;
-            statChart.AxisYScaleBreak = AxisYScaleBreak;
-            statChart.AxisXLogarithmic = AxisXLogarithmic;
-            statChart.AxisYLogarithmic = AxisYLogarithmic;
-            statChart.ShowLegend = ShowLegend;
         }
 
         //private bool IsMouseAboveArgument(MouseEventArgs e)
@@ -2343,6 +1971,8 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+
+
         public BivariateSample GetDataPointValues(Series series)
         {
             BivariateSample result = new BivariateSample();
@@ -2521,7 +2151,7 @@ namespace Mayfly.Mathematics.Charts
             else
             {
                 scatterplot.Properties.ShowTrend = true;
-                scatterplot.Update(scatterplot, new EventArgs());
+                scatterplot.Update();
             }
         }
 
@@ -2818,7 +2448,7 @@ namespace Mayfly.Mathematics.Charts
             AxisYAutoMaximum = true;
             AxisYAutoInterval = true;
 
-            RecalculateAxesProperties();
+            Update(sender, e);
         }
 
         private void contextChartSeparate_CheckedChanged(object sender, EventArgs e)
@@ -2906,7 +2536,6 @@ namespace Mayfly.Mathematics.Charts
             }
 
             contextScatterplotFindValue.Enabled = hasColumn;
-            contextScatterplotUpdate.Enabled = hasColumn;
         }
 
         private void contextScatterplotProperties_Click(object sender, EventArgs e)
@@ -3035,7 +2664,6 @@ namespace Mayfly.Mathematics.Charts
             Scatterplot mergedScatterplot = new Scatterplot(mergedBivariate, Resources.Interface.MergedBivariate);
             mergedScatterplot.Properties.DataPointSize = 12;
             AddSeries(mergedScatterplot);
-            SetColorScheme();
         }
 
         private void contextScatterplotSplit_Click(object sender, EventArgs e)
@@ -3061,7 +2689,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 foreach (Scatterplot scatterplot in SelectedScatterplots)
                 {
-                    Plot statChart = scatterplot.Copy().ShowOnChart();
+                    Plot statChart = scatterplot.ShowOnChart();
                     statChart.AxisXTitle = AxisXTitle;
                     statChart.AxisYTitle = AxisYTitle;
                     statChart.Update(sender, e);
@@ -3069,25 +2697,8 @@ namespace Mayfly.Mathematics.Charts
             }
             else
             {
-                Scatterplot.ShowOnChart(this, SelectedScatterplots);
+                Scatterplot.ShowOnChart(SelectedScatterplots);
             }
-        }
-
-        private void contextScatterplotUpdate_Click(object sender, EventArgs e)
-        {
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                scatterplot.GetData();
-
-                if (scatterplot.Calc.Data != null)
-                {
-                    scatterplot.BuildSeries();
-                }
-
-                scatterplot.InvokeChanged();
-            }
-
-            RecalculateAxesProperties();
         }
 
         private void contextScatterplotFindValue_Click(object sender, EventArgs e)
@@ -3179,7 +2790,7 @@ namespace Mayfly.Mathematics.Charts
                 else
                 {
                     histogram.Properties.ShowFit = true;
-                    histogram.Update(sender, e);
+                    histogram.Update();
                 }
             }
         }
@@ -3233,22 +2844,22 @@ namespace Mayfly.Mathematics.Charts
 
                 double s = 0;
 
-                for (int i = 0; i < histogram.DataSeries.Points.Count; i++)
+                for (int i = 0; i < histogram.Series.Points.Count; i++)
                 {
-                    s += histogram.DataSeries.Points[i].YValues[0];
+                    s += histogram.Series.Points[i].YValues[0];
                 }
 
-                for (int i = 0; i < histogram.DataSeries.Points.Count; i++)
+                for (int i = 0; i < histogram.Series.Points.Count; i++)
                 {
                     if (ModifierKeys.HasFlag(Keys.Control))
                     {
-                        result += histogram.DataSeries.Points[i].XValue.ToString(this.AxisXFormat) + Constants.Tab +
-                            (histogram.DataSeries.Points[i].YValues[0] / s).ToString("P1") + Constants.Return;
+                        result += histogram.Series.Points[i].XValue.ToString(this.AxisXFormat) + Constants.Tab +
+                            (histogram.Series.Points[i].YValues[0] / s).ToString("P1") + Constants.Return;
                     }
                     else
                     {
-                        result += histogram.DataSeries.Points[i].XValue.ToString(this.AxisXFormat) + Constants.Tab +
-                            histogram.DataSeries.Points[i].YValues[0].ToString(this.AxisYFormat) + Constants.Return;
+                        result += histogram.Series.Points[i].XValue.ToString(this.AxisXFormat) + Constants.Tab +
+                            histogram.Series.Points[i].YValues[0].ToString(this.AxisYFormat) + Constants.Return;
                     }
                 }
 

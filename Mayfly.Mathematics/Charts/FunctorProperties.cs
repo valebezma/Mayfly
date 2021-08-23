@@ -52,7 +52,6 @@ namespace Mayfly.Mathematics.Charts
         {
             InitializeComponent();
             Functor = functor;
-
             textBoxName.Text = functor.Name;
         }
 
@@ -72,7 +71,7 @@ namespace Mayfly.Mathematics.Charts
                 ValueChanged.Invoke(sender, new EventArgs());
             }
 
-            Functor.Update(sender, e);
+            Functor.Update();
         }
 
         private void panelTrendColor_Click(object sender, EventArgs e)

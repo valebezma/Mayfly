@@ -585,8 +585,7 @@ namespace Mayfly.Mathematics
 
                 foreach (Histogramma histogram in histograms)
                 {
-                    histogram.ValueChanged += new HistogramEventHandler(chartForm.StatChart.Update);
-                    histogram.StructureChanged += new HistogramEventHandler(chartForm.StatChart.Rebuild);
+                    histogram.Updated += new HistogramEventHandler(chartForm.StatChart.Update);
                     chartForm.StatChart.AddSeries(histogram);
                 }
 
@@ -595,12 +594,11 @@ namespace Mayfly.Mathematics
                     Histogramma residualHistogram = new Histogramma(Resources.Interface.Others,
                         residuals, columnSelection.ValuesColumn.ValueType == typeof(DateTime));
 
-                    residualHistogram.ValueChanged += new HistogramEventHandler(chartForm.StatChart.Update);
-                    residualHistogram.StructureChanged += new HistogramEventHandler(chartForm.StatChart.Rebuild);
+                    residualHistogram.Updated += new HistogramEventHandler(chartForm.StatChart.Update);
                     chartForm.StatChart.AddSeries(residualHistogram);
                 }
 
-                chartForm.StatChart.Remaster();
+                chartForm.StatChart.Update(this, new EventArgs());
                 chartForm.Show();
             }
         }
@@ -666,8 +664,7 @@ namespace Mayfly.Mathematics
 
                 if (scatterplots.Count > 0)
                 {
-                    Scatterplot.ShowOnChart(columnSelection.Argument.HeaderText,
-                        columnSelection.Function.HeaderText, scatterplots);
+                    Scatterplot.ShowOnChart(columnSelection.Argument.HeaderText, columnSelection.Function.HeaderText, scatterplots);
                 }
             }
         }

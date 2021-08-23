@@ -96,9 +96,7 @@ namespace Mayfly.Mathematics.Statistics
 
                 statChart1.Clear();
                 statChart1.AddSeries(histogram);
-                statChart1.SetColorScheme();
-
-                statChart1.Remaster();
+                statChart1.Update(statChart1, new EventArgs());
 
                 numericUpDownCL_ValueChanged(numericUpDownCL, new EventArgs());
             }
@@ -135,6 +133,7 @@ namespace Mayfly.Mathematics.Statistics
             textBoxSIMin.Text = min.ToString("N2");
         }
 
+
         
         private void pictureBoxNormality_DoubleClick(object sender, EventArgs e)
         {
@@ -162,13 +161,6 @@ namespace Mayfly.Mathematics.Statistics
         private void buttonReport_Click(object sender, EventArgs e)
         {
             SampleDisplay.GetReport().Run();
-        }
-
-                
-        
-        private void statChart1_StructureValueChanged(object sender, EventArgs e)
-        {
-            histogram.Update(sender, e);
         }
     }
 }

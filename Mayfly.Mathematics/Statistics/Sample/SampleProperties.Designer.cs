@@ -400,7 +400,6 @@
             this.statChart1.Name = "statChart1";
             this.statChart1.ShowLegend = false;
             this.statChart1.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
-            this.statChart1.StructureValueChanged += new System.EventHandler(this.statChart1_StructureValueChanged);
             // 
             // label6
             // 

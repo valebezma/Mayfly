@@ -14,8 +14,6 @@ namespace Mayfly.Mathematics.Charts
 {
     public partial class ScatterplotProperties : Form
     {
-        #region Properties
-
         public event ScatterplotEventHandler ValueChanged;
 
         public Scatterplot Scatterplot { get; set; }
@@ -140,8 +138,6 @@ namespace Mayfly.Mathematics.Charts
             set { numericUpDownConfidenceLevel.Value = 100 * (decimal)value; }
         }
 
-        #endregion
-
         bool TrendColored = false;
 
 
@@ -166,8 +162,6 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        #region Methods
-
         public void ResetTitle()
         {
             Text = string.Format(Resources.Interface.SeriesProperties, ScatterplotName);
@@ -178,8 +172,6 @@ namespace Mayfly.Mathematics.Charts
             tabControl1.SelectedTab = tabPageTrendline;
         }
 
-        #endregion
-
 
 
         private void valueChanged(object sender, EventArgs e)
@@ -189,7 +181,7 @@ namespace Mayfly.Mathematics.Charts
                 ValueChanged.Invoke(sender, new ScatterplotEventArgs(Scatterplot));
             }
 
-            if (Scatterplot != null) Scatterplot.Update(sender, e);
+            if (Scatterplot != null) Scatterplot.Update();
         }
 
         private void checkBoxTrend_CheckedChanged(object sender, EventArgs e)

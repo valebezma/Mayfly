@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using Mayfly.Extensions;
 
 namespace Mayfly.Software
 {
@@ -172,7 +173,7 @@ namespace Mayfly.Software
             public string GetChanges()
             {
                 if (this.IsChangesNull()) { return Resources.Update.ChangesNotDescribed + Environment.NewLine; }
-                else { return Text.GetLocalizedValue(this.Changes) + Environment.NewLine; }
+                else { return this.Changes.GetLocalizedValue() + Environment.NewLine; }
             }
         }
 

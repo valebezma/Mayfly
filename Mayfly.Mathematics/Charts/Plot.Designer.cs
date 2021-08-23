@@ -59,7 +59,6 @@
             this.contextScatterplotSplit = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplotHistogramX = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplotApart = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogram = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextHistogramProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogramAddFit = new System.Windows.Forms.ToolStripMenuItem();
@@ -181,8 +180,7 @@
             this.toolStripSeparator5,
             this.contextScatterplotStatistics,
             this.contextScatterplotTransform,
-            this.contextScatterplotApart,
-            this.contextScatterplotUpdate});
+            this.contextScatterplotApart});
             this.contextScatterplot.Name = "contextMenuStripRegression";
             resources.ApplyResources(this.contextScatterplot, "contextScatterplot");
             this.contextScatterplot.Opening += new System.ComponentModel.CancelEventHandler(this.contextScatterplot_Opening);
@@ -294,12 +292,6 @@
             this.contextScatterplotApart.Name = "contextScatterplotApart";
             resources.ApplyResources(this.contextScatterplotApart, "contextScatterplotApart");
             this.contextScatterplotApart.Click += new System.EventHandler(this.contextItemScatterplotApart_Click);
-            // 
-            // contextScatterplotUpdate
-            // 
-            resources.ApplyResources(this.contextScatterplotUpdate, "contextScatterplotUpdate");
-            this.contextScatterplotUpdate.Name = "contextScatterplotUpdate";
-            this.contextScatterplotUpdate.Click += new System.EventHandler(this.contextScatterplotUpdate_Click);
             // 
             // contextHistogram
             // 
@@ -504,7 +496,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotMerge;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotSplit;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotHistogramX;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotUpdate;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramTransform;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramSplit;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramDelete;

@@ -180,7 +180,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
             {
                 plotQualify.AddSeries(hist);
-                hist.DataSeries.SetCustomProperty("DrawSideBySide", "False");
+                hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
 
             //plotQualify.Remove("Bio", false);
