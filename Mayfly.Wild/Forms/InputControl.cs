@@ -88,10 +88,8 @@ namespace Mayfly.Wild
             if (Scatterplot != null)
             {
                 StatChart.AddSeries(Scatterplot);
-
                 StatChart.AxisXTitle = Argument.HeaderText;
                 StatChart.AxisYTitle = Function.HeaderText;
-                StatChart.RecalculateAxesProperties();
             }
 
             StatChart.Remaster();

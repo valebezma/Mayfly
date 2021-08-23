@@ -271,17 +271,14 @@ namespace Mayfly.Fish.Explorer
             Scatterplot yieldF = new Scatterplot(yield, "Yield");
             yieldF.Series.ChartType = SeriesChartType.Line;
             yieldF.IsChronic = true;
+            plotYield.AddSeries(yieldF);
 
             Scatterplot yieldS = new Scatterplot(sample, "Sample");
             yieldS.Series.ChartType = SeriesChartType.Line;
             yieldS.IsChronic = true;
-
-            plotYield.AddSeries(yieldF);
             plotYield.AddSeries(yieldS);
 
             plotYield.Remaster();
-            plotYield.RefreshAxes();
-            //plotYield.RefreshAxes();
 
             pageYield.SetNavigation(true);
             pageYield.AllowNext = AnnualStacks.Length > 1;
@@ -362,7 +359,7 @@ namespace Mayfly.Fish.Explorer
 
             statChartVpa.AxisXMin = new DateTime(min, 1, 1).ToOADate();
             statChartVpa.AxisXMax = new DateTime(max + 1, 1, 1).ToOADate();
-            statChartVpa.RefreshAxes();
+            statChartVpa.Remaster();
 
             //foreach (Cohort cohort in Population)
             //{
@@ -550,7 +547,7 @@ namespace Mayfly.Fish.Explorer
             Population.Run(ModelCohort);
 
             statChartVpa.AxisYMax = Population.GetMaximumSurvivals() / 1000;
-            statChartVpa.RecalculateAxesProperties();
+            statChartVpa.Remaster();
 
             for (int i = 0; i < ModelCohort.Count; i++)
             {
@@ -651,13 +648,13 @@ namespace Mayfly.Fish.Explorer
             catches.Properties.ScatterplotName = "Catch";
             catches.Series.ChartType = SeriesChartType.Line;
             statChartVpa.AddSeries(catches);
-            catches.Update(this, e);
+            catches.Update();
 
             Scatterplot size = cohort.GetSurvivorsHistory(statChartVpa.IsChronic);
             size.Properties.ScatterplotName = "Size";
             size.Series.ChartType = SeriesChartType.Line;
             statChartVpa.AddSeries(size);
-            size.Update(this, e);
+            size.Update();
 
             statChartVpa.Remaster();
         }

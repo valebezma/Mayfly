@@ -128,7 +128,6 @@
             this.plotPrediction.Name = "plotPrediction";
             this.plotPrediction.ShowLegend = true;
             this.plotPrediction.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Years;
-            this.plotPrediction.StructureValueChanged += new System.EventHandler(this.numericUpDownX_ValueChanged);
             // 
             // label1
             // 

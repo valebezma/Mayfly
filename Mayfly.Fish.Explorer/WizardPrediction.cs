@@ -141,17 +141,11 @@ namespace Mayfly.Fish.Explorer
             {
                 double x = (double)numericUpDownX.Value;
 
-                yieldPrediction.Calc.Data = Regression.Predict(
-                    DateTime.FromOADate(plotPrediction.AxisXMax));
-                yieldPredictionChanged.Calc.Data = Regression.Predict(
-                    DateTime.FromOADate(plotPrediction.AxisXMax), x);
-                yieldPredictionChanged.Properties.ScatterplotName =
-                    string.Format("Predicted yields (with {0:P1} change)", (x - 1.0));
+                yieldPrediction.Calc.Data = Regression.Predict(DateTime.FromOADate(plotPrediction.AxisXMax));
+                yieldPredictionChanged.Calc.Data = Regression.Predict(DateTime.FromOADate(plotPrediction.AxisXMax), x);
+                yieldPredictionChanged.Properties.ScatterplotName = string.Format("Predicted yields (with {0:P1} change)", (x - 1.0));
 
-                yieldPrediction.BuildSeries();
-                yieldPredictionChanged.BuildSeries();
-
-                plotPrediction.RecalculateAxesProperties();
+                plotPrediction.Remaster();
             }
         }
 

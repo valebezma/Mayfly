@@ -20,8 +20,12 @@ namespace Mayfly.Mathematics.Charts
 
         public string FunctionName
         {
-            get;
-            internal set;
+            get { return textBoxName.Text; }
+            set
+            {
+                textBoxName.Text = value;
+                ResetTitle();
+            }
         }
 
         public bool AllowCursors
@@ -52,6 +56,7 @@ namespace Mayfly.Mathematics.Charts
         {
             InitializeComponent();
             Functor = functor;
+
             textBoxName.Text = functor.Name;
         }
 

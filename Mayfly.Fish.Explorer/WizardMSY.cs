@@ -255,7 +255,6 @@ namespace Mayfly.Fish.Explorer
 
             plotMSY.AddSeries(predictC);
             plotMSY.AddSeries(predictY);
-            plotMSY.SetColorScheme();
 
             Cohort coh = VirtualCohort.GetAlternateState(plotMSY.AxisXMax);
             plotMSY.AxisYMax = coh.TotalQuantity / 1000.0;

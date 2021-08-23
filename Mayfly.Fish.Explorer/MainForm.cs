@@ -435,12 +435,12 @@ namespace Mayfly.Fish.Explorer
         {
             if (!e.Cancelled)
             {
-                double q = FullStack.Quantity();
+                //double q = FullStack.Quantity();
                 double w = FullStack.Mass();
 
                 labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
-                labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
-                statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
+                //labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
+                //statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
                 statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
 
                 //if (tabPageSpcModels.Parent != null) {
@@ -2275,6 +2275,11 @@ namespace Mayfly.Fish.Explorer
                 (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged).GetHistogramSample();
 
             plotQualify.Remaster();
+
+            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            {
+                if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
+            }
         }
 
         #endregion
@@ -2341,23 +2346,38 @@ namespace Mayfly.Fish.Explorer
 
             if (model != null)
             {
-                if (model.ExternalData != null)
+                if (model.ExternalData == null)
+                {
+                    ext.Calc = null;
+                }
+                else
                 {
                     ext.Calc = model.ExternalData;
                     ext.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    ext.Series.YAxisType = AxisType.Secondary;
                 }
 
-                if (model.InternalData != null)
+                if (model.InternalData == null)
+                {
+                    inter.Calc = null;
+                }
+                else
                 {
                     inter.Calc = model.InternalData;
                     inter.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    inter.Series.YAxisType = AxisType.Secondary;
                 }
 
-                if (model.CombinedData != null)
+                if (model.CombinedData == null)
+                {
+                    combi.Calc = null;
+                }
+                else
                 {
                     combi.Calc = model.CombinedData;
                     combi.Properties.SelectedApproximationType = model.Nature;
                     combi.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    combi.Series.YAxisType = AxisType.Secondary;
                 }
             }
 

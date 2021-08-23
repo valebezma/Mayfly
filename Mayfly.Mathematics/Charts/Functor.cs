@@ -112,31 +112,35 @@ namespace Mayfly.Mathematics.Charts
 
                 if (TransposeCharting)
                 {
-                    if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
-                        x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
-                    {
-                        Series.Points.Add(new DataPoint(x, y));
-                    }
-                }
-                else
-                {
                     if (x > yMin - 5 * yInterval && x < yMax + 5 * yInterval &&
                         y > xMin - 5 * xInterval && y < xMax + 5 * xInterval)
                     {
                         Series.Points.Add(new DataPoint(y, x));
                     }
                 }
+                else
+                {
+                    if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
+                        x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
+                    {
+                        Series.Points.Add(new DataPoint(x, y));
+                    }
+                }
             }
         }
 
-        public void Update()
+        public void Update(AxisType axisType)
         {
             if (Container == null) return;
 
             if (Series == null)
             {
-                Series = new Series(Properties.FunctionName);
-                Series.ChartType = SeriesChartType.Line;
+                Series = new Series(Properties.FunctionName)
+                {
+                    ChartType = SeriesChartType.Line
+                };
+
+                Container.Series.Add(Series);
             }
             else
             {
@@ -145,6 +149,7 @@ namespace Mayfly.Mathematics.Charts
 
             this.Name = Properties.FunctionName;
             Series.Name = Properties.FunctionName;
+            Series.YAxisType = axisType;
             Series.BorderWidth = Properties.TrendWidth;
             Series.Color = Container.IsDistinguishingMode ? (Constants.MotiveColor) : Properties.TrendColor;
 
@@ -182,6 +187,12 @@ namespace Mayfly.Mathematics.Charts
             {
                 Updated.Invoke(this, new EventArgs());
             }
+        }
+
+        public void Update()
+        {
+            if (Series != null) { Update(Series.YAxisType); }
+            else { Update(AxisType.Primary); }
         }
 
 

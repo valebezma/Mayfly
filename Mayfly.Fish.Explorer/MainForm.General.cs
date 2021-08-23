@@ -196,6 +196,10 @@ namespace Mayfly.Fish.Explorer
                 AllowedStack.PopulateSpeciesMenu(menuItemMSY, speciesMSY_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
+                double q = FullStack.Quantity();
+                labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
+                statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
+
                 if (!modelCalc.IsBusy && !isClosing)
                 {
                     IsBusy = true;

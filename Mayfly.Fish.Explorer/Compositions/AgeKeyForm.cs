@@ -167,9 +167,7 @@ namespace Mayfly.Fish.Explorer
             plotT.AxisXMax = maxx;
             plotT.AxisYMin = 0.0;
             plotT.AxisYMax = maxy;
-
             plotT.Remaster();
-
             tabControl1.SelectedTab = pageChart;
         }
 

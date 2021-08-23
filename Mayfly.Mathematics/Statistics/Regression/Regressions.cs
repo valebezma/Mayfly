@@ -156,7 +156,7 @@ namespace Mayfly.Mathematics.Statistics
                     Plot statChart = scatterplot.ShowOnChart(Form.ModifierKeys.HasFlag(Keys.Alt));
                     statChart.AxisXTitle = line.Data.X.Name;
                     statChart.AxisYTitle = line.Data.Y.Name;
-                    statChart.Update(statChart, new EventArgs());
+                    statChart.Remaster();
                 }
                 else
                 {
