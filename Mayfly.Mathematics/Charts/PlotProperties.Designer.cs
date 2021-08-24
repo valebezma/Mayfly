@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlotProperties));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageChart = new System.Windows.Forms.TabPage();
@@ -97,6 +98,10 @@
             this.label25 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.fontDialogUniversalFont = new System.Windows.Forms.FontDialog();
+            this.contextMenuPrint = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itemA4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemA5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemA6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabPageChart.SuspendLayout();
             this.tabPageAxisX.SuspendLayout();
@@ -112,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Interval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Min)).BeginInit();
+            this.contextMenuPrint.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -774,14 +780,41 @@
             this.fontDialogUniversalFont.ShowColor = true;
             this.fontDialogUniversalFont.Apply += new System.EventHandler(this.fontDialogUniversalFont_Apply);
             // 
-            // ChartProperties
+            // contextMenuPrint
+            // 
+            this.contextMenuPrint.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemA4,
+            this.itemA5,
+            this.itemA6});
+            this.contextMenuPrint.Name = "contextMenuPrint";
+            resources.ApplyResources(this.contextMenuPrint, "contextMenuPrint");
+            // 
+            // itemA4
+            // 
+            this.itemA4.Name = "itemA4";
+            resources.ApplyResources(this.itemA4, "itemA4");
+            this.itemA4.Click += new System.EventHandler(this.itemA4_Click);
+            // 
+            // itemA5
+            // 
+            this.itemA5.Name = "itemA5";
+            resources.ApplyResources(this.itemA5, "itemA5");
+            this.itemA5.Click += new System.EventHandler(this.itemA5_Click);
+            // 
+            // itemA6
+            // 
+            this.itemA6.Name = "itemA6";
+            resources.ApplyResources(this.itemA6, "itemA6");
+            this.itemA6.Click += new System.EventHandler(this.itemA6_Click);
+            // 
+            // PlotProperties
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ChartProperties";
+            this.Name = "PlotProperties";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Properties_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.tabPageChart.ResumeLayout(false);
@@ -802,6 +835,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Interval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Min)).EndInit();
+            this.contextMenuPrint.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -876,5 +910,9 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.ContextMenuStrip contextMenuPrint;
+        private System.Windows.Forms.ToolStripMenuItem itemA4;
+        private System.Windows.Forms.ToolStripMenuItem itemA5;
+        private System.Windows.Forms.ToolStripMenuItem itemA6;
     }
 }

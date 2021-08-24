@@ -230,7 +230,22 @@ namespace Mayfly.Mathematics.Charts
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            plot.Print();
+            contextMenuPrint.Show(buttonPrint, Point.Empty, ToolStripDropDownDirection.AboveRight);
+        }
+
+        private void itemA4_Click(object sender, EventArgs e)
+        {
+            plot.Print(15, 20);
+        }
+
+        private void itemA5_Click(object sender, EventArgs e)
+        {
+            plot.Print(15, 10);
+        }
+
+        private void itemA6_Click(object sender, EventArgs e)
+        {
+            plot.Print(10, 10);
         }
     }
 }

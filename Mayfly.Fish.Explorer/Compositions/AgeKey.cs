@@ -298,7 +298,7 @@ namespace Mayfly.Fish.Explorer
             //table1.AddHeaderCell(Resources.Reports.Sections.ALK.Sample, 2);
             table1.AddHeaderCell(Resources.Reports.Sections.ALK.Treated, 2, CellSpan.Rows);
             table1.AddHeaderCell(Resources.Reports.Sections.ALK.Untreated, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Age, Count);
+            table1.AddHeaderCell(Wild.Resources.Reports.Caption.AgeUnit, Count);
             table1.EndRow();
 
             table1.StartRow();

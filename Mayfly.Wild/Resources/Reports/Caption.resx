@@ -120,7 +120,7 @@
   <data name="Abundance" xml:space="preserve">
     <value>Abundance</value>
   </data>
-  <data name="Age" xml:space="preserve">
+  <data name="AgeUnit" xml:space="preserve">
     <value>Age, years</value>
   </data>
   <data name="Biomass" xml:space="preserve">
@@ -135,7 +135,7 @@
   <data name="FactorValue" xml:space="preserve">
     <value>Value</value>
   </data>
-  <data name="Length" xml:space="preserve">
+  <data name="LengthUnit" xml:space="preserve">
     <value>Length, mm</value>
   </data>
   <data name="Mass" xml:space="preserve">

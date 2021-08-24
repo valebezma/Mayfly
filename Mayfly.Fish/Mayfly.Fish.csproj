@@ -91,11 +91,6 @@
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\SamplerRow.cs" />
-    <Compile Include="Resources\Reports\Caption.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Caption.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Reports\Card.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,11 +196,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Caption.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Caption.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Reports\Caption.ru.resx" />
     <EmbeddedResource Include="Resources\Reports\Card.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Card.Designer.cs</LastGenOutput>

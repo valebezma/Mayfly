@@ -755,8 +755,8 @@ namespace Mayfly.Fish
 
             if (!indRow.IsLengthNull())
             {
-                Data.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.Length);
-                if (lengthFactor == null) lengthFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.Length);
+                Data.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.LengthUnit);
+                if (lengthFactor == null) lengthFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.LengthUnit);
 
                 Data.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, lengthFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, lengthFactor, indRow.Length);
@@ -765,8 +765,8 @@ namespace Mayfly.Fish
 
             if (!indRow.IsAgeNull())
             {
-                Data.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.Age);
-                if (ageFactor == null) ageFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.Age);
+                Data.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.AgeUnit);
+                if (ageFactor == null) ageFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.AgeUnit);
 
                 Data.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, ageFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, ageFactor, indRow.Age);

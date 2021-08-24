@@ -72,9 +72,9 @@ namespace Mayfly.Wild.Resources.Reports {
         /// <summary>
         ///   Looks up a localized string similar to Age, years.
         /// </summary>
-        public static string Age {
+        public static string AgeUnit {
             get {
-                return ResourceManager.GetString("Age", resourceCulture);
+                return ResourceManager.GetString("AgeUnit", resourceCulture);
             }
         }
         
@@ -117,9 +117,9 @@ namespace Mayfly.Wild.Resources.Reports {
         /// <summary>
         ///   Looks up a localized string similar to Length, mm.
         /// </summary>
-        public static string Length {
+        public static string LengthUnit {
             get {
-                return ResourceManager.GetString("Length", resourceCulture);
+                return ResourceManager.GetString("LengthUnit", resourceCulture);
             }
         }
         

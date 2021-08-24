@@ -155,10 +155,10 @@ namespace Mayfly.Mathematics.Charts
             UpdateDataPoints();
             //}
 
-            if (Count > 150)
-            {
-                Properties.PointWidth = 1;
-            }
+            //if (Count > 150)
+            //{
+            //    Properties.PointWidth = 1;
+            //}
 
             Series.Name = Properties.HistogramName;
 

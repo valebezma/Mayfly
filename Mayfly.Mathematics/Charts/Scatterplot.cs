@@ -309,7 +309,7 @@ namespace Mayfly.Mathematics.Charts
 
                         foreach (DataPoint dp in Series.Points)
                         {
-                            dp.MarkerColor = dp.MarkerBorderColor = (
+                            dp.MarkerBorderColor = (
                                 Properties.HighlightOutliers && Calc.Regression.outliers != null &&
                                 Calc.Regression.outliers.Contains(
                                     TransposeCharting ? dp.YValues[0] : dp.XValue,

@@ -181,9 +181,9 @@ namespace Mayfly.Fish.Explorer
 
             table1.StartRow();
             table1.AddHeaderCell(Mayfly.Resources.Interface.Total);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Length);
-            table1.AddHeaderCell(Fish.Resources.Reports.Caption.Mass);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Age);
+            table1.AddHeaderCell(Wild.Resources.Reports.Caption.LengthUnit);
+            table1.AddHeaderCell(Wild.Resources.Reports.Caption.MassUnit);
+            table1.AddHeaderCell(Wild.Resources.Reports.Caption.AgeUnit);
             table1.EndRow();
 
             table1.EndHeader();
