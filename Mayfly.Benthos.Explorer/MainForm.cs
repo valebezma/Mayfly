@@ -1142,7 +1142,14 @@ namespace Mayfly.Benthos.Explorer
 
                 gridRow.CreateCells(spreadSheetSpc);
 
-                gridRow.Cells[columnSpcSpc.Index].Value = composition[i].Name;
+                if (composition is TaxaComposition tc)
+                {
+                    gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
+                }
+                else if (composition is SpeciesComposition sc)
+                {
+                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
+                }
 
                 gridRow.Cells[columnSpcQuantity.Index].Value = composition[i].Quantity;
                 gridRow.Cells[columnSpcMass.Index].Value = composition[i].Mass;

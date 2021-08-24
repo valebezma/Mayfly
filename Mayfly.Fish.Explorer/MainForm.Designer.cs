@@ -59,7 +59,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1000D, 5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100000D, 5D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -127,6 +127,9 @@
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSample = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemArtefactsSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemGearStats = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSpcStats = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemLoadCards = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLoadSpc = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,10 +140,6 @@
             this.menuItemLoadStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSurvey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSurveyInput = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemGearStats = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSpcStats = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSpawning = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFishery = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
@@ -675,6 +674,9 @@
             // 
             this.menuSample.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemArtefactsSearch,
+            this.toolStripSeparator23,
+            this.menuItemGearStats,
+            this.menuItemSpcStats,
             this.toolStripSeparator2,
             this.menuItemLoadCards,
             this.menuItemLoadSpc,
@@ -690,6 +692,23 @@
             this.menuItemArtefactsSearch.Name = "menuItemArtefactsSearch";
             resources.ApplyResources(this.menuItemArtefactsSearch, "menuItemArtefactsSearch");
             this.menuItemArtefactsSearch.Click += new System.EventHandler(this.menuItemArtefacts_Click);
+            // 
+            // toolStripSeparator23
+            // 
+            this.toolStripSeparator23.Name = "toolStripSeparator23";
+            resources.ApplyResources(this.toolStripSeparator23, "toolStripSeparator23");
+            // 
+            // menuItemGearStats
+            // 
+            this.menuItemGearStats.Name = "menuItemGearStats";
+            resources.ApplyResources(this.menuItemGearStats, "menuItemGearStats");
+            this.menuItemGearStats.Click += new System.EventHandler(this.menuItemGearStats_Click);
+            // 
+            // menuItemSpcStats
+            // 
+            this.menuItemSpcStats.Name = "menuItemSpcStats";
+            resources.ApplyResources(this.menuItemSpcStats, "menuItemSpcStats");
+            this.menuItemSpcStats.Click += new System.EventHandler(this.menuItemSpcStats_Click);
             // 
             // toolStripSeparator2
             // 
@@ -743,10 +762,6 @@
             // 
             this.menuSurvey.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemSurveyInput,
-            this.toolStripSeparator6,
-            this.menuItemGearStats,
-            this.menuItemSpcStats,
-            this.toolStripSeparator15,
             this.menuItemSpawning});
             this.menuSurvey.Name = "menuSurvey";
             resources.ApplyResources(this.menuSurvey, "menuSurvey");
@@ -756,28 +771,6 @@
             this.menuItemSurveyInput.Name = "menuItemSurveyInput";
             resources.ApplyResources(this.menuItemSurveyInput, "menuItemSurveyInput");
             this.menuItemSurveyInput.Click += new System.EventHandler(this.menuItemSurveyInput_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
-            // 
-            // menuItemGearStats
-            // 
-            this.menuItemGearStats.Name = "menuItemGearStats";
-            resources.ApplyResources(this.menuItemGearStats, "menuItemGearStats");
-            this.menuItemGearStats.Click += new System.EventHandler(this.menuItemGearStats_Click);
-            // 
-            // menuItemSpcStats
-            // 
-            this.menuItemSpcStats.Name = "menuItemSpcStats";
-            resources.ApplyResources(this.menuItemSpcStats, "menuItemSpcStats");
-            this.menuItemSpcStats.Click += new System.EventHandler(this.menuItemSpcStats_Click);
-            // 
-            // toolStripSeparator15
-            // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
             // 
             // menuItemSpawning
             // 
@@ -1542,6 +1535,7 @@
             // 
             this.columnArtefactSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Format = "s";
             this.columnArtefactSpecies.DefaultCellStyle = dataGridViewCellStyle4;
             this.columnArtefactSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnArtefactSpecies, "columnArtefactSpecies");
@@ -1653,6 +1647,7 @@
             // 
             this.columnArtefactIndSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Format = "s";
             this.columnArtefactIndSpecies.DefaultCellStyle = dataGridViewCellStyle10;
             this.columnArtefactIndSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnArtefactIndSpecies, "columnArtefactIndSpecies");
@@ -1990,6 +1985,7 @@
             // columnCatchSpc
             // 
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.Format = "s";
             this.columnCatchSpc.DefaultCellStyle = dataGridViewCellStyle17;
             this.columnCatchSpc.FillWeight = 86.8969F;
             resources.ApplyResources(this.columnCatchSpc, "columnCatchSpc");
@@ -2048,7 +2044,7 @@
             // ColumnSpcStat
             // 
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.Format = "l";
+            dataGridViewCellStyle19.Format = "s";
             this.ColumnSpcStat.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.ColumnSpcStat, "ColumnSpcStat");
             this.ColumnSpcStat.Name = "ColumnSpcStat";
@@ -2503,7 +2499,6 @@
             this.plotQualify.BackColor = System.Drawing.SystemColors.Window;
             this.plotQualify.Name = "plotQualify";
             series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series3.BorderWidth = 2;
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Color = System.Drawing.Color.Red;
             series3.Name = "Limiter";
@@ -2900,6 +2895,7 @@
             // columnSpcSpc
             // 
             dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.Format = "l";
             this.columnSpcSpc.DefaultCellStyle = dataGridViewCellStyle41;
             this.columnSpcSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnSpcSpc, "columnSpcSpc");
@@ -2998,6 +2994,7 @@
             // columnLogSpc
             // 
             dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.Format = "s";
             this.columnLogSpc.DefaultCellStyle = dataGridViewCellStyle46;
             this.columnLogSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnLogSpc, "columnLogSpc");
@@ -3123,6 +3120,7 @@
             // columnStratifiedSpc
             // 
             dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.Format = "s";
             this.columnStratifiedSpc.DefaultCellStyle = dataGridViewCellStyle49;
             this.columnStratifiedSpc.FillWeight = 250F;
             resources.ApplyResources(this.columnStratifiedSpc, "columnStratifiedSpc");
@@ -3272,6 +3270,7 @@
             // columnIndSpecies
             // 
             dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.Format = "s";
             this.columnIndSpecies.DefaultCellStyle = dataGridViewCellStyle52;
             this.columnIndSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnIndSpecies, "columnIndSpecies");
@@ -3940,7 +3939,6 @@
         private Mayfly.Controls.SpreadSheet spreadSheetCatches;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem menuSample;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemLoadCards;
         private System.Windows.Forms.ToolStripMenuItem menuItemLoadIndividuals;
         public System.Windows.Forms.ComboBox comboBoxCatchesMesh;
@@ -3986,7 +3984,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemSpcTaxa;
         private System.Windows.Forms.Label labelEffortsNoData;
         private System.Windows.Forms.Label labelCatchesNoData;
-        private System.Windows.Forms.ToolStripMenuItem menuItemArtefactsSearch;
         private System.ComponentModel.BackgroundWorker loaderIndExtended;
         private System.ComponentModel.BackgroundWorker loaderLogExtended;
         private System.ComponentModel.BackgroundWorker loaderStratifiedExtended;
@@ -4030,9 +4027,6 @@
         private System.Windows.Forms.ContextMenuStrip contextArtIndividuals;
         private System.Windows.Forms.ToolStripMenuItem contextArtefactIndFind;
         private System.Windows.Forms.ToolStripMenuItem contextArtefactIndRecover;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactIndSpecies;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndRegID;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndDietUnw;
         private TaskDialogs.TaskDialog tdRecover;
         private TaskDialogs.TaskDialogButton tdbRecoverBackup;
         private TaskDialogs.TaskDialogButton tdbRecoverContinue;
@@ -4172,36 +4166,6 @@
         private Controls.SpreadSheetIconTextBoxColumn columnArtCardEffort;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem menuItemDietExplorer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchSpc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchW;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndRegID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
         private System.Windows.Forms.ToolStripMenuItem hideEmptyRecordsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndPrintLog;
@@ -4209,12 +4173,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem printIndividualsLogToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactN;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactDetailed;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactLength;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactMass;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardInvestigator;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWater;
@@ -4243,6 +4201,39 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityA;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityB;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardComments;
+        private System.Windows.Forms.Label labelCardCountValue;
+        private Wild.Controls.StratifiedSample stratifiedSample;
+        private System.Windows.Forms.ToolStripMenuItem stratifiedSamplesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printStratifiedSamplesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripMenuItem printStratifiedSampleToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechClass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechOps;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechTotals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechStratified;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechLog;
+        private System.Windows.Forms.ToolStripMenuItem fecundityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem growthToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem parasitesToolStripMenuItem;
+        private System.Windows.Forms.ListView listViewDates;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelCardCount;
+        private System.Windows.Forms.Label labelWgt;
+        private System.Windows.Forms.Label labelWgtValue;
+        private System.Windows.Forms.Label labelQty;
+        private System.Windows.Forms.Label labelQtyValue;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ComboBox comboBoxQualValue;
+        private System.Windows.Forms.Label labelQualify;
+        private System.Windows.Forms.Label labelQualSubset;
+        private System.Windows.Forms.CheckBox checkBoxQualOutliers;
+        private System.Windows.Forms.Button buttonQualOutliers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchSpc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchW;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcSpc;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcValid;
@@ -4265,39 +4256,46 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedInterval;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedTo;
-        private System.Windows.Forms.Label labelCardCountValue;
-        private Wild.Controls.StratifiedSample stratifiedSample;
-        private System.Windows.Forms.ToolStripMenuItem stratifiedSamplesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printStratifiedSamplesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
-        private System.Windows.Forms.ToolStripMenuItem printStratifiedSampleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactN;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactDetailed;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactLength;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactMass;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactAge;
+        private System.Windows.Forms.ToolStripMenuItem menuItemArtefactsSearch;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
         private System.Windows.Forms.ToolStripMenuItem menuItemGearStats;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpcStats;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechClass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechOps;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechTotals;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechStratified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechLog;
-        private System.Windows.Forms.ToolStripMenuItem fecundityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem growthToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem parasitesToolStripMenuItem;
-        private System.Windows.Forms.ListView listViewDates;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label labelCardCount;
-        private System.Windows.Forms.Label labelWgt;
-        private System.Windows.Forms.Label labelWgtValue;
-        private System.Windows.Forms.Label labelQty;
-        private System.Windows.Forms.Label labelQtyValue;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
-        private System.Windows.Forms.ComboBox comboBoxQualValue;
-        private System.Windows.Forms.Label labelQualify;
-        private System.Windows.Forms.Label labelQualSubset;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
-        private System.Windows.Forms.CheckBox checkBoxQualOutliers;
-        private System.Windows.Forms.Button buttonQualOutliers;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactIndSpecies;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndRegID;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndDietUnw;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndRegID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
     }
 }

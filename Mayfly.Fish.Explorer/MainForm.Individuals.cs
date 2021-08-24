@@ -256,7 +256,7 @@ namespace Mayfly.Fish.Explorer
 
         private void UpdateIndividualRow(DataGridViewRow result, Data.IndividualRow individualRow) 
         {
-            result.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.IsSpcIDNull() ? null : individualRow.Species;
+            result.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.SpeciesRow;
             result.Cells[columnIndLength.Index].Value = individualRow.IsLengthNull() ? null : (object)individualRow.Length;
             result.Cells[columnIndMass.Index].Value = individualRow.IsMassNull() ? null : (object)individualRow.Mass;
             result.Cells[columnIndSomaticMass.Index].Value = individualRow.IsSomaticMassNull() ? null : (object)individualRow.SomaticMass;
@@ -334,12 +334,7 @@ namespace Mayfly.Fish.Explorer
 
                 //gridRow.Cells[columnIndID.Index].Value;
 
-                if (stratifiedRow.LogRow.IsSpcIDNull()) { }
-                else
-                {
-                    gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow.Species;
-                }
-
+                gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow;
                 gridRow.Cells[columnIndLength.Index].Value = stratifiedRow.SizeClass.Midpoint;
                 gridRow.Cells[columnIndMass.Index].Value = data.FindMassModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
                 gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.Interface.SimulatedIndividual;

@@ -68,7 +68,7 @@ namespace Mayfly.Fish.Explorer
             result.CreateCells(spreadSheetStratified);
 
             result.Cells[columnStratifiedID.Index].Value = logRow.ID;
-            result.Cells[columnStratifiedSpc.Index].Value = logRow.SpeciesRow.Species;
+            result.Cells[columnStratifiedSpc.Index].Value = logRow.SpeciesRow;
             result.Cells[columnStratifiedCount.Index].Value = logRow.QuantityStratified;
             result.Cells[columnStratifiedMass.Index].Value = logRow.MassStratified / 1000;
             result.Cells[columnStratifiedInterval.Index].Value = logRow.Interval;

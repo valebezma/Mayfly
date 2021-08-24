@@ -252,6 +252,7 @@
             this.checkBoxShowFitResult.Name = "checkBoxShowFitResult";
             this.checkBoxShowFitResult.UseVisualStyleBackColor = true;
             this.checkBoxShowFitResult.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxShowFitResult.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxShowCount
             // 
@@ -259,6 +260,7 @@
             this.checkBoxShowCount.Name = "checkBoxShowCount";
             this.checkBoxShowCount.UseVisualStyleBackColor = true;
             this.checkBoxShowCount.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxShowCount.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxShowFit
             // 
