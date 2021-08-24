@@ -280,7 +280,7 @@ namespace Mayfly.Fish.Explorer
             report.AddTable(
                 new Composition[] { ageCompositionWizard.CatchesComposition, AgeStructure }.GetTable(
                     CompositionColumn.Abundance | CompositionColumn.AbundanceFraction | CompositionColumn.Biomass | CompositionColumn.BiomassFraction,
-                plotAgeAdjusted.Text, Wild.Resources.Reports.Caption.Age, string.Empty));
+                plotAgeAdjusted.Text, Wild.Resources.Reports.Caption.AgeUnit, string.Empty));
             report.AddImage(plotAgeAdjusted.GetVector(17, 7), plotAgeAdjusted.Text);
         }
 
@@ -343,7 +343,7 @@ namespace Mayfly.Fish.Explorer
             try
             {
                 AgeStructure = Data.GetAgeCompositionFrame(SpeciesRow);
-                AgeStructure.Name = Wild.Resources.Reports.Caption.Age;
+                AgeStructure.Name = Wild.Resources.Reports.Caption.AgeUnit;
             }
             catch
             {

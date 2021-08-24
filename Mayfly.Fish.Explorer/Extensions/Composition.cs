@@ -195,13 +195,13 @@ namespace Mayfly.Fish.Explorer
             {
                 if (content.HasFlag(CompositionColumn.LengthSample))
                 {
-                    table.AddHeaderCell(Wild.Resources.Reports.Caption.Length + table.AddNotice(Resources.Reports.Notice.SampleFormat,
+                    table.AddHeaderCell(Wild.Resources.Reports.Caption.LengthUnit + table.AddNotice(Resources.Reports.Notice.SampleFormat,
                         Mathematics.Resources.FormatNotice.ResourceManager.GetString(composition.FormatSampleLength.ToLowerInvariant().StripNumbers())).Holder, .12, 2);
                 }
 
                 if (content.HasFlag(CompositionColumn.MassSample))
                 {
-                    table.AddHeaderCell(Fish.Resources.Reports.Caption.Mass + table.AddNotice(Resources.Reports.Notice.SampleFormat,
+                    table.AddHeaderCell(Wild.Resources.Reports.Caption.MassUnit + table.AddNotice(Resources.Reports.Notice.SampleFormat,
                         Mathematics.Resources.FormatNotice.ResourceManager.GetString(composition.FormatSampleMass.ToLowerInvariant().StripNumbers())).Holder, .12, 2);
                 }
 

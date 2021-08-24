@@ -1040,7 +1040,8 @@ namespace Mayfly.Fish
 
                 #endregion
 
-                report.AddTable(Mayfly.Wild.Service.GetBlankTable(resources.GetString("tabPageLog.Text"), Resources.Reports.Caption.Mass, 15));
+                report.AddTable(Mayfly.Wild.Service.GetBlankTable(resources.GetString("tabPageLog.Text"), 
+                    Wild.Resources.Reports.Caption.MassUnit, 15));
 
                 return report;
             }
@@ -1241,7 +1242,8 @@ namespace Mayfly.Fish
                 //if (true)
                 //{
                 //report.BreakPage();
-                report.AddTable(Wild.Service.GetBlankTable(string.Empty, Resources.Reports.Caption.Mass, 20));
+                report.AddTable(Wild.Service.GetBlankTable(string.Empty, 
+                    Wild.Resources.Reports.Caption.MassUnit, 20));
                 //}
 
                 report.End();

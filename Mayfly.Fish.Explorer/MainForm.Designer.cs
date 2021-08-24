@@ -2491,6 +2491,15 @@
             // 
             resources.ApplyResources(this.plotQualify, "plotQualify");
             this.plotQualify.AxisXAutoInterval = false;
+            this.plotQualify.AxisXAutoMaximum = false;
+            this.plotQualify.AxisXAutoMinimum = false;
+            this.plotQualify.AxisXInterval = 0.2D;
+            this.plotQualify.AxisXMax = 1D;
+            this.plotQualify.AxisY2Interval = 0.2D;
+            this.plotQualify.AxisY2Max = 1D;
+            this.plotQualify.AxisYAutoMaximum = false;
+            this.plotQualify.AxisYInterval = 0.2D;
+            this.plotQualify.AxisYMax = 1D;
             this.plotQualify.BackColor = System.Drawing.SystemColors.Window;
             this.plotQualify.Name = "plotQualify";
             series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
@@ -2503,6 +2512,7 @@
             this.plotQualify.Series.Add(series3);
             this.plotQualify.ShowLegend = false;
             this.plotQualify.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            this.plotQualify.Updated += new System.EventHandler(this.plotQualify_Updated);
             // 
             // buttonSpeciesStatsReport
             // 

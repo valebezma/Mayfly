@@ -1926,9 +1926,17 @@ namespace Mayfly.Fish.Explorer
             {
                 selectedStatSpc = row;
                 plotQualify.ResetFormatted(selectedStatSpc.KeyRecord.ShortName);
+
                 plotQualify.AxisXMin = Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint;
                 plotQualify.AxisXMax = Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint;
-                plotQualify.AxisYMax = Math.Max(UserSettings.RequiredClassSize, AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
+                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0,
+                    Math.Max(UserSettings.RequiredClassSize, AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity));
+
+                //LengthComposition lc = AllowedStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return AllowedStack.Quantity(s, i); }, string.Empty);
+                //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
+                //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+                //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+
             }
 
             // Totals
@@ -1951,6 +1959,7 @@ namespace Mayfly.Fish.Explorer
                 checkBoxQualClass,
                 //comboBoxQualClass,
                 plotQualify);
+
 
             strates_Changed(sender, e);
 
@@ -2248,7 +2257,7 @@ namespace Mayfly.Fish.Explorer
             {
                 FishSamplerType samplerType = ((FishSamplerTypeDisplay)comboBoxQualType.SelectedValue).Type;
 
-                if (checkBoxQualClass.Checked)
+                if (checkBoxQualClass.Checked && comboBoxQualClass.SelectedValue != null)
                 {
                     countStack = FullStack.GetStack(samplerType, comboBoxQualClass.SelectedValue.ToString());
                 }
@@ -2282,6 +2291,15 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
+        private void plotQualify_Updated(object sender, EventArgs e)
+        {
+            plotQualify.Updated -= plotQualify_Updated;
+            plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize,
+                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity));
+            plotQualify.Remaster();
+            plotQualify.Updated += plotQualify_Updated;
+        }
+
         #endregion
 
         #region Models
@@ -2308,7 +2326,8 @@ namespace Mayfly.Fish.Explorer
 
             Cursor = plotQualify.Cursor = Cursors.WaitCursor;
 
-            plotQualify.AxisY2Title = selectedQualificationWay == 0 ? "Mass, g" : Wild.Resources.Reports.Caption.Age;
+            plotQualify.AxisY2Title = selectedQualificationWay == 0 ? 
+                Wild.Resources.Reports.Caption.MassUnit : Wild.Resources.Reports.Caption.AgeUnit;
 
             if (calcModel.IsBusy) { calcModel.CancelAsync(); }
             else { calcModel.RunWorkerAsync(); }

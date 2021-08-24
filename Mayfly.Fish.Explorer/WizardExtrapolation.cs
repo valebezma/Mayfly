@@ -667,7 +667,7 @@ namespace Mayfly.Fish.Explorer
         private void buttonAge_Click(object sender, EventArgs e)
         {
             Composition example = Data.GetAgeCompositionFrame(SpeciesRow);
-            example.Name = Wild.Resources.Reports.Caption.Age;
+            example.Name = Wild.Resources.Reports.Caption.AgeUnit;
             RunComposition(example);
         }
 

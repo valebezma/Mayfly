@@ -19,7 +19,7 @@ namespace Mayfly.Wild
                 }
             }
 
-            return new Sample(result.ToArray()) { Name = Resources.Reports.Caption.Length };
+            return new Sample(result.ToArray()) { Name = Resources.Reports.Caption.LengthUnit };
         }
 
         public double LengthAverage(Data.SpeciesRow speciesRow)

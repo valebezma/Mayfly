@@ -128,8 +128,8 @@ namespace Mayfly.Fish.Explorer
                 throw new ArgumentException("Only thiss provide chronic growth charts.");
 
             BivariateSample sample = new BivariateSample(
-                isChronic ? "Year" : Wild.Resources.Reports.Caption.Age,
-                Wild.Resources.Reports.Caption.Length);
+                isChronic ? "Year" : Wild.Resources.Reports.Caption.AgeUnit,
+                Wild.Resources.Reports.Caption.LengthUnit);
 
             foreach (AgeGroup cat in this)
             {

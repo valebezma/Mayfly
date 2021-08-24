@@ -138,7 +138,7 @@ namespace Mayfly.Wild
         public Scatterplot GetWeightScatterplot(string massAxis)
         {
             BivariateSample sample = new BivariateSample(
-                Resources.Reports.Caption.Length,
+                Resources.Reports.Caption.LengthUnit,
                 massAxis);
 
             foreach (Category cat in this)

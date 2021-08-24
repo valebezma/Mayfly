@@ -39,7 +39,7 @@ namespace Mayfly.Extensions
 
                 axis.MinorTickMark.Enabled = true;
                 axis.MinorTickMark.Interval = round;
-                axis.Maximum = axis.MinorTickMark.Interval * Math.Ceiling(axis.Maximum / axis.MinorTickMark.Interval);
+                //axis.Maximum = axis.MinorTickMark.Interval * Math.Ceiling(axis.Maximum / axis.MinorTickMark.Interval);
             }
             //else
             //{

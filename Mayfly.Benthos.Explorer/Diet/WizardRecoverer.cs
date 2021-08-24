@@ -1009,7 +1009,7 @@ namespace Mayfly.Benthos.Explorer
                                 table2.StartHeader(.35, 0, 0, 0, 0);
                                 table2.AddHeaderCell(
                                     Wild.Resources.Interface.MassRecover.ColPredator,
-                                    Wild.Resources.Reports.Caption.Length,
+                                    Wild.Resources.Reports.Caption.LengthUnit,
                                     Wild.Resources.Interface.MassRecover.ColRecMass,
                                     Wild.Resources.Interface.MassRecover.ColIdenticFor,
                                     Wild.Resources.Interface.MassRecover.ColTotalMass);

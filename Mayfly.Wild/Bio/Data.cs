@@ -78,16 +78,16 @@ namespace Mayfly.Wild
                 MassModels.Add(
                     new ContinuousBio(this, speciesRow, Individual.LengthColumn, Individual.MassColumn, TrendType.Power) 
                     {
-                        DisplayNameX = Resources.Reports.Caption.Length, 
-                        DisplayNameY = Resources.Reports.Caption.Mass
+                        DisplayNameX = Resources.Reports.Caption.LengthUnit, 
+                        DisplayNameY = Resources.Reports.Caption.MassUnit
                     }
                 );
 
                 GrowthModels.Add(
                     new ContinuousBio(this, speciesRow, Individual.AgeColumn, Individual.LengthColumn, TrendType.Growth)
                     {
-                        DisplayNameX = Resources.Reports.Caption.Age, 
-                        DisplayNameY = Resources.Reports.Caption.Length
+                        DisplayNameX = Resources.Reports.Caption.AgeUnit, 
+                        DisplayNameY = Resources.Reports.Caption.LengthUnit
                     }
                 );
             }

@@ -174,16 +174,16 @@ namespace Mayfly
             return r / 2D;
         }
 
-        public static double GetAutoLeft(double left, double right)
+        public static double AdjustLeft(double left, double right)
         {
             double z = GetAutoInterval(right - left);
             return ((int)(left / z)) * z;
         }
 
-        public static double GetAutoRight(double left, double right)
+        public static double AdjustRight(double left, double right)
         {
             double z = GetAutoInterval(right - left);
-            return ((int)(right / z) + 1) * z;
+            return ((right / z) % 1 == 0 && (right - left) != 0) ? ((int)(right / z)) * z : ((int)(right / z) + 1) * z;
         }
 
         public static string GetAutoFormat(double interval)

@@ -206,7 +206,7 @@ namespace Mayfly.Fish.Explorer
                     GrowthModels.Add(growth);
                 }
 
-                Scatterplot weight = cohort.GetWeightScatterplot(Fish.Resources.Reports.Caption.Mass);
+                Scatterplot weight = cohort.GetWeightScatterplot(Wild.Resources.Reports.Caption.MassUnit);
                 if (weight != null)
                 {
                     WeightModels.Add(weight);
