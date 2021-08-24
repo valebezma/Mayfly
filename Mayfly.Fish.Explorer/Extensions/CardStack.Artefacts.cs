@@ -70,13 +70,18 @@ namespace Mayfly.Fish.Explorer
                 int sampled = stack.QuantitySampled(speciesRow);
                 artefact.LengthMissing = sampled - stack.Measured(speciesRow) - stack.QuantityStratified(speciesRow);
 
-                artefact.AgeArtefact = new SpeciesFeatureArtefact(stack.Parent.Individual.AgeColumn);
-                artefact.AgeArtefact.UnmeasuredCount = sampled -
-                    stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.AgeColumn);
 
-                artefact.MassArtefact = new SpeciesFeatureArtefact(stack.Parent.Individual.MassColumn);
-                artefact.MassArtefact.UnmeasuredCount = sampled - 
-                    stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.MassColumn);
+                artefact.AgeArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Age);
+                artefact.AgeArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.AgeColumn);
+                var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
+                artefact.AgeArtefact.HasRegression = gm.CombinedData.IsRegressionOK;
+                if (gm.CombinedData.IsRegressionOK) artefact.AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
+
+                artefact.MassArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Mass);
+                artefact.MassArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.MassColumn);
+                var mm = stack.Parent.FindMassModel(speciesRow.Species);
+                artefact.MassArtefact.HasRegression = mm.CombinedData.IsRegressionOK;
+                if (mm.CombinedData.IsRegressionOK) artefact.MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
 
                 artefact.IndividualArtefacts = stack.GetIndividualArtefacts(artefact.SpeciesRow);
 
@@ -324,7 +329,7 @@ namespace Mayfly.Fish.Explorer
 
     public class SpeciesFeatureArtefact
     {
-        public DataColumn Column { get; set; }
+        public string FeatureName { get; set; }
 
         public int UnmeasuredCount { get; set; }
 
@@ -379,9 +384,9 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesFeatureArtefact(DataColumn dataColumn)
+        public SpeciesFeatureArtefact(string featureName)
         {
-            Column = dataColumn;
+            FeatureName = featureName;
         }
 
 
@@ -396,21 +401,18 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (DeviationsCount != 0)
                     {
-                        result += string.Format( Resources.Artefact.ValueHasRunouts,
-                            Service.Localize(Column.Caption), DeviationsCount) + "; ";
+                        result += string.Format( Resources.Artefact.ValueHasRunouts, FeatureName, DeviationsCount) + "; ";
                     }
                 }
                 else
                 {
                     if (DeviationsCount == 0)
                     {
-                        result += string.Format(Resources.Artefact.ValueIsRecoverable,
-                           Service.Localize(Column.Caption), UnmeasuredCount) + "; ";
+                        result += string.Format(Resources.Artefact.ValueIsRecoverable, FeatureName, UnmeasuredCount) + "; ";
                     }
                     else
                     {
-                        result += string.Format( Resources.Artefact.ValueIsRecoverableButHasRunouts, 
-                            Service.Localize(Column.Caption), UnmeasuredCount, DeviationsCount) + "; ";
+                        result += string.Format( Resources.Artefact.ValueIsRecoverableButHasRunouts, FeatureName, UnmeasuredCount, DeviationsCount) + "; ";
                     }
                 }
             }
@@ -418,8 +420,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (UnmeasuredCount != 0)
                 {
-                    result += string.Format( Resources.Artefact.ValueIsCritical, 
-                        Service.Localize(Column.Caption), UnmeasuredCount) + "; ";
+                    result += string.Format( Resources.Artefact.ValueIsCritical, FeatureName, UnmeasuredCount) + "; ";
                 }
             }
 

@@ -49,7 +49,7 @@ namespace Mayfly.Mathematics.Statistics
             }
         }
 
-        public BivariateSample outliers;
+        public BivariateSample Outliers;
 
         internal REngine engine;
 
@@ -176,7 +176,7 @@ namespace Mayfly.Mathematics.Statistics
 
             if (type == IntervalType.Prediction)
             {
-                outliers = new BivariateSample();
+                Outliers = new BivariateSample();
 
                 for (int i = 0; i < data.Count; i++)
                 {
@@ -200,7 +200,7 @@ namespace Mayfly.Mathematics.Statistics
 
                             if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(_y))
                             {
-                                outliers.Add(_x, _y);
+                                Outliers.Add(_x, _y);
                             }
                             break;
                         }
@@ -210,6 +210,17 @@ namespace Mayfly.Mathematics.Statistics
             }
 
             return result;
+        }
+
+        public BivariateSample GetOutliers(double level)
+        {
+            List<double> x = new List<double>();
+            for (double v = Data.X.Minimum; v <= Data.X.Maximum; v += ((Data.X.Maximum - Data.X.Minimum) / 500))
+            {
+                x.Add(v);
+            }
+            GetInterval(x.ToArray(), level, IntervalType.Prediction);
+            return Outliers;
         }
 
 

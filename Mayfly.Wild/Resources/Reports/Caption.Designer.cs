@@ -70,6 +70,15 @@ namespace Mayfly.Wild.Resources.Reports {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age.
+        /// </summary>
+        public static string Age {
+            get {
+                return ResourceManager.GetString("Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age, years.
         /// </summary>
         public static string AgeUnit {

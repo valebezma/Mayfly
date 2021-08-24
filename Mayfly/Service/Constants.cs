@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Globalization;
+using Mayfly.Extensions;
 
 namespace Mayfly
 {
@@ -15,8 +16,12 @@ namespace Mayfly
         { get { return "\n"; } }
 
         public static string Numbers
-        { get { return CultureInfo.CurrentCulture.NumberFormat.NativeDigits +
-                    CultureInfo.CurrentCulture.NumberFormat.NegativeSign + "%"; } }
+        {
+            get
+            {
+                return CultureInfo.CurrentCulture.NumberFormat.NativeDigits.Merge(string.Empty) + CultureInfo.CurrentCulture.NumberFormat.NegativeSign + "%";
+            }
+        }
 
         public static string Forbidden
         { get { return @"@#^&_+<>/:{}[]"; } }

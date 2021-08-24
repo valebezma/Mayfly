@@ -256,23 +256,31 @@ namespace Mayfly.Wild
                 cell.OwningColumn.DefaultCellStyle : cell.DataGridView.DefaultCellStyle);
         }
 
+        delegate void AgeHandler(DataGridViewCell cell, DataGridViewCellStyle basicStyle);
+
         public static void HandleAgeInput(DataGridViewCell cell, DataGridViewCellStyle basicStyle)
         {
-            Padding example = basicStyle.Padding;
-            Padding pads = new Padding(example.Left, example.Top, example.Right, example.Bottom);
-
-            string formatted = string.Empty;
-
-            if (cell.Value == null) { formatted = cell.Style.NullValue.ToString(); }
-            else { formatted = ((Age)cell.Value).ToString(basicStyle.Format); }
-
-            if (formatted.Contains("+"))
+            if (cell.DataGridView != null && cell.DataGridView.InvokeRequired)
             {
-                pads.Right = pads.Right - 6;
+                AgeHandler ageHandler = new AgeHandler(HandleAgeInput);
+                cell.DataGridView.Invoke(ageHandler, new object[] { cell, basicStyle });
             }
+            else
+            {
+                Padding example = basicStyle.Padding;
+                Padding pads = new Padding(example.Left, example.Top, example.Right, example.Bottom);
 
-            cell.Style.Padding = pads;
+                string formatted = cell.Value == null ? cell.Style.NullValue.ToString() : ((Age)cell.Value).ToString(basicStyle.Format);
+
+                if (formatted.Contains("+"))
+                {
+                    pads.Right -= 6;
+                }
+
+                cell.Style.Padding = pads;
+            }
         }
+
 
 
 

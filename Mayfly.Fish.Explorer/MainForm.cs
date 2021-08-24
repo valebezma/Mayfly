@@ -947,6 +947,15 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetArtefactSpecies.SelectedRows)
             {
+                if (tabPageSpcStats.Parent == tabControl)
+                {
+                    tabControl.SelectedTab = tabPageSpcStats;
+                }
+                else
+                {
+                    menuItemSpcStats_Click(sender, e);
+                }
+
                 string species = (string)gridRow.Cells[columnArtefactSpecies.Index].Value;
                 Data.SpeciesRow speciesRow = data.Species.FindBySpecies(species);
 
@@ -961,6 +970,8 @@ namespace Mayfly.Fish.Explorer
                         break;
                     }
                 }
+
+                return;
             }
         }
 
@@ -2409,8 +2420,8 @@ namespace Mayfly.Fish.Explorer
                 model != null &&
                 (model.CombinedData != null &&
                 model.CombinedData.IsRegressionOK &&
-                model.CombinedData.Regression.outliers != null &&
-                model.CombinedData.Regression.outliers.Count > 0);
+                model.CombinedData.Regression.Outliers != null &&
+                model.CombinedData.Regression.Outliers.Count > 0);
 
             Cursor = plotQualify.Cursor = Cursors.Default;
             spreadSheetSpcStats.Enabled =
@@ -2445,7 +2456,7 @@ namespace Mayfly.Fish.Explorer
 
             if (model.CombinedData != null)
             {
-                foreach (var pair in model.CombinedData.Regression.outliers)
+                foreach (var pair in model.CombinedData.Regression.Outliers)
                 {
                     indRows.AddRange(data.GetIndividuals(selectedStatSpc,
                         (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
@@ -2729,7 +2740,7 @@ namespace Mayfly.Fish.Explorer
                 editedIndividualRow = SaveIndRow(spreadSheetInd.Rows[e.RowIndex]);
 
                 // If mass OR age was changed
-                if (e.ColumnIndex == columnIndMass.Index || e.ColumnIndex == columnIndAge.Index)
+                if (e.ColumnIndex == columnIndLength.Index || e.ColumnIndex == columnIndMass.Index || e.ColumnIndex == columnIndAge.Index)
                 {
                     // Recalculate if needed
                     if (specUpdater.IsBusy) { specUpdater.CancelAsync(); }

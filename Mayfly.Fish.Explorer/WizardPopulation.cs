@@ -464,6 +464,38 @@ namespace Mayfly.Fish.Explorer
 
             plotAW.Clear();
 
+            ContinuousBio cb = new ContinuousBio(Data.Parent, SpeciesRow,
+                Data.Parent.Individual.AgeColumn, Data.Parent.Individual.MassColumn, TrendType.Linear);
+
+            if (cb != null)
+            {
+                Scatterplot sc = new Scatterplot(cb.InternalData);
+                sc.Properties.DataPointColor = Constants.MainAccent;
+                plotAW.AddSeries(sc);
+
+                //MassGrowthModels.DisplayNameY = Resources.Reports.Caption.Mass;
+                //MassGrowthModels.DisplayNameX = Resources.Reports.Caption.Age;
+
+                //if (weightGrowthExternal != null)
+                //{
+                //    weightGrowthExternal.Series.Name =
+                //        weightGrowthExternal.Properties.ScatterplotName =
+                //        Resources.Interface.Interface.BioReference;
+                //    weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
+                //    plotAW.AddSeries(weightGrowthExternal);
+                //}
+
+                //if (weightGrowthInternal != null)
+                //{
+                //    weightGrowthInternal = weightGrowthInternal.Copy();
+                //    weightGrowthInternal.Series.Name =
+                //        weightGrowthInternal.Properties.ScatterplotName =
+                //        Resources.Interface.Interface.BioLoaded;
+                //    weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
+                //    plotAW.AddSeries(weightGrowthInternal);
+                //}
+            }
+
             if (GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK &&
                 WeightModel != null && WeightModel.CombinedData.IsRegressionOK)
             {
@@ -481,27 +513,9 @@ namespace Mayfly.Fish.Explorer
                 aw.Properties.TrendColor = Constants.MainAccent.Darker();
 
                 plotAW.AddSeries(aw);
-                plotAW.DoPlot();
             }
-
-            //if (weightGrowthExternal != null)
-            //{
-            //    weightGrowthExternal.Series.Name =
-            //        weightGrowthExternal.Properties.ScatterplotName =
-            //        Resources.Interface.Interface.BioReference;
-            //    weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
-            //    plotAW.AddSeries(weightGrowthExternal);
-            //}
-
-            //if (weightGrowthInternal != null)
-            //{
-            //    weightGrowthInternal = weightGrowthInternal.Copy();
-            //    weightGrowthInternal.Series.Name =
-            //        weightGrowthInternal.Properties.ScatterplotName =
-            //        Resources.Interface.Interface.BioLoaded;
-            //    weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
-            //    plotAW.AddSeries(weightGrowthInternal);
-            //}
+            
+            plotAW.DoPlot();
 
             pageModelAW.SetNavigation(true);
 
@@ -510,17 +524,17 @@ namespace Mayfly.Fish.Explorer
 
         private void plotLW_Updated(object sender, EventArgs e)
         {
-
             plotAW.AxisYMin = plotLW.AxisYMin;
             plotAW.AxisYMax = plotLW.AxisYMax;
+            plotAW.AxisYFormat = plotLW.AxisYFormat;
             plotAW.DoPlot();
-
         }
 
         private void plotAL_Updated(object sender, EventArgs e)
         {
             plotAW.AxisXMin = plotAL.AxisXMin;
             plotAW.AxisXMax = plotAL.AxisXMax;
+            plotAW.AxisXFormat = plotAL.AxisXFormat;
             plotAW.DoPlot();
         }
 
