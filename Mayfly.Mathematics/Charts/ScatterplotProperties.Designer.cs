@@ -272,6 +272,7 @@
             this.checkBoxShowTrend.Name = "checkBoxShowTrend";
             this.checkBoxShowTrend.UseVisualStyleBackColor = true;
             this.checkBoxShowTrend.CheckedChanged += new System.EventHandler(this.checkBoxTrend_CheckedChanged);
+            this.checkBoxShowTrend.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // label9
             // 
@@ -291,6 +292,7 @@
             this.checkBoxOutliers.Name = "checkBoxOutliers";
             this.checkBoxOutliers.UseVisualStyleBackColor = true;
             this.checkBoxOutliers.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxOutliers.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxPI
             // 
@@ -298,6 +300,7 @@
             this.checkBoxPI.Name = "checkBoxPI";
             this.checkBoxPI.UseVisualStyleBackColor = true;
             this.checkBoxPI.CheckedChanged += new System.EventHandler(this.checkBoxBands_CheckedChanged);
+            this.checkBoxPI.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxCI
             // 
@@ -305,6 +308,7 @@
             this.checkBoxCI.Name = "checkBoxCI";
             this.checkBoxCI.UseVisualStyleBackColor = true;
             this.checkBoxCI.CheckedChanged += new System.EventHandler(this.checkBoxBands_CheckedChanged);
+            this.checkBoxCI.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxShowExplained
             // 
@@ -312,6 +316,7 @@
             this.checkBoxShowExplained.Name = "checkBoxShowExplained";
             this.checkBoxShowExplained.UseVisualStyleBackColor = true;
             this.checkBoxShowExplained.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxShowExplained.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxShowCount
             // 
@@ -319,6 +324,7 @@
             this.checkBoxShowCount.Name = "checkBoxShowCount";
             this.checkBoxShowCount.UseVisualStyleBackColor = true;
             this.checkBoxShowCount.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxShowCount.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // tabPageInteraction
             // 
@@ -361,6 +367,7 @@
             this.checkBoxAllowCursors.Name = "checkBoxAllowCursors";
             this.checkBoxAllowCursors.UseVisualStyleBackColor = true;
             this.checkBoxAllowCursors.CheckedChanged += new System.EventHandler(this.valueChanged);
+            this.checkBoxAllowCursors.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // colorDialogMarker
             // 

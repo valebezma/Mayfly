@@ -2352,8 +2352,8 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    ext.Calc = model.ExternalData;
                     ext.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    ext.Calc = model.ExternalData;
                     ext.Series.YAxisType = AxisType.Secondary;
                 }
 
@@ -2363,8 +2363,8 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    inter.Calc = model.InternalData;
                     inter.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    inter.Calc = model.InternalData;
                     inter.Series.YAxisType = AxisType.Secondary;
                 }
 
@@ -2374,10 +2374,12 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    combi.Calc = model.CombinedData;
-                    combi.Properties.SelectedApproximationType = model.Nature;
                     combi.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
+                    combi.Calc = model.CombinedData;
                     combi.Series.YAxisType = AxisType.Secondary;
+                    combi.Properties.SelectedApproximationType = model.Nature;
+                    combi.Properties.ShowTrend =
+                        combi.Properties.ShowPredictionBands = true;
                 }
             }
 

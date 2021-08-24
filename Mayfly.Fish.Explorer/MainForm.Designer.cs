@@ -2491,10 +2491,6 @@
             // 
             resources.ApplyResources(this.plotQualify, "plotQualify");
             this.plotQualify.AxisXAutoInterval = false;
-            this.plotQualify.AxisXAutoMaximum = false;
-            this.plotQualify.AxisXAutoMinimum = false;
-            this.plotQualify.AxisYAutoMaximum = false;
-            this.plotQualify.AxisYAutoMinimum = false;
             this.plotQualify.BackColor = System.Drawing.SystemColors.Window;
             this.plotQualify.Name = "plotQualify";
             series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;

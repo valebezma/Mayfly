@@ -588,6 +588,7 @@ namespace Mayfly.Mathematics.Charts
         //    get;
         //}
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private double MostLeft
         {
             get
@@ -608,6 +609,7 @@ namespace Mayfly.Mathematics.Charts
 
                 foreach (Histogramma sample in Histograms)
                 {
+                    if (sample.Data == null) continue;
                     minimum = Math.Min(minimum, sample.Left);
                 }
 
@@ -620,6 +622,7 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private double MostRight
         {
             get
@@ -640,6 +643,7 @@ namespace Mayfly.Mathematics.Charts
 
                 foreach (Histogramma sample in Histograms)
                 {
+                    if (sample.Data == null) continue;
                     maximum = Math.Max(maximum, sample.Right);
                 }
 
@@ -652,6 +656,7 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private double MostBottom
         {
             get
@@ -679,6 +684,7 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private double MostTop
         {
             get
@@ -714,6 +720,7 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         private double MostTop2
         {
             get
@@ -1169,6 +1176,8 @@ namespace Mayfly.Mathematics.Charts
 
         void recalculateAxesProperties()
         {
+            
+
             if (IsChronic)
             {
                 //if (AxisXAutoInterval)
@@ -1360,10 +1369,19 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Scatterplot sample in Scatterplots)
             {
-                if (sample.Properties.DataPointColor == Color.SeaGreen) sample.Properties.DataPointColor = sample.Series.Color;
-                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon) sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                if (sample.Properties.DataPointColor == Color.SeaGreen)
+                {
+                    sample.Properties.DataPointColor = sample.Series.Color;
+                }
+
+                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon)
+                {
+                    sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                }
+
+                sample.Series.Color = Color.Transparent;
+
                 sample.Update();
-                //sample.Series.Color = Color.Transparent;
             }
 
             foreach (Histogramma sample in Histograms)
@@ -1461,6 +1479,11 @@ namespace Mayfly.Mathematics.Charts
                 if (sample.Properties.HistogramName == name) return sample;
             }
 
+            foreach (Functor sample in Functors)
+            {
+                if (sample.Properties.FunctionName == name) return sample;
+            }
+
             //foreach (Evaluation sample in Evaluations)
             //{
             //    if (sample.Properties.EvaluationName == name) return sample;
@@ -1540,6 +1563,11 @@ namespace Mayfly.Mathematics.Charts
                 if (sample is Histogramma)
                 {
                     Histograms.Remove((Histogramma)sample);
+                }
+
+                if (sample is Functor)
+                {
+                    Functors.Remove((Functor)sample);
                 }
             }
 

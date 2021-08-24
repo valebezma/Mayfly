@@ -374,21 +374,22 @@ namespace Mayfly.Mathematics.Charts
                 }
                 else
                 {
-                    Properties.ShowTrend = false;
                     //Properties.SelectedApproximationType = TrendType.Auto;
                     if (PredictionBandLower != null) PredictionBandLower.Points.Clear();
                     if (PredictionBandUpper != null) PredictionBandUpper.Points.Clear();
-                    if (Trend != null) Trend.Series.Points.Clear();
+                    //if (Trend != null) Trend.Series.Points.Clear();
                     if (ConfidenceBandLower != null) ConfidenceBandLower.Points.Clear();
                     if (ConfidenceBandUpper != null) ConfidenceBandUpper.Points.Clear();
-                    //return;
+                    Properties.ShowTrend = false;
+                    return;
                 }
             }
             else
             {
                 if (Trend != null)
                 {
-                    Container.Remove(Trend.Name, false);
+                    Container.Series.Remove(Trend.Series);
+                    Container.Functors.Remove(Trend);
                     Trend = null;
                 }
             }
@@ -472,7 +473,7 @@ namespace Mayfly.Mathematics.Charts
             upperBand.Points.Clear();
             lowerBand.Points.Clear();
 
-            for (int i = 0; i < predictions.Length; i++)
+            for (int i = 0; i < xvalues.Count; i++)
             {
                 double lowerY = predictions[i].LeftEndpoint;
                 if (double.IsInfinity(lowerY)) continue;

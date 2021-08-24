@@ -163,6 +163,8 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
             //plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
 
+            plotQualify.AxisXInterval = Fish.UserSettings.DefaultStratifiedInterval;
+
             histSample = new Histogramma(Resources.Interface.Interface.StratesSampled);
             histWeighted = new Histogramma(Resources.Interface.Interface.StratesWeighted);
             histRegistered = new Histogramma(Resources.Interface.Interface.StratesRegistered);
