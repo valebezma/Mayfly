@@ -195,7 +195,7 @@ namespace Mayfly.Fish.Explorer
             plotQualify.AddSeries(ext);
 
             inter = new Scatterplot("Own data");
-            inter.Properties.DataPointColor = Constants.MotiveColor;
+            inter.Properties.DataPointColor = Constants.MainAccent;
             plotQualify.AddSeries(inter);
             inter.Updated += inter_Updated;
 
@@ -205,7 +205,7 @@ namespace Mayfly.Fish.Explorer
             combi.Properties.ShowPredictionBands = true;
             combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
             combi.Properties.DataPointColor = Color.Transparent;
-            combi.Properties.TrendColor = Constants.MotiveColor;
+            combi.Properties.TrendColor = Constants.MainAccent;
             plotQualify.AddSeries(combi);
             combi.Updated += combi_Updated;
         }

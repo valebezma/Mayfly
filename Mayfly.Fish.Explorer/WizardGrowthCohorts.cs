@@ -265,7 +265,7 @@ namespace Mayfly.Fish.Explorer
                     contextGrowth.Items.Add(item);
                 }
 
-                statChartAL.Remaster();
+                statChartAL.DoPlot();
 
 
 
@@ -290,7 +290,7 @@ namespace Mayfly.Fish.Explorer
                     contextMass.Items.Add(item);
                 }
 
-                statChartLW.Remaster();
+                statChartLW.DoPlot();
             }
         }
 

@@ -158,7 +158,7 @@ namespace Mayfly.Mathematics.Charts
             Series.Name = Properties.FunctionName;
             Series.YAxisType = axisType;
             Series.BorderWidth = Properties.TrendWidth;
-            Series.Color = Container.IsDistinguishingMode ? (Constants.MotiveColor) : Properties.TrendColor;
+            Series.Color = Container.IsDistinguishingMode ? (Constants.MainAccent) : Properties.TrendColor;
 
             UpdateDataPoints(AxisX.Minimum, AxisX.Maximum, AxisY.Minimum, AxisY.Maximum);
 

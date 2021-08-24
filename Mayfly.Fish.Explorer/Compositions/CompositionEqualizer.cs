@@ -189,7 +189,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Histogramma hist in result) {
                 form.StatChart.AddSeries(hist);
             }
-            form.StatChart.Remaster();
+            form.StatChart.DoPlot();
             return form.ShowDialog();
         }
 

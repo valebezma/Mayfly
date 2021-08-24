@@ -177,7 +177,7 @@ namespace Mayfly.Fish.Explorer
                 plotYR.AddSeries(br);
                 br.Series.YAxisType = AxisType.Secondary;
 
-                plotYR.Remaster();
+                plotYR.DoPlot();
 
                 plotYR.ChartAreas[0].AxisX.StripLines.Clear();
                 plotYR.ChartAreas[0].AxisY.StripLines.Clear();

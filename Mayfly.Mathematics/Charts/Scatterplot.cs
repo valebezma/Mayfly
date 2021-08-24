@@ -506,7 +506,7 @@ namespace Mayfly.Mathematics.Charts
             }
             result.Text = Properties.ScatterplotName;
             result.StatChart.AddSeries(this);
-            result.StatChart.Remaster();
+            result.StatChart.DoPlot();
 
             if (modal)
             {
@@ -529,7 +529,7 @@ namespace Mayfly.Mathematics.Charts
                 chartForm.StatChart.AddSeries(scatterplot);
             }
 
-            chartForm.StatChart.Remaster();
+            chartForm.StatChart.DoPlot();
             chartForm.Show();
         }
 
@@ -544,7 +544,7 @@ namespace Mayfly.Mathematics.Charts
                 chartForm.StatChart.AddSeries(scatterplot);
             }
 
-            chartForm.StatChart.Remaster();
+            chartForm.StatChart.DoPlot();
             chartForm.Show();
         }
 

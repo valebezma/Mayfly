@@ -242,7 +242,6 @@
             this.pageBasic.Controls.Add(this.labelBasicInstruction);
             this.pageBasic.Name = "pageBasic";
             resources.ApplyResources(this.pageBasic, "pageBasic");
-            this.pageBasic.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageBasic_Commit);
             // 
             // buttonL
             // 
@@ -292,6 +291,7 @@
             this.plotLW.Name = "plotLW";
             this.plotLW.ShowLegend = false;
             this.plotLW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            this.plotLW.Updated += new System.EventHandler(this.plotLW_Updated);
             // 
             // pageModelAL
             // 
@@ -321,6 +321,7 @@
             this.plotAL.Name = "plotAL";
             this.plotAL.ShowLegend = false;
             this.plotAL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            this.plotAL.Updated += new System.EventHandler(this.plotAL_Updated);
             // 
             // pageModelAW
             // 
@@ -333,7 +334,9 @@
             // plotAW
             // 
             resources.ApplyResources(this.plotAW, "plotAW");
+            this.plotAW.AxisXAutoMaximum = false;
             this.plotAW.AxisXAutoMinimum = false;
+            this.plotAW.AxisYAutoMaximum = false;
             this.plotAW.AxisYAutoMinimum = false;
             this.plotAW.Name = "plotAW";
             this.plotAW.ShowLegend = false;

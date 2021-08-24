@@ -275,7 +275,7 @@ namespace Mayfly.Fish.Explorer
                 predictY.AxisY.AddStripLine(msy.Y / 1000000.0, string.Format("MSY ({0:N3})", msy.Y / 1000000.0));
             }
 
-            plotMSY.Remaster();
+            plotMSY.DoPlot();
 
             msy_Changed(sender, e);
         }

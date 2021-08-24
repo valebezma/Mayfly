@@ -38,7 +38,7 @@ namespace Mayfly.Wild
             statChart1.AddSeries(Model);
             statChart1.AxisXMin = 0;
             statChart1.AxisYMin = 0;
-            statChart1.Remaster();
+            statChart1.DoPlot();
 
             label1.ResetFormatted(statChart1.AxisXTitle, statChart1.AxisYTitle, model.Name);
             labelInstruction.ResetFormatted(model.Name, statChart1.AxisYTitle, statChart1.AxisXTitle);
@@ -54,7 +54,7 @@ namespace Mayfly.Wild
 
         private void ModelConfirm_Load(object sender, EventArgs e)
         {
-            statChart1.Remaster();
+            statChart1.DoPlot();
             this.BringToFront();  
         }
 

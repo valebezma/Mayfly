@@ -598,7 +598,7 @@ namespace Mayfly.Mathematics
                     chartForm.StatChart.AddSeries(residualHistogram);
                 }
 
-                chartForm.StatChart.Remaster();
+                chartForm.StatChart.DoPlot();
                 chartForm.Show();
             }
         }
@@ -654,7 +654,7 @@ namespace Mayfly.Mathematics
                         Plot statChart = scatterplot.ShowOnChart(Form.ModifierKeys.HasFlag(Keys.Alt));
                         statChart.AxisXTitle = columnSelection.Argument.HeaderText;
                         statChart.AxisYTitle = columnSelection.Function.HeaderText;
-                        statChart.Remaster();
+                        statChart.DoPlot();
                     }
                     else
                     {

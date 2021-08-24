@@ -23,9 +23,9 @@ namespace Mayfly.Fish.Explorer
 
         public List<Cohort> Cohorts;
 
-        public List<Scatterplot> CatchModels { get; private set; }
+        public List<BivariatePredictiveModel> CatchModels { get; private set; }
 
-        public List<Scatterplot> Unused { get; private set; }
+        public List<BivariatePredictiveModel> Unused { get; private set; }
 
 
 
@@ -34,8 +34,8 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
 
             Cohorts = new List<Cohort>();
-            CatchModels = new List<Scatterplot>();
-            Unused = new List<Scatterplot>();
+            CatchModels = new List<BivariatePredictiveModel>();
+            Unused = new List<BivariatePredictiveModel>();
 
             ColumnCohAge.ValueType = typeof(Age);
 
@@ -126,12 +126,12 @@ namespace Mayfly.Fish.Explorer
             table1.AddHeaderCell("S");
             table1.EndRow();
 
-            foreach (Scatterplot scatter in CatchModels)
+            foreach (BivariatePredictiveModel bpm in CatchModels)
             {
                 table1.StartRow();
-                table1.AddCellValue(scatter.Properties.ScatterplotName);
+                table1.AddCellValue(bpm.Name);
 
-                Mathematics.Statistics.Regression model = scatter.Calc.Regression;
+                Mathematics.Statistics.Regression model = bpm.Regression;
 
                 if (model == null)
                 { 
@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     table1.AddCellValue(model.Parameters[0]);
                     double z = -model.Parameters[1];
-                    table1.AddCellValue(model.Parameters[1]);
+                    table1.AddCellValue(-z);
                     table1.AddCellValue(Math.Exp(z));
                     table1.AddCellValue(1.0 - Math.Exp(z));
                 }
@@ -239,13 +239,13 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Cohort cohort in Cohorts)
             {
-                Scatterplot[] cohortCurves = cohort.GetCatchCurve(true, (int)e.Argument);
+                BivariatePredictiveModel[] cohortCurves = cohort.GetCatchCurve(true, (int)e.Argument);
 
-                if (cohortCurves[0].Calc.Data.Count > 0) {
+                if (cohortCurves[0].Data.Count > 0) {
                     Unused.Add(cohortCurves[0]);
                 }
 
-                if (cohortCurves[1].Calc.Data.Count > 0) {
+                if (cohortCurves[1].Data.Count > 0) {
                     CatchModels.Add(cohortCurves[1]);
                 }
             }
@@ -264,8 +264,9 @@ namespace Mayfly.Fish.Explorer
                 contextMortality.Items.RemoveAt(2);
             }
 
-            foreach (Scatterplot scatter in CatchModels)
+            foreach (BivariatePredictiveModel bpm in CatchModels)
             {
+                Scatterplot scatter = new Scatterplot(bpm);
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Exponential;
                 statChartMortality.AddSeries(scatter);
@@ -275,12 +276,12 @@ namespace Mayfly.Fish.Explorer
                 contextMortality.Items.Add(item);
             }
 
-            foreach (Scatterplot scatter in Unused)
+            foreach (BivariatePredictiveModel bpm in Unused)
             {
-                statChartMortality.AddSeries(scatter);
+                statChartMortality.AddSeries(new Scatterplot(bpm));
             }
 
-            statChartMortality.Remaster();
+            statChartMortality.DoPlot();
 
             pageChart.SetNavigation(true);
         }

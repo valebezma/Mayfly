@@ -127,7 +127,7 @@ namespace Mayfly.Fish.Explorer
 
             plotPrediction.AddSeries(yieldPredictionChanged);
 
-            plotPrediction.Remaster();
+            plotPrediction.DoPlot();
 
             #endregion
 
@@ -145,7 +145,7 @@ namespace Mayfly.Fish.Explorer
                 yieldPredictionChanged.Calc.Data = Regression.Predict(DateTime.FromOADate(plotPrediction.AxisXMax), x);
                 yieldPredictionChanged.Properties.ScatterplotName = string.Format("Predicted yields (with {0:P1} change)", (x - 1.0));
 
-                plotPrediction.Remaster();
+                plotPrediction.DoPlot();
             }
         }
 

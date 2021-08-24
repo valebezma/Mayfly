@@ -96,7 +96,7 @@ namespace Mayfly.Mathematics.Statistics
 
                 statChart1.Clear();
                 statChart1.AddSeries(histogram);
-                statChart1.Remaster();
+                statChart1.DoPlot();
 
                 numericUpDownCL_ValueChanged(numericUpDownCL, new EventArgs());
             }

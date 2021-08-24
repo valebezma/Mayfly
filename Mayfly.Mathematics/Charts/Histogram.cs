@@ -396,7 +396,7 @@ namespace Mayfly.Mathematics.Charts
             result.StatChart.AxisXMin = min;
             result.StatChart.AxisXInterval = interval;
             result.StatChart.AddSeries(this);
-            result.StatChart.Remaster();
+            result.StatChart.DoPlot();
             //Updated += new HistogramEventHandler(result.StatChart.Update);
 
             if (modal)

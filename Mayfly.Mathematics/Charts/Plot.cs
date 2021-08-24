@@ -21,11 +21,7 @@ namespace Mayfly.Mathematics.Charts
         public override string Text
         {
             get { return Properties.textBoxName.Text; }
-            set
-            {
-                Properties.textBoxName.Text = value;
-                Properties.ResetTitle();
-            }
+            set { Properties.textBoxName.Text = value; }
         }
 
         #region New properties
@@ -108,16 +104,8 @@ namespace Mayfly.Mathematics.Charts
         [Category("Axes"), DefaultValue("Axis X"), Localizable(true)]
         public string AxisXTitle
         {
-            get
-            {
-                return Properties.textBoxXTitle.Text;
-            }
-
-            set
-            {
-                Properties.textBoxXTitle.Text = value;
-                Properties.ResetTitle();
-            }
+            get { return Properties.textBoxXTitle.Text; }
+            set { Properties.textBoxXTitle.Text = value; }
         }
 
         [Category("Axes"), DefaultValue(""), Localizable(true)]
@@ -260,16 +248,8 @@ namespace Mayfly.Mathematics.Charts
         [Category("Axes"), DefaultValue("Axis Y"), Localizable(true)]
         public string AxisYTitle
         {
-            get
-            {
-                return Properties.textBoxYTitle.Text;
-            }
-
-            set
-            {
-                Properties.textBoxYTitle.Text = value;
-                Properties.ResetTitle();
-            }
+            get { return Properties.textBoxYTitle.Text; }
+            set { Properties.textBoxYTitle.Text = value; }
         }
 
         [Category("Axes"), DefaultValue(""), Localizable(true)]
@@ -1356,7 +1336,7 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public void Remaster()
+        public void DoPlot()
         {
             #region Form header
 
@@ -1479,30 +1459,45 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Scatterplot sample in Scatterplots)
             {
-                if (sample.Properties.DataPointColor == Color.SeaGreen)
+                if (sample.Series != null)
                 {
-                    sample.Properties.DataPointColor = sample.Series.Color;
-                }
+                    if (sample.Properties.DataPointColor == Color.SeaGreen)
+                    {
+                        sample.Properties.DataPointColor = sample.Series.Color;
+                    }
 
-                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon)
-                {
-                    sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                    if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon)
+                    {
+                        sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
+                    }
+                    
+                    sample.Series.Color = Color.Transparent;
                 }
-
-                if (sample.Series != null) sample.Series.Color = Color.Transparent;
 
                 sample.Update();
             }
 
             foreach (Histogramma sample in Histograms)
             {
-                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = Series[sample.Series.Name].Color;
+                if (sample.Series != null)
+                {
+                    if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = sample.Series.Color;
+                    
+                    sample.Series.Color = Color.Transparent;
+                }
+
                 sample.Update();
             }
 
             foreach (Functor sample in Functors)
             {
-                sample.Properties.TrendColor = Series[sample.Series.Name].Color;
+                if (sample.Series != null)
+                {
+                    sample.Properties.TrendColor = sample.Series.Color;
+                    
+                    sample.Series.Color = Color.Transparent;
+                }
+
                 sample.Update();
             }
 
@@ -1600,7 +1595,7 @@ namespace Mayfly.Mathematics.Charts
             Scatterplots.Clear();
             Histograms.Clear();
             Functors.Clear();
-            Remaster();
+            DoPlot();
         }
 
         public void Remove(string name)
@@ -1640,7 +1635,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            Remaster();
+            DoPlot();
         }
 
         public void GetCursor()
@@ -1681,7 +1676,7 @@ namespace Mayfly.Mathematics.Charts
             //ShowLegend = false;
             ChartAreas.RemoveAt(0);
 
-            Remaster();
+            DoPlot();
         }
 
         private ChartArea SeparateChartArea(string name)
@@ -2042,7 +2037,7 @@ namespace Mayfly.Mathematics.Charts
             AxisXMin = min;
             AxisXInterval = interval;
 
-            Remaster();
+            DoPlot();
 
             if (modal)
             {
@@ -2531,7 +2526,7 @@ namespace Mayfly.Mathematics.Charts
             AxisYAutoMaximum = true;
             AxisYAutoInterval = true;
 
-            Remaster();
+            DoPlot();
         }
 
         private void contextChartSeparate_CheckedChanged(object sender, EventArgs e)
@@ -2545,7 +2540,7 @@ namespace Mayfly.Mathematics.Charts
                 SeriesMerge();
             }
 
-            Remaster();
+            DoPlot();
         }
 
 
@@ -2775,7 +2770,7 @@ namespace Mayfly.Mathematics.Charts
                     Plot statChart = scatterplot.ShowOnChart();
                     statChart.AxisXTitle = AxisXTitle;
                     statChart.AxisYTitle = AxisYTitle;
-                    statChart.Remaster();
+                    statChart.DoPlot();
                 }
             }
             else
@@ -2881,7 +2876,7 @@ namespace Mayfly.Mathematics.Charts
         private void contextHistogramDistinguish_CheckedChanged(object sender, EventArgs e)
         {
             IsDistinguishingMode = contextHistogramDistinguish.Checked;
-            if (!IsDistinguishingMode) Remaster();
+            if (!IsDistinguishingMode) DoPlot();
             SeriesShowSelected();
         }
 
