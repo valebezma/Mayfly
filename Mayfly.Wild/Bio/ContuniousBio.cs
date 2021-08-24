@@ -59,7 +59,6 @@ namespace Mayfly.Wild
             nameX = xColumn.Caption;
 
             RefreshInternal();
-            RefreshCombined();
         }
 
 
@@ -83,6 +82,7 @@ namespace Mayfly.Wild
             biSample.Y.Name = DisplayNameY;
 
             InternalData = new BivariatePredictiveModel(biSample, Nature);
+            RefreshCombined();
         }
 
         public void Involve(ContinuousBio bio)

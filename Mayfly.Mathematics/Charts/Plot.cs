@@ -1457,6 +1457,18 @@ namespace Mayfly.Mathematics.Charts
 
             ApplyPaletteColors();
 
+            foreach (Histogramma sample in Histograms)
+            {
+                if (sample.Series != null)
+                {
+                    if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = sample.Series.Color;
+                    
+                    sample.Series.Color = Color.Transparent;
+                }
+
+                sample.Update();
+            }
+
             foreach (Scatterplot sample in Scatterplots)
             {
                 if (sample.Series != null)
@@ -1470,18 +1482,6 @@ namespace Mayfly.Mathematics.Charts
                     {
                         sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
                     }
-                    
-                    sample.Series.Color = Color.Transparent;
-                }
-
-                sample.Update();
-            }
-
-            foreach (Histogramma sample in Histograms)
-            {
-                if (sample.Series != null)
-                {
-                    if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = sample.Series.Color;
                     
                     sample.Series.Color = Color.Transparent;
                 }

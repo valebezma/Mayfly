@@ -185,7 +185,7 @@ namespace Mayfly.Mathematics.Statistics
 
                     for (int j = 0; j < x.Length - 1; j++)
                     {
-                        if (x[j] <= _x && x[j + 1] > _x)
+                        if (Interval.FromEndpoints(x[j], x[j + 1]).OpenContains(_x))
                         {
                             double xgap = x[j + 1] - x[j];
                             double xtrack = _x - x[j];
