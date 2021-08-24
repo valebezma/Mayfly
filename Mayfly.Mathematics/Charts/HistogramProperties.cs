@@ -240,5 +240,10 @@ namespace Mayfly.Mathematics.Charts
 
             valueChanged(sender, e);
         }
+
+        private void checkBox_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Enabled) ((CheckBox)sender).Checked = false;
+        }
     }
 }

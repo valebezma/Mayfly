@@ -582,6 +582,21 @@
   <data name="buttonReport.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="buttonReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klE
+        QVQ4T6WQ3UuTYRiH/RM8CQo9GIaCVHRSeRATYlK96Rxzrb3bmF+vH1NkvjpJlq5m2nLIrDRipWQfthUt
+        KUmdDlarFayO6mQRFEX7N8bVMyEhfIOsgx/3w4/ruXieuwT4r2iWO4lmuZNsHfL5POFwmNuZMJF0iKvJ
+        cS6vjOJfGsIb68N9pwN10UP0dVTgGgJdpU4MmEmMkfmRIvUtwbPPj7n7cY5r76YYz/jxrnhQb/QXse2C
+        aCxKIBBgIu4l/T1JfbDut3RvtKI8bMcxIAtcQ1CuKxcDfPd7SXxZ3ry08fX5VoqClnvNmNqMRWy7IB6P
+        o6oqPREX8U/RTcGZW424HtnoWHXR86Id57ydWqNe4BqCXztom7Wx8OEmV7Ih8e9RRlJn8az20flEQb5u
+        Y3/NviK2XVDcgaIoOKabmH0f5tKb8/hfDqMmPHQvdeJcdGKZaqJsb5nANQQVVRUUCgXMoQYm347hTw8z
+        uN6P+2kXzQ9cmOcsGC82ULqrVOAagrXEGrJdRho5zoVXPoaSA/Quu2mNtWCdt3Jyph7pnPRnQfWBanK5
+        HHr1KIPi2c4FB/aIjHX6NKaJRk75JGoVPZJREriGIJvNYjKbqOk6gsMjY1ZM1FkMHD52iKqDlezR7cZw
+        wkBwMihwDcG/RrP8+1DyE8vXvS+HvqjRAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="buttonReport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -611,6 +626,21 @@
   </data>
   <data name="buttonCopy.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="buttonCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/UlE
+        QVQ4T6WR30tTYRjH3z/FlCHljTd25U1E+QMDhcKLhAItutqFXnUlKQpZzpjgdFuo8xfb7ExPRDpRmTrn
+        L6bOlTVxKegGUzlHp3N6Zt/e9x3TWkuFHvich/O+7/fz8pxDAPwXRJz4BoYw7uWYh9zoEmfwxiAWpAok
+        wwXJZRp04XlND24XVmTT15TBBMQ25qX9omJnP9HSOwK704vHlU1XSoh5eJF2wO4DhCXA45fRbPoMYUqG
+        dUKCxSGhY1iCdmCP86QxkJsIM0iX6GJ5XienMcgHUQRCYS5Irrq+HeQ8czLOJcRodfDNducpNEMyXgnb
+        qOr0o3d0l6//XpX6EMRZGVmlgwwuITo6L5v7KKJgR4pgI7CPr/5dGD8FeahBiHE8a/t4qgniVulH3HzY
+        j8zibrZNCJv3OKqc36w2+vBC9wXvLBtckCj5UMHa1jGcKwfQCwtQPXjPluMCORzF6o8QFr8H4PJsYnx+
+        HTXt8d9b3ReGWhdE2VsfSmqXOXphDqrC1gtBTkH5X1Rpl7lAoeOFJAUr/iOMuWXYJvfQ1u9CRp42LmCP
+        VFTUzdKGP25O0GqdRvo9Ddv+t+DRSwciJ2cwDrhhsC1A/2GO38zCOvMUbtx9TY9dIshT2+nXtnAyi01Q
+        FRmQkd+C9PtNNNyAtDv19NglguuScvH6gPwCW2kOoaPzmfwAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="buttonCopy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1261,37 +1291,37 @@ sample is normally distributed</value>
   <data name="&gt;&gt;labelStats.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="statChart1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="plotDistribution.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="statChart1.AxisXTitle" xml:space="preserve">
+  <data name="plotDistribution.AxisXTitle" xml:space="preserve">
     <value />
   </data>
-  <data name="statChart1.AxisY2Title" xml:space="preserve">
+  <data name="plotDistribution.AxisY2Title" xml:space="preserve">
     <value />
   </data>
-  <data name="statChart1.AxisYTitle" xml:space="preserve">
+  <data name="plotDistribution.AxisYTitle" xml:space="preserve">
     <value />
   </data>
-  <data name="statChart1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="plotDistribution.Location" type="System.Drawing.Point, System.Drawing">
     <value>411, 143</value>
   </data>
-  <data name="statChart1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="plotDistribution.Size" type="System.Drawing.Size, System.Drawing">
     <value>297, 200</value>
   </data>
-  <data name="statChart1.TabIndex" type="System.Int32, mscorlib">
+  <data name="plotDistribution.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;statChart1.Name" xml:space="preserve">
-    <value>statChart1</value>
+  <data name="&gt;&gt;plotDistribution.Name" xml:space="preserve">
+    <value>plotDistribution</value>
   </data>
-  <data name="&gt;&gt;statChart1.Type" xml:space="preserve">
+  <data name="&gt;&gt;plotDistribution.Type" xml:space="preserve">
     <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;statChart1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;plotDistribution.Parent" xml:space="preserve">
     <value>tabPage1</value>
   </data>
-  <data name="&gt;&gt;statChart1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;plotDistribution.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
@@ -1601,7 +1631,7 @@ sample is normally distributed</value>
     <value>3, 25, 3, 25</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 15</value>
+    <value>86, 15</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

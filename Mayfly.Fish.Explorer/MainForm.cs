@@ -31,8 +31,7 @@ namespace Mayfly.Fish.Explorer
                 toolStripSeparator11,
                 menuItemGearStats,
                 menuItemSpcStats,
-                menuItemArtefactsSearch, 
-                toolStripSeparator2,
+                menuItemArtefactsSearch,
                 menuItemComCom,
                 menuSurvey,
                 menuFishery,
@@ -104,8 +103,8 @@ namespace Mayfly.Fish.Explorer
             tabPageCard.Parent = null;
             tabPageGearStats.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(string);
-            columnSpcValid.ValueType = typeof(string);
+            //columnSpcSpc.ValueType = typeof(string);
+            //columnSpcValid.ValueType = typeof(string);
             columnSpcQuantity.ValueType = typeof(double);
             columnSpcMass.ValueType = typeof(double);
             columnSpcOccurrence.ValueType = typeof(double);
@@ -115,7 +114,7 @@ namespace Mayfly.Fish.Explorer
             tabPageSpc.Parent = null;
             tabPageSpcStats.Parent = null;
 
-            columnLogSpc.ValueType = typeof(string);
+            //columnLogSpc.ValueType = typeof(string);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);
@@ -125,7 +124,7 @@ namespace Mayfly.Fish.Explorer
 
             tabPageLog.Parent = null;
 
-            columnIndSpecies.ValueType = typeof(string);
+            //columnIndSpecies.ValueType = typeof(string);
             columnIndLength.ValueType = typeof(double);
             columnIndMass.ValueType = typeof(double);
             columnIndSomaticMass.ValueType = typeof(double);
@@ -156,7 +155,7 @@ namespace Mayfly.Fish.Explorer
 
             tabPageInd.Parent = null;
 
-            columnStratifiedSpc.ValueType = typeof(string);
+            //columnStratifiedSpc.ValueType = typeof(string);
             columnStratifiedCount.ValueType = typeof(int);
             columnSpcMass.ValueType = typeof(double);
             columnStratifiedFrom.ValueType = typeof(double);
@@ -582,13 +581,6 @@ namespace Mayfly.Fish.Explorer
             menuItemLoadStratified.Enabled = data.Stratified.Count > 0;
         }
 
-        private void menuItemArtefacts_Click(object sender, EventArgs e)
-        {
-            showArtefacts = true;
-            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
-            artefactFinder.RunWorkerAsync();
-        }
-
         //private void menuItemStratifiedControl_Click(object sender, EventArgs e)
         //{
         //    StratifiedControl sampleControl = new StratifiedControl(data);
@@ -646,6 +638,13 @@ namespace Mayfly.Fish.Explorer
             };
             wizOb.Survey.Anamnesis = this.data;
             wizOb.Show();
+        }
+
+        private void menuItemArtefacts_Click(object sender, EventArgs e)
+        {
+            showArtefacts = true;
+            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
+            artefactFinder.RunWorkerAsync();
         }
 
         private void menuItemGearStats_Click(object sender, EventArgs e)
@@ -935,8 +934,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetArtefactSpecies.SelectedRows)
             {
-                string species = (string)gridRow.Cells[columnArtefactSpecies.Index].Value;
-                Data.SpeciesRow speciesRow = data.Species.FindBySpecies(species);
+                Data.SpeciesRow speciesRow = (Data.SpeciesRow)gridRow.Cells[columnArtefactSpecies.Index].Value;
 
                 contextArtSpeciesFindInd.Enabled = AllowedStack.QuantityIndividual(speciesRow) > 0;
                 contextArtSpeciesFindStratified.Enabled = AllowedStack.QuantityStratified(speciesRow) > 0;
@@ -956,8 +954,7 @@ namespace Mayfly.Fish.Explorer
                     menuItemSpcStats_Click(sender, e);
                 }
 
-                string species = (string)gridRow.Cells[columnArtefactSpecies.Index].Value;
-                Data.SpeciesRow speciesRow = data.Species.FindBySpecies(species);
+                Data.SpeciesRow speciesRow = (Data.SpeciesRow)gridRow.Cells[columnArtefactSpecies.Index].Value;
 
                 tabControlSpc.SelectedTab = tabPageSpcQualify;
 
@@ -1646,7 +1643,7 @@ namespace Mayfly.Fish.Explorer
                     double w = CatchesData.Mass(speciesRow);
 
                     gridRow.CreateCells(spreadSheetCatches);
-                    gridRow.Cells[columnCatchSpc.Index].Value = speciesRow.Species;
+                    gridRow.Cells[columnCatchSpc.Index].Value = speciesRow;
                     gridRow.Cells[columnCatchN.Index].Value = q;
                     gridRow.Cells[columnCatchW.Index].Value = w;
 
@@ -2143,8 +2140,7 @@ namespace Mayfly.Fish.Explorer
 
         private void label1_DoubleClick(object sender, EventArgs e)
         {
-            spreadSheetInd.EnsureFilter(columnIndSpecies, listViewInvestigators.FocusedItem.Text,
-                loaderInd, menuItemIndAll_Click);
+            GetFilteredList(columnIndSpecies);
         }
 
         private void label2_DoubleClick(object sender, EventArgs e)

@@ -844,9 +844,9 @@ namespace Mayfly.Mathematics.Charts
 
             HitTestResult result = HitTest(e.X, e.Y);
 
-            contextScatterplotFindValue.Visible = toolStripSeparator5.Visible =
-                result.ChartElementType == ChartElementType.DataPoint |
-                result.ChartElementType == ChartElementType.DataPointLabel;
+            //contextScatterplotFindValue.Visible = toolStripSeparatorScatterplotFindValue.Visible =
+            //    result.ChartElementType == ChartElementType.DataPoint |
+            //    result.ChartElementType == ChartElementType.DataPointLabel;
 
             switch (result.ChartElementType)
             {
@@ -1152,7 +1152,7 @@ namespace Mayfly.Mathematics.Charts
             scatterplot.Container = this;
             LastSelectedScatterplot = scatterplot;
 
-            contextScatterplotTrendCompare.Enabled = Scatterplots.Count > 1;
+            //contextScatterplotTrendCompare.Enabled = Scatterplots.Count > 1;
 
             if (CollectionChanged != null)
             {
@@ -2057,6 +2057,8 @@ namespace Mayfly.Mathematics.Charts
             
             foreach (DataPoint dp in series.Points)
             {
+                if (dp.MarkerBorderColor == Color.Transparent) continue;
+
                 result.Add(dp.XValue, dp.YValues[0]);
             }
 
@@ -2095,73 +2097,78 @@ namespace Mayfly.Mathematics.Charts
 
                 Color col = series.Color;
                 if (col.Name == "Transparent") col = series.MarkerBorderColor;
+                if (col.Name == "Transparent") col = UserSettings.DistinguishColorSelected;
 
-                if (series.YAxisType == type && series.Points.Count > 0 && col.Name != "Transparent")
+                if (series.YAxisType == type && series.Points.Count > 0)// && col.Name != "Transparent")
                 {
                     BivariateSample data = GetDataPointValues(series);
 
-                    var xvalues = engine.CreateNumericVector(data.X);
-                    var yvalues = engine.CreateNumericVector(data.Y);
-                    engine.SetSymbol("xvalues", xvalues);
-                    engine.SetSymbol("yvalues", yvalues);
-                    engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
-
-                    if (series.IsVisibleInLegend)
+                    if (data.Count > 0)
                     {
-                        seriesNames.Add(string.IsNullOrWhiteSpace(series.LegendText) ? series.Name : series.LegendText);
-                        engine.Evaluate("cols = c(cols, col1)");
+
+                        var xvalues = engine.CreateNumericVector(data.X);
+                        var yvalues = engine.CreateNumericVector(data.Y);
+                        engine.SetSymbol("xvalues", xvalues);
+                        engine.SetSymbol("yvalues", yvalues);
+                        engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+
+                        if (series.IsVisibleInLegend)
+                        {
+                            seriesNames.Add(string.IsNullOrWhiteSpace(series.LegendText) ? series.Name : series.LegendText);
+                            engine.Evaluate("cols = c(cols, col1)");
+                        }
+
+                        switch (series.ChartType)
+                        {
+                            case SeriesChartType.Column:
+                                engine.Evaluate("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = col1, border = " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
+                                if (series.IsVisibleInLegend)
+                                {
+                                    engine.Evaluate("pchs = c(pchs, NA)");
+                                    engine.Evaluate("ltys = c(ltys, NA)");
+                                    engine.Evaluate("fills = c(fills, col1)");
+                                    engine.Evaluate("borders = c(borders, " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
+                                    engine.Evaluate("lwds = c(lwds, NA)");
+                                }
+                                break;
+
+                            case SeriesChartType.Line:
+                            case SeriesChartType.Area:
+                                engine.Evaluate("lines(yvalues ~ xvalues, col = col1, lty = " + (series.BorderDashStyle == ChartDashStyle.Solid ? "1" : "2") + ")");
+                                if (series.IsVisibleInLegend)
+                                {
+                                    engine.Evaluate("pchs = c(pchs, NA)");
+                                    engine.Evaluate("ltys = c(ltys, " + (series.BorderDashStyle == ChartDashStyle.Solid ? "1" : "2") + ")");
+                                    engine.Evaluate("fills = c(fills, NA)");
+                                    engine.Evaluate("borders = c(borders, NA)");
+                                    engine.Evaluate("lwds = c(lwds, 2)");
+                                }
+                                break;
+
+                            case SeriesChartType.Point:
+                                engine.Evaluate("points(yvalues ~ xvalues, pch = 1, col = col1)");
+                                if (series.IsVisibleInLegend)
+                                {
+                                    engine.Evaluate("pchs = c(pchs, 1)");
+                                    engine.Evaluate("ltys = c(ltys, NA)");
+                                    engine.Evaluate("fills = c(fills, NA)");
+                                    engine.Evaluate("borders = c(borders, NA)");
+                                    engine.Evaluate("lwds = c(lwds, NA)");
+                                }
+                                break;
+                        }
                     }
 
-                    switch (series.ChartType)
+                    if (i == Series.Count - 1 && HasSecondaryYAxis && type == AxisType.Primary)
                     {
-                        case SeriesChartType.Column:
-                            engine.Evaluate("points(yvalues ~ xvalues, type = 'h', lwd = 5, lend = 1, col = col1, border = " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
-                            if (series.IsVisibleInLegend)
-                            {
-                                engine.Evaluate("pchs = c(pchs, NA)");
-                                engine.Evaluate("ltys = c(ltys, NA)");
-                                engine.Evaluate("fills = c(fills, col1)");
-                                engine.Evaluate("borders = c(borders, " + (series.BorderDashStyle == ChartDashStyle.Solid ? "'black'" : "NA") + ")");
-                                engine.Evaluate("lwds = c(lwds, NA)");
-                            }
-                            break;
+                        type = AxisType.Secondary;
+                        i = 0;
 
-                        case SeriesChartType.Line:
-                        case SeriesChartType.Area:
-                            engine.Evaluate("lines(yvalues ~ xvalues, col = col1, lty = " + (series.BorderDashStyle == ChartDashStyle.Dash ? "2" : "1") + ")");
-                            if (series.IsVisibleInLegend)
-                            {
-                                engine.Evaluate("pchs = c(pchs, NA)");
-                                engine.Evaluate("ltys = c(ltys, " + (series.BorderDashStyle == ChartDashStyle.Dash ? "2" : "1") + ")");
-                                engine.Evaluate("fills = c(fills, NA)");
-                                engine.Evaluate("borders = c(borders, NA)");
-                                engine.Evaluate("lwds = c(lwds, 2)");
-                            }
-                            break;
-
-                        case SeriesChartType.Point:
-                            engine.Evaluate("points(yvalues ~ xvalues, pch = 1, col = col1)");
-                            if (series.IsVisibleInLegend)
-                            {
-                                engine.Evaluate("pchs = c(pchs, 1)");
-                                engine.Evaluate("ltys = c(ltys, NA)");
-                                engine.Evaluate("fills = c(fills, NA)");
-                                engine.Evaluate("borders = c(borders, NA)");
-                                engine.Evaluate("lwds = c(lwds, NA)");
-                            }
-                            break;
+                        engine.Evaluate("par(new = TRUE)");
+                        engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
+                        engine.Evaluate("axis(side = 4)");
+                        engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
                     }
-                }
-
-                if (i == Series.Count - 1 && HasSecondaryYAxis && type == AxisType.Primary)
-                {
-                    type = AxisType.Secondary;
-                    i = 0;
-
-                    engine.Evaluate("par(new = TRUE)");
-                    engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
-                    engine.Evaluate("axis(side = 4)");
-                    engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
                 }
             }
 
@@ -2402,11 +2409,11 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (series == ((Scatterplot)sample).Series)
                 {
-                    contextScatterplotProperties_Click(contextScatterplotProperties, new EventArgs());
+                    contextScatterplotProperties_Click(((Scatterplot)sample).Series, new EventArgs());
                 }
                 else if (series == ((Scatterplot)sample).Trend.Series)
                 {
-                    contextScatterplotTrend_Click(contextScatterplotTrend, new EventArgs());
+                    contextScatterplotAddTrend_Click(((Scatterplot)sample).Trend.Series, new EventArgs());
                 }
             }
 
@@ -2427,12 +2434,12 @@ namespace Mayfly.Mathematics.Charts
 
             if (sample is Scatterplot)
             {
-                contextScatterplotTrend_Click(contextScatterplotTrend, new EventArgs());
+                contextScatterplotTrend_Click(sample, new EventArgs());
             }
 
             if (sample is Histogramma)
             {
-                contextHistogramAddFit_Click(contextScatterplotTrend, new EventArgs());
+                contextHistogramAddFit_Click(sample, new EventArgs());
             }
         }
 
@@ -2580,7 +2587,7 @@ namespace Mayfly.Mathematics.Charts
 
         private void contextScatterplot_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            contextScatterplotDelete.Enabled = Scatterplots.Count > 1;
+            //contextScatterplotDelete.Enabled = Scatterplots.Count > 1;
             contextScatterplotDistinguish.Enabled = Scatterplots.Count > 1;
             //contextScatterplotTrendCompare.Enabled = SelectedScatterplots.Count > 1;
 
@@ -2595,13 +2602,11 @@ namespace Mayfly.Mathematics.Charts
             }
 
             contextScatterplotTrend.Enabled = trended;
-
-            contextScatterplotDescriptiveX.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisXTitle);
-            contextScatterplotDescriptiveY.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisYTitle);
-            contextScatterplotMerge.Enabled = SelectedScatterplots.Count > 1;
-            contextScatterplotSplit.Enabled = SelectedScatterplots.Count == 1;
-
-            contextScatterplotApart.Enabled = Scatterplots.Count > 1;
+            //contextScatterplotDescriptiveX.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisXTitle);
+            //contextScatterplotDescriptiveY.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisYTitle);
+            //contextScatterplotMerge.Enabled = SelectedScatterplots.Count > 1;
+            //contextScatterplotSplit.Enabled = SelectedScatterplots.Count == 1;
+            //contextScatterplotApart.Enabled = Scatterplots.Count > 1;
 
             bool hasColumn = false;
             foreach (Scatterplot scatterplot in SelectedScatterplots)
@@ -2613,7 +2618,8 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            contextScatterplotFindValue.Enabled = hasColumn;
+            toolStripSeparatorScatterplotFindValue.Visible =
+            contextScatterplotFindValue.Visible = hasColumn;
         }
 
         private void contextScatterplotProperties_Click(object sender, EventArgs e)
@@ -2646,59 +2652,59 @@ namespace Mayfly.Mathematics.Charts
             SeriesShowSelected();
         }
 
-        private void contextScatterplotDelete_Click(object sender, EventArgs e)
-        {
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                Remove(scatterplot.Properties.ScatterplotName);
-            }
-        }
+        //private void contextScatterplotDelete_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //    {
+        //        Remove(scatterplot.Properties.ScatterplotName);
+        //    }
+        //}
 
-        private void contextScatterplotDescriptiveX_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys.HasFlag(Keys.Control))
-            {
-                string result = string.Empty;
-                foreach (Scatterplot scatterplot in SelectedScatterplots)
-                {
-                    result += new SampleDisplay(scatterplot.Calc.Data.X).ToString();
-                    result += Constants.Break;
-                }
-                Clipboard.SetText(result.TrimEnd('\n'));
-            }
-            else
-            {
-                foreach (Scatterplot scatterplot in SelectedScatterplots)
-                {
-                    SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.X);
-                    properties.SetFriendlyDesktopLocation(contextScatterplot);
-                    properties.Show();
-                }
-            }
-        }
+        //private void contextScatterplotDescriptiveX_Click(object sender, EventArgs e)
+        //{
+        //    if (ModifierKeys.HasFlag(Keys.Control))
+        //    {
+        //        string result = string.Empty;
+        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //        {
+        //            result += new SampleDisplay(scatterplot.Calc.Data.X).ToString();
+        //            result += Constants.Break;
+        //        }
+        //        Clipboard.SetText(result.TrimEnd('\n'));
+        //    }
+        //    else
+        //    {
+        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //        {
+        //            SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.X);
+        //            properties.SetFriendlyDesktopLocation(contextScatterplot);
+        //            properties.Show();
+        //        }
+        //    }
+        //}
 
-        private void contextScatterplotDescriptiveY_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys.HasFlag(Keys.Control))
-            {
-                string result = string.Empty;
-                foreach (Scatterplot scatterplot in SelectedScatterplots)
-                {
-                    result += new SampleDisplay(scatterplot.Calc.Data.Y).ToString();
-                    result += Constants.Break;
-                }
-                Clipboard.SetText(result.TrimEnd('\n'));
-            }
-            else
-            {
-                foreach (Scatterplot scatterplot in SelectedScatterplots)
-                {
-                    SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.Y);
-                    properties.SetFriendlyDesktopLocation(contextScatterplot);
-                    properties.Show();
-                }
-            }
-        }
+        //private void contextScatterplotDescriptiveY_Click(object sender, EventArgs e)
+        //{
+        //    if (ModifierKeys.HasFlag(Keys.Control))
+        //    {
+        //        string result = string.Empty;
+        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //        {
+        //            result += new SampleDisplay(scatterplot.Calc.Data.Y).ToString();
+        //            result += Constants.Break;
+        //        }
+        //        Clipboard.SetText(result.TrimEnd('\n'));
+        //    }
+        //    else
+        //    {
+        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //        {
+        //            SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.Y);
+        //            properties.SetFriendlyDesktopLocation(contextScatterplot);
+        //            properties.Show();
+        //        }
+        //    }
+        //}
 
         private void contextScatterplotTrend_Click(object sender, EventArgs e)
         {
@@ -2708,76 +2714,76 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        private void contextScatterplotTrendCompare_Click(object sender, EventArgs e)
-        {
-            List<Regression> regressions = new List<Regression>();
+        //private void contextScatterplotTrendCompare_Click(object sender, EventArgs e)
+        //{
+        //    List<Regression> regressions = new List<Regression>();
 
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                if (scatterplot.Calc.IsRegressionOK)
-                {
-                    regressions.Add(scatterplot.Calc.Regression);
-                }
-            }
+        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //    {
+        //        if (scatterplot.Calc.IsRegressionOK)
+        //        {
+        //            regressions.Add(scatterplot.Calc.Regression);
+        //        }
+        //    }
 
-            if (regressions.Count > 1)
-            {
-                RegressionComparison regressionComparison = new RegressionComparison(regressions.ToArray());
-                regressionComparison.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.Centered);
-                regressionComparison.Show();
-            }
-        }
+        //    if (regressions.Count > 1)
+        //    {
+        //        RegressionComparison regressionComparison = new RegressionComparison(regressions.ToArray());
+        //        regressionComparison.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.Centered);
+        //        regressionComparison.Show();
+        //    }
+        //}
 
-        private void contextScatterplotMerge_Click(object sender, EventArgs e)
-        {
-            BivariateSample mergedBivariate = new BivariateSample(AxisXTitle, AxisYTitle);
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                for (int i = 0; i < scatterplot.Calc.Data.Count; i++)
-                {
-                    mergedBivariate.Add(scatterplot.Calc.Data.X.ElementAt(i), scatterplot.Calc.Data.Y.ElementAt(i));
-                }
-            }
+        //private void contextScatterplotMerge_Click(object sender, EventArgs e)
+        //{
+        //    BivariateSample mergedBivariate = new BivariateSample(AxisXTitle, AxisYTitle);
+        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //    {
+        //        for (int i = 0; i < scatterplot.Calc.Data.Count; i++)
+        //        {
+        //            mergedBivariate.Add(scatterplot.Calc.Data.X.ElementAt(i), scatterplot.Calc.Data.Y.ElementAt(i));
+        //        }
+        //    }
 
-            Scatterplot mergedScatterplot = new Scatterplot(mergedBivariate, Resources.Interface.MergedBivariate);
-            mergedScatterplot.Properties.DataPointSize = 12;
-            AddSeries(mergedScatterplot);
-        }
+        //    Scatterplot mergedScatterplot = new Scatterplot(mergedBivariate, Resources.Interface.MergedBivariate);
+        //    mergedScatterplot.Properties.DataPointSize = 12;
+        //    AddSeries(mergedScatterplot);
+        //}
 
-        private void contextScatterplotSplit_Click(object sender, EventArgs e)
-        {
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                LaunchSeparation(scatterplot);
-            }
-        }
+        //private void contextScatterplotSplit_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //    {
+        //        LaunchSeparation(scatterplot);
+        //    }
+        //}
 
-        private void contextScatterplotHistogramX_Click(object sender, EventArgs e)
-        {
-            foreach (Scatterplot scatterplot in SelectedScatterplots)
-            {
-                Histogramma histogram = new Histogramma(AxisXTitle, scatterplot.Calc.Data.X, IsChronic);
-                histogram.ShowOnChart(this);
-            }
-        }
+        //private void contextScatterplotHistogramX_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //    {
+        //        Histogramma histogram = new Histogramma(AxisXTitle, scatterplot.Calc.Data.X, IsChronic);
+        //        histogram.ShowOnChart(this);
+        //    }
+        //}
 
-        private void contextItemScatterplotApart_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys.HasFlag(Keys.Shift))
-            {
-                foreach (Scatterplot scatterplot in SelectedScatterplots)
-                {
-                    Plot statChart = scatterplot.ShowOnChart();
-                    statChart.AxisXTitle = AxisXTitle;
-                    statChart.AxisYTitle = AxisYTitle;
-                    statChart.DoPlot();
-                }
-            }
-            else
-            {
-                Scatterplot.ShowOnChart(SelectedScatterplots);
-            }
-        }
+        //private void contextItemScatterplotApart_Click(object sender, EventArgs e)
+        //{
+        //    if (ModifierKeys.HasFlag(Keys.Shift))
+        //    {
+        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
+        //        {
+        //            Plot statChart = scatterplot.ShowOnChart();
+        //            statChart.AxisXTitle = AxisXTitle;
+        //            statChart.AxisYTitle = AxisYTitle;
+        //            statChart.DoPlot();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Scatterplot.ShowOnChart(SelectedScatterplots);
+        //    }
+        //}
 
         private void contextScatterplotFindValue_Click(object sender, EventArgs e)
         {

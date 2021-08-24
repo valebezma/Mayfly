@@ -93,27 +93,8 @@ namespace Mayfly.Fish.Explorer
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtefactSpecies);
-                gridRow.Cells[columnArtefactSpecies.Index].Value = artefact.SpeciesRow.Species;
-                //gridRow.Cells[columnArtefactN.Index].Value = artefact.Quantity;
+                gridRow.Cells[columnArtefactSpecies.Index].Value = artefact.SpeciesRow;
                 spreadSheetArtefactSpecies.Rows.Add(gridRow);
-
-                //if (artefact.IndividualsMissing > 0)
-                //{
-                //    gridRow.Cells[columnArtefactDetailed.Index].Value = artefact.IndividualsMissing;
-                //    ((TextAndImageCell)gridRow.Cells[columnArtefactDetailed.Index]).Image =
-                //        Mathematics.Properties.Resources.NoneRed;
-
-                //    gridRow.Cells[columnArtefactDetailed.Index].ToolTipText = //artefact.ToString();
-                //        string.Format(Resources.Artefact.Specimen,
-                //        artefact.SpeciesRow.KeyRecord.FullName, artefact.Quantity,
-                //        artefact.QuantityIndividuals, artefact.QuantityStratified, artefact.IndividualsMissing);
-                //}
-                //else
-                //{
-                //    gridRow.Cells[columnArtefactDetailed.Index].Value = Constants.Null;
-                //    ((TextAndImageCell)gridRow.Cells[columnArtefactDetailed.Index]).Image =
-                //        Mathematics.Properties.Resources.Check;
-                //}
 
                 if (artefact.LengthMissing > 0)
                 {
@@ -238,7 +219,7 @@ namespace Mayfly.Fish.Explorer
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtefactInd);
-                gridRow.Cells[columnArtefactIndSpecies.Index].Value = artefact.IndividualRow.Species;
+                gridRow.Cells[columnArtefactIndSpecies.Index].Value = artefact.IndividualRow.LogRow.SpeciesRow;
                 spreadSheetArtefactInd.Rows.Add(gridRow);
 
                 if (artefact.HasRegID && !artefact.Treated)

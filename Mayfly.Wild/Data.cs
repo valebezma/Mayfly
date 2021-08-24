@@ -1299,11 +1299,14 @@ namespace Mayfly.Wild
             {
                 switch (format.ToLowerInvariant())
                 {
-                    case "l":
-                        return this.KeyRecord.ShortName;
-
                     case "s":
-                        return this.KeyRecord.ScientificName;
+                        return this.KeyRecord == null ? ToString() : this.KeyRecord.ShortName;
+
+                    case "f":
+                        return this.KeyRecord == null ? ToString() : this.KeyRecord.FullName;
+
+                    case "l":
+                        return this.KeyRecord == null ? ToString() : this.KeyRecord.ScientificName;
 
                     default:
                         return this.Species;

@@ -85,7 +85,7 @@ namespace Mayfly.Fish.Explorer
 
             result.CreateCells(spreadSheetLog);
 
-            result.Cells[columnLogSpc.Index].Value = speciesRow.Species;
+            result.Cells[columnLogSpc.Index].Value = speciesRow;
             result.Cells[columnLogID.Index].Value = cardRow.ID;
 
             Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, speciesRow.ID);

@@ -222,28 +222,43 @@
     <value>File</value>
   </data>
   <data name="menuItemArtefactsSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemArtefactsSearch.Text" xml:space="preserve">
-    <value>Artefacts check</value>
+    <value>Data consistency check</value>
+  </data>
+  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 6</value>
+  </data>
+  <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="menuItemGearStats.Text" xml:space="preserve">
+    <value>Gear stats</value>
+  </data>
+  <data name="menuItemSpcStats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="menuItemSpcStats.Text" xml:space="preserve">
+    <value>Species stats</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 6</value>
+    <value>194, 6</value>
   </data>
   <data name="menuItemLoadCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemLoadCards.Text" xml:space="preserve">
     <value>Cards</value>
   </data>
   <data name="menuItemLoadSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemLoadSpc.Text" xml:space="preserve">
     <value>Species</value>
   </data>
   <data name="menuItemLoadLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemLoadLog.Text" xml:space="preserve">
     <value>Log</value>
@@ -258,13 +273,13 @@
     <value>126, 6</value>
   </data>
   <data name="menuItemLoadIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemLoadIndividuals.Text" xml:space="preserve">
     <value>Individuals</value>
   </data>
   <data name="menuItemLoadStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="menuItemLoadStratified.Text" xml:space="preserve">
     <value>Stratified samples</value>
@@ -280,24 +295,6 @@
   </data>
   <data name="menuItemSurveyInput.Text" xml:space="preserve">
     <value>Input survey data</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 6</value>
-  </data>
-  <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="menuItemGearStats.Text" xml:space="preserve">
-    <value>Gear stats</value>
-  </data>
-  <data name="menuItemSpcStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="menuItemSpcStats.Text" xml:space="preserve">
-    <value>Species stats</value>
-  </data>
-  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 6</value>
   </data>
   <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 22</value>
@@ -1099,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAQgBNAEIATQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAUABNAFAATQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1438,7 +1435,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelArtefactGear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>951, 544</value>
+    <value>951, 643</value>
   </data>
   <data name="labelArtefactGear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
@@ -1486,7 +1483,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxArtefactGear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>931, 543</value>
+    <value>931, 642</value>
   </data>
   <data name="pictureBoxArtefactGear.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 14</value>
@@ -1596,7 +1593,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="spreadSheetArtefactCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1012, 478</value>
+    <value>1012, 577</value>
   </data>
   <data name="spreadSheetArtefactCard.StatusFormat" xml:space="preserve">
     <value>1;2|artifact;artifacts</value>
@@ -1623,7 +1620,7 @@
     <value>45, 45, 45, 45</value>
   </data>
   <data name="tabPageArtefactCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1108, 602</value>
+    <value>1108, 701</value>
   </data>
   <data name="tabPageArtefactCards.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1656,7 +1653,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>951, 544</value>
+    <value>951, 643</value>
   </data>
   <data name="labelArtefactSpecies.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
@@ -1704,7 +1701,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
-    <value>931, 543</value>
+    <value>931, 642</value>
   </data>
   <data name="pictureBoxArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 14</value>
@@ -1809,7 +1806,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="spreadSheetArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1012, 478</value>
+    <value>1012, 577</value>
   </data>
   <data name="spreadSheetArtefactSpecies.StatusFormat" xml:space="preserve">
     <value>1;2|artifact;artifacts</value>
@@ -1836,7 +1833,7 @@
     <value>45, 45, 45, 45</value>
   </data>
   <data name="tabPageArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1108, 602</value>
+    <value>1108, 701</value>
   </data>
   <data name="tabPageArtefactSpecies.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1905,7 +1902,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="spreadSheetArtefactInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1012, 478</value>
+    <value>1012, 577</value>
   </data>
   <data name="spreadSheetArtefactInd.StatusFormat" xml:space="preserve">
     <value>1;2|artifact;artifacts</value>
@@ -2019,7 +2016,7 @@
     <value>45, 45, 45, 45</value>
   </data>
   <data name="tabPageArtefactInds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1108, 602</value>
+    <value>1108, 701</value>
   </data>
   <data name="tabPageArtefactInds.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2043,7 +2040,7 @@
     <value>18, 18</value>
   </data>
   <data name="tabControlArtefacts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1116, 628</value>
+    <value>1116, 727</value>
   </data>
   <data name="tabControlArtefacts.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -8981,6 +8978,24 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemArtefactsSearch.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripSeparator23.Name" xml:space="preserve">
+    <value>toolStripSeparator23</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemGearStats.Name" xml:space="preserve">
+    <value>menuItemGearStats</value>
+  </data>
+  <data name="&gt;&gt;menuItemGearStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemSpcStats.Name" xml:space="preserve">
+    <value>menuItemSpcStats</value>
+  </data>
+  <data name="&gt;&gt;menuItemSpcStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
@@ -9040,30 +9055,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   </data>
   <data name="&gt;&gt;menuItemSurveyInput.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
-    <value>toolStripSeparator6</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemGearStats.Name" xml:space="preserve">
-    <value>menuItemGearStats</value>
-  </data>
-  <data name="&gt;&gt;menuItemGearStats.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemSpcStats.Name" xml:space="preserve">
-    <value>menuItemSpcStats</value>
-  </data>
-  <data name="&gt;&gt;menuItemSpcStats.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator15.Name" xml:space="preserve">
-    <value>toolStripSeparator15</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemSpawning.Name" xml:space="preserve">
     <value>menuItemSpawning</value>

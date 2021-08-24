@@ -130,8 +130,17 @@ namespace Mayfly.Mathematics.Statistics
         public abstract string GetEquation(string y, string x, string format);
 
 
-        
-        public abstract double Predict(double x);
+
+        public virtual double Predict(double x) 
+        { 
+            if (fit == null) return double.NaN;
+
+            var xvalues = engine.CreateNumeric(x);
+            engine.SetSymbol("new.x", xvalues);
+
+            engine.SetSymbol("fit", fit);
+            return engine.Evaluate("predict(fit, data.frame(xvalues = new.x)").AsNumeric()[0];        
+        }
 
         public abstract double PredictInversed(double y);
 
@@ -153,6 +162,8 @@ namespace Mayfly.Mathematics.Statistics
 
         internal virtual Interval[] getInterval(double[] x, double level, IntervalType type)
         {
+            if (fit == null) return null;
+
             var xvalues = engine.CreateNumericVector(x);
             engine.SetSymbol("axis", xvalues);
 
@@ -174,7 +185,7 @@ namespace Mayfly.Mathematics.Statistics
         {
             Interval[] result = getInterval(x, level, type);
 
-            if (type == IntervalType.Prediction)
+            if (result != null && type == IntervalType.Prediction)
             {
                 Outliers = new BivariateSample();
 
@@ -273,10 +284,31 @@ namespace Mayfly.Mathematics.Statistics
             {
                 switch (type)
                 {
-                    //case TrendType.Auto:
-                    //case TrendType.Linear:
-                    //    result = Linear(data);
-                    //    break;
+                    case TrendType.Auto:
+                        TrendType best = TrendType.None;
+                        double r2 = 0;
+
+                        foreach (TrendType t in new TrendType[] { TrendType.Linear, 
+                            TrendType.Exponential, TrendType.Power, TrendType.Logarithmic,
+                            TrendType.Quadratic, TrendType.Cubic, 
+                            TrendType.Growth, TrendType.Logistic })
+                        {
+                            Regression r = GetRegression(data, t);
+
+                            if (r == null) continue;
+
+                            if (r.RSquared > r2)
+                            {
+                                r2 = r.RSquared;
+                                best = t;
+                            }
+                        }
+
+                        return GetRegression(data, best);
+
+                    case TrendType.Linear:
+                        result = new Linear(data);
+                        break;
 
                     case TrendType.Quadratic:
                         result = new Polynom(data, 2);
