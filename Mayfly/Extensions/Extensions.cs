@@ -91,11 +91,11 @@ namespace Mayfly.Extensions
 
         public static Color Darker(this Color color, double saturationdegree)
         {
-            int A = Math.Max(0, color.A - (int)(saturationdegree * 255));
+            //int A = Math.Max(0, color.A - (int)(saturationdegree * 255));
             int R = Math.Max(0, color.R - (int)(saturationdegree * 255));
             int G = Math.Max(0, color.G - (int)(saturationdegree * 255));
             int B = Math.Max(0, color.B - (int)(saturationdegree * 255));
-            return Color.FromArgb(A, R, G, B);
+            return Color.FromArgb(color.A, R, G, B);
         }
 
         public static Color Lighter(this Color color)

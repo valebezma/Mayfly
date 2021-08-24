@@ -104,22 +104,29 @@ namespace Mayfly.Mathematics.Charts
             double xInterval = (xMax - xMin) / splineStep;
             double yInterval = (yMax - yMin) / splineStep;
 
-            for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
+            if (TransposeCharting)
             {
-                double y = Predict(x);
-                if (double.IsInfinity(y)) continue;
-                if (double.IsNaN(y)) continue;
-
-                if (TransposeCharting)
+                for (double x = yMin - 5 * yInterval; x <= yMax + 5 * yInterval; x += yInterval)
                 {
+                    double y = Predict(x);
+                    if (double.IsInfinity(y)) continue;
+                    if (double.IsNaN(y)) continue;
+
                     if (x > yMin - 5 * yInterval && x < yMax + 5 * yInterval &&
                         y > xMin - 5 * xInterval && y < xMax + 5 * xInterval)
                     {
                         Series.Points.Add(new DataPoint(y, x));
                     }
                 }
-                else
+            }
+            else
+            {
+                for (double x = xMin - 5 * xInterval; x <= xMax + 5 * xInterval; x += xInterval)
                 {
+                    double y = Predict(x);
+                    if (double.IsInfinity(y)) continue;
+                    if (double.IsNaN(y)) continue;
+
                     if (y > yMin - 5 * yInterval && y < yMax + 5 * yInterval &&
                         x > xMin - 5 * xInterval && x < xMax + 5 * xInterval)
                     {

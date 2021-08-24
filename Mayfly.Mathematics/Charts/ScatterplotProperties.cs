@@ -138,7 +138,7 @@ namespace Mayfly.Mathematics.Charts
             set { numericUpDownConfidenceLevel.Value = 100 * (decimal)value; }
         }
 
-        bool TrendColored = false;
+        //bool TrendColored = false;
 
 
 
@@ -155,9 +155,9 @@ namespace Mayfly.Mathematics.Charts
         {
             Scatterplot = scatterplot;
             TrendColor = DataPointColor.Darker();
-            checkBoxShowTrend.Enabled = 
-                scatterplot.Calc != null &&
-                scatterplot.Calc.Data.Count > UserSettings.StrongSampleSize;
+            //checkBoxShowTrend.Enabled = 
+            //    scatterplot.Calc != null &&
+            //    scatterplot.Calc.Data.Count > UserSettings.StrongSampleSize;
         }
 
 
@@ -210,10 +210,10 @@ namespace Mayfly.Mathematics.Charts
             {
                 panelTrendColor.BackColor = colorDialogTrend.Color;
 
-                if (!TrendColored)
-                {
-                    TrendColor = DataPointColor.Darker();
-                }
+                //if (!TrendColored)
+                //{
+                //    TrendColor = DataPointColor.Darker();
+                //}
             }
             else
             {
@@ -226,7 +226,7 @@ namespace Mayfly.Mathematics.Charts
         private void panelTrendColor_Click(object sender, EventArgs e)
         {
             colorDialogTrend.ShowDialog(this);
-            TrendColored = true;
+            //TrendColored = true;
             panelTrendColor.BackColor = colorDialogTrend.Color;
             valueChanged(ActiveControl, e);
         }
@@ -237,10 +237,10 @@ namespace Mayfly.Mathematics.Charts
             panelMarkerColor.BackColor = colorDialogMarker.Color;
             valueChanged(ActiveControl, e);
 
-            if (!TrendColored)
-            {
-                TrendColor = DataPointColor.Darker();
-            }
+            //if (!TrendColored)
+            //{
+            //    TrendColor = DataPointColor.Darker();
+            //}
         }
 
         private void panelMarkerColor_BackColorChanged(object sender, EventArgs e)
@@ -283,6 +283,11 @@ namespace Mayfly.Mathematics.Charts
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void checkBox_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!((CheckBox)sender).Enabled) ((CheckBox)sender).Checked = false;
         }
     }
 }

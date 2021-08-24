@@ -256,7 +256,8 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (Fit != null)
                 {
-                    Container.Remove(Fit.Properties.FunctionName, false);
+                    Container.Series.Remove(Fit.Series);
+                    Container.Functors.Remove(Fit);
                     Fit = null;
                 }
             }
