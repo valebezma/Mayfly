@@ -201,7 +201,7 @@ namespace Mayfly.Fish.Explorer
 
             combi = new Scatterplot("Model");
             combi.Properties.ShowTrend = true;
-            combi.Properties.ConfidenceLevel = .99;
+            combi.Properties.ConfidenceLevel = .99999;
             combi.Properties.ShowPredictionBands = true;
             combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
             combi.Properties.DataPointColor = Color.Transparent;

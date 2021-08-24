@@ -120,6 +120,9 @@
   <data name="Abundance" xml:space="preserve">
     <value>Численность</value>
   </data>
+  <data name="Age" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
   <data name="AgeUnit" xml:space="preserve">
     <value>Возраст, лет</value>
   </data>

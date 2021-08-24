@@ -250,9 +250,9 @@
             this.columnArtefactMass = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnArtefactAge = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.contextArtSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextArtSpeciesQualification = new System.Windows.Forms.ToolStripMenuItem();
             this.contextArtSpeciesFindInd = new System.Windows.Forms.ToolStripMenuItem();
             this.contextArtSpeciesFindStratified = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextArtSpeciesEurythmy = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageArtefactInds = new System.Windows.Forms.TabPage();
             this.spreadSheetArtefactInd = new Mayfly.Controls.SpreadSheet();
             this.columnArtefactIndSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1599,12 +1599,18 @@
             // contextArtSpecies
             // 
             this.contextArtSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextArtSpeciesQualification,
             this.contextArtSpeciesFindInd,
-            this.contextArtSpeciesFindStratified,
-            this.contextArtSpeciesEurythmy});
+            this.contextArtSpeciesFindStratified});
             this.contextArtSpecies.Name = "contextArtefact";
             resources.ApplyResources(this.contextArtSpecies, "contextArtSpecies");
             this.contextArtSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextArtSpecies_Opening);
+            // 
+            // contextArtSpeciesQualification
+            // 
+            this.contextArtSpeciesQualification.Name = "contextArtSpeciesQualification";
+            resources.ApplyResources(this.contextArtSpeciesQualification, "contextArtSpeciesQualification");
+            this.contextArtSpeciesQualification.Click += new System.EventHandler(this.contextArtSpeciesModels_Click);
             // 
             // contextArtSpeciesFindInd
             // 
@@ -1617,12 +1623,6 @@
             this.contextArtSpeciesFindStratified.Name = "contextArtSpeciesFindStratified";
             resources.ApplyResources(this.contextArtSpeciesFindStratified, "contextArtSpeciesFindStratified");
             this.contextArtSpeciesFindStratified.Click += new System.EventHandler(this.contextArtSpeciesFindStratified_Click);
-            // 
-            // contextArtSpeciesEurythmy
-            // 
-            this.contextArtSpeciesEurythmy.Name = "contextArtSpeciesEurythmy";
-            resources.ApplyResources(this.contextArtSpeciesEurythmy, "contextArtSpeciesEurythmy");
-            this.contextArtSpeciesEurythmy.Click += new System.EventHandler(this.contextArtSpeciesModels_Click);
             // 
             // tabPageArtefactInds
             // 
@@ -4072,7 +4072,7 @@
         private System.ComponentModel.BackgroundWorker calcModel;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesEurythmy;
+        private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesQualification;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveSet;
         private System.Windows.Forms.ToolStripMenuItem menuModels;

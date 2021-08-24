@@ -1099,7 +1099,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAegBMwHoATMBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAQgBNAEIATQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1781,26 +1781,26 @@
   <metadata name="contextArtSpecies.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>989, 17</value>
   </metadata>
+  <data name="contextArtSpeciesQualification.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextArtSpeciesQualification.Text" xml:space="preserve">
+    <value>Qualification chart</value>
+  </data>
   <data name="contextArtSpeciesFindInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextArtSpeciesFindInd.Text" xml:space="preserve">
-    <value>Load individuals log</value>
+    <value>Open individuals</value>
   </data>
   <data name="contextArtSpeciesFindStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextArtSpeciesFindStratified.Text" xml:space="preserve">
-    <value>Load stratified samples</value>
-  </data>
-  <data name="contextArtSpeciesEurythmy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="contextArtSpeciesEurythmy.Text" xml:space="preserve">
-    <value>See data eurythmy</value>
+    <value>Open stratified samples</value>
   </data>
   <data name="contextArtSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 70</value>
+    <value>199, 70</value>
   </data>
   <data name="&gt;&gt;contextArtSpecies.Name" xml:space="preserve">
     <value>contextArtSpecies</value>
@@ -9539,6 +9539,12 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;columnArtefactAge.Type" xml:space="preserve">
     <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="&gt;&gt;contextArtSpeciesQualification.Name" xml:space="preserve">
+    <value>contextArtSpeciesQualification</value>
+  </data>
+  <data name="&gt;&gt;contextArtSpeciesQualification.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;contextArtSpeciesFindInd.Name" xml:space="preserve">
     <value>contextArtSpeciesFindInd</value>
   </data>
@@ -9549,12 +9555,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>contextArtSpeciesFindStratified</value>
   </data>
   <data name="&gt;&gt;contextArtSpeciesFindStratified.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextArtSpeciesEurythmy.Name" xml:space="preserve">
-    <value>contextArtSpeciesEurythmy</value>
-  </data>
-  <data name="&gt;&gt;contextArtSpeciesEurythmy.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnArtefactIndSpecies.Name" xml:space="preserve">
