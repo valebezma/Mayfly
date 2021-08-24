@@ -2852,29 +2852,27 @@ namespace Mayfly.Fish.Explorer
         {
             if (!Licensing.Verify("Fishery Scientist")) return;
 
-            Data.SpeciesRow specisRow = (Data.SpeciesRow)e.Argument;
-            e.Result = specisRow;
+            Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
+            e.Result = speciesRow;
 
             if (UserSettings.MassSuggest)
             {
-                data.FindMassModel(specisRow.Species).RefreshInternal();
-                //data.MassModels.Refresh(specisRow.Species);
+                data.FindMassModel(speciesRow.Species).RefreshInternal();
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
                 {
-                    if (IndividualRow(gridRow).LogRow.SpeciesRow != specisRow) continue;
+                    if (IndividualRow(gridRow).LogRow.SpeciesRow != speciesRow) continue;
                     SetIndividualMassTip(gridRow);
                 }
             }
 
             if (UserSettings.AgeSuggest)
             {
-                data.FindGrowthModel(specisRow.Species).RefreshInternal();
-                //data.GrowthModels.Refresh(specisRow.Species);
+                data.FindGrowthModel(speciesRow.Species).RefreshInternal();
 
                 foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
                 {
-                    if (IndividualRow(gridRow).LogRow.SpeciesRow != specisRow) continue;
+                    if (IndividualRow(gridRow).LogRow.SpeciesRow != speciesRow) continue;
                     SetIndividualAgeTip(gridRow);
                 }
             }
@@ -2885,6 +2883,10 @@ namespace Mayfly.Fish.Explorer
             if (e.Cancelled) {
                 specUpdater.RunWorkerAsync(e.Result);
                 return;
+            }
+            else if (selectedStatSpc == (Data.SpeciesRow)e.Result)
+            {
+                calcModel.RunWorkerAsync((Data.SpeciesRow)e.Result);
             }
         }
 
