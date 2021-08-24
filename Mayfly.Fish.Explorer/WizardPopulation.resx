@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 260</value>
+    <value>200, 262</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 196</value>
+    <value>200, 198</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 228</value>
+    <value>240, 230</value>
   </data>
   <data name="checkBoxLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 292</value>
+    <value>240, 294</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 93</value>
+    <value>50, 95</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>

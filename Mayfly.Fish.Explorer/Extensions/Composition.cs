@@ -27,22 +27,22 @@ namespace Mayfly.Fish.Explorer
             composition.AddCategory(cat, j + 1);
         }
 
-        public static Scatterplot[] GetCatchCurve(this Composition composition)
+        public static BivariatePredictiveModel[] GetCatchCurve(this Composition composition)
         {
             return composition.GetCatchCurve(false);
         }
 
-        public static Scatterplot[] GetCatchCurve(this Composition composition, int _break)
+        public static BivariatePredictiveModel[] GetCatchCurve(this Composition composition, int _break)
         {
             return composition.GetCatchCurve(false, _break);
         }
 
-        public static Scatterplot[] GetCatchCurve(this Composition composition, bool isChronic)
+        public static BivariatePredictiveModel[] GetCatchCurve(this Composition composition, bool isChronic)
         {
             return composition.GetCatchCurve(isChronic, composition.IndexOf(composition.MostAbundant));
         }
 
-        public static Scatterplot[] GetCatchCurve(this Composition composition, bool isChronic, int _break)
+        public static BivariatePredictiveModel[] GetCatchCurve(this Composition composition, bool isChronic, int _break)
         {
             if (composition is Cohort && isChronic)
                 throw new ArgumentException("Only this provide chronic catch curves.");
@@ -76,15 +76,9 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            Scatterplot useful = new Scatterplot(usedAbundances, Resources.Interface.Interface.CatchCurve);
-            if (isChronic) useful.Series.ChartType = SeriesChartType.Line;
-            useful.IsChronic = isChronic;
-            Scatterplot unused = new Scatterplot(unusedAbundances, Resources.Interface.Interface.CatchCurveUnused)
-            {
-                IsChronic = isChronic
-            };
-
-            return new Scatterplot[] { unused, useful };
+            BivariatePredictiveModel useful = new BivariatePredictiveModel(usedAbundances, TrendType.Exponential) { Name = Resources.Interface.Interface.CatchCurve };
+            BivariatePredictiveModel unused = new BivariatePredictiveModel(unusedAbundances, TrendType.None) { Name = Resources.Interface.Interface.CatchCurveUnused };
+            return new BivariatePredictiveModel[] { unused, useful };
         }
 
         public static void SetLines(this Composition composition, DataGridViewColumn gridColumn)

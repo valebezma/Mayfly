@@ -16,9 +16,9 @@ namespace Mayfly.Fish.Explorer
 {
     public class ExponentialMortalityModel
     {
-        public Scatterplot Unexploited;
+        public BivariatePredictiveModel Unexploited;
 
-        public Scatterplot Exploited { get; private set; }
+        public BivariatePredictiveModel Exploited { get; private set; }
 
         public double Z { get; private set; }
 
@@ -27,6 +27,8 @@ namespace Mayfly.Fish.Explorer
         public double S { get; private set; }
 
         public AgeGroup YoungestCaught { get; private set; }
+
+        public AgeGroup OldestCaught { get; private set; }
 
 
 
@@ -39,20 +41,21 @@ namespace Mayfly.Fish.Explorer
         {
             ExponentialMortalityModel result = new ExponentialMortalityModel();
 
-            Scatterplot[] res = ageComposition.GetCatchCurve(fullExploitationIndex);
+            BivariatePredictiveModel[] res = ageComposition.GetCatchCurve(fullExploitationIndex);
 
             result.Unexploited = res[0];
             result.Exploited = res[1];
 
             result.YoungestCaught = (AgeGroup)ageComposition[fullExploitationIndex];
+            result.OldestCaught = (AgeGroup)ageComposition.GetLast();
 
-            result.Exploited.Properties.ShowTrend = true;
-            result.Exploited.Properties.SelectedApproximationType = TrendType.Exponential;
-            result.Exploited.Calc.Calculate(TrendType.Exponential);
+            //result.Exploited.Properties.ShowTrend = true;
+            //result.Exploited.Properties.SelectedApproximationType = TrendType.Exponential;
+            result.Exploited.Calculate(TrendType.Exponential);
 
-            if (result.Exploited.Calc.IsRegressionOK)
+            if (result.Exploited.IsRegressionOK)
             {
-                result.Z = -result.Exploited.Calc.Regression.Parameters[1];
+                result.Z = -result.Exploited.Regression.Parameters[1];
                 result.S = Math.Exp(-result.Z);
                 result.Fi = 1 - result.S;
                 return result;

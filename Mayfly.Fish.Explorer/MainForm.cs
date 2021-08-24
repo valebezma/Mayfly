@@ -2283,7 +2283,7 @@ namespace Mayfly.Fish.Explorer
                 countStack.GetStatisticComposition(selectedStatSpc,
                 (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged).GetHistogramSample();
 
-            plotQualify.Remaster();
+            plotQualify.DoPlot();
 
             foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
             {
@@ -2296,7 +2296,7 @@ namespace Mayfly.Fish.Explorer
             plotQualify.Updated -= plotQualify_Updated;
             plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize,
                 AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity));
-            plotQualify.Remaster();
+            plotQualify.DoPlot();
             plotQualify.Updated += plotQualify_Updated;
         }
 
@@ -2402,7 +2402,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            plotQualify.Remaster();
+            plotQualify.DoPlot();
 
             checkBoxQualOutliers.Enabled =
                 buttonQualOutliers.Enabled =

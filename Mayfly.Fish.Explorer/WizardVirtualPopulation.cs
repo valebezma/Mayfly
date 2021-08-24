@@ -278,7 +278,7 @@ namespace Mayfly.Fish.Explorer
             yieldS.IsChronic = true;
             plotYield.AddSeries(yieldS);
 
-            plotYield.Remaster();
+            plotYield.DoPlot();
 
             pageYield.SetNavigation(true);
             pageYield.AllowNext = AnnualStacks.Length > 1;
@@ -359,7 +359,7 @@ namespace Mayfly.Fish.Explorer
 
             statChartVpa.AxisXMin = new DateTime(min, 1, 1).ToOADate();
             statChartVpa.AxisXMax = new DateTime(max + 1, 1, 1).ToOADate();
-            statChartVpa.Remaster();
+            statChartVpa.DoPlot();
 
             //foreach (Cohort cohort in Population)
             //{
@@ -547,7 +547,7 @@ namespace Mayfly.Fish.Explorer
             Population.Run(ModelCohort);
 
             statChartVpa.AxisYMax = Population.GetMaximumSurvivals() / 1000;
-            statChartVpa.Remaster();
+            statChartVpa.DoPlot();
 
             for (int i = 0; i < ModelCohort.Count; i++)
             {
@@ -656,7 +656,7 @@ namespace Mayfly.Fish.Explorer
             statChartVpa.AddSeries(size);
             size.Update();
 
-            statChartVpa.Remaster();
+            statChartVpa.DoPlot();
         }
 
         private void pageChart_Commit(object sender, WizardPageConfirmEventArgs e)

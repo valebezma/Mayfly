@@ -9,6 +9,7 @@ namespace Mayfly.Mathematics.Statistics
 {
     public enum TrendType
     {
+        None = -1,
         Auto,
 
         Linear,

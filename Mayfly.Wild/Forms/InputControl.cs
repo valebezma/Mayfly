@@ -92,7 +92,7 @@ namespace Mayfly.Wild
                 StatChart.AxisYTitle = Function.HeaderText;
             }
 
-            StatChart.Remaster();
+            StatChart.DoPlot();
 
             Cursor = Cursors.Default;
 

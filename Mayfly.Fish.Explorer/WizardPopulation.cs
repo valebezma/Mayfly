@@ -195,21 +195,22 @@ namespace Mayfly.Fish.Explorer
         {
             report.AddSectionTitle(Resources.Reports.Sections.Growth.Title, SpeciesRow.KeyRecord.FullNameReport);
 
-            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1, 
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph1,
                 SpeciesRow.KeyRecord.FullNameReport,
                 Swarm.LengthSample.Minimum, Swarm.LengthSample.Maximum, Swarm.LengthSample.Mean,
                 Swarm.MassSample.Minimum, Swarm.MassSample.Maximum, Swarm.MassSample.Mean);
-            
+
 
             // LW model
             report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph2, report.NextFigureNumber);
             report.AddEquation(WeightModel.CombinedData.Regression.GetEquation("W", "L"));
             report.AddImage(plotLW.GetVector(17, 10), plotLW.Text);
 
-            if (GrowthModel.CombinedData.IsRegressionOK) {
+            if (GrowthModel.CombinedData.IsRegressionOK)
+            {
 
                 // AL model
-                report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3, 
+                report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph3,
                     report.NextFigureNumber);
                 report.AddEquation(GrowthModel.CombinedData.Regression.GetEquation("L", "t"));
                 report.AddImage(plotAL.GetVector(17, 10), plotAL.Text);
@@ -225,11 +226,11 @@ namespace Mayfly.Fish.Explorer
             }
 
             // CPUE
-            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph6, 
+            report.AddParagraph(Resources.Reports.Sections.Growth.Paragraph6,
                 SpeciesRow.KeyRecord.ShortName, Swarm.Abundance, gearWizard.SelectedUnit.Unit,
                 Swarm.Biomass, gearWizard.SelectedSamplerType.ToDisplay(), report.NextTableNumber);
             Report.Table table = classedComposition.GetStandardCatchesTable(
-                string.Format(Resources.Reports.Sections.Growth.Table, 
+                string.Format(Resources.Reports.Sections.Growth.Table,
                 SpeciesRow.KeyRecord.ShortName, gearWizard.SelectedSamplerType.ToDisplay()),
                 Resources.Reports.Caption.GearClass);
             report.AddTable(table);
@@ -237,10 +238,10 @@ namespace Mayfly.Fish.Explorer
 
         public void AddSelectivity(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Sections.Selectivity.Title, 
+            report.AddSectionTitle(Resources.Reports.Sections.Selectivity.Title,
                 gearWizard.SelectedSamplerType.ToDisplay());
 
-            report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph1, 
+            report.AddParagraph(Resources.Reports.Sections.Selectivity.Paragraph1,
                 SpeciesRow.KeyRecord.ShortName, report.NextFigureNumber);
             report.AddImage(plotSelectionSource.GetVector(17, 7), plotSelectionSource.Text);
 
@@ -265,9 +266,9 @@ namespace Mayfly.Fish.Explorer
             report.AddSectionTitle(Resources.Reports.Sections.Mortality.Title, SpeciesRow.KeyRecord.FullNameReport);
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph1,
-                (Age)TotalMortalityModel.Exploited.Left, (Age)TotalMortalityModel.Exploited.Right,
+                TotalMortalityModel.YoungestCaught.Age, TotalMortalityModel.OldestCaught.Age,
                 SpeciesRow.KeyRecord.ShortName);
-            report.AddEquation(TotalMortalityModel.Exploited.Calc.Regression.GetEquation("NPUE", "t"));
+            report.AddEquation(TotalMortalityModel.Exploited.Regression.GetEquation("NPUE", "t"));
             report.AddImage(plotMortality.GetVector(17, 7), plotMortality.Text);
 
             report.AddParagraph(Resources.Reports.Sections.Mortality.Paragraph2, TotalMortalityModel.Z, report.NextFigureNumber);
@@ -360,8 +361,8 @@ namespace Mayfly.Fish.Explorer
             buttonL.ResetFormatted(new SampleDisplay(Swarm.LengthSample).ToString("s"));
             buttonW.ResetFormatted(new SampleDisplay(Swarm.MassSample).ToString("s"));
 
-            checkBoxAge.Enabled = 
-                checkBoxReportAge.Checked = 
+            checkBoxAge.Enabled =
+                checkBoxReportAge.Checked =
                 AgeStructure != null;
 
             #region Age to Length
@@ -376,9 +377,7 @@ namespace Mayfly.Fish.Explorer
                 if (GrowthModel.ExternalData != null)
                 {
                     Scatterplot ext = new Scatterplot(GrowthModel.ExternalData);
-                    ext.Series.Name =
-                        ext.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioReference;
+                    ext.Properties.ScatterplotName = Resources.Interface.Interface.BioReference;
                     ext.Properties.DataPointColor = Constants.InfantColor;
                     plotAL.AddSeries(ext);
                 }
@@ -386,30 +385,29 @@ namespace Mayfly.Fish.Explorer
                 if (GrowthModel.InternalData != null)
                 {
                     Scatterplot inter = new Scatterplot(GrowthModel.InternalData);
-                    inter.Series.Name =
-                        inter.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    inter.Properties.ScatterplotName = Resources.Interface.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Constants.MainAccent;
                     plotAL.AddSeries(inter);
                 }
 
                 if (GrowthModel.CombinedData != null)
                 {
                     Scatterplot combi = new Scatterplot(GrowthModel.CombinedData);
-                    combi.Series.Name =
-                        combi.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ScatterplotName = Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ShowTrend =
+                        combi.Properties.ShowConfidenceBands =
+                        combi.Properties.ShowPredictionBands = true;
                     combi.Properties.ShowTrend = true;
                     combi.Properties.SelectedApproximationType = GrowthModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MotiveColor.Darker();
+                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
                     plotAL.AddSeries(combi);
                 }
             }
 
             //statChartAL.Refresh();
-            plotAL.Remaster();
-            if (plotAL.Scatterplots.Count > 0) plotAL.Remaster();
+            plotAL.DoPlot();
+            if (plotAL.Scatterplots.Count > 0) plotAL.DoPlot();
 
             #endregion
 
@@ -425,9 +423,7 @@ namespace Mayfly.Fish.Explorer
                 if (WeightModel.ExternalData != null)
                 {
                     Scatterplot ext = new Scatterplot(WeightModel.ExternalData);
-                    ext.Series.Name =
-                        ext.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioReference;
+                    ext.Properties.ScatterplotName = Resources.Interface.Interface.BioReference;
                     ext.Properties.DataPointColor = Constants.InfantColor;
                     plotLW.AddSeries(ext);
                 }
@@ -435,30 +431,28 @@ namespace Mayfly.Fish.Explorer
                 if (WeightModel.InternalData != null)
                 {
                     Scatterplot inter = new Scatterplot(WeightModel.InternalData);
-                    inter.Series.Name =
-                        inter.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MotiveColor;
+                    inter.Properties.ScatterplotName = Resources.Interface.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Constants.MainAccent;
                     plotLW.AddSeries(inter);
                 }
 
                 if (WeightModel.CombinedData != null)
                 {
                     Scatterplot combi = new Scatterplot(WeightModel.CombinedData);
-                    combi.Series.Name =
-                        combi.Properties.ScatterplotName =
-                        Resources.Interface.Interface.BioCombined;
-                    combi.Properties.ShowTrend = true;
+                    combi.Properties.ScatterplotName = Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ShowTrend =
+                        combi.Properties.ShowConfidenceBands =
+                        combi.Properties.ShowPredictionBands = true;
+
                     combi.Properties.SelectedApproximationType = WeightModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MotiveColor.Darker();
+                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
                     plotLW.AddSeries(combi);
                 }
             }
 
-            //statChartLW.Refresh();
-            plotLW.Remaster();
-            if (plotLW.Scatterplots.Count > 0) plotLW.Remaster();
+            plotLW.DoPlot();
+            if (plotLW.Scatterplots.Count > 0) plotLW.DoPlot();
 
             pageModelAL.SetNavigation(true);
 
@@ -468,7 +462,27 @@ namespace Mayfly.Fish.Explorer
 
             plotAW.Visible = (GrowthModel != null && WeightModel != null);
 
-            //plotAW.Clear();
+            plotAW.Clear();
+
+            if (GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK &&
+                WeightModel != null && WeightModel.CombinedData.IsRegressionOK)
+            {
+                Functor aw = new Functor(string.Format(Resources.Interface.Interface.MassGrowth, SpeciesRow.Species), (t) =>
+                {
+                    double l = GrowthModel.CombinedData.Regression.Predict(t);
+                    return WeightModel.CombinedData.Regression.Predict(l);
+                },
+                (w) =>
+                {
+                    double l = WeightModel.CombinedData.Regression.PredictInversed(w);
+                    return GrowthModel.CombinedData.Regression.PredictInversed(l);
+                });
+
+                aw.Properties.TrendColor = Constants.MainAccent.Darker();
+
+                plotAW.AddSeries(aw);
+                plotAW.DoPlot();
+            }
 
             //if (weightGrowthExternal != null)
             //{
@@ -489,35 +503,25 @@ namespace Mayfly.Fish.Explorer
             //    plotAW.AddSeries(weightGrowthInternal);
             //}
 
-            //if (GrowthModel != null && GrowthModel.IsRegressionOK &&
-            //    WeightModel != null && WeightModel.IsRegressionOK)
-            //{
-            //    string name = string.Format(Resources.Interface.Interface.MassGrowth, SpeciesRow.Species);
-
-            //    Functor weightGrowth = new Functor(name,
-            //        (t) =>
-            //        {
-            //            double l = GrowthModel.Regression.Predict(t);
-            //            return WeightModel.Regression.Predict(l);
-            //        },
-            //        (w) =>
-            //        {
-            //            double l = WeightModel.Regression.PredictInversed(w);
-            //            return GrowthModel.Regression.PredictInversed(l);
-            //        }
-            //            );
-
-            //    weightGrowth.Properties.TrendColor = Constants.MotiveColor.Darker();
-            //    plotAW.AddSeries(weightGrowth);
-            //}
-
-            ////plotAW.Refresh();
-            //plotAW.Update(this, new EventArgs());
-            //if (plotAW.Scatterplots.Count > 0) plotAW.Rebuild(this, new EventArgs());
-
             pageModelAW.SetNavigation(true);
 
             #endregion
+        }
+
+        private void plotLW_Updated(object sender, EventArgs e)
+        {
+
+            plotAW.AxisYMin = plotLW.AxisYMin;
+            plotAW.AxisYMax = plotLW.AxisYMax;
+            plotAW.DoPlot();
+
+        }
+
+        private void plotAL_Updated(object sender, EventArgs e)
+        {
+            plotAW.AxisXMin = plotAL.AxisXMin;
+            plotAW.AxisXMax = plotAL.AxisXMax;
+            plotAW.DoPlot();
         }
 
         private void buttonL_Click(object sender, EventArgs e)
@@ -532,10 +536,6 @@ namespace Mayfly.Fish.Explorer
             SampleProperties massForm = new SampleProperties(Swarm.MassSample);
             massForm.SetFriendlyDesktopLocation(buttonW);
             massForm.ShowDialog();
-        }
-
-        private void pageBasic_Commit(object sender, WizardPageConfirmEventArgs e)
-        {
         }
 
 
@@ -598,8 +598,8 @@ namespace Mayfly.Fish.Explorer
             labelBpueUnit.ResetFormatted(gearWizard.SelectedUnit.Unit);
             plotSelection.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay());
 
-            plotLengthAdjusted.AxisYTitle = 
-                plotMortality.AxisYTitle = 
+            plotLengthAdjusted.AxisYTitle =
+                plotMortality.AxisYTitle =
                 plotAgeAdjusted.AxisYTitle =
                 columnSelectivityNpue.HeaderText;
 
@@ -620,7 +620,7 @@ namespace Mayfly.Fish.Explorer
 
         private void classesCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            classedComposition = gearWizard.SelectedStacks.GetClassedComposition(SpeciesRow, 
+            classedComposition = gearWizard.SelectedStacks.GetClassedComposition(SpeciesRow,
                 gearWizard.SelectedSamplerType, gearWizard.SelectedUnit);
 
             Swarm.Abundance = classedComposition.TotalAbundance / classedComposition.Count;
@@ -709,7 +709,7 @@ namespace Mayfly.Fish.Explorer
             plotLength.AxisYMin = 0.0;
             plotLength.AxisYMax = maxy;
 
-            plotLength.Remaster();
+            plotLength.DoPlot();
 
             comboBoxLengthSource.SelectedIndex = 0;
             comboBoxLengthSource_SelectedIndexChanged(sender, e);
@@ -755,7 +755,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             plotSelectionSource.AxisYMax = max;
-            plotSelectionSource.Remaster();
+            plotSelectionSource.DoPlot();
 
             pageSelectionSource.SetNavigation(false);
             selectionCalculator.RunWorkerAsync();
@@ -779,7 +779,7 @@ namespace Mayfly.Fish.Explorer
                 all.Points.AddXY(sizeClass.Size.Midpoint, comboBoxLengthSource.SelectedIndex == 0 ? sizeClass.AbundanceFraction : sizeClass.BiomassFraction);
             }
             plotLength.Series.Add(all);
-            plotLength.Remaster();
+            plotLength.DoPlot();
         }
 
         private void pageLength_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -848,7 +848,7 @@ namespace Mayfly.Fish.Explorer
                 plotSelection.AxisXMax = LengthStructure.Ceiling;
                 plotSelection.AxisXInterval = LengthStructure.Interval;
 
-                plotSelection.Remaster();
+                plotSelection.DoPlot();
 
                 textBoxSF.Text = SelectivityModel.SelectionFactor.ToString("N3");
                 textBoxSD.Text = SelectivityModel.StandardDeviation.ToString("N3");
@@ -867,7 +867,7 @@ namespace Mayfly.Fish.Explorer
                 plotSelection.AddSeries(ogive);
                 //ogive.Series.ChartType = SeriesChartType.Line;
                 ogive.Series.BorderWidth = 2 * ogive.Series.BorderWidth;
-                plotSelection.Remaster();
+                plotSelection.DoPlot();
 
                 plotLengthAdjusted.Series.Clear();
                 plotLengthAdjusted.AxisXInterval = LengthStructure.Interval;
@@ -902,11 +902,11 @@ namespace Mayfly.Fish.Explorer
                 plotLengthAdjusted.AxisYMax = max;
                 plotLengthAdjusted.Series.Add(catches);
                 plotLengthAdjusted.Series.Add(pop);
-                plotLengthAdjusted.Remaster();
+                plotLengthAdjusted.DoPlot();
             }
 
             pageSelectionSource.SetNavigation(true);
-            pageLengthAdjusted.Suppress = 
+            pageLengthAdjusted.Suppress =
                 pageSelection.Suppress =
                 SelectivityModel == null;
         }
@@ -971,7 +971,7 @@ namespace Mayfly.Fish.Explorer
             plotAge.AxisYMin = 0.0;
             plotAge.AxisYMax = maxy;
 
-            plotAge.Remaster();
+            plotAge.DoPlot();
 
             comboBoxAgeSource.SelectedIndex = 0;
             comboBoxAgeSource_SelectedIndexChanged(sender, e);
@@ -1013,14 +1013,14 @@ namespace Mayfly.Fish.Explorer
             }
 
             plotAge.Series.Add(all);
-            plotAge.Remaster();
+            plotAge.DoPlot();
             //plotT.Series.Add(juv);
             //plotT.Series.Add(mal);
             //plotT.Series.Add(fem);
         }
 
         private void pageAge_Commit(object sender, WizardPageConfirmEventArgs e)
-        {        }
+        { }
 
 
 
@@ -1054,12 +1054,16 @@ namespace Mayfly.Fish.Explorer
             {
                 if (TotalMortalityModel.Unexploited != null)
                 {
-                    plotMortality.AddSeries(TotalMortalityModel.Unexploited);
+                    Scatterplot unexp = new Scatterplot(TotalMortalityModel.Unexploited);
+                    plotMortality.AddSeries(unexp);
                 }
 
-                plotMortality.AddSeries(TotalMortalityModel.Exploited);
+                Scatterplot exp = new Scatterplot(TotalMortalityModel.Exploited);
+                exp.Properties.SelectedApproximationType = exp.Calc.TrendType;
+                exp.Properties.ShowTrend = true;
+                plotMortality.AddSeries(exp);
                 plotMortality.ShowLegend = false;
-                plotMortality.Remaster();
+                plotMortality.DoPlot();
 
                 textBoxZ.Text = TotalMortalityModel.Z.ToString("N4");
                 textBoxFi.Text = TotalMortalityModel.Fi.ToString("N4");
@@ -1085,12 +1089,15 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonMortality_Click(object sender, EventArgs e)
         {
-            plotMortality.OpenRegressionProperties(TotalMortalityModel.Exploited);
+            RegressionProperties properties = new RegressionProperties(TotalMortalityModel.Exploited.Regression, false);
+            properties.SetFriendlyDesktopLocation(this);
+            properties.Show(this);
         }
 
         private void pageMortality_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            if (ModelsCalculated != null) {
+            if (ModelsCalculated != null)
+            {
                 ModelsCalculated.Invoke(sender, e);
             }
 
@@ -1098,7 +1105,7 @@ namespace Mayfly.Fish.Explorer
             {
                 for (int i = 0; i < AgeStructure.Count; i++)
                 {
-                    double a = TotalMortalityModel.Exploited.Calc.Regression.Predict(AgeStructure[i].Age.Value);
+                    double a = TotalMortalityModel.Exploited.Regression.Predict(AgeStructure[i].Age.Value);
                     double w = ageCompositionWizard.CatchesComposition[i].MassSample.Count > 0 ? ageCompositionWizard.CatchesComposition[i].MassSample.Mean :
                         (ageCompositionWizard.CatchesComposition[i].Quantity > 0 ? (ageCompositionWizard.CatchesComposition[i].Abundance / ageCompositionWizard.CatchesComposition[i].Biomass) : 0);
                     AgeStructure[i].Abundance = a;
@@ -1138,14 +1145,14 @@ namespace Mayfly.Fish.Explorer
                 plotAgeAdjusted.AxisYMax = max;
                 plotAgeAdjusted.Series.Add(catches);
                 plotAgeAdjusted.Series.Add(pop);
-                plotAgeAdjusted.Remaster();
+                plotAgeAdjusted.DoPlot();
             }
         }
 
 
 
         private void pageReport_Rollback(object sender, WizardPageConfirmEventArgs e)
-        {        }
+        { }
 
         private void checkBox_EnabledChanged(object sender, EventArgs e)
         {
@@ -1157,28 +1164,28 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxReportLength_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxReportLengthAdjusted.Enabled = 
+            checkBoxReportLengthAdjusted.Enabled =
                 checkBoxLengthAdjusted.Checked && checkBoxReportLength.Checked;
         }
 
         private void checkBoxReportAge_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxReportAgeAdjusted.Enabled = 
+            checkBoxReportAgeAdjusted.Enabled =
                 checkBoxAgeAdjusted.Checked && checkBoxReportAge.Checked;
 
-            checkBoxReportAgeCPUE.Enabled = 
-                checkBoxReportAgeKeys.Enabled = 
+            checkBoxReportAgeCPUE.Enabled =
+                checkBoxReportAgeKeys.Enabled =
                 checkBoxReportAge.Checked && (gearWizard == null || gearWizard.IsMultipleClasses);
 
         }
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            foreach (Plot plot in new Plot[] { 
-                plotLength, plotSelectionSource, plotSelection, 
+            foreach (Plot plot in new Plot[] {
+                plotLength, plotSelectionSource, plotSelection,
                 plotLengthAdjusted, plotAge, plotMortality, plotAgeAdjusted })
             {
-                plot.Remaster();
+                plot.DoPlot();
             }
 
             if (ageCompositionWizard != null) ageCompositionWizard.CatchesComposition.Name = "Age composition of catches";

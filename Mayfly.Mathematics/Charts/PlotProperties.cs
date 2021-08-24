@@ -19,6 +19,10 @@ namespace Mayfly.Mathematics.Charts
             plot = _plot;
             plot.Updated += plot_CollectionChanged;
             tabPageY2.Parent = null;
+
+            colorDialogDistinguish.Color =
+                panelColorSelectedSeries.BackColor = 
+                UserSettings.DistinguishColorSelected;
         }
 
         void plot_CollectionChanged(object sender, EventArgs e)
@@ -27,10 +31,6 @@ namespace Mayfly.Mathematics.Charts
         }
 
 
-
-        public void ResetTitle()
-        {
-        }
 
         public void SetAxisXTitleEntering()
         {
@@ -59,7 +59,7 @@ namespace Mayfly.Mathematics.Charts
 
             if (((Control)sender).ContainsFocus)
             {
-                plot.Remaster();
+                plot.DoPlot();
             }
         }
 
@@ -246,6 +246,17 @@ namespace Mayfly.Mathematics.Charts
         private void itemA6_Click(object sender, EventArgs e)
         {
             plot.Print(10, 10);
+        }
+
+        private void panelColorSelectedSeries_Click(object sender, EventArgs e)
+        {
+            if (colorDialogDistinguish.ShowDialog(this) == DialogResult.OK)
+            {
+                UserSettings.DistinguishColorSelected = 
+                    panelColorSelectedSeries.BackColor =
+                    colorDialogDistinguish.Color;
+                value_Changed(ActiveControl, e);
+            }
         }
     }
 }

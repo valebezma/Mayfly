@@ -71,7 +71,7 @@ namespace Mayfly
             }
         }
 
-        public static Color MotiveColor
+        public static Color MainAccent
         {
             get
             {

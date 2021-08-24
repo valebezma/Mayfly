@@ -249,7 +249,9 @@ namespace Mayfly.Mathematics.Statistics
             logData.Y.Transform(TransformY);
 
             LinearizedModel = new Linear(logData);
-            //fit = LinearizedModel.Fit;
+            Parameters.Clear();
+            Parameters.Add(Intercept);
+            Parameters.Add(Slope);
         }
 
         public virtual double TransformX(double x)
