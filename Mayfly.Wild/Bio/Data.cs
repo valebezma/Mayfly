@@ -123,13 +123,13 @@ namespace Mayfly.Wild
 
             foreach (ContinuousBio exbio in data.MassModels)
             {
-                ContinuousBio inbio = FindMassModel(exbio.Species);
+                ContinuousBio inbio = FindMassModel(exbio.Species.Species);
                 if (inbio != null) inbio.Involve(exbio);
             }
 
             foreach (ContinuousBio exbio in data.GrowthModels)
             {
-                ContinuousBio inbio = FindGrowthModel(exbio.Species);
+                ContinuousBio inbio = FindGrowthModel(exbio.Species.Species);
                 if (inbio != null) inbio.Involve(exbio);
             }
 

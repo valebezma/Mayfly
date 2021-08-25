@@ -158,7 +158,7 @@ namespace Mayfly.Fish.Explorer
                     Constants.InfantColor : spreadSheetSigns.DefaultCellStyle.ForeColor;
             }
 
-            Allowed = new Data();
+            Allowed = new Data(Fish.UserSettings.SpeciesIndex);
 
             foreach (string investigator in Data.GetInvestigators())
             {
@@ -175,8 +175,9 @@ namespace Mayfly.Fish.Explorer
 
         private void pageSigns_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            pageWeight.SetNavigation(false);
-            modelCalculator.RunWorkerAsync();
+            pageGrowth.SetNavigation(false);
+            Cursor = Cursors.WaitCursor;
+            calcGrowth.RunWorkerAsync();
         }
 
         private void modelCalculator_DoWork(object sender, DoWorkEventArgs e)
@@ -186,103 +187,91 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //foreach (Scatterplot scatter in Allowed.GrowthModels.InternalData)
-            //{
-            //    if (!scatter.IsRegressionOK) continue;
+            foreach (ContinuousBio bio in Allowed.GrowthModels)
+            {
+                if (!bio.InternalData.IsRegressionOK) continue;
 
-            //    DataGridViewRow gridRow = new DataGridViewRow();
-            //    gridRow.CreateCells(spreadSheetGrowth);
+                DataGridViewRow gridRow = new DataGridViewRow();
+                gridRow.CreateCells(spreadSheetGrowth);
 
-            //    gridRow.Cells[ColumnGrowthSpecies.Index].Value = scatter.Name;
-            //    //gridRow.Cells[ColumnGrowthR2.Index].Value = scatter.Regression.Determination;
-            //    gridRow.Cells[ColumnGrowthN.Index].Value = scatter.Data.Count;
+                gridRow.Cells[ColumnGrowthSpecies.Index].Value = bio.Species;
+                gridRow.Cells[ColumnGrowthN.Index].Value = bio.InternalData.Data.Count;
 
-            //    Growth regression = (Growth)scatter.Regression;
+                Growth regression = (Growth)bio.InternalData.Regression;
 
-            //    //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ? 
-            //    //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.Cells[ColumnGrowthR2.Index].Value = regression.RSquared;
 
-            //    gridRow.Cells[ColumnGrowthL.Index].Value = regression.Linf;
-            //    //gridRow.Cells[ColumnGrowthL.Index].Style.ForeColor = regression.IsSignificant(0) ?
-            //    //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ? 
+                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //    gridRow.Cells[ColumnGrowthK.Index].Value = regression.K;
-            //    //gridRow.Cells[ColumnGrowthK.Index].Style.ForeColor = regression.IsSignificant(1) ?
-            //    //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.Cells[ColumnGrowthL.Index].Value = regression.Linf;
+                //gridRow.Cells[ColumnGrowthL.Index].Style.ForeColor = regression.IsSignificant(0) ?
+                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //    gridRow.Cells[ColumnGrowthT.Index].Value = regression.T0;
-            //    //gridRow.Cells[ColumnGrowthT.Index].Style.ForeColor = regression.IsSignificant(2) ?
-            //    //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.Cells[ColumnGrowthK.Index].Value = regression.K;
+                //gridRow.Cells[ColumnGrowthK.Index].Style.ForeColor = regression.IsSignificant(1) ?
+                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //    spreadSheetGrowth.Rows.Add(gridRow);
-            //}
+                gridRow.Cells[ColumnGrowthT.Index].Value = regression.T0;
+                //gridRow.Cells[ColumnGrowthT.Index].Style.ForeColor = regression.IsSignificant(2) ?
+                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //labelNoDataGrowth.Visible = Allowed.GrowthModels.InternalData.Count == 0;
+                spreadSheetGrowth.Rows.Add(gridRow);
+            }
+
+            labelNoDataGrowth.Visible = spreadSheetGrowth.Rows.Count == 0;
 
 
-            //foreach (Scatterplot scatter in Allowed.MassModels.InternalData)
-            //{
-            //    if (!scatter.IsRegressionOK) continue;
+            foreach (ContinuousBio bio in Allowed.MassModels)
+            {
+                if (!bio.InternalData.IsRegressionOK) continue;
 
-            //    DataGridViewRow gridRow = new DataGridViewRow();
-            //    gridRow.CreateCells(spreadSheetWeight);
+                DataGridViewRow gridRow = new DataGridViewRow();
+                gridRow.CreateCells(spreadSheetWeight);
 
-            //    gridRow.Cells[ColumnWeightSpecies.Index].Value = scatter.Name;
-            //    //gridRow.Cells[ColumnWeightR2.Index].Value = scatter.Regression.Determination;
-            //    gridRow.Cells[ColumnWeightN.Index].Value = scatter.Data.Count;
+                gridRow.Cells[ColumnWeightSpecies.Index].Value = bio.Species;
+                gridRow.Cells[ColumnWeightN.Index].Value = bio.InternalData.Data.Count;
 
-            //    Power regression = (Power)scatter.Regression;
+                Power regression = (Power)bio.InternalData.Regression;
 
-            //    //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ?
-            //    //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.Cells[ColumnWeightR2.Index].Value = regression.RSquared;
 
-            //    gridRow.Cells[ColumnWeightQ.Index].Value = regression.Intercept;
-            //    //gridRow.Cells[ColumnWeightQ.Index].Style.ForeColor = regression.IsSignificant(0) ?
-            //    //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ?
+                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //    gridRow.Cells[ColumnWeightB.Index].Value = regression.Slope;
-            //    //gridRow.Cells[ColumnWeightB.Index].Style.ForeColor = regression.IsSignificant(1) ?
-            //    //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.Cells[ColumnWeightQ.Index].Value = regression.Intercept;
+                //gridRow.Cells[ColumnWeightQ.Index].Style.ForeColor = regression.IsSignificant(0) ?
+                //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //    spreadSheetWeight.Rows.Add(gridRow);
-            //}
+                gridRow.Cells[ColumnWeightB.Index].Value = regression.Slope;
+                //gridRow.Cells[ColumnWeightB.Index].Style.ForeColor = regression.IsSignificant(1) ?
+                //    spreadSheetWeight.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
-            //labelNoDataWeight.Visible = Allowed.MassModels.InternalData.Count == 0;
+                spreadSheetWeight.Rows.Add(gridRow);
+            }
 
-            //pageWeight.SetNavigation(true);
+            labelWait.Visible = false;
+            Cursor = Cursors.Default;
+            labelNoDataWeight.Visible = spreadSheetWeight.Rows.Count == 0;
+            pageGrowth.SetNavigation(true);
+        }
+
+        private void calcMass_DoWork(object sender, DoWorkEventArgs e)
+        {
+
         }
 
         private void pageWeight_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            pageReport.SetNavigation(false);
-            backSpecExporter.RunWorkerAsync();
-        }
-
-        private void backSpecExporter_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Allowed = Allowed.GetBio();
-        }
-
-        private void backSpecExporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                Notification.ShowNotification(Resources.Interface.Interface.SpecFailed,
-                    e.Error.Message);
-            }
-            else
-            {
-                pageReport.SetNavigation(true);
-            }
         }
 
         private void contextGrowthChart_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow gridRow in spreadSheetGrowth.SelectedRows)
             {
-                string spc = (string)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Data.SpeciesRow spc = (Data.SpeciesRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
-                Scatterplot scatter = new Scatterplot(Allowed.FindGrowthModel(spc).InternalData);
+                Scatterplot scatter = new Scatterplot(Allowed.FindGrowthModel(spc.Species).InternalData);
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Growth;
                 scatter.Properties.ShowPredictionBands = true;
@@ -296,15 +285,15 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetWeight.SelectedRows)
             {
-                string spc = (string)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Data.SpeciesRow spc = (Data.SpeciesRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
-                //Scatterplot scatter = Allowed.MassModels.GetInternalScatterplot(spc).Copy();
-                //scatter.Properties.ShowTrend = true;
-                //scatter.Properties.SelectedApproximationType = TrendType.Power;
-                //scatter.Properties.ShowPredictionBands = true;
-                //scatter.Properties.HighlightOutliers = true;
-                //scatter.Properties.ShowCount = true;
-                //scatter.ShowOnChart();
+                Scatterplot scatter = new Scatterplot(Allowed.FindMassModel(spc.Species).InternalData);
+                scatter.Properties.ShowTrend = true;
+                scatter.Properties.SelectedApproximationType = TrendType.Growth;
+                scatter.Properties.ShowPredictionBands = true;
+                scatter.Properties.HighlightOutliers = true;
+                scatter.Properties.ShowCount = true;
+                scatter.ShowOnChart();
             }
         }
 
@@ -318,6 +307,9 @@ namespace Mayfly.Fish.Explorer
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
         {
+            pageReport.SetNavigation(false);
+            backSpecExporter.RunWorkerAsync();
+
             Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
                 Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
                 IO.GetFriendlyCommonName(Allowed.GetFilenames())
@@ -336,6 +328,24 @@ namespace Mayfly.Fish.Explorer
             }
 
             e.Cancel = true;
+        }
+
+        private void backSpecExporter_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Allowed = Allowed.GetBio();
+        }
+
+        private void backSpecExporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                Notification.ShowNotification(Resources.Interface.Interface.SpecFailed,
+                    e.Error.Message);
+            }
+            else
+            {
+                pageReport.SetNavigation(true);
+            }
         }
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)

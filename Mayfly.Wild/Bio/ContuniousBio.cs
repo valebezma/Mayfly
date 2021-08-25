@@ -67,7 +67,7 @@ namespace Mayfly.Wild
         {
             BivariateSample biSample = new BivariateSample();
 
-            foreach (Data.IndividualRow individualRow in Parent.Species.FindBySpecies(Species).GetIndividualRows())
+            foreach (Data.IndividualRow individualRow in Species.GetIndividualRows())
             {
                 double x = Parent.GetIndividualValue(individualRow, nameX);
                 double y = Parent.GetIndividualValue(individualRow, nameY);
@@ -82,6 +82,7 @@ namespace Mayfly.Wild
             biSample.Y.Name = DisplayNameY;
 
             InternalData = new BivariatePredictiveModel(biSample, Nature);
+
             RefreshCombined();
         }
 

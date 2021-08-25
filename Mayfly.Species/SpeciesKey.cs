@@ -16,7 +16,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsNameNull() ? Taxon : Name.GetLocalizedValue();
+                    return IsNameNull() ? Taxon.GetLocalizedValue() : Name;
                 }
             }
 
@@ -152,7 +152,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsNameNull() ? Base : Name.GetLocalizedValue();
+                    return IsNameNull() ? Base.GetLocalizedValue() : Name;
                 }
             }
 
@@ -372,7 +372,7 @@ namespace Mayfly.Species
             }
         }
 
-        partial class SpeciesRow
+        partial class SpeciesRow : IFormattable
         {
             public SpeciesRow MajorSynonym
             {
@@ -529,6 +529,30 @@ namespace Mayfly.Species
                 ((SpeciesKey)this.Table.DataSet).Rep.Select(
                     string.Format("TaxID = {0} AND SpcID = {1}",
                     taxaRow.ID, this.ID))[0].Delete();
+            }
+
+
+            public override string ToString()
+            {
+                return Species;
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider)
+            {
+                switch (format.ToLowerInvariant())
+                {
+                    case "s":
+                        return ShortName;
+
+                    case "f":
+                        return FullName;
+
+                    case "l":
+                        return ScientificName;
+
+                    default:
+                        return Species;
+                }
             }
         }
 

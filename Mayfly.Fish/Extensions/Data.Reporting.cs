@@ -77,7 +77,7 @@ namespace Mayfly.Fish
             table2.EndRow();
 
             table2.StartRow();
-            table2.AddCellPrompt(cardResources.GetString("labelSampler.Text"), cardRow.GetSamplerSign(), 2);
+            table2.AddCellPrompt(cardResources.GetString("labelSampler.Text"), cardRow.IsSamplerNull() ? string.Empty : cardRow.GetSamplerSign(), 2);
             table2.EndRow();
 
             report.AddTable(table2);
@@ -833,7 +833,8 @@ namespace Mayfly.Fish
         {
             Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, logRow.SpeciesRow.Species));
             logRow.AddReport(report, level, Resources.Reports.Header.FBA, string.Format(Wild.Resources.Reports.Header.StratifiedSample, string.Empty));
-            report.End(logRow.CardRow.When.Year, logRow.CardRow.Investigator);
+            if (logRow.CardRow.IsWhenNull()) report.End();
+            else report.End(logRow.CardRow.When.Year, logRow.CardRow.Investigator);
             return report;
         }
 

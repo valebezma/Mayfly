@@ -22,7 +22,7 @@ namespace Mayfly.Benthos
 
         private string fileName;
 
-        private string SpeciesToOpen;
+        private SpeciesKey.SpeciesRow SpeciesToOpen;
 
         public string FileName
         {
@@ -1350,7 +1350,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        public int InsertSpecies(string species)
+        public int InsertSpecies(SpeciesKey.SpeciesRow species)
         {
             int speciesIndex = -1;
 
@@ -1470,7 +1470,7 @@ namespace Mayfly.Benthos
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = species;
+            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
             Load += new EventHandler(CardOpenSpecies_Load);
         }
 

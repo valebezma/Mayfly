@@ -26,7 +26,7 @@ namespace Mayfly.Wild
 
         public override void RefreshInternal()
         {
-            InternalData = new Composition(Species);
+            InternalData = new Composition(Species.Species);
 
             foreach (string group in Parent.Individual.Columns[nameX].GetStrings(true))
             {

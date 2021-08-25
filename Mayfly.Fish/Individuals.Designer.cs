@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Individuals));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelQuantity = new System.Windows.Forms.Label();
             this.numericUpDownQuantity = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownMass = new System.Windows.Forms.NumericUpDown();
@@ -311,7 +311,6 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningMass, "pictureBoxWarningMass");
             this.pictureBoxWarningMass.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningMass.Image = global::Mayfly.Resources.Icons.Warning;
             this.pictureBoxWarningMass.Name = "pictureBoxWarningMass";
             this.pictureBoxWarningMass.TabStop = false;
             this.pictureBoxWarningMass.DoubleClick += new System.EventHandler(this.pictureBoxWarningMass_DoubleClick);
@@ -322,7 +321,6 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningQuantity, "pictureBoxWarningQuantity");
             this.pictureBoxWarningQuantity.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningQuantity.Image = global::Mayfly.Resources.Icons.Warning;
             this.pictureBoxWarningQuantity.Name = "pictureBoxWarningQuantity";
             this.pictureBoxWarningQuantity.TabStop = false;
             this.pictureBoxWarningQuantity.DoubleClick += new System.EventHandler(this.pictureBoxWarningQuantity_DoubleClick);
@@ -352,7 +350,6 @@
             // 
             resources.ApplyResources(this.buttonBlank, "buttonBlank");
             this.buttonBlank.FlatAppearance.BorderSize = 0;
-            this.buttonBlank.Image = global::Mayfly.Resources.Icons.Blank;
             this.buttonBlank.Name = "buttonBlank";
             this.buttonBlank.UseVisualStyleBackColor = true;
             this.buttonBlank.Click += new System.EventHandler(this.buttonBlank_Click);
@@ -435,15 +432,15 @@
             // 
             // ColumnLength
             // 
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnLength.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.NullValue = null;
+            this.ColumnLength.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.ColumnLength, "ColumnLength");
             this.ColumnLength.Name = "ColumnLength";
             // 
             // ColumnMass
             // 
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.NullValue = null;
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
             // 
@@ -454,8 +451,8 @@
             // 
             // ColumnRegID
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnRegID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnRegID.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.ColumnRegID, "ColumnRegID");
             this.ColumnRegID.Name = "ColumnRegID";
             // 
@@ -466,37 +463,37 @@
             // 
             // ColumnSex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnSex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnSex.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.ColumnSex, "ColumnSex");
             this.ColumnSex.Name = "ColumnSex";
             // 
             // ColumnMaturity
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            this.ColumnMaturity.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.NullValue = null;
+            this.ColumnMaturity.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.ColumnMaturity, "ColumnMaturity");
             this.ColumnMaturity.Name = "ColumnMaturity";
             // 
             // ColumnGonadMass
             // 
-            dataGridViewCellStyle6.Format = "N2";
-            this.ColumnGonadMass.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Format = "N2";
+            this.ColumnGonadMass.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.ColumnGonadMass, "ColumnGonadMass");
             this.ColumnGonadMass.Name = "ColumnGonadMass";
             // 
             // ColumnGonadSampleMass
             // 
-            dataGridViewCellStyle7.Format = "N2";
-            this.ColumnGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Format = "N2";
+            this.ColumnGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.ColumnGonadSampleMass, "ColumnGonadSampleMass");
             this.ColumnGonadSampleMass.Name = "ColumnGonadSampleMass";
             // 
             // ColumnGonadSample
             // 
-            dataGridViewCellStyle8.Format = "N0";
-            this.ColumnGonadSample.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Format = "N0";
+            this.ColumnGonadSample.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.ColumnGonadSample, "ColumnGonadSample");
             this.ColumnGonadSample.Name = "ColumnGonadSample";
             // 
@@ -507,9 +504,9 @@
             // 
             // ColumnComments
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.ColumnComments.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.ColumnComments.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.ColumnComments, "ColumnComments");
             this.ColumnComments.Name = "ColumnComments";
             // 

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
             Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weather1 = new Mayfly.Wild.WeatherState();
+            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -225,9 +225,8 @@
             // 
             // menuItemEmpty
             // 
-            this.menuItemEmpty.Image = global::Mayfly.Resources.Icons.New;
-            this.menuItemEmpty.Name = "menuItemEmpty";
             resources.ApplyResources(this.menuItemEmpty, "menuItemEmpty");
+            this.menuItemEmpty.Name = "menuItemEmpty";
             this.menuItemEmpty.Click += new System.EventHandler(this.menuItemEmpty_Click);
             // 
             // menuItemSpot
@@ -244,16 +243,14 @@
             // 
             // ToolStripMenuItemOpen
             // 
-            this.ToolStripMenuItemOpen.Image = global::Mayfly.Resources.Icons.Open;
-            this.ToolStripMenuItemOpen.Name = "ToolStripMenuItemOpen";
             resources.ApplyResources(this.ToolStripMenuItemOpen, "ToolStripMenuItemOpen");
+            this.ToolStripMenuItemOpen.Name = "ToolStripMenuItemOpen";
             this.ToolStripMenuItemOpen.Click += new System.EventHandler(this.ToolStripMenuItemOpen_Click);
             // 
             // ToolStripMenuItemSave
             // 
-            this.ToolStripMenuItemSave.Image = global::Mayfly.Resources.Icons.Save;
-            this.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave";
             resources.ApplyResources(this.ToolStripMenuItemSave, "ToolStripMenuItemSave");
+            this.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave";
             this.ToolStripMenuItemSave.Click += new System.EventHandler(this.ToolStripMenuItemSave_Click);
             // 
             // ToolStripMenuItemSaveAs
@@ -269,16 +266,14 @@
             // 
             // ToolStripMenuItemPrintPreview
             // 
-            this.ToolStripMenuItemPrintPreview.Image = global::Mayfly.Resources.Icons.Preview;
-            this.ToolStripMenuItemPrintPreview.Name = "ToolStripMenuItemPrintPreview";
             resources.ApplyResources(this.ToolStripMenuItemPrintPreview, "ToolStripMenuItemPrintPreview");
+            this.ToolStripMenuItemPrintPreview.Name = "ToolStripMenuItemPrintPreview";
             this.ToolStripMenuItemPrintPreview.Click += new System.EventHandler(this.ToolStripMenuItemPrintPreview_Click);
             // 
             // ToolStripMenuItemPrint
             // 
-            this.ToolStripMenuItemPrint.Image = global::Mayfly.Resources.Icons.Print;
-            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
             resources.ApplyResources(this.ToolStripMenuItemPrint, "ToolStripMenuItemPrint");
+            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
             this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItemPrint_Click);
             // 
             // blankToolStripMenuItem
@@ -287,9 +282,8 @@
             this.ToolStripMenuItemCardBlank,
             this.ToolStripMenuItemIndividualsLogBlank,
             this.ToolStripMenuItemIndividualProfileBlank});
-            this.blankToolStripMenuItem.Image = global::Mayfly.Resources.Icons.Blank;
-            this.blankToolStripMenuItem.Name = "blankToolStripMenuItem";
             resources.ApplyResources(this.blankToolStripMenuItem, "blankToolStripMenuItem");
+            this.blankToolStripMenuItem.Name = "blankToolStripMenuItem";
             // 
             // ToolStripMenuItemCardBlank
             // 
@@ -384,9 +378,8 @@
             // 
             // ToolStripMenuItemSettings
             // 
-            this.ToolStripMenuItemSettings.Image = global::Mayfly.Resources.Icons.Settings;
-            this.ToolStripMenuItemSettings.Name = "ToolStripMenuItemSettings";
             resources.ApplyResources(this.ToolStripMenuItemSettings, "ToolStripMenuItemSettings");
+            this.ToolStripMenuItemSettings.Name = "ToolStripMenuItemSettings";
             this.ToolStripMenuItemSettings.Click += new System.EventHandler(this.ToolStripMenuItemSettings_Click);
             // 
             // itemAboutCard
@@ -708,7 +701,6 @@
             // 
             resources.ApplyResources(this.pictureBoxWarnOpening, "pictureBoxWarnOpening");
             this.pictureBoxWarnOpening.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarnOpening.Image = global::Mayfly.Resources.Icons.Warning;
             this.pictureBoxWarnOpening.Name = "pictureBoxWarnOpening";
             this.pictureBoxWarnOpening.TabStop = false;
             this.pictureBoxWarnOpening.DoubleClick += new System.EventHandler(this.pictureBoxWarnOpening_DoubleClick);
@@ -755,7 +747,6 @@
             // 
             resources.ApplyResources(this.pictureBoxWarnExposure, "pictureBoxWarnExposure");
             this.pictureBoxWarnExposure.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarnExposure.Image = global::Mayfly.Resources.Icons.Warning;
             this.pictureBoxWarnExposure.Name = "pictureBoxWarnExposure";
             this.pictureBoxWarnExposure.TabStop = false;
             this.pictureBoxWarnExposure.DoubleClick += new System.EventHandler(this.pictureBoxWarnExposure_DoubleClick);
@@ -872,17 +863,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weather1.AdditionalEvent = 0;
-            weather1.Cloudage = double.NaN;
-            weather1.Degree = 0;
-            weather1.Discretion = 0;
-            weather1.Event = 0;
-            weather1.Humidity = double.NaN;
-            weather1.Pressure = double.NaN;
-            weather1.Temperature = double.NaN;
-            weather1.WindDirection = double.NaN;
-            weather1.WindRate = double.NaN;
-            this.weatherControl1.Weather = weather1;
+            weatherState1.AdditionalEvent = 0;
+            weatherState1.Cloudage = double.NaN;
+            weatherState1.Degree = 0;
+            weatherState1.Discretion = 0;
+            weatherState1.Event = 0;
+            weatherState1.Humidity = double.NaN;
+            weatherState1.Pressure = double.NaN;
+            weatherState1.Temperature = double.NaN;
+            weatherState1.WindDirection = double.NaN;
+            weatherState1.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState1;
             this.weatherControl1.Changed += new System.EventHandler(this.weatherControl1_Changed);
             // 
             // labelActWeather
@@ -996,30 +987,26 @@
             // 
             // ToolStripMenuItemCut
             // 
-            this.ToolStripMenuItemCut.Image = global::Mayfly.Resources.Icons.Cut;
-            this.ToolStripMenuItemCut.Name = "ToolStripMenuItemCut";
             resources.ApplyResources(this.ToolStripMenuItemCut, "ToolStripMenuItemCut");
+            this.ToolStripMenuItemCut.Name = "ToolStripMenuItemCut";
             this.ToolStripMenuItemCut.Click += new System.EventHandler(this.ToolStripMenuItemCut_Click);
             // 
             // ToolStripMenuItemCopy
             // 
-            this.ToolStripMenuItemCopy.Image = global::Mayfly.Resources.Icons.Copy;
-            this.ToolStripMenuItemCopy.Name = "ToolStripMenuItemCopy";
             resources.ApplyResources(this.ToolStripMenuItemCopy, "ToolStripMenuItemCopy");
+            this.ToolStripMenuItemCopy.Name = "ToolStripMenuItemCopy";
             this.ToolStripMenuItemCopy.Click += new System.EventHandler(this.ToolStripMenuItemCopy_Click);
             // 
             // ToolStripMenuItemPaste
             // 
-            this.ToolStripMenuItemPaste.Image = global::Mayfly.Resources.Icons.Paste;
-            this.ToolStripMenuItemPaste.Name = "ToolStripMenuItemPaste";
             resources.ApplyResources(this.ToolStripMenuItemPaste, "ToolStripMenuItemPaste");
+            this.ToolStripMenuItemPaste.Name = "ToolStripMenuItemPaste";
             this.ToolStripMenuItemPaste.Click += new System.EventHandler(this.ToolStripMenuItemPaste_Click);
             // 
             // ToolStripMenuItemDelete
             // 
-            this.ToolStripMenuItemDelete.Image = global::Mayfly.Resources.Icons.Delete;
-            this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
             resources.ApplyResources(this.ToolStripMenuItemDelete, "ToolStripMenuItemDelete");
+            this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
             this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItemDelete_Click);
             // 
             // buttonAdd
