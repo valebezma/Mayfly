@@ -160,16 +160,16 @@ namespace Mayfly.Wild
             }
         }
 
-        public bool Read(string fileName)
+        public bool Read(string filename)
         {
             try
             {
                 this.SetAttributable();
-                ReadXml(fileName);
+                ReadXml(filename);
 
                 foreach (CardRow cardRow in this.Card)
                 {
-                    cardRow.Path = fileName;
+                    cardRow.Path = filename;
                 }
 
                 return Card.Count > 0;
@@ -180,9 +180,9 @@ namespace Mayfly.Wild
             }
         }
 
-        public void WriteToFile(string fileName)
+        public void WriteToFile(string filename)
         {
-            //XmlTextWriter xmlWriter = new XmlTextWriter(fileName, Encoding.Unicode);
+            //XmlTextWriter xmlWriter = new XmlTextWriter(filename, Encoding.Unicode);
             //xmlWriter.IndentChar = ' ';
             //xmlWriter.Indentation = 4;
             //xmlWriter.WriteStartElement("meta");
@@ -193,9 +193,9 @@ namespace Mayfly.Wild
             //this.WriteXml(xmlWriter);
             //xmlWriter.Close();
 
-            ////WriteXml(fileName);
+            ////WriteXml(filename);
 
-            File.WriteAllText(fileName, GetXml());
+            File.WriteAllText(filename, GetXml());
         }
 
         public static Data FromClipboard()
@@ -250,12 +250,12 @@ namespace Mayfly.Wild
             return false;
         }
 
-        public bool IsLoaded(string fileName)
+        public bool IsLoaded(string filename)
         {
             foreach (Data.CardRow cardRow in this.Card)
             {
                 if (cardRow.Path == null) continue;
-                if (cardRow.Path == fileName) return true;
+                if (cardRow.Path == filename) return true;
             }
 
             return false;
@@ -292,7 +292,6 @@ namespace Mayfly.Wild
             Data result = (Data)((DataSet)this).Copy();
             result.SetAttributable();
             result.key = this.key;
-            result.InitializeBio();
             result.RefreshBios();
             return result;
         }

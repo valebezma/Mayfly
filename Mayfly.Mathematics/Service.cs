@@ -404,14 +404,14 @@ namespace Mayfly.Mathematics
             return q05;
         }
 
-        public static DataTable LoadFromFile(string fileName)
+        public static DataTable LoadFromFile(string filename)
         {
             DataTable table = new DataTable();
 
-            List<string> lines = new List<string>(File.ReadAllLines(fileName, Encoding.Default));
+            List<string> lines = new List<string>(File.ReadAllLines(filename, Encoding.Default));
 
             string[] headers = new string[] { };
-            switch (Path.GetExtension(fileName))
+            switch (Path.GetExtension(filename))
             {
                 case ".csv":
                     headers = lines[0].Split(';');
@@ -434,7 +434,7 @@ namespace Mayfly.Mathematics
             {
                 string[] values = new string[] { };
 
-                switch (Path.GetExtension(fileName))
+                switch (Path.GetExtension(filename))
                 {
                     case ".csv":
                         values = valueLine.Split(';');

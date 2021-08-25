@@ -15,19 +15,19 @@ namespace Mayfly.Sedimentation
 {
     public partial class MainForm : Form
     {
-        private string fileName;
+        private string filename;
 
         public string FileName
         {
             set
             {
                 this.ResetText(value == null ? IO.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -740,11 +740,11 @@ namespace Mayfly.Sedimentation
             }
         }
 
-        private void Save(string fileName)
+        private void Save(string filename)
         {
             SaveData();
-            Data.WriteXml(fileName);
-            FileName = fileName;
+            Data.WriteXml(filename);
+            FileName = filename;
         }
 
         private void SaveInitials()
@@ -835,12 +835,12 @@ namespace Mayfly.Sedimentation
 
 
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
 
             Data = new SedimentProject();
-            Data.ReadXml(fileName);
+            Data.ReadXml(filename);
 
             Project = Data.Project[0];
 
@@ -857,7 +857,7 @@ namespace Mayfly.Sedimentation
             if (!Project.IsFiNull()) numericUpDownFi.Value = (decimal)Project.Fi;
             UpdateInitials();
 
-            FileName = fileName;
+            FileName = filename;
 
             if (Project.GetCompositionRows().Length > 0)
             {

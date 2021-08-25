@@ -676,18 +676,18 @@ namespace Mayfly.Benthos.Explorer
         {
             int i = 0;
             //int I = CardsToLoad.Count;
-            foreach (string fileName in CardsToLoad)
+            foreach (string filename in CardsToLoad)
             {
                 Data data = new Data();
-                switch (Path.GetExtension(fileName))
+                switch (Path.GetExtension(filename))
                 {
                     case ".bcd":
-                        data.Read(fileName);
+                        data.Read(filename);
                         break;
 
                     case ".bio":
-                        string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "BIOREFERENCE");
-                        Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(fileName));
+                        string contents = StringCipher.Decrypt(File.ReadAllText(filename), "BIOREFERENCE");
+                        Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(filename));
                         data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
                         break;
                 }
@@ -750,8 +750,8 @@ namespace Mayfly.Benthos.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e)
         {
             string[] droppedNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string[] fileNames = IO.MaskedNames(droppedNames, new string[] { Benthos.UserSettings.Interface.Extension, Mayfly.Wild.UserSettings.InterfaceBio.Extension });
-            CardsToLoad.AddRange(fileNames);
+            string[] filenames = IO.MaskedNames(droppedNames, new string[] { Benthos.UserSettings.Interface.Extension, Mayfly.Wild.UserSettings.InterfaceBio.Extension });
+            CardsToLoad.AddRange(filenames);
             LoadCards();
         }
 

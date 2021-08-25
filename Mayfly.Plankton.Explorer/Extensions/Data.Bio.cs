@@ -375,7 +375,7 @@ namespace Mayfly.Extensions
 
 
 
-        //public static void ExportBio(this Data data1, string fileName)
+        //public static void ExportBio(this Data data1, string filename)
         //{
         //    Data data = data1.Copy();
 
@@ -408,7 +408,7 @@ namespace Mayfly.Extensions
         //        throw new ArgumentNullException("Regression data",
         //            "Data is unsufficient to be used as bio.");
 
-        //    File.WriteAllText(fileName, StringCipher.Encrypt(data.GetXml(), "bio"));
+        //    File.WriteAllText(filename, StringCipher.Encrypt(data.GetXml(), "bio"));
         //}
     }
 }

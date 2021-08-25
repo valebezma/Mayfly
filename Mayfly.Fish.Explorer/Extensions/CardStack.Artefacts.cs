@@ -74,14 +74,14 @@ namespace Mayfly.Fish.Explorer
                 artefact.AgeArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Age);
                 artefact.AgeArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.AgeColumn);
                 var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
-                artefact.AgeArtefact.HasRegression = gm.CombinedData.IsRegressionOK;
-                if (gm.CombinedData.IsRegressionOK) artefact.AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
+                artefact.AgeArtefact.HasRegression = gm != null && gm.CombinedData.IsRegressionOK;
+                if (gm != null && gm.CombinedData.IsRegressionOK) artefact.AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
 
                 artefact.MassArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Mass);
                 artefact.MassArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.MassColumn);
                 var mm = stack.Parent.FindMassModel(speciesRow.Species);
-                artefact.MassArtefact.HasRegression = mm.CombinedData.IsRegressionOK;
-                if (mm.CombinedData.IsRegressionOK) artefact.MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
+                artefact.MassArtefact.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
+                if (mm != null && mm.CombinedData.IsRegressionOK) artefact.MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
 
                 artefact.IndividualArtefacts = stack.GetIndividualArtefacts(artefact.SpeciesRow);
 

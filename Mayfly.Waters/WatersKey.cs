@@ -831,9 +831,9 @@ namespace Mayfly.Waters
             }
         }
 
-        public void SaveToFile(string fileName)
+        public void SaveToFile(string filename)
         {
-            File.WriteAllText(fileName, GetXml());
+            File.WriteAllText(filename, GetXml());
         }
 
         public string[] WaterNames

@@ -389,9 +389,9 @@ namespace Mayfly.Species
             }
         }
 
-        private void FindInKey(string fileName, DataGridViewRow gridRow)
+        private void FindInKey(string filename, DataGridViewRow gridRow)
         {
-            MainForm speciesKey = new MainForm(fileName, true);
+            MainForm speciesKey = new MainForm(filename, true);
 
             if (gridRow.Cells[ColumnName].Value == null)
             {
@@ -416,9 +416,9 @@ namespace Mayfly.Species
             }
         }
 
-        private void InsertFromKey(string fileName)
+        private void InsertFromKey(string filename)
         {
-            MainForm speciesKey = new MainForm(fileName, true);
+            MainForm speciesKey = new MainForm(filename, true);
 
             if (speciesKey.ShowDialog() == DialogResult.OK)
             {

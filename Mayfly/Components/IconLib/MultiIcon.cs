@@ -162,9 +162,9 @@ namespace System.Drawing.IconLib
             return -1;
         }
 
-        public void Load(string fileName)
+        public void Load(string filename)
         {
-            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             try
             {
                 Load(fs);
@@ -209,9 +209,9 @@ namespace System.Drawing.IconLib
             SelectedIndex = Count > 0 ? 0 : -1;
         }
 
-        public void Save(string fileName, MultiIconFormat format)
+        public void Save(string filename, MultiIconFormat format)
         {
-            FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
             try
             {
                 Save(fs, format);

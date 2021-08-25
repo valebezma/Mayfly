@@ -26,7 +26,7 @@ namespace Mayfly.Wild
 
         public override void RefreshInternal()
         {
-            InternalData = new Composition(Species.Species);
+            InternalData = new Composition(Species);
 
             foreach (string group in Parent.Individual.Columns[nameX].GetStrings(true))
             {
@@ -41,7 +41,7 @@ namespace Mayfly.Wild
             }
         }
 
-        public void Involve(DescriptiveBio bio)
+        public void Involve(DescriptiveBio bio, bool clearExisted)
         {
             if (bio == null) return;
 
@@ -51,7 +51,19 @@ namespace Mayfly.Wild
             }
             else
             {
+                if (clearExisted)
+                {
+                    ExternalData.Clear();
+                }
+
                 ExternalData.Include(bio.InternalData);
+            }
+
+            if (clearExisted)
+            {
+                Authors.Clear();
+                Dates.Clear();
+                Places.Clear();
             }
 
             foreach (string author in bio.Authors)
@@ -83,11 +95,11 @@ namespace Mayfly.Wild
             CombinedData.Include(ExternalData);
         }
 
-        public override void Involve(Bio bio)
+        public override void Involve(Bio bio, bool clearExisted)
         {
             if (bio is DescriptiveBio)
             {
-                Involve((DescriptiveBio)bio);
+                Involve((DescriptiveBio)bio, clearExisted);
             }
             else
             {

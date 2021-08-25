@@ -1623,11 +1623,11 @@ namespace Mayfly.Fish
         {
             spreadSheetTrophics.Enabled = false;
 
-            foreach (string fileName in IO.MaskedNames(
+            foreach (string filename in IO.MaskedNames(
                 (string[])e.Data.GetData(DataFormats.FileDrop), 
                 Wild.UserSettings.Interface.OpenExtensions))
             {
-                LoadTrophicData(fileName);
+                LoadTrophicData(filename);
             }
 
             IsChanged = true;

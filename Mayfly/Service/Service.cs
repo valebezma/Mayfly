@@ -61,9 +61,9 @@ namespace Mayfly
         {
             try
             {
-                string fileName = resource.Substring(0, Math.Max(0, resource.IndexOf(',')));
+                string filename = resource.Substring(0, Math.Max(0, resource.IndexOf(',')));
                 int index = int.Parse(resource.Substring(resource.IndexOf(',') + 1));
-                return GetIcon(fileName, index, size);
+                return GetIcon(filename, index, size);
             }
             catch
             {
@@ -71,10 +71,10 @@ namespace Mayfly
             }
         }
 
-        public static Icon GetIcon(string fileName, int index, Size size)
+        public static Icon GetIcon(string filename, int index, Size size)
         {
             MultiIcon multiIcon = new MultiIcon();
-            multiIcon.Load(fileName);
+            multiIcon.Load(filename);
             SingleIcon si = multiIcon.ToArray()[index];
 
             if (size == Size.Empty) return si[si.Count - 1].Icon;

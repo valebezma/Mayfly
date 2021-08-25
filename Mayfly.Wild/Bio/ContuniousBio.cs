@@ -80,7 +80,7 @@ namespace Mayfly.Wild
         {
             BivariateSample biSample = new BivariateSample();
 
-            foreach (Data.IndividualRow individualRow in Species.GetIndividualRows())
+            foreach (Data.IndividualRow individualRow in Parent.Species.FindBySpecies(Species).GetIndividualRows())
             {
                 double x = Parent.GetIndividualValue(individualRow, nameX);
                 double y = Parent.GetIndividualValue(individualRow, nameY);
@@ -99,7 +99,7 @@ namespace Mayfly.Wild
             RefreshCombined();
         }
 
-        public void Involve(ContinuousBio bio)
+        public void Involve(ContinuousBio bio, bool clearExisted)
         {
             if (bio == null) return;
 
@@ -109,8 +109,20 @@ namespace Mayfly.Wild
             }
             else
             {
+                if (clearExisted)
+                {
+                    ExternalData.Data.Clear();
+                }
+
                 ExternalData.Data.Add(bio.InternalData.Data);
                 ExternalData.Calculate();
+            }
+
+            if (clearExisted)
+            {
+                Authors.Clear();
+                Dates.Clear();
+                Places.Clear();
             }
 
             foreach (string author in bio.Authors)
@@ -140,11 +152,11 @@ namespace Mayfly.Wild
             RefreshCombined();
         }
 
-        public override void Involve(Bio bio)
+        public override void Involve(Bio bio, bool clearExisted)
         {
             if (bio is ContinuousBio)
             {
-                Involve((ContinuousBio)bio);
+                Involve((ContinuousBio)bio, clearExisted);
             }
             else
             {

@@ -26,12 +26,12 @@ namespace Mayfly.Geographics
             buttonOK.Visible = false;
         }
 
-        public ListPolygons(string fileName)
-            : this(new string[] { fileName })
+        public ListPolygons(string filename)
+            : this(new string[] { filename })
         { }
 
-        public ListPolygons(string[] fileNames) 
-            : this(Service.GetPolygons(fileNames))
+        public ListPolygons(string[] filenames) 
+            : this(Service.GetPolygons(filenames))
         { }
 
         public ListPolygons(Polygon[] polygons)

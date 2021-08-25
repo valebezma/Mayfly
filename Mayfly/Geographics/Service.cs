@@ -13,9 +13,9 @@ namespace Mayfly.Geographics
 {
     public class Service
     {
-        public static Waypoint[] GetWaypoints(string fileName)
+        public static Waypoint[] GetWaypoints(string filename)
         {
-            FileInfo locationFile = new FileInfo(fileName);
+            FileInfo locationFile = new FileInfo(filename);
             switch (locationFile.Extension)
             {
                 case ".gpx":
@@ -32,22 +32,22 @@ namespace Mayfly.Geographics
             }
         }
 
-        public static Waypoint[] GetWaypoints(string[] fileNames)
+        public static Waypoint[] GetWaypoints(string[] filenames)
         {
             List<Waypoint> result = new List<Waypoint>();
 
-            foreach (string fileName in fileNames)
+            foreach (string filename in filenames)
             {
-                result.AddRange(GetWaypoints(fileName));
+                result.AddRange(GetWaypoints(filename));
             }
 
             return result.ToArray();
         }
 
-        public static Waypoint[] GetWaypointsWpt(string fileName)
+        public static Waypoint[] GetWaypointsWpt(string filename)
         {
             List<Waypoint> result = new List<Waypoint>();
-            string[] WPTContent = File.ReadAllLines(fileName, Encoding.Default);
+            string[] WPTContent = File.ReadAllLines(filename, Encoding.Default);
             if (WPTContent.Length > 4)
             {
                 for (int i = 4; i < WPTContent.Length; i++)
@@ -85,12 +85,12 @@ namespace Mayfly.Geographics
             return result.ToArray();
         }
 
-        public static Waypoint[] GetWaypointsKml(string fileName)
+        public static Waypoint[] GetWaypointsKml(string filename)
         {
             List<Waypoint> result = new List<Waypoint>();
 
             DataSet dataSet = new DataSet();
-            dataSet.ReadXml(fileName);
+            dataSet.ReadXml(filename);
 
             if (dataSet.Tables["Placemark"] != null)
             {
@@ -148,9 +148,9 @@ namespace Mayfly.Geographics
             return result.ToArray();
         }
 
-        public static Waypoint[] GetWaypointsGpx(string fileName)
+        public static Waypoint[] GetWaypointsGpx(string filename)
         {
-            XDocument gpxDoc = XDocument.Load(fileName);
+            XDocument gpxDoc = XDocument.Load(filename);
             XNamespace gpx = XNamespace.Get("http://www.topografix.com/GPX/1/1");
 
             var waypoints = from waypoint in gpxDoc.Descendants(gpx + "wpt")
@@ -219,27 +219,27 @@ namespace Mayfly.Geographics
             return result.ToArray();
         }
 
-        public static Waypoint[] GetWaypointsJpg(string fileName)
+        public static Waypoint[] GetWaypointsJpg(string filename)
         {
-            Waypoint wpt = GetWaypointJpg(fileName);
+            Waypoint wpt = GetWaypointJpg(filename);
             if (wpt == null) return new Waypoint[] { };
             return new Waypoint[] { wpt };
         }
 
-        public static Waypoint GetWaypointJpg(string fileName)
+        public static Waypoint GetWaypointJpg(string filename)
         {
-            Waypoint wpt = Waypoint.GetWaypoint(Image.FromFile(fileName));
+            Waypoint wpt = Waypoint.GetWaypoint(Image.FromFile(filename));
 
             if (wpt == null) return null;
 
-            wpt.Name = Path.GetFileNameWithoutExtension(fileName);
+            wpt.Name = Path.GetFileNameWithoutExtension(filename);
             return wpt;
         }
 
 
-        public static Track[] GetTracks(string fileName)
+        public static Track[] GetTracks(string filename)
         {
-            FileInfo locationFile = new FileInfo(fileName);
+            FileInfo locationFile = new FileInfo(filename);
 
             switch (locationFile.Extension)
             {
@@ -252,24 +252,24 @@ namespace Mayfly.Geographics
             }
         }
 
-        public static Track[] GetTracks(string[] fileNames)
+        public static Track[] GetTracks(string[] filenames)
         {
             List<Track> result = new List<Track>();
 
-            foreach (string fileName in fileNames)
+            foreach (string filename in filenames)
             {
-                result.AddRange(GetTracks(fileName));
+                result.AddRange(GetTracks(filename));
             }
 
             return result.ToArray();
         }
 
-        public static Track[] GetTracksKml(string fileName)
+        public static Track[] GetTracksKml(string filename)
         {
             List<Track> result = new List<Track>();
 
             DataSet dataSet = new DataSet();
-            dataSet.ReadXml(fileName);
+            dataSet.ReadXml(filename);
 
             if (dataSet.Tables["LineString"] != null)
             {
@@ -323,9 +323,9 @@ namespace Mayfly.Geographics
             return result.ToArray();
         }
 
-        public static Track[] GetTracksGpx(string fileName)
+        public static Track[] GetTracksGpx(string filename)
         {
-            XDocument gpxDoc = XDocument.Load(fileName);
+            XDocument gpxDoc = XDocument.Load(filename);
             XNamespace gpx = XNamespace.Get("http://www.topografix.com/GPX/1/1");
 
             var tracks = from track in gpxDoc.Descendants(gpx + "trk")
@@ -411,9 +411,9 @@ namespace Mayfly.Geographics
 
 
 
-        public static Polygon[] GetPolygons(string fileName)
+        public static Polygon[] GetPolygons(string filename)
         {
-            FileInfo locationFile = new FileInfo(fileName);
+            FileInfo locationFile = new FileInfo(filename);
             switch (locationFile.Extension)
             {
                 //case ".gpx":
@@ -425,24 +425,24 @@ namespace Mayfly.Geographics
             }
         }
 
-        public static Polygon[] GetPolygons(string[] fileNames)
+        public static Polygon[] GetPolygons(string[] filenames)
         {
             List<Polygon> result = new List<Polygon>();
 
-            foreach (string fileName in fileNames)
+            foreach (string filename in filenames)
             {
-                result.AddRange(GetPolygons(fileName));
+                result.AddRange(GetPolygons(filename));
             }
 
             return result.ToArray();
         }
 
-        public static Polygon[] GetPolygonsKml(string fileName)
+        public static Polygon[] GetPolygonsKml(string filename)
         {
             List<Polygon> result = new List<Polygon>();
 
             DataSet dataSet = new DataSet();
-            dataSet.ReadXml(fileName);
+            dataSet.ReadXml(filename);
 
             if (dataSet.Tables["LinearRing"] != null)
             {

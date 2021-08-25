@@ -17,19 +17,19 @@ namespace Mayfly.Species.Systematics
 {
     partial class MainForm
     {
-        private string fileName;
+        private string filename;
 
         public string FileName
         {
             set
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -40,11 +40,11 @@ namespace Mayfly.Species.Systematics
 
 
 
-        private void LoadData(string fileName)
+        private void LoadData(string filename)
         {
             //Clear();
 
-            FileName = fileName;
+            FileName = filename;
             Data.Read(FileName);
 
             LoadList();
@@ -85,10 +85,10 @@ namespace Mayfly.Species.Systematics
             return DialogResult.No;
         }
 
-        private void Save(string fileName)
+        private void Save(string filename)
         {
-            Data.SaveToFile(fileName);
-            FileName = fileName;
+            Data.SaveToFile(filename);
+            FileName = filename;
             status.Message(Resources.Messages.Saved);
             IsChanged = false;
         }

@@ -18,7 +18,7 @@ namespace Mayfly.Fish
 {
     public partial class Card : Form
     {
-        private string fileName;
+        private string filename;
 
         private SpeciesKey.SpeciesRow SpeciesToOpen;
 
@@ -30,12 +30,12 @@ namespace Mayfly.Fish
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -284,26 +284,26 @@ namespace Mayfly.Fish
             StatusCount.ResetFormatted(Quantity);
         }
 
-        private void Write(string fileName)
+        private void Write(string filename)
         {
             if (UserSettings.SpeciesAutoExpand)
             {
                 speciesLogger.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
 
-            switch (Path.GetExtension(fileName))
+            switch (Path.GetExtension(filename))
             {
                 case ".fcd":
-                    Data.WriteToFile(fileName);
+                    Data.WriteToFile(filename);
                     break;
 
                 case ".html":
-                    Data.GetReport().WriteToFile(fileName);
+                    Data.GetReport().WriteToFile(filename);
                     break;
             }
 
             statusCard.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
 
             SaveGear();
@@ -914,14 +914,14 @@ namespace Mayfly.Fish
             return result;
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
             Data = new Data(UserSettings.SpeciesIndex);
-            Data.Read(fileName);
+            Data.Read(filename);
             LoadData();
-            FileName = fileName;
-            Log.Write("Loaded from {0}.", fileName);
+            FileName = filename;
+            Log.Write("Loaded from {0}.", filename);
             IsChanged = false;
         }
 

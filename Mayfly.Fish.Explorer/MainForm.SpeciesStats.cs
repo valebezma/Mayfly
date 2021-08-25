@@ -221,7 +221,7 @@ namespace Mayfly.Fish.Explorer
 
         private void combi_Updated(object sender, ScatterplotEventArgs e)
         {
-            outliersData = combi.Calc.Regression.GetOutliers(inter.Calc.Data, combi.Properties.ConfidenceLevel);
+            outliersData = combi.Calc.IsRegressionOK ? combi.Calc.Regression.GetOutliers(inter.Calc.Data, combi.Properties.ConfidenceLevel) : new BivariateSample();
 
             checkBoxQualOutliers.Enabled = buttonQualOutliers.Enabled =
                 outliersData.Count > 0;

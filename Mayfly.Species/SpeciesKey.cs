@@ -714,19 +714,19 @@ namespace Mayfly.Species
         }
 
 
-        public void Read(string fileName)
+        public void Read(string filename)
         {
             try
             {
                 this.SetAttributable();
-                ReadXml(fileName);
+                ReadXml(filename);
             }
-            catch { Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", fileName); }
+            catch { Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", filename); }
         }
 
-        public void SaveToFile(string fileName)
+        public void SaveToFile(string filename)
         {
-            File.WriteAllText(fileName, GetXml());
+            File.WriteAllText(filename, GetXml());
         }
 
         /// <summary>

@@ -10,6 +10,30 @@ namespace Mayfly.Wild
 {
     partial class Data
     {
+        public bool IsBioLoaded
+        {
+            get
+            {
+                if (MassModels != null)
+                {
+                    foreach (ContinuousBio bio in MassModels)
+                    {
+                        if (bio.ExternalData != null) return true;
+                    }
+                }
+
+                if (GrowthModels != null)
+                {
+                    foreach (ContinuousBio bio in GrowthModels)
+                    {
+                        if (bio.ExternalData != null) return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
         public List<ContinuousBio> MassModels;
 
         public List<ContinuousBio> GrowthModels;
@@ -69,98 +93,111 @@ namespace Mayfly.Wild
             }
         }
 
-        public void InitializeBio()
-        {
-            MassModels = new List<ContinuousBio>();
-            GrowthModels = new List<ContinuousBio>();
-
-            foreach (SpeciesRow speciesRow in this.Species.Rows)
-            {
-                MassModels.Add(
-                    new ContinuousBio(this, speciesRow, Individual.LengthColumn, Individual.MassColumn, TrendType.Power) 
-                    {
-                        DisplayNameX = Resources.Reports.Caption.LengthUnit, 
-                        DisplayNameY = Resources.Reports.Caption.MassUnit
-                    }
-                );
-
-                GrowthModels.Add(
-                    new ContinuousBio(this, speciesRow, Individual.AgeColumn, Individual.LengthColumn, TrendType.Growth)
-                    {
-                        DisplayNameX = Resources.Reports.Caption.AgeUnit, 
-                        DisplayNameY = Resources.Reports.Caption.LengthUnit
-                    }
-                );
-            }
-        }
-
         public void RefreshBios()
         {
             if (MassModels == null)
             {
-                InitializeBio();
+                MassModels = new List<ContinuousBio>();
+                GrowthModels = new List<ContinuousBio>();
             }
-            else
+
+            foreach (SpeciesRow speciesRow in this.Species.Rows)
             {
-                foreach (ContinuousBio bio in MassModels)
+                ContinuousBio biom = FindMassModel(speciesRow.Species);
+
+                if (biom == null)
                 {
-                    bio.RefreshInternal();
+                    biom = new ContinuousBio(this, speciesRow, Individual.LengthColumn, Individual.MassColumn, TrendType.Power)
+                    {
+                        DisplayNameX = Resources.Reports.Caption.LengthUnit,
+                        DisplayNameY = Resources.Reports.Caption.MassUnit
+                    };
+
+                    MassModels.Add(biom);
                 }
 
-                foreach (ContinuousBio bio in GrowthModels)
+                biom.RefreshInternal();
+
+
+                ContinuousBio biog = FindGrowthModel(speciesRow.Species);
+
+                if (biog == null)
                 {
-                    bio.RefreshInternal();
+                    biog = new ContinuousBio(this, speciesRow, Individual.AgeColumn, Individual.LengthColumn, TrendType.Growth)
+                    {
+                        DisplayNameX = Resources.Reports.Caption.AgeUnit,
+                        DisplayNameY = Resources.Reports.Caption.LengthUnit
+                    };
+
+                    GrowthModels.Add(biog);
                 }
+
+                biog.RefreshInternal();
             }
         }
 
-        public void ImportBio(string fileName, bool clearExternal)
+        public void ImportBio(string filename, bool clearExisted)
         {
             Data data = new Data(key);
             data.SetAttributable();
-            string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
+            string contents = StringCipher.Decrypt(File.ReadAllText(filename), "bio");
+            //string contents = File.ReadAllText(filename);
             data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-            data.InitializeBio();
+            data.RefreshBios();
 
             foreach (ContinuousBio exbio in data.MassModels)
             {
-                ContinuousBio inbio = FindMassModel(exbio.Species.Species);
+                ContinuousBio inbio = FindMassModel(exbio.Species);
                 if (inbio == null)
                 {
                     exbio.Reverse();
+                    exbio.Parent = this;
                     MassModels.Add(exbio);
                 }
                 else
                 {
-                    inbio.Involve(exbio);
+                    inbio.Involve(exbio, clearExisted);
                 }
             }
 
             foreach (ContinuousBio exbio in data.GrowthModels)
             {
-                ContinuousBio inbio = FindGrowthModel(exbio.Species.Species);
+                ContinuousBio inbio = FindGrowthModel(exbio.Species);
                 if (inbio == null)
                 {
                     exbio.Reverse();
+                    exbio.Parent = this;
                     GrowthModels.Add(exbio);
                 }
                 else
                 {
-                    inbio.Involve(exbio);
+                    inbio.Involve(exbio, clearExisted);
                 }
             }
 
-            Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(fileName));
+            data.Dispose();
+
+            Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(filename));
         }
 
-        public void ImportBio(string fileName)
+        public void ImportBio(string filename)
         {
-            ImportBio(fileName, false);
+            ImportBio(filename, false);
         }
 
-        public void ExportBio(string fileName)
+        public void ExportBio(string filename)
         {
-            File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
+            string content = this.GetXml();
+
+            foreach (string toRemove in new string[] { Environment.NewLine, "  "})
+            {
+                while (content.Contains(toRemove))
+                {
+                    content = content.Replace(toRemove, " ");
+                }
+            }
+            //File.WriteAllText(filename, content);
+            File.WriteAllText(filename, StringCipher.Encrypt(content, "bio"));
         }
 
         public ContinuousBio FindMassModel(string speceis)

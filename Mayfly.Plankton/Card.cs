@@ -18,7 +18,7 @@ namespace Mayfly.Plankton
 {
     public partial class Card : Form
     {
-        private string fileName;
+        private string filename;
 
         private string SpeciesToOpen;
 
@@ -27,12 +27,12 @@ namespace Mayfly.Plankton
             set
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -276,7 +276,7 @@ namespace Mayfly.Plankton
             StatusCount.ResetFormatted(Quantity);
         }
 
-        private void Write(string fileName)
+        private void Write(string filename)
         {
             if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global reference
             {
@@ -289,9 +289,9 @@ namespace Mayfly.Plankton
                 //}
             }
 
-            Data.WriteToFile(fileName);
+            Data.WriteToFile(filename);
             statusCard.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
         }
 
@@ -783,13 +783,13 @@ namespace Mayfly.Plankton
             return result;
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
             Data = new Data(UserSettings.SpeciesIndex);
-            Data.Read(fileName);
+            Data.Read(filename);
             LoadData();
-            FileName = fileName;
+            FileName = filename;
 
             IsChanged = false;
         }
@@ -1065,7 +1065,7 @@ namespace Mayfly.Plankton
             }
         }
 
-        public int InsertSpecies(string species)
+        public int InsertSpecies(SpeciesKey.SpeciesRow species)
         {
             int speciesIndex = -1;
 

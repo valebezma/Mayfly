@@ -78,7 +78,7 @@ namespace Mayfly.Benthos.Explorer
             columnIndInstar.ValueType = typeof(int);
             columnIndComments.ValueType = typeof(string);
 
-            data.InitializeBio();
+            data.RefreshBios();
             //data.WeightModels.VisualConfirmation =
             //    UserSettings.VisualConfirmation;
 
@@ -117,7 +117,6 @@ namespace Mayfly.Benthos.Explorer
         public MainForm(Data _data) : this()
         {
             data = _data;
-            data.InitializeBio();
             data.RefreshBios();
         }
         
@@ -181,19 +180,19 @@ namespace Mayfly.Benthos.Explorer
                 {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                    //if (data.IsBioLoaded)
-                    //{
-                    //    TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                    if (data.IsBioLoaded)
+                    {
+                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                    //    if (tdb != tdbSpecCancel)
-                    //    {
-                    //        data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    data.ImportBio(filenames[i]);
-                    //}
+                        if (tdb != tdbSpecCancel)
+                        {
+                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                        }
+                    }
+                    else
+                    {
+                        data.ImportBio(filenames[i]);
+                    }
 
                     //data.RefreshBios();
 

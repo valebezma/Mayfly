@@ -25,10 +25,10 @@ namespace Mayfly.Geographics
             buttonOK.Visible = false;
         }
 
-        public ListTracks(string fileName) : this(new string[] { fileName })
+        public ListTracks(string filename) : this(new string[] { filename })
         { }
 
-        public ListTracks(string[] fileNames) : this(Service.GetTracks(fileNames))
+        public ListTracks(string[] filenames) : this(Service.GetTracks(filenames))
         { }
 
         public ListTracks(Track[] tracks)
