@@ -90,14 +90,14 @@ namespace Mayfly.Sedimentation
             LoadData(FileName);
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
 
-            FileName = fileName;
+            FileName = filename;
 
             Data = new SedimentProject();
-            Data.ReadXml(fileName);
+            Data.ReadXml(filename);
 
             Project = Data.Project[0];
 
@@ -157,10 +157,10 @@ namespace Mayfly.Sedimentation
                 string.Empty;
         }
 
-        private void Save(string fileName)
+        private void Save(string filename)
         {
-            Data.WriteXml(fileName);
-            FileName = fileName;
+            Data.WriteXml(filename);
+            FileName = filename;
         }
 
 

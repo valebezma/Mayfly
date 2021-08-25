@@ -334,10 +334,6 @@ namespace Mayfly.Fish.Explorer
             processDisplay.SetProgress(e.ProgressPercentage);
         }
 
-
-        //DateTime started = DateTime.Now;
-        //TimeSpan ts = TimeSpan.Zero;
-
         private void dataLoader_DoWork(object sender, DoWorkEventArgs e)
         {            
             string[] filenames = (string[])e.Argument;
@@ -398,9 +394,6 @@ namespace Mayfly.Fish.Explorer
 
         private void dataLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //ts = DateTime.Now - started;
-            //MessageBox.Show(string.Format("Loaded in {0}.", ts));
-
             spreadSheetCard.StopProcessing();
             updateSummary();
         }
@@ -2437,10 +2430,12 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
+                    outliers.Properties.ScatterplotName = string.Format(Mathematics.Resources.Interface.Outliers, combi.Properties.ConfidenceLevel, combi.Properties.ScatterplotName);
                     outliers.Calc.Data = outliersData;
                 }
 
-                plotQualify.DoPlot();
+                outliers.Update();
+                //plotQualify.DoPlot();
                 outliers.Series.YAxisType = combi.Series.YAxisType;
             }
             else
@@ -2476,16 +2471,11 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            Scatterplot outliers = (Scatterplot)plotQualify.GetSample("Out");
-
-            if (outliers != null)
+            foreach (var pair in outliersData)
             {
-                foreach (var pair in outliersData)
-                {
-                    indRows.AddRange(data.GetIndividuals(selectedStatSpc,
-                        (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
-                        new object[] { pair.X, pair.Y }));
-                }
+                indRows.AddRange(data.GetIndividuals(selectedStatSpc,
+                    (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
+                    new object[] { pair.X, pair.Y }));
             }
 
             List<DataGridViewRow> result = new List<DataGridViewRow>();

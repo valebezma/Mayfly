@@ -14,19 +14,19 @@ namespace Mayfly.Fish.Legal
 
         LegalPapers.LicenseRow LicenseRow { get; set; }
 
-        private string fileName;
+        private string filename;
 
         public string FileName
         {
             set
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -192,12 +192,12 @@ namespace Mayfly.Fish.Legal
             }
         }
 
-        private void Save(string fileName)
+        private void Save(string filename)
         {
             SaveValues();
-            Paper.WriteXml(fileName);
+            Paper.WriteXml(filename);
             statusLicense.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
         }
 
@@ -277,7 +277,7 @@ namespace Mayfly.Fish.Legal
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCatches);
-                gridRow.Cells[ColumnSpecies.Index].Value = quoteRow.SpeciesRow.Name;
+                gridRow.Cells[ColumnSpecies.Index].Value = quoteRow.SpeciesRow;
                 gridRow.Cells[ColumnQuote1.Index].Value = quoteRow.Mass;
                 if (q > 0) gridRow.Cells[ColumnQuantity.Index].Value = q;
                 if (w > 0) gridRow.Cells[ColumnMass.Index].Value = w;
@@ -359,7 +359,7 @@ namespace Mayfly.Fish.Legal
                     double w2 = (double)quoteRow.CaughtMass(LicenseRow.Issued, dateUntil.Value.Date);
 
                     table1.StartRow();
-                    table1.AddCell(quoteRow.SpeciesRow.Name);
+                    table1.AddCell(quoteRow.SpeciesRow);
                     table1.AddCellRight(q == 0 ? Constants.Null : q.ToString());
                     table1.AddCellRight(w1, ColumnMass.DefaultCellStyle.Format);
                     table1.AddCellRight(w2, ColumnCumulate.DefaultCellStyle.Format);
@@ -672,13 +672,8 @@ namespace Mayfly.Fish.Legal
                     decimal w1 = quoteRow.CaughtMass(dateStarted.Value.Date, dateUntil.Value.Date);
                     decimal w2 = quoteRow.CaughtMass(LicenseRow.Issued, dateUntil.Value.Date);
 
-                    body += String.Format("{0,-20}{1,15}{2,15}{3,15}{4,15}\r\n",
-                        quoteRow.SpeciesRow.Name,
-                        q,
-                        w1.ToString("N1"),
-                        w2.ToString("N1"),
-                        (w2 / quoteRow.Mass).ToString("P1")
-                        );
+                    body += String.Format("{0,-20:s}{1,15}{2,15:n1}{3,15:n1}{4,15:p1}\r\n",
+                        quoteRow.SpeciesRow, q,  w1, w2, (w2 / quoteRow.Mass));
 
                     totalQuote += quoteRow.Mass;
 

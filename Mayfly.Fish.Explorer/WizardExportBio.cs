@@ -14,8 +14,6 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class WizardExportBio : Form
     {
-        public CardStack Data { get; set; }
-
         public Data Allowed { get; set; }
 
 
@@ -28,8 +26,8 @@ namespace Mayfly.Fish.Explorer
         public WizardExportBio(Data data)
             : this()
         {
-            Data = data.GetStack();
-            Allowed = new Data(Fish.UserSettings.SpeciesIndex);
+            Allowed = data;
+            //Allowed = new Data(Fish.UserSettings.SpeciesIndex);
             Log.Write(EventType.WizardStarted, "Bio export wizard is started.");
         }
 
@@ -85,7 +83,7 @@ namespace Mayfly.Fish.Explorer
 
                 table.StartRow();
                 //table1.AddCell(model.InternalData.Name);
-                table.AddCell(model.Species.KeyRecord.FullNameReport, regression.ResidualStandardError < .9);
+                table.AddCell(model.Species, regression.ResidualStandardError < .9);
                 table.AddCellRight(regression.ResidualStandardError, ColumnGrowthRSE.DefaultCellStyle.Format);
                 table.AddCellRight(model.InternalData.Data.Count, ColumnGrowthN.DefaultCellStyle.Format);
                 table.AddCellRight(regression.Linf, ColumnGrowthL.DefaultCellStyle.Format, regression.ResidualStandardError < .9);
@@ -125,7 +123,7 @@ namespace Mayfly.Fish.Explorer
 
                 table.StartRow();
                 //table1.AddCell(model.InternalData.Name);
-                table.AddCell(model.Species.KeyRecord.FullNameReport, regression.RSquared > .9);
+                table.AddCell(model.Species, regression.RSquared > .9);
                 table.AddCellRight(regression.RSquared, ColumnWeightR2.DefaultCellStyle.Format);
                 table.AddCellRight(model.InternalData.Data.Count, ColumnWeightN.DefaultCellStyle.Format);
                 table.AddCellRight(regression.Intercept, ColumnWeightQ.DefaultCellStyle.Format, regression.RSquared > .9);
@@ -144,15 +142,17 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetSigns.Rows.Clear();
 
-            foreach (string investigator in Data.GetInvestigators())
-            {
-                CardStack investigatorStack = Data.GetStack("Investigator", investigator);
+            int allowed = 0;
 
+            foreach (string investigator in Allowed.GetStack().GetInvestigators())
+            {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetSigns);
 
                 gridRow.Cells[ColumnSignInvestigator.Index].Value = investigator;
-                gridRow.Cells[ColumnSignN.Index].Value = investigatorStack.Count;
+                int investigatorCount = Allowed.GetStack().GetStack("Investigator", investigator).Count;
+                gridRow.Cells[ColumnSignN.Index].Value = investigatorCount;
+                if (investigator != Mayfly.Resources.Interface.InvestigatorNotApproved) allowed += investigatorCount;
 
                 spreadSheetSigns.Rows.Add(gridRow);
 
@@ -160,19 +160,7 @@ namespace Mayfly.Fish.Explorer
                     Constants.InfantColor : spreadSheetSigns.DefaultCellStyle.ForeColor;
             }
 
-            Allowed = new Data(Fish.UserSettings.SpeciesIndex);
-
-            foreach (string investigator in Data.GetInvestigators())
-            {
-                if (investigator == Mayfly.Resources.Interface.InvestigatorNotApproved) continue;
-
-                foreach (Data.CardRow cardRow in Data.GetStack("Investigator", investigator))
-                {
-                    cardRow.CopyTo(Allowed);
-                }
-            }
-
-            pageSigns.AllowNext = Allowed.Card.Count > 0;
+            pageSigns.AllowNext = allowed > 0;
         }
 
         private void pageSigns_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -314,6 +302,10 @@ namespace Mayfly.Fish.Explorer
                 if (checkBoxReport.Checked)
                 {
                     reporter.RunWorkerAsync();
+                }
+                else
+                {
+                    Close();
                 }
             }
 

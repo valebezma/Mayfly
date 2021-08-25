@@ -482,11 +482,11 @@ namespace Mayfly.Mathematics
             }
         }
 
-        //public void SaveToFile(string fileName)
+        //public void SaveToFile(string filename)
         //{
-        //    StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.Default);
+        //    StreamWriter streamWriter = new StreamWriter(filename, false, Encoding.Default);
 
-        //    switch (Path.GetExtension(fileName))
+        //    switch (Path.GetExtension(filename))
         //    {
         //        case ".csv":
         //            streamWriter.Write(sheet.SeparatedValues(';'));

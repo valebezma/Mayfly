@@ -16,19 +16,19 @@ namespace Mayfly.Species
     {
         #region Properties
 
-        private string fileName;
+        private string filename;
 
         public string FileName
         {
             set
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -138,12 +138,12 @@ namespace Mayfly.Species
             FileName = null;
         }
 
-        public MainForm(string fileName) : this()
+        public MainForm(string filename) : this()
         {
-            LoadData(fileName);
+            LoadData(filename);
         }
 
-        public MainForm(string fileName, bool inWork) : this(fileName)
+        public MainForm(string filename, bool inWork) : this(filename)
         {
             InWork = inWork;
 
@@ -182,9 +182,9 @@ namespace Mayfly.Species
 
         #region Methods
 
-        private void LoadData(string fileName)
+        private void LoadData(string filename)
         {
-            FileName = fileName;
+            FileName = filename;
             Data.ReadXml(FileName);
 
             LoadList();

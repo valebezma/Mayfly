@@ -9,7 +9,9 @@ namespace Mayfly.Wild
     {
         public Data Parent { get; set; }
 
-        public Data.SpeciesRow Species { get; private set; }
+        //public Data.SpeciesRow Species { get; private set; }
+
+        public string Species { get; private set; }
 
         public List<string> Authors { get; set; }
 
@@ -37,7 +39,7 @@ namespace Mayfly.Wild
                 throw new FormatException();
 
             Parent = data;
-            Species = speciesRow;
+            Species = speciesRow.Species;
             nameY = yColumn.Caption;
 
             RefreshMeta();
@@ -61,7 +63,7 @@ namespace Mayfly.Wild
 
         public abstract void RefreshInternal();
 
-        public abstract void Involve(Bio bio);
+        public abstract void Involve(Bio bio, bool clearExisted);
 
 
         public static ContinuousBio Find(IEnumerable<ContinuousBio> bios, string species)
@@ -70,7 +72,7 @@ namespace Mayfly.Wild
 
             foreach (ContinuousBio bio in bios)
             {
-                if (bio.Species.Species == species)
+                if (bio.Species == species)
                 {
                     return bio;
                 }

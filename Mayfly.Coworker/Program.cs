@@ -142,14 +142,14 @@ namespace Mayfly.ManualLicenser
                 Console.WriteLine("Sign resetting started:");
                 Console.WriteLine();
 
-                foreach (string fileName in filenames)
+                foreach (string filename in filenames)
                 {
                     Data data = new Data();
-                    data.Read(fileName);
+                    data.Read(filename);
                     if (data.Solitary.IsWhenNull()) data.Solitary.When = new DateTime(2000, 01, 01);
                     data.Solitary.Sign = StringCipher.Encrypt(sign, data.Solitary.When.ToString("s"));
-                    Console.WriteLine("Saving " + fileName.Substring(source.Length) + " with sign resetted.");
-                    data.WriteToFile(fileName);
+                    Console.WriteLine("Saving " + filename.Substring(source.Length) + " with sign resetted.");
+                    data.WriteToFile(filename);
                 }
             }
 
@@ -1196,17 +1196,17 @@ namespace Mayfly.ManualLicenser
                 Console.WriteLine("Mass resetting started:");
                 Console.WriteLine();
 
-                foreach (string fileName in filenames)
+                foreach (string filename in filenames)
                 {
                     Data fdata = new Data();
-                    fdata.Read(fileName);
+                    fdata.Read(filename);
                     foreach (Data.LogRow logrow in fdata.Log)
                     {
                         logrow.Mass *= 1000;
                     }
 
-                    Console.WriteLine("Saving " + fileName.Substring(source.Length) + " with sign resetted.");
-                    fdata.WriteToFile(fileName);
+                    Console.WriteLine("Saving " + filename.Substring(source.Length) + " with sign resetted.");
+                    fdata.WriteToFile(filename);
                 }
             }
 

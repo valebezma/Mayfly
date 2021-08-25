@@ -201,14 +201,14 @@ namespace Mayfly.Fish.Explorer
                 statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
             }
 
-                if (!modelCalc.IsBusy && !isClosing)
-                {
-                    IsBusy = true;
-                    processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
-                    modelCalc.RunWorkerAsync();
-                }
+            if (!modelCalc.IsBusy && !isClosing)
+            {
+                IsBusy = true;
+                processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
+                modelCalc.RunWorkerAsync();
+            }
 
-            //statusBio.Visible = data.BioLoaded;
+            statusBio.Visible = data.IsBioLoaded;
         }
 
         private void speciesInd_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace Mayfly.Benthos
     {
         #region Properties
 
-        private string fileName;
+        private string filename;
 
         private SpeciesKey.SpeciesRow SpeciesToOpen;
 
@@ -30,12 +30,12 @@ namespace Mayfly.Benthos
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -343,26 +343,26 @@ namespace Mayfly.Benthos
             StatusCount.ResetFormatted(Quantity);
         }
 
-        private void Write(string fileName)
+        private void Write(string filename)
         {
             if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global reference
             {
                 speciesLogger.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
 
-            switch (Path.GetExtension(fileName))
+            switch (Path.GetExtension(filename))
             {
                 case ".bcd":
-                    Data.WriteToFile(fileName);
+                    Data.WriteToFile(filename);
                     break;
 
                 case ".html":
-                    Data.GetReport().WriteToFile(fileName);
+                    Data.GetReport().WriteToFile(filename);
                     break;
             }
 
             statusCard.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
         }
 
@@ -931,14 +931,14 @@ namespace Mayfly.Benthos
             return result;
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
             Data = new Data(UserSettings.SpeciesIndex);
-            Data.Read(fileName);
+            Data.Read(filename);
             LoadData();
-            FileName = fileName;
-            Log.Write("Loaded from {0}.", fileName);
+            FileName = filename;
+            Log.Write("Loaded from {0}.", filename);
             IsChanged = false;
         }
 
