@@ -541,13 +541,6 @@ namespace Mayfly.Extensions
 
             return data;
         }
-
-        public static void ImportBio(this Data data1, string fileName, bool clear)
-        {
-            Data data = new Data();
-            string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
-            data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));          
-        }
     }
 }
 

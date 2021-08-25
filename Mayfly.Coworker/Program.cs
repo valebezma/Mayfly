@@ -464,7 +464,7 @@ namespace Mayfly.ManualLicenser
                     } catch { continue; }
 
                     cr.Sign = StringCipher.Encrypt(subject, cr.When.ToString("s"));
-                    cr.Investigator = Mayfly.UserSettings.Username;
+                    //cr.Investigator = Mayfly.UserSettings.Username;
                     //cr.Sampler = 710;
                     cr.ExactArea = 10000d * area;
                     cr.Comments = string.Format("According to {0}", source);

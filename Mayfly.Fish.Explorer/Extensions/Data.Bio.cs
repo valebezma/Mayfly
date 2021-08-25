@@ -30,58 +30,13 @@ namespace Mayfly.Fish.Explorer
             if (data.Card.Count == 0)
                 throw new ArgumentNullException("Unsigned data", "Cards do not contain signed data.");
 
-            // Remove irrelevant tables and fields
-
             data.Stratified.Clear();
             data.FactorValue.Clear();
             data.Factor.Clear();
             data.Intestine.Clear();
             data.Organ.Clear();
 
-            foreach (Data.IndividualRow individualRow in data.Individual)
-            {
-                individualRow.SetConsumedMassNull();
-                individualRow.SetEggSizeNull();
-                individualRow.SetFatnessNull();
-                individualRow.SetGonadMassNull();
-                individualRow.SetGonadSampleMassNull();
-                individualRow.SetGonadSampleNull();
-                individualRow.SetPreyNull();
-            }
-
-            // for each species
-            // try to build scatterplot with regression
-            // if can't - delete species
             data.InitializeBio();
-
-            //foreach (Data.SpeciesRow speciesRow in data.Species)
-            //{
-            //    Scatterplot massScatter = data.MassModels.GetInternalScatterplot(speciesRow.Species);
-
-            //    //if (massScatter == null || !massScatter.IsRegressionOK || !massScatter.Regression.IsSignificant())
-            //    //{
-            //    //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
-            //    //    {
-            //    //        individualRow.SetMassNull();
-            //    //    }
-
-            //        data.MassModels.Refresh(speciesRow.Species);
-            //    //}
-
-            //    Scatterplot ageScatter = data.GrowthModels.GetInternalScatterplot(speciesRow.Species);
-
-            //    //if (ageScatter == null || !ageScatter.IsRegressionOK || !ageScatter.Regression.IsSignificant())
-            //    //{
-            //    //    foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
-            //    //    {
-            //    //        individualRow.SetAgeNull();
-            //    //    }
-
-            //        data.GrowthModels.Refresh(speciesRow.Species);
-            //    //}
-            //}
-
-            // Remove individuals
 
             for (int i = 0; i < data.Individual.Count; i++)
             {
@@ -94,9 +49,23 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
+            foreach (Data.IndividualRow individualRow in data.Individual)
+            {
+                individualRow.SetConsumedMassNull();
+                individualRow.SetEggSizeNull();
+                individualRow.SetFatnessNull();
+                individualRow.SetGonadMassNull();
+                individualRow.SetGonadSampleMassNull();
+                individualRow.SetGonadSampleNull();
+                individualRow.SetPreyNull();
+                individualRow.SetSexNull();
+                individualRow.SetIntermatureNull();
+                individualRow.SetMaturityNull();
+            }
+
             for (int i = 0; i < data.Species.Count; i++)
             {
-                if (data.Species[i].GetIndividualRows().Length == 0)
+                if (data.FindGrowthModel(data.Species[i].Species) == null && data.FindMassModel(data.Species[i].Species) == null)
                 {
                     data.Species.RemoveSpeciesRow(data.Species[i]);
                     i--;

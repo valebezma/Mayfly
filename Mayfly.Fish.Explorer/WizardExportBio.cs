@@ -184,7 +184,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            Allowed.InitializeBio();
+            Allowed = Allowed.GetBio();
         }
 
         private void modelCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -300,43 +300,24 @@ namespace Mayfly.Fish.Explorer
 
         private void pageReport_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            pageReport.SetNavigation(false);
-            backSpecExporter.RunWorkerAsync();
+            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
+                Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
+                IO.GetFriendlyCommonName(Allowed.GetFilenames())
+                );
 
-            e.Cancel = true;
-        }
-
-        private void backSpecExporter_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Allowed = Allowed.GetBio();
-        }
-
-        private void backSpecExporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
+            if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
             {
-                Notification.ShowNotification(Resources.Interface.SpecFailed,
-                    e.Error.Message);
-            }
-            else
-            {
-                Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
-                    Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
-                    IO.GetFriendlyCommonName(Allowed.GetFilenames())
-                    );
+                Allowed.ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
 
-                if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
+                Log.Write("Bios are exported to {0}", Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
+
+                if (checkBoxReport.Checked)
                 {
-                    Allowed.ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
-
-                    Log.Write("Bios are exported to {0}", Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
-
-                    if (checkBoxReport.Checked)
-                    {
-                        reporter.RunWorkerAsync();
-                    }
+                    reporter.RunWorkerAsync();
                 }
             }
+
+            e.Cancel = true;
         }
 
         private void reporter_DoWork(object sender, DoWorkEventArgs e)
