@@ -1272,7 +1272,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
+                    return ((Data)Table.DataSet).key == null ? null : ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
                 }
             }
 
@@ -1297,20 +1297,7 @@ namespace Mayfly.Wild
 
             public string ToString(string format, IFormatProvider formatProvider)
             {
-                switch (format.ToLowerInvariant())
-                {
-                    case "s":
-                        return this.KeyRecord == null ? ToString() : this.KeyRecord.ShortName;
-
-                    case "f":
-                        return this.KeyRecord == null ? ToString() : this.KeyRecord.FullName;
-
-                    case "l":
-                        return this.KeyRecord == null ? ToString() : this.KeyRecord.ScientificName;
-
-                    default:
-                        return this.Species;
-                }
+                return this.KeyRecord == null ? ToString() : this.KeyRecord.ToString(format, formatProvider);
             }
         }
 

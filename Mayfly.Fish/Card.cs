@@ -18,11 +18,9 @@ namespace Mayfly.Fish
 {
     public partial class Card : Form
     {
-        #region Properties
-
         private string fileName;
 
-        private string SpeciesToOpen;
+        private SpeciesKey.SpeciesRow SpeciesToOpen;
 
         private bool preciseMode;
 
@@ -146,8 +144,6 @@ namespace Mayfly.Fish
             }
         }
 
-        #endregion
-
 
 
         public Card()
@@ -191,7 +187,7 @@ namespace Mayfly.Fish
 
             labelDuration.ResetFormatted(0, 0, 0);
 
-            ColumnSpecies.ValueType = typeof(string);
+            //ColumnSpecies.ValueType = typeof(string);
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(double);
 
@@ -218,8 +214,6 @@ namespace Mayfly.Fish
         }
 
 
-
-        #region Methods
 
         private void Clear()
         {
@@ -835,8 +829,7 @@ namespace Mayfly.Fish
         {
             Data.LogRow result = GetLogRow(data, gridRow);
 
-            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    gridRow.Cells[ColumnSpecies.Index].Value.ToString());
+            SpeciesKey.SpeciesRow speciesRow = gridRow.Cells[ColumnSpecies.Index].Value as SpeciesKey.SpeciesRow;
 
             if (speciesRow == null)
             {
@@ -1315,7 +1308,7 @@ namespace Mayfly.Fish
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = species;
+            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
             Load += new EventHandler(cardOpenSpecies_Load);
         }
 
@@ -1379,7 +1372,6 @@ namespace Mayfly.Fish
         //    Load += new EventHandler(cardOpenSpecies_Load);
         //}
 
-        #endregion
 
 
 
@@ -1389,7 +1381,6 @@ namespace Mayfly.Fish
         private void cardOpenSpecies_Load(object sender, EventArgs e)
         {
             tabControl.SelectedTab = tabPageLog;
-            if (Data.Species.FindBySpecies(SpeciesToOpen) == null) return;
 
             speciesLogger.InsertSpecies(SpeciesToOpen);
             if (!UserSettings.AutoLogOpen)

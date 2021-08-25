@@ -3779,9 +3779,7 @@
             // 
             this.speciesValidator.CheckDuplicates = false;
             this.speciesValidator.ColumnName = "columnSpcSpc";
-            this.speciesValidator.InsertFullNames = true;
             this.speciesValidator.RecentListCount = 0;
-            this.speciesValidator.SuggestFullNames = true;
             // 
             // mathCard
             // 

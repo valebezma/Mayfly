@@ -9,7 +9,7 @@ namespace Mayfly.Wild
     {
         public Data Parent { get; set; }
 
-        public string Species { get; private set; }
+        public Data.SpeciesRow Species { get; private set; }
 
         public List<string> Authors { get; set; }
 
@@ -37,7 +37,7 @@ namespace Mayfly.Wild
                 throw new FormatException();
 
             Parent = data;
-            Species = speciesRow.Species;
+            Species = speciesRow;
             nameY = yColumn.Caption;
 
             RefreshMeta();
@@ -68,7 +68,7 @@ namespace Mayfly.Wild
         {
             foreach (ContinuousBio bio in bios)
             {
-                if (bio.Species == species)
+                if (bio.Species.Species == species)
                 {
                     return bio;
                 }

@@ -18,8 +18,6 @@ namespace Mayfly.Fish
 {
     public partial class Individuals : Form
     {
-        #region Properties
-
         public Data.LogRow LogRow;
 
         private Data Data { get; set; }
@@ -172,11 +170,9 @@ namespace Mayfly.Fish
 
         List<Data.IndividualRow> redefinedSpecimen = new List<Data.IndividualRow> ();
 
-        #endregion
 
 
-
-        public Individuals()
+        private Individuals()
         {
             InitializeComponent();
             Log.Write("Open individuals form.");
@@ -209,9 +205,7 @@ namespace Mayfly.Fish
             LogRow = logRow;
             Data = (Data)LogRow.Table.DataSet;
 
-            Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
-                    logRow.IsSpcIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
-                    logRow.SpeciesRow.Species);
+            this.ResetFormatted((logRow.IsSpcIDNull() ? Species.Resources.Interface.UnidentifiedTitle : logRow.SpeciesRow.ToString()));
 
             UpdateValues();
             UpdateTotals();
@@ -422,7 +416,7 @@ namespace Mayfly.Fish
             //logRow.SpeciesRow = speciesRow
 
             Card card = (Card)this.Owner;
-            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow.Species)));
+            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow)));
             UpdateRedefineList();
         }
 
