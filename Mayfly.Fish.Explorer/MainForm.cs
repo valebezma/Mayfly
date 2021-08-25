@@ -339,9 +339,7 @@ namespace Mayfly.Fish.Explorer
         //TimeSpan ts = TimeSpan.Zero;
 
         private void dataLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //started = DateTime.Now;
-            
+        {            
             string[] filenames = (string[])e.Argument;
 
             for (int i = 0; i < filenames.Length; i++)
@@ -350,21 +348,19 @@ namespace Mayfly.Fish.Explorer
                 {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                    //if (data.IsBioLoaded)
-                    //{
-                    //    TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                    if (data.IsBioLoaded)
+                    {
+                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                    //    if (tdb != tdbSpecCancel)
-                    //    {
-                    //        data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    data.ImportBio(filenames[i]);
-                    //}
-
-                    //data.RefreshBios();
+                        if (tdb != tdbSpecCancel)
+                        {
+                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                        }
+                    }
+                    else
+                    {
+                        data.ImportBio(filenames[i]);
+                    }
 
                     processDisplay.ResetStatus();
                 }
@@ -435,17 +431,23 @@ namespace Mayfly.Fish.Explorer
         {
             if (!e.Cancelled)
             {
-                //double q = FullStack.Quantity();
                 double w = FullStack.Mass();
 
-                labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
-                //labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
-                //statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
-                statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
+                if (w == 0)
+                {
+                    labelWgtValue.Text = Constants.Null;
+                    statusMass.ResetFormatted(Constants.Null);
+                }
+                else
+                {
+                    labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
+                    statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
+                }
 
-                //if (tabPageSpcModels.Parent != null) {
-                species_Changed(spreadSheetSpcStats, new EventArgs());
-                //}
+                if (tabPageSpcStats.Parent != null)
+                {
+                    species_Changed(spreadSheetSpcStats, new EventArgs());
+                }
 
                 if (tabPageInd.Parent != null)
                 {

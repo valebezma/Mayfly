@@ -66,6 +66,8 @@ namespace Mayfly.Wild
 
         public static ContinuousBio Find(IEnumerable<ContinuousBio> bios, string species)
         {
+            if (bios == null) return null;
+
             foreach (ContinuousBio bio in bios)
             {
                 if (bio.Species.Species == species)

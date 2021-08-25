@@ -152,6 +152,13 @@ namespace Mayfly.Wild
             }
         }
 
+        public void Reverse()
+        {
+            BivariatePredictiveModel t = ExternalData;
+            ExternalData = InternalData;
+            InternalData = t;
+        }
+
         public double GetValue(double x, bool inversed)
         {
             //if (this.Denied) return double.NaN;

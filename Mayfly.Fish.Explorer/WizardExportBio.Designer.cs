@@ -55,12 +55,23 @@
             this.labelWait = new System.Windows.Forms.Label();
             this.labelNoDataGrowth = new System.Windows.Forms.Label();
             this.spreadSheetGrowth = new Mayfly.Controls.SpreadSheet();
+            this.ColumnGrowthSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthRSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextGrowth = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextGrowthChart = new System.Windows.Forms.ToolStripMenuItem();
             this.label9 = new System.Windows.Forms.Label();
             this.pageWeight = new AeroWizard.WizardPage();
             this.labelNoDataWeight = new System.Windows.Forms.Label();
             this.spreadSheetWeight = new Mayfly.Controls.SpreadSheet();
+            this.ColumnWeightSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWeightN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWeightR2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWeightQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnWeightB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextWeight = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextWeightChart = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,18 +80,6 @@
             this.checkBoxReport = new System.Windows.Forms.CheckBox();
             this.calcGrowth = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
-            this.backSpecExporter = new System.ComponentModel.BackgroundWorker();
-            this.ColumnGrowthSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthRSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeightSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeightN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeightR2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeightQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnWeightB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageSigns.SuspendLayout();
@@ -200,6 +199,56 @@
             this.spreadSheetGrowth.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.spreadSheetGrowth.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
+            // ColumnGrowthSpecies
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "s";
+            this.ColumnGrowthSpecies.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnGrowthSpecies.FillWeight = 150F;
+            resources.ApplyResources(this.ColumnGrowthSpecies, "ColumnGrowthSpecies");
+            this.ColumnGrowthSpecies.Name = "ColumnGrowthSpecies";
+            this.ColumnGrowthSpecies.ReadOnly = true;
+            // 
+            // ColumnGrowthN
+            // 
+            dataGridViewCellStyle4.Format = "n0";
+            this.ColumnGrowthN.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.ColumnGrowthN, "ColumnGrowthN");
+            this.ColumnGrowthN.Name = "ColumnGrowthN";
+            this.ColumnGrowthN.ReadOnly = true;
+            // 
+            // ColumnGrowthRSE
+            // 
+            dataGridViewCellStyle5.Format = "n1";
+            this.ColumnGrowthRSE.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.ColumnGrowthRSE, "ColumnGrowthRSE");
+            this.ColumnGrowthRSE.Name = "ColumnGrowthRSE";
+            this.ColumnGrowthRSE.ReadOnly = true;
+            // 
+            // ColumnGrowthL
+            // 
+            dataGridViewCellStyle6.Format = "n1";
+            this.ColumnGrowthL.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.ColumnGrowthL, "ColumnGrowthL");
+            this.ColumnGrowthL.Name = "ColumnGrowthL";
+            this.ColumnGrowthL.ReadOnly = true;
+            // 
+            // ColumnGrowthK
+            // 
+            dataGridViewCellStyle7.Format = "n3";
+            this.ColumnGrowthK.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.ColumnGrowthK, "ColumnGrowthK");
+            this.ColumnGrowthK.Name = "ColumnGrowthK";
+            this.ColumnGrowthK.ReadOnly = true;
+            // 
+            // ColumnGrowthT
+            // 
+            dataGridViewCellStyle8.Format = "n3";
+            this.ColumnGrowthT.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.ColumnGrowthT, "ColumnGrowthT");
+            this.ColumnGrowthT.Name = "ColumnGrowthT";
+            this.ColumnGrowthT.ReadOnly = true;
+            // 
             // contextGrowth
             // 
             this.contextGrowth.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -248,6 +297,48 @@
             this.spreadSheetWeight.RowTemplate.Height = 35;
             this.spreadSheetWeight.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.spreadSheetWeight.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            // 
+            // ColumnWeightSpecies
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Format = "s";
+            this.ColumnWeightSpecies.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnWeightSpecies.FillWeight = 150F;
+            resources.ApplyResources(this.ColumnWeightSpecies, "ColumnWeightSpecies");
+            this.ColumnWeightSpecies.Name = "ColumnWeightSpecies";
+            this.ColumnWeightSpecies.ReadOnly = true;
+            // 
+            // ColumnWeightN
+            // 
+            dataGridViewCellStyle10.Format = "n0";
+            this.ColumnWeightN.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.ColumnWeightN, "ColumnWeightN");
+            this.ColumnWeightN.Name = "ColumnWeightN";
+            this.ColumnWeightN.ReadOnly = true;
+            // 
+            // ColumnWeightR2
+            // 
+            dataGridViewCellStyle11.Format = "p1";
+            this.ColumnWeightR2.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(this.ColumnWeightR2, "ColumnWeightR2");
+            this.ColumnWeightR2.Name = "ColumnWeightR2";
+            this.ColumnWeightR2.ReadOnly = true;
+            // 
+            // ColumnWeightQ
+            // 
+            dataGridViewCellStyle12.Format = "e2";
+            this.ColumnWeightQ.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(this.ColumnWeightQ, "ColumnWeightQ");
+            this.ColumnWeightQ.Name = "ColumnWeightQ";
+            this.ColumnWeightQ.ReadOnly = true;
+            // 
+            // ColumnWeightB
+            // 
+            dataGridViewCellStyle13.Format = "n3";
+            this.ColumnWeightB.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(this.ColumnWeightB, "ColumnWeightB");
+            this.ColumnWeightB.Name = "ColumnWeightB";
+            this.ColumnWeightB.ReadOnly = true;
             // 
             // contextWeight
             // 
@@ -299,103 +390,6 @@
             this.reporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reporter_DoWork);
             this.reporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reporter_RunWorkerCompleted);
             // 
-            // backSpecExporter
-            // 
-            this.backSpecExporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backSpecExporter_DoWork);
-            this.backSpecExporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backSpecExporter_RunWorkerCompleted);
-            // 
-            // ColumnGrowthSpecies
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Format = "s";
-            this.ColumnGrowthSpecies.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnGrowthSpecies.FillWeight = 150F;
-            resources.ApplyResources(this.ColumnGrowthSpecies, "ColumnGrowthSpecies");
-            this.ColumnGrowthSpecies.Name = "ColumnGrowthSpecies";
-            this.ColumnGrowthSpecies.ReadOnly = true;
-            // 
-            // ColumnGrowthN
-            // 
-            dataGridViewCellStyle4.Format = "n0";
-            this.ColumnGrowthN.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.ColumnGrowthN, "ColumnGrowthN");
-            this.ColumnGrowthN.Name = "ColumnGrowthN";
-            this.ColumnGrowthN.ReadOnly = true;
-            // 
-            // ColumnGrowthRSE
-            // 
-            dataGridViewCellStyle5.Format = "n1";
-            this.ColumnGrowthRSE.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.ColumnGrowthRSE, "ColumnGrowthRSE");
-            this.ColumnGrowthRSE.Name = "ColumnGrowthRSE";
-            this.ColumnGrowthRSE.ReadOnly = true;
-            // 
-            // ColumnGrowthL
-            // 
-            dataGridViewCellStyle6.Format = "n1";
-            this.ColumnGrowthL.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.ColumnGrowthL, "ColumnGrowthL");
-            this.ColumnGrowthL.Name = "ColumnGrowthL";
-            this.ColumnGrowthL.ReadOnly = true;
-            // 
-            // ColumnGrowthK
-            // 
-            dataGridViewCellStyle7.Format = "n3";
-            this.ColumnGrowthK.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.ColumnGrowthK, "ColumnGrowthK");
-            this.ColumnGrowthK.Name = "ColumnGrowthK";
-            this.ColumnGrowthK.ReadOnly = true;
-            // 
-            // ColumnGrowthT
-            // 
-            dataGridViewCellStyle8.Format = "n3";
-            this.ColumnGrowthT.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.ColumnGrowthT, "ColumnGrowthT");
-            this.ColumnGrowthT.Name = "ColumnGrowthT";
-            this.ColumnGrowthT.ReadOnly = true;
-            // 
-            // ColumnWeightSpecies
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Format = "s";
-            this.ColumnWeightSpecies.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnWeightSpecies.FillWeight = 150F;
-            resources.ApplyResources(this.ColumnWeightSpecies, "ColumnWeightSpecies");
-            this.ColumnWeightSpecies.Name = "ColumnWeightSpecies";
-            this.ColumnWeightSpecies.ReadOnly = true;
-            // 
-            // ColumnWeightN
-            // 
-            dataGridViewCellStyle10.Format = "n0";
-            this.ColumnWeightN.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.ColumnWeightN, "ColumnWeightN");
-            this.ColumnWeightN.Name = "ColumnWeightN";
-            this.ColumnWeightN.ReadOnly = true;
-            // 
-            // ColumnWeightR2
-            // 
-            dataGridViewCellStyle11.Format = "p1";
-            this.ColumnWeightR2.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.ColumnWeightR2, "ColumnWeightR2");
-            this.ColumnWeightR2.Name = "ColumnWeightR2";
-            this.ColumnWeightR2.ReadOnly = true;
-            // 
-            // ColumnWeightQ
-            // 
-            dataGridViewCellStyle12.Format = "e2";
-            this.ColumnWeightQ.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.ColumnWeightQ, "ColumnWeightQ");
-            this.ColumnWeightQ.Name = "ColumnWeightQ";
-            this.ColumnWeightQ.ReadOnly = true;
-            // 
-            // ColumnWeightB
-            // 
-            dataGridViewCellStyle13.Format = "n3";
-            this.ColumnWeightB.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.ColumnWeightB, "ColumnWeightB");
-            this.ColumnWeightB.Name = "ColumnWeightB";
-            this.ColumnWeightB.ReadOnly = true;
-            // 
             // WizardExportBio
             // 
             resources.ApplyResources(this, "$this");
@@ -432,7 +426,6 @@
         private Controls.SpreadSheet spreadSheetGrowth;
         private System.Windows.Forms.CheckBox checkBoxReport;
         private System.Windows.Forms.Label labelNoDataGrowth;
-        private System.ComponentModel.BackgroundWorker backSpecExporter;
         private AeroWizard.WizardPage pageWeight;
         private System.Windows.Forms.Label labelNoDataWeight;
         private Controls.SpreadSheet spreadSheetWeight;

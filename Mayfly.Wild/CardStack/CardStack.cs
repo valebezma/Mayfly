@@ -168,10 +168,13 @@ namespace Mayfly.Wild
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
-            foreach (Data.LogRow logRow in Parent.Log)
+            if (Parent != null)
             {
-                if (!this.Contains(logRow.CardRow)) continue;
-                result.Add(logRow);
+                foreach (Data.LogRow logRow in Parent.Log)
+                {
+                    if (!this.Contains(logRow.CardRow)) continue;
+                    result.Add(logRow);
+                }
             }
 
             return result.ToArray();
@@ -181,13 +184,14 @@ namespace Mayfly.Wild
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
-
-
-            foreach (Data.LogRow logRow in Parent.Log)
+            if (Parent != null)
             {
-                if (logRow.SpeciesRow.Species != speciesRow.Species) continue;
-                if (!this.Contains(logRow.CardRow)) continue;
-                result.Add(logRow);
+                foreach (Data.LogRow logRow in Parent.Log)
+                {
+                    if (logRow.SpeciesRow.Species != speciesRow.Species) continue;
+                    if (!this.Contains(logRow.CardRow)) continue;
+                    result.Add(logRow);
+                }
             }
 
             return result.ToArray();

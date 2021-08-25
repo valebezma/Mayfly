@@ -44,7 +44,6 @@ namespace Mayfly.Wild
         public Data(SpeciesKey _key) : this()
         {
             key = _key;
-            this.SetAttributable();
         }
 
 
@@ -165,7 +164,7 @@ namespace Mayfly.Wild
         {
             try
             {
-                //this.SetAttributable();
+                this.SetAttributable();
                 ReadXml(fileName);
 
                 foreach (CardRow cardRow in this.Card)

@@ -199,6 +199,7 @@ namespace Mayfly.Fish.Explorer
                 double q = FullStack.Quantity();
                 labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
                 statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
+            }
 
                 if (!modelCalc.IsBusy && !isClosing)
                 {
@@ -206,7 +207,6 @@ namespace Mayfly.Fish.Explorer
                     processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
                     modelCalc.RunWorkerAsync();
                 }
-            }
 
             //statusBio.Visible = data.BioLoaded;
         }

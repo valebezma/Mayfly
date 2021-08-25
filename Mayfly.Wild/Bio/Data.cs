@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
+using Mayfly.Extensions;
 
 namespace Mayfly.Wild
 {
@@ -113,9 +114,10 @@ namespace Mayfly.Wild
             }
         }
 
-        public void ImportBio(string fileName)
+        public void ImportBio(string fileName, bool clearExternal)
         {
-            Data data = new Data();
+            Data data = new Data(key);
+            data.SetAttributable();
             string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
             data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
             data.InitializeBio();
@@ -123,23 +125,42 @@ namespace Mayfly.Wild
             foreach (ContinuousBio exbio in data.MassModels)
             {
                 ContinuousBio inbio = FindMassModel(exbio.Species.Species);
-                if (inbio != null) inbio.Involve(exbio);
+                if (inbio == null)
+                {
+                    exbio.Reverse();
+                    MassModels.Add(exbio);
+                }
+                else
+                {
+                    inbio.Involve(exbio);
+                }
             }
 
             foreach (ContinuousBio exbio in data.GrowthModels)
             {
                 ContinuousBio inbio = FindGrowthModel(exbio.Species.Species);
-                if (inbio != null) inbio.Involve(exbio);
+                if (inbio == null)
+                {
+                    exbio.Reverse();
+                    GrowthModels.Add(exbio);
+                }
+                else
+                {
+                    inbio.Involve(exbio);
+                }
             }
 
             Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(fileName));
         }
 
+        public void ImportBio(string fileName)
+        {
+            ImportBio(fileName, false);
+        }
+
         public void ExportBio(string fileName)
         {
-            WriteToFile(fileName);
-            //File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
-            //File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
+            File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
         }
 
         public ContinuousBio FindMassModel(string speceis)
@@ -147,9 +168,9 @@ namespace Mayfly.Wild
             return Bio.Find(MassModels, speceis);
         }
 
-        public ContinuousBio FindGrowthModel(string speceis)
+        public ContinuousBio FindGrowthModel(string species)
         {
-            return Bio.Find(GrowthModels, speceis);
+            return Bio.Find(GrowthModels, species);
         }
     }
 }
