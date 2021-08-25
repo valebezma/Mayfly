@@ -936,13 +936,13 @@ namespace Mayfly.Fish.Explorer
                 if (spreadSheetLog[ColumnMass.Index, e.RowIndex].Value == null)
                 {
                     int weighted = Observations.GetCombinedData().GetStack().Weighted(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
-                    spreadSheetLog[ColumnMass.Index, e.RowIndex].Style.NullValue = weighted < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.Interface.EnoughStamp;
+                    spreadSheetLog[ColumnMass.Index, e.RowIndex].Style.NullValue = weighted < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
 
                 if (spreadSheetLog[ColumnRegID.Index, e.RowIndex].Value == null)
                 {
                     int reged = Observations.GetCombinedData().GetStack().Registered(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
-                    spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.Interface.EnoughStamp;
+                    spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
             }
 

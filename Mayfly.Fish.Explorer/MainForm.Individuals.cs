@@ -337,7 +337,7 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow;
                 gridRow.Cells[columnIndLength.Index].Value = stratifiedRow.SizeClass.Midpoint;
                 gridRow.Cells[columnIndMass.Index].Value = data.FindMassModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
-                gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.Interface.SimulatedIndividual;
+                gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.SimulatedIndividual;
                 Age age = (Age)data.FindGrowthModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint, true);
 
                 gridRow.Cells[columnIndAge.Index].Value = age;

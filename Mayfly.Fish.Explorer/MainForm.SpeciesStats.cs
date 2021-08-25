@@ -5,6 +5,7 @@ using Mayfly.Wild;
 using Mayfly.Mathematics.Statistics;
 using System.Drawing;
 using Mayfly.Extensions;
+using Meta.Numerics.Statistics;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -22,10 +23,12 @@ namespace Mayfly.Fish.Explorer
         DataQualificationWay selectedQualificationWay;
 
         ContinuousBio model;
+        BivariateSample outliersData;
 
         Scatterplot ext;
         Scatterplot inter;
         Scatterplot combi;
+        Scatterplot outliers;
 
         private void GetFilteredList(DataGridViewColumn gridColumn)
         {
@@ -158,17 +161,13 @@ namespace Mayfly.Fish.Explorer
 
         private void initializeSpeciesStatsPlot()
         {
-            //plotQualify.Remove(Resources.Interface.Interface.StratesSampled, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesWeighted, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
 
             plotQualify.AxisXInterval = Fish.UserSettings.DefaultStratifiedInterval;
 
-            histSample = new Histogramma(Resources.Interface.Interface.StratesSampled);
-            histWeighted = new Histogramma(Resources.Interface.Interface.StratesWeighted);
-            histRegistered = new Histogramma(Resources.Interface.Interface.StratesRegistered);
-            histAged = new Histogramma(Resources.Interface.Interface.StratesAged);
+            histSample = new Histogramma(Resources.Interface.StratesSampled);
+            histWeighted = new Histogramma(Resources.Interface.StratesWeighted);
+            histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
+            histAged = new Histogramma(Resources.Interface.StratesAged);
 
             Color startColor = Color.FromArgb(150, Color.Lavender);
 
@@ -186,20 +185,16 @@ namespace Mayfly.Fish.Explorer
                 //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
 
-            //plotQualify.Remove("Bio", false);
-            //plotQualify.Remove("Own data", false);
-            //plotQualify.Remove("Model", false);
-
-            ext = new Scatterplot("Bio");
+            ext = new Scatterplot(Resources.Interface.QualBio);
             ext.Properties.DataPointColor = Constants.InfantColor;
             plotQualify.AddSeries(ext);
 
-            inter = new Scatterplot("Own data");
+            inter = new Scatterplot(Resources.Interface.QualOwn);
             inter.Properties.DataPointColor = Constants.MainAccent;
             plotQualify.AddSeries(inter);
             inter.Updated += inter_Updated;
 
-            combi = new Scatterplot("Model");
+            combi = new Scatterplot(Resources.Interface.QualCombi);
             combi.Properties.ShowTrend = true;
             combi.Properties.ConfidenceLevel = .99999;
             combi.Properties.ShowPredictionBands = true;
@@ -208,6 +203,15 @@ namespace Mayfly.Fish.Explorer
             combi.Properties.TrendColor = Constants.MainAccent;
             plotQualify.AddSeries(combi);
             combi.Updated += combi_Updated;
+
+            //plotQualify.Remove(Resources.Interface.StratesSampled, false);
+            //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
+            //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
+            //plotQualify.Remove(Resources.Interface.StratesAged, false);
+
+            //plotQualify.Remove(ext);
+            //plotQualify.Remove(inter);
+            //plotQualify.Remove(combi);
         }
 
         private void inter_Updated(object sender, ScatterplotEventArgs e)
@@ -217,7 +221,12 @@ namespace Mayfly.Fish.Explorer
 
         private void combi_Updated(object sender, ScatterplotEventArgs e)
         {
-            checkBoxQualOutliers.Checked = combi.Properties.HighlightOutliers;
+            outliersData = combi.Calc.Regression.GetOutliers(inter.Calc.Data, combi.Properties.ConfidenceLevel);
+
+            checkBoxQualOutliers.Enabled = buttonQualOutliers.Enabled =
+                outliersData.Count > 0;
+
+            checkBoxQualOutliers_CheckedChanged(sender, e);
         }
     }
 

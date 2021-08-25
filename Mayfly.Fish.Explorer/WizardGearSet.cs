@@ -213,7 +213,7 @@ namespace Mayfly.Fish.Explorer
 
                 spreadSheetEfforts[ColumnClass.Index, i].ToolTipText =
                     speciesOfInterestIsPresent ? string.Empty : 
-                    string.Format(Resources.Interface.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.KeyRecord.ShortName, 
+                    string.Format(Resources.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.KeyRecord.ShortName, 
                     classedStacks[i].Name, spreadSheetEfforts.RowVisibilityKey);
 
             }
@@ -300,7 +300,7 @@ namespace Mayfly.Fish.Explorer
 
             if (result.Count == 0)
             {
-                DataGridViewRow gridRow = DatasetRow(Resources.Interface.Interface.AllDataCombined, GearData);
+                DataGridViewRow gridRow = DatasetRow(Resources.Interface.AllDataCombined, GearData);
                 if (gridRow != null) { result.Add(gridRow); }
             }
 

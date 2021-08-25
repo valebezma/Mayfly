@@ -27,28 +27,28 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
 
             TreatedRow = new DataGridViewRow();
-            TreatedRow.CreateCells(spreadSheet, Resources.Interface.Interface.AgeSampled);
+            TreatedRow.CreateCells(spreadSheet, Resources.Interface.AgeSampled);
             TreatedRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;           
             spreadSheet.Rows.Add(TreatedRow);
 
             UntreatedRow = new DataGridViewRow();
-            UntreatedRow.CreateCells(spreadSheet, Resources.Interface.Interface.AgeAdd);
+            UntreatedRow.CreateCells(spreadSheet, Resources.Interface.AgeAdd);
             UntreatedRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;            
             spreadSheet.Rows.Add(UntreatedRow);
 
             TotalRow = new DataGridViewRow();
-            TotalRow.CreateCells(spreadSheet, Resources.Interface.Interface.AgeGeneral);
+            TotalRow.CreateCells(spreadSheet, Resources.Interface.AgeGeneral);
             TotalRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;            
             spreadSheet.Rows.Add(TotalRow);
 
             MeanMassRow = new DataGridViewRow();
-            MeanMassRow.CreateCells(spreadSheet, Resources.Interface.Interface.AvgMass);
+            MeanMassRow.CreateCells(spreadSheet, Resources.Interface.AvgMass);
             MeanMassRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             MeanMassRow.DefaultCellStyle.Format = "S0";
             spreadSheet.Rows.Add(MeanMassRow);
 
             TotalMassRow = new DataGridViewRow();
-            TotalMassRow.CreateCells(spreadSheet, Resources.Interface.Interface.TotalMass);
+            TotalMassRow.CreateCells(spreadSheet, Resources.Interface.TotalMass);
             TotalMassRow.Cells[columnSizeClass.Index].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             TotalMassRow.DefaultCellStyle.Format = "N3";            
             spreadSheet.Rows.Add(TotalMassRow);
@@ -137,11 +137,11 @@ namespace Mayfly.Fish.Explorer
 
             Series hist1 = new Series();
             hist1.ChartType = SeriesChartType.StackedColumn;
-            hist1.Name = Resources.Interface.Interface.AgeSampled;
+            hist1.Name = Resources.Interface.AgeSampled;
 
             Series hist2 = new Series();
             hist2.ChartType = SeriesChartType.StackedColumn;
-            hist2.Name = Resources.Interface.Interface.AgeAdd;
+            hist2.Name = Resources.Interface.AgeAdd;
 
             double minx = double.MaxValue;
             double maxx = 0;

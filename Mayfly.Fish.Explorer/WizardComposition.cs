@@ -314,7 +314,7 @@ namespace Mayfly.Fish.Explorer
 
                         if (selectedShoal is AgeKey)
                         {
-                            contextShowCalculation.Text = string.Format(Resources.Interface.Interface.AgeRecMenu, selectedShoal.Name);
+                            contextShowCalculation.Text = string.Format(Resources.Interface.AgeRecMenu, selectedShoal.Name);
                         }
                         else
                         {

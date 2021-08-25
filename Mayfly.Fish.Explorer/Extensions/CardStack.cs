@@ -347,7 +347,7 @@ namespace Mayfly.Fish.Explorer
 
             result.Name = samplerType.ToDisplay() +
                 " (" + new UnitEffort(effortVariant).Unit + ")" +
-                " (" + Resources.Interface.Interface.AllDataCombined + ")";
+                " (" + Resources.Interface.AllDataCombined + ")";
 
             return result;
         }

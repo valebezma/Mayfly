@@ -1609,19 +1609,44 @@ namespace Mayfly.Mathematics.Charts
 
             if (sample != null)
             {
-                if (sample is Scatterplot)
+                List<Series> toRemove = new List<Series>();
+
+                if (sample is Scatterplot sc)
                 {
-                    Scatterplots.Remove((Scatterplot)sample);
+                    toRemove.Add(sc.Series);
+                    toRemove.Add(sc.PredictionBandLower);
+                    toRemove.Add(sc.PredictionBandUpper);
+                    toRemove.Add(sc.Outliers);
+                    Scatterplots.Remove(sc);
+
+                    if (sc.Trend != null)
+                    {
+                        toRemove.Add(sc.Trend.Series);
+                        Functors.Remove(sc.Trend);
+                    }
                 }
 
-                if (sample is Histogramma)
+                if (sample is Histogramma h)
                 {
-                    Histograms.Remove((Histogramma)sample);
+                    toRemove.Add(h.Series);
+                    Histograms.Remove(h);
+
+                    if (h.Fit != null)
+                    {
+                        toRemove.Add(h.Fit.Series);
+                        Functors.Remove(h.Fit);
+                    }
                 }
 
-                if (sample is Functor)
+                if (sample is Functor f)
                 {
-                    Functors.Remove((Functor)sample);
+                    toRemove.Add(f.Series);
+                    Functors.Remove(f);
+                }
+
+                foreach (Series series in toRemove)
+                {
+                    if (series != null && Series.Contains(series)) Series.Remove(series);
                 }
             }
 
@@ -2073,7 +2098,7 @@ namespace Mayfly.Mathematics.Charts
             REngine engine = REngine.GetInstance();
 
             engine.Evaluate(string.Format("options(OutDec= '{0}')", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator));
-            engine.Evaluate(string.Format("svg('{0}', width = {1} / 2.54, height = {2} / 2.54, pointsize = {3})", 
+            engine.Evaluate(string.Format("svg('{0}', width = {1} / 2.54, height = {2} / 2.54, pointsize = {3})",
                 svg.Replace('\\', '/'), width, height, 8));
             engine.Evaluate("par(mfrow = c(1, 1))");
             engine.Evaluate("par(mar = c(3, 3, 0, 3) + 1.1, cex = 1)");
@@ -2095,17 +2120,17 @@ namespace Mayfly.Mathematics.Charts
             {
                 Series series = Series[i];
 
-                Color col = series.Color;
-                if (col.Name == "Transparent") col = series.MarkerBorderColor;
-                if (col.Name == "Transparent") col = UserSettings.DistinguishColorSelected;
+                Color col = series.MarkerBorderColor;
+                if (col.A == 0) col = series.MarkerColor;
+                if (col.A == 0) col = series.Color;
+                //if (col.Name == "Transparent") col = UserSettings.DistinguishColorSelected;
 
-                if (series.YAxisType == type && series.Points.Count > 0)// && col.Name != "Transparent")
+                if (series.YAxisType == type)// && col.Name != "Transparent")
                 {
                     BivariateSample data = GetDataPointValues(series);
 
                     if (data.Count > 0)
                     {
-
                         var xvalues = engine.CreateNumericVector(data.X);
                         var yvalues = engine.CreateNumericVector(data.Y);
                         engine.SetSymbol("xvalues", xvalues);
@@ -2141,7 +2166,7 @@ namespace Mayfly.Mathematics.Charts
                                     engine.Evaluate("ltys = c(ltys, " + (series.BorderDashStyle == ChartDashStyle.Solid ? "1" : "2") + ")");
                                     engine.Evaluate("fills = c(fills, NA)");
                                     engine.Evaluate("borders = c(borders, NA)");
-                                    engine.Evaluate("lwds = c(lwds, 2)");
+                                    engine.Evaluate("lwds = c(lwds, 1)");
                                 }
                                 break;
 
@@ -2158,17 +2183,17 @@ namespace Mayfly.Mathematics.Charts
                                 break;
                         }
                     }
+                }
 
-                    if (i == Series.Count - 1 && HasSecondaryYAxis && type == AxisType.Primary)
-                    {
-                        type = AxisType.Secondary;
-                        i = 0;
+                if (i == Series.Count - 1 && HasSecondaryYAxis && type == AxisType.Primary)
+                {
+                    type = AxisType.Secondary;
+                    i = 0;
 
-                        engine.Evaluate("par(new = TRUE)");
-                        engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
-                        engine.Evaluate("axis(side = 4)");
-                        engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
-                    }
+                    engine.Evaluate("par(new = TRUE)");
+                    engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
+                    engine.Evaluate("axis(side = 4)");
+                    engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
                 }
             }
 
@@ -2176,7 +2201,7 @@ namespace Mayfly.Mathematics.Charts
             {
                 var names = engine.CreateCharacterVector(seriesNames);
                 engine.SetSymbol("names", names);
-                engine.Evaluate("legend(x = 'topright', legend = names, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds)");
+                engine.Evaluate("legend(x = 'topleft', legend = names, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds, lty = ltys)");
             }
 
             engine.Evaluate("dev.off()");

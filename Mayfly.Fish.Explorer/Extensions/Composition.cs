@@ -76,8 +76,8 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            BivariatePredictiveModel useful = new BivariatePredictiveModel(usedAbundances, TrendType.Exponential) { Name = Resources.Interface.Interface.CatchCurve };
-            BivariatePredictiveModel unused = new BivariatePredictiveModel(unusedAbundances, TrendType.None) { Name = Resources.Interface.Interface.CatchCurveUnused };
+            BivariatePredictiveModel useful = new BivariatePredictiveModel(usedAbundances, TrendType.Exponential) { Name = Resources.Interface.CatchCurve };
+            BivariatePredictiveModel unused = new BivariatePredictiveModel(unusedAbundances, TrendType.None) { Name = Resources.Interface.CatchCurveUnused };
             return new BivariatePredictiveModel[] { unused, useful };
         }
 

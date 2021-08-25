@@ -154,16 +154,16 @@
     <value>Cluster {0}</value>
   </data>
   <data name="PredictionBands" xml:space="preserve">
-    <value>{0:P3} prediction interval of {1}</value>
+    <value>{0} prediction interval of {1}</value>
   </data>
   <data name="ConfidenceBands" xml:space="preserve">
-    <value>{0} Confidence Bands</value>
+    <value>{0} confidence interval of {1}</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Others</value>
   </data>
   <data name="TrendLineTitle" xml:space="preserve">
-    <value>{0} Trend Line</value>
+    <value>Trend line of {0}</value>
   </data>
   <data name="ScatterplotTitle" xml:space="preserve">
     <value>[{0}] to [{1}] scatterplot</value>
@@ -221,5 +221,8 @@
   </data>
   <data name="SemipivotProgress" xml:space="preserve">
     <value>Grouping data</value>
+  </data>
+  <data name="Outliers" xml:space="preserve">
+    <value>Outliers of {0} prediction interval of {1}</value>
   </data>
 </root>

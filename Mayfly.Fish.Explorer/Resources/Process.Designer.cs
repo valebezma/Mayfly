@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mayfly.Fish.Explorer.Resources.Interface {
+namespace Mayfly.Fish.Explorer.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Interface.Process", typeof(Process).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Process", typeof(Process).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

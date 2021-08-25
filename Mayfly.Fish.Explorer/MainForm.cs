@@ -16,6 +16,7 @@ using System.IO;
 using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Meta.Numerics.Statistics;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -178,7 +179,7 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            plotQualify.Series["Limiter"].LegendText = Resources.Interface.Interface.EnoughStamp;
+            plotQualify.Series["Limiter"].LegendText = Resources.Interface.EnoughStamp;
             plotQualify.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
             plotQualify.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
 
@@ -2276,19 +2277,19 @@ namespace Mayfly.Fish.Explorer
 
             histSample.Data = 
                 countStack.GetStatisticComposition(selectedStatSpc,
-                (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.Interface.StratesSampled).GetHistogramSample();
+                (s, i) => { return countStack.Quantity(s, i); }, Resources.Interface.StratesSampled).GetHistogramSample();
 
             histWeighted.Data = 
                 countStack.GetStatisticComposition(selectedStatSpc,
-                (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.Interface.StratesWeighted).GetHistogramSample();
+                (s, i) => { return countStack.Weighted(s, i); }, Resources.Interface.StratesWeighted).GetHistogramSample();
 
             histRegistered.Data =
                 countStack.GetStatisticComposition(selectedStatSpc,
-                (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.Interface.StratesRegistered).GetHistogramSample();
+                (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.StratesRegistered).GetHistogramSample();
 
             histAged.Data = 
                 countStack.GetStatisticComposition(selectedStatSpc,
-                (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.Interface.StratesAged).GetHistogramSample();
+                (s, i) => { return countStack.Aged(s, i); }, Resources.Interface.StratesAged).GetHistogramSample();
 
             plotQualify.DoPlot();
 
@@ -2296,15 +2297,6 @@ namespace Mayfly.Fish.Explorer
             {
                 if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
-        }
-
-        private void plotQualify_Updated(object sender, EventArgs e)
-        {
-            plotQualify.Updated -= plotQualify_Updated;
-            plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize,
-                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity));
-            plotQualify.DoPlot();
-            plotQualify.Updated += plotQualify_Updated;
         }
 
         #endregion
@@ -2411,23 +2403,55 @@ namespace Mayfly.Fish.Explorer
 
             plotQualify.DoPlot();
 
-            checkBoxQualOutliers.Enabled =
-                buttonQualOutliers.Enabled =
-                model != null &&
-                (model.CombinedData != null &&
-                model.CombinedData.IsRegressionOK &&
-                model.CombinedData.Regression.Outliers != null &&
-                model.CombinedData.Regression.Outliers.Count > 0);
-
             Cursor = plotQualify.Cursor = Cursors.Default;
             spreadSheetSpcStats.Enabled =
                 comboBoxQualValue.Enabled =
                 true;
         }
 
+        private void plotQualify_Updated(object sender, EventArgs e)
+        {
+            plotQualify.Updated -= plotQualify_Updated;
+            plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize,
+                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity));
+            //plotQualify.DoPlot();
+            plotQualify.Updated += plotQualify_Updated;
+        }
+
         private void checkBoxQualOutliers_CheckedChanged(object sender, EventArgs e)
         {
-            if (plotQualify.GetSample("Model") != null) ((Scatterplot)plotQualify.GetSample("Model")).Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+            combi.Updated -= combi_Updated;
+            plotQualify.Updated -= plotQualify_Updated;
+
+            //outliers = plotQualify.GetSample("Out") as Scatterplot;
+
+            if (checkBoxQualOutliers.Checked)
+            {
+                if (outliers == null)
+                {
+                    outliers = new Scatterplot(outliersData, string.Format(Mathematics.Resources.Interface.Outliers, combi.Properties.ConfidenceLevel, combi.Properties.ScatterplotName));
+                    outliers.Properties.DataPointColor = Mathematics.UserSettings.DistinguishColorSelected;
+                    plotQualify.AddSeries(outliers);
+                }
+                else
+                {
+                    outliers.Calc.Data = outliersData;
+                }
+
+                plotQualify.DoPlot();
+                outliers.Series.YAxisType = combi.Series.YAxisType;
+            }
+            else
+            {
+                if (outliers != null)
+                {
+                    plotQualify.Remove(outliers.Properties.ScatterplotName);
+                    outliers = null;
+                }
+            }
+
+            combi.Updated += combi_Updated;
+            plotQualify.Updated += plotQualify_Updated;
         }
 
         private void buttonQualOutliers_Click(object sender, EventArgs e)
@@ -2450,9 +2474,11 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            if (model.CombinedData != null)
+            Scatterplot outliers = (Scatterplot)plotQualify.GetSample("Out");
+
+            if (outliers != null)
             {
-                foreach (var pair in model.CombinedData.Regression.Outliers)
+                foreach (var pair in outliersData)
                 {
                     indRows.AddRange(data.GetIndividuals(selectedStatSpc,
                         (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
@@ -3089,7 +3115,7 @@ namespace Mayfly.Fish.Explorer
         private void contextIndExploreDiet_Click(object sender, EventArgs e)
         {
             IsBusy = true;
-            spreadSheetInd.StartProcessing(spreadSheetInd.SelectedRows.Count, Resources.Interface.Process.DietCompiling);
+            spreadSheetInd.StartProcessing(spreadSheetInd.SelectedRows.Count, Resources.Process.DietCompiling);
             dietCompiler.RunWorkerAsync(spreadSheetInd.SelectedRows);
         }
 
@@ -3124,7 +3150,7 @@ namespace Mayfly.Fish.Explorer
         private void menuItemDietExplorer_Click(object sender, EventArgs e)
         {
             IsBusy = true;
-            spreadSheetInd.StartProcessing(spreadSheetInd.VisibleRowCount, Resources.Interface.Process.DietCompiling);
+            spreadSheetInd.StartProcessing(spreadSheetInd.VisibleRowCount, Resources.Process.DietCompiling);
             dietCompiler.RunWorkerAsync(spreadSheetInd.GetVisibleRows());
         }
 

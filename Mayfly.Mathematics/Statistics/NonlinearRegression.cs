@@ -33,7 +33,7 @@ namespace Mayfly.Mathematics.Statistics
             return Predict(Parameters, x);
         }
 
-        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
+        internal override Interval[] GetBands(double[] x, double level, IntervalType type)
         {
             var xvalues = engine.CreateNumericVector(x);
             engine.SetSymbol("axis", xvalues);
