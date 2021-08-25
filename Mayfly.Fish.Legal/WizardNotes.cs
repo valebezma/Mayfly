@@ -95,7 +95,7 @@ namespace Mayfly.Fish.Legal
 
             speciesLogger.IndexPath = Fish.UserSettings.SpeciesIndexPath;
 
-            Data = new Data();
+            Data = new Data(Fish.UserSettings.SpeciesIndex);
             Data.InitializeBio();
             Data.MassModels.VisualConfirmation =
                 Data.GrowthModels.VisualConfirmation =

@@ -97,7 +97,7 @@ namespace Mayfly.Fish.Explorer
             // Show in caption Gear and time
         
             ActionRow = actionRow;
-            Data = new Data();
+            Data = new Data(Fish.UserSettings.SpeciesIndex);
 
             if (!ActionRow.IsCatchXMLNull())
             {

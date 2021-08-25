@@ -126,6 +126,12 @@
   <data name="Paragraph2" xml:space="preserve">
     <value>Weight models of species that have sufficient samples are given in table {0}. General model equation is:</value>
   </data>
+  <data name="Subtitle1" xml:space="preserve">
+    <value>Growth models summary</value>
+  </data>
+  <data name="Subtitle2" xml:space="preserve">
+    <value>Mass models summary</value>
+  </data>
   <data name="Table1" xml:space="preserve">
     <value>Growth models of different species</value>
   </data>

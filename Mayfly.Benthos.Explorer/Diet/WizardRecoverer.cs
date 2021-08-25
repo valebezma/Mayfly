@@ -56,7 +56,7 @@ namespace Mayfly.Benthos.Explorer
         public WizardRecoverer(Data data) : this()
         {
             BadData = data;
-            NaturalData = new Data();
+            NaturalData = new Data(Benthos.UserSettings.SpeciesIndex);
             CategorialVariables = new DataColumn[] {
                 NaturalData.Individual.InstarColumn
             };
@@ -685,11 +685,10 @@ namespace Mayfly.Benthos.Explorer
                         data.Read(fileName);
                         break;
 
-                    case ".msps":
+                    case ".bio":
                         string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "BIOREFERENCE");
                         Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(fileName));
                         data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-                        data.Solitary.Investigator = Mayfly.StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
                         break;
                 }
 

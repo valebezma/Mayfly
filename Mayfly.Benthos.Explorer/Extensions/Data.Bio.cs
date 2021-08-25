@@ -546,8 +546,7 @@ namespace Mayfly.Extensions
         {
             Data data = new Data();
             string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
-            data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-            data.Solitary.Investigator = Mayfly.StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));            
+            data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));          
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data();
+        public Data data = new Data(Plankton.UserSettings.SpeciesIndex);
 
         public CardStack FullStack { get; private set; }
 

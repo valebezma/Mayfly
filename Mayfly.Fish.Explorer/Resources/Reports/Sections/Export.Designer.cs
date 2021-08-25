@@ -88,6 +88,24 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Growth models summary.
+        /// </summary>
+        internal static string Subtitle1 {
+            get {
+                return ResourceManager.GetString("Subtitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mass models summary.
+        /// </summary>
+        internal static string Subtitle2 {
+            get {
+                return ResourceManager.GetString("Subtitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Growth models of different species.
         /// </summary>
         internal static string Table1 {

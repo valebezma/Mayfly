@@ -41,6 +41,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.wizardExplorer = new AeroWizard.WizardControl();
             this.pageStart = new AeroWizard.WizardPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,10 +70,9 @@
             this.calcGrowth = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
             this.backSpecExporter = new System.ComponentModel.BackgroundWorker();
-            this.calcMass = new System.ComponentModel.BackgroundWorker();
             this.ColumnGrowthSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthR2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthRSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -186,7 +187,7 @@
             this.spreadSheetGrowth.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnGrowthSpecies,
             this.ColumnGrowthN,
-            this.ColumnGrowthR2,
+            this.ColumnGrowthRSE,
             this.ColumnGrowthL,
             this.ColumnGrowthK,
             this.ColumnGrowthT});
@@ -224,7 +225,6 @@
             this.pageWeight.Controls.Add(this.label2);
             this.pageWeight.Name = "pageWeight";
             resources.ApplyResources(this.pageWeight, "pageWeight");
-            this.pageWeight.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageWeight_Commit);
             // 
             // labelNoDataWeight
             // 
@@ -304,10 +304,6 @@
             this.backSpecExporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backSpecExporter_DoWork);
             this.backSpecExporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backSpecExporter_RunWorkerCompleted);
             // 
-            // calcMass
-            // 
-            this.calcMass.DoWork += new System.ComponentModel.DoWorkEventHandler(this.calcMass_DoWork);
-            // 
             // ColumnGrowthSpecies
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -320,46 +316,49 @@
             // 
             // ColumnGrowthN
             // 
+            dataGridViewCellStyle4.Format = "n0";
+            this.ColumnGrowthN.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.ColumnGrowthN, "ColumnGrowthN");
             this.ColumnGrowthN.Name = "ColumnGrowthN";
             this.ColumnGrowthN.ReadOnly = true;
             // 
-            // ColumnGrowthR2
+            // ColumnGrowthRSE
             // 
-            dataGridViewCellStyle4.Format = "n4";
-            this.ColumnGrowthR2.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.ColumnGrowthR2, "ColumnGrowthR2");
-            this.ColumnGrowthR2.Name = "ColumnGrowthR2";
-            this.ColumnGrowthR2.ReadOnly = true;
+            dataGridViewCellStyle5.Format = "n1";
+            this.ColumnGrowthRSE.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.ColumnGrowthRSE, "ColumnGrowthRSE");
+            this.ColumnGrowthRSE.Name = "ColumnGrowthRSE";
+            this.ColumnGrowthRSE.ReadOnly = true;
             // 
             // ColumnGrowthL
             // 
-            dataGridViewCellStyle5.Format = "N0";
-            this.ColumnGrowthL.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Format = "n1";
+            this.ColumnGrowthL.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.ColumnGrowthL, "ColumnGrowthL");
             this.ColumnGrowthL.Name = "ColumnGrowthL";
             this.ColumnGrowthL.ReadOnly = true;
             // 
             // ColumnGrowthK
             // 
-            dataGridViewCellStyle6.Format = "N4";
-            this.ColumnGrowthK.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Format = "n3";
+            this.ColumnGrowthK.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.ColumnGrowthK, "ColumnGrowthK");
             this.ColumnGrowthK.Name = "ColumnGrowthK";
             this.ColumnGrowthK.ReadOnly = true;
             // 
             // ColumnGrowthT
             // 
-            dataGridViewCellStyle7.Format = "N1";
-            this.ColumnGrowthT.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Format = "n3";
+            this.ColumnGrowthT.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.ColumnGrowthT, "ColumnGrowthT");
             this.ColumnGrowthT.Name = "ColumnGrowthT";
             this.ColumnGrowthT.ReadOnly = true;
             // 
             // ColumnWeightSpecies
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnWeightSpecies.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Format = "s";
+            this.ColumnWeightSpecies.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnWeightSpecies.FillWeight = 150F;
             resources.ApplyResources(this.ColumnWeightSpecies, "ColumnWeightSpecies");
             this.ColumnWeightSpecies.Name = "ColumnWeightSpecies";
@@ -367,30 +366,32 @@
             // 
             // ColumnWeightN
             // 
+            dataGridViewCellStyle10.Format = "n0";
+            this.ColumnWeightN.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.ColumnWeightN, "ColumnWeightN");
             this.ColumnWeightN.Name = "ColumnWeightN";
             this.ColumnWeightN.ReadOnly = true;
             // 
             // ColumnWeightR2
             // 
-            dataGridViewCellStyle9.Format = "n4";
-            this.ColumnWeightR2.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Format = "p1";
+            this.ColumnWeightR2.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.ColumnWeightR2, "ColumnWeightR2");
             this.ColumnWeightR2.Name = "ColumnWeightR2";
             this.ColumnWeightR2.ReadOnly = true;
             // 
             // ColumnWeightQ
             // 
-            dataGridViewCellStyle10.Format = "e2";
-            this.ColumnWeightQ.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Format = "e2";
+            this.ColumnWeightQ.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.ColumnWeightQ, "ColumnWeightQ");
             this.ColumnWeightQ.Name = "ColumnWeightQ";
             this.ColumnWeightQ.ReadOnly = true;
             // 
             // ColumnWeightB
             // 
-            dataGridViewCellStyle11.Format = "N4";
-            this.ColumnWeightB.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Format = "n3";
+            this.ColumnWeightB.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.ColumnWeightB, "ColumnWeightB");
             this.ColumnWeightB.Name = "ColumnWeightB";
             this.ColumnWeightB.ReadOnly = true;
@@ -445,11 +446,10 @@
         private System.Windows.Forms.ToolStripMenuItem contextWeightChart;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSignInvestigator;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSignN;
-        private System.ComponentModel.BackgroundWorker calcMass;
         private System.Windows.Forms.Label labelWait;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthR2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthRSE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthK;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthT;

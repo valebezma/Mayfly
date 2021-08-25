@@ -118,7 +118,6 @@ namespace Mayfly.Wild
             Data data = new Data();
             string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
             data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-            data.Solitary.Investigator = StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
             data.InitializeBio();
 
             foreach (ContinuousBio exbio in data.MassModels)
@@ -138,7 +137,9 @@ namespace Mayfly.Wild
 
         public void ExportBio(string fileName)
         {
-            File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
+            WriteToFile(fileName);
+            //File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
+            //File.WriteAllText(fileName, StringCipher.Encrypt(this.GetXml(), "bio"));
         }
 
         public ContinuousBio FindMassModel(string speceis)

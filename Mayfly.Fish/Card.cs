@@ -235,7 +235,7 @@ namespace Mayfly.Fish
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
         }
 
         private void ClearGear()
@@ -917,7 +917,7 @@ namespace Mayfly.Fish
         public void LoadData(string fileName)
         {
             Clear();
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
             Data.Read(fileName);
             LoadData();
             FileName = fileName;
@@ -1443,7 +1443,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data();
+                Data = new Data(UserSettings.SpeciesIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
@@ -1467,7 +1467,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data();
+                Data = new Data(UserSettings.SpeciesIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
