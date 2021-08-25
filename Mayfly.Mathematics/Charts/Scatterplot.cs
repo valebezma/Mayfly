@@ -426,9 +426,9 @@ namespace Mayfly.Mathematics.Charts
                     TrendAnnotation.Text += Constants.Break + "n = " + Calc.Data.Count;
                 }
 
-                if (Properties.ShowExplained)
+                if (Calc.Regression is GeneralLinearRegression glm && Properties.ShowExplained)
                 {
-                    TrendAnnotation.Text += Constants.Break + "r² = " + Calc.Regression.RSquared.ToString("G3");
+                    TrendAnnotation.Text += Constants.Break + "r² = " + glm.RSquared.ToString("G3");
                 }
             }
             else

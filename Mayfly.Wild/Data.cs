@@ -44,6 +44,7 @@ namespace Mayfly.Wild
         public Data(SpeciesKey _key) : this()
         {
             key = _key;
+            this.SetAttributable();
         }
 
 
@@ -164,22 +165,12 @@ namespace Mayfly.Wild
         {
             try
             {
-                this.SetAttributable();
+                //this.SetAttributable();
                 ReadXml(fileName);
 
                 foreach (CardRow cardRow in this.Card)
                 {
                     cardRow.Path = fileName;
-
-                    try
-                    {
-                        string author = StringCipher.Decrypt(cardRow.Sign, cardRow.When.ToString("s"));
-                        cardRow.Investigator = string.IsNullOrWhiteSpace(author) ? Mayfly.Resources.Interface.InvestigatorNotApproved : author;
-                    }
-                    catch
-                    {
-                        cardRow.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
-                    }
                 }
 
                 return Card.Count > 0;
@@ -211,18 +202,7 @@ namespace Mayfly.Wild
         public static Data FromClipboard()
         {
             Data data = new Data();
-
             data.ReadXml(new StringReader(Clipboard.GetText()));
-
-            try
-            {
-                data.Solitary.Investigator = StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));
-            }
-            catch
-            {
-                data.Solitary.Investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
-            }
-
             return data;
         }
 
@@ -311,6 +291,8 @@ namespace Mayfly.Wild
         public new Data Copy()
         {
             Data result = (Data)((DataSet)this).Copy();
+            result.SetAttributable();
+            result.key = this.key;
             result.InitializeBio();
             result.RefreshBios();
             return result;
@@ -593,7 +575,28 @@ namespace Mayfly.Wild
 
         partial class CardRow : IComparable, IFormattable
         {
-            public string Investigator { get; set; }
+            string investigator;
+
+            public string Investigator
+            {
+                get
+                {
+                    if (investigator == null)
+                    {
+                        try
+                        {
+                            string author = StringCipher.Decrypt(this.Sign, this.When.ToString("s"));
+                            investigator = string.IsNullOrWhiteSpace(author) ? Mayfly.Resources.Interface.InvestigatorNotApproved : author;
+                        }
+                        catch
+                        {
+                            investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
+                        }
+                    }
+
+                    return investigator;
+                }
+            }
 
             private string path;
 
@@ -630,9 +633,7 @@ namespace Mayfly.Wild
 
             public void AttachSign()
             {
-                this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username,
-                    this.When.ToString("s"));
-                this.Investigator = Mayfly.UserSettings.Username;
+                this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username, this.When.ToString("s"));
             }
 
             public void RenewSign(DateTime newDateValue)
@@ -641,15 +642,14 @@ namespace Mayfly.Wild
 
                 if (owner == Mayfly.Resources.Interface.InvestigatorNotApproved)
                 {
-                    this.SetSignNull();
-                    this.Investigator = null;
+                    SetSignNull();
+                    investigator = null;
                     return;
                 }
                 else
                 {
-                    this.When = newDateValue;
-                    this.Sign = StringCipher.Encrypt(owner,
-                        this.When.ToString("s"));
+                    When = newDateValue;
+                    Sign = StringCipher.Encrypt(owner, When.ToString("s"));
                 }
             }
 
@@ -919,8 +919,6 @@ namespace Mayfly.Wild
                     if (dataColumn == this.tableCard.WaterIDColumn) continue;
                     newCardRow[dataColumn.ColumnName] = this[dataColumn.ColumnName];
                 }
-
-                newCardRow.Investigator = this.Investigator;
 
                 extData.Card.Rows.Add(newCardRow);
 

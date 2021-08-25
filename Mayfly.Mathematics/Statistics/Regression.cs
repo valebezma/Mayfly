@@ -35,6 +35,8 @@ namespace Mayfly.Mathematics.Statistics
             protected set { type = value; }
         }
 
+        public double ResidualStandardError { get; internal set; }
+
         //public ResidualsResult fit;
         //public ResidualsResult Fit {
         //    get { return fit; }
@@ -54,41 +56,6 @@ namespace Mayfly.Mathematics.Statistics
         internal SymbolicExpression fit;
 
         public List<double> Parameters;
-
-        public double RSquared { get; internal set; }
-
-        public string DeterminationStrength
-        {
-            get
-            {
-                double r = RSquared;
-
-                if (r < 0.1)
-                {
-                    return Resources.Chaddock.Strength0;
-                }
-                else if (r < 0.3)
-                {
-                    return Resources.Chaddock.Strength1;
-                }
-                else if (r < 0.5)
-                {
-                    return Resources.Chaddock.Strength2;
-                }
-                else if (r < 0.7)
-                {
-                    return Resources.Chaddock.Strength3;
-                }
-                else if (r < 0.9)
-                {
-                    return Resources.Chaddock.Strength4;
-                }
-                else
-                {
-                    return Resources.Chaddock.Strength5;
-                }
-            }
-        }
 
 
 
@@ -288,7 +255,7 @@ namespace Mayfly.Mathematics.Statistics
                 {
                     case TrendType.Auto:
                         TrendType best = TrendType.None;
-                        double r2 = 0;
+                        double error = data.Y.Maximum;
 
                         foreach (TrendType t in new TrendType[] { TrendType.Linear, 
                             TrendType.Exponential, TrendType.Power, TrendType.Logarithmic,
@@ -299,9 +266,9 @@ namespace Mayfly.Mathematics.Statistics
 
                             if (r == null) continue;
 
-                            if (r.RSquared > r2)
+                            if (r.ResidualStandardError < error)
                             {
-                                r2 = r.RSquared;
+                                error = r.ResidualStandardError;
                                 best = t;
                             }
                         }

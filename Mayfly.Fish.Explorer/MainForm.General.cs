@@ -13,7 +13,7 @@ namespace Mayfly.Fish.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data();
+        public Data data = new Data(Fish.UserSettings.SpeciesIndex);
 
         public CardStack FullStack { get; private set; }
 

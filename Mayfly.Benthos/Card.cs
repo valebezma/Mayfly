@@ -191,7 +191,7 @@ namespace Mayfly.Benthos
         {
             InitializeComponent();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -313,7 +313,7 @@ namespace Mayfly.Benthos
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
         }
 
         private void Clear(DataGridViewRow gridRow)
@@ -934,7 +934,7 @@ namespace Mayfly.Benthos
         public void LoadData(string fileName)
         {
             Clear();
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
             Data.Read(fileName);
             LoadData();
             FileName = fileName;

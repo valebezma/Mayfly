@@ -163,7 +163,7 @@ namespace Mayfly.Plankton
         {
             InitializeComponent();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -254,7 +254,7 @@ namespace Mayfly.Plankton
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
         }
 
         private void Clear(DataGridViewRow gridRow)
@@ -786,7 +786,7 @@ namespace Mayfly.Plankton
         public void LoadData(string fileName)
         {
             Clear();
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex);
             Data.Read(fileName);
             LoadData();
             FileName = fileName;

@@ -231,6 +231,9 @@
   <data name="&gt;&gt;spreadSheetSigns.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -360,13 +363,13 @@
   <data name="ColumnGrowthN.HeaderText" xml:space="preserve">
     <value>n</value>
   </data>
-  <metadata name="ColumnGrowthR2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ColumnGrowthRSE.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnGrowthR2.HeaderText" xml:space="preserve">
-    <value>r²</value>
+  <data name="ColumnGrowthRSE.HeaderText" xml:space="preserve">
+    <value>RSE</value>
   </data>
-  <data name="ColumnGrowthR2.Width" type="System.Int32, mscorlib">
+  <data name="ColumnGrowthRSE.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
   <metadata name="ColumnGrowthL.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -443,6 +446,9 @@
   </data>
   <data name="&gt;&gt;spreadSheetGrowth.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -615,6 +621,9 @@
   <data name="&gt;&gt;spreadSheetWeight.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -768,9 +777,6 @@
   <metadata name="backSpecExporter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>325, 17</value>
   </metadata>
-  <metadata name="calcMass.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>129, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -831,12 +837,6 @@
   <data name="&gt;&gt;backSpecExporter.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;calcMass.Name" xml:space="preserve">
-    <value>calcMass</value>
-  </data>
-  <data name="&gt;&gt;calcMass.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ColumnGrowthSpecies.Name" xml:space="preserve">
     <value>ColumnGrowthSpecies</value>
   </data>
@@ -849,10 +849,10 @@
   <data name="&gt;&gt;ColumnGrowthN.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnGrowthR2.Name" xml:space="preserve">
-    <value>ColumnGrowthR2</value>
+  <data name="&gt;&gt;ColumnGrowthRSE.Name" xml:space="preserve">
+    <value>ColumnGrowthRSE</value>
   </data>
-  <data name="&gt;&gt;ColumnGrowthR2.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnGrowthRSE.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnGrowthL.Name" xml:space="preserve">

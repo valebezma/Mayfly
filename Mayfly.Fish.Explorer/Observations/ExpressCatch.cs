@@ -28,7 +28,7 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
         
             ActionRow = actionRow;
-            Data = new Data();
+            Data = new Data(Fish.UserSettings.SpeciesIndex);
             Text = String.Format("{0} - {1}", ActionRow.GetShortDescription(), Text);
         }
 

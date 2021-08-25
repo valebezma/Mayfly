@@ -9,6 +9,41 @@ namespace Mayfly.Mathematics.Statistics
 {
     public abstract class GeneralLinearRegression : Regression
     {
+        public double RSquared { get; internal set; }
+
+        public string DeterminationStrength
+        {
+            get
+            {
+                double r = RSquared;
+
+                if (r < 0.1)
+                {
+                    return Resources.Chaddock.Strength0;
+                }
+                else if (r < 0.3)
+                {
+                    return Resources.Chaddock.Strength1;
+                }
+                else if (r < 0.5)
+                {
+                    return Resources.Chaddock.Strength2;
+                }
+                else if (r < 0.7)
+                {
+                    return Resources.Chaddock.Strength3;
+                }
+                else if (r < 0.9)
+                {
+                    return Resources.Chaddock.Strength4;
+                }
+                else
+                {
+                    return Resources.Chaddock.Strength5;
+                }
+            }
+        }
+
         public GeneralLinearRegression(BivariateSample data, string formula)
             : base(data)
         {
@@ -18,6 +53,7 @@ namespace Mayfly.Mathematics.Statistics
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
 
             RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
         }
 
         public override string ToString(string format, IFormatProvider provider)

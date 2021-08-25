@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
             : this()
         {
             Data = data.GetStack();
-            Allowed = new Data();
+            Allowed = new Data(Fish.UserSettings.SpeciesIndex);
             Log.Write(EventType.WizardStarted, "Bio export wizard is started.");
         }
 
@@ -38,20 +38,20 @@ namespace Mayfly.Fish.Explorer
         public Report GetReport()
         {
             Report report = new Report(Resources.Reports.Sections.Export.Title);
-            
-            //report.UseTableNumeration = true;
 
-            //Allowed.GetStack().AddCommon(report);
+            Allowed.GetStack().AddCommon(report);
 
-            //if (Allowed.GrowthModels.InternalData.Count > 0)
-            //{
-            //    AddGrowth(report);
-            //}
+            report.UseTableNumeration = true;
 
-            //if (Allowed.MassModels.InternalData.Count > 0)
-            //{
-            //    AddMass(report);
-            //}
+            if (Allowed.GrowthModels.Count > 0)
+            {
+                AddGrowth(report);
+            }
+
+            if (Allowed.MassModels.Count > 0)
+            {
+                AddMass(report);
+            }
 
             report.EndBranded();
 
@@ -60,80 +60,82 @@ namespace Mayfly.Fish.Explorer
 
         public void AddGrowth(Report report)
         {
-            //report.AddParagraph(Resources.Reports.Sections.Export.Paragraph1,
-            //    report.NextTableNumber);
-            //report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
+            report.AddSectionTitle(Resources.Reports.Sections.Export.Subtitle1);
 
-            //Report.Table table1 = new Report.Table(Resources.Reports.Sections.Export.Table1);
+            report.AddParagraph(Resources.Reports.Sections.Export.Paragraph1,
+                report.NextTableNumber);
+            report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
 
-            //table1.StartRow();
-            //table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .4);
-            //table1.AddHeaderCell("R²");
-            //table1.AddHeaderCell("N");
-            //table1.AddHeaderCell("L<sub>∞</sub>");
-            //table1.AddHeaderCell("K");
-            //table1.AddHeaderCell("t<sub>0</sub>");
-            //table1.EndRow();
+            Report.Table table = new Report.Table(Resources.Reports.Sections.Export.Table1);
 
-            //foreach (Scatterplot scatter in Allowed.GrowthModels.InternalData)
-            //{
-            //    if (!scatter.IsRegressionOK) continue;
+            table.StartRow();
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .4);
+            table.AddHeaderCell("RSE");
+            table.AddHeaderCell("n");
+            table.AddHeaderCell("L<sub>∞</sub>");
+            table.AddHeaderCell("K");
+            table.AddHeaderCell("t<sub>0</sub>");
+            table.EndRow();
 
-            //    Growth regression = (Growth)scatter.Regression;
+            foreach (var model in Allowed.GrowthModels)
+            {
+                if (!model.InternalData.IsRegressionOK) continue;
 
-            //    table1.StartRow();
-            //    table1.AddCell(scatter.Name);
-            //    //table1.AddCell(Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(scatter.Name).GetReportFullPresentation(),
-            //    //    regression.IsSignificant());
-            //    //table1.AddCellRight(scatter.Regression.Determination, ColumnGrowthR2.DefaultCellStyle.Format);
-            //    //table1.AddCellRight(scatter.Data.Count, ColumnGrowthN.DefaultCellStyle.Format);
-            //    //table1.AddCellRight(regression.L, ColumnGrowthL.DefaultCellStyle.Format, regression.IsSignificant(0));
-            //    //table1.AddCellRight(regression.K, ColumnGrowthK.DefaultCellStyle.Format, regression.IsSignificant(1));
-            //    //table1.AddCellRight(regression.t0, ColumnGrowthT.DefaultCellStyle.Format, regression.IsSignificant(2));
-            //    table1.EndRow();
-            //}
+                Growth regression = (Growth)model.InternalData.Regression;
 
-            //report.AddTable(table1);
+                table.StartRow();
+                //table1.AddCell(model.InternalData.Name);
+                table.AddCell(model.Species.KeyRecord.FullNameReport, regression.ResidualStandardError < .9);
+                table.AddCellRight(regression.ResidualStandardError, ColumnGrowthRSE.DefaultCellStyle.Format);
+                table.AddCellRight(model.InternalData.Data.Count, ColumnGrowthN.DefaultCellStyle.Format);
+                table.AddCellRight(regression.Linf, ColumnGrowthL.DefaultCellStyle.Format, regression.ResidualStandardError < .9);
+                table.AddCellRight(regression.K, ColumnGrowthK.DefaultCellStyle.Format, regression.ResidualStandardError < .9);
+                table.AddCellRight(regression.T0, ColumnGrowthT.DefaultCellStyle.Format, regression.ResidualStandardError < .9);
+                table.EndRow();
+            }
 
-            //report.AddComment(Resources.Reports.Sections.Export.Comment, true);
+            report.AddTable(table);
+
+            report.AddComment(Resources.Reports.Sections.Export.Comment, true);
         }
 
         public void AddMass(Report report)
         {
-            //report.AddParagraph(Resources.Reports.Sections.Export.Paragraph2,
-            //    report.NextTableNumber);
-            //report.AddEquation(@"W = {q}\times {L^{b}}");
+            report.AddSectionTitle(Resources.Reports.Sections.Export.Subtitle2);
 
-            //Report.Table table1 = new Report.Table(Resources.Reports.Sections.Export.Table2);
+            report.AddParagraph(Resources.Reports.Sections.Export.Paragraph2,
+                report.NextTableNumber);
+            report.AddEquation(@"W = {q}\times {L^{b}}");
 
-            //table1.StartRow();
-            //table1.AddHeaderCell(Wild.Resources.Reports.Common.Species, .4);
-            //table1.AddHeaderCell("R²");
-            //table1.AddHeaderCell("N");
-            //table1.AddHeaderCell("q");
-            //table1.AddHeaderCell("b");
-            //table1.EndRow();
+            Report.Table table = new Report.Table(Resources.Reports.Sections.Export.Table2);
 
-            //foreach (Scatterplot scatter in Allowed.WeightModels.InternalScatterplots)
-            //{
-            //    if (!scatter.IsRegressionOK) continue;
+            table.StartRow();
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .4);
+            table.AddHeaderCell("r²");
+            table.AddHeaderCell("n");
+            table.AddHeaderCell("q");
+            table.AddHeaderCell("b");
+            table.EndRow();
 
-            //    Power regression = (Power)scatter.Regression;
+            foreach (var model in Allowed.MassModels)
+            {
+                if (!model.InternalData.IsRegressionOK) continue;
 
-            //    table1.StartRow();
-            //    table1.AddCell(scatter.Name);
-            //    //table1.AddCell(Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(scatter.Name).GetReportFullPresentation(),
-            //    //    regression.IsSignificant());
-            //    table1.AddCellRight(scatter.Regression.Determination, ColumnWeightR2.DefaultCellStyle.Format);
-            //    table1.AddCellRight(scatter.Data.Count, ColumnWeightN.DefaultCellStyle.Format);
-            //    table1.AddCellRight(regression.a, ColumnWeightQ.DefaultCellStyle.Format, regression.IsSignificant(0));
-            //    table1.AddCellRight(regression.b, ColumnWeightB.DefaultCellStyle.Format, regression.IsSignificant(1));
-            //    table1.EndRow();
-            //}
+                Power regression = (Power)model.InternalData.Regression;
 
-            //report.AddTable(table1);
+                table.StartRow();
+                //table1.AddCell(model.InternalData.Name);
+                table.AddCell(model.Species.KeyRecord.FullNameReport, regression.RSquared > .9);
+                table.AddCellRight(regression.RSquared, ColumnWeightR2.DefaultCellStyle.Format);
+                table.AddCellRight(model.InternalData.Data.Count, ColumnWeightN.DefaultCellStyle.Format);
+                table.AddCellRight(regression.Intercept, ColumnWeightQ.DefaultCellStyle.Format, regression.RSquared > .9);
+                table.AddCellRight(regression.Slope, ColumnWeightB.DefaultCellStyle.Format, regression.RSquared > .9);
+                table.EndRow();
+            }
 
-            //report.AddComment(Resources.Reports.Sections.Export.Comment, true);
+            report.AddTable(table);
+
+            report.AddComment(Resources.Reports.Sections.Export.Comment, true);
         }
 
 
@@ -199,10 +201,10 @@ namespace Mayfly.Fish.Explorer
 
                 Growth regression = (Growth)bio.InternalData.Regression;
 
-                gridRow.Cells[ColumnGrowthR2.Index].Value = regression.RSquared;
+                gridRow.Cells[ColumnGrowthRSE.Index].Value = regression.ResidualStandardError;
 
-                //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ? 
-                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.DefaultCellStyle.ForeColor = regression.ResidualStandardError < .9 ?
+                    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
                 gridRow.Cells[ColumnGrowthL.Index].Value = regression.Linf;
                 //gridRow.Cells[ColumnGrowthL.Index].Style.ForeColor = regression.IsSignificant(0) ?
@@ -236,8 +238,8 @@ namespace Mayfly.Fish.Explorer
 
                 gridRow.Cells[ColumnWeightR2.Index].Value = regression.RSquared;
 
-                //gridRow.DefaultCellStyle.ForeColor = regression.IsSignificant() ?
-                //    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
+                gridRow.DefaultCellStyle.ForeColor = regression.RSquared > .9 ?
+                    spreadSheetGrowth.DefaultCellStyle.ForeColor : Constants.InfantColor;
 
                 gridRow.Cells[ColumnWeightQ.Index].Value = regression.Intercept;
                 //gridRow.Cells[ColumnWeightQ.Index].Style.ForeColor = regression.IsSignificant(0) ?
@@ -254,15 +256,6 @@ namespace Mayfly.Fish.Explorer
             Cursor = Cursors.Default;
             labelNoDataWeight.Visible = spreadSheetWeight.Rows.Count == 0;
             pageGrowth.SetNavigation(true);
-        }
-
-        private void calcMass_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void pageWeight_Commit(object sender, WizardPageConfirmEventArgs e)
-        {
         }
 
         private void contextGrowthChart_Click(object sender, EventArgs e)
@@ -310,23 +303,6 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(false);
             backSpecExporter.RunWorkerAsync();
 
-            Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
-                Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
-                IO.GetFriendlyCommonName(Allowed.GetFilenames())
-                );
-
-            if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                Allowed.ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
-
-                Log.Write("Bios are exported to {0}", Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
-
-                if (checkBoxReport.Checked)
-                {
-                    reporter.RunWorkerAsync();
-                }
-            }
-
             e.Cancel = true;
         }
 
@@ -344,7 +320,22 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                pageReport.SetNavigation(true);
+                Wild.UserSettings.InterfaceBio.SaveDialog.FileName = IO.SuggestName(
+                    Wild.UserSettings.InterfaceBio.SaveDialog.InitialDirectory,
+                    IO.GetFriendlyCommonName(Allowed.GetFilenames())
+                    );
+
+                if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    Allowed.ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
+
+                    Log.Write("Bios are exported to {0}", Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
+
+                    if (checkBoxReport.Checked)
+                    {
+                        reporter.RunWorkerAsync();
+                    }
+                }
             }
         }
 

@@ -77,6 +77,8 @@ namespace Mayfly.Mathematics.Statistics
             engine.SetSymbol("fit", fit);
             Parameters.Clear();
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
         }
 
         public override string GetEquation(string y, string x, string format)
@@ -128,6 +130,8 @@ namespace Mayfly.Mathematics.Statistics
             engine.SetSymbol("fit", fit);
             Parameters.Clear();
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
         }
 
         public override string GetEquation(string y, string x, string format)
