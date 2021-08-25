@@ -49,8 +49,6 @@ namespace Mayfly.Mathematics.Statistics
             }
         }
 
-        public BivariateSample Outliers;
-
         internal REngine engine;
 
         internal SymbolicExpression fit;
@@ -160,7 +158,7 @@ namespace Mayfly.Mathematics.Statistics
         //    return Estimate(i).Value;
         //}
 
-        internal virtual Interval[] getInterval(double[] x, double level, IntervalType type)
+        internal virtual Interval[] GetBands(double[] x, double level, IntervalType type)
         {
             if (fit == null) return null;
 
@@ -173,45 +171,55 @@ namespace Mayfly.Mathematics.Statistics
             engine.SetSymbol("fit", fit);
             NumericMatrix predictions = engine.Evaluate(
                 "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+
             List<Interval> result = new List<Interval>();
             for (int i = 0; i < predictions.RowCount; i++)
             {
                 result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
             }
+
             return result.ToArray();
         }
 
-        public Interval[] GetInterval(double[] x, double level, IntervalType type)
+        public BivariateSample GetOutliers(BivariateSample data, double level)
         {
-            Interval[] result = getInterval(x, level, type);
+            double d = (data.X.Maximum - data.X.Minimum) / 100;
 
-            if (result != null && type == IntervalType.Prediction)
+            List<double> xvalues = new List<double>();
+            for (double x = data.X.Minimum - d; x <= data.X.Maximum + d; x += d)
             {
-                Outliers = new BivariateSample();
+                xvalues.Add(x);
+            }
 
+            Interval[] bands = GetBands(xvalues.ToArray(), level, IntervalType.Prediction);
+
+            BivariateSample result = new BivariateSample();
+
+            if (bands != null)
+            {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    double _x = data.X.ElementAt(i);
-                    double _y = data.Y.ElementAt(i);
+                    double x = data.X.ElementAt(i);
+                    double y = data.Y.ElementAt(i);
 
-                    for (int j = 0; j < x.Length - 1; j++)
+                    for (int j = 0; j < bands.Length - 1; j++)
                     {
-                        if (Interval.FromEndpoints(x[j], x[j + 1]).OpenContains(_x))
+                        if (Interval.FromEndpoints(xvalues[j], xvalues[j + 1]).OpenContains(x))
                         {
-                            double xgap = x[j + 1] - x[j];
-                            double xtrack = _x - x[j];
+                            double xgap = xvalues[j + 1] - xvalues[j];
+                            double xtrack = x - xvalues[j];
 
-                            double ygap = result[j + 1].RightEndpoint - result[j].RightEndpoint;
+                            double ygap = bands[j + 1].RightEndpoint - bands[j].RightEndpoint;
                             double ytrack = ygap * (xtrack / xgap);
-                            double upperband = result[j].RightEndpoint + ytrack;
+                            double upperband = bands[j].RightEndpoint + ytrack;
 
-                            ygap = result[j + 1].LeftEndpoint - result[j].LeftEndpoint;
+                            ygap = bands[j + 1].LeftEndpoint - bands[j].LeftEndpoint;
                             ytrack = ygap * (xtrack / xgap);
-                            double lowerband = result[j].LeftEndpoint + ytrack;
+                            double lowerband = bands[j].LeftEndpoint + ytrack;
 
-                            if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(_y))
+                            if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(y))
                             {
-                                Outliers.Add(_x, _y);
+                                result.Add(x, y);
                             }
                             break;
                         }
@@ -225,13 +233,7 @@ namespace Mayfly.Mathematics.Statistics
 
         public BivariateSample GetOutliers(double level)
         {
-            List<double> x = new List<double>();
-            for (double v = Data.X.Minimum; v <= Data.X.Maximum; v += ((Data.X.Maximum - Data.X.Minimum) / 500))
-            {
-                x.Add(v);
-            }
-            GetInterval(x.ToArray(), level, IntervalType.Prediction);
-            return Outliers;
+            return GetOutliers(Data, level);
         }
 
 

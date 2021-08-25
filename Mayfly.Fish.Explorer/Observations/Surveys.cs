@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Explorer
 
             public string GetShortDescription()
             {
-                return string.Format(Resources.Interface.Interface.CatchDescription, this.GearRow.ToString(), this.TimelineRow.Timepoint);
+                return string.Format(Resources.Interface.CatchDescription, this.GearRow.ToString(), this.TimelineRow.Timepoint);
             }
 
             public Data GetCatchData()
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
 
             public string GetShortDescription()
             {
-                return string.Format(Resources.Interface.Interface.TimepointDescription, this.Timepoint);
+                return string.Format(Resources.Interface.TimepointDescription, this.Timepoint);
             }
 
             public WeatherState WeatherConditions

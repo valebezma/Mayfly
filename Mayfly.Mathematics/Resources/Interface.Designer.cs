@@ -124,7 +124,7 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Confidence Bands.
+        ///   Looks up a localized string similar to {0} confidence interval of {1}.
         /// </summary>
         public static string ConfidenceBands {
             get {
@@ -232,6 +232,15 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outliers of {0} prediction interval of {1}.
+        /// </summary>
+        public static string Outliers {
+            get {
+                return ResourceManager.GetString("Outliers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are some hidden rows. They will not get into grouping or pivot table. Click here to drop filter and show all rows in log..
         /// </summary>
         public static string PivotCautionInstruction {
@@ -259,7 +268,7 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:P3} prediction interval of {1}.
+        ///   Looks up a localized string similar to {0} prediction interval of {1}.
         /// </summary>
         public static string PredictionBands {
             get {
@@ -367,7 +376,7 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Trend Line.
+        ///   Looks up a localized string similar to Trend line of {0}.
         /// </summary>
         public static string TrendLineTitle {
             get {

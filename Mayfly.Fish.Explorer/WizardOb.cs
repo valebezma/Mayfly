@@ -662,7 +662,7 @@ namespace Mayfly.Fish.Explorer
         private void buttonAddFleet_Click(object sender, EventArgs e)
         {
             Surveys.FleetRow fleetRow = Survey.Fleet.NewFleetRow();
-            fleetRow.Name = string.Format(Resources.Interface.Interface.FleetMask, Survey.Fleet.Count + 1);
+            fleetRow.Name = string.Format(Resources.Interface.FleetMask, Survey.Fleet.Count + 1);
             Survey.Fleet.AddFleetRow(fleetRow);
 
             RadioButton newButton = AddFleetButton(fleetRow);

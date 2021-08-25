@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mayfly.Fish.Explorer.Resources.Interface {
+namespace Mayfly.Fish.Explorer.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Interface.Interface", typeof(Interface).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Interface", typeof(Interface).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -237,6 +237,33 @@ namespace Mayfly.Fish.Explorer.Resources.Interface {
         internal static string MassGrowth {
             get {
                 return ResourceManager.GetString("MassGrowth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data from bio.
+        /// </summary>
+        internal static string QualBio {
+            get {
+                return ResourceManager.GetString("QualBio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Combined data.
+        /// </summary>
+        internal static string QualCombi {
+            get {
+                return ResourceManager.GetString("QualCombi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Own data.
+        /// </summary>
+        internal static string QualOwn {
+            get {
+                return ResourceManager.GetString("QualOwn", resourceCulture);
             }
         }
         

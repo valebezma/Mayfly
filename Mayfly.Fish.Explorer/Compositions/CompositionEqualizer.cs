@@ -206,12 +206,12 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            return base.ToString(Resources.Interface.Interface.CompositionEqPresentation);
+            return base.ToString(Resources.Interface.CompositionEqPresentation);
         }
 
         public override string ToString(string format, IFormatProvider provider)
         {
-            return string.Format(Resources.Interface.Interface.ResourceManager.GetString("CompositionEqPresentation",
+            return string.Format(Resources.Interface.ResourceManager.GetString("CompositionEqPresentation",
                 (CultureInfo)provider), Name, Count);
         }
 

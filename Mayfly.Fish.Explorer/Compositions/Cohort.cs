@@ -25,7 +25,7 @@ namespace Mayfly.Fish.Explorer
 
 
         public Cohort(int birth, AgeComposition composition)
-            : base(string.Format(Resources.Interface.Interface.CohortPresentation, birth),
+            : base(string.Format(Resources.Interface.CohortPresentation, birth),
             composition.Youngest, composition.Oldest)
         {
             Birth = birth;

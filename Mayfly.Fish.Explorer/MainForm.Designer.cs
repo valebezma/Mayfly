@@ -2418,8 +2418,8 @@
             // 
             // buttonQualOutliers
             // 
-            this.buttonQualOutliers.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.buttonQualOutliers, "buttonQualOutliers");
+            this.buttonQualOutliers.FlatAppearance.BorderSize = 0;
             this.buttonQualOutliers.Name = "buttonQualOutliers";
             this.buttonQualOutliers.Click += new System.EventHandler(this.buttonQualOutliers_Click);
             // 

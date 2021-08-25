@@ -48,6 +48,8 @@ namespace Mayfly.Mathematics.Charts
 
         public Series ConfidenceBandLower { get; set; }
 
+        public Series Outliers { get; set; }
+
         public CalloutAnnotation TrendAnnotation { get; set; }
 
         //public ScatterplotSeparation Separator { get; set; }
@@ -312,16 +314,6 @@ namespace Mayfly.Mathematics.Charts
                     PredictionBandLower.Points.Clear();
                 }
 
-                PredictionBandUpper.YAxisType = PredictionBandLower.YAxisType = Series.YAxisType;
-
-                addBandsTo(PredictionBandUpper, PredictionBandLower, Statistics.IntervalType.Prediction);
-
-                if (Container.Series.FindByName(PredictionBandUpper.Name) == null)
-                {
-                    Container.Series.Add(PredictionBandUpper);
-                    Container.Series.Add(PredictionBandLower);
-                }
-
                 foreach (Series band in new Series[] { PredictionBandUpper, PredictionBandLower })
                 {
                     band.BorderColor = band.Color = Properties.TrendColor;
@@ -329,13 +321,12 @@ namespace Mayfly.Mathematics.Charts
                     band.YAxisType = Series.YAxisType;
                 }
 
-                foreach (DataPoint dp in Series.Points)
+                addBandsTo(PredictionBandUpper, PredictionBandLower, Statistics.IntervalType.Prediction);
+
+                if (Container.Series.FindByName(PredictionBandUpper.Name) == null)
                 {
-                    dp.MarkerBorderColor = (
-                        Properties.HighlightOutliers && Calc.Regression.Outliers != null &&
-                        Calc.Regression.Outliers.Contains(
-                            TransposeCharting ? dp.YValues[0] : dp.XValue,
-                            TransposeCharting ? dp.XValue : dp.YValues[0])) ? UserSettings.DistinguishColorSelected : Properties.DataPointColor;
+                    Container.Series.Add(PredictionBandUpper);
+                    Container.Series.Add(PredictionBandLower);
                 }
             }
             else
@@ -350,6 +341,52 @@ namespace Mayfly.Mathematics.Charts
                 {
                     Container.Series.Remove(PredictionBandLower);
                     PredictionBandLower = null;
+                }
+            }
+
+            if(Properties.HighlightOutliers)
+            {
+                if (Outliers == null)
+                {
+                    Outliers = new Series(string.Format(Resources.Interface.Outliers, Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Point,
+                        MarkerStyle = MarkerStyle.Circle,
+                        MarkerBorderWidth = 1,
+                        MarkerColor = Color.FromArgb(127, UserSettings.DistinguishColorSelected),
+                        MarkerBorderColor = Color.Transparent,
+                        IsVisibleInLegend = true
+                    };
+                }
+                else
+                {
+                    Outliers.Name = string.Format(Resources.Interface.Outliers, Properties.ConfidenceLevel, Properties.ScatterplotName);
+                    Outliers.Points.Clear();
+                }
+
+                if (Container.Series.FindByName(Outliers.Name) == null)
+                {
+                    Container.Series.Add(Outliers);
+                }
+
+                Outliers.YAxisType = Series.YAxisType;
+                Outliers.MarkerSize = Properties.DataPointSize + 2;
+
+                BivariateSample outliers = Calc.Regression.GetOutliers(Calc.Data, Properties.ConfidenceLevel);
+
+                for (int i = 0; i < outliers.Count; i++)
+                {
+                    double x = outliers.X.ElementAt(i);
+                    double y = outliers.Y.ElementAt(i);
+                    Outliers.Points.Add(TransposeCharting ? new DataPoint(y, x) : new DataPoint(x, y));
+                }
+            }
+            else
+            {
+                if (Outliers != null)
+                {
+                    Container.Series.Remove(Outliers);
+                    Outliers = null;
                 }
             }
 
@@ -476,7 +513,7 @@ namespace Mayfly.Mathematics.Charts
                 xvalues.Add(x);
             }
 
-            Interval[] predictions = Calc.Regression.GetInterval(xvalues.ToArray(), Properties.ConfidenceLevel, type);
+            Interval[] predictions = Calc.Regression.GetBands(xvalues.ToArray(), Properties.ConfidenceLevel, type);
 
             upperBand.Points.Clear();
             lowerBand.Points.Clear();

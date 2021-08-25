@@ -339,7 +339,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (e.Error != null)
             {
-                Notification.ShowNotification(Resources.Interface.Interface.SpecFailed,
+                Notification.ShowNotification(Resources.Interface.SpecFailed,
                     e.Error.Message);
             }
             else

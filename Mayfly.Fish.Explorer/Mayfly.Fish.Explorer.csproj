@@ -532,23 +532,23 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="UserSettings.cs" />
-    <Compile Include="Resources\Interface\Interface.ru.Designer.cs">
+    <Compile Include="Resources\Interface.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Interface.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Interface\Process.Designer.cs">
+    <Compile Include="Resources\Process.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Process.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Interface\Process.ru.Designer.cs">
+    <Compile Include="Resources\Process.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Process.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="Resources\Interface\Interface.Designer.cs">
+    <Compile Include="Resources\Interface.Designer.cs">
       <DependentUpon>Interface.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -915,22 +915,22 @@
     <EmbeddedResource Include="Resources\Artefact.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Process.resx">
+    <EmbeddedResource Include="Resources\Process.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Process.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Interface.ru.resx">
+    <EmbeddedResource Include="Resources\Interface.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Process.ru.resx">
+    <EmbeddedResource Include="Resources\Process.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Process.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Interface.resx">
+    <EmbeddedResource Include="Resources\Interface.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -1076,7 +1076,9 @@
   <ItemGroup>
     <None Include="Resources\fexplore.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Interface\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
