@@ -408,7 +408,7 @@ namespace Mayfly.Wild.Controls
             label1.Text = (End + Interval).ToString();
 
             Graphics graphics = Terminal.CreateGraphics();
-            graphics.Clear(BackColor);
+            //graphics.Clear(BackColor);
 
             int tickWidth = SizeGroup.ClassSize.Width / SizeGroup.Ticks;
 

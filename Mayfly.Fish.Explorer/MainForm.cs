@@ -33,7 +33,6 @@ namespace Mayfly.Fish.Explorer
                 menuItemGearStats,
                 menuItemSpcStats,
                 menuItemArtefactsSearch,
-                menuItemComCom,
                 menuSurvey,
                 menuFishery,
                 menuItemCardCatches,
