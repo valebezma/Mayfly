@@ -208,9 +208,6 @@
   <data name="checkBoxRunouts.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 17</value>
   </data>
-  <data name="checkBoxRunouts.Text" xml:space="preserve">
-    <value>Выделять выбросы</value>
-  </data>
   <data name="checkBoxDataBands.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 17</value>
   </data>

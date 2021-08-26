@@ -117,11 +117,6 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static StripLine AddStripLine(this Axis axis, double value, string label)
-        {
-            return axis.AddStripLine(value, label, Constants.MainAccent);
-        }
-
         public static StripLine AddStripLine(this Axis axis, double value, string label, Color color)
         {
             StripLine strip = new StripLine();

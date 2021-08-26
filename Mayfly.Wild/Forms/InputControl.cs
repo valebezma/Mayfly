@@ -71,7 +71,7 @@ namespace Mayfly.Wild
         {
             Scatterplot = new Scatterplot(Argument, Function, Species);
 
-            if (Scatterplot.Calc.Data.Count < Mathematics.UserSettings.StrongSampleSize) return;
+            if (Scatterplot.Calc.Data.Count < Mathematics.UserSettings.RequiredSampleSize) return;
 
             Scatterplot.Properties.ShowTrend = true;
             Scatterplot.Properties.SelectedApproximationType = Mathematics.Statistics.TrendType.Power;

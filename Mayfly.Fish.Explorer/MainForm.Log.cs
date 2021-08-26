@@ -135,8 +135,7 @@ namespace Mayfly.Fish.Explorer
 
             if (baseSpc == null) // Every row is log row with species and cardID
             {
-                string species = (string)gridRow.Cells[columnLogSpc.Index].Value;
-                return data.Log.FindByCardIDSpcID(id, data.Species.FindBySpecies(species).ID);
+                return data.Log.FindByCardIDSpcID(id, ((Data.SpeciesRow)gridRow.Cells[columnLogSpc.Index].Value).ID);
             }
             else // Every row is taxa+card combination with multiple log rows
             {

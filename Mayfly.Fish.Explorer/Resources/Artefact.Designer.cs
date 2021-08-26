@@ -191,11 +191,11 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} measures have {1} strong runouts.
+        ///   Looks up a localized string similar to {0} measures have {1} outliers.
         /// </summary>
-        internal static string ValueHasRunouts {
+        internal static string ValueHasOutliers {
             get {
-                return ResourceManager.GetString("ValueHasRunouts", resourceCulture);
+                return ResourceManager.GetString("ValueHasOutliers", resourceCulture);
             }
         }
         
@@ -222,11 +222,11 @@ namespace Mayfly.Fish.Explorer.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to {0} of {1} specimen is not measured.
-        ///However, it can be obtained from length (but regression contains {2} runouts).
+        ///However, it can be obtained from length (but regression contains {2} outliers).
         /// </summary>
-        internal static string ValueIsRecoverableButHasRunouts {
+        internal static string ValueIsRecoverableButHasOutliers {
             get {
-                return ResourceManager.GetString("ValueIsRecoverableButHasRunouts", resourceCulture);
+                return ResourceManager.GetString("ValueIsRecoverableButHasOutliers", resourceCulture);
             }
         }
     }

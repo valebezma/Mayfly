@@ -8,50 +8,71 @@ namespace Mayfly.Mathematics
 {
     public partial class Settings : Form
     {
+
+
         public Settings()
         {
             InitializeComponent();
 
-            comboBoxRegressionType.Items.AddRange(Service.GetRegressionTypes());
-
-            LoadSettings();
+            loadSettings();
         }
 
-        private void LoadSettings()
+
+
+        private void loadSettings()
         {
+            dialogSelected.Color =
+                panelSelected.BackColor =
+                UserSettings.ColorSelected;
+
+
             numericUpDownSL.Value = (decimal)UserSettings.DefaultAlpha;
-
-            numericUpDownStrongSize.Value = UserSettings.StrongSampleSize;
-            numericUpDownSoftSize.Value = UserSettings.SoftSampleSize;
-
+            numericUpDownStrongSize.Value = UserSettings.RequiredSampleSize;
             comboBoxNormality.SelectedIndex = UserSettings.NormalityTest;
             comboBoxHomogeneity.SelectedIndex = UserSettings.HomogeneityTest;
-
             comboBoxLSD.SelectedIndex = UserSettings.LsdIndex;
+            dialogSelected.Color = panelSelected.BackColor = UserSettings.ColorSelected;
+            dialogTrend.Color = panelTrend.BackColor = UserSettings.ColorAccent;
         }
 
-        private void SaveSettings()
+        private void saveSettings()
         {
             UserSettings.DefaultAlpha = (double)numericUpDownSL.Value;
-
-            UserSettings.StrongSampleSize = (int)numericUpDownStrongSize.Value;
-            UserSettings.SoftSampleSize = (int)numericUpDownSoftSize.Value;
-
+            UserSettings.RequiredSampleSize = (int)numericUpDownStrongSize.Value;
             UserSettings.NormalityTest = comboBoxNormality.SelectedIndex;
             UserSettings.HomogeneityTest = comboBoxHomogeneity.SelectedIndex;
-
             UserSettings.LsdIndex = comboBoxLSD.SelectedIndex;
+            UserSettings.ColorSelected = dialogSelected.Color;
+            UserSettings.ColorAccent = dialogTrend.Color;
+        }
+
+
+
+        private void panelSelected_Click(object sender, EventArgs e)
+        {
+            if (dialogSelected.ShowDialog(this) == DialogResult.OK)
+            {
+                panelSelected.BackColor = dialogSelected.Color;
+            }
+        }
+
+        private void panelTrend_Click(object sender, EventArgs e)
+        {
+            if (dialogTrend.ShowDialog(this) == DialogResult.OK)
+            {
+                panelTrend.BackColor = dialogTrend.Color;
+            }
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            SaveSettings();
+            saveSettings();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            SaveSettings();
+            saveSettings();
             Close();
         }
 

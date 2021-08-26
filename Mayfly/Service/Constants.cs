@@ -75,13 +75,5 @@ namespace Mayfly
                 return Color.LightGray;
             }
         }
-
-        public static Color MainAccent
-        {
-            get
-            {
-                return Color.RoyalBlue;
-            }
-        }
     }
 }

@@ -266,13 +266,13 @@ namespace Mayfly.Fish.Explorer
 
             if (!double.IsNaN(msy.X))
             {
-                predictY.AxisX.AddStripLine(msy.X, string.Format("Maximal allowed change ({0:P0})", msy.X));
+                predictY.AxisX.AddStripLine(msy.X, string.Format("Maximal allowed change ({0:P0})", msy.X), Mathematics.UserSettings.ColorAccent);
             }
 
             if (!double.IsNaN(msy.Y))
             {
                 plotMSY.AxisY2Max = msy.Y / 1000000.0;
-                predictY.AxisY.AddStripLine(msy.Y / 1000000.0, string.Format("MSY ({0:N3})", msy.Y / 1000000.0));
+                predictY.AxisY.AddStripLine(msy.Y / 1000000.0, string.Format("MSY ({0:N3})", msy.Y / 1000000.0), Mathematics.UserSettings.ColorAccent);
             }
 
             plotMSY.DoPlot();

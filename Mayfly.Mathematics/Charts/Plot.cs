@@ -1811,8 +1811,8 @@ namespace Mayfly.Mathematics.Charts
             {
                 if (IsDistinguishingMode)
                 {
-                    scatterplot.Series.MarkerColor = scatterplot.Series.MarkerBorderColor = UserSettings.DistinguishColorSelected;
-                    if (scatterplot.Properties.ShowTrend) scatterplot.Trend.Series.Color = UserSettings.DistinguishColorSelected.Darker();
+                    scatterplot.Series.MarkerColor = scatterplot.Series.MarkerBorderColor = UserSettings.ColorSelected;
+                    if (scatterplot.Properties.ShowTrend) scatterplot.Trend.Series.Color = UserSettings.ColorSelected.Darker();
                     scatterplot.Series.SmartLabelStyle.CalloutLineColor = scatterplot.Series.LabelForeColor = Color.Black;
                     scatterplot.Series.SmartLabelStyle.CalloutStyle = LabelCalloutStyle.Underlined;
                 }
@@ -1830,7 +1830,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     histogram.Series.Color = 
                         histogram.Series.BorderColor = 
-                        UserSettings.DistinguishColorSelected;
+                        UserSettings.ColorSelected;
                 }
                 else
                 {
