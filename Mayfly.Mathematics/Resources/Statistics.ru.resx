@@ -130,7 +130,8 @@
   </data>
   <data name="HomoscedasticityNegative" xml:space="preserve">
     <value>Статистика однородности дисперсий ({0}) равна {1:N5} (P = {2:N5}), т. е.
-выборки гетероскедастичны.</value>
+
+</value>
   </data>
   <data name="HomoscedasticityPositive" xml:space="preserve">
     <value>Статистика однородности дисперсий ({0}) равна {1:N5} (P = {2:N5}), т. е.

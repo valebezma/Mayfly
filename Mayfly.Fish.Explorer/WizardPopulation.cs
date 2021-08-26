@@ -386,7 +386,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     Scatterplot inter = new Scatterplot(GrowthModel.InternalData);
                     inter.Properties.ScatterplotName = Resources.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MainAccent;
+                    inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                     plotAL.AddSeries(inter);
                 }
 
@@ -400,7 +400,7 @@ namespace Mayfly.Fish.Explorer
                     combi.Properties.ShowTrend = true;
                     combi.Properties.SelectedApproximationType = GrowthModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
+                    combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
                     plotAL.AddSeries(combi);
                 }
             }
@@ -432,7 +432,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     Scatterplot inter = new Scatterplot(WeightModel.InternalData);
                     inter.Properties.ScatterplotName = Resources.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MainAccent;
+                    inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                     plotLW.AddSeries(inter);
                 }
 
@@ -446,7 +446,7 @@ namespace Mayfly.Fish.Explorer
 
                     combi.Properties.SelectedApproximationType = WeightModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
+                    combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
                     plotLW.AddSeries(combi);
                 }
             }
@@ -470,7 +470,7 @@ namespace Mayfly.Fish.Explorer
             if (cb != null)
             {
                 Scatterplot sc = new Scatterplot(cb.InternalData);
-                sc.Properties.DataPointColor = Constants.MainAccent;
+                sc.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                 plotAW.AddSeries(sc);
 
                 //MassGrowthModels.DisplayNameY = Resources.Reports.Caption.Mass;
@@ -510,7 +510,7 @@ namespace Mayfly.Fish.Explorer
                     return GrowthModel.CombinedData.Regression.PredictInversed(l);
                 });
 
-                aw.Properties.TrendColor = Constants.MainAccent.Darker();
+                aw.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
 
                 plotAW.AddSeries(aw);
             }

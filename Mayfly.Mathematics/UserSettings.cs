@@ -22,11 +22,11 @@ namespace Mayfly.Mathematics
             UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
                 new UserSetting[] {
                     new UserSetting(UserSettingPaths.SampleAppearance, 0),
-                    new UserSetting(UserSettingPaths.SelectedSeriesColor, Color.DarkSalmon.ToArgb()),
+                    new UserSetting(UserSettingPaths.ColorAccent, Color.RoyalBlue.ToArgb()),
+                    new UserSetting(UserSettingPaths.ColorSelected, Color.DarkSalmon.ToArgb()),
                     new UserSetting(UserSettingPaths.Alpha, 50),
                     new UserSetting(UserSettingPaths.ConfidenceLevel, 950),
-                    new UserSetting(UserSettingPaths.RegressionMinimalCount, 5, true),
-                    new UserSetting(UserSettingPaths.RegressionMinimalCountOptional, 20),
+                    new UserSetting(UserSettingPaths.RequiredSampleSize, 5, true),
                     new UserSetting(UserSettingPaths.RunOutDistance, 250),
                     new UserSetting(UserSettingPaths.DefaultTrendType, 2),
                     new UserSetting(UserSettingPaths.NormalityTest, 0),
@@ -102,10 +102,16 @@ namespace Mayfly.Mathematics
             set { UserSetting.SetValue(Path, UserSettingPaths.SampleAppearance, value); }
         }
 
-        public static Color DistinguishColorSelected
+        public static Color ColorSelected
         {
-            get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.SelectedSeriesColor)); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.SelectedSeriesColor, value.ToArgb()); }
+            get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.ColorSelected)); }
+            set { UserSetting.SetValue(Path, UserSettingPaths.ColorSelected, value.ToArgb()); }
+        }
+
+        public static Color ColorAccent
+        {
+            get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.ColorAccent)); }
+            set { UserSetting.SetValue(Path, UserSettingPaths.ColorAccent, value.ToArgb()); }
         }
 
 
@@ -116,16 +122,10 @@ namespace Mayfly.Mathematics
         }
 
 
-        public static int StrongSampleSize
+        public static int RequiredSampleSize
         {
-            get { return (int)GetValue(Path, UserSettingPaths.RegressionMinimalCount); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.RegressionMinimalCount, value); }
-        }
-
-        public static int SoftSampleSize
-        {
-            get { return (int)GetValue(Path, UserSettingPaths.RegressionMinimalCountOptional); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.RegressionMinimalCountOptional, value); }
+            get { return (int)GetValue(Path, UserSettingPaths.RequiredSampleSize); }
+            set { UserSetting.SetValue(Path, UserSettingPaths.RequiredSampleSize, value); }
         }
         
 
@@ -197,7 +197,9 @@ namespace Mayfly.Mathematics
     {
         public static string SampleAppearance = "SampleAppearance";
 
-        public static string SelectedSeriesColor = "SelectedSeriesColor";
+        public static string ColorSelected = "ColorSelected";
+
+        public static string ColorAccent = "ColorAccent";
 
 
         public static string Alpha = "Alpha";
@@ -205,9 +207,7 @@ namespace Mayfly.Mathematics
         public static string ConfidenceLevel = "ConfidenceLevel";
 
 
-        public static string RegressionMinimalCount = "RegressionMinimalCount";
-
-        public static string RegressionMinimalCountOptional = "RegressionMinimalCountOpt";
+        public static string RequiredSampleSize = "RequiredSampleSize";
 
 
         public static string RunOutDistance = "RunOutDistance";

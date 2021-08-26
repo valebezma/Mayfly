@@ -251,7 +251,7 @@ namespace Mayfly.Mathematics.Statistics
 
         public static Regression GetRegression(BivariateSample data, TrendType type)
         {
-            if (data.Count < UserSettings.StrongSampleSize) return null;
+            if (data.Count < UserSettings.RequiredSampleSize) return null;
 
             Regression result = new Linear(data);
 

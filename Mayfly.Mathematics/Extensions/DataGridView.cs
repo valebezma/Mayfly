@@ -64,7 +64,7 @@ namespace Mayfly.Extensions
                         sample.Name = group;
                     }
 
-                    if (includeSmall || sample.Count >= Mayfly.Mathematics.UserSettings.StrongSampleSize)
+                    if (includeSmall || sample.Count >= Mayfly.Mathematics.UserSettings.RequiredSampleSize)
                     {
                         result.Add(sample);
                     }

@@ -321,7 +321,8 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
-            Close();
+            Log.Write(EventType.WizardEnded, "Spawning wizard is finished");
+            if (!UserSettings.KeepWizard) Close();
         }
 
         private void wizardExplorer_Cancelling(object sender, EventArgs e)

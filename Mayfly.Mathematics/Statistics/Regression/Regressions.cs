@@ -146,7 +146,7 @@ namespace Mayfly.Mathematics.Statistics
                     true;
 
                 if (Form.ModifierKeys.HasFlag(Keys.Control) &&
-                    scatterplot.Calc.Data.Count < UserSettings.SoftSampleSize)
+                    scatterplot.Calc.Data.Count < UserSettings.RequiredSampleSize)
                 {
                     continue;
                 }

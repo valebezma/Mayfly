@@ -3036,8 +3036,7 @@ namespace Mayfly.Controls
 
         public void ItemCopyTable_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(this.SeparatedValues(Constants.Tab, ModifierKeys.HasFlag(Keys.Shift),
-                ModifierKeys.HasFlag(Keys.Control), ModifierKeys.HasFlag(Keys.Alt)));
+            Clipboard.SetText(this.SeparatedValues(Constants.Tab));
         }
 
 
@@ -3299,13 +3298,12 @@ namespace Mayfly.Controls
 
         public void SaveToFile(string filename)
         {
-            StreamWriter streamWriter = new StreamWriter(filename, false, Encoding.Default);
+            StreamWriter streamWriter = new StreamWriter(filename, false, Encoding.UTF8);
 
             switch (Path.GetExtension(filename))
             {
                 case ".csv":
-                    streamWriter.Write(SeparatedValues(CultureInfo.CurrentCulture.TextInfo.ListSeparator));
-                    //streamWriter.Write(sheet.SeparatedValues(";"));
+                    streamWriter.Write(SeparatedValues());
                     break;
                 case ".txt":
                     streamWriter.Write(SeparatedValues(Constants.Tab));
@@ -3322,13 +3320,7 @@ namespace Mayfly.Controls
             streamWriter.Close();
         }
 
-        public string SeparatedValues(string separator)
-        {
-            return SeparatedValues(separator, !Form.ModifierKeys.HasFlag(Keys.Control), false, false);
-        }
-
-        public string SeparatedValues(string separator, bool formatted,
-            bool includeInvisibleColumns, bool includeInvisibleRows)
+        public string SeparatedValues(string separator, bool formatted, bool includeInvisibleColumns, bool includeInvisibleRows)
         {
             StringWriter result = new StringWriter();
 
@@ -3368,6 +3360,20 @@ namespace Mayfly.Controls
             }
 
             return result.ToString();
+        }
+
+        public string SeparatedValues(string separator)
+        {
+            return SeparatedValues(
+                separator,
+                Form.ModifierKeys.HasFlag(Keys.Shift),
+                Form.ModifierKeys.HasFlag(Keys.Control),
+                Form.ModifierKeys.HasFlag(Keys.Alt));
+        }
+
+        public string SeparatedValues()
+        {
+            return SeparatedValues(CultureInfo.CurrentCulture.TextInfo.ListSeparator);
         }
 
         public string PrintableFile()

@@ -1749,169 +1749,6 @@ namespace Mayfly.Fish.Explorer
 
         #endregion
 
-        #region Species
-
-        private void menuItemSpcValidate_Click(object sender, EventArgs e)
-        {
-            if (ModifierKeys.HasFlag(Keys.Control))
-            {
-                if (Mayfly.Species.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
-                {
-                    speciesValidator.IndexPath = Mayfly.Species.UserSettings.Interface.OpenDialog.FileName;
-                }
-            }
-            else
-            {
-                speciesValidator.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-            }
-
-            IsBusy = true;
-            spreadSheetSpc.StartProcessing(data.Species.Count, Wild.Resources.Interface.Process.SpeciesProcessing);
-
-            columnSpcValid.Visible = true;
-
-            loaderSpcList.RunWorkerAsync();
-        }
-
-        private void menuItemSpcTotals_Click(object sender, EventArgs e)
-        {
-            menuItemSpcStats_Click(sender, e);
-            tabControlSpc.SelectedTab = tabPageSpcTotals;
-        }
-
-        private void menuItemSpcStrates_Click(object sender, EventArgs e)
-        {
-            menuItemSpcStats_Click(sender, e);
-            tabControlSpc.SelectedTab = tabPageSpcQualify;
-        }
-
-
-
-        private void spcLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
-            List<DataGridViewRow> result = new List<DataGridViewRow>();
-
-            if (baseSpc == null)
-            {
-                Composition speciesComposition = AllowedStack.GetBasicCenosisComposition();
-                for (int i = 0; i < speciesComposition.Count; i++)
-                {
-                    DataGridViewRow gridRow = new DataGridViewRow();
-
-                    gridRow.CreateCells(spreadSheetSpc);
-                    gridRow.Cells[columnSpcSpc.Index].Value = speciesComposition[i].Name;
-                    gridRow.Cells[columnSpcQuantity.Index].Value = speciesComposition[i].Quantity;
-                    gridRow.Cells[columnSpcMass.Index].Value = speciesComposition[i].Mass;
-                    gridRow.Cells[columnSpcOccurrence.Index].Value = speciesComposition[i].Occurrence;
-                    result.Add(gridRow);
-
-                    (sender as BackgroundWorker).ReportProgress(i + 1);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < taxaSpc.Length; i++)
-                {
-                    result.Add(GetLine(taxaSpc[i]));
-                    (sender as BackgroundWorker).ReportProgress(i + 1);
-                }
-            }
-
-            e.Result = result.ToArray();
-        }
-
-        private void spcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            spreadSheetSpc.Rows.AddRange(e.Result as DataGridViewRow[]);
-            IsBusy = false;
-            spreadSheetSpc.StopProcessing();
-            spreadSheetSpc.UpdateStatus();
-        }
-
-
-
-        private void spcListLoader_DoWork(object sender, DoWorkEventArgs e)
-        {
-            foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
-            {
-                if (gridRow.Cells[columnSpcSpc.Index].Value == null)
-                {
-                    continue;
-                }
-
-                if (gridRow.Cells[columnSpcSpc.Index].Value as string == Species.Resources.Interface.UnidentifiedTitle)
-                {
-                    continue;
-                }
-
-                SpeciesKey.SpeciesRow speciesRow = speciesValidator.Find((string)gridRow.Cells[columnSpcSpc.Index].Value);
-
-                if (speciesRow == null)
-                {
-                    gridRow.Cells[columnSpcValid.Index].Value = null;
-                }
-                else
-                {
-                    gridRow.Cells[columnSpcValid.Index].Value = speciesRow.ScientificName;
-                }
-            }
-        }
-
-        private void spcListLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            IsBusy = false;
-            spreadSheetSpc.StopProcessing();
-        }
-        
-
-
-        private void comboBoxSpcTaxa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            baseSpc = comboBoxSpcTaxa.SelectedItem as SpeciesKey.BaseRow;
-            taxaSpc = baseSpc == null ? null : data.Species.Taxa(baseSpc);
-            LoadSpc();
-
-            menuItemSpcValidate.Enabled =
-                menuItemSpcTaxa.Enabled =
-                baseSpc == null;
-        }
-
-        private void baseItem_Click(object sender, EventArgs e)
-        {
-            SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
-            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
-                baseRow.BaseName, typeof(string), 0);
-
-            foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
-            {
-                if (gridRow.Cells[columnSpcSpc.Index].Value == null)
-                {
-                    continue;
-                }
-
-                if (gridRow.Cells[columnSpcSpc.Index].Value as string ==
-                    Species.Resources.Interface.UnidentifiedTitle)
-                {
-                    continue;
-                }
-
-                SpeciesKey.SpeciesRow speciesRow = Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    gridRow.Cells[columnSpcSpc.Index].Value as string);
-
-                if (speciesRow == null)
-                {
-                    gridRow.Cells[gridColumn.Index].Value = null;
-                }
-                else
-                {
-                    SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
-                }
-            }
-        }
-
-        #endregion
-
         #region Species stats
 
         private void species_Changed(object sender, EventArgs e)
@@ -1929,7 +1766,7 @@ namespace Mayfly.Fish.Explorer
                 selectedStatSpc = row;
                 plotQualify.ResetFormatted(selectedStatSpc.KeyRecord.ShortName);
 
-                resetSpeciesStatsPlotAxes(
+                resetQualPlotAxes(
                     Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
                     Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
                     AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
@@ -2357,13 +2194,8 @@ namespace Mayfly.Fish.Explorer
                 if (model.ExternalData == null)
                 {
                     ext.Calc = null;
-
                     histBio.Data = null;
-
-                    resetSpeciesStatsPlotAxes(
-                        Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
-                        Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
-                        AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+                    resetQualPlotAxes();
                 }
                 else
                 {
@@ -2381,7 +2213,7 @@ namespace Mayfly.Fish.Explorer
                     if (bioComposition.Count > 0)
                     {
                         histBio.Data = bioComposition.GetHistogramSample();
-                        resetSpeciesStatsPlotAxes(
+                        resetQualPlotAxes(
                             Math.Min(plotQualify.AxisXMin, bioComposition[0].Size.LeftEndpoint),
                             Math.Max(plotQualify.AxisXMax, ((SizeClass)bioComposition.GetLast()).Size.RightEndpoint),
                             Math.Max(plotQualify.AxisYMax, bioComposition.MostSampled.Quantity));
@@ -2389,11 +2221,7 @@ namespace Mayfly.Fish.Explorer
                     else
                     {
                         histBio.Data = null;
-
-                    resetSpeciesStatsPlotAxes(
-                        Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
-                        Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
-                        AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+                        resetQualPlotAxes();
                     }
                 }
 
@@ -2428,11 +2256,7 @@ namespace Mayfly.Fish.Explorer
                 inter.Calc = null;
                 combi.Calc = null;
                 histBio.Data = null;
-
-                resetSpeciesStatsPlotAxes(
-                    Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
-                    Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
-                    AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+                resetQualPlotAxes();
             }
 
             plotQualify.DoPlot();
@@ -2502,7 +2326,7 @@ namespace Mayfly.Fish.Explorer
                 if (outliers == null)
                 {
                     outliers = new Scatterplot(outliersData, string.Format(Mathematics.Resources.Interface.Outliers, combi.Properties.ConfidenceLevel, combi.Properties.ScatterplotName));
-                    outliers.Properties.DataPointColor = Mathematics.UserSettings.DistinguishColorSelected;
+                    outliers.Properties.DataPointColor = Mathematics.UserSettings.ColorSelected;
                     plotQualify.AddSeries(outliers);
                 }
                 else
@@ -2588,6 +2412,121 @@ namespace Mayfly.Fish.Explorer
                 AllowedStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
                 report.EndBranded();
                 report.Run();
+            }
+        }
+
+        #endregion
+
+        #region Species
+
+        private void menuItemSpcTotals_Click(object sender, EventArgs e)
+        {
+            menuItemSpcStats_Click(sender, e);
+            tabControlSpc.SelectedTab = tabPageSpcTotals;
+        }
+
+        private void menuItemSpcStrates_Click(object sender, EventArgs e)
+        {
+            menuItemSpcStats_Click(sender, e);
+            tabControlSpc.SelectedTab = tabPageSpcQualify;
+        }
+
+
+
+        private void spcLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<DataGridViewRow> result = new List<DataGridViewRow>();
+
+            if (baseSpc == null)
+            {
+                SpeciesComposition speciesComposition = AllowedStack.GetBasicCenosisComposition();
+                for (int i = 0; i < speciesComposition.Count; i++)
+                {
+                    DataGridViewRow gridRow = new DataGridViewRow();
+
+                    gridRow.CreateCells(spreadSheetSpc);
+                    gridRow.Cells[columnSpcSpc.Index].Value = speciesComposition[i].SpeciesRow;
+                    gridRow.Cells[columnSpcQuantity.Index].Value = speciesComposition[i].Quantity;
+                    gridRow.Cells[columnSpcMass.Index].Value = speciesComposition[i].Mass;
+                    gridRow.Cells[columnSpcOccurrence.Index].Value = speciesComposition[i].Occurrence;
+                    result.Add(gridRow);
+
+                    (sender as BackgroundWorker).ReportProgress(i + 1);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < taxaSpc.Length; i++)
+                {
+                    result.Add(GetLine(taxaSpc[i]));
+                    (sender as BackgroundWorker).ReportProgress(i + 1);
+                }
+            }
+
+            e.Result = result.ToArray();
+        }
+
+        private void spcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            spreadSheetSpc.Rows.AddRange(e.Result as DataGridViewRow[]);
+            IsBusy = false;
+            spreadSheetSpc.StopProcessing();
+            spreadSheetSpc.UpdateStatus();
+        }
+                
+
+
+        private void comboBoxSpcTaxa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            baseSpc = comboBoxSpcTaxa.SelectedItem as SpeciesKey.BaseRow;
+            taxaSpc = baseSpc == null ? null : data.Species.Taxa(baseSpc);
+            LoadSpc();
+
+            menuItemSpcTaxa.Enabled = baseSpc == null;
+
+            if (baseSpc != null)
+            {
+                spreadSheetSpc.ClearInsertedColumns();
+            }
+
+            columnSpcSpc.HeaderText = baseSpc == null ? Wild.Resources.Reports.Caption.Species : baseSpc.BaseName;
+        }
+
+        private void comboBoxSpcTaxa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            comboBoxSpcTaxa.HandleInput(e);
+        }
+
+        private void baseItem_Click(object sender, EventArgs e)
+        {
+            SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
+            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
+                baseRow.BaseName, typeof(string), 0);
+
+            foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
+            {
+                if (gridRow.Cells[columnSpcSpc.Index].Value == null)
+                {
+                    continue;
+                }
+
+                if (gridRow.Cells[columnSpcSpc.Index].Value as string ==
+                    Species.Resources.Interface.UnidentifiedTitle)
+                {
+                    continue;
+                }
+
+                SpeciesKey.SpeciesRow speciesRow = (gridRow.Cells[columnSpcSpc.Index].Value as Data.SpeciesRow).KeyRecord;
+
+                if (speciesRow == null)
+                {
+                    gridRow.Cells[gridColumn.Index].Value = null;
+                }
+                else
+                {
+                    SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
+                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
+                }
             }
         }
 
@@ -3304,24 +3243,16 @@ namespace Mayfly.Fish.Explorer
 
         #region Log
 
-        private void menuItemComCom_Click(object sender, EventArgs e)
+        private void findProblemRecordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SelectionValue selectionValue = new SelectionValue(spreadSheetCard);
+            spreadSheetLog.ClearSelection();
 
-            if (selectionValue.ShowDialog(this) != DialogResult.OK) return;
-
-            IsBusy = true;
-            spreadSheetLog.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.SpeciesProcessing);
-
-            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
+            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
             {
-                string field = gridColumn.Name.TrimStart("columnCard".ToCharArray());
-
-                comparerLog.RunWorkerAsync(field);
+                Data.LogRow logRow = LogRow(gridRow);
+                gridRow.Selected = !logRow.IsMassNull() && logRow.Mass < FullStack.MassStratified(logRow) + FullStack.MassIndividual(logRow);
             }
         }
-
-
 
         private void contextLog_Opening(object sender, CancelEventArgs e)
         {
@@ -3332,66 +3263,10 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (Data.LogRow logRow in selectedLogRows)
             {
-                Mayfly.IO.RunFile(logRow.CardRow.Path,
+                IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.SpeciesRow.Species });
             }
         }
-
-
-
-        private void comparerLog_DoWork(object sender, DoWorkEventArgs e)
-        {
-            string field = (string)e.Argument;
-
-            string format = spreadSheetLog.Columns[field] == null ? string.Empty :
-                spreadSheetLog.Columns[field].DefaultCellStyle.Format;
-
-            string[] variants = data.GetVariantsOf(field, format);
-
-            List<Composition> result = new List<Composition>();
-
-            foreach (string variant in variants)
-            {
-                CardStack stack = FullStack.GetStack(field, variant, format);
-
-                Composition composition;
-
-                if (baseSpc == null) {
-                    composition = stack.GetBasicCenosisComposition();
-                } else {
-                    composition = stack.GetTaxonomicComposition(baseSpc);
-                }
-
-                composition.Name = variant;
-                composition.Weight = stack.GetEffort();
-                result.Add(composition);
-            }
-
-            e.Result = result;
-        }
-
-        private void comparerLog_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Composition composition;
-
-            if (baseSpc == null) {
-                composition = AllowedStack.GetBasicCenosisComposition();
-            } else {
-                composition = AllowedStack.GetTaxonomicComposition(baseSpc);
-            }
-
-            CompositionComparison comcom = new CompositionComparison(
-                composition, (List<Composition>)e.Result);
-
-            comcom.UpdateCompositionAppearance();
-            comcom.SetFriendlyDesktopLocation(this, FormLocation.Centered);
-            comcom.Show();
-
-            IsBusy = false;
-            spreadSheetLog.StopProcessing();
-        }
-
-
 
         private void logLoader_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -3458,8 +3333,6 @@ namespace Mayfly.Fish.Explorer
                 ((BackgroundWorker)sender).ReportProgress(gridRow.Index + 1);
             }
         }
-
-
 
         private void spreadSheetLog_SelectionChanged(object sender, EventArgs e)
         {

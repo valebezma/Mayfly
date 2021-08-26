@@ -160,6 +160,8 @@ namespace Mayfly.Extensions
 
         public static string Format(this object value, string format)
         {
+            if (value == null) return string.Empty;
+
             string formatted = value.ToString();
 
             if (value is DateTime)

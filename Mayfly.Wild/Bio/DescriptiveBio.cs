@@ -32,7 +32,7 @@ namespace Mayfly.Wild
             {
                 List<DataRow> rows = Parent.Individual.Columns[nameX].GetRows(group);
 
-                if (rows.Count >= Mathematics.UserSettings.StrongSampleSize)
+                if (rows.Count >= Mathematics.UserSettings.RequiredSampleSize)
                 {
                     Category category = InternalData.GetCategory(group);
                     if (category == null) category = new Category(group);

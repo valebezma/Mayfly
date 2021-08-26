@@ -366,7 +366,7 @@ namespace Mayfly.Mathematics.Charts
                         ChartType = SeriesChartType.Point,
                         MarkerStyle = MarkerStyle.Circle,
                         MarkerBorderWidth = 1,
-                        MarkerColor = Color.FromArgb(127, UserSettings.DistinguishColorSelected),
+                        MarkerColor = Color.FromArgb(127, UserSettings.ColorSelected),
                         MarkerBorderColor = Color.Transparent,
                         IsVisibleInLegend = true
                     };

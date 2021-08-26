@@ -157,8 +157,8 @@ in stratified samples there are {3} specimen, so {4} are missing</value>
     <value>Quantity of specimens can't be calculated 
 because in some cards it is not specified</value>
   </data>
-  <data name="ValueHasRunouts" xml:space="preserve">
-    <value>{0} measures have {1} strong runouts</value>
+  <data name="ValueHasOutliers" xml:space="preserve">
+    <value>{0} measures have {1} outliers</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
     <value>{0} of {1} specimen is not measured.
@@ -169,9 +169,9 @@ lack of studied specimens</value>
     <value>{0} of {1} specimen is not measured. 
 However, it can be obtained from length</value>
   </data>
-  <data name="ValueIsRecoverableButHasRunouts" xml:space="preserve">
+  <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
     <value>{0} of {1} specimen is not measured.
-However, it can be obtained from length (but regression contains {2} runouts)</value>
+However, it can be obtained from length (but regression contains {2} outliers)</value>
   </data>
   <data name="CardMassEven" xml:space="preserve">
     <value>Mass of sample equals total mass of card</value>

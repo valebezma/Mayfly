@@ -359,7 +359,7 @@ namespace Mayfly.Extensions
                 bivariateSample.Add(valueRow.Value, individualRow.Mass);
             }
 
-            if (bivariateSample.Count < Mathematics.UserSettings.StrongSampleSize)
+            if (bivariateSample.Count < Mathematics.UserSettings.RequiredSampleSize)
                 return null;
 
             bivariateSample.X.Name = variableRow.Variable;

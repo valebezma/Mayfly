@@ -48,7 +48,7 @@ namespace Mayfly.Fish.Explorer
                     menuItemIndAll_Click);
             }
         }
-        
+
 
 
         private void ClearSpcStats()
@@ -137,7 +137,7 @@ namespace Mayfly.Fish.Explorer
                         if (logRow == null) continue;
 
                         if (!logRow.IsQuantityNull() && !logRow.IsMassNull()) totals++;
-                        if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity; 
+                        if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity;
 
                         stratified = logRow.QuantityStratified;
                         individuals = logRow.QuantityIndividuals;
@@ -149,7 +149,7 @@ namespace Mayfly.Fish.Explorer
 
                     if (stratified > 0) { strats++; }
                     if (individuals > 0) { logged++; }
-                    
+
                     strats_q += stratified;
                     logged_q += individuals;
                 }
@@ -169,9 +169,9 @@ namespace Mayfly.Fish.Explorer
 
             sufficientLine = new System.Windows.Forms.DataVisualization.Charting.Series(Resources.Interface.EnoughStamp)
             {
-                Color = Mathematics.UserSettings.DistinguishColorSelected,
+                Color = Mathematics.UserSettings.ColorSelected,
                 ChartType = SeriesChartType.Line,
-                 BorderDashStyle = ChartDashStyle.Dash
+                BorderDashStyle = ChartDashStyle.Dash
             };
             sufficientLine.Points.AddXY(0, UserSettings.RequiredClassSize);
             sufficientLine.Points.AddXY(1, UserSettings.RequiredClassSize);
@@ -206,7 +206,7 @@ namespace Mayfly.Fish.Explorer
             plotQualify.AddSeries(ext);
 
             inter = new Scatterplot(Resources.Interface.QualOwn);
-            inter.Properties.DataPointColor = Constants.MainAccent;
+            inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
             plotQualify.AddSeries(inter);
             inter.Updated += inter_Updated;
 
@@ -216,7 +216,7 @@ namespace Mayfly.Fish.Explorer
             combi.Properties.ShowPredictionBands = true;
             combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
             combi.Properties.DataPointColor = Color.Transparent;
-            combi.Properties.TrendColor = Constants.MainAccent;
+            combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
             plotQualify.AddSeries(combi);
             combi.Updated += combi_Updated;
 
@@ -230,7 +230,7 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove(combi);
         }
 
-        private void resetSpeciesStatsPlotAxes(double from, double to, double top)
+        private void resetQualPlotAxes(double from, double to, double top)
         {
             if (!plotQualify.AxisXAutoMinimum)
             {
@@ -254,6 +254,15 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
             //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
             //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+        }
+
+        private void resetQualPlotAxes()
+        {
+            resetQualPlotAxes(
+                Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+        
         }
 
         private void inter_Updated(object sender, ScatterplotEventArgs e)

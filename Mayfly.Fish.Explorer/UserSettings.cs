@@ -133,15 +133,6 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        //public static bool AgeSuggestUnregistered
-        //{
-        //    get { return Convert.ToBoolean(GetValue(Path, UserSettingPaths.AgeSuggestUnregistered));
-        //    }
-
-        //    set { UserSettingHandling.SetValue(Path, UserSettingPaths.AgeSuggestUnregistered, value);
-        //    }
-        //}
-
 
 
         public static string DominanceIndexName
@@ -161,12 +152,6 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        //public static CategoryType MemorizedCategorization
-        //{
-        //    get { return (CategoryType)GetValue(Path, UserSettingPaths.MemCategorization); }
-        //    set { UserSettingHandling.SetValue(Path, UserSettingPaths.MemCategorization, (int)value); }
-        //}
-
         public static FishSamplerType MemorizedSamplerType
         {
             get
@@ -177,17 +162,6 @@ namespace Mayfly.Fish.Explorer
             }
             set { UserSetting.SetValue(Path, UserSettingPaths.MemSamplerType, (int)value); }
         }
-
-        //public static GearWeightType MemorizedWeightType
-        //{
-        //    get
-        //    {
-        //        object o = GetValue(Path, UserSettingPaths.MemWeightType);
-        //        if (o == null) return GearWeightType.None;
-        //        else return (GearWeightType)(int)o;
-        //    }
-        //    set { UserSetting.SetValue(Path, UserSettingPaths.MemWeightType, (int)value); }
-        //}
 
         public static double MemorizedWaterArea
         {
@@ -215,56 +189,6 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        //public static bool MemorizedMassRecoveryUseRaw
-        //{
-        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.UseRaw));
-        //    }
-        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-        //        Wild.UserSettingPaths.UseRaw, value);
-        //    }
-        //}
-
-        //public static bool MemorizedMassRecoveryRestoreAssociation
-        //{
-        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RestoreAssociation));
-        //    }
-        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-        //        Wild.UserSettingPaths.RestoreAssociation, value);
-        //    }
-        //}
-
-        //public static bool MemorizedMassRecoveryProtocol
-        //{
-        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Protocol));
-        //    }
-        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-        //        Wild.UserSettingPaths.Protocol, value);
-        //    }
-        //}
-
-        //public static bool MemorizedMassRecoveryExplore
-        //{
-        //    get { return Convert.ToBoolean(UserSetting.GetValue(Path,
-        //        Wild.UserSettingPaths.MassRestoration, UserSettingPaths.Explore));
-        //    }
-        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-        //        UserSettingPaths.Explore, value);
-        //    }
-        //}
-
-        //public static double MemorizedMassRecoveryRequiredStrength
-        //{
-        //    get { return (double)(int) UserSetting.GetValue(Path,
-        //        Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.RequiredStrength) / 100;
-        //    }
-        //    set { UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-        //        Wild.UserSettingPaths.RequiredStrength, (int)(value * 100));
-        //    }
-        //}
-
 
         public static int RequiredClassSize { get { return 10; } }
 
@@ -278,8 +202,6 @@ namespace Mayfly.Fish.Explorer
             }
             set { UserSetting.SetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType, (int)value); }
         }
-
-        //public static DistributionType SelectionCurveType { get { return DistributionType.Normal; } }
     }
 
     public abstract class UserSettingPaths

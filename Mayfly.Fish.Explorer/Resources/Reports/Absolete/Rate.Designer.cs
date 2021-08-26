@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Absolete {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runouts fraction (b).
+        ///   Looks up a localized string similar to Outliers fraction (b).
         /// </summary>
         internal static string Column2_5 {
             get {
@@ -178,7 +178,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Absolete {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to is runouts fraction.
+        ///   Looks up a localized string similar to is outliers fraction.
         /// </summary>
         internal static string EquationB {
             get {

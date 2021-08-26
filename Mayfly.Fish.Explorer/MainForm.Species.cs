@@ -28,6 +28,7 @@ namespace Mayfly.Fish.Explorer
             foreach (SpeciesKey.BaseRow baseRow in Fish.UserSettings.SpeciesIndex.Base)
             {
                 comboBoxSpcTaxa.Items.Add(baseRow);
+                comboBoxLogTaxa.Items.Add(baseRow);
 
                 ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
                 item.Click += baseItem_Click;
@@ -83,6 +84,7 @@ namespace Mayfly.Fish.Explorer
             result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
             if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
             if (W > 0) result.Cells[columnSpcMass.Index].Value = W;
+            result.Cells[columnSpcOccurrence.Index].Value = taxaRow.Occurrence(data);
 
             return result;
         }

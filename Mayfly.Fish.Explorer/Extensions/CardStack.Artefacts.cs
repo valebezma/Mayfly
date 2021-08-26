@@ -401,7 +401,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (DeviationsCount != 0)
                     {
-                        result += string.Format( Resources.Artefact.ValueHasRunouts, FeatureName, DeviationsCount) + "; ";
+                        result += string.Format( Resources.Artefact.ValueHasOutliers, FeatureName, DeviationsCount) + "; ";
                     }
                 }
                 else
@@ -412,7 +412,7 @@ namespace Mayfly.Fish.Explorer
                     }
                     else
                     {
-                        result += string.Format( Resources.Artefact.ValueIsRecoverableButHasRunouts, FeatureName, UnmeasuredCount, DeviationsCount) + "; ";
+                        result += string.Format( Resources.Artefact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount) + "; ";
                     }
                 }
             }
