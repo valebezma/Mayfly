@@ -657,7 +657,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     if (sample.Calc == null) continue;
                     if (sample.Series != null && sample.Series.YAxisType == AxisType.Secondary) continue;
-                    minimum = Math.Min(minimum, sample.Bottom);
+                    if (!double.IsNaN(sample.Bottom)) minimum = Math.Min(minimum, sample.Bottom);
                 }
 
                 foreach (Functor sample in Functors)
@@ -693,7 +693,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     if (sample.Calc == null) continue;
                     if (sample.Series != null && sample.Series.YAxisType == AxisType.Primary) continue;
-                    minimum = Math.Min(minimum, sample.Bottom);
+                    if (!double.IsNaN(sample.Bottom)) minimum = Math.Min(minimum, sample.Bottom);
                 }
 
                 foreach (Functor sample in Functors)
@@ -729,7 +729,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     if (sample.Calc == null) continue;
                     if (sample.Series != null && sample.Series.YAxisType == AxisType.Secondary) continue;
-                    maximum = Math.Max(maximum, sample.Top);
+                    if (!double.IsNaN(sample.Top)) maximum = Math.Max(maximum, sample.Top);
                 }
 
                 foreach (Functor sample in Functors)
@@ -765,7 +765,7 @@ namespace Mayfly.Mathematics.Charts
                 {
                     if (sample.Calc == null) continue;
                     if (sample.Series != null && sample.Series.YAxisType == AxisType.Primary) continue;
-                    maximum = Math.Max(maximum, sample.Top);
+                    if (!double.IsNaN(sample.Top)) maximum = Math.Max(maximum, sample.Top);
                 }
 
                 foreach (Functor sample in Functors)
@@ -787,6 +787,8 @@ namespace Mayfly.Mathematics.Charts
 
 
         public event EventHandler Updated;
+
+        public event EventHandler AxesUpdated;
 
         public event EventHandler CollectionChanged;
 
@@ -1115,7 +1117,7 @@ namespace Mayfly.Mathematics.Charts
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);
-            //Remaster();
+            UpdateAxes();
         }
 
 
@@ -1334,10 +1336,37 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
+        public void UpdateAxes()
+        {
+            recalculateAxesProperties();
 
+            foreach (ChartArea chartArea in ChartAreas)
+            {
+                chartArea.AxisX.Minimum = AxisXMin;
+                chartArea.AxisX.Maximum = AxisXMax;
+                chartArea.AxisX.AdjustIntervals(Width * (chartArea.Position.Auto ? 1 :(chartArea.Position.Width / 100)), AxisXInterval);
+
+                chartArea.AxisY.Minimum = AxisYMin;
+                chartArea.AxisY.Maximum = AxisYMax;
+                chartArea.AxisY.AdjustIntervals(Height, AxisYInterval);
+
+                chartArea.AxisY2.Minimum = AxisY2Min;
+                chartArea.AxisY2.Maximum = AxisY2Max;
+                chartArea.AxisY2.AdjustIntervals(Height * (chartArea.Position.Auto ? 1 :(chartArea.Position.Height / 100)), AxisY2Interval);
+            }
+
+            if (AxesUpdated != null)
+            {
+                AxesUpdated.Invoke(this, new EventArgs());
+            }
+        }
+
+        public int plotCounter = 0;
 
         public void DoPlot()
         {
+            plotCounter++;
+
             #region Form header
 
             if (FindForm() != null)
@@ -1388,36 +1417,22 @@ namespace Mayfly.Mathematics.Charts
 
             #region Axes
 
-            recalculateAxesProperties();
+            UpdateAxes();
 
             foreach (ChartArea chartArea in ChartAreas)
             {
                 // TODO: Place titles where they are needed
                 chartArea.AxisX.Title = AxisXTitle;
-                chartArea.AxisX.Minimum = AxisXMin;
-                chartArea.AxisX.Maximum = AxisXMax;
-                chartArea.AxisX.AdjustIntervals(Width, AxisXInterval);
                 chartArea.AxisX.IsLogarithmic = AxisXLogarithmic;
                 chartArea.AxisX.LabelStyle.Format = AxisXFormat;
                 chartArea.AxisX.IntervalType = IsChronic ? TimeInterval : DateTimeIntervalType.Number;
 
                 chartArea.AxisY.Title = AxisYTitle;
-                chartArea.AxisY.Minimum = AxisYMin;
-                chartArea.AxisY.Maximum = AxisYMax;
-                chartArea.AxisY.AdjustIntervals(Height, AxisYInterval);
                 chartArea.AxisY.IsLogarithmic = AxisYLogarithmic;
                 chartArea.AxisY.LabelStyle.Format = AxisYFormat;
 
-                chartArea.AxisY2.Enabled = this.HasSecondaryYAxis ? AxisEnabled.True : AxisEnabled.False;
-
-                if (chartArea.AxisY2.Enabled == AxisEnabled.True)
-                {
-                    chartArea.AxisY2.Title = AxisY2Title;
-                    chartArea.AxisY2.Minimum = AxisY2Min;
-                    chartArea.AxisY2.Maximum = AxisY2Max;
-                    chartArea.AxisY2.AdjustIntervals(Height, AxisY2Interval);
-                    chartArea.AxisY2.LabelStyle.Format = AxisY2Format;
-                }
+                chartArea.AxisY2.Title = AxisY2Title;
+                chartArea.AxisY2.LabelStyle.Format = AxisY2Format;
 
                 chartArea.AxisY.ScaleBreakStyle.Enabled = AxisYAllowBreak;
                 chartArea.AxisY.ScaleBreakStyle.CollapsibleSpaceThreshold = AxisYScaleBreak;
@@ -1508,6 +1523,13 @@ namespace Mayfly.Mathematics.Charts
             //}
 
             #endregion
+
+
+
+            foreach (ChartArea chartArea in ChartAreas)
+            {
+                chartArea.AxisY2.Enabled = this.HasSecondaryYAxis ? AxisEnabled.True : AxisEnabled.False;
+            }
 
             if (Updated != null)
             {

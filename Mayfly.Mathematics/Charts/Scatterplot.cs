@@ -150,11 +150,20 @@ namespace Mayfly.Mathematics.Charts
                     MarkerStyle = MarkerStyle.Circle,
                     MarkerColor = Color.Transparent
                 };
+
                 Container.Series.Add(Series);
             }
 
-            if (Calc == null) return;
+            if (Calc == null)
+            {
+                if (Series != null)
+                {
+                    Container.Series.Remove(Series);
+                }
 
+                return;
+            }
+            
             UpdateDataPoints();
 
             Series.Name = Properties.ScatterplotName;
@@ -163,6 +172,8 @@ namespace Mayfly.Mathematics.Charts
             Series.MarkerBorderColor = Container.IsDistinguishingMode ? Constants.InfantColor : Properties.DataPointColor;
             Series.MarkerSize = Properties.DataPointSize;
             Series.MarkerBorderWidth = Properties.DataPointBorderWidth;
+
+            trendcalc:
 
             if (Properties.ShowTrend)
             {
@@ -202,12 +213,14 @@ namespace Mayfly.Mathematics.Charts
                 {
                     if (PredictionBandLower != null) PredictionBandLower.Points.Clear();
                     if (PredictionBandUpper != null) PredictionBandUpper.Points.Clear();
-                    //if (Trend != null) Trend.Series.Points.Clear();
+                    //if (Trend != null) Container.Remove(Trend.Properties.FunctionName);
                     if (ConfidenceBandLower != null) ConfidenceBandLower.Points.Clear();
                     if (ConfidenceBandUpper != null) ConfidenceBandUpper.Points.Clear();
-                    Properties.SelectedApproximationType = TrendType.Auto;
                     Properties.ShowTrend = false;
-                    return;
+                    Properties.SelectedApproximationType = TrendType.Auto;
+
+                    goto trendcalc;
+                    //return;
                 }
             }
             else
@@ -220,7 +233,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            if (Properties.ShowConfidenceBands)
+            if (Properties.ShowConfidenceBands && Calc.IsRegressionOK)
             {
                 if (ConfidenceBandUpper == null)
                 {
@@ -283,7 +296,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            if (Properties.ShowPredictionBands)
+            if (Properties.ShowPredictionBands && Calc.IsRegressionOK)
             {
                 if (PredictionBandUpper == null)
                 {
@@ -344,7 +357,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            if(Properties.HighlightOutliers)
+            if(Properties.HighlightOutliers && Calc.IsRegressionOK)
             {
                 if (Outliers == null)
                 {
@@ -390,7 +403,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            if (Properties.ShowAnnotation)
+            if (Properties.ShowAnnotation && Calc.IsRegressionOK)
             {
                 if (TrendAnnotation == null)
                 {
@@ -452,6 +465,11 @@ namespace Mayfly.Mathematics.Charts
             Series.Points.Clear();
 
             if (Calc == null) return;
+
+            if (Container.Series.FindByName(Series.Name) == null)
+            {
+                Container.Series.Add(Series);
+            }
 
             for (int i = 0; i < Calc.Data.Count; i++)
             {
@@ -520,7 +538,7 @@ namespace Mayfly.Mathematics.Charts
 
             if (predictions == null) return;
 
-            for (int i = 0; i < xvalues.Count; i++)
+            for (int i = 0; i < predictions.Length; i++)
             {
                 double lowerY = predictions[i].LeftEndpoint;
                 if (double.IsInfinity(lowerY)) continue;

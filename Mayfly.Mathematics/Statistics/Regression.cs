@@ -129,21 +129,25 @@ namespace Mayfly.Mathematics.Statistics
         {
             if (fit == null) return null;
 
-            var xvalues = engine.CreateNumericVector(x);
-            engine.SetSymbol("axis", xvalues);
-
-            var alpha = engine.CreateNumeric(level);
-            engine.SetSymbol("alpha", alpha);
-
-            engine.SetSymbol("fit", fit);
-            NumericMatrix predictions = engine.Evaluate(
-                "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
-
             List<Interval> result = new List<Interval>();
-            for (int i = 0; i < predictions.RowCount; i++)
+
+            try
             {
-                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+                var xvalues = engine.CreateNumericVector(x);
+                engine.SetSymbol("axis", xvalues);
+
+                var alpha = engine.CreateNumeric(level);
+                engine.SetSymbol("alpha", alpha);
+
+                engine.SetSymbol("fit", fit);
+                NumericMatrix predictions = engine.Evaluate(
+                    "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+                for (int i = 0; i < predictions.RowCount; i++)
+                {
+                    result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+                }
             }
+            catch { }
 
             return result.ToArray();
         }
@@ -151,6 +155,8 @@ namespace Mayfly.Mathematics.Statistics
         public BivariateSample GetOutliers(BivariateSample data, double level)
         {
             double d = (data.X.Maximum - data.X.Minimum) / 100;
+
+            if (d == 0) d = .1;
 
             List<double> xvalues = new List<double>();
             for (double x = data.X.Minimum - d; x <= data.X.Maximum + d; x += d)
@@ -169,7 +175,7 @@ namespace Mayfly.Mathematics.Statistics
                     double x = data.X.ElementAt(i);
                     double y = data.Y.ElementAt(i);
 
-                    for (int j = 0; j < bands.Length - 1; j++)
+                    for (int j = 0; j < xvalues.Count - 1; j++)
                     {
                         if (Interval.FromEndpoints(xvalues[j], xvalues[j + 1]).OpenContains(x))
                         {

@@ -177,13 +177,15 @@ namespace Mayfly
         public static double AdjustLeft(double left, double right)
         {
             double z = GetAutoInterval(right - left);
-            return ((int)(left / z)) * z;
+            double r = ((int)(left / z)) * z;
+            return double.IsNaN(r) ? left : r;
         }
 
         public static double AdjustRight(double left, double right)
         {
             double z = GetAutoInterval(right - left);
-            return ((right / z) % 1 == 0 && (right - left) != 0) ? ((int)(right / z)) * z : ((int)(right / z) + 1) * z;
+            double r = ((right / z) % 1 == 0 && (right - left) != 0) ? ((int)(right / z)) * z : ((int)(right / z) + 1) * z;
+            return double.IsNaN(r) ? right : r;
         }
 
         public static string GetAutoFormat(double interval)

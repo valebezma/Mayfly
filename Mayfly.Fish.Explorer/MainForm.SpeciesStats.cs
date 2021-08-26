@@ -6,6 +6,7 @@ using Mayfly.Mathematics.Statistics;
 using System.Drawing;
 using Mayfly.Extensions;
 using Meta.Numerics.Statistics;
+using System;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -15,6 +16,9 @@ namespace Mayfly.Fish.Explorer
 
         FishSamplerType selectedTechSamplerType;
 
+        System.Windows.Forms.DataVisualization.Charting.Series sufficientLine;
+
+        Histogramma histBio;
         Histogramma histSample;
         Histogramma histWeighted;
         Histogramma histRegistered;
@@ -161,9 +165,21 @@ namespace Mayfly.Fish.Explorer
 
         private void initializeSpeciesStatsPlot()
         {
+            plotQualify.Series.Clear();
+
+            sufficientLine = new System.Windows.Forms.DataVisualization.Charting.Series(Resources.Interface.EnoughStamp)
+            {
+                Color = Mathematics.UserSettings.DistinguishColorSelected,
+                ChartType = SeriesChartType.Line,
+                 BorderDashStyle = ChartDashStyle.Dash
+            };
+            sufficientLine.Points.AddXY(0, UserSettings.RequiredClassSize);
+            sufficientLine.Points.AddXY(1, UserSettings.RequiredClassSize);
+            plotQualify.Series.Add(sufficientLine);
 
             plotQualify.AxisXInterval = Fish.UserSettings.DefaultStratifiedInterval;
 
+            histBio = new Histogramma(Resources.Interface.StratesBio);
             histSample = new Histogramma(Resources.Interface.StratesSampled);
             histWeighted = new Histogramma(Resources.Interface.StratesWeighted);
             histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
@@ -171,7 +187,7 @@ namespace Mayfly.Fish.Explorer
 
             Color startColor = Color.FromArgb(150, Color.Lavender);
 
-            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
                 hist.Properties.Borders = false;
                 hist.Properties.DataPointColor = startColor;
@@ -179,7 +195,7 @@ namespace Mayfly.Fish.Explorer
                 startColor = startColor.Darker();
             }
 
-            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
                 plotQualify.AddSeries(hist);
                 //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
@@ -212,6 +228,32 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove(ext);
             //plotQualify.Remove(inter);
             //plotQualify.Remove(combi);
+        }
+
+        private void resetSpeciesStatsPlotAxes(double from, double to, double top)
+        {
+            if (!plotQualify.AxisXAutoMinimum)
+            {
+                plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(from, to);
+            }
+
+            if (!plotQualify.AxisXAutoMaximum)
+            {
+                plotQualify.AxisXMax = Mayfly.Service.AdjustRight(from, to);
+            }
+
+            if (!plotQualify.AxisYAutoMaximum)
+            {
+                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize, top));
+            }
+
+            sufficientLine.Points[0].XValue = plotQualify.AxisXMin;
+            sufficientLine.Points[1].XValue = plotQualify.AxisXMax;
+
+            //LengthComposition lc = AllowedStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return AllowedStack.Quantity(s, i); }, string.Empty);
+            //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
+            //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+            //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
         }
 
         private void inter_Updated(object sender, ScatterplotEventArgs e)

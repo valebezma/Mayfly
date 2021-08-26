@@ -50,9 +50,41 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public double Left { get { return Data.Minimum; } }
+        public double Left
+        {
+            get
+            {
+                double result = double.MaxValue;
 
-        public double Right { get { return Data.Maximum; } }
+                foreach (var bin in this)
+                {
+                    if (bin.Interval.LeftEndpoint < result)
+                    {
+                        result = bin.Interval.LeftEndpoint;
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public double Right 
+        {
+            get 
+            {
+                double result = double.MinValue;
+                
+                foreach (var bin in this)
+                {
+                    if (bin.Interval.RightEndpoint > result)
+                    {
+                        result = bin.Interval.RightEndpoint;
+                    }
+                } 
+                
+                return result; 
+            }
+        }
 
         public int Top
         {
@@ -285,7 +317,12 @@ namespace Mayfly.Mathematics.Charts
             // Create bins
             for (double x = Container.AxisXMin; x < Container.AxisXMax; x += Container.AxisXInterval)
             {
-                Add(x, x + Container.AxisXInterval);
+                Interval bin = Interval.FromEndpointAndWidth(x, Container.AxisXInterval);
+
+                if (Data.GetSabsample(bin).Count > 0)
+                {
+                    Add(x, x + Container.AxisXInterval);
+                }
             }
 
             // Populate bins
