@@ -179,10 +179,6 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            plotQualify.Series["Limiter"].LegendText = Resources.Interface.EnoughStamp;
-            plotQualify.Series["Limiter"].Points[0].YValues[0] = UserSettings.RequiredClassSize;
-            plotQualify.Series["Limiter"].Points[1].YValues[0] = UserSettings.RequiredClassSize;
-
             data = new Data(Fish.UserSettings.SpeciesIndex);
             FullStack = new CardStack(); //.ConvertFrom(data);
             AllowedStack = new CardStack();
@@ -435,17 +431,6 @@ namespace Mayfly.Fish.Explorer
                 {
                     labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
                     statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
-                }
-
-                if (tabPageSpcStats.Parent != null)
-                {
-                    species_Changed(spreadSheetSpcStats, new EventArgs());
-                }
-
-                if (tabPageInd.Parent != null)
-                {
-                    processDisplay.StartProcessing(spreadSheetInd.RowCount, Wild.Resources.Interface.Process.SpecApply);
-                    specTipper.RunWorkerAsync();
                 }
 
                 processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
@@ -1083,6 +1068,17 @@ namespace Mayfly.Fish.Explorer
                         showArtefacts = false;
                     }
                 }
+            }
+
+            if (tabPageSpcStats.Parent != null)
+            {
+                species_Changed(spreadSheetSpcStats, new EventArgs());
+            }
+
+            if (tabPageInd.Parent != null)
+            {
+                processDisplay.StartProcessing(spreadSheetInd.RowCount, Wild.Resources.Interface.Process.SpecApply);
+                specTipper.RunWorkerAsync();
             }
 
             IsBusy = false;
@@ -1920,6 +1916,8 @@ namespace Mayfly.Fish.Explorer
 
         private void species_Changed(object sender, EventArgs e)
         {
+            plotQualify.plotCounter = 0;
+
             // Make a selection
             if (spreadSheetSpcStats.SelectedRows.Count == 0 ||
                 !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow row))
@@ -1931,16 +1929,10 @@ namespace Mayfly.Fish.Explorer
                 selectedStatSpc = row;
                 plotQualify.ResetFormatted(selectedStatSpc.KeyRecord.ShortName);
 
-                plotQualify.AxisXMin = Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint;
-                plotQualify.AxisXMax = Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint;
-                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0,
-                    Math.Max(UserSettings.RequiredClassSize, AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity));
-
-                //LengthComposition lc = AllowedStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return AllowedStack.Quantity(s, i); }, string.Empty);
-                //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
-                //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
-                //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
-
+                resetSpeciesStatsPlotAxes(
+                    Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                    Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                    AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
             }
 
             // Totals
@@ -2318,9 +2310,12 @@ namespace Mayfly.Fish.Explorer
                 checkBoxQualOutliers.Enabled =
                 false;
 
+            plotQualify.AllowDrop = selectedQualificationWay != DataQualificationWay.None;
+
             Cursor = plotQualify.Cursor = Cursors.WaitCursor;
 
-            plotQualify.AxisY2Title = selectedQualificationWay == 0 ? 
+            plotQualify.AxisY2Title = 
+                selectedQualificationWay == DataQualificationWay.WeightOfLength ? 
                 Wild.Resources.Reports.Caption.MassUnit : Wild.Resources.Reports.Caption.AgeUnit;
 
             if (calcModel.IsBusy) { calcModel.CancelAsync(); }
@@ -2362,12 +2357,44 @@ namespace Mayfly.Fish.Explorer
                 if (model.ExternalData == null)
                 {
                     ext.Calc = null;
+
+                    histBio.Data = null;
+
+                    resetSpeciesStatsPlotAxes(
+                        Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                        Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                        AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
                 }
                 else
                 {
                     ext.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
                     ext.Calc = model.ExternalData;
-                    ext.Series.YAxisType = AxisType.Secondary;
+                    if (ext.Series != null) ext.Series.YAxisType = AxisType.Secondary;
+
+                    double from = selectedQualificationWay == DataQualificationWay.AgeOfLength ? model.ExternalData.Data.Y.Minimum : model.ExternalData.Data.X.Minimum;
+                    double to = selectedQualificationWay == DataQualificationWay.AgeOfLength ? model.ExternalData.Data.Y.Maximum : model.ExternalData.Data.X.Maximum;
+
+                    LengthComposition bioComposition = LengthComposition.Get(plotQualify.AxisXInterval, from, to,
+                            (size) => { return (selectedQualificationWay == DataQualificationWay.AgeOfLength ? model.ExternalData.Data.Y : model.ExternalData.Data.X).GetSabsample(size).Count; },
+                            Resources.Interface.StratesBio);
+
+                    if (bioComposition.Count > 0)
+                    {
+                        histBio.Data = bioComposition.GetHistogramSample();
+                        resetSpeciesStatsPlotAxes(
+                            Math.Min(plotQualify.AxisXMin, bioComposition[0].Size.LeftEndpoint),
+                            Math.Max(plotQualify.AxisXMax, ((SizeClass)bioComposition.GetLast()).Size.RightEndpoint),
+                            Math.Max(plotQualify.AxisYMax, bioComposition.MostSampled.Quantity));
+                    }
+                    else
+                    {
+                        histBio.Data = null;
+
+                    resetSpeciesStatsPlotAxes(
+                        Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                        Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                        AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+                    }
                 }
 
                 if (model.InternalData == null)
@@ -2378,7 +2405,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     inter.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
                     inter.Calc = model.InternalData;
-                    inter.Series.YAxisType = AxisType.Secondary;
+                    if (inter.Series != null) inter.Series.YAxisType = AxisType.Secondary;
                 }
 
                 if (model.CombinedData == null)
@@ -2389,14 +2416,33 @@ namespace Mayfly.Fish.Explorer
                 {
                     combi.TransposeCharting = selectedQualificationWay == DataQualificationWay.AgeOfLength;
                     combi.Calc = model.CombinedData;
-                    combi.Series.YAxisType = AxisType.Secondary;
+                    if (combi.Series != null) combi.Series.YAxisType = AxisType.Secondary;
                     combi.Properties.SelectedApproximationType = model.Nature;
                     combi.Properties.ShowTrend =
                         combi.Properties.ShowPredictionBands = true;
                 }
             }
+            else
+            {
+                ext.Calc = null;
+                inter.Calc = null;
+                combi.Calc = null;
+                histBio.Data = null;
+
+                resetSpeciesStatsPlotAxes(
+                    Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                    Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                    AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+            }
 
             plotQualify.DoPlot();
+            
+            if (histBio.Series != null) histBio.Series.SetCustomProperty("DrawSideBySide", "False");
+
+            //foreach (System.Windows.Forms.DataVisualization.Charting.Series ser in plotQualify.Series)
+            //{
+
+            //}
 
             Cursor = plotQualify.Cursor = Cursors.Default;
             spreadSheetSpcStats.Enabled =
@@ -2404,19 +2450,50 @@ namespace Mayfly.Fish.Explorer
                 true;
         }
 
-        private void plotQualify_Updated(object sender, EventArgs e)
+        private void plotQualify_AxesUpdated(object sender, EventArgs e)
         {
-            plotQualify.Updated -= plotQualify_Updated;
-            plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize,
-                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity));
-            //plotQualify.DoPlot();
-            plotQualify.Updated += plotQualify_Updated;
+            plotQualify.AxesUpdated -= plotQualify_AxesUpdated;
+
+            if (!plotQualify.AxisYAutoMaximum)
+            {
+                int max = 0;
+                foreach (Histogramma h in plotQualify.Histograms)
+                {
+                    max = Math.Max(max, h.Top);
+                }
+
+                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize, max));
+                plotQualify.ChartAreas[0].AxisY.Maximum = plotQualify.AxisYMax;
+                plotQualify.UpdateAxes();
+            }
+
+            plotQualify.AxesUpdated += plotQualify_AxesUpdated;
+        }
+
+        private void plotQualify_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension).Length > 0)
+            {
+                e.Effect = DragDropEffects.All;
+                plotQualify.ForeColor = Constants.InfantColor;
+            }
+        }
+
+        private void plotQualify_DragDrop(object sender, DragEventArgs e)
+        {
+            plotQualify_DragLeave(sender, e);
+            LoadCards(e.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension));
+        }
+
+        private void plotQualify_DragLeave(object sender, EventArgs e)
+        {
+            plotQualify.ForeColor = SystemColors.ControlText;
         }
 
         private void checkBoxQualOutliers_CheckedChanged(object sender, EventArgs e)
         {
             combi.Updated -= combi_Updated;
-            plotQualify.Updated -= plotQualify_Updated;
+            plotQualify.AxesUpdated -= plotQualify_AxesUpdated;
 
             //outliers = plotQualify.GetSample("Out") as Scatterplot;
 
@@ -2448,7 +2525,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             combi.Updated += combi_Updated;
-            plotQualify.Updated += plotQualify_Updated;
+            plotQualify.AxesUpdated += plotQualify_AxesUpdated;
         }
 
         private void buttonQualOutliers_Click(object sender, EventArgs e)
@@ -2935,6 +3012,26 @@ namespace Mayfly.Fish.Explorer
                     string.Format((new ResourceManager(typeof(MainForm))).GetString(
                     "pictureBoxStratified.ToolTip"), speciesNames[0]));
             }
+        }
+
+        private void spreadSheetInd_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension).Length > 0)
+            {
+                e.Effect = DragDropEffects.All;
+                spreadSheetInd.ForeColor = Constants.InfantColor;
+            }
+        }
+
+        private void spreadSheetInd_DragLeave(object sender, EventArgs e)
+        {
+            spreadSheetInd.ForeColor = SystemColors.ControlText;
+        }
+
+        private void spreadSheetInd_DragDrop(object sender, DragEventArgs e)
+        {
+            spreadSheetInd_DragLeave(sender, e);
+            LoadCards(e.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension));
         }
 
 

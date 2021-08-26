@@ -323,6 +323,15 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loaded with bio.
+        /// </summary>
+        internal static string StratesBio {
+            get {
+                return ResourceManager.GetString("StratesBio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registered.
         /// </summary>
         internal static string StratesRegistered {

@@ -230,4 +230,7 @@ To eliminate it from further analysis hold {2}.</value>
   <data name="QualOwn" xml:space="preserve">
     <value>Own data</value>
   </data>
+  <data name="StratesBio" xml:space="preserve">
+    <value>Loaded with bio</value>
+  </data>
 </root>
