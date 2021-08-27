@@ -172,7 +172,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
-            Allowed = Allowed.GetBio();
+            Allowed = Allowed.GetFishBio();
         }
 
         private void modelCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

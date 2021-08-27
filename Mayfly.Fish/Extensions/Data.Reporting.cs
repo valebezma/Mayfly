@@ -641,7 +641,7 @@ namespace Mayfly.Fish
                 {
                     table2.StartRow();
                     table2.AddCellPrompt(resources.GetString("labelSampler.Text"),
-                        cardRow.GetSamplerRow().Sampler, 2);
+                        cardRow.SamplerRow.Sampler, 2);
                     table2.EndRow();
 
                     table2.StartRow();

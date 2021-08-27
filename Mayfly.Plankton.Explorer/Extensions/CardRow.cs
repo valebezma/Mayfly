@@ -56,7 +56,7 @@ namespace Mayfly.Extensions
                 switch (field)
                 {
                     case "Gear":
-                        return cardRow.GetSamplerRow().Sampler;
+                        return cardRow.SamplerRow.Sampler;
 
                     case "Abundance":
                         return cardRow.GetTotalAbundance() / 1000d;

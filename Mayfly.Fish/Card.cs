@@ -152,7 +152,7 @@ namespace Mayfly.Fish
 
             LoadEquipment();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -235,7 +235,7 @@ namespace Mayfly.Fish
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
         }
 
         private void ClearGear()
@@ -269,16 +269,16 @@ namespace Mayfly.Fish
 
         public void UpdateStatus()
         {
-            if (Data.Solitary.Investigator == null)
-            {
-                statusCard.Default = StatusLog.Text = 
-                    SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount); ;
-            }
-            else
-            {
-                statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
-                    Data.Solitary.When, Data.Solitary.Investigator);
-            }
+            //if (Data.Solitary.Investigator == null)
+            //{
+            //    statusCard.Default = StatusLog.Text = 
+            //        SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount); ;
+            //}
+            //else
+            //{
+            //    statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
+            //        Data.Solitary.When, Data.Solitary.Investigator);
+            //}
 
             StatusMass.ResetFormatted(Mass);
             StatusCount.ResetFormatted(Quantity);
@@ -645,8 +645,6 @@ namespace Mayfly.Fish
                     Data.Solitary.SetExposureNull();
                 }
             }
-
-            Data.Solitary.SamplerPresentation = Data.Solitary.IsSamplerNull() ? Constants.Null : Data.Solitary.GetSamplerRow().Sampler;
         }
 
         private void SaveLog()
@@ -917,7 +915,7 @@ namespace Mayfly.Fish
         public void LoadData(string filename)
         {
             Clear();
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             Data.Read(filename);
             LoadData();
             FileName = filename;
@@ -979,7 +977,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                SelectedSampler = Data.Solitary.GetSamplerRow();
+                SelectedSampler = Data.Solitary.SamplerRow;
             }
 
             if (Data.Solitary.IsExactAreaNull())
@@ -1278,7 +1276,7 @@ namespace Mayfly.Fish
 
             if (!waypoint.IsTimeMarkNull)
             {
-                if (Data.Solitary.GetSamplerRow().IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking)
+                if (Data.Solitary.SamplerRow.IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking)
                 {
                     dateTimePickerStart.Value = waypoint.TimeMark;
                     //sampler_Changed(dateTimePickerStart, new EventArgs());
@@ -1443,7 +1441,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data(UserSettings.SpeciesIndex);
+                Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
@@ -1467,7 +1465,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data(UserSettings.SpeciesIndex);
+                Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
@@ -1513,7 +1511,7 @@ namespace Mayfly.Fish
 
             UserSettings.Interface.ExportDialog.FileName =
                 IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.GetSuggestedName());
+                Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {

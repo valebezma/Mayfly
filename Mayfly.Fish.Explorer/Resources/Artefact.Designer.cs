@@ -88,15 +88,6 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mass of sampled fish is {0:N3} kg or {1:P1} more than total mass in card ({2:N3} kg).
-        /// </summary>
-        internal static string CardMassOdd {
-            get {
-                return ResourceManager.GetString("CardMassOdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} of {1} kg ({2:P1}) of fish is not treated.
         /// </summary>
         internal static string CardMassOdd_1 {
@@ -163,9 +154,36 @@ namespace Mayfly.Fish.Explorer.Resources {
         ///   Looks up a localized string similar to There are {0} specimen with length not measured.
         ///These specimens wouldn&apos;t be processed in any estimation.
         /// </summary>
-        internal static string Length {
+        internal static string LogLength {
             get {
-                return ResourceManager.GetString("Length", resourceCulture);
+                return ResourceManager.GetString("LogLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are {0} log records with unmeasured specimen.
+        /// </summary>
+        internal static string LogLengths {
+            get {
+                return ResourceManager.GetString("LogLengths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mass of sampled fish is {0:N3} kg or {1:P1} more than total mass in card ({2:N3} kg).
+        /// </summary>
+        internal static string LogMassOdd {
+            get {
+                return ResourceManager.GetString("LogMassOdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are {0} log records with mass sampled more than total mass.
+        /// </summary>
+        internal static string LogMassOdds {
+            get {
+                return ResourceManager.GetString("LogMassOdds", resourceCulture);
             }
         }
         

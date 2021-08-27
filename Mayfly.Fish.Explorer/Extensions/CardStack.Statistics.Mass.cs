@@ -27,8 +27,8 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.MassIndividual(logRow);
-                result += stack.MassStratified(logRow);
+                result += logRow.MassIndividual();
+                result += logRow.MassStratified();
             }
 
             return result;
@@ -36,7 +36,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static double MassIndividual(this CardStack stack, Data.LogRow logRow)
+        public static double MassIndividual(this Data.LogRow logRow)
         {
             double result = 0;
 
@@ -50,7 +50,7 @@ namespace Mayfly.Fish.Explorer
                         return double.NaN;
                     }
 
-                    double mass = stack.Parent.FindMassModel(logRow.SpeciesRow.Species).GetValue(individualRow.Length);
+                    double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species).GetValue(individualRow.Length);
 
                     if (double.IsNaN(mass))
                     {
@@ -77,7 +77,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.MassIndividual(logRow);
+                result += logRow.MassIndividual();
             }
 
             return result;
@@ -85,13 +85,13 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static double MassStratified(this CardStack stack, Data.LogRow logRow)
+        public static double MassStratified(this Data.LogRow logRow)
         {
             double result = 0;
 
             foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
             {
-                double mass = stack.Parent.FindMassModel(logRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
+                double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
 
                 if (double.IsNaN(mass))
                 {
@@ -112,7 +112,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.MassStratified(logRow);
+                result += logRow.MassStratified();
             }
 
             return result;

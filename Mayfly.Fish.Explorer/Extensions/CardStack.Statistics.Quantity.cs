@@ -26,13 +26,35 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.QuantityIndividual(logRow);
-                result += stack.QuantityStratified(logRow);
+                result += logRow.QuantitySampled();
             }
 
             return result;
         }
 
+        public static int QuantitySampled(this Data.LogRow logRow)
+        {
+            int result = logRow.QuantityIndividual();
+            result += logRow.QuantityStratified();
+            return result;
+        }
+
+        public static int QuantityIndividual(this Data.LogRow logRow)
+        {
+            return logRow.GetIndividualRows().Length;
+        }
+
+        public static int QuantityStratified(this Data.LogRow logRow)
+        {
+            int result = 0;
+
+            foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+            {
+                result += stratifiedRow.Count;
+            }
+
+            return result;
+        }
 
         public static int QuantityIndividual(this CardStack stack, Data.SpeciesRow speciesRow)
         {
@@ -40,7 +62,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.QuantityIndividual(logRow);
+                result += logRow.QuantityIndividual();
             }
 
             return result;
@@ -52,26 +74,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                result += stack.QuantityStratified(logRow);
-            }
-
-            return result;
-        }
-
-
-
-        public static int QuantityIndividual(this CardStack stack, Data.LogRow logRow)
-        {
-            return logRow.GetIndividualRows().Length;
-        }
-
-        public static int QuantityStratified(this CardStack stack, Data.LogRow logRow)
-        {
-            int result = 0;
-
-            foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-            {
-                result += stratifiedRow.Count;
+                result += logRow.QuantityStratified();
             }
 
             return result;
@@ -240,6 +243,20 @@ namespace Mayfly.Fish.Explorer
             int result = 0;
 
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows())
+            {
+                if (individualRow.IsLengthNull()) continue;
+                result++;
+            }
+
+            return result;
+        }
+
+        public static int Measured(this Data.LogRow logRow)
+        {
+            int result = 0;
+
+
+            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 if (individualRow.IsLengthNull()) continue;
                 result++;

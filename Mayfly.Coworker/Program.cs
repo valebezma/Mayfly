@@ -319,7 +319,7 @@ namespace Mayfly.ManualLicenser
                 foreach (Data.CardRow cardRow in bio.Card)
                 {
                     Data data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(destination, data.GetSuggestedName(ext));
+                    string filename = IO.SuggestName(destination, cardRow.GetSuggestedName(ext));
                     data.WriteToFile(Path.Combine(destination, filename));
 
                     Console.Write("\r\nCard {0} is written", filename);
@@ -920,7 +920,7 @@ namespace Mayfly.ManualLicenser
                                 string filepath = Path.Combine(destination, 
                                     data.Solitary.When.Year.ToString(), 
                                     data.Solitary.WaterRow.Presentation, 
-                                    data.GetSuggestedName(".pcd", data.Solitary.GetSamplerRow(Plankton.UserSettings.SamplersIndex).ShortName)
+                                    data.Solitary.GetSuggestedName(".pcd")
                                     );
                                 Directory.CreateDirectory(Path.GetDirectoryName(filepath));
                                 data.WriteToFile(filepath);
@@ -1053,7 +1053,7 @@ namespace Mayfly.ManualLicenser
                     data.Solitary.WaterRow.Presentation,
                     data.Solitary.Label,
                     data.Solitary.When,
-                    data.Solitary.GetSamplerRow(Plankton.UserSettings.SamplersIndex).Name,
+                    data.Solitary.SamplerPresentation,
                     data.Solitary.Volume * 1000);
 
 

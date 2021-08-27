@@ -15,12 +15,15 @@ using System.Xml;
 using System.Text;
 using System.Reflection;
 using System.Globalization;
+using System.IO;
 
 namespace Mayfly.Wild
 {
     public partial class Data
     {
         private SpeciesKey key;
+
+        private Samplers samplers;
 
         public CardRow Solitary
         {
@@ -41,64 +44,10 @@ namespace Mayfly.Wild
 
 
 
-        public Data(SpeciesKey _key) : this()
+        public Data(SpeciesKey _key, Samplers _samplers) : this()
         {
             key = _key;
-        }
-
-
-
-        /// <summary>
-        /// Get suggested name for file with extension
-        /// </summary>
-        public string GetSuggestedName(string extension)
-        {
-            return GetSuggestedName(extension, string.Empty);
-        }
-
-        /// <summary>
-        /// Get suggested name for file with extension and gear code
-        /// </summary>
-        public string GetSuggestedName(string extension, string gearCode)
-        {
-            string result = string.Empty;
-
-            if (Card.Count == 1)
-            {
-                if (!Solitary.IsWhenNull())
-                {
-                    result += Solitary.When.ToString("yyyy-MM-dd") + " ";
-                }
-
-                if (!Solitary.IsLabelNull())
-                {
-                    result += Solitary.Label + " ";
-                }
-
-                if (!string.IsNullOrWhiteSpace(gearCode))
-                {
-                    result += gearCode + " ";
-                }
-
-                if (!Solitary.IsWaterIDNull())
-                {
-                    result += Solitary.WaterRow.Presentation + " ";
-                }
-
-                foreach (char s in Path.GetInvalidFileNameChars())
-                {
-                    if (result.Contains(s))
-                    {
-                        result = result.Replace(s, ' ');
-                    }
-                }
-
-                return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
-            }
-            else
-            {
-                return result;
-            }
+            samplers = _samplers;
         }
 
 
@@ -327,7 +276,6 @@ namespace Mayfly.Wild
                 if (cardRow.Path != null && inheritPath)
                 {
                     newCardRow.Path = cardRow.Path;
-                    newCardRow.SamplerPresentation = cardRow.SamplerPresentation;
                 }
             }
 
@@ -575,6 +523,8 @@ namespace Mayfly.Wild
         {
             string investigator;
 
+            private string path;
+
             public string Investigator
             {
                 get
@@ -596,9 +546,21 @@ namespace Mayfly.Wild
                 }
             }
 
-            private string path;
+            public Samplers.SamplerRow SamplerRow
+            {
+                get
+                {
+                    return this.IsSamplerNull() ? null : ((Data)tableCard.DataSet).samplers.Sampler.FindByID(this.Sampler);
+                }
+            }
 
-            public string SamplerPresentation { get; set; }
+            public string SamplerPresentation
+            {
+                get 
+                {
+                    return IsSamplerNull() ? Constants.Null : SamplerRow.Sampler;
+                }
+            }
 
             public string Path
             {
@@ -627,31 +589,6 @@ namespace Mayfly.Wild
                 }
             }
 
-
-
-            public void AttachSign()
-            {
-                this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username, this.When.ToString("s"));
-            }
-
-            public void RenewSign(DateTime newDateValue)
-            {
-                string owner = this.Investigator;
-
-                if (owner == Mayfly.Resources.Interface.InvestigatorNotApproved)
-                {
-                    SetSignNull();
-                    investigator = null;
-                    return;
-                }
-                else
-                {
-                    When = newDateValue;
-                    Sign = StringCipher.Encrypt(owner, When.ToString("s"));
-                }
-            }
-
-
             public Waypoint Position
             {
                 get
@@ -665,12 +602,6 @@ namespace Mayfly.Wild
 
                     return result;
                 }
-            }
-
-
-            public Samplers.SamplerRow GetSamplerRow(Samplers index)
-            {
-                return index.Sampler.FindByID(this.Sampler);
             }
 
             public TimeSpan Duration
@@ -688,34 +619,6 @@ namespace Mayfly.Wild
                     return (!this.IsSpanNull()) ? this.When - this.Duration : this.When;
                 }
             }
-
-
-            public override string ToString() => ToString(string.Empty);
-
-            public virtual string ToString(string format) => ToString(format, System.Globalization.CultureInfo.CurrentCulture);
-
-            public virtual string ToString(string format, IFormatProvider provider)
-            {
-                switch (format)
-                {
-                    case "F":
-                    case "f":
-                        return this.Path;
-
-                    case "S":
-                    case "s":
-                        return this.FriendlyPath;
-
-                    default:
-                        return string.Format(Resources.Interface.Interface.SampleFormat,
-                            When,
-                            When,
-                            WaterRow == null ? Resources.Interface.Interface.WaterUnknown : WaterRow.Presentation,
-                            Investigator,
-                            string.IsNullOrEmpty(SamplerPresentation) ? format : SamplerPresentation);
-                }
-            }
-
 
             public bool IsEnvironmentDescribed
             {
@@ -755,7 +658,6 @@ namespace Mayfly.Wild
                     return new EnvironmentState(this.Position, WeatherConditions, StateOfWater);
                 }
             }
-
 
             public int Quantity
             {
@@ -805,6 +707,67 @@ namespace Mayfly.Wild
                 }
             }
 
+
+
+            /// <summary>
+            /// Get suggested name for file with specified extension
+            /// </summary>
+            public string GetSuggestedName(string extension)
+            {
+                string result = string.Empty;
+
+                if (!this.IsWhenNull())
+                {
+                    result += this.When.ToString("yyyy-MM-dd") + " ";
+                }
+
+                if (!this.IsLabelNull())
+                {
+                    result += this.Label + " ";
+                }
+
+                if (!this.IsSamplerNull())
+                {
+                    result += SamplerRow.ShortName + " ";
+                }
+
+                if (!this.IsWaterIDNull())
+                {
+                    result += this.WaterRow.Presentation + " ";
+                }
+
+                foreach (char s in System.IO.Path.GetInvalidFileNameChars())
+                {
+                    if (result.Contains(s))
+                    {
+                        result = result.Replace(s, ' ');
+                    }
+                }
+
+                return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
+            }
+
+            public void AttachSign()
+            {
+                this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username, this.When.ToString("s"));
+            }
+
+            public void RenewSign(DateTime newDateValue)
+            {
+                string owner = this.Investigator;
+
+                if (owner == Mayfly.Resources.Interface.InvestigatorNotApproved)
+                {
+                    SetSignNull();
+                    investigator = null;
+                    return;
+                }
+                else
+                {
+                    When = newDateValue;
+                    Sign = StringCipher.Encrypt(owner, When.ToString("s"));
+                }
+            }
 
             public object GetValue(string field)
             {
@@ -1049,6 +1012,22 @@ namespace Mayfly.Wild
                 }
             }
 
+            public Report.Table GetLogReport(string massCaption, string logTitle)
+            {
+                return this.GetLogRows().GetSpeciesLogReportTable(((Data)Table.DataSet).key, massCaption, logTitle);
+            }
+
+            public Report.Table GetLogReport(string massCaption)
+            {
+                return GetLogReport(massCaption, string.Empty);
+            }
+
+            public Report.Table GetLogReport()
+            {
+                return GetLogReport(string.Empty, string.Empty);
+            }
+
+
 
             public int CompareTo(CardRow cardRow)
             {
@@ -1067,19 +1046,28 @@ namespace Mayfly.Wild
             }
 
 
-            public Report.Table GetLogReport(string massCaption, string logTitle)
-            {
-                return this.GetLogRows().GetSpeciesLogReportTable(((Data)Table.DataSet).key, massCaption, logTitle);
-            }
 
-            public Report.Table GetLogReport(string massCaption)
-            {
-                return GetLogReport(massCaption, string.Empty);
-            }
+            public override string ToString() => ToString(string.Empty);
 
-            public Report.Table GetLogReport()
+            public virtual string ToString(string format) => ToString(format, CultureInfo.CurrentCulture);
+
+            public virtual string ToString(string format, IFormatProvider provider)
             {
-                return GetLogReport(string.Empty, string.Empty);
+                switch (format)
+                {
+                    case "F":
+                    case "f":
+                        return this.Path;
+
+                    case "S":
+                    case "s":
+                        return this.FriendlyPath;
+
+                    default:
+                        return string.Format(Resources.Interface.Interface.SampleFormat,
+                            When, When, WaterRow == null ? Resources.Interface.Interface.WaterUnknown : WaterRow.Presentation,
+                            Investigator, SamplerPresentation);
+                }
             }
         }
 

@@ -15,141 +15,192 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static Artefact[] GetArtefacts(this CardStack stack, bool individuals)
+        public static IndividualArtefact GetFacts(this Data.IndividualRow individualRow)
         {
-            List<Artefact> result = new List<Artefact>();
-            result.AddRange(stack.GetCardArtefacts());
-            result.AddRange(stack.GetSpeciesArtefacts());
-            if (individuals) result.AddRange(stack.GetIndividualArtefacts());
-            return result.ToArray();
+            return new IndividualArtefact(individualRow);
         }
 
-        public static CardArtefact[] GetCardArtefacts(this CardStack stack)
+        public static LogArtefact GetFacts(this Data.LogRow logRow)
         {
-            List<CardArtefact> result = new List<CardArtefact>();
+            return new LogArtefact(logRow);
+        }
+
+        public static CardArtefact GetFacts(this Data.CardRow cardRow)
+        {
+            return new CardArtefact(cardRow);
+        }
+
+        public static SpeciesArtefact GetFacts(this Data.SpeciesRow speciesRow, CardStack stack)
+        {
+            return new SpeciesArtefact(speciesRow, stack);
+        }
+
+
+        public static Artefact[] GetArtefacts(this CardStack stack)
+        {
+            List<Artefact> result = new List<Artefact>();
 
             foreach (Data.CardRow cardRow in stack)
             {
-                CardArtefact artefact = new CardArtefact(cardRow);
-                artefact.EffortMissing = double.IsNaN(cardRow.GetEffort());
-                double totalMass = 0;
-                double sampleMass = 0;
-
-                foreach (Data.LogRow logRow in cardRow.GetLogRows())
+                CardArtefact artefact = cardRow.GetFacts();
+                if (artefact.GetFacts() > 0)
                 {
-                    double sampled = stack.MassStratified(logRow) + stack.MassIndividual(logRow);
-                    sampleMass += sampled;
-
-                    if (logRow.IsMassNull() || double.IsNaN(logRow.Mass)) {
-                        totalMass += sampled;
-                    } else {
-                        totalMass += logRow.Mass;
-                    }
+                    result.Add(artefact);
+                    result.AddRange(artefact.LogArtefacts);
+                    result.AddRange(artefact.IndividualArtefacts);
                 }
-
-                sampleMass = Math.Round(sampleMass, 3);
-                totalMass = Math.Round(totalMass, 3);
-
-                artefact.Mass = totalMass;
-                artefact.UnsampledMass = totalMass - sampleMass;
-
-                if (artefact.GetFacts() > 0) result.Add(artefact);
             }
-
-            return result.ToArray();
-        }
-
-        public static SpeciesArtefact[] GetSpeciesArtefacts(this CardStack stack)
-        {
-            List<SpeciesArtefact> result = new List<SpeciesArtefact>();
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
-                SpeciesArtefact artefact = new SpeciesArtefact(speciesRow);
-
-                int sampled = stack.QuantitySampled(speciesRow);
-                artefact.LengthMissing = sampled - stack.Measured(speciesRow) - stack.QuantityStratified(speciesRow);
-
-
-                artefact.AgeArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Age);
-                artefact.AgeArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.AgeColumn);
-                var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
-                artefact.AgeArtefact.HasRegression = gm != null && gm.CombinedData.IsRegressionOK;
-                if (gm != null && gm.CombinedData.IsRegressionOK) artefact.AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
-
-                artefact.MassArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Mass);
-                artefact.MassArtefact.UnmeasuredCount = sampled - stack.Treated(artefact.SpeciesRow, stack.Parent.Individual.MassColumn);
-                var mm = stack.Parent.FindMassModel(speciesRow.Species);
-                artefact.MassArtefact.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
-                if (mm != null && mm.CombinedData.IsRegressionOK) artefact.MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
-
-                artefact.IndividualArtefacts = stack.GetIndividualArtefacts(artefact.SpeciesRow);
-
-                if (artefact.GetFacts() > 0) result.Add(artefact);
-            }
-
-            return result.ToArray();
-        }
-
-        public static IndividualArtefact[] GetIndividualArtefacts(this CardStack stack)
-        {
-            List<IndividualArtefact> result = new List<IndividualArtefact>();
-
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
-            {
-                result.AddRange(stack.GetIndividualArtefacts(speciesRow));
-            }
-
-            return result.ToArray();
-        }
-
-        public static IndividualArtefact[] GetIndividualArtefacts(this CardStack stack, Data.SpeciesRow speciesRow)
-        {
-            List<IndividualArtefact> result = new List<IndividualArtefact>();
-
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
-            {
-                IndividualArtefact indArtefact = new IndividualArtefact(individualRow);
-
-                indArtefact.HasRegID = !individualRow.IsRegIDNull();
-                indArtefact.Treated = false;
-                indArtefact.Treated |= !individualRow.IsAgeNull();
-                indArtefact.Treated |= individualRow.ContainsSex;
-                indArtefact.Treated |= individualRow.ContainsTrophics;
-                indArtefact.Treated |= individualRow.ContainsParasites;
-
-                if (indArtefact.GetFacts() > 0) result.Add(indArtefact);
+                SpeciesArtefact artefact = speciesRow.GetFacts(stack);
+                if (artefact.GetFacts() > 0)
+                {
+                    result.Add(artefact);
+                    if (artefact.MassArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.MassArtefact);
+                    if (artefact.AgeArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.AgeArtefact);
+                }
             }
 
             return result.ToArray();
         }
     }
 
-    public class CardArtefact : Artefact
+    public class IndividualArtefact : Artefact
     {
-        public Data.CardRow Card { get; set; }
+        public Data.IndividualRow IndividualRow { get; set; }
 
-        /// <summary>
-        /// Total card mass.
-        /// </summary>
-        public double Mass { get; set; }
+        public bool HasRegID { get; set; }
 
-        /// <summary>
-        /// Difference between total card mass and sample mass.
-        /// Should be 0 (all are sampled) or positive, e. g. total mass should be more or equal than sample mass).
-        /// </summary>
-        public double UnsampledMass { get; set; }
+        public bool Treated { get; set; }
 
-        /// <summary>
-        /// Effort is unable to estimate with specified information
-        /// </summary>
-        public bool EffortMissing { get; set; }
+        public int UnweightedDietItems { get; set; }
 
-        public ArtefactCriticality EffortCriticality
+        public ArtefactCriticality RegIDCriticality
         {
             get
             {
-                if (this.EffortMissing)
+                if (this.HasRegID && !this.Treated)
+                {
+                    return ArtefactCriticality.NotCritical;
+                }
+                else if (!this.HasRegID && this.Treated)
+                {
+                    return ArtefactCriticality.Allowed;
+                }
+                else
+                {
+                    return ArtefactCriticality.Normal;
+                }
+            }
+        }
+
+        public ArtefactCriticality UnweightedDietItemsCriticality
+        {
+            get
+            {
+                if (this.UnweightedDietItems > 0)
+                {
+                    return ArtefactCriticality.NotCritical;
+                }
+                else
+                {
+                    return ArtefactCriticality.Normal;
+                }
+            }
+        }
+
+
+
+        public IndividualArtefact(Data.IndividualRow individualRow)
+        {
+            IndividualRow = individualRow;
+            HasRegID = !individualRow.IsRegIDNull();
+            Treated = false;
+            Treated |= !individualRow.IsAgeNull();
+            Treated |= individualRow.ContainsSex;
+            Treated |= individualRow.ContainsTrophics;
+            Treated |= individualRow.ContainsParasites;
+        }
+
+
+
+        public override string[] GetNotices()
+        {
+            List<string> result = new List<string>();
+
+            if (HasRegID && !Treated)
+            {
+                result.Add(string.Format(Resources.Artefact.IndividualRegID, IndividualRow.RegID));
+            }
+            else if (!HasRegID && Treated)
+            {
+                result.Add(Resources.Artefact.IndividualTreat);
+            }
+
+            if (UnweightedDietItems > 0)
+            {
+                result.Add(string.Format(Resources.Artefact.IndividualUnweightedDiet, UnweightedDietItems));
+            }
+
+            return result.ToArray();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString(IndividualRow.GetDescription());
+        }
+
+        public static string[] GetNotices(IEnumerable<IndividualArtefact> artefacts)
+        {
+            List<string> result = new List<string>();
+
+            int regedButNotTreated = 0;
+            int treatedButNotReged = 0;
+            int dietNotExplored = 0;
+
+            foreach (IndividualArtefact indArtefact in artefacts)
+            {
+                if (indArtefact.RegIDCriticality == ArtefactCriticality.NotCritical)
+                {
+                    regedButNotTreated++;
+                }
+                else if (indArtefact.RegIDCriticality == ArtefactCriticality.Allowed)
+                {
+                    treatedButNotReged++;
+                }
+
+                if (indArtefact.UnweightedDietItemsCriticality == ArtefactCriticality.NotCritical)
+                {
+                    dietNotExplored++;
+                }
+            }
+
+            if (regedButNotTreated > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regedButNotTreated));
+            if (treatedButNotReged > 0) result.Add(string.Format(Resources.Artefact.IndividualsTreat, treatedButNotReged));
+            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored));
+
+            return result.ToArray();
+        }
+    }
+
+    public class LogArtefact : Artefact
+    {
+        public Data.LogRow LogRow { get; set; }
+
+        public double Mass { get; set; }
+
+        public double UnsampledMass { get; set; }
+
+        public int LengthMissing { get; set; }
+
+        public IndividualArtefact[] IndividualArtefacts { get; set; }
+
+        public ArtefactCriticality UnmeasurementsCriticality
+        {
+            get
+            {
+                if (this.LengthMissing > 0)
                 {
                     return ArtefactCriticality.NotCritical;
                 }
@@ -188,58 +239,125 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public CardArtefact(Data.CardRow cardRow)
+        public LogArtefact(Data.LogRow logRow)
         {
-            Card = cardRow;
+            LogRow = logRow;
+
+            LengthMissing = logRow.QuantitySampled() - logRow.Measured() - logRow.QuantityStratified();
+            Mass = Math.Round(logRow.Mass, 3);
+            UnsampledMass = Math.Round(logRow.Mass - logRow.MassStratified() + logRow.MassIndividual(), 3);
+
+            List<IndividualArtefact> result = new List<IndividualArtefact>();
+            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            {
+                IndividualArtefact indArtefact = individualRow.GetFacts();
+                if (indArtefact.GetFacts() > 0) result.Add(indArtefact);
+            }
+            IndividualArtefacts = result.ToArray();
         }
 
 
 
-        public new int GetFacts()
+        public override string[] GetNotices()
         {
-            return (this.EffortMissing ? 1 : 0) + (this.UnsampledMass < 0 ? 1 : 0);
+            List<string> result = new List<string>();
+
+            if (LengthMissing > 0)
+            {
+                result.Add(string.Format(Resources.Artefact.LogLength, LengthMissing));
+            }
+
+            if (OddMassCriticality == ArtefactCriticality.Critical)
+            {
+                result.Add(string.Format(Resources.Artefact.LogMassOdd, -this.UnsampledMass, -this.UnsampledMass / this.Mass, this.Mass));
+            }
+
+            int regedButNotTreated = 0;
+            int treatedButNotReged = 0;
+            int dietNotExplored = 0;
+
+            foreach (IndividualArtefact indArtefact in IndividualArtefacts)
+            {
+                if (indArtefact.RegIDCriticality == ArtefactCriticality.NotCritical)
+                {
+                    regedButNotTreated++;
+                }
+                else if (indArtefact.RegIDCriticality == ArtefactCriticality.Allowed)
+                {
+                    treatedButNotReged++;
+                }
+
+                if (indArtefact.UnweightedDietItemsCriticality == ArtefactCriticality.NotCritical)
+                {
+                    dietNotExplored++;
+                }
+            }
+
+            if (regedButNotTreated > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regedButNotTreated));
+            if (treatedButNotReged > 0) result.Add(string.Format(Resources.Artefact.IndividualsTreat, treatedButNotReged));
+            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored));
+
+            return result.ToArray();
         }
 
         public override string ToString()
         {
-            if (EffortCriticality == ArtefactCriticality.Critical || OddMassCriticality == ArtefactCriticality.Critical)
+            return base.ToString(LogRow.SpeciesRow.KeyRecord.ShortName);
+        }
+
+        public static string[] GetNotices(IEnumerable<LogArtefact> artefacts)
+        {
+            List<string> result = new List<string>();
+
+            int lengthMissing = 0;
+            int oddMass = 0;
+
+            foreach (LogArtefact logArtefact in artefacts)
             {
-                //string result = "[" + Card.ShortPath + "]: ";
-                string result = "<span class = 'hl'>" + Card.FriendlyPath + ": </span>";
-
-                if (EffortCriticality == ArtefactCriticality.Critical)
+                if (logArtefact.LengthMissing > 0)
                 {
-                    result += Resources.Artefact.CardEffort + "; ";
+                    lengthMissing++;
                 }
 
-                if (OddMassCriticality == ArtefactCriticality.Critical)
+                if (logArtefact.OddMassCriticality == ArtefactCriticality.Critical)
                 {
-                    result += string.Format(Resources.Artefact.CardMassOdd, -this.UnsampledMass, -this.UnsampledMass / this.Mass, this.Mass);
+                    oddMass++;
                 }
-
-                return result.TrimEnd("; ".ToCharArray()) + ". ";
             }
-            else return string.Empty;
+
+            if (lengthMissing > 0) result.Add(string.Format(Resources.Artefact.LogLengths, lengthMissing));
+            if (oddMass > 0) result.Add(string.Format(Resources.Artefact.LogMassOdds, oddMass));
+            
+            return result.ToArray();
         }
     }
 
-    public class SpeciesArtefact : Artefact
+    public class CardArtefact : Artefact
     {
-        public Data.SpeciesRow SpeciesRow { get; set; }
+        public Data.CardRow Card { get; set; }
 
-        public int LengthMissing { get; set; }
+        public bool EffortMissing { get; set; }
 
-        public SpeciesFeatureArtefact MassArtefact { get; set; }
+        public LogArtefact[] LogArtefacts { get; set; }
 
-        public SpeciesFeatureArtefact AgeArtefact { get; set; }
-
-        public IndividualArtefact[] IndividualArtefacts { get; set; }
-
-        public ArtefactCriticality Criticality
+        public IndividualArtefact[] IndividualArtefacts
         {
             get
             {
-                if (this.LengthMissing > 0)
+                List<IndividualArtefact> result = new List<IndividualArtefact>();
+                foreach (LogArtefact logArtefact in LogArtefacts)
+                {
+                    result.AddRange(logArtefact.IndividualArtefacts);
+                }
+                return result.ToArray();
+            }
+        }
+
+        public ArtefactCriticality EffortCriticality
+        {
+            get
+            {
+                if (this.EffortMissing)
                 {
                     return ArtefactCriticality.NotCritical;
                 }
@@ -252,82 +370,45 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesArtefact(Data.SpeciesRow speciesRow)
+        public CardArtefact(Data.CardRow cardRow)
         {
-            SpeciesRow = speciesRow;
+            Card = cardRow;
+            EffortMissing = double.IsNaN(cardRow.GetEffort());
+
+            List<LogArtefact> logArtefacts = new List<LogArtefact>();
+            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            {
+                LogArtefact logArtefact = logRow.GetFacts();
+                if (logArtefact.GetFacts() > 0)
+                {
+                    logArtefacts.Add(logArtefact);
+                }
+            }
+            LogArtefacts = logArtefacts.ToArray();
         }
 
 
-
-        public new int GetFacts()
+        public override string[] GetNotices()
         {
-            int indCount = 0;
+            List<string> result = new List<string>();
 
-            foreach (IndividualArtefact indArtefact in IndividualArtefacts)
+            if (EffortCriticality == ArtefactCriticality.Critical)
             {
-                indCount += indArtefact.GetFacts();
+                result.Add(Resources.Artefact.CardEffort);
             }
 
-            return //(stack.IndividualsMissing > 0 ? 1 : 0) +
-                (this.LengthMissing > 0 ? 1 : 0) +
-                (this.AgeArtefact.DeviationsCount > 0 ? 1 : 0) +
-                (this.MassArtefact.DeviationsCount > 0 ? 1 : 0) + indCount;
+            result.AddRange(LogArtefact.GetNotices(LogArtefacts));
+            result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+            return result.ToArray();
         }
 
         public override string ToString()
         {
-            string result = "<span class = 'hl'>" + SpeciesRow.KeyRecord.ShortName + ": </span>";
-            //string result = "[" + SpeciesRow.GetReportFullPresentation() + "]: ";
-
-            //if (IndividualsMissing > 0)
-            //{
-            //    result += string.Format( Resources.Artefact.Specimen,
-            //         SpeciesRow.Species, Quantity,
-            //         QuantityIndividuals, QuantityStratified, IndividualsMissing) + "; ";
-            //}
-
-            if (LengthMissing > 0)
-            {
-                result += string.Format(Resources.Artefact.Length, LengthMissing) + "; ";
-            }
-
-            // Features artefacts
-
-            result += AgeArtefact.ToString();
-            result += MassArtefact.ToString();
-            
-            // Individual artefacts
-
-            List<IndividualArtefact> regedButNotTreated = new List<IndividualArtefact>();
-            List<IndividualArtefact> treatedButNotReged = new List<IndividualArtefact>();
-            List<IndividualArtefact> dietNotExplored = new List<IndividualArtefact>();
-
-            foreach (IndividualArtefact indArtefact in IndividualArtefacts)
-            {
-                if (indArtefact.HasRegID && !indArtefact.Treated)
-                {
-                    regedButNotTreated.Add(indArtefact);
-                }
-                else if (!indArtefact.HasRegID && indArtefact.Treated)
-                {
-                    treatedButNotReged.Add(indArtefact);
-                }
-
-                if (indArtefact.UnweightedDietItems > 0)
-                {
-                    dietNotExplored.Add(indArtefact);
-                }
-            }
-
-            if (regedButNotTreated.Count > 0) result += string.Format(Resources.Artefact.IndividualsRegID, regedButNotTreated.Count);
-            if (treatedButNotReged.Count > 0) result += string.Format(Resources.Artefact.IndividualsTreat, treatedButNotReged.Count);
-            if (dietNotExplored.Count > 0) result += string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored.Count);
-
-            return result.TrimEnd("; .".ToCharArray()) + ". ";
+            return base.ToString(Card.FriendlyPath);
         }
     }
 
-    public class SpeciesFeatureArtefact
+    public class SpeciesFeatureArtefact : Artefact
     {
         public string FeatureName { get; set; }
 
@@ -390,10 +471,10 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-
-        public override string ToString()
+        
+        public override string[] GetNotices()
         {
-            string result = string.Empty;
+            List<string> result = new List<string>();
 
             if (HasRegression)
             {
@@ -401,18 +482,18 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (DeviationsCount != 0)
                     {
-                        result += string.Format( Resources.Artefact.ValueHasOutliers, FeatureName, DeviationsCount) + "; ";
+                        result.Add(string.Format( Resources.Artefact.ValueHasOutliers, FeatureName, DeviationsCount));
                     }
                 }
                 else
                 {
                     if (DeviationsCount == 0)
                     {
-                        result += string.Format(Resources.Artefact.ValueIsRecoverable, FeatureName, UnmeasuredCount) + "; ";
+                        result.Add(string.Format(Resources.Artefact.ValueIsRecoverable, FeatureName, UnmeasuredCount));
                     }
                     else
                     {
-                        result += string.Format( Resources.Artefact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount) + "; ";
+                        result.Add(string.Format( Resources.Artefact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount));
                     }
                 }
             }
@@ -420,96 +501,97 @@ namespace Mayfly.Fish.Explorer
             {
                 if (UnmeasuredCount != 0)
                 {
-                    result += string.Format( Resources.Artefact.ValueIsCritical, FeatureName, UnmeasuredCount) + "; ";
+                    result.Add(string.Format( Resources.Artefact.ValueIsCritical, FeatureName, UnmeasuredCount));
                 }
             }
 
-            if (result != string.Empty) return result = result.TrimEnd("; ".ToCharArray()) + ". ";
-            return result;
-        }
-    }
-
-    public class IndividualArtefact : Artefact
-    {
-        public Data.IndividualRow IndividualRow { get; set; }
-
-        public bool HasRegID { get; set; }
-
-        public bool Treated { get; set; }
-
-        public int UnweightedDietItems { get; set; }
-
-        public ArtefactCriticality RegIDCriticality
-        {
-            get
-            {
-                if (this.HasRegID && !this.Treated)
-                {
-                    return ArtefactCriticality.NotCritical;
-                }
-                else if (!this.HasRegID && this.Treated)
-                {
-                    return ArtefactCriticality.Allowed;
-                }
-                else
-                {
-                    return ArtefactCriticality.Normal;
-                }
-            }
-        }
-
-        public ArtefactCriticality UnweightedDietItemsCriticality
-        {
-            get
-            {
-                if (this.UnweightedDietItems > 0)
-                {
-                    return ArtefactCriticality.NotCritical;
-                }
-                else
-                {
-                    return ArtefactCriticality.Normal;
-                }
-            }
-        }
-
-
-
-        public IndividualArtefact(Data.IndividualRow individualRow)
-        {
-            IndividualRow = individualRow;
-        }
-
-
-
-        public new int GetFacts()
-        {
-            int result = 0;
-            if (this.HasRegID && !this.Treated) result += 1;
-            //if (!stack.HasRegID && stack.Treated) result += 1;
-            if (this.UnweightedDietItems > 0) result += 1;
-            return result;
+            return result.ToArray();
         }
 
         public override string ToString()
         {
-            string result = IndividualRow.GetDescription() + ": ";
+            return base.ToString(string.Empty);
+        }
+    }
 
-            if (HasRegID && !Treated)
-            {
-                result += string.Format( Resources.Artefact.IndividualRegID, IndividualRow.RegID) + "; ";
-            }
-            else if (!HasRegID && Treated)
-            {
-                result +=  Resources.Artefact.IndividualTreat + "; ";
-            }
+    public class SpeciesArtefact : Artefact
+    {
+        public Data.SpeciesRow SpeciesRow { get; set; }
 
-            if (UnweightedDietItems > 0)
-            {
-                result += string.Format( Resources.Artefact.IndividualUnweightedDiet, UnweightedDietItems) + "; ";
-            }
+        public SpeciesFeatureArtefact MassArtefact { get; set; }
 
-            return result.TrimEnd("; ".ToCharArray()) + ". ";
+        public SpeciesFeatureArtefact AgeArtefact { get; set; }
+
+        public LogArtefact[] LogArtefacts { get; set; }
+
+        public IndividualArtefact[] IndividualArtefacts 
+        {
+            get
+            {
+                List<IndividualArtefact> result = new List<IndividualArtefact>();
+                foreach (LogArtefact logArtefact in LogArtefacts)
+                {
+                    result.AddRange(logArtefact.IndividualArtefacts);
+                }
+                return result.ToArray();
+            }
+        }
+
+        public ArtefactCriticality Criticality
+        {
+            get
+            {
+                return Artefact.GetWorst(AgeArtefact.Criticality, MassArtefact.Criticality);
+            }
+        }
+
+
+
+        public SpeciesArtefact(Data.SpeciesRow speciesRow, CardStack stack)
+        {
+            SpeciesRow = speciesRow;
+
+            int sampled = stack.QuantitySampled(speciesRow);
+
+            AgeArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Age);
+            AgeArtefact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
+            var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
+            AgeArtefact.HasRegression = gm.CombinedData.IsRegressionOK;
+            if (gm.CombinedData.IsRegressionOK) AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
+
+            MassArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Mass);
+            MassArtefact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
+            var mm = stack.Parent.FindMassModel(speciesRow.Species);
+            MassArtefact.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
+            if (mm != null && mm.CombinedData.IsRegressionOK) MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
+
+            List<LogArtefact> result = new List<LogArtefact>();
+            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                LogArtefact logArtefact = logRow.GetFacts();
+                if (logArtefact.GetFacts() > 0) result.Add(logArtefact);
+            }
+            LogArtefacts = result.ToArray();
+        }
+
+
+
+
+        public override string[] GetNotices()
+        {
+            List<string> result = new List<string>();
+
+            result.AddRange(AgeArtefact.GetNotices());
+            result.AddRange(MassArtefact.GetNotices());
+            result.AddRange(LogArtefact.GetNotices(LogArtefacts));
+            result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+
+            return result.ToArray();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString(SpeciesRow.KeyRecord.ShortName);
         }
     }
 }
