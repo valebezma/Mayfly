@@ -191,7 +191,7 @@ namespace Mayfly.Benthos
         {
             InitializeComponent();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -313,7 +313,7 @@ namespace Mayfly.Benthos
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
         }
 
         private void Clear(DataGridViewRow gridRow)
@@ -934,7 +934,7 @@ namespace Mayfly.Benthos
         public void LoadData(string filename)
         {
             Clear();
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             Data.Read(filename);
             LoadData();
             FileName = filename;
@@ -1570,7 +1570,7 @@ namespace Mayfly.Benthos
 
             UserSettings.Interface.ExportDialog.FileName =
                 IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.GetSuggestedName());
+                Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {

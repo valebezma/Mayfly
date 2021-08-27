@@ -141,7 +141,7 @@
   <data name="IndividualUnweightedDiet" xml:space="preserve">
     <value>Has {0} unweighted individuals in diet sample. Check out "Diet recovery" wizard</value>
   </data>
-  <data name="Length" xml:space="preserve">
+  <data name="LogLength" xml:space="preserve">
     <value>There are {0} specimen with length not measured.
 These specimens wouldn't be processed in any estimation</value>
   </data>
@@ -150,7 +150,7 @@ These specimens wouldn't be processed in any estimation</value>
 but in individuals log there are {2} specimen and
 in stratified samples there are {3} specimen, so {4} are missing</value>
   </data>
-  <data name="CardMassOdd" xml:space="preserve">
+  <data name="LogMassOdd" xml:space="preserve">
     <value>Mass of sampled fish is {0:N3} kg or {1:P1} more than total mass in card ({2:N3} kg)</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
@@ -178,5 +178,11 @@ However, it can be obtained from length (but regression contains {2} outliers)</
   </data>
   <data name="CardMassOdd_1" xml:space="preserve">
     <value>{0} of {1} kg ({2:P1}) of fish is not treated</value>
+  </data>
+  <data name="LogLengths" xml:space="preserve">
+    <value>There are {0} log records with unmeasured specimen</value>
+  </data>
+  <data name="LogMassOdds" xml:space="preserve">
+    <value>There are {0} log records with mass sampled more than total mass</value>
   </data>
 </root>

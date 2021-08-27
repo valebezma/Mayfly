@@ -10,11 +10,11 @@ using Mayfly.Fish.Explorer;
 using System.Data;
 using System.Collections.Generic;
 
-namespace Mayfly.Fish.Explorer
+namespace Mayfly.Extensions
 {
     public static partial class DataExtensions
     {
-        public static Data GetBio(this Data data1)
+        public static Data GetFishBio(this Data data1)
         {
             Data data = data1.Copy();
 
@@ -123,37 +123,5 @@ namespace Mayfly.Fish.Explorer
             
             return data;
         }
-
-        //public static void ExportBio(this Data data, string filename)
-        //{
-        //    data.ExportBio(filename, true);
-        //}
-
-        //public static void ExportBio(this Data data, string filename, bool prepare)
-        //{
-        //    File.WriteAllText(filename,
-        //        StringCipher.Encrypt((prepare ? data.GetBio() : data).GetXml(), 
-        //        "bio"));
-        //}
-
-        //public static void ImportBio(this Data data, string filename)
-        //{
-        //    ImportBio(data, filename, true);
-        //}
-
-        //public static void ImportBio(this Data data, string filename, bool clear)
-        //{
-        //    Data spcData = new Data();
-        //    string contents = StringCipher.Decrypt(File.ReadAllText(filename), "bio");
-        //    spcData.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-        //    spcData.Solitary.Investigator = Mayfly.StringCipher.Decrypt(spcData.Solitary.Sign, spcData.Solitary.When.ToString("s"));
-        //    spcData.InitializeBio();
-        //    spcData.WeightModels.VisualConfirmation = false;
-        //    data.WeightModels.Involve(spcData.WeightModels, clear);
-
-        //    data.GrowthModels.VisualConfirmation = false;
-        //    data.GrowthModels.Involve(spcData.GrowthModels, clear);
-        //    Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(filename));
-        //}
     }
 }

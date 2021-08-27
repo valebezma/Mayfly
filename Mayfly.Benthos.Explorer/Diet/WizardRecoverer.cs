@@ -56,7 +56,7 @@ namespace Mayfly.Benthos.Explorer
         public WizardRecoverer(Data data) : this()
         {
             BadData = data;
-            NaturalData = new Data(Benthos.UserSettings.SpeciesIndex);
+            NaturalData = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
             CategorialVariables = new DataColumn[] {
                 NaturalData.Individual.InstarColumn
             };

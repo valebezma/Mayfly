@@ -16,8 +16,8 @@ namespace Mayfly.Benthos.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
-                if (result.Contains(cardRow.GetSamplerRow())) continue;
-                result.Add(cardRow.GetSamplerRow());
+                if (result.Contains(cardRow.SamplerRow)) continue;
+                result.Add(cardRow.SamplerRow);
             }
 
             return result.ToArray();

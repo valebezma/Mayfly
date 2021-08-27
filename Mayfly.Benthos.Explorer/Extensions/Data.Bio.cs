@@ -435,7 +435,7 @@ namespace Mayfly.Extensions
 
         
 
-        public static Data GetBio(this Data data1)
+        public static Data GetBenthosBio(this Data data1)
         {
             Data data = (Data)((DataSet)data1).Copy();
 

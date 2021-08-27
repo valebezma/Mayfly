@@ -477,25 +477,25 @@ namespace Mayfly.Wild
 
 
 
-        public Samplers.SamplerRow[] GetSamplers(Samplers index)
+        public Samplers.SamplerRow[] GetSamplers()
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
 
             foreach (Data.CardRow cardRow in this)
             {
                 if (cardRow.IsSamplerNull()) continue;
-                if (result.Contains(cardRow.GetSamplerRow(index))) continue;
-                result.Add(cardRow.GetSamplerRow(index));
+                if (result.Contains(cardRow.SamplerRow)) continue;
+                result.Add(cardRow.SamplerRow);
             }
 
             return result.ToArray();
         }
 
-        public string[] GetSamplersList(Samplers index)
+        public string[] GetSamplersList()
         {
             List<string> result = new List<string>();
 
-            foreach (Samplers.SamplerRow samplerRow in this.GetSamplers(index))
+            foreach (Samplers.SamplerRow samplerRow in this.GetSamplers())
             {
                 result.Add(samplerRow.Sampler);
             }

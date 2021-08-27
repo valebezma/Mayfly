@@ -207,15 +207,8 @@ namespace Mayfly.Benthos.Explorer
                     if (_data.Read(filenames[i]))
                     {
                         if (_data.Card.Count == 0)
-                            Log.Write(string.Format("File is empty: {0}.", filenames[i]));
-                        else
                         {
-                            foreach (Data.CardRow cardRow in _data.Card)
-                            {
-                                cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerRow().Sampler;
-                            }
-
-                            //Data.CardRow[] cardRows = _data.CopyTo(data);
+                            Log.Write(string.Format("File is empty: {0}.", filenames[i]));
                         }
                     }
                 }
@@ -321,8 +314,8 @@ namespace Mayfly.Benthos.Explorer
             {
                 foreach (Data.CardRow cardRow in data.Card)
                 {
+                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, cardRow.GetSuggestedName());
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
             }
@@ -1475,7 +1468,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
             {
-                data.GetBio().ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
+                data.GetBenthosBio().ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
             }
         }
     }

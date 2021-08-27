@@ -67,6 +67,65 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
+
+
+
+
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string field, object value)
+        {
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (Data.IndividualRow indRow in stack.GetIndividualRows(spcRow))
+            {
+                if (indRow[field].Equals(value))
+                {
+                    result.Add(indRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string[] field, object[] value)
+        {
+            List<Data.IndividualRow[]> packs = new List<Data.IndividualRow[]>();
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            for (int i = 0; i < field.Length; i++)
+            {
+                Data.IndividualRow[] pack = stack.GetIndividuals(spcRow, field[i], value[i]);
+                packs.Add(pack);
+
+                foreach (Data.IndividualRow indRow in pack)
+                {
+                    if (!result.Contains(indRow))
+                    {
+                        result.Add(indRow);
+                    }
+                }
+            }
+
+            for (int i = 0; i < result.Count; i++)// (Data.IndividualRow indRow in result)
+            {
+                foreach (Data.IndividualRow[] pack in packs)
+                {
+                    if (!pack.Contains(result[i]))
+                    {
+                        result.RemoveAt(i);
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            return result.ToArray();
+        }
+
+
+
+
+
+
         public static Samplers.SamplerRow[] GetSamplers(this CardStack stack)
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
@@ -74,8 +133,8 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
-                if (result.Contains(cardRow.GetSamplerRow())) continue;
-                result.Add(cardRow.GetSamplerRow());
+                if (result.Contains(cardRow.SamplerRow)) continue;
+                result.Add(cardRow.SamplerRow);
             }
 
             return result.ToArray();

@@ -178,7 +178,7 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            data = new Data(Fish.UserSettings.SpeciesIndex);
+            data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
             FullStack = new CardStack(); //.ConvertFrom(data);
             AllowedStack = new CardStack();
 
@@ -370,14 +370,11 @@ namespace Mayfly.Fish.Explorer
                     if (_data.Read(filenames[i]))
                     {
                         if (_data.Card.Count == 0)
+                        {
                             Log.Write(string.Format("File is empty: {0}.", filenames[i]));
+                        }
                         else
                         {
-                            foreach (Data.CardRow cardRow in _data.Card)
-                            {
-                                cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerSign();
-                            }
-
                             _data.CopyTo(data);
                         }
                     }
@@ -518,8 +515,8 @@ namespace Mayfly.Fish.Explorer
                 }
                 else foreach (Data.CardRow cardRow in data.Card)
                 {
+                    string filename = IO.SuggestName(fbdBackup.SelectedPath, cardRow.GetSuggestedName());
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(fbdBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                 }
             }
@@ -979,7 +976,7 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            e.Result = AllowedStack.GetArtefacts(true);
+            e.Result = AllowedStack.GetArtefacts();
         }
 
         private void artefactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -1207,7 +1204,7 @@ namespace Mayfly.Fish.Explorer
             { }
             else
             {
-                Samplers.SamplerRow samplerRow = cardRow.GetSamplerRow();
+                Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
                 if (samplerRow.IsEffortFormulaNull())
                 {
                     foreach (DataGridViewColumn gridColumn in new DataGridViewColumn[] { columnCardMesh,
@@ -2373,7 +2370,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (var pair in outliersData)
             {
-                indRows.AddRange(data.GetIndividuals(selectedStatSpc,
+                indRows.AddRange(FullStack.GetIndividuals(selectedStatSpc,
                     (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
                     new object[] { pair.X, pair.Y }));
             }
@@ -3249,7 +3246,7 @@ namespace Mayfly.Fish.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
             {
                 Data.LogRow logRow = LogRow(gridRow);
-                gridRow.Selected = !logRow.IsMassNull() && logRow.Mass < FullStack.MassStratified(logRow) + FullStack.MassIndividual(logRow);
+                gridRow.Selected = !logRow.IsMassNull() && logRow.Mass < logRow.MassStratified() + logRow.MassIndividual();
             }
         }
 

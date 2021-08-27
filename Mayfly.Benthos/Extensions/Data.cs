@@ -14,11 +14,9 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Suggested name for data card with extension</returns>
-        public static string GetSuggestedName(this Data data)
+        public static string GetSuggestedName(this Data.CardRow cardRow)
         {
-            return data.GetSuggestedName(
-                UserSettings.Interface.Extension,
-                Service.Sampler(data.Solitary.Sampler).ShortName);            
+            return cardRow.GetSuggestedName(UserSettings.Interface.Extension);            
         }
 
         public static SpeciesKey GetSpeciesKey(this Data data)
@@ -59,16 +57,6 @@ namespace Mayfly.Benthos
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cardRow"></param>
-        /// <returns>Index record for specified sampler</returns>
-        public static Samplers.SamplerRow GetSamplerRow(this Data.CardRow cardRow)
-        {
-            return cardRow.GetSamplerRow(Benthos.UserSettings.SamplersIndex);
-        }
 
         public static SubstrateSample GetSubstrate(this Data.CardRow cardRow)
         {

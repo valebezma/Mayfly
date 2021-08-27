@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer
                         Mathematics.Properties.Resources.NoneRed :
                         Mathematics.Properties.Resources.None;
                     gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
-                        string.Format(Resources.Artefact.CardMassOdd, -artefact.UnsampledMass, -artefact.UnsampledMass / artefact.Mass, artefact.Mass);
+                        string.Format(Resources.Artefact.LogMassOdd, -artefact.UnsampledMass, -artefact.UnsampledMass / artefact.Mass, artefact.Mass);
 
                     artefactCount++;
                 }
@@ -103,7 +103,7 @@ namespace Mayfly.Fish.Explorer
                         Mathematics.Properties.Resources.None;
 
                     gridRow.Cells[columnArtefactLength.Index].ToolTipText = //artefact.ToString();
-                        string.Format(Resources.Artefact.Length,
+                        string.Format(Resources.Artefact.LogLength,
                         artefact.LengthMissing);
                 }
                 else

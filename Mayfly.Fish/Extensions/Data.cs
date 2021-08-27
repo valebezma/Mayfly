@@ -10,11 +10,9 @@ namespace Mayfly.Fish
 {
     public static partial class DataExtensions
     {
-        public static string GetSuggestedName(this Data data)
+        public static string GetSuggestedName(this Data.CardRow cardRow)
         {
-            return data.GetSuggestedName(
-                UserSettings.Interface.Extension,
-                data.Solitary.GetSamplerSign(false));
+            return cardRow.GetSuggestedName(UserSettings.Interface.Extension);
         }
 
         public static SpeciesKey GetSpeciesKey(this Data data)
@@ -97,21 +95,16 @@ namespace Mayfly.Fish
 
 
 
-        public static Samplers.SamplerRow GetSamplerRow(this Data.CardRow cardRow)
-        {
-            return cardRow.GetSamplerRow(Fish.UserSettings.SamplersIndex);
-        }
-
         public static FishSamplerType GetGearType(this Data.CardRow cardRow)
         {
-            return cardRow.IsSamplerNull() ? FishSamplerType.None : cardRow.GetSamplerRow().GetSamplerType();
+            return cardRow.SamplerRow.GetSamplerType();
         }
 
         public static string GetSamplerSign(this Data.CardRow cardRow) => cardRow.GetSamplerSign(true);
 
         public static string GetSamplerSign(this Data.CardRow cardRow, bool full)
         {
-            Samplers.SamplerRow samplerRow = cardRow.GetSamplerRow();
+            Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
             string result = full ? samplerRow.Sampler : samplerRow.ShortName;
             result += " " + cardRow.GetGearClass();
             return result;
@@ -154,9 +147,9 @@ namespace Mayfly.Fish
 
             if (cardRow.IsSamplerNull()) return double.NaN;
 
-            if (cardRow.GetSamplerRow().IsEffortFormulaNull()) return double.NaN;
+            if (cardRow.SamplerRow.IsEffortFormulaNull()) return double.NaN;
 
-            switch (cardRow.GetSamplerRow().EffortFormula)
+            switch (cardRow.SamplerRow.EffortFormula)
             {
                 case "EL":
                     if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull())
@@ -394,9 +387,9 @@ namespace Mayfly.Fish
         {
             double result = double.NaN;
             if (cardRow.IsSamplerNull()) return result;
-            if (cardRow.GetSamplerRow().IsEffortFormulaNull()) return result;
+            if (cardRow.SamplerRow.IsEffortFormulaNull()) return result;
 
-            switch (cardRow.GetSamplerRow().EffortFormula)
+            switch (cardRow.SamplerRow.EffortFormula)
             {
                 case "MTLH":
                     if (!cardRow.IsLengthNull() && !cardRow.IsHeightNull() && !cardRow.IsSpanNull())
@@ -419,17 +412,20 @@ namespace Mayfly.Fish
 
         public static string GetGearClass(this Data.CardRow cardRow)
         {
-            if (cardRow.GetSamplerRow().EffortFormula.Contains("M")) {
-                if (cardRow.IsMeshNull()) return string.Empty;
-                return cardRow.Mesh.ToString("◊ 0");
-            } else if (cardRow.GetSamplerRow().EffortFormula.Contains("J")) {
-                if (cardRow.IsHookNull()) return string.Empty;
-                return cardRow.Hook.ToString("ʔ 0");
-            } else {
+            if (cardRow.IsSamplerNull()) return string.Empty;
+
+            if (cardRow.SamplerRow.EffortFormula.Contains("M"))
+            {
+                return cardRow.IsMeshNull() ? string.Empty : cardRow.Mesh.ToString("◊ 0");
+            }
+            else if (cardRow.SamplerRow.EffortFormula.Contains("J"))
+            {
+                return cardRow.IsHookNull() ? string.Empty : cardRow.Hook.ToString("ʔ 0");
+            }
+            else
+            {
                 return cardRow.When.ToString("yyyy MMMM");
             }
-
-            //return string.Empty;
         }
 
 
