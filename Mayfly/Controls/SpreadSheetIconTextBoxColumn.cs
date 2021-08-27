@@ -59,7 +59,7 @@ namespace Mayfly.Controls
     {
         private Image imageValue;
         private Size imageSize;
-        private Padding initialPadding;
+        private DataGridViewCellStyle style;
 
         public override object Clone()
         {
@@ -95,7 +95,8 @@ namespace Mayfly.Controls
                     return;
                 }
 
-                initialPadding = this.DataGridView.Columns[this.ColumnIndex].DefaultCellStyle.Padding;
+                style = this.DataGridView == null ? this.OwningRow.DefaultCellStyle : this.DataGridView.Columns[this.ColumnIndex].DefaultCellStyle;
+                Padding padding = style.Padding;
 
                 if (this.imageValue != value)
                 {
@@ -103,15 +104,15 @@ namespace Mayfly.Controls
                     this.imageSize = value.Size;
                 }
 
-                switch (this.InheritedStyle.Alignment)
+                switch (style.Alignment)
                 {
                     case DataGridViewContentAlignment.BottomRight:
                     case DataGridViewContentAlignment.MiddleRight:
                     case DataGridViewContentAlignment.TopRight:
-                        this.Style.Padding = new Padding(imageSize.Width + 2 * initialPadding.Left, initialPadding.Top, initialPadding.Right, initialPadding.Bottom);
+                        this.Style.Padding = new Padding(imageSize.Width + 2 * padding.Left, padding.Top, padding.Right, padding.Bottom);
                         break;
                     default:
-                        this.Style.Padding = new Padding(initialPadding.Left, initialPadding.Top, initialPadding.Right * 2 + imageSize.Width, initialPadding.Bottom);
+                        this.Style.Padding = new Padding(padding.Left, padding.Top, padding.Right * 2 + imageSize.Width, padding.Bottom);
                         break;
                 }
             }
@@ -137,29 +138,30 @@ namespace Mayfly.Controls
                 graphics.SetClip(cellBounds);
 
                 Point imageLocation = new Point();
+                Padding padding = style.Padding;
 
                 switch (this.InheritedStyle.Alignment)
                 {
                     case DataGridViewContentAlignment.BottomLeft:
                     case DataGridViewContentAlignment.BottomCenter:
-                        imageLocation = new Point(cellBounds.Width - initialPadding.Right - imageSize.Width, cellBounds.Height - imageSize.Height - initialPadding.Bottom);
+                        imageLocation = new Point(cellBounds.Width - padding.Right - imageSize.Width, cellBounds.Height - imageSize.Height - padding.Bottom);
                         break;
                     case DataGridViewContentAlignment.MiddleLeft:
                     case DataGridViewContentAlignment.MiddleCenter:
-                        imageLocation = new Point(cellBounds.Width - initialPadding.Right - imageSize.Width, cellBounds.Height / 2 - imageSize.Height / 2);
+                        imageLocation = new Point(cellBounds.Width - padding.Right - imageSize.Width, cellBounds.Height / 2 - imageSize.Height / 2);
                         break;
                     case DataGridViewContentAlignment.TopLeft:
                     case DataGridViewContentAlignment.TopCenter:
-                        imageLocation = new Point(cellBounds.Width - initialPadding.Right - imageSize.Width, initialPadding.Top);
+                        imageLocation = new Point(cellBounds.Width - padding.Right - imageSize.Width, padding.Top);
                         break;
                     case DataGridViewContentAlignment.BottomRight:
-                        imageLocation = new Point(initialPadding.Left, cellBounds.Height - imageSize.Height - initialPadding.Bottom);
+                        imageLocation = new Point(padding.Left, cellBounds.Height - imageSize.Height - padding.Bottom);
                         break;
                     case DataGridViewContentAlignment.MiddleRight:
-                        imageLocation = new Point(initialPadding.Left, cellBounds.Height / 2 - imageSize.Height / 2);
+                        imageLocation = new Point(padding.Left, cellBounds.Height / 2 - imageSize.Height / 2);
                         break;
                     case DataGridViewContentAlignment.TopRight:
-                        imageLocation = new Point(initialPadding.Left, initialPadding.Top);
+                        imageLocation = new Point(padding.Left, padding.Top);
                         break;
                 }
 

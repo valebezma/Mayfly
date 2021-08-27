@@ -67,14 +67,19 @@ namespace Mayfly.Benthos.Explorer
 
         public override string ToString()
         {
-            string result = Card.ToString() + ": ";
-            
+            return base.ToString(Card.ToString());
+        }
+
+        public override string[] GetNotices(bool includeChildren)
+        {
+            List<string> result = new List<string>();
+
             if (SamplingSquareMissing)
             {
-                result += Resources.Artefact.SampleSquare + "; ";
+                result.Add(Resources.Artefact.SampleSquare);
             }
 
-            return result.TrimEnd("; ".ToCharArray()) + ". ";
+            return result.ToArray();
         }
     }
 
@@ -102,16 +107,21 @@ namespace Mayfly.Benthos.Explorer
             return (this.ReferenceMissing ? 1 : 0);
         }
 
-        public override string ToString()
+        public override string[] GetNotices(bool includeChildren)
         {
-            string result = SpeciesRow.Species + ": ";
+            List<string> result = new List<string>();
 
             if (ReferenceMissing)
             {
-                result += Resources.Artefact.ReferenceNull + "; ";
+                result.Add(Resources.Artefact.ReferenceNull);
             }
 
-            return result.TrimEnd("; .".ToCharArray()) + ". ";
+            return result.ToArray();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString(SpeciesRow.Species);
         }
     }
 }

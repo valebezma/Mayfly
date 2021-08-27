@@ -584,7 +584,7 @@ namespace Mayfly.Fish
         public static string GetDescription(this Data.IndividualRow indRow)
         {
             string result = string.Empty;
-            result += indRow.Species;
+            result += indRow.LogRow.SpeciesRow.KeyRecord.ShortName;
             if (!indRow.IsRegIDNull()) result += string.Format(" #{0}: ", indRow.RegID);
             if (!indRow.IsLengthNull()) result += string.Format(" L={0};", indRow.Length);
             if (!indRow.IsMassNull()) result += string.Format(" W={0};", indRow.Mass);

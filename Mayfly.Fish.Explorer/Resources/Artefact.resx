@@ -124,26 +124,22 @@
     <value>Card have not enough information to calculate fishing effort</value>
   </data>
   <data name="IndividualRegID" xml:space="preserve">
-    <value>Had sample #{0} but doesn't contain any registered infomation, e. g. age, fecundity, diet or parasitological issues</value>
+    <value>Had sample #{0} but doesn't contain any registered information, e. g. age, fecundity, diet or parasitological issues</value>
   </data>
   <data name="IndividualsRegID" xml:space="preserve">
-    <value>{0} individuals have sample # but don't contain any registered infomation, e. g. age, fecundity, diet or parasitological issues</value>
-  </data>
-  <data name="IndividualsTreat" xml:space="preserve">
-    <value>{0} samples, e. g. age, fecundity, diet or parasitological issues, were not marked with #</value>
+    <value>{0} individuals have some issues with sample #</value>
   </data>
   <data name="IndividualsUnweightedDiet" xml:space="preserve">
-    <value>{0} diet samples have unweighted individuals in diet sample. Use "Diet recovery" wizard to fix it</value>
+    <value>{0} diet samples have unweighted individuals in diet sample</value>
   </data>
-  <data name="IndividualTreat" xml:space="preserve">
+  <data name="IndividualRegID_1" xml:space="preserve">
     <value>Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with #</value>
   </data>
   <data name="IndividualUnweightedDiet" xml:space="preserve">
-    <value>Has {0} unweighted individuals in diet sample. Check out "Diet recovery" wizard</value>
+    <value>Has {0} unweighted individuals in diet sample</value>
   </data>
   <data name="LogLength" xml:space="preserve">
-    <value>There are {0} specimen with length not measured.
-These specimens wouldn't be processed in any estimation</value>
+    <value>There are {0} specimen with length not measured</value>
   </data>
   <data name="Specimen" xml:space="preserve">
     <value>Total quantity of {0} specified as {1}
@@ -151,7 +147,7 @@ but in individuals log there are {2} specimen and
 in stratified samples there are {3} specimen, so {4} are missing</value>
   </data>
   <data name="LogMassOdd" xml:space="preserve">
-    <value>Mass of sampled fish is {0:N3} kg or {1:P1} more than total mass in card ({2:N3} kg)</value>
+    <value>Record mass ({0:n3} kg) is {1:p0} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Quantity of specimens can't be calculated 
@@ -173,16 +169,10 @@ However, it can be obtained from length</value>
     <value>{0} of {1} specimen is not measured.
 However, it can be obtained from length (but regression contains {2} outliers)</value>
   </data>
-  <data name="CardMassEven" xml:space="preserve">
-    <value>Mass of sample equals total mass of card</value>
-  </data>
-  <data name="CardMassOdd_1" xml:space="preserve">
-    <value>{0} of {1} kg ({2:P1}) of fish is not treated</value>
-  </data>
   <data name="LogLengths" xml:space="preserve">
     <value>There are {0} log records with unmeasured specimen</value>
   </data>
   <data name="LogMassOdds" xml:space="preserve">
-    <value>There are {0} log records with mass sampled more than total mass</value>
+    <value>There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample</value>
   </data>
 </root>

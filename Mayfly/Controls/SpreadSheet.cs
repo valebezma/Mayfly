@@ -2833,6 +2833,19 @@ namespace Mayfly.Controls
             gridRow.Visible = true;
         }
 
+        public DataGridViewRow Find(DataGridViewColumn column, int id)
+        {
+            foreach (DataGridViewRow gridRow in Rows)
+            {
+                if ((int)gridRow.Cells[column.Index].Value == id)
+                {
+                    return gridRow;
+                }
+            }
+
+            return null;
+        }
+
         #endregion
 
         #region Cell methods

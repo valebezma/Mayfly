@@ -545,7 +545,7 @@ namespace Mayfly.Benthos.Explorer
 
             foreach (Artefact artefact in (Artefact[])e.Result)
             {
-                count += artefact.GetFacts();
+                count += artefact.FactsCount;
             }
 
             labelArtefacts.Visible = pictureBoxArtefacts.Visible = count > 0;

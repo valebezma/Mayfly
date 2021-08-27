@@ -135,11 +135,9 @@ namespace Mayfly.Fish.Explorer
 
                 labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
                 labelCardCountValue.Text = Constants.Null;
-                labelWgtValue.Text = Constants.Null;
-                labelQtyValue.Text = Constants.Null;
 
-                statusQuantity.ResetFormatted(Constants.Null);
-                statusMass.ResetFormatted(Constants.Null);
+                updateQty(0);
+                updateMass(0);
 
                 IsBusy = false;
             }
@@ -196,9 +194,7 @@ namespace Mayfly.Fish.Explorer
                 AllowedStack.PopulateSpeciesMenu(menuItemMSY, speciesMSY_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
-                double q = FullStack.Quantity();
-                labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
-                statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
+                updateQty(FullStack.Quantity());
             }
 
             if (!modelCalc.IsBusy && !isClosing)
@@ -209,6 +205,34 @@ namespace Mayfly.Fish.Explorer
             }
 
             statusBio.Visible = data.IsBioLoaded;
+        }
+
+        private void updateQty(double q)
+        {
+            if (q == 0)
+            {
+                labelWgtValue.Text = Constants.Null;
+                statusQuantity.ResetFormatted(Constants.Null);
+            }
+            else
+            {
+                labelQtyValue.Text = Wild.Service.GetFriendlyQuantity((int)q);
+                statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
+            }
+        }
+
+        private void updateMass(double w)
+        {
+            if (w == 0)
+            {
+                labelWgtValue.Text = Constants.Null;
+                statusMass.ResetFormatted(Constants.Null);
+            }
+            else
+            {
+                labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
+                statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
+            }
         }
 
         private void speciesInd_Click(object sender, EventArgs e)
