@@ -20,15 +20,18 @@ namespace Mayfly.Wild
 
                 Report.Table table = new Report.Table(title);
 
-                string[] cols = new string[] {
-                        "Frequency", "Length", "Mass", "RegID", "Age",
-                        "Sex", "Maturity", "Grade", "Instar" };
+                string[] cols = new string[]
+                {
+                        "Frequency", "Length", "Mass", "Tally", "Age",
+                        "Sex", "Maturity", "Grade", "Instar"
+                };
 
                 #region Compiling headers
 
-                List<string> captions = new List<string>();
-
-                captions.Add("№");
+                List<string> captions = new List<string>
+                {
+                    "№"
+                };
 
                 foreach (string col in cols)
                 {
@@ -41,9 +44,10 @@ namespace Mayfly.Wild
                 captions.AddRange(data.Variable.Names(variables));
                 captions.Add(Resources.Reports.Card.Comments);
 
-                List<double> widths = new List<double>();
-
-                widths.Add(.05);
+                List<double> widths = new List<double>
+                {
+                    .05
+                };
 
                 for (int i = 0; i < captions.Count - 2; i++)
                 {

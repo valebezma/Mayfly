@@ -854,7 +854,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>Sample #</value>
+    <value>Tally</value>
   </data>
   <data name="ColumnRegID.Width" type="System.Int32, mscorlib">
     <value>75</value>

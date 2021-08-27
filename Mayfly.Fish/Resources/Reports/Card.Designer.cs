@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Resources.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample #.
+        ///   Looks up a localized string similar to Tally.
         /// </summary>
         public static string IndNo {
             get {

@@ -585,7 +585,7 @@ namespace Mayfly.Fish
         {
             string result = string.Empty;
             result += indRow.LogRow.SpeciesRow.KeyRecord.ShortName;
-            if (!indRow.IsRegIDNull()) result += string.Format(" #{0}: ", indRow.RegID);
+            if (!indRow.IsTallyNull()) result += string.Format(" #{0}: ", indRow.Tally);
             if (!indRow.IsLengthNull()) result += string.Format(" L={0};", indRow.Length);
             if (!indRow.IsMassNull()) result += string.Format(" W={0};", indRow.Mass);
             if (!indRow.IsAgeNull()) result += string.Format(" A={0}", (Age)indRow.Age);
@@ -725,8 +725,8 @@ namespace Mayfly.Fish
 
             result.Solitary.Sampler = 0;
 
-            if (indRow.IsRegIDNull()) { result.Solitary.SetLabelNull(); }
-            else { result.Solitary.Label = indRow.RegID; }
+            if (indRow.IsTallyNull()) { result.Solitary.SetLabelNull(); }
+            else { result.Solitary.Label = indRow.Tally; }
 
             if (indRow.IsMassNull()) { result.Solitary.SetSquareNull(); }
             else { result.Solitary.Square = indRow.Mass; }
@@ -783,9 +783,9 @@ namespace Mayfly.Fish
             Data result = new Data();
             result.ReadXml(new StringReader(organRow.Infection));
 
-            if (!organRow.IndividualRow.IsRegIDNull())
+            if (!organRow.IndividualRow.IsTallyNull())
             {
-                result.Solitary.Label = organRow.IndividualRow.RegID;
+                result.Solitary.Label = organRow.IndividualRow.Tally;
             }
 
             result.Solitary.Comments = organRow.IndividualRow.GetDescription();

@@ -228,7 +228,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (individualRow.IsLengthNull()) continue;
                 if (!size.LeftClosedContains(individualRow.Length)) continue;
-                if (individualRow.IsRegIDNull()) continue;
+                if (individualRow.IsTallyNull()) continue;
                 if (!individualRow.IsAgeNull()) continue;
                 result++;
             }
@@ -306,7 +306,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows())
             {
                 if (individualRow.IsLengthNull()) continue;
-                if (individualRow.IsRegIDNull()) continue;
+                if (individualRow.IsTallyNull()) continue;
                 result++;
             }
 
@@ -320,7 +320,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue;
-                if (individualRow.IsRegIDNull()) continue;
+                if (individualRow.IsTallyNull()) continue;
                 result++;
             }
 
@@ -333,7 +333,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
-                if (individualRow.IsRegIDNull()) continue;
+                if (individualRow.IsTallyNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
                 if (!size.LeftClosedContains(individualRow.Length)) continue;
                 result++;

@@ -79,29 +79,11 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Had sample #{0} but doesn&apos;t contain any registered information, e. g. age, fecundity, diet or parasitological issues.
+        ///   Looks up a localized string similar to {0} individuals have some issues with tally.
         /// </summary>
-        internal static string IndividualRegID {
+        internal static string IndividualsTally {
             get {
-                return ResourceManager.GetString("IndividualRegID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with #.
-        /// </summary>
-        internal static string IndividualRegID_1 {
-            get {
-                return ResourceManager.GetString("IndividualRegID_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} individuals have some issues with sample #.
-        /// </summary>
-        internal static string IndividualsRegID {
-            get {
-                return ResourceManager.GetString("IndividualsRegID", resourceCulture);
+                return ResourceManager.GetString("IndividualsTally", resourceCulture);
             }
         }
         
@@ -111,6 +93,24 @@ namespace Mayfly.Fish.Explorer.Resources {
         internal static string IndividualsUnweightedDiet {
             get {
                 return ResourceManager.GetString("IndividualsUnweightedDiet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with tally.
+        /// </summary>
+        internal static string IndividualTallyMissing {
+            get {
+                return ResourceManager.GetString("IndividualTallyMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had tally ({0}) but doesn&apos;t contain any registered information, e. g. age, fecundity, diet or parasitological issues.
+        /// </summary>
+        internal static string IndividualTallyOdd {
+            get {
+                return ResourceManager.GetString("IndividualTallyOdd", resourceCulture);
             }
         }
         
@@ -142,7 +142,16 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p0} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3}).
+        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is more than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({1:n3}) which is fine.
+        /// </summary>
+        internal static string LogMassMissing {
+            get {
+                return ResourceManager.GetString("LogMassMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3}).
         /// </summary>
         internal static string LogMassOdd {
             get {

@@ -556,7 +556,7 @@ namespace Mayfly.Wild
 
             public string SamplerPresentation
             {
-                get 
+                get
                 {
                     return IsSamplerNull() ? Constants.Null : SamplerRow.Sampler;
                 }

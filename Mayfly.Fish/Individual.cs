@@ -220,8 +220,8 @@ namespace Mayfly.Fish
             if (IndividualRow.IsAgeNull()) textBoxAge.Text = string.Empty;
             else textBoxAge.Text = new Age(IndividualRow.Age).ToString();
 
-            if (IndividualRow.IsRegIDNull()) textBoxRegID.Text = string.Empty;
-            else textBoxRegID.Text = IndividualRow.RegID.ToString();
+            if (IndividualRow.IsTallyNull()) textBoxRegID.Text = string.Empty;
+            else textBoxRegID.Text = IndividualRow.Tally.ToString();
 
             if (IndividualRow.IsCommentsNull()) textBoxComments.Text = string.Empty;
             else textBoxComments.Text = IndividualRow.Comments;
@@ -316,8 +316,8 @@ namespace Mayfly.Fish
             if (textBoxAge.Text.IsAcceptable()) IndividualRow.Age = new Age(textBoxAge.Text).Value;
             else IndividualRow.SetAgeNull();
 
-            if (textBoxRegID.Text.IsAcceptable()) IndividualRow.RegID = textBoxRegID.Text;
-            else IndividualRow.SetRegIDNull();
+            if (textBoxRegID.Text.IsAcceptable()) IndividualRow.Tally = textBoxRegID.Text;
+            else IndividualRow.SetTallyNull();
 
             if (textBoxComments.Text.IsAcceptable()) IndividualRow.Comments = textBoxComments.Text;
             else IndividualRow.SetCommentsNull();

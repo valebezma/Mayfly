@@ -130,7 +130,7 @@
     <value>Species: 0</value>
   </data>
   <data name="IndNo" xml:space="preserve">
-    <value>Sample #</value>
+    <value>Tally</value>
   </data>
   <data name="Control" xml:space="preserve">
     <value>Control</value>

@@ -139,6 +139,8 @@ namespace Mayfly.Fish.Explorer
                 updateQty(0);
                 updateMass(0);
 
+                //data.RefreshBios();
+
                 IsBusy = false;
             }
             else
@@ -184,7 +186,12 @@ namespace Mayfly.Fish.Explorer
                     listViewInvestigators.CreateItem(investigator, investigator);
                 }
 
-                AllowedStack.PopulateSpeciesMenu(menuItemLoadIndividuals, speciesInd_Click);
+
+                AllowedStack.PopulateSpeciesMenu(menuItemIndividuals, indSpecies_Click);
+                AllowedStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click);
+
+                AllowedStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click);
+
                 AllowedStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemMortalityCohorts, speciesMortalityCohorts_Click);
@@ -195,13 +202,13 @@ namespace Mayfly.Fish.Explorer
                 AllowedStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
                 updateQty(FullStack.Quantity());
-            }
 
-            if (!modelCalc.IsBusy && !isClosing)
-            {
-                IsBusy = true;
-                processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
-                modelCalc.RunWorkerAsync();
+                if (!modelCalc.IsBusy && !isClosing)
+                {
+                    IsBusy = true;
+                    processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
+                    modelCalc.RunWorkerAsync();
+                }
             }
 
             statusBio.Visible = data.IsBioLoaded;
@@ -211,7 +218,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (q == 0)
             {
-                labelWgtValue.Text = Constants.Null;
+                labelQtyValue.Text = Constants.Null;
                 statusQuantity.ResetFormatted(Constants.Null);
             }
             else
@@ -235,27 +242,67 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void speciesInd_Click(object sender, EventArgs e)
+        private void applyBio()
+        {
+            if (tabPageSpcStats.Parent != null)
+            {
+                species_Changed(spreadSheetSpcStats, new EventArgs());
+            }
+
+            if (tabPageInd.Parent != null)
+            {
+                processDisplay.StartProcessing(spreadSheetInd.RowCount, Wild.Resources.Interface.Process.SpecApply);
+                specTipper.RunWorkerAsync();
+            }
+        }
+
+        private void logSpecies_Click(object sender, EventArgs e)
+        {
+            //Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+
+            //loadLog(speciesRow);
+        }
+
+        private void indSpecies_Click(object sender, EventArgs e)
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            if (ModifierKeys.HasFlag(Keys.Control))
+
+            individualSpecies = speciesRow;
+
+            IsBusy = true;
+            spreadSheetInd.StartProcessing(AllowedStack.QuantityIndividual(speciesRow),
+                Wild.Resources.Interface.Process.IndividualsProcessing);
+            spreadSheetInd.Rows.Clear();
+
+            foreach (Data.VariableRow variableRow in data.Variable)
             {
-                tabPageInd.Parent = tabControl;
-                tabControl.SelectedTab = tabPageInd;
-                spreadSheetInd.Rows.Clear();
-                Data.IndividualRow[] indRows =
-                    ModifierKeys.HasFlag(Keys.Shift) ?
-                    AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetAll() :
-                    AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetSuggested();
-                List<DataGridViewRow> result = new List<DataGridViewRow>();
-                for (int i = 0; i < indRows.Length; i++) {
-                    result.Add(GetLine(indRows[i]));
-                }
-                spreadSheetInd.Rows.AddRange(result.ToArray());
-                spreadSheetInd.UpdateStatus();
-            } else {
-                LoadIndLog(speciesRow);
+                spreadSheetInd.InsertColumn("Var_" + variableRow.Variable,
+                    variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
             }
+
+            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
+            loaderInd.RunWorkerAsync(speciesRow);
+        }
+
+        private void indSuggested_Click(object sender, EventArgs e)
+        {
+            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+
+            tabPageInd.Parent = tabControl;
+            tabControl.SelectedTab = tabPageInd;
+            spreadSheetInd.Rows.Clear();
+            Data.IndividualRow[] indRows =
+                ModifierKeys.HasFlag(Keys.Shift) ?
+                AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetAll() :
+                AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetSuggested();
+            List<DataGridViewRow> result = new List<DataGridViewRow>();
+            for (int i = 0; i < indRows.Length; i++)
+            {
+                result.Add(createIndividualRow(indRows[i]));
+            }
+            spreadSheetInd.Rows.AddRange(result.ToArray());
+            spreadSheetInd.UpdateStatus();
+
         }
 
 
