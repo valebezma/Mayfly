@@ -713,11 +713,11 @@ namespace Mayfly.Fish
 
             if (gridRow.Cells[ColumnRegID.Index].Value == null)
             {
-                individualRow.SetRegIDNull();
+                individualRow.SetTallyNull();
             }
             else
             {
-                individualRow.RegID = (string)gridRow.Cells[ColumnRegID.Index].Value;
+                individualRow.Tally = (string)gridRow.Cells[ColumnRegID.Index].Value;
             }
 
             if (gridRow.Cells[ColumnAge.Index].Value == null)
@@ -894,10 +894,10 @@ namespace Mayfly.Fish
                 Wild.Service.HandleAgeInput(gridRow.Cells[ColumnAge.Index]);
             }
 
-            if (individualRow.IsRegIDNull()) { }
+            if (individualRow.IsTallyNull()) { }
             else
             {
-                gridRow.Cells[ColumnRegID.Index].Value = individualRow.RegID;
+                gridRow.Cells[ColumnRegID.Index].Value = individualRow.Tally;
             }
 
             if (individualRow.IsSexNull()) { }

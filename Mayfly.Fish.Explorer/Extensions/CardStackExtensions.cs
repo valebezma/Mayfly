@@ -450,7 +450,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue; // No length - skip
-                if (individualRow.IsRegIDNull()) continue; // No sample number - skip
+                if (individualRow.IsTallyNull()) continue; // No sample number - skip
                 if (!individualRow.IsNull(column)) continue; // No studying value - skip
                 untreated.Add(individualRow);
             }
@@ -619,7 +619,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.IndividualRow indRow in indRows)
             {
-                regs.Add(indRow.RegID);
+                regs.Add(indRow.Tally);
             }
 
             regs.Sort(new OmniSorter());

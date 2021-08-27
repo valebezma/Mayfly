@@ -294,9 +294,6 @@
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
     </Compile>
     <Compile Include="Compositions\GillnetSelectivityModel.cs" />
-    <Compile Include="MainForm.Artefacts.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MainForm.Cards.cs">
       <SubType>Form</SubType>
     </Compile>

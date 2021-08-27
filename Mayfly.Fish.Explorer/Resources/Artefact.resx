@@ -123,17 +123,17 @@
   <data name="CardEffort" xml:space="preserve">
     <value>Card have not enough information to calculate fishing effort</value>
   </data>
-  <data name="IndividualRegID" xml:space="preserve">
-    <value>Had sample #{0} but doesn't contain any registered information, e. g. age, fecundity, diet or parasitological issues</value>
+  <data name="IndividualTallyOdd" xml:space="preserve">
+    <value>Had tally ({0}) but doesn't contain any registered information, e. g. age, fecundity, diet or parasitological issues</value>
   </data>
-  <data name="IndividualsRegID" xml:space="preserve">
-    <value>{0} individuals have some issues with sample #</value>
+  <data name="IndividualsTally" xml:space="preserve">
+    <value>{0} individuals have some issues with tally</value>
   </data>
   <data name="IndividualsUnweightedDiet" xml:space="preserve">
     <value>{0} diet samples have unweighted individuals in diet sample</value>
   </data>
-  <data name="IndividualRegID_1" xml:space="preserve">
-    <value>Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with #</value>
+  <data name="IndividualTallyMissing" xml:space="preserve">
+    <value>Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with tally</value>
   </data>
   <data name="IndividualUnweightedDiet" xml:space="preserve">
     <value>Has {0} unweighted individuals in diet sample</value>
@@ -147,7 +147,7 @@ but in individuals log there are {2} specimen and
 in stratified samples there are {3} specimen, so {4} are missing</value>
   </data>
   <data name="LogMassOdd" xml:space="preserve">
-    <value>Record mass ({0:n3} kg) is {1:p0} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
+    <value>Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Quantity of specimens can't be calculated 
@@ -174,5 +174,8 @@ However, it can be obtained from length (but regression contains {2} outliers)</
   </data>
   <data name="LogMassOdds" xml:space="preserve">
     <value>There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample</value>
+  </data>
+  <data name="LogMassMissing" xml:space="preserve">
+    <value>Record mass ({0:n3} kg) is more than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({1:n3}) which is fine</value>
   </data>
 </root>

@@ -27,13 +27,13 @@ namespace Mayfly.Fish
             table1.StartRow();
             table1.AddCellPrompt(Wild.Resources.Reports.Caption.Species, indRow.LogRow.SpeciesRow.KeyRecord.ScientificNameReport);
 
-            if (indRow.IsRegIDNull())
+            if (indRow.IsTallyNull())
             {
                 table1.AddCellPrompt(Resources.Reports.Card.IndNo);
             }
             else
             {
-                table1.AddCellPrompt(Resources.Reports.Card.IndNo, indRow.RegID);
+                table1.AddCellPrompt(Resources.Reports.Card.IndNo, indRow.Tally);
             }
             table1.EndRow();
 

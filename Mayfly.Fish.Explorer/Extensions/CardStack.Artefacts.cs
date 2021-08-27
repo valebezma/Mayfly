@@ -70,21 +70,21 @@ namespace Mayfly.Fish.Explorer
     {
         public Data.IndividualRow IndividualRow { get; set; }
 
-        public bool HasRegID { get; set; }
+        public bool HasTally { get; set; }
 
         public bool Treated { get; set; }
 
         public int UnweightedDietItems { get; set; }
 
-        public ArtefactCriticality RegIDCriticality
+        public ArtefactCriticality TallyCriticality
         {
             get
             {
-                if (this.HasRegID && !this.Treated)
+                if (this.HasTally && !this.Treated)
                 {
                     return ArtefactCriticality.NotCritical;
                 }
-                else if (!this.HasRegID && this.Treated)
+                else if (!this.HasTally && this.Treated)
                 {
                     return ArtefactCriticality.Allowed;
                 }
@@ -115,7 +115,7 @@ namespace Mayfly.Fish.Explorer
         public IndividualArtefact(Data.IndividualRow individualRow)
         {
             IndividualRow = individualRow;
-            HasRegID = !individualRow.IsRegIDNull();
+            HasTally = !individualRow.IsTallyNull();
             Treated = false;
             Treated |= !individualRow.IsAgeNull();
             Treated |= individualRow.ContainsSex;
@@ -129,20 +129,20 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            switch (RegIDCriticality)
+            switch (TallyCriticality)
             {
                 case ArtefactCriticality.NotCritical:
-                    result.Add(string.Format(Resources.Artefact.IndividualRegID, IndividualRow.RegID));
+                    result.Add(GetNoticeTallyOdd());
                     break;
 
                 case ArtefactCriticality.Allowed:
-                    result.Add(Resources.Artefact.IndividualRegID_1);
+                    result.Add(GetNoticeTallyMissing());
                     break;
             }
 
             if (UnweightedDietItemsCriticality > ArtefactCriticality.Normal)
             {
-                result.Add(string.Format(Resources.Artefact.IndividualUnweightedDiet, UnweightedDietItems));
+                result.Add(GetNoticeUnweightedDiet());
             }
 
             return result.ToArray();
@@ -151,6 +151,21 @@ namespace Mayfly.Fish.Explorer
         public override string ToString()
         {
             return base.ToString(IndividualRow.GetDescription());
+        }
+
+        public string GetNoticeTallyOdd()
+        {
+            return string.Format(Resources.Artefact.IndividualTallyOdd, IndividualRow.Tally);
+        }
+
+        public string GetNoticeTallyMissing()
+        {
+            return Resources.Artefact.IndividualTallyMissing;
+        }
+
+        public string GetNoticeUnweightedDiet()
+        {
+            return string.Format(Resources.Artefact.IndividualUnweightedDiet, UnweightedDietItems);
         }
 
         public static string[] GetNotices(IEnumerable<IndividualArtefact> artefacts)
@@ -164,7 +179,7 @@ namespace Mayfly.Fish.Explorer
             {
                 foreach (IndividualArtefact indArtefact in artefacts)
                 {
-                    if (indArtefact.RegIDCriticality > ArtefactCriticality.Normal)
+                    if (indArtefact.TallyCriticality > ArtefactCriticality.Normal)
                     {
                         regMissed++;
                     }
@@ -176,7 +191,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            if (regMissed > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regMissed));
+            if (regMissed > 0) result.Add(string.Format(Resources.Artefact.IndividualsTally, regMissed));
             if (dietNotExplored > 0) result.Add(string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored));
 
             return result.ToArray();
@@ -222,7 +237,7 @@ namespace Mayfly.Fish.Explorer
                 {                    
                     return ArtefactCriticality.Allowed;
                 }
-                else if ((DetailedMass / Mass) <= (1 - Mathematics.UserSettings.DefaultAlpha)) // If Sampled more than Total around 5% or less - it is calculation artefact - Fine
+                else if ((DetailedMass / Mass) <= (1 + Mathematics.UserSettings.DefaultAlpha)) // If Sampled more than Total around 5% or less - it is calculation artefact - Fine
                 {                    
                     return ArtefactCriticality.NotCritical;
                 }
@@ -288,7 +303,18 @@ namespace Mayfly.Fish.Explorer
 
         public string GetNoticeOddMass()
         {
-            return string.Format(Resources.Artefact.LogMassOdd, Mass, (DetailedMass / Mass), DetailedMass);
+            switch (OddMassCriticality)
+            {
+                case ArtefactCriticality.Allowed:
+                    return string.Format(Resources.Artefact.LogMassMissing, Mass, DetailedMass);
+
+                case ArtefactCriticality.NotCritical:
+                case ArtefactCriticality.Critical:
+                    return string.Format(Resources.Artefact.LogMassOdd, Mass, Mass == 0 ? 1d : (DetailedMass / Mass) - 1d, DetailedMass);
+
+                default:
+                    return string.Empty;
+            }
         }
 
         public string GetNoticeUnmeasured()
@@ -387,7 +413,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (IndividualArtefact artefact in IndividualArtefacts)
                 {
-                    result = GetWorst(result, artefact.RegIDCriticality, artefact.UnweightedDietItemsCriticality);
+                    result = GetWorst(result, artefact.TallyCriticality, artefact.UnweightedDietItemsCriticality);
                 }
 
                 return result;
@@ -512,7 +538,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (DeviationsCount != 0)
                     {
-                        result.Add(string.Format( Resources.Artefact.ValueHasOutliers, FeatureName, DeviationsCount));
+                        result.Add(string.Format(Resources.Artefact.ValueHasOutliers, FeatureName, DeviationsCount));
                     }
                 }
                 else
@@ -523,7 +549,7 @@ namespace Mayfly.Fish.Explorer
                     }
                     else
                     {
-                        result.Add(string.Format( Resources.Artefact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount));
+                        result.Add(string.Format(Resources.Artefact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount));
                     }
                 }
             }
@@ -531,7 +557,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (UnmeasuredCount != 0)
                 {
-                    result.Add(string.Format( Resources.Artefact.ValueIsCritical, FeatureName, UnmeasuredCount));
+                    result.Add(string.Format(Resources.Artefact.ValueIsCritical, FeatureName, UnmeasuredCount));
                 }
             }
 

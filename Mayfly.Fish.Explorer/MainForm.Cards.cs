@@ -44,6 +44,8 @@ namespace Mayfly.Fish.Explorer
 
         private Data.CardRow findCardRow(DataGridViewRow gridRow)
         {
+            if (gridRow == null) return null;
+
             return data.Card.FindByID((int)gridRow.Cells[columnCardID.Index].Value);
         }
 
@@ -238,7 +240,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.LogRow logRow in cardRow.GetLogRows())
             {
-                updateLogRow(spreadSheetLog.Find(columnLogID, logRow.ID));
+                updateLogRow(columnLogID.GetRow(logRow.ID));
             }
         }
 

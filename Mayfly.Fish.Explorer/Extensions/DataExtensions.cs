@@ -79,7 +79,7 @@ namespace Mayfly.Extensions
                         data.Individual[j].SetSexNull();
                         data.Individual[j].SetIntermatureNull();
                         data.Individual[j].SetMaturityNull();
-                        data.Individual[j].SetRegIDNull();
+                        data.Individual[j].SetTallyNull();
                         data.Individual[j].SetCommentsNull();
                     }
                 }

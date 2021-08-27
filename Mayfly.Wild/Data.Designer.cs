@@ -1758,7 +1758,7 @@ namespace Mayfly.Wild {
                         double Width, 
                         double Mass, 
                         double SomaticMass, 
-                        string RegID, 
+                        string Tally, 
                         double Age, 
                         int Sex, 
                         int Maturity, 
@@ -1782,7 +1782,7 @@ namespace Mayfly.Wild {
                         Width,
                         Mass,
                         SomaticMass,
-                        RegID,
+                        Tally,
                         Age,
                         Sex,
                         Maturity,
@@ -1836,7 +1836,7 @@ namespace Mayfly.Wild {
                 this.columnWidth = base.Columns["Width"];
                 this.columnMass = base.Columns["Mass"];
                 this.columnSomaticMass = base.Columns["SomaticMass"];
-                this.columnRegID = base.Columns["RegID"];
+                this.columnRegID = base.Columns["Tally"];
                 this.columnAge = base.Columns["Age"];
                 this.columnSex = base.Columns["Sex"];
                 this.columnMaturity = base.Columns["Maturity"];
@@ -1869,7 +1869,10 @@ namespace Mayfly.Wild {
                 base.Columns.Add(this.columnMass);
                 this.columnSomaticMass = new global::System.Data.DataColumn("SomaticMass", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSomaticMass);
-                this.columnRegID = new global::System.Data.DataColumn("RegID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnRegID = new global::System.Data.DataColumn("Tally", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnRegID.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "RegIDColumn");
+                this.columnRegID.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnRegID");
+                this.columnRegID.ExtendedProperties.Add("Generator_UserColumnName", "Tally");
                 base.Columns.Add(this.columnRegID);
                 this.columnAge = new global::System.Data.DataColumn("Age", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAge);
@@ -5463,13 +5466,13 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string RegID {
+            public string Tally {
                 get {
                     try {
                         return ((string)(this[this.tableIndividual.RegIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RegID\' in table \'Individual\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tally\' in table \'Individual\' is DBNull.", e);
                     }
                 }
                 set {
@@ -5790,13 +5793,13 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsRegIDNull() {
+            public bool IsTallyNull() {
                 return this.IsNull(this.tableIndividual.RegIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetRegIDNull() {
+            public void SetTallyNull() {
                 this[this.tableIndividual.RegIDColumn] = global::System.Convert.DBNull;
             }
             

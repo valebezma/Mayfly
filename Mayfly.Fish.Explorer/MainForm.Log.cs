@@ -61,6 +61,8 @@ namespace Mayfly.Fish.Explorer
 
         private void updateLogArtefacts(DataGridViewRow gridRow)
         {
+            if (gridRow == null) return;
+
             LogArtefact artefact = findLogRow(gridRow).GetFacts();
 
             if (artefact.OddMassCriticality > ArtefactCriticality.Normal)
@@ -111,7 +113,7 @@ namespace Mayfly.Fish.Explorer
             updateMass(FullStack.Mass());
 
             updateLogArtefacts(gridRow);
-            updateCardArtefacts(spreadSheetCard.Find(columnCardID, logRow.CardID));
+            if (tabPageCard.Parent != null) updateCardArtefacts(columnCardID.GetRow(logRow.CardID));
         }
 
 

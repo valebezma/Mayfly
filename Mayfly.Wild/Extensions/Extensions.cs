@@ -3,7 +3,7 @@ using Mayfly.Species;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using System.Drawing;
 
 namespace Mayfly.Wild
 {
@@ -169,6 +169,32 @@ namespace Mayfly.Wild
             }
 
             comboBox.Enabled = comboBox.Items.Count > 0;
+        }
+
+        public static void SetBioAcceptable(this Control control, Action<string[]> a)
+        {
+            control.DragEnter += control_DragEnter;
+            control.DragLeave += control_DragLeave;
+            control.DragDrop += new DragEventHandler(
+                (o, e) => {
+                    control_DragLeave(control, e);
+                    a.Invoke(e.GetOperableFilenames(UserSettings.InterfaceBio.Extension));
+                }
+                );
+        }
+
+        private static void control_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.GetOperableFilenames(UserSettings.InterfaceBio.Extension).Length > 0)
+            {
+                e.Effect = DragDropEffects.All;
+                ((Control)sender).ForeColor = Constants.InfantColor;
+            }
+        }
+
+        private static void control_DragLeave(object sender, EventArgs e)
+        {
+            ((Control)sender).ForeColor = SystemColors.ControlText;
         }
     }
 }
