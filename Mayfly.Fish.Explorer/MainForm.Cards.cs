@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 using Mayfly.Geographics;
+using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -32,53 +33,111 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private void LoadCardLog()
+        private void loadCards()
         {
             IsBusy = true;
             spreadSheetCard.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.CardsProcessing);
-
             spreadSheetCard.Rows.Clear();
 
             loaderCard.RunWorkerAsync();
         }
 
-        private CardStack GetStack(IList rows)
+        private Data.CardRow findCardRow(DataGridViewRow gridRow)
         {
-            spreadSheetCard.EndEdit();
-            CardStack stack = new CardStack();
-            foreach (DataGridViewRow gridRow in rows) {
-                if (gridRow.IsNewRow) continue;
-                stack.Add(CardRow(gridRow));
+            return data.Card.FindByID((int)gridRow.Cells[columnCardID.Index].Value);
+        }
+
+        private void updateCardRow(DataGridViewRow gridRow)
+        {
+            Data.CardRow cardRow = findCardRow(gridRow);
+
+            if (cardRow == null) return;
+
+            setCardValue(cardRow, gridRow, columnCardInvestigator, "Investigator");
+            setCardValue(cardRow, gridRow, columnCardLabel, "Label");
+            setCardValue(cardRow, gridRow, columnCardWater, "Water");
+            setCardValue(cardRow, gridRow, columnCardWhen, "When");
+            setCardValue(cardRow, gridRow, columnCardWhere, "Where");
+
+            setCardValue(cardRow, gridRow, ColumnCardWeather, "Weather");
+            setCardValue(cardRow, gridRow, ColumnCardTempSurface, "Surface");
+
+            setCardValue(cardRow, gridRow, columnCardGear, "Gear");
+            setCardValue(cardRow, gridRow, columnCardMesh, "Mesh");
+            setCardValue(cardRow, gridRow, columnCardHook, "Hook");
+            setCardValue(cardRow, gridRow, columnCardLength, "Length");
+            setCardValue(cardRow, gridRow, columnCardOpening, "Opening");
+            setCardValue(cardRow, gridRow, columnCardHeight, "Height");
+            setCardValue(cardRow, gridRow, columnCardSquare, "Square");
+            setCardValue(cardRow, gridRow, columnCardSpan, "Span");
+            setCardValue(cardRow, gridRow, columnCardVelocity, "Velocity");
+            setCardValue(cardRow, gridRow, columnCardExposure, "Exposure");
+
+            //if (Wild.UserSettings.InstalledPermissions.IsPermitted(cardRow.Investigator))
+            //{
+            setCardValue(cardRow, gridRow, columnCardEffort, "Effort");
+            setCardValue(cardRow, gridRow, columnCardDepth, "Depth");
+            setCardValue(cardRow, gridRow, columnCardWealth, "Wealth");
+            setCardValue(cardRow, gridRow, columnCardQuantity, "Quantity");
+            setCardValue(cardRow, gridRow, columnCardMass, "Mass");
+            setCardValue(cardRow, gridRow, columnCardAbundance, "Abundance");
+            setCardValue(cardRow, gridRow, columnCardBiomass, "Biomass");
+            setCardValue(cardRow, gridRow, columnCardDiversityA, "DiversityA");
+            setCardValue(cardRow, gridRow, columnCardDiversityB, "DiversityB");
+            //}
+
+            setCardValue(cardRow, gridRow, columnCardComments, "Comments");
+
+            foreach (Data.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
+            {
+                setCardValue(cardRow, gridRow, spreadSheetCard.GetColumn(factorValueRow.FactorRow.Factor));
             }
 
-            return stack;
+            updateCardArtefacts(gridRow);
         }
 
-        private DataGridViewRow GetLine(Data.CardRow cardRow)
+        private void updateCardArtefacts(DataGridViewRow gridRow)
         {
-            DataGridViewRow result = new DataGridViewRow();
-            result.CreateCells(spreadSheetCard);
-            result.HeaderCell.Value = Math.Abs(cardRow.ID);
-            UpdateCardRow(cardRow, result);
-            return result;
+            CardArtefact artefact = findCardRow(gridRow).GetFacts();
+
+            if (artefact.EffortCriticality > ArtefactCriticality.Normal)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardEffort.Index]).Image = Artefact.GetImage(artefact.EffortCriticality);
+                gridRow.Cells[columnCardEffort.Index].ToolTipText = artefact.GetNotices(false).Merge();
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardEffort.Index]).Image = null;
+                gridRow.Cells[columnCardEffort.Index].ToolTipText = string.Empty;
+            }
+
+
+            if (artefact.LogArtefacts.Length > 0)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardWealth.Index]).Image = Artefact.GetImage(Artefact.GetWorst(artefact.LogWorstCriticality));
+                gridRow.Cells[columnCardWealth.Index].ToolTipText = LogArtefact.GetNotices(artefact.LogArtefacts).Merge();
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardWealth.Index]).Image = null;
+                gridRow.Cells[columnCardWealth.Index].ToolTipText = string.Empty;
+            }
+
+            if (artefact.IndividualArtefacts.Length > 0)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardQuantity.Index]).Image = Artefact.GetImage(Artefact.GetWorst(artefact.IndividualWorstCriticality));
+                gridRow.Cells[columnCardQuantity.Index].ToolTipText = IndividualArtefact.GetNotices(artefact.IndividualArtefacts).Merge();
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardQuantity.Index]).Image = null;
+                gridRow.Cells[columnCardQuantity.Index].ToolTipText = string.Empty;
+            }
         }
 
-
-
-        private Data.CardRow CardRow(DataGridViewRow gridRow)
+        private void saveCardRow(DataGridViewRow gridRow)
         {
-            return CardRow(gridRow, columnCardID);
-        }
-
-        private Data.CardRow CardRow(DataGridViewRow gridRow, DataGridViewColumn gridColumn)
-        {
-            int id = (int)gridRow.Cells[gridColumn.Index].Value;
-            return data.Card.FindByID(id);
-        }
-
-        private void SaveCardRow(DataGridViewRow gridRow)
-        {
-            Data.CardRow cardRow = CardRow(gridRow);
+            Data.CardRow cardRow = findCardRow(gridRow);
 
             if (cardRow == null) return;
 
@@ -102,7 +161,7 @@ namespace Mayfly.Fish.Explorer
             if (opening == null) cardRow.SetOpeningNull();
             else cardRow.Opening = (double)opening;
 
-            object height = (object)gridRow.Cells[columnCardHeight.Name].Value;
+            object height = gridRow.Cells[columnCardHeight.Name].Value;
             if (height == null) cardRow.SetHeightNull();
             else cardRow.Height = (double)height;
 
@@ -167,57 +226,34 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            // Change info in IndGrid
+            rememberChanged(cardRow);
+
+            updateCardArtefacts(gridRow);
+
+            // Update Individuals
             foreach (DataGridViewRow indGridRow in IndividualRows(cardRow))
             {
                 setCardValue(cardRow, indGridRow, spreadSheetInd.GetInsertedColumns());
             }
 
-            rememberChanged(cardRow);
+            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            {
+                updateLogRow(spreadSheetLog.Find(columnLogID, logRow.ID));
+            }
         }
 
-        private void UpdateCardRow(Data.CardRow cardRow, DataGridViewRow result)
+
+
+        private CardStack GetStack(IList rows)
         {
-            setCardValue(cardRow, result, columnCardID, "ID");
-            setCardValue(cardRow, result, columnCardInvestigator, "Investigator");
-            setCardValue(cardRow, result, columnCardLabel, "Label");
-            setCardValue(cardRow, result, columnCardWater, "Water");
-            setCardValue(cardRow, result, columnCardWhen, "When");
-            setCardValue(cardRow, result, columnCardWhere, "Where");
-
-            setCardValue(cardRow, result, ColumnCardWeather, "Weather");
-            setCardValue(cardRow, result, ColumnCardTempSurface, "Surface");
-
-            setCardValue(cardRow, result, columnCardGear, "Gear");
-            setCardValue(cardRow, result, columnCardMesh, "Mesh");
-            setCardValue(cardRow, result, columnCardHook, "Hook");
-            setCardValue(cardRow, result, columnCardLength, "Length");
-            setCardValue(cardRow, result, columnCardOpening, "Opening");
-            setCardValue(cardRow, result, columnCardHeight, "Height");
-            setCardValue(cardRow, result, columnCardSquare, "Square");
-            setCardValue(cardRow, result, columnCardSpan, "Span");
-            setCardValue(cardRow, result, columnCardVelocity, "Velocity");
-            setCardValue(cardRow, result, columnCardExposure, "Exposure");
-
-            //if (Wild.UserSettings.InstalledPermissions.IsPermitted(cardRow.Investigator))
-            //{
-                setCardValue(cardRow, result, columnCardEffort, "Effort");
-                setCardValue(cardRow, result, columnCardDepth, "Depth");
-                setCardValue(cardRow, result, columnCardWealth, "Wealth");
-                setCardValue(cardRow, result, columnCardQuantity, "Quantity");
-                setCardValue(cardRow, result, columnCardMass, "Mass");
-                setCardValue(cardRow, result, columnCardAbundance, "Abundance");
-                setCardValue(cardRow, result, columnCardBiomass, "Biomass");
-                setCardValue(cardRow, result, columnCardDiversityA, "DiversityA");
-                setCardValue(cardRow, result, columnCardDiversityB, "DiversityB");
-            //}
-
-            setCardValue(cardRow, result, columnCardComments, "Comments");
-
-            foreach (Data.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
-            {
-                setCardValue(cardRow, result, spreadSheetCard.GetColumn(factorValueRow.FactorRow.Factor));
+            spreadSheetCard.EndEdit();
+            CardStack stack = new CardStack();
+            foreach (DataGridViewRow gridRow in rows) {
+                if (gridRow.IsNewRow) continue;
+                stack.Add(findCardRow(gridRow));
             }
+
+            return stack;
         }
     }
 }

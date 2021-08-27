@@ -79,25 +79,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mass of sample equals total mass of card.
-        /// </summary>
-        internal static string CardMassEven {
-            get {
-                return ResourceManager.GetString("CardMassEven", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} kg ({2:P1}) of fish is not treated.
-        /// </summary>
-        internal static string CardMassOdd_1 {
-            get {
-                return ResourceManager.GetString("CardMassOdd_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Had sample #{0} but doesn&apos;t contain any registered infomation, e. g. age, fecundity, diet or parasitological issues.
+        ///   Looks up a localized string similar to Had sample #{0} but doesn&apos;t contain any registered information, e. g. age, fecundity, diet or parasitological issues.
         /// </summary>
         internal static string IndividualRegID {
             get {
@@ -106,7 +88,16 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} individuals have sample # but don&apos;t contain any registered infomation, e. g. age, fecundity, diet or parasitological issues.
+        ///   Looks up a localized string similar to Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with #.
+        /// </summary>
+        internal static string IndividualRegID_1 {
+            get {
+                return ResourceManager.GetString("IndividualRegID_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} individuals have some issues with sample #.
         /// </summary>
         internal static string IndividualsRegID {
             get {
@@ -115,16 +106,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} samples, e. g. age, fecundity, diet or parasitological issues, were not marked with #.
-        /// </summary>
-        internal static string IndividualsTreat {
-            get {
-                return ResourceManager.GetString("IndividualsTreat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} diet samples have unweighted individuals in diet sample. Use &quot;Diet recovery&quot; wizard to fix it.
+        ///   Looks up a localized string similar to {0} diet samples have unweighted individuals in diet sample.
         /// </summary>
         internal static string IndividualsUnweightedDiet {
             get {
@@ -133,16 +115,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with #.
-        /// </summary>
-        internal static string IndividualTreat {
-            get {
-                return ResourceManager.GetString("IndividualTreat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Has {0} unweighted individuals in diet sample. Check out &quot;Diet recovery&quot; wizard.
+        ///   Looks up a localized string similar to Has {0} unweighted individuals in diet sample.
         /// </summary>
         internal static string IndividualUnweightedDiet {
             get {
@@ -152,7 +125,6 @@ namespace Mayfly.Fish.Explorer.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to There are {0} specimen with length not measured.
-        ///These specimens wouldn&apos;t be processed in any estimation.
         /// </summary>
         internal static string LogLength {
             get {
@@ -170,7 +142,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mass of sampled fish is {0:N3} kg or {1:P1} more than total mass in card ({2:N3} kg).
+        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p0} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3}).
         /// </summary>
         internal static string LogMassOdd {
             get {
@@ -179,7 +151,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are {0} log records with mass sampled more than total mass.
+        ///   Looks up a localized string similar to There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample.
         /// </summary>
         internal static string LogMassOdds {
             get {

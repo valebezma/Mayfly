@@ -33,7 +33,7 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnArtCardName.Index].Value = artefact.Card;
                 gridRow.Cells[columnArtCardName.Index].ToolTipText = artefact.Card.Path;
 
-                gridRow.Cells[columnArtCardOddMass.Index].Value = artefact.UnsampledMass;
+                //gridRow.Cells[columnArtCardOddMass.Index].Value = artefact.UnsampledMass;
                 spreadSheetArtefactCard.Rows.Add(gridRow);
                 
                 ((TextAndImageCell)gridRow.Cells[columnArtCardEffort.Index]).Image =
@@ -46,35 +46,35 @@ namespace Mayfly.Fish.Explorer
                     artefactCount++;
                 }
 
-                if (artefact.UnsampledMass < 0)
-                {
-                    gridRow.Cells[columnArtCardOddMass.Index].Value = -artefact.UnsampledMass;
+                //if (artefact.UnsampledMass < 0)
+                //{
+                //    gridRow.Cells[columnArtCardOddMass.Index].Value = -artefact.UnsampledMass;
 
-                    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
-                        artefact.OddMassCriticality == ArtefactCriticality.Critical ?
-                        Mathematics.Properties.Resources.NoneRed :
-                        Mathematics.Properties.Resources.None;
-                    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
-                        string.Format(Resources.Artefact.LogMassOdd, -artefact.UnsampledMass, -artefact.UnsampledMass / artefact.Mass, artefact.Mass);
+                //    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
+                //        artefact.OddMassCriticality == ArtefactCriticality.Critical ?
+                //        Mathematics.Properties.Resources.NoneRed :
+                //        Mathematics.Properties.Resources.None;
+                //    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
+                //        string.Format(Resources.Artefact.LogMassOdd, -artefact.UnsampledMass, -artefact.UnsampledMass / artefact.Mass, artefact.Mass);
 
-                    artefactCount++;
-                }
-                else if (artefact.UnsampledMass > 0)
-                {
-                    gridRow.Cells[columnArtCardOddMass.Index].Value = artefact.UnsampledMass;
-                    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
-                        Mathematics.Properties.Resources.CheckGray;
-                    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
-                        string.Format(Resources.Artefact.CardMassOdd_1, artefact.UnsampledMass, artefact.Mass, artefact.UnsampledMass / artefact.Mass);
-                }
-                else
-                {
-                    gridRow.Cells[columnArtCardOddMass.Index].Value = null;
-                    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
-                        Mathematics.Properties.Resources.Check;
-                    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
-                        Resources.Artefact.CardMassEven;
-                }
+                //    artefactCount++;
+                //}
+                //else if (artefact.UnsampledMass > 0)
+                //{
+                //    gridRow.Cells[columnArtCardOddMass.Index].Value = artefact.UnsampledMass;
+                //    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
+                //        Mathematics.Properties.Resources.CheckGray;
+                //    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
+                //        string.Format(Resources.Artefact.CardMassOdd_1, artefact.UnsampledMass, artefact.Mass, artefact.UnsampledMass / artefact.Mass);
+                //}
+                //else
+                //{
+                //    gridRow.Cells[columnArtCardOddMass.Index].Value = null;
+                //    ((TextAndImageCell)gridRow.Cells[columnArtCardOddMass.Index]).Image =
+                //        Mathematics.Properties.Resources.Check;
+                //    gridRow.Cells[columnArtCardOddMass.Index].ToolTipText =
+                //        Resources.Artefact.CardMassEven;
+                //}
             }
 
             labelArtefactGear.Visible = pictureBoxArtefactGear.Visible = artefactCount == 0;
@@ -89,29 +89,29 @@ namespace Mayfly.Fish.Explorer
 
             foreach (SpeciesArtefact artefact in artefacts)
             {
-                total += artefact.GetFacts();
+                total += artefact.FactsCount;
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtefactSpecies);
                 gridRow.Cells[columnArtefactSpecies.Index].Value = artefact.SpeciesRow;
                 spreadSheetArtefactSpecies.Rows.Add(gridRow);
 
-                if (artefact.LengthMissing > 0)
-                {
-                    gridRow.Cells[columnArtefactLength.Index].Value = artefact.LengthMissing;
-                    ((TextAndImageCell)gridRow.Cells[columnArtefactLength.Index]).Image =
-                        Mathematics.Properties.Resources.None;
+                //if (artefact.LengthMissing > 0)
+                //{
+                //    gridRow.Cells[columnArtefactLength.Index].Value = artefact.LengthMissing;
+                //    ((TextAndImageCell)gridRow.Cells[columnArtefactLength.Index]).Image =
+                //        Mathematics.Properties.Resources.None;
 
-                    gridRow.Cells[columnArtefactLength.Index].ToolTipText = //artefact.ToString();
-                        string.Format(Resources.Artefact.LogLength,
-                        artefact.LengthMissing);
-                }
-                else
-                {
-                    gridRow.Cells[columnArtefactLength.Index].Value = Constants.Null;
-                    ((TextAndImageCell)gridRow.Cells[columnArtefactLength.Index]).Image =
-                        Mathematics.Properties.Resources.Check;
-                }
+                //    gridRow.Cells[columnArtefactLength.Index].ToolTipText = //artefact.ToString();
+                //        string.Format(Resources.Artefact.LogLength,
+                //        artefact.LengthMissing);
+                //}
+                //else
+                //{
+                //    gridRow.Cells[columnArtefactLength.Index].Value = Constants.Null;
+                //    ((TextAndImageCell)gridRow.Cells[columnArtefactLength.Index]).Image =
+                //        Mathematics.Properties.Resources.Check;
+                //}
 
                 ShowSpeciesArtefacts(artefact.AgeArtefact, (TextAndImageCell)gridRow.Cells[columnArtefactAge.Index]);
                 ShowSpeciesArtefacts(artefact.MassArtefact, (TextAndImageCell)gridRow.Cells[columnArtefactMass.Index]);
@@ -215,7 +215,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (IndividualArtefact artefact in artefacts)
             {
-                total += artefact.GetFacts();
+                total += artefact.FactsCount;
 
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtefactInd);
@@ -235,7 +235,7 @@ namespace Mayfly.Fish.Explorer
                     gridRow.Cells[columnArtefactIndRegID.Index].Value = null;
                     ((TextAndImageCell)gridRow.Cells[columnArtefactIndRegID.Index]).Image =
                         Mathematics.Properties.Resources.CheckGray;
-                    gridRow.Cells[columnArtefactIndRegID.Index].ToolTipText = Resources.Artefact.IndividualTreat;
+                    gridRow.Cells[columnArtefactIndRegID.Index].ToolTipText = Resources.Artefact.IndividualRegID_1;
                 }
 
                 if (artefact.UnweightedDietItems > 0)

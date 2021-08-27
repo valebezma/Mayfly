@@ -43,22 +43,22 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 CardArtefact artefact = cardRow.GetFacts();
-                if (artefact.GetFacts() > 0)
+                if (artefact.FactsCount > 0)
                 {
                     result.Add(artefact);
-                    result.AddRange(artefact.LogArtefacts);
-                    result.AddRange(artefact.IndividualArtefacts);
+                    //result.AddRange(artefact.LogArtefacts);
+                    //result.AddRange(artefact.IndividualArtefacts);
                 }
             }
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 SpeciesArtefact artefact = speciesRow.GetFacts(stack);
-                if (artefact.GetFacts() > 0)
+                if (artefact.FactsCount > 0)
                 {
                     result.Add(artefact);
-                    if (artefact.MassArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.MassArtefact);
-                    if (artefact.AgeArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.AgeArtefact);
+                    //if (artefact.MassArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.MassArtefact);
+                    //if (artefact.AgeArtefact.Criticality != ArtefactCriticality.Normal) result.Add(artefact.AgeArtefact);
                 }
             }
 
@@ -125,20 +125,22 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public override string[] GetNotices()
+        public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
 
-            if (HasRegID && !Treated)
+            switch (RegIDCriticality)
             {
-                result.Add(string.Format(Resources.Artefact.IndividualRegID, IndividualRow.RegID));
-            }
-            else if (!HasRegID && Treated)
-            {
-                result.Add(Resources.Artefact.IndividualTreat);
+                case ArtefactCriticality.NotCritical:
+                    result.Add(string.Format(Resources.Artefact.IndividualRegID, IndividualRow.RegID));
+                    break;
+
+                case ArtefactCriticality.Allowed:
+                    result.Add(Resources.Artefact.IndividualRegID_1);
+                    break;
             }
 
-            if (UnweightedDietItems > 0)
+            if (UnweightedDietItemsCriticality > ArtefactCriticality.Normal)
             {
                 result.Add(string.Format(Resources.Artefact.IndividualUnweightedDiet, UnweightedDietItems));
             }
@@ -155,29 +157,26 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            int regedButNotTreated = 0;
-            int treatedButNotReged = 0;
+            int regMissed = 0;
             int dietNotExplored = 0;
 
-            foreach (IndividualArtefact indArtefact in artefacts)
+            if (artefacts != null)
             {
-                if (indArtefact.RegIDCriticality == ArtefactCriticality.NotCritical)
+                foreach (IndividualArtefact indArtefact in artefacts)
                 {
-                    regedButNotTreated++;
-                }
-                else if (indArtefact.RegIDCriticality == ArtefactCriticality.Allowed)
-                {
-                    treatedButNotReged++;
-                }
+                    if (indArtefact.RegIDCriticality > ArtefactCriticality.Normal)
+                    {
+                        regMissed++;
+                    }
 
-                if (indArtefact.UnweightedDietItemsCriticality == ArtefactCriticality.NotCritical)
-                {
-                    dietNotExplored++;
+                    if (indArtefact.UnweightedDietItemsCriticality > ArtefactCriticality.Normal)
+                    {
+                        dietNotExplored++;
+                    }
                 }
             }
 
-            if (regedButNotTreated > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regedButNotTreated));
-            if (treatedButNotReged > 0) result.Add(string.Format(Resources.Artefact.IndividualsTreat, treatedButNotReged));
+            if (regMissed > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regMissed));
             if (dietNotExplored > 0) result.Add(string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored));
 
             return result.ToArray();
@@ -190,7 +189,7 @@ namespace Mayfly.Fish.Explorer
 
         public double Mass { get; set; }
 
-        public double UnsampledMass { get; set; }
+        public double DetailedMass { get; set; }
 
         public int LengthMissing { get; set; }
 
@@ -215,25 +214,30 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                if (this.UnsampledMass == 0)
+                if (Mass == DetailedMass) // If Total equlas Sampled - Good
                 {
                     return ArtefactCriticality.Normal;
                 }
-                else if (this.UnsampledMass > 0)
-                {
-                    // If Total is more than Sampled - OK
+                else if (Mass > DetailedMass) // If Total is more than Sampled - OK
+                {                    
                     return ArtefactCriticality.Allowed;
                 }
-                else if (-this.UnsampledMass <= Mayfly.Mathematics.UserSettings.DefaultAlpha * this.Mass)
-                {
-                    // If Sampled more than Total around 1% or less - it is calculation artefact - OK
+                else if ((DetailedMass / Mass) <= (1 - Mathematics.UserSettings.DefaultAlpha)) // If Sampled more than Total around 5% or less - it is calculation artefact - Fine
+                {                    
                     return ArtefactCriticality.NotCritical;
                 }
-                else
-                {
-                    // If Sampled significantly more than Total - it is weird and should be checked
+                else // If Sampled significantly more than Total - it is weird and should be checked
+                {                    
                     return ArtefactCriticality.Critical;
                 }
+            }
+        }
+
+        public ArtefactCriticality WorstCriticality
+        {
+            get
+            {
+                return GetWorst(OddMassCriticality, UnmeasurementsCriticality);
             }
         }
 
@@ -241,63 +245,55 @@ namespace Mayfly.Fish.Explorer
 
         public LogArtefact(Data.LogRow logRow)
         {
+            if (logRow == null) return;
+
             LogRow = logRow;
 
             LengthMissing = logRow.QuantitySampled() - logRow.Measured() - logRow.QuantityStratified();
-            Mass = Math.Round(logRow.Mass, 3);
-            UnsampledMass = Math.Round(logRow.Mass - logRow.MassStratified() + logRow.MassIndividual(), 3);
+            Mass = LogRow.IsMassNull() ? 0 : Math.Round(logRow.Mass, 3);
+            DetailedMass = Math.Round(logRow.MassStratified() + logRow.MassIndividual(), 3);
 
             List<IndividualArtefact> result = new List<IndividualArtefact>();
             foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 IndividualArtefact indArtefact = individualRow.GetFacts();
-                if (indArtefact.GetFacts() > 0) result.Add(indArtefact);
+                if (indArtefact.FactsCount > 0) result.Add(indArtefact);
             }
             IndividualArtefacts = result.ToArray();
         }
 
 
 
-        public override string[] GetNotices()
+        public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
 
-            if (LengthMissing > 0)
+            if (UnmeasurementsCriticality > ArtefactCriticality.Normal)
             {
-                result.Add(string.Format(Resources.Artefact.LogLength, LengthMissing));
+                result.Add(GetNoticeUnmeasured());
             }
 
             if (OddMassCriticality == ArtefactCriticality.Critical)
             {
-                result.Add(string.Format(Resources.Artefact.LogMassOdd, -this.UnsampledMass, -this.UnsampledMass / this.Mass, this.Mass));
+                result.Add(GetNoticeOddMass());
             }
 
-            int regedButNotTreated = 0;
-            int treatedButNotReged = 0;
-            int dietNotExplored = 0;
-
-            foreach (IndividualArtefact indArtefact in IndividualArtefacts)
+            if (includeChildren)
             {
-                if (indArtefact.RegIDCriticality == ArtefactCriticality.NotCritical)
-                {
-                    regedButNotTreated++;
-                }
-                else if (indArtefact.RegIDCriticality == ArtefactCriticality.Allowed)
-                {
-                    treatedButNotReged++;
-                }
-
-                if (indArtefact.UnweightedDietItemsCriticality == ArtefactCriticality.NotCritical)
-                {
-                    dietNotExplored++;
-                }
+                result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
             }
-
-            if (regedButNotTreated > 0) result.Add(string.Format(Resources.Artefact.IndividualsRegID, regedButNotTreated));
-            if (treatedButNotReged > 0) result.Add(string.Format(Resources.Artefact.IndividualsTreat, treatedButNotReged));
-            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artefact.IndividualsUnweightedDiet, dietNotExplored));
 
             return result.ToArray();
+        }
+
+        public string GetNoticeOddMass()
+        {
+            return string.Format(Resources.Artefact.LogMassOdd, Mass, (DetailedMass / Mass), DetailedMass);
+        }
+
+        public string GetNoticeUnmeasured()
+        {
+            return string.Format(Resources.Artefact.LogLength, LengthMissing);
         }
 
         public override string ToString()
@@ -314,12 +310,12 @@ namespace Mayfly.Fish.Explorer
 
             foreach (LogArtefact logArtefact in artefacts)
             {
-                if (logArtefact.LengthMissing > 0)
+                if (logArtefact.UnmeasurementsCriticality > ArtefactCriticality.Normal)
                 {
                     lengthMissing++;
                 }
 
-                if (logArtefact.OddMassCriticality == ArtefactCriticality.Critical)
+                if (logArtefact.OddMassCriticality > ArtefactCriticality.Normal)
                 {
                     oddMass++;
                 }
@@ -368,6 +364,36 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
+        public ArtefactCriticality LogWorstCriticality
+        {
+            get
+            {
+                ArtefactCriticality result = ArtefactCriticality.Normal;
+
+                foreach (LogArtefact artefact in LogArtefacts)
+                {
+                    result = GetWorst(result, artefact.OddMassCriticality, artefact.UnmeasurementsCriticality);
+                }
+
+                return result;
+            }
+        }
+
+        public ArtefactCriticality IndividualWorstCriticality
+        {
+            get
+            {
+                ArtefactCriticality result = ArtefactCriticality.Normal;
+
+                foreach (IndividualArtefact artefact in IndividualArtefacts)
+                {
+                    result = GetWorst(result, artefact.RegIDCriticality, artefact.UnweightedDietItemsCriticality);
+                }
+
+                return result;
+            }
+        }
+
 
 
         public CardArtefact(Data.CardRow cardRow)
@@ -379,7 +405,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.LogRow logRow in cardRow.GetLogRows())
             {
                 LogArtefact logArtefact = logRow.GetFacts();
-                if (logArtefact.GetFacts() > 0)
+                if (logArtefact.FactsCount > 0)
                 {
                     logArtefacts.Add(logArtefact);
                 }
@@ -388,17 +414,21 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        public override string[] GetNotices()
+        public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
 
-            if (EffortCriticality == ArtefactCriticality.Critical)
+            if (EffortCriticality > ArtefactCriticality.Normal)
             {
                 result.Add(Resources.Artefact.CardEffort);
             }
 
-            result.AddRange(LogArtefact.GetNotices(LogArtefacts));
-            result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+            if (includeChildren)
+            {
+                result.AddRange(LogArtefact.GetNotices(LogArtefacts));
+                result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+            }
+
             return result.ToArray();
         }
 
@@ -472,7 +502,7 @@ namespace Mayfly.Fish.Explorer
 
 
         
-        public override string[] GetNotices()
+        public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
 
@@ -510,7 +540,7 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            return base.ToString(string.Empty);
+            return base.ToString(FeatureName);
         }
     }
 
@@ -569,7 +599,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 LogArtefact logArtefact = logRow.GetFacts();
-                if (logArtefact.GetFacts() > 0) result.Add(logArtefact);
+                if (logArtefact.FactsCount > 0) result.Add(logArtefact);
             }
             LogArtefacts = result.ToArray();
         }
@@ -577,14 +607,17 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public override string[] GetNotices()
+        public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
-
             result.AddRange(AgeArtefact.GetNotices());
             result.AddRange(MassArtefact.GetNotices());
-            result.AddRange(LogArtefact.GetNotices(LogArtefacts));
-            result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+
+            if (includeChildren)
+            {
+                result.AddRange(LogArtefact.GetNotices(LogArtefacts));
+                result.AddRange(IndividualArtefact.GetNotices(IndividualArtefacts));
+            }
 
             return result.ToArray();
         }
