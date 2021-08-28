@@ -18,6 +18,8 @@ namespace Mayfly.Fish.Explorer
 
         private void loadIndividuals(Data.IndividualRow[] indRows)
         {
+            individualSpecies = null;
+
             IsBusy = true;
             spreadSheetInd.StartProcessing(indRows.Length, Wild.Resources.Interface.Process.IndividualsProcessing);
             spreadSheetInd.Rows.Clear();
@@ -51,6 +53,12 @@ namespace Mayfly.Fish.Explorer
             }
 
             loadIndividuals(result.ToArray());
+        }
+
+        private void loadIndividuals(Data.SpeciesRow spcRow)
+        {
+            loadIndividuals(new Data.SpeciesRow[] { spcRow });
+            individualSpecies = spcRow;
         }
 
         private void loadIndividuals(Data.LogRow[] logRows)

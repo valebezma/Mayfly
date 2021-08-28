@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArtefactsFound" xml:space="preserve">
-    <value>There are some artefacts found in data.</value>
+    <value>There are some artefacts found in data</value>
   </data>
   <data name="CardEffort" xml:space="preserve">
     <value>Card have not enough information to calculate fishing effort</value>
@@ -142,32 +142,25 @@
     <value>There are {0} specimen with length not measured</value>
   </data>
   <data name="Specimen" xml:space="preserve">
-    <value>Total quantity of {0} specified as {1}
-but in individuals log there are {2} specimen and
-in stratified samples there are {3} specimen, so {4} are missing</value>
+    <value>Total quantity of {0} specified as {1} but in individuals log there are {2} specimen and in stratified samples there are {3} specimen, so {4} are missing</value>
   </data>
   <data name="LogMassOdd" xml:space="preserve">
     <value>Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
-    <value>Quantity of specimens can't be calculated 
-because in some cards it is not specified</value>
+    <value>Quantity of specimens can't be calculated because in some cards it is not specified</value>
   </data>
   <data name="ValueHasOutliers" xml:space="preserve">
     <value>{0} measures have {1} outliers</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured.
-It can't be calculated any way because of 
-lack of studied specimens</value>
+    <value>{0} of {1} specimen is not measured. It can't be calculated any way because of lack of studied specimens</value>
   </data>
   <data name="ValueIsRecoverable" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. 
-However, it can be obtained from length</value>
+    <value>{0} of {1} specimen is not measured. However, it can be obtained from length</value>
   </data>
   <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured.
-However, it can be obtained from length (but regression contains {2} outliers)</value>
+    <value>{0} of {1} specimen is not measured. However, it can be obtained from length (but regression contains {2} outliers)</value>
   </data>
   <data name="LogLengths" xml:space="preserve">
     <value>There are {0} log records with unmeasured specimen</value>
