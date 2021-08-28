@@ -28,6 +28,8 @@ namespace Mayfly.Fish.Explorer
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
+            int added = 0;
+
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 int s = resultsCounter.Invoke(speciesRow);
@@ -39,8 +41,16 @@ namespace Mayfly.Fish.Explorer
                     _item.Text = s == -1 ? speciesRow.KeyRecord.ShortName : string.Format("{0} ({1})", speciesRow.KeyRecord.ShortName, s);
                     _item.Click += command;
                     item.DropDownItems.Add(_item);
+                    added++;
                 }
             }
+
+            if (added == 0)
+            {
+                item.Enabled = false;
+            }
+
+            // If no item added - remove separator, main item and set parent enabled to false;
 
         }
 

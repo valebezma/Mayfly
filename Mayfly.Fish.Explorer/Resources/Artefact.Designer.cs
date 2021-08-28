@@ -61,7 +61,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are some artefacts found in data..
+        ///   Looks up a localized string similar to There are some artefacts found in data.
         /// </summary>
         internal static string ArtefactsFound {
             get {
@@ -169,9 +169,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total quantity of {0} specified as {1}
-        ///but in individuals log there are {2} specimen and
-        ///in stratified samples there are {3} specimen, so {4} are missing.
+        ///   Looks up a localized string similar to Total quantity of {0} specified as {1} but in individuals log there are {2} specimen and in stratified samples there are {3} specimen, so {4} are missing.
         /// </summary>
         internal static string Specimen {
             get {
@@ -180,8 +178,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quantity of specimens can&apos;t be calculated 
-        ///because in some cards it is not specified.
+        ///   Looks up a localized string similar to Quantity of specimens can&apos;t be calculated because in some cards it is not specified.
         /// </summary>
         internal static string SpecimenUnable {
             get {
@@ -199,9 +196,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured.
-        ///It can&apos;t be calculated any way because of 
-        ///lack of studied specimens.
+        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. It can&apos;t be calculated any way because of lack of studied specimens.
         /// </summary>
         internal static string ValueIsCritical {
             get {
@@ -210,8 +205,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. 
-        ///However, it can be obtained from length.
+        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. However, it can be obtained from length.
         /// </summary>
         internal static string ValueIsRecoverable {
             get {
@@ -220,8 +214,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured.
-        ///However, it can be obtained from length (but regression contains {2} outliers).
+        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. However, it can be obtained from length (but regression contains {2} outliers).
         /// </summary>
         internal static string ValueIsRecoverableButHasOutliers {
             get {

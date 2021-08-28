@@ -337,23 +337,7 @@ namespace Mayfly.Fish.Explorer
 
         private void indSpecies_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-
-            individualSpecies = speciesRow;
-
-            IsBusy = true;
-            spreadSheetInd.StartProcessing(AllowedStack.QuantityIndividual(speciesRow),
-                Wild.Resources.Interface.Process.IndividualsProcessing);
-            spreadSheetInd.Rows.Clear();
-
-            foreach (Data.VariableRow variableRow in data.Variable)
-            {
-                spreadSheetInd.InsertColumn("Var_" + variableRow.Variable,
-                    variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
-            }
-
-            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderInd.RunWorkerAsync(speciesRow);
+            loadIndividuals((Data.SpeciesRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSuggested_Click(object sender, EventArgs e)

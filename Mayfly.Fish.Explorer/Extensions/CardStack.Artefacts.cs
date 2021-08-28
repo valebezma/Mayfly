@@ -613,13 +613,13 @@ namespace Mayfly.Fish.Explorer
             AgeArtefact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
             var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
             AgeArtefact.HasRegression = gm.CombinedData.IsRegressionOK;
-            if (gm.CombinedData.IsRegressionOK) AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(.99999);
+            if (gm.CombinedData.IsRegressionOK) AgeArtefact.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
 
             MassArtefact = new SpeciesFeatureArtefact(Wild.Resources.Reports.Caption.Mass);
             MassArtefact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
             var mm = stack.Parent.FindMassModel(speciesRow.Species);
             MassArtefact.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
-            if (mm != null && mm.CombinedData.IsRegressionOK) MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(.99999);
+            if (mm != null && mm.CombinedData.IsRegressionOK) MassArtefact.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
 
             List<LogArtefact> result = new List<LogArtefact>();
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
