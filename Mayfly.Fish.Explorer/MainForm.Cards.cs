@@ -1,13 +1,11 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Controls;
+using Mayfly.Extensions;
+using Mayfly.Geographics;
 using Mayfly.Wild;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Windows.Forms;
-using Mayfly.Geographics;
-using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -33,14 +31,21 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private void loadCards()
+        private void loadCards(CardStack stack)
         {
             IsBusy = true;
             spreadSheetCard.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.CardsProcessing);
             spreadSheetCard.Rows.Clear();
 
-            loaderCard.RunWorkerAsync();
+            loaderCard.RunWorkerAsync(stack);
         }
+
+        private void loadCards()
+        {
+            loadCards(AllowedStack);
+        }
+
+
 
         private Data.CardRow findCardRow(DataGridViewRow gridRow)
         {
@@ -246,12 +251,16 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private CardStack GetStack(IList rows)
+        private CardStack getCardStack(IList rows)
         {
             spreadSheetCard.EndEdit();
+
             CardStack stack = new CardStack();
-            foreach (DataGridViewRow gridRow in rows) {
+
+            foreach (DataGridViewRow gridRow in rows)
+            {
                 if (gridRow.IsNewRow) continue;
+
                 stack.Add(findCardRow(gridRow));
             }
 

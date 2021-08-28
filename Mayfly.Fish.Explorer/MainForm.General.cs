@@ -112,7 +112,6 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private List<Data.LogRow> selectedLogRows;
         bool busy;
         bool empty;
         bool allowedEmpty;
@@ -139,7 +138,7 @@ namespace Mayfly.Fish.Explorer
                 updateQty(0);
                 updateMass(0);
 
-                //data.RefreshBios();
+                data.RefreshBios();
 
                 IsBusy = false;
             }
@@ -171,7 +170,25 @@ namespace Mayfly.Fish.Explorer
                 listViewWaters.Items.Clear();
                 foreach (Data.WaterRow waterRow in data.Water)
                 {
-                    listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.IsWaterNull() ? Waters.Resources.Interface.Unnamed : waterRow.Water, waterRow.Type - 1);
+                    var li = listViewWaters.CreateItem(waterRow.ID.ToString(), waterRow.IsWaterNull() ? Waters.Resources.Interface.Unnamed : waterRow.Water, waterRow.Type - 1);
+                }
+
+                bool mono = true;
+
+                menuItemCardWater.Visible = data.Water.Count > 1;
+                if (data.Water.Count > 1)
+                {
+                    mono = false;
+                    menuItemCardWater.DropDownItems.Clear();
+                    foreach (Data.WaterRow waterRow in data.Water)
+                    {
+                        var menuItem = new ToolStripMenuItem(waterRow.IsWaterNull() ? Waters.Resources.Interface.Unnamed : waterRow.Water);
+                        menuItem.Click += (sender, e) =>
+                        {
+                            loadCards(AllowedStack.GetStack(waterRow));
+                        };
+                        menuItemCardWater.DropDownItems.Add(menuItem);
+                    }
                 }
 
                 listViewSamplers.Items.Clear();
@@ -180,17 +197,74 @@ namespace Mayfly.Fish.Explorer
                     listViewSamplers.CreateItem(samplerRow.ID.ToString(), samplerRow.Sampler);
                 }
 
+                menuItemCardGear.Visible = FullStack.GetSamplers().Length > 1;
+                if (FullStack.GetSamplers().Length > 1)
+                {
+                    mono = false;
+                    menuItemCardGear.DropDownItems.Clear();
+                    foreach (Samplers.SamplerRow samplerRow in FullStack.GetSamplers())
+                    {
+                        var menuItem = new ToolStripMenuItem(samplerRow.Sampler);
+                        menuItem.Click += (sender, e) =>
+                        {
+                            loadCards(AllowedStack.GetStack(samplerRow));
+                        };
+                        menuItemCardGear.DropDownItems.Add(menuItem);
+                    }
+                }
+
                 listViewInvestigators.Items.Clear();
                 foreach (string investigator in FullStack.GetInvestigators())
                 {
                     listViewInvestigators.CreateItem(investigator, investigator);
                 }
 
+                menuItemCardInvestigator.Visible = FullStack.GetInvestigators().Length > 1;
+                if (FullStack.GetInvestigators().Length > 1)
+                {
+                    mono = false;
+                    menuItemCardInvestigator.DropDownItems.Clear();
+                    foreach (string investigator in FullStack.GetInvestigators())
+                    {
+                        var menuItem = new ToolStripMenuItem(investigator);
+                        menuItem.Click += (sender, e) => {
+                            loadCards(AllowedStack.GetStack("Investigator", investigator));
+                        };
+                        menuItemCardInvestigator.DropDownItems.Add(menuItem);
+                    }
+                }
 
-                AllowedStack.PopulateSpeciesMenu(menuItemIndividuals, indSpecies_Click);
-                AllowedStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click);
+                toolStripSeparator25.Visible = menuItemCardAll.Visible = !mono;
 
-                AllowedStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click);
+                if (mono)
+                {
+                    menuItemCards.Click += menuItemCards_Click;
+                    menuItemCardAll.Click -= menuItemCards_Click;
+                }
+                else
+                {
+                    menuItemCards.Click -= menuItemCards_Click;
+                    menuItemCardAll.Click += menuItemCards_Click;
+                }
+
+
+                AllowedStack.PopulateSpeciesMenu(menuItemIndAll, indSpecies_Click, (spcRow) => {
+
+                    return AllowedStack.QuantityIndividual(spcRow);
+
+                });
+                AllowedStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click, (spcRow) => {
+
+                    TreatmentSuggestion sugg = AllowedStack.GetTreatmentSuggestion(spcRow, data.Individual.AgeColumn);
+                    return (sugg == null) ? 0 : sugg.GetSuggested().Length;
+
+                });
+
+                AllowedStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click, (spcRow) => {
+
+                    return AllowedStack.GetLogRows(spcRow).Length;
+
+                });
 
                 AllowedStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
                 AllowedStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
@@ -258,9 +332,7 @@ namespace Mayfly.Fish.Explorer
 
         private void logSpecies_Click(object sender, EventArgs e)
         {
-            //Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-
-            //loadLog(speciesRow);
+            loadLog((Data.SpeciesRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSpecies_Click(object sender, EventArgs e)
@@ -287,22 +359,8 @@ namespace Mayfly.Fish.Explorer
         private void indSuggested_Click(object sender, EventArgs e)
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-
-            tabPageInd.Parent = tabControl;
-            tabControl.SelectedTab = tabPageInd;
-            spreadSheetInd.Rows.Clear();
-            Data.IndividualRow[] indRows =
-                ModifierKeys.HasFlag(Keys.Shift) ?
-                AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetAll() :
-                AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn).GetSuggested();
-            List<DataGridViewRow> result = new List<DataGridViewRow>();
-            for (int i = 0; i < indRows.Length; i++)
-            {
-                result.Add(createIndividualRow(indRows[i]));
-            }
-            spreadSheetInd.Rows.AddRange(result.ToArray());
-            spreadSheetInd.UpdateStatus();
-
+            TreatmentSuggestion sugg = AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn);
+            if (sugg != null) loadIndividuals(ModifierKeys.HasFlag(Keys.Shift) ? sugg.GetAll() : sugg.GetSuggested());
         }
 
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Mayfly.Controls;
+using System.Linq;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -13,10 +14,12 @@ namespace Mayfly.Fish.Explorer
     {
         Data.SpeciesRow individualSpecies;
 
-        private void loadIndLog()
+
+
+        private void loadIndividuals(Data.IndividualRow[] indRows)
         {
             IsBusy = true;
-            spreadSheetInd.StartProcessing(data.Individual.Count, Wild.Resources.Interface.Process.IndividualsProcessing);
+            spreadSheetInd.StartProcessing(indRows.Length, Wild.Resources.Interface.Process.IndividualsProcessing);
             spreadSheetInd.Rows.Clear();
 
             foreach (Data.VariableRow variableRow in data.Variable)
@@ -25,35 +28,44 @@ namespace Mayfly.Fish.Explorer
                     variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
             }
             if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderInd.RunWorkerAsync();
+            loaderInd.RunWorkerAsync(indRows);
         }
 
-        private void loadIndLog(Data.SpeciesRow speciesRow)
+        private void loadIndividuals()
         {
+            loadIndividuals(data.Individual.Rows.Cast<Data.IndividualRow>().ToArray());
         }
 
-        private DataGridViewRow createIndividualRow(Data.IndividualRow individualRow)
+        private void loadIndividuals(CardStack stack)
         {
-            DataGridViewRow result = columnIndID.GetRow(individualRow.ID);
+            loadIndividuals(stack.GetIndividualRows());
+        }
 
-            if (result == null)
+        private void loadIndividuals(Data.SpeciesRow[] spcRows)
+        {
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (Data.SpeciesRow spcRow in spcRows)
             {
-                result = new DataGridViewRow();
-                result.CreateCells(spreadSheetInd);
-                result.Cells[columnIndID.Index].Value = individualRow.ID;
+                result.AddRange(FullStack.GetIndividualRows(spcRow));
             }
 
-            updateIndividualRow(result);
+            loadIndividuals(result.ToArray());
+        }
 
-            if (Licensing.Verify("Fishery Scientist"))
+        private void loadIndividuals(Data.LogRow[] logRows)
+        {
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (Data.LogRow logRow in logRows)
             {
-                SetIndividualAgeTip(result, individualRow);
-                SetIndividualMassTip(result, individualRow);
+                result.AddRange(logRow.GetIndividualRows());
             }
 
-            setCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
-            return result;
+            loadIndividuals(result.ToArray());
         }
+
+
 
         private Data.IndividualRow findIndividualRow(DataGridViewRow gridRow)
         {
@@ -298,15 +310,6 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-
-
-
-
-
-        private DataGridViewRow FindIndividualRow(Data.IndividualRow individualRow)
-        {
-            return columnIndID.GetRow(individualRow.ID, true, true);
-        }
 
         private DataGridViewRow[] IndividualRows(Data.StratifiedRow stratifiedRow)
         {

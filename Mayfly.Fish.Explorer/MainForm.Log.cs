@@ -1,11 +1,13 @@
 ﻿using Mayfly.Extensions;
 using Mayfly.Species;
 using Meta.Numerics.Statistics;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Mayfly.Wild;
 using Mayfly.Controls;
 using System;
+using System.Linq;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -13,21 +15,50 @@ namespace Mayfly.Fish.Explorer
     {
         SpeciesKey.BaseRow baseLog;
 
-        SpeciesKey.TaxaRow[] taxaLog;
 
 
+
+        private void loadLog(Data.LogRow[] logRows)
+        {
+            IsBusy = true;
+            spreadSheetLog.StartProcessing(logRows.Length, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetLog.Rows.Clear();
+            loaderLog.RunWorkerAsync(logRows);
+        }
 
         private void loadLog()
         {
-            IsBusy = true;
-            spreadSheetLog.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.SpeciesProcessing);
-            spreadSheetLog.Rows.Clear();
-
-            columnLogDiversityA.Visible = (baseSpc != null);
-            columnLogDiversityB.Visible = (baseSpc != null);
-
-            loaderLog.RunWorkerAsync();
+            loadLog(data.Log.Rows.Cast<Data.LogRow>().ToArray());
         }
+
+        private void loadLog(Data.SpeciesRow[] spcRows, CardStack stack)
+        {
+            List<Data.LogRow> logRows = new List<Data.LogRow>();
+
+            foreach (Data.SpeciesRow spcRow in spcRows)
+            {
+                logRows.AddRange(stack.GetLogRows(spcRow));
+            }
+
+            loadLog(logRows.ToArray());
+        }
+
+        private void loadLog(Data.SpeciesRow[] spcRows)
+        {
+            loadLog(spcRows, FullStack);
+        }
+
+        private void loadLog(Data.SpeciesRow spcRows)
+        {
+            loadLog(new Data.SpeciesRow[] { spcRows });
+        }
+
+        private void loadLog(CardStack stack)
+        {
+            loadLog(stack.GetSpecies(), stack);
+        }
+
+
 
         private Data.LogRow findLogRow(DataGridViewRow gridRow)
         {
@@ -118,13 +149,22 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private Data.LogRow LogRowStratified(DataGridViewRow gridRow)
+        private Data.LogRow[] getLogRows(IList rows)
         {
-            int ID = (int)gridRow.Cells[columnStratifiedID.Index].Value;
-            return data.Log.FindByID(ID);
+            spreadSheetLog.EndEdit();
+            List<Data.LogRow> result = new List<Data.LogRow>();
+            foreach (DataGridViewRow gridRow in rows)
+            {
+                if (gridRow.IsNewRow) continue;
+                result.Add(findLogRow(gridRow));
+            }
+
+            return result.ToArray();
         }
 
-        private DataGridViewRow GetLine(Data.CardRow cardRow, SpeciesKey.TaxaRow taxaRow)
+
+
+        private DataGridViewRow createTaxonLogRow(Data.CardRow cardRow, SpeciesKey.TaxaRow taxaRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -173,5 +213,26 @@ namespace Mayfly.Fish.Explorer
 
             return result;
         }
+
+        //private void logLoaderTaxa1111_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    // How to analize selectedLogSpcRows???
+
+        //    for (int i = 0; i < selectesLogStack.Count; i++)
+        //    {
+        //        foreach (SpeciesKey.TaxaRow taxaRow in data.Species.Taxa(baseLog))
+        //        {
+        //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxaRow);
+
+        //            if (gridRow == null) continue;
+
+        //            if ((int)gridRow.Cells[columnLogQuantity.Index].Value == 0)
+        //            {
+        //                spreadSheetLog.SetHidden(gridRow);
+        //            }
+        //        }
+
+        //    }
+        //}
     }
 }
