@@ -12,7 +12,7 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command, Func<Data.SpeciesRow, int> resultsCounter)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -30,13 +30,23 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
-                ToolStripItem _item = new ToolStripMenuItem();
-                _item.Tag = speciesRow;
-                _item.Text = speciesRow.KeyRecord.ShortName;
-                _item.Click += command;
-                item.DropDownItems.Add(_item);
+                int s = resultsCounter.Invoke(speciesRow);
+
+                if (s != 0)
+                {
+                    ToolStripItem _item = new ToolStripMenuItem();
+                    _item.Tag = speciesRow;
+                    _item.Text = s == -1 ? speciesRow.KeyRecord.ShortName : string.Format("{0} ({1})", speciesRow.KeyRecord.ShortName, s);
+                    _item.Click += command;
+                    item.DropDownItems.Add(_item);
+                }
             }
 
+        }
+
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
+        {
+            PopulateSpeciesMenu(stack, item, command, (s) => { return -1; });
         }
 
         public static Data.SpeciesRow[] GetSpeciesCaught(this CardStack stack)

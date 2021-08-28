@@ -240,7 +240,28 @@
     <value>180, 22</value>
   </data>
   <data name="menuItemCardAll.Text" xml:space="preserve">
-    <value>All</value>
+    <value>All cards</value>
+  </data>
+  <data name="toolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="menuItemCardInvestigator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="menuItemCardInvestigator.Text" xml:space="preserve">
+    <value>Sampled by</value>
+  </data>
+  <data name="menuItemCardWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="menuItemCardWater.Text" xml:space="preserve">
+    <value>Sampled in</value>
+  </data>
+  <data name="menuItemCardGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="menuItemCardGear.Text" xml:space="preserve">
+    <value>Sampled with</value>
   </data>
   <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -255,13 +276,13 @@
     <value>Species</value>
   </data>
   <data name="menuItemLogAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>129, 22</value>
   </data>
   <data name="menuItemLogAll.Text" xml:space="preserve">
     <value>All species</value>
   </data>
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>126, 6</value>
   </data>
   <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -269,20 +290,35 @@
   <data name="menuItemLog.Text" xml:space="preserve">
     <value>Log</value>
   </data>
-  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
+  <data name="meniItemIndAllAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 22</value>
   </data>
-  <data name="menuItemIndAll.Text" xml:space="preserve">
+  <data name="meniItemIndAllAll.Text" xml:space="preserve">
     <value>All species</value>
   </data>
-  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
+  <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 6</value>
   </data>
-  <data name="menuItemIndSuggested.Text" xml:space="preserve">
-    <value>Suggested for treatment</value>
+  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="menuItemIndAll.Text" xml:space="preserve">
+    <value>All records</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 22</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Text" xml:space="preserve">
+    <value>All species</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 6</value>
+    <value>126, 6</value>
+  </data>
+  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="menuItemIndSuggested.Text" xml:space="preserve">
+    <value>Suggested for age read</value>
   </data>
   <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -432,13 +468,13 @@
     <value>Models</value>
   </data>
   <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="menuItemCardMeteo.Text" xml:space="preserve">
     <value>Show meteo data</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>163, 6</value>
   </data>
   <data name="menuItemCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -458,28 +494,28 @@
 </value>
   </data>
   <data name="menuItemCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="menuItemCardPrintFull.Text" xml:space="preserve">
     <value>Print cards</value>
   </data>
   <data name="menuItemCardPrintNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="menuItemCardPrintNotes.Text" xml:space="preserve">
     <value>Print card notes</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>163, 6</value>
   </data>
   <data name="menuItemCardCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="menuItemCardCatches.Text" xml:space="preserve">
     <value>See catches stats</value>
   </data>
   <data name="menuItemCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>166, 22</value>
   </data>
   <data name="menuItemCardEfforts.Text" xml:space="preserve">
     <value>See effort stats</value>
@@ -1066,7 +1102,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAXgBNQF4ATUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAfABNQHwATUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2190,11 +2226,20 @@
   <data name="spreadSheetSpcStats.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
   </data>
+  <metadata name="ColumnSpcStatsID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSpcStatsID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ColumnSpcStatsID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <metadata name="ColumnSpcStat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
-    <value />
+    <value>Species</value>
   </data>
   <data name="spreadSheetSpcStats.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 18</value>
@@ -4038,40 +4083,46 @@
 </value>
   </data>
   <data name="contextCardOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardOpen.Text" xml:space="preserve">
     <value>Open card</value>
   </data>
-  <data name="contextCardExplore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
-  </data>
-  <data name="contextCardExplore.Text" xml:space="preserve">
-    <value>Open in new window</value>
-  </data>
   <data name="contextCardOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardOpenFolder.Text" xml:space="preserve">
     <value>Show in folder</value>
   </data>
+  <data name="contextCardSaveSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextCardSaveSet.Text" xml:space="preserve">
+    <value>Save set</value>
+  </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 6</value>
+    <value>195, 6</value>
   </data>
   <data name="contextCardLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardLog.Text" xml:space="preserve">
     <value>Open log</value>
   </data>
   <data name="contextCardIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardIndividuals.Text" xml:space="preserve">
     <value>Open individuals</value>
   </data>
+  <data name="contextCardStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextCardStratified.Text" xml:space="preserve">
+    <value>Open stratified samples</value>
+  </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 6</value>
+    <value>195, 6</value>
   </data>
   <data name="contextCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4091,19 +4142,19 @@
 </value>
   </data>
   <data name="contextCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardPrintFull.Text" xml:space="preserve">
     <value>Print card</value>
   </data>
   <data name="contextCardPrintNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextCardPrintNote.Text" xml:space="preserve">
     <value>Print card note</value>
   </data>
   <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 170</value>
+    <value>199, 192</value>
   </data>
   <data name="&gt;&gt;contextCard.Name" xml:space="preserve">
     <value>contextCard</value>
@@ -4367,20 +4418,35 @@
   <metadata name="contextSpecies.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>616, 17</value>
   </metadata>
+  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcQualify.Text" xml:space="preserve">
+    <value>See qualification</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 6</value>
+  </data>
   <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextSpcLog.Text" xml:space="preserve">
     <value>Open log</value>
   </data>
   <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>198, 22</value>
   </data>
   <data name="contextSpcIndividuals.Text" xml:space="preserve">
     <value>Open individuals</value>
   </data>
+  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcStratified.Text" xml:space="preserve">
+    <value>Open stratified samples</value>
+  </data>
   <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 48</value>
+    <value>199, 98</value>
   </data>
   <data name="&gt;&gt;contextSpecies.Name" xml:space="preserve">
     <value>contextSpecies</value>
@@ -4616,19 +4682,28 @@
 </value>
   </data>
   <data name="contextLogOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>193, 22</value>
   </data>
   <data name="contextLogOpen.Text" xml:space="preserve">
     <value>Open in card</value>
   </data>
+  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 6</value>
+  </data>
   <data name="contextLogIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>193, 22</value>
   </data>
   <data name="contextLogIndividuals.Text" xml:space="preserve">
     <value>Open individuals</value>
   </data>
+  <data name="contextLogStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 22</value>
+  </data>
+  <data name="contextLogStratified.Text" xml:space="preserve">
+    <value>Open stratified sample</value>
+  </data>
   <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 48</value>
+    <value>194, 76</value>
   </data>
   <data name="&gt;&gt;contextLog.Name" xml:space="preserve">
     <value>contextLog</value>
@@ -5292,12 +5367,6 @@ Please, note that in further analysis.</value>
   <data name="contextIndOpen.Text" xml:space="preserve">
     <value>Open in card</value>
   </data>
-  <data name="contextIndOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 22</value>
-  </data>
-  <data name="contextIndOpenFolder.Text" xml:space="preserve">
-    <value>Show in folder</value>
-  </data>
   <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 6</value>
   </data>
@@ -5340,7 +5409,7 @@ Please, note that in further analysis.</value>
     <value>Diet explorer</value>
   </data>
   <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 242</value>
+    <value>226, 220</value>
   </data>
   <data name="&gt;&gt;contextInd.Name" xml:space="preserve">
     <value>contextInd</value>
@@ -8358,6 +8427,36 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemCards.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItemCardAll.Name" xml:space="preserve">
+    <value>menuItemCardAll</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator25.Name" xml:space="preserve">
+    <value>toolStripSeparator25</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardInvestigator.Name" xml:space="preserve">
+    <value>menuItemCardInvestigator</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardInvestigator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardWater.Name" xml:space="preserve">
+    <value>menuItemCardWater</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardGear.Name" xml:space="preserve">
+    <value>menuItemCardGear</value>
+  </data>
+  <data name="&gt;&gt;menuItemCardGear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemSpc.Name" xml:space="preserve">
     <value>menuItemSpc</value>
   </data>
@@ -8370,6 +8469,18 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemLog.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItemLogAll.Name" xml:space="preserve">
+    <value>menuItemLogAll</value>
+  </data>
+  <data name="&gt;&gt;menuItemLogAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator15.Name" xml:space="preserve">
+    <value>toolStripSeparator15</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemIndividuals.Name" xml:space="preserve">
     <value>menuItemIndividuals</value>
   </data>
@@ -8380,6 +8491,30 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>menuItemIndAll</value>
   </data>
   <data name="&gt;&gt;menuItemIndAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;meniItemIndAllAll.Name" xml:space="preserve">
+    <value>meniItemIndAllAll</value>
+  </data>
+  <data name="&gt;&gt;meniItemIndAllAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator24.Name" xml:space="preserve">
+    <value>toolStripSeparator24</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemIndSuggested.Name" xml:space="preserve">
+    <value>menuItemIndSuggested</value>
+  </data>
+  <data name="&gt;&gt;menuItemIndSuggested.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemIndSuggestedAll.Name" xml:space="preserve">
+    <value>menuItemIndSuggestedAll</value>
+  </data>
+  <data name="&gt;&gt;menuItemIndSuggestedAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
@@ -8808,6 +8943,12 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;columnCatchW.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ColumnSpcStatsID.Name" xml:space="preserve">
+    <value>ColumnSpcStatsID</value>
+  </data>
+  <data name="&gt;&gt;ColumnSpcStatsID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ColumnSpcStat.Name" xml:space="preserve">
     <value>ColumnSpcStat</value>
   </data>
@@ -9042,16 +9183,16 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;contextCardOpen.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;contextCardExplore.Name" xml:space="preserve">
-    <value>contextCardExplore</value>
-  </data>
-  <data name="&gt;&gt;contextCardExplore.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;contextCardOpenFolder.Name" xml:space="preserve">
     <value>contextCardOpenFolder</value>
   </data>
   <data name="&gt;&gt;contextCardOpenFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextCardSaveSet.Name" xml:space="preserve">
+    <value>contextCardSaveSet</value>
+  </data>
+  <data name="&gt;&gt;contextCardSaveSet.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
@@ -9070,6 +9211,12 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>contextCardIndividuals</value>
   </data>
   <data name="&gt;&gt;contextCardIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextCardStratified.Name" xml:space="preserve">
+    <value>contextCardStratified</value>
+  </data>
+  <data name="&gt;&gt;contextCardStratified.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
@@ -9120,6 +9267,18 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;columnSpcOccurrence.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;contextSpcQualify.Name" xml:space="preserve">
+    <value>contextSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;contextSpcQualify.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator18.Name" xml:space="preserve">
+    <value>toolStripSeparator18</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;contextSpcLog.Name" xml:space="preserve">
     <value>contextSpcLog</value>
   </data>
@@ -9130,6 +9289,12 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>contextSpcIndividuals</value>
   </data>
   <data name="&gt;&gt;contextSpcIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextSpcStratified.Name" xml:space="preserve">
+    <value>contextSpcStratified</value>
+  </data>
+  <data name="&gt;&gt;contextSpcStratified.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnLogID.Name" xml:space="preserve">
@@ -9186,10 +9351,22 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;contextLogOpen.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripSeparator23.Name" xml:space="preserve">
+    <value>toolStripSeparator23</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;contextLogIndividuals.Name" xml:space="preserve">
     <value>contextLogIndividuals</value>
   </data>
   <data name="&gt;&gt;contextLogIndividuals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextLogStratified.Name" xml:space="preserve">
+    <value>contextLogStratified</value>
+  </data>
+  <data name="&gt;&gt;contextLogStratified.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnStratifiedID.Name" xml:space="preserve">
@@ -9460,12 +9637,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>contextIndOpen</value>
   </data>
   <data name="&gt;&gt;contextIndOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextIndOpenFolder.Name" xml:space="preserve">
-    <value>contextIndOpenFolder</value>
-  </data>
-  <data name="&gt;&gt;contextIndOpenFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator20.Name" xml:space="preserve">
@@ -9743,30 +9914,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   </data>
   <data name="&gt;&gt;notify.Type" xml:space="preserve">
     <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemCardAll.Name" xml:space="preserve">
-    <value>menuItemCardAll</value>
-  </data>
-  <data name="&gt;&gt;menuItemCardAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemLogAll.Name" xml:space="preserve">
-    <value>menuItemLogAll</value>
-  </data>
-  <data name="&gt;&gt;menuItemLogAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator15.Name" xml:space="preserve">
-    <value>toolStripSeparator15</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemIndSuggested.Name" xml:space="preserve">
-    <value>menuItemIndSuggested</value>
-  </data>
-  <data name="&gt;&gt;menuItemIndSuggested.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

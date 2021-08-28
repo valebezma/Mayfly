@@ -1,11 +1,10 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Controls;
+using Mayfly.Extensions;
 using Mayfly.Species;
 using Mayfly.Wild;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
-using Mayfly.Controls;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -14,6 +13,7 @@ namespace Mayfly.Fish.Explorer
         SpeciesKey.BaseRow baseSpc;
 
         SpeciesKey.TaxaRow[] taxaSpc;
+
 
 
         private void loadTaxaList()
@@ -53,6 +53,8 @@ namespace Mayfly.Fish.Explorer
             loaderSpc.RunWorkerAsync();
         }
 
+
+
         private Data.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
         {
             return baseSpc == null ? data.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
@@ -75,6 +77,21 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnSpcSpc.Index].ToolTipText = string.Empty;
             }
 
+        }
+
+
+
+        private Data.SpeciesRow[] getSpeciesRows(IList rows)
+        {
+            spreadSheetLog.EndEdit();
+            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            foreach (DataGridViewRow gridRow in rows)
+            {
+                if (gridRow.IsNewRow) continue;
+                result.Add(findSpeciesRow(gridRow));
+            }
+
+            return result.ToArray();
         }
     }
 }

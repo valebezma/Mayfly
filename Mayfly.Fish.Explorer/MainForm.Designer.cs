@@ -117,10 +117,21 @@
             this.menuItemSpcStats = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemCards = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator25 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemCardInvestigator = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardWater = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardGear = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemLogAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.meniItemIndAllAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemIndSuggested = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemIndSuggestedAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSurvey = new System.Windows.Forms.ToolStripMenuItem();
@@ -238,6 +249,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageSpcStats = new System.Windows.Forms.TabPage();
             this.spreadSheetSpcStats = new Mayfly.Controls.SpreadSheet();
+            this.ColumnSpcStatsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSpcStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlSpc = new System.Windows.Forms.TabControl();
             this.tabPageSpcTotals = new System.Windows.Forms.TabPage();
@@ -332,11 +344,12 @@
             this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextCard = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextCardOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextCardExplore = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextCardSaveSet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.contextCardLog = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextCardStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.contextCardPrintFull = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardPrintNote = new System.Windows.Forms.ToolStripMenuItem();
@@ -353,8 +366,11 @@
             this.columnSpcMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSpcOccurrence = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextSpcQualify = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.contextSpcLog = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSpcIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextSpcStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBoxLogTaxa = new System.Windows.Forms.ComboBox();
@@ -370,7 +386,9 @@
             this.columnLogDiversityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextLogOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
             this.contextLogIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextLogStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageStratified = new System.Windows.Forms.TabPage();
             this.stratifiedSample = new Mayfly.Wild.Controls.StratifiedSample();
             this.buttonSelectStratified = new System.Windows.Forms.Button();
@@ -426,7 +444,6 @@
             this.parasitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.contextIndOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextIndOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.printIndividualsLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextIndPrint = new System.Windows.Forms.ToolStripMenuItem();
@@ -474,10 +491,6 @@
             this.mathLog = new Mayfly.Mathematics.MathAdapter(this.components);
             this.mathInd = new Mayfly.Mathematics.MathAdapter(this.components);
             this.notify = new System.Windows.Forms.NotifyIcon(this.components);
-            this.menuItemCardAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemLogAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemIndSuggested = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
@@ -643,15 +656,44 @@
             // menuItemCards
             // 
             this.menuItemCards.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemCardAll});
+            this.menuItemCardAll,
+            this.toolStripSeparator25,
+            this.menuItemCardInvestigator,
+            this.menuItemCardWater,
+            this.menuItemCardGear});
             this.menuItemCards.Name = "menuItemCards";
             resources.ApplyResources(this.menuItemCards, "menuItemCards");
+            // 
+            // menuItemCardAll
+            // 
+            this.menuItemCardAll.Name = "menuItemCardAll";
+            resources.ApplyResources(this.menuItemCardAll, "menuItemCardAll");
+            // 
+            // toolStripSeparator25
+            // 
+            this.toolStripSeparator25.Name = "toolStripSeparator25";
+            resources.ApplyResources(this.toolStripSeparator25, "toolStripSeparator25");
+            // 
+            // menuItemCardInvestigator
+            // 
+            this.menuItemCardInvestigator.Name = "menuItemCardInvestigator";
+            resources.ApplyResources(this.menuItemCardInvestigator, "menuItemCardInvestigator");
+            // 
+            // menuItemCardWater
+            // 
+            this.menuItemCardWater.Name = "menuItemCardWater";
+            resources.ApplyResources(this.menuItemCardWater, "menuItemCardWater");
+            // 
+            // menuItemCardGear
+            // 
+            this.menuItemCardGear.Name = "menuItemCardGear";
+            resources.ApplyResources(this.menuItemCardGear, "menuItemCardGear");
             // 
             // menuItemSpc
             // 
             this.menuItemSpc.Name = "menuItemSpc";
             resources.ApplyResources(this.menuItemSpc, "menuItemSpc");
-            this.menuItemSpc.Click += new System.EventHandler(this.menuItemLoadSpc_Click);
+            this.menuItemSpc.Click += new System.EventHandler(this.menuItemSpc_Click);
             // 
             // menuItemLog
             // 
@@ -661,20 +703,57 @@
             this.menuItemLog.Name = "menuItemLog";
             resources.ApplyResources(this.menuItemLog, "menuItemLog");
             // 
+            // menuItemLogAll
+            // 
+            this.menuItemLogAll.Name = "menuItemLogAll";
+            resources.ApplyResources(this.menuItemLogAll, "menuItemLogAll");
+            this.menuItemLogAll.Click += new System.EventHandler(this.menuItemLog_Click);
+            // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
+            // 
             // menuItemIndividuals
             // 
             this.menuItemIndividuals.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemIndAll,
-            this.menuItemIndSuggested,
-            this.toolStripSeparator3});
+            this.menuItemIndSuggested});
             this.menuItemIndividuals.Name = "menuItemIndividuals";
             resources.ApplyResources(this.menuItemIndividuals, "menuItemIndividuals");
             // 
             // menuItemIndAll
             // 
+            this.menuItemIndAll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.meniItemIndAllAll,
+            this.toolStripSeparator24});
             this.menuItemIndAll.Name = "menuItemIndAll";
             resources.ApplyResources(this.menuItemIndAll, "menuItemIndAll");
             this.menuItemIndAll.Click += new System.EventHandler(this.menuItemIndAll_Click);
+            // 
+            // meniItemIndAllAll
+            // 
+            this.meniItemIndAllAll.Name = "meniItemIndAllAll";
+            resources.ApplyResources(this.meniItemIndAllAll, "meniItemIndAllAll");
+            // 
+            // toolStripSeparator24
+            // 
+            this.toolStripSeparator24.Name = "toolStripSeparator24";
+            resources.ApplyResources(this.toolStripSeparator24, "toolStripSeparator24");
+            // 
+            // menuItemIndSuggested
+            // 
+            this.menuItemIndSuggested.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemIndSuggestedAll,
+            this.toolStripSeparator3});
+            this.menuItemIndSuggested.Name = "menuItemIndSuggested";
+            resources.ApplyResources(this.menuItemIndSuggested, "menuItemIndSuggested");
+            // 
+            // menuItemIndSuggestedAll
+            // 
+            this.menuItemIndSuggestedAll.Name = "menuItemIndSuggestedAll";
+            resources.ApplyResources(this.menuItemIndSuggestedAll, "menuItemIndSuggestedAll");
+            this.menuItemIndSuggestedAll.Click += new System.EventHandler(this.menuItemIndSuggestedAll_Click);
             // 
             // toolStripSeparator3
             // 
@@ -1251,7 +1330,7 @@
             // 
             resources.ApplyResources(this.labelCardCountValue, "labelCardCountValue");
             this.labelCardCountValue.Name = "labelCardCountValue";
-            this.labelCardCountValue.DoubleClick += new System.EventHandler(this.menuItemLoadCards_Click);
+            this.labelCardCountValue.DoubleClick += new System.EventHandler(this.menuItemCards_Click);
             // 
             // tabPageGearStats
             // 
@@ -1580,6 +1659,7 @@
             resources.ApplyResources(this.spreadSheetSpcStats, "spreadSheetSpcStats");
             this.spreadSheetSpcStats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.spreadSheetSpcStats.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSpcStatsID,
             this.ColumnSpcStat});
             this.spreadSheetSpcStats.MultiSelect = false;
             this.spreadSheetSpcStats.Name = "spreadSheetSpcStats";
@@ -1589,6 +1669,12 @@
             this.spreadSheetSpcStats.RowTemplate.Height = 25;
             this.spreadSheetSpcStats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.spreadSheetSpcStats.SelectionChanged += new System.EventHandler(this.species_Changed);
+            // 
+            // ColumnSpcStatsID
+            // 
+            resources.ApplyResources(this.ColumnSpcStatsID, "ColumnSpcStatsID");
+            this.ColumnSpcStatsID.Name = "ColumnSpcStatsID";
+            this.ColumnSpcStatsID.ReadOnly = true;
             // 
             // ColumnSpcStat
             // 
@@ -2357,11 +2443,12 @@
             // 
             this.contextCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextCardOpen,
-            this.contextCardExplore,
             this.contextCardOpenFolder,
+            this.contextCardSaveSet,
             this.toolStripSeparator6,
             this.contextCardLog,
             this.contextCardIndividuals,
+            this.contextCardStratified,
             this.toolStripSeparator4,
             this.contextCardPrintFull,
             this.contextCardPrintNote});
@@ -2375,17 +2462,17 @@
             this.contextCardOpen.Name = "contextCardOpen";
             this.contextCardOpen.Click += new System.EventHandler(this.contextCardOpen_Click);
             // 
-            // contextCardExplore
-            // 
-            this.contextCardExplore.Name = "contextCardExplore";
-            resources.ApplyResources(this.contextCardExplore, "contextCardExplore");
-            this.contextCardExplore.Click += new System.EventHandler(this.contextCardExplore_Click);
-            // 
             // contextCardOpenFolder
             // 
             this.contextCardOpenFolder.Name = "contextCardOpenFolder";
             resources.ApplyResources(this.contextCardOpenFolder, "contextCardOpenFolder");
             this.contextCardOpenFolder.Click += new System.EventHandler(this.contextCardOpenFolder_Click);
+            // 
+            // contextCardSaveSet
+            // 
+            this.contextCardSaveSet.Name = "contextCardSaveSet";
+            resources.ApplyResources(this.contextCardSaveSet, "contextCardSaveSet");
+            this.contextCardSaveSet.Click += new System.EventHandler(this.contextCardSaveSet_Click);
             // 
             // toolStripSeparator6
             // 
@@ -2403,6 +2490,12 @@
             this.contextCardIndividuals.Name = "contextCardIndividuals";
             resources.ApplyResources(this.contextCardIndividuals, "contextCardIndividuals");
             this.contextCardIndividuals.Click += new System.EventHandler(this.contextCardIndividuals_Click);
+            // 
+            // contextCardStratified
+            // 
+            this.contextCardStratified.Name = "contextCardStratified";
+            resources.ApplyResources(this.contextCardStratified, "contextCardStratified");
+            this.contextCardStratified.Click += new System.EventHandler(this.contextCardStratified_Click);
             // 
             // toolStripSeparator4
             // 
@@ -2525,10 +2618,25 @@
             // contextSpecies
             // 
             this.contextSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextSpcQualify,
+            this.toolStripSeparator18,
             this.contextSpcLog,
-            this.contextSpcIndividuals});
+            this.contextSpcIndividuals,
+            this.contextSpcStratified});
             this.contextSpecies.Name = "contextSpecies";
             resources.ApplyResources(this.contextSpecies, "contextSpecies");
+            this.contextSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextSpecies_Opening);
+            // 
+            // contextSpcQualify
+            // 
+            this.contextSpcQualify.Name = "contextSpcQualify";
+            resources.ApplyResources(this.contextSpcQualify, "contextSpcQualify");
+            this.contextSpcQualify.Click += new System.EventHandler(this.contextSpcQualify_Click);
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
             // 
             // contextSpcLog
             // 
@@ -2541,6 +2649,12 @@
             this.contextSpcIndividuals.Name = "contextSpcIndividuals";
             resources.ApplyResources(this.contextSpcIndividuals, "contextSpcIndividuals");
             this.contextSpcIndividuals.Click += new System.EventHandler(this.contextSpcIndividuals_Click);
+            // 
+            // contextSpcStratified
+            // 
+            this.contextSpcStratified.Name = "contextSpcStratified";
+            resources.ApplyResources(this.contextSpcStratified, "contextSpcStratified");
+            this.contextSpcStratified.Click += new System.EventHandler(this.contextSpcStratified_Click);
             // 
             // tabPageLog
             // 
@@ -2656,7 +2770,9 @@
             // 
             this.contextLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextLogOpen,
-            this.contextLogIndividuals});
+            this.toolStripSeparator23,
+            this.contextLogIndividuals,
+            this.contextLogStratified});
             this.contextLog.Name = "contextMenuStripLog";
             resources.ApplyResources(this.contextLog, "contextLog");
             this.contextLog.Opening += new System.ComponentModel.CancelEventHandler(this.contextLog_Opening);
@@ -2667,11 +2783,22 @@
             this.contextLogOpen.Name = "contextLogOpen";
             this.contextLogOpen.Click += new System.EventHandler(this.contextLogOpen_Click);
             // 
+            // toolStripSeparator23
+            // 
+            this.toolStripSeparator23.Name = "toolStripSeparator23";
+            resources.ApplyResources(this.toolStripSeparator23, "toolStripSeparator23");
+            // 
             // contextLogIndividuals
             // 
             this.contextLogIndividuals.Name = "contextLogIndividuals";
             resources.ApplyResources(this.contextLogIndividuals, "contextLogIndividuals");
             this.contextLogIndividuals.Click += new System.EventHandler(this.contextLogIndividuals_Click);
+            // 
+            // contextLogStratified
+            // 
+            this.contextLogStratified.Name = "contextLogStratified";
+            resources.ApplyResources(this.contextLogStratified, "contextLogStratified");
+            this.contextLogStratified.Click += new System.EventHandler(this.contextLogStratified_Click);
             // 
             // tabPageStratified
             // 
@@ -3086,7 +3213,6 @@
             this.parasitesToolStripMenuItem,
             this.toolStripSeparator19,
             this.contextIndOpen,
-            this.contextIndOpenFolder,
             this.toolStripSeparator20,
             this.printIndividualsLogToolStripMenuItem,
             this.contextIndPrint,
@@ -3136,12 +3262,6 @@
             resources.ApplyResources(this.contextIndOpen, "contextIndOpen");
             this.contextIndOpen.Name = "contextIndOpen";
             this.contextIndOpen.Click += new System.EventHandler(this.contextIndOpen_Click);
-            // 
-            // contextIndOpenFolder
-            // 
-            this.contextIndOpenFolder.Name = "contextIndOpenFolder";
-            resources.ApplyResources(this.contextIndOpenFolder, "contextIndOpenFolder");
-            this.contextIndOpenFolder.Click += new System.EventHandler(this.contextIndOpenFolder_Click);
             // 
             // toolStripSeparator20
             // 
@@ -3413,29 +3533,6 @@
             // 
             resources.ApplyResources(this.notify, "notify");
             // 
-            // menuItemCardAll
-            // 
-            this.menuItemCardAll.Name = "menuItemCardAll";
-            resources.ApplyResources(this.menuItemCardAll, "menuItemCardAll");
-            this.menuItemCardAll.Click += new System.EventHandler(this.menuItemLoadCards_Click);
-            // 
-            // menuItemLogAll
-            // 
-            this.menuItemLogAll.Name = "menuItemLogAll";
-            resources.ApplyResources(this.menuItemLogAll, "menuItemLogAll");
-            this.menuItemLogAll.Click += new System.EventHandler(this.menuItemLoadLog_Click);
-            // 
-            // toolStripSeparator15
-            // 
-            this.toolStripSeparator15.Name = "toolStripSeparator15";
-            resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
-            // 
-            // menuItemIndSuggested
-            // 
-            this.menuItemIndSuggested.Name = "menuItemIndSuggested";
-            resources.ApplyResources(this.menuItemIndSuggested, "menuItemIndSuggested");
-            this.menuItemIndSuggested.Click += new System.EventHandler(this.menuItemIndSuggested_Click);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -3639,7 +3736,7 @@
         private System.ComponentModel.BackgroundWorker specTipper;
         private System.Windows.Forms.ContextMenuStrip contextStratified;
         private System.Windows.Forms.ToolStripMenuItem contextStratifiedOpen;
-        private System.Windows.Forms.ToolStripMenuItem contextCardExplore;
+        private System.Windows.Forms.ToolStripMenuItem contextCardSaveSet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.ComponentModel.BackgroundWorker specUpdater;
         private TaskDialogs.TaskDialog taskDialogBio;
@@ -3658,7 +3755,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
         private System.ComponentModel.BackgroundWorker calcModel;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveSet;
         private System.Windows.Forms.ToolStripMenuItem menuModels;
@@ -3681,7 +3777,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox comboBoxLogTaxa;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndExtra;
-        private System.Windows.Forms.ToolStripMenuItem contextIndOpenFolder;
         private System.Windows.Forms.TabPage tabPageSpcStats;
         private System.Windows.Forms.TabControl tabControlSpc;
         private System.Windows.Forms.TabPage tabPageSpcTotals;
@@ -3792,7 +3887,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchSpc;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchN;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchW;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedCardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedSpc;
@@ -3883,5 +3977,21 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemLogAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggested;
+        private System.Windows.Forms.ToolStripMenuItem contextLogStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextCardStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcQualify;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStatsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardInvestigator;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardWater;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardGear;
+        private System.Windows.Forms.ToolStripMenuItem meniItemIndAllAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;
+        private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggestedAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator25;
     }
 }
