@@ -8,7 +8,7 @@ namespace Mayfly.Fish.Explorer
     {
         public int Compare(Data.IndividualRow x, Data.IndividualRow y)
         {
-            return new OmniSorter().Compare(x.RegID, y.RegID);
+            return new OmniSorter().Compare(x.Tally, y.Tally);
         }
     }
 }

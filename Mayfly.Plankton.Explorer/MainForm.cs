@@ -130,12 +130,7 @@ namespace Mayfly.Plankton.Explorer
                         Log.Write(string.Format("File is empty: {0}.", filenames[i]));
                     else
                     {
-                        foreach (Data.CardRow cardRow in _data.Card)
-                        {
-                            cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerRow().Sampler;
-                        }
-
-                        //Data.CardRow[] cardRows = _data.CopyTo(data);
+                        Data.CardRow[] cardRows = _data.CopyTo(data);
                     }
                 }
 

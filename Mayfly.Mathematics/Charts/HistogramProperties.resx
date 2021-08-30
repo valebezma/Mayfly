@@ -232,7 +232,7 @@
     <value>3, 25, 3, 25</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -487,7 +487,7 @@
     <value>28, 25</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+    <value>40, 15</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

@@ -31,14 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.comboBoxRegressionType = new System.Windows.Forms.ComboBox();
-            this.labelRegressionType = new System.Windows.Forms.Label();
             this.numericUpDownSL = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSoftSize = new System.Windows.Forms.NumericUpDown();
             this.labelSL = new System.Windows.Forms.Label();
             this.numericUpDownStrongSize = new System.Windows.Forms.NumericUpDown();
-            this.labelSoftSize = new System.Windows.Forms.Label();
-            this.labelRegression = new System.Windows.Forms.Label();
             this.labelExpect = new System.Windows.Forms.Label();
             this.labelSize = new System.Windows.Forms.Label();
             this.labelStrongSize = new System.Windows.Forms.Label();
@@ -51,15 +46,23 @@
             this.labelHomo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelTest = new System.Windows.Forms.Label();
+            this.tabPageAppearance = new System.Windows.Forms.TabPage();
+            this.panelTrend = new System.Windows.Forms.Panel();
+            this.labelDefaultTrendColor = new System.Windows.Forms.Label();
+            this.panelSelected = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
+            this.dialogSelected = new System.Windows.Forms.ColorDialog();
+            this.dialogTrend = new System.Windows.Forms.ColorDialog();
             this.tabControlSettings.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoftSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrongSize)).BeginInit();
             this.tabPageMethods.SuspendLayout();
+            this.tabPageAppearance.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlSettings
@@ -67,36 +70,21 @@
             resources.ApplyResources(this.tabControlSettings, "tabControlSettings");
             this.tabControlSettings.Controls.Add(this.tabPageGeneral);
             this.tabControlSettings.Controls.Add(this.tabPageMethods);
+            this.tabControlSettings.Controls.Add(this.tabPageAppearance);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
             // 
             // tabPageGeneral
             // 
-            this.tabPageGeneral.Controls.Add(this.comboBoxRegressionType);
-            this.tabPageGeneral.Controls.Add(this.labelRegressionType);
             this.tabPageGeneral.Controls.Add(this.numericUpDownSL);
-            this.tabPageGeneral.Controls.Add(this.numericUpDownSoftSize);
             this.tabPageGeneral.Controls.Add(this.labelSL);
             this.tabPageGeneral.Controls.Add(this.numericUpDownStrongSize);
-            this.tabPageGeneral.Controls.Add(this.labelSoftSize);
-            this.tabPageGeneral.Controls.Add(this.labelRegression);
             this.tabPageGeneral.Controls.Add(this.labelExpect);
             this.tabPageGeneral.Controls.Add(this.labelSize);
             this.tabPageGeneral.Controls.Add(this.labelStrongSize);
             resources.ApplyResources(this.tabPageGeneral, "tabPageGeneral");
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxRegressionType
-            // 
-            resources.ApplyResources(this.comboBoxRegressionType, "comboBoxRegressionType");
-            this.comboBoxRegressionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRegressionType.Name = "comboBoxRegressionType";
-            // 
-            // labelRegressionType
-            // 
-            resources.ApplyResources(this.labelRegressionType, "labelRegressionType");
-            this.labelRegressionType.Name = "labelRegressionType";
             // 
             // numericUpDownSL
             // 
@@ -124,26 +112,6 @@
             0,
             131072});
             // 
-            // numericUpDownSoftSize
-            // 
-            resources.ApplyResources(this.numericUpDownSoftSize, "numericUpDownSoftSize");
-            this.numericUpDownSoftSize.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownSoftSize.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDownSoftSize.Name = "numericUpDownSoftSize";
-            this.numericUpDownSoftSize.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            // 
             // labelSL
             // 
             resources.ApplyResources(this.labelSL, "labelSL");
@@ -168,17 +136,6 @@
             0,
             0,
             0});
-            // 
-            // labelSoftSize
-            // 
-            resources.ApplyResources(this.labelSoftSize, "labelSoftSize");
-            this.labelSoftSize.Name = "labelSoftSize";
-            // 
-            // labelRegression
-            // 
-            resources.ApplyResources(this.labelRegression, "labelRegression");
-            this.labelRegression.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelRegression.Name = "labelRegression";
             // 
             // labelExpect
             // 
@@ -269,6 +226,47 @@
             this.labelTest.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelTest.Name = "labelTest";
             // 
+            // tabPageAppearance
+            // 
+            this.tabPageAppearance.Controls.Add(this.panelTrend);
+            this.tabPageAppearance.Controls.Add(this.labelDefaultTrendColor);
+            this.tabPageAppearance.Controls.Add(this.panelSelected);
+            this.tabPageAppearance.Controls.Add(this.label19);
+            this.tabPageAppearance.Controls.Add(this.label26);
+            resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
+            this.tabPageAppearance.Name = "tabPageAppearance";
+            this.tabPageAppearance.UseVisualStyleBackColor = true;
+            // 
+            // panelTrend
+            // 
+            this.panelTrend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panelTrend, "panelTrend");
+            this.panelTrend.Name = "panelTrend";
+            this.panelTrend.Click += new System.EventHandler(this.panelTrend_Click);
+            // 
+            // labelDefaultTrendColor
+            // 
+            resources.ApplyResources(this.labelDefaultTrendColor, "labelDefaultTrendColor");
+            this.labelDefaultTrendColor.Name = "labelDefaultTrendColor";
+            // 
+            // panelSelected
+            // 
+            this.panelSelected.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panelSelected, "panelSelected");
+            this.panelSelected.Name = "panelSelected";
+            this.panelSelected.Click += new System.EventHandler(this.panelSelected_Click);
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label26.Name = "label26";
+            // 
             // buttonCancel
             // 
             resources.ApplyResources(this.buttonCancel, "buttonCancel");
@@ -291,6 +289,16 @@
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
+            // dialogSelected
+            // 
+            this.dialogSelected.AnyColor = true;
+            this.dialogSelected.FullOpen = true;
+            // 
+            // dialogTrend
+            // 
+            this.dialogTrend.AnyColor = true;
+            this.dialogTrend.FullOpen = true;
+            // 
             // Settings
             // 
             this.AcceptButton = this.buttonOK;
@@ -308,10 +316,11 @@
             this.tabPageGeneral.ResumeLayout(false);
             this.tabPageGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoftSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrongSize)).EndInit();
             this.tabPageMethods.ResumeLayout(false);
             this.tabPageMethods.PerformLayout();
+            this.tabPageAppearance.ResumeLayout(false);
+            this.tabPageAppearance.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -324,10 +333,8 @@
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.TabPage tabPageGeneral;
         private System.Windows.Forms.NumericUpDown numericUpDownSL;
-        private System.Windows.Forms.NumericUpDown numericUpDownSoftSize;
         private System.Windows.Forms.Label labelSL;
         private System.Windows.Forms.NumericUpDown numericUpDownStrongSize;
-        private System.Windows.Forms.Label labelSoftSize;
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelStrongSize;
         private System.Windows.Forms.TabPage tabPageMethods;
@@ -338,10 +345,15 @@
         private System.Windows.Forms.ComboBox comboBoxHomogeneity;
         private System.Windows.Forms.Label labelHomo;
         private System.Windows.Forms.Label labelTest;
-        private System.Windows.Forms.Label labelRegression;
         private System.Windows.Forms.Label labelExpect;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelRegressionType;
-        private System.Windows.Forms.ComboBox comboBoxRegressionType;
+        private System.Windows.Forms.TabPage tabPageAppearance;
+        private System.Windows.Forms.Panel panelSelected;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ColorDialog dialogSelected;
+        private System.Windows.Forms.Panel panelTrend;
+        private System.Windows.Forms.Label labelDefaultTrendColor;
+        private System.Windows.Forms.ColorDialog dialogTrend;
     }
 }

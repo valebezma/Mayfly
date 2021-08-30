@@ -18,11 +18,9 @@ namespace Mayfly.Fish
 {
     public partial class Card : Form
     {
-        #region Properties
+        private string filename;
 
-        private string fileName;
-
-        private string SpeciesToOpen;
+        private SpeciesKey.SpeciesRow SpeciesToOpen;
 
         private bool preciseMode;
 
@@ -32,12 +30,12 @@ namespace Mayfly.Fish
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -146,8 +144,6 @@ namespace Mayfly.Fish
             }
         }
 
-        #endregion
-
 
 
         public Card()
@@ -156,7 +152,7 @@ namespace Mayfly.Fish
 
             LoadEquipment();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -191,7 +187,7 @@ namespace Mayfly.Fish
 
             labelDuration.ResetFormatted(0, 0, 0);
 
-            ColumnSpecies.ValueType = typeof(string);
+            //ColumnSpecies.ValueType = typeof(string);
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(double);
 
@@ -219,8 +215,6 @@ namespace Mayfly.Fish
 
 
 
-        #region Methods
-
         private void Clear()
         {
             FileName = null;
@@ -241,7 +235,7 @@ namespace Mayfly.Fish
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
         }
 
         private void ClearGear()
@@ -275,41 +269,41 @@ namespace Mayfly.Fish
 
         public void UpdateStatus()
         {
-            if (Data.Solitary.Investigator == null)
-            {
-                statusCard.Default = StatusLog.Text = 
-                    SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount); ;
-            }
-            else
-            {
-                statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
-                    Data.Solitary.When, Data.Solitary.Investigator);
-            }
+            //if (Data.Solitary.Investigator == null)
+            //{
+            //    statusCard.Default = StatusLog.Text = 
+            //        SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount); ;
+            //}
+            //else
+            //{
+            //    statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
+            //        Data.Solitary.When, Data.Solitary.Investigator);
+            //}
 
             StatusMass.ResetFormatted(Mass);
             StatusCount.ResetFormatted(Quantity);
         }
 
-        private void Write(string fileName)
+        private void Write(string filename)
         {
             if (UserSettings.SpeciesAutoExpand)
             {
                 speciesLogger.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
 
-            switch (Path.GetExtension(fileName))
+            switch (Path.GetExtension(filename))
             {
                 case ".fcd":
-                    Data.WriteToFile(fileName);
+                    Data.WriteToFile(filename);
                     break;
 
                 case ".html":
-                    Data.GetReport().WriteToFile(fileName);
+                    Data.GetReport().WriteToFile(filename);
                     break;
             }
 
             statusCard.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
 
             SaveGear();
@@ -651,8 +645,6 @@ namespace Mayfly.Fish
                     Data.Solitary.SetExposureNull();
                 }
             }
-
-            Data.Solitary.SamplerPresentation = Data.Solitary.IsSamplerNull() ? Constants.Null : Data.Solitary.GetSamplerRow().Sampler;
         }
 
         private void SaveLog()
@@ -835,8 +827,7 @@ namespace Mayfly.Fish
         {
             Data.LogRow result = GetLogRow(data, gridRow);
 
-            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    gridRow.Cells[ColumnSpecies.Index].Value.ToString());
+            SpeciesKey.SpeciesRow speciesRow = gridRow.Cells[ColumnSpecies.Index].Value as SpeciesKey.SpeciesRow;
 
             if (speciesRow == null)
             {
@@ -921,14 +912,14 @@ namespace Mayfly.Fish
             return result;
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
-            Data = new Data();
-            Data.Read(fileName);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
+            Data.Read(filename);
             LoadData();
-            FileName = fileName;
-            Log.Write("Loaded from {0}.", fileName);
+            FileName = filename;
+            Log.Write("Loaded from {0}.", filename);
             IsChanged = false;
         }
 
@@ -986,7 +977,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                SelectedSampler = Data.Solitary.GetSamplerRow();
+                SelectedSampler = Data.Solitary.SamplerRow;
             }
 
             if (Data.Solitary.IsExactAreaNull())
@@ -1285,7 +1276,7 @@ namespace Mayfly.Fish
 
             if (!waypoint.IsTimeMarkNull)
             {
-                if (Data.Solitary.GetSamplerRow().IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking)
+                if (Data.Solitary.SamplerRow.IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking)
                 {
                     dateTimePickerStart.Value = waypoint.TimeMark;
                     //sampler_Changed(dateTimePickerStart, new EventArgs());
@@ -1315,7 +1306,7 @@ namespace Mayfly.Fish
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = species;
+            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
             Load += new EventHandler(cardOpenSpecies_Load);
         }
 
@@ -1379,7 +1370,6 @@ namespace Mayfly.Fish
         //    Load += new EventHandler(cardOpenSpecies_Load);
         //}
 
-        #endregion
 
 
 
@@ -1389,7 +1379,6 @@ namespace Mayfly.Fish
         private void cardOpenSpecies_Load(object sender, EventArgs e)
         {
             tabControl.SelectedTab = tabPageLog;
-            if (Data.Species.FindBySpecies(SpeciesToOpen) == null) return;
 
             speciesLogger.InsertSpecies(SpeciesToOpen);
             if (!UserSettings.AutoLogOpen)
@@ -1452,7 +1441,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data();
+                Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
@@ -1476,7 +1465,7 @@ namespace Mayfly.Fish
                 spreadSheetLog.Rows.Clear();
                 spreadSheetAddt.Rows.Clear();
 
-                Data = new Data();
+                Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
 
                 tabControl.SelectedTab = tabPageCollect;
                 textBoxLabel.Focus();
@@ -1522,7 +1511,7 @@ namespace Mayfly.Fish
 
             UserSettings.Interface.ExportDialog.FileName =
                 IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.GetSuggestedName());
+                Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {

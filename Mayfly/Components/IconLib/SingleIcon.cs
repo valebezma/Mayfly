@@ -96,9 +96,9 @@ namespace System.Drawing.IconLib
             return new SingleIcon.Enumerator(this);
         }
 
-        public void Load(string fileName)
+        public void Load(string filename)
         {
-            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             try
             {
                 Load(fs);
@@ -123,9 +123,9 @@ namespace System.Drawing.IconLib
             this.CopyFrom(multiIcon[0]);
         }
 
-        public void Save(string fileName)
+        public void Save(string filename)
         {
-            FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
             try
             {
                 Save(fs);
@@ -222,14 +222,14 @@ namespace System.Drawing.IconLib
             return newBitmap;
         }
 
-        public void CreateFrom(string fileName)
+        public void CreateFrom(string filename)
         {
-            CreateFrom(fileName, IconOutputFormat.FromWin95);
+            CreateFrom(filename, IconOutputFormat.FromWin95);
         }
 
-        public void CreateFrom(string fileName, IconOutputFormat format)
+        public void CreateFrom(string filename, IconOutputFormat format)
         {
-            Bitmap bmp = (Bitmap) Bitmap.FromFile(fileName);
+            Bitmap bmp = (Bitmap) Bitmap.FromFile(filename);
 
             if (bmp == null)
                 throw new InvalidFileException();

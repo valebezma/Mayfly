@@ -950,7 +950,7 @@
     <value>OK</value>
   </data>
   <data name="labelRegID.Text" xml:space="preserve">
-    <value>Sample #</value>
+    <value>Tally</value>
   </data>
   <data name="labelSex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

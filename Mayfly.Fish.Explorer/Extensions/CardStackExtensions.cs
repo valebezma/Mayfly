@@ -12,7 +12,7 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command, Func<Data.SpeciesRow, int> resultsCounter)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -28,15 +28,35 @@ namespace Mayfly.Fish.Explorer
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
+            int added = 0;
+
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
-                ToolStripItem _item = new ToolStripMenuItem();
-                _item.Tag = speciesRow;
-                _item.Text = speciesRow.KeyRecord.ShortName;
-                _item.Click += command;
-                item.DropDownItems.Add(_item);
+                int s = resultsCounter.Invoke(speciesRow);
+
+                if (s != 0)
+                {
+                    ToolStripItem _item = new ToolStripMenuItem();
+                    _item.Tag = speciesRow;
+                    _item.Text = s == -1 ? speciesRow.KeyRecord.ShortName : string.Format("{0} ({1})", speciesRow.KeyRecord.ShortName, s);
+                    _item.Click += command;
+                    item.DropDownItems.Add(_item);
+                    added++;
+                }
             }
 
+            if (added == 0)
+            {
+                item.Enabled = false;
+            }
+
+            // If no item added - remove separator, main item and set parent enabled to false;
+
+        }
+
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
+        {
+            PopulateSpeciesMenu(stack, item, command, (s) => { return -1; });
         }
 
         public static Data.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
@@ -67,6 +87,65 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
+
+
+
+
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string field, object value)
+        {
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (Data.IndividualRow indRow in stack.GetIndividualRows(spcRow))
+            {
+                if (indRow[field].Equals(value))
+                {
+                    result.Add(indRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string[] field, object[] value)
+        {
+            List<Data.IndividualRow[]> packs = new List<Data.IndividualRow[]>();
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            for (int i = 0; i < field.Length; i++)
+            {
+                Data.IndividualRow[] pack = stack.GetIndividuals(spcRow, field[i], value[i]);
+                packs.Add(pack);
+
+                foreach (Data.IndividualRow indRow in pack)
+                {
+                    if (!result.Contains(indRow))
+                    {
+                        result.Add(indRow);
+                    }
+                }
+            }
+
+            for (int i = 0; i < result.Count; i++)// (Data.IndividualRow indRow in result)
+            {
+                foreach (Data.IndividualRow[] pack in packs)
+                {
+                    if (!pack.Contains(result[i]))
+                    {
+                        result.RemoveAt(i);
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            return result.ToArray();
+        }
+
+
+
+
+
+
         public static Samplers.SamplerRow[] GetSamplers(this CardStack stack)
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
@@ -74,8 +153,8 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
-                if (result.Contains(cardRow.GetSamplerRow())) continue;
-                result.Add(cardRow.GetSamplerRow());
+                if (result.Contains(cardRow.SamplerRow)) continue;
+                result.Add(cardRow.SamplerRow);
             }
 
             return result.ToArray();
@@ -347,7 +426,7 @@ namespace Mayfly.Fish.Explorer
 
             result.Name = samplerType.ToDisplay() +
                 " (" + new UnitEffort(effortVariant).Unit + ")" +
-                " (" + Resources.Interface.Interface.AllDataCombined + ")";
+                " (" + Resources.Interface.AllDataCombined + ")";
 
             return result;
         }
@@ -391,7 +470,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue; // No length - skip
-                if (individualRow.IsRegIDNull()) continue; // No sample number - skip
+                if (individualRow.IsTallyNull()) continue; // No sample number - skip
                 if (!individualRow.IsNull(column)) continue; // No studying value - skip
                 untreated.Add(individualRow);
             }
@@ -560,7 +639,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.IndividualRow indRow in indRows)
             {
-                regs.Add(indRow.RegID);
+                regs.Add(indRow.Tally);
             }
 
             regs.Sort(new OmniSorter());

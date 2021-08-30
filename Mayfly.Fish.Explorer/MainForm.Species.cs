@@ -1,9 +1,9 @@
-﻿using Mayfly.Extensions;
+﻿using Mayfly.Controls;
+using Mayfly.Extensions;
 using Mayfly.Species;
 using Mayfly.Wild;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Mayfly.Fish.Explorer
@@ -15,7 +15,8 @@ namespace Mayfly.Fish.Explorer
         SpeciesKey.TaxaRow[] taxaSpc;
 
 
-        private void LoadTaxaList()
+
+        private void loadTaxaList()
         {
             // Clear list
             comboBoxSpcTaxa.Items.Clear();
@@ -28,6 +29,7 @@ namespace Mayfly.Fish.Explorer
             foreach (SpeciesKey.BaseRow baseRow in Fish.UserSettings.SpeciesIndex.Base)
             {
                 comboBoxSpcTaxa.Items.Add(baseRow);
+                comboBoxLogTaxa.Items.Add(baseRow);
 
                 ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
                 item.Click += baseItem_Click;
@@ -40,7 +42,7 @@ namespace Mayfly.Fish.Explorer
             menuItemSpcTaxa.Enabled = menuItemSpcTaxa.DropDownItems.Count > 0;
         }
 
-        private void LoadSpc()
+        private void loadSpc()
         {
             IsBusy = true;
             spreadSheetSpc.StartProcessing(baseSpc == null ? data.Species.Count : taxaSpc.Length,
@@ -51,40 +53,45 @@ namespace Mayfly.Fish.Explorer
             loaderSpc.RunWorkerAsync();
         }
 
-        private DataGridViewRow GetLine(SpeciesKey.TaxaRow taxaRow)
+
+
+        private Data.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            DataGridViewRow result = new DataGridViewRow();
+            return baseSpc == null ? data.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+        }
 
-            result.CreateCells(spreadSheetSpc);
+        private void updateSpeciesArtefact(DataGridViewRow gridRow)
+        {
+            if (gridRow == null) return;
 
-            result.Cells[columnSpcID.Index].Value = taxaRow.ID;
+            SpeciesArtefact artefact = findSpeciesRow(gridRow).GetFacts(FullStack);
 
-            double Q = 0.0;
-            double W = 0.0;
-
-            foreach (Data.LogRow logRow in data.Log)
+            if (artefact.FactsCount > 0)
             {
-                if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
-
-                if (!logRow.IsQuantityNull())
-                {
-                    Q += logRow.Quantity;
-                }
-
-                if (!logRow.IsMassNull())
-                {
-                    W += logRow.Mass;
-                }
+                ((TextAndImageCell)gridRow.Cells[columnSpcSpc.Index]).Image = Artefact.GetImage(artefact.Criticality);
+                gridRow.Cells[columnSpcSpc.Index].ToolTipText = artefact.GetNotices(true).Merge(System.Environment.NewLine);
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnSpcSpc.Index]).Image = null;
+                gridRow.Cells[columnSpcSpc.Index].ToolTipText = string.Empty;
             }
 
-            //Q /= Data.GetStack().Card.Count;
-            //W /= Data.GetStack().Card.Count;
+        }
 
-            result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
-            if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
-            if (W > 0) result.Cells[columnSpcMass.Index].Value = W;
 
-            return result;
+
+        private Data.SpeciesRow[] getSpeciesRows(IList rows)
+        {
+            spreadSheetLog.EndEdit();
+            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            foreach (DataGridViewRow gridRow in rows)
+            {
+                if (gridRow.IsNewRow) continue;
+                result.Add(findSpeciesRow(gridRow));
+            }
+
+            return result.ToArray();
         }
     }
 }

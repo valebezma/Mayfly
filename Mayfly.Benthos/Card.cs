@@ -20,9 +20,9 @@ namespace Mayfly.Benthos
     {
         #region Properties
 
-        private string fileName;
+        private string filename;
 
-        private string SpeciesToOpen;
+        private SpeciesKey.SpeciesRow SpeciesToOpen;
 
         public string FileName
         {
@@ -30,12 +30,12 @@ namespace Mayfly.Benthos
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 itemAboutCard.Visible = value != null;
-                fileName = value;
+                filename = value;
             }
 
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -191,7 +191,7 @@ namespace Mayfly.Benthos
         {
             InitializeComponent();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -313,7 +313,7 @@ namespace Mayfly.Benthos
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
         }
 
         private void Clear(DataGridViewRow gridRow)
@@ -343,26 +343,26 @@ namespace Mayfly.Benthos
             StatusCount.ResetFormatted(Quantity);
         }
 
-        private void Write(string fileName)
+        private void Write(string filename)
         {
             if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global reference
             {
                 speciesLogger.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
 
-            switch (Path.GetExtension(fileName))
+            switch (Path.GetExtension(filename))
             {
                 case ".bcd":
-                    Data.WriteToFile(fileName);
+                    Data.WriteToFile(filename);
                     break;
 
                 case ".html":
-                    Data.GetReport().WriteToFile(fileName);
+                    Data.GetReport().WriteToFile(filename);
                     break;
             }
 
             statusCard.Message(Wild.Resources.Interface.Messages.Saved);
-            FileName = fileName;
+            FileName = filename;
             IsChanged = false;
         }
 
@@ -931,14 +931,14 @@ namespace Mayfly.Benthos
             return result;
         }
 
-        public void LoadData(string fileName)
+        public void LoadData(string filename)
         {
             Clear();
-            Data = new Data();
-            Data.Read(fileName);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
+            Data.Read(filename);
             LoadData();
-            FileName = fileName;
-            Log.Write("Loaded from {0}.", fileName);
+            FileName = filename;
+            Log.Write("Loaded from {0}.", filename);
             IsChanged = false;
         }
 
@@ -1350,7 +1350,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        public int InsertSpecies(string species)
+        public int InsertSpecies(SpeciesKey.SpeciesRow species)
         {
             int speciesIndex = -1;
 
@@ -1470,7 +1470,7 @@ namespace Mayfly.Benthos
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = species;
+            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
             Load += new EventHandler(CardOpenSpecies_Load);
         }
 
@@ -1570,7 +1570,7 @@ namespace Mayfly.Benthos
 
             UserSettings.Interface.ExportDialog.FileName =
                 IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.GetSuggestedName());
+                Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {

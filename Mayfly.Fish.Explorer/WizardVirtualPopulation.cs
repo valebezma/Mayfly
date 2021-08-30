@@ -431,7 +431,7 @@ namespace Mayfly.Fish.Explorer
                     int year = int.Parse(AnnualCompositions[i - 1].Name);
                     int age = ModelCohort[j].Age.Years;
                     spreadSheetCatches[i, j].Style.ForeColor = (year - age == ModelCohort.Birth) ?
-                        Mathematics.UserSettings.DistinguishColorSelected : spreadSheetCohorts.DefaultCellStyle.ForeColor;
+                        Mathematics.UserSettings.ColorSelected : spreadSheetCohorts.DefaultCellStyle.ForeColor;
                 }
             }
 
@@ -443,7 +443,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             DataGridViewColumn cohortColumn = spreadSheetCohorts.GetColumn(ModelCohort.Name);
-            if (cohortColumn != null) cohortColumn.DefaultCellStyle.ForeColor = Mathematics.UserSettings.DistinguishColorSelected;
+            if (cohortColumn != null) cohortColumn.DefaultCellStyle.ForeColor = Mathematics.UserSettings.ColorSelected;
 
             pictureBoxWarn.Visible = labelWarn.Visible = (ModelCohort.Count > AnnualCompositions.Length);           
 

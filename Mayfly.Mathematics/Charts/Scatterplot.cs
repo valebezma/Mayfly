@@ -48,6 +48,8 @@ namespace Mayfly.Mathematics.Charts
 
         public Series ConfidenceBandLower { get; set; }
 
+        public Series Outliers { get; set; }
+
         public CalloutAnnotation TrendAnnotation { get; set; }
 
         //public ScatterplotSeparation Separator { get; set; }
@@ -148,10 +150,19 @@ namespace Mayfly.Mathematics.Charts
                     MarkerStyle = MarkerStyle.Circle,
                     MarkerColor = Color.Transparent
                 };
+
                 Container.Series.Add(Series);
             }
 
-            if (Calc == null) return;
+            if (Calc == null)
+            {
+                if (Series != null)
+                {
+                    Container.Series.Remove(Series);
+                }
+
+                return;
+            }
             
             UpdateDataPoints();
 
@@ -161,6 +172,8 @@ namespace Mayfly.Mathematics.Charts
             Series.MarkerBorderColor = Container.IsDistinguishingMode ? Constants.InfantColor : Properties.DataPointColor;
             Series.MarkerSize = Properties.DataPointSize;
             Series.MarkerBorderWidth = Properties.DataPointBorderWidth;
+
+            trendcalc:
 
             if (Properties.ShowTrend)
             {
@@ -195,193 +208,19 @@ namespace Mayfly.Mathematics.Charts
                     Trend.Properties.TrendColor = Properties.TrendColor;
                     Trend.Properties.AllowCursors = Properties.AllowCursors;
                     Trend.Update(Series.YAxisType);
-
-                    if (Properties.ShowConfidenceBands)
-                    {
-                        if (ConfidenceBandUpper == null)
-                        {
-                            ConfidenceBandUpper = new Series(string.Format(Resources.Interface.ConfidenceBands, Properties.ConfidenceLevel, Properties.ScatterplotName))
-                            {
-                                ChartType = SeriesChartType.Line,
-                                BorderDashStyle = ChartDashStyle.Dash,
-                                IsVisibleInLegend = true
-                            };
-                        }
-                        else
-                        {
-                            ConfidenceBandUpper.Name = string.Format(Resources.Interface.ConfidenceBands, Properties.ConfidenceLevel, Properties.ScatterplotName);
-                            ConfidenceBandUpper.Points.Clear();
-                        }
-
-                        if (ConfidenceBandLower == null)
-                        {
-                            ConfidenceBandLower = new Series(string.Format(Resources.Interface.ConfidenceBands + " (lower)", Properties.ConfidenceLevel, Properties.ScatterplotName))
-                            {
-                                ChartType = SeriesChartType.Line,
-                                BorderDashStyle = ChartDashStyle.Dash,
-                                IsVisibleInLegend = false
-                            };
-                        }
-                        else
-                        {
-                            ConfidenceBandLower.Points.Clear();
-                        }
-
-                        ConfidenceBandUpper.YAxisType = ConfidenceBandLower.YAxisType = Series.YAxisType;
-                        
-                        addBandsTo(ConfidenceBandUpper, ConfidenceBandLower, Statistics.IntervalType.Confidence);
-
-                        if (Container.Series.FindByName(ConfidenceBandUpper.Name) == null)
-                        {
-                            Container.Series.Add(ConfidenceBandUpper);
-                            Container.Series.Add(ConfidenceBandLower);
-                        }
-
-                        foreach (Series band in new Series[] { ConfidenceBandUpper, ConfidenceBandLower })
-                        {
-                            band.BorderColor = band.Color = Properties.TrendColor;
-                            band.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
-                            band.YAxisType = Series.YAxisType;
-                        }
-                    }
-                    else
-                    {
-                        if (ConfidenceBandUpper != null)
-                        {
-                            Container.Series.Remove(ConfidenceBandUpper);
-                            ConfidenceBandUpper = null;
-                        }
-
-                        if (ConfidenceBandLower != null)
-                        {
-                            Container.Series.Remove(ConfidenceBandLower);
-                            ConfidenceBandLower = null;
-                        }
-                    }
-
-                    if (Properties.ShowPredictionBands)
-                    {
-                        if (PredictionBandUpper == null)
-                        {
-                            PredictionBandUpper = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName))
-                            {
-                                ChartType = SeriesChartType.Line,
-                                BorderDashStyle = ChartDashStyle.DashDot,
-                                IsVisibleInLegend = true
-                            };
-                        }
-                        else
-                        {
-                            PredictionBandUpper.Name = string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName);
-                            PredictionBandUpper.Points.Clear();
-                        }
-
-                        if (PredictionBandLower == null)
-                        {
-                            PredictionBandLower = new Series(string.Format(Resources.Interface.PredictionBands + " (lower)", Properties.ConfidenceLevel, Properties.ScatterplotName))
-                            {
-                                ChartType = SeriesChartType.Line,
-                                BorderDashStyle = ChartDashStyle.DashDot,
-                                IsVisibleInLegend = false
-                            };
-                        }
-                        else
-                        {
-                            PredictionBandLower.Points.Clear();
-                        }
-
-                        PredictionBandUpper.YAxisType = PredictionBandLower.YAxisType = Series.YAxisType;
-
-                        addBandsTo(PredictionBandUpper, PredictionBandLower, Statistics.IntervalType.Prediction);
-
-                        if (Container.Series.FindByName(PredictionBandUpper.Name) == null)
-                        {
-                            Container.Series.Add(PredictionBandUpper);
-                            Container.Series.Add(PredictionBandLower);
-                        }
-
-                        foreach (Series band in new Series[] { PredictionBandUpper, PredictionBandLower })
-                        {
-                            band.BorderColor = band.Color = Properties.TrendColor;
-                            band.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
-                            band.YAxisType = Series.YAxisType;
-                        }
-
-                        foreach (DataPoint dp in Series.Points)
-                        {
-                            dp.MarkerBorderColor = (
-                                Properties.HighlightOutliers && Calc.Regression.Outliers != null &&
-                                Calc.Regression.Outliers.Contains(
-                                    TransposeCharting ? dp.YValues[0] : dp.XValue,
-                                    TransposeCharting ? dp.XValue : dp.YValues[0])) ? UserSettings.DistinguishColorSelected : Properties.DataPointColor;
-                        }
-                    }
-                    else
-                    {
-                        if (PredictionBandUpper != null)
-                        {
-                            Container.Series.Remove(PredictionBandUpper);
-                            PredictionBandUpper = null;
-                        }
-
-                        if (PredictionBandLower != null)
-                        {
-                            Container.Series.Remove(PredictionBandLower);
-                            PredictionBandLower = null;
-                        }
-                    }
-
-                    if (Properties.ShowAnnotation)
-                    {
-                        if (TrendAnnotation == null)
-                        {
-                            TrendAnnotation = new CalloutAnnotation
-                            {
-                                BackColor = Container.ChartAreas[0].BackColor,
-                                Name = Properties.ScatterplotName,
-                                CalloutStyle = CalloutStyle.Rectangle,
-                                Alignment = ContentAlignment.MiddleCenter,
-                                AllowMoving = true,
-                                AxisX = Container.ChartAreas[0].AxisX,
-                                AxisY = Container.ChartAreas[0].AxisY,
-                                X = Left + 3 * (Right - Left) / 4,
-                                Y = Trend.Predict(TrendAnnotation.X)
-                            };
-                            Container.Annotations.Add(TrendAnnotation);
-                        }
-
-                        TrendAnnotation.Font = Container.Font;
-                        TrendAnnotation.Visible = true;
-                        TrendAnnotation.Text = Properties.TrendName;
-
-                        if (Properties.ShowCount)
-                        {
-                            TrendAnnotation.Text += Constants.Break + "n = " + Calc.Data.Count;
-                        }
-
-                        if (Properties.ShowExplained)
-                        {
-                            TrendAnnotation.Text += Constants.Break + "r² = " + Calc.Regression.RSquared.ToString("G3");
-                        }
-                    }
-                    else
-                    {
-                        if (TrendAnnotation != null)
-                        {
-                            TrendAnnotation.Visible = false;
-                        }
-                    }
                 }
                 else
                 {
-                    //Properties.SelectedApproximationType = TrendType.Auto;
                     if (PredictionBandLower != null) PredictionBandLower.Points.Clear();
                     if (PredictionBandUpper != null) PredictionBandUpper.Points.Clear();
-                    //if (Trend != null) Trend.Series.Points.Clear();
+                    //if (Trend != null) Container.Remove(Trend.Properties.FunctionName);
                     if (ConfidenceBandLower != null) ConfidenceBandLower.Points.Clear();
                     if (ConfidenceBandUpper != null) ConfidenceBandUpper.Points.Clear();
                     Properties.ShowTrend = false;
-                    return;
+                    Properties.SelectedApproximationType = TrendType.Auto;
+
+                    goto trendcalc;
+                    //return;
                 }
             }
             else
@@ -391,6 +230,225 @@ namespace Mayfly.Mathematics.Charts
                     Container.Series.Remove(Trend.Series);
                     Container.Functors.Remove(Trend);
                     Trend = null;
+                }
+            }
+
+            if (Properties.ShowConfidenceBands && Calc.IsRegressionOK)
+            {
+                if (ConfidenceBandUpper == null)
+                {
+                    ConfidenceBandUpper = new Series(string.Format(Resources.Interface.ConfidenceBands, Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Line,
+                        BorderDashStyle = ChartDashStyle.Dash,
+                        IsVisibleInLegend = true
+                    };
+                }
+                else
+                {
+                    ConfidenceBandUpper.Name = string.Format(Resources.Interface.ConfidenceBands, Properties.ConfidenceLevel, Properties.ScatterplotName);
+                    ConfidenceBandUpper.Points.Clear();
+                }
+
+                if (ConfidenceBandLower == null)
+                {
+                    ConfidenceBandLower = new Series(string.Format(Resources.Interface.ConfidenceBands + " (lower)", Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Line,
+                        BorderDashStyle = ChartDashStyle.Dash,
+                        IsVisibleInLegend = false
+                    };
+                }
+                else
+                {
+                    ConfidenceBandLower.Points.Clear();
+                }
+
+                ConfidenceBandUpper.YAxisType = ConfidenceBandLower.YAxisType = Series.YAxisType;
+
+                addBandsTo(ConfidenceBandUpper, ConfidenceBandLower, Statistics.IntervalType.Confidence);
+
+                if (Container.Series.FindByName(ConfidenceBandUpper.Name) == null)
+                {
+                    Container.Series.Add(ConfidenceBandUpper);
+                    Container.Series.Add(ConfidenceBandLower);
+                }
+
+                foreach (Series band in new Series[] { ConfidenceBandUpper, ConfidenceBandLower })
+                {
+                    band.BorderColor = band.Color = Properties.TrendColor;
+                    band.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
+                    band.YAxisType = Series.YAxisType;
+                }
+            }
+            else
+            {
+                if (ConfidenceBandUpper != null)
+                {
+                    Container.Series.Remove(ConfidenceBandUpper);
+                    ConfidenceBandUpper = null;
+                }
+
+                if (ConfidenceBandLower != null)
+                {
+                    Container.Series.Remove(ConfidenceBandLower);
+                    ConfidenceBandLower = null;
+                }
+            }
+
+            if (Properties.ShowPredictionBands && Calc.IsRegressionOK)
+            {
+                if (PredictionBandUpper == null)
+                {
+                    PredictionBandUpper = new Series(string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Line,
+                        BorderDashStyle = ChartDashStyle.DashDot,
+                        IsVisibleInLegend = true
+                    };
+                }
+                else
+                {
+                    PredictionBandUpper.Name = string.Format(Resources.Interface.PredictionBands, Properties.ConfidenceLevel, Properties.ScatterplotName);
+                    PredictionBandUpper.Points.Clear();
+                }
+
+                if (PredictionBandLower == null)
+                {
+                    PredictionBandLower = new Series(string.Format(Resources.Interface.PredictionBands + " (lower)", Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Line,
+                        BorderDashStyle = ChartDashStyle.DashDot,
+                        IsVisibleInLegend = false
+                    };
+                }
+                else
+                {
+                    PredictionBandLower.Points.Clear();
+                }
+
+                foreach (Series band in new Series[] { PredictionBandUpper, PredictionBandLower })
+                {
+                    band.BorderColor = band.Color = Properties.TrendColor;
+                    band.BorderWidth = (int)Math.Ceiling(Properties.TrendWidth / 2M);
+                    band.YAxisType = Series.YAxisType;
+                }
+
+                addBandsTo(PredictionBandUpper, PredictionBandLower, Statistics.IntervalType.Prediction);
+
+                if (Container.Series.FindByName(PredictionBandUpper.Name) == null)
+                {
+                    Container.Series.Add(PredictionBandUpper);
+                    Container.Series.Add(PredictionBandLower);
+                }
+            }
+            else
+            {
+                if (PredictionBandUpper != null)
+                {
+                    Container.Series.Remove(PredictionBandUpper);
+                    PredictionBandUpper = null;
+                }
+
+                if (PredictionBandLower != null)
+                {
+                    Container.Series.Remove(PredictionBandLower);
+                    PredictionBandLower = null;
+                }
+            }
+
+            if(Properties.HighlightOutliers && Calc.IsRegressionOK)
+            {
+                if (Outliers == null)
+                {
+                    Outliers = new Series(string.Format(Resources.Interface.Outliers, Properties.ConfidenceLevel, Properties.ScatterplotName))
+                    {
+                        ChartType = SeriesChartType.Point,
+                        MarkerStyle = MarkerStyle.Circle,
+                        MarkerBorderWidth = 1,
+                        MarkerColor = Color.FromArgb(127, UserSettings.ColorSelected),
+                        MarkerBorderColor = Color.Transparent,
+                        IsVisibleInLegend = true
+                    };
+                }
+                else
+                {
+                    Outliers.Name = string.Format(Resources.Interface.Outliers, Properties.ConfidenceLevel, Properties.ScatterplotName);
+                    Outliers.Points.Clear();
+                }
+
+                if (Container.Series.FindByName(Outliers.Name) == null)
+                {
+                    Container.Series.Add(Outliers);
+                }
+
+                Outliers.YAxisType = Series.YAxisType;
+                Outliers.MarkerSize = Properties.DataPointSize + 2;
+
+                BivariateSample outliers = Calc.Regression.GetOutliers(Calc.Data, Properties.ConfidenceLevel);
+
+                for (int i = 0; i < outliers.Count; i++)
+                {
+                    double x = outliers.X.ElementAt(i);
+                    double y = outliers.Y.ElementAt(i);
+                    Outliers.Points.Add(TransposeCharting ? new DataPoint(y, x) : new DataPoint(x, y));
+                }
+            }
+            else
+            {
+                if (Outliers != null)
+                {
+                    Container.Series.Remove(Outliers);
+                    Outliers = null;
+                }
+            }
+
+            if (Properties.ShowAnnotation && Calc.IsRegressionOK)
+            {
+                if (TrendAnnotation == null)
+                {
+                    TrendAnnotation = new CalloutAnnotation
+                    {
+                        BackColor = Container.ChartAreas[0].BackColor,
+                        Name = Properties.ScatterplotName,
+                        CalloutStyle = CalloutStyle.Rectangle,
+                        Alignment = ContentAlignment.MiddleCenter,
+                        AllowMoving = true
+                        //AxisX = Series.Axis Container.ChartAreas[0].AxisX,
+                        //AxisY = Container.ChartAreas[0].AxisY
+                    };
+                    Container.Annotations.Add(TrendAnnotation);
+                }
+
+                TrendAnnotation.Font = Container.Font;
+                TrendAnnotation.Visible = true;
+                TrendAnnotation.Text = Properties.TrendName;
+
+                if (double.IsNaN(TrendAnnotation.X) || TrendAnnotation.X > 100 || TrendAnnotation.X < 0)
+                {
+                    TrendAnnotation.X = 50; //Left + 3 * (Right - Left) / 4;
+                }
+
+                if (double.IsNaN(TrendAnnotation.Y) || TrendAnnotation.Y > 100 || TrendAnnotation.Y < 0)
+                {
+                    TrendAnnotation.Y = 50; //Trend.Predict(TrendAnnotation.X);
+                }
+
+                if (Properties.ShowCount)
+                {
+                    TrendAnnotation.Text += Constants.Break + "n = " + Calc.Data.Count;
+                }
+
+                if (Calc.Regression is GeneralLinearRegression glm && Properties.ShowExplained)
+                {
+                    TrendAnnotation.Text += Constants.Break + "r² = " + glm.RSquared.ToString("G3");
+                }
+            }
+            else
+            {
+                if (TrendAnnotation != null)
+                {
+                    TrendAnnotation.Visible = false;
                 }
             }
 
@@ -407,6 +465,11 @@ namespace Mayfly.Mathematics.Charts
             Series.Points.Clear();
 
             if (Calc == null) return;
+
+            if (Container.Series.FindByName(Series.Name) == null)
+            {
+                Container.Series.Add(Series);
+            }
 
             for (int i = 0; i < Calc.Data.Count; i++)
             {
@@ -468,12 +531,14 @@ namespace Mayfly.Mathematics.Charts
                 xvalues.Add(x);
             }
 
-            Interval[] predictions = Calc.Regression.GetInterval(xvalues.ToArray(), Properties.ConfidenceLevel, type);
+            Interval[] predictions = Calc.Regression.GetBands(xvalues.ToArray(), Properties.ConfidenceLevel, type);
 
             upperBand.Points.Clear();
             lowerBand.Points.Clear();
 
-            for (int i = 0; i < xvalues.Count; i++)
+            if (predictions == null) return;
+
+            for (int i = 0; i < predictions.Length; i++)
             {
                 double lowerY = predictions[i].LeftEndpoint;
                 if (double.IsInfinity(lowerY)) continue;

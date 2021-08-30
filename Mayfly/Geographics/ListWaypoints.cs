@@ -48,12 +48,12 @@ namespace Mayfly.Geographics
             buttonOK.Visible = false;
         }
 
-        public ListWaypoints(string fileName)
-            : this(new string[] { fileName })
+        public ListWaypoints(string filename)
+            : this(new string[] { filename })
         { }
 
-        public ListWaypoints(string[] fileNames)
-            : this(Service.GetWaypoints(fileNames))
+        public ListWaypoints(string[] filenames)
+            : this(Service.GetWaypoints(filenames))
         { }
 
         public ListWaypoints(Waypoint[] points)

@@ -22,7 +22,7 @@ namespace Mayfly.Benthos.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data();
+        public Data data = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
 
         public CardStack FullStack { get; private set; }
 

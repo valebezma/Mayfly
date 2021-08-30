@@ -562,11 +562,11 @@ namespace Mayfly.Fish.Explorer
 
             if (gridRow.Cells[ColumnRegID.Index].Value == null)
             {
-                individualRow.SetRegIDNull();
+                individualRow.SetTallyNull();
             }
             else
             {
-                individualRow.RegID = (string)gridRow.Cells[ColumnRegID.Index].Value;
+                individualRow.Tally = (string)gridRow.Cells[ColumnRegID.Index].Value;
             }
 
             if (gridRow.Cells[ColumnSex.Index].Value == null)
@@ -709,10 +709,10 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[ColumnSomaticMass.Index].Value = individualRow.SomaticMass;
             }
 
-            if (individualRow.IsRegIDNull()) { }
+            if (individualRow.IsTallyNull()) { }
             else
             {
-                gridRow.Cells[ColumnRegID.Index].Value = individualRow.RegID;
+                gridRow.Cells[ColumnRegID.Index].Value = individualRow.Tally;
             }
 
             if (individualRow.IsSexNull()) { }
@@ -936,13 +936,13 @@ namespace Mayfly.Fish.Explorer
                 if (spreadSheetLog[ColumnMass.Index, e.RowIndex].Value == null)
                 {
                     int weighted = Observations.GetCombinedData().GetStack().Weighted(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
-                    spreadSheetLog[ColumnMass.Index, e.RowIndex].Style.NullValue = weighted < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.Interface.EnoughStamp;
+                    spreadSheetLog[ColumnMass.Index, e.RowIndex].Style.NullValue = weighted < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
 
                 if (spreadSheetLog[ColumnRegID.Index, e.RowIndex].Value == null)
                 {
                     int reged = Observations.GetCombinedData().GetStack().Registered(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
-                    spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.Interface.EnoughStamp;
+                    spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
             }
 

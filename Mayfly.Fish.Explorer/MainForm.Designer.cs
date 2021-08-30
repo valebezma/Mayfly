@@ -34,10 +34,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 45D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100000D, 5D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,20 +56,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 45D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1000D, 5D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -100,19 +100,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAddData = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,21 +113,29 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSample = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemArtefactsSearch = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemLoadCards = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemLoadSpc = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemLoadLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemLoadIndividuals = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemIndAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemLoadStratified = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSurvey = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSurveyInput = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemGearStats = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpcStats = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemCards = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator25 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemCardInvestigator = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardWater = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCardGear = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSpc = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemLogAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemIndAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.meniItemIndAllAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemIndSuggested = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemIndSuggestedAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemStratified = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSurvey = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSurveyInput = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpawning = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFishery = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
@@ -164,9 +159,6 @@
             this.menuItemPredictionUnspecified = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCards = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCardMeteo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemCardFindEmpty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCardFindSpaced = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemCardPrintFull = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCardPrintNotes = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,14 +166,10 @@
             this.menuItemCardCatches = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCardEfforts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSpc = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSpcValidate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpcTaxa = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSpcTotals = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpcStrates = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideEmptyRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemComCom = new System.Windows.Forms.ToolStripMenuItem();
             this.menuIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndExtra = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndFecundity = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,44 +213,6 @@
             this.labelCardCount = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.labelCardCountValue = new System.Windows.Forms.Label();
-            this.tabPageArtefacts = new System.Windows.Forms.TabPage();
-            this.tabControlArtefacts = new System.Windows.Forms.TabControl();
-            this.tabPageArtefactCards = new System.Windows.Forms.TabPage();
-            this.labelArtefactGear = new System.Windows.Forms.Label();
-            this.pictureBoxArtefactGear = new System.Windows.Forms.PictureBox();
-            this.spreadSheetArtefactCard = new Mayfly.Controls.SpreadSheet();
-            this.columnArtCardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnArtCardOddMass = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtCardEffort = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
-            this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
-            this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
-            this.contextArtCard = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextArtCardOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageArtefactSpecies = new System.Windows.Forms.TabPage();
-            this.labelArtefactSpecies = new System.Windows.Forms.Label();
-            this.pictureBoxArtefactSpecies = new System.Windows.Forms.PictureBox();
-            this.spreadSheetArtefactSpecies = new Mayfly.Controls.SpreadSheet();
-            this.columnArtefactSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnArtefactN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnArtefactDetailed = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtefactLength = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtefactMass = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtefactAge = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.contextArtSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextArtSpeciesQualification = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextArtSpeciesFindInd = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextArtSpeciesFindStratified = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageArtefactInds = new System.Windows.Forms.TabPage();
-            this.spreadSheetArtefactInd = new Mayfly.Controls.SpreadSheet();
-            this.columnArtefactIndSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnArtefactIndRegID = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtefactIndDietUnw = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.contextArtIndividuals = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextArtefactIndFind = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextArtefactIndRecover = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelArtefactInd = new System.Windows.Forms.Label();
-            this.pictureBoxArtefactInd = new System.Windows.Forms.PictureBox();
             this.tabPageGearStats = new System.Windows.Forms.TabPage();
             this.buttonGearStatsReport = new System.Windows.Forms.Button();
             this.spreadSheetGearStats = new Mayfly.Controls.SpreadSheet();
@@ -299,6 +249,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageSpcStats = new System.Windows.Forms.TabPage();
             this.spreadSheetSpcStats = new Mayfly.Controls.SpreadSheet();
+            this.ColumnSpcStatsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSpcStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlSpc = new System.Windows.Forms.TabControl();
             this.tabPageSpcTotals = new System.Windows.Forms.TabPage();
@@ -378,20 +329,27 @@
             this.columnCardSpan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardVelocity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardExposure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCardEffort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCardEffort = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnCardDepth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCardWealth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCardQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCardWealth = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
+            this.columnCardQuantity = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnCardMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardAbundance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardBiomass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardDiversityA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardDiversityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
+            this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
+            this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextCard = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextCardOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextCardExplore = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextCardSaveSet = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextCardLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextCardIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextCardStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.contextCardPrintFull = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardPrintNote = new System.Windows.Forms.ToolStripMenuItem();
@@ -403,11 +361,16 @@
             this.buttonSpcFull = new System.Windows.Forms.Button();
             this.spreadSheetSpc = new Mayfly.Controls.SpreadSheet();
             this.columnSpcID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSpcSpc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSpcValid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSpcSpc = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnSpcQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSpcMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSpcOccurrence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextSpcQualify = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextSpcLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextSpcIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextSpcStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBoxLogTaxa = new System.Windows.Forms.ComboBox();
@@ -415,14 +378,17 @@
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
             this.columnLogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogSpc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnLogQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnLogMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnLogQuantity = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
+            this.columnLogMass = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnLogAbundance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogBiomass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogDiversityA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogDiversityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextLogOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
+            this.contextLogIndividuals = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextLogStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageStratified = new System.Windows.Forms.TabPage();
             this.stratifiedSample = new Mayfly.Wild.Controls.StratifiedSample();
             this.buttonSelectStratified = new System.Windows.Forms.Button();
@@ -451,7 +417,7 @@
             this.columnIndSomaticMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndConditionSoma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnIndRegID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnIndRegID = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnIndAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndGeneration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -466,7 +432,7 @@
             this.columnIndGonadIndexSoma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndEggSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndFat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnIndConsumed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnIndConsumed = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnIndConsumptionIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndDietItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -478,7 +444,6 @@
             this.parasitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.contextIndOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextIndOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.printIndividualsLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextIndPrint = new System.Windows.Forms.ToolStripMenuItem();
@@ -503,7 +468,6 @@
             this.dietCompiler = new System.ComponentModel.BackgroundWorker();
             this.artefactFinder = new System.ComponentModel.BackgroundWorker();
             this.specTipper = new System.ComponentModel.BackgroundWorker();
-            this.comparerLog = new System.ComponentModel.BackgroundWorker();
             this.specUpdater = new System.ComponentModel.BackgroundWorker();
             this.modelCalc = new System.ComponentModel.BackgroundWorker();
             this.calcModel = new System.ComponentModel.BackgroundWorker();
@@ -531,20 +495,6 @@
             this.tabControl.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).BeginInit();
-            this.tabPageArtefacts.SuspendLayout();
-            this.tabControlArtefacts.SuspendLayout();
-            this.tabPageArtefactCards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactGear)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactCard)).BeginInit();
-            this.contextArtCard.SuspendLayout();
-            this.tabPageArtefactSpecies.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactSpecies)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactSpecies)).BeginInit();
-            this.contextArtSpecies.SuspendLayout();
-            this.tabPageArtefactInds.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactInd)).BeginInit();
-            this.contextArtIndividuals.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactInd)).BeginInit();
             this.tabPageGearStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetGearStats)).BeginInit();
             this.tabControlCard.SuspendLayout();
@@ -568,6 +518,7 @@
             this.contextCard.SuspendLayout();
             this.tabPageSpc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSpc)).BeginInit();
+            this.contextSpecies.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
             this.contextLog.SuspendLayout();
@@ -591,7 +542,6 @@
             this.menuModels,
             this.menuCards,
             this.menuSpc,
-            this.menuLog,
             this.menuIndividuals,
             this.stratifiedSamplesToolStripMenuItem,
             this.menuService});
@@ -674,93 +624,17 @@
             // menuSample
             // 
             this.menuSample.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemArtefactsSearch,
+            this.menuItemGearStats,
+            this.menuItemSpcStats,
             this.toolStripSeparator2,
-            this.menuItemLoadCards,
-            this.menuItemLoadSpc,
-            this.menuItemLoadLog,
-            this.menuItemLoadIndividuals,
-            this.menuItemLoadStratified});
+            this.menuItemCards,
+            this.menuItemSpc,
+            this.menuItemLog,
+            this.menuItemIndividuals,
+            this.menuItemStratified});
             this.menuSample.Name = "menuSample";
             resources.ApplyResources(this.menuSample, "menuSample");
             this.menuSample.DropDownOpening += new System.EventHandler(this.menuItemSample_DropDownOpening);
-            // 
-            // menuItemArtefactsSearch
-            // 
-            this.menuItemArtefactsSearch.Name = "menuItemArtefactsSearch";
-            resources.ApplyResources(this.menuItemArtefactsSearch, "menuItemArtefactsSearch");
-            this.menuItemArtefactsSearch.Click += new System.EventHandler(this.menuItemArtefacts_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // menuItemLoadCards
-            // 
-            this.menuItemLoadCards.Name = "menuItemLoadCards";
-            resources.ApplyResources(this.menuItemLoadCards, "menuItemLoadCards");
-            this.menuItemLoadCards.Click += new System.EventHandler(this.menuItemLoadCards_Click);
-            // 
-            // menuItemLoadSpc
-            // 
-            this.menuItemLoadSpc.Name = "menuItemLoadSpc";
-            resources.ApplyResources(this.menuItemLoadSpc, "menuItemLoadSpc");
-            this.menuItemLoadSpc.Click += new System.EventHandler(this.menuItemLoadSpc_Click);
-            // 
-            // menuItemLoadLog
-            // 
-            this.menuItemLoadLog.Name = "menuItemLoadLog";
-            resources.ApplyResources(this.menuItemLoadLog, "menuItemLoadLog");
-            this.menuItemLoadLog.Click += new System.EventHandler(this.menuItemLoadLog_Click);
-            // 
-            // menuItemLoadIndividuals
-            // 
-            this.menuItemLoadIndividuals.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemIndAll,
-            this.toolStripSeparator3});
-            this.menuItemLoadIndividuals.Name = "menuItemLoadIndividuals";
-            resources.ApplyResources(this.menuItemLoadIndividuals, "menuItemLoadIndividuals");
-            // 
-            // menuItemIndAll
-            // 
-            this.menuItemIndAll.Name = "menuItemIndAll";
-            resources.ApplyResources(this.menuItemIndAll, "menuItemIndAll");
-            this.menuItemIndAll.Click += new System.EventHandler(this.menuItemIndAll_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // menuItemLoadStratified
-            // 
-            this.menuItemLoadStratified.Name = "menuItemLoadStratified";
-            resources.ApplyResources(this.menuItemLoadStratified, "menuItemLoadStratified");
-            this.menuItemLoadStratified.Click += new System.EventHandler(this.menuItemLoadStratified_Click);
-            // 
-            // menuSurvey
-            // 
-            this.menuSurvey.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemSurveyInput,
-            this.toolStripSeparator6,
-            this.menuItemGearStats,
-            this.menuItemSpcStats,
-            this.toolStripSeparator15,
-            this.menuItemSpawning});
-            this.menuSurvey.Name = "menuSurvey";
-            resources.ApplyResources(this.menuSurvey, "menuSurvey");
-            // 
-            // menuItemSurveyInput
-            // 
-            this.menuItemSurveyInput.Name = "menuItemSurveyInput";
-            resources.ApplyResources(this.menuItemSurveyInput, "menuItemSurveyInput");
-            this.menuItemSurveyInput.Click += new System.EventHandler(this.menuItemSurveyInput_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // menuItemGearStats
             // 
@@ -774,10 +648,137 @@
             resources.ApplyResources(this.menuItemSpcStats, "menuItemSpcStats");
             this.menuItemSpcStats.Click += new System.EventHandler(this.menuItemSpcStats_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // menuItemCards
+            // 
+            this.menuItemCards.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemCardAll,
+            this.toolStripSeparator25,
+            this.menuItemCardInvestigator,
+            this.menuItemCardWater,
+            this.menuItemCardGear});
+            this.menuItemCards.Name = "menuItemCards";
+            resources.ApplyResources(this.menuItemCards, "menuItemCards");
+            // 
+            // menuItemCardAll
+            // 
+            this.menuItemCardAll.Name = "menuItemCardAll";
+            resources.ApplyResources(this.menuItemCardAll, "menuItemCardAll");
+            // 
+            // toolStripSeparator25
+            // 
+            this.toolStripSeparator25.Name = "toolStripSeparator25";
+            resources.ApplyResources(this.toolStripSeparator25, "toolStripSeparator25");
+            // 
+            // menuItemCardInvestigator
+            // 
+            this.menuItemCardInvestigator.Name = "menuItemCardInvestigator";
+            resources.ApplyResources(this.menuItemCardInvestigator, "menuItemCardInvestigator");
+            // 
+            // menuItemCardWater
+            // 
+            this.menuItemCardWater.Name = "menuItemCardWater";
+            resources.ApplyResources(this.menuItemCardWater, "menuItemCardWater");
+            // 
+            // menuItemCardGear
+            // 
+            this.menuItemCardGear.Name = "menuItemCardGear";
+            resources.ApplyResources(this.menuItemCardGear, "menuItemCardGear");
+            // 
+            // menuItemSpc
+            // 
+            this.menuItemSpc.Name = "menuItemSpc";
+            resources.ApplyResources(this.menuItemSpc, "menuItemSpc");
+            this.menuItemSpc.Click += new System.EventHandler(this.menuItemSpc_Click);
+            // 
+            // menuItemLog
+            // 
+            this.menuItemLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemLogAll,
+            this.toolStripSeparator15});
+            this.menuItemLog.Name = "menuItemLog";
+            resources.ApplyResources(this.menuItemLog, "menuItemLog");
+            // 
+            // menuItemLogAll
+            // 
+            this.menuItemLogAll.Name = "menuItemLogAll";
+            resources.ApplyResources(this.menuItemLogAll, "menuItemLogAll");
+            this.menuItemLogAll.Click += new System.EventHandler(this.menuItemLog_Click);
+            // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
+            // 
+            // menuItemIndividuals
+            // 
+            this.menuItemIndividuals.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemIndAll,
+            this.menuItemIndSuggested});
+            this.menuItemIndividuals.Name = "menuItemIndividuals";
+            resources.ApplyResources(this.menuItemIndividuals, "menuItemIndividuals");
+            // 
+            // menuItemIndAll
+            // 
+            this.menuItemIndAll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.meniItemIndAllAll,
+            this.toolStripSeparator24});
+            this.menuItemIndAll.Name = "menuItemIndAll";
+            resources.ApplyResources(this.menuItemIndAll, "menuItemIndAll");
+            this.menuItemIndAll.Click += new System.EventHandler(this.menuItemIndAll_Click);
+            // 
+            // meniItemIndAllAll
+            // 
+            this.meniItemIndAllAll.Name = "meniItemIndAllAll";
+            resources.ApplyResources(this.meniItemIndAllAll, "meniItemIndAllAll");
+            // 
+            // toolStripSeparator24
+            // 
+            this.toolStripSeparator24.Name = "toolStripSeparator24";
+            resources.ApplyResources(this.toolStripSeparator24, "toolStripSeparator24");
+            // 
+            // menuItemIndSuggested
+            // 
+            this.menuItemIndSuggested.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemIndSuggestedAll,
+            this.toolStripSeparator3});
+            this.menuItemIndSuggested.Name = "menuItemIndSuggested";
+            resources.ApplyResources(this.menuItemIndSuggested, "menuItemIndSuggested");
+            // 
+            // menuItemIndSuggestedAll
+            // 
+            this.menuItemIndSuggestedAll.Name = "menuItemIndSuggestedAll";
+            resources.ApplyResources(this.menuItemIndSuggestedAll, "menuItemIndSuggestedAll");
+            this.menuItemIndSuggestedAll.Click += new System.EventHandler(this.menuItemIndSuggestedAll_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // menuItemStratified
+            // 
+            this.menuItemStratified.Name = "menuItemStratified";
+            resources.ApplyResources(this.menuItemStratified, "menuItemStratified");
+            this.menuItemStratified.Click += new System.EventHandler(this.menuItemLoadStratified_Click);
+            // 
+            // menuSurvey
+            // 
+            this.menuSurvey.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemSurveyInput,
+            this.menuItemSpawning});
+            this.menuSurvey.Name = "menuSurvey";
+            resources.ApplyResources(this.menuSurvey, "menuSurvey");
+            // 
+            // menuItemSurveyInput
+            // 
+            this.menuItemSurveyInput.Name = "menuItemSurveyInput";
+            resources.ApplyResources(this.menuItemSurveyInput, "menuItemSurveyInput");
+            this.menuItemSurveyInput.Click += new System.EventHandler(this.menuItemSurveyInput_Click);
             // 
             // menuItemSpawning
             // 
@@ -919,9 +920,6 @@
             // 
             this.menuCards.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemCardMeteo,
-            this.toolStripSeparator18,
-            this.menuItemCardFindEmpty,
-            this.menuItemCardFindSpaced,
             this.toolStripSeparator1,
             this.menuItemCardPrintFull,
             this.menuItemCardPrintNotes,
@@ -937,23 +935,6 @@
             this.menuItemCardMeteo.Name = "menuItemCardMeteo";
             resources.ApplyResources(this.menuItemCardMeteo, "menuItemCardMeteo");
             this.menuItemCardMeteo.CheckedChanged += new System.EventHandler(this.menuItemCardMeteo_CheckedChanged);
-            // 
-            // toolStripSeparator18
-            // 
-            this.toolStripSeparator18.Name = "toolStripSeparator18";
-            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
-            // 
-            // menuItemCardFindEmpty
-            // 
-            this.menuItemCardFindEmpty.Name = "menuItemCardFindEmpty";
-            resources.ApplyResources(this.menuItemCardFindEmpty, "menuItemCardFindEmpty");
-            this.menuItemCardFindEmpty.Click += new System.EventHandler(this.menuItemCardFindEmpty_Click);
-            // 
-            // menuItemCardFindSpaced
-            // 
-            this.menuItemCardFindSpaced.Name = "menuItemCardFindSpaced";
-            resources.ApplyResources(this.menuItemCardFindSpaced, "menuItemCardFindSpaced");
-            this.menuItemCardFindSpaced.Click += new System.EventHandler(this.menuItemCardFindSpaced_Click);
             // 
             // toolStripSeparator1
             // 
@@ -992,19 +973,12 @@
             // menuSpc
             // 
             this.menuSpc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemSpcValidate,
             this.menuItemSpcTaxa,
             this.toolStripSeparator13,
             this.menuItemSpcTotals,
             this.menuItemSpcStrates});
             this.menuSpc.Name = "menuSpc";
             resources.ApplyResources(this.menuSpc, "menuSpc");
-            // 
-            // menuItemSpcValidate
-            // 
-            this.menuItemSpcValidate.Name = "menuItemSpcValidate";
-            resources.ApplyResources(this.menuItemSpcValidate, "menuItemSpcValidate");
-            this.menuItemSpcValidate.Click += new System.EventHandler(this.menuItemSpcValidate_Click);
             // 
             // menuItemSpcTaxa
             // 
@@ -1027,25 +1001,6 @@
             this.menuItemSpcStrates.Name = "menuItemSpcStrates";
             resources.ApplyResources(this.menuItemSpcStrates, "menuItemSpcStrates");
             this.menuItemSpcStrates.Click += new System.EventHandler(this.menuItemSpcStrates_Click);
-            // 
-            // menuLog
-            // 
-            this.menuLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hideEmptyRecordsToolStripMenuItem,
-            this.menuItemComCom});
-            this.menuLog.Name = "menuLog";
-            resources.ApplyResources(this.menuLog, "menuLog");
-            // 
-            // hideEmptyRecordsToolStripMenuItem
-            // 
-            this.hideEmptyRecordsToolStripMenuItem.Name = "hideEmptyRecordsToolStripMenuItem";
-            resources.ApplyResources(this.hideEmptyRecordsToolStripMenuItem, "hideEmptyRecordsToolStripMenuItem");
-            // 
-            // menuItemComCom
-            // 
-            this.menuItemComCom.Name = "menuItemComCom";
-            resources.ApplyResources(this.menuItemComCom, "menuItemComCom");
-            this.menuItemComCom.Click += new System.EventHandler(this.menuItemComCom_Click);
             // 
             // menuIndividuals
             // 
@@ -1187,7 +1142,6 @@
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPageInfo);
-            this.tabControl.Controls.Add(this.tabPageArtefacts);
             this.tabControl.Controls.Add(this.tabPageGearStats);
             this.tabControl.Controls.Add(this.tabPageSpcStats);
             this.tabControl.Controls.Add(this.tabPageCard);
@@ -1251,14 +1205,12 @@
             resources.ApplyResources(this.labelArtefacts, "labelArtefacts");
             this.labelArtefacts.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelArtefacts.Name = "labelArtefacts";
-            this.labelArtefacts.DoubleClick += new System.EventHandler(this.menuItemArtefacts_Click);
             // 
             // pictureBoxArtefacts
             // 
             resources.ApplyResources(this.pictureBoxArtefacts, "pictureBoxArtefacts");
             this.pictureBoxArtefacts.Name = "pictureBoxArtefacts";
             this.pictureBoxArtefacts.TabStop = false;
-            this.pictureBoxArtefacts.DoubleClick += new System.EventHandler(this.menuItemArtefacts_Click);
             // 
             // listViewInvestigators
             // 
@@ -1378,336 +1330,7 @@
             // 
             resources.ApplyResources(this.labelCardCountValue, "labelCardCountValue");
             this.labelCardCountValue.Name = "labelCardCountValue";
-            this.labelCardCountValue.DoubleClick += new System.EventHandler(this.menuItemLoadCards_Click);
-            // 
-            // tabPageArtefacts
-            // 
-            this.tabPageArtefacts.Controls.Add(this.tabControlArtefacts);
-            resources.ApplyResources(this.tabPageArtefacts, "tabPageArtefacts");
-            this.tabPageArtefacts.Name = "tabPageArtefacts";
-            this.tabPageArtefacts.UseVisualStyleBackColor = true;
-            // 
-            // tabControlArtefacts
-            // 
-            resources.ApplyResources(this.tabControlArtefacts, "tabControlArtefacts");
-            this.tabControlArtefacts.Controls.Add(this.tabPageArtefactCards);
-            this.tabControlArtefacts.Controls.Add(this.tabPageArtefactSpecies);
-            this.tabControlArtefacts.Controls.Add(this.tabPageArtefactInds);
-            this.tabControlArtefacts.Name = "tabControlArtefacts";
-            this.tabControlArtefacts.SelectedIndex = 0;
-            // 
-            // tabPageArtefactCards
-            // 
-            this.tabPageArtefactCards.Controls.Add(this.labelArtefactGear);
-            this.tabPageArtefactCards.Controls.Add(this.pictureBoxArtefactGear);
-            this.tabPageArtefactCards.Controls.Add(this.spreadSheetArtefactCard);
-            resources.ApplyResources(this.tabPageArtefactCards, "tabPageArtefactCards");
-            this.tabPageArtefactCards.Name = "tabPageArtefactCards";
-            this.tabPageArtefactCards.UseVisualStyleBackColor = true;
-            // 
-            // labelArtefactGear
-            // 
-            resources.ApplyResources(this.labelArtefactGear, "labelArtefactGear");
-            this.labelArtefactGear.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefactGear.Name = "labelArtefactGear";
-            // 
-            // pictureBoxArtefactGear
-            // 
-            resources.ApplyResources(this.pictureBoxArtefactGear, "pictureBoxArtefactGear");
-            this.pictureBoxArtefactGear.Name = "pictureBoxArtefactGear";
-            this.pictureBoxArtefactGear.TabStop = false;
-            // 
-            // spreadSheetArtefactCard
-            // 
-            resources.ApplyResources(this.spreadSheetArtefactCard, "spreadSheetArtefactCard");
-            this.spreadSheetArtefactCard.CellPadding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.spreadSheetArtefactCard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnArtCardName,
-            this.columnArtCardOddMass,
-            this.columnArtCardEffort});
-            this.spreadSheetArtefactCard.DefaultDecimalPlaces = 0;
-            this.spreadSheetArtefactCard.Display = this.processDisplay;
-            this.spreadSheetArtefactCard.Name = "spreadSheetArtefactCard";
-            this.spreadSheetArtefactCard.ReadOnly = true;
-            this.spreadSheetArtefactCard.RowMenu = this.contextArtCard;
-            this.spreadSheetArtefactCard.RowVisibilityKey = System.Windows.Forms.Keys.N;
-            // 
-            // columnArtCardName
-            // 
-            this.columnArtCardName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Format = "S";
-            this.columnArtCardName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.columnArtCardName.FillWeight = 250F;
-            resources.ApplyResources(this.columnArtCardName, "columnArtCardName");
-            this.columnArtCardName.Name = "columnArtCardName";
-            this.columnArtCardName.ReadOnly = true;
-            // 
-            // columnArtCardOddMass
-            // 
-            dataGridViewCellStyle2.Format = "N3";
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtCardOddMass.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.columnArtCardOddMass, "columnArtCardOddMass");
-            this.columnArtCardOddMass.Image = null;
-            this.columnArtCardOddMass.Name = "columnArtCardOddMass";
-            this.columnArtCardOddMass.ReadOnly = true;
-            // 
-            // columnArtCardEffort
-            // 
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtCardEffort.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.columnArtCardEffort, "columnArtCardEffort");
-            this.columnArtCardEffort.Image = null;
-            this.columnArtCardEffort.Name = "columnArtCardEffort";
-            this.columnArtCardEffort.ReadOnly = true;
-            // 
-            // processDisplay
-            // 
-            this.processDisplay.Default = null;
-            this.processDisplay.Look = null;
-            this.processDisplay.MaximalInterval = 2000;
-            this.processDisplay.ProgressBar = this.statusLoading;
-            this.processDisplay.StatusLog = this.statusProcess;
-            // 
-            // statusLoading
-            // 
-            this.statusLoading.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
-            this.statusLoading.MarqueeAnimationSpeed = 50;
-            this.statusLoading.Name = "statusLoading";
-            resources.ApplyResources(this.statusLoading, "statusLoading");
-            this.statusLoading.Value = 50;
-            // 
-            // statusProcess
-            // 
-            this.statusProcess.Name = "statusProcess";
-            resources.ApplyResources(this.statusProcess, "statusProcess");
-            this.statusProcess.Spring = true;
-            // 
-            // contextArtCard
-            // 
-            this.contextArtCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextArtCardOpen});
-            this.contextArtCard.Name = "contextArtefactGear";
-            resources.ApplyResources(this.contextArtCard, "contextArtCard");
-            // 
-            // contextArtCardOpen
-            // 
-            resources.ApplyResources(this.contextArtCardOpen, "contextArtCardOpen");
-            this.contextArtCardOpen.Name = "contextArtCardOpen";
-            this.contextArtCardOpen.Click += new System.EventHandler(this.contextArtCardOpen_Click);
-            // 
-            // tabPageArtefactSpecies
-            // 
-            this.tabPageArtefactSpecies.Controls.Add(this.labelArtefactSpecies);
-            this.tabPageArtefactSpecies.Controls.Add(this.pictureBoxArtefactSpecies);
-            this.tabPageArtefactSpecies.Controls.Add(this.spreadSheetArtefactSpecies);
-            resources.ApplyResources(this.tabPageArtefactSpecies, "tabPageArtefactSpecies");
-            this.tabPageArtefactSpecies.Name = "tabPageArtefactSpecies";
-            this.tabPageArtefactSpecies.UseVisualStyleBackColor = true;
-            // 
-            // labelArtefactSpecies
-            // 
-            resources.ApplyResources(this.labelArtefactSpecies, "labelArtefactSpecies");
-            this.labelArtefactSpecies.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefactSpecies.Name = "labelArtefactSpecies";
-            // 
-            // pictureBoxArtefactSpecies
-            // 
-            resources.ApplyResources(this.pictureBoxArtefactSpecies, "pictureBoxArtefactSpecies");
-            this.pictureBoxArtefactSpecies.Name = "pictureBoxArtefactSpecies";
-            this.pictureBoxArtefactSpecies.TabStop = false;
-            // 
-            // spreadSheetArtefactSpecies
-            // 
-            resources.ApplyResources(this.spreadSheetArtefactSpecies, "spreadSheetArtefactSpecies");
-            this.spreadSheetArtefactSpecies.CellPadding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.spreadSheetArtefactSpecies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnArtefactSpecies,
-            this.columnArtefactN,
-            this.columnArtefactDetailed,
-            this.columnArtefactLength,
-            this.columnArtefactMass,
-            this.columnArtefactAge});
-            this.spreadSheetArtefactSpecies.DefaultDecimalPlaces = 0;
-            this.spreadSheetArtefactSpecies.Display = this.processDisplay;
-            this.spreadSheetArtefactSpecies.MultiSelect = false;
-            this.spreadSheetArtefactSpecies.Name = "spreadSheetArtefactSpecies";
-            this.spreadSheetArtefactSpecies.ReadOnly = true;
-            this.spreadSheetArtefactSpecies.RowMenu = this.contextArtSpecies;
-            this.spreadSheetArtefactSpecies.RowVisibilityKey = System.Windows.Forms.Keys.N;
-            this.spreadSheetArtefactSpecies.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.spreadSheetArtefactSpecies_CellMouseDoubleClick);
-            // 
-            // columnArtefactSpecies
-            // 
-            this.columnArtefactSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnArtefactSpecies.DefaultCellStyle = dataGridViewCellStyle4;
-            this.columnArtefactSpecies.FillWeight = 250F;
-            resources.ApplyResources(this.columnArtefactSpecies, "columnArtefactSpecies");
-            this.columnArtefactSpecies.Name = "columnArtefactSpecies";
-            this.columnArtefactSpecies.ReadOnly = true;
-            // 
-            // columnArtefactN
-            // 
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactN.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.columnArtefactN, "columnArtefactN");
-            this.columnArtefactN.Name = "columnArtefactN";
-            this.columnArtefactN.ReadOnly = true;
-            // 
-            // columnArtefactDetailed
-            // 
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactDetailed.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.columnArtefactDetailed, "columnArtefactDetailed");
-            this.columnArtefactDetailed.Image = null;
-            this.columnArtefactDetailed.Name = "columnArtefactDetailed";
-            this.columnArtefactDetailed.ReadOnly = true;
-            this.columnArtefactDetailed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnArtefactLength
-            // 
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactLength.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.columnArtefactLength, "columnArtefactLength");
-            this.columnArtefactLength.Image = null;
-            this.columnArtefactLength.Name = "columnArtefactLength";
-            this.columnArtefactLength.ReadOnly = true;
-            this.columnArtefactLength.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnArtefactMass
-            // 
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactMass.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.columnArtefactMass, "columnArtefactMass");
-            this.columnArtefactMass.Image = null;
-            this.columnArtefactMass.Name = "columnArtefactMass";
-            this.columnArtefactMass.ReadOnly = true;
-            this.columnArtefactMass.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnArtefactAge
-            // 
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactAge.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(this.columnArtefactAge, "columnArtefactAge");
-            this.columnArtefactAge.Image = null;
-            this.columnArtefactAge.Name = "columnArtefactAge";
-            this.columnArtefactAge.ReadOnly = true;
-            this.columnArtefactAge.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // contextArtSpecies
-            // 
-            this.contextArtSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextArtSpeciesQualification,
-            this.contextArtSpeciesFindInd,
-            this.contextArtSpeciesFindStratified});
-            this.contextArtSpecies.Name = "contextArtefact";
-            resources.ApplyResources(this.contextArtSpecies, "contextArtSpecies");
-            this.contextArtSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextArtSpecies_Opening);
-            // 
-            // contextArtSpeciesQualification
-            // 
-            this.contextArtSpeciesQualification.Name = "contextArtSpeciesQualification";
-            resources.ApplyResources(this.contextArtSpeciesQualification, "contextArtSpeciesQualification");
-            this.contextArtSpeciesQualification.Click += new System.EventHandler(this.contextArtSpeciesModels_Click);
-            // 
-            // contextArtSpeciesFindInd
-            // 
-            this.contextArtSpeciesFindInd.Name = "contextArtSpeciesFindInd";
-            resources.ApplyResources(this.contextArtSpeciesFindInd, "contextArtSpeciesFindInd");
-            this.contextArtSpeciesFindInd.Click += new System.EventHandler(this.contextArtSpeciesFindIndividuals_Click);
-            // 
-            // contextArtSpeciesFindStratified
-            // 
-            this.contextArtSpeciesFindStratified.Name = "contextArtSpeciesFindStratified";
-            resources.ApplyResources(this.contextArtSpeciesFindStratified, "contextArtSpeciesFindStratified");
-            this.contextArtSpeciesFindStratified.Click += new System.EventHandler(this.contextArtSpeciesFindStratified_Click);
-            // 
-            // tabPageArtefactInds
-            // 
-            this.tabPageArtefactInds.Controls.Add(this.spreadSheetArtefactInd);
-            this.tabPageArtefactInds.Controls.Add(this.labelArtefactInd);
-            this.tabPageArtefactInds.Controls.Add(this.pictureBoxArtefactInd);
-            resources.ApplyResources(this.tabPageArtefactInds, "tabPageArtefactInds");
-            this.tabPageArtefactInds.Name = "tabPageArtefactInds";
-            this.tabPageArtefactInds.UseVisualStyleBackColor = true;
-            // 
-            // spreadSheetArtefactInd
-            // 
-            resources.ApplyResources(this.spreadSheetArtefactInd, "spreadSheetArtefactInd");
-            this.spreadSheetArtefactInd.CellPadding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.spreadSheetArtefactInd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnArtefactIndSpecies,
-            this.columnArtefactIndRegID,
-            this.columnArtefactIndDietUnw});
-            this.spreadSheetArtefactInd.DefaultDecimalPlaces = 0;
-            this.spreadSheetArtefactInd.Display = this.processDisplay;
-            this.spreadSheetArtefactInd.MultiSelect = false;
-            this.spreadSheetArtefactInd.Name = "spreadSheetArtefactInd";
-            this.spreadSheetArtefactInd.ReadOnly = true;
-            this.spreadSheetArtefactInd.RowMenu = this.contextArtIndividuals;
-            this.spreadSheetArtefactInd.RowVisibilityKey = System.Windows.Forms.Keys.N;
-            // 
-            // columnArtefactIndSpecies
-            // 
-            this.columnArtefactIndSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnArtefactIndSpecies.DefaultCellStyle = dataGridViewCellStyle10;
-            this.columnArtefactIndSpecies.FillWeight = 250F;
-            resources.ApplyResources(this.columnArtefactIndSpecies, "columnArtefactIndSpecies");
-            this.columnArtefactIndSpecies.Name = "columnArtefactIndSpecies";
-            this.columnArtefactIndSpecies.ReadOnly = true;
-            // 
-            // columnArtefactIndRegID
-            // 
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactIndRegID.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.columnArtefactIndRegID, "columnArtefactIndRegID");
-            this.columnArtefactIndRegID.Image = null;
-            this.columnArtefactIndRegID.Name = "columnArtefactIndRegID";
-            this.columnArtefactIndRegID.ReadOnly = true;
-            this.columnArtefactIndRegID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnArtefactIndDietUnw
-            // 
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.columnArtefactIndDietUnw.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.columnArtefactIndDietUnw, "columnArtefactIndDietUnw");
-            this.columnArtefactIndDietUnw.Image = null;
-            this.columnArtefactIndDietUnw.Name = "columnArtefactIndDietUnw";
-            this.columnArtefactIndDietUnw.ReadOnly = true;
-            this.columnArtefactIndDietUnw.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // contextArtIndividuals
-            // 
-            this.contextArtIndividuals.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextArtefactIndFind,
-            this.contextArtefactIndRecover});
-            this.contextArtIndividuals.Name = "contextArtefactInd";
-            resources.ApplyResources(this.contextArtIndividuals, "contextArtIndividuals");
-            // 
-            // contextArtefactIndFind
-            // 
-            this.contextArtefactIndFind.Name = "contextArtefactIndFind";
-            resources.ApplyResources(this.contextArtefactIndFind, "contextArtefactIndFind");
-            // 
-            // contextArtefactIndRecover
-            // 
-            this.contextArtefactIndRecover.Name = "contextArtefactIndRecover";
-            resources.ApplyResources(this.contextArtefactIndRecover, "contextArtefactIndRecover");
-            // 
-            // labelArtefactInd
-            // 
-            resources.ApplyResources(this.labelArtefactInd, "labelArtefactInd");
-            this.labelArtefactInd.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefactInd.Name = "labelArtefactInd";
-            // 
-            // pictureBoxArtefactInd
-            // 
-            resources.ApplyResources(this.pictureBoxArtefactInd, "pictureBoxArtefactInd");
-            this.pictureBoxArtefactInd.Name = "pictureBoxArtefactInd";
-            this.pictureBoxArtefactInd.TabStop = false;
+            this.labelCardCountValue.DoubleClick += new System.EventHandler(this.menuItemCards_Click);
             // 
             // tabPageGearStats
             // 
@@ -1743,8 +1366,8 @@
             // 
             // ColumnGearStats
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnGearStats.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnGearStats.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnGearStats, "ColumnGearStats");
             this.ColumnGearStats.Name = "ColumnGearStats";
             this.ColumnGearStats.ReadOnly = true;
@@ -1834,8 +1457,8 @@
             // 
             // columnEffortMesh
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnEffortMesh.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnEffortMesh.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.columnEffortMesh, "columnEffortMesh");
             this.columnEffortMesh.Name = "columnEffortMesh";
             this.columnEffortMesh.ReadOnly = true;
@@ -1848,16 +1471,16 @@
             // 
             // columnEffort
             // 
-            dataGridViewCellStyle15.Format = "N2";
-            this.columnEffort.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Format = "N2";
+            this.columnEffort.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.columnEffort, "columnEffort");
             this.columnEffort.Name = "columnEffort";
             this.columnEffort.ReadOnly = true;
             // 
             // columnEffortEO
             // 
-            dataGridViewCellStyle16.Format = "N3";
-            this.columnEffortEO.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Format = "N3";
+            this.columnEffortEO.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.columnEffortEO, "columnEffortEO");
             this.columnEffortEO.Name = "columnEffortEO";
             this.columnEffortEO.ReadOnly = true;
@@ -1989,8 +1612,9 @@
             // 
             // columnCatchSpc
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCatchSpc.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Format = "s";
+            this.columnCatchSpc.DefaultCellStyle = dataGridViewCellStyle5;
             this.columnCatchSpc.FillWeight = 86.8969F;
             resources.ApplyResources(this.columnCatchSpc, "columnCatchSpc");
             this.columnCatchSpc.Name = "columnCatchSpc";
@@ -2007,8 +1631,8 @@
             // columnCatchW
             // 
             this.columnCatchW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Format = "N3";
-            this.columnCatchW.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Format = "N3";
+            this.columnCatchW.DefaultCellStyle = dataGridViewCellStyle6;
             this.columnCatchW.FillWeight = 75F;
             resources.ApplyResources(this.columnCatchW, "columnCatchW");
             this.columnCatchW.Name = "columnCatchW";
@@ -2035,6 +1659,7 @@
             resources.ApplyResources(this.spreadSheetSpcStats, "spreadSheetSpcStats");
             this.spreadSheetSpcStats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.spreadSheetSpcStats.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSpcStatsID,
             this.ColumnSpcStat});
             this.spreadSheetSpcStats.MultiSelect = false;
             this.spreadSheetSpcStats.Name = "spreadSheetSpcStats";
@@ -2045,11 +1670,17 @@
             this.spreadSheetSpcStats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.spreadSheetSpcStats.SelectionChanged += new System.EventHandler(this.species_Changed);
             // 
+            // ColumnSpcStatsID
+            // 
+            resources.ApplyResources(this.ColumnSpcStatsID, "ColumnSpcStatsID");
+            this.ColumnSpcStatsID.Name = "ColumnSpcStatsID";
+            this.ColumnSpcStatsID.ReadOnly = true;
+            // 
             // ColumnSpcStat
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.Format = "l";
-            this.ColumnSpcStat.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Format = "s";
+            this.ColumnSpcStat.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.ColumnSpcStat, "ColumnSpcStat");
             this.ColumnSpcStat.Name = "ColumnSpcStat";
             this.ColumnSpcStat.ReadOnly = true;
@@ -2348,8 +1979,8 @@
             // 
             // ColumnSpcTechClass
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpcTechClass.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpcTechClass.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.ColumnSpcTechClass, "ColumnSpcTechClass");
             this.ColumnSpcTechClass.Name = "ColumnSpcTechClass";
             this.ColumnSpcTechClass.ReadOnly = true;
@@ -2422,8 +2053,8 @@
             // 
             // buttonQualOutliers
             // 
-            this.buttonQualOutliers.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.buttonQualOutliers, "buttonQualOutliers");
+            this.buttonQualOutliers.FlatAppearance.BorderSize = 0;
             this.buttonQualOutliers.Name = "buttonQualOutliers";
             this.buttonQualOutliers.Click += new System.EventHandler(this.buttonQualOutliers_Click);
             // 
@@ -2462,7 +2093,7 @@
             resources.ApplyResources(this.comboBoxQualValue, "comboBoxQualValue");
             this.comboBoxQualValue.Name = "comboBoxQualValue";
             this.comboBoxQualValue.SelectedIndexChanged += new System.EventHandler(this.models_Changed);
-            this.comboBoxQualValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxQualValue_KeyPress);
+            this.comboBoxQualValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // comboBoxQualClass
             // 
@@ -2489,6 +2120,7 @@
             // 
             // plotQualify
             // 
+            this.plotQualify.AllowDrop = true;
             resources.ApplyResources(this.plotQualify, "plotQualify");
             this.plotQualify.AxisXAutoInterval = false;
             this.plotQualify.AxisXAutoMaximum = false;
@@ -2503,7 +2135,6 @@
             this.plotQualify.BackColor = System.Drawing.SystemColors.Window;
             this.plotQualify.Name = "plotQualify";
             series3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            series3.BorderWidth = 2;
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Color = System.Drawing.Color.Red;
             series3.Name = "Limiter";
@@ -2512,7 +2143,7 @@
             this.plotQualify.Series.Add(series3);
             this.plotQualify.ShowLegend = false;
             this.plotQualify.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
-            this.plotQualify.Updated += new System.EventHandler(this.plotQualify_Updated);
+            this.plotQualify.AxesUpdated += new System.EventHandler(this.plotQualify_AxesUpdated);
             // 
             // buttonSpeciesStatsReport
             // 
@@ -2574,15 +2205,14 @@
             this.spreadSheetCard.RowMenu = this.contextCard;
             this.spreadSheetCard.RowMenuLaunchableItemIndex = 0;
             this.spreadSheetCard.RowVisibilityKey = System.Windows.Forms.Keys.N;
-            this.spreadSheetCard.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetCard_CellEndEdit);
             this.spreadSheetCard.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetCard_CellValueChanged);
             this.spreadSheetCard.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetCard_RowEnter);
             // 
             // columnCardID
             // 
-            dataGridViewCellStyle21.Format = "N0";
-            dataGridViewCellStyle21.NullValue = null;
-            this.columnCardID.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.columnCardID.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.columnCardID, "columnCardID");
             this.columnCardID.Name = "columnCardID";
             this.columnCardID.ReadOnly = true;
@@ -2590,8 +2220,8 @@
             // 
             // columnCardInvestigator
             // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardInvestigator.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardInvestigator.DefaultCellStyle = dataGridViewCellStyle10;
             this.columnCardInvestigator.FillWeight = 150F;
             resources.ApplyResources(this.columnCardInvestigator, "columnCardInvestigator");
             this.columnCardInvestigator.Name = "columnCardInvestigator";
@@ -2599,8 +2229,8 @@
             // 
             // columnCardWater
             // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardWater.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardWater.DefaultCellStyle = dataGridViewCellStyle11;
             this.columnCardWater.FillWeight = 200F;
             resources.ApplyResources(this.columnCardWater, "columnCardWater");
             this.columnCardWater.Name = "columnCardWater";
@@ -2608,17 +2238,17 @@
             // 
             // columnCardLabel
             // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardLabel.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardLabel.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.columnCardLabel, "columnCardLabel");
             this.columnCardLabel.Name = "columnCardLabel";
             // 
             // columnCardWhen
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.Format = "g";
-            dataGridViewCellStyle25.NullValue = null;
-            this.columnCardWhen.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Format = "g";
+            dataGridViewCellStyle13.NullValue = null;
+            this.columnCardWhen.DefaultCellStyle = dataGridViewCellStyle13;
             this.columnCardWhen.FillWeight = 150F;
             resources.ApplyResources(this.columnCardWhen, "columnCardWhen");
             this.columnCardWhen.Name = "columnCardWhen";
@@ -2626,15 +2256,15 @@
             // 
             // columnCardWhere
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnCardWhere.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnCardWhere.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.columnCardWhere, "columnCardWhere");
             this.columnCardWhere.Name = "columnCardWhere";
             // 
             // ColumnCardWeather
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnCardWeather.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnCardWeather.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.ColumnCardWeather, "ColumnCardWeather");
             this.ColumnCardWeather.Name = "ColumnCardWeather";
             // 
@@ -2645,8 +2275,8 @@
             // 
             // columnCardGear
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardGear.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardGear.DefaultCellStyle = dataGridViewCellStyle16;
             this.columnCardGear.FillWeight = 200F;
             resources.ApplyResources(this.columnCardGear, "columnCardGear");
             this.columnCardGear.Name = "columnCardGear";
@@ -2654,15 +2284,15 @@
             // 
             // columnCardMesh
             // 
-            dataGridViewCellStyle29.Format = "0";
-            this.columnCardMesh.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle17.Format = "0";
+            this.columnCardMesh.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.columnCardMesh, "columnCardMesh");
             this.columnCardMesh.Name = "columnCardMesh";
             // 
             // columnCardHook
             // 
-            dataGridViewCellStyle30.Format = "0";
-            this.columnCardHook.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle18.Format = "0";
+            this.columnCardHook.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.columnCardHook, "columnCardHook");
             this.columnCardHook.Name = "columnCardHook";
             // 
@@ -2683,17 +2313,17 @@
             // 
             // columnCardSquare
             // 
-            dataGridViewCellStyle31.Format = "N2";
-            this.columnCardSquare.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle19.Format = "N2";
+            this.columnCardSquare.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.columnCardSquare, "columnCardSquare");
             this.columnCardSquare.Name = "columnCardSquare";
             // 
             // columnCardSpan
             // 
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.Format = "HH:mm";
-            dataGridViewCellStyle32.NullValue = null;
-            this.columnCardSpan.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Format = "HH:mm";
+            dataGridViewCellStyle20.NullValue = null;
+            this.columnCardSpan.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.columnCardSpan, "columnCardSpan");
             this.columnCardSpan.Name = "columnCardSpan";
             // 
@@ -2710,8 +2340,10 @@
             // columnCardEffort
             // 
             resources.ApplyResources(this.columnCardEffort, "columnCardEffort");
+            this.columnCardEffort.Image = null;
             this.columnCardEffort.Name = "columnCardEffort";
             this.columnCardEffort.ReadOnly = true;
+            this.columnCardEffort.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnCardDepth
             // 
@@ -2720,73 +2352,103 @@
             // 
             // columnCardWealth
             // 
-            dataGridViewCellStyle33.Format = "N0";
-            this.columnCardWealth.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle21.Format = "N0";
+            this.columnCardWealth.DefaultCellStyle = dataGridViewCellStyle21;
             resources.ApplyResources(this.columnCardWealth, "columnCardWealth");
+            this.columnCardWealth.Image = null;
             this.columnCardWealth.Name = "columnCardWealth";
             this.columnCardWealth.ReadOnly = true;
+            this.columnCardWealth.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnCardQuantity
             // 
-            dataGridViewCellStyle34.Format = "N0";
-            this.columnCardQuantity.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle22.Format = "N0";
+            this.columnCardQuantity.DefaultCellStyle = dataGridViewCellStyle22;
             resources.ApplyResources(this.columnCardQuantity, "columnCardQuantity");
+            this.columnCardQuantity.Image = null;
             this.columnCardQuantity.Name = "columnCardQuantity";
             this.columnCardQuantity.ReadOnly = true;
+            this.columnCardQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnCardMass
             // 
-            dataGridViewCellStyle35.Format = "N3";
-            this.columnCardMass.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle23.Format = "N3";
+            this.columnCardMass.DefaultCellStyle = dataGridViewCellStyle23;
             resources.ApplyResources(this.columnCardMass, "columnCardMass");
             this.columnCardMass.Name = "columnCardMass";
             this.columnCardMass.ReadOnly = true;
             // 
             // columnCardAbundance
             // 
-            dataGridViewCellStyle36.Format = "N2";
-            this.columnCardAbundance.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle24.Format = "N2";
+            this.columnCardAbundance.DefaultCellStyle = dataGridViewCellStyle24;
             resources.ApplyResources(this.columnCardAbundance, "columnCardAbundance");
             this.columnCardAbundance.Name = "columnCardAbundance";
             this.columnCardAbundance.ReadOnly = true;
             // 
             // columnCardBiomass
             // 
-            dataGridViewCellStyle37.Format = "N3";
-            this.columnCardBiomass.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle25.Format = "N3";
+            this.columnCardBiomass.DefaultCellStyle = dataGridViewCellStyle25;
             resources.ApplyResources(this.columnCardBiomass, "columnCardBiomass");
             this.columnCardBiomass.Name = "columnCardBiomass";
             this.columnCardBiomass.ReadOnly = true;
             // 
             // columnCardDiversityA
             // 
-            dataGridViewCellStyle38.Format = "N3";
-            this.columnCardDiversityA.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle26.Format = "N3";
+            this.columnCardDiversityA.DefaultCellStyle = dataGridViewCellStyle26;
             resources.ApplyResources(this.columnCardDiversityA, "columnCardDiversityA");
             this.columnCardDiversityA.Name = "columnCardDiversityA";
             this.columnCardDiversityA.ReadOnly = true;
             // 
             // columnCardDiversityB
             // 
-            dataGridViewCellStyle39.Format = "N3";
-            this.columnCardDiversityB.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle27.Format = "N3";
+            this.columnCardDiversityB.DefaultCellStyle = dataGridViewCellStyle27;
             resources.ApplyResources(this.columnCardDiversityB, "columnCardDiversityB");
             this.columnCardDiversityB.Name = "columnCardDiversityB";
             this.columnCardDiversityB.ReadOnly = true;
             // 
             // columnCardComments
             // 
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnCardComments.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnCardComments.DefaultCellStyle = dataGridViewCellStyle28;
             resources.ApplyResources(this.columnCardComments, "columnCardComments");
             this.columnCardComments.Name = "columnCardComments";
+            // 
+            // processDisplay
+            // 
+            this.processDisplay.Default = null;
+            this.processDisplay.Look = null;
+            this.processDisplay.MaximalInterval = 2000;
+            this.processDisplay.ProgressBar = this.statusLoading;
+            this.processDisplay.StatusLog = this.statusProcess;
+            // 
+            // statusLoading
+            // 
+            this.statusLoading.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
+            this.statusLoading.MarqueeAnimationSpeed = 50;
+            this.statusLoading.Name = "statusLoading";
+            resources.ApplyResources(this.statusLoading, "statusLoading");
+            this.statusLoading.Value = 50;
+            // 
+            // statusProcess
+            // 
+            this.statusProcess.Name = "statusProcess";
+            resources.ApplyResources(this.statusProcess, "statusProcess");
+            this.statusProcess.Spring = true;
             // 
             // contextCard
             // 
             this.contextCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextCardOpen,
-            this.contextCardExplore,
             this.contextCardOpenFolder,
+            this.contextCardSaveSet,
+            this.toolStripSeparator6,
+            this.contextCardLog,
+            this.contextCardIndividuals,
+            this.contextCardStratified,
             this.toolStripSeparator4,
             this.contextCardPrintFull,
             this.contextCardPrintNote});
@@ -2800,17 +2462,40 @@
             this.contextCardOpen.Name = "contextCardOpen";
             this.contextCardOpen.Click += new System.EventHandler(this.contextCardOpen_Click);
             // 
-            // contextCardExplore
-            // 
-            this.contextCardExplore.Name = "contextCardExplore";
-            resources.ApplyResources(this.contextCardExplore, "contextCardExplore");
-            this.contextCardExplore.Click += new System.EventHandler(this.contextCardExplore_Click);
-            // 
             // contextCardOpenFolder
             // 
             this.contextCardOpenFolder.Name = "contextCardOpenFolder";
             resources.ApplyResources(this.contextCardOpenFolder, "contextCardOpenFolder");
             this.contextCardOpenFolder.Click += new System.EventHandler(this.contextCardOpenFolder_Click);
+            // 
+            // contextCardSaveSet
+            // 
+            this.contextCardSaveSet.Name = "contextCardSaveSet";
+            resources.ApplyResources(this.contextCardSaveSet, "contextCardSaveSet");
+            this.contextCardSaveSet.Click += new System.EventHandler(this.contextCardSaveSet_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
+            // 
+            // contextCardLog
+            // 
+            this.contextCardLog.Name = "contextCardLog";
+            resources.ApplyResources(this.contextCardLog, "contextCardLog");
+            this.contextCardLog.Click += new System.EventHandler(this.contextCardLog_Click);
+            // 
+            // contextCardIndividuals
+            // 
+            this.contextCardIndividuals.Name = "contextCardIndividuals";
+            resources.ApplyResources(this.contextCardIndividuals, "contextCardIndividuals");
+            this.contextCardIndividuals.Click += new System.EventHandler(this.contextCardIndividuals_Click);
+            // 
+            // contextCardStratified
+            // 
+            this.contextCardStratified.Name = "contextCardStratified";
+            resources.ApplyResources(this.contextCardStratified, "contextCardStratified");
+            this.contextCardStratified.Click += new System.EventHandler(this.contextCardStratified_Click);
             // 
             // toolStripSeparator4
             // 
@@ -2856,11 +2541,12 @@
             // comboBoxSpcTaxa
             // 
             resources.ApplyResources(this.comboBoxSpcTaxa, "comboBoxSpcTaxa");
-            this.comboBoxSpcTaxa.DisplayMember = "Base";
+            this.comboBoxSpcTaxa.DisplayMember = "BaseName";
             this.comboBoxSpcTaxa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSpcTaxa.FormattingEnabled = true;
             this.comboBoxSpcTaxa.Name = "comboBoxSpcTaxa";
             this.comboBoxSpcTaxa.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpcTaxa_SelectedIndexChanged);
+            this.comboBoxSpcTaxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // buttonSpcSave
             // 
@@ -2881,7 +2567,6 @@
             this.spreadSheetSpc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnSpcID,
             this.columnSpcSpc,
-            this.columnSpcValid,
             this.columnSpcQuantity,
             this.columnSpcMass,
             this.columnSpcOccurrence});
@@ -2890,6 +2575,7 @@
             this.spreadSheetSpc.IsLog = true;
             this.spreadSheetSpc.Name = "spreadSheetSpc";
             this.spreadSheetSpc.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.spreadSheetSpc.RowMenu = this.contextSpecies;
             this.spreadSheetSpc.RowVisibilityKey = System.Windows.Forms.Keys.N;
             // 
             // columnSpcID
@@ -2899,40 +2585,76 @@
             // 
             // columnSpcSpc
             // 
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpcSpc.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.Format = "l";
+            this.columnSpcSpc.DefaultCellStyle = dataGridViewCellStyle29;
             this.columnSpcSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnSpcSpc, "columnSpcSpc");
+            this.columnSpcSpc.Image = null;
             this.columnSpcSpc.Name = "columnSpcSpc";
-            // 
-            // columnSpcValid
-            // 
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpcValid.DefaultCellStyle = dataGridViewCellStyle42;
-            this.columnSpcValid.FillWeight = 250F;
-            resources.ApplyResources(this.columnSpcValid, "columnSpcValid");
-            this.columnSpcValid.Name = "columnSpcValid";
+            this.columnSpcSpc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnSpcQuantity
             // 
-            dataGridViewCellStyle43.Format = "N0";
-            this.columnSpcQuantity.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle30.Format = "N0";
+            this.columnSpcQuantity.DefaultCellStyle = dataGridViewCellStyle30;
             resources.ApplyResources(this.columnSpcQuantity, "columnSpcQuantity");
             this.columnSpcQuantity.Name = "columnSpcQuantity";
             // 
             // columnSpcMass
             // 
-            dataGridViewCellStyle44.Format = "N3";
-            this.columnSpcMass.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle31.Format = "N3";
+            this.columnSpcMass.DefaultCellStyle = dataGridViewCellStyle31;
             resources.ApplyResources(this.columnSpcMass, "columnSpcMass");
             this.columnSpcMass.Name = "columnSpcMass";
             // 
             // columnSpcOccurrence
             // 
-            dataGridViewCellStyle45.Format = "P1";
-            this.columnSpcOccurrence.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle32.Format = "P1";
+            this.columnSpcOccurrence.DefaultCellStyle = dataGridViewCellStyle32;
             resources.ApplyResources(this.columnSpcOccurrence, "columnSpcOccurrence");
             this.columnSpcOccurrence.Name = "columnSpcOccurrence";
+            // 
+            // contextSpecies
+            // 
+            this.contextSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextSpcQualify,
+            this.toolStripSeparator18,
+            this.contextSpcLog,
+            this.contextSpcIndividuals,
+            this.contextSpcStratified});
+            this.contextSpecies.Name = "contextSpecies";
+            resources.ApplyResources(this.contextSpecies, "contextSpecies");
+            this.contextSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextSpecies_Opening);
+            // 
+            // contextSpcQualify
+            // 
+            this.contextSpcQualify.Name = "contextSpcQualify";
+            resources.ApplyResources(this.contextSpcQualify, "contextSpcQualify");
+            this.contextSpcQualify.Click += new System.EventHandler(this.contextSpcQualify_Click);
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            resources.ApplyResources(this.toolStripSeparator18, "toolStripSeparator18");
+            // 
+            // contextSpcLog
+            // 
+            this.contextSpcLog.Name = "contextSpcLog";
+            resources.ApplyResources(this.contextSpcLog, "contextSpcLog");
+            this.contextSpcLog.Click += new System.EventHandler(this.contextSpcLog_Click);
+            // 
+            // contextSpcIndividuals
+            // 
+            this.contextSpcIndividuals.Name = "contextSpcIndividuals";
+            resources.ApplyResources(this.contextSpcIndividuals, "contextSpcIndividuals");
+            this.contextSpcIndividuals.Click += new System.EventHandler(this.contextSpcIndividuals_Click);
+            // 
+            // contextSpcStratified
+            // 
+            this.contextSpcStratified.Name = "contextSpcStratified";
+            resources.ApplyResources(this.contextSpcStratified, "contextSpcStratified");
+            this.contextSpcStratified.Click += new System.EventHandler(this.contextSpcStratified_Click);
             // 
             // tabPageLog
             // 
@@ -2957,6 +2679,7 @@
             this.comboBoxLogTaxa.FormattingEnabled = true;
             this.comboBoxLogTaxa.Name = "comboBoxLogTaxa";
             this.comboBoxLogTaxa.SelectedIndexChanged += new System.EventHandler(this.comboBoxLogTaxa_SelectedIndexChanged);
+            this.comboBoxLogTaxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // buttonSelectLog
             // 
@@ -2982,41 +2705,42 @@
             this.spreadSheetLog.Display = this.processDisplay;
             this.spreadSheetLog.IsLog = true;
             this.spreadSheetLog.Name = "spreadSheetLog";
-            this.spreadSheetLog.ReadOnly = true;
             this.spreadSheetLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.spreadSheetLog.RowMenu = this.contextLog;
             this.spreadSheetLog.RowMenuLaunchableItemIndex = 0;
             this.spreadSheetLog.RowVisibilityKey = System.Windows.Forms.Keys.N;
+            this.spreadSheetLog.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetLog_CellValueChanged);
             this.spreadSheetLog.SelectionChanged += new System.EventHandler(this.spreadSheetLog_SelectionChanged);
             // 
             // columnLogID
             // 
             resources.ApplyResources(this.columnLogID, "columnLogID");
             this.columnLogID.Name = "columnLogID";
-            this.columnLogID.ReadOnly = true;
             // 
             // columnLogSpc
             // 
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnLogSpc.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.Format = "s";
+            this.columnLogSpc.DefaultCellStyle = dataGridViewCellStyle33;
             this.columnLogSpc.FillWeight = 200F;
             resources.ApplyResources(this.columnLogSpc, "columnLogSpc");
             this.columnLogSpc.Name = "columnLogSpc";
-            this.columnLogSpc.ReadOnly = true;
             // 
             // columnLogQuantity
             // 
-            dataGridViewCellStyle47.Format = "0";
-            this.columnLogQuantity.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle34.Format = "0";
+            this.columnLogQuantity.DefaultCellStyle = dataGridViewCellStyle34;
             resources.ApplyResources(this.columnLogQuantity, "columnLogQuantity");
+            this.columnLogQuantity.Image = null;
             this.columnLogQuantity.Name = "columnLogQuantity";
-            this.columnLogQuantity.ReadOnly = true;
+            this.columnLogQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnLogMass
             // 
             resources.ApplyResources(this.columnLogMass, "columnLogMass");
+            this.columnLogMass.Image = null;
             this.columnLogMass.Name = "columnLogMass";
-            this.columnLogMass.ReadOnly = true;
+            this.columnLogMass.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnLogAbundance
             // 
@@ -3045,7 +2769,10 @@
             // contextLog
             // 
             this.contextLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextLogOpen});
+            this.contextLogOpen,
+            this.toolStripSeparator23,
+            this.contextLogIndividuals,
+            this.contextLogStratified});
             this.contextLog.Name = "contextMenuStripLog";
             resources.ApplyResources(this.contextLog, "contextLog");
             this.contextLog.Opening += new System.ComponentModel.CancelEventHandler(this.contextLog_Opening);
@@ -3055,6 +2782,23 @@
             resources.ApplyResources(this.contextLogOpen, "contextLogOpen");
             this.contextLogOpen.Name = "contextLogOpen";
             this.contextLogOpen.Click += new System.EventHandler(this.contextLogOpen_Click);
+            // 
+            // toolStripSeparator23
+            // 
+            this.toolStripSeparator23.Name = "toolStripSeparator23";
+            resources.ApplyResources(this.toolStripSeparator23, "toolStripSeparator23");
+            // 
+            // contextLogIndividuals
+            // 
+            this.contextLogIndividuals.Name = "contextLogIndividuals";
+            resources.ApplyResources(this.contextLogIndividuals, "contextLogIndividuals");
+            this.contextLogIndividuals.Click += new System.EventHandler(this.contextLogIndividuals_Click);
+            // 
+            // contextLogStratified
+            // 
+            this.contextLogStratified.Name = "contextLogStratified";
+            resources.ApplyResources(this.contextLogStratified, "contextLogStratified");
+            this.contextLogStratified.Click += new System.EventHandler(this.contextLogStratified_Click);
             // 
             // tabPageStratified
             // 
@@ -3106,8 +2850,8 @@
             // 
             // columnStratifiedID
             // 
-            dataGridViewCellStyle48.NullValue = null;
-            this.columnStratifiedID.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle35.NullValue = null;
+            this.columnStratifiedID.DefaultCellStyle = dataGridViewCellStyle35;
             resources.ApplyResources(this.columnStratifiedID, "columnStratifiedID");
             this.columnStratifiedID.Name = "columnStratifiedID";
             this.columnStratifiedID.ReadOnly = true;
@@ -3122,8 +2866,9 @@
             // 
             // columnStratifiedSpc
             // 
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnStratifiedSpc.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.Format = "s";
+            this.columnStratifiedSpc.DefaultCellStyle = dataGridViewCellStyle36;
             this.columnStratifiedSpc.FillWeight = 250F;
             resources.ApplyResources(this.columnStratifiedSpc, "columnStratifiedSpc");
             this.columnStratifiedSpc.Name = "columnStratifiedSpc";
@@ -3137,8 +2882,8 @@
             // 
             // columnStratifiedMass
             // 
-            dataGridViewCellStyle50.Format = "N3";
-            this.columnStratifiedMass.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle37.Format = "N3";
+            this.columnStratifiedMass.DefaultCellStyle = dataGridViewCellStyle37;
             resources.ApplyResources(this.columnStratifiedMass, "columnStratifiedMass");
             this.columnStratifiedMass.Name = "columnStratifiedMass";
             this.columnStratifiedMass.ReadOnly = true;
@@ -3255,8 +3000,8 @@
             // 
             // columnIndID
             // 
-            dataGridViewCellStyle51.NullValue = null;
-            this.columnIndID.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle38.NullValue = null;
+            this.columnIndID.DefaultCellStyle = dataGridViewCellStyle38;
             resources.ApplyResources(this.columnIndID, "columnIndID");
             this.columnIndID.Name = "columnIndID";
             this.columnIndID.ReadOnly = true;
@@ -3271,8 +3016,9 @@
             // 
             // columnIndSpecies
             // 
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnIndSpecies.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.Format = "s";
+            this.columnIndSpecies.DefaultCellStyle = dataGridViewCellStyle39;
             this.columnIndSpecies.FillWeight = 250F;
             resources.ApplyResources(this.columnIndSpecies, "columnIndSpecies");
             this.columnIndSpecies.Name = "columnIndSpecies";
@@ -3285,8 +3031,8 @@
             // 
             // columnIndMass
             // 
-            dataGridViewCellStyle53.Format = "N0";
-            this.columnIndMass.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle40.Format = "N0";
+            this.columnIndMass.DefaultCellStyle = dataGridViewCellStyle40;
             resources.ApplyResources(this.columnIndMass, "columnIndMass");
             this.columnIndMass.Name = "columnIndMass";
             // 
@@ -3297,115 +3043,117 @@
             // 
             // columnIndCondition
             // 
-            dataGridViewCellStyle54.Format = "N2";
-            this.columnIndCondition.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle41.Format = "N2";
+            this.columnIndCondition.DefaultCellStyle = dataGridViewCellStyle41;
             resources.ApplyResources(this.columnIndCondition, "columnIndCondition");
             this.columnIndCondition.Name = "columnIndCondition";
             this.columnIndCondition.ReadOnly = true;
             // 
             // columnIndConditionSoma
             // 
-            dataGridViewCellStyle55.Format = "N2";
-            this.columnIndConditionSoma.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle42.Format = "N2";
+            this.columnIndConditionSoma.DefaultCellStyle = dataGridViewCellStyle42;
             resources.ApplyResources(this.columnIndConditionSoma, "columnIndConditionSoma");
             this.columnIndConditionSoma.Name = "columnIndConditionSoma";
             this.columnIndConditionSoma.ReadOnly = true;
             // 
             // columnIndRegID
             // 
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndRegID.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndRegID.DefaultCellStyle = dataGridViewCellStyle43;
             resources.ApplyResources(this.columnIndRegID, "columnIndRegID");
+            this.columnIndRegID.Image = null;
             this.columnIndRegID.Name = "columnIndRegID";
+            this.columnIndRegID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnIndAge
             // 
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle57.Format = "0+";
-            dataGridViewCellStyle57.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.columnIndAge.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle44.Format = "0+";
+            dataGridViewCellStyle44.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.columnIndAge.DefaultCellStyle = dataGridViewCellStyle44;
             resources.ApplyResources(this.columnIndAge, "columnIndAge");
             this.columnIndAge.Name = "columnIndAge";
             // 
             // columnIndGeneration
             // 
-            dataGridViewCellStyle58.Format = "0000";
-            this.columnIndGeneration.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle45.Format = "0000";
+            this.columnIndGeneration.DefaultCellStyle = dataGridViewCellStyle45;
             resources.ApplyResources(this.columnIndGeneration, "columnIndGeneration");
             this.columnIndGeneration.Name = "columnIndGeneration";
             this.columnIndGeneration.ReadOnly = true;
             // 
             // columnIndSex
             // 
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndSex.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndSex.DefaultCellStyle = dataGridViewCellStyle46;
             resources.ApplyResources(this.columnIndSex, "columnIndSex");
             this.columnIndSex.Name = "columnIndSex";
             // 
             // columnIndMaturity
             // 
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndMaturity.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.columnIndMaturity.DefaultCellStyle = dataGridViewCellStyle47;
             resources.ApplyResources(this.columnIndMaturity, "columnIndMaturity");
             this.columnIndMaturity.Name = "columnIndMaturity";
             // 
             // columnIndGonadMass
             // 
-            dataGridViewCellStyle61.Format = "N1";
-            this.columnIndGonadMass.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle48.Format = "N1";
+            this.columnIndGonadMass.DefaultCellStyle = dataGridViewCellStyle48;
             resources.ApplyResources(this.columnIndGonadMass, "columnIndGonadMass");
             this.columnIndGonadMass.Name = "columnIndGonadMass";
             // 
             // columnIndGonadSampleMass
             // 
-            dataGridViewCellStyle62.Format = "N3";
-            this.columnIndGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle49.Format = "N3";
+            this.columnIndGonadSampleMass.DefaultCellStyle = dataGridViewCellStyle49;
             resources.ApplyResources(this.columnIndGonadSampleMass, "columnIndGonadSampleMass");
             this.columnIndGonadSampleMass.Name = "columnIndGonadSampleMass";
             // 
             // columnIndGonadSample
             // 
-            dataGridViewCellStyle63.Format = "N0";
-            this.columnIndGonadSample.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle50.Format = "N0";
+            this.columnIndGonadSample.DefaultCellStyle = dataGridViewCellStyle50;
             resources.ApplyResources(this.columnIndGonadSample, "columnIndGonadSample");
             this.columnIndGonadSample.Name = "columnIndGonadSample";
             // 
             // columnIndFecundityAbs
             // 
-            dataGridViewCellStyle64.Format = "N0";
-            this.columnIndFecundityAbs.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle51.Format = "N0";
+            this.columnIndFecundityAbs.DefaultCellStyle = dataGridViewCellStyle51;
             resources.ApplyResources(this.columnIndFecundityAbs, "columnIndFecundityAbs");
             this.columnIndFecundityAbs.Name = "columnIndFecundityAbs";
             this.columnIndFecundityAbs.ReadOnly = true;
             // 
             // columnIndFecundityRelative
             // 
-            dataGridViewCellStyle65.Format = "N0";
-            this.columnIndFecundityRelative.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle52.Format = "N0";
+            this.columnIndFecundityRelative.DefaultCellStyle = dataGridViewCellStyle52;
             resources.ApplyResources(this.columnIndFecundityRelative, "columnIndFecundityRelative");
             this.columnIndFecundityRelative.Name = "columnIndFecundityRelative";
             this.columnIndFecundityRelative.ReadOnly = true;
             // 
             // columnIndFecundityRelativeSoma
             // 
-            dataGridViewCellStyle66.Format = "N0";
-            this.columnIndFecundityRelativeSoma.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle53.Format = "N0";
+            this.columnIndFecundityRelativeSoma.DefaultCellStyle = dataGridViewCellStyle53;
             resources.ApplyResources(this.columnIndFecundityRelativeSoma, "columnIndFecundityRelativeSoma");
             this.columnIndFecundityRelativeSoma.Name = "columnIndFecundityRelativeSoma";
             this.columnIndFecundityRelativeSoma.ReadOnly = true;
             // 
             // columnIndGonadIndex
             // 
-            dataGridViewCellStyle67.Format = "P1";
-            this.columnIndGonadIndex.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle54.Format = "P1";
+            this.columnIndGonadIndex.DefaultCellStyle = dataGridViewCellStyle54;
             resources.ApplyResources(this.columnIndGonadIndex, "columnIndGonadIndex");
             this.columnIndGonadIndex.Name = "columnIndGonadIndex";
             this.columnIndGonadIndex.ReadOnly = true;
             // 
             // columnIndGonadIndexSoma
             // 
-            dataGridViewCellStyle68.Format = "P1";
-            this.columnIndGonadIndexSoma.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle55.Format = "P1";
+            this.columnIndGonadIndexSoma.DefaultCellStyle = dataGridViewCellStyle55;
             resources.ApplyResources(this.columnIndGonadIndexSoma, "columnIndGonadIndexSoma");
             this.columnIndGonadIndexSoma.Name = "columnIndGonadIndexSoma";
             this.columnIndGonadIndexSoma.ReadOnly = true;
@@ -3417,39 +3165,41 @@
             // 
             // columnIndFat
             // 
-            dataGridViewCellStyle69.Format = "N0";
-            this.columnIndFat.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle56.Format = "N0";
+            this.columnIndFat.DefaultCellStyle = dataGridViewCellStyle56;
             resources.ApplyResources(this.columnIndFat, "columnIndFat");
             this.columnIndFat.Name = "columnIndFat";
             // 
             // columnIndConsumed
             // 
-            dataGridViewCellStyle70.Format = "N1";
-            this.columnIndConsumed.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle57.Format = "N1";
+            this.columnIndConsumed.DefaultCellStyle = dataGridViewCellStyle57;
             resources.ApplyResources(this.columnIndConsumed, "columnIndConsumed");
+            this.columnIndConsumed.Image = null;
             this.columnIndConsumed.Name = "columnIndConsumed";
             this.columnIndConsumed.ReadOnly = true;
+            this.columnIndConsumed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnIndConsumptionIndex
             // 
-            dataGridViewCellStyle71.Format = "N2";
-            this.columnIndConsumptionIndex.DefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle58.Format = "N2";
+            this.columnIndConsumptionIndex.DefaultCellStyle = dataGridViewCellStyle58;
             resources.ApplyResources(this.columnIndConsumptionIndex, "columnIndConsumptionIndex");
             this.columnIndConsumptionIndex.Name = "columnIndConsumptionIndex";
             this.columnIndConsumptionIndex.ReadOnly = true;
             // 
             // columnIndDietItems
             // 
-            dataGridViewCellStyle72.Format = "N0";
-            this.columnIndDietItems.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle59.Format = "N0";
+            this.columnIndDietItems.DefaultCellStyle = dataGridViewCellStyle59;
             resources.ApplyResources(this.columnIndDietItems, "columnIndDietItems");
             this.columnIndDietItems.Name = "columnIndDietItems";
             this.columnIndDietItems.ReadOnly = true;
             // 
             // columnIndComments
             // 
-            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnIndComments.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnIndComments.DefaultCellStyle = dataGridViewCellStyle60;
             resources.ApplyResources(this.columnIndComments, "columnIndComments");
             this.columnIndComments.Name = "columnIndComments";
             // 
@@ -3463,7 +3213,6 @@
             this.parasitesToolStripMenuItem,
             this.toolStripSeparator19,
             this.contextIndOpen,
-            this.contextIndOpenFolder,
             this.toolStripSeparator20,
             this.printIndividualsLogToolStripMenuItem,
             this.contextIndPrint,
@@ -3513,12 +3262,6 @@
             resources.ApplyResources(this.contextIndOpen, "contextIndOpen");
             this.contextIndOpen.Name = "contextIndOpen";
             this.contextIndOpen.Click += new System.EventHandler(this.contextIndOpen_Click);
-            // 
-            // contextIndOpenFolder
-            // 
-            this.contextIndOpenFolder.Name = "contextIndOpenFolder";
-            resources.ApplyResources(this.contextIndOpenFolder, "contextIndOpenFolder");
-            this.contextIndOpenFolder.Click += new System.EventHandler(this.contextIndOpenFolder_Click);
             // 
             // toolStripSeparator20
             // 
@@ -3589,9 +3332,7 @@
             // loaderSpcList
             // 
             this.loaderSpcList.WorkerReportsProgress = true;
-            this.loaderSpcList.DoWork += new System.ComponentModel.DoWorkEventHandler(this.spcListLoader_DoWork);
             this.loaderSpcList.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
-            this.loaderSpcList.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.spcListLoader_RunWorkerCompleted);
             // 
             // loaderLog
             // 
@@ -3673,13 +3414,6 @@
             this.specTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.specTipper_DoWork);
             this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.specTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.specTipper_RunWorkerCompleted);
-            // 
-            // comparerLog
-            // 
-            this.comparerLog.WorkerReportsProgress = true;
-            this.comparerLog.DoWork += new System.ComponentModel.DoWorkEventHandler(this.comparerLog_DoWork);
-            this.comparerLog.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
-            this.comparerLog.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.comparerLog_RunWorkerCompleted);
             // 
             // specUpdater
             // 
@@ -3780,21 +3514,20 @@
             // 
             this.speciesValidator.CheckDuplicates = false;
             this.speciesValidator.ColumnName = "columnSpcSpc";
-            this.speciesValidator.InsertFullNames = true;
+            this.speciesValidator.Grid = this.spreadSheetSpc;
             this.speciesValidator.RecentListCount = 0;
-            this.speciesValidator.SuggestFullNames = true;
             // 
             // mathCard
             // 
-            this.mathCard.Sheet = null;
+            this.mathCard.Sheet = this.spreadSheetCard;
             // 
             // mathLog
             // 
-            this.mathLog.Sheet = null;
+            this.mathLog.Sheet = this.spreadSheetLog;
             // 
             // mathInd
             // 
-            this.mathInd.Sheet = null;
+            this.mathInd.Sheet = this.spreadSheetInd;
             // 
             // notify
             // 
@@ -3817,23 +3550,6 @@
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).EndInit();
-            this.tabPageArtefacts.ResumeLayout(false);
-            this.tabControlArtefacts.ResumeLayout(false);
-            this.tabPageArtefactCards.ResumeLayout(false);
-            this.tabPageArtefactCards.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactGear)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactCard)).EndInit();
-            this.contextArtCard.ResumeLayout(false);
-            this.tabPageArtefactSpecies.ResumeLayout(false);
-            this.tabPageArtefactSpecies.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactSpecies)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactSpecies)).EndInit();
-            this.contextArtSpecies.ResumeLayout(false);
-            this.tabPageArtefactInds.ResumeLayout(false);
-            this.tabPageArtefactInds.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactInd)).EndInit();
-            this.contextArtIndividuals.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactInd)).EndInit();
             this.tabPageGearStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetGearStats)).EndInit();
             this.tabControlCard.ResumeLayout(false);
@@ -3864,6 +3580,7 @@
             this.tabPageSpc.ResumeLayout(false);
             this.tabPageSpc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSpc)).EndInit();
+            this.contextSpecies.ResumeLayout(false);
             this.tabPageLog.ResumeLayout(false);
             this.tabPageLog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).EndInit();
@@ -3922,7 +3639,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextCardPrintFull;
         private System.Windows.Forms.ToolStripMenuItem contextCardPrintNote;
         private System.Windows.Forms.ToolStripMenuItem menuCards;
-        private System.Windows.Forms.ToolStripMenuItem menuItemCardFindEmpty;
         private System.Windows.Forms.TabPage tabPageGearStats;
         private System.Windows.Forms.TabControl tabControlCard;
         private System.Windows.Forms.TabPage tabPageCardEfforts;
@@ -3940,9 +3656,8 @@
         private Mayfly.Controls.SpreadSheet spreadSheetCatches;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem menuSample;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLoadCards;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLoadIndividuals;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCards;
+        private System.Windows.Forms.ToolStripMenuItem menuItemIndividuals;
         public System.Windows.Forms.ComboBox comboBoxCatchesMesh;
         private System.Windows.Forms.CheckBox checkBoxCatchesMesh;
         private System.Windows.Forms.Button buttonSelectInd;
@@ -3963,7 +3678,7 @@
         private System.Windows.Forms.TabPage tabPageStratified;
         private System.Windows.Forms.PictureBox pictureBoxStratified;
         private System.Windows.Forms.ToolTip toolTipAttention;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLoadStratified;
+        private System.Windows.Forms.ToolStripMenuItem menuItemStratified;
         private System.Windows.Forms.ListView listViewSamplers;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Label labelSamplers;
@@ -3980,33 +3695,15 @@
         private System.Windows.Forms.ToolStripMenuItem menuFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemAddData;
         private System.Windows.Forms.ToolStripMenuItem menuItemExit;
-        private System.Windows.Forms.ToolStripMenuItem menuItemCardFindSpaced;
         private System.Windows.Forms.ToolStripMenuItem menuSpc;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSpcValidate;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpcTaxa;
         private System.Windows.Forms.Label labelEffortsNoData;
         private System.Windows.Forms.Label labelCatchesNoData;
-        private System.Windows.Forms.ToolStripMenuItem menuItemArtefactsSearch;
         private System.ComponentModel.BackgroundWorker loaderIndExtended;
         private System.ComponentModel.BackgroundWorker loaderLogExtended;
         private System.ComponentModel.BackgroundWorker loaderStratifiedExtended;
-        private System.Windows.Forms.TabPage tabPageArtefacts;
-        private System.Windows.Forms.ContextMenuStrip contextArtSpecies;
-        private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesFindInd;
-        private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesFindStratified;
-        private System.Windows.Forms.TabControl tabControlArtefacts;
-        private System.Windows.Forms.TabPage tabPageArtefactCards;
-        private Mayfly.Controls.SpreadSheet spreadSheetArtefactCard;
-        private System.Windows.Forms.TabPage tabPageArtefactSpecies;
-        private Mayfly.Controls.SpreadSheet spreadSheetArtefactSpecies;
-        private System.Windows.Forms.PictureBox pictureBoxArtefactGear;
-        private System.Windows.Forms.Label labelArtefactGear;
-        private System.Windows.Forms.Label labelArtefactSpecies;
-        private System.Windows.Forms.PictureBox pictureBoxArtefactSpecies;
         private System.Windows.Forms.Label labelArtefacts;
         private System.Windows.Forms.PictureBox pictureBoxArtefacts;
-        private System.Windows.Forms.ContextMenuStrip contextArtCard;
-        private System.Windows.Forms.ToolStripMenuItem contextArtCardOpen;
         private System.Windows.Forms.ToolStripMenuItem menuItemComposition;
         private System.Windows.Forms.TabPage tabPageCardSchedule;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSchedule;
@@ -4023,16 +3720,6 @@
         private System.ComponentModel.BackgroundWorker dietCompiler;
         private System.Windows.Forms.ToolStripMenuItem contextIndTrophics;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.TabPage tabPageArtefactInds;
-        private System.Windows.Forms.Label labelArtefactInd;
-        private System.Windows.Forms.PictureBox pictureBoxArtefactInd;
-        private Controls.SpreadSheet spreadSheetArtefactInd;
-        private System.Windows.Forms.ContextMenuStrip contextArtIndividuals;
-        private System.Windows.Forms.ToolStripMenuItem contextArtefactIndFind;
-        private System.Windows.Forms.ToolStripMenuItem contextArtefactIndRecover;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactIndSpecies;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndRegID;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactIndDietUnw;
         private TaskDialogs.TaskDialog tdRecover;
         private TaskDialogs.TaskDialogButton tdbRecoverBackup;
         private TaskDialogs.TaskDialogButton tdbRecoverContinue;
@@ -4049,11 +3736,8 @@
         private System.ComponentModel.BackgroundWorker specTipper;
         private System.Windows.Forms.ContextMenuStrip contextStratified;
         private System.Windows.Forms.ToolStripMenuItem contextStratifiedOpen;
-        private System.Windows.Forms.ToolStripMenuItem contextCardExplore;
+        private System.Windows.Forms.ToolStripMenuItem contextCardSaveSet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.ComponentModel.BackgroundWorker comparerLog;
-        private System.Windows.Forms.ToolStripMenuItem menuLog;
-        private System.Windows.Forms.ToolStripMenuItem menuItemComCom;
         private System.ComponentModel.BackgroundWorker specUpdater;
         private TaskDialogs.TaskDialog taskDialogBio;
         private TaskDialogs.TaskDialogButton tdbSpecClear;
@@ -4071,8 +3755,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
         private System.ComponentModel.BackgroundWorker calcModel;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesQualification;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveSet;
         private System.Windows.Forms.ToolStripMenuItem menuModels;
@@ -4081,8 +3763,8 @@
         private System.Windows.Forms.ToolStripMenuItem meniItemMSYUnspecified;
         private System.Windows.Forms.ToolStripMenuItem menuItemPrediction;
         private System.Windows.Forms.ToolStripMenuItem menuItemPredictionUnspecified;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLoadSpc;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLoadLog;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSpc;
+        private System.Windows.Forms.ToolStripMenuItem menuItemLog;
         private System.Windows.Forms.TabPage tabPageSpc;
         private System.Windows.Forms.Label labelSpcGroupBy;
         private System.Windows.Forms.ComboBox comboBoxSpcTaxa;
@@ -4095,7 +3777,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox comboBoxLogTaxa;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndExtra;
-        private System.Windows.Forms.ToolStripMenuItem contextIndOpenFolder;
         private System.Windows.Forms.TabPage tabPageSpcStats;
         private System.Windows.Forms.TabControl tabControlSpc;
         private System.Windows.Forms.TabPage tabPageSpcTotals;
@@ -4167,114 +3848,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem menuItemExportSpec;
         private System.Windows.Forms.ToolStripMenuItem menuItemImportSpec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtCardName;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtCardOddMass;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtCardEffort;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem menuItemDietExplorer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchSpc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchW;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndRegID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
-        private System.Windows.Forms.ToolStripMenuItem hideEmptyRecordsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndPrintLog;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
         private System.Windows.Forms.ToolStripMenuItem printIndividualsLogToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactN;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactDetailed;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactLength;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactMass;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardInvestigator;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhere;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardWeather;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardTempSurface;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardGear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMesh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardOpening;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSquare;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSpan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardVelocity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardExposure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardEffort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDepth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWealth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardAbundance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardBiomass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardComments;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcSpc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcValid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcOccurrence;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogSpc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogAbundance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogBiomass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedSpc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedInterval;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedFrom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedTo;
         private System.Windows.Forms.Label labelCardCountValue;
         private Wild.Controls.StratifiedSample stratifiedSample;
         private System.Windows.Forms.ToolStripMenuItem stratifiedSamplesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printStratifiedSamplesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem printStratifiedSampleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGearStats;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSpcStats;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechClass;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechOps;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechN;
@@ -4296,8 +3882,116 @@
         private System.Windows.Forms.ComboBox comboBoxQualValue;
         private System.Windows.Forms.Label labelQualify;
         private System.Windows.Forms.Label labelQualSubset;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
         private System.Windows.Forms.CheckBox checkBoxQualOutliers;
         private System.Windows.Forms.Button buttonQualOutliers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchSpc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCatchW;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedSpc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedInterval;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedFrom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStratifiedTo;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGearStats;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSpcStats;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardInvestigator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhere;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardWeather;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardTempSurface;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardGear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMesh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardOpening;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSquare;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSpan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardVelocity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardExposure;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardEffort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDepth;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardWealth;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardAbundance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardBiomass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardComments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogSpc;
+        private Controls.SpreadSheetIconTextBoxColumn columnLogQuantity;
+        private Controls.SpreadSheetIconTextBoxColumn columnLogMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogAbundance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogBiomass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
+        private Controls.SpreadSheetIconTextBoxColumn columnIndRegID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
+        private Controls.SpreadSheetIconTextBoxColumn columnIndConsumed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcID;
+        private Controls.SpreadSheetIconTextBoxColumn columnSpcSpc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcOccurrence;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem contextCardLog;
+        private System.Windows.Forms.ToolStripMenuItem contextCardIndividuals;
+        private System.Windows.Forms.ContextMenuStrip contextSpecies;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcLog;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcIndividuals;
+        private System.Windows.Forms.ToolStripMenuItem contextLogIndividuals;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardAll;
+        private System.Windows.Forms.ToolStripMenuItem menuItemLogAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggested;
+        private System.Windows.Forms.ToolStripMenuItem contextLogStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextCardStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcStratified;
+        private System.Windows.Forms.ToolStripMenuItem contextSpcQualify;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStatsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardInvestigator;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardWater;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCardGear;
+        private System.Windows.Forms.ToolStripMenuItem meniItemIndAllAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;
+        private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggestedAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator25;
     }
 }

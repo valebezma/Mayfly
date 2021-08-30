@@ -377,7 +377,7 @@ namespace Mayfly.Fish.Explorer
                 if (GrowthModel.ExternalData != null)
                 {
                     Scatterplot ext = new Scatterplot(GrowthModel.ExternalData);
-                    ext.Properties.ScatterplotName = Resources.Interface.Interface.BioReference;
+                    ext.Properties.ScatterplotName = Resources.Interface.BioReference;
                     ext.Properties.DataPointColor = Constants.InfantColor;
                     plotAL.AddSeries(ext);
                 }
@@ -385,22 +385,22 @@ namespace Mayfly.Fish.Explorer
                 if (GrowthModel.InternalData != null)
                 {
                     Scatterplot inter = new Scatterplot(GrowthModel.InternalData);
-                    inter.Properties.ScatterplotName = Resources.Interface.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MainAccent;
+                    inter.Properties.ScatterplotName = Resources.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                     plotAL.AddSeries(inter);
                 }
 
                 if (GrowthModel.CombinedData != null)
                 {
                     Scatterplot combi = new Scatterplot(GrowthModel.CombinedData);
-                    combi.Properties.ScatterplotName = Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ScatterplotName = Resources.Interface.BioCombined;
                     combi.Properties.ShowTrend =
                         combi.Properties.ShowConfidenceBands =
                         combi.Properties.ShowPredictionBands = true;
                     combi.Properties.ShowTrend = true;
                     combi.Properties.SelectedApproximationType = GrowthModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
+                    combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
                     plotAL.AddSeries(combi);
                 }
             }
@@ -423,7 +423,7 @@ namespace Mayfly.Fish.Explorer
                 if (WeightModel.ExternalData != null)
                 {
                     Scatterplot ext = new Scatterplot(WeightModel.ExternalData);
-                    ext.Properties.ScatterplotName = Resources.Interface.Interface.BioReference;
+                    ext.Properties.ScatterplotName = Resources.Interface.BioReference;
                     ext.Properties.DataPointColor = Constants.InfantColor;
                     plotLW.AddSeries(ext);
                 }
@@ -431,22 +431,22 @@ namespace Mayfly.Fish.Explorer
                 if (WeightModel.InternalData != null)
                 {
                     Scatterplot inter = new Scatterplot(WeightModel.InternalData);
-                    inter.Properties.ScatterplotName = Resources.Interface.Interface.BioLoaded;
-                    inter.Properties.DataPointColor = Constants.MainAccent;
+                    inter.Properties.ScatterplotName = Resources.Interface.BioLoaded;
+                    inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                     plotLW.AddSeries(inter);
                 }
 
                 if (WeightModel.CombinedData != null)
                 {
                     Scatterplot combi = new Scatterplot(WeightModel.CombinedData);
-                    combi.Properties.ScatterplotName = Resources.Interface.Interface.BioCombined;
+                    combi.Properties.ScatterplotName = Resources.Interface.BioCombined;
                     combi.Properties.ShowTrend =
                         combi.Properties.ShowConfidenceBands =
                         combi.Properties.ShowPredictionBands = true;
 
                     combi.Properties.SelectedApproximationType = WeightModel.Nature;
                     combi.Properties.DataPointColor = Color.Transparent;
-                    combi.Properties.TrendColor = Constants.MainAccent.Darker();
+                    combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
                     plotLW.AddSeries(combi);
                 }
             }
@@ -470,7 +470,7 @@ namespace Mayfly.Fish.Explorer
             if (cb != null)
             {
                 Scatterplot sc = new Scatterplot(cb.InternalData);
-                sc.Properties.DataPointColor = Constants.MainAccent;
+                sc.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                 plotAW.AddSeries(sc);
 
                 //MassGrowthModels.DisplayNameY = Resources.Reports.Caption.Mass;
@@ -480,7 +480,7 @@ namespace Mayfly.Fish.Explorer
                 //{
                 //    weightGrowthExternal.Series.Name =
                 //        weightGrowthExternal.Properties.ScatterplotName =
-                //        Resources.Interface.Interface.BioReference;
+                //        Resources.Interface.BioReference;
                 //    weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
                 //    plotAW.AddSeries(weightGrowthExternal);
                 //}
@@ -490,7 +490,7 @@ namespace Mayfly.Fish.Explorer
                 //    weightGrowthInternal = weightGrowthInternal.Copy();
                 //    weightGrowthInternal.Series.Name =
                 //        weightGrowthInternal.Properties.ScatterplotName =
-                //        Resources.Interface.Interface.BioLoaded;
+                //        Resources.Interface.BioLoaded;
                 //    weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
                 //    plotAW.AddSeries(weightGrowthInternal);
                 //}
@@ -499,7 +499,7 @@ namespace Mayfly.Fish.Explorer
             if (GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK &&
                 WeightModel != null && WeightModel.CombinedData.IsRegressionOK)
             {
-                Functor aw = new Functor(string.Format(Resources.Interface.Interface.MassGrowth, SpeciesRow.Species), (t) =>
+                Functor aw = new Functor(string.Format(Resources.Interface.MassGrowth, SpeciesRow.Species), (t) =>
                 {
                     double l = GrowthModel.CombinedData.Regression.Predict(t);
                     return WeightModel.CombinedData.Regression.Predict(l);
@@ -510,7 +510,7 @@ namespace Mayfly.Fish.Explorer
                     return GrowthModel.CombinedData.Regression.PredictInversed(l);
                 });
 
-                aw.Properties.TrendColor = Constants.MainAccent.Darker();
+                aw.Properties.TrendColor = Mathematics.UserSettings.ColorAccent.Darker();
 
                 plotAW.AddSeries(aw);
             }
@@ -564,12 +564,12 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonAL_Click(object sender, EventArgs e)
         {
-            plotAL.OpenRegressionProperties((Scatterplot)plotAL.GetSample(Resources.Interface.Interface.BioCombined));
+            plotAL.OpenRegressionProperties((Scatterplot)plotAL.GetSample(Resources.Interface.BioCombined));
         }
 
         private void buttonLW_Click(object sender, EventArgs e)
         {
-            plotLW.OpenRegressionProperties((Scatterplot)plotLW.GetSample(Resources.Interface.Interface.BioCombined));
+            plotLW.OpenRegressionProperties((Scatterplot)plotLW.GetSample(Resources.Interface.BioCombined));
         }
 
         private void pageAW_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -877,7 +877,7 @@ namespace Mayfly.Fish.Explorer
                     plotSelection.AddSeries(sel);
                 }
 
-                Functor ogive = new Functor(Resources.Interface.Interface.SelectivityOgive, SelectivityModel.GetSelection);
+                Functor ogive = new Functor(Resources.Interface.SelectivityOgive, SelectivityModel.GetSelection);
                 plotSelection.AddSeries(ogive);
                 //ogive.Series.ChartType = SeriesChartType.Line;
                 ogive.Series.BorderWidth = 2 * ogive.Series.BorderWidth;
@@ -892,7 +892,7 @@ namespace Mayfly.Fish.Explorer
 
                 Series catches = new Series
                 {
-                    Name = Resources.Interface.Interface.Catches,
+                    Name = Resources.Interface.Catches,
                     ChartType = SeriesChartType.Line
 
                 };
@@ -904,7 +904,7 @@ namespace Mayfly.Fish.Explorer
 
                 Series pop = new Series
                 {
-                    Name = Resources.Interface.Interface.CatchesAdjusted,
+                    Name = Resources.Interface.CatchesAdjusted,
                     ChartType = SeriesChartType.Line
                 };
                 foreach (SizeClass size in LengthStructure)
@@ -1136,7 +1136,7 @@ namespace Mayfly.Fish.Explorer
 
                 Series catches = new Series
                 {
-                    Name = Resources.Interface.Interface.Catches,
+                    Name = Resources.Interface.Catches,
                     ChartType = SeriesChartType.Line
                 };
                 foreach (AgeGroup group in ageCompositionWizard.CatchesComposition)
@@ -1147,7 +1147,7 @@ namespace Mayfly.Fish.Explorer
 
                 Series pop = new Series
                 {
-                    Name = Resources.Interface.Interface.CatchesAdjusted,
+                    Name = Resources.Interface.CatchesAdjusted,
                     ChartType = SeriesChartType.Line
                 };
                 foreach (AgeGroup group in AgeStructure)

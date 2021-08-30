@@ -96,16 +96,11 @@
             this.textBoxY2Title = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.colorDialogDistinguish = new System.Windows.Forms.ColorDialog();
             this.fontDialogUniversalFont = new System.Windows.Forms.FontDialog();
             this.contextMenuPrint = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.itemA4 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemA5 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemA6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageInteraction = new System.Windows.Forms.TabPage();
-            this.panelColorSelectedSeries = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPageChart.SuspendLayout();
             this.tabPageAxisX.SuspendLayout();
@@ -122,7 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Min)).BeginInit();
             this.contextMenuPrint.SuspendLayout();
-            this.tabPageInteraction.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -132,7 +126,6 @@
             this.tabControl.Controls.Add(this.tabPageAxisX);
             this.tabControl.Controls.Add(this.tabPageAxisY);
             this.tabControl.Controls.Add(this.tabPageY2);
-            this.tabControl.Controls.Add(this.tabPageInteraction);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -813,34 +806,6 @@
             resources.ApplyResources(this.itemA6, "itemA6");
             this.itemA6.Click += new System.EventHandler(this.itemA6_Click);
             // 
-            // tabPageInteraction
-            // 
-            this.tabPageInteraction.Controls.Add(this.panelColorSelectedSeries);
-            this.tabPageInteraction.Controls.Add(this.label19);
-            this.tabPageInteraction.Controls.Add(this.label26);
-            resources.ApplyResources(this.tabPageInteraction, "tabPageInteraction");
-            this.tabPageInteraction.Name = "tabPageInteraction";
-            this.tabPageInteraction.UseVisualStyleBackColor = true;
-            // 
-            // panelColorSelectedSeries
-            // 
-            this.panelColorSelectedSeries.BackColor = System.Drawing.Color.Red;
-            this.panelColorSelectedSeries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelColorSelectedSeries, "panelColorSelectedSeries");
-            this.panelColorSelectedSeries.Name = "panelColorSelectedSeries";
-            this.panelColorSelectedSeries.Click += new System.EventHandler(this.panelColorSelectedSeries_Click);
-            // 
-            // label19
-            // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label26.Name = "label26";
-            // 
             // PlotProperties
             // 
             resources.ApplyResources(this, "$this");
@@ -870,8 +835,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY2Min)).EndInit();
             this.contextMenuPrint.ResumeLayout(false);
-            this.tabPageInteraction.ResumeLayout(false);
-            this.tabPageInteraction.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -949,10 +912,5 @@
         private System.Windows.Forms.ToolStripMenuItem itemA4;
         private System.Windows.Forms.ToolStripMenuItem itemA5;
         private System.Windows.Forms.ToolStripMenuItem itemA6;
-        private System.Windows.Forms.TabPage tabPageInteraction;
-        private System.Windows.Forms.Panel panelColorSelectedSeries;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ColorDialog colorDialogDistinguish;
     }
 }

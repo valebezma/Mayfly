@@ -9,9 +9,52 @@ namespace Mayfly.Mathematics.Statistics
 {
     public abstract class GeneralLinearRegression : Regression
     {
-        public GeneralLinearRegression(BivariateSample data)
+        public double RSquared { get; internal set; }
+
+        public string DeterminationStrength
+        {
+            get
+            {
+                double r = RSquared;
+
+                if (r < 0.1)
+                {
+                    return Resources.Chaddock.Strength0;
+                }
+                else if (r < 0.3)
+                {
+                    return Resources.Chaddock.Strength1;
+                }
+                else if (r < 0.5)
+                {
+                    return Resources.Chaddock.Strength2;
+                }
+                else if (r < 0.7)
+                {
+                    return Resources.Chaddock.Strength3;
+                }
+                else if (r < 0.9)
+                {
+                    return Resources.Chaddock.Strength4;
+                }
+                else
+                {
+                    return Resources.Chaddock.Strength5;
+                }
+            }
+        }
+
+        public GeneralLinearRegression(BivariateSample data, string formula)
             : base(data)
-        { }
+        {
+            fit = engine.Evaluate("lm(formula = " + formula + ")");
+            engine.SetSymbol("fit", fit);
+            Parameters.Clear();
+            Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
+            RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
+        }
 
         public override string ToString(string format, IFormatProvider provider)
         {
@@ -58,16 +101,16 @@ namespace Mayfly.Mathematics.Statistics
         public double Slope { get { return Parameters[1]; } }
 
         public Linear(BivariateSample data)
-            : base(data)
+            : base(data, "yvalues ~ xvalues")
         {
             Type = TrendType.Linear;
 
-            fit = engine.Evaluate("lm(formula = yvalues ~ xvalues)");
-            engine.SetSymbol("fit", fit);
-            Parameters.Clear();
-            Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+            //fit = engine.Evaluate("lm(formula = yvalues ~ xvalues)");
+            //engine.SetSymbol("fit", fit);
+            //Parameters.Clear();
+            //Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
 
-            RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
+            //RSquared = engine.Evaluate("summary(fit)$r.squared").AsNumeric()[0];
         }
 
         public override double Predict(double x)
@@ -134,10 +177,28 @@ namespace Mayfly.Mathematics.Statistics
 
     public class Polynom : GeneralLinearRegression
     {
+        public int Degree;
+
         public Polynom(BivariateSample data, int degree)
-            : base(data)
+            : base(data, GetFormula(degree))
         {
-            this.Type = degree == 2 ? TrendType.Quadratic : TrendType.Cubic;
+            Degree = degree;
+            Type = degree == 2 ? TrendType.Quadratic : TrendType.Cubic;
+        }
+
+        public static string GetFormula(int degree)
+        {
+            if (degree < 2)
+                throw new ArgumentException("Polynom should be at lesat in second degree");
+
+            string result = "yvalues ~ xvalues";
+
+            for (int i = 2; i <= degree; i++)
+            {
+                result += " + I(xvalues ^ " + i + ")";
+            }
+
+            return result;
         }
 
         public override string GetEquation(string y, string x, string format)
@@ -169,7 +230,7 @@ namespace Mayfly.Mathematics.Statistics
 
         public override double Predict(double x)
         {
-            double y = 0.0;
+            double y = Parameters[0];
 
             for (int i = 1; i < Parameters.Count; i++)
             {
@@ -242,7 +303,7 @@ namespace Mayfly.Mathematics.Statistics
         public Linear LinearizedModel;
 
         public TransformedLinearRegression(BivariateSample data)
-            : base(data)
+            : base(data, "yvalues ~ xvalues")
         {
             BivariateSample logData = data.Copy();
             logData.X.Transform(TransformX);
@@ -252,6 +313,8 @@ namespace Mayfly.Mathematics.Statistics
             Parameters.Clear();
             Parameters.Add(Intercept);
             Parameters.Add(Slope);
+
+            RSquared = LinearizedModel.RSquared;
         }
 
         public virtual double TransformX(double x)
@@ -294,11 +357,11 @@ namespace Mayfly.Mathematics.Statistics
             return result.ToArray();
         }
 
-        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
+        internal override Interval[] GetBands(double[] x, double level, IntervalType type)
         {
             Sample s = new Sample(x);
             s.Transform(TransformX);
-            Interval[] result = BackTransform(LinearizedModel.getInterval(s.ToArray(), level, type));
+            Interval[] result = BackTransform(LinearizedModel.GetBands(s.ToArray(), level, type));
             return result;
         }
 

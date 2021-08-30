@@ -246,9 +246,9 @@ namespace Mayfly.Geographics
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string[] fileNames = IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
+                string[] filenames = IO.MaskedNames((string[])e.Data.GetData(DataFormats.FileDrop),
                     IO.InterfaceLocation.OpenExtensions);
-                locationData_Selected(fileNames);
+                locationData_Selected(filenames);
             }
             else if (e.Data.GetDataPresent(DataFormats.StringFormat))
             {

@@ -124,11 +124,11 @@ namespace Mayfly
         }
 
         
-        public static string FolderName(string fileName)
+        public static string FolderName(string filename)
         {
-            if (fileName == null) return null;
-            if (!fileName.IsAcceptable()) return null;
-            FileInfo fi = new FileInfo(fileName);
+            if (filename == null) return null;
+            if (!filename.IsAcceptable()) return null;
+            FileInfo fi = new FileInfo(filename);
             return fi.DirectoryName;
         }
 
@@ -157,10 +157,10 @@ namespace Mayfly
             return result.Name;
         }
 
-        public static string LocalizedPath(string fileName)
+        public static string LocalizedPath(string filename)
         {
             return string.Format("{0}\\{1}\\{2}", Application.StartupPath,
-                System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName, fileName);
+                System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName, filename);
         }
 
         public static string[] MaskedNames(string[] entries, string[] extensions)
@@ -309,10 +309,10 @@ namespace Mayfly
             }
         }
 
-        public static bool RunFile(string fileName)
+        public static bool RunFile(string filename)
         {
             Process process = new Process();
-            process.StartInfo.FileName = fileName;
+            process.StartInfo.FileName = filename;
             try
             {
                 process.Start();
@@ -324,14 +324,14 @@ namespace Mayfly
             }
         }
 
-        public static void RunFile(string fileName, params object[] args)
+        public static void RunFile(string filename, params object[] args)
         {
-            FileInfo fi = new FileInfo(fileName);
+            FileInfo fi = new FileInfo(filename);
             Process process = new Process();
 
             if (fi.Extension.ToLowerInvariant() == ".exe")
             {
-                process.StartInfo.FileName = fileName;
+                process.StartInfo.FileName = filename;
 
                 process.StartInfo.Arguments = string.Empty;
 
@@ -347,7 +347,7 @@ namespace Mayfly
                 string appPath = Registry.CurrentUser.OpenSubKey(
                     @"Software\Classes\" + appID + @"\Shell\Open\Command").GetValue(string.Empty).ToString();
                 process.StartInfo.FileName = appPath.Substring(0, appPath.Length - 5);
-                process.StartInfo.Arguments = "\"" + fileName + "\" " + args.Merge(" ");
+                process.StartInfo.Arguments = "\"" + filename + "\" " + args.Merge(" ");
             }
 
             try

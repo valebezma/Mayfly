@@ -33,7 +33,7 @@ namespace Mayfly.Fish.Explorer
         /// <param name="speciesRow"></param>
         public static void AddCommon(this CardStack stack, Report report, Data.SpeciesRow speciesRow)
         {
-            Artefact[] artefacts = stack.GetArtefacts(false);
+            Artefact[] artefacts = stack.GetArtefacts();
 
             string warning = string.Empty;
 

@@ -674,7 +674,7 @@ namespace Mayfly.Extensions
                 bivariateSample.Add(valueRow.Value, individualRow.Mass);
             }
 
-            if (bivariateSample.Count < Mathematics.UserSettings.StrongSampleSize)
+            if (bivariateSample.Count < Mathematics.UserSettings.RequiredSampleSize)
                 return null;
 
             bivariateSample.X.Name = variableRow.Variable;
@@ -797,8 +797,7 @@ namespace Mayfly.Extensions
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;
-                SpeciesKey.SpeciesRow refSpecies = speciesRow.GetKeyRecord();
-                _item.Text = refSpecies == null ? speciesRow.Species : speciesRow.GetKeyRecord().FullName;
+                _item.Text = speciesRow.KeyRecord.FullName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }

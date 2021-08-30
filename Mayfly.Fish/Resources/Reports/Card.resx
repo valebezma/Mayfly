@@ -127,7 +127,7 @@
     <value>Height, m</value>
   </data>
   <data name="IndNo" xml:space="preserve">
-    <value>Sample #</value>
+    <value>Tally</value>
   </data>
   <data name="Length" xml:space="preserve">
     <value>Length, m</value>

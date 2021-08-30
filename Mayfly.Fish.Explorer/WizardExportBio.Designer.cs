@@ -52,11 +52,12 @@
             this.ColumnSignN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.pageGrowth = new AeroWizard.WizardPage();
+            this.labelWait = new System.Windows.Forms.Label();
             this.labelNoDataGrowth = new System.Windows.Forms.Label();
             this.spreadSheetGrowth = new Mayfly.Controls.SpreadSheet();
             this.ColumnGrowthSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnGrowthR2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGrowthRSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnGrowthT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,9 +78,8 @@
             this.pageReport = new AeroWizard.WizardPage();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBoxReport = new System.Windows.Forms.CheckBox();
-            this.modelCalculator = new System.ComponentModel.BackgroundWorker();
+            this.calcGrowth = new System.ComponentModel.BackgroundWorker();
             this.reporter = new System.ComponentModel.BackgroundWorker();
-            this.backSpecExporter = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).BeginInit();
             this.pageStart.SuspendLayout();
             this.pageSigns.SuspendLayout();
@@ -163,11 +163,17 @@
             // 
             // pageGrowth
             // 
+            this.pageGrowth.Controls.Add(this.labelWait);
             this.pageGrowth.Controls.Add(this.labelNoDataGrowth);
             this.pageGrowth.Controls.Add(this.spreadSheetGrowth);
             this.pageGrowth.Controls.Add(this.label9);
             this.pageGrowth.Name = "pageGrowth";
             resources.ApplyResources(this.pageGrowth, "pageGrowth");
+            // 
+            // labelWait
+            // 
+            resources.ApplyResources(this.labelWait, "labelWait");
+            this.labelWait.Name = "labelWait";
             // 
             // labelNoDataGrowth
             // 
@@ -180,7 +186,7 @@
             this.spreadSheetGrowth.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnGrowthSpecies,
             this.ColumnGrowthN,
-            this.ColumnGrowthR2,
+            this.ColumnGrowthRSE,
             this.ColumnGrowthL,
             this.ColumnGrowthK,
             this.ColumnGrowthT});
@@ -196,6 +202,7 @@
             // ColumnGrowthSpecies
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "s";
             this.ColumnGrowthSpecies.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnGrowthSpecies.FillWeight = 150F;
             resources.ApplyResources(this.ColumnGrowthSpecies, "ColumnGrowthSpecies");
@@ -204,23 +211,23 @@
             // 
             // ColumnGrowthN
             // 
-            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.Format = "n0";
             this.ColumnGrowthN.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.ColumnGrowthN, "ColumnGrowthN");
             this.ColumnGrowthN.Name = "ColumnGrowthN";
             this.ColumnGrowthN.ReadOnly = true;
             // 
-            // ColumnGrowthR2
+            // ColumnGrowthRSE
             // 
-            dataGridViewCellStyle5.Format = "P1";
-            this.ColumnGrowthR2.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.ColumnGrowthR2, "ColumnGrowthR2");
-            this.ColumnGrowthR2.Name = "ColumnGrowthR2";
-            this.ColumnGrowthR2.ReadOnly = true;
+            dataGridViewCellStyle5.Format = "n1";
+            this.ColumnGrowthRSE.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.ColumnGrowthRSE, "ColumnGrowthRSE");
+            this.ColumnGrowthRSE.Name = "ColumnGrowthRSE";
+            this.ColumnGrowthRSE.ReadOnly = true;
             // 
             // ColumnGrowthL
             // 
-            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.Format = "n1";
             this.ColumnGrowthL.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.ColumnGrowthL, "ColumnGrowthL");
             this.ColumnGrowthL.Name = "ColumnGrowthL";
@@ -228,7 +235,7 @@
             // 
             // ColumnGrowthK
             // 
-            dataGridViewCellStyle7.Format = "N4";
+            dataGridViewCellStyle7.Format = "n3";
             this.ColumnGrowthK.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.ColumnGrowthK, "ColumnGrowthK");
             this.ColumnGrowthK.Name = "ColumnGrowthK";
@@ -236,7 +243,7 @@
             // 
             // ColumnGrowthT
             // 
-            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.Format = "n3";
             this.ColumnGrowthT.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.ColumnGrowthT, "ColumnGrowthT");
             this.ColumnGrowthT.Name = "ColumnGrowthT";
@@ -267,7 +274,6 @@
             this.pageWeight.Controls.Add(this.label2);
             this.pageWeight.Name = "pageWeight";
             resources.ApplyResources(this.pageWeight, "pageWeight");
-            this.pageWeight.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageWeight_Commit);
             // 
             // labelNoDataWeight
             // 
@@ -295,6 +301,7 @@
             // ColumnWeightSpecies
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Format = "s";
             this.ColumnWeightSpecies.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnWeightSpecies.FillWeight = 150F;
             resources.ApplyResources(this.ColumnWeightSpecies, "ColumnWeightSpecies");
@@ -303,7 +310,7 @@
             // 
             // ColumnWeightN
             // 
-            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.Format = "n0";
             this.ColumnWeightN.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.ColumnWeightN, "ColumnWeightN");
             this.ColumnWeightN.Name = "ColumnWeightN";
@@ -311,7 +318,7 @@
             // 
             // ColumnWeightR2
             // 
-            dataGridViewCellStyle11.Format = "P1";
+            dataGridViewCellStyle11.Format = "p1";
             this.ColumnWeightR2.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.ColumnWeightR2, "ColumnWeightR2");
             this.ColumnWeightR2.Name = "ColumnWeightR2";
@@ -319,7 +326,7 @@
             // 
             // ColumnWeightQ
             // 
-            dataGridViewCellStyle12.Format = "N4";
+            dataGridViewCellStyle12.Format = "e2";
             this.ColumnWeightQ.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(this.ColumnWeightQ, "ColumnWeightQ");
             this.ColumnWeightQ.Name = "ColumnWeightQ";
@@ -327,7 +334,7 @@
             // 
             // ColumnWeightB
             // 
-            dataGridViewCellStyle13.Format = "N4";
+            dataGridViewCellStyle13.Format = "n3";
             this.ColumnWeightB.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.ColumnWeightB, "ColumnWeightB");
             this.ColumnWeightB.Name = "ColumnWeightB";
@@ -373,27 +380,22 @@
             this.checkBoxReport.UseVisualStyleBackColor = true;
             this.checkBoxReport.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
-            // modelCalculator
+            // calcGrowth
             // 
-            this.modelCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalculator_DoWork);
-            this.modelCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.modelCalculator_RunWorkerCompleted);
+            this.calcGrowth.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalculator_DoWork);
+            this.calcGrowth.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.modelCalculator_RunWorkerCompleted);
             // 
             // reporter
             // 
             this.reporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.reporter_DoWork);
             this.reporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.reporter_RunWorkerCompleted);
             // 
-            // backSpecExporter
-            // 
-            this.backSpecExporter.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backSpecExporter_DoWork);
-            this.backSpecExporter.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backSpecExporter_RunWorkerCompleted);
-            // 
-            // WizardExport2
+            // WizardExportBio
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.wizardExplorer);
-            this.Name = "WizardExport2";
+            this.Name = "WizardExportBio";
             ((System.ComponentModel.ISupportInitialize)(this.wizardExplorer)).EndInit();
             this.pageStart.ResumeLayout(false);
             this.pageSigns.ResumeLayout(false);
@@ -414,7 +416,7 @@
 
         private AeroWizard.WizardControl wizardExplorer;
         private AeroWizard.WizardPage pageStart;
-        private System.ComponentModel.BackgroundWorker modelCalculator;
+        private System.ComponentModel.BackgroundWorker calcGrowth;
         private AeroWizard.WizardPage pageReport;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
@@ -424,7 +426,6 @@
         private Controls.SpreadSheet spreadSheetGrowth;
         private System.Windows.Forms.CheckBox checkBoxReport;
         private System.Windows.Forms.Label labelNoDataGrowth;
-        private System.ComponentModel.BackgroundWorker backSpecExporter;
         private AeroWizard.WizardPage pageWeight;
         private System.Windows.Forms.Label labelNoDataWeight;
         private Controls.SpreadSheet spreadSheetWeight;
@@ -438,9 +439,10 @@
         private System.Windows.Forms.ToolStripMenuItem contextWeightChart;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSignInvestigator;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSignN;
+        private System.Windows.Forms.Label labelWait;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthR2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthRSE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthK;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGrowthT;

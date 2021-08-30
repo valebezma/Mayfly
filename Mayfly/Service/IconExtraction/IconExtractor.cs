@@ -79,10 +79,10 @@ namespace TsudaKageyu
         /// <summary>
         /// Initializes a new instance of the IconExtractor class from the specified file name.
         /// </summary>
-        /// <param name="fileName">The file to extract icons from.</param>
-        public IconExtractor(string fileName)
+        /// <param name="filename">The file to extract icons from.</param>
+        public IconExtractor(string filename)
         {
-            Initialize(fileName);
+            Initialize(filename);
         }
 
         /// <summary>
@@ -118,15 +118,15 @@ namespace TsudaKageyu
             return icons.ToArray();
         }
 
-        private void Initialize(string fileName)
+        private void Initialize(string filename)
         {
-            if (fileName == null)
-                throw new ArgumentNullException("fileName");
+            if (filename == null)
+                throw new ArgumentNullException("filename");
 
             IntPtr hModule = IntPtr.Zero;
             try
             {
-                hModule = NativeMethods.LoadLibraryEx(fileName, IntPtr.Zero, LOAD_LIBRARY_AS_DATAFILE);
+                hModule = NativeMethods.LoadLibraryEx(filename, IntPtr.Zero, LOAD_LIBRARY_AS_DATAFILE);
                 if (hModule == IntPtr.Zero)
                     throw new Win32Exception();
 
@@ -233,7 +233,7 @@ namespace TsudaKageyu
             // Get the file name in the format like:
             // "\\Device\\HarddiskVolume2\\Windows\\System32\\shell32.dll"
 
-            string fileName;
+            string filename;
             {
                 var buf = new StringBuilder(MAX_PATH);
                 int len = NativeMethods.GetMappedFileName(
@@ -241,7 +241,7 @@ namespace TsudaKageyu
                 if (len == 0)
                     throw new Win32Exception();
 
-                fileName = buf.ToString();
+                filename = buf.ToString();
             }
 
             // Convert the device name to drive name like:
@@ -256,11 +256,11 @@ namespace TsudaKageyu
                     continue;
 
                 var devPath = buf.ToString();
-                if (fileName.StartsWith(devPath))
-                    return (drive + fileName.Substring(devPath.Length));
+                if (filename.StartsWith(devPath))
+                    return (drive + filename.Substring(devPath.Length));
             }
 
-            return fileName;
+            return filename;
         }
     }
 }

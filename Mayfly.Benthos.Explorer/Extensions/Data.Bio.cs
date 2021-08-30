@@ -359,7 +359,7 @@ namespace Mayfly.Extensions
                 bivariateSample.Add(valueRow.Value, individualRow.Mass);
             }
 
-            if (bivariateSample.Count < Mathematics.UserSettings.StrongSampleSize)
+            if (bivariateSample.Count < Mathematics.UserSettings.RequiredSampleSize)
                 return null;
 
             bivariateSample.X.Name = variableRow.Variable;
@@ -435,7 +435,7 @@ namespace Mayfly.Extensions
 
         
 
-        public static Data GetBio(this Data data1)
+        public static Data GetBenthosBio(this Data data1)
         {
             Data data = (Data)((DataSet)data1).Copy();
 
@@ -540,14 +540,6 @@ namespace Mayfly.Extensions
                 throw new ArgumentNullException("Regression data", "Data is unsufficient to be used as bio.");
 
             return data;
-        }
-
-        public static void ImportBio(this Data data1, string fileName, bool clear)
-        {
-            Data data = new Data();
-            string contents = StringCipher.Decrypt(File.ReadAllText(fileName), "bio");
-            data.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
-            data.Solitary.Investigator = Mayfly.StringCipher.Decrypt(data.Solitary.Sign, data.Solitary.When.ToString("s"));            
         }
     }
 }

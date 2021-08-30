@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Mayfly.Controls;
+using System.Linq;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -12,10 +14,14 @@ namespace Mayfly.Fish.Explorer
     {
         Data.SpeciesRow individualSpecies;
 
-        private void LoadIndLog()
+
+
+        private void loadIndividuals(Data.IndividualRow[] indRows)
         {
+            individualSpecies = null;
+
             IsBusy = true;
-            spreadSheetInd.StartProcessing(data.Individual.Count, Wild.Resources.Interface.Process.IndividualsProcessing);
+            spreadSheetInd.StartProcessing(indRows.Length, Wild.Resources.Interface.Process.IndividualsProcessing);
             spreadSheetInd.Rows.Clear();
 
             foreach (Data.VariableRow variableRow in data.Variable)
@@ -24,109 +30,165 @@ namespace Mayfly.Fish.Explorer
                     variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
             }
             if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderInd.RunWorkerAsync();
+            loaderInd.RunWorkerAsync(indRows);
         }
 
-        private void LoadIndLog(Data.SpeciesRow speciesRow)
+        private void loadIndividuals()
         {
-            individualSpecies = speciesRow;
-
-            IsBusy = true;
-            spreadSheetInd.StartProcessing(AllowedStack.QuantityIndividual(speciesRow),
-                Wild.Resources.Interface.Process.IndividualsProcessing);
-            spreadSheetInd.Rows.Clear();
-
-            foreach (Data.VariableRow variableRow in data.Variable)
-            {
-                spreadSheetInd.InsertColumn("Var_" + variableRow.Variable,
-                    variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
-            }
-
-            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderInd.RunWorkerAsync(speciesRow);
+            loadIndividuals(data.Individual.Rows.Cast<Data.IndividualRow>().ToArray());
         }
 
-        private Data.IndividualRow[] GetIndividuals(IList rows)
+        private void loadIndividuals(CardStack stack)
         {
-            spreadSheetInd.EndEdit();
+            loadIndividuals(stack.GetIndividualRows());
+        }
+
+        private void loadIndividuals(Data.SpeciesRow[] spcRows)
+        {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
-            foreach (DataGridViewRow gridRow in rows) {
-                if (!gridRow.Visible) continue;
-                if (gridRow.IsNewRow) continue;
-                Data.IndividualRow individualRow = IndividualRow(gridRow);
-                if (individualRow == null) continue;
-
-                result.Add(individualRow);
-            }
-
-            return result.ToArray();
-        }
-
-
-        private void SimulateStratifiedSamples()
-        {
-            IsBusy = true;
-
-            spreadSheetInd.StartProcessing(individualSpecies == null ?
-                data.Stratified.Quantity : AllowedStack.QuantityStratified(individualSpecies),
-                Wild.Resources.Interface.Process.StratifiedProcessing);
-
-            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderIndSimulated.RunWorkerAsync(individualSpecies);
-        }
-
-        private void ClearSimulated()
-        {
-            for (int i = 0; i < spreadSheetInd.Rows.Count; i++)
+            foreach (Data.SpeciesRow spcRow in spcRows)
             {
-                if (spreadSheetInd[columnIndID.Index, i].Value == null)
-                {
-                    spreadSheetInd.Rows.RemoveAt(i);
-                    i--;
-                }
+                result.AddRange(FullStack.GetIndividualRows(spcRow));
             }
 
-            spreadSheetInd.UpdateStatus();
+            loadIndividuals(result.ToArray());
         }
 
-
-        private DataGridViewRow GetLine(Data.IndividualRow individualRow)
+        private void loadIndividuals(Data.SpeciesRow spcRow)
         {
-            DataGridViewRow result = new DataGridViewRow();
-            result.CreateCells(spreadSheetInd);
-            result.Cells[columnIndID.Index].Value = individualRow.ID;
-            UpdateIndividualRow(result, individualRow);
+            loadIndividuals(new Data.SpeciesRow[] { spcRow });
+            individualSpecies = spcRow;
+        }
 
-            if (Licensing.Verify("Fishery Scientist"))
+        private void loadIndividuals(Data.LogRow[] logRows)
+        {
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (Data.LogRow logRow in logRows)
             {
-                if (UserSettings.AgeSuggest) SetIndividualAgeTip(result, individualRow);
-                if (UserSettings.MassSuggest) SetIndividualMassTip(result, individualRow);
+                result.AddRange(logRow.GetIndividualRows());
             }
 
-            setCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
-            return result;
+            loadIndividuals(result.ToArray());
         }
 
 
-        private DataGridViewRow FindIndividualRow(Data.IndividualRow individualRow)
-        {
-            return columnIndID.GetRow(individualRow.ID, true, true);
-        }
 
-        private Data.IndividualRow IndividualRow(DataGridViewRow gridRow)
+        private Data.IndividualRow findIndividualRow(DataGridViewRow gridRow)
         {
-            if (gridRow.Cells[columnIndID.Name].Value == null) { return null; }
+            if (gridRow.Cells[columnIndID.Index].Value == null) 
+            {
+                return null;
+            }
             else
             {
-                int ID = (int)gridRow.Cells[columnIndID.Name].Value;
-                return data.Individual.FindByID(ID);
+                return data.Individual.FindByID((int)gridRow.Cells[columnIndID.Index].Value);
             }
         }
 
-        private Data.IndividualRow SaveIndRow(DataGridViewRow gridRow)
+        private void updateIndividualRow(DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow = IndividualRow(gridRow);
+            Data.IndividualRow individualRow = findIndividualRow(gridRow);
+
+            if (individualRow == null) return;
+
+            gridRow.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.SpeciesRow;
+            gridRow.Cells[columnIndLength.Index].Value = individualRow.IsLengthNull() ? null : (object)individualRow.Length;
+            gridRow.Cells[columnIndMass.Index].Value = individualRow.IsMassNull() ? null : (object)individualRow.Mass;
+            gridRow.Cells[columnIndSomaticMass.Index].Value = individualRow.IsSomaticMassNull() ? null : (object)individualRow.SomaticMass;
+            gridRow.Cells[columnIndCondition.Index].Value = double.IsNaN(individualRow.GetCondition()) ? null : (object)individualRow.GetCondition();
+            gridRow.Cells[columnIndConditionSoma.Index].Value = double.IsNaN(individualRow.GetConditionSomatic()) ? null : (object)individualRow.GetConditionSomatic();
+            gridRow.Cells[columnIndRegID.Index].Value = individualRow.IsTallyNull() ? null : individualRow.Tally;
+
+            if (individualRow.IsAgeNull())
+            {
+                gridRow.Cells[columnIndAge.Index].Value = null;
+                gridRow.Cells[columnIndGeneration.Index].Value = null;
+            }
+            else
+            {
+                Age age = (Age)individualRow.Age;
+                gridRow.Cells[columnIndAge.Index].Value = age;
+                Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
+                if (!individualRow.IsAgeNull()) gridRow.Cells[columnIndGeneration.Index].Value = individualRow.Generation;
+            }
+
+            gridRow.Cells[columnIndSex.Index].Value = individualRow.IsSexNull() ? null : (Sex)individualRow.Sex;
+            gridRow.Cells[columnIndMaturity.Index].Value = individualRow.IsMaturityNull()
+                ? null
+                : individualRow.IsIntermatureNull()
+                    ? new Maturity(individualRow.Maturity)
+                    : new Maturity(individualRow.Maturity, individualRow.Intermature);
+
+
+            gridRow.Cells[columnIndGonadMass.Index].Value = individualRow.IsGonadMassNull() ? null : (object)individualRow.GonadMass;
+            gridRow.Cells[columnIndGonadSampleMass.Index].Value = individualRow.IsGonadSampleMassNull() ? null : (object)individualRow.GonadSampleMass;
+            gridRow.Cells[columnIndGonadSample.Index].Value = individualRow.IsGonadSampleNull() ? null : (object)individualRow.GonadSample;
+            gridRow.Cells[columnIndEggSize.Index].Value = individualRow.IsEggSizeNull() ? null : (object)individualRow.EggSize;
+            gridRow.Cells[columnIndFecundityAbs.Index].Value = double.IsNaN(individualRow.GetAbsoluteFecundity()) ? null : (object)(individualRow.GetAbsoluteFecundity() / 1000.0);
+            gridRow.Cells[columnIndFecundityRelative.Index].Value = double.IsNaN(individualRow.GetRelativeFecundity()) ? null : (object)individualRow.GetRelativeFecundity();
+            gridRow.Cells[columnIndFecundityRelativeSoma.Index].Value = double.IsNaN(individualRow.GetRelativeFecunditySomatic()) ? null : (object)individualRow.GetRelativeFecunditySomatic();
+            gridRow.Cells[columnIndGonadIndex.Index].Value = double.IsNaN(individualRow.GetGonadIndex()) ? null : (object)individualRow.GetGonadIndex();
+            gridRow.Cells[columnIndGonadIndexSoma.Index].Value = double.IsNaN(individualRow.GetGonadIndexSomatic()) ? null : (object)individualRow.GetGonadIndexSomatic();
+
+            
+            gridRow.Cells[columnIndFat.Index].Value = individualRow.IsFatnessNull() ? null : (object)individualRow.Fatness;
+
+            if (individualRow.IsConsumedMassNull())
+            {
+                gridRow.Cells[columnIndConsumed.Index].Value = null;
+                gridRow.Cells[columnIndConsumptionIndex.Index].Value = null;
+            }
+            else
+            {
+                gridRow.Cells[columnIndConsumed.Index].Value = individualRow.ConsumedMass;
+                gridRow.Cells[columnIndConsumptionIndex.Index].Value = individualRow.GetConsumptionIndex();
+            }
+
+            int dietCount = individualRow.GetDietItemCount();
+            gridRow.Cells[columnIndDietItems.Index].Value = dietCount == -1 ? null : (object)dietCount;
+
+            gridRow.Cells[columnIndComments.Index].Value = individualRow.IsCommentsNull() ? null : individualRow.Comments;
+
+            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+            {
+                gridRow.Cells[spreadSheetInd.GetColumn("Var_" + valueRow.VariableRow.Variable).Index].Value = valueRow.IsValueNull() ? null : (object)valueRow.Value;
+            }
+
+            updateIndividualArtefacts(gridRow);
+        }
+
+        private void updateIndividualArtefacts(DataGridViewRow gridRow)
+        {
+            IndividualArtefact artefact = findIndividualRow(gridRow).GetFacts();
+
+            if (artefact.TallyCriticality > ArtefactCriticality.Normal)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnIndRegID.Index]).Image = Artefact.GetImage(artefact.TallyCriticality);
+                gridRow.Cells[columnIndRegID.Index].ToolTipText = artefact.Treated ? artefact.GetNoticeTallyMissing() : artefact.GetNoticeTallyOdd();
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnIndRegID.Index]).Image = null;
+                gridRow.Cells[columnIndRegID.Index].ToolTipText = string.Empty;
+            }
+
+            if (artefact.UnweightedDietItemsCriticality > ArtefactCriticality.Normal)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnIndConsumed.Index]).Image = Artefact.GetImage(artefact.UnweightedDietItemsCriticality);
+                gridRow.Cells[columnIndConsumed.Index].ToolTipText = artefact.GetNoticeUnweightedDiet();
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnIndConsumed.Index]).Image = null;
+                gridRow.Cells[columnIndConsumed.Index].ToolTipText = string.Empty;
+            }
+        }
+
+        private Data.IndividualRow saveIndividualRow(DataGridViewRow gridRow)
+        {
+            Data.IndividualRow individualRow = findIndividualRow(gridRow);
 
             if (individualRow == null) return null;
 
@@ -143,8 +205,8 @@ namespace Mayfly.Fish.Explorer
             else individualRow.SomaticMass = (double)gmass;
 
             object regID = gridRow.Cells[columnIndRegID.Name].Value;
-            if (regID == null) individualRow.SetRegIDNull();
-            else individualRow.RegID = (string)regID;
+            if (regID == null) individualRow.SetTallyNull();
+            else individualRow.Tally = (string)regID;
 
             Age age = (Age)gridRow.Cells[columnIndAge.Name].Value;
             if (age == null) individualRow.SetAgeNull();
@@ -246,79 +308,16 @@ namespace Mayfly.Fish.Explorer
 
             rememberChanged(individualRow.LogRow.CardRow);
 
+            updateIndividualRow(gridRow);
+
+            updateIndividualArtefacts(gridRow);
+            if (tabPageLog.Parent != null) updateLogArtefacts(columnLogID.GetRow(individualRow.LogID));
+            if (tabPageCard.Parent != null) updateCardArtefacts(columnCardID.GetRow(individualRow.LogRow.CardID));
+
             return individualRow;
         }
 
-        private void UpdateIndividualRow(Data.IndividualRow individualRow)
-        {
-            UpdateIndividualRow(FindIndividualRow(individualRow), individualRow);
-        }
 
-        private void UpdateIndividualRow(DataGridViewRow result, Data.IndividualRow individualRow) 
-        {
-            result.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.IsSpcIDNull() ? null : individualRow.Species;
-            result.Cells[columnIndLength.Index].Value = individualRow.IsLengthNull() ? null : (object)individualRow.Length;
-            result.Cells[columnIndMass.Index].Value = individualRow.IsMassNull() ? null : (object)individualRow.Mass;
-            result.Cells[columnIndSomaticMass.Index].Value = individualRow.IsSomaticMassNull() ? null : (object)individualRow.SomaticMass;
-            result.Cells[columnIndCondition.Index].Value = double.IsNaN(individualRow.GetCondition()) ? null : (object)individualRow.GetCondition();
-            result.Cells[columnIndConditionSoma.Index].Value = double.IsNaN(individualRow.GetConditionSomatic()) ? null : (object)individualRow.GetConditionSomatic();
-            result.Cells[columnIndRegID.Index].Value = individualRow.IsRegIDNull() ? null : individualRow.RegID;
-
-            if (individualRow.IsAgeNull())
-            {
-                result.Cells[columnIndAge.Index].Value = null;
-                result.Cells[columnIndGeneration.Index].Value = null;
-            }
-            else
-            {
-                Age age = (Age)individualRow.Age;
-                result.Cells[columnIndAge.Index].Value = age;
-                Wild.Service.HandleAgeInput(result.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-                if (!individualRow.IsAgeNull()) result.Cells[columnIndGeneration.Index].Value = individualRow.Generation;
-            }
-
-            result.Cells[columnIndSex.Index].Value = individualRow.IsSexNull() ? null : (Sex)individualRow.Sex;
-            result.Cells[columnIndMaturity.Index].Value = individualRow.IsMaturityNull()
-                ? null
-                : individualRow.IsIntermatureNull()
-                    ? new Maturity(individualRow.Maturity)
-                    : new Maturity(individualRow.Maturity, individualRow.Intermature);
-
-
-            result.Cells[columnIndGonadMass.Index].Value = individualRow.IsGonadMassNull() ? null : (object)individualRow.GonadMass;
-            result.Cells[columnIndGonadSampleMass.Index].Value = individualRow.IsGonadSampleMassNull() ? null : (object)individualRow.GonadSampleMass;
-            result.Cells[columnIndGonadSample.Index].Value = individualRow.IsGonadSampleNull() ? null : (object)individualRow.GonadSample;
-            result.Cells[columnIndEggSize.Index].Value = individualRow.IsEggSizeNull() ? null : (object)individualRow.EggSize;
-            result.Cells[columnIndFecundityAbs.Index].Value = double.IsNaN(individualRow.GetAbsoluteFecundity()) ? null : (object)(individualRow.GetAbsoluteFecundity() / 1000.0);
-            result.Cells[columnIndFecundityRelative.Index].Value = double.IsNaN(individualRow.GetRelativeFecundity()) ? null : (object)individualRow.GetRelativeFecundity();
-            result.Cells[columnIndFecundityRelativeSoma.Index].Value = double.IsNaN(individualRow.GetRelativeFecunditySomatic()) ? null : (object)individualRow.GetRelativeFecunditySomatic();
-            result.Cells[columnIndGonadIndex.Index].Value = double.IsNaN(individualRow.GetGonadIndex()) ? null : (object)individualRow.GetGonadIndex();
-            result.Cells[columnIndGonadIndexSoma.Index].Value = double.IsNaN(individualRow.GetGonadIndexSomatic()) ? null : (object)individualRow.GetGonadIndexSomatic();
-
-            
-            result.Cells[columnIndFat.Index].Value = individualRow.IsFatnessNull() ? null : (object)individualRow.Fatness;
-
-            if (individualRow.IsConsumedMassNull())
-            {
-                result.Cells[columnIndConsumed.Index].Value = null;
-                result.Cells[columnIndConsumptionIndex.Index].Value = null;
-            }
-            else
-            {
-                result.Cells[columnIndConsumed.Index].Value = individualRow.ConsumedMass;
-                result.Cells[columnIndConsumptionIndex.Index].Value = individualRow.GetConsumptionIndex();
-            }
-
-            int dietCount = individualRow.GetDietItemCount();
-            result.Cells[columnIndDietItems.Index].Value = dietCount == -1 ? null : (object)dietCount;
-
-            result.Cells[columnIndComments.Index].Value = individualRow.IsCommentsNull() ? null : individualRow.Comments;
-
-            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
-            {
-                result.Cells[spreadSheetInd.GetColumn("Var_" + valueRow.VariableRow.Variable).Index].Value = valueRow.IsValueNull() ? null : (object)valueRow.Value;
-            }
-        }
 
         private DataGridViewRow[] IndividualRows(Data.StratifiedRow stratifiedRow)
         {
@@ -334,15 +333,10 @@ namespace Mayfly.Fish.Explorer
 
                 //gridRow.Cells[columnIndID.Index].Value;
 
-                if (stratifiedRow.LogRow.IsSpcIDNull()) { }
-                else
-                {
-                    gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow.Species;
-                }
-
+                gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow;
                 gridRow.Cells[columnIndLength.Index].Value = stratifiedRow.SizeClass.Midpoint;
                 gridRow.Cells[columnIndMass.Index].Value = data.FindMassModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
-                gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.Interface.SimulatedIndividual;
+                gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.SimulatedIndividual;
                 Age age = (Age)data.FindGrowthModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint, true);
 
                 gridRow.Cells[columnIndAge.Index].Value = age;
@@ -386,15 +380,18 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-
-
         private void SetIndividualAgeTip(DataGridViewRow gridRow)
         {
-            SetIndividualAgeTip(gridRow, IndividualRow(gridRow));
+            SetIndividualAgeTip(gridRow, findIndividualRow(gridRow));
         }
 
         private void SetIndividualAgeTip(DataGridViewRow gridRow, Data.IndividualRow individualRow)
         {
+            if (UserSettings.AgeSuggest)
+            {
+                return;
+            }
+
             if (individualRow.IsLengthNull())
             {
                 return;
@@ -430,11 +427,16 @@ namespace Mayfly.Fish.Explorer
 
         private void SetIndividualMassTip(DataGridViewRow gridRow)
         {
-            SetIndividualMassTip(gridRow, IndividualRow(gridRow));
+            SetIndividualMassTip(gridRow, findIndividualRow(gridRow));
         }
 
         private void SetIndividualMassTip(DataGridViewRow gridRow, Data.IndividualRow individualRow)
         {
+            if (UserSettings.MassSuggest)
+            {
+                return;
+            }
+
             if (individualRow.IsLengthNull())
             {
                 return;
@@ -453,6 +455,49 @@ namespace Mayfly.Fish.Explorer
                 //string.Format(Resources.Interface.SuggestionFormat,
                 //mass.ToString(columnIndMass.DefaultCellStyle.Format)));
                 mass.ToString(columnIndMass.DefaultCellStyle.Format));
+        }
+
+        private Data.IndividualRow[] getIndividuals(IList rows)
+        {
+            spreadSheetInd.EndEdit();
+            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+
+            foreach (DataGridViewRow gridRow in rows) {
+                if (!gridRow.Visible) continue;
+                if (gridRow.IsNewRow) continue;
+                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                if (individualRow == null) continue;
+
+                result.Add(individualRow);
+            }
+
+            return result.ToArray();
+        }
+
+        private void SimulateStratifiedSamples()
+        {
+            IsBusy = true;
+
+            spreadSheetInd.StartProcessing(individualSpecies == null ?
+                data.Stratified.Quantity : AllowedStack.QuantityStratified(individualSpecies),
+                Wild.Resources.Interface.Process.StratifiedProcessing);
+
+            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
+            loaderIndSimulated.RunWorkerAsync(individualSpecies);
+        }
+
+        private void ClearSimulated()
+        {
+            for (int i = 0; i < spreadSheetInd.Rows.Count; i++)
+            {
+                if (spreadSheetInd[columnIndID.Index, i].Value == null)
+                {
+                    spreadSheetInd.Rows.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            spreadSheetInd.UpdateStatus();
         }
     }
 }

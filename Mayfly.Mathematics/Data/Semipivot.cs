@@ -32,6 +32,7 @@ namespace Mayfly.Mathematics
 
             Adapter = adapter;
 
+
             Picker = new ColumnPicker(listViewColumn);
             Picker.ColumnCollection = Adapter.Sheet.GetNumericalColumns();
             Picker.SelectAll();
@@ -133,16 +134,21 @@ namespace Mayfly.Mathematics
 
         private void calculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Adapter.OperatingSheet.Rows.Clear();
-            Adapter.OperatingSheet.Rows.AddRange((DataGridViewRow[])e.Result);
-            Adapter.OperatingSheet.Refresh();
-            Adapter.OperatingSheet.StopProcessing();
+            if (!e.Cancelled)
+            {
+                Adapter.OperatingSheet.Rows.Clear();
+                Adapter.OperatingSheet.Rows.AddRange((DataGridViewRow[])e.Result);
+                Adapter.OperatingSheet.Refresh();
+                Adapter.OperatingSheet.StopProcessing();
 
-            comboBoxRow.Enabled = listViewColumn.Enabled = true;        
+                comboBoxRow.Enabled = listViewColumn.Enabled = true;
+            }
         }
 
         private void Semipivot_FormClosing(object sender, FormClosingEventArgs e)
         {
+            calculator.CancelAsync();
+
             if (Adapter.OperatingSheet != null)
             {
                 Adapter.OperatingSheet.StopProcessing();

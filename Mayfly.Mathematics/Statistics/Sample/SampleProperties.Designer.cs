@@ -71,7 +71,7 @@
             this.textBoxKurtosis = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.labelStats = new System.Windows.Forms.Label();
-            this.statChart1 = new Mayfly.Mathematics.Charts.Plot();
+            this.plotDistribution = new Mayfly.Mathematics.Charts.Plot();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPageOther = new System.Windows.Forms.TabPage();
             this.textBoxSIMin = new System.Windows.Forms.TextBox();
@@ -87,7 +87,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statChart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotDistribution)).BeginInit();
             this.tabPageOther.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,7 +191,6 @@
             // 
             resources.ApplyResources(this.buttonReport, "buttonReport");
             this.buttonReport.FlatAppearance.BorderSize = 0;
-            this.buttonReport.Image = global::Mayfly.Resources.Icons.Report;
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
@@ -199,7 +198,6 @@
             // 
             resources.ApplyResources(this.buttonCopy, "buttonCopy");
             this.buttonCopy.FlatAppearance.BorderSize = 0;
-            this.buttonCopy.Image = global::Mayfly.Resources.Icons.Copy;
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
@@ -242,7 +240,7 @@
             this.tabPage1.Controls.Add(this.textBoxKurtosis);
             this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.labelStats);
-            this.tabPage1.Controls.Add(this.statChart1);
+            this.tabPage1.Controls.Add(this.plotDistribution);
             this.tabPage1.Controls.Add(this.buttonCopy);
             this.tabPage1.Controls.Add(this.buttonReport);
             this.tabPage1.Controls.Add(this.label6);
@@ -394,12 +392,12 @@
             this.labelStats.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelStats.Name = "labelStats";
             // 
-            // statChart1
+            // plotDistribution
             // 
-            resources.ApplyResources(this.statChart1, "statChart1");
-            this.statChart1.Name = "statChart1";
-            this.statChart1.ShowLegend = false;
-            this.statChart1.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+            resources.ApplyResources(this.plotDistribution, "plotDistribution");
+            this.plotDistribution.Name = "plotDistribution";
+            this.plotDistribution.ShowLegend = false;
+            this.plotDistribution.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
             // 
             // label6
             // 
@@ -491,7 +489,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statChart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plotDistribution)).EndInit();
             this.tabPageOther.ResumeLayout(false);
             this.tabPageOther.PerformLayout();
             this.ResumeLayout(false);
@@ -532,7 +530,7 @@
         private System.Windows.Forms.TextBox textBoxSIValue;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private Charts.Plot statChart1;
+        private Charts.Plot plotDistribution;
         private System.Windows.Forms.Label labelStats;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox pictureBoxNormality;

@@ -73,6 +73,22 @@ namespace Mayfly.Wild
         {
             return new Histogramma(GetHistogramSample());
         }
+
+        public static LengthComposition Get(double interval, double min, double max, Func<Interval, int> counter, string name)
+        {
+            if (max < min)
+                throw new AgeArgumentException("Wrong length limits");
+
+            LengthComposition result = new LengthComposition(name,
+                min, max, interval);
+
+            foreach (SizeClass group in result)
+            {
+                group.Quantity = counter.Invoke(group.Size);
+            }
+
+            return result;
+        }
     }
 
     public class SizeClass : Category

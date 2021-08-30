@@ -35,6 +35,8 @@ namespace Mayfly.Mathematics.Statistics
             protected set { type = value; }
         }
 
+        public double ResidualStandardError { get; internal set; }
+
         //public ResidualsResult fit;
         //public ResidualsResult Fit {
         //    get { return fit; }
@@ -49,48 +51,11 @@ namespace Mayfly.Mathematics.Statistics
             }
         }
 
-        public BivariateSample Outliers;
-
         internal REngine engine;
 
         internal SymbolicExpression fit;
 
         public List<double> Parameters;
-
-        public double RSquared { get; internal set; }
-
-        public string DeterminationStrength
-        {
-            get
-            {
-                double r = RSquared;
-
-                if (r < 0.1)
-                {
-                    return Resources.Chaddock.Strength0;
-                }
-                else if (r < 0.3)
-                {
-                    return Resources.Chaddock.Strength1;
-                }
-                else if (r < 0.5)
-                {
-                    return Resources.Chaddock.Strength2;
-                }
-                else if (r < 0.7)
-                {
-                    return Resources.Chaddock.Strength3;
-                }
-                else if (r < 0.9)
-                {
-                    return Resources.Chaddock.Strength4;
-                }
-                else
-                {
-                    return Resources.Chaddock.Strength5;
-                }
-            }
-        }
 
 
 
@@ -130,8 +95,17 @@ namespace Mayfly.Mathematics.Statistics
         public abstract string GetEquation(string y, string x, string format);
 
 
-        
-        public abstract double Predict(double x);
+
+        public virtual double Predict(double x) 
+        { 
+            if (fit == null) return double.NaN;
+
+            var xvalues = engine.CreateNumeric(x);
+            engine.SetSymbol("new.x", xvalues);
+
+            engine.SetSymbol("fit", fit);
+            return engine.Evaluate("predict(fit, data.frame(xvalues = new.x)").AsNumeric()[0];        
+        }
 
         public abstract double PredictInversed(double y);
 
@@ -151,56 +125,74 @@ namespace Mayfly.Mathematics.Statistics
         //    return Estimate(i).Value;
         //}
 
-        internal virtual Interval[] getInterval(double[] x, double level, IntervalType type)
+        internal virtual Interval[] GetBands(double[] x, double level, IntervalType type)
         {
-            var xvalues = engine.CreateNumericVector(x);
-            engine.SetSymbol("axis", xvalues);
+            if (fit == null) return null;
 
-            var alpha = engine.CreateNumeric(level);
-            engine.SetSymbol("alpha", alpha);
-
-            engine.SetSymbol("fit", fit);
-            NumericMatrix predictions = engine.Evaluate(
-                "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
             List<Interval> result = new List<Interval>();
-            for (int i = 0; i < predictions.RowCount; i++)
+
+            try
             {
-                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+                var xvalues = engine.CreateNumericVector(x);
+                engine.SetSymbol("axis", xvalues);
+
+                var alpha = engine.CreateNumeric(level);
+                engine.SetSymbol("alpha", alpha);
+
+                engine.SetSymbol("fit", fit);
+                NumericMatrix predictions = engine.Evaluate(
+                    "predict(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+                for (int i = 0; i < predictions.RowCount; i++)
+                {
+                    result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+                }
             }
+            catch { }
+
             return result.ToArray();
         }
 
-        public Interval[] GetInterval(double[] x, double level, IntervalType type)
+        public BivariateSample GetOutliers(BivariateSample data, double level)
         {
-            Interval[] result = getInterval(x, level, type);
+            double d = (data.X.Maximum - data.X.Minimum) / 100;
 
-            if (type == IntervalType.Prediction)
+            if (d == 0) d = .1;
+
+            List<double> xvalues = new List<double>();
+            for (double x = data.X.Minimum - d; x <= data.X.Maximum + d; x += d)
             {
-                Outliers = new BivariateSample();
+                xvalues.Add(x);
+            }
 
+            Interval[] bands = GetBands(xvalues.ToArray(), level, IntervalType.Prediction);
+
+            BivariateSample result = new BivariateSample();
+
+            if (bands != null)
+            {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    double _x = data.X.ElementAt(i);
-                    double _y = data.Y.ElementAt(i);
+                    double x = data.X.ElementAt(i);
+                    double y = data.Y.ElementAt(i);
 
-                    for (int j = 0; j < x.Length - 1; j++)
+                    for (int j = 0; j < xvalues.Count - 1; j++)
                     {
-                        if (x[j] <= _x && x[j + 1] > _x)
+                        if (Interval.FromEndpoints(xvalues[j], xvalues[j + 1]).OpenContains(x))
                         {
-                            double xgap = x[j + 1] - x[j];
-                            double xtrack = _x - x[j];
+                            double xgap = xvalues[j + 1] - xvalues[j];
+                            double xtrack = x - xvalues[j];
 
-                            double ygap = result[j + 1].RightEndpoint - result[j].RightEndpoint;
+                            double ygap = bands[j + 1].RightEndpoint - bands[j].RightEndpoint;
                             double ytrack = ygap * (xtrack / xgap);
-                            double upperband = result[j].RightEndpoint + ytrack;
+                            double upperband = bands[j].RightEndpoint + ytrack;
 
-                            ygap = result[j + 1].LeftEndpoint - result[j].LeftEndpoint;
+                            ygap = bands[j + 1].LeftEndpoint - bands[j].LeftEndpoint;
                             ytrack = ygap * (xtrack / xgap);
-                            double lowerband = result[j].LeftEndpoint + ytrack;
+                            double lowerband = bands[j].LeftEndpoint + ytrack;
 
-                            if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(_y))
+                            if (!Interval.FromEndpoints(lowerband, upperband).OpenContains(y))
                             {
-                                Outliers.Add(_x, _y);
+                                result.Add(x, y);
                             }
                             break;
                         }
@@ -214,13 +206,7 @@ namespace Mayfly.Mathematics.Statistics
 
         public BivariateSample GetOutliers(double level)
         {
-            List<double> x = new List<double>();
-            for (double v = Data.X.Minimum; v <= Data.X.Maximum; v += ((Data.X.Maximum - Data.X.Minimum) / 500))
-            {
-                x.Add(v);
-            }
-            GetInterval(x.ToArray(), level, IntervalType.Prediction);
-            return Outliers;
+            return GetOutliers(Data, level);
         }
 
 
@@ -265,7 +251,7 @@ namespace Mayfly.Mathematics.Statistics
 
         public static Regression GetRegression(BivariateSample data, TrendType type)
         {
-            if (data.Count < UserSettings.StrongSampleSize) return null;
+            if (data.Count < UserSettings.RequiredSampleSize) return null;
 
             Regression result = new Linear(data);
 
@@ -273,10 +259,31 @@ namespace Mayfly.Mathematics.Statistics
             {
                 switch (type)
                 {
-                    //case TrendType.Auto:
-                    //case TrendType.Linear:
-                    //    result = Linear(data);
-                    //    break;
+                    case TrendType.Auto:
+                        TrendType best = TrendType.None;
+                        double error = data.Y.Maximum;
+
+                        foreach (TrendType t in new TrendType[] { TrendType.Linear, 
+                            TrendType.Exponential, TrendType.Power, TrendType.Logarithmic,
+                            TrendType.Quadratic, TrendType.Cubic, 
+                            TrendType.Growth, TrendType.Logistic })
+                        {
+                            Regression r = GetRegression(data, t);
+
+                            if (r == null) continue;
+
+                            if (r.ResidualStandardError < error)
+                            {
+                                error = r.ResidualStandardError;
+                                best = t;
+                            }
+                        }
+
+                        return GetRegression(data, best);
+
+                    case TrendType.Linear:
+                        result = new Linear(data);
+                        break;
 
                     case TrendType.Quadratic:
                         result = new Polynom(data, 2);

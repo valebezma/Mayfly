@@ -153,7 +153,7 @@ namespace Mayfly.Mathematics
                     numbersCount++;
                 }
 
-                if (numbersCount >= UserSettings.StrongSampleSize)
+                if (numbersCount >= UserSettings.RequiredSampleSize)
                 {
                     SelectionContainsEnoughNumbers = true;
                     break;
@@ -482,11 +482,11 @@ namespace Mayfly.Mathematics
             }
         }
 
-        //public void SaveToFile(string fileName)
+        //public void SaveToFile(string filename)
         //{
-        //    StreamWriter streamWriter = new StreamWriter(fileName, false, Encoding.Default);
+        //    StreamWriter streamWriter = new StreamWriter(filename, false, Encoding.Default);
 
-        //    switch (Path.GetExtension(fileName))
+        //    switch (Path.GetExtension(filename))
         //    {
         //        case ".csv":
         //            streamWriter.Write(sheet.SeparatedValues(';'));
@@ -522,7 +522,7 @@ namespace Mayfly.Mathematics
                 }
             }
 
-            if (data.Count >= UserSettings.StrongSampleSize)
+            if (data.Count >= UserSettings.RequiredSampleSize)
             {
                 Sample sample = new Sample(data)
                 {
@@ -550,14 +550,7 @@ namespace Mayfly.Mathematics
             {
                 Histogramma histogram = new Histogramma(sample.Name, sample, columnSelection.ValuesColumn.ValueType == typeof(DateTime));
 
-                if (histogram.Data.Count < UserSettings.StrongSampleSize)
-                {
-                    residuals.AddRange(histogram.Data);
-                    continue;
-                }
-
-                if (Form.ModifierKeys.HasFlag(Keys.Control) &&
-                    histogram.Data.Count < UserSettings.SoftSampleSize)
+                if (histogram.Data.Count < UserSettings.RequiredSampleSize)
                 {
                     residuals.AddRange(histogram.Data);
                     continue;
@@ -589,7 +582,7 @@ namespace Mayfly.Mathematics
                     chartForm.StatChart.AddSeries(histogram);
                 }
 
-                if (residuals.Count >= UserSettings.StrongSampleSize)
+                if (residuals.Count >= UserSettings.RequiredSampleSize)
                 {
                     Histogramma residualHistogram = new Histogramma(Resources.Interface.Others,
                         residuals, columnSelection.ValuesColumn.ValueType == typeof(DateTime));
@@ -641,10 +634,10 @@ namespace Mayfly.Mathematics
                         scatterplot.Properties.ShowExplained = 
                         (columnSelection.AutoTrend && variants.Count < 4);
 
-                    if (scatterplot.Calc.Data.Count < UserSettings.StrongSampleSize) continue;
+                    if (scatterplot.Calc.Data.Count < UserSettings.RequiredSampleSize) continue;
 
                     if (Form.ModifierKeys.HasFlag(Keys.Control) &&
-                        scatterplot.Calc.Data.Count < UserSettings.SoftSampleSize)
+                        scatterplot.Calc.Data.Count < UserSettings.RequiredSampleSize)
                     {
                         continue;
                     }
@@ -916,13 +909,11 @@ namespace Mayfly.Mathematics
         {
             if (OperatingSheet != null && OperatingSheet.Visible)
             {
-                Clipboard.SetText(OperatingSheet.SeparatedValues(Constants.Tab, Form.ModifierKeys.HasFlag(Keys.Shift),
-                    Form.ModifierKeys.HasFlag(Keys.Control), Form.ModifierKeys.HasFlag(Keys.Alt)));
+                Clipboard.SetText(OperatingSheet.SeparatedValues(Constants.Tab));
             }
             else
             {
-                Clipboard.SetText(Sheet.SeparatedValues(Constants.Tab, Form.ModifierKeys.HasFlag(Keys.Shift),
-                    Form.ModifierKeys.HasFlag(Keys.Control), Form.ModifierKeys.HasFlag(Keys.Alt)));
+                Clipboard.SetText(Sheet.SeparatedValues(Constants.Tab));
             }
         }
 

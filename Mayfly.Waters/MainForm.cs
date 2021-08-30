@@ -18,18 +18,18 @@ namespace Mayfly.Waters
     {
         #region Properties
 
-        private string fileName;
+        private string filename;
 
         public string FileName
         {
             set
             {
                 this.ResetText(value == null ? IO.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
-                fileName = value;
+                filename = value;
             }
             get
             {
-                return fileName;
+                return filename;
             }
         }
 
@@ -68,9 +68,9 @@ namespace Mayfly.Waters
             labelListCount.UpdateStatus(listViewWaters.Items.Count);
         }
 
-        public MainForm(string fileName) : this()
+        public MainForm(string filename) : this()
         {
-            Open(fileName);
+            Open(filename);
         }
 
 
@@ -99,20 +99,20 @@ namespace Mayfly.Waters
             return DialogResult.No;
         }
 
-        private void Save(string fileName)
+        private void Save(string filename)
         {
-            Data.SaveToFile(fileName);
-            FileName = fileName;
+            Data.SaveToFile(filename);
+            FileName = filename;
             status1.Message(Resources.Messages.Saved);
             IsChanged = false;
         }
 
-        private void Open(string fileName)
+        private void Open(string filename)
         {
             Data = new WatersKey();
-            Data.ReadXml(fileName);
+            Data.ReadXml(filename);
 
-            FileName = fileName;
+            FileName = filename;
 
             labelTreeCount.UpdateStatus(Data.Water.Count);
             waterTree1.FillTree(Data);

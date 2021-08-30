@@ -78,7 +78,7 @@ namespace Mayfly.Benthos.Explorer
             columnIndInstar.ValueType = typeof(int);
             columnIndComments.ValueType = typeof(string);
 
-            data.InitializeBio();
+            data.RefreshBios();
             //data.WeightModels.VisualConfirmation =
             //    UserSettings.VisualConfirmation;
 
@@ -117,7 +117,6 @@ namespace Mayfly.Benthos.Explorer
         public MainForm(Data _data) : this()
         {
             data = _data;
-            data.InitializeBio();
             data.RefreshBios();
         }
         
@@ -181,19 +180,19 @@ namespace Mayfly.Benthos.Explorer
                 {
                     processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                    //if (data.IsBioLoaded)
-                    //{
-                    //    TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                    if (data.IsBioLoaded)
+                    {
+                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                    //    if (tdb != tdbSpecCancel)
-                    //    {
-                    //        data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    data.ImportBio(filenames[i]);
-                    //}
+                        if (tdb != tdbSpecCancel)
+                        {
+                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                        }
+                    }
+                    else
+                    {
+                        data.ImportBio(filenames[i]);
+                    }
 
                     //data.RefreshBios();
 
@@ -208,15 +207,8 @@ namespace Mayfly.Benthos.Explorer
                     if (_data.Read(filenames[i]))
                     {
                         if (_data.Card.Count == 0)
-                            Log.Write(string.Format("File is empty: {0}.", filenames[i]));
-                        else
                         {
-                            foreach (Data.CardRow cardRow in _data.Card)
-                            {
-                                cardRow.SamplerPresentation = cardRow.IsSamplerNull() ? Constants.Null : cardRow.GetSamplerRow().Sampler;
-                            }
-
-                            //Data.CardRow[] cardRows = _data.CopyTo(data);
+                            Log.Write(string.Format("File is empty: {0}.", filenames[i]));
                         }
                     }
                 }
@@ -322,8 +314,8 @@ namespace Mayfly.Benthos.Explorer
             {
                 foreach (Data.CardRow cardRow in data.Card)
                 {
+                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, cardRow.GetSuggestedName());
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
             }
@@ -553,7 +545,7 @@ namespace Mayfly.Benthos.Explorer
 
             foreach (Artefact artefact in (Artefact[])e.Result)
             {
-                count += artefact.GetFacts();
+                count += artefact.FactsCount;
             }
 
             labelArtefacts.Visible = pictureBoxArtefacts.Visible = count > 0;
@@ -1142,7 +1134,14 @@ namespace Mayfly.Benthos.Explorer
 
                 gridRow.CreateCells(spreadSheetSpc);
 
-                gridRow.Cells[columnSpcSpc.Index].Value = composition[i].Name;
+                if (composition is TaxaComposition tc)
+                {
+                    gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
+                }
+                else if (composition is SpeciesComposition sc)
+                {
+                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
+                }
 
                 gridRow.Cells[columnSpcQuantity.Index].Value = composition[i].Quantity;
                 gridRow.Cells[columnSpcMass.Index].Value = composition[i].Mass;
@@ -1469,7 +1468,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (Wild.UserSettings.InterfaceBio.SaveDialog.ShowDialog(this) == DialogResult.OK)
             {
-                data.GetBio().ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
+                data.GetBenthosBio().ExportBio(Wild.UserSettings.InterfaceBio.SaveDialog.FileName);
             }
         }
     }

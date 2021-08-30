@@ -160,7 +160,7 @@
     <value>Доверительный интервал тренда {0}</value>
   </data>
   <data name="TrendLineTitle" xml:space="preserve">
-    <value>Тренд {0}</value>
+    <value>Линия тренда {0}</value>
   </data>
   <data name="DataConfidenceBands" xml:space="preserve">
     <value>Границы достоверности данных {0}</value>
@@ -221,5 +221,14 @@
   </data>
   <data name="SemipivotProgress" xml:space="preserve">
     <value>Группировка данных</value>
+  </data>
+  <data name="ConfidenceBands" xml:space="preserve">
+    <value>{0} доверительный интервал модели {1}</value>
+  </data>
+  <data name="Outliers" xml:space="preserve">
+    <value>Выбросы {0} интервала {1}</value>
+  </data>
+  <data name="PredictionBands" xml:space="preserve">
+    <value>{0} доверительный интервал данных {1}</value>
   </data>
 </root>

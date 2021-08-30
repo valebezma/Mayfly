@@ -181,7 +181,7 @@
     <value>pageStart</value>
   </data>
   <data name="&gt;&gt;pageStart.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="spreadSheetSigns.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -213,6 +213,9 @@
   <data name="spreadSheetSigns.Size" type="System.Drawing.Size, System.Drawing">
     <value>540, 277</value>
   </data>
+  <data name="spreadSheetSigns.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetSigns.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -220,13 +223,16 @@
     <value>spreadSheetSigns</value>
   </data>
   <data name="&gt;&gt;spreadSheetSigns.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetSigns.Parent" xml:space="preserve">
     <value>pageSigns</value>
   </data>
   <data name="&gt;&gt;spreadSheetSigns.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -268,7 +274,40 @@
     <value>pageSigns</value>
   </data>
   <data name="&gt;&gt;pageSigns.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="labelWait.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="labelWait.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelWait.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 155</value>
+  </data>
+  <data name="labelWait.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 76</value>
+  </data>
+  <data name="labelWait.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelWait.Text" xml:space="preserve">
+    <value>Calculating...</value>
+  </data>
+  <data name="labelWait.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelWait.Name" xml:space="preserve">
+    <value>labelWait</value>
+  </data>
+  <data name="&gt;&gt;labelWait.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWait.Parent" xml:space="preserve">
+    <value>pageGrowth</value>
+  </data>
+  <data name="&gt;&gt;labelWait.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelNoDataGrowth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -304,7 +343,7 @@
     <value>pageGrowth</value>
   </data>
   <data name="&gt;&gt;labelNoDataGrowth.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="spreadSheetGrowth.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -322,22 +361,22 @@
     <value>True</value>
   </metadata>
   <data name="ColumnGrowthN.HeaderText" xml:space="preserve">
-    <value>N</value>
+    <value>n</value>
   </data>
-  <metadata name="ColumnGrowthR2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ColumnGrowthRSE.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnGrowthR2.HeaderText" xml:space="preserve">
-    <value>R²</value>
+  <data name="ColumnGrowthRSE.HeaderText" xml:space="preserve">
+    <value>RSE</value>
   </data>
-  <data name="ColumnGrowthR2.Width" type="System.Int32, mscorlib">
+  <data name="ColumnGrowthRSE.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
   <metadata name="ColumnGrowthL.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ColumnGrowthL.HeaderText" xml:space="preserve">
-    <value>L</value>
+    <value>Linf</value>
   </data>
   <data name="ColumnGrowthL.Width" type="System.Int32, mscorlib">
     <value>75</value>
@@ -370,7 +409,7 @@
     <value>12</value>
   </data>
   <metadata name="contextGrowth.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>403, 17</value>
+    <value>225, 17</value>
   </metadata>
   <data name="contextGrowthChart.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 22</value>
@@ -390,6 +429,9 @@
   <data name="spreadSheetGrowth.Size" type="System.Drawing.Size, System.Drawing">
     <value>540, 277</value>
   </data>
+  <data name="spreadSheetGrowth.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetGrowth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -397,13 +439,16 @@
     <value>spreadSheetGrowth</value>
   </data>
   <data name="&gt;&gt;spreadSheetGrowth.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetGrowth.Parent" xml:space="preserve">
     <value>pageGrowth</value>
   </data>
   <data name="&gt;&gt;spreadSheetGrowth.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -430,7 +475,7 @@
     <value>pageGrowth</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="pageGrowth.Size" type="System.Drawing.Size, System.Drawing">
     <value>567, 357</value>
@@ -445,7 +490,7 @@
     <value>pageGrowth</value>
   </data>
   <data name="&gt;&gt;pageGrowth.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="labelNoDataWeight.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -499,13 +544,13 @@
     <value>True</value>
   </metadata>
   <data name="ColumnWeightN.HeaderText" xml:space="preserve">
-    <value>N</value>
+    <value>n</value>
   </data>
   <metadata name="ColumnWeightR2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ColumnWeightR2.HeaderText" xml:space="preserve">
-    <value>R²</value>
+    <value>r²</value>
   </data>
   <data name="ColumnWeightR2.Width" type="System.Int32, mscorlib">
     <value>75</value>
@@ -538,7 +583,7 @@
     <value>12</value>
   </data>
   <metadata name="contextWeight.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>535, 17</value>
+    <value>357, 17</value>
   </metadata>
   <data name="contextWeightChart.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 22</value>
@@ -558,6 +603,9 @@
   <data name="spreadSheetWeight.Size" type="System.Drawing.Size, System.Drawing">
     <value>540, 277</value>
   </data>
+  <data name="spreadSheetWeight.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetWeight.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -565,13 +613,16 @@
     <value>spreadSheetWeight</value>
   </data>
   <data name="&gt;&gt;spreadSheetWeight.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetWeight.Parent" xml:space="preserve">
     <value>pageWeight</value>
   </data>
   <data name="&gt;&gt;spreadSheetWeight.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -613,7 +664,7 @@
     <value>pageWeight</value>
   </data>
   <data name="&gt;&gt;pageWeight.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -661,7 +712,7 @@
     <value>3, 3, 3, 10</value>
   </data>
   <data name="checkBoxReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 19</value>
+    <value>197, 19</value>
   </data>
   <data name="checkBoxReport.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -694,7 +745,7 @@
     <value>pageReport</value>
   </data>
   <data name="&gt;&gt;pageReport.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="wizardExplorer.Size" type="System.Drawing.Size, System.Drawing">
     <value>614, 511</value>
@@ -709,7 +760,7 @@
     <value>wizardExplorer</value>
   </data>
   <data name="&gt;&gt;wizardExplorer.Type" xml:space="preserve">
-    <value>AeroWizard.WizardControl, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="&gt;&gt;wizardExplorer.Parent" xml:space="preserve">
     <value>$this</value>
@@ -717,14 +768,11 @@
   <data name="&gt;&gt;wizardExplorer.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="modelCalculator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="calcGrowth.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="reporter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>158, 17</value>
-  </metadata>
-  <metadata name="backSpecExporter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>254, 17</value>
+    <value>129, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -768,10 +816,10 @@
   <data name="&gt;&gt;ColumnGrowthN.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnGrowthR2.Name" xml:space="preserve">
-    <value>ColumnGrowthR2</value>
+  <data name="&gt;&gt;ColumnGrowthRSE.Name" xml:space="preserve">
+    <value>ColumnGrowthRSE</value>
   </data>
-  <data name="&gt;&gt;ColumnGrowthR2.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnGrowthRSE.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnGrowthL.Name" xml:space="preserve">
@@ -834,10 +882,10 @@
   <data name="&gt;&gt;contextWeightChart.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;modelCalculator.Name" xml:space="preserve">
-    <value>modelCalculator</value>
+  <data name="&gt;&gt;calcGrowth.Name" xml:space="preserve">
+    <value>calcGrowth</value>
   </data>
-  <data name="&gt;&gt;modelCalculator.Type" xml:space="preserve">
+  <data name="&gt;&gt;calcGrowth.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;reporter.Name" xml:space="preserve">
@@ -846,14 +894,8 @@
   <data name="&gt;&gt;reporter.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;backSpecExporter.Name" xml:space="preserve">
-    <value>backSpecExporter</value>
-  </data>
-  <data name="&gt;&gt;backSpecExporter.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>WizardExport2</value>
+    <value>WizardExportBio</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

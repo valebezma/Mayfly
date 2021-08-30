@@ -5,6 +5,8 @@ using Mayfly.Wild;
 using Mayfly.Mathematics.Statistics;
 using System.Drawing;
 using Mayfly.Extensions;
+using Meta.Numerics.Statistics;
+using System;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -14,6 +16,9 @@ namespace Mayfly.Fish.Explorer
 
         FishSamplerType selectedTechSamplerType;
 
+        System.Windows.Forms.DataVisualization.Charting.Series sufficientLine;
+
+        Histogramma histBio;
         Histogramma histSample;
         Histogramma histWeighted;
         Histogramma histRegistered;
@@ -22,10 +27,12 @@ namespace Mayfly.Fish.Explorer
         DataQualificationWay selectedQualificationWay;
 
         ContinuousBio model;
+        BivariateSample outliersData;
 
         Scatterplot ext;
         Scatterplot inter;
         Scatterplot combi;
+        Scatterplot outliers;
 
         private void GetFilteredList(DataGridViewColumn gridColumn)
         {
@@ -41,7 +48,7 @@ namespace Mayfly.Fish.Explorer
                     menuItemIndAll_Click);
             }
         }
-        
+
 
 
         private void ClearSpcStats()
@@ -130,7 +137,7 @@ namespace Mayfly.Fish.Explorer
                         if (logRow == null) continue;
 
                         if (!logRow.IsQuantityNull() && !logRow.IsMassNull()) totals++;
-                        if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity; 
+                        if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity;
 
                         stratified = logRow.QuantityStratified;
                         individuals = logRow.QuantityIndividuals;
@@ -142,7 +149,7 @@ namespace Mayfly.Fish.Explorer
 
                     if (stratified > 0) { strats++; }
                     if (individuals > 0) { logged++; }
-                    
+
                     strats_q += stratified;
                     logged_q += individuals;
                 }
@@ -158,21 +165,29 @@ namespace Mayfly.Fish.Explorer
 
         private void initializeSpeciesStatsPlot()
         {
-            //plotQualify.Remove(Resources.Interface.Interface.StratesSampled, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesWeighted, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesRegistered, false);
-            //plotQualify.Remove(Resources.Interface.Interface.StratesAged, false);
+            plotQualify.Series.Clear();
+
+            sufficientLine = new System.Windows.Forms.DataVisualization.Charting.Series(Resources.Interface.EnoughStamp)
+            {
+                Color = Mathematics.UserSettings.ColorSelected,
+                ChartType = SeriesChartType.Line,
+                BorderDashStyle = ChartDashStyle.Dash
+            };
+            sufficientLine.Points.AddXY(0, UserSettings.RequiredClassSize);
+            sufficientLine.Points.AddXY(1, UserSettings.RequiredClassSize);
+            plotQualify.Series.Add(sufficientLine);
 
             plotQualify.AxisXInterval = Fish.UserSettings.DefaultStratifiedInterval;
 
-            histSample = new Histogramma(Resources.Interface.Interface.StratesSampled);
-            histWeighted = new Histogramma(Resources.Interface.Interface.StratesWeighted);
-            histRegistered = new Histogramma(Resources.Interface.Interface.StratesRegistered);
-            histAged = new Histogramma(Resources.Interface.Interface.StratesAged);
+            histBio = new Histogramma(Resources.Interface.StratesBio);
+            histSample = new Histogramma(Resources.Interface.StratesSampled);
+            histWeighted = new Histogramma(Resources.Interface.StratesWeighted);
+            histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
+            histAged = new Histogramma(Resources.Interface.StratesAged);
 
             Color startColor = Color.FromArgb(150, Color.Lavender);
 
-            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
                 hist.Properties.Borders = false;
                 hist.Properties.DataPointColor = startColor;
@@ -180,34 +195,74 @@ namespace Mayfly.Fish.Explorer
                 startColor = startColor.Darker();
             }
 
-            foreach (Histogramma hist in new Histogramma[] { histSample, histWeighted, histRegistered, histAged })
+            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
                 plotQualify.AddSeries(hist);
                 //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
 
-            //plotQualify.Remove("Bio", false);
-            //plotQualify.Remove("Own data", false);
-            //plotQualify.Remove("Model", false);
-
-            ext = new Scatterplot("Bio");
+            ext = new Scatterplot(Resources.Interface.QualBio);
             ext.Properties.DataPointColor = Constants.InfantColor;
             plotQualify.AddSeries(ext);
 
-            inter = new Scatterplot("Own data");
-            inter.Properties.DataPointColor = Constants.MainAccent;
+            inter = new Scatterplot(Resources.Interface.QualOwn);
+            inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
             plotQualify.AddSeries(inter);
             inter.Updated += inter_Updated;
 
-            combi = new Scatterplot("Model");
+            combi = new Scatterplot(Resources.Interface.QualCombi);
             combi.Properties.ShowTrend = true;
             combi.Properties.ConfidenceLevel = .99999;
             combi.Properties.ShowPredictionBands = true;
             combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
             combi.Properties.DataPointColor = Color.Transparent;
-            combi.Properties.TrendColor = Constants.MainAccent;
+            combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
             plotQualify.AddSeries(combi);
             combi.Updated += combi_Updated;
+
+            //plotQualify.Remove(Resources.Interface.StratesSampled, false);
+            //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
+            //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
+            //plotQualify.Remove(Resources.Interface.StratesAged, false);
+
+            //plotQualify.Remove(ext);
+            //plotQualify.Remove(inter);
+            //plotQualify.Remove(combi);
+        }
+
+        private void resetQualPlotAxes(double from, double to, double top)
+        {
+            if (!plotQualify.AxisXAutoMinimum)
+            {
+                plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(from, to);
+            }
+
+            if (!plotQualify.AxisXAutoMaximum)
+            {
+                plotQualify.AxisXMax = Mayfly.Service.AdjustRight(from, to);
+            }
+
+            if (!plotQualify.AxisYAutoMaximum)
+            {
+                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize, top));
+            }
+
+            sufficientLine.Points[0].XValue = plotQualify.AxisXMin;
+            sufficientLine.Points[1].XValue = plotQualify.AxisXMax;
+
+            //LengthComposition lc = AllowedStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return AllowedStack.Quantity(s, i); }, string.Empty);
+            //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
+            //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+            //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
+        }
+
+        private void resetQualPlotAxes()
+        {
+            resetQualPlotAxes(
+                Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                AllowedStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
+        
         }
 
         private void inter_Updated(object sender, ScatterplotEventArgs e)
@@ -217,7 +272,12 @@ namespace Mayfly.Fish.Explorer
 
         private void combi_Updated(object sender, ScatterplotEventArgs e)
         {
-            checkBoxQualOutliers.Checked = combi.Properties.HighlightOutliers;
+            outliersData = (combi.Calc != null && combi.Calc.IsRegressionOK) ? combi.Calc.Regression.GetOutliers(inter.Calc.Data, combi.Properties.ConfidenceLevel) : new BivariateSample();
+
+            checkBoxQualOutliers.Enabled = buttonQualOutliers.Enabled =
+                outliersData.Count > 0;
+
+            checkBoxQualOutliers_CheckedChanged(sender, e);
         }
     }
 

@@ -227,9 +227,9 @@ namespace Mayfly.Extensions
             return p;
         }
 
-        public static void ResetText(this Form form, string fileName, string applicationName)
+        public static void ResetText(this Form form, string filename, string applicationName)
         {
-            form.Text = String.Format("{0} — {1}", System.IO.Path.GetFileNameWithoutExtension(fileName), applicationName);
+            form.Text = String.Format("{0} — {1}", System.IO.Path.GetFileNameWithoutExtension(filename), applicationName);
         }
 
         public static string GetLocalizedText(this Control ctrl)

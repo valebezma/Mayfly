@@ -276,6 +276,15 @@
   <metadata name="contextMenuStripInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 17</value>
   </metadata>
+  <data name="contextMenuStripInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 186</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripInd.Name" xml:space="preserve">
+    <value>contextMenuStripInd</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ToolStripMenuItemInd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -291,6 +300,12 @@
   <data name="ToolStripMenuItemTrophics.Text" xml:space="preserve">
     <value>Trophics</value>
   </data>
+  <data name="contextItemRedefine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="contextItemRedefine.Text" xml:space="preserve">
+    <value>Redefine as</value>
+  </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 6</value>
   </data>
@@ -299,12 +314,6 @@
   </data>
   <data name="contextRedefineAll.Text" xml:space="preserve">
     <value>All species</value>
-  </data>
-  <data name="contextItemRedefine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
-  </data>
-  <data name="contextItemRedefine.Text" xml:space="preserve">
-    <value>Redefine as</value>
   </data>
   <data name="ToolStripMenuItemIndPrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 22</value>
@@ -420,15 +429,6 @@
   <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="contextMenuStripInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 186</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripInd.Name" xml:space="preserve">
-    <value>contextMenuStripInd</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripInd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="buttonAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -462,6 +462,15 @@
   <metadata name="contextMenuStripAdd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 170</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdd.Name" xml:space="preserve">
+    <value>contextMenuStripAdd</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="contextNewVar.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
@@ -517,17 +526,22 @@
   <data name="contextStratified.Text" xml:space="preserve">
     <value>Stratified sample</value>
   </data>
-  <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 170</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripAdd.Name" xml:space="preserve">
-    <value>contextMenuStripAdd</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="pictureBoxWarningMass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
+  </data>
+  <data name="pictureBoxWarningMass.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlE
+        QVQ4T52RTS8DURSGm0isJJKqIhVSob5FsGl8bkSREJb1B3Rp5x/Y+AP+gSL2YuGjFK1GEG2qEaIl1NdM
+        Z6alXbzuuWNGW7OyeHLvPec973knYwJgSGDV4mS8/OA00hCGRYINRa+27Ljxd4DuRhrCsMgGXAyID6NQ
+        XicR9FaSictI+6fAhCW0MbzdiJwyy9FSUK9YX/AgmMgd8FogPbl0g/SbnsJdrC94MEEpbYruOJBLz7Gu
+        iaOm6NRSlObPFBt4aJOcHEdOntENsqlppJMuLYUnfyZ/uIw2xPZbkZOmkRWnfg0+Jji3/nYtRZmRwWJw
+        zco2jSErTOLrfVw3+EqOcpSHEZCGtAUGrGAmZ9rw+TiMTGIImfggFuZrOZn7fpX4AO6O2rQU5nyDpdBG
+        FeRYH5RoN5RIJ+RwB0eJdKk1ItYD6bpXS7HEDdjFRo4JvwPSuQOpkB2pYD1SgTr9E6RQA+/JF82QL1sQ
+        P2zSUtjIYOVss5oNNkA8tkE8rIZ4YIXgs+oGor+G98iUEE/tCK3zFCtkEH0+aeIiYb8Swl4FhF2zeupY
+        1J6PsLIFVUj47DwFGRx5l8vxH2hW/43/A6ZvlRapM1wurqMAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="pictureBoxWarningMass.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -561,6 +575,20 @@
   </data>
   <data name="pictureBoxWarningQuantity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
+  </data>
+  <data name="pictureBoxWarningQuantity.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAABwUlE
+        QVQ4T52RTS8DURSGm0isJJKqIhVSob5FsGl8bkSREJb1B3Rp5x/Y+AP+gSL2YuGjFK1GEG2qEaIl1NdM
+        Z6alXbzuuWNGW7OyeHLvPec973knYwJgSGDV4mS8/OA00hCGRYINRa+27Ljxd4DuRhrCsMgGXAyID6NQ
+        XicR9FaSictI+6fAhCW0MbzdiJwyy9FSUK9YX/AgmMgd8FogPbl0g/SbnsJdrC94MEEpbYruOJBLz7Gu
+        iaOm6NRSlObPFBt4aJOcHEdOntENsqlppJMuLYUnfyZ/uIw2xPZbkZOmkRWnfg0+Jji3/nYtRZmRwWJw
+        zco2jSErTOLrfVw3+EqOcpSHEZCGtAUGrGAmZ9rw+TiMTGIImfggFuZrOZn7fpX4AO6O2rQU5nyDpdBG
+        FeRYH5RoN5RIJ+RwB0eJdKk1ItYD6bpXS7HEDdjFRo4JvwPSuQOpkB2pYD1SgTr9E6RQA+/JF82QL1sQ
+        P2zSUtjIYOVss5oNNkA8tkE8rIZ4YIXgs+oGor+G98iUEE/tCK3zFCtkEH0+aeIiYb8Swl4FhF2zeupY
+        1J6PsLIFVUj47DwFGRx5l8vxH2hW/43/A6ZvlRapM1wurqMAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="pictureBoxWarningQuantity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -691,6 +719,20 @@
   <data name="buttonBlank.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="buttonBlank.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHbSURBVDhPlZDdS1pxGMf9p2YsAm96sVG7GMUCe7HN
+        i8LYAovdONqu28Uo6CLqZqyNGBhbF5o5kTLL6XZKjWo5tHeLOfIlT2r57ff8zlFPVLIOfM/zxuf7PPxU
+        ALi6X77VMEGhuuKskkqJDGnkvIbq4qySSgkBnsBuSVR/W9iExRnC9JyAj7Ne0rASJnGQEjlyUBmL38QX
+        F6of9+CzVRhh5f0NxqbmYfdsoLZtgC55x1qSga7XTHNVZ98QRehfvOFRaXBZkAxq20xo0puhfmSgtmTw
+        RG/iRcuzQXh/hdBqeEU1OoyveSwwOJcvIC1eILB9gpXg3k0DdZ1O+37Sgub2fri9q7B9X4L2qRFi9hLJ
+        zAX+JvM4jOcQjZ3DvXaAB43PywYMVqvrdRj/ZKMmfMI6qhrasf47yuE4h7OIHp9ja0/EwurRdQP6MRMN
+        QdWNXXio7YTHFyxv/ifD+yKCkTM4105vGpC+OvzUhJgrKM7OIsLO5nD0DD+303AG0rcbzNh/gL2XBCdk
+        WLGZ4JXNFDNI3m4w+sHKX7y4WTo7I29OYXkjBXcoCYcQr2zAX1ux2U+bGbzIYFcgAbs/VtnAHwzDF9qB
+        W4jA6QvDvhyGzUP6A6usOw1o8L+SOKiuAJXqCB432BYeAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="buttonBlank.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -721,6 +763,15 @@
   <metadata name="contextMenuStripVar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>354, 17</value>
   </metadata>
+  <data name="contextMenuStripVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 54</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripVar.Name" xml:space="preserve">
+    <value>contextMenuStripVar</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripVar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ToolStripMenuItemClearColumn.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
@@ -735,15 +786,6 @@
   </data>
   <data name="ToolStripMenuItemSaveVars.Text" xml:space="preserve">
     <value>Remember variables set</value>
-  </data>
-  <data name="contextMenuStripVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 54</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripVar.Name" xml:space="preserve">
-    <value>contextMenuStripVar</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripVar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="stratifiedSample.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -812,7 +854,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>Sample #</value>
+    <value>Tally</value>
   </data>
   <data name="ColumnRegID.Width" type="System.Int32, mscorlib">
     <value>75</value>
@@ -908,7 +950,7 @@
     <value>spreadSheetLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
     <value>$this</value>
@@ -919,12 +961,6 @@
   <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>521, 17</value>
   </metadata>
-  <data name="tdbSaveAllIndividuals.Text" xml:space="preserve">
-    <value>Save all</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Discard</value>
-  </data>
   <data name="taskDialogSave.Content" xml:space="preserve">
     <value>There are some unsaved individuals. Do you want to save them?</value>
   </data>
@@ -933,6 +969,12 @@
   </data>
   <data name="taskDialogSave.WindowTitle" xml:space="preserve">
     <value>Fish Reader</value>
+  </data>
+  <data name="tdbSaveAllIndividuals.Text" xml:space="preserve">
+    <value>Save all</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Discard</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -953,7 +995,7 @@
     <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Individuals Log</value>
+    <value>{0} Individuals Log</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItemInd.Name" xml:space="preserve">
     <value>ToolStripMenuItemInd</value>
@@ -1181,25 +1223,25 @@
     <value>taskDialogSave</value>
   </data>
   <data name="&gt;&gt;taskDialogSave.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSaveAllIndividuals.Name" xml:space="preserve">
     <value>tdbSaveAllIndividuals</value>
   </data>
   <data name="&gt;&gt;tdbSaveAllIndividuals.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
     <value>tdbDiscard</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
     <value>tdbCancelClose</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Individuals</value>

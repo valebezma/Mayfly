@@ -22,6 +22,8 @@ namespace Mayfly.Wild
 
         public TrendType Nature { get; set; }
 
+        //public BivariateSample Outliers;
+
         internal string displayNameX;
 
         internal string displayNameY;
@@ -57,12 +59,22 @@ namespace Mayfly.Wild
             VisualConfirmation = true;
             Nature = type;
             nameX = xColumn.Caption;
+            //Outliers = new BivariateSample();
 
             RefreshInternal();
-            RefreshCombined();
         }
 
 
+
+        public void RefreshCombined()
+        {
+            BivariateSample sample = new BivariateSample();
+            if (InternalData != null) sample.Add(InternalData.Data);
+            if (ExternalData != null) sample.Add(ExternalData.Data);
+
+            CombinedData = new BivariatePredictiveModel(sample, Nature);
+            //if (CombinedData.IsRegressionOK) Outliers = CombinedData.Regression.GetOutliers(InternalData.Data, .99999);
+        }
 
         public override void RefreshInternal()
         {
@@ -83,9 +95,11 @@ namespace Mayfly.Wild
             biSample.Y.Name = DisplayNameY;
 
             InternalData = new BivariatePredictiveModel(biSample, Nature);
+
+            RefreshCombined();
         }
 
-        public void Involve(ContinuousBio bio)
+        public void Involve(ContinuousBio bio, bool clearExisted)
         {
             if (bio == null) return;
 
@@ -95,8 +109,20 @@ namespace Mayfly.Wild
             }
             else
             {
+                if (clearExisted)
+                {
+                    ExternalData.Data.Clear();
+                }
+
                 ExternalData.Data.Add(bio.InternalData.Data);
                 ExternalData.Calculate();
+            }
+
+            if (clearExisted)
+            {
+                Authors.Clear();
+                Dates.Clear();
+                Places.Clear();
             }
 
             foreach (string author in bio.Authors)
@@ -126,25 +152,23 @@ namespace Mayfly.Wild
             RefreshCombined();
         }
 
-        public void RefreshCombined()
-        {
-            BivariateSample sample = new BivariateSample();
-            if (InternalData != null) sample.Add(InternalData.Data);
-            if (ExternalData != null) sample.Add(ExternalData.Data);
-
-            CombinedData = new BivariatePredictiveModel(sample, Nature);
-        }
-
-        public override void Involve(Bio bio)
+        public override void Involve(Bio bio, bool clearExisted)
         {
             if (bio is ContinuousBio)
             {
-                Involve((ContinuousBio)bio);
+                Involve((ContinuousBio)bio, clearExisted);
             }
             else
             {
                 throw new InvalidCastException("ContinuousBio can involve only ContinuousBio");
             }
+        }
+
+        public void Reverse()
+        {
+            BivariatePredictiveModel t = ExternalData;
+            ExternalData = InternalData;
+            InternalData = t;
         }
 
         public double GetValue(double x, bool inversed)

@@ -80,7 +80,7 @@ namespace Mayfly.Software.Management
 
             foreach (Scheme.FileRow fileRow in SchemeData.File)
             {
-                AddFileItem(fileRow);
+                addFileItem(fileRow);
             }
 
             UpdateFilesStatus();
@@ -214,7 +214,7 @@ namespace Mayfly.Software.Management
 
         }
 
-        private ListViewItem AddFileItem(Scheme.FileRow fileRow)
+        private ListViewItem addFileItem(Scheme.FileRow fileRow)
         {
             ListViewItem li = listViewFiles.CreateItem(fileRow.ID.ToString(), fileRow.File);
 
@@ -406,7 +406,7 @@ namespace Mayfly.Software.Management
                 {
                     Scheme.FileRow fileRow = SchemeData.File.AddFileRow(Path.GetFileName(openFile.FileName), null, null);
 
-                    ListViewItem li = AddFileItem(fileRow);
+                    ListViewItem li = addFileItem(fileRow);
                     listViewFiles.Focus();
                     listViewFiles.SelectedItems.Clear();
                     li.Selected = true;

@@ -33,22 +33,29 @@ namespace Mayfly.Mathematics.Statistics
             return Predict(Parameters, x);
         }
 
-        internal override Interval[] getInterval(double[] x, double level, IntervalType type)
+        internal override Interval[] GetBands(double[] x, double level, IntervalType type)
         {
-            var xvalues = engine.CreateNumericVector(x);
-            engine.SetSymbol("axis", xvalues);
-
-            var alpha = engine.CreateNumeric(level);
-            engine.SetSymbol("alpha", alpha);
-
-            engine.Evaluate("require(investr)");
-            engine.SetSymbol("fit", fit);
-            NumericMatrix predictions = engine.Evaluate("predFit(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
             List<Interval> result = new List<Interval>();
-            for (int i = 0; i < predictions.RowCount; i++)
+
+            try
             {
-                result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+
+                var xvalues = engine.CreateNumericVector(x);
+                engine.SetSymbol("axis", xvalues);
+
+                var alpha = engine.CreateNumeric(level);
+                engine.SetSymbol("alpha", alpha);
+
+                engine.Evaluate("library(investr)");
+                engine.SetSymbol("fit", fit);
+                NumericMatrix predictions = engine.Evaluate("predFit(fit, data.frame(xvalues = axis), interval = '" + type.ToString().ToLower() + "', level = alpha)").AsNumericMatrix();
+                for (int i = 0; i < predictions.RowCount; i++)
+                {
+                    result.Add(Interval.FromEndpoints(predictions[i, 1], predictions[i, 2]));
+                }
             }
+            catch { }
+
             return result.ToArray();
         }
     }
@@ -77,6 +84,8 @@ namespace Mayfly.Mathematics.Statistics
             engine.SetSymbol("fit", fit);
             Parameters.Clear();
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
         }
 
         public override string GetEquation(string y, string x, string format)
@@ -128,6 +137,8 @@ namespace Mayfly.Mathematics.Statistics
             engine.SetSymbol("fit", fit);
             Parameters.Clear();
             Parameters.AddRange(engine.Evaluate("params = coef(fit)").AsNumeric());
+
+            ResidualStandardError = engine.Evaluate("summary(fit)$sigma").AsNumeric()[0];
         }
 
         public override string GetEquation(string y, string x, string format)

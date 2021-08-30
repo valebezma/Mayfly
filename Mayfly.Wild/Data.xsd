@@ -37,7 +37,7 @@
                           <xs:element name="Width" msdata:Caption="Diameter" msprop:Generator_ColumnVarNameInTable="columnWidth" msprop:Generator_ColumnPropNameInRow="Width" msprop:Generator_ColumnPropNameInTable="WidthColumn" msprop:Generator_UserColumnName="Width" type="xs:double" minOccurs="0" />
                           <xs:element name="Mass" msprop:Generator_ColumnVarNameInTable="columnMass" msprop:Generator_ColumnPropNameInRow="Mass" msprop:Generator_ColumnPropNameInTable="MassColumn" msprop:Generator_UserColumnName="Mass" type="xs:double" minOccurs="0" />
                           <xs:element name="SomaticMass" msprop:Generator_ColumnVarNameInTable="columnSomaticMass" msprop:Generator_ColumnPropNameInRow="SomaticMass" msprop:Generator_ColumnPropNameInTable="SomaticMassColumn" msprop:Generator_UserColumnName="SomaticMass" type="xs:double" minOccurs="0" />
-                          <xs:element name="RegID" msprop:Generator_ColumnVarNameInTable="columnRegID" msprop:Generator_ColumnPropNameInRow="RegID" msprop:Generator_ColumnPropNameInTable="RegIDColumn" msprop:Generator_UserColumnName="RegID" minOccurs="0">
+                          <xs:element name="Tally" msprop:Generator_ColumnVarNameInTable="columnRegID" msprop:Generator_ColumnPropNameInRow="Tally" msprop:Generator_ColumnPropNameInTable="RegIDColumn" msprop:Generator_UserColumnName="Tally" minOccurs="0">
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
                                 <xs:maxLength value="10" />

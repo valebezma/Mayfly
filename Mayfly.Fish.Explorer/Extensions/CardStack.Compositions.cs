@@ -140,18 +140,20 @@ namespace Mayfly.Fish.Explorer
             double interval, double min, double max, 
             Func<Data.SpeciesRow, Interval, int> counter, string name)
         {
-            if (max < min)
-                throw new AgeArgumentException("Wrong length limits");
+            return LengthComposition.Get(interval, min, max, (size) => { return counter.Invoke(speciesRow, size); }, name);
 
-            LengthComposition result = new LengthComposition(name, 
-                min, max, interval);
+            //if (max < min)
+            //    throw new AgeArgumentException("Wrong length limits");
 
-            foreach (SizeClass group in result)
-            {
-                group.Quantity = counter.Invoke(speciesRow, group.Size);
-            }
+            //LengthComposition result = new LengthComposition(name, 
+            //    min, max, interval);
 
-            return result;
+            //foreach (SizeClass group in result)
+            //{
+            //    group.Quantity = counter.Invoke();
+            //}
+
+            //return result;
         }
 
         public static LengthComposition GetStatisticComposition(this CardStack stack, Data.SpeciesRow speciesRow, 

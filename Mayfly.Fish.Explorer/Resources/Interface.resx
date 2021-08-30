@@ -118,92 +118,119 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AgeAdd" xml:space="preserve">
-    <value>По ключу</value>
+    <value>Obtained by key</value>
   </data>
   <data name="AgeGeneral" xml:space="preserve">
-    <value>Общее количество, экз.</value>
+    <value>Total quantity, ind.</value>
   </data>
   <data name="AgeRecMenu" xml:space="preserve">
-    <value>Показать размерно-возрастной ключ для {0}</value>
+    <value>Show {0} length/age key</value>
   </data>
   <data name="AgeRecovery" xml:space="preserve">
-    <value>Размерно-возрастной ключ. {0}. {1}</value>
+    <value>Length-to-age key. {0}. {1}</value>
   </data>
   <data name="AgeSampled" xml:space="preserve">
-    <value>Проб на возраст</value>
+    <value>Age readings</value>
   </data>
   <data name="AllDataCombined" xml:space="preserve">
-    <value>Без классов</value>
+    <value>No classes</value>
   </data>
   <data name="AvgMass" xml:space="preserve">
-    <value>Средняя масса, г</value>
+    <value>Mean mass, g</value>
   </data>
   <data name="CatchDescription" xml:space="preserve">
-    <value>Улов {0} от {1:f}</value>
+    <value>Caught in {0} at {1:f}</value>
+  </data>
+  <data name="Catches" xml:space="preserve">
+    <value>Catches</value>
+  </data>
+  <data name="CatchesAdjusted" xml:space="preserve">
+    <value>Adjusted catches</value>
   </data>
   <data name="CohortPresentation" xml:space="preserve">
-    <value>Поколение {0}</value>
+    <value>Generation of {0}</value>
+  </data>
+  <data name="CompositionEqPresentation" xml:space="preserve">
+    <value>{0}: {1} compositions of {2} categories</value>
   </data>
   <data name="EnoughStamp" xml:space="preserve">
-    <value>Достаточно</value>
+    <value>Sufficient</value>
   </data>
-  <data name="IntModel" xml:space="preserve">
-    <value>Данные по {0}</value>
+  <data name="SelectivityOgive" xml:space="preserve">
+    <value>Resultant ogive</value>
   </data>
   <data name="SimulatedIndividual" xml:space="preserve">
-    <value>Добавлен из стратифицированной пробы</value>
+    <value>Added from stratified sample</value>
   </data>
   <data name="SpecFailed" xml:space="preserve">
-    <value>Экспорт био не удался</value>
+    <value>Bio export failed</value>
   </data>
   <data name="SpeciesOfInterestIsAbsent" xml:space="preserve">
-    <value>{0} отсутствует в уловах {1}.
-Чтобы исключить их из дальнейшего анализа удерживайте {2}</value>
-  </data>
-  <data name="SpecSheet" xml:space="preserve">
-    <value>Био {0}</value>
+    <value>{0} is absent in catches of {1}.
+To eliminate it from further analysis hold {2}.</value>
   </data>
   <data name="StartifiedExtr" xml:space="preserve">
-    <value>Минимальный размерный класс {0} см, максимальный - {1} см.</value>
+    <value>Minimal length class is {0} cm and maximal is {1} cm.</value>
   </data>
   <data name="StratifiedPrae" xml:space="preserve">
-    <value>Стратифицированные пробы:
+    <value>Stratified samples:
 </value>
   </data>
   <data name="StratifiedShort" xml:space="preserve">
-    <value>{0,7} экз. {1} в {2} пойманы в {3}.</value>
+    <value>{0,7} inds. in {1} in {2} caught with {3}.</value>
   </data>
   <data name="StratifiedTotal" xml:space="preserve">
-    <value>Общая выборка насчитывает {0} экз.</value>
+    <value>Total sample counts {0} ind.</value>
   </data>
   <data name="TimepointDescription" xml:space="preserve">
-    <value>Наблюдения в {0:f}</value>
+    <value>Observed at {0:f}</value>
   </data>
   <data name="TotalMass" xml:space="preserve">
-    <value>Общая масса, кг</value>
+    <value>Total mass, kg</value>
   </data>
   <data name="MassGrowth" xml:space="preserve">
-    <value>Модель весового роста {0}</value>
+    <value>Mass growth model of {0}</value>
   </data>
   <data name="StratesAged" xml:space="preserve">
-    <value>Возраст у</value>
+    <value>Aged</value>
   </data>
   <data name="StratesRegistered" xml:space="preserve">
-    <value>Взято проб</value>
+    <value>Registered</value>
   </data>
   <data name="StratesSampled" xml:space="preserve">
-    <value>Выборка</value>
+    <value>Sampled</value>
   </data>
   <data name="StratesWeighted" xml:space="preserve">
-    <value>Взвешено</value>
+    <value>Weighted</value>
   </data>
   <data name="FleetMask" xml:space="preserve">
-    <value>Набор {0}</value>
+    <value>Fleet {0}</value>
+  </data>
+  <data name="BioCombined" xml:space="preserve">
+    <value>Combined data</value>
+  </data>
+  <data name="BioLoaded" xml:space="preserve">
+    <value>Loaded data</value>
+  </data>
+  <data name="BioReference" xml:space="preserve">
+    <value>Bio</value>
   </data>
   <data name="CatchCurve" xml:space="preserve">
-    <value>Возрастные группы в промысле</value>
+    <value>Fully exploited age groups</value>
   </data>
   <data name="CatchCurveUnused" xml:space="preserve">
-    <value>Возрастные группы до промысла</value>
+    <value>Unexploited age groups</value>
+  </data>
+  <data name="QualBio" xml:space="preserve">
+    <value>Data from bio</value>
+  </data>
+  <data name="QualCombi" xml:space="preserve">
+    <value>Combined data</value>
+  </data>
+  <data name="QualOwn" xml:space="preserve">
+    <value>Own data</value>
+  </data>
+  <data name="StratesBio" xml:space="preserve">
+    <value>Loaded with bio</value>
   </data>
 </root>

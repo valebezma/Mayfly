@@ -185,7 +185,7 @@ namespace Mayfly.Fish.Explorer
 
                 if (!double.IsNaN(model.FMSY))
                 {
-                    yr.AxisX.AddStripLine(model.FMSY, string.Format("F(MSY) ({0:N3})", model.FMSY));
+                    yr.AxisX.AddStripLine(model.FMSY, string.Format("F(MSY) ({0:N3})", model.FMSY), Mathematics.UserSettings.ColorAccent);
 
                     yr.AxisY.AddStripLine(model.MaximumSustainableYieldPerRecruit, 
                         string.Format("MSY/R ({0:N0})",

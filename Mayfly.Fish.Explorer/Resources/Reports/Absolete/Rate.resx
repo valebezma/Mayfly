@@ -127,7 +127,7 @@
     <value>Rate (R) is calculated as a product of gathering rate (G) and treatment rate (T):</value>
   </data>
   <data name="EquationB" xml:space="preserve">
-    <value>is runouts fraction</value>
+    <value>is outliers fraction</value>
   </data>
   <data name="EquationMesh" xml:space="preserve">
     <value>mesh</value>
@@ -193,7 +193,7 @@
     <value>Species rate (T)</value>
   </data>
   <data name="Column2_5" xml:space="preserve">
-    <value>Runouts fraction (b)</value>
+    <value>Outliers fraction (b)</value>
   </data>
   <data name="Column2_6" xml:space="preserve">
     <value>r&lt;sup&gt;2&lt;/sup&gt;</value>

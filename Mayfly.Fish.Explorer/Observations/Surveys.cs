@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Explorer
 
             public string GetShortDescription()
             {
-                return string.Format(Resources.Interface.Interface.CatchDescription, this.GearRow.ToString(), this.TimelineRow.Timepoint);
+                return string.Format(Resources.Interface.CatchDescription, this.GearRow.ToString(), this.TimelineRow.Timepoint);
             }
 
             public Data GetCatchData()
@@ -148,7 +148,7 @@ namespace Mayfly.Fish.Explorer
                         case EquipmentEvent.Inspection:
                         case EquipmentEvent.Removing:
                             Data data = actionRow.GetCatchData();
-                            string filename = IO.SuggestName(path, data.GetSuggestedName());
+                            string filename = IO.SuggestName(path, data.Solitary.GetSuggestedName());
                             data.WriteToFile(Path.Combine(path, filename));
                             result.Add(Path.Combine(path, filename));
                             break;
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
 
             public string GetShortDescription()
             {
-                return string.Format(Resources.Interface.Interface.TimepointDescription, this.Timepoint);
+                return string.Format(Resources.Interface.TimepointDescription, this.Timepoint);
             }
 
             public WeatherState WeatherConditions
@@ -197,7 +197,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data data in GetCards())
             {
-                string filename = IO.SuggestName(path, data.GetSuggestedName());
+                string filename = IO.SuggestName(path, data.Solitary.GetSuggestedName());
                 data.WriteToFile(Path.Combine(path, filename));
                 result.Add(Path.Combine(path, filename));
             }

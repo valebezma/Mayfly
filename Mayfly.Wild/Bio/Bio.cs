@@ -2,12 +2,16 @@
 using System;
 using Mayfly.Extensions;
 using System.Data;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Mayfly.Wild
 {
     public abstract class Bio
     {
         public Data Parent { get; set; }
+
+        //public Data.SpeciesRow Species { get; private set; }
 
         public string Species { get; private set; }
 
@@ -61,11 +65,13 @@ namespace Mayfly.Wild
 
         public abstract void RefreshInternal();
 
-        public abstract void Involve(Bio bio);
+        public abstract void Involve(Bio bio, bool clearExisted);
 
 
         public static ContinuousBio Find(IEnumerable<ContinuousBio> bios, string species)
         {
+            if (bios == null) return null;
+
             foreach (ContinuousBio bio in bios)
             {
                 if (bio.Species == species)

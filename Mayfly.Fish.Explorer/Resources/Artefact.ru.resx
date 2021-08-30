@@ -156,7 +156,7 @@
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Количество особей не может быть вычислено, т. к. в некоторых карточках оно не указано</value>
   </data>
-  <data name="ValueHasRunouts" xml:space="preserve">
+  <data name="ValueHasOutliers" xml:space="preserve">
     <value>{0} {1} особей значительно отклоняется от общей выборки</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
@@ -165,7 +165,7 @@
   <data name="ValueIsRecoverable" xml:space="preserve">
     <value>{0} {1} особей вычислен по длине</value>
   </data>
-  <data name="ValueIsRecoverableButHasRunouts" xml:space="preserve">
+  <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
     <value>{0} {1} особей вычислен по длине (однако, модель содержит {2} значительных вылетов)</value>
   </data>
   <data name="CardMassEven" xml:space="preserve">

@@ -45,20 +45,8 @@
             this.contextScatterplotProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplotAddTrend = new System.Windows.Forms.ToolStripMenuItem();
             this.contextScatterplotDistinguish = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorScatterplotFindValue = new System.Windows.Forms.ToolStripSeparator();
             this.contextScatterplotFindValue = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.contextScatterplotStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotDescriptiveX = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotDescriptiveY = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotTrend = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotTrendCompare = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotTransform = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotMerge = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotSplit = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotHistogramX = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextScatterplotApart = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogram = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextHistogramProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.contextHistogramAddFit = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +72,7 @@
             this.contextEvalUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.contextFunctor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextFunctorProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextScatterplotTrend = new System.Windows.Forms.ToolStripMenuItem();
             this.contextChart.SuspendLayout();
             this.contextScatterplot.SuspendLayout();
             this.contextHistogram.SuspendLayout();
@@ -174,13 +163,9 @@
             this.contextScatterplotProperties,
             this.contextScatterplotAddTrend,
             this.contextScatterplotDistinguish,
-            this.contextScatterplotDelete,
-            this.toolStripSeparator3,
-            this.contextScatterplotFindValue,
-            this.toolStripSeparator5,
-            this.contextScatterplotStatistics,
-            this.contextScatterplotTransform,
-            this.contextScatterplotApart});
+            this.contextScatterplotTrend,
+            this.toolStripSeparatorScatterplotFindValue,
+            this.contextScatterplotFindValue});
             this.contextScatterplot.Name = "contextMenuStripRegression";
             resources.ApplyResources(this.contextScatterplot, "contextScatterplot");
             this.contextScatterplot.Opening += new System.ComponentModel.CancelEventHandler(this.contextScatterplot_Opening);
@@ -204,94 +189,16 @@
             resources.ApplyResources(this.contextScatterplotDistinguish, "contextScatterplotDistinguish");
             this.contextScatterplotDistinguish.CheckedChanged += new System.EventHandler(this.contextScatterplotDistinguish_CheckedChanged);
             // 
-            // contextScatterplotDelete
+            // toolStripSeparatorScatterplotFindValue
             // 
-            resources.ApplyResources(this.contextScatterplotDelete, "contextScatterplotDelete");
-            this.contextScatterplotDelete.Name = "contextScatterplotDelete";
-            this.contextScatterplotDelete.Click += new System.EventHandler(this.contextScatterplotDelete_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.toolStripSeparatorScatterplotFindValue.Name = "toolStripSeparatorScatterplotFindValue";
+            resources.ApplyResources(this.toolStripSeparatorScatterplotFindValue, "toolStripSeparatorScatterplotFindValue");
             // 
             // contextScatterplotFindValue
             // 
             this.contextScatterplotFindValue.Name = "contextScatterplotFindValue";
             resources.ApplyResources(this.contextScatterplotFindValue, "contextScatterplotFindValue");
             this.contextScatterplotFindValue.Click += new System.EventHandler(this.contextScatterplotFindValue_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
-            // 
-            // contextScatterplotStatistics
-            // 
-            this.contextScatterplotStatistics.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextScatterplotDescriptiveX,
-            this.contextScatterplotDescriptiveY,
-            this.contextScatterplotTrend,
-            this.contextScatterplotTrendCompare});
-            this.contextScatterplotStatistics.Name = "contextScatterplotStatistics";
-            resources.ApplyResources(this.contextScatterplotStatistics, "contextScatterplotStatistics");
-            // 
-            // contextScatterplotDescriptiveX
-            // 
-            this.contextScatterplotDescriptiveX.Name = "contextScatterplotDescriptiveX";
-            resources.ApplyResources(this.contextScatterplotDescriptiveX, "contextScatterplotDescriptiveX");
-            this.contextScatterplotDescriptiveX.Click += new System.EventHandler(this.contextScatterplotDescriptiveX_Click);
-            // 
-            // contextScatterplotDescriptiveY
-            // 
-            this.contextScatterplotDescriptiveY.Name = "contextScatterplotDescriptiveY";
-            resources.ApplyResources(this.contextScatterplotDescriptiveY, "contextScatterplotDescriptiveY");
-            this.contextScatterplotDescriptiveY.Click += new System.EventHandler(this.contextScatterplotDescriptiveY_Click);
-            // 
-            // contextScatterplotTrend
-            // 
-            this.contextScatterplotTrend.Name = "contextScatterplotTrend";
-            resources.ApplyResources(this.contextScatterplotTrend, "contextScatterplotTrend");
-            this.contextScatterplotTrend.Click += new System.EventHandler(this.contextScatterplotTrend_Click);
-            // 
-            // contextScatterplotTrendCompare
-            // 
-            this.contextScatterplotTrendCompare.Name = "contextScatterplotTrendCompare";
-            resources.ApplyResources(this.contextScatterplotTrendCompare, "contextScatterplotTrendCompare");
-            this.contextScatterplotTrendCompare.Click += new System.EventHandler(this.contextScatterplotTrendCompare_Click);
-            // 
-            // contextScatterplotTransform
-            // 
-            this.contextScatterplotTransform.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextScatterplotMerge,
-            this.contextScatterplotSplit,
-            this.contextScatterplotHistogramX});
-            this.contextScatterplotTransform.Name = "contextScatterplotTransform";
-            resources.ApplyResources(this.contextScatterplotTransform, "contextScatterplotTransform");
-            // 
-            // contextScatterplotMerge
-            // 
-            this.contextScatterplotMerge.Name = "contextScatterplotMerge";
-            resources.ApplyResources(this.contextScatterplotMerge, "contextScatterplotMerge");
-            this.contextScatterplotMerge.Click += new System.EventHandler(this.contextScatterplotMerge_Click);
-            // 
-            // contextScatterplotSplit
-            // 
-            this.contextScatterplotSplit.Name = "contextScatterplotSplit";
-            resources.ApplyResources(this.contextScatterplotSplit, "contextScatterplotSplit");
-            this.contextScatterplotSplit.Click += new System.EventHandler(this.contextScatterplotSplit_Click);
-            // 
-            // contextScatterplotHistogramX
-            // 
-            this.contextScatterplotHistogramX.Name = "contextScatterplotHistogramX";
-            resources.ApplyResources(this.contextScatterplotHistogramX, "contextScatterplotHistogramX");
-            this.contextScatterplotHistogramX.Click += new System.EventHandler(this.contextScatterplotHistogramX_Click);
-            // 
-            // contextScatterplotApart
-            // 
-            this.contextScatterplotApart.Name = "contextScatterplotApart";
-            resources.ApplyResources(this.contextScatterplotApart, "contextScatterplotApart");
-            this.contextScatterplotApart.Click += new System.EventHandler(this.contextItemScatterplotApart_Click);
             // 
             // contextHistogram
             // 
@@ -459,6 +366,12 @@
             this.contextFunctorProperties.Name = "contextFunctorProperties";
             resources.ApplyResources(this.contextFunctorProperties, "contextFunctorProperties");
             this.contextFunctorProperties.Click += new System.EventHandler(this.contextFunctorProperties_Click);
+            // 
+            // contextScatterplotTrend
+            // 
+            this.contextScatterplotTrend.Name = "contextScatterplotTrend";
+            resources.ApplyResources(this.contextScatterplotTrend, "contextScatterplotTrend");
+            this.contextScatterplotTrend.Click += new System.EventHandler(this.contextScatterplotTrend_Click);
             this.contextChart.ResumeLayout(false);
             this.contextScatterplot.ResumeLayout(false);
             this.contextHistogram.ResumeLayout(false);
@@ -477,7 +390,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ContextMenuStrip contextScatterplot;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotProperties;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorScatterplotFindValue;
         private System.Windows.Forms.ContextMenuStrip contextHistogram;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramProperties;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -486,26 +399,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem contextChartSeparate;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotDistinguish;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotDelete;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramDistinguish;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotStatistics;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotDescriptiveX;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotDescriptiveY;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotTrend;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotTransform;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotMerge;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotSplit;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotHistogramX;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramTransform;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramSplit;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramDelete;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramUpdate;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramStatistics;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramDescriptive;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotApart;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramApart;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotFindValue;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem contextScatterplotAddTrend;
         private System.Windows.Forms.ToolStripMenuItem contextHistogramAddFit;
         private System.Windows.Forms.ContextMenuStrip contextEvaluation;
@@ -516,7 +418,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextEvalPointDescriptive;
         private System.Windows.Forms.ToolStripMenuItem contextEvalApart;
         private System.Windows.Forms.ToolStripMenuItem contextEvalUpdate;
-        private System.Windows.Forms.ToolStripMenuItem contextScatterplotTrendCompare;
         private System.Windows.Forms.ToolStripMenuItem contextChartPrint;
         private System.Windows.Forms.ToolStripMenuItem contextSizeA4;
         private System.Windows.Forms.ToolStripMenuItem contextSizeA5;
@@ -525,5 +426,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextFunctorProperties;
         private System.Windows.Forms.ToolStripMenuItem ContextHistogramCopyAll;
         private System.Windows.Forms.ToolStripMenuItem ContextHistogramCopyDatapoints;
+        private System.Windows.Forms.ToolStripMenuItem contextScatterplotTrend;
     }
 }

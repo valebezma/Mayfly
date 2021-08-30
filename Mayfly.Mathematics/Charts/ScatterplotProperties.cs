@@ -181,7 +181,10 @@ namespace Mayfly.Mathematics.Charts
                 ValueChanged.Invoke(sender, new ScatterplotEventArgs(Scatterplot));
             }
 
-            if (Scatterplot != null) Scatterplot.Update();
+            if (Scatterplot != null && ActiveControl == (Control)sender)
+            {
+                Scatterplot.Update();
+            }
         }
 
         private void checkBoxTrend_CheckedChanged(object sender, EventArgs e)

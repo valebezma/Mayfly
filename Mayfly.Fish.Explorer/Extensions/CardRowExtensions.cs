@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Explorer
                 switch (field)
                 {
                     case "Gear":
-                        return cardRow.GetSamplerRow().Sampler;
+                        return cardRow.SamplerRow.Sampler;
 
                     case "Effort":
                         return cardRow.GetEffort();

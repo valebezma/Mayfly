@@ -50,9 +50,41 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public double Left { get { return Data.Minimum; } }
+        public double Left
+        {
+            get
+            {
+                double result = double.MaxValue;
 
-        public double Right { get { return Data.Maximum; } }
+                foreach (var bin in this)
+                {
+                    if (bin.Interval.LeftEndpoint < result)
+                    {
+                        result = bin.Interval.LeftEndpoint;
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public double Right 
+        {
+            get 
+            {
+                double result = double.MinValue;
+                
+                foreach (var bin in this)
+                {
+                    if (bin.Interval.RightEndpoint > result)
+                    {
+                        result = bin.Interval.RightEndpoint;
+                    }
+                } 
+                
+                return result; 
+            }
+        }
 
         public int Top
         {
@@ -200,49 +232,6 @@ namespace Mayfly.Mathematics.Charts
                     Fit.Properties.TrendWidth = Properties.FitWidth;
                     Fit.Properties.TrendColor = Properties.FitColor;
                     Fit.Update();
-
-                    if (Properties.ShowAnnotation)
-                    {
-                        if (FitAnnotation == null)
-                        {
-                            FitAnnotation = new CalloutAnnotation
-                            {
-                                BackColor = Container.ChartAreas[0].BackColor,
-                                Name = Properties.HistogramName,
-                                IsSizeAlwaysRelative = false,
-                                CalloutStyle = CalloutStyle.Rectangle,
-                                Alignment = ContentAlignment.MiddleCenter,
-                                AllowMoving = true,
-                                AxisX = Container.ChartAreas[0].AxisX,
-                                AxisY = Container.ChartAreas[0].AxisY,
-                                X = Left + 3 * (Right - Left) / 4,
-                                Y = Fit.Predict(FitAnnotation.X)
-                            };
-                            Container.Annotations.Add(FitAnnotation);
-                        }
-
-                        FitAnnotation.Font = Container.Font;
-                        FitAnnotation.Visible = true;
-                        FitAnnotation.Text = Properties.FitName;
-
-                        if (Properties.ShowCount)
-                        {
-                            FitAnnotation.Text += Constants.Break + "n = " + Data.Count;
-                        }
-
-                        if (Properties.ShowFitResult)
-                        {
-                            TestResult testResult = Data.KolmogorovSmirnovTest(Distribution);
-                            FitAnnotation.Text += Constants.Break + string.Format(Resources.Interface.FitAnnotation, testResult.Probability);
-                        }
-                    }
-                    else
-                    {
-                        if (FitAnnotation != null)
-                        {
-                            FitAnnotation.Visible = false;
-                        }
-                    }
                 }
                 else
                 {
@@ -262,6 +251,57 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
+            if (Properties.ShowAnnotation)
+            {
+                if (FitAnnotation == null)
+                {
+                    FitAnnotation = new CalloutAnnotation
+                    {
+                        BackColor = Container.ChartAreas[0].BackColor,
+                        Name = Properties.HistogramName,
+                        IsSizeAlwaysRelative = false,
+                        CalloutStyle = CalloutStyle.Rectangle,
+                        Alignment = ContentAlignment.MiddleCenter,
+                        AllowMoving = true,
+                        AxisX = Container.ChartAreas[0].AxisX,
+                        AxisY = Container.ChartAreas[0].AxisY
+                    };
+                    Container.Annotations.Add(FitAnnotation);
+                }
+
+                FitAnnotation.Font = Container.Font;
+                FitAnnotation.Visible = true;
+                FitAnnotation.Text = Properties.FitName;
+
+                if (FitAnnotation.X > Container.AxisXMax || FitAnnotation.X < Container.AxisXMin)
+                {
+                    FitAnnotation.X = Left + 3 * (Right - Left) / 4;
+                }
+
+                if (FitAnnotation.Y > Container.AxisYMax || FitAnnotation.Y < Container.AxisYMin)
+                {
+                    FitAnnotation.Y = Fit.Predict(FitAnnotation.X);
+                }
+
+                if (Properties.ShowCount)
+                {
+                    FitAnnotation.Text += Constants.Break + "n = " + Data.Count;
+                }
+
+                if (Properties.ShowFitResult)
+                {
+                    TestResult testResult = Data.KolmogorovSmirnovTest(Distribution);
+                    FitAnnotation.Text += Constants.Break + string.Format(Resources.Interface.FitAnnotation, testResult.Probability);
+                }
+            }
+            else
+            {
+                if (FitAnnotation != null)
+                {
+                    FitAnnotation.Visible = false;
+                }
+            }
+
             if (Updated != null)
             {
                 Updated.Invoke(this, new HistogramEventArgs(this));
@@ -277,7 +317,12 @@ namespace Mayfly.Mathematics.Charts
             // Create bins
             for (double x = Container.AxisXMin; x < Container.AxisXMax; x += Container.AxisXInterval)
             {
-                Add(x, x + Container.AxisXInterval);
+                Interval bin = Interval.FromEndpointAndWidth(x, Container.AxisXInterval);
+
+                if (Data.GetSabsample(bin).Count > 0)
+                {
+                    Add(x, x + Container.AxisXInterval);
+                }
             }
 
             // Populate bins

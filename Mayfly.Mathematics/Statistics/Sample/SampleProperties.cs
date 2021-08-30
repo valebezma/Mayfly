@@ -45,7 +45,7 @@ namespace Mayfly.Mathematics.Statistics
 
         private void UpdateValues()
         {
-            statChart1.Text = Text = string.Format(Resources.Interface.DescriptiveTitle, Sample.Name);
+            plotDistribution.Text = Text = string.Format(Resources.Interface.DescriptiveTitle, Sample.Name);
 
             string f = Sample.MeanFormat();
 
@@ -89,14 +89,13 @@ namespace Mayfly.Mathematics.Statistics
                         testResult.Probability));
                 }
 
+                plotDistribution.Clear();
                 histogram = new Histogramma(Sample);
-                //histogram.Properties.SelectedApproximationType = DistributionType.Normal;
+                histogram.Properties.SelectedApproximationType = DistributionType.Normal;
                 histogram.Properties.HistogramName = Sample.Name;
-                //histogram.Properties.ShowFitResult = histogram.Properties.ShowFit = true;
-
-                statChart1.Clear();
-                statChart1.AddSeries(histogram);
-                statChart1.DoPlot();
+                histogram.Properties.ShowFitResult = histogram.Properties.ShowFit = true;
+                plotDistribution.AddSeries(histogram);
+                plotDistribution.DoPlot();
 
                 numericUpDownCL_ValueChanged(numericUpDownCL, new EventArgs());
             }

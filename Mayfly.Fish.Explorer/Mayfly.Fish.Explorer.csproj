@@ -109,9 +109,9 @@
     <Compile Include="Extensions\CardStack.Statistics.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Mass.cs" />
     <Compile Include="Extensions\CardStack.Statistics.Quantity.cs" />
-    <Compile Include="Extensions\Category.cs" />
-    <Compile Include="Extensions\Cohort.cs" />
-    <Compile Include="Extensions\IndividualRegSorter.cs" />
+    <Compile Include="Extensions\CategoryExtensions.cs" />
+    <Compile Include="Extensions\CohortExtensions.cs" />
+    <Compile Include="IndividualRegSorter.cs" />
     <Compile Include="Compositions\AgeKeyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,13 +125,11 @@
     <Compile Include="Compositions\VirtualCohort.cs" />
     <Compile Include="Compositions\PredictionModel.cs" />
     <Compile Include="Compositions\YieldPerRecruitModel.cs" />
-    <Compile Include="Extensions\CardStack.cs" />
-    <Compile Include="Extensions\Data.cs" />
+    <Compile Include="Extensions\CardStackExtensions.cs" />
     <Compile Include="Extensions\CardStack.Artefacts.cs" />
     <Compile Include="Extensions\CardStack.Reports.cs" />
-    <Compile Include="Extensions\Data.Bio.cs" />
-    <Compile Include="Extensions\Composition.cs" />
-    <Compile Include="Extensions\SpeciesComposition.cs" />
+    <Compile Include="Extensions\DataExtensions.cs" />
+    <Compile Include="Extensions\CompositionExtensions.cs" />
     <Compile Include="Resources\Reports\Table.ru.Designer.cs">
       <DependentUpon>Table.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -296,9 +294,6 @@
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
     </Compile>
     <Compile Include="Compositions\GillnetSelectivityModel.cs" />
-    <Compile Include="MainForm.Artefacts.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MainForm.Cards.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,7 +442,7 @@
     <Compile Include="Observations\StratifiedControl.Designer.cs">
       <DependentUpon>StratifiedControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\CardRow.cs" />
+    <Compile Include="Extensions\CardRowExtensions.cs" />
     <Compile Include="Observations\Surveys.cs">
       <DependentUpon>Surveys.xsd</DependentUpon>
     </Compile>
@@ -532,23 +527,23 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="UserSettings.cs" />
-    <Compile Include="Resources\Interface\Interface.ru.Designer.cs">
+    <Compile Include="Resources\Interface.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Interface.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Interface\Process.Designer.cs">
+    <Compile Include="Resources\Process.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Process.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Interface\Process.ru.Designer.cs">
+    <Compile Include="Resources\Process.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Process.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="Resources\Interface\Interface.Designer.cs">
+    <Compile Include="Resources\Interface.Designer.cs">
       <DependentUpon>Interface.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -915,22 +910,22 @@
     <EmbeddedResource Include="Resources\Artefact.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Process.resx">
+    <EmbeddedResource Include="Resources\Process.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Process.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Interface.ru.resx">
+    <EmbeddedResource Include="Resources\Interface.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Process.ru.resx">
+    <EmbeddedResource Include="Resources\Process.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Process.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Interface\Interface.resx">
+    <EmbeddedResource Include="Resources\Interface.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -1076,7 +1071,9 @@
   <ItemGroup>
     <None Include="Resources\fexplore.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Interface\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
