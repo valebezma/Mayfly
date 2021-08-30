@@ -80,8 +80,8 @@
             this.labelCardsValue = new System.Windows.Forms.Label();
             this.labelDates = new System.Windows.Forms.Label();
             this.labelDatesValue = new System.Windows.Forms.Label();
-            this.labelArtefacts = new System.Windows.Forms.Label();
-            this.pictureBoxArtefacts = new System.Windows.Forms.PictureBox();
+            this.labelArtifacts = new System.Windows.Forms.Label();
+            this.pictureBoxArtifacts = new System.Windows.Forms.PictureBox();
             this.listViewSamplers = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelSamplers = new System.Windows.Forms.Label();
@@ -92,12 +92,12 @@
             this.imageListWaters = new System.Windows.Forms.ImageList(this.components);
             this.labelCollectors = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPageArtefacts = new System.Windows.Forms.TabPage();
+            this.tabPageArtifacts = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageArtefactCards = new System.Windows.Forms.TabPage();
-            this.labelArtefactCard = new System.Windows.Forms.Label();
-            this.pictureBoxArtefactCard = new System.Windows.Forms.PictureBox();
-            this.spreadSheetArtefactCard = new Mayfly.Controls.SpreadSheet();
+            this.tabPageArtifactCards = new System.Windows.Forms.TabPage();
+            this.labelArtifactCard = new System.Windows.Forms.Label();
+            this.pictureBoxArtifactCard = new System.Windows.Forms.PictureBox();
+            this.spreadSheetArtifactCard = new Mayfly.Controls.SpreadSheet();
             this.columnArtCardName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnArtCardSquareMissing = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
@@ -105,13 +105,13 @@
             this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextArtCard = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextArtCardOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageArtefactSpecies = new System.Windows.Forms.TabPage();
-            this.labelArtefactSpecies = new System.Windows.Forms.Label();
-            this.pictureBoxArtefactSpecies = new System.Windows.Forms.PictureBox();
-            this.spreadSheetArtefactSpecies = new Mayfly.Controls.SpreadSheet();
-            this.columnArtefactSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnArtefactValidName = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
-            this.columnArtefactN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageArtifactSpecies = new System.Windows.Forms.TabPage();
+            this.labelArtifactSpecies = new System.Windows.Forms.Label();
+            this.pictureBoxArtifactSpecies = new System.Windows.Forms.PictureBox();
+            this.spreadSheetArtifactSpecies = new Mayfly.Controls.SpreadSheet();
+            this.columnArtifactSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnArtifactValidName = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
+            this.columnArtifactN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextArtSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextArtSpeciesAddToRef = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageCard = new System.Windows.Forms.TabPage();
@@ -219,7 +219,7 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSample = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemArtefacts = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemArtifacts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemLoadCards = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLoadSpc = new System.Windows.Forms.ToolStripMenuItem();
@@ -292,17 +292,17 @@
             this.tdbSpecCombine = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSpecCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tabPageInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.tabPageArtefacts.SuspendLayout();
+            this.tabPageArtifacts.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPageArtefactCards.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactCard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactCard)).BeginInit();
+            this.tabPageArtifactCards.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifactCard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtifactCard)).BeginInit();
             this.contextArtCard.SuspendLayout();
-            this.tabPageArtefactSpecies.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactSpecies)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactSpecies)).BeginInit();
+            this.tabPageArtifactSpecies.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifactSpecies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtifactSpecies)).BeginInit();
             this.contextArtSpecies.SuspendLayout();
             this.tabPageCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetCard)).BeginInit();
@@ -337,8 +337,8 @@
             this.tabPageInfo.Controls.Add(this.labelCardsValue);
             this.tabPageInfo.Controls.Add(this.labelDates);
             this.tabPageInfo.Controls.Add(this.labelDatesValue);
-            this.tabPageInfo.Controls.Add(this.labelArtefacts);
-            this.tabPageInfo.Controls.Add(this.pictureBoxArtefacts);
+            this.tabPageInfo.Controls.Add(this.labelArtifacts);
+            this.tabPageInfo.Controls.Add(this.pictureBoxArtifacts);
             this.tabPageInfo.Controls.Add(this.listViewSamplers);
             this.tabPageInfo.Controls.Add(this.labelSamplers);
             this.tabPageInfo.Controls.Add(this.listViewInvestigators);
@@ -368,19 +368,19 @@
             resources.ApplyResources(this.labelDatesValue, "labelDatesValue");
             this.labelDatesValue.Name = "labelDatesValue";
             // 
-            // labelArtefacts
+            // labelArtifacts
             // 
-            resources.ApplyResources(this.labelArtefacts, "labelArtefacts");
-            this.labelArtefacts.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefacts.Name = "labelArtefacts";
-            this.labelArtefacts.DoubleClick += new System.EventHandler(this.menuItemArtefacts_Click);
+            resources.ApplyResources(this.labelArtifacts, "labelArtifacts");
+            this.labelArtifacts.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelArtifacts.Name = "labelArtifacts";
+            this.labelArtifacts.DoubleClick += new System.EventHandler(this.menuItemArtifacts_Click);
             // 
-            // pictureBoxArtefacts
+            // pictureBoxArtifacts
             // 
-            resources.ApplyResources(this.pictureBoxArtefacts, "pictureBoxArtefacts");
-            this.pictureBoxArtefacts.Name = "pictureBoxArtefacts";
-            this.pictureBoxArtefacts.TabStop = false;
-            this.pictureBoxArtefacts.DoubleClick += new System.EventHandler(this.menuItemArtefacts_Click);
+            resources.ApplyResources(this.pictureBoxArtifacts, "pictureBoxArtifacts");
+            this.pictureBoxArtifacts.Name = "pictureBoxArtifacts";
+            this.pictureBoxArtifacts.TabStop = false;
+            this.pictureBoxArtifacts.DoubleClick += new System.EventHandler(this.menuItemArtifacts_Click);
             // 
             // listViewSamplers
             // 
@@ -465,7 +465,7 @@
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPageInfo);
-            this.tabControl.Controls.Add(this.tabPageArtefacts);
+            this.tabControl.Controls.Add(this.tabPageArtifacts);
             this.tabControl.Controls.Add(this.tabPageCard);
             this.tabControl.Controls.Add(this.tabPageSpc);
             this.tabControl.Controls.Add(this.tabPageLog);
@@ -474,54 +474,54 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tab_Changed);
             // 
-            // tabPageArtefacts
+            // tabPageArtifacts
             // 
-            this.tabPageArtefacts.Controls.Add(this.tabControl1);
-            resources.ApplyResources(this.tabPageArtefacts, "tabPageArtefacts");
-            this.tabPageArtefacts.Name = "tabPageArtefacts";
-            this.tabPageArtefacts.UseVisualStyleBackColor = true;
+            this.tabPageArtifacts.Controls.Add(this.tabControl1);
+            resources.ApplyResources(this.tabPageArtifacts, "tabPageArtifacts");
+            this.tabPageArtifacts.Name = "tabPageArtifacts";
+            this.tabPageArtifacts.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
             resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Controls.Add(this.tabPageArtefactCards);
-            this.tabControl1.Controls.Add(this.tabPageArtefactSpecies);
+            this.tabControl1.Controls.Add(this.tabPageArtifactCards);
+            this.tabControl1.Controls.Add(this.tabPageArtifactSpecies);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // tabPageArtefactCards
+            // tabPageArtifactCards
             // 
-            this.tabPageArtefactCards.Controls.Add(this.labelArtefactCard);
-            this.tabPageArtefactCards.Controls.Add(this.pictureBoxArtefactCard);
-            this.tabPageArtefactCards.Controls.Add(this.spreadSheetArtefactCard);
-            resources.ApplyResources(this.tabPageArtefactCards, "tabPageArtefactCards");
-            this.tabPageArtefactCards.Name = "tabPageArtefactCards";
-            this.tabPageArtefactCards.UseVisualStyleBackColor = true;
+            this.tabPageArtifactCards.Controls.Add(this.labelArtifactCard);
+            this.tabPageArtifactCards.Controls.Add(this.pictureBoxArtifactCard);
+            this.tabPageArtifactCards.Controls.Add(this.spreadSheetArtifactCard);
+            resources.ApplyResources(this.tabPageArtifactCards, "tabPageArtifactCards");
+            this.tabPageArtifactCards.Name = "tabPageArtifactCards";
+            this.tabPageArtifactCards.UseVisualStyleBackColor = true;
             // 
-            // labelArtefactCard
+            // labelArtifactCard
             // 
-            resources.ApplyResources(this.labelArtefactCard, "labelArtefactCard");
-            this.labelArtefactCard.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefactCard.Name = "labelArtefactCard";
+            resources.ApplyResources(this.labelArtifactCard, "labelArtifactCard");
+            this.labelArtifactCard.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelArtifactCard.Name = "labelArtifactCard";
             // 
-            // pictureBoxArtefactCard
+            // pictureBoxArtifactCard
             // 
-            resources.ApplyResources(this.pictureBoxArtefactCard, "pictureBoxArtefactCard");
-            this.pictureBoxArtefactCard.Name = "pictureBoxArtefactCard";
-            this.pictureBoxArtefactCard.TabStop = false;
+            resources.ApplyResources(this.pictureBoxArtifactCard, "pictureBoxArtifactCard");
+            this.pictureBoxArtifactCard.Name = "pictureBoxArtifactCard";
+            this.pictureBoxArtifactCard.TabStop = false;
             // 
-            // spreadSheetArtefactCard
+            // spreadSheetArtifactCard
             // 
-            resources.ApplyResources(this.spreadSheetArtefactCard, "spreadSheetArtefactCard");
-            this.spreadSheetArtefactCard.CellPadding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.spreadSheetArtefactCard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            resources.ApplyResources(this.spreadSheetArtifactCard, "spreadSheetArtifactCard");
+            this.spreadSheetArtifactCard.CellPadding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.spreadSheetArtifactCard.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnArtCardName,
             this.columnArtCardSquareMissing});
-            this.spreadSheetArtefactCard.DefaultDecimalPlaces = 0;
-            this.spreadSheetArtefactCard.Display = this.processDisplay;
-            this.spreadSheetArtefactCard.Name = "spreadSheetArtefactCard";
-            this.spreadSheetArtefactCard.ReadOnly = true;
-            this.spreadSheetArtefactCard.RowMenu = this.contextArtCard;
+            this.spreadSheetArtifactCard.DefaultDecimalPlaces = 0;
+            this.spreadSheetArtifactCard.Display = this.processDisplay;
+            this.spreadSheetArtifactCard.Name = "spreadSheetArtifactCard";
+            this.spreadSheetArtifactCard.ReadOnly = true;
+            this.spreadSheetArtifactCard.RowMenu = this.contextArtCard;
             // 
             // columnArtCardName
             // 
@@ -567,7 +567,7 @@
             // 
             this.contextArtCard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextArtCardOpen});
-            this.contextArtCard.Name = "contextArtefactGear";
+            this.contextArtCard.Name = "contextArtifactGear";
             resources.ApplyResources(this.contextArtCard, "contextArtCard");
             // 
             // contextArtCardOpen
@@ -577,69 +577,69 @@
             this.contextArtCardOpen.Name = "contextArtCardOpen";
             this.contextArtCardOpen.Click += new System.EventHandler(this.contextArtCardOpen_Click);
             // 
-            // tabPageArtefactSpecies
+            // tabPageArtifactSpecies
             // 
-            this.tabPageArtefactSpecies.Controls.Add(this.labelArtefactSpecies);
-            this.tabPageArtefactSpecies.Controls.Add(this.pictureBoxArtefactSpecies);
-            this.tabPageArtefactSpecies.Controls.Add(this.spreadSheetArtefactSpecies);
-            resources.ApplyResources(this.tabPageArtefactSpecies, "tabPageArtefactSpecies");
-            this.tabPageArtefactSpecies.Name = "tabPageArtefactSpecies";
-            this.tabPageArtefactSpecies.UseVisualStyleBackColor = true;
+            this.tabPageArtifactSpecies.Controls.Add(this.labelArtifactSpecies);
+            this.tabPageArtifactSpecies.Controls.Add(this.pictureBoxArtifactSpecies);
+            this.tabPageArtifactSpecies.Controls.Add(this.spreadSheetArtifactSpecies);
+            resources.ApplyResources(this.tabPageArtifactSpecies, "tabPageArtifactSpecies");
+            this.tabPageArtifactSpecies.Name = "tabPageArtifactSpecies";
+            this.tabPageArtifactSpecies.UseVisualStyleBackColor = true;
             // 
-            // labelArtefactSpecies
+            // labelArtifactSpecies
             // 
-            resources.ApplyResources(this.labelArtefactSpecies, "labelArtefactSpecies");
-            this.labelArtefactSpecies.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefactSpecies.Name = "labelArtefactSpecies";
+            resources.ApplyResources(this.labelArtifactSpecies, "labelArtifactSpecies");
+            this.labelArtifactSpecies.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelArtifactSpecies.Name = "labelArtifactSpecies";
             // 
-            // pictureBoxArtefactSpecies
+            // pictureBoxArtifactSpecies
             // 
-            resources.ApplyResources(this.pictureBoxArtefactSpecies, "pictureBoxArtefactSpecies");
-            this.pictureBoxArtefactSpecies.Name = "pictureBoxArtefactSpecies";
-            this.pictureBoxArtefactSpecies.TabStop = false;
+            resources.ApplyResources(this.pictureBoxArtifactSpecies, "pictureBoxArtifactSpecies");
+            this.pictureBoxArtifactSpecies.Name = "pictureBoxArtifactSpecies";
+            this.pictureBoxArtifactSpecies.TabStop = false;
             // 
-            // spreadSheetArtefactSpecies
+            // spreadSheetArtifactSpecies
             // 
-            resources.ApplyResources(this.spreadSheetArtefactSpecies, "spreadSheetArtefactSpecies");
-            this.spreadSheetArtefactSpecies.CellPadding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.spreadSheetArtefactSpecies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnArtefactSpecies,
-            this.columnArtefactValidName,
-            this.columnArtefactN});
-            this.spreadSheetArtefactSpecies.DefaultDecimalPlaces = 0;
-            this.spreadSheetArtefactSpecies.Display = this.processDisplay;
-            this.spreadSheetArtefactSpecies.Name = "spreadSheetArtefactSpecies";
-            this.spreadSheetArtefactSpecies.RowMenu = this.contextArtSpecies;
+            resources.ApplyResources(this.spreadSheetArtifactSpecies, "spreadSheetArtifactSpecies");
+            this.spreadSheetArtifactSpecies.CellPadding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.spreadSheetArtifactSpecies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnArtifactSpecies,
+            this.columnArtifactValidName,
+            this.columnArtifactN});
+            this.spreadSheetArtifactSpecies.DefaultDecimalPlaces = 0;
+            this.spreadSheetArtifactSpecies.Display = this.processDisplay;
+            this.spreadSheetArtifactSpecies.Name = "spreadSheetArtifactSpecies";
+            this.spreadSheetArtifactSpecies.RowMenu = this.contextArtSpecies;
             // 
-            // columnArtefactSpecies
+            // columnArtifactSpecies
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnArtefactSpecies.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.columnArtefactSpecies, "columnArtefactSpecies");
-            this.columnArtefactSpecies.Name = "columnArtefactSpecies";
+            this.columnArtifactSpecies.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.columnArtifactSpecies, "columnArtifactSpecies");
+            this.columnArtifactSpecies.Name = "columnArtifactSpecies";
             // 
-            // columnArtefactValidName
+            // columnArtifactValidName
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.columnArtefactValidName.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.columnArtefactValidName, "columnArtefactValidName");
-            this.columnArtefactValidName.Image = null;
-            this.columnArtefactValidName.Name = "columnArtefactValidName";
-            this.columnArtefactValidName.ReadOnly = true;
-            this.columnArtefactValidName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnArtifactValidName.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.columnArtifactValidName, "columnArtifactValidName");
+            this.columnArtifactValidName.Image = null;
+            this.columnArtifactValidName.Name = "columnArtifactValidName";
+            this.columnArtifactValidName.ReadOnly = true;
+            this.columnArtifactValidName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // columnArtefactN
+            // columnArtifactN
             // 
-            resources.ApplyResources(this.columnArtefactN, "columnArtefactN");
-            this.columnArtefactN.Name = "columnArtefactN";
-            this.columnArtefactN.ReadOnly = true;
+            resources.ApplyResources(this.columnArtifactN, "columnArtifactN");
+            this.columnArtifactN.Name = "columnArtifactN";
+            this.columnArtifactN.ReadOnly = true;
             // 
             // contextArtSpecies
             // 
             this.contextArtSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextArtSpeciesAddToRef});
-            this.contextArtSpecies.Name = "contextArtefact";
+            this.contextArtSpecies.Name = "contextArtifact";
             resources.ApplyResources(this.contextArtSpecies, "contextArtSpecies");
             this.contextArtSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextArtSpecies_Opening);
             // 
@@ -1480,7 +1480,7 @@
             // menuItemSample
             // 
             this.menuItemSample.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemArtefacts,
+            this.menuItemArtifacts,
             this.toolStripSeparator4,
             this.menuItemLoadCards,
             this.menuItemLoadSpc,
@@ -1490,11 +1490,11 @@
             resources.ApplyResources(this.menuItemSample, "menuItemSample");
             this.menuItemSample.DropDownOpening += new System.EventHandler(this.menuItemSample_DropDownOpening);
             // 
-            // menuItemArtefacts
+            // menuItemArtifacts
             // 
-            this.menuItemArtefacts.Name = "menuItemArtefacts";
-            resources.ApplyResources(this.menuItemArtefacts, "menuItemArtefacts");
-            this.menuItemArtefacts.Click += new System.EventHandler(this.menuItemArtefacts_Click);
+            this.menuItemArtifacts.Name = "menuItemArtifacts";
+            resources.ApplyResources(this.menuItemArtifacts, "menuItemArtifacts");
+            this.menuItemArtifacts.Click += new System.EventHandler(this.menuItemArtifacts_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1888,8 +1888,8 @@
             // speciesValidator
             // 
             this.speciesValidator.CheckDuplicates = false;
-            this.speciesValidator.ColumnName = "columnArtefactSpecies";
-            this.speciesValidator.Grid = this.spreadSheetArtefactSpecies;
+            this.speciesValidator.ColumnName = "columnArtifactSpecies";
+            this.speciesValidator.Grid = this.spreadSheetArtifactSpecies;
             this.speciesValidator.RecentListCount = 0;
             this.speciesValidator.SpeciesSelected += new Mayfly.Species.SpeciesSelectEventHandler(this.speciesValidator_SpeciesSelected);
             // 
@@ -1942,19 +1942,19 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.tabPageArtefacts.ResumeLayout(false);
+            this.tabPageArtifacts.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPageArtefactCards.ResumeLayout(false);
-            this.tabPageArtefactCards.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactCard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactCard)).EndInit();
+            this.tabPageArtifactCards.ResumeLayout(false);
+            this.tabPageArtifactCards.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifactCard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtifactCard)).EndInit();
             this.contextArtCard.ResumeLayout(false);
-            this.tabPageArtefactSpecies.ResumeLayout(false);
-            this.tabPageArtefactSpecies.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefactSpecies)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtefactSpecies)).EndInit();
+            this.tabPageArtifactSpecies.ResumeLayout(false);
+            this.tabPageArtifactSpecies.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifactSpecies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spreadSheetArtifactSpecies)).EndInit();
             this.contextArtSpecies.ResumeLayout(false);
             this.tabPageCard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetCard)).EndInit();
@@ -2054,15 +2054,15 @@
         private TaskDialogs.TaskDialog tdSpecies;
         private TaskDialogs.TaskDialogButton tdbSpcRename;
         private TaskDialogs.TaskDialogButton tdbSpcCancel;
-        private System.Windows.Forms.TabPage tabPageArtefacts;
+        private System.Windows.Forms.TabPage tabPageArtifacts;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageArtefactSpecies;
-        private System.Windows.Forms.Label labelArtefactSpecies;
-        private System.Windows.Forms.PictureBox pictureBoxArtefactSpecies;
-        private Controls.SpreadSheet spreadSheetArtefactSpecies;
-        private System.Windows.Forms.Label labelArtefacts;
-        private System.Windows.Forms.PictureBox pictureBoxArtefacts;
-        private System.Windows.Forms.ToolStripMenuItem menuItemArtefacts;
+        private System.Windows.Forms.TabPage tabPageArtifactSpecies;
+        private System.Windows.Forms.Label labelArtifactSpecies;
+        private System.Windows.Forms.PictureBox pictureBoxArtifactSpecies;
+        private Controls.SpreadSheet spreadSheetArtifactSpecies;
+        private System.Windows.Forms.Label labelArtifacts;
+        private System.Windows.Forms.PictureBox pictureBoxArtifacts;
+        private System.Windows.Forms.ToolStripMenuItem menuItemArtifacts;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ContextMenuStrip contextSpc;
         private System.Windows.Forms.ToolStripMenuItem contextSpcDelete;
@@ -2103,10 +2103,10 @@
         private System.Windows.Forms.ToolStripMenuItem contextArtSpeciesAddToRef;
         private System.ComponentModel.BackgroundWorker modelCalc;
         private System.ComponentModel.BackgroundWorker artefactFinder;
-        private System.Windows.Forms.TabPage tabPageArtefactCards;
-        private System.Windows.Forms.Label labelArtefactCard;
-        private System.Windows.Forms.PictureBox pictureBoxArtefactCard;
-        private Controls.SpreadSheet spreadSheetArtefactCard;
+        private System.Windows.Forms.TabPage tabPageArtifactCards;
+        private System.Windows.Forms.Label labelArtifactCard;
+        private System.Windows.Forms.PictureBox pictureBoxArtifactCard;
+        private Controls.SpreadSheet spreadSheetArtifactCard;
         private System.Windows.Forms.ContextMenuStrip contextArtCard;
         private System.Windows.Forms.ToolStripMenuItem contextArtCardOpen;
         private System.Windows.Forms.TabPage tabPageSpc;
@@ -2142,9 +2142,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemLoadLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnArtCardName;
         private Controls.SpreadSheetIconTextBoxColumn columnArtCardSquareMissing;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactSpecies;
-        private Controls.SpreadSheetIconTextBoxColumn columnArtefactValidName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtefactN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtifactSpecies;
+        private Controls.SpreadSheetIconTextBoxColumn columnArtifactValidName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnArtifactN;
         private System.Windows.Forms.ToolStripMenuItem allSpeciesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
         private System.Windows.Forms.ToolStripMenuItem menuItemBrief;

@@ -7,43 +7,43 @@ namespace Mayfly.Benthos.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static Artefact[] GetArtefacts(this CardStack stack)
+        public static ConsistencyChecker[] CheckConsistency(this CardStack stack)
         {
-            List<Artefact> result = new List<Artefact>();
-            result.AddRange(stack.GetCardArtefacts());
-            result.AddRange(stack.GetSpeciesArtefacts());
+            List<ConsistencyChecker> result = new List<ConsistencyChecker>();
+            result.AddRange(stack.GetCardArtifacts());
+            result.AddRange(stack.GetSpeciesArtifacts());
             return result.ToArray();
         }
 
-        public static CardArtefact[] GetCardArtefacts(this CardStack stack)
+        public static CardArtifact[] GetCardArtifacts(this CardStack stack)
         {
-            List<CardArtefact> result = new List<CardArtefact>();
+            List<CardArtifact> result = new List<CardArtifact>();
 
             foreach (Data.CardRow cardRow in stack)
             {
-                CardArtefact artefact = new CardArtefact(cardRow);
-                if (artefact.GetFacts() > 0) result.Add(artefact);
+                CardArtifact artifact = new CardArtifact(cardRow);
+                if (artifact.GetFacts() > 0) result.Add(artifact);
             }
 
             return result.ToArray();
         }
 
-        public static SpeciesArtefact[] GetSpeciesArtefacts(this CardStack stack)
+        public static SpeciesArtifact[] GetSpeciesArtifacts(this CardStack stack)
         {
-            List<SpeciesArtefact> result = new List<SpeciesArtefact>();
+            List<SpeciesArtifact> result = new List<SpeciesArtifact>();
 
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
-                SpeciesArtefact artefact = new SpeciesArtefact(speciesRow);
-                if (artefact.GetFacts() > 0) result.Add(artefact);
-                artefact.Quantity = (int)stack.Quantity(speciesRow);
+                SpeciesArtifact artifact = new SpeciesArtifact(speciesRow);
+                if (artifact.GetFacts() > 0) result.Add(artifact);
+                artifact.Quantity = (int)stack.Quantity(speciesRow);
             }
 
             return result.ToArray();
         }
     }
 
-    public class CardArtefact : Artefact
+    public class CardArtifact : ConsistencyChecker
     {
         public Data.CardRow Card { get; private set; }
 
@@ -51,7 +51,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public CardArtefact(Data.CardRow cardRow)
+        public CardArtifact(Data.CardRow cardRow)
         {
             Card = cardRow;
 
@@ -76,14 +76,14 @@ namespace Mayfly.Benthos.Explorer
 
             if (SamplingSquareMissing)
             {
-                result.Add(Resources.Artefact.SampleSquare);
+                result.Add(Resources.Artifact.SampleSquare);
             }
 
             return result.ToArray();
         }
     }
 
-    public class SpeciesArtefact : Artefact
+    public class SpeciesArtifact : ConsistencyChecker
     {
         public Data.SpeciesRow SpeciesRow { get; private set; }
 
@@ -93,7 +93,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public SpeciesArtefact(Data.SpeciesRow speciesRow)
+        public SpeciesArtifact(Data.SpeciesRow speciesRow)
         {
             SpeciesRow = speciesRow;
 
@@ -113,7 +113,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (ReferenceMissing)
             {
-                result.Add(Resources.Artefact.ReferenceNull);
+                result.Add(Resources.Artifact.ReferenceNull);
             }
 
             return result.ToArray();

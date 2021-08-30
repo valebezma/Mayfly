@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtefactsProcessing" xml:space="preserve">
-    <value>Looking for artefacts</value>
+  <data name="ArtifactsProcessing" xml:space="preserve">
+    <value>Looking for artifacts</value>
   </data>
   <data name="CardsLoading" xml:space="preserve">
     <value>Cards loading</value>

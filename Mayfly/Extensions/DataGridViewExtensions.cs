@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
+using Mayfly.Geographics;
 
 namespace Mayfly.Extensions
 {
@@ -190,7 +191,7 @@ namespace Mayfly.Extensions
 
                 if (exploreInvisibles || gridRow.Visible)
                 {
-                    if (gridRow.Cells[gridColumn.Index].Value == null) value = Mayfly.Resources.Interface.EmptyValue;
+                    if (gridRow.Cells[gridColumn.Index].Value == null) value = Resources.Interface.EmptyValue;
                     else value = gridRow.Cells[gridColumn.Index].FormattedValue.ToString();
 
                     //if (string.IsNullOrWhiteSpace(value)) continue;
@@ -305,6 +306,11 @@ namespace Mayfly.Extensions
                         gridCell.Value = null;
                     }
                 }
+
+                //if (gridCell.OwningColumn.ValueType == typeof(Waypoint))
+                //{
+                //    gridCell.Value = Waypoint.Parse(value);
+                //}
             }
 
             return gridCell.Value;

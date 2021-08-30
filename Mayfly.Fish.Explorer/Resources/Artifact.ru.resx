@@ -117,58 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtefactsFound" xml:space="preserve">
-    <value>There are some artefacts found in data</value>
+  <data name="ArtifactsFound" xml:space="preserve">
+    <value>В данных обнаружены некоторые артефакты.</value>
   </data>
   <data name="CardEffort" xml:space="preserve">
-    <value>Card have not enough information to calculate fishing effort</value>
+    <value>В карточке указано недостаточно информации,
+чтобы рассчитать рыболовное усилие</value>
   </data>
-  <data name="IndividualTallyOdd" xml:space="preserve">
-    <value>Had tally ({0}) but doesn't contain any registered information, e. g. age, fecundity, diet or parasitological issues</value>
+  <data name="IndividualRegID" xml:space="preserve">
+    <value>Имеет номер пробы #{0}, но не содержит никакой информации, т. е. ни возраста, ни плодовитости, ни данных по питанию или паразитологических сведений</value>
   </data>
-  <data name="IndividualsTally" xml:space="preserve">
-    <value>{0} individuals have some issues with tally</value>
+  <data name="IndividualsRegID" xml:space="preserve">
+    <value>Записи {0} особей имеют номер пробы, но не содержат никакой информации, т. е. ни возраста, ни плодовитости, ни данных по питанию или паразитологических сведений</value>
+  </data>
+  <data name="IndividualsTreat" xml:space="preserve">
+    <value>{0} проба (т. е. возраст, плодовитость, питания или паразитология) не имеют номера</value>
   </data>
   <data name="IndividualsUnweightedDiet" xml:space="preserve">
-    <value>{0} diet samples have unweighted individuals in diet sample</value>
+    <value>В {0} пробах питания есть невзвешенные особей. Воспользуйтесь "Мастером восстановления массы", чтобы исправить это</value>
   </data>
-  <data name="IndividualTallyMissing" xml:space="preserve">
-    <value>Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with tally</value>
+  <data name="IndividualTreat" xml:space="preserve">
+    <value>Проба (т. е. возраст, плодовитость, питания или паразитология) не имеет номера пробы</value>
   </data>
   <data name="IndividualUnweightedDiet" xml:space="preserve">
-    <value>Has {0} unweighted individuals in diet sample</value>
+    <value>В пробе питания есть {0} невзвешенных особей. Воспользуйтесь ХХХ</value>
   </data>
-  <data name="LogLength" xml:space="preserve">
-    <value>There are {0} specimen with length not measured</value>
+  <data name="Length" xml:space="preserve">
+    <value>Длина {0} особей не измерена.
+Эти особи не могут быть учтены</value>
   </data>
   <data name="Specimen" xml:space="preserve">
-    <value>Total quantity of {0} specified as {1} but in individuals log there are {2} specimen and in stratified samples there are {3} specimen, so {4} are missing</value>
+    <value>Общая выборка {0} указана в количестве {1} экз., но в  журнале особей указаны {2} экз. и в 
+стратифицированных пробах указаны {3} экз., таким образом {4} экз. не хватает</value>
   </data>
-  <data name="LogMassOdd" xml:space="preserve">
-    <value>Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
+  <data name="CardMassOdd" xml:space="preserve">
+    <value>Масса пробы (массы в журнале особей и стратифицированных пробах) на {0:N3} кг или {1:P1} превышает общую массу улова в карточке ({2:N3} кг)</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
-    <value>Quantity of specimens can't be calculated because in some cards it is not specified</value>
+    <value>Количество особей не может быть вычислено, т. к. в некоторых карточках оно не указано</value>
   </data>
   <data name="ValueHasOutliers" xml:space="preserve">
-    <value>{0} measures have {1} outliers</value>
+    <value>{0} {1} особей значительно отклоняется от общей выборки</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. It can't be calculated any way because of lack of studied specimens</value>
+    <value>{0} {1} особей не может быть вычислен, т. к. общая выборка слишком мала, чтобы построить модель</value>
   </data>
   <data name="ValueIsRecoverable" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. However, it can be obtained from length</value>
+    <value>{0} {1} особей вычислен по длине</value>
   </data>
   <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. However, it can be obtained from length (but regression contains {2} outliers)</value>
+    <value>{0} {1} особей вычислен по длине (однако, модель содержит {2} значительных вылетов)</value>
   </data>
-  <data name="LogLengths" xml:space="preserve">
-    <value>There are {0} log records with unmeasured specimen</value>
+  <data name="CardMassEven" xml:space="preserve">
+    <value>Масса, указанная в карточке, совпадает с массой пробы 
+(массой в журнале особей и стратифицированных пробах)</value>
   </data>
-  <data name="LogMassOdds" xml:space="preserve">
-    <value>There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample</value>
-  </data>
-  <data name="LogMassMissing" xml:space="preserve">
-    <value>Record mass ({0:n3} kg) is more than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({1:n3}) which is fine</value>
+  <data name="CardMassOdd_1" xml:space="preserve">
+    <value>{0} из {1} кг ({2:P1}) рыбы в улове не обработано</value>
   </data>
 </root>

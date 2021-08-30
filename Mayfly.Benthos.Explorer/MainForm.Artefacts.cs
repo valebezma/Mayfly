@@ -22,78 +22,78 @@ namespace Mayfly.Benthos.Explorer
 {
     public partial class MainForm
     {
-        bool showArtefacts;
+        bool showArtifacts;
 
-        private void ShowCardArtefacts(CardArtefact[] artefacts)
+        private void ShowCardArtifacts(CardArtifact[] artifacts)
         {
-            spreadSheetArtefactCard.Rows.Clear();
+            spreadSheetArtifactCard.Rows.Clear();
             int artefactCount = 0;
 
-            foreach (CardArtefact artefact in artefacts)
+            foreach (CardArtifact artifact in artifacts)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
-                gridRow.CreateCells(spreadSheetArtefactCard);
+                gridRow.CreateCells(spreadSheetArtifactCard);
                 
-                gridRow.Cells[columnArtCardName.Index].Value = artefact.Card;                    
-                gridRow.Cells[columnArtCardName.Index].ToolTipText = artefact.Card.Path;
+                gridRow.Cells[columnArtCardName.Index].Value = artifact.Card;                    
+                gridRow.Cells[columnArtCardName.Index].ToolTipText = artifact.Card.Path;
 
-                spreadSheetArtefactCard.Rows.Add(gridRow);
+                spreadSheetArtifactCard.Rows.Add(gridRow);
 
-                if (artefact.SamplingSquareMissing)
+                if (artifact.SamplingSquareMissing)
                 {
                     ((TextAndImageCell)gridRow.Cells[columnArtCardSquareMissing.Index]).Image =
                         Mathematics.Properties.Resources.None;
-                    gridRow.Cells[columnArtCardSquareMissing.Index].ToolTipText = Resources.Artefact.SampleSquare;
+                    gridRow.Cells[columnArtCardSquareMissing.Index].ToolTipText = Resources.Artifact.SampleSquare;
                     artefactCount++;
                 }
                 else
                 {
                     ((TextAndImageCell)gridRow.Cells[columnArtCardSquareMissing.Index]).Image =
                         Mathematics.Properties.Resources.Check;
-                    gridRow.Cells[columnArtCardSquareMissing.Index].Value = artefact.Card.Square;
+                    gridRow.Cells[columnArtCardSquareMissing.Index].Value = artifact.Card.Square;
                 }
             }
 
-            labelArtefactCard.Visible = pictureBoxArtefactCard.Visible = artefactCount == 0;
-            spreadSheetArtefactCard.UpdateStatus(artefactCount);
+            labelArtifactCard.Visible = pictureBoxArtifactCard.Visible = artefactCount == 0;
+            spreadSheetArtifactCard.UpdateStatus(artefactCount);
         }
 
-        private void ShowSpeciesArtefacts(SpeciesArtefact[] artefacts)
+        private void ShowSpeciesArtifacts(SpeciesArtifact[] artifacts)
         {
-            spreadSheetArtefactSpecies.Rows.Clear();
+            spreadSheetArtifactSpecies.Rows.Clear();
 
             int total = 0;
 
-            foreach (SpeciesArtefact artefact in artefacts)
+            foreach (SpeciesArtifact artifact in artifacts)
             {
-                total += artefact.GetFacts();
+                total += artifact.GetFacts();
 
                 DataGridViewRow gridRow = new DataGridViewRow();
-                gridRow.CreateCells(spreadSheetArtefactSpecies);
-                gridRow.Cells[columnArtefactSpecies.Index].Value = artefact.SpeciesRow.Species;
-                gridRow.Cells[columnArtefactN.Index].Value = artefact.Quantity;
-                spreadSheetArtefactSpecies.Rows.Add(gridRow);
+                gridRow.CreateCells(spreadSheetArtifactSpecies);
+                gridRow.Cells[columnArtifactSpecies.Index].Value = artifact.SpeciesRow.Species;
+                gridRow.Cells[columnArtifactN.Index].Value = artifact.Quantity;
+                spreadSheetArtifactSpecies.Rows.Add(gridRow);
 
-                if (artefact.ReferenceMissing)
+                if (artifact.ReferenceMissing)
                 {
-                    gridRow.Cells[columnArtefactValidName.Index].Value = null;
-                    ((TextAndImageCell)gridRow.Cells[columnArtefactValidName.Index]).Image = 
+                    gridRow.Cells[columnArtifactValidName.Index].Value = null;
+                    ((TextAndImageCell)gridRow.Cells[columnArtifactValidName.Index]).Image = 
                         Mathematics.Properties.Resources.None;
-                    gridRow.Cells[columnArtefactValidName.Index].ToolTipText =
-                        Resources.Artefact.ReferenceNull;
+                    gridRow.Cells[columnArtifactValidName.Index].ToolTipText =
+                        Resources.Artifact.ReferenceNull;
                 }
                 else
                 {
-                    gridRow.Cells[columnArtefactValidName.Index].Value = 
-                        speciesValidator.Find(artefact.SpeciesRow.Species).FullName;
-                    ((TextAndImageCell)gridRow.Cells[columnArtefactValidName.Index]).Image = 
+                    gridRow.Cells[columnArtifactValidName.Index].Value = 
+                        speciesValidator.Find(artifact.SpeciesRow.Species).FullName;
+                    ((TextAndImageCell)gridRow.Cells[columnArtifactValidName.Index]).Image = 
                         Mayfly.Resources.Icons.Check;
                 }
             }
 
-            spreadSheetArtefactSpecies.Sort(columnArtefactSpecies, ListSortDirection.Ascending);
-            labelArtefactSpecies.Visible = pictureBoxArtefactSpecies.Visible = total == 0;
-            spreadSheetArtefactSpecies.UpdateStatus(total);
+            spreadSheetArtifactSpecies.Sort(columnArtifactSpecies, ListSortDirection.Ascending);
+            labelArtifactSpecies.Visible = pictureBoxArtifactSpecies.Visible = total == 0;
+            spreadSheetArtifactSpecies.UpdateStatus(total);
         }
     }
 }

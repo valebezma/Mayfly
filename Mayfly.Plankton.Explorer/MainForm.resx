@@ -189,52 +189,52 @@
   <data name="&gt;&gt;labelCards.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="labelArtefacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelArtifacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="labelArtefacts.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelArtifacts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelArtefacts.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelArtifacts.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt</value>
   </data>
-  <data name="labelArtefacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelArtifacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelArtefacts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelArtifacts.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 501</value>
   </data>
-  <data name="labelArtefacts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelArtifacts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
   </data>
-  <data name="labelArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 13</value>
   </data>
-  <data name="labelArtefacts.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelArtifacts.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="labelArtefacts.Text" xml:space="preserve">
-    <value>Check for artefacts</value>
+  <data name="labelArtifacts.Text" xml:space="preserve">
+    <value>Check for artifacts</value>
   </data>
-  <data name="labelArtefacts.Visible" type="System.Boolean, mscorlib">
+  <data name="labelArtifacts.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Name" xml:space="preserve">
-    <value>labelArtefacts</value>
+  <data name="&gt;&gt;labelArtifacts.Name" xml:space="preserve">
+    <value>labelArtifacts</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.Parent" xml:space="preserve">
     <value>tabPageInfo</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pictureBoxArtefacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="pictureBoxArtefacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
         JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
@@ -251,34 +251,34 @@
         93H55gw72fv3UU6A/N/PlCgW/IffGbJfMUye8eXDyuYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pictureBoxArtefacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBoxArtefacts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pictureBoxArtifacts.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 500</value>
   </data>
-  <data name="pictureBoxArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pictureBoxArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
-  <data name="pictureBoxArtefacts.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
   </data>
-  <data name="pictureBoxArtefacts.TabIndex" type="System.Int32, mscorlib">
+  <data name="pictureBoxArtifacts.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="pictureBoxArtefacts.Visible" type="System.Boolean, mscorlib">
+  <data name="pictureBoxArtifacts.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Name" xml:space="preserve">
-    <value>pictureBoxArtefacts</value>
+  <data name="&gt;&gt;pictureBoxArtifacts.Name" xml:space="preserve">
+    <value>pictureBoxArtifacts</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Type" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.Parent" xml:space="preserve">
     <value>tabPageInfo</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
@@ -795,52 +795,52 @@
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="labelArtefactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelArtifactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="labelArtefactSpecies.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelArtifactSpecies.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelArtefactSpecies.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelArtifactSpecies.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt</value>
   </data>
-  <data name="labelArtefactSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelArtifactSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelArtifactSpecies.Location" type="System.Drawing.Point, System.Drawing">
     <value>549, 66</value>
   </data>
-  <data name="labelArtefactSpecies.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelArtifactSpecies.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
   </data>
-  <data name="labelArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 13</value>
   </data>
-  <data name="labelArtefactSpecies.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelArtifactSpecies.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="labelArtefactSpecies.Text" xml:space="preserve">
-    <value>Artefacts are absent</value>
+  <data name="labelArtifactSpecies.Text" xml:space="preserve">
+    <value>Artifacts are absent</value>
   </data>
-  <data name="labelArtefactSpecies.Visible" type="System.Boolean, mscorlib">
+  <data name="labelArtifactSpecies.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpecies.Name" xml:space="preserve">
-    <value>labelArtefactSpecies</value>
+  <data name="&gt;&gt;labelArtifactSpecies.Name" xml:space="preserve">
+    <value>labelArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifactSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpecies.Parent" xml:space="preserve">
-    <value>tabPageArtefactSpecies</value>
+  <data name="&gt;&gt;labelArtifactSpecies.Parent" xml:space="preserve">
+    <value>tabPageArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpecies.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifactSpecies.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="pictureBoxArtifactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifactSpecies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
@@ -852,100 +852,100 @@
         8q2mGceWOQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="pictureBoxArtefactSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifactSpecies.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pictureBoxArtifactSpecies.Location" type="System.Drawing.Point, System.Drawing">
     <value>529, 65</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pictureBoxArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 14</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifactSpecies.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.TabIndex" type="System.Int32, mscorlib">
+  <data name="pictureBoxArtifactSpecies.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Visible" type="System.Boolean, mscorlib">
+  <data name="pictureBoxArtifactSpecies.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefactSpecies.Name" xml:space="preserve">
-    <value>pictureBoxArtefactSpecies</value>
+  <data name="&gt;&gt;pictureBoxArtifactSpecies.Name" xml:space="preserve">
+    <value>pictureBoxArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefactSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifactSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefactSpecies.Parent" xml:space="preserve">
-    <value>tabPageArtefactSpecies</value>
+  <data name="&gt;&gt;pictureBoxArtifactSpecies.Parent" xml:space="preserve">
+    <value>tabPageArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefactSpecies.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifactSpecies.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="labelArtefactSpeciesCount.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelArtifactSpeciesCount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelArtefactSpeciesCount.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelArtifactSpeciesCount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Light, 24pt</value>
   </data>
-  <data name="labelArtefactSpeciesCount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelArtifactSpeciesCount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelArtefactSpeciesCount.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelArtifactSpeciesCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 45</value>
   </data>
-  <data name="labelArtefactSpeciesCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelArtifactSpeciesCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 15</value>
   </data>
-  <data name="labelArtefactSpeciesCount.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifactSpeciesCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 45</value>
   </data>
-  <data name="labelArtefactSpeciesCount.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelArtifactSpeciesCount.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="labelArtefactSpeciesCount.Text" xml:space="preserve">
-    <value>1;2|artefact;artefacts</value>
+  <data name="labelArtifactSpeciesCount.Text" xml:space="preserve">
+    <value>1;2|artifact;artifacts</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpeciesCount.Name" xml:space="preserve">
-    <value>labelArtefactSpeciesCount</value>
+  <data name="&gt;&gt;labelArtifactSpeciesCount.Name" xml:space="preserve">
+    <value>labelArtifactSpeciesCount</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpeciesCount.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifactSpeciesCount.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpeciesCount.Parent" xml:space="preserve">
-    <value>tabPageArtefactSpecies</value>
+  <data name="&gt;&gt;labelArtifactSpeciesCount.Parent" xml:space="preserve">
+    <value>tabPageArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;labelArtefactSpeciesCount.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifactSpeciesCount.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="spreadSheetArtifactSpecies.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="columnArtefactSpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="columnArtifactSpecies.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnArtefactSpecies.HeaderText" xml:space="preserve">
+  <data name="columnArtifactSpecies.HeaderText" xml:space="preserve">
     <value>Species</value>
   </data>
-  <data name="columnArtefactSpecies.Width" type="System.Int32, mscorlib">
+  <data name="columnArtifactSpecies.Width" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
-  <metadata name="columnArtefactValidName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="columnArtifactValidName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnArtefactValidName.HeaderText" xml:space="preserve">
+  <data name="columnArtifactValidName.HeaderText" xml:space="preserve">
     <value>Full name (acc. to reference)</value>
   </data>
-  <data name="columnArtefactValidName.Width" type="System.Int32, mscorlib">
+  <data name="columnArtifactValidName.Width" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
-  <metadata name="columnArtefactN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="columnArtifactN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnArtefactN.HeaderText" xml:space="preserve">
+  <data name="columnArtifactN.HeaderText" xml:space="preserve">
     <value>Individuals count</value>
   </data>
-  <data name="columnArtefactN.Width" type="System.Int32, mscorlib">
+  <data name="columnArtifactN.Width" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
   <metadata name="processDisplay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -972,58 +972,58 @@
   <data name="statusProcess.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="spreadSheetArtifactSpecies.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 108</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.RowHeadersWidth" type="System.Int32, mscorlib">
+  <data name="spreadSheetArtifactSpecies.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="spreadSheetArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>612, 346</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="spreadSheetArtifactSpecies.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="spreadSheetArtefactSpecies.TabIndex" type="System.Int32, mscorlib">
+  <data name="spreadSheetArtifactSpecies.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;spreadSheetArtefactSpecies.Name" xml:space="preserve">
-    <value>spreadSheetArtefactSpecies</value>
+  <data name="&gt;&gt;spreadSheetArtifactSpecies.Name" xml:space="preserve">
+    <value>spreadSheetArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;spreadSheetArtefactSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;spreadSheetArtifactSpecies.Type" xml:space="preserve">
     <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;spreadSheetArtefactSpecies.Parent" xml:space="preserve">
-    <value>tabPageArtefactSpecies</value>
+  <data name="&gt;&gt;spreadSheetArtifactSpecies.Parent" xml:space="preserve">
+    <value>tabPageArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;spreadSheetArtefactSpecies.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;spreadSheetArtifactSpecies.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tabPageArtefactSpecies.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageArtifactSpecies.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageArtefactSpecies.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageArtifactSpecies.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>708, 502</value>
   </data>
-  <data name="tabPageArtefactSpecies.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageArtifactSpecies.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tabPageArtefactSpecies.Text" xml:space="preserve">
+  <data name="tabPageArtifactSpecies.Text" xml:space="preserve">
     <value>Species records</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefactSpecies.Name" xml:space="preserve">
-    <value>tabPageArtefactSpecies</value>
+  <data name="&gt;&gt;tabPageArtifactSpecies.Name" xml:space="preserve">
+    <value>tabPageArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefactSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifactSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefactSpecies.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifactSpecies.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefactSpecies.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifactSpecies.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
@@ -1042,36 +1042,36 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>tabPageArtefacts</value>
+    <value>tabPageArtifacts</value>
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPageArtefacts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageArtifacts.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageArtefacts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageArtifacts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 15, 15, 15</value>
   </data>
-  <data name="tabPageArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 564</value>
   </data>
-  <data name="tabPageArtefacts.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageArtifacts.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="tabPageArtefacts.Text" xml:space="preserve">
-    <value>Artefacts</value>
+  <data name="tabPageArtifacts.Text" xml:space="preserve">
+    <value>Artifacts</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefacts.Name" xml:space="preserve">
-    <value>tabPageArtefacts</value>
+  <data name="&gt;&gt;tabPageArtifacts.Name" xml:space="preserve">
+    <value>tabPageArtifacts</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefacts.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifacts.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefacts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifacts.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageArtefacts.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageArtifacts.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="labelCardCount.AutoSize" type="System.Boolean, mscorlib">
@@ -2506,11 +2506,11 @@
   <data name="menuItemFile.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="menuItemArtefactsSearch.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemArtifactsSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 22</value>
   </data>
-  <data name="menuItemArtefactsSearch.Text" xml:space="preserve">
-    <value>Check for artefacts</value>
+  <data name="menuItemArtifactsSearch.Text" xml:space="preserve">
+    <value>Check for artifacts</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 6</value>
@@ -2936,22 +2936,22 @@
   <data name="&gt;&gt;imageListWaters.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnArtefactSpecies.Name" xml:space="preserve">
-    <value>columnArtefactSpecies</value>
+  <data name="&gt;&gt;columnArtifactSpecies.Name" xml:space="preserve">
+    <value>columnArtifactSpecies</value>
   </data>
-  <data name="&gt;&gt;columnArtefactSpecies.Type" xml:space="preserve">
+  <data name="&gt;&gt;columnArtifactSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnArtefactValidName.Name" xml:space="preserve">
-    <value>columnArtefactValidName</value>
+  <data name="&gt;&gt;columnArtifactValidName.Name" xml:space="preserve">
+    <value>columnArtifactValidName</value>
   </data>
-  <data name="&gt;&gt;columnArtefactValidName.Type" xml:space="preserve">
+  <data name="&gt;&gt;columnArtifactValidName.Type" xml:space="preserve">
     <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;columnArtefactN.Name" xml:space="preserve">
-    <value>columnArtefactN</value>
+  <data name="&gt;&gt;columnArtifactN.Name" xml:space="preserve">
+    <value>columnArtifactN</value>
   </data>
-  <data name="&gt;&gt;columnArtefactN.Type" xml:space="preserve">
+  <data name="&gt;&gt;columnArtifactN.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;processDisplay.Name" xml:space="preserve">
@@ -3434,10 +3434,10 @@
   <data name="&gt;&gt;menuItemSample.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemArtefactsSearch.Name" xml:space="preserve">
-    <value>menuItemArtefactsSearch</value>
+  <data name="&gt;&gt;menuItemArtifactsSearch.Name" xml:space="preserve">
+    <value>menuItemArtifactsSearch</value>
   </data>
-  <data name="&gt;&gt;menuItemArtefactsSearch.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItemArtifactsSearch.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">

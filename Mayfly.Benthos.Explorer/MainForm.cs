@@ -126,7 +126,7 @@ namespace Mayfly.Benthos.Explorer
         {
             UpdateSummary();
 
-            tabPageArtefacts.Parent = null;
+            tabPageArtifacts.Parent = null;
             tabPageLog.Parent = null;
             tabPageInd.Parent = null;
         }
@@ -244,7 +244,7 @@ namespace Mayfly.Benthos.Explorer
             statusQuantity.ResetFormatted(Wild.Service.GetFriendlyQuantity((int)q));
             statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w / 1000));
 
-            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
+            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtifactsProcessing);
             artefactFinder.RunWorkerAsync();
         }
 
@@ -341,10 +341,10 @@ namespace Mayfly.Benthos.Explorer
         private void menuItemSample_DropDownOpening(object sender, EventArgs e)
         {        }
 
-        private void menuItemArtefacts_Click(object sender, EventArgs e)
+        private void menuItemArtifacts_Click(object sender, EventArgs e)
         {
-            showArtefacts = true;
-            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
+            showArtifacts = true;
+            processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtifactsProcessing);
             artefactFinder.RunWorkerAsync();
         }
 
@@ -456,7 +456,7 @@ namespace Mayfly.Benthos.Explorer
 
         #endregion
 
-        #region Artefacts
+        #region Artifacts
 
         private void contextArtSpecies_Opening(object sender, CancelEventArgs e)
         {
@@ -467,9 +467,9 @@ namespace Mayfly.Benthos.Explorer
         {
             List<Data.SpeciesRow> speciesRows = new List<Data.SpeciesRow>();
 
-            foreach (DataGridViewRow gridRow in spreadSheetArtefactSpecies.SelectedRows)
+            foreach (DataGridViewRow gridRow in spreadSheetArtifactSpecies.SelectedRows)
             {
-                string species = (string)gridRow.Cells[columnArtefactSpecies.Index].Value;
+                string species = (string)gridRow.Cells[columnArtifactSpecies.Index].Value;
                 Data.SpeciesRow speciesRow = data.Species.FindBySpecies(species);
                 speciesRows.Add(speciesRow);
             }
@@ -478,12 +478,12 @@ namespace Mayfly.Benthos.Explorer
                 Benthos.UserSettings.SpeciesAutoExpandVisual);
             Benthos.UserSettings.SpeciesIndex.SaveToFile(Benthos.UserSettings.SpeciesIndexPath);
 
-            menuItemArtefacts_Click(sender, e);
+            menuItemArtifacts_Click(sender, e);
         }
 
         private void contextArtCardOpen_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow gridRow in spreadSheetArtefactCard.SelectedRows)
+            foreach (DataGridViewRow gridRow in spreadSheetArtifactCard.SelectedRows)
             {
                 Data.CardRow cardRow = (Data.CardRow)gridRow.Cells[columnArtCardName.Index].Value;
                 IO.RunFile(cardRow.Path);
@@ -525,8 +525,8 @@ namespace Mayfly.Benthos.Explorer
                     spcRow.Delete();
                 }
 
-                menuItemArtefacts_Click(sender, e);
-                //GetSpeciesFullName(e.Row, e.Column, columnArtefactValidName);
+                menuItemArtifacts_Click(sender, e);
+                //GetSpeciesFullName(e.Row, e.Column, columnArtifactValidName);
             }
             else
             {
@@ -536,80 +536,80 @@ namespace Mayfly.Benthos.Explorer
 
         private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = FullStack.GetArtefacts();
+            e.Result = FullStack.CheckConsistency();
         }
 
         private void artefactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int count = 0;
 
-            foreach (Artefact artefact in (Artefact[])e.Result)
+            foreach (ConsistencyChecker artifact in (ConsistencyChecker[])e.Result)
             {
-                count += artefact.FactsCount;
+                count += artifact.AcrtifactsCount;
             }
 
-            labelArtefacts.Visible = pictureBoxArtefacts.Visible = count > 0;
+            labelArtifacts.Visible = pictureBoxArtifacts.Visible = count > 0;
 
             if (count > 0)
             {
-                if (showArtefacts)
+                if (showArtifacts)
                 {
-                    List<CardArtefact> cardArtefacts = new List<CardArtefact>();
-                    List<SpeciesArtefact> spcArtefacts = new List<SpeciesArtefact>();
+                    List<CardArtifact> cardArtifacts = new List<CardArtifact>();
+                    List<SpeciesArtifact> spcArtifacts = new List<SpeciesArtifact>();
 
-                    foreach (Artefact artefact in (Artefact[])e.Result)
+                    foreach (ConsistencyChecker artifact in (ConsistencyChecker[])e.Result)
                     {
-                        if (artefact is CardArtefact artefact1)
+                        if (artifact is CardArtifact artefact1)
                         {
-                            cardArtefacts.Add(artefact1);
+                            cardArtifacts.Add(artefact1);
                         }
 
-                        if (artefact is SpeciesArtefact artefact2)
+                        if (artifact is SpeciesArtifact artefact2)
                         {
-                            spcArtefacts.Add(artefact2);
+                            spcArtifacts.Add(artefact2);
                         }
                     }
 
-                    tabPageArtefacts.Parent = tabControl;
-                    tabControl.SelectedTab = tabPageArtefacts;
+                    tabPageArtifacts.Parent = tabControl;
+                    tabControl.SelectedTab = tabPageArtifacts;
 
-                    if (cardArtefacts.Count == 0)
+                    if (cardArtifacts.Count == 0)
                     {
-                        tabPageArtefactCards.Parent = null;
+                        tabPageArtifactCards.Parent = null;
                     }
                     else
                     {
-                        tabPageArtefactCards.Parent = tabControl1;
-                        ShowCardArtefacts(cardArtefacts.ToArray());
+                        tabPageArtifactCards.Parent = tabControl1;
+                        ShowCardArtifacts(cardArtifacts.ToArray());
                     }
 
-                    if (spcArtefacts.Count == 0)
+                    if (spcArtifacts.Count == 0)
                     {
-                        tabPageArtefactSpecies.Parent = null;
+                        tabPageArtifactSpecies.Parent = null;
                     }
                     else
                     {
-                        tabPageArtefactSpecies.Parent = tabControl1;
-                        ShowSpeciesArtefacts(spcArtefacts.ToArray());
+                        tabPageArtifactSpecies.Parent = tabControl1;
+                        ShowSpeciesArtifacts(spcArtifacts.ToArray());
                     }
 
-                    showArtefacts = false;
+                    showArtifacts = false;
                 }
                 else
                 {
                     Notification.ShowNotification(
-                        Wild.Resources.Interface.Messages.ArtefactsNotification,
-                        Wild.Resources.Interface.Messages.ArtefactsNotificationInstruction,
-                        menuItemArtefacts_Click);
+                        Wild.Resources.Interface.Messages.ArtifactsNotification,
+                        Wild.Resources.Interface.Messages.ArtifactsNotificationInstruction,
+                        menuItemArtifacts_Click);
                 }
             }
             else
             {
-                if (showArtefacts)
+                if (showArtifacts)
                 {
-                    Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtefactsNoneNotification,
-                        Wild.Resources.Interface.Messages.ArtefactsNoneNotificationInstruction);
-                    showArtefacts = false;
+                    Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtifactsNoneNotification,
+                        Wild.Resources.Interface.Messages.ArtifactsNoneNotificationInstruction);
+                    showArtifacts = false;
                 }
             }
 

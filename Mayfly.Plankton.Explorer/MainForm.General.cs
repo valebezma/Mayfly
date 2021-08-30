@@ -15,7 +15,7 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data(Plankton.UserSettings.SpeciesIndex);
+        public Data data = new Data(Plankton.UserSettings.SpeciesIndex, Plankton.UserSettings.SamplersIndex);
 
         public CardStack FullStack { get; private set; }
 
@@ -115,7 +115,7 @@ namespace Mayfly.Plankton.Explorer
             if (IsEmpty)
             {
                 Text = EntryAssemblyInfo.Title;
-                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
+                labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
 
                 statusQuantity.ResetFormatted(0);
                 statusMass.ResetFormatted(0);
@@ -182,7 +182,7 @@ namespace Mayfly.Plankton.Explorer
                 }
 
                 listViewSamplers.Items.Clear();
-                foreach (Samplers.SamplerRow samplerRow in FullStack.GetSamplers(Plankton.UserSettings.SamplersIndex))
+                foreach (Samplers.SamplerRow samplerRow in FullStack.GetSamplers())
                 {
                     listViewSamplers.CreateItem(samplerRow.ID.ToString(), samplerRow.ShortName);
                 }
@@ -536,16 +536,16 @@ namespace Mayfly.Plankton.Explorer
 
             SpeciesIndex = new SpeciesKey();
             SpeciesIndex.ReadXml(trophicsIndex);
-            tabPageArtefacts.Parent = tabControl;
+            tabPageArtifacts.Parent = tabControl;
             speciesValidator.IndexPath = trophicsIndex;
-            tabPageArtefacts.Parent = null;
+            tabPageArtifacts.Parent = null;
 
             columnCardSampler.Visible =
                 columnCardMesh.Visible =
                 columnCardDepth.Visible = false;
 
             columnCardVolume.HeaderText = Resources.Interface.DietVolume;
-            columnCardVolume.DefaultCellStyle.Format = Textual.Mask(0);
+            columnCardVolume.DefaultCellStyle.Format = "n0";
 
             columnCardAbundance.HeaderText = Resources.Interface.DietAbundance;
 
@@ -555,13 +555,13 @@ namespace Mayfly.Plankton.Explorer
             columnCardBiomass.DefaultCellStyle.Format = dietFormat;
 
             columnSpcAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnSpcAbundance.DefaultCellStyle.Format = Textual.Mask(3);
+            columnSpcAbundance.DefaultCellStyle.Format = "n3";
 
             columnSpcBiomass.HeaderText = Resources.Interface.DietTxBiomass;
             columnSpcBiomass.DefaultCellStyle.Format = dietFormat;
 
             columnLogAbundance.HeaderText = Resources.Interface.DietTxAbundance;
-            columnLogAbundance.DefaultCellStyle.Format = Textual.Mask(3);
+            columnLogAbundance.DefaultCellStyle.Format = "n3";
 
             columnLogBiomass.HeaderText = Resources.Interface.DietTxBiomass;
             columnLogBiomass.DefaultCellStyle.Format = dietFormat;

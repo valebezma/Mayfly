@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Resources;
 using System.Windows.Forms;
+using Mayfly.Extensions;
 
 namespace Mayfly.Software
 {
@@ -61,15 +62,15 @@ namespace Mayfly.Software
                     {
                         string startMenu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "Mayfly", SelectedProduct.Name);
                         if (!Directory.Exists(startMenu)) Directory.CreateDirectory(startMenu);
-                        Install.AddShortcut(startMenu + "\\" + Text.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
-                            Path.Combine(InstallPath, fileRow.File), Text.GetLocalizedValue(fileRow.ShortcutTip, lang));
+                        Install.AddShortcut(startMenu + "\\" + fileRow.FriendlyName.GetLocalizedValue(lang) + ".lnk",
+                            Path.Combine(InstallPath, fileRow.File), fileRow.ShortcutTip.GetLocalizedValue(lang));
                     }
 
                     if (desktop)
                     {
                         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                        Install.AddShortcut(desktopPath + "\\" + Text.GetLocalizedValue(fileRow.FriendlyName, lang) + ".lnk",
-                            Path.Combine(InstallPath, fileRow.File), Text.GetLocalizedValue(fileRow.ShortcutTip, lang));
+                        Install.AddShortcut(desktopPath + "\\" + fileRow.FriendlyName.GetLocalizedValue(lang) + ".lnk",
+                            Path.Combine(InstallPath, fileRow.File), fileRow.ShortcutTip.GetLocalizedValue(lang));
                     }
                 }
             }
@@ -84,7 +85,8 @@ namespace Mayfly.Software
                     {
                         //if (Path.GetExtension(fileRow.File) != ".exe") continue;
 
-                        Service.UpdateStatus(labelStatus, Resources.Interface.RegFileType, Text.GetLocalizedValue(filetypeRow.FriendlyName, lang));
+                        Service.UpdateStatus(labelStatus, Resources.Interface.RegFileType,
+                            filetypeRow.FriendlyName.GetLocalizedValue(lang));
 
                         // If FileType is already set with other binary - ask for reassociation
 
@@ -99,7 +101,7 @@ namespace Mayfly.Software
                         if (string.Equals(application, Path.Combine(InstallPath, fileRow.File))) continue;
 
                         taskDialogReassoc.Content = string.Format(
-                            new ResourceManager(this.GetType()).GetString("taskDialogReassoc.Content"), Text.GetLocalizedValue(filetypeRow.FriendlyName, lang), filetypeRow.Extension);
+                            new ResourceManager(this.GetType()).GetString("taskDialogReassoc.Content"), filetypeRow.FriendlyName.GetLocalizedValue(lang), filetypeRow.Extension);
                         taskDialogReassoc.ExpandedInformation = string.Format(
                             new ResourceManager(this.GetType()).GetString("taskDialogReassoc.ExpandedInformation"), application);
                         
@@ -107,7 +109,7 @@ namespace Mayfly.Software
 
                         Associate:
 
-                        Install.RegisterFileType(filetypeRow.Extension, filetypeRow.ProgID, Text.GetLocalizedValue(filetypeRow.FriendlyName, lang),
+                        Install.RegisterFileType(filetypeRow.Extension, filetypeRow.ProgID, filetypeRow.FriendlyName.GetLocalizedValue(lang),
                             Path.Combine(InstallPath, fileRow.File) + "," + filetypeRow.IconIndex);
 
                         Install.RegisterVerb(filetypeRow.ProgID, "open", Resources.Interface.VerbOpen,
@@ -115,7 +117,7 @@ namespace Mayfly.Software
 
                         foreach (Scheme.AddVerbRow addVerbRow in filetypeRow.GetAddVerbRows())
                         {
-                            Install.RegisterVerb(filetypeRow.ProgID, addVerbRow.Verb, Text.GetLocalizedValue(addVerbRow.FriendlyName, lang),
+                            Install.RegisterVerb(filetypeRow.ProgID, addVerbRow.Verb, addVerbRow.FriendlyName.GetLocalizedValue(lang),
                                 string.Format("{0}\\{1} \"%1\" \"-{2}\"", InstallPath, fileRow.File, addVerbRow.Verb), true);
                         }
                     }

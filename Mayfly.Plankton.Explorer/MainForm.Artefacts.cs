@@ -9,14 +9,14 @@ namespace Mayfly.Plankton.Explorer
 {
     public partial class MainForm
     {
-        private int FindArtefacts()
+        private int FindArtifacts()
         {
             int artefactCount = 0;
-            artefactCount += FindSpeciesArtefacts();
+            artefactCount += FindSpeciesArtifacts();
             return artefactCount;
         }
 
-        private int FindSpeciesArtefacts()
+        private int FindSpeciesArtifacts()
         {
             int artefactCount = 0;
 
@@ -37,28 +37,28 @@ namespace Mayfly.Plankton.Explorer
                 #endregion
             }
 
-            labelArtefactSpeciesCount.UpdateStatus(artefactCount);
-            labelArtefactSpecies.Visible = pictureBoxArtefactSpecies.Visible = artefactCount == 0;
+            labelArtifactSpeciesCount.UpdateStatus(artefactCount);
+            labelArtifactSpecies.Visible = pictureBoxArtifactSpecies.Visible = artefactCount == 0;
             return artefactCount;
         }
 
-        private void LoadArtefacts()
+        private void LoadArtifacts()
         {
-            spreadSheetArtefactSpecies.Rows.Clear();
+            spreadSheetArtifactSpecies.Rows.Clear();
 
             foreach (Data.SpeciesRow speciesRow in data.Species)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
-                gridRow.CreateCells(spreadSheetArtefactSpecies);
+                gridRow.CreateCells(spreadSheetArtifactSpecies);
 
-                gridRow.Cells[columnArtefactSpecies.Index].Value = speciesRow.Species;
+                gridRow.Cells[columnArtifactSpecies.Index].Value = speciesRow.Species;
                 double q = data.Quantity(speciesRow);
-                gridRow.Cells[columnArtefactN.Index].Value = q;
+                gridRow.Cells[columnArtifactN.Index].Value = q;
 
-                spreadSheetArtefactSpecies.Rows.Add(gridRow);
+                spreadSheetArtifactSpecies.Rows.Add(gridRow);
 
-                GetSpeciesFullName(gridRow, columnArtefactSpecies, columnArtefactValidName);
-                spreadSheetArtefactSpecies.Sort(columnArtefactValidName, ListSortDirection.Ascending);
+                GetSpeciesFullName(gridRow, columnArtifactSpecies, columnArtifactValidName);
+                spreadSheetArtifactSpecies.Sort(columnArtifactValidName, ListSortDirection.Ascending);
             }
         }
 

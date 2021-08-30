@@ -172,21 +172,6 @@ namespace Mayfly
 
 
 
-        public static void SetMenuAvailability(string feature, params ToolStripItem[] items)
-        {
-            SetMenuAvailability(Licensing.Verify(feature), items);
-        }
-
-        public static void SetTabsAvailability(string feature, params TabPage[] tabs)
-        {
-            SetTabsAvailability(Licensing.Verify(feature), tabs);
-        }
-
-        public static void SetControlsAvailability(string feature, params Control[] controls)
-        {
-            //SetControlsAvailability(Licensing.Verify(feature), controls);
-        }
-
         private static void DrawDropBox(Control control, Rectangle rectangle, string message)
         {
             Graphics DropBox = control.CreateGraphics();

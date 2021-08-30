@@ -8,18 +8,18 @@ using System.Drawing;
 
 namespace Mayfly.Wild
 {
-    public abstract class Artefact
+    public abstract class ConsistencyChecker
     {
-        public Artefact() { }
+        public ConsistencyChecker() { }
 
-        public abstract string[] GetNotices(bool incluDeChildren);
+        public abstract string[] GetNotices(bool includeChildren);
 
         public string[] GetNotices()
         {
             return GetNotices(false);
         }
 
-        public int FactsCount
+        public int AcrtifactsCount
         {
             get { return GetNotices(true).Length; }
         }
@@ -28,7 +28,7 @@ namespace Mayfly.Wild
 
         public string ToString(string starter)
         {
-            if (FactsCount > 0)
+            if (AcrtifactsCount > 0)
             {
                 return  "<span class = 'hl'>" + starter + ": </span>" + GetNotices().Merge();
             }
@@ -38,27 +38,25 @@ namespace Mayfly.Wild
             }
         }
 
-        //public abstract ArtefactCriticality Criticality;
-
-        public static ArtefactCriticality GetWorst(params ArtefactCriticality[] criticalities)
+        public static ArtifactCriticality GetWorst(params ArtifactCriticality[] criticalities)
         {
             return criticalities.Max();
         }
 
-        public static Image GetImage(ArtefactCriticality criticality)
+        public static Image GetImage(ArtifactCriticality criticality)
         {
             switch (criticality)
             {
-                //case ArtefactCriticality.Normal:
+                //case ArtifactCriticality.Normal:
                 //    return Mathematics.Properties.Resources.Check;
 
-                case ArtefactCriticality.Allowed:
+                case ArtifactCriticality.Allowed:
                     return Mathematics.Properties.Resources.CheckGray;
 
-                case ArtefactCriticality.NotCritical:
+                case ArtifactCriticality.NotCritical:
                     return Mathematics.Properties.Resources.None;
 
-                case ArtefactCriticality.Critical:
+                case ArtifactCriticality.Critical:
                     return Mathematics.Properties.Resources.NoneRed;
             }
 
@@ -66,7 +64,7 @@ namespace Mayfly.Wild
         }
     }
 
-    public enum ArtefactCriticality
+    public enum ArtifactCriticality
     {
         Normal,
         Allowed,

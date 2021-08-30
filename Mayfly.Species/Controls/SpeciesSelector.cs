@@ -677,7 +677,7 @@ namespace Mayfly.Species
             {
                 listSpc.Visible = false;
 
-                if ((string)Grid.CurrentCell.Value != valueBeforeEditing)
+                if (Grid.CurrentCell.Value.ToString() != valueBeforeEditing)
                 {
                     RunSelected(textBoxValue.Text);
                 }

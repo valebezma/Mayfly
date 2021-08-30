@@ -672,7 +672,7 @@ namespace Mayfly.Wild
                         if (logRow.IsQuantityNull()) continue;
                         //{
                         //    if (logRow.GetIndividualRows().Length == 0) continue; // It is just notice of species presence
-                        //    else return double.NaN; // It is artefact
+                        //    else return double.NaN; // It is artifact
                         //}
 
                         result += logRow.Quantity;

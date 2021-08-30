@@ -237,28 +237,28 @@
     <value>177, 6</value>
   </data>
   <data name="menuItemCardAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuItemCardAll.Text" xml:space="preserve">
     <value>All cards</value>
   </data>
   <data name="toolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>143, 6</value>
   </data>
   <data name="menuItemCardInvestigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuItemCardInvestigator.Text" xml:space="preserve">
     <value>Sampled by</value>
   </data>
   <data name="menuItemCardWater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuItemCardWater.Text" xml:space="preserve">
     <value>Sampled in</value>
   </data>
   <data name="menuItemCardGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="menuItemCardGear.Text" xml:space="preserve">
     <value>Sampled with</value>
@@ -339,22 +339,58 @@
     <value>Sample</value>
   </data>
   <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>185, 22</value>
   </data>
   <data name="menuItemSurveyInput.Text" xml:space="preserve">
     <value>Input survey data</value>
   </data>
   <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
+    <value>185, 22</value>
   </data>
   <data name="menuItemSpawning.Text" xml:space="preserve">
-    <value>Spawning conditions*</value>
+    <value>Spawning conditions</value>
   </data>
   <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
+    <value>59, 20</value>
   </data>
   <data name="menuSurvey.Text" xml:space="preserve">
-    <value>Survey</value>
+    <value>Survey*</value>
+  </data>
+  <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 22</value>
+  </data>
+  <data name="menuItemMSYR.Text" xml:space="preserve">
+    <value>Yield per recruit (Y/R) model</value>
+  </data>
+  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="menuItemMSY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 22</value>
+  </data>
+  <data name="menuItemMSY.Text" xml:space="preserve">
+    <value>Maximum sustainable yield (MSY) model</value>
+  </data>
+  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="menuItemPrediction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 22</value>
+  </data>
+  <data name="menuItemPrediction.Text" xml:space="preserve">
+    <value>Prediction model</value>
+  </data>
+  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
+  </data>
+  <data name="menuModels.Text" xml:space="preserve">
+    <value>Models*</value>
   </data>
   <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 22</value>
@@ -371,33 +407,6 @@
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 6</value>
   </data>
-  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
-  </data>
-  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
-    <value>By cohorts</value>
-  </data>
-  <data name="menuItemGrowth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="menuItemGrowth.Text" xml:space="preserve">
-    <value>Growth*</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
-    <value>By cohorts</value>
-  </data>
-  <data name="menuItemMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="menuItemMortality.Text" xml:space="preserve">
-    <value>Mortality*</value>
-  </data>
-  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 6</value>
-  </data>
   <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
   </data>
@@ -408,64 +417,49 @@
     <value>126, 6</value>
   </data>
   <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
+    <value>178, 22</value>
   </data>
   <data name="menuItemExtrapolation.Text" xml:space="preserve">
-    <value>Extrapolation method</value>
-  </data>
-  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="menuItemVpa.Text" xml:space="preserve">
-    <value>Virtual population analysis*</value>
+    <value>Direct extrapolation</value>
   </data>
   <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 22</value>
   </data>
   <data name="menuItemStock.Text" xml:space="preserve">
-    <value>Stock size</value>
+    <value>Stock size estimation</value>
   </data>
-  <data name="menuFishery.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 20</value>
   </data>
-  <data name="menuFishery.Text" xml:space="preserve">
-    <value>Fishery</value>
+  <data name="menuInstant.Text" xml:space="preserve">
+    <value>Instant fishery assessment</value>
   </data>
-  <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
+  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
   </data>
-  <data name="menuItemMSYR.Text" xml:space="preserve">
-    <value>Yield per recruit (Y/R) model*</value>
+  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
+    <value>Growth</value>
   </data>
-  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
+  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
   </data>
-  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
-    <value>Unspecified</value>
+  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
+    <value>Mortality</value>
   </data>
-  <data name="menuItemMSY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 6</value>
   </data>
-  <data name="menuItemMSY.Text" xml:space="preserve">
-    <value>Maximum sustainable yield (MSY) model*</value>
+  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
   </data>
-  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
+  <data name="menuItemVpa.Text" xml:space="preserve">
+    <value>Virtual population analysis</value>
   </data>
-  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
-    <value>Unspecified</value>
+  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
   </data>
-  <data name="menuItemPrediction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
-  </data>
-  <data name="menuItemPrediction.Text" xml:space="preserve">
-    <value>Prediction model*</value>
-  </data>
-  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
-  </data>
-  <data name="menuModels.Text" xml:space="preserve">
-    <value>Models</value>
+  <data name="menuCohort.Text" xml:space="preserve">
+    <value>Cohort analysis*</value>
   </data>
   <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
@@ -903,52 +897,52 @@
   <data name="&gt;&gt;labelQtyValue.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="labelArtefacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelArtifacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="labelArtefacts.AutoSize" type="System.Boolean, mscorlib">
+  <data name="labelArtifacts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="labelArtefacts.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelArtifacts.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt</value>
   </data>
-  <data name="labelArtefacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelArtifacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelArtefacts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelArtifacts.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 700</value>
   </data>
-  <data name="labelArtefacts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="labelArtifacts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>
   </data>
-  <data name="labelArtefacts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 13</value>
+  <data name="labelArtifacts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
   </data>
-  <data name="labelArtefacts.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelArtifacts.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="labelArtefacts.Text" xml:space="preserve">
-    <value>Check data for artefacts</value>
+  <data name="labelArtifacts.Text" xml:space="preserve">
+    <value>Check data for artifacts</value>
   </data>
-  <data name="labelArtefacts.Visible" type="System.Boolean, mscorlib">
+  <data name="labelArtifacts.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Name" xml:space="preserve">
-    <value>labelArtefacts</value>
+  <data name="&gt;&gt;labelArtifacts.Name" xml:space="preserve">
+    <value>labelArtifacts</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.Parent" xml:space="preserve">
     <value>tabPageInfo</value>
   </data>
-  <data name="&gt;&gt;labelArtefacts.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelArtifacts.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="pictureBoxArtefacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="pictureBoxArtefacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
         JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
@@ -965,34 +959,34 @@
         93H55gw72fv3UU6A/N/PlCgW/IffGbJfMUye8eXDyuYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pictureBoxArtefacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBoxArtefacts.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pictureBoxArtifacts.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 699</value>
   </data>
-  <data name="pictureBoxArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pictureBoxArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
-  <data name="pictureBoxArtefacts.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+  <data name="pictureBoxArtifacts.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
   </data>
-  <data name="pictureBoxArtefacts.TabIndex" type="System.Int32, mscorlib">
+  <data name="pictureBoxArtifacts.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="pictureBoxArtefacts.Visible" type="System.Boolean, mscorlib">
+  <data name="pictureBoxArtifacts.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Name" xml:space="preserve">
-    <value>pictureBoxArtefacts</value>
+  <data name="&gt;&gt;pictureBoxArtifacts.Name" xml:space="preserve">
+    <value>pictureBoxArtifacts</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Type" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.Parent" xml:space="preserve">
     <value>tabPageInfo</value>
   </data>
-  <data name="&gt;&gt;pictureBoxArtefacts.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pictureBoxArtifacts.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="listViewInvestigators.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1102,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAfABNQHwATUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAWABNgFgATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2422,7 +2416,7 @@
     <value>In stratified samples, kg*</value>
   </data>
   <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>496, 95</value>
+    <value>1123, 56</value>
   </metadata>
   <data name="label9.ToolTip" xml:space="preserve">
     <value>Mass of stratified samples is recovered using mass growth models</value>
@@ -4502,63 +4496,6 @@
   <data name="&gt;&gt;tabPageSpc.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label22.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>694, 696</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="label22.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Group rows by:</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBoxLogTaxa.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="comboBoxLogTaxa.Location" type="System.Drawing.Point, System.Drawing">
-    <value>798, 693</value>
-  </data>
-  <data name="comboBoxLogTaxa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
-  </data>
-  <data name="comboBoxLogTaxa.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogTaxa.Name" xml:space="preserve">
-    <value>comboBoxLogTaxa</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogTaxa.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogTaxa.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;comboBoxLogTaxa.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonSelectLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -4587,7 +4524,7 @@
     <value>tabPageLog</value>
   </data>
   <data name="&gt;&gt;buttonSelectLog.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="spreadSheetLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -4730,7 +4667,7 @@
     <value>tabPageLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -5146,13 +5083,13 @@ Please, note that in further analysis.</value>
   <data name="columnIndConditionSoma.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <metadata name="columnIndRegID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="columnIndTally.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnIndRegID.HeaderText" xml:space="preserve">
+  <data name="columnIndTally.HeaderText" xml:space="preserve">
     <value>Tally</value>
   </data>
-  <data name="columnIndRegID.Width" type="System.Int32, mscorlib">
+  <data name="columnIndTally.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
   <metadata name="columnIndAge.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -5526,67 +5463,67 @@ Please, note that in further analysis.</value>
     <value>5</value>
   </data>
   <metadata name="loaderCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>567, 56</value>
+    <value>1934, 17</value>
   </metadata>
   <metadata name="dataSaver.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>462, 56</value>
+    <value>1829, 17</value>
   </metadata>
   <metadata name="loaderSpc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>679, 56</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="loaderSpcList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="loaderLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>785, 56</value>
+    <value>123, 56</value>
   </metadata>
   <metadata name="loaderInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1048, 56</value>
+    <value>386, 56</value>
   </metadata>
   <metadata name="loaderData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>351, 56</value>
+    <value>1718, 17</value>
   </metadata>
   <metadata name="loaderStratified.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>175, 95</value>
+    <value>802, 56</value>
   </metadata>
   <metadata name="loaderIndSimulated.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>644, 56</value>
   </metadata>
   <metadata name="loaderIndExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1152, 56</value>
+    <value>490, 56</value>
   </metadata>
   <metadata name="loaderLogExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>891, 56</value>
+    <value>229, 56</value>
   </metadata>
   <metadata name="loaderStratifiedExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>310, 95</value>
+    <value>937, 56</value>
   </metadata>
   <metadata name="fbdBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>637, 95</value>
+    <value>1264, 56</value>
   </metadata>
   <data name="fbdBackup.Description" xml:space="preserve">
     <value>Select folder to backup cards.</value>
   </data>
   <metadata name="dietCompiler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>746, 95</value>
+    <value>1373, 56</value>
   </metadata>
   <metadata name="artefactFinder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1194, 95</value>
+    <value>1916, 56</value>
   </metadata>
-  <metadata name="specTipper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>868, 95</value>
+  <metadata name="bioTipper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1608, 56</value>
   </metadata>
-  <metadata name="specUpdater.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>319, 134</value>
+  <metadata name="bioUpdater.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1495, 56</value>
   </metadata>
-  <metadata name="modelCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1085, 95</value>
+  <metadata name="qualCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1818, 56</value>
   </metadata>
   <metadata name="calcModel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>565, 134</value>
+    <value>453, 95</value>
   </metadata>
   <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>1384, 17</value>
   </metadata>
   <data name="tdbSaveAll.Text" xml:space="preserve">
     <value>Save All</value>
@@ -5604,7 +5541,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogClearSimulations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>151, 56</value>
+    <value>1518, 17</value>
   </metadata>
   <data name="tdbClearSimulation.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5619,7 +5556,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="tdRecover.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>979, 95</value>
+    <value>1712, 56</value>
   </metadata>
   <data name="tdbRecoverBackup.Text" xml:space="preserve">
     <value>Backup and continue</value>
@@ -5646,7 +5583,7 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogBio.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>439, 134</value>
+    <value>327, 95</value>
   </metadata>
   <data name="tdbSpecClear.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5664,16 +5601,16 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>1244, 17</value>
   </metadata>
   <metadata name="mathCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="mathLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>122, 134</value>
+    <value>122, 95</value>
   </metadata>
   <metadata name="mathInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>222, 134</value>
+    <value>222, 95</value>
   </metadata>
   <metadata name="notify.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>672, 134</value>
+    <value>560, 95</value>
   </metadata>
   <data name="notify.Text" xml:space="preserve">
     <value>notifyIcon1</value>
@@ -5685,7 +5622,7 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>184</value>
+    <value>136</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -8547,90 +8484,6 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;menuItemSpawning.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuFishery.Name" xml:space="preserve">
-    <value>menuFishery</value>
-  </data>
-  <data name="&gt;&gt;menuFishery.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemCenosis.Name" xml:space="preserve">
-    <value>menuItemCenosis</value>
-  </data>
-  <data name="&gt;&gt;menuItemCenosis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemComposition.Name" xml:space="preserve">
-    <value>menuItemComposition</value>
-  </data>
-  <data name="&gt;&gt;menuItemComposition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemGrowth.Name" xml:space="preserve">
-    <value>menuItemGrowth</value>
-  </data>
-  <data name="&gt;&gt;menuItemGrowth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemGrowthCohorts.Name" xml:space="preserve">
-    <value>menuItemGrowthCohorts</value>
-  </data>
-  <data name="&gt;&gt;menuItemGrowthCohorts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemMortality.Name" xml:space="preserve">
-    <value>menuItemMortality</value>
-  </data>
-  <data name="&gt;&gt;menuItemMortality.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemMortalityCohorts.Name" xml:space="preserve">
-    <value>menuItemMortalityCohorts</value>
-  </data>
-  <data name="&gt;&gt;menuItemMortalityCohorts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator22.Name" xml:space="preserve">
-    <value>toolStripSeparator22</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemStock.Name" xml:space="preserve">
-    <value>menuItemStock</value>
-  </data>
-  <data name="&gt;&gt;menuItemStock.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemExtrapolation.Name" xml:space="preserve">
-    <value>menuItemExtrapolation</value>
-  </data>
-  <data name="&gt;&gt;menuItemExtrapolation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemExtrapolationAll.Name" xml:space="preserve">
-    <value>menuItemExtrapolationAll</value>
-  </data>
-  <data name="&gt;&gt;menuItemExtrapolationAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
-    <value>toolStripSeparator12</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItemVpa.Name" xml:space="preserve">
-    <value>menuItemVpa</value>
-  </data>
-  <data name="&gt;&gt;menuItemVpa.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;menuModels.Name" xml:space="preserve">
     <value>menuModels</value>
   </data>
@@ -8665,6 +8518,84 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>menuItemPredictionUnspecified</value>
   </data>
   <data name="&gt;&gt;menuItemPredictionUnspecified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuInstant.Name" xml:space="preserve">
+    <value>menuInstant</value>
+  </data>
+  <data name="&gt;&gt;menuInstant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCenosis.Name" xml:space="preserve">
+    <value>menuItemCenosis</value>
+  </data>
+  <data name="&gt;&gt;menuItemCenosis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemComposition.Name" xml:space="preserve">
+    <value>menuItemComposition</value>
+  </data>
+  <data name="&gt;&gt;menuItemComposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
+    <value>toolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemStock.Name" xml:space="preserve">
+    <value>menuItemStock</value>
+  </data>
+  <data name="&gt;&gt;menuItemStock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemExtrapolation.Name" xml:space="preserve">
+    <value>menuItemExtrapolation</value>
+  </data>
+  <data name="&gt;&gt;menuItemExtrapolation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemExtrapolationAll.Name" xml:space="preserve">
+    <value>menuItemExtrapolationAll</value>
+  </data>
+  <data name="&gt;&gt;menuItemExtrapolationAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
+    <value>toolStripSeparator12</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuCohort.Name" xml:space="preserve">
+    <value>menuCohort</value>
+  </data>
+  <data name="&gt;&gt;menuCohort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemGrowthCohorts.Name" xml:space="preserve">
+    <value>menuItemGrowthCohorts</value>
+  </data>
+  <data name="&gt;&gt;menuItemGrowthCohorts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemMortalityCohorts.Name" xml:space="preserve">
+    <value>menuItemMortalityCohorts</value>
+  </data>
+  <data name="&gt;&gt;menuItemMortalityCohorts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Name" xml:space="preserve">
+    <value>toolStripSeparator22</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemVpa.Name" xml:space="preserve">
+    <value>menuItemVpa</value>
+  </data>
+  <data name="&gt;&gt;menuItemVpa.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuCards.Name" xml:space="preserve">
@@ -9483,10 +9414,10 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;columnIndConditionSoma.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;columnIndRegID.Name" xml:space="preserve">
-    <value>columnIndRegID</value>
+  <data name="&gt;&gt;columnIndTally.Name" xml:space="preserve">
+    <value>columnIndTally</value>
   </data>
-  <data name="&gt;&gt;columnIndRegID.Type" xml:space="preserve">
+  <data name="&gt;&gt;columnIndTally.Type" xml:space="preserve">
     <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnIndAge.Name" xml:space="preserve">
@@ -9771,22 +9702,22 @@ If you will find any mistake in you'll just reload previously backed up cards.</
   <data name="&gt;&gt;artefactFinder.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;specTipper.Name" xml:space="preserve">
-    <value>specTipper</value>
+  <data name="&gt;&gt;bioTipper.Name" xml:space="preserve">
+    <value>bioTipper</value>
   </data>
-  <data name="&gt;&gt;specTipper.Type" xml:space="preserve">
+  <data name="&gt;&gt;bioTipper.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;specUpdater.Name" xml:space="preserve">
-    <value>specUpdater</value>
+  <data name="&gt;&gt;bioUpdater.Name" xml:space="preserve">
+    <value>bioUpdater</value>
   </data>
-  <data name="&gt;&gt;specUpdater.Type" xml:space="preserve">
+  <data name="&gt;&gt;bioUpdater.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;modelCalc.Name" xml:space="preserve">
-    <value>modelCalc</value>
+  <data name="&gt;&gt;qualCalc.Name" xml:space="preserve">
+    <value>qualCalc</value>
   </data>
-  <data name="&gt;&gt;modelCalc.Type" xml:space="preserve">
+  <data name="&gt;&gt;qualCalc.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;calcModel.Name" xml:space="preserve">

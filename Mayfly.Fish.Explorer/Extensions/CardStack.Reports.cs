@@ -33,21 +33,21 @@ namespace Mayfly.Fish.Explorer
         /// <param name="speciesRow"></param>
         public static void AddCommon(this CardStack stack, Report report, Data.SpeciesRow speciesRow)
         {
-            Artefact[] artefacts = stack.GetArtefacts();
+            ConsistencyChecker[] artifacts = stack.CheckConsistency();
 
             string warning = string.Empty;
 
-            if (artefacts.Length > 0)
+            if (artifacts.Length > 0)
             {
-                warning = Resources.Artefact.ArtefactsFound + System.Environment.NewLine;
+                warning = Resources.Artifact.ArtifactsFound + System.Environment.NewLine;
 
-                foreach (Artefact artefact in artefacts)
+                foreach (ConsistencyChecker artifact in artifacts)
                 {
-                    // If report is about species - skip artefacts of other species
-                    if (speciesRow != null && artefact is SpeciesArtefact && ((SpeciesArtefact)artefact).SpeciesRow != speciesRow)
+                    // If report is about species - skip artifacts of other species
+                    if (speciesRow != null && artifact is SpeciesConsistencyChecker && ((SpeciesConsistencyChecker)artifact).SpeciesRow != speciesRow)
                         continue;
 
-                    warning += artefact.ToString() + System.Environment.NewLine;
+                    warning += artifact.ToString() + System.Environment.NewLine;
                 }
             }
 

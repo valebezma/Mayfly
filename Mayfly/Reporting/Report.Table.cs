@@ -510,15 +510,14 @@ namespace Mayfly
     [Flags]
     public enum ReportCellClass
     {
-        None = 0x0,       // Left
-        Centered = 0x1,   // Center
-        Right = 0x2,      // Right
-        //Prompt = 0x4,     // Color of table border
-        Bold = 0x8,       // Bold
-        Comment = 0x10,    // Little font
-        Input = 0x20,      // User input on paper forms
-        Hand = 0x40,        // User input appears in handwritten manner
-        Overlay = 0x80,
-        Sider = 0x3
+        None = 1,       // Left
+        Centered = 2,   // Center
+        Right = 4,      // Right
+        Bold = 8,       // Bold
+        Comment = 16,    // Little font
+        Input = 32,      // User input on paper forms
+        Hand = 64,        // User input appears in handwritten manner
+        Overlay = 128,
+        Sider = 256
     }
 }

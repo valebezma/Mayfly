@@ -26,28 +26,42 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            UI.SetMenuAvailability("Fishery Scientist",
-                menuItemExportSpec,
+            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+
+                // Bio import/export
+                //menuItemExportSpec,
                 menuItemImportSpec,
-                toolStripSeparator11,
+                //toolStripSeparator11,
+
+                // All stats
                 menuItemGearStats,
                 menuItemSpcStats,
-                menuSurvey,
-                menuFishery,
-                menuItemCardCatches,
-                menuItemCardEfforts,
-                toolStripSeparator14,
-                menuItemSpcTotals,
-                menuItemSpcStrates,
-                toolStripSeparator13,
-                menuModels,
-                menuItemMortality,
-                menuItemVpa,
-                menuItemGrowth);
 
-            UI.SetControlsAvailability("Fishery Scientist",
-                buttonCardDetails,
-                buttonSpcDetails);
+                // Assessment
+                menuInstant
+
+                // From cards to gear stats
+                //menuItemCardCatches,
+                //menuItemCardEfforts,
+                //toolStripSeparator2,
+
+                //// From species to species stats
+                //menuItemSpcTotals,
+                //menuItemSpcStrates,
+                //toolStripSeparator13
+                );
+
+            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Insider,
+                // Fast input
+                menuSurvey,
+                // Models
+                menuModels,
+                // Cohort analysis
+                menuCohort);
+
+            //UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+            //    buttonCardDetails,
+            //    buttonSpcDetails);
 
 
             Fish.UserSettings.Interface.OpenDialog.Multiselect = true;
@@ -123,7 +137,7 @@ namespace Mayfly.Fish.Explorer
             columnIndSomaticMass.ValueType = typeof(double);
             columnIndCondition.ValueType = typeof(double);
             columnIndConditionSoma.ValueType = typeof(double);
-            columnIndRegID.ValueType = typeof(string);
+            columnIndTally.ValueType = typeof(string);
             columnIndAge.ValueType = typeof(Age);
             columnIndGeneration.ValueType = typeof(int);
             columnIndSex.ValueType = typeof(Sex);
@@ -342,11 +356,11 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Fishery Scientist"))
-            {
-                e.Cancel = true;
-                return;
-            }
+            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
+            //{
+            //    e.Cancel = true;
+            //    return;
+            //}
 
             data.RefreshBios();
         }
@@ -355,7 +369,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (!e.Cancelled)
             {
-                processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtefactsProcessing);
+                processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtifactsProcessing);
                 artefactFinder.RunWorkerAsync();
             }
             else
@@ -371,48 +385,37 @@ namespace Mayfly.Fish.Explorer
 
         private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Fishery Scientist"))
-            {
-                e.Cancel = true;
-                return;
-            }
+            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
+            //{
+            //    e.Cancel = true;
+            //    return;
+            //}
 
-            e.Result = AllowedStack.GetArtefacts();
+            e.Result = AllowedStack.CheckConsistency();
         }
 
         private void artefactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {
-                Artefact[] artefacts = (Artefact[])e.Result;
+                ConsistencyChecker[] artifacts = (ConsistencyChecker[])e.Result;
 
-                labelArtefacts.Visible = pictureBoxArtefacts.Visible = artefacts.Length > 0;
+                labelArtifacts.Visible = pictureBoxArtifacts.Visible = artifacts.Length > 0;
 
-                if (artefacts.Length > 0)
+                if (artifacts.Length > 0)
                 {
                     Notification.ShowNotification(
-                        Wild.Resources.Interface.Messages.ArtefactsNotification,
-                        Wild.Resources.Interface.Messages.ArtefactsNotificationInstruction);
+                        Wild.Resources.Interface.Messages.ArtifactsNotification,
+                        Wild.Resources.Interface.Messages.ArtifactsNotificationInstruction);
                 }
                 else
                 {
-                    Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtefactsNoneNotification,
-                        Wild.Resources.Interface.Messages.ArtefactsNoneNotificationInstruction);
-                }
-
-                if (tabPageSpc.Parent != null)
-                {
-                    foreach (Artefact artefact in artefacts)
-                    {
-                        if (artefact is SpeciesArtefact sa)
-                        {
-                            updateSpeciesArtefact(columnSpcID.GetRow(sa.SpeciesRow.ID));
-                        }
-                    }
+                    Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtifactsNoneNotification,
+                        Wild.Resources.Interface.Messages.ArtifactsNoneNotificationInstruction);
                 }
             }
 
-            applyBio();
+            updateArtifacts();
 
             IsBusy = false;
             processDisplay.StopProcessing();
@@ -582,7 +585,7 @@ namespace Mayfly.Fish.Explorer
             comboBoxQualType.DataSource = AllowedStack.GetSamplerTypeDisplays();
             comboBoxQualType.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxQualType.DataSource)[0];
 
-            ClearSpcStats();
+            clearSpcStats();
             species_Changed(spreadSheetSpcStats, e);
         }
 
@@ -601,7 +604,7 @@ namespace Mayfly.Fish.Explorer
             loadLog();
         }
 
-        private void menuItemIndAll_Click(object sender, EventArgs e)
+        private void menuItemIndAllAll_Click(object sender, EventArgs e)
         {
             loadIndividuals();
         }
@@ -1477,32 +1480,37 @@ namespace Mayfly.Fish.Explorer
 
         private void label1_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndSpecies);
+            loadIndividuals(selectedStatSpc);
         }
 
         private void label2_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndLength);
+            getFilteredList(columnIndLength);
         }
 
         private void label3_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndMass);
+            getFilteredList(columnIndMass);
+        }
+
+        private void label35_DoubleClick(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndTally);
         }
 
         private void label4_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndAge);
+            getFilteredList(columnIndAge);
         }
 
         private void label5_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndSex);
+            getFilteredList(columnIndSex);
         }
 
         private void label6_DoubleClick(object sender, EventArgs e)
         {
-            GetFilteredList(columnIndMaturity);
+            getFilteredList(columnIndMaturity);
         }
 
         private void label7_DoubleClick(object sender, EventArgs e)
@@ -1641,7 +1649,7 @@ namespace Mayfly.Fish.Explorer
 
         private void models_Changed(object sender, EventArgs e)
         {
-            if (!Licensing.Verify("Fishery Scientist")) return;
+            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             plotQualify.Visible = selectedStatSpc != null;
 
@@ -1662,11 +1670,11 @@ namespace Mayfly.Fish.Explorer
                 selectedQualificationWay == DataQualificationWay.WeightOfLength ?
                 Wild.Resources.Reports.Caption.MassUnit : Wild.Resources.Reports.Caption.AgeUnit;
 
-            if (calcModel.IsBusy) { calcModel.CancelAsync(); }
-            else { calcModel.RunWorkerAsync(); }
+            if (qualCalc.IsBusy) { qualCalc.CancelAsync(); }
+            else { qualCalc.RunWorkerAsync(); }
         }
 
-        private void calcModel_DoWork(object sender, DoWorkEventArgs e)
+        private void qualCalc_DoWork(object sender, DoWorkEventArgs e)
         {
             switch (selectedQualificationWay)
             {
@@ -1684,13 +1692,13 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void calcModel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void qualCalc_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
                 if (selectedStatSpc != null)
                 {
-                    calcModel.RunWorkerAsync(comboBoxQualValue.SelectedIndex);
+                    qualCalc.RunWorkerAsync(comboBoxQualValue.SelectedIndex);
                 }
 
                 return;
@@ -1962,6 +1970,8 @@ namespace Mayfly.Fish.Explorer
 
             tabPageCard.Parent = tabControl;
             tabControl.SelectedTab = tabPageCard;
+
+            updateArtifacts();
         }
 
         private void spreadSheetCard_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -2167,7 +2177,7 @@ namespace Mayfly.Fish.Explorer
                     gridRow.Cells[columnSpcOccurrence.Index].Value = speciesComposition[i].Occurrence;
                     result.Add(gridRow);
 
-                    updateSpeciesArtefact(gridRow);
+                    updateSpeciesArtifacts(gridRow);
 
                     (sender as BackgroundWorker).ReportProgress(i + 1);
                 }
@@ -2223,7 +2233,7 @@ namespace Mayfly.Fish.Explorer
             tabPageSpc.Parent = tabControl;
             tabControl.SelectedTab = tabPageSpc;
 
-            //tab_Changed(sender, e);
+            updateArtifacts();
         }
 
 
@@ -2242,39 +2252,6 @@ namespace Mayfly.Fish.Explorer
             }
 
             columnSpcSpc.HeaderText = baseSpc == null ? Wild.Resources.Reports.Caption.Species : baseSpc.BaseName;
-        }
-
-        private void baseItem_Click(object sender, EventArgs e)
-        {
-            SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
-            DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
-                baseRow.BaseName, typeof(string), 0);
-
-            foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
-            {
-                if (gridRow.Cells[columnSpcSpc.Index].Value == null)
-                {
-                    continue;
-                }
-
-                if (gridRow.Cells[columnSpcSpc.Index].Value as string ==
-                    Species.Resources.Interface.UnidentifiedTitle)
-                {
-                    continue;
-                }
-
-                SpeciesKey.SpeciesRow speciesRow = (gridRow.Cells[columnSpcSpc.Index].Value as Data.SpeciesRow).KeyRecord;
-
-                if (speciesRow == null)
-                {
-                    gridRow.Cells[gridColumn.Index].Value = null;
-                }
-                else
-                {
-                    SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
-                }
-            }
         }
 
         private void contextSpecies_Opening(object sender, CancelEventArgs e)
@@ -2334,8 +2311,6 @@ namespace Mayfly.Fish.Explorer
             {
                 saveLogRow(spreadSheetLog.Rows[e.RowIndex]);
             }
-
-            // To do what?
         }
 
         private void spreadSheetLog_SelectionChanged(object sender, EventArgs e)
@@ -2343,7 +2318,7 @@ namespace Mayfly.Fish.Explorer
 
         private void contextLog_Opening(object sender, CancelEventArgs e)
         {
-            contextLogOpen.Enabled = baseLog == null && spreadSheetLog.SelectedRows.Count > 0;
+            contextLogOpen.Enabled = spreadSheetLog.SelectedRows.Count > 0;
 
             bool hasStratified = false;
             bool hasSampled = false;
@@ -2397,77 +2372,6 @@ namespace Mayfly.Fish.Explorer
             e.Result = result.ToArray();
         }
 
-        private void logLoaderTaxa_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //List<DataGridViewRow> result = new List<DataGridViewRow>();
-
-            //Data.LogRow[] logRows = (Data.LogRow[])e.Argument;
-
-            //for (int i = 0; i < logRows.Length; i++)
-            //{
-            //    if (logRows[i].QuantityStratified > 0)
-            //    {
-            //        result.Add(createTaxonLogRow(logRows[i]));
-            //    }
-            //    (sender as BackgroundWorker).ReportProgress(i + 1);
-            //}
-
-            //e.Result = result.ToArray();
-
-
-
-
-
-
-            //List<DataGridViewRow> result = new List<DataGridViewRow>();
-
-            //List<Data.LogRow> logRows = new List<Data.LogRow>();
-
-            //foreach (Data.SpeciesRow spcRow in selectedLogSpcRows)
-            //{
-            //    logRows.AddRange(selectesLogStack.GetLogRows(spcRow));
-            //}
-
-            //if (baseLog == null)
-            //{
-            //    for (int i = 0; i < logRows.Count; i++)
-            //    {
-            //        DataGridViewRow gridRow = new DataGridViewRow();
-            //        gridRow.CreateCells(spreadSheetLog);
-            //        gridRow.Cells[columnLogID.Index].Value = logRows[i].ID;
-            //        updateLogRow(gridRow);
-            //        result.Add(gridRow);
-
-            //        (sender as BackgroundWorker).ReportProgress(i + 1);
-            //    }
-            //}
-            //else
-            //{
-            //    // How to analize selectedLogSpcRows???
-
-            //    for (int i = 0; i < selectesLogStack.Count; i++)
-            //    {
-            //        foreach (SpeciesKey.TaxaRow taxaRow in data.Species.Taxa(baseLog))
-            //        {
-            //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxaRow);
-
-            //            if (gridRow == null) continue;
-
-            //            result.Add(gridRow);
-
-            //            if ((int)gridRow.Cells[columnLogQuantity.Index].Value == 0)
-            //            {
-            //                spreadSheetLog.SetHidden(gridRow);
-            //            }
-            //        }
-
-            //        (sender as BackgroundWorker).ReportProgress(i + 1);
-            //    }
-            //}
-
-            //e.Result = result.ToArray();
-        }
-
         private void logLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             spreadSheetLog.Rows.AddRange(e.Result as DataGridViewRow[]);
@@ -2481,7 +2385,7 @@ namespace Mayfly.Fish.Explorer
             columnLogDiversityA.Visible = (baseSpc != null);
             columnLogDiversityB.Visible = (baseSpc != null);
 
-            //tab_Changed(tabPageLog, new EventArgs());
+            updateArtifacts();
         }
 
         private void logExtender_DoWork(object sender, DoWorkEventArgs e)
@@ -2494,13 +2398,6 @@ namespace Mayfly.Fish.Explorer
                     new object[] { logRow.CardRow, gridRow, spreadSheetLog.GetInsertedColumns() });
                 ((BackgroundWorker)sender).ReportProgress(gridRow.Index + 1);
             }
-        }
-        
-        private void comboBoxLogTaxa_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            baseLog = comboBoxLogTaxa.SelectedItem as SpeciesKey.BaseRow;
-            spreadSheetLog.ReadOnly = baseLog != null;
-            //loadLog((Data.SpeciesRow[])data.Species.Select()), FullStack);
         }
 
         private void buttonSelectLog_Click(object sender, EventArgs e)
@@ -2628,12 +2525,6 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnIndID.Index].Value = indRows[i].ID;
                 updateIndividualRow(gridRow);
 
-                if (Licensing.Verify("Fishery Scientist"))
-                {
-                    SetIndividualAgeTip(gridRow, indRows[i]);
-                    SetIndividualMassTip(gridRow, indRows[i]);
-                }
-
                 setCardValue(indRows[i].LogRow.CardRow, gridRow, spreadSheetInd.GetInsertedColumns());
                 result.Add(gridRow);
                 (sender as BackgroundWorker).ReportProgress(i + 1);
@@ -2651,6 +2542,9 @@ namespace Mayfly.Fish.Explorer
 
             tabPageInd.Parent = tabControl;
             tabControl.SelectedTab = tabPageInd;
+
+            applyBio();
+            updateArtifacts();
         }
 
         private void indExtender_DoWork(object sender, DoWorkEventArgs e)
@@ -2665,18 +2559,18 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private void specTipper_DoWork(object sender, DoWorkEventArgs e)
+        private void bioTipper_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Fishery Scientist")) return;
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
-                if (UserSettings.AgeSuggest) SetIndividualAgeTip(gridRow);
-                if (UserSettings.MassSuggest) SetIndividualMassTip(gridRow);
+                if (UserSettings.AgeSuggest) setIndividualAgeTip(gridRow);
+                if (UserSettings.MassSuggest) setIndividualMassTip(gridRow);
             }
         }
 
-        private void specTipper_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bioTipper_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             spreadSheetInd.StopProcessing();
         }
@@ -2748,7 +2642,7 @@ namespace Mayfly.Fish.Explorer
 
             if (spreadSheetInd.Columns[e.ColumnIndex].ReadOnly) return;
 
-            Data.IndividualRow editedIndividualRow = findIndividualRow(spreadSheetInd.Rows[e.RowIndex]);
+            Data.IndividualRow editedIndividualRow;
 
             // If values was typed in
             if (spreadSheetInd.ContainsFocus)
@@ -2760,19 +2654,8 @@ namespace Mayfly.Fish.Explorer
                 if (e.ColumnIndex == columnIndLength.Index || e.ColumnIndex == columnIndMass.Index || e.ColumnIndex == columnIndAge.Index)
                 {
                     // Recalculate if needed
-                    if (specUpdater.IsBusy) { specUpdater.CancelAsync(); }
-                    else { specUpdater.RunWorkerAsync(editedIndividualRow.LogRow.SpeciesRow); }
-                }
-
-                // If age was changed
-                if (e.ColumnIndex == columnIndAge.Index)
-                {
-                    // Reset formatting
-                    Wild.Service.HandleAgeInput(spreadSheetInd[columnIndAge.Index, e.RowIndex]);
-
-                    // Set generation value
-                    if (editedIndividualRow.IsAgeNull()) { spreadSheetInd[columnIndGeneration.Index, e.RowIndex].Value = null; }
-                    else { spreadSheetInd[columnIndGeneration.Index, e.RowIndex].Value = editedIndividualRow.Generation; }
+                    if (bioUpdater.IsBusy) { bioUpdater.CancelAsync(); }
+                    else { bioUpdater.RunWorkerAsync(editedIndividualRow.LogRow.SpeciesRow); }
                 }
 
                 // If mass was changed
@@ -2783,6 +2666,10 @@ namespace Mayfly.Fish.Explorer
                     labelWgtValue.Text = Wild.Service.GetFriendlyMass(AllowedStack.Mass() * 1000);
                 }
 
+            }
+            else
+            {
+                editedIndividualRow = findIndividualRow(spreadSheetInd.Rows[e.RowIndex]);
             }
 
             // Further - autocalculations
@@ -2863,48 +2750,34 @@ namespace Mayfly.Fish.Explorer
                     spreadSheetInd[columnIndConsumptionIndex.Index, e.RowIndex].Value = editedIndividualRow.GetConsumptionIndex();
                 }
             }
+
+
         }
 
-        private void specUpdater_DoWork(object sender, DoWorkEventArgs e)
+        private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!Licensing.Verify("Fishery Scientist")) return;
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
             e.Result = speciesRow;
 
-            if (UserSettings.MassSuggest)
-            {
-                data.FindMassModel(speciesRow.Species).RefreshInternal();
-
-                foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
-                {
-                    if (findIndividualRow(gridRow).LogRow.SpeciesRow != speciesRow) continue;
-                    SetIndividualMassTip(gridRow);
-                }
-            }
-
-            if (UserSettings.AgeSuggest)
-            {
-                data.FindGrowthModel(speciesRow.Species).RefreshInternal();
-
-                foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
-                {
-                    if (findIndividualRow(gridRow).LogRow.SpeciesRow != speciesRow) continue;
-                    SetIndividualAgeTip(gridRow);
-                }
-            }
+            data.FindMassModel(speciesRow.Species).RefreshInternal();
+            data.FindGrowthModel(speciesRow.Species).RefreshInternal();
         }
 
-        private void specUpdater_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bioUpdater_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled) {
-                specUpdater.RunWorkerAsync(e.Result);
+            if (e.Cancelled)
+            {
+                bioUpdater.RunWorkerAsync(e.Result);
                 return;
             }
             else if (selectedStatSpc == (Data.SpeciesRow)e.Result)
             {
-                calcModel.RunWorkerAsync((Data.SpeciesRow)e.Result);
+                qualCalc.RunWorkerAsync((Data.SpeciesRow)e.Result);
             }
+
+            applyBio();
         }
 
 
@@ -3227,6 +3100,8 @@ namespace Mayfly.Fish.Explorer
 
             tabPageStratified.Parent = tabControl;
             tabControl.SelectedTab = tabPageStratified;
+
+            //updateArtifacts();
         }
 
         private void stratifiedExtender_DoWork(object sender, DoWorkEventArgs e)

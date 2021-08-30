@@ -124,10 +124,10 @@
   <data name="checkBoxRate.Text" xml:space="preserve">
     <value>Оценивать данные на домашней вкладке</value>
   </data>
-  <data name="checkBoxArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBoxArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 17</value>
   </data>
-  <data name="checkBoxArtefacts.Text" xml:space="preserve">
+  <data name="checkBoxArtifacts.Text" xml:space="preserve">
     <value>Проверять данные на артефакты после загрузки</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">

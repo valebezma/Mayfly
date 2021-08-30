@@ -2071,7 +2071,6 @@ namespace Mayfly.Controls
             }
             else
             {
-                FilteringArgs = e;
                 e.BackgroundWorker.RunWorkerCompleted += Filterate;
                 launchHandler.Invoke(null, new EventArgs());
             }
@@ -2154,25 +2153,39 @@ namespace Mayfly.Controls
 
         public void OpenFilter(DataGridViewColumn[] gridColumns, object[] values, bool dropPrevious)
         {
-            if (gridColumns.Length == 1)
+            if (gridColumns.Length == 1 && values.Length > 1)
             {
-                double min = double.MaxValue;
-                double max = double.MinValue;
+                    double min = double.MaxValue;
+                    double max = double.MinValue;
 
-                foreach (object o in values)
-                {
-                    min = Math.Min(min, o.ToDouble());
-                    max = Math.Max(max, o.ToDouble());
-                }
+                    foreach (object o in values)
+                    {
+                        min = Math.Min(min, o.ToDouble());
+                        max = Math.Max(max, o.ToDouble());
+                    }
 
-                OpenFilter(gridColumns[0], min, max, dropPrevious);
+                    OpenFilter(gridColumns[0], min, max, dropPrevious);
             }
             else
             {
                 OpenFilter(dropPrevious);
                 for (int i = 0; i < gridColumns.Length; i++)
                 {
-                    Filter.AddFilter(gridColumns[i], values[i]);
+                    if (values[i] == null)
+                    {
+                        if (gridColumns[i].ValueType == typeof(double))
+                        {
+                            Filter.AddFilter(gridColumns[i]);
+                        }
+                        else
+                        {
+                            Filter.AddFilter(gridColumns[i], Resources.Interface.EmptyValue, true);
+                        }
+                    }
+                    else
+                    {
+                        Filter.AddFilter(gridColumns[i], values[i]);
+                    }
                 }
                 Filter.Apply();
             }

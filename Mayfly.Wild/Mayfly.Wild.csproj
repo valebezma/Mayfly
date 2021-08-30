@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Artefact.cs" />
+    <Compile Include="ConsistencyChecker.cs" />
     <Compile Include="Bio\ContuniousBio.cs" />
     <Compile Include="Bio\Data.cs" />
     <Compile Include="CardStack\CardStack.Compositions.cs" />

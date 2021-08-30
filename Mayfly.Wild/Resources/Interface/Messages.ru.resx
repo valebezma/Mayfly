@@ -126,10 +126,10 @@
   <data name="AlreadyOpened" xml:space="preserve">
     <value>Карточка уже открыта</value>
   </data>
-  <data name="ArtefactsNotification" xml:space="preserve">
+  <data name="ArtifactsNotification" xml:space="preserve">
     <value>В ваших данных есть артефакты</value>
   </data>
-  <data name="ArtefactsNotificationInstruction" xml:space="preserve">
+  <data name="ArtifactsNotificationInstruction" xml:space="preserve">
     <value>Нажмите это сообщение, чтобы просмотреть артефакты, содержащиеся в ваших данных. Перед началом анализа мы рекомендуем избавиться от артефактов в данных</value>
   </data>
   <data name="ClearRecent" xml:space="preserve">

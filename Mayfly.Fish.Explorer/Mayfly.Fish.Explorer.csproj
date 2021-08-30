@@ -126,7 +126,7 @@
     <Compile Include="Compositions\PredictionModel.cs" />
     <Compile Include="Compositions\YieldPerRecruitModel.cs" />
     <Compile Include="Extensions\CardStackExtensions.cs" />
-    <Compile Include="Extensions\CardStack.Artefacts.cs" />
+    <Compile Include="Extensions\ConsistencyCheckers.cs" />
     <Compile Include="Extensions\CardStack.Reports.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\CompositionExtensions.cs" />
@@ -294,28 +294,7 @@
       <DependentUpon>WizardExtrapolation.cs</DependentUpon>
     </Compile>
     <Compile Include="Compositions\GillnetSelectivityModel.cs" />
-    <Compile Include="MainForm.Cards.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.General.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Individuals.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Log.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Species.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.GearStats.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.SpeciesStats.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Stratified.cs">
+    <Compile Include="MainForm.Methods.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Resources\Reports\Sections\ALK.Designer.cs">
@@ -501,10 +480,10 @@
     <Compile Include="WizardTac.Designer.cs">
       <DependentUpon>WizardTac.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Artefact.Designer.cs">
+    <Compile Include="Resources\Artifact.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Artefact.resx</DependentUpon>
+      <DependentUpon>Artifact.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Reports\Common.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -903,11 +882,11 @@
     <EmbeddedResource Include="WizardTac.resx">
       <DependentUpon>WizardTac.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Artefact.resx">
+    <EmbeddedResource Include="Resources\Artifact.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Artefact.Designer.cs</LastGenOutput>
+      <LastGenOutput>Artifact.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Artefact.ru.resx">
+    <EmbeddedResource Include="Resources\Artifact.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Process.resx">

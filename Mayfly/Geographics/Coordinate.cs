@@ -63,10 +63,16 @@ namespace Mayfly.Geographics
 
             if (stringValue != string.Empty)
             {
+                if (stringValue.Length > 9)
+                {
+                    stringValue = stringValue.Substring(0, 9);
+                }
+
                 while (stringValue.Length < 9)
                 {
                     stringValue += "0";
                 }
+
                 switch (format)
                 {
                     case "d":

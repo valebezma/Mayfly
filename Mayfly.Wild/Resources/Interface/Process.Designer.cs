@@ -61,11 +61,11 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Looking for artefacts.
+        ///   Looks up a localized string similar to Looking for artifacts.
         /// </summary>
-        public static string ArtefactsProcessing {
+        public static string ArtifactsProcessing {
             get {
-                return ResourceManager.GetString("ArtefactsProcessing", resourceCulture);
+                return ResourceManager.GetString("ArtifactsProcessing", resourceCulture);
             }
         }
         

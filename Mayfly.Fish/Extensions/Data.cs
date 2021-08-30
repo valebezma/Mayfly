@@ -605,8 +605,9 @@ namespace Mayfly.Fish
             //return (100.0 * indRow.Mass) / Math.Pow(indRow.Length / 10.0, 3.0);
             if (indRow.IsMassNull()) return double.NaN;
             Data data = (Data)indRow.Table.DataSet;
-            if (data.MassModels == null) return double.NaN;
-            double wm = data.FindMassModel(indRow.Species).GetValue(indRow.Length);
+            ContinuousBio cb = data.FindMassModel(indRow.Species);
+            if (cb == null) return double.NaN;
+            double wm = cb.GetValue(indRow.Length);
             return indRow.Mass / wm;
         }
 

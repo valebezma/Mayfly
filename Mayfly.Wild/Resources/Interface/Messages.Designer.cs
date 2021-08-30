@@ -88,38 +88,38 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your data does not contain any artefacts.
+        ///   Looks up a localized string similar to Your data does not contain any artifacts.
         /// </summary>
-        public static string ArtefactsNoneNotification {
+        public static string ArtifactsNoneNotification {
             get {
-                return ResourceManager.GetString("ArtefactsNoneNotification", resourceCulture);
+                return ResourceManager.GetString("ArtifactsNoneNotification", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Data loaded to explorer is of very high quality. You can use it in any analysis..
         /// </summary>
-        public static string ArtefactsNoneNotificationInstruction {
+        public static string ArtifactsNoneNotificationInstruction {
             get {
-                return ResourceManager.GetString("ArtefactsNoneNotificationInstruction", resourceCulture);
+                return ResourceManager.GetString("ArtifactsNoneNotificationInstruction", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Artefacts found in your data.
+        ///   Looks up a localized string similar to Artifacts found in your data.
         /// </summary>
-        public static string ArtefactsNotification {
+        public static string ArtifactsNotification {
             get {
-                return ResourceManager.GetString("ArtefactsNotification", resourceCulture);
+                return ResourceManager.GetString("ArtifactsNotification", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click to explore artefacts in your data. We recommend to eliminate artefacts from your data before analisys.
+        ///   Looks up a localized string similar to Click to explore artifacts in your data. We recommend to eliminate artifacts from your data before analisys.
         /// </summary>
-        public static string ArtefactsNotificationInstruction {
+        public static string ArtifactsNotificationInstruction {
             get {
-                return ResourceManager.GetString("ArtefactsNotificationInstruction", resourceCulture);
+                return ResourceManager.GetString("ArtifactsNotificationInstruction", resourceCulture);
             }
         }
         

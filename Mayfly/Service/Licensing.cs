@@ -9,19 +9,6 @@ namespace Mayfly
 {
     public static class Licensing
     {
-        public static bool Verify(string feature)
-        {
-            return true;
-
-            //foreach (License lic in InstalledLicenses)
-            //{
-            //    if (lic.Feature != feature) continue;
-            //    if (lic.IsValid) return true;
-            //}
-
-            //return false;
-        }
-
         internal static List<License> installedLicenses;
 
         public static License[] InstalledLicenses
@@ -53,6 +40,8 @@ namespace Mayfly
                 return installedLicenses.ToArray();
             }
         }
+
+
 
         internal static void InspectLicensesExpiration()
         {
@@ -165,5 +154,34 @@ namespace Mayfly
             //return response.Length > 0 && response[0].Length > 1 && response[0].Substring(0, 2) == "OK";
         }
 
+
+
+        public static FeatureLevel AllowedFeaturesLevel
+        {
+            get
+            {
+                return FeatureLevel.Advanced;
+            }
+        }
+
+        public static bool Verify(string feature)
+        {
+            return true;
+
+            //foreach (License lic in InstalledLicenses)
+            //{
+            //    if (lic.Feature != feature) continue;
+            //    if (lic.IsValid) return true;
+            //}
+
+            //return false;
+        }
+    }
+
+    public enum FeatureLevel
+    {
+        Basic = 0,
+        Advanced = 1,
+        Insider = 2
     }
 }

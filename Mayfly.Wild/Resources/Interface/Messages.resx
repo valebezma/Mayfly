@@ -126,17 +126,17 @@
   <data name="AlreadyOpened" xml:space="preserve">
     <value>Card is already opened</value>
   </data>
-  <data name="ArtefactsNoneNotification" xml:space="preserve">
-    <value>Your data does not contain any artefacts</value>
+  <data name="ArtifactsNoneNotification" xml:space="preserve">
+    <value>Your data does not contain any artifacts</value>
   </data>
-  <data name="ArtefactsNoneNotificationInstruction" xml:space="preserve">
+  <data name="ArtifactsNoneNotificationInstruction" xml:space="preserve">
     <value>Data loaded to explorer is of very high quality. You can use it in any analysis.</value>
   </data>
-  <data name="ArtefactsNotification" xml:space="preserve">
-    <value>Artefacts found in your data</value>
+  <data name="ArtifactsNotification" xml:space="preserve">
+    <value>Artifacts found in your data</value>
   </data>
-  <data name="ArtefactsNotificationInstruction" xml:space="preserve">
-    <value>Click to explore artefacts in your data. We recommend to eliminate artefacts from your data before analisys</value>
+  <data name="ArtifactsNotificationInstruction" xml:space="preserve">
+    <value>Click to explore artifacts in your data. We recommend to eliminate artifacts from your data before analisys</value>
   </data>
   <data name="ClearRecent" xml:space="preserve">
     <value>Current list of recent species contains {0} records. Do you want to clear it anyway?</value>

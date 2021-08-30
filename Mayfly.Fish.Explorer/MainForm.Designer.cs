@@ -137,26 +137,25 @@
             this.menuSurvey = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSurveyInput = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpawning = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFishery = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemComposition = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemGrowth = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGrowthCohorts = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemMortality = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemMortalityCohorts = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemStock = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemExtrapolation = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemExtrapolationAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemVpa = new System.Windows.Forms.ToolStripMenuItem();
             this.menuModels = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMSYR = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMSY = new System.Windows.Forms.ToolStripMenuItem();
             this.meniItemMSYUnspecified = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemPrediction = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemPredictionUnspecified = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuInstant = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCenosis = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemComposition = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExtrapolation = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExtrapolationAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuCohort = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGrowthCohorts = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemMortalityCohorts = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemVpa = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCards = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCardMeteo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -196,8 +195,8 @@
             this.labelWgtValue = new System.Windows.Forms.Label();
             this.labelQty = new System.Windows.Forms.Label();
             this.labelQtyValue = new System.Windows.Forms.Label();
-            this.labelArtefacts = new System.Windows.Forms.Label();
-            this.pictureBoxArtefacts = new System.Windows.Forms.PictureBox();
+            this.labelArtifacts = new System.Windows.Forms.Label();
+            this.pictureBoxArtifacts = new System.Windows.Forms.PictureBox();
             this.listViewInvestigators = new System.Windows.Forms.ListView();
             this.columnInvestigator = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewDates = new System.Windows.Forms.ListView();
@@ -372,8 +371,6 @@
             this.contextSpcIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSpcStratified = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageLog = new System.Windows.Forms.TabPage();
-            this.label22 = new System.Windows.Forms.Label();
-            this.comboBoxLogTaxa = new System.Windows.Forms.ComboBox();
             this.buttonSelectLog = new System.Windows.Forms.Button();
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
             this.columnLogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -417,7 +414,7 @@
             this.columnIndSomaticMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndConditionSoma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnIndRegID = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
+            this.columnIndTally = new Mayfly.Controls.SpreadSheetIconTextBoxColumn();
             this.columnIndAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndGeneration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -467,10 +464,10 @@
             this.fbdBackup = new System.Windows.Forms.FolderBrowserDialog();
             this.dietCompiler = new System.ComponentModel.BackgroundWorker();
             this.artefactFinder = new System.ComponentModel.BackgroundWorker();
-            this.specTipper = new System.ComponentModel.BackgroundWorker();
-            this.specUpdater = new System.ComponentModel.BackgroundWorker();
+            this.bioTipper = new System.ComponentModel.BackgroundWorker();
+            this.bioUpdater = new System.ComponentModel.BackgroundWorker();
             this.modelCalc = new System.ComponentModel.BackgroundWorker();
-            this.calcModel = new System.ComponentModel.BackgroundWorker();
+            this.qualCalc = new System.ComponentModel.BackgroundWorker();
             this.taskDialogSave = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSaveAll = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
@@ -494,7 +491,7 @@
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).BeginInit();
             this.tabPageGearStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetGearStats)).BeginInit();
             this.tabControlCard.SuspendLayout();
@@ -538,8 +535,9 @@
             this.menuFile,
             this.menuSample,
             this.menuSurvey,
-            this.menuFishery,
             this.menuModels,
+            this.menuInstant,
+            this.menuCohort,
             this.menuCards,
             this.menuSpc,
             this.menuIndividuals,
@@ -729,12 +727,12 @@
             this.toolStripSeparator24});
             this.menuItemIndAll.Name = "menuItemIndAll";
             resources.ApplyResources(this.menuItemIndAll, "menuItemIndAll");
-            this.menuItemIndAll.Click += new System.EventHandler(this.menuItemIndAll_Click);
             // 
             // meniItemIndAllAll
             // 
             this.meniItemIndAllAll.Name = "meniItemIndAllAll";
             resources.ApplyResources(this.meniItemIndAllAll, "meniItemIndAllAll");
+            this.meniItemIndAllAll.Click += new System.EventHandler(this.menuItemIndAllAll_Click);
             // 
             // toolStripSeparator24
             // 
@@ -786,96 +784,6 @@
             resources.ApplyResources(this.menuItemSpawning, "menuItemSpawning");
             this.menuItemSpawning.Click += new System.EventHandler(this.menuItemSpawning_Click);
             // 
-            // menuFishery
-            // 
-            this.menuFishery.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemCenosis,
-            this.menuItemComposition,
-            this.toolStripSeparator7,
-            this.menuItemGrowth,
-            this.menuItemMortality,
-            this.toolStripSeparator22,
-            this.menuItemStock});
-            this.menuFishery.Name = "menuFishery";
-            resources.ApplyResources(this.menuFishery, "menuFishery");
-            // 
-            // menuItemCenosis
-            // 
-            this.menuItemCenosis.Name = "menuItemCenosis";
-            resources.ApplyResources(this.menuItemCenosis, "menuItemCenosis");
-            this.menuItemCenosis.Click += new System.EventHandler(this.menuItemCenosis_Click);
-            // 
-            // menuItemComposition
-            // 
-            this.menuItemComposition.Name = "menuItemComposition";
-            resources.ApplyResources(this.menuItemComposition, "menuItemComposition");
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
-            // menuItemGrowth
-            // 
-            this.menuItemGrowth.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemGrowthCohorts});
-            this.menuItemGrowth.Name = "menuItemGrowth";
-            resources.ApplyResources(this.menuItemGrowth, "menuItemGrowth");
-            // 
-            // menuItemGrowthCohorts
-            // 
-            this.menuItemGrowthCohorts.Name = "menuItemGrowthCohorts";
-            resources.ApplyResources(this.menuItemGrowthCohorts, "menuItemGrowthCohorts");
-            // 
-            // menuItemMortality
-            // 
-            this.menuItemMortality.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemMortalityCohorts});
-            this.menuItemMortality.Name = "menuItemMortality";
-            resources.ApplyResources(this.menuItemMortality, "menuItemMortality");
-            // 
-            // menuItemMortalityCohorts
-            // 
-            this.menuItemMortalityCohorts.Name = "menuItemMortalityCohorts";
-            resources.ApplyResources(this.menuItemMortalityCohorts, "menuItemMortalityCohorts");
-            // 
-            // toolStripSeparator22
-            // 
-            this.toolStripSeparator22.Name = "toolStripSeparator22";
-            resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
-            // 
-            // menuItemStock
-            // 
-            this.menuItemStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemExtrapolation,
-            this.menuItemVpa});
-            this.menuItemStock.Name = "menuItemStock";
-            resources.ApplyResources(this.menuItemStock, "menuItemStock");
-            // 
-            // menuItemExtrapolation
-            // 
-            this.menuItemExtrapolation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemExtrapolationAll,
-            this.toolStripSeparator12});
-            this.menuItemExtrapolation.Name = "menuItemExtrapolation";
-            resources.ApplyResources(this.menuItemExtrapolation, "menuItemExtrapolation");
-            // 
-            // menuItemExtrapolationAll
-            // 
-            this.menuItemExtrapolationAll.Name = "menuItemExtrapolationAll";
-            resources.ApplyResources(this.menuItemExtrapolationAll, "menuItemExtrapolationAll");
-            this.menuItemExtrapolationAll.Click += new System.EventHandler(this.menuItemExtrapolations_Click);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            resources.ApplyResources(this.toolStripSeparator12, "toolStripSeparator12");
-            // 
-            // menuItemVpa
-            // 
-            this.menuItemVpa.Name = "menuItemVpa";
-            resources.ApplyResources(this.menuItemVpa, "menuItemVpa");
-            // 
             // menuModels
             // 
             this.menuModels.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -915,6 +823,88 @@
             this.menuItemPredictionUnspecified.Name = "menuItemPredictionUnspecified";
             resources.ApplyResources(this.menuItemPredictionUnspecified, "menuItemPredictionUnspecified");
             this.menuItemPredictionUnspecified.Click += new System.EventHandler(this.meniItemPredictionUnspecified_Click);
+            // 
+            // menuInstant
+            // 
+            this.menuInstant.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemCenosis,
+            this.menuItemComposition,
+            this.toolStripSeparator7,
+            this.menuItemStock});
+            this.menuInstant.Name = "menuInstant";
+            resources.ApplyResources(this.menuInstant, "menuInstant");
+            // 
+            // menuItemCenosis
+            // 
+            this.menuItemCenosis.Name = "menuItemCenosis";
+            resources.ApplyResources(this.menuItemCenosis, "menuItemCenosis");
+            this.menuItemCenosis.Click += new System.EventHandler(this.menuItemCenosis_Click);
+            // 
+            // menuItemComposition
+            // 
+            this.menuItemComposition.Name = "menuItemComposition";
+            resources.ApplyResources(this.menuItemComposition, "menuItemComposition");
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            // 
+            // menuItemStock
+            // 
+            this.menuItemStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemExtrapolation});
+            this.menuItemStock.Name = "menuItemStock";
+            resources.ApplyResources(this.menuItemStock, "menuItemStock");
+            // 
+            // menuItemExtrapolation
+            // 
+            this.menuItemExtrapolation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemExtrapolationAll,
+            this.toolStripSeparator12});
+            this.menuItemExtrapolation.Name = "menuItemExtrapolation";
+            resources.ApplyResources(this.menuItemExtrapolation, "menuItemExtrapolation");
+            // 
+            // menuItemExtrapolationAll
+            // 
+            this.menuItemExtrapolationAll.Name = "menuItemExtrapolationAll";
+            resources.ApplyResources(this.menuItemExtrapolationAll, "menuItemExtrapolationAll");
+            this.menuItemExtrapolationAll.Click += new System.EventHandler(this.menuItemExtrapolations_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            resources.ApplyResources(this.toolStripSeparator12, "toolStripSeparator12");
+            // 
+            // menuCohort
+            // 
+            this.menuCohort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemGrowthCohorts,
+            this.menuItemMortalityCohorts,
+            this.toolStripSeparator22,
+            this.menuItemVpa});
+            this.menuCohort.Name = "menuCohort";
+            resources.ApplyResources(this.menuCohort, "menuCohort");
+            // 
+            // menuItemGrowthCohorts
+            // 
+            this.menuItemGrowthCohorts.Name = "menuItemGrowthCohorts";
+            resources.ApplyResources(this.menuItemGrowthCohorts, "menuItemGrowthCohorts");
+            // 
+            // menuItemMortalityCohorts
+            // 
+            this.menuItemMortalityCohorts.Name = "menuItemMortalityCohorts";
+            resources.ApplyResources(this.menuItemMortalityCohorts, "menuItemMortalityCohorts");
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            resources.ApplyResources(this.toolStripSeparator22, "toolStripSeparator22");
+            // 
+            // menuItemVpa
+            // 
+            this.menuItemVpa.Name = "menuItemVpa";
+            resources.ApplyResources(this.menuItemVpa, "menuItemVpa");
             // 
             // menuCards
             // 
@@ -1161,8 +1151,8 @@
             this.tabPageInfo.Controls.Add(this.labelWgtValue);
             this.tabPageInfo.Controls.Add(this.labelQty);
             this.tabPageInfo.Controls.Add(this.labelQtyValue);
-            this.tabPageInfo.Controls.Add(this.labelArtefacts);
-            this.tabPageInfo.Controls.Add(this.pictureBoxArtefacts);
+            this.tabPageInfo.Controls.Add(this.labelArtifacts);
+            this.tabPageInfo.Controls.Add(this.pictureBoxArtifacts);
             this.tabPageInfo.Controls.Add(this.listViewInvestigators);
             this.tabPageInfo.Controls.Add(this.listViewDates);
             this.tabPageInfo.Controls.Add(this.listViewSamplers);
@@ -1200,17 +1190,17 @@
             resources.ApplyResources(this.labelQtyValue, "labelQtyValue");
             this.labelQtyValue.Name = "labelQtyValue";
             // 
-            // labelArtefacts
+            // labelArtifacts
             // 
-            resources.ApplyResources(this.labelArtefacts, "labelArtefacts");
-            this.labelArtefacts.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelArtefacts.Name = "labelArtefacts";
+            resources.ApplyResources(this.labelArtifacts, "labelArtifacts");
+            this.labelArtifacts.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelArtifacts.Name = "labelArtifacts";
             // 
-            // pictureBoxArtefacts
+            // pictureBoxArtifacts
             // 
-            resources.ApplyResources(this.pictureBoxArtefacts, "pictureBoxArtefacts");
-            this.pictureBoxArtefacts.Name = "pictureBoxArtefacts";
-            this.pictureBoxArtefacts.TabStop = false;
+            resources.ApplyResources(this.pictureBoxArtifacts, "pictureBoxArtifacts");
+            this.pictureBoxArtifacts.Name = "pictureBoxArtifacts";
+            this.pictureBoxArtifacts.TabStop = false;
             // 
             // listViewInvestigators
             // 
@@ -1836,7 +1826,7 @@
             // 
             resources.ApplyResources(this.label35, "label35");
             this.label35.Name = "label35";
-            this.label35.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
+            this.label35.DoubleClick += new System.EventHandler(this.label35_DoubleClick);
             // 
             // label5
             // 
@@ -2658,28 +2648,11 @@
             // 
             // tabPageLog
             // 
-            this.tabPageLog.Controls.Add(this.label22);
-            this.tabPageLog.Controls.Add(this.comboBoxLogTaxa);
             this.tabPageLog.Controls.Add(this.buttonSelectLog);
             this.tabPageLog.Controls.Add(this.spreadSheetLog);
             resources.ApplyResources(this.tabPageLog, "tabPageLog");
             this.tabPageLog.Name = "tabPageLog";
             this.tabPageLog.UseVisualStyleBackColor = true;
-            // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // comboBoxLogTaxa
-            // 
-            resources.ApplyResources(this.comboBoxLogTaxa, "comboBoxLogTaxa");
-            this.comboBoxLogTaxa.DisplayMember = "Base";
-            this.comboBoxLogTaxa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLogTaxa.FormattingEnabled = true;
-            this.comboBoxLogTaxa.Name = "comboBoxLogTaxa";
-            this.comboBoxLogTaxa.SelectedIndexChanged += new System.EventHandler(this.comboBoxLogTaxa_SelectedIndexChanged);
-            this.comboBoxLogTaxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // buttonSelectLog
             // 
@@ -2968,7 +2941,7 @@
             this.columnIndSomaticMass,
             this.columnIndCondition,
             this.columnIndConditionSoma,
-            this.columnIndRegID,
+            this.columnIndTally,
             this.columnIndAge,
             this.columnIndGeneration,
             this.columnIndSex,
@@ -3057,14 +3030,14 @@
             this.columnIndConditionSoma.Name = "columnIndConditionSoma";
             this.columnIndConditionSoma.ReadOnly = true;
             // 
-            // columnIndRegID
+            // columnIndTally
             // 
             dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.columnIndRegID.DefaultCellStyle = dataGridViewCellStyle43;
-            resources.ApplyResources(this.columnIndRegID, "columnIndRegID");
-            this.columnIndRegID.Image = null;
-            this.columnIndRegID.Name = "columnIndRegID";
-            this.columnIndRegID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnIndTally.DefaultCellStyle = dataGridViewCellStyle43;
+            resources.ApplyResources(this.columnIndTally, "columnIndTally");
+            this.columnIndTally.Image = null;
+            this.columnIndTally.Name = "columnIndTally";
+            this.columnIndTally.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnIndAge
             // 
@@ -3408,20 +3381,20 @@
             this.artefactFinder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artefactFinder_DoWork);
             this.artefactFinder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artefactFinder_RunWorkerCompleted);
             // 
-            // specTipper
+            // bioTipper
             // 
-            this.specTipper.WorkerReportsProgress = true;
-            this.specTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.specTipper_DoWork);
-            this.specTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
-            this.specTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.specTipper_RunWorkerCompleted);
+            this.bioTipper.WorkerReportsProgress = true;
+            this.bioTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bioTipper_DoWork);
+            this.bioTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
+            this.bioTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bioTipper_RunWorkerCompleted);
             // 
-            // specUpdater
+            // bioUpdater
             // 
-            this.specUpdater.WorkerSupportsCancellation = true;
-            this.specUpdater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.specUpdater_DoWork);
-            this.specUpdater.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.specUpdater_RunWorkerCompleted);
+            this.bioUpdater.WorkerSupportsCancellation = true;
+            this.bioUpdater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bioUpdater_DoWork);
+            this.bioUpdater.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bioUpdater_RunWorkerCompleted);
             // 
-            // modelCalc
+            // qualCalc
             // 
             this.modelCalc.WorkerReportsProgress = true;
             this.modelCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalc_DoWork);
@@ -3430,9 +3403,9 @@
             // 
             // calcModel
             // 
-            this.calcModel.WorkerSupportsCancellation = true;
-            this.calcModel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.calcModel_DoWork);
-            this.calcModel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.calcModel_RunWorkerCompleted);
+            this.qualCalc.WorkerSupportsCancellation = true;
+            this.qualCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.qualCalc_DoWork);
+            this.qualCalc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.qualCalc_RunWorkerCompleted);
             // 
             // taskDialogSave
             // 
@@ -3549,7 +3522,7 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageInfo.ResumeLayout(false);
             this.tabPageInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtefacts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).EndInit();
             this.tabPageGearStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetGearStats)).EndInit();
             this.tabControlCard.ResumeLayout(false);
@@ -3582,7 +3555,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetSpc)).EndInit();
             this.contextSpecies.ResumeLayout(false);
             this.tabPageLog.ResumeLayout(false);
-            this.tabPageLog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).EndInit();
             this.contextLog.ResumeLayout(false);
             this.tabPageStratified.ResumeLayout(false);
@@ -3623,7 +3595,7 @@
         private System.Windows.Forms.Label labelWaters;
         private System.Windows.Forms.Label labelCollectors;
         private System.Windows.Forms.ImageList imageListWaters;
-        private System.Windows.Forms.ToolStripMenuItem menuFishery;
+        private System.Windows.Forms.ToolStripMenuItem menuInstant;
         private Mayfly.Controls.SpreadSheet spreadSheetInd;
         private TaskDialogs.TaskDialog taskDialogSave;
         private TaskDialogs.TaskDialogButton tdbSaveAll;
@@ -3631,8 +3603,6 @@
         private TaskDialogs.TaskDialogButton tdbCancelClose;
         private System.Windows.Forms.TabPage tabPageCard;
         private Mayfly.Controls.SpreadSheet spreadSheetCard;
-        private System.Windows.Forms.ToolStripMenuItem menuItemStock;
-        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolation;
         private System.Windows.Forms.ContextMenuStrip contextCard;
         private System.Windows.Forms.ToolStripMenuItem contextCardOpen;
         private System.Windows.Forms.ToolStripMenuItem contextIndPrint;
@@ -3702,8 +3672,8 @@
         private System.ComponentModel.BackgroundWorker loaderIndExtended;
         private System.ComponentModel.BackgroundWorker loaderLogExtended;
         private System.ComponentModel.BackgroundWorker loaderStratifiedExtended;
-        private System.Windows.Forms.Label labelArtefacts;
-        private System.Windows.Forms.PictureBox pictureBoxArtefacts;
+        private System.Windows.Forms.Label labelArtifacts;
+        private System.Windows.Forms.PictureBox pictureBoxArtifacts;
         private System.Windows.Forms.ToolStripMenuItem menuItemComposition;
         private System.Windows.Forms.TabPage tabPageCardSchedule;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSchedule;
@@ -3728,32 +3698,25 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
         private System.ComponentModel.BackgroundWorker artefactFinder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolationAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private Mathematics.MathAdapter mathCard;
         private Mathematics.MathAdapter mathLog;
         private Mathematics.MathAdapter mathInd;
-        private System.ComponentModel.BackgroundWorker specTipper;
+        private System.ComponentModel.BackgroundWorker bioTipper;
         private System.Windows.Forms.ContextMenuStrip contextStratified;
         private System.Windows.Forms.ToolStripMenuItem contextStratifiedOpen;
         private System.Windows.Forms.ToolStripMenuItem contextCardSaveSet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.ComponentModel.BackgroundWorker specUpdater;
+        private System.ComponentModel.BackgroundWorker bioUpdater;
         private TaskDialogs.TaskDialog taskDialogBio;
         private TaskDialogs.TaskDialogButton tdbSpecClear;
         private TaskDialogs.TaskDialogButton tdbSpecCombine;
         private TaskDialogs.TaskDialogButton tdbSpecCancel;
         private System.Windows.Forms.ToolStripStatusLabel statusBio;
-        private System.Windows.Forms.ToolStripMenuItem menuItemMortality;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGrowth;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
-        private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
         private System.Windows.Forms.ToolStripMenuItem menuSurvey;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpawning;
         private System.Windows.Forms.ToolStripMenuItem menuItemSurveyInput;
         private System.ComponentModel.BackgroundWorker modelCalc;
-        private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
-        private System.ComponentModel.BackgroundWorker calcModel;
+        private System.ComponentModel.BackgroundWorker qualCalc;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveSet;
@@ -3774,8 +3737,6 @@
         private System.Windows.Forms.TabPage tabPageLog;
         private System.Windows.Forms.Button buttonSelectLog;
         private Controls.SpreadSheet spreadSheetLog;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox comboBoxLogTaxa;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndExtra;
         private System.Windows.Forms.TabPage tabPageSpcStats;
         private System.Windows.Forms.TabControl tabControlSpc;
@@ -3878,7 +3839,6 @@
         private System.Windows.Forms.Label labelWgtValue;
         private System.Windows.Forms.Label labelQty;
         private System.Windows.Forms.Label labelQtyValue;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ComboBox comboBoxQualValue;
         private System.Windows.Forms.Label labelQualify;
         private System.Windows.Forms.Label labelQualSubset;
@@ -3934,33 +3894,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogBiomass;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityA;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogDiversityB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
-        private Controls.SpreadSheetIconTextBoxColumn columnIndRegID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
-        private Controls.SpreadSheetIconTextBoxColumn columnIndConsumed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcID;
         private Controls.SpreadSheetIconTextBoxColumn columnSpcSpc;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpcQuantity;
@@ -3993,5 +3926,41 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggestedAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSomaticMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCondition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConditionSoma;
+        private Controls.SpreadSheetIconTextBoxColumn columnIndTally;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGeneration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndMaturity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSampleMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadSample;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityAbs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelative;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFecundityRelativeSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndGonadIndexSoma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndEggSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndFat;
+        private Controls.SpreadSheetIconTextBoxColumn columnIndConsumed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
+        private System.Windows.Forms.ToolStripMenuItem menuItemStock;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolation;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolationAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem menuCohort;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
+        private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
     }
 }

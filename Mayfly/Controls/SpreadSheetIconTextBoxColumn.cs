@@ -115,6 +115,8 @@ namespace Mayfly.Controls
                         this.Style.Padding = new Padding(padding.Left, padding.Top, padding.Right * 2 + imageSize.Width, padding.Bottom);
                         break;
                 }
+
+                if (this.DataGridView != null) this.DataGridView.Refresh();
             }
         }
 

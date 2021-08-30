@@ -126,7 +126,7 @@ namespace Mayfly.Benthos.Explorer
             if (IsEmpty)
             {
                 this.Text = DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title;
-                labelArtefacts.Visible = pictureBoxArtefacts.Visible = false;
+                labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
 
                 labelDatesValue.Text = Constants.Null;
                 labelCardsValue.Text = Constants.Null;
@@ -470,8 +470,8 @@ namespace Mayfly.Benthos.Explorer
 
             this.Text = String.Format("{0} - {1}", title, Resources.Interface.DietTitle);
 
-            tabPageArtefacts.Parent = tabControl;
-            tabPageArtefacts.Parent = null;
+            tabPageArtifacts.Parent = tabControl;
+            tabPageArtifacts.Parent = null;
 
             columnCardSampler.Visible =
                 columnCardSubstrate.Visible =

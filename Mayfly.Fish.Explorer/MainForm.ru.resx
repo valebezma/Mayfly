@@ -268,10 +268,10 @@
   <data name="menuItemExit.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="menuItemArtefactsSearch.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemArtifactsSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 22</value>
   </data>
-  <data name="menuItemArtefactsSearch.Text" xml:space="preserve">
+  <data name="menuItemArtifactsSearch.Text" xml:space="preserve">
     <value>Поиск артефактов</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
@@ -733,13 +733,13 @@
   <data name="labelQty.Text" xml:space="preserve">
     <value>Общая выборка</value>
   </data>
-  <data name="labelArtefacts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifacts.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 13</value>
   </data>
-  <data name="labelArtefacts.Text" xml:space="preserve">
+  <data name="labelArtifacts.Text" xml:space="preserve">
     <value>Проверьте на артефакты</value>
   </data>
-  <data name="pictureBoxArtefacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
         JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
@@ -841,19 +841,19 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Периоды сбора</value>
   </data>
-  <data name="tabPageArtefacts.Text" xml:space="preserve">
+  <data name="tabPageArtifacts.Text" xml:space="preserve">
     <value>Артефакты</value>
   </data>
-  <data name="tabPageArtefactCards.Text" xml:space="preserve">
+  <data name="tabPageArtifactCards.Text" xml:space="preserve">
     <value>Карточки</value>
   </data>
-  <data name="labelArtefactGear.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifactGear.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 13</value>
   </data>
-  <data name="labelArtefactGear.Text" xml:space="preserve">
+  <data name="labelArtifactGear.Text" xml:space="preserve">
     <value>Артефактов нет</value>
   </data>
-  <data name="pictureBoxArtefactGear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifactGear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
@@ -877,7 +877,7 @@
   <data name="contextArtCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 26</value>
   </data>
-  <data name="spreadSheetArtefactCard.StatusFormat" xml:space="preserve">
+  <data name="spreadSheetArtifactCard.StatusFormat" xml:space="preserve">
     <value>1;2;5|артефакт;артефакта;артефактов</value>
   </data>
   <data name="contextArtCardOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -903,16 +903,16 @@
   <data name="contextArtCardOpen.Text" xml:space="preserve">
     <value>Открыть карточку</value>
   </data>
-  <data name="tabPageArtefactSpecies.Text" xml:space="preserve">
+  <data name="tabPageArtifactSpecies.Text" xml:space="preserve">
     <value>Выборки видов</value>
   </data>
-  <data name="labelArtefactSpecies.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 13</value>
   </data>
-  <data name="labelArtefactSpecies.Text" xml:space="preserve">
+  <data name="labelArtifactSpecies.Text" xml:space="preserve">
     <value>Артефактов нет</value>
   </data>
-  <data name="pictureBoxArtefactSpecies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifactSpecies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
@@ -924,28 +924,28 @@
         8q2mGceWOQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="columnArtefactSpecies.HeaderText" xml:space="preserve">
+  <data name="columnArtifactSpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
   </data>
-  <data name="columnArtefactN.HeaderText" xml:space="preserve">
+  <data name="columnArtifactN.HeaderText" xml:space="preserve">
     <value>Выборка, экз.</value>
   </data>
-  <data name="columnArtefactDetailed.HeaderText" xml:space="preserve">
+  <data name="columnArtifactDetailed.HeaderText" xml:space="preserve">
     <value>Отсутствие экземпляров</value>
   </data>
-  <data name="columnArtefactLength.HeaderText" xml:space="preserve">
+  <data name="columnArtifactLength.HeaderText" xml:space="preserve">
     <value>Отсутствие длины</value>
   </data>
-  <data name="columnArtefactMass.HeaderText" xml:space="preserve">
+  <data name="columnArtifactMass.HeaderText" xml:space="preserve">
     <value>Отклонения массы</value>
   </data>
-  <data name="columnArtefactAge.HeaderText" xml:space="preserve">
+  <data name="columnArtifactAge.HeaderText" xml:space="preserve">
     <value>Отклонения возраста</value>
   </data>
   <data name="contextArtSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>298, 70</value>
   </data>
-  <data name="spreadSheetArtefactSpecies.StatusFormat" xml:space="preserve">
+  <data name="spreadSheetArtifactSpecies.StatusFormat" xml:space="preserve">
     <value>1;2;5|артефакт;артефакта;артефактов</value>
   </data>
   <data name="contextArtSpeciesFindInd.Size" type="System.Drawing.Size, System.Drawing">
@@ -966,43 +966,43 @@
   <data name="contextArtSpeciesEurythmy.Text" xml:space="preserve">
     <value>Смотреть стройность данных</value>
   </data>
-  <data name="tabPageArtefactInds.Text" xml:space="preserve">
+  <data name="tabPageArtifactInds.Text" xml:space="preserve">
     <value>Особи</value>
   </data>
-  <data name="columnArtefactIndSpecies.HeaderText" xml:space="preserve">
+  <data name="columnArtifactIndSpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
   </data>
-  <data name="columnArtefactIndRegID.HeaderText" xml:space="preserve">
+  <data name="columnArtifactIndRegID.HeaderText" xml:space="preserve">
     <value>№ пробы</value>
   </data>
-  <data name="columnArtefactIndDietUnw.HeaderText" xml:space="preserve">
+  <data name="columnArtifactIndDietUnw.HeaderText" xml:space="preserve">
     <value>Пищевых элементов не взвешено</value>
   </data>
   <data name="contextArtIndividuals.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 48</value>
   </data>
-  <data name="spreadSheetArtefactInd.StatusFormat" xml:space="preserve">
+  <data name="spreadSheetArtifactInd.StatusFormat" xml:space="preserve">
     <value>1;2;5|артефакт;артефакта;артефактов</value>
   </data>
-  <data name="contextArtefactIndFind.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextArtifactIndFind.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 22</value>
   </data>
-  <data name="contextArtefactIndFind.Text" xml:space="preserve">
+  <data name="contextArtifactIndFind.Text" xml:space="preserve">
     <value>Найти в журнале особей</value>
   </data>
-  <data name="contextArtefactIndRecover.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextArtifactIndRecover.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 22</value>
   </data>
-  <data name="contextArtefactIndRecover.Text" xml:space="preserve">
+  <data name="contextArtifactIndRecover.Text" xml:space="preserve">
     <value>Восстановление содержимого ЖКТ</value>
   </data>
-  <data name="labelArtefactInd.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelArtifactInd.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 13</value>
   </data>
-  <data name="labelArtefactInd.Text" xml:space="preserve">
+  <data name="labelArtifactInd.Text" xml:space="preserve">
     <value>Артефактов нет</value>
   </data>
-  <data name="pictureBoxArtefactInd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBoxArtifactInd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE

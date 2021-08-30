@@ -243,7 +243,7 @@ namespace Mayfly.Wild
                     //{
 
                     //}
-                    ////        else return double.NaN; // It is artefact
+                    ////        else return double.NaN; // It is artifact
 
                     logRow.Quantity = logRow.GetIndividualRows().Length;
                 }

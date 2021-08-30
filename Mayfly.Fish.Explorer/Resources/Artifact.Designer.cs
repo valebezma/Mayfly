@@ -22,14 +22,14 @@ namespace Mayfly.Fish.Explorer.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Artefact {
+    internal class Artifact {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Artefact() {
+        internal Artifact() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Artefact", typeof(Artefact).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Fish.Explorer.Resources.Artifact", typeof(Artifact).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are some artefacts found in data.
+        ///   Looks up a localized string similar to There are some artifacts found in data.
         /// </summary>
-        internal static string ArtefactsFound {
+        internal static string ArtifactsFound {
             get {
-                return ResourceManager.GetString("ArtefactsFound", resourceCulture);
+                return ResourceManager.GetString("ArtifactsFound", resourceCulture);
             }
         }
         

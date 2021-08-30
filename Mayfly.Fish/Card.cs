@@ -68,19 +68,7 @@ namespace Mayfly.Fish
         {
             get
             {
-                List<string> result = new List<string>();
-                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-                {
-                    if (gridRow.Cells[ColumnSpecies.Name].Value != null)
-                    {
-                        string speciesName = gridRow.Cells[ColumnSpecies.Name].Value.ToString();
-                        if (!result.Contains(speciesName))
-                        {
-                            result.Add(speciesName);
-                        }
-                    }
-                }
-                return result.ToArray();
+                return ColumnSpecies.GetStrings(true).ToArray();
             }
         }
 
@@ -269,16 +257,17 @@ namespace Mayfly.Fish
 
         public void UpdateStatus()
         {
-            //if (Data.Solitary.Investigator == null)
-            //{
-            //    statusCard.Default = StatusLog.Text = 
-            //        SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount); ;
-            //}
-            //else
-            //{
-            //    statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
-            //        Data.Solitary.When, Data.Solitary.Investigator);
-            //}
+            if (SpeciesCount > 0)
+            {
+                statusCard.Default = StatusLog.Text =
+                    SpeciesCount.ToString(Mayfly.Wild.Resources.Interface.Interface.SpeciesCount);
+            }
+            else
+            {
+                statusCard.Default = StatusLog.Text = string.Format("© {0:yyyy} {1}",
+                    (Data == null || Data.Solitary.IsWhenNull()) ? DateTime.Today : Data.Solitary.When,
+                    (Data == null || Data.Solitary.IsSignNull()) ? Mayfly.UserSettings.Username : Data.Solitary.Investigator);
+            }
 
             StatusMass.ResetFormatted(Mass);
             StatusCount.ResetFormatted(Quantity);
@@ -2078,8 +2067,7 @@ namespace Mayfly.Fish
 
         private void spreadSheetLog_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (spreadSheetLog.Focused)
-                UpdateStatus();
+            UpdateStatus();
         }
 
         private void spreadSheetLog_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -2091,7 +2079,6 @@ namespace Mayfly.Fish
 
         private void spreadSheetLog_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            UpdateStatus();
             IsChanged = true;
         }
 

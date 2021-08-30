@@ -85,7 +85,7 @@ namespace Mayfly.Plankton.Explorer
 
             tabPageInd.Parent = null;
 
-            tabPageArtefacts.Parent = null;
+            tabPageArtifacts.Parent = null;
 
             if (UserSettings.AutoLoadBio)
             {
@@ -150,7 +150,7 @@ namespace Mayfly.Plankton.Explorer
         {
             UpdateSummary();
 
-            tabPageArtefacts.Parent = null;
+            tabPageArtifacts.Parent = null;
             tabPageLog.Parent = null;
             tabPageInd.Parent = null;
         }
@@ -255,12 +255,12 @@ namespace Mayfly.Plankton.Explorer
 
         }
 
-        private void menuItemArtefactsSearch_Click(object sender, EventArgs e)
+        private void menuItemArtifactsSearch_Click(object sender, EventArgs e)
         {
-            tabPageArtefacts.Parent = tabControl;
-            tabControl.SelectedTab = tabPageArtefacts;
-            FindArtefacts();
-            LoadArtefacts();
+            tabPageArtifacts.Parent = tabControl;
+            tabControl.SelectedTab = tabPageArtifacts;
+            FindArtifacts();
+            LoadArtifacts();
         }
 
         //private void menuItemRecoverWizard_Click(object sender, EventArgs e)
@@ -648,7 +648,7 @@ namespace Mayfly.Plankton.Explorer
                     spcRow.Delete();
                 }
 
-                GetSpeciesFullName(e.Row, e.Column, columnArtefactValidName);
+                GetSpeciesFullName(e.Row, e.Column, columnArtifactValidName);
             }
             else
             {
