@@ -43,7 +43,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 CardConsistencyChecker ccc = cardRow.CheckConsistency();
-                if (ccc.AcrtifactsCount > 0)
+                if (ccc.FullArtifactsCount > 0)
                 {
                     result.Add(ccc);
                 }
@@ -52,7 +52,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
-                if (scc.AcrtifactsCount > 0)
+                if (scc.FullArtifactsCount > 0)
                 {
                     result.Add(scc);
                 }
@@ -283,7 +283,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 IndividualConsistencyChecker indArtifact = individualRow.CheckConsistency();
-                if (indArtifact.AcrtifactsCount > 0) result.Add(indArtifact);
+                if (indArtifact.ArtifactsCount > 0) result.Add(indArtifact);
             }
             IndividualArtifacts = result.ToArray();
         }
@@ -442,7 +442,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.LogRow logRow in cardRow.GetLogRows())
             {
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
-                if (logArtifact.AcrtifactsCount > 0)
+                if (logArtifact.ArtifactsCount > 0)
                 {
                     logArtifacts.Add(logArtifact);
                 }
@@ -651,7 +651,7 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
-                if (logArtifact.AcrtifactsCount > 0) result.Add(logArtifact);
+                if (logArtifact.ArtifactsCount > 0) result.Add(logArtifact);
             }
             LogArtifacts = result.ToArray();
         }

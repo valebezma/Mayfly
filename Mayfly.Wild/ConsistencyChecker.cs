@@ -19,18 +19,23 @@ namespace Mayfly.Wild
             return GetNotices(false);
         }
 
-        public int AcrtifactsCount
+        public int FullArtifactsCount
         {
             get { return GetNotices(true).Length; }
         }
 
-        public override string ToString() { return string.Empty; }
+        public int ArtifactsCount
+        {
+            get { return GetNotices().Length; }
+        }
+
+        //public override string ToString() { return string.Empty; }
 
         public string ToString(string starter)
         {
-            if (AcrtifactsCount > 0)
+            if (FullArtifactsCount > 0)
             {
-                return  "<span class = 'hl'>" + starter + ": </span>" + GetNotices().Merge();
+                return  "<span class = 'hl'>" + starter + ": </span>" + GetNotices(true).Merge();
             }
             else
             {

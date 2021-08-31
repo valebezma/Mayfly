@@ -42,8 +42,8 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 45D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0.5D);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
@@ -252,6 +252,14 @@
             this.ColumnSpcStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlSpc = new System.Windows.Forms.TabControl();
             this.tabPageSpcTotals = new System.Windows.Forms.TabPage();
+            this.buttonSpcM = new System.Windows.Forms.Button();
+            this.buttonSpcS = new System.Windows.Forms.Button();
+            this.buttonSpcA = new System.Windows.Forms.Button();
+            this.buttonSpcTally = new System.Windows.Forms.Button();
+            this.buttonSpcW = new System.Windows.Forms.Button();
+            this.buttonSpcL = new System.Windows.Forms.Button();
+            this.buttonSpcLog = new System.Windows.Forms.Button();
+            this.buttonSpcStrat = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBoxSpcWLog = new System.Windows.Forms.TextBox();
@@ -262,7 +270,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxSpcM = new System.Windows.Forms.TextBox();
             this.textBoxSpcS = new System.Windows.Forms.TextBox();
-            this.textBoxSpcReg = new System.Windows.Forms.TextBox();
+            this.textBoxSpcTally = new System.Windows.Forms.TextBox();
             this.textBoxSpcA = new System.Windows.Forms.TextBox();
             this.textBoxSpcW = new System.Windows.Forms.TextBox();
             this.textBoxSpcStrat = new System.Windows.Forms.TextBox();
@@ -1686,6 +1694,14 @@
             // 
             // tabPageSpcTotals
             // 
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcM);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcS);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcA);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcTally);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcW);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcL);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcLog);
+            this.tabPageSpcTotals.Controls.Add(this.buttonSpcStrat);
             this.tabPageSpcTotals.Controls.Add(this.label15);
             this.tabPageSpcTotals.Controls.Add(this.label16);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcWLog);
@@ -1696,7 +1712,7 @@
             this.tabPageSpcTotals.Controls.Add(this.label8);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcM);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcS);
-            this.tabPageSpcTotals.Controls.Add(this.textBoxSpcReg);
+            this.tabPageSpcTotals.Controls.Add(this.textBoxSpcTally);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcA);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcW);
             this.tabPageSpcTotals.Controls.Add(this.textBoxSpcStrat);
@@ -1716,6 +1732,62 @@
             resources.ApplyResources(this.tabPageSpcTotals, "tabPageSpcTotals");
             this.tabPageSpcTotals.Name = "tabPageSpcTotals";
             this.tabPageSpcTotals.UseVisualStyleBackColor = true;
+            // 
+            // buttonSpcM
+            // 
+            resources.ApplyResources(this.buttonSpcM, "buttonSpcM");
+            this.buttonSpcM.Name = "buttonSpcM";
+            this.buttonSpcM.UseVisualStyleBackColor = true;
+            this.buttonSpcM.Click += new System.EventHandler(this.buttonSpcM_Click);
+            // 
+            // buttonSpcS
+            // 
+            resources.ApplyResources(this.buttonSpcS, "buttonSpcS");
+            this.buttonSpcS.Name = "buttonSpcS";
+            this.buttonSpcS.UseVisualStyleBackColor = true;
+            this.buttonSpcS.Click += new System.EventHandler(this.buttonSpcS_Click);
+            // 
+            // buttonSpcA
+            // 
+            resources.ApplyResources(this.buttonSpcA, "buttonSpcA");
+            this.buttonSpcA.Name = "buttonSpcA";
+            this.buttonSpcA.UseVisualStyleBackColor = true;
+            this.buttonSpcA.Click += new System.EventHandler(this.buttonSpcA_Click);
+            // 
+            // buttonSpcTally
+            // 
+            resources.ApplyResources(this.buttonSpcTally, "buttonSpcTally");
+            this.buttonSpcTally.Name = "buttonSpcTally";
+            this.buttonSpcTally.UseVisualStyleBackColor = true;
+            this.buttonSpcTally.Click += new System.EventHandler(this.buttonSpcTally_Click);
+            // 
+            // buttonSpcW
+            // 
+            resources.ApplyResources(this.buttonSpcW, "buttonSpcW");
+            this.buttonSpcW.Name = "buttonSpcW";
+            this.buttonSpcW.UseVisualStyleBackColor = true;
+            this.buttonSpcW.Click += new System.EventHandler(this.buttonSpcW_Click);
+            // 
+            // buttonSpcL
+            // 
+            resources.ApplyResources(this.buttonSpcL, "buttonSpcL");
+            this.buttonSpcL.Name = "buttonSpcL";
+            this.buttonSpcL.UseVisualStyleBackColor = true;
+            this.buttonSpcL.Click += new System.EventHandler(this.buttonSpcL_Click);
+            // 
+            // buttonSpcLog
+            // 
+            resources.ApplyResources(this.buttonSpcLog, "buttonSpcLog");
+            this.buttonSpcLog.Name = "buttonSpcLog";
+            this.buttonSpcLog.UseVisualStyleBackColor = true;
+            this.buttonSpcLog.Click += new System.EventHandler(this.buttonSpcLog_Click);
+            // 
+            // buttonSpcStrat
+            // 
+            resources.ApplyResources(this.buttonSpcStrat, "buttonSpcStrat");
+            this.buttonSpcStrat.Name = "buttonSpcStrat";
+            this.buttonSpcStrat.UseVisualStyleBackColor = true;
+            this.buttonSpcStrat.Click += new System.EventHandler(this.buttonSpcStrat_Click);
             // 
             // label15
             // 
@@ -1774,11 +1846,11 @@
             this.textBoxSpcS.Name = "textBoxSpcS";
             this.textBoxSpcS.ReadOnly = true;
             // 
-            // textBoxSpcReg
+            // textBoxSpcTally
             // 
-            resources.ApplyResources(this.textBoxSpcReg, "textBoxSpcReg");
-            this.textBoxSpcReg.Name = "textBoxSpcReg";
-            this.textBoxSpcReg.ReadOnly = true;
+            resources.ApplyResources(this.textBoxSpcTally, "textBoxSpcTally");
+            this.textBoxSpcTally.Name = "textBoxSpcTally";
+            this.textBoxSpcTally.ReadOnly = true;
             // 
             // textBoxSpcA
             // 
@@ -1820,37 +1892,31 @@
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.DoubleClick += new System.EventHandler(this.label6_DoubleClick);
             // 
             // label35
             // 
             resources.ApplyResources(this.label35, "label35");
             this.label35.Name = "label35";
-            this.label35.DoubleClick += new System.EventHandler(this.label35_DoubleClick);
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.DoubleClick += new System.EventHandler(this.label5_DoubleClick);
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.DoubleClick += new System.EventHandler(this.label4_DoubleClick);
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.DoubleClick += new System.EventHandler(this.label7_DoubleClick);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.DoubleClick += new System.EventHandler(this.label3_DoubleClick);
             // 
             // label11
             // 
@@ -1861,13 +1927,11 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.DoubleClick += new System.EventHandler(this.label2_DoubleClick);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
             // 
             // chartSpcStats
             // 
@@ -1884,6 +1948,8 @@
             this.chartSpcStats.ChartAreas.Add(chartArea2);
             legend1.Alignment = System.Drawing.StringAlignment.Far;
             legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.IsDockedInsideChartArea = false;
             legend1.IsEquallySpacedItems = true;
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
@@ -3394,14 +3460,14 @@
             this.bioUpdater.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bioUpdater_DoWork);
             this.bioUpdater.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bioUpdater_RunWorkerCompleted);
             // 
-            // qualCalc
+            // modelCalc
             // 
             this.modelCalc.WorkerReportsProgress = true;
             this.modelCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.modelCalc_DoWork);
             this.modelCalc.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.modelCalc.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.modelCalc_RunWorkerCompleted);
             // 
-            // calcModel
+            // qualCalc
             // 
             this.qualCalc.WorkerSupportsCancellation = true;
             this.qualCalc.DoWork += new System.ComponentModel.DoWorkEventHandler(this.qualCalc_DoWork);
@@ -3791,7 +3857,7 @@
         private System.Windows.Forms.Label labelQualNotSelected;
         private System.Windows.Forms.Button buttonGearStatsReport;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardMeteo;
-        private System.Windows.Forms.TextBox textBoxSpcReg;
+        private System.Windows.Forms.TextBox textBoxSpcTally;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TabPage tabPageSpcTech;
         private System.Windows.Forms.Label labelTechInstruction;
@@ -3962,5 +4028,13 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
+        private System.Windows.Forms.Button buttonSpcM;
+        private System.Windows.Forms.Button buttonSpcS;
+        private System.Windows.Forms.Button buttonSpcA;
+        private System.Windows.Forms.Button buttonSpcTally;
+        private System.Windows.Forms.Button buttonSpcW;
+        private System.Windows.Forms.Button buttonSpcL;
+        private System.Windows.Forms.Button buttonSpcLog;
+        private System.Windows.Forms.Button buttonSpcStrat;
     }
 }

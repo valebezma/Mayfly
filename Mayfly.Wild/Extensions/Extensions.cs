@@ -77,25 +77,20 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public static string[] GetOperableFilenames(this DragEventArgs e, string extension)
+        public static string[] GetOperableFilenames(this DragEventArgs e, params string[] extensions)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop, false)) return new string[0];
             string[] entries = (string[])e.Data.GetData(DataFormats.FileDrop);
-            return entries.GetOperableFilenames(extension);
+            return entries.GetOperableFilenames(extensions);
         }
 
-        public static string[] GetOperableFilenames(this string[] entries, string extension)
+        public static string[] GetOperableFilenames(this string[] entries, params string[] extensions)
         {
             List<string> result = new List<string>();
 
             if (entries == null) return result.ToArray();
 
-            result.AddRange(IO.MaskedNames(entries, Wild.UserSettings.InterfaceBio.Extension));
-
-            if (extension != Wild.UserSettings.InterfaceBio.Extension)
-            {
-                result.AddRange(IO.MaskedNames(entries, extension));
-            }
+            result.AddRange(IO.MaskedNames(entries, extensions));
 
             return result.ToArray();
         }

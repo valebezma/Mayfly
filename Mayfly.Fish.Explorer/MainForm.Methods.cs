@@ -183,7 +183,10 @@ namespace Mayfly.Fish.Explorer
                 updateQty(0);
                 updateMass(0);
 
-                data.RefreshBios();
+                if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+                {
+                    data.RefreshBios();
+                }
 
                 IsBusy = false;
             }
@@ -272,7 +275,8 @@ namespace Mayfly.Fish.Explorer
                     foreach (string investigator in FullStack.GetInvestigators())
                     {
                         var menuItem = new ToolStripMenuItem(investigator);
-                        menuItem.Click += (sender, e) => {
+                        menuItem.Click += (sender, e) =>
+                        {
                             loadCards(AllowedStack.GetStack("Investigator", investigator));
                         };
                         menuItemCardInvestigator.DropDownItems.Add(menuItem);
@@ -293,19 +297,22 @@ namespace Mayfly.Fish.Explorer
                 }
 
 
-                AllowedStack.PopulateSpeciesMenu(menuItemIndAll, indSpecies_Click, (spcRow) => {
+                AllowedStack.PopulateSpeciesMenu(menuItemIndAll, indSpecies_Click, (spcRow) =>
+                {
 
                     return AllowedStack.QuantityIndividual(spcRow);
 
                 });
-                AllowedStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click, (spcRow) => {
+                AllowedStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click, (spcRow) =>
+                {
 
                     TreatmentSuggestion sugg = AllowedStack.GetTreatmentSuggestion(spcRow, data.Individual.AgeColumn);
                     return (sugg == null) ? 0 : sugg.GetSuggested().Length;
 
                 });
 
-                AllowedStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click, (spcRow) => {
+                AllowedStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click, (spcRow) =>
+                {
 
                     return AllowedStack.GetLogRows(spcRow).Length;
 
@@ -363,11 +370,6 @@ namespace Mayfly.Fish.Explorer
 
         private void updateArtifacts()
         {
-            if (tabPageSpcStats.Parent != null)
-            {
-                species_Changed(spreadSheetSpcStats, new EventArgs());
-            }
-
             if (tabPageCard.Parent != null)
             {
                 foreach (DataGridViewRow gridRow in spreadSheetCard.Rows)
@@ -588,6 +590,8 @@ namespace Mayfly.Fish.Explorer
 
         private void getFilteredList(DataGridViewColumn gridColumn)
         {
+            spreadSheetInd.Rows.Clear();
+
             if (selectedStatSpc == null)
             {
                 spreadSheetInd.EnsureFilter(gridColumn, null, loaderInd,
@@ -595,7 +599,6 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                spreadSheetInd.Rows.Clear();
                 spreadSheetInd.EnsureFilter(gridColumn, null, loaderInd,
                     (sender, e) => { loadIndividuals(selectedStatSpc); });
             }
@@ -616,6 +619,7 @@ namespace Mayfly.Fish.Explorer
             textBoxSpcWLog.Text = Constants.Null;
             textBoxSpcWStrat.Text = Constants.Null;
             textBoxSpsTotal.Text = Constants.Null;
+
             chartSpcStats.Series[0].Points.Clear();
         }
 
@@ -737,7 +741,7 @@ namespace Mayfly.Fish.Explorer
             histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
             histAged = new Histogramma(Resources.Interface.StratesAged);
 
-            Color startColor = Color.FromArgb(150, Color.Lavender);
+            Color startColor = Color.FromArgb(150, Mathematics.UserSettings.ColorAccent);
 
             foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
@@ -753,33 +757,37 @@ namespace Mayfly.Fish.Explorer
                 //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
 
-            ext = new Scatterplot(Resources.Interface.QualBio);
-            ext.Properties.DataPointColor = Constants.InfantColor;
-            plotQualify.AddSeries(ext);
-
-            inter = new Scatterplot(Resources.Interface.QualOwn);
-            inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
-            plotQualify.AddSeries(inter);
-            inter.Updated += inter_Updated;
-
-            combi = new Scatterplot(Resources.Interface.QualCombi);
-            combi.Properties.ShowTrend = true;
-            combi.Properties.ConfidenceLevel = .99999;
-            combi.Properties.ShowPredictionBands = true;
-            combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
-            combi.Properties.DataPointColor = Color.Transparent;
-            combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
-            plotQualify.AddSeries(combi);
-            combi.Updated += combi_Updated;
-
-            //plotQualify.Remove(Resources.Interface.StratesSampled, false);
-            //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
-            //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
-            //plotQualify.Remove(Resources.Interface.StratesAged, false);
-
             //plotQualify.Remove(ext);
             //plotQualify.Remove(inter);
             //plotQualify.Remove(combi);
+
+
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            {
+                ext = new Scatterplot(Resources.Interface.QualBio);
+                ext.Properties.DataPointColor = Constants.InfantColor;
+                plotQualify.AddSeries(ext);
+
+                inter = new Scatterplot(Resources.Interface.QualOwn);
+                inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
+                plotQualify.AddSeries(inter);
+                inter.Updated += inter_Updated;
+
+                combi = new Scatterplot(Resources.Interface.QualCombi);
+                combi.Properties.ShowTrend = true;
+                combi.Properties.ConfidenceLevel = .99999;
+                combi.Properties.ShowPredictionBands = true;
+                combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+                combi.Properties.DataPointColor = Color.Transparent;
+                combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
+                plotQualify.AddSeries(combi);
+                combi.Updated += combi_Updated;
+
+                //plotQualify.Remove(Resources.Interface.StratesSampled, false);
+                //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
+                //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
+                //plotQualify.Remove(Resources.Interface.StratesAged, false);
+            }
         }
 
         private void resetQualPlotAxes(double from, double to, double top)
@@ -918,9 +926,11 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+
             SpeciesConsistencyChecker artifact = findSpeciesRow(gridRow).CheckConsistency(FullStack);
 
-            if (artifact.AcrtifactsCount > 0)
+            if (artifact.ArtifactsCount > 0)
             {
                 ((TextAndImageCell)gridRow.Cells[columnSpcSpc.Index]).Image = ConsistencyChecker.GetImage(artifact.WorstCriticality);
                 gridRow.Cells[columnSpcSpc.Index].ToolTipText = artifact.GetNotices(true).Merge(System.Environment.NewLine);
@@ -1051,6 +1061,8 @@ namespace Mayfly.Fish.Explorer
         private void updateCardArtifacts(DataGridViewRow gridRow)
         {
             if (gridRow == null) return;
+
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
@@ -1365,6 +1377,8 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
             if (artifact.OddMassCriticality > ArtifactCriticality.Normal)
@@ -1394,6 +1408,8 @@ namespace Mayfly.Fish.Explorer
         private void saveLogRow(DataGridViewRow gridRow)
         {
             if (baseSpc != null) return;
+
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
 
             Data.LogRow logRow = findLogRow(gridRow);
 
@@ -1661,6 +1677,8 @@ namespace Mayfly.Fish.Explorer
         private void updateIndividualArtifacts(DataGridViewRow gridRow)
         {
             if (gridRow == null) return;
+
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
 
             IndividualConsistencyChecker artifact = findIndividualRow(gridRow).CheckConsistency();
 

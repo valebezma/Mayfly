@@ -75,6 +75,8 @@ namespace Mayfly
 
             public List<Notice> Notices;
 
+            public bool MarkNotices = true;
+
 
 
             public Table(string caption)
@@ -446,7 +448,10 @@ namespace Mayfly
                     if (_notice.Text == notice) return _notice;
                 }
 
-                Notice result = new Notice(Notices.Count, notice);
+                Notice result = new Notice(Notices.Count, notice)
+                {
+                    Parent = this
+                };
                 Notices.Add(result);
                 return result;
             }
@@ -458,7 +463,7 @@ namespace Mayfly
 
 
 
-            public static Table GetLinedTable(string[] prompts, string[] values)
+            public static Table GetLinedTable(string[] prompts, string[] values, string[] notices)
             {
                 Table result = new Table();
 
@@ -469,14 +474,27 @@ namespace Mayfly
                     result.EndRow();
                 }
 
+                foreach (string notice in notices)
+                {
+                    result.AddNotice(notice);
+                }
+
                 return result;
             }
+
+            public static Table GetLinedTable(string[] prompts, string[] values)
+            {
+                return GetLinedTable(prompts, values, new string[] { });
+            }
+            
 
             public class Notice
             {
                 public int Number;
 
                 public string Text;
+
+                public Table Parent;
 
                 public string Holder { get { return string.Format("<sup>{0}</sup>", Number.ToLetter().ToLowerInvariant()); } }
 
@@ -488,7 +506,7 @@ namespace Mayfly
 
                 public override string ToString()
                 {
-                    return string.Format("{0} {1}", Holder, Text);
+                    return Parent.MarkNotices ? string.Format("{0} {1}", Holder, Text) : Text;
                 }
             }
         }

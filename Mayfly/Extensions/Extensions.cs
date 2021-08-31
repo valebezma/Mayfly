@@ -91,7 +91,6 @@ namespace Mayfly.Extensions
 
         public static Color Darker(this Color color, double saturationdegree)
         {
-            //int A = Math.Max(0, color.A - (int)(saturationdegree * 255));
             int R = Math.Max(0, color.R - (int)(saturationdegree * 255));
             int G = Math.Max(0, color.G - (int)(saturationdegree * 255));
             int B = Math.Max(0, color.B - (int)(saturationdegree * 255));
@@ -105,17 +104,20 @@ namespace Mayfly.Extensions
 
         public static Color Lighter(this Color color, double saturationdegree)
         {
-            return color.GetDesaturatedColor(saturationdegree);
+            int R = Math.Min(255, color.R + (int)(saturationdegree * 255));
+            int G = Math.Min(255, color.G + (int)(saturationdegree * 255));
+            int B = Math.Min(255, color.B + (int)(saturationdegree * 255));
+            return Color.FromArgb(color.A, R, G, B);
         }
 
-        public static Color GetDesaturatedColor(this Color color, double kValue)
-        {
-            double greyLevel = (color.R * 0.299) + (color.G * 0.587) + (color.B * 0.144);
-            int r = (int)(greyLevel * kValue + (color.R) * (1 - kValue));
-            int g = (int)(greyLevel * kValue + (color.G) * (1 - kValue));
-            int b = (int)(greyLevel * kValue + (color.B) * (1 - kValue));
-            return Color.FromArgb(kValue * 255 < 0 ? 0 : kValue > 255 ? 255 : (int) (kValue * 255), r, g, b);
-        }
+        //public static Color GetDesaturatedColor(this Color color, double kValue)
+        //{
+        //    double greyLevel = (color.R * 0.299) + (color.G * 0.587) + (color.B * 0.144);
+        //    int r = (int)(greyLevel * kValue + (color.R) * (1 - kValue));
+        //    int g = (int)(greyLevel * kValue + (color.G) * (1 - kValue));
+        //    int b = (int)(greyLevel * kValue + (color.B) * (1 - kValue));
+        //    return Color.FromArgb(kValue * 255 < 0 ? 0 : kValue > 255 ? 255 : (int) (kValue * 255), r, g, b);
+        //}
 
         public static string Merge(this IEnumerable array)
         {

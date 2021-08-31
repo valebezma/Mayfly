@@ -207,5 +207,73 @@ namespace Mayfly.Extensions
             timer.Tick += timerTicked;
             timer.Enabled = true;
         }
+
+        public static void AnimateChart(this Series series, double target, double total, Color color)
+        {
+            if (double.IsNaN(target)) return;
+
+            if (double.IsNaN(total)) return;
+
+            if (series.ChartType != SeriesChartType.Doughnut)
+                throw new ArgumentException();
+
+            if (series.Points.Count > 2)
+            {
+                series.Points[1].YValues[0] = total - series.Points[0].YValues[0];
+            }
+
+            while (series.Points.Count > 2)
+            {
+                series.Points.RemoveAt(2);
+            }
+
+            while (series.Points.Count < 2)
+            {
+                DataPoint dp = series.Points.Add(0);
+            }
+
+            double value = series.Points[0].YValues[0];
+
+            Timer timer = new Timer();
+            timer.Interval = 1;
+
+            double pace = total / 100d;
+
+            timer.Tick += (object sender, EventArgs e) =>
+            {
+                if (target > value)
+                {
+                    if (value + pace < target)
+                    {
+                        value += pace;
+                    }
+                    else
+                    {
+                        value = target;
+                    }
+                }
+                else
+                {
+                    if (value - pace > target)
+                    {
+                        value -= pace;
+                    }
+                    else
+                    {
+                        value = target;
+                    }
+                }
+                series.Points[0].YValues[0] = value;
+                series.Points[1].YValues[0] = total - value;
+                series.Points[0].Color = color;
+                series.Points[1].Color = Constants.InfantColor.Lighter();
+
+                if (value == target)
+                {
+                    timer.Enabled = false;
+                }
+            };
+            timer.Enabled = true;
+        }
     }
 }

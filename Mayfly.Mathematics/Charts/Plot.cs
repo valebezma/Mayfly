@@ -1361,12 +1361,8 @@ namespace Mayfly.Mathematics.Charts
             }
         }
 
-        public int plotCounter = 0;
-
         public void DoPlot()
         {
-            plotCounter++;
-
             #region Form header
 
             if (FindForm() != null)

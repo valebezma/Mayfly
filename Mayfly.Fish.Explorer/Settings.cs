@@ -25,9 +25,10 @@ namespace Mayfly.Fish.Explorer
                 tabPageGamingMeasure.Parent =
                 tabPageWizards.Parent =
                 tabPageCatchability.Parent =
-                tabPagePrediction.Parent =
-                (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced) ? tabControl : null;
+                UserSettings.AvailableFeatures.HasFlag(Feature.Fishery) ? tabControl : null;
 
+            tabPagePrediction.Parent =
+                UserSettings.AvailableFeatures.HasFlag(Feature.Predictions) ? tabControl : null;
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
             comboBoxGear.DataSource = Fish.UserSettings.SamplersIndex.Sampler.Select();
@@ -42,7 +43,7 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Fishery))
             {
                 speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
                 speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
@@ -56,7 +57,7 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadSettings()
         {
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Fishery))
             {
                 spreadSheetAge.Rows.Clear();
                 spreadSheetMeasure.Rows.Clear();
@@ -73,10 +74,7 @@ namespace Mayfly.Fish.Explorer
                 numericUpDownCatchabilityDefault.Value = (decimal)UserSettings.DefaultCatchability;
 
                 checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
-            }
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
-            {
                 numericUpDownInterval.Value = (decimal)UserSettings.SizeInterval;
 
                 comboBoxDominance.SelectedIndex = Wild.UserSettings.Dominance;
@@ -85,7 +83,7 @@ namespace Mayfly.Fish.Explorer
                 comboBoxAlk.SelectedIndex = (int)UserSettings.SelectedAgeLengthKeyType;
             }
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
             {
                 checkBoxSuggest.Checked = (UserSettings.AgeSuggest || UserSettings.MassSuggest);
                 checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;

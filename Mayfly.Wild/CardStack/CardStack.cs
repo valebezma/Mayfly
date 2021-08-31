@@ -523,7 +523,7 @@ namespace Mayfly.Wild
 
 
 
-        public void AddCommon(Report report, string samplers, string[] prompts, string[] values, string notice)
+        public void AddCommon(Report report, string[] prompts, string[] values, string[] notices)
         {
             List<string> _prompts = new List<string>();
             List<string> _values = new List<string>();
@@ -539,22 +539,20 @@ namespace Mayfly.Wild
             _values.Add(this.GetInvestigators().Merge());
             _values.Add(this.GetWaterNames().Merge());
             _values.Add(this.GetDates().GetDatesDescription());
-            _values.Add(samplers);
+            _values.Add(this.GetSamplersList().Merge());
             _values.AddRange(values);
 
-            report.AddTable(Report.Table.GetLinedTable(_prompts.ToArray(), _values.ToArray()), "fill");
-                        
-            if (!string.IsNullOrWhiteSpace(notice)) {
-                report.AddComment(notice);
-            }
+            Report.Table t = Report.Table.GetLinedTable(_prompts.ToArray(), _values.ToArray(), notices);
+            t.MarkNotices = false;            
+            report.AddTable(t, "fill");
         }
 
-        public void AddCommon(Report report, string samplers, string[] prompts, string[] values) => this.AddCommon(report, samplers, prompts, values, string.Empty);
+        public void AddCommon(Report report, string[] prompts, string[] values) => this.AddCommon(report, prompts, values, new string[] { });
 
-        public void AddCommon(Report report, string samplers, string prompt, string value) => this.AddCommon(report, samplers, new string[] { prompt }, new string[] { value });
+        public void AddCommon(Report report, string prompt, string value) => this.AddCommon(report, new string[] { prompt }, new string[] { value });
 
-        public void AddCommon(Report report, string samplers, string notice) => this.AddCommon(report, samplers, new string[] { }, new string[] { }, notice);
+        public void AddCommon(Report report, string[] notices) => this.AddCommon(report, new string[] { }, new string[] { }, notices);
 
-        public void AddCommon(Report report, string samplers) => this.AddCommon(report, samplers, new string[] { }, new string[] { });
+        //public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
     }
 }

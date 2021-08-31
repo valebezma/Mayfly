@@ -88,19 +88,14 @@ namespace Mayfly.Fish.Explorer
         public static double MassStratified(this Data.LogRow logRow)
         {
             double result = 0;
+            var cb = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species);
+            if (cb == null) return double.NaN;
 
             foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
             {
-                double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
-
-                if (double.IsNaN(mass))
-                {
-                    return double.NaN;
-                }
-                else
-                {
-                    result += mass * stratifiedRow.Count;
-                }
+                double mass = cb.GetValue(stratifiedRow.SizeClass.Midpoint);
+                if (double.IsNaN(mass)) return double.NaN;
+                result += mass * stratifiedRow.Count;
             }
 
             return result / 1000;

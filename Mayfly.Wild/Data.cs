@@ -1274,14 +1274,19 @@ namespace Mayfly.Wild
                 return result.ToArray();
             }
 
-            public override string ToString()
-            {
-                return this.Species;
-            }
-
             public string ToString(string format, IFormatProvider formatProvider)
             {
                 return this.KeyRecord == null ? ToString() : this.KeyRecord.ToString(format, formatProvider);
+            }
+
+            public string ToString(string format)
+            {
+                return ToString(format, CultureInfo.CurrentCulture);
+            }
+
+            public override string ToString()
+            {
+                return ToString(string.Empty);
             }
         }
 

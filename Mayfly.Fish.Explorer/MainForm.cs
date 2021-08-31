@@ -26,43 +26,25 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
-
-                // Bio import/export
-                //menuItemExportSpec,
-                menuItemImportSpec,
-                //toolStripSeparator11,
-
-                // All stats
-                menuItemGearStats,
-                menuItemSpcStats,
-
-                // Assessment
-                menuInstant
-
-                // From cards to gear stats
-                //menuItemCardCatches,
-                //menuItemCardEfforts,
-                //toolStripSeparator2,
-
-                //// From species to species stats
-                //menuItemSpcTotals,
-                //menuItemSpcStrates,
-                //toolStripSeparator13
+            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Predictions),
+                menuItemImportSpec
                 );
 
-            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Insider,
-                // Fast input
+            UI.SetControlsAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Predictions),
+                labelQualify,
+                buttonQualOutliers,
+                checkBoxQualOutliers,
+                comboBoxQualValue);
+
+            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Fishery),
+                menuItemExportSpec,
+                menuInstant
+                );
+
+            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Insider),
                 menuSurvey,
-                // Models
                 menuModels,
-                // Cohort analysis
                 menuCohort);
-
-            //UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
-            //    buttonCardDetails,
-            //    buttonSpcDetails);
-
 
             Fish.UserSettings.Interface.OpenDialog.Multiselect = true;
 
@@ -180,35 +162,17 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            plotQualify.SetBioAcceptable(LoadCards);
-            spreadSheetInd.SetBioAcceptable(LoadCards);
-            spreadSheetSpc.SetBioAcceptable(LoadCards);
-            spreadSheetLog.SetBioAcceptable(LoadCards);
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            {
+                plotQualify.SetBioAcceptable(LoadCards);
+                spreadSheetInd.SetBioAcceptable(LoadCards);
+                spreadSheetSpc.SetBioAcceptable(LoadCards);
+                spreadSheetLog.SetBioAcceptable(LoadCards);
+            }
 
             data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
-            FullStack = new CardStack(); //.ConvertFrom(data);
+            FullStack = new CardStack();
             AllowedStack = new CardStack();
-
-            //// Will do nothing
-            //if (Licensing.Verify("Fishery Scientist"))
-            //{
-            //    data.InitializeBio();
-
-            //    foreach (ContinuousBio bio in data.MassModels)
-            //    {
-            //        bio.VisualConfirmation = UserSettings.VisualConfirmation; 
-            //    }
-            //    foreach (ContinuousBio bio in data.GrowthModels)
-            //    {
-            //        bio.VisualConfirmation = UserSettings.VisualConfirmation; 
-            //    }
-
-            //    if (UserSettings.AutoLoadBio)
-            //    {
-            //        processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
-            //        LoadCards(UserSettings.Bios);
-            //    }
-            //}
 
             IsEmpty = true;
             IsAllowedEmpty = true;
@@ -217,6 +181,11 @@ namespace Mayfly.Fish.Explorer
         public MainForm(string[] args)
             : this()
         {
+            if (args.Length == 0)
+            {
+                return;
+            }
+
             if (args.Length == 1)
             {
                 switch (args[0])
@@ -224,17 +193,11 @@ namespace Mayfly.Fish.Explorer
                     case "-obs":
                         menuItemSurveyInput_Click(this, new EventArgs());
                         this.WindowState = FormWindowState.Minimized;
-                        break;
-
-                    default:
-                        this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(Fish.UserSettings.Interface.Extension)); };
-                        break;
+                        return;
                 }
             }
-            else
-            {
-                this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(Fish.UserSettings.Interface.Extension)); };
-            }
+
+            this.Load += (o, e) => { LoadCards(args.GetOperableFilenames(Fish.UserSettings.Interface.Extension)); };
         }
 
         public MainForm(CardStack stack)
@@ -300,23 +263,26 @@ namespace Mayfly.Fish.Explorer
             {
                 if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension)
                 {
-                    processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
-
-                    if (data.IsBioLoaded)
+                    if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
                     {
-                        TaskDialogButton tdb = taskDialogBio.ShowDialog();
+                        processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
-                        if (tdb != tdbSpecCancel)
+                        if (data.IsBioLoaded)
                         {
-                            data.ImportBio(filenames[i], tdb == tdbSpecClear);
-                        }
-                    }
-                    else
-                    {
-                        data.ImportBio(filenames[i]);
-                    }
+                            TaskDialogButton tdb = taskDialogBio.ShowDialog();
 
-                    processDisplay.ResetStatus();
+                            if (tdb != tdbSpecCancel)
+                            {
+                                data.ImportBio(filenames[i], tdb == tdbSpecClear);
+                            }
+                        }
+                        else
+                        {
+                            data.ImportBio(filenames[i]);
+                        }
+
+                        processDisplay.ResetStatus();
+                    }
                 }
                 //else if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfacePermission.Extension)
                 //{
@@ -356,11 +322,11 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
-            //{
-            //    e.Cancel = true;
-            //    return;
-            //}
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            {
+                e.Cancel = true;
+                return;
+            }
 
             data.RefreshBios();
         }
@@ -370,13 +336,14 @@ namespace Mayfly.Fish.Explorer
             if (!e.Cancelled)
             {
                 processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtifactsProcessing);
-                artefactFinder.RunWorkerAsync();
             }
             else
             {
                 processDisplay.StopProcessing();
                 IsBusy = false;
             }
+
+            artefactFinder.RunWorkerAsync();
 
             updateMass(FullStack.Mass());
         }
@@ -385,11 +352,11 @@ namespace Mayfly.Fish.Explorer
 
         private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
-            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
-            //{
-            //    e.Cancel = true;
-            //    return;
-            //}
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard))
+            {
+                e.Cancel = true;
+                return;
+            }
 
             e.Result = AllowedStack.CheckConsistency();
         }
@@ -413,9 +380,9 @@ namespace Mayfly.Fish.Explorer
                     Notification.ShowNotification(Wild.Resources.Interface.Messages.ArtifactsNoneNotification,
                         Wild.Resources.Interface.Messages.ArtifactsNoneNotificationInstruction);
                 }
-            }
 
-            updateArtifacts();
+                updateArtifacts();
+            }
 
             IsBusy = false;
             processDisplay.StopProcessing();
@@ -572,12 +539,14 @@ namespace Mayfly.Fish.Explorer
 
             initializeSpeciesStatsPlot();
 
+            clearSpcStats();
+
             spreadSheetSpcStats.Rows.Clear();
             foreach (Data.SpeciesRow speciesRow in AllowedStack.GetSpecies())
             {
                 spreadSheetSpcStats.Rows.Add(speciesRow.ID, speciesRow);
             }
-            spreadSheetSpcStats.Rows.Add(Mayfly.Resources.Interface.Total);
+            spreadSheetSpcStats.Rows.Add(null, Mayfly.Resources.Interface.Total);
 
             comboBoxTechSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
             comboBoxTechSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxTechSampler.DataSource)[0];
@@ -585,7 +554,6 @@ namespace Mayfly.Fish.Explorer
             comboBoxQualType.DataSource = AllowedStack.GetSamplerTypeDisplays();
             comboBoxQualType.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxQualType.DataSource)[0];
 
-            clearSpcStats();
             species_Changed(spreadSheetSpcStats, e);
         }
 
@@ -783,12 +751,18 @@ namespace Mayfly.Fish.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e)
         {
             cards_DragLeave(sender, e);
-            LoadCards(e.GetOperableFilenames(Fish.UserSettings.Interface.Extension));
+            List<string> ext = new List<string>();
+            ext.Add(Fish.UserSettings.Interface.Extension);
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
         private void cards_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.GetOperableFilenames(Fish.UserSettings.Interface.Extension).Length > 0)
+            List<string> ext = new List<string>();
+            ext.Add(Fish.UserSettings.Interface.Extension);
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            if (e.GetOperableFilenames(ext.ToArray()).Length > 0)
             {
                 e.Effect = DragDropEffects.All;
 
@@ -1268,8 +1242,6 @@ namespace Mayfly.Fish.Explorer
 
         private void species_Changed(object sender, EventArgs e)
         {
-            plotQualify.plotCounter = 0;
-
             // Make a selection
             if (spreadSheetSpcStats.SelectedRows.Count == 0 ||
                 !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow row))
@@ -1295,6 +1267,7 @@ namespace Mayfly.Fish.Explorer
 
             // Strates
             labelQualNotSelected.Visible = selectedStatSpc == null;
+            plotQualify.Visible = selectedStatSpc != null;
 
             UI.SetControlClickability(selectedStatSpc != null,
                 labelQualTitle,
@@ -1335,48 +1308,47 @@ namespace Mayfly.Fish.Explorer
                 double n7 = data.Stratified.Quantity;
                 double n8 = AllowedStack.MassSampled();
 
-                if (total > 0) textBoxSpsTotal.Text = total.ToString();
-                else textBoxSpsTotal.Text = Constants.Null;
-
-                if (n1 > 0) textBoxSpcLog.Text = string.Format(valueMask, n1, n1 / total);
-                else textBoxSpcLog.Text = Constants.Null;
-
-                if (n2 > 0) textBoxSpcL.Text = string.Format(valueMask, n2, n2 / total);
-                else textBoxSpcL.Text = Constants.Null;
-
-                if (n3 > 0) textBoxSpcW.Text = string.Format(valueMask, n3, n3 / total);
-                else textBoxSpcW.Text = Constants.Null;
-
-                if (n35 > 0) textBoxSpcReg.Text = string.Format(valueMask, n35, n35 / total);
-                else textBoxSpcReg.Text = Constants.Null;
-
-                if (n4 > 0) textBoxSpcA.Text = string.Format(valueMask, n4, n4 / total);
-                else textBoxSpcA.Text = Constants.Null;
-
-                if (n5 > 0) textBoxSpcS.Text = string.Format(valueMask, n5, n5 / total);
-                else textBoxSpcS.Text = Constants.Null;
-
-                if (n6 > 0) textBoxSpcM.Text = string.Format(valueMask, n6, n6 / total);
-                else textBoxSpcM.Text = Constants.Null;
-
-                if (n7 > 0) textBoxSpcStrat.Text = string.Format(valueMask, n7, n7 / total);
-                else textBoxSpcStrat.Text = Constants.Null;
-
-                if (n8 > 0) textBoxSpcWTotal.Text = n8.ToString("N3");
-                else textBoxSpcWTotal.Text = Constants.Null;
-
+                textBoxSpsTotal.Text = total > 0 ? total.ToString() : textBoxSpsTotal.Text = Constants.Null;
+                textBoxSpcLog.Text = n1 > 0 ? string.Format(valueMask, n1, n1 / total) : Constants.Null;
+                textBoxSpcL.Text = n2 > 0 ? string.Format(valueMask, n2, n2 / total) : Constants.Null;
+                textBoxSpcW.Text = n3 > 0 ? string.Format(valueMask, n3, n3 / total) : Constants.Null;
+                textBoxSpcTally.Text = n35 > 0 ? string.Format(valueMask, n35, n35 / total) : Constants.Null;
+                textBoxSpcA.Text = n4 > 0 ? string.Format(valueMask, n4, n4 / total) : Constants.Null;
+                textBoxSpcS.Text = n5 > 0 ? string.Format(valueMask, n5, n5 / total) : Constants.Null;
+                textBoxSpcM.Text = n6 > 0 ? string.Format(valueMask, n6, n6 / total) : Constants.Null;
+                textBoxSpcStrat.Text = n7 > 0 ? string.Format(valueMask, n7, n7 / total) : Constants.Null;
+                textBoxSpcWTotal.Text = n8 > 0 ? n8.ToString("N3") : Constants.Null;
                 textBoxSpcWLog.Text = Constants.Null;
                 textBoxSpcWStrat.Text = Constants.Null;
 
+                buttonSpcStrat.Enabled = total > 0;
+                buttonSpcLog.Enabled = n1 > 0;
+                buttonSpcL.Enabled = n2 > 0;
+                buttonSpcW.Enabled = n3 > 0;
+                buttonSpcTally.Enabled = n35 > 0;
+                buttonSpcA.Enabled = n4 > 0;
+                buttonSpcS.Enabled = n5 > 0;
+                buttonSpcM.Enabled = n6 > 0;
+
                 chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = true;
-
-                foreach (Data.SpeciesRow speciesRow in data.Species)
+                foreach (Data.SpeciesRow speciesRow in FullStack.GetSpecies())
                 {
-                    chartSpcStats.Series[0].Points.Add(GetSpeciesDataPoint(speciesRow, false));
+                    DataPoint dp = new DataPoint();
+                    dp.YValues[0] = AllowedStack.Quantity(speciesRow);
+                    dp.LegendText = speciesRow.ToString(ColumnSpcStat.DefaultCellStyle.Format);
+                    chartSpcStats.Series[0].Points.Add(dp);
                 }
 
                 chartSpcStats.Series[0].Sort(PointSortOrder.Descending);
+
+                Color startColor = Mathematics.UserSettings.ColorAccent;
+
+                foreach (DataPoint dp in chartSpcStats.Series[0].Points)
+                {
+                    dp.Color = startColor;
+                    startColor = startColor.Lighter();
+                }
             }
             else
             {
@@ -1391,29 +1363,23 @@ namespace Mayfly.Fish.Explorer
                 double n5 = AllowedStack.Sexed(selectedStatSpc);
                 double n6 = AllowedStack.Matured(selectedStatSpc);
 
-                if (n_str > 0) textBoxSpcStrat.Text = string.Format(valueMask, n_str, n_str / total);
-                else textBoxSpcStrat.Text = Constants.Null;
+                textBoxSpcStrat.Text = n_str > 0 ? string.Format(valueMask, n_str, n_str / total) : Constants.Null;
+                textBoxSpcLog.Text = n_ind > 0 ? string.Format(valueMask, n_ind, n_ind / total) : textBoxSpcL.Text = Constants.Null;
+                textBoxSpcL.Text = n2 > 0 ? string.Format(valueMask, n2, n2 / total) : textBoxSpcL.Text = Constants.Null;
+                textBoxSpcW.Text = n3 > 0 ? string.Format(valueMask, n3, n3 / total) : textBoxSpcW.Text = Constants.Null;
+                textBoxSpcTally.Text = n35 > 0 ? string.Format(valueMask, n35, n35 / total) : textBoxSpcTally.Text = Constants.Null;
+                textBoxSpcA.Text = n4 > 0 ? string.Format(valueMask, n4, n4 / total) : textBoxSpcA.Text = Constants.Null;
+                textBoxSpcS.Text = n5 > 0 ? string.Format(valueMask, n5, n5 / total) : textBoxSpcS.Text = Constants.Null;
+                textBoxSpcM.Text = n6 > 0 ? string.Format(valueMask, n6, n6 / total) : textBoxSpcM.Text = Constants.Null;
 
-                if (n_ind > 0) textBoxSpcLog.Text = string.Format(valueMask, n_ind, n_ind / total);
-                else textBoxSpcL.Text = Constants.Null;
-
-                if (n2 > 0) textBoxSpcL.Text = string.Format(valueMask, n2, n2 / total);
-                else textBoxSpcL.Text = Constants.Null;
-
-                if (n3 > 0) textBoxSpcW.Text = string.Format(valueMask, n3, n3 / total);
-                else textBoxSpcW.Text = Constants.Null;
-
-                if (n35 > 0) textBoxSpcReg.Text = string.Format(valueMask, n35, n35 / total);
-                else textBoxSpcReg.Text = Constants.Null;
-
-                if (n4 > 0) textBoxSpcA.Text = string.Format(valueMask, n4, n4 / total);
-                else textBoxSpcA.Text = Constants.Null;
-
-                if (n5 > 0) textBoxSpcS.Text = string.Format(valueMask, n5, n5 / total);
-                else textBoxSpcS.Text = Constants.Null;
-
-                if (n6 > 0) textBoxSpcM.Text = string.Format(valueMask, n6, n6 / total);
-                else textBoxSpcM.Text = Constants.Null;
+                buttonSpcStrat.Enabled = n_str > 0;
+                buttonSpcLog.Enabled = n_ind > 0;
+                buttonSpcL.Enabled = n2 > 0;
+                buttonSpcW.Enabled = n3 > 0;
+                buttonSpcTally.Enabled = n35 > 0;
+                buttonSpcA.Enabled = n4 > 0;
+                buttonSpcS.Enabled = n5 > 0;
+                buttonSpcM.Enabled = n6 > 0;
 
                 double totalMass = AllowedStack.Mass(selectedStatSpc);
 
@@ -1424,9 +1390,12 @@ namespace Mayfly.Fish.Explorer
 
                     double stratifiedMass = AllowedStack.MassStratified(selectedStatSpc);
 
-                    if (stratifiedMass > 0) {
+                    if (stratifiedMass > 0)
+                    {
                         textBoxSpcWStrat.Text = stratifiedMass.ToString("N3");
-                    } else {
+                    }
+                    else
+                    {
                         textBoxSpcWStrat.Text = Constants.Null;
                     }
                 }
@@ -1440,16 +1409,21 @@ namespace Mayfly.Fish.Explorer
                 if (total > 0) textBoxSpsTotal.Text = total.ToString();
                 else textBoxSpsTotal.Text = Constants.Null;
 
-                chartSpcStats.Series[0].Points.Clear();
+                //chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = false;
 
-                DataPoint speciesPoint = GetSpeciesDataPoint(selectedStatSpc, false);
-                chartSpcStats.Series[0].Points.Add(speciesPoint);
 
-                DataPoint spacePoint = new DataPoint();
-                spacePoint.YValues[0] = AllowedStack.QuantitySampled() - AllowedStack.QuantitySampled(selectedStatSpc);
-                spacePoint.Color = speciesPoint.Color.GetDesaturatedColor(.1);
-                chartSpcStats.Series[0].Points.Add(spacePoint);
+                //chartSpcStats.Series[0].AnimateChart(total / AllowedStack.Quantity(), label1);
+                chartSpcStats.Series[0].AnimateChart(total, AllowedStack.Quantity(), Mathematics.UserSettings.ColorAccent);
+
+                //DataPoint speciesPoint = GetSpeciesDataPoint(selectedStatSpc, false);
+                //speciesPoint.Color = Mathematics.UserSettings.ColorAccent;
+                //chartSpcStats.Series[0].Points.Add(speciesPoint);
+
+                //DataPoint spacePoint = new DataPoint();
+                //spacePoint.YValues[0] = AllowedStack.QuantitySampled() - AllowedStack.QuantitySampled(selectedStatSpc);
+                //spacePoint.Color = speciesPoint.Color.GetDesaturatedColor(.1);
+                //chartSpcStats.Series[0].Points.Add(spacePoint);
             }
         }
 
@@ -1478,42 +1452,7 @@ namespace Mayfly.Fish.Explorer
         //    }
         //}
 
-        private void label1_DoubleClick(object sender, EventArgs e)
-        {
-            loadIndividuals(selectedStatSpc);
-        }
-
-        private void label2_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndLength);
-        }
-
-        private void label3_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndMass);
-        }
-
-        private void label35_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndTally);
-        }
-
-        private void label4_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndAge);
-        }
-
-        private void label5_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndSex);
-        }
-
-        private void label6_DoubleClick(object sender, EventArgs e)
-        {
-            getFilteredList(columnIndMaturity);
-        }
-
-        private void label7_DoubleClick(object sender, EventArgs e)
+        private void buttonSpcStrat_Click(object sender, EventArgs e)
         {
             if (selectedStatSpc == null)
             {
@@ -1527,6 +1466,41 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetStratified.EnsureFilter(columnStratifiedSpc,
                     selectedStatSpc.Species, loaderStratified, menuItemLoadStratified_Click);
             }
+        }
+
+        private void buttonSpcLog_Click(object sender, EventArgs e)
+        {
+            loadIndividuals(selectedStatSpc);
+        }
+
+        private void buttonSpcL_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndLength);
+        }
+
+        private void buttonSpcW_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndMass);
+        }
+
+        private void buttonSpcTally_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndTally);
+        }
+
+        private void buttonSpcA_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndAge);
+        }
+
+        private void buttonSpcS_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndSex);
+        }
+
+        private void buttonSpcM_Click(object sender, EventArgs e)
+        {
+            getFilteredList(columnIndMaturity);
         }
 
         #endregion
@@ -1649,7 +1623,7 @@ namespace Mayfly.Fish.Explorer
 
         private void models_Changed(object sender, EventArgs e)
         {
-            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
 
             plotQualify.Visible = selectedStatSpc != null;
 
@@ -2561,7 +2535,7 @@ namespace Mayfly.Fish.Explorer
 
         private void bioTipper_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
+            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
@@ -2756,7 +2730,7 @@ namespace Mayfly.Fish.Explorer
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
 
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
             e.Result = speciesRow;

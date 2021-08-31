@@ -33,25 +33,33 @@ namespace Mayfly.Fish.Explorer
         /// <param name="speciesRow"></param>
         public static void AddCommon(this CardStack stack, Report report, Data.SpeciesRow speciesRow)
         {
-            ConsistencyChecker[] artifacts = stack.CheckConsistency();
+            List<string> warnings = new List<string>();
 
-            string warning = string.Empty;
-
-            if (artifacts.Length > 0)
+            if (UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard))
             {
-                warning = Resources.Artifact.ArtifactsFound + System.Environment.NewLine;
-
-                foreach (ConsistencyChecker artifact in artifacts)
+                if (speciesRow == null)
                 {
-                    // If report is about species - skip artifacts of other species
-                    if (speciesRow != null && artifact is SpeciesConsistencyChecker && ((SpeciesConsistencyChecker)artifact).SpeciesRow != speciesRow)
-                        continue;
+                    var diagnostics = stack.CheckConsistency();
 
-                    warning += artifact.ToString() + System.Environment.NewLine;
+                    if (diagnostics.Length > 0)
+                    {
+                        foreach (var diagnostic in diagnostics)
+                        {
+                            if (diagnostic.FullArtifactsCount > 0)
+                            {
+                                warnings.Add(diagnostic.ToString());
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var diagnostics = speciesRow.CheckConsistency(stack);
+                    warnings.AddRange(diagnostics.GetNotices(true));
                 }
             }
-
-            stack.AddCommon(report, stack.GetSamplersList().Merge(), warning);
+                        
+            stack.AddCommon(report, warnings.ToArray());
         }
 
 
@@ -597,8 +605,12 @@ namespace Mayfly.Fish.Explorer
                     int aged = stack.Aged(speciesRow, strate);
                     int reged = stack.QuantityRegisteredNonAged(speciesRow, strate);
                     int mod = 0;
-                    var sca = stack.Parent.FindGrowthModel(speciesRow.Species).ExternalData;
-                    if (sca != null) mod = sca.Data.Count((XY xy) => strate.LeftClosedContains(xy.Y));
+                    var bpm = stack.Parent.FindGrowthModel(speciesRow.Species);
+                    if (bpm != null)
+                    {
+                        var sca = bpm.ExternalData;
+                        if (sca != null) mod = sca.Data.Count((XY xy) => strate.LeftClosedContains(xy.Y));
+                    }
                     int has = aged + reged + mod;
 
                     return (aged > 0 ? (aged.ToString()) : string.Empty) +

@@ -545,7 +545,7 @@ namespace Mayfly.Benthos.Explorer
 
             foreach (ConsistencyChecker artifact in (ConsistencyChecker[])e.Result)
             {
-                count += artifact.AcrtifactsCount;
+                count += artifact.ArtifactsCount;
             }
 
             labelArtifacts.Visible = pictureBoxArtifacts.Visible = count > 0;

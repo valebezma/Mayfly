@@ -202,6 +202,14 @@ namespace Mayfly.Fish.Explorer
             }
             set { UserSetting.SetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType, (int)value); }
         }
+
+        public static Feature AvailableFeatures
+        {
+            get
+            {
+                return (Feature.Technician | Feature.ConsistencyQuard);// | Feature.Predictions);// | Feature.Fishery);// | Feature.Insider);
+            }
+        }
     }
 
     public abstract class UserSettingPaths
@@ -253,5 +261,15 @@ namespace Mayfly.Fish.Explorer
         public static string MemWaterDepth = "MemWaterDepth";
 
         #endregion
+    }
+
+    [Flags]
+    public enum Feature
+    {
+        Technician = 1,
+        Fishery = 2,
+        ConsistencyQuard = 4,
+        Predictions = 8,
+        Insider = 16
     }
 }

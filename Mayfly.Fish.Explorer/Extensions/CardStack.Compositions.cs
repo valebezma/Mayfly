@@ -105,7 +105,7 @@ namespace Mayfly.Fish.Explorer
                 //if (group.Quantity == 0) continue;
                 group.MassSample = stack.MassSample(speciesRow, group.Size);
                 double w = group.MassSample.Count > 0 ? group.MassSample.Mean :
-                    stack.Parent.FindMassModel(speciesRow.Species).GetValue(group.Size.Midpoint);
+                   UserSettings.AvailableFeatures.HasFlag(Feature.Predictions) ? stack.Parent.FindMassModel(speciesRow.Species).GetValue(group.Size.Midpoint) : double.NaN;
                 group.Mass = group.Quantity > 0 ? group.Quantity * w / 1000.0 : 0;
                 group.SetSexualComposition(
                     stack.Quantity(speciesRow, group.Size, Sex.Juvenile),

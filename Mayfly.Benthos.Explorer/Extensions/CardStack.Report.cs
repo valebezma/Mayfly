@@ -17,7 +17,7 @@ namespace Mayfly.Benthos.Explorer
     {
         public static void AddCommon(this CardStack stack, Report report)
         {
-            stack.AddCommon(report, stack.GetSamplersList().Merge());
+            stack.AddCommon(report);
         }
 
         public static void AddBrief(this CardStack stack, Report report, SpeciesKey.BaseRow baseRow)
