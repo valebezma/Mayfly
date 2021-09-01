@@ -83,6 +83,18 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
+        public static double MassIndividual(this CardStack stack)
+        {
+            double result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows())
+            {
+                result += logRow.MassIndividual();
+            }
+
+            return result;
+        }
+
 
 
         public static double MassStratified(this Data.LogRow logRow)
@@ -106,6 +118,18 @@ namespace Mayfly.Fish.Explorer
             double result = 0;
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                result += logRow.MassStratified();
+            }
+
+            return result;
+        }
+
+        public static double MassStratified(this CardStack stack)
+        {
+            double result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows())
             {
                 result += logRow.MassStratified();
             }

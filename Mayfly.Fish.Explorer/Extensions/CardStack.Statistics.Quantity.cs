@@ -68,11 +68,35 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
+        public static int QuantityIndividual(this CardStack stack)
+        {
+            int result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows())
+            {
+                result += logRow.QuantityIndividual();
+            }
+
+            return result;
+        }
+
         public static int QuantityStratified(this CardStack stack, Data.SpeciesRow speciesRow)
         {
             int result = 0;
 
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                result += logRow.QuantityStratified();
+            }
+
+            return result;
+        }
+
+        public static int QuantityStratified(this CardStack stack)
+        {
+            int result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows())
             {
                 result += logRow.QuantityStratified();
             }

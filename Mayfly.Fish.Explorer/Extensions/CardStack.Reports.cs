@@ -109,15 +109,6 @@ namespace Mayfly.Fish.Explorer
 
         #region Gear stats
 
-        public static void AddGearStatsReport(this CardStack stack, Report report)
-        {
-            foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
-            {
-                report.AddChapterTitle(samplerType.ToDisplay());
-                stack.AddGearStatsReport(report, samplerType, samplerType.GetDefaultUnitEffort());
-            }
-        }
-
         //public static void AddSampleSizeReport(this CardStack stack, Report report)
         //{
         //    report.AddParagraph(Resources.Reports.GearStats.Paragraph0, report.NextTableNumber);
@@ -180,150 +171,102 @@ namespace Mayfly.Fish.Explorer
         //    report.AddTable(table1);
         //}
 
+        public static Report.Table GetSampleSizeTable(this CardStack stack, string caption, FishSamplerType samplerType)
+        {
+            Report.Table table = new Report.Table(caption) { ZeroToLongDash = true };
+
+            table.StartHeader();
+
+            table.StartRow();
+
+            table.AddHeaderCell(string.Empty, .05, 2, CellSpan.Rows);
+            table.AddHeaderCell(string.Empty, .2, 2, CellSpan.Rows);
+
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.QuantityUnit, 9);
+
+            table.AddHeaderCell(Resources.Reports.Common.MassUnits, 3);
+            table.EndRow();
+
+            table.StartRow();
+
+            table.AddHeaderCell("Total sample quantity (catch counted)");
+            table.AddHeaderCell("Stratified samples");
+            table.AddHeaderCell("Log records");
+            table.AddHeaderCell("Length measured");
+            table.AddHeaderCell("Mass measured");
+            table.AddHeaderCell("Samples taken (tally given)");
+            table.AddHeaderCell("Age read");
+            table.AddHeaderCell("Sex defined");
+            table.AddHeaderCell("Maturity defined");
+
+            table.AddHeaderCell("Total mass");
+            table.AddHeaderCell("Stratified samples");
+            table.AddHeaderCell("Individual samples");
+
+            table.EndRow();
+            table.EndHeader();
+            
+            string[] gearClasses = stack.Classes(samplerType);
+
+            foreach (string gearClass in gearClasses)
+            {
+                CardStack gearClassData = stack.GetStack(samplerType, gearClass);
+
+                // Set totals row
+                table.StartRow();
+                table.AddCell(gearClass);
+                table.AddCell(string.Empty);
+                table.AddCellRight(gearClassData.Quantity());
+                table.AddCellRight(gearClassData.QuantityStratified());
+                table.AddCellRight(gearClassData.QuantityIndividual());
+                table.AddCellRight(gearClassData.Measured());
+                table.AddCellRight(gearClassData.Weighted());
+                table.AddCellRight(gearClassData.Tallied());
+                table.AddCellRight(gearClassData.Aged());
+                table.AddCellRight(gearClassData.Sexed());
+                table.AddCellRight(gearClassData.Matured());
+
+                table.AddCellRight(gearClassData.Mass());
+                table.AddCellRight(gearClassData.MassStratified());
+                table.AddCellRight(gearClassData.MassIndividual());
+                table.EndRow();
+
+
+                foreach (Data.SpeciesRow speciesRow in gearClassData.GetSpecies())
+                {
+                    // Set class row
+                    table.StartRow();
+                    table.AddCell(string.Empty);
+                    table.AddCell(speciesRow);
+                    table.AddCellRight(gearClassData.Quantity(speciesRow));
+                    table.AddCellRight(gearClassData.QuantityStratified(speciesRow));
+                    table.AddCellRight(gearClassData.QuantityIndividual(speciesRow));
+                    table.AddCellRight(gearClassData.Measured(speciesRow));
+                    table.AddCellRight(gearClassData.Weighted(speciesRow));
+                    table.AddCellRight(gearClassData.Tallied(speciesRow));
+                    table.AddCellRight(gearClassData.Aged(speciesRow));
+                    table.AddCellRight(gearClassData.Sexed(speciesRow));
+                    table.AddCellRight(gearClassData.Matured(speciesRow));
+
+                    table.AddCellRight(gearClassData.Mass(speciesRow));
+                    table.AddCellRight(gearClassData.MassStratified(speciesRow));
+                    table.AddCellRight(gearClassData.MassIndividual(speciesRow));
+                    table.EndRow();
+                }
+            }
+
+            return table;
+        }
+
         public static void AddGearStatsReport(this CardStack stack, Report report, FishSamplerType samplerType, UnitEffort ue)
         {
             stack.AddEffortsSection(report, samplerType, ue);
+            CardStack samplerData = stack.GetStack(samplerType);
 
             #region Sample Size
 
             report.AddSectionTitle(Resources.Reports.Sections.SampleSize.Subtitle);
-
-            CardStack samplerData = stack.GetStack(samplerType);
-
-            string[] classes = stack.Classes(samplerType);
-
-            //report.AddParagraph(
-            //    string.Format(Resources.Reports.GearStats.Paragraph2,
-            //    samplerType.ToDisplay(), classes.Length,
-            //    samplerData.SamplerClasses(samplerType)[0],
-            //    samplerData.SamplerClasses(samplerType).Last(), ue.UnitDescription)
-            //    );
-
-            Report.Table table1 = new Report.Table(Resources.Reports.Sections.SampleSize.Table);
-
-            table1.StartHeader();
-
-            table1.StartRow();
-            table1.AddHeaderCell(Fish.Resources.Reports.Card.Mesh, .05, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.Species, .2, 2, CellSpan.Rows);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.QuantityUnit, 4);
-            table1.AddHeaderCell(Resources.Reports.Common.MassUnits, 2, CellSpan.Rows);
-            table1.EndRow();
-
-            table1.StartRow();
-            table1.AddHeaderCell(Mayfly.Resources.Interface.Total);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.LengthUnit);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.MassUnit);
-            table1.AddHeaderCell(Wild.Resources.Reports.Caption.AgeUnit);
-            table1.EndRow();
-
-            table1.EndHeader();
-
-            foreach (string mesh in classes)
-            {
-                CardStack meshData = stack.GetStack(samplerType, mesh);
-                bool totalMeshNeeded = true;
-                double Q = 0;
-                double L = 0;
-                double W = 0;
-                double A = 0;
-                double M = 0;
-
-                foreach (Data.SpeciesRow speciesRow in meshData.GetSpeciesCaught())
-                {
-                    table1.StartRow();
-
-                    if (totalMeshNeeded)
-                    {
-                        table1.AddCellValue(meshData.Name, meshData.SpeciesWealth + 1);
-                        totalMeshNeeded = false;
-                    }
-
-                    double q = meshData.Quantity(speciesRow);
-                    double l = meshData.Measured(speciesRow);
-                    double w = meshData.Weighted(speciesRow);
-                    double a = meshData.Aged(speciesRow);
-                    double m = meshData.Mass(speciesRow);
-                    Q += q;
-                    L += l;
-                    W += w;
-                    A += a;
-                    M += m;
-
-                    table1.AddCell(speciesRow.KeyRecord.ShortName);
-                    table1.AddCellRight(q > 0 ? q.ToString() : Constants.Null);
-                    table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
-                    table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
-                    table1.AddCellRight(a > 0 ? a.ToString() : Constants.Null);
-                    table1.AddCellRight(m, 3);
-
-                    table1.EndRow();
-                }
-
-                if (Q > 0)
-                {
-                    table1.StartRow();
-                    table1.AddCell(Mayfly.Resources.Interface.Total, ReportCellClass.Bold);
-                    table1.AddCellRight(Q > 0 ? Q.ToString() : Constants.Null, true);
-                    table1.AddCellRight(L > 0 ? L.ToString() : Constants.Null, true);
-                    table1.AddCellRight(W > 0 ? W.ToString() : Constants.Null, true);
-                    table1.AddCellRight(A > 0 ? A.ToString() : Constants.Null, true);
-                    table1.AddCellRight(M, 3, true);
-                    table1.EndRow();
-                }
-            }
-
-            if (classes.Length == 0 || classes.Length > 1)
-            {
-                bool totalSamplerNeeded = true;
-                double Q = 0;
-                double L = 0;
-                double W = 0;
-                double A = 0;
-                double M = 0;
-
-                foreach (Data.SpeciesRow speciesRow in samplerData.GetSpeciesCaught())
-                {
-                    table1.StartRow();
-
-                    if (totalSamplerNeeded)
-                    {
-                        table1.AddCellValue(Mayfly.Resources.Interface.Total, samplerData.SpeciesWealth + 1);
-                        totalSamplerNeeded = false;
-                    }
-
-                    double q = samplerData.Quantity(speciesRow);
-                    double l = samplerData.Measured(speciesRow);
-                    double w = samplerData.Weighted(speciesRow);
-                    double a = samplerData.Aged(speciesRow);
-                    double m = samplerData.Mass(speciesRow);
-                    Q += q;
-                    L += l;
-                    W += w;
-                    A += a;
-                    M += m;
-
-                    table1.AddCell(speciesRow.KeyRecord.ShortName);
-                    table1.AddCellRight(q > 0 ? q.ToString() : Constants.Null);
-                    table1.AddCellRight(l > 0 ? l.ToString() : Constants.Null);
-                    table1.AddCellRight(w > 0 ? w.ToString() : Constants.Null);
-                    table1.AddCellRight(a > 0 ? a.ToString() : Constants.Null);
-                    table1.AddCellRight(m, 3);
-
-                    table1.EndRow();
-                }
-
-                table1.StartRow();
-                table1.AddCell(Mayfly.Resources.Interface.Total, ReportCellClass.Bold);
-                table1.AddCellRight(Q > 0 ? Q.ToString() : Constants.Null, true);
-                table1.AddCellRight(L > 0 ? L.ToString() : Constants.Null, true);
-                table1.AddCellRight(W > 0 ? W.ToString() : Constants.Null, true);
-                table1.AddCellRight(A > 0 ? A.ToString() : Constants.Null, true);
-                table1.AddCellRight(M, "N3", true);
-                table1.EndRow();
-            }
-
-            report.AddTable(table1);
+            report.AddTable(GetSampleSizeTable(samplerData, "Sample sizes", samplerType), "airy");
 
             #endregion
 
@@ -424,6 +367,15 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddParagraph(Resources.Reports.Sections.Efforts.Paragraph2,
                     samplerType.ToDisplay(), ue.UnitDescription, stack.GetEffort(samplerType, ue.Variant), ue.Unit);
+            }
+        }
+
+        public static void AddGearStatsReport(this CardStack stack, Report report)
+        {
+            foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
+            {
+                report.AddChapterTitle(samplerType.ToDisplay());
+                stack.AddGearStatsReport(report, samplerType, samplerType.GetDefaultUnitEffort());
             }
         }
         

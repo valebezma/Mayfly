@@ -1425,31 +1425,6 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        //private void chartSpcStats_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
-        //    HitTestResult hitTest = chartRate.HitTest(e.X, e.Y, false);
-
-        //    if (e.Button == MouseButtons.Left)
-        //    {
-        //        switch (hitTest.ChartElementType)
-        //        {
-        //            case ChartElementType.DataPoint:
-        //            case ChartElementType.LegendItem:
-        //                if (hitTest.Series == null) return;
-
-        //                SelectedStatSpc = data.Species.FindBySpecies(hitTest.Series.Points[hitTest.PointIndex].GetCustomProperty("Species"));
-
-        //                if (SelectedStatSpc != null)
-        //                {
-        //                    spreadSheetInd.EnsureFilter(columnIndSpecies, SelectedStatSpc.Species,
-        //                        loaderInd, menuItemIndAll_Click);
-        //                }
-
-        //                break;
-        //        }
-        //    }
-        //}
-
         private void buttonSpcStrat_Click(object sender, EventArgs e)
         {
             if (selectedStatSpc == null)
