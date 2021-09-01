@@ -183,7 +183,7 @@ namespace Mayfly.Fish.Explorer
                 updateQty(0);
                 updateMass(0);
 
-                if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+                if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
                 {
                     data.RefreshBios();
                 }
@@ -762,7 +762,7 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove(combi);
 
 
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 ext = new Scatterplot(Resources.Interface.QualBio);
                 ext.Properties.DataPointColor = Constants.InfantColor;
@@ -926,7 +926,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+            if (!UserSettings.CheckConsistency) return;
 
             SpeciesConsistencyChecker artifact = findSpeciesRow(gridRow).CheckConsistency(FullStack);
 
@@ -1062,7 +1062,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+            if (!UserSettings.CheckConsistency) return;
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
@@ -1377,7 +1377,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+            if (!UserSettings.CheckConsistency) return;
 
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
@@ -1409,7 +1409,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (baseSpc != null) return;
 
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+            if (!UserSettings.CheckConsistency) return;
 
             Data.LogRow logRow = findLogRow(gridRow);
 
@@ -1678,7 +1678,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow == null) return;
 
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard)) return;
+            if (!UserSettings.CheckConsistency) return;
 
             IndividualConsistencyChecker artifact = findIndividualRow(gridRow).CheckConsistency();
 

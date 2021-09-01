@@ -121,31 +121,31 @@
     <value>There are some artifacts found in data</value>
   </data>
   <data name="CardEffort" xml:space="preserve">
-    <value>Card have not enough information to calculate fishing effort</value>
+    <value>Effort values not provided</value>
   </data>
   <data name="IndividualTallyOdd" xml:space="preserve">
-    <value>Had tally ({0}) but doesn't contain any registered information, e. g. age, fecundity, diet or parasitological issues</value>
+    <value>No sample following tally #{0}</value>
   </data>
-  <data name="IndividualsTally" xml:space="preserve">
-    <value>{0} individuals have some issues with tally</value>
+  <data name="IndividualTallies" xml:space="preserve">
+    <value>{0} individuals have issues with tally</value>
   </data>
-  <data name="IndividualsUnweightedDiet" xml:space="preserve">
+  <data name="IndividualUnweightedDiets" xml:space="preserve">
     <value>{0} diet samples have unweighted individuals in diet sample</value>
   </data>
   <data name="IndividualTallyMissing" xml:space="preserve">
-    <value>Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with tally</value>
+    <value>Sample Is not marked with tally</value>
   </data>
   <data name="IndividualUnweightedDiet" xml:space="preserve">
-    <value>Has {0} unweighted individuals in diet sample</value>
+    <value>Diet sample has {0} unweighted individuals</value>
   </data>
   <data name="LogLength" xml:space="preserve">
-    <value>There are {0} specimen with length not measured</value>
+    <value>Length of {0} specimen not measured</value>
   </data>
   <data name="Specimen" xml:space="preserve">
     <value>Total quantity of {0} specified as {1} but in individuals log there are {2} specimen and in stratified samples there are {3} specimen, so {4} are missing</value>
   </data>
   <data name="LogMassOdd" xml:space="preserve">
-    <value>Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3})</value>
+    <value>Record mass ({0:n3} kg) is {1:p1} less than detailed mass ({2:n3})</value>
   </data>
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Quantity of specimens can't be calculated because in some cards it is not specified</value>
@@ -154,21 +154,21 @@
     <value>{0} measures have {1} outliers</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. It can't be calculated any way because of lack of studied specimens</value>
+    <value>{0} of {1} specimen is not recoverable</value>
   </data>
   <data name="ValueIsRecoverable" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. However, it can be obtained from length</value>
+    <value>{0} of {1} specimen is obtained from length</value>
   </data>
   <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
-    <value>{0} of {1} specimen is not measured. However, it can be obtained from length (but regression contains {2} outliers)</value>
+    <value>{0} of {1} specimen is obtained using model with {2} outliers</value>
   </data>
   <data name="LogLengths" xml:space="preserve">
-    <value>There are {0} log records with unmeasured specimen</value>
+    <value>Length issues in {0} log records</value>
   </data>
   <data name="LogMassOdds" xml:space="preserve">
-    <value>There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample</value>
+    <value>{0} log records have issues with mass</value>
   </data>
   <data name="LogMassMissing" xml:space="preserve">
-    <value>Record mass ({0:n3} kg) is more than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({1:n3}) which is fine</value>
+    <value>Record mass ({0:n3} kg) is more than detailed mass ({1:n3}) which is fine</value>
   </data>
 </root>

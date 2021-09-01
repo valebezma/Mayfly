@@ -118,61 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArtifactsFound" xml:space="preserve">
-    <value>В данных обнаружены некоторые артефакты.</value>
+    <value>В данных обнаружены артефакты</value>
   </data>
   <data name="CardEffort" xml:space="preserve">
-    <value>В карточке указано недостаточно информации,
-чтобы рассчитать рыболовное усилие</value>
-  </data>
-  <data name="IndividualRegID" xml:space="preserve">
-    <value>Имеет номер пробы #{0}, но не содержит никакой информации, т. е. ни возраста, ни плодовитости, ни данных по питанию или паразитологических сведений</value>
-  </data>
-  <data name="IndividualsRegID" xml:space="preserve">
-    <value>Записи {0} особей имеют номер пробы, но не содержат никакой информации, т. е. ни возраста, ни плодовитости, ни данных по питанию или паразитологических сведений</value>
-  </data>
-  <data name="IndividualsTreat" xml:space="preserve">
-    <value>{0} проба (т. е. возраст, плодовитость, питания или паразитология) не имеют номера</value>
-  </data>
-  <data name="IndividualsUnweightedDiet" xml:space="preserve">
-    <value>В {0} пробах питания есть невзвешенные особей. Воспользуйтесь "Мастером восстановления массы", чтобы исправить это</value>
-  </data>
-  <data name="IndividualTreat" xml:space="preserve">
-    <value>Проба (т. е. возраст, плодовитость, питания или паразитология) не имеет номера пробы</value>
+    <value>Усилие не может быть вычислено</value>
   </data>
   <data name="IndividualUnweightedDiet" xml:space="preserve">
-    <value>В пробе питания есть {0} невзвешенных особей. Воспользуйтесь ХХХ</value>
-  </data>
-  <data name="Length" xml:space="preserve">
-    <value>Длина {0} особей не измерена.
-Эти особи не могут быть учтены</value>
+    <value>В пробе питания есть {0} невзвешенных особей</value>
   </data>
   <data name="Specimen" xml:space="preserve">
     <value>Общая выборка {0} указана в количестве {1} экз., но в  журнале особей указаны {2} экз. и в 
 стратифицированных пробах указаны {3} экз., таким образом {4} экз. не хватает</value>
   </data>
-  <data name="CardMassOdd" xml:space="preserve">
-    <value>Масса пробы (массы в журнале особей и стратифицированных пробах) на {0:N3} кг или {1:P1} превышает общую массу улова в карточке ({2:N3} кг)</value>
-  </data>
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Количество особей не может быть вычислено, т. к. в некоторых карточках оно не указано</value>
   </data>
   <data name="ValueHasOutliers" xml:space="preserve">
-    <value>{0} {1} особей значительно отклоняется от общей выборки</value>
+    <value>{0} {1} особей значительно отклоняется</value>
   </data>
   <data name="ValueIsCritical" xml:space="preserve">
-    <value>{0} {1} особей не может быть вычислен, т. к. общая выборка слишком мала, чтобы построить модель</value>
+    <value>{0} {1} особей не может быть вычислен</value>
   </data>
   <data name="ValueIsRecoverable" xml:space="preserve">
     <value>{0} {1} особей вычислен по длине</value>
   </data>
   <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
-    <value>{0} {1} особей вычислен по длине (однако, модель содержит {2} значительных вылетов)</value>
+    <value>{0} {1} особей вычислен по модели, содержащей {2} выброса</value>
   </data>
-  <data name="CardMassEven" xml:space="preserve">
-    <value>Масса, указанная в карточке, совпадает с массой пробы 
-(массой в журнале особей и стратифицированных пробах)</value>
+  <data name="IndividualUnweightedDiets" xml:space="preserve">
+    <value>В {0} пробах питания есть невзвешенные особей</value>
   </data>
-  <data name="CardMassOdd_1" xml:space="preserve">
-    <value>{0} из {1} кг ({2:P1}) рыбы в улове не обработано</value>
+  <data name="IndividualTallyMissing" xml:space="preserve">
+    <value>Проба без бирки</value>
+  </data>
+  <data name="IndividualTallyOdd" xml:space="preserve">
+    <value>Проба с биркой №{0} не обработана</value>
+  </data>
+  <data name="IndividualTallies" xml:space="preserve">
+    <value>{0} особей имеют проблемы с биркой</value>
+  </data>
+  <data name="LogLength" xml:space="preserve">
+    <value>Длина {0} особей не измерена</value>
+  </data>
+  <data name="LogMassMissing" xml:space="preserve">
+    <value>Указанная в журнале масса ({0:n3} кг) превышает массу всех проб ({1:n3}), что допустимо</value>
+  </data>
+  <data name="LogMassOdds" xml:space="preserve">
+    <value>{0} записей журнала имеют проблемы с массой</value>
+  </data>
+  <data name="LogLengths" xml:space="preserve">
+    <value>Проблемы с длиной в {0} записях журнала</value>
+  </data>
+  <data name="LogMassOdd" xml:space="preserve">
+    <value>Указанная в журнале масса ({0:n3} кг) на {1:p1} меньше массы проб ({2:n3})</value>
   </data>
 </root>

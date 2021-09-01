@@ -187,8 +187,8 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            if (regMissed > 0) result.Add(string.Format(Resources.Artifact.IndividualsTally, regMissed));
-            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artifact.IndividualsUnweightedDiet, dietNotExplored));
+            if (regMissed > 0) result.Add(string.Format(Resources.Artifact.IndividualTallies, regMissed));
+            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artifact.IndividualUnweightedDiets, dietNotExplored));
 
             return result.ToArray();
         }

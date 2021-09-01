@@ -50,12 +50,11 @@
             this.buttonBioRemove = new System.Windows.Forms.Button();
             this.buttonBioBrowse = new System.Windows.Forms.Button();
             this.checkBoxBioAutoLoad = new System.Windows.Forms.CheckBox();
-            this.checkBoxVisualConfirmation = new System.Windows.Forms.CheckBox();
             this.checkBoxSuggest = new System.Windows.Forms.CheckBox();
             this.checkBoxSuggestAge = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBoxSuggestMass = new System.Windows.Forms.CheckBox();
-            this.tabPageWizards = new System.Windows.Forms.TabPage();
+            this.tabPageAdvanced = new System.Windows.Forms.TabPage();
             this.checkBoxKeepWizards = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageGamingAge = new System.Windows.Forms.TabPage();
@@ -94,11 +93,12 @@
             this.speciesSelectorCatchability = new Mayfly.Species.SpeciesSelector(this.components);
             this.speciesSelectorAge = new Mayfly.Species.SpeciesSelector(this.components);
             this.buttonBasicSettings = new System.Windows.Forms.Button();
+            this.checkBoxConsistency = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPageTreat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).BeginInit();
             this.tabPagePrediction.SuspendLayout();
-            this.tabPageWizards.SuspendLayout();
+            this.tabPageAdvanced.SuspendLayout();
             this.tabPageGamingAge.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetAge)).BeginInit();
             this.tabPageGamingMeasure.SuspendLayout();
@@ -114,7 +114,7 @@
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPageTreat);
             this.tabControl.Controls.Add(this.tabPagePrediction);
-            this.tabControl.Controls.Add(this.tabPageWizards);
+            this.tabControl.Controls.Add(this.tabPageAdvanced);
             this.tabControl.Controls.Add(this.tabPageGamingAge);
             this.tabControl.Controls.Add(this.tabPageGamingMeasure);
             this.tabControl.Controls.Add(this.tabPageCatchability);
@@ -126,6 +126,8 @@
             // 
             // tabPageTreat
             // 
+            this.tabPageTreat.Controls.Add(this.comboBoxAlk);
+            this.tabPageTreat.Controls.Add(this.AlkTypeLabel);
             this.tabPageTreat.Controls.Add(this.numericUpDownInterval);
             this.tabPageTreat.Controls.Add(this.labelSizeInterval);
             this.tabPageTreat.Controls.Add(this.comboBoxDominance);
@@ -197,13 +199,10 @@
             // 
             // tabPagePrediction
             // 
-            this.tabPagePrediction.Controls.Add(this.comboBoxAlk);
-            this.tabPagePrediction.Controls.Add(this.AlkTypeLabel);
             this.tabPagePrediction.Controls.Add(this.listViewBio);
             this.tabPagePrediction.Controls.Add(this.buttonBioRemove);
             this.tabPagePrediction.Controls.Add(this.buttonBioBrowse);
             this.tabPagePrediction.Controls.Add(this.checkBoxBioAutoLoad);
-            this.tabPagePrediction.Controls.Add(this.checkBoxVisualConfirmation);
             this.tabPagePrediction.Controls.Add(this.checkBoxSuggest);
             this.tabPagePrediction.Controls.Add(this.checkBoxSuggestAge);
             this.tabPagePrediction.Controls.Add(this.label2);
@@ -267,17 +266,12 @@
             this.checkBoxBioAutoLoad.UseVisualStyleBackColor = true;
             this.checkBoxBioAutoLoad.CheckedChanged += new System.EventHandler(this.checkBoxBioAutoLoad_CheckedChanged);
             // 
-            // checkBoxVisualConfirmation
-            // 
-            resources.ApplyResources(this.checkBoxVisualConfirmation, "checkBoxVisualConfirmation");
-            this.checkBoxVisualConfirmation.Name = "checkBoxVisualConfirmation";
-            this.checkBoxVisualConfirmation.UseVisualStyleBackColor = true;
-            // 
             // checkBoxSuggest
             // 
             resources.ApplyResources(this.checkBoxSuggest, "checkBoxSuggest");
             this.checkBoxSuggest.Name = "checkBoxSuggest";
             this.checkBoxSuggest.UseVisualStyleBackColor = true;
+            this.checkBoxSuggest.CheckedChanged += new System.EventHandler(this.checkBoxSuggest_CheckedChanged);
             // 
             // checkBoxSuggestAge
             // 
@@ -297,13 +291,14 @@
             this.checkBoxSuggestMass.Name = "checkBoxSuggestMass";
             this.checkBoxSuggestMass.UseVisualStyleBackColor = true;
             // 
-            // tabPageWizards
+            // tabPageAdvanced
             // 
-            this.tabPageWizards.Controls.Add(this.checkBoxKeepWizards);
-            this.tabPageWizards.Controls.Add(this.label5);
-            resources.ApplyResources(this.tabPageWizards, "tabPageWizards");
-            this.tabPageWizards.Name = "tabPageWizards";
-            this.tabPageWizards.UseVisualStyleBackColor = true;
+            this.tabPageAdvanced.Controls.Add(this.checkBoxConsistency);
+            this.tabPageAdvanced.Controls.Add(this.checkBoxKeepWizards);
+            this.tabPageAdvanced.Controls.Add(this.label5);
+            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
+            this.tabPageAdvanced.Name = "tabPageAdvanced";
+            this.tabPageAdvanced.UseVisualStyleBackColor = true;
             // 
             // checkBoxKeepWizards
             // 
@@ -613,6 +608,12 @@
             this.buttonBasicSettings.UseVisualStyleBackColor = true;
             this.buttonBasicSettings.Click += new System.EventHandler(this.buttonBasicSettings_Click);
             // 
+            // checkBoxConsistency
+            // 
+            resources.ApplyResources(this.checkBoxConsistency, "checkBoxConsistency");
+            this.checkBoxConsistency.Name = "checkBoxConsistency";
+            this.checkBoxConsistency.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             resources.ApplyResources(this, "$this");
@@ -631,8 +632,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).EndInit();
             this.tabPagePrediction.ResumeLayout(false);
             this.tabPagePrediction.PerformLayout();
-            this.tabPageWizards.ResumeLayout(false);
-            this.tabPageWizards.PerformLayout();
+            this.tabPageAdvanced.ResumeLayout(false);
+            this.tabPageAdvanced.PerformLayout();
             this.tabPageGamingAge.ResumeLayout(false);
             this.tabPageGamingAge.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetAge)).EndInit();
@@ -695,12 +696,11 @@
         private System.Windows.Forms.TabPage tabPagePrediction;
         private System.Windows.Forms.Button buttonBioBrowse;
         private System.Windows.Forms.CheckBox checkBoxBioAutoLoad;
-        private System.Windows.Forms.CheckBox checkBoxVisualConfirmation;
         private System.Windows.Forms.CheckBox checkBoxSuggest;
         private System.Windows.Forms.CheckBox checkBoxSuggestAge;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxSuggestMass;
-        private System.Windows.Forms.TabPage tabPageWizards;
+        private System.Windows.Forms.TabPage tabPageAdvanced;
         private System.Windows.Forms.CheckBox checkBoxKeepWizards;
         private System.Windows.Forms.Label label5;
         protected System.Windows.Forms.Button buttonBasicSettings;
@@ -711,5 +711,6 @@
         private System.Windows.Forms.Button buttonBioRemove;
         private System.Windows.Forms.ComboBox comboBoxAlk;
         private System.Windows.Forms.Label AlkTypeLabel;
+        private System.Windows.Forms.CheckBox checkBoxConsistency;
     }
 }

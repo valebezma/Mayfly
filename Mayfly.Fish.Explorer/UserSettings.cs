@@ -32,7 +32,7 @@ namespace Mayfly.Fish.Explorer
                     new UserSetting(Wild.UserSettingPaths.Diversity, DiversityIndex.D1963_Shannon),
                     new UserSetting(UserSettingPaths.SuggestAge, true),
                     new UserSetting(Wild.UserSettingPaths.SuggestMass, true),
-                    new UserSetting(Wild.UserSettingPaths.VisualConfirmation, true),
+                    //new UserSetting(Wild.UserSettingPaths.VisualConfirmation, true),
                     new UserSetting(Wild.UserSettingPaths.AutoLoadBio, false),
                     new UserSetting(UserSettingPaths.SizeInterval, 1000),
                     new UserSetting(UserSettingPaths.KeepWizard, false),
@@ -81,18 +81,18 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public static bool VisualConfirmation
-        {
-            get
-            {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.VisualConfirmation));
-            }
+        //public static bool VisualConfirmation
+        //{
+        //    get
+        //    {
+        //        return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.VisualConfirmation));
+        //    }
 
-            set
-            {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.VisualConfirmation, value);
-            }
-        }
+        //    set
+        //    {
+        //        UserSetting.SetValue(Path, Wild.UserSettingPaths.VisualConfirmation, value);
+        //    }
+        //}
 
         public static bool AutoLoadBio
         {
@@ -116,6 +116,18 @@ namespace Mayfly.Fish.Explorer
             set
             {
                 UserSetting.SetValue(Path, UserSettingPaths.KeepWizard, value);
+            }
+        }
+
+        public static bool CheckConsistency
+        {
+            get
+            {
+                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.CheckConsistency));
+            }
+            set
+            {
+                UserSetting.SetValue(Path, UserSettingPaths.CheckConsistency, value);
             }
         }
 
@@ -202,31 +214,23 @@ namespace Mayfly.Fish.Explorer
             }
             set { UserSetting.SetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType, (int)value); }
         }
-
-        public static Feature AvailableFeatures
-        {
-            get
-            {
-                return (Feature.Technician | Feature.ConsistencyQuard);// | Feature.Predictions);// | Feature.Fishery);// | Feature.Insider);
-            }
-        }
     }
 
     public abstract class UserSettingPaths
     {
         public static string Equipment = "Equipment";
 
+        public static string KeepWizard = "KeepWizard";
+
+        public static string CheckConsistency = "CheckConsistency";
+
+
+
         public static string SuggestAge = "SuggestAge";
 
         public static string SelectedAgeLengthKeyType = "SelectedAgeLengthKeyType";
 
-        public static string KeepWizard = "KeepWizard";
 
-        #region Recovery memorized values
-
-        public static string Explore = "Explore";
-
-        #endregion
 
         #region Fisheries issues
 
@@ -248,6 +252,8 @@ namespace Mayfly.Fish.Explorer
 
         #endregion
 
+
+
         #region Stock calculation memorized values
 
         public static string MemCategorization = "MemCategorization";
@@ -261,15 +267,5 @@ namespace Mayfly.Fish.Explorer
         public static string MemWaterDepth = "MemWaterDepth";
 
         #endregion
-    }
-
-    [Flags]
-    public enum Feature
-    {
-        Technician = 1,
-        Fishery = 2,
-        ConsistencyQuard = 4,
-        Predictions = 8,
-        Insider = 16
     }
 }

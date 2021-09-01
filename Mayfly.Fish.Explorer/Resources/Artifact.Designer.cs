@@ -70,7 +70,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Card have not enough information to calculate fishing effort.
+        ///   Looks up a localized string similar to Effort values not provided.
         /// </summary>
         internal static string CardEffort {
             get {
@@ -79,25 +79,16 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} individuals have some issues with tally.
+        ///   Looks up a localized string similar to {0} individuals have issues with tally.
         /// </summary>
-        internal static string IndividualsTally {
+        internal static string IndividualTallies {
             get {
-                return ResourceManager.GetString("IndividualsTally", resourceCulture);
+                return ResourceManager.GetString("IndividualTallies", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} diet samples have unweighted individuals in diet sample.
-        /// </summary>
-        internal static string IndividualsUnweightedDiet {
-            get {
-                return ResourceManager.GetString("IndividualsUnweightedDiet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sample, e. g. age, fecundity, diet or parasitological issues, was not marked with tally.
+        ///   Looks up a localized string similar to Sample Is not marked with tally.
         /// </summary>
         internal static string IndividualTallyMissing {
             get {
@@ -106,7 +97,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Had tally ({0}) but doesn&apos;t contain any registered information, e. g. age, fecundity, diet or parasitological issues.
+        ///   Looks up a localized string similar to No sample following tally #{0}.
         /// </summary>
         internal static string IndividualTallyOdd {
             get {
@@ -115,7 +106,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Has {0} unweighted individuals in diet sample.
+        ///   Looks up a localized string similar to Diet sample has {0} unweighted individuals.
         /// </summary>
         internal static string IndividualUnweightedDiet {
             get {
@@ -124,7 +115,16 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are {0} specimen with length not measured.
+        ///   Looks up a localized string similar to {0} diet samples have unweighted individuals in diet sample.
+        /// </summary>
+        internal static string IndividualUnweightedDiets {
+            get {
+                return ResourceManager.GetString("IndividualUnweightedDiets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length of {0} specimen not measured.
         /// </summary>
         internal static string LogLength {
             get {
@@ -133,7 +133,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are {0} log records with unmeasured specimen.
+        ///   Looks up a localized string similar to Length issues in {0} log records.
         /// </summary>
         internal static string LogLengths {
             get {
@@ -142,7 +142,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is more than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({1:n3}) which is fine.
+        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is more than detailed mass ({1:n3}) which is fine.
         /// </summary>
         internal static string LogMassMissing {
             get {
@@ -151,7 +151,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p1} less than detailed mass, e. g. mass of individuals and calculated mass of stratified sample ({2:n3}).
+        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p1} less than detailed mass ({2:n3}).
         /// </summary>
         internal static string LogMassOdd {
             get {
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are {0} log records mass not equal detailed mass, e. g. mass of individuals and calculated mass of stratified sample.
+        ///   Looks up a localized string similar to {0} log records have issues with mass.
         /// </summary>
         internal static string LogMassOdds {
             get {
@@ -196,7 +196,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. It can&apos;t be calculated any way because of lack of studied specimens.
+        ///   Looks up a localized string similar to {0} of {1} specimen is not recoverable.
         /// </summary>
         internal static string ValueIsCritical {
             get {
@@ -205,7 +205,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. However, it can be obtained from length.
+        ///   Looks up a localized string similar to {0} of {1} specimen is obtained from length.
         /// </summary>
         internal static string ValueIsRecoverable {
             get {
@@ -214,7 +214,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not measured. However, it can be obtained from length (but regression contains {2} outliers).
+        ///   Looks up a localized string similar to {0} of {1} specimen is obtained using model with {2} outliers.
         /// </summary>
         internal static string ValueIsRecoverableButHasOutliers {
             get {

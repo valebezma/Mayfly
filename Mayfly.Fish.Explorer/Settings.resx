@@ -121,17 +121,77 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="comboBoxAlk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="comboBoxAlk.Items" xml:space="preserve">
+    <value>Raw (more collections needed)</value>
+  </data>
+  <data name="comboBoxAlk.Items1" xml:space="preserve">
+    <value>Smooth (bio or sufficient data needed)</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="comboBoxAlk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 143</value>
+  </data>
+  <data name="comboBoxAlk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 21</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="comboBoxAlk.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAlk.Name" xml:space="preserve">
+    <value>comboBoxAlk</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAlk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAlk.Parent" xml:space="preserve">
+    <value>tabPageTreat</value>
+  </data>
+  <data name="&gt;&gt;comboBoxAlk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="AlkTypeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AlkTypeLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AlkTypeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 146</value>
+  </data>
+  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 13</value>
+  </data>
+  <data name="AlkTypeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="AlkTypeLabel.Text" xml:space="preserve">
+    <value>Length-to-age key type</value>
+  </data>
+  <data name="&gt;&gt;AlkTypeLabel.Name" xml:space="preserve">
+    <value>AlkTypeLabel</value>
+  </data>
+  <data name="&gt;&gt;AlkTypeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AlkTypeLabel.Parent" xml:space="preserve">
+    <value>tabPageTreat</value>
+  </data>
+  <data name="&gt;&gt;AlkTypeLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="numericUpDownInterval.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericUpDownInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 68</value>
+    <value>329, 63</value>
   </data>
   <data name="numericUpDownInterval.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericUpDownInterval.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
@@ -148,7 +208,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;numericUpDownInterval.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="labelSizeInterval.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -157,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelSizeInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 70</value>
+    <value>45, 65</value>
   </data>
   <data name="labelSizeInterval.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 0</value>
@@ -181,7 +241,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;labelSizeInterval.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="comboBoxDominance.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -238,7 +298,7 @@
     <value>Шитиков В. К. и др., 2003</value>
   </data>
   <data name="comboBoxDominance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 121</value>
+    <value>204, 116</value>
   </data>
   <data name="comboBoxDominance.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 21</value>
@@ -256,7 +316,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;comboBoxDominance.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="labelDominance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,16 +325,16 @@
     <value>NoControl</value>
   </data>
   <data name="labelDominance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 124</value>
+    <value>45, 119</value>
   </data>
   <data name="labelDominance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
+    <value>124, 13</value>
   </data>
   <data name="labelDominance.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="labelDominance.Text" xml:space="preserve">
-    <value>Dominance index</value>
+    <value>Default dominance index</value>
   </data>
   <data name="&gt;&gt;labelDominance.Name" xml:space="preserve">
     <value>labelDominance</value>
@@ -286,13 +346,13 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;labelDominance.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="comboBoxDiversity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxDiversity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 94</value>
+    <value>204, 89</value>
   </data>
   <data name="comboBoxDiversity.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 21</value>
@@ -310,7 +370,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;comboBoxDiversity.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="labelDiversity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,16 +379,16 @@
     <value>NoControl</value>
   </data>
   <data name="labelDiversity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 97</value>
+    <value>45, 92</value>
   </data>
   <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+    <value>110, 13</value>
   </data>
   <data name="labelDiversity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="labelDiversity.Text" xml:space="preserve">
-    <value>Diversity index</value>
+    <value>Default diversity index</value>
   </data>
   <data name="&gt;&gt;labelDiversity.Name" xml:space="preserve">
     <value>labelDiversity</value>
@@ -340,7 +400,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;labelDiversity.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +412,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 25</value>
+    <value>25, 25</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 25, 3, 25</value>
@@ -376,7 +436,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="tabPageTreat.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 40</value>
@@ -405,66 +465,6 @@
   <data name="&gt;&gt;tabPageTreat.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="comboBoxAlk.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="comboBoxAlk.Items" xml:space="preserve">
-    <value>Raw (more collections needed)</value>
-  </data>
-  <data name="comboBoxAlk.Items1" xml:space="preserve">
-    <value>Smooth (bio or sufficient data needed)</value>
-  </data>
-  <data name="comboBoxAlk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 171</value>
-  </data>
-  <data name="comboBoxAlk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 21</value>
-  </data>
-  <data name="comboBoxAlk.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;comboBoxAlk.Name" xml:space="preserve">
-    <value>comboBoxAlk</value>
-  </data>
-  <data name="&gt;&gt;comboBoxAlk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxAlk.Parent" xml:space="preserve">
-    <value>tabPagePrediction</value>
-  </data>
-  <data name="&gt;&gt;comboBoxAlk.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="AlkTypeLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="AlkTypeLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AlkTypeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 174</value>
-  </data>
-  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 13</value>
-  </data>
-  <data name="AlkTypeLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="AlkTypeLabel.Text" xml:space="preserve">
-    <value>Length-to-Age key type</value>
-  </data>
-  <data name="&gt;&gt;AlkTypeLabel.Name" xml:space="preserve">
-    <value>AlkTypeLabel</value>
-  </data>
-  <data name="&gt;&gt;AlkTypeLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AlkTypeLabel.Parent" xml:space="preserve">
-    <value>tabPagePrediction</value>
-  </data>
-  <data name="&gt;&gt;AlkTypeLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="listViewBio.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -475,13 +475,13 @@
     <value>150</value>
   </data>
   <data name="listViewBio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 221</value>
+    <value>45, 159</value>
   </data>
   <data name="listViewBio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 15</value>
   </data>
   <data name="listViewBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 82</value>
+    <value>278, 144</value>
   </data>
   <data name="listViewBio.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -496,7 +496,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;listViewBio.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="buttonBioRemove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -508,7 +508,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonBioRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 250</value>
+    <value>329, 188</value>
   </data>
   <data name="buttonBioRemove.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -529,7 +529,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;buttonBioRemove.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="buttonBioBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -541,7 +541,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonBioBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 221</value>
+    <value>329, 159</value>
   </data>
   <data name="buttonBioBrowse.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -562,7 +562,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;buttonBioBrowse.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="checkBoxBioAutoLoad.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -574,7 +574,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxBioAutoLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 198</value>
+    <value>45, 136</value>
   </data>
   <data name="checkBoxBioAutoLoad.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 17</value>
@@ -595,40 +595,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;checkBoxBioAutoLoad.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 148</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 15, 3, 3</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 17</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.Text" xml:space="preserve">
-    <value>Visually confirm prediction models</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVisualConfirmation.Name" xml:space="preserve">
-    <value>checkBoxVisualConfirmation</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVisualConfirmation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVisualConfirmation.Parent" xml:space="preserve">
-    <value>tabPagePrediction</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVisualConfirmation.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="checkBoxSuggest.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -658,7 +625,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;checkBoxSuggest.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="checkBoxSuggestAge.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -688,7 +655,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;checkBoxSuggestAge.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -724,7 +691,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="checkBoxSuggestMass.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -757,7 +724,7 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="&gt;&gt;checkBoxSuggestMass.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="tabPagePrediction.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 40</value>
@@ -786,6 +753,39 @@
   <data name="&gt;&gt;tabPagePrediction.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="checkBoxConsistency.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxConsistency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxConsistency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 95</value>
+  </data>
+  <data name="checkBoxConsistency.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 10, 3, 3</value>
+  </data>
+  <data name="checkBoxConsistency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 17</value>
+  </data>
+  <data name="checkBoxConsistency.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxConsistency.Text" xml:space="preserve">
+    <value>Check data consistency</value>
+  </data>
+  <data name="&gt;&gt;checkBoxConsistency.Name" xml:space="preserve">
+    <value>checkBoxConsistency</value>
+  </data>
+  <data name="&gt;&gt;checkBoxConsistency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxConsistency.Parent" xml:space="preserve">
+    <value>tabPageAdvanced</value>
+  </data>
+  <data name="&gt;&gt;checkBoxConsistency.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="checkBoxKeepWizards.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -799,13 +799,13 @@
     <value>3, 10, 3, 3</value>
   </data>
   <data name="checkBoxKeepWizards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 17</value>
+    <value>214, 17</value>
   </data>
   <data name="checkBoxKeepWizards.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="checkBoxKeepWizards.Text" xml:space="preserve">
-    <value>Keep wizard opened when finish with report construction</value>
+    <value>Keep wizard opened after report is done</value>
   </data>
   <data name="&gt;&gt;checkBoxKeepWizards.Name" xml:space="preserve">
     <value>checkBoxKeepWizards</value>
@@ -814,10 +814,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxKeepWizards.Parent" xml:space="preserve">
-    <value>tabPageWizards</value>
+    <value>tabPageAdvanced</value>
   </data>
   <data name="&gt;&gt;checkBoxKeepWizards.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -835,13 +835,13 @@
     <value>25, 25, 3, 25</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 15</value>
+    <value>103, 15</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Wizard treatment</value>
+    <value>Advanced options</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -850,36 +850,36 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPageWizards</value>
+    <value>tabPageAdvanced</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="tabPageWizards.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageAdvanced.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 40</value>
   </data>
-  <data name="tabPageWizards.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageAdvanced.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>25, 25, 45, 25</value>
   </data>
-  <data name="tabPageWizards.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>452, 363</value>
   </data>
-  <data name="tabPageWizards.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="tabPageWizards.Text" xml:space="preserve">
-    <value>Wizards Treatment</value>
+  <data name="tabPageAdvanced.Text" xml:space="preserve">
+    <value>Advanced</value>
   </data>
-  <data name="&gt;&gt;tabPageWizards.Name" xml:space="preserve">
-    <value>tabPageWizards</value>
+  <data name="&gt;&gt;tabPageAdvanced.Name" xml:space="preserve">
+    <value>tabPageAdvanced</value>
   </data>
-  <data name="&gt;&gt;tabPageWizards.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageAdvanced.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageWizards.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageAdvanced.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageWizards.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageAdvanced.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="spreadSheetAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -922,7 +922,7 @@
     <value>spreadSheetAge</value>
   </data>
   <data name="&gt;&gt;spreadSheetAge.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetAge.Parent" xml:space="preserve">
     <value>tabPageGamingAge</value>
@@ -1063,7 +1063,7 @@
     <value>spreadSheetMeasure</value>
   </data>
   <data name="&gt;&gt;spreadSheetMeasure.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetMeasure.Parent" xml:space="preserve">
     <value>tabPageGamingMeasure</value>
@@ -1210,7 +1210,7 @@
     <value>spreadSheetCatchability</value>
   </data>
   <data name="&gt;&gt;spreadSheetCatchability.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetCatchability.Parent" xml:space="preserve">
     <value>tabPageCatchability</value>

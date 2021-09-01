@@ -23,12 +23,12 @@ namespace Mayfly.Fish.Explorer
             tabPageTreat.Parent =
                 tabPageGamingAge.Parent =
                 tabPageGamingMeasure.Parent =
-                tabPageWizards.Parent =
+                tabPageAdvanced.Parent =
                 tabPageCatchability.Parent =
-                UserSettings.AvailableFeatures.HasFlag(Feature.Fishery) ? tabControl : null;
+                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
 
             tabPagePrediction.Parent =
-                UserSettings.AvailableFeatures.HasFlag(Feature.Predictions) ? tabControl : null;
+                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
             comboBoxGear.DataSource = Fish.UserSettings.SamplersIndex.Sampler.Select();
@@ -43,7 +43,7 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
 
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Fishery))
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
                 speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
@@ -57,11 +57,15 @@ namespace Mayfly.Fish.Explorer
 
         private void LoadSettings()
         {
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Fishery))
-            {
+            checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
+            checkBoxConsistency.Checked = UserSettings.CheckConsistency;
+
                 spreadSheetAge.Rows.Clear();
                 spreadSheetMeasure.Rows.Clear();
                 spreadSheetCatchability.Rows.Clear();
+
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            {
 
                 foreach (SpeciesKey.SpeciesRow speciesRow in Fish.UserSettings.SpeciesIndex.Species)
                 {
@@ -73,8 +77,6 @@ namespace Mayfly.Fish.Explorer
                 comboBoxGear_SelectedIndexChanged(comboBoxGear, new EventArgs());
                 numericUpDownCatchabilityDefault.Value = (decimal)UserSettings.DefaultCatchability;
 
-                checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
-
                 numericUpDownInterval.Value = (decimal)UserSettings.SizeInterval;
 
                 comboBoxDominance.SelectedIndex = Wild.UserSettings.Dominance;
@@ -83,12 +85,12 @@ namespace Mayfly.Fish.Explorer
                 comboBoxAlk.SelectedIndex = (int)UserSettings.SelectedAgeLengthKeyType;
             }
 
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 checkBoxSuggest.Checked = (UserSettings.AgeSuggest || UserSettings.MassSuggest);
                 checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;
                 checkBoxSuggestMass.Checked = UserSettings.MassSuggest;
-                checkBoxVisualConfirmation.Checked = UserSettings.VisualConfirmation;
+                //checkBoxVisualConfirmation.Checked = UserSettings.VisualConfirmation;
                 checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
 
                 foreach (string bio in UserSettings.Bios)
@@ -191,7 +193,7 @@ namespace Mayfly.Fish.Explorer
 
             UserSettings.AgeSuggest = checkBoxSuggestAge.Checked;
             UserSettings.MassSuggest = checkBoxSuggestMass.Checked;
-            UserSettings.VisualConfirmation = checkBoxVisualConfirmation.Checked;
+            //UserSettings.VisualConfirmation = checkBoxVisualConfirmation.Checked;
 
             UserSettings.AutoLoadBio = checkBoxBioAutoLoad.Checked;
 
@@ -204,6 +206,7 @@ namespace Mayfly.Fish.Explorer
             UserSettings.SelectedAgeLengthKeyType = (AgeLengthKeyType)comboBoxAlk.SelectedIndex; 
 
             UserSettings.KeepWizard = checkBoxKeepWizards.Checked;
+            UserSettings.CheckConsistency = checkBoxConsistency.Checked;
 
             if (SettingsSaved != null)
             {

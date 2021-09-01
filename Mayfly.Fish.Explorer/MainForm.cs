@@ -26,22 +26,19 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Predictions),
-                menuItemImportSpec
+            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+                menuItemImportSpec,
+                menuItemExportSpec,
+                menuInstant
                 );
 
-            UI.SetControlsAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Predictions),
+            UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
                 labelQualify,
                 buttonQualOutliers,
                 checkBoxQualOutliers,
                 comboBoxQualValue);
 
-            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Fishery),
-                menuItemExportSpec,
-                menuInstant
-                );
-
-            UI.SetMenuAvailability(UserSettings.AvailableFeatures.HasFlag(Feature.Insider),
+            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel == FeatureLevel.Insider,
                 menuSurvey,
                 menuModels,
                 menuCohort);
@@ -162,7 +159,7 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 plotQualify.SetBioAcceptable(LoadCards);
                 spreadSheetInd.SetBioAcceptable(LoadCards);
@@ -263,7 +260,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension)
                 {
-                    if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+                    if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
                     {
                         processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
@@ -322,7 +319,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions))
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
             {
                 e.Cancel = true;
                 return;
@@ -352,7 +349,7 @@ namespace Mayfly.Fish.Explorer
 
         private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard))
+            if (!UserSettings.CheckConsistency)
             {
                 e.Cancel = true;
                 return;
@@ -753,7 +750,7 @@ namespace Mayfly.Fish.Explorer
             cards_DragLeave(sender, e);
             List<string> ext = new List<string>();
             ext.Add(Fish.UserSettings.Interface.Extension);
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
@@ -761,7 +758,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> ext = new List<string>();
             ext.Add(Fish.UserSettings.Interface.Extension);
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             if (e.GetOperableFilenames(ext.ToArray()).Length > 0)
             {
                 e.Effect = DragDropEffects.All;
@@ -1623,7 +1620,7 @@ namespace Mayfly.Fish.Explorer
 
         private void models_Changed(object sender, EventArgs e)
         {
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             plotQualify.Visible = selectedStatSpc != null;
 
@@ -2535,7 +2532,7 @@ namespace Mayfly.Fish.Explorer
 
         private void bioTipper_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (!UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
@@ -2730,7 +2727,7 @@ namespace Mayfly.Fish.Explorer
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.Predictions)) return;
+            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
 
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
             e.Result = speciesRow;

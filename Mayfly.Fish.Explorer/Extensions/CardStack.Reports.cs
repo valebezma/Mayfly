@@ -35,7 +35,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> warnings = new List<string>();
 
-            if (UserSettings.AvailableFeatures.HasFlag(Feature.ConsistencyQuard))
+            if (UserSettings.CheckConsistency)
             {
                 if (speciesRow == null)
                 {

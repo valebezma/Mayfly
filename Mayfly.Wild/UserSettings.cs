@@ -263,7 +263,7 @@ namespace Mayfly.Wild
 
         public static string SuggestMass = "SuggestMass";
 
-        public static string VisualConfirmation = "VisualConfirmation";
+        //public static string VisualConfirmation = "VisualConfirmation";
 
         public static string UseRaw = "UseRaw";
 
