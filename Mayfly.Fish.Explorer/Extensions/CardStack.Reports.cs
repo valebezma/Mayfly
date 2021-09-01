@@ -499,18 +499,91 @@ namespace Mayfly.Fish.Explorer
 
         //#endregion
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
+        public static Report.Table GetSampleSizeTable(this CardStack stack, Data.SpeciesRow speciesRow, string caption)
         {
-            bool num = report.UseTableNumeration;
-            report.UseTableNumeration = true;
+            Report.Table table = new Report.Table(caption) { ZeroToLongDash = true };
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            table.StartHeader();
+
+            table.StartRow();
+
+            table.AddHeaderCell(string.Empty, .05, 2, CellSpan.Rows);
+            table.AddHeaderCell(string.Empty, .2, 2, CellSpan.Rows);
+
+            table.AddHeaderCell(Wild.Resources.Reports.Caption.QuantityUnit, 9);
+
+            table.AddHeaderCell(Resources.Reports.Common.MassUnits, 3);
+            table.EndRow();
+
+            table.StartRow();
+
+            table.AddHeaderCell("Total sample quantity (catch counted)");
+            table.AddHeaderCell("Stratified samples");
+            table.AddHeaderCell("Log records");
+            table.AddHeaderCell("Length measured");
+            table.AddHeaderCell("Mass measured");
+            table.AddHeaderCell("Samples taken (tally given)");
+            table.AddHeaderCell("Age read");
+            table.AddHeaderCell("Sex defined");
+            table.AddHeaderCell("Maturity defined");
+
+            table.AddHeaderCell("Total mass");
+            table.AddHeaderCell("Stratified samples");
+            table.AddHeaderCell("Individual samples");
+
+            table.EndRow();
+            table.EndHeader();
+
+            foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
             {
-                report.AddChapterTitle(speciesRow.KeyRecord.FullNameReport);
-                stack.AddSpeciesStatsReport(report, speciesRow, level, variant);
+                CardStack samplerData = stack.GetStack(samplerType);
+
+                // Set totals row
+                table.StartRow();
+                table.AddCell(samplerType.ToDisplay(), 2, CellSpan.Columns);
+                table.AddCellRight(samplerData.Quantity(speciesRow), true);
+                table.AddCellRight(samplerData.QuantityStratified(speciesRow), true);
+                table.AddCellRight(samplerData.QuantityIndividual(speciesRow), true);
+                table.AddCellRight(samplerData.Measured(speciesRow), true);
+                table.AddCellRight(samplerData.Weighted(speciesRow), true);
+                table.AddCellRight(samplerData.Tallied(speciesRow), true);
+                table.AddCellRight(samplerData.Aged(speciesRow), true);
+                table.AddCellRight(samplerData.Sexed(speciesRow), true);
+                table.AddCellRight(samplerData.Matured(speciesRow), true);
+
+                table.AddCellRight(samplerData.Mass(speciesRow), true);
+                table.AddCellRight(samplerData.MassStratified(speciesRow), true);
+                table.AddCellRight(samplerData.MassIndividual(speciesRow), true);
+                table.EndRow();
+
+                string[] gearClasses = stack.Classes(samplerType);
+
+                foreach (string gearClass in gearClasses)
+                {
+                    CardStack gearClassData = stack.GetStack(samplerType, gearClass);
+
+                    // Set class row
+                    table.StartRow();
+                    table.AddCell(string.Empty);
+                    table.AddCell(gearClass);
+                    table.AddCellRight(gearClassData.Quantity(speciesRow));
+                    table.AddCellRight(gearClassData.QuantityStratified(speciesRow));
+                    table.AddCellRight(gearClassData.QuantityIndividual(speciesRow));
+                    table.AddCellRight(gearClassData.Measured(speciesRow));
+                    table.AddCellRight(gearClassData.Weighted(speciesRow));
+                    table.AddCellRight(gearClassData.Tallied(speciesRow));
+                    table.AddCellRight(gearClassData.Aged(speciesRow));
+                    table.AddCellRight(gearClassData.Sexed(speciesRow));
+                    table.AddCellRight(gearClassData.Matured(speciesRow));
+
+                    table.AddCellRight(gearClassData.Mass(speciesRow));
+                    table.AddCellRight(gearClassData.MassStratified(speciesRow));
+                    table.AddCellRight(gearClassData.MassIndividual(speciesRow));
+                    table.EndRow();
+                }
             }
 
-            report.UseTableNumeration = num;
+            return table;
         }
 
         public static void AddSpeciesStatsReport(this CardStack stack, Report report, Data.SpeciesRow speciesRow, SpeciesStatsLevel level, ExpressionVariant variant)
@@ -518,31 +591,23 @@ namespace Mayfly.Fish.Explorer
             if (level.HasFlag(SpeciesStatsLevel.Totals))
             {
                 report.AddSectionTitle(Resources.Reports.Sections.SpeciesStats.Header1);
-
-                report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph1,
-                    speciesRow.KeyRecord.FullNameReport,
-                    stack.Quantity(speciesRow),
-                    stack.QuantitySampled(speciesRow),
-                    stack.Measured(speciesRow) + stack.QuantityStratified(speciesRow),
-                    stack.Weighted(speciesRow),
-                    stack.Registered(speciesRow)
-                    );
-
+                report.AddTable(GetSampleSizeTable(stack, speciesRow, "Sample sizes"), "airy");
+                
                 int a = stack.Aged(speciesRow);
-
                 if (a > 0)
                 {
                     report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph1_1, a);
                 }
+            }
 
-                //foreach (FishSamplerType samplerType in stack.GetSamplerTypes())
-                //{
-                //    SpeciesComposition compos = stack.GetClassedComposition(speciesRow, samplerType, variant);
-                //    report.AddTable(compos.GetTable(CompositionColumn.LengthSample | CompositionColumn.MassSample |
-                //        CompositionColumn.Quantity | CompositionColumn.Abundance | CompositionColumn.Mass | CompositionColumn.Biomass,
-                //        string.Format(Resources.Reports.Table.SampleSizeClasses, speciesRow.KeyRecord.FullNameReport, samplerType.ToDisplay()),
-                //        Resources.Reports.Caption.GearClass));
-                //}
+            if (level.HasFlag(SpeciesStatsLevel.TreatmentSuggestion))
+            {
+                TreatmentSuggestion suggestion = stack.GetTreatmentSuggestion(speciesRow, stack.Parent.Individual.AgeColumn);
+                if (suggestion != null)
+                {
+                    report.AddSectionTitle(string.Format(Resources.Reports.Sections.SpeciesStats.Header3, Service.Localize(stack.Parent.Individual.AgeColumn.Caption)));
+                    report.AddParagraph(suggestion.GetNote());
+                }
             }
 
             if (level.HasFlag(SpeciesStatsLevel.Detailed))
@@ -568,16 +633,6 @@ namespace Mayfly.Fish.Explorer
                     //string.Format(Wild.Resources.Interface.Interface.StratifiedSample, string.Empty));
 
                     no++;
-                }
-            }
-
-            if (level.HasFlag(SpeciesStatsLevel.TreatmentSuggestion))
-            {
-                TreatmentSuggestion suggestion = stack.GetTreatmentSuggestion(speciesRow, stack.Parent.Individual.AgeColumn);
-                if (suggestion != null)
-                {
-                    report.AddSectionTitle(string.Format(Resources.Reports.Sections.SpeciesStats.Header3, Service.Localize(stack.Parent.Individual.AgeColumn.Caption)));
-                    report.AddParagraph(suggestion.GetNote());
                 }
             }
 
@@ -646,6 +701,20 @@ namespace Mayfly.Fish.Explorer
                 });
 
             return crib;
+        }
+
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
+        {
+            bool num = report.UseTableNumeration;
+            report.UseTableNumeration = true;
+
+            foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            {
+                report.AddChapterTitle(speciesRow.KeyRecord.FullNameReport);
+                stack.AddSpeciesStatsReport(report, speciesRow, level, variant);
+            }
+
+            report.UseTableNumeration = num;
         }
 
         #endregion

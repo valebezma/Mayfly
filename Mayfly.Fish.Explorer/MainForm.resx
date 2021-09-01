@@ -139,13 +139,13 @@
 </value>
   </data>
   <data name="menuItemAddData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemAddData.Text" xml:space="preserve">
     <value>Add cards...</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>157, 6</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuItemSave.Enabled" type="System.Boolean, mscorlib">
@@ -168,7 +168,7 @@
 </value>
   </data>
   <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemSave.Text" xml:space="preserve">
     <value>Save all changes</value>
@@ -177,7 +177,7 @@
     <value>False</value>
   </data>
   <data name="menuItemBackup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemBackup.Text" xml:space="preserve">
     <value>Backup cards</value>
@@ -186,31 +186,31 @@
     <value>False</value>
   </data>
   <data name="menuItemSaveSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemSaveSet.Text" xml:space="preserve">
     <value>Save cards set...</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>157, 6</value>
   </data>
   <data name="menuItemExportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemExportSpec.Text" xml:space="preserve">
     <value>Export bio</value>
   </data>
   <data name="menuItemImportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemImportSpec.Text" xml:space="preserve">
     <value>Import bio</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>157, 6</value>
   </data>
   <data name="menuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>160, 22</value>
   </data>
   <data name="menuItemExit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -1096,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAZgBNgGYATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAbABNgGwATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2629,7 +2629,7 @@
     <value>In stratified samples, kg*</value>
   </data>
   <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>650, 95</value>
+    <value>1235, 56</value>
   </metadata>
   <data name="label9.ToolTip" xml:space="preserve">
     <value>Mass of stratified samples is recovered using mass growth models</value>
@@ -5676,67 +5676,67 @@ Please, note that in further analysis.</value>
     <value>5</value>
   </data>
   <metadata name="loaderCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>707, 56</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="dataSaver.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>602, 56</value>
+    <value>1938, 17</value>
   </metadata>
   <metadata name="loaderSpc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>819, 56</value>
+    <value>129, 56</value>
   </metadata>
   <metadata name="loaderSpcList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 17</value>
   </metadata>
   <metadata name="loaderLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>925, 56</value>
+    <value>235, 56</value>
   </metadata>
   <metadata name="loaderInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1188, 56</value>
+    <value>498, 56</value>
   </metadata>
   <metadata name="loaderData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>491, 56</value>
+    <value>1827, 17</value>
   </metadata>
   <metadata name="loaderStratified.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>329, 95</value>
+    <value>914, 56</value>
   </metadata>
   <metadata name="loaderIndSimulated.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>171, 95</value>
+    <value>756, 56</value>
   </metadata>
   <metadata name="loaderIndExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>602, 56</value>
   </metadata>
   <metadata name="loaderLogExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1031, 56</value>
+    <value>341, 56</value>
   </metadata>
   <metadata name="loaderStratifiedExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>464, 95</value>
+    <value>1049, 56</value>
   </metadata>
   <metadata name="fbdBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>791, 95</value>
+    <value>1376, 56</value>
   </metadata>
   <data name="fbdBackup.Description" xml:space="preserve">
     <value>Select folder to backup cards.</value>
   </data>
   <metadata name="dietCompiler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>900, 95</value>
+    <value>1485, 56</value>
   </metadata>
   <metadata name="artefactFinder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>115, 134</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="bioTipper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1135, 95</value>
+    <value>1720, 56</value>
   </metadata>
   <metadata name="bioUpdater.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1022, 95</value>
+    <value>1607, 56</value>
   </metadata>
   <metadata name="modelCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="qualCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>1930, 56</value>
   </metadata>
   <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>157, 56</value>
+    <value>1493, 17</value>
   </metadata>
   <data name="tdbSaveAll.Text" xml:space="preserve">
     <value>Save All</value>
@@ -5754,7 +5754,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogClearSimulations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>291, 56</value>
+    <value>1627, 17</value>
   </metadata>
   <data name="tdbClearSimulation.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5769,7 +5769,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="tdRecover.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1239, 95</value>
+    <value>1824, 56</value>
   </metadata>
   <data name="tdbRecoverBackup.Text" xml:space="preserve">
     <value>Backup and continue</value>
@@ -5796,7 +5796,7 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogBio.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>544, 134</value>
+    <value>446, 95</value>
   </metadata>
   <data name="tdbSpecClear.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5811,19 +5811,19 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>Clear already imported bios?</value>
   </data>
   <metadata name="speciesValidator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>1353, 17</value>
   </metadata>
   <metadata name="mathCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>242, 134</value>
+    <value>144, 95</value>
   </metadata>
   <metadata name="mathLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>347, 134</value>
+    <value>249, 95</value>
   </metadata>
   <metadata name="mathInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>447, 134</value>
+    <value>349, 95</value>
   </metadata>
   <metadata name="notify.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>670, 134</value>
+    <value>572, 95</value>
   </metadata>
   <data name="notify.Text" xml:space="preserve">
     <value>notifyIcon1</value>
@@ -5835,7 +5835,7 @@ If you will find any mistake in you'll just reload previously backed up cards.</
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>176</value>
+    <value>133</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>

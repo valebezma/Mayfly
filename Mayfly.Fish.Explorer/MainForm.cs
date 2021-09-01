@@ -1299,7 +1299,7 @@ namespace Mayfly.Fish.Explorer
                 double n1 = data.Individual.Count;
                 double n2 = AllowedStack.Measured();
                 double n3 = AllowedStack.Weighted();
-                double n35 = AllowedStack.Registered();
+                double n35 = AllowedStack.Tallied();
                 double n4 = AllowedStack.Aged();
                 double n5 = AllowedStack.Sexed();
                 double n6 = AllowedStack.Matured();
@@ -1356,7 +1356,7 @@ namespace Mayfly.Fish.Explorer
                 double n_ind = AllowedStack.QuantityIndividual(selectedStatSpc);
                 double n2 = AllowedStack.Measured(selectedStatSpc);
                 double n3 = AllowedStack.Weighted(selectedStatSpc);
-                double n35 = AllowedStack.Registered(selectedStatSpc);
+                double n35 = AllowedStack.Tallied(selectedStatSpc);
                 double n4 = AllowedStack.Aged(selectedStatSpc);
                 double n5 = AllowedStack.Sexed(selectedStatSpc);
                 double n6 = AllowedStack.Matured(selectedStatSpc);
@@ -1601,7 +1601,7 @@ namespace Mayfly.Fish.Explorer
 
             histRegistered.Data =
                 countStack.GetStatisticComposition(selectedStatSpc,
-                (s, i) => { return countStack.Registered(s, i); }, Resources.Interface.StratesRegistered).GetHistogramSample();
+                (s, i) => { return countStack.Tallied(s, i); }, Resources.Interface.StratesRegistered).GetHistogramSample();
 
             histAged.Data =
                 countStack.GetStatisticComposition(selectedStatSpc,
@@ -1851,26 +1851,47 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonSpeciesStatsReport_Click(object sender, EventArgs e)
         {
+            buttonSpeciesStatsReport.Enabled = false;
+
+            BackgroundWorker bgw = new BackgroundWorker();
+            bgw.DoWork += bgw_DoWork; 
+            bgw.RunWorkerCompleted += bgw_RunWorkerCompleted;
+            bgw.RunWorkerAsync();
+            Cursor = Cursors.AppStarting;
+        }
+
+        private void bgw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Report report = (Report)e.Result;
+            report.Run();
+
+            buttonSpeciesStatsReport.Enabled = true;
+            Cursor = Cursors.Default;
+        }
+
+        private void bgw_DoWork(object sender, DoWorkEventArgs e)
+        {
             SpeciesStatsLevel lvl = SpeciesStatsLevel.Totals | SpeciesStatsLevel.Detailed | SpeciesStatsLevel.TreatmentSuggestion | SpeciesStatsLevel.SurveySuggestion;
+
+            Report report = new Report(selectedStatSpc == null ?
+                Resources.Reports.Sections.SpeciesStats.Title :
+                string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.KeyRecord.FullNameReport));
+            AllowedStack.Sort();
 
             if (selectedStatSpc == null)
             {
-                Report report = new Report(Resources.Reports.Sections.SpeciesStats.Title);
                 AllowedStack.AddCommon(report);
-                AllowedStack.Sort();
                 AllowedStack.AddSpeciesStatsReport(report, lvl, ExpressionVariant.Efforts);
                 report.EndBranded();
-                report.Run();
             }
             else
             {
-                Report report = new Report(string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.KeyRecord.FullNameReport));
                 AllowedStack.AddCommon(report, selectedStatSpc);
-                AllowedStack.Sort();
                 AllowedStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
-                report.EndBranded();
-                report.Run();
             }
+
+            report.EndBranded();
+            e.Result = report;
         }
 
         #endregion

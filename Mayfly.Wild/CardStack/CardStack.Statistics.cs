@@ -273,7 +273,7 @@ namespace Mayfly.Wild
             int result = 0;
 
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsMassNull()) continue;
                 result++;
@@ -287,7 +287,7 @@ namespace Mayfly.Wild
             int result = 0;
 
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue;
                 result++;

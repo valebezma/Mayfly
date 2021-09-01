@@ -585,6 +585,11 @@ namespace Mayfly.Wild
                     {
                         return (tableCard.CommonPath == null || tableCard.CommonPath == this.Path) ? System.IO.Path.GetFileNameWithoutExtension(this.Path) :
                             System.IO.Path.GetFileNameWithoutExtension(this.Path.Substring(tableCard.CommonPath.Length + 1));
+                        //return string.Format("<a href='{0}'>{1}</a>",
+                        //    this.Path,
+                        //    (tableCard.CommonPath == null || tableCard.CommonPath == this.Path) ? System.IO.Path.GetFileNameWithoutExtension(this.Path) :
+                        //    System.IO.Path.GetFileNameWithoutExtension(this.Path.Substring(tableCard.CommonPath.Length + 1))
+                        //    );
                     }
                 }
             }

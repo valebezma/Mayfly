@@ -299,7 +299,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static int Registered(this CardStack stack)
+        public static int Tallied(this CardStack stack)
         {
             int result = 0;
 
@@ -313,7 +313,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Registered(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static int Tallied(this CardStack stack, Data.SpeciesRow speciesRow)
         {
             int result = 0;
 
@@ -327,7 +327,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Registered(this CardStack stack, Data.SpeciesRow speciesRow, Interval size)
+        public static int Tallied(this CardStack stack, Data.SpeciesRow speciesRow, Interval size)
         {
             int result = 0;
 

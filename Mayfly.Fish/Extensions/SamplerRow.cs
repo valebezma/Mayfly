@@ -192,6 +192,7 @@ namespace Mayfly.Fish
         }
     }
 
+    [Flags]
     public enum FishSamplerType
     {
         None,

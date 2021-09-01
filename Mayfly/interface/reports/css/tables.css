@@ -193,7 +193,12 @@ table.airy {
 
     table.airy td {
         border: none;
-        padding: 5mm;
+        padding: 3mm;
+    }
+
+    table.airy th {
+        border: none;
+        text-align: left;
     }
 
 

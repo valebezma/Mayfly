@@ -77,6 +77,8 @@ namespace Mayfly
 
             public bool MarkNotices = true;
 
+            public bool ZeroToLongDash { get; set; }
+
 
 
             public Table(string caption)
@@ -282,7 +284,9 @@ namespace Mayfly
                 this.WriteLine("<td " +
                     (classid == ReportCellClass.None ? string.Empty : "class='" + classid.ToString().Replace(",", string.Empty).ToLower() + "'") +
                     (span > 1 ? (direction == CellSpan.Columns ? "colspan" : "rowspan") + "='" + span + "'" : string.Empty) +
-                    ">" + (value == null ? string.Empty : value.ToString().Replace(Environment.NewLine, "<br>")) + "</td>");
+                    ">" + (value == null ? string.Empty :
+                    value.IsDoubleConvertible() ? (Math.Abs(value.ToDouble()) < double.Epsilon ? Constants.Null : value.ToString()) :
+                    value.ToString().Replace(Environment.NewLine, "<br>")) + "</td>");
             }
 
             public void AddCell(object value, ReportCellClass classid)

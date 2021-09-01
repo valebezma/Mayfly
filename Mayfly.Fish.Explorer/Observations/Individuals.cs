@@ -941,7 +941,7 @@ namespace Mayfly.Fish.Explorer
 
                 if (spreadSheetLog[ColumnRegID.Index, e.RowIndex].Value == null)
                 {
-                    int reged = Observations.GetCombinedData().GetStack().Registered(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
+                    int reged = Observations.GetCombinedData().GetStack().Tallied(LogRow.SpeciesRow, Service.GetStrate(individualRow.Length));
                     spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
             }
