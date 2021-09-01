@@ -183,10 +183,7 @@ namespace Mayfly.Fish.Explorer
                 updateQty(0);
                 updateMass(0);
 
-                if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
-                {
-                    data.RefreshBios();
-                }
+                data.RefreshBios();
 
                 IsBusy = false;
             }
@@ -762,32 +759,29 @@ namespace Mayfly.Fish.Explorer
             //plotQualify.Remove(combi);
 
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
-            {
-                ext = new Scatterplot(Resources.Interface.QualBio);
-                ext.Properties.DataPointColor = Constants.InfantColor;
-                plotQualify.AddSeries(ext);
+            ext = new Scatterplot(Resources.Interface.QualBio);
+            ext.Properties.DataPointColor = Constants.InfantColor;
+            plotQualify.AddSeries(ext);
 
-                inter = new Scatterplot(Resources.Interface.QualOwn);
-                inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
-                plotQualify.AddSeries(inter);
-                inter.Updated += inter_Updated;
+            inter = new Scatterplot(Resources.Interface.QualOwn);
+            inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
+            plotQualify.AddSeries(inter);
+            inter.Updated += inter_Updated;
 
-                combi = new Scatterplot(Resources.Interface.QualCombi);
-                combi.Properties.ShowTrend = true;
-                combi.Properties.ConfidenceLevel = .99999;
-                combi.Properties.ShowPredictionBands = true;
-                combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
-                combi.Properties.DataPointColor = Color.Transparent;
-                combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
-                plotQualify.AddSeries(combi);
-                combi.Updated += combi_Updated;
+            combi = new Scatterplot(Resources.Interface.QualCombi);
+            combi.Properties.ShowTrend = true;
+            combi.Properties.ConfidenceLevel = .99999;
+            combi.Properties.ShowPredictionBands = true;
+            combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
+            combi.Properties.DataPointColor = Color.Transparent;
+            combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
+            plotQualify.AddSeries(combi);
+            combi.Updated += combi_Updated;
 
-                //plotQualify.Remove(Resources.Interface.StratesSampled, false);
-                //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
-                //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
-                //plotQualify.Remove(Resources.Interface.StratesAged, false);
-            }
+            //plotQualify.Remove(Resources.Interface.StratesSampled, false);
+            //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
+            //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
+            //plotQualify.Remove(Resources.Interface.StratesAged, false);
         }
 
         private void resetQualPlotAxes(double from, double to, double top)
@@ -1078,10 +1072,10 @@ namespace Mayfly.Fish.Explorer
             }
 
 
-            if (artifact.LogArtifacts.Length > 0)
+            if (artifact.LogArtifacts.Count > 0)
             {
                 ((TextAndImageCell)gridRow.Cells[columnCardWealth.Index]).Image = ConsistencyChecker.GetImage(ConsistencyChecker.GetWorst(artifact.LogWorstCriticality));
-                gridRow.Cells[columnCardWealth.Index].ToolTipText = LogConsistencyChecker.GetNotices(artifact.LogArtifacts).Merge();
+                gridRow.Cells[columnCardWealth.Index].ToolTipText = LogConsistencyChecker.GetCommonNotices(artifact.LogArtifacts).Merge();
             }
             else
             {
@@ -1089,10 +1083,10 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[columnCardWealth.Index].ToolTipText = string.Empty;
             }
 
-            if (artifact.IndividualArtifacts.Length > 0)
+            if (artifact.IndividualArtifacts.Count > 0)
             {
                 ((TextAndImageCell)gridRow.Cells[columnCardQuantity.Index]).Image = ConsistencyChecker.GetImage(ConsistencyChecker.GetWorst(artifact.IndividualWorstCriticality));
-                gridRow.Cells[columnCardQuantity.Index].ToolTipText = IndividualConsistencyChecker.GetNotices(artifact.IndividualArtifacts).Merge();
+                gridRow.Cells[columnCardQuantity.Index].ToolTipText = IndividualConsistencyChecker.GetCommonNotices(artifact.IndividualArtifacts).Merge();
             }
             else
             {

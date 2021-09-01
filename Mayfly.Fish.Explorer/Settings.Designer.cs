@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTreat = new System.Windows.Forms.TabPage();
+            this.comboBoxAlk = new System.Windows.Forms.ComboBox();
+            this.AlkTypeLabel = new System.Windows.Forms.Label();
             this.numericUpDownInterval = new System.Windows.Forms.NumericUpDown();
             this.labelSizeInterval = new System.Windows.Forms.Label();
             this.comboBoxDominance = new System.Windows.Forms.ComboBox();
@@ -43,18 +45,19 @@
             this.labelDiversity = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPagePrediction = new System.Windows.Forms.TabPage();
-            this.comboBoxAlk = new System.Windows.Forms.ComboBox();
-            this.AlkTypeLabel = new System.Windows.Forms.Label();
             this.listViewBio = new System.Windows.Forms.ListView();
             this.columnFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonBioRemove = new System.Windows.Forms.Button();
             this.buttonBioBrowse = new System.Windows.Forms.Button();
             this.checkBoxBioAutoLoad = new System.Windows.Forms.CheckBox();
-            this.checkBoxSuggest = new System.Windows.Forms.CheckBox();
             this.checkBoxSuggestAge = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBoxSuggestMass = new System.Windows.Forms.CheckBox();
             this.tabPageAdvanced = new System.Windows.Forms.TabPage();
+            this.comboBoxReportCriticality = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxConsistency = new System.Windows.Forms.CheckBox();
             this.checkBoxKeepWizards = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageGamingAge = new System.Windows.Forms.TabPage();
@@ -93,7 +96,6 @@
             this.speciesSelectorCatchability = new Mayfly.Species.SpeciesSelector(this.components);
             this.speciesSelectorAge = new Mayfly.Species.SpeciesSelector(this.components);
             this.buttonBasicSettings = new System.Windows.Forms.Button();
-            this.checkBoxConsistency = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPageTreat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).BeginInit();
@@ -138,6 +140,21 @@
             resources.ApplyResources(this.tabPageTreat, "tabPageTreat");
             this.tabPageTreat.Name = "tabPageTreat";
             this.tabPageTreat.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxAlk
+            // 
+            resources.ApplyResources(this.comboBoxAlk, "comboBoxAlk");
+            this.comboBoxAlk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAlk.FormattingEnabled = true;
+            this.comboBoxAlk.Items.AddRange(new object[] {
+            resources.GetString("comboBoxAlk.Items"),
+            resources.GetString("comboBoxAlk.Items1")});
+            this.comboBoxAlk.Name = "comboBoxAlk";
+            // 
+            // AlkTypeLabel
+            // 
+            resources.ApplyResources(this.AlkTypeLabel, "AlkTypeLabel");
+            this.AlkTypeLabel.Name = "AlkTypeLabel";
             // 
             // numericUpDownInterval
             // 
@@ -203,28 +220,13 @@
             this.tabPagePrediction.Controls.Add(this.buttonBioRemove);
             this.tabPagePrediction.Controls.Add(this.buttonBioBrowse);
             this.tabPagePrediction.Controls.Add(this.checkBoxBioAutoLoad);
-            this.tabPagePrediction.Controls.Add(this.checkBoxSuggest);
             this.tabPagePrediction.Controls.Add(this.checkBoxSuggestAge);
+            this.tabPagePrediction.Controls.Add(this.label7);
             this.tabPagePrediction.Controls.Add(this.label2);
             this.tabPagePrediction.Controls.Add(this.checkBoxSuggestMass);
             resources.ApplyResources(this.tabPagePrediction, "tabPagePrediction");
             this.tabPagePrediction.Name = "tabPagePrediction";
             this.tabPagePrediction.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxAlk
-            // 
-            resources.ApplyResources(this.comboBoxAlk, "comboBoxAlk");
-            this.comboBoxAlk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAlk.FormattingEnabled = true;
-            this.comboBoxAlk.Items.AddRange(new object[] {
-            resources.GetString("comboBoxAlk.Items"),
-            resources.GetString("comboBoxAlk.Items1")});
-            this.comboBoxAlk.Name = "comboBoxAlk";
-            // 
-            // AlkTypeLabel
-            // 
-            resources.ApplyResources(this.AlkTypeLabel, "AlkTypeLabel");
-            this.AlkTypeLabel.Name = "AlkTypeLabel";
             // 
             // listViewBio
             // 
@@ -266,18 +268,17 @@
             this.checkBoxBioAutoLoad.UseVisualStyleBackColor = true;
             this.checkBoxBioAutoLoad.CheckedChanged += new System.EventHandler(this.checkBoxBioAutoLoad_CheckedChanged);
             // 
-            // checkBoxSuggest
-            // 
-            resources.ApplyResources(this.checkBoxSuggest, "checkBoxSuggest");
-            this.checkBoxSuggest.Name = "checkBoxSuggest";
-            this.checkBoxSuggest.UseVisualStyleBackColor = true;
-            this.checkBoxSuggest.CheckedChanged += new System.EventHandler(this.checkBoxSuggest_CheckedChanged);
-            // 
             // checkBoxSuggestAge
             // 
             resources.ApplyResources(this.checkBoxSuggestAge, "checkBoxSuggestAge");
             this.checkBoxSuggestAge.Name = "checkBoxSuggestAge";
             this.checkBoxSuggestAge.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label7.Name = "label7";
             // 
             // label2
             // 
@@ -293,12 +294,37 @@
             // 
             // tabPageAdvanced
             // 
+            this.tabPageAdvanced.Controls.Add(this.comboBoxReportCriticality);
+            this.tabPageAdvanced.Controls.Add(this.label3);
             this.tabPageAdvanced.Controls.Add(this.checkBoxConsistency);
             this.tabPageAdvanced.Controls.Add(this.checkBoxKeepWizards);
             this.tabPageAdvanced.Controls.Add(this.label5);
             resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.Name = "tabPageAdvanced";
             this.tabPageAdvanced.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxReportCriticality
+            // 
+            resources.ApplyResources(this.comboBoxReportCriticality, "comboBoxReportCriticality");
+            this.comboBoxReportCriticality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxReportCriticality.FormattingEnabled = true;
+            this.comboBoxReportCriticality.Items.AddRange(new object[] {
+            resources.GetString("comboBoxReportCriticality.Items"),
+            resources.GetString("comboBoxReportCriticality.Items1"),
+            resources.GetString("comboBoxReportCriticality.Items2"),
+            resources.GetString("comboBoxReportCriticality.Items3")});
+            this.comboBoxReportCriticality.Name = "comboBoxReportCriticality";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // checkBoxConsistency
+            // 
+            resources.ApplyResources(this.checkBoxConsistency, "checkBoxConsistency");
+            this.checkBoxConsistency.Name = "checkBoxConsistency";
+            this.checkBoxConsistency.UseVisualStyleBackColor = true;
             // 
             // checkBoxKeepWizards
             // 
@@ -608,12 +634,6 @@
             this.buttonBasicSettings.UseVisualStyleBackColor = true;
             this.buttonBasicSettings.Click += new System.EventHandler(this.buttonBasicSettings_Click);
             // 
-            // checkBoxConsistency
-            // 
-            resources.ApplyResources(this.checkBoxConsistency, "checkBoxConsistency");
-            this.checkBoxConsistency.Name = "checkBoxConsistency";
-            this.checkBoxConsistency.UseVisualStyleBackColor = true;
-            // 
             // Settings
             // 
             resources.ApplyResources(this, "$this");
@@ -696,7 +716,6 @@
         private System.Windows.Forms.TabPage tabPagePrediction;
         private System.Windows.Forms.Button buttonBioBrowse;
         private System.Windows.Forms.CheckBox checkBoxBioAutoLoad;
-        private System.Windows.Forms.CheckBox checkBoxSuggest;
         private System.Windows.Forms.CheckBox checkBoxSuggestAge;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxSuggestMass;
@@ -712,5 +731,8 @@
         private System.Windows.Forms.ComboBox comboBoxAlk;
         private System.Windows.Forms.Label AlkTypeLabel;
         private System.Windows.Forms.CheckBox checkBoxConsistency;
+        private System.Windows.Forms.ComboBox comboBoxReportCriticality;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
     }
 }

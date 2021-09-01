@@ -23,12 +23,23 @@ namespace Mayfly.Fish.Explorer
             tabPageTreat.Parent =
                 tabPageGamingAge.Parent =
                 tabPageGamingMeasure.Parent =
-                tabPageAdvanced.Parent =
                 tabPageCatchability.Parent =
+                //tabPageAdvanced.Parent =
                 Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
 
-            tabPagePrediction.Parent =
-                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
+            //tabPagePrediction.Parent =
+            //    Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
+
+            checkBoxKeepWizards.Enabled = 
+                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced;
+
+            UI.SetControlClickability(
+                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+                checkBoxBioAutoLoad,
+                listViewBio, 
+                buttonBioBrowse,
+                buttonBioRemove,
+                label7);
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
             comboBoxGear.DataSource = Fish.UserSettings.SamplersIndex.Sampler.Select();
@@ -43,32 +54,25 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
-            {
-                speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-            }
-
-            LoadSettings();
-        }
 
 
 
-        private void LoadSettings()
-        {
             checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
+            comboBoxReportCriticality.SelectedIndex = (int)UserSettings.ReportCriticality;
             checkBoxConsistency.Checked = UserSettings.CheckConsistency;
 
-                spreadSheetAge.Rows.Clear();
-                spreadSheetMeasure.Rows.Clear();
-                spreadSheetCatchability.Rows.Clear();
+            spreadSheetAge.Rows.Clear();
+            spreadSheetMeasure.Rows.Clear();
+            spreadSheetCatchability.Rows.Clear();
 
             if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-
                 foreach (SpeciesKey.SpeciesRow speciesRow in Fish.UserSettings.SpeciesIndex.Species)
                 {
+                    speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+                    speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+                    speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+
                     LoadAge(speciesRow);
                     LoadMeasure(speciesRow);
                     LoadCatchability(speciesRow);
@@ -87,10 +91,8 @@ namespace Mayfly.Fish.Explorer
 
             if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-                checkBoxSuggest.Checked = (UserSettings.AgeSuggest || UserSettings.MassSuggest);
                 checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;
                 checkBoxSuggestMass.Checked = UserSettings.MassSuggest;
-                //checkBoxVisualConfirmation.Checked = UserSettings.VisualConfirmation;
                 checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
 
                 foreach (string bio in UserSettings.Bios)
@@ -198,15 +200,17 @@ namespace Mayfly.Fish.Explorer
             UserSettings.AutoLoadBio = checkBoxBioAutoLoad.Checked;
 
             List<string> bios = new List<string>();
-            foreach (ListViewItem li in listViewBio.Items) {
+            foreach (ListViewItem li in listViewBio.Items)
+            {
                 bios.Add(li.Name);
             }
             UserSettings.Bios = bios.ToArray();
 
-            UserSettings.SelectedAgeLengthKeyType = (AgeLengthKeyType)comboBoxAlk.SelectedIndex; 
+            UserSettings.SelectedAgeLengthKeyType = (AgeLengthKeyType)comboBoxAlk.SelectedIndex;
 
             UserSettings.KeepWizard = checkBoxKeepWizards.Checked;
             UserSettings.CheckConsistency = checkBoxConsistency.Checked;
+            UserSettings.ReportCriticality = (ArtifactCriticality)comboBoxReportCriticality.SelectedIndex;
 
             if (SettingsSaved != null)
             {
@@ -311,17 +315,6 @@ namespace Mayfly.Fish.Explorer
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void checkBoxSuggest_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxSuggestAge.Enabled = 
-                checkBoxSuggestMass.Enabled = 
-                checkBoxBioAutoLoad.Enabled = 
-                checkBoxSuggest.Checked;
-
-            if (!checkBoxSuggest.Checked) checkBoxSuggestAge.Checked = false;
-            if (!checkBoxSuggest.Checked) checkBoxSuggestMass.Checked = false;
         }
 
         private void buttonBasicSettings_Click(object sender, EventArgs e)

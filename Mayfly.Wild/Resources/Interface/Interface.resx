@@ -183,4 +183,7 @@
   <data name="RedefineComment" xml:space="preserve">
     <value>Previously defined as {0}</value>
   </data>
+  <data name="LogMask" xml:space="preserve">
+    <value>{0:s} at {1:s}</value>
+  </data>
 </root>

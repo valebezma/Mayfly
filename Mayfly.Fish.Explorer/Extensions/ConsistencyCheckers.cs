@@ -43,7 +43,8 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.CardRow cardRow in stack)
             {
                 CardConsistencyChecker ccc = cardRow.CheckConsistency();
-                if (ccc.FullArtifactsCount > 0)
+
+                if (ccc.ArtifactsCount > 0)
                 {
                     result.Add(ccc);
                 }
@@ -52,7 +53,8 @@ namespace Mayfly.Fish.Explorer
             foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
-                if (scc.FullArtifactsCount > 0)
+
+                if (scc.ArtifactsCount > 0)
                 {
                     result.Add(scc);
                 }
@@ -78,7 +80,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (this.HasTally && !this.Treated)
                 {
-                    return ArtifactCriticality.NotCritical;
+                    return ArtifactCriticality.Bad;
                 }
                 else if (!this.HasTally && this.Treated)
                 {
@@ -97,7 +99,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (this.UnweightedDietItems > 0)
                 {
-                    return ArtifactCriticality.NotCritical;
+                    return ArtifactCriticality.Bad;
                 }
                 else
                 {
@@ -127,7 +129,7 @@ namespace Mayfly.Fish.Explorer
 
             switch (TallyCriticality)
             {
-                case ArtifactCriticality.NotCritical:
+                case ArtifactCriticality.Bad:
                     result.Add(GetNoticeTallyOdd());
                     break;
 
@@ -144,10 +146,7 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public override string ToString()
-        {
-            return base.ToString(IndividualRow.GetDescription());
-        }
+        public override string ToString() => base.ToString(IndividualRow.GetDescription());
 
         public string GetNoticeTallyOdd()
         {
@@ -164,7 +163,7 @@ namespace Mayfly.Fish.Explorer
             return string.Format(Resources.Artifact.IndividualUnweightedDiet, UnweightedDietItems);
         }
 
-        public static string[] GetNotices(IEnumerable<IndividualConsistencyChecker> artifacts)
+        public static string[] GetCommonNotices(IEnumerable<IndividualConsistencyChecker> artifacts)
         {
             List<string> result = new List<string>();
 
@@ -192,6 +191,21 @@ namespace Mayfly.Fish.Explorer
 
             return result.ToArray();
         }
+
+        public static string[] GetAllNotices(IEnumerable<IndividualConsistencyChecker> artifacts)
+        {
+            List<string> result = new List<string>();
+
+            if (artifacts != null)
+            {
+                foreach (IndividualConsistencyChecker artifact in artifacts)
+                {
+                    if (artifact.ArtifactsCount > 0) result.Add(artifact.ToString());
+                }
+            }
+
+            return result.ToArray();
+        }
     }
 
     public class LogConsistencyChecker : ConsistencyChecker
@@ -204,7 +218,7 @@ namespace Mayfly.Fish.Explorer
 
         public int LengthMissing { get; set; }
 
-        public IndividualConsistencyChecker[] IndividualArtifacts { get; set; }
+        public List<IndividualConsistencyChecker> IndividualArtifacts { get; set; }
 
         public ArtifactCriticality UnmeasurementsCriticality
         {
@@ -212,7 +226,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (this.LengthMissing > 0)
                 {
-                    return ArtifactCriticality.NotCritical;
+                    return ArtifactCriticality.Bad;
                 }
                 else
                 {
@@ -235,7 +249,7 @@ namespace Mayfly.Fish.Explorer
                 }
                 else if ((DetailedMass / Mass) <= (1 + Mathematics.UserSettings.DefaultAlpha)) // If Sampled more than Total around 5% or less - it is calculation artifact - Fine
                 {                    
-                    return ArtifactCriticality.NotCritical;
+                    return ArtifactCriticality.Bad;
                 }
                 else // If Sampled significantly more than Total - it is weird and should be checked
                 {                    
@@ -285,7 +299,7 @@ namespace Mayfly.Fish.Explorer
                 IndividualConsistencyChecker indArtifact = individualRow.CheckConsistency();
                 if (indArtifact.ArtifactsCount > 0) result.Add(indArtifact);
             }
-            IndividualArtifacts = result.ToArray();
+            IndividualArtifacts = result;
         }
 
 
@@ -306,7 +320,7 @@ namespace Mayfly.Fish.Explorer
 
             if (includeChildren)
             {
-                result.AddRange(IndividualConsistencyChecker.GetNotices(IndividualArtifacts));
+                result.AddRange(IndividualConsistencyChecker.GetCommonNotices(IndividualArtifacts));
             }
 
             return result.ToArray();
@@ -319,7 +333,7 @@ namespace Mayfly.Fish.Explorer
                 case ArtifactCriticality.Allowed:
                     return string.Format(Resources.Artifact.LogMassMissing, Mass, DetailedMass);
 
-                case ArtifactCriticality.NotCritical:
+                case ArtifactCriticality.Bad:
                 case ArtifactCriticality.Critical:
                     return string.Format(Resources.Artifact.LogMassOdd, Mass, Mass == 0 ? 1d : (DetailedMass / Mass) - 1d, DetailedMass);
 
@@ -333,12 +347,9 @@ namespace Mayfly.Fish.Explorer
             return string.Format(Resources.Artifact.LogLength, LengthMissing);
         }
 
-        public override string ToString()
-        {
-            return base.ToString(LogRow.SpeciesRow.KeyRecord.ShortName);
-        }
+        public override string ToString() => base.ToString(LogRow.GetDescription());
 
-        public static string[] GetNotices(IEnumerable<LogConsistencyChecker> artifacts)
+        public static string[] GetCommonNotices(IEnumerable<LogConsistencyChecker> artifacts)
         {
             List<string> result = new List<string>();
 
@@ -363,6 +374,18 @@ namespace Mayfly.Fish.Explorer
             
             return result.ToArray();
         }
+
+        public static string[] GetAllNotices(IEnumerable<LogConsistencyChecker> artifacts)
+        {
+            List<string> result = new List<string>();
+
+            foreach (LogConsistencyChecker artifact in artifacts)
+            {
+                if (artifact.ArtifactsCount > 0) result.Add(artifact.ToString());
+            }
+            
+            return result.ToArray();
+        }
     }
 
     public class CardConsistencyChecker : ConsistencyChecker
@@ -371,9 +394,9 @@ namespace Mayfly.Fish.Explorer
 
         public bool EffortMissing { get; set; }
 
-        public LogConsistencyChecker[] LogArtifacts { get; set; }
+        public List<LogConsistencyChecker> LogArtifacts { get; set; }
 
-        public IndividualConsistencyChecker[] IndividualArtifacts
+        public List<IndividualConsistencyChecker> IndividualArtifacts
         {
             get
             {
@@ -382,7 +405,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     result.AddRange(logArtifact.IndividualArtifacts);
                 }
-                return result.ToArray();
+                return result;
             }
         }
 
@@ -392,7 +415,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (this.EffortMissing)
                 {
-                    return ArtifactCriticality.NotCritical;
+                    return ArtifactCriticality.Bad;
                 }
                 else
                 {
@@ -431,6 +454,14 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
+        public ArtifactCriticality WorstCriticality
+        {
+            get
+            {
+                return ConsistencyChecker.GetWorst(EffortCriticality, LogWorstCriticality, IndividualWorstCriticality);
+            }
+        }
+
 
 
         public CardConsistencyChecker(Data.CardRow cardRow)
@@ -447,7 +478,29 @@ namespace Mayfly.Fish.Explorer
                     logArtifacts.Add(logArtifact);
                 }
             }
-            LogArtifacts = logArtifacts.ToArray();
+            LogArtifacts = logArtifacts;
+        }
+
+        public void Filterate(ArtifactCriticality criticality)
+        {
+            for (int i = 0; i < LogArtifacts.Count; i++)
+            {
+                for (int j = 0; j < LogArtifacts[i].IndividualArtifacts.Count; j++)
+                {
+                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality &&
+                        LogArtifacts[i].IndividualArtifacts[j].UnweightedDietItemsCriticality < criticality)
+                    {
+                        LogArtifacts[i].IndividualArtifacts.RemoveAt(j);
+                        j--;
+                    }
+                }
+
+                if (LogArtifacts[i].WorstCriticality < criticality)
+                {
+                    LogArtifacts.RemoveAt(i);
+                    i--;
+                }
+            }
         }
 
 
@@ -462,8 +515,8 @@ namespace Mayfly.Fish.Explorer
 
             if (includeChildren)
             {
-                result.AddRange(LogConsistencyChecker.GetNotices(LogArtifacts));
-                result.AddRange(IndividualConsistencyChecker.GetNotices(IndividualArtifacts));
+                result.AddRange(LogConsistencyChecker.GetCommonNotices(LogArtifacts));
+                result.AddRange(IndividualConsistencyChecker.GetCommonNotices(IndividualArtifacts));
             }
 
             return result.ToArray();
@@ -501,7 +554,7 @@ namespace Mayfly.Fish.Explorer
                         }
                         else // If there are outliers
                         {
-                            return ArtifactCriticality.NotCritical;
+                            return ArtifactCriticality.Bad;
                         }
                     }
                     else // If there are some missing values
@@ -579,19 +632,27 @@ namespace Mayfly.Fish.Explorer
         {
             return base.ToString(FeatureName);
         }
+
+        public static SpeciesFeatureConsistencyChecker Empty
+        {
+            get
+            {
+                return new SpeciesFeatureConsistencyChecker(string.Empty);
+            }
+        }
     }
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
         public Data.SpeciesRow SpeciesRow { get; set; }
 
-        public SpeciesFeatureConsistencyChecker MassArtifact { get; set; }
+        public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
 
-        public SpeciesFeatureConsistencyChecker AgeArtifact { get; set; }
+        public SpeciesFeatureConsistencyChecker AgeInspector { get; set; }
 
-        public LogConsistencyChecker[] LogArtifacts { get; set; }
+        public List<LogConsistencyChecker> LogArtifacts { get; set; }
 
-        public IndividualConsistencyChecker[] IndividualArtifacts 
+        public List<IndividualConsistencyChecker> IndividualArtifacts 
         {
             get
             {
@@ -600,7 +661,22 @@ namespace Mayfly.Fish.Explorer
                 {
                     result.AddRange(logArtifact.IndividualArtifacts);
                 }
-                return result.ToArray();
+                return result;
+            }
+        }
+
+        public ArtifactCriticality LogWorstCriticality
+        {
+            get
+            {
+                ArtifactCriticality result = ArtifactCriticality.Normal;
+
+                foreach (LogConsistencyChecker artifact in LogArtifacts)
+                {
+                    result = GetWorst(result, artifact.OddMassCriticality, artifact.UnmeasurementsCriticality);
+                }
+
+                return result;
             }
         }
 
@@ -623,7 +699,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return ConsistencyChecker.GetWorst(AgeArtifact.Criticality, MassArtifact.Criticality, IndividualWorstCriticality);
+                return GetWorst(AgeInspector.Criticality, MassInspector.Criticality, LogWorstCriticality, IndividualWorstCriticality);
             }
         }
 
@@ -635,17 +711,17 @@ namespace Mayfly.Fish.Explorer
 
             int sampled = stack.QuantitySampled(speciesRow);
 
-            AgeArtifact = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);
-            AgeArtifact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
+            AgeInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);
+            AgeInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
             var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
-            if (gm != null) AgeArtifact.HasRegression = gm.CombinedData.IsRegressionOK;
-            if (gm != null && gm.CombinedData.IsRegressionOK) AgeArtifact.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
+            if (gm != null) AgeInspector.HasRegression = gm.CombinedData.IsRegressionOK;
+            if (gm != null && gm.CombinedData.IsRegressionOK) AgeInspector.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
 
-            MassArtifact = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Mass);
-            MassArtifact.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
+            MassInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Mass);
+            MassInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
             var mm = stack.Parent.FindMassModel(speciesRow.Species);
-            if (mm != null) MassArtifact.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
-            if (mm != null && mm.CombinedData.IsRegressionOK) MassArtifact.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
+            if (mm != null) MassInspector.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
+            if (mm != null && mm.CombinedData.IsRegressionOK) MassInspector.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
 
             List<LogConsistencyChecker> result = new List<LogConsistencyChecker>();
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
@@ -653,22 +729,54 @@ namespace Mayfly.Fish.Explorer
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
                 if (logArtifact.ArtifactsCount > 0) result.Add(logArtifact);
             }
-            LogArtifacts = result.ToArray();
+            LogArtifacts = result;
         }
 
 
 
 
+        public void Filterate(ArtifactCriticality criticality)
+        {
+            for (int i = 0; i < LogArtifacts.Count; i++)
+            {
+                for (int j = 0; j < LogArtifacts[i].IndividualArtifacts.Count; j++)
+                {
+                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality &&
+                        LogArtifacts[i].IndividualArtifacts[j].UnweightedDietItemsCriticality < criticality)
+                    {
+                        LogArtifacts[i].IndividualArtifacts.RemoveAt(j);
+                        j--;
+                    }
+                }
+
+                if (LogArtifacts[i].WorstCriticality < criticality)
+                {
+                    LogArtifacts.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            if (AgeInspector.Criticality < criticality)
+            {
+                AgeInspector = SpeciesFeatureConsistencyChecker.Empty;
+            }
+
+            if (MassInspector.Criticality < criticality)
+            {
+                MassInspector = SpeciesFeatureConsistencyChecker.Empty;
+            }
+        }
+
         public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
-            result.AddRange(AgeArtifact.GetNotices());
-            result.AddRange(MassArtifact.GetNotices());
+            result.AddRange(AgeInspector.GetNotices());
+            result.AddRange(MassInspector.GetNotices());
 
             if (includeChildren)
             {
-                result.AddRange(LogConsistencyChecker.GetNotices(LogArtifacts));
-                result.AddRange(IndividualConsistencyChecker.GetNotices(IndividualArtifacts));
+                result.AddRange(LogConsistencyChecker.GetCommonNotices(LogArtifacts));
+                result.AddRange(IndividualConsistencyChecker.GetCommonNotices(IndividualArtifacts));
             }
 
             return result.ToArray();

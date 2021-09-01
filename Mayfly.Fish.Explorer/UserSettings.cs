@@ -36,6 +36,7 @@ namespace Mayfly.Fish.Explorer
                     new UserSetting(Wild.UserSettingPaths.AutoLoadBio, false),
                     new UserSetting(UserSettingPaths.SizeInterval, 1000),
                     new UserSetting(UserSettingPaths.KeepWizard, false),
+                    new UserSetting(UserSettingPaths.ReportCriticality, ArtifactCriticality.Bad),
                     new UserSetting(UserSettingPaths.SelectedAgeLengthKeyType, 1)
                 });
         }
@@ -117,6 +118,17 @@ namespace Mayfly.Fish.Explorer
             {
                 UserSetting.SetValue(Path, UserSettingPaths.KeepWizard, value);
             }
+        }
+
+        public static ArtifactCriticality ReportCriticality
+        {
+            get
+            {
+                object o = GetValue(Path, UserSettingPaths.ReportCriticality);
+                if (o == null) return ArtifactCriticality.Critical;
+                else return (ArtifactCriticality)(int)o;
+            }
+            set { UserSetting.SetValue(Path, UserSettingPaths.ReportCriticality, (int)value); }
         }
 
         public static bool CheckConsistency
@@ -223,6 +235,8 @@ namespace Mayfly.Fish.Explorer
         public static string KeepWizard = "KeepWizard";
 
         public static string CheckConsistency = "CheckConsistency";
+
+        public static string ReportCriticality = "ReportCriticality";
 
 
 

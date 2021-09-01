@@ -45,17 +45,40 @@ namespace Mayfly.Fish.Explorer
                     {
                         foreach (var diagnostic in diagnostics)
                         {
-                            if (diagnostic.FullArtifactsCount > 0)
+                            if (diagnostic is CardConsistencyChecker ccc)
                             {
-                                warnings.Add(diagnostic.ToString());
+                                ccc.Filterate(UserSettings.ReportCriticality);
+
+                                if (ccc.ArtifactsCount > 0 && ccc.WorstCriticality >= UserSettings.ReportCriticality)
+                                {
+                                    warnings.Add(diagnostic.ToString());
+                                }
+                            }
+
+                            if (diagnostic is SpeciesConsistencyChecker scc)
+                            {
+                                scc.Filterate(UserSettings.ReportCriticality);
+
+                                if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= UserSettings.ReportCriticality)
+                                {
+                                    warnings.Add(diagnostic.ToString());
+                                }
                             }
                         }
                     }
                 }
                 else
                 {
-                    var diagnostics = speciesRow.CheckConsistency(stack);
-                    warnings.AddRange(diagnostics.GetNotices(true));
+                    var scc = speciesRow.CheckConsistency(stack);
+
+                    scc.Filterate(UserSettings.ReportCriticality);
+
+                    if (scc.ArtifactsCount > 0 && scc.WorstCriticality >= UserSettings.ReportCriticality)
+                    {
+                        warnings.AddRange(scc.GetNotices(true));
+                        //warnings.AddRange(LogConsistencyChecker.GetAllNotices(scc.LogArtifacts));
+                        //warnings.AddRange(IndividualConsistencyChecker.GetAllNotices(scc.IndividualArtifacts));
+                    }
                 }
             }
                         

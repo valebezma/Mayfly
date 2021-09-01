@@ -19,21 +19,16 @@ namespace Mayfly.Wild
             return GetNotices(false);
         }
 
-        public int FullArtifactsCount
-        {
-            get { return GetNotices(true).Length; }
-        }
-
         public int ArtifactsCount
         {
-            get { return GetNotices().Length; }
+            get { return GetNotices(true).Length; }
         }
 
         //public override string ToString() { return string.Empty; }
 
         public string ToString(string starter)
         {
-            if (FullArtifactsCount > 0)
+            if (ArtifactsCount > 0)
             {
                 return  "<span class = 'hl'>" + starter + ": </span>" + GetNotices(true).Merge();
             }
@@ -58,7 +53,7 @@ namespace Mayfly.Wild
                 case ArtifactCriticality.Allowed:
                     return Mathematics.Properties.Resources.CheckGray;
 
-                case ArtifactCriticality.NotCritical:
+                case ArtifactCriticality.Bad:
                     return Mathematics.Properties.Resources.None;
 
                 case ArtifactCriticality.Critical:
@@ -67,13 +62,22 @@ namespace Mayfly.Wild
 
             return null;
         }
+
+        //public static ConsistencyChecker GetFiltered(ConsistencyChecker[] checkers, ArtifactCriticality criticality)
+        //{
+        //    for (int i = 0; i < checkers.Length; i++)
+        //    {
+                
+        //    }
+
+        //}
     }
 
     public enum ArtifactCriticality
     {
         Normal,
         Allowed,
-        NotCritical,
+        Bad,
         Critical
     }
 }

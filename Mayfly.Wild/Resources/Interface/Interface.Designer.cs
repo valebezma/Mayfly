@@ -160,6 +160,15 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0:s} at {1:s}.
+        /// </summary>
+        public static string LogMask {
+            get {
+                return ResourceManager.GetString("LogMask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Model calculation.
         /// </summary>
         public static string ModelCalc {

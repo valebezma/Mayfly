@@ -583,13 +583,18 @@ namespace Mayfly.Fish
 
         public static string GetDescription(this Data.IndividualRow indRow)
         {
-            string result = string.Empty;
-            result += indRow.LogRow.SpeciesRow.KeyRecord.ShortName;
-            if (!indRow.IsTallyNull()) result += string.Format(" #{0}: ", indRow.Tally);
-            if (!indRow.IsLengthNull()) result += string.Format(" L={0};", indRow.Length);
-            if (!indRow.IsMassNull()) result += string.Format(" W={0};", indRow.Mass);
-            if (!indRow.IsAgeNull()) result += string.Format(" A={0}", (Age)indRow.Age);
-            return result;
+            List<string> result = new List<string>();
+            result.Add(indRow.LogRow.SpeciesRow.KeyRecord.ShortName);
+            if (!indRow.IsTallyNull()) result.Add(string.Format("#{0}", indRow.Tally));
+            if (!indRow.IsLengthNull()) result.Add(string.Format("L = {0}", indRow.Length));
+            if (!indRow.IsMassNull()) result.Add(string.Format("W = {0}", indRow.Mass));
+            if (!indRow.IsAgeNull()) result.Add(string.Format("A = {0}", (Age)indRow.Age));
+            return result.Merge();
+        }
+
+        public static string GetDescription(this Data.LogRow logRow)
+        {
+            return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.SpeciesRow.KeyRecord, logRow.CardRow);
         }
 
 

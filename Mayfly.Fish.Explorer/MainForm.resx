@@ -139,13 +139,13 @@
 </value>
   </data>
   <data name="menuItemAddData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemAddData.Text" xml:space="preserve">
     <value>Add cards...</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
+    <value>177, 6</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuItemSave.Enabled" type="System.Boolean, mscorlib">
@@ -168,7 +168,7 @@
 </value>
   </data>
   <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemSave.Text" xml:space="preserve">
     <value>Save all changes</value>
@@ -177,7 +177,7 @@
     <value>False</value>
   </data>
   <data name="menuItemBackup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemBackup.Text" xml:space="preserve">
     <value>Backup cards</value>
@@ -186,31 +186,31 @@
     <value>False</value>
   </data>
   <data name="menuItemSaveSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemSaveSet.Text" xml:space="preserve">
     <value>Save cards set...</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="menuItemExportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemExportSpec.Text" xml:space="preserve">
     <value>Export bio</value>
   </data>
   <data name="menuItemImportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemImportSpec.Text" xml:space="preserve">
     <value>Import bio</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="menuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menuItemExit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -1096,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAZABNgGQATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAZgBNgGYATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

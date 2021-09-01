@@ -29,19 +29,20 @@ namespace Mayfly.Fish.Explorer
             UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
                 menuItemImportSpec,
                 menuItemExportSpec,
+                toolStripSeparator10,
                 menuInstant
                 );
-
-            UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
-                labelQualify,
-                buttonQualOutliers,
-                checkBoxQualOutliers,
-                comboBoxQualValue);
 
             UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel == FeatureLevel.Insider,
                 menuSurvey,
                 menuModels,
                 menuCohort);
+
+            //UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+            //    labelQualify,
+            //    buttonQualOutliers,
+            //    checkBoxQualOutliers,
+            //    comboBoxQualValue);
 
             Fish.UserSettings.Interface.OpenDialog.Multiselect = true;
 
@@ -319,11 +320,11 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
-            {
-                e.Cancel = true;
-                return;
-            }
+            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
+            //{
+            //    e.Cancel = true;
+            //    return;
+            //}
 
             data.RefreshBios();
         }
@@ -1620,8 +1621,6 @@ namespace Mayfly.Fish.Explorer
 
         private void models_Changed(object sender, EventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
-
             plotQualify.Visible = selectedStatSpc != null;
 
             if (selectedStatSpc == null) return;
@@ -2532,8 +2531,6 @@ namespace Mayfly.Fish.Explorer
 
         private void bioTipper_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
-
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
                 if (UserSettings.AgeSuggest) setIndividualAgeTip(gridRow);
@@ -2727,8 +2724,6 @@ namespace Mayfly.Fish.Explorer
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced) return;
-
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
             e.Result = speciesRow;
 

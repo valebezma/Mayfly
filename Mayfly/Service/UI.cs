@@ -97,7 +97,7 @@ namespace Mayfly
             }
         }
 
-        public static void SetControlsAvailability(bool available, params Control[] controls)
+        public static void SetControlAvailability(bool available, params Control[] controls)
         {
             foreach (Control control in controls)
             {
