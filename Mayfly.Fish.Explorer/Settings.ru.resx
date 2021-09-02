@@ -117,24 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tabPageTreat.Text" xml:space="preserve">
+    <value>Обработка данных</value>
+  </data>
+  <data name="tabPagePrediction.Text" xml:space="preserve">
+    <value>Предсказание значений</value>
+  </data>
+  <data name="tabPageAdvanced.Text" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="tabPageGamingAge.Text" xml:space="preserve">
+    <value>Возраст созревания</value>
+  </data>
+  <data name="tabPageGamingMeasure.Text" xml:space="preserve">
+    <value>Промысловая мера</value>
+  </data>
+  <data name="tabPageCatchability.Text" xml:space="preserve">
+    <value>Уловистость</value>
+  </data>
+  <data name="tabPageOther.Text" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="comboBoxAlk.Items" xml:space="preserve">
+    <value>Строгие (требуется больше материала)</value>
+  </data>
+  <data name="comboBoxAlk.Items1" xml:space="preserve">
+    <value>Плавные (требуется био)</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 17</value>
+  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 13</value>
   </data>
-  <data name="checkBoxRate.Text" xml:space="preserve">
-    <value>Оценивать данные на домашней вкладке</value>
-  </data>
-  <data name="checkBoxArtifacts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 17</value>
-  </data>
-  <data name="checkBoxArtifacts.Text" xml:space="preserve">
-    <value>Проверять данные на артефакты после загрузки</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 15</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Автоматическая проверка загруженных данных</value>
+  <data name="AlkTypeLabel.Text" xml:space="preserve">
+    <value>Размерно-возрастные ключи</value>
   </data>
   <data name="labelSizeInterval.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 13</value>
@@ -160,21 +175,6 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Параметры оценивания</value>
   </data>
-  <data name="tabPageTreat.Text" xml:space="preserve">
-    <value>Обработка данных</value>
-  </data>
-  <data name="comboBoxAlk.Items" xml:space="preserve">
-    <value>Строгие (требуется больше материала)</value>
-  </data>
-  <data name="comboBoxAlk.Items1" xml:space="preserve">
-    <value>Плавные (требуется био)</value>
-  </data>
-  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 13</value>
-  </data>
-  <data name="AlkTypeLabel.Text" xml:space="preserve">
-    <value>Размерно-возрастные ключи</value>
-  </data>
   <data name="buttonBioRemove.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
@@ -187,23 +187,17 @@
   <data name="checkBoxBioAutoLoad.Text" xml:space="preserve">
     <value>Автоматически загружать био при запуске</value>
   </data>
-  <data name="checkBoxVisualConfirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 17</value>
-  </data>
-  <data name="checkBoxVisualConfirmation.Text" xml:space="preserve">
-    <value>Визуально подтверждать построенные модели</value>
-  </data>
-  <data name="checkBoxSuggest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 17</value>
-  </data>
-  <data name="checkBoxSuggest.Text" xml:space="preserve">
-    <value>Предсказывать значение по длине:</value>
-  </data>
   <data name="checkBoxSuggestAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
+    <value>186, 17</value>
   </data>
   <data name="checkBoxSuggestAge.Text" xml:space="preserve">
-    <value>возраст</value>
+    <value>Предлагать значение возраста</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Внешние данные</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 15</value>
@@ -212,13 +206,34 @@
     <value>Предсказание значения</value>
   </data>
   <data name="checkBoxSuggestMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
+    <value>173, 17</value>
   </data>
   <data name="checkBoxSuggestMass.Text" xml:space="preserve">
-    <value>масса</value>
+    <value>Предлагать значение массы</value>
   </data>
-  <data name="tabPagePrediction.Text" xml:space="preserve">
-    <value>Предсказание значений</value>
+  <data name="comboBoxReportCriticality.Items" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items1" xml:space="preserve">
+    <value>Допустимые или хуже</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items2" xml:space="preserve">
+    <value>Плохие или хуже</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items3" xml:space="preserve">
+    <value>Только критические</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Включать в отчет артефакты</value>
+  </data>
+  <data name="checkBoxConsistency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 17</value>
+  </data>
+  <data name="checkBoxConsistency.Text" xml:space="preserve">
+    <value>Диагностировать данные</value>
   </data>
   <data name="checkBoxKeepWizards.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 17</value>
@@ -227,13 +242,10 @@
     <value>Оставить мастер открытым после составления отчета</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 15</value>
+    <value>141, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Логика мастера</value>
-  </data>
-  <data name="tabPageWizards.Text" xml:space="preserve">
-    <value>Мастеры</value>
+    <value>Дополнительные опции</value>
   </data>
   <data name="ColumnAgeSpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
@@ -250,9 +262,6 @@
   <data name="labelAgeTitle.Text" xml:space="preserve">
     <value>Возрасты созревания видов</value>
   </data>
-  <data name="tabPageGamingAge.Text" xml:space="preserve">
-    <value>Возраст созревания</value>
-  </data>
   <data name="ColumnMeasureSpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
   </data>
@@ -267,9 +276,6 @@
   </data>
   <data name="labelMeasureTitle.Text" xml:space="preserve">
     <value>Промысловые меры видов</value>
-  </data>
-  <data name="tabPageGamingMeasure.Text" xml:space="preserve">
-    <value>Промысловая мера</value>
   </data>
   <data name="columnCatchabilitySpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
@@ -295,9 +301,6 @@
   <data name="labelCatchabilityInstruction.Text" xml:space="preserve">
     <value>Значение уловистости по-умолчаю используется при оценке запаса когда не указано специальное значение для вида и орудия лова.</value>
   </data>
-  <data name="tabPageCatchability.Text" xml:space="preserve">
-    <value>Уловистость</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Открыть свойства статистических расчетов.</value>
   </data>
@@ -315,9 +318,6 @@
   </data>
   <data name="buttonFish.Text" xml:space="preserve">
     <value>Fish Reader</value>
-  </data>
-  <data name="tabPageOther.Text" xml:space="preserve">
-    <value>Другое</value>
   </data>
   <data name="buttonCancel.Text" xml:space="preserve">
     <value>Отмена</value>

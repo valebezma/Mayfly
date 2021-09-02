@@ -656,4 +656,7 @@
   <data name="tdbDiscard.Text" xml:space="preserve">
     <value>Не сохранять</value>
   </data>
+  <data name="comboBoxOrgan.Items9" xml:space="preserve">
+    <value>Сердце, околосердечная сумка</value>
+  </data>
 </root>

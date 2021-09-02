@@ -620,25 +620,6 @@ namespace Mayfly.Fish.Explorer
             chartSpcStats.Series[0].Points.Clear();
         }
 
-        private DataPoint GetSpeciesDataPoint(Data.SpeciesRow speciesRow, bool useMass)
-        {
-            DataPoint dataPoint = new DataPoint();
-            double quantity = AllowedStack.Quantity(speciesRow);
-            dataPoint.SetCustomProperty("Species", speciesRow.Species);
-            if (useMass)
-            {
-                double mass = AllowedStack.Mass(speciesRow);
-                dataPoint.YValues[0] = mass;
-            }
-            else
-            {
-                dataPoint.YValues[0] = quantity;
-            }
-            dataPoint.LegendText = speciesRow.Species;
-
-            return dataPoint;
-        }
-
         private DataGridViewRow GetTechRow(CardStack stack)
         {
             string format = "{0} ({1})";

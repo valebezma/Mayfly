@@ -2541,7 +2541,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBoxOrgan.Items9" xml:space="preserve">
-    <value>Сердце, околосердечная сумка</value>
+    <value>Core, pericardium</value>
   </data>
   <data name="spreadSheetInfection.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>25</value>
@@ -2832,7 +2832,7 @@
     <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="ColumnTrpConsumption.HeaderText" xml:space="preserve">
-    <value>Consumption, ‰</value>
+    <value>Consumption, ‱</value>
   </data>
   <data name="labelLength.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

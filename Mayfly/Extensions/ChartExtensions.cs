@@ -237,7 +237,7 @@ namespace Mayfly.Extensions
             Timer timer = new Timer();
             timer.Interval = 1;
 
-            double pace = total / 100d;
+            double pace = total / 50d;
 
             timer.Tick += (object sender, EventArgs e) =>
             {

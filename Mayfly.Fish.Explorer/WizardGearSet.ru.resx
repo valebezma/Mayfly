@@ -134,7 +134,7 @@
     <value>173, 19</value>
   </data>
   <data name="checkBoxSpatial.Text" xml:space="preserve">
-    <value>Применять зональный вес</value>
+    <value>Применять веса</value>
   </data>
   <data name="labelNoticeGears.Text" xml:space="preserve">
     <value>Нет данных...</value>
@@ -161,28 +161,19 @@
     <value>Доля в суммарном усилии, %</value>
   </data>
   <data name="ColumnSpatialWeight.HeaderText" xml:space="preserve">
-    <value>Зональный вес, %</value>
-  </data>
-  <data name="pageSampler.Text" xml:space="preserve">
-    <value>Выбор и группировка данных</value>
-  </data>
-  <data name="labelGearInstruction.Text" xml:space="preserve">
-    <value>Для формирования отчета или продолжения анализа необходимо выбрать тип орудий лова, данные по которым необходимо обрабатывать.</value>
-  </data>
-  <data name="labelEUInstruction.Text" xml:space="preserve">
-    <value>Выберите показатель усилия - характеристику, через которую выражается рыболовное усилие. Для активных орудий лова таким показателем может быть физическая величина, отражающая обловленную площадь водоема или объем воды. Для пассивных орудий используются условные характеристики.</value>
+    <value>Вес, %</value>
   </data>
   <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 15</value>
   </data>
   <data name="labelGear.Text" xml:space="preserve">
-    <value>Тип орудий:</value>
+    <value>Тип орудий</value>
   </data>
   <data name="labelEU.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 15</value>
   </data>
   <data name="labelEU.Text" xml:space="preserve">
-    <value>Показатель усилия:</value>
+    <value>Единица усилия</value>
   </data>
   <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
     <value>Вернуться на предыдущий этап</value>

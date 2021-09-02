@@ -127,7 +127,7 @@
     <value>Высота, м</value>
   </data>
   <data name="IndNo" xml:space="preserve">
-    <value>№ пробы</value>
+    <value>Бирка</value>
   </data>
   <data name="Length" xml:space="preserve">
     <value>Длина, м</value>

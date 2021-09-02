@@ -368,6 +368,7 @@ namespace Mayfly.Fish.Explorer
             #region Age to Length
 
             plotAL.Visible = GrowthModel != null;
+            labelNoDataAL.Visible = GrowthModel.CombinedData.Data.Count == 0;
             buttonAL.Enabled = GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK;
 
             plotAL.Clear();
@@ -414,6 +415,7 @@ namespace Mayfly.Fish.Explorer
             #region Length to Mass
 
             plotLW.Visible = WeightModel != null;
+            labelNoDataLW.Visible = WeightModel.CombinedData.Data.Count == 0;
             buttonLW.Enabled = WeightModel != null && WeightModel.CombinedData.IsRegressionOK;
 
             plotLW.Clear();
@@ -460,40 +462,18 @@ namespace Mayfly.Fish.Explorer
 
             #region Age to Mass
 
-            plotAW.Visible = (GrowthModel != null && WeightModel != null);
-
-            plotAW.Clear();
-
             ContinuousBio cb = new ContinuousBio(Data.Parent, SpeciesRow,
                 Data.Parent.Individual.AgeColumn, Data.Parent.Individual.MassColumn, TrendType.Linear);
+
+            plotAW.Visible = cb.CombinedData.Data.Count > 0;
+            labelNoDataAW.Visible = cb.CombinedData.Data.Count == 0;
+            plotAW.Clear();
 
             if (cb != null)
             {
                 Scatterplot sc = new Scatterplot(cb.InternalData);
                 sc.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                 plotAW.AddSeries(sc);
-
-                //MassGrowthModels.DisplayNameY = Resources.Reports.Caption.Mass;
-                //MassGrowthModels.DisplayNameX = Resources.Reports.Caption.Age;
-
-                //if (weightGrowthExternal != null)
-                //{
-                //    weightGrowthExternal.Series.Name =
-                //        weightGrowthExternal.Properties.ScatterplotName =
-                //        Resources.Interface.BioReference;
-                //    weightGrowthExternal.Properties.DataPointColor = Constants.InfantColor;
-                //    plotAW.AddSeries(weightGrowthExternal);
-                //}
-
-                //if (weightGrowthInternal != null)
-                //{
-                //    weightGrowthInternal = weightGrowthInternal.Copy();
-                //    weightGrowthInternal.Series.Name =
-                //        weightGrowthInternal.Properties.ScatterplotName =
-                //        Resources.Interface.BioLoaded;
-                //    weightGrowthInternal.Properties.DataPointColor = Constants.MotiveColor;
-                //    plotAW.AddSeries(weightGrowthInternal);
-                //}
             }
 
             if (GrowthModel != null && GrowthModel.CombinedData.IsRegressionOK &&
@@ -879,9 +859,8 @@ namespace Mayfly.Fish.Explorer
 
                 Functor ogive = new Functor(Resources.Interface.SelectivityOgive, SelectivityModel.GetSelection);
                 plotSelection.AddSeries(ogive);
-                //ogive.Series.ChartType = SeriesChartType.Line;
-                ogive.Series.BorderWidth = 2 * ogive.Series.BorderWidth;
                 plotSelection.DoPlot();
+                ogive.Series.BorderWidth = 2 * ogive.Series.BorderWidth;
 
                 plotLengthAdjusted.Series.Clear();
                 plotLengthAdjusted.AxisXInterval = LengthStructure.Interval;
@@ -937,7 +916,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (Visible)
             {
-                if (checkBoxAge.Checked)
+                if (checkBoxAge.Checked && AgeStructure != null)
                 {
                     if (ageCompositionWizard == null)
                     {

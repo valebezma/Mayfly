@@ -3845,7 +3845,6 @@
         private System.Windows.Forms.Label label16;
         private Controls.SpreadSheet spreadSheetSpcStats;
         private Controls.SpreadSheet spreadSheetGearStats;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGearStats;
         private System.Windows.Forms.TabPage tabPageSpcQualify;
         private Mathematics.Charts.Plot plotQualify;
         private System.Windows.Forms.CheckBox checkBoxQualClass;
@@ -3981,8 +3980,6 @@
         private System.Windows.Forms.ToolStripMenuItem contextSpcStratified;
         private System.Windows.Forms.ToolStripMenuItem contextSpcQualify;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStatsID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardInvestigator;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardWater;
@@ -3992,6 +3989,25 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggestedAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator25;
+        private System.Windows.Forms.ToolStripMenuItem menuItemStock;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolation;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolationAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem menuCohort;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
+        private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+        private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
+        private System.Windows.Forms.Button buttonSpcM;
+        private System.Windows.Forms.Button buttonSpcS;
+        private System.Windows.Forms.Button buttonSpcA;
+        private System.Windows.Forms.Button buttonSpcTally;
+        private System.Windows.Forms.Button buttonSpcW;
+        private System.Windows.Forms.Button buttonSpcL;
+        private System.Windows.Forms.Button buttonSpcLog;
+        private System.Windows.Forms.Button buttonSpcStrat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStatsID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcStat;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndCardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndSpecies;
@@ -4019,22 +4035,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndConsumptionIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
-        private System.Windows.Forms.ToolStripMenuItem menuItemStock;
-        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolation;
-        private System.Windows.Forms.ToolStripMenuItem menuItemExtrapolationAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem menuCohort;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGrowthCohorts;
-        private System.Windows.Forms.ToolStripMenuItem menuItemMortalityCohorts;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
-        private System.Windows.Forms.ToolStripMenuItem menuItemVpa;
-        private System.Windows.Forms.Button buttonSpcM;
-        private System.Windows.Forms.Button buttonSpcS;
-        private System.Windows.Forms.Button buttonSpcA;
-        private System.Windows.Forms.Button buttonSpcTally;
-        private System.Windows.Forms.Button buttonSpcW;
-        private System.Windows.Forms.Button buttonSpcL;
-        private System.Windows.Forms.Button buttonSpcLog;
-        private System.Windows.Forms.Button buttonSpcStrat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGearStats;
     }
 }

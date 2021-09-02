@@ -139,23 +139,25 @@
     <value>{0}. Усилие составило {1:N3} {2}. Количество {3} составило {4} экз., масса составила {5:N3} кг.</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
-    <value>Завершенные определения возраста и уже имеющиеся сборы (без определений) представлены в стратифицированном виде. Необходимый размер выборки в каждом размерном классе установлена на {0}. 
-Условные обозначения: {1} - завершенные определения; ({2}) - имеющиеся сборы; [{3}] -  данные из био.</value>
+    <value>Завершенные определения возраста и уже имеющиеся сборы (без определений) представлены в стратифицированном виде. Необходимый размер выборки в каждом размерном классе установлен на {0}.</value>
   </data>
   <data name="Paragraph3_1" xml:space="preserve">
     <value>Нет данных по возрасту.</value>
   </data>
+  <data name="SurveySuggestionLegend1" xml:space="preserve">
+    <value>X - завершенные определения</value>
+  </data>
+  <data name="SurveySuggestionLegend2" xml:space="preserve">
+    <value>(X) - имеющиеся сборы</value>
+  </data>
+  <data name="SurveySuggestionLegend3" xml:space="preserve">
+    <value>[X] - данные из био</value>
+  </data>
   <data name="Tip1" xml:space="preserve">
     <value>Есть {0} проб</value>
   </data>
-  <data name="Tip2" xml:space="preserve">
-    <value>✔</value>
-  </data>
   <data name="Tip3" xml:space="preserve">
     <value>Ещё {0} проб</value>
-  </data>
-  <data name="Tip4" xml:space="preserve">
-    <value>?</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Сводка видовых выборок</value>

@@ -151,7 +151,7 @@
     <value>Данные по {0}</value>
   </data>
   <data name="SimulatedIndividual" xml:space="preserve">
-    <value>Добавлен из стратифицированной пробы</value>
+    <value>Добавлен из размерного ряда</value>
   </data>
   <data name="SpecFailed" xml:space="preserve">
     <value>Экспорт био не удался</value>
@@ -167,7 +167,7 @@
     <value>Минимальный размерный класс {0} см, максимальный - {1} см.</value>
   </data>
   <data name="StratifiedPrae" xml:space="preserve">
-    <value>Стратифицированные пробы:
+    <value>Размерные ряды:
 </value>
   </data>
   <data name="StratifiedShort" xml:space="preserve">

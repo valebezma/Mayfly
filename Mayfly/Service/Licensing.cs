@@ -160,7 +160,7 @@ namespace Mayfly
         {
             get
             {
-                return FeatureLevel.Basic;
+                return FeatureLevel.Advanced;
             }
         }
 

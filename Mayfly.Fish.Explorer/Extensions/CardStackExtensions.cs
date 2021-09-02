@@ -441,6 +441,18 @@ namespace Mayfly.Fish.Explorer
             }
             return result.ToArray();
         }
+
+        public static CardStack[] GetClassedStacks(this CardStack stack)
+        {
+            List<CardStack> result = new List<CardStack>();
+
+            if (stack.Count > 0)
+            {
+                result.AddRange(stack.GetClassedStacks(stack[0].GetGearType()));
+            }
+
+            return result.ToArray();
+        }
         
 
         public static EnvironmentMonitor GetMonitor(this CardStack stack)

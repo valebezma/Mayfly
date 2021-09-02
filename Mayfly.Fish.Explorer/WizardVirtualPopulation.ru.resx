@@ -151,7 +151,7 @@
     <value>График выбывания когорты</value>
   </data>
   <data name="pageStock.Text" xml:space="preserve">
-    <value>Общий размер стада, тыс. экз.</value>
+    <value>Общий размер запаса, тыс. экз.</value>
   </data>
   <data name="pageReport.Text" xml:space="preserve">
     <value>Составление отчета</value>

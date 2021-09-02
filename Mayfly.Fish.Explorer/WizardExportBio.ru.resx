@@ -202,4 +202,7 @@
   <data name="checkBoxReport.Text" xml:space="preserve">
     <value>Распечатать экспортированные модели</value>
   </data>
+  <data name="labelWait.Text" xml:space="preserve">
+    <value>Идет расчет...</value>
+  </data>
 </root>

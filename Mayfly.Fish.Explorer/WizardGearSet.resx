@@ -268,7 +268,7 @@
     <value>1</value>
   </data>
   <data name="checkBoxSpatial.Text" xml:space="preserve">
-    <value>Use spatial ratios</value>
+    <value>Add weights</value>
   </data>
   <data name="&gt;&gt;checkBoxSpatial.Name" xml:space="preserve">
     <value>checkBoxSpatial</value>
@@ -439,7 +439,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnSpatialWeight.HeaderText" xml:space="preserve">
-    <value>Spatial weight, %</value>
+    <value>Weight, %</value>
   </data>
   <data name="ColumnSpatialWeight.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -526,7 +526,7 @@
     <value>2</value>
   </data>
   <data name="wizardPage1.Text" xml:space="preserve">
-    <value>Initial page</value>
+    <value></value>
   </data>
   <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
     <value>wizardPage1</value>

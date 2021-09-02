@@ -1096,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAbABNgGwATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAeQBNgHkATYBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1456,7 +1456,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnGearStats.HeaderText" xml:space="preserve">
-    <value />
+    <value>Gear type</value>
   </data>
   <data name="spreadSheetGearStats.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 18</value>
@@ -2266,7 +2266,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 393</value>
+    <value>249, 392</value>
   </data>
   <data name="buttonSpcM.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2293,7 +2293,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 367</value>
+    <value>249, 366</value>
   </data>
   <data name="buttonSpcS.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2320,7 +2320,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 341</value>
+    <value>249, 340</value>
   </data>
   <data name="buttonSpcA.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2347,7 +2347,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcTally.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 315</value>
+    <value>249, 314</value>
   </data>
   <data name="buttonSpcTally.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2374,7 +2374,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 289</value>
+    <value>249, 288</value>
   </data>
   <data name="buttonSpcW.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2401,7 +2401,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 263</value>
+    <value>249, 262</value>
   </data>
   <data name="buttonSpcL.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2428,7 +2428,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSpcLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 237</value>
+    <value>249, 236</value>
   </data>
   <data name="buttonSpcLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2452,7 +2452,7 @@
     <value>6</value>
   </data>
   <data name="buttonSpcStrat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 211</value>
+    <value>249, 210</value>
   </data>
   <data name="buttonSpcStrat.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2491,7 +2491,7 @@
     <value>1</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>Below are the total samples from selected species. Double click on field names to see detailed in individuals log.</value>
+    <value>Below are the total samples from selected species. Click "See" to see details in individuals log.</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -2539,7 +2539,7 @@
     <value>9</value>
   </data>
   <data name="textBoxSpcWLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 505</value>
+    <value>168, 504</value>
   </data>
   <data name="textBoxSpcWLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2563,7 +2563,7 @@
     <value>10</value>
   </data>
   <data name="textBoxSpcWStrat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 479</value>
+    <value>168, 478</value>
   </data>
   <data name="textBoxSpcWStrat.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2587,7 +2587,7 @@
     <value>11</value>
   </data>
   <data name="textBoxSpcWTotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 453</value>
+    <value>168, 452</value>
   </data>
   <data name="textBoxSpcWTotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2617,16 +2617,16 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 482</value>
+    <value>58, 482</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>89, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>In stratified samples, kg*</value>
+    <value>Stratified samples</value>
   </data>
   <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1235, 56</value>
@@ -2653,16 +2653,16 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 508</value>
+    <value>58, 508</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+    <value>74, 13</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>In log, kg</value>
+    <value>Individuals log</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -2707,7 +2707,7 @@
     <value>15</value>
   </data>
   <data name="textBoxSpcM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 395</value>
+    <value>168, 394</value>
   </data>
   <data name="textBoxSpcM.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2731,7 +2731,7 @@
     <value>16</value>
   </data>
   <data name="textBoxSpcS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 369</value>
+    <value>168, 368</value>
   </data>
   <data name="textBoxSpcS.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2755,7 +2755,7 @@
     <value>17</value>
   </data>
   <data name="textBoxSpcTally.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 317</value>
+    <value>168, 316</value>
   </data>
   <data name="textBoxSpcTally.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2779,7 +2779,7 @@
     <value>18</value>
   </data>
   <data name="textBoxSpcA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 343</value>
+    <value>168, 342</value>
   </data>
   <data name="textBoxSpcA.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2803,7 +2803,7 @@
     <value>19</value>
   </data>
   <data name="textBoxSpcW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 291</value>
+    <value>168, 290</value>
   </data>
   <data name="textBoxSpcW.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2827,7 +2827,7 @@
     <value>20</value>
   </data>
   <data name="textBoxSpcStrat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 213</value>
+    <value>168, 212</value>
   </data>
   <data name="textBoxSpcStrat.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2851,7 +2851,7 @@
     <value>21</value>
   </data>
   <data name="textBoxSpcL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 265</value>
+    <value>168, 264</value>
   </data>
   <data name="textBoxSpcL.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2875,7 +2875,7 @@
     <value>22</value>
   </data>
   <data name="textBoxSpsTotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 187</value>
+    <value>168, 187</value>
   </data>
   <data name="textBoxSpsTotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2899,7 +2899,7 @@
     <value>23</value>
   </data>
   <data name="textBoxSpcLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>219, 239</value>
+    <value>168, 238</value>
   </data>
   <data name="textBoxSpcLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 20</value>
@@ -2929,16 +2929,16 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 398</value>
+    <value>68, 398</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 13</value>
+    <value>78, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Mature defined from</value>
+    <value>Mature defined</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -2959,16 +2959,16 @@
     <value>NoControl</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 320</value>
+    <value>68, 320</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
+    <value>58, 13</value>
   </data>
   <data name="label35.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label35.Text" xml:space="preserve">
-    <value>Samples taken from</value>
+    <value>Tally given</value>
   </data>
   <data name="&gt;&gt;label35.Name" xml:space="preserve">
     <value>label35</value>
@@ -2989,16 +2989,16 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 372</value>
+    <value>68, 372</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Sex defined from</value>
+    <value>Sex defined</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -3019,16 +3019,16 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 346</value>
+    <value>68, 346</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
+    <value>50, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Age defined from</value>
+    <value>Age read</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -3049,7 +3049,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 216</value>
+    <value>58, 216</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>
@@ -3079,16 +3079,16 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 294</value>
+    <value>68, 294</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 13</value>
+    <value>53, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Mass measured from</value>
+    <value>Weighted</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -3139,16 +3139,16 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 268</value>
+    <value>68, 268</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 13</value>
+    <value>54, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Length measured from</value>
+    <value>Measured</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -3169,16 +3169,16 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 242</value>
+    <value>58, 242</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
+    <value>90, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Log records</value>
+    <value>Individual records</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -3196,13 +3196,13 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="chartSpcStats.Location" type="System.Drawing.Point, System.Drawing">
-    <value>393, 48</value>
+    <value>342, 48</value>
   </data>
   <data name="chartSpcStats.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>15, 3, 3, 3</value>
   </data>
   <data name="chartSpcStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>449, 605</value>
+    <value>500, 605</value>
   </data>
   <data name="chartSpcStats.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -4305,7 +4305,7 @@
     <value>198, 22</value>
   </data>
   <data name="contextCardSaveSet.Text" xml:space="preserve">
-    <value>Save set</value>
+    <value>Save set...</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 6</value>

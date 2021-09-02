@@ -159,7 +159,7 @@
     <value>85, 15</value>
   </data>
   <data name="labelSelectivityGroupSelect.Text" xml:space="preserve">
-    <value>Класс орудий:</value>
+    <value>Класс орудий</value>
   </data>
   <data name="columnSelectivitySpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
@@ -193,9 +193,6 @@
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Разнообразие сообщества</value>
   </data>
   <data name="ColumnCompositionSpecies.HeaderText" xml:space="preserve">
     <value>Вид</value>
@@ -238,7 +235,7 @@
     <value>Приложения по каждому классу орудий</value>
   </data>
   <data name="labelReport.Text" xml:space="preserve">
-    <value>Укажите, какие части следует включить в отчет.</value>
+    <value>Укажите, какие части следует включить в отчет:</value>
   </data>
   <data name="checkBoxAppExample.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 19</value>
@@ -263,5 +260,14 @@
   </data>
   <data name="checkBoxGears.Text" xml:space="preserve">
     <value>Характеристика лова</value>
+  </data>
+  <data name="columnSelectivitySex.HeaderText" xml:space="preserve">
+    <value>Половой состав, juv. : M : F</value>
+  </data>
+  <data name="labelDiversity.Text" xml:space="preserve">
+    <value>Разнообразие сообщества</value>
+  </data>
+  <data name="labelDiversityMethod.Text" xml:space="preserve">
+    <value>Метод для вычисления разнообразия</value>
   </data>
 </root>

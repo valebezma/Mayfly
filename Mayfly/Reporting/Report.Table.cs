@@ -41,7 +41,7 @@ namespace Mayfly
 
             if (!string.IsNullOrWhiteSpace(combinedNotice))
             {
-                combinedNotice = combinedNotice.TrimEnd(";<br />".ToCharArray()) + ".";
+                combinedNotice = combinedNotice.TrimEnd("<br />".ToCharArray()).TrimEnd(';') + ".";
                 AddComment(combinedNotice, true);
             }
         }

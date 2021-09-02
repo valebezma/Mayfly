@@ -8,6 +8,48 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
+        public static SampleSizeDescriptor GetDescriptor(this CardStack cs)
+        {
+            return new SampleSizeDescriptor()
+            {
+                Name = cs.Name,
+                Quantity = cs.Quantity(),
+                QuantityStratified = cs.QuantityStratified(),
+                QuantityIndividual = cs.QuantityIndividual(),
+                Measured = cs.Measured(),
+                Weighted = cs.Weighted(),
+                Tallied = cs.Tallied(),
+                Aged = cs.Aged(),
+                Sexed = cs.Sexed(),
+                Matured = cs.Matured(),
+                Mass = cs.Mass(),
+                MassStratified = cs.MassStratified(),
+                MassIndividual = cs.MassIndividual()
+            };
+        }
+    
+        public static SampleSizeDescriptor GetDescriptor(this CardStack cs, Data.SpeciesRow speciesRow)
+        {
+            return new SampleSizeDescriptor()
+            {
+                Name = speciesRow.ToString("s"),
+                Quantity = cs.Quantity(speciesRow),
+                QuantityStratified = cs.QuantityStratified(speciesRow),
+                QuantityIndividual = cs.QuantityIndividual(speciesRow),
+                Measured = cs.Measured(speciesRow),
+                Weighted = cs.Weighted(speciesRow),
+                Tallied = cs.Tallied(speciesRow),
+                Aged = cs.Aged(speciesRow),
+                Sexed = cs.Sexed(speciesRow),
+                Matured = cs.Matured(speciesRow),
+                Mass = cs.Mass(speciesRow),
+                MassStratified = cs.MassStratified(speciesRow),
+                MassIndividual = cs.MassIndividual(speciesRow)
+            };
+        }
+
+
+
         public static int QuantitySampled(this CardStack stack)
         {
            int result = 0;
@@ -474,5 +516,24 @@ namespace Mayfly.Fish.Explorer
 
             return result;
         }
+    }
+
+    public class SampleSizeDescriptor
+    {
+        public string Name;
+
+        public int Quantity;
+        public int QuantityStratified;
+        public int QuantityIndividual;
+        public int Measured;
+        public int Weighted;
+        public int Tallied;
+        public int Aged;
+        public int Sexed;
+        public int Matured;
+
+        public double Mass;
+        public double MassStratified;
+        public double MassIndividual;
     }
 }

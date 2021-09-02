@@ -1292,42 +1292,35 @@ namespace Mayfly.Fish.Explorer
         {
             string valueMask = "{0} ({1:P0})";
 
+            SampleSizeDescriptor d = selectedStatSpc == null ? AllowedStack.GetDescriptor() : AllowedStack.GetDescriptor(selectedStatSpc);
+
+            textBoxSpsTotal.Text = d.Quantity > 0 ? d.Quantity.ToString() : textBoxSpsTotal.Text = Constants.Null;
+
+            textBoxSpcStrat.Text = d.QuantityStratified > 0 ? string.Format(valueMask, d.QuantityStratified, (double)d.QuantityStratified / (double)d.Quantity) : Constants.Null;
+            textBoxSpcLog.Text = d.QuantityIndividual > 0 ? string.Format(valueMask, d.QuantityIndividual, (double)d.QuantityIndividual / (double)d.Quantity) : Constants.Null;
+
+            textBoxSpcL.Text = d.Measured > 0 ? string.Format(valueMask, d.Measured, (double)d.Measured / (double)d.Quantity) : Constants.Null;
+            textBoxSpcW.Text = d.Weighted > 0 ? string.Format(valueMask, d.Weighted, (double)d.Weighted / (double)d.Quantity) : Constants.Null;
+            textBoxSpcTally.Text = d.Tallied > 0 ? string.Format(valueMask, d.Tallied, (double)d.Tallied / (double)d.Quantity) : Constants.Null;
+            textBoxSpcA.Text = d.Aged > 0 ? string.Format(valueMask, d.Aged, (double)d.Aged / (double)d.Quantity) : Constants.Null;
+            textBoxSpcS.Text = d.Sexed > 0 ? string.Format(valueMask, d.Sexed, (double)d.Sexed / (double)d.Quantity) : Constants.Null;
+            textBoxSpcM.Text = d.Matured > 0 ? string.Format(valueMask, d.Matured, (double)d.Matured / (double)d.Quantity) : Constants.Null;
+
+            textBoxSpcWTotal.Text = d.Mass > 0 ? d.Mass.ToString("N3") : Constants.Null;
+            textBoxSpcWLog.Text = selectedStatSpc == null ? Constants.Null : (d.MassIndividual.ToString("N3"));
+            textBoxSpcWStrat.Text = selectedStatSpc == null ? Constants.Null : (d.MassStratified > 0 ? d.MassStratified.ToString("N3") : Constants.Null);
+
+            buttonSpcStrat.Enabled = d.Quantity > 0;
+            buttonSpcLog.Enabled = d.QuantityIndividual > 0;
+            buttonSpcL.Enabled = d.Measured > 0;
+            buttonSpcW.Enabled = d.Weighted > 0;
+            buttonSpcTally.Enabled = d.Tallied > 0;
+            buttonSpcA.Enabled = d.Aged > 0;
+            buttonSpcS.Enabled = d.Sexed > 0;
+            buttonSpcM.Enabled = d.Matured > 0;
+
             if (selectedStatSpc == null)
             {
-                double total = AllowedStack.Quantity();
-
-                double n1 = data.Individual.Count;
-                double n2 = AllowedStack.Measured();
-                double n3 = AllowedStack.Weighted();
-                double n35 = AllowedStack.Tallied();
-                double n4 = AllowedStack.Aged();
-                double n5 = AllowedStack.Sexed();
-                double n6 = AllowedStack.Matured();
-                double n7 = data.Stratified.Quantity;
-                double n8 = AllowedStack.MassSampled();
-
-                textBoxSpsTotal.Text = total > 0 ? total.ToString() : textBoxSpsTotal.Text = Constants.Null;
-                textBoxSpcLog.Text = n1 > 0 ? string.Format(valueMask, n1, n1 / total) : Constants.Null;
-                textBoxSpcL.Text = n2 > 0 ? string.Format(valueMask, n2, n2 / total) : Constants.Null;
-                textBoxSpcW.Text = n3 > 0 ? string.Format(valueMask, n3, n3 / total) : Constants.Null;
-                textBoxSpcTally.Text = n35 > 0 ? string.Format(valueMask, n35, n35 / total) : Constants.Null;
-                textBoxSpcA.Text = n4 > 0 ? string.Format(valueMask, n4, n4 / total) : Constants.Null;
-                textBoxSpcS.Text = n5 > 0 ? string.Format(valueMask, n5, n5 / total) : Constants.Null;
-                textBoxSpcM.Text = n6 > 0 ? string.Format(valueMask, n6, n6 / total) : Constants.Null;
-                textBoxSpcStrat.Text = n7 > 0 ? string.Format(valueMask, n7, n7 / total) : Constants.Null;
-                textBoxSpcWTotal.Text = n8 > 0 ? n8.ToString("N3") : Constants.Null;
-                textBoxSpcWLog.Text = Constants.Null;
-                textBoxSpcWStrat.Text = Constants.Null;
-
-                buttonSpcStrat.Enabled = total > 0;
-                buttonSpcLog.Enabled = n1 > 0;
-                buttonSpcL.Enabled = n2 > 0;
-                buttonSpcW.Enabled = n3 > 0;
-                buttonSpcTally.Enabled = n35 > 0;
-                buttonSpcA.Enabled = n4 > 0;
-                buttonSpcS.Enabled = n5 > 0;
-                buttonSpcM.Enabled = n6 > 0;
-
                 chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = true;
                 foreach (Data.SpeciesRow speciesRow in FullStack.GetSpecies())
@@ -1350,78 +1343,8 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                double total = AllowedStack.Quantity(selectedStatSpc);
-
-                double n_str = AllowedStack.QuantityStratified(selectedStatSpc);
-                double n_ind = AllowedStack.QuantityIndividual(selectedStatSpc);
-                double n2 = AllowedStack.Measured(selectedStatSpc);
-                double n3 = AllowedStack.Weighted(selectedStatSpc);
-                double n35 = AllowedStack.Tallied(selectedStatSpc);
-                double n4 = AllowedStack.Aged(selectedStatSpc);
-                double n5 = AllowedStack.Sexed(selectedStatSpc);
-                double n6 = AllowedStack.Matured(selectedStatSpc);
-
-                textBoxSpcStrat.Text = n_str > 0 ? string.Format(valueMask, n_str, n_str / total) : Constants.Null;
-                textBoxSpcLog.Text = n_ind > 0 ? string.Format(valueMask, n_ind, n_ind / total) : textBoxSpcL.Text = Constants.Null;
-                textBoxSpcL.Text = n2 > 0 ? string.Format(valueMask, n2, n2 / total) : textBoxSpcL.Text = Constants.Null;
-                textBoxSpcW.Text = n3 > 0 ? string.Format(valueMask, n3, n3 / total) : textBoxSpcW.Text = Constants.Null;
-                textBoxSpcTally.Text = n35 > 0 ? string.Format(valueMask, n35, n35 / total) : textBoxSpcTally.Text = Constants.Null;
-                textBoxSpcA.Text = n4 > 0 ? string.Format(valueMask, n4, n4 / total) : textBoxSpcA.Text = Constants.Null;
-                textBoxSpcS.Text = n5 > 0 ? string.Format(valueMask, n5, n5 / total) : textBoxSpcS.Text = Constants.Null;
-                textBoxSpcM.Text = n6 > 0 ? string.Format(valueMask, n6, n6 / total) : textBoxSpcM.Text = Constants.Null;
-
-                buttonSpcStrat.Enabled = n_str > 0;
-                buttonSpcLog.Enabled = n_ind > 0;
-                buttonSpcL.Enabled = n2 > 0;
-                buttonSpcW.Enabled = n3 > 0;
-                buttonSpcTally.Enabled = n35 > 0;
-                buttonSpcA.Enabled = n4 > 0;
-                buttonSpcS.Enabled = n5 > 0;
-                buttonSpcM.Enabled = n6 > 0;
-
-                double totalMass = AllowedStack.Mass(selectedStatSpc);
-
-                if (totalMass > 0)
-                {
-                    textBoxSpcWTotal.Text = totalMass.ToString("N3");
-                    textBoxSpcWLog.Text = AllowedStack.MassIndividual(selectedStatSpc).ToString("N3");
-
-                    double stratifiedMass = AllowedStack.MassStratified(selectedStatSpc);
-
-                    if (stratifiedMass > 0)
-                    {
-                        textBoxSpcWStrat.Text = stratifiedMass.ToString("N3");
-                    }
-                    else
-                    {
-                        textBoxSpcWStrat.Text = Constants.Null;
-                    }
-                }
-                else
-                {
-                    textBoxSpcWTotal.Text = Constants.Null;
-                    textBoxSpcWLog.Text = Constants.Null;
-                    textBoxSpcWStrat.Text = Constants.Null;
-                }
-
-                if (total > 0) textBoxSpsTotal.Text = total.ToString();
-                else textBoxSpsTotal.Text = Constants.Null;
-
-                //chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = false;
-
-
-                //chartSpcStats.Series[0].AnimateChart(total / AllowedStack.Quantity(), label1);
-                chartSpcStats.Series[0].AnimateChart(total, AllowedStack.Quantity(), Mathematics.UserSettings.ColorAccent);
-
-                //DataPoint speciesPoint = GetSpeciesDataPoint(selectedStatSpc, false);
-                //speciesPoint.Color = Mathematics.UserSettings.ColorAccent;
-                //chartSpcStats.Series[0].Points.Add(speciesPoint);
-
-                //DataPoint spacePoint = new DataPoint();
-                //spacePoint.YValues[0] = AllowedStack.QuantitySampled() - AllowedStack.QuantitySampled(selectedStatSpc);
-                //spacePoint.Color = speciesPoint.Color.GetDesaturatedColor(.1);
-                //chartSpcStats.Series[0].Points.Add(spacePoint);
+                chartSpcStats.Series[0].AnimateChart(d.Quantity, AllowedStack.Quantity(), Mathematics.UserSettings.ColorAccent);
             }
         }
 

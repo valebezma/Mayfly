@@ -139,11 +139,19 @@
     <value>{0}. Effort estimated as {1:N3} {2}. Quantity of {3} equals {4} ind. and mass equals {5:N3} kg.</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
-    <value>Completed age readings and new (unread) collections presented in stratified view. Required sample size for each size class is set to {0}. 
-Legend: {1} - completed readings; ({2}) - unread samples; [{3}] -  bio data.</value>
+    <value>Completed age readings and new (unread) collections presented in stratified view. Required sample size for each size class is set to {0}.</value>
   </data>
   <data name="Paragraph3_1" xml:space="preserve">
     <value>No age data is collected.</value>
+  </data>
+  <data name="SurveySuggestionLegend1" xml:space="preserve">
+    <value>X - completed readings</value>
+  </data>
+  <data name="SurveySuggestionLegend2" xml:space="preserve">
+    <value>(X) - unread samples</value>
+  </data>
+  <data name="SurveySuggestionLegend3" xml:space="preserve">
+    <value>[X] - bio data</value>
   </data>
   <data name="Tip1" xml:space="preserve">
     <value>Treat {0} samples</value>

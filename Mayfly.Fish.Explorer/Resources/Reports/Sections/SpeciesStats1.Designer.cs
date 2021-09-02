@@ -124,8 +124,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Completed age readings and new (unread) collections presented in stratified view. Required sample size for each size class is set to {0}. 
-        ///Legend: {1} - completed readings; ({2}) - unread samples; [{3}] -  bio data..
+        ///   Looks up a localized string similar to Completed age readings and new (unread) collections presented in stratified view. Required sample size for each size class is set to {0}..
         /// </summary>
         internal static string Paragraph3 {
             get {
@@ -139,6 +138,33 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         internal static string Paragraph3_1 {
             get {
                 return ResourceManager.GetString("Paragraph3_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X - completed readings.
+        /// </summary>
+        internal static string SurveySuggestionLegend1 {
+            get {
+                return ResourceManager.GetString("SurveySuggestionLegend1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (X) - unread samples.
+        /// </summary>
+        internal static string SurveySuggestionLegend2 {
+            get {
+                return ResourceManager.GetString("SurveySuggestionLegend2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [X] - bio data.
+        /// </summary>
+        internal static string SurveySuggestionLegend3 {
+            get {
+                return ResourceManager.GetString("SurveySuggestionLegend3", resourceCulture);
             }
         }
         

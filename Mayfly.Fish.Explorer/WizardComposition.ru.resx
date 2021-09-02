@@ -134,16 +134,13 @@
     <value>Параметр:</value>
   </data>
   <data name="comboBoxParameter.Items" xml:space="preserve">
-    <value>Количество, экз.</value>
+    <value>Количество</value>
   </data>
   <data name="comboBoxParameter.Items1" xml:space="preserve">
-    <value>Масса, кг</value>
+    <value>Масса</value>
   </data>
   <data name="labelClassesInstruction.Text" xml:space="preserve">
     <value>Ниже представлена структура выборки по разным классам орудий. Отображаемый параметр можно выбрать с помощью выпадающего списка ниже.</value>
-  </data>
-  <data name="columnComposition.HeaderText" xml:space="preserve">
-    <value>Категория</value>
   </data>
   <data name="contextComposition.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 26</value>

@@ -263,7 +263,7 @@
     <value>255, 22</value>
   </data>
   <data name="contextNewVar.Text" xml:space="preserve">
-    <value>Новый параметр...</value>
+    <value>Новый параметр</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 6</value>
@@ -312,7 +312,7 @@
     <value>255, 22</value>
   </data>
   <data name="contextStratified.Text" xml:space="preserve">
-    <value>Стратифицированная проба...</value>
+    <value>Размерный ряд</value>
   </data>
   <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 170</value>
@@ -354,7 +354,7 @@
     <value>Масса порки, г</value>
   </data>
   <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>№ пробы</value>
+    <value>Бирка</value>
   </data>
   <data name="ColumnAge.HeaderText" xml:space="preserve">
     <value>Возраст</value>
@@ -363,7 +363,7 @@
     <value>Пол</value>
   </data>
   <data name="ColumnMaturity.HeaderText" xml:space="preserve">
-    <value>Стадия</value>
+    <value>Стадия зрелости</value>
   </data>
   <data name="ColumnGonadMass.HeaderText" xml:space="preserve">
     <value>Масса гонад, г</value>
@@ -393,6 +393,6 @@
     <value>Не сохранять</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Журнал особей</value>
+    <value>Журнал особей {0}</value>
   </data>
 </root>

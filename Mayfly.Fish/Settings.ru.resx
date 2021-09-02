@@ -221,8 +221,7 @@
     <value>147, 13</value>
   </data>
   <data name="labelLength.Text" xml:space="preserve">
-    <value>Длина стандартной сети, м
-</value>
+    <value>Длина стандартной сети, м</value>
   </data>
   <data name="tabPageStationary.Text" xml:space="preserve">
     <value>Пассивные орудия</value>
@@ -243,6 +242,6 @@
     <value>Начальные значения</value>
   </data>
   <data name="tabPageStratified.Text" xml:space="preserve">
-    <value>Стратифицированная проба</value>
+    <value>Размерный ряд</value>
   </data>
 </root>

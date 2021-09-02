@@ -131,22 +131,28 @@
     <value>Выборка</value>
   </data>
   <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 20</value>
+    <value>95, 20</value>
   </data>
   <data name="menuSurvey.Text" xml:space="preserve">
-    <value>Наблюдения</value>
-  </data>
-  <data name="menuFishery.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 20</value>
-  </data>
-  <data name="menuFishery.Text" xml:space="preserve">
-    <value>Промысел и ресурсы</value>
+    <value>Наблюдения*</value>
   </data>
   <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 20</value>
   </data>
   <data name="menuModels.Text" xml:space="preserve">
     <value>Модели*</value>
+  </data>
+  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="menuInstant.Text" xml:space="preserve">
+    <value>Оценка состояния</value>
+  </data>
+  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
+  </data>
+  <data name="menuCohort.Text" xml:space="preserve">
+    <value>Когортный анализ*</value>
   </data>
   <data name="menuCards.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -160,23 +166,14 @@
   <data name="menuSpc.Text" xml:space="preserve">
     <value>Виды</value>
   </data>
-  <data name="menuLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 20</value>
-  </data>
-  <data name="menuLog.Text" xml:space="preserve">
-    <value>Ведомость*</value>
-  </data>
   <data name="menuIndividuals.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 20</value>
   </data>
   <data name="menuIndividuals.Text" xml:space="preserve">
     <value>Особи</value>
   </data>
-  <data name="stratifiedSamplesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 20</value>
-  </data>
   <data name="stratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Стратифицированные пробы</value>
+    <value>Размерные ряды</value>
   </data>
   <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 20</value>
@@ -251,7 +248,7 @@
     <value>273, 22</value>
   </data>
   <data name="menuItemExportSpec.Text" xml:space="preserve">
-    <value>Экспорт био*</value>
+    <value>Экспорт био</value>
   </data>
   <data name="menuItemImportSpec.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 22</value>
@@ -268,63 +265,6 @@
   <data name="menuItemExit.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="menuItemArtifactsSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemArtifactsSearch.Text" xml:space="preserve">
-    <value>Поиск артефактов</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 6</value>
-  </data>
-  <data name="menuItemLoadCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemLoadCards.Text" xml:space="preserve">
-    <value>Карточки</value>
-  </data>
-  <data name="menuItemLoadSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemLoadSpc.Text" xml:space="preserve">
-    <value>Виды</value>
-  </data>
-  <data name="menuItemLoadLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemLoadLog.Text" xml:space="preserve">
-    <value>Ведомость</value>
-  </data>
-  <data name="menuItemLoadIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemLoadIndividuals.Text" xml:space="preserve">
-    <value>Особи</value>
-  </data>
-  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="menuItemIndAll.Text" xml:space="preserve">
-    <value>Все виды</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="menuItemLoadStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>237, 22</value>
-  </data>
-  <data name="menuItemLoadStratified.Text" xml:space="preserve">
-    <value>Стратифицированные пробы</value>
-  </data>
-  <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemSurveyInput.Text" xml:space="preserve">
-    <value>Внести данные наблюдений</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 6</value>
-  </data>
   <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
@@ -337,104 +277,116 @@
   <data name="menuItemSpcStats.Text" xml:space="preserve">
     <value>Сводка видовых выборок</value>
   </data>
-  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 6</value>
   </data>
-  <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
-  <data name="menuItemSpawning.Text" xml:space="preserve">
-    <value>Условия нереста*</value>
+  <data name="menuItemCards.Text" xml:space="preserve">
+    <value>Карточки</value>
   </data>
-  <data name="menuItemGearClass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+  <data name="menuItemCardAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
   </data>
-  <data name="menuItemGearClass.Text" xml:space="preserve">
-    <value>Структура уловов</value>
+  <data name="menuItemCardAll.Text" xml:space="preserve">
+    <value>Все карточки</value>
   </data>
-  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+  <data name="toolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
   </data>
-  <data name="menuItemCenosis.Text" xml:space="preserve">
-    <value>Структура сообщества</value>
+  <data name="menuItemCardInvestigator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
   </data>
-  <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+  <data name="menuItemCardInvestigator.Text" xml:space="preserve">
+    <value>По исследователю</value>
   </data>
-  <data name="menuItemComposition.Text" xml:space="preserve">
-    <value>Структура стада</value>
+  <data name="menuItemCardWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
   </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+  <data name="menuItemCardWater.Text" xml:space="preserve">
+    <value>По водоему</value>
   </data>
-  <data name="menuItemGrowth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+  <data name="menuItemCardGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
   </data>
-  <data name="menuItemGrowth.Text" xml:space="preserve">
-    <value>Параметры роста*</value>
+  <data name="menuItemCardGear.Text" xml:space="preserve">
+    <value>По орудию лова</value>
   </data>
-  <data name="menuItemGrowthCrossSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
-  </data>
-  <data name="menuItemGrowthCrossSection.Text" xml:space="preserve">
-    <value>По срезу</value>
-  </data>
-  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
-  </data>
-  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
-    <value>По когортам</value>
-  </data>
-  <data name="menuItemMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="menuItemMortality.Text" xml:space="preserve">
-    <value>Параметры смертности*</value>
-  </data>
-  <data name="menuItemMortalitySustainable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
-  </data>
-  <data name="menuItemMortalitySustainable.Text" xml:space="preserve">
-    <value>По срезу</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 22</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
-    <value>По когортам</value>
-  </data>
-  <data name="menuItemSelectivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="menuItemSelectivity.Text" xml:space="preserve">
-    <value>Селективность орудий лова*</value>
-  </data>
-  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="menuItemStock.Text" xml:space="preserve">
-    <value>Запас и его структура</value>
-  </data>
-  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemSpc.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
-  <data name="menuItemExtrapolation.Text" xml:space="preserve">
-    <value>Метод экстраполяции</value>
+  <data name="menuItemSpc.Text" xml:space="preserve">
+    <value>Виды</value>
   </data>
-  <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemLog.Text" xml:space="preserve">
+    <value>Ведомость</value>
+  </data>
+  <data name="menuItemLogAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
   </data>
-  <data name="menuItemExtrapolationAll.Text" xml:space="preserve">
+  <data name="menuItemLogAll.Text" xml:space="preserve">
     <value>Все виды</value>
   </data>
-  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 6</value>
   </data>
-  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
-  <data name="menuItemVpa.Text" xml:space="preserve">
-    <value>Анализ виртуальной популяции*</value>
+  <data name="menuItemIndividuals.Text" xml:space="preserve">
+    <value>Особи</value>
+  </data>
+  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="menuItemIndAll.Text" xml:space="preserve">
+    <value>Все особи</value>
+  </data>
+  <data name="meniItemIndAllAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="meniItemIndAllAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="menuItemIndSuggested.Text" xml:space="preserve">
+    <value>Для определения возраста</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="menuItemStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemStratified.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="menuItemSurveyInput.Text" xml:space="preserve">
+    <value>Внести данные наблюдений</value>
+  </data>
+  <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="menuItemSpawning.Text" xml:space="preserve">
+    <value>Условия нереста</value>
   </data>
   <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 22</value>
@@ -466,29 +418,71 @@
   <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
     <value>Свободная</value>
   </data>
+  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemCenosis.Text" xml:space="preserve">
+    <value>Структура сообщества</value>
+  </data>
+  <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemComposition.Text" xml:space="preserve">
+    <value>Характеристика популяции</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemStock.Text" xml:space="preserve">
+    <value>Запас и его структура</value>
+  </data>
+  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="menuItemExtrapolation.Text" xml:space="preserve">
+    <value>Метод экстраполяции</value>
+  </data>
+  <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="menuItemExtrapolationAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
+    <value>Рост</value>
+  </data>
+  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
+    <value>Смертность</value>
+  </data>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemVpa.Text" xml:space="preserve">
+    <value>Виртуальная популяция</value>
+  </data>
   <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="menuItemCardMeteo.Text" xml:space="preserve">
     <value>Отображать погодные условия</value>
   </data>
-  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 6</value>
-  </data>
-  <data name="menuItemCardFindEmpty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
-  </data>
-  <data name="menuItemCardFindEmpty.Text" xml:space="preserve">
-    <value>Найти пустые карточки</value>
-  </data>
-  <data name="menuItemCardFindSpaced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
-  </data>
-  <data name="menuItemCardFindSpaced.Text" xml:space="preserve">
-    <value>Найти карточки с неполным журналом особей</value>
-  </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 6</value>
+    <value>243, 6</value>
   </data>
   <data name="menuItemCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -508,37 +502,31 @@
 </value>
   </data>
   <data name="menuItemCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="menuItemCardPrintFull.Text" xml:space="preserve">
     <value>Печать карточек</value>
   </data>
   <data name="menuItemCardPrintNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="menuItemCardPrintNotes.Text" xml:space="preserve">
     <value>Печать этикеток карточек</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 6</value>
+    <value>243, 6</value>
   </data>
   <data name="menuItemCardCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="menuItemCardCatches.Text" xml:space="preserve">
     <value>Сводка вылова</value>
   </data>
   <data name="menuItemCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>337, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="menuItemCardEfforts.Text" xml:space="preserve">
     <value>Сводка усилий</value>
-  </data>
-  <data name="menuItemSpcValidate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcValidate.Text" xml:space="preserve">
-    <value>Показать полные названия</value>
   </data>
   <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
@@ -555,56 +543,32 @@
   <data name="menuItemSpcTotals.Text" xml:space="preserve">
     <value>Общая выборка</value>
   </data>
-  <data name="menuItemSpcCpues.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcCpues.Text" xml:space="preserve">
-    <value>Уловы по классам орудий</value>
-  </data>
   <data name="menuItemSpcStrates.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
   </data>
   <data name="menuItemSpcStrates.Text" xml:space="preserve">
     <value>Стратифицированный контроль</value>
   </data>
-  <data name="menuItemSpcModels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcModels.Text" xml:space="preserve">
-    <value>Полнота моделей роста</value>
-  </data>
-  <data name="hideEmptyRecordsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
-  </data>
-  <data name="hideEmptyRecordsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Скрыть пустые записи*</value>
-  </data>
-  <data name="menuItemComCom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
-  </data>
-  <data name="menuItemComCom.Text" xml:space="preserve">
-    <value>Сравнить структуру</value>
-  </data>
   <data name="menuItemIndExtra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndExtra.Text" xml:space="preserve">
     <value>Отображать дополнительные сведения</value>
   </data>
   <data name="menuItemIndFecundity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndFecundity.Text" xml:space="preserve">
     <value>Отображать данные о плодовитости</value>
   </data>
   <data name="menuItemIndDiet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndDiet.Text" xml:space="preserve">
     <value>Отображать данные о питании</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 6</value>
+    <value>330, 6</value>
   </data>
   <data name="menuItemIndPrintLog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -624,37 +588,37 @@
 </value>
   </data>
   <data name="menuItemIndPrintLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndPrintLog.Text" xml:space="preserve">
     <value>Печать журнала особей</value>
   </data>
   <data name="menuItemIndPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndPrint.Text" xml:space="preserve">
     <value>Печать профилей особей</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 6</value>
+    <value>330, 6</value>
   </data>
   <data name="menuItemDietExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemDietExplorer.Text" xml:space="preserve">
     <value>Исследовать питание</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 6</value>
+    <value>330, 6</value>
   </data>
   <data name="menuItemIndSimulate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndSimulate.Text" xml:space="preserve">
-    <value>Виртуализировать особей из стратифицированных проб</value>
+    <value>Виртуализировать особей из размерных рядов</value>
   </data>
   <data name="menuItemIndClearSimulated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 22</value>
+    <value>333, 22</value>
   </data>
   <data name="menuItemIndClearSimulated.Text" xml:space="preserve">
     <value>Очистить виртуализированные особи</value>
@@ -677,10 +641,10 @@
 </value>
   </data>
   <data name="printStratifiedSamplesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 22</value>
+    <value>213, 22</value>
   </data>
   <data name="printStratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать стратифицированных проб</value>
+    <value>Печать размерных рядов</value>
   </data>
   <data name="menuItemSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -761,7 +725,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAegBKQHoASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAfgBKQH4ASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -841,184 +805,14 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Периоды сбора</value>
   </data>
-  <data name="tabPageArtifacts.Text" xml:space="preserve">
-    <value>Артефакты</value>
-  </data>
-  <data name="tabPageArtifactCards.Text" xml:space="preserve">
-    <value>Карточки</value>
-  </data>
-  <data name="labelArtifactGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
-  <data name="labelArtifactGear.Text" xml:space="preserve">
-    <value>Артефактов нет</value>
-  </data>
-  <data name="pictureBoxArtifactGear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
-        QVQ4T2MgBXScSJGp/1/PBOUSB9qOp/q1n0j53X48ZV/vsWQhqDB+0HQsQbflWMLXluOJ/0G4+VjiVKgU
-        btB+OEqw8WjsXSD+D8Wf6w9Fa0GlcYD/DIy1h6O21h2J+g/Gh6P+1R+NDoHKMjBUHg3TqT4c5gLlwkHV
-        obB6oPh/GK46HNYLlWJgKNsfKFN2IOBV+YHAf0A8Oe1MGitY/ECAJxD/LT8Y+B+KD9Xvt2cBawKBkv0+
-        rUD8H473eR8v3edjX7zP5x1CzOdZyX4vCagWCMjd5sFXsNd9T+E+j/9Y8V6PX0X7PWygylEByAm5e1ym
-        5u1x+Y+OgeIFUGW4QdYux8zsXY6/snc7/gfhrN0Oq6BShEHaTlu7jF22FzJ22mwIXaXFBhUecMDAAABF
-        8q2mGceWOQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="columnArtCardName.HeaderText" xml:space="preserve">
-    <value>Карточка</value>
-  </data>
-  <data name="columnArtCardOddMass.HeaderText" xml:space="preserve">
-    <value>Лишняя масса, кг</value>
-  </data>
-  <data name="columnArtCardEffort.HeaderText" xml:space="preserve">
-    <value>Усилие недоступно</value>
-  </data>
-  <data name="contextArtCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
-  </data>
-  <data name="spreadSheetArtifactCard.StatusFormat" xml:space="preserve">
-    <value>1;2;5|артефакт;артефакта;артефактов</value>
-  </data>
-  <data name="contextArtCardOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextArtCardOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 22</value>
-  </data>
-  <data name="contextArtCardOpen.Text" xml:space="preserve">
-    <value>Открыть карточку</value>
-  </data>
-  <data name="tabPageArtifactSpecies.Text" xml:space="preserve">
-    <value>Выборки видов</value>
-  </data>
-  <data name="labelArtifactSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
-  <data name="labelArtifactSpecies.Text" xml:space="preserve">
-    <value>Артефактов нет</value>
-  </data>
-  <data name="pictureBoxArtifactSpecies.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
-        QVQ4T2MgBXScSJGp/1/PBOUSB9qOp/q1n0j53X48ZV/vsWQhqDB+0HQsQbflWMLXluOJ/0G4+VjiVKgU
-        btB+OEqw8WjsXSD+D8Wf6w9Fa0GlcYD/DIy1h6O21h2J+g/Gh6P+1R+NDoHKMjBUHg3TqT4c5gLlwkHV
-        obB6oPh/GK46HNYLlWJgKNsfKFN2IOBV+YHAf0A8Oe1MGitY/ECAJxD/LT8Y+B+KD9Xvt2cBawKBkv0+
-        rUD8H473eR8v3edjX7zP5x1CzOdZyX4vCagWCMjd5sFXsNd9T+E+j/9Y8V6PX0X7PWygylEByAm5e1ym
-        5u1x+Y+OgeIFUGW4QdYux8zsXY6/snc7/gfhrN0Oq6BShEHaTlu7jF22FzJ22mwIXaXFBhUecMDAAABF
-        8q2mGceWOQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="columnArtifactSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnArtifactN.HeaderText" xml:space="preserve">
-    <value>Выборка, экз.</value>
-  </data>
-  <data name="columnArtifactDetailed.HeaderText" xml:space="preserve">
-    <value>Отсутствие экземпляров</value>
-  </data>
-  <data name="columnArtifactLength.HeaderText" xml:space="preserve">
-    <value>Отсутствие длины</value>
-  </data>
-  <data name="columnArtifactMass.HeaderText" xml:space="preserve">
-    <value>Отклонения массы</value>
-  </data>
-  <data name="columnArtifactAge.HeaderText" xml:space="preserve">
-    <value>Отклонения возраста</value>
-  </data>
-  <data name="contextArtSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 70</value>
-  </data>
-  <data name="spreadSheetArtifactSpecies.StatusFormat" xml:space="preserve">
-    <value>1;2;5|артефакт;артефакта;артефактов</value>
-  </data>
-  <data name="contextArtSpeciesFindInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 22</value>
-  </data>
-  <data name="contextArtSpeciesFindInd.Text" xml:space="preserve">
-    <value>Открыть в журнале особей</value>
-  </data>
-  <data name="contextArtSpeciesFindStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 22</value>
-  </data>
-  <data name="contextArtSpeciesFindStratified.Text" xml:space="preserve">
-    <value>Открыть в стратифицированных пробах</value>
-  </data>
-  <data name="contextArtSpeciesEurythmy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 22</value>
-  </data>
-  <data name="contextArtSpeciesEurythmy.Text" xml:space="preserve">
-    <value>Смотреть стройность данных</value>
-  </data>
-  <data name="tabPageArtifactInds.Text" xml:space="preserve">
-    <value>Особи</value>
-  </data>
-  <data name="columnArtifactIndSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnArtifactIndRegID.HeaderText" xml:space="preserve">
-    <value>№ пробы</value>
-  </data>
-  <data name="columnArtifactIndDietUnw.HeaderText" xml:space="preserve">
-    <value>Пищевых элементов не взвешено</value>
-  </data>
-  <data name="contextArtIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 48</value>
-  </data>
-  <data name="spreadSheetArtifactInd.StatusFormat" xml:space="preserve">
-    <value>1;2;5|артефакт;артефакта;артефактов</value>
-  </data>
-  <data name="contextArtifactIndFind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 22</value>
-  </data>
-  <data name="contextArtifactIndFind.Text" xml:space="preserve">
-    <value>Найти в журнале особей</value>
-  </data>
-  <data name="contextArtifactIndRecover.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 22</value>
-  </data>
-  <data name="contextArtifactIndRecover.Text" xml:space="preserve">
-    <value>Восстановление содержимого ЖКТ</value>
-  </data>
-  <data name="labelArtifactInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
-  <data name="labelArtifactInd.Text" xml:space="preserve">
-    <value>Артефактов нет</value>
-  </data>
-  <data name="pictureBoxArtifactInd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlE
-        QVQ4T2MgBXScSJGp/1/PBOUSB9qOp/q1n0j53X48ZV/vsWQhqDB+0HQsQbflWMLXluOJ/0G4+VjiVKgU
-        btB+OEqw8WjsXSD+D8Wf6w9Fa0GlcYD/DIy1h6O21h2J+g/Gh6P+1R+NDoHKMjBUHg3TqT4c5gLlwkHV
-        obB6oPh/GK46HNYLlWJgKNsfKFN2IOBV+YHAf0A8Oe1MGitY/ECAJxD/LT8Y+B+KD9Xvt2cBawKBkv0+
-        rUD8H473eR8v3edjX7zP5x1CzOdZyX4vCagWCMjd5sFXsNd9T+E+j/9Y8V6PX0X7PWygylEByAm5e1ym
-        5u1x+Y+OgeIFUGW4QdYux8zsXY6/snc7/gfhrN0Oq6BShEHaTlu7jF22FzJ22mwIXaXFBhUecMDAAABF
-        8q2mGceWOQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="tabPageGearStats.Text" xml:space="preserve">
     <value>Сводка применения орудий лова</value>
   </data>
   <data name="buttonGearStatsReport.Text" xml:space="preserve">
     <value>Печать сводки</value>
+  </data>
+  <data name="ColumnGearStats.HeaderText" xml:space="preserve">
+    <value>Тип орудий</value>
   </data>
   <data name="tabPageCardEfforts.Text" xml:space="preserve">
     <value>Усилия</value>
@@ -1101,11 +895,38 @@
   <data name="tabPageSpcStats.Text" xml:space="preserve">
     <value>Сводка видовых выборок</value>
   </data>
+  <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
   <data name="tabPageSpcTotals.Text" xml:space="preserve">
-    <value>Итог</value>
+    <value>Общая выборка</value>
+  </data>
+  <data name="buttonSpcM.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcS.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcA.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcTally.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcW.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcL.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcLog.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcStrat.Text" xml:space="preserve">
+    <value>Смотреть</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>Ниже приведены общие выборки выбранного вида. Кликните дважды по назваию поля, чтобы смотреть подробнее в журнале особей.</value>
+    <value>Ниже приведены различные выборки вида. Кликните "Смотреть", чтобы смотреть подробнее в журнале особей.</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 15</value>
@@ -1114,13 +935,13 @@
     <value>Общая выборка</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 13</value>
+    <value>95, 13</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>В стратифицированных пробах, кг*</value>
+    <value>Размерные ряды</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value>Масса стратифицированных проб получена с использованием модели весового роста</value>
+    <value>Масса размерных рядов получена с использованием модели весового роста</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
@@ -1135,40 +956,40 @@
     <value>Общая масса, кг</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 13</value>
+    <value>55, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Степень зрелости определена</value>
+    <value>Зрелость</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 13</value>
+    <value>80, 13</value>
   </data>
   <data name="label35.Text" xml:space="preserve">
-    <value>Проб взято</value>
+    <value>Пробы (бирки)</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
+    <value>27, 13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Пол определен</value>
+    <value>Пол</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 13</value>
+    <value>49, 13</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Возраст определен</value>
+    <value>Возраст</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 13</value>
+    <value>95, 13</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Стратифицированные пробы</value>
+    <value>Размерные ряды</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 13</value>
+    <value>40, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Масса измерена</value>
+    <value>Масса</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 13</value>
@@ -1177,22 +998,22 @@
     <value>Общая выборка</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 13</value>
+    <value>40, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Длина измерена</value>
+    <value>Длина</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 13</value>
+    <value>45, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Записей в журнале особей</value>
+    <value>Особей</value>
   </data>
   <data name="tabPageSpcTech.Text" xml:space="preserve">
     <value>Техники</value>
   </data>
   <data name="labelTechInstruction.Text" xml:space="preserve">
-    <value>Выберите тип орудий, чтобы просмотреть какие техники применялись в разных классах. Техники включают в себя регистрацию улова, стратифицированные пробы, заполнение журнала особей (или смешанная техника, включающая две последних).</value>
+    <value>В таблице приведены техники, которые применялись в разных классах. Техники включают в себя регистрацию улова, размерные ряды, заполнение журнала особей (или две последних вместе).</value>
   </data>
   <data name="labeTech.Size" type="System.Drawing.Size, System.Drawing">
     <value>294, 15</value>
@@ -1222,157 +1043,61 @@
     <value>Регистрация улова</value>
   </data>
   <data name="ColumnSpcTechStratified.HeaderText" xml:space="preserve">
-    <value>Стратиф. пробы</value>
+    <value>Размерные ряды</value>
   </data>
   <data name="ColumnSpcTechLog.HeaderText" xml:space="preserve">
     <value>ПБА</value>
   </data>
-  <data name="tabPageSpcCpue.Text" xml:space="preserve">
-    <value>Уловы на усилие</value>
+  <data name="tabPageSpcQualify.Text" xml:space="preserve">
+    <value>Проверка</value>
   </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>Выберите тип орудий и единицы усилия, чтобы получить абсолютные и относительные уловы на усилие по каждому классу орудий.</value>
+  <data name="checkBoxQualOutliers.Text" xml:space="preserve">
+    <value>Выделить выбросы</value>
   </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 15</value>
+  <data name="labelQualSubset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
   </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>Уловы на усилие</value>
+  <data name="labelQualSubset.Text" xml:space="preserve">
+    <value>Ограничить счетчики</value>
   </data>
-  <data name="labelCpue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 13</value>
+  <data name="labelQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
   </data>
-  <data name="labelCpue.Text" xml:space="preserve">
-    <value>Средний улов на усилие:</value>
+  <data name="labelQualify.Text" xml:space="preserve">
+    <value>Метод проверки</value>
   </data>
-  <data name="labelBpue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
+  <data name="buttonQualOutliers.Text" xml:space="preserve">
+    <value>Редактировать выбросы</value>
   </data>
-  <data name="labelBpue.Text" xml:space="preserve">
-    <value>кг/{0}</value>
-  </data>
-  <data name="labelNpue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
-  </data>
-  <data name="labelNpue.Text" xml:space="preserve">
-    <value>экз./{0}</value>
-  </data>
-  <data name="labelCpueNoData.Text" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="labelCpueEU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="labelCpueEU.Text" xml:space="preserve">
-    <value>Ед. усилия</value>
-  </data>
-  <data name="labelCpueGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="labelCpueGear.Text" xml:space="preserve">
-    <value>Тип орудий</value>
-  </data>
-  <data name="columnCpueMesh.HeaderText" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="columnCpueEffort.HeaderText" xml:space="preserve">
-    <value>Усилие, {0}</value>
-  </data>
-  <data name="columnCpueN.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="columnCpueW.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="columnCpueNpue.HeaderText" xml:space="preserve">
-    <value>N, экз./{0}</value>
-  </data>
-  <data name="columnCpueBpue.HeaderText" xml:space="preserve">
-    <value>B, кг/{0}</value>
-  </data>
-  <data name="tabPageSpcStrates.Text" xml:space="preserve">
-    <value>Стратифицированный контроль</value>
-  </data>
-  <data name="labelStratesSelectSpecies.Text" xml:space="preserve">
+  <data name="labelQualNotSelected.Text" xml:space="preserve">
     <value>Выберите вид...</value>
   </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>Ниже приведены выборки выбранного вида в каждом размерном классе. Используйте эту информацию для планирования будущих обловов.</value>
+  <data name="labelQualDescription.Text" xml:space="preserve">
+    <value>На графике представлены выборки вида в каждом размерном классе. Также доступна проверка корректности данных с использованием моделей длина-масса и возраст-длина.</value>
   </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 15</value>
+  <data name="labelQualTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 15</value>
   </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>Статистика по размерным классам</value>
+  <data name="labelQualTitle.Text" xml:space="preserve">
+    <value>Проверка данных</value>
   </data>
-  <data name="checkBoxStrateUseGearType.Text" xml:space="preserve">
-    <value>Тип орудий</value>
+  <data name="comboBoxQualValue.Items" xml:space="preserve">
+    <value>Масса</value>
   </data>
-  <data name="checkBoxStrateUseClass.Text" xml:space="preserve">
-    <value>Класс орудий</value>
+  <data name="comboBoxQualValue.Items1" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="checkBoxQualType.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="checkBoxQualClass.Text" xml:space="preserve">
+    <value>Класс</value>
   </data>
   <data name="plotQualify.AxisXTitle" xml:space="preserve">
     <value>Длина, мм</value>
   </data>
   <data name="plotQualify.AxisYTitle" xml:space="preserve">
     <value>Выборка, экз.</value>
-  </data>
-  <data name="tabPageSpcLW.Text" xml:space="preserve">
-    <value>Модель весового роста</value>
-  </data>
-  <data name="labelNoDataLW.Text" xml:space="preserve">
-    <value>Недостаточно данных
-о массе...</value>
-  </data>
-  <data name="buttonOutliersLW.Text" xml:space="preserve">
-    <value>Найти выбросы</value>
-  </data>
-  <data name="labelLWInstruction.Text" xml:space="preserve">
-    <value>На графике изображена модель весового роста. Используйте его для корректировки значений длины или массы. Нажмите кнопку "Найти выбросы", чтобы проверить сильно отклонившихся особей.</value>
-  </data>
-  <data name="labelLW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 15</value>
-  </data>
-  <data name="labelLW.Text" xml:space="preserve">
-    <value>Модель весового роста</value>
-  </data>
-  <data name="plotLW.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotLW.AxisY2Title" xml:space="preserve">
-    <value>Выборка, экз.</value>
-  </data>
-  <data name="plotLW.AxisYTitle" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <data name="tabPageSpcAL.Text" xml:space="preserve">
-    <value>Модель роста</value>
-  </data>
-  <data name="labelNoDataAL.Text" xml:space="preserve">
-    <value>Недостаточно данных
-о возрасте...</value>
-  </data>
-  <data name="plotAL.AxisXTitle" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="plotAL.AxisY2Title" xml:space="preserve">
-    <value>Выборка, экз.</value>
-  </data>
-  <data name="plotAL.AxisYTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="buttonOutliersAL.Text" xml:space="preserve">
-    <value>Найти выбросы</value>
-  </data>
-  <data name="labelALInstruction.Text" xml:space="preserve">
-    <value>На графике изображена модель линейного роста. Используйте его для корректировки значений длины или возраста. Нажмите кнопку "Найти выбросы", чтобы проверить сильно отклонившихся особей.
-</value>
-  </data>
-  <data name="labelAL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 15</value>
-  </data>
-  <data name="labelAL.Text" xml:space="preserve">
-    <value>Модель роста</value>
   </data>
   <data name="buttonSpeciesStatsReport.Text" xml:space="preserve">
     <value>Печать сводки</value>
@@ -1465,7 +1190,7 @@
     <value>Примечание</value>
   </data>
   <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 120</value>
+    <value>219, 192</value>
   </data>
   <data name="spreadSheetCard.StatusFormat" xml:space="preserve">
     <value>1;2;5|карточка;карточки;карточек</value>
@@ -1493,17 +1218,38 @@
   <data name="contextCardOpen.Text" xml:space="preserve">
     <value>Открыть карточку</value>
   </data>
-  <data name="contextCardExplore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardExplore.Text" xml:space="preserve">
-    <value>Открыть в новом окне</value>
-  </data>
   <data name="contextCardOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
   <data name="contextCardOpenFolder.Text" xml:space="preserve">
     <value>Показать в папке</value>
+  </data>
+  <data name="contextCardSaveSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardSaveSet.Text" xml:space="preserve">
+    <value>Сохранить как набор...</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="contextCardLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardLog.Text" xml:space="preserve">
+    <value>К ведомости</value>
+  </data>
+  <data name="contextCardIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextCardStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 6</value>
@@ -1571,9 +1317,6 @@
   <data name="columnSpcSpc.HeaderText" xml:space="preserve">
     <value>Вид</value>
   </data>
-  <data name="columnSpcValid.HeaderText" xml:space="preserve">
-    <value>Валидное научное название</value>
-  </data>
   <data name="columnSpcQuantity.HeaderText" xml:space="preserve">
     <value>Количество, экз.</value>
   </data>
@@ -1583,17 +1326,41 @@
   <data name="columnSpcOccurrence.HeaderText" xml:space="preserve">
     <value>Встречаемость, %</value>
   </data>
+  <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 98</value>
+  </data>
   <data name="spreadSheetSpc.StatusFormat" xml:space="preserve">
     <value>1;2;5|вид / таксон;вида / таксона;видов / таксонов</value>
   </data>
+  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcQualify.Text" xml:space="preserve">
+    <value>Проверить</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 6</value>
+  </data>
+  <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcLog.Text" xml:space="preserve">
+    <value>К ведомостиям</value>
+  </data>
+  <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
+  </data>
   <data name="tabPageLog.Text" xml:space="preserve">
     <value>Ведомость</value>
-  </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Группировать по:</value>
   </data>
   <data name="buttonSelectLog.Text" xml:space="preserve">
     <value>Больше значений...</value>
@@ -1620,7 +1387,7 @@
     <value>Разнообразие (по массе)</value>
   </data>
   <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 26</value>
+    <value>191, 76</value>
   </data>
   <data name="spreadSheetLog.StatusFormat" xml:space="preserve">
     <value>1;2;5|запись;записи;записей</value>
@@ -1648,8 +1415,23 @@
   <data name="contextLogOpen.Text" xml:space="preserve">
     <value>Открыть в карточке</value>
   </data>
+  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 6</value>
+  </data>
+  <data name="contextLogIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="contextLogIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextLogStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="contextLogStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
+  </data>
   <data name="tabPageStratified.Text" xml:space="preserve">
-    <value>Стратифицированные пробы</value>
+    <value>Размерные ряды</value>
   </data>
   <data name="buttonSelectStratified.Text" xml:space="preserve">
     <value>Больше значений...</value>
@@ -1673,7 +1455,7 @@
     <value>До, мм</value>
   </data>
   <data name="contextStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 54</value>
+    <value>211, 54</value>
   </data>
   <data name="spreadSheetStratified.StatusFormat" xml:space="preserve">
     <value>1;2;5|особь;особи;особей</value>
@@ -1696,13 +1478,13 @@
 </value>
   </data>
   <data name="contextStratifiedOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="contextStratifiedOpen.Text" xml:space="preserve">
     <value>Открыть в карточке</value>
   </data>
   <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="printStratifiedSampleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1722,10 +1504,10 @@
 </value>
   </data>
   <data name="printStratifiedSampleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="printStratifiedSampleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать стратифицированной пробы</value>
+    <value>Печать размерного ряда</value>
   </data>
   <data name="tabPageInd.Text" xml:space="preserve">
     <value>Особи</value>
@@ -1744,7 +1526,7 @@
 </value>
   </data>
   <data name="pictureBoxStratified.ToolTip" xml:space="preserve">
-    <value>Есть стратифицированные пробы {0}.
+    <value>Есть размерные ряды {0}.
 Учитывайте это при дальнейшем анализе.</value>
   </data>
   <data name="buttonSelectInd.Text" xml:space="preserve">
@@ -1768,8 +1550,8 @@
   <data name="columnIndConditionSoma.HeaderText" xml:space="preserve">
     <value>Упитанность (без внутренностей)</value>
   </data>
-  <data name="columnIndRegID.HeaderText" xml:space="preserve">
-    <value>№ пробы</value>
+  <data name="columnIndTally.HeaderText" xml:space="preserve">
+    <value>Бирка</value>
   </data>
   <data name="columnIndAge.HeaderText" xml:space="preserve">
     <value>Возраст</value>
@@ -1826,7 +1608,7 @@
     <value>Примечание</value>
   </data>
   <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 242</value>
+    <value>275, 220</value>
   </data>
   <data name="spreadSheetInd.StatusFormat" xml:space="preserve">
     <value>1;2;5|особь;особи;особей</value>
@@ -1886,12 +1668,6 @@
   </data>
   <data name="contextIndOpen.Text" xml:space="preserve">
     <value>Открыть в карточке</value>
-  </data>
-  <data name="contextIndOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndOpenFolder.Text" xml:space="preserve">
-    <value>Показать в папке</value>
   </data>
   <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 6</value>
@@ -1978,6 +1754,9 @@
   </data>
   <data name="tdbRecoverContinue.Text" xml:space="preserve">
     <value>Продолжить</value>
+  </data>
+  <data name="taskDialogBio.MainInstruction" xml:space="preserve">
+    <value>Очистить ранее загруженные био?</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

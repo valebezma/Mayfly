@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTreat = new System.Windows.Forms.TabPage();
             this.comboBoxAlk = new System.Windows.Forms.ComboBox();
@@ -128,6 +128,7 @@
             // 
             // tabPageTreat
             // 
+            resources.ApplyResources(this.tabPageTreat, "tabPageTreat");
             this.tabPageTreat.Controls.Add(this.comboBoxAlk);
             this.tabPageTreat.Controls.Add(this.AlkTypeLabel);
             this.tabPageTreat.Controls.Add(this.numericUpDownInterval);
@@ -137,7 +138,6 @@
             this.tabPageTreat.Controls.Add(this.comboBoxDiversity);
             this.tabPageTreat.Controls.Add(this.labelDiversity);
             this.tabPageTreat.Controls.Add(this.label4);
-            resources.ApplyResources(this.tabPageTreat, "tabPageTreat");
             this.tabPageTreat.Name = "tabPageTreat";
             this.tabPageTreat.UseVisualStyleBackColor = true;
             // 
@@ -216,6 +216,7 @@
             // 
             // tabPagePrediction
             // 
+            resources.ApplyResources(this.tabPagePrediction, "tabPagePrediction");
             this.tabPagePrediction.Controls.Add(this.listViewBio);
             this.tabPagePrediction.Controls.Add(this.buttonBioRemove);
             this.tabPagePrediction.Controls.Add(this.buttonBioBrowse);
@@ -224,7 +225,6 @@
             this.tabPagePrediction.Controls.Add(this.label7);
             this.tabPagePrediction.Controls.Add(this.label2);
             this.tabPagePrediction.Controls.Add(this.checkBoxSuggestMass);
-            resources.ApplyResources(this.tabPagePrediction, "tabPagePrediction");
             this.tabPagePrediction.Name = "tabPagePrediction";
             this.tabPagePrediction.UseVisualStyleBackColor = true;
             // 
@@ -294,12 +294,12 @@
             // 
             // tabPageAdvanced
             // 
+            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.Controls.Add(this.comboBoxReportCriticality);
             this.tabPageAdvanced.Controls.Add(this.label3);
             this.tabPageAdvanced.Controls.Add(this.checkBoxConsistency);
             this.tabPageAdvanced.Controls.Add(this.checkBoxKeepWizards);
             this.tabPageAdvanced.Controls.Add(this.label5);
-            resources.ApplyResources(this.tabPageAdvanced, "tabPageAdvanced");
             this.tabPageAdvanced.Name = "tabPageAdvanced";
             this.tabPageAdvanced.UseVisualStyleBackColor = true;
             // 
@@ -340,19 +340,19 @@
             // 
             // tabPageGamingAge
             // 
+            resources.ApplyResources(this.tabPageGamingAge, "tabPageGamingAge");
             this.tabPageGamingAge.Controls.Add(this.spreadSheetAge);
             this.tabPageGamingAge.Controls.Add(this.labelAgeInstrcution);
             this.tabPageGamingAge.Controls.Add(this.labelAgeTitle);
-            resources.ApplyResources(this.tabPageGamingAge, "tabPageGamingAge");
             this.tabPageGamingAge.Name = "tabPageGamingAge";
             this.tabPageGamingAge.UseVisualStyleBackColor = true;
             // 
             // spreadSheetAge
             // 
+            resources.ApplyResources(this.spreadSheetAge, "spreadSheetAge");
             this.spreadSheetAge.AllowUserToAddRows = true;
             this.spreadSheetAge.AllowUserToDeleteRows = true;
             this.spreadSheetAge.AllowUserToResizeColumns = false;
-            resources.ApplyResources(this.spreadSheetAge, "spreadSheetAge");
             this.spreadSheetAge.AutoClearEmptyRows = true;
             this.spreadSheetAge.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnAgeSpecies,
@@ -363,9 +363,9 @@
             // ColumnAgeSpecies
             // 
             this.ColumnAgeSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnAgeSpecies.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.NullValue = null;
+            this.ColumnAgeSpecies.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.ColumnAgeSpecies, "ColumnAgeSpecies");
             this.ColumnAgeSpecies.Name = "ColumnAgeSpecies";
             // 
@@ -388,19 +388,19 @@
             // 
             // tabPageGamingMeasure
             // 
+            resources.ApplyResources(this.tabPageGamingMeasure, "tabPageGamingMeasure");
             this.tabPageGamingMeasure.Controls.Add(this.spreadSheetMeasure);
             this.tabPageGamingMeasure.Controls.Add(this.labelMeasureInstruction);
             this.tabPageGamingMeasure.Controls.Add(this.labelMeasureTitle);
-            resources.ApplyResources(this.tabPageGamingMeasure, "tabPageGamingMeasure");
             this.tabPageGamingMeasure.Name = "tabPageGamingMeasure";
             this.tabPageGamingMeasure.UseVisualStyleBackColor = true;
             // 
             // spreadSheetMeasure
             // 
+            resources.ApplyResources(this.spreadSheetMeasure, "spreadSheetMeasure");
             this.spreadSheetMeasure.AllowUserToAddRows = true;
             this.spreadSheetMeasure.AllowUserToDeleteRows = true;
             this.spreadSheetMeasure.AllowUserToResizeColumns = false;
-            resources.ApplyResources(this.spreadSheetMeasure, "spreadSheetMeasure");
             this.spreadSheetMeasure.AutoClearEmptyRows = true;
             this.spreadSheetMeasure.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnMeasureSpecies,
@@ -411,9 +411,9 @@
             // ColumnMeasureSpecies
             // 
             this.ColumnMeasureSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColumnMeasureSpecies.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.NullValue = null;
+            this.ColumnMeasureSpecies.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.ColumnMeasureSpecies, "ColumnMeasureSpecies");
             this.ColumnMeasureSpecies.Name = "ColumnMeasureSpecies";
             // 
@@ -436,6 +436,7 @@
             // 
             // tabPageCatchability
             // 
+            resources.ApplyResources(this.tabPageCatchability, "tabPageCatchability");
             this.tabPageCatchability.Controls.Add(this.spreadSheetCatchability);
             this.tabPageCatchability.Controls.Add(this.labelGear);
             this.tabPageCatchability.Controls.Add(this.comboBoxGear);
@@ -443,16 +444,15 @@
             this.tabPageCatchability.Controls.Add(this.labelCatchabilityDefault);
             this.tabPageCatchability.Controls.Add(this.labelCatchabilityTitle);
             this.tabPageCatchability.Controls.Add(this.labelCatchabilityInstruction);
-            resources.ApplyResources(this.tabPageCatchability, "tabPageCatchability");
             this.tabPageCatchability.Name = "tabPageCatchability";
             this.tabPageCatchability.UseVisualStyleBackColor = true;
             // 
             // spreadSheetCatchability
             // 
+            resources.ApplyResources(this.spreadSheetCatchability, "spreadSheetCatchability");
             this.spreadSheetCatchability.AllowUserToAddRows = true;
             this.spreadSheetCatchability.AllowUserToDeleteRows = true;
             this.spreadSheetCatchability.AllowUserToResizeColumns = false;
-            resources.ApplyResources(this.spreadSheetCatchability, "spreadSheetCatchability");
             this.spreadSheetCatchability.AutoClearEmptyRows = true;
             this.spreadSheetCatchability.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnCatchabilitySpecies,
@@ -464,9 +464,9 @@
             // columnCatchabilitySpecies
             // 
             this.columnCatchabilitySpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.NullValue = null;
-            this.columnCatchabilitySpecies.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.NullValue = null;
+            this.columnCatchabilitySpecies.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.columnCatchabilitySpecies, "columnCatchabilitySpecies");
             this.columnCatchabilitySpecies.Name = "columnCatchabilitySpecies";
             // 
@@ -535,13 +535,13 @@
             // 
             // tabPageOther
             // 
+            resources.ApplyResources(this.tabPageOther, "tabPageOther");
             this.tabPageOther.Controls.Add(this.label1);
             this.tabPageOther.Controls.Add(this.label6);
             this.tabPageOther.Controls.Add(this.labelFish);
             this.tabPageOther.Controls.Add(this.buttonMath);
             this.tabPageOther.Controls.Add(this.buttonProductSettings);
             this.tabPageOther.Controls.Add(this.buttonFish);
-            resources.ApplyResources(this.tabPageOther, "tabPageOther");
             this.tabPageOther.Name = "tabPageOther";
             this.tabPageOther.UseVisualStyleBackColor = true;
             // 

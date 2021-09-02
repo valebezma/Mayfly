@@ -58,14 +58,17 @@
             this.buttonW = new System.Windows.Forms.Button();
             this.labelBasicInstruction = new System.Windows.Forms.Label();
             this.pageModelLW = new AeroWizard.WizardPage();
+            this.labelNoDataLW = new System.Windows.Forms.Label();
             this.buttonLW = new System.Windows.Forms.Button();
             this.labelWLInstruction = new System.Windows.Forms.Label();
             this.plotLW = new Mayfly.Mathematics.Charts.Plot();
             this.pageModelAL = new AeroWizard.WizardPage();
+            this.labelNoDataAL = new System.Windows.Forms.Label();
             this.buttonAL = new System.Windows.Forms.Button();
             this.labelALInstruction = new System.Windows.Forms.Label();
             this.plotAL = new Mayfly.Mathematics.Charts.Plot();
             this.pageModelAW = new AeroWizard.WizardPage();
+            this.labelNoDataAW = new System.Windows.Forms.Label();
             this.plotAW = new Mayfly.Mathematics.Charts.Plot();
             this.labelAWInstruction = new System.Windows.Forms.Label();
             this.pageCpue = new AeroWizard.WizardPage();
@@ -209,6 +212,7 @@
             this.checkBoxAge.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxAge.Name = "checkBoxAge";
             this.checkBoxAge.CheckedChanged += new System.EventHandler(this.checkBoxAge_CheckedChanged);
+            this.checkBoxAge.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxLength
             // 
@@ -217,6 +221,7 @@
             this.checkBoxLength.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLength.Name = "checkBoxLength";
             this.checkBoxLength.CheckedChanged += new System.EventHandler(this.checkBoxLength_CheckedChanged);
+            this.checkBoxLength.EnabledChanged += new System.EventHandler(this.checkBox_EnabledChanged);
             // 
             // checkBoxLengthAdjusted
             // 
@@ -264,12 +269,18 @@
             // 
             // pageModelLW
             // 
+            this.pageModelLW.Controls.Add(this.labelNoDataLW);
             this.pageModelLW.Controls.Add(this.buttonLW);
             this.pageModelLW.Controls.Add(this.labelWLInstruction);
             this.pageModelLW.Controls.Add(this.plotLW);
             this.pageModelLW.Name = "pageModelLW";
             resources.ApplyResources(this.pageModelLW, "pageModelLW");
             this.pageModelLW.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageLW_Rollback);
+            // 
+            // labelNoDataLW
+            // 
+            resources.ApplyResources(this.labelNoDataLW, "labelNoDataLW");
+            this.labelNoDataLW.Name = "labelNoDataLW";
             // 
             // buttonLW
             // 
@@ -287,7 +298,13 @@
             // 
             resources.ApplyResources(this.plotLW, "plotLW");
             this.plotLW.AxisXAutoMinimum = false;
+            this.plotLW.AxisXInterval = 0.2D;
+            this.plotLW.AxisXMax = 1D;
+            this.plotLW.AxisY2Interval = 0.2D;
+            this.plotLW.AxisY2Max = 1D;
             this.plotLW.AxisYAutoMinimum = false;
+            this.plotLW.AxisYInterval = 0.2D;
+            this.plotLW.AxisYMax = 1D;
             this.plotLW.Name = "plotLW";
             this.plotLW.ShowLegend = false;
             this.plotLW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -295,11 +312,17 @@
             // 
             // pageModelAL
             // 
+            this.pageModelAL.Controls.Add(this.labelNoDataAL);
             this.pageModelAL.Controls.Add(this.buttonAL);
             this.pageModelAL.Controls.Add(this.labelALInstruction);
             this.pageModelAL.Controls.Add(this.plotAL);
             this.pageModelAL.Name = "pageModelAL";
             resources.ApplyResources(this.pageModelAL, "pageModelAL");
+            // 
+            // labelNoDataAL
+            // 
+            resources.ApplyResources(this.labelNoDataAL, "labelNoDataAL");
+            this.labelNoDataAL.Name = "labelNoDataAL";
             // 
             // buttonAL
             // 
@@ -317,7 +340,13 @@
             // 
             resources.ApplyResources(this.plotAL, "plotAL");
             this.plotAL.AxisXAutoMinimum = false;
+            this.plotAL.AxisXInterval = 0.2D;
+            this.plotAL.AxisXMax = 1D;
+            this.plotAL.AxisY2Interval = 0.2D;
+            this.plotAL.AxisY2Max = 1D;
             this.plotAL.AxisYAutoMinimum = false;
+            this.plotAL.AxisYInterval = 0.2D;
+            this.plotAL.AxisYMax = 1D;
             this.plotAL.Name = "plotAL";
             this.plotAL.ShowLegend = false;
             this.plotAL.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -325,19 +354,31 @@
             // 
             // pageModelAW
             // 
+            this.pageModelAW.Controls.Add(this.labelNoDataAW);
             this.pageModelAW.Controls.Add(this.plotAW);
             this.pageModelAW.Controls.Add(this.labelAWInstruction);
             this.pageModelAW.Name = "pageModelAW";
             resources.ApplyResources(this.pageModelAW, "pageModelAW");
             this.pageModelAW.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.pageAW_Commit);
             // 
+            // labelNoDataAW
+            // 
+            resources.ApplyResources(this.labelNoDataAW, "labelNoDataAW");
+            this.labelNoDataAW.Name = "labelNoDataAW";
+            // 
             // plotAW
             // 
             resources.ApplyResources(this.plotAW, "plotAW");
             this.plotAW.AxisXAutoMaximum = false;
             this.plotAW.AxisXAutoMinimum = false;
+            this.plotAW.AxisXInterval = 0.2D;
+            this.plotAW.AxisXMax = 1D;
+            this.plotAW.AxisY2Interval = 0.2D;
+            this.plotAW.AxisY2Max = 1D;
             this.plotAW.AxisYAutoMaximum = false;
             this.plotAW.AxisYAutoMinimum = false;
+            this.plotAW.AxisYInterval = 0.2D;
+            this.plotAW.AxisYMax = 1D;
             this.plotAW.Name = "plotAW";
             this.plotAW.ShowLegend = false;
             this.plotAW.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -492,8 +533,14 @@
             resources.ApplyResources(this.plotLength, "plotLength");
             this.plotLength.AxisXAutoMaximum = false;
             this.plotLength.AxisXAutoMinimum = false;
+            this.plotLength.AxisXInterval = 0.2D;
+            this.plotLength.AxisXMax = 1D;
+            this.plotLength.AxisY2Interval = 0.2D;
+            this.plotLength.AxisY2Max = 1D;
             this.plotLength.AxisYAutoMaximum = false;
             this.plotLength.AxisYAutoMinimum = false;
+            this.plotLength.AxisYInterval = 0.2D;
+            this.plotLength.AxisYMax = 1D;
             this.plotLength.Name = "plotLength";
             this.plotLength.ShowLegend = false;
             this.plotLength.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -551,6 +598,12 @@
             // 
             resources.ApplyResources(this.plotSelectionSource, "plotSelectionSource");
             this.plotSelectionSource.AxisXAutoInterval = false;
+            this.plotSelectionSource.AxisXInterval = 0.2D;
+            this.plotSelectionSource.AxisXMax = 1D;
+            this.plotSelectionSource.AxisY2Interval = 0.2D;
+            this.plotSelectionSource.AxisY2Max = 1D;
+            this.plotSelectionSource.AxisYInterval = 0.2D;
+            this.plotSelectionSource.AxisYMax = 1D;
             this.plotSelectionSource.Name = "plotSelectionSource";
             this.plotSelectionSource.ShowLegend = true;
             this.plotSelectionSource.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -599,6 +652,10 @@
             this.plotSelection.AxisXAutoInterval = false;
             this.plotSelection.AxisXAutoMaximum = false;
             this.plotSelection.AxisXAutoMinimum = false;
+            this.plotSelection.AxisXInterval = 0.2D;
+            this.plotSelection.AxisXMax = 1D;
+            this.plotSelection.AxisY2Interval = 0.2D;
+            this.plotSelection.AxisY2Max = 1D;
             this.plotSelection.AxisYAutoMaximum = false;
             this.plotSelection.AxisYAutoMinimum = false;
             this.plotSelection.AxisYInterval = 0.1D;
@@ -626,8 +683,13 @@
             this.plotLengthAdjusted.AxisXAutoInterval = false;
             this.plotLengthAdjusted.AxisXAutoMaximum = false;
             this.plotLengthAdjusted.AxisXAutoMinimum = false;
+            this.plotLengthAdjusted.AxisXInterval = 0.2D;
+            this.plotLengthAdjusted.AxisXMax = 1D;
+            this.plotLengthAdjusted.AxisY2Interval = 0.2D;
+            this.plotLengthAdjusted.AxisY2Max = 1D;
             this.plotLengthAdjusted.AxisYAutoMaximum = false;
             this.plotLengthAdjusted.AxisYAutoMinimum = false;
+            this.plotLengthAdjusted.AxisYInterval = 0.2D;
             this.plotLengthAdjusted.AxisYMax = 1D;
             this.plotLengthAdjusted.Name = "plotLengthAdjusted";
             this.plotLengthAdjusted.ShowLegend = true;
@@ -649,8 +711,14 @@
             resources.ApplyResources(this.plotAge, "plotAge");
             this.plotAge.AxisXAutoMaximum = false;
             this.plotAge.AxisXAutoMinimum = false;
+            this.plotAge.AxisXInterval = 0.2D;
+            this.plotAge.AxisXMax = 1D;
+            this.plotAge.AxisY2Interval = 0.2D;
+            this.plotAge.AxisY2Max = 1D;
             this.plotAge.AxisYAutoMaximum = false;
             this.plotAge.AxisYAutoMinimum = false;
+            this.plotAge.AxisYInterval = 0.2D;
+            this.plotAge.AxisYMax = 1D;
             this.plotAge.Name = "plotAge";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
             series1.Name = "juv";
@@ -790,7 +858,13 @@
             // 
             resources.ApplyResources(this.plotMortality, "plotMortality");
             this.plotMortality.AxisXAutoMinimum = false;
+            this.plotMortality.AxisXInterval = 0.2D;
+            this.plotMortality.AxisXMax = 1D;
+            this.plotMortality.AxisY2Interval = 0.2D;
+            this.plotMortality.AxisY2Max = 1D;
             this.plotMortality.AxisYAutoMinimum = false;
+            this.plotMortality.AxisYInterval = 0.2D;
+            this.plotMortality.AxisYMax = 1D;
             this.plotMortality.Name = "plotMortality";
             this.plotMortality.ShowLegend = false;
             this.plotMortality.TimeInterval = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
@@ -809,8 +883,13 @@
             this.plotAgeAdjusted.AxisXAutoInterval = false;
             this.plotAgeAdjusted.AxisXAutoMaximum = false;
             this.plotAgeAdjusted.AxisXAutoMinimum = false;
+            this.plotAgeAdjusted.AxisXInterval = 0.2D;
+            this.plotAgeAdjusted.AxisXMax = 1D;
+            this.plotAgeAdjusted.AxisY2Interval = 0.2D;
+            this.plotAgeAdjusted.AxisY2Max = 1D;
             this.plotAgeAdjusted.AxisYAutoMaximum = false;
             this.plotAgeAdjusted.AxisYAutoMinimum = false;
+            this.plotAgeAdjusted.AxisYInterval = 0.2D;
             this.plotAgeAdjusted.AxisYMax = 1D;
             this.plotAgeAdjusted.Name = "plotAgeAdjusted";
             this.plotAgeAdjusted.ShowLegend = true;
@@ -1073,5 +1152,8 @@
         private System.Windows.Forms.CheckBox checkBoxReportAgeAdjusted;
         private System.Windows.Forms.PictureBox pictureMortalityWarn;
         private System.Windows.Forms.Label labelMortalityWarn;
+        private System.Windows.Forms.Label labelNoDataLW;
+        private System.Windows.Forms.Label labelNoDataAL;
+        private System.Windows.Forms.Label labelNoDataAW;
     }
 }

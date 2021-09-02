@@ -492,7 +492,7 @@ Pick options you want to include in current research.</value>
     <value>7</value>
   </data>
   <data name="labelWLInstruction.Text" xml:space="preserve">
-    <value>Mass-to-length relationship is shown on the plot. To see details on it click 'Trend properties' button below the chart.</value>
+    <value>Length-to-mass model is plotted below. Click 'Trend properties' to see details .</value>
   </data>
   <data name="&gt;&gt;labelWLInstruction.Name" xml:space="preserve">
     <value>labelWLInstruction</value>
@@ -511,9 +511,6 @@ Pick options you want to include in current research.</value>
   </data>
   <data name="plotLW.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
-  </data>
-  <data name="plotLW.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotLW.AxisYFormat" xml:space="preserve">
     <value>N0</value>
@@ -615,7 +612,7 @@ Pick options you want to include in current research.</value>
     <value>4</value>
   </data>
   <data name="labelALInstruction.Text" xml:space="preserve">
-    <value>Growth model according to Bertalanffy is plotted below. To see properties of model click 'Trend properties' button at the bottom.</value>
+    <value>Age-to-length model is plotted below. Click 'Trend properties' to see details.</value>
   </data>
   <data name="&gt;&gt;labelALInstruction.Name" xml:space="preserve">
     <value>labelALInstruction</value>
@@ -633,10 +630,7 @@ Pick options you want to include in current research.</value>
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="plotAL.AxisXTitle" xml:space="preserve">
-    <value>Age</value>
-  </data>
-  <data name="plotAL.AxisY2Title" xml:space="preserve">
-    <value />
+    <value>Age, years</value>
   </data>
   <data name="plotAL.AxisYFormat" xml:space="preserve">
     <value>N0</value>
@@ -690,13 +684,10 @@ Pick options you want to include in current research.</value>
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="plotAW.AxisXTitle" xml:space="preserve">
-    <value>Age</value>
+    <value>Age, years</value>
   </data>
   <data name="plotAW.AxisY2Format" xml:space="preserve">
     <value>N0</value>
-  </data>
-  <data name="plotAW.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotAW.AxisYTitle" xml:space="preserve">
     <value>Mass, g</value>
@@ -744,7 +735,7 @@ Pick options you want to include in current research.</value>
     <value>4</value>
   </data>
   <data name="labelAWInstruction.Text" xml:space="preserve">
-    <value>Two previous model are now combined in weigth growth model.</value>
+    <value>Age-to-mass model is plotted below.</value>
   </data>
   <data name="&gt;&gt;labelAWInstruction.Name" xml:space="preserve">
     <value>labelAWInstruction</value>
@@ -1049,9 +1040,6 @@ Pick options you want to include in current research.</value>
   <data name="plotLength.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
-  <data name="plotLength.AxisY2Title" xml:space="preserve">
-    <value />
-  </data>
   <data name="plotLength.AxisYFormat" xml:space="preserve">
     <value>P0</value>
   </data>
@@ -1131,7 +1119,7 @@ Pick options you want to include in current research.</value>
     <value>33</value>
   </data>
   <data name="labelLengthInstruction.Text" xml:space="preserve">
-    <value>Raw length composition of stock is shown on histogram.</value>
+    <value>Raw length composition of population is plotted below.</value>
   </data>
   <data name="&gt;&gt;labelLengthInstruction.Name" xml:space="preserve">
     <value>labelLengthInstruction</value>
@@ -1268,8 +1256,8 @@ Pick options you want to include in current research.</value>
     <value>32</value>
   </data>
   <data name="labelSelectionSourceWarn.Text" xml:space="preserve">
-    <value>Selected mesh collection does not support selectivity estimation. Length composition adjustment will be skipped. 
-Try to merge some mesh values</value>
+    <value>Selected mesh collection does not support selectivity estimation.
+Length composition adjustment will be skipped. Try to merge some mesh values</value>
   </data>
   <data name="labelSelectionSourceWarn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1302,7 +1290,7 @@ Try to merge some mesh values</value>
     <value>6</value>
   </data>
   <data name="labelSelectionSourceInstruction.Text" xml:space="preserve">
-    <value>Catch compositions of different mesh sizes are given in the chart below.</value>
+    <value>Catch compositions of different mesh sizes are plotted below.</value>
   </data>
   <data name="&gt;&gt;labelSelectionSourceInstruction.Name" xml:space="preserve">
     <value>labelSelectionSourceInstruction</value>
@@ -1321,9 +1309,6 @@ Try to merge some mesh values</value>
   </data>
   <data name="plotSelectionSource.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
-  </data>
-  <data name="plotSelectionSource.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotSelectionSource.AxisYTitle" xml:space="preserve">
     <value>NPUE, %</value>
@@ -1509,7 +1494,7 @@ Try to merge some mesh values</value>
     <value>37</value>
   </data>
   <data name="labelSelectionInstruction.Text" xml:space="preserve">
-    <value>Selectivity ogives shaped for each mesh size and the resultant ogive are charted below.</value>
+    <value>Selectivity ogives shaped for each mesh size and the resultant ogive are plotted below.</value>
   </data>
   <data name="&gt;&gt;labelSelectionInstruction.Name" xml:space="preserve">
     <value>labelSelectionInstruction</value>
@@ -1528,9 +1513,6 @@ Try to merge some mesh values</value>
   </data>
   <data name="plotSelection.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
-  </data>
-  <data name="plotSelection.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotSelection.AxisYFormat" xml:space="preserve">
     <value>P0</value>
@@ -1596,7 +1578,7 @@ Try to merge some mesh values</value>
     <value>8</value>
   </data>
   <data name="labelLengthAdjustedInstruction.Text" xml:space="preserve">
-    <value>Adjusted population length composition is presented here.</value>
+    <value>Adjusted population length composition is plotted below.</value>
   </data>
   <data name="&gt;&gt;labelLengthAdjustedInstruction.Name" xml:space="preserve">
     <value>labelLengthAdjustedInstruction</value>
@@ -1615,9 +1597,6 @@ Try to merge some mesh values</value>
   </data>
   <data name="plotLengthAdjusted.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
-  </data>
-  <data name="plotLengthAdjusted.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotLengthAdjusted.AxisYFormat" xml:space="preserve">
     <value>P0</value>
@@ -1672,9 +1651,6 @@ Try to merge some mesh values</value>
   </data>
   <data name="plotAge.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
-  </data>
-  <data name="plotAge.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotAge.AxisYFormat" xml:space="preserve">
     <value>P0</value>
@@ -1755,7 +1731,7 @@ Try to merge some mesh values</value>
     <value>4</value>
   </data>
   <data name="labelAgeInstruction.Text" xml:space="preserve">
-    <value>Age composition of stock is shown on histogram.</value>
+    <value>Raw age composition of population is plotted below.</value>
   </data>
   <data name="&gt;&gt;labelAgeInstruction.Name" xml:space="preserve">
     <value>labelAgeInstruction</value>
@@ -2205,7 +2181,7 @@ Age composition adjustment will be skipped. Try to select another age</value>
     <value>5</value>
   </data>
   <data name="labelMortalityInstruction.Text" xml:space="preserve">
-    <value>Data you have selected are used to build population age curve. It is now approximated by exponent function. Mortality rate Z is obtained from function parameters.</value>
+    <value>To estimate mortality rate select age of full exploitation. Mortality rate Z is obtained from exponent approximating exploited population catches.</value>
   </data>
   <data name="&gt;&gt;labelMortalityInstruction.Name" xml:space="preserve">
     <value>labelMortalityInstruction</value>
@@ -2224,9 +2200,6 @@ Age composition adjustment will be skipped. Try to select another age</value>
   </data>
   <data name="plotMortality.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
-  </data>
-  <data name="plotMortality.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="plotMortality.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>
@@ -2279,9 +2252,6 @@ Age composition adjustment will be skipped. Try to select another age</value>
   <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
   </data>
-  <data name="plotAgeAdjusted.AxisY2Title" xml:space="preserve">
-    <value />
-  </data>
   <data name="plotAgeAdjusted.AxisYFormat" xml:space="preserve">
     <value>P0</value>
   </data>
@@ -2331,7 +2301,7 @@ Age composition adjustment will be skipped. Try to select another age</value>
     <value>0</value>
   </data>
   <data name="labelAgeAdjustedInstruction.Text" xml:space="preserve">
-    <value>Final general mortality rates are given below:</value>
+    <value>Adjusted age composition of population is plotted below.</value>
   </data>
   <data name="&gt;&gt;labelAgeAdjustedInstruction.Name" xml:space="preserve">
     <value>labelAgeAdjustedInstruction</value>
