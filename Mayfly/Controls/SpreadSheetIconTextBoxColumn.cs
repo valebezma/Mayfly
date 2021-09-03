@@ -116,7 +116,7 @@ namespace Mayfly.Controls
                         break;
                 }
 
-                if (this.DataGridView != null) this.DataGridView.Refresh();
+                // if (this.DataGridView != null) this.DataGridView.Refresh();
             }
         }
 

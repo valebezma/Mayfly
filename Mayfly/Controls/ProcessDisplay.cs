@@ -156,22 +156,23 @@ namespace Mayfly.Controls
 
         public void SetProgress(int value)
         {
+            if (ProgressBar != null)
+            {
+                if (ProgressBar.Style == ProgressBarStyle.Marquee)
+                {
+                    ProgressBar.Style = ProgressBarStyle.Continuous;
+                    Taskbar.SetProgressState(ProgressBar.Control.FindForm().Handle,
+                        ThumbnailProgressState.Normal);
+                }
+
+                ProgressBar.Value = value;
+
+                Taskbar.SetProgressValue(ProgressBar.Control.FindForm().Handle,
+                    (ulong)ProgressBar.Value, (ulong)ProgressBar.Maximum);
+            }
+
             if (Look != null)
             {
-                if (ProgressBar != null)
-                {
-                    if (ProgressBar.Style == ProgressBarStyle.Marquee)
-                    {
-                        ProgressBar.Style = ProgressBarStyle.Continuous;
-                        Taskbar.SetProgressState(ProgressBar.Control.FindForm().Handle,
-                            ThumbnailProgressState.Normal);
-                    }
-
-                    ProgressBar.Value = value;
-
-                    Taskbar.SetProgressValue(ProgressBar.Control.FindForm().Handle,
-                        (ulong)ProgressBar.Value, (ulong)ProgressBar.Maximum);
-                }
 
                 Look.SetProgress(value);
             }

@@ -409,9 +409,13 @@ namespace Mayfly.Fish.Explorer
 
             if (tabPageInd.Parent != null)
             {
-                processDisplay.StartProcessing(spreadSheetInd.RowCount, Wild.Resources.Interface.Process.SpecApply);
-                bioTipper.RunWorkerAsync();
+                spreadSheetInd_DisplayChanged(spreadSheetInd, new ScrollEventArgs(ScrollEventType.SmallDecrement, 0));
             }
+        }
+
+        private void mainForm_Scroll(object sender, ScrollEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void logSpecies_Click(object sender, EventArgs e)
@@ -1492,6 +1496,8 @@ namespace Mayfly.Fish.Explorer
         #region Individuals
 
         Data.SpeciesRow individualSpecies;
+        ContinuousBio growthModel;
+        ContinuousBio massModel;
 
 
         private void loadIndividuals(Data.IndividualRow[] indRows)
@@ -1537,6 +1543,8 @@ namespace Mayfly.Fish.Explorer
         {
             loadIndividuals(new Data.SpeciesRow[] { spcRow });
             individualSpecies = spcRow;
+            growthModel = data.FindGrowthModel(individualSpecies.Species);
+            massModel = data.FindMassModel(individualSpecies.Species);
         }
 
         private void loadIndividuals(Data.LogRow[] logRows)
@@ -1686,9 +1694,9 @@ namespace Mayfly.Fish.Explorer
             if (gmass == null) individualRow.SetSomaticMassNull();
             else individualRow.SomaticMass = (double)gmass;
 
-            object regID = gridRow.Cells[columnIndTally.Name].Value;
-            if (regID == null) individualRow.SetTallyNull();
-            else individualRow.Tally = (string)regID;
+            object tally = gridRow.Cells[columnIndTally.Name].Value;
+            if (tally == null) individualRow.SetTallyNull();
+            else individualRow.Tally = (string)tally;
 
             Age age = (Age)gridRow.Cells[columnIndAge.Name].Value;
             if (age == null) individualRow.SetAgeNull();
@@ -1863,37 +1871,38 @@ namespace Mayfly.Fish.Explorer
 
         private void setIndividualAgeTip(DataGridViewRow gridRow)
         {
+            if (gridRow.Cells[columnIndAge.Index].Value != null) return;
+
+            //if (gridRow.Cells[columnIndAge.Index].Style.NullValue != null) return;
+
             Data.IndividualRow individualRow = findIndividualRow(gridRow);
 
             if (individualRow == null) return;
 
             if (individualRow.IsLengthNull()) return;
 
-            if (gridRow.Cells[columnIndAge.Index].Value != null) return;
+            double ageValue = double.NaN;
 
-            double ageValue = data.FindGrowthModel(individualRow.Species).GetValue(individualRow.Length, true);
-
-            if (double.IsNaN(ageValue))
+            if (individualSpecies == null)
             {
-                gridRow.Cells[columnIndAge.Index].SetNullValue(Wild.Resources.Interface.Interface.SuggestionUnavailable);
+                ageValue = data.FindGrowthModel(individualRow.Species).GetValue(individualRow.Length, true);
             }
             else
             {
-                Age age = new Age(ageValue);
-
-                gridRow.Cells[columnIndAge.Index].SetNullValue(
-                    double.IsNaN(ageValue) ?
-                    Wild.Resources.Interface.Interface.SuggestionUnavailable : " " + age.ToString() + " ");
-                Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-
-                gridRow.Cells[columnIndGeneration.Index].SetNullValue(
-                    double.IsNaN(ageValue) ?
-                    Wild.Resources.Interface.Interface.SuggestionUnavailable :
-                    individualRow.LogRow.CardRow.When.AddYears(-age.Years).Year.ToString());
+                ageValue = growthModel.GetValue(individualRow.Length, true);
             }
 
-            // Reset formatting
-            Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index]);
+            Age age = new Age(ageValue);
+
+            gridRow.Cells[columnIndAge.Index].SetNullValue(
+                double.IsNaN(ageValue) ?
+                Wild.Resources.Interface.Interface.SuggestionUnavailable : " " + age.ToString() + " ");
+            //Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
+
+            gridRow.Cells[columnIndGeneration.Index].SetNullValue(
+                double.IsNaN(ageValue) ?
+                Wild.Resources.Interface.Interface.SuggestionUnavailable :
+                individualRow.LogRow.CardRow.When.AddYears(-age.Years).Year.ToString());
 
             // Set generation value
             if (individualRow.IsAgeNull()) { gridRow.Cells[columnIndGeneration.Index].Value = null; }
@@ -1902,22 +1911,29 @@ namespace Mayfly.Fish.Explorer
 
         private void setIndividualMassTip(DataGridViewRow gridRow)
         {
+            if (gridRow.Cells[columnIndMass.Index].Value != null) return;
+
             Data.IndividualRow individualRow = findIndividualRow(gridRow);
 
             if (individualRow == null) return;
 
             if (individualRow.IsLengthNull()) return;
 
-            if (gridRow.Cells[columnIndMass.Index].Value != null) return;
+            double mass = double.NaN;
 
-            double mass = data.FindMassModel(individualRow.Species).GetValue(individualRow.Length);
+            if (individualSpecies == null)
+            {
+                mass = data.FindMassModel(individualRow.Species).GetValue(individualRow.Length);
+            }
+            else
+            {
+                mass = massModel.GetValue(individualRow.Length);
+            }
 
             gridRow.Cells[columnIndMass.Index].SetNullValue(
                 double.IsNaN(mass) ?
                 Wild.Resources.Interface.Interface.SuggestionUnavailable :
-                //string.Format(Resources.Interface.SuggestionFormat,
-                //mass.ToString(columnIndMass.DefaultCellStyle.Format)));
-                mass.ToString(columnIndMass.DefaultCellStyle.Format));
+                " " + mass.ToString(columnIndMass.DefaultCellStyle.Format) + " ");
         }
 
         private Data.IndividualRow[] getIndividuals(IList rows)

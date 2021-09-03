@@ -1725,14 +1725,6 @@ namespace Mayfly.Fish.Explorer
 
             if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
 
-            BackgroundWorker outlierEditor = new BackgroundWorker();
-            outlierEditor.DoWork += outlierEditor_DoWork;
-            outlierEditor.RunWorkerCompleted += new RunWorkerCompletedEventHandler(indLoader_RunWorkerCompleted);
-            outlierEditor.RunWorkerAsync();
-        }
-
-        private void outlierEditor_DoWork(object sender, DoWorkEventArgs e)
-        {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
             foreach (var pair in outliersData)
@@ -1743,7 +1735,26 @@ namespace Mayfly.Fish.Explorer
             }
 
             loadIndividuals(indRows.ToArray());
+
+            //BackgroundWorker outlierEditor = new BackgroundWorker();
+            //outlierEditor.DoWork += outlierEditor_DoWork;
+            ////outlierEditor.RunWorkerCompleted += new RunWorkerCompletedEventHandler(indLoader_RunWorkerCompleted);
+            //outlierEditor.RunWorkerAsync();
         }
+
+        //private void outlierEditor_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
+
+        //    foreach (var pair in outliersData)
+        //    {
+        //        indRows.AddRange(FullStack.GetIndividuals(selectedStatSpc,
+        //            (selectedQualificationWay == 0 ? new string[] { "Length", "Mass" } : new string[] { "Age", "Length" }),
+        //            new object[] { pair.X, pair.Y }));
+        //    }
+
+        //    loadIndividuals(indRows.ToArray());
+        //}
 
         #endregion
 
@@ -2075,7 +2086,6 @@ namespace Mayfly.Fish.Explorer
             {
                 for (int i = 0; i < taxaSpc.Length; i++)
                 {
-
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetSpc);
                     gridRow.Cells[columnSpcID.Index].Value = taxaSpc[i].ID;
@@ -2121,8 +2131,6 @@ namespace Mayfly.Fish.Explorer
 
             tabPageSpc.Parent = tabControl;
             tabControl.SelectedTab = tabPageSpc;
-
-            updateArtifacts();
         }
 
 
@@ -2449,8 +2457,8 @@ namespace Mayfly.Fish.Explorer
 
 
         private void bioTipper_DoWork(object sender, DoWorkEventArgs e)
-        {
-            foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
+        { 
+            foreach (DataGridViewRow gridRow in (DataGridViewRow[])e.Argument)
             {
                 if (UserSettings.AgeSuggest) setIndividualAgeTip(gridRow);
                 if (UserSettings.MassSuggest) setIndividualMassTip(gridRow);
@@ -2637,17 +2645,14 @@ namespace Mayfly.Fish.Explorer
                     spreadSheetInd[columnIndConsumptionIndex.Index, e.RowIndex].Value = editedIndividualRow.GetConsumptionIndex();
                 }
             }
-
-
         }
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
             Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
-            e.Result = speciesRow;
-
             data.FindMassModel(speciesRow.Species).RefreshInternal();
             data.FindGrowthModel(speciesRow.Species).RefreshInternal();
+            e.Result = speciesRow;
         }
 
         private void bioUpdater_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -2695,6 +2700,16 @@ namespace Mayfly.Fish.Explorer
                 toolTipAttention.SetToolTip(pictureBoxStratified,
                     string.Format((new ResourceManager(typeof(MainForm))).GetString(
                     "pictureBoxStratified.ToolTip"), speciesNames[0]));
+            }
+        }
+
+        private void spreadSheetInd_DisplayChanged(object sender, EventArgs e)
+        {
+            if (!bioTipper.IsBusy)
+            {
+                DataGridViewRow[] gridRows = spreadSheetInd.GetDisplayedRows().ToArray();
+                processDisplay.StartProcessing(gridRows.Length * 2, Wild.Resources.Interface.Process.SpecApply);
+                bioTipper.RunWorkerAsync(gridRows);
             }
         }
 

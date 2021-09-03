@@ -1177,6 +1177,9 @@ namespace Mayfly.Controls
         [Category("Mayfly Events")]
         public event DataGridViewRowEventHandler UserChangedRowVisibility;
 
+        [Category("Mayfly Events")]
+        public event EventHandler DisplayChanged;
+
         #endregion
 
 
@@ -1264,6 +1267,18 @@ namespace Mayfly.Controls
             itemCopy.Click += itemCopy_Click;
             itemPaste.Click += itemPaste_Click;
             itemSetValue.Click += itemSetValue_Click;
+
+            this.Scroll += display_Cahnged;
+            this.Resize += display_Cahnged;
+            this.Sorted += display_Cahnged;
+        }
+
+        private void display_Cahnged(object sender, EventArgs e)
+        {
+            if (DisplayChanged != null)
+            {
+                DisplayChanged.Invoke(this, new EventArgs());
+            }
         }
 
         private void InitializeComponent()
@@ -2757,6 +2772,27 @@ namespace Mayfly.Controls
                 if (IsHidden(gridRow)) continue;
                 result.Add(gridRow);
             }
+            return result;
+        }
+
+        public List<DataGridViewRow> GetDisplayedRows()
+        {
+            List<DataGridViewRow> result = new List<DataGridViewRow>();
+
+            foreach (DataGridViewRow gridRow in Rows)
+            {
+                int firstVisibleIndex = FirstDisplayedScrollingRowIndex;
+                int lastVisibleIndex = firstVisibleIndex + DisplayedRowCount(true);
+
+                if (gridRow.Index >= firstVisibleIndex && gridRow.Index < lastVisibleIndex)
+                {
+                    if (gridRow.IsNewRow) continue;
+                    if (IsHidden(gridRow)) continue;
+                    result.Add(gridRow);
+                }
+
+            }
+
             return result;
         }
 

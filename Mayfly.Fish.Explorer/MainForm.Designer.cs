@@ -3034,6 +3034,7 @@
             this.spreadSheetInd.RowMenuLaunchableItemIndex = 0;
             this.spreadSheetInd.RowVisibilityKey = System.Windows.Forms.Keys.N;
             this.spreadSheetInd.Filtered += new System.EventHandler(this.spreadSheetInd_Filtered);
+            this.spreadSheetInd.DisplayChanged += new System.EventHandler(this.spreadSheetInd_DisplayChanged);
             this.spreadSheetInd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetInd_CellValueChanged);
             this.spreadSheetInd.SelectionChanged += new System.EventHandler(this.spreadSheetInd_SelectionChanged);
             // 
@@ -3450,6 +3451,7 @@
             // bioTipper
             // 
             this.bioTipper.WorkerReportsProgress = true;
+            this.bioTipper.WorkerSupportsCancellation = true;
             this.bioTipper.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bioTipper_DoWork);
             this.bioTipper.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.bioTipper.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bioTipper_RunWorkerCompleted);
@@ -3558,15 +3560,15 @@
             // 
             // mathCard
             // 
-            this.mathCard.Sheet = this.spreadSheetCard;
+            this.mathCard.Sheet = null;
             // 
             // mathLog
             // 
-            this.mathLog.Sheet = this.spreadSheetLog;
+            this.mathLog.Sheet = null;
             // 
             // mathInd
             // 
-            this.mathInd.Sheet = this.spreadSheetInd;
+            this.mathInd.Sheet = null;
             // 
             // notify
             // 

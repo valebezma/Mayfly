@@ -709,6 +709,8 @@ namespace Mayfly.Fish.Explorer
         {
             SpeciesRow = speciesRow;
 
+            if (speciesRow == null) return;
+
             int sampled = stack.QuantitySampled(speciesRow);
 
             AgeInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);

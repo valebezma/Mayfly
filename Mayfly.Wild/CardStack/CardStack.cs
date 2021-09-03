@@ -184,7 +184,7 @@ namespace Mayfly.Wild
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
-            if (Parent != null)
+            if (Parent != null && speciesRow != null)
             {
                 foreach (Data.LogRow logRow in Parent.Log)
                 {
