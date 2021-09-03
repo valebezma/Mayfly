@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Comment" xml:space="preserve">
-    <value>Значимые параметры выделены полужирным.</value>
+    <value>Значимые параметры выделены полужирным</value>
   </data>
   <data name="Paragraph1" xml:space="preserve">
     <value>Параметры моделей роста разных видов приведены в таблице {0}. Общее уравнение модели имеет вид:</value>
@@ -134,5 +134,11 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Сводка экспорта био</value>
+  </data>
+  <data name="Subtitle2" xml:space="preserve">
+    <value>Сводка моделей длина-масса</value>
+  </data>
+  <data name="Subtitle1" xml:space="preserve">
+    <value>Сводка моделей возраст-длина</value>
   </data>
 </root>

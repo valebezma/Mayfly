@@ -143,6 +143,15 @@ namespace Mayfly.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Figure {0} — {1}..
+        /// </summary>
+        public static string FigureCaption {
+            get {
+                return ResourceManager.GetString("FigureCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error loading file {0}.
         /// </summary>
         public static string FileError {

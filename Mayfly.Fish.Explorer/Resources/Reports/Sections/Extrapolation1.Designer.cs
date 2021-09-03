@@ -106,7 +106,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {1} structure of {0} stock con not be estimated because of the lack of data..
+        ///   Looks up a localized string similar to {0} structure of {1} stock con not be estimated because of the lack of data..
         /// </summary>
         internal static string Paragraph1_None {
             get {
@@ -124,7 +124,7 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Catches also reduced according to spatial ratios which reflect part of water where gear class can be used (see table {3})..
+        ///   Looks up a localized string similar to  Catches also reduced according to spatial ratios which reflect part of water where gear class can be used (see table {0})..
         /// </summary>
         internal static string Paragraph2_1 {
             get {

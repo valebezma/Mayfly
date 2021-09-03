@@ -118,12 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Paragraph1" xml:space="preserve">
-    <value>Кривая уловов ({0}) построена на значениях уловов на усилие возрастных групп от {1} до {2} лет {3} и описывается следующим уравнением:</value>
+    <value>Кривая уловов построена на значениях уловов на усилие возрастных групп от {0} до {1} лет {2} и описывается следующим уравнением:</value>
   </data>
   <data name="Paragraph2" xml:space="preserve">
     <value>Таким образом, мгновенный коэффициент смертности Z равен {0:N4}. Следовательно коэффициент выживания (S) и реальный коэффициент смертности (φ) равны:</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Параметры смертности {0}</value>
+    <value>Корректировка возрастной структуры по модели смертности</value>
+  </data>
+  <data name="Paragraph3" xml:space="preserve">
+    <value>Откорректированная возрастная структура популяции {0} приведена в таблице {1} и на рисунке {2}.</value>
   </data>
 </root>

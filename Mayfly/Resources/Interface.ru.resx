@@ -139,6 +139,9 @@
   <data name="FeedbackSubject" xml:space="preserve">
     <value>Отзыв о работе {0} от {1}</value>
   </data>
+  <data name="FigureCaption" xml:space="preserve">
+    <value>Рисунок {0} — {1}.</value>
+  </data>
   <data name="FileError" xml:space="preserve">
     <value>Ошибка загрузки файла {0}</value>
   </data>

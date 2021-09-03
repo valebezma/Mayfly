@@ -215,4 +215,19 @@
   <data name="QualOwn" xml:space="preserve">
     <value>Свои данные</value>
   </data>
+  <data name="AxisBPUE" xml:space="preserve">
+    <value>Улов на усилие по массе, %</value>
+  </data>
+  <data name="AxisNPUE" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
+  <data name="Catches" xml:space="preserve">
+    <value>Уловы</value>
+  </data>
+  <data name="CatchesAdjusted" xml:space="preserve">
+    <value>Откорректированные уловы</value>
+  </data>
+  <data name="SelectivityOgive" xml:space="preserve">
+    <value>Результирующая кривая</value>
+  </data>
 </root>

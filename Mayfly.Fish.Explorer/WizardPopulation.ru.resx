@@ -418,7 +418,7 @@
     <value>На графике ниже изображена модель длина-масса. Нажмите "Свойства тренда", чтобы увидеть подробности.</value>
   </data>
   <data name="labelZLabel.Text" xml:space="preserve">
-    <value>Мгновенный коэффициент смертности (Z)</value>
+    <value>Мгновенная смертность (Z)</value>
   </data>
   <data name="pageAgeAdjusted.Text" xml:space="preserve">
     <value>Откорректированная возрастная структура</value>

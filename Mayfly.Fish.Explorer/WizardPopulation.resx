@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 262</value>
+    <value>200, 264</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 198</value>
+    <value>200, 200</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 230</value>
+    <value>240, 232</value>
   </data>
   <data name="checkBoxLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 294</value>
+    <value>240, 296</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 95</value>
+    <value>50, 97</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>
@@ -440,6 +440,27 @@ Pick options you want to include in current research.</value>
   <data name="&gt;&gt;pageBasic.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
+  <data name="labelNoDataLW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelNoDataLW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="labelNoDataLW.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataLW.Name" xml:space="preserve">
+    <value>labelNoDataLW</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataLW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataLW.Parent" xml:space="preserve">
+    <value>pageModelLW</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataLW.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonLW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -474,7 +495,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelLW</value>
   </data>
   <data name="&gt;&gt;buttonLW.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelWLInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -504,7 +525,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelLW</value>
   </data>
   <data name="&gt;&gt;labelWLInstruction.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="plotLW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -543,7 +564,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelLW</value>
   </data>
   <data name="&gt;&gt;plotLW.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="pageModelLW.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 557</value>
@@ -559,6 +580,27 @@ Pick options you want to include in current research.</value>
   </data>
   <data name="&gt;&gt;pageModelLW.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="labelNoDataAL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelNoDataAL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="labelNoDataAL.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAL.Name" xml:space="preserve">
+    <value>labelNoDataAL</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAL.Parent" xml:space="preserve">
+    <value>pageModelAL</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAL.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="buttonAL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -594,7 +636,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelAL</value>
   </data>
   <data name="&gt;&gt;buttonAL.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelALInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -624,7 +666,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelAL</value>
   </data>
   <data name="&gt;&gt;labelALInstruction.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="plotAL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -663,7 +705,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelAL</value>
   </data>
   <data name="&gt;&gt;plotAL.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="pageModelAL.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 557</value>
@@ -679,6 +721,27 @@ Pick options you want to include in current research.</value>
   </data>
   <data name="&gt;&gt;pageModelAL.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="labelNoDataAW.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelNoDataAW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="labelNoDataAW.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAW.Name" xml:space="preserve">
+    <value>labelNoDataAW</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAW.Parent" xml:space="preserve">
+    <value>pageModelAW</value>
+  </data>
+  <data name="&gt;&gt;labelNoDataAW.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="plotAW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -717,7 +780,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelAW</value>
   </data>
   <data name="&gt;&gt;plotAW.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelAWInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -747,7 +810,7 @@ Pick options you want to include in current research.</value>
     <value>pageModelAW</value>
   </data>
   <data name="&gt;&gt;labelAWInstruction.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="pageModelAW.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 557</value>
@@ -905,9 +968,6 @@ Pick options you want to include in current research.</value>
   <data name="textBoxBpue.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="textBoxBpue.Text" xml:space="preserve">
-    <value>{0:N2}</value>
-  </data>
   <data name="textBoxBpue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -967,9 +1027,6 @@ Pick options you want to include in current research.</value>
   </data>
   <data name="textBoxNpue.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
-  </data>
-  <data name="textBoxNpue.Text" xml:space="preserve">
-    <value>{0:N2}</value>
   </data>
   <data name="textBoxNpue.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -1250,7 +1307,7 @@ Pick options you want to include in current research.</value>
     <value>3, 15, 3, 0</value>
   </data>
   <data name="labelSelectionSourceWarn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 26</value>
+    <value>416, 26</value>
   </data>
   <data name="labelSelectionSourceWarn.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -1597,9 +1654,6 @@ Length composition adjustment will be skipped. Try to merge some mesh values</va
   </data>
   <data name="plotLengthAdjusted.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
-  </data>
-  <data name="plotLengthAdjusted.AxisYFormat" xml:space="preserve">
-    <value>P0</value>
   </data>
   <data name="plotLengthAdjusted.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>
@@ -2251,9 +2305,6 @@ Age composition adjustment will be skipped. Try to select another age</value>
   </data>
   <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
-  </data>
-  <data name="plotAgeAdjusted.AxisYFormat" xml:space="preserve">
-    <value>P0</value>
   </data>
   <data name="plotAgeAdjusted.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>

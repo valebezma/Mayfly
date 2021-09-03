@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Paragraph3" xml:space="preserve">
-    <value>{0}. Усилие составило {1:N3} {2}.</value>
-  </data>
-  <data name="Paragraph3_1" xml:space="preserve">
-    <value>Улов отсутствует.</value>
-  </data>
-  <data name="Paragraph4" xml:space="preserve">
-    <value>Количество &lt;strong&gt;{0}&lt;/strong&gt; составило {1} экз., масса составила {2:N3} кг.</value>
-  </data>
-  <data name="Paragraph4_1" xml:space="preserve">
-    <value>Улов не обработан (только зарегистрирован).</value>
-  </data>
   <data name="Subtitle" xml:space="preserve">
     <value>Подробное описание уловов</value>
+  </data>
+  <data name="Paragraph_1" xml:space="preserve">
+    <value>{0}. Усилие составило {1:N3} {2}.</value>
+  </data>
+  <data name="Paragraph_2_1" xml:space="preserve">
+    <value>Улов не обработан (только зарегистрирован).</value>
+  </data>
+  <data name="Paragraph_2" xml:space="preserve">
+    <value>Количество &lt;strong&gt;{0}&lt;/strong&gt; составило {1} экз., масса составила {2:N3} кг.</value>
+  </data>
+  <data name="Paragraph_1_1" xml:space="preserve">
+    <value>Улов отсутствует.</value>
   </data>
 </root>

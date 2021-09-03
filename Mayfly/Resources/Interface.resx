@@ -221,4 +221,7 @@ I have some issues on {1} to discuss with you:
   <data name="ExpirationMask" xml:space="preserve">
     <value>0 day(-s)</value>
   </data>
+  <data name="FigureCaption" xml:space="preserve">
+    <value>Figure {0} — {1}.</value>
+  </data>
 </root>

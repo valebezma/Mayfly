@@ -124,6 +124,24 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BPUE, %.
+        /// </summary>
+        internal static string AxisBPUE {
+            get {
+                return ResourceManager.GetString("AxisBPUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NPUE, %.
+        /// </summary>
+        internal static string AxisNPUE {
+            get {
+                return ResourceManager.GetString("AxisNPUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Combined data.
         /// </summary>
         internal static string BioCombined {

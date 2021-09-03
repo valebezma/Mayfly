@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Notice1" xml:space="preserve">
-    <value>* – Улов на усилие отражает представленность {2} категории в улове 1 {3}.</value>
-  </data>
   <data name="Paragraph1" xml:space="preserve">
-    <value>Уловы {0} категорий (выраженные из количества и массы) на единицу усилия и {0} структура уловов представлены в таблице {2}. Также для каждой {0} категории приведены доли ювенильных особей и особей обоих полов.</value>
+    <value>Уловы {0} категорий (выраженные из количества и массы) на единицу усилия и {1} структура уловов представлены в таблице {2}. Также для каждой {0} категории приведены доли ювенильных особей и особей обоих полов.</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
     <value>Описанная модель основана на данных, предоставленных {0} ({1}).</value>
   </data>
-  <data name="Table1" xml:space="preserve">
-    <value>{0} структура уловов</value>
-  </data>
   <data name="Paragraph2" xml:space="preserve">
     <value>Возрастная структура {0} была оценена с использованием модели:</value>
   </data>
-  <data name="Subtitle" xml:space="preserve">
-    <value>{0} структура популяции</value>
+  <data name="Figure1" xml:space="preserve">
+    <value>Возрастная структура уловов</value>
+  </data>
+  <data name="Figure2" xml:space="preserve">
+    <value>Откорректированная возрастная структура</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Сводка по {0} структуре</value>
+  </data>
+  <data name="Paragraph1_1" xml:space="preserve">
+    <value>Усредненная по классам орудий структура изображена на рисунке {0}.</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>{0} структура уловов</value>
   </data>
 </root>

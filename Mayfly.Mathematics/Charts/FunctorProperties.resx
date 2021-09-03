@@ -247,7 +247,7 @@
     <value>25, 25, 3, 25</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 15</value>
+    <value>85, 15</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -334,7 +334,7 @@
     <value>25, 25</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label20.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -381,78 +381,6 @@
   <data name="&gt;&gt;tabPageAppearance.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panelColorUnselectedSeries.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 85</value>
-  </data>
-  <data name="panelColorUnselectedSeries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="panelColorUnselectedSeries.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;panelColorUnselectedSeries.Name" xml:space="preserve">
-    <value>panelColorUnselectedSeries</value>
-  </data>
-  <data name="&gt;&gt;panelColorUnselectedSeries.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelColorUnselectedSeries.Parent" xml:space="preserve">
-    <value>tabPageInteraction</value>
-  </data>
-  <data name="&gt;&gt;panelColorUnselectedSeries.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panelColorSelectedSeries.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 59</value>
-  </data>
-  <data name="panelColorSelectedSeries.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="panelColorSelectedSeries.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panelColorSelectedSeries.Name" xml:space="preserve">
-    <value>panelColorSelectedSeries</value>
-  </data>
-  <data name="&gt;&gt;panelColorSelectedSeries.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelColorSelectedSeries.Parent" xml:space="preserve">
-    <value>tabPageInteraction</value>
-  </data>
-  <data name="&gt;&gt;panelColorSelectedSeries.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 65</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 13</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Selected series color</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>tabPageInteraction</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -463,13 +391,13 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 129</value>
+    <value>24, 25</value>
   </data>
   <data name="label8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 25, 0, 25</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 15</value>
+    <value>118, 15</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -487,73 +415,7 @@
     <value>tabPageInteraction</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 25, 0, 25</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 15</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Distinguishing mode</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>tabPageInteraction</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 91</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Non selected series color</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPageInteraction</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="checkBoxAllowCursors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -562,7 +424,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAllowCursors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 169</value>
+    <value>47, 65</value>
   </data>
   <data name="checkBoxAllowCursors.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -586,7 +448,7 @@
     <value>tabPageInteraction</value>
   </data>
   <data name="&gt;&gt;checkBoxAllowCursors.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="tabPageInteraction.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

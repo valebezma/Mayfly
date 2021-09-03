@@ -154,5 +154,14 @@ namespace Mayfly.Extensions
             if (string.IsNullOrWhiteSpace(result) && !ci.Equals(CultureInfo.InvariantCulture)) return GetLocalizedValue(value, CultureInfo.InvariantCulture);
             else return result;
         }
+
+        public static string ChangeEncoding(this string s, Encoding sourceEncoding, Encoding targetEncoding)
+        {
+            byte[] sourceBytes = sourceEncoding.GetBytes(s);
+            byte[] targetBytes = Encoding.Convert(sourceEncoding, targetEncoding, sourceBytes);
+            char[] targetChars = new char[targetEncoding.GetCharCount(targetBytes, 0, targetBytes.Length)];
+            targetEncoding.GetChars(targetBytes, 0, targetBytes.Length, targetChars, 0);
+            return new string(targetChars);
+        }
     }
 }

@@ -40,12 +40,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageInteraction = new System.Windows.Forms.TabPage();
-            this.panelColorUnselectedSeries = new System.Windows.Forms.Panel();
-            this.panelColorSelectedSeries = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.checkBoxAllowCursors = new System.Windows.Forms.CheckBox();
             this.colorDialogTrend = new System.Windows.Forms.ColorDialog();
             this.tabControl1.SuspendLayout();
@@ -78,6 +73,7 @@
             // 
             // panelTrendColor
             // 
+            this.panelTrendColor.BackColor = System.Drawing.Color.OrangeRed;
             this.panelTrendColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.panelTrendColor, "panelTrendColor");
             this.panelTrendColor.Name = "panelTrendColor";
@@ -129,35 +125,11 @@
             // 
             // tabPageInteraction
             // 
-            this.tabPageInteraction.Controls.Add(this.panelColorUnselectedSeries);
-            this.tabPageInteraction.Controls.Add(this.panelColorSelectedSeries);
-            this.tabPageInteraction.Controls.Add(this.label7);
             this.tabPageInteraction.Controls.Add(this.label8);
-            this.tabPageInteraction.Controls.Add(this.label13);
-            this.tabPageInteraction.Controls.Add(this.label6);
             this.tabPageInteraction.Controls.Add(this.checkBoxAllowCursors);
             resources.ApplyResources(this.tabPageInteraction, "tabPageInteraction");
             this.tabPageInteraction.Name = "tabPageInteraction";
             this.tabPageInteraction.UseVisualStyleBackColor = true;
-            // 
-            // panelColorUnselectedSeries
-            // 
-            this.panelColorUnselectedSeries.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelColorUnselectedSeries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelColorUnselectedSeries, "panelColorUnselectedSeries");
-            this.panelColorUnselectedSeries.Name = "panelColorUnselectedSeries";
-            // 
-            // panelColorSelectedSeries
-            // 
-            this.panelColorSelectedSeries.BackColor = System.Drawing.Color.Red;
-            this.panelColorSelectedSeries.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.panelColorSelectedSeries, "panelColorSelectedSeries");
-            this.panelColorSelectedSeries.Name = "panelColorSelectedSeries";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
             // 
             // label8
             // 
@@ -165,23 +137,16 @@
             this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label8.Name = "label8";
             // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label13.Name = "label13";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // checkBoxAllowCursors
             // 
             resources.ApplyResources(this.checkBoxAllowCursors, "checkBoxAllowCursors");
             this.checkBoxAllowCursors.Name = "checkBoxAllowCursors";
             this.checkBoxAllowCursors.UseVisualStyleBackColor = true;
             this.checkBoxAllowCursors.CheckedChanged += new System.EventHandler(this.valueChanged);
+            // 
+            // colorDialogTrend
+            // 
+            this.colorDialogTrend.Color = System.Drawing.Color.OrangeRed;
             // 
             // FunctorProperties
             // 
@@ -212,12 +177,7 @@
         private System.Windows.Forms.ColorDialog colorDialogTrend;
         private System.Windows.Forms.TabPage tabPageInteraction;
         private System.Windows.Forms.CheckBox checkBoxAllowCursors;
-        private System.Windows.Forms.Panel panelColorUnselectedSeries;
-        private System.Windows.Forms.Panel panelColorSelectedSeries;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelTrendColor;
         private System.Windows.Forms.TrackBar trackBarTrendWidth;
         private System.Windows.Forms.Label label23;

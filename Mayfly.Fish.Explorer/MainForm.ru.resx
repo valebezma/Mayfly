@@ -422,7 +422,7 @@
     <value>200, 22</value>
   </data>
   <data name="menuItemCenosis.Text" xml:space="preserve">
-    <value>Структура сообщества</value>
+    <value>Характеристика сообщества</value>
   </data>
   <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>

@@ -233,4 +233,10 @@ To eliminate it from further analysis hold {2}.</value>
   <data name="StratesBio" xml:space="preserve">
     <value>Loaded with bio</value>
   </data>
+  <data name="AxisBPUE" xml:space="preserve">
+    <value>BPUE, %</value>
+  </data>
+  <data name="AxisNPUE" xml:space="preserve">
+    <value>NPUE, %</value>
+  </data>
 </root>

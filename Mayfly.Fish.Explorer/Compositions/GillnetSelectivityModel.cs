@@ -291,7 +291,7 @@ namespace Mayfly.Fish.Explorer
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column2_1, .2, 2);
             table1.AddHeaderCell(Resources.Reports.Caption.GearClass, Dimension);
-            table1.AddHeaderCell(Resources.Reports.Sections.Selectivity.Column2_2, 2, CellSpan.Rows);
+            table1.AddHeaderCell(Resources.Interface.SelectivityOgive, 2, CellSpan.Rows);
             table1.EndRow();
 
             table1.StartRow();

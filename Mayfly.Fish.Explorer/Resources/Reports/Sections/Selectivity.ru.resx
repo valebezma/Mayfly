@@ -117,28 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Column1_1" xml:space="preserve">
+    <value>Размер ячеи</value>
+  </data>
+  <data name="Column1_2" xml:space="preserve">
+    <value>Параметры селективности</value>
+  </data>
+  <data name="Column2_1" xml:space="preserve">
+    <value>Размерный класс, мм</value>
+  </data>
+  <data name="Column2_3" xml:space="preserve">
+    <value>Оптимальная длина, мм</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Корректировка размерной структуры с использованием модели селективности {0}</value>
+  </data>
+  <data name="Table3" xml:space="preserve">
+    <value>Параметры селективности {0} разных классов {1}</value>
+  </data>
+  <data name="Paragraph6" xml:space="preserve">
+    <value>Модель селективности не может быть построена на выбранных в текущем расчете классах, таким образом размерная структура не может быть откорректирована.</value>
+  </data>
   <data name="Paragraph1" xml:space="preserve">
-    <value>Catches of {0} categories (expressed in number and mass) per unit of efforts (CPUE) and {0} composition of {1} catch are presented in table {2}. Also fractions of juveniles and both genders for each {0} category are given.</value>
+    <value>Оценка селективности основана на уловах {0} ставных сетей с различным шагом ячеи. Эти данные использованы в расчете и изображены на рисунке {1}.</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
-    <value>Described model is based on data provided by {0} ({1}).</value>
+    <value>Оптимальная длина и параметры селективности (фактор селективности и стандартное отклонение) оценены по распределению длины (рис. {0}) для каждого сочетания размеров ячеи (табл. {1}).</value>
   </data>
-  <data name="Table" xml:space="preserve">
-    <value>Catches {0} composition</value>
-  </data>
-  <data name="Paragraph2" xml:space="preserve">
-    <value>Age composition of {0} was obtained using growth model:</value>
-  </data>
-  <data name="Header" xml:space="preserve">
-    <value>{0} composition summary</value>
-  </data>
-  <data name="Paragraph1_1" xml:space="preserve">
-    <value>Averaged by gear class composition is depicted in figure {0}.</value>
-  </data>
-  <data name="Figure1" xml:space="preserve">
-    <value>Age composition of catches</value>
-  </data>
-  <data name="Figure2" xml:space="preserve">
-    <value>Adjusted age composition</value>
+  <data name="Paragraph5" xml:space="preserve">
+    <value>Усредненная размерная структура откорректирована по результирующей кривой селективности. Результаты изображены на рисунке {0}.</value>
   </data>
 </root>

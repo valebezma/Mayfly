@@ -645,8 +645,8 @@ namespace Mayfly.Fish.Explorer
                 spreadSheetSelectivity.Rows.Add(gridRow);
             }
 
-            textBoxNpue.ResetFormatted(Swarm.Abundance);
-            textBoxBpue.ResetFormatted(Swarm.Biomass);
+            textBoxNpue.Text = Swarm.Abundance.ToString("N2");
+            textBoxBpue.Text = Swarm.Biomass.ToString("N2");
         }
 
         private void pageCpue_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -727,16 +727,13 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Composition comp in lengthCompositionWizard.CatchesComposition.SeparateCompositions)
             {
-                //spreadSheetComposition.InsertColumn(comp.Name, comp.Name,
-                //    typeof(double), spreadSheetComposition.ColumnCount, 75, "N3").ReadOnly = true;
-                //comp.UpdateValues(spreadSheetComposition, ValueVariant.Abundance);
-
                 if (comp is LengthComposition)
                 {
                     Series catches = new Series
                     {
                         Name = comp.Name,
-                        ChartType = SeriesChartType.Line
+                        ChartType = SeriesChartType.Line,
+                        Color = plotSelectionSource.GetNextColor()
                     };
                     foreach (SizeClass size in comp)
                     {
@@ -765,9 +762,9 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxLengthSource_SelectedIndexChanged(object sender, EventArgs e)
         {
-            plotLength.AxisYTitle = comboBoxLengthSource.SelectedIndex == 0 ? "NPUE, %" : "BPUE, %";
+            plotLength.AxisYTitle = comboBoxLengthSource.SelectedIndex == 0 ? Resources.Interface.AxisNPUE : Resources.Interface.AxisBPUE;
             plotLength.Series.Clear();
-            Series all = new Series() { ChartType = SeriesChartType.Column };
+            Series all = new Series() { ChartType = SeriesChartType.Column, Color = plotLength.GetNextColor() };
             foreach (SizeClass sizeClass in lengthCompositionWizard.CatchesComposition)
             {
                 all.Points.AddXY(sizeClass.Size.Midpoint, comboBoxLengthSource.SelectedIndex == 0 ? sizeClass.AbundanceFraction : sizeClass.BiomassFraction);
@@ -785,15 +782,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         private void pageSelectionSource_Initialize(object sender, WizardPageInitEventArgs e)
-        {
-            //if (!checkBoxLengthAdjust.Checked)
-            //{
-            //    while (wizardExplorer.SelectedPage != pageAge)
-            //    {
-            //        wizardExplorer.NextPage();
-            //    }
-            //}
-        }
+        {        }
 
 
         private void selectionCalculator_DoWork(object sender, DoWorkEventArgs e)
@@ -858,9 +847,11 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 Functor ogive = new Functor(Resources.Interface.SelectivityOgive, SelectivityModel.GetSelection);
+                ogive.Properties.TrendWidth = 2 * ogive.Properties.TrendWidth;
+                ogive.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
                 plotSelection.AddSeries(ogive);
+
                 plotSelection.DoPlot();
-                ogive.Series.BorderWidth = 2 * ogive.Series.BorderWidth;
 
                 plotLengthAdjusted.Series.Clear();
                 plotLengthAdjusted.AxisXInterval = LengthStructure.Interval;
@@ -872,19 +863,21 @@ namespace Mayfly.Fish.Explorer
                 Series catches = new Series
                 {
                     Name = Resources.Interface.Catches,
-                    ChartType = SeriesChartType.Line
-
+                    ChartType = SeriesChartType.Line,
+                    Color = plotLengthAdjusted.GetNextColor()
                 };
                 foreach (SizeClass size in lengthCompositionWizard.CatchesComposition)
                 {
                     catches.Points.AddXY(size.Size.Midpoint, size.Abundance);
                     max = Math.Max(max, size.Abundance);
                 }
+                plotLengthAdjusted.Series.Add(catches);
 
                 Series pop = new Series
                 {
                     Name = Resources.Interface.CatchesAdjusted,
-                    ChartType = SeriesChartType.Line
+                    ChartType = SeriesChartType.Line,
+                    Color = plotLengthAdjusted.GetNextColor()
                 };
                 foreach (SizeClass size in LengthStructure)
                 {
@@ -893,7 +886,6 @@ namespace Mayfly.Fish.Explorer
                 }
 
                 plotLengthAdjusted.AxisYMax = max;
-                plotLengthAdjusted.Series.Add(catches);
                 plotLengthAdjusted.Series.Add(pop);
                 plotLengthAdjusted.DoPlot();
             }
@@ -983,10 +975,10 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxAgeSource_SelectedIndexChanged(object sender, EventArgs e)
         {
-            plotAge.AxisYTitle = comboBoxAgeSource.SelectedIndex == 0 ? "NPUE, %" : "BPUE, %";
+            plotAge.AxisYTitle = comboBoxAgeSource.SelectedIndex == 0 ? Resources.Interface.AxisNPUE : Resources.Interface.AxisBPUE;
             plotAge.Series.Clear();
 
-            Series all = new Series() { ChartType = SeriesChartType.Column };
+            Series all = new Series() { ChartType = SeriesChartType.Column, Color = plotAge.GetNextColor() };
             //Series all = new Series() { ChartType = SeriesChartType.Column, BorderColor = System.Drawing.Color.Black, Color = System.Drawing.Color.Gainsboro };
             //Series juv = new Series() { ChartType = SeriesChartType.Column, BorderColor = System.Drawing.Color.Black, Color = System.Drawing.Color.LawnGreen };
             //Series mal = new Series() { ChartType = SeriesChartType.Column, BorderColor = System.Drawing.Color.Black, Color = System.Drawing.Color.DodgerBlue };
@@ -1116,28 +1108,30 @@ namespace Mayfly.Fish.Explorer
                 Series catches = new Series
                 {
                     Name = Resources.Interface.Catches,
-                    ChartType = SeriesChartType.Line
+                    ChartType = SeriesChartType.Line,
+                    Color = plotAgeAdjusted.GetNextColor()
                 };
                 foreach (AgeGroup group in ageCompositionWizard.CatchesComposition)
                 {
                     catches.Points.AddXY(group.Age.Value, group.Abundance);
                     max = Math.Max(max, group.Abundance);
                 }
+                plotAgeAdjusted.Series.Add(catches);
 
                 Series pop = new Series
                 {
                     Name = Resources.Interface.CatchesAdjusted,
-                    ChartType = SeriesChartType.Line
+                    ChartType = SeriesChartType.Line,
+                    Color = plotAgeAdjusted.GetNextColor()
                 };
                 foreach (AgeGroup group in AgeStructure)
                 {
                     pop.Points.AddXY(group.Age.Value, group.Abundance);
                     max = Math.Max(max, group.Abundance);
                 }
+                plotAgeAdjusted.Series.Add(pop);
 
                 plotAgeAdjusted.AxisYMax = max;
-                plotAgeAdjusted.Series.Add(catches);
-                plotAgeAdjusted.Series.Add(pop);
                 plotAgeAdjusted.DoPlot();
             }
         }
@@ -1181,8 +1175,8 @@ namespace Mayfly.Fish.Explorer
                 plot.DoPlot();
             }
 
-            if (ageCompositionWizard != null) ageCompositionWizard.CatchesComposition.Name = "Age composition of catches";
-            if (AgeStructure != null) AgeStructure.Name = "Adjusted age composition";
+            if (ageCompositionWizard != null) ageCompositionWizard.CatchesComposition.Name = Resources.Reports.Sections.Population.Figure1;
+            if (AgeStructure != null) AgeStructure.Name = Resources.Reports.Sections.Population.Figure2;
 
             pageReport.SetNavigation(false);
             reporter.RunWorkerAsync();

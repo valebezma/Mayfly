@@ -12,6 +12,8 @@ using Mayfly.Mathematics.Statistics;
 using Mayfly.Extensions;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
 using RDotNet;
+using System.Text;
+using Mayfly.Extensions;
 
 namespace Mayfly.Mathematics.Charts
 {
@@ -800,6 +802,8 @@ namespace Mayfly.Mathematics.Charts
 
         private bool isChronic;
 
+        int colorIndex = 0;
+
 
 
         public Plot()
@@ -1122,6 +1126,24 @@ namespace Mayfly.Mathematics.Charts
 
 
 
+        public Color GetNextColor(double opacity)
+        {
+            if (Series.Count == 0 || colorIndex == UserSettings.Pallette.Length)
+            {
+                colorIndex = 0;
+            }
+
+            Color result = Color.FromArgb((int)(255d * opacity), UserSettings.Pallette[colorIndex]);
+            colorIndex++;
+            return result;
+        }
+
+        public Color GetNextColor()
+        {
+            return GetNextColor(1);
+        }
+
+
         public void AddSeries(Histogramma histogram)
         {
             if (IsChronic != histogram.IsChronic)
@@ -1363,17 +1385,10 @@ namespace Mayfly.Mathematics.Charts
 
         public void DoPlot()
         {
-            #region Form header
-
-            if (FindForm() != null)
+            if (FindForm() != null && FindForm().Controls.Count == 1)
             {
-                if (FindForm().Controls.Count == 1)
-                {
-                    FindForm().Text = Text;
-                }
+                FindForm().Text = Text;
             }
-
-            #endregion
 
             #region Legends
 
@@ -1466,35 +1481,23 @@ namespace Mayfly.Mathematics.Charts
 
             #region Samples
 
-            ApplyPaletteColors();
-
             foreach (Histogramma sample in Histograms)
             {
-                if (sample.Series != null)
-                {
-                    if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = sample.Series.Color;
-                    
-                    sample.Series.Color = Color.Transparent;
-                }
+                if (sample.Properties.DataPointColor == Color.OliveDrab) sample.Properties.DataPointColor = GetNextColor();
 
                 sample.Update();
             }
 
             foreach (Scatterplot sample in Scatterplots)
             {
-                if (sample.Series != null)
+                if (sample.Properties.DataPointColor == Color.SeaGreen)
                 {
-                    if (sample.Properties.DataPointColor == Color.SeaGreen)
-                    {
-                        sample.Properties.DataPointColor = sample.Series.Color;
-                    }
+                    sample.Properties.DataPointColor = GetNextColor();
+                }
 
-                    if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon)
-                    {
-                        sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
-                    }
-                    
-                    sample.Series.Color = Color.Transparent;
+                if (sample.Properties.ShowTrend && sample.Properties.TrendColor == Color.Maroon)
+                {
+                    sample.Properties.TrendColor = sample.Properties.DataPointColor.Darker();
                 }
 
                 sample.Update();
@@ -1502,12 +1505,7 @@ namespace Mayfly.Mathematics.Charts
 
             foreach (Functor sample in Functors)
             {
-                if (sample.Series != null)
-                {
-                    sample.Properties.TrendColor = sample.Series.Color;
-                    
-                    sample.Series.Color = Color.Transparent;
-                }
+                if (sample.Properties.TrendColor == Color.OrangeRed) sample.Properties.TrendColor = GetNextColor();
 
                 sample.Update();
             }
@@ -1532,11 +1530,6 @@ namespace Mayfly.Mathematics.Charts
                 Updated.Invoke(this, new EventArgs());
             }
         }
-
-        //public void Update()
-        //{
-        //    Update(this, new EventArgs);
-        //}
 
 
         public object GetSample(string name)
@@ -2120,9 +2113,9 @@ namespace Mayfly.Mathematics.Charts
                 svg.Replace('\\', '/'), width, height, 8));
             engine.Evaluate("par(mfrow = c(1, 1))");
             engine.Evaluate("par(mar = c(3, 3, 0, 3) + 1.1, cex = 1)");
-            engine.Evaluate(string.Format("plot(NULL, bty = 'n', xlab = '{0}', ylab = '{1}', xlim=c({2}, {3}), ylim=c({4}, {5}))",
-                AxisXTitle, AxisYTitle, AxisXMin, AxisXMax, AxisYMin, AxisYMax)
-                );
+            engine.SetSymbol("xlims", engine.CreateNumericVector(new double[] { AxisXMin, AxisXMax }));
+            engine.SetSymbol("ylims", engine.CreateNumericVector(new double[] { AxisYMin, AxisYMax }));
+            engine.Evaluate(string.Format("plot(NULL, bty = 'n', xlab = '{0}', ylab = '{1}', xlim = xlims, ylim = ylims)", AxisXTitle, AxisYTitle));
 
             List<string> seriesNames = new List<string>();
             engine.Evaluate("cols = c()");
@@ -2153,7 +2146,8 @@ namespace Mayfly.Mathematics.Charts
                         var yvalues = engine.CreateNumericVector(data.Y);
                         engine.SetSymbol("xvalues", xvalues);
                         engine.SetSymbol("yvalues", yvalues);
-                        engine.Evaluate(string.Format("col1 = rgb({0}, {1}, {2}, {3})", ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d)));
+                        engine.SetSymbol("colvalues", engine.CreateNumericVector(new double[] { ((double)col.R / 255d), ((double)col.G / 255d), ((double)col.B / 255d), ((double)col.A / 255d) }));
+                        engine.Evaluate("col1 = rgb(colvalues[1], colvalues[2], colvalues[3], colvalues[4])");
 
                         if (series.IsVisibleInLegend)
                         {
@@ -2209,7 +2203,8 @@ namespace Mayfly.Mathematics.Charts
                     i = 0;
 
                     engine.Evaluate("par(new = TRUE)");
-                    engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim=c({0}, {1}), ylim=c({2}, {3}), axes = F)", AxisXMin, AxisXMax, AxisY2Min, AxisY2Max));
+                    engine.SetSymbol("y2lims", engine.CreateNumericVector(new double[] { AxisY2Min, AxisY2Max }));
+                    engine.Evaluate(string.Format("plot(NULL, xlab = '', ylab = '', xlim = xlims, ylim = y2lims, axes = F)"));
                     engine.Evaluate("axis(side = 4)");
                     engine.Evaluate(string.Format("mtext('{0}', side = 4, line = 3)", AxisY2Title));
                 }
@@ -2217,9 +2212,13 @@ namespace Mayfly.Mathematics.Charts
 
             if (ShowLegend)
             {
-                var names = engine.CreateCharacterVector(seriesNames);
-                engine.SetSymbol("names", names);
-                engine.Evaluate("legend(x = 'topleft', legend = names, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds, lty = ltys)");
+                //var legs = engine.CreateCharacterVector(seriesNames);
+                //engine.SetSymbol("legs", legs);
+                //engine.Evaluate("legend(x = 'topleft', legend = legs, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds, lty = ltys)");
+
+                engine.Evaluate("legs = c()");
+                foreach (string s in seriesNames) { engine.Evaluate(string.Format("legs = c(legs, '{0}')", s)); }
+                engine.Evaluate("legend(x = 'topleft', legend = legs, col = cols, pch = pchs, fill = fills, bty = 'n', border = borders, lwd = lwds, lty = ltys)");
             }
 
             engine.Evaluate("dev.off()");

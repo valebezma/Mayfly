@@ -158,9 +158,10 @@ namespace Mayfly.Mathematics.Charts
             Series.Name = Properties.FunctionName;
             Series.YAxisType = axisType;
             Series.BorderWidth = Properties.TrendWidth;
-            Series.Color = Container.IsDistinguishingMode ? (Mathematics.UserSettings.ColorAccent) : Properties.TrendColor;
-
+            Series.Color = Container.IsDistinguishingMode ? UserSettings.ColorSelected : Properties.TrendColor;
             UpdateDataPoints(AxisX.Minimum, AxisX.Maximum, AxisY.Minimum, AxisY.Maximum);
+
+
 
             if (Properties.AllowCursors)
             {

@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Column1" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
   <data name="Paragraph2" xml:space="preserve">
     <value>Связь возраста с длиной ({0}) выражается следующим уравнением:</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
     <value>Связь массы с длиной ({0}) выражается следующим уравнением:</value>
   </data>
-  <data name="Paragraph1" xml:space="preserve">
-    <value>Основные биологические параметры, т. е. средняя длина и масса, разных возрастных групп {0} приведены в таблице {1}.</value>
-  </data>
-  <data name="Table1" xml:space="preserve">
+  <data name="Title" xml:space="preserve">
     <value>Основные биологические параметры {0}</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Параметры роста {0}</value>
+  <data name="Table" xml:space="preserve">
+    <value>Основные биологические параметры {0} в уловах разных классов {1}</value>
+  </data>
+  <data name="Paragraph1" xml:space="preserve">
+    <value>Особи {0} в уловах были от {1} до {2} мм длиной (в среднем - {3:n1} мм). Масса особей колебалась от {4} до {5} г (в среднем - {6:n1} г).</value>
+  </data>
+  <data name="Paragraph4" xml:space="preserve">
+    <value>Совмещенная модель возраст - масса изображена на рисунке {0}.</value>
+  </data>
+  <data name="Paragraph5" xml:space="preserve">
+    <value>Параметры роста не могут быть вычислены.</value>
+  </data>
+  <data name="Paragraph6" xml:space="preserve">
+    <value>Средний улов на усилие {0} равен {1:n1} экз./{2} (или {3:n2} кг/{2}). Основные биологические параметры {0} в уловах разных классов {4} приведены в таблице {5}.</value>
   </data>
 </root>

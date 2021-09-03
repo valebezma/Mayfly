@@ -61,6 +61,24 @@ namespace Mayfly.Fish.Explorer.Resources.Reports.Sections {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age composition of catches.
+        /// </summary>
+        internal static string Figure1 {
+            get {
+                return ResourceManager.GetString("Figure1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjusted age composition.
+        /// </summary>
+        internal static string Figure2 {
+            get {
+                return ResourceManager.GetString("Figure2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} composition summary.
         /// </summary>
         internal static string Header {

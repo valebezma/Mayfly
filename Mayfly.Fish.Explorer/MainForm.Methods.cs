@@ -719,25 +719,13 @@ namespace Mayfly.Fish.Explorer
             histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
             histAged = new Histogramma(Resources.Interface.StratesAged);
 
-            Color startColor = Color.FromArgb(150, Mathematics.UserSettings.ColorAccent);
-
             foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
             {
                 hist.Properties.Borders = false;
-                hist.Properties.DataPointColor = startColor;
+                hist.Properties.DataPointColor = plotQualify.GetNextColor(.5);
                 hist.Properties.PointWidth = .5;
-                startColor = startColor.Darker();
-            }
-
-            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
-            {
                 plotQualify.AddSeries(hist);
-                //if (hist.Series != null) hist.Series.SetCustomProperty("DrawSideBySide", "False");
             }
-
-            //plotQualify.Remove(ext);
-            //plotQualify.Remove(inter);
-            //plotQualify.Remove(combi);
 
 
             ext = new Scatterplot(Resources.Interface.QualBio);

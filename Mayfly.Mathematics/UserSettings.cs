@@ -4,6 +4,9 @@ using System.Resources;
 using System.Windows.Forms;
 using System.Reflection;
 using Mayfly.Mathematics.Statistics;
+using System.Collections.Generic;
+using Mayfly.Extensions;
+using System.IO;
 
 namespace Mayfly.Mathematics
 {
@@ -113,6 +116,29 @@ namespace Mayfly.Mathematics
             get { return Color.FromArgb((int)GetValue(Path, UserSettingPaths.ColorAccent)); }
             set { UserSetting.SetValue(Path, UserSettingPaths.ColorAccent, value.ToArgb()); }
         }
+
+        static Color[] colors;
+
+        public static Color[] Pallette
+        {
+            get
+            {
+                if (colors == null)
+                {
+                    List<Color> result = new List<Color>();
+
+                    foreach (string hex in File.ReadAllLines(System.IO.Path.Combine(Application.StartupPath, @"interface\pallette.ini")))
+                    {
+                        result.Add(ColorTranslator.FromHtml(hex));
+                    }
+
+                    colors = result.ToArray();
+                }
+
+                return colors;
+            }
+        }
+        
 
 
         public static double DefaultAlpha

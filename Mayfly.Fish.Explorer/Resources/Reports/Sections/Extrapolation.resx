@@ -133,13 +133,13 @@
     <value>Structure of {0} stock is estimated by catches of {1} and studiing of population {2} composition.</value>
   </data>
   <data name="Paragraph1_None" xml:space="preserve">
-    <value>{1} structure of {0} stock con not be estimated because of the lack of data.</value>
+    <value>{0} structure of {1} stock con not be estimated because of the lack of data.</value>
   </data>
   <data name="Paragraph2" xml:space="preserve">
     <value>Abundance and biomass of species is calculated as follows: catch per effort (both quantitative and by mass) averaged between all gear classes and then divided by catchability, which for {0} equals {1:N3}. Catch per effort for gear classes have caught {2} are given in table {3}.</value>
   </data>
   <data name="Paragraph2_1" xml:space="preserve">
-    <value> Catches also reduced according to spatial ratios which reflect part of water where gear class can be used (see table {3}).</value>
+    <value> Catches also reduced according to spatial ratios which reflect part of water where gear class can be used (see table {0}).</value>
   </data>
   <data name="Paragraph3" xml:space="preserve">
     <value>Abundance and biomass of species is calculated as follows: catch per effort (both quantitative and by mass, {0:N3} {1} and {2:N3} {3} respectively) divided by catchability, which for {4} equals {5:N3}.</value>

@@ -268,6 +268,6 @@
     <value>Разнообразие сообщества</value>
   </data>
   <data name="labelDiversityMethod.Text" xml:space="preserve">
-    <value>Метод для вычисления разнообразия</value>
+    <value>Разнообразие по</value>
   </data>
 </root>
