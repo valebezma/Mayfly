@@ -160,21 +160,21 @@ namespace Mayfly
         {
             get
             {
-                return FeatureLevel.Advanced;
+                if (Verify("Insider")) return FeatureLevel.Insider;
+                if (Verify("Advanced")) return FeatureLevel.Advanced;
+                return FeatureLevel.Basic;
             }
         }
 
         public static bool Verify(string feature)
         {
-            return true;
+            foreach (License lic in InstalledLicenses)
+            {
+                if (lic.Feature != feature) continue;
+                if (lic.IsValid) return true;
+            }
 
-            //foreach (License lic in InstalledLicenses)
-            //{
-            //    if (lic.Feature != feature) continue;
-            //    if (lic.IsValid) return true;
-            //}
-
-            //return false;
+            return false;
         }
     }
 

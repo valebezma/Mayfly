@@ -11,9 +11,9 @@ namespace Mayfly
 {
     public abstract class Server
     {
-        public static string Domain = "mayfly.software";
+        public static string Domain = "mayfly.ru";
 
-        public static string ServerHttps = "http://" + Domain;
+        public static string ServerHttps = "https://" + Domain;
 
 
         public static Uri GetUri(string server, string filename)
