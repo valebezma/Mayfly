@@ -56,6 +56,10 @@
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Meta.Numerics, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -278,10 +282,16 @@
   <ItemGroup>
     <None Include="Resources\freader.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico\1.ico" />
+    <Content Include="ico\2.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"$(OutDir)rh.exe" -open "$(TargetPath)" -save "$(TargetPath)" -action addskip -res "$(ProjectDir)icons.res"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe" $(ProjectDir)icons.rc</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

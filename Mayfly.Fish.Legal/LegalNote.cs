@@ -45,7 +45,7 @@ namespace Mayfly.Fish.Legal
 
         internal void AddReferenceNotes(string note1, string note2, string note3, string note4, string note5)
         {
-            Table table = new Table(ReportTableClass.Fill);
+            Table table = new Table();
 
             table.StartRow();
             table.AddCellAsk(note1);
@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Legal
             table.AddCellAsk(note5);
             table.EndRow();
 
-            this.AddTable(table);
+            this.AddTable(table, "fill");
         }
     }
 
@@ -63,7 +63,7 @@ namespace Mayfly.Fish.Legal
     {
         public static Report.Table GetSignatureBlock(DateTime dt, string undersign, string underdate)
         {
-            Report.Table result = new Report.Table(ReportTableClass.Fill);
+            Report.Table result = new Report.Table();
 
             result.AddHeader(.6, 0, .3);
 
@@ -84,7 +84,7 @@ namespace Mayfly.Fish.Legal
 
         public static Report.Table GetAskBlock(string ask, string answer, string hint)
         {
-            Report.Table result = new Report.Table(ReportTableClass.Fill);
+            Report.Table result = new Report.Table();
 
             string[] asklines = ask.Split(LegalNote.RowLength);
 

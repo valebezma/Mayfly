@@ -25,16 +25,16 @@ namespace Mayfly.Fish.Explorer
                 tabPageGamingMeasure.Parent =
                 tabPageCatchability.Parent =
                 //tabPageAdvanced.Parent =
-                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
+                License.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
 
             //tabPagePrediction.Parent =
-            //    Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
+            //    License.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
 
             checkBoxKeepWizards.Enabled = 
-                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced;
+                License.AllowedFeaturesLevel >= FeatureLevel.Advanced;
 
             UI.SetControlClickability(
-                Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+                License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
                 checkBoxBioAutoLoad,
                 listViewBio, 
                 buttonBioBrowse,
@@ -65,7 +65,7 @@ namespace Mayfly.Fish.Explorer
             spreadSheetMeasure.Rows.Clear();
             spreadSheetCatchability.Rows.Clear();
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 foreach (SpeciesKey.SpeciesRow speciesRow in Fish.UserSettings.SpeciesIndex.Species)
                 {
@@ -89,7 +89,7 @@ namespace Mayfly.Fish.Explorer
                 comboBoxAlk.SelectedIndex = (int)UserSettings.SelectedAgeLengthKeyType;
             }
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;
                 checkBoxSuggestMass.Checked = UserSettings.MassSuggest;

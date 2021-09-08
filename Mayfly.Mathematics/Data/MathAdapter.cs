@@ -475,7 +475,7 @@ namespace Mayfly.Mathematics
         {
             if (sheet == null) return;
 
-            if (sheet.IsLog) // && Licensing.Verify("Statistics"))
+            if (sheet.IsLog) // && License.Verify("Statistics"))
             {
                 sheet.HandleButton(true, ref chartButton, Properties.Resources.Charts, buttonCharts_Click);
                 sheet.HandleButton(true, ref statButton, Properties.Resources.Stat, buttonStat_Click);

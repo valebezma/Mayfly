@@ -9,6 +9,7 @@ namespace Mayfly
     public class Hardware
     {
         private static string hardwareID = string.Empty;
+
         public static string HardwareID
         { 
             get

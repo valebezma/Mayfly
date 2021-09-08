@@ -95,11 +95,8 @@ namespace Mayfly.Fish.Legal
 
             speciesLogger.IndexPath = Fish.UserSettings.SpeciesIndexPath;
 
-            Data = new Data(Fish.UserSettings.SpeciesIndex);
-            Data.InitializeBio();
-            Data.MassModels.VisualConfirmation =
-                Data.GrowthModels.VisualConfirmation =
-                false;
+            Data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
+            Data.RefreshBios();
 
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(decimal);
@@ -453,13 +450,7 @@ namespace Mayfly.Fish.Legal
         {
             pageData.SetNavigation(true);
             pageData.AllowNext = Data.GetStack().Quantity() > 0;
-
-            foreach (Data.SpeciesRow speciesRow in Data.Species.GetSorted())
-            {
-                //Data.GrowthModels.Refresh(speciesRow.Species);
-                Data.MassModels.Refresh(speciesRow.Species);
-            }
-
+            Data.RefreshBios();
             UpdateCards();
         }
 
@@ -469,7 +460,7 @@ namespace Mayfly.Fish.Legal
             if (catches.GetInvestigators().Length > 1) textBoxBystander1.Text = catches.GetInvestigators()[1];
             if (catches.GetInvestigators().Length > 2) textBoxBystander2.Text = catches.GetInvestigators()[2];
 
-            textBoxGear.Text = catches.GetSamplersList(Fish.UserSettings.SamplersIndex).Merge();
+            textBoxGear.Text = catches.GetSamplersList().Merge();
             textBoxWater.Text = catches.GetWaterNames().Merge();
 
             spreadSheetCatches.Rows.Clear();

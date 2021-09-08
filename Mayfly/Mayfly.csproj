@@ -298,9 +298,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Service\Licensing.cs" />
-    <Compile Include="Software\Hardware.cs" />
-    <Compile Include="Software\License.cs" />
+    <Compile Include="Service\Hardware.cs" />
+    <Compile Include="Service\License.cs" />
     <Compile Include="Software\Settings.cs">
       <SubType>Form</SubType>
     </Compile>

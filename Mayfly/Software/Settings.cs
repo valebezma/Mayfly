@@ -79,7 +79,7 @@ namespace Mayfly.Software
         {
             listViewLicenses.Items.Clear();
 
-            foreach (License lic in Licensing.InstalledLicenses)
+            foreach (License lic in License.InstalledLicenses)
             {
                 ListViewItem li = new ListViewItem(lic.Feature);
                 li.Name = lic.Feature.ToString();
@@ -98,9 +98,9 @@ namespace Mayfly.Software
 
             if (!checkBoxCredentials.Checked)
             {
-                Licensing.SendUninstall(UserSettings.Credential);
+                License.SendUninstall(UserSettings.Credential);
                 UserSettings.Credential = null;
-                foreach (License lic in Licensing.InstalledLicenses)
+                foreach (License lic in License.InstalledLicenses)
                 {
                     lic.Uninstall();
                 }
@@ -128,7 +128,7 @@ namespace Mayfly.Software
         {
             NetworkCredential cred = new NetworkCredential(textBoxEmail.Text, maskedPass.Text);
 
-            License[] lics = Licensing.GetLicenses(cred);
+            License[] lics = License.GetLicenses(cred);
 
             if (lics == null) // Licenses can not be received
             {
@@ -165,7 +165,7 @@ namespace Mayfly.Software
                 UserSettings.Credential = cred;
 
                 // Install licenses
-                Licensing.InstallLicenses(lics);
+                License.InstallLicenses(lics);
 
                 // Update form
                 pictureBoxLogin.Image = Resources.Icons.Check;

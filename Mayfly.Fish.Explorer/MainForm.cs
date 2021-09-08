@@ -26,19 +26,19 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
-            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+            UI.SetMenuAvailability(License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
                 menuItemImportSpec,
                 menuItemExportSpec,
                 toolStripSeparator10,
                 menuInstant
                 );
 
-            UI.SetMenuAvailability(Licensing.AllowedFeaturesLevel == FeatureLevel.Insider,
+            UI.SetMenuAvailability(License.AllowedFeaturesLevel == FeatureLevel.Insider,
                 menuSurvey,
                 menuModels,
                 menuCohort);
 
-            //UI.SetControlsAvailability(Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced,
+            //UI.SetControlsAvailability(License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
             //    labelQualify,
             //    buttonQualOutliers,
             //    checkBoxQualOutliers,
@@ -160,7 +160,7 @@ namespace Mayfly.Fish.Explorer
 
             chartSchedule.Format();
 
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
                 plotQualify.SetBioAcceptable(LoadCards);
                 spreadSheetInd.SetBioAcceptable(LoadCards);
@@ -261,7 +261,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension)
                 {
-                    if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced)
+                    if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
                     {
                         processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
 
@@ -320,7 +320,7 @@ namespace Mayfly.Fish.Explorer
 
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
-            //if (Licensing.AllowedFeaturesLevel < FeatureLevel.Advanced)
+            //if (License.AllowedFeaturesLevel < FeatureLevel.Advanced)
             //{
             //    e.Cancel = true;
             //    return;
@@ -751,7 +751,7 @@ namespace Mayfly.Fish.Explorer
             cards_DragLeave(sender, e);
             List<string> ext = new List<string>();
             ext.Add(Fish.UserSettings.Interface.Extension);
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             LoadCards(e.GetOperableFilenames(ext.ToArray()));
         }
 
@@ -759,7 +759,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> ext = new List<string>();
             ext.Add(Fish.UserSettings.Interface.Extension);
-            if (Licensing.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
+            if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced) ext.Add(Wild.UserSettings.InterfaceBio.Extension);
             if (e.GetOperableFilenames(ext.ToArray()).Length > 0)
             {
                 e.Effect = DragDropEffects.All;
