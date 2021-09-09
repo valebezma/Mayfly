@@ -83,16 +83,7 @@ namespace Mayfly.Plankton.Explorer
         private DataGridViewRow UpdateSpeciesRow(Data.SpeciesRow speciesRow)
         {
             DataGridViewRow result = GetSpcRow(speciesRow);
-
-            if (speciesRow.IsSpeciesNull())
-            {
-                result.Cells[columnSpcSpc.Index].Value = Species.Resources.Interface.UnidentifiedTitle;
-            }
-            else
-            {
-                result.Cells[columnSpcSpc.Index].Value = speciesRow.Species;
-            }
-
+            result.Cells[columnSpcSpc.Index].Value = speciesRow;
             return result;
         }
 

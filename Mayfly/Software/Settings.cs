@@ -66,7 +66,7 @@ namespace Mayfly.Software
             {
                 textBoxEmail.Text = cred.UserName;
                 maskedPass.Text = cred.Password;
-                pictureBoxLogin.Image = Resources.Icons.Check;
+                pictureBoxLogin.Image = Pictogram.Check;
                 textBoxEmail.ReadOnly =
                     maskedPass.ReadOnly = true;
                 buttonLogin.Enabled = false;
@@ -132,7 +132,7 @@ namespace Mayfly.Software
 
             if (lics == null) // Licenses can not be received
             {
-                pictureBoxLogin.Image = Resources.Icons.NoneRed;
+                pictureBoxLogin.Image = Pictogram.NoneRed;
                 listViewLicenses.Items.Clear();
                 return;
             }
@@ -168,7 +168,7 @@ namespace Mayfly.Software
                 License.InstallLicenses(lics);
 
                 // Update form
-                pictureBoxLogin.Image = Resources.Icons.Check;
+                pictureBoxLogin.Image = Pictogram.Check;
                 textBoxEmail.ReadOnly = maskedPass.ReadOnly = true;
                 buttonLogin.Enabled = false;
                 UpdateLicenses();

@@ -165,6 +165,7 @@
             this.tdbRemoval = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
             this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
+            this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
             this.MenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -493,6 +494,7 @@
             // 
             // waterSelector
             // 
+            this.waterSelector.Index = null;
             resources.ApplyResources(this.waterSelector, "waterSelector");
             this.waterSelector.Name = "waterSelector";
             this.waterSelector.WaterObject = null;
@@ -1302,5 +1304,6 @@
         private System.Windows.Forms.TextBox textBoxLabel;
         public Species.SpeciesSelector speciesLogger;
         private System.Windows.Forms.Label labelOperationEnd;
+        private System.Windows.Forms.ToolTip toolTipAttention;
     }
 }

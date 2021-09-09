@@ -346,106 +346,31 @@
     <value>Service</value>
   </data>
   <data name="ToolStripMenuItemWatersRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolStripMenuItemWatersRef.Text" xml:space="preserve">
     <value>Edit waters</value>
   </data>
   <data name="ToolStripMenuItemSpeciesRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolStripMenuItemSpeciesRef.Text" xml:space="preserve">
     <value>Edit species</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 6</value>
-  </data>
-  <data name="ToolStripMenuItemSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAWdJREFUOE/d
-        kc9KAlEYxdsFPUX1Bq3qDdr1AvUA9QhBu1y0swKzhFoW2cadREHRHxAZISk1jf6JkbiauXPn3lFn5vTd
-        yRkcXQi2614Od3V+59zvm/gHJ76bxF/kAx6rHyO1ur4z9IaAvFYYSyGg/3jqeh5c10XXcbBRrGMt/wbb
-        tiGFhGVZ4JzDNM0RADIf1pqYvyghXmpAShtCCAKQmZtgJhsG9Kc/fOmYOdWwclmBLSWEVGZKNzkYI4Bh
-        DANa3AaTbTiOi6WTAqb37lBp6ZSuqouwOmMMxiDAIy0f3WJh+wpbmRwmN7NI3LxQOlUP002Yvpmk6wMA
-        qp7K5jBLxqnYORYT12Bc+ObU/hlSSaU0DpT20tAjAIpXgOdaDdrrN+ZiGRzfl/2/WzQ4zn/Tg+qGbkQB
-        weDq1QY+a3U8FcvQ3pu9v/fWFphJyhwFuGpttPduF+1OB3abdq4mL5TZigwuMEcA4yuJH9NbvYtfoYBt
-        AAAAAElFTkSuQmCC
-</value>
+    <value>177, 6</value>
   </data>
   <data name="ToolStripMenuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolStripMenuItemSettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="ToolStripMenuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolStripMenuItemAbout.Text" xml:space="preserve">
     <value>About</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
-    <value>buttonAdd</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonBlankLog.Name" xml:space="preserve">
-    <value>buttonBlankLog</value>
-  </data>
-  <data name="&gt;&gt;buttonBlankLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBlankLog.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;buttonBlankLog.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
-    <value>spreadSheetLog</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
-  </data>
-  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="buttonAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -482,20 +407,6 @@
   </data>
   <data name="buttonBlankLog.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
-  </data>
-  <data name="buttonBlankLog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAHbSURBVDhPlZDdS1pxGMf9p2YsAm96sVG7GMUCe7HN
-        i8LYAovdONqu28Uo6CLqZqyNGBhbF5o5kTLL6XZKjWo5tHeLOfIlT2r57ff8zlFPVLIOfM/zxuf7PPxU
-        ALi6X77VMEGhuuKskkqJDGnkvIbq4qySSgkBnsBuSVR/W9iExRnC9JyAj7Ne0rASJnGQEjlyUBmL38QX
-        F6of9+CzVRhh5f0NxqbmYfdsoLZtgC55x1qSga7XTHNVZ98QRehfvOFRaXBZkAxq20xo0puhfmSgtmTw
-        RG/iRcuzQXh/hdBqeEU1OoyveSwwOJcvIC1eILB9gpXg3k0DdZ1O+37Sgub2fri9q7B9X4L2qRFi9hLJ
-        zAX+JvM4jOcQjZ3DvXaAB43PywYMVqvrdRj/ZKMmfMI6qhrasf47yuE4h7OIHp9ja0/EwurRdQP6MRMN
-        QdWNXXio7YTHFyxv/ifD+yKCkTM4105vGpC+OvzUhJgrKM7OIsLO5nD0DD+303AG0rcbzNh/gL2XBCdk
-        WLGZ4JXNFDNI3m4w+sHKX7y4WTo7I29OYXkjBXcoCYcQr2zAX1ux2U+bGbzIYFcgAbs/VtnAHwzDF9qB
-        W4jA6QvDvhyGzUP6A6usOw1o8L+SOKiuAJXqCB432BYeAAAAAElFTkSuQmCC
-</value>
   </data>
   <data name="buttonBlankLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -590,6 +501,9 @@
   <data name="spreadSheetLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>436, 407</value>
   </data>
+  <data name="spreadSheetLog.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetLog.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -597,13 +511,40 @@
     <value>spreadSheetLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
     <value>tabPageLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageLog.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="ToolStripMenuItemIndividuals.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -627,19 +568,19 @@
     <value>Set dilution</value>
   </data>
   <data name="contextSubSecond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
+    <value>92, 22</value>
   </data>
   <data name="contextSubSecond.Text" xml:space="preserve">
     <value>2x</value>
   </data>
   <data name="contextSubThird.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
+    <value>92, 22</value>
   </data>
   <data name="contextSubThird.Text" xml:space="preserve">
     <value>3x</value>
   </data>
   <data name="contextSubTenth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
+    <value>92, 22</value>
   </data>
   <data name="contextSubTenth.Text" xml:space="preserve">
     <value>10x</value>
@@ -687,7 +628,7 @@
     <value>waypointControl1</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Type" xml:space="preserve">
-    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Parent" xml:space="preserve">
     <value>tabPageCollect</value>
@@ -882,7 +823,7 @@
     <value>waypointControl1</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Type" xml:space="preserve">
-    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Parent" xml:space="preserve">
     <value>tabPageCollect</value>
@@ -892,8 +833,6 @@
   </data>
   <data name="waterSelector.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
   </data>
   <data name="waterSelector.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 88</value>
@@ -1162,6 +1101,300 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="&gt;&gt;comboBoxSampler.Name" xml:space="preserve">
+    <value>comboBoxSampler</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.Type" xml:space="preserve">
+    <value>GroupedComboBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Name" xml:space="preserve">
+    <value>textBoxDepth</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Name" xml:space="preserve">
+    <value>labelDepth</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Name" xml:space="preserve">
+    <value>labelMethod</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Name" xml:space="preserve">
+    <value>labelSampler</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Name" xml:space="preserve">
+    <value>labelMesh</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelPortion.Name" xml:space="preserve">
+    <value>labelPortion</value>
+  </data>
+  <data name="&gt;&gt;labelPortion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPortion.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelPortion.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Name" xml:space="preserve">
+    <value>labelVolume</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelVolume.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Name" xml:space="preserve">
+    <value>textBoxMesh</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Name" xml:space="preserve">
+    <value>textBoxVolume</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxVolume.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPortion.Name" xml:space="preserve">
+    <value>numericUpDownPortion</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPortion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPortion.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPortion.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="tabPageSampler.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSampler.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="tabPageSampler.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageSampler.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="tabPageSampler.Text" xml:space="preserve">
+    <value>Sampling methodics</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.Name" xml:space="preserve">
+    <value>aquaControl1</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Name" xml:space="preserve">
+    <value>weatherControl1</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Name" xml:space="preserve">
+    <value>labelActWeather</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Name" xml:space="preserve">
+    <value>labelWaterConds</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageEnvironment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageEnvironment.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageEnvironment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageEnvironment.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="tabPageEnvironment.Text" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Name" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Name" xml:space="preserve">
+    <value>spreadSheetAddt</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetAddt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageFactors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageFactors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageFactors.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabPageFactors.Text" xml:space="preserve">
+    <value>Additional factors</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Name" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 39</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 558</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="comboBoxSampler.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1181,7 +1414,7 @@
     <value>comboBoxSampler</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.Type" xml:space="preserve">
-    <value>GroupedComboBox, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GroupedComboBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
@@ -1492,168 +1725,6 @@
   <data name="&gt;&gt;numericUpDownPortion.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="tabPageSampler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageSampler.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="tabPageSampler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageSampler.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="tabPageSampler.Text" xml:space="preserve">
-    <value>Sampling methodics</value>
-  </data>
-  <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
-    <value>tabPageSampler</value>
-  </data>
-  <data name="&gt;&gt;tabPageSampler.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageSampler.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageSampler.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;aquaControl1.Name" xml:space="preserve">
-    <value>aquaControl1</value>
-  </data>
-  <data name="&gt;&gt;aquaControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;aquaControl1.Parent" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;aquaControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;weatherControl1.Name" xml:space="preserve">
-    <value>weatherControl1</value>
-  </data>
-  <data name="&gt;&gt;weatherControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;weatherControl1.Parent" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;weatherControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;labelActWeather.Name" xml:space="preserve">
-    <value>labelActWeather</value>
-  </data>
-  <data name="&gt;&gt;labelActWeather.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelActWeather.Parent" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;labelActWeather.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelWaterConds.Name" xml:space="preserve">
-    <value>labelWaterConds</value>
-  </data>
-  <data name="&gt;&gt;labelWaterConds.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelWaterConds.Parent" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;labelWaterConds.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabPageEnvironment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageEnvironment.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageEnvironment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageEnvironment.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="tabPageEnvironment.Text" xml:space="preserve">
-    <value>Environment</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Name" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetAddt.Name" xml:space="preserve">
-    <value>spreadSheetAddt</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
-    <value>tabPageFactors</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetAddt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageFactors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
-  </data>
-  <data name="tabPageFactors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageFactors.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabPageFactors.Text" xml:space="preserve">
-    <value>Additional factors</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.Name" xml:space="preserve">
-    <value>tabPageFactors</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 39</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 558</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="aquaControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1795,6 +1866,9 @@
   <data name="spreadSheetAddt.Size" type="System.Drawing.Size, System.Drawing">
     <value>442, 442</value>
   </data>
+  <data name="spreadSheetAddt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetAddt.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -1802,7 +1876,7 @@
     <value>spreadSheetAddt</value>
   </data>
   <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
     <value>tabPageFactors</value>
@@ -2213,31 +2287,31 @@
     <value>taskDialogSaveChanges</value>
   </data>
   <data name="&gt;&gt;taskDialogSaveChanges.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSave.Name" xml:space="preserve">
     <value>tdbSave</value>
   </data>
   <data name="&gt;&gt;tdbSave.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
     <value>tdbDiscard</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
     <value>tdbCancelClose</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statusCard.Name" xml:space="preserve">
     <value>statusCard</value>
   </data>
   <data name="&gt;&gt;statusCard.Type" xml:space="preserve">
-    <value>Mayfly.Controls.Status, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.Status, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;speciesLogger.Name" xml:space="preserve">
     <value>speciesLogger</value>

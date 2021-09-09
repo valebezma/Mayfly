@@ -229,6 +229,11 @@
     <Compile Include="Controls\SpreadSheetCalendarColumn.cs" />
     <Compile Include="Controls\SpreadSheetIconTextBoxColumn.cs" />
     <Compile Include="Controls\Taskbar.cs" />
+    <Compile Include="Pictogram.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pictogram.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,11 +247,6 @@
     </Compile>
     <Compile Include="Reporting\Report.Printing.cs" />
     <Compile Include="Reporting\Report.Table.cs" />
-    <Compile Include="Resources\Icons.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Icons.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\License.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -439,6 +439,7 @@
     <EmbeddedResource Include="Controls\Filtering\Filtering.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Filtering.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Filtering\FilterUnit.resx">
       <DependentUpon>FilterUnit.cs</DependentUpon>
@@ -487,16 +488,17 @@
     <EmbeddedResource Include="Geographics\ListWaypoints.ru.resx">
       <DependentUpon>ListWaypoints.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pictogram.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Pictogram.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporting\PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icons.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\License.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -666,18 +668,7 @@
     <None Include="interface\reports\scripts\plot.glm.R">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\PrimaryKeyHS.png" />
     <None Include="packages.config" />
-    <None Include="Resources\Delete.png" />
-    <None Include="Resources\New.png" />
-    <None Include="Resources\Open.png" />
-    <None Include="Resources\Paste.png" />
-    <None Include="Resources\Print.png" />
-    <None Include="Resources\Save.png" />
-    <None Include="Resources\Report.png" />
-    <None Include="Resources\Blank.png" />
-    <None Include="Resources\Attention.png" />
-    <None Include="Resources\Check.png" />
     <Content Include="interface\reports\css\appendix.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -693,25 +684,36 @@
     <Content Include="interface\reports\css\tables.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Copy.png" />
-    <Content Include="Resources\Cut.png" />
+    <None Include="pict\Attention.png" />
+    <None Include="pict\Blank.png" />
+    <None Include="pict\Check.png" />
+    <None Include="pict\Copy.png" />
+    <None Include="pict\Cut.png" />
+    <None Include="pict\Delete.png" />
+    <None Include="pict\Flag.png" />
+    <None Include="pict\Funnel.png" />
+    <None Include="pict\FunnelArrow.png" />
+    <None Include="pict\FunnelMinus.png" />
+    <None Include="pict\FunnelPencil.png" />
+    <None Include="pict\FunnelPlus.png" />
+    <None Include="pict\New.png" />
+    <None Include="pict\NoneRed.png" />
+    <None Include="pict\Open.png" />
+    <None Include="pict\Paste.png" />
+    <None Include="pict\Preview.png" />
+    <None Include="pict\PrimaryKeyHS.png" />
+    <None Include="pict\Print.png" />
+    <None Include="pict\Report.png" />
+    <None Include="pict\Reports.png" />
+    <None Include="pict\Save.png" />
+    <None Include="pict\Settings.png" />
+    <None Include="pict\Table.png" />
+    <None Include="pict\tray_icon.png" />
+    <None Include="pict\Warning.png" />
     <None Include="Resources\Error.wav" />
-    <None Include="Resources\Funnel.png" />
-    <None Include="Resources\FunnelArrow.png" />
-    <None Include="Resources\FunnelMinus.png" />
-    <None Include="Resources\FunnelPencil.png" />
-    <None Include="Resources\FunnelPlus.png" />
-    <None Include="Resources\Flag.png" />
-    <None Include="Resources\NoneRed.png" />
-    <Content Include="Resources\Preview.png" />
-    <None Include="Resources\Reports.png" />
-    <None Include="Resources\Settings.png" />
     <None Include="Resources\StandardSound.wav" />
-    <None Include="Resources\Table.png" />
     <None Include="Resources\Wrong.wav" />
     <None Include="Resources\tray_icon.ico" />
-    <None Include="Resources\Warning.png" />
-    <None Include="Resources\tray_icon.png" />
     <Content Include="Components\TaskDialogs\CredentialDialog.bmp" />
     <Content Include="Components\TaskDialogs\InputDialog.bmp" />
     <Content Include="Components\TaskDialogs\ProgressDialog.bmp" />

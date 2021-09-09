@@ -372,7 +372,6 @@
             // 
             // ToolStripMenuItemSettings
             // 
-            this.ToolStripMenuItemSettings.Image = global::Mayfly.Resources.Icons.Settings;
             this.ToolStripMenuItemSettings.Name = "ToolStripMenuItemSettings";
             resources.ApplyResources(this.ToolStripMenuItemSettings, "ToolStripMenuItemSettings");
             this.ToolStripMenuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);

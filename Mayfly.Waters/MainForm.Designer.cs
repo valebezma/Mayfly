@@ -122,7 +122,7 @@
             // 
             // menuItemNew
             // 
-            this.menuItemNew.Image = global::Mayfly.Resources.Icons.New;
+            this.menuItemNew.Image = global::Mayfly.Pictogram.New;
             this.menuItemNew.Name = "menuItemNew";
             resources.ApplyResources(this.menuItemNew, "menuItemNew");
             this.menuItemNew.Click += new System.EventHandler(this.menuItemNew_Click);

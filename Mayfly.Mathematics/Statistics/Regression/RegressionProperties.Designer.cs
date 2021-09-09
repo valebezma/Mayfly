@@ -189,7 +189,7 @@
             // 
             resources.ApplyResources(this.buttonReport, "buttonReport");
             this.buttonReport.FlatAppearance.BorderSize = 0;
-            this.buttonReport.Image = global::Mayfly.Resources.Icons.Report;
+            this.buttonReport.Image = global::Mayfly.Pictogram.Report;
             this.buttonReport.Name = "buttonReport";
             this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
@@ -300,7 +300,7 @@
             // 
             resources.ApplyResources(this.buttonCopy, "buttonCopy");
             this.buttonCopy.FlatAppearance.BorderSize = 0;
-            this.buttonCopy.Image = global::Mayfly.Resources.Icons.Copy;
+            this.buttonCopy.Image = global::Mayfly.Pictogram.Copy;
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 

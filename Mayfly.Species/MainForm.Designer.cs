@@ -107,14 +107,14 @@
             // 
             // menuItemPreview
             // 
-            this.menuItemPreview.Image = global::Mayfly.Resources.Icons.Preview;
+            this.menuItemPreview.Image = global::Mayfly.Pictogram.Preview;
             this.menuItemPreview.Name = "menuItemPreview";
             resources.ApplyResources(this.menuItemPreview, "menuItemPreview");
             this.menuItemPreview.Click += new System.EventHandler(this.menuItemPreview_Click);
             // 
             // menuItemPrint
             // 
-            this.menuItemPrint.Image = global::Mayfly.Resources.Icons.Print;
+            this.menuItemPrint.Image = global::Mayfly.Pictogram.Print;
             this.menuItemPrint.Name = "menuItemPrint";
             resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
             this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
@@ -196,7 +196,7 @@
             // 
             // menuItemSettings
             // 
-            this.menuItemSettings.Image = global::Mayfly.Resources.Icons.Settings;
+            this.menuItemSettings.Image = global::Mayfly.Pictogram.Settings;
             this.menuItemSettings.Name = "menuItemSettings";
             resources.ApplyResources(this.menuItemSettings, "menuItemSettings");
             this.menuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);

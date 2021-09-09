@@ -175,7 +175,7 @@ namespace Mayfly.Fish.Explorer
 
             if (IsEmpty)
             {
-                Text = EntryAssemblyInfo.Title;
+                this.ResetText(EntryAssemblyInfo.Title);
 
                 labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
                 labelCardCountValue.Text = Constants.Null;

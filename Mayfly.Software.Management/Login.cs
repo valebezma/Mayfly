@@ -14,7 +14,8 @@ namespace Mayfly.Software.Management
     {
         public string DataBaseConnectionString {
             get {
-                return string.Format(@"Server={0};user={1};password={2};database={3}",
+                //return string.Format(@"Server={0};user={1};password={2};database={3}",
+                return string.Format(@"server = {0}; port = 3307; uid = {1}; pwd = {2}; database = {3}; SSL Mode = None;",
                     textBoxServer.Text, textBoxLogin.Text, textBoxPass.Text, textBoxDatabase.Text); }
         }
 

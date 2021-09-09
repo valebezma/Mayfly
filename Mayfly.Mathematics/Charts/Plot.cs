@@ -1,19 +1,15 @@
-﻿using Meta.Numerics.Statistics;
+﻿using Mayfly.Extensions;
+using Mayfly.Mathematics.Statistics;
+using Meta.Numerics.Statistics;
+using RDotNet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Mayfly.Mathematics.Statistics;
-using Mayfly.Extensions;
 using Series = System.Windows.Forms.DataVisualization.Charting.Series;
-using RDotNet;
-using System.Text;
-using Mayfly.Extensions;
 
 namespace Mayfly.Mathematics.Charts
 {

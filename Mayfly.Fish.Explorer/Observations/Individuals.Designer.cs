@@ -240,7 +240,7 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningMass, "pictureBoxWarningMass");
             this.pictureBoxWarningMass.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningMass.Image = global::Mayfly.Resources.Icons.Warning;
+            this.pictureBoxWarningMass.Image = Pictogram.Warning;
             this.pictureBoxWarningMass.Name = "pictureBoxWarningMass";
             this.pictureBoxWarningMass.TabStop = false;
             this.pictureBoxWarningMass.DoubleClick += new System.EventHandler(this.pictureBoxWarningMass_DoubleClick);
@@ -251,7 +251,7 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningQuantity, "pictureBoxWarningQuantity");
             this.pictureBoxWarningQuantity.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningQuantity.Image = global::Mayfly.Resources.Icons.Warning;
+            this.pictureBoxWarningQuantity.Image = Pictogram.Warning;
             this.pictureBoxWarningQuantity.Name = "pictureBoxWarningQuantity";
             this.pictureBoxWarningQuantity.TabStop = false;
             this.pictureBoxWarningQuantity.DoubleClick += new System.EventHandler(this.pictureBoxWarningQuantity_DoubleClick);

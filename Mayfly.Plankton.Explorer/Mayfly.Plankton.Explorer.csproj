@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mayfly.Plankton.Explorer</RootNamespace>
     <AssemblyName>pexplore</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,17 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Mayfly\Resources\Icons.Designer.cs">
-      <Link>Icons.Designer.cs</Link>
-      <DependentUpon>Icons.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Extensions\CardRow.cs" />
     <Compile Include="Extensions\CardStack.cs" />
-    <Compile Include="Extensions\CardStack.Report.cs" />
     <Compile Include="Extensions\Data.cs" />
-    <Compile Include="Extensions\Data.Bio.cs" />
     <Compile Include="Extensions\Data.Report.cs" />
     <Compile Include="Extensions\SpeciesRow.cs" />
     <Compile Include="Extensions\TaxaRow.cs" />
@@ -114,11 +107,6 @@
       <DependentUpon>SpeciesSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSettings.cs" />
-    <EmbeddedResource Include="..\Mayfly\Resources\Icons.resx">
-      <Link>Icons.resx</Link>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>

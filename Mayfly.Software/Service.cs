@@ -41,7 +41,7 @@ namespace Mayfly.Software
                 return string.Empty; }
         }
 
-        private static Scheme GetScheme(string connectionString, params string[] tableNames)
+        public static Scheme GetScheme(string connectionString, params string[] tableNames)
         {
             Scheme result = new Scheme();
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -49,12 +49,8 @@ namespace Mayfly.Software
 
             foreach (string tableName in tableNames)
             {
-                try
-                {
-                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, connection);
-                    adapter.Fill(result, tableName);
-                }
-                catch { }
+                adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, connection);
+                adapter.Fill(result, tableName);
             }
 
             return result;

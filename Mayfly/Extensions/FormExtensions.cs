@@ -227,10 +227,29 @@ namespace Mayfly.Extensions
             return p;
         }
 
+
+
+        public static void ResetText(this Form form, string title, bool icon)
+        {
+            form.Text = title;
+
+            if (icon)
+            {
+                form.Icon = Service.GetIcon(Application.ExecutablePath, 0, new Size(16, 16));
+            }
+        }
+
         public static void ResetText(this Form form, string filename, string applicationName)
         {
-            form.Text = String.Format("{0} — {1}", System.IO.Path.GetFileNameWithoutExtension(filename), applicationName);
+            form.ResetText(string.Format("{0} — {1} ({2})", System.IO.Path.GetFileNameWithoutExtension(filename), applicationName, License.AllowedFeaturesLevel), true);
         }
+
+        public static void ResetText(this Form form, string applicationName)
+        {
+            form.ResetText(string.Format("{0} ({1})", applicationName, License.AllowedFeaturesLevel), true);
+        }
+
+
 
         public static string GetLocalizedText(this Control ctrl)
         {

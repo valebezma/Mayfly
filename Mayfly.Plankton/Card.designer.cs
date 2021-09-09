@@ -35,7 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             Mayfly.Wild.AquaState aquaState2 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weather2 = new Mayfly.Wild.WeatherState();
+            Mayfly.Wild.WeatherState weatherState2 = new Mayfly.Wild.WeatherState();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
@@ -324,8 +324,8 @@
             // 
             // ToolStripMenuItemSettings
             // 
-            resources.ApplyResources(this.ToolStripMenuItemSettings, "ToolStripMenuItemSettings");
             this.ToolStripMenuItemSettings.Name = "ToolStripMenuItemSettings";
+            resources.ApplyResources(this.ToolStripMenuItemSettings, "ToolStripMenuItemSettings");
             this.ToolStripMenuItemSettings.Click += new System.EventHandler(this.ToolStripMenuItemSettings_Click);
             // 
             // ToolStripMenuItemAbout
@@ -354,6 +354,7 @@
             // 
             resources.ApplyResources(this.buttonBlankLog, "buttonBlankLog");
             this.buttonBlankLog.FlatAppearance.BorderSize = 0;
+            this.buttonBlankLog.Image = Pictogram.Blank;
             this.buttonBlankLog.Name = "buttonBlankLog";
             this.buttonBlankLog.UseVisualStyleBackColor = true;
             this.buttonBlankLog.Click += new System.EventHandler(this.menuItemLogBlank_Click);
@@ -751,17 +752,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weather2.AdditionalEvent = 0;
-            weather2.Cloudage = double.NaN;
-            weather2.Degree = 0;
-            weather2.Discretion = 0;
-            weather2.Event = 0;
-            weather2.Humidity = double.NaN;
-            weather2.Pressure = double.NaN;
-            weather2.Temperature = double.NaN;
-            weather2.WindDirection = double.NaN;
-            weather2.WindRate = double.NaN;
-            this.weatherControl1.Weather = weather2;
+            weatherState2.AdditionalEvent = 0;
+            weatherState2.Cloudage = double.NaN;
+            weatherState2.Degree = 0;
+            weatherState2.Discretion = 0;
+            weatherState2.Event = 0;
+            weatherState2.Humidity = double.NaN;
+            weatherState2.Pressure = double.NaN;
+            weatherState2.Temperature = double.NaN;
+            weatherState2.WindDirection = double.NaN;
+            weatherState2.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState2;
             // 
             // labelActWeather
             // 

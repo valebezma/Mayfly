@@ -21,7 +21,7 @@ namespace Mayfly.Sedimentation
         {
             set
             {
-                this.ResetText(value == null ? IO.GetNewFileCaption(UserSettings.Interface.Extension) : value, EntryAssemblyInfo.Title);
+                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
                 filename = value;
             }
 

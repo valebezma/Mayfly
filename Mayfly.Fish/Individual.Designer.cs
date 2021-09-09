@@ -970,7 +970,7 @@
             // 
             resources.ApplyResources(this.buttonBlank, "buttonBlank");
             this.buttonBlank.FlatAppearance.BorderSize = 0;
-            this.buttonBlank.Image = global::Mayfly.Resources.Icons.Blank;
+            this.buttonBlank.Image = Pictogram.Blank;
             this.buttonBlank.Name = "buttonBlank";
             this.buttonBlank.UseVisualStyleBackColor = true;
             this.buttonBlank.Click += new System.EventHandler(this.buttonBlank_Click);

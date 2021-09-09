@@ -564,7 +564,7 @@ namespace Mayfly.Controls
             if (IsLog)
             {
                 HandleButton(IsLog, ref filterButton, Filtering.Filtering.Funnel, buttonFilter_Click);
-                HandleButton(IsLog, ref sheetButton, Resources.Icons.Table, buttonSheet_Click);
+                HandleButton(IsLog, ref sheetButton, Pictogram.Table, buttonSheet_Click);
                 HandleStatus(ref statusLabel);
             }
         }
@@ -956,7 +956,7 @@ namespace Mayfly.Controls
                 isLog = value;
                 itemFilterBy.Visible = isLog;
                 if (Parent != null) HandleButton(value, ref filterButton, Filtering.Filtering.Funnel, buttonFilter_Click);
-                if (Parent != null) HandleButton(value, ref sheetButton, Resources.Icons.Table, buttonSheet_Click);
+                if (Parent != null) HandleButton(value, ref sheetButton, Pictogram.Table, buttonSheet_Click);
                 if (Parent != null) HandleStatus(ref statusLabel);
             }
         }
@@ -1334,19 +1334,16 @@ namespace Mayfly.Controls
             // 
             // itemClear
             // 
-            this.itemClear.Image = global::Mayfly.Resources.Icons.Delete;
             this.itemClear.Name = "itemClear";
             resources.ApplyResources(this.itemClear, "itemClear");
             // 
             // itemCopy
             // 
-            this.itemCopy.Image = global::Mayfly.Resources.Icons.Copy;
             this.itemCopy.Name = "itemCopy";
             resources.ApplyResources(this.itemCopy, "itemCopy");
             // 
             // itemPaste
             // 
-            this.itemPaste.Image = global::Mayfly.Resources.Icons.Paste;
             this.itemPaste.Name = "itemPaste";
             resources.ApplyResources(this.itemPaste, "itemPaste");
             // 
@@ -1382,13 +1379,11 @@ namespace Mayfly.Controls
             // 
             // ItemReport
             // 
-            this.ItemReport.Image = global::Mayfly.Resources.Icons.Print;
             this.ItemReport.Name = "ItemReport";
             resources.ApplyResources(this.ItemReport, "ItemReport");
             // 
             // ItemCopyTable
             // 
-            this.ItemCopyTable.Image = global::Mayfly.Resources.Icons.Copy;
             this.ItemCopyTable.Name = "ItemCopyTable";
             resources.ApplyResources(this.ItemCopyTable, "ItemCopyTable");
             // 
@@ -1415,7 +1410,6 @@ namespace Mayfly.Controls
             // 
             // ItemSave
             // 
-            this.ItemSave.Image = global::Mayfly.Resources.Icons.Save;
             this.ItemSave.Name = "ItemSave";
             resources.ApplyResources(this.ItemSave, "ItemSave");
             this.ItemSave.Click += new System.EventHandler(this.ItemSave_Click);

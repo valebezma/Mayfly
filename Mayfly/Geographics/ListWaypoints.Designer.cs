@@ -174,7 +174,6 @@
             // 
             resources.ApplyResources(this.buttonOpen, "buttonOpen");
             this.buttonOpen.FlatAppearance.BorderSize = 0;
-            this.buttonOpen.Image = global::Mayfly.Resources.Icons.Open;
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
@@ -183,7 +182,6 @@
             // 
             resources.ApplyResources(this.buttonSettings, "buttonSettings");
             this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.Image = global::Mayfly.Resources.Icons.Settings;
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.UseVisualStyleBackColor = true;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);

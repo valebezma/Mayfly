@@ -17,46 +17,25 @@ namespace Mayfly.Software.Management
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
-        string[] tablesOrder = new string[] { "Product", "File", "Feature", "Satellite", "FileType", "Version" };
+        string[] tablesOrder = new string[] { "product", "file", "feature", "satellite", "filetype", "version" };
 
         public UpdateServer()
         {
-            SchemeData = Software.Service.GetScheme(tablesOrder);
+            Login loginForm = new Login();
 
-            //Login loginForm = new Login();
-
-            //while (!IsConnected)
-            //{
-            //    if (loginForm.ShowDialog() == DialogResult.OK)
-            //    {
-            //        try
-            //        {
-            //            connection = new MySqlConnection(loginForm.DataBaseConnectionString);
-            //            connection.Open();
-            //            IsConnected = true;
-
-            //            adapter = new MySqlDataAdapter();
-
-            //            GetData();
-            //        }
-            //        catch (Exception e)
-            //        {
-            //            MessageBox.Show(e.Message);
-            //            //goto loginEntry;
-            //        }
-            //    }
-            //}
+            while (!IsConnected)
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    SchemeData = Software.Service.GetScheme(loginForm.DataBaseConnectionString, tablesOrder);
+                    IsConnected = SchemeData.Product.Count > 0;
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
-
-        //public void GetData()
-        //{
-        //    foreach (string tableName in tablesOrder)
-        //    {
-        //        adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, connection);
-        //        adapter.Fill(SchemeData, tableName);
-        //        //SchemeData.GetChanges();
-        //    }
-        //}
 
         public void UpdateDatabase()
         {

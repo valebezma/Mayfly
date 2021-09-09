@@ -41,7 +41,7 @@
     <IntermediateOutputPath>C:\Mayfly\CurrentBuild\obj</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
@@ -841,6 +841,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WizardOb.resx">
       <DependentUpon>WizardOb.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -852,6 +853,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WizardOb.ru.resx">
       <DependentUpon>WizardOb.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Sections\Growth.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>

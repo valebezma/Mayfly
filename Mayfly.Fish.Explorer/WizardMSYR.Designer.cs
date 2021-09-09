@@ -317,7 +317,7 @@
             // pictureBoxWarn
             // 
             resources.ApplyResources(this.pictureBoxWarn, "pictureBoxWarn");
-            this.pictureBoxWarn.Image = global::Mayfly.Resources.Icons.Attention;
+            this.pictureBoxWarn.Image = Pictogram.Attention;
             this.pictureBoxWarn.Name = "pictureBoxWarn";
             this.pictureBoxWarn.TabStop = false;
             // 

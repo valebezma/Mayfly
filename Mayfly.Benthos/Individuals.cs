@@ -331,7 +331,7 @@ namespace Mayfly.Benthos
                     okLigher.DoWork += okLigher_DoWork;
                     okLigher.RunWorkerCompleted += okLigher_RunWorkerCompleted;
 
-                    pictureBoxWarningQuantity.Image = Mayfly.Resources.Icons.Check;
+                    pictureBoxWarningQuantity.Image = Pictogram.Check;
                     pictureBoxWarningQuantity.Visible = true;
                     okLigher.RunWorkerAsync();
                 }
@@ -357,7 +357,7 @@ namespace Mayfly.Benthos
 
         void okLigher_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            pictureBoxWarningQuantity.Image = Mayfly.Resources.Icons.Warning;
+            pictureBoxWarningQuantity.Image = Pictogram.Warning;
             pictureBoxWarningQuantity.Visible = (DetailedQuantity > Quantity);
         }
 

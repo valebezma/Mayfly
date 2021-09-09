@@ -15,7 +15,7 @@ namespace Mayfly.Waters.Controls
     {
         private WatersKey index;
 
-        [Localizable(false)]
+        [Localizable(false), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public WatersKey Index 
         {
             get 

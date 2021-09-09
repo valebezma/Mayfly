@@ -1915,6 +1915,8 @@ namespace Mayfly.Fish
 
         private void pictureBoxWarnOpening_MouseHover(object sender, EventArgs e)
         {
+            ToolTip tt = new ToolTip();
+
             if (textBoxOpening.Text.IsDoubleConvertible())
             {
                 toolTipAttention.ToolTipTitle = Resources.Interface.Messages.EffectiveError;

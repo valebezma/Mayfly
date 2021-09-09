@@ -1,18 +1,16 @@
 ﻿using Mayfly.Extensions;
-using Mayfly.Wild;
-using Mayfly.Geographics;
+using Mayfly.Software;
 using Mayfly.Species;
 using Mayfly.TaskDialogs;
-using Mayfly.Software;
 using Mayfly.Waters;
+using Mayfly.Waters.Controls;
+using Mayfly.Wild;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Mayfly.Waters.Controls;
 
 namespace Mayfly.Plankton
 {
@@ -163,7 +161,7 @@ namespace Mayfly.Plankton
         {
             InitializeComponent();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             FileName = null;
 
             waterSelector.CreateList();
@@ -254,7 +252,7 @@ namespace Mayfly.Plankton
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
         }
 
         private void Clear(DataGridViewRow gridRow)
@@ -786,7 +784,7 @@ namespace Mayfly.Plankton
         public void LoadData(string filename)
         {
             Clear();
-            Data = new Data(UserSettings.SpeciesIndex);
+            Data = new Data(UserSettings.SpeciesIndex, UserSettings.SamplersIndex);
             Data.Read(filename);
             LoadData();
             FileName = filename;
@@ -1213,7 +1211,7 @@ namespace Mayfly.Plankton
 
             UserSettings.Interface.SaveDialog.FileName =
                 IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.GetSuggestedName());
+                Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {

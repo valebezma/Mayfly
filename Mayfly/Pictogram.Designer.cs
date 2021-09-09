@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mayfly.Resources {
+namespace Mayfly {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Mayfly.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Icons {
+    public class Pictogram {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Icons() {
+        internal Pictogram() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Mayfly.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Resources.Icons", typeof(Icons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Pictogram", typeof(Pictogram).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -226,6 +226,16 @@ namespace Mayfly.Resources {
         public static System.Drawing.Bitmap Preview {
             get {
                 object obj = ResourceManager.GetObject("Preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap PrimaryKeyHS {
+            get {
+                object obj = ResourceManager.GetObject("PrimaryKeyHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -2,6 +2,8 @@
 using Mayfly.Geographics;
 using System;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Mayfly.Wild.Controls
 {
@@ -25,24 +27,18 @@ namespace Mayfly.Wild.Controls
         public WeatherControl()
         {
             InitializeComponent();
-
             Weather = new WeatherState();
 
             trackBarCloudage.Value = 0;
 
-            comboBoxEvent.DataSource = UserSettings.WeatherIndex.Event.Select(null, "ID desc");
-            comboBoxDiscretion.DataSource = UserSettings.WeatherIndex.Discretion.Select(null, "ID desc");
-            comboBoxEvent.SelectedIndex = -1;
-            comboBoxEvent_SelectedIndexChanged(comboBoxEvent, new EventArgs());
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            {
+                comboBoxEvent.DataSource = UserSettings.WeatherIndex.Event.Select(null, "ID desc");
+                comboBoxDiscretion.DataSource = UserSettings.WeatherIndex.Discretion.Select(null, "ID desc");
+                comboBoxEvent.SelectedIndex = -1;
+                comboBoxEvent_SelectedIndexChanged(comboBoxEvent, new EventArgs());
+            }
         }
-
-        public WeatherControl(string value) : this()
-        {
-            Weather = new WeatherState(value);
-            UpdateValues();
-        }
-
-
 
         public void UpdateValues()
         {

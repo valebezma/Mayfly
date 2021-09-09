@@ -61,7 +61,6 @@
             // pictureBoxChanges
             // 
             resources.ApplyResources(this.pictureBoxChanges, "pictureBoxChanges");
-            this.pictureBoxChanges.Image = global::Mayfly.Resources.Icons.Flag;
             this.pictureBoxChanges.Name = "pictureBoxChanges";
             this.pictureBoxChanges.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBoxChanges, resources.GetString("pictureBoxChanges.ToolTip"));

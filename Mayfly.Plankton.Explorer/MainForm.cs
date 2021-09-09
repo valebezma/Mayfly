@@ -207,7 +207,7 @@ namespace Mayfly.Plankton.Explorer
                 foreach (Data.CardRow cardRow in data.Card)
                 {
                     Data _data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.GetSuggestedName());
+                    string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.Solitary.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
             }

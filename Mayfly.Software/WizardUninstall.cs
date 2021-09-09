@@ -73,7 +73,7 @@ namespace Mayfly.Software
                 {
                     Install.UnregisterApp(filename);
                     Install.RemoveShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), filename);
-                    Service.AppendStatus(textBoxStatus, Resources.Interface.RemoveShortcuts, fileRow.IsFriendlyNameNull() ? fileRow.File : Text.GetLocalizedValue(fileRow.FriendlyName));
+                    Service.AppendStatus(textBoxStatus, Resources.Interface.RemoveShortcuts, fileRow.IsFriendlyNameNull() ? fileRow.File : fileRow.FriendlyName.GetLocalizedValue());
                 }
 
 

@@ -56,11 +56,9 @@ namespace Mayfly.Wild
             numericUpDownEnd.Increment = numericUpDownStart.Increment =
                 Convert.ToDecimal(domainUpDownInterval.Text);
             numeric_ValueChanged(sender, e);
-;        }
+        }
 
         private void StratifiedSampleProperties_Load(object sender, EventArgs e)
-        {
-            Text = EntryAssemblyInfo.Title;
-        }
+        {        }
     }
 }

@@ -321,9 +321,7 @@ namespace Mayfly.Plankton.Explorer
                 return;
             }
 
-            double mass = data.MassModels.GetValue(
-                individualRow.Species,
-                individualRow.Length);
+            double mass = data.FindMassModel(individualRow.Species).GetValue(individualRow.Length);
 
             gridRow.Cells[columnIndMass.Index].SetNullValue(double.IsNaN(mass) ?
                 Wild.Resources.Interface.Interface.SuggestionUnavailable :

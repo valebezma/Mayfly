@@ -114,7 +114,7 @@ namespace Mayfly.Plankton.Explorer
 
             if (IsEmpty)
             {
-                Text = EntryAssemblyInfo.Title;
+                this.ResetText(EntryAssemblyInfo.Title);
                 labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
 
                 statusQuantity.ResetFormatted(0);

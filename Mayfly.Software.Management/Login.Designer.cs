@@ -49,7 +49,7 @@ namespace Mayfly.Software.Management
             this.textBoxServer.Name = "textBoxServer";
             this.textBoxServer.Size = new System.Drawing.Size(350, 20);
             this.textBoxServer.TabIndex = 0;
-            this.textBoxServer.Text = "localhost";
+            this.textBoxServer.Text = "212.120.180.162";
             // 
             // textBoxLogin
             // 
@@ -59,7 +59,7 @@ namespace Mayfly.Software.Management
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(350, 20);
             this.textBoxLogin.TabIndex = 0;
-            this.textBoxLogin.Text = "root";
+            this.textBoxLogin.Text = "mayfly-dev";
             // 
             // textBoxPass
             // 
@@ -69,7 +69,7 @@ namespace Mayfly.Software.Management
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(350, 20);
             this.textBoxPass.TabIndex = 0;
-            this.textBoxPass.Text = "root";
+            this.textBoxPass.Text = "Qir-4RK-3Ms-nRE";
             // 
             // textBoxDatabase
             // 
@@ -79,7 +79,7 @@ namespace Mayfly.Software.Management
             this.textBoxDatabase.Name = "textBoxDatabase";
             this.textBoxDatabase.Size = new System.Drawing.Size(350, 20);
             this.textBoxDatabase.TabIndex = 0;
-            this.textBoxDatabase.Text = "prd-backup";
+            this.textBoxDatabase.Text = "mayfly-products";
             // 
             // buttonOK
             // 

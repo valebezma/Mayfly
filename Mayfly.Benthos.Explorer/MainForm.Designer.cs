@@ -573,7 +573,7 @@
             // contextArtCardOpen
             // 
             resources.ApplyResources(this.contextArtCardOpen, "contextArtCardOpen");
-            this.contextArtCardOpen.Image = global::Mayfly.Resources.Icons.Open;
+            this.contextArtCardOpen.Image = Pictogram.Open;
             this.contextArtCardOpen.Name = "contextArtCardOpen";
             this.contextArtCardOpen.Click += new System.EventHandler(this.contextArtCardOpen_Click);
             // 
@@ -873,7 +873,7 @@
             // 
             // contextCardPrint
             // 
-            this.contextCardPrint.Image = global::Mayfly.Resources.Icons.Print;
+            this.contextCardPrint.Image = Pictogram.Print;
             this.contextCardPrint.Name = "contextCardPrint";
             resources.ApplyResources(this.contextCardPrint, "contextCardPrint");
             this.contextCardPrint.Click += new System.EventHandler(this.contextCardPrint_Click);
@@ -1352,7 +1352,7 @@
             // 
             // printIndividualsLogToolStripMenuItem
             // 
-            this.printIndividualsLogToolStripMenuItem.Image = global::Mayfly.Resources.Icons.Print;
+            this.printIndividualsLogToolStripMenuItem.Image = Pictogram.Print;
             this.printIndividualsLogToolStripMenuItem.Name = "printIndividualsLogToolStripMenuItem";
             resources.ApplyResources(this.printIndividualsLogToolStripMenuItem, "printIndividualsLogToolStripMenuItem");
             this.printIndividualsLogToolStripMenuItem.Click += new System.EventHandler(this.printIndividualsLogToolStripMenuItem_Click);

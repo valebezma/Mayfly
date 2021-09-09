@@ -296,7 +296,7 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningQuantity, "pictureBoxWarningQuantity");
             this.pictureBoxWarningQuantity.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningQuantity.Image = global::Mayfly.Resources.Icons.Warning;
+            this.pictureBoxWarningQuantity.Image = Pictogram.Warning;
             this.pictureBoxWarningQuantity.Name = "pictureBoxWarningQuantity";
             this.pictureBoxWarningQuantity.TabStop = false;
             this.toolTipAttention.SetToolTip(this.pictureBoxWarningQuantity, resources.GetString("pictureBoxWarningQuantity.ToolTip"));
@@ -308,7 +308,7 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningMass, "pictureBoxWarningMass");
             this.pictureBoxWarningMass.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningMass.Image = global::Mayfly.Resources.Icons.Warning;
+            this.pictureBoxWarningMass.Image = Pictogram.Warning;
             this.pictureBoxWarningMass.Name = "pictureBoxWarningMass";
             this.pictureBoxWarningMass.TabStop = false;
             this.toolTipAttention.SetToolTip(this.pictureBoxWarningMass, resources.GetString("pictureBoxWarningMass.ToolTip"));
@@ -390,7 +390,7 @@
             // 
             resources.ApplyResources(this.buttonBlank, "buttonBlank");
             this.buttonBlank.FlatAppearance.BorderSize = 0;
-            this.buttonBlank.Image = global::Mayfly.Resources.Icons.Blank;
+            this.buttonBlank.Image = Pictogram.Blank;
             this.buttonBlank.Name = "buttonBlank";
             this.toolTipAttention.SetToolTip(this.buttonBlank, resources.GetString("buttonBlank.ToolTip"));
             this.buttonBlank.UseVisualStyleBackColor = true;

@@ -125,7 +125,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (IsEmpty)
             {
-                this.Text = DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title;
+                this.ResetText(DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title);
                 labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
 
                 labelDatesValue.Text = Constants.Null;

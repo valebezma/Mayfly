@@ -182,7 +182,7 @@
             this.buttonReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonReport.FlatAppearance.BorderSize = 0;
             this.buttonReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReport.Image = global::Mayfly.Resources.Icons.Report;
+            this.buttonReport.Image = global::Mayfly.Pictogram.Report;
             this.buttonReport.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonReport.Location = new System.Drawing.Point(48, 490);
             this.buttonReport.Name = "buttonReport";

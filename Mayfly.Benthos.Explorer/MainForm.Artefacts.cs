@@ -86,8 +86,8 @@ namespace Mayfly.Benthos.Explorer
                 {
                     gridRow.Cells[columnArtifactValidName.Index].Value = 
                         speciesValidator.Find(artifact.SpeciesRow.Species).FullName;
-                    ((TextAndImageCell)gridRow.Cells[columnArtifactValidName.Index]).Image = 
-                        Mayfly.Resources.Icons.Check;
+                    ((TextAndImageCell)gridRow.Cells[columnArtifactValidName.Index]).Image =
+                        Pictogram.Check;
                 }
             }
 
