@@ -117,74 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BhattacharyaPlot" xml:space="preserve">
-    <value>График Бхаттакария</value>
-  </data>
-  <data name="CombinedDistribution" xml:space="preserve">
-    <value>Суммарное распределение</value>
-  </data>
   <data name="DefaultYTitle" xml:space="preserve">
     <value>Частота</value>
   </data>
   <data name="DescriptiveTitle" xml:space="preserve">
     <value>{0}. Описательная статистика</value>
   </data>
-  <data name="DistributionMask" xml:space="preserve">
-    <value>Распределение 0</value>
-  </data>
-  <data name="SelectedPointsMask" xml:space="preserve">
-    <value>Выбранная точка данных 0</value>
-  </data>
   <data name="SeriesProperties" xml:space="preserve">
     <value>Свойства ряда '{0}'</value>
-  </data>
-  <data name="Centroids" xml:space="preserve">
-    <value>Центроиды</value>
-  </data>
-  <data name="Count" xml:space="preserve">
-    <value>Количество</value>
-  </data>
-  <data name="Sample" xml:space="preserve">
-    <value>Выборка</value>
-  </data>
-  <data name="Subsample" xml:space="preserve">
-    <value>Кластер</value>
-  </data>
-  <data name="SubsampleMask" xml:space="preserve">
-    <value>Кластер {0}</value>
   </data>
   <data name="Others" xml:space="preserve">
     <value>Прочие</value>
   </data>
-  <data name="TrendConfidenceBands" xml:space="preserve">
-    <value>Доверительный интервал тренда {0}</value>
-  </data>
   <data name="TrendLineTitle" xml:space="preserve">
     <value>Линия тренда {0}</value>
   </data>
-  <data name="DataConfidenceBands" xml:space="preserve">
-    <value>Границы достоверности данных {0}</value>
-  </data>
   <data name="ScatterplotTitle" xml:space="preserve">
     <value>График отношения [{0}] к [{1}]</value>
-  </data>
-  <data name="MergedBivariate" xml:space="preserve">
-    <value>Совмещенная выборка</value>
-  </data>
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>Планки погрешностей {0}</value>
   </data>
   <data name="FitAnnotation" xml:space="preserve">
     <value>Совпадение {0:P1}</value>
   </data>
   <data name="FitTitle" xml:space="preserve">
     <value>Приближение {0}</value>
-  </data>
-  <data name="AnovaResidual" xml:space="preserve">
-    <value>Ошибка</value>
-  </data>
-  <data name="AnovaTotal" xml:space="preserve">
-    <value>Всего</value>
   </data>
   <data name="SelectionCommon" xml:space="preserve">
     <value>Количество: {0}</value>
@@ -200,9 +155,6 @@
   </data>
   <data name="EmptySample" xml:space="preserve">
     <value>Выборка пуста</value>
-  </data>
-  <data name="TrendLinearizedTitle" xml:space="preserve">
-    <value>Линеаризованный {0}</value>
   </data>
   <data name="PivotCautionInstruction" xml:space="preserve">
     <value>Некоторые строки скрыты. Они не попадут в группировку или сводную таблицу. Нажмите здесь, чтобы отобразить все строки журнала.</value>

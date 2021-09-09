@@ -117,54 +117,234 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="wizardControl1.CancelButtonText" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="wizardControl1.FinishButtonText" xml:space="preserve">
-    <value>Экспорт</value>
-  </data>
-  <data name="wizardControl1.NextButtonText" xml:space="preserve">
-    <value>Далее</value>
-  </data>
-  <data name="wizardPagePhantoms.Text" xml:space="preserve">
-    <value>Незавершенные наблюдения</value>
-  </data>
-  <data name="wizardPageCommon.Text" xml:space="preserve">
-    <value>Реквизиты наблюдения</value>
-  </data>
-  <data name="wizardPageGears.Text" xml:space="preserve">
-    <value>Комплектация</value>
-  </data>
-  <data name="wizardPageSchedule.Text" xml:space="preserve">
-    <value>График лова</value>
-  </data>
-  <data name="wizardPageSave.Text" xml:space="preserve">
-    <value>Завершений наблюдения</value>
-  </data>
-  <data name="wizardControl1.Title" xml:space="preserve">
-    <value>Мастер наблюдений</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonAddFleet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 23</value>
+  </data>
+  <data name="buttonAddFleet.Text" xml:space="preserve">
+    <value>Новый комплект</value>
+  </data>
   <data name="buttonClearPhantoms.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 329</value>
   </data>
   <data name="buttonClearPhantoms.Text" xml:space="preserve">
     <value>Очистить</value>
   </data>
-  <data name="listViewPhantoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 282</value>
+  <data name="buttonClearSchedule.Text" xml:space="preserve">
+    <value>Очистить</value>
   </data>
-  <data name="columnHeaderTime.Text" xml:space="preserve">
-    <value>Сохранен</value>
+  <data name="buttonExport.Text" xml:space="preserve">
+    <value>Экспортировать</value>
   </data>
-  <data name="columnHeaderGears.Text" xml:space="preserve">
-    <value>Орудий</value>
+  <data name="buttonPrintCribnote.Text" xml:space="preserve">
+    <value>Шпаргалка</value>
+  </data>
+  <data name="buttonSaveAppData.Text" xml:space="preserve">
+    <value>Продолжить позднее</value>
+  </data>
+  <data name="checkBoxControl.Text" xml:space="preserve">
+    <value>Общий улов</value>
+  </data>
+  <data name="checkBoxGearReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 19</value>
+  </data>
+  <data name="checkBoxGearReport.Text" xml:space="preserve">
+    <value>Показать отчет по статистике применения орудий лова</value>
+  </data>
+  <data name="checkBoxKeep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 19</value>
+  </data>
+  <data name="checkBoxKeep.Text" xml:space="preserve">
+    <value>Не удалять файл наблюдений</value>
+  </data>
+  <data name="checkBoxSpcReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>289, 19</value>
+  </data>
+  <data name="checkBoxSpcReport.Text" xml:space="preserve">
+    <value>Показать отчет по статистике видовых выборок</value>
+  </data>
+  <data name="ColumnEnvironment.HeaderText" xml:space="preserve">
+    <value>Погода</value>
   </data>
   <data name="columnHeaderActions.Text" xml:space="preserve">
     <value>Действий</value>
   </data>
+  <data name="columnHeaderGears.Text" xml:space="preserve">
+    <value>Орудий</value>
+  </data>
+  <data name="columnHeaderTime.Text" xml:space="preserve">
+    <value>Сохранен</value>
+  </data>
+  <data name="columnHeight.HeaderText" xml:space="preserve">
+    <value>Высота, м</value>
+  </data>
+  <data name="columnLength.HeaderText" xml:space="preserve">
+    <value>Длина, м</value>
+  </data>
+  <data name="columnMesh.HeaderText" xml:space="preserve">
+    <value>Ячея, мм</value>
+  </data>
+  <data name="columnSampler.HeaderText" xml:space="preserve">
+    <value>Орудие</value>
+  </data>
+  <data name="columnTimepoint.HeaderText" xml:space="preserve">
+    <value>Когда</value>
+  </data>
+  <data name="contextCatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 148</value>
+  </data>
+  <data name="contextClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextClear.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="contextEditCatch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextEditCatch.Text" xml:space="preserve">
+    <value>Редактировать улов</value>
+  </data>
+  <data name="contextExportCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
+  </data>
+  <data name="contextExportCards.Text" xml:space="preserve">
+    <value>Экспортировать карточки...</value>
+  </data>
+  <data name="contextInspect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextInspect.Text" xml:space="preserve">
+    <value>Переборка</value>
+  </data>
+  <data name="contextLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextLocation.Text" xml:space="preserve">
+    <value>Установить местоположение</value>
+  </data>
+  <data name="contextMoveTo.Text" xml:space="preserve">
+    <value>Переместить в</value>
+  </data>
+  <data name="contextRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextRemove.Text" xml:space="preserve">
+    <value>Выемка</value>
+  </data>
+  <data name="contextSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="contextSet.Text" xml:space="preserve">
+    <value>Установка</value>
+  </data>
+  <data name="contextTimepoint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 48</value>
+  </data>
+  <data name="contextWeather.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
+  </data>
+  <data name="contextWeather.Text" xml:space="preserve">
+    <value>Ввести сведения о среде</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Ячея</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Длина, м</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Высота, м</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Окружающая среда</value>
+  </data>
+  <data name="fbDialogSaveCards.Description" xml:space="preserve">
+    <value>Выберите папку для сохранения карточек с данным наблюдений</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Выберите комплект сетей и заполните таблицу. Введите дату и время в первой колонке и укажите укажите тип события для орудия в соответствующей колонке.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Укажите общие данные, такие как водный объект и имя исследователя для записи в карточки.</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 45</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Выберите вариант завершения наблюдения. Кликните "Отложить", чтобы продолжить позже, или "Экспортировать", чтобы сохранить данные в коллекцию карточек лова рыбы. В последнем случае файл наблюдений будет стерт (если не отмечен соответствующий флаг).</value>
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Обнаружены незавершенные наблюдения. Выберите одно, чтобы продолжить его. Кликните дважды, чтобы перейти сразу к графику лова или нажмите 'Далее' чтобы пройти все шаги.</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Исследователь</value>
+  </data>
+  <data name="labelSpeciesSelectionInstruction.Text" xml:space="preserve">
+    <value>Перечислите все использованные орудия лова. Если вы использовали более 12 орудий разделите их на несколько комплектов используйте элементы управления под таблицей.</value>
+  </data>
+  <data name="labelWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 15</value>
+  </data>
+  <data name="labelWater.Text" xml:space="preserve">
+    <value>Водный объект</value>
+  </data>
+  <data name="listViewPhantoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 282</value>
+  </data>
+  <data name="tdbArchive.Text" xml:space="preserve">
+    <value>В архив</value>
+  </data>
+  <data name="tdbCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="tdbClear.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="tdbExport.Text" xml:space="preserve">
+    <value>Экспортировать</value>
+  </data>
+  <data name="tdbLoad.Text" xml:space="preserve">
+    <value>Загрузить карточки</value>
+  </data>
+  <data name="tdbOpenFolder.Text" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
+  <data name="tdbShelve.Text" xml:space="preserve">
+    <value>Продолжить позднее</value>
+  </data>
+  <data name="tdClearSchedule.Content" xml:space="preserve">
+    <value>График содержит несколько уловов. Вы уверены, что хотите очистить его в любом случае?</value>
+  </data>
+  <data name="tdClearSchedule.MainInstruction" xml:space="preserve">
+    <value>Очистить непустой график лова?</value>
+  </data>
+  <data name="tdClose.Content" xml:space="preserve">
+    <value>Работа с данными наблюдений не завершена. Вы хотите сохранить незавершенные данные или экспортировать уже завершенные карточки?</value>
+  </data>
+  <data name="tdClose.ExpandedControlText" xml:space="preserve">
+    <value>Будьте внимательны</value>
+  </data>
+  <data name="tdClose.ExpandedInformation" xml:space="preserve">
+    <value>При экспорте карточек файл наблюдений удаляется. Чтобы избежать этого, нажмите "Отмена" и установите флажок "Не удалять файл наблюдений".</value>
+  </data>
+  <data name="tdClose.MainInstruction" xml:space="preserve">
+    <value>Работа не завершена. Что сделать?</value>
+  </data>
+  <data name="tdLoadCards.Content" xml:space="preserve">
+    <value>Загрузить экспортированные карточки в Fish Explorer?</value>
+  </data>
+  <data name="tdLoadCards.MainInstruction" xml:space="preserve">
+    <value>Загрузить экспортированные данные?</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 6</value>
   </data>
   <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -235,187 +415,31 @@
         QnVpbGQJX1JldmlzaW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
 </value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Укажите общие данные, такие как водный объект и имя исследователя для записи в карточки.</value>
+  <data name="wizardControl1.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 15</value>
+  <data name="wizardControl1.FinishButtonText" xml:space="preserve">
+    <value>Экспорт</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Исследователь</value>
+  <data name="wizardControl1.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
   </data>
-  <data name="labelWater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 15</value>
+  <data name="wizardControl1.Title" xml:space="preserve">
+    <value>Мастер наблюдений</value>
   </data>
-  <data name="labelWater.Text" xml:space="preserve">
-    <value>Водный объект</value>
+  <data name="wizardPageCommon.Text" xml:space="preserve">
+    <value>Реквизиты наблюдения</value>
   </data>
-  <data name="buttonAddFleet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 23</value>
+  <data name="wizardPageGears.Text" xml:space="preserve">
+    <value>Комплектация</value>
   </data>
-  <data name="buttonAddFleet.Text" xml:space="preserve">
-    <value>Новый комплект</value>
+  <data name="wizardPagePhantoms.Text" xml:space="preserve">
+    <value>Незавершенные наблюдения</value>
   </data>
-  <data name="labelSpeciesSelectionInstruction.Text" xml:space="preserve">
-    <value>Перечислите все использованные орудия лова. Если вы использовали более 12 орудий разделите их на несколько комплектов используйте элементы управления под таблицей.</value>
+  <data name="wizardPageSave.Text" xml:space="preserve">
+    <value>Завершений наблюдения</value>
   </data>
-  <data name="columnSampler.HeaderText" xml:space="preserve">
-    <value>Орудие</value>
-  </data>
-  <data name="columnMesh.HeaderText" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="columnLength.HeaderText" xml:space="preserve">
-    <value>Длина, м</value>
-  </data>
-  <data name="columnHeight.HeaderText" xml:space="preserve">
-    <value>Высота, м</value>
-  </data>
-  <data name="buttonPrintCribnote.Text" xml:space="preserve">
-    <value>Шпаргалка</value>
-  </data>
-  <data name="checkBoxControl.Text" xml:space="preserve">
-    <value>Общий улов</value>
-  </data>
-  <data name="buttonClearSchedule.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Выберите комплект сетей и заполните таблицу. Введите дату и время в первой колонке и укажите укажите тип события для орудия в соответствующей колонке.</value>
-  </data>
-  <data name="columnTimepoint.HeaderText" xml:space="preserve">
-    <value>Когда</value>
-  </data>
-  <data name="ColumnEnvironment.HeaderText" xml:space="preserve">
-    <value>Погода</value>
-  </data>
-  <data name="contextTimepoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 48</value>
-  </data>
-  <data name="contextWeather.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
-  </data>
-  <data name="contextWeather.Text" xml:space="preserve">
-    <value>Ввести сведения о среде</value>
-  </data>
-  <data name="contextExportCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
-  </data>
-  <data name="contextExportCards.Text" xml:space="preserve">
-    <value>Экспортировать карточки...</value>
-  </data>
-  <data name="checkBoxSpcReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 19</value>
-  </data>
-  <data name="checkBoxSpcReport.Text" xml:space="preserve">
-    <value>Показать отчет по статистике видовых выборок</value>
-  </data>
-  <data name="checkBoxGearReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 19</value>
-  </data>
-  <data name="checkBoxGearReport.Text" xml:space="preserve">
-    <value>Показать отчет по статистике применения орудий лова</value>
-  </data>
-  <data name="checkBoxKeep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 19</value>
-  </data>
-  <data name="checkBoxKeep.Text" xml:space="preserve">
-    <value>Не удалять файл наблюдений</value>
-  </data>
-  <data name="buttonExport.Text" xml:space="preserve">
-    <value>Экспортировать</value>
-  </data>
-  <data name="buttonSaveAppData.Text" xml:space="preserve">
-    <value>Продолжить позднее</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 45</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Выберите вариант завершения наблюдения. Кликните "Отложить", чтобы продолжить позже, или "Экспортировать", чтобы сохранить данные в коллекцию карточек лова рыбы. В последнем случае файл наблюдений будет стерт (если не отмечен соответствующий флаг).</value>
-  </data>
-  <data name="contextCatch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 148</value>
-  </data>
-  <data name="contextSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextSet.Text" xml:space="preserve">
-    <value>Установка</value>
-  </data>
-  <data name="contextInspect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextInspect.Text" xml:space="preserve">
-    <value>Переборка</value>
-  </data>
-  <data name="contextRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextRemove.Text" xml:space="preserve">
-    <value>Выемка</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 6</value>
-  </data>
-  <data name="contextLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextLocation.Text" xml:space="preserve">
-    <value>Установить местоположение</value>
-  </data>
-  <data name="contextEditCatch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextEditCatch.Text" xml:space="preserve">
-    <value>Редактировать улов</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 6</value>
-  </data>
-  <data name="contextClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
-  </data>
-  <data name="contextClear.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="tdLoadCards.Content" xml:space="preserve">
-    <value>Загрузить экспортированные карточки в Fish Explorer?</value>
-  </data>
-  <data name="tdLoadCards.MainInstruction" xml:space="preserve">
-    <value>Загрузить экспортированные данные?</value>
-  </data>
-  <data name="tdbLoad.Text" xml:space="preserve">
-    <value>Загрузить карточки</value>
-  </data>
-  <data name="tdbOpenFolder.Text" xml:space="preserve">
-    <value>Открыть папку</value>
-  </data>
-  <data name="tdClearSchedule.Content" xml:space="preserve">
-    <value>График содержит несколько уловов. Вы уверены, что хотите очистить его в любом случае?</value>
-  </data>
-  <data name="tdClearSchedule.MainInstruction" xml:space="preserve">
-    <value>Очистить непустой график лова?</value>
-  </data>
-  <data name="tdbClear.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="tdClose.Content" xml:space="preserve">
-    <value>Работа с данными наблюдений не завершена. Вы хотите сохранить незавершенные данные или экспортировать уже завершенные карточки?</value>
-  </data>
-  <data name="tdClose.ExpandedControlText" xml:space="preserve">
-    <value>Будьте внимательны</value>
-  </data>
-  <data name="tdClose.ExpandedInformation" xml:space="preserve">
-    <value>При экспорте карточек файл наблюдений удаляется. Чтобы избежать этого, нажмите "Отмена" и установите флажок "Не удалять файл наблюдений".</value>
-  </data>
-  <data name="tdClose.MainInstruction" xml:space="preserve">
-    <value>Работа не завершена. Что сделать?</value>
-  </data>
-  <data name="tdbShelve.Text" xml:space="preserve">
-    <value>Продолжить позднее</value>
-  </data>
-  <data name="tdbExport.Text" xml:space="preserve">
-    <value>Экспортировать</value>
+  <data name="wizardPageSchedule.Text" xml:space="preserve">
+    <value>График лова</value>
   </data>
 </root>

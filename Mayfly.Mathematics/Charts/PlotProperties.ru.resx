@@ -117,36 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="tabPageChart.Text" xml:space="preserve">
-    <value>Общие</value>
-  </data>
-  <data name="tabPageAxisX.Text" xml:space="preserve">
-    <value>Ось X</value>
-  </data>
-  <data name="tabPageAxisY.Text" xml:space="preserve">
-    <value>Ось Y</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Text" xml:space="preserve">
+    <value>Свойства графика</value>
+  </data>
+  <data name="buttonPrint.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 17</value>
   </data>
   <data name="checkBox1.Text" xml:space="preserve">
     <value>Отображать легенду</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 13</value>
+  <data name="checkBoxAllowBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 17</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Шрифт оформления</value>
+  <data name="checkBoxAllowBreak.Text" xml:space="preserve">
+    <value>Разрыв шкалы при</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Общие</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Заголовок графика</value>
+  <data name="checkBoxXIntervalAuto.Text" xml:space="preserve">
+    <value>АВТО</value>
   </data>
   <data name="checkBoxXLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 17</value>
@@ -157,65 +148,20 @@
   <data name="checkBoxXMaxAuto.Text" xml:space="preserve">
     <value>АВТО</value>
   </data>
-  <data name="checkBoxXIntervalAuto.Text" xml:space="preserve">
-    <value>АВТО</value>
-  </data>
   <data name="checkBoxXMinAuto.Text" xml:space="preserve">
     <value>АВТО</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+  <data name="checkBoxY2IntervalAuto.Text" xml:space="preserve">
+    <value>АВТО</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Интервал</value>
+  <data name="checkBoxY2MaxAuto.Text" xml:space="preserve">
+    <value>АВТО</value>
   </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 15</value>
+  <data name="checkBoxY2MinAuto.Text" xml:space="preserve">
+    <value>АВТО</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Шкала</value>
-  </data>
-  <data name="label_title.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 15</value>
-  </data>
-  <data name="label_title.Text" xml:space="preserve">
-    <value>Заголовок</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Формат значений</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Максимум</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Заголовок оси</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Минимум</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Формат значений</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>% разнице</value>
+  <data name="checkBoxYIntervalAuto.Text" xml:space="preserve">
+    <value>АВТО</value>
   </data>
   <data name="checkBoxYLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 17</value>
@@ -226,22 +172,73 @@
   <data name="checkBoxYMaxAuto.Text" xml:space="preserve">
     <value>АВТО</value>
   </data>
-  <data name="checkBoxYIntervalAuto.Text" xml:space="preserve">
-    <value>АВТО</value>
-  </data>
   <data name="checkBoxYMinAuto.Text" xml:space="preserve">
     <value>АВТО</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
+  <data name="comboBoxTimeInterval.Items" xml:space="preserve">
+    <value>Миллисекунды</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Интервал</value>
+  <data name="comboBoxTimeInterval.Items1" xml:space="preserve">
+    <value>Секунды</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="comboBoxTimeInterval.Items2" xml:space="preserve">
+    <value>Минуты</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items3" xml:space="preserve">
+    <value>Часы</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items4" xml:space="preserve">
+    <value>Дни</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items5" xml:space="preserve">
+    <value>Недели</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items6" xml:space="preserve">
+    <value>Месяцы</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items7" xml:space="preserve">
+    <value>Годы</value>
+  </data>
+  <data name="comboBoxTimeInterval.Items8" xml:space="preserve">
+    <value>Десятилетия</value>
+  </data>
+  <data name="itemA4.Text" xml:space="preserve">
+    <value>На страницу A4</value>
+  </data>
+  <data name="itemA5.Text" xml:space="preserve">
+    <value>На половину страницы A4</value>
+  </data>
+  <data name="itemA6.Text" xml:space="preserve">
+    <value>На четверть страницы A4</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>% разнице</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Заголовок графика</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 13</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Шрифт оформления</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 15</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
+  <data name="label13.Text" xml:space="preserve">
     <value>Шкала</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
@@ -256,23 +253,17 @@
   <data name="label15.Text" xml:space="preserve">
     <value>Минимум</value>
   </data>
-  <data name="checkBoxAllowBreak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 17</value>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
   </data>
-  <data name="checkBoxAllowBreak.Text" xml:space="preserve">
-    <value>Разрыв шкалы при</value>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Формат значений</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 15</value>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Заголовок</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Заголовок оси</value>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Формат значений</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
@@ -280,14 +271,11 @@
   <data name="label18.Text" xml:space="preserve">
     <value>Формат значений</value>
   </data>
-  <data name="checkBoxY2MaxAuto.Text" xml:space="preserve">
-    <value>АВТО</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
   </data>
-  <data name="checkBoxY2IntervalAuto.Text" xml:space="preserve">
-    <value>АВТО</value>
-  </data>
-  <data name="checkBoxY2MinAuto.Text" xml:space="preserve">
-    <value>АВТО</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Интервал</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
@@ -325,7 +313,61 @@
   <data name="label25.Text" xml:space="preserve">
     <value>Заголовок оси</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Свойства графика</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Минимум</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Максимум</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Заголовок оси</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Интервал</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Заголовок оси</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Шкала</value>
+  </data>
+  <data name="label_title.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
+  </data>
+  <data name="label_title.Text" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="tabPageAxisX.Text" xml:space="preserve">
+    <value>Ось X</value>
+  </data>
+  <data name="tabPageAxisY.Text" xml:space="preserve">
+    <value>Ось Y</value>
+  </data>
+  <data name="tabPageChart.Text" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="tabPageY2.Text" xml:space="preserve">
+    <value>Ось Y (вторичная)</value>
   </data>
 </root>

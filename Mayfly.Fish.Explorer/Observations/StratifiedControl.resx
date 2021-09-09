@@ -196,7 +196,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>Registered</value>
+    <value>Tallies given</value>
   </data>
   <data name="ColumnRegID.Width" type="System.Int32, mscorlib">
     <value>80</value>

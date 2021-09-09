@@ -192,9 +192,6 @@
   <data name="plotYield.AxisXTitle" xml:space="preserve">
     <value>Year</value>
   </data>
-  <data name="plotYield.AxisY2Title" xml:space="preserve">
-    <value />
-  </data>
   <data name="plotYield.AxisYTitle" xml:space="preserve">
     <value>Yield, t</value>
   </data>
@@ -970,8 +967,7 @@
     <value>0</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Select particular cohort to see its history according to performed virtual population analysis. Use list to select cohort.
-</value>
+    <value>Select particular cohort to see its history according to performed virtual population analysis. Use list to select cohort.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -1089,9 +1085,6 @@
   </data>
   <data name="statChartVpa.AxisXTitle" xml:space="preserve">
     <value>Year</value>
-  </data>
-  <data name="statChartVpa.AxisY2Title" xml:space="preserve">
-    <value />
   </data>
   <data name="statChartVpa.AxisYTitle" xml:space="preserve">
     <value>Number, thsd ind.</value>
@@ -1301,7 +1294,7 @@
     <value>0</value>
   </data>
   <data name="labelReport.Text" xml:space="preserve">
-    <value>Select parts to include in the report:</value>
+    <value>Select parts to include in the report.</value>
   </data>
   <data name="&gt;&gt;labelReport.Name" xml:space="preserve">
     <value>labelReport</value>

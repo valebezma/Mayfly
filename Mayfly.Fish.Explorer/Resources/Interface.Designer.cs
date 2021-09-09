@@ -314,7 +314,7 @@ namespace Mayfly.Fish.Explorer.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to {0} is absent in catches of {1}.
-        ///To eliminate it from further analysis hold {2}..
+        ///To eliminate it from further analysis hold {2}.
         /// </summary>
         internal static string SpeciesOfInterestIsAbsent {
             get {

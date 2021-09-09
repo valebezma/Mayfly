@@ -1675,31 +1675,31 @@
     <value>False</value>
   </data>
   <data name="comboBoxTimeInterval.Items" xml:space="preserve">
-    <value>Миллисекунды</value>
+    <value>Milliseconds</value>
   </data>
   <data name="comboBoxTimeInterval.Items1" xml:space="preserve">
-    <value>Секунды</value>
+    <value>Seconds</value>
   </data>
   <data name="comboBoxTimeInterval.Items2" xml:space="preserve">
-    <value>Минуты</value>
+    <value>Minutes</value>
   </data>
   <data name="comboBoxTimeInterval.Items3" xml:space="preserve">
-    <value>Часы</value>
+    <value>Hours</value>
   </data>
   <data name="comboBoxTimeInterval.Items4" xml:space="preserve">
-    <value>Дни</value>
+    <value>Days</value>
   </data>
   <data name="comboBoxTimeInterval.Items5" xml:space="preserve">
-    <value>Недели</value>
+    <value>Weeks</value>
   </data>
   <data name="comboBoxTimeInterval.Items6" xml:space="preserve">
-    <value>Месяцы</value>
+    <value>Months</value>
   </data>
   <data name="comboBoxTimeInterval.Items7" xml:space="preserve">
-    <value>Годы</value>
+    <value>Years</value>
   </data>
   <data name="comboBoxTimeInterval.Items8" xml:space="preserve">
-    <value>Десятилетия</value>
+    <value>Decades</value>
   </data>
   <data name="comboBoxTimeInterval.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 193</value>

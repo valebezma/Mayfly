@@ -176,7 +176,7 @@
     <value>154, 13</value>
   </data>
   <data name="labelAirPressure.Text" xml:space="preserve">
-    <value>Атмосферное давление, кПа</value>
+    <value>Атмосферн. давление, мм рт. ст.</value>
   </data>
   <data name="labelEventDiscretion.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>

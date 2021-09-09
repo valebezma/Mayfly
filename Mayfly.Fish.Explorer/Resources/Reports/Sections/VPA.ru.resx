@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Column1" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
   <data name="Column2" xml:space="preserve">
     <value>Год</value>
   </data>
@@ -166,7 +169,7 @@
     <value>Результаты ВПА для поколения {0} {1} года</value>
   </data>
   <data name="Table4" xml:space="preserve">
-    <value>Численность популяции {0} всех возрастов, оцененная ВПА, экз.</value>
+    <value>Численность популяции {0} всех возрастов, оцененная ВПА</value>
   </data>
   <data name="Table5" xml:space="preserve">
     <value>Масса {0} всех возрастов, оцененная ВПА, кг</value>

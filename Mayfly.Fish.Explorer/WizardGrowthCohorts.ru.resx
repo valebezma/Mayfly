@@ -117,81 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
-    <value>Вернуться на предыдущий этап</value>
-  </data>
-  <data name="wizardExplorer.CancelButtonText" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
-    <value>Отчет</value>
-  </data>
-  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
-    <value>Далее</value>
-  </data>
-  <data name="pageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="pageCohorts.Text" xml:space="preserve">
-    <value>История линейного роста когорт</value>
-  </data>
-  <data name="pageAL.Text" xml:space="preserve">
-    <value>Кривые роста</value>
-  </data>
-  <data name="pageWL.Text" xml:space="preserve">
-    <value>Связь масса—длина</value>
-  </data>
-  <data name="pageReport.Text" xml:space="preserve">
-    <value>Составление отчета</value>
-  </data>
-  <data name="wizardExplorer.Title" xml:space="preserve">
-    <value>Мастер оценки параметров роста {0} (по когортам)</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>Параметры роста, оцененные по многолетним уловам, - более точные характеристики конкретных когорт. Не смотря на ожидаемое постоянство, их колебания могут быть обнаружены с помощью этого мастера.</value>
-  </data>
-  <data name="labelNoData.Text" xml:space="preserve">
-    <value>Недостаточно данных...</value>
-  </data>
-  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>В таблице ниже отражена история роста (отраженная в средней длине особи) конкретных когорт.</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonAL.Text" xml:space="preserve">
     <value>Свойства тренда</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Кривые роста отдельных когорт приведены на графике ниже. Ознакомиться с деталями можно через кнопку "Свойства тренда" внизу.</value>
-  </data>
-  <data name="statChartAL.AxisXTitle" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="statChartAL.AxisYTitle" xml:space="preserve">
-    <value>Длина, мм</value>
   </data>
   <data name="buttonLW.Text" xml:space="preserve">
     <value>Свойства тренда</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>На графике отражены модели "длина-масса" отдельных когорт. Ознакомиться с деталями можно через кнопку "Свойства тренда" внизу.</value>
-  </data>
-  <data name="statChartLW.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="statChartLW.AxisYTitle" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxGrowth.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 19</value>
   </data>
   <data name="checkBoxGrowth.Text" xml:space="preserve">
     <value>Параметры кривых роста</value>
   </data>
-  <data name="labelReport.Text" xml:space="preserve">
-    <value>Укажите, какие части следует включить в отчет.</value>
+  <data name="checkBoxHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 19</value>
+  </data>
+  <data name="checkBoxHistory.Text" xml:space="preserve">
+    <value>История линейного роста когорт</value>
   </data>
   <data name="checkBoxMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 19</value>
@@ -199,11 +142,8 @@
   <data name="checkBoxMass.Text" xml:space="preserve">
     <value>Параметры моделей "длина-масса"</value>
   </data>
-  <data name="checkBoxHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 19</value>
-  </data>
-  <data name="checkBoxHistory.Text" xml:space="preserve">
-    <value>История линейного роста когорт</value>
+  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
   </data>
   <data name="contextGrowth.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 32</value>
@@ -214,9 +154,6 @@
   <data name="contextGrowthAll.Text" xml:space="preserve">
     <value>Сравнить все</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 6</value>
-  </data>
   <data name="contextMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 32</value>
   </data>
@@ -226,7 +163,73 @@
   <data name="contextMassAll.Text" xml:space="preserve">
     <value>Сравнить все</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>В таблице ниже отражена история роста (отраженная в средней длине особи) конкретных когорт.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>На графике отражены модели "длина-масса" отдельных когорт. Ознакомиться с деталями можно через кнопку "Свойства тренда" внизу.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Кривые роста отдельных когорт приведены на графике ниже. Ознакомиться с деталями можно через кнопку "Свойства тренда" внизу.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Недостаточно данных...</value>
+  </data>
+  <data name="labelNoData.Text" xml:space="preserve">
+    <value>Недостаточно данных...</value>
+  </data>
+  <data name="labelNoticeGears.Text" xml:space="preserve">
+    <value>Недостаточно данных...</value>
+  </data>
+  <data name="labelReport.Text" xml:space="preserve">
+    <value>Укажите, какие части следует включить в отчет.</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Параметры роста, оцененные по многолетним уловам, - более точные характеристики конкретных когорт. Не смотря на ожидаемое постоянство, их колебания могут быть обнаружены с помощью этого мастера.</value>
+  </data>
+  <data name="pageAL.Text" xml:space="preserve">
+    <value>Кривые роста</value>
+  </data>
+  <data name="pageCohorts.Text" xml:space="preserve">
+    <value>История линейного роста когорт</value>
+  </data>
+  <data name="pageReport.Text" xml:space="preserve">
+    <value>Составление отчета</value>
+  </data>
+  <data name="pageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="pageWL.Text" xml:space="preserve">
+    <value>Связь масса—длина</value>
+  </data>
+  <data name="statChartAL.AxisXTitle" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="statChartAL.AxisYTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="statChartLW.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="statChartLW.AxisYTitle" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 6</value>
+  </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 6</value>
+  </data>
+  <data name="wizardExplorer.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
+    <value>Отчет</value>
+  </data>
+  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>Мастер оценки параметров роста {0} (по когортам)</value>
   </data>
 </root>

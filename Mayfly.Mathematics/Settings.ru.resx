@@ -118,105 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelRunouts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 13</value>
-  </data>
-  <data name="labelRunouts.Text" xml:space="preserve">
-    <value>Расстояние выброса, % довер. интервала</value>
-  </data>
-  <data name="labelCL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 13</value>
-  </data>
-  <data name="labelCL.Text" xml:space="preserve">
-    <value>Уровень достоверности по умолчанию</value>
-  </data>
-  <data name="labelSL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 13</value>
-  </data>
-  <data name="labelSL.Text" xml:space="preserve">
-    <value>Уровень значимости по умолчанию</value>
-  </data>
-  <data name="labelSoftSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 13</value>
-  </data>
-  <data name="labelSoftSize.Text" xml:space="preserve">
-    <value>Нестрогое ограничение размера выборки</value>
-  </data>
-  <data name="labelRegression.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 15</value>
-  </data>
-  <data name="labelRegression.Text" xml:space="preserve">
-    <value>Значения регрессии</value>
-  </data>
-  <data name="labelExpect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 15</value>
-  </data>
-  <data name="labelExpect.Text" xml:space="preserve">
-    <value>Общие статистические ожидания</value>
-  </data>
-  <data name="labelSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 15</value>
-  </data>
-  <data name="labelSize.Text" xml:space="preserve">
-    <value>Общие значения</value>
-  </data>
-  <data name="labelStrongSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 13</value>
-  </data>
-  <data name="labelStrongSize.Text" xml:space="preserve">
-    <value>Строгое ограничение размера выборки</value>
-  </data>
-  <data name="tabPageGeneral.Text" xml:space="preserve">
-    <value>Общие</value>
-  </data>
-  <data name="comboBoxNormality.Items" xml:space="preserve">
-    <value>Тест Колмогорова-Смирнова</value>
-  </data>
-  <data name="labelNormality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="labelNormality.Text" xml:space="preserve">
-    <value>Тест нормальности</value>
-  </data>
-  <data name="labelLSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="labelLSD.Text" xml:space="preserve">
-    <value>Индекс различия</value>
-  </data>
-  <data name="labelHomo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 13</value>
-  </data>
-  <data name="labelHomo.Text" xml:space="preserve">
-    <value>Тест гомоскедастичности</value>
-  </data>
-  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 13</value>
-  </data>
-  <data name="labelDiversity.Text" xml:space="preserve">
-    <value>Индекс разнообразия</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 15</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Индексы</value>
-  </data>
-  <data name="labelTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 15</value>
-  </data>
-  <data name="labelTest.Text" xml:space="preserve">
-    <value>Статистические тесты</value>
-  </data>
-  <data name="tabPageMethods.Text" xml:space="preserve">
-    <value>Методы</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AMDAQAAEABABoBgAA1gAAACAgEAABAAQA6AIAAD4HAAAYGBAAAQAEAOgBAAAmCgAAEBAQAAEA
@@ -1860,5 +1761,119 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="comboBoxHomogeneity.Items" xml:space="preserve">
+    <value>Тест Барлетта (Bartlett, 1937)</value>
+  </data>
+  <data name="comboBoxHomogeneity.Items1" xml:space="preserve">
+    <value>Текст F(max) (Hartley, 1950)</value>
+  </data>
+  <data name="comboBoxHomogeneity.Items2" xml:space="preserve">
+    <value>Тест Левина (Levene and Howard, 1960)</value>
+  </data>
+  <data name="comboBoxHomogeneity.Items3" xml:space="preserve">
+    <value>Тест Брауна-Форсайт (Brown and Forsythe, 1974)</value>
+  </data>
+  <data name="comboBoxLSD.Items" xml:space="preserve">
+    <value>Тест наименьшей существенной разницы</value>
+  </data>
+  <data name="comboBoxLSD.Items1" xml:space="preserve">
+    <value>Тест Тьюки</value>
+  </data>
+  <data name="comboBoxNormality.Items" xml:space="preserve">
+    <value>Тест Колмогорова-Смирнова</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Индексы</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Цвет выбранной серии данных</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>Внешний вид данных</value>
+  </data>
+  <data name="labelCL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 13</value>
+  </data>
+  <data name="labelDefaultTrendColor.Text" xml:space="preserve">
+    <value>Цвет линии тренд по-умолчанию</value>
+  </data>
+  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="labelExpect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 15</value>
+  </data>
+  <data name="labelExpect.Text" xml:space="preserve">
+    <value>Общие статистические ожидания</value>
+  </data>
+  <data name="labelHomo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="labelHomo.Text" xml:space="preserve">
+    <value>Тест гомоскедастичности</value>
+  </data>
+  <data name="labelLSD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="labelLSD.Text" xml:space="preserve">
+    <value>Индекс различия</value>
+  </data>
+  <data name="labelNormality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="labelNormality.Text" xml:space="preserve">
+    <value>Тест нормальности</value>
+  </data>
+  <data name="labelRegression.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 15</value>
+  </data>
+  <data name="labelRunouts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 13</value>
+  </data>
+  <data name="labelSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 15</value>
+  </data>
+  <data name="labelSize.Text" xml:space="preserve">
+    <value>Общие значения</value>
+  </data>
+  <data name="labelSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 13</value>
+  </data>
+  <data name="labelSL.Text" xml:space="preserve">
+    <value>Уровень значимости по умолчанию</value>
+  </data>
+  <data name="labelSoftSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 13</value>
+  </data>
+  <data name="labelStrongSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 13</value>
+  </data>
+  <data name="labelStrongSize.Text" xml:space="preserve">
+    <value>Строгое ограничение размера выборки</value>
+  </data>
+  <data name="labelTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 15</value>
+  </data>
+  <data name="labelTest.Text" xml:space="preserve">
+    <value>Статистические тесты</value>
+  </data>
+  <data name="tabPageAppearance.Text" xml:space="preserve">
+    <value>Внешний вид</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>Общие</value>
+  </data>
+  <data name="tabPageMethods.Text" xml:space="preserve">
+    <value>Методы</value>
   </data>
 </root>

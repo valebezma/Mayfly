@@ -118,17 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextChartProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextChartProperties.Text" xml:space="preserve">
-    <value>Свойства</value>
-  </data>
-  <data name="contextChartAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextChartAxes.Text" xml:space="preserve">
-    <value>Свойства осей</value>
+  <data name="contextChart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 170</value>
   </data>
   <data name="contextChartAdjustAxes.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
@@ -136,23 +127,17 @@
   <data name="contextChartAdjustAxes.Text" xml:space="preserve">
     <value>Автонастройка осей</value>
   </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 6</value>
-  </data>
-  <data name="contextChartSeparate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextChartAxes.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
-  <data name="contextChartSeparate.Text" xml:space="preserve">
-    <value>Показывать отдельно</value>
+  <data name="contextChartAxes.Text" xml:space="preserve">
+    <value>Свойства осей</value>
   </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 6</value>
+  <data name="contextChartCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
   </data>
   <data name="contextChartImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
-  </data>
-  <data name="contextChartImage.Text" xml:space="preserve">
-    <value>Сохранить изображение...</value>
   </data>
   <data name="contextChartPrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
@@ -160,70 +145,52 @@
   <data name="contextChartPrint.Text" xml:space="preserve">
     <value>Печать...</value>
   </data>
-  <data name="contextChartCopy.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextChartProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
-  <data name="contextChartCopy.Text" xml:space="preserve">
-    <value>Копировать график</value>
-  </data>
-  <data name="contextChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 170</value>
-  </data>
-  <data name="contextScatterplotProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotProperties.Text" xml:space="preserve">
+  <data name="contextChartProperties.Text" xml:space="preserve">
     <value>Свойства</value>
   </data>
-  <data name="contextScatterplotAddTrend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
+  <data name="contextChartSeparate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
   </data>
-  <data name="contextScatterplotAddTrend.Text" xml:space="preserve">
-    <value>Добавить линию тренда</value>
+  <data name="contextChartSeparate.Text" xml:space="preserve">
+    <value>Показывать отдельно</value>
   </data>
-  <data name="contextScatterplotDistinguish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
+  <data name="contextEvalApart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
   </data>
-  <data name="contextScatterplotDistinguish.Text" xml:space="preserve">
-    <value>Выделить</value>
-  </data>
-  <data name="contextScatterplotDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 6</value>
-  </data>
-  <data name="contextScatterplotFindValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotFindValue.Text" xml:space="preserve">
-    <value>Найти строку со значениями</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 6</value>
-  </data>
-  <data name="contextScatterplotStatistics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotStatistics.Text" xml:space="preserve">
-    <value>Статистика</value>
-  </data>
-  <data name="contextScatterplotTransform.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotTransform.Text" xml:space="preserve">
-    <value>Преобразовать</value>
-  </data>
-  <data name="contextScatterplotApart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
-  </data>
-  <data name="contextScatterplotApart.Text" xml:space="preserve">
+  <data name="contextEvalApart.Text" xml:space="preserve">
     <value>Показать в новом окне</value>
   </data>
-  <data name="contextScatterplotUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="contextEvalDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="contextEvalDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="contextEvalPointDescriptive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="contextEvalPointDescriptive.Text" xml:space="preserve">
+    <value>Точка данных</value>
+  </data>
+  <data name="contextEvalProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="contextEvalProperties.Text" xml:space="preserve">
+    <value>Свойства</value>
+  </data>
+  <data name="contextEvalStatistics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="contextEvalStatistics.Text" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="contextEvaluation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 120</value>
+  </data>
+  <data name="contextEvalUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
         JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsRAAALEQF/ZF+RAAACOElE
@@ -239,65 +206,17 @@
         VnR1MIwhwMTCyqEQ37qEmZVDFF0OE/9nAACtFF4Ey6OP+wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="contextScatterplotUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 22</value>
+  <data name="contextEvalUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
   </data>
-  <data name="contextScatterplotUpdate.Text" xml:space="preserve">
+  <data name="contextEvalUpdate.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-  <data name="contextScatterplot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 214</value>
-  </data>
-  <data name="contextScatterplotDescriptiveX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="contextScatterplotDescriptiveX.Text" xml:space="preserve">
-    <value>Описательная по оси X</value>
-  </data>
-  <data name="contextScatterplotDescriptiveY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="contextScatterplotDescriptiveY.Text" xml:space="preserve">
-    <value>Описательная по оси Y</value>
-  </data>
-  <data name="contextScatterplotTrend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="contextScatterplotTrend.Text" xml:space="preserve">
-    <value>Тренд</value>
-  </data>
-  <data name="contextScatterplotTrendCompare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="contextScatterplotTrendCompare.Text" xml:space="preserve">
-    <value>Сравнить тренды</value>
-  </data>
-  <data name="contextScatterplotMerge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
-  </data>
-  <data name="contextScatterplotMerge.Text" xml:space="preserve">
-    <value>Объединить</value>
-  </data>
-  <data name="contextScatterplotSplit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
-  </data>
-  <data name="contextScatterplotSplit.Text" xml:space="preserve">
-    <value>Разделить</value>
-  </data>
-  <data name="contextScatterplotHistogramX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
-  </data>
-  <data name="contextScatterplotHistogramX.Text" xml:space="preserve">
-    <value>В гистограмму (X)</value>
+  <data name="contextFunctorProperties.Text" xml:space="preserve">
+    <value>Свойства...</value>
   </data>
   <data name="contextHistogram.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 208</value>
-  </data>
-  <data name="contextHistogramProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
-  </data>
-  <data name="contextHistogramProperties.Text" xml:space="preserve">
-    <value>Свойства</value>
   </data>
   <data name="contextHistogramAddFit.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
@@ -305,17 +224,24 @@
   <data name="contextHistogramAddFit.Text" xml:space="preserve">
     <value>Добавить теоретическое</value>
   </data>
-  <data name="contextHistogramDistinguish.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextHistogramApart.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="contextHistogramDistinguish.Text" xml:space="preserve">
-    <value>Выделить</value>
+  <data name="contextHistogramApart.Text" xml:space="preserve">
+    <value>Показать в новом окне</value>
   </data>
-  <data name="contextHistogramDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
+  <data name="ContextHistogramCopyAll.Text" xml:space="preserve">
+    <value>Копировать все значения</value>
   </data>
-  <data name="contextHistogramDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="ContextHistogramCopyAll.ToolTipText" xml:space="preserve">
+    <value>Используйте [Shift], чтобы включить заголовки</value>
+  </data>
+  <data name="ContextHistogramCopyDatapoints.Text" xml:space="preserve">
+    <value>Копировать значения точек данных</value>
+  </data>
+  <data name="ContextHistogramCopyDatapoints.ToolTipText" xml:space="preserve">
+    <value>Используйте [Shift], чтобы включить заголовки
+Используйте [Ctrl], чтобы получить относительные частоты</value>
   </data>
   <data name="contextHistogramCopyValues.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
@@ -323,14 +249,11 @@
   <data name="contextHistogramCopyValues.Text" xml:space="preserve">
     <value>Копировать значения</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 6</value>
-  </data>
-  <data name="contextHistogramStatistics.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextHistogramDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="contextHistogramStatistics.Text" xml:space="preserve">
-    <value>Статистика</value>
+  <data name="contextHistogramDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="contextHistogramDescriptive.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -338,11 +261,17 @@
   <data name="contextHistogramDescriptive.Text" xml:space="preserve">
     <value>Описательная</value>
   </data>
-  <data name="contextHistogramTransform.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextHistogramDistinguish.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="contextHistogramTransform.Text" xml:space="preserve">
-    <value>Преобразовать</value>
+  <data name="contextHistogramDistinguish.Text" xml:space="preserve">
+    <value>Выделить</value>
+  </data>
+  <data name="contextHistogramProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="contextHistogramProperties.Text" xml:space="preserve">
+    <value>Свойства</value>
   </data>
   <data name="contextHistogramSplit.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
@@ -350,11 +279,17 @@
   <data name="contextHistogramSplit.Text" xml:space="preserve">
     <value>Разделить</value>
   </data>
-  <data name="contextHistogramApart.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextHistogramStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="contextHistogramApart.Text" xml:space="preserve">
-    <value>Показать в новом окне</value>
+  <data name="contextHistogramStatistics.Text" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="contextHistogramTransform.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="contextHistogramTransform.Text" xml:space="preserve">
+    <value>Преобразовать</value>
   </data>
   <data name="contextHistogramUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -378,43 +313,70 @@
   <data name="contextHistogramUpdate.Text" xml:space="preserve">
     <value>Обновить</value>
   </data>
-  <data name="contextEvaluation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 120</value>
+  <data name="contextScatterplot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 214</value>
   </data>
-  <data name="contextEvalProperties.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+  <data name="contextScatterplotAddTrend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
   </data>
-  <data name="contextEvalProperties.Text" xml:space="preserve">
+  <data name="contextScatterplotAddTrend.Text" xml:space="preserve">
+    <value>Добавить линию тренда</value>
+  </data>
+  <data name="contextScatterplotApart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="contextScatterplotDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="contextScatterplotDescriptiveX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextScatterplotDescriptiveY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextScatterplotDistinguish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="contextScatterplotDistinguish.Text" xml:space="preserve">
+    <value>Выделить</value>
+  </data>
+  <data name="contextScatterplotFindValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="contextScatterplotFindValue.Text" xml:space="preserve">
+    <value>Найти строку со значениями</value>
+  </data>
+  <data name="contextScatterplotHistogramX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="contextScatterplotMerge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="contextScatterplotProperties.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="contextScatterplotProperties.Text" xml:space="preserve">
     <value>Свойства</value>
   </data>
-  <data name="contextEvalDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+  <data name="contextScatterplotSplit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
   </data>
-  <data name="contextEvalDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="contextScatterplotStatistics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
   </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
+  <data name="contextScatterplotTransform.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
   </data>
-  <data name="contextEvalStatistics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+  <data name="contextScatterplotTrend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
   </data>
-  <data name="contextEvalStatistics.Text" xml:space="preserve">
-    <value>Статистика</value>
+  <data name="contextScatterplotTrend.Text" xml:space="preserve">
+    <value>Тренд</value>
   </data>
-  <data name="contextEvalPointDescriptive.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 22</value>
+  <data name="contextScatterplotTrendCompare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
   </data>
-  <data name="contextEvalPointDescriptive.Text" xml:space="preserve">
-    <value>Точка данных</value>
-  </data>
-  <data name="contextEvalApart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="contextEvalApart.Text" xml:space="preserve">
-    <value>Показать в новом окне</value>
-  </data>
-  <data name="contextEvalUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="contextScatterplotUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
         JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsRAAALEQF/ZF+RAAACOElE
@@ -430,10 +392,34 @@
         VnR1MIwhwMTCyqEQ37qEmZVDFF0OE/9nAACtFF4Ey6OP+wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="contextEvalUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+  <data name="contextScatterplotUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
   </data>
-  <data name="contextEvalUpdate.Text" xml:space="preserve">
-    <value>Обновить</value>
+  <data name="contextSizeA4.Text" xml:space="preserve">
+    <value>На страницу A4</value>
+  </data>
+  <data name="contextSizeA5.Text" xml:space="preserve">
+    <value>На половину страницы A4</value>
+  </data>
+  <data name="contextSizeA6.Text" xml:space="preserve">
+    <value>На четверть страницы A4</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 6</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 6</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 6</value>
   </data>
 </root>

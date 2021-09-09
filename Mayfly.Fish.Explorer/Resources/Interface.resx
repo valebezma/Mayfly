@@ -167,7 +167,7 @@
   </data>
   <data name="SpeciesOfInterestIsAbsent" xml:space="preserve">
     <value>{0} is absent in catches of {1}.
-To eliminate it from further analysis hold {2}.</value>
+To eliminate it from further analysis hold {2}</value>
   </data>
   <data name="StartifiedExtr" xml:space="preserve">
     <value>Minimal length class is {0} cm and maximal is {1} cm.</value>

@@ -118,41 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextEffortMerge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="contextEffortMerge.Text" xml:space="preserve">
-    <value>Объединить выделенные группы</value>
-  </data>
-  <data name="contextEffort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 26</value>
-  </data>
-  <data name="pageEfforts.Text" xml:space="preserve">
-    <value>Рыболовное усилие</value>
-  </data>
   <data name="checkBoxSpatial.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 19</value>
   </data>
   <data name="checkBoxSpatial.Text" xml:space="preserve">
     <value>Применять веса</value>
   </data>
-  <data name="labelNoticeGears.Text" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="labelEffortTotal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 15</value>
-  </data>
-  <data name="labelEffortTotal.Text" xml:space="preserve">
-    <value>Суммарное рыболовное усилие, {0}</value>
-  </data>
-  <data name="labelEffortInstruction.Text" xml:space="preserve">
-    <value>Ниже приведены сведения по усилию выбранного типа  орудий по группам данных.</value>
-  </data>
   <data name="ColumnClass.HeaderText" xml:space="preserve">
     <value>Класс орудий</value>
-  </data>
-  <data name="ColumnOperations.HeaderText" xml:space="preserve">
-    <value>Операций</value>
   </data>
   <data name="ColumnEffort.HeaderText" xml:space="preserve">
     <value>Усилие, {0}</value>
@@ -160,8 +133,35 @@
   <data name="ColumnEffortP.HeaderText" xml:space="preserve">
     <value>Доля в суммарном усилии, %</value>
   </data>
+  <data name="ColumnOperations.HeaderText" xml:space="preserve">
+    <value>Операций</value>
+  </data>
   <data name="ColumnSpatialWeight.HeaderText" xml:space="preserve">
     <value>Вес, %</value>
+  </data>
+  <data name="contextEffort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 26</value>
+  </data>
+  <data name="contextEffortMerge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="contextEffortMerge.Text" xml:space="preserve">
+    <value>Объединить выделенные группы</value>
+  </data>
+  <data name="labelEffortInstruction.Text" xml:space="preserve">
+    <value>Ниже приведены сведения по усилию выбранного типа  орудий по группам данных.</value>
+  </data>
+  <data name="labelEffortTotal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 15</value>
+  </data>
+  <data name="labelEffortTotal.Text" xml:space="preserve">
+    <value>Суммарное рыболовное усилие, {0}</value>
+  </data>
+  <data name="labelEU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 15</value>
+  </data>
+  <data name="labelEU.Text" xml:space="preserve">
+    <value>Единица усилия</value>
   </data>
   <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 15</value>
@@ -169,11 +169,14 @@
   <data name="labelGear.Text" xml:space="preserve">
     <value>Тип орудий</value>
   </data>
-  <data name="labelEU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 15</value>
+  <data name="labelNoticeGears.Text" xml:space="preserve">
+    <value>Нет данных...</value>
   </data>
-  <data name="labelEU.Text" xml:space="preserve">
-    <value>Единица усилия</value>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Эта страница нужна в технических целях.</value>
+  </data>
+  <data name="pageEfforts.Text" xml:space="preserve">
+    <value>Рыболовное усилие</value>
   </data>
   <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
     <value>Вернуться на предыдущий этап</value>

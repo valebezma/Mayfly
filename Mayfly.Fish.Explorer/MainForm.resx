@@ -1023,7 +1023,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="columnHeader1.Text" xml:space="preserve">
-    <value>Water object</value>
+    <value>Water</value>
   </data>
   <data name="columnHeader1.Width" type="System.Int32, mscorlib">
     <value>250</value>
@@ -1053,7 +1053,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="columnHeader6.Text" xml:space="preserve">
-    <value>Water object</value>
+    <value>Water</value>
   </data>
   <data name="columnHeader6.Width" type="System.Int32, mscorlib">
     <value>250</value>
@@ -1083,7 +1083,7 @@
     <value>Top, Bottom, Right</value>
   </data>
   <data name="columnHeaderWaterName.Text" xml:space="preserve">
-    <value>Water object</value>
+    <value>Water</value>
   </data>
   <data name="columnHeaderWaterName.Width" type="System.Int32, mscorlib">
     <value>250</value>

@@ -117,6 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonM.Text" xml:space="preserve">
+    <value>Свойства тренда</value>
+  </data>
+  <data name="checkBoxHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 19</value>
+  </data>
+  <data name="checkBoxHistory.Text" xml:space="preserve">
+    <value>История вылова когорт</value>
+  </data>
+  <data name="checkBoxMortality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 19</value>
+  </data>
+  <data name="checkBoxMortality.Text" xml:space="preserve">
+    <value>Параметры кривых улова</value>
+  </data>
+  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="contextGrowthAll.Text" xml:space="preserve">
+    <value>Общий тренд</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>В таблице приведены относительные уловы на усилие. Каждая колонка отражает вылов отдельной генерации. Пустые ячейки означают отсутствие вылова в указанном возрасте.</value>
+  </data>
+  <data name="labelCategoryInstruction.Text" xml:space="preserve">
+    <value>Выбранные данные использованы для построения возрастной диаграммы популяции. Коэффициент смертности Z получен из экспоненты, описывающей эти данные.</value>
+  </data>
+  <data name="labelNoData.Text" xml:space="preserve">
+    <value>Недостаточно данных...</value>
+  </data>
+  <data name="labelReport.Text" xml:space="preserve">
+    <value>Укажите, какие части следует включить в отчет.</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Этот мастер поможет вам вычислить показатели смертности {0} по возрастной структуре популяции, оцененной по уловам. Чтобы результат был корректным, популяция должна находится в стабильном состоянии, иначе полученные оценки будут неверны.</value>
+  </data>
+  <data name="labelT.Text" xml:space="preserve">
+    <value>Возраст полного облова</value>
+  </data>
+  <data name="pageChart.Text" xml:space="preserve">
+    <value>Кривая смертности</value>
+  </data>
+  <data name="pageCohorts.Text" xml:space="preserve">
+    <value>История вылова когорт</value>
+  </data>
+  <data name="pageReport.Text" xml:space="preserve">
+    <value>Составление отчета</value>
+  </data>
+  <data name="pageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="statChartMortality.AxisXTitle" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="statChartMortality.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
   <data name="wizardExplorer.CancelButtonText" xml:space="preserve">
     <value>Отмена</value>
   </data>
@@ -126,59 +184,7 @@
   <data name="wizardExplorer.NextButtonText" xml:space="preserve">
     <value>Далее</value>
   </data>
-  <data name="pageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="pageCohorts.Text" xml:space="preserve">
-    <value>История вылова когорт</value>
-  </data>
-  <data name="pageChart.Text" xml:space="preserve">
-    <value>Кривая смертности</value>
-  </data>
-  <data name="pageReport.Text" xml:space="preserve">
-    <value>Составление отчета</value>
-  </data>
   <data name="wizardExplorer.Title" xml:space="preserve">
     <value>Оценка параметров смертности {0} (по когортам)</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>Этот мастер поможет вам вычислить показатели смертности {0} по возрастной структуре популяции, оцененной по уловам. Чтобы результат был корректным, популяция должна находится в стабильном состоянии, иначе полученные оценки будут неверны.</value>
-  </data>
-  <data name="labelNoData.Text" xml:space="preserve">
-    <value>Недостаточно данных...</value>
-  </data>
-  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>В таблице приведены относительные уловы на усилие. Каждая колонка отражает вылов отдельной генерации. Пустые ячейки означают отсутствие вылова в указанном возрасте.</value>
-  </data>
-  <data name="buttonM.Text" xml:space="preserve">
-    <value>Свойства тренда</value>
-  </data>
-  <data name="statChartMortality.AxisXTitle" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="statChartMortality.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, %</value>
-  </data>
-  <data name="labelCategoryInstruction.Text" xml:space="preserve">
-    <value>Выбранные данные использованы для построения возрастной диаграммы популяции. Коэффициент смертности Z получен из экспоненты, описывающей эти данные.</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 19</value>
-  </data>
-  <data name="checkBoxMortality.Text" xml:space="preserve">
-    <value>Параметры кривых улова</value>
-  </data>
-  <data name="labelReport.Text" xml:space="preserve">
-    <value>Укажите, какие части следует включить в отчет.</value>
-  </data>
-  <data name="checkBoxHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 19</value>
-  </data>
-  <data name="checkBoxHistory.Text" xml:space="preserve">
-    <value>История вылова когорт</value>
   </data>
 </root>

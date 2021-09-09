@@ -135,9 +135,6 @@
   <data name="pageLength.Text" xml:space="preserve">
     <value>Размерная структура</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Возрастная структура стада изображена на гистограмме.</value>
-  </data>
   <data name="pageAge.Text" xml:space="preserve">
     <value>Возрастная структура</value>
   </data>

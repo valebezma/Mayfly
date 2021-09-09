@@ -61,42 +61,6 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Within subgroups (error).
-        /// </summary>
-        public static string AnovaResidual {
-            get {
-                return ResourceManager.GetString("AnovaResidual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total.
-        /// </summary>
-        public static string AnovaTotal {
-            get {
-                return ResourceManager.GetString("AnovaTotal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bhattacharya Plot.
-        /// </summary>
-        public static string BhattacharyaPlot {
-            get {
-                return ResourceManager.GetString("BhattacharyaPlot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Centroids.
-        /// </summary>
-        public static string Centroids {
-            get {
-                return ResourceManager.GetString("Centroids", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Averaged value.
         /// </summary>
         public static string ColAveraged {
@@ -115,29 +79,11 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Combined Distribution.
-        /// </summary>
-        public static string CombinedDistribution {
-            get {
-                return ResourceManager.GetString("CombinedDistribution", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} confidence interval of {1}.
         /// </summary>
         public static string ConfidenceBands {
             get {
                 return ResourceManager.GetString("ConfidenceBands", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Count.
-        /// </summary>
-        public static string Count {
-            get {
-                return ResourceManager.GetString("Count", resourceCulture);
             }
         }
         
@@ -169,29 +115,11 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Distribution 0.
-        /// </summary>
-        public static string DistributionMask {
-            get {
-                return ResourceManager.GetString("DistributionMask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Empty.
         /// </summary>
         public static string EmptySample {
             get {
                 return ResourceManager.GetString("EmptySample", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} error bars.
-        /// </summary>
-        public static string ErrorTitle {
-            get {
-                return ResourceManager.GetString("ErrorTitle", resourceCulture);
             }
         }
         
@@ -210,15 +138,6 @@ namespace Mayfly.Mathematics.Resources {
         public static string FitTitle {
             get {
                 return ResourceManager.GetString("FitTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Merged bivariate.
-        /// </summary>
-        public static string MergedBivariate {
-            get {
-                return ResourceManager.GetString("MergedBivariate", resourceCulture);
             }
         }
         
@@ -277,29 +196,11 @@ namespace Mayfly.Mathematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample.
-        /// </summary>
-        public static string Sample {
-            get {
-                return ResourceManager.GetString("Sample", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to [{0}] to [{1}] scatterplot.
         /// </summary>
         public static string ScatterplotTitle {
             get {
                 return ResourceManager.GetString("ScatterplotTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected Points 0.
-        /// </summary>
-        public static string SelectedPointsMask {
-            get {
-                return ResourceManager.GetString("SelectedPointsMask", resourceCulture);
             }
         }
         
@@ -345,33 +246,6 @@ namespace Mayfly.Mathematics.Resources {
         public static string SeriesProperties {
             get {
                 return ResourceManager.GetString("SeriesProperties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Subsample.
-        /// </summary>
-        public static string Subsample {
-            get {
-                return ResourceManager.GetString("Subsample", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cluster {0}.
-        /// </summary>
-        public static string SubsampleMask {
-            get {
-                return ResourceManager.GetString("SubsampleMask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Linearized {0}.
-        /// </summary>
-        public static string TrendLinearizedTitle {
-            get {
-                return ResourceManager.GetString("TrendLinearizedTitle", resourceCulture);
             }
         }
         

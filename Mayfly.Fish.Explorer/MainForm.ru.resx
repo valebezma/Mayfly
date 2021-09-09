@@ -118,1646 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
-  <data name="menuSample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="menuSample.Text" xml:space="preserve">
-    <value>Выборка</value>
-  </data>
-  <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="menuSurvey.Text" xml:space="preserve">
-    <value>Наблюдения*</value>
-  </data>
-  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
-  </data>
-  <data name="menuModels.Text" xml:space="preserve">
-    <value>Модели*</value>
-  </data>
-  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 20</value>
-  </data>
-  <data name="menuInstant.Text" xml:space="preserve">
-    <value>Оценка состояния</value>
-  </data>
-  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 20</value>
-  </data>
-  <data name="menuCohort.Text" xml:space="preserve">
-    <value>Когортный анализ*</value>
-  </data>
-  <data name="menuCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
-  <data name="menuCards.Text" xml:space="preserve">
-    <value>Карточки</value>
-  </data>
-  <data name="menuSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="menuSpc.Text" xml:space="preserve">
-    <value>Виды</value>
-  </data>
-  <data name="menuIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 20</value>
-  </data>
-  <data name="menuIndividuals.Text" xml:space="preserve">
-    <value>Особи</value>
-  </data>
-  <data name="stratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="menuService.Text" xml:space="preserve">
-    <value>Сервис</value>
-  </data>
-  <data name="menuItemAddData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="menuItemAddData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemAddData.Text" xml:space="preserve">
-    <value>Добавить карточки...</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 6</value>
-  </data>
-  <data name="menuItemSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACPklE
-        QVQ4T6WS70uTURTH9y/03jdBL3prU2O4FqvBU66hLB2GFtKvJ9Isfy3TJEXLVHT5A7QVLp20Wk3CiUb+
-        AH8gJmIsJSs1l7TEoabYRDD4ds99dI9Le1MHzvPi3OfzufeeexQA/iv5p7MjAEp32xpaXat45lhGc5Mf
-        j6zzqKv9BkuVF/dLZ1BU+Bn5eR+Qkz2OG9c9DN0SENjbA9TWbFDxr7G+sQl9Yi/OJL7iyUISuF6ucEF5
-        2Q8q7hkE+5fXcdT4GkqlCFOCk8qSwPF0iQuKCr9TcVdsw198K4gwuJF3axanjS20JAlsjQtccNM8TcWQ
-        2Am/n/LjoOBCZsYk4mJttCwJGup9XJB+bZyKwfgTHvL4EKZ1QBRHYTBY6RdJUFM9xwXi5VEq8tgL7hn5
-        in3RTUg+24+YmDr6TRJUlM+iuwvsKYGUC29hOjfIu00NozvTsWlnCe5DvOkNBMEiC0qKp9DuBpsBoMX+
-        i737T5TeW+RNpYbRndNSPUH4VFwbdLoyWXA7fxLO58AT2yYbnAD0SRkhaTxvRtLVAgmOZfBJJ7TaYllg
-        zplgMFD9IMB3JkjBliLUAsY+LWBiZhFi9l0c17dyWH3MDo2mQBbQWFofInhsEhB8JbcSH71L8M6vIuuO
-        BZFaO4ObEXnkMdTRubIgLfUdu/cahw/onNh/SMCL9gG4u4bQ3TeCweExnDCYoNQ0IorB4aoGqFSZIYL4
-        SxcH+HjShNGQ0DvTU1G3qWF0Z9qVkuDDUemy4N8Tit/kKu4LI/ykxwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemSave.Text" xml:space="preserve">
-    <value>Сохранить изменения</value>
-  </data>
-  <data name="menuItemBackup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemBackup.Text" xml:space="preserve">
-    <value>Создать резервную копию карточек</value>
-  </data>
-  <data name="menuItemSaveSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemSaveSet.Text" xml:space="preserve">
-    <value>Сохранить набор карточек...</value>
-  </data>
-  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 6</value>
-  </data>
-  <data name="menuItemExportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemExportSpec.Text" xml:space="preserve">
-    <value>Экспорт био</value>
-  </data>
-  <data name="menuItemImportSpec.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemImportSpec.Text" xml:space="preserve">
-    <value>Импорт био</value>
-  </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 6</value>
-  </data>
-  <data name="menuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 22</value>
-  </data>
-  <data name="menuItemExit.Text" xml:space="preserve">
-    <value>Выход</value>
-  </data>
-  <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemGearStats.Text" xml:space="preserve">
-    <value>Сводка применения орудий лова</value>
-  </data>
-  <data name="menuItemSpcStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemSpcStats.Text" xml:space="preserve">
-    <value>Сводка видовых выборок</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 6</value>
-  </data>
-  <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemCards.Text" xml:space="preserve">
-    <value>Карточки</value>
-  </data>
-  <data name="menuItemCardAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="menuItemCardAll.Text" xml:space="preserve">
-    <value>Все карточки</value>
-  </data>
-  <data name="toolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
-  </data>
-  <data name="menuItemCardInvestigator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="menuItemCardInvestigator.Text" xml:space="preserve">
-    <value>По исследователю</value>
-  </data>
-  <data name="menuItemCardWater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="menuItemCardWater.Text" xml:space="preserve">
-    <value>По водоему</value>
-  </data>
-  <data name="menuItemCardGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="menuItemCardGear.Text" xml:space="preserve">
-    <value>По орудию лова</value>
-  </data>
-  <data name="menuItemSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemSpc.Text" xml:space="preserve">
-    <value>Виды</value>
-  </data>
-  <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemLog.Text" xml:space="preserve">
-    <value>Ведомость</value>
-  </data>
-  <data name="menuItemLogAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="menuItemLogAll.Text" xml:space="preserve">
-    <value>Все виды</value>
-  </data>
-  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemIndividuals.Text" xml:space="preserve">
-    <value>Особи</value>
-  </data>
-  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="menuItemIndAll.Text" xml:space="preserve">
-    <value>Все особи</value>
-  </data>
-  <data name="meniItemIndAllAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="meniItemIndAllAll.Text" xml:space="preserve">
-    <value>Все виды</value>
-  </data>
-  <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 22</value>
-  </data>
-  <data name="menuItemIndSuggested.Text" xml:space="preserve">
-    <value>Для определения возраста</value>
-  </data>
-  <data name="menuItemIndSuggestedAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="menuItemIndSuggestedAll.Text" xml:space="preserve">
-    <value>Все виды</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="menuItemStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 22</value>
-  </data>
-  <data name="menuItemStratified.Text" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
-  </data>
-  <data name="menuItemSurveyInput.Text" xml:space="preserve">
-    <value>Внести данные наблюдений</value>
-  </data>
-  <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
-  </data>
-  <data name="menuItemSpawning.Text" xml:space="preserve">
-    <value>Условия нереста</value>
-  </data>
-  <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="menuItemMSYR.Text" xml:space="preserve">
-    <value>Модель вылова на рекрута (Y/R)</value>
-  </data>
-  <data name="menuItemMSY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="menuItemMSY.Text" xml:space="preserve">
-    <value>Модель максимально стабильного улова (MSY)</value>
-  </data>
-  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
-    <value>Свободная</value>
-  </data>
-  <data name="menuItemPrediction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 22</value>
-  </data>
-  <data name="menuItemPrediction.Text" xml:space="preserve">
-    <value>Прогнозная модель</value>
-  </data>
-  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
-    <value>Свободная</value>
-  </data>
-  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="menuItemCenosis.Text" xml:space="preserve">
-    <value>Характеристика сообщества</value>
-  </data>
-  <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="menuItemComposition.Text" xml:space="preserve">
-    <value>Характеристика популяции</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
-  </data>
-  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="menuItemStock.Text" xml:space="preserve">
-    <value>Запас и его структура</value>
-  </data>
-  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
-  </data>
-  <data name="menuItemExtrapolation.Text" xml:space="preserve">
-    <value>Метод экстраполяции</value>
-  </data>
-  <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
-  </data>
-  <data name="menuItemExtrapolationAll.Text" xml:space="preserve">
-    <value>Все виды</value>
-  </data>
-  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
-  </data>
-  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
-    <value>Рост</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
-    <value>Смертность</value>
-  </data>
-  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="menuItemVpa.Text" xml:space="preserve">
-    <value>Виртуальная популяция</value>
-  </data>
-  <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="menuItemCardMeteo.Text" xml:space="preserve">
-    <value>Отображать погодные условия</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 6</value>
-  </data>
-  <data name="menuItemCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="menuItemCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="menuItemCardPrintFull.Text" xml:space="preserve">
-    <value>Печать карточек</value>
-  </data>
-  <data name="menuItemCardPrintNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="menuItemCardPrintNotes.Text" xml:space="preserve">
-    <value>Печать этикеток карточек</value>
-  </data>
-  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 6</value>
-  </data>
-  <data name="menuItemCardCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="menuItemCardCatches.Text" xml:space="preserve">
-    <value>Сводка вылова</value>
-  </data>
-  <data name="menuItemCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 22</value>
-  </data>
-  <data name="menuItemCardEfforts.Text" xml:space="preserve">
-    <value>Сводка усилий</value>
-  </data>
-  <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcTaxa.Text" xml:space="preserve">
-    <value>Отобразить названия таксонов</value>
-  </data>
-  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 6</value>
-  </data>
-  <data name="menuItemSpcTotals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcTotals.Text" xml:space="preserve">
-    <value>Общая выборка</value>
-  </data>
-  <data name="menuItemSpcStrates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 22</value>
-  </data>
-  <data name="menuItemSpcStrates.Text" xml:space="preserve">
-    <value>Стратифицированный контроль</value>
-  </data>
-  <data name="menuItemIndExtra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndExtra.Text" xml:space="preserve">
-    <value>Отображать дополнительные сведения</value>
-  </data>
-  <data name="menuItemIndFecundity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndFecundity.Text" xml:space="preserve">
-    <value>Отображать данные о плодовитости</value>
-  </data>
-  <data name="menuItemIndDiet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndDiet.Text" xml:space="preserve">
-    <value>Отображать данные о питании</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 6</value>
-  </data>
-  <data name="menuItemIndPrintLog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="menuItemIndPrintLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndPrintLog.Text" xml:space="preserve">
-    <value>Печать журнала особей</value>
-  </data>
-  <data name="menuItemIndPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndPrint.Text" xml:space="preserve">
-    <value>Печать профилей особей</value>
-  </data>
-  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 6</value>
-  </data>
-  <data name="menuItemDietExplorer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemDietExplorer.Text" xml:space="preserve">
-    <value>Исследовать питание</value>
-  </data>
-  <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 6</value>
-  </data>
-  <data name="menuItemIndSimulate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndSimulate.Text" xml:space="preserve">
-    <value>Виртуализировать особей из размерных рядов</value>
-  </data>
-  <data name="menuItemIndClearSimulated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 22</value>
-  </data>
-  <data name="menuItemIndClearSimulated.Text" xml:space="preserve">
-    <value>Очистить виртуализированные особи</value>
-  </data>
-  <data name="printStratifiedSamplesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="printStratifiedSamplesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="printStratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать размерных рядов</value>
-  </data>
-  <data name="menuItemSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAWdJREFUOE/d
-        kc9KAlEYxdsFPUX1Bq3qDdr1AvUA9QhBu1y0swKzhFoW2cadREHRHxAZISk1jf6JkbiauXPn3lFn5vTd
-        yRkcXQi2614Od3V+59zvm/gHJ76bxF/kAx6rHyO1ur4z9IaAvFYYSyGg/3jqeh5c10XXcbBRrGMt/wbb
-        tiGFhGVZ4JzDNM0RADIf1pqYvyghXmpAShtCCAKQmZtgJhsG9Kc/fOmYOdWwclmBLSWEVGZKNzkYI4Bh
-        DANa3AaTbTiOi6WTAqb37lBp6ZSuqouwOmMMxiDAIy0f3WJh+wpbmRwmN7NI3LxQOlUP002Yvpmk6wMA
-        qp7K5jBLxqnYORYT12Bc+ObU/hlSSaU0DpT20tAjAIpXgOdaDdrrN+ZiGRzfl/2/WzQ4zn/Tg+qGbkQB
-        weDq1QY+a3U8FcvQ3pu9v/fWFphJyhwFuGpttPduF+1OB3abdq4mL5TZigwuMEcA4yuJH9NbvYtfoYBt
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="menuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="menuItemSettings.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="menuItemLicenses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="menuItemLicenses.Text" xml:space="preserve">
-    <value>Компоненты</value>
-  </data>
-  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="menuItemAbout.Text" xml:space="preserve">
-    <value>О программе</value>
-  </data>
-  <data name="statusQuantity.Text" xml:space="preserve">
-    <value>Количество: {0}</value>
-  </data>
-  <data name="statusMass.Text" xml:space="preserve">
-    <value>Масса: {0}</value>
-  </data>
-  <data name="tabPageInfo.Text" xml:space="preserve">
-    <value>Обзор</value>
-  </data>
-  <data name="labelWgt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 25</value>
-  </data>
-  <data name="labelWgt.Text" xml:space="preserve">
-    <value>Общий вылов</value>
-  </data>
-  <data name="labelQty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 25</value>
-  </data>
-  <data name="labelQty.Text" xml:space="preserve">
-    <value>Общая выборка</value>
-  </data>
-  <data name="labelArtifacts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 13</value>
-  </data>
-  <data name="labelArtifacts.Text" xml:space="preserve">
-    <value>Проверьте на артефакты</value>
-  </data>
-  <data name="pictureBoxArtifacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
-        QVQ4T52T3UvTURjH9y9EdtPM6a0kpNVFImwT3Y/eRqJggWGUhqvmdKF50agUk3L25ls4LxaWxJj621y+
-        LG2Izr3kXJa2ShYIGRFUI7QoL76d5+hsv+imfvCFw3me7+ec5znPTwZAImO1UcPUwuRjim2I1rSn+TM/
-        0ZjKZG5sbFq13nuA4dEn8AeecdGa9ihGOZQrAWyYezo7LXCN+GEVF1Hb9RFnb8e4yq6/R2vvSziHp0E5
-        lBuHxAFmCoijL9BkXcKxhi+o6/7OQutfZdsKcvULqGyeh80VjkPMLCTjNdPV6OT67igKTMsovLgEfesK
-        ou9W8fUHUN78GdnlYajPhKC7GoL4yBsvR0OAFqrPYo/gQE0U2guL0Na+RvGlD8g//wmCcRkZx98ipzyE
-        fSemsbdkAtcsM7wn5CWAj5pkaIlAqJqHYCAtwGKLsBt8w9raT5TWuLBd+RCK/H6mPhTo3byx5CVAjDp9
-        uHoOat0scnVhZJ8McsCbVxEOqGpwY8uuNsjVIuQqG9IP9fPXIe8mQDgXRM6pIPaUTCIlX5QATDcmsDWr
-        nZmdkCv7kH5QlAB4CaWmIDKPepAmiOy6dgnA2DCOpMw27FANI1k5CG3FmKQE3sSmrhmk7XciJW+AnbR+
-        g/nncxxQVjvCAO1QKN1QqNy4cisgaSJ/RseQF4WGcSjyHAzg4AAyrwNGsW13F1JVHhTrfeh3Tv1+RhoG
-        tuCD1Cs+RZHBg2TVEOrMATgeR+Eai6KoQkRS1l1m9qPHPisdpA3A5igPDE6h/k4AR3ST2KnpQIbQgYLT
-        93H55gw72fv3UU6A/N/PlCgW/IffGbJfMUye8eXDyuYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="imageListWaters.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAfgBKQH4ASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wIADrICAA6yAgAOshEA
-        AbIBeQH0AbIBrAGyAfQBmQF5AZkFeQKyA3kBmQF5AZkBeQGZAnkBmQN5ArIBeQGZAXkBmQH0AbIB2gGy
-        AdoB9AF5AZkCeQGyEAABsgGZAf8B2gGyAawB/wF5AZkGeQKyAXkBmQF5AZkB/wH0Af8B9AH/AZkBeQGZ
-        AnkCsgJ5AZkBeQGZAfQBsgHaAfQBeQGZA3kBshAAAbIBeQH0AdQBrAGyAdoB9AF5AZkFeQKyAnkBmQH0
-        AdoCsgHaAfQB/wGZAXkBmQF5ArIBeQGZAXkBmQF5AfQB2gGyAfQBmQF5AZkCeQGyEAABsgGZAf8B9AGy
-        AawBsgHaAf8BeQGZBHkCsgF5AZkB/wHaBbIB2gH/AZkBeQGZArIBmQF5AZkBeQL0Av8C9AGZAXkBmQF5
-        AbIQAAGyAXkBmQH/AfQBsgGsAbIB2gH0AXkBmQN5ArICeQH0B7IB9AH/AZkBeQKyAXkC9AH/AfQB/wL0
-        Af8B9AH/AvQBeQGyEAABsgGZAXkBmQH/AfQBsgGsAbIB2gH/AXkBmQJ5ArICeQH/AdoCsgGsAbIBrAGy
-        AdoB9AH/AZkCsgH0Av8B9AHaBLIB2gH0Av8BmQGyEAABsgF5AZkBeQGZAf8B9AGyAawBsgHaAfQBeQGZ
-        AXkCsgF5Af8B2gKyAawBsgGsA7IB2gH0AXkCsgH/AfQBsgHaBrIB2gGyAfQB/wGyEAABsgJ5AZkBeQGZ
-        Af8B9AGyAawBsgHaAfQBeQGZArIBeQH0AdoDsgGsAbIBrAOyAf8BmQKyAfQBsgHaArIBrAGyAawDsgHa
-        AbIB9AGyEAABsgN5AZkBeQGZAf8B9AGyAawBsgHaAZkBeQKyAXkB/wH0AdoBsgGsAbIBrAGyAawCsgH0
-        AXkDsgHaBLIBrAGyAawDsgHaArIQAAGyBHkBmQF5AZkB/wHaAbIBrAGyAfQBmQKyAnkB9AiyAdoB/wGZ
-        ArIB2gGyAdoCsgGsAbIBrAOyAdoBsgHaAbIQAAGyBXkBmQF5AfQB/wGsAbIBrAH0AXkCsgF5AZkB/wHa
-        A7IB2gKyAdoB/wGZAXkDsgHaBLIBrAGyAawDsgHaArIQAAGyBnkBmQH/AfQBsgGsAbIB9AGZArICeQGZ
-        Af8B2gGyAdoB/wL0Af8BmQF5AZkCsgHaAbIB2gKyAawBsgGsA7IB2gGyAdoBshAAAbIFeQGZAXkB9AH/
-        AawBsgGsAfQBmQKyAXkBmQF5AZkB/wH0Af8BmQJ5AZkBeQGZAXkDsgHaBLIBrAGyAawDsgHaArIQAAGy
-        BHkBmQF5AZkB/wH0AbIBrAGyAfQBmQKyAnkBmQJ5AZkCeQGZAnkBmQF5AZkCsgHaAbIB2gKyAawBsgGs
-        A7IB2gGyAdoBshEADrICAA6yAgAOshEAAUIBTQE+BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcA
-        A/8BAAGAAQEBgAEBAYABAXIAAYABAQGAAQEBgAEBAgAL
-</value>
-  </data>
-  <data name="labelSamplers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 25</value>
-  </data>
-  <data name="labelSamplers.Text" xml:space="preserve">
-    <value>Орудия лова</value>
-  </data>
-  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 25</value>
-  </data>
-  <data name="labelWaters.Text" xml:space="preserve">
-    <value>Водные объекты</value>
-  </data>
-  <data name="labelCollectors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 25</value>
-  </data>
-  <data name="labelCollectors.Text" xml:space="preserve">
-    <value>Подписи</value>
-  </data>
-  <data name="labelCardCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 25</value>
-  </data>
-  <data name="labelCardCount.Text" xml:space="preserve">
-    <value>Карточек</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 25</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Периоды сбора</value>
-  </data>
-  <data name="tabPageGearStats.Text" xml:space="preserve">
-    <value>Сводка применения орудий лова</value>
-  </data>
-  <data name="buttonGearStatsReport.Text" xml:space="preserve">
-    <value>Печать сводки</value>
-  </data>
-  <data name="ColumnGearStats.HeaderText" xml:space="preserve">
-    <value>Тип орудий</value>
-  </data>
-  <data name="tabPageCardEfforts.Text" xml:space="preserve">
-    <value>Усилия</value>
-  </data>
-  <data name="labelEffortsNoData.Text" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Ед. усилия</value>
-  </data>
-  <data name="checkBoxEffortDaily.Text" xml:space="preserve">
-    <value>По дням</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Выберите единицу усилия, чтобы оценить использование орудий по классам. Вы также можете оценить ежедневное применение.</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 15</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Хроника использования орудия</value>
-  </data>
-  <data name="columnEffortMesh.HeaderText" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="columnEffortReps.HeaderText" xml:space="preserve">
-    <value>Операций совершено</value>
-  </data>
-  <data name="columnEffort.HeaderText" xml:space="preserve">
-    <value>Усилие, {0}</value>
-  </data>
-  <data name="columnEffortEO.HeaderText" xml:space="preserve">
-    <value>Усилий за операцию</value>
-  </data>
-  <data name="tabPageCardSchedule.Text" xml:space="preserve">
-    <value>График лова</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Расписание установок орудий разного класса озибражено ниже. Кликните дважды на отдельной экспозиции, чтобы смотреть карточку.</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 15</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>График лова</value>
-  </data>
-  <data name="tabPageCardCatches.Text" xml:space="preserve">
-    <value>Вылов</value>
-  </data>
-  <data name="labelCatchesNoData.Text" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="checkBoxCatchesMesh.Text" xml:space="preserve">
-    <value>Класс орудий</value>
-  </data>
-  <data name="checkBoxCatchesDaily.Text" xml:space="preserve">
-    <value>По дням</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Вы можете выбрать конкретный класс орудий, чтобы оценить его уловы и (или) выбрать отдельную дату.</value>
-  </data>
-  <data name="columnCatchSpc.HeaderText" xml:space="preserve">
-    <value>Вид / Таксон</value>
-  </data>
-  <data name="columnCatchN.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="columnCatchW.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 15</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Уловы орудий</value>
-  </data>
-  <data name="tabPageSpcStats.Text" xml:space="preserve">
-    <value>Сводка видовых выборок</value>
-  </data>
-  <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="tabPageSpcTotals.Text" xml:space="preserve">
-    <value>Общая выборка</value>
-  </data>
-  <data name="buttonSpcM.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcS.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcA.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcTally.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcW.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcL.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcLog.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="buttonSpcStrat.Text" xml:space="preserve">
-    <value>Смотреть</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Ниже приведены различные выборки вида. Кликните "Смотреть", чтобы смотреть подробнее в журнале особей.</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 15</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Общая выборка</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value>Масса размерных рядов получена с использованием модели весового роста</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 13</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>В журнале, кг</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 13</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Общая масса, кг</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Зрелость</value>
-  </data>
-  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
-  <data name="label35.Text" xml:space="preserve">
-    <value>Пробы (бирки)</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Пол</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Масса</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Общая выборка</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Длина</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Особей</value>
-  </data>
-  <data name="tabPageSpcTech.Text" xml:space="preserve">
-    <value>Техники</value>
-  </data>
-  <data name="labelTechInstruction.Text" xml:space="preserve">
-    <value>В таблице приведены техники, которые применялись в разных классах. Техники включают в себя регистрацию улова, размерные ряды, заполнение журнала особей (или две последних вместе).</value>
-  </data>
-  <data name="labeTech.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 15</value>
-  </data>
-  <data name="labeTech.Text" xml:space="preserve">
-    <value>Использованные техники сбора по классам орудий</value>
-  </data>
-  <data name="labelTechNoData.Text" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="labelTechGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="labelTechGear.Text" xml:space="preserve">
-    <value>Тип орудий</value>
-  </data>
-  <data name="ColumnSpcTechClass.HeaderText" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="ColumnSpcTechOps.HeaderText" xml:space="preserve">
-    <value>Операций совершено</value>
-  </data>
-  <data name="ColumnSpcTechN.HeaderText" xml:space="preserve">
-    <value>Выловлено, экз.</value>
-  </data>
-  <data name="ColumnSpcTechTotals.HeaderText" xml:space="preserve">
-    <value>Регистрация улова</value>
-  </data>
-  <data name="ColumnSpcTechStratified.HeaderText" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="ColumnSpcTechLog.HeaderText" xml:space="preserve">
-    <value>ПБА</value>
-  </data>
-  <data name="tabPageSpcQualify.Text" xml:space="preserve">
-    <value>Проверка</value>
-  </data>
-  <data name="checkBoxQualOutliers.Text" xml:space="preserve">
-    <value>Выделить выбросы</value>
-  </data>
-  <data name="labelQualSubset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 13</value>
-  </data>
-  <data name="labelQualSubset.Text" xml:space="preserve">
-    <value>Ограничить счетчики</value>
-  </data>
-  <data name="labelQualify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
-  </data>
-  <data name="labelQualify.Text" xml:space="preserve">
-    <value>Метод проверки</value>
-  </data>
-  <data name="buttonQualOutliers.Text" xml:space="preserve">
-    <value>Редактировать выбросы</value>
-  </data>
-  <data name="labelQualNotSelected.Text" xml:space="preserve">
-    <value>Выберите вид...</value>
-  </data>
-  <data name="labelQualDescription.Text" xml:space="preserve">
-    <value>На графике представлены выборки вида в каждом размерном классе. Также доступна проверка корректности данных с использованием моделей длина-масса и возраст-длина.</value>
-  </data>
-  <data name="labelQualTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 15</value>
-  </data>
-  <data name="labelQualTitle.Text" xml:space="preserve">
-    <value>Проверка данных</value>
-  </data>
-  <data name="comboBoxQualValue.Items" xml:space="preserve">
-    <value>Масса</value>
-  </data>
-  <data name="comboBoxQualValue.Items1" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="checkBoxQualType.Text" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="checkBoxQualClass.Text" xml:space="preserve">
-    <value>Класс</value>
-  </data>
-  <data name="plotQualify.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotQualify.AxisYTitle" xml:space="preserve">
-    <value>Выборка, экз.</value>
-  </data>
-  <data name="buttonSpeciesStatsReport.Text" xml:space="preserve">
-    <value>Печать сводки</value>
-  </data>
-  <data name="tabPageCard.Text" xml:space="preserve">
-    <value>Карточки</value>
-  </data>
-  <data name="buttonCardDetails.Text" xml:space="preserve">
-    <value>Подробнее</value>
-  </data>
-  <data name="columnCardInvestigator.HeaderText" xml:space="preserve">
-    <value>Исследователь</value>
-  </data>
-  <data name="columnCardWater.HeaderText" xml:space="preserve">
-    <value>Водный объект</value>
-  </data>
-  <data name="columnCardLabel.HeaderText" xml:space="preserve">
-    <value>Маркер</value>
-  </data>
-  <data name="columnCardWhen.HeaderText" xml:space="preserve">
-    <value>Дата и время</value>
-  </data>
-  <data name="columnCardWhere.HeaderText" xml:space="preserve">
-    <value>Координаты</value>
-  </data>
-  <data name="ColumnCardWeather.HeaderText" xml:space="preserve">
-    <value>Погода</value>
-  </data>
-  <data name="ColumnCardTempSurface.HeaderText" xml:space="preserve">
-    <value>Температура поверхности, °C</value>
-  </data>
-  <data name="columnCardGear.HeaderText" xml:space="preserve">
-    <value>Орудие лова</value>
-  </data>
-  <data name="columnCardMesh.HeaderText" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="columnCardHook.HeaderText" xml:space="preserve">
-    <value>Размер крючка</value>
-  </data>
-  <data name="columnCardLength.HeaderText" xml:space="preserve">
-    <value>Длина, м</value>
-  </data>
-  <data name="columnCardOpening.HeaderText" xml:space="preserve">
-    <value>Раскрытие, м</value>
-  </data>
-  <data name="columnCardHeight.HeaderText" xml:space="preserve">
-    <value>Высота, м</value>
-  </data>
-  <data name="columnCardSquare.HeaderText" xml:space="preserve">
-    <value>Площадь орудия, м²</value>
-  </data>
-  <data name="columnCardSpan.HeaderText" xml:space="preserve">
-    <value>Время операции, ч</value>
-  </data>
-  <data name="columnCardVelocity.HeaderText" xml:space="preserve">
-    <value>Скорость судна, км/ч</value>
-  </data>
-  <data name="columnCardExposure.HeaderText" xml:space="preserve">
-    <value>Протяженность операции, м</value>
-  </data>
-  <data name="columnCardEffort.HeaderText" xml:space="preserve">
-    <value>Усилие</value>
-  </data>
-  <data name="columnCardDepth.HeaderText" xml:space="preserve">
-    <value>Глубина, м</value>
-  </data>
-  <data name="columnCardWealth.HeaderText" xml:space="preserve">
-    <value>Общее видовое богатство</value>
-  </data>
-  <data name="columnCardQuantity.HeaderText" xml:space="preserve">
-    <value>Общее количество, экз.</value>
-  </data>
-  <data name="columnCardMass.HeaderText" xml:space="preserve">
-    <value>Общая масса, кг</value>
-  </data>
-  <data name="columnCardAbundance.HeaderText" xml:space="preserve">
-    <value>Общая численность, экз./усилие</value>
-  </data>
-  <data name="columnCardBiomass.HeaderText" xml:space="preserve">
-    <value>Общая биомасса, кг/усилие</value>
-  </data>
-  <data name="columnCardDiversityA.HeaderText" xml:space="preserve">
-    <value>Общее разнообразие</value>
-  </data>
-  <data name="columnCardDiversityB.HeaderText" xml:space="preserve">
-    <value>Общее разнообразие (по массе)</value>
-  </data>
-  <data name="columnCardComments.HeaderText" xml:space="preserve">
-    <value>Примечание</value>
-  </data>
-  <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 192</value>
-  </data>
-  <data name="spreadSheetCard.StatusFormat" xml:space="preserve">
-    <value>1;2;5|карточка;карточки;карточек</value>
-  </data>
-  <data name="contextCardOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextCardOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardOpen.Text" xml:space="preserve">
-    <value>Открыть карточку</value>
-  </data>
-  <data name="contextCardOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardOpenFolder.Text" xml:space="preserve">
-    <value>Показать в папке</value>
-  </data>
-  <data name="contextCardSaveSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardSaveSet.Text" xml:space="preserve">
-    <value>Сохранить как набор...</value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 6</value>
-  </data>
-  <data name="contextCardLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardLog.Text" xml:space="preserve">
-    <value>К ведомости</value>
-  </data>
-  <data name="contextCardIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardIndividuals.Text" xml:space="preserve">
-    <value>К особям</value>
-  </data>
-  <data name="contextCardStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardStratified.Text" xml:space="preserve">
-    <value>К размерным рядам</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 6</value>
-  </data>
-  <data name="contextCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardPrintFull.Text" xml:space="preserve">
-    <value>Печать карточки</value>
-  </data>
-  <data name="contextCardPrintNote.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="contextCardPrintNote.Text" xml:space="preserve">
-    <value>Печать этикетки карточки</value>
-  </data>
-  <data name="tabPageSpc.Text" xml:space="preserve">
-    <value>Виды</value>
-  </data>
-  <data name="buttonSpcDetails.Text" xml:space="preserve">
-    <value>Подробнее</value>
-  </data>
-  <data name="labelSpcGroupBy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 13</value>
-  </data>
-  <data name="labelSpcGroupBy.Text" xml:space="preserve">
-    <value>Группировать по:</value>
-  </data>
-  <data name="buttonSpcSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACPklE
-        QVQ4T6WS70uTURTH9y/03jdBL3prU2O4FqvBU66hLB2GFtKvJ9Isfy3TJEXLVHT5A7QVLp20Wk3CiUb+
-        AH8gJmIsJSs1l7TEoabYRDD4ds99dI9Le1MHzvPi3OfzufeeexQA/iv5p7MjAEp32xpaXat45lhGc5Mf
-        j6zzqKv9BkuVF/dLZ1BU+Bn5eR+Qkz2OG9c9DN0SENjbA9TWbFDxr7G+sQl9Yi/OJL7iyUISuF6ucEF5
-        2Q8q7hkE+5fXcdT4GkqlCFOCk8qSwPF0iQuKCr9TcVdsw198K4gwuJF3axanjS20JAlsjQtccNM8TcWQ
-        2Am/n/LjoOBCZsYk4mJttCwJGup9XJB+bZyKwfgTHvL4EKZ1QBRHYTBY6RdJUFM9xwXi5VEq8tgL7hn5
-        in3RTUg+24+YmDr6TRJUlM+iuwvsKYGUC29hOjfIu00NozvTsWlnCe5DvOkNBMEiC0qKp9DuBpsBoMX+
-        i737T5TeW+RNpYbRndNSPUH4VFwbdLoyWXA7fxLO58AT2yYbnAD0SRkhaTxvRtLVAgmOZfBJJ7TaYllg
-        zplgMFD9IMB3JkjBliLUAsY+LWBiZhFi9l0c17dyWH3MDo2mQBbQWFofInhsEhB8JbcSH71L8M6vIuuO
-        BZFaO4ObEXnkMdTRubIgLfUdu/cahw/onNh/SMCL9gG4u4bQ3TeCweExnDCYoNQ0IorB4aoGqFSZIYL4
-        SxcH+HjShNGQ0DvTU1G3qWF0Z9qVkuDDUemy4N8Tit/kKu4LI/ykxwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="buttonSpcFull.Text" xml:space="preserve">
-    <value>Полная ведомость</value>
-  </data>
-  <data name="columnSpcSpc.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnSpcQuantity.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="columnSpcMass.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="columnSpcOccurrence.HeaderText" xml:space="preserve">
-    <value>Встречаемость, %</value>
-  </data>
-  <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 98</value>
-  </data>
-  <data name="spreadSheetSpc.StatusFormat" xml:space="preserve">
-    <value>1;2;5|вид / таксон;вида / таксона;видов / таксонов</value>
-  </data>
-  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
-  </data>
-  <data name="contextSpcQualify.Text" xml:space="preserve">
-    <value>Проверить</value>
-  </data>
-  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 6</value>
-  </data>
-  <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
-  </data>
-  <data name="contextSpcLog.Text" xml:space="preserve">
-    <value>К ведомостиям</value>
-  </data>
-  <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
-  </data>
-  <data name="contextSpcIndividuals.Text" xml:space="preserve">
-    <value>К особям</value>
-  </data>
-  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
-  </data>
-  <data name="contextSpcStratified.Text" xml:space="preserve">
-    <value>К размерным рядам</value>
-  </data>
-  <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Ведомость</value>
-  </data>
-  <data name="buttonSelectLog.Text" xml:space="preserve">
-    <value>Больше значений...</value>
-  </data>
-  <data name="columnLogSpc.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnLogQuantity.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="columnLogMass.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="columnLogAbundance.HeaderText" xml:space="preserve">
-    <value>Численность, экз./усилие</value>
-  </data>
-  <data name="columnLogBiomass.HeaderText" xml:space="preserve">
-    <value>Биомасса, кг/усилие</value>
-  </data>
-  <data name="columnLogDiversityA.HeaderText" xml:space="preserve">
-    <value>Разнообразие</value>
-  </data>
-  <data name="columnLogDiversityB.HeaderText" xml:space="preserve">
-    <value>Разнообразие (по массе)</value>
-  </data>
-  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 76</value>
-  </data>
-  <data name="spreadSheetLog.StatusFormat" xml:space="preserve">
-    <value>1;2;5|запись;записи;записей</value>
-  </data>
-  <data name="contextLogOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextLogOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="contextLogOpen.Text" xml:space="preserve">
-    <value>Открыть в карточке</value>
-  </data>
-  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 6</value>
-  </data>
-  <data name="contextLogIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="contextLogIndividuals.Text" xml:space="preserve">
-    <value>К особям</value>
-  </data>
-  <data name="contextLogStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 22</value>
-  </data>
-  <data name="contextLogStratified.Text" xml:space="preserve">
-    <value>К размерным рядам</value>
-  </data>
-  <data name="tabPageStratified.Text" xml:space="preserve">
-    <value>Размерные ряды</value>
-  </data>
-  <data name="buttonSelectStratified.Text" xml:space="preserve">
-    <value>Больше значений...</value>
-  </data>
-  <data name="columnStratifiedSpc.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnStratifiedCount.HeaderText" xml:space="preserve">
-    <value>Количество особей</value>
-  </data>
-  <data name="columnStratifiedMass.HeaderText" xml:space="preserve">
-    <value>Масса*, кг</value>
-  </data>
-  <data name="columnStratifiedInterval.HeaderText" xml:space="preserve">
-    <value>Интервал, мм</value>
-  </data>
-  <data name="columnStratifiedFrom.HeaderText" xml:space="preserve">
-    <value>От, мм</value>
-  </data>
-  <data name="columnStratifiedTo.HeaderText" xml:space="preserve">
-    <value>До, мм</value>
-  </data>
-  <data name="contextStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 54</value>
-  </data>
-  <data name="spreadSheetStratified.StatusFormat" xml:space="preserve">
-    <value>1;2;5|особь;особи;особей</value>
-  </data>
-  <data name="contextStratifiedOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextStratifiedOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
-  </data>
-  <data name="contextStratifiedOpen.Text" xml:space="preserve">
-    <value>Открыть в карточке</value>
-  </data>
-  <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 6</value>
-  </data>
-  <data name="printStratifiedSampleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="printStratifiedSampleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
-  </data>
-  <data name="printStratifiedSampleToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать размерного ряда</value>
-  </data>
-  <data name="tabPageInd.Text" xml:space="preserve">
-    <value>Особи</value>
-  </data>
-  <data name="pictureBoxStratified.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAABXElE
-        QVQ4T2P4//8/RRirICkYqyApGIUTnj7lQWrD4b9dnZuF3ANalGwTNnwOK9n/JyF3lVbZnBfMyGphGIXj
-        Ednxf/b2F/9Lp9z+G1R46F9s85X/U7d9/Z/dceV/ZNXp/97Ze/5bJ6wFKsVhQFj+vCj/lBn/5+3/+b9n
-        /ef/+dMe/e9d+/F/4ZzP/7N7b/w1jJz3r0GMhRNZD4oBIOwU0vp/8paP/zvXfftfv/jD/8IZb/771j38
-        YxK3/FutCAsHunoUDgi7xfVVhXoX/M2e8f1/ZPujv+axi/7rhy/+DdTMhq4WhDEEfNKmMlv7NfxI7Trz
-        3yh6/tcaUQ4MW5ExVkE77+oZ5m5lb/stFAWwySNjrIJ6nvUCak6VP1QcKnOxySNjrIIgrGxf3qZoW3YZ
-        mxwyxioIwrIWRYqylkVfJE3zhLDJwzBWQRgWM8phxSaOjLEKkoKxChKP/zMAAC8IyRJMLMUAAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
-  <data name="pictureBoxStratified.ToolTip" xml:space="preserve">
-    <value>Есть размерные ряды {0}.
-Учитывайте это при дальнейшем анализе.</value>
-  </data>
-  <data name="buttonSelectInd.Text" xml:space="preserve">
-    <value>Больше значений...</value>
-  </data>
-  <data name="columnIndSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="columnIndLength.HeaderText" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="columnIndMass.HeaderText" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <data name="columnIndSomaticMass.HeaderText" xml:space="preserve">
-    <value>Масса порки, г</value>
-  </data>
-  <data name="columnIndCondition.HeaderText" xml:space="preserve">
-    <value>Упитанность</value>
-  </data>
-  <data name="columnIndConditionSoma.HeaderText" xml:space="preserve">
-    <value>Упитанность (без внутренностей)</value>
-  </data>
-  <data name="columnIndTally.HeaderText" xml:space="preserve">
-    <value>Бирка</value>
-  </data>
-  <data name="columnIndAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="columnIndGeneration.HeaderText" xml:space="preserve">
-    <value>Поколение</value>
-  </data>
-  <data name="columnIndSex.HeaderText" xml:space="preserve">
-    <value>Пол</value>
-  </data>
-  <data name="columnIndMaturity.HeaderText" xml:space="preserve">
-    <value>Зрелость</value>
-  </data>
-  <data name="columnIndGonadMass.HeaderText" xml:space="preserve">
-    <value>Масса гонад, г</value>
-  </data>
-  <data name="columnIndGonadSampleMass.HeaderText" xml:space="preserve">
-    <value>Масса пробы на плодовитость, г</value>
-  </data>
-  <data name="columnIndGonadSample.HeaderText" xml:space="preserve">
-    <value>Гамет в пробе</value>
-  </data>
-  <data name="columnIndFecundityAbs.HeaderText" xml:space="preserve">
-    <value>Абсолютная плодовитость, тыс. икр.</value>
-  </data>
-  <data name="columnIndFecundityRelative.HeaderText" xml:space="preserve">
-    <value>Относительная плодовитость, икр./г</value>
-  </data>
-  <data name="columnIndFecundityRelativeSoma.HeaderText" xml:space="preserve">
-    <value>Относительная плодовитость (без внутренностей), икр./г</value>
-  </data>
-  <data name="columnIndGonadIndex.HeaderText" xml:space="preserve">
-    <value>Коэффициент зрелости</value>
-  </data>
-  <data name="columnIndGonadIndexSoma.HeaderText" xml:space="preserve">
-    <value>Коэффициент зрелости (без внутренностей)</value>
-  </data>
-  <data name="columnIndEggSize.HeaderText" xml:space="preserve">
-    <value>Диаметр икринки, мкм</value>
-  </data>
-  <data name="columnIndFat.HeaderText" xml:space="preserve">
-    <value>Жирность</value>
-  </data>
-  <data name="columnIndConsumed.HeaderText" xml:space="preserve">
-    <value>Потребленная масса, мг</value>
-  </data>
-  <data name="columnIndConsumptionIndex.HeaderText" xml:space="preserve">
-    <value>Индекс потребления, ‱</value>
-  </data>
-  <data name="columnIndDietItems.HeaderText" xml:space="preserve">
-    <value>Пищевых компонентов</value>
-  </data>
-  <data name="columnIndComments.HeaderText" xml:space="preserve">
-    <value>Примечание</value>
-  </data>
-  <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 220</value>
-  </data>
-  <data name="spreadSheetInd.StatusFormat" xml:space="preserve">
-    <value>1;2;5|особь;особи;особей</value>
-  </data>
-  <data name="contextIndProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndProfile.Text" xml:space="preserve">
-    <value>Открыть профиль особи</value>
-  </data>
-  <data name="fecundityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="fecundityToolStripMenuItem.Text" xml:space="preserve">
-    <value>Плодовитость</value>
-  </data>
-  <data name="growthToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="growthToolStripMenuItem.Text" xml:space="preserve">
-    <value>Рост</value>
-  </data>
-  <data name="contextIndTrophics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndTrophics.Text" xml:space="preserve">
-    <value>Питание</value>
-  </data>
-  <data name="parasitesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="parasitesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Паразиты</value>
-  </data>
-  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 6</value>
-  </data>
-  <data name="contextIndOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
-        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
-        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
-        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
-        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
-        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
-        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
-        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
-        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
-        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
-        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
-        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="contextIndOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndOpen.Text" xml:space="preserve">
-    <value>Открыть в карточке</value>
-  </data>
-  <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 6</value>
-  </data>
-  <data name="printIndividualsLogToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
-        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
-        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
-        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
-        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
-        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
-        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
-        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
-        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
-        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
-        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
-        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="printIndividualsLogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="printIndividualsLogToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать журнала выбранных особей</value>
-  </data>
-  <data name="contextIndPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndPrint.Text" xml:space="preserve">
-    <value>Печать профиля особи</value>
-  </data>
-  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 6</value>
-  </data>
-  <data name="contextIndExploreDiet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 22</value>
-  </data>
-  <data name="contextIndExploreDiet.Text" xml:space="preserve">
-    <value>Исследовать питание</value>
-  </data>
-  <data name="statusBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 19</value>
-  </data>
-  <data name="statusBio.Text" xml:space="preserve">
-    <value>Био загружен</value>
-  </data>
-  <data name="taskDialogSave.Content" xml:space="preserve">
-    <value>Имеются отредактированные или новые записи. Сохранить их?</value>
-  </data>
-  <data name="taskDialogSave.MainInstruction" xml:space="preserve">
-    <value>Сохранить введенную информацию?</value>
-  </data>
-  <data name="tdbSaveAll.Text" xml:space="preserve">
-    <value>Сохранить все</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Не сохранять</value>
-  </data>
-  <data name="taskDialogClearSimulations.Content" xml:space="preserve">
-    <value>В журнале уже присутствуют виртуализированные особи. Чтобы избежать путаницы очистите журнал. Очистить журнал от виртуализированных особей?</value>
-  </data>
-  <data name="taskDialogClearSimulations.MainInstruction" xml:space="preserve">
-    <value>Удалить виртуализированных особей?</value>
-  </data>
-  <data name="tdbClearSimulation.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="tdRecover.Content" xml:space="preserve">
-    <value>Будете ли вы делать резервную копию ваших карточек прежде, чем приступить к операции восстановления массы? Если вы уже сделали резервную копию, пропустите этот диалог и нажмите кнопку "Продолжить".</value>
-  </data>
-  <data name="tdRecover.ExpandedControlText" xml:space="preserve">
-    <value>Зачем делать резерную копию?</value>
-  </data>
-  <data name="tdRecover.ExpandedInformation" xml:space="preserve">
-    <value>Строго рекомендуется делать резервную копию ваших карточек прежде, чем присутупить к операции восстановления массы. Вы можете неудачно или совсем неверно выбрать справочные карточки или неверно указать соответствия таксонов. И тогда, в случае обнаружения допущенной ошибки, вы сможете просто заменить испорченные карточки сделанными заранее резервными копиями.</value>
-  </data>
-  <data name="tdRecover.MainInstruction" xml:space="preserve">
-    <value>Сделать копию карточек прежде, чем продолжить?</value>
-  </data>
-  <data name="tdbRecoverBackup.Text" xml:space="preserve">
-    <value>Сделать копию и продолжить</value>
-  </data>
-  <data name="tdbRecoverContinue.Text" xml:space="preserve">
-    <value>Продолжить</value>
-  </data>
-  <data name="taskDialogBio.MainInstruction" xml:space="preserve">
-    <value>Очистить ранее загруженные био?</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIACu4QAAZgAAAICAAAABACAAKAgBABTiAABAQAAAAQAgAChCAAA86gEAMDAAAAEA
@@ -4386,5 +2746,1660 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/D8AAOAHAADAAwAAgAEAAIABAACAAAAAAAAAAAAAAAAAAAAA
         AAAAAAABAACAAQAAAAEAAAADAADgBwAA/D8AAA==
 </value>
+  </data>
+  <data name="buttonCardDetails.Text" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="buttonGearStatsReport.Text" xml:space="preserve">
+    <value>Печать сводки</value>
+  </data>
+  <data name="buttonQualOutliers.Text" xml:space="preserve">
+    <value>Редактировать выбросы</value>
+  </data>
+  <data name="buttonSelectInd.Text" xml:space="preserve">
+    <value>Больше значений...</value>
+  </data>
+  <data name="buttonSelectLog.Text" xml:space="preserve">
+    <value>Больше значений...</value>
+  </data>
+  <data name="buttonSelectStratified.Text" xml:space="preserve">
+    <value>Больше значений...</value>
+  </data>
+  <data name="buttonSpcA.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcDetails.Text" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="buttonSpcFull.Text" xml:space="preserve">
+    <value>Полная ведомость</value>
+  </data>
+  <data name="buttonSpcL.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcLog.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcM.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcS.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACPklE
+        QVQ4T6WS70uTURTH9y/03jdBL3prU2O4FqvBU66hLB2GFtKvJ9Isfy3TJEXLVHT5A7QVLp20Wk3CiUb+
+        AH8gJmIsJSs1l7TEoabYRDD4ds99dI9Le1MHzvPi3OfzufeeexQA/iv5p7MjAEp32xpaXat45lhGc5Mf
+        j6zzqKv9BkuVF/dLZ1BU+Bn5eR+Qkz2OG9c9DN0SENjbA9TWbFDxr7G+sQl9Yi/OJL7iyUISuF6ucEF5
+        2Q8q7hkE+5fXcdT4GkqlCFOCk8qSwPF0iQuKCr9TcVdsw198K4gwuJF3axanjS20JAlsjQtccNM8TcWQ
+        2Am/n/LjoOBCZsYk4mJttCwJGup9XJB+bZyKwfgTHvL4EKZ1QBRHYTBY6RdJUFM9xwXi5VEq8tgL7hn5
+        in3RTUg+24+YmDr6TRJUlM+iuwvsKYGUC29hOjfIu00NozvTsWlnCe5DvOkNBMEiC0qKp9DuBpsBoMX+
+        i737T5TeW+RNpYbRndNSPUH4VFwbdLoyWXA7fxLO58AT2yYbnAD0SRkhaTxvRtLVAgmOZfBJJ7TaYllg
+        zplgMFD9IMB3JkjBliLUAsY+LWBiZhFi9l0c17dyWH3MDo2mQBbQWFofInhsEhB8JbcSH71L8M6vIuuO
+        BZFaO4ObEXnkMdTRubIgLfUdu/cahw/onNh/SMCL9gG4u4bQ3TeCweExnDCYoNQ0IorB4aoGqFSZIYL4
+        SxcH+HjShNGQ0DvTU1G3qWF0Z9qVkuDDUemy4N8Tit/kKu4LI/ykxwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonSpcStrat.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcTally.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpcW.Text" xml:space="preserve">
+    <value>Смотреть</value>
+  </data>
+  <data name="buttonSpeciesStatsReport.Text" xml:space="preserve">
+    <value>Печать сводки</value>
+  </data>
+  <data name="checkBoxCatchesDaily.Text" xml:space="preserve">
+    <value>По дням</value>
+  </data>
+  <data name="checkBoxCatchesMesh.Text" xml:space="preserve">
+    <value>Класс орудий</value>
+  </data>
+  <data name="checkBoxEffortDaily.Text" xml:space="preserve">
+    <value>По дням</value>
+  </data>
+  <data name="checkBoxQualClass.Text" xml:space="preserve">
+    <value>Класс</value>
+  </data>
+  <data name="checkBoxQualOutliers.Text" xml:space="preserve">
+    <value>Выделить выбросы</value>
+  </data>
+  <data name="checkBoxQualType.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="columnCardAbundance.HeaderText" xml:space="preserve">
+    <value>Общая численность, экз./усилие</value>
+  </data>
+  <data name="columnCardBiomass.HeaderText" xml:space="preserve">
+    <value>Общая биомасса, кг/усилие</value>
+  </data>
+  <data name="columnCardComments.HeaderText" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="columnCardDepth.HeaderText" xml:space="preserve">
+    <value>Глубина, м</value>
+  </data>
+  <data name="columnCardDiversityA.HeaderText" xml:space="preserve">
+    <value>Общее разнообразие</value>
+  </data>
+  <data name="columnCardDiversityB.HeaderText" xml:space="preserve">
+    <value>Общее разнообразие (по массе)</value>
+  </data>
+  <data name="columnCardEffort.HeaderText" xml:space="preserve">
+    <value>Усилие</value>
+  </data>
+  <data name="columnCardExposure.HeaderText" xml:space="preserve">
+    <value>Протяженность операции, м</value>
+  </data>
+  <data name="columnCardGear.HeaderText" xml:space="preserve">
+    <value>Орудие лова</value>
+  </data>
+  <data name="columnCardHeight.HeaderText" xml:space="preserve">
+    <value>Высота, м</value>
+  </data>
+  <data name="columnCardHook.HeaderText" xml:space="preserve">
+    <value>Размер крючка</value>
+  </data>
+  <data name="columnCardInvestigator.HeaderText" xml:space="preserve">
+    <value>Исследователь</value>
+  </data>
+  <data name="columnCardLabel.HeaderText" xml:space="preserve">
+    <value>Маркер</value>
+  </data>
+  <data name="columnCardLength.HeaderText" xml:space="preserve">
+    <value>Длина, м</value>
+  </data>
+  <data name="columnCardMass.HeaderText" xml:space="preserve">
+    <value>Общая масса, кг</value>
+  </data>
+  <data name="columnCardMesh.HeaderText" xml:space="preserve">
+    <value>Ячея, мм</value>
+  </data>
+  <data name="columnCardOpening.HeaderText" xml:space="preserve">
+    <value>Раскрытие, м</value>
+  </data>
+  <data name="columnCardQuantity.HeaderText" xml:space="preserve">
+    <value>Общее количество, экз.</value>
+  </data>
+  <data name="columnCardSpan.HeaderText" xml:space="preserve">
+    <value>Время операции, ч</value>
+  </data>
+  <data name="columnCardSquare.HeaderText" xml:space="preserve">
+    <value>Площадь орудия, м²</value>
+  </data>
+  <data name="ColumnCardTempSurface.HeaderText" xml:space="preserve">
+    <value>Температура поверхности, °C</value>
+  </data>
+  <data name="columnCardVelocity.HeaderText" xml:space="preserve">
+    <value>Скорость судна, км/ч</value>
+  </data>
+  <data name="columnCardWater.HeaderText" xml:space="preserve">
+    <value>Водный объект</value>
+  </data>
+  <data name="columnCardWealth.HeaderText" xml:space="preserve">
+    <value>Общее видовое богатство</value>
+  </data>
+  <data name="ColumnCardWeather.HeaderText" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="columnCardWhen.HeaderText" xml:space="preserve">
+    <value>Дата и время</value>
+  </data>
+  <data name="columnCardWhere.HeaderText" xml:space="preserve">
+    <value>Координаты</value>
+  </data>
+  <data name="columnCatchN.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="columnCatchSpc.HeaderText" xml:space="preserve">
+    <value>Вид / Таксон</value>
+  </data>
+  <data name="columnCatchW.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
+  </data>
+  <data name="columnEffort.HeaderText" xml:space="preserve">
+    <value>Усилие, {0}</value>
+  </data>
+  <data name="columnEffortEO.HeaderText" xml:space="preserve">
+    <value>Усилий за операцию</value>
+  </data>
+  <data name="columnEffortMesh.HeaderText" xml:space="preserve">
+    <value>Ячея, мм</value>
+  </data>
+  <data name="columnEffortReps.HeaderText" xml:space="preserve">
+    <value>Операций совершено</value>
+  </data>
+  <data name="ColumnGearStats.HeaderText" xml:space="preserve">
+    <value>Тип орудий</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Водоем</value>
+  </data>
+  <data name="columnHeader6.Text" xml:space="preserve">
+    <value>Водоем</value>
+  </data>
+  <data name="columnHeaderWaterName.Text" xml:space="preserve">
+    <value>Водоем</value>
+  </data>
+  <data name="columnIndAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="columnIndComments.HeaderText" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="columnIndCondition.HeaderText" xml:space="preserve">
+    <value>Упитанность</value>
+  </data>
+  <data name="columnIndConditionSoma.HeaderText" xml:space="preserve">
+    <value>Упитанность (без внутренностей)</value>
+  </data>
+  <data name="columnIndConsumed.HeaderText" xml:space="preserve">
+    <value>Потребленная масса, мг</value>
+  </data>
+  <data name="columnIndConsumptionIndex.HeaderText" xml:space="preserve">
+    <value>Индекс потребления, ‱</value>
+  </data>
+  <data name="columnIndDietItems.HeaderText" xml:space="preserve">
+    <value>Пищевых компонентов</value>
+  </data>
+  <data name="columnIndEggSize.HeaderText" xml:space="preserve">
+    <value>Диаметр икринки, мкм</value>
+  </data>
+  <data name="columnIndFat.HeaderText" xml:space="preserve">
+    <value>Жирность</value>
+  </data>
+  <data name="columnIndFecundityAbs.HeaderText" xml:space="preserve">
+    <value>Абсолютная плодовитость, тыс. икр.</value>
+  </data>
+  <data name="columnIndFecundityRelative.HeaderText" xml:space="preserve">
+    <value>Относительная плодовитость, икр./г</value>
+  </data>
+  <data name="columnIndFecundityRelativeSoma.HeaderText" xml:space="preserve">
+    <value>Относительная плодовитость (без внутренностей), икр./г</value>
+  </data>
+  <data name="columnIndGeneration.HeaderText" xml:space="preserve">
+    <value>Поколение</value>
+  </data>
+  <data name="columnIndGonadIndex.HeaderText" xml:space="preserve">
+    <value>Коэффициент зрелости</value>
+  </data>
+  <data name="columnIndGonadIndexSoma.HeaderText" xml:space="preserve">
+    <value>Коэффициент зрелости (без внутренностей)</value>
+  </data>
+  <data name="columnIndGonadMass.HeaderText" xml:space="preserve">
+    <value>Масса гонад, г</value>
+  </data>
+  <data name="columnIndGonadSample.HeaderText" xml:space="preserve">
+    <value>Гамет в пробе</value>
+  </data>
+  <data name="columnIndGonadSampleMass.HeaderText" xml:space="preserve">
+    <value>Масса пробы на плодовитость, г</value>
+  </data>
+  <data name="columnIndLength.HeaderText" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="columnIndMass.HeaderText" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="columnIndMaturity.HeaderText" xml:space="preserve">
+    <value>Зрелость</value>
+  </data>
+  <data name="columnIndSex.HeaderText" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="columnIndSomaticMass.HeaderText" xml:space="preserve">
+    <value>Масса порки, г</value>
+  </data>
+  <data name="columnIndSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnIndTally.HeaderText" xml:space="preserve">
+    <value>Бирка</value>
+  </data>
+  <data name="columnInvestigator.Text" xml:space="preserve">
+    <value>Исследователь</value>
+  </data>
+  <data name="columnLogAbundance.HeaderText" xml:space="preserve">
+    <value>Численность, экз./усилие</value>
+  </data>
+  <data name="columnLogBiomass.HeaderText" xml:space="preserve">
+    <value>Биомасса, кг/усилие</value>
+  </data>
+  <data name="columnLogDiversityA.HeaderText" xml:space="preserve">
+    <value>Разнообразие</value>
+  </data>
+  <data name="columnLogDiversityB.HeaderText" xml:space="preserve">
+    <value>Разнообразие (по массе)</value>
+  </data>
+  <data name="columnLogMass.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
+  </data>
+  <data name="columnLogQuantity.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="columnLogSpc.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnSpcMass.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
+  </data>
+  <data name="columnSpcOccurrence.HeaderText" xml:space="preserve">
+    <value>Встречаемость, %</value>
+  </data>
+  <data name="columnSpcQuantity.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="columnSpcSpc.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="ColumnSpcTechClass.HeaderText" xml:space="preserve">
+    <value>Ячея, мм</value>
+  </data>
+  <data name="ColumnSpcTechLog.HeaderText" xml:space="preserve">
+    <value>ПБА</value>
+  </data>
+  <data name="ColumnSpcTechN.HeaderText" xml:space="preserve">
+    <value>Выловлено, экз.</value>
+  </data>
+  <data name="ColumnSpcTechOps.HeaderText" xml:space="preserve">
+    <value>Операций совершено</value>
+  </data>
+  <data name="ColumnSpcTechStratified.HeaderText" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="ColumnSpcTechTotals.HeaderText" xml:space="preserve">
+    <value>Регистрация улова</value>
+  </data>
+  <data name="columnStratifiedCount.HeaderText" xml:space="preserve">
+    <value>Количество особей</value>
+  </data>
+  <data name="columnStratifiedFrom.HeaderText" xml:space="preserve">
+    <value>От, мм</value>
+  </data>
+  <data name="columnStratifiedInterval.HeaderText" xml:space="preserve">
+    <value>Интервал, мм</value>
+  </data>
+  <data name="columnStratifiedMass.HeaderText" xml:space="preserve">
+    <value>Масса*, кг</value>
+  </data>
+  <data name="columnStratifiedSpc.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnStratifiedTo.HeaderText" xml:space="preserve">
+    <value>До, мм</value>
+  </data>
+  <data name="comboBoxQualValue.Items" xml:space="preserve">
+    <value>Масса</value>
+  </data>
+  <data name="comboBoxQualValue.Items1" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 192</value>
+  </data>
+  <data name="contextCardIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextCardLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardLog.Text" xml:space="preserve">
+    <value>К ведомости</value>
+  </data>
+  <data name="contextCardOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
+        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
+        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
+        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
+        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
+        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
+        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
+        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
+        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
+        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
+        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
+        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="contextCardOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardOpen.Text" xml:space="preserve">
+    <value>Открыть карточку</value>
+  </data>
+  <data name="contextCardOpenFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardOpenFolder.Text" xml:space="preserve">
+    <value>Показать в папке</value>
+  </data>
+  <data name="contextCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="contextCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardPrintFull.Text" xml:space="preserve">
+    <value>Печать карточки</value>
+  </data>
+  <data name="contextCardPrintNote.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardPrintNote.Text" xml:space="preserve">
+    <value>Печать этикетки карточки</value>
+  </data>
+  <data name="contextCardSaveSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardSaveSet.Text" xml:space="preserve">
+    <value>Сохранить как набор...</value>
+  </data>
+  <data name="contextCardStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="contextCardStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
+  </data>
+  <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 220</value>
+  </data>
+  <data name="contextIndExploreDiet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="contextIndExploreDiet.Text" xml:space="preserve">
+    <value>Исследовать питание</value>
+  </data>
+  <data name="contextIndOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
+        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
+        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
+        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
+        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
+        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
+        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
+        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
+        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
+        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
+        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
+        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="contextIndOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="contextIndOpen.Text" xml:space="preserve">
+    <value>Открыть в карточке</value>
+  </data>
+  <data name="contextIndPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="contextIndPrint.Text" xml:space="preserve">
+    <value>Печать профиля особи</value>
+  </data>
+  <data name="contextIndProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="contextIndProfile.Text" xml:space="preserve">
+    <value>Открыть профиль особи</value>
+  </data>
+  <data name="contextIndTrophics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="contextIndTrophics.Text" xml:space="preserve">
+    <value>Питание</value>
+  </data>
+  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 76</value>
+  </data>
+  <data name="contextLogIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="contextLogIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextLogOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
+        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
+        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
+        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
+        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
+        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
+        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
+        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
+        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
+        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
+        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
+        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="contextLogOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="contextLogOpen.Text" xml:space="preserve">
+    <value>Открыть в карточке</value>
+  </data>
+  <data name="contextLogStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="contextLogStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
+  </data>
+  <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcIndividuals.Text" xml:space="preserve">
+    <value>К особям</value>
+  </data>
+  <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcLog.Text" xml:space="preserve">
+    <value>К ведомостиям</value>
+  </data>
+  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcQualify.Text" xml:space="preserve">
+    <value>Проверить</value>
+  </data>
+  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 22</value>
+  </data>
+  <data name="contextSpcStratified.Text" xml:space="preserve">
+    <value>К размерным рядам</value>
+  </data>
+  <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 98</value>
+  </data>
+  <data name="contextStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 54</value>
+  </data>
+  <data name="contextStratifiedOpen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
+        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
+        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
+        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
+        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
+        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
+        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
+        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
+        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
+        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
+        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
+        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="contextStratifiedOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="contextStratifiedOpen.Text" xml:space="preserve">
+    <value>Открыть в карточке</value>
+  </data>
+  <data name="fbdBackup.Description" xml:space="preserve">
+    <value>Выберите папку для резервного копирования карточек.</value>
+  </data>
+  <data name="fecundityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="fecundityToolStripMenuItem.Text" xml:space="preserve">
+    <value>Плодовитость</value>
+  </data>
+  <data name="growthToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="growthToolStripMenuItem.Text" xml:space="preserve">
+    <value>Рост</value>
+  </data>
+  <data name="imageListWaters.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
+        CwAAAk1TRnQBSQFMAgEBAwEAAfgBKQH4ASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wIADrICAA6yAgAOshEA
+        AbIBeQH0AbIBrAGyAfQBmQF5AZkFeQKyA3kBmQF5AZkBeQGZAnkBmQN5ArIBeQGZAXkBmQH0AbIB2gGy
+        AdoB9AF5AZkCeQGyEAABsgGZAf8B2gGyAawB/wF5AZkGeQKyAXkBmQF5AZkB/wH0Af8B9AH/AZkBeQGZ
+        AnkCsgJ5AZkBeQGZAfQBsgHaAfQBeQGZA3kBshAAAbIBeQH0AdQBrAGyAdoB9AF5AZkFeQKyAnkBmQH0
+        AdoCsgHaAfQB/wGZAXkBmQF5ArIBeQGZAXkBmQF5AfQB2gGyAfQBmQF5AZkCeQGyEAABsgGZAf8B9AGy
+        AawBsgHaAf8BeQGZBHkCsgF5AZkB/wHaBbIB2gH/AZkBeQGZArIBmQF5AZkBeQL0Av8C9AGZAXkBmQF5
+        AbIQAAGyAXkBmQH/AfQBsgGsAbIB2gH0AXkBmQN5ArICeQH0B7IB9AH/AZkBeQKyAXkC9AH/AfQB/wL0
+        Af8B9AH/AvQBeQGyEAABsgGZAXkBmQH/AfQBsgGsAbIB2gH/AXkBmQJ5ArICeQH/AdoCsgGsAbIBrAGy
+        AdoB9AH/AZkCsgH0Av8B9AHaBLIB2gH0Av8BmQGyEAABsgF5AZkBeQGZAf8B9AGyAawBsgHaAfQBeQGZ
+        AXkCsgF5Af8B2gKyAawBsgGsA7IB2gH0AXkCsgH/AfQBsgHaBrIB2gGyAfQB/wGyEAABsgJ5AZkBeQGZ
+        Af8B9AGyAawBsgHaAfQBeQGZArIBeQH0AdoDsgGsAbIBrAOyAf8BmQKyAfQBsgHaArIBrAGyAawDsgHa
+        AbIB9AGyEAABsgN5AZkBeQGZAf8B9AGyAawBsgHaAZkBeQKyAXkB/wH0AdoBsgGsAbIBrAGyAawCsgH0
+        AXkDsgHaBLIBrAGyAawDsgHaArIQAAGyBHkBmQF5AZkB/wHaAbIBrAGyAfQBmQKyAnkB9AiyAdoB/wGZ
+        ArIB2gGyAdoCsgGsAbIBrAOyAdoBsgHaAbIQAAGyBXkBmQF5AfQB/wGsAbIBrAH0AXkCsgF5AZkB/wHa
+        A7IB2gKyAdoB/wGZAXkDsgHaBLIBrAGyAawDsgHaArIQAAGyBnkBmQH/AfQBsgGsAbIB9AGZArICeQGZ
+        Af8B2gGyAdoB/wL0Af8BmQF5AZkCsgHaAbIB2gKyAawBsgGsA7IB2gGyAdoBshAAAbIFeQGZAXkB9AH/
+        AawBsgGsAfQBmQKyAXkBmQF5AZkB/wH0Af8BmQJ5AZkBeQGZAXkDsgHaBLIBrAGyAawDsgHaArIQAAGy
+        BHkBmQF5AZkB/wH0AbIBrAGyAfQBmQKyAnkBmQJ5AZkCeQGZAnkBmQF5AZkCsgHaAbIB2gKyAawBsgGs
+        A7IB2gGyAdoBshEADrICAA6yAgAOshEAAUIBTQE+BwABPgMAASgDAAFAAwABEAMAAQEBAAEBBQABgBcA
+        A/8BAAGAAQEBgAEBAYABAXIAAYABAQGAAQEBgAEBAgAL
+</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Особей</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>В журнале, кг</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Общая выборка</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 25</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Периоды сбора</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 15</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Хроника использования орудия</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Выберите единицу усилия, чтобы оценить использование орудий по классам. Вы также можете оценить ежедневное применение.</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Ниже приведены различные выборки вида. Кликните "Смотреть", чтобы смотреть подробнее в журнале особей.</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 15</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Общая выборка</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Ед. усилия</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Расписание установок орудий разного класса озибражено ниже. Кликните дважды на отдельной экспозиции, чтобы смотреть карточку.</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Вы можете выбрать конкретный класс орудий, чтобы оценить его уловы и (или) выбрать отдельную дату.</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Уловы орудий</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>График лова</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Масса</value>
+  </data>
+  <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="label35.Text" xml:space="preserve">
+    <value>Пробы (бирки)</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Зрелость</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Общая масса, кг</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Масса размерных рядов получена с использованием модели весового роста</value>
+  </data>
+  <data name="labelArtifacts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 13</value>
+  </data>
+  <data name="labelArtifacts.Text" xml:space="preserve">
+    <value>Проверьте на артефакты</value>
+  </data>
+  <data name="labelCardCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 25</value>
+  </data>
+  <data name="labelCardCount.Text" xml:space="preserve">
+    <value>Карточек</value>
+  </data>
+  <data name="labelCatchesNoData.Text" xml:space="preserve">
+    <value>Нет данных...</value>
+  </data>
+  <data name="labelCollectors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
+  </data>
+  <data name="labelCollectors.Text" xml:space="preserve">
+    <value>Подписи</value>
+  </data>
+  <data name="labelEffortsNoData.Text" xml:space="preserve">
+    <value>Нет данных...</value>
+  </data>
+  <data name="labelQty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 25</value>
+  </data>
+  <data name="labelQty.Text" xml:space="preserve">
+    <value>Общая выборка</value>
+  </data>
+  <data name="labelQualDescription.Text" xml:space="preserve">
+    <value>На графике представлены выборки вида в каждом размерном классе. Также доступна проверка корректности данных с использованием моделей длина-масса и возраст-длина.</value>
+  </data>
+  <data name="labelQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="labelQualify.Text" xml:space="preserve">
+    <value>Метод проверки</value>
+  </data>
+  <data name="labelQualNotSelected.Text" xml:space="preserve">
+    <value>Выберите вид...</value>
+  </data>
+  <data name="labelQualSubset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
+  </data>
+  <data name="labelQualSubset.Text" xml:space="preserve">
+    <value>Ограничить счетчики</value>
+  </data>
+  <data name="labelQualTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 15</value>
+  </data>
+  <data name="labelQualTitle.Text" xml:space="preserve">
+    <value>Проверка данных</value>
+  </data>
+  <data name="labelSamplers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 25</value>
+  </data>
+  <data name="labelSamplers.Text" xml:space="preserve">
+    <value>Орудия лова</value>
+  </data>
+  <data name="labelSpcGroupBy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="labelSpcGroupBy.Text" xml:space="preserve">
+    <value>Группировать по:</value>
+  </data>
+  <data name="labelTechGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="labelTechGear.Text" xml:space="preserve">
+    <value>Тип орудий</value>
+  </data>
+  <data name="labelTechInstruction.Text" xml:space="preserve">
+    <value>В таблице приведены техники, которые применялись в разных классах. Техники включают в себя регистрацию улова, размерные ряды, заполнение журнала особей (или две последних вместе).</value>
+  </data>
+  <data name="labelTechNoData.Text" xml:space="preserve">
+    <value>Нет данных...</value>
+  </data>
+  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 25</value>
+  </data>
+  <data name="labelWaters.Text" xml:space="preserve">
+    <value>Водные объекты</value>
+  </data>
+  <data name="labelWgt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 25</value>
+  </data>
+  <data name="labelWgt.Text" xml:space="preserve">
+    <value>Общий вылов</value>
+  </data>
+  <data name="labeTech.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 15</value>
+  </data>
+  <data name="labeTech.Text" xml:space="preserve">
+    <value>Использованные техники сбора по классам орудий</value>
+  </data>
+  <data name="meniItemIndAllAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="meniItemIndAllAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
+    <value>Свободная</value>
+  </data>
+  <data name="menuCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="menuCards.Text" xml:space="preserve">
+    <value>Карточки</value>
+  </data>
+  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
+  </data>
+  <data name="menuCohort.Text" xml:space="preserve">
+    <value>Когортный анализ*</value>
+  </data>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="menuIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="menuIndividuals.Text" xml:space="preserve">
+    <value>Особи</value>
+  </data>
+  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="menuInstant.Text" xml:space="preserve">
+    <value>Оценка состояния</value>
+  </data>
+  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="menuItemAddData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACeUlE
+        QVQ4T6WSWUiUURiG/4suurJIjUIwskQsEAMjqosQpUVNKbdCSRPKrQVDMddmXEedGdcpFXNGnUYdrSzF
+        sEIoFInQcqHE1CwoKsXUUMnt6XfEye0munjgnO+c9+HjO0cA/osNi2tJLdA6SXN13MwoI12lJ06uiV8+
+        W3d5IwIjVXiGKvwX11djSs2TRFlUito7ILIAoVab7SvCWhqrZYq1omXC4gpPe4Ur8AjNMQjo69IwPVZj
+        4PeojtlhNfoyBXXalKSNBJ5hSjxCcnELzkeoKVcyNVq5Kjz/rZDZnggqSzOoKEpDXZBEcU4id+Sx5Mui
+        RcdfmVClyWLqh8YYXhDD9MVCT/CGrBPcK5Hx62uxMdxUm2XgiT6Tep2MhxVp6NXJ6IqllKlucTc3niJl
+        LKqsGINMqChOY+JTnqHtwRYJdZVK5gelMJSymo9ibSAOeiPhXTid1T5cD3IvF9SqZMb7M+CznEdVCtqe
+        ypcurWz9bQC0ezHX6sr0M0c+lNtx5cKJcVGwXyjJlfDzvZSh1gTqdHIWBiTQHbIU7AwSg+eYa3Nnuvk4
+        E41HGak9gDTUmvPOZjmGGRQqExjpiuG+NouOl2InvRGi4BJ0+LPw6gwzL04x2XSM0ToHvlfZ0p66FT9X
+        KxxsTGwMAlVmLN3NiTzQZkJ/IrwR233tzUyLG5PPHRmrP8Sw3o4vmr30yE2RBO/Bfp9Fg/EV8tKjqSnL
+        oOdxGO3ZgpE2+SaaZZtpSNpCdbw56mgLbt/YhZ/L7oVD9pYuRkF2ShTZksukxwQSd813cbJc9HHm7MnD
+        OB2x46CdNbZWFljuNGP7NhN2mJqIuRX/YOXm30H4A70P0TsBWkcYAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="menuItemAddData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemAddData.Text" xml:space="preserve">
+    <value>Добавить карточки...</value>
+  </data>
+  <data name="menuItemBackup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemBackup.Text" xml:space="preserve">
+    <value>Создать резервную копию карточек</value>
+  </data>
+  <data name="menuItemCardAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuItemCardAll.Text" xml:space="preserve">
+    <value>Все карточки</value>
+  </data>
+  <data name="menuItemCardCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="menuItemCardCatches.Text" xml:space="preserve">
+    <value>Сводка вылова</value>
+  </data>
+  <data name="menuItemCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="menuItemCardEfforts.Text" xml:space="preserve">
+    <value>Сводка усилий</value>
+  </data>
+  <data name="menuItemCardGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuItemCardGear.Text" xml:space="preserve">
+    <value>По орудию лова</value>
+  </data>
+  <data name="menuItemCardInvestigator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuItemCardInvestigator.Text" xml:space="preserve">
+    <value>По исследователю</value>
+  </data>
+  <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="menuItemCardMeteo.Text" xml:space="preserve">
+    <value>Отображать погодные условия</value>
+  </data>
+  <data name="menuItemCardPrintFull.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="menuItemCardPrintFull.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="menuItemCardPrintFull.Text" xml:space="preserve">
+    <value>Печать карточек</value>
+  </data>
+  <data name="menuItemCardPrintNotes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="menuItemCardPrintNotes.Text" xml:space="preserve">
+    <value>Печать этикеток карточек</value>
+  </data>
+  <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemCards.Text" xml:space="preserve">
+    <value>Карточки</value>
+  </data>
+  <data name="menuItemCardWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuItemCardWater.Text" xml:space="preserve">
+    <value>По водоему</value>
+  </data>
+  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemCenosis.Text" xml:space="preserve">
+    <value>Характеристика сообщества</value>
+  </data>
+  <data name="menuItemComposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemComposition.Text" xml:space="preserve">
+    <value>Характеристика популяции</value>
+  </data>
+  <data name="menuItemDietExplorer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemDietExplorer.Text" xml:space="preserve">
+    <value>Исследовать питание</value>
+  </data>
+  <data name="menuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemExit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="menuItemExportSpec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemExportSpec.Text" xml:space="preserve">
+    <value>Экспорт био</value>
+  </data>
+  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="menuItemExtrapolation.Text" xml:space="preserve">
+    <value>Метод экстраполяции</value>
+  </data>
+  <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="menuItemExtrapolationAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemGearStats.Text" xml:space="preserve">
+    <value>Сводка применения орудий лова</value>
+  </data>
+  <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemGrowthCohorts.Text" xml:space="preserve">
+    <value>Рост</value>
+  </data>
+  <data name="menuItemImportSpec.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemImportSpec.Text" xml:space="preserve">
+    <value>Импорт био</value>
+  </data>
+  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="menuItemIndAll.Text" xml:space="preserve">
+    <value>Все особи</value>
+  </data>
+  <data name="menuItemIndClearSimulated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndClearSimulated.Text" xml:space="preserve">
+    <value>Очистить виртуализированные особи</value>
+  </data>
+  <data name="menuItemIndDiet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndDiet.Text" xml:space="preserve">
+    <value>Отображать данные о питании</value>
+  </data>
+  <data name="menuItemIndExtra.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndExtra.Text" xml:space="preserve">
+    <value>Отображать дополнительные сведения</value>
+  </data>
+  <data name="menuItemIndFecundity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndFecundity.Text" xml:space="preserve">
+    <value>Отображать данные о плодовитости</value>
+  </data>
+  <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemIndividuals.Text" xml:space="preserve">
+    <value>Особи</value>
+  </data>
+  <data name="menuItemIndPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndPrint.Text" xml:space="preserve">
+    <value>Печать профилей особей</value>
+  </data>
+  <data name="menuItemIndPrintLog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="menuItemIndPrintLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndPrintLog.Text" xml:space="preserve">
+    <value>Печать журнала особей</value>
+  </data>
+  <data name="menuItemIndSimulate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>333, 22</value>
+  </data>
+  <data name="menuItemIndSimulate.Text" xml:space="preserve">
+    <value>Виртуализировать особей из размерных рядов</value>
+  </data>
+  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 22</value>
+  </data>
+  <data name="menuItemIndSuggested.Text" xml:space="preserve">
+    <value>Для определения возраста</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="menuItemIndSuggestedAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="menuItemLicenses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="menuItemLicenses.Text" xml:space="preserve">
+    <value>Компоненты</value>
+  </data>
+  <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemLog.Text" xml:space="preserve">
+    <value>Ведомость</value>
+  </data>
+  <data name="menuItemLogAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="menuItemLogAll.Text" xml:space="preserve">
+    <value>Все виды</value>
+  </data>
+  <data name="menuItemMortalityCohorts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemMortalityCohorts.Text" xml:space="preserve">
+    <value>Смертность</value>
+  </data>
+  <data name="menuItemMSY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="menuItemMSY.Text" xml:space="preserve">
+    <value>Модель максимально стабильного улова (MSY)</value>
+  </data>
+  <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="menuItemMSYR.Text" xml:space="preserve">
+    <value>Модель вылова на рекрута (Y/R)</value>
+  </data>
+  <data name="menuItemPrediction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 22</value>
+  </data>
+  <data name="menuItemPrediction.Text" xml:space="preserve">
+    <value>Прогнозная модель</value>
+  </data>
+  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
+    <value>Свободная</value>
+  </data>
+  <data name="menuItemSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACPklE
+        QVQ4T6WS70uTURTH9y/03jdBL3prU2O4FqvBU66hLB2GFtKvJ9Isfy3TJEXLVHT5A7QVLp20Wk3CiUb+
+        AH8gJmIsJSs1l7TEoabYRDD4ds99dI9Le1MHzvPi3OfzufeeexQA/iv5p7MjAEp32xpaXat45lhGc5Mf
+        j6zzqKv9BkuVF/dLZ1BU+Bn5eR+Qkz2OG9c9DN0SENjbA9TWbFDxr7G+sQl9Yi/OJL7iyUISuF6ucEF5
+        2Q8q7hkE+5fXcdT4GkqlCFOCk8qSwPF0iQuKCr9TcVdsw198K4gwuJF3axanjS20JAlsjQtccNM8TcWQ
+        2Am/n/LjoOBCZsYk4mJttCwJGup9XJB+bZyKwfgTHvL4EKZ1QBRHYTBY6RdJUFM9xwXi5VEq8tgL7hn5
+        in3RTUg+24+YmDr6TRJUlM+iuwvsKYGUC29hOjfIu00NozvTsWlnCe5DvOkNBMEiC0qKp9DuBpsBoMX+
+        i737T5TeW+RNpYbRndNSPUH4VFwbdLoyWXA7fxLO58AT2yYbnAD0SRkhaTxvRtLVAgmOZfBJJ7TaYllg
+        zplgMFD9IMB3JkjBliLUAsY+LWBiZhFi9l0c17dyWH3MDo2mQBbQWFofInhsEhB8JbcSH71L8M6vIuuO
+        BZFaO4ObEXnkMdTRubIgLfUdu/cahw/onNh/SMCL9gG4u4bQ3TeCweExnDCYoNQ0IorB4aoGqFSZIYL4
+        SxcH+HjShNGQ0DvTU1G3qWF0Z9qVkuDDUemy4N8Tit/kKu4LI/ykxwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemSave.Text" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="menuItemSaveSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 22</value>
+  </data>
+  <data name="menuItemSaveSet.Text" xml:space="preserve">
+    <value>Сохранить набор карточек...</value>
+  </data>
+  <data name="menuItemSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAWdJREFUOE/d
+        kc9KAlEYxdsFPUX1Bq3qDdr1AvUA9QhBu1y0swKzhFoW2cadREHRHxAZISk1jf6JkbiauXPn3lFn5vTd
+        yRkcXQi2614Od3V+59zvm/gHJ76bxF/kAx6rHyO1ur4z9IaAvFYYSyGg/3jqeh5c10XXcbBRrGMt/wbb
+        tiGFhGVZ4JzDNM0RADIf1pqYvyghXmpAShtCCAKQmZtgJhsG9Kc/fOmYOdWwclmBLSWEVGZKNzkYI4Bh
+        DANa3AaTbTiOi6WTAqb37lBp6ZSuqouwOmMMxiDAIy0f3WJh+wpbmRwmN7NI3LxQOlUP002Yvpmk6wMA
+        qp7K5jBLxqnYORYT12Bc+ObU/hlSSaU0DpT20tAjAIpXgOdaDdrrN+ZiGRzfl/2/WzQ4zn/Tg+qGbkQB
+        weDq1QY+a3U8FcvQ3pu9v/fWFphJyhwFuGpttPduF+1OB3abdq4mL5TZigwuMEcA4yuJH9NbvYtfoYBt
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="menuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="menuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menuItemSpawning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="menuItemSpawning.Text" xml:space="preserve">
+    <value>Условия нереста</value>
+  </data>
+  <data name="menuItemSpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemSpc.Text" xml:space="preserve">
+    <value>Виды</value>
+  </data>
+  <data name="menuItemSpcStats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemSpcStats.Text" xml:space="preserve">
+    <value>Сводка видовых выборок</value>
+  </data>
+  <data name="menuItemSpcStrates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="menuItemSpcStrates.Text" xml:space="preserve">
+    <value>Стратифицированный контроль</value>
+  </data>
+  <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="menuItemSpcTaxa.Text" xml:space="preserve">
+    <value>Отобразить названия таксонов</value>
+  </data>
+  <data name="menuItemSpcTotals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 22</value>
+  </data>
+  <data name="menuItemSpcTotals.Text" xml:space="preserve">
+    <value>Общая выборка</value>
+  </data>
+  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menuItemStock.Text" xml:space="preserve">
+    <value>Запас и его структура</value>
+  </data>
+  <data name="menuItemStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 22</value>
+  </data>
+  <data name="menuItemStratified.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="menuItemSurveyInput.Text" xml:space="preserve">
+    <value>Внести данные наблюдений</value>
+  </data>
+  <data name="menuItemVpa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="menuItemVpa.Text" xml:space="preserve">
+    <value>Виртуальная популяция</value>
+  </data>
+  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="menuModels.Text" xml:space="preserve">
+    <value>Модели*</value>
+  </data>
+  <data name="menuSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="menuSample.Text" xml:space="preserve">
+    <value>Выборка</value>
+  </data>
+  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="menuService.Text" xml:space="preserve">
+    <value>Сервис</value>
+  </data>
+  <data name="menuSpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="menuSpc.Text" xml:space="preserve">
+    <value>Виды</value>
+  </data>
+  <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="menuSurvey.Text" xml:space="preserve">
+    <value>Наблюдения*</value>
+  </data>
+  <data name="parasitesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="parasitesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Паразиты</value>
+  </data>
+  <data name="pictureBoxArtifacts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklE
+        QVQ4T52T3UvTURjH9y9EdtPM6a0kpNVFImwT3Y/eRqJggWGUhqvmdKF50agUk3L25ls4LxaWxJj621y+
+        LG2Izr3kXJa2ShYIGRFUI7QoL76d5+hsv+imfvCFw3me7+ec5znPTwZAImO1UcPUwuRjim2I1rSn+TM/
+        0ZjKZG5sbFq13nuA4dEn8AeecdGa9ihGOZQrAWyYezo7LXCN+GEVF1Hb9RFnb8e4yq6/R2vvSziHp0E5
+        lBuHxAFmCoijL9BkXcKxhi+o6/7OQutfZdsKcvULqGyeh80VjkPMLCTjNdPV6OT67igKTMsovLgEfesK
+        ou9W8fUHUN78GdnlYajPhKC7GoL4yBsvR0OAFqrPYo/gQE0U2guL0Na+RvGlD8g//wmCcRkZx98ipzyE
+        fSemsbdkAtcsM7wn5CWAj5pkaIlAqJqHYCAtwGKLsBt8w9raT5TWuLBd+RCK/H6mPhTo3byx5CVAjDp9
+        uHoOat0scnVhZJ8McsCbVxEOqGpwY8uuNsjVIuQqG9IP9fPXIe8mQDgXRM6pIPaUTCIlX5QATDcmsDWr
+        nZmdkCv7kH5QlAB4CaWmIDKPepAmiOy6dgnA2DCOpMw27FANI1k5CG3FmKQE3sSmrhmk7XciJW+AnbR+
+        g/nncxxQVjvCAO1QKN1QqNy4cisgaSJ/RseQF4WGcSjyHAzg4AAyrwNGsW13F1JVHhTrfeh3Tv1+RhoG
+        tuCD1Cs+RZHBg2TVEOrMATgeR+Eai6KoQkRS1l1m9qPHPisdpA3A5igPDE6h/k4AR3ST2KnpQIbQgYLT
+        93H55gw72fv3UU6A/N/PlCgW/IffGbJfMUye8eXDyuYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="pictureBoxStratified.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsMAAALDAE/QCLIAAABXElE
+        QVQ4T2P4//8/RRirICkYqyApGIUTnj7lQWrD4b9dnZuF3ANalGwTNnwOK9n/JyF3lVbZnBfMyGphGIXj
+        Ednxf/b2F/9Lp9z+G1R46F9s85X/U7d9/Z/dceV/ZNXp/97Ze/5bJ6wFKsVhQFj+vCj/lBn/5+3/+b9n
+        /ef/+dMe/e9d+/F/4ZzP/7N7b/w1jJz3r0GMhRNZD4oBIOwU0vp/8paP/zvXfftfv/jD/8IZb/771j38
+        YxK3/FutCAsHunoUDgi7xfVVhXoX/M2e8f1/ZPujv+axi/7rhy/+DdTMhq4WhDEEfNKmMlv7NfxI7Trz
+        3yh6/tcaUQ4MW5ExVkE77+oZ5m5lb/stFAWwySNjrIJ6nvUCak6VP1QcKnOxySNjrIIgrGxf3qZoW3YZ
+        mxwyxioIwrIWRYqylkVfJE3zhLDJwzBWQRgWM8phxSaOjLEKkoKxChKP/zMAAC8IyRJMLMUAAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="pictureBoxStratified.ToolTip" xml:space="preserve">
+    <value>Есть размерные ряды {0}.
+Учитывайте это при дальнейшем анализе.</value>
+  </data>
+  <data name="plotQualify.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotQualify.AxisYTitle" xml:space="preserve">
+    <value>Выборка, экз.</value>
+  </data>
+  <data name="printIndividualsLogToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="printIndividualsLogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="printIndividualsLogToolStripMenuItem.Text" xml:space="preserve">
+    <value>Печать журнала выбранных особей</value>
+  </data>
+  <data name="printStratifiedSamplesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="printStratifiedSamplesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="printStratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Печать размерных рядов</value>
+  </data>
+  <data name="printStratifiedSampleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXklE
+        QVQ4T6WR60+SURzHn7Ve9SfU+173prW1rlttJl7SakMzRJzOpGgi8wIhy5BSSe1iLbEZMhfoIEsdI6Y1
+        Np1BdvGydLklkJcSIUEJE/h2zqPoGHNr9du+z875Pb/v53t2DgPgv5TQMFg+7O6yfio1DYxjJxn7x8jo
+        zgDx+zF3gKzjau13GM45H7rMw0jJrYxyeBX7STseQMz7iBCJRLHo9cPm+Myq22qHvmcIjnEXckQqCvDF
+        PHEAXa+j9euslyy3iyYvB0KYmF6A0WIHSabpQvIrHqAxDh0gQpiku+Y9celm2yjsY05kFSuRnicLqTUv
+        cL/dTGybAHnDs2xq7rdP0SabGkue96xgasaDFr0VqXwpFI0deGIcRGqejI4yTFmtLl31qHtW2/MOjw02
+        6F6+xT2tBTfuGlBSrQFfXI+MfDmSL5Uj+0oNmtp6IVFqkMyr2ADcefoK/pUQ3STUejiCYGidPckPbxDf
+        vgcgq9OisLyRnEBKRxhG+dCEnjcf8dzqgNb0Gg/a+6Bq7oS0rg2iqmYISuvBLa7GWYEMSRcluEp6WcKb
+        OHFetAFQNHXCPbdINwnlX12Dc34Ze8g9U+3SMuCX1CKFV46DZ/LpCMNUNeh9o5MzIHe2VXS9FFjHpHsV
+        gxNe1ty7CThXIMexTOE2QKHW1qhbjEHXYgjelSjmfkYxvRDB8Jdf6BsJoMPmY40xneaWsGaibhZQJLl1
+        RHq7bWlgxM2+7d9oE7CXBdCPRNl6PLNQgTTBdXByK5GUU4ZTXDFOXriGoxlCHE4rwiFOQcxIdZn6tgD/
+        LjB/AIOf8bLFGE59AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="printStratifiedSampleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="printStratifiedSampleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Печать размерного ряда</value>
+  </data>
+  <data name="spreadSheetCard.StatusFormat" xml:space="preserve">
+    <value>1;2;5|карточка;карточки;карточек</value>
+  </data>
+  <data name="spreadSheetInd.StatusFormat" xml:space="preserve">
+    <value>1;2;5|особь;особи;особей</value>
+  </data>
+  <data name="spreadSheetLog.StatusFormat" xml:space="preserve">
+    <value>1;2;5|запись;записи;записей</value>
+  </data>
+  <data name="spreadSheetSpc.StatusFormat" xml:space="preserve">
+    <value>1;2;5|вид / таксон;вида / таксона;видов / таксонов</value>
+  </data>
+  <data name="spreadSheetStratified.StatusFormat" xml:space="preserve">
+    <value>1;2;5|особь;особи;особей</value>
+  </data>
+  <data name="statusBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 19</value>
+  </data>
+  <data name="statusBio.Text" xml:space="preserve">
+    <value>Био загружен</value>
+  </data>
+  <data name="statusMass.Text" xml:space="preserve">
+    <value>Масса: {0}</value>
+  </data>
+  <data name="statusQuantity.Text" xml:space="preserve">
+    <value>Количество: {0}</value>
+  </data>
+  <data name="stratifiedSamplesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="tabPageCard.Text" xml:space="preserve">
+    <value>Карточки</value>
+  </data>
+  <data name="tabPageCardCatches.Text" xml:space="preserve">
+    <value>Вылов</value>
+  </data>
+  <data name="tabPageCardEfforts.Text" xml:space="preserve">
+    <value>Усилия</value>
+  </data>
+  <data name="tabPageCardSchedule.Text" xml:space="preserve">
+    <value>График лова</value>
+  </data>
+  <data name="tabPageGearStats.Text" xml:space="preserve">
+    <value>Сводка применения орудий лова</value>
+  </data>
+  <data name="tabPageInd.Text" xml:space="preserve">
+    <value>Особи</value>
+  </data>
+  <data name="tabPageInfo.Text" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="tabPageLog.Text" xml:space="preserve">
+    <value>Ведомость</value>
+  </data>
+  <data name="tabPageSpc.Text" xml:space="preserve">
+    <value>Виды</value>
+  </data>
+  <data name="tabPageSpcQualify.Text" xml:space="preserve">
+    <value>Проверка</value>
+  </data>
+  <data name="tabPageSpcStats.Text" xml:space="preserve">
+    <value>Сводка видовых выборок</value>
+  </data>
+  <data name="tabPageSpcTech.Text" xml:space="preserve">
+    <value>Техники</value>
+  </data>
+  <data name="tabPageSpcTotals.Text" xml:space="preserve">
+    <value>Общая выборка</value>
+  </data>
+  <data name="tabPageStratified.Text" xml:space="preserve">
+    <value>Размерные ряды</value>
+  </data>
+  <data name="taskDialogBio.MainInstruction" xml:space="preserve">
+    <value>Очистить ранее загруженные био?</value>
+  </data>
+  <data name="taskDialogClearSimulations.Content" xml:space="preserve">
+    <value>В журнале уже присутствуют виртуализированные особи. Чтобы избежать путаницы очистите журнал. Очистить журнал от виртуализированных особей?</value>
+  </data>
+  <data name="taskDialogClearSimulations.MainInstruction" xml:space="preserve">
+    <value>Удалить виртуализированных особей?</value>
+  </data>
+  <data name="taskDialogSave.Content" xml:space="preserve">
+    <value>Имеются отредактированные или новые записи. Сохранить их?</value>
+  </data>
+  <data name="taskDialogSave.MainInstruction" xml:space="preserve">
+    <value>Сохранить введенную информацию?</value>
+  </data>
+  <data name="tdbClearSimulation.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Не сохранять</value>
+  </data>
+  <data name="tdbRecoverBackup.Text" xml:space="preserve">
+    <value>Сделать копию и продолжить</value>
+  </data>
+  <data name="tdbRecoverContinue.Text" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="tdbSaveAll.Text" xml:space="preserve">
+    <value>Сохранить все</value>
+  </data>
+  <data name="tdRecover.Content" xml:space="preserve">
+    <value>Будете ли вы делать резервную копию ваших карточек прежде, чем приступить к операции восстановления массы? Если вы уже сделали резервную копию, пропустите этот диалог и нажмите кнопку "Продолжить".</value>
+  </data>
+  <data name="tdRecover.ExpandedControlText" xml:space="preserve">
+    <value>Зачем делать резерную копию?</value>
+  </data>
+  <data name="tdRecover.ExpandedInformation" xml:space="preserve">
+    <value>Строго рекомендуется делать резервную копию ваших карточек прежде, чем присутупить к операции восстановления массы. Вы можете неудачно или совсем неверно выбрать справочные карточки или неверно указать соответствия таксонов. И тогда, в случае обнаружения допущенной ошибки, вы сможете просто заменить испорченные карточки сделанными заранее резервными копиями.</value>
+  </data>
+  <data name="tdRecover.MainInstruction" xml:space="preserve">
+    <value>Сделать копию карточек прежде, чем продолжить?</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 6</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 6</value>
+  </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 6</value>
+  </data>
+  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 6</value>
+  </data>
+  <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 6</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 6</value>
+  </data>
+  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 6</value>
+  </data>
+  <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 6</value>
+  </data>
+  <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 6</value>
+  </data>
+  <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="toolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 6</value>
+  </data>
+  <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="toolStripSeparator25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 6</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 6</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 6</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 6</value>
+  </data>
+  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 6</value>
   </data>
 </root>

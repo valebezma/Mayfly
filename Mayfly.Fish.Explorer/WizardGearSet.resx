@@ -525,9 +525,6 @@
   <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="wizardPage1.Text" xml:space="preserve">
-    <value></value>
-  </data>
   <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
     <value>wizardPage1</value>
   </data>

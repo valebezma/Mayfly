@@ -162,19 +162,19 @@
     <value>tabPagePrediction</value>
   </data>
   <data name="comboBoxDominance.Items16" xml:space="preserve">
-    <value>Шитиков В. К. и др., 2003</value>
+    <value>(Shitikov et al., 2003)</value>
   </data>
   <data name="comboBoxDominance.Items15" xml:space="preserve">
-    <value>Щербина Г. Х., 1993</value>
+    <value>(Arnoldi, 1941) modification of (Shcherbina, 1993)</value>
   </data>
   <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxDominance.Items13" xml:space="preserve">
-    <value>Иоганзен Б. Г., Файзова Л. В., 1978</value>
+    <value>(Johansen, Faizova, 1978)</value>
   </data>
   <data name="comboBoxDominance.Items12" xml:space="preserve">
-    <value>Мордухай-Болтовской Ф. Д., 1975</value>
+    <value>(Mordukhai-Boltovskoi, 1975)</value>
   </data>
   <data name="spreadSheetAge.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -238,7 +238,7 @@
     <value>tabPageGamingAge</value>
   </data>
   <data name="comboBoxDominance.Items7" xml:space="preserve">
-    <value>Sanders H. L., 1960</value>
+    <value>(Sanders H. L., 1960)</value>
   </data>
   <data name="spreadSheetCatchability.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -289,7 +289,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="comboBoxDominance.Items6" xml:space="preserve">
-    <value>Balogh J., 1958</value>
+    <value>(Balogh J., 1958)</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -340,7 +340,7 @@
     <value>tabPageTreat</value>
   </data>
   <data name="comboBoxDominance.Items1" xml:space="preserve">
-    <value>Зенкевич Л. А., Броцкая В. А., 1937</value>
+    <value>(Zenkevich, Brotskaya, 1937)</value>
   </data>
   <data name="&gt;&gt;labelFish.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2047,13 +2047,13 @@
     <value>116, 13</value>
   </data>
   <data name="comboBoxDominance.Items14" xml:space="preserve">
-    <value>Дедю И. И., 1990</value>
+    <value>(Dediu, 1990)</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="comboBoxDominance.Items5" xml:space="preserve">
-    <value>Мордухай-Болтовской Ф. Д., 1948 (modification of Броцкая, Зенкевич, 1939)</value>
+    <value>(Mordukhai-Boltovskoi, 1948) modification of (Броцкая, Зенкевич, 1939)</value>
   </data>
   <data name="&gt;&gt;tabPageCatchability.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2275,7 +2275,7 @@
     <value>labelMeasureTitle</value>
   </data>
   <data name="comboBoxDominance.Items" xml:space="preserve">
-    <value>De Vries M., 1937</value>
+    <value>(De Vries M., 1937)</value>
   </data>
   <data name="&gt;&gt;tabPageTreat.Name" xml:space="preserve">
     <value>tabPageTreat</value>
@@ -2638,7 +2638,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxDominance.Items3" xml:space="preserve">
-    <value>Мордухай-Болтовской Ф. Д., 1940 (modification of Броцкая, Зенкевич, 1939)</value>
+    <value>(Mordukhai-Boltovskoi, 1940) modification of (Броцкая, Зенкевич, 1939)</value>
   </data>
   <data name="buttonFish.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2701,7 +2701,7 @@
     <value>Suggest age value</value>
   </data>
   <data name="comboBoxDominance.Items2" xml:space="preserve">
-    <value>Броцкая В. А., Зенкевич Л. А., 1939</value>
+    <value>(Brotskaya, Zenkevich, 1939)</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2809,7 +2809,7 @@
     <value>42, 108</value>
   </data>
   <data name="comboBoxDominance.Items10" xml:space="preserve">
-    <value>Kownacki A., 1971</value>
+    <value>(Kownacki A., 1971)</value>
   </data>
   <data name="&gt;&gt;labelSizeInterval.Parent" xml:space="preserve">
     <value>tabPageTreat</value>
@@ -2842,7 +2842,7 @@
     <value>tabControl</value>
   </data>
   <data name="comboBoxDominance.Items9" xml:space="preserve">
-    <value>Петров К. М., 1961</value>
+    <value>(Petrov, 1961)</value>
   </data>
   <data name="buttonBioRemove.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -3355,7 +3355,7 @@
     <value>75</value>
   </data>
   <data name="comboBoxDominance.Items8" xml:space="preserve">
-    <value>Sanders H. L., 1960 (in scale of 1)</value>
+    <value>(Sanders H. L., 1960) in scale of 1</value>
   </data>
   <data name="&gt;&gt;ColumnMeasureSpecies.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3370,7 +3370,7 @@
     <value>53, 13</value>
   </data>
   <data name="comboBoxDominance.Items11" xml:space="preserve">
-    <value>Kownacki A., 1971 by biomass</value>
+    <value>(Kownacki A., 1971) by biomass</value>
   </data>
   <data name="&gt;&gt;checkBoxKeepWizards.Parent" xml:space="preserve">
     <value>tabPageAdvanced</value>
@@ -3433,7 +3433,7 @@
     <value>Fish settings</value>
   </data>
   <data name="comboBoxDominance.Items4" xml:space="preserve">
-    <value>Арнольди Л. В., 1941</value>
+    <value>(Arnoldi, 1941)</value>
   </data>
   <data name="labelCatchabilityDefault.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 15, 3, 0</value>

@@ -120,9 +120,6 @@
   <data name="tabPageAppearance.Text" xml:space="preserve">
     <value>Внешний вид</value>
   </data>
-  <data name="tabPageTrendline.Text" xml:space="preserve">
-    <value>Линия тренда</value>
-  </data>
   <data name="tabPageInteraction.Text" xml:space="preserve">
     <value>Взаимодействие</value>
   </data>
@@ -148,20 +145,11 @@
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 13</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Цвет маркера</value>
-  </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 13</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Размер маркера</value>
-  </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 13</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>Толщина границы маркера</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 13</value>
@@ -172,9 +160,6 @@
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 15</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Стиль маркера</value>
-  </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 15</value>
   </data>
@@ -184,26 +169,14 @@
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 13</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Уровень достоверности, %</value>
-  </data>
   <data name="checkBoxShowTrend.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 17</value>
-  </data>
-  <data name="checkBoxShowTrend.Text" xml:space="preserve">
-    <value>Линия тренда</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 15</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Подпись</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Тип кривой</value>
   </data>
   <data name="checkBoxRunouts.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 17</value>
@@ -211,32 +184,17 @@
   <data name="checkBoxDataBands.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 17</value>
   </data>
-  <data name="checkBoxDataBands.Text" xml:space="preserve">
-    <value>Доверительный интервал данных</value>
-  </data>
   <data name="checkBoxTrendBands.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 17</value>
-  </data>
-  <data name="checkBoxTrendBands.Text" xml:space="preserve">
-    <value>Доверительная область линии регрессии</value>
   </data>
   <data name="checkBoxShowExplained.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 17</value>
   </data>
-  <data name="checkBoxShowExplained.Text" xml:space="preserve">
-    <value>Коэффициент детерминации (R²)</value>
-  </data>
   <data name="checkBoxShowCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 17</value>
   </data>
-  <data name="checkBoxShowCount.Text" xml:space="preserve">
-    <value>Размер выборки</value>
-  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Цвет выбранной серии данных</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 15</value>
@@ -247,14 +205,8 @@
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 15</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Режим выделения</value>
-  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 13</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Цвет прочих серий данных</value>
   </data>
   <data name="checkBoxAllowCursors.Size" type="System.Drawing.Size, System.Drawing">
     <value>327, 17</value>

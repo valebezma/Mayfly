@@ -118,20 +118,65 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelQuantity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 13</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Журнал особей</value>
   </data>
-  <data name="labelQuantity.Text" xml:space="preserve">
-    <value>Количество, экз.</value>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Добавить</value>
   </data>
-  <data name="labelQuantity.ToolTip" xml:space="preserve">
-    <value />
+  <data name="ColumnComments.HeaderText" xml:space="preserve">
+    <value>Примечание</value>
   </data>
-  <data name="numericUpDownQuantity.ToolTip" xml:space="preserve">
-    <value />
+  <data name="ColumnGonadMass.HeaderText" xml:space="preserve">
+    <value>Масса гонад, г</value>
   </data>
-  <data name="numericUpDownMass.ToolTip" xml:space="preserve">
-    <value />
+  <data name="ColumnGonadSampleMass.HeaderText" xml:space="preserve">
+    <value>Масса пробы на плодовитость, г</value>
+  </data>
+  <data name="ColumnLength.HeaderText" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="ColumnMass.HeaderText" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="ColumnMaturity.HeaderText" xml:space="preserve">
+    <value>Стадия зреслости</value>
+  </data>
+  <data name="ColumnRegID.HeaderText" xml:space="preserve">
+    <value>№ пробы</value>
+  </data>
+  <data name="ColumnSex.HeaderText" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="ColumnSomaticMass.HeaderText" xml:space="preserve">
+    <value>Масса порки, г</value>
+  </data>
+  <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 126</value>
+  </data>
+  <data name="contextMenuStripInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 98</value>
+  </data>
+  <data name="contextMenuStripVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 54</value>
+  </data>
+  <data name="fecunditySampleWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 22</value>
+  </data>
+  <data name="fecunditySampleWeightGToolStripMenuItem.Text" xml:space="preserve">
+    <value>Масса пробы на плодовитость, г</value>
+  </data>
+  <data name="gonadWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 22</value>
+  </data>
+  <data name="gonadWeightGToolStripMenuItem.Text" xml:space="preserve">
+    <value>Масса гонад, г</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="labelComments.Text" xml:space="preserve">
+    <value>Примечание</value>
   </data>
   <data name="labelMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 13</value>
@@ -139,11 +184,77 @@
   <data name="labelMass.Text" xml:space="preserve">
     <value>Общая масса, кг</value>
   </data>
-  <data name="labelMass.ToolTip" xml:space="preserve">
-    <value />
+  <data name="labelQuantity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
   </data>
-  <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value />
+  <data name="labelQuantity.Text" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="somaticWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 22</value>
+  </data>
+  <data name="somaticWeightGToolStripMenuItem.Text" xml:space="preserve">
+    <value>Соматическая масса, г</value>
+  </data>
+  <data name="taskDialogSave.Content" xml:space="preserve">
+    <value>Имеются отредактированные или новые записи. Сохранить их?</value>
+  </data>
+  <data name="taskDialogSave.MainInstruction" xml:space="preserve">
+    <value>Сохранить введенную информацию?</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Не сохранять</value>
+  </data>
+  <data name="tdbSaveAllIndividuals.Text" xml:space="preserve">
+    <value>Сохранить все</value>
+  </data>
+  <data name="ToolStripMenuItemClearColumn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="ToolStripMenuItemClearColumn.Text" xml:space="preserve">
+    <value>Очистить значения</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsOAAALDgFAvuFBAAAB/UlE
+        QVQ4T6WR30tTYRjH3z/FlCHljTd25U1E+QMDhcKLhAItutqFXnUlKQpZzpjgdFuo8xfb7ExPRDpRmTrn
+        L6bOlTVxKegGUzlHp3N6Zt/e9x3TWkuFHvich/O+7/fz8pxDAPwXRJz4BoYw7uWYh9zoEmfwxiAWpAok
+        wwXJZRp04XlND24XVmTT15TBBMQ25qX9omJnP9HSOwK704vHlU1XSoh5eJF2wO4DhCXA45fRbPoMYUqG
+        dUKCxSGhY1iCdmCP86QxkJsIM0iX6GJ5XienMcgHUQRCYS5Irrq+HeQ8czLOJcRodfDNducpNEMyXgnb
+        qOr0o3d0l6//XpX6EMRZGVmlgwwuITo6L5v7KKJgR4pgI7CPr/5dGD8FeahBiHE8a/t4qgniVulH3HzY
+        j8zibrZNCJv3OKqc36w2+vBC9wXvLBtckCj5UMHa1jGcKwfQCwtQPXjPluMCORzF6o8QFr8H4PJsYnx+
+        HTXt8d9b3ReGWhdE2VsfSmqXOXphDqrC1gtBTkH5X1Rpl7lAoeOFJAUr/iOMuWXYJvfQ1u9CRp42LmCP
+        VFTUzdKGP25O0GqdRvo9Ddv+t+DRSwciJ2cwDrhhsC1A/2GO38zCOvMUbtx9TY9dIshT2+nXtnAyi01Q
+        FRmQkd+C9PtNNNyAtDv19NglguuScvH6gPwCW2kOoaPzmfwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsOAAALDgFAvuFBAAAB70lE
+        QVQ4T2P4//8/MZgFixgYYwis3LS/e/ayTU+QxPTvPHj6rrp1ygYkMTjGEJg8d41Jz7TF/6paZ0qC+N++
+        /2hdvWnPv5Scqhh0tSCMIQDCk2av/DV5zurFQDb/sxdvXqbl1/wTE+JTRFcHwhgCILxy475PXZMX/jxx
+        5mLDwWPnfofFZ/8FGiCNTS2GAAgvXLVjc/eURf96py3cX97Y988nKPoVNnUgjFWwc+JCx5KGvn/JeXX/
+        QmMz/7p5B63Cpg6EsQqCcEJey7uwhML/IWltf/wTWiKwqQFhDIHojne6EZ2vN4c0P/jpXXZqrU/52d9+
+        VZe/+5Senu+WvdMLXT0KJ6L9lWFkz7vPwQ13vltHz/tiGtR31y1v3xv/6qv/XbN3/reKmT8BWT0Io3DC
+        2p9vCGt7+t8xbcN/oOYfpkG9W7xLTv3yr7wq4ZSxKcEkuP8XsnoQRuGEtjz6FdR4z9ApdZOBcUD3L6AB
+        QgHVV3/5Vpw1sIiYlq3tkPUbWT0Io3CCm+798i+7ZGCXvCbJ0KcFbJt3yfGzdkmr/mvaJP+Xkdf8gqwe
+        hFE4fpUXz9knrf5vHND1X90s/DEw8TDbp6yJ1LJOeKduHvHe2L89A1k9CKNwnDO2RJiFTHqsYRX7ztCr
+        Jg9ZDhfGKkg8/s8AADCEsXdj+3tJAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 22</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
+    <value>Вырезать</value>
   </data>
   <data name="ToolStripMenuItemDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -167,50 +278,11 @@
   <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 6</value>
+  <data name="ToolStripMenuItemNewVar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 22</value>
   </data>
-  <data name="ToolStripMenuItemCut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsOAAALDgFAvuFBAAAB70lE
-        QVQ4T2P4//8/MZgFixgYYwis3LS/e/ayTU+QxPTvPHj6rrp1ygYkMTjGEJg8d41Jz7TF/6paZ0qC+N++
-        /2hdvWnPv5Scqhh0tSCMIQDCk2av/DV5zurFQDb/sxdvXqbl1/wTE+JTRFcHwhgCILxy475PXZMX/jxx
-        5mLDwWPnfofFZ/8FGiCNTS2GAAgvXLVjc/eURf96py3cX97Y988nKPoVNnUgjFWwc+JCx5KGvn/JeXX/
-        QmMz/7p5B63Cpg6EsQqCcEJey7uwhML/IWltf/wTWiKwqQFhDIHojne6EZ2vN4c0P/jpXXZqrU/52d9+
-        VZe/+5Senu+WvdMLXT0KJ6L9lWFkz7vPwQ13vltHz/tiGtR31y1v3xv/6qv/XbN3/reKmT8BWT0Io3DC
-        2p9vCGt7+t8xbcN/oOYfpkG9W7xLTv3yr7wq4ZSxKcEkuP8XsnoQRuGEtjz6FdR4z9ApdZOBcUD3L6AB
-        QgHVV3/5Vpw1sIiYlq3tkPUbWT0Io3CCm+798i+7ZGCXvCbJ0KcFbJt3yfGzdkmr/mvaJP+Xkdf8gqwe
-        hFE4fpUXz9knrf5vHND1X90s/DEw8TDbp6yJ1LJOeKduHvHe2L89A1k9CKNwnDO2RJiFTHqsYRX7ztCr
-        Jg9ZDhfGKkg8/s8AADCEsXdj+3tJAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
-    <value>Вырезать</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
-        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsOAAALDgFAvuFBAAAB/UlE
-        QVQ4T6WR30tTYRjH3z/FlCHljTd25U1E+QMDhcKLhAItutqFXnUlKQpZzpjgdFuo8xfb7ExPRDpRmTrn
-        L6bOlTVxKegGUzlHp3N6Zt/e9x3TWkuFHvich/O+7/fz8pxDAPwXRJz4BoYw7uWYh9zoEmfwxiAWpAok
-        wwXJZRp04XlND24XVmTT15TBBMQ25qX9omJnP9HSOwK704vHlU1XSoh5eJF2wO4DhCXA45fRbPoMYUqG
-        dUKCxSGhY1iCdmCP86QxkJsIM0iX6GJ5XienMcgHUQRCYS5Irrq+HeQ8czLOJcRodfDNducpNEMyXgnb
-        qOr0o3d0l6//XpX6EMRZGVmlgwwuITo6L5v7KKJgR4pgI7CPr/5dGD8FeahBiHE8a/t4qgniVulH3HzY
-        j8zibrZNCJv3OKqc36w2+vBC9wXvLBtckCj5UMHa1jGcKwfQCwtQPXjPluMCORzF6o8QFr8H4PJsYnx+
-        HTXt8d9b3ReGWhdE2VsfSmqXOXphDqrC1gtBTkH5X1Rpl7lAoeOFJAUr/iOMuWXYJvfQ1u9CRp42LmCP
-        VFTUzdKGP25O0GqdRvo9Ddv+t+DRSwciJ2cwDrhhsC1A/2GO38zCOvMUbtx9TY9dIshT2+nXtnAyi01Q
-        FRmQkd+C9PtNNNyAtDv19NglguuScvH6gPwCW2kOoaPzmfwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="ToolStripMenuItemNewVar.Text" xml:space="preserve">
+    <value>Новый параметр</value>
   </data>
   <data name="ToolStripMenuItemPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -235,47 +307,11 @@
   <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
-  <data name="contextMenuStripInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 98</value>
+  <data name="ToolStripMenuItemSaveVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
   </data>
-  <data name="contextMenuStripInd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonAdd.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ToolStripMenuItemNewVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
-  </data>
-  <data name="ToolStripMenuItemNewVar.Text" xml:space="preserve">
-    <value>Новый параметр</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 6</value>
-  </data>
-  <data name="somaticWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
-  </data>
-  <data name="somaticWeightGToolStripMenuItem.Text" xml:space="preserve">
-    <value>Соматическая масса, г</value>
-  </data>
-  <data name="gonadWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
-  </data>
-  <data name="gonadWeightGToolStripMenuItem.Text" xml:space="preserve">
-    <value>Масса гонад, г</value>
-  </data>
-  <data name="fecunditySampleWeightGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 22</value>
-  </data>
-  <data name="fecunditySampleWeightGToolStripMenuItem.Text" xml:space="preserve">
-    <value>Масса пробы на плодовитость, г</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>252, 6</value>
+  <data name="ToolStripMenuItemSaveVars.Text" xml:space="preserve">
+    <value>Запомнить набор параметров</value>
   </data>
   <data name="ToolStripMenuItemStratifiedSample.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -290,91 +326,16 @@
   <data name="ToolStripMenuItemStratifiedSample.Text" xml:space="preserve">
     <value>Размерный ряд</value>
   </data>
-  <data name="contextMenuStripAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 126</value>
-  </data>
-  <data name="contextMenuStripAdd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarningMass.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarningQuantity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxComments.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
-  <data name="labelComments.Text" xml:space="preserve">
-    <value>Примечание</value>
-  </data>
-  <data name="labelComments.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ToolStripMenuItemClearColumn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
-  </data>
-  <data name="ToolStripMenuItemClearColumn.Text" xml:space="preserve">
-    <value>Очистить значения</value>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 6</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 6</value>
   </data>
-  <data name="ToolStripMenuItemSaveVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 22</value>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 6</value>
   </data>
-  <data name="ToolStripMenuItemSaveVars.Text" xml:space="preserve">
-    <value>Запомнить набор параметров</value>
-  </data>
-  <data name="contextMenuStripVar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 54</value>
-  </data>
-  <data name="contextMenuStripVar.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="stratifiedSample.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ColumnLength.HeaderText" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="ColumnMass.HeaderText" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>№ пробы</value>
-  </data>
-  <data name="ColumnSex.HeaderText" xml:space="preserve">
-    <value>Пол</value>
-  </data>
-  <data name="ColumnMaturity.HeaderText" xml:space="preserve">
-    <value>Стадия зреслости</value>
-  </data>
-  <data name="ColumnComments.HeaderText" xml:space="preserve">
-    <value>Примечание</value>
-  </data>
-  <data name="spreadSheetLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tdbSaveAllIndividuals.Text" xml:space="preserve">
-    <value>Сохранить все</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Не сохранять</value>
-  </data>
-  <data name="taskDialogSave.Content" xml:space="preserve">
-    <value>Имеются отредактированные или новые записи. Сохранить их?</value>
-  </data>
-  <data name="taskDialogSave.MainInstruction" xml:space="preserve">
-    <value>Сохранить введенную информацию?</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Журнал особей</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 6</value>
   </data>
 </root>

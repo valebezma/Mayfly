@@ -117,41 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BhattacharyaPlot" xml:space="preserve">
-    <value>Bhattacharya Plot</value>
-  </data>
-  <data name="CombinedDistribution" xml:space="preserve">
-    <value>Combined Distribution</value>
-  </data>
   <data name="DefaultYTitle" xml:space="preserve">
     <value>Frequency</value>
   </data>
   <data name="DescriptiveTitle" xml:space="preserve">
     <value>{0}. Descriptive statistics</value>
   </data>
-  <data name="DistributionMask" xml:space="preserve">
-    <value>Distribution 0</value>
-  </data>
-  <data name="SelectedPointsMask" xml:space="preserve">
-    <value>Selected Points 0</value>
-  </data>
   <data name="SeriesProperties" xml:space="preserve">
     <value>'{0}' series properties</value>
-  </data>
-  <data name="Centroids" xml:space="preserve">
-    <value>Centroids</value>
-  </data>
-  <data name="Count" xml:space="preserve">
-    <value>Count</value>
-  </data>
-  <data name="Sample" xml:space="preserve">
-    <value>Sample</value>
-  </data>
-  <data name="Subsample" xml:space="preserve">
-    <value>Subsample</value>
-  </data>
-  <data name="SubsampleMask" xml:space="preserve">
-    <value>Cluster {0}</value>
   </data>
   <data name="PredictionBands" xml:space="preserve">
     <value>{0} prediction interval of {1}</value>
@@ -168,23 +141,11 @@
   <data name="ScatterplotTitle" xml:space="preserve">
     <value>[{0}] to [{1}] scatterplot</value>
   </data>
-  <data name="MergedBivariate" xml:space="preserve">
-    <value>Merged bivariate</value>
-  </data>
   <data name="FitTitle" xml:space="preserve">
     <value>{0} Fitting Curve</value>
   </data>
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>{0} error bars</value>
-  </data>
   <data name="FitAnnotation" xml:space="preserve">
     <value>Fit is {0:P1}</value>
-  </data>
-  <data name="AnovaResidual" xml:space="preserve">
-    <value>Within subgroups (error)</value>
-  </data>
-  <data name="AnovaTotal" xml:space="preserve">
-    <value>Total</value>
   </data>
   <data name="SelectionCommon" xml:space="preserve">
     <value>Count: {0}</value>
@@ -200,9 +161,6 @@
   </data>
   <data name="EmptySample" xml:space="preserve">
     <value>Empty</value>
-  </data>
-  <data name="TrendLinearizedTitle" xml:space="preserve">
-    <value>Linearized {0}</value>
   </data>
   <data name="PivotCautionInstruction" xml:space="preserve">
     <value>There are some hidden rows. They will not get into grouping or pivot table. Click here to drop filter and show all rows in log.</value>

@@ -1207,7 +1207,7 @@
     <value>Clear</value>
   </data>
   <data name="tdbCancel.Text" xml:space="preserve">
-    <value>taskDialogButton2</value>
+    <value></value>
   </data>
   <data name="tdClearSchedule.Content" xml:space="preserve">
     <value>Schedule contains some catches. Are you sure you want to clear it anyway?</value>

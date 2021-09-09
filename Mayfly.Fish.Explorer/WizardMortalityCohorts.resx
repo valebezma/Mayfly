@@ -517,7 +517,7 @@
     <value>0</value>
   </data>
   <data name="labelReport.Text" xml:space="preserve">
-    <value>Select parts to include in the report:</value>
+    <value>Select parts to include in the report.</value>
   </data>
   <data name="&gt;&gt;labelReport.Name" xml:space="preserve">
     <value>labelReport</value>

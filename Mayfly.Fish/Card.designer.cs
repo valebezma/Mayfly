@@ -150,9 +150,7 @@
             this.spreadSheetAddt = new Mayfly.Controls.SpreadSheet();
             this.ColumnAddtFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAddtValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
             this.contextGear = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.taskDialogSaveChanges = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSave = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
@@ -1246,7 +1244,6 @@
         private System.Windows.Forms.Label labelVolume;
         private System.Windows.Forms.Label labelArea;
         private System.Windows.Forms.Label labelEfforts;
-        private System.Windows.Forms.ToolTip toolTipAttention;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemNew;
         private Mayfly.Controls.SpreadSheet spreadSheetAddt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
@@ -1297,7 +1294,6 @@
         private System.Windows.Forms.ContextMenuStrip contextGear;
         private System.Windows.Forms.TabPage tabPageSampler;
         private System.Windows.Forms.Label labelTag;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;

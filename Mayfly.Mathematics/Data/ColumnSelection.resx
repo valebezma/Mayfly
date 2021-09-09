@@ -301,8 +301,7 @@
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Data selection
-</value>
+    <value>Data selection</value>
   </data>
   <data name="&gt;&gt;ColumnFactors.Name" xml:space="preserve">
     <value>ColumnFactors</value>

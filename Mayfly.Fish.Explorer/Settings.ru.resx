@@ -117,217 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="tabPageTreat.Text" xml:space="preserve">
-    <value>Обработка данных</value>
-  </data>
-  <data name="tabPagePrediction.Text" xml:space="preserve">
-    <value>Предсказание значений</value>
-  </data>
-  <data name="tabPageAdvanced.Text" xml:space="preserve">
-    <value>Дополнительно</value>
-  </data>
-  <data name="tabPageGamingAge.Text" xml:space="preserve">
-    <value>Возраст созревания</value>
-  </data>
-  <data name="tabPageGamingMeasure.Text" xml:space="preserve">
-    <value>Промысловая мера</value>
-  </data>
-  <data name="tabPageCatchability.Text" xml:space="preserve">
-    <value>Уловистость</value>
-  </data>
-  <data name="tabPageOther.Text" xml:space="preserve">
-    <value>Другое</value>
-  </data>
-  <data name="comboBoxAlk.Items" xml:space="preserve">
-    <value>Строгие (требуется больше материала)</value>
-  </data>
-  <data name="comboBoxAlk.Items1" xml:space="preserve">
-    <value>Плавные (требуется био)</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 13</value>
-  </data>
-  <data name="AlkTypeLabel.Text" xml:space="preserve">
-    <value>Размерно-возрастные ключи</value>
-  </data>
-  <data name="labelSizeInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 13</value>
-  </data>
-  <data name="labelSizeInterval.Text" xml:space="preserve">
-    <value>Интервал длины для размерной структуры, мм</value>
-  </data>
-  <data name="labelDominance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 13</value>
-  </data>
-  <data name="labelDominance.Text" xml:space="preserve">
-    <value>Доминирование</value>
-  </data>
-  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 13</value>
-  </data>
-  <data name="labelDiversity.Text" xml:space="preserve">
-    <value>Разнообразие</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 15</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Параметры оценивания</value>
-  </data>
-  <data name="buttonBioRemove.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="buttonBioBrowse.Text" xml:space="preserve">
-    <value>Обзор...</value>
-  </data>
-  <data name="checkBoxBioAutoLoad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 17</value>
-  </data>
-  <data name="checkBoxBioAutoLoad.Text" xml:space="preserve">
-    <value>Автоматически загружать био при запуске</value>
-  </data>
-  <data name="checkBoxSuggestAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 17</value>
-  </data>
-  <data name="checkBoxSuggestAge.Text" xml:space="preserve">
-    <value>Предлагать значение возраста</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 15</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Внешние данные</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Предсказание значения</value>
-  </data>
-  <data name="checkBoxSuggestMass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 17</value>
-  </data>
-  <data name="checkBoxSuggestMass.Text" xml:space="preserve">
-    <value>Предлагать значение массы</value>
-  </data>
-  <data name="comboBoxReportCriticality.Items" xml:space="preserve">
-    <value>Все</value>
-  </data>
-  <data name="comboBoxReportCriticality.Items1" xml:space="preserve">
-    <value>Допустимые или хуже</value>
-  </data>
-  <data name="comboBoxReportCriticality.Items2" xml:space="preserve">
-    <value>Плохие или хуже</value>
-  </data>
-  <data name="comboBoxReportCriticality.Items3" xml:space="preserve">
-    <value>Только критические</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Включать в отчет артефакты</value>
-  </data>
-  <data name="checkBoxConsistency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 17</value>
-  </data>
-  <data name="checkBoxConsistency.Text" xml:space="preserve">
-    <value>Диагностировать данные</value>
-  </data>
-  <data name="checkBoxKeepWizards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 17</value>
-  </data>
-  <data name="checkBoxKeepWizards.Text" xml:space="preserve">
-    <value>Оставить мастер открытым после составления отчета</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Дополнительные опции</value>
-  </data>
-  <data name="ColumnAgeSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="ColumnAgeValue.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="labelAgeInstrcution.Text" xml:space="preserve">
-    <value>Возраст, при котором большинство (более 50%) рыб становятся половозрелыми. Используется в подсчете промылового запаса.</value>
-  </data>
-  <data name="labelAgeTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 15</value>
-  </data>
-  <data name="labelAgeTitle.Text" xml:space="preserve">
-    <value>Возрасты созревания видов</value>
-  </data>
-  <data name="ColumnMeasureSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="ColumnMeasureValue.HeaderText" xml:space="preserve">
-    <value>Длина, см</value>
-  </data>
-  <data name="labelMeasureInstruction.Text" xml:space="preserve">
-    <value>Промыловая мера - длина рыб, которые могут изыматься промыслом. Используется в подсчете промыслового запаса.</value>
-  </data>
-  <data name="labelMeasureTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 15</value>
-  </data>
-  <data name="labelMeasureTitle.Text" xml:space="preserve">
-    <value>Промысловые меры видов</value>
-  </data>
-  <data name="columnCatchabilitySpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 13</value>
-  </data>
-  <data name="labelGear.Text" xml:space="preserve">
-    <value>Тип орудий лова</value>
-  </data>
-  <data name="labelCatchabilityDefault.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 13</value>
-  </data>
-  <data name="labelCatchabilityDefault.Text" xml:space="preserve">
-    <value>Коэффициент уловистости по-умолчанию</value>
-  </data>
-  <data name="labelCatchabilityTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 15</value>
-  </data>
-  <data name="labelCatchabilityTitle.Text" xml:space="preserve">
-    <value>Параметры уловистости</value>
-  </data>
-  <data name="labelCatchabilityInstruction.Text" xml:space="preserve">
-    <value>Значение уловистости по-умолчаю используется при оценке запаса когда не указано специальное значение для вида и орудия лова.</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Открыть свойства статистических расчетов.</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Базовые настройки, например, производительность или интерфейс.</value>
-  </data>
-  <data name="labelFish.Text" xml:space="preserve">
-    <value>Настроить основные параметры, такие как справочники, параметры ввода, свойства орудий лова и т. п.</value>
-  </data>
-  <data name="buttonMath.Text" xml:space="preserve">
-    <value>Статистика</value>
-  </data>
-  <data name="buttonProductSettings.Text" xml:space="preserve">
-    <value>Основные</value>
-  </data>
-  <data name="buttonFish.Text" xml:space="preserve">
-    <value>Fish Reader</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
-  </data>
-  <data name="buttonBasicSettings.Text" xml:space="preserve">
-    <value>Основные настройки...</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AMDAQAAEABABoBgAA1gAAACAgEAABAAQA6AIAAD4HAAAYGBAAAQAEAOgBAAAmCgAAEBAQAAEA
@@ -1971,5 +1761,257 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="AlkTypeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 13</value>
+  </data>
+  <data name="AlkTypeLabel.Text" xml:space="preserve">
+    <value>Размерно-возрастные ключи</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="buttonBasicSettings.Text" xml:space="preserve">
+    <value>Основные настройки...</value>
+  </data>
+  <data name="buttonBioBrowse.Text" xml:space="preserve">
+    <value>Обзор...</value>
+  </data>
+  <data name="buttonBioRemove.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="buttonFish.Text" xml:space="preserve">
+    <value>Fish Reader</value>
+  </data>
+  <data name="buttonMath.Text" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="buttonProductSettings.Text" xml:space="preserve">
+    <value>Основные</value>
+  </data>
+  <data name="checkBoxBioAutoLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 17</value>
+  </data>
+  <data name="checkBoxBioAutoLoad.Text" xml:space="preserve">
+    <value>Автоматически загружать био при запуске</value>
+  </data>
+  <data name="checkBoxConsistency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 17</value>
+  </data>
+  <data name="checkBoxConsistency.Text" xml:space="preserve">
+    <value>Диагностировать данные</value>
+  </data>
+  <data name="checkBoxKeepWizards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 17</value>
+  </data>
+  <data name="checkBoxKeepWizards.Text" xml:space="preserve">
+    <value>Оставить мастер открытым после составления отчета</value>
+  </data>
+  <data name="checkBoxSuggestAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 17</value>
+  </data>
+  <data name="checkBoxSuggestAge.Text" xml:space="preserve">
+    <value>Предлагать значение возраста</value>
+  </data>
+  <data name="checkBoxSuggestMass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 17</value>
+  </data>
+  <data name="checkBoxSuggestMass.Text" xml:space="preserve">
+    <value>Предлагать значение массы</value>
+  </data>
+  <data name="ColumnAgeSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="ColumnAgeValue.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="columnCatchabilitySpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="columnFileName.Text" xml:space="preserve">
+    <value>Био</value>
+  </data>
+  <data name="ColumnMeasureSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="ColumnMeasureValue.HeaderText" xml:space="preserve">
+    <value>Длина, см</value>
+  </data>
+  <data name="comboBoxAlk.Items" xml:space="preserve">
+    <value>Строгие (требуется больше материала)</value>
+  </data>
+  <data name="comboBoxAlk.Items1" xml:space="preserve">
+    <value>Плавные (требуется био)</value>
+  </data>
+  <data name="comboBoxDominance.Items1" xml:space="preserve">
+    <value>(Зенкевич Л. А., Броцкая В. А., 1937)</value>
+  </data>
+  <data name="comboBoxDominance.Items11" xml:space="preserve">
+    <value>(Kownacki A., 1971) по биомассе</value>
+  </data>
+  <data name="comboBoxDominance.Items12" xml:space="preserve">
+    <value>(Мордухай-Болтовской Ф. Д., 1975)</value>
+  </data>
+  <data name="comboBoxDominance.Items13" xml:space="preserve">
+    <value>(Иоганзен Б. Г., Файзова Л. В., 1978)</value>
+  </data>
+  <data name="comboBoxDominance.Items14" xml:space="preserve">
+    <value>(Дедю И. И., 1990)</value>
+  </data>
+  <data name="comboBoxDominance.Items15" xml:space="preserve">
+    <value>(Арнольди Л. В., 1941) в модификации (Щербина Г. Х., 1993)</value>
+  </data>
+  <data name="comboBoxDominance.Items16" xml:space="preserve">
+    <value>(Шитиков В. К. и др., 2003)</value>
+  </data>
+  <data name="comboBoxDominance.Items2" xml:space="preserve">
+    <value>(Броцкая В. А., Зенкевич Л. А., 1939)</value>
+  </data>
+  <data name="comboBoxDominance.Items3" xml:space="preserve">
+    <value>(Мордухай-Болтовской Ф. Д., 1940) в модификации (Броцкая, Зенкевич, 1939)</value>
+  </data>
+  <data name="comboBoxDominance.Items4" xml:space="preserve">
+    <value>(Арнольди Л. В., 1941)</value>
+  </data>
+  <data name="comboBoxDominance.Items5" xml:space="preserve">
+    <value>(Мордухай-Болтовской Ф. Д., 1948) в модификации (Броцкая, Зенкевич, 1939)</value>
+  </data>
+  <data name="comboBoxDominance.Items8" xml:space="preserve">
+    <value>(Sanders H. L., 1960) в шкале 1</value>
+  </data>
+  <data name="comboBoxDominance.Items9" xml:space="preserve">
+    <value>(Петров К. М., 1961)</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items1" xml:space="preserve">
+    <value>Допустимые или хуже</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items2" xml:space="preserve">
+    <value>Плохие или хуже</value>
+  </data>
+  <data name="comboBoxReportCriticality.Items3" xml:space="preserve">
+    <value>Только критические</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Открыть свойства статистических расчетов</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Предсказание значения</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Включать в отчет артефакты</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 15</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Параметры оценивания</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Дополнительные опции</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Базовые настройки, например, производительность или интерфейс.</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 15</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Внешние данные</value>
+  </data>
+  <data name="labelAgeInstrcution.Text" xml:space="preserve">
+    <value>Возраст, при котором большинство (более 50%) рыб становятся половозрелыми. Используется в подсчете промылового запаса.</value>
+  </data>
+  <data name="labelAgeTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 15</value>
+  </data>
+  <data name="labelAgeTitle.Text" xml:space="preserve">
+    <value>Возрасты созревания видов</value>
+  </data>
+  <data name="labelCatchabilityDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 13</value>
+  </data>
+  <data name="labelCatchabilityDefault.Text" xml:space="preserve">
+    <value>Коэффициент уловистости по-умолчанию</value>
+  </data>
+  <data name="labelCatchabilityInstruction.Text" xml:space="preserve">
+    <value>Значение уловистости по-умолчаю используется при оценке запаса когда не указано специальное значение для вида и орудия лова.</value>
+  </data>
+  <data name="labelCatchabilityTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 15</value>
+  </data>
+  <data name="labelCatchabilityTitle.Text" xml:space="preserve">
+    <value>Параметры уловистости</value>
+  </data>
+  <data name="labelDiversity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
+  </data>
+  <data name="labelDiversity.Text" xml:space="preserve">
+    <value>Разнообразие</value>
+  </data>
+  <data name="labelDominance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="labelDominance.Text" xml:space="preserve">
+    <value>Доминирование</value>
+  </data>
+  <data name="labelFish.Text" xml:space="preserve">
+    <value>Настроить основные параметры, такие как справочники, параметры ввода, свойства орудий лова и т. п.</value>
+  </data>
+  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="labelGear.Text" xml:space="preserve">
+    <value>Тип орудий лова</value>
+  </data>
+  <data name="labelMeasureInstruction.Text" xml:space="preserve">
+    <value>Промыловая мера - длина рыб, которые могут изыматься промыслом. Используется в подсчете промыслового запаса.</value>
+  </data>
+  <data name="labelMeasureTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 15</value>
+  </data>
+  <data name="labelMeasureTitle.Text" xml:space="preserve">
+    <value>Промысловые меры видов</value>
+  </data>
+  <data name="labelSizeInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 13</value>
+  </data>
+  <data name="labelSizeInterval.Text" xml:space="preserve">
+    <value>Интервал длины для размерной структуры, мм</value>
+  </data>
+  <data name="tabPageAdvanced.Text" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="tabPageCatchability.Text" xml:space="preserve">
+    <value>Уловистость</value>
+  </data>
+  <data name="tabPageGamingAge.Text" xml:space="preserve">
+    <value>Возраст созревания</value>
+  </data>
+  <data name="tabPageGamingMeasure.Text" xml:space="preserve">
+    <value>Промысловая мера</value>
+  </data>
+  <data name="tabPageOther.Text" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="tabPagePrediction.Text" xml:space="preserve">
+    <value>Предсказание значений</value>
+  </data>
+  <data name="tabPageTreat.Text" xml:space="preserve">
+    <value>Обработка данных</value>
   </data>
 </root>

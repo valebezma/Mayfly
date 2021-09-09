@@ -209,6 +209,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Header.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Header.ru.resx" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
       <SubType>Designer</SubType>

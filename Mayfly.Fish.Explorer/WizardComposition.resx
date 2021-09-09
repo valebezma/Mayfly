@@ -330,9 +330,6 @@
   <data name="&gt;&gt;contextAgeReconstruction.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="columnComposition.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="spreadSheetComposition.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 93</value>
   </data>
@@ -420,9 +417,6 @@
   <data name="wizardPage1.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="wizardPage1.Text" xml:space="preserve">
-    <value></value>
-  </data>
   <data name="&gt;&gt;wizardPage1.Name" xml:space="preserve">
     <value>wizardPage1</value>
   </data>
@@ -461,9 +455,6 @@
   </data>
   <data name="spreadSheetCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="ColumnCategory.HeaderText" xml:space="preserve">
-    <value />
   </data>
   <data name="ColumnCategory.Width" type="System.Int32, mscorlib">
     <value>150</value>

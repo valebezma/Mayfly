@@ -160,9 +160,6 @@
   <data name="itemAncova.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
-  <data name="itemAncova.Text" xml:space="preserve">
-    <value>Ковариационный анализ</value>
-  </data>
   <data name="itemRegression.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
@@ -193,9 +190,6 @@
   <data name="itemOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
-  <data name="itemOpen.Text" xml:space="preserve">
-    <value>Открыть...</value>
-  </data>
   <data name="itemGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
@@ -214,14 +208,8 @@
   <data name="itemSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
-  <data name="itemSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
   <data name="itemPrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
-  </data>
-  <data name="itemPrint.Text" xml:space="preserve">
-    <value>Печать представления</value>
   </data>
   <data name="contextValue.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 70</value>

@@ -1638,7 +1638,7 @@
     <value>Top</value>
   </data>
   <data name="dateTimePickerEnd.CustomFormat" xml:space="preserve">
-    <value>dd.MM.yyyy (ddd) HH:mm</value>
+    <value>MM/dd/yyyy (ddd) HH:mm</value>
   </data>
   <data name="dateTimePickerEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 26</value>
@@ -1665,7 +1665,7 @@
     <value>Top</value>
   </data>
   <data name="dateTimePickerStart.CustomFormat" xml:space="preserve">
-    <value>dd.MM.yyyy (ddd) HH:mm</value>
+    <value>MM/dd/yyyy (ddd) HH:mm</value>
   </data>
   <data name="dateTimePickerStart.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 0</value>
@@ -2600,11 +2600,8 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>693, 17</value>
-  </metadata>
   <metadata name="contextGear.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1205, 17</value>
+    <value>1064, 17</value>
   </metadata>
   <data name="contextGear.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 4</value>
@@ -2615,9 +2612,6 @@
   <data name="&gt;&gt;contextGear.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1451, 17</value>
-  </metadata>
   <metadata name="taskDialogSaveChanges.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>512, 17</value>
   </metadata>
@@ -2646,7 +2640,7 @@
     <value>Get exposure</value>
   </data>
   <metadata name="taskDialogTrackHandle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>834, 17</value>
+    <value>693, 17</value>
   </metadata>
   <data name="taskDialogTrackHandle.Content" xml:space="preserve">
     <value>You selected track as information source. Since track can be interpreted in many ways depending on activity behind of this track, we should ask you how to treat it.</value>
@@ -2661,7 +2655,7 @@
     <value>Fish Reader</value>
   </data>
   <metadata name="taskDialogLocationHandle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1011, 17</value>
+    <value>870, 17</value>
   </metadata>
   <data name="tdbSinking.Text" xml:space="preserve">
     <value>Set sinking</value>
@@ -2682,7 +2676,7 @@
     <value>403, 17</value>
   </metadata>
   <metadata name="speciesLogger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1322, 17</value>
+    <value>1181, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -5376,18 +5370,6 @@
   </data>
   <data name="&gt;&gt;ColumnAddtValue.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolTipAttention.Name" xml:space="preserve">
-    <value>toolTipAttention</value>
-  </data>
-  <data name="&gt;&gt;toolTipAttention.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
-    <value>toolTip1</value>
-  </data>
-  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;taskDialogSaveChanges.Name" xml:space="preserve">
     <value>taskDialogSaveChanges</value>

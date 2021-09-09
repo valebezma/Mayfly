@@ -118,913 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelWater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="labelWater.Text" xml:space="preserve">
-    <value>Водоем</value>
-  </data>
-  <data name="labelWater.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelWater.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="menuItemEmpty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 22</value>
-  </data>
-  <data name="menuItemEmpty.Text" xml:space="preserve">
-    <value>Пустой</value>
-  </data>
-  <data name="menuItemSpot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 22</value>
-  </data>
-  <data name="menuItemSpot.Text" xml:space="preserve">
-    <value>В том же месте</value>
-  </data>
-  <data name="menuItemGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 22</value>
-  </data>
-  <data name="menuItemGear.Text" xml:space="preserve">
-    <value>С тем же орудием</value>
-  </data>
-  <data name="ToolStripMenuItemNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemNew.Text" xml:space="preserve">
-    <value>Новый</value>
-  </data>
-  <data name="ToolStripMenuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemOpen.Text" xml:space="preserve">
-    <value>Открыть...</value>
-  </data>
-  <data name="ToolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="ToolStripMenuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSaveAs.Text" xml:space="preserve">
-    <value>Сохранить как...</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="ToolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemPrintPreview.Text" xml:space="preserve">
-    <value>Просмотр...</value>
-  </data>
-  <data name="ToolStripMenuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemPrint.Text" xml:space="preserve">
-    <value>Печать...</value>
-  </data>
-  <data name="ToolStripMenuItemCardBlank.Text" xml:space="preserve">
-    <value>Карточка</value>
-  </data>
-  <data name="ToolStripMenuItemIndividualsLogBlank.Text" xml:space="preserve">
-    <value>Журнал особей</value>
-  </data>
-  <data name="ToolStripMenuItemIndividualProfileBlank.Text" xml:space="preserve">
-    <value>Профиль особи</value>
-  </data>
-  <data name="blankToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="blankToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать бланка</value>
-  </data>
-  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
-  </data>
-  <data name="ToolStripMenuItemClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemClose.Text" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
-  <data name="meniItemEnvironment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="meniItemEnvironment.Text" xml:space="preserve">
-    <value>Добавить данные о среде</value>
-  </data>
-  <data name="menuItemFactors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="menuItemFactors.Text" xml:space="preserve">
-    <value>Добавить факторы</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 6</value>
-  </data>
-  <data name="menuItemLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="menuItemLocation.Text" xml:space="preserve">
-    <value>Импорт местоположения</value>
-  </data>
-  <data name="ToolStripMenuItemData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
-  </data>
-  <data name="ToolStripMenuItemData.Text" xml:space="preserve">
-    <value>Данные</value>
-  </data>
-  <data name="menuItemWatersRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="menuItemWatersRef.Text" xml:space="preserve">
-    <value>Справочник водоемов</value>
-  </data>
-  <data name="menuItemSpeciesRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="menuItemSpeciesRef.Text" xml:space="preserve">
-    <value>Видовой справочник</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 6</value>
-  </data>
-  <data name="ToolStripMenuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSettings.Text" xml:space="preserve">
-    <value>Параметры</value>
-  </data>
-  <data name="itemAboutCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="itemAboutCard.Text" xml:space="preserve">
-    <value>О данных</value>
-  </data>
-  <data name="ToolStripMenuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
-  </data>
-  <data name="ToolStripMenuItemAbout.Text" xml:space="preserve">
-    <value>О программе</value>
-  </data>
-  <data name="ToolStripMenuItemService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="ToolStripMenuItemService.Text" xml:space="preserve">
-    <value>Сервис</value>
-  </data>
-  <data name="MenuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="MenuStrip.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
-  </data>
-  <data name="textBoxMesh.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxMesh.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelMesh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 13</value>
-  </data>
-  <data name="labelMesh.Text" xml:space="preserve">
-    <value>Ячея, мм</value>
-  </data>
-  <data name="labelMesh.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelMesh.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="StatusLog.Text" xml:space="preserve">
-    <value>Статус</value>
-  </data>
-  <data name="StatusCount.Text" xml:space="preserve">
-    <value>Общее количество: {0} экз.</value>
-  </data>
-  <data name="StatusMass.Text" xml:space="preserve">
-    <value>Общая масса: {0:N2} кг</value>
-  </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="statusStrip.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelTag.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 15</value>
-  </data>
-  <data name="labelTag.Text" xml:space="preserve">
-    <value>Сведения о пробе</value>
-  </data>
-  <data name="labelTag.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelTag.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxDepth.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxDepth.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAEB3YXRpbnZlbnQsIFZlcnNpb249MS4wLjQuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAXTWF5Zmx5LldhdGVycy5XYXRlcnNLZXkDAAAA
-        F0RhdGFTZXQuUmVtb3RpbmdWZXJzaW9uCVhtbFNjaGVtYQtYbWxEaWZmR3JhbQMBAQ5TeXN0ZW0uVmVy
-        c2lvbgIAAAAJAwAAAAYEAAAAiRs8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtMTYiPz4N
-        Cjx4czpzY2hlbWEgaWQ9IldhdGVyc0tleSIgeG1sbnM9IiIgeG1sbnM6eHM9Imh0dHA6Ly93d3cudzMu
-        b3JnLzIwMDEvWE1MU2NoZW1hIiB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206
-        eG1sLW1zZGF0YSI+DQogIDx4czplbGVtZW50IG5hbWU9IldhdGVyc0tleSIgbXNkYXRhOklzRGF0YVNl
-        dD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0icnUtUlUiPg0KICAgIDx4czpjb21wbGV4VHlwZT4NCiAgICAg
-        IDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+DQogICAgICAgIDx4
-        czplbGVtZW50IG5hbWU9IldhdGVyIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5cGU+DQogICAgICAg
-        ICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IklEIiBtc2Rh
-        dGE6QXV0b0luY3JlbWVudD0idHJ1ZSIgbXNkYXRhOkF1dG9JbmNyZW1lbnRTZWVkPSItMSIgbXNkYXRh
-        OkF1dG9JbmNyZW1lbnRTdGVwPSItMSIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNl
-        PSIiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlR5cGUiIHR5cGU9InhzOmludCIg
-        ZGVmYXVsdD0iMSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAg
-        ICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IldhdGVyIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIi
-        IG1pbk9jY3Vycz0iMCI+DQogICAgICAgICAgICAgICAgPHhzOnNpbXBsZVR5cGU+DQogICAgICAgICAg
-        ICAgICAgICA8eHM6cmVzdHJpY3Rpb24gYmFzZT0ieHM6c3RyaW5nIj4NCiAgICAgICAgICAgICAgICAg
-        ICAgPHhzOm1heExlbmd0aCB2YWx1ZT0iMjU1IiAvPg0KICAgICAgICAgICAgICAgICAgPC94czpyZXN0
-        cmljdGlvbj4NCiAgICAgICAgICAgICAgICA8L3hzOnNpbXBsZVR5cGU+DQogICAgICAgICAgICAgIDwv
-        eHM6ZWxlbWVudD4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iT3V0ZmxvdyIgdHlwZT0i
-        eHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAg
-        ICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTW91dGhDb2FzdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFy
-        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
-        bmFtZT0iTW91dGhUb01vdXRoIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
-        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJMZW5ndGgi
-        IHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
-        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkFsdGl0dWRlIiB0eXBlPSJ4czpkb3VibGUi
-        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8
-        eHM6ZWxlbWVudCBuYW1lPSJBcmVhIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3Bh
-        Y2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBcmVh
-        RGVhZCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0i
-        MCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iVm9sdW1lIiB0eXBlPSJ4czpkb3Vi
-        bGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAg
-        ICA8eHM6ZWxlbWVudCBuYW1lPSJWb2x1bWVEZWFkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJn
-        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
-        YW1lPSJEZXB0aE1heCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1p
-        bk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRGVwdGhNaWQiIHR5
-        cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQog
-        ICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkZsb3dhZ2UiIHR5cGU9InhzOmRvdWJsZSIgbXNk
-        YXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czpl
-        bGVtZW50IG5hbWU9IkN5Y2xpbmciIHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
-        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlZlZ2V0
-        YXRpb24iIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAi
-        IC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkNvbnN1bXB0aW9uIiB0eXBlPSJ4czpk
-        b3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
-        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJTbG9wZSIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0
-        TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFt
-        ZT0iV2F0ZXJzaGVkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWlu
-        T2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJLaW5kIiB0eXBlPSJ4
-        czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
-        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJCdWlsdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFt
-        ZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAg
-        ICAgICAgPC94czpjb21wbGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpj
-        aG9pY2U+DQogICAgPC94czpjb21wbGV4VHlwZT4NCiAgICA8eHM6dW5pcXVlIG5hbWU9IkNvbnN0cmFp
-        bnQxIiBtc2RhdGE6UHJpbWFyeUtleT0idHJ1ZSI+DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4v
-        L1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhwYXRoPSJJRCIgLz4NCiAgICA8L3hzOnVuaXF1ZT4N
-        CiAgICA8eHM6a2V5cmVmIG5hbWU9IkZLX1dhdGVyX1dhdGVyIiByZWZlcj0iQ29uc3RyYWludDEiIG1z
-        ZGF0YTpBY2NlcHRSZWplY3RSdWxlPSJDYXNjYWRlIiBtc2RhdGE6RGVsZXRlUnVsZT0iU2V0TnVsbCI+
-        DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4vL1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhw
-        YXRoPSJPdXRmbG93IiAvPg0KICAgIDwveHM6a2V5cmVmPg0KICA8L3hzOmVsZW1lbnQ+DQo8L3hzOnNj
-        aGVtYT4GBQAAAIABPGRpZmZncjpkaWZmZ3JhbSB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jv
-        c29mdC1jb206eG1sLW1zZGF0YSIgeG1sbnM6ZGlmZmdyPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29t
-        OnhtbC1kaWZmZ3JhbS12MSIgLz4EAwAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZf
-        QnVpbGQJX1JldmlzaW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
-</value>
-  </data>
-  <data name="waterSelector.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="waterSelector.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
-  </data>
-  <data name="labelDepth.Text" xml:space="preserve">
-    <value>Глубина места лова, м</value>
-  </data>
-  <data name="labelDepth.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDepth.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
-  </data>
-  <data name="labelLabel.Text" xml:space="preserve">
-    <value>Маркер</value>
-  </data>
-  <data name="labelLabel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLabel.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
-  <data name="labelComments.Text" xml:space="preserve">
-    <value>Примечание</value>
-  </data>
-  <data name="labelComments.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelComments.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxLabel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxLabel.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 15</value>
-  </data>
-  <data name="labelPosition.Text" xml:space="preserve">
-    <value>Точное положение и время отбора пробы</value>
-  </data>
-  <data name="labelPosition.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelPosition.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxComments.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxComments.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="waypointControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="waypointControl1.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageCollect.Text" xml:space="preserve">
-    <value>Станция</value>
-  </data>
-  <data name="tabPageCollect.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageCollect.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxVolume.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxVolume.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelEffort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 15</value>
-  </data>
-  <data name="labelEffort.Text" xml:space="preserve">
-    <value>Параметры усилия</value>
-  </data>
-  <data name="labelEffort.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelEffort.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 13</value>
-  </data>
-  <data name="labelVolume.Text" xml:space="preserve">
-    <value>Обловленный объем, тыс. м³</value>
-  </data>
-  <data name="labelVolume.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelVolume.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonGear.Text" xml:space="preserve">
-    <value>Снасти</value>
-  </data>
-  <data name="buttonGear.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonGear.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxEfforts.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxEfforts.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelEfforts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 13</value>
-  </data>
-  <data name="labelEfforts.Text" xml:space="preserve">
-    <value>Усилие, станд. единиц</value>
-  </data>
-  <data name="labelEfforts.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelEfforts.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxArea.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxArea.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 13</value>
-  </data>
-  <data name="labelArea.Text" xml:space="preserve">
-    <value>Обловленная площадь, га</value>
-  </data>
-  <data name="labelArea.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelArea.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 15</value>
-  </data>
-  <data name="labelMethod.Text" xml:space="preserve">
-    <value>Орудие лова</value>
-  </data>
-  <data name="labelMethod.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelMethod.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOpening.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 13</value>
-  </data>
-  <data name="labelOpening.Text" xml:space="preserve">
-    <value>Раскрытие орудия, м</value>
-  </data>
-  <data name="labelOpening.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOpening.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelSampler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="labelSampler.Text" xml:space="preserve">
-    <value>Тип орудия</value>
-  </data>
-  <data name="labelSampler.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelSampler.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxHeight.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxHeight.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxSquare.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxSquare.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelSquare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 13</value>
-  </data>
-  <data name="labelSquare.Text" xml:space="preserve">
-    <value>Площадь орудия, м²</value>
-  </data>
-  <data name="labelSquare.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelSquare.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelHook.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="labelHook.Text" xml:space="preserve">
-    <value>Тип крючка (номер)</value>
-  </data>
-  <data name="labelHook.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelHook.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
-  </data>
-  <data name="labelHeight.Text" xml:space="preserve">
-    <value>Высота орудия, м</value>
-  </data>
-  <data name="labelHeight.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelHeight.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxHook.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxHook.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxOpening.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxOpening.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxLength.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxLength.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarnOpening.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarnOpening.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
-  <data name="labelLength.Text" xml:space="preserve">
-    <value>Длина орудия, м</value>
-  </data>
-  <data name="labelLength.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLength.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dateTimePickerEnd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dateTimePickerEnd.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dateTimePickerStart.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dateTimePickerStart.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarnExposure.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pictureBoxWarnExposure.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelExposure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 13</value>
-  </data>
-  <data name="labelExposure.Text" xml:space="preserve">
-    <value>Расстояние операции, м</value>
-  </data>
-  <data name="labelExposure.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelExposure.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxExposure.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxExposure.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxVelocity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxVelocity.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelVelocity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 13</value>
-  </data>
-  <data name="labelVelocity.Text" xml:space="preserve">
-    <value>Скорость судна, км/ч</value>
-  </data>
-  <data name="labelVelocity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelVelocity.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOperationEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="labelOperationEnd.Text" xml:space="preserve">
-    <value>Операция окончена</value>
-  </data>
-  <data name="labelOperationEnd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOperationEnd.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOperation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 13</value>
-  </data>
-  <data name="labelOperation.Text" xml:space="preserve">
-    <value>Операция начата</value>
-  </data>
-  <data name="labelOperation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelOperation.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDuration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 26</value>
-  </data>
-  <data name="labelDuration.Text" xml:space="preserve">
-    <value>Продолжительность операции: 
-{0} ч {1:00} мин ({2:N2} ч)</value>
-  </data>
-  <data name="labelDuration.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDuration.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panelLS.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panelLS.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxExactArea.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxExactArea.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelExactArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 13</value>
-  </data>
-  <data name="labelExactArea.Text" xml:space="preserve">
-    <value>Площадь операции, га</value>
-  </data>
-  <data name="labelExactArea.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelExactArea.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panelGeoData.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panelGeoData.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxSampler.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxSampler.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageSampler.Text" xml:space="preserve">
-    <value>Методика сбора</value>
-  </data>
-  <data name="tabPageSampler.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageSampler.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="aquaControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="aquaControl1.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="weatherControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="weatherControl1.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelActWeather.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 15</value>
-  </data>
-  <data name="labelActWeather.Text" xml:space="preserve">
-    <value>Фактическая погода</value>
-  </data>
-  <data name="labelActWeather.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelActWeather.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelWaterConds.Text" xml:space="preserve">
-    <value>Состояние воды</value>
-  </data>
-  <data name="labelWaterConds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelWaterConds.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageEnvironment.Text" xml:space="preserve">
-    <value>Состояние среды</value>
-  </data>
-  <data name="tabPageEnvironment.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageEnvironment.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ColumnSpecies.HeaderText" xml:space="preserve">
-    <value>Вид</value>
-  </data>
-  <data name="ColumnQuantity.HeaderText" xml:space="preserve">
-    <value>Количество, экз.</value>
-  </data>
-  <data name="ColumnMass.HeaderText" xml:space="preserve">
-    <value>Масса, кг</value>
-  </data>
-  <data name="ToolStripMenuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItemIndividuals.Text" xml:space="preserve">
-    <value>Журнал особей</value>
-  </data>
-  <data name="toolStripMenuItemSpeciesKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="toolStripMenuItemSpeciesKey.Text" xml:space="preserve">
-    <value>Открыть определитель</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 6</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
-    <value>Вырезать</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
-    <value>Копировать</value>
-  </data>
-  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
-    <value>Вставить</value>
-  </data>
-  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
-  </data>
-  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="contextMenuStripLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 142</value>
-  </data>
-  <data name="contextMenuStripLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextMenuStripLog.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="spreadSheetLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="spreadSheetLog.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonAdd.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonAdd.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Ведомость</value>
-  </data>
-  <data name="tabPageLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageLog.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ColumnAddtFactor.HeaderText" xml:space="preserve">
-    <value>Фактор</value>
-  </data>
-  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
-    <value>Значение</value>
-  </data>
-  <data name="spreadSheetAddt.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="spreadSheetAddt.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageFactors.Text" xml:space="preserve">
-    <value>Дополнительные факторы</value>
-  </data>
-  <data name="tabPageFactors.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageFactors.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextGear.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextGear.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tdbSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Не сохранять</value>
-  </data>
-  <data name="taskDialogSaveChanges.Content" xml:space="preserve">
-    <value>С момента последнего сохранения были произведены изменения. Сохранить эти изменения?</value>
-  </data>
-  <data name="taskDialogSaveChanges.MainInstruction" xml:space="preserve">
-    <value>Сохранить изменения?</value>
-  </data>
-  <data name="tdbSinglepoint.Text" xml:space="preserve">
-    <value>Выбрать одну точку</value>
-  </data>
-  <data name="tdbAsPoly.Text" xml:space="preserve">
-    <value>Взять площадь</value>
-  </data>
-  <data name="tdbExposure.Text" xml:space="preserve">
-    <value>Взять расстояние</value>
-  </data>
-  <data name="taskDialogTrackHandle.Content" xml:space="preserve">
-    <value>Вы выбрали трек как источник информации. Поскольку трек можно интерпретировать по-разному в зависимости от действий, которые были совершены, выберите как его обработать?</value>
-  </data>
-  <data name="taskDialogTrackHandle.Footer" xml:space="preserve">
-    <value>Также при необходимости будут использованы показания времени.</value>
-  </data>
-  <data name="taskDialogTrackHandle.MainInstruction" xml:space="preserve">
-    <value>Как обработать выбранный трек?</value>
-  </data>
-  <data name="tdbSinking.Text" xml:space="preserve">
-    <value>Как установку</value>
-  </data>
-  <data name="tdbRemoval.Text" xml:space="preserve">
-    <value>Как выемку</value>
-  </data>
-  <data name="taskDialogLocationHandle.Content" xml:space="preserve">
-    <value>Выбранная путевая точка может отражать различную информацию о проведенном лове. Укажите, пожалуйста, отражает ли она момент выемки орудия лова или момент, когда орудие установлено.</value>
-  </data>
-  <data name="taskDialogLocationHandle.MainInstruction" xml:space="preserve">
-    <value>Как обработать выбранную путевую точку?</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAATqQAAZgAAAICAAAABACAAKAgBAHmpAABAQAAAAQAgAChCAAChsQEAMDAAAAEA
@@ -3412,13 +2505,524 @@
         AMADAACAAQAAgAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIABAAAAAQAAAAMAAOAHAAD8PwAA
 </value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="blankToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="$this.ToolTip1" xml:space="preserve">
-    <value />
+  <data name="blankToolStripMenuItem.Text" xml:space="preserve">
+    <value>Печать бланка</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="buttonGear.Text" xml:space="preserve">
+    <value>Снасти</value>
+  </data>
+  <data name="ColumnAddtFactor.HeaderText" xml:space="preserve">
+    <value>Фактор</value>
+  </data>
+  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
+    <value>Значение</value>
+  </data>
+  <data name="ColumnMass.HeaderText" xml:space="preserve">
+    <value>Масса, кг</value>
+  </data>
+  <data name="ColumnQuantity.HeaderText" xml:space="preserve">
+    <value>Количество, экз.</value>
+  </data>
+  <data name="ColumnSpecies.HeaderText" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="contextMenuStripLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 142</value>
+  </data>
+  <data name="dateTimePickerEnd.CustomFormat" xml:space="preserve">
+    <value>dd.MM.yyyy (ddd) HH:mm</value>
+  </data>
+  <data name="dateTimePickerStart.CustomFormat" xml:space="preserve">
+    <value>dd.MM.yyyy (ddd) HH:mm</value>
+  </data>
+  <data name="itemAboutCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="itemAboutCard.Text" xml:space="preserve">
+    <value>О данных</value>
+  </data>
+  <data name="labelActWeather.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 15</value>
+  </data>
+  <data name="labelActWeather.Text" xml:space="preserve">
+    <value>Фактическая погода</value>
+  </data>
+  <data name="labelArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="labelArea.Text" xml:space="preserve">
+    <value>Обловленная площадь, га</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="labelComments.Text" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="labelDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="labelDepth.Text" xml:space="preserve">
+    <value>Глубина места лова, м</value>
+  </data>
+  <data name="labelDuration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 26</value>
+  </data>
+  <data name="labelDuration.Text" xml:space="preserve">
+    <value>Продолжительность операции: 
+{0} ч {1:00} мин ({2:N2} ч)</value>
+  </data>
+  <data name="labelEffort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 15</value>
+  </data>
+  <data name="labelEffort.Text" xml:space="preserve">
+    <value>Параметры усилия</value>
+  </data>
+  <data name="labelEfforts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="labelEfforts.Text" xml:space="preserve">
+    <value>Усилие, станд. единиц</value>
+  </data>
+  <data name="labelExactArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="labelExactArea.Text" xml:space="preserve">
+    <value>Площадь операции, га</value>
+  </data>
+  <data name="labelExposure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 13</value>
+  </data>
+  <data name="labelExposure.Text" xml:space="preserve">
+    <value>Расстояние операции, м</value>
+  </data>
+  <data name="labelHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 13</value>
+  </data>
+  <data name="labelHeight.Text" xml:space="preserve">
+    <value>Высота орудия, м</value>
+  </data>
+  <data name="labelHook.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="labelHook.Text" xml:space="preserve">
+    <value>Тип крючка (номер)</value>
+  </data>
+  <data name="labelLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="labelLabel.Text" xml:space="preserve">
+    <value>Маркер</value>
+  </data>
+  <data name="labelLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 13</value>
+  </data>
+  <data name="labelLength.Text" xml:space="preserve">
+    <value>Длина орудия, м</value>
+  </data>
+  <data name="labelMesh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="labelMesh.Text" xml:space="preserve">
+    <value>Ячея, мм</value>
+  </data>
+  <data name="labelMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="labelMethod.Text" xml:space="preserve">
+    <value>Орудие лова</value>
+  </data>
+  <data name="labelOpening.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 13</value>
+  </data>
+  <data name="labelOpening.Text" xml:space="preserve">
+    <value>Раскрытие орудия, м</value>
+  </data>
+  <data name="labelOperation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="labelOperation.Text" xml:space="preserve">
+    <value>Операция начата</value>
+  </data>
+  <data name="labelOperationEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="labelOperationEnd.Text" xml:space="preserve">
+    <value>Операция окончена</value>
+  </data>
+  <data name="labelPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 15</value>
+  </data>
+  <data name="labelPosition.Text" xml:space="preserve">
+    <value>Точное положение и время отбора пробы</value>
+  </data>
+  <data name="labelSampler.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="labelSampler.Text" xml:space="preserve">
+    <value>Тип орудия</value>
+  </data>
+  <data name="labelSquare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="labelSquare.Text" xml:space="preserve">
+    <value>Площадь орудия, м²</value>
+  </data>
+  <data name="labelTag.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 15</value>
+  </data>
+  <data name="labelTag.Text" xml:space="preserve">
+    <value>Сведения о пробе</value>
+  </data>
+  <data name="labelVelocity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="labelVelocity.Text" xml:space="preserve">
+    <value>Скорость судна, км/ч</value>
+  </data>
+  <data name="labelVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 13</value>
+  </data>
+  <data name="labelVolume.Text" xml:space="preserve">
+    <value>Обловленный объем, тыс. м³</value>
+  </data>
+  <data name="labelWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="labelWater.Text" xml:space="preserve">
+    <value>Водоем</value>
+  </data>
+  <data name="labelWaterConds.Text" xml:space="preserve">
+    <value>Состояние воды</value>
+  </data>
+  <data name="meniItemEnvironment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="meniItemEnvironment.Text" xml:space="preserve">
+    <value>Добавить данные о среде</value>
   </data>
   <data name="menuItemAddInfo.Text" xml:space="preserve">
     <value>Добавить другие сведения об экземпляре...</value>
+  </data>
+  <data name="menuItemEmpty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 22</value>
+  </data>
+  <data name="menuItemEmpty.Text" xml:space="preserve">
+    <value>Пустой</value>
+  </data>
+  <data name="menuItemFactors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="menuItemFactors.Text" xml:space="preserve">
+    <value>Добавить факторы</value>
+  </data>
+  <data name="menuItemGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 22</value>
+  </data>
+  <data name="menuItemGear.Text" xml:space="preserve">
+    <value>С тем же орудием</value>
+  </data>
+  <data name="menuItemLocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="menuItemLocation.Text" xml:space="preserve">
+    <value>Импорт местоположения</value>
+  </data>
+  <data name="menuItemSpeciesRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="menuItemSpeciesRef.Text" xml:space="preserve">
+    <value>Видовой справочник</value>
+  </data>
+  <data name="menuItemSpot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 22</value>
+  </data>
+  <data name="menuItemSpot.Text" xml:space="preserve">
+    <value>В том же месте</value>
+  </data>
+  <data name="menuItemWatersRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="menuItemWatersRef.Text" xml:space="preserve">
+    <value>Справочник водоемов</value>
+  </data>
+  <data name="StatusCount.Text" xml:space="preserve">
+    <value>Общее количество: {0} экз.</value>
+  </data>
+  <data name="StatusLog.Text" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="StatusMass.Text" xml:space="preserve">
+    <value>Общая масса: {0:N2} кг</value>
+  </data>
+  <data name="tabPageCollect.Text" xml:space="preserve">
+    <value>Станция</value>
+  </data>
+  <data name="tabPageEnvironment.Text" xml:space="preserve">
+    <value>Состояние среды</value>
+  </data>
+  <data name="tabPageFactors.Text" xml:space="preserve">
+    <value>Дополнительные факторы</value>
+  </data>
+  <data name="tabPageLog.Text" xml:space="preserve">
+    <value>Ведомость</value>
+  </data>
+  <data name="tabPageSampler.Text" xml:space="preserve">
+    <value>Методика сбора</value>
+  </data>
+  <data name="taskDialogLocationHandle.Content" xml:space="preserve">
+    <value>Выбранная путевая точка может отражать различную информацию о проведенном лове. Укажите, пожалуйста, отражает ли она момент выемки орудия лова или момент, когда орудие установлено.</value>
+  </data>
+  <data name="taskDialogLocationHandle.MainInstruction" xml:space="preserve">
+    <value>Как обработать выбранную путевую точку?</value>
+  </data>
+  <data name="taskDialogSaveChanges.Content" xml:space="preserve">
+    <value>С момента последнего сохранения были произведены изменения. Сохранить эти изменения?</value>
+  </data>
+  <data name="taskDialogSaveChanges.MainInstruction" xml:space="preserve">
+    <value>Сохранить изменения?</value>
+  </data>
+  <data name="taskDialogTrackHandle.Content" xml:space="preserve">
+    <value>Вы выбрали трек как источник информации. Поскольку трек можно интерпретировать по-разному в зависимости от действий, которые были совершены, выберите как его обработать?</value>
+  </data>
+  <data name="taskDialogTrackHandle.Footer" xml:space="preserve">
+    <value>Также при необходимости будут использованы показания времени.</value>
+  </data>
+  <data name="taskDialogTrackHandle.MainInstruction" xml:space="preserve">
+    <value>Как обработать выбранный трек?</value>
+  </data>
+  <data name="tdbAsPoly.Text" xml:space="preserve">
+    <value>Взять площадь</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Не сохранять</value>
+  </data>
+  <data name="tdbExposure.Text" xml:space="preserve">
+    <value>Взять расстояние</value>
+  </data>
+  <data name="tdbRemoval.Text" xml:space="preserve">
+    <value>Как выемку</value>
+  </data>
+  <data name="tdbSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="tdbSinglepoint.Text" xml:space="preserve">
+    <value>Выбрать одну точку</value>
+  </data>
+  <data name="tdbSinking.Text" xml:space="preserve">
+    <value>Как установку</value>
+  </data>
+  <data name="ToolStripMenuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="ToolStripMenuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="ToolStripMenuItemCardBlank.Text" xml:space="preserve">
+    <value>Карточка</value>
+  </data>
+  <data name="ToolStripMenuItemClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
+    <value>Вырезать</value>
+  </data>
+  <data name="ToolStripMenuItemData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="ToolStripMenuItemData.Text" xml:space="preserve">
+    <value>Данные</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="ToolStripMenuItemIndividualProfileBlank.Text" xml:space="preserve">
+    <value>Профиль особи</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemIndividuals.Text" xml:space="preserve">
+    <value>Журнал особей</value>
+  </data>
+  <data name="ToolStripMenuItemIndividualsLogBlank.Text" xml:space="preserve">
+    <value>Журнал особей</value>
+  </data>
+  <data name="ToolStripMenuItemNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemNew.Text" xml:space="preserve">
+    <value>Новый</value>
+  </data>
+  <data name="ToolStripMenuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemOpen.Text" xml:space="preserve">
+    <value>Открыть...</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
+  <data name="ToolStripMenuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemPrint.Text" xml:space="preserve">
+    <value>Печать...</value>
+  </data>
+  <data name="ToolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemPrintPreview.Text" xml:space="preserve">
+    <value>Просмотр...</value>
+  </data>
+  <data name="ToolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="ToolStripMenuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ToolStripMenuItemSaveAs.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="ToolStripMenuItemService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="ToolStripMenuItemService.Text" xml:space="preserve">
+    <value>Сервис</value>
+  </data>
+  <data name="ToolStripMenuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="ToolStripMenuItemSettings.Text" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="toolStripMenuItemSpeciesKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="toolStripMenuItemSpeciesKey.Text" xml:space="preserve">
+    <value>Открыть определитель</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 6</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 6</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 6</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 6</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 6</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEB3YXRpbnZlbnQsIFZlcnNpb249MS4wLjQuMCwgQ3VsdHVyZT1u
+        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAXTWF5Zmx5LldhdGVycy5XYXRlcnNLZXkDAAAA
+        F0RhdGFTZXQuUmVtb3RpbmdWZXJzaW9uCVhtbFNjaGVtYQtYbWxEaWZmR3JhbQMBAQ5TeXN0ZW0uVmVy
+        c2lvbgIAAAAJAwAAAAYEAAAAiRs8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtMTYiPz4N
+        Cjx4czpzY2hlbWEgaWQ9IldhdGVyc0tleSIgeG1sbnM9IiIgeG1sbnM6eHM9Imh0dHA6Ly93d3cudzMu
+        b3JnLzIwMDEvWE1MU2NoZW1hIiB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jvc29mdC1jb206
+        eG1sLW1zZGF0YSI+DQogIDx4czplbGVtZW50IG5hbWU9IldhdGVyc0tleSIgbXNkYXRhOklzRGF0YVNl
+        dD0idHJ1ZSIgbXNkYXRhOkxvY2FsZT0icnUtUlUiPg0KICAgIDx4czpjb21wbGV4VHlwZT4NCiAgICAg
+        IDx4czpjaG9pY2UgbWluT2NjdXJzPSIwIiBtYXhPY2N1cnM9InVuYm91bmRlZCI+DQogICAgICAgIDx4
+        czplbGVtZW50IG5hbWU9IldhdGVyIj4NCiAgICAgICAgICA8eHM6Y29tcGxleFR5cGU+DQogICAgICAg
+        ICAgICA8eHM6c2VxdWVuY2U+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IklEIiBtc2Rh
+        dGE6QXV0b0luY3JlbWVudD0idHJ1ZSIgbXNkYXRhOkF1dG9JbmNyZW1lbnRTZWVkPSItMSIgbXNkYXRh
+        OkF1dG9JbmNyZW1lbnRTdGVwPSItMSIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNl
+        PSIiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlR5cGUiIHR5cGU9InhzOmludCIg
+        ZGVmYXVsdD0iMSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAg
+        ICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IldhdGVyIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIi
+        IG1pbk9jY3Vycz0iMCI+DQogICAgICAgICAgICAgICAgPHhzOnNpbXBsZVR5cGU+DQogICAgICAgICAg
+        ICAgICAgICA8eHM6cmVzdHJpY3Rpb24gYmFzZT0ieHM6c3RyaW5nIj4NCiAgICAgICAgICAgICAgICAg
+        ICAgPHhzOm1heExlbmd0aCB2YWx1ZT0iMjU1IiAvPg0KICAgICAgICAgICAgICAgICAgPC94czpyZXN0
+        cmljdGlvbj4NCiAgICAgICAgICAgICAgICA8L3hzOnNpbXBsZVR5cGU+DQogICAgICAgICAgICAgIDwv
+        eHM6ZWxlbWVudD4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iT3V0ZmxvdyIgdHlwZT0i
+        eHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAg
+        ICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iTW91dGhDb2FzdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFy
+        Z2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQg
+        bmFtZT0iTW91dGhUb01vdXRoIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9
+        IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJMZW5ndGgi
+        IHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+
+        DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkFsdGl0dWRlIiB0eXBlPSJ4czpkb3VibGUi
+        IG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8
+        eHM6ZWxlbWVudCBuYW1lPSJBcmVhIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3Bh
+        Y2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJBcmVh
+        RGVhZCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0i
+        MCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iVm9sdW1lIiB0eXBlPSJ4czpkb3Vi
+        bGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAg
+        ICA8eHM6ZWxlbWVudCBuYW1lPSJWb2x1bWVEZWFkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJn
+        ZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBu
+        YW1lPSJEZXB0aE1heCIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0TmFtZXNwYWNlPSIiIG1p
+        bk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFtZT0iRGVwdGhNaWQiIHR5
+        cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQog
+        ICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkZsb3dhZ2UiIHR5cGU9InhzOmRvdWJsZSIgbXNk
+        YXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czpl
+        bGVtZW50IG5hbWU9IkN5Y2xpbmciIHR5cGU9InhzOmRvdWJsZSIgbXNkYXRhOnRhcmdldE5hbWVzcGFj
+        ZT0iIiBtaW5PY2N1cnM9IjAiIC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IlZlZ2V0
+        YXRpb24iIHR5cGU9InhzOmludCIgbXNkYXRhOnRhcmdldE5hbWVzcGFjZT0iIiBtaW5PY2N1cnM9IjAi
+        IC8+DQogICAgICAgICAgICAgIDx4czplbGVtZW50IG5hbWU9IkNvbnN1bXB0aW9uIiB0eXBlPSJ4czpk
+        b3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJTbG9wZSIgdHlwZT0ieHM6ZG91YmxlIiBtc2RhdGE6dGFyZ2V0
+        TmFtZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgICAgPHhzOmVsZW1lbnQgbmFt
+        ZT0iV2F0ZXJzaGVkIiB0eXBlPSJ4czpkb3VibGUiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWlu
+        T2NjdXJzPSIwIiAvPg0KICAgICAgICAgICAgICA8eHM6ZWxlbWVudCBuYW1lPSJLaW5kIiB0eXBlPSJ4
+        czppbnQiIG1zZGF0YTp0YXJnZXROYW1lc3BhY2U9IiIgbWluT2NjdXJzPSIwIiAvPg0KICAgICAgICAg
+        ICAgICA8eHM6ZWxlbWVudCBuYW1lPSJCdWlsdCIgdHlwZT0ieHM6aW50IiBtc2RhdGE6dGFyZ2V0TmFt
+        ZXNwYWNlPSIiIG1pbk9jY3Vycz0iMCIgLz4NCiAgICAgICAgICAgIDwveHM6c2VxdWVuY2U+DQogICAg
+        ICAgICAgPC94czpjb21wbGV4VHlwZT4NCiAgICAgICAgPC94czplbGVtZW50Pg0KICAgICAgPC94czpj
+        aG9pY2U+DQogICAgPC94czpjb21wbGV4VHlwZT4NCiAgICA8eHM6dW5pcXVlIG5hbWU9IkNvbnN0cmFp
+        bnQxIiBtc2RhdGE6UHJpbWFyeUtleT0idHJ1ZSI+DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4v
+        L1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhwYXRoPSJJRCIgLz4NCiAgICA8L3hzOnVuaXF1ZT4N
+        CiAgICA8eHM6a2V5cmVmIG5hbWU9IkZLX1dhdGVyX1dhdGVyIiByZWZlcj0iQ29uc3RyYWludDEiIG1z
+        ZGF0YTpBY2NlcHRSZWplY3RSdWxlPSJDYXNjYWRlIiBtc2RhdGE6RGVsZXRlUnVsZT0iU2V0TnVsbCI+
+        DQogICAgICA8eHM6c2VsZWN0b3IgeHBhdGg9Ii4vL1dhdGVyIiAvPg0KICAgICAgPHhzOmZpZWxkIHhw
+        YXRoPSJPdXRmbG93IiAvPg0KICAgIDwveHM6a2V5cmVmPg0KICA8L3hzOmVsZW1lbnQ+DQo8L3hzOnNj
+        aGVtYT4GBQAAAIABPGRpZmZncjpkaWZmZ3JhbSB4bWxuczptc2RhdGE9InVybjpzY2hlbWFzLW1pY3Jv
+        c29mdC1jb206eG1sLW1zZGF0YSIgeG1sbnM6ZGlmZmdyPSJ1cm46c2NoZW1hcy1taWNyb3NvZnQtY29t
+        OnhtbC1kaWZmZ3JhbS12MSIgLz4EAwAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZf
+        QnVpbGQJX1JldmlzaW9uAAAAAAgICAgCAAAAAAAAAP//////////Cw==
+</value>
   </data>
 </root>

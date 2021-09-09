@@ -117,19 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Стратифицированный контроль выборки</value>
+  </data>
+  <data name="buttonReport.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
   <data name="ColumnClass.HeaderText" xml:space="preserve">
     <value>Размерный класс, см</value>
   </data>
   <data name="ColumnCount.HeaderText" xml:space="preserve">
     <value>Количество, экз.</value>
   </data>
+  <data name="columnHeaderSample.Text" xml:space="preserve">
+    <value>Проба</value>
+  </data>
+  <data name="columnHeaderSpecies.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
   <data name="ColumnMass.HeaderText" xml:space="preserve">
-    <value>Взвешено, экз.</value>
+    <value>Взвешено</value>
   </data>
   <data name="ColumnRegID.HeaderText" xml:space="preserve">
-    <value>Проб взято</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Стратифицированный контроль выборки</value>
+    <value>Бирок</value>
   </data>
 </root>
