@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ExpiresInstruction" xml:space="preserve">
-    <value>Ваша лицензия на {0} истекает через {1} дней. Нажмите, чтобы получить новый ключ.</value>
-  </data>
-  <data name="ExpiresSoon" xml:space="preserve">
-    <value>Лицензия скоро истекает</value>
-  </data>
-  <data name="LicenseCancelled" xml:space="preserve">
-    <value>Ключ недействителен</value>
+  <data name="LicenseExpired" xml:space="preserve">
+    <value>Лицензия закончилась</value>
   </data>
   <data name="LicenseExpiredInstruction" xml:space="preserve">
-    <value>Введенный ключ недействителен</value>
+    <value>Лицензия на {0} закончилась. Обновите подписку.</value>
   </data>
-  <data name="LicenseInstalledInstruction" xml:space="preserve">
-    <value>Ключ уже установлен</value>
+  <data name="LicenseExpiresSoon" xml:space="preserve">
+    <value>Лицензия скоро закончится</value>
   </data>
-  <data name="LicenseNotActivated" xml:space="preserve">
-    <value>Не активирован</value>
+  <data name="LicenseExpiresSoonInstruction" xml:space="preserve">
+    <value>Лицензия на {0} заканчивается {1}. Обновите подписку.</value>
   </data>
-  <data name="LicenseWrong" xml:space="preserve">
-    <value>Неверный ключ</value>
+  <data name="LicenseExpiresSoonInstructionIn" xml:space="preserve">
+    <value>в течение {0} дней</value>
   </data>
-  <data name="LicenseWrongOwnerInstruction" xml:space="preserve">
-    <value>Ключ выдан другому пользователю</value>
+  <data name="LicenseExpiresSoonInstructionToday" xml:space="preserve">
+    <value>сегодня</value>
   </data>
 </root>

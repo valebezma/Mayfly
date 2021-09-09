@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -445,10 +445,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxKind.Items" xml:space="preserve">
-    <value>Пойменное (имеет связь с водотоком)</value>
+    <value>Floodplain (course connected)</value>
   </data>
   <data name="comboBoxKind.Items1" xml:space="preserve">
-    <value>Материковое</value>
+    <value>Inner</value>
   </data>
   <data name="comboBoxKind.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 88</value>

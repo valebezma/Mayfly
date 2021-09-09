@@ -148,14 +148,8 @@ I have some issues on {1} to discuss with you:
   <data name="FeedbackSubject" xml:space="preserve">
     <value>{0} feedback from {1}</value>
   </data>
-  <data name="FileError" xml:space="preserve">
-    <value>Error loading file {0}</value>
-  </data>
   <data name="Filtering" xml:space="preserve">
     <value>Filtering entries</value>
-  </data>
-  <data name="Including" xml:space="preserve">
-    <value>Including</value>
   </data>
   <data name="InputDecimalRepeat" xml:space="preserve">
     <value>Decimal repeat</value>
@@ -184,17 +178,11 @@ I have some issues on {1} to discuss with you:
   <data name="NoTitle" xml:space="preserve">
     <value>&lt;Unnamed&gt;</value>
   </data>
-  <data name="TillFormat" xml:space="preserve">
-    <value> up to {0:d}</value>
-  </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="UserUnknown" xml:space="preserve">
     <value>Unknown</value>
-  </data>
-  <data name="LocationRadius" xml:space="preserve">
-    <value>Within {0:N0} m of {1}</value>
   </data>
   <data name="VariousSources" xml:space="preserve">
     <value>Various locations</value>

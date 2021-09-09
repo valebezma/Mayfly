@@ -61,15 +61,6 @@ namespace Mayfly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Key failed.
-        /// </summary>
-        public static string LicenseCancelled {
-            get {
-                return ResourceManager.GetString("LicenseCancelled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to License expired.
         /// </summary>
         public static string LicenseExpired {
@@ -120,42 +111,6 @@ namespace Mayfly.Resources {
         public static string LicenseExpiresSoonInstructionToday {
             get {
                 return ResourceManager.GetString("LicenseExpiresSoonInstructionToday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Key is installed already.
-        /// </summary>
-        public static string LicenseInstalledInstruction {
-            get {
-                return ResourceManager.GetString("LicenseInstalledInstruction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Not activated yet.
-        /// </summary>
-        public static string LicenseNotActivated {
-            get {
-                return ResourceManager.GetString("LicenseNotActivated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wrong Key.
-        /// </summary>
-        public static string LicenseWrong {
-            get {
-                return ResourceManager.GetString("LicenseWrong", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Key is granted to other user.
-        /// </summary>
-        public static string LicenseWrongOwnerInstruction {
-            get {
-                return ResourceManager.GetString("LicenseWrongOwnerInstruction", resourceCulture);
             }
         }
     }

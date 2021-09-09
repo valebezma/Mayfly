@@ -61,33 +61,6 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:N0} bytes.
-        /// </summary>
-        internal static string b {
-            get {
-                return ResourceManager.GetString("b", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N1} kilobytes.
-        /// </summary>
-        internal static string bKilo {
-            get {
-                return ResourceManager.GetString("bKilo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0:N1} megabytes.
-        /// </summary>
-        internal static string bMega {
-            get {
-                return ResourceManager.GetString("bMega", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0:N0} g.
         /// </summary>
         internal static string g {

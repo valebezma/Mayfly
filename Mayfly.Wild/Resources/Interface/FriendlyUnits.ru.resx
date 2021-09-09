@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="b" xml:space="preserve">
-    <value>{0:N0} байт</value>
-  </data>
-  <data name="bKilo" xml:space="preserve">
-    <value>{0:N1} килобайт</value>
-  </data>
-  <data name="bMega" xml:space="preserve">
-    <value>{0:N1} мегабайт</value>
-  </data>
   <data name="g" xml:space="preserve">
     <value>{0:N0} г</value>
   </data>

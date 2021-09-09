@@ -135,4 +135,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Выбор полигона</value>
   </data>
+  <data name="ColumnPolygon.HeaderText" xml:space="preserve">
+    <value>Полигон</value>
+  </data>
 </root>

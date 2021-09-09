@@ -97,7 +97,7 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data loaded to explorer is of very high quality. You can use it in any analysis..
+        ///   Looks up a localized string similar to Data loaded to explorer is of very high quality. You can use it in any analysis.
         /// </summary>
         public static string ArtifactsNoneNotificationInstruction {
             get {

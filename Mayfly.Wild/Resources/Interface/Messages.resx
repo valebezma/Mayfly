@@ -130,7 +130,7 @@
     <value>Your data does not contain any artifacts</value>
   </data>
   <data name="ArtifactsNoneNotificationInstruction" xml:space="preserve">
-    <value>Data loaded to explorer is of very high quality. You can use it in any analysis.</value>
+    <value>Data loaded to explorer is of very high quality. You can use it in any analysis</value>
   </data>
   <data name="ArtifactsNotification" xml:space="preserve">
     <value>Artifacts found in your data</value>

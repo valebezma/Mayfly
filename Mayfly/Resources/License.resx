@@ -123,23 +123,8 @@
   <data name="LicenseExpiresSoon" xml:space="preserve">
     <value>License expires soon</value>
   </data>
-  <data name="LicenseCancelled" xml:space="preserve">
-    <value>Key failed</value>
-  </data>
   <data name="LicenseExpiredInstruction" xml:space="preserve">
     <value>License for {0} expired. Renew subscription to stay tuned.</value>
-  </data>
-  <data name="LicenseInstalledInstruction" xml:space="preserve">
-    <value>Key is installed already</value>
-  </data>
-  <data name="LicenseWrong" xml:space="preserve">
-    <value>Wrong Key</value>
-  </data>
-  <data name="LicenseWrongOwnerInstruction" xml:space="preserve">
-    <value>Key is granted to other user</value>
-  </data>
-  <data name="LicenseNotActivated" xml:space="preserve">
-    <value>Not activated yet</value>
   </data>
   <data name="LicenseExpired" xml:space="preserve">
     <value>License expired</value>

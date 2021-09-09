@@ -40,7 +40,7 @@
             this.maskedPass = new System.Windows.Forms.MaskedTextBox();
             this.checkBoxCredentials = new System.Windows.Forms.CheckBox();
             this.listViewLicenses = new System.Windows.Forms.ListView();
-            this.columnHeaderFeature = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderLicense = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderExpire = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonLogin = new System.Windows.Forms.Button();
             this.labelFeaturesInstruction = new System.Windows.Forms.Label();
@@ -158,7 +158,7 @@
             resources.ApplyResources(this.listViewLicenses, "listViewLicenses");
             this.listViewLicenses.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewLicenses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderFeature,
+            this.columnHeaderLicense,
             this.columnHeaderExpire});
             this.listViewLicenses.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewLicenses.HideSelection = false;
@@ -166,9 +166,9 @@
             this.listViewLicenses.UseCompatibleStateImageBehavior = false;
             this.listViewLicenses.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeaderFeature
+            // columnHeaderLicense
             // 
-            resources.ApplyResources(this.columnHeaderFeature, "columnHeaderFeature");
+            resources.ApplyResources(this.columnHeaderLicense, "columnHeaderLicense");
             // 
             // columnHeaderExpire
             // 
@@ -376,7 +376,7 @@
         protected System.Windows.Forms.ComboBox comboBoxUpdatePolicy;
         protected System.Windows.Forms.Label labelDiagnosics;
         protected System.Windows.Forms.ListView listViewLicenses;
-        protected System.Windows.Forms.ColumnHeader columnHeaderFeature;
+        protected System.Windows.Forms.ColumnHeader columnHeaderLicense;
         private System.Windows.Forms.ColumnHeader columnHeaderExpire;
         protected System.Windows.Forms.CheckBox checkBoxUseUnsafeConnection;
         protected System.Windows.Forms.CheckBox checkBoxShareDiagnostics;

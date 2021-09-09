@@ -117,19 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="buttonOK.Text" xml:space="preserve">
-    <value>Подтвердить</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
-  <data name="labelInstruction.Text" xml:space="preserve">
-    <value>Это модель, построенная для {0}. Она отражает связь {1} с {2}. Подтвердите модель, чтобы применять ее в случаях, когда наблюдений недостаточно или они отсутствуют.</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Подтверждение модели</value>
   </data>
   <data name="buttonCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
   <data name="buttonTrend.Text" xml:space="preserve">
     <value>Тренд</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 21</value>
   </data>
@@ -139,11 +143,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Если этот диалог возник, значит в данных о {0} есть пробелы. Выберите другой тип модели, иначе {1} необработанных особей не будет установлен. Нажимая "Отмена" или закрывая диалог, вы отключите модель предсказания до следующей сессии.</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
+  <data name="labelInstruction.Text" xml:space="preserve">
+    <value>Это модель, построенная для {0}. Она отражает связь {1} с {2}. Подтвердите модель, чтобы применять ее в случаях, когда наблюдений недостаточно или они отсутствуют.</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Подтверждение модели</value>
+  <data name="statChart1.Text" xml:space="preserve">
+    <value>Не хватает данных о массе</value>
   </data>
 </root>

@@ -374,6 +374,9 @@
     <EmbeddedResource Include="Forms\DialogReference.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogReference.ru.resx">
+      <DependentUpon>DialogReference.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface\Diversity.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Diversity.Designer.cs</LastGenOutput>

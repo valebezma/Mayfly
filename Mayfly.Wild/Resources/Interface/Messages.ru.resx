@@ -126,6 +126,12 @@
   <data name="AlreadyOpened" xml:space="preserve">
     <value>Карточка уже открыта</value>
   </data>
+  <data name="ArtifactsNoneNotification" xml:space="preserve">
+    <value>Ваши данные не содержат артефактов</value>
+  </data>
+  <data name="ArtifactsNoneNotificationInstruction" xml:space="preserve">
+    <value>Загруженные данные очень высокого качества. Вы можете использовать их в любом виде анализа</value>
+  </data>
   <data name="ArtifactsNotification" xml:space="preserve">
     <value>В ваших данных есть артефакты</value>
   </data>
@@ -161,19 +167,16 @@
   </data>
   <data name="QuantitySetEqual" xml:space="preserve">
     <value>Количество отдельных особей - {0}, а указанное общее количество - {1} экз.
-Двойной клик, чтобы исправить общее количество.</value>
+Двойной клик, чтобы исправить общее количество</value>
   </data>
   <data name="Saved" xml:space="preserve">
     <value>Карточка сохранена</value>
   </data>
+  <data name="SpeciesAdded" xml:space="preserve">
+    <value>{0} добавлен</value>
+  </data>
   <data name="SpeciesRename" xml:space="preserve">
     <value>Подтвердите переименование "{0}" в "{1}" во всех загруженных карточках.</value>
-  </data>
-  <data name="UnauthorizedInstruction" xml:space="preserve">
-    <value>У вас нет разрешения на использование данных {0}. Кликните, чтобы увидеть свои разрешения.</value>
-  </data>
-  <data name="UnauthorizedTitle" xml:space="preserve">
-    <value>Доступ не разрешен</value>
   </data>
   <data name="WaterSet" xml:space="preserve">
     <value>Водный объект выбран</value>

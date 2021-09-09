@@ -211,19 +211,19 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="comboBoxType.Items" xml:space="preserve">
-    <value>Строка</value>
+    <value>String</value>
   </data>
   <data name="comboBoxType.Items1" xml:space="preserve">
-    <value>Дата / время</value>
+    <value>Date / Time</value>
   </data>
   <data name="comboBoxType.Items2" xml:space="preserve">
-    <value>Целое значение</value>
+    <value>Interger</value>
   </data>
   <data name="comboBoxType.Items3" xml:space="preserve">
-    <value>Число с запятой</value>
+    <value>Decimal</value>
   </data>
   <data name="comboBoxType.Items4" xml:space="preserve">
-    <value>Другой тип</value>
+    <value>Other</value>
   </data>
   <data name="comboBoxType.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 88</value>

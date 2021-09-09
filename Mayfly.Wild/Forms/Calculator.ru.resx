@@ -118,45 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Увиличение линзы, крат</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Размер объекта, делений</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Цена деления, мкм</value>
-  </data>
-  <data name="comboBox1.Items" xml:space="preserve">
-    <value>мкм</value>
-  </data>
-  <data name="comboBox1.Items1" xml:space="preserve">
-    <value>мм</value>
-  </data>
-  <data name="comboBox1.Items2" xml:space="preserve">
-    <value>см</value>
-  </data>
-  <data name="comboBox1.Items3" xml:space="preserve">
-    <value>дм</value>
-  </data>
-  <data name="comboBox1.Items4" xml:space="preserve">
-    <value>м</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Единица измерения</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIAAIlQAAlgAAAICAAAABACAAKAgBAJ6VAABgYAAAAQAgAKiUAADGnQEASEgAAAEA
@@ -3497,5 +3458,47 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Размер объекта</value>
+  </data>
+  <data name="domainUpDownUnits.Items" xml:space="preserve">
+    <value>мкм</value>
+  </data>
+  <data name="domainUpDownUnits.Items1" xml:space="preserve">
+    <value>мм</value>
+  </data>
+  <data name="domainUpDownUnits.Items2" xml:space="preserve">
+    <value>см</value>
+  </data>
+  <data name="domainUpDownUnits.Items3" xml:space="preserve">
+    <value>дм</value>
+  </data>
+  <data name="domainUpDownUnits.Items4" xml:space="preserve">
+    <value>м</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Увиличение линзы, крат</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Размер объекта, делений</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Цена деления, мкм</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Единица измерения</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Точность, знаков</value>
   </data>
 </root>

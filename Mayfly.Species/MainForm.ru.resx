@@ -118,185 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
-  <data name="menuKeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 20</value>
-  </data>
-  <data name="menuKeys.Text" xml:space="preserve">
-    <value>Определитель</value>
-  </data>
-  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="menuService.Text" xml:space="preserve">
-    <value>Сервис</value>
-  </data>
-  <data name="menuItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="menuItemPreview.Text" xml:space="preserve">
-    <value>Просмотр...</value>
-  </data>
-  <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="menuItemPrint.Text" xml:space="preserve">
-    <value>Печать...</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 6</value>
-  </data>
-  <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
-  </data>
-  <data name="menuItemClose.Text" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="menuItemRestart.Text" xml:space="preserve">
-    <value>С начала</value>
-  </data>
-  <data name="menuItemBack.Text" xml:space="preserve">
-    <value>Назад</value>
-  </data>
-  <data name="menuItemGotoTaxon.Text" xml:space="preserve">
-    <value>Перейти к таксону</value>
-  </data>
-  <data name="menuItemGotoSpecies.Text" xml:space="preserve">
-    <value>Перейти к виду</value>
-  </data>
-  <data name="menuItemToTaxon.Text" xml:space="preserve">
-    <value>На шаг к таксону</value>
-  </data>
-  <data name="menuItemToSpecies.Text" xml:space="preserve">
-    <value>На шаг к виду</value>
-  </data>
-  <data name="menuItemSettings.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="menuItemAbout.Text" xml:space="preserve">
-    <value>О программе</value>
-  </data>
-  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
-  </data>
-  <data name="statusLabel.Text" xml:space="preserve">
-    <value>Сообщение статуса</value>
-  </data>
-  <data name="tabPageTaxa.Text" xml:space="preserve">
-    <value>Виды и таксоны</value>
-  </data>
-  <data name="labelSpcCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 45</value>
-  </data>
-  <data name="labelSpcCount.Text" xml:space="preserve">
-    <value>1;2;5|вид;вида;видов</value>
-  </data>
-  <data name="labelTaxCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 45</value>
-  </data>
-  <data name="labelTaxCount.Text" xml:space="preserve">
-    <value>1;2;5|таксон;таксона;таксонов</value>
-  </data>
-  <data name="listViewSpecies.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
-        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
-        AwAAABpSaXZlcnMsIHN0cmVhbXMgYW5kIGNyZWVrcwX8////KFN5c3RlbS5XaW5kb3dzLkZvcm1zLkhv
-        cml6b250YWxBbGlnbm1lbnQBAAAAB3ZhbHVlX18ACAIAAAAAAAAACgYFAAAAFGxpc3RWaWV3R3JvdXBT
-        dHJlYW1zCw==
-</value>
-  </data>
-  <data name="listViewSpecies.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
-        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
-        AwAAAAVMYWtlcwX8////KFN5c3RlbS5XaW5kb3dzLkZvcm1zLkhvcml6b250YWxBbGlnbm1lbnQBAAAA
-        B3ZhbHVlX18ACAIAAAAAAAAACgYFAAAAEmxpc3RWaWV3R3JvdXBMYWtlcws=
-</value>
-  </data>
-  <data name="listViewSpecies.Groups2" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
-        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
-        AwAAAA9UYW5rcyBhbmQgcG9uZHMF/P///yhTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxp
-        Z25tZW50AQAAAAd2YWx1ZV9fAAgCAAAAAAAAAAoGBQAAABJsaXN0Vmlld0dyb3VwVGFua3ML
-</value>
-  </data>
-  <data name="columnHeaderSpeciesName.Text" xml:space="preserve">
-    <value>Научное название</value>
-  </data>
-  <data name="columnHeaderReference.Text" xml:space="preserve">
-    <value>Ссылка</value>
-  </data>
-  <data name="treeViewTaxa.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
-        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAD9CS0YHQtSDQstC40LTRiwYEAAAAAAYFAAAACkFs
-        bFNwZWNpZXMA/////wkEAAAA/////wkEAAAAAAAAAAs=
-</value>
-  </data>
-  <data name="checkBoxFits.Text" xml:space="preserve">
-    <value>Доступные виды</value>
-  </data>
-  <data name="checkBoxHistory.Text" xml:space="preserve">
-    <value>История</value>
-  </data>
-  <data name="buttonBack.Text" xml:space="preserve">
-    <value>&lt; Назад</value>
-  </data>
-  <data name="buttonBack.ToolTip" xml:space="preserve">
-    <value>К предыдущей паре ключей</value>
-  </data>
-  <data name="tabPageKey.Text" xml:space="preserve">
-    <value>Определитель</value>
-  </data>
-  <data name="contextGotoTaxon.Text" xml:space="preserve">
-    <value>Перейти к таксону</value>
-  </data>
-  <data name="contextGotoSpecies.Text" xml:space="preserve">
-    <value>Перейте к виду</value>
-  </data>
-  <data name="contextToTaxon.Text" xml:space="preserve">
-    <value>На шаг к таксону</value>
-  </data>
-  <data name="contextToSpecies.Text" xml:space="preserve">
-    <value>На шаг к виду</value>
-  </data>
-  <data name="tabPageFit.Text" xml:space="preserve">
-    <value>Подбор вида</value>
-  </data>
-  <data name="labelFitCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 45</value>
-  </data>
-  <data name="labelFitCount.Text" xml:space="preserve">
-    <value>1;2;5|вид;вида;видов</value>
-  </data>
-  <data name="labelFtrCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 45</value>
-  </data>
-  <data name="labelFtrCount.Text" xml:space="preserve">
-    <value>1;2;5|признак;признака;признаков</value>
-  </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
-    <value>Научное название</value>
-  </data>
-  <data name="columnHeader2.Text" xml:space="preserve">
-    <value>Ссылка</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAEBAAAAAAIABoBAAAZgAAACAgAAAAACAAqBAAAM4EAAAwMAAAAAAgAKglAAB2FQAAQEAAAAAA
@@ -6467,6 +6288,185 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
+  <data name="buttonBack.Text" xml:space="preserve">
+    <value>&lt; Назад</value>
+  </data>
+  <data name="buttonBack.ToolTip" xml:space="preserve">
+    <value>К предыдущей паре ключей</value>
+  </data>
+  <data name="checkBoxDiagnosis.Text" xml:space="preserve">
+    <value>История</value>
+  </data>
+  <data name="checkBoxFits.Text" xml:space="preserve">
+    <value>Доступные виды</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Научное название</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Ссылка</value>
+  </data>
+  <data name="columnHeaderReference.Text" xml:space="preserve">
+    <value>Ссылка</value>
+  </data>
+  <data name="columnHeaderSpeciesName.Text" xml:space="preserve">
+    <value>Научное название</value>
+  </data>
+  <data name="contextGotoSpecies.Text" xml:space="preserve">
+    <value>Перейте к виду</value>
+  </data>
+  <data name="contextGotoTaxon.Text" xml:space="preserve">
+    <value>Перейти к таксону</value>
+  </data>
+  <data name="contextToSpecies.Text" xml:space="preserve">
+    <value>На шаг к виду</value>
+  </data>
+  <data name="contextToTaxon.Text" xml:space="preserve">
+    <value>На шаг к таксону</value>
+  </data>
+  <data name="labelFitCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 45</value>
+  </data>
+  <data name="labelFitCount.Text" xml:space="preserve">
+    <value>1;2;5|вид;вида;видов</value>
+  </data>
+  <data name="labelFtrCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 45</value>
+  </data>
+  <data name="labelFtrCount.Text" xml:space="preserve">
+    <value>1;2;5|признак;признака;признаков</value>
+  </data>
+  <data name="labelSpcCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 45</value>
+  </data>
+  <data name="labelSpcCount.Text" xml:space="preserve">
+    <value>1;2;5|вид;вида;видов</value>
+  </data>
+  <data name="labelTaxCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 45</value>
+  </data>
+  <data name="labelTaxCount.Text" xml:space="preserve">
+    <value>1;2;5|таксон;таксона;таксонов</value>
+  </data>
+  <data name="listViewSpecies.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAABpSaXZlcnMsIHN0cmVhbXMgYW5kIGNyZWVrcwX8////KFN5c3RlbS5XaW5kb3dzLkZvcm1zLkhv
+        cml6b250YWxBbGlnbm1lbnQBAAAAB3ZhbHVlX18ACAIAAAAAAAAACgYFAAAAFGxpc3RWaWV3R3JvdXBT
+        dHJlYW1zCw==
+</value>
+  </data>
+  <data name="listViewSpecies.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAAVMYWtlcwX8////KFN5c3RlbS5XaW5kb3dzLkZvcm1zLkhvcml6b250YWxBbGlnbm1lbnQBAAAA
+        B3ZhbHVlX18ACAIAAAAAAAAACgYFAAAAEmxpc3RWaWV3R3JvdXBMYWtlcws=
+</value>
+  </data>
+  <data name="listViewSpecies.Groups2" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAA9UYW5rcyBhbmQgcG9uZHMF/P///yhTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxp
+        Z25tZW50AQAAAAd2YWx1ZV9fAAgCAAAAAAAAAAoGBQAAABJsaXN0Vmlld0dyb3VwVGFua3ML
+</value>
+  </data>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="menuItemBack.Text" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="menuItemClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="menuItemGotoSpecies.Text" xml:space="preserve">
+    <value>Перейти к виду</value>
+  </data>
+  <data name="menuItemGotoTaxon.Text" xml:space="preserve">
+    <value>Перейти к таксону</value>
+  </data>
+  <data name="menuItemPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="menuItemPreview.Text" xml:space="preserve">
+    <value>Просмотр...</value>
+  </data>
+  <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 22</value>
+  </data>
+  <data name="menuItemPrint.Text" xml:space="preserve">
+    <value>Печать...</value>
+  </data>
+  <data name="menuItemRestart.Text" xml:space="preserve">
+    <value>С начала</value>
+  </data>
+  <data name="menuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menuItemToSpecies.Text" xml:space="preserve">
+    <value>На шаг к виду</value>
+  </data>
+  <data name="menuItemToTaxon.Text" xml:space="preserve">
+    <value>На шаг к таксону</value>
+  </data>
+  <data name="menuKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 20</value>
+  </data>
+  <data name="menuKeys.Text" xml:space="preserve">
+    <value>Определитель</value>
+  </data>
+  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="menuService.Text" xml:space="preserve">
+    <value>Сервис</value>
+  </data>
+  <data name="statusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 17</value>
+  </data>
+  <data name="statusLabel.Text" xml:space="preserve">
+    <value>Сообщение статуса</value>
+  </data>
+  <data name="tabPageFit.Text" xml:space="preserve">
+    <value>Подбор вида</value>
+  </data>
+  <data name="tabPageKey.Text" xml:space="preserve">
+    <value>Определитель</value>
+  </data>
+  <data name="tabPageTaxa.Text" xml:space="preserve">
+    <value>Виды и таксоны</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 6</value>
+  </data>
+  <data name="treeViewTaxa.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAD9CS0YHQtSDQstC40LTRiwYEAAAAAAYFAAAACkFs
+        bFNwZWNpZXMA/////wkEAAAA/////wkEAAAAAAAAAAs=
 </value>
   </data>
 </root>

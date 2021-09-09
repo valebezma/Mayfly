@@ -118,94 +118,67 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="wizardControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="wizardControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="wizardControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkBoxOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxOptions.AutoSize" type="System.Boolean, mscorlib">
+  <metadata name="backCleaner.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
-  <data name="checkBoxOptions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>614, 511</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>630, 550</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>WizardUninstall</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backCleaner.Name" xml:space="preserve">
+    <value>backCleaner</value>
+  </data>
+  <data name="&gt;&gt;backCleaner.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonRunCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="buttonRunCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 316</value>
+  <data name="buttonRunCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 313</value>
   </data>
-  <data name="checkBoxOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 19</value>
+  <data name="&gt;&gt;buttonRunCheck.Name" xml:space="preserve">
+    <value>buttonRunCheck</value>
   </data>
-  <data name="checkBoxOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;buttonRunCheck.Parent" xml:space="preserve">
+    <value>wizardPageRun</value>
   </data>
-  <data name="checkBoxOptions.Text" xml:space="preserve">
-    <value>I want to see all uninstallation options</value>
+  <data name="buttonRunCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
-  <data name="&gt;&gt;checkBoxOptions.Name" xml:space="preserve">
-    <value>checkBoxOptions</value>
+  <data name="buttonRunCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;checkBoxOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonRunCheck.Text" xml:space="preserve">
+    <value>Check Again</value>
   </data>
-  <data name="&gt;&gt;checkBoxOptions.Parent" xml:space="preserve">
-    <value>wizardPageStart</value>
+  <data name="&gt;&gt;buttonRunCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxOptions.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 76</value>
-  </data>
-  <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 45</value>
-  </data>
-  <data name="labelStart.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;buttonRunCheck.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>We are ready to unistall {0} from this PC.</value>
-  </data>
-  <data name="labelStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;labelStart.Name" xml:space="preserve">
-    <value>labelStart</value>
-  </data>
-  <data name="&gt;&gt;labelStart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelStart.Parent" xml:space="preserve">
-    <value>wizardPageStart</value>
-  </data>
-  <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="wizardPageStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="wizardPageStart.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="wizardPageStart.Text" xml:space="preserve">
-    <value>Let's start</value>
-  </data>
-  <data name="&gt;&gt;wizardPageStart.Name" xml:space="preserve">
-    <value>wizardPageStart</value>
-  </data>
-  <data name="&gt;&gt;wizardPageStart.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="checkBoxFeatures.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -219,6 +192,12 @@
   <data name="checkBoxFeatures.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 139</value>
   </data>
+  <data name="&gt;&gt;checkBoxFeatures.Name" xml:space="preserve">
+    <value>checkBoxFeatures</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFeatures.Parent" xml:space="preserve">
+    <value>wizardPageOptions</value>
+  </data>
   <data name="checkBoxFeatures.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 19</value>
   </data>
@@ -228,14 +207,8 @@
   <data name="checkBoxFeatures.Text" xml:space="preserve">
     <value>Keep features settings</value>
   </data>
-  <data name="&gt;&gt;checkBoxFeatures.Name" xml:space="preserve">
-    <value>checkBoxFeatures</value>
-  </data>
   <data name="&gt;&gt;checkBoxFeatures.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxFeatures.Parent" xml:space="preserve">
-    <value>wizardPageOptions</value>
   </data>
   <data name="&gt;&gt;checkBoxFeatures.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -252,6 +225,12 @@
   <data name="checkBoxLicenses.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 114</value>
   </data>
+  <data name="&gt;&gt;checkBoxLicenses.Name" xml:space="preserve">
+    <value>checkBoxLicenses</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLicenses.Parent" xml:space="preserve">
+    <value>wizardPageOptions</value>
+  </data>
   <data name="checkBoxLicenses.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 19</value>
   </data>
@@ -261,116 +240,74 @@
   <data name="checkBoxLicenses.Text" xml:space="preserve">
     <value>Keep paid feature licenses</value>
   </data>
-  <data name="&gt;&gt;checkBoxLicenses.Name" xml:space="preserve">
-    <value>checkBoxLicenses</value>
-  </data>
   <data name="&gt;&gt;checkBoxLicenses.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxLicenses.Parent" xml:space="preserve">
-    <value>wizardPageOptions</value>
   </data>
   <data name="&gt;&gt;checkBoxLicenses.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="labelInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="checkBoxOptions.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="labelInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkBoxOptions.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxOptions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelInstruction.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkBoxOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 316</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOptions.Name" xml:space="preserve">
+    <value>checkBoxOptions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOptions.Parent" xml:space="preserve">
+    <value>wizardPageStart</value>
+  </data>
+  <data name="checkBoxOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 19</value>
+  </data>
+  <data name="checkBoxOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="checkBoxOptions.Text" xml:space="preserve">
+    <value>I want to see all uninstallation options</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxOptions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 50</value>
   </data>
-  <data name="labelInstruction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 30</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
-  <data name="labelInstruction.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>wizardPageDone</value>
   </data>
-  <data name="labelInstruction.Text" xml:space="preserve">
-    <value>Select additional deinstallation options.</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 45</value>
   </data>
-  <data name="&gt;&gt;labelInstruction.Name" xml:space="preserve">
-    <value>labelInstruction</value>
-  </data>
-  <data name="&gt;&gt;labelInstruction.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelInstruction.Parent" xml:space="preserve">
-    <value>wizardPageOptions</value>
-  </data>
-  <data name="&gt;&gt;labelInstruction.ZOrder" xml:space="preserve">
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="wizardPageOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Now we are done with uninstalling Mayfly software from your PC.</value>
   </data>
-  <data name="wizardPageOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="wizardPageOptions.Text" xml:space="preserve">
-    <value>Uninstall Options</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;wizardPageOptions.Name" xml:space="preserve">
-    <value>wizardPageOptions</value>
-  </data>
-  <data name="&gt;&gt;wizardPageOptions.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="listViewRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="listViewRun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 47</value>
-  </data>
-  <data name="listViewRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 259</value>
-  </data>
-  <data name="listViewRun.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;listViewRun.Name" xml:space="preserve">
-    <value>listViewRun</value>
-  </data>
-  <data name="&gt;&gt;listViewRun.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listViewRun.Parent" xml:space="preserve">
-    <value>wizardPageRun</value>
-  </data>
-  <data name="&gt;&gt;listViewRun.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="buttonRunCheck.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="buttonRunCheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonRunCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 313</value>
-  </data>
-  <data name="buttonRunCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="buttonRunCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="buttonRunCheck.Text" xml:space="preserve">
-    <value>Check Again</value>
-  </data>
-  <data name="&gt;&gt;buttonRunCheck.Name" xml:space="preserve">
-    <value>buttonRunCheck</value>
-  </data>
-  <data name="&gt;&gt;buttonRunCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRunCheck.Parent" xml:space="preserve">
-    <value>wizardPageRun</value>
-  </data>
-  <data name="&gt;&gt;buttonRunCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="labelCheckRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -381,6 +318,12 @@
   <data name="labelCheckRun.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 6</value>
   </data>
+  <data name="&gt;&gt;labelCheckRun.Name" xml:space="preserve">
+    <value>labelCheckRun</value>
+  </data>
+  <data name="&gt;&gt;labelCheckRun.Parent" xml:space="preserve">
+    <value>wizardPageRun</value>
+  </data>
   <data name="labelCheckRun.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 30</value>
   </data>
@@ -390,62 +333,15 @@
   <data name="labelCheckRun.Text" xml:space="preserve">
     <value>There are few instances of {0} features are running. Please, close all documents listed below to continue uninstall.</value>
   </data>
-  <data name="&gt;&gt;labelCheckRun.Name" xml:space="preserve">
-    <value>labelCheckRun</value>
-  </data>
   <data name="&gt;&gt;labelCheckRun.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelCheckRun.Parent" xml:space="preserve">
-    <value>wizardPageRun</value>
   </data>
   <data name="&gt;&gt;labelCheckRun.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="wizardPageRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="wizardPageRun.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="wizardPageRun.Text" xml:space="preserve">
-    <value>Running Features</value>
-  </data>
-  <data name="&gt;&gt;wizardPageRun.Name" xml:space="preserve">
-    <value>wizardPageRun</value>
-  </data>
-  <data name="&gt;&gt;wizardPageRun.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="textBoxStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom</value>
-  </data>
-  <data name="textBoxStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 71</value>
-  </data>
-  <data name="textBoxStatus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 25</value>
-  </data>
-  <data name="textBoxStatus.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 261</value>
-  </data>
-  <data name="textBoxStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxStatus.Name" xml:space="preserve">
-    <value>textBoxStatus</value>
-  </data>
-  <data name="&gt;&gt;textBoxStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxStatus.Parent" xml:space="preserve">
-    <value>wizardPageClean</value>
-  </data>
-  <data name="&gt;&gt;textBoxStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="labelClose.Text" xml:space="preserve">
+    <value>:( We couldn't uninstall {0} right now because some of its features are currently running. 
+Please, close all {1} features {1} and try again.</value>
   </data>
   <data name="labelGetInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -465,6 +361,12 @@
   <data name="labelGetInstruction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 5</value>
   </data>
+  <data name="&gt;&gt;labelGetInstruction.Name" xml:space="preserve">
+    <value>labelGetInstruction</value>
+  </data>
+  <data name="&gt;&gt;labelGetInstruction.Parent" xml:space="preserve">
+    <value>wizardPageClean</value>
+  </data>
   <data name="labelGetInstruction.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 13</value>
   </data>
@@ -474,102 +376,96 @@
   <data name="labelGetInstruction.Text" xml:space="preserve">
     <value>Uninstalling progress</value>
   </data>
-  <data name="&gt;&gt;labelGetInstruction.Name" xml:space="preserve">
-    <value>labelGetInstruction</value>
-  </data>
   <data name="&gt;&gt;labelGetInstruction.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelGetInstruction.Parent" xml:space="preserve">
-    <value>wizardPageClean</value>
   </data>
   <data name="&gt;&gt;labelGetInstruction.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="wizardPageClean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="wizardPageClean.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="wizardPageClean.Text" xml:space="preserve">
-    <value>Cleaning up...</value>
-  </data>
-  <data name="&gt;&gt;wizardPageClean.Name" xml:space="preserve">
-    <value>wizardPageClean</value>
-  </data>
-  <data name="&gt;&gt;wizardPageClean.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInstruction.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 50</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 45</value>
+  <data name="&gt;&gt;labelInstruction.Name" xml:space="preserve">
+    <value>labelInstruction</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;labelInstruction.Parent" xml:space="preserve">
+    <value>wizardPageOptions</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Now we are done with uninstalling Mayfly software from your PC.</value>
+  <data name="labelInstruction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 30</value>
   </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="labelInstruction.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="labelInstruction.Text" xml:space="preserve">
+    <value>Select additional deinstallation options.</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelInstruction.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>wizardPageDone</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="wizardPageDone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 357</value>
-  </data>
-  <data name="wizardPageDone.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;labelInstruction.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="wizardPageDone.Text" xml:space="preserve">
-    <value>Done</value>
+  <data name="labelStart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="&gt;&gt;wizardPageDone.Name" xml:space="preserve">
-    <value>wizardPageDone</value>
+  <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 76</value>
   </data>
-  <data name="&gt;&gt;wizardPageDone.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  <data name="&gt;&gt;labelStart.Name" xml:space="preserve">
+    <value>labelStart</value>
   </data>
-  <data name="wizardControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 511</value>
+  <data name="&gt;&gt;labelStart.Parent" xml:space="preserve">
+    <value>wizardPageStart</value>
   </data>
-  <data name="wizardControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 45</value>
   </data>
-  <data name="wizardControl.Title" xml:space="preserve">
-    <value>Uninstall Mayfly software</value>
-  </data>
-  <data name="&gt;&gt;wizardControl.Name" xml:space="preserve">
-    <value>wizardControl</value>
-  </data>
-  <data name="&gt;&gt;wizardControl.Type" xml:space="preserve">
-    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
-  </data>
-  <data name="&gt;&gt;wizardControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;wizardControl.ZOrder" xml:space="preserve">
+  <data name="labelStart.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="backCleaner.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>We are ready to unistall {0} from this PC.</value>
+  </data>
+  <data name="labelStart.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelStart.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="listViewRun.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="listViewRun.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 47</value>
+  </data>
+  <data name="&gt;&gt;listViewRun.Name" xml:space="preserve">
+    <value>listViewRun</value>
+  </data>
+  <data name="&gt;&gt;listViewRun.Parent" xml:space="preserve">
+    <value>wizardPageRun</value>
+  </data>
+  <data name="listViewRun.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 259</value>
+  </data>
+  <data name="listViewRun.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;listViewRun.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewRun.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="pictureBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -2897,6 +2793,12 @@
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>457, 30</value>
   </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 62</value>
   </data>
@@ -2906,43 +2808,145 @@
   <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
-    <value>pictureBox2</value>
-  </data>
   <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="textBoxStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 71</value>
+  </data>
+  <data name="textBoxStatus.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 25</value>
+  </data>
+  <data name="textBoxStatus.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxStatus.Name" xml:space="preserve">
+    <value>textBoxStatus</value>
+  </data>
+  <data name="&gt;&gt;textBoxStatus.Parent" xml:space="preserve">
+    <value>wizardPageClean</value>
+  </data>
+  <data name="textBoxStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>440, 261</value>
+  </data>
+  <data name="textBoxStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxStatus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="wizardControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="wizardControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="wizardControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;wizardControl.Name" xml:space="preserve">
+    <value>wizardControl</value>
+  </data>
+  <data name="&gt;&gt;wizardControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="wizardControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>614, 511</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>630, 550</value>
+  <data name="wizardControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
+  <data name="wizardControl.Title" xml:space="preserve">
+    <value>Uninstall Mayfly software</value>
   </data>
-  <data name="&gt;&gt;backCleaner.Name" xml:space="preserve">
-    <value>backCleaner</value>
+  <data name="&gt;&gt;wizardControl.Type" xml:space="preserve">
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
-  <data name="&gt;&gt;backCleaner.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;wizardControl.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>WizardUninstall</value>
+  <data name="&gt;&gt;wizardPageClean.Name" xml:space="preserve">
+    <value>wizardPageClean</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="wizardPageClean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageClean.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="wizardPageClean.Text" xml:space="preserve">
+    <value>Cleaning up...</value>
+  </data>
+  <data name="&gt;&gt;wizardPageClean.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardPageDone.Name" xml:space="preserve">
+    <value>wizardPageDone</value>
+  </data>
+  <data name="wizardPageDone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageDone.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="wizardPageDone.Text" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="&gt;&gt;wizardPageDone.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardPageOptions.Name" xml:space="preserve">
+    <value>wizardPageOptions</value>
+  </data>
+  <data name="wizardPageOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="wizardPageOptions.Text" xml:space="preserve">
+    <value>Uninstall Options</value>
+  </data>
+  <data name="&gt;&gt;wizardPageOptions.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardPageRun.Name" xml:space="preserve">
+    <value>wizardPageRun</value>
+  </data>
+  <data name="wizardPageRun.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageRun.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="wizardPageRun.Text" xml:space="preserve">
+    <value>Running Features</value>
+  </data>
+  <data name="&gt;&gt;wizardPageRun.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+  </data>
+  <data name="&gt;&gt;wizardPageStart.Name" xml:space="preserve">
+    <value>wizardPageStart</value>
+  </data>
+  <data name="wizardPageStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>567, 357</value>
+  </data>
+  <data name="wizardPageStart.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="wizardPageStart.Text" xml:space="preserve">
+    <value>Let's start</value>
+  </data>
+  <data name="&gt;&gt;wizardPageStart.Type" xml:space="preserve">
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
 </root>

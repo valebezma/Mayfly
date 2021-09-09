@@ -117,53 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DuplicateDefaultComment" xml:space="preserve">
-    <value>Добавлен автоматически</value>
-  </data>
-  <data name="IndLog" xml:space="preserve">
-    <value>Журнал особей {0}</value>
-  </data>
-  <data name="IndWindow" xml:space="preserve">
-    <value>{0}. Профиль особи</value>
-  </data>
-  <data name="SpeciesCount" xml:space="preserve">
-    <value>Видов: 0</value>
-  </data>
-  <data name="IndNo" xml:space="preserve">
-    <value>Проба №</value>
-  </data>
-  <data name="Control" xml:space="preserve">
-    <value>Контроль</value>
-  </data>
-  <data name="GetData" xml:space="preserve">
-    <value>Получение данных...</value>
-  </data>
-  <data name="MoreExtraData" xml:space="preserve">
-    <value>Добавить больше</value>
-  </data>
-  <data name="NoData" xml:space="preserve">
-    <value>Нет данных...</value>
-  </data>
-  <data name="QualityTip" xml:space="preserve">
-    <value>Качество метода составляет {0:P1}</value>
-  </data>
-  <data name="QualityTipBad" xml:space="preserve">
-    <value>Качество слишком низкое</value>
-  </data>
-  <data name="CompositionPresentation" xml:space="preserve">
-    <value>{0}: {1} категорий</value>
-  </data>
-  <data name="SuggestionUnavailable" xml:space="preserve">
-    <value>Мало данных</value>
+  <data name="AnnualSurveyItem" xml:space="preserve">
+    <value>Исследования {0} года</value>
   </data>
   <data name="BioFormat" xml:space="preserve">
     <value>Сроки сбора: {0}; Места сбора: {1}</value>
   </data>
-  <data name="AnnualSurveyItem" xml:space="preserve">
-    <value>Исследования {0} года</value>
+  <data name="CompositionPresentation" xml:space="preserve">
+    <value>{0}: {1} категорий</value>
   </data>
-  <data name="ModelCalc" xml:space="preserve">
-    <value>Расчет моделей</value>
+  <data name="Control" xml:space="preserve">
+    <value>Контроль</value>
+  </data>
+  <data name="DuplicateDefaultComment" xml:space="preserve">
+    <value>Добавлен автоматически</value>
   </data>
   <data name="FieldFolder" xml:space="preserve">
     <value>Полевые данные</value>
@@ -171,16 +138,52 @@
   <data name="FieldFolderTip" xml:space="preserve">
     <value>Хранилище для карточек полевых данных, справочников и т. п.</value>
   </data>
+  <data name="GetData" xml:space="preserve">
+    <value>Получение данных...</value>
+  </data>
+  <data name="IndLog" xml:space="preserve">
+    <value>Журнал особей {0}</value>
+  </data>
+  <data name="IndNo" xml:space="preserve">
+    <value>Проба №</value>
+  </data>
+  <data name="IndWindow" xml:space="preserve">
+    <value>{0}. Профиль особи</value>
+  </data>
+  <data name="LogMask" xml:space="preserve">
+    <value>{0:s} в {1:s}</value>
+  </data>
+  <data name="ModelCalc" xml:space="preserve">
+    <value>Расчет моделей</value>
+  </data>
+  <data name="MoreExtraData" xml:space="preserve">
+    <value>Добавить больше</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>Нет данных...</value>
+  </data>
   <data name="NoPrecip" xml:space="preserve">
     <value>Без осадков</value>
   </data>
-  <data name="WaterUnknown" xml:space="preserve">
-    <value>Неизвеcтный водоем</value>
+  <data name="QualityTip" xml:space="preserve">
+    <value>Качество метода составляет {0:P1}</value>
+  </data>
+  <data name="QualityTipBad" xml:space="preserve">
+    <value>Качество слишком низкое</value>
+  </data>
+  <data name="RedefineComment" xml:space="preserve">
+    <value>Ранее определен как {0}</value>
   </data>
   <data name="SampleFormat" xml:space="preserve">
     <value>Пробу собрал {0:D} в {1:t} в {2} {3} с помощью {4}</value>
   </data>
-  <data name="RedefineComment" xml:space="preserve">
-    <value>Ранее определен как {0}</value>
+  <data name="SpeciesCount" xml:space="preserve">
+    <value>Видов: 0</value>
+  </data>
+  <data name="SuggestionUnavailable" xml:space="preserve">
+    <value>Мало данных</value>
+  </data>
+  <data name="WaterUnknown" xml:space="preserve">
+    <value>Неизвеcтный водоем</value>
   </data>
 </root>

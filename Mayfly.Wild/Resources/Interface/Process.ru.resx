@@ -127,7 +127,7 @@
     <value>Загрузка журнала карточек</value>
   </data>
   <data name="CardsSaving" xml:space="preserve">
-    <value>Сохранение карточек:</value>
+    <value>Сохранение карточек</value>
   </data>
   <data name="ExtInd" xml:space="preserve">
     <value>Расширение журнала особей</value>

@@ -134,6 +134,7 @@
 
 У меня есть пара вопросов по работе {1}:
 
+
 </value>
   </data>
   <data name="FeedbackSubject" xml:space="preserve">
@@ -141,9 +142,6 @@
   </data>
   <data name="FigureCaption" xml:space="preserve">
     <value>Рисунок {0} — {1}.</value>
-  </data>
-  <data name="FileError" xml:space="preserve">
-    <value>Ошибка загрузки файла {0}</value>
   </data>
   <data name="FileNew" xml:space="preserve">
     <value>Новая {0}</value>
@@ -162,12 +160,6 @@
   </data>
   <data name="Filtering" xml:space="preserve">
     <value>Фильтрация записей</value>
-  </data>
-  <data name="Including" xml:space="preserve">
-    <value>В том числе</value>
-  </data>
-  <data name="IncorrectSymbol" xml:space="preserve">
-    <value>Неверный символ</value>
   </data>
   <data name="InputDecimalRepeat" xml:space="preserve">
     <value>Повторение десятичного разделителя</value>
@@ -190,17 +182,11 @@
   <data name="InvestigatorNotApproved" xml:space="preserve">
     <value>Исследователь не подтвержден</value>
   </data>
-  <data name="LocationRadius" xml:space="preserve">
-    <value>В пределах {0:N0} м от {1}</value>
-  </data>
   <data name="Mean" xml:space="preserve">
     <value>Среднее</value>
   </data>
   <data name="NoTitle" xml:space="preserve">
     <value>&lt;Без названия&gt;</value>
-  </data>
-  <data name="TillFormat" xml:space="preserve">
-    <value> до {0:d}</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Всего</value>
@@ -210,5 +196,16 @@
   </data>
   <data name="VariousSources" xml:space="preserve">
     <value>Различные расположения</value>
+  </data>
+  <data name="ErrorReportBody" xml:space="preserve">
+    <value>В {0} возникло исключение.
+
+{1}
+
+Стек:
+{2}</value>
+  </data>
+  <data name="ErrorReportSubject" xml:space="preserve">
+    <value>Исключение. {0}</value>
   </data>
 </root>

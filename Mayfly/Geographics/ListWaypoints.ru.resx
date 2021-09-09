@@ -154,4 +154,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Выбор путевой точки</value>
   </data>
+  <data name="ColumnWPT.HeaderText" xml:space="preserve">
+    <value>Путевая точка</value>
+  </data>
 </root>

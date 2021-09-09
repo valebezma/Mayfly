@@ -363,4 +363,13 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="buttonRepeat.ToolTip" xml:space="preserve">
+    <value>Add new column filter from last added filter</value>
+  </data>
+  <data name="checkBoxAutoApply.Text" xml:space="preserve">
+    <value>Apply automatically</value>
+  </data>
+  <data name="checkBoxAutoApply.ToolTip" xml:space="preserve">
+    <value>Apply filter immediately after conditions change</value>
+  </data>
 </root>

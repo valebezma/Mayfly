@@ -118,174 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 13</value>
-  </data>
-  <data name="labelWaters.Text" xml:space="preserve">
-    <value>Справочник водоемов</value>
-  </data>
-  <data name="buttonBrowseWaters.Text" xml:space="preserve">
-    <value>Обзор...</value>
-  </data>
-  <data name="buttonOpenWaters.Text" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="labelRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 15</value>
-  </data>
-  <data name="labelRef.Text" xml:space="preserve">
-    <value>Справочные таблицы</value>
-  </data>
-  <data name="buttonBrowseSpecies.Text" xml:space="preserve">
-    <value>Обзор...</value>
-  </data>
-  <data name="labelSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="labelSpecies.Text" xml:space="preserve">
-    <value>Справочник видов</value>
-  </data>
-  <data name="buttonOpenSpecies.Text" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="tabPageReferences.Text" xml:space="preserve">
-    <value>Справочники</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 17</value>
-  </data>
-  <data name="checkBoxSpeciesExpand.Text" xml:space="preserve">
-    <value>Автоматически расширять справочник</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 17</value>
-  </data>
-  <data name="checkBoxSpeciesExpandVisualControl.Text" xml:space="preserve">
-    <value>Визуально подтверждать и редактировать новые записи</value>
-  </data>
-  <data name="buttonClearRecent.Text" xml:space="preserve">
-    <value>Очистить</value>
-  </data>
-  <data name="labelRecent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 13</value>
-  </data>
-  <data name="labelRecent.Text" xml:space="preserve">
-    <value>Длина списка недавних видов</value>
-  </data>
-  <data name="checkBoxAutoLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 17</value>
-  </data>
-  <data name="checkBoxAutoLog.Text" xml:space="preserve">
-    <value>Открывать журнал особей при добавлении вида в пробу</value>
-  </data>
-  <data name="labelInputFish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 15</value>
-  </data>
-  <data name="labelInputFish.Text" xml:space="preserve">
-    <value>Видовая ведомость</value>
-  </data>
-  <data name="tabPageSpecies.Text" xml:space="preserve">
-    <value>Видовая ведомость</value>
-  </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
-    <value>Признак</value>
-  </data>
-  <data name="buttonRemoveVar.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="buttonNewVar.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 17</value>
-  </data>
-  <data name="checkBoxAutoDecreaseBio.Text" xml:space="preserve">
-    <value>Уменьшать итог по журналу особей</value>
-  </data>
-  <data name="checkBoxFixTotals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 17</value>
-  </data>
-  <data name="checkBoxFixTotals.Text" xml:space="preserve">
-    <value>Вычислять количество и массу выборки по журналу особей</value>
-  </data>
-  <data name="labelAddtsVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 15</value>
-  </data>
-  <data name="labelAddtsVars.Text" xml:space="preserve">
-    <value>Дополнительные значения</value>
-  </data>
-  <data name="labelCommonVars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 15</value>
-  </data>
-  <data name="labelCommonVars.Text" xml:space="preserve">
-    <value>Общие значения</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 17</value>
-  </data>
-  <data name="checkBoxAutoIncreaseBio.Text" xml:space="preserve">
-    <value>Увеличивать итог по журналу особей</value>
-  </data>
-  <data name="tabPageIndividuals.Text" xml:space="preserve">
-    <value>Журнал особей</value>
-  </data>
-  <data name="buttonAddtFctrsDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="buttonAddtFctrsAdd.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="labelAddtFctrs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 15</value>
-  </data>
-  <data name="labelAddtFctrs.Text" xml:space="preserve">
-    <value>Дополнительные факторы</value>
-  </data>
-  <data name="tabPageFactors.Text" xml:space="preserve">
-    <value>Факторы</value>
-  </data>
-  <data name="tabPageInput.Text" xml:space="preserve">
-    <value>Ввод данных</value>
-  </data>
-  <data name="comboBoxLogOrder.Items" xml:space="preserve">
-    <value>По алфавиту</value>
-  </data>
-  <data name="comboBoxLogOrder.Items1" xml:space="preserve">
-    <value>По количеству</value>
-  </data>
-  <data name="comboBoxLogOrder.Items2" xml:space="preserve">
-    <value>По массе</value>
-  </data>
-  <data name="checkBoxBreakBetweenSpecies.Text" xml:space="preserve">
-    <value>Для каждого вида</value>
-  </data>
-  <data name="checkBoxOrderLog.Text" xml:space="preserve">
-    <value>Сортировать журнал</value>
-  </data>
-  <data name="checkBoxCardOdd.Text" xml:space="preserve">
-    <value>Начинать карточку с нечетной страницы</value>
-  </data>
-  <data name="checkBoxBreakBeforeIndividuals.Text" xml:space="preserve">
-    <value>Начинать журнал особей с новой страницы</value>
-  </data>
-  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 15</value>
-  </data>
-  <data name="labelPrintCaption.Text" xml:space="preserve">
-    <value>Настройки печати и просмотра</value>
-  </data>
-  <data name="tabPagePrint.Text" xml:space="preserve">
-    <value>Печать</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
-  </data>
-  <data name="buttonBasicSettings.Text" xml:space="preserve">
-    <value>Основные настройки...</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AMDAQAAEABABoBgAA1gAAACAgEAABAAQA6AIAAD4HAAAYGBAAAQAEAOgBAAAmCgAAEBAQAAEA
@@ -1929,5 +1761,182 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="buttonAddtFctrsAdd.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="buttonAddtFctrsDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="buttonBasicSettings.Text" xml:space="preserve">
+    <value>Основные настройки...</value>
+  </data>
+  <data name="buttonBrowseSpecies.Text" xml:space="preserve">
+    <value>Обзор...</value>
+  </data>
+  <data name="buttonBrowseWaters.Text" xml:space="preserve">
+    <value>Обзор...</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="buttonClearRecent.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="buttonNewVar.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="buttonOpenSpecies.Text" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="buttonOpenWaters.Text" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="buttonRemoveVar.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 17</value>
+  </data>
+  <data name="checkBoxAutoDecreaseBio.Text" xml:space="preserve">
+    <value>Уменьшать итог по журналу особей</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 17</value>
+  </data>
+  <data name="checkBoxAutoIncreaseBio.Text" xml:space="preserve">
+    <value>Увеличивать итог по журналу особей</value>
+  </data>
+  <data name="checkBoxAutoLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 17</value>
+  </data>
+  <data name="checkBoxAutoLog.Text" xml:space="preserve">
+    <value>Открывать журнал особей при добавлении вида в пробу</value>
+  </data>
+  <data name="checkBoxBreakBeforeIndividuals.Text" xml:space="preserve">
+    <value>Начинать журнал особей с новой страницы</value>
+  </data>
+  <data name="checkBoxBreakBetweenSpecies.Text" xml:space="preserve">
+    <value>Для каждого вида</value>
+  </data>
+  <data name="checkBoxCardOdd.Text" xml:space="preserve">
+    <value>Начинать карточку с нечетной страницы</value>
+  </data>
+  <data name="checkBoxFixTotals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 17</value>
+  </data>
+  <data name="checkBoxFixTotals.Text" xml:space="preserve">
+    <value>Вычислять количество и массу выборки по журналу особей</value>
+  </data>
+  <data name="checkBoxOrderLog.Text" xml:space="preserve">
+    <value>Сортировать журнал</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 17</value>
+  </data>
+  <data name="checkBoxSpeciesExpand.Text" xml:space="preserve">
+    <value>Автоматически расширять справочник</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>317, 17</value>
+  </data>
+  <data name="checkBoxSpeciesExpandVisualControl.Text" xml:space="preserve">
+    <value>Визуально подтверждать и редактировать новые записи</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Признак</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Признак</value>
+  </data>
+  <data name="comboBoxLogOrder.Items" xml:space="preserve">
+    <value>По алфавиту</value>
+  </data>
+  <data name="comboBoxLogOrder.Items1" xml:space="preserve">
+    <value>По количеству</value>
+  </data>
+  <data name="comboBoxLogOrder.Items2" xml:space="preserve">
+    <value>По массе</value>
+  </data>
+  <data name="labelAddtFctrs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 15</value>
+  </data>
+  <data name="labelAddtFctrs.Text" xml:space="preserve">
+    <value>Дополнительные факторы</value>
+  </data>
+  <data name="labelAddtsVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 15</value>
+  </data>
+  <data name="labelAddtsVars.Text" xml:space="preserve">
+    <value>Дополнительные значения</value>
+  </data>
+  <data name="labelCommonVars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 15</value>
+  </data>
+  <data name="labelCommonVars.Text" xml:space="preserve">
+    <value>Общие значения</value>
+  </data>
+  <data name="labelInputFish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 15</value>
+  </data>
+  <data name="labelInputFish.Text" xml:space="preserve">
+    <value>Видовая ведомость</value>
+  </data>
+  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 15</value>
+  </data>
+  <data name="labelPrintCaption.Text" xml:space="preserve">
+    <value>Настройки печати и просмотра</value>
+  </data>
+  <data name="labelRecent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 13</value>
+  </data>
+  <data name="labelRecent.Text" xml:space="preserve">
+    <value>Длина списка недавних видов</value>
+  </data>
+  <data name="labelRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 15</value>
+  </data>
+  <data name="labelRef.Text" xml:space="preserve">
+    <value>Справочные таблицы</value>
+  </data>
+  <data name="labelSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="labelSpecies.Text" xml:space="preserve">
+    <value>Справочник видов</value>
+  </data>
+  <data name="labelWaters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="labelWaters.Text" xml:space="preserve">
+    <value>Справочник водоемов</value>
+  </data>
+  <data name="tabPageFactors.Text" xml:space="preserve">
+    <value>Факторы</value>
+  </data>
+  <data name="tabPageIndividuals.Text" xml:space="preserve">
+    <value>Журнал особей</value>
+  </data>
+  <data name="tabPageInput.Text" xml:space="preserve">
+    <value>Ввод данных</value>
+  </data>
+  <data name="tabPagePrint.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="tabPageReferences.Text" xml:space="preserve">
+    <value>Справочники</value>
+  </data>
+  <data name="tabPageSpecies.Text" xml:space="preserve">
+    <value>Видовая ведомость</value>
+  </data>
+  <data name="tdbRecentClear.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="tdClearRecent.MainInstruction" xml:space="preserve">
+    <value>Очистить список недавних видов?</value>
   </data>
 </root>

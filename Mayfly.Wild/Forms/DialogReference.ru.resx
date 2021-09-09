@@ -117,13 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="b" xml:space="preserve">
-    <value>{0:N0} байт</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Загрузка справочника по-умолчанию</value>
   </data>
-  <data name="bKilo" xml:space="preserve">
-    <value>{0:N1} килобайт</value>
+  <data name="labelGetInstruction.Text" xml:space="preserve">
+    <value>Загрузка {0} по-умолчанию из {1}.</value>
   </data>
-  <data name="bMega" xml:space="preserve">
-    <value>{0:N1} мегабайт</value>
+  <data name="taskDialogMissingReference.CollapsedControlText" xml:space="preserve">
+    <value>Почему я это вижу?</value>
+  </data>
+  <data name="taskDialogMissingReference.Content" xml:space="preserve">
+    <value>Требуемый справочник не указан. Возможно, он изначально не был указан или, возможно, перемещен или удален. Чтобы указать справочник выберите одну из предложенных опций.</value>
+  </data>
+  <data name="taskDialogMissingReference.ExpandedControlText" xml:space="preserve">
+    <value>Понятно</value>
+  </data>
+  <data name="taskDialogMissingReference.ExpandedInformation" xml:space="preserve">
+    <value>Этот диалог возникает когда приложение обращается к справочнику, который отсутствует.</value>
+  </data>
+  <data name="taskDialogMissingReference.MainInstruction" xml:space="preserve">
+    <value>Отсутствует {0}</value>
+  </data>
+  <data name="taskDialogMissingReference.WindowTitle" xml:space="preserve">
+    <value>Справочник отсутствует</value>
+  </data>
+  <data name="tdbBrowse.CommandLinkNote" xml:space="preserve">
+    <value>Указать {0} на этом компьютере или локальной сети</value>
+  </data>
+  <data name="tdbBrowse.Text" xml:space="preserve">
+    <value>Выбрать локальный файл...</value>
+  </data>
+  <data name="tdbCreate.CommandLinkNote" xml:space="preserve">
+    <value>Создать пустой файл "{0}" и установить его по-умолчанию</value>
+  </data>
+  <data name="tdbCreate.Text" xml:space="preserve">
+    <value>Создать пустой справочник</value>
+  </data>
+  <data name="tdbDownload.CommandLinkNote" xml:space="preserve">
+    <value>Загрузить {0} с сервера</value>
+  </data>
+  <data name="tdbDownload.Text" xml:space="preserve">
+    <value>Загрузить справочник по-умолчанию</value>
   </data>
 </root>

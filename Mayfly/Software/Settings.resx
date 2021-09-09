@@ -333,10 +333,10 @@
   <data name="listViewLicenses.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="columnHeaderFeature.Text" xml:space="preserve">
-    <value>Feature</value>
+  <data name="columnHeaderLicense.Text" xml:space="preserve">
+    <value>License</value>
   </data>
-  <data name="columnHeaderFeature.Width" type="System.Int32, mscorlib">
+  <data name="columnHeaderLicense.Width" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
   <data name="columnHeaderExpire.Text" xml:space="preserve">
@@ -424,7 +424,7 @@
     <value>9</value>
   </data>
   <data name="labelFeaturesInstruction.Text" xml:space="preserve">
-    <value>You currently have following features unlocked:</value>
+    <value>You currently have following licenses installed:</value>
   </data>
   <data name="&gt;&gt;labelFeaturesInstruction.Name" xml:space="preserve">
     <value>labelFeaturesInstruction</value>
@@ -1003,7 +1003,7 @@
     <value>Name of your account does not match name specified in settings. You can replace currently stored name. Cancel authorization or replace stored name?</value>
   </data>
   <data name="taskDialogNameMismatch.Footer" xml:space="preserve">
-    <value>In case of Name change all of data signed by your previous name will become partially unavailable to you. If so we recommend cancel authorization untill setting correct name for server account. For more help contact support. </value>
+    <value>In case of Name change all of data signed by your previous name will become partially unavailable to you. If so we recommend cancel authorization untill setting correct name for server account. For more help contact support.</value>
   </data>
   <data name="taskDialogNameMismatch.MainInstruction" xml:space="preserve">
     <value>Names Mismatch</value>
@@ -2685,10 +2685,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;columnHeaderFeature.Name" xml:space="preserve">
-    <value>columnHeaderFeature</value>
+  <data name="&gt;&gt;columnHeaderLicense.Name" xml:space="preserve">
+    <value>columnHeaderLicense</value>
   </data>
-  <data name="&gt;&gt;columnHeaderFeature.Type" xml:space="preserve">
+  <data name="&gt;&gt;columnHeaderLicense.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnHeaderExpire.Name" xml:space="preserve">

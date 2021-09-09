@@ -241,4 +241,25 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Свойства столбца</value>
   </data>
+  <data name="labelFormat.Text" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="comboBoxType.Items" xml:space="preserve">
+    <value>Строка</value>
+  </data>
+  <data name="comboBoxType.Items1" xml:space="preserve">
+    <value>Дата / время</value>
+  </data>
+  <data name="comboBoxType.Items2" xml:space="preserve">
+    <value>Целое значение</value>
+  </data>
+  <data name="comboBoxType.Items3" xml:space="preserve">
+    <value>Число с запятой</value>
+  </data>
+  <data name="comboBoxType.Items4" xml:space="preserve">
+    <value>Другое</value>
+  </data>
+  <data name="comboBoxDateFormat.Items11" xml:space="preserve">
+    <value>Удобный формат</value>
+  </data>
 </root>

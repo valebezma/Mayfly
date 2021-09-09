@@ -118,140 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Добавить...</value>
   </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>Файл</value>
+  <data name="buttonTry.Text" xml:space="preserve">
+    <value>Опробовать определитель</value>
   </data>
-  <data name="menuItemNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Научное название</value>
   </data>
-  <data name="menuItemNew.Text" xml:space="preserve">
-    <value>Новый</value>
-  </data>
-  <data name="menuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemOpen.Text" xml:space="preserve">
-    <value>Открыть</value>
-  </data>
-  <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="menuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemSaveAs.Text" xml:space="preserve">
-    <value>Сохранить как...</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 6</value>
-  </data>
-  <data name="menuItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemPreview.Text" xml:space="preserve">
-    <value>Просмотр...</value>
-  </data>
-  <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemPrint.Text" xml:space="preserve">
-    <value>Печать...</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 6</value>
-  </data>
-  <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="menuItemClose.Text" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="menuTaxa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 20</value>
-  </data>
-  <data name="menuTaxa.Text" xml:space="preserve">
-    <value>Виды и таксоны</value>
-  </data>
-  <data name="menuItemAddBase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="menuItemAddBase.Text" xml:space="preserve">
-    <value>Добавить новое основание</value>
-  </data>
-  <data name="menuItemAddTaxon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="menuItemAddTaxon.Text" xml:space="preserve">
-    <value>Добавить новый таксон</value>
-  </data>
-  <data name="menuItemAddSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="menuItemAddSpecies.Text" xml:space="preserve">
-    <value>Добавить новый вид</value>
-  </data>
-  <data name="menuKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 20</value>
-  </data>
-  <data name="menuKey.Text" xml:space="preserve">
-    <value>Ключи определителя</value>
-  </data>
-  <data name="menuItemAddStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="menuItemAddStep.Text" xml:space="preserve">
-    <value>Добавить новый шаг</value>
-  </data>
-  <data name="menuItemAddFeature.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 22</value>
-  </data>
-  <data name="menuItemAddFeature.Text" xml:space="preserve">
-    <value>Добавить новый признак</value>
-  </data>
-  <data name="menuPictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="menuPictures.Text" xml:space="preserve">
-    <value>Изображения</value>
-  </data>
-  <data name="menuItemPictureLoad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 22</value>
-  </data>
-  <data name="menuItemPictureLoad.Text" xml:space="preserve">
-    <value>Загрузить</value>
-  </data>
-  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="menuService.Text" xml:space="preserve">
-    <value>Сервис</value>
-  </data>
-  <data name="menuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="menuItemSettings.Text" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="menuItemAbout.Text" xml:space="preserve">
-    <value>О программе</value>
-  </data>
-  <data name="tabPageTaxa.Text" xml:space="preserve">
-    <value>Виды и таксоны</value>
-  </data>
-  <data name="labelMinCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 21</value>
-  </data>
-  <data name="labelMinCount.Text" xml:space="preserve">
-    <value>1;2;5|синоним;синонима;синонимов</value>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Ссылка</value>
   </data>
   <data name="columnHeader5.Text" xml:space="preserve">
     <value>Научное название</value>
@@ -259,119 +136,14 @@
   <data name="columnHeader6.Text" xml:space="preserve">
     <value>Ссылка</value>
   </data>
-  <data name="labelRepCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 45</value>
-  </data>
-  <data name="labelRepCount.Text" xml:space="preserve">
-    <value>1;2;5|вид;вида;видов</value>
-  </data>
-  <data name="labelTaxCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 45</value>
-  </data>
-  <data name="labelTaxCount.Text" xml:space="preserve">
-    <value>1;2;5|таксон;таксона;таксонов</value>
+  <data name="columnHeaderReference.Text" xml:space="preserve">
+    <value>Ссылка</value>
   </data>
   <data name="columnHeaderSpeciesName.Text" xml:space="preserve">
     <value>Научное название</value>
   </data>
-  <data name="columnHeaderReference.Text" xml:space="preserve">
-    <value>Ссылка</value>
-  </data>
-  <data name="treeViewTaxa.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
-        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAD9CS0YHQtSDQstC40LTRiwYEAAAAAAYFAAAACkFs
-        bFNwZWNpZXMA/////wkEAAAA/////wkEAAAAAAAAAAs=
-</value>
-  </data>
-  <data name="tabPageKey.Text" xml:space="preserve">
-    <value>Ключи определителя</value>
-  </data>
-  <data name="listViewEngagement.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
-        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
-        AwAAAAdFbmdhZ2VkBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEA
-        AAAHdmFsdWVfXwAIAgAAAAIAAAAKBgUAAAAVbGlzdFZpZXdHcm91cEF0dGFjaGVkCw==
-</value>
-  </data>
-  <data name="listViewEngagement.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
-        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
-        AwAAAARGcmVlBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
-        dmFsdWVfXwAIAgAAAAIAAAAKBgUAAAAXbGlzdFZpZXdHcm91cFVuYXR0YWNoZWQL
-</value>
-  </data>
-  <data name="treeViewStep.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
-        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQJY2hpbGRyZW4wAQEBAAABAAEABAEICAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5v
-        ZGUCAAAAAgAAAAYDAAAAF0luaXRpYWwgZGVmaW5pdGlvbiBzdGVwBgQAAAAABgUAAAAFU3RlcDEA////
-        /wkEAAAA/////wYHAAAAGSjQv9C+INGD0LzQvtC70YfQsNC90LjRjikBAAAACQgAAAAFCAAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQsAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
-        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQEBAQAAAQABAAQEAQgICB1TeXN0ZW0uV2luZG93cy5G
-        b3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYJAAAA
-        FEluaXRpYWwgc3RlcCBmZWF0dXJlCQQAAAAGCwAAAAlGZWF0dXJlMTAA/////wkEAAAA/////wkEAAAA
-        AgAAAAkNAAAACQ4AAAAFDQAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtU
-        b29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJ
-        bmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYPAAAAD0ZlYXR1
-        cmUgc3RhdGUgMQkEAAAABhEAAAAIU3RhdGUxMDAA/////wkEAAAA/////wkEAAAAAAAAAAUOAAAAHVN5
-        c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVj
-        a2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkK
-        Q2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABhMAAAAPRmVhdHVyZSBzdGF0ZSAyCQQAAAAGFQAAAAhT
-        dGF0ZTEwMQD/////CQQAAAD/////CQQAAAAAAAAACw==
-</value>
-  </data>
-  <data name="tabPagePictures.Text" xml:space="preserve">
-    <value>Изображения</value>
-  </data>
-  <data name="labelPicCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>666, 45</value>
-  </data>
-  <data name="labelPicCount.Text" xml:space="preserve">
-    <value>1;2;5|изображение;изображения;изображений</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Добавить...</value>
-  </data>
-  <data name="contextTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 26</value>
-  </data>
-  <data name="contextNewBase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="contextNewBase.Text" xml:space="preserve">
-    <value>Добавить новое основание</value>
-  </data>
   <data name="contextBase.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 76</value>
-  </data>
-  <data name="contextBaseRename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="contextBaseRename.Text" xml:space="preserve">
-    <value>Переименовать</value>
-  </data>
-  <data name="contextBaseDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 22</value>
-  </data>
-  <data name="contextBaseDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 6</value>
   </data>
   <data name="contextBaseAddTaxa.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 22</value>
@@ -379,8 +151,77 @@
   <data name="contextBaseAddTaxa.Text" xml:space="preserve">
     <value>Добавить новый таксон</value>
   </data>
+  <data name="contextBaseDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="contextBaseDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="contextBaseRename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 22</value>
+  </data>
+  <data name="contextBaseRename.Text" xml:space="preserve">
+    <value>Переименовать</value>
+  </data>
+  <data name="contextFeatureDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="contextFeatureEdit.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="contextFeatureNewFeature.Text" xml:space="preserve">
+    <value>Добавить новый признак</value>
+  </data>
+  <data name="contextNewBase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="contextNewBase.Text" xml:space="preserve">
+    <value>Добавить новое основание</value>
+  </data>
+  <data name="contextRemoveSynonym.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 22</value>
+  </data>
+  <data name="contextRemoveSynonym.Text" xml:space="preserve">
+    <value>Удалить из синонимов</value>
+  </data>
+  <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 48</value>
+  </data>
+  <data name="contextSpeciesDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="contextSpeciesDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="contextSpeciesEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 22</value>
+  </data>
+  <data name="contextSpeciesEdit.Text" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="contextStepDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="contextStepNewFeature.Text" xml:space="preserve">
+    <value>Добавить новый признак</value>
+  </data>
+  <data name="contextSynonym.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 26</value>
+  </data>
   <data name="contextTaxon.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 98</value>
+  </data>
+  <data name="contextTaxonAddSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="contextTaxonAddSpecies.Text" xml:space="preserve">
+    <value>Добавить новый вид</value>
+  </data>
+  <data name="contextTaxonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
+  </data>
+  <data name="contextTaxonDelete.Text" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="contextTaxonEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
@@ -394,35 +235,8 @@
   <data name="contextTaxonRename.Text" xml:space="preserve">
     <value>Переименовать</value>
   </data>
-  <data name="contextTaxonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="contextTaxonDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 6</value>
-  </data>
-  <data name="contextTaxonAddSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 22</value>
-  </data>
-  <data name="contextTaxonAddSpecies.Text" xml:space="preserve">
-    <value>Добавить новый вид</value>
-  </data>
-  <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 48</value>
-  </data>
-  <data name="contextSpeciesEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
-  </data>
-  <data name="contextSpeciesEdit.Text" xml:space="preserve">
-    <value>Редактировать</value>
-  </data>
-  <data name="contextSpeciesDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
-  </data>
-  <data name="contextSpeciesDelete.Text" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="contextTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 26</value>
   </data>
   <data name="imageListKeys.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -470,14 +284,193 @@
         AR8EAAH8AT8B/AE/BAAB/AE/AfwBPwQAAf4BfwH+AX8EAAH+AX8B/gF/BAAL
 </value>
   </data>
-  <data name="contextSynonym.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 26</value>
+  <data name="labelEngagedCount.Text" xml:space="preserve">
+    <value>1;2;5|связанный вид;связанных вида;связанных видов</value>
   </data>
-  <data name="contextRemoveSynonym.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 22</value>
+  <data name="labelMinCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 21</value>
   </data>
-  <data name="contextRemoveSynonym.Text" xml:space="preserve">
-    <value>Удалить из синонимов</value>
+  <data name="labelMinCount.Text" xml:space="preserve">
+    <value>1;2;5|синоним;синонима;синонимов</value>
+  </data>
+  <data name="labelPicCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>666, 45</value>
+  </data>
+  <data name="labelPicCount.Text" xml:space="preserve">
+    <value>1;2;5|изображение;изображения;изображений</value>
+  </data>
+  <data name="labelRepCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 45</value>
+  </data>
+  <data name="labelRepCount.Text" xml:space="preserve">
+    <value>1;2;5|вид;вида;видов</value>
+  </data>
+  <data name="labelStpCount.Text" xml:space="preserve">
+    <value>1;2;5|шаг;шага;шагов</value>
+  </data>
+  <data name="labelTaxCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 45</value>
+  </data>
+  <data name="labelTaxCount.Text" xml:space="preserve">
+    <value>1;2;5|таксон;таксона;таксонов</value>
+  </data>
+  <data name="listViewEngagement.Groups" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAAdFbmdhZ2VkBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEA
+        AAAHdmFsdWVfXwAIAgAAAAIAAAAKBgUAAAAVbGlzdFZpZXdHcm91cEF0dGFjaGVkCw==
+</value>
+  </data>
+  <data name="listViewEngagement.Groups1" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACJTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5MaXN0Vmlld0dyb3VwBAAAAAZIZWFkZXIPSGVhZGVyQWxpZ25tZW50A1Rh
+        ZwROYW1lAQQCAShTeXN0ZW0uV2luZG93cy5Gb3Jtcy5Ib3Jpem9udGFsQWxpZ25tZW50AgAAAAIAAAAG
+        AwAAAARGcmVlBfz///8oU3lzdGVtLldpbmRvd3MuRm9ybXMuSG9yaXpvbnRhbEFsaWdubWVudAEAAAAH
+        dmFsdWVfXwAIAgAAAAIAAAAKBgUAAAAXbGlzdFZpZXdHcm91cFVuYXR0YWNoZWQL
+</value>
+  </data>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="menuItemAddBase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="menuItemAddBase.Text" xml:space="preserve">
+    <value>Добавить новое основание</value>
+  </data>
+  <data name="menuItemAddFeature.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="menuItemAddFeature.Text" xml:space="preserve">
+    <value>Добавить новый признак</value>
+  </data>
+  <data name="menuItemAddSpecies.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="menuItemAddSpecies.Text" xml:space="preserve">
+    <value>Добавить новый вид</value>
+  </data>
+  <data name="menuItemAddStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 22</value>
+  </data>
+  <data name="menuItemAddStep.Text" xml:space="preserve">
+    <value>Добавить новый шаг</value>
+  </data>
+  <data name="menuItemAddTaxon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="menuItemAddTaxon.Text" xml:space="preserve">
+    <value>Добавить новый таксон</value>
+  </data>
+  <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="menuItemNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemNew.Text" xml:space="preserve">
+    <value>Новый</value>
+  </data>
+  <data name="menuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemOpen.Text" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="menuItemPictureLoad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="menuItemPictureLoad.Text" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="menuItemPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemPreview.Text" xml:space="preserve">
+    <value>Просмотр...</value>
+  </data>
+  <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemPrint.Text" xml:space="preserve">
+    <value>Печать...</value>
+  </data>
+  <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="menuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="menuItemSaveAs.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="menuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="menuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menuKey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 20</value>
+  </data>
+  <data name="menuKey.Text" xml:space="preserve">
+    <value>Ключи определителя</value>
+  </data>
+  <data name="menuPictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="menuPictures.Text" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
+  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="menuService.Text" xml:space="preserve">
+    <value>Сервис</value>
+  </data>
+  <data name="menuTaxa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 20</value>
+  </data>
+  <data name="menuTaxa.Text" xml:space="preserve">
+    <value>Виды и таксоны</value>
+  </data>
+  <data name="tabPageKey.Text" xml:space="preserve">
+    <value>Ключи определителя</value>
+  </data>
+  <data name="tabPagePictures.Text" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
+  <data name="tabPageTaxa.Text" xml:space="preserve">
+    <value>Виды и таксоны</value>
+  </data>
+  <data name="taskDialogAssociateSpecies.MainInstruction" xml:space="preserve">
+    <value>Продолжить ассоциацию вида?</value>
+  </data>
+  <data name="taskDialogDeleteSpecies.MainInstruction" xml:space="preserve">
+    <value>Удалить или исключить вид?</value>
+  </data>
+  <data name="taskDialogReassociateSpecies.MainInstruction" xml:space="preserve">
+    <value>Изменить принадлежность вида?</value>
   </data>
   <data name="taskDialogSaveChanges.Content" xml:space="preserve">
     <value>С последнего сохранения были внесены изменения. Сохранить их?</value>
@@ -485,31 +478,68 @@
   <data name="taskDialogSaveChanges.MainInstruction" xml:space="preserve">
     <value>Сохранить изменения?</value>
   </data>
-  <data name="tdbSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Не сохранять</value>
-  </data>
-  <data name="taskDialogAssociateSpecies.MainInstruction" xml:space="preserve">
-    <value>Продолжить ассоциацию вида?</value>
-  </data>
-  <data name="tdbSetSpecies.Text" xml:space="preserve">
-    <value>Связать все равно</value>
-  </data>
-  <data name="taskDialogReassociateSpecies.MainInstruction" xml:space="preserve">
-    <value>Изменить принадлежность вида?</value>
-  </data>
-  <data name="tdbReassSpecies.Text" xml:space="preserve">
-    <value>Переместить</value>
-  </data>
-  <data name="taskDialogDeleteSpecies.MainInstruction" xml:space="preserve">
-    <value>Удалить или исключить вид?</value>
+  <data name="tdbDeleteRep.Text" xml:space="preserve">
+    <value>Исключить</value>
   </data>
   <data name="tdbDeleteSpc.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="tdbDeleteRep.Text" xml:space="preserve">
-    <value>Исключить</value>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Не сохранять</value>
+  </data>
+  <data name="tdbReassSpecies.Text" xml:space="preserve">
+    <value>Переместить</value>
+  </data>
+  <data name="tdbSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="tdbSetSpecies.Text" xml:space="preserve">
+    <value>Связать все равно</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 6</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 6</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="treeViewStep.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQJY2hpbGRyZW4wAQEBAAABAAEABAEICAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5v
+        ZGUCAAAAAgAAAAYDAAAAF0luaXRpYWwgZGVmaW5pdGlvbiBzdGVwBgQAAAAABgUAAAAFU3RlcDEA////
+        /wkEAAAA/////wYHAAAAGSjQv9C+INGD0LzQvtC70YfQsNC90LjRjikBAAAACQgAAAAFCAAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQsAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQEBAQAAAQABAAQEAQgICB1TeXN0ZW0uV2luZG93cy5G
+        b3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYJAAAA
+        FEluaXRpYWwgc3RlcCBmZWF0dXJlCQQAAAAGCwAAAAlGZWF0dXJlMTAA/////wkEAAAA/////wkEAAAA
+        AgAAAAkNAAAACQ4AAAAFDQAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtU
+        b29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJ
+        bmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYPAAAAD0ZlYXR1
+        cmUgc3RhdGUgMQkEAAAABhEAAAAIU3RhdGUxMDAA/////wkEAAAA/////wkEAAAAAAAAAAUOAAAAHVN5
+        c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVj
+        a2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkK
+        Q2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABhMAAAAPRmVhdHVyZSBzdGF0ZSAyCQQAAAAGFQAAAAhT
+        dGF0ZTEwMQD/////CQQAAAD/////CQQAAAAAAAAACw==
+</value>
+  </data>
+  <data name="treeViewTaxa.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAAD9CS0YHQtSDQstC40LTRiwYEAAAAAAYFAAAACkFs
+        bFNwZWNpZXMA/////wkEAAAA/////wkEAAAAAAAAAAs=
+</value>
   </data>
 </root>

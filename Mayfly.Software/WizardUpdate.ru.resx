@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonRunCheck.Text" xml:space="preserve">
+    <value>Проверить снова</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Здесь перечислены последние изменения, сделанные с вашего последнего обновления. Нажмите 'Далее' чтобы установить обновления.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Обновления были загружены и установлены.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Что-то пошло неправильно, так что мы не смогли обновить ваше ПО. 
+Скорее всего, вы не закрыли все окна Mayfly :(</value>
+  </data>
+  <data name="labelCheckRun.Text" xml:space="preserve">
+    <value>Несколько экземпляров {0} запущены. Пожалуйста, закройте все документы из списка ниже, чтобы продолжить деинсталляцию.</value>
+  </data>
+  <data name="labelError.Text" xml:space="preserve">
+    <value>Детали возникшей ошибки:
+{0}</value>
+  </data>
+  <data name="labelInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
+  </data>
+  <data name="labelInformation.Text" xml:space="preserve">
+    <value>Прогресс обновления</value>
+  </data>
+  <data name="labelUpdate.Text" xml:space="preserve">
+    <value>Ищем обновления...</value>
+  </data>
   <data name="wizardControlUpdate.CancelButtonText" xml:space="preserve">
     <value>Отмена</value>
   </data>
@@ -126,46 +156,25 @@
   <data name="wizardControlUpdate.NextButtonText" xml:space="preserve">
     <value>Далее</value>
   </data>
-  <data name="wizardPageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="wizardPageNotes.Text" xml:space="preserve">
-    <value>Что нового</value>
-  </data>
-  <data name="wizardPageGet.Text" xml:space="preserve">
-    <value>Установка обновлений</value>
-  </data>
-  <data name="wizardPageError.Text" xml:space="preserve">
-    <value>Что-то пошло не так :( </value>
+  <data name="wizardControlUpdate.Title" xml:space="preserve">
+    <value>Мастер обновления программного обеспечения</value>
   </data>
   <data name="wizardPageDone.Text" xml:space="preserve">
     <value>Готово</value>
   </data>
-  <data name="wizardControlUpdate.Title" xml:space="preserve">
-    <value>Мастер обновления программного обеспечения</value>
+  <data name="wizardPageError.Text" xml:space="preserve">
+    <value>Что-то пошло не так :( </value>
   </data>
-  <data name="labelUpdate.Text" xml:space="preserve">
-    <value>Ищем обновления...</value>
+  <data name="wizardPageGet.Text" xml:space="preserve">
+    <value>Установка обновлений</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Здесь перечислены последние изменения, сделанные с вашего последнего обновления. Нажмите 'Далее' чтобы установить обновления.</value>
+  <data name="wizardPageNotes.Text" xml:space="preserve">
+    <value>Что нового</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
+  <data name="wizardPageRun.Text" xml:space="preserve">
+    <value>Запущенные приложения</value>
   </data>
-  <data name="labelInformation.Text" xml:space="preserve">
-    <value>Прогресс обновления</value>
-  </data>
-  <data name="labelError.Text" xml:space="preserve">
-    <value>Детали возникшей ошибки:
-{0}</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Что-то пошло неправильно, так что мы не смогли обновить ваше ПО. 
-Скорее всего, вы не закрыли все окна Mayfly :(</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Обновления были загружены и установлены.</value>
+  <data name="wizardPageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
   </data>
 </root>

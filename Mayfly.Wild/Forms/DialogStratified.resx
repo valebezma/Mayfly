@@ -157,28 +157,28 @@
     <value>Bottom</value>
   </data>
   <data name="domainUpDownInterval.Items" xml:space="preserve">
-    <value>20,0</value>
+    <value>20.0</value>
   </data>
   <data name="domainUpDownInterval.Items1" xml:space="preserve">
-    <value>10,0</value>
+    <value>10.0</value>
   </data>
   <data name="domainUpDownInterval.Items2" xml:space="preserve">
-    <value>5,0</value>
+    <value>5.0</value>
   </data>
   <data name="domainUpDownInterval.Items3" xml:space="preserve">
-    <value>2,0</value>
+    <value>2.0</value>
   </data>
   <data name="domainUpDownInterval.Items4" xml:space="preserve">
-    <value>1,0</value>
+    <value>1.0</value>
   </data>
   <data name="domainUpDownInterval.Items5" xml:space="preserve">
-    <value>0,5</value>
+    <value>0.5</value>
   </data>
   <data name="domainUpDownInterval.Items6" xml:space="preserve">
-    <value>0,2</value>
+    <value>0.2</value>
   </data>
   <data name="domainUpDownInterval.Items7" xml:space="preserve">
-    <value>0,1</value>
+    <value>0.1</value>
   </data>
   <data name="domainUpDownInterval.Location" type="System.Drawing.Point, System.Drawing">
     <value>252, 83</value>
@@ -190,7 +190,7 @@
     <value>3</value>
   </data>
   <data name="domainUpDownInterval.Text" xml:space="preserve">
-    <value>1,0</value>
+    <value>1.0</value>
   </data>
   <data name="domainUpDownInterval.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>

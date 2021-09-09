@@ -117,41 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="wizardControl.CancelButtonText" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="wizardControl.FinishButtonText" xml:space="preserve">
-    <value>Готово</value>
-  </data>
-  <data name="wizardControl.NextButtonText" xml:space="preserve">
-    <value>Далее</value>
-  </data>
-  <data name="wizardPageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="wizardPageOptions.Text" xml:space="preserve">
-    <value>Опции удаления</value>
-  </data>
-  <data name="wizardPageClean.Text" xml:space="preserve">
-    <value>Очистка...</value>
-  </data>
-  <data name="wizardControl.Title" xml:space="preserve">
-    <value>Удаление программного обеспечения Mayfly</value>
-  </data>
-  <data name="labelClose.Text" xml:space="preserve">
-    <value>:( Мы не можем удалить {0} в настоящий момент, потому что
-некоторые из его приложений запущены. 
-Пожалуйста, закройте все приложения {1} и повторите попытку.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 19</value>
-  </data>
-  <data name="checkBoxOptions.Text" xml:space="preserve">
-    <value>Смотреть все опции удаления</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>Мы готовы удалить {0} с этого компьютера.</value>
+  <data name="buttonRunCheck.Text" xml:space="preserve">
+    <value>Проверить снова</value>
   </data>
   <data name="checkBoxFeatures.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -165,8 +133,22 @@
   <data name="checkBoxLicenses.Text" xml:space="preserve">
     <value>Сохранить установленные лицензии</value>
   </data>
-  <data name="labelInstruction.Text" xml:space="preserve">
-    <value>Выберите опции для удаления</value>
+  <data name="checkBoxOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 19</value>
+  </data>
+  <data name="checkBoxOptions.Text" xml:space="preserve">
+    <value>Смотреть все опции удаления</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Мы закончили очистку вашего ПК 
+от программного обеспечения Mayfly.</value>
+  </data>
+  <data name="labelCheckRun.Text" xml:space="preserve">
+    <value>Несколько экземпляров {0} запущены. Пожалуйста, закройте все документы из списка ниже, чтобы продолжить деинсталляцию.</value>
+  </data>
+  <data name="labelClose.Text" xml:space="preserve">
+    <value>:( Мы не можем удалить {0} в настоящий момент, потому что некоторые из его приложений запущены. 
+Пожалуйста, закройте все приложения {1} и повторите попытку.</value>
   </data>
   <data name="labelGetInstruction.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 13</value>
@@ -174,8 +156,37 @@
   <data name="labelGetInstruction.Text" xml:space="preserve">
     <value>Прогресс деинсталляции</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Мы закончили очистку вашего ПК 
-от программного обеспечения Mayfly.</value>
+  <data name="labelInstruction.Text" xml:space="preserve">
+    <value>Выберите опции для удаления.</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Мы готовы удалить {0} с этого компьютера.</value>
+  </data>
+  <data name="wizardControl.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="wizardControl.FinishButtonText" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="wizardControl.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="wizardControl.Title" xml:space="preserve">
+    <value>Удаление программного обеспечения Mayfly</value>
+  </data>
+  <data name="wizardPageClean.Text" xml:space="preserve">
+    <value>Очистка...</value>
+  </data>
+  <data name="wizardPageDone.Text" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="wizardPageOptions.Text" xml:space="preserve">
+    <value>Опции удаления</value>
+  </data>
+  <data name="wizardPageRun.Text" xml:space="preserve">
+    <value>Запущенные приложения</value>
+  </data>
+  <data name="wizardPageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
   </data>
 </root>

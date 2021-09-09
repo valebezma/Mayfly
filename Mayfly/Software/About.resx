@@ -433,7 +433,7 @@ copyright laws.</value>
     <value>3</value>
   </data>
   <data name="buttonLic.Text" xml:space="preserve">
-    <value>Features</value>
+    <value>Licenses</value>
   </data>
   <data name="buttonLic.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>

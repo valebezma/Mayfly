@@ -242,16 +242,6 @@
     </Compile>
     <Compile Include="Reporting\Report.Printing.cs" />
     <Compile Include="Reporting\Report.Table.cs" />
-    <Compile Include="Resources\FriendlyUnits.Designer.cs">
-      <DependentUpon>FriendlyUnits.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Resources\FriendlyUnits.ru.Designer.cs">
-      <DependentUpon>FriendlyUnits.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Resources\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -503,14 +493,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reporting\PreviewForm.resx">
       <DependentUpon>PreviewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\FriendlyUnits.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FriendlyUnits.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\FriendlyUnits.ru.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FriendlyUnits.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Icons.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

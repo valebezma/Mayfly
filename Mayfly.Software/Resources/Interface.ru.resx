@@ -156,6 +156,12 @@
   <data name="StartGroupRemoved" xml:space="preserve">
     <value>Программная группа в меню "Пуск" удалена</value>
   </data>
+  <data name="UninstallDone" xml:space="preserve">
+    <value>Деинсталляция завершена</value>
+  </data>
+  <data name="UninstallTemp" xml:space="preserve">
+    <value>Кеш очищен</value>
+  </data>
   <data name="UnregFileType" xml:space="preserve">
     <value>Тип файла {0} удален</value>
   </data>

@@ -152,15 +152,6 @@ namespace Mayfly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error loading file {0}.
-        /// </summary>
-        public static string FileError {
-            get {
-                return ResourceManager.GetString("FileError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to New {0}.
         /// </summary>
         public static string FileNew {
@@ -211,15 +202,6 @@ namespace Mayfly.Resources {
         public static string Filtering {
             get {
                 return ResourceManager.GetString("Filtering", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Including.
-        /// </summary>
-        public static string Including {
-            get {
-                return ResourceManager.GetString("Including", resourceCulture);
             }
         }
         
@@ -287,15 +269,6 @@ namespace Mayfly.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Within {0:N0} m of {1}.
-        /// </summary>
-        public static string LocationRadius {
-            get {
-                return ResourceManager.GetString("LocationRadius", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mean.
         /// </summary>
         public static string Mean {
@@ -310,15 +283,6 @@ namespace Mayfly.Resources {
         public static string NoTitle {
             get {
                 return ResourceManager.GetString("NoTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  up to {0:d}.
-        /// </summary>
-        public static string TillFormat {
-            get {
-                return ResourceManager.GetString("TillFormat", resourceCulture);
             }
         }
         

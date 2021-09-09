@@ -16,8 +16,6 @@ namespace Mayfly.Waters
 {
     public partial class MainForm : Form
     {
-        #region Properties
-
         private string filename;
 
         public string FileName
@@ -50,8 +48,6 @@ namespace Mayfly.Waters
             set;
             get;
         }
-
-        #endregion
 
 
         

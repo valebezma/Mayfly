@@ -117,57 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="comboBoxType.Items" xml:space="preserve">
-    <value>Все</value>
-  </data>
-  <data name="comboBoxType.Items1" xml:space="preserve">
-    <value>Водотоки</value>
-  </data>
-  <data name="comboBoxType.Items2" xml:space="preserve">
-    <value>Озёра</value>
-  </data>
-  <data name="comboBoxType.Items3" xml:space="preserve">
-    <value>Водохранилища</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 13</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Фильтр водных объектов</value>
   </data>
-  <data name="labelType.Text" xml:space="preserve">
-    <value>Тип</value>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Применить</value>
   </data>
-  <data name="tabPageWater.Text" xml:space="preserve">
-    <value>Водоём</value>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>ОК</value>
   </data>
-  <data name="checkBoxCumulative.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 17</value>
+  <data name="checkBoxAutoApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 17</value>
   </data>
-  <data name="checkBoxCumulative.Text" xml:space="preserve">
-    <value>Включительно</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Притоки</value>
-  </data>
-  <data name="domainUpDownInflowOrder.Items" xml:space="preserve">
-    <value>всех порядков</value>
-  </data>
-  <data name="domainUpDownInflowOrder.Items1" xml:space="preserve">
-    <value>1-го порядка</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 15</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Положение в речной системе</value>
-  </data>
-  <data name="checkBoxMouthToMouth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 17</value>
-  </data>
-  <data name="checkBoxMouthToMouth.Text" xml:space="preserve">
-    <value>Впадение / Плотина</value>
+  <data name="checkBoxAutoApply.Text" xml:space="preserve">
+    <value>Применять автоматически</value>
   </data>
   <data name="checkBoxBank.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 17</value>
@@ -175,47 +139,74 @@
   <data name="checkBoxBank.Text" xml:space="preserve">
     <value>Берег</value>
   </data>
+  <data name="checkBoxCumulative.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="checkBoxCumulative.Text" xml:space="preserve">
+    <value>Включительно</value>
+  </data>
+  <data name="checkBoxLakeAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="checkBoxLakeAltitude.Text" xml:space="preserve">
+    <value>Отметка высоты, м</value>
+  </data>
+  <data name="checkBoxLakeArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 17</value>
+  </data>
+  <data name="checkBoxLakeArea.Text" xml:space="preserve">
+    <value>Площадь зеркала, км²</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 17</value>
+  </data>
+  <data name="checkBoxLakeDepthMax.Text" xml:space="preserve">
+    <value>Максимальная глубина, м</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="checkBoxLakeDepthMid.Text" xml:space="preserve">
+    <value>Средняя глубина, м</value>
+  </data>
+  <data name="checkBoxLakeKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="checkBoxLakeKind.Text" xml:space="preserve">
+    <value>Тип озера</value>
+  </data>
+  <data name="checkBoxLakeVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="checkBoxLakeVolume.Text" xml:space="preserve">
+    <value>Объём,  км³</value>
+  </data>
+  <data name="checkBoxLakeWatershed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 17</value>
+  </data>
+  <data name="checkBoxLakeWatershed.Text" xml:space="preserve">
+    <value>Площадь водосборного бассейна, км²</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 17</value>
+  </data>
+  <data name="checkBoxMouthToMouth.Text" xml:space="preserve">
+    <value>Впадение / Плотина</value>
+  </data>
   <data name="checkBoxOutflow.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 17</value>
   </data>
   <data name="checkBoxOutflow.Text" xml:space="preserve">
     <value>Носитель</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 13</value>
+  <data name="checkBoxStreamConsumption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 17</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>км от устья</value>
+  <data name="checkBoxStreamConsumption.Text" xml:space="preserve">
+    <value>Среднегодовой расход воды, м³/с</value>
   </data>
-  <data name="R61.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="R61.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 231</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 15</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Общие параметры водоёма</value>
-  </data>
-  <data name="tabPageStream.Text" xml:space="preserve">
-    <value>Водотоки</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Гидрологические характеристики водотока</value>
+  <data name="checkBoxStreamLength.Text" xml:space="preserve">
+    <value>Длина, км</value>
   </data>
   <data name="checkBoxStreamSlope.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 17</value>
@@ -229,11 +220,254 @@
   <data name="checkBoxStreamVolume.Text" xml:space="preserve">
     <value>Годовой сток,  км³</value>
   </data>
-  <data name="checkBoxStreamConsumption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 17</value>
+  <data name="checkBoxStreamWatershed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 17</value>
   </data>
-  <data name="checkBoxStreamConsumption.Text" xml:space="preserve">
-    <value>Среднегодовой расход воды, м³/с</value>
+  <data name="checkBoxStreamWatershed.Text" xml:space="preserve">
+    <value>Площадь водосборного бассейна, км²</value>
+  </data>
+  <data name="checkBoxTankAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 17</value>
+  </data>
+  <data name="checkBoxTankAltitude.Text" xml:space="preserve">
+    <value>Нормальный уровень, м (над у. м.)</value>
+  </data>
+  <data name="checkBoxTankArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 17</value>
+  </data>
+  <data name="checkBoxTankArea.Text" xml:space="preserve">
+    <value>Площадь зеркала при НПУ,  км²</value>
+  </data>
+  <data name="checkBoxTankCycling.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 17</value>
+  </data>
+  <data name="checkBoxTankCycling.Text" xml:space="preserve">
+    <value>Коэффициент водообмена</value>
+  </data>
+  <data name="checkBoxTankDepthMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 17</value>
+  </data>
+  <data name="checkBoxTankDepthMax.Text" xml:space="preserve">
+    <value>Максимальная глубина, м</value>
+  </data>
+  <data name="checkBoxTankDepthMid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="checkBoxTankDepthMid.Text" xml:space="preserve">
+    <value>Средняя глубина, м</value>
+  </data>
+  <data name="checkBoxTankFlowage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 17</value>
+  </data>
+  <data name="checkBoxTankFlowage.Text" xml:space="preserve">
+    <value>Коэффициент проточности</value>
+  </data>
+  <data name="checkBoxTankKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 17</value>
+  </data>
+  <data name="checkBoxTankKind.Text" xml:space="preserve">
+    <value>Тип водохранилища</value>
+  </data>
+  <data name="checkBoxTankLength.Text" xml:space="preserve">
+    <value>Длина, км</value>
+  </data>
+  <data name="checkBoxTankVolume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="checkBoxTankVolume.Text" xml:space="preserve">
+    <value>Объём при НПУ,  км³</value>
+  </data>
+  <data name="comboBoxBank.Items" xml:space="preserve">
+    <value>Левый</value>
+  </data>
+  <data name="comboBoxBank.Items1" xml:space="preserve">
+    <value>Правый</value>
+  </data>
+  <data name="comboBoxLakeKind.Items" xml:space="preserve">
+    <value>Пойменное</value>
+  </data>
+  <data name="comboBoxLakeKind.Items1" xml:space="preserve">
+    <value>Материковое</value>
+  </data>
+  <data name="comboBoxTankKind.Items" xml:space="preserve">
+    <value>Озерное</value>
+  </data>
+  <data name="comboBoxTankKind.Items1" xml:space="preserve">
+    <value>Речное</value>
+  </data>
+  <data name="comboBoxTankKind.Items2" xml:space="preserve">
+    <value>Пруд</value>
+  </data>
+  <data name="comboBoxType.Items" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="comboBoxType.Items1" xml:space="preserve">
+    <value>Водотоки</value>
+  </data>
+  <data name="comboBoxType.Items2" xml:space="preserve">
+    <value>Озёра</value>
+  </data>
+  <data name="comboBoxType.Items3" xml:space="preserve">
+    <value>Водохранилища</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items" xml:space="preserve">
+    <value>всех порядков</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items1" xml:space="preserve">
+    <value>1-го порядка</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items2" xml:space="preserve">
+    <value>2-го порядка</value>
+  </data>
+  <data name="domainUpDownInflowOrder.Items3" xml:space="preserve">
+    <value>3-го порядка</value>
+  </data>
+  <data name="L11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 144</value>
+  </data>
+  <data name="L11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="L11.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="L12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="L12.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="L21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 170</value>
+  </data>
+  <data name="L21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="L21.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="L22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="L22.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="L31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 196</value>
+  </data>
+  <data name="L31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="L31.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="L32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="L32.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="L41.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 222</value>
+  </data>
+  <data name="L41.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="L41.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="L42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="L42.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Общие параметры водоёма</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 15</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Гидрологические характеристики водохранилища</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 118</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 231</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>км от устья</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Притоки</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Гидрологические характеристики водотока</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 15</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Положение в речной системе</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 92</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Гидрологические характеристики озера</value>
+  </data>
+  <data name="labelType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="labelType.Text" xml:space="preserve">
+    <value>Тип</value>
   </data>
   <data name="R11.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 66</value>
@@ -244,8 +478,11 @@
   <data name="R11.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="checkBoxStreamLength.Text" xml:space="preserve">
-    <value>Длина, км</value>
+  <data name="R12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="R12.Text" xml:space="preserve">
+    <value>до</value>
   </data>
   <data name="R21.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 92</value>
@@ -256,10 +493,10 @@
   <data name="R21.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="R52.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="R22.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="R52.Text" xml:space="preserve">
+  <data name="R22.Text" xml:space="preserve">
     <value>до</value>
   </data>
   <data name="R31.Location" type="System.Drawing.Point, System.Drawing">
@@ -270,6 +507,12 @@
   </data>
   <data name="R31.Text" xml:space="preserve">
     <value>от</value>
+  </data>
+  <data name="R32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="R32.Text" xml:space="preserve">
+    <value>до</value>
   </data>
   <data name="R41.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 144</value>
@@ -295,224 +538,17 @@
   <data name="R51.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="R32.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="R52.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="R32.Text" xml:space="preserve">
+  <data name="R52.Text" xml:space="preserve">
     <value>до</value>
   </data>
-  <data name="R12.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="R61.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="R12.Text" xml:space="preserve">
+  <data name="R61.Text" xml:space="preserve">
     <value>до</value>
-  </data>
-  <data name="R22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="R22.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="checkBoxStreamWatershed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 17</value>
-  </data>
-  <data name="checkBoxStreamWatershed.Text" xml:space="preserve">
-    <value>Площадь водосборного бассейна, км²</value>
-  </data>
-  <data name="tabPageLake.Text" xml:space="preserve">
-    <value>Озера</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 15</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Гидрологические характеристики озера</value>
-  </data>
-  <data name="checkBoxLakeKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 17</value>
-  </data>
-  <data name="checkBoxLakeKind.Text" xml:space="preserve">
-    <value>Тип озера</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 118</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 92</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="comboBoxLakeKind.Items" xml:space="preserve">
-    <value>Пойменное</value>
-  </data>
-  <data name="comboBoxLakeKind.Items1" xml:space="preserve">
-    <value>Материковое</value>
-  </data>
-  <data name="L11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 144</value>
-  </data>
-  <data name="L11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="L11.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="L31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 196</value>
-  </data>
-  <data name="L31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="L31.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="checkBoxLakeDepthMid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="checkBoxLakeDepthMid.Text" xml:space="preserve">
-    <value>Средняя глубина, м</value>
-  </data>
-  <data name="checkBoxLakeVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
-  <data name="checkBoxLakeVolume.Text" xml:space="preserve">
-    <value>Объём,  км³</value>
-  </data>
-  <data name="L21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 170</value>
-  </data>
-  <data name="L21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="L21.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="checkBoxLakeWatershed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 17</value>
-  </data>
-  <data name="checkBoxLakeWatershed.Text" xml:space="preserve">
-    <value>Площадь водосборного бассейна, км²</value>
-  </data>
-  <data name="checkBoxLakeDepthMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 17</value>
-  </data>
-  <data name="checkBoxLakeDepthMax.Text" xml:space="preserve">
-    <value>Максимальная глубина, м</value>
-  </data>
-  <data name="checkBoxLakeAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="checkBoxLakeAltitude.Text" xml:space="preserve">
-    <value>Отметка высоты, м</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="L41.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 222</value>
-  </data>
-  <data name="L41.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="L41.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="checkBoxLakeArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
-  </data>
-  <data name="checkBoxLakeArea.Text" xml:space="preserve">
-    <value>Площадь зеркала, км²</value>
-  </data>
-  <data name="L12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="L12.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="L32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="L32.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="L42.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="L42.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="L22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="L22.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="tabPageTank.Text" xml:space="preserve">
-    <value>Водохранилища</value>
-  </data>
-  <data name="checkBoxTankKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
-  </data>
-  <data name="checkBoxTankKind.Text" xml:space="preserve">
-    <value>Тип водохранилища</value>
-  </data>
-  <data name="comboBoxTankKind.Items" xml:space="preserve">
-    <value>Озерное</value>
-  </data>
-  <data name="comboBoxTankKind.Items1" xml:space="preserve">
-    <value>Речное</value>
-  </data>
-  <data name="comboBoxTankKind.Items2" xml:space="preserve">
-    <value>Пруд</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 15</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Гидрологические характеристики водохранилища</value>
-  </data>
-  <data name="checkBoxTankCycling.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 17</value>
-  </data>
-  <data name="checkBoxTankCycling.Text" xml:space="preserve">
-    <value>Коэффициент водообмена</value>
-  </data>
-  <data name="checkBoxTankFlowage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 17</value>
-  </data>
-  <data name="checkBoxTankFlowage.Text" xml:space="preserve">
-    <value>Коэффициент проточности</value>
-  </data>
-  <data name="checkBoxTankDepthMid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 17</value>
-  </data>
-  <data name="checkBoxTankDepthMid.Text" xml:space="preserve">
-    <value>Средняя глубина, м</value>
-  </data>
-  <data name="checkBoxTankDepthMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 17</value>
-  </data>
-  <data name="checkBoxTankDepthMax.Text" xml:space="preserve">
-    <value>Максимальная глубина, м</value>
   </data>
   <data name="T11.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 92</value>
@@ -523,26 +559,11 @@
   <data name="T11.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="checkBoxTankVolume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 17</value>
+  <data name="T12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
   </data>
-  <data name="checkBoxTankVolume.Text" xml:space="preserve">
-    <value>Объём при НПУ,  км³</value>
-  </data>
-  <data name="T31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 144</value>
-  </data>
-  <data name="T31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="T31.Text" xml:space="preserve">
-    <value>от</value>
-  </data>
-  <data name="checkBoxTankArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 17</value>
-  </data>
-  <data name="checkBoxTankArea.Text" xml:space="preserve">
-    <value>Площадь зеркала при НПУ,  км²</value>
+  <data name="T12.Text" xml:space="preserve">
+    <value>до</value>
   </data>
   <data name="T21.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 118</value>
@@ -553,14 +574,26 @@
   <data name="T21.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="checkBoxTankAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 17</value>
+  <data name="T22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
   </data>
-  <data name="checkBoxTankAltitude.Text" xml:space="preserve">
-    <value>Нормальный уровень, м (над у. м.)</value>
+  <data name="T22.Text" xml:space="preserve">
+    <value>до</value>
   </data>
-  <data name="checkBoxTankLength.Text" xml:space="preserve">
-    <value>Длина, км</value>
+  <data name="T31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 144</value>
+  </data>
+  <data name="T31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="T31.Text" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="T32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="T32.Text" xml:space="preserve">
+    <value>до</value>
   </data>
   <data name="T41.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 170</value>
@@ -571,6 +604,12 @@
   <data name="T41.Text" xml:space="preserve">
     <value>от</value>
   </data>
+  <data name="T42.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="T42.Text" xml:space="preserve">
+    <value>до</value>
+  </data>
   <data name="T51.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 196</value>
   </data>
@@ -580,10 +619,10 @@
   <data name="T51.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="T82.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="T52.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="T82.Text" xml:space="preserve">
+  <data name="T52.Text" xml:space="preserve">
     <value>до</value>
   </data>
   <data name="T61.Location" type="System.Drawing.Point, System.Drawing">
@@ -595,10 +634,10 @@
   <data name="T61.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="T72.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="T62.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="T72.Text" xml:space="preserve">
+  <data name="T62.Text" xml:space="preserve">
     <value>до</value>
   </data>
   <data name="T71.Location" type="System.Drawing.Point, System.Drawing">
@@ -610,16 +649,10 @@
   <data name="T71.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="T62.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="T72.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="T62.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="T52.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="T52.Text" xml:space="preserve">
+  <data name="T72.Text" xml:space="preserve">
     <value>до</value>
   </data>
   <data name="T81.Location" type="System.Drawing.Point, System.Drawing">
@@ -631,43 +664,22 @@
   <data name="T81.Text" xml:space="preserve">
     <value>от</value>
   </data>
-  <data name="T42.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="T82.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="T42.Text" xml:space="preserve">
+  <data name="T82.Text" xml:space="preserve">
     <value>до</value>
   </data>
-  <data name="T12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
+  <data name="tabPageLake.Text" xml:space="preserve">
+    <value>Озера</value>
   </data>
-  <data name="T12.Text" xml:space="preserve">
-    <value>до</value>
+  <data name="tabPageStream.Text" xml:space="preserve">
+    <value>Водотоки</value>
   </data>
-  <data name="T22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
+  <data name="tabPageTank.Text" xml:space="preserve">
+    <value>Водохранилища</value>
   </data>
-  <data name="T22.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="T32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 13</value>
-  </data>
-  <data name="T32.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
-  </data>
-  <data name="buttonOK.Text" xml:space="preserve">
-    <value>ОК</value>
-  </data>
-  <data name="checkBoxAutoApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 17</value>
-  </data>
-  <data name="checkBoxAutoApply.Text" xml:space="preserve">
-    <value>Применять автоматически</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Фильтр водных объектов</value>
+  <data name="tabPageWater.Text" xml:space="preserve">
+    <value>Водоём</value>
   </data>
 </root>

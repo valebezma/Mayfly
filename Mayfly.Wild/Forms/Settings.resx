@@ -2787,9 +2787,6 @@
   <data name="tabControlSettings.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tdClearRecent.WindowTitle" xml:space="preserve">
-    <value>Fish Reader</value>
-  </data>
   <data name="labelAddtFctrs.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 15</value>
   </data>

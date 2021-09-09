@@ -117,15 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonOK.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 13</value>
+  <data name="domainUpDownInterval.Items" xml:space="preserve">
+    <value>20,0</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Диапазон длины, мм</value>
+  <data name="domainUpDownInterval.Items1" xml:space="preserve">
+    <value>10,0</value>
+  </data>
+  <data name="domainUpDownInterval.Items2" xml:space="preserve">
+    <value>5,0</value>
+  </data>
+  <data name="domainUpDownInterval.Items3" xml:space="preserve">
+    <value>2,0</value>
+  </data>
+  <data name="domainUpDownInterval.Items4" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="domainUpDownInterval.Items5" xml:space="preserve">
+    <value>0,5</value>
+  </data>
+  <data name="domainUpDownInterval.Items6" xml:space="preserve">
+    <value>0,2</value>
+  </data>
+  <data name="domainUpDownInterval.Items7" xml:space="preserve">
+    <value>0,1</value>
+  </data>
+  <data name="domainUpDownInterval.Text" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 21</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Параметры стратифицированной пробы</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
@@ -133,13 +160,13 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Интервал, мм</value>
   </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Диапазон длины, мм</value>
+  </data>
   <data name="labelInstruction.Text" xml:space="preserve">
     <value>Установите начальные значения стратифицированной пробы. В дальнейшем границы можно будет изменять.</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 21</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Параметры стратифицированной пробы</value>
   </data>
 </root>

@@ -159,9 +159,6 @@
   <data name="labelVegetation.Text" xml:space="preserve">
     <value>Вегетационный период, дней</value>
   </data>
-  <data name="buttonOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="buttonCancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>

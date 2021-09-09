@@ -118,6 +118,94 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Новая запись. Озеро</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="comboBoxBank.Items" xml:space="preserve">
+    <value>Левый</value>
+  </data>
+  <data name="comboBoxBank.Items1" xml:space="preserve">
+    <value>Правый</value>
+  </data>
+  <data name="comboBoxKind.Items" xml:space="preserve">
+    <value>Пойменное (имеет связь с водотоком)</value>
+  </data>
+  <data name="comboBoxKind.Items1" xml:space="preserve">
+    <value>Материковое</value>
+  </data>
+  <data name="labelAltitude.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 13</value>
+  </data>
+  <data name="labelAltitude.Text" xml:space="preserve">
+    <value>Отметка высоты, м (над уровнем моря)</value>
+  </data>
+  <data name="labelArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="labelArea.Text" xml:space="preserve">
+    <value>Площадь зеркала, км²</value>
+  </data>
+  <data name="labelBank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="labelBank.Text" xml:space="preserve">
+    <value>Берег</value>
+  </data>
+  <data name="labelDepthAve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="labelDepthAve.Text" xml:space="preserve">
+    <value>Средняя глубина, м</value>
+  </data>
+  <data name="labelDepthMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 13</value>
+  </data>
+  <data name="labelDepthMax.Text" xml:space="preserve">
+    <value>Максимальная глубина, м</value>
+  </data>
+  <data name="labelGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 15</value>
+  </data>
+  <data name="labelGeneral.Text" xml:space="preserve">
+    <value>Общая информация</value>
+  </data>
+  <data name="labelHydrologics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 15</value>
+  </data>
+  <data name="labelHydrologics.Text" xml:space="preserve">
+    <value>Гидрологические характеристики озера</value>
+  </data>
+  <data name="labelKind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="labelKind.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="labelMouthToMouth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 13</value>
+  </data>
+  <data name="labelMouthToMouth.Text" xml:space="preserve">
+    <value>Расстояние до устья / плотины, км</value>
+  </data>
+  <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="labelName.Text" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="labelOutflow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="labelOutflow.Text" xml:space="preserve">
+    <value>Носитель</value>
+  </data>
   <data name="labelVegetation.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 13</value>
   </data>
@@ -130,92 +218,10 @@
   <data name="labelVolume.Text" xml:space="preserve">
     <value>Объём, км³</value>
   </data>
-  <data name="labelDepthMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 13</value>
-  </data>
-  <data name="labelDepthMax.Text" xml:space="preserve">
-    <value>Максимальная глубина, м</value>
-  </data>
-  <data name="labelArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 13</value>
-  </data>
-  <data name="labelArea.Text" xml:space="preserve">
-    <value>Площадь зеркала, км²</value>
-  </data>
-  <data name="labelKind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>26, 13</value>
-  </data>
-  <data name="labelKind.Text" xml:space="preserve">
-    <value>Тип</value>
-  </data>
-  <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
-  </data>
-  <data name="labelName.Text" xml:space="preserve">
-    <value>Название</value>
-  </data>
-  <data name="labelDepthAve.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 13</value>
-  </data>
-  <data name="labelDepthAve.Text" xml:space="preserve">
-    <value>Средняя глубина, м</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="labelHydrologics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 15</value>
-  </data>
-  <data name="labelHydrologics.Text" xml:space="preserve">
-    <value>Гидрологические характеристики озера</value>
-  </data>
-  <data name="labelGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 15</value>
-  </data>
-  <data name="labelGeneral.Text" xml:space="preserve">
-    <value>Общая информация</value>
-  </data>
   <data name="labelWatershed.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 13</value>
   </data>
   <data name="labelWatershed.Text" xml:space="preserve">
     <value>Площадь водосборного бассейна, км²</value>
-  </data>
-  <data name="labelAltitude.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 13</value>
-  </data>
-  <data name="labelAltitude.Text" xml:space="preserve">
-    <value>Отметка высоты, м (над уровнем моря)</value>
-  </data>
-  <data name="comboBoxBank.Items" xml:space="preserve">
-    <value>Левый</value>
-  </data>
-  <data name="comboBoxBank.Items1" xml:space="preserve">
-    <value>Правый</value>
-  </data>
-  <data name="labelOutflow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="labelOutflow.Text" xml:space="preserve">
-    <value>Носитель</value>
-  </data>
-  <data name="labelMouthToMouth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 13</value>
-  </data>
-  <data name="labelMouthToMouth.Text" xml:space="preserve">
-    <value>Расстояние до устья / плотины, км</value>
-  </data>
-  <data name="labelBank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
-  <data name="labelBank.Text" xml:space="preserve">
-    <value>Берег</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Новая запись. Озеро</value>
   </data>
 </root>

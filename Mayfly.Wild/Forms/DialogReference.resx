@@ -229,7 +229,7 @@
     <value>Select local file...</value>
   </data>
   <data name="tdbDownload.CommandLinkNote" xml:space="preserve">
-    <value>Download {0} from our server</value>
+    <value>Download {0} from server</value>
   </data>
   <data name="tdbDownload.Text" xml:space="preserve">
     <value>Download default reference</value>

@@ -132,4 +132,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Выбор трека</value>
   </data>
+  <data name="ColumnTrack.HeaderText" xml:space="preserve">
+    <value>Трек</value>
+  </data>
 </root>

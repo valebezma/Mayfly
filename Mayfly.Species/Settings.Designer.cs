@@ -54,17 +54,19 @@
             this.tabControlSettings.Controls.Add(this.tabPagePrint);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
+            this.toolTip.SetToolTip(this.tabControlSettings, resources.GetString("tabControlSettings.ToolTip"));
             // 
             // tabPagePrint
             // 
+            resources.ApplyResources(this.tabPagePrint, "tabPagePrint");
             this.tabPagePrint.Controls.Add(this.textBoxCoupletChar);
             this.tabPagePrint.Controls.Add(this.labelCoupletChar);
             this.tabPagePrint.Controls.Add(this.radioButtonModern);
             this.tabPagePrint.Controls.Add(this.radioButtonClassic);
             this.tabPagePrint.Controls.Add(this.labelKeyReportView);
             this.tabPagePrint.Controls.Add(this.labelPrintCaption);
-            resources.ApplyResources(this.tabPagePrint, "tabPagePrint");
             this.tabPagePrint.Name = "tabPagePrint";
+            this.toolTip.SetToolTip(this.tabPagePrint, resources.GetString("tabPagePrint.ToolTip"));
             this.tabPagePrint.UseVisualStyleBackColor = true;
             // 
             // textBoxCoupletChar
@@ -77,11 +79,13 @@
             // 
             resources.ApplyResources(this.labelCoupletChar, "labelCoupletChar");
             this.labelCoupletChar.Name = "labelCoupletChar";
+            this.toolTip.SetToolTip(this.labelCoupletChar, resources.GetString("labelCoupletChar.ToolTip"));
             // 
             // radioButtonModern
             // 
             resources.ApplyResources(this.radioButtonModern, "radioButtonModern");
             this.radioButtonModern.Name = "radioButtonModern";
+            this.toolTip.SetToolTip(this.radioButtonModern, resources.GetString("radioButtonModern.ToolTip"));
             this.radioButtonModern.UseVisualStyleBackColor = true;
             this.radioButtonModern.CheckedChanged += new System.EventHandler(this.radioButtonModern_CheckedChanged);
             // 
@@ -91,24 +95,28 @@
             this.radioButtonClassic.Checked = true;
             this.radioButtonClassic.Name = "radioButtonClassic";
             this.radioButtonClassic.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonClassic, resources.GetString("radioButtonClassic.ToolTip"));
             this.radioButtonClassic.UseVisualStyleBackColor = true;
             // 
             // labelKeyReportView
             // 
             resources.ApplyResources(this.labelKeyReportView, "labelKeyReportView");
             this.labelKeyReportView.Name = "labelKeyReportView";
+            this.toolTip.SetToolTip(this.labelKeyReportView, resources.GetString("labelKeyReportView.ToolTip"));
             // 
             // labelPrintCaption
             // 
             resources.ApplyResources(this.labelPrintCaption, "labelPrintCaption");
             this.labelPrintCaption.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelPrintCaption.Name = "labelPrintCaption";
+            this.toolTip.SetToolTip(this.labelPrintCaption, resources.GetString("labelPrintCaption.ToolTip"));
             // 
             // buttonCancel
             // 
             resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Name = "buttonCancel";
+            this.toolTip.SetToolTip(this.buttonCancel, resources.GetString("buttonCancel.ToolTip"));
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -116,6 +124,7 @@
             // 
             resources.ApplyResources(this.buttonOK, "buttonOK");
             this.buttonOK.Name = "buttonOK";
+            this.toolTip.SetToolTip(this.buttonOK, resources.GetString("buttonOK.ToolTip"));
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -123,6 +132,7 @@
             // 
             resources.ApplyResources(this.buttonApply, "buttonApply");
             this.buttonApply.Name = "buttonApply";
+            this.toolTip.SetToolTip(this.buttonApply, resources.GetString("buttonApply.ToolTip"));
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
@@ -147,6 +157,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Settings";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.tabControlSettings.ResumeLayout(false);
             this.tabPagePrint.ResumeLayout(false);
             this.tabPagePrint.PerformLayout();
