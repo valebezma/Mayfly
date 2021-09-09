@@ -158,6 +158,8 @@ namespace Mayfly.Fish.Explorer
 
             tabPageStratified.Parent = null;
 
+            menuStrip.SetMenuIcons();
+
             chartSchedule.Format();
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)

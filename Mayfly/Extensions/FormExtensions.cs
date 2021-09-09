@@ -250,6 +250,52 @@ namespace Mayfly.Extensions
         }
 
 
+        public static void SetMenuIcons(this MenuStrip menuStrip)
+        {
+            foreach (ToolStripMenuItem j in menuStrip.Items)
+            {
+                foreach (ToolStripItem i in j.DropDownItems)
+                {
+                    if (i is ToolStripMenuItem m)
+                    {
+                        if (m.HasDropDownItems) continue;
+
+                        switch (m.Name)
+                        {
+                            case "menuItemNew":
+                                m.Image = Pictogram.New;
+                                break;
+
+                            case "menuItemOpen":
+                                m.Image = Pictogram.Open;
+                                break;
+
+                            case "menuItemSave":
+                                m.Image = Pictogram.Save;
+                                break;
+
+                            //case "menuItemSave":
+                            //    m.Image = Pictogram.Save;
+                            //    break;
+
+                            case "menuItemPrint":
+                                m.Image = Pictogram.Print;
+                                break;
+
+                            case "menuItemPreview":
+                                m.Image = Pictogram.Preview;
+                                break;
+
+                            case "menuItemSettings":
+                                m.Image = Pictogram.Settings;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         public static string GetLocalizedText(this Control ctrl)
         {

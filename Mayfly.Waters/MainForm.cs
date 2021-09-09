@@ -62,6 +62,8 @@ namespace Mayfly.Waters
             searchBox1.SetEmpty();
             labelTreeCount.UpdateStatus(Data.Water.Count);
             labelListCount.UpdateStatus(listViewWaters.Items.Count);
+
+            menuStrip1.SetMenuIcons();
         }
 
         public MainForm(string filename) : this()

@@ -193,6 +193,8 @@ namespace Mayfly.Fish
             ColumnAddtValue.ValueType = typeof(double);
             AllowEffortCalculation = true;
 
+            MenuStrip.SetMenuIcons();
+
             //menuItemWatersRef.Enabled = Wild.UserSettings.WatersIndexPath != null;
             //menuItemSpeciesRef.Enabled = UserSettings.SpeciesIndexPath != null;
 
@@ -1241,7 +1243,7 @@ namespace Mayfly.Fish
 
                 if (tdbPressed == tdbSave)
                 {
-                    ToolStripMenuItemSave_Click(ToolStripMenuItemSave, new EventArgs());
+                    ToolStripMenuItemSave_Click(menuItemSave, new EventArgs());
                     result = DialogResult.OK;
                 }
                 else if (tdbPressed == tdbDiscard)

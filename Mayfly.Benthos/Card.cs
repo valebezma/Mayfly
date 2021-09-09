@@ -29,7 +29,7 @@ namespace Mayfly.Benthos
             set
             {
                 this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                itemAboutCard.Visible = value != null;
+                menuItemAboutCard.Visible = value != null;
                 filename = value;
             }
 
@@ -241,6 +241,8 @@ namespace Mayfly.Benthos
             spreadSheetAddt.StringVariants = Wild.UserSettings.AddtFactors;
             ColumnAddtFactor.ValueType = typeof(string);
             ColumnAddtValue.ValueType = typeof(double);
+
+            MenuStrip.SetMenuIcons();
 
             ToolStripMenuItemWatersRef.Enabled = Wild.UserSettings.WatersIndexPath != null;
             ToolStripMenuItemSpeciesRef.Enabled = UserSettings.SpeciesIndexPath != null;
@@ -1313,7 +1315,7 @@ namespace Mayfly.Benthos
 
                 if (tdbPressed == tdbSave)
                 {
-                    menuItemSave_Click(ToolStripMenuItemSave, new EventArgs());
+                    menuItemSave_Click(menuItemSave, new EventArgs());
                     result = DialogResult.OK;
                 }
                 else if (tdbPressed == tdbDiscard)

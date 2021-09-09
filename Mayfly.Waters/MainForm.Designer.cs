@@ -122,21 +122,20 @@
             // 
             // menuItemNew
             // 
-            this.menuItemNew.Image = global::Mayfly.Pictogram.New;
             this.menuItemNew.Name = "menuItemNew";
             resources.ApplyResources(this.menuItemNew, "menuItemNew");
             this.menuItemNew.Click += new System.EventHandler(this.menuItemNew_Click);
             // 
             // menuItemOpen
             // 
-            resources.ApplyResources(this.menuItemOpen, "menuItemOpen");
             this.menuItemOpen.Name = "menuItemOpen";
+            resources.ApplyResources(this.menuItemOpen, "menuItemOpen");
             this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
             // 
             // menuItemSave
             // 
-            resources.ApplyResources(this.menuItemSave, "menuItemSave");
             this.menuItemSave.Name = "menuItemSave";
+            resources.ApplyResources(this.menuItemSave, "menuItemSave");
             this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
             // 
             // menuItemSaveAs
@@ -152,14 +151,14 @@
             // 
             // menuItemPreview
             // 
-            resources.ApplyResources(this.menuItemPreview, "menuItemPreview");
             this.menuItemPreview.Name = "menuItemPreview";
+            resources.ApplyResources(this.menuItemPreview, "menuItemPreview");
             this.menuItemPreview.Click += new System.EventHandler(this.menuItemPreview_Click);
             // 
             // menuItemPrint
             // 
-            resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
             this.menuItemPrint.Name = "menuItemPrint";
+            resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
             this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
             // 
             // toolStripSeparator1

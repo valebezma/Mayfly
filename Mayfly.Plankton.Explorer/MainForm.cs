@@ -87,6 +87,8 @@ namespace Mayfly.Plankton.Explorer
 
             tabPageArtifacts.Parent = null;
 
+            menuStrip.SetMenuIcons();
+
             if (UserSettings.AutoLoadBio)
             {
                 processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);

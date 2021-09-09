@@ -136,6 +136,8 @@ namespace Mayfly.Species
 
             Data = new SpeciesKey();
             FileName = null;
+
+            menuStrip1.SetMenuIcons();
         }
 
         public MainForm(string filename) : this()

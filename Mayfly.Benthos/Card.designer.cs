@@ -30,29 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            Mayfly.Wild.AquaState aquaState2 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weather2 = new Mayfly.Wild.WeatherState();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemPrintPreview = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.blankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPreview = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemBlank = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCardBlank = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemIndividualsLogBlank = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemData = new System.Windows.Forms.ToolStripMenuItem();
             this.addEnvironmentalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addFactorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,9 +62,9 @@
             this.ToolStripMenuItemWatersRef = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSpeciesRef = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemAboutCard = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAboutCard = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
@@ -223,67 +223,67 @@
             // ToolStripMenuItemFile
             // 
             this.ToolStripMenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemNew,
-            this.ToolStripMenuItemOpen,
-            this.ToolStripMenuItemSave,
-            this.ToolStripMenuItemSaveAs,
+            this.menuItemNew,
+            this.menuItemOpen,
+            this.menuItemSave,
+            this.menuItemSaveAs,
             this.toolStripSeparator3,
-            this.ToolStripMenuItemPrintPreview,
-            this.ToolStripMenuItemPrint,
-            this.blankToolStripMenuItem,
+            this.menuItemPreview,
+            this.menuItemPrint,
+            this.menuItemBlank,
             this.toolStripSeparator6,
-            this.ToolStripMenuItemClose});
+            this.menuItemClose});
             this.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile";
             resources.ApplyResources(this.ToolStripMenuItemFile, "ToolStripMenuItemFile");
             // 
-            // ToolStripMenuItemNew
+            // menuItemNew
             // 
-            this.ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
-            resources.ApplyResources(this.ToolStripMenuItemNew, "ToolStripMenuItemNew");
-            this.ToolStripMenuItemNew.Click += new System.EventHandler(this.menuItemNew_Click);
+            this.menuItemNew.Name = "menuItemNew";
+            resources.ApplyResources(this.menuItemNew, "menuItemNew");
+            this.menuItemNew.Click += new System.EventHandler(this.menuItemNew_Click);
             // 
-            // ToolStripMenuItemOpen
+            // menuItemOpen
             // 
-            this.ToolStripMenuItemOpen.Name = "ToolStripMenuItemOpen";
-            resources.ApplyResources(this.ToolStripMenuItemOpen, "ToolStripMenuItemOpen");
-            this.ToolStripMenuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
+            this.menuItemOpen.Name = "menuItemOpen";
+            resources.ApplyResources(this.menuItemOpen, "menuItemOpen");
+            this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
             // 
-            // ToolStripMenuItemSave
+            // menuItemSave
             // 
-            this.ToolStripMenuItemSave.Name = "ToolStripMenuItemSave";
-            resources.ApplyResources(this.ToolStripMenuItemSave, "ToolStripMenuItemSave");
-            this.ToolStripMenuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
+            this.menuItemSave.Name = "menuItemSave";
+            resources.ApplyResources(this.menuItemSave, "menuItemSave");
+            this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
             // 
-            // ToolStripMenuItemSaveAs
+            // menuItemSaveAs
             // 
-            this.ToolStripMenuItemSaveAs.Name = "ToolStripMenuItemSaveAs";
-            resources.ApplyResources(this.ToolStripMenuItemSaveAs, "ToolStripMenuItemSaveAs");
-            this.ToolStripMenuItemSaveAs.Click += new System.EventHandler(this.menuItemSaveAs_Click);
+            this.menuItemSaveAs.Name = "menuItemSaveAs";
+            resources.ApplyResources(this.menuItemSaveAs, "menuItemSaveAs");
+            this.menuItemSaveAs.Click += new System.EventHandler(this.menuItemSaveAs_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // ToolStripMenuItemPrintPreview
+            // menuItemPreview
             // 
-            this.ToolStripMenuItemPrintPreview.Name = "ToolStripMenuItemPrintPreview";
-            resources.ApplyResources(this.ToolStripMenuItemPrintPreview, "ToolStripMenuItemPrintPreview");
-            this.ToolStripMenuItemPrintPreview.Click += new System.EventHandler(this.menuItemPrintPreview_Click);
+            this.menuItemPreview.Name = "menuItemPreview";
+            resources.ApplyResources(this.menuItemPreview, "menuItemPreview");
+            this.menuItemPreview.Click += new System.EventHandler(this.menuItemPrintPreview_Click);
             // 
-            // ToolStripMenuItemPrint
+            // menuItemPrint
             // 
-            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            resources.ApplyResources(this.ToolStripMenuItemPrint, "ToolStripMenuItemPrint");
-            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
+            this.menuItemPrint.Name = "menuItemPrint";
+            resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
+            this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
             // 
-            // blankToolStripMenuItem
+            // menuItemBlank
             // 
-            this.blankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemBlank.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemCardBlank,
             this.ToolStripMenuItemIndividualsLogBlank});
-            this.blankToolStripMenuItem.Name = "blankToolStripMenuItem";
-            resources.ApplyResources(this.blankToolStripMenuItem, "blankToolStripMenuItem");
+            this.menuItemBlank.Name = "menuItemBlank";
+            resources.ApplyResources(this.menuItemBlank, "menuItemBlank");
             // 
             // ToolStripMenuItemCardBlank
             // 
@@ -302,11 +302,11 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
-            // ToolStripMenuItemClose
+            // menuItemClose
             // 
-            this.ToolStripMenuItemClose.Name = "ToolStripMenuItemClose";
-            resources.ApplyResources(this.ToolStripMenuItemClose, "ToolStripMenuItemClose");
-            this.ToolStripMenuItemClose.Click += new System.EventHandler(this.menuItemClose_Click);
+            this.menuItemClose.Name = "menuItemClose";
+            resources.ApplyResources(this.menuItemClose, "menuItemClose");
+            this.menuItemClose.Click += new System.EventHandler(this.menuItemClose_Click);
             // 
             // ToolStripMenuItemData
             // 
@@ -347,9 +347,9 @@
             this.ToolStripMenuItemWatersRef,
             this.ToolStripMenuItemSpeciesRef,
             this.toolStripSeparator2,
-            this.ToolStripMenuItemSettings,
-            this.itemAboutCard,
-            this.ToolStripMenuItemAbout});
+            this.menuItemSettings,
+            this.menuItemAboutCard,
+            this.menuItemAbout});
             this.ToolStripMenuItemService.Name = "ToolStripMenuItemService";
             resources.ApplyResources(this.ToolStripMenuItemService, "ToolStripMenuItemService");
             // 
@@ -370,23 +370,23 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // ToolStripMenuItemSettings
+            // menuItemSettings
             // 
-            this.ToolStripMenuItemSettings.Name = "ToolStripMenuItemSettings";
-            resources.ApplyResources(this.ToolStripMenuItemSettings, "ToolStripMenuItemSettings");
-            this.ToolStripMenuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);
+            this.menuItemSettings.Name = "menuItemSettings";
+            resources.ApplyResources(this.menuItemSettings, "menuItemSettings");
+            this.menuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);
             // 
-            // itemAboutCard
+            // menuItemAboutCard
             // 
-            this.itemAboutCard.Name = "itemAboutCard";
-            resources.ApplyResources(this.itemAboutCard, "itemAboutCard");
-            this.itemAboutCard.Click += new System.EventHandler(this.itemAboutCard_Click);
+            this.menuItemAboutCard.Name = "menuItemAboutCard";
+            resources.ApplyResources(this.menuItemAboutCard, "menuItemAboutCard");
+            this.menuItemAboutCard.Click += new System.EventHandler(this.itemAboutCard_Click);
             // 
-            // ToolStripMenuItemAbout
+            // menuItemAbout
             // 
-            this.ToolStripMenuItemAbout.Name = "ToolStripMenuItemAbout";
-            resources.ApplyResources(this.ToolStripMenuItemAbout, "ToolStripMenuItemAbout");
-            this.ToolStripMenuItemAbout.Click += new System.EventHandler(this.ToolStripMenuItemAbout_Click);
+            this.menuItemAbout.Name = "menuItemAbout";
+            resources.ApplyResources(this.menuItemAbout, "menuItemAbout");
+            this.menuItemAbout.Click += new System.EventHandler(this.ToolStripMenuItemAbout_Click);
             // 
             // tabPageLog
             // 
@@ -437,8 +437,8 @@
             // ColumnSpecies
             // 
             this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnSpecies.FillWeight = 200F;
             resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
             this.ColumnSpecies.Name = "ColumnSpecies";
@@ -446,8 +446,8 @@
             // ColumnQuantity
             // 
             this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnQuantity.FillWeight = 30F;
             resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
             this.ColumnQuantity.Name = "ColumnQuantity";
@@ -455,9 +455,9 @@
             // ColumnMass
             // 
             this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Format = "N1";
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Format = "N1";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnMass.FillWeight = 30F;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
@@ -988,20 +988,20 @@
             // aquaControl1
             // 
             resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState2.Colour = -1;
-            aquaState2.Conductivity = double.NaN;
-            aquaState2.DissolvedOxygen = double.NaN;
-            aquaState2.FlowRate = double.NaN;
-            aquaState2.Foam = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState2.Limpidity = double.NaN;
-            aquaState2.Odor = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState2.OxygenSaturation = double.NaN;
-            aquaState2.pH = double.NaN;
-            aquaState2.Sewage = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState2.TemperatureBottom = double.NaN;
-            aquaState2.TemperatureSurface = double.NaN;
-            aquaState2.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
-            this.aquaControl1.AquaState = aquaState2;
+            aquaState1.Colour = -1;
+            aquaState1.Conductivity = double.NaN;
+            aquaState1.DissolvedOxygen = double.NaN;
+            aquaState1.FlowRate = double.NaN;
+            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.Limpidity = double.NaN;
+            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.OxygenSaturation = double.NaN;
+            aquaState1.pH = double.NaN;
+            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.TemperatureBottom = double.NaN;
+            aquaState1.TemperatureSurface = double.NaN;
+            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
+            this.aquaControl1.AquaState = aquaState1;
             this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
             this.aquaControl1.Name = "aquaControl1";
             this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
@@ -1011,17 +1011,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weather2.AdditionalEvent = 0;
-            weather2.Cloudage = double.NaN;
-            weather2.Degree = 0;
-            weather2.Discretion = 0;
-            weather2.Event = 0;
-            weather2.Humidity = double.NaN;
-            weather2.Pressure = double.NaN;
-            weather2.Temperature = double.NaN;
-            weather2.WindDirection = double.NaN;
-            weather2.WindRate = double.NaN;
-            this.weatherControl1.Weather = weather2;
+            weatherState1.AdditionalEvent = 0;
+            weatherState1.Cloudage = double.NaN;
+            weatherState1.Degree = 0;
+            weatherState1.Discretion = 0;
+            weatherState1.Event = 0;
+            weatherState1.Humidity = double.NaN;
+            weatherState1.Pressure = double.NaN;
+            weatherState1.Temperature = double.NaN;
+            weatherState1.WindDirection = double.NaN;
+            weatherState1.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState1;
             this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
             // 
             // labelActWeather
@@ -1060,18 +1060,18 @@
             // ColumnAddtFactor
             // 
             this.ColumnAddtFactor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.NullValue = null;
-            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.NullValue = null;
+            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.ColumnAddtFactor, "ColumnAddtFactor");
             this.ColumnAddtFactor.Name = "ColumnAddtFactor";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -1320,12 +1320,12 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSave;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSave;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSaveAs;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemClose;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSettings;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemAbout;
+        private System.Windows.Forms.ToolStripMenuItem menuItemClose;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSettings;
+        private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLog;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDelete;
         private System.Windows.Forms.ToolStripStatusLabel StatusMass;
@@ -1376,8 +1376,8 @@
         private System.Windows.Forms.Label labelActWeather;
         private System.Windows.Forms.Label labelWaterConds;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPrint;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPrintPreview;
+        private System.Windows.Forms.ToolStripMenuItem menuItemPrint;
+        private System.Windows.Forms.ToolStripMenuItem menuItemPreview;
         private System.Windows.Forms.ToolStripStatusLabel StatusLog;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPaste;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1396,7 +1396,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.Button buttonSubTexture;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCut;
-        private System.Windows.Forms.ToolStripMenuItem blankToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
         private System.Windows.Forms.ToolStripMenuItem ItemSubSandyClay;
@@ -1418,7 +1418,7 @@
         private Wild.Controls.AquaControl aquaControl1;
         private Geographics.WaypointControl waypointControl1;
         private Waters.Controls.WaterSelector waterSelector;
-        private System.Windows.Forms.ToolStripMenuItem itemAboutCard;
+        private System.Windows.Forms.ToolStripMenuItem menuItemAboutCard;
         private Controls.SpreadSheet spreadSheetLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
@@ -1436,8 +1436,8 @@
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.TextBox textBoxLabel;
         private System.Windows.Forms.TextBox textBoxComments;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemNew;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemOpen;
+        private System.Windows.Forms.ToolStripMenuItem menuItemNew;
+        private System.Windows.Forms.ToolStripMenuItem menuItemOpen;
         private System.Windows.Forms.ComboBox comboBoxBank;
         private System.Windows.Forms.ComboBox comboBoxCrossSection;
         private System.Windows.Forms.TextBox textBoxDepth;

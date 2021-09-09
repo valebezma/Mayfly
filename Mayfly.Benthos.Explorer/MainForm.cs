@@ -78,6 +78,8 @@ namespace Mayfly.Benthos.Explorer
             columnIndInstar.ValueType = typeof(int);
             columnIndComments.ValueType = typeof(string);
 
+            menuStrip.SetMenuIcons();
+
             data.RefreshBios();
             //data.WeightModels.VisualConfirmation =
             //    UserSettings.VisualConfirmation;
