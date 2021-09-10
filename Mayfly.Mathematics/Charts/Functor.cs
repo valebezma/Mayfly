@@ -203,6 +203,19 @@ namespace Mayfly.Mathematics.Charts
             else { Update(AxisType.Primary); }
         }
 
+        public void OpenTrendProperties()
+        {
+            if (!Properties.Visible)
+            {
+                Properties.SetFriendlyDesktopLocation(Container.FindForm(), FormLocation.NextToHost);
+                Properties.Show();
+            }
+            else
+            {
+                Properties.BringToFront();
+            }
+        }
+
 
         public bool IsMouseAboveArgument(MouseEventArgs e)
         {

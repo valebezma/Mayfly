@@ -37,6 +37,12 @@ namespace Mayfly.Fish.Explorer
 
             ColumnCohAge.ValueType = typeof(Age);
 
+            UI.SetControlAvailability(License.AllowedFeaturesLevel == FeatureLevel.Insider,
+                buttonAL, 
+                buttonLW, 
+                contextGrowth,
+                contextMass);
+
             this.RestoreAllCheckStates();
         }
 
@@ -296,16 +302,12 @@ namespace Mayfly.Fish.Explorer
 
         private void itemGrowth_Click(object sender, EventArgs e)
         {
-            statChartAL.OpenRegressionProperties(
-                (Scatterplot)statChartAL.GetSample(((ToolStripMenuItem)sender).Name)
-                );
+            ((Scatterplot)statChartAL.GetSample(((ToolStripMenuItem)sender).Name)).OpenRegressionProperties();
         }
 
         private void itemMass_Click(object sender, EventArgs e)
         {
-            statChartLW.OpenRegressionProperties(
-                (Scatterplot)statChartLW.GetSample(((ToolStripMenuItem)sender).Name)
-                );
+            ((Scatterplot)statChartLW.GetSample(((ToolStripMenuItem)sender).Name)).OpenRegressionProperties();
         }
 
         private void buttonAL_Click(object sender, EventArgs e)

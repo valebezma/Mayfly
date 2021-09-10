@@ -45,9 +45,9 @@ namespace Mayfly.Mathematics
         private ContextMenuStrip contextValue;
         private ToolStripMenuItem itemCopyAsSample;
         private ToolStripMenuItem itemGroup;
-        private Mayfly.Controls.SpreadSheet sheet;
+        private SpreadSheet sheet;
 
-        public Mayfly.Controls.SpreadSheet Sheet
+        public SpreadSheet Sheet
         {
             set
             {
@@ -226,7 +226,7 @@ namespace Mayfly.Mathematics
         }
 
         [Browsable(false)]
-        public Mayfly.Controls.SpreadSheet OperatingSheet { internal set; get; }
+        public SpreadSheet OperatingSheet { internal set; get; }
 
         //[Browsable(false)]
         //public Display DisplayToolBox { private set; get; }
@@ -475,7 +475,7 @@ namespace Mayfly.Mathematics
         {
             if (sheet == null) return;
 
-            if (sheet.IsLog) // && License.Verify("Statistics"))
+            if (sheet.IsLog && License.AllowedFeaturesLevel == FeatureLevel.Insider)
             {
                 sheet.HandleButton(true, ref chartButton, Properties.Resources.Charts, buttonCharts_Click);
                 sheet.HandleButton(true, ref statButton, Properties.Resources.Stat, buttonStat_Click);

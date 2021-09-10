@@ -39,6 +39,9 @@ namespace Mayfly.Fish.Explorer
 
             ColumnCohAge.ValueType = typeof(Age);
 
+            UI.SetControlAvailability(License.AllowedFeaturesLevel == FeatureLevel.Insider,
+                contextMortality);
+
             this.RestoreAllCheckStates();
         }
 
@@ -288,9 +291,7 @@ namespace Mayfly.Fish.Explorer
 
         private void itemMortality_Click(object sender, EventArgs e)
         {
-            statChartMortality.OpenRegressionProperties(
-                (Scatterplot)statChartMortality.GetSample(((ToolStripMenuItem)sender).Name)
-                );
+            ((Scatterplot)statChartMortality.GetSample(((ToolStripMenuItem)sender).Name)).OpenRegressionProperties();
         }
 
         private void buttonM_Click(object sender, EventArgs e)

@@ -21,26 +21,30 @@ namespace Mayfly.Controls
             set
             {
                 format = value;
-                Text = Value.ToString(value);
+
+                Text = Value.ToString(format);
             }
         }
+
+        double numberValue;
 
         public double Value 
         {
             get 
             {
-                try { return double.Parse(this.Text); }
-                catch { return double.NaN; }
+                return numberValue;
             }
 
             set 
             {
-                if (double.IsNaN(value)) {
+                numberValue = value;
+
+                if (double.IsNaN(numberValue)) {
                     this.Text = Constants.Null;
                 }
                 else
                 {
-                    this.Text = value.ToString(format);
+                    this.Text = numberValue.ToString(format);
                 }
             }
         }
@@ -72,15 +76,15 @@ namespace Mayfly.Controls
 
 
 
-        protected override void OnTextChanged(EventArgs e)
-        {
-            base.OnTextChanged(e);
+        //protected override void OnTextChanged(EventArgs e)
+        //{
+        //    base.OnTextChanged(e);
 
-            if (!double.IsNaN(Value))
-            {
-                format = "N" + Precision;
-            }
-        }
+        //    if (!double.IsNaN(Value))
+        //    {
+        //        format = "N" + Precision;
+        //    }
+        //}
 
         protected override void OnKeyPress(System.Windows.Forms.KeyPressEventArgs e) 
         {

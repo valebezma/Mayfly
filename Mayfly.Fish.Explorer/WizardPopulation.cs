@@ -56,6 +56,12 @@ namespace Mayfly.Fish.Explorer
         {
             InitializeComponent();
 
+            UI.SetControlAvailability(License.AllowedFeaturesLevel == FeatureLevel.Insider,
+                buttonAL,
+                buttonLW,
+                buttonL,
+                buttonW);
+
             this.RestoreAllCheckStates();
         }
 
@@ -358,8 +364,16 @@ namespace Mayfly.Fish.Explorer
 
             labelBasicInstruction.ResetFormatted(Swarm);
 
-            buttonL.ResetFormatted(new SampleDisplay(Swarm.LengthSample).ToString("s"));
-            buttonW.ResetFormatted(new SampleDisplay(Swarm.MassSample).ToString("s"));
+            numberBoxLmin.Value = Swarm.LengthSample.Minimum;
+            numberBoxLmax.Value = Swarm.LengthSample.Maximum;
+            numberBoxLmean.Value = Swarm.LengthSample.Mean;
+
+            numberBoxWmin.Value = Swarm.MassSample.Minimum;
+            numberBoxWmax.Value = Swarm.MassSample.Maximum;
+            numberBoxWmean.Value = Swarm.MassSample.Mean;
+
+            UI.SetControlAvailability(GrowthModel.InternalData != null, 
+                numberBoxAmin, numberBoxAmax, numberBoxAmean);
 
             checkBoxAge.Enabled =
                 checkBoxReportAge.Checked =
@@ -389,6 +403,10 @@ namespace Mayfly.Fish.Explorer
                     inter.Properties.ScatterplotName = Resources.Interface.BioLoaded;
                     inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
                     plotAL.AddSeries(inter);
+
+                    numberBoxAmin.Value = GrowthModel.InternalData.Data.X.Minimum;
+                    numberBoxAmax.Value = GrowthModel.InternalData.Data.X.Maximum;
+                    numberBoxAmean.Value = GrowthModel.InternalData.Data.X.Mean;
                 }
 
                 if (GrowthModel.CombinedData != null)
@@ -494,7 +512,7 @@ namespace Mayfly.Fish.Explorer
 
                 plotAW.AddSeries(aw);
             }
-            
+
             plotAW.DoPlot();
 
             pageModelAW.SetNavigation(true);
@@ -544,12 +562,12 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonAL_Click(object sender, EventArgs e)
         {
-            plotAL.OpenRegressionProperties((Scatterplot)plotAL.GetSample(Resources.Interface.BioCombined));
+            ((Scatterplot)plotAL.GetSample(Resources.Interface.BioCombined)).OpenRegressionProperties();
         }
 
         private void buttonLW_Click(object sender, EventArgs e)
         {
-            plotLW.OpenRegressionProperties((Scatterplot)plotLW.GetSample(Resources.Interface.BioCombined));
+            ((Scatterplot)plotLW.GetSample(Resources.Interface.BioCombined)).OpenRegressionProperties();
         }
 
         private void pageAW_Commit(object sender, WizardPageConfirmEventArgs e)
@@ -1074,9 +1092,7 @@ namespace Mayfly.Fish.Explorer
 
         private void buttonMortality_Click(object sender, EventArgs e)
         {
-            RegressionProperties properties = new RegressionProperties(TotalMortalityModel.Exploited.Regression, false);
-            properties.SetFriendlyDesktopLocation(this);
-            properties.Show(this);
+            (new Scatterplot(TotalMortalityModel.Unexploited)).OpenRegressionProperties();
         }
 
         private void pageMortality_Commit(object sender, WizardPageConfirmEventArgs e)

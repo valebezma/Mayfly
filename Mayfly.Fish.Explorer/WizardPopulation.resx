@@ -145,7 +145,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 264</value>
+    <value>200, 268</value>
   </data>
   <data name="checkBoxAge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLength.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 200</value>
+    <value>200, 204</value>
   </data>
   <data name="checkBoxLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxLengthAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 232</value>
+    <value>240, 236</value>
   </data>
   <data name="checkBoxLengthAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAgeAdjusted.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 296</value>
+    <value>240, 300</value>
   </data>
   <data name="checkBoxAgeAdjusted.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 10</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 97</value>
+    <value>50, 101</value>
   </data>
   <data name="labelStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>610, 75</value>
@@ -329,26 +329,716 @@ Pick options you want to include in current research.</value>
   <data name="&gt;&gt;pageStart.Type" xml:space="preserve">
     <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
+  <data name="label12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 359</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 15</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Age, years</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 231</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Mass, g</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 417</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 15</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Mean</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 289</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 15</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Mean</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 161</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 15</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Mean</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 388</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Oldest</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label7.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 260</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Heaviest</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 132</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Longest</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 359</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 15</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Youngest</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 231</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Lightest</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 103</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 15</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Shortest</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="labelL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="labelL.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 103</value>
+  </data>
+  <data name="labelL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 15</value>
+  </data>
+  <data name="labelL.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelL.Text" xml:space="preserve">
+    <value>Length, mm</value>
+  </data>
+  <data name="&gt;&gt;labelL.Name" xml:space="preserve">
+    <value>labelL</value>
+  </data>
+  <data name="&gt;&gt;labelL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelL.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;labelL.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="numberBoxAmean.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxAmean.Format" xml:space="preserve">
+    <value>N1</value>
+  </data>
+  <data name="numberBoxAmean.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 414</value>
+  </data>
+  <data name="numberBoxAmean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxAmean.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxAmean.Text" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="numberBoxAmean.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmean.Name" xml:space="preserve">
+    <value>numberBoxAmean</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmean.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmean.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmean.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="numberBoxWmean.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxWmean.Format" xml:space="preserve">
+    <value>N1</value>
+  </data>
+  <data name="numberBoxWmean.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 286</value>
+  </data>
+  <data name="numberBoxWmean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxWmean.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxWmean.Text" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="numberBoxWmean.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmean.Name" xml:space="preserve">
+    <value>numberBoxWmean</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmean.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmean.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmean.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="numberBoxAmax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxAmax.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxAmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 385</value>
+  </data>
+  <data name="numberBoxAmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxAmax.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxAmax.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxAmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmax.Name" xml:space="preserve">
+    <value>numberBoxAmax</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmax.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmax.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmax.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="numberBoxWmax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxWmax.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxWmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 257</value>
+  </data>
+  <data name="numberBoxWmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxWmax.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxWmax.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxWmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmax.Name" xml:space="preserve">
+    <value>numberBoxWmax</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmax.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmax.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmax.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="numberBoxLmean.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxLmean.Format" xml:space="preserve">
+    <value>N1</value>
+  </data>
+  <data name="numberBoxLmean.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 158</value>
+  </data>
+  <data name="numberBoxLmean.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxLmean.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxLmean.Text" xml:space="preserve">
+    <value>1,0</value>
+  </data>
+  <data name="numberBoxLmean.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmean.Name" xml:space="preserve">
+    <value>numberBoxLmean</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmean.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmean.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmean.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="numberBoxAmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxAmin.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxAmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 356</value>
+  </data>
+  <data name="numberBoxAmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxAmin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxAmin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxAmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmin.Name" xml:space="preserve">
+    <value>numberBoxAmin</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmin.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmin.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxAmin.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="numberBoxWmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxWmin.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxWmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 228</value>
+  </data>
+  <data name="numberBoxWmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxWmin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxWmin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxWmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmin.Name" xml:space="preserve">
+    <value>numberBoxWmin</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmin.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmin.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxWmin.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="numberBoxLmax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxLmax.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxLmax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 129</value>
+  </data>
+  <data name="numberBoxLmax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxLmax.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxLmax.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxLmax.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmax.Name" xml:space="preserve">
+    <value>numberBoxLmax</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmax.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmax.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmax.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="numberBoxLmin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="numberBoxLmin.Format" xml:space="preserve">
+    <value>N0</value>
+  </data>
+  <data name="numberBoxLmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 100</value>
+  </data>
+  <data name="numberBoxLmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="numberBoxLmin.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numberBoxLmin.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numberBoxLmin.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmin.Name" xml:space="preserve">
+    <value>numberBoxLmin</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmin.Type" xml:space="preserve">
+    <value>Mayfly.Controls.NumberBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmin.Parent" xml:space="preserve">
+    <value>pageBasic</value>
+  </data>
+  <data name="&gt;&gt;numberBoxLmin.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
   <data name="buttonL.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+    <value>None</value>
   </data>
   <data name="buttonL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 90</value>
+    <value>410, 187</value>
+  </data>
+  <data name="buttonL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
   </data>
   <data name="buttonL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
+    <value>100, 23</value>
   </data>
   <data name="buttonL.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
   <data name="buttonL.Text" xml:space="preserve">
-    <value>Length, mm: {0}</value>
-  </data>
-  <data name="buttonL.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+    <value>More...</value>
   </data>
   <data name="&gt;&gt;buttonL.Name" xml:space="preserve">
     <value>buttonL</value>
@@ -360,28 +1050,28 @@ Pick options you want to include in current research.</value>
     <value>pageBasic</value>
   </data>
   <data name="&gt;&gt;buttonL.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>21</value>
   </data>
   <data name="buttonW.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top</value>
+    <value>None</value>
   </data>
   <data name="buttonW.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 119</value>
+    <value>410, 315</value>
+  </data>
+  <data name="buttonW.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 15</value>
   </data>
   <data name="buttonW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
+    <value>100, 23</value>
   </data>
   <data name="buttonW.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
   <data name="buttonW.Text" xml:space="preserve">
-    <value>Individual mass, g: {0}</value>
-  </data>
-  <data name="buttonW.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+    <value>More...</value>
   </data>
   <data name="&gt;&gt;buttonW.Name" xml:space="preserve">
     <value>buttonW</value>
@@ -393,7 +1083,7 @@ Pick options you want to include in current research.</value>
     <value>pageBasic</value>
   </data>
   <data name="&gt;&gt;buttonW.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>22</value>
   </data>
   <data name="labelBasicInstruction.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -423,7 +1113,7 @@ Pick options you want to include in current research.</value>
     <value>pageBasic</value>
   </data>
   <data name="&gt;&gt;labelBasicInstruction.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>23</value>
   </data>
   <data name="pageBasic.Size" type="System.Drawing.Size, System.Drawing">
     <value>737, 557</value>
@@ -674,6 +1364,9 @@ Pick options you want to include in current research.</value>
   <data name="plotAL.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
   </data>
+  <data name="plotAL.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="plotAL.AxisYFormat" xml:space="preserve">
     <value>N0</value>
   </data>
@@ -751,6 +1444,9 @@ Pick options you want to include in current research.</value>
   </data>
   <data name="plotAW.AxisY2Format" xml:space="preserve">
     <value>N0</value>
+  </data>
+  <data name="plotAW.AxisY2Title" xml:space="preserve">
+    <value />
   </data>
   <data name="plotAW.AxisYTitle" xml:space="preserve">
     <value>Mass, g</value>
@@ -1097,6 +1793,9 @@ Pick options you want to include in current research.</value>
   <data name="plotLength.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
+  <data name="plotLength.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="plotLength.AxisYFormat" xml:space="preserve">
     <value>P0</value>
   </data>
@@ -1140,7 +1839,7 @@ Pick options you want to include in current research.</value>
     <value>Mass</value>
   </data>
   <data name="comboBoxLengthSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 51</value>
+    <value>310, 50</value>
   </data>
   <data name="comboBoxLengthSource.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 23</value>
@@ -1200,7 +1899,7 @@ Pick options you want to include in current research.</value>
     <value>NoControl</value>
   </data>
   <data name="labelLengthSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 54</value>
+    <value>200, 53</value>
   </data>
   <data name="labelLengthSource.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 15</value>
@@ -1366,6 +2065,9 @@ Length composition adjustment will be skipped. Try to merge some mesh values</va
   </data>
   <data name="plotSelectionSource.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
+  </data>
+  <data name="plotSelectionSource.AxisY2Title" xml:space="preserve">
+    <value />
   </data>
   <data name="plotSelectionSource.AxisYTitle" xml:space="preserve">
     <value>NPUE, %</value>
@@ -1571,6 +2273,9 @@ Length composition adjustment will be skipped. Try to merge some mesh values</va
   <data name="plotSelection.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
+  <data name="plotSelection.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="plotSelection.AxisYFormat" xml:space="preserve">
     <value>P0</value>
   </data>
@@ -1655,6 +2360,9 @@ Length composition adjustment will be skipped. Try to merge some mesh values</va
   <data name="plotLengthAdjusted.AxisXTitle" xml:space="preserve">
     <value>Length, mm</value>
   </data>
+  <data name="plotLengthAdjusted.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="plotLengthAdjusted.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>
   </data>
@@ -1705,6 +2413,9 @@ Length composition adjustment will be skipped. Try to merge some mesh values</va
   </data>
   <data name="plotAge.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
+  </data>
+  <data name="plotAge.AxisY2Title" xml:space="preserve">
+    <value />
   </data>
   <data name="plotAge.AxisYFormat" xml:space="preserve">
     <value>P0</value>
@@ -2255,6 +2966,9 @@ Age composition adjustment will be skipped. Try to select another age</value>
   <data name="plotMortality.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
   </data>
+  <data name="plotMortality.AxisY2Title" xml:space="preserve">
+    <value />
+  </data>
   <data name="plotMortality.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>
   </data>
@@ -2305,6 +3019,9 @@ Age composition adjustment will be skipped. Try to select another age</value>
   </data>
   <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
     <value>Age, years</value>
+  </data>
+  <data name="plotAgeAdjusted.AxisY2Title" xml:space="preserve">
+    <value />
   </data>
   <data name="plotAgeAdjusted.AxisYTitle" xml:space="preserve">
     <value>CPUE, ind./{0}</value>
@@ -2763,7 +3480,7 @@ Age composition adjustment will be skipped. Try to select another age</value>
     <value>784, 711</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 600</value>
+    <value>800, 750</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

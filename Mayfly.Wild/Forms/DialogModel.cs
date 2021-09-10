@@ -60,7 +60,7 @@ namespace Mayfly.Wild
 
         private void buttonTrend_Click(object sender, EventArgs e)
         {
-            statChart1.OpenTrendProperties(Model);
+            Model.OpenTrendProperties();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

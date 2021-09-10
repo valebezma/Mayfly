@@ -556,6 +556,40 @@ namespace Mayfly.Mathematics.Charts
 
 
 
+        public void OpenRegressionProperties()
+        {
+            if (!Calc.IsRegressionOK) return;
+
+            RegressionProperties properties = new RegressionProperties(Calc.Regression, false);
+            properties.SetFriendlyDesktopLocation(Container);
+            properties.Show(Container);
+
+            Updated += properties.ChangeRegression;
+        }
+
+        public void OpenTrendProperties()
+        {
+            if (Properties.ShowTrend)
+            {
+                if (!Properties.Visible)
+                {
+                    Properties.SetFriendlyDesktopLocation(Container.FindForm(), FormLocation.NextToHost);
+                    Properties.Show();
+                }
+                else
+                {
+                    Properties.BringToFront();
+                }
+
+                Properties.ShowTrendTab();
+            }
+            else
+            {
+                Properties.ShowTrend = true;
+                Update();
+            }
+        }
+
         public Plot ShowOnChart()
         {
             return ShowOnChart(false);

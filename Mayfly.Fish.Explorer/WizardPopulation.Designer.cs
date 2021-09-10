@@ -54,6 +54,27 @@
             this.checkBoxAgeAdjusted = new System.Windows.Forms.CheckBox();
             this.labelStart = new System.Windows.Forms.Label();
             this.pageBasic = new AeroWizard.WizardPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelL = new System.Windows.Forms.Label();
+            this.numberBoxAmean = new Mayfly.Controls.NumberBox();
+            this.numberBoxWmean = new Mayfly.Controls.NumberBox();
+            this.numberBoxAmax = new Mayfly.Controls.NumberBox();
+            this.numberBoxWmax = new Mayfly.Controls.NumberBox();
+            this.numberBoxLmean = new Mayfly.Controls.NumberBox();
+            this.numberBoxAmin = new Mayfly.Controls.NumberBox();
+            this.numberBoxWmin = new Mayfly.Controls.NumberBox();
+            this.numberBoxLmax = new Mayfly.Controls.NumberBox();
+            this.numberBoxLmin = new Mayfly.Controls.NumberBox();
             this.buttonL = new System.Windows.Forms.Button();
             this.buttonW = new System.Windows.Forms.Button();
             this.labelBasicInstruction = new System.Windows.Forms.Label();
@@ -242,11 +263,155 @@
             // 
             // pageBasic
             // 
+            this.pageBasic.Controls.Add(this.label12);
+            this.pageBasic.Controls.Add(this.label1);
+            this.pageBasic.Controls.Add(this.label11);
+            this.pageBasic.Controls.Add(this.label8);
+            this.pageBasic.Controls.Add(this.label5);
+            this.pageBasic.Controls.Add(this.label10);
+            this.pageBasic.Controls.Add(this.label7);
+            this.pageBasic.Controls.Add(this.label4);
+            this.pageBasic.Controls.Add(this.label9);
+            this.pageBasic.Controls.Add(this.label6);
+            this.pageBasic.Controls.Add(this.label3);
+            this.pageBasic.Controls.Add(this.labelL);
+            this.pageBasic.Controls.Add(this.numberBoxAmean);
+            this.pageBasic.Controls.Add(this.numberBoxWmean);
+            this.pageBasic.Controls.Add(this.numberBoxAmax);
+            this.pageBasic.Controls.Add(this.numberBoxWmax);
+            this.pageBasic.Controls.Add(this.numberBoxLmean);
+            this.pageBasic.Controls.Add(this.numberBoxAmin);
+            this.pageBasic.Controls.Add(this.numberBoxWmin);
+            this.pageBasic.Controls.Add(this.numberBoxLmax);
+            this.pageBasic.Controls.Add(this.numberBoxLmin);
             this.pageBasic.Controls.Add(this.buttonL);
             this.pageBasic.Controls.Add(this.buttonW);
             this.pageBasic.Controls.Add(this.labelBasicInstruction);
             this.pageBasic.Name = "pageBasic";
             resources.ApplyResources(this.pageBasic, "pageBasic");
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // labelL
+            // 
+            resources.ApplyResources(this.labelL, "labelL");
+            this.labelL.Name = "labelL";
+            // 
+            // numberBoxAmean
+            // 
+            resources.ApplyResources(this.numberBoxAmean, "numberBoxAmean");
+            this.numberBoxAmean.Name = "numberBoxAmean";
+            this.numberBoxAmean.ReadOnly = true;
+            this.numberBoxAmean.Value = 1D;
+            // 
+            // numberBoxWmean
+            // 
+            resources.ApplyResources(this.numberBoxWmean, "numberBoxWmean");
+            this.numberBoxWmean.Name = "numberBoxWmean";
+            this.numberBoxWmean.ReadOnly = true;
+            this.numberBoxWmean.Value = 1D;
+            // 
+            // numberBoxAmax
+            // 
+            resources.ApplyResources(this.numberBoxAmax, "numberBoxAmax");
+            this.numberBoxAmax.Name = "numberBoxAmax";
+            this.numberBoxAmax.ReadOnly = true;
+            this.numberBoxAmax.Value = 1D;
+            // 
+            // numberBoxWmax
+            // 
+            resources.ApplyResources(this.numberBoxWmax, "numberBoxWmax");
+            this.numberBoxWmax.Name = "numberBoxWmax";
+            this.numberBoxWmax.ReadOnly = true;
+            this.numberBoxWmax.Value = 1D;
+            // 
+            // numberBoxLmean
+            // 
+            resources.ApplyResources(this.numberBoxLmean, "numberBoxLmean");
+            this.numberBoxLmean.Name = "numberBoxLmean";
+            this.numberBoxLmean.ReadOnly = true;
+            this.numberBoxLmean.Value = 1D;
+            // 
+            // numberBoxAmin
+            // 
+            resources.ApplyResources(this.numberBoxAmin, "numberBoxAmin");
+            this.numberBoxAmin.Name = "numberBoxAmin";
+            this.numberBoxAmin.ReadOnly = true;
+            this.numberBoxAmin.Value = 1D;
+            // 
+            // numberBoxWmin
+            // 
+            resources.ApplyResources(this.numberBoxWmin, "numberBoxWmin");
+            this.numberBoxWmin.Name = "numberBoxWmin";
+            this.numberBoxWmin.ReadOnly = true;
+            this.numberBoxWmin.Value = 1D;
+            // 
+            // numberBoxLmax
+            // 
+            resources.ApplyResources(this.numberBoxLmax, "numberBoxLmax");
+            this.numberBoxLmax.Name = "numberBoxLmax";
+            this.numberBoxLmax.ReadOnly = true;
+            this.numberBoxLmax.Value = 1D;
+            // 
+            // numberBoxLmin
+            // 
+            resources.ApplyResources(this.numberBoxLmin, "numberBoxLmin");
+            this.numberBoxLmin.Name = "numberBoxLmin";
+            this.numberBoxLmin.ReadOnly = true;
+            this.numberBoxLmin.Value = 1D;
             // 
             // buttonL
             // 
@@ -1020,6 +1185,7 @@
             this.pageStart.ResumeLayout(false);
             this.pageStart.PerformLayout();
             this.pageBasic.ResumeLayout(false);
+            this.pageBasic.PerformLayout();
             this.pageModelLW.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.plotLW)).EndInit();
             this.pageModelAL.ResumeLayout(false);
@@ -1155,5 +1321,26 @@
         private System.Windows.Forms.Label labelNoDataLW;
         private System.Windows.Forms.Label labelNoDataAL;
         private System.Windows.Forms.Label labelNoDataAW;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelL;
+        private Controls.NumberBox numberBoxWmean;
+        private Controls.NumberBox numberBoxWmax;
+        private Controls.NumberBox numberBoxLmean;
+        private Controls.NumberBox numberBoxWmin;
+        private Controls.NumberBox numberBoxLmax;
+        private Controls.NumberBox numberBoxLmin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private Controls.NumberBox numberBoxAmean;
+        private Controls.NumberBox numberBoxAmax;
+        private Controls.NumberBox numberBoxAmin;
     }
 }

@@ -124,8 +124,7 @@ namespace Mayfly.Mathematics.Statistics
         {
             foreach (Regression regression in SelectedRegressions)
             {
-                RegressionProperties properties = 
-                    new RegressionProperties(regression, false);
+                RegressionProperties properties = new RegressionProperties(regression, false);
                 properties.SetFriendlyDesktopLocation(this, FormLocation.NextToHost);
                 properties.Show();
             }

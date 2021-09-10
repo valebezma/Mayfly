@@ -2243,59 +2243,6 @@ namespace Mayfly.Mathematics.Charts
 
 
 
-        public void OpenRegressionProperties(Scatterplot scatterplot)
-        {
-            if (!scatterplot.Calc.IsRegressionOK) return;
-
-            RegressionProperties properties = new RegressionProperties(scatterplot.Calc.Regression, false);
-            properties.SetFriendlyDesktopLocation(contextScatterplot);
-            properties.Show(this);
-
-            scatterplot.Updated += properties.ChangeRegression;
-        }
-
-        public void OpenTrendProperties(Scatterplot scatterplot)
-        {
-            if (scatterplot.Properties.ShowTrend)
-            {
-                if (!scatterplot.Properties.Visible)
-                {
-                    //scatterplot.Properties.SetFriendlyDesktopLocation(contextScatterplot);
-                    scatterplot.Properties.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.NextToHost);
-                    scatterplot.Properties.Show();
-                }
-                else
-                {
-                    scatterplot.Properties.BringToFront();
-                }
-
-                scatterplot.Properties.ShowTrendTab();
-            }
-            else
-            {
-                scatterplot.Properties.ShowTrend = true;
-                scatterplot.Update();
-            }
-        }
-
-        public void OpenTrendProperties(Functor functor)
-        {
-            if (!functor.Properties.Visible)
-            {
-                functor.Properties.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.NextToHost);
-                functor.Properties.Show();
-            }
-            else
-            {
-                functor.Properties.BringToFront();
-            }
-        }
-
-
-
-
-        #region Interface
-
         #region Series logics
 
         private void Series_MouseClick(Series series, MouseEventArgs e)
@@ -2625,9 +2572,7 @@ namespace Mayfly.Mathematics.Charts
 
         private void contextScatterplot_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //contextScatterplotDelete.Enabled = Scatterplots.Count > 1;
             contextScatterplotDistinguish.Enabled = Scatterplots.Count > 1;
-            //contextScatterplotTrendCompare.Enabled = SelectedScatterplots.Count > 1;
 
             bool trended = false;
             foreach (Scatterplot scatterplot in SelectedScatterplots)
@@ -2639,12 +2584,8 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
+            contextScatterplotTrend.Visible = License.AllowedFeaturesLevel == FeatureLevel.Insider;
             contextScatterplotTrend.Enabled = trended;
-            //contextScatterplotDescriptiveX.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisXTitle);
-            //contextScatterplotDescriptiveY.Text = string.Format(Resources.Interface.DescriptiveTitle, AxisYTitle);
-            //contextScatterplotMerge.Enabled = SelectedScatterplots.Count > 1;
-            //contextScatterplotSplit.Enabled = SelectedScatterplots.Count == 1;
-            //contextScatterplotApart.Enabled = Scatterplots.Count > 1;
 
             bool hasColumn = false;
             foreach (Scatterplot scatterplot in SelectedScatterplots)
@@ -2656,8 +2597,7 @@ namespace Mayfly.Mathematics.Charts
                 }
             }
 
-            toolStripSeparatorScatterplotFindValue.Visible =
-            contextScatterplotFindValue.Visible = hasColumn;
+            toolStripSeparatorScatterplotFindValue.Visible = contextScatterplotFindValue.Visible = hasColumn;
         }
 
         private void contextScatterplotProperties_Click(object sender, EventArgs e)
@@ -2680,7 +2620,7 @@ namespace Mayfly.Mathematics.Charts
         {
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                OpenTrendProperties(scatterplot);
+                scatterplot.OpenTrendProperties();
             }
         }
 
@@ -2690,138 +2630,13 @@ namespace Mayfly.Mathematics.Charts
             SeriesShowSelected();
         }
 
-        //private void contextScatterplotDelete_Click(object sender, EventArgs e)
-        //{
-        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //    {
-        //        Remove(scatterplot.Properties.ScatterplotName);
-        //    }
-        //}
-
-        //private void contextScatterplotDescriptiveX_Click(object sender, EventArgs e)
-        //{
-        //    if (ModifierKeys.HasFlag(Keys.Control))
-        //    {
-        //        string result = string.Empty;
-        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //        {
-        //            result += new SampleDisplay(scatterplot.Calc.Data.X).ToString();
-        //            result += Constants.Break;
-        //        }
-        //        Clipboard.SetText(result.TrimEnd('\n'));
-        //    }
-        //    else
-        //    {
-        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //        {
-        //            SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.X);
-        //            properties.SetFriendlyDesktopLocation(contextScatterplot);
-        //            properties.Show();
-        //        }
-        //    }
-        //}
-
-        //private void contextScatterplotDescriptiveY_Click(object sender, EventArgs e)
-        //{
-        //    if (ModifierKeys.HasFlag(Keys.Control))
-        //    {
-        //        string result = string.Empty;
-        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //        {
-        //            result += new SampleDisplay(scatterplot.Calc.Data.Y).ToString();
-        //            result += Constants.Break;
-        //        }
-        //        Clipboard.SetText(result.TrimEnd('\n'));
-        //    }
-        //    else
-        //    {
-        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //        {
-        //            SampleProperties properties = new SampleProperties(scatterplot.Calc.Data.Y);
-        //            properties.SetFriendlyDesktopLocation(contextScatterplot);
-        //            properties.Show();
-        //        }
-        //    }
-        //}
-
         private void contextScatterplotTrend_Click(object sender, EventArgs e)
         {
             foreach (Scatterplot scatterplot in SelectedScatterplots)
             {
-                OpenRegressionProperties(scatterplot);
+                scatterplot.OpenRegressionProperties();
             }
         }
-
-        //private void contextScatterplotTrendCompare_Click(object sender, EventArgs e)
-        //{
-        //    List<Regression> regressions = new List<Regression>();
-
-        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //    {
-        //        if (scatterplot.Calc.IsRegressionOK)
-        //        {
-        //            regressions.Add(scatterplot.Calc.Regression);
-        //        }
-        //    }
-
-        //    if (regressions.Count > 1)
-        //    {
-        //        RegressionComparison regressionComparison = new RegressionComparison(regressions.ToArray());
-        //        regressionComparison.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.Centered);
-        //        regressionComparison.Show();
-        //    }
-        //}
-
-        //private void contextScatterplotMerge_Click(object sender, EventArgs e)
-        //{
-        //    BivariateSample mergedBivariate = new BivariateSample(AxisXTitle, AxisYTitle);
-        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //    {
-        //        for (int i = 0; i < scatterplot.Calc.Data.Count; i++)
-        //        {
-        //            mergedBivariate.Add(scatterplot.Calc.Data.X.ElementAt(i), scatterplot.Calc.Data.Y.ElementAt(i));
-        //        }
-        //    }
-
-        //    Scatterplot mergedScatterplot = new Scatterplot(mergedBivariate, Resources.Interface.MergedBivariate);
-        //    mergedScatterplot.Properties.DataPointSize = 12;
-        //    AddSeries(mergedScatterplot);
-        //}
-
-        //private void contextScatterplotSplit_Click(object sender, EventArgs e)
-        //{
-        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //    {
-        //        LaunchSeparation(scatterplot);
-        //    }
-        //}
-
-        //private void contextScatterplotHistogramX_Click(object sender, EventArgs e)
-        //{
-        //    foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //    {
-        //        Histogramma histogram = new Histogramma(AxisXTitle, scatterplot.Calc.Data.X, IsChronic);
-        //        histogram.ShowOnChart(this);
-        //    }
-        //}
-
-        //private void contextItemScatterplotApart_Click(object sender, EventArgs e)
-        //{
-        //    if (ModifierKeys.HasFlag(Keys.Shift))
-        //    {
-        //        foreach (Scatterplot scatterplot in SelectedScatterplots)
-        //        {
-        //            Plot statChart = scatterplot.ShowOnChart();
-        //            statChart.AxisXTitle = AxisXTitle;
-        //            statChart.AxisYTitle = AxisYTitle;
-        //            statChart.DoPlot();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Scatterplot.ShowOnChart(SelectedScatterplots);
-        //    }
-        //}
 
         private void contextScatterplotFindValue_Click(object sender, EventArgs e)
         {
@@ -2873,6 +2688,8 @@ namespace Mayfly.Mathematics.Charts
             contextHistogramDelete.Enabled = Scatterplots.Count > 1;
             contextHistogramDistinguish.Enabled = Scatterplots.Count > 1;
             contextHistogramApart.Enabled = Scatterplots.Count > 1;
+            contextHistogramDescriptive.Visible = License.AllowedFeaturesLevel == FeatureLevel.Insider;
+            contextHistogramUpdate.Visible = License.AllowedFeaturesLevel == FeatureLevel.Insider;
         }
 
         private void contextHistogramProperties_Click(object sender, EventArgs e)
@@ -3085,8 +2902,6 @@ namespace Mayfly.Mathematics.Charts
         //        evaluation.ShowOnChart();
         //    }
         //}
-
-        #endregion
 
         #endregion
     }
