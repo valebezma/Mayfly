@@ -3447,7 +3447,7 @@
     <value>Ед. усилия</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Расписание установок орудий разного класса озибражено ниже. Кликните дважды на отдельной экспозиции, чтобы смотреть карточку.</value>
+    <value>Расписание установок орудий разного класса изображено ниже. Кликните дважды на отдельной экспозиции, чтобы смотреть карточку.</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Вы можете выбрать конкретный класс орудий, чтобы оценить его уловы и (или) выбрать отдельную дату.</value>
@@ -4141,8 +4141,14 @@
   <data name="plotQualify.AxisXTitle" xml:space="preserve">
     <value>Длина, мм</value>
   </data>
+  <data name="plotQualify.AxisY2Title" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
   <data name="plotQualify.AxisYTitle" xml:space="preserve">
     <value>Выборка, экз.</value>
+  </data>
+  <data name="plotQualify.Text" xml:space="preserve">
+    <value>График проверки данных {0}</value>
   </data>
   <data name="printIndividualsLogToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4237,6 +4243,9 @@
   <data name="statusMass.Text" xml:space="preserve">
     <value>Масса: {0}</value>
   </data>
+  <data name="statusProcess.Text" xml:space="preserve">
+    <value>Обработка:</value>
+  </data>
   <data name="statusQuantity.Text" xml:space="preserve">
     <value>Количество: {0}</value>
   </data>
@@ -4285,6 +4294,9 @@
   <data name="tabPageStratified.Text" xml:space="preserve">
     <value>Размерные ряды</value>
   </data>
+  <data name="taskDialogBio.Content" xml:space="preserve">
+    <value>Загруженные данные уже содержат био. Очистить ранее загруженные био перед импортом или комбинировать их?</value>
+  </data>
   <data name="taskDialogBio.MainInstruction" xml:space="preserve">
     <value>Очистить ранее загруженные био?</value>
   </data>
@@ -4314,6 +4326,12 @@
   </data>
   <data name="tdbSaveAll.Text" xml:space="preserve">
     <value>Сохранить все</value>
+  </data>
+  <data name="tdbSpecClear.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="tdbSpecCombine.Text" xml:space="preserve">
+    <value>Комбинировать</value>
   </data>
   <data name="tdRecover.Content" xml:space="preserve">
     <value>Будете ли вы делать резервную копию ваших карточек прежде, чем приступить к операции восстановления массы? Если вы уже сделали резервную копию, пропустите этот диалог и нажмите кнопку "Продолжить".</value>

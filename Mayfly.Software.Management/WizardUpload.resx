@@ -135,7 +135,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonScheme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 271</value>
+    <value>208, 279</value>
   </data>
   <data name="buttonScheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 23</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonForce.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 242</value>
+    <value>208, 250</value>
   </data>
   <data name="buttonForce.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 23</value>
@@ -202,7 +202,7 @@
     <value>NoControl</value>
   </data>
   <data name="labelNoChanges.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 158</value>
+    <value>50, 162</value>
   </data>
   <data name="labelNoChanges.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 45</value>
@@ -279,7 +279,7 @@ If changes were made - please, increase version number of binary.</value>
     <value>wizardPageStart</value>
   </data>
   <data name="&gt;&gt;wizardPageStart.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="textBoxMissingFiles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom</value>
@@ -390,7 +390,7 @@ If changes were made - please, increase version number of binary.</value>
     <value>wizardPageMissing</value>
   </data>
   <data name="&gt;&gt;wizardPageMissing.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="spreadSheetNews.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom</value>
@@ -431,6 +431,9 @@ If changes were made - please, increase version number of binary.</value>
   <data name="spreadSheetNews.Size" type="System.Drawing.Size, System.Drawing">
     <value>437, 285</value>
   </data>
+  <data name="spreadSheetNews.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="spreadSheetNews.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -438,7 +441,7 @@ If changes were made - please, increase version number of binary.</value>
     <value>spreadSheetNews</value>
   </data>
   <data name="&gt;&gt;spreadSheetNews.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.26.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetNews.Parent" xml:space="preserve">
     <value>wizardPageNews</value>
@@ -489,7 +492,7 @@ If changes were made - please, increase version number of binary.</value>
     <value>wizardPageNews</value>
   </data>
   <data name="&gt;&gt;wizardPageNews.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -804,6 +807,9 @@ changes</value>
   <data name="textBoxNote.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="textBoxNote.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="textBoxNote.Size" type="System.Drawing.Size, System.Drawing">
     <value>380, 169</value>
   </data>
@@ -835,7 +841,7 @@ changes</value>
     <value>wizardPageNotes</value>
   </data>
   <data name="&gt;&gt;wizardPageNotes.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="checkBoxBackup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -976,7 +982,7 @@ changes</value>
     <value>wizardPageUpload</value>
   </data>
   <data name="&gt;&gt;wizardPageUpload.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="labelUpStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -1126,7 +1132,7 @@ changes</value>
     <value>wizardPageRoll</value>
   </data>
   <data name="&gt;&gt;wizardPageRoll.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="buttonFtp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -1235,7 +1241,7 @@ Now all published updates are available for users.</value>
     <value>wizardPageDone</value>
   </data>
   <data name="&gt;&gt;wizardPageDone.Type" xml:space="preserve">
-    <value>AeroWizard.WizardPage, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardPage, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="wizardControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>614, 511</value>
@@ -1250,7 +1256,7 @@ Now all published updates are available for users.</value>
     <value>wizardControl</value>
   </data>
   <data name="&gt;&gt;wizardControl.Type" xml:space="preserve">
-    <value>AeroWizard.WizardControl, AeroWizard, Version=2.1.11.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
+    <value>AeroWizard.WizardControl, AeroWizard, Version=2.2.9.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37</value>
   </data>
   <data name="&gt;&gt;wizardControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1261,6 +1267,12 @@ Now all published updates are available for users.</value>
   <metadata name="uploader.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="folderRepo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>117, 17</value>
+  </metadata>
+  <data name="folderRepo.Description" xml:space="preserve">
+    <value>Select local repo folder</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1308,6 +1320,12 @@ Now all published updates are available for users.</value>
   </data>
   <data name="&gt;&gt;uploader.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;folderRepo.Name" xml:space="preserve">
+    <value>folderRepo</value>
+  </data>
+  <data name="&gt;&gt;folderRepo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WizardUpload</value>

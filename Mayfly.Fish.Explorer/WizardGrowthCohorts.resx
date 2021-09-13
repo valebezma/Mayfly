@@ -265,7 +265,7 @@
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Mean lengths of each cohort in consequental ages are given in table. Each column representing growth of specific generation. Empty cells mean that cohort was not surveyed at that age.</value>
+    <value>Mean lengths of each cohort in consequential ages are given in table. Each column representing growth of specific generation. Empty cells mean that cohort was not surveyed at that age.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

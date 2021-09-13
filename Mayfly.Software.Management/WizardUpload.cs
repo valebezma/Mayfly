@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Resources;
 using System.Text;
 using Mayfly.Extensions;
+using LibGit2Sharp;
+using Version = System.Version;
 
 namespace Mayfly.Software.Management
 {
@@ -209,6 +211,28 @@ namespace Mayfly.Software.Management
         {
             //if (e.ColumnIndex == 1 && e.RowIndex == 0)
             //    wizardPageNotes.AllowNext = spreadSheetReleaseNotes[ColumnNote.Index, 0].Value != null; //allow;
+        }
+
+        private void textBoxNoteLast_DoubleClick(object sender, EventArgs e)
+        {
+        }
+
+        private void textBoxNote_DoubleClick(object sender, EventArgs e)
+        {
+            if (textBoxNote.Text != string.Empty) return;
+
+            if (folderRepo.ShowDialog(this) == DialogResult.OK)
+            {
+                List<string> result = new List<string>();
+
+                foreach (var commit in Service.GetCommits(Path.GetDirectoryName(folderRepo.SelectedPath),
+                    Path.GetFileName(folderRepo.SelectedPath)))
+                {
+                    result.Add(commit.Message);
+                }
+
+                textBoxNote.Lines = result.ToArray();
+            }
         }
 
         private void wizardPageNotes_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)

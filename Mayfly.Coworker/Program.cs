@@ -17,7 +17,7 @@ namespace Mayfly.ManualLicenser
 {
     class Program
     {
-        static void main()
+        static void Main(string[] args)
         {
         //Console.WriteLine("Continue to grant license to {0}.", UserSettings.Username);
         Enter:

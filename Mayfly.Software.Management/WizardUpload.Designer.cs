@@ -76,6 +76,7 @@
             this.buttonWebsite = new System.Windows.Forms.Button();
             this.labelDone = new System.Windows.Forms.Label();
             this.uploader = new System.ComponentModel.BackgroundWorker();
+            this.folderRepo = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl)).BeginInit();
             this.wizardPageStart.SuspendLayout();
             this.wizardPageMissing.SuspendLayout();
@@ -293,6 +294,7 @@
             resources.ApplyResources(this.textBoxNoteLast, "textBoxNoteLast");
             this.textBoxNoteLast.Name = "textBoxNoteLast";
             this.textBoxNoteLast.ReadOnly = true;
+            this.textBoxNoteLast.DoubleClick += new System.EventHandler(this.textBoxNoteLast_DoubleClick);
             // 
             // textBoxNote
             // 
@@ -300,6 +302,7 @@
             resources.ApplyResources(this.textBoxNote, "textBoxNote");
             this.textBoxNote.Name = "textBoxNote";
             this.textBoxNote.ReadOnly = true;
+            this.textBoxNote.DoubleClick += new System.EventHandler(this.textBoxNote_DoubleClick);
             // 
             // wizardPageUpload
             // 
@@ -408,6 +411,10 @@
             this.uploader.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.uploader_ProgressChanged);
             this.uploader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.uploader_RunWorkerCompleted);
             // 
+            // folderRepo
+            // 
+            resources.ApplyResources(this.folderRepo, "folderRepo");
+            // 
             // WizardUpload
             // 
             resources.ApplyResources(this, "$this");
@@ -479,5 +486,6 @@
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.Button buttonScheme;
         private System.Windows.Forms.Label labelUpStatus;
+        private System.Windows.Forms.FolderBrowserDialog folderRepo;
     }
 }

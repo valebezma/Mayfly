@@ -136,7 +136,7 @@
     <value>Расширение видовой ведомости</value>
   </data>
   <data name="ExtStrat" xml:space="preserve">
-    <value>Расширение стратифицированных проб</value>
+    <value>Расширение размерных рядов</value>
   </data>
   <data name="IndividualsProcessing" xml:space="preserve">
     <value>Обработка журнала особей</value>
@@ -163,7 +163,7 @@
     <value>Загрузка био</value>
   </data>
   <data name="StratifiedProcessing" xml:space="preserve">
-    <value>Загрузка стратифицированных проб</value>
+    <value>Загрузка размерных рядов</value>
   </data>
   <data name="TotalReportProcessing" xml:space="preserve">
     <value>Составление общего отчета</value>

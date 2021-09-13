@@ -133,7 +133,7 @@
     <value>Этикетка пробы</value>
   </data>
   <data name="StratifiedSample" xml:space="preserve">
-    <value>Стратифицированная проба {0}</value>
+    <value>Размерный ряд {0}</value>
   </data>
   <data name="Weather" xml:space="preserve">
     <value>Погодные условия</value>

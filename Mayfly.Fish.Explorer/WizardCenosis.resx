@@ -461,7 +461,7 @@ First, you have to select data to explore.</value>
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Cenosis composition is catches composition divided by catchability coefficients. You can change catchability by typing in corresponding column.</value>
+    <value>Cenosis composition is catches composition divided by catchability coefficients. You can change catchability by typing in the corresponding column.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

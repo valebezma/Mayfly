@@ -2508,9 +2508,6 @@
   <data name="blankToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="blankToolStripMenuItem.Text" xml:space="preserve">
-    <value>Печать бланка</value>
-  </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
@@ -2707,8 +2704,17 @@
   <data name="meniItemEnvironment.Text" xml:space="preserve">
     <value>Добавить данные о среде</value>
   </data>
+  <data name="menuItemAbout.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
   <data name="menuItemAddInfo.Text" xml:space="preserve">
     <value>Добавить другие сведения об экземпляре...</value>
+  </data>
+  <data name="menuItemBlank.Text" xml:space="preserve">
+    <value>Печать бланка</value>
+  </data>
+  <data name="menuItemClose.Text" xml:space="preserve">
+    <value>Закрыть</value>
   </data>
   <data name="menuItemEmpty.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 22</value>
@@ -2733,6 +2739,27 @@
   </data>
   <data name="menuItemLocation.Text" xml:space="preserve">
     <value>Импорт местоположения</value>
+  </data>
+  <data name="menuItemNew.Text" xml:space="preserve">
+    <value>Новый</value>
+  </data>
+  <data name="menuItemOpen.Text" xml:space="preserve">
+    <value>Открыть...</value>
+  </data>
+  <data name="menuItemPreview.Text" xml:space="preserve">
+    <value>Предпросмотр...</value>
+  </data>
+  <data name="menuItemPrint.Text" xml:space="preserve">
+    <value>Печать...</value>
+  </data>
+  <data name="menuItemSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="menuItemSaveAs.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="menuItemSettings.Text" xml:space="preserve">
+    <value>Настройки</value>
   </data>
   <data name="menuItemSpeciesRef.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
@@ -2789,7 +2816,7 @@
     <value>Сохранить изменения?</value>
   </data>
   <data name="taskDialogTrackHandle.Content" xml:space="preserve">
-    <value>Вы выбрали трек как источник информации. Поскольку трек можно интерпретировать по-разному в зависимости от действий, которые были совершены, выберите как его обработать?</value>
+    <value>Вы выбрали трек как источник информации. Поскольку трек можно интерпретировать по-разному в зависимости от действий, которые были совершены, выберите как его обработать.</value>
   </data>
   <data name="taskDialogTrackHandle.Footer" xml:space="preserve">
     <value>Также при необходимости будут использованы показания времени.</value>
@@ -2821,17 +2848,11 @@
   <data name="ToolStripMenuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
   </data>
-  <data name="ToolStripMenuItemAbout.Text" xml:space="preserve">
-    <value>О программе</value>
-  </data>
   <data name="ToolStripMenuItemCardBlank.Text" xml:space="preserve">
     <value>Карточка</value>
   </data>
   <data name="ToolStripMenuItemClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemClose.Text" xml:space="preserve">
-    <value>Закрыть</value>
   </data>
   <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -2878,14 +2899,8 @@
   <data name="ToolStripMenuItemNew.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItemNew.Text" xml:space="preserve">
-    <value>Новый</value>
-  </data>
   <data name="ToolStripMenuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemOpen.Text" xml:space="preserve">
-    <value>Открыть...</value>
   </data>
   <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -2896,26 +2911,14 @@
   <data name="ToolStripMenuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItemPrint.Text" xml:space="preserve">
-    <value>Печать...</value>
-  </data>
   <data name="ToolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemPrintPreview.Text" xml:space="preserve">
-    <value>Просмотр...</value>
   </data>
   <data name="ToolStripMenuItemSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="ToolStripMenuItemSave.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
   <data name="ToolStripMenuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSaveAs.Text" xml:space="preserve">
-    <value>Сохранить как...</value>
   </data>
   <data name="ToolStripMenuItemService.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 20</value>
@@ -2925,9 +2928,6 @@
   </data>
   <data name="ToolStripMenuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSettings.Text" xml:space="preserve">
-    <value>Параметры</value>
   </data>
   <data name="toolStripMenuItemSpeciesKey.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>

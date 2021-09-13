@@ -117,66 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="wizardExplorer.CancelButtonText" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
-    <value>Отчет</value>
-  </data>
-  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
-    <value>Далее</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>Этот мастер поможет вам оценить размерную и возрастную структуру {0} в период наблюдений.</value>
-  </data>
-  <data name="pageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="pageLength.Text" xml:space="preserve">
-    <value>Размерная структура</value>
-  </data>
-  <data name="pageAge.Text" xml:space="preserve">
-    <value>Возрастная структура</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 19</value>
-  </data>
-  <data name="checkBoxAge.Text" xml:space="preserve">
-    <value>Возрастная структура уловов</value>
-  </data>
-  <data name="checkBoxLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 19</value>
-  </data>
-  <data name="checkBoxLength.Text" xml:space="preserve">
-    <value>Размерная структура популяции</value>
-  </data>
-  <data name="checkBoxAppKeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 19</value>
-  </data>
-  <data name="checkBoxAppT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 19</value>
-  </data>
-  <data name="checkBoxAppL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 19</value>
-  </data>
-  <data name="labelReport.Text" xml:space="preserve">
-    <value>Укажите, какие части следует включить в отчет:</value>
-  </data>
-  <data name="checkBoxGears.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 19</value>
-  </data>
-  <data name="pageReport.Text" xml:space="preserve">
-    <value>Составление отчета</value>
-  </data>
-  <data name="wizardExplorer.Title" xml:space="preserve">
-    <value>Мастер описания популяции {0}</value>
-  </data>
   <data name="buttonAL.Text" xml:space="preserve">
     <value>Свойства тренда</value>
   </data>
   <data name="buttonL.Text" xml:space="preserve">
-    <value>Длина, мм: {0}</value>
+    <value>Больше...</value>
   </data>
   <data name="buttonLW.Text" xml:space="preserve">
     <value>Свойства тренда</value>
@@ -185,10 +131,34 @@
     <value>Свойства тренда</value>
   </data>
   <data name="buttonW.Text" xml:space="preserve">
-    <value>Масса особи, г: {0}</value>
+    <value>Больше...</value>
+  </data>
+  <data name="checkBoxAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 19</value>
+  </data>
+  <data name="checkBoxAge.Text" xml:space="preserve">
+    <value>Возрастная структура уловов</value>
   </data>
   <data name="checkBoxAgeAdjusted.Text" xml:space="preserve">
     <value>Корректировать по модели смертности</value>
+  </data>
+  <data name="checkBoxAppKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 19</value>
+  </data>
+  <data name="checkBoxAppL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 19</value>
+  </data>
+  <data name="checkBoxAppT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 19</value>
+  </data>
+  <data name="checkBoxGears.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 19</value>
+  </data>
+  <data name="checkBoxLength.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 19</value>
+  </data>
+  <data name="checkBoxLength.Text" xml:space="preserve">
+    <value>Размерная структура популяции</value>
   </data>
   <data name="checkBoxLengthAdjusted.Text" xml:space="preserve">
     <value>Корректировать по модели селективности</value>
@@ -253,8 +223,41 @@
   <data name="comboBoxLengthSource.Items1" xml:space="preserve">
     <value>Масса</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Старейший</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Средний</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Средний улов на усилие</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Короткий</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Длиннейший</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Легчайший</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Тяжелейший</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Младший</value>
   </data>
   <data name="labelAgeAdjustedInstruction.Text" xml:space="preserve">
     <value>На графике ниже изображена откорректированная возрастная структура популяции.</value>
@@ -283,6 +286,9 @@
   <data name="labelFiLabel.Text" xml:space="preserve">
     <value>Оценка реальной смертности (φ)</value>
   </data>
+  <data name="labelL.Text" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
   <data name="labelLengthAdjustedInstruction.Text" xml:space="preserve">
     <value>На графике ниже изображена откорректированная размерная структура популяции.</value>
   </data>
@@ -295,95 +301,8 @@
   <data name="labelMortalityAge.Text" xml:space="preserve">
     <value>Промысловый возраст</value>
   </data>
-  <data name="plotLength.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, %</value>
-  </data>
-  <data name="plotAge.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, %</value>
-  </data>
-  <data name="plotAL.AxisYTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotLength.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotLW.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotSelection.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotSelectionSource.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotSelectionSource.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, %</value>
-  </data>
-  <data name="plotMortality.AxisXTitle" xml:space="preserve">
-    <value>Возраст, лет</value>
-  </data>
-  <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
-    <value>Возраст, лет</value>
-  </data>
-  <data name="plotAL.AxisXTitle" xml:space="preserve">
-    <value>Возраст, лет</value>
-  </data>
-  <data name="plotAW.AxisXTitle" xml:space="preserve">
-    <value>Возраст, лет</value>
-  </data>
-  <data name="plotAge.AxisXTitle" xml:space="preserve">
-    <value>Возраст, лет</value>
-  </data>
-  <data name="plotAge.Text" xml:space="preserve">
-    <value>Усредненная возрастная структура</value>
-  </data>
-  <data name="plotAgeAdjusted.Text" xml:space="preserve">
-    <value>Откорректированная возрастная структура {0}</value>
-  </data>
-  <data name="plotAgeAdjusted.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, экз./{0}</value>
-  </data>
-  <data name="plotLengthAdjusted.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, экз./{0}</value>
-  </data>
-  <data name="plotMortality.AxisYTitle" xml:space="preserve">
-    <value>Улов на усилие, экз./{0}</value>
-  </data>
-  <data name="plotAL.Text" xml:space="preserve">
-    <value>Модель линейного роста {0}</value>
-  </data>
-  <data name="plotAW.AxisYTitle" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <data name="plotLW.AxisYTitle" xml:space="preserve">
-    <value>Масса, г</value>
-  </data>
-  <data name="plotAW.Text" xml:space="preserve">
-    <value>Модель роста массы {0}</value>
-  </data>
-  <data name="plotLength.Text" xml:space="preserve">
-    <value>Усредненная размерная структура</value>
-  </data>
-  <data name="plotLengthAdjusted.AxisXTitle" xml:space="preserve">
-    <value>Длина, мм</value>
-  </data>
-  <data name="plotLengthAdjusted.Text" xml:space="preserve">
-    <value>Откорректированная размерная структура популяции {0}</value>
-  </data>
-  <data name="plotLW.Text" xml:space="preserve">
-    <value>Модель весового роста {0}</value>
-  </data>
-  <data name="plotMortality.Text" xml:space="preserve">
-    <value>График оценки смертности</value>
-  </data>
-  <data name="plotSelection.AxisYTitle" xml:space="preserve">
-    <value>Доля удержанных особей, %</value>
-  </data>
-  <data name="plotSelection.Text" xml:space="preserve">
-    <value>Кривые селективности разных классов {0}</value>
-  </data>
-  <data name="plotSelectionSource.Text" xml:space="preserve">
-    <value>Размерная структура уловов разных классов орудий</value>
+  <data name="labelMortalityInstruction.Text" xml:space="preserve">
+    <value>Для оценки смертности, выберите промысловый возраст, смертность будет вычислена из параметров экспоненты, аппроксимирующей уловы промысловой части популяции.</value>
   </data>
   <data name="labelMortalityWarn.Text" xml:space="preserve">
     <value>Выбранный возраст полного охвата промыслом не позволяет оценить смертность.
@@ -391,6 +310,9 @@
   </data>
   <data name="labelNpueUnit.Text" xml:space="preserve">
     <value>экз./{0}</value>
+  </data>
+  <data name="labelReport.Text" xml:space="preserve">
+    <value>Укажите, какие части следует включить в отчет:</value>
   </data>
   <data name="labelSD.Text" xml:space="preserve">
     <value>Общее стандартное отклонение</value>
@@ -411,11 +333,17 @@
   <data name="labelSLabel.Text" xml:space="preserve">
     <value>Оценка выживаемости (S)</value>
   </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Этот мастер поможет вам оценить размерную и возрастную структуру {0} в период наблюдений.</value>
+  </data>
   <data name="labelWLInstruction.Text" xml:space="preserve">
     <value>На графике ниже изображена модель длина-масса. Нажмите "Свойства тренда", чтобы увидеть подробности.</value>
   </data>
   <data name="labelZLabel.Text" xml:space="preserve">
     <value>Мгновенная смертность (Z)</value>
+  </data>
+  <data name="pageAge.Text" xml:space="preserve">
+    <value>Возрастная структура</value>
   </data>
   <data name="pageAgeAdjusted.Text" xml:space="preserve">
     <value>Откорректированная возрастная структура</value>
@@ -425,6 +353,9 @@
   </data>
   <data name="pageCpue.Text" xml:space="preserve">
     <value>Уловы на усилие</value>
+  </data>
+  <data name="pageLength.Text" xml:space="preserve">
+    <value>Размерная структура</value>
   </data>
   <data name="pageLengthAdjusted.Text" xml:space="preserve">
     <value>Откорректированная размерная структура</value>
@@ -441,13 +372,118 @@
   <data name="pageMortality.Text" xml:space="preserve">
     <value>Оценка смертности</value>
   </data>
+  <data name="pageReport.Text" xml:space="preserve">
+    <value>Составление отчета</value>
+  </data>
   <data name="pageSelection.Text" xml:space="preserve">
     <value>Модель селективности орудий</value>
   </data>
   <data name="pageSelectionSource.Text" xml:space="preserve">
     <value>Размерная структура классов</value>
   </data>
-  <data name="labelMortalityInstruction.Text" xml:space="preserve">
-    <value>Для оценки смертности, выберите промысловый возраст, смертность будет вычислена из параметров экспоненты, аппроксимирующей уловы промысловой части популяции.</value>
+  <data name="pageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="plotAge.AxisXTitle" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
+  <data name="plotAge.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
+  <data name="plotAge.Text" xml:space="preserve">
+    <value>Усредненная возрастная структура</value>
+  </data>
+  <data name="plotAgeAdjusted.AxisXTitle" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
+  <data name="plotAgeAdjusted.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, экз./{0}</value>
+  </data>
+  <data name="plotAgeAdjusted.Text" xml:space="preserve">
+    <value>Откорректированная возрастная структура {0}</value>
+  </data>
+  <data name="plotAL.AxisXTitle" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
+  <data name="plotAL.AxisYTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotAL.Text" xml:space="preserve">
+    <value>Модель линейного роста {0}</value>
+  </data>
+  <data name="plotAW.AxisXTitle" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
+  <data name="plotAW.AxisYTitle" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="plotAW.Text" xml:space="preserve">
+    <value>Модель роста массы {0}</value>
+  </data>
+  <data name="plotLength.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotLength.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
+  <data name="plotLength.Text" xml:space="preserve">
+    <value>Усредненная размерная структура</value>
+  </data>
+  <data name="plotLengthAdjusted.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotLengthAdjusted.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, экз./{0}</value>
+  </data>
+  <data name="plotLengthAdjusted.Text" xml:space="preserve">
+    <value>Откорректированная размерная структура популяции {0}</value>
+  </data>
+  <data name="plotLW.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotLW.AxisYTitle" xml:space="preserve">
+    <value>Масса, г</value>
+  </data>
+  <data name="plotLW.Text" xml:space="preserve">
+    <value>Модель весового роста {0}</value>
+  </data>
+  <data name="plotMortality.AxisXTitle" xml:space="preserve">
+    <value>Возраст, лет</value>
+  </data>
+  <data name="plotMortality.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, экз./{0}</value>
+  </data>
+  <data name="plotMortality.Text" xml:space="preserve">
+    <value>График оценки смертности</value>
+  </data>
+  <data name="plotSelection.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotSelection.AxisYTitle" xml:space="preserve">
+    <value>Доля удержанных особей, %</value>
+  </data>
+  <data name="plotSelection.Text" xml:space="preserve">
+    <value>Кривые селективности разных классов {0}</value>
+  </data>
+  <data name="plotSelectionSource.AxisXTitle" xml:space="preserve">
+    <value>Длина, мм</value>
+  </data>
+  <data name="plotSelectionSource.AxisYTitle" xml:space="preserve">
+    <value>Улов на усилие, %</value>
+  </data>
+  <data name="plotSelectionSource.Text" xml:space="preserve">
+    <value>Размерная структура уловов разных классов орудий</value>
+  </data>
+  <data name="wizardExplorer.CancelButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="wizardExplorer.FinishButtonText" xml:space="preserve">
+    <value>Отчет</value>
+  </data>
+  <data name="wizardExplorer.NextButtonText" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="wizardExplorer.Title" xml:space="preserve">
+    <value>Мастер описания популяции {0}</value>
   </data>
 </root>

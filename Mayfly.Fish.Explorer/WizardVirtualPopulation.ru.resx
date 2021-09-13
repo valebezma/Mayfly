@@ -117,6 +117,181 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonAnnual.Text" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="buttonF.Text" xml:space="preserve">
+    <value>Получить F</value>
+  </data>
+  <data name="buttonM.Text" xml:space="preserve">
+    <value>Получить M</value>
+  </data>
+  <data name="checkBoxAppVpa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 19</value>
+  </data>
+  <data name="checkBoxAppVpa.Text" xml:space="preserve">
+    <value>Приложения с ВПА каждой когорты</value>
+  </data>
+  <data name="checkBoxCatchHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 19</value>
+  </data>
+  <data name="checkBoxCatchHistory.Text" xml:space="preserve">
+    <value>Данные о вылове</value>
+  </data>
+  <data name="checkBoxMortality.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 19</value>
+  </data>
+  <data name="checkBoxMortality.Text" xml:space="preserve">
+    <value>Оценки коэффициентов смертности</value>
+  </data>
+  <data name="checkBoxVpa.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 19</value>
+  </data>
+  <data name="checkBoxVpa.Text" xml:space="preserve">
+    <value>Виртуально-популяционный анализ и его результаты</value>
+  </data>
+  <data name="ColumnCatAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="ColumnResultAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="ColumnResultC.HeaderText" xml:space="preserve">
+    <value>Вылов, тыс. экз.</value>
+  </data>
+  <data name="ColumnResultN.HeaderText" xml:space="preserve">
+    <value>Численность, тыс. экз.</value>
+  </data>
+  <data name="ColumnResultYear.HeaderText" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="ColumnStockAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="ColumnVpaAge.HeaderText" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="ColumnVpaCatch.HeaderText" xml:space="preserve">
+    <value>Вылов, тыс. экз.</value>
+  </data>
+  <data name="ColumnVpaN.HeaderText" xml:space="preserve">
+    <value>Численность, тыс. экз.</value>
+  </data>
+  <data name="ColumnVpaYear.HeaderText" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="contextItemAnnualExplore.Text" xml:space="preserve">
+    <value>Запустить новый анализ</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Уловы орудий выбранного типа в разные годы приведены в таблице. Оценки вылова в количестве особей приведены в последнем столбце.</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 15</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Выберите когорту:</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Численность каждой возрастной группы (в тысячах эксземпляров) за предыдущие годы приведена в таблице.</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Количество выловленных особей каждой возрастной группы (в тыс. шт.) за предыдущие годы приведено в таблице. Выберите модельную когорту для ВПА. Обычно следует выбирать старшую когорту из самого последнего обследования.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Выберите конкретную когорту, чтобы проследить её состояние.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Выловы по годам за предыдущие годы перестроены в соответствии с годом "рождения" особей - по когортам. Эти значения отражают историю изъятия конкретных когорт.</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 15</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Оценка естественной смертности</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Виртуально-популяционный анализ основан на допущении о постоянном коэффициенте естественной смертности. Укажите его известное значение или, если оно неизвестно, нажмите кнопку "Получить M" для его оценки.</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Вылов и общий размер в тыс. экз. выбранной когорты в течение её жизни отражен на графике. Используйте список, чтобы выбрать когорту.</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 15</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Когорта</value>
+  </data>
+  <data name="labelArea.Text" xml:space="preserve">
+    <value>Конечная промысловая смертность</value>
+  </data>
+  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 15</value>
+  </data>
+  <data name="labelGear.Text" xml:space="preserve">
+    <value>Когорта</value>
+  </data>
+  <data name="labelNoData.Text" xml:space="preserve">
+    <value>Недостаточно данных...</value>
+  </data>
+  <data name="labelReport.Text" xml:space="preserve">
+    <value>Укажите, какие части следует включить в отчет.</value>
+  </data>
+  <data name="labelStart.Text" xml:space="preserve">
+    <value>Этот мастер проведет виртуально-популяционный анализ (ВПА) на основе данных о вылове {0}. Основная цель ВПА - оценить то количество рыбы, которое обеспечило бы наблюдаемые значения вылова (в каждой возрастной группе) при условии, что известен коэффициент естественной смертности M.</value>
+  </data>
+  <data name="labelWarn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 13</value>
+  </data>
+  <data name="labelWarn.Text" xml:space="preserve">
+    <value>Выбранная когорта больше, чем период наблюдений</value>
+  </data>
+  <data name="pageCatches.Text" xml:space="preserve">
+    <value>Выловы возрастных групп, тыс. шт.</value>
+  </data>
+  <data name="pageChart.Text" xml:space="preserve">
+    <value>График выбывания когорты</value>
+  </data>
+  <data name="pageCohorts.Text" xml:space="preserve">
+    <value>История вылова когорт, тыс. экз.</value>
+  </data>
+  <data name="pageReport.Text" xml:space="preserve">
+    <value>Составление отчета</value>
+  </data>
+  <data name="pageResults.Text" xml:space="preserve">
+    <value>Модель виртуальной популяции</value>
+  </data>
+  <data name="pageStart.Text" xml:space="preserve">
+    <value>Приступим</value>
+  </data>
+  <data name="pageStock.Text" xml:space="preserve">
+    <value>Общий размер запаса, тыс. экз.</value>
+  </data>
+  <data name="pageVpa.Text" xml:space="preserve">
+    <value>Оценка естественной смертности</value>
+  </data>
+  <data name="pageYield.Text" xml:space="preserve">
+    <value>Промысловая статистика</value>
+  </data>
+  <data name="plotYield.AxisXTitle" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="plotYield.AxisYTitle" xml:space="preserve">
+    <value>Вылов, т</value>
+  </data>
+  <data name="plotYield.Text" xml:space="preserve">
+    <value>Статистика вылова</value>
+  </data>
+  <data name="statChartVpa.AxisXTitle" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="statChartVpa.AxisYTitle" xml:space="preserve">
+    <value>Численность, тыс. экз.</value>
+  </data>
   <data name="wizardExplorer.BackButtonToolTipText" xml:space="preserve">
     <value>Вернуться на предыдущий этап</value>
   </data>
@@ -129,179 +304,7 @@
   <data name="wizardExplorer.NextButtonText" xml:space="preserve">
     <value>Далее</value>
   </data>
-  <data name="pageStart.Text" xml:space="preserve">
-    <value>Приступим</value>
-  </data>
-  <data name="pageYield.Text" xml:space="preserve">
-    <value>Промысловая статистика</value>
-  </data>
-  <data name="pageCatches.Text" xml:space="preserve">
-    <value>Выловы возрастных групп, тыс. шт.</value>
-  </data>
-  <data name="pageCohorts.Text" xml:space="preserve">
-    <value>История вылова когорт, тыс. экз.</value>
-  </data>
-  <data name="pageVpa.Text" xml:space="preserve">
-    <value>Оценка естественной смертности</value>
-  </data>
-  <data name="pageResults.Text" xml:space="preserve">
-    <value>Модель виртуальной популяции</value>
-  </data>
-  <data name="pageChart.Text" xml:space="preserve">
-    <value>График выбывания когорты</value>
-  </data>
-  <data name="pageStock.Text" xml:space="preserve">
-    <value>Общий размер запаса, тыс. экз.</value>
-  </data>
-  <data name="pageReport.Text" xml:space="preserve">
-    <value>Составление отчета</value>
-  </data>
   <data name="wizardExplorer.Title" xml:space="preserve">
     <value>Анализ виртуальной популяции {0}</value>
-  </data>
-  <data name="labelStart.Text" xml:space="preserve">
-    <value>Этот мастер проведет виртуально-популяционный анализ (ВПА) на основе данных о вылове {0}. Основная цель ВПА - оценить то количество рыбы, которое обеспечило бы наблюдаемые значения вылова (в каждой возрастной группе) при условии, что известен коэффициент естественной смертности M.</value>
-  </data>
-  <data name="plotYield.AxisXTitle" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="plotYield.AxisYTitle" xml:space="preserve">
-    <value>Вылов, т</value>
-  </data>
-  <data name="plotYield.Text" xml:space="preserve">
-    <value>Статистика вылова</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Уловы орудий выбранного типа в разные годы приведены в таблице. Оценки вылова в количестве особей приведены в последнем столбце.</value>
-  </data>
-  <data name="buttonAnnual.Text" xml:space="preserve">
-    <value>Подробнее</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 15</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Выберите когорту:</value>
-  </data>
-  <data name="labelNoData.Text" xml:space="preserve">
-    <value>Недостаточно данных...</value>
-  </data>
-  <data name="ColumnCatAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Количество выловленных особей каждой возрастной группы (в тыс. шт.) за предыдущие годы приведено в таблице. Выберите модельную когорту для ВПА. Обычно следует выбирать старшую когорту из самого последнего обследования.</value>
-  </data>
-  <data name="ColumnCohAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Выловы по годам за предыдущие годы перестроены в соответствии с годом "рождения" особей - по когортам. Эти значения отражают историю изъятия конкретных когорт.</value>
-  </data>
-  <data name="ColumnVpaAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="ColumnVpaYear.HeaderText" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="ColumnVpaCatch.HeaderText" xml:space="preserve">
-    <value>Вылов, тыс. экз.</value>
-  </data>
-  <data name="ColumnVpaN.HeaderText" xml:space="preserve">
-    <value>Численность, тыс. экз.</value>
-  </data>
-  <data name="buttonF.Text" xml:space="preserve">
-    <value>Получить F</value>
-  </data>
-  <data name="labelArea.Text" xml:space="preserve">
-    <value>Конечная промысловая смертность</value>
-  </data>
-  <data name="buttonM.Text" xml:space="preserve">
-    <value>Получить M</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 15</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Оценка естественной смертности</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Виртуально-популяционный анализ основан на допущении о постоянном коэффициенте естественной смертности. Укажите его известное значение или, если оно неизвестно, нажмите кнопку "Получить M" для его оценки.</value>
-  </data>
-  <data name="ColumnResultAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="ColumnResultYear.HeaderText" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="ColumnResultC.HeaderText" xml:space="preserve">
-    <value>Вылов, тыс. экз.</value>
-  </data>
-  <data name="ColumnResultN.HeaderText" xml:space="preserve">
-    <value>Численность, тыс. экз.</value>
-  </data>
-  <data name="labelGear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 15</value>
-  </data>
-  <data name="labelGear.Text" xml:space="preserve">
-    <value>Когорта</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Выберите конкретную когорту, чтобы проследить её состояние.</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 15</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Когорта</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Вылов и общий размер в тыс. экз. выбранной когорты в течение её жизни отражен на графике. Используйте список, чтобы выбрать когорту.</value>
-  </data>
-  <data name="statChartVpa.AxisXTitle" xml:space="preserve">
-    <value>Год</value>
-  </data>
-  <data name="statChartVpa.AxisYTitle" xml:space="preserve">
-    <value>Численность, тыс. экз.</value>
-  </data>
-  <data name="ColumnStockAge.HeaderText" xml:space="preserve">
-    <value>Возраст</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Численность каждой возрастной группы (в тысячах эксземпляров) за предыдущие годы приведена в таблице.</value>
-  </data>
-  <data name="checkBoxAppVpa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 19</value>
-  </data>
-  <data name="checkBoxAppVpa.Text" xml:space="preserve">
-    <value>Приложения с ВПА каждой когорты</value>
-  </data>
-  <data name="checkBoxVpa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 19</value>
-  </data>
-  <data name="checkBoxVpa.Text" xml:space="preserve">
-    <value>Виртуально-популяционный анализ и его результаты</value>
-  </data>
-  <data name="labelReport.Text" xml:space="preserve">
-    <value>Укажите, какие части следует включить в отчет.</value>
-  </data>
-  <data name="checkBoxMortality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 19</value>
-  </data>
-  <data name="checkBoxMortality.Text" xml:space="preserve">
-    <value>Оценки коэффициентов смертности</value>
-  </data>
-  <data name="checkBoxCatchHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 19</value>
-  </data>
-  <data name="checkBoxCatchHistory.Text" xml:space="preserve">
-    <value>Данные о вылове</value>
-  </data>
-  <data name="labelWarn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 13</value>
-  </data>
-  <data name="labelWarn.Text" xml:space="preserve">
-    <value>Выбранная когорта больше, чем период наблюдений</value>
   </data>
 </root>

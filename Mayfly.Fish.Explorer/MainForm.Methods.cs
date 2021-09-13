@@ -703,9 +703,11 @@ namespace Mayfly.Fish.Explorer
 
         private void initializeSpeciesStatsPlot()
         {
+            if (plotQualify.Series.Count > 1) return;
+
             plotQualify.Series.Clear();
 
-            sufficientLine = new System.Windows.Forms.DataVisualization.Charting.Series(Resources.Interface.EnoughStamp)
+            sufficientLine = new Series(Resources.Interface.EnoughStamp)
             {
                 Color = Mathematics.UserSettings.ColorSelected,
                 ChartType = SeriesChartType.Line,
@@ -730,7 +732,6 @@ namespace Mayfly.Fish.Explorer
                 hist.Properties.PointWidth = .5;
                 plotQualify.AddSeries(hist);
             }
-
 
             ext = new Scatterplot(Resources.Interface.QualBio);
             ext.Properties.DataPointColor = Constants.InfantColor;

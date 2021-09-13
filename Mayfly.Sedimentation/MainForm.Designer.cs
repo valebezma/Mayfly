@@ -1291,14 +1291,12 @@
             // 
             // menuItemOpen
             // 
-            this.menuItemOpen.Image = global::Mayfly.Resources.Icons.Open;
             this.menuItemOpen.Name = "menuItemOpen";
             resources.ApplyResources(this.menuItemOpen, "menuItemOpen");
             this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
             // 
             // menuItemSave
             // 
-            this.menuItemSave.Image = global::Mayfly.Resources.Icons.Save;
             this.menuItemSave.Name = "menuItemSave";
             resources.ApplyResources(this.menuItemSave, "menuItemSave");
             this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
@@ -1311,7 +1309,6 @@
             // 
             // menuItemPrint
             // 
-            this.menuItemPrint.Image = global::Mayfly.Resources.Icons.Print;
             this.menuItemPrint.Name = "menuItemPrint";
             resources.ApplyResources(this.menuItemPrint, "menuItemPrint");
             this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
@@ -1337,7 +1334,6 @@
             // 
             // toolStripMenuItemSettings
             // 
-            this.toolStripMenuItemSettings.Image = global::Mayfly.Resources.Icons.Settings;
             this.toolStripMenuItemSettings.Name = "toolStripMenuItemSettings";
             resources.ApplyResources(this.toolStripMenuItemSettings, "toolStripMenuItemSettings");
             this.toolStripMenuItemSettings.Click += new System.EventHandler(this.menuItemSettings_Click);
@@ -1355,7 +1351,6 @@
             // 
             // новыйToolStripMenuItem
             // 
-            this.новыйToolStripMenuItem.Image = global::Mayfly.Resources.Icons.New;
             this.новыйToolStripMenuItem.Name = "новыйToolStripMenuItem";
             resources.ApplyResources(this.новыйToolStripMenuItem, "новыйToolStripMenuItem");
             this.новыйToolStripMenuItem.Click += new System.EventHandler(this.новыйToolStripMenuItem_Click);

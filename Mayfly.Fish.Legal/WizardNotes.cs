@@ -591,7 +591,7 @@ namespace Mayfly.Fish.Legal
                     if (quoteRow == null)
                     {
                         ((TextAndImageCell)gridRow.Cells[ColumnMass.Index]).Image =
-                            Mayfly.Resources.Icons.NoneRed;
+                            Pictogram.NoneRed;
                     }
                     else
                     {
@@ -599,8 +599,7 @@ namespace Mayfly.Fish.Legal
 
                         ((TextAndImageCell)gridRow.Cells[ColumnMass.Index]).Image =
                             (quoteRow.RemainMass() + (CatchNote == null ? 0 : CatchNote.Mass) >= mass) ?
-                            Mayfly.Resources.Icons.Check :
-                            Mayfly.Resources.Icons.NoneRed;
+                            Pictogram.Check : Pictogram.NoneRed;
 
                         UpdateOverCatch();
                     }

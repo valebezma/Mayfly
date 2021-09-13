@@ -124,9 +124,6 @@
   <data name="labelComments.Text" xml:space="preserve">
     <value>Comments</value>
   </data>
-  <data name="buttonOK.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="pictureBoxWarningQuantity.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
@@ -180,17 +177,11 @@
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonBlank.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemClearValue.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ToolStripMenuItemSex.Text" xml:space="preserve">
     <value>Sex</value>
-  </data>
-  <data name="pictureBoxWarningQuantity.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;pictureBoxWarningMass.Name" xml:space="preserve">
     <value>pictureBoxWarningMass</value>
@@ -255,9 +246,6 @@
   <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="spreadSheetLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemCopy.Name" xml:space="preserve">
     <value>ToolStripMenuItemCopy</value>
   </data>
@@ -266,9 +254,6 @@
   </data>
   <data name="ColumnSex.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="labelQuantity.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Individuals Log</value>
@@ -478,9 +463,6 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>500, 350</value>
   </data>
-  <data name="numericUpDownMass.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;ColumnFrequency.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -541,9 +523,6 @@
   <data name="ToolStripMenuItemClearValue.Text" xml:space="preserve">
     <value>Clear value</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;contextMenuStripValue.Name" xml:space="preserve">
     <value>contextMenuStripValue</value>
   </data>
@@ -558,9 +537,6 @@
   </data>
   <data name="ToolStripMenuItemClearColumn.Text" xml:space="preserve">
     <value>Clear column</value>
-  </data>
-  <data name="contextMenuStripAdd.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
@@ -615,9 +591,6 @@
   </data>
   <data name="pictureBoxWarningQuantity.Location" type="System.Drawing.Point, System.Drawing">
     <value>141, 387</value>
-  </data>
-  <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;ToolStripMenuItemCalc.Name" xml:space="preserve">
     <value>ToolStripMenuItemCalc</value>
@@ -691,9 +664,6 @@
   <data name="numericUpDownQuantity.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="buttonReport.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="labelQuantity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -766,14 +736,8 @@
   <data name="&gt;&gt;ToolStripMenuItemDuplicate.Name" xml:space="preserve">
     <value>ToolStripMenuItemDuplicate</value>
   </data>
-  <data name="numericUpDownQuantity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Individuals</value>
-  </data>
-  <data name="labelMass.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="ColumnSex.Width" type="System.Int32, mscorlib">
     <value>50</value>
@@ -856,9 +820,6 @@
   <data name="labelMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 13</value>
   </data>
-  <data name="contextMenuStripVar.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemGrade.Name" xml:space="preserve">
     <value>ToolStripMenuItemGrade</value>
   </data>
@@ -903,9 +864,6 @@
   </data>
   <data name="&gt;&gt;contextMenuStripAdd.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelComments.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="ToolStripMenuItemCut.ShowShortcutKeys" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1015,17 +973,11 @@
   <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 22</value>
   </data>
-  <data name="contextMenuStripInd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;contextMenuStripVar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelComments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="contextMenuStripValue.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonBlank.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1066,9 +1018,6 @@
   <data name="&gt;&gt;labelMass.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="textBoxComments.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;buttonBlank.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
@@ -1086,9 +1035,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewColumn1.Name" xml:space="preserve">
     <value>dataGridViewColumn1</value>
-  </data>
-  <data name="pictureBoxWarningMass.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;ColumnLength.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

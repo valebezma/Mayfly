@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.IO.Compression;
 using MySql.Data.MySqlClient;
 using System.Threading.Tasks;
+using LibGit2Sharp;
 
 namespace Mayfly.Software.Management
 {
@@ -14,7 +15,7 @@ namespace Mayfly.Software.Management
     {
         public static UpdateServer ProductSchemeServer;
 
-        public static string FtpUpdatesServer = "ftp://" + Server.Domain + "/get/updates";
+        public static string FtpUpdatesServer = "ftps://" + Server.Domain + "/get/updates";
 
         public static string PackFiles(string[] files)
         {
@@ -222,6 +223,25 @@ namespace Mayfly.Software.Management
         public static void UploadFileAsinc(byte[] content, Uri ftppath)
         {
             Task.Run(() => UploadFile(content, ftppath));
+        }
+
+        public static Commit[] GetCommits(string pathRepository, string pathProject)
+        {
+            Repository repo = new Repository(pathRepository);
+            List<Commit> result = new List<Commit>();
+
+            foreach (var commit in repo.Commits)
+            {
+                foreach (var t in commit.Tree)
+                {
+                    if (t.Path.Contains(pathProject) && !result.Contains(commit))
+                    {
+                        result.Add(commit);
+                    }
+                }
+            }
+
+            return result.ToArray();
         }
     }
 }

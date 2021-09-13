@@ -661,7 +661,7 @@
     <value>22</value>
   </data>
   <data name="labelWaterInstruction.Text" xml:space="preserve">
-    <value>For further stock estimation we need to know how much water or its aquatory is and - if you are calculating abundance in particular volume - how it is deep too.</value>
+    <value>For further stock estimation we need to know how much water or its surface is and - if you are calculating abundance in particular volume - how it is deep too.</value>
   </data>
   <data name="&gt;&gt;labelWaterInstruction.Name" xml:space="preserve">
     <value>labelWaterInstruction</value>
