@@ -42,7 +42,8 @@ namespace Mayfly.Software
             textBoxUsername.Text = UserSettings.Username == Mayfly.Resources.Interface.UserUnknown ?
                 System.DirectoryServices.AccountManagement.UserPrincipal.Current.DisplayName : UserSettings.Username;
 
-            comboBoxProduct.DataSource = Service.GetScheme("Product", "File", "Feature", "FileType", "PropertyHandler", "AddVerb").Product.Select(null, "Name Asc");
+            //comboBoxProduct.DataSource = ServerSoftware.GetScheme("Product", "File", "Feature", "FileType", "PropertyHandler", "AddVerb").Product.Select(null, "Name Asc");
+            comboBoxProduct.DataSource = ServerSoftware.GetScheme("Product", "File", "Feature", "FileType").Product.Select(null, "Name Asc");
             wizardPageLanguage.NextPage = checkBoxOptions.Checked ? wizardPageShortcuts : wizardPageGet;
         }
 
@@ -169,7 +170,7 @@ namespace Mayfly.Software
 
         private void backgroundCultures_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = Service.GetAvailableCultures();
+            e.Result = ServerSoftware.AvailableCultures;
         }
 
         private void backgroundCultures_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -197,13 +198,11 @@ namespace Mayfly.Software
 
         private void wizardPageProduct_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
         {
-            Uri eula = Server.GetUri(Server.ServerHttps + "/eula",
-                SelectedProduct.Name.ToLower().Replace(' ', '_') + ".html", CultureInfo.CurrentUICulture);
+            Uri eula = Server.GetUri("eula/" + SelectedProduct.Name.ToLower().Replace(' ', '_') + ".html", CultureInfo.CurrentUICulture);
 
             if (!Server.FileExists(eula))
             {
-                eula = Server.GetUri(Server.ServerHttps + "/eula",
-                  "default.html", CultureInfo.CurrentUICulture);
+                eula = Server.GetUri("eula/default.html", CultureInfo.CurrentUICulture);
             }
 
             webBrowserEula.Navigate(eula);
@@ -268,8 +267,7 @@ namespace Mayfly.Software
         {
             foreach (Scheme.FileRow fileRow in SelectedProduct.GetFileRows())
             {
-                downloadLinks.Add(Server.GetUri(Service.ServerUpdate,
-                    Path.GetFileNameWithoutExtension(fileRow.File) + ".zip"));
+                downloadLinks.Add(Software.Update.GetUri(Path.GetFileNameWithoutExtension(fileRow.File) + ".zip"));
             }
 
             progressBar.Maximum = downloadLinks.Count * 2;
@@ -287,12 +285,12 @@ namespace Mayfly.Software
                 Service.UpdateStatus(labelStatus, Resources.Interface.Downloading, feature);
 
                 // Downloading basic feature
-                tempLinks.Add(Service.DownloadFile(uri));
+                tempLinks.Add(ServerSoftware.DownloadFile(uri));
 
                 if (lang != CultureInfo.InvariantCulture)
                 {
                     // Downloading localization
-                    Uri loc = Server.GetLocalizedUri(downloadLinks[0], lang);
+                    Uri loc = downloadLinks[0].Localize(lang);
                     Service.UpdateStatus(labelStatus, Resources.Interface.DownloadingCulture, feature, lang.DisplayName);
 
                     try
@@ -301,8 +299,8 @@ namespace Mayfly.Software
                         {
                             Directory.CreateDirectory(Path.Combine(IO.TempFolder, lang.Name));
                         }
-                        
-                        Service.DownloadFile(loc, Path.Combine(IO.TempFolder, lang.TwoLetterISOLanguageName, Path.GetFileName(uri.LocalPath)));
+
+                        ServerSoftware.DownloadFile(loc, Path.Combine(IO.TempFolder, lang.TwoLetterISOLanguageName, Path.GetFileName(uri.LocalPath)));
                     }
                     catch (WebException) { }
                 }

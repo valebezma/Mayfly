@@ -33,15 +33,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemUpload = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveSchemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemClose = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
@@ -59,8 +59,6 @@
             this.columnVerNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.spreadSheetSat = new Mayfly.Controls.SpreadSheet();
-            this.columnSatPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSatLocal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxExtDetails = new System.Windows.Forms.CheckBox();
             this.spreadSheetExt = new Mayfly.Controls.SpreadSheet();
@@ -85,6 +83,9 @@
             this.inputProduct = new Mayfly.TaskDialogs.InputDialog(this.components);
             this.buttonFileAdd = new System.Windows.Forms.Button();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
+            this.columnSatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSatPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSatLocal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -108,23 +109,24 @@
             // menuFile
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemUpload,
             this.menuItemUpdate,
-            this.saveSchemeToolStripMenuItem,
             this.menuItemClose});
             this.menuFile.Name = "menuFile";
             resources.ApplyResources(this.menuFile, "menuFile");
+            this.menuFile.DropDownOpening += new System.EventHandler(this.menuFile_DropDownOpening);
+            // 
+            // menuItemUpload
+            // 
+            this.menuItemUpload.Name = "menuItemUpload";
+            resources.ApplyResources(this.menuItemUpload, "menuItemUpload");
+            this.menuItemUpload.Click += new System.EventHandler(this.menuItemUpload_Click);
             // 
             // menuItemUpdate
             // 
             this.menuItemUpdate.Name = "menuItemUpdate";
             resources.ApplyResources(this.menuItemUpdate, "menuItemUpdate");
             this.menuItemUpdate.Click += new System.EventHandler(this.menuItemUpdate_Click);
-            // 
-            // saveSchemeToolStripMenuItem
-            // 
-            this.saveSchemeToolStripMenuItem.Name = "saveSchemeToolStripMenuItem";
-            resources.ApplyResources(this.saveSchemeToolStripMenuItem, "saveSchemeToolStripMenuItem");
-            this.saveSchemeToolStripMenuItem.Click += new System.EventHandler(this.saveSchemeToolStripMenuItem_Click);
             // 
             // menuItemClose
             // 
@@ -258,25 +260,13 @@
             this.spreadSheetSat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.spreadSheetSat.CellPadding = new System.Windows.Forms.Padding(5);
             this.spreadSheetSat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnSatID,
             this.columnSatPath,
             this.columnSatLocal});
             resources.ApplyResources(this.spreadSheetSat, "spreadSheetSat");
             this.spreadSheetSat.Name = "spreadSheetSat";
             this.spreadSheetSat.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheet_CellEndEdit);
             this.spreadSheetSat.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetSat_CellValueChanged);
-            // 
-            // columnSatPath
-            // 
-            this.columnSatPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.columnSatPath.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.columnSatPath, "columnSatPath");
-            this.columnSatPath.Name = "columnSatPath";
-            // 
-            // columnSatLocal
-            // 
-            resources.ApplyResources(this.columnSatLocal, "columnSatLocal");
-            this.columnSatLocal.Name = "columnSatLocal";
             // 
             // tabPage2
             // 
@@ -461,6 +451,24 @@
             // 
             resources.ApplyResources(this.openFile, "openFile");
             // 
+            // columnSatID
+            // 
+            resources.ApplyResources(this.columnSatID, "columnSatID");
+            this.columnSatID.Name = "columnSatID";
+            // 
+            // columnSatPath
+            // 
+            this.columnSatPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.columnSatPath.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.columnSatPath, "columnSatPath");
+            this.columnSatPath.Name = "columnSatPath";
+            // 
+            // columnSatLocal
+            // 
+            resources.ApplyResources(this.columnSatLocal, "columnSatLocal");
+            this.columnSatLocal.Name = "columnSatLocal";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -502,7 +510,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemClose;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageVersions;
-        private System.Windows.Forms.ToolStripMenuItem menuItemUpdate;
+        private System.Windows.Forms.ToolStripMenuItem menuItemUpload;
         private System.Windows.Forms.Label labelProductCount;
         private System.Windows.Forms.ListView listViewProducts;
         private System.Windows.Forms.Label labelFeatureCount;
@@ -521,8 +529,6 @@
         private System.Windows.Forms.TextBox textBoxFilename;
         private Controls.SpreadSheet spreadSheetExt;
         private Controls.SpreadSheet spreadSheetSat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnSatPath;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn columnSatLocal;
         private System.Windows.Forms.CheckBox checkBoxExtDetails;
         private System.Windows.Forms.Button buttonProductAdd;
         private TaskDialogs.InputDialog inputProduct;
@@ -543,7 +549,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtPreviewTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtPreviewDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnExtFullDetails;
-        private System.Windows.Forms.ToolStripMenuItem saveSchemeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSatID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnSatPath;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn columnSatLocal;
     }
 }
 

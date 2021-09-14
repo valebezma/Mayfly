@@ -6,35 +6,39 @@ using System.Net.Cache;
 using System.Net.Security;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Mayfly.Extensions;
 
 namespace Mayfly
 {
     public abstract class Server
     {
-        public static string Domain = "mayfly.ru";
-
-        public static string ServerHttps = "https://" + Domain;
-
-
-        public static Uri GetUri(string server, string filename)
+        public static Uri GetUri(Uri server, string localPath)
         {
-            return new Uri(server + "/" + filename);
+            return new Uri(server, localPath);
         }
 
-        public static Uri GetUri(string server, string filename, CultureInfo ci)
+        public static Uri GetUri(Uri server, string localPath, CultureInfo ci)
         {
-            Uri uri = GetUri(server, filename);
-            Uri localizedUri = GetUri(server + "/" + ci.Name.ToLowerInvariant(), filename);
+            Uri uri = GetUri(server, localPath);
+            Uri localizedUri = uri.Localize(ci);
             return ci.Equals(CultureInfo.InvariantCulture) ? uri :
                 FileExists(localizedUri) ? localizedUri : uri;
         }
 
-        public static Uri GetLocalizedUri(Uri original, CultureInfo ci)
+
+
+        public readonly static string Domain = "mayfly.ru";
+
+        public readonly static Uri MainUri = new Uri("https://" + Domain);
+
+        public static Uri GetUri(string localPath)
         {
-            Uri loc = new Uri(original.OriginalString.Insert(
-                        original.OriginalString.LastIndexOf('/'), '/' + ci.Name.ToLowerInvariant())
-                        );
-            return loc;
+            return GetUri(MainUri, localPath);
+        }
+
+        public static Uri GetUri(string localPath, CultureInfo ci)
+        {
+            return GetUri(MainUri, localPath, ci);
         }
 
 
@@ -76,8 +80,8 @@ namespace Mayfly
             {
                 cmd += string.Format("&attachment={0}", attachment);
             }
-            IO.RunFile(cmd);
 
+            IO.RunFile(cmd);
         }
 
 
@@ -160,10 +164,15 @@ namespace Mayfly
                 StreamReader reader = new StreamReader(stream);
                 while (!reader.EndOfStream)
                 {
-                    result.Add(reader.ReadLine());
+                    string s = reader.ReadLine();
+                    result.Add(s);
+
+                    if (string.IsNullOrWhiteSpace(s)) continue;
+                    Console.WriteLine(s);
                 }
+
             }
-            catch// (Exception ex)
+            catch
             {
                 return null; 
             }

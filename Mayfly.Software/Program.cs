@@ -20,7 +20,7 @@ namespace Mayfly.Software
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
             //Mayfly.Service.ResetUICulture();
 
-            //arguments = new string[] { "-remove", "Fishery Desktop" };
+            //arguments = new string[] { "-update", "Fishery Desktop" };
 
             if (arguments.Length == 0)
             {

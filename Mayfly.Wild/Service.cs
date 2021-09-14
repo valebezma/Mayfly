@@ -76,8 +76,6 @@ namespace Mayfly.Wild
 
 
 
-
-
         public static Report.Table GetBlankTable(string title, string massCaption, int lines)
         {
             Report.Table table = new Report.Table(title);
@@ -443,7 +441,7 @@ namespace Mayfly.Wild
                 key,
                 Species.UserSettings.Interface.OpenDialog,
                 group + " (auto)" + Species.UserSettings.Interface.Extension,
-                Server.GetUri(Server.ServerHttps, "get/references/specieslists/" + group.ToLower().Replace(" ", "_") + "_default" + Species.UserSettings.Interface.Extension, Application.CurrentCulture));
+                Server.GetUri("get/references/specieslists/" + group.ToLower().Replace(" ", "_") + "_default" + Species.UserSettings.Interface.Extension, Application.CurrentCulture));
         }
 
         public static string GetReferencePathWaters(string key)
@@ -453,7 +451,7 @@ namespace Mayfly.Wild
                 UserSettingPaths.Waters,
                 Waters.UserSettings.Interface.OpenDialog,
                 "Waters (auto)" + Waters.UserSettings.Interface.Extension,
-                Server.GetUri(Server.ServerHttps, "get/references/waters/waters_default" + Waters.UserSettings.Interface.Extension, Application.CurrentCulture));
+                Server.GetUri("get/references/waters/waters_default" + Waters.UserSettings.Interface.Extension, Application.CurrentCulture));
         }
     }
 }

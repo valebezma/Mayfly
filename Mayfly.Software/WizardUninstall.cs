@@ -60,7 +60,7 @@ namespace Mayfly.Software
 
         public void Uninstall(bool keeplicenses, bool keepfeature)
         {
-            Scheme scheme = Service.GetScheme("File", "FileType");
+            Scheme scheme = ServerSoftware.GetScheme("File", "FileType");
 
             //foreach (Scheme.FileRow fileRow in SelectedProduct.GetFileRows())
             foreach (string filename in Directory.GetFiles(InstallPath))

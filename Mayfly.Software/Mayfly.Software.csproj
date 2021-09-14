@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Install.cs" />
+    <Compile Include="ServerSoftware.cs" />
     <Compile Include="WizardInstall.cs">
       <SubType>Form</SubType>
     </Compile>

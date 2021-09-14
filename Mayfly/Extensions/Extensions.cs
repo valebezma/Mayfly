@@ -200,5 +200,13 @@ namespace Mayfly.Extensions
         {
             return string.Format(@"<a target='_blank\' href='{0}'>{1}</a>", uri.OriginalString, text);
         }
+
+        public static Uri Localize(this Uri original, CultureInfo ci)
+        {
+            string o = original.OriginalString;
+            int startIndex = o.IndexOf(".");
+            int firstSlashIndex = o.IndexOf("/", startIndex);
+            return new Uri(o.Insert(firstSlashIndex + 1, ci.Name.ToLowerInvariant() + "/"));
+        }
     }
 }

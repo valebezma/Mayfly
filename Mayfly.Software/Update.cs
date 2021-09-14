@@ -7,11 +7,25 @@ using System.Net;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.Collections.Generic;
+using Mayfly.Extensions;
 
 namespace Mayfly.Software
 {
-    public class Update
+    public abstract class Update
     {
+        public readonly static Uri UpdatesUri = Server.GetUri("get/updates/current/");
+
+        public static Uri GetUri(string localPath)
+        {
+            return Server.GetUri(UpdatesUri, localPath);
+        }
+
+        public static Uri GetUri(string localPath, CultureInfo ci)
+        {
+            return Server.GetUri(UpdatesUri, localPath, ci);
+        }
+
         public static void RunUpdates(string product, bool force)
         {
             UpdatePolicy policy = UserSettings.UpdatePolicy;
@@ -19,7 +33,7 @@ namespace Mayfly.Software
 
             //force |= (policy == UpdatePolicy.CheckAndRun);
 
-            Scheme data = Service.GetScheme("Product", "File", "Feature", "Version");
+            Scheme data = ServerSoftware.GetScheme("Product", "File", "Feature", "Version");
             if (data == null)
             {
                 if (force)
@@ -95,17 +109,17 @@ namespace Mayfly.Software
                 if (label != null) Service.UpdateStatus(label, Resources.Interface.UpdateDownload, feature);
 
                 // Downloading basic feature
-                string tempFileName = Service.DownloadFile(uri);
+                string tempFileName = ServerSoftware.DownloadFile(uri);
 
                 tempLinks.Add(tempFileName);
 
                 // Downloading localization
-                if (Service.GetAvailableCultures().Contains(CultureInfo.CurrentCulture))
+                if (ServerSoftware.AvailableCultures.Contains(CultureInfo.CurrentCulture))
                 {
                     try
                     {
                         CultureInfo ci = CultureInfo.CurrentCulture;
-                        Uri loc = Server.GetLocalizedUri(downloadLinks[0], ci);
+                        Uri loc = downloadLinks[0].Localize(ci);
 
                         if (label != null) Service.UpdateStatus(label, Resources.Interface.UpdateDownloadLoc, feature, ci.Name);
 
@@ -113,7 +127,7 @@ namespace Mayfly.Software
                         {
                             Directory.CreateDirectory(Path.Combine(IO.TempFolder, ci.Name));
                         }
-                        tempFileName = Service.DownloadFile(loc);
+                        tempFileName = ServerSoftware.DownloadFile(loc);
                     }
                     catch { }
                 }
@@ -135,8 +149,7 @@ namespace Mayfly.Software
                 if (label != null) Service.UpdateStatus(label, Resources.Interface.UpdateInstalling, fi.Name);
                 IO.UnpackFiles(tempFile, updates.ProductFolder);
 
-                if (Service.GetAvailableCultures().
-                    Contains(CultureInfo.CurrentCulture))
+                if (ServerSoftware.AvailableCultures.Contains(CultureInfo.CurrentCulture))
                 {
                     CultureInfo ci = CultureInfo.CurrentCulture;
                     fi = new FileInfo(tempFile.Insert(tempFile.LastIndexOf('\\'), '\\' + ci.Name));

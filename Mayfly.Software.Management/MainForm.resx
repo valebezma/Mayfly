@@ -121,20 +121,20 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuItemUpload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="menuItemUpload.Text" xml:space="preserve">
+    <value>Upload files and close</value>
+  </data>
   <data name="menuItemUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
+    <value>189, 22</value>
   </data>
   <data name="menuItemUpdate.Text" xml:space="preserve">
-    <value>Update and close</value>
-  </data>
-  <data name="saveSchemeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="saveSchemeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save scheme</value>
+    <value>Update scheme</value>
   </data>
   <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
+    <value>189, 22</value>
   </data>
   <data name="menuItemClose.Text" xml:space="preserve">
     <value>Close</value>
@@ -479,6 +479,15 @@
   </data>
   <data name="&gt;&gt;tabPageVersions.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <metadata name="columnSatID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnSatID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="columnSatID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <metadata name="columnSatPath.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1007,16 +1016,16 @@
   <data name="&gt;&gt;menuFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItemUpload.Name" xml:space="preserve">
+    <value>menuItemUpload</value>
+  </data>
+  <data name="&gt;&gt;menuItemUpload.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItemUpdate.Name" xml:space="preserve">
     <value>menuItemUpdate</value>
   </data>
   <data name="&gt;&gt;menuItemUpdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;saveSchemeToolStripMenuItem.Name" xml:space="preserve">
-    <value>saveSchemeToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;saveSchemeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemClose.Name" xml:space="preserve">
@@ -1042,18 +1051,6 @@
   </data>
   <data name="&gt;&gt;columnVerNotes.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSatPath.Name" xml:space="preserve">
-    <value>columnSatPath</value>
-  </data>
-  <data name="&gt;&gt;columnSatPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnSatLocal.Name" xml:space="preserve">
-    <value>columnSatLocal</value>
-  </data>
-  <data name="&gt;&gt;columnSatLocal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnExt.Name" xml:space="preserve">
     <value>columnExt</value>
@@ -1132,6 +1129,24 @@
   </data>
   <data name="&gt;&gt;openFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSatID.Name" xml:space="preserve">
+    <value>columnSatID</value>
+  </data>
+  <data name="&gt;&gt;columnSatID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSatPath.Name" xml:space="preserve">
+    <value>columnSatPath</value>
+  </data>
+  <data name="&gt;&gt;columnSatPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnSatLocal.Name" xml:space="preserve">
+    <value>columnSatLocal</value>
+  </data>
+  <data name="&gt;&gt;columnSatLocal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

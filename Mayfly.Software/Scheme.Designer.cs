@@ -40,15 +40,15 @@ namespace Mayfly.Software {
         
         private PropertyHandlerDataTable tablePropertyHandler;
         
-        private global::System.Data.DataRelation relationFK_File_FileType;
-        
         private global::System.Data.DataRelation relationFK_PropertyHandler_FileType;
+        
+        private global::System.Data.DataRelation relationFK_File_FileType;
         
         private global::System.Data.DataRelation relationFK_Datatype_AddVerb;
         
-        private global::System.Data.DataRelation relationFile_Features;
-        
         private global::System.Data.DataRelation relationProduct_Features;
+        
+        private global::System.Data.DataRelation relationFile_Features;
         
         private global::System.Data.DataRelation relationFile_Version;
         
@@ -376,11 +376,11 @@ namespace Mayfly.Software {
                     this.tablePropertyHandler.InitVars();
                 }
             }
-            this.relationFK_File_FileType = this.Relations["FK_File_FileType"];
             this.relationFK_PropertyHandler_FileType = this.Relations["FK_PropertyHandler_FileType"];
+            this.relationFK_File_FileType = this.Relations["FK_File_FileType"];
             this.relationFK_Datatype_AddVerb = this.Relations["FK_Datatype_AddVerb"];
-            this.relationFile_Features = this.Relations["File_Features"];
             this.relationProduct_Features = this.Relations["Product_Features"];
+            this.relationFile_Features = this.Relations["File_Features"];
             this.relationFile_Version = this.Relations["File_Version"];
             this.relationFile_Satellite = this.Relations["File_Satellite"];
         }
@@ -410,16 +410,16 @@ namespace Mayfly.Software {
             this.tablePropertyHandler = new PropertyHandlerDataTable();
             base.Tables.Add(this.tablePropertyHandler);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_File_FileType", new global::System.Data.DataColumn[] {
-                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFileType.FileIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_PropertyHandler_FileType", new global::System.Data.DataColumn[] {
+                        this.tablePropertyHandler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFileType.PropertyIDColumn});
             this.tableFileType.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_PropertyHandler_FileType", new global::System.Data.DataColumn[] {
-                        this.tablePropertyHandler.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFileType.PropertyIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_File_FileType", new global::System.Data.DataColumn[] {
+                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFileType.FileIDColumn});
             this.tableFileType.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -431,16 +431,16 @@ namespace Mayfly.Software {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("File_Features", new global::System.Data.DataColumn[] {
-                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFeature.FileIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("Product_Features", new global::System.Data.DataColumn[] {
+                        this.tableProduct.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFeature.ProductIDColumn});
             this.tableFeature.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("Product_Features", new global::System.Data.DataColumn[] {
-                        this.tableProduct.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFeature.ProductIDColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("File_Features", new global::System.Data.DataColumn[] {
+                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFeature.FileIDColumn});
             this.tableFeature.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -459,27 +459,27 @@ namespace Mayfly.Software {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_File_FileType = new global::System.Data.DataRelation("FK_File_FileType", new global::System.Data.DataColumn[] {
-                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFileType.FileIDColumn}, false);
-            this.Relations.Add(this.relationFK_File_FileType);
             this.relationFK_PropertyHandler_FileType = new global::System.Data.DataRelation("FK_PropertyHandler_FileType", new global::System.Data.DataColumn[] {
                         this.tablePropertyHandler.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableFileType.PropertyIDColumn}, false);
             this.Relations.Add(this.relationFK_PropertyHandler_FileType);
+            this.relationFK_File_FileType = new global::System.Data.DataRelation("FK_File_FileType", new global::System.Data.DataColumn[] {
+                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFileType.FileIDColumn}, false);
+            this.Relations.Add(this.relationFK_File_FileType);
             this.relationFK_Datatype_AddVerb = new global::System.Data.DataRelation("FK_Datatype_AddVerb", new global::System.Data.DataColumn[] {
                         this.tableFileType.ExtensionColumn}, new global::System.Data.DataColumn[] {
                         this.tableAddVerb.ExtensionColumn}, false);
             this.relationFK_Datatype_AddVerb.Nested = true;
             this.Relations.Add(this.relationFK_Datatype_AddVerb);
-            this.relationFile_Features = new global::System.Data.DataRelation("File_Features", new global::System.Data.DataColumn[] {
-                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFeature.FileIDColumn}, false);
-            this.Relations.Add(this.relationFile_Features);
             this.relationProduct_Features = new global::System.Data.DataRelation("Product_Features", new global::System.Data.DataColumn[] {
                         this.tableProduct.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableFeature.ProductIDColumn}, false);
             this.Relations.Add(this.relationProduct_Features);
+            this.relationFile_Features = new global::System.Data.DataRelation("File_Features", new global::System.Data.DataColumn[] {
+                        this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFeature.FileIDColumn}, false);
+            this.Relations.Add(this.relationFile_Features);
             this.relationFile_Version = new global::System.Data.DataRelation("File_Version", new global::System.Data.DataColumn[] {
                         this.tableFile.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableVersion.FileIDColumn}, false);
@@ -2636,6 +2636,13 @@ namespace Mayfly.Software {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public SatelliteRow FindByID(int ID) {
+                return ((SatelliteRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 SatelliteDataTable cln = ((SatelliteDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2669,7 +2676,7 @@ namespace Mayfly.Software {
                 this.columnLocalizable = new global::System.Data.DataColumn("Localizable", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocalizable);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint11", new global::System.Data.DataColumn[] {
-                                this.columnID}, false));
+                                this.columnID}, true));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = 1;
                 this.columnID.AllowDBNull = false;
@@ -3276,23 +3283,23 @@ namespace Mayfly.Software {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FileRow FileRow {
-                get {
-                    return ((FileRow)(this.GetParentRow(this.Table.ParentRelations["FK_File_FileType"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_File_FileType"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PropertyHandlerRow PropertyHandlerRow {
                 get {
                     return ((PropertyHandlerRow)(this.GetParentRow(this.Table.ParentRelations["FK_PropertyHandler_FileType"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_PropertyHandler_FileType"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public FileRow FileRow {
+                get {
+                    return ((FileRow)(this.GetParentRow(this.Table.ParentRelations["FK_File_FileType"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_File_FileType"]);
                 }
             }
             
@@ -3822,23 +3829,23 @@ namespace Mayfly.Software {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FileRow FileRow {
-                get {
-                    return ((FileRow)(this.GetParentRow(this.Table.ParentRelations["File_Features"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["File_Features"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ProductRow ProductRow {
                 get {
                     return ((ProductRow)(this.GetParentRow(this.Table.ParentRelations["Product_Features"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Product_Features"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public FileRow FileRow {
+                get {
+                    return ((FileRow)(this.GetParentRow(this.Table.ParentRelations["File_Features"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["File_Features"]);
                 }
             }
         }

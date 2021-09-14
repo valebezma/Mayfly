@@ -172,7 +172,7 @@ namespace Mayfly
                 return null;
             }
 
-            Uri uri = Server.GetUri(Server.ServerHttps, "php/software/get_license.php");
+            Uri uri = Server.GetUri("php/software/get_license.php");
             Dictionary<string, string> licenseRequestParameters = new Dictionary<string, string>();
             licenseRequestParameters.Add("email", credentials.UserName);
             licenseRequestParameters.Add("password", credentials.Password);
@@ -204,7 +204,7 @@ namespace Mayfly
         {
             if (UserSettings.Credential == null) return;
 
-            Uri uri = Server.GetUri(Server.ServerHttps, "php/customer/getlicense.php");
+            Uri uri = Server.GetUri("php/customer/getlicense.php");
             Dictionary<string, string> licenseRequestParameters = new Dictionary<string, string>();
             licenseRequestParameters.Add("email", credentials.UserName);
             licenseRequestParameters.Add("password", credentials.Password);

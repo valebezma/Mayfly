@@ -9,14 +9,9 @@ namespace Mayfly
         private static void Write(UserActionEventArgs e)
         {
             if (!UserSettings.ShareDiagnostics) return;
-            Uri uri = Server.GetUri(Server.ServerHttps, "php/software/log.php");
-            Dictionary<string, string> logParameters = new Dictionary<string, string>
-            {
-                { "logevent", e.GetLogLine() },
-                { "login", "mayfly-logger" },
-                { "password", "qe4-nsw-wv8-WrC" }
-            };
-            try { Server.GetText(uri, logParameters); } catch { }
+            Uri uri = Server.GetUri("php/software/log.php");
+            Dictionary<string, string> p = new Dictionary<string, string> { { "logevent", e.GetLogLine() } };
+            try { Server.GetText(uri, p); } catch { }
         }
 
         public static void Write(string message)
@@ -161,7 +156,7 @@ namespace Mayfly
             Product = UserSettings.Product;
             Feature = Process.GetCurrentProcess().ProcessName;
             Version = EntryAssemblyInfo.Version;
-            User = UserSettings.Username;
+            User = UserSettings.Credential.UserName;
             ProcessID = Process.GetCurrentProcess().Id;
             Type = EventType.AllEvents;
             EventDescription = string.Empty;

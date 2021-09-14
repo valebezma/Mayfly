@@ -9,7 +9,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="FileType" msprop:Generator_TableClassName="FileTypeDataTable" msprop:Generator_TableVarName="tableFileType" msprop:Generator_TablePropName="FileType" msprop:Generator_RowDeletingName="FileTypeRowDeleting" msprop:Generator_RowChangingName="FileTypeRowChanging" msprop:Generator_RowEvHandlerName="FileTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="FileTypeRowDeleted" msprop:Generator_UserTableName="FileType" msprop:Generator_RowChangedName="FileTypeRowChanged" msprop:Generator_RowEvArgName="FileTypeRowChangeEvent" msprop:Generator_RowClassName="FileTypeRow">
+  <xs:element name="FileType" msprop:Generator_TableClassName="FileTypeDataTable" msprop:Generator_TableVarName="tableFileType" msprop:Generator_RowChangedName="FileTypeRowChanged" msprop:Generator_TablePropName="FileType" msprop:Generator_RowDeletingName="FileTypeRowDeleting" msprop:Generator_RowChangingName="FileTypeRowChanging" msprop:Generator_RowEvHandlerName="FileTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="FileTypeRowDeleted" msprop:Generator_RowClassName="FileTypeRow" msprop:Generator_UserTableName="FileType" msprop:Generator_RowEvArgName="FileTypeRowChangeEvent">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="Extension" msprop:Generator_ColumnVarNameInTable="columnExtension" msprop:Generator_ColumnPropNameInRow="Extension" msprop:Generator_ColumnPropNameInTable="ExtensionColumn" msprop:Generator_UserColumnName="Extension" type="xs:string" />
@@ -22,7 +22,7 @@
         <xs:element name="PreviewDetails" msprop:Generator_ColumnVarNameInTable="columnPreviewDetails" msprop:Generator_ColumnPropNameInRow="PreviewDetails" msprop:Generator_ColumnPropNameInTable="PreviewDetailsColumn" msprop:Generator_UserColumnName="PreviewDetails" type="xs:string" minOccurs="0" />
         <xs:element name="PreviewTitle" msprop:Generator_ColumnVarNameInTable="columnPreviewTitle" msprop:Generator_ColumnPropNameInRow="PreviewTitle" msprop:Generator_ColumnPropNameInTable="PreviewTitleColumn" msprop:Generator_UserColumnName="PreviewTitle" type="xs:string" minOccurs="0" />
         <xs:element name="TileInfo" msprop:Generator_ColumnVarNameInTable="columnTileInfo" msprop:Generator_ColumnPropNameInRow="TileInfo" msprop:Generator_ColumnPropNameInTable="TileInfoColumn" msprop:Generator_UserColumnName="TileInfo" type="xs:string" minOccurs="0" />
-        <xs:element name="AddVerb" msprop:Generator_TableClassName="AddVerbDataTable" msprop:Generator_TableVarName="tableAddVerb" msprop:Generator_TablePropName="AddVerb" msprop:Generator_RowDeletingName="AddVerbRowDeleting" msprop:Generator_RowChangingName="AddVerbRowChanging" msprop:Generator_RowEvHandlerName="AddVerbRowChangeEventHandler" msprop:Generator_RowDeletedName="AddVerbRowDeleted" msprop:Generator_UserTableName="AddVerb" msprop:Generator_RowChangedName="AddVerbRowChanged" msprop:Generator_RowEvArgName="AddVerbRowChangeEvent" msprop:Generator_RowClassName="AddVerbRow" minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AddVerb" msprop:Generator_TableClassName="AddVerbDataTable" msprop:Generator_TableVarName="tableAddVerb" msprop:Generator_RowChangedName="AddVerbRowChanged" msprop:Generator_TablePropName="AddVerb" msprop:Generator_RowDeletingName="AddVerbRowDeleting" msprop:Generator_RowChangingName="AddVerbRowChanging" msprop:Generator_RowEvHandlerName="AddVerbRowChangeEventHandler" msprop:Generator_RowDeletedName="AddVerbRowDeleted" msprop:Generator_RowClassName="AddVerbRow" msprop:Generator_UserTableName="AddVerb" msprop:Generator_RowEvArgName="AddVerbRowChangeEvent" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -39,7 +39,7 @@
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="FileType" />
-        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_RowClassName="ProductRow" msprop:Generator_UserTableName="Product" msprop:Generator_RowEvArgName="ProductRowChangeEvent">
+        <xs:element name="Product" msprop:Generator_TableClassName="ProductDataTable" msprop:Generator_TableVarName="tableProduct" msprop:Generator_TablePropName="Product" msprop:Generator_RowDeletingName="ProductRowDeleting" msprop:Generator_RowChangingName="ProductRowChanging" msprop:Generator_RowEvHandlerName="ProductRowChangeEventHandler" msprop:Generator_RowDeletedName="ProductRowDeleted" msprop:Generator_UserTableName="Product" msprop:Generator_RowChangedName="ProductRowChanged" msprop:Generator_RowEvArgName="ProductRowChangeEvent" msprop:Generator_RowClassName="ProductRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -48,7 +48,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="File" msprop:Generator_TableClassName="FileDataTable" msprop:Generator_TableVarName="tableFile" msprop:Generator_RowChangedName="FileRowChanged" msprop:Generator_TablePropName="File" msprop:Generator_RowDeletingName="FileRowDeleting" msprop:Generator_RowChangingName="FileRowChanging" msprop:Generator_RowEvHandlerName="FileRowChangeEventHandler" msprop:Generator_RowDeletedName="FileRowDeleted" msprop:Generator_RowClassName="FileRow" msprop:Generator_UserTableName="File" msprop:Generator_RowEvArgName="FileRowChangeEvent">
+        <xs:element name="File" msprop:Generator_TableClassName="FileDataTable" msprop:Generator_TableVarName="tableFile" msprop:Generator_TablePropName="File" msprop:Generator_RowDeletingName="FileRowDeleting" msprop:Generator_RowChangingName="FileRowChanging" msprop:Generator_RowEvHandlerName="FileRowChangeEventHandler" msprop:Generator_RowDeletedName="FileRowDeleted" msprop:Generator_UserTableName="File" msprop:Generator_RowChangedName="FileRowChanged" msprop:Generator_RowEvArgName="FileRowChangeEvent" msprop:Generator_RowClassName="FileRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -58,7 +58,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Feature" msprop:Generator_TableClassName="FeatureDataTable" msprop:Generator_TableVarName="tableFeature" msprop:Generator_RowChangedName="FeatureRowChanged" msprop:Generator_TablePropName="Feature" msprop:Generator_RowDeletingName="FeatureRowDeleting" msprop:Generator_RowChangingName="FeatureRowChanging" msprop:Generator_RowEvHandlerName="FeatureRowChangeEventHandler" msprop:Generator_RowDeletedName="FeatureRowDeleted" msprop:Generator_RowClassName="FeatureRow" msprop:Generator_UserTableName="Feature" msprop:Generator_RowEvArgName="FeatureRowChangeEvent">
+        <xs:element name="Feature" msprop:Generator_TableClassName="FeatureDataTable" msprop:Generator_TableVarName="tableFeature" msprop:Generator_TablePropName="Feature" msprop:Generator_RowDeletingName="FeatureRowDeleting" msprop:Generator_RowChangingName="FeatureRowChanging" msprop:Generator_RowEvHandlerName="FeatureRowChangeEventHandler" msprop:Generator_RowDeletedName="FeatureRowDeleted" msprop:Generator_UserTableName="Feature" msprop:Generator_RowChangedName="FeatureRowChanged" msprop:Generator_RowEvArgName="FeatureRowChangeEvent" msprop:Generator_RowClassName="FeatureRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProductID" msprop:Generator_ColumnVarNameInTable="columnProductID" msprop:Generator_ColumnPropNameInRow="ProductID" msprop:Generator_ColumnPropNameInTable="ProductIDColumn" msprop:Generator_UserColumnName="ProductID" type="xs:int" />
@@ -66,7 +66,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Version" msprop:Generator_TableClassName="VersionDataTable" msprop:Generator_TableVarName="tableVersion" msprop:Generator_RowChangedName="VersionRowChanged" msprop:Generator_TablePropName="Version" msprop:Generator_RowDeletingName="VersionRowDeleting" msprop:Generator_RowChangingName="VersionRowChanging" msprop:Generator_RowEvHandlerName="VersionRowChangeEventHandler" msprop:Generator_RowDeletedName="VersionRowDeleted" msprop:Generator_RowClassName="VersionRow" msprop:Generator_UserTableName="Version" msprop:Generator_RowEvArgName="VersionRowChangeEvent">
+        <xs:element name="Version" msprop:Generator_TableClassName="VersionDataTable" msprop:Generator_TableVarName="tableVersion" msprop:Generator_TablePropName="Version" msprop:Generator_RowDeletingName="VersionRowDeleting" msprop:Generator_RowChangingName="VersionRowChanging" msprop:Generator_RowEvHandlerName="VersionRowChangeEventHandler" msprop:Generator_RowDeletedName="VersionRowDeleted" msprop:Generator_UserTableName="Version" msprop:Generator_RowChangedName="VersionRowChanged" msprop:Generator_RowEvArgName="VersionRowChangeEvent" msprop:Generator_RowClassName="VersionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -77,7 +77,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Satellite" msprop:Generator_TableClassName="SatelliteDataTable" msprop:Generator_TableVarName="tableSatellite" msprop:Generator_RowChangedName="SatelliteRowChanged" msprop:Generator_TablePropName="Satellite" msprop:Generator_RowDeletingName="SatelliteRowDeleting" msprop:Generator_RowChangingName="SatelliteRowChanging" msprop:Generator_RowEvHandlerName="SatelliteRowChangeEventHandler" msprop:Generator_RowDeletedName="SatelliteRowDeleted" msprop:Generator_RowClassName="SatelliteRow" msprop:Generator_UserTableName="Satellite" msprop:Generator_RowEvArgName="SatelliteRowChangeEvent">
+        <xs:element name="Satellite" msprop:Generator_TableClassName="SatelliteDataTable" msprop:Generator_TableVarName="tableSatellite" msprop:Generator_TablePropName="Satellite" msprop:Generator_RowDeletingName="SatelliteRowDeleting" msprop:Generator_RowChangingName="SatelliteRowChanging" msprop:Generator_RowEvHandlerName="SatelliteRowChangeEventHandler" msprop:Generator_RowDeletedName="SatelliteRowDeleted" msprop:Generator_UserTableName="Satellite" msprop:Generator_RowChangedName="SatelliteRowChanged" msprop:Generator_RowEvArgName="SatelliteRowChangeEvent" msprop:Generator_RowClassName="SatelliteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -87,7 +87,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PropertyHandler" msprop:Generator_TableClassName="PropertyHandlerDataTable" msprop:Generator_TableVarName="tablePropertyHandler" msprop:Generator_TablePropName="PropertyHandler" msprop:Generator_RowDeletingName="PropertyHandlerRowDeleting" msprop:Generator_RowChangingName="PropertyHandlerRowChanging" msprop:Generator_RowEvHandlerName="PropertyHandlerRowChangeEventHandler" msprop:Generator_RowDeletedName="PropertyHandlerRowDeleted" msprop:Generator_UserTableName="PropertyHandler" msprop:Generator_RowChangedName="PropertyHandlerRowChanged" msprop:Generator_RowEvArgName="PropertyHandlerRowChangeEvent" msprop:Generator_RowClassName="PropertyHandlerRow">
+        <xs:element name="PropertyHandler" msprop:Generator_TableClassName="PropertyHandlerDataTable" msprop:Generator_TableVarName="tablePropertyHandler" msprop:Generator_RowChangedName="PropertyHandlerRowChanged" msprop:Generator_TablePropName="PropertyHandler" msprop:Generator_RowDeletingName="PropertyHandlerRowDeleting" msprop:Generator_RowChangingName="PropertyHandlerRowChanging" msprop:Generator_RowEvHandlerName="PropertyHandlerRowChangeEventHandler" msprop:Generator_RowDeletedName="PropertyHandlerRowDeleted" msprop:Generator_RowClassName="PropertyHandlerRow" msprop:Generator_UserTableName="PropertyHandler" msprop:Generator_RowEvArgName="PropertyHandlerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
@@ -124,7 +124,7 @@
       <xs:selector xpath=".//Version" />
       <xs:field xpath="ID" />
     </xs:unique>
-    <xs:unique name="Constraint11">
+    <xs:unique name="Constraint11" msdata:PrimaryKey="true">
       <xs:selector xpath=".//Satellite" />
       <xs:field xpath="ID" />
     </xs:unique>
@@ -136,31 +136,31 @@
       <xs:selector xpath=".//PropertyHandler" />
       <xs:field xpath="ID" />
     </xs:unique>
-    <xs:keyref name="File_Satellite" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Satellite" msprop:rel_Generator_ChildPropName="GetSatelliteRows" msprop:rel_Generator_UserRelationName="File_Satellite" msprop:rel_Generator_ParentPropName="FileRow" msprop:rel_Generator_RelationVarName="relationFile_Satellite" msprop:rel_Generator_UserParentTable="File" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="File_Satellite" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Satellite" msprop:rel_Generator_ChildPropName="GetSatelliteRows" msprop:rel_Generator_UserRelationName="File_Satellite" msprop:rel_Generator_RelationVarName="relationFile_Satellite" msprop:rel_Generator_UserParentTable="File" msprop:rel_Generator_ParentPropName="FileRow" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//Satellite" />
       <xs:field xpath="FileID" />
     </xs:keyref>
-    <xs:keyref name="File_Version" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Version" msprop:rel_Generator_ChildPropName="GetVersionRows" msprop:rel_Generator_UserRelationName="File_Version" msprop:rel_Generator_ParentPropName="FileRow" msprop:rel_Generator_RelationVarName="relationFile_Version" msprop:rel_Generator_UserParentTable="File" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="File_Version" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Version" msprop:rel_Generator_ChildPropName="GetVersionRows" msprop:rel_Generator_UserRelationName="File_Version" msprop:rel_Generator_RelationVarName="relationFile_Version" msprop:rel_Generator_UserParentTable="File" msprop:rel_Generator_ParentPropName="FileRow" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//Version" />
       <xs:field xpath="FileID" />
     </xs:keyref>
-    <xs:keyref name="File_Features" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Feature" msprop:rel_Generator_ChildPropName="GetFeatureRows" msprop:rel_Generator_UserRelationName="File_Features" msprop:rel_Generator_ParentPropName="FileRow" msprop:rel_Generator_RelationVarName="relationFile_Features" msprop:rel_Generator_UserParentTable="File" msdata:AcceptRejectRule="Cascade">
-      <xs:selector xpath=".//Feature" />
-      <xs:field xpath="FileID" />
-    </xs:keyref>
-    <xs:keyref name="Product_Features" refer="Product_Constraint1" msprop:rel_Generator_UserChildTable="Feature" msprop:rel_Generator_ChildPropName="GetFeatureRows" msprop:rel_Generator_UserRelationName="Product_Features" msprop:rel_Generator_RelationVarName="relationProduct_Features" msprop:rel_Generator_UserParentTable="Product" msprop:rel_Generator_ParentPropName="ProductRow" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="Product_Features" refer="Product_Constraint1" msprop:rel_Generator_UserChildTable="Feature" msprop:rel_Generator_ChildPropName="GetFeatureRows" msprop:rel_Generator_UserRelationName="Product_Features" msprop:rel_Generator_ParentPropName="ProductRow" msprop:rel_Generator_RelationVarName="relationProduct_Features" msprop:rel_Generator_UserParentTable="Product" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//Feature" />
       <xs:field xpath="ProductID" />
     </xs:keyref>
-    <xs:keyref name="FK_File_FileType" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="FileType" msprop:rel_Generator_ChildPropName="GetFileTypeRows" msprop:rel_Generator_UserRelationName="FK_File_FileType" msprop:rel_Generator_ParentPropName="FileRow" msprop:rel_Generator_RelationVarName="relationFK_File_FileType" msprop:rel_Generator_UserParentTable="File" msdata:AcceptRejectRule="Cascade">
-      <xs:selector xpath=".//FileType" />
+    <xs:keyref name="File_Features" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="Feature" msprop:rel_Generator_ChildPropName="GetFeatureRows" msprop:rel_Generator_UserRelationName="File_Features" msprop:rel_Generator_RelationVarName="relationFile_Features" msprop:rel_Generator_UserParentTable="File" msprop:rel_Generator_ParentPropName="FileRow" msdata:AcceptRejectRule="Cascade">
+      <xs:selector xpath=".//Feature" />
       <xs:field xpath="FileID" />
     </xs:keyref>
-    <xs:keyref name="FK_PropertyHandler_FileType" refer="Constraint21" msprop:rel_Generator_UserChildTable="FileType" msprop:rel_Generator_ChildPropName="GetFileTypeRows" msprop:rel_Generator_UserRelationName="FK_PropertyHandler_FileType" msprop:rel_Generator_ParentPropName="PropertyHandlerRow" msprop:rel_Generator_RelationVarName="relationFK_PropertyHandler_FileType" msprop:rel_Generator_UserParentTable="PropertyHandler" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="FK_PropertyHandler_FileType" refer="Constraint21" msprop:rel_Generator_UserChildTable="FileType" msprop:rel_Generator_ChildPropName="GetFileTypeRows" msprop:rel_Generator_UserRelationName="FK_PropertyHandler_FileType" msprop:rel_Generator_RelationVarName="relationFK_PropertyHandler_FileType" msprop:rel_Generator_UserParentTable="PropertyHandler" msprop:rel_Generator_ParentPropName="PropertyHandlerRow" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//FileType" />
       <xs:field xpath="PropertyID" />
     </xs:keyref>
-    <xs:keyref name="FK_Datatype_AddVerb" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="AddVerb" msprop:rel_Generator_ChildPropName="GetAddVerbRows" msprop:rel_Generator_UserRelationName="FK_Datatype_AddVerb" msprop:rel_Generator_ParentPropName="FileTypeRow" msprop:rel_Generator_RelationVarName="relationFK_Datatype_AddVerb" msprop:rel_Generator_UserParentTable="FileType" msdata:AcceptRejectRule="Cascade">
+    <xs:keyref name="FK_File_FileType" refer="File_Constraint1" msprop:rel_Generator_UserChildTable="FileType" msprop:rel_Generator_ChildPropName="GetFileTypeRows" msprop:rel_Generator_UserRelationName="FK_File_FileType" msprop:rel_Generator_RelationVarName="relationFK_File_FileType" msprop:rel_Generator_UserParentTable="File" msprop:rel_Generator_ParentPropName="FileRow" msdata:AcceptRejectRule="Cascade">
+      <xs:selector xpath=".//FileType" />
+      <xs:field xpath="FileID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Datatype_AddVerb" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserChildTable="AddVerb" msprop:rel_Generator_ChildPropName="GetAddVerbRows" msprop:rel_Generator_UserRelationName="FK_Datatype_AddVerb" msprop:rel_Generator_RelationVarName="relationFK_Datatype_AddVerb" msprop:rel_Generator_UserParentTable="FileType" msprop:rel_Generator_ParentPropName="FileTypeRow" msdata:AcceptRejectRule="Cascade">
       <xs:selector xpath=".//AddVerb" />
       <xs:field xpath="Extension" />
     </xs:keyref>

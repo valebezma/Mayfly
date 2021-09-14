@@ -143,9 +143,7 @@ namespace Mayfly.Software
             {
                 UpdateFeatureArgs args = new UpdateFeatureArgs();
 
-                args.DownloadUrl = Server.GetUri(Service.ServerUpdate,
-                    Path.GetFileNameWithoutExtension(this.File) + ".zip");
-
+                args.DownloadUrl = Update.GetUri(Path.GetFileNameWithoutExtension(this.File) + ".zip");
                 args.Filename = this.File;
                 args.NewVersion = this.GetLatestVersion();
 

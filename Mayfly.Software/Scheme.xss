@@ -16,18 +16,6 @@
     <Shape ID="DesignTable:PropertyHandler" ZOrder="8" X="510" Y="363" Height="105" Width="163" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_PropertyHandler_FileType" ZOrder="5" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>510</X>
-          <Y>415</Y>
-        </Point>
-        <Point>
-          <X>440</X>
-          <Y>415</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_File_FileType" ZOrder="1" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -44,6 +32,18 @@
         </Point>
       </RoutePoints>
     </Connector>
+    <Connector ID="DesignRelation:FK_PropertyHandler_FileType" ZOrder="5" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>510</X>
+          <Y>415</Y>
+        </Point>
+        <Point>
+          <X>440</X>
+          <Y>415</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
     <Connector ID="DesignRelation:FK_Datatype_AddVerb" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -56,18 +56,6 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:Product_Features" ZOrder="6" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>510</X>
-          <Y>103</Y>
-        </Point>
-        <Point>
-          <X>440</X>
-          <Y>103</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:File_Features" ZOrder="7" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -76,6 +64,18 @@
         </Point>
         <Point>
           <X>290</X>
+          <Y>103</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:Product_Features" ZOrder="6" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>510</X>
+          <Y>103</Y>
+        </Point>
+        <Point>
+          <X>440</X>
           <Y>103</Y>
         </Point>
       </RoutePoints>

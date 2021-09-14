@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Mayfly.Software
 {
-    public class Install
+    public abstract class Install
     {
         public static void AddShortcut(string fullLinkName, string targetFile, string toolTip)
         {

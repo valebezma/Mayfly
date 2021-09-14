@@ -16,20 +16,14 @@ namespace Mayfly.Software.Management
 {
     public partial class WizardUpload : Form
     {
-        public Scheme SchemeData { get; set; }
-
-        public List<CultureInfo> AvailableCultures { get; set; }
-
         string[] serverfiles;
 
 
 
-        public WizardUpload(Scheme scheme)
+        public WizardUpload()
         {
             InitializeComponent();
-
-            SchemeData = scheme;
-            AvailableCultures = Software.Service.GetAvailableCultures();
+            buttonScheme.Enabled = ServerData.SchemeData.GetChanges() != null;
         }
 
         
@@ -38,7 +32,7 @@ namespace Mayfly.Software.Management
         {
             List<string> missing = new List<string>();
 
-            foreach (Scheme.FileRow fileRow in SchemeData.File)
+            foreach (Scheme.FileRow fileRow in ServerData.SchemeData.File)
             {
                 foreach (Scheme.SatelliteRow satRow in fileRow.GetSatelliteRows())
                 {
@@ -66,7 +60,7 @@ namespace Mayfly.Software.Management
         private void CheckNews()
         {
             int n = 0;
-            foreach (Scheme.FileRow fileRow in SchemeData.File)
+            foreach (Scheme.FileRow fileRow in ServerData.SchemeData.File)
             {
                 if (!File.Exists(fileRow.File)) continue;
 
@@ -109,7 +103,7 @@ namespace Mayfly.Software.Management
             textBoxPub.Text = ((Version)spreadSheetNews[ColumnVersionPublished.Index, binaryIndex].Value).ToString();
             textBoxCur.Text = ((Version)spreadSheetNews[ColumnVersionCurrent.Index, binaryIndex].Value).ToString();
             textBoxNoteLast.Text = (string)spreadSheetNews[ColumnChanges.Index, binaryIndex].Value;
-            Scheme.FileRow fileRow = SchemeData.File.FindByFile(textBoxBin.Text);
+            Scheme.FileRow fileRow = ServerData.SchemeData.File.FindByFile(textBoxBin.Text);
 
             if (fileRow != null)
             {
@@ -117,7 +111,7 @@ namespace Mayfly.Software.Management
 
                 if (fileRow.GetLatestVersion().ToString() == textBoxCur.Text) // if these notes already saved
                 {
-                    Scheme.VersionRow latest = SchemeData.File.FindByFile(textBoxBin.Text).GetLatestVersionRow();
+                    Scheme.VersionRow latest = ServerData.SchemeData.File.FindByFile(textBoxBin.Text).GetLatestVersionRow();
                     if (!latest.IsChangesNull())
                         textBoxNote.Text = latest.Changes;
                 }
@@ -136,20 +130,20 @@ namespace Mayfly.Software.Management
 
         private void SaveNote()
         {
-            Scheme.FileRow fileRow = SchemeData.File.FindByFile(textBoxBin.Text);
+            Scheme.FileRow fileRow = ServerData.SchemeData.File.FindByFile(textBoxBin.Text);
 
             if (fileRow == null) return;
 
-            Scheme.VersionRow versionRow = SchemeData.Version.FindByFileVersion(textBoxBin.Text, textBoxCur.Text);
+            Scheme.VersionRow versionRow = ServerData.SchemeData.Version.FindByFileVersion(textBoxBin.Text, textBoxCur.Text);
 
             if (versionRow == null)
             {
-                versionRow = SchemeData.Version.NewVersionRow();
+                versionRow = ServerData.SchemeData.Version.NewVersionRow();
                 versionRow.FileRow = fileRow;
                 versionRow.Version = textBoxCur.Text;
                 versionRow.Published = DateTime.Today.AddDays(1);
 
-                SchemeData.Version.AddVersionRow(versionRow);
+                ServerData.SchemeData.Version.AddVersionRow(versionRow);
             }
 
             if (string.IsNullOrWhiteSpace(textBoxNote.Text)) { versionRow.SetChangesNull(); }
@@ -187,7 +181,7 @@ namespace Mayfly.Software.Management
         {
             //Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
 
-            Service.ProductSchemeServer.UpdateDatabase();
+            ServerData.UpdateDatabase();
 
             wizardPageStart.NextPage = wizardPageDone;
             wizardControl.NextPage();
@@ -266,11 +260,11 @@ namespace Mayfly.Software.Management
         {
             List<string> filenames = new List<string>();
 
-            foreach (Scheme.FileRow fileRow in SchemeData.File)
+            foreach (Scheme.FileRow fileRow in ServerData.SchemeData.File)
             {
                 filenames.AddRange(fileRow.GetFilesList());
 
-                foreach (CultureInfo ci in AvailableCultures)
+                foreach (CultureInfo ci in ServerSoftware.AvailableCultures)
                 {
                     filenames.AddRange(fileRow.GetFilesList(ci));
                 }
@@ -288,12 +282,11 @@ namespace Mayfly.Software.Management
 
         private void wizardPageUpload_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
         {
-
-            serverfiles = Service.GetFilenames(Server.GetUri(Service.FtpUpdatesServer, "current/"));
+            serverfiles = ServerFiles.GetFilenames("current/");
 
             progressUpload.Maximum =
                 (checkBoxBackup.Checked ? serverfiles.Length : 0) + // For backing up files
-                SchemeData.File.Count * (1 + AvailableCultures.Count) + // For uploading features
+                ServerData.SchemeData.File.Count * (1 + ServerSoftware.AvailableCultures.Count) + // For uploading features
                 1 + // For scheme files
                 1; // For clearing files
 
@@ -329,10 +322,9 @@ namespace Mayfly.Software.Management
                 foreach (string filename in serverfiles)
                 {
                     Software.Service.UpdateStatus(labelUpStatus, "Backing up feature ({0})", filename);
-
-                    Uri uri = Server.GetUri(Service.FtpUpdatesServer, "current/" + filename);
-                    Uri hisUri = Server.GetUri(Service.FtpUpdatesServer, backupUri + filename);
-                    Service.Move(uri, hisUri);
+                    Uri uri = Server.GetUri(ServerFiles.FtpUri, "current/" + filename);
+                    Uri hisUri = Server.GetUri(ServerFiles.FtpUri, backupUri + filename);
+                    ServerFiles.Move(uri, hisUri);
 
                     fileCount++;
                     ((BackgroundWorker)sender).ReportProgress(fileCount);
@@ -345,7 +337,7 @@ namespace Mayfly.Software.Management
 
             Software.Service.UpdateStatus(labelUpStatus, "Packing and sending new features");
             
-            foreach (Scheme.VersionRow versionRow in SchemeData.Version)
+            foreach (Scheme.VersionRow versionRow in ServerData.SchemeData.Version)
             {
                 if (versionRow.Published == DateTime.Today.AddDays(1))
                 {
@@ -353,26 +345,26 @@ namespace Mayfly.Software.Management
                 }
             }
 
-            foreach (Scheme.FileRow fileRow in SchemeData.File)
+            foreach (Scheme.FileRow fileRow in ServerData.SchemeData.File)
             {
                 Software.Service.UpdateStatus(labelUpStatus, "Packing and sending feature ({0})", fileRow.File);
 
                 string alias = fileRow.File.Replace(new FileInfo(fileRow.File).Extension, ".zip");
                 string[] files = fileRow.GetFilesList();
-                Uri uri = Server.GetUri(Service.FtpUpdatesServer, "current/" + alias);
-                Service.UploadFile(Service.PackFiles(files), uri);
+                Uri uri = Server.GetUri(ServerFiles.FtpUri, "current/" + alias);
+                ServerFiles.UploadFile(ServerFiles.PackFiles(files), uri);
                 fileCount++;
 
                 ((BackgroundWorker)sender).ReportProgress(fileCount);
 
-                foreach (CultureInfo ci in AvailableCultures)
+                foreach (CultureInfo ci in ServerSoftware.AvailableCultures)
                 {
                     Software.Service.UpdateStatus(labelUpStatus, "Packing and sending ({0}) localization files ({1})", fileRow.File, ci.DisplayName);
 
                     string[] locFiles = fileRow.GetFilesList(ci);
 
-                    Uri locUri = Server.GetLocalizedUri(uri, ci);
-                    Service.UploadFile(Service.PackFiles(locFiles), locUri);
+                    Uri locUri = uri.Localize(ci);
+                    ServerFiles.UploadFile(ServerFiles.PackFiles(locFiles), locUri);
                     fileCount++;
 
                     ((BackgroundWorker)sender).ReportProgress(fileCount);
@@ -385,7 +377,7 @@ namespace Mayfly.Software.Management
 
             Software.Service.UpdateStatus(labelUpStatus, "Updating scheme database");
             //Server.UploadFile(Encoding.UTF8.GetBytes(SchemeData.GetXml()), Service.SchemeFtpUri);
-            Service.ProductSchemeServer.UpdateDatabase();
+            ServerData.UpdateDatabase();
             fileCount++; ((BackgroundWorker)sender).ReportProgress(fileCount);
         }
 
@@ -412,12 +404,12 @@ namespace Mayfly.Software.Management
 
         private void buttonWebsite_Click(object sender, EventArgs e)
         {
-            IO.RunFile(Server.ServerHttps);
+            IO.RunFile(Server.MainUri.OriginalString);
         }
 
         private void buttonFtp_Click(object sender, EventArgs e)
         {
-            IO.RunFile(Service.FtpUpdatesServer);
+            IO.RunFile(ServerFiles.FtpUri.OriginalString);
         }
     }
 }

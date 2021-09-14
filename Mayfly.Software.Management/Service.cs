@@ -8,82 +8,29 @@ using System.IO.Compression;
 using MySql.Data.MySqlClient;
 using System.Threading.Tasks;
 using LibGit2Sharp;
+using System.Data;
 
 namespace Mayfly.Software.Management
 {
     public abstract class Service
     {
-        public static UpdateServer ProductSchemeServer;
-
-        public static string FtpUpdatesServer = "ftps://" + Server.Domain + "/get/updates";
-
-        public static string PackFiles(string[] files)
+        public static Commit[] GetCommits(string pathRepository, string pathProject)
         {
-            string result = IO.GetTempFileName(".zip");
-            ZipArchive zip = ZipFile.Open(result, ZipArchiveMode.Create);
-            foreach (string file in files)
+            Repository repo = new Repository(pathRepository);
+            List<Commit> result = new List<Commit>();
+
+            foreach (var commit in repo.Commits)
             {
-                zip.CreateEntryFromFile(file, file);
-            }
-            zip.Dispose();
-
-            FileStream stream = File.OpenRead(result);
-
-            try
-            {
-                ZipArchive zipArchive = new ZipArchive(stream);
-
-                foreach (ZipArchiveEntry entry in zipArchive.Entries)
+                foreach (var t in commit.Tree)
                 {
-                    long l = entry.CompressedLength;
+                    if (t.Path.Contains(pathProject) && !result.Contains(commit))
+                    {
+                        result.Add(commit);
+                    }
                 }
             }
-            catch
-            {
-                throw new FileLoadException(string.Format("File {0} is not packed correctly.", result));
-            }
 
-            stream.Close();
-
-            return result;
-        }
-
-        public static void Move(Uri source, Uri destination)
-        {
-            try
-            {
-                EnsurePathToLoad(destination);
-
-                Uri targeturi = source.MakeRelativeUri(destination);
-
-                FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(source);
-                ftp.Credentials = GetAppCredentials();
-                ftp.Method = WebRequestMethods.Ftp.Rename;
-                ftp.RenameTo = Uri.UnescapeDataString(targeturi.OriginalString);
-                FtpWebResponse response = (FtpWebResponse)ftp.GetResponse();
-            }
-            catch
-            {
-
-            }
-        }
-
-        public static string[] GetFilenames(Uri uri)
-        {
-            FtpWebRequest request;
-            request = (FtpWebRequest)WebRequest.Create(uri);
-            request.Method = WebRequestMethods.Ftp.ListDirectory;
-            request.Credentials = GetAppCredentials();
-            request.UsePassive = true;
-            request.UseBinary = true;
-            request.KeepAlive = false;
-
-            using (FtpWebResponse respone = (FtpWebResponse)request.GetResponse())
-            using (Stream stream = respone.GetResponseStream())
-            {
-                StreamReader reader = new StreamReader(stream);
-                return reader.ReadToEnd().Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            }
+            return result.ToArray();
         }
 
         //public static string RandomString(int length)
@@ -148,100 +95,39 @@ namespace Mayfly.Software.Management
         //    en.WriteXml(Path.Combine(Application.StartupPath, "scheme", "combined.xml"));
         //}
 
-        public static NetworkCredential GetAppCredentials()
-        {
-            return new NetworkCredential("u0851741_mayfly", "_Ysel266");
-        }
+        //public void UpdateDatabaseTable(string tableName)
+        //{
+        //    adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, connection);
+        //    MySqlCommandBuilder cb = new MySqlCommandBuilder(adapter);
+        //    adapter.InsertCommand = cb.GetInsertCommand();
+        //    if (SchemeData.Tables[tableName].Columns["ID"] == null)
+        //    {
+        //        adapter.UpdateCommand = null;
+        //        adapter.DeleteCommand = null;
+        //    }
+        //    else
+        //    {
+        //        adapter.UpdateCommand = cb.GetUpdateCommand();
+        //        adapter.DeleteCommand = cb.GetDeleteCommand();
+        //    }
+        //    adapter.Update(SchemeData.Tables[tableName]);
+        //}
 
-        public static void UploadFile(string localpath, Uri ftppath)
-        {
-            UploadFile(File.ReadAllBytes(localpath), ftppath);
-        }
+        //public void GetData()
+        //{
+        //    foreach (System.Data.DataTable dt in SchemeData.Tables)
+        //    {
+        //        adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + dt.TableName, connection);
+        //        adapter.Fill(SchemeData, dt.TableName);
+        //    }
+        //}
 
-        public static void UploadFile(byte[] content, Uri ftppath)
-        {
-            try
-            {
-                FtpWebResponse response = null;
-
-                EnsurePathToLoad(ftppath);
-
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftppath);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = GetAppCredentials();
-                request.ContentLength = content.Length;
-                Stream stream = request.GetRequestStream();
-                stream.Write(content, 0, content.Length);
-                stream.Close();
-                response = (FtpWebResponse)request.GetResponse();
-
-                Log.Write(EventType.Maintenance, "File {0} sent with response {1}", Path.GetFileName(ftppath.LocalPath), response.StatusDescription.Trim());
-            }
-            catch (WebException e)
-            {
-                Log.Write(EventType.ExceptionThrown, ((FtpWebResponse)e.Response).StatusDescription.Trim());
-            }
-        }
-
-        public static void EnsurePathToLoad(Uri ftppath)
-        {
-            try
-            {
-                FtpWebResponse response = null;
-
-                Uri curruri = new Uri("ftp://" + ftppath.Host + "/");
-
-                for (int i = 1; i < ftppath.Segments.Length - 1; i++)
-                {
-                    try
-                    {
-                        curruri = new Uri(curruri.OriginalString + ftppath.Segments[i]);
-                        FtpWebRequest requestf = (FtpWebRequest)WebRequest.Create(curruri);
-                        requestf.Method = WebRequestMethods.Ftp.MakeDirectory;
-                        requestf.Credentials = GetAppCredentials();
-                        response = (FtpWebResponse)requestf.GetResponse();
-                    }
-                    catch //(WebException e)
-                    {
-                        //Log.Write(EventType.ExceptionThrown, "Path not created: {0}", ((FtpWebResponse)e.Response).StatusDescription.Trim());
-                    }
-                }
-
-                Log.Write(EventType.Maintenance, "Path [{0}] successfully created", ftppath.OriginalString);
-            }
-            catch (WebException e)
-            {
-                Log.Write(EventType.ExceptionThrown, ((FtpWebResponse)e.Response).StatusDescription.Trim());
-            }
-        }
-
-        public static void UploadFileAsinc(string localpath, Uri ftppath)
-        {
-            Task.Run(() => UploadFile(localpath, ftppath));
-        }
-
-        public static void UploadFileAsinc(byte[] content, Uri ftppath)
-        {
-            Task.Run(() => UploadFile(content, ftppath));
-        }
-
-        public static Commit[] GetCommits(string pathRepository, string pathProject)
-        {
-            Repository repo = new Repository(pathRepository);
-            List<Commit> result = new List<Commit>();
-
-            foreach (var commit in repo.Commits)
-            {
-                foreach (var t in commit.Tree)
-                {
-                    if (t.Path.Contains(pathProject) && !result.Contains(commit))
-                    {
-                        result.Add(commit);
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
+        //public void Update()
+        //{
+        //    foreach (System.Data.DataTable dt in SchemeData.Tables)
+        //    {
+        //        adapter.Update(SchemeData, dt.TableName);
+        //    }
+        //}
     }
 }
