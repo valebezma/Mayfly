@@ -403,8 +403,8 @@
   <ItemGroup>
     <Content Include="icons.rc" />
     <Content Include="icons.res" />
-    <Content Include="ico\1.ico" />
-    <Content Include="ico\2.ico" />
+    <None Include="ico\1.ico" />
+    <None Include="ico\2.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

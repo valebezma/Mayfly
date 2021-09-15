@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Weavers VerifyAssembly="true" VerifyIgnoreCodes="0x80131869">
-  <Costura IncludeDebugSymbols='false'>
+<Weavers VerifyAssembly="true" VerifyIgnoreCodes="0x80131869" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+  <Costura IncludeDebugSymbols="false">
     <Unmanaged32Assemblies>
-      Mayfly
+      ru/mayflysoftware.resources
     </Unmanaged32Assemblies>
     <Unmanaged64Assemblies>
-      Mayfly
+      ru/mayflysoftware.resources
     </Unmanaged64Assemblies>
   </Costura>
 </Weavers>

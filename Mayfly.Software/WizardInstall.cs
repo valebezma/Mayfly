@@ -76,6 +76,8 @@ namespace Mayfly.Software
                 }
             }
 
+            Service.UpdateStatus(labelStatus, Resources.Interface.RegWork);
+
             if (registerfiletypes)
             {
                 Service.UpdateStatus(labelStatus, Resources.Interface.RegWork);
@@ -141,8 +143,6 @@ namespace Mayfly.Software
                     }
                 }
             }
-
-            Service.UpdateStatus(labelStatus, Resources.Interface.RegWork);
 
             string destinationFilePath = Path.Combine(new DirectoryInfo(InstallPath).Parent.FullName, "mayflysoftware.exe");
 

@@ -48,8 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Meta.Numerics, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Mayfly\CurrentBuild\bin\Meta.Numerics.dll</HintPath>
+      <HintPath>..\packages\Meta.Numerics.4.1.4\lib\netstandard1.1\Meta.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

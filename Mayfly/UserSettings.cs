@@ -16,8 +16,7 @@ namespace Mayfly
         {
             get
             {
-                return "Fishery Desktop";
-                //return Path.GetFileName(Application.StartupPath);
+                return Path.GetFileName(Application.StartupPath);
             }
         }
 

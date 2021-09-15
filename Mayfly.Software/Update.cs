@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Mayfly.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
-using System.Threading;
-using System.Diagnostics;
-using System.Collections.Generic;
-using Mayfly.Extensions;
 
 namespace Mayfly.Software
 {
