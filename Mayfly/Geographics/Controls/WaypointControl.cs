@@ -86,7 +86,7 @@ namespace Mayfly.Geographics
 
             Waypoint = new Waypoint(0, 0);
             DateTimeFormat = "dd.MM.yyyy (ddd) HH:mm";
-            CoordinateFormat = UserSettings.FormatCoordinate;
+            CoordinateFormat = UI.FormatCoordinate;
         }
 
 
@@ -299,19 +299,19 @@ namespace Mayfly.Geographics
         private void degreesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoordinateFormat = "d";
-            UserSettings.FormatCoordinate = CoordinateFormat;
+            UI.FormatCoordinate = CoordinateFormat;
         }
 
         private void degreesAndMinutesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoordinateFormat = "dm";
-            UserSettings.FormatCoordinate = CoordinateFormat;
+            UI.FormatCoordinate = CoordinateFormat;
         }
 
         private void degreesMinutesAndSecondsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoordinateFormat = "dms";
-            UserSettings.FormatCoordinate = CoordinateFormat;
+            UI.FormatCoordinate = CoordinateFormat;
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)

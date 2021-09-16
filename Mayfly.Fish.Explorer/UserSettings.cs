@@ -18,93 +18,44 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public static void Initialize()
-        {
-            Wild.UserSettings.Initialize();
-
-            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
-                new UserSetting[] {
-                    new UserSetting(UserSettingPaths.DefaultCatchability, 20),
-                    new UserSetting(UserSettingPaths.MemCategorization, 1),
-                    new UserSetting(UserSettingPaths.MemWaterArea, 10000000),
-                    new UserSetting(UserSettingPaths.MemWaterDepth, 250),
-                    new UserSetting(Wild.UserSettingPaths.Dominance, 2),
-                    new UserSetting(Wild.UserSettingPaths.Diversity, DiversityIndex.D1963_Shannon),
-                    new UserSetting(UserSettingPaths.SuggestAge, true),
-                    new UserSetting(Wild.UserSettingPaths.SuggestMass, true),
-                    //new UserSetting(Wild.UserSettingPaths.VisualConfirmation, true),
-                    new UserSetting(Wild.UserSettingPaths.AutoLoadBio, false),
-                    new UserSetting(UserSettingPaths.SizeInterval, 1000),
-                    new UserSetting(UserSettingPaths.KeepWizard, false),
-                    new UserSetting(UserSettingPaths.ReportCriticality, ArtifactCriticality.Bad),
-                    new UserSetting(UserSettingPaths.SelectedAgeLengthKeyType, 1)
-                });
-        }
-
-        public static object GetValue(string path, string key)
-        {
-            if (UserSetting.InitializationRequired(Path,
-                Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(path, key);
-        }
-
         public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, Fish.UserSettings.Interface.Extension + "s");
 
-
-
-        public static bool AgeSuggest
+        public static bool SuggestAge
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.SuggestAge));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SuggestAge), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.SuggestAge, value);
+                UserSetting.SetValue(Path, nameof(SuggestAge), value);
             }
         }
 
-        public static bool MassSuggest
+        public static bool SuggestMass
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.SuggestMass));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SuggestMass), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.SuggestMass, value);
+                UserSetting.SetValue(Path, nameof(SuggestMass), value);
             }
         }
-
-        //public static bool VisualConfirmation
-        //{
-        //    get
-        //    {
-        //        return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.VisualConfirmation));
-        //    }
-
-        //    set
-        //    {
-        //        UserSetting.SetValue(Path, Wild.UserSettingPaths.VisualConfirmation, value);
-        //    }
-        //}
 
         public static bool AutoLoadBio
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.AutoLoadBio));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoLoadBio), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AutoLoadBio, value);
+                UserSetting.SetValue(Path, nameof(AutoLoadBio), value);
             }
         }
 
@@ -112,11 +63,11 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.KeepWizard));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(KeepWizard), false));
             }
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.KeepWizard, value);
+                UserSetting.SetValue(Path, nameof(KeepWizard), value);
             }
         }
 
@@ -124,22 +75,22 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                object o = GetValue(Path, UserSettingPaths.ReportCriticality);
+                object o = UserSetting.GetValue(Path, nameof(ReportCriticality), ArtifactCriticality.Allowed);
                 if (o == null) return ArtifactCriticality.Critical;
                 else return (ArtifactCriticality)(int)o;
             }
-            set { UserSetting.SetValue(Path, UserSettingPaths.ReportCriticality, (int)value); }
+            set { UserSetting.SetValue(Path, nameof(ReportCriticality), (int)value); }
         }
 
         public static bool CheckConsistency
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.CheckConsistency));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(CheckConsistency), true));
             }
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.CheckConsistency, value);
+                UserSetting.SetValue(Path, nameof(CheckConsistency), value);
             }
         }
 
@@ -147,17 +98,15 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                string[] values = (string[])UserSetting.GetValue(Path, Wild.UserSettingPaths.Bios);
+                string[] values = (string[])UserSetting.GetValue(Path, nameof(Bios), new string[0]);
                 return values.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension);
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.Bios, value);
+                UserSetting.SetValue(Path, nameof(Bios), value);
             }
         }
-
-
 
         public static string DominanceIndexName
         {
@@ -174,45 +123,40 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-
-
         public static FishSamplerType MemorizedSamplerType
         {
             get
             {
-                object o = GetValue(Path, UserSettingPaths.MemSamplerType);
+                object o = UserSetting.GetValue(Path, nameof(MemorizedSamplerType), null);
                 if (o == null) return FishSamplerType.None;
                 else return (FishSamplerType)(int)o;
             }
-            set { UserSetting.SetValue(Path, UserSettingPaths.MemSamplerType, (int)value); }
+            set { UserSetting.SetValue(Path, nameof(MemorizedSamplerType), (int)value); }
         }
 
         public static double MemorizedWaterArea
         {
-            get { return (double)(int)GetValue(Path, UserSettingPaths.MemWaterArea); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.MemWaterArea, (int)value); }
+            get { return (double)(int)UserSetting.GetValue(Path, nameof(MemorizedWaterArea), 1); }
+            set { UserSetting.SetValue(Path, nameof(MemorizedWaterArea), (int)value); }
         }
 
         public static double MemorizedWaterDepth
         {
-            get { return 0.01 * (double)(int)GetValue(Path, UserSettingPaths.MemWaterDepth); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.MemWaterDepth, (int)value * 100); }
+            get { return 0.01 * (double)(int)UserSetting.GetValue(Path, nameof(MemorizedWaterDepth), 100); }
+            set { UserSetting.SetValue(Path, nameof(MemorizedWaterDepth), (int)value * 100); }
         }
-
 
         public static double DefaultCatchability
         {
-            get { return (double)(int)GetValue(Path, UserSettingPaths.DefaultCatchability) / 100; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.DefaultCatchability, (int)(value * 100)); }
+            get { return (double)(int)UserSetting.GetValue(Path, nameof(DefaultCatchability), 200) / 100; }
+            set { UserSetting.SetValue(Path, nameof(DefaultCatchability), (int)(value * 100)); }
         }
 
         public static double SizeInterval
         {
-            get { return (double)(int)GetValue(Path, UserSettingPaths.SizeInterval) / 100; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.SizeInterval, (int)(value * 100)); }
+            get { return (double)(int)UserSetting.GetValue(Path, nameof(SizeInterval), 1000) / 100; }
+            set { UserSetting.SetValue(Path, nameof(SizeInterval), (int)(value * 100)); }
         }
-
-
 
         public static int RequiredClassSize { get { return 10; } }
 
@@ -220,66 +164,30 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                object o = GetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType);
+                object o = UserSetting.GetValue(Path, nameof(SelectedAgeLengthKeyType), null);
                 if (o == null) return AgeLengthKeyType.Raw;
                 else return (AgeLengthKeyType)(int)o;
             }
-            set { UserSetting.SetValue(Path, UserSettingPaths.SelectedAgeLengthKeyType, (int)value); }
+            set { UserSetting.SetValue(Path, nameof(SelectedAgeLengthKeyType), (int)value); }
         }
     }
 
     public abstract class UserSettingPaths
     {
-        public static string Equipment = "Equipment";
+        //public static string DefaultCatchability = "DefaultCatchability";
 
-        public static string KeepWizard = "KeepWizard";
+        //public static string Catchability = "Catchability";
 
-        public static string CheckConsistency = "CheckConsistency";
+        //public static string GamingAge = "GamingAge";
 
-        public static string ReportCriticality = "ReportCriticality";
+        //public static string GamingLength = "GamingLength";
 
+        //public static string GearClass = "GearClass";
 
+        //public static string SizeInterval = "SizeInterval";
 
-        public static string SuggestAge = "SuggestAge";
+        //public static string NaturalMortality = "NaturalMortality";
 
-        public static string SelectedAgeLengthKeyType = "SelectedAgeLengthKeyType";
-
-
-
-        #region Fisheries issues
-
-        public static string DefaultCatchability = "DefaultCatchability";
-
-        public static string Catchability = "Catchability";
-
-        public static string GamingAge = "GamingAge";
-
-        public static string GamingLength = "GamingLength";
-
-        public static string GearClass = "GearClass";
-
-        public static string SizeInterval = "SizeInterval";
-
-        public static string NaturalMortality = "NaturalMortality";
-
-        public static string FishingMortality = "FishingMortality";
-
-        #endregion
-
-
-
-        #region Stock calculation memorized values
-
-        public static string MemCategorization = "MemCategorization";
-
-        public static string MemSamplerType = "MemSamplerType";
-
-        public static string MemWeightType = "MemWeightType";
-
-        public static string MemWaterArea = "MemWaterArea";
-
-        public static string MemWaterDepth = "MemWaterDepth";
-
-        #endregion
+        //public static string FishingMortality = "FishingMortality";
     }
 }

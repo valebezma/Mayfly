@@ -29,8 +29,8 @@ namespace Mayfly.Software
                 catch { }
             }
 
-            comboBoxCulture.SelectedItem = UserSettings.Language.Equals(CultureInfo.InvariantCulture) ?
-                comboBoxCulture.Items[0] : UserSettings.Language;
+            comboBoxCulture.SelectedItem = UI.Language.Equals(CultureInfo.InvariantCulture) ?
+                comboBoxCulture.Items[0] : UI.Language;
 
             textBoxUsername.Text = UserSettings.Username;
 
@@ -91,7 +91,8 @@ namespace Mayfly.Software
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            UserSettings.Language = comboBoxCulture.SelectedIndex == 0 ? CultureInfo.InvariantCulture : (CultureInfo)comboBoxCulture.SelectedItem;
+            UI.Language = comboBoxCulture.SelectedIndex == 0 ? CultureInfo.InvariantCulture : (CultureInfo)comboBoxCulture.SelectedItem;
+
             UserSettings.UpdatePolicy = (UpdatePolicy)comboBoxUpdatePolicy.SelectedIndex;
             UserSettings.UseUnsafeConnection = checkBoxUseUnsafeConnection.Checked;
             UserSettings.ShareDiagnostics = checkBoxShareDiagnostics.Checked;

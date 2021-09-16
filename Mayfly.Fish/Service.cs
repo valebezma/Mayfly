@@ -11,6 +11,8 @@ namespace Mayfly.Fish
 {
     public abstract class Service
     {
+        public static string Opening;
+
         public static Samplers.SamplerRow Sampler(int samplerID)
         {
             return UserSettings.SamplersIndex.Sampler.FindByID(samplerID);
@@ -18,8 +20,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening()
         {
-            object result = UserSetting.GetValue(UserSettings.Path,
-                UserSettingPaths.Opening);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), 60);
 
             if (result == null)
             {
@@ -33,8 +34,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening(int samplerID)
         {
-            object result = UserSetting.GetValue(UserSettings.Path,
-                UserSettingPaths.Opening, Fish.Service.Sampler(samplerID).ShortName);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName);
 
             if (result == null)
             {
@@ -48,8 +48,7 @@ namespace Mayfly.Fish
 
         public static void SaveOpening(int samplerID, double value)
         {
-            UserSetting.SetValue(UserSettings.Path,
-                UserSettingPaths.Opening, Fish.Service.Sampler(samplerID).ShortName, 
+            UserSetting.SetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName, 
                 (int)(value * 100));
         }
 

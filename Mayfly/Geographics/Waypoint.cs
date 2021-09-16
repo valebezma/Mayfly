@@ -391,7 +391,7 @@ namespace Mayfly.Geographics
 
         public string GetHTMLReference()
         {
-            return GetHTMLReference(UserSettings.FormatCoordinate);
+            return GetHTMLReference(UI.FormatCoordinate);
         }
 
 

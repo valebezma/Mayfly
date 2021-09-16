@@ -173,7 +173,7 @@ namespace Mayfly.Geographics
                 case "dms":
                     return "000° 00' 00.00\"";
                 default:
-                    return GetMask(UserSettings.FormatCoordinate);
+                    return GetMask(UI.FormatCoordinate);
             }
         }
 

@@ -19,33 +19,30 @@ namespace Mayfly
 {
     public abstract class UI
     {
+        static readonly string keyUI = @"Software\Mayfly\UI";
+
+        static readonly string FormatColumn;
+        static readonly string CheckStates;
+
+
+
         public static string GetFormat(string gridName, string columnName, string ifnull)
         {
-            object result = UserSetting.GetValue(UserSettingPaths.KeyUI,
-                new string[] { UserSettingPaths.FormatColumn, gridName }, columnName);
-
-            if (result == null)
-            {
-                return ifnull;
-            }
-            else
-            {
-                return result.ToString();
-            }
+            return UserSetting.GetValue(keyUI, new string[] { nameof(FormatColumn), gridName }, columnName, ifnull).ToString();
         }
 
         public static void SaveFormat(string gridName, string columnName, string format)
         {
             if (string.IsNullOrWhiteSpace(format))
             {
-                UserSetting.Remove(UserSettingPaths.KeyUI,
-                    new string[] { UserSettingPaths.FormatColumn, gridName }, 
+                UserSetting.Remove(keyUI,
+                    new string[] { nameof(FormatColumn), gridName }, 
                     columnName);
             }
             else
             {
-                UserSetting.SetValue(UserSettingPaths.KeyUI,
-                    new string[] { UserSettingPaths.FormatColumn, gridName }, 
+                UserSetting.SetValue(keyUI,
+                    new string[] { nameof(FormatColumn), gridName }, 
                     columnName, format);
             }
         }
@@ -58,24 +55,13 @@ namespace Mayfly
 
         public static CheckState GetCheckState(string formName, string checkBoxName, CheckState defaultState)
         {
-            object result = UserSetting.GetValue(UserSettingPaths.KeyUI,
-                new string[] { UserSettingPaths.CheckState, formName }, checkBoxName);
-
-            if (result == null)
-            {
-                return defaultState;
-            }
-            else
-            {
-                return (CheckState)Convert.ToInt32(result);
-            }
+            return (CheckState)Convert.ToInt32(UserSetting.GetValue(keyUI,
+                new string[] { nameof(CheckStates), formName }, checkBoxName, defaultState));
         }
 
         public static void SaveCheckState(string formName, string checkBoxName, CheckState state)
         {
-            UserSetting.SetValue(UserSettingPaths.KeyUI,
-                new string[] { UserSettingPaths.CheckState, formName },
-                checkBoxName, (int)state);
+            UserSetting.SetValue(keyUI, new string[] { nameof(CheckStates), formName }, checkBoxName, (int)state);
         }
 
 
@@ -196,6 +182,31 @@ namespace Mayfly
                 Brushes.Gray,
                 rectangle,
                 SF);
+        }
+
+
+
+        public static string FormatCoordinate
+        {
+            get
+            {
+                try { return UserSetting.GetValue(keyUI, nameof(FormatCoordinate), "dms").ToString(); }
+                catch { return "d"; }
+            }
+
+            set { UserSetting.SetValue(keyUI, nameof(FormatCoordinate), value); }
+        }
+
+        public static CultureInfo Language
+        {
+            get
+            {
+                string s = (string)UserSetting.GetValue(keyUI, nameof(Language), string.Empty);
+                if (string.IsNullOrEmpty(s)) return CultureInfo.InvariantCulture;
+                return CultureInfo.GetCultureInfo(s);
+            }
+
+            set { UserSetting.SetValue(keyUI, nameof(Language), value.ToString()); }
         }
     }
 }

@@ -344,25 +344,8 @@ namespace Mayfly.Software
         {
             wizardPageGet.AllowNext = true;
             wizardControl.NextPage();
-
-            UserSetting.InitializeRegistry(UserSettingPaths.KeyGeneral, null,
-                new UserSetting[] {
-                    new UserSetting(UserSettingPaths.User, textBoxUsername.Text),
-                    new UserSetting(UserSettingPaths.ShareDiagnostics, true),
-                    new UserSetting(UserSettingPaths.UseUnsafeConnection, true)
-                });
-
-            UserSetting.InitializeRegistry(UserSettingPaths.KeyUI, null,
-                new UserSetting[] {
-                    new UserSetting(UserSettingPaths.FormatCoordinate, "dms"),
-                    new UserSetting(UserSettingPaths.Language, lang.ToString())
-                });
-
-            UserSetting.InitializeRegistry(UserSettingPaths.KeyFeatures, null,
-                new UserSetting[] {
-                    new UserSetting(UserSettingPaths.UpdatePolicy, (int)UpdatePolicy.CheckAndNotice)
-                });
-
+            UserSettings.Username = textBoxUsername.Text;
+            UI.Language = lang;
             IO.ClearTemp();
         }
     }

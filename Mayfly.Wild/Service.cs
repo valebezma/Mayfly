@@ -423,35 +423,20 @@ namespace Mayfly.Wild
 
 
 
-        public static string GetReferencePath(string path, string key, OpenFileDialog openDialog, string defaultName, Uri uri)
+        public static string GetReferencePath(OpenFileDialog openDialog, string defaultName, Uri uri)
         {
-            string filepath = IO.GetPath(UserSetting.GetValue(path, key));
-            if (filepath != null) return filepath;
-
             DialogReference dr = new DialogReference(openDialog, defaultName, uri);
             dr.ShowDialog();
-            UserSetting.SetValue(path, key, dr.FilePath);
             return dr.FilePath;
         }
 
-        public static string GetReferencePathSpecies(string path, string key, string group)
+        public static string GetReferencePathSpecies(string groupName)
         {
-            return Service.GetReferencePath(
-                path,
-                key,
+            return GetReferencePath(
                 Species.UserSettings.Interface.OpenDialog,
-                group + " (auto)" + Species.UserSettings.Interface.Extension,
-                Server.GetUri("get/references/specieslists/" + group.ToLower().Replace(" ", "_") + "_default" + Species.UserSettings.Interface.Extension, Application.CurrentCulture));
-        }
-
-        public static string GetReferencePathWaters(string key)
-        {
-            return Service.GetReferencePath(
-                key,
-                UserSettingPaths.Waters,
-                Waters.UserSettings.Interface.OpenDialog,
-                "Waters (auto)" + Waters.UserSettings.Interface.Extension,
-                Server.GetUri("get/references/waters/waters_default" + Waters.UserSettings.Interface.Extension, Application.CurrentCulture));
+                groupName + " (auto).sps",
+                Server.GetUri("get/references/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.sps", Application.CurrentCulture)
+                );
         }
     }
 }

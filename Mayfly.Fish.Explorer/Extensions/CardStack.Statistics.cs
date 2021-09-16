@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Age AgeMin(this CardStack stack, Data.SpeciesRow speciesRow)
         {
-            return stack.AgeMin(speciesRow, UserSettings.AgeSuggest);
+            return stack.AgeMin(speciesRow, UserSettings.SuggestAge);
         }
 
         public static Age AgeMin(this CardStack stack, Data.SpeciesRow speciesRow, bool key)
@@ -172,7 +172,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Age AgeMax(this CardStack stack, Data.SpeciesRow speciesRow)
         {
-            return stack.AgeMax(speciesRow, UserSettings.AgeSuggest);
+            return stack.AgeMax(speciesRow, UserSettings.SuggestAge);
         }
 
         public static Age AgeMax(this CardStack stack, Data.SpeciesRow speciesRow, bool key)

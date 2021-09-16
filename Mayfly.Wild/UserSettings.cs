@@ -1,13 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using System.ComponentModel;
+﻿using Mayfly.Extensions;
 using Mayfly.Waters;
-using System.Collections.Generic;
-using Mayfly.Extensions;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using System.Data;
+using System.Windows.Forms;
 
 namespace Mayfly.Wild
 {
@@ -21,29 +18,11 @@ namespace Mayfly.Wild
             }
         }
 
-        public static void Initialize()
-        {
-            if (UserSetting.InitializationRequired(Path,
-                Assembly.GetCallingAssembly()))
-            {
-                UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
-                    new UserSetting[] {
-                    new UserSetting(UserSettingPaths.AddtFactors, new string[0]),
-                    new UserSetting(UserSettingPaths.Diversity, 1),
-                    new UserSetting(UserSettingPaths.Dominance, 2),
-                    new UserSetting(UserSettingPaths.LogOrder, 0)
-                    });
-            }
-        }
+        public static FileSystemInterface Interface = new FileSystemInterface(FieldDataFolder, new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
 
-        public static object GetValue(string path, string key)
-        {
-            Initialize();
-            return UserSetting.GetValue(path, key);
-        }
+        public static FileSystemInterface InterfaceBio = new FileSystemInterface(UserSettings.FieldDataFolder, ".bio");
 
-        public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
-
+        //public static FileSystemInterface InterfacePermission = new FileSystemInterface(UserSettings.FieldDataFolder, ".perm");
 
         //public static Permission installedPermissions;
 
@@ -102,56 +81,51 @@ namespace Mayfly.Wild
             }
         }
 
-
-
         public static string[] AddtFactors
         {
-            get
-            {
-                return (string[])GetValue(Path, UserSettingPaths.AddtFactors);
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, UserSettingPaths.AddtFactors, value);
-            }
+            get { return (string[])UserSetting.GetValue(Path, nameof(AddtFactors), new string[0]); }
+            set { UserSetting.SetValue(Path, nameof(AddtFactors), value); }
         }
-
-
         
         public static LogOrder LogOrder
         {
-            get { return (LogOrder)(int)GetValue(Path, Wild.UserSettingPaths.LogOrder); }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.LogOrder, (int)value); }
+            get { return (LogOrder)(int)UserSetting.GetValue(Path, nameof(LogOrder), LogOrder.Alphabetically); }
+            set { UserSetting.SetValue(Path, nameof(LogOrder), (int)value); }
         }
-
-
 
         public static DiversityIndex Diversity
         {
-            get { return (DiversityIndex)(int)GetValue(Path, UserSettingPaths.Diversity); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Diversity, (int)value); }
+            get { return (DiversityIndex)(int)UserSetting.GetValue(Path, nameof(Diversity), DiversityIndex.D1963_Shannon); }
+            set { UserSetting.SetValue(Path, nameof(Diversity), (int)value); }
         }
 
         public static int Dominance
         {
-            get { return (int)GetValue(Path, UserSettingPaths.Dominance); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Dominance, value); }
+            get { return (int)UserSetting.GetValue(Path, nameof(Dominance), 0); }
+            set { UserSetting.SetValue(Path, nameof(Dominance), value); }
         }
-
 
         public static string WatersIndexPath
         {
             get
             {
-                return Service.GetReferencePathWaters(Path);
-            }
+                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(WatersIndexPath), string.Empty));
 
-            set
+                if (string.IsNullOrWhiteSpace(filepath))
+                {
+                    WatersIndexPath = Service.GetReferencePath(Waters.UserSettings.Interface.OpenDialog,
+                      "Waters (auto).wtr", Server.GetUri("get/references/waters/waters_default.wtr", Application.CurrentCulture));
+                }
+
+                return WatersIndexPath;
+            }
+            set 
             {
-                UserSetting.SetValue(Path, UserSettingPaths.Waters, value);
+                UserSetting.SetValue(Path, nameof(WatersIndexPath), value);
             }
         }
+
+
 
         private static WatersKey watersIndex;
 
@@ -176,7 +150,6 @@ namespace Mayfly.Wild
             }
         }
 
-
         private static WeatherEvents weatherIndex;
 
         public static WeatherEvents WeatherIndex
@@ -194,92 +167,86 @@ namespace Mayfly.Wild
                 return weatherIndex;
             }
         }
-
-
-
-        public static FileSystemInterface InterfaceBio = new FileSystemInterface(UserSettings.FieldDataFolder, ".bio");
-
-        public static FileSystemInterface InterfacePermission = new FileSystemInterface(UserSettings.FieldDataFolder, ".perm");
     }
 
-    public abstract class UserSettingPaths
-    {
-        public static string Species = "RefSpecies";
+    //public abstract class UserSettingPaths
+    //{
+    //    public static string Species = "RefSpecies";
 
-        public static string Waters = "RefWaters";
+    //    public static string Waters = "RefWaters";
 
-        public static string Date = "MemDate";
+    //    public static string Date = "MemDate";
 
-        public static string Water = "MemWater";
+    //    public static string Water = "MemWater";
 
-        public static string Sampler = "MemSampler";
+    //    public static string Sampler = "MemSampler";
 
-        public static string AddtFactors = "AddtFactors";
+    //    public static string AddtFactors = "AddtFactors";
 
-        public static string AddtVars = "AddtVars";
+    //    public static string AddtVars = "AddtVars";
 
-        public static string CurrVars = "MemVars";
+    //    public static string CurrVars = "MemVars";
 
-        public static string AutoLogOpen = "AutoOpenIndividuals";
+    //    public static string AutoLogOpen = "AutoOpenIndividuals";
 
-        public static string FixTotals = "NumFixTotals";
+    //    public static string FixTotals = "NumFixTotals";
 
-        public static string AutoIncreaseTotals = "NumAutoAdd";
+    //    public static string AutoIncreaseTotals = "NumAutoAdd";
 
-        public static string AutoDecreaseTotals = "NumAutoReduce";
+    //    public static string AutoDecreaseTotals = "NumAutoReduce";
 
-        public static string BreakBeforeIndividuals = "PrintBreakBeforeIndividuals";
+    //    public static string BreakBeforeIndividuals = "PrintBreakBeforeIndividuals";
 
-        public static string BreakBetweenSpecies = "PrintBreakBtwSpecies";
+    //    public static string BreakBetweenSpecies = "PrintBreakBtwSpecies";
 
-        public static string OddCardStart = "PrintOddCardStart";
+    //    public static string OddCardStart = "PrintOddCardStart";
 
-        //public static string AgeFromDay = "AgeFromDay";
+    //    //public static string AgeFromDay = "AgeFromDay";
 
-        //public static string GainMonth = "GainMonth";
+    //    //public static string GainMonth = "GainMonth";
 
-        //public static string GainDay = "GainDay";
+    //    //public static string GainDay = "GainDay";
 
-        public static string DefaultStratifiedInterval = "DefaultStratifiedInterval";
-
-
-        public static string Dominance = "Dominance";
-
-        public static string Diversity = "Diversity";
-
-        public static string LogOrder = "OrderLog";
+    //    public static string DefaultStratifiedInterval = "DefaultStratifiedInterval";
 
 
+    //    public static string Dominance = "Dominance";
 
-        public static string MassRestoration = "WeightRestoration";
+    //    public static string Diversity = "Diversity";
 
-        public static string Association = "Association";
+    //    public static string LogOrder = "OrderLog";
 
-        #region Recovery memorized values
 
-        public static string AutoLoadBio = "AutoLoadBio";
 
-        public static string Bios = "Bios";
+    //    public static string MassRestoration = "WeightRestoration";
 
-        public static string SuggestMass = "SuggestMass";
+    //    public static string Association = "Association";
 
-        //public static string VisualConfirmation = "VisualConfirmation";
+    //    #region Recovery memorized values
 
-        public static string UseRaw = "UseRaw";
+    //    public static string AutoLoadBio = "AutoLoadBio";
 
-        public static string RestoreAssociation = "RestoreAssociation";
+    //    public static string Bios = "Bios";
 
-        public static string Protocol = "Protocol";
+    //    public static string SuggestMass = "SuggestMass";
 
-        public static string RequiredStrength = "RequiredStrength";
+    //    //public static string VisualConfirmation = "VisualConfirmation";
 
-        internal static void Initialize()
-        {
-            throw new NotImplementedException();
-        }
+    //    public static string UseRaw = "UseRaw";
 
-        #endregion
-    }
+    //    public static string RestoreAssociation = "RestoreAssociation";
+
+    //    public static string Protocol = "Protocol";
+
+    //    public static string RequiredStrength = "RequiredStrength";
+
+    //    internal static void Initialize()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    #endregion
+    //}
 
     public enum LogOrder
     {

@@ -7,6 +7,8 @@ namespace Mayfly
 {
     public class License
     {
+        static readonly string keyLicenses = @"Software\Mayfly\Licenses";
+
         public string Licensee { get; set; }
 
         public string Feature { get; set; }
@@ -52,9 +54,8 @@ namespace Mayfly
                 return;
             }
 
-
             UserSetting.SetValue(
-                UserSettingPaths.KeyLicenses,
+                keyLicenses,
                 this.Feature,
                 "License",
                 StringCipher.Encrypt(this.ToString(), this.Feature)
@@ -65,7 +66,7 @@ namespace Mayfly
 
         internal void Uninstall()
         {
-            UserSetting.ClearFolder(UserSettingPaths.KeyLicenses, this.Feature);
+            UserSetting.ClearFolder(keyLicenses, this.Feature);
         }
 
         public override string ToString()
@@ -84,7 +85,7 @@ namespace Mayfly
                 {
                     installedLicenses = new List<License>();
 
-                    RegistryKey reg = Registry.CurrentUser.OpenSubKey(UserSettingPaths.KeyLicenses);
+                    RegistryKey reg = Registry.CurrentUser.OpenSubKey(keyLicenses);
 
                     if (reg == null) return installedLicenses.ToArray();
 
@@ -118,7 +119,7 @@ namespace Mayfly
                 if (shouldUpdate) break;
             }
 
-            if (!shouldUpdate) shouldUpdate |= (DateTime.Now - UserSettings.LastLicenseCheckup).TotalHours > 12;
+            if (!shouldUpdate) shouldUpdate |= (DateTime.Now - LastLicenseCheckup).TotalHours > 12;
 
             if (shouldUpdate)
             {
@@ -181,7 +182,7 @@ namespace Mayfly
             licenseRequestParameters.Add("uninstall", "0");
             string[] response = Server.GetText(uri, licenseRequestParameters);
 
-            UserSettings.LastLicenseCheckup = DateTime.Now;
+            LastLicenseCheckup = DateTime.Now;
 
             if (response == null)
             {
@@ -240,6 +241,12 @@ namespace Mayfly
             }
 
             return false;
+        }
+
+        public static DateTime LastLicenseCheckup
+        {
+            get { return Convert.ToDateTime(UserSetting.GetValue(keyLicenses, nameof(LastLicenseCheckup), DateTime.Today.AddDays(-2))); }
+            set { UserSetting.SetValue(keyLicenses, nameof(LastLicenseCheckup), value.ToString("s")); }
         }
     }
 

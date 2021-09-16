@@ -91,8 +91,8 @@ namespace Mayfly.Fish.Explorer
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-                checkBoxSuggestAge.Checked = UserSettings.AgeSuggest;
-                checkBoxSuggestMass.Checked = UserSettings.MassSuggest;
+                checkBoxSuggestAge.Checked = UserSettings.SuggestAge;
+                checkBoxSuggestMass.Checked = UserSettings.SuggestMass;
                 checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
 
                 foreach (string bio in UserSettings.Bios)
@@ -159,7 +159,7 @@ namespace Mayfly.Fish.Explorer
 
             UserSettings.DefaultCatchability = (double)numericUpDownCatchabilityDefault.Value;
 
-            UserSetting.ClearFolder(UserSettings.Path, UserSettingPaths.GamingAge);
+            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.GamingAge));
             foreach (DataGridViewRow gridRow in spreadSheetAge.Rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -169,7 +169,7 @@ namespace Mayfly.Fish.Explorer
                     (Age)gridRow.Cells[ColumnAgeValue.Index].Value);
             }
 
-            UserSetting.ClearFolder(UserSettings.Path, UserSettingPaths.GamingLength);
+            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.GamingLength));
             foreach (DataGridViewRow gridRow in spreadSheetMeasure.Rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -179,7 +179,7 @@ namespace Mayfly.Fish.Explorer
                     (double)gridRow.Cells[ColumnMeasureValue.Index].Value);
             }
 
-            UserSetting.ClearFolder(UserSettings.Path, UserSettingPaths.Catchability);
+            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.Catchability));
             foreach (DataGridViewRow gridRow in spreadSheetCatchability.Rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -193,8 +193,8 @@ namespace Mayfly.Fish.Explorer
 
             UserSettings.SizeInterval = (double)numericUpDownInterval.Value;
 
-            UserSettings.AgeSuggest = checkBoxSuggestAge.Checked;
-            UserSettings.MassSuggest = checkBoxSuggestMass.Checked;
+            UserSettings.SuggestAge = checkBoxSuggestAge.Checked;
+            UserSettings.SuggestMass = checkBoxSuggestMass.Checked;
             //UserSettings.VisualConfirmation = checkBoxVisualConfirmation.Checked;
 
             UserSettings.AutoLoadBio = checkBoxBioAutoLoad.Checked;

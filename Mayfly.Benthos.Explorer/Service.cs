@@ -9,6 +9,7 @@ namespace Mayfly.Benthos.Explorer
 {
     public abstract class Service
     {
+
         public static string Localize(string field)
         {
             ResourceManager resources = new ResourceManager(typeof(Card));
@@ -88,8 +89,8 @@ namespace Mayfly.Benthos.Explorer
         public static string[] GetAssociates(string species)
         {
             object result = UserSetting.GetValue(UserSettings.Path,
-                new string[] { Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Association },
-                species);
+                new string[] { "Restoration", "Assosiciation" },
+                species, new string[0]);
 
             if (result == null)
             {
@@ -115,7 +116,7 @@ namespace Mayfly.Benthos.Explorer
 
                 if (savedAssociates.Count > 0)
                 {
-                    Service.SaveAssociates(speciesRow.Species, savedAssociates.ToArray());
+                    SaveAssociates(speciesRow.Species, savedAssociates.ToArray());
                 }
             }
         }
@@ -123,7 +124,7 @@ namespace Mayfly.Benthos.Explorer
         public static void SaveAssociates(string species, string[] associates)
         {
             UserSetting.SetValue(UserSettings.Path,
-                new string[] { Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Association },
+                new string[] { "Restoration", "Assosiciation" },
                 species, associates);
         }
     }

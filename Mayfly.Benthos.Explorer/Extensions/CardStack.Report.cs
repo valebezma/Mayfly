@@ -53,7 +53,7 @@ namespace Mayfly.Benthos.Explorer
                 Composition tax = stack.GetTaxonomicComposition(baseRow);
 
                 Category coarse = tax.Find((c) => {
-                        return c.Name.Contains(UserSettings.FourageMark);
+                        return c.Name.Contains(Resources.Interface.ForageIndicator);
                     });
 
                 foreach (Category species in tax)

@@ -214,6 +214,15 @@ namespace Mayfly.Benthos.Explorer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to forage.
+        /// </summary>
+        internal static string ForageIndicator {
+            get {
+                return ResourceManager.GetString("ForageIndicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Group (log).
         /// </summary>
         internal static string Groups {

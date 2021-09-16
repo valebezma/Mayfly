@@ -1,12 +1,9 @@
-﻿using Mayfly.Wild;
+﻿using Mayfly.Extensions;
 using Mayfly.Species;
-using Mayfly.Waters;
+using Mayfly.Wild;
 using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Reflection;
 using System.IO;
-using Mayfly.Extensions;
+using System.Windows.Forms;
 
 namespace Mayfly.Fish
 {
@@ -18,47 +15,6 @@ namespace Mayfly.Fish
             {
                 return UserSetting.GetFeatureKey("Mayfly.Fish");
             }
-        }
-
-        public static void Initialize()
-        {
-            Wild.UserSettings.Initialize();
-
-            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
-                new UserSetting[] { new UserSetting(Wild.UserSettingPaths.Sampler, 710),
-                    new UserSetting(Wild.UserSettingPaths.Water, 0),
-                    new UserSetting(Wild.UserSettingPaths.FixTotals, true),
-                    new UserSetting(Wild.UserSettingPaths.AutoIncreaseTotals, true),
-                    new UserSetting(Wild.UserSettingPaths.AutoDecreaseTotals, true),
-                    new UserSetting(Wild.UserSettingPaths.AutoLogOpen, true),
-                    new UserSetting(Wild.UserSettingPaths.BreakBeforeIndividuals, true),
-                    new UserSetting(Wild.UserSettingPaths.BreakBetweenSpecies, true),
-                    new UserSetting(Wild.UserSettingPaths.OddCardStart, true),
-                    new UserSetting(Wild.UserSettingPaths.AddtVars, new string[] { "FL", "TL" }),
-                    new UserSetting(UserSettingPaths.InheritGrowth, true),
-                    new UserSetting(UserSettingPaths.ApproveGrowthModel, true),
-                    new UserSetting(UserSettingPaths.Opening, 60, true),
-                    new UserSetting(UserSettingPaths.GillnetStdLength, 3750),
-                    new UserSetting(UserSettingPaths.GillnetStdHeight, 200),
-                    new UserSetting(UserSettingPaths.GillnetStdExposure, 24),
-                    new UserSetting(Species.UserSettingPaths.RecentItemsCount, 15),
-                    new UserSetting(Wild.UserSettingPaths.DefaultStratifiedInterval, 1000, true),
-                    new UserSetting(Species.UserSettingPaths.SpeciesAutoExpand, true),
-                    new UserSetting(Species.UserSettingPaths.SpeciesAutoExpandVisual, true)
-                });
-
-            UserSetting.SetValue(Path, UserSettingPaths.EffortVariant, "Gillnet", 2);
-        }
-
-        public static object GetValue(string path, string key)
-        {
-            if (UserSetting.InitializationRequired(Path,
-                Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(path, key);
         }
 
         public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, ".fcd", ".html");
@@ -82,8 +38,8 @@ namespace Mayfly.Fish
 
         public static int SelectedSamplerID
         {
-            get { return (int)GetValue(Path, Wild.UserSettingPaths.Sampler); }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.Sampler, value); }
+            get { return (int)UserSetting.GetValue(Path, nameof(SelectedSamplerID), 7); }
+            set { UserSetting.SetValue(Path, nameof(SelectedSamplerID), value); }
         }
 
 
@@ -119,12 +75,21 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Wild.Service.GetReferencePathSpecies(Path, Wild.UserSettingPaths.Species, "Fish");
-            }
+                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(SpeciesIndexPath), string.Empty));
 
+                if (string.IsNullOrWhiteSpace(filepath))
+                {
+                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Fish");
+                    return SpeciesIndexPath;
+                }
+                else
+                {
+                    return filepath;
+                }
+            }
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.Species, value);
+                UserSetting.SetValue(Path, nameof(SpeciesIndexPath), value);
             }
         }
 
@@ -155,27 +120,34 @@ namespace Mayfly.Fish
 
         public static bool SpeciesAutoExpand
         {
-            get { return Convert.ToBoolean(GetValue(Path, Species.UserSettingPaths.SpeciesAutoExpand)); }
-            set { UserSetting.SetValue(Path, Species.UserSettingPaths.SpeciesAutoExpand, value); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpand), true)); }
+            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpand), value); }
         }
 
         public static bool SpeciesAutoExpandVisual
         {
-            get { return Convert.ToBoolean(GetValue(Path, Species.UserSettingPaths.SpeciesAutoExpandVisual)); }
-            set { UserSetting.SetValue(Path, Species.UserSettingPaths.SpeciesAutoExpandVisual, value); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpandVisual), true)); }
+            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpandVisual), value); }
         }
+
 
 
         public static string ParasitesIndexPath
         {
             get
             {
-                return Wild.Service.GetReferencePathSpecies(Path, UserSettingPaths.Parasites, "Fish Parasites");
-            }
+                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(ParasitesIndexPath), string.Empty));
 
-            set 
+                if (string.IsNullOrWhiteSpace(filepath))
+                {
+                    ParasitesIndexPath = Wild.Service.GetReferencePathSpecies("Fish Parasites");
+                }
+
+                return ParasitesIndexPath;
+            }
+            set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.Parasites, value);
+                UserSetting.SetValue(Path, nameof(ParasitesIndexPath), value);
             }
         }
 
@@ -204,12 +176,19 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Wild.Service.GetReferencePathSpecies(Path, UserSettingPaths.Diet, "Fish Diet");
+                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(DietIndexPath), string.Empty));
+
+                if (string.IsNullOrWhiteSpace(filepath))
+                {
+                    DietIndexPath = Wild.Service.GetReferencePathSpecies("Fish Diet");
+                }
+
+                return DietIndexPath;
             }
 
             set 
             {
-                UserSetting.SetValue(Path, UserSettingPaths.Diet, value);
+                UserSetting.SetValue(Path, nameof(DietIndexPath), value);
             }
         }
 
@@ -237,35 +216,31 @@ namespace Mayfly.Fish
 
         public static int SelectedWaterID
         {
-            get { return (int)GetValue(Path, Wild.UserSettingPaths.Water); }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.Water, value); }
+            get { return (int)UserSetting.GetValue(Path, nameof(SelectedWaterID), 0); }
+            set { UserSetting.SetValue(Path, nameof(SelectedWaterID), value); }
         }
 
         public static DateTime SelectedDate
         {
-            get {
-                object SavedDate = GetValue(Path, Wild.UserSettingPaths.Date);
+            get
+            {
+                object SavedDate = UserSetting.GetValue(Path, nameof(SelectedDate), DateTime.Today);
                 if (SavedDate == null) return DateTime.Now.AddSeconds(-DateTime.Now.Second);
                 else return Convert.ToDateTime(SavedDate);
             }
-
-            set 
-            {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.Date, value.ToShortDateString()); 
-            }
+            set { UserSetting.SetValue(Path, nameof(SelectedDate), value.ToShortDateString()); }
         }
-
 
         public static string[] AddtVariables
         {
             get
             {
-                return (string[])GetValue(Path, Wild.UserSettingPaths.AddtVars);
+                return (string[])UserSetting.GetValue(Path, nameof(AddtVariables), new string[] { "TL", "FL" });
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AddtVars, value);
+                UserSetting.SetValue(Path, nameof(AddtVariables), value);
             }
         }
 
@@ -273,26 +248,25 @@ namespace Mayfly.Fish
         {
             get
             {
-                return (string[])GetValue(Path, Wild.UserSettingPaths.CurrVars);
+                return (string[])UserSetting.GetValue(Path, nameof(CurrentVariables), new string[0]);
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.CurrVars, value);
+                UserSetting.SetValue(Path, nameof(CurrentVariables), value);
             }
         }
-
 
         public static bool FixTotals
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.FixTotals));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(FixTotals), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.FixTotals, value);
+                UserSetting.SetValue(Path, nameof(FixTotals), value);
             }
         }
 
@@ -300,12 +274,12 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.AutoIncreaseTotals));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoIncreaseBio), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AutoIncreaseTotals, value);
+                UserSetting.SetValue(Path, nameof(AutoIncreaseBio), value);
             }
         }
 
@@ -313,26 +287,25 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.AutoDecreaseTotals));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoDecreaseBio), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AutoDecreaseTotals, value);
+                UserSetting.SetValue(Path, nameof(AutoDecreaseBio), value);
             }
         }
-
 
         public static bool AutoLogOpen
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.AutoLogOpen));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoLogOpen), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AutoLogOpen, value);
+                UserSetting.SetValue(Path, nameof(AutoLogOpen), value);
             }
         }
 
@@ -340,12 +313,12 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.BreakBeforeIndividuals));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBeforeIndividuals), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.BreakBeforeIndividuals, value);
+                UserSetting.SetValue(Path, nameof(BreakBeforeIndividuals), value);
             }
         }
 
@@ -353,12 +326,12 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.BreakBetweenSpecies));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBetweenSpecies), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.BreakBetweenSpecies, value);
+                UserSetting.SetValue(Path, nameof(BreakBetweenSpecies), value);
             }
         }
 
@@ -366,77 +339,53 @@ namespace Mayfly.Fish
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.OddCardStart));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(OddCardStart), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.OddCardStart, value);
+                UserSetting.SetValue(Path, nameof(OddCardStart), value);
             }
+        }
+
+        public static int RecentSpeciesCount
+        {
+            get { return (int)UserSetting.GetValue(Path, nameof(RecentSpeciesCount), 15); }
+            set { UserSetting.SetValue(Path, nameof(RecentSpeciesCount), value); }
         }
 
 
         public static double DefaultOpening
         {
-            get { return (double)(int)GetValue(Path, UserSettingPaths.Opening) / 100; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Opening, (int)(value * 100)); }
+            get { return (double)(int)UserSetting.GetValue(Path, nameof(DefaultOpening), 60) / 100; }
+            set { UserSetting.SetValue(Path, nameof(DefaultOpening), (int)(value * 100)); }
         }
 
 
         public static double GillnetStdLength
         {
-            get { return (double)((int)GetValue(Path, UserSettingPaths.GillnetStdLength)) / 100; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.GillnetStdLength, (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(Path, nameof(GillnetStdLength), 3750)) / 100; }
+            set { UserSetting.SetValue(Path, nameof(GillnetStdLength), (int)(value * 100)); }
         }
 
         public static double GillnetStdHeight
         {
-            get { return (double)((int)GetValue(Path, UserSettingPaths.GillnetStdHeight)) / 100; }
-            set { UserSetting.SetValue(Path, UserSettingPaths.GillnetStdHeight, (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(Path, nameof(GillnetStdHeight), 200)) / 100; }
+            set { UserSetting.SetValue(Path, nameof(GillnetStdHeight), (int)(value * 100)); }
         }
 
         public static int GillnetStdExposure
         {
-            get { return (int)GetValue(Path, UserSettingPaths.GillnetStdExposure); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.GillnetStdExposure, value); }
-        }
-
-        public static int RecentSpeciesCount
-        {
-            get { return (int)GetValue(Path, Species.UserSettingPaths.RecentItemsCount); }
-            set { UserSetting.SetValue(Path, Species.UserSettingPaths.RecentItemsCount, value); }
+            get { return (int)UserSetting.GetValue(Path, nameof(GillnetStdExposure), 24); }
+            set { UserSetting.SetValue(Path, nameof(GillnetStdExposure), value); }
         }
 
 
 
         public static double DefaultStratifiedInterval
         {
-            get { return (double)((int)GetValue(Path, Wild.UserSettingPaths.DefaultStratifiedInterval)) / 100; }
-            set { UserSetting.SetValue(Path, Wild.UserSettingPaths.DefaultStratifiedInterval, (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(Path, nameof(DefaultStratifiedInterval), 1000)) / 100; }
+            set { UserSetting.SetValue(Path, nameof(DefaultStratifiedInterval), (int)(value * 100)); }
         }
-    }
-
-
-    public abstract class UserSettingPaths
-    {
-        public static string Diet = "RefDiet";
-
-        public static string Parasites = "RefParasites";
-
-        public static string Opening = "DefaultOpening";
-
-        public static string InheritGrowth = "MemInheritGrowth";
-
-        public static string ApproveGrowthModel = "MemApproveGrowthModel";
-
-        public static string EffortVariant = "EffortVariant";
-
-        public static string GillnetStdLength = "GillnetStdLength";
-
-        public static string GillnetStdHeight = "GillnetStdHeight";
-
-        public static string GillnetStdExposure = "GillnetStdExposure";
-
-        //public static string Equipment = "Equipment";
     }
 }

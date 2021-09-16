@@ -15,46 +15,18 @@ namespace Mayfly.Fish.Legal
             }
         }
 
-        public static void Initialize()
-        {
-            Wild.UserSettings.Initialize();
-
-            UserSetting.InitializeRegistry(Path, System.Reflection.Assembly.GetCallingAssembly(),
-                new UserSetting[] {
-                    new UserSetting(UserSettingPaths.UseWaterAsNotingOffice, false),
-                    new UserSetting(UserSettingPaths.HandWrite, true),
-                    new UserSetting(UserSettingPaths.UseStamp, false),
-                    new UserSetting(UserSettingPaths.PreventOvercatch, false),
-                    new UserSetting(UserSettingPaths.RoundCatch, 100),
-                    new UserSetting(UserSettingPaths.BindCatch, true)
-                });
-        }
-
-        public static object GetValue(string path, string key)
-        {
-            if (UserSetting.InitializationRequired(Path, 
-                Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(path, key);
-        }
-
         public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, ".flic");
-
-
 
         public static bool HandWrite
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.HandWrite));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(HandWrite), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.HandWrite, value);
+                UserSetting.SetValue(Path, nameof(HandWrite), value);
             }
         }
 
@@ -62,12 +34,12 @@ namespace Mayfly.Fish.Legal
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.UseStamp));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(UseStamp), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.UseStamp, value);
+                UserSetting.SetValue(Path, nameof(UseStamp), value);
             }
         }
 
@@ -75,37 +47,37 @@ namespace Mayfly.Fish.Legal
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.UseFaximile));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(UseFaximile), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.UseFaximile, value);
+                UserSetting.SetValue(Path, nameof(UseFaximile), value);
             }
         }
 
         public static string Stamp
         {
-            get { return (string)GetValue(Path, UserSettingPaths.Stamp); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Stamp, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(Stamp), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(Stamp), value); }
         }
 
         public static string Faximile
         {
-            get { return (string)GetValue(Path, UserSettingPaths.Faximile); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Faximile, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(Faximile), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(Faximile), value); }
         }
 
         public static bool PreventOvercatch
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.PreventOvercatch));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(PreventOvercatch), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.PreventOvercatch, value);
+                UserSetting.SetValue(Path, nameof(PreventOvercatch), value);
             }
         }
 
@@ -113,12 +85,12 @@ namespace Mayfly.Fish.Legal
         {
             get
             {
-                return Convert.ToInt32(GetValue(Path, UserSettingPaths.RoundCatch));
+                return Convert.ToInt32(UserSetting.GetValue(Path, nameof(RoundCatch), 100));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.RoundCatch, value);
+                UserSetting.SetValue(Path, nameof(RoundCatch), value);
             }
         }
 
@@ -126,12 +98,12 @@ namespace Mayfly.Fish.Legal
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, UserSettingPaths.BindCatch));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BindCatch), true));
             }
 
             set
             {
-                UserSetting.SetValue(Path, UserSettingPaths.BindCatch, value);
+                UserSetting.SetValue(Path, nameof(BindCatch), value);
             }
         }
 
@@ -141,119 +113,68 @@ namespace Mayfly.Fish.Legal
 
         public static bool UseWaterAsNotingOffice
         {
-            get { return Convert.ToBoolean(GetValue(Path, UserSettingPaths.UseWaterAsNotingOffice)); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.UseWaterAsNotingOffice, value); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(UseWaterAsNotingOffice), false)); }
+            set { UserSetting.SetValue(Path, nameof(UseWaterAsNotingOffice), value); }
         }
 
         public static string Utilization
         {
-            get { return (string)GetValue(Path, UserSettingPaths.Utilization); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.Utilization, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(Utilization), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(Utilization), value); }
         }
 
         public static string NoteVariant
         {
-            get { return (string)GetValue(Path, UserSettingPaths.NoteVariant); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.NoteVariant, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(NoteVariant), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(NoteVariant), value); }
         }
 
         public static string UtilizationVariant
         {
-            get { return (string)GetValue(Path, UserSettingPaths.UtilizationVariant); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.UtilizationVariant, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(UtilizationVariant), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(UtilizationVariant), value); }
         }
 
         public static string ProxyFace
         {
-            get { return (string)GetValue(Path, UserSettingPaths.ProxyFace); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.ProxyFace, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(ProxyFace), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(ProxyFace), value); }
         }
 
         public static string ProxyDuty
         {
-            get { return (string)GetValue(Path, UserSettingPaths.ProxyDuty); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.ProxyDuty, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(ProxyDuty), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(ProxyDuty), value); }
         }
 
         public static string TransportationRoute
         {
-            get { return (string)GetValue(Path, UserSettingPaths.TransportationRoute); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.TransportationRoute, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(TransportationRoute), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(TransportationRoute), value); }
         }
 
         public static string TransportationOrg
         {
-            get { return (string)GetValue(Path, UserSettingPaths.TransportationOrg); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.TransportationOrg, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(TransportationOrg), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(TransportationOrg), value); }
         }
 
         public static string TransportationAddress
         {
-            get { return (string)GetValue(Path, UserSettingPaths.TransportationAddress); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.TransportationAddress, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(TransportationAddress), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(TransportationAddress), value); }
         }
 
         public static string TransportationConservation
         {
-            get { return (string)GetValue(Path, UserSettingPaths.TransportationConservation); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.TransportationConservation, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(TransportationConservation), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(TransportationConservation), value); }
         }
 
         public static string TransportationDish
         {
-            get { return (string)GetValue(Path, UserSettingPaths.TransportationDish); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.TransportationDish, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(TransportationDish), string.Empty); }
+            set { UserSetting.SetValue(Path, nameof(TransportationDish), value); }
         }
-    }
-
-    public abstract class UserSettingPaths
-    {
-        #region Noting
-
-        public static string UseWaterAsNotingOffice = "RepUseWater";
-
-        public static string Utilization = "RepUtil";
-
-        public static string NoteVariant = "NoteVariant";
-
-        public static string UtilizationVariant = "UtilizationVariant";
-
-
-        public static string ProxyFace = "RepTransResp";
-
-        public static string ProxyDuty = "RepTransDuty";
-
-
-        public static string TransportationRoute = "RepTransRoute";
-
-        public static string TransportationOrg = "RepTransOrg";
-
-        public static string TransportationAddress = "RepTransAddress";
-
-        public static string TransportationConservation = "RepTransConservation";
-
-        public static string TransportationDish = "RepTransDish";
-
-        #endregion
-
-        #region Filling
-
-        public static string HandWrite = "HandWrite";
-
-        public static string UseStamp = "UseStamp";
-
-        public static string UseFaximile = "UseFaximile";
-
-        public static string Stamp = "Stamp";
-
-        public static string Faximile = "Faximile";
-
-        public static string PreventOvercatch = "PreventOvercatch";
-
-        public static string RoundCatch = "RoundCatch";
-
-        public static string BindCatch = "BindCatch";
-
-        #endregion
     }
 }

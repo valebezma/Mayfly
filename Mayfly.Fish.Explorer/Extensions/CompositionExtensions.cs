@@ -327,7 +327,7 @@ namespace Mayfly.Fish.Explorer
             {
                 ContinuousBio bio = data.FindGrowthModel(speciesRow.Species);
 
-                if (UserSettings.AgeSuggest && bio != null)
+                if (UserSettings.SuggestAge && bio != null)
                 {
                     report.AddParagraph(Resources.Reports.Sections.Population.Paragraph2,
                             speciesRow.KeyRecord.FullNameReport);

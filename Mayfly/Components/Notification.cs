@@ -9,6 +9,21 @@ namespace Mayfly
     {
         private NotifyIcon TrayIcon;
 
+        public static Notification globalNotify;
+
+        public static Notification GlobalNotification
+        {
+            get
+            {
+                if (globalNotify == null)
+                {
+                    globalNotify = new Notification();
+                }
+
+                return globalNotify;
+            }
+        }
+
 
 
         public Notification()
@@ -49,7 +64,7 @@ namespace Mayfly
                     TrayIcon_BalloonTipClosed(this, new EventArgs());
                     Log.Write(EventType.NotificationReact, string.Format("Notification is clicked: {0}.", title));
                 });
-                UserSettings.GlobalNotification.TrayIcon.BalloonTipClicked += handler;
+                GlobalNotification.TrayIcon.BalloonTipClicked += handler;
             }
             TrayIcon.BalloonTipClosed += TrayIcon_BalloonTipClosed;
 
@@ -76,17 +91,17 @@ namespace Mayfly
 
         public static void ShowNotification(string title, string instruction, EventHandler handler)
         {
-            UserSettings.GlobalNotification.Notify(title, instruction, () => { handler.Invoke(UserSettings.GlobalNotification, EventArgs.Empty); });
+            GlobalNotification.Notify(title, instruction, () => { handler.Invoke(GlobalNotification, EventArgs.Empty); });
         }
 
         public static void ShowNotification(string title, string instruction)
         {
-            UserSettings.GlobalNotification.Notify(title, instruction, null);
+            GlobalNotification.Notify(title, instruction, null);
         }
 
         public static void ShowNotificationAction(string title, string instruction, Action a)
         {
-            UserSettings.GlobalNotification.Notify(title, instruction, a);
+            GlobalNotification.Notify(title, instruction, a);
         }
     }
 }

@@ -156,7 +156,7 @@ namespace Mayfly
             Product = UserSettings.Product;
             Feature = Process.GetCurrentProcess().ProcessName;
             Version = EntryAssemblyInfo.Version;
-            User = UserSettings.Credential.UserName;
+            User = UserSettings.Credential == null ? UserSettings.Username : UserSettings.Credential.UserName;
             ProcessID = Process.GetCurrentProcess().Id;
             Type = EventType.AllEvents;
             EventDescription = string.Empty;

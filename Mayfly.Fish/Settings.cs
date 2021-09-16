@@ -695,7 +695,7 @@ namespace Mayfly.Fish
             {
                 UserSettings.DefaultOpening = .01 * (double)numericUpDownOpeningDefault.Value;
 
-                UserSetting.ClearFolder(UserSettings.Path, UserSettingPaths.Opening);
+                UserSetting.ClearFolder(UserSettings.Path, nameof(Service.Opening));
                 foreach (DataGridViewRow gridRow in spreadSheetOpening.Rows)
                 {
                     if (gridRow.IsNewRow) continue;

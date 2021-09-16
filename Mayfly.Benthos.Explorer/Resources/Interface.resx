@@ -168,6 +168,9 @@
   <data name="FilterWaters" xml:space="preserve">
     <value>Waters Filter</value>
   </data>
+  <data name="ForageIndicator" xml:space="preserve">
+    <value>forage</value>
+  </data>
   <data name="Groups" xml:space="preserve">
     <value>Group (log)</value>
   </data>

@@ -1,17 +1,14 @@
-﻿using Mayfly.Software;
-using System;
-using System.ComponentModel;
-using System.Globalization;
+﻿using System;
 using System.IO;
-using System.Reflection;
-using Mayfly.Geographics;
-using System.Windows.Forms;
 using System.Net;
+using System.Windows.Forms;
 
 namespace Mayfly
 {
     public abstract class UserSettings
     {
+        static readonly string keyGeneral = @"Software\Mayfly";
+
         public static string Product
         {
             get
@@ -20,138 +17,75 @@ namespace Mayfly
             }
         }
 
-
         public static string Username
         {
             get
             {
-                try { return UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.User).ToString(); }
-                catch { return Resources.Interface.UserUnknown; }
+                return UserSetting.GetValue(keyGeneral, nameof(Username), Resources.Interface.UserUnknown).ToString();
             }
 
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.User, value); }
+            set { UserSetting.SetValue(keyGeneral, nameof(Username), value); }
         }
 
         public static bool ShareDiagnostics
         {
-            get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.ShareDiagnostics)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.ShareDiagnostics, value.ToString()); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(keyGeneral, nameof(ShareDiagnostics), true)); }
+            set { UserSetting.SetValue(keyGeneral, nameof(ShareDiagnostics), value.ToString()); }
         }
-
-        public static string FormatCoordinate
-        {
-            get
-            {
-                try { return UserSetting.GetValue(UserSettingPaths.KeyUI, UserSettingPaths.FormatCoordinate).ToString(); }
-                catch { return "d"; }
-            }
-
-            set { UserSetting.SetValue(UserSettingPaths.KeyUI, UserSettingPaths.FormatCoordinate, value); }
-        }
-
-        
-        public static CultureInfo Language
-        {
-            get
-            {
-                string s = (string)UserSetting.GetValue(UserSettingPaths.KeyUI, UserSettingPaths.Language);
-                if (string.IsNullOrEmpty(s)) return CultureInfo.InvariantCulture;
-                return CultureInfo.GetCultureInfo(s);
-            }
-
-            set { UserSetting.SetValue(UserSettingPaths.KeyUI, UserSettingPaths.Language, value.ToString()); }
-        }
-
 
         public static UpdatePolicy UpdatePolicy
         {
-            get { return (UpdatePolicy)Convert.ToInt32(UserSetting.GetValue(UserSettingPaths.KeyFeatures, UserSettingPaths.UpdatePolicy)); }
+            get { return (UpdatePolicy)Convert.ToInt32(UserSetting.GetValue(keyGeneral, nameof(UpdatePolicy), UpdatePolicy.CheckAndNotice)); }
             set
             {
-                UserSetting.SetValue(UserSettingPaths.KeyFeatures, UserSettingPaths.UpdatePolicy, (int)value);
+                UserSetting.SetValue(keyGeneral, nameof(UpdatePolicy), (int)value);
                 Server.CheckUpdates(Product);
             }
         }
 
         public static bool UseUnsafeConnection
         {
-            get { return Convert.ToBoolean(UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.UseUnsafeConnection)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.UseUnsafeConnection, value.ToString()); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(keyGeneral, nameof(UseUnsafeConnection), true)); }
+            set { UserSetting.SetValue(keyGeneral, nameof(UseUnsafeConnection), value.ToString()); }
         }
+
+        static NetworkCredential credential;
 
         public static NetworkCredential Credential
         {
             get
             {
-                try
+                if (credential == null)
                 {
-                    object o = UserSetting.GetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential);
-                    if (o == null) return null;
-                    string value = o.ToString();
-                    if (string.IsNullOrEmpty(value)) return null;
-                    value = StringCipher.Decrypt(value, UserSettings.Username);
-                    string[] values = value.Split(';');
-                    return new NetworkCredential(values[0], values[1]);
+                    try
+                    {
+                        object o = UserSetting.GetValue(keyGeneral, nameof(Credential), null);
+                        if (o == null) return null;
+                        string value = o.ToString();
+                        if (string.IsNullOrEmpty(value)) return null;
+                        value = StringCipher.Decrypt(value, Username);
+                        string[] values = value.Split(';');
+                        credential = new NetworkCredential(values[0], values[1]);
+                    }
+                    catch { return null; }
                 }
-                catch { return null; }
+
+                return credential;
             }
 
             set
             {
                 if (value == null)
                 {
-                    UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential, string.Empty);
+                    UserSetting.SetValue(keyGeneral, nameof(Credential), string.Empty);
                 }
                 else
                 {
                     string cred = value.UserName + ";" + value.Password;
                     cred = StringCipher.Encrypt(cred, UserSettings.Username);
-                    UserSetting.SetValue(UserSettingPaths.KeyGeneral, UserSettingPaths.Credential, cred);
+                    UserSetting.SetValue(keyGeneral, nameof(Credential), cred);
                 }
             }
         }
-
-        public static DateTime LastLicenseCheckup
-        {
-            get { return Convert.ToDateTime(UserSetting.GetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup)); }
-            set { UserSetting.SetValue(UserSettingPaths.KeyLicenses, UserSettingPaths.LastLicenseCheckup, value.ToString("s")); }
-        }
-
-
-        public static Notification globalNotify;
-
-        public static Notification GlobalNotification
-        {
-            get
-            {
-                if (globalNotify == null)
-                {
-                    globalNotify = new Notification();
-                }
-
-                return globalNotify;
-            }
-        }
-    }
-
-    public abstract class UserSettingPaths
-    {
-        public static string KeyGeneral = @"Software\Mayfly";
-        public static string KeyUI = @"Software\Mayfly\UI";
-        public static string KeyFeatures = @"Software\Mayfly\Features";
-        public static string KeyLicenses = @"Software\Mayfly\Licenses";
-
-        public static string User = "User";
-        public static string Language = "Language";
-
-        public static string ShareDiagnostics = "ShareDiagnostics";
-        public static string UpdatePolicy = "UpdatePolicy";
-        public static string LastLicenseCheckup = "LastLicenseCheckup";
-        public static string UseUnsafeConnection = "UseUnsafeConnection";
-        public static string Credential = "Credential";
-
-        public static string FormatColumn = "FormatColumn";
-        public static string CheckState = "CheckState";
-        public static string FormatCoordinate = "FormatCoordinate";
     }
 }

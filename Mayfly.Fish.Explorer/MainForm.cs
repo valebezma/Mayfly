@@ -2462,8 +2462,8 @@ namespace Mayfly.Fish.Explorer
         { 
             foreach (DataGridViewRow gridRow in (DataGridViewRow[])e.Argument)
             {
-                if (UserSettings.AgeSuggest) setIndividualAgeTip(gridRow);
-                if (UserSettings.MassSuggest) setIndividualMassTip(gridRow);
+                if (UserSettings.SuggestAge) setIndividualAgeTip(gridRow);
+                if (UserSettings.SuggestMass) setIndividualMassTip(gridRow);
             }
         }
 

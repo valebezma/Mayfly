@@ -286,7 +286,7 @@ namespace Mayfly
 
         public static void ResetUICulture()
         {
-            CultureInfo ci = UserSettings.Language;
+            CultureInfo ci = UI.Language;
             if (ci.TwoLetterISOLanguageName == "en") ci = CultureInfo.InvariantCulture;
 
             Thread.CurrentThread.CurrentCulture =

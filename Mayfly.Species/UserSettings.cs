@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Reflection;
 
 namespace Mayfly.Species
 {
@@ -14,60 +12,24 @@ namespace Mayfly.Species
             }
         }
 
-        public static void Initialize()
-        {
-            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
-                new UserSetting[] { new UserSetting(UserSettingPaths.UseClassicKeyReport, false),
-                    new UserSetting(UserSettingPaths.CoupletChar, "'"),
-                    new UserSetting(UserSettingPaths.AllowableSpeciesListLength, 50),
-                    new UserSetting(UserSettingPaths.RecentItemsCount, 5)
-                });
-        }
-
-        public static object GetValue(string path, string key)
-        {
-            if (UserSetting.InitializationRequired(Path, 
-                Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(path, key);
-        }
-
         public static FileSystemInterface Interface = new FileSystemInterface(null, ".sps", ".html");
 
         public static bool UseClassicKeyReport 
         {
-            get { return Convert.ToBoolean(GetValue(Path, UserSettingPaths.UseClassicKeyReport)); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.UseClassicKeyReport, value); }
+            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(UseClassicKeyReport), false)); }
+            set { UserSetting.SetValue(Path, nameof(UseClassicKeyReport), value); }
         }
 
         public static string CoupletChar 
         {
-            get { return (string)GetValue(Path, UserSettingPaths.CoupletChar); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.CoupletChar, value); }
+            get { return (string)UserSetting.GetValue(Path, nameof(CoupletChar), "'"); }
+            set { UserSetting.SetValue(Path, nameof(CoupletChar), value); }
         }
 
         public static int AllowableSpeciesListLength 
         {
-            get { return (int)GetValue(Path, UserSettingPaths.AllowableSpeciesListLength); }
-            set { UserSetting.SetValue(Path, UserSettingPaths.AllowableSpeciesListLength, value); }
+            get { return (int)UserSetting.GetValue(Path, nameof(AllowableSpeciesListLength), 50); }
+            set { UserSetting.SetValue(Path, nameof(AllowableSpeciesListLength), value); }
         }
-    }
-
-    public abstract class UserSettingPaths
-    {
-        public static string CoupletChar = "CoupletChar";
-
-        public static string UseClassicKeyReport = "UseClassicKeyReport";
-
-        public static string AllowableSpeciesListLength = "AllowableSpeciesListLength";
-
-        public static string RecentItemsCount = "RecentItemsCount";
-
-        public static string SpeciesAutoExpand = "SpeciesAutoExpand";
-
-        public static string SpeciesAutoExpandVisual = "SpeciesAutoExpandVisual";
     }
 }

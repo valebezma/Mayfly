@@ -12,32 +12,9 @@ namespace Mayfly
 {
     public class UserSetting
     {
-        public string Path { get; set; }
-
-        public string Parameter { get; set; }
-
-        public object Value { get; set; }
-
-        public bool Overwrite { get; set; }
-
-
-
-        public UserSetting(string parameter, object value, bool overwrite)
-        {
-            Parameter = parameter;
-            Value = value;
-            Overwrite = overwrite;
-        }
-
-        public UserSetting(string parameter, object value)
-            : this(parameter, value, false)
-        { }
-
-
-        
         public static string GetFeatureKey(string feature)
         {
-            return UserSettingPaths.KeyFeatures /*+ "\\" + UserSettings.Product*/ + "\\" + feature;
+            return @"Software\Mayfly\Features\" + feature;
         }
 
         public static bool InitializationRequired(string path, Assembly assembly)
@@ -72,18 +49,19 @@ namespace Mayfly
             }
         }
 
-        public static object GetValue(string path, string key)
+        public static object GetValue(string path, string key, object defaultValue)
         {
             RegistryKey subKey = Registry.CurrentUser.CreateSubKey(path);
-            return subKey.GetValue(key, null);
+            try { return subKey.GetValue(key, null) ?? defaultValue; }
+            catch { return defaultValue; }
         }
 
-        public static object GetValue(string path, string folder, string key)
+        public static object GetValue(string path, string folder, string key, object defaultValue)
         {
-            return GetValue(path, new string[] { folder }, key);
+            return GetValue(path, new string[] { folder }, key, defaultValue);
         }
 
-        public static object GetValue(string path, string[] folders, string key)
+        public static object GetValue(string path, string[] folders, string key, object defaultValue)
         {
             RegistryKey rk = Registry.CurrentUser.CreateSubKey(path);
             List<string> subKeyNames = new List<string>(rk.GetSubKeyNames());
@@ -92,7 +70,7 @@ namespace Mayfly
                 path += "\\" + folders[0];
                 if (folders.Length == 1)
                 {
-                    return GetValue(path, key);
+                    return GetValue(path, key, defaultValue);
                 }
                 else
                 {
@@ -102,11 +80,11 @@ namespace Mayfly
                         rest.Add(folders[i]);
                     }
 
-                    return GetValue(path, rest.ToArray(), key);
+                    return GetValue(path, rest.ToArray(), key, defaultValue);
                 }
             }
 
-            return null;
+            return defaultValue;
         }
 
         public static string[] GetKeys(string path, string folder)
@@ -207,51 +185,6 @@ namespace Mayfly
             if (folders.Length == 0) return Registry.CurrentUser.CreateSubKey(path);
 
             return Registry.CurrentUser.CreateSubKey(path + "\\" + folders.Merge("\\"));
-        }
-    }
-
-    public abstract class UserSettingInterface
-    {
-        public string Path;
-
-        public UserSetting[] DefaultSettings;
-
-
-
-        public UserSettingInterface(string path, UserSetting[] settings)
-        {
-            Path = path;
-            DefaultSettings = settings;
-        }
-
-
-
-        public void Initialize()
-        {
-            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(), DefaultSettings);
-        }
-
-        public object GetValue(string key)
-        {
-            if (UserSetting.InitializationRequired(UserSetting.GetFeatureKey(Path), Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(UserSetting.GetFeatureKey(Path), key);
-        }
-    }
-
-    public abstract class ExtendedUserSettingInterface : UserSettingInterface
-    {
-        public FileSystemInterface Interface;
-
-        public ExtendedUserSettingInterface(string path, UserSetting[] settings) : base(path, settings)
-        { }
-
-        public ExtendedUserSettingInterface(string path, UserSetting[] settings, string extension) : base(path, settings)
-        {
-            Interface = new Mayfly.FileSystemInterface(extension);
         }
     }
 }

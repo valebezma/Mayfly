@@ -17,41 +17,18 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        public static void Initialize()
-        {
-            UserSetting.InitializeRegistry(Path, Assembly.GetCallingAssembly(),
-                new UserSetting[] {
-                    new UserSetting(Wild.UserSettingPaths.Dominance, 2),
-                    new UserSetting(Wild.UserSettingPaths.Diversity, Wild.DiversityIndex.D1963_Shannon),
-                    new UserSetting(UserSettingPaths.FourageMark, "корм")
-                });
-        }
-
-        public static object GetValue(string path, string key)
-        {
-            if (UserSetting.InitializationRequired(Path,
-                Assembly.GetCallingAssembly()))
-            {
-                Initialize();
-            }
-
-            return UserSetting.GetValue(path, key);
-        }
-
         public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, Benthos.UserSettings.Interface.Extension + "s");
-
-        
-
+                
         public static bool AutoLoadBio
         {
             get
             {
-                return Convert.ToBoolean(GetValue(Path, Wild.UserSettingPaths.AutoLoadBio));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoLoadBio), false));
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.AutoLoadBio, value);
+                UserSetting.SetValue(Path, nameof(AutoLoadBio), value);
             }
         }
 
@@ -59,50 +36,26 @@ namespace Mayfly.Benthos.Explorer
         {
             get
             {
-                string[] values = (string[])UserSetting.GetValue(Path, Wild.UserSettingPaths.Bios);
+                string[] values = (string[])UserSetting.GetValue(Path, nameof(Bios), new string [0]);
                 return values.GetOperableFilenames(Wild.UserSettings.InterfaceBio.Extension);
             }
 
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.Bios, value);
+                UserSetting.SetValue(Path, nameof(Bios), value);
             }
         }
-
-
 
         public static bool MassRecoveryUseRaw
         {
             get
             {
-                return Convert.ToBoolean(UserSetting.GetValue(Path,
-                    Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.UseRaw));
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(MassRecoveryUseRaw), true));
             }
             set
             {
-                UserSetting.SetValue(Path, Wild.UserSettingPaths.MassRestoration,
-                    Wild.UserSettingPaths.UseRaw, value);
+                UserSetting.SetValue(Path, nameof(MassRecoveryUseRaw), value);
             }
         }
-
-
-
-        public static string FourageMark
-        {
-            get
-            {
-                return (string)UserSetting.GetValue(Path, UserSettingPaths.FourageMark);
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, UserSettingPaths.FourageMark, value);
-            }
-        }
-    }
-
-    public abstract class UserSettingPaths
-    {
-        public static string FourageMark = "FourageMark";
     }
 }

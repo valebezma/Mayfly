@@ -159,6 +159,9 @@
   <data name="FilterWaters" xml:space="preserve">
     <value>Фильтр записей водоёмов</value>
   </data>
+  <data name="ForageIndicator" xml:space="preserve">
+    <value>корм</value>
+  </data>
   <data name="Groups" xml:space="preserve">
     <value>Группа (ведомость)</value>
   </data>

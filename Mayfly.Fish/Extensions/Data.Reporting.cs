@@ -68,7 +68,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                table2.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(Mayfly.UserSettings.FormatCoordinate), 2);
+                table2.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(UI.FormatCoordinate), 2);
             }
             table2.EndRow();
 
@@ -618,7 +618,7 @@ namespace Mayfly.Fish
                 table1.EndRow();
 
                 table1.StartRow();
-                table1.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(Mayfly.UserSettings.FormatCoordinate), 2);
+                table1.AddCellPrompt(Wild.Resources.Reports.Card.Where, cardRow.Position.GetHTMLReference(UI.FormatCoordinate), 2);
                 table1.EndRow();
                 report.AddTable(table1);
 
