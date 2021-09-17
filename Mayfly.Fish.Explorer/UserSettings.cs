@@ -148,7 +148,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double DefaultCatchability
         {
-            get { return (double)(int)UserSetting.GetValue(Path, nameof(DefaultCatchability), 200) / 100; }
+            get { return (double)(int)UserSetting.GetValue(Path, nameof(DefaultCatchability), 20) / 100; }
             set { UserSetting.SetValue(Path, nameof(DefaultCatchability), (int)(value * 100)); }
         }
 

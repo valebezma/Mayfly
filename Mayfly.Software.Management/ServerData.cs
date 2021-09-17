@@ -55,7 +55,7 @@ namespace Mayfly.Software.Management
 
                 if (changes.Tables[tableName].Rows.Count > 0)
                 {
-                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName, ServerSoftware.Connection);
+                    adapter.SelectCommand = new MySqlCommand("SELECT * FROM " + tableName.ToLowerInvariant(), ServerSoftware.Connection);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(adapter);
 
                     adapter.InsertCommand = cb.GetInsertCommand();

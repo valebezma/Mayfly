@@ -10,7 +10,7 @@ namespace Mayfly.Software
 {
     public abstract class Update
     {
-        public readonly static Uri UpdatesUri = Server.GetUri("get/updates/current/");
+        public readonly static Uri UpdatesUri = Server.GetUri("get/current/");
 
         public static Uri GetUri(string localPath)
         {

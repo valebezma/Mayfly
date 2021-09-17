@@ -632,6 +632,9 @@
     <None Include="Resources\NewLog.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ico\1.ico" />
+    <Content Include="ico\2.ico" />
+    <Content Include="ico\3.ico" />
     <Content Include="interface\reports\css\wild\key.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
