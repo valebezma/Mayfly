@@ -1053,7 +1053,7 @@ namespace Mayfly.ManualLicenser
                     data.Solitary.WaterRow.Presentation,
                     data.Solitary.Label,
                     data.Solitary.When,
-                    data.Solitary.SamplerPresentation,
+                    data.Solitary.SamplerShortPresentation,
                     data.Solitary.Volume * 1000);
 
 
