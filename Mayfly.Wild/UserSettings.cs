@@ -95,7 +95,7 @@ namespace Mayfly.Wild
 
         public static DiversityIndex Diversity
         {
-            get { return (DiversityIndex)(int)UserSetting.GetValue(Path, nameof(Diversity), DiversityIndex.D1963_Shannon); }
+            get { return (DiversityIndex)(int)UserSetting.GetValue(Path, nameof(Diversity), (int)DiversityIndex.D1963_Shannon); }
             set { UserSetting.SetValue(Path, nameof(Diversity), (int)value); }
         }
 
@@ -115,9 +115,12 @@ namespace Mayfly.Wild
                 {
                     WatersIndexPath = Service.GetReferencePath(Waters.UserSettings.Interface.OpenDialog,
                       "Waters (auto).wtr", Server.GetUri("get/references/waters/waters_default.wtr", Application.CurrentCulture));
+                    return WatersIndexPath;
                 }
-
-                return WatersIndexPath;
+                else
+                {
+                    return filepath;
+                }
             }
             set 
             {

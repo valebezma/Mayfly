@@ -24,21 +24,11 @@ namespace Mayfly.Fish.Explorer
                 tabPageGamingAge.Parent =
                 tabPageGamingMeasure.Parent =
                 tabPageCatchability.Parent =
-                //tabPageAdvanced.Parent =
                 License.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
-
-            //tabPagePrediction.Parent =
-            //    License.AllowedFeaturesLevel >= FeatureLevel.Advanced ? tabControl : null;
-
-            checkBoxKeepWizards.Enabled = 
-                License.AllowedFeaturesLevel >= FeatureLevel.Advanced;
 
             UI.SetControlClickability(
                 License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
                 checkBoxBioAutoLoad,
-                listViewBio, 
-                buttonBioBrowse,
-                buttonBioRemove,
                 label7);
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
@@ -54,9 +44,8 @@ namespace Mayfly.Fish.Explorer
             numericUpDownInterval.Minimum = numericUpDownInterval.Increment =
                 (decimal)Fish.UserSettings.DefaultStratifiedInterval;
 
-
-
-
+            checkBoxSuggestAge.Checked = UserSettings.SuggestAge;
+            checkBoxSuggestMass.Checked = UserSettings.SuggestMass;
             checkBoxKeepWizards.Checked = UserSettings.KeepWizard;
             comboBoxReportCriticality.SelectedIndex = (int)UserSettings.ReportCriticality;
             checkBoxConsistency.Checked = UserSettings.CheckConsistency;
@@ -67,12 +56,12 @@ namespace Mayfly.Fish.Explorer
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
+                speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+                speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+                speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+
                 foreach (SpeciesKey.SpeciesRow speciesRow in Fish.UserSettings.SpeciesIndex.Species)
                 {
-                    speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                    speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                    speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-
                     LoadAge(speciesRow);
                     LoadMeasure(speciesRow);
                     LoadCatchability(speciesRow);
@@ -91,8 +80,6 @@ namespace Mayfly.Fish.Explorer
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-                checkBoxSuggestAge.Checked = UserSettings.SuggestAge;
-                checkBoxSuggestMass.Checked = UserSettings.SuggestMass;
                 checkBoxBioAutoLoad.Checked = UserSettings.AutoLoadBio;
 
                 foreach (string bio in UserSettings.Bios)
@@ -326,7 +313,7 @@ namespace Mayfly.Fish.Explorer
 
         private void checkBoxBioAutoLoad_CheckedChanged(object sender, EventArgs e)
         {
-            listViewBio.Enabled = buttonBioBrowse.Enabled = 
+            listViewBio.Enabled = buttonBioBrowse.Enabled = buttonBioRemove.Enabled =
                 checkBoxBioAutoLoad.Checked;
         }
 

@@ -88,17 +88,5 @@ namespace Mayfly.Wild
                 return this.Sampler;
             }
         }
-
-        //public string[] GetSamplerNames()
-        //{
-        //    List<string> result = new List<string>();
-
-        //    foreach (SamplerRow samplerRow in Sampler)
-        //    {
-        //        result.Add(samplerRow.Sampler);
-        //    }
-
-        //    return result.ToArray();
-        //}
     }
 }

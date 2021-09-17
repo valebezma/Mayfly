@@ -168,7 +168,7 @@ namespace Mayfly.Mathematics.Statistics
 
             BivariateSample result = new BivariateSample();
 
-            if (bands != null)
+            if (bands != null && bands.Length == xvalues.Count)
             {
                 for (int i = 0; i < data.Count; i++)
                 {

@@ -54,10 +54,13 @@ namespace Mayfly.Plankton
 
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
-                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Plankton");
+                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Fish");
+                    return SpeciesIndexPath;
                 }
-
-                return SpeciesIndexPath;
+                else
+                {
+                    return filepath;
+                }
             }
             set
             {

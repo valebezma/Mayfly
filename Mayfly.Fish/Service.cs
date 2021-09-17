@@ -20,7 +20,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening()
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), 60);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), 600);
 
             if (result == null)
             {
@@ -34,7 +34,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening(int samplerID)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName, 600);
 
             if (result == null)
             {

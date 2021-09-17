@@ -568,7 +568,6 @@ namespace Mayfly.Fish
             checkBoxSpeciesExpandVisualControl.Checked = UserSettings.SpeciesAutoExpandVisual;
 
             textBoxDiet.Text = UserSettings.DietIndexPath;
-
             textBoxParasites.Text = UserSettings.ParasitesIndexPath;
 
             #endregion

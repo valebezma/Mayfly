@@ -141,9 +141,12 @@ namespace Mayfly.Fish
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
                     ParasitesIndexPath = Wild.Service.GetReferencePathSpecies("Fish Parasites");
+                    return ParasitesIndexPath;
                 }
-
-                return ParasitesIndexPath;
+                else
+                {
+                    return filepath;
+                }
             }
             set
             {
@@ -181,9 +184,12 @@ namespace Mayfly.Fish
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
                     DietIndexPath = Wild.Service.GetReferencePathSpecies("Fish Diet");
+                    return DietIndexPath;
                 }
-
-                return DietIndexPath;
+                else
+                {
+                    return filepath;
+                }
             }
 
             set 

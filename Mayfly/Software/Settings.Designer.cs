@@ -31,11 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tabControlSettings = new System.Windows.Forms.TabControl();
-            this.tabPagePrint = new System.Windows.Forms.TabPage();
+            this.tabPagePersonal = new System.Windows.Forms.TabPage();
             this.comboBoxCulture = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
             this.maskedPass = new System.Windows.Forms.MaskedTextBox();
             this.checkBoxCredentials = new System.Windows.Forms.CheckBox();
@@ -50,7 +48,7 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelPersonal = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageOther = new System.Windows.Forms.TabPage();
             this.checkBoxUseUnsafeConnection = new System.Windows.Forms.CheckBox();
             this.labelUpdates = new System.Windows.Forms.Label();
             this.labelUpdatePolicy = new System.Windows.Forms.Label();
@@ -68,29 +66,38 @@
             this.tdbSignoutCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSignoutConfirm = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tabControlSettings.SuspendLayout();
-            this.tabPagePrint.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPagePersonal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabPageOther.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlSettings
             // 
             resources.ApplyResources(this.tabControlSettings, "tabControlSettings");
-            this.tabControlSettings.Controls.Add(this.tabPagePrint);
-            this.tabControlSettings.Controls.Add(this.tabPage1);
-            this.tabControlSettings.Controls.Add(this.tabPage2);
+            this.tabControlSettings.Controls.Add(this.tabPagePersonal);
+            this.tabControlSettings.Controls.Add(this.tabPageOther);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
             // 
-            // tabPagePrint
+            // tabPagePersonal
             // 
-            this.tabPagePrint.Controls.Add(this.comboBoxCulture);
-            this.tabPagePrint.Controls.Add(this.label2);
-            this.tabPagePrint.Controls.Add(this.label1);
-            resources.ApplyResources(this.tabPagePrint, "tabPagePrint");
-            this.tabPagePrint.Name = "tabPagePrint";
-            this.tabPagePrint.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tabPagePersonal, "tabPagePersonal");
+            this.tabPagePersonal.Controls.Add(this.comboBoxCulture);
+            this.tabPagePersonal.Controls.Add(this.label2);
+            this.tabPagePersonal.Controls.Add(this.pictureBoxLogin);
+            this.tabPagePersonal.Controls.Add(this.maskedPass);
+            this.tabPagePersonal.Controls.Add(this.checkBoxCredentials);
+            this.tabPagePersonal.Controls.Add(this.listViewLicenses);
+            this.tabPagePersonal.Controls.Add(this.buttonLogin);
+            this.tabPagePersonal.Controls.Add(this.labelFeaturesInstruction);
+            this.tabPagePersonal.Controls.Add(this.labelPass);
+            this.tabPagePersonal.Controls.Add(this.labelEmail);
+            this.tabPagePersonal.Controls.Add(this.labelUsername);
+            this.tabPagePersonal.Controls.Add(this.textBoxEmail);
+            this.tabPagePersonal.Controls.Add(this.textBoxUsername);
+            this.tabPagePersonal.Controls.Add(this.labelPersonal);
+            this.tabPagePersonal.Name = "tabPagePersonal";
+            this.tabPagePersonal.UseVisualStyleBackColor = true;
             // 
             // comboBoxCulture
             // 
@@ -104,30 +111,6 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label1.Name = "label1";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.pictureBoxLogin);
-            this.tabPage1.Controls.Add(this.maskedPass);
-            this.tabPage1.Controls.Add(this.checkBoxCredentials);
-            this.tabPage1.Controls.Add(this.listViewLicenses);
-            this.tabPage1.Controls.Add(this.buttonLogin);
-            this.tabPage1.Controls.Add(this.labelFeaturesInstruction);
-            this.tabPage1.Controls.Add(this.labelPass);
-            this.tabPage1.Controls.Add(this.labelEmail);
-            this.tabPage1.Controls.Add(this.labelUsername);
-            this.tabPage1.Controls.Add(this.textBoxEmail);
-            this.tabPage1.Controls.Add(this.textBoxUsername);
-            this.tabPage1.Controls.Add(this.labelPersonal);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // pictureBoxLogin
             // 
@@ -220,17 +203,17 @@
             this.labelPersonal.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelPersonal.Name = "labelPersonal";
             // 
-            // tabPage2
+            // tabPageOther
             // 
-            this.tabPage2.Controls.Add(this.checkBoxUseUnsafeConnection);
-            this.tabPage2.Controls.Add(this.labelUpdates);
-            this.tabPage2.Controls.Add(this.labelUpdatePolicy);
-            this.tabPage2.Controls.Add(this.comboBoxUpdatePolicy);
-            this.tabPage2.Controls.Add(this.labelDiagnosics);
-            this.tabPage2.Controls.Add(this.checkBoxShareDiagnostics);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tabPageOther, "tabPageOther");
+            this.tabPageOther.Controls.Add(this.checkBoxUseUnsafeConnection);
+            this.tabPageOther.Controls.Add(this.labelUpdates);
+            this.tabPageOther.Controls.Add(this.labelUpdatePolicy);
+            this.tabPageOther.Controls.Add(this.comboBoxUpdatePolicy);
+            this.tabPageOther.Controls.Add(this.labelDiagnosics);
+            this.tabPageOther.Controls.Add(this.checkBoxShareDiagnostics);
+            this.tabPageOther.Name = "tabPageOther";
+            this.tabPageOther.UseVisualStyleBackColor = true;
             // 
             // checkBoxUseUnsafeConnection
             // 
@@ -315,8 +298,8 @@
             // 
             // tdbMismatchReplace
             // 
-            this.tdbMismatchReplace.Default = true;
             resources.ApplyResources(this.tdbMismatchReplace, "tdbMismatchReplace");
+            this.tdbMismatchReplace.Default = true;
             // 
             // taskDialogLogout
             // 
@@ -346,13 +329,11 @@
             this.MinimizeBox = false;
             this.Name = "Settings";
             this.tabControlSettings.ResumeLayout(false);
-            this.tabPagePrint.ResumeLayout(false);
-            this.tabPagePrint.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabPagePersonal.ResumeLayout(false);
+            this.tabPagePersonal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPageOther.ResumeLayout(false);
+            this.tabPageOther.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -362,15 +343,13 @@
         protected System.Windows.Forms.TabControl tabControlSettings;
         protected System.Windows.Forms.Button buttonOK;
         protected System.Windows.Forms.Button buttonApply;
-        protected System.Windows.Forms.TabPage tabPagePrint;
         protected System.Windows.Forms.ComboBox comboBoxCulture;
         protected System.Windows.Forms.Label label2;
-        protected System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPagePersonal;
         protected System.Windows.Forms.Label labelUsername;
         protected System.Windows.Forms.TextBox textBoxUsername;
         protected System.Windows.Forms.Label labelPersonal;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageOther;
         protected System.Windows.Forms.Label labelUpdates;
         protected System.Windows.Forms.Label labelUpdatePolicy;
         protected System.Windows.Forms.ComboBox comboBoxUpdatePolicy;

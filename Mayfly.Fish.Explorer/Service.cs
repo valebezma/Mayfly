@@ -171,7 +171,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double GetMeasure(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingLength), species);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingLength), species, null);
 
             if (result == null)
             {
@@ -191,7 +191,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Age GetGamingAge(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingAge), species);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingAge), species, null);
 
             if (result == null)
             {

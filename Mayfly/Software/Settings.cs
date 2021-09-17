@@ -42,14 +42,13 @@ namespace Mayfly.Software
                 (int)UserSettings.UpdatePolicy : 0;
 
             checkBoxUseUnsafeConnection.Checked = UserSettings.UseUnsafeConnection;
-
             checkBoxShareDiagnostics.Checked = UserSettings.ShareDiagnostics;
         }
 
 
         public void OpenFeatures()
         {
-            tabControlSettings.SelectedTab = tabPage1;
+            tabControlSettings.SelectedTab = tabPagePersonal;
         }
 
         private void UpdateCredentials(NetworkCredential cred)

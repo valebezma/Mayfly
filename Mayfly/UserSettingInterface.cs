@@ -17,38 +17,6 @@ namespace Mayfly
             return @"Software\Mayfly\Features\" + feature;
         }
 
-        public static bool InitializationRequired(string path, Assembly assembly)
-        {
-            Version sourceVersion = new Version(
-                FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion);
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(path);
-            object currVersion = key.GetValue(string.Empty);
-            if (string.IsNullOrWhiteSpace((string)currVersion)) return true;
-            if (Version.Parse((string)currVersion) < sourceVersion) return true;
-            return false;
-        }
-
-        public static void InitializeRegistry(string path, Assembly assembly, UserSetting[] settings)
-        {
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(path);
-
-            RegistrySecurity security = new RegistrySecurity();
-            security.SetAccessRule(new RegistryAccessRule(Environment.UserName, RegistryRights.SetValue, AccessControlType.Allow));
-            security.SetAccessRule(new RegistryAccessRule(Environment.UserName, RegistryRights.WriteKey, AccessControlType.Allow));
-            security.SetAccessRule(new RegistryAccessRule(Environment.UserName, RegistryRights.ReadKey, AccessControlType.Allow));
-            key.SetAccessControl(security);
-
-            if (assembly != null) key.SetValue(string.Empty, FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion);
-
-            foreach (UserSetting userSetting in settings)
-            {
-                if (userSetting.Overwrite || !key.GetSubKeyNames().Contains(userSetting.Parameter))
-                {
-                    SetValue(path, userSetting.Parameter, userSetting.Value);
-                }
-            }
-        }
-
         public static object GetValue(string path, string key, object defaultValue)
         {
             RegistryKey subKey = Registry.CurrentUser.CreateSubKey(path);

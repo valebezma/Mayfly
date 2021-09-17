@@ -54,10 +54,13 @@ namespace Mayfly.Benthos
 
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
-                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Benthos");
+                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Fish");
+                    return SpeciesIndexPath;
                 }
-
-                return SpeciesIndexPath;
+                else
+                {
+                    return filepath;
+                }
             }
             set
             {

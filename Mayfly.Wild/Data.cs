@@ -554,11 +554,33 @@ namespace Mayfly.Wild
                 }
             }
 
-            public string SamplerPresentation
+            public string SamplerDetails
             {
                 get
                 {
-                    return IsSamplerNull() ? Constants.Null : SamplerRow.Sampler;
+                    return IsSamplerNull() ? string.Empty : (
+                        SamplerRow.IsEffortFormulaNull() ? string.Empty : (
+                        SamplerRow.EffortFormula.Contains("M") ? (IsMeshNull() ? string.Empty : Mesh.ToString("◊ 0")) : (
+                        SamplerRow.EffortFormula.Contains("J") ? (IsHookNull() ? string.Empty : Hook.ToString("ʔ 0")) : When.ToString("yyyy MMMM")
+                        )
+                        )
+                        );
+                }
+            }
+
+            public string SamplerShortPresentation
+            {
+                get
+                {
+                    return IsSamplerNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.ShortName, SamplerDetails).TrimEnd();
+                }
+            }
+
+            public string SamplerFullPresentation
+            {
+                get
+                {
+                    return IsSamplerNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.Sampler, SamplerDetails).TrimEnd();
                 }
             }
 
@@ -733,7 +755,7 @@ namespace Mayfly.Wild
 
                 if (!this.IsSamplerNull())
                 {
-                    result += SamplerRow.ShortName + " ";
+                    result += SamplerShortPresentation + " ";
                 }
 
                 if (!this.IsWaterIDNull())
@@ -1071,7 +1093,7 @@ namespace Mayfly.Wild
                     default:
                         return string.Format(Resources.Interface.Interface.SampleFormat,
                             When, When, WaterRow == null ? Resources.Interface.Interface.WaterUnknown : WaterRow.Presentation,
-                            Investigator, SamplerPresentation);
+                            Investigator, SamplerFullPresentation);
                 }
             }
         }
