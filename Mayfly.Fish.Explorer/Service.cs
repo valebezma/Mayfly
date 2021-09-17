@@ -131,7 +131,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double GetNaturalMortality(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(NaturalMortality), species);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(NaturalMortality), species, null);
 
             if (result == null)
             {
@@ -151,7 +151,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double GetFishingMortality(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(FishingMortality), species);
+            object result = UserSetting.GetValue(UserSettings.Path, nameof(FishingMortality), species, null);
 
             if (result == null)
             {

@@ -249,17 +249,19 @@ namespace Mayfly.Software.Management
             {
                 if (gridRow.IsNewRow) continue;
 
-                int id = (int)spreadSheetSat[columnSatID.Index, gridRow.Index].Value;
-                Scheme.SatelliteRow satRow = ServerData.SchemeData.Satellite.FindByID(id);
+                Scheme.SatelliteRow satRow;
+
                 string sat = (string)spreadSheetSat[columnSatPath.Index, gridRow.Index].Value;
                 bool loc = spreadSheetSat[columnSatLocal.Index, gridRow.Index].Value != null && (bool)spreadSheetSat[columnSatLocal.Index, gridRow.Index].Value;
 
-                if (satRow == null)
+                if (spreadSheetSat[columnSatID.Index, gridRow.Index].Value == null)
                 {
                     satRow = ServerData.SchemeData.Satellite.AddSatelliteRow(SelectedFileRow, sat, loc);
                 }
                 else
                 {
+                    int id = (int)spreadSheetSat[columnSatID.Index, gridRow.Index].Value;
+                    satRow = ServerData.SchemeData.Satellite.FindByID(id);
                     if (satRow.Path != sat) satRow.Path = sat;
                     if (!satRow.IsLocalizableNull() && satRow.Localizable != loc) satRow.Localizable = loc;
                 }
@@ -601,9 +603,6 @@ namespace Mayfly.Software.Management
                 newversioninputstarted = false;
             }
         }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        { }
 
         private void MainForm_Load(object sender, EventArgs e)
         {

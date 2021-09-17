@@ -524,7 +524,7 @@ namespace Mayfly.Species
 
         private void RunSelected(string species)
         {
-            object used = UserSetting.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species);
+            object used = UserSetting.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species, null);
 
             if (used == null) {
                 UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species, 1);

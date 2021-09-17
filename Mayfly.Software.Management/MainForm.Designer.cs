@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemUpload = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,9 @@
             this.columnVerNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.spreadSheetSat = new Mayfly.Controls.SpreadSheet();
+            this.columnSatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSatPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSatLocal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.checkBoxExtDetails = new System.Windows.Forms.CheckBox();
             this.spreadSheetExt = new Mayfly.Controls.SpreadSheet();
@@ -83,9 +86,6 @@
             this.inputProduct = new Mayfly.TaskDialogs.InputDialog(this.components);
             this.buttonFileAdd = new System.Windows.Forms.Button();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
-            this.columnSatID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSatPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSatLocal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
@@ -221,18 +221,18 @@
             // 
             // columnVer
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.columnVer.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.columnVer.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.columnVer, "columnVer");
             this.columnVer.Name = "columnVer";
             this.columnVer.ReadOnly = true;
             // 
             // columnVerPublished
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.Format = "G";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnVerPublished.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle10.Format = "G";
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnVerPublished.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.columnVerPublished, "columnVerPublished");
             this.columnVerPublished.Name = "columnVerPublished";
             this.columnVerPublished.ReadOnly = true;
@@ -240,9 +240,9 @@
             // columnVerNotes
             // 
             this.columnVerNotes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnVerNotes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnVerNotes.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(this.columnVerNotes, "columnVerNotes");
             this.columnVerNotes.Name = "columnVerNotes";
             // 
@@ -267,6 +267,24 @@
             this.spreadSheetSat.Name = "spreadSheetSat";
             this.spreadSheetSat.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheet_CellEndEdit);
             this.spreadSheetSat.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetSat_CellValueChanged);
+            // 
+            // columnSatID
+            // 
+            resources.ApplyResources(this.columnSatID, "columnSatID");
+            this.columnSatID.Name = "columnSatID";
+            // 
+            // columnSatPath
+            // 
+            this.columnSatPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.columnSatPath.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(this.columnSatPath, "columnSatPath");
+            this.columnSatPath.Name = "columnSatPath";
+            // 
+            // columnSatLocal
+            // 
+            resources.ApplyResources(this.columnSatLocal, "columnSatLocal");
+            this.columnSatLocal.Name = "columnSatLocal";
             // 
             // tabPage2
             // 
@@ -303,31 +321,31 @@
             // 
             // columnExt
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.columnExt.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.columnExt.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.columnExt, "columnExt");
             this.columnExt.Name = "columnExt";
             // 
             // columnExtFriendly
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle6.Format = "G";
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.columnExtFriendly.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle14.Format = "G";
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.columnExtFriendly.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.columnExtFriendly, "columnExtFriendly");
             this.columnExtFriendly.Name = "columnExtFriendly";
             // 
             // columnExtProgid
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.columnExtProgid.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.columnExtProgid.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.columnExtProgid, "columnExtProgid");
             this.columnExtProgid.Name = "columnExtProgid";
             // 
             // columnExtIndex
             // 
-            dataGridViewCellStyle8.Format = "N0";
-            this.columnExtIndex.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Format = "N0";
+            this.columnExtIndex.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.columnExtIndex, "columnExtIndex");
             this.columnExtIndex.Name = "columnExtIndex";
             // 
@@ -451,24 +469,6 @@
             // 
             resources.ApplyResources(this.openFile, "openFile");
             // 
-            // columnSatID
-            // 
-            resources.ApplyResources(this.columnSatID, "columnSatID");
-            this.columnSatID.Name = "columnSatID";
-            // 
-            // columnSatPath
-            // 
-            this.columnSatPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.columnSatPath.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.columnSatPath, "columnSatPath");
-            this.columnSatPath.Name = "columnSatPath";
-            // 
-            // columnSatLocal
-            // 
-            resources.ApplyResources(this.columnSatLocal, "columnSatLocal");
-            this.columnSatLocal.Name = "columnSatLocal";
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -482,7 +482,6 @@
             this.Controls.Add(this.listViewFiles);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
