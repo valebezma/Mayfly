@@ -87,8 +87,8 @@ namespace Mayfly.Plankton.Explorer
         public static string[] GetAssociates(string species)
         {
             object result = UserSetting.GetValue(UserSettings.Path,
-                new string[] { Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Association },
-                species);
+                new string[] { "Restoration", "Assosiciation" },
+                species, new string[0]);
 
             if (result == null)
             {
