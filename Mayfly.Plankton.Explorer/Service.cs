@@ -122,7 +122,7 @@ namespace Mayfly.Plankton.Explorer
         public static void SaveAssociates(string species, string[] associates)
         {
             UserSetting.SetValue(UserSettings.Path,
-                new string[] { Wild.UserSettingPaths.MassRestoration, Wild.UserSettingPaths.Association },
+                new string[] { "Restoration", "Assosiciation" },
                 species, associates);
         }
     }
