@@ -1,13 +1,14 @@
-﻿using Microsoft.Win32;
+﻿using Mayfly.Extensions;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Resources;
 using System.Windows.Forms;
-using Mayfly.Extensions;
 
 namespace Mayfly.Software
 {
@@ -265,6 +266,7 @@ namespace Mayfly.Software
 
         private void wizardPageGet_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
         {
+
             foreach (Scheme.FileRow fileRow in SelectedProduct.GetFileRows())
             {
                 downloadLinks.Add(Software.Update.GetUri(Path.GetFileNameWithoutExtension(fileRow.File) + ".zip"));
@@ -318,15 +320,25 @@ namespace Mayfly.Software
                 FileInfo fi = new FileInfo(tempFile);
                 Service.UpdateStatus(labelStatus, Resources.Interface.Installing, fi.Name);
                 IO.UnpackFiles(tempFile, InstallPath);
-
                 if (lang != CultureInfo.InvariantCulture)
                 {
                     fi = new FileInfo(tempFile.Insert(tempFile.LastIndexOf('\\'), '\\' + lang.Name));
                     IO.UnpackFiles(fi.FullName, InstallPath);
                 }
 
-                progress++; 
+                progress++;
                 backgroundDownloader.ReportProgress(progress);
+            }
+
+            string rName = "R for Windows";
+            if (!Service.CheckInstalled(rName))
+            {
+                Service.UpdateStatus(labelStatus, Resources.Interface.Downloading, rName);
+                Process process = new Process();
+                process.StartInfo.FileName = ServerSoftware.DownloadFile(new Uri("https://cran.r-project.org/bin/windows/base/R-4.1.1-win.exe"));
+                Service.UpdateStatus(labelStatus, Resources.Interface.Installing, rName);
+                process.Start();
+                process.WaitForExit();
             }
 
             Setup(Service.IsChecked(checkBoxStart), Service.IsChecked(checkBoxDesktop),

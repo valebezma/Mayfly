@@ -86,8 +86,8 @@
             // 
             // wizardControl
             // 
-            this.wizardControl.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.wizardControl, "wizardControl");
+            this.wizardControl.BackColor = System.Drawing.Color.White;
             this.wizardControl.Name = "wizardControl";
             this.wizardControl.Pages.Add(this.wizardPageStart);
             this.wizardControl.Pages.Add(this.wizardPageProduct);
@@ -102,9 +102,9 @@
             // 
             // wizardPageStart
             // 
+            resources.ApplyResources(this.wizardPageStart, "wizardPageStart");
             this.wizardPageStart.Controls.Add(this.labelStart);
             this.wizardPageStart.Name = "wizardPageStart";
-            resources.ApplyResources(this.wizardPageStart, "wizardPageStart");
             // 
             // labelStart
             // 
@@ -113,11 +113,11 @@
             // 
             // wizardPageProduct
             // 
+            resources.ApplyResources(this.wizardPageProduct, "wizardPageProduct");
             this.wizardPageProduct.Controls.Add(this.label1);
             this.wizardPageProduct.Controls.Add(this.comboBoxProduct);
             this.wizardPageProduct.Controls.Add(this.label2);
             this.wizardPageProduct.Name = "wizardPageProduct";
-            resources.ApplyResources(this.wizardPageProduct, "wizardPageProduct");
             this.wizardPageProduct.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.wizardPageProduct_Commit);
             // 
             // label1
@@ -141,11 +141,11 @@
             // 
             // wizardPageEula
             // 
+            resources.ApplyResources(this.wizardPageEula, "wizardPageEula");
             this.wizardPageEula.AllowNext = false;
             this.wizardPageEula.Controls.Add(this.webBrowserEula);
             this.wizardPageEula.Controls.Add(this.labelEula);
             this.wizardPageEula.Name = "wizardPageEula";
-            resources.ApplyResources(this.wizardPageEula, "wizardPageEula");
             this.wizardPageEula.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.wizardPageEula_Commit);
             this.wizardPageEula.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.wizardPageEula_Initialize);
             this.wizardPageEula.Rollback += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.wizardPageEula_Rollback);
@@ -162,6 +162,7 @@
             // 
             // wizardPageLanguage
             // 
+            resources.ApplyResources(this.wizardPageLanguage, "wizardPageLanguage");
             this.wizardPageLanguage.Controls.Add(this.textBoxUsername);
             this.wizardPageLanguage.Controls.Add(this.label4);
             this.wizardPageLanguage.Controls.Add(this.labelLangInstruction);
@@ -170,7 +171,6 @@
             this.wizardPageLanguage.Controls.Add(this.comboBoxLang);
             this.wizardPageLanguage.Controls.Add(this.labelLang);
             this.wizardPageLanguage.Name = "wizardPageLanguage";
-            resources.ApplyResources(this.wizardPageLanguage, "wizardPageLanguage");
             this.wizardPageLanguage.Commit += new System.EventHandler<AeroWizard.WizardPageConfirmEventArgs>(this.wizardPageLanguage_Commit);
             this.wizardPageLanguage.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.wizardPageLanguage_Initialize);
             // 
@@ -218,11 +218,11 @@
             // 
             // wizardPageShortcuts
             // 
+            resources.ApplyResources(this.wizardPageShortcuts, "wizardPageShortcuts");
             this.wizardPageShortcuts.Controls.Add(this.checkBoxDesktop);
             this.wizardPageShortcuts.Controls.Add(this.checkBoxStart);
             this.wizardPageShortcuts.Controls.Add(this.labelShortcutInstruction);
             this.wizardPageShortcuts.Name = "wizardPageShortcuts";
-            resources.ApplyResources(this.wizardPageShortcuts, "wizardPageShortcuts");
             // 
             // checkBoxDesktop
             // 
@@ -247,6 +247,7 @@
             // 
             // wizardPageFiletypes
             // 
+            resources.ApplyResources(this.wizardPageFiletypes, "wizardPageFiletypes");
             this.wizardPageFiletypes.Controls.Add(this.radioFiletypeKeep);
             this.wizardPageFiletypes.Controls.Add(this.radioFileTypeAsk);
             this.wizardPageFiletypes.Controls.Add(this.radioFileTypeReass);
@@ -255,7 +256,6 @@
             this.wizardPageFiletypes.Controls.Add(this.labelFileTypeExists);
             this.wizardPageFiletypes.Controls.Add(this.labelFileTypes);
             this.wizardPageFiletypes.Name = "wizardPageFiletypes";
-            resources.ApplyResources(this.wizardPageFiletypes, "wizardPageFiletypes");
             // 
             // radioFiletypeKeep
             // 
@@ -304,6 +304,7 @@
             // 
             // wizardPageGet
             // 
+            resources.ApplyResources(this.wizardPageGet, "wizardPageGet");
             this.wizardPageGet.AllowBack = false;
             this.wizardPageGet.AllowCancel = false;
             this.wizardPageGet.AllowNext = false;
@@ -312,7 +313,6 @@
             this.wizardPageGet.Controls.Add(this.progressBar);
             this.wizardPageGet.Name = "wizardPageGet";
             this.wizardPageGet.ShowCancel = false;
-            resources.ApplyResources(this.wizardPageGet, "wizardPageGet");
             this.wizardPageGet.Initialize += new System.EventHandler<AeroWizard.WizardPageInitEventArgs>(this.wizardPageGet_Initialize);
             // 
             // labelStatus
@@ -333,11 +333,11 @@
             // 
             // wizardPageDone
             // 
+            resources.ApplyResources(this.wizardPageDone, "wizardPageDone");
             this.wizardPageDone.AllowBack = false;
             this.wizardPageDone.Controls.Add(this.labelDone);
             this.wizardPageDone.Name = "wizardPageDone";
             this.wizardPageDone.ShowCancel = false;
-            resources.ApplyResources(this.wizardPageDone, "wizardPageDone");
             // 
             // labelDone
             // 
@@ -375,8 +375,8 @@
             // 
             // tdbReassoc
             // 
-            this.tdbReassoc.Default = true;
             resources.ApplyResources(this.tdbReassoc, "tdbReassoc");
+            this.tdbReassoc.Default = true;
             // 
             // WizardInstall
             // 
