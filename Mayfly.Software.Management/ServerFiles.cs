@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using System.Threading.Tasks;
 using LibGit2Sharp;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Mayfly.Software.Management
 {
@@ -16,7 +17,17 @@ namespace Mayfly.Software.Management
     {
         public readonly static Uri FtpUri = new Uri("ftp://" + Server.Domain + "/get/updates");
 
-        readonly static NetworkCredential creds = new NetworkCredential("mayfly-uploader", "A0+=Rw");
+        static FtpWebRequest getFtpConnection(Uri uri)
+        {
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri);
+            request.Credentials = new NetworkCredential("mayfly-uploader", "A0+=Rw");
+            request.EnableSsl = true;
+            if (UserSettings.UseUnsafeConnection) Server.SetUnsafeCertifications();
+            request.UsePassive = true;
+            request.UseBinary = true;
+            request.KeepAlive = false;
+            return request;
+        }
 
 
 
@@ -54,26 +65,17 @@ namespace Mayfly.Software.Management
         public static void Move(Uri source, Uri destination)
         {
             EnsurePathToLoad(destination);
-
-            Uri targeturi = source.MakeRelativeUri(destination);
-
-            FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(source);
-            ftp.Credentials = creds;
+            FtpWebRequest ftp = getFtpConnection(source);
             ftp.Method = WebRequestMethods.Ftp.Rename;
+            Uri targeturi = source.MakeRelativeUri(destination);
             ftp.RenameTo = Uri.UnescapeDataString(targeturi.OriginalString);
             ftp.GetResponse();
         }
 
         public static string[] GetFilenames(string localPath)
         {
-            FtpWebRequest request;
-            request = (FtpWebRequest)WebRequest.Create(Server.GetUri(FtpUri, localPath));
+            FtpWebRequest request = getFtpConnection(Server.GetUri(FtpUri, localPath));
             request.Method = WebRequestMethods.Ftp.ListDirectory;
-            request.Credentials = creds;
-            request.UsePassive = true;
-            request.UseBinary = true;
-            request.KeepAlive = false;
-
             using (FtpWebResponse respone = (FtpWebResponse)request.GetResponse())
             using (Stream stream = respone.GetResponseStream())
             {
@@ -91,17 +93,16 @@ namespace Mayfly.Software.Management
         {
             try
             {
-                FtpWebResponse response = null;
-
-                EnsurePathToLoad(ftppath);
-
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftppath);
+                FtpWebRequest request = getFtpConnection(ftppath);
                 request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = creds;
                 request.ContentLength = content.Length;
+
                 Stream stream = request.GetRequestStream();
                 stream.Write(content, 0, content.Length);
                 stream.Close();
+
+                FtpWebResponse response = null;
+                EnsurePathToLoad(ftppath);
                 response = (FtpWebResponse)request.GetResponse();
 
                 Log.Write(EventType.Maintenance, "File {0} sent with response {1}", Path.GetFileName(ftppath.LocalPath), response.StatusDescription.Trim());
@@ -125,9 +126,8 @@ namespace Mayfly.Software.Management
                     try
                     {
                         curruri = new Uri(curruri.OriginalString + ftppath.Segments[i]);
-                        FtpWebRequest requestf = (FtpWebRequest)WebRequest.Create(curruri);
+                        FtpWebRequest requestf = getFtpConnection(curruri);
                         requestf.Method = WebRequestMethods.Ftp.MakeDirectory;
-                        requestf.Credentials = creds;
                         response = (FtpWebResponse)requestf.GetResponse();
                     }
                     catch //(WebException e)

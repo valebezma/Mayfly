@@ -68,7 +68,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Mayfly.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>5A28EE11612ED7D04D669BCA8A1D124F376F6A40</ManifestCertificateThumbprint>
@@ -338,9 +339,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WizardInstall.aa-ER.resx">
-      <DependentUpon>WizardInstall.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WizardInstall.resx">
       <DependentUpon>WizardInstall.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -381,8 +379,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Mayfly.pfx" />
-    <None Include="Mayfly.Software_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Scheme.xsc">

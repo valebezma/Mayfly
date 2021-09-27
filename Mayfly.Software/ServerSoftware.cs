@@ -25,15 +25,9 @@ namespace Mayfly.Software
 
         public static string DownloadFile(Uri uri, string filename)
         {
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-
+            if (UserSettings.UseUnsafeConnection) Server.SetUnsafeCertifications();
             WebClient webClient = new WebClient();
             webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-            if (UserSettings.UseUnsafeConnection)
-            {
-                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
-            }
 
             try
             {

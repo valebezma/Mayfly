@@ -95,50 +95,20 @@ namespace Mayfly
             IO.RunFile(Path.Combine(IO.ProgramFolder, "mayflysoftware.exe"), "-update", product);
         }
 
-        private static bool AcceptAllCertifications(object sender, X509Certificate certification, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            return true;
-        }
-
-
-        public static string[] GetText(Uri uri)
+        public static void SetUnsafeCertifications()
         {
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            if (UserSettings.UseUnsafeConnection) { 
-                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
-            }
-
-            WebRequest webRequest = WebRequest.Create(uri);
-            webRequest.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-
-            List<string> result = new List<string>();
-
-            try
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) =>
             {
-                WebResponse webResponse = webRequest.GetResponse();
-                Stream stream = webResponse.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
-                while (!reader.EndOfStream)
-                {
-                    result.Add(reader.ReadLine());
-                }
-            }
-            catch { return null; }
-
-            return result.ToArray();
+                return true;
+            };
         }
+
 
         public static string[] GetText(Uri uri, Dictionary<string, string> values)
         {
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            if (UserSettings.UseUnsafeConnection)
-            {
-                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(AcceptAllCertifications);
-            }
-            
-
+            if (UserSettings.UseUnsafeConnection) SetUnsafeCertifications();
             WebRequest webRequest = WebRequest.CreateHttp(uri);
             webRequest.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
 
@@ -146,19 +116,23 @@ namespace Mayfly
 
             try
             {
-                webRequest.Method = "POST";
-                string sName = "";
-                foreach (var value in values)
+                if (values.Count > 0)
                 {
-                    sName += value.Key + "=" + value.Value + "&";
+                    webRequest.Method = "POST";
+                    string sName = "";
+                    foreach (var value in values)
+                    {
+                        sName += value.Key + "=" + value.Value + "&";
+                    }
+                    byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(sName);
+                    webRequest.ContentType = "application/x-www-form-urlencoded";
+                    webRequest.ContentLength = byteArray.Length;
+                    using (Stream dataStream = webRequest.GetRequestStream())
+                    {
+                        dataStream.Write(byteArray, 0, byteArray.Length);
+                    }
                 }
-                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(sName);
-                webRequest.ContentType = "application/x-www-form-urlencoded";
-                webRequest.ContentLength = byteArray.Length;
-                using (Stream dataStream = webRequest.GetRequestStream())
-                {
-                    dataStream.Write(byteArray, 0, byteArray.Length);
-                }
+
                 WebResponse webResponse = webRequest.GetResponse();
                 Stream stream = webResponse.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
@@ -178,6 +152,11 @@ namespace Mayfly
             }
 
             return result.ToArray();
+        }
+
+        public static string[] GetText(Uri uri)
+        {
+            return GetText(uri, new Dictionary<string, string>() { });
         }
     }
 
