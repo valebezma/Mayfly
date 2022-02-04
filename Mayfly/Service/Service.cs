@@ -75,7 +75,11 @@ namespace Mayfly
         {
             MultiIcon multiIcon = new MultiIcon();
             multiIcon.Load(filename);
-            SingleIcon si = multiIcon.ToArray()[index];
+            SingleIcon[] res = multiIcon.ToArray();
+
+            if (res.Length == 0) return null;
+
+            SingleIcon si = res[index];
 
             if (size == Size.Empty) return si[si.Count - 1].Icon;
 

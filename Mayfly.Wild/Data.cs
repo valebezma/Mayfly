@@ -1303,7 +1303,7 @@ namespace Mayfly.Wild
 
             public string ToString(string format, IFormatProvider formatProvider)
             {
-                return this.KeyRecord == null ? ToString() : this.KeyRecord.ToString(format, formatProvider);
+                return this.KeyRecord == null ? Species : this.KeyRecord.ToString(format, formatProvider);
             }
 
             public string ToString(string format)

@@ -38,7 +38,8 @@ namespace Mayfly.Fish.Explorer
                 {
                     ToolStripItem _item = new ToolStripMenuItem();
                     _item.Tag = speciesRow;
-                    _item.Text = s == -1 ? speciesRow.KeyRecord.ShortName : string.Format("{0} ({1})", speciesRow.KeyRecord.ShortName, s);
+                    string txt = speciesRow.ToString("s");
+                    _item.Text = s == -1 ? txt : string.Format("{0} ({1})", txt, s);
                     _item.Click += command;
                     item.DropDownItems.Add(_item);
                     added++;

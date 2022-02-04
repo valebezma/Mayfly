@@ -1251,7 +1251,7 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 selectedStatSpc = row;
-                plotQualify.ResetFormatted(selectedStatSpc.KeyRecord.ShortName);
+                plotQualify.ResetFormatted(selectedStatSpc.ToString("s"));
 
                 resetQualPlotAxes(
                     Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
