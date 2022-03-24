@@ -486,11 +486,10 @@ namespace Mayfly.Wild
                 return;
             }
 
-            if (total > this.TotalMass)
-            {
-                this.AdditionalDistributedMass = total - this.TotalMass;
-                //double totalQ = 0;
+            this.AdditionalDistributedMass = Math.Round(total - this.TotalMass, 3);
 
+            if (this.AdditionalDistributedMass > 0)
+            {
                 foreach (Category category in this)
                 {
                     if (category.Quantity == 0) continue;
