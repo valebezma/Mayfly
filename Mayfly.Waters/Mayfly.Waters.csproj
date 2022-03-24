@@ -327,7 +327,8 @@
     <PostBuildEvent>"$(OutDir)rh.exe" -open "$(TargetPath)" -save "$(TargetPath)" -action addskip -res "$(ProjectDir)icons.res"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe" $(ProjectDir)icons.rc</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

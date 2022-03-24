@@ -423,7 +423,8 @@
     <PostBuildEvent>"$(OutDir)rh.exe" -open "$(TargetPath)" -save "$(TargetPath)" -action addskip -res "$(ProjectDir)icons.res"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe" $(ProjectDir)icons.rc</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
