@@ -357,15 +357,44 @@ namespace Mayfly.Wild
                 return null;
             }
 
-            public SpeciesRow[] GetSorted()
+            //public SpeciesRow[] Validate()
+            //{
+            //    SpeciesRow[] rawRows = (SpeciesRow[])this.Select();
+
+            //    List<Data.SpeciesRow> absent = new List<Data.SpeciesRow>();
+            //    foreach (SpeciesRow spcRow in rawRows) {
+            //        if (spcRow.KeyRecord == null) {
+            //            absent.Add(spcRow);
+            //        }
+            //    }
+
+            //    return absent.ToArray();
+            //}
+
+            public List<SpeciesKey.SpeciesRow> GetSpecies()
             {
-                return (SpeciesRow[])this.Select(null, "Species asc");
+                SpeciesRow[] rawRows = (SpeciesRow[])this.Select();
+                List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+                foreach (SpeciesRow spcRow in rawRows)
+                {
+                    if (spcRow.KeyRecord != null && !result.Contains(spcRow.KeyRecord))
+                    {
+                        result.Add(spcRow.KeyRecord);
+                    }
+                }
+                return result;
             }
 
-            public SpeciesRow[] GetPhylogeneticallySorted(SpeciesKey key)
+            public SpeciesKey.SpeciesRow[] GetSorted()
             {
-                List<SpeciesRow> result = new List<SpeciesRow>();
-                result.AddRange((SpeciesRow[])this.Select());
+                List<SpeciesKey.SpeciesRow> result = GetSpecies();
+                result.Sort();
+                return result.ToArray();
+            }
+
+            public SpeciesKey.SpeciesRow[] GetPhylogeneticallySorted(SpeciesKey key)
+            {
+                List<SpeciesKey.SpeciesRow> result = GetSpecies();
                 result.Sort(new SpeciesSorter(key));
                 return result.ToArray();
             }
@@ -550,7 +579,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return this.IsSamplerNull() ? null : ((Data)tableCard.DataSet).samplers.Sampler.FindByID(this.Sampler);
+                    return this.IsSamplerNull() ? null : (((Data)tableCard.DataSet).samplers == null ? null : ((Data)tableCard.DataSet).samplers.Sampler.FindByID(this.Sampler));
                 }
             }
 
@@ -1283,7 +1312,10 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return ((Data)Table.DataSet).key == null ? null : ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
+                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key == null ? null : ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
+                    if (spcRow == null) return null;
+                    if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
+                    return spcRow;
                 }
             }
 

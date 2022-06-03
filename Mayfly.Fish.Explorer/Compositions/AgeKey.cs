@@ -9,6 +9,7 @@ using Meta.Numerics;
 using Meta.Numerics.Statistics;
 using Mayfly.Extensions;
 using Mayfly.Mathematics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -58,7 +59,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public void Fill(CardStack stack, Data.SpeciesRow speciesRow)
+        public void Fill(CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             #region Prepare data
 

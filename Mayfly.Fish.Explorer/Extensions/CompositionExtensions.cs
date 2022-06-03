@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Mayfly.Controls;
 using Mayfly.Mathematics.Statistics;
 using Mayfly.Extensions;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -312,14 +313,14 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, Data.SpeciesRow speciesRow, Data data)
+        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, SpeciesKey.SpeciesRow speciesRow, Data data)
         {
             string categoryType = composition.GetCategoryType();
 
             report.AddSectionTitle(Resources.Reports.Sections.Population.Header, categoryType);
 
             report.AddParagraph(Resources.Reports.Sections.Population.Paragraph1, categoryType, 
-                speciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                speciesRow.FullNameReport, report.NextTableNumber);
 
             Report.Table tableCatches;
 
@@ -327,10 +328,10 @@ namespace Mayfly.Fish.Explorer
             {
                 ContinuousBio bio = data.FindGrowthModel(speciesRow.Species);
 
-                if (UserSettings.SuggestAge && bio != null)
+                if (UserSettings.SuggestAge && bio != null && bio.CombinedData.Regression != null)
                 {
                     report.AddParagraph(Resources.Reports.Sections.Population.Paragraph2,
-                            speciesRow.KeyRecord.FullNameReport);
+                            speciesRow.FullNameReport);
 
                     report.AddEquation(bio.CombinedData.Regression.GetEquation("L", "t", "N2"));
 

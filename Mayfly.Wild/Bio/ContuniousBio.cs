@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
@@ -50,7 +51,7 @@ namespace Mayfly.Wild
 
 
 
-        public ContinuousBio(Data data, Data.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
+        public ContinuousBio(Data data, SpeciesKey.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
             base(data, speciesRow, yColumn)
         {
             if (yColumn.DataType != typeof(double))

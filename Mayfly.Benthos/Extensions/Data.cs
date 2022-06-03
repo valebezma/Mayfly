@@ -99,9 +99,12 @@ namespace Mayfly.Benthos
             if (logRow.IsQuantityNull()) return double.NaN;
             if (logRow.CardRow.IsSquareNull()) return double.NaN;
 
-            return System.Math.Round(logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity: (double)logRow.Quantity /
+            return System.Math.Round((logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity: (double)logRow.Quantity) /
                 (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
-                logRow.CardRow.Square, 0);
+                logRow.CardRow.Square, 6);
+            //return System.Math.Round((logRow.IsQuantityNull() ? (double)logRow.DetailedQuantity : (double)logRow.Quantity) /
+            //    (logRow.IsSubsampleNull() ? 1.0 : logRow.Subsample) /
+            //    logRow.CardRow.Square, 0);
         }
 
         /// <summary>

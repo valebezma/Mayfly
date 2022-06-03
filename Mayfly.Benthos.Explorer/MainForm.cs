@@ -48,7 +48,7 @@ namespace Mayfly.Benthos.Explorer
 
             tabPageCard.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(string);
+            //columnSpcSpc.ValueType = typeof(string);
             columnSpcQuantity.ValueType = typeof(int);
             columnSpcMass.ValueType = typeof(double);
             columnSpcAbundance.ValueType = typeof(double);
@@ -212,6 +212,10 @@ namespace Mayfly.Benthos.Explorer
                         {
                             Log.Write(string.Format("File is empty: {0}.", filenames[i]));
                         }
+                        else
+                        {
+                            _data.CopyTo(data);
+                        }
                     }
                 }
 
@@ -229,7 +233,7 @@ namespace Mayfly.Benthos.Explorer
         private void modelCalc_DoWork(object sender, DoWorkEventArgs e)
         {
             int i = 0;
-            foreach (Data.SpeciesRow speciesRow in data.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
+            foreach (SpeciesKey.SpeciesRow speciesRow in data.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
             {
                 ContinuousBio bio = data.FindMassModel(speciesRow.Species);
                 if (bio != null) bio.RefreshInternal();
@@ -1322,7 +1326,8 @@ namespace Mayfly.Benthos.Explorer
 
                         result.Add(gridRow);
 
-                        if ((double)gridRow.Cells[columnLogAbundance.Index].Value == 0)
+                        if (gridRow.Cells[columnLogQuantity.Index].Value == null ||
+                            (int)gridRow.Cells[columnLogQuantity.Index].Value == 0)
                         {
                             spreadSheetLog.SetHidden(gridRow);
                         }
@@ -1341,7 +1346,8 @@ namespace Mayfly.Benthos.Explorer
 
                         result.Add(gridRow);
 
-                        if ((double)gridRow.Cells[columnLogAbundance.Index].Value == 0)
+                        if (gridRow.Cells[columnLogQuantity.Index].Value == null ||
+                            (int)gridRow.Cells[columnLogQuantity.Index].Value == 0)
                         {
                             spreadSheetLog.SetHidden(gridRow);
                         }
@@ -1349,7 +1355,8 @@ namespace Mayfly.Benthos.Explorer
 
                     DataGridViewRow variaRow = LogRowVaria(data.Card[i]);
                     result.Add(variaRow);
-                    if ((double)variaRow.Cells[columnLogAbundance.Index].Value == 0)
+                    if (variaRow.Cells[columnLogQuantity.Index].Value == null ||
+                            (int)variaRow.Cells[columnLogQuantity.Index].Value == 0)
                     {
                         spreadSheetLog.SetHidden(variaRow);
                     }

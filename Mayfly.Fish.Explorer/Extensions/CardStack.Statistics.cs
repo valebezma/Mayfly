@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Meta.Numerics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -19,7 +20,7 @@ namespace Mayfly.Fish.Explorer
             return result.Mean;
         }
 
-        public static Sample LengthSample(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static Sample LengthSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             List<double> result = new List<double>();
 
@@ -35,7 +36,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample LengthSample(this CardStack stack, Data.SpeciesRow speciesRow, Age age)
+        public static Sample LengthSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Age age)
         {
             List<double> result = new List<double>();
 
@@ -50,7 +51,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample LengthSample(this CardStack stack, Data.SpeciesRow speciesRow, Sex sex)
+        public static Sample LengthSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Sex sex)
         {
             List<double> result = new List<double>();
 
@@ -66,7 +67,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static double LengthMin(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double LengthMin(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             Sample lengths = stack.LengthSample(speciesRow);
 
@@ -86,7 +87,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double LengthMax(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double LengthMax(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             Sample lengths = stack.LengthSample(speciesRow);
 
@@ -106,7 +107,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double LengthMaxOfNonAged(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double LengthMaxOfNonAged(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = double.MinValue;
             int i = 0;
@@ -142,12 +143,12 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Age AgeMin(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static Age AgeMin(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             return stack.AgeMin(speciesRow, UserSettings.SuggestAge);
         }
 
-        public static Age AgeMin(this CardStack stack, Data.SpeciesRow speciesRow, bool key)
+        public static Age AgeMin(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, bool key)
         {
             double a = 50;
 
@@ -170,12 +171,12 @@ namespace Mayfly.Fish.Explorer
             return new Age(a);
         }
 
-        public static Age AgeMax(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static Age AgeMax(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             return stack.AgeMax(speciesRow, UserSettings.SuggestAge);
         }
 
-        public static Age AgeMax(this CardStack stack, Data.SpeciesRow speciesRow, bool key)
+        public static Age AgeMax(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, bool key)
         {
             double a = 0.0;
 

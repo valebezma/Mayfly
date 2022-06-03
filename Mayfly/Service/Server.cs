@@ -133,7 +133,7 @@ namespace Mayfly
                     }
                 }
 
-                WebResponse webResponse = webRequest.GetResponse();
+                WebResponse webResponse = webRequest.GetResponse(); // Process error codes etc.
                 Stream stream = webResponse.GetResponseStream();
                 StreamReader reader = new StreamReader(stream);
                 while (!reader.EndOfStream)
@@ -146,8 +146,22 @@ namespace Mayfly
                 }
 
             }
-            catch
+            catch (WebException ex)
             {
+                if (ex.Response != null)
+                {
+                    switch (((HttpWebResponse)ex.Response).StatusCode)
+                    {
+                        case HttpStatusCode.PaymentRequired:
+                            Notification.ShowNotification(Resources.License.LoginFailure, Resources.License.LoginFailureInstruction);
+                            break;
+
+                        default:
+                            Notification.ShowNotification(Resources.License.LoginFailure, ((HttpWebResponse)ex.Response).StatusDescription);
+                            break;
+                    }
+                }
+
                 return null; 
             }
 

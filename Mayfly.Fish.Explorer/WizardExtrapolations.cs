@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -280,14 +281,14 @@ namespace Mayfly.Fish.Explorer
 
         private void populationSizeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetLengthCompositionFrame(speciesRow, UserSettings.SizeInterval), speciesRow);
         }
 
         private void populationAgeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetAgeCompositionFrame(speciesRow), speciesRow);
         }

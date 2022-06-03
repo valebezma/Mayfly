@@ -203,6 +203,7 @@ namespace Mayfly.Benthos.Explorer
                 }
 
                 #endregion
+                data.GetSpeciesKey().ImportTo(Benthos.UserSettings.SpeciesIndex);
 
                 menuItemLoadIndividuals.PopulateSpeciesMenus(FullStack, speciesInd_Click);
 
@@ -219,13 +220,13 @@ namespace Mayfly.Benthos.Explorer
 
         private void speciesInd_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             LoadIndLog(speciesRow);
         }
 
         private void briefBase_Click(object sender, EventArgs e)
         {
-            Species.SpeciesKey.BaseRow baseRow = (Species.SpeciesKey.BaseRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.BaseRow baseRow = (SpeciesKey.BaseRow)((ToolStripMenuItem)sender).Tag;
             Report report = new Report(Resources.Reports.Cenosis.Title);
             FullStack.AddBrief(report, baseRow);
             report.Run();

@@ -11,6 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Meta.Numerics.Functions;
 using System.Drawing;
 using Functor = Mayfly.Mathematics.Charts.Functor;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -18,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         WizardPopulation growthWizard;
 
@@ -31,14 +32,14 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
         }
 
-        public WizardMSYR(CardStack data, Data.SpeciesRow speciesRow)
+        public WizardMSYR(CardStack data, SpeciesKey.SpeciesRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
 
             Age ga = Service.GetGamingAge(SpeciesRow.Species);
             if (ga != null) textBoxTr.Value = ga;
@@ -53,7 +54,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.KeyRecord.FullNameReport))
+                    SpeciesRow.FullNameReport))
             {
                 UseTableNumeration = true
             };
@@ -62,7 +63,7 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddSectionTitle(
                     string.Format(Resources.Reports.Sections.Growth.Title,
-                    SpeciesRow.KeyRecord.FullNameReport));
+                    SpeciesRow.FullNameReport));
                 growthWizard.AppendBasicSectionTo(report);
             }
 

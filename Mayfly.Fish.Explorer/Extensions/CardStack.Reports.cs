@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
         /// <param name="stack"></param>
         /// <param name="report"></param>
         /// <param name="speciesRow"></param>
-        public static void AddCommon(this CardStack stack, Report report, Data.SpeciesRow speciesRow)
+        public static void AddCommon(this CardStack stack, Report report, SpeciesKey.SpeciesRow speciesRow)
         {
             List<string> warnings = new List<string>();
 
@@ -274,7 +274,7 @@ namespace Mayfly.Fish.Explorer
                 (s) =>
                 {
                     List<SampleSizeDescriptor> result = new List<SampleSizeDescriptor>();
-                    foreach (Data.SpeciesRow speciesRow in s.GetSpecies())
+                    foreach (SpeciesKey.SpeciesRow speciesRow in s.GetSpecies())
                     {
                         result.Add(s.GetDescriptor(speciesRow));
                     }
@@ -414,14 +414,14 @@ namespace Mayfly.Fish.Explorer
             return stack.GetStratifiedCribnote(stack.GetSpeciesCaught(15));
         }
 
-        public static Report GetStratifiedCribnote(this CardStack stack, Data.SpeciesRow[] speciesRows)
+        public static Report GetStratifiedCribnote(this CardStack stack, SpeciesKey.SpeciesRow[] speciesRows)
         {
             Report report = new Report(Resources.Reports.Header.StratifiedCribnote, "strates.css");
 
-            foreach (Data.SpeciesRow speciesRow in speciesRows)
+            foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
             {
                 // TODO: Skip if no samples?
-                Report.Table cribnote = Wild.Service.GetStratifiedNote(string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesRow.KeyRecord.FullNameReport),
+                Report.Table cribnote = Wild.Service.GetStratifiedNote(string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesRow.FullNameReport),
                     stack.LengthMin(speciesRow), stack.LengthMax(speciesRow), UserSettings.SizeInterval, (l) =>
                     {
                         Interval strate = Interval.FromEndpointAndWidth(l, UserSettings.SizeInterval);
@@ -475,7 +475,7 @@ namespace Mayfly.Fish.Explorer
 
         //#endregion
 
-        public static Report.Table GetSampleSizeTable(this CardStack stack, Data.SpeciesRow speciesRow, string ageNotice)
+        public static Report.Table GetSampleSizeTable(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, string ageNotice)
         {
             List<CardStack> gearStacks = new List<CardStack>();
 
@@ -505,7 +505,7 @@ namespace Mayfly.Fish.Explorer
                 ageNotice);   
         }
 
-        public static void AddSpeciesStatsReport(this CardStack stack, Report report, Data.SpeciesRow speciesRow, SpeciesStatsLevel level, ExpressionVariant variant)
+        public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesKey.SpeciesRow speciesRow, SpeciesStatsLevel level, ExpressionVariant variant)
         {
             if (level.HasFlag(SpeciesStatsLevel.Totals))
             {
@@ -538,7 +538,7 @@ namespace Mayfly.Fish.Explorer
                         cardRow,
                         cardRow.GetEffort(),
                         cardRow.GetGearType().GetDefaultUnitEffort().Unit,
-                        speciesRow.KeyRecord.FullNameReport,
+                        speciesRow.FullNameReport,
                         logRow.IsQuantityNull() ? Constants.Null : logRow.Quantity.ToString(),
                         logRow.IsMassNull() ? Constants.Null : logRow.Mass.ToString());
 
@@ -574,21 +574,21 @@ namespace Mayfly.Fish.Explorer
 
             report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpeciesCaught())
             {
                 Report.Table crib = stack.GetSpeciesSurveySuggestionReport(report, speciesRow);
 
                 if (crib == null) continue;
 
                 //report.BreakPage(PageBreakOption.Odd);
-                report.AddSectionTitle(speciesRow.KeyRecord.FullNameReport);
+                report.AddSectionTitle(speciesRow.FullNameReport);
                 report.AddCribnote(crib);
             }
 
             report.UseTableNumeration = num;
         }
 
-        public static Report.Table GetSpeciesSurveySuggestionReport(this CardStack stack, Report report, Data.SpeciesRow speciesRow)
+        public static Report.Table GetSpeciesSurveySuggestionReport(this CardStack stack, Report report, SpeciesKey.SpeciesRow speciesRow)
         {
             Report.Table crib = Wild.Service.GetStratifiedNote(string.Empty,
                 stack.LengthMin(speciesRow), stack.LengthMax(speciesRow), UserSettings.SizeInterval,
@@ -621,9 +621,9 @@ namespace Mayfly.Fish.Explorer
 
         public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
         {
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpeciesCaught())
             {
-                report.AddChapterTitle(speciesRow.KeyRecord.FullNameReport);
+                report.AddChapterTitle(speciesRow.FullNameReport);
                 stack.AddSpeciesStatsReport(report, speciesRow, level, variant);
             }
         }

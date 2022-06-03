@@ -89,11 +89,11 @@ namespace Mayfly.Wild
     {
         public SpeciesKey.TaxaRow DataRow { get; set; }
 
-        public Data.SpeciesRow[] SpeciesRows
+        public SpeciesKey.SpeciesRow[] SpeciesRows
         {
             get
             {
-                List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+                List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
 
                 foreach (SpeciesSwarm swarm in SpeciesSwarms)
                 {

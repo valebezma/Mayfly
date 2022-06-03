@@ -5,6 +5,7 @@ using System.Text;
 using Mayfly.Benthos;
 using Mayfly.Benthos.Explorer;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Extensions
 {
@@ -23,12 +24,12 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this Data.SpeciesRow speciesRow)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.SpeciesRow speciesRow)
         {
             return speciesRow.GetWeightedIndividualRows(new CardStack((Data)speciesRow.Table.DataSet));
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this Data.SpeciesRow speciesRow, CardStack stack)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.SpeciesRow speciesRow, CardStack stack)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 

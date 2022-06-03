@@ -7,6 +7,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -14,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         WizardMSY msyWizard;
 
@@ -37,14 +38,14 @@ namespace Mayfly.Fish.Explorer
             labelStart.ResetFormatted("species");
         }
 
-        public WizardPrediction(CardStack data, Data.SpeciesRow speciesRow)
+        public WizardPrediction(CardStack data, SpeciesKey.SpeciesRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
 
             //Logger.Log(String.Format("Prediction wizard is started for {0}.", speciesRow.Species));
         }
@@ -55,7 +56,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.KeyRecord.FullNameReport))
+                    SpeciesRow.FullNameReport))
             {
                 UseTableNumeration = true
             };

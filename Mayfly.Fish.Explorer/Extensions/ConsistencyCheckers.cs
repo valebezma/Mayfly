@@ -10,6 +10,7 @@ using Mayfly.Mathematics.Statistics;
 using Mayfly.Mathematics.Charts;
 using Mayfly.Fish;
 using Mayfly.Extensions;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -30,7 +31,7 @@ namespace Mayfly.Fish.Explorer
             return new CardConsistencyChecker(cardRow);
         }
 
-        public static SpeciesConsistencyChecker CheckConsistency(this Data.SpeciesRow speciesRow, CardStack stack)
+        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.SpeciesRow speciesRow, CardStack stack)
         {
             return new SpeciesConsistencyChecker(speciesRow, stack);
         }
@@ -50,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
 
@@ -644,7 +645,7 @@ namespace Mayfly.Fish.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public Data.SpeciesRow SpeciesRow { get; set; }
+        public SpeciesKey.SpeciesRow SpeciesRow { get; set; }
 
         public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
 
@@ -705,7 +706,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesConsistencyChecker(Data.SpeciesRow speciesRow, CardStack stack)
+        public SpeciesConsistencyChecker(SpeciesKey.SpeciesRow speciesRow, CardStack stack)
         {
             SpeciesRow = speciesRow;
 
@@ -786,7 +787,7 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.KeyRecord.ShortName);
+            return base.ToString(SpeciesRow.ShortName);
         }
     }
 }

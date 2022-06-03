@@ -117,20 +117,6 @@ namespace Mayfly.Wild
 
 
 
-        public Data.SpeciesRow[] GetSpeciesRows()
-        {
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
-
-            foreach (Data.SpeciesRow speciesRow in Parent.Species.GetSorted())
-            {
-                //if (this.Quantity(speciesRow) == 0) continue;
-
-                result.Add(speciesRow);
-            }
-
-            return result.ToArray();
-        }
-
         public List<string> GetSpeciesList()
         {
             List<string> result = new List<string>();
@@ -180,7 +166,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.LogRow[] GetLogRows(Data.SpeciesRow speciesRow)
+        public Data.LogRow[] GetLogRows(SpeciesKey.SpeciesRow speciesRow)
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
@@ -188,7 +174,7 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in Parent.Log)
                 {
-                    if (logRow.SpeciesRow.Species != speciesRow.Species) continue;
+                    if (!speciesRow.Validate(logRow.SpeciesRow.Species)) continue;
                     if (!this.Contains(logRow.CardRow)) continue;
                     result.Add(logRow);
                 }
@@ -209,7 +195,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetIndividualRows(Data.SpeciesRow speciesRow)
+        public Data.IndividualRow[] GetIndividualRows(SpeciesKey.SpeciesRow speciesRow)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -434,13 +420,13 @@ namespace Mayfly.Wild
 
 
 
-        public Data.SpeciesRow[] GetSpecies()
+        public SpeciesKey.SpeciesRow[] GetSpecies()
         {
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
 
             if (Parent != null)
             {
-                foreach (Data.SpeciesRow speciesRow in Parent.Species.GetSorted())
+                foreach (SpeciesKey.SpeciesRow speciesRow in Parent.Species.GetSorted())
                 {
                     if (this.Quantity(speciesRow) == 0) continue;
                     result.Add(speciesRow);
@@ -450,7 +436,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(Data.SpeciesRow[] speciesRows)
+        public int GetOccurrenceCases(SpeciesKey.SpeciesRow[] speciesRows)
         {
             int result = 0;
 
@@ -458,9 +444,9 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    foreach (Data.SpeciesRow speciesRow in speciesRows)
+                    foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
                     {
-                        if (speciesRow == logRow.SpeciesRow)
+                        if (speciesRow.Validate(logRow.SpeciesRow.Species))
                         {
                             result++;
                             goto Next;
@@ -484,6 +470,7 @@ namespace Mayfly.Wild
             foreach (Data.CardRow cardRow in this)
             {
                 if (cardRow.IsSamplerNull()) continue;
+                if (cardRow.SamplerRow == null) continue;
                 if (result.Contains(cardRow.SamplerRow)) continue;
                 result.Add(cardRow.SamplerRow);
             }

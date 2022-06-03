@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Meta.Numerics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -17,7 +18,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         public List<Cohort> Cohorts;
 
@@ -46,12 +47,12 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardGrowthCohorts(CardStack data, Data.SpeciesRow speciesRow) : this()
+        public WizardGrowthCohorts(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
         }
 
 
@@ -60,7 +61,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(string.Format(
                 Resources.Reports.Sections.GrowthCohorts.Title,
-                SpeciesRow.KeyRecord.FullNameReport));
+                SpeciesRow.FullNameReport));
             Data.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -88,10 +89,10 @@ namespace Mayfly.Fish.Explorer
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph1,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table1,
-                SpeciesRow.KeyRecord.FullNameReport);
+                SpeciesRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
@@ -126,11 +127,11 @@ namespace Mayfly.Fish.Explorer
         public void AddGrowth(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.GrowthCohorts.Paragraph2,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"L = {L_∞} (1 - e^{-K (t - {t_0})})");
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.GrowthCohorts.Table2,
-                SpeciesRow.KeyRecord.FullNameReport);
+                SpeciesRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, .2);

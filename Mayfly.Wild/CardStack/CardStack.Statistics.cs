@@ -1,12 +1,13 @@
 ﻿using Mayfly.Wild;
 using Meta.Numerics.Statistics;
 using System.Collections.Generic;
+using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
     partial class CardStack
     {
-        public Sample Lengths(Data.SpeciesRow speciesRow)
+        public Sample Lengths(SpeciesKey.SpeciesRow speciesRow)
         {
             List<double> result = new List<double>();
 
@@ -22,7 +23,7 @@ namespace Mayfly.Wild
             return new Sample(result.ToArray()) { Name = Resources.Reports.Caption.LengthUnit };
         }
 
-        public double LengthAverage(Data.SpeciesRow speciesRow)
+        public double LengthAverage(SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0;
             double divider = 0;
@@ -44,7 +45,7 @@ namespace Mayfly.Wild
             }
         }
 
-        public double LengthAverage(Data.SpeciesRow speciesRow, Sex G)
+        public double LengthAverage(SpeciesKey.SpeciesRow speciesRow, Sex G)
         {
             double result = 0;
             double divider = 0;
@@ -71,7 +72,7 @@ namespace Mayfly.Wild
             }
         }
 
-        public Sample Lengths(Data.SpeciesRow speciesRow, Sex G)
+        public Sample Lengths(SpeciesKey.SpeciesRow speciesRow, Sex G)
         {
             List<double> result = new List<double>();
 
@@ -89,7 +90,7 @@ namespace Mayfly.Wild
             return new Sample(result.ToArray());
         }
 
-        public double LengthMin(Data.SpeciesRow speciesRow, Sex G)
+        public double LengthMin(SpeciesKey.SpeciesRow speciesRow, Sex G)
         {
             double result = double.MaxValue;
             int i = 0;
@@ -119,7 +120,7 @@ namespace Mayfly.Wild
             }
         }
 
-        public double LengthMax(Data.SpeciesRow speciesRow, Sex G)
+        public double LengthMax(SpeciesKey.SpeciesRow speciesRow, Sex G)
         {
             double result = double.MinValue;
             int i = 0;
@@ -155,7 +156,7 @@ namespace Mayfly.Wild
         {
             double result = 0;
 
-            foreach (Data.SpeciesRow speciesRow in this.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in this.GetSpecies())
             {
                 result += this.Mass(speciesRow);
             }
@@ -163,7 +164,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public double Mass(Data.SpeciesRow speciesRow)
+        public double Mass(SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 
@@ -188,7 +189,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public Sample Masses(Data.SpeciesRow speciesRow)
+        public Sample Masses(SpeciesKey.SpeciesRow speciesRow)
         {
             List<double> result = new List<double>();
 
@@ -210,7 +211,7 @@ namespace Mayfly.Wild
         {
             int result = 0;
 
-            foreach (Data.SpeciesRow speciesRow in GetSpecies())
+            foreach (Species.SpeciesKey.SpeciesRow speciesRow in GetSpecies())
             {
                 result += Quantity(speciesRow);
             }
@@ -218,7 +219,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public int Quantity(Data.SpeciesRow speciesRow)
+        public int Quantity(Species.SpeciesKey.SpeciesRow speciesRow)
         {
             int result = 0;
 
@@ -254,7 +255,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public int Quantity(Data.SpeciesRow speciesRow, Sex G)
+        public int Quantity(SpeciesKey.SpeciesRow speciesRow, Sex G)
         {
             int result = 0;
 
@@ -268,7 +269,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public int Weighted(Data.SpeciesRow speciesRow)
+        public int Weighted(SpeciesKey.SpeciesRow speciesRow)
         {
             int result = 0;
 
@@ -282,7 +283,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public int Measured(Data.SpeciesRow speciesRow)
+        public int Measured(SpeciesKey.SpeciesRow speciesRow)
         {
             int result = 0;
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -39,7 +40,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -47,7 +48,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 
@@ -63,7 +64,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -71,7 +72,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 

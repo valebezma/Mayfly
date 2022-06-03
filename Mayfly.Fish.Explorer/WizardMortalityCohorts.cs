@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Meta.Numerics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -19,7 +20,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         public List<Cohort> Cohorts;
 
@@ -45,13 +46,13 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardMortalityCohorts(CardStack data, Data.SpeciesRow speciesRow) : this()
+        public WizardMortalityCohorts(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
         }
 
 
@@ -60,7 +61,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(string.Format(
                 Resources.Reports.Sections.MortalityCohorts.Title,
-                SpeciesRow.KeyRecord.FullNameReport));
+                SpeciesRow.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -83,10 +84,10 @@ namespace Mayfly.Fish.Explorer
         public void AddHistory(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph1,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table1,
-                SpeciesRow.KeyRecord.FullNameReport);
+                SpeciesRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.VPA.Column1, .2, 2);
@@ -115,11 +116,11 @@ namespace Mayfly.Fish.Explorer
         public void AddMortality(Report report)
         {
             report.AddParagraph(Resources.Reports.Sections.MortalityCohorts.Paragraph2,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
             report.AddEquation(@"CPUE(%) = a \times e^{-{Z} \times {t}}");
 
             Report.Table table1 = new Report.Table(Resources.Reports.Sections.MortalityCohorts.Table2,
-                SpeciesRow.KeyRecord.FullNameReport);
+                SpeciesRow.FullNameReport);
 
             table1.StartRow();
             table1.AddHeaderCell(Resources.Reports.Sections.GrowthCohorts.Column1, .2);

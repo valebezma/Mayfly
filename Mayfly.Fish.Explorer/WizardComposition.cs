@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Mayfly.Mathematics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -30,7 +31,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         private Composition selectedShoal;
 
@@ -72,10 +73,10 @@ namespace Mayfly.Fish.Explorer
             Frame.SetLines(ColumnCategory);
         }
 
-        public WizardComposition(CardStack data, Composition frame, Data.SpeciesRow speciesRow, CompositionColumn column) : this(data, frame)
+        public WizardComposition(CardStack data, Composition frame, SpeciesKey.SpeciesRow speciesRow, CompositionColumn column) : this(data, frame)
         {
             SpeciesRow = speciesRow;
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
 
             ColumnL.Visible = column.HasFlag(CompositionColumn.LengthSample);
             ColumnW.Visible = column.HasFlag(CompositionColumn.MassSample);
@@ -152,11 +153,11 @@ namespace Mayfly.Fish.Explorer
             if (CatchesComposition.SeparateCompositions.Count > 6) report.BreakPage(PageBreakOption.Landscape);
 
             string holder = (SpeciesRow == null) ?  Wild.Resources.Reports.Caption.Species :
-                string.Format(Resources.Reports.Table.CategoriesHolder, CategoryType, SpeciesRow.KeyRecord.FullNameReport);
+                string.Format(Resources.Reports.Table.CategoriesHolder, CategoryType, SpeciesRow.FullNameReport);
 
             string sectionTitle = string.Format(Resources.Reports.Section.TablesCompositionCatches,
                 (SpeciesRow == null) ? Wild.Resources.Reports.Caption.Species : CategoryType, 
-                (SpeciesRow == null) ? gearWizard.SelectedSamplerType.ToDisplay() : SpeciesRow.KeyRecord.FullNameReport);
+                (SpeciesRow == null) ? gearWizard.SelectedSamplerType.ToDisplay() : SpeciesRow.FullNameReport);
 
             report.AddSectionTitle(sectionTitle);
 
@@ -185,7 +186,7 @@ namespace Mayfly.Fish.Explorer
 
         public void AddAgeRecoveryRoutines(Report report)
         {
-            report.AddSectionTitle(Resources.Reports.Section.TablesALK, SpeciesRow.KeyRecord.FullNameReport);
+            report.AddSectionTitle(Resources.Reports.Section.TablesALK, SpeciesRow.FullNameReport);
 
             foreach (Composition classComposition in CatchesComposition.SeparateCompositions)
             {

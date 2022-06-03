@@ -1096,7 +1096,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAASQBNwEkATcBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAATQBNwE0ATcBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1474,7 +1474,7 @@
     <value>spreadSheetGearStats</value>
   </data>
   <data name="&gt;&gt;spreadSheetGearStats.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetGearStats.Parent" xml:space="preserve">
     <value>tabPageGearStats</value>
@@ -1735,7 +1735,7 @@
     <value>spreadSheetEfforts</value>
   </data>
   <data name="&gt;&gt;spreadSheetEfforts.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetEfforts.Parent" xml:space="preserve">
     <value>tabPageCardEfforts</value>
@@ -2101,7 +2101,7 @@
     <value>spreadSheetCatches</value>
   </data>
   <data name="&gt;&gt;spreadSheetCatches.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetCatches.Parent" xml:space="preserve">
     <value>tabPageCardCatches</value>
@@ -2251,7 +2251,7 @@
     <value>spreadSheetSpcStats</value>
   </data>
   <data name="&gt;&gt;spreadSheetSpcStats.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetSpcStats.Parent" xml:space="preserve">
     <value>tabPageSpcStats</value>
@@ -2629,7 +2629,7 @@
     <value>Stratified samples</value>
   </data>
   <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1235, 56</value>
+    <value>650, 95</value>
   </metadata>
   <data name="label9.ToolTip" xml:space="preserve">
     <value>Mass of stratified samples is recovered using mass growth models</value>
@@ -3454,7 +3454,7 @@
     <value>spreadSheetTech</value>
   </data>
   <data name="&gt;&gt;spreadSheetTech.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetTech.Parent" xml:space="preserve">
     <value>tabPageSpcTech</value>
@@ -3898,7 +3898,7 @@
     <value>plotQualify</value>
   </data>
   <data name="&gt;&gt;plotQualify.Type" xml:space="preserve">
-    <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;plotQualify.Parent" xml:space="preserve">
     <value>tabPageSpcQualify</value>
@@ -4382,7 +4382,7 @@
     <value>spreadSheetCard</value>
   </data>
   <data name="&gt;&gt;spreadSheetCard.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetCard.Parent" xml:space="preserve">
     <value>tabPageCard</value>
@@ -4674,7 +4674,7 @@
     <value>spreadSheetSpc</value>
   </data>
   <data name="&gt;&gt;spreadSheetSpc.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetSpc.Parent" xml:space="preserve">
     <value>tabPageSpc</value>
@@ -4874,7 +4874,7 @@
     <value>spreadSheetLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
     <value>tabPageLog</value>
@@ -4937,7 +4937,7 @@
     <value>stratifiedSample</value>
   </data>
   <data name="&gt;&gt;stratifiedSample.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.StratifiedSample, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.StratifiedSample, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;stratifiedSample.Parent" xml:space="preserve">
     <value>tabPageStratified</value>
@@ -5115,7 +5115,7 @@
     <value>spreadSheetStratified</value>
   </data>
   <data name="&gt;&gt;spreadSheetStratified.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetStratified.Parent" xml:space="preserve">
     <value>tabPageStratified</value>
@@ -5583,7 +5583,7 @@ Please, note that in further analysis.</value>
     <value>spreadSheetInd</value>
   </data>
   <data name="&gt;&gt;spreadSheetInd.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetInd.Parent" xml:space="preserve">
     <value>tabPageInd</value>
@@ -5679,67 +5679,67 @@ Please, note that in further analysis.</value>
     <value>5</value>
   </data>
   <metadata name="loaderCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>707, 56</value>
   </metadata>
   <metadata name="dataSaver.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1938, 17</value>
+    <value>602, 56</value>
   </metadata>
   <metadata name="loaderSpc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>129, 56</value>
+    <value>819, 56</value>
   </metadata>
   <metadata name="loaderSpcList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 17</value>
   </metadata>
   <metadata name="loaderLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>235, 56</value>
+    <value>925, 56</value>
   </metadata>
   <metadata name="loaderInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>498, 56</value>
+    <value>1188, 56</value>
   </metadata>
   <metadata name="loaderData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1827, 17</value>
+    <value>491, 56</value>
   </metadata>
   <metadata name="loaderStratified.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>914, 56</value>
+    <value>329, 95</value>
   </metadata>
   <metadata name="loaderIndSimulated.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>756, 56</value>
+    <value>171, 95</value>
   </metadata>
   <metadata name="loaderIndExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>602, 56</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="loaderLogExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>341, 56</value>
+    <value>1031, 56</value>
   </metadata>
   <metadata name="loaderStratifiedExtended.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1049, 56</value>
+    <value>464, 95</value>
   </metadata>
   <metadata name="fbdBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1376, 56</value>
+    <value>791, 95</value>
   </metadata>
   <data name="fbdBackup.Description" xml:space="preserve">
     <value>Select folder to backup cards.</value>
   </data>
   <metadata name="dietCompiler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1485, 56</value>
+    <value>900, 95</value>
   </metadata>
   <metadata name="artefactFinder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>115, 134</value>
   </metadata>
   <metadata name="bioTipper.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1720, 56</value>
+    <value>1135, 95</value>
   </metadata>
   <metadata name="bioUpdater.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1607, 56</value>
+    <value>1022, 95</value>
   </metadata>
   <metadata name="modelCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="qualCalc.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1930, 56</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1493, 17</value>
+    <value>157, 56</value>
   </metadata>
   <data name="tdbSaveAll.Text" xml:space="preserve">
     <value>Save All</value>
@@ -5757,7 +5757,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogClearSimulations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1627, 17</value>
+    <value>291, 56</value>
   </metadata>
   <data name="tdbClearSimulation.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5772,7 +5772,7 @@ Please, note that in further analysis.</value>
     <value>Fish Explorer</value>
   </data>
   <metadata name="tdRecover.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1824, 56</value>
+    <value>1239, 95</value>
   </metadata>
   <data name="tdbRecoverBackup.Text" xml:space="preserve">
     <value>Backup and continue</value>
@@ -5799,7 +5799,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>Fish Explorer</value>
   </data>
   <metadata name="taskDialogBio.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>446, 95</value>
+    <value>544, 134</value>
   </metadata>
   <data name="tdbSpecClear.Text" xml:space="preserve">
     <value>Clear</value>
@@ -5814,19 +5814,19 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>Clear already imported bios?</value>
   </data>
   <metadata name="speciesValidator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1353, 17</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="mathCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>144, 95</value>
+    <value>242, 134</value>
   </metadata>
   <metadata name="mathLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>249, 95</value>
+    <value>347, 134</value>
   </metadata>
   <metadata name="mathInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>349, 95</value>
+    <value>447, 134</value>
   </metadata>
   <metadata name="notify.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>572, 95</value>
+    <value>670, 134</value>
   </metadata>
   <data name="notify.Text" xml:space="preserve">
     <value>notifyIcon1</value>
@@ -5838,7 +5838,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>133</value>
+    <value>179</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -6621,7 +6621,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnCardEffort</value>
   </data>
   <data name="&gt;&gt;columnCardEffort.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnCardDepth.Name" xml:space="preserve">
     <value>columnCardDepth</value>
@@ -6633,13 +6633,13 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnCardWealth</value>
   </data>
   <data name="&gt;&gt;columnCardWealth.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnCardQuantity.Name" xml:space="preserve">
     <value>columnCardQuantity</value>
   </data>
   <data name="&gt;&gt;columnCardQuantity.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnCardMass.Name" xml:space="preserve">
     <value>columnCardMass</value>
@@ -6681,7 +6681,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>processDisplay</value>
   </data>
   <data name="&gt;&gt;processDisplay.Type" xml:space="preserve">
-    <value>Mayfly.Controls.ProcessDisplay, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.ProcessDisplay, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statusLoading.Name" xml:space="preserve">
     <value>statusLoading</value>
@@ -6765,7 +6765,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnSpcSpc</value>
   </data>
   <data name="&gt;&gt;columnSpcSpc.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnSpcQuantity.Name" xml:space="preserve">
     <value>columnSpcQuantity</value>
@@ -6831,13 +6831,13 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnLogQuantity</value>
   </data>
   <data name="&gt;&gt;columnLogQuantity.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnLogMass.Name" xml:space="preserve">
     <value>columnLogMass</value>
   </data>
   <data name="&gt;&gt;columnLogMass.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnLogAbundance.Name" xml:space="preserve">
     <value>columnLogAbundance</value>
@@ -7005,7 +7005,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnIndTally</value>
   </data>
   <data name="&gt;&gt;columnIndTally.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnIndAge.Name" xml:space="preserve">
     <value>columnIndAge</value>
@@ -7095,7 +7095,7 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>columnIndConsumed</value>
   </data>
   <data name="&gt;&gt;columnIndConsumed.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnIndConsumptionIndex.Name" xml:space="preserve">
     <value>columnIndConsumptionIndex</value>
@@ -7317,115 +7317,115 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
     <value>taskDialogSave</value>
   </data>
   <data name="&gt;&gt;taskDialogSave.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSaveAll.Name" xml:space="preserve">
     <value>tdbSaveAll</value>
   </data>
   <data name="&gt;&gt;tdbSaveAll.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
     <value>tdbDiscard</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
     <value>tdbCancelClose</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;taskDialogClearSimulations.Name" xml:space="preserve">
     <value>taskDialogClearSimulations</value>
   </data>
   <data name="&gt;&gt;taskDialogClearSimulations.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbClearSimulation.Name" xml:space="preserve">
     <value>tdbClearSimulation</value>
   </data>
   <data name="&gt;&gt;tdbClearSimulation.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbdCancelSimulation.Name" xml:space="preserve">
     <value>tbdCancelSimulation</value>
   </data>
   <data name="&gt;&gt;tbdCancelSimulation.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdRecover.Name" xml:space="preserve">
     <value>tdRecover</value>
   </data>
   <data name="&gt;&gt;tdRecover.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbRecoverBackup.Name" xml:space="preserve">
     <value>tdbRecoverBackup</value>
   </data>
   <data name="&gt;&gt;tdbRecoverBackup.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbRecoverContinue.Name" xml:space="preserve">
     <value>tdbRecoverContinue</value>
   </data>
   <data name="&gt;&gt;tdbRecoverContinue.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbRecoverCancel.Name" xml:space="preserve">
     <value>tdbRecoverCancel</value>
   </data>
   <data name="&gt;&gt;tdbRecoverCancel.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;taskDialogBio.Name" xml:space="preserve">
     <value>taskDialogBio</value>
   </data>
   <data name="&gt;&gt;taskDialogBio.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSpecClear.Name" xml:space="preserve">
     <value>tdbSpecClear</value>
   </data>
   <data name="&gt;&gt;tdbSpecClear.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSpecCombine.Name" xml:space="preserve">
     <value>tdbSpecCombine</value>
   </data>
   <data name="&gt;&gt;tdbSpecCombine.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSpecCancel.Name" xml:space="preserve">
     <value>tdbSpecCancel</value>
   </data>
   <data name="&gt;&gt;tdbSpecCancel.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;speciesValidator.Name" xml:space="preserve">
     <value>speciesValidator</value>
   </data>
   <data name="&gt;&gt;speciesValidator.Type" xml:space="preserve">
-    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.2.7.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;mathCard.Name" xml:space="preserve">
     <value>mathCard</value>
   </data>
   <data name="&gt;&gt;mathCard.Type" xml:space="preserve">
-    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;mathLog.Name" xml:space="preserve">
     <value>mathLog</value>
   </data>
   <data name="&gt;&gt;mathLog.Type" xml:space="preserve">
-    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;mathInd.Name" xml:space="preserve">
     <value>mathInd</value>
   </data>
   <data name="&gt;&gt;mathInd.Type" xml:space="preserve">
-    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.4.3.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;notify.Name" xml:space="preserve">
     <value>notify</value>

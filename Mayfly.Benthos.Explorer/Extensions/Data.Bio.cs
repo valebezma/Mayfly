@@ -9,6 +9,7 @@ using Mayfly.Mathematics.Charts;
 using System.IO;
 using System.Text;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Extensions
 {
@@ -106,245 +107,245 @@ namespace Mayfly.Extensions
             }
         }
 
-        /// <summary>
-        /// Recover mass with natural or reference data using straight priority and all available associations
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="referenceData"></param>
-        public static void RecoverMasses(this Data data, Data referenceData)
-        {
-            foreach (Data.SpeciesRow speciesRow in data.Species)
-            {
-                #region Associates
+        ///// <summary>
+        ///// Recover mass with natural or reference data using straight priority and all available associations
+        ///// </summary>
+        ///// <param name="data"></param>
+        ///// <param name="referenceData"></param>
+        //public static void RecoverMasses(this Data data, Data referenceData)
+        //{
+        //    foreach (Data.SpeciesRow speciesRow in data.Species)
+        //    {
+        //        #region Associates
 
-                List<Data.SpeciesRow> associates = new List<Data.SpeciesRow>();
+        //        List<SpeciesKey.SpeciesRow> associates = new List<SpeciesKey.SpeciesRow>();
 
-                Data.SpeciesRow conSpecies = referenceData.Species.FindBySpecies(speciesRow.Species);
+        //        SpeciesKey.SpeciesRow conSpecies = referenceData.Species.FindBySpecies(speciesRow.Species);
 
-                if (conSpecies != null)
-                {
-                    associates.Add(conSpecies);
-                }
+        //        if (conSpecies != null)
+        //        {
+        //            associates.Add(conSpecies);
+        //        }
 
-                foreach (string associate in Mayfly.Benthos.Explorer.Service.GetAssociates(speciesRow.Species))
-                {
-                    conSpecies = referenceData.Species.FindBySpecies(associate);
+        //        foreach (string associate in Mayfly.Benthos.Explorer.Service.GetAssociates(speciesRow.Species))
+        //        {
+        //            conSpecies = referenceData.Species.FindBySpecies(associate);
 
-                    if (conSpecies != null)
-                    {
-                        associates.Add(conSpecies);
-                    }
-                }
+        //            if (conSpecies != null)
+        //            {
+        //                associates.Add(conSpecies);
+        //            }
+        //        }
 
-                if (associates.Count == 0)
-                {
-                    Data.SpeciesRow conGenus = referenceData.Species.FindBySpecies(
-                        Species.SpeciesKey.Genus(speciesRow.Species) + " sp.");
+        //        if (associates.Count == 0)
+        //        {
+        //            Data.SpeciesRow conGenus = referenceData.Species.FindBySpecies(
+        //                Species.SpeciesKey.Genus(speciesRow.Species) + " sp.");
 
-                    if (conGenus != null)
-                    {
-                        associates.Add(conGenus);
-                    }
-                }
+        //            if (conGenus != null)
+        //            {
+        //                associates.Add(conGenus);
+        //            }
+        //        }
 
-                #endregion
+        //        #endregion
 
-                if (associates.Count == 0) continue;
+        //        if (associates.Count == 0) continue;
 
-                List<string> assoc = new List<string>();
+        //        List<string> assoc = new List<string>();
 
-                foreach (Data.SpeciesRow associate in associates)
-                {
-                    assoc.Add(associate.Species);
-                }
+        //        foreach (Data.SpeciesRow associate in associates)
+        //        {
+        //            assoc.Add(associate.Species);
+        //        }
 
-                List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
+        //        List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
 
-                #region Try #1. Recover by length
+        //        #region Try #1. Recover by length
 
-                int measured = 0;
+        //        int measured = 0;
 
-                foreach (Data.SpeciesRow associate in associates)
-                {
-                    measured += referenceData.GetStack().Measured(associate);
-                }
+        //        foreach (SpeciesKey.SpeciesRow associate in associates)
+        //        {
+        //            measured += referenceData.GetStack().Measured(associate);
+        //        }
 
-                List<Data.IndividualRow> recoverableRows = unweightedIndividuals.GetUnweightedAndMeasuredIndividualRows();
-                int recoverableCount = recoverableRows.GetCount();
+        //        List<Data.IndividualRow> recoverableRows = unweightedIndividuals.GetUnweightedAndMeasuredIndividualRows();
+        //        int recoverableCount = recoverableRows.GetCount();
 
-                if (measured > 0 && recoverableCount > 0)
-                {
-                    List<Data.IndividualRow> natureRows = new List<Data.IndividualRow>();
+        //        if (measured > 0 && recoverableCount > 0)
+        //        {
+        //            List<Data.IndividualRow> natureRows = new List<Data.IndividualRow>();
 
-                    foreach (Data.SpeciesRow associate in associates)
-                    {
-                        natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
-                    }
+        //            foreach (Data.SpeciesRow associate in associates)
+        //            {
+        //                natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
+        //            }
 
-                    //Regression model = referenceData.FindMassModel(assoc.ToArray()).Regression;
+        //            //Regression model = referenceData.FindMassModel(assoc.ToArray()).Regression;
 
-                    ////BivariateSample sample = referenceData.GetBivariate(natureRows.ToArray(),
-                    ////    referenceData.Individual.LengthColumn, referenceData.Individual.MassColumn);
+        //            ////BivariateSample sample = referenceData.GetBivariate(natureRows.ToArray(),
+        //            ////    referenceData.Individual.LengthColumn, referenceData.Individual.MassColumn);
 
-                    ////if (sample.Count >= Mayfly.Mathematics.UserSettings.StrongSampleSize)
-                    ////{
-                    ////    Power model = new Power(sample);
+        //            ////if (sample.Count >= Mayfly.Mathematics.UserSettings.StrongSampleSize)
+        //            ////{
+        //            ////    Power model = new Power(sample);
 
-                    //    if (model != null)
-                    //    {
-                    //        List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
+        //            //    if (model != null)
+        //            //    {
+        //            //        List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
 
-                    //        foreach (Data.IndividualRow individualRow in unweightedIndividuals)
-                    //        {
-                    //            if (individualRow.IsLengthNull()) continue;
-                    //            individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 5);
-                    //            recoveredRows.Add(individualRow);
-                    //        }
+        //            //        foreach (Data.IndividualRow individualRow in unweightedIndividuals)
+        //            //        {
+        //            //            if (individualRow.IsLengthNull()) continue;
+        //            //            individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 5);
+        //            //            recoveredRows.Add(individualRow);
+        //            //        }
 
-                    //        foreach (Data.IndividualRow individualRow in recoveredRows)
-                    //        {
-                    //            unweightedIndividuals.Remove(individualRow);
-                    //        }
-                    //    }
-                    ////}
-                }
+        //            //        foreach (Data.IndividualRow individualRow in recoveredRows)
+        //            //        {
+        //            //            unweightedIndividuals.Remove(individualRow);
+        //            //        }
+        //            //    }
+        //            ////}
+        //        }
 
-                #endregion
+        //        #endregion
 
-                #region Try #2. Recover by variable
+        //        #region Try #2. Recover by variable
 
-                List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
+        //        List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
 
-                foreach (Data.SpeciesRow associate in associates)
-                {
-                    weightedIndividuals.AddRange(associate.GetIndividualRows());
-                }
+        //        foreach (Data.SpeciesRow associate in associates)
+        //        {
+        //            weightedIndividuals.AddRange(associate.GetIndividualRows());
+        //        }
 
-                foreach (Data.VariableRow variableRow in referenceData.Variable)
-                {
-                    Power model = referenceData.SearchMassModel(variableRow, weightedIndividuals.ToArray());
+        //        foreach (Data.VariableRow variableRow in referenceData.Variable)
+        //        {
+        //            Power model = referenceData.SearchMassModel(variableRow, weightedIndividuals.ToArray());
 
-                    if (model != null)
-                    {
-                        recoverableRows = unweightedIndividuals.GetMeasuredRows(data.Variable.FindByVarName(variableRow.Variable));
+        //            if (model != null)
+        //            {
+        //                recoverableRows = unweightedIndividuals.GetMeasuredRows(data.Variable.FindByVarName(variableRow.Variable));
 
-                        if (recoverableRows.Count > 0)
-                        {
-                            List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
+        //                if (recoverableRows.Count > 0)
+        //                {
+        //                    List<Data.IndividualRow> recoveredRows = new List<Data.IndividualRow>();
 
-                            foreach (Data.IndividualRow individualRow in recoverableRows)
-                            {
-                                if (!individualRow.IsMassNull()) continue;
-                                Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID,
-                                    data.Variable.FindByVarName(variableRow.Variable).ID);
-                                if (valueRow == null) continue;
-                                individualRow.Mass = Math.Round(model.Predict(valueRow.Value), 5);
-                                recoveredRows.Add(individualRow);
-                            }
+        //                    foreach (Data.IndividualRow individualRow in recoverableRows)
+        //                    {
+        //                        if (!individualRow.IsMassNull()) continue;
+        //                        Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID,
+        //                            data.Variable.FindByVarName(variableRow.Variable).ID);
+        //                        if (valueRow == null) continue;
+        //                        individualRow.Mass = Math.Round(model.Predict(valueRow.Value), 5);
+        //                        recoveredRows.Add(individualRow);
+        //                    }
 
-                            foreach (Data.IndividualRow individualRow in recoveredRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
-                    }
-                }
+        //                    foreach (Data.IndividualRow individualRow in recoveredRows)
+        //                    {
+        //                        unweightedIndividuals.Remove(individualRow);
+        //                    }
+        //                }
+        //            }
+        //        }
 
-                #endregion
+        //        #endregion
 
-                #region Try #3. Recover by individual category
+        //        #region Try #3. Recover by individual category
 
-                DataColumn[] categorialVariables = new DataColumn[] { 
-                    data.Individual.GradeColumn 
-                };
+        //        DataColumn[] categorialVariables = new DataColumn[] { 
+        //            data.Individual.GradeColumn 
+        //        };
 
-                foreach (DataColumn dataColumn in categorialVariables)
-                {
-                    List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
+        //        foreach (DataColumn dataColumn in categorialVariables)
+        //        {
+        //            List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
 
-                    foreach (Data.SpeciesRow associate in associates)
-                    {
-                        naturalRows.AddRange(associate.GetIndividualRows()
-                            .GetMeasuredRows(referenceData.Individual.Columns[dataColumn.ColumnName]));
-                    }
+        //            foreach (Data.SpeciesRow associate in associates)
+        //            {
+        //                naturalRows.AddRange(associate.GetIndividualRows()
+        //                    .GetMeasuredRows(referenceData.Individual.Columns[dataColumn.ColumnName]));
+        //            }
 
-                    recoverableRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
-                        unweightedIndividuals.GetMeasuredRows(dataColumn));
+        //            recoverableRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
+        //                unweightedIndividuals.GetMeasuredRows(dataColumn));
 
-                    if (recoverableRows.Count > 0)
-                    {
-                        List<Sample> samples = referenceData.Individual.MassColumn.GetSamples(
-                            referenceData.Individual.Columns[dataColumn.ColumnName],
-                            naturalRows);
+        //            if (recoverableRows.Count > 0)
+        //            {
+        //                List<Sample> samples = referenceData.Individual.MassColumn.GetSamples(
+        //                    referenceData.Individual.Columns[dataColumn.ColumnName],
+        //                    naturalRows);
 
-                        foreach (Data.IndividualRow individualRow in recoverableRows)
-                        {
-                            if (!individualRow.IsMassNull()) continue;
+        //                foreach (Data.IndividualRow individualRow in recoverableRows)
+        //                {
+        //                    if (!individualRow.IsMassNull()) continue;
 
-                            foreach (Sample sample in samples)
-                            {
-                                if (sample.Name == string.Empty) continue;
+        //                    foreach (Sample sample in samples)
+        //                    {
+        //                        if (sample.Name == string.Empty) continue;
 
-                                if (sample.Name == individualRow[dataColumn.ColumnName].ToString())
-                                {
-                                    if (sample.Count > 1)
-                                    {
-                                        individualRow.Mass = Math.Round(sample.Mean, 5);
-                                    }
-                                    else
-                                    {
-                                        individualRow.Mass = Math.Round(sample.Sum(), 5);
-                                    }
-                                }
-                            }
-                        }
+        //                        if (sample.Name == individualRow[dataColumn.ColumnName].ToString())
+        //                        {
+        //                            if (sample.Count > 1)
+        //                            {
+        //                                individualRow.Mass = Math.Round(sample.Mean, 5);
+        //                            }
+        //                            else
+        //                            {
+        //                                individualRow.Mass = Math.Round(sample.Sum(), 5);
+        //                            }
+        //                        }
+        //                    }
+        //                }
 
-                        foreach (Data.IndividualRow individualRow in recoverableRows)
-                        {
-                            unweightedIndividuals.Remove(individualRow);
-                        }
-                    }
-                }
+        //                foreach (Data.IndividualRow individualRow in recoverableRows)
+        //                {
+        //                    unweightedIndividuals.Remove(individualRow);
+        //                }
+        //            }
+        //        }
 
-                #endregion
+        //        #endregion
 
-                #region Try #4. Recover by raw average individual mass
+        //        #region Try #4. Recover by raw average individual mass
 
-                {
-                    int weighted = 0;
+        //        {
+        //            int weighted = 0;
 
-                    foreach (Data.SpeciesRow associate in associates)
-                    {
-                        weighted += referenceData.GetStack().Weighted(associate);
-                    }
+        //            foreach (Data.SpeciesRow associate in associates)
+        //            {
+        //                weighted += referenceData.GetStack().Weighted(associate);
+        //            }
 
-                    recoverableCount = unweightedIndividuals.GetCount() + speciesRow.AbstractIndividuals();
+        //            recoverableCount = unweightedIndividuals.GetCount() + speciesRow.AbstractIndividuals();
 
-                    if (weighted > 0 && recoverableCount > 0)
-                    {
-                        List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
+        //            if (weighted > 0 && recoverableCount > 0)
+        //            {
+        //                List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
 
-                        foreach (Data.SpeciesRow associate in associates)
-                        {
-                            naturalRows.AddRange(associate.GetWeightedIndividualRows());
-                        }
+        //                foreach (Data.SpeciesRow associate in associates)
+        //                {
+        //                    naturalRows.AddRange(associate.GetWeightedIndividualRows());
+        //                }
 
-                        double avgMass = Math.Round(naturalRows.GetAverageMass(), 5);
+        //                double avgMass = Math.Round(naturalRows.GetAverageMass(), 5);
 
-                        foreach (Data.IndividualRow individualRow in unweightedIndividuals)
-                        {
-                            individualRow.Mass = avgMass;
-                        }
+        //                foreach (Data.IndividualRow individualRow in unweightedIndividuals)
+        //                {
+        //                    individualRow.Mass = avgMass;
+        //                }
 
-                        unweightedIndividuals.Clear();
-                    }
-                }
+        //                unweightedIndividuals.Clear();
+        //            }
+        //        }
 
-                #endregion
-            }
+        //        #endregion
+        //    }
 
-            data.RestoreMass();
-        }
+        //    data.RestoreMass();
+        //}
 
         public static Power SearchMassModel(this Data data, Data.VariableRow variableRow, Data.IndividualRow[] individualRows)
         {
@@ -476,9 +477,11 @@ namespace Mayfly.Extensions
                 }
             }
 
-            for (int i = 0; i < data.Species.Count; i++)
+            SpeciesKey.SpeciesRow[] spclist = data.GetStack().GetSpecies();
+
+            for (int i = 0; i < spclist.Length; i++)
             {
-                Data.SpeciesRow speciesRow = data.Species[i];
+                SpeciesKey.SpeciesRow speciesRow = spclist[i];
 
                 //if (speciesRow.Quantity < 5)
                 //{
@@ -500,31 +503,31 @@ namespace Mayfly.Extensions
                     dSample.Add(data.GetIndividualValue(dRow, d), dRow.Mass);
                 }
 
-                if (dSample.Count < 5)
-                {
-                    data.Species.RemoveSpeciesRow(speciesRow);
-                    i--;
-                    continue;
-                }
+                //if (dSample.Count < 5)
+                //{
+                //    data.Species.RemoveSpeciesRow(speciesRow);
+                //    i--;
+                //    continue;
+                //}
 
-                try
-                {
-                    Power dw = new Power(dSample);
+                //try
+                //{
+                //    Power dw = new Power(dSample);
 
-                    if (dw.Slope < 2 || dw.Slope > 4)
-                    {
-                        data.Species.RemoveSpeciesRow(speciesRow);
-                        i--;
-                        continue;
-                    }
-                }
-                catch
-                {
-                        data.Species.RemoveSpeciesRow(speciesRow);
-                        i--;
-                        continue;
+                //    if (dw.Slope < 2 || dw.Slope > 4)
+                //    {
+                //        data.Species.RemoveSpeciesRow(speciesRow);
+                //        i--;
+                //        continue;
+                //    }
+                //}
+                //catch
+                //{
+                //        data.Species.RemoveSpeciesRow(speciesRow);
+                //        i--;
+                //        continue;
 
-                }
+                //}
 
                 //Benthos.Explorer.HeadSample TotalSample = new Benthos.Explorer.HeadSample(wRows, "Обобщенная выборка", "Общ");
 

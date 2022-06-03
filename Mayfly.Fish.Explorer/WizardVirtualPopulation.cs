@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Meta.Numerics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -28,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         //public FishingGearType SelectedSamplerType { get; set; }
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         public AgeComposition Structure { get; internal set; }
 
@@ -58,13 +59,13 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardVirtualPopulation(CardStack data, Data.SpeciesRow speciesRow) : this()
+        public WizardVirtualPopulation(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
 
             Log.Write(EventType.WizardStarted, "VPA wizard is started for {0}.", 
                 speciesRow.Species);
@@ -86,7 +87,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                 string.Format(Resources.Reports.Sections.VPA.Title,
-                SpeciesRow.KeyRecord.FullNameReport));
+                SpeciesRow.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -131,12 +132,12 @@ namespace Mayfly.Fish.Explorer
         {
             // Year-based catches
             report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph1,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
 
             report.AddAppendix(
                 AnnualCompositions.GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.Sections.VPA.Table1, SpeciesRow.KeyRecord.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
+                    string.Format(Resources.Reports.Sections.VPA.Table1, SpeciesRow.FullNameReport, AnnualCompositions[0].Name, AnnualCompositions.Last().Name),
                     Resources.Reports.Sections.VPA.Column1, Resources.Reports.Sections.VPA.Column2)
                     );
 
@@ -167,18 +168,18 @@ namespace Mayfly.Fish.Explorer
             report.AddTable(
                 Survivors.GetTable(
                     CompositionColumn.Quantity,
-                    string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.KeyRecord.FullNameReport),
+                    string.Format(Resources.Reports.Sections.VPA.Table4, SpeciesRow.FullNameReport),
                     Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );
 
             report.AddParagraph(Resources.Reports.Sections.VPA.Paragraph5,
-                SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber);
+                SpeciesRow.FullNameReport, report.NextTableNumber);
 
             report.AddTable(
                 Survivors.GetTable(
                     CompositionColumn.Mass,
-                    string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.KeyRecord.FullNameReport), 
+                    string.Format(Resources.Reports.Sections.VPA.Table5, SpeciesRow.FullNameReport), 
                     Resources.Reports.Sections.VPA.Column1, 
                     Resources.Reports.Sections.VPA.Column2)
                 );

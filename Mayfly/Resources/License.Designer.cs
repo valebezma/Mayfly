@@ -113,5 +113,23 @@ namespace Mayfly.Resources {
                 return ResourceManager.GetString("LicenseExpiresSoonInstructionToday", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login Failure.
+        /// </summary>
+        public static string LoginFailure {
+            get {
+                return ResourceManager.GetString("LoginFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when log in. Probably you have logged in on too many computers..
+        /// </summary>
+        public static string LoginFailureInstruction {
+            get {
+                return ResourceManager.GetString("LoginFailureInstruction", resourceCulture);
+            }
+        }
     }
 }

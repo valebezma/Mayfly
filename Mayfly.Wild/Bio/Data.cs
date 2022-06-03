@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Text;
 using Mayfly.Extensions;
+using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
@@ -101,7 +102,7 @@ namespace Mayfly.Wild
                 GrowthModels = new List<ContinuousBio>();
             }
 
-            foreach (SpeciesRow speciesRow in this.Species.Rows)
+            foreach (SpeciesKey.SpeciesRow speciesRow in GetStack().GetSpecies())
             {
                 ContinuousBio biom = FindMassModel(speciesRow.Species);
 

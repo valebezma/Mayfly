@@ -1,7 +1,7 @@
 ﻿using Mayfly.Extensions;
 using Mayfly.Wild;
 using System.Collections.Generic;
-
+using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -32,7 +32,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<SpeciesArtifact> result = new List<SpeciesArtifact>();
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 SpeciesArtifact artifact = new SpeciesArtifact(speciesRow);
                 if (artifact.GetFacts() > 0) result.Add(artifact);
@@ -85,7 +85,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class SpeciesArtifact : ConsistencyChecker
     {
-        public Data.SpeciesRow SpeciesRow { get; private set; }
+        public SpeciesKey.SpeciesRow SpeciesRow { get; private set; }
 
         public bool ReferenceMissing { get; private set; }
 
@@ -93,7 +93,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public SpeciesArtifact(Data.SpeciesRow speciesRow)
+        public SpeciesArtifact(SpeciesKey.SpeciesRow speciesRow)
         {
             SpeciesRow = speciesRow;
 

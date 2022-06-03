@@ -420,17 +420,17 @@ namespace Mayfly.Fish.Explorer
 
         private void logSpecies_Click(object sender, EventArgs e)
         {
-            loadLog((Data.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadLog((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSpecies_Click(object sender, EventArgs e)
         {
-            loadIndividuals((Data.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadIndividuals((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSuggested_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             TreatmentSuggestion sugg = AllowedStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn);
             if (sugg != null) loadIndividuals(ModifierKeys.HasFlag(Keys.Shift) ? sugg.GetAll() : sugg.GetSuggested());
         }
@@ -567,7 +567,7 @@ namespace Mayfly.Fish.Explorer
 
         #region Species stats
 
-        Data.SpeciesRow selectedStatSpc;
+        SpeciesKey.SpeciesRow selectedStatSpc;
 
         FishSamplerType selectedTechSamplerType;
 
@@ -885,9 +885,9 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private Data.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
+        private SpeciesKey.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            return baseSpc == null ? data.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            return baseSpc == null ? Fish.UserSettings.SpeciesIndex.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
@@ -913,10 +913,10 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        private Data.SpeciesRow[] getSpeciesRows(IList rows)
+        private SpeciesKey.SpeciesRow[] getSpeciesRows(IList rows)
         {
             spreadSheetLog.EndEdit();
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
             foreach (DataGridViewRow gridRow in rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -1282,11 +1282,11 @@ namespace Mayfly.Fish.Explorer
             loadLog(data.Log.Rows.Cast<Data.LogRow>().ToArray());
         }
 
-        private void loadLog(Data.SpeciesRow[] spcRows, CardStack stack)
+        private void loadLog(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
         {
             List<Data.LogRow> logRows = new List<Data.LogRow>();
 
-            foreach (Data.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
             {
                 logRows.AddRange(stack.GetLogRows(spcRow));
             }
@@ -1294,14 +1294,14 @@ namespace Mayfly.Fish.Explorer
             loadLog(logRows.ToArray());
         }
 
-        private void loadLog(Data.SpeciesRow[] spcRows)
+        private void loadLog(SpeciesKey.SpeciesRow[] spcRows)
         {
             loadLog(spcRows, FullStack);
         }
 
-        private void loadLog(Data.SpeciesRow spcRows)
+        private void loadLog(SpeciesKey.SpeciesRow spcRows)
         {
-            loadLog(new Data.SpeciesRow[] { spcRows });
+            loadLog(new SpeciesKey.SpeciesRow[] { spcRows });
         }
 
         private void loadLog(CardStack stack)
@@ -1496,7 +1496,7 @@ namespace Mayfly.Fish.Explorer
 
         #region Individuals
 
-        Data.SpeciesRow individualSpecies;
+        SpeciesKey.SpeciesRow individualSpecies;
         ContinuousBio growthModel;
         ContinuousBio massModel;
 
@@ -1528,11 +1528,11 @@ namespace Mayfly.Fish.Explorer
             loadIndividuals(stack.GetIndividualRows());
         }
 
-        private void loadIndividuals(Data.SpeciesRow[] spcRows)
+        private void loadIndividuals(SpeciesKey.SpeciesRow[] spcRows)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
-            foreach (Data.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
             {
                 result.AddRange(FullStack.GetIndividualRows(spcRow));
             }
@@ -1540,9 +1540,9 @@ namespace Mayfly.Fish.Explorer
             loadIndividuals(result.ToArray());
         }
 
-        private void loadIndividuals(Data.SpeciesRow spcRow)
+        private void loadIndividuals(SpeciesKey.SpeciesRow spcRow)
         {
-            loadIndividuals(new Data.SpeciesRow[] { spcRow });
+            loadIndividuals(new SpeciesKey.SpeciesRow[] { spcRow });
             individualSpecies = spcRow;
             growthModel = data.FindGrowthModel(individualSpecies.Species);
             massModel = data.FindMassModel(individualSpecies.Species);
@@ -2007,11 +2007,11 @@ namespace Mayfly.Fish.Explorer
             loadStratifiedSamples(FullStack);
         }
 
-        private void loadStratifiedSamples(Data.SpeciesRow[] spcRows, CardStack stack)
+        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
         {
             List<Data.LogRow> logRows = new List<Data.LogRow>();
 
-            foreach (Data.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
             {
                 logRows.AddRange(stack.GetLogRows(spcRow));
             }
@@ -2019,7 +2019,7 @@ namespace Mayfly.Fish.Explorer
             loadStratifiedSamples(logRows.ToArray());
         }
 
-        private void loadStratifiedSamples(Data.SpeciesRow[] spcRows)
+        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows)
         {
             loadStratifiedSamples(spcRows, FullStack);
         }

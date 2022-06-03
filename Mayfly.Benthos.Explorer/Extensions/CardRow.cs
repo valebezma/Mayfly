@@ -33,7 +33,7 @@ namespace Mayfly.Extensions
             switch (field)
             {
                 case "Sampler":
-                    return cardRow.SamplerRow.Sampler;
+                    return cardRow.SamplerRow == null ? null : cardRow.SamplerRow.Sampler;
 
                 case "Substrate":
                     if (cardRow.IsSubstrateNull()) return null;

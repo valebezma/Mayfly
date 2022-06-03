@@ -135,4 +135,10 @@
   <data name="LicenseExpiresSoonInstructionToday" xml:space="preserve">
     <value>сегодня</value>
   </data>
+  <data name="LoginFailure" xml:space="preserve">
+    <value>Неудачный вход</value>
+  </data>
+  <data name="LoginFailureInstruction" xml:space="preserve">
+    <value>При входе произошла ошибка. Возможно вы авторизовались на слишком большом числе устройств.</value>
+  </data>
 </root>

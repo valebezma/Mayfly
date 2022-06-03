@@ -4,6 +4,7 @@ using System.Linq;
 using System.Resources;
 using System.Windows.Forms;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -102,13 +103,32 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        public static void SaveAssociates(Data.SpeciesRow speciesRow, Data.SpeciesRow[] associates)
+        public static void SaveAssociates(SpeciesKey.SpeciesRow speciesRow, SpeciesKey.SpeciesRow[] associates)
         {
             if (associates != null)
             {
                 List<string> savedAssociates = new List<string>();
 
-                foreach (Data.SpeciesRow spcRow in associates)
+                foreach (SpeciesKey.SpeciesRow spcRow in associates)
+                {
+                    if (spcRow.Species == speciesRow.Species) continue;
+                    savedAssociates.Add(spcRow.Species);
+                }
+
+                if (savedAssociates.Count > 0)
+                {
+                    SaveAssociates(speciesRow.Species, savedAssociates.ToArray());
+                }
+            }
+        }
+
+        public static void SaveAssociates(Data.SpeciesRow speciesRow, SpeciesKey.SpeciesRow[] associates)
+        {
+            if (associates != null)
+            {
+                List<string> savedAssociates = new List<string>();
+
+                foreach (SpeciesKey.SpeciesRow spcRow in associates)
                 {
                     if (spcRow.Species == speciesRow.Species) continue;
                     savedAssociates.Add(spcRow.Species);

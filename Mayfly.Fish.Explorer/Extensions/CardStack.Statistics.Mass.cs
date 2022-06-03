@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Meta.Numerics.Statistics;
 using Meta.Numerics;
 using Mayfly.Extensions;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -13,7 +14,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 result += stack.MassSampled(speciesRow);
             }
@@ -21,7 +22,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double MassSampled(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double MassSampled(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 
@@ -71,7 +72,7 @@ namespace Mayfly.Fish.Explorer
             return result / 1000;
         }
 
-        public static double MassIndividual(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double MassIndividual(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0;
 
@@ -113,7 +114,7 @@ namespace Mayfly.Fish.Explorer
             return result / 1000;
         }
 
-        public static double MassStratified(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double MassStratified(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0;
 
@@ -139,7 +140,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Sample MassSample(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static Sample MassSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             List<double> result = new List<double>();
 
@@ -152,7 +153,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, Data.SpeciesRow speciesRow, Interval size)
+        public static Sample MassSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
         {
             List<double> result = new List<double>();
 
@@ -167,7 +168,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, Data.SpeciesRow speciesRow, Age age)
+        public static Sample MassSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Age age)
         {
             List<double> result = new List<double>();
 
@@ -182,7 +183,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, Data.SpeciesRow speciesRow, Sex sex)
+        public static Sample MassSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Sex sex)
         {
             List<double> result = new List<double>();
 
@@ -197,7 +198,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, Data.SpeciesRow speciesRow, Interval size, Age age)
+        public static Sample MassSample(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size, Age age)
         {
             List<double> result = new List<double>();
 

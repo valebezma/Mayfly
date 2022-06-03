@@ -11,6 +11,7 @@ using Mayfly.Extensions;
 using Mayfly.Controls;
 using Meta.Numerics;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -18,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         Data Data { get; set; }
 
-        private Data.SpeciesRow SelectedSpecies;
+        private SpeciesKey.SpeciesRow SelectedSpecies;
 
 
 
@@ -43,7 +44,7 @@ namespace Mayfly.Fish.Explorer
             UpdateSample(SelectedSpecies);
         }
 
-        private void UpdateSample(Data.SpeciesRow speciesRow)
+        private void UpdateSample(SpeciesKey.SpeciesRow speciesRow)
         {
             spreadSheetSample.Rows.Clear();
 
@@ -116,7 +117,7 @@ namespace Mayfly.Fish.Explorer
             }
             if (listViewSpecies.SelectedItems.Count > 0)
             {
-                SelectedSpecies = Data.Species.FindBySpecies(listViewSpecies.SelectedItems[0].Name);
+                SelectedSpecies = Data.Species.FindBySpecies(listViewSpecies.SelectedItems[0].Name).KeyRecord;
                 UpdateSample(SelectedSpecies);
             }
         }

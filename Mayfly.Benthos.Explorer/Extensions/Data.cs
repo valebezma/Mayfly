@@ -149,12 +149,11 @@ namespace Mayfly.Extensions
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;
-                SpeciesKey.SpeciesRow refSpecies = speciesRow.KeyRecord;
-                _item.Text = refSpecies == null ? speciesRow.Species : refSpecies.FullName;
+                _item.Text = speciesRow.FullName;
                 _item.Click += command;
                 item.DropDownItems.Add(_item);
             }

@@ -6,12 +6,13 @@ using System.ComponentModel;
 using System.Resources;
 using System.Windows.Forms;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
     partial class MainForm
     {
-        Data.SpeciesRow individualSpecies;
+        SpeciesKey.SpeciesRow individualSpecies;
 
         private void LoadIndLog()
         {
@@ -27,7 +28,7 @@ namespace Mayfly.Benthos.Explorer
             loaderInd.RunWorkerAsync();
         }
 
-        private void LoadIndLog(Data.SpeciesRow speciesRow)
+        private void LoadIndLog(SpeciesKey.SpeciesRow speciesRow)
         {
             individualSpecies = speciesRow;
 

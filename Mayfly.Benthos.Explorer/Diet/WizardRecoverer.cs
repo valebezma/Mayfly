@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -255,7 +256,7 @@ namespace Mayfly.Benthos.Explorer
             }
             else
             {
-                Data.SpeciesRow[] speciesRows = (Data.SpeciesRow[])gridCell.Tag;
+                SpeciesKey.SpeciesRow[] speciesRows = (SpeciesKey.SpeciesRow[])gridCell.Tag;
                 if (speciesRows.Length == 0)
                 {
                     gridCell.Value = null;
@@ -265,7 +266,7 @@ namespace Mayfly.Benthos.Explorer
                 string pool = string.Empty;
                 string toolTip = string.Empty;
 
-                foreach (Data.SpeciesRow speciesRow in speciesRows)
+                foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
                 {
                     pool += string.Format("{0} ({1}); ", speciesRow.Species,
                         NaturalData.GetStack().Quantity(speciesRow));
@@ -279,14 +280,14 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private Data.SpeciesRow[] Associates(Data.SpeciesRow speciesRow)
+        private SpeciesKey.SpeciesRow[] Associates(SpeciesKey.SpeciesRow speciesRow)
         {
             foreach (DataGridViewRow gridRow in spreadSheetAssociation.Rows)
             {
                 if (((string)gridRow.Cells[columnAsscSpecies.Index].Tag) == speciesRow.Species)
                 {
                     if (gridRow.Cells[columnAsscAssociate.Index].Tag == null) return null;
-                    return (Data.SpeciesRow[])gridRow.Cells[columnAsscAssociate.Index].Tag;
+                    return (SpeciesKey.SpeciesRow[])gridRow.Cells[columnAsscAssociate.Index].Tag;
                 }
             }
 
@@ -297,9 +298,9 @@ namespace Mayfly.Benthos.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetAssociation.Rows)
             {
-                Data.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnAsscSpecies.Index].Tag);
+                Data.SpeciesRow speciesRow =  BadData.Species.FindBySpecies((string)gridRow.Cells[columnAsscSpecies.Index].Tag);
                 if (speciesRow == null) continue;
-                Service.SaveAssociates(speciesRow, Associates(speciesRow));
+                Service.SaveAssociates(speciesRow, Associates(speciesRow.KeyRecord));
             }
         }
 
@@ -335,315 +336,316 @@ namespace Mayfly.Benthos.Explorer
             columnPriRaw.DisplayIndex = spreadSheetPriority.ColumnCount - 1;
         }
 
-        private void Prepare()
-        {
-            TotalRecoverable = 0;
-            //TotalRate = 0;
+        //private void Prepare()
+        //{
+        //    TotalRecoverable = 0;
+        //    //TotalRate = 0;
 
-            foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
-            {
-                // Point species
-                Data.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
-                if (speciesRow == null) continue;
+        //    foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
+        //    {
+        //        // Point species
+        //        //SpeciesKey.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
+        //        SpeciesKey.SpeciesRow speciesRow = Benthos.UserSettings.SpeciesIndex.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
+        //        if (speciesRow == null) continue;
 
-                // Select associates
-                Data.SpeciesRow[] associates = Associates(speciesRow);
+        //        // Select associates
+        //        SpeciesKey.SpeciesRow[] associates = Associates(speciesRow);
 
-                if (associates == null) continue;
+        //        if (associates == null) continue;
 
-                // Define all corresponding individuals
-                List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
-                foreach (Data.SpeciesRow associate in associates)
-                {
-                    weightedIndividuals.AddRange(associate.GetIndividualRows());
-                }
+        //        // Define all corresponding individuals
+        //        List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
+        //        foreach (SpeciesKey.SpeciesRow associate in associates)
+        //        {
+        //            weightedIndividuals.AddRange(associate.GetIndividualRows());
+        //        }
                 
-                double ascRate = 0;
+        //        double ascRate = 0;
 
-                if (associates.Length == 1 && associates[0].Species == speciesRow.Species)
-                {
-                    ascRate = 1;
-                }
-                else
-                {
-                    ascRate = .9 / associates.Length;
-                }
+        //        if (associates.Length == 1 && associates[0].Species == speciesRow.Species)
+        //        {
+        //            ascRate = 1;
+        //        }
+        //        else
+        //        {
+        //            ascRate = .9 / associates.Length;
+        //        }
 
-                //double recoveryRate = 0;
+        //        //double recoveryRate = 0;
 
-                // Define all unweighted individuals
-                List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
+        //        // Define all unweighted individuals
+        //        List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
 
-                // Define total unweighted
-                int unweighted = speciesRow.UnweightedIndividuals() + speciesRow.AbstractIndividuals();
-                int recoverable = 0;
+        //        // Define total unweighted
+        //        int unweighted = speciesRow.UnweightedIndividuals() + speciesRow.AbstractIndividuals();
+        //        int recoverable = 0;
 
-                foreach (DataGridViewColumn gridColumn in spreadSheetPriority.GetUserOrderedColumns())
-                {
-                    //#region If column is LengthColumn
+        //        foreach (DataGridViewColumn gridColumn in spreadSheetPriority.GetUserOrderedColumns())
+        //        {
+        //            //#region If column is LengthColumn
 
-                    //if (gridColumn == columnPriLength)
-                    //{
-                    //    TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
+        //            //if (gridColumn == columnPriLength)
+        //            //{
+        //            //    TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
 
-                    //    int measured = 0;
-
-                    //    foreach (Data.SpeciesRow associate in associates)
-                    //    {
-                    //        measured += NaturalData.GetStack().Measured(associate);
-                    //    }
-
-                    //    List<Data.IndividualRow> okRows = unweightedIndividuals.GetUnweightedAndMeasuredIndividualRows();
-                    //    int okCount = okRows.GetCount();
-
-                    //    if (measured == 0 || okCount == 0) goto Drop;
-
-                    //    List<Data.IndividualRow> natureRows = new List<Data.IndividualRow>();
-
-                    //    foreach (Data.SpeciesRow associate in associates)
-                    //    {
-                    //        natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
-                    //    }
-
-                    //    BivariateSample sample = NaturalData.GetBivariate(natureRows.ToArray(),
-                    //        NaturalData.Individual.LengthColumn, NaturalData.Individual.MassColumn);
-
-                    //    if (sample.Count < Mayfly.Mathematics.UserSettings.StrongSampleSize) goto Drop;
-
-                    //    Power model = new Power(sample);
-
-                    //    if (model == null) goto Drop;
-
-                    //    recoverable += okCount;
-
-                    //    gridCell.Tag = model;
-                    //    //gridCell.Value = string.Format("{0} ({1:P1})", okCount,
-                    //    //    (double)okCount / (double)unweighted);
-                    //    gridCell.Value = okCount;
-                    //    gridCell.Image = model.RSquare >= RequiredExplaination && model.Fit.GoodnessOfFit.IsPassed(TestDirection.Right) ?
-                    //        Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
-                    //    double r = model.RSquare * model.Fit.GoodnessOfFit.P(TestDirection.Left);
-                    //    gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
-                    //    recoveryRate += r * okCount;
+        //            //    int measured = 0;
+
+        //            //    foreach (Data.SpeciesRow associate in associates)
+        //            //    {
+        //            //        measured += NaturalData.GetStack().Measured(associate);
+        //            //    }
+
+        //            //    List<Data.IndividualRow> okRows = unweightedIndividuals.GetUnweightedAndMeasuredIndividualRows();
+        //            //    int okCount = okRows.GetCount();
+
+        //            //    if (measured == 0 || okCount == 0) goto Drop;
+
+        //            //    List<Data.IndividualRow> natureRows = new List<Data.IndividualRow>();
+
+        //            //    foreach (Data.SpeciesRow associate in associates)
+        //            //    {
+        //            //        natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
+        //            //    }
+
+        //            //    BivariateSample sample = NaturalData.GetBivariate(natureRows.ToArray(),
+        //            //        NaturalData.Individual.LengthColumn, NaturalData.Individual.MassColumn);
+
+        //            //    if (sample.Count < Mayfly.Mathematics.UserSettings.StrongSampleSize) goto Drop;
+
+        //            //    Power model = new Power(sample);
+
+        //            //    if (model == null) goto Drop;
+
+        //            //    recoverable += okCount;
+
+        //            //    gridCell.Tag = model;
+        //            //    //gridCell.Value = string.Format("{0} ({1:P1})", okCount,
+        //            //    //    (double)okCount / (double)unweighted);
+        //            //    gridCell.Value = okCount;
+        //            //    gridCell.Image = model.RSquare >= RequiredExplaination && model.Fit.GoodnessOfFit.IsPassed(TestDirection.Right) ?
+        //            //        Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
+        //            //    double r = model.RSquare * model.Fit.GoodnessOfFit.P(TestDirection.Left);
+        //            //    gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
+        //            //    recoveryRate += r * okCount;
 
-                    //    foreach (Data.IndividualRow individualRow in okRows)
-                    //    {
-                    //        unweightedIndividuals.Remove(individualRow);
-                    //    }
+        //            //    foreach (Data.IndividualRow individualRow in okRows)
+        //            //    {
+        //            //        unweightedIndividuals.Remove(individualRow);
+        //            //    }
 
-                    //    continue;
+        //            //    continue;
 
-                    //Drop:
-                    //    gridCell.Tag = null;
-                    //    gridCell.Value = null;
-                    //    gridCell.Image = null;
-                    //    gridCell.ToolTipText = string.Empty;
-                    //}
-
-                    //#endregion
-
-                    #region If column is raw mass column - all are recoverable
-
-                    //else
-                    if (gridColumn == columnPriRaw && columnPriRaw.Visible)
-                    {
-                        TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
+        //            //Drop:
+        //            //    gridCell.Tag = null;
+        //            //    gridCell.Value = null;
+        //            //    gridCell.Image = null;
+        //            //    gridCell.ToolTipText = string.Empty;
+        //            //}
+
+        //            //#endregion
+
+        //            #region If column is raw mass column - all are recoverable
+
+        //            //else
+        //            if (gridColumn == columnPriRaw && columnPriRaw.Visible)
+        //            {
+        //                TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
 
-                        int weighted = 0;// NaturalData.Weighted(speciesRow);
+        //                int weighted = 0;// NaturalData.Weighted(speciesRow);
 
-                        foreach (Data.SpeciesRow associate in associates)
-                        {
-                            weighted += NaturalData.GetStack().Weighted(associate);
-                        }
+        //                foreach (SpeciesKey.SpeciesRow associate in associates)
+        //                {
+        //                    weighted += NaturalData.GetStack().Weighted(associate);
+        //                }
 
-                        int okCount = unweightedIndividuals.GetCount() + speciesRow.AbstractIndividuals();
+        //                int okCount = unweightedIndividuals.GetCount() + speciesRow.AbstractIndividuals();
 
-                        if (weighted > 0 && okCount > 0)
-                        {
-                            List<Data.IndividualRow> okRows = new List<Data.IndividualRow>();
-
-                            foreach (Data.SpeciesRow associate in associates)
-                            {
-                                okRows.AddRange(associate.GetWeightedIndividualRows());
-                            }
-
-                            recoverable += okCount;
-
-                            gridCell.Tag = okRows;
-                            //gridCell.Value = string.Format("{0} ({1:P1})", okCount,
-                            //    (double)okCount / (double)unweighted);
-                            gridCell.Value = okCount;
-
-                            //try
-                            //{
-                            //    double r = Math.Max(.1, 1 - new Sample(okRows.GetMass()).StandardDeviation);
-                            //    //gridCell.Image = r >= RequiredExplaination ?
-                            //    //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
-                            //    gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
-                            //    //recoveryRate += r * okCount;
-                            //}
-                            //catch
-                            //{
-                            //    gridCell.Image = null;
-                            //    gridCell.ToolTipText = Wild.Resources.Interface.Interface.QualityTipBad;
-                            //    //recoveryRate += .1 * okCount;
-                            //}
-
-                            unweightedIndividuals.Clear();
-                        }
-                        else
-                        {
-                            gridCell.Tag = null;
-                            gridCell.Image = null;
-                            gridCell.Value = null;
-                            gridCell.ToolTipText = string.Empty;
-                        }
-                    }
-
-                    #endregion
-
-                    // Else If column not inserted in runtime - it doesn't fit
-                    else if (!spreadSheetPriority.GetInsertedColumns().Contains(gridColumn))
-                    {
-                        continue;
-                    }
-
-                    #region If column presents variableRow
-
-                    Data.VariableRow variableRow = NaturalData.Variable.FindByVarName(gridColumn.Name);
-
-                    if (variableRow != null)
-                    {
-                        TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
-
-                        Power model = NaturalData.SearchMassModel(variableRow, weightedIndividuals.ToArray());
-
-                        if (model == null) goto SkipVariable;
-
-                        List<Data.IndividualRow> okRows = unweightedIndividuals.GetMeasuredRows(variableRow);
-
-                        if (okRows.Count == 0) goto SkipVariable;
-
-                        int okCount = okRows.GetCount();
-                        recoverable += okCount;
-
-                        gridCell.Tag = model;
-                        //gridCell.Tag = okRows;
-                        //gridCell.Value = string.Format("{0} ({1:P1})", okCount, (double)okCount / (double)unweighted);
-                        gridCell.Value = okCount;
-                        //gridCell.Image = model.RSquare >= RequiredExplaination && model.Fit.GoodnessOfFit.IsPassed(TestDirection.Right) ?
-                        //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
-                        //double r = model.Determination * model.Fit.GoodnessOfFit.Probability;
-                        //gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
-                        //recoveryRate += r * okCount;
-
-                        foreach (Data.IndividualRow individualRow in okRows)
-                        {
-                            unweightedIndividuals.Remove(individualRow);
-                        }
-
-                        continue;
-
-                    SkipVariable:
-
-                        gridCell.Tag = null;
-                        gridCell.Value = null;
-                        gridCell.Image = null;
-                        gridCell.ToolTipText = string.Empty;
-                    }
-
-                    #endregion
-
-                    #region If column presents dataColumn
-
-                    DataColumn dataColumn = BadData.Individual.Columns[gridColumn.Name];
-
-                    if (dataColumn != null)
-                    {
-                        TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
-
-                        List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
-
-                        foreach (Data.SpeciesRow associate in associates)
-                        {
-                            naturalRows.AddRange(associate.GetIndividualRows()
-                                .GetMeasuredRows(NaturalData.Individual.Columns[dataColumn.ColumnName]));
-                        }
-
-                        List<Data.IndividualRow> okRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
-                            unweightedIndividuals.GetMeasuredRows(dataColumn));
-
-                        if (okRows.Count > 0)
-                        {
-                            int okCount = okRows.GetCount();
-                            recoverable += okCount;
-
-                            gridCell.Tag = naturalRows;
-                            //gridCell.Value = string.Format("{0} ({1:P1})", okCount, (double)okCount / (double)unweighted);
-                            gridCell.Value = okCount;
-
-                            try
-                            {
-                                //double r = 1;
-                                //double r1 = 1 - new Sample(naturalRows.GetMass()).CoefficientOfVariation;
-
-                                foreach (object variant in dataColumn.GetValues(okRows, true))
-                                {
-                                    List<DataRow> variantRows = naturalRows.GetRows(NaturalData.Individual.Columns[
-                                        dataColumn.ColumnName], variant.ToString());
-                                    //double r2 = Math.Max(.1, 1 - new Sample(NaturalData.Individual.
-                                    //    MassColumn.GetDoubles(variantRows)).GetVariation());
-                                    //r *= r2;
-                                }
-
-                                //gridCell.Image = r >= RequiredExplaination ?
-                                //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
-                                //gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
-                                //recoveryRate += r * okCount;
-                            }
-                            catch
-                            {
-                                gridCell.Image = null;
-                                gridCell.ToolTipText = Wild.Resources.Interface.Interface.QualityTipBad;
-                                //recoveryRate += .1 * okCount;
-                            }
-
-                            foreach (Data.IndividualRow individualRow in okRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
-                        else
-                        {
-                            gridCell.Value = null;
-                            gridCell.Image = null;
-                            gridCell.ToolTipText = string.Empty;
-                        }
-                    }
-
-                    #endregion
-                }
-
-                TotalRecoverable += recoverable;
-                //TotalRate += ascRate * recoveryRate;
-                //recoveryRate /= recoverable;
-
-                gridRow.Cells[columnPriRecoverable.Index].Value = recoverable;
-                gridRow.Cells[columnPriRecoverableP.Index].Value = (double)recoverable / (double)unweighted;
-                //gridRow.Cells[columnPriQuality.Index].Value = recoveryRate;
-                //((TextAndImageCell)gridRow.Cells[columnPriQuality.Index]).Image =
-                //    recoveryRate >= RequiredExplaination ? Mathematics.Properties.Resources.Check :
-                //    Mathematics.Properties.Resources.None; ;
-            }
-
-            //TotalRate /= TotalRecoverable;
-
-            textBoxTotalRecoverable.Text = string.Format("{0} ({1:P1})",
-                TotalRecoverable, (double)TotalRecoverable / (double)TotalUnweighted);
-            //textBoxRate.Text = TotalRate.ToString("P1");
-
-            wizardPagePriority.AllowNext = TotalRecoverable > 0;
-        }
+        //                if (weighted > 0 && okCount > 0)
+        //                {
+        //                    List<Data.IndividualRow> okRows = new List<Data.IndividualRow>();
+
+        //                    foreach (Data.SpeciesRow associate in associates)
+        //                    {
+        //                        okRows.AddRange(associate.GetWeightedIndividualRows());
+        //                    }
+
+        //                    recoverable += okCount;
+
+        //                    gridCell.Tag = okRows;
+        //                    //gridCell.Value = string.Format("{0} ({1:P1})", okCount,
+        //                    //    (double)okCount / (double)unweighted);
+        //                    gridCell.Value = okCount;
+
+        //                    //try
+        //                    //{
+        //                    //    double r = Math.Max(.1, 1 - new Sample(okRows.GetMass()).StandardDeviation);
+        //                    //    //gridCell.Image = r >= RequiredExplaination ?
+        //                    //    //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
+        //                    //    gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
+        //                    //    //recoveryRate += r * okCount;
+        //                    //}
+        //                    //catch
+        //                    //{
+        //                    //    gridCell.Image = null;
+        //                    //    gridCell.ToolTipText = Wild.Resources.Interface.Interface.QualityTipBad;
+        //                    //    //recoveryRate += .1 * okCount;
+        //                    //}
+
+        //                    unweightedIndividuals.Clear();
+        //                }
+        //                else
+        //                {
+        //                    gridCell.Tag = null;
+        //                    gridCell.Image = null;
+        //                    gridCell.Value = null;
+        //                    gridCell.ToolTipText = string.Empty;
+        //                }
+        //            }
+
+        //            #endregion
+
+        //            // Else If column not inserted in runtime - it doesn't fit
+        //            else if (!spreadSheetPriority.GetInsertedColumns().Contains(gridColumn))
+        //            {
+        //                continue;
+        //            }
+
+        //            #region If column presents variableRow
+
+        //            Data.VariableRow variableRow = NaturalData.Variable.FindByVarName(gridColumn.Name);
+
+        //            if (variableRow != null)
+        //            {
+        //                TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
+
+        //                Power model = NaturalData.SearchMassModel(variableRow, weightedIndividuals.ToArray());
+
+        //                if (model == null) goto SkipVariable;
+
+        //                List<Data.IndividualRow> okRows = unweightedIndividuals.GetMeasuredRows(variableRow);
+
+        //                if (okRows.Count == 0) goto SkipVariable;
+
+        //                int okCount = okRows.GetCount();
+        //                recoverable += okCount;
+
+        //                gridCell.Tag = model;
+        //                //gridCell.Tag = okRows;
+        //                //gridCell.Value = string.Format("{0} ({1:P1})", okCount, (double)okCount / (double)unweighted);
+        //                gridCell.Value = okCount;
+        //                //gridCell.Image = model.RSquare >= RequiredExplaination && model.Fit.GoodnessOfFit.IsPassed(TestDirection.Right) ?
+        //                //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
+        //                //double r = model.Determination * model.Fit.GoodnessOfFit.Probability;
+        //                //gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
+        //                //recoveryRate += r * okCount;
+
+        //                foreach (Data.IndividualRow individualRow in okRows)
+        //                {
+        //                    unweightedIndividuals.Remove(individualRow);
+        //                }
+
+        //                continue;
+
+        //            SkipVariable:
+
+        //                gridCell.Tag = null;
+        //                gridCell.Value = null;
+        //                gridCell.Image = null;
+        //                gridCell.ToolTipText = string.Empty;
+        //            }
+
+        //            #endregion
+
+        //            #region If column presents dataColumn
+
+        //            DataColumn dataColumn = BadData.Individual.Columns[gridColumn.Name];
+
+        //            if (dataColumn != null)
+        //            {
+        //                TextAndImageCell gridCell = (TextAndImageCell)gridRow.Cells[gridColumn.Index];
+
+        //                List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
+
+        //                foreach (Data.SpeciesRow associate in associates)
+        //                {
+        //                    naturalRows.AddRange(associate.GetIndividualRows()
+        //                        .GetMeasuredRows(NaturalData.Individual.Columns[dataColumn.ColumnName]));
+        //                }
+
+        //                List<Data.IndividualRow> okRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
+        //                    unweightedIndividuals.GetMeasuredRows(dataColumn));
+
+        //                if (okRows.Count > 0)
+        //                {
+        //                    int okCount = okRows.GetCount();
+        //                    recoverable += okCount;
+
+        //                    gridCell.Tag = naturalRows;
+        //                    //gridCell.Value = string.Format("{0} ({1:P1})", okCount, (double)okCount / (double)unweighted);
+        //                    gridCell.Value = okCount;
+
+        //                    try
+        //                    {
+        //                        //double r = 1;
+        //                        //double r1 = 1 - new Sample(naturalRows.GetMass()).CoefficientOfVariation;
+
+        //                        foreach (object variant in dataColumn.GetValues(okRows, true))
+        //                        {
+        //                            List<DataRow> variantRows = naturalRows.GetRows(NaturalData.Individual.Columns[
+        //                                dataColumn.ColumnName], variant.ToString());
+        //                            //double r2 = Math.Max(.1, 1 - new Sample(NaturalData.Individual.
+        //                            //    MassColumn.GetDoubles(variantRows)).GetVariation());
+        //                            //r *= r2;
+        //                        }
+
+        //                        //gridCell.Image = r >= RequiredExplaination ?
+        //                        //    Mathematics.Properties.Resources.Check : Mathematics.Properties.Resources.None;
+        //                        //gridCell.ToolTipText = string.Format(Wild.Resources.Interface.Interface.QualityTip, r);
+        //                        //recoveryRate += r * okCount;
+        //                    }
+        //                    catch
+        //                    {
+        //                        gridCell.Image = null;
+        //                        gridCell.ToolTipText = Wild.Resources.Interface.Interface.QualityTipBad;
+        //                        //recoveryRate += .1 * okCount;
+        //                    }
+
+        //                    foreach (Data.IndividualRow individualRow in okRows)
+        //                    {
+        //                        unweightedIndividuals.Remove(individualRow);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    gridCell.Value = null;
+        //                    gridCell.Image = null;
+        //                    gridCell.ToolTipText = string.Empty;
+        //                }
+        //            }
+
+        //            #endregion
+        //        }
+
+        //        TotalRecoverable += recoverable;
+        //        //TotalRate += ascRate * recoveryRate;
+        //        //recoveryRate /= recoverable;
+
+        //        gridRow.Cells[columnPriRecoverable.Index].Value = recoverable;
+        //        gridRow.Cells[columnPriRecoverableP.Index].Value = (double)recoverable / (double)unweighted;
+        //        //gridRow.Cells[columnPriQuality.Index].Value = recoveryRate;
+        //        //((TextAndImageCell)gridRow.Cells[columnPriQuality.Index]).Image =
+        //        //    recoveryRate >= RequiredExplaination ? Mathematics.Properties.Resources.Check :
+        //        //    Mathematics.Properties.Resources.None; ;
+        //    }
+
+        //    //TotalRate /= TotalRecoverable;
+
+        //    textBoxTotalRecoverable.Text = string.Format("{0} ({1:P1})",
+        //        TotalRecoverable, (double)TotalRecoverable / (double)TotalUnweighted);
+        //    //textBoxRate.Text = TotalRate.ToString("P1");
+
+        //    wizardPagePriority.AllowNext = TotalRecoverable > 0;
+        //}
 
 
 
@@ -864,12 +866,12 @@ namespace Mayfly.Benthos.Explorer
         {
             RememberAssociation();
             InitiatePriority();
-            Prepare();
+            //Prepare();
         }
 
         private void spreadSheetPriority_ColumnDisplayIndexChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            Prepare();
+            //Prepare();
         }
 
         private void spreadSheetPriority_DoubleClick(object sender, EventArgs e)
@@ -900,354 +902,354 @@ namespace Mayfly.Benthos.Explorer
 
             Report.AddSectionTitle(Wild.Resources.Interface.MassRecover.Section2Title);
 
-            // table of Associates
-            Report.Table table1 = new Report.Table(Wild.Resources.Interface.MassRecover.TableAscHeader);
-            table1.StartHeader(.35, 0, .35, 0);
-            table1.AddHeaderCell(
-                Wild.Resources.Interface.MassRecover.ColDiet,
-                Wild.Resources.Interface.MassRecover.ColFragments,
-                Wild.Resources.Interface.MassRecover.ColAsc,
-                Wild.Resources.Interface.MassRecover.ColSample);
-            table1.EndHeader();
+            //// table of Associates
+            //Report.Table table1 = new Report.Table(Wild.Resources.Interface.MassRecover.TableAscHeader);
+            //table1.StartHeader(.35, 0, .35, 0);
+            //table1.AddHeaderCell(
+            //    Wild.Resources.Interface.MassRecover.ColDiet,
+            //    Wild.Resources.Interface.MassRecover.ColFragments,
+            //    Wild.Resources.Interface.MassRecover.ColAsc,
+            //    Wild.Resources.Interface.MassRecover.ColSample);
+            //table1.EndHeader();
 
-            foreach (Data.SpeciesRow speciesRow in BadData.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
-            {
-                table1.StartRow();
-                table1.AddCell(speciesRow.Species);
-                table1.AddCellRight(speciesRow.TotalQuantity);
+            //foreach (SpeciesKey.SpeciesRow speciesRow in BadData.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
+            //{
+            //    table1.StartRow();
+            //    table1.AddCell(speciesRow.Species);
+            //    table1.AddCellRight(BadData.GetStack().Quantity(speciesRow));
 
-                Data.SpeciesRow[] associates = Associates(speciesRow);
+            //    SpeciesKey.SpeciesRow[] associates = Associates(speciesRow);
 
-                if (associates == null)
-                {
-                    table1.AddCell(Constants.Null);
-                    table1.AddCell();
-                }
-                else
-                {
-                    int associatedSample = 0;
-                    List<string> associateNames = new List<string>();
-                    foreach (Data.SpeciesRow associate in associates)
-                    {
-                        associatedSample += associate.TotalQuantity;
-                        associateNames.Add(associate.Species);
-                    }
-                    table1.AddCell(associateNames.Merge("<br>"));
-                    table1.AddCellRight(associatedSample);
-                }
-                table1.EndRow();
-            }
+            //    if (associates == null)
+            //    {
+            //        table1.AddCell(Constants.Null);
+            //        table1.AddCell();
+            //    }
+            //    else
+            //    {
+            //        int associatedSample = 0;
+            //        List<string> associateNames = new List<string>();
+            //        foreach (SpeciesKey.SpeciesRow associate in associates)
+            //        {
+            //            associatedSample += associate.TotalQuantity;
+            //            associateNames.Add(associate.Species);
+            //        }
+            //        table1.AddCell(associateNames.Merge("<br>"));
+            //        table1.AddCellRight(associatedSample);
+            //    }
+            //    table1.EndRow();
+            //}
 
-            Report.AddTable(table1);
+            //Report.AddTable(table1);
 
             #endregion
 
             Report.AddSectionTitle(Wild.Resources.Interface.MassRecover.Section3Title);
 
-            foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
-            {
-                Data.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
-                if (speciesRow == null) continue;
+            //foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
+            //{
+            //    Data.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
+            //    if (speciesRow == null) continue;
 
-                Report.AddSectionTitle(speciesRow.Species);
+            //    Report.AddSectionTitle(speciesRow.Species);
 
-                List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
+            //    List<Data.IndividualRow> unweightedIndividuals = speciesRow.GetUnweightedIndividualRows();
 
-                int unweighted = speciesRow.Unweighted();
-                int recovered = 0;
+            //    int unweighted = speciesRow.Unweighted();
+            //    int recovered = 0;
 
-                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecPar1,
-                    unweighted, (double)unweighted / (double)TotalUnweighted);
+            //    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecPar1,
+            //        unweighted, (double)unweighted / (double)TotalUnweighted);
 
-                List<string> associateNames = new List<string>();
-                Data.SpeciesRow[] associates = Associates(speciesRow);
-                if (associates == null)
-                {
-                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParNoAsc);
-                }
-                else
-                {
-                    foreach (Data.SpeciesRow associate in associates)
-                    {
-                        associateNames.Add(associate.Species);
-                    }
-                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParAsc,
-                        associateNames.Merge(", "));
+            //    List<string> associateNames = new List<string>();
+            //    Data.SpeciesRow[] associates = Associates(speciesRow);
+            //    if (associates == null)
+            //    {
+            //        Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParNoAsc);
+            //    }
+            //    else
+            //    {
+            //        foreach (Data.SpeciesRow associate in associates)
+            //        {
+            //            associateNames.Add(associate.Species);
+            //        }
+            //        Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParAsc,
+            //            associateNames.Merge(", "));
 
-                    foreach (DataGridViewColumn gridColumn in spreadSheetPriority.GetUserOrderedColumns())
-                    {
-                        DataGridViewCell gridCell = gridRow.Cells[gridColumn.Index];
+            //        foreach (DataGridViewColumn gridColumn in spreadSheetPriority.GetUserOrderedColumns())
+            //        {
+            //            DataGridViewCell gridCell = gridRow.Cells[gridColumn.Index];
 
-                        if (gridCell.Tag == null) continue;
+            //            if (gridCell.Tag == null) continue;
 
-                        #region Length
+            //            #region Length
 
-                        if (gridColumn == columnPriLength)
-                        {
-                            Regression model = (Power)gridCell.Tag;
+            //            if (gridColumn == columnPriLength)
+            //            {
+            //                Regression model = (Power)gridCell.Tag;
 
-                            List<Data.IndividualRow> okRows = new List<Data.IndividualRow>();
+            //                List<Data.IndividualRow> okRows = new List<Data.IndividualRow>();
 
-                            foreach (Data.IndividualRow individualRow in unweightedIndividuals)
-                            {
-                                if (individualRow.IsLengthNull()) continue;
-                                individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 2);
-                                RecoveredIndividualRows.Add(individualRow);
-                                okRows.Add(individualRow);
-                            }
+            //                foreach (Data.IndividualRow individualRow in unweightedIndividuals)
+            //                {
+            //                    if (individualRow.IsLengthNull()) continue;
+            //                    individualRow.Mass = Math.Round(model.Predict(individualRow.Length), 2);
+            //                    RecoveredIndividualRows.Add(individualRow);
+            //                    okRows.Add(individualRow);
+            //                }
 
-                            if (okRows.Count > 0)
-                            {
-                                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParLength,
-                                    okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted);
-                                Report.AddEquation(model.GetEquation("W", "L"), ",");
-                                //report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParLength2,
-                                //    model.Determination, model.Fit.GoodnessOfFit.Probability);
+            //                if (okRows.Count > 0)
+            //                {
+            //                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParLength,
+            //                        okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted);
+            //                    Report.AddEquation(model.GetEquation("W", "L"), ",");
+            //                    //report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParLength2,
+            //                    //    model.Determination, model.Fit.GoodnessOfFit.Probability);
 
-                                Report.Table table2 = new Report.Table(Wild.Resources.Interface.MassRecover.TableLenHeader);
-                                table2.StartHeader(.35, 0, 0, 0, 0);
-                                table2.AddHeaderCell(
-                                    Wild.Resources.Interface.MassRecover.ColPredator,
-                                    Wild.Resources.Reports.Caption.LengthUnit,
-                                    Wild.Resources.Interface.MassRecover.ColRecMass,
-                                    Wild.Resources.Interface.MassRecover.ColIdenticFor,
-                                    Wild.Resources.Interface.MassRecover.ColTotalMass);
-                                table2.EndHeader();
+            //                    Report.Table table2 = new Report.Table(Wild.Resources.Interface.MassRecover.TableLenHeader);
+            //                    table2.StartHeader(.35, 0, 0, 0, 0);
+            //                    table2.AddHeaderCell(
+            //                        Wild.Resources.Interface.MassRecover.ColPredator,
+            //                        Wild.Resources.Reports.Caption.LengthUnit,
+            //                        Wild.Resources.Interface.MassRecover.ColRecMass,
+            //                        Wild.Resources.Interface.MassRecover.ColIdenticFor,
+            //                        Wild.Resources.Interface.MassRecover.ColTotalMass);
+            //                    table2.EndHeader();
 
-                                double totalMass = 0;
-                                int totalCount = 0;
-                                string predator = string.Empty;
+            //                    double totalMass = 0;
+            //                    int totalCount = 0;
+            //                    string predator = string.Empty;
 
-                                foreach (Data.IndividualRow individualRow in okRows)
-                                {
-                                    int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
+            //                    foreach (Data.IndividualRow individualRow in okRows)
+            //                    {
+            //                        int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
 
-                                    table2.StartRow();
-                                    if (individualRow.LogRow.CardRow.Comments == predator) table2.AddCellValue(Constants.RepeatedValue);
-                                    else { predator = individualRow.LogRow.CardRow.Comments; table2.AddCell(predator); }
-                                    table2.AddCellRight(individualRow.Length, 1);
-                                    table2.AddCellRight(individualRow.Mass, 5);
-                                    table2.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table2.AddCellRight(individualRow.Mass * count, 5);
-                                    table2.EndRow();
+            //                        table2.StartRow();
+            //                        if (individualRow.LogRow.CardRow.Comments == predator) table2.AddCellValue(Constants.RepeatedValue);
+            //                        else { predator = individualRow.LogRow.CardRow.Comments; table2.AddCell(predator); }
+            //                        table2.AddCellRight(individualRow.Length, 1);
+            //                        table2.AddCellRight(individualRow.Mass, 5);
+            //                        table2.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
+            //                        table2.AddCellRight(individualRow.Mass * count, 5);
+            //                        table2.EndRow();
 
-                                    recovered += count;
-                                    totalMass += individualRow.Mass * count;
-                                    totalCount += count;
-                                }
+            //                        recovered += count;
+            //                        totalMass += individualRow.Mass * count;
+            //                        totalCount += count;
+            //                    }
 
-                                table2.StartFooter();
-                                table2.AddCell();
-                                table2.AddCell();
-                                table2.AddCell();
-                                table2.AddCellRight(totalCount);
-                                table2.AddCellRight(totalMass, 2);
-                                table2.EndFooter();
+            //                    table2.StartFooter();
+            //                    table2.AddCell();
+            //                    table2.AddCell();
+            //                    table2.AddCell();
+            //                    table2.AddCellRight(totalCount);
+            //                    table2.AddCellRight(totalMass, 2);
+            //                    table2.EndFooter();
 
-                                Report.AddTable(table2);
-                            }
+            //                    Report.AddTable(table2);
+            //                }
 
-                            foreach (Data.IndividualRow individualRow in okRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
+            //                foreach (Data.IndividualRow individualRow in okRows)
+            //                {
+            //                    unweightedIndividuals.Remove(individualRow);
+            //                }
+            //            }
 
-                        #endregion
+            //            #endregion
 
-                        #region Raw mass
+            //            #region Raw mass
 
-                        if (gridColumn == columnPriRaw && columnPriRaw.Visible)
-                        {
-                            List<Data.IndividualRow> naturalRows = (List<Data.IndividualRow>)gridCell.Tag;
-                            double avgMass = Math.Round(naturalRows.GetAverageMass(), 2);
+            //            if (gridColumn == columnPriRaw && columnPriRaw.Visible)
+            //            {
+            //                List<Data.IndividualRow> naturalRows = (List<Data.IndividualRow>)gridCell.Tag;
+            //                double avgMass = Math.Round(naturalRows.GetAverageMass(), 2);
 
-                            if (unweightedIndividuals.Count > 0)
-                            {
-                                recovered += unweightedIndividuals.GetCount();
-                                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParRaw,
-                                    unweightedIndividuals.GetCount(),
-                                    (double)unweightedIndividuals.GetCount() / (double)unweighted,
-                                    avgMass, unweightedIndividuals.GetCount(), avgMass,
-                                    unweightedIndividuals.GetCount() * avgMass);
-                            }
+            //                if (unweightedIndividuals.Count > 0)
+            //                {
+            //                    recovered += unweightedIndividuals.GetCount();
+            //                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParRaw,
+            //                        unweightedIndividuals.GetCount(),
+            //                        (double)unweightedIndividuals.GetCount() / (double)unweighted,
+            //                        avgMass, unweightedIndividuals.GetCount(), avgMass,
+            //                        unweightedIndividuals.GetCount() * avgMass);
+            //                }
 
-                            foreach (Data.IndividualRow individualRow in unweightedIndividuals)
-                            {
-                                individualRow.Mass = avgMass;
-                                RecoveredIndividualRows.Add(individualRow);
-                            }
+            //                foreach (Data.IndividualRow individualRow in unweightedIndividuals)
+            //                {
+            //                    individualRow.Mass = avgMass;
+            //                    RecoveredIndividualRows.Add(individualRow);
+            //                }
 
-                            int logCount = 0;
-                            int logQuantity = 0;
+            //                int logCount = 0;
+            //                int logQuantity = 0;
 
-                            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
-                            {
-                                if (logRow.GetIndividualRows().Length > 0) continue;
-                                logRow.Mass = logRow.Quantity * avgMass;
-                                logCount++;
-                                logQuantity += logRow.Quantity;
-                                recovered += logRow.Quantity;
-                            }
+            //                foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            //                {
+            //                    if (logRow.GetIndividualRows().Length > 0) continue;
+            //                    logRow.Mass = logRow.Quantity * avgMass;
+            //                    logCount++;
+            //                    logQuantity += logRow.Quantity;
+            //                    recovered += logRow.Quantity;
+            //                }
 
-                            if (logCount > 0)
-                            {
-                                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParAbstract,
-                                    logCount, logQuantity, logQuantity, avgMass, logQuantity * avgMass);
-                            }
-                        }
+            //                if (logCount > 0)
+            //                {
+            //                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParAbstract,
+            //                        logCount, logQuantity, logQuantity, avgMass, logQuantity * avgMass);
+            //                }
+            //            }
 
-                        #endregion
+            //            #endregion
 
-                        if (!spreadSheetPriority.GetInsertedColumns().Contains(gridColumn)) continue;
+            //            if (!spreadSheetPriority.GetInsertedColumns().Contains(gridColumn)) continue;
 
-                        #region Variable
+            //            #region Variable
 
-                        Data.VariableRow variableRow = BadData.Variable.FindByVarName(gridColumn.Name);
+            //            Data.VariableRow variableRow = BadData.Variable.FindByVarName(gridColumn.Name);
 
-                        if (variableRow != null)
-                        {
-                            List<Data.IndividualRow> okRows = unweightedIndividuals.GetMeasuredRows(variableRow);
+            //            if (variableRow != null)
+            //            {
+            //                List<Data.IndividualRow> okRows = unweightedIndividuals.GetMeasuredRows(variableRow);
 
-                            Regression model = (Regression)gridCell.Tag;
-                            BadData.ApplyMassRecoveryModel(okRows, variableRow, model);
-                            RecoveredIndividualRows.AddRange(okRows);
+            //                Regression model = (Regression)gridCell.Tag;
+            //                BadData.ApplyMassRecoveryModel(okRows, variableRow, model);
+            //                RecoveredIndividualRows.AddRange(okRows);
 
-                            if (okRows.Count > 0)
-                            {
-                                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParVar,
-                                    okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted, variableRow.Variable);
-                                Report.AddEquation(model.GetEquation("W", "X"), ",");
-                                //report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParVar2, variableRow.Variable,
-                                //    model.Determination, model.Fit.GoodnessOfFit.Probability);
+            //                if (okRows.Count > 0)
+            //                {
+            //                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParVar,
+            //                        okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted, variableRow.Variable);
+            //                    Report.AddEquation(model.GetEquation("W", "X"), ",");
+            //                    //report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParVar2, variableRow.Variable,
+            //                    //    model.Determination, model.Fit.GoodnessOfFit.Probability);
 
-                                Report.Table table3 = new Report.Table(Wild.Resources.Interface.MassRecover.TableRecHeader, variableRow.Variable);
-                                table3.StartHeader(.35, 0, 0, 0, 0);
-                                table3.AddHeaderCell(
-                                    Wild.Resources.Interface.MassRecover.ColPredator,
-                                    variableRow.Variable,
-                                    Wild.Resources.Interface.MassRecover.ColRecMass,
-                                    Wild.Resources.Interface.MassRecover.ColIdenticFor,
-                                    Wild.Resources.Interface.MassRecover.ColTotalMass);
-                                table3.EndHeader();
+            //                    Report.Table table3 = new Report.Table(Wild.Resources.Interface.MassRecover.TableRecHeader, variableRow.Variable);
+            //                    table3.StartHeader(.35, 0, 0, 0, 0);
+            //                    table3.AddHeaderCell(
+            //                        Wild.Resources.Interface.MassRecover.ColPredator,
+            //                        variableRow.Variable,
+            //                        Wild.Resources.Interface.MassRecover.ColRecMass,
+            //                        Wild.Resources.Interface.MassRecover.ColIdenticFor,
+            //                        Wild.Resources.Interface.MassRecover.ColTotalMass);
+            //                    table3.EndHeader();
 
-                                double totalMass = 0;
-                                int totalCount = 0;
-                                string predator = string.Empty;
+            //                    double totalMass = 0;
+            //                    int totalCount = 0;
+            //                    string predator = string.Empty;
 
-                                foreach (Data.IndividualRow individualRow in okRows)
-                                {
-                                    int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
+            //                    foreach (Data.IndividualRow individualRow in okRows)
+            //                    {
+            //                        int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
 
-                                    table3.StartRow();
-                                    if (individualRow.LogRow.CardRow.Comments == predator) table3.AddCellValue(Constants.RepeatedValue);
-                                    else { predator = individualRow.LogRow.CardRow.Comments; table3.AddCell(predator); }
-                                    table3.AddCellRight(BadData.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID).Value);
-                                    table3.AddCellRight(individualRow.Mass, 5);
-                                    table3.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table3.AddCellRight(individualRow.Mass * count, 2);
-                                    table3.EndRow();
+            //                        table3.StartRow();
+            //                        if (individualRow.LogRow.CardRow.Comments == predator) table3.AddCellValue(Constants.RepeatedValue);
+            //                        else { predator = individualRow.LogRow.CardRow.Comments; table3.AddCell(predator); }
+            //                        table3.AddCellRight(BadData.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID).Value);
+            //                        table3.AddCellRight(individualRow.Mass, 5);
+            //                        table3.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
+            //                        table3.AddCellRight(individualRow.Mass * count, 2);
+            //                        table3.EndRow();
 
-                                    totalMass += individualRow.Mass * count;
-                                    totalCount += count;
-                                    recovered += count;
-                                }
+            //                        totalMass += individualRow.Mass * count;
+            //                        totalCount += count;
+            //                        recovered += count;
+            //                    }
 
-                                table3.StartFooter();
-                                table3.AddCell();
-                                table3.AddCell();
-                                table3.AddCell();
-                                table3.AddCellRight(totalCount);
-                                table3.AddCellRight(totalMass, 2);
-                                table3.EndFooter();
-                                Report.AddTable(table3);
-                            }
+            //                    table3.StartFooter();
+            //                    table3.AddCell();
+            //                    table3.AddCell();
+            //                    table3.AddCell();
+            //                    table3.AddCellRight(totalCount);
+            //                    table3.AddCellRight(totalMass, 2);
+            //                    table3.EndFooter();
+            //                    Report.AddTable(table3);
+            //                }
 
-                            foreach (Data.IndividualRow individualRow in okRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
+            //                foreach (Data.IndividualRow individualRow in okRows)
+            //                {
+            //                    unweightedIndividuals.Remove(individualRow);
+            //                }
+            //            }
 
-                        #endregion
+            //            #endregion
 
-                        #region Category
+            //            #region Category
 
-                        DataColumn dataColumn = BadData.Individual.Columns[gridColumn.Name];
+            //            DataColumn dataColumn = BadData.Individual.Columns[gridColumn.Name];
 
-                        if (dataColumn != null)
-                        {
-                            List<Data.IndividualRow> naturalRows = (List<Data.IndividualRow>)gridCell.Tag;
+            //            if (dataColumn != null)
+            //            {
+            //                List<Data.IndividualRow> naturalRows = (List<Data.IndividualRow>)gridCell.Tag;
 
-                            List<Data.IndividualRow> okRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
-                                unweightedIndividuals.GetMeasuredRows(dataColumn));
+            //                List<Data.IndividualRow> okRows = dataColumn.GetIndividualsThatAreMeasuredToo(naturalRows,
+            //                    unweightedIndividuals.GetMeasuredRows(dataColumn));
 
-                            BadData.ApplyMassRecoveryWithModelData(okRows, dataColumn, naturalRows);
-                            RecoveredIndividualRows.AddRange(okRows);
+            //                BadData.ApplyMassRecoveryWithModelData(okRows, dataColumn, naturalRows);
+            //                RecoveredIndividualRows.AddRange(okRows);
 
-                            if (okRows.Count > 0)
-                            {
-                                Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParCategory,
-                                    okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted,
-                                    Service.Localize(dataColumn.ColumnName));
+            //                if (okRows.Count > 0)
+            //                {
+            //                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParCategory,
+            //                        okRows.GetCount(), (double)okRows.GetCount() / (double)unweighted,
+            //                        Service.Localize(dataColumn.ColumnName));
 
-                                Report.Table table4 = new Report.Table(Wild.Resources.Interface.MassRecover.TableRecHeader, Service.Localize(dataColumn.ColumnName));
-                                table4.StartHeader(.35, 0, 0, 0, 0);
-                                table4.AddHeaderCell(
-                                    Wild.Resources.Interface.MassRecover.ColPredator,
-                                    Service.Localize(dataColumn.ColumnName),
-                                    Wild.Resources.Interface.MassRecover.ColMeanMass,
-                                    Wild.Resources.Interface.MassRecover.ColIdenticFor,
-                                    Wild.Resources.Interface.MassRecover.ColTotalMass);
-                                table4.EndHeader();
+            //                    Report.Table table4 = new Report.Table(Wild.Resources.Interface.MassRecover.TableRecHeader, Service.Localize(dataColumn.ColumnName));
+            //                    table4.StartHeader(.35, 0, 0, 0, 0);
+            //                    table4.AddHeaderCell(
+            //                        Wild.Resources.Interface.MassRecover.ColPredator,
+            //                        Service.Localize(dataColumn.ColumnName),
+            //                        Wild.Resources.Interface.MassRecover.ColMeanMass,
+            //                        Wild.Resources.Interface.MassRecover.ColIdenticFor,
+            //                        Wild.Resources.Interface.MassRecover.ColTotalMass);
+            //                    table4.EndHeader();
 
-                                double totalMass = 0;
-                                int totalCount = 0;
-                                string predator = string.Empty;
+            //                    double totalMass = 0;
+            //                    int totalCount = 0;
+            //                    string predator = string.Empty;
 
-                                foreach (Data.IndividualRow individualRow in okRows)
-                                {
-                                    int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
+            //                    foreach (Data.IndividualRow individualRow in okRows)
+            //                    {
+            //                        int count = individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
 
-                                    table4.StartRow();
-                                    if (individualRow.LogRow.CardRow.Comments == predator) table4.AddCellValue(Constants.RepeatedValue);
-                                    else { predator = individualRow.LogRow.CardRow.Comments; table4.AddCell(predator); }
-                                    table4.AddCellRight(individualRow[dataColumn.ColumnName]);
-                                    table4.AddCellRight(individualRow.Mass, 5);
-                                    table4.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
-                                    table4.AddCellRight(individualRow.Mass * count, 5);
-                                    table4.EndRow();
+            //                        table4.StartRow();
+            //                        if (individualRow.LogRow.CardRow.Comments == predator) table4.AddCellValue(Constants.RepeatedValue);
+            //                        else { predator = individualRow.LogRow.CardRow.Comments; table4.AddCell(predator); }
+            //                        table4.AddCellRight(individualRow[dataColumn.ColumnName]);
+            //                        table4.AddCellRight(individualRow.Mass, 5);
+            //                        table4.AddCellRight(count == 1 ? string.Empty : string.Format("× {0}", count));
+            //                        table4.AddCellRight(individualRow.Mass * count, 5);
+            //                        table4.EndRow();
 
-                                    totalMass += individualRow.Mass * count;
-                                    totalCount += count;
-                                    recovered += count;
-                                }
+            //                        totalMass += individualRow.Mass * count;
+            //                        totalCount += count;
+            //                        recovered += count;
+            //                    }
 
-                                table4.StartFooter();
-                                table4.AddCell();
-                                table4.AddCell();
-                                table4.AddCell();
-                                table4.AddCellRight(totalCount);
-                                table4.AddCellRight(totalMass, 2);
-                                table4.EndFooter();
-                                Report.AddTable(table4);
-                            }
+            //                    table4.StartFooter();
+            //                    table4.AddCell();
+            //                    table4.AddCell();
+            //                    table4.AddCell();
+            //                    table4.AddCellRight(totalCount);
+            //                    table4.AddCellRight(totalMass, 2);
+            //                    table4.EndFooter();
+            //                    Report.AddTable(table4);
+            //                }
 
-                            foreach (Data.IndividualRow individualRow in okRows)
-                            {
-                                unweightedIndividuals.Remove(individualRow);
-                            }
-                        }
+            //                foreach (Data.IndividualRow individualRow in okRows)
+            //                {
+            //                    unweightedIndividuals.Remove(individualRow);
+            //                }
+            //            }
 
-                        #endregion
-                    }
+            //            #endregion
+            //        }
 
-                    Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParTotal,
-                        recovered, (double)recovered / (double)unweighted);
-                }
-            }
+            //        Report.AddParagraphClassValue(Wild.Resources.Interface.MassRecover.RecParTotal,
+            //            recovered, (double)recovered / (double)unweighted);
+            //    }
+            //}
 
-            BadData.RestoreMass();
+            //BadData.RestoreMass();
 
             Report.EndBranded();
         }

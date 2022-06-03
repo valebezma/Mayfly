@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Wild;
 using Mayfly.Fish.Explorer;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -14,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public Data.SpeciesRow SpeciesOfInterest { get; set; }
+        public SpeciesKey.SpeciesRow SpeciesOfInterest { get; set; }
 
         public FishSamplerType SelectedSamplerType { get; set; }
 
@@ -110,7 +111,7 @@ namespace Mayfly.Fish.Explorer
             //pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
         }
 
-        public WizardGearSet(CardStack data, Data.SpeciesRow speciesRow)
+        public WizardGearSet(CardStack data, SpeciesKey.SpeciesRow speciesRow)
             : this(data)
         {
             SpeciesOfInterest = speciesRow;
@@ -213,7 +214,7 @@ namespace Mayfly.Fish.Explorer
 
                 spreadSheetEfforts[ColumnClass.Index, i].ToolTipText =
                     speciesOfInterestIsPresent ? string.Empty : 
-                    string.Format(Resources.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.KeyRecord.ShortName, 
+                    string.Format(Resources.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.ShortName, 
                     classedStacks[i].Name, spreadSheetEfforts.RowVisibilityKey);
 
             }

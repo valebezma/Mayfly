@@ -56,11 +56,11 @@ namespace Mayfly.Wild
 
     public class SpeciesSwarm : Category
     {
-        public Data.SpeciesRow SpeciesRow { get; set; }
+        public SpeciesKey.SpeciesRow SpeciesRow { get; set; }
 
 
 
-        public SpeciesSwarm(Data.SpeciesRow dataRow)
+        public SpeciesSwarm(SpeciesKey.SpeciesRow dataRow)
         {
             SpeciesRow = dataRow;
         }
@@ -74,7 +74,7 @@ namespace Mayfly.Wild
 
         public override string ToString()
         {
-            return Name == SpeciesRow.Species ? (SpeciesRow.KeyRecord.ShortName) : Name;
+            return Name == SpeciesRow.Species ? (SpeciesRow.ShortName) : Name;
         }
     }
 }

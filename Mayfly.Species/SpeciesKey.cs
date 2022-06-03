@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using Mayfly.Extensions;
 using Mayfly.Species.Systematics;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Mayfly.Species
 {
     public partial class SpeciesKey
     {
-        partial class TaxaRow : IComparable<TaxaRow>
+        partial class TaxaRow : IComparable<TaxaRow>, IFormattable
         {
             public string TaxonName
             {
@@ -57,6 +58,24 @@ namespace Mayfly.Species
             {
                 int n = this.Name.CompareTo(other.Name);
                 return this.IsIndexNull() ? n : (other.IsIndexNull() ? n : Index.CompareTo(other.Index));
+            }
+
+
+            public override string ToString()
+            {
+                return TaxonName;
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider)
+            {
+                switch (format.ToLowerInvariant())
+                {
+                    case "f":
+                        return FullName;
+
+                    default:
+                        return TaxonName;
+                }
             }
         }
 
@@ -372,7 +391,7 @@ namespace Mayfly.Species
             }
         }
 
-        partial class SpeciesRow : IFormattable
+        partial class SpeciesRow : IFormattable, IComparable<SpeciesRow>
         {
             public SpeciesRow MajorSynonym
             {
@@ -497,7 +516,7 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return string.Format("{0} {1} {2}", ShortName, ScientificName, IsReferenceNull() ? string.Empty : Reference).Trim();
+                    return string.Format("{0} {1} {2}", IsNameNull() ? string.Empty : Name.GetLocalizedValue(), ScientificName, IsReferenceNull() ? string.Empty : Reference).Trim();
                 }
             }
 
@@ -507,6 +526,19 @@ namespace Mayfly.Species
                 {
                     return string.Format("{0} {1} {2}", ShortName, ScientificNameReport, IsReferenceNull() ? string.Empty : Reference).Trim();
                 }
+            }
+
+
+            public bool Validate(string record)
+            {
+                if (Species == record) return true;
+
+                foreach (SpeciesRow spcRow in MinorSynonyms)
+                {
+                    if (spcRow.Validate(record)) return true;
+                }
+
+                return false;
             }
 
 
@@ -552,6 +584,29 @@ namespace Mayfly.Species
 
                     default:
                         return Species;
+                }
+            }
+
+            public string ToString(string format)
+            {
+                return ToString(format, CultureInfo.CurrentCulture);
+            }
+
+            public int CompareTo(SpeciesRow y)
+            {
+                if (this.IsIndexNull() || y.IsIndexNull())
+                {
+                    return string.Compare(
+                        this.Species.Replace(" gr.", string.Empty),
+                        y.Species.Replace(" gr.", string.Empty));
+                }
+                else
+                {
+                    int phr = string.Compare(
+                        this.Index, y.Index);
+                    return phr == 0 ? string.Compare(
+                        this.Species.Replace(" gr.", string.Empty),
+                        y.Species.Replace(" gr.", string.Empty)) : phr;
                 }
             }
         }

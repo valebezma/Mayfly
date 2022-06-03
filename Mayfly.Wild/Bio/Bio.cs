@@ -4,6 +4,7 @@ using Mayfly.Extensions;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
@@ -35,7 +36,7 @@ namespace Mayfly.Wild
 
 
 
-        public Bio(Data data, Data.SpeciesRow speciesRow, DataColumn yColumn)
+        public Bio(Data data, SpeciesKey.SpeciesRow speciesRow, DataColumn yColumn)
         {
             if (yColumn.DataType != typeof(double))
                 throw new FormatException();

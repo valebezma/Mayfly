@@ -17,6 +17,7 @@ using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Meta.Numerics.Statistics;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -542,7 +543,7 @@ namespace Mayfly.Fish.Explorer
             clearSpcStats();
 
             spreadSheetSpcStats.Rows.Clear();
-            foreach (Data.SpeciesRow speciesRow in AllowedStack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in AllowedStack.GetSpecies())
             {
                 spreadSheetSpcStats.Rows.Add(speciesRow.ID, speciesRow);
             }
@@ -581,7 +582,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
 
-            foreach (Data.SpeciesRow spcRow in FullStack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow spcRow in FullStack.GetSpecies())
             {
                 TreatmentSuggestion sugg = FullStack.GetTreatmentSuggestion(spcRow, data.Individual.AgeColumn);
                 if (sugg != null) indRows.AddRange(sugg.GetSuggested());
@@ -627,7 +628,7 @@ namespace Mayfly.Fish.Explorer
 
         private void speciesComposition_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardPopulation wizard = new WizardPopulation(AllowedStack, speciesRow);
             wizard.Show();
         }
@@ -637,14 +638,14 @@ namespace Mayfly.Fish.Explorer
 
         private void speciesGrowthCohorts_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardGrowthCohorts wizard = new WizardGrowthCohorts(AllowedStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesMortalityCohorts_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardMortalityCohorts wizard = new WizardMortalityCohorts(AllowedStack, speciesRow);
             wizard.Show();
         }
@@ -657,21 +658,21 @@ namespace Mayfly.Fish.Explorer
 
         private void speciesStockExtrapolation_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardExtrapolation wizard = new WizardExtrapolation(AllowedStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesStockVpa_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardVirtualPopulation wizard = new WizardVirtualPopulation(AllowedStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesMSYR_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardMSYR wizard = new WizardMSYR(AllowedStack, speciesRow);
             wizard.Show();
         }
@@ -684,7 +685,7 @@ namespace Mayfly.Fish.Explorer
 
         private void speciesMSY_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardMSY wizard = new WizardMSY(AllowedStack, speciesRow);
             wizard.Show();
         }
@@ -697,7 +698,7 @@ namespace Mayfly.Fish.Explorer
 
         private void speciesPrediction_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
             WizardPrediction wizard = new WizardPrediction(AllowedStack, speciesRow);
             wizard.Show();
         }
@@ -1108,7 +1109,7 @@ namespace Mayfly.Fish.Explorer
 
             double Q = 0D;
 
-            foreach (Data.SpeciesRow speciesRow in CatchesData.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in CatchesData.GetSpeciesCaught())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
 
@@ -1244,7 +1245,7 @@ namespace Mayfly.Fish.Explorer
         {
             // Make a selection
             if (spreadSheetSpcStats.SelectedRows.Count == 0 ||
-                !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is Data.SpeciesRow row))
+                !(spreadSheetSpcStats[ColumnSpcStat.Index, spreadSheetSpcStats.SelectedRows[0].Index].Value is SpeciesKey.SpeciesRow row))
             {
                 selectedStatSpc = null;
             }
@@ -1325,7 +1326,7 @@ namespace Mayfly.Fish.Explorer
             {
                 chartSpcStats.Series[0].Points.Clear();
                 chartSpcStats.Legends[0].Enabled = true;
-                foreach (Data.SpeciesRow speciesRow in FullStack.GetSpecies())
+                foreach (SpeciesKey.SpeciesRow speciesRow in FullStack.GetSpecies())
                 {
                     DataPoint dp = new DataPoint();
                     dp.YValues[0] = AllowedStack.Quantity(speciesRow);
@@ -1786,7 +1787,7 @@ namespace Mayfly.Fish.Explorer
 
             Report report = new Report(selectedStatSpc == null ?
                 Resources.Reports.Sections.SpeciesStats.Title :
-                string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.KeyRecord.FullNameReport));
+                string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.FullNameReport));
             AllowedStack.Sort();
 
             if (selectedStatSpc == null)
@@ -2160,7 +2161,7 @@ namespace Mayfly.Fish.Explorer
             bool hasStratified = false;
             bool hasSampled = false;
 
-            foreach (Data.SpeciesRow spcRow in getSpeciesRows(spreadSheetSpc.SelectedRows))
+            foreach (SpeciesKey.SpeciesRow spcRow in getSpeciesRows(spreadSheetSpc.SelectedRows))
             {
                 hasStratified |= FullStack.QuantityStratified(spcRow) > 0;
                 hasSampled |= FullStack.QuantityIndividual(spcRow) > 0;
@@ -2498,7 +2499,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                Data.LogRow[] logRows = individualSpecies.GetLogRows();
+                Data.LogRow[] logRows = FullStack.GetLogRows(individualSpecies);
 
                 for (int i = 0; i < logRows.Length; i++)
                 {
@@ -2664,9 +2665,9 @@ namespace Mayfly.Fish.Explorer
                 bioUpdater.RunWorkerAsync(e.Result);
                 return;
             }
-            else if (selectedStatSpc == (Data.SpeciesRow)e.Result)
+            else if (selectedStatSpc == (SpeciesKey.SpeciesRow)e.Result)
             {
-                qualCalc.RunWorkerAsync((Data.SpeciesRow)e.Result);
+                qualCalc.RunWorkerAsync((SpeciesKey.SpeciesRow)e.Result);
             }
 
             applyBio();
@@ -2695,7 +2696,7 @@ namespace Mayfly.Fish.Explorer
             List<string> speciesNames = columnIndSpecies.GetStrings(true);
 
             pictureBoxStratified.Visible = speciesNames.Count == 1 &&
-                AllowedStack.QuantityStratified(data.Species.FindBySpecies(speciesNames[0])) > 0;
+                AllowedStack.QuantityStratified(Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(speciesNames[0])) > 0;
 
             if (pictureBoxStratified.Visible)
             {

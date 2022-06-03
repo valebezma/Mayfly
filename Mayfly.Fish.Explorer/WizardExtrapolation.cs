@@ -17,6 +17,7 @@ using Mayfly.Extensions;
 using Mayfly.Fish;
 using Mayfly.Fish.Explorer;
 using Mayfly.Software;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -28,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         public double Area 
         {
@@ -114,14 +115,14 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardExtrapolation(CardStack data, Data.SpeciesRow speciesRow) : this()
+        public WizardExtrapolation(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
-            labelStockInstruction.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            labelStockInstruction.ResetFormatted(SpeciesRow.ShortName);
 
             Log.Write(EventType.WizardStarted, "Extrapolation wizard is started for {0}.", speciesRow.Species);
         }
@@ -233,7 +234,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.Extrapolation.Title,
-                    SpeciesRow.KeyRecord.FullNameReport));
+                    SpeciesRow.FullNameReport));
             gearWizard.SelectedData.AddCommon(report, SpeciesRow);
 
             report.UseTableNumeration = true;
@@ -254,7 +255,7 @@ namespace Mayfly.Fish.Explorer
             if (checkBoxComposition.Checked)
             {
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph1,
-                    SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
+                    SpeciesRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay(),
                     compositionWizard.CategoryType);
 
                 if (checkBoxCatches.Checked)
@@ -287,11 +288,11 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph2 +
                     (gearWizard.IsSpatialOn ? Resources.Reports.Sections.Extrapolation.Paragraph2_1 : string.Empty),
-                    SpeciesRow.KeyRecord.FullNameReport, Catchability, SpeciesRow.KeyRecord.FullNameReport, report.NextTableNumber,
+                    SpeciesRow.FullNameReport, Catchability, SpeciesRow.FullNameReport, report.NextTableNumber,
                     (gearWizard.IsSpatialOn ? (report.NextTableNumber - 1).ToString() : string.Empty));
 
                 Report.Table table1 = new Report.Table(Resources.Reports.Sections.Extrapolation.Table1,
-                    SpeciesRow.KeyRecord.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
+                    SpeciesRow.FullNameReport, gearWizard.SelectedSamplerType.ToDisplay());
 
                 table1.StartRow();
                 table1.AddHeaderCell(Resources.Reports.Caption.GearClass, .25, 2);
@@ -339,7 +340,7 @@ namespace Mayfly.Fish.Explorer
                 report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph3,
                     catches[0].Abundance, gearWizard.AbundanceUnits,
                     catches[0].Biomass, gearWizard.BiomassUnits,
-                    SpeciesRow.KeyRecord.FullNameReport, Catchability);
+                    SpeciesRow.FullNameReport, Catchability);
             }
 
             report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph4);
@@ -410,7 +411,7 @@ namespace Mayfly.Fish.Explorer
             }
 
             report.AddParagraph(Resources.Reports.Sections.Extrapolation.Paragraph6,
-                waterSize, SpeciesRow.KeyRecord.FullNameReport);
+                waterSize, SpeciesRow.FullNameReport);
 
             switch (gearWizard.SelectedUnit.Variant)
             {
@@ -553,7 +554,7 @@ namespace Mayfly.Fish.Explorer
 
             numericUpDownDepth.Enabled = gearWizard.SelectedUnit.Variant != ExpressionVariant.Square;
 
-            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.KeyRecord.ShortName);
+            labelAbundanceInstruction.ResetFormatted(gearWizard.SelectedSamplerType.ToDisplay(), SpeciesRow.ShortName);
 
             this.Replace(gearWizard);
             //if (wizardExplorer.SelectedPage != pageCpue) wizardExplorer.SetSelectedPage(pageCpue);

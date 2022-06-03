@@ -7,12 +7,13 @@ using Mayfly.Wild;
 using Meta.Numerics;
 using Mayfly.Extensions;
 using System.Windows.Forms;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command, Func<Data.SpeciesRow, int> resultsCounter)
+        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.SpeciesRow, int> resultsCounter)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -30,7 +31,7 @@ namespace Mayfly.Fish.Explorer
 
             int added = 0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 int s = resultsCounter.Invoke(speciesRow);
 
@@ -60,22 +61,22 @@ namespace Mayfly.Fish.Explorer
             PopulateSpeciesMenu(stack, item, command, (s) => { return -1; });
         }
 
-        public static Data.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
+        public static SpeciesKey.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
         {
             return stack.GetSpeciesCaught(1);
         }
 
-        public static Data.SpeciesRow[] GetSpeciesCaught(this CardStack stack, int minimalSample)
+        public static SpeciesKey.SpeciesRow[] GetSpeciesCaught(this CardStack stack, int minimalSample)
         {
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
 
             if (stack.IsEmpty) return result.ToArray();
 
-            foreach (Data.SpeciesRow speciesRow in stack.Parent.Species.GetSorted())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.Parent.Species.GetSorted())
             {
                 foreach (Data.LogRow logRow in stack.GetLogRows())
                 {
-                    if (logRow.SpeciesRow == speciesRow)
+                    if (speciesRow.Validate(logRow.SpeciesRow.Species))
                     {
                         if (stack.Quantity(speciesRow) < minimalSample) continue;
 
@@ -92,7 +93,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string field, object value)
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.SpeciesRow spcRow, string field, object value)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -107,7 +108,7 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, Data.SpeciesRow spcRow, string[] field, object[] value)
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.SpeciesRow spcRow, string[] field, object[] value)
         {
             List<Data.IndividualRow[]> packs = new List<Data.IndividualRow[]>();
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
@@ -302,7 +303,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -310,7 +311,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 
@@ -322,7 +323,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, Data.SpeciesRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, ExpressionVariant variant)
         {
             double result = 0.0;
 
@@ -338,7 +339,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -346,7 +347,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
         {
             double result = 0.0;
 
@@ -358,7 +359,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, Data.SpeciesRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, ExpressionVariant variant)
         {
             double result = 0.0;
 
@@ -473,7 +474,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static TreatmentSuggestion GetTreatmentSuggestion(this CardStack stack, Data.SpeciesRow speciesRow, System.Data.DataColumn column)
+        public static TreatmentSuggestion GetTreatmentSuggestion(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, System.Data.DataColumn column)
         {
             if (column.Table != stack.Parent.Individual)
                 throw new Exception("Column should be of Individuals table.");

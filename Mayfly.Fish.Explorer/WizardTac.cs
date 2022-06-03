@@ -12,6 +12,7 @@ using Mayfly.Fish;
 using Mayfly.Extensions;
 using System.Globalization;
 using Mayfly.Wild;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -23,7 +24,7 @@ namespace Mayfly.Fish.Explorer
 
         public UnitEffort SelectedUnit { get; set; }
 
-        public Data.SpeciesRow SelectedSpecies { get; set; }
+        public SpeciesKey.SpeciesRow SelectedSpecies { get; set; }
 
 
 
@@ -130,7 +131,7 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxSpecies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedSpecies = (Data.SpeciesRow)comboBoxSpecies.SelectedItem;
+            SelectedSpecies = (SpeciesKey.SpeciesRow)comboBoxSpecies.SelectedItem;
         }
 
         private void spreadSheetData_CellValueChanged(object sender, DataGridViewCellEventArgs e)

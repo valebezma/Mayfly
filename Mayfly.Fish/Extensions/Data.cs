@@ -696,7 +696,7 @@ namespace Mayfly.Fish
 
         public static Data GetConsumed(this Data.IndividualRow indRow, bool pool)
         {
-            Data result = new Data();
+            Data result = new Data(Fish.UserSettings.DietIndex, Benthos.UserSettings.SamplersIndex);
 
             foreach (Data.IntestineRow intRow in indRow.GetIntestineRows())
             {

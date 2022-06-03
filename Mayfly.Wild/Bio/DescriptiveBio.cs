@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
@@ -15,7 +16,7 @@ namespace Mayfly.Wild
 
 
 
-        public DescriptiveBio(Data data, Data.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn) :
+        public DescriptiveBio(Data data, SpeciesKey.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn) :
             base(data, speciesRow, yColumn)
         {
             nameX = xColumn.Caption;

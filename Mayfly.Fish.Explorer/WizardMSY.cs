@@ -14,6 +14,7 @@ using Functor = Mayfly.Mathematics.Charts.Functor;
 using Meta.Numerics;
 using Meta.Numerics.Statistics;
 using System.Linq;
+using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -21,7 +22,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public Data.SpeciesRow SpeciesRow;
+        public SpeciesKey.SpeciesRow SpeciesRow;
 
         public VirtualCohort VirtualCohort;
 
@@ -61,14 +62,14 @@ namespace Mayfly.Fish.Explorer
             ColumnY.ValueType = typeof(double);
         }
 
-        public WizardMSY(CardStack data, Data.SpeciesRow speciesRow)
+        public WizardMSY(CardStack data, SpeciesKey.SpeciesRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.KeyRecord.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.KeyRecord.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            labelStart.ResetFormatted(SpeciesRow.ShortName);
 
             buttonVpa.Enabled =
                 buttonGrowth.Enabled = true;
@@ -118,7 +119,7 @@ namespace Mayfly.Fish.Explorer
         {
             Report report = new Report(
                     string.Format(Resources.Reports.Sections.MSYR.Title,
-                    SpeciesRow.KeyRecord.FullNameReport));
+                    SpeciesRow.FullNameReport));
 
             report.UseTableNumeration = true;
 

@@ -19,7 +19,7 @@ namespace Mayfly.Benthos.Explorer
     {
         public static int limit = 15;
 
-        public Data.SpeciesRow Species;
+        public SpeciesKey.SpeciesRow Species;
 
         public HeadSample VystitysSample;
 
@@ -29,7 +29,7 @@ namespace Mayfly.Benthos.Explorer
 
         public int Count;
 
-        public HeadAssess(Data.SpeciesRow speciesRow,
+        public HeadAssess(SpeciesKey.SpeciesRow speciesRow,
             CardStack vsStack, CardStack vlStack)
         {
             Species = speciesRow;
