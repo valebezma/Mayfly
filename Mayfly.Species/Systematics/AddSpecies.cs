@@ -54,18 +54,22 @@ namespace Mayfly.Species
             {
                 selectedBase = baseRow;
 
-                Button baseButton = new Button();
-                baseButton.AutoSize = true;
-                baseButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                baseButton.Name = baseRow.ID.ToString();
-                baseButton.Text = string.Format(Resources.Interface.TaxaSelect, baseRow.BaseName);
-                baseButton.FlatStyle = FlatStyle.System;
+                Button baseButton = new Button
+                {
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                    Name = baseRow.ID.ToString(),
+                    Text = string.Format(Resources.Interface.TaxaSelect, baseRow.BaseName),
+                    FlatStyle = FlatStyle.System
+                };
 
                 ContextMenuStrip baseMenu = new ContextMenuStrip();
 
-                ToolStripMenuItem otheritem = new ToolStripMenuItem(Resources.Interface.Varia);
-                otheritem.CheckOnClick = true;
-                otheritem.Name = "Others";
+                ToolStripMenuItem otheritem = new ToolStripMenuItem(Resources.Interface.Varia)
+                {
+                    CheckOnClick = true,
+                    Name = "Others"
+                };
                 otheritem.CheckedChanged += ((o, e) =>
                 {
                     if (otheritem.Checked)
@@ -97,8 +101,10 @@ namespace Mayfly.Species
 
                 foreach (SpeciesKey.TaxaRow taxaRow in taxaRows)
                 {
-                    ToolStripMenuItem item = new ToolStripMenuItem(taxaRow.TaxonName);
-                    item.CheckOnClick = true;
+                    ToolStripMenuItem item = new ToolStripMenuItem(taxaRow.TaxonName)
+                    {
+                        CheckOnClick = true
+                    };
                     item.CheckedChanged += ((o, e) =>
                     {
                         if (item.Checked)
@@ -125,7 +131,7 @@ namespace Mayfly.Species
                     item.Name = taxaRow.ID.ToString();
                     baseMenu.Items.Add(item);
 
-                    item.Checked = taxaRow.Includes(SpeciesRow.Species);
+                    item.Checked = taxaRow.Includes(SpeciesRow);
                 }
 
                 baseButton.Click += ((o, e) =>

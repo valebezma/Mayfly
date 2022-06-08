@@ -1,29 +1,23 @@
 ﻿using Mayfly.Extensions;
 using Mayfly.Geographics;
 using Mayfly.Species;
+using Mayfly.Waters;
 using Meta.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Mayfly.Waters;
-using System.Resources;
-using System.Diagnostics;
-using System.Xml;
-using System.Text;
-using System.Reflection;
-using System.Globalization;
-using System.IO;
 
 namespace Mayfly.Wild
 {
     public partial class Data
     {
-        private SpeciesKey key;
+        internal SpeciesKey key;
 
-        private Samplers samplers;
+        private readonly Samplers samplers;
 
         public CardRow Solitary
         {
@@ -321,25 +315,6 @@ namespace Mayfly.Wild
 
         partial class SpeciesDataTable
         {
-            public SpeciesKey.TaxaRow[] Taxa(SpeciesKey.BaseRow baseRow)
-            {
-                List<SpeciesKey.TaxaRow> result = new List<SpeciesKey.TaxaRow>();
-
-                foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
-                {
-                    foreach (Data.SpeciesRow speciesRow in ((Data)DataSet).Species)
-                    {
-                        if (taxaRow.Includes(speciesRow.Species))
-                        {
-                            result.Add(taxaRow);
-                            break;
-                        }
-                    }
-                }
-
-                return result.ToArray();
-            }
-
             public SpeciesRow FindBySpecies(string value)
             {
                 foreach (SpeciesRow speciesRow in Rows)
@@ -355,48 +330,6 @@ namespace Mayfly.Wild
                     }
                 }
                 return null;
-            }
-
-            //public SpeciesRow[] Validate()
-            //{
-            //    SpeciesRow[] rawRows = (SpeciesRow[])this.Select();
-
-            //    List<Data.SpeciesRow> absent = new List<Data.SpeciesRow>();
-            //    foreach (SpeciesRow spcRow in rawRows) {
-            //        if (spcRow.KeyRecord == null) {
-            //            absent.Add(spcRow);
-            //        }
-            //    }
-
-            //    return absent.ToArray();
-            //}
-
-            public List<SpeciesKey.SpeciesRow> GetSpecies()
-            {
-                SpeciesRow[] rawRows = (SpeciesRow[])this.Select();
-                List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
-                foreach (SpeciesRow spcRow in rawRows)
-                {
-                    if (spcRow.KeyRecord != null && !result.Contains(spcRow.KeyRecord))
-                    {
-                        result.Add(spcRow.KeyRecord);
-                    }
-                }
-                return result;
-            }
-
-            public SpeciesKey.SpeciesRow[] GetSorted()
-            {
-                List<SpeciesKey.SpeciesRow> result = GetSpecies();
-                result.Sort();
-                return result.ToArray();
-            }
-
-            public SpeciesKey.SpeciesRow[] GetPhylogeneticallySorted(SpeciesKey key)
-            {
-                List<SpeciesKey.SpeciesRow> result = GetSpecies();
-                result.Sort(new SpeciesSorter(key));
-                return result.ToArray();
             }
         }
 
@@ -579,7 +512,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return this.IsSamplerNull() ? null : (((Data)tableCard.DataSet).samplers == null ? null : ((Data)tableCard.DataSet).samplers.Sampler.FindByID(this.Sampler));
+                    return this.IsSamplerNull() ? null : (((Data)tableCard.DataSet).samplers?.Sampler.FindByID(this.Sampler));
                 }
             }
 
@@ -1312,7 +1245,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key == null ? null : ((Data)Table.DataSet).key.Species.FindBySpecies(this.Species);
+                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key?.Species.FindBySpecies(this.Species);
                     if (spcRow == null) return null;
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;
@@ -1335,7 +1268,7 @@ namespace Mayfly.Wild
 
             public string ToString(string format, IFormatProvider formatProvider)
             {
-                return this.KeyRecord == null ? Species : this.KeyRecord.ToString(format, formatProvider);
+                return Species;
             }
 
             public string ToString(string format)
@@ -1592,7 +1525,7 @@ namespace Mayfly.Wild
 
     public class CardRowSaveEvent : global::System.EventArgs
     {
-        private Data.CardRow eventRow;
+        private readonly Data.CardRow eventRow;
 
         public CardRowSaveEvent(Data.CardRow row)
         {

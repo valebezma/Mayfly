@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtifactsFound" xml:space="preserve">
-    <value>В данных обнаружены артефакты</value>
-  </data>
   <data name="CardEffort" xml:space="preserve">
     <value>Усилие не может быть вычислено</value>
   </data>
@@ -133,43 +130,7 @@
   <data name="SpecimenUnable" xml:space="preserve">
     <value>Количество особей не может быть вычислено, т. к. в некоторых карточках оно не указано</value>
   </data>
-  <data name="ValueHasOutliers" xml:space="preserve">
-    <value>{0} {1} особей значительно отклоняется</value>
-  </data>
-  <data name="ValueIsCritical" xml:space="preserve">
-    <value>{0} {1} особей не может быть вычислен</value>
-  </data>
-  <data name="ValueIsRecoverable" xml:space="preserve">
-    <value>{0} {1} особей вычислен по длине</value>
-  </data>
-  <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
-    <value>{0} {1} особей вычислен по модели, содержащей {2} выброса</value>
-  </data>
   <data name="IndividualUnweightedDiets" xml:space="preserve">
     <value>В {0} пробах питания есть невзвешенные особей</value>
-  </data>
-  <data name="IndividualTallyMissing" xml:space="preserve">
-    <value>Проба без бирки</value>
-  </data>
-  <data name="IndividualTallyOdd" xml:space="preserve">
-    <value>Проба с биркой №{0} не обработана</value>
-  </data>
-  <data name="IndividualTallies" xml:space="preserve">
-    <value>{0} особей имеют проблемы с биркой</value>
-  </data>
-  <data name="LogLength" xml:space="preserve">
-    <value>Длина {0} особей не измерена</value>
-  </data>
-  <data name="LogMassMissing" xml:space="preserve">
-    <value>Указанная в журнале масса ({0:n3} кг) превышает массу всех проб ({1:n3}), что допустимо</value>
-  </data>
-  <data name="LogMassOdds" xml:space="preserve">
-    <value>{0} записей журнала имеют проблемы с массой</value>
-  </data>
-  <data name="LogLengths" xml:space="preserve">
-    <value>Проблемы с длиной в {0} записях журнала</value>
-  </data>
-  <data name="LogMassOdd" xml:space="preserve">
-    <value>Указанная в журнале масса ({0:n3} кг) на {1:p1} меньше массы проб ({2:n3})</value>
   </data>
 </root>

@@ -117,73 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DuplicateDefaultComment" xml:space="preserve">
-    <value>Added automatically</value>
+  <data name="ArtifactsFound" xml:space="preserve">
+    <value>В данных обнаружены артефакты</value>
   </data>
-  <data name="IndLog" xml:space="preserve">
-    <value>{0} Individuals Log</value>
+  <data name="ValueHasOutliers" xml:space="preserve">
+    <value>{0} {1} особей значительно отклоняется</value>
   </data>
-  <data name="IndWindow" xml:space="preserve">
-    <value>{0}. Individual profile</value>
+  <data name="ValueIsCritical" xml:space="preserve">
+    <value>{0} {1} особей не может быть вычислен</value>
   </data>
-  <data name="SpeciesCount" xml:space="preserve">
-    <value>Species: 0</value>
+  <data name="ValueIsRecoverable" xml:space="preserve">
+    <value>{0} {1} особей вычислен по длине</value>
   </data>
-  <data name="IndNo" xml:space="preserve">
-    <value>Tally</value>
+  <data name="ValueIsRecoverableButHasOutliers" xml:space="preserve">
+    <value>{0} {1} особей вычислен по модели, содержащей {2} выброса</value>
   </data>
-  <data name="Control" xml:space="preserve">
-    <value>Control</value>
+  <data name="IndividualTallyMissing" xml:space="preserve">
+    <value>Проба без бирки</value>
   </data>
-  <data name="GetData" xml:space="preserve">
-    <value>Getting data...</value>
+  <data name="IndividualTallyOdd" xml:space="preserve">
+    <value>Проба с биркой №{0} не обработана</value>
   </data>
-  <data name="MoreExtraData" xml:space="preserve">
-    <value>Add more data</value>
+  <data name="IndividualTallies" xml:space="preserve">
+    <value>{0} особей имеют проблемы с биркой</value>
   </data>
-  <data name="NoData" xml:space="preserve">
-    <value>No data...</value>
+  <data name="LogLength" xml:space="preserve">
+    <value>Длина {0} особей не измерена</value>
   </data>
-  <data name="QualityTip" xml:space="preserve">
-    <value>Quality of method is {0:P1}</value>
+  <data name="LogMassMissing" xml:space="preserve">
+    <value>Указанная в журнале масса ({0:n3} кг) превышает массу всех проб ({1:n3}), что допустимо</value>
   </data>
-  <data name="QualityTipBad" xml:space="preserve">
-    <value>Quality is very low</value>
+  <data name="LogMassOdds" xml:space="preserve">
+    <value>{0} записей журнала имеют проблемы с массой</value>
   </data>
-  <data name="CompositionPresentation" xml:space="preserve">
-    <value>{0}: {1} categories</value>
+  <data name="LogLengths" xml:space="preserve">
+    <value>Проблемы с длиной в {0} записях журнала</value>
   </data>
-  <data name="SuggestionUnavailable" xml:space="preserve">
-    <value>Lack of data</value>
+  <data name="LogMassOdd" xml:space="preserve">
+    <value>Указанная в журнале масса ({0:n3} кг) на {1:p1} меньше массы проб ({2:n3})</value>
   </data>
-  <data name="BioFormat" xml:space="preserve">
-    <value>Dates: {0}; Places: {1}</value>
+  <data name="LogSpecia" xml:space="preserve">
+    <value>Проблемы с видовым определением в {0} записях журнала</value>
   </data>
-  <data name="AnnualSurveyItem" xml:space="preserve">
-    <value>Survey of {0}</value>
+  <data name="LogSpecies" xml:space="preserve">
+    <value>Видовое определение не найдено в справочнике</value>
   </data>
-  <data name="ModelCalc" xml:space="preserve">
-    <value>Model calculation</value>
-  </data>
-  <data name="FieldFolder" xml:space="preserve">
-    <value>Field Data Folder</value>
-  </data>
-  <data name="FieldFolderTip" xml:space="preserve">
-    <value>Storage for field data cards, indices etc.</value>
-  </data>
-  <data name="NoPrecip" xml:space="preserve">
-    <value>No precipitations</value>
-  </data>
-  <data name="WaterUnknown" xml:space="preserve">
-    <value>Unknown Water</value>
-  </data>
-  <data name="SampleFormat" xml:space="preserve">
-    <value>Sample collected {0:D} at {1:t} in {2} by {3} with {4}</value>
-  </data>
-  <data name="RedefineComment" xml:space="preserve">
-    <value>Previously defined as {0}</value>
-  </data>
-  <data name="LogMask" xml:space="preserve">
-    <value>{0:s} at {1:s}</value>
+  <data name="Where" xml:space="preserve">
+    <value>Сведения о положении отсутствуют</value>
   </data>
 </root>

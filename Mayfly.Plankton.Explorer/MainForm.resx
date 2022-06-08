@@ -934,7 +934,7 @@
     <value>True</value>
   </metadata>
   <data name="columnArtifactValidName.HeaderText" xml:space="preserve">
-    <value>Full name (acc. to reference)</value>
+    <value>Full name (acc. to index)</value>
   </data>
   <data name="columnArtifactValidName.Width" type="System.Int32, mscorlib">
     <value>200</value>
@@ -2629,7 +2629,7 @@
     <value>205, 22</value>
   </data>
   <data name="menuItemSpcSave.Text" xml:space="preserve">
-    <value>Save as species reference</value>
+    <value>Save as species index</value>
   </data>
   <data name="menuItemSpcDiversity.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 22</value>

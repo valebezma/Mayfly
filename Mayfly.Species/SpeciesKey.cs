@@ -35,20 +35,13 @@ namespace Mayfly.Species
 
             public string FullName => string.Format("{0} {1}", this.BaseRow.BaseName, TaxonName);
 
-            public bool Includes(string species)
+            public bool Includes(SpeciesRow spcRow)
             {
-                //    return Includes(species, false);
-                //}
-
-                //public bool Includes(string species, bool suggest)
-                //{
-                foreach (RepRow repRow in this.GetRepRows())
+                foreach (RepRow repRow in GetRepRows())
                 {
-                    if (repRow.SpeciesRow.Species == species)
+                    //if (repRow.SpeciesRow == spcRow)
+                    if (repRow.SpeciesRow.CompareTo(spcRow) == 0)
                         return true;
-
-                    //if (suggest && Genus(repRow.SpeciesRow.Species) == Genus(species))
-                    //    return true;
                 }
 
                 return false;
@@ -56,8 +49,8 @@ namespace Mayfly.Species
 
             public int CompareTo(TaxaRow other)
             {
-                int n = this.Name.CompareTo(other.Name);
-                return this.IsIndexNull() ? n : (other.IsIndexNull() ? n : Index.CompareTo(other.Index));
+                if (!IsIndexNull() && !other.IsIndexNull()) return Index.CompareTo(other.Index);
+                return this.FullName.CompareTo(other.FullName);
             }
 
 
@@ -547,7 +540,7 @@ namespace Mayfly.Species
             {
                 foreach (TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    if (taxaRow.Includes(this.Species))
+                    if (taxaRow.Includes(this))
                     {
                         return taxaRow;
                     }
@@ -888,17 +881,6 @@ namespace Mayfly.Species
             {
                 return null;
             }
-        }
-
-        public TaxaRow GetTaxon(string species, BaseRow baseRow)
-        {
-            foreach (TaxaRow taxaRow in baseRow.GetTaxaRows())
-            {
-                if (taxaRow.Includes(species))
-                    return taxaRow;
-            }
-
-            return null;
         }
 
 

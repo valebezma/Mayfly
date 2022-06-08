@@ -232,25 +232,25 @@
     <value>Download {0} from server</value>
   </data>
   <data name="tdbDownload.Text" xml:space="preserve">
-    <value>Download default reference</value>
+    <value>Download default index</value>
   </data>
   <data name="tdbCreate.CommandLinkNote" xml:space="preserve">
     <value>Create empty file "{0}" and set it as default one</value>
   </data>
   <data name="tdbCreate.Text" xml:space="preserve">
-    <value>Create empty reference</value>
+    <value>Create empty index</value>
   </data>
   <data name="taskDialogMissingReference.CollapsedControlText" xml:space="preserve">
     <value>Why do I see it?</value>
   </data>
   <data name="taskDialogMissingReference.Content" xml:space="preserve">
-    <value>Required reference is not specified. It was not set initially or, probably, moved or deleted. To get one you can select one of the following options.</value>
+    <value>Required index is not specified. It was not set initially or probably moved, or deleted. You can select one of the following options to get one.</value>
   </data>
   <data name="taskDialogMissingReference.ExpandedControlText" xml:space="preserve">
     <value>Got it</value>
   </data>
   <data name="taskDialogMissingReference.ExpandedInformation" xml:space="preserve">
-    <value>This dialog appears when application requires reference that does not exist on a disk.</value>
+    <value>This dialog appears when application requires index that does not exist on a disk.</value>
   </data>
   <data name="taskDialogMissingReference.MainInstruction" xml:space="preserve">
     <value>Select option for missing {0}</value>

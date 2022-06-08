@@ -114,7 +114,7 @@ namespace Mayfly.Wild
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
                     WatersIndexPath = Service.GetReferencePath(Waters.UserSettings.Interface.OpenDialog,
-                      "Waters (auto).wtr", Server.GetUri("get/references/waters/waters_default.wtr", Application.CurrentCulture));
+                      "Waters (auto).wtr", Server.GetUri("get/index/waters/waters_default.wtr", Application.CurrentCulture));
                     return WatersIndexPath;
                 }
                 else

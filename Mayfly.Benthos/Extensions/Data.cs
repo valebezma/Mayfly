@@ -121,6 +121,21 @@ namespace Mayfly.Benthos
                 logRow.CardRow.Square);
         }
 
+        public static string GetDescription(this Data.IndividualRow indRow)
+        {
+            List<string> result = new List<string>();
+            result.Add(indRow.LogRow.SpeciesRow.KeyRecord.ShortName);
+            if (!indRow.IsTallyNull()) result.Add(string.Format("#{0}", indRow.Tally));
+            if (!indRow.IsLengthNull()) result.Add(string.Format("L = {0}", indRow.Length));
+            if (!indRow.IsMassNull()) result.Add(string.Format("W = {0}", indRow.Mass));
+            return result.Merge();
+        }
+
+        public static string GetDescription(this Data.LogRow logRow)
+        {
+            return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.SpeciesRow.KeyRecord, logRow.CardRow);
+        }
+
         public static SpeciesKey GetSpeciesKey(this Data.SpeciesRow[] dataSpcRows)
         {
             SpeciesKey speciesKey = new SpeciesKey();

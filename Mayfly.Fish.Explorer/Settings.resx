@@ -1582,7 +1582,7 @@
     <value>4</value>
   </data>
   <data name="labelFish.Text" xml:space="preserve">
-    <value>Set basics, such as references, input options, gear parameters and other.</value>
+    <value>Set basics, such as indices, input options, gear parameters and other.</value>
   </data>
   <data name="&gt;&gt;labelFish.Name" xml:space="preserve">
     <value>labelFish</value>

@@ -672,6 +672,7 @@ namespace Mayfly.Species
         {
             if (Grid.CurrentCell.OwningColumn != Column) return;
             if (Grid.CurrentCell.OwningRow.Index == -1) return;
+            if (Grid.CurrentCell.Value == null) return;
 
             if (Grid.FindForm().ActiveControl != listSpc)
             {

@@ -80,7 +80,7 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your license does not allow to create new speceis reference files..
+        ///   Looks up a localized string similar to Your license does not allow to create new species index files..
         /// </summary>
         public static string Forbidden {
             get {

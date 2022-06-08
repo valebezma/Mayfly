@@ -13,54 +13,6 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.SpeciesRow, int> resultsCounter)
-        {
-            for (int i = 0; i < item.DropDownItems.Count; i++)
-            {
-                if (item.DropDownItems[i].Tag != null)
-                {
-                    item.DropDownItems.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator))
-            {
-                item.DropDownItems.Add(new ToolStripSeparator());
-            }
-
-            int added = 0;
-
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
-            {
-                int s = resultsCounter.Invoke(speciesRow);
-
-                if (s != 0)
-                {
-                    ToolStripItem _item = new ToolStripMenuItem();
-                    _item.Tag = speciesRow;
-                    string txt = speciesRow.ToString("s");
-                    _item.Text = s == -1 ? txt : string.Format("{0} ({1})", txt, s);
-                    _item.Click += command;
-                    item.DropDownItems.Add(_item);
-                    added++;
-                }
-            }
-
-            if (added == 0)
-            {
-                item.Enabled = false;
-            }
-
-            // If no item added - remove separator, main item and set parent enabled to false;
-
-        }
-
-        public static void PopulateSpeciesMenu(this CardStack stack, ToolStripMenuItem item, EventHandler command)
-        {
-            PopulateSpeciesMenu(stack, item, command, (s) => { return -1; });
-        }
-
         public static SpeciesKey.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
         {
             return stack.GetSpeciesCaught(1);

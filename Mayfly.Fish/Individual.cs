@@ -787,7 +787,7 @@ namespace Mayfly.Fish
 
             if (currentSpecies == null)
             {
-                // There is no such species in reference
+                // There is no such species in index
                 if ((string)gridRow.Cells[ColumnTrpSpecies.Index].Value ==
                     Species.Resources.Interface.UnidentifiedTitle)
                 {
@@ -801,7 +801,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                // There is such species in reference you using
+                // There is such species in index you using
                 if (data.Species.FindBySpecies(currentSpecies.Species) == null)
                 {
                     data.Species.AddSpeciesRow(currentSpecies.Species);
@@ -979,7 +979,7 @@ namespace Mayfly.Fish
 
             if (currentSpecies == null)
             {
-                // There is no such species in reference
+                // There is no such species in index
                 if ((string)gridRow.Cells[ColumnInfSpecies.Index].Value ==
                     Species.Resources.Interface.UnidentifiedTitle)
                 {
@@ -993,7 +993,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                // There is such species in reference you using
+                // There is such species in index you using
                 if (data.Species.FindBySpecies(currentSpecies.Species) == null)
                 {
                     data.Species.AddSpeciesRow(currentSpecies.Species);

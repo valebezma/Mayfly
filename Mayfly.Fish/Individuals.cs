@@ -307,7 +307,7 @@ namespace Mayfly.Fish
                 contextItemRedefine.DropDownItems.RemoveAt(0);
             }
 
-            // Clear reference species
+            // Clear index species
             while (contextItemRedefine.DropDownItems.Count > 2)
             {
                 contextItemRedefine.DropDownItems.RemoveAt(2);
@@ -325,7 +325,7 @@ namespace Mayfly.Fish
                 contextItemRedefine.DropDownItems.Insert(0, item);
             }
 
-            // Insert reference
+            // Insert index
             contextRedefineAll.DropDownItems.Clear();
             contextRedefineAll.Visible = UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength;
             if (UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength)

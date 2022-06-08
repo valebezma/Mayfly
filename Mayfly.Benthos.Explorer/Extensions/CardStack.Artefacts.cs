@@ -60,7 +60,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public new int GetFacts()
+        public int GetFacts()
         {
             return (this.SamplingSquareMissing ? 1 : 0);
         }
@@ -76,7 +76,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (SamplingSquareMissing)
             {
-                result.Add(Resources.Artifact.SampleSquare);
+                result.Add(Resources.Artifact.Square);
             }
 
             return result.ToArray();
@@ -102,7 +102,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public new int GetFacts()
+        public int GetFacts()
         {
             return (this.ReferenceMissing ? 1 : 0);
         }
@@ -113,7 +113,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (ReferenceMissing)
             {
-                result.Add(Resources.Artifact.ReferenceNull);
+                result.Add(Resources.Artifact.Species);
             }
 
             return result.ToArray();

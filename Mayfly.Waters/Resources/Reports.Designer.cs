@@ -124,7 +124,7 @@ namespace Mayfly.Waters.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} reference record.
+        ///   Looks up a localized string similar to {0} index record.
         /// </summary>
         internal static string Title {
             get {

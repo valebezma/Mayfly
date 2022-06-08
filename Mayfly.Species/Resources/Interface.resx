@@ -125,7 +125,7 @@ to see more pictures</value>
     <value>Description is empty</value>
   </data>
   <data name="Forbidden" xml:space="preserve">
-    <value>Your license does not allow to create new speceis reference files.</value>
+    <value>Your license does not allow to create new species index files.</value>
   </data>
   <data name="GenusToolTip" xml:space="preserve">
     <value>Unknown species of genus {0}</value>

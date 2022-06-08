@@ -17,7 +17,6 @@ using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Meta.Numerics.Statistics;
-using Mayfly.Species;
 
 namespace Mayfly.Fish.Explorer
 {
@@ -28,8 +27,8 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
 
             UI.SetMenuAvailability(License.AllowedFeaturesLevel >= FeatureLevel.Advanced,
-                menuItemImportSpec,
-                menuItemExportSpec,
+                menuItemImportBio,
+                menuItemExportBio,
                 toolStripSeparator10,
                 menuInstant
                 );
@@ -60,13 +59,11 @@ namespace Mayfly.Fish.Explorer
 
             tabPageGearStats.Parent = null;
 
-            //tabPageCardSchedule.Parent = null;
-
             columnCardWater.ValueType = typeof(string);
             columnCardWhen.ValueType = typeof(DateTime);
             columnCardWhere.ValueType = typeof(Waypoint);
-            ColumnCardWeather.ValueType = typeof(WeatherState);
-            ColumnCardTempSurface.ValueType = typeof(double);
+            columnCardWeather.ValueType = typeof(WeatherState);
+            columnCardTempSurface.ValueType = typeof(double);
             columnCardGear.ValueType = typeof(string);
             columnCardMesh.ValueType = typeof(int);
             columnCardHook.ValueType = typeof(double);
@@ -89,10 +86,8 @@ namespace Mayfly.Fish.Explorer
             columnCardComments.ValueType = typeof(string);
 
             tabPageCard.Parent = null;
-            tabPageGearStats.Parent = null;
 
-            //columnSpcSpc.ValueType = typeof(string);
-            //columnSpcValid.ValueType = typeof(string);
+            columnSpcSpc.ValueType = typeof(SpeciesKey.SpeciesRow);
             columnSpcQuantity.ValueType = typeof(double);
             columnSpcMass.ValueType = typeof(double);
             columnSpcOccurrence.ValueType = typeof(double);
@@ -100,9 +95,10 @@ namespace Mayfly.Fish.Explorer
             loadTaxaList();
 
             tabPageSpc.Parent = null;
+
             tabPageSpcStats.Parent = null;
 
-            //columnLogSpc.ValueType = typeof(string);
+            columnLogSpc.ValueType = typeof(SpeciesKey.SpeciesRow);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);
@@ -173,10 +169,8 @@ namespace Mayfly.Fish.Explorer
 
             data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
             FullStack = new CardStack();
-            AllowedStack = new CardStack();
 
             IsEmpty = true;
-            IsAllowedEmpty = true;
         }
 
         public MainForm(string[] args)
@@ -241,7 +235,7 @@ namespace Mayfly.Fish.Explorer
             menuCards.Visible = (tabControl.SelectedTab == tabPageCard);
             menuSpc.Visible = (tabControl.SelectedTab == tabPageSpc);
             menuIndividuals.Visible = (tabControl.SelectedTab == tabPageInd);
-            stratifiedSamplesToolStripMenuItem.Visible = (tabControl.SelectedTab == tabPageStratified);
+            menuStratified.Visible = (tabControl.SelectedTab == tabPageStratified);
         }
 
         private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -285,12 +279,6 @@ namespace Mayfly.Fish.Explorer
                         processDisplay.ResetStatus();
                     }
                 }
-                //else if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfacePermission.Extension)
-                //{
-                //    Permissions perm = new Permissions(filenames[i]);
-                //    perm.SetFriendlyDesktopLocation(this, FormLocation.Centered);
-                //    perm.ShowDialog(this);
-                //}
                 else if (Path.GetExtension(filenames[i]) == Fish.UserSettings.Interface.Extension)
                 {
                     if (data.IsLoaded(filenames[i])) continue;
@@ -344,14 +332,14 @@ namespace Mayfly.Fish.Explorer
                 IsBusy = false;
             }
 
-            artefactFinder.RunWorkerAsync();
+            artifactFinder.RunWorkerAsync();
 
             updateMass(FullStack.Mass());
         }
 
 
 
-        private void artefactFinder_DoWork(object sender, DoWorkEventArgs e)
+        private void artifactFinder_DoWork(object sender, DoWorkEventArgs e)
         {
             if (!UserSettings.CheckConsistency)
             {
@@ -359,10 +347,10 @@ namespace Mayfly.Fish.Explorer
                 return;
             }
 
-            e.Result = AllowedStack.CheckConsistency();
+            e.Result = FullStack.CheckConsistency();
         }
 
-        private void artefactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void artifactFinder_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {
@@ -405,12 +393,9 @@ namespace Mayfly.Fish.Explorer
                 if (cardRow.Path != null)
                 {
                     Data _data = cardRow.SingleCardDataset();
-                    //if (_data != null) // If data is null AND its file contain some info?
-                    //{ 
                     _data.WriteToFile(cardRow.Path);
-                    //}
                 }
-
+                
                 changedCards.RemoveAt(0);
             }
         }
@@ -516,18 +501,18 @@ namespace Mayfly.Fish.Explorer
             tabControl.SelectedTab = tabPageGearStats;
 
             spreadSheetGearStats.Rows.Clear();
-            foreach (FishSamplerTypeDisplay samplerType in AllowedStack.GetSamplerTypeDisplays()) {
+            foreach (FishSamplerTypeDisplay samplerType in FullStack.GetSamplerTypeDisplays()) {
                 spreadSheetGearStats.Rows.Add(samplerType);
             }
             spreadSheetGearStats.Rows.Add(Mayfly.Resources.Interface.Total);
 
             dateTimePickerCatches.MinDate =
                 dateTimePickerEffort.MinDate =
-                AllowedStack.EarliestEvent;
+                FullStack.EarliestEvent;
 
             dateTimePickerCatches.MaxDate =
                 dateTimePickerEffort.MaxDate =
-                AllowedStack.LatestEvent;
+                FullStack.LatestEvent;
 
             spreadSheetCatches.Rows.Clear();
             spreadSheetEfforts.Rows.Clear();
@@ -543,16 +528,16 @@ namespace Mayfly.Fish.Explorer
             clearSpcStats();
 
             spreadSheetSpcStats.Rows.Clear();
-            foreach (SpeciesKey.SpeciesRow speciesRow in AllowedStack.GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in FullStack.GetSpecies())
             {
                 spreadSheetSpcStats.Rows.Add(speciesRow.ID, speciesRow);
             }
             spreadSheetSpcStats.Rows.Add(null, Mayfly.Resources.Interface.Total);
 
-            comboBoxTechSampler.DataSource = AllowedStack.GetSamplerTypeDisplays();
+            comboBoxTechSampler.DataSource = FullStack.GetSamplerTypeDisplays();
             comboBoxTechSampler.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxTechSampler.DataSource)[0];
 
-            comboBoxQualType.DataSource = AllowedStack.GetSamplerTypeDisplays();
+            comboBoxQualType.DataSource = FullStack.GetSamplerTypeDisplays();
             comboBoxQualType.SelectedItem = ((FishSamplerTypeDisplay[])comboBoxQualType.DataSource)[0];
 
             species_Changed(spreadSheetSpcStats, e);
@@ -612,7 +597,7 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemSpawning_Click(object sender, EventArgs e)
         {
-            WizardSpawning spawnWizard = new WizardSpawning(AllowedStack);
+            WizardSpawning spawnWizard = new WizardSpawning(FullStack);
             spawnWizard.Show();
         }
 
@@ -622,14 +607,14 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemCenosis_Click(object sender, EventArgs e)
         {
-            WizardCenosis wizard = new WizardCenosis(AllowedStack);
+            WizardCenosis wizard = new WizardCenosis(FullStack);
             wizard.Show();
         }
 
         private void speciesComposition_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardPopulation wizard = new WizardPopulation(AllowedStack, speciesRow);
+            WizardPopulation wizard = new WizardPopulation(FullStack, speciesRow);
             wizard.Show();
         }
 
@@ -639,41 +624,41 @@ namespace Mayfly.Fish.Explorer
         private void speciesGrowthCohorts_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardGrowthCohorts wizard = new WizardGrowthCohorts(AllowedStack, speciesRow);
+            WizardGrowthCohorts wizard = new WizardGrowthCohorts(FullStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesMortalityCohorts_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardMortalityCohorts wizard = new WizardMortalityCohorts(AllowedStack, speciesRow);
+            WizardMortalityCohorts wizard = new WizardMortalityCohorts(FullStack, speciesRow);
             wizard.Show();
         }
 
         private void menuItemExtrapolations_Click(object sender, EventArgs e)
         {
-            WizardExtrapolations wizard = new WizardExtrapolations(AllowedStack);
+            WizardExtrapolations wizard = new WizardExtrapolations(FullStack);
             wizard.Show();
         }
 
         private void speciesStockExtrapolation_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardExtrapolation wizard = new WizardExtrapolation(AllowedStack, speciesRow);
+            WizardExtrapolation wizard = new WizardExtrapolation(FullStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesStockVpa_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardVirtualPopulation wizard = new WizardVirtualPopulation(AllowedStack, speciesRow);
+            WizardVirtualPopulation wizard = new WizardVirtualPopulation(FullStack, speciesRow);
             wizard.Show();
         }
 
         private void speciesMSYR_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardMSYR wizard = new WizardMSYR(AllowedStack, speciesRow);
+            WizardMSYR wizard = new WizardMSYR(FullStack, speciesRow);
             wizard.Show();
         }
 
@@ -686,7 +671,7 @@ namespace Mayfly.Fish.Explorer
         private void speciesMSY_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardMSY wizard = new WizardMSY(AllowedStack, speciesRow);
+            WizardMSY wizard = new WizardMSY(FullStack, speciesRow);
             wizard.Show();
         }
 
@@ -699,7 +684,7 @@ namespace Mayfly.Fish.Explorer
         private void speciesPrediction_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            WizardPrediction wizard = new WizardPrediction(AllowedStack, speciesRow);
+            WizardPrediction wizard = new WizardPrediction(FullStack, speciesRow);
             wizard.Show();
         }
 
@@ -713,7 +698,7 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemTac_Click(object sender, EventArgs e)
         {
-            WizardTac tacWizard = new WizardTac(AllowedStack);
+            WizardTac tacWizard = new WizardTac(FullStack);
             tacWizard.Show();
         }
 
@@ -783,27 +768,19 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        private void labelRateValue_SizeChanged(object sender, EventArgs e)
-        {
-            //labelRateValue.CenterWith(chartRate);
-
-            //labelRate.Left =
-            //    labelRateValue.Left + 10;
-        }
-
         private void listViewWaters_ItemActivate(object sender, EventArgs e)
         {
-            loadCards(AllowedStack.GetStack(data.Water.FindByID(listViewWaters.FocusedItem.GetID())));
+            loadCards(FullStack.GetStack(data.Water.FindByID(listViewWaters.FocusedItem.GetID())));
         }
 
         private void listViewSamplers_ItemActivate(object sender, EventArgs e)
         {
-            loadCards(AllowedStack.GetStack("SamplerID", listViewSamplers.FocusedItem.GetID()));
+            loadCards(FullStack.GetStack("SamplerID", listViewSamplers.FocusedItem.GetID()));
         }
 
         private void listViewInvestigators_ItemActivate(object sender, EventArgs e)
         {
-            loadCards(AllowedStack.GetStack("Investigator", listViewInvestigators.FocusedItem.Text));
+            loadCards(FullStack.GetStack("Investigator", listViewInvestigators.FocusedItem.Text));
         }
 
         private void listViewDates_ItemActivate(object sender, EventArgs e)
@@ -831,7 +808,7 @@ namespace Mayfly.Fish.Explorer
                 SelectedSamplerType = display.Type;
             }
 
-            comboBoxCatchesMesh.DataSource = AllowedStack.Classes(SelectedSamplerType);
+            comboBoxCatchesMesh.DataSource = FullStack.Classes(SelectedSamplerType);
             checkBoxCatchesMesh.Enabled = SelectedSamplerType.IsMesh(); // != FishingGearType.None;
 
             catches_Changed(sender, e);
@@ -888,7 +865,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            string[] meshValues = AllowedStack.Classes(SelectedSamplerType);
+            string[] meshValues = FullStack.Classes(SelectedSamplerType);
 
             if (meshValues.Length == 0)
             {
@@ -1060,11 +1037,11 @@ namespace Mayfly.Fish.Explorer
 
                 if (checkBoxCatchesDaily.Checked)
                 {
-                    CatchesData = AllowedStack.GetStack(dateTimePickerCatches.Value);
+                    CatchesData = FullStack.GetStack(dateTimePickerCatches.Value);
                 }
                 else
                 {
-                    CatchesData = AllowedStack;
+                    CatchesData = FullStack;
                 }
             }
             else
@@ -1073,12 +1050,12 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (checkBoxCatchesMesh.Checked)
                     {
-                        CatchesData = AllowedStack.GetStack(SelectedSamplerType, comboBoxCatchesMesh.SelectedValue.ToString())
+                        CatchesData = FullStack.GetStack(SelectedSamplerType, comboBoxCatchesMesh.SelectedValue.ToString())
                             .GetStack(dateTimePickerCatches.Value);
                     }
                     else
                     {
-                        CatchesData = AllowedStack.GetStack(SelectedSamplerType)
+                        CatchesData = FullStack.GetStack(SelectedSamplerType)
                             .GetStack(dateTimePickerCatches.Value);
                     }
                 }
@@ -1086,11 +1063,11 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (checkBoxCatchesMesh.Checked)
                     {
-                        CatchesData = AllowedStack.GetStack(SelectedSamplerType, comboBoxCatchesMesh.SelectedValue.ToString());
+                        CatchesData = FullStack.GetStack(SelectedSamplerType, comboBoxCatchesMesh.SelectedValue.ToString());
                     }
                     else
                     {
-                        CatchesData = AllowedStack.GetStack(SelectedSamplerType);
+                        CatchesData = FullStack.GetStack(SelectedSamplerType);
                     }
                 }
             }
@@ -1216,16 +1193,16 @@ namespace Mayfly.Fish.Explorer
             if (SelectedSamplerType == FishSamplerType.None)
             {
                 Report report = new Report(Resources.Reports.Header.StatsGear);
-                AllowedStack.AddCommon(report);
-                AllowedStack.Sort();
-                AllowedStack.AddGearStatsReport(report);
+                FullStack.AddCommon(report);
+                FullStack.Sort();
+                FullStack.AddGearStatsReport(report);
                 report.EndBranded();
                 report.Run();
             }
             else
             {
                 Report report = new Report(string.Format(Resources.Reports.Header.StatsGearType, SelectedSamplerType.ToDisplay()));
-                CardStack gearStack = AllowedStack.GetStack(SelectedSamplerType);
+                CardStack gearStack = FullStack.GetStack(SelectedSamplerType);
                 gearStack.AddCommon(report);
                 gearStack.Sort();
                 gearStack.AddGearStatsReport(report, SelectedSamplerType, SelectedEffortUE);
@@ -1255,9 +1232,9 @@ namespace Mayfly.Fish.Explorer
                 plotQualify.ResetFormatted(selectedStatSpc.ToString("s"));
 
                 resetQualPlotAxes(
-                    Service.GetStrate(AllowedStack.LengthMin(selectedStatSpc)).LeftEndpoint,
-                    Service.GetStrate(AllowedStack.LengthMax(selectedStatSpc)).RightEndpoint,
-                    AllowedStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
+                    Service.GetStrate(FullStack.LengthMin(selectedStatSpc)).LeftEndpoint,
+                    Service.GetStrate(FullStack.LengthMax(selectedStatSpc)).RightEndpoint,
+                    FullStack.GetLengthComposition(selectedStatSpc, UserSettings.SizeInterval).MostSampled.Quantity);
             }
 
             // Totals
@@ -1295,7 +1272,7 @@ namespace Mayfly.Fish.Explorer
         {
             string valueMask = "{0} ({1:P0})";
 
-            SampleSizeDescriptor d = selectedStatSpc == null ? AllowedStack.GetDescriptor() : AllowedStack.GetDescriptor(selectedStatSpc);
+            SampleSizeDescriptor d = selectedStatSpc == null ? FullStack.GetDescriptor() : FullStack.GetDescriptor(selectedStatSpc);
 
             textBoxSpsTotal.Text = d.Quantity > 0 ? d.Quantity.ToString() : textBoxSpsTotal.Text = Constants.Null;
 
@@ -1329,7 +1306,7 @@ namespace Mayfly.Fish.Explorer
                 foreach (SpeciesKey.SpeciesRow speciesRow in FullStack.GetSpecies())
                 {
                     DataPoint dp = new DataPoint();
-                    dp.YValues[0] = AllowedStack.Quantity(speciesRow);
+                    dp.YValues[0] = FullStack.Quantity(speciesRow);
                     dp.LegendText = speciesRow.ToString(ColumnSpcStat.DefaultCellStyle.Format);
                     chartSpcStats.Series[0].Points.Add(dp);
                 }
@@ -1347,7 +1324,7 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 chartSpcStats.Legends[0].Enabled = false;
-                chartSpcStats.Series[0].AnimateChart(d.Quantity, AllowedStack.Quantity(), Mathematics.UserSettings.ColorAccent);
+                chartSpcStats.Series[0].AnimateChart(d.Quantity, FullStack.Quantity(), Mathematics.UserSettings.ColorAccent);
             }
         }
 
@@ -1360,7 +1337,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                if (AllowedStack.QuantityStratified(selectedStatSpc) == 0) return;
+                if (FullStack.QuantityStratified(selectedStatSpc) == 0) return;
 
                 spreadSheetStratified.EnsureFilter(columnStratifiedSpc,
                     selectedStatSpc.Species, loaderStratified, menuItemLoadStratified_Click);
@@ -1450,7 +1427,7 @@ namespace Mayfly.Fish.Explorer
 
         private void comboBoxStrateGearType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxQualClass.DataSource = AllowedStack.Classes(((FishSamplerTypeDisplay)comboBoxQualType.SelectedValue).Type);
+            comboBoxQualClass.DataSource = FullStack.Classes(((FishSamplerTypeDisplay)comboBoxQualType.SelectedValue).Type);
 
             if (((string[])comboBoxQualClass.DataSource).Length == 0)
             {
@@ -1476,7 +1453,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (selectedStatSpc == null) return;
 
-            CardStack countStack = AllowedStack;
+            CardStack countStack = FullStack;
 
             if (checkBoxQualType.Checked)
             {
@@ -1788,18 +1765,18 @@ namespace Mayfly.Fish.Explorer
             Report report = new Report(selectedStatSpc == null ?
                 Resources.Reports.Sections.SpeciesStats.Title :
                 string.Format(Resources.Reports.Sections.SpeciesStats.TitleSpecies, selectedStatSpc.FullNameReport));
-            AllowedStack.Sort();
+            FullStack.Sort();
 
             if (selectedStatSpc == null)
             {
-                AllowedStack.AddCommon(report);
-                AllowedStack.AddSpeciesStatsReport(report, lvl, ExpressionVariant.Efforts);
+                FullStack.AddCommon(report);
+                FullStack.AddSpeciesStatsReport(report, lvl, ExpressionVariant.Efforts);
                 report.EndBranded();
             }
             else
             {
-                AllowedStack.AddCommon(report, selectedStatSpc);
-                AllowedStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
+                FullStack.AddCommon(report, selectedStatSpc);
+                FullStack.AddSpeciesStatsReport(report, selectedStatSpc, lvl, ExpressionVariant.Efforts);
             }
 
             report.EndBranded();
@@ -1812,6 +1789,13 @@ namespace Mayfly.Fish.Explorer
 
 
         #region Cards
+
+        private void menuItemCardMeteo_CheckedChanged(object sender, EventArgs e)
+        {
+            columnCardWeather.Visible =
+            columnCardTempSurface.Visible =
+                menuItemCardMeteo.Checked;
+        }
 
         private void menuItemCardPrintNotes_Click(object sender, EventArgs e)
         {
@@ -1833,13 +1817,6 @@ namespace Mayfly.Fish.Explorer
         {
             menuItemGearStats_Click(sender, e);
             tabControlCard.SelectedTab = tabPageCardEfforts;
-        }
-
-        private void menuItemCardMeteo_CheckedChanged(object sender, EventArgs e)
-        {
-            ColumnCardWeather.Visible =
-            ColumnCardTempSurface.Visible =
-                menuItemCardMeteo.Checked;
         }
 
 
@@ -2066,60 +2043,44 @@ namespace Mayfly.Fish.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
+            Composition composition;
+
             if (baseSpc == null)
             {
-                SpeciesComposition speciesComposition = AllowedStack.GetBasicCenosisComposition();
-                for (int i = 0; i < speciesComposition.Count; i++)
-                {
-                    DataGridViewRow gridRow = new DataGridViewRow();
-                    gridRow.CreateCells(spreadSheetSpc);
-                    gridRow.Cells[columnSpcID.Index].Value = speciesComposition[i].SpeciesRow.ID;
-                    gridRow.Cells[columnSpcSpc.Index].Value = speciesComposition[i].SpeciesRow;
-                    gridRow.Cells[columnSpcQuantity.Index].Value = speciesComposition[i].Quantity;
-                    gridRow.Cells[columnSpcMass.Index].Value = speciesComposition[i].Mass;
-                    gridRow.Cells[columnSpcOccurrence.Index].Value = speciesComposition[i].Occurrence;
-                    result.Add(gridRow);
-
-                    updateSpeciesArtifacts(gridRow);
-
-                    (sender as BackgroundWorker).ReportProgress(i + 1);
-                }
+                composition = FullStack.GetBasicCenosisComposition();
             }
             else
             {
-                for (int i = 0; i < taxaSpc.Length; i++)
+                composition = FullStack.GetBasicTaxonomicComposition(baseSpc);
+            }
+
+            for (int i = 0; i < composition.Count; i++)
+            {
+                if (composition[i].Quantity == 0) continue;
+
+                DataGridViewRow gridRow = new DataGridViewRow();
+
+                gridRow.CreateCells(spreadSheetSpc);
+
+                if (composition is TaxaComposition tc)
                 {
-                    DataGridViewRow gridRow = new DataGridViewRow();
-                    gridRow.CreateCells(spreadSheetSpc);
-                    gridRow.Cells[columnSpcID.Index].Value = taxaSpc[i].ID;
-
-                    double Q = 0.0;
-                    double W = 0.0;
-
-                    foreach (Data.LogRow logRow in data.Log)
-                    {
-                        if (!taxaSpc[i].Includes(logRow.SpeciesRow.Species)) continue;
-
-                        if (!logRow.IsQuantityNull())
-                        {
-                            Q += logRow.Quantity;
-                        }
-
-                        if (!logRow.IsMassNull())
-                        {
-                            W += logRow.Mass;
-                        }
-                    }
-
-                    gridRow.Cells[columnSpcSpc.Index].Value = taxaSpc[i].TaxonName;
-                    if (Q > 0) gridRow.Cells[columnSpcQuantity.Index].Value = Q;
-                    if (W > 0) gridRow.Cells[columnSpcMass.Index].Value = W;
-                    gridRow.Cells[columnSpcOccurrence.Index].Value = taxaSpc[i].Occurrence(data);
-
-                    result.Add(gridRow);
-
-                    (sender as BackgroundWorker).ReportProgress(i + 1);
+                    gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
+                    gridRow.Cells[columnSpcID.Index].Value = tc[i].DataRow?.ID;
                 }
+                else if (composition is SpeciesComposition sc)
+                {
+                    gridRow.Cells[columnSpcSpc.Index].Value = sc[i].SpeciesRow;
+                    gridRow.Cells[columnSpcID.Index].Value = sc[i].SpeciesRow?.ID;
+                }
+
+                gridRow.Cells[columnSpcQuantity.Index].Value = composition[i].Quantity;
+                gridRow.Cells[columnSpcMass.Index].Value = composition[i].Mass;
+
+                gridRow.Cells[columnSpcOccurrence.Index].Value = composition[i].Occurrence;
+
+                result.Add(gridRow);
+
+                (sender as BackgroundWorker).ReportProgress(i + 1);
             }
 
             e.Result = result.ToArray();
@@ -2141,8 +2102,6 @@ namespace Mayfly.Fish.Explorer
         private void comboBoxSpcTaxa_SelectedIndexChanged(object sender, EventArgs e)
         {
             baseSpc = comboBoxSpcTaxa.SelectedItem as SpeciesKey.BaseRow;
-            taxaSpc = baseSpc == null ? null : data.Species.Taxa(baseSpc);
-            loadSpc();
 
             menuItemSpcTaxa.Enabled = baseSpc == null;
 
@@ -2152,6 +2111,8 @@ namespace Mayfly.Fish.Explorer
             }
 
             columnSpcSpc.HeaderText = baseSpc == null ? Wild.Resources.Reports.Caption.Species : baseSpc.BaseName;
+
+            loadSpc();
         }
 
         private void contextSpecies_Opening(object sender, CancelEventArgs e)
@@ -2560,8 +2521,8 @@ namespace Mayfly.Fish.Explorer
                 if (e.ColumnIndex == columnIndMass.Index)
                 {
                     // Reset Total mass status text
-                    statusMass.ResetFormatted(AllowedStack.Mass());
-                    labelWgtValue.Text = Wild.Service.GetFriendlyMass(AllowedStack.Mass() * 1000);
+                    statusMass.ResetFormatted(FullStack.Mass());
+                    labelWgtValue.Text = Wild.Service.GetFriendlyMass(FullStack.Mass() * 1000);
                 }
 
             }
@@ -2696,7 +2657,7 @@ namespace Mayfly.Fish.Explorer
             List<string> speciesNames = columnIndSpecies.GetStrings(true);
 
             pictureBoxStratified.Visible = speciesNames.Count == 1 &&
-                AllowedStack.QuantityStratified(Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(speciesNames[0])) > 0;
+                FullStack.QuantityStratified(Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(speciesNames[0])) > 0;
 
             if (pictureBoxStratified.Visible)
             {
@@ -2730,6 +2691,80 @@ namespace Mayfly.Fish.Explorer
             }
 
             printIndividualsLogToolStripMenuItem.Enabled = spreadSheetInd.SelectedRows.Count > 1;
+        }
+
+        private void contextIndCard_Click(object sender, EventArgs e)
+        {
+            if (spreadSheetCard.RowCount > 0)
+            {
+                selectCorrespondingCardRows();
+                tabControl.SelectedTab = tabPageCard;
+            }
+            else
+            {
+                loaderCard.RunWorkerCompleted += selectCorrespondingCardRows;
+                menuItemCards_Click(sender, e);
+            }
+        }
+
+        private void selectCorrespondingCardRows()
+        {
+            spreadSheetCard.ClearSelection();
+
+            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
+            {
+                if (!gridRow.Visible) continue;
+
+                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                DataGridViewRow corrRow = columnCardID.GetRow(individualRow.LogRow.CardID);
+
+                if (corrRow == null) continue;
+                corrRow.Selected = true;
+                spreadSheetCard.FirstDisplayedScrollingRowIndex = corrRow.Index;
+            }
+        }
+
+        private void selectCorrespondingCardRows(object sender, RunWorkerCompletedEventArgs e)
+        {
+            selectCorrespondingCardRows();
+            loaderLog.RunWorkerCompleted -= selectCorrespondingLogRows;
+        }
+
+        private void contextIndLog_Click(object sender, EventArgs e)
+        {
+            if (spreadSheetLog.RowCount > 0)
+            {
+                selectCorrespondingLogRows();
+                tabControl.SelectedTab = tabPageLog;
+            }
+            else
+            {
+                loaderLog.RunWorkerCompleted += selectCorrespondingLogRows;
+                menuItemLog_Click(sender, e);
+            }
+        }
+
+        private void selectCorrespondingLogRows()
+        {
+            spreadSheetLog.ClearSelection();
+
+            foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
+            {
+                if (!gridRow.Visible) continue;
+
+                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                DataGridViewRow corrRow = columnLogID.GetRow(individualRow.LogID);
+
+                if (corrRow == null) continue;
+                corrRow.Selected = true;
+                spreadSheetLog.FirstDisplayedScrollingRowIndex = corrRow.Index;
+            }
+        }
+
+        private void selectCorrespondingLogRows(object sender, RunWorkerCompletedEventArgs e)
+        {
+            selectCorrespondingLogRows();
+            loaderLog.RunWorkerCompleted -= selectCorrespondingLogRows;
         }
 
         private void contextIndProfile_Click(object sender, EventArgs e)
@@ -2927,7 +2962,7 @@ namespace Mayfly.Fish.Explorer
             dietExplorer.Sync(this);
             this.WindowState = FormWindowState.Minimized;
             dietExplorer.Show();
-            dietExplorer.PerformDietExplorer(AllowedStack.FriendlyName);
+            dietExplorer.PerformDietExplorer(FullStack.FriendlyName);
         }
 
         private void dietExplorer_CardRowSaved(object sender, CardRowSaveEvent e)
@@ -2951,7 +2986,7 @@ namespace Mayfly.Fish.Explorer
 
         #region Stratified
 
-        private void printStratifiedSamplesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuItemStratifiedPrint_Click(object sender, EventArgs e)
         {
             getLogRowsStratified(spreadSheetStratified.Rows).GetReport(CardReportLevel.Stratified).Run();
         }

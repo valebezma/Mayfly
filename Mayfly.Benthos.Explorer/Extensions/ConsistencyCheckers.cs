@@ -8,11 +8,10 @@ using System.Data;
 using Meta.Numerics.Statistics;
 using Mayfly.Mathematics.Statistics;
 using Mayfly.Mathematics.Charts;
-using Mayfly.Fish;
 using Mayfly.Extensions;
 using Mayfly.Species;
 
-namespace Mayfly.Fish.Explorer
+namespace Mayfly.Benthos.Explorer
 {
     public static partial class CardStackExtensions
     {
@@ -37,7 +36,7 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-        public static ConsistencyChecker[] CheckConsistency(this CardStack stack)
+        public static ConsistencyChecker[] CheckBenthosConsistency(this CardStack stack)
         {
             List<ConsistencyChecker> result = new List<ConsistencyChecker>();
 
@@ -73,8 +72,6 @@ namespace Mayfly.Fish.Explorer
 
         public bool Treated { get; set; }
 
-        public int UnweightedDietItems { get; set; }
-
         public ArtifactCriticality TallyCriticality
         {
             get
@@ -86,21 +83,6 @@ namespace Mayfly.Fish.Explorer
                 else if (!this.HasTally && this.Treated)
                 {
                     return ArtifactCriticality.Allowed;
-                }
-                else
-                {
-                    return ArtifactCriticality.Normal;
-                }
-            }
-        }
-
-        public ArtifactCriticality UnweightedDietItemsCriticality
-        {
-            get
-            {
-                if (this.UnweightedDietItems > 0)
-                {
-                    return ArtifactCriticality.Bad;
                 }
                 else
                 {
@@ -139,11 +121,6 @@ namespace Mayfly.Fish.Explorer
                     break;
             }
 
-            if (UnweightedDietItemsCriticality > ArtifactCriticality.Normal)
-            {
-                result.Add(GetNoticeUnweightedDiet());
-            }
-
             return result.ToArray();
         }
 
@@ -159,17 +136,11 @@ namespace Mayfly.Fish.Explorer
             return Wild.Resources.Artifact.IndividualTallyMissing;
         }
 
-        public string GetNoticeUnweightedDiet()
-        {
-            return string.Format(Resources.Artifact.IndividualUnweightedDiet, UnweightedDietItems);
-        }
-
         public static string[] GetCommonNotices(IEnumerable<IndividualConsistencyChecker> artifacts)
         {
             List<string> result = new List<string>();
 
             int regMissed = 0;
-            int dietNotExplored = 0;
 
             if (artifacts != null)
             {
@@ -179,16 +150,10 @@ namespace Mayfly.Fish.Explorer
                     {
                         regMissed++;
                     }
-
-                    if (indArtifact.UnweightedDietItemsCriticality > ArtifactCriticality.Normal)
-                    {
-                        dietNotExplored++;
-                    }
                 }
             }
 
             if (regMissed > 0) result.Add(string.Format(Wild.Resources.Artifact.IndividualTallies, regMissed));
-            if (dietNotExplored > 0) result.Add(string.Format(Resources.Artifact.IndividualUnweightedDiets, dietNotExplored));
 
             return result.ToArray();
         }
@@ -213,48 +178,21 @@ namespace Mayfly.Fish.Explorer
     {
         public Data.LogRow LogRow { get; set; }
 
-        public double Mass { get; set; }
-
-        public double DetailedMass { get; set; }
-
-        public int LengthMissing { get; set; }
+        public bool SpeciesMissing { get; set; }
 
         public List<IndividualConsistencyChecker> IndividualArtifacts { get; set; }
 
-        public ArtifactCriticality UnmeasurementsCriticality
+        public ArtifactCriticality SpeciesCriticality
         {
             get
             {
-                if (this.LengthMissing > 0)
+                if (this.SpeciesMissing)
                 {
-                    return ArtifactCriticality.Bad;
+                    return ArtifactCriticality.Allowed;
                 }
                 else
                 {
                     return ArtifactCriticality.Normal;
-                }
-            }
-        }
-
-        public ArtifactCriticality OddMassCriticality
-        {
-            get
-            {
-                if (Mass == DetailedMass) // If Total equlas Sampled - Good
-                {
-                    return ArtifactCriticality.Normal;
-                }
-                else if (Mass > DetailedMass) // If Total is more than Sampled - OK
-                {                    
-                    return ArtifactCriticality.Allowed;
-                }
-                else if ((DetailedMass / Mass) <= (1 + Mathematics.UserSettings.DefaultAlpha)) // If Sampled more than Total around 5% or less - it is calculation artifact - Fine
-                {                    
-                    return ArtifactCriticality.Bad;
-                }
-                else // If Sampled significantly more than Total - it is weird and should be checked
-                {                    
-                    return ArtifactCriticality.Critical;
                 }
             }
         }
@@ -267,7 +205,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (IndividualConsistencyChecker artifact in IndividualArtifacts)
                 {
-                    result = GetWorst(result, artifact.UnweightedDietItemsCriticality, artifact.TallyCriticality);
+                    result = GetWorst(result, artifact.TallyCriticality);
                 }
 
                 return result;
@@ -278,7 +216,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return GetWorst(OddMassCriticality, UnmeasurementsCriticality, IndividualWorstCriticality);
+                return GetWorst(SpeciesCriticality, IndividualWorstCriticality);
             }
         }
 
@@ -290,9 +228,7 @@ namespace Mayfly.Fish.Explorer
 
             LogRow = logRow;
 
-            LengthMissing = logRow.QuantitySampled() - logRow.Measured() - logRow.QuantityStratified();
-            Mass = LogRow.IsMassNull() ? 0 : Math.Round(logRow.Mass, 3);
-            DetailedMass = Math.Round(logRow.MassStratified() + logRow.MassIndividual(), 3);
+            SpeciesMissing = LogRow.SpeciesRow.KeyRecord == null;
 
             List<IndividualConsistencyChecker> result = new List<IndividualConsistencyChecker>();
             foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
@@ -300,6 +236,7 @@ namespace Mayfly.Fish.Explorer
                 IndividualConsistencyChecker indArtifact = individualRow.CheckConsistency();
                 if (indArtifact.ArtifactsCount > 0) result.Add(indArtifact);
             }
+
             IndividualArtifacts = result;
         }
 
@@ -309,14 +246,9 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            if (UnmeasurementsCriticality > ArtifactCriticality.Normal)
+            if (SpeciesCriticality > ArtifactCriticality.Normal)
             {
-                result.Add(GetNoticeUnmeasured());
-            }
-
-            if (OddMassCriticality == ArtifactCriticality.Critical)
-            {
-                result.Add(GetNoticeOddMass());
+                result.Add(Wild.Resources.Artifact.LogSpecies);
             }
 
             if (includeChildren)
@@ -327,52 +259,27 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public string GetNoticeOddMass()
-        {
-            switch (OddMassCriticality)
-            {
-                case ArtifactCriticality.Allowed:
-                    return string.Format(Wild.Resources.Artifact.LogMassMissing, Mass, DetailedMass);
-
-                case ArtifactCriticality.Bad:
-                case ArtifactCriticality.Critical:
-                    return string.Format(Wild.Resources.Artifact.LogMassOdd, Mass, Mass == 0 ? 1d : (DetailedMass / Mass) - 1d, DetailedMass);
-
-                default:
-                    return string.Empty;
-            }
-        }
-
-        public string GetNoticeUnmeasured()
-        {
-            return string.Format(Wild.Resources.Artifact.LogLength, LengthMissing);
-        }
-
         public override string ToString() => base.ToString(LogRow.GetDescription());
 
         public static string[] GetCommonNotices(IEnumerable<LogConsistencyChecker> artifacts)
         {
             List<string> result = new List<string>();
 
-            int lengthMissing = 0;
-            int oddMass = 0;
-
-            foreach (LogConsistencyChecker logArtifact in artifacts)
+            if (artifacts != null)
             {
-                if (logArtifact.UnmeasurementsCriticality > ArtifactCriticality.Normal)
+                int speciesMissing = 0;
+
+                foreach (LogConsistencyChecker logArtifact in artifacts)
                 {
-                    lengthMissing++;
+                    if (logArtifact.SpeciesCriticality > ArtifactCriticality.Normal)
+                    {
+                        speciesMissing++;
+                    }
                 }
 
-                if (logArtifact.OddMassCriticality > ArtifactCriticality.Normal)
-                {
-                    oddMass++;
-                }
+                if (speciesMissing > 0) result.Add(string.Format(Wild.Resources.Artifact.LogSpecia, speciesMissing));
             }
 
-            if (lengthMissing > 0) result.Add(string.Format(Wild.Resources.Artifact.LogLengths, lengthMissing));
-            if (oddMass > 0) result.Add(string.Format(Wild.Resources.Artifact.LogMassOdds, oddMass));
-            
             return result.ToArray();
         }
 
@@ -393,7 +300,9 @@ namespace Mayfly.Fish.Explorer
     {
         public Data.CardRow CardRow { get; set; }
 
-        public bool EffortMissing { get; set; }
+        public bool SquareMissing { get; set; }
+
+        public bool WhereMissing { get; set; }
 
         public List<LogConsistencyChecker> LogArtifacts { get; set; }
 
@@ -410,11 +319,26 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public ArtifactCriticality EffortCriticality
+        public ArtifactCriticality SquareCriticality
         {
             get
             {
-                if (this.EffortMissing)
+                if (this.SquareMissing)
+                {
+                    return ArtifactCriticality.Allowed;
+                }
+                else
+                {
+                    return ArtifactCriticality.Normal;
+                }
+            }
+        }
+
+        public ArtifactCriticality WhereCriticality
+        {
+            get
+            {
+                if (this.WhereMissing)
                 {
                     return ArtifactCriticality.Bad;
                 }
@@ -433,7 +357,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (LogConsistencyChecker artifact in LogArtifacts)
                 {
-                    result = GetWorst(result, artifact.OddMassCriticality, artifact.UnmeasurementsCriticality);
+                    result = GetWorst(result, artifact.SpeciesCriticality);
                 }
 
                 return result;
@@ -448,7 +372,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (IndividualConsistencyChecker artifact in IndividualArtifacts)
                 {
-                    result = GetWorst(result, artifact.TallyCriticality, artifact.UnweightedDietItemsCriticality);
+                    result = GetWorst(result, artifact.TallyCriticality);
                 }
 
                 return result;
@@ -459,7 +383,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return ConsistencyChecker.GetWorst(EffortCriticality, LogWorstCriticality, IndividualWorstCriticality);
+                return ConsistencyChecker.GetWorst(SquareCriticality, WhereCriticality, LogWorstCriticality, IndividualWorstCriticality);
             }
         }
 
@@ -468,7 +392,8 @@ namespace Mayfly.Fish.Explorer
         public CardConsistencyChecker(Data.CardRow cardRow)
         {
             CardRow = cardRow;
-            EffortMissing = double.IsNaN(cardRow.GetEffort());
+            SquareMissing = cardRow.IsSquareNull();
+            WhereMissing = cardRow.IsWhereNull();
 
             List<LogConsistencyChecker> logArtifacts = new List<LogConsistencyChecker>();
             foreach (Data.LogRow logRow in cardRow.GetLogRows())
@@ -488,8 +413,7 @@ namespace Mayfly.Fish.Explorer
             {
                 for (int j = 0; j < LogArtifacts[i].IndividualArtifacts.Count; j++)
                 {
-                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality &&
-                        LogArtifacts[i].IndividualArtifacts[j].UnweightedDietItemsCriticality < criticality)
+                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality)
                     {
                         LogArtifacts[i].IndividualArtifacts.RemoveAt(j);
                         j--;
@@ -509,9 +433,14 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            if (EffortCriticality > ArtifactCriticality.Normal)
+            if (SquareCriticality > ArtifactCriticality.Normal)
             {
-                result.Add(Resources.Artifact.CardEffort);
+                result.Add(Resources.Artifact.Square);
+            }
+
+            if (WhereCriticality > ArtifactCriticality.Normal)
+            {
+                result.Add(Wild.Resources.Artifact.Where);
             }
 
             if (includeChildren)
@@ -529,127 +458,11 @@ namespace Mayfly.Fish.Explorer
         }
     }
 
-    public class SpeciesFeatureConsistencyChecker : ConsistencyChecker
-    {
-        public string FeatureName { get; set; }
-
-        public int UnmeasuredCount { get; set; }
-
-        public bool HasRegression { get; set; }
-
-        public int DeviationsCount { get { return Outliers == null ? 0 : Outliers.Count; } }
-
-        public BivariateSample Outliers { get; set; }
-
-        public ArtifactCriticality Criticality
-        {
-            get
-            {
-                if (this.HasRegression) // If sample is enough to build regression
-                {
-                    if (this.UnmeasuredCount == 0) // If there are no missing values
-                    {
-                        if (this.DeviationsCount == 0) // And there are no outliers at all
-                        {
-                            return ArtifactCriticality.Normal;
-                        }
-                        else // If there are outliers
-                        {
-                            return ArtifactCriticality.Bad;
-                        }
-                    }
-                    else // If there are some missing values
-                    {
-                        if (this.DeviationsCount == 0) // If there are no outliers
-                        {
-                            return ArtifactCriticality.Allowed;
-                        }
-                        else // Or there are outliers
-                        {
-                            return ArtifactCriticality.Critical;
-                        }
-                    }
-                }
-                else // If sample is too small
-                {
-                    if (this.UnmeasuredCount == 0) // If there are no missing values
-                    {
-                        return ArtifactCriticality.Normal;
-                    }
-                    else // If there are some missing values
-                    {
-                        return ArtifactCriticality.Critical;
-                    }
-                }
-            }
-        }
-
-
-
-        public SpeciesFeatureConsistencyChecker(string featureName)
-        {
-            FeatureName = featureName;
-        }
-
-
-        
-        public override string[] GetNotices(bool includeChildren)
-        {
-            List<string> result = new List<string>();
-
-            if (HasRegression)
-            {
-                if (UnmeasuredCount == 0)
-                {
-                    if (DeviationsCount != 0)
-                    {
-                        result.Add(string.Format(Wild.Resources.Artifact.ValueHasOutliers, FeatureName, DeviationsCount));
-                    }
-                }
-                else
-                {
-                    if (DeviationsCount == 0)
-                    {
-                        result.Add(string.Format(Wild.Resources.Artifact.ValueIsRecoverable, FeatureName, UnmeasuredCount));
-                    }
-                    else
-                    {
-                        result.Add(string.Format(Wild.Resources.Artifact.ValueIsRecoverableButHasOutliers, FeatureName, UnmeasuredCount, DeviationsCount));
-                    }
-                }
-            }
-            else
-            {
-                if (UnmeasuredCount != 0)
-                {
-                    result.Add(string.Format(Wild.Resources.Artifact.ValueIsCritical, FeatureName, UnmeasuredCount));
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString(FeatureName);
-        }
-
-        public static SpeciesFeatureConsistencyChecker Empty
-        {
-            get
-            {
-                return new SpeciesFeatureConsistencyChecker(string.Empty);
-            }
-        }
-    }
-
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
         public SpeciesKey.SpeciesRow SpeciesRow { get; set; }
 
-        public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
-
-        public SpeciesFeatureConsistencyChecker AgeInspector { get; set; }
+        public bool MissingInReference { get; set; }
 
         public List<LogConsistencyChecker> LogArtifacts { get; set; }
 
@@ -658,11 +471,31 @@ namespace Mayfly.Fish.Explorer
             get
             {
                 List<IndividualConsistencyChecker> result = new List<IndividualConsistencyChecker>();
-                foreach (LogConsistencyChecker logArtifact in LogArtifacts)
+                
+                if (LogArtifacts != null)
                 {
-                    result.AddRange(logArtifact.IndividualArtifacts);
+                    foreach (LogConsistencyChecker logArtifact in LogArtifacts)
+                    {
+                        result.AddRange(logArtifact.IndividualArtifacts);
+                    }
                 }
+
                 return result;
+            }
+        }
+
+        public ArtifactCriticality MissingCriticality
+        {
+            get
+            {
+                if (this.MissingInReference)
+                {
+                    return ArtifactCriticality.Allowed;
+                }
+                else
+                {
+                    return ArtifactCriticality.Normal;
+                }
             }
         }
 
@@ -674,7 +507,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (LogConsistencyChecker artifact in LogArtifacts)
                 {
-                    result = GetWorst(result, artifact.OddMassCriticality, artifact.UnmeasurementsCriticality);
+                    result = GetWorst(result, artifact.SpeciesCriticality);
                 }
 
                 return result;
@@ -689,7 +522,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (IndividualConsistencyChecker artifact in IndividualArtifacts)
                 {
-                    result = GetWorst(result, artifact.UnweightedDietItemsCriticality, artifact.TallyCriticality);
+                    result = GetWorst(result, artifact.TallyCriticality);
                 }
 
                 return result;
@@ -700,7 +533,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return GetWorst(AgeInspector.Criticality, MassInspector.Criticality, LogWorstCriticality, IndividualWorstCriticality);
+                return GetWorst(MissingCriticality, LogWorstCriticality, IndividualWorstCriticality);
             }
         }
 
@@ -712,26 +545,16 @@ namespace Mayfly.Fish.Explorer
 
             if (speciesRow == null) return;
 
-            int sampled = stack.QuantitySampled(speciesRow);
-
-            AgeInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);
-            AgeInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
-            var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
-            if (gm != null) AgeInspector.HasRegression = gm.CombinedData.IsRegressionOK;
-            if (gm != null && gm.CombinedData.IsRegressionOK) AgeInspector.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
-
-            MassInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Mass);
-            MassInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
-            var mm = stack.Parent.FindMassModel(speciesRow.Species);
-            if (mm != null) MassInspector.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
-            if (mm != null && mm.CombinedData.IsRegressionOK) MassInspector.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
+            MissingInReference = SpeciesRow.RowState == DataRowState.Detached;
 
             List<LogConsistencyChecker> result = new List<LogConsistencyChecker>();
+
             foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
                 if (logArtifact.ArtifactsCount > 0) result.Add(logArtifact);
             }
+
             LogArtifacts = result;
         }
 
@@ -744,8 +567,7 @@ namespace Mayfly.Fish.Explorer
             {
                 for (int j = 0; j < LogArtifacts[i].IndividualArtifacts.Count; j++)
                 {
-                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality &&
-                        LogArtifacts[i].IndividualArtifacts[j].UnweightedDietItemsCriticality < criticality)
+                    if (LogArtifacts[i].IndividualArtifacts[j].TallyCriticality < criticality)
                     {
                         LogArtifacts[i].IndividualArtifacts.RemoveAt(j);
                         j--;
@@ -758,23 +580,16 @@ namespace Mayfly.Fish.Explorer
                     i--;
                 }
             }
-
-            if (AgeInspector.Criticality < criticality)
-            {
-                AgeInspector = SpeciesFeatureConsistencyChecker.Empty;
-            }
-
-            if (MassInspector.Criticality < criticality)
-            {
-                MassInspector = SpeciesFeatureConsistencyChecker.Empty;
-            }
         }
 
         public override string[] GetNotices(bool includeChildren)
         {
             List<string> result = new List<string>();
-            result.AddRange(AgeInspector.GetNotices());
-            result.AddRange(MassInspector.GetNotices());
+
+            if (MissingCriticality > ArtifactCriticality.Normal)
+            {
+                result.Add(Wild.Resources.Artifact.LogSpecies);
+            }
 
             if (includeChildren)
             {

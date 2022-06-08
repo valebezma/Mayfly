@@ -171,7 +171,7 @@ namespace Mayfly.Fish.Explorer
 
             if (speciesRow == null)
             {
-                // There is no such species in reference
+                // There is no such species in index
                 if ((string)gridRow.Cells[ColumnSpecies.Index].Value ==
                     Species.Resources.Interface.UnidentifiedTitle)
                 {
@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                // There is such species in reference you using
+                // There is such species in index you using
                 Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {

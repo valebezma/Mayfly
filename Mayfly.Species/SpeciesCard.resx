@@ -349,7 +349,7 @@
     <value>3</value>
   </data>
   <data name="labelReference.Text" xml:space="preserve">
-    <value>[reference]</value>
+    <value>[index]</value>
   </data>
   <data name="&gt;&gt;labelReference.Name" xml:space="preserve">
     <value>labelReference</value>

@@ -96,5 +96,67 @@ namespace Mayfly.Benthos.Explorer
 
             return result;
         }
+
+        public static TaxaComposition GetCenosisComposition(this CardStack stack, SpeciesKey.BaseRow baseRow)
+        {
+            TaxaComposition result = new TaxaComposition(stack.GetCenosisComposition(), baseRow, true);
+
+            foreach (SpeciesSwarmPool pool in result)
+            {
+                pool.SamplesCount = stack.GetOccurrenceCases(pool.SpeciesRows);
+            }
+
+            return result;
+        }
+
+        public static int QuantityIndividual(this Data.LogRow logRow)
+        {
+            int result = 0;
+
+            foreach (Data.IndividualRow indRow in logRow.GetIndividualRows())
+            {
+                result += indRow.IsFrequencyNull() ? 1 : indRow.Frequency;
+            }
+
+            return result;
+        }
+
+        public static int QuantityIndividual(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        {
+            int result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            {
+                result += logRow.QuantityIndividual();
+            }
+
+            return result;
+        }
+
+        public static int QuantityIndividual(this CardStack stack)
+        {
+            int result = 0;
+
+            foreach (Data.LogRow logRow in stack.GetLogRows())
+            {
+                result += logRow.QuantityIndividual();
+            }
+
+            return result;
+        }
+
+        public static int Measured(this Data.LogRow logRow)
+        {
+            int result = 0;
+
+
+            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            {
+                if (individualRow.IsLengthNull()) continue;
+                result++;
+            }
+
+            return result;
+        }
     }
 }

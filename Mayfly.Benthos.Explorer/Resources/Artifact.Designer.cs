@@ -19,7 +19,7 @@ namespace Mayfly.Benthos.Explorer.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Artifact {
@@ -61,29 +61,20 @@ namespace Mayfly.Benthos.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are some artifacts found in data.
+        ///   Looks up a localized string similar to Species not found in index.
         /// </summary>
-        internal static string ArtifactsFound {
+        internal static string Species {
             get {
-                return ResourceManager.GetString("ArtifactsFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Species is missing in reference.
-        /// </summary>
-        internal static string ReferenceNull {
-            get {
-                return ResourceManager.GetString("ReferenceNull", resourceCulture);
+                return ResourceManager.GetString("Species", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Square of sample is not specified.
         /// </summary>
-        internal static string SampleSquare {
+        internal static string Square {
             get {
-                return ResourceManager.GetString("SampleSquare", resourceCulture);
+                return ResourceManager.GetString("Square", resourceCulture);
             }
         }
     }

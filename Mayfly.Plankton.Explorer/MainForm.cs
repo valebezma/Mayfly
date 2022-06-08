@@ -630,7 +630,7 @@ namespace Mayfly.Plankton.Explorer
                 Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.OriginalValue);
                 Data.SpeciesRow spcRow1 = data.Species.FindBySpecies(e.SpeciesName);
 
-                if (spcRow1 == null) // If there is no new species in reference
+                if (spcRow1 == null) // If there is no new species in index
                 {
                     spcRow.Species = e.SpeciesName;
 
@@ -639,7 +639,7 @@ namespace Mayfly.Plankton.Explorer
                         RememberChanged(logRow.CardRow);
                     }
                 }
-                else // If there is new species already in reference
+                else // If there is new species already in index
                 {
                     foreach (Data.LogRow logRow in spcRow.GetLogRows())
                     {

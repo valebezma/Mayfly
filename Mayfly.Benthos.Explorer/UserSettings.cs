@@ -57,5 +57,17 @@ namespace Mayfly.Benthos.Explorer
                 UserSetting.SetValue(Path, nameof(MassRecoveryUseRaw), value);
             }
         }
+
+        public static bool CheckConsistency
+        {
+            get
+            {
+                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(CheckConsistency), true));
+            }
+            set
+            {
+                UserSetting.SetValue(Path, nameof(CheckConsistency), value);
+            }
+        }
     }
 }

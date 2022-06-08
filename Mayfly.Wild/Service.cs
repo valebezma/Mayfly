@@ -435,7 +435,7 @@ namespace Mayfly.Wild
             return GetReferencePath(
                 Species.UserSettings.Interface.OpenDialog,
                 groupName + " (auto).sps",
-                Server.GetUri("get/references/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.sps", Application.CurrentCulture)
+                Server.GetUri("get/index/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.sps", Application.CurrentCulture)
                 );
         }
     }

@@ -2596,7 +2596,7 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelWaters.Text" xml:space="preserve">
-    <value>Waters reference</value>
+    <value>Waters index</value>
   </data>
   <data name="&gt;&gt;labelRef.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2638,7 +2638,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxSpeciesExpand.Text" xml:space="preserve">
-    <value>Automatically expand species reference</value>
+    <value>Automatically expand species index</value>
   </data>
   <data name="buttonAddtFctrsAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3076,7 +3076,7 @@
     <value>235, 425</value>
   </data>
   <data name="labelSpecies.Text" xml:space="preserve">
-    <value>Species reference</value>
+    <value>Species index</value>
   </data>
   <data name="buttonAddtFctrsDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>

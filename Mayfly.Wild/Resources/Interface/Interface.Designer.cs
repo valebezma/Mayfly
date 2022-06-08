@@ -115,7 +115,7 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage for field data cards, references etc..
+        ///   Looks up a localized string similar to Storage for field data cards, indices etc..
         /// </summary>
         public static string FieldFolderTip {
             get {

@@ -61,47 +61,11 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are some artifacts found in data.
-        /// </summary>
-        internal static string ArtifactsFound {
-            get {
-                return ResourceManager.GetString("ArtifactsFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Effort values not provided.
         /// </summary>
         internal static string CardEffort {
             get {
                 return ResourceManager.GetString("CardEffort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} individuals have issues with tally.
-        /// </summary>
-        internal static string IndividualTallies {
-            get {
-                return ResourceManager.GetString("IndividualTallies", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sample Is not marked with tally.
-        /// </summary>
-        internal static string IndividualTallyMissing {
-            get {
-                return ResourceManager.GetString("IndividualTallyMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No sample following tally #{0}.
-        /// </summary>
-        internal static string IndividualTallyOdd {
-            get {
-                return ResourceManager.GetString("IndividualTallyOdd", resourceCulture);
             }
         }
         
@@ -124,51 +88,6 @@ namespace Mayfly.Fish.Explorer.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Length of {0} specimen not measured.
-        /// </summary>
-        internal static string LogLength {
-            get {
-                return ResourceManager.GetString("LogLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Length issues in {0} log records.
-        /// </summary>
-        internal static string LogLengths {
-            get {
-                return ResourceManager.GetString("LogLengths", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is more than detailed mass ({1:n3}) which is fine.
-        /// </summary>
-        internal static string LogMassMissing {
-            get {
-                return ResourceManager.GetString("LogMassMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Record mass ({0:n3} kg) is {1:p1} less than detailed mass ({2:n3}).
-        /// </summary>
-        internal static string LogMassOdd {
-            get {
-                return ResourceManager.GetString("LogMassOdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} log records have issues with mass.
-        /// </summary>
-        internal static string LogMassOdds {
-            get {
-                return ResourceManager.GetString("LogMassOdds", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Total quantity of {0} specified as {1} but in individuals log there are {2} specimen and in stratified samples there are {3} specimen, so {4} are missing.
         /// </summary>
         internal static string Specimen {
@@ -183,42 +102,6 @@ namespace Mayfly.Fish.Explorer.Resources {
         internal static string SpecimenUnable {
             get {
                 return ResourceManager.GetString("SpecimenUnable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} measures have {1} outliers.
-        /// </summary>
-        internal static string ValueHasOutliers {
-            get {
-                return ResourceManager.GetString("ValueHasOutliers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is not recoverable.
-        /// </summary>
-        internal static string ValueIsCritical {
-            get {
-                return ResourceManager.GetString("ValueIsCritical", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is obtained from length.
-        /// </summary>
-        internal static string ValueIsRecoverable {
-            get {
-                return ResourceManager.GetString("ValueIsRecoverable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} of {1} specimen is obtained using model with {2} outliers.
-        /// </summary>
-        internal static string ValueIsRecoverableButHasOutliers {
-            get {
-                return ResourceManager.GetString("ValueIsRecoverableButHasOutliers", resourceCulture);
             }
         }
     }

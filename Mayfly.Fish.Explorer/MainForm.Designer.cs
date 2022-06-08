@@ -108,8 +108,8 @@
             this.menuItemBackup = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSaveSet = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuItemExportSpec = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemImportSpec = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExportBio = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemImportBio = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSample = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,7 +128,7 @@
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.meniItemIndAllAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemIndAllAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemIndSuggested = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndSuggestedAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -181,8 +181,8 @@
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemIndSimulate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemIndClearSimulated = new System.Windows.Forms.ToolStripMenuItem();
-            this.stratifiedSamplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printStratifiedSamplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStratified = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemStratifiedPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.menuService = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemLicenses = new System.Windows.Forms.ToolStripMenuItem();
@@ -449,6 +449,8 @@
             this.parasitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.contextIndOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextIndCard = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextIndLog = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             this.printIndividualsLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextIndPrint = new System.Windows.Forms.ToolStripMenuItem();
@@ -471,7 +473,7 @@
             this.loaderStratifiedExtended = new System.ComponentModel.BackgroundWorker();
             this.fbdBackup = new System.Windows.Forms.FolderBrowserDialog();
             this.dietCompiler = new System.ComponentModel.BackgroundWorker();
-            this.artefactFinder = new System.ComponentModel.BackgroundWorker();
+            this.artifactFinder = new System.ComponentModel.BackgroundWorker();
             this.bioTipper = new System.ComponentModel.BackgroundWorker();
             this.bioUpdater = new System.ComponentModel.BackgroundWorker();
             this.modelCalc = new System.ComponentModel.BackgroundWorker();
@@ -549,7 +551,7 @@
             this.menuCards,
             this.menuSpc,
             this.menuIndividuals,
-            this.stratifiedSamplesToolStripMenuItem,
+            this.menuStratified,
             this.menuService});
             resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Name = "menuStrip";
@@ -563,8 +565,8 @@
             this.menuItemBackup,
             this.menuItemSaveSet,
             this.toolStripSeparator11,
-            this.menuItemExportSpec,
-            this.menuItemImportSpec,
+            this.menuItemExportBio,
+            this.menuItemImportBio,
             this.toolStripSeparator10,
             this.menuItemExit});
             this.menuFile.Name = "menuFile";
@@ -604,17 +606,17 @@
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
             // 
-            // menuItemExportSpec
+            // menuItemExportBio
             // 
-            this.menuItemExportSpec.Name = "menuItemExportSpec";
-            resources.ApplyResources(this.menuItemExportSpec, "menuItemExportSpec");
-            this.menuItemExportSpec.Click += new System.EventHandler(this.menuItemExportBio_Click);
+            this.menuItemExportBio.Name = "menuItemExportBio";
+            resources.ApplyResources(this.menuItemExportBio, "menuItemExportBio");
+            this.menuItemExportBio.Click += new System.EventHandler(this.menuItemExportBio_Click);
             // 
-            // menuItemImportSpec
+            // menuItemImportBio
             // 
-            this.menuItemImportSpec.Name = "menuItemImportSpec";
-            resources.ApplyResources(this.menuItemImportSpec, "menuItemImportSpec");
-            this.menuItemImportSpec.Click += new System.EventHandler(this.menuItemImportBio_Click);
+            this.menuItemImportBio.Name = "menuItemImportBio";
+            resources.ApplyResources(this.menuItemImportBio, "menuItemImportBio");
+            this.menuItemImportBio.Click += new System.EventHandler(this.menuItemImportBio_Click);
             // 
             // toolStripSeparator10
             // 
@@ -731,16 +733,16 @@
             // menuItemIndAll
             // 
             this.menuItemIndAll.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.meniItemIndAllAll,
+            this.menuItemIndAllAll,
             this.toolStripSeparator24});
             this.menuItemIndAll.Name = "menuItemIndAll";
             resources.ApplyResources(this.menuItemIndAll, "menuItemIndAll");
             // 
-            // meniItemIndAllAll
+            // menuItemIndAllAll
             // 
-            this.meniItemIndAllAll.Name = "meniItemIndAllAll";
-            resources.ApplyResources(this.meniItemIndAllAll, "meniItemIndAllAll");
-            this.meniItemIndAllAll.Click += new System.EventHandler(this.menuItemIndAllAll_Click);
+            this.menuItemIndAllAll.Name = "menuItemIndAllAll";
+            resources.ApplyResources(this.menuItemIndAllAll, "menuItemIndAllAll");
+            this.menuItemIndAllAll.Click += new System.EventHandler(this.menuItemIndAllAll_Click);
             // 
             // toolStripSeparator24
             // 
@@ -1084,18 +1086,18 @@
             resources.ApplyResources(this.menuItemIndClearSimulated, "menuItemIndClearSimulated");
             this.menuItemIndClearSimulated.Click += new System.EventHandler(this.menuItemIndClearSimulated_Click);
             // 
-            // stratifiedSamplesToolStripMenuItem
+            // menuStratified
             // 
-            this.stratifiedSamplesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.printStratifiedSamplesToolStripMenuItem});
-            this.stratifiedSamplesToolStripMenuItem.Name = "stratifiedSamplesToolStripMenuItem";
-            resources.ApplyResources(this.stratifiedSamplesToolStripMenuItem, "stratifiedSamplesToolStripMenuItem");
+            this.menuStratified.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemStratifiedPrint});
+            this.menuStratified.Name = "menuStratified";
+            resources.ApplyResources(this.menuStratified, "menuStratified");
             // 
-            // printStratifiedSamplesToolStripMenuItem
+            // menuItemStratifiedPrint
             // 
-            resources.ApplyResources(this.printStratifiedSamplesToolStripMenuItem, "printStratifiedSamplesToolStripMenuItem");
-            this.printStratifiedSamplesToolStripMenuItem.Name = "printStratifiedSamplesToolStripMenuItem";
-            this.printStratifiedSamplesToolStripMenuItem.Click += new System.EventHandler(this.printStratifiedSamplesToolStripMenuItem_Click);
+            resources.ApplyResources(this.menuItemStratifiedPrint, "menuItemStratifiedPrint");
+            this.menuItemStratifiedPrint.Name = "menuItemStratifiedPrint";
+            this.menuItemStratifiedPrint.Click += new System.EventHandler(this.menuItemStratifiedPrint_Click);
             // 
             // menuService
             // 
@@ -3253,6 +3255,8 @@
             this.parasitesToolStripMenuItem,
             this.toolStripSeparator19,
             this.contextIndOpen,
+            this.contextIndCard,
+            this.contextIndLog,
             this.toolStripSeparator20,
             this.printIndividualsLogToolStripMenuItem,
             this.contextIndPrint,
@@ -3302,6 +3306,18 @@
             resources.ApplyResources(this.contextIndOpen, "contextIndOpen");
             this.contextIndOpen.Name = "contextIndOpen";
             this.contextIndOpen.Click += new System.EventHandler(this.contextIndOpen_Click);
+            // 
+            // contextIndCard
+            // 
+            resources.ApplyResources(this.contextIndCard, "contextIndCard");
+            this.contextIndCard.Name = "contextIndCard";
+            this.contextIndCard.Click += new System.EventHandler(this.contextIndCard_Click);
+            // 
+            // contextIndLog
+            // 
+            this.contextIndLog.Name = "contextIndLog";
+            resources.ApplyResources(this.contextIndLog, "contextIndLog");
+            this.contextIndLog.Click += new System.EventHandler(this.contextIndLog_Click);
             // 
             // toolStripSeparator20
             // 
@@ -3443,10 +3459,10 @@
             this.dietCompiler.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.progressChanged);
             this.dietCompiler.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.dietCompiler_RunWorkerCompleted);
             // 
-            // artefactFinder
+            // artifactFinder
             // 
-            this.artefactFinder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artefactFinder_DoWork);
-            this.artefactFinder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artefactFinder_RunWorkerCompleted);
+            this.artifactFinder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.artifactFinder_DoWork);
+            this.artifactFinder.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.artifactFinder_RunWorkerCompleted);
             // 
             // bioTipper
             // 
@@ -3764,7 +3780,7 @@
         private TaskDialogs.TaskDialogButton tdbRecoverCancel;
         private System.Windows.Forms.ToolStripMenuItem contextCardOpenFolder;
         private System.Windows.Forms.ToolStripMenuItem menuItemCenosis;
-        private System.ComponentModel.BackgroundWorker artefactFinder;
+        private System.ComponentModel.BackgroundWorker artifactFinder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private Mathematics.MathAdapter mathCard;
         private Mathematics.MathAdapter mathLog;
@@ -3874,8 +3890,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemLicenses;
         private System.Windows.Forms.NotifyIcon notify;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        private System.Windows.Forms.ToolStripMenuItem menuItemExportSpec;
-        private System.Windows.Forms.ToolStripMenuItem menuItemImportSpec;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExportBio;
+        private System.Windows.Forms.ToolStripMenuItem menuItemImportBio;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
         private System.Windows.Forms.ToolStripMenuItem menuItemDietExplorer;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndPrintLog;
@@ -3885,8 +3901,8 @@
         private System.Windows.Forms.ToolStripMenuItem printIndividualsLogToolStripMenuItem;
         private System.Windows.Forms.Label labelCardCountValue;
         private Wild.Controls.StratifiedSample stratifiedSample;
-        private System.Windows.Forms.ToolStripMenuItem stratifiedSamplesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printStratifiedSamplesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuStratified;
+        private System.Windows.Forms.ToolStripMenuItem menuItemStratifiedPrint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem printStratifiedSampleToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpcTechClass;
@@ -3931,8 +3947,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhen;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhere;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardWeather;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardTempSurface;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWeather;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardTempSurface;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardGear;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMesh;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHook;
@@ -3986,7 +4002,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemCardInvestigator;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardWater;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardGear;
-        private System.Windows.Forms.ToolStripMenuItem meniItemIndAllAll;
+        private System.Windows.Forms.ToolStripMenuItem menuItemIndAllAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;
         private System.Windows.Forms.ToolStripMenuItem menuItemIndSuggestedAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -4038,5 +4054,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndDietItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIndComments;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGearStats;
+        private System.Windows.Forms.ToolStripMenuItem contextIndCard;
+        private System.Windows.Forms.ToolStripMenuItem contextIndLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardWeather;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardTempSurface;
     }
 }

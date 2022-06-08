@@ -665,7 +665,7 @@ namespace Mayfly.Waters
 
             public void AddLakeBlock(Report report)
             {
-                //report.AddSubtitle3("Water reference data");
+                //report.AddSubtitle3("Water index data");
 
                 //ResourceManager resources = new ResourceManager(typeof(Waters.CardStream));
 
@@ -710,7 +710,7 @@ namespace Mayfly.Waters
 
             public void AddTankBlock(Report report)
             {
-                //report.AddSubtitle3("Water reference data");
+                //report.AddSubtitle3("Water index data");
 
                 //ResourceManager resources = new ResourceManager(typeof(Waters.CardStream));
 

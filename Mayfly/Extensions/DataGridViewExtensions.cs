@@ -299,7 +299,7 @@ namespace Mayfly.Extensions
                     try
                     {
                         MethodInfo parseMethod = gridCell.OwningColumn.ValueType.GetMethod("Parse");
-                        gridCell.Value = parseMethod.Invoke(null, new object[] { value });
+                        gridCell.Value = parseMethod?.Invoke(null, new object[] { value });
                     }
                     catch
                     {

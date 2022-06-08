@@ -26,19 +26,19 @@ namespace Mayfly.Wild
 
         public SpeciesComposition GetBasicCenosisComposition()
         {
-            SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, GetSpecies().Length);
+            SpeciesKey.SpeciesRow[] species = GetSpeciesSorted();
+            SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, species.Length);
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in GetSpecies())
+            foreach (SpeciesKey.SpeciesRow speciesRow in species)
             {
                 result.AddCategory(GetSwarm(speciesRow));
             }
 
             result.SamplesCount = this.Count;
-            //result.Sort();
             return result;
         }
 
-        public TaxaComposition GetTaxonomicComposition(SpeciesKey.BaseRow baseRow)
+        public TaxaComposition GetBasicTaxonomicComposition(SpeciesKey.BaseRow baseRow)
         {
             TaxaComposition result = new TaxaComposition(GetBasicCenosisComposition(), baseRow, true);
 

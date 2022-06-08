@@ -1,25 +1,29 @@
-﻿using Mayfly.Controls;
+﻿using Mayfly.Benthos;
+using Mayfly.Controls;
 using Mayfly.Extensions;
-using Mayfly.Geographics;
-using Mayfly.Mathematics.Charts;
+using Mayfly.Wild;
+using Mayfly.Wild.Controls;
 using Mayfly.Species;
 using Mayfly.TaskDialogs;
-using Mayfly.Wild;
-using Meta.Numerics.Statistics;
+using Mayfly.Software;
+using Mayfly.Waters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Series = System.Windows.Forms.DataVisualization.Charting.Series;
+using Meta.Numerics.Statistics;
+using Mayfly.Geographics;
 
-namespace Mayfly.Fish.Explorer
+namespace Mayfly.Benthos.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
+        public Data data = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
 
         public CardStack FullStack { get; private set; }
 
@@ -32,24 +36,26 @@ namespace Mayfly.Fish.Explorer
 
             set
             {
+                menuItemCenosis.Enabled = 
+                    !value;
+
                 tabControl.AllowDrop =
-                    tabPageInfo.AllowDrop =
-                    spreadSheetInd.Enabled =
-
-                    menuFile.Enabled =
-                    menuSample.Enabled =
-                    menuSurvey.Enabled =
-                    menuInstant.Enabled =
-
-                    spreadSheetInd.Enabled = !value;
-
-
-                menuSample.Enabled =
-                    menuInstant.Enabled =
-                    (!IsEmpty && !value);
-
+                    spreadSheetInd.Enabled = 
+                    !value;
 
                 foreach (Control control in tabPageInfo.Controls)
+                {
+                    control.Enabled = !value;
+                }
+
+                foreach (Control control in new List<Control>{ 
+                    spreadSheetCard, //menuItemCards,
+                    spreadSheetSpc, //menuItemSpc,
+                    spreadSheetLog, 
+                    spreadSheetInd, 
+                    buttonSelectLog, 
+                    buttonSpcFull,
+                    buttonSelectInd })
                 {
                     control.Enabled = !value;
                 }
@@ -73,25 +79,23 @@ namespace Mayfly.Fish.Explorer
                     menuItemSaveSet.Enabled =
                     !empty;
 
-                menuSample.Enabled =
-                    menuInstant.Enabled = !empty;
+                //menuSample.Enabled =
+                //    menuInstant.Enabled = !empty;
 
-                foreach (ToolStripItem item in menuSurvey.DropDownItems)
-                {
-                    if (item == menuItemSurveyInput) continue;
-                    if (item == menuItemSpawning) continue;
-                    item.Enabled = !empty;
-                }
-
-                menuItemMSYR.Enabled = !empty;
+                //foreach (ToolStripItem item in menuSurvey.DropDownItems)
+                //{
+                //    if (item == menuItemSurveyInput) continue;
+                //    if (item == menuItemSpawning) continue;
+                //    item.Enabled = !empty;
+                //}
 
                 menuItemExportBio.Enabled = !empty;
 
-                foreach (ToolStripItem item in menuSurvey.DropDownItems)
-                {
-                    if (item == menuItemSurveyInput) continue;
-                    item.Enabled = !empty;
-                }
+                //foreach (ToolStripItem item in menuSurvey.DropDownItems)
+                //{
+                //    if (item == menuItemSurveyInput) continue;
+                //    item.Enabled = !empty;
+                //}
             }
         }
 
@@ -99,7 +103,7 @@ namespace Mayfly.Fish.Explorer
         {
             get
             {
-                return changedCards.Count > 0;
+                return ChangedCards.Count > 0;
             }
         }
 
@@ -110,14 +114,13 @@ namespace Mayfly.Fish.Explorer
 
         private void updateSummary()
         {
-            FullStack = new CardStack(data.Card);
-
-            IsEmpty = FullStack.Count == 0;
+            FullStack = new CardStack(data);
+            IsEmpty = data.Card.Count == 0;
 
             if (IsEmpty)
             {
-                this.ResetText(EntryAssemblyInfo.Title);
-
+                this.ResetText(DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title);
+                
                 labelArtifacts.Visible = pictureBoxArtifacts.Visible = false;
                 labelCardCountValue.Text = Constants.Null;
 
@@ -131,7 +134,7 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 UserSettings.Interface.SaveDialog.FileName = FullStack.FriendlyName;
-                this.ResetText(FullStack.FriendlyName, EntryAssemblyInfo.Title);
+                this.ResetText(FullStack.FriendlyName, DietExplorer ? Resources.Interface.DietTitle : EntryAssemblyInfo.Title);
 
                 Log.Write("{0} cards are under consideration (common path: {1}).",
                     data.Card.Count, IO.GetCommonPath(FullStack.GetFilenames()));
@@ -235,18 +238,9 @@ namespace Mayfly.Fish.Explorer
                 }
 
 
-                FullStack.PopulateSpeciesMenu(menuItemIndAll, indSpecies_Click, (spcRow) =>
+                FullStack.PopulateSpeciesMenu(menuItemIndividuals, indSpecies_Click, (spcRow) =>
                 {
-
                     return FullStack.QuantityIndividual(spcRow);
-
-                });
-                FullStack.PopulateSpeciesMenu(menuItemIndSuggested, indSuggested_Click, (spcRow) =>
-                {
-
-                    TreatmentSuggestion sugg = FullStack.GetTreatmentSuggestion(spcRow, data.Individual.AgeColumn);
-                    return (sugg == null) ? 0 : sugg.GetSuggested().Length;
-
                 });
 
                 FullStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click, (spcRow) =>
@@ -255,15 +249,6 @@ namespace Mayfly.Fish.Explorer
                     return FullStack.GetLogRows(spcRow).Length;
 
                 });
-
-                FullStack.PopulateSpeciesMenu(menuItemGrowthCohorts, speciesGrowthCohorts_Click);
-                FullStack.PopulateSpeciesMenu(menuItemComposition, speciesComposition_Click);
-                FullStack.PopulateSpeciesMenu(menuItemMortalityCohorts, speciesMortalityCohorts_Click);
-                FullStack.PopulateSpeciesMenu(menuItemExtrapolation, speciesStockExtrapolation_Click);
-                FullStack.PopulateSpeciesMenu(menuItemVpa, speciesStockVpa_Click);
-                FullStack.PopulateSpeciesMenu(menuItemMSYR, speciesMSYR_Click);
-                FullStack.PopulateSpeciesMenu(menuItemMSY, speciesMSY_Click);
-                FullStack.PopulateSpeciesMenu(menuItemPrediction, speciesPrediction_Click);
 
                 updateQty(FullStack.Quantity());
 
@@ -301,8 +286,8 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                labelWgtValue.Text = Wild.Service.GetFriendlyMass(w * 1000);
-                statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w * 1000));
+                labelWgtValue.Text = Wild.Service.GetFriendlyMass(w);
+                statusMass.ResetFormatted(Wild.Service.GetFriendlyMass(w));
             }
         }
 
@@ -331,32 +316,14 @@ namespace Mayfly.Fish.Explorer
                     updateLogArtifacts(gridRow);
                 }
             }
-
-            if (tabPageInd.Parent != null)
-            {
-                foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
-                {
-                    updateIndividualArtifacts(gridRow);
-                }
-            }
         }
 
         private void applyBio()
         {
-            if (tabPageSpcStats.Parent != null)
-            {
-                species_Changed(spreadSheetSpcStats, new EventArgs());
-            }
-
-            if (tabPageInd.Parent != null)
-            {
-                spreadSheetInd_DisplayChanged(spreadSheetInd, new ScrollEventArgs(ScrollEventType.SmallDecrement, 0));
-            }
-        }
-
-        private void mainForm_Scroll(object sender, ScrollEventArgs e)
-        {
-            throw new NotImplementedException();
+            //if (tabPageInd.Parent != null)
+            //{
+            //    spreadSheetInd_DisplayChanged(spreadSheetInd, new ScrollEventArgs(ScrollEventType.SmallDecrement, 0));
+            //}
         }
 
         private void logSpecies_Click(object sender, EventArgs e)
@@ -367,13 +334,6 @@ namespace Mayfly.Fish.Explorer
         private void indSpecies_Click(object sender, EventArgs e)
         {
             loadIndividuals((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
-        }
-
-        private void indSuggested_Click(object sender, EventArgs e)
-        {
-            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
-            TreatmentSuggestion sugg = FullStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn);
-            if (sugg != null) loadIndividuals(ModifierKeys.HasFlag(Keys.Shift) ? sugg.GetAll() : sugg.GetSuggested());
         }
 
 
@@ -403,12 +363,12 @@ namespace Mayfly.Fish.Explorer
             IsBusy = true;
             spreadSheetCard.StartProcessing(changedCards.Count, Wild.Resources.Interface.Process.CardsSaving);
             dataSaver.RunWorkerAsync();
-        }  
+        }
 
         public void LoadCards(params string[] entries)
         {
             IsBusy = true;
-            processDisplay.StartProcessing(entries.Length, Wild.Resources.Interface.Process.CardsLoading);            
+            processDisplay.StartProcessing(entries.Length, Wild.Resources.Interface.Process.CardsLoading);
             loaderData.RunWorkerAsync(entries);
         }
 
@@ -421,335 +381,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        #region Gear stats
 
-        private CardStack EffortsData;
-
-        private CardStack CatchesData;
-
-        private FishSamplerType SelectedSamplerType
-        {
-            get; set;
-            //{
-            //    return Fish.Service.Sampler(listViewGears.GetID()).GetSamplerType();
-            //}
-        }
-
-        private UnitEffort SelectedEffortUE { get; set; }
-
-
-
-        private Series GetSinkingSchedule(FishSamplerType samplerType)
-        {
-            Series series = new Series();
-            series.LegendText = samplerType.ToDisplay();
-            series.BorderColor = Color.Black;
-
-            series.ChartType = SeriesChartType.RangeBar;
-            series.YValuesPerPoint = 2;
-            series.SetCustomProperty("DrawSideBySide", "False");
-            //series.SetCustomProperty("PointWidth", "2");
-
-            foreach (Data.CardRow cardRow in FullStack.GetStack(samplerType))
-            {
-                if (cardRow.IsMeshNull())
-                    continue;
-
-                if (cardRow.IsWhenNull())
-                    continue;
-
-                int pointIndex = series.Points.AddXY(cardRow.Mesh, cardRow.When - (cardRow.IsSpanNull() ? TimeSpan.FromHours(2) : cardRow.Duration), cardRow.When);
-                series.Points[pointIndex].Tag = cardRow;
-                series.Points[pointIndex].ToolTip = cardRow.ToString();
-            }
-
-            return series;
-        }
-
-        //private void UpdateCatchTotals()
-        //{
-        //    double q = 0.0;
-        //    double w = 0.0;
-
-        //    for (int i = 0; i < spreadSheetCatches.Rows.Count; i++)
-        //    {
-        //        if (spreadSheetCatches[columnCatchSpc.Index, i].Value.ToString() == Mayfly.Resources.Interface.Total)
-        //        {
-        //            continue;
-        //        }
-
-        //        if (!spreadSheetCatches.IsHidden(i))
-        //        {
-        //            if (spreadSheetCatches[columnCatchN.Index, i].Value != null)
-        //            {
-        //                q += (double)spreadSheetCatches[columnCatchN.Index, i].Value;
-        //            }
-
-        //            if (spreadSheetCatches[columnCatchW.Index, i].Value != null)
-        //            {
-        //                w += (double)spreadSheetCatches[columnCatchW.Index, i].Value;
-        //            }
-        //        }
-        //    }
-
-        //    for (int i = 0; i < spreadSheetCatches.Rows.Count; i++)
-        //    {
-        //        if (spreadSheetCatches[columnCatchSpc.Index, i].Value.ToString() == Mayfly.Resources.Interface.Total)
-        //        {
-        //            spreadSheetCatches[columnCatchN.Index, i].Value = q;
-        //            spreadSheetCatches[columnCatchW.Index, i].Value = w;
-        //        }
-        //    }
-        //}
-
-        #endregion
-
-
-
-        #region Species stats
-
-        SpeciesKey.SpeciesRow selectedStatSpc;
-
-        FishSamplerType selectedTechSamplerType;
-
-        Series sufficientLine;
-
-        Histogramma histBio;
-        Histogramma histSample;
-        Histogramma histWeighted;
-        Histogramma histRegistered;
-        Histogramma histAged;
-
-        DataQualificationWay selectedQualificationWay;
-
-        ContinuousBio model;
-        BivariateSample outliersData;
-
-        Scatterplot ext;
-        Scatterplot inter;
-        Scatterplot combi;
-        Scatterplot outliers;
-
-        private void getFilteredList(DataGridViewColumn gridColumn)
-        {
-            spreadSheetInd.Rows.Clear();
-
-            if (selectedStatSpc == null)
-            {
-                spreadSheetInd.EnsureFilter(gridColumn, null, loaderInd,
-                    menuItemIndAllAll_Click);
-            }
-            else
-            {
-                spreadSheetInd.EnsureFilter(gridColumn, null, loaderInd,
-                    (sender, e) => { loadIndividuals(selectedStatSpc); });
-            }
-        }
-
-
-
-        private void clearSpcStats()
-        {
-            textBoxSpcLog.Text = Constants.Null;
-            textBoxSpcL.Text = Constants.Null;
-            textBoxSpcW.Text = Constants.Null;
-            textBoxSpcA.Text = Constants.Null;
-            textBoxSpcS.Text = Constants.Null;
-            textBoxSpcM.Text = Constants.Null;
-            textBoxSpcStrat.Text = Constants.Null;
-            textBoxSpcWTotal.Text = Constants.Null;
-            textBoxSpcWLog.Text = Constants.Null;
-            textBoxSpcWStrat.Text = Constants.Null;
-            textBoxSpsTotal.Text = Constants.Null;
-
-            chartSpcStats.Series[0].Points.Clear();
-        }
-
-        private DataGridViewRow GetTechRow(CardStack stack)
-        {
-            string format = "{0} ({1})";
-
-            DataGridViewRow result = new DataGridViewRow();
-            result.CreateCells(spreadSheetTech);
-            result.Cells[ColumnSpcTechClass.Index].Value = stack.Name;
-            result.Cells[ColumnSpcTechOps.Index].Value = stack.Count;
-            double quantity = (selectedStatSpc == null) ? stack.Quantity() : stack.Quantity(selectedStatSpc);
-
-            if (quantity > 0)
-            {
-                result.Cells[ColumnSpcTechN.Index].Value = quantity;
-
-                int totals = 0;
-                int strats = 0;
-                //int mixed = 0;
-                int logged = 0;
-
-                int totals_q = 0;
-                int strats_q = 0;
-                //int mixed_q = 0;
-                int logged_q = 0;
-
-                foreach (Data.CardRow cardRow in stack)
-                {
-                    int stratified = 0;
-                    int individuals = 0;
-
-                    if (selectedStatSpc == null)
-                    {
-                        bool all_totalled = true;
-
-                        foreach (Data.LogRow logRow in cardRow.GetLogRows())
-                        {
-                            if (logRow.IsQuantityNull() || logRow.IsMassNull()) { all_totalled = false; break; }
-
-                            if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity;
-                            stratified += logRow.QuantityStratified;
-                            individuals += logRow.QuantityIndividuals;
-                        }
-
-                        if (all_totalled) totals++;
-                    }
-                    else
-                    {
-                        Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, selectedStatSpc.ID);
-
-                        if (logRow == null) continue;
-
-                        if (!logRow.IsQuantityNull() && !logRow.IsMassNull()) totals++;
-                        if (!logRow.IsQuantityNull()) totals_q += logRow.Quantity;
-
-                        stratified = logRow.QuantityStratified;
-                        individuals = logRow.QuantityIndividuals;
-                    }
-
-                    //if (stratified > 0 && individuals == 0) { strats++; strats_q += stratified; }
-                    //if (stratified > 0 && individuals > 0) { mixed++; mixed_q += stratified + individuals; }
-                    //if (stratified == 0 && individuals > 0) { logged++; logged_q += individuals; }
-
-                    if (stratified > 0) { strats++; }
-                    if (individuals > 0) { logged++; }
-
-                    strats_q += stratified;
-                    logged_q += individuals;
-                }
-
-                if (totals > 0) result.Cells[ColumnSpcTechTotals.Index].Value = string.Format(format, totals, totals_q);
-                if (strats > 0) result.Cells[ColumnSpcTechStratified.Index].Value = string.Format(format, strats, strats_q);
-                //if (mixed > 0) result.Cells[ColumnSpcTechMixed.Index].Value = string.Format(format, mixed, mixed_q);
-                if (logged > 0) result.Cells[ColumnSpcTechLog.Index].Value = string.Format(format, logged, logged_q);
-            }
-
-            return result;
-        }
-
-        private void initializeSpeciesStatsPlot()
-        {
-            if (plotQualify.Series.Count > 1) return;
-
-            plotQualify.Series.Clear();
-
-            sufficientLine = new Series(Resources.Interface.EnoughStamp)
-            {
-                Color = Mathematics.UserSettings.ColorSelected,
-                ChartType = SeriesChartType.Line,
-                BorderDashStyle = ChartDashStyle.Dash
-            };
-            sufficientLine.Points.AddXY(0, UserSettings.RequiredClassSize);
-            sufficientLine.Points.AddXY(1, UserSettings.RequiredClassSize);
-            plotQualify.Series.Add(sufficientLine);
-
-            plotQualify.AxisXInterval = Fish.UserSettings.DefaultStratifiedInterval;
-
-            histBio = new Histogramma(Resources.Interface.StratesBio);
-            histSample = new Histogramma(Resources.Interface.StratesSampled);
-            histWeighted = new Histogramma(Resources.Interface.StratesWeighted);
-            histRegistered = new Histogramma(Resources.Interface.StratesRegistered);
-            histAged = new Histogramma(Resources.Interface.StratesAged);
-
-            foreach (Histogramma hist in new Histogramma[] { histBio, histSample, histWeighted, histRegistered, histAged })
-            {
-                hist.Properties.Borders = false;
-                hist.Properties.DataPointColor = plotQualify.GetNextColor(.5);
-                hist.Properties.PointWidth = .5;
-                plotQualify.AddSeries(hist);
-            }
-
-            ext = new Scatterplot(Resources.Interface.QualBio);
-            ext.Properties.DataPointColor = Constants.InfantColor;
-            plotQualify.AddSeries(ext);
-
-            inter = new Scatterplot(Resources.Interface.QualOwn);
-            inter.Properties.DataPointColor = Mathematics.UserSettings.ColorAccent;
-            plotQualify.AddSeries(inter);
-            inter.Updated += inter_Updated;
-
-            combi = new Scatterplot(Resources.Interface.QualCombi);
-            combi.Properties.ShowTrend = true;
-            combi.Properties.ConfidenceLevel = .99999;
-            combi.Properties.ShowPredictionBands = true;
-            combi.Properties.HighlightOutliers = checkBoxQualOutliers.Checked;
-            combi.Properties.DataPointColor = Color.Transparent;
-            combi.Properties.TrendColor = Mathematics.UserSettings.ColorAccent;
-            plotQualify.AddSeries(combi);
-            combi.Updated += combi_Updated;
-
-            //plotQualify.Remove(Resources.Interface.StratesSampled, false);
-            //plotQualify.Remove(Resources.Interface.StratesWeighted, false);
-            //plotQualify.Remove(Resources.Interface.StratesRegistered, false);
-            //plotQualify.Remove(Resources.Interface.StratesAged, false);
-        }
-
-        private void resetQualPlotAxes(double from, double to, double top)
-        {
-            if (!plotQualify.AxisXAutoMinimum)
-            {
-                plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(from, to);
-            }
-
-            if (!plotQualify.AxisXAutoMaximum)
-            {
-                plotQualify.AxisXMax = Mayfly.Service.AdjustRight(from, to);
-            }
-
-            if (!plotQualify.AxisYAutoMaximum)
-            {
-                plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, Math.Max(UserSettings.RequiredClassSize, top));
-            }
-
-            sufficientLine.Points[0].XValue = plotQualify.AxisXMin;
-            sufficientLine.Points[1].XValue = plotQualify.AxisXMax;
-
-            //LengthComposition lc = AllowedStack.GetStatisticComposition(selectedStatSpc, (s, i) => { return AllowedStack.Quantity(s, i); }, string.Empty);
-            //plotQualify.AxisYMax = Mayfly.Service.AdjustRight(0, lc.MostSampled.Quantity);
-            //plotQualify.AxisXMin = Mayfly.Service.AdjustLeft(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
-            //plotQualify.AxisXMax = Mayfly.Service.AdjustRight(lc[0].Size.LeftEndpoint, ((SizeClass)lc.GetLast()).Size.RightEndpoint);
-        }
-
-        private void resetQualPlotAxes()
-        {
-            resetQualPlotAxes(
-                Service.GetStrate(FullStack.LengthMin(selectedStatSpc)).LeftEndpoint,
-                Service.GetStrate(FullStack.LengthMax(selectedStatSpc)).RightEndpoint,
-                FullStack.GetLengthComposition(selectedStatSpc, plotQualify.AxisXInterval).MostSampled.Quantity);
-
-        }
-
-        private void inter_Updated(object sender, ScatterplotEventArgs e)
-        {
-            combi.Properties.TrendColor = inter.Properties.DataPointColor.Darker();
-        }
-
-        private void combi_Updated(object sender, ScatterplotEventArgs e)
-        {
-            outliersData = (combi.Calc != null && combi.Calc.IsRegressionOK) ? combi.Calc.Regression.GetOutliers(inter.Calc.Data, combi.Properties.ConfidenceLevel) : new BivariateSample();
-
-            checkBoxQualOutliers.Enabled = buttonQualOutliers.Enabled =
-                outliersData.Count > 0;
-
-            checkBoxQualOutliers_CheckedChanged(sender, e);
-        }
-
-        #endregion
 
 
 
@@ -757,16 +389,18 @@ namespace Mayfly.Fish.Explorer
 
         SpeciesKey.BaseRow baseSpc;
 
+
+
         private void loadTaxaList()
         {
             // Clear list
             comboBoxSpcTaxa.Items.Clear();
             menuItemSpcTaxa.DropDownItems.Clear();
 
-            if (Fish.UserSettings.SpeciesIndex == null) return;
+            if (Benthos.UserSettings.SpeciesIndex == null) return;
 
             // Fill list
-            foreach (SpeciesKey.BaseRow baseRow in Fish.UserSettings.SpeciesIndex.Base)
+            foreach (SpeciesKey.BaseRow baseRow in Benthos.UserSettings.SpeciesIndex.Base)
             {
                 comboBoxSpcTaxa.Items.Add(baseRow);
 
@@ -812,14 +446,20 @@ namespace Mayfly.Fish.Explorer
         private void loadSpc()
         {
             IsBusy = true;
-            spreadSheetSpc.StartProcessing(100, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetSpc.StartProcessing(baseSpc == null ? data.Species.Count + 1 : baseSpc.GetTaxaRows().Length + 1,
+                Wild.Resources.Interface.Process.SpeciesProcessing);
+
             spreadSheetSpc.Rows.Clear();
+
             loaderSpc.RunWorkerAsync();
         }
 
+
+
         private SpeciesKey.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            return baseSpc == null ? Fish.UserSettings.SpeciesIndex.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            //return baseSpc == null ? Benthos.UserSettings.SpeciesIndex.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            return baseSpc == null ? (SpeciesKey.SpeciesRow)gridRow.Cells[columnSpcSpc.Index].Value : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
@@ -843,6 +483,8 @@ namespace Mayfly.Fish.Explorer
 
         }
 
+
+
         private SpeciesKey.SpeciesRow[] getSpeciesRows(IList rows)
         {
             spreadSheetLog.EndEdit();
@@ -864,26 +506,6 @@ namespace Mayfly.Fish.Explorer
 
         private List<Data.CardRow> changedCards = new List<Data.CardRow>();
 
-        List<DataGridViewColumn> effortSource
-        {
-            get
-            {
-                return new List<DataGridViewColumn>
-                {
-                    columnCardExposure,
-                    columnCardHeight,
-                    columnCardHook,
-                    columnCardLength,
-                    columnCardOpening,
-                    columnCardSquare,
-                    columnCardSpan,
-                    columnCardVelocity
-                };
-            }
-        }
-
-
-
         private void loadCards(CardStack stack)
         {
             IsBusy = true;
@@ -897,8 +519,6 @@ namespace Mayfly.Fish.Explorer
         {
             loadCards(FullStack);
         }
-
-
 
         private Data.CardRow findCardRow(DataGridViewRow gridRow)
         {
@@ -922,20 +542,10 @@ namespace Mayfly.Fish.Explorer
             setCardValue(cardRow, gridRow, columnCardWeather, "Weather");
             setCardValue(cardRow, gridRow, columnCardTempSurface, "Surface");
 
-            setCardValue(cardRow, gridRow, columnCardGear, "Gear");
+            setCardValue(cardRow, gridRow, columnCardSampler, "Sampler");
             setCardValue(cardRow, gridRow, columnCardMesh, "Mesh");
-            setCardValue(cardRow, gridRow, columnCardHook, "Hook");
-            setCardValue(cardRow, gridRow, columnCardLength, "Length");
-            setCardValue(cardRow, gridRow, columnCardOpening, "Opening");
-            setCardValue(cardRow, gridRow, columnCardHeight, "Height");
             setCardValue(cardRow, gridRow, columnCardSquare, "Square");
-            setCardValue(cardRow, gridRow, columnCardSpan, "Span");
-            setCardValue(cardRow, gridRow, columnCardVelocity, "Velocity");
-            setCardValue(cardRow, gridRow, columnCardExposure, "Exposure");
 
-            //if (Wild.UserSettings.InstalledPermissions.IsPermitted(cardRow.Investigator))
-            //{
-            setCardValue(cardRow, gridRow, columnCardEffort, "Effort");
             setCardValue(cardRow, gridRow, columnCardDepth, "Depth");
             setCardValue(cardRow, gridRow, columnCardWealth, "Wealth");
             setCardValue(cardRow, gridRow, columnCardQuantity, "Quantity");
@@ -944,7 +554,6 @@ namespace Mayfly.Fish.Explorer
             setCardValue(cardRow, gridRow, columnCardBiomass, "Biomass");
             setCardValue(cardRow, gridRow, columnCardDiversityA, "DiversityA");
             setCardValue(cardRow, gridRow, columnCardDiversityB, "DiversityB");
-            //}
 
             setCardValue(cardRow, gridRow, columnCardComments, "Comments");
 
@@ -964,15 +573,26 @@ namespace Mayfly.Fish.Explorer
 
             CardConsistencyChecker artifact = findCardRow(gridRow).CheckConsistency();
 
-            if (artifact.EffortCriticality > ArtifactCriticality.Normal)
+            if (artifact.SquareCriticality > ArtifactCriticality.Normal)
             {
-                ((TextAndImageCell)gridRow.Cells[columnCardEffort.Index]).Image = ConsistencyChecker.GetImage(artifact.EffortCriticality);
-                gridRow.Cells[columnCardEffort.Index].ToolTipText = artifact.GetNotices(false).Merge();
+                ((TextAndImageCell)gridRow.Cells[columnCardSquare.Index]).Image = ConsistencyChecker.GetImage(artifact.SquareCriticality);
+                gridRow.Cells[columnCardSquare.Index].ToolTipText = Resources.Artifact.Square;
             }
             else
             {
-                ((TextAndImageCell)gridRow.Cells[columnCardEffort.Index]).Image = null;
-                gridRow.Cells[columnCardEffort.Index].ToolTipText = string.Empty;
+                ((TextAndImageCell)gridRow.Cells[columnCardSquare.Index]).Image = null;
+                gridRow.Cells[columnCardSquare.Index].ToolTipText = string.Empty;
+            }
+
+            if (artifact.WhereCriticality > ArtifactCriticality.Normal)
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardWhere.Index]).Image = ConsistencyChecker.GetImage(artifact.WhereCriticality);
+                gridRow.Cells[columnCardWhere.Index].ToolTipText = Wild.Resources.Artifact.Where;
+            }
+            else
+            {
+                ((TextAndImageCell)gridRow.Cells[columnCardSquare.Index]).Image = null;
+                gridRow.Cells[columnCardSquare.Index].ToolTipText = string.Empty;
             }
 
 
@@ -1013,37 +633,9 @@ namespace Mayfly.Fish.Explorer
             if (mesh == null) cardRow.SetMeshNull();
             else cardRow.Mesh = (int)mesh;
 
-            object hook = (object)gridRow.Cells[columnCardHook.Name].Value;
-            if (hook == null) cardRow.SetHookNull();
-            else cardRow.Hook = (int)hook;
-
-            object length = (object)gridRow.Cells[columnCardLength.Name].Value;
-            if (length == null) cardRow.SetLengthNull();
-            else cardRow.Length = (double)length;
-
-            object opening = (object)gridRow.Cells[columnCardOpening.Name].Value;
-            if (opening == null) cardRow.SetOpeningNull();
-            else cardRow.Opening = (double)opening;
-
-            object height = gridRow.Cells[columnCardHeight.Name].Value;
-            if (height == null) cardRow.SetHeightNull();
-            else cardRow.Height = (double)height;
-
-            object square = (object)gridRow.Cells[columnCardSquare.Name].Value;
-            if (square == null) cardRow.SetSquareNull();
-            else cardRow.Square = (double)square;
-
-            object time = (object)gridRow.Cells[columnCardSpan.Name].Value;
-            if (time == null) cardRow.SetSpanNull();
-            else cardRow.Span = (int)((TimeSpan)time).TotalMinutes;
-
-            object velocity = (object)gridRow.Cells[columnCardVelocity.Name].Value;
-            if (velocity == null) cardRow.SetVelocityNull();
-            else cardRow.Velocity = (double)velocity;
-
-            object exposure = (object)gridRow.Cells[columnCardExposure.Name].Value;
-            if (exposure == null) cardRow.SetExposureNull();
-            else cardRow.Exposure = (double)exposure;
+            //object square = (object)gridRow.Cells[columnCardSquare.Name].Value;
+            //if (square == null) cardRow.SetSquareNull();
+            //else cardRow.Square = (double)square;
 
             object depth = (object)gridRow.Cells[columnCardDepth.Name].Value;
             if (depth == null) cardRow.SetDepthNull();
@@ -1113,8 +705,6 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-
-
         private CardStack getCardStack(IList rows)
         {
             spreadSheetCard.EndEdit();
@@ -1130,7 +720,6 @@ namespace Mayfly.Fish.Explorer
 
             return stack;
         }
-                
 
         private bool loadCardAddt(SpreadSheet spreadSheet)
         {
@@ -1179,13 +768,6 @@ namespace Mayfly.Fish.Explorer
         private void setCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn, string field)
         {
             gridRow.Cells[gridColumn.Index].Value = cardRow.Get(field);
-
-            switch (field)
-            {
-                case "Effort":
-                    gridRow.Cells[gridColumn.Index].Style.Format = gridColumn.ExtendFormat(cardRow.GetGearType().GetDefaultUnitEffort().Unit);
-                    break;
-            }
         }
 
         private delegate void ValueSetEventHandler(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns);
@@ -1201,14 +783,18 @@ namespace Mayfly.Fish.Explorer
         private void loadLog(Data.LogRow[] logRows)
         {
             IsBusy = true;
-            spreadSheetLog.StartProcessing(logRows.Length, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetLog.StartProcessing(
+                baseLog == null ? logRows.Length : (FullStack.Count * (baseLog.GetTaxaRows().Length + 1)),
+                Wild.Resources.Interface.Process.SpeciesProcessing);
             spreadSheetLog.Rows.Clear();
             loaderLog.RunWorkerAsync(logRows);
         }
 
         private void loadLog()
         {
-            loadLog(data.Log.Rows.Cast<Data.LogRow>().ToArray());
+            loadLog(FullStack.GetLogRows());
+            comboBoxLogTaxa.Enabled =
+                label1.Enabled = true;
         }
 
         private void loadLog(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
@@ -1221,6 +807,8 @@ namespace Mayfly.Fish.Explorer
             }
 
             loadLog(logRows.ToArray());
+            comboBoxLogTaxa.Enabled =
+                label1.Enabled = false;
         }
 
         private void loadLog(SpeciesKey.SpeciesRow[] spcRows)
@@ -1228,19 +816,14 @@ namespace Mayfly.Fish.Explorer
             loadLog(spcRows, FullStack);
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow spcRows)
+        private void loadLog(SpeciesKey.SpeciesRow spcRow)
         {
-            loadLog(new SpeciesKey.SpeciesRow[] { spcRows });
-        }
-
-        private void loadLog(CardStack stack)
-        {
-            loadLog(stack.GetSpeciesSorted(), stack);
+            loadLog(new SpeciesKey.SpeciesRow[] { spcRow });
         }
 
         private Data.LogRow findLogRow(DataGridViewRow gridRow)
         {
-            return baseSpc == null ? data.Log.FindByID((int)gridRow.Cells[columnLogID.Index].Value) : null;
+            return baseLog == null ? data.Log.FindByID((int)gridRow.Cells[columnLogID.Index].Value) : null;
         }
 
         private void updateLogRow(DataGridViewRow gridRow)
@@ -1253,14 +836,12 @@ namespace Mayfly.Fish.Explorer
             {
                 gridRow.Cells[columnLogQuantity.Index].Value = logRow.Quantity;
                 gridRow.Cells[columnLogAbundance.Index].Value = logRow.GetAbundance();
-                gridRow.Cells[columnLogAbundance.Index].Style.Format = columnLogAbundance.ExtendFormat(logRow.CardRow.GetAbundanceUnits());
             }
 
             if (!logRow.IsMassNull())
             {
                 gridRow.Cells[columnLogMass.Index].Value = logRow.Mass;
                 gridRow.Cells[columnLogBiomass.Index].Value = logRow.GetBiomass();
-                gridRow.Cells[columnLogBiomass.Index].Style.Format = columnLogBiomass.ExtendFormat(logRow.CardRow.GetBiomassUnits());
             }
 
             setCardValue(logRow.CardRow, gridRow, spreadSheetLog.GetInsertedColumns());
@@ -1276,27 +857,15 @@ namespace Mayfly.Fish.Explorer
 
             LogConsistencyChecker artifact = findLogRow(gridRow).CheckConsistency();
 
-            if (artifact.OddMassCriticality > ArtifactCriticality.Normal)
+            if (artifact.SpeciesCriticality > ArtifactCriticality.Normal)
             {
-                ((TextAndImageCell)gridRow.Cells[columnLogMass.Index]).Image = ConsistencyChecker.GetImage(artifact.OddMassCriticality);
-                gridRow.Cells[columnLogMass.Index].ToolTipText = artifact.GetNoticeOddMass();
+                ((TextAndImageCell)gridRow.Cells[columnLogSpc.Index]).Image = ConsistencyChecker.GetImage(artifact.SpeciesCriticality);
+                gridRow.Cells[columnLogSpc.Index].ToolTipText = Wild.Resources.Artifact.LogSpecies;
             }
             else
             {
-                ((TextAndImageCell)gridRow.Cells[columnLogMass.Index]).Image = null;
-                gridRow.Cells[columnLogMass.Index].ToolTipText = string.Empty;
-
-            }
-
-            if (artifact.UnmeasurementsCriticality > ArtifactCriticality.Normal)
-            {
-                ((TextAndImageCell)gridRow.Cells[columnLogQuantity.Index]).Image = ConsistencyChecker.GetImage(artifact.UnmeasurementsCriticality);
-                gridRow.Cells[columnLogQuantity.Index].ToolTipText = artifact.GetNoticeUnmeasured();
-            }
-            else
-            {
-                ((TextAndImageCell)gridRow.Cells[columnLogQuantity.Index]).Image = null;
-                gridRow.Cells[columnLogQuantity.Index].ToolTipText = string.Empty;
+                ((TextAndImageCell)gridRow.Cells[columnLogSpc.Index]).Image = null;
+                gridRow.Cells[columnLogSpc.Index].ToolTipText = string.Empty;
             }
         }
 
@@ -1359,8 +928,6 @@ namespace Mayfly.Fish.Explorer
 
         //    foreach (Data.LogRow logRow in cardRow.GetLogRows())
         //    {
-        //        if (double.IsNaN(cardRow.GetEffort())) continue;
-
         //        if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
 
         //        if (!logRow.IsQuantityNull())
@@ -1487,7 +1054,7 @@ namespace Mayfly.Fish.Explorer
 
         private Data.IndividualRow findIndividualRow(DataGridViewRow gridRow)
         {
-            if (gridRow.Cells[columnIndID.Index].Value == null) 
+            if (gridRow.Cells[columnIndID.Index].Value == null)
             {
                 return null;
             }
@@ -1506,59 +1073,7 @@ namespace Mayfly.Fish.Explorer
             gridRow.Cells[columnIndSpecies.Index].Value = individualRow.LogRow.SpeciesRow;
             gridRow.Cells[columnIndLength.Index].Value = individualRow.IsLengthNull() ? null : (object)individualRow.Length;
             gridRow.Cells[columnIndMass.Index].Value = individualRow.IsMassNull() ? null : (object)individualRow.Mass;
-            gridRow.Cells[columnIndSomaticMass.Index].Value = individualRow.IsSomaticMassNull() ? null : (object)individualRow.SomaticMass;
-            gridRow.Cells[columnIndCondition.Index].Value = double.IsNaN(individualRow.GetCondition()) ? null : (object)individualRow.GetCondition();
-            gridRow.Cells[columnIndConditionSoma.Index].Value = double.IsNaN(individualRow.GetConditionSomatic()) ? null : (object)individualRow.GetConditionSomatic();
-            gridRow.Cells[columnIndTally.Index].Value = individualRow.IsTallyNull() ? null : individualRow.Tally;
-
-            if (individualRow.IsAgeNull())
-            {
-                gridRow.Cells[columnIndAge.Index].Value = null;
-                gridRow.Cells[columnIndGeneration.Index].Value = null;
-            }
-            else
-            {
-                Age age = (Age)individualRow.Age;
-                gridRow.Cells[columnIndAge.Index].Value = age;
-                Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-                if (!individualRow.IsAgeNull()) gridRow.Cells[columnIndGeneration.Index].Value = individualRow.Generation;
-            }
-
             gridRow.Cells[columnIndSex.Index].Value = individualRow.IsSexNull() ? null : (Sex)individualRow.Sex;
-            gridRow.Cells[columnIndMaturity.Index].Value = individualRow.IsMaturityNull()
-                ? null
-                : individualRow.IsIntermatureNull()
-                    ? new Maturity(individualRow.Maturity)
-                    : new Maturity(individualRow.Maturity, individualRow.Intermature);
-
-
-            gridRow.Cells[columnIndGonadMass.Index].Value = individualRow.IsGonadMassNull() ? null : (object)individualRow.GonadMass;
-            gridRow.Cells[columnIndGonadSampleMass.Index].Value = individualRow.IsGonadSampleMassNull() ? null : (object)individualRow.GonadSampleMass;
-            gridRow.Cells[columnIndGonadSample.Index].Value = individualRow.IsGonadSampleNull() ? null : (object)individualRow.GonadSample;
-            gridRow.Cells[columnIndEggSize.Index].Value = individualRow.IsEggSizeNull() ? null : (object)individualRow.EggSize;
-            gridRow.Cells[columnIndFecundityAbs.Index].Value = double.IsNaN(individualRow.GetAbsoluteFecundity()) ? null : (object)(individualRow.GetAbsoluteFecundity() / 1000.0);
-            gridRow.Cells[columnIndFecundityRelative.Index].Value = double.IsNaN(individualRow.GetRelativeFecundity()) ? null : (object)individualRow.GetRelativeFecundity();
-            gridRow.Cells[columnIndFecundityRelativeSoma.Index].Value = double.IsNaN(individualRow.GetRelativeFecunditySomatic()) ? null : (object)individualRow.GetRelativeFecunditySomatic();
-            gridRow.Cells[columnIndGonadIndex.Index].Value = double.IsNaN(individualRow.GetGonadIndex()) ? null : (object)individualRow.GetGonadIndex();
-            gridRow.Cells[columnIndGonadIndexSoma.Index].Value = double.IsNaN(individualRow.GetGonadIndexSomatic()) ? null : (object)individualRow.GetGonadIndexSomatic();
-
-            
-            gridRow.Cells[columnIndFat.Index].Value = individualRow.IsFatnessNull() ? null : (object)individualRow.Fatness;
-
-            if (individualRow.IsConsumedMassNull())
-            {
-                gridRow.Cells[columnIndConsumed.Index].Value = null;
-                gridRow.Cells[columnIndConsumptionIndex.Index].Value = null;
-            }
-            else
-            {
-                gridRow.Cells[columnIndConsumed.Index].Value = individualRow.ConsumedMass;
-                gridRow.Cells[columnIndConsumptionIndex.Index].Value = individualRow.GetConsumptionIndex();
-            }
-
-            int dietCount = individualRow.GetDietItemCount();
-            gridRow.Cells[columnIndDietItems.Index].Value = dietCount == -1 ? null : (object)dietCount;
-
             gridRow.Cells[columnIndComments.Index].Value = individualRow.IsCommentsNull() ? null : individualRow.Comments;
 
             foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
@@ -1587,17 +1102,6 @@ namespace Mayfly.Fish.Explorer
                 ((TextAndImageCell)gridRow.Cells[columnIndTally.Index]).Image = null;
                 gridRow.Cells[columnIndTally.Index].ToolTipText = string.Empty;
             }
-
-            if (artifact.UnweightedDietItemsCriticality > ArtifactCriticality.Normal)
-            {
-                ((TextAndImageCell)gridRow.Cells[columnIndConsumed.Index]).Image = ConsistencyChecker.GetImage(artifact.UnweightedDietItemsCriticality);
-                gridRow.Cells[columnIndConsumed.Index].ToolTipText = artifact.GetNoticeUnweightedDiet();
-            }
-            else
-            {
-                ((TextAndImageCell)gridRow.Cells[columnIndConsumed.Index]).Image = null;
-                gridRow.Cells[columnIndConsumed.Index].ToolTipText = string.Empty;
-            }
         }
 
         private Data.IndividualRow saveIndividualRow(DataGridViewRow gridRow)
@@ -1614,67 +1118,9 @@ namespace Mayfly.Fish.Explorer
             if (mass == null) individualRow.SetMassNull();
             else individualRow.Mass = (double)mass;
 
-            object gmass = gridRow.Cells[columnIndSomaticMass.Name].Value;
-            if (gmass == null) individualRow.SetSomaticMassNull();
-            else individualRow.SomaticMass = (double)gmass;
-
-            object tally = gridRow.Cells[columnIndTally.Name].Value;
-            if (tally == null) individualRow.SetTallyNull();
-            else individualRow.Tally = (string)tally;
-
-            Age age = (Age)gridRow.Cells[columnIndAge.Name].Value;
-            if (age == null) individualRow.SetAgeNull();
-            else individualRow.Age = age.Value;
-
-            if ((tabPageSpcStats.Parent != null) && // If stats are loaded
-                (selectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
-            {
-                strates_Changed(this, new EventArgs());
-            }
-
             Sex sex = (Sex)gridRow.Cells[columnIndSex.Name].Value;
             if (sex == null) individualRow.SetSexNull();
             else individualRow.Sex = sex.Value;
-
-            object maturity = gridRow.Cells[columnIndMaturity.Name].Value;
-            if (maturity == null)
-            {
-                individualRow.SetMaturityNull();
-                individualRow.SetIntermatureNull();
-            }
-            else
-            {
-                individualRow.Maturity = ((Maturity)maturity).Value;
-                individualRow.Intermature = ((Maturity)maturity).IsIntermediate;
-            }
-
-            #region Fecundity
-
-            object gonadMass = gridRow.Cells[columnIndGonadMass.Name].Value;
-            if (gonadMass == null) individualRow.SetGonadMassNull();
-            else individualRow.GonadMass = (double)gonadMass;
-
-            object gonadSampleMass = gridRow.Cells[columnIndGonadSampleMass.Name].Value;
-            if (gonadSampleMass == null) individualRow.SetGonadSampleMassNull();
-            else individualRow.GonadSampleMass = (double)gonadSampleMass;
-
-            object gonadSample = gridRow.Cells[columnIndGonadSample.Name].Value;
-            if (gonadSample == null) individualRow.SetGonadSampleNull();
-            else individualRow.GonadSample = (int)gonadSample;
-
-            object eggSize = gridRow.Cells[columnIndEggSize.Name].Value;
-            if (eggSize == null) individualRow.SetEggSizeNull();
-            else individualRow.EggSize = (double)eggSize;
-
-            #endregion
-
-            #region Diet
-
-            object fat = gridRow.Cells[columnIndFat.Name].Value;
-            if (fat == null) individualRow.SetFatnessNull();
-            else individualRow.Fatness = (int)fat;
-
-            #endregion
 
             object comments = gridRow.Cells[columnIndComments.Name].Value;
             if (comments == null) individualRow.SetCommentsNull();
@@ -1731,50 +1177,6 @@ namespace Mayfly.Fish.Explorer
         }
 
 
-
-        private DataGridViewRow[] IndividualRows(Data.StratifiedRow stratifiedRow)
-        {
-            List<DataGridViewRow> result = new List<DataGridViewRow>();
-
-            for (int i = 0; i < stratifiedRow.Count; i++)
-            {
-                DataGridViewRow gridRow = new DataGridViewRow();
-
-                gridRow.CreateCells(spreadSheetInd);
-                gridRow.ReadOnly = true;
-                gridRow.DefaultCellStyle.ForeColor = Constants.InfantColor; // Color.DarkGray;
-
-                //gridRow.Cells[columnIndID.Index].Value;
-
-                gridRow.Cells[columnIndSpecies.Index].Value = stratifiedRow.LogRow.SpeciesRow;
-                gridRow.Cells[columnIndLength.Index].Value = stratifiedRow.SizeClass.Midpoint;
-                gridRow.Cells[columnIndMass.Index].Value = data.FindMassModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
-                gridRow.Cells[columnIndComments.Index].Value = Resources.Interface.SimulatedIndividual;
-                Age age = (Age)data.FindGrowthModel(stratifiedRow.LogRow.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint, true);
-
-                gridRow.Cells[columnIndAge.Index].Value = age;
-                Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-
-                setCardValue(stratifiedRow.LogRow.CardRow, gridRow, spreadSheetInd.GetInsertedColumns());
-
-                result.Add(gridRow);
-            }
-
-            return result.ToArray();
-        }
-
-        private DataGridViewRow[] IndividualRows(Data.LogRow logRow)
-        {
-            List<DataGridViewRow> result = new List<DataGridViewRow>();
-
-            foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-            {
-                result.AddRange(IndividualRows(stratifiedRow));
-            }
-
-            return result.ToArray();
-        }
-
         private DataGridViewRow[] IndividualRows(Data.CardRow cardRow)
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
@@ -1791,46 +1193,6 @@ namespace Mayfly.Fish.Explorer
             }
 
             return result.ToArray();
-        }
-
-        private void setIndividualAgeTip(DataGridViewRow gridRow)
-        {
-            if (gridRow.Cells[columnIndAge.Index].Value != null) return;
-
-            //if (gridRow.Cells[columnIndAge.Index].Style.NullValue != null) return;
-
-            Data.IndividualRow individualRow = findIndividualRow(gridRow);
-
-            if (individualRow == null) return;
-
-            if (individualRow.IsLengthNull()) return;
-
-            double ageValue = double.NaN;
-
-            if (individualSpecies == null)
-            {
-                ageValue = data.FindGrowthModel(individualRow.Species).GetValue(individualRow.Length, true);
-            }
-            else
-            {
-                ageValue = growthModel.GetValue(individualRow.Length, true);
-            }
-
-            Age age = new Age(ageValue);
-
-            gridRow.Cells[columnIndAge.Index].SetNullValue(
-                double.IsNaN(ageValue) ?
-                Wild.Resources.Interface.Interface.SuggestionUnavailable : " " + age.ToString() + " ");
-            //Wild.Service.HandleAgeInput(gridRow.Cells[columnIndAge.Index], columnIndAge.DefaultCellStyle);
-
-            gridRow.Cells[columnIndGeneration.Index].SetNullValue(
-                double.IsNaN(ageValue) ?
-                Wild.Resources.Interface.Interface.SuggestionUnavailable :
-                individualRow.LogRow.CardRow.When.AddYears(-age.Years).Year.ToString());
-
-            // Set generation value
-            if (individualRow.IsAgeNull()) { gridRow.Cells[columnIndGeneration.Index].Value = null; }
-            else { gridRow.Cells[columnIndGeneration.Index].Value = individualRow.Generation; }
         }
 
         private void setIndividualMassTip(DataGridViewRow gridRow)
@@ -1865,7 +1227,8 @@ namespace Mayfly.Fish.Explorer
             spreadSheetInd.EndEdit();
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
-            foreach (DataGridViewRow gridRow in rows) {
+            foreach (DataGridViewRow gridRow in rows)
+            {
                 if (!gridRow.Visible) continue;
                 if (gridRow.IsNewRow) continue;
                 Data.IndividualRow individualRow = findIndividualRow(gridRow);
@@ -1877,133 +1240,7 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        private void SimulateStratifiedSamples()
-        {
-            IsBusy = true;
-
-            spreadSheetInd.StartProcessing(individualSpecies == null ?
-                data.Stratified.Quantity : FullStack.QuantityStratified(individualSpecies),
-                Wild.Resources.Interface.Process.StratifiedProcessing);
-
-            if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
-            loaderIndSimulated.RunWorkerAsync(individualSpecies);
-        }
-
-        private void ClearSimulated()
-        {
-            for (int i = 0; i < spreadSheetInd.Rows.Count; i++)
-            {
-                if (spreadSheetInd[columnIndID.Index, i].Value == null)
-                {
-                    spreadSheetInd.Rows.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            spreadSheetInd.UpdateStatus();
-        }
-
 
         #endregion
-
-
-
-        #region Startified samples
-
-        public bool stratifiedShown;
-
-        private void loadStratifiedSamples(Data.LogRow[] logRows)
-        {
-            IsBusy = true;
-            spreadSheetStratified.StartProcessing(data.Stratified.Quantity, Wild.Resources.Interface.Process.StratifiedProcessing);
-            spreadSheetStratified.Rows.Clear();
-            loaderStratified.RunWorkerAsync(logRows);
-        }
-
-        private void loadStratifiedSamples(CardStack stack)
-        {
-            loadStratifiedSamples(stack.GetLogRows());
-        }
-
-        private void loadStratifiedSamples()
-        {
-            loadStratifiedSamples(FullStack);
-        }
-
-        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
-        {
-            List<Data.LogRow> logRows = new List<Data.LogRow>();
-
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
-            {
-                logRows.AddRange(stack.GetLogRows(spcRow));
-            }
-
-            loadStratifiedSamples(logRows.ToArray());
-        }
-
-        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows)
-        {
-            loadStratifiedSamples(spcRows, FullStack);
-        }
-
-
-
-        private Data.LogRow findLogRowStratified(DataGridViewRow gridRow)
-        {
-            return data.Log.FindByID((int)gridRow.Cells[columnStratifiedID.Index].Value);
-        }
-
-
-
-        private Data.LogRow[] getLogRowsStratified(IList rows)
-        {
-            spreadSheetStratified.EndEdit();
-            List<Data.LogRow> result = new List<Data.LogRow>();
-
-            foreach (DataGridViewRow gridRow in rows)
-            {
-                if (!gridRow.Visible) continue;
-                if (gridRow.IsNewRow) continue;
-                Data.LogRow logRow = findLogRowStratified(gridRow);
-                if (logRow == null) continue;
-
-                result.Add(logRow);
-            }
-
-            return result.ToArray();
-        }
-
-
-
-        private void showStratified()
-        {
-            if (!stratifiedShown)
-            {
-                stratifiedSample.Visible = true;
-                spreadSheetStratified.Height -= (stratifiedSample.Height + stratifiedSample.Margin.Top);
-                stratifiedShown = true;
-            }
-        }
-
-        private void hideStratified()
-        {
-            if (stratifiedShown)
-            {
-                stratifiedSample.Visible = false;
-                spreadSheetStratified.Height += (stratifiedSample.Height + stratifiedSample.Margin.Top);
-                stratifiedShown = false;
-                stratifiedSample.Reset();
-            }
-        }
-
-        #endregion
-    }
-
-    public enum DataQualificationWay
-    {
-        None = -1,
-        WeightOfLength = 0,
-        AgeOfLength = 1
     }
 }

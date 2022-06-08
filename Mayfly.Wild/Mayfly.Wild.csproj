@@ -98,6 +98,11 @@
       <DependentUpon>DialogReference.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Resources\Artifact.Designer.cs">
+      <DependentUpon>Artifact.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Interface\Diversity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -374,6 +379,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReference.ru.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Artifact.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Artifact.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Artifact.ru.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface\Diversity.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

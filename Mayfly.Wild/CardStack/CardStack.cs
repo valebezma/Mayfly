@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using Mayfly.Species;
 using Meta.Numerics;
+using System.Windows.Forms;
 
 namespace Mayfly.Wild
 {
@@ -56,7 +57,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return GetSpecies().Length;
+                return GetSpecies().Count;
             }
         }
 
@@ -416,23 +417,48 @@ namespace Mayfly.Wild
             }
 
             return result;
-        }              
+        }
 
 
 
-        public SpeciesKey.SpeciesRow[] GetSpecies()
+        public List<SpeciesKey.SpeciesRow> GetSpecies()
         {
             List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
 
             if (Parent != null)
             {
-                foreach (SpeciesKey.SpeciesRow speciesRow in Parent.Species.GetSorted())
+                foreach (Data.SpeciesRow spcRow in Parent.Species)
                 {
-                    if (this.Quantity(speciesRow) == 0) continue;
-                    result.Add(speciesRow);
+                    if (spcRow.KeyRecord != null)
+                    {
+                        if (!result.Contains(spcRow.KeyRecord))
+                        {
+                            result.Add(spcRow.KeyRecord);
+                        }
+                    }
+                    else
+                    {
+                        SpeciesKey.SpeciesRow newSpcRow = Parent.key.Species.NewSpeciesRow();
+                        newSpcRow.Species = spcRow.Species;
+                        result.Add(newSpcRow);
+                    }
                 }
             }
 
+            return result;
+        }
+
+        public SpeciesKey.SpeciesRow[] GetSpeciesSorted()
+        {
+            List<SpeciesKey.SpeciesRow> result = GetSpecies();
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public SpeciesKey.SpeciesRow[] GetSpeciesPhylogeneticallySorted(SpeciesKey key)
+        {
+            List<SpeciesKey.SpeciesRow> result = GetSpecies();
+            result.Sort(new SpeciesSorter(key));
             return result.ToArray();
         }
 
@@ -540,6 +566,57 @@ namespace Mayfly.Wild
 
         public void AddCommon(Report report, string[] notices) => this.AddCommon(report, new string[] { }, new string[] { }, notices);
 
-        //public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
+        public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
+
+
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.SpeciesRow, int> resultsCounter)
+        {
+            for (int i = 0; i < item.DropDownItems.Count; i++)
+            {
+                if (item.DropDownItems[i].Tag != null)
+                {
+                    item.DropDownItems.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator))
+            {
+                item.DropDownItems.Add(new ToolStripSeparator());
+            }
+
+            int added = 0;
+
+            foreach (SpeciesKey.SpeciesRow speciesRow in this.GetSpecies())
+            {
+                int s = resultsCounter.Invoke(speciesRow);
+
+                if (s != 0)
+                {
+                    ToolStripItem _item = new ToolStripMenuItem
+                    {
+                        Tag = speciesRow
+                    };
+                    string txt = speciesRow.ToString("s");
+                    _item.Text = s == -1 ? txt : string.Format("{0} ({1})", txt, s);
+                    _item.Click += command;
+                    item.DropDownItems.Add(_item);
+                    added++;
+                }
+            }
+
+            if (added == 0)
+            {
+                item.Enabled = false;
+            }
+
+            // If no item added - remove separator, main item and set parent enabled to false;
+
+        }
+
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command)
+        {
+            PopulateSpeciesMenu(item, command, (s) => { return -1; });
+        }
     }
 }

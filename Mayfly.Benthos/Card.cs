@@ -225,7 +225,7 @@ namespace Mayfly.Benthos
                 waypointControl1.Waypoint.TimeMark = UserSettings.SelectedDate;
             }
 
-            ColumnSpecies.ValueType = typeof(string);
+            //ColumnSpecies.ValueType = typeof(string);
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(double);
 
@@ -347,7 +347,7 @@ namespace Mayfly.Benthos
 
         private void Write(string filename)
         {
-            if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global reference
+            if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global index
             {
                 speciesLogger.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
@@ -875,7 +875,7 @@ namespace Mayfly.Benthos
 
             if (speciesRow == null)
             {
-                // There is no such species in reference
+                // There is no such species in index
                 if ((string)gridRow.Cells[ColumnSpecies.Index].Value ==
                     Species.Resources.Interface.UnidentifiedTitle)
                 {
@@ -890,7 +890,7 @@ namespace Mayfly.Benthos
             }
             else
             {
-                // There is such species in reference you using
+                // There is such species in index you using
                 Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
                 if (existingSpeciesRow == null)
                 {

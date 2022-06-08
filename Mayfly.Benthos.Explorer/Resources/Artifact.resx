@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtifactsFound" xml:space="preserve">
-    <value>There are some artifacts found in data</value>
-  </data>
-  <data name="SampleSquare" xml:space="preserve">
+  <data name="Square" xml:space="preserve">
     <value>Square of sample is not specified</value>
   </data>
-  <data name="ReferenceNull" xml:space="preserve">
-    <value>Species is missing in reference</value>
+  <data name="Species" xml:space="preserve">
+    <value>Species not found in index</value>
   </data>
 </root>

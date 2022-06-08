@@ -436,7 +436,7 @@
     <value>10</value>
   </data>
   <data name="labelNoTaxa.Text" xml:space="preserve">
-    <value>No taxa specified in reference...</value>
+    <value>No taxa specified in index...</value>
   </data>
   <data name="&gt;&gt;labelNoTaxa.Name" xml:space="preserve">
     <value>labelNoTaxa</value>

@@ -15,11 +15,6 @@ namespace Mayfly.Benthos.Explorer
 {
     partial class CardStackExtensions
     {
-        public static void AddCommon(this CardStack stack, Report report)
-        {
-            stack.AddCommon(report);
-        }
-
         public static void AddBrief(this CardStack stack, Report report, SpeciesKey.BaseRow baseRow)
         {
             stack.AddCommon(report);
@@ -50,7 +45,7 @@ namespace Mayfly.Benthos.Explorer
 
             if (baseRow != null)
             {
-                Composition tax = stack.GetTaxonomicComposition(baseRow);
+                Composition tax = stack.GetBasicTaxonomicComposition(baseRow);
 
                 Category coarse = tax.Find((c) => {
                         return c.Name.Contains(Resources.Interface.ForageIndicator);

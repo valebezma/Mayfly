@@ -93,28 +93,28 @@ namespace Mayfly
 
         public static void SetControlClickability(bool available, Control control)
         {
-            if (control is DataGridView)
+            if (control is DataGridView view)
             {
-                foreach (DataGridViewRow r in ((DataGridView)control).Rows)
+                foreach (DataGridViewRow r in view.Rows)
                 {
                     r.ReadOnly = !available;
                 }
             }
-            else if (control is TextBox)
+            else if (control is TextBox box)
             {
-                ((TextBox)control).ReadOnly = !available;
+                box.ReadOnly = !available;
             }
-            else if (control is MaskedTextBox)
+            else if (control is MaskedTextBox maskedbox)
             {
-                ((MaskedTextBox)control).ReadOnly = !available;
+                maskedbox.ReadOnly = !available;
             }
-            else if (control is Panel)
+            else if (control is Panel panel)
             {
-                SetControlClickability(available, ((Panel)control).Controls);
+                SetControlClickability(available, panel.Controls);
             }
-            else if (control is Geographics.WaypointControl)
+            else if (control is Geographics.WaypointControl waypointcontrol)
             {
-                ((Geographics.WaypointControl)control).ReadOnly = !available;
+                waypointcontrol.ReadOnly = !available;
             }
             else
             {

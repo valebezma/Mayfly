@@ -11,14 +11,14 @@ namespace Mayfly.Plankton.Explorer
     {
         private int FindArtifacts()
         {
-            int artefactCount = 0;
-            artefactCount += FindSpeciesArtifacts();
-            return artefactCount;
+            int artifactCount = 0;
+            artifactCount += FindSpeciesArtifacts();
+            return artifactCount;
         }
 
         private int FindSpeciesArtifacts()
         {
-            int artefactCount = 0;
+            int artifactCount = 0;
 
             foreach (Data.SpeciesRow speciesRow in data.Species)
             {
@@ -31,15 +31,15 @@ namespace Mayfly.Plankton.Explorer
 
                 if (spcRow == null)
                 {
-                    artefactCount++;
+                    artifactCount++;
                 }
 
                 #endregion
             }
 
-            labelArtifactSpeciesCount.UpdateStatus(artefactCount);
-            labelArtifactSpecies.Visible = pictureBoxArtifactSpecies.Visible = artefactCount == 0;
-            return artefactCount;
+            labelArtifactSpeciesCount.UpdateStatus(artifactCount);
+            labelArtifactSpecies.Visible = pictureBoxArtifactSpecies.Visible = artifactCount == 0;
+            return artifactCount;
         }
 
         private void LoadArtifacts()
@@ -82,7 +82,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 gridRow.Cells[gridColumnShowing.Index].Value = null;
                 ((TextAndImageCell)gridRow.Cells[gridColumnShowing.Index]).Image = Mathematics.Properties.Resources.None;
-                gridRow.Cells[gridColumnShowing.Index].ToolTipText = "Species is missing in reference";
+                gridRow.Cells[gridColumnShowing.Index].ToolTipText = "Species is missing";
             }
             else
             {

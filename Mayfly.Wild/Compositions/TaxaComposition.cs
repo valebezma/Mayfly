@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mayfly.Species;
+﻿using Mayfly.Species;
 using Meta.Numerics.Statistics;
-using Mayfly.Extensions;
+using System.Collections.Generic;
 
 namespace Mayfly.Wild
 {
@@ -26,7 +21,7 @@ namespace Mayfly.Wild
 
                 foreach (SpeciesSwarm speciesSwarm in speciesComposition)
                 {
-                    if (!taxaRow.Includes(speciesSwarm.Name)) continue;
+                    if (!taxaRow.Includes(speciesSwarm.SpeciesRow)) continue;
 
                     swarms.Add(speciesSwarm);
 
