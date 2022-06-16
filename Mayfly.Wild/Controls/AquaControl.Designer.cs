@@ -211,7 +211,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.colorPicker1);
             this.Controls.Add(this.checkBoxSewage);
             this.Controls.Add(this.checkBoxFoam);

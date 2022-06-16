@@ -324,8 +324,8 @@
             this.columnCardLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardWhen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardWhere = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCardWeather = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCardTempSurface = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCardWeather = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCardTempSurface = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardGear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardMesh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardHook = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1960,7 +1960,7 @@
             series2.BorderColor = System.Drawing.Color.Transparent;
             series2.ChartArea = "ChartAreaSample";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.CustomProperties = "DoughnutRadius=30, PieDrawingStyle=Concave, CollectedThreshold=5";
+            series2.CustomProperties = "CollectedThreshold=5, DoughnutRadius=30, PieDrawingStyle=Concave";
             series2.Font = new System.Drawing.Font("Segoe UI", 7F);
             series2.Legend = "Legend1";
             series2.Name = "Sample";
@@ -2235,8 +2235,8 @@
             this.columnCardLabel,
             this.columnCardWhen,
             this.columnCardWhere,
-            this.ColumnCardWeather,
-            this.ColumnCardTempSurface,
+            this.columnCardWeather,
+            this.columnCardTempSurface,
             this.columnCardGear,
             this.columnCardMesh,
             this.columnCardHook,
@@ -2319,17 +2319,17 @@
             resources.ApplyResources(this.columnCardWhere, "columnCardWhere");
             this.columnCardWhere.Name = "columnCardWhere";
             // 
-            // ColumnCardWeather
+            // columnCardWeather
             // 
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnCardWeather.DefaultCellStyle = dataGridViewCellStyle15;
-            resources.ApplyResources(this.ColumnCardWeather, "ColumnCardWeather");
-            this.ColumnCardWeather.Name = "ColumnCardWeather";
+            this.columnCardWeather.DefaultCellStyle = dataGridViewCellStyle15;
+            resources.ApplyResources(this.columnCardWeather, "columnCardWeather");
+            this.columnCardWeather.Name = "columnCardWeather";
             // 
-            // ColumnCardTempSurface
+            // columnCardTempSurface
             // 
-            resources.ApplyResources(this.ColumnCardTempSurface, "ColumnCardTempSurface");
-            this.ColumnCardTempSurface.Name = "ColumnCardTempSurface";
+            resources.ApplyResources(this.columnCardTempSurface, "columnCardTempSurface");
+            this.columnCardTempSurface.Name = "columnCardTempSurface";
             // 
             // columnCardGear
             // 
@@ -2853,6 +2853,7 @@
             // stratifiedSample
             // 
             resources.ApplyResources(this.stratifiedSample, "stratifiedSample");
+            this.stratifiedSample.BackColor = System.Drawing.Color.Transparent;
             this.stratifiedSample.End = 100D;
             this.stratifiedSample.Interval = 10D;
             this.stratifiedSample.Name = "stratifiedSample";
@@ -3941,34 +3942,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemGearStats;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpcStats;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardInvestigator;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWater;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhere;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWeather;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardTempSurface;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardGear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMesh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLength;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardOpening;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSquare;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSpan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardVelocity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardExposure;
-        private Controls.SpreadSheetIconTextBoxColumn columnCardEffort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDepth;
-        private Controls.SpreadSheetIconTextBoxColumn columnCardWealth;
-        private Controls.SpreadSheetIconTextBoxColumn columnCardQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardAbundance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardBiomass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardComments;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogID;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogSpc;
         private Controls.SpreadSheetIconTextBoxColumn columnLogQuantity;
@@ -4056,7 +4029,33 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGearStats;
         private System.Windows.Forms.ToolStripMenuItem contextIndCard;
         private System.Windows.Forms.ToolStripMenuItem contextIndLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardWeather;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCardTempSurface;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardInvestigator;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWater;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWhere;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardWeather;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardTempSurface;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardGear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMesh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHook;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardOpening;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSquare;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardSpan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardVelocity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardExposure;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardEffort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDepth;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardWealth;
+        private Controls.SpreadSheetIconTextBoxColumn columnCardQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardMass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardAbundance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardBiomass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardDiversityB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnCardComments;
     }
 }

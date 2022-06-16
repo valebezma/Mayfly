@@ -103,7 +103,7 @@
     <Compile Include="Controls\StateEditor.Designer.cs">
       <DependentUpon>StateEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeciesSorter.cs" />
+    <Compile Include="TreeNodeSorter.cs" />
     <Compile Include="Systematics\AddSpecies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,13 +129,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Systematics\MainForm.General.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Systematics\MainForm.Key.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Systematics\MainForm.List.cs">
+    <Compile Include="Systematics\MainForm.Methods.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Systematics\Resources\Diagnosis.Designer.cs">

@@ -16,20 +16,24 @@ namespace Mayfly.Species.Systematics
 
             TaxonRow = taxonRow;
 
-            textBoxTaxon.Text = TaxonRow.Name;
+            textBoxTaxon.Text = TaxonRow.Taxon;
+            if (!TaxonRow.IsNameNull()) textBoxName.Text = TaxonRow.Name;
             if (!TaxonRow.IsDescriptionNull()) textBoxDescription.Text = TaxonRow.Description;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            TaxonRow.Name = textBoxTaxon.Text;
+            TaxonRow.Taxon = textBoxTaxon.Text;
             
-            if (textBoxDescription.Text.IsAcceptable())
-            {
-                TaxonRow.Description = textBoxDescription.Text;
+            if (textBoxName.Text.IsAcceptable()) {
+                TaxonRow.Name = textBoxName.Text;
+            } else {
+                TaxonRow.SetNameNull();
             }
-            else
-            {
+            
+            if (textBoxDescription.Text.IsAcceptable()) {
+                TaxonRow.Description = textBoxDescription.Text;
+            } else {
                 TaxonRow.SetDescriptionNull();
             }
 

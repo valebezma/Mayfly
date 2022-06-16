@@ -22,6 +22,7 @@ namespace Mayfly.Extensions
         {
             item.Name = speciesRow.ID.ToString();
             item.Text = speciesRow.Species;
+            item.ToolTipText = speciesRow.ToolTip.Merge(Constants.Break);
             item.UpdateItem(new object[] { speciesRow.IsReferenceNull() ? string.Empty : speciesRow.Reference });
         }
     }

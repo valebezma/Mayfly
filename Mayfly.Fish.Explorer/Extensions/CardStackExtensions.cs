@@ -13,38 +13,6 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static SpeciesKey.SpeciesRow[] GetSpeciesCaught(this CardStack stack)
-        {
-            return stack.GetSpeciesCaught(1);
-        }
-
-        public static SpeciesKey.SpeciesRow[] GetSpeciesCaught(this CardStack stack, int minimalSample)
-        {
-            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
-
-            if (stack.IsEmpty) return result.ToArray();
-
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.Parent.Species.GetSorted())
-            {
-                foreach (Data.LogRow logRow in stack.GetLogRows())
-                {
-                    if (speciesRow.Validate(logRow.SpeciesRow.Species))
-                    {
-                        if (stack.Quantity(speciesRow) < minimalSample) continue;
-
-                        result.Add(speciesRow);
-                        break;
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
-
-
-
-
-
         public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.SpeciesRow spcRow, string field, object value)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();

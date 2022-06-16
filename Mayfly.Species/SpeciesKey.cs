@@ -11,13 +11,40 @@ namespace Mayfly.Species
 {
     public partial class SpeciesKey
     {
+        partial class TaxaDataTable
+        {
+            public TaxaRow[] GetRootTaxa()
+            {
+                List<TaxaRow> result = new List<TaxaRow>();
+                foreach (TaxaRow taxaRow in this)
+                {
+                    if (taxaRow.GetDerivationRowsByFK_Taxa_Derivation1().Length == 0)
+                        result.Add(taxaRow);
+                }
+                result.Sort();
+                return result.ToArray();
+            }
+
+            public TaxaRow[] GetDerivatedTaxa()
+            {
+                List<TaxaRow> result = new List<TaxaRow>();
+                foreach (TaxaRow taxaRow in this)
+                {
+                    if (taxaRow.GetDerivationRowsByFK_Taxa_Derivation1().Length > 0)
+                        result.Add(taxaRow);
+                }
+                result.Sort();
+                return result.ToArray();
+            }
+        }
+
         partial class TaxaRow : IComparable<TaxaRow>, IFormattable
         {
             public string TaxonName
             {
                 get
                 {
-                    return IsNameNull() ? Taxon.GetLocalizedValue() : Name;
+                    return IsNameNull() ? Taxon : Name.GetLocalizedValue();
                 }
             }
 
@@ -30,17 +57,54 @@ namespace Mayfly.Species
                     result.Add(repRow.SpeciesRow);
                 }
 
+                foreach (DerivationRow derRow in this.GetDerivationRowsByFK_Taxa_Derivation())
+                {
+                    result.AddRange(derRow.TaxaRowByFK_Taxa_Derivation1.GetSpecies());
+                }
+
                 return result.ToArray();
             }
 
             public string FullName => string.Format("{0} {1}", this.BaseRow.BaseName, TaxonName);
 
-            public bool Includes(SpeciesRow spcRow)
+            public string SortableString
             {
-                foreach (RepRow repRow in GetRepRows())
+                get
+                {
+                    return BaseRow.SortableString + " " + string.Format("{0:000} {1}", (IsIndexNull() ? 999 : Index), TaxonName);
+                }
+            }
+
+            public bool Includes(SpeciesRow spcRow, bool searchDerivates)
+            {
+                foreach (RepRow repRow in GetRepRows()) // search direct representatives
                 {
                     //if (repRow.SpeciesRow == spcRow)
-                    if (repRow.SpeciesRow.CompareTo(spcRow) == 0)
+                    //if (repRow.SpeciesRow.CompareTo(spcRow) == 0)
+                    if (repRow.SpeciesRow.Species == spcRow.Species)
+                        return true;
+                }
+
+                if (searchDerivates)
+                {
+                    foreach (DerivationRow derRow in this.GetDerivationRowsByFK_Taxa_Derivation()) // search derivates
+                    {
+                        if (derRow.TaxaRowByFK_Taxa_Derivation1.Includes(spcRow, true))
+                            return true;
+                    }
+                }
+
+                return false;
+            }
+
+            public bool Includes(TaxaRow taxaRow)
+            {
+                foreach (DerivationRow derRow in this.GetDerivationRowsByFK_Taxa_Derivation()) // search derivates
+                {
+                    if (derRow.TaxaRowByFK_Taxa_Derivation1 == taxaRow)
+                        return true;
+
+                    if (derRow.TaxaRowByFK_Taxa_Derivation1.Includes(taxaRow))
                         return true;
                 }
 
@@ -49,8 +113,7 @@ namespace Mayfly.Species
 
             public int CompareTo(TaxaRow other)
             {
-                if (!IsIndexNull() && !other.IsIndexNull()) return Index.CompareTo(other.Index);
-                return this.FullName.CompareTo(other.FullName);
+                return this.SortableString.CompareTo(other.SortableString);
             }
 
 
@@ -69,6 +132,29 @@ namespace Mayfly.Species
                     default:
                         return TaxonName;
                 }
+            }
+        }
+
+        partial class DerivationDataTable
+        {
+            public bool HasDerivations(BaseRow baseRow1, BaseRow baseRow2)
+            {
+                foreach (DerivationRow derRow in this)
+                {
+                    if (derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow1 && derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow2 ||
+                        derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow1 && derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow2) return true;
+                }
+                return false;
+            }
+
+            public bool HasDerivations(BaseRow baseRow)
+            {
+                foreach (DerivationRow derRow in this)
+                {
+                    if (derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow ||
+                        derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow) return true;
+                }
+                return false;
             }
         }
 
@@ -164,7 +250,15 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsNameNull() ? Base.GetLocalizedValue() : Name;
+                    return IsNameNull() ? Base : Name.GetLocalizedValue();
+                }
+            }
+
+            public string SortableString
+            {
+                get
+                {
+                    return string.Format("{0:000} {1}", (IsIndexNull() ? 999 : Index), BaseName);
                 }
             }
 
@@ -185,8 +279,7 @@ namespace Mayfly.Species
 
             public int CompareTo(BaseRow other)
             {
-                int n = this.Name.CompareTo(other.Name);
-                return this.IsIndexNull() ? n : (other.IsIndexNull() ? n : Index.CompareTo(other.Index));
+                return this.SortableString.CompareTo(other.SortableString);
             }
 
         }
@@ -451,9 +544,10 @@ namespace Mayfly.Species
                         string.Empty
                     };
 
-                    foreach (RepRow repRow in this.GetRepRows())
+                    foreach (BaseRow br in ((SpeciesKey)tableSpecies.DataSet).Base.Select(null, "Index ASC"))
                     {
-                        result.Add(repRow.TaxaRow.FullName);
+                        TaxaRow tr = this.GetTaxon(br);
+                        if (tr != null) result.Add(tr.FullName);
                     }
 
                     result.Add(string.Empty);
@@ -521,6 +615,25 @@ namespace Mayfly.Species
                 }
             }
 
+            public string SortableString
+            {
+                get
+                {
+                    string result = string.Empty;
+
+                    foreach (BaseRow br in ((SpeciesKey)this.tableSpecies.DataSet).Base.Select(null, "Index ASC"))
+                    {
+                        result += br.SortableString + " ";
+                        TaxaRow tr = this.GetTaxon(br);
+                        result += (tr == null ? "zzz" : tr.SortableString) + " ";
+                    }
+
+                    result += ScientificName.Replace(" gr.", string.Empty);
+
+                    return result;
+                }
+            }
+
 
             public bool Validate(string record)
             {
@@ -540,7 +653,7 @@ namespace Mayfly.Species
             {
                 foreach (TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    if (taxaRow.Includes(this))
+                    if (taxaRow.Includes(this, true))
                     {
                         return taxaRow;
                     }
@@ -585,22 +698,11 @@ namespace Mayfly.Species
                 return ToString(format, CultureInfo.CurrentCulture);
             }
 
-            public int CompareTo(SpeciesRow y)
+
+
+            public int CompareTo(SpeciesRow other)
             {
-                if (this.IsIndexNull() || y.IsIndexNull())
-                {
-                    return string.Compare(
-                        this.Species.Replace(" gr.", string.Empty),
-                        y.Species.Replace(" gr.", string.Empty));
-                }
-                else
-                {
-                    int phr = string.Compare(
-                        this.Index, y.Index);
-                    return phr == 0 ? string.Compare(
-                        this.Species.Replace(" gr.", string.Empty),
-                        y.Species.Replace(" gr.", string.Empty)) : phr;
-                }
+                return string.Compare(SortableString, other.SortableString);
             }
         }
 

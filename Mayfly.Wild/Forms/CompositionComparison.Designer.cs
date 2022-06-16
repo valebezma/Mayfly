@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompositionComparison));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.spreadSheetA = new Mayfly.Controls.SpreadSheet();
             this.ColumnSpeciesA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -52,7 +51,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelCombinationsCount = new System.Windows.Forms.Label();
             this.spreadSheetMatrix = new Mayfly.Controls.SpreadSheet();
-            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
+            this.processDisplay = new Mayfly.Controls.ProcessDisplay();
             this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
             this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -85,8 +84,8 @@
             // 
             // ColumnSpeciesA
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpeciesA.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpeciesA.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnSpeciesA, "ColumnSpeciesA");
             this.ColumnSpeciesA.Name = "ColumnSpeciesA";
             this.ColumnSpeciesA.ReadOnly = true;
@@ -127,8 +126,8 @@
             // 
             // columnSpeciesB
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpeciesB.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSpeciesB.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.columnSpeciesB, "columnSpeciesB");
             this.columnSpeciesB.Name = "columnSpeciesB";
             this.columnSpeciesB.ReadOnly = true;
@@ -151,8 +150,8 @@
             // 
             // columnSpeciesO
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpeciesO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSpeciesO.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.columnSpeciesO, "columnSpeciesO");
             this.columnSpeciesO.Name = "columnSpeciesO";
             this.columnSpeciesO.ReadOnly = true;
@@ -175,8 +174,8 @@
             // 
             // columnSpeciesD
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.columnSpeciesD.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.columnSpeciesD.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.columnSpeciesD, "columnSpeciesD");
             this.columnSpeciesD.Name = "columnSpeciesD";
             this.columnSpeciesD.ReadOnly = true;

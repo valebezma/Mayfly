@@ -411,7 +411,7 @@ namespace Mayfly.Fish.Explorer
 
         public static Report GetStratifiedCribnote(this CardStack stack)
         {
-            return stack.GetStratifiedCribnote(stack.GetSpeciesCaught(15));
+            return stack.GetStratifiedCribnote(stack.GetSpecies(15));
         }
 
         public static Report GetStratifiedCribnote(this CardStack stack, SpeciesKey.SpeciesRow[] speciesRows)
@@ -574,7 +574,7 @@ namespace Mayfly.Fish.Explorer
 
             report.AddParagraph(Resources.Reports.Sections.SpeciesStats.Paragraph3, UserSettings.RequiredClassSize, 10, 10, 10);
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 Report.Table crib = stack.GetSpeciesSurveySuggestionReport(report, speciesRow);
 
@@ -621,7 +621,7 @@ namespace Mayfly.Fish.Explorer
 
         public static void AddSpeciesStatsReport(this CardStack stack, Report report, SpeciesStatsLevel level, ExpressionVariant variant)
         {
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
             {
                 report.AddChapterTitle(speciesRow.FullNameReport);
                 stack.AddSpeciesStatsReport(report, speciesRow, level, variant);

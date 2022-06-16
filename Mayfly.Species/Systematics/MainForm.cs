@@ -22,9 +22,11 @@ namespace Mayfly.Species.Systematics
             InitializeComponent();
 
             treeViewTaxa.Shine();
+            treeViewTaxa.TreeViewNodeSorter = new TreeNodeSorter();
             listViewRepresence.Shine();
 
             listViewMinor.Shine();
+            listViewRepresence_SelectedIndexChanged(listViewRepresence, new EventArgs());
 
             treeViewStep.Shine();
             listViewEngagement.Shine();
@@ -162,9 +164,10 @@ namespace Mayfly.Species.Systematics
         private void menuItemAddBase_Click(object sender, EventArgs e)
         {
             TreeNode node = new TreeNode(Resources.Interface.NewBase);
-            treeViewTaxa.Nodes.Add(node);
+            treeViewTaxa.Nodes["RootList"].Nodes.Add(node);
             treeViewTaxa.SelectedNode = node;
             node.ContextMenuStrip = contextBase;
+            treeViewTaxa.LabelEdit = true;
             node.BeginEdit();
         }
 
@@ -173,16 +176,15 @@ namespace Mayfly.Species.Systematics
             TreeNode node = new TreeNode(Resources.Interface.NewTaxon);
             node.ContextMenuStrip = contextTaxon;
 
-            if (IsBaseNodeSelected)
+            switch (treeViewTaxa.SelectedNode.Index)
             {
-                treeViewTaxa.SelectedNode.Nodes.Add(node);
-                treeViewTaxa.Sort();
-            }
+                case 1:
+                    treeViewTaxa.SelectedNode.Nodes.Add(node);
+                    break;
 
-            if (IsTaxaNodeSelected)
-            {
-                treeViewTaxa.SelectedNode.Parent.Nodes.Add(node);
-                treeViewTaxa.Sort();
+                case 2:
+                    treeViewTaxa.SelectedNode.Parent.Nodes.Add(node);
+                    break;
             }
 
             treeViewTaxa.SelectedNode = node;
@@ -192,6 +194,7 @@ namespace Mayfly.Species.Systematics
         private void menuItemAddSpecies_Click(object sender, EventArgs e)
         {
             SpeciesKey.SpeciesRow speciesRow = Data.Species.NewSpeciesRow();
+            speciesRow.Species = "Species novus";
 
             //EditSpecies editSpecies = new EditSpecies(speciesRow);
             AddSpecies editSpecies = new AddSpecies(speciesRow);
@@ -211,7 +214,7 @@ namespace Mayfly.Species.Systematics
                     Data.Rep.AddRepRow(SelectedTaxon, speciesRow);
                 }
 
-                UpdateOthers();
+                updateVaria();
                 IsChanged = true;
             }
         }
@@ -265,6 +268,10 @@ namespace Mayfly.Species.Systematics
                 contextTaxonEdit.Enabled =
                 contextTaxonAddSpecies.Enabled =
                 SelectedTaxon != null;
+
+            contextTaxonRename.Visible = treeViewTaxa.LabelEdit;
+            contextTaxonDelete.Visible = IsTaxaNodeSelected && 
+                treeViewTaxa.SelectedNode.Parent.Tag != null;
         }
 
         private void contextTaxonEdit_Click(object sender, EventArgs e)
@@ -281,9 +288,23 @@ namespace Mayfly.Species.Systematics
         {
             if (IsTaxaNodeSelected)
             {
-                ((SpeciesKey.TaxaRow)treeViewTaxa.SelectedNode.Tag).Delete();
-                treeViewTaxa.Nodes.Remove(treeViewTaxa.SelectedNode);
-                UpdateOthers();
+                if (treeViewTaxa.SelectedNode.Parent.Tag is SpeciesKey.TaxaRow tr)
+                {
+                    // ASk for reassigning representatives to higher taxon?
+
+                    // Remove derivation
+                    Data.Derivation.FindByMajTaxIDMinTaxID(tr.ID, SelectedTaxon.ID).Delete();
+                    treeViewTaxa.Nodes.Remove(treeViewTaxa.SelectedNode);
+                }
+                else if (treeViewTaxa.SelectedNode.Parent.Tag is SpeciesKey.BaseRow)
+                {
+                    // Remove taxon itself
+                    ((SpeciesKey.TaxaRow)treeViewTaxa.SelectedNode.Tag).Delete();
+                    treeViewTaxa.Nodes.Remove(treeViewTaxa.SelectedNode);
+                    updateTree();
+                }
+
+                updateVaria();
                 IsChanged = true;
             }
         }
@@ -320,6 +341,7 @@ namespace Mayfly.Species.Systematics
                     SpeciesKey.TaxaRow taxaRow = treeViewTaxa.SelectedNode.Tag is SpeciesKey.TaxaRow row
                         ? row
                         : (SpeciesKey.TaxaRow)item.Group.Tag;
+
                     taskDialogDeleteSpecies.Content = string.Format(Resources.Messages.DeleteSpeciesContent,
                         speciesRow.Species, taxaRow.TaxonName);
 
@@ -343,7 +365,7 @@ namespace Mayfly.Species.Systematics
             }
 
             IsChanged = true;
-            UpdateOthers();
+            updateVaria();
         }
 
         #endregion
@@ -352,13 +374,17 @@ namespace Mayfly.Species.Systematics
 
         private void treeViewTaxa_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            IsAllSpeciesShown = (treeViewTaxa.SelectedNode != null) && treeViewTaxa.SelectedNode.Name == "AllSpecies";
-            IsBaseNodeSelected = (!IsAllSpeciesShown && (treeViewTaxa.SelectedNode != null && (treeViewTaxa.SelectedNode.Level == 0 && treeViewTaxa.SelectedNode.Name != "AllSpecies")));
-            IsTaxaNodeSelected = treeViewTaxa.SelectedNode != null && treeViewTaxa.SelectedNode.Level == 1;
+            IsAllSpeciesShown = treeViewTaxa.SelectedNode?.Name == "RootAll";
+            IsBaseNodeSelected = treeViewTaxa.SelectedNode?.Tag is SpeciesKey.BaseRow;
+            IsTaxaNodeSelected = treeViewTaxa.SelectedNode?.Tag is SpeciesKey.TaxaRow;
+
+            treeViewTaxa.LabelEdit = 
+            menuItemAddTaxon.Enabled = IsBaseNodeSelected || (IsTaxaNodeSelected && treeViewTaxa.SelectedNode?.Parent.Tag is SpeciesKey.BaseRow);
 
             SelectedTaxon = (IsTaxaNodeSelected ? (SpeciesKey.TaxaRow)treeViewTaxa.SelectedNode.Tag : null);
-            SelectedBase = (IsBaseNodeSelected ? (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Tag :
-                (IsTaxaNodeSelected ? (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Parent.Tag : null));
+            SelectedBase = (IsBaseNodeSelected ? (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Tag : 
+                (IsTaxaNodeSelected ? SelectedTaxon.BaseRow :
+                IsAllSpeciesShown ? null : (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Parent?.Tag));
 
             UpdateRepresence();
         }
@@ -369,35 +395,34 @@ namespace Mayfly.Species.Systematics
             {
                 switch (e.Node.Level)
                 {
-                    case 0: // Base level
-                        if (e.Node.Tag == null) // Node is just created or AllSpecies
+                    case 0: // Node is AllSpecies
+                        e.CancelEdit = true;
+                        break;
+
+                    case 1: // Base level
+                        if (e.Node.Tag == null) // Node is just created
                         {
-                            if (e.Node.Index == 0) // Node is AllSpecies
-                            { 
-                                e.CancelEdit = true;
-                            }
-                            else // Node is NOT AllSpecies
-                            {
-                                e.Node.Tag = Data.Base.AddBaseRow(0, e.Label, null);
-                                IsChanged = true;
-                                UpdateOthers();
-                            }
+                            e.Node.Tag = Data.Base.AddBaseRow(e.Node.Index * 10, e.Label, e.Label);
+                            updateVaria();
                         }
                         else // renaming existing base
                         {
-                            ((SpeciesKey.BaseRow)e.Node.Tag).Name = e.Label;
-                            IsChanged = true;
+                            ((SpeciesKey.BaseRow)e.Node.Tag).Base = e.Label;
+                            updateTree();
                         }
+                        
+                        IsChanged = true;
                         break;
 
-                    case 1: // Taxon level
+                    case 2: // Taxon level
                         if (e.Node.Tag == null) // Node is just created
                         {
-                            e.Node.Tag = Data.Taxa.AddTaxaRow(SelectedBase, 0, e.Label, null, null);
+                            e.Node.Tag = Data.Taxa.AddTaxaRow(SelectedBase, e.Node.Index * 10, e.Label, e.Label, null);
                         }
-                        else
+                        else // renaming existing taxon
                         {
-                            ((SpeciesKey.TaxaRow)e.Node.Tag).Name = e.Label;
+                            ((SpeciesKey.TaxaRow)e.Node.Tag).Taxon = e.Label;
+                            updateTree();
                         }
 
                         IsChanged = true;
@@ -412,90 +437,22 @@ namespace Mayfly.Species.Systematics
 
         private void treeViewTaxa_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            List<SpeciesKey.SpeciesRow> speciesRows = new List<SpeciesKey.SpeciesRow>();
+            if (IsBaseNodeSelected)
+            {
+                treeViewTaxa.DoDragDrop(e.Item, DragDropEffects.Move);
+            }
 
             if (IsTaxaNodeSelected)
             {
-                if (SelectedTaxon == null)
-                {
-                    speciesRows.AddRange(SelectedBase.Varia);
-                }
-                else
-                {
-                    speciesRows.AddRange(SelectedTaxon.GetSpecies());
-                }
+                treeViewTaxa.DoDragDrop(e.Item, DragDropEffects.Move | DragDropEffects.Link);
             }
 
-            treeViewTaxa.DoDragDrop(speciesRows.ToArray(), DragDropEffects.Link | DragDropEffects.Copy);
-
-        }
-
-        private void treeViewTaxa_DragDrop(object sender, DragEventArgs e)
-        {
-            if (!e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) return;
-
-            Point dropLocation = (sender as TreeView).PointToClient(new Point(e.X, e.Y));
-            TreeNode dropNode = (sender as TreeView).GetNodeAt(dropLocation);
-
-            if (dropNode == null || dropNode.Level != 1) return;
-
-            SpeciesKey.TaxaRow destinationTaxon = (SpeciesKey.TaxaRow)dropNode.Tag;
-
-            foreach (SpeciesKey.SpeciesRow speciesRow in 
-                (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[])))
-            {
-                SpeciesKey.TaxaRow associatedTaxon = speciesRow.GetTaxon(destinationTaxon.BaseRow);
-
-                if (associatedTaxon == null)
-                {
-                    Data.Rep.AddRepRow(destinationTaxon, speciesRow);
-
-                    foreach (ListViewItem item in dragItems)
-                    {
-                        listViewRepresence.Items.Remove(item);
-                    }
-                    dragItems.Clear();
-
-                    IsChanged = true;
-                }
-                else
-                {
-                    if (associatedTaxon != destinationTaxon)
-                    {
-                        taskDialogReassociateSpecies.Content = string.Format(
-                            Resources.Messages.SpeciesReassociateContent,
-                            speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName);
-
-                        TaskDialogButton b = taskDialogReassociateSpecies.ShowDialog(this);
-
-                        if (b == tdbReassSpecies)
-                        {
-                            foreach (SpeciesKey.RepRow RepRow in speciesRow.GetRepRows())
-                            {
-                                if (RepRow.TaxaRow == associatedTaxon)
-                                {
-                                    RepRow.TaxaRow = destinationTaxon;
-                                }
-                            }
-
-                            foreach (ListViewItem item in dragItems)
-                            {
-                                listViewRepresence.Items.Remove(item);
-                            }
-                            dragItems.Clear();
-
-                            IsChanged = true;
-
-                            //UpdateSpeciesItems(speciesRow);
-
-                            status.Message(string.Format(Resources.Messages.SpeciesReassociated,
-                                speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName));
-                        }
-                    }
-                }
-            }
-
-            UpdateOthers();
+            //if (IsTaxaNodeSelected)
+            //{
+            //    List<SpeciesKey.SpeciesRow> speciesRows = new List<SpeciesKey.SpeciesRow>();
+            //    speciesRows.AddRange(SelectedTaxon == null ? SelectedBase.Varia : SelectedTaxon.GetSpecies());
+            //    treeViewTaxa.DoDragDrop(speciesRows.ToArray(), DragDropEffects.Link | DragDropEffects.Copy);
+            //}
         }
 
         private void treeViewTaxa_DragEnter(object sender, DragEventArgs e)
@@ -505,43 +462,212 @@ namespace Mayfly.Species.Systematics
 
         private void treeViewTaxa_DragOver(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[])))
+            status.StatusLog.Text = string.Empty;
+            TreeNode hoverNode = treeViewTaxa.GetHoveringNode(e.X, e.Y);
+
+            if (hoverNode == null) return;
+
+            if (e.Data.GetDataPresent(typeof(TreeNode)))
             {
-                TreeNode hoverNode = treeViewTaxa.GetHoveringNode(e.X, e.Y);
+                TreeNode carryNode = (TreeNode)e.Data.GetData(typeof(TreeNode));
 
-                if (hoverNode != null && hoverNode.Level == 1)
+                if (hoverNode.Tag is SpeciesKey.BaseRow hoverBase && carryNode.Tag is SpeciesKey.BaseRow carryBase)
                 {
-                    SpeciesKey.SpeciesRow[] speciesRows = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
+                    bool forbidden = Data.Derivation.HasDerivations(carryBase);
+                    e.Effect = forbidden ? DragDropEffects.None : DragDropEffects.Move;
+                    status.StatusLog.Text = string.Format(forbidden ? "Sort unable because {0} has connected members already" : "Set {0} higher rank over {1}", carryNode.Text, hoverNode.Text);
+                }
 
-                    if (speciesRows.Length > 0)
+                if (hoverNode.Tag is SpeciesKey.TaxaRow hoverTaxa && carryNode.Tag is SpeciesKey.TaxaRow carryTaxa)
+                {
+                    if (carryNode.Parent.Tag is SpeciesKey.BaseRow && carryTaxa.BaseRow == hoverTaxa.BaseRow)
                     {
-                        SpeciesKey.SpeciesRow speciesRow = speciesRows[0];
-
-                        if (hoverNode.Tag != null)
+                        e.Effect = DragDropEffects.Move;
+                        status.StatusLog.Text = string.Format("Set {0} higher position over {1}", carryTaxa.FullName, hoverTaxa.FullName);
+                    }
+                    else
+                    {
+                        if (hoverTaxa.Includes(carryTaxa))
                         {
-                            SpeciesKey.TaxaRow destTaxon = (SpeciesKey.TaxaRow)hoverNode.Tag;
-                            SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(destTaxon.BaseRow);
+                            e.Effect = DragDropEffects.None;
+                            status.StatusLog.Text = string.Format("{0} is already derivated from {1}", carryTaxa.FullName, hoverTaxa.FullName);
+                        }
+                        else if (hoverTaxa.BaseRow == carryTaxa.BaseRow)
+                        {
+                            e.Effect = DragDropEffects.None;
+                            status.StatusLog.Text = string.Format("{0} and {1} are taxa of same rank", carryTaxa.FullName, hoverTaxa.FullName);
+                        }
+                        else if (carryTaxa.BaseRow.Index <= hoverTaxa.BaseRow.Index)
+                        {
+                            e.Effect = DragDropEffects.None;
+                            status.StatusLog.Text = string.Format("{0} has higher rank than {1}", carryTaxa.FullName, hoverTaxa.FullName);
+                        }
+                        else
+                        {
+                            e.Effect = DragDropEffects.Link;
+                            status.StatusLog.Text = string.Format("You are going to derivate {0} from {1}", carryTaxa.FullName, hoverTaxa.FullName);
+                        }
+                    }
+                }
+            }
 
-                            treeViewTaxa.SelectedNode = hoverNode;
+            if (hoverNode.Tag is SpeciesKey.TaxaRow destTaxon && e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[])))
+            {
+                SpeciesKey.SpeciesRow[] speciesRows = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
 
-                            if (taxaRow == null)
-                            {
-                                e.Effect = DragDropEffects.Link;
-                                status.StatusLog.Text = string.Format(Resources.Messages.AssociateTip,
-                                    speciesRow.Species, destTaxon.TaxonName);
-                            }
-                            else
-                            {
-                                e.Effect = DragDropEffects.Copy;
-                                status.StatusLog.Text = string.Format(Resources.Messages.ReassociateTip,
-                                    speciesRow.Species, taxaRow.TaxonName, destTaxon.TaxonName);
-                            }
+                if (speciesRows.Length > 0)
+                {
+                    SpeciesKey.SpeciesRow speciesRow = speciesRows[0];
+
+                    if (hoverNode.Tag != null)
+                    {
+                        SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(destTaxon.BaseRow);
+
+                        treeViewTaxa.SelectedNode = hoverNode;
+
+                        if (taxaRow == null)
+                        {
+                            e.Effect = DragDropEffects.Link;
+                            status.StatusLog.Text = string.Format(Resources.Messages.AssociateTip,
+                                speciesRow.Species, destTaxon.FullName);
+                        }
+                        else
+                        {
+                            e.Effect = DragDropEffects.Copy;
+                            status.StatusLog.Text = string.Format(Resources.Messages.ReassociateTip,
+                                speciesRow.Species, taxaRow.FullName, destTaxon.FullName);
                         }
                     }
                 }
             }
 
             treeViewTaxa.AutoScroll();
+        }
+
+        private void treeViewTaxa_DragDrop(object sender, DragEventArgs e)
+        {
+            Point dropLocation = (sender as TreeView).PointToClient(new Point(e.X, e.Y));
+            TreeNode dropNode = (sender as TreeView).GetNodeAt(dropLocation);
+            if (dropNode == null) return;
+
+            if (dropNode.Tag is SpeciesKey.TaxaRow destinationTaxon && e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[])))
+            {
+                foreach (SpeciesKey.SpeciesRow speciesRow in
+                    (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[])))
+                {
+                    SpeciesKey.TaxaRow associatedTaxon = speciesRow.GetTaxon(destinationTaxon.BaseRow);
+
+                    if (associatedTaxon == null)
+                    {
+                        Data.Rep.AddRepRow(destinationTaxon, speciesRow);
+
+                        foreach (ListViewItem item in dragItems)
+                        {
+                            listViewRepresence.Items.Remove(item);
+                        }
+                        dragItems.Clear();
+
+                        IsChanged = true;
+                    }
+                    else
+                    {
+                        if (associatedTaxon != destinationTaxon)
+                        {
+                            taskDialogReassociateSpecies.Content = string.Format(
+                                Resources.Messages.SpeciesReassociateContent,
+                                speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName);
+
+                            TaskDialogButton b = taskDialogReassociateSpecies.ShowDialog(this);
+
+                            if (b == tdbReassSpecies)
+                            {
+                                foreach (SpeciesKey.RepRow RepRow in speciesRow.GetRepRows())
+                                {
+                                    if (RepRow.TaxaRow == associatedTaxon)
+                                    {
+                                        RepRow.TaxaRow = destinationTaxon;
+                                    }
+                                }
+
+                                foreach (ListViewItem item in dragItems)
+                                {
+                                    listViewRepresence.Items.Remove(item);
+                                }
+                                dragItems.Clear();
+
+                                IsChanged = true;
+
+                                //UpdateSpeciesItems(speciesRow);
+
+                                status.Message(string.Format(Resources.Messages.SpeciesReassociated,
+                                    speciesRow.Species, associatedTaxon.TaxonName, destinationTaxon.TaxonName));
+                            }
+                        }
+                    }
+                }
+
+                updateVaria();
+
+                IsChanged = true;
+            }
+
+            if (e.Data.GetDataPresent(typeof(TreeNode)))
+            {
+                if (dropNode.Tag is SpeciesKey.BaseRow && ((TreeNode)e.Data.GetData(typeof(TreeNode))).Tag is SpeciesKey.BaseRow baseRow)
+                {
+                    baseRow.Index = dropNode.Index * 10 - 1;
+                    IsChanged = true;
+                    treeViewTaxa.Sort();
+
+                    foreach (TreeNode tn in treeViewTaxa.Nodes)
+                    {
+                        if (tn.Tag is SpeciesKey.BaseRow br)
+                        {
+                            br.Index = tn.Index * 10;
+                        }
+                    }
+                }
+
+                if (dropNode.Tag is SpeciesKey.TaxaRow destTaxon && ((TreeNode)e.Data.GetData(typeof(TreeNode))).Tag is SpeciesKey.TaxaRow taxaRow)
+                {
+                    if (taxaRow.BaseRow == destTaxon.BaseRow) // If drag-and-drop inside one base - then sort
+                    {
+                        // Sort
+                        taxaRow.Index = dropNode.Index * 10 - 1;
+                        IsChanged = true;
+                        treeViewTaxa.Sort();
+
+                        foreach (TreeNode tn in dropNode.Parent.Nodes)
+                        {
+                            if (tn.Tag is SpeciesKey.TaxaRow tr)
+                            {
+                                tr.Index = tn.Index * 10;
+                            }
+                        }
+                    }
+                    else // If drag-and-drop from one base to another - create derivation
+                    {
+                        // Create taxon derivation
+                        Data.Derivation.AddDerivationRow(destTaxon, taxaRow);
+
+                        foreach (SpeciesKey.RepRow repRow in taxaRow.GetRepRows())
+                        {
+                            // if destination taxon directly contains such representative
+                            if (destTaxon.Includes(repRow.SpeciesRow, false))
+                            {
+                                // remove it, because such representation is now provided with newly created derivation
+                                repRow.SpeciesRow.RemoveFrom(destTaxon);
+                            }
+                        }
+
+                        updateVaria();
+                        updateTree();
+                        IsChanged = true;
+
+                        status.Message(string.Format("{0} is now derivated from {1}", taxaRow.FullName, destTaxon.FullName));
+                    }
+                }
+            }
         }
 
         private void treeViewTaxa_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -571,22 +697,14 @@ namespace Mayfly.Species.Systematics
         {
             List<TreeNode> result = new List<TreeNode>();
 
-            foreach (SpeciesKey.BaseRow baseRow in Data.Base.Rows)
+            foreach (SpeciesKey.BaseRow baseRow in ((SpeciesKey.BaseRow[])Data.Base.Select(null, "Index ASC")))
             {
-                TreeNode baseNode = new TreeNode();
-                baseNode.Tag = baseRow;
-                baseNode.Text = baseRow.BaseName;
-                baseNode.ContextMenuStrip = contextBase;
+                TreeNode baseNode = getBaseTreeNode(baseRow);
                 result.Add(baseNode);
-                //treeViewTaxa.Nodes.Add(baseNode);
 
                 foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
                 {
-                    TreeNode taxaNode = new TreeNode();
-                    taxaNode.Tag = taxaRow;
-                    taxaNode.Text = taxaRow.TaxonName;
-                    taxaNode.ContextMenuStrip = contextTaxon;
-                    baseNode.Nodes.Add(taxaNode);
+                    baseNode.Nodes.Add(getTaxonTreeNode(taxaRow, false));
                 }
             }
 
@@ -595,17 +713,11 @@ namespace Mayfly.Species.Systematics
 
         private void backTreeLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (TreeNode node in (TreeNode[])e.Result)
-            {
-                treeViewTaxa.Nodes.Add(node);
-            }
-
+            TreeNode[] results = (TreeNode[])e.Result;
+            treeViewTaxa.Nodes["rootList"].Nodes.AddRange(results);
             labelTaxCount.UpdateStatus(Data.Taxa.Count);
-            UpdateOthers();
-
-            //treeViewTaxa.ExpandAll();
-            treeViewTaxa.Sort();
-
+            updateVaria();
+            updateTree();
             treeViewTaxa.Enabled = true;
         }
 
@@ -804,12 +916,16 @@ namespace Mayfly.Species.Systematics
 
         private void backSpcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            listViewRepresence.Items.Clear();
+            if (!e.Cancelled)
+            {
+                listViewRepresence.Items.Clear();
 
-            ListViewItem[] items = (ListViewItem[])e.Result;
-            listViewRepresence.Items.AddRange(items);
+                ListViewItem[] items = (ListViewItem[])e.Result;
+                listViewRepresence.Items.AddRange(items);
 
-            labelRepCount.UpdateStatus(items.Length);
+                labelRepCount.UpdateStatus(items.Length);
+            }
+
             treeViewTaxa.Enabled = true;
         }
 

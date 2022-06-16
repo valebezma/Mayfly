@@ -477,7 +477,7 @@ namespace Mayfly.Extensions
                 }
             }
 
-            SpeciesKey.SpeciesRow[] spclist = data.GetStack().GetSpeciesSorted();
+            SpeciesKey.SpeciesRow[] spclist = data.GetStack().GetSpecies();
 
             for (int i = 0; i < spclist.Length; i++)
             {

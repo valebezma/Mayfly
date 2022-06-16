@@ -783,7 +783,7 @@ namespace Mayfly.Species
 
             if (selectedRow == null)
             {
-                selectedRow = Index.Species.AddSpeciesRow(listSpc.SelectedItems[0].Text, null, null, null, null);
+                selectedRow = Index.Species.AddSpeciesRow(listSpc.SelectedItems[0].Text, null, null, null);
             }
 
             if (this.CheckDuplicates)

@@ -1235,7 +1235,7 @@ namespace Mayfly.Fish.Explorer
 
         private void loadLog(CardStack stack)
         {
-            loadLog(stack.GetSpeciesSorted(), stack);
+            loadLog(stack.GetSpecies(), stack);
         }
 
         private Data.LogRow findLogRow(DataGridViewRow gridRow)

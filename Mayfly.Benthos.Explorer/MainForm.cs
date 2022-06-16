@@ -1419,5 +1419,81 @@ namespace Mayfly.Benthos.Explorer
         }
 
         #endregion
+
+        private void menuItemCompareComp_Click(object sender, EventArgs e)
+        {
+            SelectionValue selectionValue = new SelectionValue(spreadSheetCard);
+
+            if (selectionValue.ShowDialog(this) != DialogResult.OK) return;
+
+            IsBusy = true;
+            spreadSheetLog.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.SpeciesProcessing);
+
+            foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
+            {
+                string field = gridColumn.Name.TrimStart("columnCard".ToCharArray());
+
+                BackgroundWorker comparerLog = new BackgroundWorker();
+                comparerLog.DoWork += comparerLog_DoWork;
+                comparerLog.RunWorkerCompleted += comparerLog_RunWorkerCompleted;
+                comparerLog.RunWorkerAsync(field);
+            }
+        }
+        private void comparerLog_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string field = (string)e.Argument;
+
+            string format = spreadSheetLog.Columns[field] == null ? string.Empty :
+                spreadSheetLog.Columns[field].DefaultCellStyle.Format;
+
+            string[] variants = data.GetVariantsOf(field, format);
+
+            List<Composition> result = new List<Composition>();
+
+            foreach (string variant in variants)
+            {
+                CardStack stack = FullStack.GetStack(field, variant, format);
+
+                Composition composition;
+
+                if (baseLog == null)
+                {
+                    composition = stack.GetCenosisComposition();
+                }
+                else
+                {
+                    composition = stack.GetCenosisComposition(baseLog);
+                }
+
+                composition.Name = variant;
+                result.Add(composition);
+            }
+
+            e.Result = result;
+        }
+
+        private void comparerLog_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Composition composition;
+
+            if (baseLog == null)
+            {
+                composition = FullStack.GetCenosisComposition();
+            }
+            else
+            {
+                composition = FullStack.GetCenosisComposition(baseLog);
+            }
+
+            CompositionComparison comcom = new CompositionComparison(
+                composition, (List<Composition>)e.Result);
+
+            //comcom.UpdateCompositionAppearance();
+            comcom.SetFriendlyDesktopLocation(this, FormLocation.Centered);
+            comcom.Show();
+
+            IsBusy = false;
+            spreadSheetLog.StopProcessing();
+        }
     }
 }

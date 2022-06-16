@@ -21,7 +21,7 @@ namespace Mayfly.Wild
 
                 foreach (SpeciesSwarm speciesSwarm in speciesComposition)
                 {
-                    if (!taxaRow.Includes(speciesSwarm.SpeciesRow)) continue;
+                    if (!taxaRow.IncludesRepresentative(speciesSwarm.SpeciesRow)) continue;
 
                     swarms.Add(speciesSwarm);
 

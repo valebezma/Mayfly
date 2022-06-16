@@ -402,12 +402,15 @@
             resources.ApplyResources(this.treeViewTaxa, "treeViewTaxa");
             this.treeViewTaxa.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeViewTaxa.FullRowSelect = true;
+            this.treeViewTaxa.HideSelection = false;
             this.treeViewTaxa.HotTracking = true;
             this.treeViewTaxa.ItemHeight = 23;
             this.treeViewTaxa.LabelEdit = true;
             this.treeViewTaxa.Name = "treeViewTaxa";
             this.treeViewTaxa.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes1"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes2")))});
             this.treeViewTaxa.ShowLines = false;
             this.treeViewTaxa.ShowNodeToolTips = true;
             this.treeViewTaxa.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeViewTaxa_AfterLabelEdit);
@@ -705,6 +708,7 @@
             // 
             // backSpcLoader
             // 
+            this.backSpcLoader.WorkerSupportsCancellation = true;
             this.backSpcLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backSpcLoader_DoWork);
             this.backSpcLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backSpcLoader_RunWorkerCompleted);
             // 

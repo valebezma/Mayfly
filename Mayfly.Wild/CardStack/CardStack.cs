@@ -57,7 +57,7 @@ namespace Mayfly.Wild
         {
             get
             {
-                return GetSpecies().Count;
+                return GetSpecies().Length;
             }
         }
 
@@ -420,8 +420,12 @@ namespace Mayfly.Wild
         }
 
 
+        public SpeciesKey.SpeciesRow[] GetSpecies()
+        {
+            return GetSpecies(0);
+        }
 
-        public List<SpeciesKey.SpeciesRow> GetSpecies()
+        public SpeciesKey.SpeciesRow[] GetSpecies(int minimalSample)
         {
             List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
 
@@ -429,36 +433,26 @@ namespace Mayfly.Wild
             {
                 foreach (Data.SpeciesRow spcRow in Parent.Species)
                 {
-                    if (spcRow.KeyRecord != null)
-                    {
-                        if (!result.Contains(spcRow.KeyRecord))
-                        {
-                            result.Add(spcRow.KeyRecord);
-                        }
-                    }
-                    else
+                    SpeciesKey.SpeciesRow currentRecord = spcRow.KeyRecord;
+
+                    if (currentRecord == null)
                     {
                         SpeciesKey.SpeciesRow newSpcRow = Parent.key.Species.NewSpeciesRow();
                         newSpcRow.Species = spcRow.Species;
-                        result.Add(newSpcRow);
+                        currentRecord = newSpcRow;
+                    }
+
+                    if (minimalSample > 0 && Quantity(currentRecord) < minimalSample) continue;
+
+                    if (!result.Contains(currentRecord))
+                    {
+                        result.Add(currentRecord);
                     }
                 }
+
+                result.Sort();
             }
 
-            return result;
-        }
-
-        public SpeciesKey.SpeciesRow[] GetSpeciesSorted()
-        {
-            List<SpeciesKey.SpeciesRow> result = GetSpecies();
-            result.Sort();
-            return result.ToArray();
-        }
-
-        public SpeciesKey.SpeciesRow[] GetSpeciesPhylogeneticallySorted(SpeciesKey key)
-        {
-            List<SpeciesKey.SpeciesRow> result = GetSpecies();
-            result.Sort(new SpeciesSorter(key));
             return result.ToArray();
         }
 

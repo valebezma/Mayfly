@@ -26,7 +26,7 @@ namespace Mayfly.Wild
 
         public SpeciesComposition GetBasicCenosisComposition()
         {
-            SpeciesKey.SpeciesRow[] species = GetSpeciesSorted();
+            SpeciesKey.SpeciesRow[] species = GetSpecies();
             SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, species.Length);
 
             foreach (SpeciesKey.SpeciesRow speciesRow in species)

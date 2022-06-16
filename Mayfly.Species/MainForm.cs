@@ -304,8 +304,8 @@ namespace Mayfly.Species
             labelTaxCount.UpdateStatus(Data.Taxa.Count);
 
             UpdateOthers();
-            treeViewTaxa.ExpandAll();
             treeViewTaxa.Sort();
+            treeViewTaxa.ExpandAll();
         }
 
         private void FillRepresenceList()
@@ -501,8 +501,8 @@ namespace Mayfly.Species
             labelFtrCount.UpdateStatus(0);
             labelFitCount.UpdateStatus(listViewFits.Items.Count);
 
-            //treeViewFeatures.ExpandAll();
             //treeViewFeatures.Sort();
+            //treeViewFeatures.ExpandAll();
         }
 
         private SpeciesKey.StateRow[] GetCheckedStates()

@@ -1086,7 +1086,7 @@ namespace Mayfly.Fish.Explorer
 
             double Q = 0D;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in CatchesData.GetSpeciesCaught())
+            foreach (SpeciesKey.SpeciesRow speciesRow in CatchesData.GetSpecies())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
 

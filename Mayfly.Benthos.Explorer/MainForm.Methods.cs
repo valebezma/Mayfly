@@ -36,7 +36,7 @@ namespace Mayfly.Benthos.Explorer
 
             set
             {
-                menuItemCenosis.Enabled = 
+                menuCenosis.Enabled = 
                     !value;
 
                 tabControl.AllowDrop =
@@ -408,7 +408,7 @@ namespace Mayfly.Benthos.Explorer
                 item.Click += (sender, o) =>
                 {
                     DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
-                        baseRow.BaseName, typeof(string), 0);
+                        baseRow.BaseName, typeof(string), 0, 200);
 
                     foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
                     {
@@ -423,7 +423,7 @@ namespace Mayfly.Benthos.Explorer
                             continue;
                         }
 
-                        SpeciesKey.SpeciesRow speciesRow = (gridRow.Cells[columnSpcSpc.Index].Value as Data.SpeciesRow).KeyRecord;
+                        SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)gridRow.Cells[columnSpcSpc.Index].Value;
 
                         if (speciesRow == null)
                         {

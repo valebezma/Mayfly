@@ -79,6 +79,7 @@
             // calculator
             // 
             this.calculator.WorkerReportsProgress = true;
+            this.calculator.WorkerSupportsCancellation = true;
             this.calculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.calculator_DoWork);
             this.calculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.calculator_RunWorkerCompleted);
             // 

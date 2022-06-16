@@ -73,6 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.Terminal);
             this.DoubleBuffered = true;

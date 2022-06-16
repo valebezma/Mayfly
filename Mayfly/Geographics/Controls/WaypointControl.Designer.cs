@@ -171,7 +171,7 @@
             this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.dateTimePickerDate);
             this.Controls.Add(this.labelDate);

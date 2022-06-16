@@ -213,6 +213,9 @@
   <data name="listViewColumn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="columnHeader3.Width" type="System.Int32, mscorlib">
+    <value>180</value>
+  </data>
   <data name="listViewColumn.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 107</value>
   </data>
@@ -236,9 +239,6 @@
   </data>
   <data name="&gt;&gt;listViewColumn.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="columnHeader3.Width" type="System.Int32, mscorlib">
-    <value>180</value>
   </data>
   <metadata name="calculator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

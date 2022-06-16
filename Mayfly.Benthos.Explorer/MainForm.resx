@@ -460,7 +460,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAVQBGAFUARgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAYwBGAGMARgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1254,7 +1254,7 @@
     <value>Species / taxa</value>
   </data>
   <data name="columnSpcSpc.Width" type="System.Int32, mscorlib">
-    <value>150</value>
+    <value>200</value>
   </data>
   <metadata name="columnSpcQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1488,7 +1488,7 @@
     <value>Species / taxa</value>
   </data>
   <data name="columnLogSpc.Width" type="System.Int32, mscorlib">
-    <value>150</value>
+    <value>200</value>
   </data>
   <metadata name="columnLogQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1714,6 +1714,9 @@
   </data>
   <data name="columnIndSpecies.Width" type="System.Int32, mscorlib">
     <value>200</value>
+  </data>
+  <data name="columnIndFrequency.HeaderText" xml:space="preserve">
+    <value>Frequency</value>
   </data>
   <metadata name="columnIndLength.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2188,6 +2191,18 @@
   <data name="menuItemSample.Text" xml:space="preserve">
     <value>Sample</value>
   </data>
+  <data name="menuItemCompareComp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 22</value>
+  </data>
+  <data name="menuItemCompareComp.Text" xml:space="preserve">
+    <value>Compositions</value>
+  </data>
+  <data name="menuItemCompare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="menuItemCompare.Text" xml:space="preserve">
+    <value>Compare</value>
+  </data>
   <data name="menuItemBriefSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 22</value>
   </data>
@@ -2203,10 +2218,10 @@
   <data name="menuItemBrief.Text" xml:space="preserve">
     <value>Cenosis report</value>
   </data>
-  <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 20</value>
   </data>
-  <data name="menuItemCenosis.Text" xml:space="preserve">
+  <data name="menuCenosis.Text" xml:space="preserve">
     <value>Benthic cenosis</value>
   </data>
   <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
@@ -2600,6 +2615,144 @@
   <data name="&gt;&gt;imageListWaters.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;columnCardID.Name" xml:space="preserve">
+    <value>columnCardID</value>
+  </data>
+  <data name="&gt;&gt;columnCardID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardInvestigator.Name" xml:space="preserve">
+    <value>columnCardInvestigator</value>
+  </data>
+  <data name="&gt;&gt;columnCardInvestigator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardWater.Name" xml:space="preserve">
+    <value>columnCardWater</value>
+  </data>
+  <data name="&gt;&gt;columnCardWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardLabel.Name" xml:space="preserve">
+    <value>columnCardLabel</value>
+  </data>
+  <data name="&gt;&gt;columnCardLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardWhen.Name" xml:space="preserve">
+    <value>columnCardWhen</value>
+  </data>
+  <data name="&gt;&gt;columnCardWhen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardWhere.Name" xml:space="preserve">
+    <value>columnCardWhere</value>
+  </data>
+  <data name="&gt;&gt;columnCardWhere.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnCardSampler.Name" xml:space="preserve">
+    <value>columnCardSampler</value>
+  </data>
+  <data name="&gt;&gt;columnCardSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardWeather.Name" xml:space="preserve">
+    <value>columnCardWeather</value>
+  </data>
+  <data name="&gt;&gt;columnCardWeather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardTempSurface.Name" xml:space="preserve">
+    <value>columnCardTempSurface</value>
+  </data>
+  <data name="&gt;&gt;columnCardTempSurface.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardSubstrate.Name" xml:space="preserve">
+    <value>columnCardSubstrate</value>
+  </data>
+  <data name="&gt;&gt;columnCardSubstrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardMesh.Name" xml:space="preserve">
+    <value>columnCardMesh</value>
+  </data>
+  <data name="&gt;&gt;columnCardMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardSquare.Name" xml:space="preserve">
+    <value>columnCardSquare</value>
+  </data>
+  <data name="&gt;&gt;columnCardSquare.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnCardDepth.Name" xml:space="preserve">
+    <value>columnCardDepth</value>
+  </data>
+  <data name="&gt;&gt;columnCardDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardCrossSection.Name" xml:space="preserve">
+    <value>columnCardCrossSection</value>
+  </data>
+  <data name="&gt;&gt;columnCardCrossSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardBank.Name" xml:space="preserve">
+    <value>columnCardBank</value>
+  </data>
+  <data name="&gt;&gt;columnCardBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardWealth.Name" xml:space="preserve">
+    <value>columnCardWealth</value>
+  </data>
+  <data name="&gt;&gt;columnCardWealth.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnCardQuantity.Name" xml:space="preserve">
+    <value>columnCardQuantity</value>
+  </data>
+  <data name="&gt;&gt;columnCardQuantity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnCardMass.Name" xml:space="preserve">
+    <value>columnCardMass</value>
+  </data>
+  <data name="&gt;&gt;columnCardMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardAbundance.Name" xml:space="preserve">
+    <value>columnCardAbundance</value>
+  </data>
+  <data name="&gt;&gt;columnCardAbundance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardBiomass.Name" xml:space="preserve">
+    <value>columnCardBiomass</value>
+  </data>
+  <data name="&gt;&gt;columnCardBiomass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardDiversityA.Name" xml:space="preserve">
+    <value>columnCardDiversityA</value>
+  </data>
+  <data name="&gt;&gt;columnCardDiversityA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardDiversityB.Name" xml:space="preserve">
+    <value>columnCardDiversityB</value>
+  </data>
+  <data name="&gt;&gt;columnCardDiversityB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnCardComments.Name" xml:space="preserve">
+    <value>columnCardComments</value>
+  </data>
+  <data name="&gt;&gt;columnCardComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;processDisplay.Name" xml:space="preserve">
     <value>processDisplay</value>
   </data>
@@ -2719,6 +2872,54 @@
   </data>
   <data name="&gt;&gt;contextSpcAddToReference.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogID.Name" xml:space="preserve">
+    <value>columnLogID</value>
+  </data>
+  <data name="&gt;&gt;columnLogID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogSpc.Name" xml:space="preserve">
+    <value>columnLogSpc</value>
+  </data>
+  <data name="&gt;&gt;columnLogSpc.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnLogQuantity.Name" xml:space="preserve">
+    <value>columnLogQuantity</value>
+  </data>
+  <data name="&gt;&gt;columnLogQuantity.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;columnLogMass.Name" xml:space="preserve">
+    <value>columnLogMass</value>
+  </data>
+  <data name="&gt;&gt;columnLogMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogAbundance.Name" xml:space="preserve">
+    <value>columnLogAbundance</value>
+  </data>
+  <data name="&gt;&gt;columnLogAbundance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogBiomass.Name" xml:space="preserve">
+    <value>columnLogBiomass</value>
+  </data>
+  <data name="&gt;&gt;columnLogBiomass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogDiversityA.Name" xml:space="preserve">
+    <value>columnLogDiversityA</value>
+  </data>
+  <data name="&gt;&gt;columnLogDiversityA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLogDiversityB.Name" xml:space="preserve">
+    <value>columnLogDiversityB</value>
+  </data>
+  <data name="&gt;&gt;columnLogDiversityB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;contextLogOpen.Name" xml:space="preserve">
     <value>contextLogOpen</value>
@@ -3032,10 +3233,22 @@
   <data name="&gt;&gt;toolStripSeparator24.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemCenosis.Name" xml:space="preserve">
-    <value>menuItemCenosis</value>
+  <data name="&gt;&gt;menuCenosis.Name" xml:space="preserve">
+    <value>menuCenosis</value>
   </data>
-  <data name="&gt;&gt;menuItemCenosis.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuCenosis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompare.Name" xml:space="preserve">
+    <value>menuItemCompare</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompareComp.Name" xml:space="preserve">
+    <value>menuItemCompareComp</value>
+  </data>
+  <data name="&gt;&gt;menuItemCompareComp.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItemBrief.Name" xml:space="preserve">
@@ -3409,192 +3622,6 @@
   </data>
   <data name="&gt;&gt;mathInd.Type" xml:space="preserve">
     <value>Mayfly.Mathematics.MathAdapter, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnCardID.Name" xml:space="preserve">
-    <value>columnCardID</value>
-  </data>
-  <data name="&gt;&gt;columnCardID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardInvestigator.Name" xml:space="preserve">
-    <value>columnCardInvestigator</value>
-  </data>
-  <data name="&gt;&gt;columnCardInvestigator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardWater.Name" xml:space="preserve">
-    <value>columnCardWater</value>
-  </data>
-  <data name="&gt;&gt;columnCardWater.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardLabel.Name" xml:space="preserve">
-    <value>columnCardLabel</value>
-  </data>
-  <data name="&gt;&gt;columnCardLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardWhen.Name" xml:space="preserve">
-    <value>columnCardWhen</value>
-  </data>
-  <data name="&gt;&gt;columnCardWhen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardWhere.Name" xml:space="preserve">
-    <value>columnCardWhere</value>
-  </data>
-  <data name="&gt;&gt;columnCardWhere.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnCardSampler.Name" xml:space="preserve">
-    <value>columnCardSampler</value>
-  </data>
-  <data name="&gt;&gt;columnCardSampler.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardWeather.Name" xml:space="preserve">
-    <value>columnCardWeather</value>
-  </data>
-  <data name="&gt;&gt;columnCardWeather.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardTempSurface.Name" xml:space="preserve">
-    <value>columnCardTempSurface</value>
-  </data>
-  <data name="&gt;&gt;columnCardTempSurface.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardSubstrate.Name" xml:space="preserve">
-    <value>columnCardSubstrate</value>
-  </data>
-  <data name="&gt;&gt;columnCardSubstrate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardMesh.Name" xml:space="preserve">
-    <value>columnCardMesh</value>
-  </data>
-  <data name="&gt;&gt;columnCardMesh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardSquare.Name" xml:space="preserve">
-    <value>columnCardSquare</value>
-  </data>
-  <data name="&gt;&gt;columnCardSquare.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnCardDepth.Name" xml:space="preserve">
-    <value>columnCardDepth</value>
-  </data>
-  <data name="&gt;&gt;columnCardDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardCrossSection.Name" xml:space="preserve">
-    <value>columnCardCrossSection</value>
-  </data>
-  <data name="&gt;&gt;columnCardCrossSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardBank.Name" xml:space="preserve">
-    <value>columnCardBank</value>
-  </data>
-  <data name="&gt;&gt;columnCardBank.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardWealth.Name" xml:space="preserve">
-    <value>columnCardWealth</value>
-  </data>
-  <data name="&gt;&gt;columnCardWealth.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnCardQuantity.Name" xml:space="preserve">
-    <value>columnCardQuantity</value>
-  </data>
-  <data name="&gt;&gt;columnCardQuantity.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnCardMass.Name" xml:space="preserve">
-    <value>columnCardMass</value>
-  </data>
-  <data name="&gt;&gt;columnCardMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardAbundance.Name" xml:space="preserve">
-    <value>columnCardAbundance</value>
-  </data>
-  <data name="&gt;&gt;columnCardAbundance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardBiomass.Name" xml:space="preserve">
-    <value>columnCardBiomass</value>
-  </data>
-  <data name="&gt;&gt;columnCardBiomass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardDiversityA.Name" xml:space="preserve">
-    <value>columnCardDiversityA</value>
-  </data>
-  <data name="&gt;&gt;columnCardDiversityA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardDiversityB.Name" xml:space="preserve">
-    <value>columnCardDiversityB</value>
-  </data>
-  <data name="&gt;&gt;columnCardDiversityB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnCardComments.Name" xml:space="preserve">
-    <value>columnCardComments</value>
-  </data>
-  <data name="&gt;&gt;columnCardComments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogID.Name" xml:space="preserve">
-    <value>columnLogID</value>
-  </data>
-  <data name="&gt;&gt;columnLogID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogSpc.Name" xml:space="preserve">
-    <value>columnLogSpc</value>
-  </data>
-  <data name="&gt;&gt;columnLogSpc.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnLogQuantity.Name" xml:space="preserve">
-    <value>columnLogQuantity</value>
-  </data>
-  <data name="&gt;&gt;columnLogQuantity.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheetIconTextBoxColumn, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;columnLogMass.Name" xml:space="preserve">
-    <value>columnLogMass</value>
-  </data>
-  <data name="&gt;&gt;columnLogMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogAbundance.Name" xml:space="preserve">
-    <value>columnLogAbundance</value>
-  </data>
-  <data name="&gt;&gt;columnLogAbundance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogBiomass.Name" xml:space="preserve">
-    <value>columnLogBiomass</value>
-  </data>
-  <data name="&gt;&gt;columnLogBiomass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogDiversityA.Name" xml:space="preserve">
-    <value>columnLogDiversityA</value>
-  </data>
-  <data name="&gt;&gt;columnLogDiversityA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnLogDiversityB.Name" xml:space="preserve">
-    <value>columnLogDiversityB</value>
-  </data>
-  <data name="&gt;&gt;columnLogDiversityB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

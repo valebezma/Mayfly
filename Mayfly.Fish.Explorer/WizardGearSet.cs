@@ -207,9 +207,9 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < classedStacks.Count; i++)
             {
-                bool speciesOfInterestIsPresent = classedStacks[i].GetSpeciesCaught().Contains(SpeciesOfInterest);
+                bool speciesOfInterestIsPresent = classedStacks[i].GetSpecies().Contains(SpeciesOfInterest);
 
-                ((Mayfly.Controls.TextAndImageCell)spreadSheetEfforts[ColumnClass.Index, i]).Image =
+                ((Controls.TextAndImageCell)spreadSheetEfforts[ColumnClass.Index, i]).Image =
                     speciesOfInterestIsPresent ? null : Mathematics.Properties.Resources.None;
 
                 spreadSheetEfforts[ColumnClass.Index, i].ToolTipText =
