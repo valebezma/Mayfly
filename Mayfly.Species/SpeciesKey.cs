@@ -30,8 +30,7 @@ namespace Mayfly.Species
                 List<TaxaRow> result = new List<TaxaRow>();
                 foreach (TaxaRow taxaRow in this)
                 {
-                    if (taxaRow.GetDerivationRowsByFK_Taxa_Derivation1().Length > 0)
-                        result.Add(taxaRow);
+                    if (taxaRow.HasDerivations) result.Add(taxaRow);
                 }
                 result.Sort();
                 return result.ToArray();
@@ -65,7 +64,7 @@ namespace Mayfly.Species
                 return result.ToArray();
             }
 
-            public string FullName => string.Format("{0} {1}", this.BaseRow.BaseName, TaxonName);
+            public string FullName => string.Format("{0} {1}", this.BaseRow?.BaseName, TaxonName);
 
             public string SortableString
             {
@@ -73,6 +72,19 @@ namespace Mayfly.Species
                 {
                     return BaseRow.SortableString + " " + string.Format("{0:000} {1}", (IsIndexNull() ? 999 : Index), TaxonName);
                 }
+            }
+
+            public bool HasDerivations
+            {
+                get
+                {
+                    return this.GetDerivationRowsByFK_Taxa_Derivation1().Length > 0;
+                }
+            }
+
+            public bool Includes(SpeciesRow spcRow)
+            {
+                return Includes(spcRow, true);
             }
 
             public bool Includes(SpeciesRow spcRow, bool searchDerivates)
@@ -111,6 +123,36 @@ namespace Mayfly.Species
                 return false;
             }
 
+            public TaxaRow[] GetParents()
+            {
+                List<TaxaRow> result = new List<TaxaRow>();
+
+                foreach (DerivationRow derRow in this.GetDerivationRowsByFK_Taxa_Derivation1())
+                {
+                    result.Add(derRow.TaxaRowByFK_Taxa_Derivation);
+                    result.AddRange(derRow.TaxaRowByFK_Taxa_Derivation.GetParents());
+                }
+
+                return result.ToArray();
+            }
+
+            public TaxaRow[] GetChildren(bool populatedOnly)
+            {
+                List<TaxaRow> result = new List<TaxaRow>();
+
+                foreach (DerivationRow derRow in this.GetDerivationRowsByFK_Taxa_Derivation())
+                {
+                    if (!populatedOnly || derRow.TaxaRowByFK_Taxa_Derivation1.GetRepRows().Length > 0)
+                    {
+                        result.Add(derRow.TaxaRowByFK_Taxa_Derivation1);
+                    }
+
+                    result.AddRange(derRow.TaxaRowByFK_Taxa_Derivation1.GetChildren(populatedOnly));
+                }
+
+                return result.ToArray();
+            }
+
             public int CompareTo(TaxaRow other)
             {
                 return this.SortableString.CompareTo(other.SortableString);
@@ -137,25 +179,6 @@ namespace Mayfly.Species
 
         partial class DerivationDataTable
         {
-            public bool HasDerivations(BaseRow baseRow1, BaseRow baseRow2)
-            {
-                foreach (DerivationRow derRow in this)
-                {
-                    if (derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow1 && derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow2 ||
-                        derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow1 && derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow2) return true;
-                }
-                return false;
-            }
-
-            public bool HasDerivations(BaseRow baseRow)
-            {
-                foreach (DerivationRow derRow in this)
-                {
-                    if (derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == baseRow ||
-                        derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == baseRow) return true;
-                }
-                return false;
-            }
         }
 
         partial class SpeciesDataTable
@@ -274,6 +297,19 @@ namespace Mayfly.Species
                     }
 
                     return result.ToArray();
+                }
+            }
+
+            public bool HasDerivations
+            {
+                get
+                {
+                    foreach (DerivationRow derRow in ((SpeciesKey)this.tableBase.DataSet).Derivation)
+                    {
+                        if (derRow.TaxaRowByFK_Taxa_Derivation.BaseRow == this ||
+                            derRow.TaxaRowByFK_Taxa_Derivation1.BaseRow == this) return true;
+                    }
+                    return false;
                 }
             }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -205,7 +204,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewWaters = new System.Windows.Forms.ListView();
             this.columnHeaderWaterName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageListWaters = new System.Windows.Forms.ImageList(this.components);
+            this.imageListWaters = new System.Windows.Forms.ImageList();
             this.labelSamplers = new System.Windows.Forms.Label();
             this.labelWaters = new System.Windows.Forms.Label();
             this.labelCollectors = new System.Windows.Forms.Label();
@@ -346,10 +345,10 @@
             this.columnCardDiversityA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardDiversityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnCardComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
+            this.processDisplay = new Mayfly.Controls.ProcessDisplay();
             this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
             this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
-            this.contextCard = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextCard = new System.Windows.Forms.ContextMenuStrip();
             this.contextCardOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.contextCardSaveSet = new System.Windows.Forms.ToolStripMenuItem();
@@ -372,7 +371,7 @@
             this.columnSpcQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSpcMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSpcOccurrence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextSpecies = new System.Windows.Forms.ContextMenuStrip();
             this.contextSpcQualify = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.contextSpcLog = new System.Windows.Forms.ToolStripMenuItem();
@@ -389,7 +388,7 @@
             this.columnLogBiomass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogDiversityA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLogDiversityB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextLog = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextLog = new System.Windows.Forms.ContextMenuStrip();
             this.contextLogOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
             this.contextLogIndividuals = new System.Windows.Forms.ToolStripMenuItem();
@@ -406,7 +405,7 @@
             this.columnStratifiedInterval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStratifiedFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStratifiedTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextStratified = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextStratified = new System.Windows.Forms.ContextMenuStrip();
             this.contextStratifiedOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
             this.printStratifiedSampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -441,7 +440,7 @@
             this.columnIndConsumptionIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndDietItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIndComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextInd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextInd = new System.Windows.Forms.ContextMenuStrip();
             this.contextIndProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.fecundityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.growthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -465,7 +464,7 @@
             this.loaderLog = new System.ComponentModel.BackgroundWorker();
             this.loaderInd = new System.ComponentModel.BackgroundWorker();
             this.loaderData = new System.ComponentModel.BackgroundWorker();
-            this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAttention = new System.Windows.Forms.ToolTip();
             this.loaderStratified = new System.ComponentModel.BackgroundWorker();
             this.loaderIndSimulated = new System.ComponentModel.BackgroundWorker();
             this.loaderIndExtended = new System.ComponentModel.BackgroundWorker();
@@ -478,26 +477,26 @@
             this.bioUpdater = new System.ComponentModel.BackgroundWorker();
             this.modelCalc = new System.ComponentModel.BackgroundWorker();
             this.qualCalc = new System.ComponentModel.BackgroundWorker();
-            this.taskDialogSave = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbSaveAll = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.taskDialogClearSimulations = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbClearSimulation = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tbdCancelSimulation = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdRecover = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbRecoverBackup = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbRecoverContinue = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbRecoverCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.taskDialogBio = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbSpecClear = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbSpecCombine = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbSpecCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesValidator = new Mayfly.Species.SpeciesSelector(this.components);
-            this.mathCard = new Mayfly.Mathematics.MathAdapter(this.components);
-            this.mathLog = new Mayfly.Mathematics.MathAdapter(this.components);
-            this.mathInd = new Mayfly.Mathematics.MathAdapter(this.components);
-            this.notify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.taskDialogSave = new Mayfly.TaskDialogs.TaskDialog();
+            this.tdbSaveAll = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.taskDialogClearSimulations = new Mayfly.TaskDialogs.TaskDialog();
+            this.tdbClearSimulation = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tbdCancelSimulation = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdRecover = new Mayfly.TaskDialogs.TaskDialog();
+            this.tdbRecoverBackup = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbRecoverContinue = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbRecoverCancel = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.taskDialogBio = new Mayfly.TaskDialogs.TaskDialog();
+            this.tdbSpecClear = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbSpecCombine = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.tdbSpecCancel = new Mayfly.TaskDialogs.TaskDialogButton();
+            this.speciesValidator = new Mayfly.Species.SpeciesSelector();
+            this.mathCard = new Mayfly.Mathematics.MathAdapter();
+            this.mathLog = new Mayfly.Mathematics.MathAdapter();
+            this.mathInd = new Mayfly.Mathematics.MathAdapter();
+            this.notify = new System.Windows.Forms.NotifyIcon();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageInfo.SuspendLayout();

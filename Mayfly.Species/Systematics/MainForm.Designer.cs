@@ -66,6 +66,7 @@
             this.listViewRepresence = new System.Windows.Forms.ListView();
             this.columnHeaderSpeciesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderReference = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.treeViewDerivates = new System.Windows.Forms.TreeView();
             this.treeViewTaxa = new System.Windows.Forms.TreeView();
             this.tabPageKey = new System.Windows.Forms.TabPage();
             this.buttonTry = new System.Windows.Forms.Button();
@@ -115,15 +116,19 @@
             this.taskDialogAssociateSpecies = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSetSpecies = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSetSpeciesCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.taskDialogReassociateSpecies = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbReassSpecies = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbReassSpeciesCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdSpeciesRepresence = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbRepSpecies = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbRepSpeciesCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.taskDialogDeleteSpecies = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbDeleteSpc = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDeleteRep = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDeleteCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.status = new Mayfly.Controls.Status();
             this.backTreeLoader = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.backListLoader = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -320,10 +325,14 @@
             // 
             this.tabPageTaxa.Controls.Add(this.labelMinCount);
             this.tabPageTaxa.Controls.Add(this.listViewMinor);
-            this.tabPageTaxa.Controls.Add(this.labelRepCount);
+            this.tabPageTaxa.Controls.Add(this.label3);
+            this.tabPageTaxa.Controls.Add(this.label2);
+            this.tabPageTaxa.Controls.Add(this.label1);
             this.tabPageTaxa.Controls.Add(this.labelTaxCount);
             this.tabPageTaxa.Controls.Add(this.listViewRepresence);
+            this.tabPageTaxa.Controls.Add(this.treeViewDerivates);
             this.tabPageTaxa.Controls.Add(this.treeViewTaxa);
+            this.tabPageTaxa.Controls.Add(this.labelRepCount);
             resources.ApplyResources(this.tabPageTaxa, "tabPageTaxa");
             this.tabPageTaxa.Name = "tabPageTaxa";
             this.tabPageTaxa.UseVisualStyleBackColor = true;
@@ -396,6 +405,27 @@
             // 
             resources.ApplyResources(this.columnHeaderReference, "columnHeaderReference");
             // 
+            // treeViewDerivates
+            // 
+            this.treeViewDerivates.AllowDrop = true;
+            resources.ApplyResources(this.treeViewDerivates, "treeViewDerivates");
+            this.treeViewDerivates.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewDerivates.FullRowSelect = true;
+            this.treeViewDerivates.HideSelection = false;
+            this.treeViewDerivates.HotTracking = true;
+            this.treeViewDerivates.ItemHeight = 23;
+            this.treeViewDerivates.Name = "treeViewDerivates";
+            this.treeViewDerivates.ShowLines = false;
+            this.treeViewDerivates.ShowNodeToolTips = true;
+            this.treeViewDerivates.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewDerivates_ItemDrag);
+            this.treeViewDerivates.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTaxa_AfterSelect);
+            this.treeViewDerivates.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewDerivates_NodeMouseClick);
+            this.treeViewDerivates.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewDerivates_NodeMouseDoubleClick);
+            this.treeViewDerivates.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragDrop);
+            this.treeViewDerivates.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragEnter);
+            this.treeViewDerivates.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragOver);
+            this.treeViewDerivates.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeViewDerivates_MouseClick);
+            // 
             // treeViewTaxa
             // 
             this.treeViewTaxa.AllowDrop = true;
@@ -407,10 +437,6 @@
             this.treeViewTaxa.ItemHeight = 23;
             this.treeViewTaxa.LabelEdit = true;
             this.treeViewTaxa.Name = "treeViewTaxa";
-            this.treeViewTaxa.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes1"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewTaxa.Nodes2")))});
             this.treeViewTaxa.ShowLines = false;
             this.treeViewTaxa.ShowNodeToolTips = true;
             this.treeViewTaxa.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeViewTaxa_AfterLabelEdit);
@@ -421,6 +447,7 @@
             this.treeViewTaxa.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragDrop);
             this.treeViewTaxa.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragEnter);
             this.treeViewTaxa.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragOver);
+            this.treeViewTaxa.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeViewTaxa_MouseClick);
             // 
             // tabPageKey
             // 
@@ -749,21 +776,21 @@
             // 
             this.tdbSetSpeciesCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
             // 
-            // taskDialogReassociateSpecies
+            // tdSpeciesRepresence
             // 
-            this.taskDialogReassociateSpecies.AllowDialogCancellation = true;
-            this.taskDialogReassociateSpecies.Buttons.Add(this.tdbReassSpecies);
-            this.taskDialogReassociateSpecies.Buttons.Add(this.tdbReassSpeciesCancel);
-            this.taskDialogReassociateSpecies.CenterParent = true;
-            resources.ApplyResources(this.taskDialogReassociateSpecies, "taskDialogReassociateSpecies");
+            this.tdSpeciesRepresence.AllowDialogCancellation = true;
+            this.tdSpeciesRepresence.Buttons.Add(this.tdbRepSpecies);
+            this.tdSpeciesRepresence.Buttons.Add(this.tdbRepSpeciesCancel);
+            this.tdSpeciesRepresence.CenterParent = true;
+            resources.ApplyResources(this.tdSpeciesRepresence, "tdSpeciesRepresence");
             // 
-            // tdbReassSpecies
+            // tdbRepSpecies
             // 
-            resources.ApplyResources(this.tdbReassSpecies, "tdbReassSpecies");
+            resources.ApplyResources(this.tdbRepSpecies, "tdbRepSpecies");
             // 
-            // tdbReassSpeciesCancel
+            // tdbRepSpeciesCancel
             // 
-            this.tdbReassSpeciesCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
+            this.tdbRepSpeciesCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
             // 
             // taskDialogDeleteSpecies
             // 
@@ -772,6 +799,7 @@
             this.taskDialogDeleteSpecies.Buttons.Add(this.tdbDeleteRep);
             this.taskDialogDeleteSpecies.Buttons.Add(this.tdbDeleteCancel);
             this.taskDialogDeleteSpecies.CenterParent = true;
+            this.taskDialogDeleteSpecies.IsVerificationChecked = true;
             resources.ApplyResources(this.taskDialogDeleteSpecies, "taskDialogDeleteSpecies");
             // 
             // tdbDeleteSpc
@@ -796,6 +824,27 @@
             // 
             this.backTreeLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backTreeLoader_DoWork);
             this.backTreeLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backTreeLoader_RunWorkerCompleted);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // backListLoader
+            // 
+            this.backListLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backListLoader_DoWork);
+            this.backListLoader.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backListLoader_ProgressChanged);
+            this.backListLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backListLoader_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -858,7 +907,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderReference;
         public System.Windows.Forms.TreeView treeViewTaxa;
         private System.Windows.Forms.TabPage tabPageKey;
-        private System.Windows.Forms.Label labelTaxCount;
         private System.Windows.Forms.TabPage tabPagePictures;
         private System.Windows.Forms.ToolStripMenuItem menuPictures;
         private System.Windows.Forms.ToolStripMenuItem menuItemPictureLoad;
@@ -886,15 +934,15 @@
         private Mayfly.Controls.Status status;
         private TaskDialogs.TaskDialog taskDialogSaveChanges;
         private TaskDialogs.TaskDialog taskDialogAssociateSpecies;
-        private TaskDialogs.TaskDialog taskDialogReassociateSpecies;
+        private TaskDialogs.TaskDialog tdSpeciesRepresence;
         private TaskDialogs.TaskDialog taskDialogDeleteSpecies;
         private TaskDialogs.TaskDialogButton tdbSave;
         private TaskDialogs.TaskDialogButton tdbDiscard;
         private TaskDialogs.TaskDialogButton tdbCancelClose;
         private TaskDialogs.TaskDialogButton tdbSetSpecies;
         private TaskDialogs.TaskDialogButton tdbSetSpeciesCancel;
-        private TaskDialogs.TaskDialogButton tdbReassSpecies;
-        private TaskDialogs.TaskDialogButton tdbReassSpeciesCancel;
+        private TaskDialogs.TaskDialogButton tdbRepSpecies;
+        private TaskDialogs.TaskDialogButton tdbRepSpeciesCancel;
         private TaskDialogs.TaskDialogButton tdbDeleteSpc;
         private TaskDialogs.TaskDialogButton tdbDeleteRep;
         private TaskDialogs.TaskDialogButton tdbDeleteCancel;
@@ -925,5 +973,11 @@
         private System.Windows.Forms.ToolStripMenuItem contextRemoveSynonym;
         private System.ComponentModel.BackgroundWorker backSpcLoader;
         private System.ComponentModel.BackgroundWorker backTreeLoader;
+        private System.Windows.Forms.Label labelTaxCount;
+        public System.Windows.Forms.TreeView treeViewDerivates;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.ComponentModel.BackgroundWorker backListLoader;
     }
 }

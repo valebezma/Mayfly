@@ -66,7 +66,7 @@ namespace Mayfly.Species
                     else
                     {
                         return treeViewTaxa.SelectedNode.Level == 0 &&
-                            treeViewTaxa.SelectedNode.Name != "AllSpecies";
+                            treeViewTaxa.SelectedNode.Name != "RootAll";
                     }
                 }
             }

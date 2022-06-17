@@ -156,6 +156,12 @@
   <data name="SpeciesReassociated" xml:space="preserve">
     <value>{0} moved from {1} into {2}</value>
   </data>
+  <data name="SpeciesRep" xml:space="preserve">
+    <value>{0} is associated with {1}</value>
+  </data>
+  <data name="SpeciesRepContent" xml:space="preserve">
+    <value>You are about to associate {0} with {1} instead of currently set association.</value>
+  </data>
   <data name="TaxaReassociateContent" xml:space="preserve">
     <value>Current sequance is already associated with {0}. Continue to reassociate it with {1} anyway?</value>
   </data>

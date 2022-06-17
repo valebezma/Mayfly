@@ -790,6 +790,8 @@ namespace Mayfly.Benthos.Explorer
                 {
                     gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
                     gridRow.Cells[columnSpcID.Index].Value = tc[i].DataRow?.ID;
+
+                    if (tc[i].DataRow == null) gridRow.Cells[columnSpcSpc.Index].Value = tc[i].Name;
                 }
                 else if (composition is SpeciesComposition sc)
                 {

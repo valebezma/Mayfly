@@ -48,13 +48,13 @@ namespace Mayfly.Species {
         
         private global::System.Data.DataRelation relationFK_Base_Taxa;
         
-        private global::System.Data.DataRelation relationFK_Species_Representative;
-        
         private global::System.Data.DataRelation relationFK_Taxa_Representative;
         
-        private global::System.Data.DataRelation relationFK_Species_Synonymy;
+        private global::System.Data.DataRelation relationFK_Species_Representative;
         
         private global::System.Data.DataRelation relationSpecies_Synonymy;
+        
+        private global::System.Data.DataRelation relationFK_Species_Synonymy;
         
         private global::System.Data.DataRelation relationFK_Taxa_Derivation1;
         
@@ -465,10 +465,10 @@ namespace Mayfly.Species {
                 }
             }
             this.relationFK_Base_Taxa = this.Relations["FK_Base_Taxa"];
-            this.relationFK_Species_Representative = this.Relations["FK_Species_Representative"];
             this.relationFK_Taxa_Representative = this.Relations["FK_Taxa_Representative"];
-            this.relationFK_Species_Synonymy = this.Relations["FK_Species_Synonymy"];
+            this.relationFK_Species_Representative = this.Relations["FK_Species_Representative"];
             this.relationSpecies_Synonymy = this.Relations["Species_Synonymy"];
+            this.relationFK_Species_Synonymy = this.Relations["FK_Species_Synonymy"];
             this.relationFK_Taxa_Derivation1 = this.Relations["FK_Taxa_Derivation1"];
             this.relationFK_Taxa_Derivation = this.Relations["FK_Taxa_Derivation"];
             this.relationTaxa_State = this.Relations["Taxa_State"];
@@ -518,13 +518,6 @@ namespace Mayfly.Species {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Species_Representative", new global::System.Data.DataColumn[] {
-                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRep.SpcIDColumn});
-            this.tableRep.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Taxa_Representative", new global::System.Data.DataColumn[] {
                         this.tableTaxa.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableRep.TaxIDColumn});
@@ -532,10 +525,10 @@ namespace Mayfly.Species {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Species_Synonymy", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Species_Representative", new global::System.Data.DataColumn[] {
                         this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSynonymy.MinIDColumn});
-            this.tableSynonymy.Constraints.Add(fkc);
+                        this.tableRep.SpcIDColumn});
+            this.tableRep.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
@@ -546,6 +539,13 @@ namespace Mayfly.Species {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Species_Synonymy", new global::System.Data.DataColumn[] {
+                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSynonymy.MinIDColumn});
+            this.tableSynonymy.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Taxa_Derivation1", new global::System.Data.DataColumn[] {
                         this.tableTaxa.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDerivation.MinTaxIDColumn});
@@ -564,22 +564,22 @@ namespace Mayfly.Species {
                         this.tableBase.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTaxa.BasIDColumn}, false);
             this.Relations.Add(this.relationFK_Base_Taxa);
-            this.relationFK_Species_Representative = new global::System.Data.DataRelation("FK_Species_Representative", new global::System.Data.DataColumn[] {
-                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRep.SpcIDColumn}, false);
-            this.Relations.Add(this.relationFK_Species_Representative);
             this.relationFK_Taxa_Representative = new global::System.Data.DataRelation("FK_Taxa_Representative", new global::System.Data.DataColumn[] {
                         this.tableTaxa.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableRep.TaxIDColumn}, false);
             this.Relations.Add(this.relationFK_Taxa_Representative);
-            this.relationFK_Species_Synonymy = new global::System.Data.DataRelation("FK_Species_Synonymy", new global::System.Data.DataColumn[] {
+            this.relationFK_Species_Representative = new global::System.Data.DataRelation("FK_Species_Representative", new global::System.Data.DataColumn[] {
                         this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSynonymy.MinIDColumn}, false);
-            this.Relations.Add(this.relationFK_Species_Synonymy);
+                        this.tableRep.SpcIDColumn}, false);
+            this.Relations.Add(this.relationFK_Species_Representative);
             this.relationSpecies_Synonymy = new global::System.Data.DataRelation("Species_Synonymy", new global::System.Data.DataColumn[] {
                         this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableSynonymy.MajIDColumn}, false);
             this.Relations.Add(this.relationSpecies_Synonymy);
+            this.relationFK_Species_Synonymy = new global::System.Data.DataRelation("FK_Species_Synonymy", new global::System.Data.DataColumn[] {
+                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSynonymy.MinIDColumn}, false);
+            this.Relations.Add(this.relationFK_Species_Synonymy);
             this.relationFK_Taxa_Derivation1 = new global::System.Data.DataRelation("FK_Taxa_Derivation1", new global::System.Data.DataColumn[] {
                         this.tableTaxa.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDerivation.MinTaxIDColumn}, false);
@@ -1875,8 +1875,11 @@ namespace Mayfly.Species {
                 base.Columns.Add(this.columnTaxID);
                 this.columnSpcID = new global::System.Data.DataColumn("SpcID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSpcID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnSpcID}, false));
                 this.columnTaxID.AllowDBNull = false;
                 this.columnSpcID.AllowDBNull = false;
+                this.columnSpcID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3683,8 +3686,11 @@ namespace Mayfly.Species {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMajID,
                                 this.columnMinID}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnMinID}, false));
                 this.columnMajID.AllowDBNull = false;
                 this.columnMinID.AllowDBNull = false;
+                this.columnMinID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3963,8 +3969,11 @@ namespace Mayfly.Species {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMajTaxID,
                                 this.columnMinTaxID}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnMinTaxID}, false));
                 this.columnMajTaxID.AllowDBNull = false;
                 this.columnMinTaxID.AllowDBNull = false;
+                this.columnMinTaxID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4213,23 +4222,23 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SynonymyRow[] GetSynonymyRowsByFK_Species_Synonymy() {
-                if ((this.Table.ChildRelations["FK_Species_Synonymy"] == null)) {
-                    return new SynonymyRow[0];
-                }
-                else {
-                    return ((SynonymyRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Species_Synonymy"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SynonymyRow[] GetSynonymyRowsBySpecies_Synonymy() {
                 if ((this.Table.ChildRelations["Species_Synonymy"] == null)) {
                     return new SynonymyRow[0];
                 }
                 else {
                     return ((SynonymyRow[])(base.GetChildRows(this.Table.ChildRelations["Species_Synonymy"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SynonymyRow[] GetSynonymyRowsByFK_Species_Synonymy() {
+                if ((this.Table.ChildRelations["FK_Species_Synonymy"] == null)) {
+                    return new SynonymyRow[0];
+                }
+                else {
+                    return ((SynonymyRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Species_Synonymy"])));
                 }
             }
             
@@ -4585,23 +4594,23 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow SpeciesRow {
-                get {
-                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Species_Representative"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Species_Representative"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TaxaRow TaxaRow {
                 get {
                     return ((TaxaRow)(this.GetParentRow(this.Table.ParentRelations["FK_Taxa_Representative"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Taxa_Representative"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SpeciesRow SpeciesRow {
+                get {
+                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Species_Representative"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Species_Representative"]);
                 }
             }
         }
@@ -5348,23 +5357,23 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow SpeciesRowByFK_Species_Synonymy {
-                get {
-                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Species_Synonymy"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Species_Synonymy"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SpeciesRow SpeciesRowBySpecies_Synonymy {
                 get {
                     return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["Species_Synonymy"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Species_Synonymy"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SpeciesRow SpeciesRowByFK_Species_Synonymy {
+                get {
+                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Species_Synonymy"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Species_Synonymy"]);
                 }
             }
         }
