@@ -265,6 +265,18 @@ namespace Mayfly.Species
                 return (SpeciesRow[])this.Select(null, "Species asc");
             }
 
+            public SpeciesRow[] GetOrphans()
+            {
+                List<SpeciesRow> result = new List<SpeciesRow>();
+                foreach (SpeciesRow spcRow in this)
+                {
+                    if (spcRow.GetRepRows().Length == 0)
+                        result.Add(spcRow);
+                }
+                result.Sort();
+                return result.ToArray();
+            }
+
         }
 
         partial class BaseRow : IComparable<BaseRow>
@@ -697,6 +709,37 @@ namespace Mayfly.Species
 
                 return null;
             }
+
+            public TaxaRow[] GetParents()
+            {
+                List<TaxaRow> result = new List<TaxaRow>();
+
+                foreach (TaxaRow taxaRow in ((SpeciesKey)tableSpecies.DataSet).Taxa)
+                {
+                    if (taxaRow.Includes(this, true))
+                    {
+                        result.Add(taxaRow);
+                    }
+                }
+
+                result.Sort();
+                return result.ToArray();
+            }
+
+            //internal object GetLowestTaxon(TaxaRow selectedTaxon)
+            //{
+            //    TaxaRow result = selectedTaxon;
+
+            //    foreach (TaxaRow taxaRow in selectedTaxon.GetChildren(true))
+            //    {
+            //        if (taxaRow.Includes(this, false))
+            //        {
+            //            return taxaRow;
+            //        }
+            //    }
+
+            //    return null;
+            //}
 
             public void RemoveFrom(TaxaRow taxaRow)
             {

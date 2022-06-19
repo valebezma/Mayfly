@@ -121,6 +121,37 @@
     <value>250, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="menuFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="menuItemAddData.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
@@ -147,7 +178,6 @@
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 6</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuItemSave.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -215,11 +245,11 @@
   <data name="menuItemExit.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="menuFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+  <data name="menuSample.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
   </data>
-  <data name="menuFile.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="menuSample.Text" xml:space="preserve">
+    <value>Sample</value>
   </data>
   <data name="menuItemGearStats.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
@@ -235,6 +265,12 @@
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 6</value>
+  </data>
+  <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="menuItemCards.Text" xml:space="preserve">
+    <value>Cards</value>
   </data>
   <data name="menuItemCardAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
@@ -263,17 +299,17 @@
   <data name="menuItemCardGear.Text" xml:space="preserve">
     <value>Sampled with</value>
   </data>
-  <data name="menuItemCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
-  </data>
-  <data name="menuItemCards.Text" xml:space="preserve">
-    <value>Cards</value>
-  </data>
   <data name="menuItemSpc.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
   </data>
   <data name="menuItemSpc.Text" xml:space="preserve">
     <value>Species</value>
+  </data>
+  <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 22</value>
+  </data>
+  <data name="menuItemLog.Text" xml:space="preserve">
+    <value>Log</value>
   </data>
   <data name="menuItemLogAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
@@ -284,11 +320,17 @@
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 6</value>
   </data>
-  <data name="menuItemLog.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
   </data>
-  <data name="menuItemLog.Text" xml:space="preserve">
-    <value>Log</value>
+  <data name="menuItemIndividuals.Text" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
+  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="menuItemIndAll.Text" xml:space="preserve">
+    <value>All records</value>
   </data>
   <data name="menuItemIndAllAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
@@ -299,11 +341,11 @@
   <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 6</value>
   </data>
-  <data name="menuItemIndAll.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
   </data>
-  <data name="menuItemIndAll.Text" xml:space="preserve">
-    <value>All records</value>
+  <data name="menuItemIndSuggested.Text" xml:space="preserve">
+    <value>Suggested for age read</value>
   </data>
   <data name="menuItemIndSuggestedAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
@@ -314,29 +356,17 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 6</value>
   </data>
-  <data name="menuItemIndSuggested.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="menuItemIndSuggested.Text" xml:space="preserve">
-    <value>Suggested for age read</value>
-  </data>
-  <data name="menuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
-  </data>
-  <data name="menuItemIndividuals.Text" xml:space="preserve">
-    <value>Individuals</value>
-  </data>
   <data name="menuItemStratified.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
   </data>
   <data name="menuItemStratified.Text" xml:space="preserve">
     <value>Stratified samples</value>
   </data>
-  <data name="menuSample.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
+  <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
   </data>
-  <data name="menuSample.Text" xml:space="preserve">
-    <value>Sample</value>
+  <data name="menuSurvey.Text" xml:space="preserve">
+    <value>Survey*</value>
   </data>
   <data name="menuItemSurveyInput.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 22</value>
@@ -350,11 +380,11 @@
   <data name="menuItemSpawning.Text" xml:space="preserve">
     <value>Spawning conditions</value>
   </data>
-  <data name="menuSurvey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
+  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 20</value>
   </data>
-  <data name="menuSurvey.Text" xml:space="preserve">
-    <value>Survey*</value>
+  <data name="menuModels.Text" xml:space="preserve">
+    <value>Models*</value>
   </data>
   <data name="menuItemMSYR.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 22</value>
@@ -362,22 +392,16 @@
   <data name="menuItemMSYR.Text" xml:space="preserve">
     <value>Yield per recruit (Y/R) model</value>
   </data>
-  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 22</value>
-  </data>
-  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
-    <value>Unspecified</value>
-  </data>
   <data name="menuItemMSY.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 22</value>
   </data>
   <data name="menuItemMSY.Text" xml:space="preserve">
     <value>Maximum sustainable yield (MSY) model</value>
   </data>
-  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="meniItemMSYUnspecified.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 22</value>
   </data>
-  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
+  <data name="meniItemMSYUnspecified.Text" xml:space="preserve">
     <value>Unspecified</value>
   </data>
   <data name="menuItemPrediction.Size" type="System.Drawing.Size, System.Drawing">
@@ -386,11 +410,17 @@
   <data name="menuItemPrediction.Text" xml:space="preserve">
     <value>Prediction model</value>
   </data>
-  <data name="menuModels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
+  <data name="menuItemPredictionUnspecified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
   </data>
-  <data name="menuModels.Text" xml:space="preserve">
-    <value>Models*</value>
+  <data name="menuItemPredictionUnspecified.Text" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 20</value>
+  </data>
+  <data name="menuInstant.Text" xml:space="preserve">
+    <value>Instant fishery assessment</value>
   </data>
   <data name="menuItemCenosis.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 22</value>
@@ -407,6 +437,18 @@
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 6</value>
   </data>
+  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="menuItemStock.Text" xml:space="preserve">
+    <value>Stock size estimation</value>
+  </data>
+  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuItemExtrapolation.Text" xml:space="preserve">
+    <value>Direct extrapolation</value>
+  </data>
   <data name="menuItemExtrapolationAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 22</value>
   </data>
@@ -416,23 +458,11 @@
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 6</value>
   </data>
-  <data name="menuItemExtrapolation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
   </data>
-  <data name="menuItemExtrapolation.Text" xml:space="preserve">
-    <value>Direct extrapolation</value>
-  </data>
-  <data name="menuItemStock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 22</value>
-  </data>
-  <data name="menuItemStock.Text" xml:space="preserve">
-    <value>Stock size estimation</value>
-  </data>
-  <data name="menuInstant.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 20</value>
-  </data>
-  <data name="menuInstant.Text" xml:space="preserve">
-    <value>Instant fishery assessment</value>
+  <data name="menuCohort.Text" xml:space="preserve">
+    <value>Cohort analysis*</value>
   </data>
   <data name="menuItemGrowthCohorts.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 22</value>
@@ -455,11 +485,14 @@
   <data name="menuItemVpa.Text" xml:space="preserve">
     <value>Virtual population analysis</value>
   </data>
-  <data name="menuCohort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
+  <data name="menuCards.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 20</value>
   </data>
-  <data name="menuCohort.Text" xml:space="preserve">
-    <value>Cohort analysis*</value>
+  <data name="menuCards.Text" xml:space="preserve">
+    <value>Cards</value>
+  </data>
+  <data name="menuCards.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="menuItemCardMeteo.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
@@ -514,13 +547,13 @@
   <data name="menuItemCardEfforts.Text" xml:space="preserve">
     <value>See effort stats</value>
   </data>
-  <data name="menuCards.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 20</value>
+  <data name="menuSpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
   </data>
-  <data name="menuCards.Text" xml:space="preserve">
-    <value>Cards</value>
+  <data name="menuSpc.Text" xml:space="preserve">
+    <value>Species</value>
   </data>
-  <data name="menuCards.Visible" type="System.Boolean, mscorlib">
+  <data name="menuSpc.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
@@ -544,13 +577,13 @@
   <data name="menuItemSpcStrates.Text" xml:space="preserve">
     <value>See qualification</value>
   </data>
-  <data name="menuSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
+  <data name="menuIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 20</value>
   </data>
-  <data name="menuSpc.Text" xml:space="preserve">
-    <value>Species</value>
+  <data name="menuIndividuals.Text" xml:space="preserve">
+    <value>Individuals</value>
   </data>
-  <data name="menuSpc.Visible" type="System.Boolean, mscorlib">
+  <data name="menuIndividuals.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menuItemIndExtra.Size" type="System.Drawing.Size, System.Drawing">
@@ -627,13 +660,13 @@
   <data name="menuItemIndClearSimulated.Text" xml:space="preserve">
     <value>Clear virtualized individuals</value>
   </data>
-  <data name="menuIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 20</value>
+  <data name="menuStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 20</value>
   </data>
-  <data name="menuIndividuals.Text" xml:space="preserve">
-    <value>Individuals</value>
+  <data name="menuStratified.Text" xml:space="preserve">
+    <value>Stratified samples</value>
   </data>
-  <data name="menuIndividuals.Visible" type="System.Boolean, mscorlib">
+  <data name="menuStratified.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menuItemStratifiedPrint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -659,14 +692,11 @@
   <data name="menuItemStratifiedPrint.Text" xml:space="preserve">
     <value>Print stratified samples</value>
   </data>
-  <data name="menuStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 20</value>
+  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
   </data>
-  <data name="menuStratified.Text" xml:space="preserve">
-    <value>Stratified samples</value>
-  </data>
-  <data name="menuStratified.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="menuService.Text" xml:space="preserve">
+    <value>Service</value>
   </data>
   <data name="menuItemSettings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -698,36 +728,6 @@
   <data name="menuItemAbout.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="menuService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
-  </data>
-  <data name="menuService.Text" xml:space="preserve">
-    <value>Service</value>
-  </data>
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1184, 24</value>
-  </data>
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="statusQuantity.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -755,6 +755,342 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Name" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageGearStats.Name" xml:space="preserve">
+    <value>tabPageGearStats</value>
+  </data>
+  <data name="&gt;&gt;tabPageGearStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageGearStats.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageGearStats.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Name" xml:space="preserve">
+    <value>tabPageSpcStats</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageCard.Name" xml:space="preserve">
+    <value>tabPageCard</value>
+  </data>
+  <data name="&gt;&gt;tabPageCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCard.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageCard.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.Name" xml:space="preserve">
+    <value>tabPageSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabPageStratified.Name" xml:space="preserve">
+    <value>tabPageStratified</value>
+  </data>
+  <data name="&gt;&gt;tabPageStratified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageStratified.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageStratified.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tabPageInd.Name" xml:space="preserve">
+    <value>tabPageInd</value>
+  </data>
+  <data name="&gt;&gt;tabPageInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageInd.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageInd.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 36</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1160, 789</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;labelWgt.Name" xml:space="preserve">
+    <value>labelWgt</value>
+  </data>
+  <data name="&gt;&gt;labelWgt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWgt.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelWgt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelWgtValue.Name" xml:space="preserve">
+    <value>labelWgtValue</value>
+  </data>
+  <data name="&gt;&gt;labelWgtValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWgtValue.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelWgtValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelQty.Name" xml:space="preserve">
+    <value>labelQty</value>
+  </data>
+  <data name="&gt;&gt;labelQty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQty.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelQty.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelQtyValue.Name" xml:space="preserve">
+    <value>labelQtyValue</value>
+  </data>
+  <data name="&gt;&gt;labelQtyValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQtyValue.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelQtyValue.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelArtifacts.Name" xml:space="preserve">
+    <value>labelArtifacts</value>
+  </data>
+  <data name="&gt;&gt;labelArtifacts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelArtifacts.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelArtifacts.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxArtifacts.Name" xml:space="preserve">
+    <value>pictureBoxArtifacts</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxArtifacts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxArtifacts.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxArtifacts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;listViewInvestigators.Name" xml:space="preserve">
+    <value>listViewInvestigators</value>
+  </data>
+  <data name="&gt;&gt;listViewInvestigators.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewInvestigators.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;listViewInvestigators.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;listViewDates.Name" xml:space="preserve">
+    <value>listViewDates</value>
+  </data>
+  <data name="&gt;&gt;listViewDates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewDates.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;listViewDates.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;listViewSamplers.Name" xml:space="preserve">
+    <value>listViewSamplers</value>
+  </data>
+  <data name="&gt;&gt;listViewSamplers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewSamplers.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;listViewSamplers.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;listViewWaters.Name" xml:space="preserve">
+    <value>listViewWaters</value>
+  </data>
+  <data name="&gt;&gt;listViewWaters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listViewWaters.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;listViewWaters.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;labelSamplers.Name" xml:space="preserve">
+    <value>labelSamplers</value>
+  </data>
+  <data name="&gt;&gt;labelSamplers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSamplers.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelSamplers.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;labelWaters.Name" xml:space="preserve">
+    <value>labelWaters</value>
+  </data>
+  <data name="&gt;&gt;labelWaters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWaters.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelWaters.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;labelCollectors.Name" xml:space="preserve">
+    <value>labelCollectors</value>
+  </data>
+  <data name="&gt;&gt;labelCollectors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCollectors.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelCollectors.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;labelCardCount.Name" xml:space="preserve">
+    <value>labelCardCount</value>
+  </data>
+  <data name="&gt;&gt;labelCardCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCardCount.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelCardCount.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;labelCardCountValue.Name" xml:space="preserve">
+    <value>labelCardCountValue</value>
+  </data>
+  <data name="&gt;&gt;labelCardCountValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCardCountValue.Parent" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;labelCardCountValue.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="tabPageInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageInfo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1152, 763</value>
+  </data>
+  <data name="tabPageInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageInfo.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Name" xml:space="preserve">
+    <value>tabPageInfo</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelWgt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -992,12 +1328,6 @@
   <data name="listViewInvestigators.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="columnInvestigator.Text" xml:space="preserve">
-    <value>Investigator</value>
-  </data>
-  <data name="columnInvestigator.Width" type="System.Int32, mscorlib">
-    <value>250</value>
-  </data>
   <data name="listViewInvestigators.Location" type="System.Drawing.Point, System.Drawing">
     <value>854, 88</value>
   </data>
@@ -1019,14 +1349,14 @@
   <data name="&gt;&gt;listViewInvestigators.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="columnInvestigator.Text" xml:space="preserve">
+    <value>Investigator</value>
+  </data>
+  <data name="columnInvestigator.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
   <data name="listViewDates.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
-  </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
-    <value>Water</value>
-  </data>
-  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
-    <value>250</value>
   </data>
   <data name="listViewDates.Location" type="System.Drawing.Point, System.Drawing">
     <value>573, 483</value>
@@ -1049,14 +1379,14 @@
   <data name="&gt;&gt;listViewDates.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="listViewSamplers.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="columnHeader6.Text" xml:space="preserve">
+  <data name="columnHeader1.Text" xml:space="preserve">
     <value>Water</value>
   </data>
-  <data name="columnHeader6.Width" type="System.Int32, mscorlib">
+  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
     <value>250</value>
+  </data>
+  <data name="listViewSamplers.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="listViewSamplers.Location" type="System.Drawing.Point, System.Drawing">
     <value>854, 590</value>
@@ -1079,6 +1409,12 @@
   <data name="&gt;&gt;listViewSamplers.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="columnHeader6.Text" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="columnHeader6.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
   <data name="listViewWaters.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Right</value>
   </data>
@@ -1096,7 +1432,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAg
-        CwAAAk1TRnQBSQFMAgEBAwEAAQQBOAEEATgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAARwBOAEcATgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1392,32 +1728,68 @@
   <data name="&gt;&gt;labelCardCountValue.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="tabPageInfo.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;buttonGearStatsReport.Name" xml:space="preserve">
+    <value>buttonGearStatsReport</value>
+  </data>
+  <data name="&gt;&gt;buttonGearStatsReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonGearStatsReport.Parent" xml:space="preserve">
+    <value>tabPageGearStats</value>
+  </data>
+  <data name="&gt;&gt;buttonGearStatsReport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGearStats.Name" xml:space="preserve">
+    <value>spreadSheetGearStats</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGearStats.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGearStats.Parent" xml:space="preserve">
+    <value>tabPageGearStats</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetGearStats.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Name" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Parent" xml:space="preserve">
+    <value>tabPageGearStats</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageGearStats.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageInfo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="tabPageGearStats.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>15, 15, 15, 15</value>
   </data>
-  <data name="tabPageInfo.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageGearStats.Size" type="System.Drawing.Size, System.Drawing">
     <value>1152, 763</value>
   </data>
-  <data name="tabPageInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="tabPageGearStats.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="tabPageInfo.Text" xml:space="preserve">
-    <value>Summary</value>
+  <data name="tabPageGearStats.Text" xml:space="preserve">
+    <value>Gears stats</value>
   </data>
-  <data name="&gt;&gt;tabPageInfo.Name" xml:space="preserve">
-    <value>tabPageInfo</value>
+  <data name="&gt;&gt;tabPageGearStats.Name" xml:space="preserve">
+    <value>tabPageGearStats</value>
   </data>
-  <data name="&gt;&gt;tabPageInfo.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageGearStats.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageInfo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageGearStats.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageInfo.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabPageGearStats.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="buttonGearStatsReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -1449,14 +1821,11 @@
   <data name="&gt;&gt;buttonGearStatsReport.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="spreadSheetGearStats.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
   <metadata name="ColumnGearStats.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnGearStats.HeaderText" xml:space="preserve">
-    <value>Gear type</value>
+  <data name="spreadSheetGearStats.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="spreadSheetGearStats.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 18</value>
@@ -1482,8 +1851,194 @@
   <data name="&gt;&gt;spreadSheetGearStats.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="ColumnGearStats.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnGearStats.HeaderText" xml:space="preserve">
+    <value>Gear type</value>
+  </data>
   <data name="tabControlCard.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Name" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Parent" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardSchedule.Name" xml:space="preserve">
+    <value>tabPageCardSchedule</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardSchedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardSchedule.Parent" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardSchedule.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.Name" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.Parent" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControlCard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 18</value>
+  </data>
+  <data name="tabControlCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>898, 727</value>
+  </data>
+  <data name="tabControlCard.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Name" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.Parent" xml:space="preserve">
+    <value>tabPageGearStats</value>
+  </data>
+  <data name="&gt;&gt;tabControlCard.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelEffortsNoData.Name" xml:space="preserve">
+    <value>labelEffortsNoData</value>
+  </data>
+  <data name="&gt;&gt;labelEffortsNoData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelEffortsNoData.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;labelEffortsNoData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEffortUE.Name" xml:space="preserve">
+    <value>comboBoxEffortUE</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEffortUE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEffortUE.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEffortUE.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEffortDaily.Name" xml:space="preserve">
+    <value>checkBoxEffortDaily</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEffortDaily.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEffortDaily.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;checkBoxEffortDaily.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerEffort.Name" xml:space="preserve">
+    <value>dateTimePickerEffort</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerEffort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerEffort.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerEffort.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetEfforts.Name" xml:space="preserve">
+    <value>spreadSheetEfforts</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetEfforts.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetEfforts.Parent" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetEfforts.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageCardEfforts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageCardEfforts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>890, 701</value>
+  </data>
+  <data name="tabPageCardEfforts.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageCardEfforts.Text" xml:space="preserve">
+    <value>Efforts</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Name" xml:space="preserve">
+    <value>tabPageCardEfforts</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.Parent" xml:space="preserve">
+    <value>tabControlCard</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardEfforts.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelEffortsNoData.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1692,32 +2247,20 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="spreadSheetEfforts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <metadata name="columnEffortMesh.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnEffortMesh.HeaderText" xml:space="preserve">
-    <value>Class</value>
-  </data>
   <metadata name="columnEffortReps.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnEffortReps.HeaderText" xml:space="preserve">
-    <value>Operations conducted</value>
-  </data>
   <metadata name="columnEffort.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnEffort.HeaderText" xml:space="preserve">
-    <value>Efforts, {0}</value>
-  </data>
   <metadata name="columnEffortEO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnEffortEO.HeaderText" xml:space="preserve">
-    <value>Efforts per operation</value>
+  <data name="spreadSheetEfforts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="spreadSheetEfforts.Location" type="System.Drawing.Point, System.Drawing">
     <value>342, 73</value>
@@ -1743,32 +2286,92 @@
   <data name="&gt;&gt;spreadSheetEfforts.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="tabPageCardEfforts.Location" type="System.Drawing.Point, System.Drawing">
+  <metadata name="columnEffortMesh.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnEffortMesh.HeaderText" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <metadata name="columnEffortReps.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnEffortReps.HeaderText" xml:space="preserve">
+    <value>Operations conducted</value>
+  </data>
+  <metadata name="columnEffort.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnEffort.HeaderText" xml:space="preserve">
+    <value>Efforts, {0}</value>
+  </data>
+  <metadata name="columnEffortEO.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnEffortEO.HeaderText" xml:space="preserve">
+    <value>Efforts per operation</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>tabPageCardSchedule</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>tabPageCardSchedule</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chartSchedule.Name" xml:space="preserve">
+    <value>chartSchedule</value>
+  </data>
+  <data name="&gt;&gt;chartSchedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;chartSchedule.Parent" xml:space="preserve">
+    <value>tabPageCardSchedule</value>
+  </data>
+  <data name="&gt;&gt;chartSchedule.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageCardSchedule.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageCardEfforts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageCardSchedule.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageCardEfforts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCardSchedule.Size" type="System.Drawing.Size, System.Drawing">
     <value>890, 701</value>
   </data>
-  <data name="tabPageCardEfforts.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabPageCardSchedule.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="tabPageCardEfforts.Text" xml:space="preserve">
-    <value>Efforts</value>
+  <data name="tabPageCardSchedule.Text" xml:space="preserve">
+    <value>Fishing schedule</value>
   </data>
-  <data name="&gt;&gt;tabPageCardEfforts.Name" xml:space="preserve">
-    <value>tabPageCardEfforts</value>
+  <data name="&gt;&gt;tabPageCardSchedule.Name" xml:space="preserve">
+    <value>tabPageCardSchedule</value>
   </data>
-  <data name="&gt;&gt;tabPageCardEfforts.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCardSchedule.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCardEfforts.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCardSchedule.Parent" xml:space="preserve">
     <value>tabControlCard</value>
   </data>
-  <data name="&gt;&gt;tabPageCardEfforts.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabPageCardSchedule.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1860,32 +2463,128 @@
   <data name="&gt;&gt;chartSchedule.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPageCardSchedule.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;labelCatchesNoData.Name" xml:space="preserve">
+    <value>labelCatchesNoData</value>
   </data>
-  <data name="tabPageCardSchedule.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="&gt;&gt;labelCatchesNoData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageCardSchedule.Size" type="System.Drawing.Size, System.Drawing">
-    <value>890, 701</value>
+  <data name="&gt;&gt;labelCatchesNoData.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
   </data>
-  <data name="tabPageCardSchedule.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;labelCatchesNoData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCatchesMesh.Name" xml:space="preserve">
+    <value>comboBoxCatchesMesh</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCatchesMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCatchesMesh.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCatchesMesh.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesMesh.Name" xml:space="preserve">
+    <value>checkBoxCatchesMesh</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesMesh.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesMesh.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesDaily.Name" xml:space="preserve">
+    <value>checkBoxCatchesDaily</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesDaily.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesDaily.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCatchesDaily.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="tabPageCardSchedule.Text" xml:space="preserve">
-    <value>Fishing schedule</value>
+  <data name="&gt;&gt;dateTimePickerCatches.Name" xml:space="preserve">
+    <value>dateTimePickerCatches</value>
   </data>
-  <data name="&gt;&gt;tabPageCardSchedule.Name" xml:space="preserve">
-    <value>tabPageCardSchedule</value>
+  <data name="&gt;&gt;dateTimePickerCatches.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCardSchedule.Type" xml:space="preserve">
+  <data name="&gt;&gt;dateTimePickerCatches.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerCatches.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Name" xml:space="preserve">
+    <value>spreadSheetCatches</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCatches.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageCardCatches.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageCardCatches.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageCardCatches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>890, 701</value>
+  </data>
+  <data name="tabPageCardCatches.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageCardCatches.Text" xml:space="preserve">
+    <value>Catches</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.Name" xml:space="preserve">
+    <value>tabPageCardCatches</value>
+  </data>
+  <data name="&gt;&gt;tabPageCardCatches.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCardSchedule.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCardCatches.Parent" xml:space="preserve">
     <value>tabControlCard</value>
   </data>
-  <data name="&gt;&gt;tabPageCardSchedule.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPageCardCatches.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labelCatchesNoData.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2064,26 +2763,17 @@
   <data name="&gt;&gt;dateTimePickerCatches.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="spreadSheetCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <metadata name="columnCatchSpc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnCatchSpc.HeaderText" xml:space="preserve">
-    <value>Species / taxa</value>
-  </data>
   <metadata name="columnCatchN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnCatchN.HeaderText" xml:space="preserve">
-    <value>Count, ind.</value>
-  </data>
   <metadata name="columnCatchW.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="columnCatchW.HeaderText" xml:space="preserve">
-    <value>Mass, kg</value>
+  <data name="spreadSheetCatches.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="spreadSheetCatches.Location" type="System.Drawing.Point, System.Drawing">
     <value>342, 73</value>
@@ -2108,6 +2798,24 @@
   </data>
   <data name="&gt;&gt;spreadSheetCatches.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <metadata name="columnCatchSpc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnCatchSpc.HeaderText" xml:space="preserve">
+    <value>Species / taxa</value>
+  </data>
+  <metadata name="columnCatchN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnCatchN.HeaderText" xml:space="preserve">
+    <value>Count, ind.</value>
+  </data>
+  <metadata name="columnCatchW.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="columnCatchW.HeaderText" xml:space="preserve">
+    <value>Mass, kg</value>
   </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2142,98 +2850,77 @@
   <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="tabPageCardCatches.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;spreadSheetSpcStats.Name" xml:space="preserve">
+    <value>spreadSheetSpcStats</value>
   </data>
-  <data name="tabPageCardCatches.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="&gt;&gt;spreadSheetSpcStats.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tabPageCardCatches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>890, 701</value>
+  <data name="&gt;&gt;spreadSheetSpcStats.Parent" xml:space="preserve">
+    <value>tabPageSpcStats</value>
   </data>
-  <data name="tabPageCardCatches.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;spreadSheetSpcStats.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="tabPageCardCatches.Text" xml:space="preserve">
-    <value>Catches</value>
+  <data name="&gt;&gt;tabControlSpc.Name" xml:space="preserve">
+    <value>tabControlSpc</value>
   </data>
-  <data name="&gt;&gt;tabPageCardCatches.Name" xml:space="preserve">
-    <value>tabPageCardCatches</value>
-  </data>
-  <data name="&gt;&gt;tabPageCardCatches.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageCardCatches.Parent" xml:space="preserve">
-    <value>tabControlCard</value>
-  </data>
-  <data name="&gt;&gt;tabPageCardCatches.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControlCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 18</value>
-  </data>
-  <data name="tabControlCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 727</value>
-  </data>
-  <data name="tabControlCard.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControlCard.Name" xml:space="preserve">
-    <value>tabControlCard</value>
-  </data>
-  <data name="&gt;&gt;tabControlCard.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabControlSpc.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabControlCard.Parent" xml:space="preserve">
-    <value>tabPageGearStats</value>
+  <data name="&gt;&gt;tabControlSpc.Parent" xml:space="preserve">
+    <value>tabPageSpcStats</value>
   </data>
-  <data name="&gt;&gt;tabControlCard.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageGearStats.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageGearStats.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 15, 15, 15</value>
-  </data>
-  <data name="tabPageGearStats.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1152, 763</value>
-  </data>
-  <data name="tabPageGearStats.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabPageGearStats.Text" xml:space="preserve">
-    <value>Gears stats</value>
-  </data>
-  <data name="&gt;&gt;tabPageGearStats.Name" xml:space="preserve">
-    <value>tabPageGearStats</value>
-  </data>
-  <data name="&gt;&gt;tabPageGearStats.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageGearStats.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageGearStats.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabControlSpc.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="spreadSheetSpcStats.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
+  <data name="&gt;&gt;buttonSpeciesStatsReport.Name" xml:space="preserve">
+    <value>buttonSpeciesStatsReport</value>
+  </data>
+  <data name="&gt;&gt;buttonSpeciesStatsReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpeciesStatsReport.Parent" xml:space="preserve">
+    <value>tabPageSpcStats</value>
+  </data>
+  <data name="&gt;&gt;buttonSpeciesStatsReport.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageSpcStats.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSpcStats.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>15, 15, 15, 15</value>
+  </data>
+  <data name="tabPageSpcStats.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1152, 763</value>
+  </data>
+  <data name="tabPageSpcStats.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="tabPageSpcStats.Text" xml:space="preserve">
+    <value>Species stats</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Name" xml:space="preserve">
+    <value>tabPageSpcStats</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcStats.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="ColumnSpcStatsID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnSpcStatsID.HeaderText" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="ColumnSpcStatsID.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <metadata name="ColumnSpcStat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
-    <value>Species</value>
+  <data name="spreadSheetSpcStats.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="spreadSheetSpcStats.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 18</value>
@@ -2259,8 +2946,527 @@
   <data name="&gt;&gt;spreadSheetSpcStats.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="ColumnSpcStatsID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSpcStatsID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ColumnSpcStatsID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="ColumnSpcStat.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnSpcStat.HeaderText" xml:space="preserve">
+    <value>Species</value>
+  </data>
   <data name="tabControlSpc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Name" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Parent" xml:space="preserve">
+    <value>tabControlSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.Name" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.Parent" xml:space="preserve">
+    <value>tabControlSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcQualify.Name" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcQualify.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcQualify.Parent" xml:space="preserve">
+    <value>tabControlSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcQualify.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControlSpc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 18</value>
+  </data>
+  <data name="tabControlSpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>898, 727</value>
+  </data>
+  <data name="tabControlSpc.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControlSpc.Name" xml:space="preserve">
+    <value>tabControlSpc</value>
+  </data>
+  <data name="&gt;&gt;tabControlSpc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlSpc.Parent" xml:space="preserve">
+    <value>tabPageSpcStats</value>
+  </data>
+  <data name="&gt;&gt;tabControlSpc.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcM.Name" xml:space="preserve">
+    <value>buttonSpcM</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcM.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcM.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcS.Name" xml:space="preserve">
+    <value>buttonSpcS</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcS.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcS.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcA.Name" xml:space="preserve">
+    <value>buttonSpcA</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcA.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcA.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcTally.Name" xml:space="preserve">
+    <value>buttonSpcTally</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcTally.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcTally.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcTally.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcW.Name" xml:space="preserve">
+    <value>buttonSpcW</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcW.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcW.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcL.Name" xml:space="preserve">
+    <value>buttonSpcL</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcL.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcL.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcLog.Name" xml:space="preserve">
+    <value>buttonSpcLog</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcLog.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcLog.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcStrat.Name" xml:space="preserve">
+    <value>buttonSpcStrat</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcStrat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcStrat.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcStrat.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWLog.Name" xml:space="preserve">
+    <value>textBoxSpcWLog</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWLog.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWLog.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWStrat.Name" xml:space="preserve">
+    <value>textBoxSpcWStrat</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWStrat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWStrat.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWStrat.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWTotal.Name" xml:space="preserve">
+    <value>textBoxSpcWTotal</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWTotal.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcWTotal.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcM.Name" xml:space="preserve">
+    <value>textBoxSpcM</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcM.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcM.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcS.Name" xml:space="preserve">
+    <value>textBoxSpcS</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcS.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcS.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcTally.Name" xml:space="preserve">
+    <value>textBoxSpcTally</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcTally.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcTally.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcTally.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcA.Name" xml:space="preserve">
+    <value>textBoxSpcA</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcA.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcA.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcW.Name" xml:space="preserve">
+    <value>textBoxSpcW</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcW.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcW.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcW.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcStrat.Name" xml:space="preserve">
+    <value>textBoxSpcStrat</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcStrat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcStrat.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcStrat.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcL.Name" xml:space="preserve">
+    <value>textBoxSpcL</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcL.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcL.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpsTotal.Name" xml:space="preserve">
+    <value>textBoxSpsTotal</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpsTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpsTotal.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpsTotal.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcLog.Name" xml:space="preserve">
+    <value>textBoxSpcLog</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcLog.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;textBoxSpcLog.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;label35.Name" xml:space="preserve">
+    <value>label35</value>
+  </data>
+  <data name="&gt;&gt;label35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label35.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;chartSpcStats.Name" xml:space="preserve">
+    <value>chartSpcStats</value>
+  </data>
+  <data name="&gt;&gt;chartSpcStats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
+  </data>
+  <data name="&gt;&gt;chartSpcStats.Parent" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;chartSpcStats.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="tabPageSpcTotals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSpcTotals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageSpcTotals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>890, 701</value>
+  </data>
+  <data name="tabPageSpcTotals.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageSpcTotals.Text" xml:space="preserve">
+    <value>Totals</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Name" xml:space="preserve">
+    <value>tabPageSpcTotals</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.Parent" xml:space="preserve">
+    <value>tabControlSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTotals.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="buttonSpcM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2610,6 +3816,9 @@
   <data name="&gt;&gt;textBoxSpcWTotal.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>338, 173</value>
+  </metadata>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2628,9 +3837,6 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Stratified samples</value>
   </data>
-  <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>338, 173</value>
-  </metadata>
   <data name="label9.ToolTip" xml:space="preserve">
     <value>Mass of stratified samples is recovered using mass growth models</value>
   </data>
@@ -3222,32 +4428,104 @@
   <data name="&gt;&gt;chartSpcStats.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <data name="tabPageSpcTotals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;labelTechInstruction.Name" xml:space="preserve">
+    <value>labelTechInstruction</value>
   </data>
-  <data name="tabPageSpcTotals.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="&gt;&gt;labelTechInstruction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageSpcTotals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>890, 701</value>
+  <data name="&gt;&gt;labelTechInstruction.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
   </data>
-  <data name="tabPageSpcTotals.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;labelTechInstruction.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labeTech.Name" xml:space="preserve">
+    <value>labeTech</value>
+  </data>
+  <data name="&gt;&gt;labeTech.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labeTech.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;labeTech.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageSpcTotals.Text" xml:space="preserve">
-    <value>Totals</value>
+  <data name="&gt;&gt;labelTechNoData.Name" xml:space="preserve">
+    <value>labelTechNoData</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTotals.Name" xml:space="preserve">
-    <value>tabPageSpcTotals</value>
+  <data name="&gt;&gt;labelTechNoData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTotals.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelTechNoData.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;labelTechNoData.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTechSampler.Name" xml:space="preserve">
+    <value>comboBoxTechSampler</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTechSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTechSampler.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;comboBoxTechSampler.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelTechGear.Name" xml:space="preserve">
+    <value>labelTechGear</value>
+  </data>
+  <data name="&gt;&gt;labelTechGear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTechGear.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;labelTechGear.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Name" xml:space="preserve">
+    <value>spreadSheetTech</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabPageSpcTech.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSpcTech.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageSpcTech.Size" type="System.Drawing.Size, System.Drawing">
+    <value>890, 701</value>
+  </data>
+  <data name="tabPageSpcTech.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="tabPageSpcTech.Text" xml:space="preserve">
+    <value>Techniques</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.Name" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpcTech.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTotals.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSpcTech.Parent" xml:space="preserve">
     <value>tabControlSpc</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTotals.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabPageSpcTech.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="labelTechInstruction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3396,8 +4674,50 @@
   <data name="&gt;&gt;labelTechGear.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="ColumnSpcTechClass.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSpcTechOps.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSpcTechN.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSpcTechTotals.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSpcTechStratified.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnSpcTechLog.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="spreadSheetTech.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="spreadSheetTech.Location" type="System.Drawing.Point, System.Drawing">
+    <value>342, 73</value>
+  </data>
+  <data name="spreadSheetTech.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 580</value>
+  </data>
+  <data name="spreadSheetTech.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetTech.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Name" xml:space="preserve">
+    <value>spreadSheetTech</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.Parent" xml:space="preserve">
+    <value>tabPageSpcTech</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetTech.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <metadata name="ColumnSpcTechClass.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3438,56 +4758,188 @@
   <data name="ColumnSpcTechLog.HeaderText" xml:space="preserve">
     <value>FBA samples</value>
   </data>
-  <data name="spreadSheetTech.Location" type="System.Drawing.Point, System.Drawing">
-    <value>342, 73</value>
+  <data name="&gt;&gt;checkBoxQualOutliers.Name" xml:space="preserve">
+    <value>checkBoxQualOutliers</value>
   </data>
-  <data name="spreadSheetTech.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 580</value>
+  <data name="&gt;&gt;checkBoxQualOutliers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="spreadSheetTech.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="&gt;&gt;checkBoxQualOutliers.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
   </data>
-  <data name="spreadSheetTech.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="&gt;&gt;checkBoxQualOutliers.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;spreadSheetTech.Name" xml:space="preserve">
-    <value>spreadSheetTech</value>
+  <data name="&gt;&gt;labelQualSubset.Name" xml:space="preserve">
+    <value>labelQualSubset</value>
   </data>
-  <data name="&gt;&gt;spreadSheetTech.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;labelQualSubset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;spreadSheetTech.Parent" xml:space="preserve">
-    <value>tabPageSpcTech</value>
+  <data name="&gt;&gt;labelQualSubset.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
   </data>
-  <data name="&gt;&gt;spreadSheetTech.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelQualSubset.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelQualify.Name" xml:space="preserve">
+    <value>labelQualify</value>
+  </data>
+  <data name="&gt;&gt;labelQualify.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQualify.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;labelQualify.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Name" xml:space="preserve">
+    <value>buttonQualOutliers</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;buttonQualOutliers.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelQualNotSelected.Name" xml:space="preserve">
+    <value>labelQualNotSelected</value>
+  </data>
+  <data name="&gt;&gt;labelQualNotSelected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQualNotSelected.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;labelQualNotSelected.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelQualDescription.Name" xml:space="preserve">
+    <value>labelQualDescription</value>
+  </data>
+  <data name="&gt;&gt;labelQualDescription.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQualDescription.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;labelQualDescription.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tabPageSpcTech.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;labelQualTitle.Name" xml:space="preserve">
+    <value>labelQualTitle</value>
+  </data>
+  <data name="&gt;&gt;labelQualTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQualTitle.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;labelQualTitle.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualType.Name" xml:space="preserve">
+    <value>comboBoxQualType</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualType.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualType.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualValue.Name" xml:space="preserve">
+    <value>comboBoxQualValue</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualValue.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualValue.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualClass.Name" xml:space="preserve">
+    <value>comboBoxQualClass</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualClass.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;comboBoxQualClass.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualType.Name" xml:space="preserve">
+    <value>checkBoxQualType</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualType.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualType.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualClass.Name" xml:space="preserve">
+    <value>checkBoxQualClass</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualClass.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;checkBoxQualClass.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;plotQualify.Name" xml:space="preserve">
+    <value>plotQualify</value>
+  </data>
+  <data name="&gt;&gt;plotQualify.Type" xml:space="preserve">
+    <value>Mayfly.Mathematics.Charts.Plot, Mayfly.Mathematics, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;plotQualify.Parent" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
+  </data>
+  <data name="&gt;&gt;plotQualify.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tabPageSpcQualify.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageSpcTech.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageSpcQualify.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageSpcTech.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
     <value>890, 701</value>
   </data>
-  <data name="tabPageSpcTech.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+  <data name="tabPageSpcQualify.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
-  <data name="tabPageSpcTech.Text" xml:space="preserve">
-    <value>Techniques</value>
+  <data name="tabPageSpcQualify.Text" xml:space="preserve">
+    <value>Qualification</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTech.Name" xml:space="preserve">
-    <value>tabPageSpcTech</value>
+  <data name="&gt;&gt;tabPageSpcQualify.Name" xml:space="preserve">
+    <value>tabPageSpcQualify</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTech.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSpcQualify.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTech.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSpcQualify.Parent" xml:space="preserve">
     <value>tabControlSpc</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcTech.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPageSpcQualify.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="checkBoxQualOutliers.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
@@ -3906,54 +5358,6 @@
   <data name="&gt;&gt;plotQualify.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="tabPageSpcQualify.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageSpcQualify.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
-  </data>
-  <data name="tabPageSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>890, 701</value>
-  </data>
-  <data name="tabPageSpcQualify.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="tabPageSpcQualify.Text" xml:space="preserve">
-    <value>Qualification</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpcQualify.Name" xml:space="preserve">
-    <value>tabPageSpcQualify</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpcQualify.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpcQualify.Parent" xml:space="preserve">
-    <value>tabControlSpc</value>
-  </data>
-  <data name="&gt;&gt;tabPageSpcQualify.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControlSpc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 18</value>
-  </data>
-  <data name="tabControlSpc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 727</value>
-  </data>
-  <data name="tabControlSpc.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControlSpc.Name" xml:space="preserve">
-    <value>tabControlSpc</value>
-  </data>
-  <data name="&gt;&gt;tabControlSpc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlSpc.Parent" xml:space="preserve">
-    <value>tabPageSpcStats</value>
-  </data>
-  <data name="&gt;&gt;tabControlSpc.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonSpeciesStatsReport.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -3987,32 +5391,56 @@
   <data name="&gt;&gt;buttonSpeciesStatsReport.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPageSpcStats.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;buttonCardDetails.Name" xml:space="preserve">
+    <value>buttonCardDetails</value>
+  </data>
+  <data name="&gt;&gt;buttonCardDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonCardDetails.Parent" xml:space="preserve">
+    <value>tabPageCard</value>
+  </data>
+  <data name="&gt;&gt;buttonCardDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Name" xml:space="preserve">
+    <value>spreadSheetCard</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Parent" xml:space="preserve">
+    <value>tabPageCard</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageCard.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageSpcStats.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>15, 15, 15, 15</value>
+  <data name="tabPageCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageSpcStats.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>1152, 763</value>
   </data>
-  <data name="tabPageSpcStats.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="tabPageCard.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="tabPageSpcStats.Text" xml:space="preserve">
-    <value>Species stats</value>
+  <data name="tabPageCard.Text" xml:space="preserve">
+    <value>Cards</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcStats.Name" xml:space="preserve">
-    <value>tabPageSpcStats</value>
+  <data name="&gt;&gt;tabPageCard.Name" xml:space="preserve">
+    <value>tabPageCard</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcStats.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCard.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcStats.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCard.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageSpcStats.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tabPageCard.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="buttonCardDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -4263,6 +5691,36 @@
   <metadata name="contextCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>608, 17</value>
   </metadata>
+  <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 192</value>
+  </data>
+  <data name="&gt;&gt;contextCard.Name" xml:space="preserve">
+    <value>contextCard</value>
+  </data>
+  <data name="&gt;&gt;contextCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 638</value>
+  </data>
+  <data name="spreadSheetCard.StatusFormat" xml:space="preserve">
+    <value>1;2|card;cards</value>
+  </data>
+  <data name="spreadSheetCard.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Name" xml:space="preserve">
+    <value>spreadSheetCard</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.Parent" xml:space="preserve">
+    <value>tabPageCard</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetCard.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="contextCardOpen.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -4354,62 +5812,104 @@
   <data name="contextCardPrintNote.Text" xml:space="preserve">
     <value>Print card note</value>
   </data>
-  <data name="contextCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 192</value>
+  <data name="&gt;&gt;buttonSpcDetails.Name" xml:space="preserve">
+    <value>buttonSpcDetails</value>
   </data>
-  <data name="&gt;&gt;contextCard.Name" xml:space="preserve">
-    <value>contextCard</value>
+  <data name="&gt;&gt;buttonSpcDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;contextCard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonSpcDetails.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
   </data>
-  <data name="spreadSheetCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 638</value>
+  <data name="&gt;&gt;buttonSpcDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="spreadSheetCard.StatusFormat" xml:space="preserve">
-    <value>1;2|card;cards</value>
+  <data name="&gt;&gt;labelSpcGroupBy.Name" xml:space="preserve">
+    <value>labelSpcGroupBy</value>
   </data>
-  <data name="spreadSheetCard.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="&gt;&gt;labelSpcGroupBy.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;spreadSheetCard.Name" xml:space="preserve">
-    <value>spreadSheetCard</value>
+  <data name="&gt;&gt;labelSpcGroupBy.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
   </data>
-  <data name="&gt;&gt;spreadSheetCard.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCard.Parent" xml:space="preserve">
-    <value>tabPageCard</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetCard.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelSpcGroupBy.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;comboBoxSpcTaxa.Name" xml:space="preserve">
+    <value>comboBoxSpcTaxa</value>
   </data>
-  <data name="tabPageCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="&gt;&gt;comboBoxSpcTaxa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1152, 763</value>
+  <data name="&gt;&gt;comboBoxSpcTaxa.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
   </data>
-  <data name="tabPageCard.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;comboBoxSpcTaxa.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcSave.Name" xml:space="preserve">
+    <value>buttonSpcSave</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcSave.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcSave.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcFull.Name" xml:space="preserve">
+    <value>buttonSpcFull</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcFull.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcFull.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
+  </data>
+  <data name="&gt;&gt;buttonSpcFull.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="tabPageCard.Text" xml:space="preserve">
-    <value>Cards</value>
+  <data name="&gt;&gt;spreadSheetSpc.Name" xml:space="preserve">
+    <value>spreadSheetSpc</value>
   </data>
-  <data name="&gt;&gt;tabPageCard.Name" xml:space="preserve">
-    <value>tabPageCard</value>
+  <data name="&gt;&gt;spreadSheetSpc.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabPageCard.Type" xml:space="preserve">
+  <data name="&gt;&gt;spreadSheetSpc.Parent" xml:space="preserve">
+    <value>tabPageSpc</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetSpc.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tabPageSpc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSpc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageSpc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1152, 763</value>
+  </data>
+  <data name="tabPageSpc.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="tabPageSpc.Text" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.Name" xml:space="preserve">
+    <value>tabPageSpc</value>
+  </data>
+  <data name="&gt;&gt;tabPageSpc.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCard.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageSpc.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageCard.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tabPageSpc.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="buttonSpcDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -4619,33 +6119,6 @@
   <metadata name="contextSpecies.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
-  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="contextSpcQualify.Text" xml:space="preserve">
-    <value>See qualification</value>
-  </data>
-  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 6</value>
-  </data>
-  <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="contextSpcLog.Text" xml:space="preserve">
-    <value>Open log</value>
-  </data>
-  <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="contextSpcIndividuals.Text" xml:space="preserve">
-    <value>Open individuals</value>
-  </data>
-  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
-  </data>
-  <data name="contextSpcStratified.Text" xml:space="preserve">
-    <value>Open stratified samples</value>
-  </data>
   <data name="contextSpecies.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 98</value>
   </data>
@@ -4676,32 +6149,83 @@
   <data name="&gt;&gt;spreadSheetSpc.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tabPageSpc.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="contextSpcQualify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcQualify.Text" xml:space="preserve">
+    <value>See qualification</value>
+  </data>
+  <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 6</value>
+  </data>
+  <data name="contextSpcLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcLog.Text" xml:space="preserve">
+    <value>Open log</value>
+  </data>
+  <data name="contextSpcIndividuals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcIndividuals.Text" xml:space="preserve">
+    <value>Open individuals</value>
+  </data>
+  <data name="contextSpcStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="contextSpcStratified.Text" xml:space="preserve">
+    <value>Open stratified samples</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectLog.Name" xml:space="preserve">
+    <value>buttonSelectLog</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectLog.Parent" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;buttonSelectLog.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
+    <value>spreadSheetLog</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageSpc.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageSpc.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>1152, 763</value>
   </data>
-  <data name="tabPageSpc.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="tabPageSpc.Text" xml:space="preserve">
-    <value>Species</value>
+  <data name="tabPageLog.Text" xml:space="preserve">
+    <value>Log</value>
   </data>
-  <data name="&gt;&gt;tabPageSpc.Name" xml:space="preserve">
-    <value>tabPageSpc</value>
+  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
+    <value>tabPageLog</value>
   </data>
-  <data name="&gt;&gt;tabPageSpc.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSpc.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageSpc.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="buttonSelectLog.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -4805,6 +6329,36 @@
   <metadata name="contextLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>150, 56</value>
   </metadata>
+  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 76</value>
+  </data>
+  <data name="&gt;&gt;contextLog.Name" xml:space="preserve">
+    <value>contextLog</value>
+  </data>
+  <data name="&gt;&gt;contextLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 638</value>
+  </data>
+  <data name="spreadSheetLog.StatusFormat" xml:space="preserve">
+    <value>1;2|entry;entries</value>
+  </data>
+  <data name="spreadSheetLog.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
+    <value>spreadSheetLog</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="contextLogOpen.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -4846,62 +6400,68 @@
   <data name="contextLogStratified.Text" xml:space="preserve">
     <value>Open stratified sample</value>
   </data>
-  <data name="contextLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 76</value>
+  <data name="&gt;&gt;stratifiedSample.Name" xml:space="preserve">
+    <value>stratifiedSample</value>
   </data>
-  <data name="&gt;&gt;contextLog.Name" xml:space="preserve">
-    <value>contextLog</value>
+  <data name="&gt;&gt;stratifiedSample.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.StratifiedSample, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;contextLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;stratifiedSample.Parent" xml:space="preserve">
+    <value>tabPageStratified</value>
   </data>
-  <data name="spreadSheetLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 638</value>
+  <data name="&gt;&gt;stratifiedSample.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="spreadSheetLog.StatusFormat" xml:space="preserve">
-    <value>1;2|entry;entries</value>
+  <data name="&gt;&gt;buttonSelectStratified.Name" xml:space="preserve">
+    <value>buttonSelectStratified</value>
   </data>
-  <data name="spreadSheetLog.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;buttonSelectStratified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
-    <value>spreadSheetLog</value>
+  <data name="&gt;&gt;buttonSelectStratified.Parent" xml:space="preserve">
+    <value>tabPageStratified</value>
   </data>
-  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
-    <value>tabPageLog</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonSelectStratified.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;spreadSheetStratified.Name" xml:space="preserve">
+    <value>spreadSheetStratified</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.Parent" xml:space="preserve">
+    <value>tabPageStratified</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageStratified.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageStratified.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageStratified.Size" type="System.Drawing.Size, System.Drawing">
     <value>1152, 763</value>
   </data>
-  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="tabPageStratified.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Log</value>
+  <data name="tabPageStratified.Text" xml:space="preserve">
+    <value>Stratified samples</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
-    <value>tabPageLog</value>
+  <data name="&gt;&gt;tabPageStratified.Name" xml:space="preserve">
+    <value>tabPageStratified</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageStratified.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageStratified.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;tabPageStratified.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="stratifiedSample.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -5035,6 +6595,36 @@
   <metadata name="contextStratified.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>372, 56</value>
   </metadata>
+  <data name="contextStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 54</value>
+  </data>
+  <data name="&gt;&gt;contextStratified.Name" xml:space="preserve">
+    <value>contextStratified</value>
+  </data>
+  <data name="&gt;&gt;contextStratified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetStratified.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 638</value>
+  </data>
+  <data name="spreadSheetStratified.StatusFormat" xml:space="preserve">
+    <value>1;2|individual;individuals</value>
+  </data>
+  <data name="spreadSheetStratified.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.Name" xml:space="preserve">
+    <value>spreadSheetStratified</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.Parent" xml:space="preserve">
+    <value>tabPageStratified</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetStratified.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="contextStratifiedOpen.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -5087,62 +6677,68 @@
   <data name="printStratifiedSampleToolStripMenuItem.Text" xml:space="preserve">
     <value>Print stratified sample</value>
   </data>
-  <data name="contextStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 54</value>
+  <data name="&gt;&gt;pictureBoxStratified.Name" xml:space="preserve">
+    <value>pictureBoxStratified</value>
   </data>
-  <data name="&gt;&gt;contextStratified.Name" xml:space="preserve">
-    <value>contextStratified</value>
+  <data name="&gt;&gt;pictureBoxStratified.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;contextStratified.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pictureBoxStratified.Parent" xml:space="preserve">
+    <value>tabPageInd</value>
   </data>
-  <data name="spreadSheetStratified.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 638</value>
+  <data name="&gt;&gt;pictureBoxStratified.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="spreadSheetStratified.StatusFormat" xml:space="preserve">
-    <value>1;2|individual;individuals</value>
+  <data name="&gt;&gt;buttonSelectInd.Name" xml:space="preserve">
+    <value>buttonSelectInd</value>
   </data>
-  <data name="spreadSheetStratified.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;buttonSelectInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;spreadSheetStratified.Name" xml:space="preserve">
-    <value>spreadSheetStratified</value>
+  <data name="&gt;&gt;buttonSelectInd.Parent" xml:space="preserve">
+    <value>tabPageInd</value>
   </data>
-  <data name="&gt;&gt;spreadSheetStratified.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonSelectInd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.Name" xml:space="preserve">
+    <value>spreadSheetInd</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.Type" xml:space="preserve">
     <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;spreadSheetStratified.Parent" xml:space="preserve">
-    <value>tabPageStratified</value>
+  <data name="&gt;&gt;spreadSheetInd.Parent" xml:space="preserve">
+    <value>tabPageInd</value>
   </data>
-  <data name="&gt;&gt;spreadSheetStratified.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;spreadSheetInd.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabPageStratified.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageInd.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageStratified.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageInd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>45, 45, 45, 45</value>
   </data>
-  <data name="tabPageStratified.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageInd.Size" type="System.Drawing.Size, System.Drawing">
     <value>1152, 763</value>
   </data>
-  <data name="tabPageStratified.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="tabPageInd.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="tabPageStratified.Text" xml:space="preserve">
-    <value>Stratified samples</value>
+  <data name="tabPageInd.Text" xml:space="preserve">
+    <value>Individuals</value>
   </data>
-  <data name="&gt;&gt;tabPageStratified.Name" xml:space="preserve">
-    <value>tabPageStratified</value>
+  <data name="&gt;&gt;tabPageInd.Name" xml:space="preserve">
+    <value>tabPageInd</value>
   </data>
-  <data name="&gt;&gt;tabPageStratified.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageInd.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageStratified.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageInd.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageStratified.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;tabPageInd.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="pictureBoxStratified.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -5455,6 +7051,36 @@ Please, note that in further analysis.</value>
   <metadata name="contextInd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>262, 56</value>
   </metadata>
+  <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 264</value>
+  </data>
+  <data name="&gt;&gt;contextInd.Name" xml:space="preserve">
+    <value>contextInd</value>
+  </data>
+  <data name="&gt;&gt;contextInd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="spreadSheetInd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 638</value>
+  </data>
+  <data name="spreadSheetInd.StatusFormat" xml:space="preserve">
+    <value>1;2|individual;individuals</value>
+  </data>
+  <data name="spreadSheetInd.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.Name" xml:space="preserve">
+    <value>spreadSheetInd</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.Parent" xml:space="preserve">
+    <value>tabPageInd</value>
+  </data>
+  <data name="&gt;&gt;spreadSheetInd.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="contextIndProfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
@@ -5570,99 +7196,9 @@ Please, note that in further analysis.</value>
   <data name="contextIndExploreDiet.Text" xml:space="preserve">
     <value>Diet explorer</value>
   </data>
-  <data name="contextInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 264</value>
-  </data>
-  <data name="&gt;&gt;contextInd.Name" xml:space="preserve">
-    <value>contextInd</value>
-  </data>
-  <data name="&gt;&gt;contextInd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="spreadSheetInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1056, 638</value>
-  </data>
-  <data name="spreadSheetInd.StatusFormat" xml:space="preserve">
-    <value>1;2|individual;individuals</value>
-  </data>
-  <data name="spreadSheetInd.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetInd.Name" xml:space="preserve">
-    <value>spreadSheetInd</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetInd.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetInd.Parent" xml:space="preserve">
-    <value>tabPageInd</value>
-  </data>
-  <data name="&gt;&gt;spreadSheetInd.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageInd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageInd.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
-  </data>
-  <data name="tabPageInd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1152, 763</value>
-  </data>
-  <data name="tabPageInd.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageInd.Text" xml:space="preserve">
-    <value>Individuals</value>
-  </data>
-  <data name="&gt;&gt;tabPageInd.Name" xml:space="preserve">
-    <value>tabPageInd</value>
-  </data>
-  <data name="&gt;&gt;tabPageInd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageInd.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageInd.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 36</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1160, 789</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>358, 17</value>
   </metadata>
-  <data name="statusBio.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="statusBio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 19</value>
-  </data>
-  <data name="statusBio.Text" xml:space="preserve">
-    <value>Bio(-s) loaded</value>
-  </data>
-  <data name="statusBio.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 837</value>
   </data>
@@ -5687,6 +7223,18 @@ Please, note that in further analysis.</value>
   <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="statusBio.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="statusBio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 19</value>
+  </data>
+  <data name="statusBio.Text" xml:space="preserve">
+    <value>Bio(-s) loaded</value>
+  </data>
+  <data name="statusBio.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <metadata name="loaderCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>567, 95</value>
   </metadata>
@@ -5707,6 +7255,9 @@ Please, note that in further analysis.</value>
   </metadata>
   <metadata name="loaderData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>351, 95</value>
+  </metadata>
+  <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>338, 173</value>
   </metadata>
   <metadata name="loaderStratified.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 173</value>
@@ -5750,12 +7301,6 @@ Please, note that in further analysis.</value>
   <metadata name="taskDialogSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
-  <data name="tdbSaveAll.Text" xml:space="preserve">
-    <value>Save All</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Discard</value>
-  </data>
   <data name="taskDialogSave.Content" xml:space="preserve">
     <value>There are some unsaved individuals. Do you want to save them?</value>
   </data>
@@ -5765,12 +7310,15 @@ Please, note that in further analysis.</value>
   <data name="taskDialogSave.WindowTitle" xml:space="preserve">
     <value>Fish Explorer</value>
   </data>
+  <data name="tdbSaveAll.Text" xml:space="preserve">
+    <value>Save All</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Discard</value>
+  </data>
   <metadata name="taskDialogClearSimulations.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>151, 95</value>
   </metadata>
-  <data name="tdbClearSimulation.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
   <data name="taskDialogClearSimulations.Content" xml:space="preserve">
     <value>There are virtualized individuals in log. To avoid confusion, you should clear them before continue. Do you want to clear them?</value>
   </data>
@@ -5780,15 +7328,12 @@ Please, note that in further analysis.</value>
   <data name="taskDialogClearSimulations.WindowTitle" xml:space="preserve">
     <value>Fish Explorer</value>
   </data>
+  <data name="tdbClearSimulation.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <metadata name="tdRecover.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>121, 212</value>
   </metadata>
-  <data name="tdbRecoverBackup.Text" xml:space="preserve">
-    <value>Backup and continue</value>
-  </data>
-  <data name="tdbRecoverContinue.Text" xml:space="preserve">
-    <value>Continue</value>
-  </data>
   <data name="tdRecover.Content" xml:space="preserve">
     <value>Would you back up your cards before a mass recovery operation?
 If you already did backup, ignore this and click "Continue" button.</value>
@@ -5807,20 +7352,26 @@ If you find any mistake in, you'll just reload previously backed up cards.</valu
   <data name="tdRecover.WindowTitle" xml:space="preserve">
     <value>Fish Explorer</value>
   </data>
+  <data name="tdbRecoverBackup.Text" xml:space="preserve">
+    <value>Backup and continue</value>
+  </data>
+  <data name="tdbRecoverContinue.Text" xml:space="preserve">
+    <value>Continue</value>
+  </data>
   <metadata name="taskDialogBio.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 251</value>
   </metadata>
-  <data name="tdbSpecClear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="tdbSpecCombine.Text" xml:space="preserve">
-    <value>Combine</value>
-  </data>
   <data name="taskDialogBio.Content" xml:space="preserve">
     <value>Explored data already contains imported bio. Do you want to clear it before import selected one or combine them?</value>
   </data>
   <data name="taskDialogBio.MainInstruction" xml:space="preserve">
     <value>Clear already imported bios?</value>
+  </data>
+  <data name="tdbSpecClear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="tdbSpecCombine.Text" xml:space="preserve">
+    <value>Combine</value>
   </data>
   <metadata name="speciesValidator.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>645, 56</value>

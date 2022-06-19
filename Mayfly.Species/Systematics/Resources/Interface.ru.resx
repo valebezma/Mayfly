@@ -124,6 +124,6 @@
     <value>Новый вид</value>
   </data>
   <data name="NewTaxon" xml:space="preserve">
-    <value>Новый таксон</value>
+    <value>Новый {0}</value>
   </data>
 </root>

@@ -39,31 +39,42 @@ namespace Mayfly.Species.Systematics
 
 
 
-        public bool IsBaseNodeSelected
+        public bool IsBaseNodePicked
         {
             get;
             private set;
         }
 
-        public bool IsTaxaNodeSelected
+        public SpeciesKey.BaseRow PickedBase
         {
             get;
             private set;
         }
 
-        public SpeciesKey.BaseRow SelectedBase
+        public bool IsTaxaNodePicked
         {
             get;
             private set;
         }
 
-        public SpeciesKey.TaxaRow SelectedTaxon
+        public SpeciesKey.TaxaRow PickedTaxon
         {
             get;
             private set;
         }
 
-        List<ListViewItem> dragItems = new List<ListViewItem>();
+        public bool IsSpeciesNodePicked
+        {
+            get;
+            private set;
+        }
+
+        public SpeciesKey.SpeciesRow PickedSpecies
+        {
+            get;
+            private set;
+        }
+
 
         TreeView clickedTreeview;
 
@@ -78,15 +89,13 @@ namespace Mayfly.Species.Systematics
 
             updateList();
 
-            if (Data.IsKeyAvailable)
-            {
+            if (Data.IsKeyAvailable) {
                 LoadKey();
-            }
-            else
-            {
+            } else {
                 LoadEngagedList();
             }
-            //status.Message(Resources.Messages.Loaded);
+            
+            status.Message("Index is loaded");
             IsChanged = false;
         }
 
@@ -165,23 +174,22 @@ namespace Mayfly.Species.Systematics
             }
         }
 
-        private void updateRepresenseGroups(SpeciesKey.TaxaRow[] taxaRows)
+
+
+        private ListViewGroup getGroup(SpeciesKey.TaxaRow taxaRow)
         {
-            foreach (SpeciesKey.TaxaRow taxaRow in taxaRows)
+            return new ListViewGroup(string.Format("{0} ({1})", taxaRow.FullName, taxaRow.GetSpecies().Length))
             {
-                listViewRepresence.Groups.Add(new ListViewGroup(taxaRow.FullName)
-                {
-                    Name = taxaRow.Taxon,
-                    HeaderAlignment = HorizontalAlignment.Center,
-                    Tag = taxaRow
-                }
-                );
-            }
+                Name = taxaRow.Taxon,
+                HeaderAlignment = HorizontalAlignment.Center,
+                Tag = taxaRow
+            };
         }
 
         private void updateRepresenceSpecies(SpeciesKey.SpeciesRow[] speciesRows)
         {
-            treeViewTaxa.Enabled = false;
+            treeViewTaxa.Enabled = false; 
+            processDisplay.StartProcessing(1000, "Species list updating");
 
             if (!backSpcLoader.IsBusy)
             {
@@ -191,39 +199,39 @@ namespace Mayfly.Species.Systematics
 
         private void updateRepresence()
         {
-            label3.Text = "Species " + String.Format(IsBaseNodeSelected ? "by " + SelectedBase.BaseName : (IsTaxaNodeSelected ? "of " + SelectedTaxon.FullName : "list"));
+            label3.Text = "Species" + String.Format(IsBaseNodePicked ? " by " + PickedBase.BaseName :
+                (IsTaxaNodePicked ? " of " + PickedTaxon.FullName : String.Empty));
 
             listViewRepresence.Groups.Clear();
 
-            if (IsBaseNodeSelected)
+            if (IsBaseNodePicked)
             {
                 listViewRepresence.Groups.Clear();
-                updateRepresenseGroups(SelectedBase.GetTaxaRows());
-
-                ListViewGroup variaGroup = new ListViewGroup(Species.Resources.Interface.Varia);
-                variaGroup.Name = "Varia";
-                variaGroup.HeaderAlignment = HorizontalAlignment.Center;
+                foreach (SpeciesKey.TaxaRow taxaRow in PickedBase.GetTaxaRows()) {
+                    listViewRepresence.Groups.Add(getGroup(taxaRow));
+                }
+                ListViewGroup variaGroup = new ListViewGroup(Species.Resources.Interface.Varia) {
+                    Name = "Varia",
+                    HeaderAlignment = HorizontalAlignment.Center
+                };
                 listViewRepresence.Groups.Add(variaGroup);
 
                 updateRepresenceSpecies(Data.Species.GetSorted());
             }
-            else if (IsTaxaNodeSelected)
+            else if (IsTaxaNodePicked)
             {
                 listViewRepresence.Groups.Clear();
-                updateRepresenseGroups(SelectedTaxon.GetChildren(true));
-
-                ListViewGroup directGroup = new ListViewGroup("Direct representatives");
-                directGroup.Name = "Direct";
-                directGroup.HeaderAlignment = HorizontalAlignment.Center;
-                listViewRepresence.Groups.Add(directGroup);
-
-                updateRepresenceSpecies(SelectedTaxon.GetSpecies());
+                listViewRepresence.Groups.Add(getGroup(PickedTaxon));
+                foreach (SpeciesKey.TaxaRow taxaRow in PickedTaxon.GetChildren(true)) {
+                    listViewRepresence.Groups.Add(getGroup(taxaRow));
+                }
+                updateRepresenceSpecies(PickedTaxon.GetSpecies());
             }
-            else if (SelectedTaxon == null) // Varia or new taxon
+            else if (PickedTaxon == null) // Varia or new taxon
             {
                 if (treeViewTaxa.SelectedNode != null && treeViewTaxa.SelectedNode.Name.Contains("Other_"))
                 {
-                    updateRepresenceSpecies(SelectedBase?.Varia);
+                    updateRepresenceSpecies((treeViewTaxa.SelectedNode.Parent.Tag as SpeciesKey.BaseRow)?.Varia);
                 }
                 else
                 {
@@ -231,7 +239,7 @@ namespace Mayfly.Species.Systematics
                 }
             }
 
-            menuItemAddSpecies.Enabled = IsTaxaNodeSelected;
+            menuItemAddSpecies.Enabled = IsTaxaNodePicked;
         }
 
         private void updateVaria()
@@ -283,6 +291,7 @@ namespace Mayfly.Species.Systematics
         {
             treeViewDerivates.Nodes.Clear();
             treeViewDerivates.Enabled = false;
+            processDisplay.StartProcessing(1000, "Tree updating");
             backTreeLoader.RunWorkerAsync();
         }
 
@@ -302,6 +311,7 @@ namespace Mayfly.Species.Systematics
             {
                 Tag = spcRow,
                 Text = spcRow.FullName,
+                ForeColor = Color.DarkGray,
                 ContextMenuStrip = contextSpecies
             };
         }
@@ -334,6 +344,32 @@ namespace Mayfly.Species.Systematics
             return taxaNode;
         }
 
+        private void applyRename(SpeciesKey.TaxaRow taxaRow, TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Tag is SpeciesKey.TaxaRow && node.Tag == taxaRow)
+                {
+                    node.Text = string.Format("{0} ({1})", taxaRow.FullName, taxaRow.GetSpecies().Length);
+                }
+                else
+                {
+                    applyRename(taxaRow, node.Nodes);
+                }
+            }
+        }
+
+        private void applyRename(SpeciesKey.TaxaRow taxaRow, ListViewGroupCollection groups)
+        {
+            foreach (ListViewGroup group in groups)
+            {
+                if (group.Tag is SpeciesKey.TaxaRow && group.Tag == taxaRow)
+                {
+                    group.Header = string.Format("{0} ({1})", taxaRow.FullName, taxaRow.GetSpecies().Length);
+                    group.Name = taxaRow.Taxon;
+                }
+            }
+        }
 
 
 
@@ -511,5 +547,11 @@ namespace Mayfly.Species.Systematics
 
         }
 
+
+
+        private void ClearPictures()
+        {
+
+        }
     }    
 }

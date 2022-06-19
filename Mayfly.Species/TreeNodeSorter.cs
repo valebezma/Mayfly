@@ -22,10 +22,25 @@ namespace Mayfly.Species
                 return trx.CompareTo(trz);
             }
 
-            if (tx.Name == null || ty.Name == null)
+            if (tx.Tag is SpeciesKey.TaxaRow && ty.Tag is SpeciesKey.SpeciesRow)
+            {
+                return -1;
+            }
+
+            if (ty.Tag is SpeciesKey.TaxaRow && tx.Tag is SpeciesKey.SpeciesRow)
+            {
+                return 1;
+            }
+
+            //if (tx.Tag is SpeciesKey.SpeciesRow srx && ty.Tag is SpeciesKey.SpeciesRow sry)
+            //{
+            //    return srx.CompareTo(sry);
+            //}
+
+            if (tx.Text == null || ty.Text == null)
                 return 0;
 
-            return string.Compare(tx.Name.ToString(), ty.Name.ToString());
+            return string.Compare(tx.Text, ty.Text);
         }
 
         public int Compare(object tx, object ty)

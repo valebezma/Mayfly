@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusSpecies = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTaxa = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,17 +60,17 @@
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTaxa = new System.Windows.Forms.TabPage();
-            this.labelMinCount = new System.Windows.Forms.Label();
             this.listViewMinor = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelRepCount = new System.Windows.Forms.Label();
-            this.labelTaxCount = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.listViewRepresence = new System.Windows.Forms.ListView();
             this.columnHeaderSpeciesName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderReference = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.treeViewDerivates = new System.Windows.Forms.TreeView();
             this.treeViewTaxa = new System.Windows.Forms.TreeView();
+            this.treeViewDerivates = new System.Windows.Forms.TreeView();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPageKey = new System.Windows.Forms.TabPage();
             this.buttonTry = new System.Windows.Forms.Button();
             this.labelEngagedCount = new System.Windows.Forms.Label();
@@ -125,10 +128,8 @@
             this.tdbDeleteCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.status = new Mayfly.Controls.Status();
             this.backTreeLoader = new System.ComponentModel.BackgroundWorker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.backListLoader = new System.ComponentModel.BackgroundWorker();
+            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -147,14 +148,37 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.statusSpecies,
+            this.statusTaxa,
+            this.statusProcess,
+            this.statusLoading});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // statusSpecies
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
+            resources.ApplyResources(this.statusSpecies, "statusSpecies");
+            this.statusSpecies.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.statusSpecies.Name = "statusSpecies";
+            // 
+            // statusTaxa
+            // 
+            resources.ApplyResources(this.statusTaxa, "statusTaxa");
+            this.statusTaxa.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+            this.statusTaxa.Name = "statusTaxa";
+            // 
+            // statusProcess
+            // 
+            this.statusProcess.Name = "statusProcess";
+            resources.ApplyResources(this.statusProcess, "statusProcess");
+            this.statusProcess.Spring = true;
+            // 
+            // statusLoading
+            // 
+            this.statusLoading.MarqueeAnimationSpeed = 50;
+            this.statusLoading.Name = "statusLoading";
+            resources.ApplyResources(this.statusLoading, "statusLoading");
+            this.statusLoading.Value = 50;
             // 
             // menuStrip
             // 
@@ -242,6 +266,7 @@
             this.menuItemAddSpecies});
             this.menuTaxa.Name = "menuTaxa";
             resources.ApplyResources(this.menuTaxa, "menuTaxa");
+            this.menuTaxa.DropDownOpening += new System.EventHandler(this.menuTaxa_DropDownOpening);
             // 
             // menuItemAddBase
             // 
@@ -323,24 +348,16 @@
             // 
             // tabPageTaxa
             // 
-            this.tabPageTaxa.Controls.Add(this.labelMinCount);
             this.tabPageTaxa.Controls.Add(this.listViewMinor);
             this.tabPageTaxa.Controls.Add(this.label3);
-            this.tabPageTaxa.Controls.Add(this.label2);
             this.tabPageTaxa.Controls.Add(this.label1);
-            this.tabPageTaxa.Controls.Add(this.labelTaxCount);
             this.tabPageTaxa.Controls.Add(this.listViewRepresence);
-            this.tabPageTaxa.Controls.Add(this.treeViewDerivates);
             this.tabPageTaxa.Controls.Add(this.treeViewTaxa);
-            this.tabPageTaxa.Controls.Add(this.labelRepCount);
+            this.tabPageTaxa.Controls.Add(this.treeViewDerivates);
+            this.tabPageTaxa.Controls.Add(this.label2);
             resources.ApplyResources(this.tabPageTaxa, "tabPageTaxa");
             this.tabPageTaxa.Name = "tabPageTaxa";
             this.tabPageTaxa.UseVisualStyleBackColor = true;
-            // 
-            // labelMinCount
-            // 
-            resources.ApplyResources(this.labelMinCount, "labelMinCount");
-            this.labelMinCount.Name = "labelMinCount";
             // 
             // listViewMinor
             // 
@@ -365,15 +382,15 @@
             // 
             resources.ApplyResources(this.columnHeader6, "columnHeader6");
             // 
-            // labelRepCount
+            // label3
             // 
-            resources.ApplyResources(this.labelRepCount, "labelRepCount");
-            this.labelRepCount.Name = "labelRepCount";
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
-            // labelTaxCount
+            // label1
             // 
-            resources.ApplyResources(this.labelTaxCount, "labelTaxCount");
-            this.labelTaxCount.Name = "labelTaxCount";
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // listViewRepresence
             // 
@@ -405,27 +422,6 @@
             // 
             resources.ApplyResources(this.columnHeaderReference, "columnHeaderReference");
             // 
-            // treeViewDerivates
-            // 
-            this.treeViewDerivates.AllowDrop = true;
-            resources.ApplyResources(this.treeViewDerivates, "treeViewDerivates");
-            this.treeViewDerivates.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeViewDerivates.FullRowSelect = true;
-            this.treeViewDerivates.HideSelection = false;
-            this.treeViewDerivates.HotTracking = true;
-            this.treeViewDerivates.ItemHeight = 23;
-            this.treeViewDerivates.Name = "treeViewDerivates";
-            this.treeViewDerivates.ShowLines = false;
-            this.treeViewDerivates.ShowNodeToolTips = true;
-            this.treeViewDerivates.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewDerivates_ItemDrag);
-            this.treeViewDerivates.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTaxa_AfterSelect);
-            this.treeViewDerivates.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewDerivates_NodeMouseClick);
-            this.treeViewDerivates.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewDerivates_NodeMouseDoubleClick);
-            this.treeViewDerivates.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragDrop);
-            this.treeViewDerivates.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragEnter);
-            this.treeViewDerivates.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragOver);
-            this.treeViewDerivates.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeViewDerivates_MouseClick);
-            // 
             // treeViewTaxa
             // 
             this.treeViewTaxa.AllowDrop = true;
@@ -440,14 +436,40 @@
             this.treeViewTaxa.ShowLines = false;
             this.treeViewTaxa.ShowNodeToolTips = true;
             this.treeViewTaxa.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeViewTaxa_AfterLabelEdit);
-            this.treeViewTaxa.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewTaxa_ItemDrag);
-            this.treeViewTaxa.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTaxa_AfterSelect);
-            this.treeViewTaxa.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewTaxa_NodeMouseClick);
-            this.treeViewTaxa.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewTaxa_NodeMouseDoubleClick);
-            this.treeViewTaxa.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragDrop);
-            this.treeViewTaxa.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragEnter);
-            this.treeViewTaxa.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewTaxa_DragOver);
+            this.treeViewTaxa.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
+            this.treeViewTaxa.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeViewTaxa.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            this.treeViewTaxa.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseDoubleClick);
+            this.treeViewTaxa.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView_DragDrop);
+            this.treeViewTaxa.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
+            this.treeViewTaxa.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView_DragOver);
             this.treeViewTaxa.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeViewTaxa_MouseClick);
+            // 
+            // treeViewDerivates
+            // 
+            this.treeViewDerivates.AllowDrop = true;
+            resources.ApplyResources(this.treeViewDerivates, "treeViewDerivates");
+            this.treeViewDerivates.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewDerivates.FullRowSelect = true;
+            this.treeViewDerivates.HideSelection = false;
+            this.treeViewDerivates.HotTracking = true;
+            this.treeViewDerivates.ItemHeight = 23;
+            this.treeViewDerivates.Name = "treeViewDerivates";
+            this.treeViewDerivates.ShowLines = false;
+            this.treeViewDerivates.ShowNodeToolTips = true;
+            this.treeViewDerivates.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
+            this.treeViewDerivates.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeViewDerivates.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            this.treeViewDerivates.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseDoubleClick);
+            this.treeViewDerivates.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView_DragDrop);
+            this.treeViewDerivates.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
+            this.treeViewDerivates.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView_DragOver);
+            this.treeViewDerivates.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeViewDerivates_MouseClick);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // tabPageKey
             // 
@@ -818,33 +840,26 @@
             // 
             this.status.Default = null;
             this.status.MaximalInterval = 2000;
-            this.status.StatusLog = this.toolStripStatusLabel1;
+            this.status.StatusLog = this.statusProcess;
             // 
             // backTreeLoader
             // 
             this.backTreeLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backTreeLoader_DoWork);
             this.backTreeLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backTreeLoader_RunWorkerCompleted);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
             // backListLoader
             // 
             this.backListLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backListLoader_DoWork);
             this.backListLoader.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backListLoader_ProgressChanged);
             this.backListLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backListLoader_RunWorkerCompleted);
+            // 
+            // processDisplay
+            // 
+            this.processDisplay.Default = null;
+            this.processDisplay.Look = null;
+            this.processDisplay.MaximalInterval = 2000;
+            this.processDisplay.ProgressBar = this.statusLoading;
+            this.processDisplay.StatusLog = this.statusProcess;
             // 
             // MainForm
             // 
@@ -881,7 +896,6 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem menuFile;
         private System.Windows.Forms.ToolStripMenuItem menuItemNew;
@@ -912,7 +926,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemPictureLoad;
         private System.Windows.Forms.ListView listViewImages;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelRepCount;
         private System.Windows.Forms.Label labelStpCount;
         private System.Windows.Forms.Label labelPicCount;
         private System.Windows.Forms.ContextMenuStrip contextTree;
@@ -968,16 +981,19 @@
         private System.Windows.Forms.ListView listViewMinor;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.Label labelMinCount;
         private System.Windows.Forms.ContextMenuStrip contextSynonym;
         private System.Windows.Forms.ToolStripMenuItem contextRemoveSynonym;
         private System.ComponentModel.BackgroundWorker backSpcLoader;
         private System.ComponentModel.BackgroundWorker backTreeLoader;
-        private System.Windows.Forms.Label labelTaxCount;
         public System.Windows.Forms.TreeView treeViewDerivates;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker backListLoader;
+        private System.Windows.Forms.ToolStripStatusLabel statusSpecies;
+        private System.Windows.Forms.ToolStripStatusLabel statusTaxa;
+        private System.Windows.Forms.ToolStripStatusLabel statusProcess;
+        private System.Windows.Forms.ToolStripProgressBar statusLoading;
+        private Mayfly.Controls.ProcessDisplay processDisplay;
     }
 }

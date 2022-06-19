@@ -124,6 +124,6 @@
     <value>New species</value>
   </data>
   <data name="NewTaxon" xml:space="preserve">
-    <value>New taxon</value>
+    <value>New {0}</value>
   </data>
 </root>
