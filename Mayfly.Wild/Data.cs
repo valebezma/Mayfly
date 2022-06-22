@@ -138,6 +138,7 @@ namespace Mayfly.Wild
 
             ////WriteXml(filename);
 
+            this.SetAttributable();
             File.WriteAllText(filename, GetXml());
         }
 
@@ -1245,7 +1246,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key?.Species.FindBySpecies(this.Species);
+                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key?.FindBySpecies(this.Species);
                     if (spcRow == null) return null;
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;

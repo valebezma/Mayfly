@@ -222,10 +222,10 @@ namespace Mayfly.Benthos
                 //    {
                 //        speciesKey.Species.AddSpeciesRow(speciesRow);
 
-                //        //foreach (SpeciesKey.TaxaRow taxaRow in editSpecies.SelectedTaxa)
+                //        //foreach (SpeciesKey.TaxonRow taxonRow in editSpecies.SelectedTaxon)
                 //        //{
                 //        //    speciesKey.Species.AddSpeciesRow(speciesRow);
-                //        //    dest.Rep.AddRepRow(taxaRow, destRow);
+                //        //    dest.Rep.AddRepRow(taxonRow, destRow);
                 //        //}
                 //    }
                 //}

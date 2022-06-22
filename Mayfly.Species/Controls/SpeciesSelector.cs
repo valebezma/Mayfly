@@ -328,9 +328,9 @@ namespace Mayfly.Species
             }
 
             List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in Index.Taxon.GetRootTaxon()) {
+            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxon()) {
                 contextMenuStripSpecies.Items.Add(getTaxonMenuItem(taxonRow, true, true));
-            } foreach (SpeciesKey.SpeciesRow speciesRow in Index.Species.GetOrphans()) {
+            } foreach (SpeciesKey.SpeciesRow speciesRow in Index.GetOrphans()) {
                 contextMenuStripSpecies.Items.Add(getSpeciesMenuItem(speciesRow));
             }
         }
@@ -439,7 +439,7 @@ namespace Mayfly.Species
         {
             List<ListViewItem> result = new List<ListViewItem>();
     
-            SpeciesKey.SpeciesRow[] speciesRows = Index.Species.GetSpeciesNameContaining(pattern);
+            SpeciesKey.SpeciesRow[] speciesRows = Index.GetSpeciesNameContaining(pattern);
 
             foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
             {
@@ -510,7 +510,7 @@ namespace Mayfly.Species
 
             foreach (string recent in recentSpecies)
             {
-                SpeciesKey.SpeciesRow speciesRow = Index.Species.FindBySpecies(recent);
+                SpeciesKey.SpeciesRow speciesRow = Index.FindBySpecies(recent);
 
                 if (speciesRow == null) continue;
 
@@ -528,7 +528,7 @@ namespace Mayfly.Species
 
         public SpeciesKey.SpeciesRow Find(string species)
         {
-            return Index.Species.FindBySpecies(species);
+            return Index.FindBySpecies(species);
         }
 
         private void RunSelected(string species)

@@ -82,7 +82,7 @@ namespace Mayfly.Species.Controls
         private void backTreeLoader_DoWork(object sender, DoWorkEventArgs e)
         {
             List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in data.Taxon.GetRootTaxon())
+            foreach (SpeciesKey.TaxonRow taxonRow in data.GetRootTaxon())
             {
                 result.Add(getTaxonTreeNode(taxonRow));
             }

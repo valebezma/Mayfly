@@ -12,7 +12,7 @@ namespace Mayfly.Species
     {
         partial class TaxonRow : IComparable<TaxonRow>, IFormattable
         {
-            public string RankName { get { return Resources.Rank.ResourceManager.GetString(Rank.ToString()); } }
+            public TaxonomicRank TaxonomicRank { get { return new TaxonomicRank(Rank); } }
 
             public string TaxonName
             {
@@ -22,7 +22,7 @@ namespace Mayfly.Species
                 }
             }
 
-            public string FullName => string.Format("{0} {1}", this?.RankName, TaxonName);
+            public string FullName => string.Format("{0} {1}", this?.TaxonomicRank.Name, TaxonName);
 
             public string InterfaceString
             {
@@ -131,32 +131,6 @@ namespace Mayfly.Species
                     default:
                         return TaxonName;
                 }
-            }
-        }
-
-        partial class TaxonDataTable
-        {
-            public TaxonRow[] GetRootTaxon()
-            {
-                List<TaxonRow> result = new List<TaxonRow>();
-                foreach (TaxonRow taxonRow in this)
-                {
-                    if (taxonRow.IsTaxIDNull())
-                        result.Add(taxonRow);
-                }
-                result.Sort();
-                return result.ToArray();
-            }
-
-            public TaxonRow[] GetDerivatedTaxon()
-            {
-                List<TaxonRow> result = new List<TaxonRow>();
-                foreach (TaxonRow taxonRow in this)
-                {
-                    if (taxonRow.HasDerivations) result.Add(taxonRow);
-                }
-                result.Sort();
-                return result.ToArray();
             }
         }
 
@@ -386,105 +360,6 @@ namespace Mayfly.Species
             public int CompareTo(SpeciesRow other)
             {
                 return string.Compare(SortableString, other.SortableString);
-            }
-        }
-
-        partial class SpeciesDataTable
-        {
-            public SpeciesRow[] GetSpeciesNamed(string name)
-            {
-                List<SpeciesRow> result = new List<SpeciesRow>();
-                string[] words = name.Split(' ');
-                string spcName = words[words.Length - 1];
-                if (!spcName.Contains("."))
-                {
-                    foreach (SpeciesRow speciesRow in Rows)
-                    {
-                        if (speciesRow.Species.Contains(spcName))
-                        {
-                            result.Add(speciesRow);
-                        }
-                    }
-                }
-                return result.ToArray();
-            }
-
-            public SpeciesRow[] GetSpeciesNameContaining(string name)
-            {
-                List<SpeciesRow> result = new List<SpeciesRow>();
-
-                foreach (SpeciesRow speciesRow in Rows)
-                {
-                    //if (speciesRow.IsSpeciesNull()) continue
-                    if (speciesRow.FullName.ToUpperInvariant().Contains(name.ToUpperInvariant()))
-                    {
-                        result.Add(speciesRow);
-                    }
-                }
-
-                return result.ToArray();
-            }
-
-            public string[] References
-            {
-                get
-                {
-                    List<string> result = new List<string>();
-                    foreach (SpeciesRow speciesRow in Rows)
-                    {
-                        if (!speciesRow.IsReferenceNull())
-                        {
-                            if (!result.Contains(speciesRow.Reference)) result.Add(speciesRow.Reference);
-                        }
-                    }
-                    return result.ToArray();
-                }
-            }
-
-            public string[] Genera
-            {
-                get
-                {
-                    List<string> result = new List<string>();
-                    foreach (SpeciesRow speciesRow in Rows)
-                    {
-                        string genus = speciesRow.Species.Split(' ')[0];
-                        if (!result.Contains(genus)) result.Add(genus);
-                    }
-                    return result.ToArray();
-                }
-            }
-
-            public SpeciesRow FindBySpecies(string value)
-            {
-                foreach (SpeciesRow speciesRow in Rows)
-                {
-                    if (speciesRow.Species == value)
-                    {
-                        return speciesRow;
-                    }
-                }
-
-                return null;
-            }
-
-            public SpeciesRow[] GetSorted()
-            {
-                return (SpeciesRow[])this.Select(null, "Species asc");
-            }
-
-            public SpeciesRow[] GetOrphans()
-            {
-                List<SpeciesRow> result = new List<SpeciesRow>();
-
-                foreach (SpeciesRow spcRow in this)
-                {
-                    if (spcRow.TaxonRow == null)
-                        result.Add(spcRow);
-                }
-
-                result.Sort();
-                return result.ToArray();
             }
         }
 
@@ -839,6 +714,7 @@ namespace Mayfly.Species
         }
 
 
+
         public void Read(string filename)
         {
             try
@@ -871,7 +747,7 @@ namespace Mayfly.Species
             {
                 if (speciesRow.Species.EndsWith("sp.")) continue;
 
-                SpeciesRow destRow = key.Species.FindBySpecies(speciesRow.Species);
+                SpeciesRow destRow = key.FindBySpecies(speciesRow.Species);
 
                 if (destRow == null)
                 {
@@ -961,9 +837,174 @@ namespace Mayfly.Species
 
 
 
+        public TaxonRow[] GetRootTaxon()
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+            foreach (TaxonRow taxonRow in Taxon)
+            {
+                if (taxonRow.IsTaxIDNull())
+                    result.Add(taxonRow);
+            }
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetDerivatedTaxon()
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+            foreach (TaxonRow taxonRow in Taxon)
+            {
+                if (taxonRow.HasDerivations) result.Add(taxonRow);
+            }
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetRankedTaxon(int rank)
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+            foreach (TaxonRow taxonRow in Taxon)
+            {
+                if (taxonRow.Rank == rank)
+                    result.Add(taxonRow);
+            }
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public SpeciesRow[] GetVaria(int rank)
+        {
+            TaxonRow[] rankedTaxons = GetRankedTaxon(rank);
+            
+            List<SpeciesRow> result = new List<SpeciesRow>();
+
+            foreach (SpeciesRow spcRow in Species)
+            {
+                if (spcRow.TaxonRow == null)
+                {
+                    result.Add(spcRow);
+                }
+                else
+                {
+                    bool included = false;
+
+                    foreach (TaxonRow taxonRow in rankedTaxons)
+                    {
+                        if (taxonRow.Includes(spcRow, true))
+                        {
+                            included = true;
+                            break;
+                        }
+                    }
+
+                    if (!included) result.Add(spcRow);
+                }
+            }
+
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public SpeciesRow[] GetSpeciesNamed(string name)
+        {
+            List<SpeciesRow> result = new List<SpeciesRow>();
+            string[] words = name.Split(' ');
+            string spcName = words[words.Length - 1];
+            if (!spcName.Contains("."))
+            {
+                foreach (SpeciesRow speciesRow in Species.Rows)
+                {
+                    if (speciesRow.Species.Contains(spcName))
+                    {
+                        result.Add(speciesRow);
+                    }
+                }
+            }
+            return result.ToArray();
+        }
+
+        public SpeciesRow[] GetSpeciesNameContaining(string name)
+        {
+            List<SpeciesRow> result = new List<SpeciesRow>();
+
+            foreach (SpeciesRow speciesRow in Species.Rows)
+            {
+                //if (speciesRow.IsSpeciesNull()) continue
+                if (speciesRow.FullName.ToUpperInvariant().Contains(name.ToUpperInvariant()))
+                {
+                    result.Add(speciesRow);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public string[] References
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (SpeciesRow speciesRow in Species.Rows)
+                {
+                    if (!speciesRow.IsReferenceNull())
+                    {
+                        if (!result.Contains(speciesRow.Reference)) result.Add(speciesRow.Reference);
+                    }
+                }
+                return result.ToArray();
+            }
+        }
+
+        public string[] Genera
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (SpeciesRow speciesRow in Species.Rows)
+                {
+                    string genus = speciesRow.Species.Split(' ')[0];
+                    if (!result.Contains(genus)) result.Add(genus);
+                }
+                return result.ToArray();
+            }
+        }
+
+        public SpeciesRow FindBySpecies(string value)
+        {
+            foreach (SpeciesRow speciesRow in Species.Rows)
+            {
+                if (speciesRow.Species == value)
+                {
+                    return speciesRow;
+                }
+            }
+
+            return null;
+        }
+
+        public SpeciesRow[] GetSorted()
+        {
+            return (SpeciesRow[])Species.Select(null, "Species asc");
+        }
+
+        public SpeciesRow[] GetOrphans()
+        {
+            List<SpeciesRow> result = new List<SpeciesRow>();
+
+            foreach (SpeciesRow spcRow in Species)
+            {
+                if (spcRow.TaxonRow == null)
+                    result.Add(spcRow);
+            }
+
+            result.Sort();
+            return result.ToArray();
+        }
+
+
         public bool Contains(string species)
         {
-            return Species.FindBySpecies(species) != null;
+            return FindBySpecies(species) != null;
         }
 
         public SpeciesRow[] GetByFeatureStates(StateRow[] stateRows)

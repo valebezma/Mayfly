@@ -225,7 +225,7 @@ namespace Mayfly.Benthos
                 waypointControl1.Waypoint.TimeMark = UserSettings.SelectedDate;
             }
 
-            //ColumnSpecies.ValueType = typeof(string);
+            ColumnSpecies.ValueType = typeof(string);
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(double);
 
@@ -870,7 +870,7 @@ namespace Mayfly.Benthos
 
         Saving:
 
-            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.Species.FindBySpecies(
+            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.FindBySpecies(
                     gridRow.Cells[ColumnSpecies.Index].Value.ToString());
 
             if (speciesRow == null)
@@ -1472,7 +1472,7 @@ namespace Mayfly.Benthos
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
+            SpeciesToOpen = UserSettings.SpeciesIndex.FindBySpecies(species);
             Load += new EventHandler(CardOpenSpecies_Load);
         }
 
@@ -2173,7 +2173,7 @@ namespace Mayfly.Benthos
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                SpeciesKey.SpeciesRow clipSpeciesRow = UserSettings.SpeciesIndex.Species.FindBySpecies(clipLogRow.SpeciesRow.Species);
+                SpeciesKey.SpeciesRow clipSpeciesRow = UserSettings.SpeciesIndex.FindBySpecies(clipLogRow.SpeciesRow.Species);
 
                 if (clipSpeciesRow == null)
                 {

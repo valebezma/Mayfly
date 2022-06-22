@@ -157,6 +157,7 @@ namespace Mayfly.Species
         private void menuItemAddTaxon_Click(object sender, EventArgs e)
         {
             SpeciesKey.TaxonRow taxonRow = Data.Taxon.NewTaxonRow();
+            taxonRow.Rank = 61;
             taxonRow.Taxon = Resources.Interface.NewTaxon;
 
             EditTaxon editTaxon = new EditTaxon(taxonRow);
@@ -165,8 +166,9 @@ namespace Mayfly.Species
             {
                 IsChanged = true;
                 Data.Taxon.AddTaxonRow(taxonRow);
-                TreeNode tn = getTaxonTreeNode(editTaxon.TaxonRow, true, true);
+                TreeNode tn = getTaxonTreeNode(taxonRow, true, true);
                 treeViewDerivates.Nodes.Add(tn);
+                listViewRepresence.Groups.Add(getGroup(taxonRow));
                 IsChanged = true;
             }
         }
@@ -228,7 +230,7 @@ namespace Mayfly.Species
             if (IsTaxonNodePicked) {
                 updateRepresenceSpecies(PickedTaxon.GetSpecies());
             } else if (!speciesWasPicked && IsSpeciesNodePicked) {
-                updateRepresenceSpecies(Data.Species.GetSorted());
+                updateRepresenceSpecies(Data.GetSorted());
             }
         }
 
@@ -367,6 +369,7 @@ namespace Mayfly.Species
                             carryTaxon.TaxonRowParent = dropTaxon;
                             dropNode.Nodes.Add(getTaxonTreeNode(carryTaxon, true, true));
                             carryNode.Remove();
+                            applyRename(dropNode);
                             status.Message(Resources.Interface.ResultTaxToTaxDerived, carryTaxon, dropTaxon);
                         }
 
@@ -419,10 +422,10 @@ namespace Mayfly.Species
         private void backTreeLoader_DoWork(object sender, DoWorkEventArgs e)
         {
             List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in Data.Taxon.GetRootTaxon()) {
+            foreach (SpeciesKey.TaxonRow taxonRow in Data.GetRootTaxon()) {
                 result.Add(getTaxonTreeNode(taxonRow, true, true));
             }
-            foreach (SpeciesKey.SpeciesRow speciesRow in Data.Species.GetOrphans()) {
+            foreach (SpeciesKey.SpeciesRow speciesRow in Data.GetOrphans()) {
                 result.Add(getSpeciesTreeNode(speciesRow));
             }
             e.Result = result.ToArray();
@@ -710,7 +713,7 @@ namespace Mayfly.Species
 
         private void contextSpeciesEdit_Click(object sender, EventArgs e)
         {
-            if (sender == listViewRepresence)
+            if (listViewRepresence.ContainsFocus)
             {
                 foreach (ListViewItem item in listViewRepresence.SelectedItems)
                 {
@@ -718,7 +721,7 @@ namespace Mayfly.Species
                 }
             }
 
-            if (sender == treeViewDerivates)
+            if (treeViewDerivates.ContainsFocus)
             {
                 editSpecies(PickedSpecies);
             }
@@ -726,10 +729,19 @@ namespace Mayfly.Species
 
         private void contextSpeciesDelete_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewRepresence.SelectedItems)
+            if (listViewRepresence.ContainsFocus)
             {
-                ((SpeciesKey.SpeciesRow)item.Tag).Delete();
-                item.Remove();
+                foreach (ListViewItem item in listViewRepresence.SelectedItems)
+                {
+                    ((SpeciesKey.SpeciesRow)item.Tag).Delete();
+                    item.Remove();
+                }
+            }
+
+            if (treeViewDerivates.ContainsFocus)
+            {
+                PickedSpecies.Delete();
+                treeViewDerivates.SelectedNode.Remove();
             }
 
             IsChanged = true;
@@ -737,25 +749,35 @@ namespace Mayfly.Species
 
         private void contextSpeciesDepart_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewRepresence.SelectedItems)
+            if (listViewRepresence.ContainsFocus)
             {
-                SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)item.Tag;
-                SpeciesKey.TaxonRow taxonRow = treeViewDerivates.SelectedNode.Tag is SpeciesKey.TaxonRow row
-                    ? row : (SpeciesKey.TaxonRow)item.Group.Tag;
-
-                if (taxonRow != null)
+                foreach (ListViewItem item in listViewRepresence.SelectedItems)
                 {
-                    speciesRow.SetTaxIDNull();
+                    SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)item.Tag;
+                    SpeciesKey.TaxonRow taxonRow = treeViewDerivates.SelectedNode.Tag is SpeciesKey.TaxonRow row
+                        ? row : (SpeciesKey.TaxonRow)item.Group.Tag;
 
-                    if (IsTaxonNodePicked)
+                    if (taxonRow != null)
                     {
-                        item.Remove();
-                    }
-                    else
-                    {
-                        item.Group = null;
+                        speciesRow.SetTaxIDNull();
+
+                        if (IsTaxonNodePicked)
+                        {
+                            item.Remove();
+                        }
+                        else
+                        {
+                            item.Group = null;
+                        }
                     }
                 }
+            }
+
+            if (treeViewDerivates.ContainsFocus)
+            {
+                PickedSpecies.SetTaxIDNull();
+                treeViewDerivates.SelectedNode.Remove();
+                treeViewDerivates.Nodes.Add(getSpeciesTreeNode(PickedSpecies));
             }
 
             IsChanged = true;

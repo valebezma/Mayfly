@@ -381,69 +381,6 @@
   <data name="comboBoxRank.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="comboBoxRank.Items" xml:space="preserve">
-    <value>Domain</value>
-  </data>
-  <data name="comboBoxRank.Items1" xml:space="preserve">
-    <value>Kingdom</value>
-  </data>
-  <data name="comboBoxRank.Items2" xml:space="preserve">
-    <value>Subkingdom</value>
-  </data>
-  <data name="comboBoxRank.Items3" xml:space="preserve">
-    <value>Phylum</value>
-  </data>
-  <data name="comboBoxRank.Items4" xml:space="preserve">
-    <value>Subphylum</value>
-  </data>
-  <data name="comboBoxRank.Items5" xml:space="preserve">
-    <value>Infraphylum</value>
-  </data>
-  <data name="comboBoxRank.Items6" xml:space="preserve">
-    <value>Class</value>
-  </data>
-  <data name="comboBoxRank.Items7" xml:space="preserve">
-    <value>Subclass</value>
-  </data>
-  <data name="comboBoxRank.Items8" xml:space="preserve">
-    <value>Superorder</value>
-  </data>
-  <data name="comboBoxRank.Items9" xml:space="preserve">
-    <value>Order</value>
-  </data>
-  <data name="comboBoxRank.Items10" xml:space="preserve">
-    <value>Suborder</value>
-  </data>
-  <data name="comboBoxRank.Items11" xml:space="preserve">
-    <value>Infraorder</value>
-  </data>
-  <data name="comboBoxRank.Items12" xml:space="preserve">
-    <value>Superfamily</value>
-  </data>
-  <data name="comboBoxRank.Items13" xml:space="preserve">
-    <value>Family</value>
-  </data>
-  <data name="comboBoxRank.Items14" xml:space="preserve">
-    <value>Subfamily</value>
-  </data>
-  <data name="comboBoxRank.Items15" xml:space="preserve">
-    <value>Tribe</value>
-  </data>
-  <data name="comboBoxRank.Items16" xml:space="preserve">
-    <value>Subtribe</value>
-  </data>
-  <data name="comboBoxRank.Items17" xml:space="preserve">
-    <value>Genus</value>
-  </data>
-  <data name="comboBoxRank.Items18" xml:space="preserve">
-    <value>Subgenus</value>
-  </data>
-  <data name="comboBoxRank.Items19" xml:space="preserve">
-    <value>Species</value>
-  </data>
-  <data name="comboBoxRank.Items20" xml:space="preserve">
-    <value>Subspecies</value>
-  </data>
   <data name="comboBoxRank.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 48</value>
   </data>

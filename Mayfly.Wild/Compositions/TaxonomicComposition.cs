@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Mayfly.Wild
 {
-    public class TaxaComposition : Composition
+    public class TaxonomicComposition : Composition
     {
-        public TaxaComposition(SpeciesComposition speciesComposition, SpeciesKey.BaseRow baseRow, bool includeEmpty)
-            : base(baseRow.BaseName)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, int rank, bool includeEmpty)
+            : base("Taxonomic")
         {
             List<SpeciesSwarm> essentials = new List<SpeciesSwarm>();
 
-            foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
+            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRankedTaxon(rank))
             {
-                SpeciesSwarmPool taxaCategory = new SpeciesSwarmPool(taxaRow);
+                SpeciesSwarmPool taxonCategory = new SpeciesSwarmPool(taxonRow);
                 List<SpeciesSwarm> swarms = new List<SpeciesSwarm>();
 
                 List<double> abundances = new List<double>();
@@ -21,14 +21,14 @@ namespace Mayfly.Wild
 
                 foreach (SpeciesSwarm speciesSwarm in speciesComposition)
                 {
-                    if (!taxaRow.Includes(speciesSwarm.SpeciesRow)) continue;
+                    if (!taxonRow.Includes(speciesSwarm.SpeciesRow)) continue;
 
                     swarms.Add(speciesSwarm);
 
-                    taxaCategory.Quantity += speciesSwarm.Quantity;
-                    taxaCategory.Mass += speciesSwarm.Mass;
-                    taxaCategory.Abundance += speciesSwarm.Abundance;
-                    taxaCategory.Biomass += speciesSwarm.Biomass;
+                    taxonCategory.Quantity += speciesSwarm.Quantity;
+                    taxonCategory.Mass += speciesSwarm.Mass;
+                    taxonCategory.Abundance += speciesSwarm.Abundance;
+                    taxonCategory.Biomass += speciesSwarm.Biomass;
 
                     abundances.Add(speciesSwarm.Abundance);
                     biomasses.Add(speciesSwarm.Biomass);
@@ -36,18 +36,17 @@ namespace Mayfly.Wild
                     essentials.Add(speciesSwarm);
                 }
 
-                taxaCategory.SpeciesSwarms = swarms.ToArray();
-                taxaCategory.DiversityA = new Sample(abundances).Diversity();
-                taxaCategory.DiversityB = new Sample(biomasses).Diversity();
+                taxonCategory.SpeciesSwarms = swarms.ToArray();
+                taxonCategory.DiversityA = new Sample(abundances).Diversity();
+                taxonCategory.DiversityB = new Sample(biomasses).Diversity();
 
-                if (includeEmpty || taxaCategory.Quantity > 0) this.AddCategory(taxaCategory);
+                if (includeEmpty || taxonCategory.Quantity > 0) this.AddCategory(taxonCategory);
             }
 
             SpeciesSwarmPool varia = new SpeciesSwarmPool(Species.Resources.Interface.Varia);
 
-            SpeciesKey.SpeciesRow[] various = baseRow.Varia;
+            //SpeciesKey.SpeciesRow[] various = index.GetVaria(rank);
             List<SpeciesSwarm> variaswarms = new List<SpeciesSwarm>();
-
 
             foreach (SpeciesSwarm speciesSwarm in speciesComposition)
             {
@@ -67,8 +66,8 @@ namespace Mayfly.Wild
             this.SamplesCount = speciesComposition.SamplesCount;
         }
 
-        public TaxaComposition(SpeciesComposition speciesComposition, SpeciesKey.BaseRow baseRow)
-            : this(speciesComposition, baseRow, false)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, int rank)
+            : this(speciesComposition, index, rank, false)
         { }
 
 
@@ -82,7 +81,7 @@ namespace Mayfly.Wild
 
     public class SpeciesSwarmPool : Category
     {
-        public SpeciesKey.TaxaRow DataRow { get; set; }
+        public SpeciesKey.TaxonRow DataRow { get; set; }
 
         public SpeciesKey.SpeciesRow[] SpeciesRows
         {
@@ -112,7 +111,7 @@ namespace Mayfly.Wild
             Name = name;
         }
 
-        public SpeciesSwarmPool(SpeciesKey.TaxaRow dataRow) : this(dataRow.TaxonName)
+        public SpeciesSwarmPool(SpeciesKey.TaxonRow dataRow) : this(dataRow.TaxonName)
         {
             DataRow = dataRow;
         }

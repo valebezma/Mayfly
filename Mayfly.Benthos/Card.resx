@@ -181,7 +181,7 @@
     <value>False</value>
   </data>
   <data name="menuItemNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemNew.Text" xml:space="preserve">
     <value>New</value>
@@ -193,7 +193,7 @@
     <value>False</value>
   </data>
   <data name="menuItemOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemOpen.Text" xml:space="preserve">
     <value>Open...</value>
@@ -208,7 +208,7 @@
     <value>False</value>
   </data>
   <data name="menuItemSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemSave.Text" xml:space="preserve">
     <value>Save</value>
@@ -220,16 +220,16 @@
     <value>False</value>
   </data>
   <data name="menuItemSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemSaveAs.Text" xml:space="preserve">
     <value>Save as...</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>125, 6</value>
   </data>
   <data name="menuItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemPreview.Text" xml:space="preserve">
     <value>Preview...</value>
@@ -241,34 +241,34 @@
     <value>False</value>
   </data>
   <data name="menuItemPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemPrint.Text" xml:space="preserve">
     <value>Print...</value>
   </data>
   <data name="ToolStripMenuItemCardBlank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>151, 22</value>
   </data>
   <data name="ToolStripMenuItemCardBlank.Text" xml:space="preserve">
     <value>Sample note</value>
   </data>
   <data name="ToolStripMenuItemIndividualsLogBlank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>151, 22</value>
   </data>
   <data name="ToolStripMenuItemIndividualsLogBlank.Text" xml:space="preserve">
     <value>Individuals log</value>
   </data>
   <data name="menuItemBlank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemBlank.Text" xml:space="preserve">
     <value>Print form</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>125, 6</value>
   </data>
   <data name="menuItemClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>128, 22</value>
   </data>
   <data name="menuItemClose.Text" xml:space="preserve">
     <value>Close</value>
@@ -307,34 +307,34 @@
     <value>Data</value>
   </data>
   <data name="ToolStripMenuItemWatersRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="ToolStripMenuItemWatersRef.Text" xml:space="preserve">
     <value>Edit waters</value>
   </data>
   <data name="ToolStripMenuItemSpeciesRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="ToolStripMenuItemSpeciesRef.Text" xml:space="preserve">
     <value>Edit species</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>132, 6</value>
   </data>
   <data name="menuItemSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="menuItemSettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="menuItemAboutCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="menuItemAboutCard.Text" xml:space="preserve">
     <value>About card</value>
   </data>
   <data name="menuItemAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="menuItemAbout.Text" xml:space="preserve">
     <value>About</value>
@@ -415,7 +415,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnSpecies.HeaderText" xml:space="preserve">
-    <value>Taxa / Species</value>
+    <value>Taxon / Species</value>
   </data>
   <metadata name="ColumnQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -505,7 +505,7 @@
     <value>spreadSheetLog</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
     <value>tabPageLog</value>
@@ -526,7 +526,7 @@
     <value>0</value>
   </data>
   <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Taxa log</value>
+    <value>Log</value>
   </data>
   <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
     <value>tabPageLog</value>
@@ -625,7 +625,7 @@
     <value>waypointControl1</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Type" xml:space="preserve">
-    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waypointControl1.Parent" xml:space="preserve">
     <value>tabPageCollect</value>
@@ -665,7 +665,7 @@
   </data>
   <data name="waterSelector.Index" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAEB3YXRpbnZlbnQsIFZlcnNpb249MS4wLjQuMCwgQ3VsdHVyZT1u
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEB3YXRpbnZlbnQsIFZlcnNpb249MS4xLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAXTWF5Zmx5LldhdGVycy5XYXRlcnNLZXkDAAAA
         F0RhdGFTZXQuUmVtb3RpbmdWZXJzaW9uCVhtbFNjaGVtYQtYbWxEaWZmR3JhbQMBAQ5TeXN0ZW0uVmVy
         c2lvbgIAAAAJAwAAAAYEAAAAiRs8P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJ1dGYtMTYiPz4N
@@ -745,7 +745,7 @@
     <value>waterSelector</value>
   </data>
   <data name="&gt;&gt;waterSelector.Type" xml:space="preserve">
-    <value>Mayfly.Waters.Controls.WaterSelector, watinvent, Version=1.0.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Waters.Controls.WaterSelector, watinvent, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waterSelector.Parent" xml:space="preserve">
     <value>tabPageCollect</value>
@@ -973,7 +973,7 @@
     <value>comboBoxSampler</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.Type" xml:space="preserve">
-    <value>GroupedComboBox, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GroupedComboBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxSampler.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
@@ -2260,7 +2260,7 @@
     <value>aquaControl1</value>
   </data>
   <data name="&gt;&gt;aquaControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;aquaControl1.Parent" xml:space="preserve">
     <value>tabPageEnvironment</value>
@@ -2284,7 +2284,7 @@
     <value>weatherControl1</value>
   </data>
   <data name="&gt;&gt;weatherControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;weatherControl1.Parent" xml:space="preserve">
     <value>tabPageEnvironment</value>
@@ -2428,7 +2428,7 @@
     <value>spreadSheetAddt</value>
   </data>
   <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
     <value>tabPageFactors</value>
@@ -3049,37 +3049,37 @@
     <value>taskDialogSaveChanges</value>
   </data>
   <data name="&gt;&gt;taskDialogSaveChanges.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbSave.Name" xml:space="preserve">
     <value>tdbSave</value>
   </data>
   <data name="&gt;&gt;tdbSave.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Name" xml:space="preserve">
     <value>tdbDiscard</value>
   </data>
   <data name="&gt;&gt;tdbDiscard.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Name" xml:space="preserve">
     <value>tdbCancelClose</value>
   </data>
   <data name="&gt;&gt;tdbCancelClose.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statusCard.Name" xml:space="preserve">
     <value>statusCard</value>
   </data>
   <data name="&gt;&gt;statusCard.Type" xml:space="preserve">
-    <value>Mayfly.Controls.Status, Mayfly, Version=1.4.28.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.Status, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;speciesLogger.Name" xml:space="preserve">
     <value>speciesLogger</value>
   </data>
   <data name="&gt;&gt;speciesLogger.Type" xml:space="preserve">
-    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.2.7.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Card</value>

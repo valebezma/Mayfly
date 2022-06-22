@@ -150,7 +150,7 @@ namespace Mayfly.Species
             foreach (SpeciesKey.TaxonRow taxonRow in Data.Taxon) {
                 listViewRepresence.Groups.Add(getGroup(taxonRow));
             }
-            listViewRepresence.Groups.Add(new ListViewGroup(string.Format("Varia ({0})", Data.Species.GetOrphans().Length)) {
+            listViewRepresence.Groups.Add(new ListViewGroup(string.Format("Varia ({0})", Data.GetOrphans().Length)) {
                 Name = "Varia",
                 HeaderAlignment = HorizontalAlignment.Center
             });
@@ -299,7 +299,7 @@ namespace Mayfly.Species
                 if (group.Tag is SpeciesKey.TaxonRow tr) {
                     group.Header = tr.InterfaceString;
                 } else {
-                    group.Header = string.Format("Varia ({0})", Data.Species.GetOrphans().Length);
+                    group.Header = string.Format("Varia ({0})", Data.GetOrphans().Length);
                 }
             }
         }

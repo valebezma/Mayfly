@@ -74,7 +74,7 @@
     <Compile Include="Compositions\CompositionColumn.cs" />
     <Compile Include="Compositions\LengthComposition.cs" />
     <Compile Include="Compositions\SpeciesComposition.cs" />
-    <Compile Include="Compositions\TaxaComposition.cs" />
+    <Compile Include="Compositions\TaxonomicComposition.cs" />
     <Compile Include="Data.cs">
       <DependentUpon>Data.xsd</DependentUpon>
     </Compile>

@@ -23,8 +23,8 @@ namespace Mayfly.Species
 
             taxonSelector.Data = (SpeciesKey)speciesRow.Table.DataSet;
 
-            textBoxScientific.AutoCompleteCustomSource.AddRange(((SpeciesKey)speciesRow.Table.DataSet).Species.Genera);
-            textBoxReference.AutoCompleteCustomSource.AddRange(((SpeciesKey)speciesRow.Table.DataSet).Species.References);
+            textBoxScientific.AutoCompleteCustomSource.AddRange(((SpeciesKey)speciesRow.Table.DataSet).Genera);
+            textBoxReference.AutoCompleteCustomSource.AddRange(((SpeciesKey)speciesRow.Table.DataSet).References);
 
             SpeciesRow = speciesRow;
 

@@ -95,7 +95,25 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public static void AddTaxaMenus(this ToolStripMenuItem item, SpeciesKey.BaseRow baseRow, EventHandler command)
+        private static ToolStripMenuItem taxonItem(SpeciesKey.TaxonRow taxonRow, EventHandler command)
+        {
+            ToolStripMenuItem item = new ToolStripMenuItem()
+            {
+                Tag = taxonRow,
+                Text = taxonRow.FullName
+            };
+
+            item.Click += command;
+
+            foreach (SpeciesKey.TaxonRow childRow in taxonRow.GetTaxonRows())
+            {
+                item.DropDownItems.Add(taxonItem(childRow, command));
+            }
+
+            return item;
+        }
+
+        public static void AddTaxonMenus(this ToolStripMenuItem item, SpeciesKey index, EventHandler command)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -111,59 +129,10 @@ namespace Mayfly.Wild
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
+            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRootTaxon())
             {
-                ToolStripItem _item = new ToolStripMenuItem();
-                _item.Tag = taxaRow;
-                _item.Text = taxaRow.TaxonName;
-                _item.Click += command;
-                item.DropDownItems.Add(_item);
+                item.DropDownItems.Add(taxonItem(taxonRow, command));
             }
-
-        }
-
-        public static void AddBaseMenus(this ToolStripMenuItem item, SpeciesKey key, EventHandler command)
-        {
-            for (int i = 0; i < item.DropDownItems.Count; i++)
-            {
-                if (item.DropDownItems[i].Tag != null)
-                {
-                    item.DropDownItems.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator))
-            {
-                item.DropDownItems.Add(new ToolStripSeparator());
-            }
-
-            foreach (SpeciesKey.BaseRow baseRow in key.Base)
-            {
-                ToolStripItem _item = new ToolStripMenuItem();
-                _item.Tag = baseRow;
-                _item.Text = baseRow.BaseName;
-                _item.Click += command;
-                item.DropDownItems.Add(_item);
-            }
-
-            item.Enabled = item.DropDownItems.Count > 0;
-        }
-
-        public static void AddBaseList(this ComboBox comboBox, SpeciesKey key)
-        {
-            comboBox.DisplayMember = "Base";
-
-            comboBox.Items.Clear();
-
-            // Fill list
-
-            foreach (SpeciesKey.BaseRow baseRow in key.Base)
-            {
-                comboBox.Items.Add(baseRow);
-            }
-
-            comboBox.Enabled = comboBox.Items.Count > 0;
         }
 
         public static void SetBioAcceptable(this Control control, Action<string[]> a)

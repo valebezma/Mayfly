@@ -19,7 +19,7 @@ namespace Mayfly.Wild.Resources.Interface {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class MassRecover {
@@ -70,7 +70,7 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Species / taxa of diet.
+        ///   Looks up a localized string similar to Species / taxon of diet.
         /// </summary>
         public static string ColDiet {
             get {
@@ -277,7 +277,7 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Taxa association.
+        ///   Looks up a localized string similar to Taxon association.
         /// </summary>
         public static string Section2Title {
             get {
@@ -304,7 +304,7 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Table of taxa / species association.
+        ///   Looks up a localized string similar to Table of taxon / species association.
         /// </summary>
         public static string TableAscHeader {
             get {

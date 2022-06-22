@@ -38,9 +38,9 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public TaxaComposition GetBasicTaxonomicComposition(SpeciesKey.BaseRow baseRow)
+        public TaxonomicComposition GetBasicTaxonomicComposition(SpeciesKey index, int rank)
         {
-            TaxaComposition result = new TaxaComposition(GetBasicCenosisComposition(), baseRow, true);
+            TaxonomicComposition result = new TaxonomicComposition(GetBasicCenosisComposition(), index, rank, true);
 
             foreach (SpeciesSwarmPool pool in result)
             {

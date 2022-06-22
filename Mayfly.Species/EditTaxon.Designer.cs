@@ -107,31 +107,11 @@
             // comboBoxRank
             // 
             resources.ApplyResources(this.comboBoxRank, "comboBoxRank");
+            this.comboBoxRank.DisplayMember = "Name";
             this.comboBoxRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRank.FormattingEnabled = true;
-            this.comboBoxRank.Items.AddRange(new object[] {
-            resources.GetString("comboBoxRank.Items"),
-            resources.GetString("comboBoxRank.Items1"),
-            resources.GetString("comboBoxRank.Items2"),
-            resources.GetString("comboBoxRank.Items3"),
-            resources.GetString("comboBoxRank.Items4"),
-            resources.GetString("comboBoxRank.Items5"),
-            resources.GetString("comboBoxRank.Items6"),
-            resources.GetString("comboBoxRank.Items7"),
-            resources.GetString("comboBoxRank.Items8"),
-            resources.GetString("comboBoxRank.Items9"),
-            resources.GetString("comboBoxRank.Items10"),
-            resources.GetString("comboBoxRank.Items11"),
-            resources.GetString("comboBoxRank.Items12"),
-            resources.GetString("comboBoxRank.Items13"),
-            resources.GetString("comboBoxRank.Items14"),
-            resources.GetString("comboBoxRank.Items15"),
-            resources.GetString("comboBoxRank.Items16"),
-            resources.GetString("comboBoxRank.Items17"),
-            resources.GetString("comboBoxRank.Items18"),
-            resources.GetString("comboBoxRank.Items19"),
-            resources.GetString("comboBoxRank.Items20")});
             this.comboBoxRank.Name = "comboBoxRank";
+            this.comboBoxRank.ValueMember = "Value";
             // 
             // label4
             // 

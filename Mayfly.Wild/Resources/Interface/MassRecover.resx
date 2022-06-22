@@ -121,7 +121,7 @@
     <value>Associated species</value>
   </data>
   <data name="ColDiet" xml:space="preserve">
-    <value>Species / taxa of diet</value>
+    <value>Species / taxon of diet</value>
   </data>
   <data name="ColFragments" xml:space="preserve">
     <value>Fragments count</value>
@@ -190,7 +190,7 @@
     <value>Data used for recovery</value>
   </data>
   <data name="Section2Title" xml:space="preserve">
-    <value>Taxa association</value>
+    <value>Taxon association</value>
   </data>
   <data name="Section3Title" xml:space="preserve">
     <value>Weight recovery by diet species</value>
@@ -199,7 +199,7 @@
     <value>Recovery results per capita</value>
   </data>
   <data name="TableAscHeader" xml:space="preserve">
-    <value>Table of taxa / species association</value>
+    <value>Table of taxon / species association</value>
   </data>
   <data name="TableLenHeader" xml:space="preserve">
     <value>Weight recovery from individual length</value>

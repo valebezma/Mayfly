@@ -16,13 +16,12 @@ namespace Mayfly.Species
         {
             InitializeComponent();
 
+            comboBoxRank.DataSource = TaxonomicRank.SuperGenericRanks;
             taxonSelector.Data = (SpeciesKey)taxonRow.Table.DataSet;
-
-
-
 
             TaxonRow = taxonRow;
 
+            comboBoxRank.SelectedValue = taxonRow.Rank;
             textBoxTaxon.Text = TaxonRow.Taxon;
             if (!TaxonRow.IsNameNull()) textBoxName.Text = TaxonRow.Name;
             if (!TaxonRow.IsDescriptionNull()) textBoxDescription.Text = TaxonRow.Description;
@@ -33,6 +32,7 @@ namespace Mayfly.Species
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            TaxonRow.Rank = (int)comboBoxRank.SelectedValue;
             TaxonRow.Taxon = textBoxTaxon.Text;
             
             if (textBoxName.Text.IsAcceptable()) { TaxonRow.Name = textBoxName.Text; }
@@ -51,7 +51,7 @@ namespace Mayfly.Species
         {
             if (e.TaxonRow != null)
             {
-                if (e.TaxonRow.Rank >= TaxonRow.Rank)
+                if (e.TaxonRow.Rank >= (int)comboBoxRank.SelectedValue)
                 {
                     taxonSelector.SelectionAllowed = false;
                     ToolTip toolTip = new ToolTip();

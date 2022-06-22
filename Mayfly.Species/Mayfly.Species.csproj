@@ -115,6 +115,7 @@
     <Compile Include="Controls\TaxonSelector.Designer.cs">
       <DependentUpon>TaxonSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaxonomicRank.cs" />
     <Compile Include="Resources\Rank.ru.Designer.cs">
       <DependentUpon>Rank.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
