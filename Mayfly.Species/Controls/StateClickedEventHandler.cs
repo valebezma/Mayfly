@@ -20,7 +20,7 @@ namespace Mayfly.Species.Controls
         public SpeciesKey.SpeciesRow SpeciesRow { get { return StateRow.SpeciesRow; } }
 
         public bool IsTaxonAttached { get { return !StateRow.IsTaxIDNull(); } }
-        public SpeciesKey.TaxaRow TaxaRow { get { return StateRow.TaxaRow; } }
+        public SpeciesKey.TaxonRow TaxonRow { get { return StateRow.TaxonRow; } }
     }
 
     public delegate void StateClickedEventHandler(object sender, StateClickedEventArgs e);

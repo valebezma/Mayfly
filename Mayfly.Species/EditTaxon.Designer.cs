@@ -1,4 +1,4 @@
-﻿namespace Mayfly.Species.Systematics
+﻿namespace Mayfly.Species
 {
     partial class EditTaxon
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditTaxon));
             this.buttonOK = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
@@ -36,6 +37,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
+            this.comboBoxRank = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonOK
@@ -52,7 +57,7 @@
             this.textBoxDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.TextChanged += new System.EventHandler(this.ValueChanged);
+            this.textBoxDescription.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label2
             // 
@@ -65,7 +70,7 @@
             this.textBoxTaxon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxTaxon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxTaxon.Name = "textBoxTaxon";
-            this.textBoxTaxon.TextChanged += new System.EventHandler(this.ValueChanged);
+            this.textBoxTaxon.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label1
             // 
@@ -78,12 +83,60 @@
             this.textBoxName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.TextChanged += new System.EventHandler(this.ValueChanged);
+            this.textBoxName.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // taxonSelector
+            // 
+            resources.ApplyResources(this.taxonSelector, "taxonSelector");
+            this.taxonSelector.Cursor = System.Windows.Forms.Cursors.Default;
+            this.taxonSelector.Name = "taxonSelector";
+            this.taxonSelector.UnselectedLabel = "Parent not selected";
+            this.taxonSelector.OnTaxonSelected += new System.EventHandler(this.valueChanged);
+            this.taxonSelector.BeforeTaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxonSelector_BeforeTaxonSelected);
+            // 
+            // comboBoxRank
+            // 
+            resources.ApplyResources(this.comboBoxRank, "comboBoxRank");
+            this.comboBoxRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRank.FormattingEnabled = true;
+            this.comboBoxRank.Items.AddRange(new object[] {
+            resources.GetString("comboBoxRank.Items"),
+            resources.GetString("comboBoxRank.Items1"),
+            resources.GetString("comboBoxRank.Items2"),
+            resources.GetString("comboBoxRank.Items3"),
+            resources.GetString("comboBoxRank.Items4"),
+            resources.GetString("comboBoxRank.Items5"),
+            resources.GetString("comboBoxRank.Items6"),
+            resources.GetString("comboBoxRank.Items7"),
+            resources.GetString("comboBoxRank.Items8"),
+            resources.GetString("comboBoxRank.Items9"),
+            resources.GetString("comboBoxRank.Items10"),
+            resources.GetString("comboBoxRank.Items11"),
+            resources.GetString("comboBoxRank.Items12"),
+            resources.GetString("comboBoxRank.Items13"),
+            resources.GetString("comboBoxRank.Items14"),
+            resources.GetString("comboBoxRank.Items15"),
+            resources.GetString("comboBoxRank.Items16"),
+            resources.GetString("comboBoxRank.Items17"),
+            resources.GetString("comboBoxRank.Items18"),
+            resources.GetString("comboBoxRank.Items19"),
+            resources.GetString("comboBoxRank.Items20")});
+            this.comboBoxRank.Name = "comboBoxRank";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // EditTaxon
             // 
@@ -91,11 +144,15 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.Controls.Add(this.comboBoxRank);
+            this.Controls.Add(this.taxonSelector);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxTaxon);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOK);
             this.MaximizeBox = false;
@@ -116,5 +173,9 @@
         private System.Windows.Forms.TextBox textBoxTaxon;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private Controls.TaxonSelector taxonSelector;
+        private System.Windows.Forms.ComboBox comboBoxRank;
+        private System.Windows.Forms.Label label4;
     }
 }

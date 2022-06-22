@@ -1,4 +1,4 @@
-﻿namespace Mayfly.Species.Systematics
+﻿namespace Mayfly.Species
 {
     partial class EditFeature
     {

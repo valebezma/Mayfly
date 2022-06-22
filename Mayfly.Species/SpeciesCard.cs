@@ -31,23 +31,17 @@ namespace Mayfly.Species
             labelLocal.Text = speciesRow.IsNameNull() ? 
                 Constants.Null : speciesRow.Name;
 
-            labelTaxa.Text = string.Empty;
-            SpeciesKey.RepRow[] reps = speciesRow.GetRepRows();
-            foreach (SpeciesKey.RepRow repRow in reps)
-            {
-                labelTaxa.Text += repRow.TaxaRow.FullName+
-                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
+            labelTaxon.Text = string.Empty;
+            foreach (SpeciesKey.TaxonRow taxonRow in speciesRow.GetParents()) {
+                labelTaxon.Text += taxonRow.FullName + Constants.Break;
             }
 
             labelDescription.Text = speciesRow.IsDescriptionNull() ?
                 Resources.Interface.DescriptionNull : speciesRow.Description;
 
             labelSynonyms.Text = string.Empty;
-            SpeciesKey.SpeciesRow[] syns = speciesRow.Synonyms;
-            foreach (SpeciesKey.SpeciesRow syn in syns)
-            {
-                labelSynonyms.Text += syn.FullName+
-                    (reps.Length > 6 ? Constants.ElementSeparator : Constants.Break);
+            foreach (SpeciesKey.SpeciesRow syn in speciesRow.Synonyms) {
+                labelSynonyms.Text += syn.FullName + Constants.Break;
             }
         }
 

@@ -130,13 +130,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 210</value>
+    <value>351, 257</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="buttonOK.Text" xml:space="preserve">
     <value>OK</value>
@@ -151,13 +151,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="textBoxDescription.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="textBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 80</value>
+    <value>153, 127</value>
   </data>
   <data name="textBoxDescription.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -166,7 +166,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 124</value>
+    <value>273, 97</value>
   </data>
   <data name="textBoxDescription.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -181,7 +181,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxDescription.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -190,7 +190,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 57</value>
+    <value>48, 104</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
@@ -211,13 +211,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="textBoxTaxon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="textBoxTaxon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 28</value>
+    <value>153, 75</value>
   </data>
   <data name="textBoxTaxon.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 20</value>
@@ -235,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxTaxon.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -244,7 +244,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 31</value>
+    <value>48, 78</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 13</value>
@@ -265,13 +265,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="textBoxName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 54</value>
+    <value>153, 101</value>
   </data>
   <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 20</value>
@@ -289,7 +289,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxName.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +298,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 83</value>
+    <value>48, 130</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 13</value>
@@ -319,7 +319,181 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 233</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Parent taxon</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="taxonSelector.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
+  </data>
+  <data name="taxonSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 230</value>
+  </data>
+  <data name="taxonSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 20</value>
+  </data>
+  <data name="taxonSelector.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;taxonSelector.Name" xml:space="preserve">
+    <value>taxonSelector</value>
+  </data>
+  <data name="&gt;&gt;taxonSelector.Type" xml:space="preserve">
+    <value>Mayfly.Species.Controls.TaxonSelector, spinvent, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;taxonSelector.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;taxonSelector.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="comboBoxRank.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="comboBoxRank.Items" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="comboBoxRank.Items1" xml:space="preserve">
+    <value>Kingdom</value>
+  </data>
+  <data name="comboBoxRank.Items2" xml:space="preserve">
+    <value>Subkingdom</value>
+  </data>
+  <data name="comboBoxRank.Items3" xml:space="preserve">
+    <value>Phylum</value>
+  </data>
+  <data name="comboBoxRank.Items4" xml:space="preserve">
+    <value>Subphylum</value>
+  </data>
+  <data name="comboBoxRank.Items5" xml:space="preserve">
+    <value>Infraphylum</value>
+  </data>
+  <data name="comboBoxRank.Items6" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="comboBoxRank.Items7" xml:space="preserve">
+    <value>Subclass</value>
+  </data>
+  <data name="comboBoxRank.Items8" xml:space="preserve">
+    <value>Superorder</value>
+  </data>
+  <data name="comboBoxRank.Items9" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="comboBoxRank.Items10" xml:space="preserve">
+    <value>Suborder</value>
+  </data>
+  <data name="comboBoxRank.Items11" xml:space="preserve">
+    <value>Infraorder</value>
+  </data>
+  <data name="comboBoxRank.Items12" xml:space="preserve">
+    <value>Superfamily</value>
+  </data>
+  <data name="comboBoxRank.Items13" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="comboBoxRank.Items14" xml:space="preserve">
+    <value>Subfamily</value>
+  </data>
+  <data name="comboBoxRank.Items15" xml:space="preserve">
+    <value>Tribe</value>
+  </data>
+  <data name="comboBoxRank.Items16" xml:space="preserve">
+    <value>Subtribe</value>
+  </data>
+  <data name="comboBoxRank.Items17" xml:space="preserve">
+    <value>Genus</value>
+  </data>
+  <data name="comboBoxRank.Items18" xml:space="preserve">
+    <value>Subgenus</value>
+  </data>
+  <data name="comboBoxRank.Items19" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="comboBoxRank.Items20" xml:space="preserve">
+    <value>Subspecies</value>
+  </data>
+  <data name="comboBoxRank.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 48</value>
+  </data>
+  <data name="comboBoxRank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>273, 21</value>
+  </data>
+  <data name="comboBoxRank.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRank.Name" xml:space="preserve">
+    <value>comboBoxRank</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRank.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBoxRank.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Taxon rank</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -328,13 +502,13 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>434, 261</value>
+    <value>474, 328</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>450, 200</value>
+    <value>490, 300</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 25, 25</value>
+    <value>45, 45, 45, 45</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

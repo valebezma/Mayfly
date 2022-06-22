@@ -19,7 +19,7 @@ namespace Mayfly.Species.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Interface {
@@ -116,11 +116,83 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Depart from {0:f}.
+        /// </summary>
+        public static string MenuDepart {
+            get {
+                return ResourceManager.GetString("MenuDepart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New base.
+        /// </summary>
+        public static string NewBase {
+            get {
+                return ResourceManager.GetString("NewBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New species.
+        /// </summary>
+        public static string NewSpecies {
+            get {
+                return ResourceManager.GetString("NewSpecies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New {0}.
+        /// </summary>
+        public static string NewTaxon {
+            get {
+                return ResourceManager.GetString("NewTaxon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Varia ({0}).
         /// </summary>
         public static string Others {
             get {
                 return ResourceManager.GetString("Others", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:l} is now synonimized with {1:l}.
+        /// </summary>
+        public static string ResultSpcToSpcSynonimized {
+            get {
+                return ResourceManager.GetString("ResultSpcToSpcSynonimized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:l} is included in {1:f}.
+        /// </summary>
+        public static string ResultSpcToTaxIncluded {
+            get {
+                return ResourceManager.GetString("ResultSpcToTaxIncluded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:f} is now derived from {1:f}.
+        /// </summary>
+        public static string ResultTaxToTaxDerived {
+            get {
+                return ResourceManager.GetString("ResultTaxToTaxDerived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:f} is now phylogenetically higher than {1:f}.
+        /// </summary>
+        public static string ResultTaxToTaxSorted {
+            get {
+                return ResourceManager.GetString("ResultTaxToTaxSorted", resourceCulture);
             }
         }
         
@@ -153,11 +225,47 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Index is loaded.
+        /// </summary>
+        public static string StatusLoaded {
+            get {
+                return ResourceManager.GetString("StatusLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List loading.
+        /// </summary>
+        public static string StatusLoadingList {
+            get {
+                return ResourceManager.GetString("StatusLoadingList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tree loading.
+        /// </summary>
+        public static string StatusLoadingTree {
+            get {
+                return ResourceManager.GetString("StatusLoadingTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index is saved.
+        /// </summary>
+        public static string StatusSaved {
+            get {
+                return ResourceManager.GetString("StatusSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select {0}.
         /// </summary>
-        public static string TaxaSelect {
+        public static string TaxonSelect {
             get {
-                return ResourceManager.GetString("TaxaSelect", resourceCulture);
+                return ResourceManager.GetString("TaxonSelect", resourceCulture);
             }
         }
         
@@ -167,6 +275,87 @@ namespace Mayfly.Species.Resources {
         public static string Thesis {
             get {
                 return ResourceManager.GetString("Thesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} species.
+        /// </summary>
+        public static string TipSpcMultiple {
+            get {
+                return ResourceManager.GetString("TipSpcMultiple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set {0:l} as minor synonim(-s) of {1:l}.
+        /// </summary>
+        public static string TipSpcToSpcSynonim {
+            get {
+                return ResourceManager.GetString("TipSpcToSpcSynonim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to synonimize species to itself.
+        /// </summary>
+        public static string TipSpcToSpcSynonimUnableItself {
+            get {
+                return ResourceManager.GetString("TipSpcToSpcSynonimUnableItself", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to synonimize species from different taxonomic branches.
+        /// </summary>
+        public static string TipSpcToSpcSynonimUnableSeparateBranch {
+            get {
+                return ResourceManager.GetString("TipSpcToSpcSynonimUnableSeparateBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include {0:l} in {1:f}.
+        /// </summary>
+        public static string TipSpcToTaxInclude {
+            get {
+                return ResourceManager.GetString("TipSpcToTaxInclude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Derive {0:f} from {1:f}.
+        /// </summary>
+        public static string TipTaxToTaxDerive {
+            get {
+                return ResourceManager.GetString("TipTaxToTaxDerive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:f} is already derived from {1:f}.
+        /// </summary>
+        public static string TipTaxToTaxDeriveUnableAlready {
+            get {
+                return ResourceManager.GetString("TipTaxToTaxDeriveUnableAlready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:f} has higher or same rank as {1:f}.
+        /// </summary>
+        public static string TipTaxToTaxDeriveUnableWrongRank {
+            get {
+                return ResourceManager.GetString("TipTaxToTaxDeriveUnableWrongRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set {0:f} higher position over {1:f}.
+        /// </summary>
+        public static string TipTaxToTaxSort {
+            get {
+                return ResourceManager.GetString("TipTaxToTaxSort", resourceCulture);
             }
         }
         

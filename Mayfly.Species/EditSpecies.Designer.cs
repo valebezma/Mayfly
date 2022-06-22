@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Species
 {
-    partial class AddSpecies
+    partial class EditSpecies
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSpecies));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSpecies));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxScientific = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,9 +39,8 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.flowTaxa = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.labelNoTaxa = new System.Windows.Forms.Label();
+            this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -105,29 +105,24 @@
             this.textBoxDescription.TextChanged += new System.EventHandler(this.valueChanged);
             this.textBoxDescription.Enter += new System.EventHandler(this.textBoxLocal_Enter);
             // 
-            // flowTaxa
-            // 
-            resources.ApplyResources(this.flowTaxa, "flowTaxa");
-            this.flowTaxa.Name = "flowTaxa";
-            // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // labelNoTaxa
+            // taxonSelector
             // 
-            resources.ApplyResources(this.labelNoTaxa, "labelNoTaxa");
-            this.labelNoTaxa.Name = "labelNoTaxa";
+            resources.ApplyResources(this.taxonSelector, "taxonSelector");
+            this.taxonSelector.Cursor = System.Windows.Forms.Cursors.Default;
+            this.taxonSelector.Name = "taxonSelector";
             // 
-            // AddSpecies
+            // EditSpecies
             // 
             this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.labelNoTaxa);
-            this.Controls.Add(this.flowTaxa);
+            this.Controls.Add(this.taxonSelector);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label5);
@@ -140,7 +135,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddSpecies";
+            this.Name = "EditSpecies";
             this.ShowIcon = false;
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,8 +153,7 @@
         private System.Windows.Forms.TextBox textBoxLocal;
         private System.Windows.Forms.TextBox textBoxReference;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.FlowLayoutPanel flowTaxa;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelNoTaxa;
+        private Controls.TaxonSelector taxonSelector;
     }
 }

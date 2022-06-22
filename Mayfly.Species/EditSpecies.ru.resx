@@ -148,7 +148,7 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Укажите таксон</value>
   </data>
-  <data name="labelNoTaxa.Text" xml:space="preserve">
+  <data name="labelNoTaxon.Text" xml:space="preserve">
     <value>В справочнике таксон не указан...</value>
   </data>
 </root>

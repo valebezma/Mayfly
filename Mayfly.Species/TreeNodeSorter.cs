@@ -12,22 +12,17 @@ namespace Mayfly.Species
     {
         public int Compare(TreeNode tx, TreeNode ty)
         {
-            if (tx.Tag is SpeciesKey.BaseRow brx && ty.Tag is SpeciesKey.BaseRow bry)
-            {
-                return brx.CompareTo(bry);
-            }
-
-            if (tx.Tag is SpeciesKey.TaxaRow trx && ty.Tag is SpeciesKey.TaxaRow trz)
+            if (tx.Tag is SpeciesKey.TaxonRow trx && ty.Tag is SpeciesKey.TaxonRow trz)
             {
                 return trx.CompareTo(trz);
             }
 
-            if (tx.Tag is SpeciesKey.TaxaRow && ty.Tag is SpeciesKey.SpeciesRow)
+            if (tx.Tag is SpeciesKey.TaxonRow && ty.Tag is SpeciesKey.SpeciesRow)
             {
                 return -1;
             }
 
-            if (ty.Tag is SpeciesKey.TaxaRow && tx.Tag is SpeciesKey.SpeciesRow)
+            if (ty.Tag is SpeciesKey.TaxonRow && tx.Tag is SpeciesKey.SpeciesRow)
             {
                 return 1;
             }

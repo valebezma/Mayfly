@@ -90,6 +90,12 @@
     <Compile Include="Controls\DefinitionPanel.Designer.cs">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TaxonSelectorPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TaxonSelectorPopup.Designer.cs">
+      <DependentUpon>TaxonSelectorPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\State.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,12 +109,29 @@
     <Compile Include="Controls\StateEditor.Designer.cs">
       <DependentUpon>StateEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TaxonSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TaxonSelector.Designer.cs">
+      <DependentUpon>TaxonSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Rank.ru.Designer.cs">
+      <DependentUpon>Rank.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Rank.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rank.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxonEventHandler.cs" />
     <Compile Include="TreeNodeSorter.cs" />
-    <Compile Include="Systematics\AddSpecies.cs">
+    <Compile Include="EditSpecies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Systematics\AddSpecies.Designer.cs">
-      <DependentUpon>AddSpecies.cs</DependentUpon>
+    <Compile Include="EditSpecies.Designer.cs">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
     </Compile>
     <Compile Include="Fits.cs">
       <SubType>Form</SubType>
@@ -123,16 +146,10 @@
       <DependentUpon>Diagnosis.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ControlExtensions.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="MainForm.Methods.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Systematics\MainForm.Methods.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Systematics\Resources\Diagnosis.Designer.cs">
+    <Compile Include="Resources\Diagnosis.Designer.cs">
       <DependentUpon>Diagnosis.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,12 +164,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Systematics\Resources\Messages.Designer.cs">
+    <Compile Include="Resources\Messages.Designer.cs">
       <DependentUpon>Messages.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Systematics\Resources\Messages.ru.Designer.cs">
+    <Compile Include="Resources\Messages.ru.Designer.cs">
       <DependentUpon>Messages.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,34 +188,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpeciesKey.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Systematics\EditFeature.cs">
+    <Compile Include="EditFeature.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Systematics\EditFeature.Designer.cs">
+    <Compile Include="EditFeature.Designer.cs">
       <DependentUpon>EditFeature.cs</DependentUpon>
     </Compile>
-    <Compile Include="Systematics\EditSpecies.cs">
+    <Compile Include="EditTaxon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Systematics\EditSpecies.Designer.cs">
-      <DependentUpon>EditSpecies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Systematics\EditTaxon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Systematics\EditTaxon.Designer.cs">
+    <Compile Include="EditTaxon.Designer.cs">
       <DependentUpon>EditTaxon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Systematics\MainForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Systematics\MainForm.Designer.cs">
+    <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Systematics\Resources\Interface.Designer.cs">
-      <DependentUpon>Interface.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
@@ -230,17 +236,21 @@
     <EmbeddedResource Include="Controls\DefinitionPanel.ru.resx">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TaxonSelectorPopup.resx">
+      <DependentUpon>TaxonSelectorPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\State.resx">
       <DependentUpon>State.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\StateEditor.resx">
       <DependentUpon>StateEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\AddSpecies.resx">
-      <DependentUpon>AddSpecies.cs</DependentUpon>
+    <EmbeddedResource Include="EditSpecies.resx">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\AddSpecies.ru.resx">
-      <DependentUpon>AddSpecies.cs</DependentUpon>
+    <EmbeddedResource Include="EditSpecies.ru.resx">
+      <DependentUpon>EditSpecies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fits.resx">
       <DependentUpon>Fits.cs</DependentUpon>
@@ -257,18 +267,11 @@
     <EmbeddedResource Include="Diagnosis.ru.resx">
       <DependentUpon>Diagnosis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.ru.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Diagnosis.resx">
+    <EmbeddedResource Include="Resources\Diagnosis.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Diagnosis.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Diagnosis.ru.resx" />
+    <EmbeddedResource Include="Resources\Diagnosis.ru.resx" />
     <EmbeddedResource Include="Resources\Interface.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
@@ -278,14 +281,22 @@
       <LastGenOutput>Interface.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Messages.resx">
+    <EmbeddedResource Include="Resources\Messages.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Messages.ru.resx">
+    <EmbeddedResource Include="Resources\Messages.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Rank.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rank.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Rank.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rank.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -310,32 +321,23 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\EditFeature.resx">
+    <EmbeddedResource Include="EditFeature.resx">
       <DependentUpon>EditFeature.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\EditSpecies.resx">
-      <DependentUpon>EditSpecies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\EditSpecies.ru.resx">
-      <DependentUpon>EditSpecies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\EditTaxon.resx">
+    <EmbeddedResource Include="EditTaxon.resx">
       <DependentUpon>EditTaxon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\EditTaxon.ru.resx">
+    <EmbeddedResource Include="EditTaxon.ru.resx">
       <DependentUpon>EditTaxon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\MainForm.resx">
+    <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\MainForm.ru.resx">
+    <EmbeddedResource Include="MainForm.ru.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Interface.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Interface.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Systematics\Resources\Interface.ru.resx" />
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="SpeciesKey.xsc">

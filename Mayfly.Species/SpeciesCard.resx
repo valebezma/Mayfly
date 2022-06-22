@@ -268,7 +268,7 @@
     <value>6</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Taxa</value>
+    <value>Taxon</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -282,31 +282,31 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="labelTaxa.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="labelTaxon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="labelTaxa.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelTaxon.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 126</value>
   </data>
-  <data name="labelTaxa.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelTaxon.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 78</value>
   </data>
-  <data name="labelTaxa.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelTaxon.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="labelTaxa.Text" xml:space="preserve">
-    <value>[taxa list]</value>
+  <data name="labelTaxon.Text" xml:space="preserve">
+    <value>[taxon list]</value>
   </data>
-  <data name="&gt;&gt;labelTaxa.Name" xml:space="preserve">
-    <value>labelTaxa</value>
+  <data name="&gt;&gt;labelTaxon.Name" xml:space="preserve">
+    <value>labelTaxon</value>
   </data>
-  <data name="&gt;&gt;labelTaxa.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelTaxon.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelTaxa.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelTaxon.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelTaxa.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelTaxon.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">

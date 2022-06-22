@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StateEditor));
             this.contextBond = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemTaxon = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemAllTaxa = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAllTaxon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSpecies = new System.Windows.Forms.ToolStripMenuItem();
             this.newSpeciesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,17 +72,17 @@
             // menuItemTaxon
             // 
             this.menuItemTaxon.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemAllTaxa,
+            this.menuItemAllTaxon,
             this.toolStripSeparator1});
             this.menuItemTaxon.Name = "menuItemTaxon";
             this.menuItemTaxon.Size = new System.Drawing.Size(123, 22);
             this.menuItemTaxon.Text = "Taxon";
             // 
-            // menuItemAllTaxa
+            // menuItemAllTaxon
             // 
-            this.menuItemAllTaxa.Name = "menuItemAllTaxa";
-            this.menuItemAllTaxa.Size = new System.Drawing.Size(112, 22);
-            this.menuItemAllTaxa.Text = "All taxa";
+            this.menuItemAllTaxon.Name = "menuItemAllTaxon";
+            this.menuItemAllTaxon.Size = new System.Drawing.Size(112, 22);
+            this.menuItemAllTaxon.Text = "All taxon";
             // 
             // toolStripSeparator1
             // 
@@ -275,7 +275,7 @@
 
         private System.Windows.Forms.ContextMenuStrip contextBond;
         private System.Windows.Forms.ToolStripMenuItem menuItemTaxon;
-        private System.Windows.Forms.ToolStripMenuItem menuItemAllTaxa;
+        private System.Windows.Forms.ToolStripMenuItem menuItemAllTaxon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpecies;
         private System.Windows.Forms.ToolStripMenuItem menuItemAllSpecies;

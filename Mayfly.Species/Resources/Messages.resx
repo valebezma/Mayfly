@@ -117,4 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultNotSet" xml:space="preserve">
+    <value>Default species key is not specified yet. Set the species key you want to use. You can change it in 'Settings' later.</value>
+  </data>
+  <data name="DefaultNotSetTitle" xml:space="preserve">
+    <value>Default species key not set</value>
+  </data>
+  <data name="DeleteSpeciesContent" xml:space="preserve">
+    <value>Do you want to completely delete {0} record or just except it from {1}?</value>
+  </data>
+  <data name="Filtered" xml:space="preserve">
+    <value>0 species found</value>
+  </data>
+  <data name="SpeciesAssociateContent" xml:space="preserve">
+    <value>Associating current thesis with {0} you will delete all subsequent keys. Continue anyway?</value>
+  </data>
+  <data name="SpeciesDeassociateContent" xml:space="preserve">
+    <value>Creation of  new thesis will delete association with {0}. Continue anyway?</value>
+  </data>
+  <data name="SpeciesDeassociated" xml:space="preserve">
+    <value>Key is not refering to {0} anymore</value>
+  </data>
+  <data name="SpeciesRepContent" xml:space="preserve">
+    <value>You are about to associate {0} with {1} instead of currently set association.</value>
+  </data>
+  <data name="TaxonDeleteInstruction" xml:space="preserve">
+    <value>{0:f} has {1} representative(-s) and {2} derivated taxon(-a). How should we treat them after taxon deletion?</value>
+  </data>
+  <data name="TaxonReassociateContent" xml:space="preserve">
+    <value>Current sequance is already associated with {0}. Continue to reassociate it with {1} anyway?</value>
+  </data>
+  <data name="TaxonReassociated" xml:space="preserve">
+    <value>Current sequence reassotiated from {0} to {1}</value>
+  </data>
+  <data name="ThesisIsOpen" xml:space="preserve">
+    <value>Thesis is not following to any other: "{0}".
+You can edit sequence in edit mode or turn back and try another way.</value>
+  </data>
 </root>

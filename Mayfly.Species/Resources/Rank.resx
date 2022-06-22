@@ -117,32 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
+  <data name="11" xml:space="preserve">
+    <value>Domain</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Научное название</value>
+  <data name="21" xml:space="preserve">
+    <value>Kingdom</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 13</value>
+  <data name="22" xml:space="preserve">
+    <value>Subkingdom</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Местное название</value>
+  <data name="31" xml:space="preserve">
+    <value>Phylum</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 13</value>
+  <data name="32" xml:space="preserve">
+    <value>Subphylum</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Ссылка</value>
+  <data name="33" xml:space="preserve">
+    <value>Infraphylum</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+  <data name="41" xml:space="preserve">
+    <value>Class</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Описание</value>
+  <data name="42" xml:space="preserve">
+    <value>Subclass</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Редактирование записи вида</value>
+  <data name="50" xml:space="preserve">
+    <value>Superorder</value>
+  </data>
+  <data name="51" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="52" xml:space="preserve">
+    <value>Suborder</value>
+  </data>
+  <data name="53" xml:space="preserve">
+    <value>Infraorder</value>
+  </data>
+  <data name="60" xml:space="preserve">
+    <value>Superfamily</value>
+  </data>
+  <data name="61" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="62" xml:space="preserve">
+    <value>Subfamily</value>
+  </data>
+  <data name="71" xml:space="preserve">
+    <value>Tribe</value>
+  </data>
+  <data name="72" xml:space="preserve">
+    <value>Subtribe</value>
+  </data>
+  <data name="81" xml:space="preserve">
+    <value>Genus</value>
+  </data>
+  <data name="82" xml:space="preserve">
+    <value>Subgenus</value>
+  </data>
+  <data name="91" xml:space="preserve">
+    <value>Species</value>
+  </data>
+  <data name="92" xml:space="preserve">
+    <value>Subspecies</value>
   </data>
 </root>

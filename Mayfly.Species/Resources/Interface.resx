@@ -136,8 +136,32 @@ to see more pictures</value>
   <data name="KeyCaption" xml:space="preserve">
     <value>Identification Keys</value>
   </data>
+  <data name="MenuDepart" xml:space="preserve">
+    <value>Depart from {0:f}</value>
+  </data>
+  <data name="NewBase" xml:space="preserve">
+    <value>New base</value>
+  </data>
+  <data name="NewSpecies" xml:space="preserve">
+    <value>New species</value>
+  </data>
+  <data name="NewTaxon" xml:space="preserve">
+    <value>New {0}</value>
+  </data>
   <data name="Others" xml:space="preserve">
     <value>Varia ({0})</value>
+  </data>
+  <data name="ResultSpcToSpcSynonimized" xml:space="preserve">
+    <value>{0:l} is now synonimized with {1:l}</value>
+  </data>
+  <data name="ResultSpcToTaxIncluded" xml:space="preserve">
+    <value>{0:l} is included in {1:f}</value>
+  </data>
+  <data name="ResultTaxToTaxDerived" xml:space="preserve">
+    <value>{0:f} is now derived from {1:f}</value>
+  </data>
+  <data name="ResultTaxToTaxSorted" xml:space="preserve">
+    <value>{0:f} is now phylogenetically higher than {1:f}</value>
   </data>
   <data name="SpeciesItemTip" xml:space="preserve">
     <value>Species: {0}
@@ -149,11 +173,50 @@ Taxon: {1}</value>
   <data name="SpeciesNotFound" xml:space="preserve">
     <value>Species record for {0} is missing</value>
   </data>
-  <data name="TaxaSelect" xml:space="preserve">
+  <data name="StatusLoaded" xml:space="preserve">
+    <value>Index is loaded</value>
+  </data>
+  <data name="StatusLoadingList" xml:space="preserve">
+    <value>List loading</value>
+  </data>
+  <data name="StatusLoadingTree" xml:space="preserve">
+    <value>Tree loading</value>
+  </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Index is saved</value>
+  </data>
+  <data name="TaxonSelect" xml:space="preserve">
     <value>Select {0}</value>
   </data>
   <data name="Thesis" xml:space="preserve">
     <value>Thesis {0}</value>
+  </data>
+  <data name="TipSpcMultiple" xml:space="preserve">
+    <value>{0} species</value>
+  </data>
+  <data name="TipSpcToSpcSynonim" xml:space="preserve">
+    <value>Set {0:l} as minor synonim(-s) of {1:l}</value>
+  </data>
+  <data name="TipSpcToSpcSynonimUnableItself" xml:space="preserve">
+    <value>Unable to synonimize species to itself</value>
+  </data>
+  <data name="TipSpcToSpcSynonimUnableSeparateBranch" xml:space="preserve">
+    <value>Unable to synonimize species from different taxonomic branches</value>
+  </data>
+  <data name="TipSpcToTaxInclude" xml:space="preserve">
+    <value>Include {0:l} in {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDerive" xml:space="preserve">
+    <value>Derive {0:f} from {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDeriveUnableAlready" xml:space="preserve">
+    <value>{0:f} is already derived from {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDeriveUnableWrongRank" xml:space="preserve">
+    <value>{0:f} has higher or same rank as {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxSort" xml:space="preserve">
+    <value>Set {0:f} higher position over {1:f}</value>
   </data>
   <data name="UnidentifiedTitle" xml:space="preserve">
     <value>&lt;Not identified&gt;</value>

@@ -59,32 +59,5 @@ namespace Mayfly.Species.Systematics.Resources {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New base.
-        /// </summary>
-        internal static string NewBase {
-            get {
-                return ResourceManager.GetString("NewBase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New species.
-        /// </summary>
-        internal static string NewSpecies {
-            get {
-                return ResourceManager.GetString("NewSpecies", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New {0}.
-        /// </summary>
-        internal static string NewTaxon {
-            get {
-                return ResourceManager.GetString("NewTaxon", resourceCulture);
-            }
-        }
     }
 }

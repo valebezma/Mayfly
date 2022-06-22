@@ -613,7 +613,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Report.ru.resx" />
     <EmbeddedResource Include="Resources\Sounds.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Software\Error.resx">

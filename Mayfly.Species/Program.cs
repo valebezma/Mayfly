@@ -25,21 +25,21 @@ namespace Mayfly.Species
             {
                 if (args.Length == 1) // If filename is given only
                 {
-                    Application.Run(new MainForm(args[0])); // Run key in user mode
+                    //Application.Run(new Display(args[0])); // Run key in user mode
                 }
                 else // If filename is given with action
                 {
                     switch (args[1])
                     {
                         case "-edit":
-                            Application.Run(new Systematics.MainForm(args[0]));
+                            Application.Run(new MainForm(args[0]));
                             break;
                     }
                 }
             }
             else
             {
-                Application.Run(new Systematics.MainForm());
+                Application.Run(new MainForm());
             }
 
             Log.WriteAppEnded();

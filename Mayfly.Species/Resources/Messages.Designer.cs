@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Mayfly.Species.Systematics.Resources {
+namespace Mayfly.Species.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Mayfly.Species.Systematics.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Species.Systematics.Resources.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mayfly.Species.Resources.Messages", typeof(Messages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,15 +57,6 @@ namespace Mayfly.Species.Systematics.Resources {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You are going to associate {0} with {1}.
-        /// </summary>
-        public static string AssociateTip {
-            get {
-                return ResourceManager.GetString("AssociateTip", resourceCulture);
             }
         }
         
@@ -106,38 +97,11 @@ namespace Mayfly.Species.Systematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are going to reassociate {0} from {1} to {2}.
-        /// </summary>
-        public static string ReassociateTip {
-            get {
-                return ResourceManager.GetString("ReassociateTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reference saved.
-        /// </summary>
-        public static string Saved {
-            get {
-                return ResourceManager.GetString("Saved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Associating current thesis with {0} you will delete all subsequent keys. Continue anyway?.
         /// </summary>
         public static string SpeciesAssociateContent {
             get {
                 return ResourceManager.GetString("SpeciesAssociateContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} associated with {1}.
-        /// </summary>
-        public static string SpeciesAssociated {
-            get {
-                return ResourceManager.GetString("SpeciesAssociated", resourceCulture);
             }
         }
         
@@ -160,33 +124,6 @@ namespace Mayfly.Species.Systematics.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is already associated with {1}. Would you like to move it  up into {2}?.
-        /// </summary>
-        public static string SpeciesReassociateContent {
-            get {
-                return ResourceManager.GetString("SpeciesReassociateContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} moved from {1} into {2}.
-        /// </summary>
-        public static string SpeciesReassociated {
-            get {
-                return ResourceManager.GetString("SpeciesReassociated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is associated with {1}.
-        /// </summary>
-        public static string SpeciesRep {
-            get {
-                return ResourceManager.GetString("SpeciesRep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You are about to associate {0} with {1} instead of currently set association..
         /// </summary>
         public static string SpeciesRepContent {
@@ -196,20 +133,29 @@ namespace Mayfly.Species.Systematics.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0:f} has {1} representative(-s) and {2} derivated taxon(-a). How should we treat them after taxon deletion?.
+        /// </summary>
+        public static string TaxonDeleteInstruction {
+            get {
+                return ResourceManager.GetString("TaxonDeleteInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current sequance is already associated with {0}. Continue to reassociate it with {1} anyway?.
         /// </summary>
-        public static string TaxaReassociateContent {
+        public static string TaxonReassociateContent {
             get {
-                return ResourceManager.GetString("TaxaReassociateContent", resourceCulture);
+                return ResourceManager.GetString("TaxonReassociateContent", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Current sequence reassotiated from {0} to {1}.
         /// </summary>
-        public static string TaxaReassociated {
+        public static string TaxonReassociated {
             get {
-                return ResourceManager.GetString("TaxaReassociated", resourceCulture);
+                return ResourceManager.GetString("TaxonReassociated", resourceCulture);
             }
         }
         

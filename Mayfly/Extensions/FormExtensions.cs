@@ -34,6 +34,16 @@ namespace Mayfly.Extensions
             form.DesktopLocation = point;
         }
 
+        public static void SnapToTop(this Form form, Control control)
+        {
+            form.StartPosition = FormStartPosition.Manual;
+            Point point = control.PointToScreen(new Point(-2, -form.Height-5));
+            Size screen = Screen.FromHandle(control.Handle).WorkingArea.Size;
+            if (point.X < 5) point.X = 5;
+            if (point.Y + form.Height > screen.Height) point.Y = screen.Height - form.Height - 5;
+            form.DesktopLocation = point;
+        }
+
         #endregion
 
         #region Placing form above and to right to point on control

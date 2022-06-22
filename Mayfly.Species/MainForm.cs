@@ -1,563 +1,139 @@
-﻿using System;
+﻿using Mayfly.Extensions;
+using Mayfly.Software;
+using Mayfly.TaskDialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Globalization;
-using System.Windows.Forms;
-using Mayfly.TaskDialogs;
 using System.IO;
-using System.Reflection;
-using Mayfly.Extensions;
-using Mayfly.Software;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Mayfly.Species
 {
     public partial class MainForm : Form
     {
-        #region Properties
-
-        private string filename;
-
-        public string FileName
-        {
-            set
-            {
-                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
-                filename = value;
-            }
-
-            get
-            {
-                return filename;
-            }
-        }
-
-        public SpeciesKey Data { set; get; }
-
-        public bool IsAllSpeciesShown
-        {
-            get
-            {
-                if (treeViewTaxa.SelectedNode == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return treeViewTaxa.SelectedNode.Name == "AllSpecies";
-                }
-            }
-        }
-
-        public bool IsBaseNodeSelected
-        {
-            get
-            {
-                if (IsAllSpeciesShown)
-                {
-                    return false;
-                }
-                else
-                {
-                    if (treeViewTaxa.SelectedNode == null)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return treeViewTaxa.SelectedNode.Level == 0 &&
-                            treeViewTaxa.SelectedNode.Name != "RootAll";
-                    }
-                }
-            }
-        }
-
-        public bool IsTaxaNodeSelected
-        {
-            get
-            {
-                if (treeViewTaxa.SelectedNode == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return treeViewTaxa.SelectedNode.Level == 1;
-                }
-            }
-        }
-
-        public SpeciesKey.BaseRow SelectedBase
-        {
-            get
-            {
-                if (IsBaseNodeSelected)
-                {
-                    return (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Tag;
-                }
-
-                if (IsTaxaNodeSelected)
-                {
-                    return (SpeciesKey.BaseRow)treeViewTaxa.SelectedNode.Parent.Tag;
-                }
-                return null;
-            }
-        }
-
-        public SpeciesKey.TaxaRow SelectedTaxa
-        {
-            get
-            {
-                if (IsTaxaNodeSelected)
-                {
-                    return (SpeciesKey.TaxaRow)treeViewTaxa.SelectedNode.Tag;
-                }
-                return null;
-            }
-        }
-
-        #endregion
-
-        public bool InWork { get; private set; }
-
-        public SpeciesKey.SpeciesRow SelectedSpeciesRow { get; private set; }
-
         public MainForm()
-        { 
+        {
             InitializeComponent();
 
-            InWork = false;
-
-            treeViewTaxa.Shine();
+            treeViewDerivates.Shine();
             listViewRepresence.Shine();
+            listViewMinor.Shine();
+            treeViewStep.Shine();
+            listViewEngagement.Shine();
 
-            treeViewFeatures.Shine();
-            listViewFits.Shine();
+            treeViewDerivates.TreeViewNodeSorter = 
+                new TreeNodeSorter();
+
+            listViewRepresence_SelectedIndexChanged(listViewRepresence, new EventArgs());
 
             Data = new SpeciesKey();
             FileName = null;
 
-            menuStrip1.SetMenuIcons();
-        }
+            statusSpecies.ResetFormatted(Constants.Null);
+            statusTaxon.ResetFormatted(Constants.Null);
 
-        public MainForm(string filename) : this()
-        {
-            LoadData(filename);
-        }
-
-        public MainForm(string filename, bool inWork) : this(filename)
-        {
-            InWork = inWork;
-
-            if (inWork)
+            foreach (Label label in new Label[] {
+                labelStpCount, labelEngagedCount, labelPicCount })
             {
-                tabControl.SelectedTab = tabPageKey;
+                label.UpdateStatus(0);
             }
+
+
+            tabPageKey.Parent = null;
+            tabPagePictures.Parent = null;
         }
 
-        public MainForm(SpeciesKey data)
+        public MainForm(string filename)
             : this()
         {
-            Text = "Guide";
-
-            if (data.IsKeyAvailable)
-            {
-                Data = data;
-                LoadList();
-                LoadKey();
-                LoadFit();
-                InWork = true;
-                tabControl.SelectedTab = tabPageKey;
-            }
-            else
-            {
-                throw new ArgumentNullException(
-                    "Definition key is empty.");
-            }
+            loadData(filename);
         }
 
-        public MainForm(SpeciesKey data, SpeciesKey.StepRow step)
-            : this(data)
+
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            definitionPanel.GetTo(step);
-        }
-
-        #region Methods
-
-        private void LoadData(string filename)
-        {
-            FileName = filename;
-            Data.ReadXml(FileName);
-
-            LoadList();
-
-            if (Data.IsKeyAvailable)
+            if (IsChanged)
             {
-                LoadKey();
-                LoadFit();
-            }
-            else
-            {
-                tabPageKey.Parent =
-                    tabPageFit.Parent = null;
-            }
+                TaskDialogButton b = tdSave.ShowDialog(this);
 
-            //status1.Message(Resources.Messages.Loaded);
-        }
-
-        public void ToSpecies(string species)
-        {
-            // Find species row
-            SpeciesKey.SpeciesRow speciesRow = Data.Species.FindBySpecies(species);
-
-            if (speciesRow == null) return;
-
-            // Select it's item in list
-            ListViewItem spcItem = listViewRepresence.GetItem(speciesRow.ID.ToString());
-            if (spcItem != null)
-            {
-                listViewRepresence.SelectedItems.Clear();
-                spcItem.Selected = true;
-                spcItem.EnsureVisible();
-            }
-
-            if (speciesRow.GetStateRows().Length > 0)
-            {
-                // Select it's item in fits
-                foreach (SpeciesKey.StateRow stateRow in speciesRow.GetStateRows())
+                if (b == tdbCancelClose)
                 {
-                    TreeNode stateNode = treeViewFeatures.GetNode(stateRow.ID.ToString());
-                    if (stateNode != null)
-                    {
-                        stateNode.Parent.ExpandAll();
-                        stateNode.Checked = true;
-                    }
+                    e.Cancel = true;
                 }
-                
-                ListViewItem fitItem = listViewFits.GetItem(speciesRow.ID.ToString());
-                if (fitItem != null) fitItem.Selected = true;
-
-                // Follow to it in key
-                definitionPanel.GetTo(speciesRow.GetStateRows()[0]);
-            }
-        }
-
-        private void SelectSpecies(SpeciesKey.SpeciesRow speciesRow)
-        {
-            SpeciesCard card = new SpeciesCard(speciesRow, InWork);
-
-            this.Hide();
-            definitionPanel.HideFits();
-            definitionPanel.HideHistory();
-
-            card.FormClosed += card_FormClosed;
-            card.ShowDialog();
-        }
-
-        void card_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (((Form)sender).DialogResult == DialogResult.OK)
-            {
-                SelectedSpeciesRow = ((SpeciesCard)sender).SpeciesRow;
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            else
-            {
-                Show();
-
-                if (checkBoxFits.Checked) definitionPanel.ShowFits();
-                if (checkBoxDiagnosis.Checked) definitionPanel.ShowHistory();
-            }
-        }
-
-        #region Taxa tab
-
-        private void LoadList()
-        {
-            FillTaxaTree();
-            FillRepresenceList();
-        }
-
-        private void FillTaxaTree()
-        {
-            foreach (SpeciesKey.BaseRow baseRow in Data.Base.Rows)
-            {
-                TreeNode baseNode = new TreeNode
+                else if (b == tdbSave)
                 {
-                    Tag = baseRow,
-                    Text = baseRow.BaseName
-                };
-                treeViewTaxa.Nodes.Add(baseNode);
-
-                foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
-                {
-                    TreeNode taxaNode = new TreeNode
-                    {
-                        Tag = taxaRow,
-                        Text = taxaRow.TaxonName
-                    };
-                    baseNode.Nodes.Add(taxaNode);
-                }                
-            }
-
-            labelTaxCount.UpdateStatus(Data.Taxa.Count);
-
-            UpdateOthers();
-            treeViewTaxa.Sort();
-            treeViewTaxa.ExpandAll();
-        }
-
-        private void FillRepresenceList()
-        {
-            FillRepresenceList(Data.Species.GetSorted());
-            try
-            {
-                listViewRepresence.Items[0].Selected = true;
-            }
-            catch { }
-        }
-
-        private void FillRepresenceList(SpeciesKey.SpeciesRow[] speciesRows)
-        {
-            foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
-            {
-                ListViewItem item = listViewRepresence.CreateItem(speciesRow);
-
-                if (IsBaseNodeSelected)
-                {
-                    SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(SelectedBase);
-
-                    if (taxaRow == null)
-                    {
-                        item.Remove();
-                    }
-                    else
-                    {
-                        item.Group = listViewRepresence.CreateGroup(taxaRow.TaxonName);
-                        item.Group.Tag = taxaRow;
-                    }
-                }
-
-                if (IsTaxaNodeSelected)
-                {
-                    if (SelectedTaxa != speciesRow.GetTaxon(SelectedBase))
-                    {
-                        item.Remove();
-                    }
-                }
-            }
-            
-            listViewRepresence.Shine();
-            labelSpcCount.UpdateStatus(listViewRepresence.Items.Count);
-        }
-
-        private void UpdateOthers()
-        {
-            foreach (TreeNode baseNode in treeViewTaxa.Nodes)
-            {
-                if (!(baseNode.Tag is SpeciesKey.BaseRow)) continue;
-
-                TreeNode[] othersNode = baseNode.Nodes.Find("Other_" + baseNode.Name, false);
-
-                int count = ((SpeciesKey.BaseRow)baseNode.Tag).Varia.Length;
-
-                if (count == 0)
-                {
-                    if (othersNode.Length > 0)
-                    {
-                        othersNode[0].Remove();
-                    }
-                }
-                else
-                {
-                    if (othersNode.Length == 0)
-                    {
-                        TreeNode newOthersNode = new TreeNode(String.Format(Resources.Interface.Others, count));
-                        newOthersNode.Name = "Other_" + baseNode.Name;
-                        baseNode.Nodes.Add(newOthersNode);
-                    }
-                    else
-                    {
-                        othersNode[0].Text = String.Format(Resources.Interface.Others, count);
-                    }
+                    menuItemSave_Click(sender, e);
                 }
             }
         }
 
-        #endregion
-
-        #region Key tab
-
-        private void LoadKey()
+        private void tab_Changed(object sender, EventArgs e)
         {
-            definitionPanel.SetFeatures(Data.InitialDefinitionStep);
+            menuTaxon.Visible = tabControl.SelectedTab == tabPageTaxon;
+            menuKey.Visible = tabControl.SelectedTab == tabPageKey;
+            menuPictures.Visible = tabControl.SelectedTab == tabPagePictures;
         }
 
-        private void UpdateTaxaDirections(SpeciesKey.StepRow currentStep)
-        {
-            menuItemGotoTaxon.DropDownItems.Clear();
-            contextGotoTaxon.DropDownItems.Clear();
 
-            menuItemToTaxon.DropDownItems.Clear();
-            contextToTaxon.DropDownItems.Clear();
-
-            foreach (SpeciesKey.StateRow stateRow in currentStep.ForestandingTaxaStates)
-            {
-                menuItemGotoTaxon.DropDownItems.Add(TaxonItem(stateRow, Goto_Click));
-                contextGotoTaxon.DropDownItems.Add(TaxonItem(stateRow, Goto_Click));
-                menuItemToTaxon.DropDownItems.Add(TaxonItem(stateRow, To_Click));
-                contextToTaxon.DropDownItems.Add(TaxonItem(stateRow, To_Click));
-            }
-
-            menuItemGotoTaxon.SortItems();
-            contextGotoTaxon.SortItems();
-            menuItemToTaxon.SortItems();
-            contextToTaxon.SortItems();
-
-            menuItemGotoTaxon.Enabled = contextGotoTaxon.Enabled = menuItemGotoTaxon.DropDownItems.Count > 0;
-            menuItemToTaxon.Enabled = contextToTaxon.Enabled = menuItemToTaxon.DropDownItems.Count > 0;
-        }
-
-        private ToolStripItem TaxonItem(SpeciesKey.StateRow stateRow, EventHandler eventHandler)
-        {
-            ToolStripItem result = new ToolStripMenuItem();
-            result.Name = stateRow.ID.ToString();
-            result.Text = stateRow.TaxaRow.GetStateRows().Length == 1 ?
-                stateRow.TaxaRow.TaxonName :
-                string.Format("{0} ({1}: {2}...)", stateRow.TaxaRow.TaxonName, stateRow.FeatureRow.Title,
-                    stateRow.Description.Substring(0, Math.Min(15, stateRow.Description.Length)));
-            result.Click += eventHandler;
-            return result;
-        }
-
-        private void UpdateSpeciesDirections(SpeciesKey.StepRow currentStep)
-        {
-            menuItemGotoSpecies.DropDownItems.Clear();
-            contextGotoSpecies.DropDownItems.Clear();
-
-            menuItemToSpecies.DropDownItems.Clear();
-            contextToSpecies.DropDownItems.Clear();
-
-            foreach (SpeciesKey.StateRow stateRow in currentStep.ForestandingSpeciesStates)
-            {
-                menuItemGotoSpecies.DropDownItems.Add(SpeciesItem(stateRow, Goto_Click));
-                contextGotoSpecies.DropDownItems.Add(SpeciesItem(stateRow, Goto_Click));
-                menuItemToSpecies.DropDownItems.Add(SpeciesItem(stateRow, To_Click));
-                contextToSpecies.DropDownItems.Add(SpeciesItem(stateRow, To_Click));
-            }
-
-            menuItemGotoSpecies.SortItems();
-            contextGotoSpecies.SortItems();
-            menuItemToSpecies.SortItems();
-            contextToSpecies.SortItems();
-
-            menuItemGotoSpecies.Enabled = contextGotoSpecies.Enabled = menuItemGotoSpecies.DropDownItems.Count > 0;
-            menuItemToSpecies.Enabled = contextToSpecies.Enabled = menuItemToSpecies.DropDownItems.Count > 0;
-        }
-
-        private ToolStripItem SpeciesItem(SpeciesKey.StateRow stateRow, EventHandler eventHandler)
-        {
-            ToolStripItem result = new ToolStripMenuItem();
-            result.Name = stateRow.ID.ToString();
-
-            result.Text = stateRow.SpeciesRow.GetStateRows().Length == 1 ?
-                stateRow.SpeciesRow.Species :
-                string.Format("{0} ({1}: {2}...)", stateRow.SpeciesRow.Species, stateRow.FeatureRow.Title,
-                stateRow.Description.Substring(0, Math.Min(15, stateRow.Description.Length)));
-
-            result.Click += eventHandler;
-            return result;
-        }
-
-        #endregion
-
-        #region Fit tab
-
-        private void LoadFit()
-        {
-            FillFeaturesTree();
-        }
-
-        private void FillFeaturesTree()
-        {
-            foreach (SpeciesKey.FeatureRow featureRow in Data.Feature)
-            {
-                TreeNode featureNode = new TreeNode();
-                featureNode.Tag = featureRow;
-                featureNode.Text = featureRow.Title;
-                treeViewFeatures.Nodes.Add(featureNode);
-
-                foreach (SpeciesKey.StateRow stateRow in featureRow.GetStateRows())
-                {
-                    TreeNode stateNode = new TreeNode();
-                    stateNode.Name = stateRow.ID.ToString();
-                    stateNode.Tag = stateRow;
-                    stateNode.Text = stateRow.Description;
-                    featureNode.Nodes.Add(stateNode);
-                }
-            }
-
-            labelFtrCount.UpdateStatus(0);
-            labelFitCount.UpdateStatus(listViewFits.Items.Count);
-
-            //treeViewFeatures.Sort();
-            //treeViewFeatures.ExpandAll();
-        }
-
-        private SpeciesKey.StateRow[] GetCheckedStates()
-        {
-            List<SpeciesKey.StateRow> result = new List<SpeciesKey.StateRow>();
-
-            foreach (TreeNode featureNode in treeViewFeatures.Nodes)
-            {
-                foreach (TreeNode stateNode in featureNode.Nodes)
-                {
-                    if (stateNode.Checked)
-                    {
-                        result.Add(stateNode.Tag as SpeciesKey.StateRow);
-                    }
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        private void FillFitList(SpeciesKey.SpeciesRow[] speciesRows)
-        {
-            foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
-            {
-                listViewFits.CreateItem(speciesRow);
-            }
-
-            labelFitCount.UpdateStatus(listViewFits.Items.Count);
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Interface
-
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            menuKeys.Visible = tabControl.SelectedTab == tabPageKey;
-        
-            if (tabControl.SelectedTab == tabPageKey)
-            {
-                if (checkBoxFits.Checked) definitionPanel.ShowFits();
-                if (checkBoxDiagnosis.Checked) definitionPanel.ShowHistory();
-            }
-            else
-            {
-                definitionPanel.HideFits();
-                definitionPanel.HideHistory();
-            }
-        }
 
         #region Menus
 
         #region File menu
+
+        private void menuItemNew_Click(object sender, EventArgs e)
+        {
+            if (checkAndSave() != DialogResult.Cancel)
+            {
+                clear();
+            }
+        }
+
+        private void menuItemOpen_Click(object sender, EventArgs e)
+        {
+            if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (checkAndSave() == DialogResult.Cancel) return;
+
+                clear();
+                loadData(UserSettings.Interface.OpenDialog.FileName);
+            }
+        }
+
+        private void menuItemSave_Click(object sender, EventArgs e)
+        {
+            if (IsChanged)
+            {
+                if (FileName == null)
+                {
+                    menuItemSaveAs_Click(menuItemSaveAs, new EventArgs());
+                }
+                else
+                {
+                    save(FileName);
+                }
+            }
+        }
+
+        private void menuItemSaveAs_Click(object sender, EventArgs e)
+        {
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
+            {
+                switch (Path.GetExtension(UserSettings.Interface.ExportDialog.FileName))
+                {
+                    case ".sps":
+                        save(UserSettings.Interface.ExportDialog.FileName);
+                        break;
+                    case ".html":
+                        File.WriteAllText(UserSettings.Interface.ExportDialog.FileName,
+                            Data.Report.ToString(), Encoding.UTF8);
+                        break;
+                }
+            }
+        }
 
         private void menuItemPreview_Click(object sender, EventArgs e)
         {
@@ -576,28 +152,46 @@ namespace Mayfly.Species
 
         #endregion
 
-        #region Keys menu
+        #region List menu
 
-        private void menuItemRestart_Click(object sender, EventArgs e)
+        private void menuItemAddTaxon_Click(object sender, EventArgs e)
         {
-            definitionPanel.Restart();
+            SpeciesKey.TaxonRow taxonRow = Data.Taxon.NewTaxonRow();
+            taxonRow.Taxon = Resources.Interface.NewTaxon;
+
+            EditTaxon editTaxon = new EditTaxon(taxonRow);
+
+            if (editTaxon.ShowDialog(this) == DialogResult.OK)
+            {
+                IsChanged = true;
+                Data.Taxon.AddTaxonRow(taxonRow);
+                TreeNode tn = getTaxonTreeNode(editTaxon.TaxonRow, true, true);
+                treeViewDerivates.Nodes.Add(tn);
+                IsChanged = true;
+            }
         }
 
-        private void menuItemBack_Click(object sender, EventArgs e)
+        private void menuItemAddSpecies_Click(object sender, EventArgs e)
         {
-            definitionPanel.GetBack();
-        }
+            SpeciesKey.SpeciesRow speciesRow = Data.Species.NewSpeciesRow();
+            speciesRow.Species = Resources.Interface.NewSpecies;
+            if (IsTaxonNodePicked) {
+                speciesRow.TaxonRow = PickedTaxon;
+            }
 
-        private void Goto_Click(object sender, EventArgs e)
-        {
-            SpeciesKey.StateRow stateRow = Data.State.FindByID(Convert.ToInt32(((ToolStripMenuItem)sender).Name));
-            definitionPanel.GetTo(stateRow);            
-        }
+            EditSpecies editSpecies = new EditSpecies(speciesRow);
 
-        private void To_Click(object sender, EventArgs e)
-        {
-            SpeciesKey.StateRow stateRow = Data.State.FindByID(Convert.ToInt32(((ToolStripMenuItem)sender).Name));
-            definitionPanel.GetForward(stateRow);
+            if (editSpecies.ShowDialog(this) == DialogResult.OK)
+            {
+                Data.Species.AddSpeciesRow(speciesRow);
+
+                listViewRepresence.CreateItem(speciesRow);
+
+                ListViewItem item = listViewEngagement.CreateItem(speciesRow);
+                item.Group = listViewEngagement.Groups[1];
+
+                IsChanged = true;
+            }
         }
 
         #endregion
@@ -611,171 +205,655 @@ namespace Mayfly.Species
         private void menuItemAbout_Click(object sender, EventArgs e)
         {
             About about = new About(Properties.Resources.logo);
-            //about.SetIcon(Mayfly.Service.GetIcon(Application.ExecutablePath, 0));
             about.ShowDialog();
         }
 
         #endregion
 
-        #region Taxa and species
 
-        private void treeViewTaxa_AfterSelect(object sender, TreeViewEventArgs e)
+        #region Taxonomic tree tab
+
+        #region Taxonomic tree
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            listViewRepresence.Items.Clear();
-            listViewRepresence.ShowGroups = IsBaseNodeSelected;
+            bool speciesWasPicked = IsSpeciesNodePicked;
 
-            if (IsAllSpeciesShown)
-            {
-                FillRepresenceList();
+            IsTaxonNodePicked = e.Node?.Tag is SpeciesKey.TaxonRow;
+            PickedTaxon = IsTaxonNodePicked ? (SpeciesKey.TaxonRow)e.Node?.Tag : null;
+
+            IsSpeciesNodePicked = e.Node?.Tag is SpeciesKey.SpeciesRow;
+            PickedSpecies = IsSpeciesNodePicked ? (SpeciesKey.SpeciesRow)e.Node?.Tag : null;
+
+            if (IsTaxonNodePicked) {
+                updateRepresenceSpecies(PickedTaxon.GetSpecies());
+            } else if (!speciesWasPicked && IsSpeciesNodePicked) {
+                updateRepresenceSpecies(Data.Species.GetSorted());
             }
+        }
 
-            if (IsBaseNodeSelected)
+        private void treeView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            if (IsTaxonNodePicked)
             {
-                SpeciesKey.TaxaRow[] taxaRows = SelectedBase.GetTaxaRows();
+                treeViewDerivates.DoDragDrop(e.Item, DragDropEffects.Move | DragDropEffects.Link);
+            }
+            else if (IsSpeciesNodePicked)
+            {
+                treeViewDerivates.DoDragDrop(new SpeciesKey.SpeciesRow[] { PickedSpecies }, DragDropEffects.Link | DragDropEffects.Copy);
+            }
+        }
 
-                labelTaxCount.UpdateStatus(taxaRows.Length);
+        private void treeView_DragEnter(object sender, DragEventArgs e)
+        {
+            ((TreeView)sender).Focus();
+        }
 
-                foreach (SpeciesKey.TaxaRow taxaRow in taxaRows)
+        private void treeView_DragOver(object sender, DragEventArgs e)
+        {
+            Point dropLocation = (sender as TreeView).PointToClient(new Point(e.X, e.Y));
+            TreeNode dropNode = (sender as TreeView).GetNodeAt(dropLocation);
+            if (dropNode == null) return;
+
+            if (dropNode.Tag is SpeciesKey.TaxonRow dropTaxon) // Target is TaxonRow
+            {
+                if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) // Source is ListView
                 {
-                    FillRepresenceList(taxaRow.GetSpecies());
+                    SpeciesKey.SpeciesRow[] carrySpecies = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
+                    e.Effect = DragDropEffects.Link;
+                    notifyInstantly(Resources.Interface.TipSpcToTaxInclude,
+                        carrySpecies.Length == 1 ? carrySpecies[0].Species : string.Format("{0} species", carrySpecies.Length),
+                        dropTaxon.FullName);
+                }
+                else if (e.Data.GetDataPresent(typeof(TreeNode)))
+                {
+                    TreeNode carryNode = (TreeNode)e.Data.GetData(typeof(TreeNode));
+
+                    if (carryNode.Tag is SpeciesKey.TaxonRow carryTaxon)
+                    {
+                        if (carryTaxon == dropTaxon)
+                        {
+                            e.Effect = DragDropEffects.None;
+                        }
+                        else
+                        {
+                            if (carryTaxon.Rank == dropTaxon.Rank) // If drag-and-drop inside one base - then sort
+                            {
+                                e.Effect = DragDropEffects.Move;
+                                notifyInstantly(Resources.Interface.TipTaxToTaxSort, carryTaxon, dropTaxon);
+                            }
+                            else // If drag-and-drop from one base to another - create derivation
+                            {
+                                if (carryTaxon.TaxonRowParent == dropTaxon)
+                                {
+                                    e.Effect = DragDropEffects.None;
+                                    notifyInstantly(Resources.Interface.TipTaxToTaxDeriveUnableAlready, carryTaxon, dropTaxon);
+                                }
+                                else if (carryTaxon.Rank <= dropTaxon.Rank)
+                                {
+                                    e.Effect = DragDropEffects.None;
+                                    notifyInstantly(Resources.Interface.TipTaxToTaxDeriveUnableWrongRank, carryTaxon, dropTaxon);
+                                }
+                                else
+                                {
+                                    e.Effect = DragDropEffects.Link;
+                                    notifyInstantly(Resources.Interface.TipTaxToTaxDerive, carryTaxon, dropTaxon);
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
-            if (IsTaxaNodeSelected)
+            else if (dropNode.Tag is SpeciesKey.SpeciesRow dropSpecies) // Target is SpeciesRow
             {
-                labelTaxCount.UpdateStatus(SelectedBase.GetTaxaRows().Length);
-
-                if (e.Node.Tag is SpeciesKey.TaxaRow)
+                if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) // Source is ListView
                 {
-                    FillRepresenceList(SelectedTaxa.GetSpecies());
+                    e.Effect = checkSynonimyAvailability((SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[])), dropSpecies);
                 }
-                else
+                else if (e.Data.GetDataPresent(typeof(TreeNode)))
                 {
-                    FillRepresenceList(SelectedBase.Varia);
+                    e.Effect = DragDropEffects.None;
+                }
+            }              
+
+            (sender as TreeView).AutoScroll();
+        }
+
+        private void treeView_DragDrop(object sender, DragEventArgs e)
+        {
+            Point dropLocation = (sender as TreeView).PointToClient(new Point(e.X, e.Y));
+            TreeNode dropNode = (sender as TreeView).GetNodeAt(dropLocation);
+            if (dropNode == null) return;
+
+            if (dropNode.Tag is SpeciesKey.TaxonRow dropTaxon) // Target is TaxonRow
+            {
+                if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) // Species-to-taxon
+                {
+                    SpeciesKey.SpeciesRow[] carrySpecies = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
+
+                    foreach (SpeciesKey.SpeciesRow speciesRow in carrySpecies)
+                    {
+                        speciesRow.TaxonRow = dropTaxon;
+                        TreeNode carryNode = treeViewDerivates.Nodes.Find("s" + speciesRow.ID.ToString(), true)?[0];
+                        if (carryNode.Parent?.Tag is SpeciesKey.TaxonRow) applyRename(carryNode.Parent);
+                        carryNode.Remove();
+                        dropNode.Nodes.Add(getSpeciesTreeNode(speciesRow));
+                        status.Message(Resources.Interface.ResultSpcToTaxIncluded, speciesRow, dropTaxon);
+                    }
+
+                    treeViewDerivates.Sort();
+                    applyRename(dropNode);
+                    applyRename(listViewRepresence.Groups);
+                    treeView_AfterSelect(treeViewDerivates, new TreeViewEventArgs(dropNode));
+
+                    IsChanged = true;
+                }
+                
+                if (e.Data.GetDataPresent(typeof(TreeNode)))
+                {
+                    TreeNode carryNode = (TreeNode)e.Data.GetData(typeof(TreeNode));
+
+                    if (((TreeNode)e.Data.GetData(typeof(TreeNode))).Tag is SpeciesKey.TaxonRow carryTaxon) // Taxon-to-taxon
+                    {
+                        if (carryTaxon.Rank == dropTaxon.Rank) // Sort
+                        {
+                            carryTaxon.Index = (dropNode.Index + 1) * 10 - 1;
+                            treeViewDerivates.Sort();
+                            applySort(treeViewDerivates.Nodes);
+                            status.Message(Resources.Interface.ResultTaxToTaxSorted, carryTaxon, dropTaxon);
+                        }
+                        else // Derive
+                        {
+                            carryTaxon.TaxonRowParent = dropTaxon;
+                            dropNode.Nodes.Add(getTaxonTreeNode(carryTaxon, true, true));
+                            carryNode.Remove();
+                            status.Message(Resources.Interface.ResultTaxToTaxDerived, carryTaxon, dropTaxon);
+                        }
+
+                        IsChanged = true;
+                    }
+                }
+            }
+            else if (dropNode.Tag is SpeciesKey.SpeciesRow dropSpecies) // target is SpeciesRow
+            {
+                if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) // Species-to-species
+                {
+                    SpeciesKey.SpeciesRow[] carrySpecies = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
+
+                    setSynonims(carrySpecies, dropSpecies);
+                    IsChanged = true;
+                    status.Message(Resources.Interface.ResultSpcToSpcSynonimized, 
+                        (carrySpecies.Length == 1 ? carrySpecies[0].Species : string.Format(Resources.Interface.TipSpcMultiple, carrySpecies.Length)), 
+                        dropSpecies);
                 }
             }
         }
 
-        private void treeViewTaxa_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                treeViewTaxa.SelectedNode = e.Node;
+                e.Node.TreeView.SelectedNode = e.Node;
             }
         }
 
-        private void listViewSpecies_ItemActivate(object sender, EventArgs e)
+        private void treeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (IsTaxonNodePicked)
+            {
+                contextTaxonEdit_Click(sender, e);
+            }
+            else if (IsSpeciesNodePicked)
+            {
+                contextSpeciesEdit_Click(sender, e);
+            }
+        }
+
+
+        private void backListLoader_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+
+        private void backTreeLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            List<TreeNode> result = new List<TreeNode>();
+            foreach (SpeciesKey.TaxonRow taxonRow in Data.Taxon.GetRootTaxon()) {
+                result.Add(getTaxonTreeNode(taxonRow, true, true));
+            }
+            foreach (SpeciesKey.SpeciesRow speciesRow in Data.Species.GetOrphans()) {
+                result.Add(getSpeciesTreeNode(speciesRow));
+            }
+            e.Result = result.ToArray();
+        }
+
+        private void backTreeLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            TreeNode[] results = (TreeNode[])e.Result;
+            treeViewDerivates.Nodes.AddRange(results);
+            treeViewDerivates.Enabled = true;
+
+            // Tree filled. Now load list
+            processDisplay.StopProcessing();
+            status.Message(Resources.Interface.StatusLoaded);
+            treeView_AfterSelect(treeViewDerivates, new TreeViewEventArgs(treeViewDerivates.SelectedNode));
+        }
+
+        #endregion
+
+        #region Represence list
+
+        private void listViewRepresence_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listViewRepresence.HitTest(e.Location).Item != null)
+                {
+                    contextSpecies.Show(listViewRepresence, e.Location);
+                }
+            }
+        }
+
+        private void listViewRepresence_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            List<SpeciesKey.SpeciesRow> speciesRows = new List<SpeciesKey.SpeciesRow>();
+
+            foreach (ListViewItem item in (sender as ListView).SelectedItems)
+            {
+                speciesRows.Add((SpeciesKey.SpeciesRow)item.Tag);
+            }
+
+            listViewRepresence.DoDragDrop(speciesRows.ToArray(), DragDropEffects.Link | DragDropEffects.Copy);
+        }
+
+        private void listViewRepresence_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[])))
+            {
+                ListViewItem hoverItem = listViewRepresence.GetHoveringItem(e.X, e.Y);
+                if (hoverItem == null) return;
+                SpeciesKey.SpeciesRow hoverSpecies = (SpeciesKey.SpeciesRow)hoverItem.Tag;
+                listViewRepresence.SelectedItems.Clear();
+                hoverItem.Selected = true;
+                if (hoverSpecies == null) return;
+                e.Effect = checkSynonimyAvailability((SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[])), hoverSpecies);
+            }
+        }
+
+        private void listViewRepresence_DragDrop(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(typeof(SpeciesKey.SpeciesRow[]))) return;
+
+            ListViewItem dropItem = listViewRepresence.GetHoveringItem(e.X, e.Y);
+
+            if (dropItem == null) return;
+
+            SpeciesKey.SpeciesRow dropSpecies = (SpeciesKey.SpeciesRow)dropItem.Tag;
+            SpeciesKey.SpeciesRow[] carrySpecies = (SpeciesKey.SpeciesRow[])e.Data.GetData(typeof(SpeciesKey.SpeciesRow[]));
+
+            setSynonims(carrySpecies, dropSpecies);
+            IsChanged = true;
+            status.Message(Resources.Interface.ResultSpcToSpcSynonimized,
+                (carrySpecies.Length == 1 ? carrySpecies[0].Species : string.Format(Resources.Interface.TipSpcMultiple, carrySpecies.Length)),
+                dropSpecies);
+
+            dropItem.Selected = true;
+            listViewRepresence_SelectedIndexChanged(sender, e);
+        }
+
+        private void listViewRepresence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listViewMinor.Items.Clear();
+
             if (listViewRepresence.SelectedItems.Count > 0)
             {
-                SelectSpecies(listViewRepresence.SelectedItems[0].Tag as SpeciesKey.SpeciesRow);
-            }
-        }
+                SpeciesKey.SpeciesRow majorRow = listViewRepresence.SelectedItems[0].Tag as SpeciesKey.SpeciesRow;
 
-        #endregion
-
-        #region Key
-
-        private void definitionPanel_SpeciesDefined(object sender, Controls.StateClickedEventArgs e)
-        {
-            SelectSpecies(e.SpeciesRow);
-        }
-
-        private void definitionPanel_StepChanged(object sender, Controls.DefinitionEventArgs e)
-        {
-            buttonBack.Enabled = menuItemBack.Enabled = definitionPanel.Selections.Count > 0;
-            UpdateTaxaDirections(e.CurrentStep);
-            UpdateSpeciesDirections(e.CurrentStep);
-        }
-
-        private void definitionPanel_UserSelectedState(object sender, Controls.StateClickedEventArgs e)
-        {
-            if (e.IsTaxonAttached)
-            {
-                status1.Message(e.TaxaRow.FullName);
-            }
-        }
-
-        private void checkBoxHistory_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxDiagnosis.Checked)
-            {
-                definitionPanel.ShowHistory();
-            }
-            else
-            {
-                definitionPanel.HideHistory();
-            }
-        }
-
-        private void checkBoxFits_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxFits.Checked)
-            {
-                definitionPanel.ShowFits();
-            }
-            else
-            {
-                definitionPanel.HideFits();
-            }
-        }
-    
-        #endregion
-
-        #region Fits
-
-        private void treeViewFeatures_AfterCheck(object sender, TreeViewEventArgs e)
-        {
-            if (e.Node.Level != 1) return;
-
-            if (e.Node.Checked)
-            {
-                foreach (TreeNode treeNode in e.Node.Parent.Nodes)
+                foreach (SpeciesKey.SpeciesRow speciesRow in majorRow.MinorSynonyms)
                 {
-                    if (treeNode == e.Node) continue;
-                    treeNode.Checked = false;
+                    listViewMinor.CreateItem(speciesRow);
+                }
+            }
+
+            listViewRepresence.Height = treeViewDerivates.Height - ((listViewMinor.Items.Count == 0) ? 0 : 184);
+            listViewMinor.Visible = (listViewMinor.Items.Count > 0);
+        }
+
+        private void listViewMinor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listViewMinor.HitTest(e.Location).Item != null)
+                {
+                    contextSynonym.Show(listViewMinor, e.Location);
+                }
+            }
+        }
+
+        private void contextRemoveSynonym_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewMinor.SelectedItems) {
+                Data.Species.FindByID(item.GetID()).SetMajorSynonimIDNull();
+            }
+
+            listViewRepresence_SelectedIndexChanged(sender, e);
+        }
+
+        private void backSpcLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (e.Argument == null) { e.Cancel = true; }
+            else
+            {
+                List<ListViewItem> result = new List<ListViewItem>();
+                foreach (SpeciesKey.SpeciesRow speciesRow in (SpeciesKey.SpeciesRow[])e.Argument)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.UpdateItem(speciesRow);
+                    item.Group = listViewRepresence.Groups[speciesRow.TaxonRow == null ? "Varia" : speciesRow.TaxonRow.Taxon];
+                    result.Add(item);
+                }
+                e.Result = result.ToArray();
+            }
+        }
+
+        private void backSpcLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled)
+            {
+                listViewRepresence.Items.Clear();
+                ListViewItem[] items = (ListViewItem[])e.Result;
+                listViewRepresence.Items.AddRange(items);
+            }
+
+            processDisplay.StopProcessing();
+            treeViewDerivates.Enabled = true;
+        }
+
+        #endregion
+
+        private void contextTreeExpand_Click(object sender, EventArgs e)
+        {
+            treeViewDerivates.ExpandAll();
+        }
+
+        private void contextTreeCollapse_Click(object sender, EventArgs e)
+        {
+            treeViewDerivates.CollapseAll();
+        }
+
+        #region Taxon context menu
+
+        private void contextTaxon_Opening(object sender, CancelEventArgs e)
+        {
+            contextTaxonDepart.Visible  = !PickedTaxon.IsTaxIDNull();
+            if (!PickedTaxon.IsTaxIDNull()) contextTaxonDepart.Text = string.Format(Resources.Interface.MenuDepart, PickedTaxon.TaxonRowParent);
+        }
+
+        private void contextTaxonEdit_Click(object sender, EventArgs e)
+        {
+            SpeciesKey.TaxonRow currentParent = PickedTaxon.TaxonRowParent;
+            EditTaxon taxonEdit = new EditTaxon(PickedTaxon);
+
+            if (taxonEdit.ShowDialog(this) == DialogResult.OK)
+            {
+                IsChanged |= taxonEdit.IsChanged;
+
+                TreeNode carryNode = treeViewDerivates.Nodes.Find("t" + taxonEdit.TaxonRow.ID.ToString(), true)?[0];
+                if (currentParent != taxonEdit.TaxonRow.TaxonRowParent)
+                {
+                    carryNode.Remove();
+                    if (taxonEdit.TaxonRow.TaxonRowParent == null)
+                    {
+                        treeViewDerivates.Nodes.Add(getTaxonTreeNode(taxonEdit.TaxonRow, true, true));
+                    }
+                    else
+                    {
+                        TreeNode dropNode = treeViewDerivates.Nodes.Find("t" + taxonEdit.TaxonRow.TaxonRowParent.ID.ToString(), true)?[0];
+                        dropNode.Nodes.Add(getTaxonTreeNode(taxonEdit.TaxonRow, true, true));
+                    }
+                }
+                else
+                {
+                    applyRename(carryNode);
                 }
 
-                labelFtrCount.UpdateStatus(GetCheckedStates().Length);
+                applyRename(listViewRepresence.Groups);
             }
-
-            listViewFits.Items.Clear();
-            FillFitList(Data.GetByFeatureStates(GetCheckedStates()));
         }
 
-        private void treeViewFeatures_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        private void contextTaxonDelete_Click(object sender, EventArgs e)
         {
-            if (e.Node.Level == 0)
+            SpeciesKey.SpeciesRow[] reps = PickedTaxon.GetSpeciesRows();
+            SpeciesKey.TaxonRow[] descs = PickedTaxon.GetTaxonRows();
+            if (reps.Length > 0)
             {
-                e.Graphics.FillRectangle(
-                    new SolidBrush(treeViewFeatures.BackColor),
-                    e.Node.Bounds);
+                tdDeleteTaxon.Content = string.Format(
+                    Resources.Messages.TaxonDeleteInstruction,
+                    PickedTaxon, reps.Length, descs.Length);
 
-                //using (SolidBrush brush = new SolidBrush(backColor))
-                //{
-                //}
+                tdbDeleteParentize.Enabled = PickedTaxon.TaxonRowParent != null;
 
-                //TextRenderer.DrawText(e.Graphics, e.Node.Text, this.TvOne.Font, e.Node.Bounds, foreColor, backColor);
+                TaskDialogButton b = tdDeleteTaxon.ShowDialog(this);
+
+                if (b == tdbDeleteConfirm)
+                {
+                    foreach (SpeciesKey.SpeciesRow rep in reps)
+                    {
+                        rep.Delete();
+                    }
+                }
+                else if (b == tdbDeleteParentize)
+                {
+                    foreach (SpeciesKey.SpeciesRow rep in reps)
+                    {
+                        rep.TaxonRow = PickedTaxon.TaxonRowParent;
+                        treeViewDerivates.SelectedNode.Parent.Nodes.Add(getSpeciesTreeNode(rep));
+                    }
+
+                    foreach (SpeciesKey.TaxonRow desc in descs)
+                    {
+                        desc.TaxonRowParent = PickedTaxon.TaxonRowParent;
+                        treeViewDerivates.SelectedNode.Parent.Nodes.Add(getTaxonTreeNode(desc, true, true));
+                    }
+                }
+                else if (b == tdbDeleteOrphanize)
+                {
+                    foreach (SpeciesKey.SpeciesRow rep in reps)
+                    {
+                        rep.SetTaxIDNull();
+                        treeViewDerivates.Nodes.Add(getSpeciesTreeNode(rep));
+                    }
+
+                    foreach (SpeciesKey.TaxonRow desc in descs)
+                    {
+                        desc.TaxonRowParent = PickedTaxon.TaxonRowParent;
+                        treeViewDerivates.Nodes.Add(getTaxonTreeNode(desc, true, true));
+                    }
+                }
+                else if (b == tdbDeleteCancel)
+                {
+                    return;
+                }
             }
 
-            //if ((e.State & TreeNodeStates.Focused) == TreeNodeStates.Focused)
-            //{
-            //    ControlPaint.DrawFocusRectangle(e.Graphics, e.Node.Bounds, foreColor, backColor);
-            //}
-            e.DrawDefault = false;
+            PickedTaxon.Delete();
+
+            treeViewDerivates.Nodes.Remove(treeViewDerivates.SelectedNode);
+
+            IsChanged = true;
         }
 
-        private void listViewFits_ItemActivate(object sender, EventArgs e)
+        private void contextTaxonDepart_Click(object sender, EventArgs e)
         {
-            if (listViewFits.SelectedItems.Count > 0)
+            PickedTaxon.SetTaxIDNull();
+            treeViewDerivates.Nodes.Add(getTaxonTreeNode(PickedTaxon, true, true));
+            treeViewDerivates.Nodes.Remove(treeViewDerivates.SelectedNode);
+
+            IsChanged = true;
+        }
+
+        private void contextTaxonExpandAll_Click(object sender, EventArgs e)
+        {
+            treeViewDerivates.SelectedNode.ExpandAll();
+        }
+
+        #endregion
+
+        #region Species context menu
+
+        private void contextSpecies_Opening(object sender, CancelEventArgs e)
+        {
+            contextSpeciesDepart.Visible = !PickedSpecies.IsTaxIDNull();
+            if (!PickedSpecies.IsTaxIDNull()) contextSpeciesDepart.Text = string.Format(Resources.Interface.MenuDepart, PickedSpecies.TaxonRow);
+        }
+
+        private void contextSpeciesEdit_Click(object sender, EventArgs e)
+        {
+            if (sender == listViewRepresence)
             {
-                SelectSpecies(listViewFits.SelectedItems[0].Tag as SpeciesKey.SpeciesRow);
+                foreach (ListViewItem item in listViewRepresence.SelectedItems)
+                {
+                    editSpecies(Data.Species.FindByID(item.GetID()));
+                }
             }
+
+            if (sender == treeViewDerivates)
+            {
+                editSpecies(PickedSpecies);
+            }
+        }
+
+        private void contextSpeciesDelete_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewRepresence.SelectedItems)
+            {
+                ((SpeciesKey.SpeciesRow)item.Tag).Delete();
+                item.Remove();
+            }
+
+            IsChanged = true;
+        }
+
+        private void contextSpeciesDepart_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewRepresence.SelectedItems)
+            {
+                SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)item.Tag;
+                SpeciesKey.TaxonRow taxonRow = treeViewDerivates.SelectedNode.Tag is SpeciesKey.TaxonRow row
+                    ? row : (SpeciesKey.TaxonRow)item.Group.Tag;
+
+                if (taxonRow != null)
+                {
+                    speciesRow.SetTaxIDNull();
+
+                    if (IsTaxonNodePicked)
+                    {
+                        item.Remove();
+                    }
+                    else
+                    {
+                        item.Group = null;
+                    }
+                }
+            }
+
+            IsChanged = true;
         }
 
         #endregion
 
         #endregion
 
+
+        #region Key tab
+
+        #region Context menu
+
+        private void contextStepDelete_Click(object sender, EventArgs e)
+        {
+            if (IsStepNodeSelected)
+            {
+                ((SpeciesKey.StepRow)treeViewStep.SelectedNode.Tag).Delete();
+                treeViewStep.Nodes.Remove(treeViewStep.SelectedNode);
+                IsChanged = true;
+            }
+        }
+
+        private void contextStepNewFeature_Click(object sender, EventArgs e)
+        {
+            EditFeature editFeature = new EditFeature(SelectedStep);
+            editFeature.Show(this);
+        }
+
+        private void contextFeatureEdit_Click(object sender, EventArgs e)
+        {
+            EditFeature editFeature = new EditFeature(SelectedFeature);
+            editFeature.SetFriendlyDesktopLocation(this, FormLocation.Centered);
+            //treeViewStep, treeViewStep.SelectedNode.Bounds.Location);
+            //editFeature.FormClosed += new FormClosedEventHandler(taxonEdit_FormClosed);
+            editFeature.Show();
+        }
+
+        private void contextFeatureDelete_Click(object sender, EventArgs e)
+        {
+            if (IsFeatureNodeSelected)
+            {
+                ((SpeciesKey.FeatureRow)treeViewStep.SelectedNode.Tag).Delete();
+                treeViewStep.Nodes.Remove(treeViewStep.SelectedNode);
+                IsChanged = true;
+            }
+        }
+
+        #endregion
+
+        private void treeViewStep_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            rearrangeEnagagedItems(SelectedStep);
+        }
+
+        private void treeViewStep_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                treeViewStep.SelectedNode = e.Node;
+            }
+        }
+
+        private void treeViewStep_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (IsFeatureNodeSelected)
+            {
+                contextFeatureEdit_Click(sender, e);
+            }
+
+            if (IsStateNodeSelected)
+            {
+                if (!SelectedState.IsGotoNull())
+                {
+                    treeViewStep.SelectedNode = treeViewStep.GetNode(SelectedState.Goto.ToString());
+                }
+                else if (!SelectedState.IsSpcIDNull())
+                {
+                    editSpecies(SelectedState.SpeciesRow);
+                }
+            }
+        }
+
+        private void listViewEngagement_ItemActivate(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in listViewEngagement.SelectedItems)
+            {
+                editSpecies(Data.Species.FindByID(item.GetID()));
+            }
+        }
+
+        private void buttonTry_Click(object sender, EventArgs e)
+        {
+            //Species.Display mainForm = new Species.Display(Data, SelectedStep);
+            //mainForm.ShowDialog(this);
+        }
+
+        #endregion
     }
 }

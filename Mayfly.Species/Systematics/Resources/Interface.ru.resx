@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NewBase" xml:space="preserve">
-    <value>Новое основание</value>
-  </data>
-  <data name="NewSpecies" xml:space="preserve">
-    <value>Новый вид</value>
-  </data>
-  <data name="NewTaxon" xml:space="preserve">
-    <value>Новый {0}</value>
-  </data>
 </root>

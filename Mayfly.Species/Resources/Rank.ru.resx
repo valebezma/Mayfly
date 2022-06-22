@@ -117,53 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AssociateTip" xml:space="preserve">
-    <value>Отнести {0} к {1}</value>
+  <data name="11" xml:space="preserve">
+    <value>Домен</value>
   </data>
-  <data name="DefaultNotSet" xml:space="preserve">
-    <value>Справочник видов, используемый по умолчанию, не указан. Укажите справочник, который хотите использовать. Позднее вы сможете изменить его в окне "Настройки".</value>
+  <data name="21" xml:space="preserve">
+    <value>Царство</value>
   </data>
-  <data name="DefaultNotSetTitle" xml:space="preserve">
-    <value>Справочник видов по умолчанию не указан</value>
+  <data name="22" xml:space="preserve">
+    <value>Подцарство</value>
   </data>
-  <data name="DeleteSpeciesContent" xml:space="preserve">
-    <value>Вы хотите полностью удалить запись {0} или просто исключить ее из {1}?</value>
+  <data name="31" xml:space="preserve">
+    <value>Тип</value>
   </data>
-  <data name="Filtered" xml:space="preserve">
-    <value>Найдено 0 записей видов</value>
+  <data name="32" xml:space="preserve">
+    <value>Надтип</value>
   </data>
-  <data name="ReassociateTip" xml:space="preserve">
-    <value>Переместеть {0} из {1} в {2}</value>
+  <data name="33" xml:space="preserve">
+    <value>Инфратип</value>
   </data>
-  <data name="Saved" xml:space="preserve">
-    <value>Справочник сохранен</value>
+  <data name="41" xml:space="preserve">
+    <value>Класс</value>
   </data>
-  <data name="SpeciesAssociateContent" xml:space="preserve">
-    <value>Привязка к {0} удалит все последующие тезы. Продолжить?</value>
+  <data name="42" xml:space="preserve">
+    <value>Подкласс</value>
   </data>
-  <data name="SpeciesAssociated" xml:space="preserve">
-    <value>{0} отнесен к {1}</value>
+  <data name="50" xml:space="preserve">
+    <value>Надотряд</value>
   </data>
-  <data name="SpeciesDeassociateContent" xml:space="preserve">
-    <value>Создание новой тезы удалит указание на {0}. Продолжить?</value>
+  <data name="51" xml:space="preserve">
+    <value>Отряд</value>
   </data>
-  <data name="SpeciesDeassociated" xml:space="preserve">
-    <value>Теза больше не указывает на {0}</value>
+  <data name="52" xml:space="preserve">
+    <value>Подотряд</value>
   </data>
-  <data name="SpeciesReassociateContent" xml:space="preserve">
-    <value>{0} уже отнесен к {1}. Хотите переместить его в {2}?</value>
+  <data name="53" xml:space="preserve">
+    <value>Инфраотряд</value>
   </data>
-  <data name="SpeciesReassociated" xml:space="preserve">
-    <value>{0} перемещен из {1} в {2}</value>
+  <data name="60" xml:space="preserve">
+    <value>Надсемейство</value>
   </data>
-  <data name="TaxaReassociateContent" xml:space="preserve">
-    <value>Текущая последовательность уже указывает на принадлежность к {0}. Переопределить на {1}?</value>
+  <data name="61" xml:space="preserve">
+    <value>Семейство</value>
   </data>
-  <data name="TaxaReassociated" xml:space="preserve">
-    <value>{0} заменен на {1} в текущей последовательности</value>
+  <data name="62" xml:space="preserve">
+    <value>Подсемейство</value>
   </data>
-  <data name="ThesisIsOpen" xml:space="preserve">
-    <value>Ключ слепой: "{0}".
-Вы можете отредактировать цепочку ключей в режиме редактирования или вернуться, чтобы попробовать другой вариант.</value>
+  <data name="71" xml:space="preserve">
+    <value>Триба</value>
+  </data>
+  <data name="72" xml:space="preserve">
+    <value>Подтриба</value>
+  </data>
+  <data name="81" xml:space="preserve">
+    <value>Род</value>
+  </data>
+  <data name="82" xml:space="preserve">
+    <value>Подрод</value>
+  </data>
+  <data name="91" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="92" xml:space="preserve">
+    <value>Подвид</value>
   </data>
 </root>

@@ -136,8 +136,29 @@
   <data name="KeyCaption" xml:space="preserve">
     <value>Ключи определителя</value>
   </data>
+  <data name="NewBase" xml:space="preserve">
+    <value>Новое основание</value>
+  </data>
+  <data name="NewSpecies" xml:space="preserve">
+    <value>Новый вид</value>
+  </data>
+  <data name="NewTaxon" xml:space="preserve">
+    <value>Новый {0}</value>
+  </data>
   <data name="Others" xml:space="preserve">
     <value>Прочие ({0})</value>
+  </data>
+  <data name="ResultSpcToSpcSynonimized" xml:space="preserve">
+    <value>{0:l} синонимизирован к {1:l}</value>
+  </data>
+  <data name="ResultSpcToTaxIncluded" xml:space="preserve">
+    <value>{0:l} включен в {1:f}</value>
+  </data>
+  <data name="ResultTaxToTaxDerived" xml:space="preserve">
+    <value>{0:f} включен в {1:f}</value>
+  </data>
+  <data name="ResultTaxToTaxSorted" xml:space="preserve">
+    <value>{0:f} теперь филогенетически выше {1:f}</value>
   </data>
   <data name="SpeciesItemTip" xml:space="preserve">
     <value>Вид: {0}
@@ -149,11 +170,47 @@
   <data name="SpeciesNotFound" xml:space="preserve">
     <value>{0} не найден в видовом справочнике</value>
   </data>
-  <data name="TaxaSelect" xml:space="preserve">
+  <data name="StatusLoaded" xml:space="preserve">
+    <value>Справочник загружен</value>
+  </data>
+  <data name="StatusLoadingList" xml:space="preserve">
+    <value>Загрузка списка</value>
+  </data>
+  <data name="StatusLoadingTree" xml:space="preserve">
+    <value>Загрузка дерева</value>
+  </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Справочник сохранен</value>
+  </data>
+  <data name="TaxonSelect" xml:space="preserve">
     <value>Выберите {0}</value>
   </data>
   <data name="Thesis" xml:space="preserve">
     <value>Теза {0}</value>
+  </data>
+  <data name="TipSpcToSpcSynonim" xml:space="preserve">
+    <value>Установить {0:l} как младший синоним {1:l}</value>
+  </data>
+  <data name="TipSpcToSpcSynonimUnableItself" xml:space="preserve">
+    <value>Невозможно синонимизировать вид самому себе</value>
+  </data>
+  <data name="TipSpcToSpcSynonimUnableSeparateBranch" xml:space="preserve">
+    <value>Невозможно синонимизировать вид из другой таксономической ветви</value>
+  </data>
+  <data name="TipSpcToTaxInclude" xml:space="preserve">
+    <value>Включить {0:l} в {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDerive" xml:space="preserve">
+    <value>Включить {0:f} в {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDeriveUnableAlready" xml:space="preserve">
+    <value>{0:f} уже включен в {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxDeriveUnableWrongRank" xml:space="preserve">
+    <value>{0:f} имеет более высокий или равный ранг, чем {1:f}</value>
+  </data>
+  <data name="TipTaxToTaxSort" xml:space="preserve">
+    <value>Установить {0:f} более высокую позицию, чем {1:f}</value>
   </data>
   <data name="UnidentifiedTitle" xml:space="preserve">
     <value>&lt;Не определен&gt;</value>

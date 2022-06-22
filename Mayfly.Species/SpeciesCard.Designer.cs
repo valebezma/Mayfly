@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelLocal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.labelTaxa = new System.Windows.Forms.Label();
+            this.labelTaxon = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.labelReference = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,10 +78,10 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // labelTaxa
+            // labelTaxon
             // 
-            resources.ApplyResources(this.labelTaxa, "labelTaxa");
-            this.labelTaxa.Name = "labelTaxa";
+            resources.ApplyResources(this.labelTaxon, "labelTaxon");
+            this.labelTaxon.Name = "labelTaxon";
             // 
             // label7
             // 
@@ -129,7 +129,7 @@
             this.CancelButton = this.buttonClose;
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelSynonyms);
-            this.Controls.Add(this.labelTaxa);
+            this.Controls.Add(this.labelTaxon);
             this.Controls.Add(this.labelLocal);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -158,7 +158,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelLocal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelTaxa;
+        private System.Windows.Forms.Label labelTaxon;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelReference;
         private System.Windows.Forms.Label label2;

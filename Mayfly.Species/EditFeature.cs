@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Mayfly.Extensions;
 
-namespace Mayfly.Species.Systematics
+namespace Mayfly.Species
 {
     public partial class EditFeature : Form
     {
@@ -36,8 +36,8 @@ namespace Mayfly.Species.Systematics
             //flowStates.Controls.Remove(buttonAddState);
             foreach (SpeciesKey.StateRow stateRow in FeatureRow.GetStateRows())
             {
-                StateEditor state = new StateEditor(stateRow);
-                flowStates.Controls.Add(state);
+                //StateEditor state = new StateEditor(stateRow);
+                //flowStates.Controls.Add(state);
             }
             //flowStates.Controls.Add(buttonAddState);
         }
@@ -47,9 +47,9 @@ namespace Mayfly.Species.Systematics
             // Create new stateRow?
 
             //flowStates.Controls.Remove(buttonAddState);
-            StateEditor state = new StateEditor();
-            flowStates.Controls.Add(state);
-            state.Focus();
+            //StateEditor state = new StateEditor();
+            //flowStates.Controls.Add(state);
+            //state.Focus();
             //flowStates.Controls.Add(buttonAddState);
         }
 

@@ -118,58 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssociateTip" xml:space="preserve">
-    <value>You are going to associate {0} with {1}</value>
+    <value>Отнести {0} к {1}</value>
   </data>
   <data name="DefaultNotSet" xml:space="preserve">
-    <value>Default species key is not specified yet. Set the species key you want to use. You can change it in 'Settings' later.</value>
+    <value>Справочник видов, используемый по умолчанию, не указан. Укажите справочник, который хотите использовать. Позднее вы сможете изменить его в окне "Настройки".</value>
   </data>
   <data name="DefaultNotSetTitle" xml:space="preserve">
-    <value>Default species key not set</value>
+    <value>Справочник видов по умолчанию не указан</value>
   </data>
   <data name="DeleteSpeciesContent" xml:space="preserve">
-    <value>Do you want to completely delete {0} record or just except it from {1}?</value>
+    <value>Вы хотите полностью удалить запись {0} или просто исключить ее из {1}?</value>
   </data>
   <data name="Filtered" xml:space="preserve">
-    <value>0 species found</value>
+    <value>Найдено 0 записей видов</value>
   </data>
   <data name="ReassociateTip" xml:space="preserve">
-    <value>You are going to reassociate {0} from {1} to {2}</value>
-  </data>
-  <data name="Saved" xml:space="preserve">
-    <value>Reference saved</value>
+    <value>Переместеть {0} из {1} в {2}</value>
   </data>
   <data name="SpeciesAssociateContent" xml:space="preserve">
-    <value>Associating current thesis with {0} you will delete all subsequent keys. Continue anyway?</value>
+    <value>Привязка к {0} удалит все последующие тезы. Продолжить?</value>
   </data>
   <data name="SpeciesAssociated" xml:space="preserve">
-    <value>{0} associated with {1}</value>
+    <value>{0} отнесен к {1}</value>
   </data>
   <data name="SpeciesDeassociateContent" xml:space="preserve">
-    <value>Creation of  new thesis will delete association with {0}. Continue anyway?</value>
+    <value>Создание новой тезы удалит указание на {0}. Продолжить?</value>
   </data>
   <data name="SpeciesDeassociated" xml:space="preserve">
-    <value>Key is not refering to {0} anymore</value>
+    <value>Теза больше не указывает на {0}</value>
   </data>
   <data name="SpeciesReassociateContent" xml:space="preserve">
-    <value>{0} is already associated with {1}. Would you like to move it  up into {2}?</value>
+    <value>{0} уже отнесен к {1}. Хотите переместить его в {2}?</value>
   </data>
   <data name="SpeciesReassociated" xml:space="preserve">
-    <value>{0} moved from {1} into {2}</value>
+    <value>{0} перемещен из {1} в {2}</value>
   </data>
-  <data name="SpeciesRep" xml:space="preserve">
-    <value>{0} is associated with {1}</value>
+  <data name="TaxonReassociateContent" xml:space="preserve">
+    <value>Текущая последовательность уже указывает на принадлежность к {0}. Переопределить на {1}?</value>
   </data>
-  <data name="SpeciesRepContent" xml:space="preserve">
-    <value>You are about to associate {0} with {1} instead of currently set association.</value>
-  </data>
-  <data name="TaxaReassociateContent" xml:space="preserve">
-    <value>Current sequance is already associated with {0}. Continue to reassociate it with {1} anyway?</value>
-  </data>
-  <data name="TaxaReassociated" xml:space="preserve">
-    <value>Current sequence reassotiated from {0} to {1}</value>
+  <data name="TaxonReassociated" xml:space="preserve">
+    <value>{0} заменен на {1} в текущей последовательности</value>
   </data>
   <data name="ThesisIsOpen" xml:space="preserve">
-    <value>Thesis is not following to any other: "{0}".
-You can edit sequence in edit mode or turn back and try another way.</value>
+    <value>Ключ слепой: "{0}".
+Вы можете отредактировать цепочку ключей в режиме редактирования или вернуться, чтобы попробовать другой вариант.</value>
   </data>
 </root>
