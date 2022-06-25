@@ -35,7 +35,7 @@ namespace Mayfly.Species
             }
         }
 
-        public static TaxonomicRank[] SuperGenericRanks
+        public static TaxonomicRank[] HigherRanks
         {
             get
             {

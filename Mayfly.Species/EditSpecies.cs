@@ -13,11 +13,11 @@ namespace Mayfly.Species
     {
         public bool IsChanged = false;
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
 
 
-        public EditSpecies(SpeciesKey.SpeciesRow speciesRow)
+        public EditSpecies(SpeciesKey.TaxonRow speciesRow)
         {
             InitializeComponent();
 
@@ -28,20 +28,20 @@ namespace Mayfly.Species
 
             SpeciesRow = speciesRow;
 
-            try { textBoxScientific.Text = SpeciesRow.Species; } catch { }
-            if (!SpeciesRow.IsNameNull()) textBoxLocal.Text = SpeciesRow.Name;
+            try { textBoxScientific.Text = SpeciesRow.Name; } catch { }
+            if (!SpeciesRow.IsLocalNull()) textBoxLocal.Text = SpeciesRow.Local;
             if (!SpeciesRow.IsReferenceNull()) textBoxReference.Text = SpeciesRow.Reference;
             if (!SpeciesRow.IsDescriptionNull()) textBoxDescription.Text = SpeciesRow.Description;
-            taxonSelector.Taxon = SpeciesRow.IsTaxIDNull() ? null : SpeciesRow.TaxonRow;
+            taxonSelector.Taxon = SpeciesRow.IsTaxIDNull() ? null : SpeciesRow.TaxonRowParent;
 
             IsChanged = false;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            SpeciesRow.Species = textBoxScientific.Text;
+            SpeciesRow.Name = textBoxScientific.Text;
 
-            if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetNameNull();
+            if (!textBoxLocal.Text.IsAcceptable()) SpeciesRow.SetLocalNull();
             else SpeciesRow.Name = textBoxLocal.Text;
 
             if (!textBoxReference.Text.IsAcceptable()) SpeciesRow.SetReferenceNull();

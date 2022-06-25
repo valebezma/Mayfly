@@ -133,7 +133,7 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0:f} has {1} representative(-s) and {2} derivated taxon(-a). How should we treat them after taxon deletion?.
+        ///   Looks up a localized string similar to {0:f} has {1} derivated taxa including {2} species. How should we treat them after taxon deletion?.
         /// </summary>
         public static string TaxonDeleteInstruction {
             get {

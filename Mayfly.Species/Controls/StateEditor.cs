@@ -37,8 +37,8 @@ namespace Mayfly.Species.Systematics
 
             textBoxDescription.Text = StateRow.Description;
 
-            labelSpecies.Visible = !StateRow.IsSpcIDNull();
-            if (!StateRow.IsSpcIDNull()) labelSpecies.Text = StateRow.SpeciesRow.Species;
+            labelSpecies.Visible = !StateRow.IsTaxIDNull();
+            if (!StateRow.IsTaxIDNull()) labelSpecies.Text = StateRow.TaxonRow.Name;
 
             SetAppear();
         }
@@ -47,7 +47,7 @@ namespace Mayfly.Species.Systematics
         {
             if (StateRow.IsGotoNull())
             {
-                if (StateRow.IsSpcIDNull())
+                if (StateRow.IsTaxIDNull())
                 {
                     this.BackgroundImage = Species.Properties.Resources.addnew;
                 }
@@ -105,7 +105,7 @@ namespace Mayfly.Species.Systematics
                 if (StateRow.IsGotoNull())
                 {
                     // create new step, feature and open feature
-                    if (StateRow.IsSpcIDNull())
+                    if (StateRow.IsTaxIDNull())
                     {
                         EditFeature editFeature = new EditFeature(((SpeciesKey)StateRow.Table.DataSet).Step.NewStepRow());
                         editFeature.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.NextToHost);

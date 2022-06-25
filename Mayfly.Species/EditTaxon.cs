@@ -16,14 +16,14 @@ namespace Mayfly.Species
         {
             InitializeComponent();
 
-            comboBoxRank.DataSource = TaxonomicRank.SuperGenericRanks;
+            comboBoxRank.DataSource = TaxonomicRank.HigherRanks;
             taxonSelector.Data = (SpeciesKey)taxonRow.Table.DataSet;
 
             TaxonRow = taxonRow;
 
             comboBoxRank.SelectedValue = taxonRow.Rank;
-            textBoxTaxon.Text = TaxonRow.Taxon;
-            if (!TaxonRow.IsNameNull()) textBoxName.Text = TaxonRow.Name;
+            textBoxName.Text = TaxonRow.Name;
+            if (!TaxonRow.IsLocalNull()) textBoxLocal.Text = TaxonRow.Local;
             if (!TaxonRow.IsDescriptionNull()) textBoxDescription.Text = TaxonRow.Description;
             taxonSelector.Taxon = TaxonRow.IsTaxIDNull() ? null : TaxonRow.TaxonRowParent;
         }
@@ -33,10 +33,10 @@ namespace Mayfly.Species
         private void buttonOK_Click(object sender, EventArgs e)
         {
             TaxonRow.Rank = (int)comboBoxRank.SelectedValue;
-            TaxonRow.Taxon = textBoxTaxon.Text;
+            TaxonRow.Name = textBoxName.Text;
             
-            if (textBoxName.Text.IsAcceptable()) { TaxonRow.Name = textBoxName.Text; }
-            else { TaxonRow.SetNameNull(); }
+            if (textBoxLocal.Text.IsAcceptable()) { TaxonRow.Local = textBoxLocal.Text; }
+            else { TaxonRow.SetLocalNull(); }
             
             if (textBoxDescription.Text.IsAcceptable()) { TaxonRow.Description = textBoxDescription.Text; }
             else { TaxonRow.SetDescriptionNull(); }
@@ -66,7 +66,7 @@ namespace Mayfly.Species
         private void valueChanged(object sender, EventArgs e)
         {
             IsChanged = true;
-            buttonOK.Enabled = textBoxTaxon.Text.IsAcceptable();
+            buttonOK.Enabled = textBoxName.Text.IsAcceptable();
         }
     }
 }

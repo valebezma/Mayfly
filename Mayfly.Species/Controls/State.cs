@@ -89,7 +89,7 @@ namespace Mayfly.Species.Controls
 
             if (StateRow.IsGotoNull())
             {
-                if (StateRow.IsSpcIDNull())
+                if (StateRow.IsTaxIDNull())
                 {
                     Mayfly.Service.PlaySound(Species.Properties.Resources.wrongthesis);
                 }

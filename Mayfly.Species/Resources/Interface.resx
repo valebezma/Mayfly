@@ -148,10 +148,7 @@ to see more pictures</value>
   <data name="NewTaxon" xml:space="preserve">
     <value>New {0}</value>
   </data>
-  <data name="Others" xml:space="preserve">
-    <value>Varia ({0})</value>
-  </data>
-  <data name="ResultSpcToSpcSynonimized" xml:space="preserve">
+  <data name="ResultSpcToSpcSynonymized" xml:space="preserve">
     <value>{0:l} is now synonimized with {1:l}</value>
   </data>
   <data name="ResultSpcToTaxIncluded" xml:space="preserve">
@@ -194,13 +191,13 @@ Taxon: {1}</value>
   <data name="TipSpcMultiple" xml:space="preserve">
     <value>{0} species</value>
   </data>
-  <data name="TipSpcToSpcSynonim" xml:space="preserve">
+  <data name="TipSpcToSpcSynonym" xml:space="preserve">
     <value>Set {0:l} as minor synonim(-s) of {1:l}</value>
   </data>
-  <data name="TipSpcToSpcSynonimUnableItself" xml:space="preserve">
+  <data name="TipSpcToSpcSynonymUnableItself" xml:space="preserve">
     <value>Unable to synonimize species to itself</value>
   </data>
-  <data name="TipSpcToSpcSynonimUnableSeparateBranch" xml:space="preserve">
+  <data name="TipSpcToSpcSynonymUnableSeparateBranch" xml:space="preserve">
     <value>Unable to synonimize species from different taxonomic branches</value>
   </data>
   <data name="TipSpcToTaxInclude" xml:space="preserve">
@@ -222,6 +219,9 @@ Taxon: {1}</value>
     <value>&lt;Not identified&gt;</value>
   </data>
   <data name="Varia" xml:space="preserve">
-    <value>Varia</value>
+    <value>Others</value>
+  </data>
+  <data name="VariaCount" xml:space="preserve">
+    <value>Others ({0})</value>
   </data>
 </root>

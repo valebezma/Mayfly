@@ -142,7 +142,7 @@
     <value>You are about to associate {0} with {1} instead of currently set association.</value>
   </data>
   <data name="TaxonDeleteInstruction" xml:space="preserve">
-    <value>{0:f} has {1} representative(-s) and {2} derivated taxon(-a). How should we treat them after taxon deletion?</value>
+    <value>{0:f} has {1} derivated taxa including {2} species. How should we treat them after taxon deletion?</value>
   </data>
   <data name="TaxonReassociateContent" xml:space="preserve">
     <value>Current sequance is already associated with {0}. Continue to reassociate it with {1} anyway?</value>

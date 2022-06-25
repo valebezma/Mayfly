@@ -213,28 +213,28 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="textBoxTaxon.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="textBoxName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="textBoxTaxon.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 75</value>
   </data>
-  <data name="textBoxTaxon.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 20</value>
   </data>
-  <data name="textBoxTaxon.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxTaxon.Name" xml:space="preserve">
-    <value>textBoxTaxon</value>
+  <data name="&gt;&gt;textBoxName.Name" xml:space="preserve">
+    <value>textBoxName</value>
   </data>
-  <data name="&gt;&gt;textBoxTaxon.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxName.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxTaxon.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxTaxon.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxName.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
@@ -247,13 +247,13 @@
     <value>48, 78</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 13</value>
+    <value>35, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Taxon name</value>
+    <value>Name</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -267,28 +267,28 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="textBoxName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="textBoxLocal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxLocal.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 101</value>
   </data>
-  <data name="textBoxName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxLocal.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 20</value>
   </data>
-  <data name="textBoxName.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxLocal.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;textBoxName.Name" xml:space="preserve">
-    <value>textBoxName</value>
+  <data name="&gt;&gt;textBoxLocal.Name" xml:space="preserve">
+    <value>textBoxLocal</value>
   </data>
-  <data name="&gt;&gt;textBoxName.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxLocal.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxLocal.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxLocal.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
@@ -412,13 +412,13 @@
     <value>48, 51</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
+    <value>33, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Taxon rank</value>
+    <value>Rank</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>

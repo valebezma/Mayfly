@@ -24,8 +24,6 @@ namespace Mayfly.Species {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class SpeciesKey : global::System.Data.DataSet {
         
-        private SpeciesDataTable tableSpecies;
-        
         private TaxonDataTable tableTaxon;
         
         private StepDataTable tableStep;
@@ -38,13 +36,7 @@ namespace Mayfly.Species {
         
         private IllustrationDataTable tableIllustration;
         
-        private global::System.Data.DataRelation relationFK_Taxon_Species;
-        
-        private global::System.Data.DataRelation relationFK_Species_Species;
-        
         private global::System.Data.DataRelation relationFK_Taxon_Taxon;
-        
-        private global::System.Data.DataRelation relationSpecies_State;
         
         private global::System.Data.DataRelation relationFeature_State;
         
@@ -88,9 +80,6 @@ namespace Mayfly.Species {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Species"] != null)) {
-                    base.Tables.Add(new SpeciesDataTable(ds.Tables["Species"]));
-                }
                 if ((ds.Tables["Taxon"] != null)) {
                     base.Tables.Add(new TaxonDataTable(ds.Tables["Taxon"]));
                 }
@@ -125,16 +114,6 @@ namespace Mayfly.Species {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SpeciesDataTable Species {
-            get {
-                return this.tableSpecies;
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,9 +243,6 @@ namespace Mayfly.Species {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Species"] != null)) {
-                    base.Tables.Add(new SpeciesDataTable(ds.Tables["Species"]));
-                }
                 if ((ds.Tables["Taxon"] != null)) {
                     base.Tables.Add(new TaxonDataTable(ds.Tables["Taxon"]));
                 }
@@ -318,12 +294,6 @@ namespace Mayfly.Species {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSpecies = ((SpeciesDataTable)(base.Tables["Species"]));
-            if ((initTable == true)) {
-                if ((this.tableSpecies != null)) {
-                    this.tableSpecies.InitVars();
-                }
-            }
             this.tableTaxon = ((TaxonDataTable)(base.Tables["Taxon"]));
             if ((initTable == true)) {
                 if ((this.tableTaxon != null)) {
@@ -360,10 +330,7 @@ namespace Mayfly.Species {
                     this.tableIllustration.InitVars();
                 }
             }
-            this.relationFK_Taxon_Species = this.Relations["FK_Taxon_Species"];
-            this.relationFK_Species_Species = this.Relations["FK_Species_Species"];
             this.relationFK_Taxon_Taxon = this.Relations["FK_Taxon_Taxon"];
-            this.relationSpecies_State = this.Relations["Species_State"];
             this.relationFeature_State = this.Relations["Feature_State"];
             this.relationDefinition_State = this.Relations["Definition_State"];
             this.relationImage_Illustration = this.Relations["Image_Illustration"];
@@ -380,8 +347,6 @@ namespace Mayfly.Species {
             this.Prefix = "";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSpecies = new SpeciesDataTable();
-            base.Tables.Add(this.tableSpecies);
             this.tableTaxon = new TaxonDataTable();
             base.Tables.Add(this.tableTaxon);
             this.tableStep = new StepDataTable();
@@ -395,20 +360,6 @@ namespace Mayfly.Species {
             this.tableIllustration = new IllustrationDataTable();
             base.Tables.Add(this.tableIllustration);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Taxon_Species", new global::System.Data.DataColumn[] {
-                        this.tableTaxon.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSpecies.TaxIDColumn});
-            this.tableSpecies.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.SetNull;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Species_Species", new global::System.Data.DataColumn[] {
-                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSpecies.MajorSynonimIDColumn});
-            this.tableSpecies.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.SetNull;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Taxon_Taxon", new global::System.Data.DataColumn[] {
                         this.tableTaxon.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTaxon.TaxIDColumn});
@@ -416,22 +367,10 @@ namespace Mayfly.Species {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.SetNull;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Taxon_Species = new global::System.Data.DataRelation("FK_Taxon_Species", new global::System.Data.DataColumn[] {
-                        this.tableTaxon.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSpecies.TaxIDColumn}, false);
-            this.Relations.Add(this.relationFK_Taxon_Species);
-            this.relationFK_Species_Species = new global::System.Data.DataRelation("FK_Species_Species", new global::System.Data.DataColumn[] {
-                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSpecies.MajorSynonimIDColumn}, false);
-            this.Relations.Add(this.relationFK_Species_Species);
             this.relationFK_Taxon_Taxon = new global::System.Data.DataRelation("FK_Taxon_Taxon", new global::System.Data.DataColumn[] {
                         this.tableTaxon.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTaxon.TaxIDColumn}, false);
             this.Relations.Add(this.relationFK_Taxon_Taxon);
-            this.relationSpecies_State = new global::System.Data.DataRelation("Species_State", new global::System.Data.DataColumn[] {
-                        this.tableSpecies.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableState.SpcIDColumn}, false);
-            this.Relations.Add(this.relationSpecies_State);
             this.relationFeature_State = new global::System.Data.DataRelation("Feature_State", new global::System.Data.DataColumn[] {
                         this.tableFeature.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableState.FeaIDColumn}, false);
@@ -460,12 +399,6 @@ namespace Mayfly.Species {
                         this.tableTaxon.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableState.TaxIDColumn}, false);
             this.Relations.Add(this.relationTaxon_State);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSpecies() {
-            return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -560,9 +493,6 @@ namespace Mayfly.Species {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SpeciesRowChangeEventHandler(object sender, SpeciesRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void TaxonRowChangeEventHandler(object sender, TaxonRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -585,358 +515,6 @@ namespace Mayfly.Species {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SpeciesDataTable : global::System.Data.TypedTableBase<SpeciesRow> {
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnSpecies;
-            
-            private global::System.Data.DataColumn columnReference;
-            
-            private global::System.Data.DataColumn columnName;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnTaxID;
-            
-            private global::System.Data.DataColumn columnMajorSynonimID;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesDataTable() {
-                this.TableName = "Species";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SpeciesDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected SpeciesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SpeciesColumn {
-                get {
-                    return this.columnSpecies;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ReferenceColumn {
-                get {
-                    return this.columnReference;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
-                get {
-                    return this.columnName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TaxIDColumn {
-                get {
-                    return this.columnTaxID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MajorSynonimIDColumn {
-                get {
-                    return this.columnMajorSynonimID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow this[int index] {
-                get {
-                    return ((SpeciesRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SpeciesRowChangeEventHandler SpeciesRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SpeciesRowChangeEventHandler SpeciesRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SpeciesRowChangeEventHandler SpeciesRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SpeciesRowChangeEventHandler SpeciesRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSpeciesRow(SpeciesRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow AddSpeciesRow(string Species, string Reference, string Name, string Description, TaxonRow parentTaxonRowByFK_Taxon_Species, SpeciesRow parentSpeciesRowByFK_Species_Species) {
-                SpeciesRow rowSpeciesRow = ((SpeciesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Species,
-                        Reference,
-                        Name,
-                        Description,
-                        null,
-                        null};
-                if ((parentTaxonRowByFK_Taxon_Species != null)) {
-                    columnValuesArray[5] = parentTaxonRowByFK_Taxon_Species[0];
-                }
-                if ((parentSpeciesRowByFK_Species_Species != null)) {
-                    columnValuesArray[6] = parentSpeciesRowByFK_Species_Species[0];
-                }
-                rowSpeciesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSpeciesRow);
-                return rowSpeciesRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow FindByID(int ID) {
-                return ((SpeciesRow)(this.Rows.Find(new object[] {
-                            ID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SpeciesDataTable cln = ((SpeciesDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SpeciesDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnSpecies = base.Columns["Species"];
-                this.columnReference = base.Columns["Reference"];
-                this.columnName = base.Columns["Name"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnTaxID = base.Columns["TaxID"];
-                this.columnMajorSynonimID = base.Columns["MajorSynonimID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnSpecies = new global::System.Data.DataColumn("Species", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSpecies);
-                this.columnReference = new global::System.Data.DataColumn("Reference", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReference);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnTaxID = new global::System.Data.DataColumn("TaxID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxID);
-                this.columnMajorSynonimID = new global::System.Data.DataColumn("MajorSynonimID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMajorSynonimID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
-                this.columnSpecies.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow NewSpeciesRow() {
-                return ((SpeciesRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SpeciesRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SpeciesRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SpeciesRowChanged != null)) {
-                    this.SpeciesRowChanged(this, new SpeciesRowChangeEvent(((SpeciesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SpeciesRowChanging != null)) {
-                    this.SpeciesRowChanging(this, new SpeciesRowChangeEvent(((SpeciesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SpeciesRowDeleted != null)) {
-                    this.SpeciesRowDeleted(this, new SpeciesRowChangeEvent(((SpeciesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SpeciesRowDeleting != null)) {
-                    this.SpeciesRowDeleting(this, new SpeciesRowChangeEvent(((SpeciesRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSpeciesRow(SpeciesRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SpeciesKey ds = new SpeciesKey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SpeciesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TaxonDataTable : global::System.Data.TypedTableBase<TaxonRow> {
             
             private global::System.Data.DataColumn columnID;
@@ -945,9 +523,11 @@ namespace Mayfly.Species {
             
             private global::System.Data.DataColumn columnIndex;
             
-            private global::System.Data.DataColumn columnTaxon;
-            
             private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnReference;
+            
+            private global::System.Data.DataColumn columnLocal;
             
             private global::System.Data.DataColumn columnDescription;
             
@@ -1012,17 +592,25 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TaxonColumn {
+            public global::System.Data.DataColumn NameColumn {
                 get {
-                    return this.columnTaxon;
+                    return this.columnName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn ReferenceColumn {
                 get {
-                    return this.columnName;
+                    return this.columnReference;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LocalColumn {
+                get {
+                    return this.columnLocal;
                 }
             }
             
@@ -1079,18 +667,19 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TaxonRow AddTaxonRow(int Rank, int Index, string Taxon, string Name, string Description, TaxonRow parentTaxonRowByFK_Taxon_Taxon) {
+            public TaxonRow AddTaxonRow(int Rank, int Index, string Name, string Reference, string Local, string Description, TaxonRow parentTaxonRowByFK_Taxon_Taxon) {
                 TaxonRow rowTaxonRow = ((TaxonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Rank,
                         Index,
-                        Taxon,
                         Name,
+                        Reference,
+                        Local,
                         Description,
                         null};
                 if ((parentTaxonRowByFK_Taxon_Taxon != null)) {
-                    columnValuesArray[6] = parentTaxonRowByFK_Taxon_Taxon[0];
+                    columnValuesArray[7] = parentTaxonRowByFK_Taxon_Taxon[0];
                 }
                 rowTaxonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTaxonRow);
@@ -1124,8 +713,9 @@ namespace Mayfly.Species {
                 this.columnID = base.Columns["ID"];
                 this.columnRank = base.Columns["Rank"];
                 this.columnIndex = base.Columns["Index"];
-                this.columnTaxon = base.Columns["Taxon"];
                 this.columnName = base.Columns["Name"];
+                this.columnReference = base.Columns["Reference"];
+                this.columnLocal = base.Columns["Local"];
                 this.columnDescription = base.Columns["Description"];
                 this.columnTaxID = base.Columns["TaxID"];
             }
@@ -1139,10 +729,12 @@ namespace Mayfly.Species {
                 base.Columns.Add(this.columnRank);
                 this.columnIndex = new global::System.Data.DataColumn("Index", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIndex);
-                this.columnTaxon = new global::System.Data.DataColumn("Taxon", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxon);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnReference = new global::System.Data.DataColumn("Reference", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReference);
+                this.columnLocal = new global::System.Data.DataColumn("Local", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocal);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
                 this.columnTaxID = new global::System.Data.DataColumn("TaxID", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1155,7 +747,7 @@ namespace Mayfly.Species {
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnRank.AllowDBNull = false;
-                this.columnTaxon.AllowDBNull = false;
+                this.columnName.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1881,8 +1473,6 @@ namespace Mayfly.Species {
             
             private global::System.Data.DataColumn columnTaxID;
             
-            private global::System.Data.DataColumn columnSpcID;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StateDataTable() {
@@ -1958,14 +1548,6 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SpcIDColumn {
-                get {
-                    return this.columnSpcID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2001,13 +1583,12 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StateRow AddStateRow(FeatureRow parentFeatureRowByFeature_State, string Description, StepRow parentStepRowByDefinition_State, TaxonRow parentTaxonRowByTaxon_State, SpeciesRow parentSpeciesRowBySpecies_State) {
+            public StateRow AddStateRow(FeatureRow parentFeatureRowByFeature_State, string Description, StepRow parentStepRowByDefinition_State, TaxonRow parentTaxonRowByTaxon_State) {
                 StateRow rowStateRow = ((StateRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Description,
-                        null,
                         null,
                         null};
                 if ((parentFeatureRowByFeature_State != null)) {
@@ -2018,9 +1599,6 @@ namespace Mayfly.Species {
                 }
                 if ((parentTaxonRowByTaxon_State != null)) {
                     columnValuesArray[4] = parentTaxonRowByTaxon_State[0];
-                }
-                if ((parentSpeciesRowBySpecies_State != null)) {
-                    columnValuesArray[5] = parentSpeciesRowBySpecies_State[0];
                 }
                 rowStateRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStateRow);
@@ -2056,7 +1634,6 @@ namespace Mayfly.Species {
                 this.columnDescription = base.Columns["Description"];
                 this.columnGoto = base.Columns["Goto"];
                 this.columnTaxID = base.Columns["TaxID"];
-                this.columnSpcID = base.Columns["SpcID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2072,8 +1649,6 @@ namespace Mayfly.Species {
                 base.Columns.Add(this.columnGoto);
                 this.columnTaxID = new global::System.Data.DataColumn("TaxID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTaxID);
-                this.columnSpcID = new global::System.Data.DataColumn("SpcID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSpcID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2813,227 +2388,6 @@ namespace Mayfly.Species {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SpeciesRow : global::System.Data.DataRow {
-            
-            private SpeciesDataTable tableSpecies;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SpeciesRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSpecies = ((SpeciesDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableSpecies.IDColumn]));
-                }
-                set {
-                    this[this.tableSpecies.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Species {
-                get {
-                    return ((string)(this[this.tableSpecies.SpeciesColumn]));
-                }
-                set {
-                    this[this.tableSpecies.SpeciesColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Reference {
-                get {
-                    try {
-                        return ((string)(this[this.tableSpecies.ReferenceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Reference\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.ReferenceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
-                get {
-                    try {
-                        return ((string)(this[this.tableSpecies.NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.NameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Description {
-                get {
-                    try {
-                        return ((string)(this[this.tableSpecies.DescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int TaxID {
-                get {
-                    try {
-                        return ((int)(this[this.tableSpecies.TaxIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxID\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.TaxIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int MajorSynonimID {
-                get {
-                    try {
-                        return ((int)(this[this.tableSpecies.MajorSynonimIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MajorSynonimID\' in table \'Species\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecies.MajorSynonimIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TaxonRow TaxonRow {
-                get {
-                    return ((TaxonRow)(this.GetParentRow(this.Table.ParentRelations["FK_Taxon_Species"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Taxon_Species"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow SpeciesRowParent {
-                get {
-                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Species_Species"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Species_Species"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsReferenceNull() {
-                return this.IsNull(this.tableSpecies.ReferenceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetReferenceNull() {
-                this[this.tableSpecies.ReferenceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableSpecies.NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableSpecies.NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDescriptionNull() {
-                return this.IsNull(this.tableSpecies.DescriptionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDescriptionNull() {
-                this[this.tableSpecies.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTaxIDNull() {
-                return this.IsNull(this.tableSpecies.TaxIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTaxIDNull() {
-                this[this.tableSpecies.TaxIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMajorSynonimIDNull() {
-                return this.IsNull(this.tableSpecies.MajorSynonimIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMajorSynonimIDNull() {
-                this[this.tableSpecies.MajorSynonimIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow[] GetSpeciesRows() {
-                if ((this.Table.ChildRelations["FK_Species_Species"] == null)) {
-                    return new SpeciesRow[0];
-                }
-                else {
-                    return ((SpeciesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Species_Species"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StateRow[] GetStateRows() {
-                if ((this.Table.ChildRelations["Species_State"] == null)) {
-                    return new StateRow[0];
-                }
-                else {
-                    return ((StateRow[])(base.GetChildRows(this.Table.ChildRelations["Species_State"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class TaxonRow : global::System.Data.DataRow {
             
             private TaxonDataTable tableTaxon;
@@ -3085,28 +2439,44 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Taxon {
+            public string Name {
                 get {
-                    return ((string)(this[this.tableTaxon.TaxonColumn]));
+                    return ((string)(this[this.tableTaxon.NameColumn]));
                 }
                 set {
-                    this[this.tableTaxon.TaxonColumn] = value;
+                    this[this.tableTaxon.NameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public string Reference {
                 get {
                     try {
-                        return ((string)(this[this.tableTaxon.NameColumn]));
+                        return ((string)(this[this.tableTaxon.ReferenceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Taxon\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Reference\' in table \'Taxon\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTaxon.NameColumn] = value;
+                    this[this.tableTaxon.ReferenceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Local {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxon.LocalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Local\' in table \'Taxon\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxon.LocalColumn] = value;
                 }
             }
             
@@ -3167,14 +2537,26 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableTaxon.NameColumn);
+            public bool IsReferenceNull() {
+                return this.IsNull(this.tableTaxon.ReferenceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableTaxon.NameColumn] = global::System.Convert.DBNull;
+            public void SetReferenceNull() {
+                this[this.tableTaxon.ReferenceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLocalNull() {
+                return this.IsNull(this.tableTaxon.LocalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLocalNull() {
+                this[this.tableTaxon.LocalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3209,17 +2591,6 @@ namespace Mayfly.Species {
                 }
                 else {
                     return ((TaxonRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Taxon_Taxon"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow[] GetSpeciesRows() {
-                if ((this.Table.ChildRelations["FK_Taxon_Species"] == null)) {
-                    return new SpeciesRow[0];
-                }
-                else {
-                    return ((SpeciesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Taxon_Species"])));
                 }
             }
             
@@ -3545,33 +2916,6 @@ namespace Mayfly.Species {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SpcID {
-                get {
-                    try {
-                        return ((int)(this[this.tableState.SpcIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SpcID\' in table \'State\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableState.SpcIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow SpeciesRow {
-                get {
-                    return ((SpeciesRow)(this.GetParentRow(this.Table.ParentRelations["Species_State"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Species_State"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FeatureRow FeatureRow {
                 get {
                     return ((FeatureRow)(this.GetParentRow(this.Table.ParentRelations["Feature_State"])));
@@ -3649,18 +2993,6 @@ namespace Mayfly.Species {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTaxIDNull() {
                 this[this.tableState.TaxIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSpcIDNull() {
-                return this.IsNull(this.tableState.SpcIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSpcIDNull() {
-                this[this.tableState.SpcIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3936,40 +3268,6 @@ namespace Mayfly.Species {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFeaIDNull() {
                 this[this.tableIllustration.FeaIDColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class SpeciesRowChangeEvent : global::System.EventArgs {
-            
-            private SpeciesRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRowChangeEvent(SpeciesRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SpeciesRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
             }
         }
         

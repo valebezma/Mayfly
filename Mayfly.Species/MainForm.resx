@@ -129,13 +129,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="statusSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 19</value>
+    <value>250, 19</value>
   </data>
   <data name="statusSpecies.Text" xml:space="preserve">
-    <value>Species: {0}</value>
-  </data>
-  <data name="statusSpecies.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
+    <value>Valid species names: {0}</value>
   </data>
   <data name="statusTaxon.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -144,13 +141,10 @@
     <value>200, 19</value>
   </data>
   <data name="statusTaxon.Text" xml:space="preserve">
-    <value>Taxon: {0}</value>
-  </data>
-  <data name="statusTaxon.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
+    <value>Higher taxon names: {0}</value>
   </data>
   <data name="statusProcess.Size" type="System.Drawing.Size, System.Drawing">
-    <value>717, 19</value>
+    <value>586, 19</value>
   </data>
   <data name="statusProcess.Text" xml:space="preserve">
     <value>Processing:</value>
@@ -325,13 +319,13 @@
     <value>File</value>
   </data>
   <data name="menuItemAddTaxon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="menuItemAddTaxon.Text" xml:space="preserve">
     <value>Add new taxon</value>
   </data>
   <data name="menuItemAddSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>162, 22</value>
   </data>
   <data name="menuItemAddSpecies.Text" xml:space="preserve">
     <value>Add new species</value>
@@ -1079,7 +1073,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAQ
-        CQAAAk1TRnQBSQFMAgEBAgEAAVABAQFQAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAAYgBAQGIAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

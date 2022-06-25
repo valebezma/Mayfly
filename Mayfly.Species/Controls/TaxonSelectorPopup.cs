@@ -65,6 +65,7 @@ namespace Mayfly.Species.Controls
 
             foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
             {
+                if (derRow.IsSpecies) continue;
                 taxonNode.Nodes.Add(getTaxonTreeNode(derRow));
             }
 
@@ -82,7 +83,7 @@ namespace Mayfly.Species.Controls
         private void backTreeLoader_DoWork(object sender, DoWorkEventArgs e)
         {
             List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in data.GetRootTaxon())
+            foreach (SpeciesKey.TaxonRow taxonRow in data.GetRootHigherTaxonRows())
             {
                 result.Add(getTaxonTreeNode(taxonRow));
             }

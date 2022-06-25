@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Mayfly.Species
 {
@@ -14,21 +15,77 @@ namespace Mayfly.Species
         {
             public TaxonomicRank TaxonomicRank { get { return new TaxonomicRank(Rank); } }
 
-            public string TaxonName
+            
+
+            public TaxonRow[] Hierarchy
             {
                 get
                 {
-                    return IsNameNull() ? Taxon : Name.GetLocalizedValue();
+                    List<TaxonRow> result = new List<TaxonRow>();
+
+                    TaxonRow parent = this.TaxonRowParent;
+
+                    while (parent != null)
+                    {
+                        result.Insert(0, parent);
+                        parent = parent.TaxonRowParent;
+                    }
+
+                    return result.ToArray();
                 }
             }
 
-            public string FullName => string.Format("{0} {1}", this?.TaxonomicRank.Name, TaxonName);
+            public string NameReport
+            {
+                get
+                {
+                    string result = string.Format("<span class='latin'>{0}</span>", Name);
+
+                    foreach (string serviceWord in new string[] { "gr.", "morpha", "ex gr.", "nov.", "sp.", "sp. n." })
+                    {
+                        result = result.Replace(" " + serviceWord + " ",
+                            "<span class='latin-inside'> " + serviceWord + " </span>");
+                    }
+
+                    return string.IsNullOrWhiteSpace(result) ? Resources.Interface.UnidentifiedTitle : result;
+                }
+            }
+
+            public string FullName
+            {
+                get
+                {
+                    return IsSpecies ? 
+                        string.Format("{0} {1} {2}", IsLocalNull() ? string.Empty : Local.GetLocalizedValue(), Name, IsReferenceNull() ? string.Empty : Reference).Trim() :
+                        string.Format("{0} {1}", this?.TaxonomicRank.Name, CommonName);
+                }
+            }
+
+            public string FullNameReport
+            {
+                get
+                {
+                    return string.Format("{0} {1} {2}",
+                        IsLocalNull() ? string.Empty : Local.GetLocalizedValue(),
+                        NameReport,
+                        IsReferenceNull() ? string.Empty : Reference).Trim();
+                }
+            }
+
+            public string CommonName
+            {
+                get
+                {
+                    return IsLocalNull() ? Name : Local.GetLocalizedValue();
+                }
+            }
 
             public string InterfaceString
             {
                 get
                 {
-                    int wealth = this.GetSpecies().Length;
+                    //return FullName;
+                    int wealth = this.GetSpeciesRows(true).Length;
                     return wealth > 0 ? string.Format("{0} ({1})", this.FullName, wealth) : this.FullName;
                 }
             }
@@ -37,136 +94,67 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return string.Format("{0:000} {1:000} {2}", Rank, (IsIndexNull() ? 999 : Index), TaxonName);
-                }
-            }
+                    string result = string.Empty;
 
-            public bool HasDerivations
-            {
-                get
-                {
-                    return this.GetParentRows("FK_Taxon_Taxon").Length > 0;
-                }
-            }
-
-
-
-            public SpeciesRow[] GetSpecies()
-            {
-                List<SpeciesRow> result = new List<SpeciesRow>();
-
-                result.AddRange(this.GetSpeciesRows());
-
-                foreach (TaxonRow taxonRow in this.GetTaxonRows())
-                {
-                    result.AddRange(taxonRow.GetSpecies());
-                }
-
-                return result.ToArray();
-            }
-
-            public TaxonRow[] GetTaxon(bool populatedOnly)
-            {
-                List<TaxonRow> result = new List<TaxonRow>();
-
-                foreach (TaxonRow taxonRow in this.GetTaxonRows())
-                {
-                    if (!populatedOnly || taxonRow.GetSpeciesRows().Length > 0)
+                    foreach (TaxonRow parent in Hierarchy)
                     {
-                        result.Add(taxonRow);
+                        result += string.Format("{0:000} {1:000} {2} ",
+                            parent.Rank, (parent.IsIndexNull() ? 999 : parent.Index), parent.Name);
                     }
 
-                    result.AddRange(taxonRow.GetTaxon(populatedOnly));
-                }
-
-                return result.ToArray();
-            }
-
-            public bool Includes(TaxonRow taxonRow)
-            {
-                return Array.IndexOf(GetTaxon(false), taxonRow) > -1;
-            }
-
-            public bool Includes(SpeciesRow spcRow, bool searchDerivates)
-            {
-                if (Array.IndexOf(GetSpeciesRows(), spcRow) > -1) return true;
-
-                if (searchDerivates)
-                {
-                    foreach (TaxonRow taxonRow in GetTaxon(true)) // search derivates
-                    {
-                        if (taxonRow.Includes(spcRow, true))
-                            return true;
-                    }
-                }
-
-                return false;
-            }
-
-            public bool Includes(SpeciesRow spcRow)
-            {
-                return Includes(spcRow, true);
-            }
-
-
-
-            public int CompareTo(TaxonRow other)
-            {
-                return this.SortableString.CompareTo(other.SortableString);
-            }
-
-
-            public override string ToString()
-            {
-                return FullName;
-            }
-
-            public string ToString(string format, IFormatProvider formatProvider)
-            {
-                switch (format.ToLowerInvariant())
-                {
-                    case "f":
-                        return FullName;
-
-                    default:
-                        return TaxonName;
+                    return result + string.Format("{0:000} {1:000} {2}",
+                        Rank, (IsIndexNull() ? 999 : Index), Name.Replace(" gr.", string.Empty));
                 }
             }
-        }
 
-        partial class SpeciesRow : IFormattable, IComparable<SpeciesRow>
-        {
-            public SpeciesRow MajorSynonym
+            public bool HasChildren
             {
                 get
                 {
-                    return this.SpeciesRowParent;
+                    return this.GetTaxonRows().Length > 0;
                 }
             }
 
-            public SpeciesRow[] MinorSynonyms
+            public bool IsSpecies
+            {
+                get { return Rank == 91; }
+            }
+
+            public TaxonRow ValidSpeciesRow
             {
                 get
                 {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
+                    if (!this.IsSpecies) throw new ArgumentException("Only species can have valid name.");
 
-                    foreach (SpeciesRow spcRow in this.tableSpecies)
-                    {
-                        if (spcRow.SpeciesRowParent == this)
-                        {
-                            result.Add(spcRow);
-                        }
-                    }
+                    if (IsTaxIDNull()) return this; // If root species - return itself
 
-                    return result.ToArray();
+                    if (!TaxonRowParent.IsSpecies) return this; // If parent - higher taxon - return itself
+
+                    return TaxonRowParent.ValidSpeciesRow; // return ValidSpecies for superior species row
                 }
             }
 
-            public SpeciesRow[] Synonyms
+            public TaxonRow MajorSynonym
             {
                 get
                 {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
+                    return IsTaxIDNull() ? null : TaxonRowParent.IsSpecies ? TaxonRowParent : null;
+                }
+            }
+
+            public TaxonRow[] MinorSynonyms
+            {
+                get
+                {
+                    return GetSpeciesRows(true);
+                }
+            }
+
+            public TaxonRow[] Synonyms
+            {
+                get
+                {
+                    List<TaxonRow> result = new List<TaxonRow>();
                     if (this.MajorSynonym != null) result.Add(this.MajorSynonym);
                     result.AddRange(this.MinorSynonyms);
                     return result.ToArray();
@@ -183,7 +171,7 @@ namespace Mayfly.Species
                         string.Empty
                     };
 
-                    foreach (TaxonRow tr in GetParents())
+                    foreach (TaxonRow tr in Hierarchy)
                     {
                         result.Add(tr.FullName);
                     }
@@ -207,96 +195,9 @@ namespace Mayfly.Species
 
 
 
-            public string ShortName
+            public TaxonRow GetParentTaxon(int rank)
             {
-                get
-                {
-                    return IsNameNull() ? Species : Name.GetLocalizedValue();
-                }
-            }
-
-            public string ScientificName
-            {
-                get
-                {
-                    return Species;
-                }
-            }
-
-            public string ScientificNameReport
-            {
-                get
-                {
-                    string result = string.Format("<span class='latin'>{0}</span>", ScientificName);
-
-                    foreach (string serviceWord in new string[] { "gr.", "morpha", "ex gr.", "nov.", "sp.", "sp. n." })
-                    {
-                        result = result.Replace(" " + serviceWord + " ",
-                            "<span class='latin-inside'> " + serviceWord + " </span>");
-                    }
-
-                    return string.IsNullOrWhiteSpace(result) ? Resources.Interface.UnidentifiedTitle : result;
-                }
-            }
-
-            public string FullName
-            {
-                get
-                {
-                    return string.Format("{0} {1} {2}", IsNameNull() ? string.Empty : Name.GetLocalizedValue(), ScientificName, IsReferenceNull() ? string.Empty : Reference).Trim();
-                }
-            }
-
-            public string FullNameReport
-            {
-                get
-                {
-                    return string.Format("{0} {1} {2}", ShortName, ScientificNameReport, IsReferenceNull() ? string.Empty : Reference).Trim();
-                }
-            }
-
-            public string SortableString
-            {
-                get
-                {
-                    return TaxonRow?.SortableString + ScientificName.Replace(" gr.", string.Empty);
-                }
-            }
-
-
-            public bool Validate(string record)
-            {
-                if (Species == record) return true;
-
-                foreach (SpeciesRow spcRow in MinorSynonyms)
-                {
-                    if (spcRow.Validate(record)) return true;
-                }
-
-                return false;
-            }
-
-
-
-            public TaxonRow[] GetParents()
-            {
-                List<TaxonRow> result = new List<TaxonRow>();
-
-                foreach (TaxonRow taxonRow in ((SpeciesKey)tableSpecies.DataSet).Taxon)
-                {
-                    if (taxonRow.Includes(this, true))
-                    {
-                        result.Add(taxonRow);
-                    }
-                }
-
-                result.Sort();
-                return result.ToArray();
-            }
-
-            public TaxonRow GetTaxon(int rank)
-            {
-                foreach (TaxonRow taxonRow in GetParents())
+                foreach (TaxonRow taxonRow in Hierarchy)
                 {
                     if (taxonRow.Rank == rank)
                     {
@@ -307,29 +208,82 @@ namespace Mayfly.Species
                 return null;
             }
 
-            public bool IsSynonimyAvailable(SpeciesRow spcRow)
+            public TaxonRow[] GetHigherTaxonRows(bool populatedOnly)
             {
-                foreach (TaxonRow taxonRow in GetParents())
+                List<TaxonRow> result = new List<TaxonRow>();
+
+                foreach (TaxonRow taxonRow in this.GetTaxonRows())
                 {
-                    if (taxonRow.Includes(spcRow, false)) return true;
+                    if (taxonRow.IsSpecies) continue;
+
+                    if (!populatedOnly || taxonRow.GetSpeciesRows(false).Length > 0)
+                    {
+                        result.Add(taxonRow);
+                    }
+
+                    result.AddRange(taxonRow.GetHigherTaxonRows(populatedOnly));
                 }
+
+                return result.ToArray();
+            }
+
+            public TaxonRow[] GetSpeciesRows(bool searchChildren)
+            {
+                List<TaxonRow> result = new List<TaxonRow>();
+
+                foreach (TaxonRow taxonRow in this.GetTaxonRows())
+                {
+                    if (taxonRow.IsSpecies)
+                    {
+                        result.Add(taxonRow);
+                    }
+
+                    if (!taxonRow.IsSpecies && searchChildren)
+                    {
+                        result.AddRange(taxonRow.GetSpeciesRows(searchChildren));
+                    }
+                }
+
+                //result.Sort();
+                return result.ToArray();
+            }
+
+            public bool Includes(TaxonRow taxonRow, bool searchChildren)
+            {
+                return Array.IndexOf(GetHigherTaxonRows(false), taxonRow) > -1 || Array.IndexOf(GetSpeciesRows(searchChildren), taxonRow) > -1;
+            }
+
+            public bool IsSynonymyAvailable(TaxonRow taxonRow)
+            {
+                if (!taxonRow.IsSpecies) return false;
+
+                foreach (TaxonRow parentTaxonRow in Hierarchy) {
+                    if (parentTaxonRow.Includes(taxonRow, false)) return true;
+                }
+
                 return false;
             }
 
-            public bool IsSynonimyAvailable(SpeciesRow[] spcRows)
+            public bool IsSynonymyAvailable(TaxonRow[] taxonRows)
             {
-                foreach (SpeciesRow spcRow in spcRows)
+                foreach (TaxonRow taxonRow in taxonRows)
                 {
-                    if (!this.IsSynonimyAvailable(spcRow)) return false;
+                    if (!this.IsSynonymyAvailable(taxonRow)) return false;
                 }
 
                 return true;
             }
 
 
+            public int CompareTo(TaxonRow other)
+            {
+                return this.SortableString.CompareTo(other.SortableString);
+            }
+
+
             public override string ToString()
             {
-                return Species;
+                return Name;
             }
 
             public string ToString(string format, IFormatProvider formatProvider)
@@ -337,29 +291,19 @@ namespace Mayfly.Species
                 switch (format.ToLowerInvariant())
                 {
                     case "s":
-                        return ShortName;
+                        return CommonName;
 
                     case "f":
                         return FullName;
 
-                    case "l":
-                        return ScientificName;
-
                     default:
-                        return Species;
+                        return Name;
                 }
             }
 
             public string ToString(string format)
             {
                 return ToString(format, CultureInfo.CurrentCulture);
-            }
-
-
-
-            public int CompareTo(SpeciesRow other)
-            {
-                return string.Compare(SortableString, other.SortableString);
             }
         }
 
@@ -428,23 +372,6 @@ namespace Mayfly.Species
                 }
             }
 
-            public StateRow[] ForestandingSpeciesStates
-            {
-                get
-                {
-                    List<StateRow> result = new List<StateRow>();
-
-                    foreach (StateRow stateRow in this.FollowingStates)
-                    {
-                        if (stateRow.IsSpcIDNull()) continue;
-                        if (!result.Contains(stateRow))
-                            result.Add(stateRow);
-                    }
-
-                    return result.ToArray();
-                }
-            }
-
             public TaxonRow[] ForestandingTaxon
             {
                 get
@@ -463,24 +390,6 @@ namespace Mayfly.Species
                 }
             }
 
-            public SpeciesRow[] ForestandingSpecies
-            {
-                get
-                {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
-
-                    foreach (SpeciesRow speciesRow in ((SpeciesKey)this.Table.DataSet).Species)
-                    {
-                        if (this.DoesLeadTo(speciesRow))
-                        {
-                            result.Add(speciesRow);
-                        }
-                    }
-
-                    return result.ToArray();
-                }
-            }
-
             public bool DoesLeadTo(TaxonRow taxonRow)
             {
                 bool result = false;
@@ -488,18 +397,6 @@ namespace Mayfly.Species
                 foreach (StateRow stateRow in this.AvailableStates)
                 {
                     result |= stateRow.DoesLeadTo(taxonRow);
-                }
-
-                return result;
-            }
-
-            public bool DoesLeadTo(SpeciesRow spcRow)
-            {
-                bool result = false;
-
-                foreach (StateRow stateRow in this.AvailableStates)
-                {
-                    result |= stateRow.DoesLeadTo(spcRow);
                 }
 
                 return result;
@@ -542,18 +439,6 @@ namespace Mayfly.Species
 
                 return result;
             }
-
-            public bool IsInstantlyOf(SpeciesRow spcRow)
-            {
-                bool result = false;
-
-                foreach (StateRow stateRow in this.AvailableStates)
-                {
-                    result |= stateRow.SpeciesRow == spcRow;
-                }
-
-                return result;
-            }
         }
 
         partial class StateRow
@@ -577,18 +462,6 @@ namespace Mayfly.Species
 
                 // If next step follow to taxonRow
                 return ((SpeciesKey)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(taxonRow);
-            }
-
-            public bool DoesLeadTo(SpeciesRow spcRow)
-            {
-                // If related to taxonRow instantly
-                if (!this.IsSpcIDNull() && this.SpeciesRow == spcRow) return true;
-
-                // If doesn't follow next
-                if (this.IsGotoNull()) return false;
-
-                // If next step follow to taxonRow
-                return ((SpeciesKey)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(spcRow);
             }
 
             public bool DoesLeadTo(StepRow stepRow)
@@ -631,24 +504,6 @@ namespace Mayfly.Species
                 }
             }
 
-            public SpeciesRow[] ForestandingSpecies
-            {
-                get
-                {
-                    List<SpeciesRow> result = new List<SpeciesRow>();
-
-                    foreach (SpeciesRow speciesRow in ((SpeciesKey)this.Table.DataSet).Species)
-                    {
-                        if (this.DoesLeadTo(speciesRow))
-                        {
-                            result.Add(speciesRow);
-                        }
-                    }
-
-                    return result.ToArray();
-                }
-            }
-
             public string ShortDescription
             {
                 get
@@ -657,23 +512,19 @@ namespace Mayfly.Species
 
                     if (!this.IsTaxIDNull())
                     {
-                        result += this.TaxonRow.TaxonName + ": ";
+                        result += this.TaxonRow.FullName + ": ";
                     }
 
                     if (this.IsGotoNull())
                     {
-                        if (this.IsSpcIDNull())
+                        if (this.IsTaxIDNull())
                         {
-                            result += "State doesn't lead further.";
-                        }
-                        else
-                        {
-                            result += this.SpeciesRow.Species + " ";
+                            result += "Final State";
                         }
                     }
                     else
                     {
-                        result += "К шагу " + Goto;
+                        result += "To step " + Goto;
                     }
 
                     return result;
@@ -701,7 +552,7 @@ namespace Mayfly.Species
             {
                 Report report = new Report(IO.GetFriendlyFiletypeName(UserSettings.Interface.Extension), "key.css");
 
-                if (Species.Count > 0)
+                if (GetSpeciesRows().Length > 0)
                 {
                     SpeciesList(report);
                     report.BreakPage();
@@ -743,19 +594,20 @@ namespace Mayfly.Species
         {
             // It will ignore " sp." records
 
-            foreach (SpeciesRow speciesRow in Species)
+            foreach (TaxonRow speciesRow in GetSpeciesRows())
             {
-                if (speciesRow.Species.EndsWith("sp.")) continue;
+                if (speciesRow.Name.EndsWith("sp.")) continue;
 
-                SpeciesRow destRow = key.FindBySpecies(speciesRow.Species);
+                TaxonRow destRow = key.FindBySpecies(speciesRow.Name);
 
                 if (destRow == null)
                 {
-                    destRow = key.Species.NewSpeciesRow();
-                    destRow.Species = speciesRow.Species;
+                    destRow = key.Taxon.NewTaxonRow();
+                    destRow.Rank = speciesRow.Rank;
+                    destRow.Name = speciesRow.Name;
                     if (!speciesRow.IsDescriptionNull()) destRow.Description = speciesRow.Description;
                     if (!speciesRow.IsReferenceNull()) destRow.Reference = speciesRow.Reference;
-                    if (!speciesRow.IsNameNull()) destRow.Name = speciesRow.Name;
+                    if (!speciesRow.IsLocalNull()) destRow.Local = speciesRow.Local;
 
                     if (inspect)
                     {
@@ -763,17 +615,12 @@ namespace Mayfly.Species
 
                         if (addSpecies.ShowDialog() == DialogResult.OK)
                         {
-                            key.Species.AddSpeciesRow(destRow);
-
-                            //foreach (TaxonRow taxonRow in addSpecies.SelectedTaxon)
-                            //{
-                            //    key.Rep.AddRepRow(taxonRow, destRow);
-                            //}
+                            key.Taxon.AddTaxonRow(destRow);
                         }
                     }
                     else
                     {
-                        key.Species.AddSpeciesRow(destRow);
+                        key.Taxon.AddTaxonRow(destRow);
                     }
                 }
                 else
@@ -803,23 +650,23 @@ namespace Mayfly.Species
             }
         }
 
-        public SpeciesRow[] CloseRelatives(SpeciesRow speciesRow)
-        {
-            List<SpeciesRow> result = new List<SpeciesRow>();
+        //public SpeciesRow[] CloseRelatives(SpeciesRow speciesRow)
+        //{
+        //    List<SpeciesRow> result = new List<SpeciesRow>();
 
-            string genus = Genus(speciesRow.Species);
+        //    string genus = Genus(speciesRow.Name);
 
-            foreach (SpeciesRow currentSpeciesRow in Species.Rows)
-            {
-                if (Genus(currentSpeciesRow.Species) == genus &&
-                    !result.Contains(currentSpeciesRow))
-                {
-                    result.Add(currentSpeciesRow);
-                }
-            }
+        //    foreach (SpeciesRow currentSpeciesRow in Species.Rows)
+        //    {
+        //        if (Genus(currentSpeciesRow.Species) == genus &&
+        //            !result.Contains(currentSpeciesRow))
+        //        {
+        //            result.Add(currentSpeciesRow);
+        //        }
+        //    }
 
-            return result.ToArray();
-        }
+        //    return result.ToArray();
+        //}
 
         public static string SpecificName(string species)
         {
@@ -837,7 +684,26 @@ namespace Mayfly.Species
 
 
 
-        public TaxonRow[] GetRootTaxon()
+        public TaxonRow[] GetHigherTaxonRows(bool populatedOnly)
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+
+            foreach (TaxonRow taxonRow in Taxon)
+            {
+                if (taxonRow.IsSpecies) continue;
+
+                if (!populatedOnly || taxonRow.GetSpeciesRows(false).Length > 0)
+                {
+                    result.Add(taxonRow);
+                }
+            }
+
+            result.Sort();
+
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetRootTaxonRows()
         {
             List<TaxonRow> result = new List<TaxonRow>();
             foreach (TaxonRow taxonRow in Taxon)
@@ -849,18 +715,46 @@ namespace Mayfly.Species
             return result.ToArray();
         }
 
-        public TaxonRow[] GetDerivatedTaxon()
+        public TaxonRow[] GetRootHigherTaxonRows()
         {
             List<TaxonRow> result = new List<TaxonRow>();
             foreach (TaxonRow taxonRow in Taxon)
             {
-                if (taxonRow.HasDerivations) result.Add(taxonRow);
+                if (taxonRow.IsTaxIDNull() && taxonRow.Rank < 80)
+                    result.Add(taxonRow);
             }
             result.Sort();
             return result.ToArray();
         }
 
-        public TaxonRow[] GetRankedTaxon(int rank)
+        public TaxonRow[] GetOrphans()
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+
+            foreach (TaxonRow taxonRow in GetRootTaxonRows())
+            {
+                if (taxonRow.IsSpecies)
+                {
+                    result.Add(taxonRow);
+                }
+            }
+
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetDerivatedTaxonRows()
+        {
+            List<TaxonRow> result = new List<TaxonRow>();
+            foreach (TaxonRow taxonRow in Taxon)
+            {
+                if (taxonRow.HasChildren) result.Add(taxonRow);
+            }
+            result.Sort();
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetRankedTaxonRows(int rank)
         {
             List<TaxonRow> result = new List<TaxonRow>();
             foreach (TaxonRow taxonRow in Taxon)
@@ -872,15 +766,27 @@ namespace Mayfly.Species
             return result.ToArray();
         }
 
-        public SpeciesRow[] GetVaria(int rank)
+        public TaxonRow[] GetSpeciesRows()
         {
-            TaxonRow[] rankedTaxons = GetRankedTaxon(rank);
-            
-            List<SpeciesRow> result = new List<SpeciesRow>();
-
-            foreach (SpeciesRow spcRow in Species)
+            List<TaxonRow> result = new List<TaxonRow>();
+            foreach (TaxonRow taxonRow in Taxon)
             {
-                if (spcRow.TaxonRow == null)
+                if (taxonRow.IsSpecies)
+                    result.Add(taxonRow);
+            }
+            //result.Sort();
+            return result.ToArray();
+        }
+
+        public TaxonRow[] GetVaria(int rank)
+        {
+            TaxonRow[] rankedTaxons = GetRankedTaxonRows(rank);
+
+            List<TaxonRow> result = new List<TaxonRow>();
+
+            foreach (TaxonRow spcRow in GetSpeciesRows())
+            {
+                if (spcRow.TaxonRowParent == null)
                 {
                     result.Add(spcRow);
                 }
@@ -905,16 +811,16 @@ namespace Mayfly.Species
             return result.ToArray();
         }
 
-        public SpeciesRow[] GetSpeciesNamed(string name)
+        public TaxonRow[] GetSpeciesNamed(string name)
         {
-            List<SpeciesRow> result = new List<SpeciesRow>();
+            List<TaxonRow> result = new List<TaxonRow>();
             string[] words = name.Split(' ');
             string spcName = words[words.Length - 1];
             if (!spcName.Contains("."))
             {
-                foreach (SpeciesRow speciesRow in Species.Rows)
+                foreach (TaxonRow speciesRow in GetSpeciesRows())
                 {
-                    if (speciesRow.Species.Contains(spcName))
+                    if (speciesRow.Name.Contains(spcName))
                     {
                         result.Add(speciesRow);
                     }
@@ -923,13 +829,12 @@ namespace Mayfly.Species
             return result.ToArray();
         }
 
-        public SpeciesRow[] GetSpeciesNameContaining(string name)
+        public TaxonRow[] GetSpeciesNameContaining(string name)
         {
-            List<SpeciesRow> result = new List<SpeciesRow>();
+            List<TaxonRow> result = new List<TaxonRow>();
 
-            foreach (SpeciesRow speciesRow in Species.Rows)
+            foreach (TaxonRow speciesRow in GetSpeciesRows())
             {
-                //if (speciesRow.IsSpeciesNull()) continue
                 if (speciesRow.FullName.ToUpperInvariant().Contains(name.ToUpperInvariant()))
                 {
                     result.Add(speciesRow);
@@ -944,11 +849,11 @@ namespace Mayfly.Species
             get
             {
                 List<string> result = new List<string>();
-                foreach (SpeciesRow speciesRow in Species.Rows)
+                foreach (TaxonRow taxonRow in Taxon)
                 {
-                    if (!speciesRow.IsReferenceNull())
+                    if (!taxonRow.IsReferenceNull())
                     {
-                        if (!result.Contains(speciesRow.Reference)) result.Add(speciesRow.Reference);
+                        if (!result.Contains(taxonRow.Reference)) result.Add(taxonRow.Reference);
                     }
                 }
                 return result.ToArray();
@@ -960,20 +865,65 @@ namespace Mayfly.Species
             get
             {
                 List<string> result = new List<string>();
-                foreach (SpeciesRow speciesRow in Species.Rows)
+                foreach (TaxonRow speciesRow in GetSpeciesRows())
                 {
-                    string genus = speciesRow.Species.Split(' ')[0];
+                    string genus = speciesRow.Name.Split(' ')[0];
                     if (!result.Contains(genus)) result.Add(genus);
                 }
                 return result.ToArray();
             }
         }
 
-        public SpeciesRow FindBySpecies(string value)
+        public int ValidSpeciesCount
         {
-            foreach (SpeciesRow speciesRow in Species.Rows)
+            get
             {
-                if (speciesRow.Species == value)
+                int result = 0;
+
+                foreach (TaxonRow speciesRow in GetSpeciesRows())
+                {
+                    if (speciesRow.IsTaxIDNull() || !speciesRow.TaxonRowParent.IsSpecies)
+                    {
+                        result++;
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public int AllSpeciesCount
+        {
+            get
+            {
+                return GetSpeciesRows().Length;
+            }
+        }
+
+
+        public int HigherTaxonCount
+        {
+            get
+            {
+                int result = 0;
+
+                foreach (TaxonRow taxonRow in Taxon)
+                {
+                    if (taxonRow.Rank < 80)
+                    {
+                        result++;
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public TaxonRow FindBySpecies(string value)
+        {
+            foreach (TaxonRow speciesRow in GetSpeciesRows())
+            {
+                if (speciesRow.Name == value)
                 {
                     return speciesRow;
                 }
@@ -982,36 +932,17 @@ namespace Mayfly.Species
             return null;
         }
 
-        public SpeciesRow[] GetSorted()
-        {
-            return (SpeciesRow[])Species.Select(null, "Species asc");
-        }
-
-        public SpeciesRow[] GetOrphans()
-        {
-            List<SpeciesRow> result = new List<SpeciesRow>();
-
-            foreach (SpeciesRow spcRow in Species)
-            {
-                if (spcRow.TaxonRow == null)
-                    result.Add(spcRow);
-            }
-
-            result.Sort();
-            return result.ToArray();
-        }
-
 
         public bool Contains(string species)
         {
             return FindBySpecies(species) != null;
         }
 
-        public SpeciesRow[] GetByFeatureStates(StateRow[] stateRows)
+        public TaxonRow[] GetByFeatureStates(StateRow[] stateRows)
         {
-            List<SpeciesRow> result = new List<SpeciesRow>();
+            List<TaxonRow> result = new List<TaxonRow>();
 
-            foreach (SpeciesRow speciesRow in Species)
+            foreach (TaxonRow speciesRow in GetSpeciesRows())
             {
                 bool satisfy = true;
 

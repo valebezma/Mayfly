@@ -145,10 +145,7 @@
   <data name="NewTaxon" xml:space="preserve">
     <value>Новый {0}</value>
   </data>
-  <data name="Others" xml:space="preserve">
-    <value>Прочие ({0})</value>
-  </data>
-  <data name="ResultSpcToSpcSynonimized" xml:space="preserve">
+  <data name="ResultSpcToSpcSynonymized" xml:space="preserve">
     <value>{0:l} синонимизирован к {1:l}</value>
   </data>
   <data name="ResultSpcToTaxIncluded" xml:space="preserve">
@@ -188,13 +185,13 @@
   <data name="Thesis" xml:space="preserve">
     <value>Теза {0}</value>
   </data>
-  <data name="TipSpcToSpcSynonim" xml:space="preserve">
+  <data name="TipSpcToSpcSynonym" xml:space="preserve">
     <value>Установить {0:l} как младший синоним {1:l}</value>
   </data>
-  <data name="TipSpcToSpcSynonimUnableItself" xml:space="preserve">
+  <data name="TipSpcToSpcSynonymUnableItself" xml:space="preserve">
     <value>Невозможно синонимизировать вид самому себе</value>
   </data>
-  <data name="TipSpcToSpcSynonimUnableSeparateBranch" xml:space="preserve">
+  <data name="TipSpcToSpcSynonymUnableSeparateBranch" xml:space="preserve">
     <value>Невозможно синонимизировать вид из другой таксономической ветви</value>
   </data>
   <data name="TipSpcToTaxInclude" xml:space="preserve">
@@ -217,5 +214,8 @@
   </data>
   <data name="Varia" xml:space="preserve">
     <value>Прочие</value>
+  </data>
+  <data name="VariaCount" xml:space="preserve">
+    <value>Прочие ({0})</value>
   </data>
 </root>

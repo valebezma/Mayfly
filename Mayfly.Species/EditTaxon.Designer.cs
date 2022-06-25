@@ -33,9 +33,9 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxTaxon = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxLocal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
@@ -64,19 +64,6 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // textBoxTaxon
-            // 
-            resources.ApplyResources(this.textBoxTaxon, "textBoxTaxon");
-            this.textBoxTaxon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxTaxon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBoxTaxon.Name = "textBoxTaxon";
-            this.textBoxTaxon.TextChanged += new System.EventHandler(this.valueChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // textBoxName
             // 
             resources.ApplyResources(this.textBoxName, "textBoxName");
@@ -84,6 +71,19 @@
             this.textBoxName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.TextChanged += new System.EventHandler(this.valueChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // textBoxLocal
+            // 
+            resources.ApplyResources(this.textBoxLocal, "textBoxLocal");
+            this.textBoxLocal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxLocal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBoxLocal.Name = "textBoxLocal";
+            this.textBoxLocal.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label3
             // 
@@ -130,8 +130,8 @@
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxLocal);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.textBoxTaxon);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOK);
@@ -150,8 +150,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.TextBox textBoxTaxon;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxLocal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private Controls.TaxonSelector taxonSelector;

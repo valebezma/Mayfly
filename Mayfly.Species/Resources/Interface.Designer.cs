@@ -152,20 +152,11 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Varia ({0}).
-        /// </summary>
-        public static string Others {
-            get {
-                return ResourceManager.GetString("Others", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0:l} is now synonimized with {1:l}.
         /// </summary>
-        public static string ResultSpcToSpcSynonimized {
+        public static string ResultSpcToSpcSynonymized {
             get {
-                return ResourceManager.GetString("ResultSpcToSpcSynonimized", resourceCulture);
+                return ResourceManager.GetString("ResultSpcToSpcSynonymized", resourceCulture);
             }
         }
         
@@ -290,27 +281,27 @@ namespace Mayfly.Species.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Set {0:l} as minor synonim(-s) of {1:l}.
         /// </summary>
-        public static string TipSpcToSpcSynonim {
+        public static string TipSpcToSpcSynonym {
             get {
-                return ResourceManager.GetString("TipSpcToSpcSynonim", resourceCulture);
+                return ResourceManager.GetString("TipSpcToSpcSynonym", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Unable to synonimize species to itself.
         /// </summary>
-        public static string TipSpcToSpcSynonimUnableItself {
+        public static string TipSpcToSpcSynonymUnableItself {
             get {
-                return ResourceManager.GetString("TipSpcToSpcSynonimUnableItself", resourceCulture);
+                return ResourceManager.GetString("TipSpcToSpcSynonymUnableItself", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Unable to synonimize species from different taxonomic branches.
         /// </summary>
-        public static string TipSpcToSpcSynonimUnableSeparateBranch {
+        public static string TipSpcToSpcSynonymUnableSeparateBranch {
             get {
-                return ResourceManager.GetString("TipSpcToSpcSynonimUnableSeparateBranch", resourceCulture);
+                return ResourceManager.GetString("TipSpcToSpcSynonymUnableSeparateBranch", resourceCulture);
             }
         }
         
@@ -369,11 +360,20 @@ namespace Mayfly.Species.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Varia.
+        ///   Looks up a localized string similar to Others.
         /// </summary>
         public static string Varia {
             get {
                 return ResourceManager.GetString("Varia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others ({0}).
+        /// </summary>
+        public static string VariaCount {
+            get {
+                return ResourceManager.GetString("VariaCount", resourceCulture);
             }
         }
     }

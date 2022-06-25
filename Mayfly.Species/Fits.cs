@@ -36,17 +36,16 @@ namespace Mayfly.Species
         {
             listViewFits.Items.Clear();
 
-            foreach (SpeciesKey.StateRow stateRow in
-                Panel.CurrentStep.ForestandingSpeciesStates)
+            foreach (SpeciesKey.StateRow stateRow in Panel.CurrentStep.ForestandingTaxonStates)
             {
                 ListViewItem item = new ListViewItem
                 {
                     Tag = stateRow,
                     Name = stateRow.ID.ToString(),
-                    Text = stateRow.SpeciesRow.Species
+                    Text = stateRow.TaxonRow.Name
                 };
 
-                if (stateRow.SpeciesRow.GetStateRows().Length > 1)
+                if (stateRow.TaxonRow.GetStateRows().Length > 1)
                 {
                     item.SubItems.Add(string.Format("{0}: {1}...", 
                         stateRow.FeatureRow.Title,

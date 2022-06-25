@@ -16,8 +16,8 @@ namespace Mayfly.Species.Controls
         public SpeciesKey.StateRow StateRow { get; private set; }
         public SpeciesKey.StepRow NextStep { get; private set; }
 
-        public bool IsSpeciesAttached { get { return !StateRow.IsSpcIDNull(); } }
-        public SpeciesKey.SpeciesRow SpeciesRow { get { return StateRow.SpeciesRow; } }
+        public bool IsSpeciesAttached { get { return !StateRow.IsTaxIDNull(); } }
+        //public SpeciesKey.TaxonRow SpeciesRow { get { return StateRow.SpeciesRow; } }
 
         public bool IsTaxonAttached { get { return !StateRow.IsTaxIDNull(); } }
         public SpeciesKey.TaxonRow TaxonRow { get { return StateRow.TaxonRow; } }

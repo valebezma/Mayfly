@@ -161,7 +161,7 @@ namespace Mayfly.Species
                 Index = new SpeciesKey();
                 Index.Read(IndexPath);
                 UserSettings.Interface.OpenDialog.InitialDirectory = Path.GetDirectoryName(IndexPath);
-                toolStripMenuItemAll.Visible = Index.Species.Count <= UserSettings.AllowableSpeciesListLength;
+                toolStripMenuItemAll.Visible = Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength;
                 CreateList();
                 GetSpeciesList();
             }
@@ -212,7 +212,7 @@ namespace Mayfly.Species
             listSpc.Shine(); 
         }
 
-        public void InsertSpeciesHere(SpeciesKey.SpeciesRow speciesRow)
+        public void InsertSpeciesHere(SpeciesKey.TaxonRow speciesRow)
         {
             if (Grid.CurrentCell.ColumnIndex == Column.Index)
             {
@@ -224,10 +224,10 @@ namespace Mayfly.Species
             }
             
             listSpc.Visible = false;
-            RunSelected(speciesRow.Species);
+            RunSelected(speciesRow.Name);
         }
 
-        public DataGridViewRow InsertSpecies(SpeciesKey.SpeciesRow typedSpecies)
+        public DataGridViewRow InsertSpecies(SpeciesKey.TaxonRow typedSpecies)
         {
             int rowIndex = -1;
 
@@ -262,7 +262,7 @@ namespace Mayfly.Species
             Grid.ClearSelection();
             Grid.Rows[rowIndex].Selected = true;
             Grid.CurrentCell = Grid[ColumnName, rowIndex];
-            RunSelected(typedSpecies.Species);
+            RunSelected(typedSpecies.Name);
 
             return Grid.Rows[rowIndex];
         }
@@ -310,15 +310,15 @@ namespace Mayfly.Species
             UpdateRecent();
 
             toolStripMenuItemAll.DropDownItems.Clear();
-            toolStripMenuItemAll.Visible = Index.Species.Count <= UserSettings.AllowableSpeciesListLength;
-            if (Index.Species.Count <= UserSettings.AllowableSpeciesListLength)
+            toolStripMenuItemAll.Visible = Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength;
+            if (Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength)
             {
-                foreach (SpeciesKey.SpeciesRow speciesRow in Index.Species.Rows)
+                foreach (SpeciesKey.TaxonRow speciesRow in Index.GetSpeciesRows())
                 {
                     ToolStripItem speciesItem = new ToolStripMenuItem
                     {
                         Tag = speciesRow,
-                        Text = speciesRow.ShortName
+                        Text = speciesRow.CommonName
                     };
                     speciesItem.Click += new EventHandler(speciesItem_Click);
                     toolStripMenuItemAll.DropDownItems.Add(speciesItem);
@@ -328,9 +328,9 @@ namespace Mayfly.Species
             }
 
             List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxon()) {
+            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxonRows()) {
                 contextMenuStripSpecies.Items.Add(getTaxonMenuItem(taxonRow, true, true));
-            } foreach (SpeciesKey.SpeciesRow speciesRow in Index.GetOrphans()) {
+            } foreach (SpeciesKey.TaxonRow speciesRow in Index.GetOrphans()) {
                 contextMenuStripSpecies.Items.Add(getSpeciesMenuItem(speciesRow));
             }
         }
@@ -399,7 +399,7 @@ namespace Mayfly.Species
             //}
         }
 
-        private ToolStripMenuItem getSpeciesMenuItem(SpeciesKey.SpeciesRow spcRow)
+        private ToolStripMenuItem getSpeciesMenuItem(SpeciesKey.TaxonRow spcRow)
         {
             return new ToolStripMenuItem
             {
@@ -413,7 +413,7 @@ namespace Mayfly.Species
             ToolStripMenuItem taxonItem = new ToolStripMenuItem
             {
                 Tag = taxonRow,
-                Text = string.Format("{0} ({1})", taxonRow.FullName, taxonRow.GetSpecies().Length),
+                Text = string.Format("{0} ({1})", taxonRow.FullName, taxonRow.GetSpeciesRows(true).Length),
             };
 
             if (derivates)
@@ -426,7 +426,7 @@ namespace Mayfly.Species
 
             if (representatives)
             {
-                foreach (SpeciesKey.SpeciesRow repRow in taxonRow.GetSpeciesRows())
+                foreach (SpeciesKey.TaxonRow repRow in taxonRow.GetSpeciesRows(true))
                 {
                     taxonItem.DropDownItems.Add(getSpeciesMenuItem(repRow));
                 }
@@ -439,9 +439,9 @@ namespace Mayfly.Species
         {
             List<ListViewItem> result = new List<ListViewItem>();
     
-            SpeciesKey.SpeciesRow[] speciesRows = Index.GetSpeciesNameContaining(pattern);
+            SpeciesKey.TaxonRow[] speciesRows = Index.GetSpeciesNameContaining(pattern);
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+            foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
             {
                 ListViewItem item = new ListViewItem
                 {
@@ -454,9 +454,9 @@ namespace Mayfly.Species
 
             List<string> genera = new List<string>();
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+            foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
             {
-                string genus = SpeciesKey.Genus(speciesRow.Species);
+                string genus = SpeciesKey.Genus(speciesRow.Name);
                 if (genus == null) continue;
                 if (genera.Contains(genus)) continue;
                 genera.Add(genus);
@@ -510,14 +510,14 @@ namespace Mayfly.Species
 
             foreach (string recent in recentSpecies)
             {
-                SpeciesKey.SpeciesRow speciesRow = Index.FindBySpecies(recent);
+                SpeciesKey.TaxonRow speciesRow = Index.FindBySpecies(recent);
 
                 if (speciesRow == null) continue;
 
                 ToolStripDropDownItem speciesItem = new ToolStripMenuItem
                 {
                     Tag = speciesRow,
-                    Text = speciesRow.ShortName
+                    Text = speciesRow.CommonName
                 };
                 speciesItem.Click += new EventHandler(speciesItem_Click);
                 recentSpeciesItems.Add(speciesItem);
@@ -526,7 +526,7 @@ namespace Mayfly.Species
             return recentSpeciesItems.ToArray();
         }
 
-        public SpeciesKey.SpeciesRow Find(string species)
+        public SpeciesKey.TaxonRow Find(string species)
         {
             return Index.FindBySpecies(species);
         }
@@ -788,11 +788,11 @@ namespace Mayfly.Species
         {
             if (listSpc.SelectedItems.Count == 0) return;
 
-            SpeciesKey.SpeciesRow selectedRow = listSpc.SelectedItems[0].Tag as SpeciesKey.SpeciesRow;
+            SpeciesKey.TaxonRow selectedRow = listSpc.SelectedItems[0].Tag as SpeciesKey.TaxonRow;
 
             if (selectedRow == null)
             {
-                selectedRow = Index.Species.AddSpeciesRow(listSpc.SelectedItems[0].Text, null, listSpc.SelectedItems[0].Text, null, null, null);
+                selectedRow = Index.Taxon.AddTaxonRow(91, 0, listSpc.SelectedItems[0].Text, null, listSpc.SelectedItems[0].Text, null, null) as SpeciesKey.TaxonRow;
             }
 
             if (this.CheckDuplicates)
@@ -828,7 +828,7 @@ namespace Mayfly.Species
                     Grid.ClearSelection();
                     Grid.Rows[rowIndex].Selected = true;
                     Grid.CurrentCell = Grid[ColumnName, rowIndex];
-                    RunSelected(selectedRow.Species);
+                    RunSelected(selectedRow.Name);
                 }
             }
             else
@@ -842,7 +842,7 @@ namespace Mayfly.Species
             if (listSpc.SelectedItems.Count > 0)
             {
                 AllowSuggest = false;
-                Grid.CurrentCell.Value = listSpc.SelectedItems[0].Tag as SpeciesKey.SpeciesRow;
+                Grid.CurrentCell.Value = listSpc.SelectedItems[0].Tag as SpeciesKey.TaxonRow;
                 AllowSuggest = true;
             }
         }
@@ -893,7 +893,7 @@ namespace Mayfly.Species
 
         private void speciesItem_Click(object sender, EventArgs e)
         {
-            InsertSpecies((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            InsertSpecies((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void ToolStripMenuItemKey_Click(object sender, EventArgs e)

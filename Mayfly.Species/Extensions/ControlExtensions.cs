@@ -10,22 +10,22 @@ namespace Mayfly.Extensions
 {
     public static class ControlExtensions
     {
-        public static ListViewItem CreateItem(this ListView listView, SpeciesKey.SpeciesRow speciesRow)
+        public static ListViewItem CreateItem(this ListView listView, SpeciesKey.TaxonRow speciesRow)
         {
-            ListViewItem result = listView.CreateItem(speciesRow.ID.ToString(), speciesRow.Species);
+            ListViewItem result = listView.CreateItem(speciesRow.ID.ToString(), speciesRow.Name);
             result.UpdateItem(speciesRow);
             result.Tag = speciesRow;
             return result;
         }
 
-        public static void UpdateItem(this ListViewItem item, SpeciesKey.SpeciesRow speciesRow)
+        public static void UpdateItem(this ListViewItem item, SpeciesKey.TaxonRow speciesRow)
         {
             item.Name = speciesRow.ID.ToString();
-            item.Text = speciesRow.Species;
+            item.Text = speciesRow.Name;
             item.ToolTipText = speciesRow.ToolTip.Merge(Constants.Break);
             item.UpdateItem(new object[] { 
                 speciesRow.IsReferenceNull() ? string.Empty : speciesRow.Reference , 
-                speciesRow.IsNameNull() ? string.Empty : speciesRow.Name.GetLocalizedValue() });
+                speciesRow.IsLocalNull() ? string.Empty : speciesRow.Local.GetLocalizedValue() });
             item.Tag = speciesRow;
         }
     }

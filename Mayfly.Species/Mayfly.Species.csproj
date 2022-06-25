@@ -276,6 +276,7 @@
     <EmbeddedResource Include="Resources\Interface.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

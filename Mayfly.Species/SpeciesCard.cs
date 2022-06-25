@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mayfly.Extensions;
 
 namespace Mayfly.Species
 {
     public partial class SpeciesCard : Form
     {
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
-        public SpeciesCard(SpeciesKey.SpeciesRow speciesRow)
+        public SpeciesCard(SpeciesKey.TaxonRow speciesRow)
         {
             InitializeComponent();
 
@@ -23,16 +24,16 @@ namespace Mayfly.Species
 
             this.Text = speciesRow.FullName;
 
-            labelSpecies.Text = speciesRow.Species;
+            labelSpecies.Text = speciesRow.Name;
 
             labelReference.Text = speciesRow.IsReferenceNull() ? 
                 Constants.Null : speciesRow.Reference;
 
-            labelLocal.Text = speciesRow.IsNameNull() ? 
-                Constants.Null : speciesRow.Name;
+            labelLocal.Text = speciesRow.IsLocalNull() ? 
+                Constants.Null : speciesRow.Local.GetLocalizedValue();
 
             labelTaxon.Text = string.Empty;
-            foreach (SpeciesKey.TaxonRow taxonRow in speciesRow.GetParents()) {
+            foreach (SpeciesKey.TaxonRow taxonRow in speciesRow.Hierarchy) {
                 labelTaxon.Text += taxonRow.FullName + Constants.Break;
             }
 
@@ -40,12 +41,12 @@ namespace Mayfly.Species
                 Resources.Interface.DescriptionNull : speciesRow.Description;
 
             labelSynonyms.Text = string.Empty;
-            foreach (SpeciesKey.SpeciesRow syn in speciesRow.Synonyms) {
+            foreach (SpeciesKey.TaxonRow syn in speciesRow.Synonyms) {
                 labelSynonyms.Text += syn.FullName + Constants.Break;
             }
         }
 
-        public SpeciesCard(SpeciesKey.SpeciesRow speciesRow, bool allowSelect) : 
+        public SpeciesCard(SpeciesKey.TaxonRow speciesRow, bool allowSelect) : 
             this(speciesRow)
         {
             buttonSelect.Visible = allowSelect;

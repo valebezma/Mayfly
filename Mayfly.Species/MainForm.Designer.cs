@@ -890,7 +890,6 @@
         private System.ComponentModel.BackgroundWorker backSpcLoader;
         private System.ComponentModel.BackgroundWorker backTreeLoader;
         public System.Windows.Forms.TreeView treeViewDerivates;
-        private System.Windows.Forms.ToolStripStatusLabel statusSpecies;
         private System.Windows.Forms.ToolStripStatusLabel statusTaxon;
         private System.Windows.Forms.ToolStripStatusLabel statusProcess;
         private Mayfly.Controls.ProcessDisplay processDisplay;
@@ -911,5 +910,6 @@
         private TaskDialogs.TaskDialogButton tdbDeleteParentize;
         private TaskDialogs.TaskDialogButton tdbDeleteOrphanize;
         private TaskDialogs.TaskDialogButton tdbDeleteCancel;
+        private System.Windows.Forms.ToolStripStatusLabel statusSpecies;
     }
 }

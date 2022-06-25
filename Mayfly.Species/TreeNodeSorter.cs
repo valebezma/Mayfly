@@ -17,21 +17,6 @@ namespace Mayfly.Species
                 return trx.CompareTo(trz);
             }
 
-            if (tx.Tag is SpeciesKey.TaxonRow && ty.Tag is SpeciesKey.SpeciesRow)
-            {
-                return -1;
-            }
-
-            if (ty.Tag is SpeciesKey.TaxonRow && tx.Tag is SpeciesKey.SpeciesRow)
-            {
-                return 1;
-            }
-
-            //if (tx.Tag is SpeciesKey.SpeciesRow srx && ty.Tag is SpeciesKey.SpeciesRow sry)
-            //{
-            //    return srx.CompareTo(sry);
-            //}
-
             if (tx.Text == null || ty.Text == null)
                 return 0;
 
