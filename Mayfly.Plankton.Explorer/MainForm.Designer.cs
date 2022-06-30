@@ -227,7 +227,7 @@
             this.menuItemCardPrintFull = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCardPrintNotes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpc = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSpcTaxa = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSpcTaxon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSpcSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpcDiversity = new System.Windows.Forms.ToolStripMenuItem();
@@ -1515,17 +1515,17 @@
             // menuItemSpc
             // 
             this.menuItemSpc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemSpcTaxa,
+            this.menuItemSpcTaxon,
             this.toolStripSeparator2,
             this.menuItemSpcSave,
             this.menuItemSpcDiversity});
             this.menuItemSpc.Name = "menuItemSpc";
             resources.ApplyResources(this.menuItemSpc, "menuItemSpc");
             // 
-            // menuItemSpcTaxa
+            // menuItemSpcTaxon
             // 
-            this.menuItemSpcTaxa.Name = "menuItemSpcTaxa";
-            resources.ApplyResources(this.menuItemSpcTaxa, "menuItemSpcTaxa");
+            this.menuItemSpcTaxon.Name = "menuItemSpcTaxon";
+            resources.ApplyResources(this.menuItemSpcTaxon, "menuItemSpcTaxon");
             // 
             // toolStripSeparator2
             // 
@@ -1931,7 +1931,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemCardFindEmpty;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpc;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSpcTaxa;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSpcTaxon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menuItemSpcSave;
         private System.Windows.Forms.Label label21;

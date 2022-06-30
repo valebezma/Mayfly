@@ -245,9 +245,7 @@ namespace Mayfly.Benthos.Explorer
 
                 FullStack.PopulateSpeciesMenu(menuItemLog, logSpecies_Click, (spcRow) =>
                 {
-
                     return FullStack.GetLogRows(spcRow).Length;
-
                 });
 
                 updateQty(FullStack.Quantity());
@@ -255,7 +253,7 @@ namespace Mayfly.Benthos.Explorer
                 if (!modelCalc.IsBusy && !isClosing)
                 {
                     IsBusy = true;
-                    processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
+                    processDisplay.StartProcessing(Wild.Resources.Interface.Interface.ModelCalc);
                     modelCalc.RunWorkerAsync();
                 }
             }
@@ -328,12 +326,12 @@ namespace Mayfly.Benthos.Explorer
 
         private void logSpecies_Click(object sender, EventArgs e)
         {
-            loadLog((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadLog((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSpecies_Click(object sender, EventArgs e)
         {
-            loadIndividuals((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadIndividuals((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
         }
 
 
@@ -361,14 +359,14 @@ namespace Mayfly.Benthos.Explorer
         public void SaveCards()
         {
             IsBusy = true;
-            spreadSheetCard.StartProcessing(changedCards.Count, Wild.Resources.Interface.Process.CardsSaving);
+            spreadSheetCard.StartProcessing(Wild.Resources.Interface.Process.DataSaving);
             dataSaver.RunWorkerAsync();
         }
 
         public void LoadCards(params string[] entries)
         {
             IsBusy = true;
-            processDisplay.StartProcessing(entries.Length, Wild.Resources.Interface.Process.CardsLoading);
+            spreadSheetCard.StartProcessing(Wild.Resources.Interface.Process.DataLoading);
             loaderData.RunWorkerAsync(entries);
         }
 
@@ -387,28 +385,24 @@ namespace Mayfly.Benthos.Explorer
 
         #region Species
 
-        SpeciesKey.BaseRow baseSpc;
+        TaxonomicRank rankSpc;
 
 
 
-        private void loadTaxaList()
+        private void loadTaxonList()
         {
-            // Clear list
-            comboBoxSpcTaxa.Items.Clear();
-            menuItemSpcTaxa.DropDownItems.Clear();
+            comboBoxSpcTaxon.DataSource = TaxonomicRank.MajorRanks;
+            comboBoxSpcTaxon.SelectedIndex = -1;
+            comboBoxLogTaxon.DataSource = TaxonomicRank.MajorRanks;
+            comboBoxLogTaxon.SelectedIndex = -1;
 
-            if (Benthos.UserSettings.SpeciesIndex == null) return;
-
-            // Fill list
-            foreach (SpeciesKey.BaseRow baseRow in Benthos.UserSettings.SpeciesIndex.Base)
+            foreach (TaxonomicRank rank in TaxonomicRank.MajorRanks)
             {
-                comboBoxSpcTaxa.Items.Add(baseRow);
-
-                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
-                item.Click += (sender, o) =>
+                ToolStripMenuItem item = new ToolStripMenuItem(rank.Name);
+                item.Click += (sender, e) =>
                 {
-                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
-                        baseRow.BaseName, typeof(string), 0, 200);
+                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(rank.Name,
+                        rank.Name, typeof(string), 0);
 
                     foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
                     {
@@ -423,7 +417,53 @@ namespace Mayfly.Benthos.Explorer
                             continue;
                         }
 
-                        SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)gridRow.Cells[columnSpcSpc.Index].Value;
+                        SpeciesKey.TaxonRow spcRow = gridRow.Cells[columnSpcSpc.Index].Value as SpeciesKey.TaxonRow;
+                        SpeciesKey.TaxonRow taxonRow = spcRow.GetParentTaxon(rank);
+                        gridRow.Cells[gridColumn.Index].Value = (taxonRow == null) ?
+                            Species.Resources.Interface.Varia : taxonRow.CommonName;
+                    }
+                };
+                menuItemSpcTaxon.DropDownItems.Add(item);
+
+
+                ToolStripMenuItem item2 = new ToolStripMenuItem(rank.Name);
+                item2.Click += (sender, e) =>
+                {
+                    Report report = new Report(Resources.Reports.Cenosis.Title);
+                    FullStack.AddBrief(report, rank);
+                    report.Run();
+                };
+                menuItemBrief.DropDownItems.Add(item2);
+            }
+
+            // Clear list
+            menuItemSpcTaxon.DropDownItems.Clear();
+
+            if (SpeciesIndex == null) return;
+
+            // Fill list
+            foreach (TaxonomicRank baseRow in TaxonomicRank.MajorRanks)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.Name);
+                item.Click += (sender, o) =>
+                {
+                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.Name,
+                        baseRow.Name, typeof(string), 0, 200);
+
+                    foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
+                    {
+                        if (gridRow.Cells[columnSpcSpc.Index].Value == null)
+                        {
+                            continue;
+                        }
+
+                        if (gridRow.Cells[columnSpcSpc.Index].Value as string ==
+                            Species.Resources.Interface.UnidentifiedTitle)
+                        {
+                            continue;
+                        }
+
+                        SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)gridRow.Cells[columnSpcSpc.Index].Value;
 
                         if (speciesRow == null)
                         {
@@ -431,23 +471,21 @@ namespace Mayfly.Benthos.Explorer
                         }
                         else
                         {
-                            SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                            if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
+                            SpeciesKey.TaxonRow taxonRow = speciesRow.GetParentTaxon(baseRow);
+                            if (taxonRow != null) gridRow.Cells[gridColumn.Index].Value = taxonRow.CommonName;
                         }
                     }
                 };
-                menuItemSpcTaxa.DropDownItems.Add(item);
+                menuItemSpcTaxon.DropDownItems.Add(item);
             }
 
-            comboBoxSpcTaxa.Enabled = comboBoxSpcTaxa.Items.Count > 0;
-            menuItemSpcTaxa.Enabled = menuItemSpcTaxa.DropDownItems.Count > 0;
+            menuItemSpcTaxon.Enabled = menuItemSpcTaxon.DropDownItems.Count > 0;
         }
 
         private void loadSpc()
         {
             IsBusy = true;
-            spreadSheetSpc.StartProcessing(baseSpc == null ? data.Species.Count + 1 : baseSpc.GetTaxaRows().Length + 1,
-                Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetSpc.StartProcessing(Wild.Resources.Interface.Process.LoadSpc);
 
             spreadSheetSpc.Rows.Clear();
 
@@ -456,10 +494,10 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private SpeciesKey.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
+        private SpeciesKey.TaxonRow findSpeciesRow(DataGridViewRow gridRow)
         {
             //return baseSpc == null ? Benthos.UserSettings.SpeciesIndex.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
-            return baseSpc == null ? (SpeciesKey.SpeciesRow)gridRow.Cells[columnSpcSpc.Index].Value : null;
+            return rankSpc == null ? (SpeciesKey.TaxonRow)gridRow.Cells[columnSpcSpc.Index].Value : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
@@ -485,10 +523,10 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private SpeciesKey.SpeciesRow[] getSpeciesRows(IList rows)
+        private SpeciesKey.TaxonRow[] getSpeciesRows(IList rows)
         {
             spreadSheetLog.EndEdit();
-            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+            List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
             foreach (DataGridViewRow gridRow in rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -509,7 +547,7 @@ namespace Mayfly.Benthos.Explorer
         private void loadCards(CardStack stack)
         {
             IsBusy = true;
-            spreadSheetCard.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.CardsProcessing);
+            spreadSheetCard.StartProcessing(Wild.Resources.Interface.Process.LoadCard);
             spreadSheetCard.Rows.Clear();
 
             loaderCard.RunWorkerAsync(stack);
@@ -778,52 +816,51 @@ namespace Mayfly.Benthos.Explorer
 
         #region Log
 
-        SpeciesKey.BaseRow baseLog;
+        TaxonomicRank rankLog;
 
         private void loadLog(Data.LogRow[] logRows)
         {
             IsBusy = true;
-            spreadSheetLog.StartProcessing(
-                baseLog == null ? logRows.Length : (FullStack.Count * (baseLog.GetTaxaRows().Length + 1)),
-                Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.LoadLog);
             spreadSheetLog.Rows.Clear();
+            if (loaderLog.IsBusy) loaderLog.CancelAsync();
             loaderLog.RunWorkerAsync(logRows);
         }
 
         private void loadLog()
         {
             loadLog(FullStack.GetLogRows());
-            comboBoxLogTaxa.Enabled =
+            comboBoxLogTaxon.Enabled =
                 label1.Enabled = true;
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
+        private void loadLog(SpeciesKey.TaxonRow[] spcRows, CardStack stack)
         {
             List<Data.LogRow> logRows = new List<Data.LogRow>();
 
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.TaxonRow spcRow in spcRows)
             {
                 logRows.AddRange(stack.GetLogRows(spcRow));
             }
 
             loadLog(logRows.ToArray());
-            comboBoxLogTaxa.Enabled =
+            comboBoxLogTaxon.Enabled =
                 label1.Enabled = false;
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow[] spcRows)
+        private void loadLog(SpeciesKey.TaxonRow[] spcRows)
         {
             loadLog(spcRows, FullStack);
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow spcRow)
+        private void loadLog(SpeciesKey.TaxonRow spcRow)
         {
-            loadLog(new SpeciesKey.SpeciesRow[] { spcRow });
+            loadLog(new SpeciesKey.TaxonRow[] { spcRow });
         }
 
         private Data.LogRow findLogRow(DataGridViewRow gridRow)
         {
-            return baseLog == null ? data.Log.FindByID((int)gridRow.Cells[columnLogID.Index].Value) : null;
+            return rankLog == null ? data.Log.FindByID((int)gridRow.Cells[columnLogID.Index].Value) : null;
         }
 
         private void updateLogRow(DataGridViewRow gridRow)
@@ -871,7 +908,7 @@ namespace Mayfly.Benthos.Explorer
 
         private void saveLogRow(DataGridViewRow gridRow)
         {
-            if (baseSpc != null) return;
+            if (rankSpc != null) return;
 
             if (!UserSettings.CheckConsistency) return;
 
@@ -911,7 +948,7 @@ namespace Mayfly.Benthos.Explorer
             return result.ToArray();
         }
 
-        //private DataGridViewRow createTaxonLogRow(Data.CardRow cardRow, SpeciesKey.TaxaRow taxaRow)
+        //private DataGridViewRow createTaxonLogRow(Data.CardRow cardRow, SpeciesKey.TaxonRow taxonRow)
         //{
         //    DataGridViewRow result = new DataGridViewRow();
 
@@ -928,7 +965,7 @@ namespace Mayfly.Benthos.Explorer
 
         //    foreach (Data.LogRow logRow in cardRow.GetLogRows())
         //    {
-        //        if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
+        //        if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
 
         //        if (!logRow.IsQuantityNull())
         //        {
@@ -947,7 +984,7 @@ namespace Mayfly.Benthos.Explorer
 
         //    setCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-        //    result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
+        //    result.Cells[columnLogSpc.Index].Value = taxonRow.TaxonName;
 
         //    result.Cells[columnLogQuantity.Index].Value = Q;
         //    result.Cells[columnLogMass.Index].Value = W;
@@ -959,15 +996,15 @@ namespace Mayfly.Benthos.Explorer
         //    return result;
         //}
 
-        //private void logLoaderTaxa1111_DoWork(object sender, DoWorkEventArgs e)
+        //private void logLoaderTaxon1111_DoWork(object sender, DoWorkEventArgs e)
         //{
         //    // How to analize selectedLogSpcRows???
 
         //    for (int i = 0; i < selectesLogStack.Count; i++)
         //    {
-        //        foreach (SpeciesKey.TaxaRow taxaRow in data.Species.Taxa(baseLog))
+        //        foreach (SpeciesKey.TaxonRow taxonRow in data.Species.Taxon(baseLog))
         //        {
-        //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxaRow);
+        //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxonRow);
 
         //            if (gridRow == null) continue;
 
@@ -986,7 +1023,7 @@ namespace Mayfly.Benthos.Explorer
 
         #region Individuals
 
-        SpeciesKey.SpeciesRow individualSpecies;
+        SpeciesKey.TaxonRow individualSpecies;
         ContinuousBio growthModel;
         ContinuousBio massModel;
 
@@ -996,7 +1033,7 @@ namespace Mayfly.Benthos.Explorer
             individualSpecies = null;
 
             IsBusy = true;
-            spreadSheetInd.StartProcessing(indRows.Length, Wild.Resources.Interface.Process.IndividualsProcessing);
+            spreadSheetInd.StartProcessing(Wild.Resources.Interface.Process.LoadInd);
             spreadSheetInd.Rows.Clear();
 
             foreach (Data.VariableRow variableRow in data.Variable)
@@ -1018,11 +1055,11 @@ namespace Mayfly.Benthos.Explorer
             loadIndividuals(stack.GetIndividualRows());
         }
 
-        private void loadIndividuals(SpeciesKey.SpeciesRow[] spcRows)
+        private void loadIndividuals(SpeciesKey.TaxonRow[] spcRows)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.TaxonRow spcRow in spcRows)
             {
                 result.AddRange(FullStack.GetIndividualRows(spcRow));
             }
@@ -1030,12 +1067,12 @@ namespace Mayfly.Benthos.Explorer
             loadIndividuals(result.ToArray());
         }
 
-        private void loadIndividuals(SpeciesKey.SpeciesRow spcRow)
+        private void loadIndividuals(SpeciesKey.TaxonRow spcRow)
         {
-            loadIndividuals(new SpeciesKey.SpeciesRow[] { spcRow });
+            loadIndividuals(new SpeciesKey.TaxonRow[] { spcRow });
             individualSpecies = spcRow;
-            growthModel = data.FindGrowthModel(individualSpecies.Species);
-            massModel = data.FindMassModel(individualSpecies.Species);
+            growthModel = data.FindGrowthModel(individualSpecies.Name);
+            massModel = data.FindMassModel(individualSpecies.Name);
         }
 
         private void loadIndividuals(Data.LogRow[] logRows)

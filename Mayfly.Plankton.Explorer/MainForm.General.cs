@@ -566,7 +566,7 @@ namespace Mayfly.Plankton.Explorer
             columnLogBiomass.HeaderText = Resources.Interface.DietTxBiomass;
             columnLogBiomass.DefaultCellStyle.Format = dietFormat;
 
-            LoadTaxaList();
+            LoadTaxonList();
 
             menuItemLoadCards_Click(this, new EventArgs());
         }

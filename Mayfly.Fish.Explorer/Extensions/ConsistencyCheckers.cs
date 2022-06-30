@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
             return new CardConsistencyChecker(cardRow);
         }
 
-        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.SpeciesRow speciesRow, CardStack stack)
+        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.TaxonRow speciesRow, CardStack stack)
         {
             return new SpeciesConsistencyChecker(speciesRow, stack);
         }
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
 
@@ -645,7 +645,7 @@ namespace Mayfly.Fish.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public SpeciesKey.SpeciesRow SpeciesRow { get; set; }
+        public SpeciesKey.TaxonRow SpeciesRow { get; set; }
 
         public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
 
@@ -706,7 +706,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesConsistencyChecker(SpeciesKey.SpeciesRow speciesRow, CardStack stack)
+        public SpeciesConsistencyChecker(SpeciesKey.TaxonRow speciesRow, CardStack stack)
         {
             SpeciesRow = speciesRow;
 
@@ -716,13 +716,13 @@ namespace Mayfly.Fish.Explorer
 
             AgeInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Age);
             AgeInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.AgeColumn);
-            var gm = stack.Parent.FindGrowthModel(speciesRow.Species);
+            var gm = stack.Parent.FindGrowthModel(speciesRow.Name);
             if (gm != null) AgeInspector.HasRegression = gm.CombinedData.IsRegressionOK;
             if (gm != null && gm.CombinedData.IsRegressionOK) AgeInspector.Outliers = gm.CombinedData.Regression.GetOutliers(gm.InternalData.Data, .99999);
 
             MassInspector = new SpeciesFeatureConsistencyChecker(Wild.Resources.Reports.Caption.Mass);
             MassInspector.UnmeasuredCount = sampled - stack.Treated(SpeciesRow, stack.Parent.Individual.MassColumn);
-            var mm = stack.Parent.FindMassModel(speciesRow.Species);
+            var mm = stack.Parent.FindMassModel(speciesRow.Name);
             if (mm != null) MassInspector.HasRegression = mm != null && mm.CombinedData.IsRegressionOK;
             if (mm != null && mm.CombinedData.IsRegressionOK) MassInspector.Outliers = mm.CombinedData.Regression.GetOutliers(mm.InternalData.Data, .99999);
 
@@ -787,7 +787,7 @@ namespace Mayfly.Fish.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.ShortName);
+            return base.ToString(SpeciesRow.CommonName);
         }
     }
 }

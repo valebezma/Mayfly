@@ -16,20 +16,30 @@ namespace Mayfly.Species
 
         private void LoadSettings()
         {
+            textBoxHigherFormat.Text = UserSettings.HigherTaxonNameFormat;
+            textBoxLowerFormat.Text = UserSettings.LowerTaxonNameFormat;
+            dialogLowerTaxon.Color =
+                panelLowerTaxon.BackColor = 
+                UserSettings.LowerTaxonColor;
+
+            checkBoxFillLower.Checked = UserSettings.FillTreeWithLowerTaxon;
+
             textBoxCoupletChar.Text = UserSettings.CoupletChar;
 
-            if (UserSettings.UseClassicKeyReport) 
-            {
+            if (UserSettings.UseClassicKeyReport) {
                 radioButtonClassic.Checked = true; 
-            }
-            else
-            {
+            } else {
                 radioButtonModern.Checked = true;
             }
         }
 
         private void SaveSettings()
         {
+            UserSettings.HigherTaxonNameFormat = textBoxHigherFormat.Text;
+            UserSettings.LowerTaxonNameFormat = textBoxLowerFormat.Text;
+            UserSettings.LowerTaxonColor = panelLowerTaxon.BackColor;
+            UserSettings.FillTreeWithLowerTaxon = checkBoxFillLower.Checked;
+
             UserSettings.CoupletChar = textBoxCoupletChar.Text;
             UserSettings.UseClassicKeyReport = radioButtonClassic.Checked;
         }
@@ -56,6 +66,14 @@ namespace Mayfly.Species
         {
             labelCoupletChar.Enabled = textBoxCoupletChar.Enabled =
                 radioButtonModern.Checked;
+        }
+
+        private void panelLowerTaxon_Click(object sender, EventArgs e)
+        {
+            if (dialogLowerTaxon.ShowDialog(this) == DialogResult.OK)
+            {
+                panelLowerTaxon.BackColor = dialogLowerTaxon.Color;
+            }
         }
     }
 }

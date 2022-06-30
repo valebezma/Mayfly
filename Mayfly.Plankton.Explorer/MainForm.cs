@@ -73,7 +73,7 @@ namespace Mayfly.Plankton.Explorer
 
             tabPageLog.Parent = null;
 
-            LoadTaxaList();
+            LoadTaxonList();
 
             columnIndID.ValueType = typeof(int);
             columnIndSpecies.ValueType = typeof(string);
@@ -429,8 +429,8 @@ namespace Mayfly.Plankton.Explorer
                 }
                 else
                 {
-                    SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                    if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
+                    SpeciesKey.TaxonRow taxonRow = speciesRow.GetTaxon(baseRow);
+                    if (taxonRow != null) gridRow.Cells[gridColumn.Index].Value = taxonRow.TaxonName;
                 }
             }
         }
@@ -737,11 +737,11 @@ namespace Mayfly.Plankton.Explorer
         {
             baseSpc = comboBoxSpc.SelectedItem as SpeciesKey.BaseRow;
 
-            menuItemSpcTaxa.Enabled = baseSpc == null;
+            menuItemSpcTaxon.Enabled = baseSpc == null;
 
             if (baseSpc != null)
             {
-                taxaSpc = data.Species.Taxa(baseSpc);
+                taxonSpc = data.Species.Taxon(baseSpc);
                 variaSpc = baseLog.Varia;
             }
 
@@ -795,11 +795,11 @@ namespace Mayfly.Plankton.Explorer
         {
             baseLog = comboBoxLog.SelectedItem as SpeciesKey.BaseRow;
 
-            menuItemSpcTaxa.Enabled = baseLog == null;
+            menuItemSpcTaxon.Enabled = baseLog == null;
 
             if (baseLog != null)
             {
-                taxaLog = data.Species.Taxa(baseLog);
+                taxonLog = data.Species.Taxon(baseLog);
                 variaLog = baseLog.Varia;
             }
             
@@ -833,9 +833,9 @@ namespace Mayfly.Plankton.Explorer
             {
                 for (int i = 0; i < data.Card.Count; i++)
                 {
-                    foreach (SpeciesKey.TaxaRow taxaRow in taxaLog)
+                    foreach (SpeciesKey.TaxonRow taxonRow in taxonLog)
                     {
-                        DataGridViewRow gridRow = LogRow(data.Card[i], taxaRow);
+                        DataGridViewRow gridRow = LogRow(data.Card[i], taxonRow);
 
                         result.Add(gridRow);
 

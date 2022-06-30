@@ -18,7 +18,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         public List<Cohort> Cohorts;
 
@@ -47,12 +47,12 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardGrowthCohorts(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
+        public WizardGrowthCohorts(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
         }
 
 
@@ -381,7 +381,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "Cohorts growth wizard is finished for {0} with {1} equations.",
-                SpeciesRow.Species, GrowthModels.Count);
+                SpeciesRow.Name, GrowthModels.Count);
             if (!UserSettings.KeepWizard) Close();
         }
 

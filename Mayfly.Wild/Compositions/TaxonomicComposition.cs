@@ -6,12 +6,12 @@ namespace Mayfly.Wild
 {
     public class TaxonomicComposition : Composition
     {
-        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, int rank, bool includeEmpty)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, TaxonomicRank rank, bool includeEmpty)
             : base("Taxonomic")
         {
             List<SpeciesSwarm> essentials = new List<SpeciesSwarm>();
 
-            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRankedTaxon(rank))
+            foreach (SpeciesKey.TaxonRow taxonRow in index.GetTaxonRows(rank))
             {
                 SpeciesSwarmPool taxonCategory = new SpeciesSwarmPool(taxonRow);
                 List<SpeciesSwarm> swarms = new List<SpeciesSwarm>();
@@ -21,7 +21,7 @@ namespace Mayfly.Wild
 
                 foreach (SpeciesSwarm speciesSwarm in speciesComposition)
                 {
-                    if (!taxonRow.Includes(speciesSwarm.SpeciesRow)) continue;
+                    if (!taxonRow.Includes(speciesSwarm.SpeciesRow, true)) continue;
 
                     swarms.Add(speciesSwarm);
 
@@ -45,7 +45,7 @@ namespace Mayfly.Wild
 
             SpeciesSwarmPool varia = new SpeciesSwarmPool(Species.Resources.Interface.Varia);
 
-            //SpeciesKey.SpeciesRow[] various = index.GetVaria(rank);
+            //SpeciesKey.TaxonRow[] various = index.GetVaria(rank);
             List<SpeciesSwarm> variaswarms = new List<SpeciesSwarm>();
 
             foreach (SpeciesSwarm speciesSwarm in speciesComposition)
@@ -66,7 +66,7 @@ namespace Mayfly.Wild
             this.SamplesCount = speciesComposition.SamplesCount;
         }
 
-        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, int rank)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, TaxonomicRank rank)
             : this(speciesComposition, index, rank, false)
         { }
 
@@ -83,11 +83,11 @@ namespace Mayfly.Wild
     {
         public SpeciesKey.TaxonRow DataRow { get; set; }
 
-        public SpeciesKey.SpeciesRow[] SpeciesRows
+        public SpeciesKey.TaxonRow[] SpeciesRows
         {
             get
             {
-                List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+                List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
 
                 foreach (SpeciesSwarm swarm in SpeciesSwarms)
                 {
@@ -111,7 +111,7 @@ namespace Mayfly.Wild
             Name = name;
         }
 
-        public SpeciesSwarmPool(SpeciesKey.TaxonRow dataRow) : this(dataRow.TaxonName)
+        public SpeciesSwarmPool(SpeciesKey.TaxonRow dataRow) : this(dataRow.CommonName)
         {
             DataRow = dataRow;
         }

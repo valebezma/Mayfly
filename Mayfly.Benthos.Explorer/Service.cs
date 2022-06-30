@@ -103,35 +103,35 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        public static void SaveAssociates(SpeciesKey.SpeciesRow speciesRow, SpeciesKey.SpeciesRow[] associates)
+        public static void SaveAssociates(SpeciesKey.TaxonRow speciesRow, SpeciesKey.TaxonRow[] associates)
         {
             if (associates != null)
             {
                 List<string> savedAssociates = new List<string>();
 
-                foreach (SpeciesKey.SpeciesRow spcRow in associates)
+                foreach (SpeciesKey.TaxonRow spcRow in associates)
                 {
-                    if (spcRow.Species == speciesRow.Species) continue;
-                    savedAssociates.Add(spcRow.Species);
+                    if (spcRow.Name == speciesRow.Name) continue;
+                    savedAssociates.Add(spcRow.Name);
                 }
 
                 if (savedAssociates.Count > 0)
                 {
-                    SaveAssociates(speciesRow.Species, savedAssociates.ToArray());
+                    SaveAssociates(speciesRow.Name, savedAssociates.ToArray());
                 }
             }
         }
 
-        public static void SaveAssociates(Data.SpeciesRow speciesRow, SpeciesKey.SpeciesRow[] associates)
+        public static void SaveAssociates(Data.SpeciesRow speciesRow, SpeciesKey.TaxonRow[] associates)
         {
             if (associates != null)
             {
                 List<string> savedAssociates = new List<string>();
 
-                foreach (SpeciesKey.SpeciesRow spcRow in associates)
+                foreach (SpeciesKey.TaxonRow spcRow in associates)
                 {
-                    if (spcRow.Species == speciesRow.Species) continue;
-                    savedAssociates.Add(spcRow.Species);
+                    if (spcRow.Name == speciesRow.Species) continue;
+                    savedAssociates.Add(spcRow.Name);
                 }
 
                 if (savedAssociates.Count > 0)

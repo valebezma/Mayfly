@@ -2967,11 +2967,16 @@ namespace Mayfly.Controls
             Display = null;
         }
 
-        public void StartProcessing(int max, string process)
+        public void StartProcessing(string process)
         {
-            if (Display != null) Display.StartProcessing(max, process);
+            if (Display != null) Display.StartProcessing(process);
             Enabled = false;
         }
+
+        //public void SetProgressMaximum(int max)
+        //{
+        //    if (Display != null) Display.SetProgressMaximum(max);
+        //}
 
         public void StopProcessing()
         {

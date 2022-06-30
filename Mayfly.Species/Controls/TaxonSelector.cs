@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mayfly.Extensions;
+using System.Drawing;
 
 namespace Mayfly.Species.Controls
 {
@@ -15,9 +16,12 @@ namespace Mayfly.Species.Controls
         SpeciesKey data;
         SpeciesKey.TaxonRow taxon;
         EventHandler taxonSelected;
+        EventHandler treeLoaded;
         TaxonEventHandler beforeTaxonSelected;
-
         TaxonSelectorPopup selectTaxon;
+        TaxonomicRank deepestRank;
+        internal bool SelectionAllowed = true;
+
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SpeciesKey Data
@@ -25,8 +29,13 @@ namespace Mayfly.Species.Controls
             set
             {
                 data = value;
-                selectTaxon = new TaxonSelectorPopup(data);
-                selectTaxon.OnTaxonSelected += selectTaxon_OnTaxonSelected;
+
+                if (AllowSelect)
+                {
+                    selectTaxon = new TaxonSelectorPopup(data);
+                    selectTaxon.OnTaxonSelected += selectTaxon_OnTaxonSelected;
+                    selectTaxon.OnTreeLoaded += selectTaxon_OnTreeLoaded;
+                }
             }
 
             get
@@ -35,20 +44,9 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        private void selectTaxon_OnTaxonSelected(object sender, EventArgs e)
+        private void selectTaxon_OnTreeLoaded(object sender, EventArgs e)
         {
-            if (beforeTaxonSelected != null)
-            {
-                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(((TaxonSelectorPopup)sender).Taxon));
-            }
-
-            if (SelectionAllowed)
-            {
-                Taxon = ((TaxonSelectorPopup)sender).Taxon;
-                if (taxonSelected != null) taxonSelected.Invoke(this, new TaxonEventArgs(Taxon));
-            }
-
-            SelectionAllowed = true;
+            if (treeLoaded != null) treeLoaded.Invoke(this, new EventArgs());
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -57,7 +55,12 @@ namespace Mayfly.Species.Controls
             set
             {
                 taxon = value;
-                base.Text = taxon == null ? this.UnselectedLabel : taxon.FullName;
+
+                if (AllowSelect)
+                {
+                    selectTaxon.Taxon = taxon; 
+                }
+                resetText();
             }
 
             get
@@ -65,6 +68,35 @@ namespace Mayfly.Species.Controls
                 return taxon;
             }
         }
+
+        [Browsable(true), DefaultValue("Not selected")]
+        public string UnselectedLabel { get; set; }
+
+        [Browsable(true)]
+        public bool AllowSelect { get; set; }
+
+        [Browsable(true)]
+        public string Format { get; set; }
+
+        //[Browsable(true)]
+        //public bool Enabled { get; set; }
+
+        internal TaxonomicRank DeepestRank
+        {
+            set
+            {
+                deepestRank = value;
+                if (AllowSelect)
+                {
+                    selectTaxon.DeepestRank = deepestRank;
+                    selectTaxon.LoadTree();
+                }
+            }
+
+            get { return deepestRank; }
+        }
+
+        #region Hide some unnessesary properties
 
         [Browsable(false), Obsolete, DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool ReadOnly { get; set; }
@@ -87,22 +119,19 @@ namespace Mayfly.Species.Controls
         [Browsable(false), Obsolete, DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new bool AcceptsTab { get; set; }
 
-        [Browsable(true), DefaultValue("Not selected")]
-        public string UnselectedLabel { get; set; }
-
-        internal bool SelectionAllowed = true;
+        #endregion
 
         [Category("Mayfly Events")]
         public event EventHandler OnTaxonSelected
         {
             add
             {
-                taxonSelected = value;
+                taxonSelected += value;
             }
 
             remove
             {
-                taxonSelected = value;
+                taxonSelected -= value;
             }
         }
 
@@ -111,38 +140,29 @@ namespace Mayfly.Species.Controls
         {
             add
             {
-                beforeTaxonSelected = value;
+                beforeTaxonSelected += value;
             }
 
             remove
             {
-                beforeTaxonSelected = value;
+                beforeTaxonSelected -= value;
             }
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
+        [Category("Mayfly Events")]
+        public event EventHandler OnTreeLoaded
         {
-            base.OnMouseClick(e);
-
-            if (e.Button == MouseButtons.Left)
+            add
             {
-                runSelectionForm();
+                treeLoaded += value;
+            }
+
+            remove
+            {
+                treeLoaded -= value;
             }
         }
 
-        protected override void OnKeyPress(KeyPressEventArgs e)
-        {
-            base.OnKeyPress(e);
-
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                Taxon = null;
-            }
-            else if (e.KeyChar == (char)Keys.Return)
-            {
-                runSelectionForm();
-            }
-        }
 
         public TaxonSelector()
         {
@@ -160,13 +180,48 @@ namespace Mayfly.Species.Controls
             base.WordWrap = false;
         }
 
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                runSelectionForm();
+            }
+        }
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                taxon = null;
+            }
+            else if (e.KeyChar == (char)Keys.Return)
+            {
+                runSelectionForm();
+            }
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+
+            resetText();
+        }
+
+
+
         private void runSelectionForm()
         {
+            if (!AllowSelect) return;
             if (Data == null) return;
             if (Data.Taxon.Count == 0) return;
-
             selectTaxon.Width = this.Width;
             selectTaxon.SnapToTop(this);
+
 
             if (selectTaxon.Visible)
             {
@@ -174,9 +229,35 @@ namespace Mayfly.Species.Controls
             }
             else
             {
-                if (Taxon != null) selectTaxon.Taxon = Taxon;
                 selectTaxon.Show(FindForm());
             }
+        }
+
+        private void resetText()
+        {
+            if (taxon == null) {
+                base.Text = this.UnselectedLabel;
+                return;
+            }
+
+            this.SetPathAsText(taxon, Format);
+        }
+
+        private void selectTaxon_OnTaxonSelected(object sender, EventArgs e)
+        {
+            if (beforeTaxonSelected != null)
+            {
+                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(((TaxonSelectorPopup)sender).Taxon));
+            }
+
+            if (SelectionAllowed)
+            {
+                taxon = ((TaxonSelectorPopup)sender).Taxon;
+                resetText();
+                if (taxonSelected != null) taxonSelected.Invoke(this, new TaxonEventArgs(taxon));
+            }
+
+            SelectionAllowed = true;
         }
     }
 }

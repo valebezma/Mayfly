@@ -60,7 +60,7 @@ namespace Mayfly.Fish.Explorer
                 speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
                 speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
 
-                foreach (SpeciesKey.SpeciesRow speciesRow in Fish.UserSettings.SpeciesIndex.Species)
+                foreach (SpeciesKey.TaxonRow speciesRow in Fish.UserSettings.SpeciesIndex.GetSpeciesRows())
                 {
                     LoadAge(speciesRow);
                     LoadMeasure(speciesRow);
@@ -91,34 +91,34 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void LoadAge(SpeciesKey.SpeciesRow speciesRow)
+        private void LoadAge(SpeciesKey.TaxonRow speciesRow)
         {
-            Age age = Service.GetGamingAge(speciesRow.Species);
+            Age age = Service.GetGamingAge(speciesRow.Name);
 
             if (age == null) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetAge);
-            gridRow.Cells[ColumnAgeSpecies.Index].Value = speciesRow.Species;
+            gridRow.Cells[ColumnAgeSpecies.Index].Value = speciesRow.Name;
             gridRow.Cells[ColumnAgeValue.Index].Value = age;
 
             spreadSheetAge.Rows.Add(gridRow);
         }
 
-        private void LoadMeasure(SpeciesKey.SpeciesRow speciesRow)
+        private void LoadMeasure(SpeciesKey.TaxonRow speciesRow)
         {
-            double measure = Service.GetMeasure(speciesRow.Species);
+            double measure = Service.GetMeasure(speciesRow.Name);
             if (double.IsNaN(measure)) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetMeasure);
-            gridRow.Cells[ColumnMeasureSpecies.Index].Value = speciesRow.Species;
+            gridRow.Cells[ColumnMeasureSpecies.Index].Value = speciesRow.Name;
             gridRow.Cells[ColumnMeasureValue.Index].Value = measure;
 
             spreadSheetMeasure.Rows.Add(gridRow);
         }
 
-        private void LoadCatchability(SpeciesKey.SpeciesRow speciesRow)
+        private void LoadCatchability(SpeciesKey.TaxonRow speciesRow)
         {
             foreach (Samplers.SamplerRow samplerRow in Fish.UserSettings.SamplersIndex.Sampler)
             {
@@ -126,14 +126,14 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void LoadCatchability(SpeciesKey.SpeciesRow speciesRow, Samplers.SamplerRow samplerRow)
+        private void LoadCatchability(SpeciesKey.TaxonRow speciesRow, Samplers.SamplerRow samplerRow)
         {
-            double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Species);
+            double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Name);
             if (catchability == UserSettings.DefaultCatchability) return;
 
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetCatchability);
-            gridRow.Cells[columnCatchabilitySpecies.Index].Value = speciesRow.Species;
+            gridRow.Cells[columnCatchabilitySpecies.Index].Value = speciesRow.Name;
             gridRow.Cells[columnCatchabilityValue.Index].Value = catchability;
             gridRow.Tag = samplerRow;
             spreadSheetCatchability.Rows.Add(gridRow);

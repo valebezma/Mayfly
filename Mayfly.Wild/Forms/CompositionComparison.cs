@@ -161,10 +161,8 @@ namespace Mayfly.Wild
             else
             {
                 listViewIndex.Enabled = false;
-                spreadSheetMatrix.StartProcessing(
-                    Compositions.Count * Compositions.Count - Compositions.Count / 2,
-                    Resources.Interface.Process.SimCalc);
-
+                spreadSheetMatrix.StartProcessing(Resources.Interface.Process.SimCalc);
+                spreadSheetMatrix.Display.SetProgressMaximum(Compositions.Count * Compositions.Count - Compositions.Count / 2);
                 backMatch.RunWorkerAsync(listViewIndex.SelectedIndices[0]);
             }
         }

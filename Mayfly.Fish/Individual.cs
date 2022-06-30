@@ -782,7 +782,7 @@ namespace Mayfly.Fish
 
         Saving:
 
-            SpeciesKey.SpeciesRow currentSpecies = speciesTrophics.Index.Species.FindBySpecies(
+            SpeciesKey.TaxonRow currentSpecies = speciesTrophics.Index.FindBySpecies(
                 gridRow.Cells[ColumnTrpSpecies.Index].Value.ToString());
 
             if (currentSpecies == null)
@@ -802,11 +802,11 @@ namespace Mayfly.Fish
             else
             {
                 // There is such species in index you using
-                if (data.Species.FindBySpecies(currentSpecies.Species) == null)
+                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
                 {
-                    data.Species.AddSpeciesRow(currentSpecies.Species);
+                    data.Species.AddSpeciesRow(currentSpecies.Name);
                 }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Species);
+                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
             }
 
             if (gridRow.Cells[ColumnTrpQuantity.Index].Value == null)
@@ -974,7 +974,7 @@ namespace Mayfly.Fish
 
             Saving:
 
-            SpeciesKey.SpeciesRow currentSpecies = speciesParasites.Index.Species.FindBySpecies(
+            SpeciesKey.TaxonRow currentSpecies = speciesParasites.Index.FindBySpecies(
                 gridRow.Cells[ColumnInfSpecies.Index].Value.ToString());
 
             if (currentSpecies == null)
@@ -994,11 +994,11 @@ namespace Mayfly.Fish
             else
             {
                 // There is such species in index you using
-                if (data.Species.FindBySpecies(currentSpecies.Species) == null)
+                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
                 {
-                    data.Species.AddSpeciesRow(currentSpecies.Species);
+                    data.Species.AddSpeciesRow(currentSpecies.Name);
                 }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Species);
+                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
             }
 
             if (gridRow.Cells[ColumnInfQuantity.Index].Value == null)
@@ -1043,7 +1043,7 @@ namespace Mayfly.Fish
         //    }
         //    else
         //    {
-        //        SpeciesKey.SpeciesRow CurrentParasite = UserSettings.ParasitesIndex.Species.FindBySpecies(
+        //        SpeciesKey.TaxonRow CurrentParasite = UserSettings.ParasitesIndex.Species.FindBySpecies(
         //            gridRow.Cells[ColumnInfSpecies.Index].Value.ToString());
 
         //        if (CurrentParasite == null)
@@ -1478,8 +1478,8 @@ namespace Mayfly.Fish
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Consumed.Card[0];
 
-                SpeciesKey.SpeciesRow currentSpeciesRow =
-                    UserSettings.SpeciesIndex.Species.FindBySpecies(clipLogRow.SpeciesRow.Species);
+                SpeciesKey.TaxonRow currentSpeciesRow =
+                    UserSettings.SpeciesIndex.FindBySpecies(clipLogRow.SpeciesRow.Species);
 
                 if (currentSpeciesRow == null)
                 {
@@ -1491,9 +1491,9 @@ namespace Mayfly.Fish
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(currentSpeciesRow.Species) == null)
+                    if (Data.Species.FindBySpecies(currentSpeciesRow.Name) == null)
                     {
-                        Data.Species.Rows.Add(currentSpeciesRow.ID, currentSpeciesRow.Species);
+                        Data.Species.Rows.Add(currentSpeciesRow.ID, currentSpeciesRow.Name);
                     }
                     logRow.SpcID = currentSpeciesRow.ID;
                 }

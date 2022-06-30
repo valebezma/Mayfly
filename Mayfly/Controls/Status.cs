@@ -40,15 +40,7 @@ namespace Mayfly.Controls
 
         public void Message(string statusMessage)
         {
-            StatusMessages.Add(statusMessage);
-            StatusMessagesCount = StatusMessages.Count;
-
-            if (!logger.IsBusy)
-            {
-                StatusLog.Visible = true;
-                StatusLog.Text = StatusMessages[0];
-                logger.RunWorkerAsync();
-            }
+            Message(new string[] { statusMessage });
         }
 
         public void Message(string[] statusMessages)

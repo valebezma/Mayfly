@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         WizardMSY msyWizard;
 
@@ -38,16 +38,16 @@ namespace Mayfly.Fish.Explorer
             labelStart.ResetFormatted("species");
         }
 
-        public WizardPrediction(CardStack data, SpeciesKey.SpeciesRow speciesRow)
+        public WizardPrediction(CardStack data, SpeciesKey.TaxonRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
+            labelStart.ResetFormatted(SpeciesRow.CommonName);
 
-            //Logger.Log(String.Format("Prediction wizard is started for {0}.", speciesRow.Species));
+            //Logger.Log(String.Format("Prediction wizard is started for {0}.", speciesRow.Name));
         }
 
 
@@ -171,7 +171,7 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
-            Log.Write("Prediction wizard is finished. Species: {0}, {1}.", SpeciesRow.Species, "");
+            Log.Write("Prediction wizard is finished. Species: {0}, {1}.", SpeciesRow.Name, "");
             if (!UserSettings.KeepWizard) Close();
         }
 

@@ -118,9 +118,9 @@ namespace Mayfly.Extensions
         //    {
         //        #region Associates
 
-        //        List<SpeciesKey.SpeciesRow> associates = new List<SpeciesKey.SpeciesRow>();
+        //        List<SpeciesKey.TaxonRow> associates = new List<SpeciesKey.TaxonRow>();
 
-        //        SpeciesKey.SpeciesRow conSpecies = referenceData.Species.FindBySpecies(speciesRow.Species);
+        //        SpeciesKey.TaxonRow conSpecies = referenceData.Species.FindBySpecies(speciesRow.Species);
 
         //        if (conSpecies != null)
         //        {
@@ -165,7 +165,7 @@ namespace Mayfly.Extensions
 
         //        int measured = 0;
 
-        //        foreach (SpeciesKey.SpeciesRow associate in associates)
+        //        foreach (SpeciesKey.TaxonRow associate in associates)
         //        {
         //            measured += referenceData.GetStack().Measured(associate);
         //        }
@@ -477,11 +477,11 @@ namespace Mayfly.Extensions
                 }
             }
 
-            SpeciesKey.SpeciesRow[] spclist = data.GetStack().GetSpecies();
+            SpeciesKey.TaxonRow[] spclist = data.GetStack().GetSpecies();
 
             for (int i = 0; i < spclist.Length; i++)
             {
-                SpeciesKey.SpeciesRow speciesRow = spclist[i];
+                SpeciesKey.TaxonRow speciesRow = spclist[i];
 
                 //if (speciesRow.Quantity < 5)
                 //{

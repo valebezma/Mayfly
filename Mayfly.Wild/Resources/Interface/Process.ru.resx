@@ -117,55 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtifactsProcessing" xml:space="preserve">
-    <value>Поиск артефактов</value>
-  </data>
-  <data name="CardsLoading" xml:space="preserve">
-    <value>Загрузка карточек</value>
-  </data>
-  <data name="CardsProcessing" xml:space="preserve">
-    <value>Загрузка журнала карточек</value>
-  </data>
-  <data name="CardsSaving" xml:space="preserve">
-    <value>Сохранение карточек</value>
-  </data>
-  <data name="ExtInd" xml:space="preserve">
-    <value>Расширение журнала особей</value>
-  </data>
-  <data name="ExtSpc" xml:space="preserve">
-    <value>Расширение видовой ведомости</value>
-  </data>
-  <data name="ExtStrat" xml:space="preserve">
-    <value>Расширение размерных рядов</value>
-  </data>
-  <data name="IndividualsProcessing" xml:space="preserve">
-    <value>Обработка журнала особей</value>
-  </data>
-  <data name="RateProcessing" xml:space="preserve">
-    <value>Оценка данных</value>
-  </data>
-  <data name="Searching" xml:space="preserve">
-    <value>Фильтрация записей</value>
-  </data>
-  <data name="SignProcessing" xml:space="preserve">
-    <value>Распознавание подписей данных</value>
-  </data>
-  <data name="SimCalc" xml:space="preserve">
-    <value>Расчет индексов сходства</value>
-  </data>
-  <data name="SpecApply" xml:space="preserve">
+  <data name="BioApply" xml:space="preserve">
     <value>Применение био</value>
   </data>
-  <data name="SpeciesProcessing" xml:space="preserve">
-    <value>Обработка видовых ведомостей</value>
-  </data>
-  <data name="SpecLoading" xml:space="preserve">
+  <data name="BioLoading" xml:space="preserve">
     <value>Загрузка био</value>
   </data>
-  <data name="StratifiedProcessing" xml:space="preserve">
-    <value>Загрузка размерных рядов</value>
+  <data name="DataLoading" xml:space="preserve">
+    <value>Загрузка данных</value>
   </data>
-  <data name="TotalReportProcessing" xml:space="preserve">
-    <value>Составление общего отчета</value>
+  <data name="DataSaving" xml:space="preserve">
+    <value>Сохранение данных</value>
+  </data>
+  <data name="ExtInd1" xml:space="preserve">
+    <value>Расширение журнала особей</value>
+  </data>
+  <data name="ExtLog" xml:space="preserve">
+    <value>Расширение ведомости</value>
+  </data>
+  <data name="ExtStrat1" xml:space="preserve">
+    <value>Расширение размерных рядов</value>
+  </data>
+  <data name="LoadCard" xml:space="preserve">
+    <value>Загрузка карточек</value>
+  </data>
+  <data name="LoadInd" xml:space="preserve">
+    <value>Загрузка журнала особей</value>
+  </data>
+  <data name="LoadLog" xml:space="preserve">
+    <value>Загрузка ведомости</value>
+  </data>
+  <data name="LoadSpc" xml:space="preserve">
+    <value>Загрузка видового списка</value>
+  </data>
+  <data name="LoadStratified" xml:space="preserve">
+    <value>Загрузка размерных рядов</value>
   </data>
 </root>

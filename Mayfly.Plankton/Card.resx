@@ -448,7 +448,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnSpecies.HeaderText" xml:space="preserve">
-    <value>Taxa / Species</value>
+    <value>Taxon / Species</value>
   </data>
   <metadata name="ColumnSubsample.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

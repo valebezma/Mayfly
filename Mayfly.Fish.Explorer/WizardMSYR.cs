@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         WizardPopulation growthWizard;
 
@@ -32,20 +32,20 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
         }
 
-        public WizardMSYR(CardStack data, SpeciesKey.SpeciesRow speciesRow)
+        public WizardMSYR(CardStack data, SpeciesKey.TaxonRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
+            labelStart.ResetFormatted(SpeciesRow.CommonName);
 
-            Age ga = Service.GetGamingAge(SpeciesRow.Species);
+            Age ga = Service.GetGamingAge(SpeciesRow.Name);
             if (ga != null) textBoxTr.Value = ga;
 
             Log.Write(EventType.WizardStarted, "MSY/R wizard is started for {0}.",
-                speciesRow.Species);
+                speciesRow.Name);
         }
 
 
@@ -234,7 +234,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "MSY/R wizard is finished. Species: {0}, MSY/R = {1:N3}.",
-                SpeciesRow.Species, model.MaximumSustainableYieldPerRecruit);
+                SpeciesRow.Name, model.MaximumSustainableYieldPerRecruit);
             if (!UserSettings.KeepWizard) Close();
         }
 

@@ -38,9 +38,11 @@
             this.textBoxLocal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
             this.comboBoxRank = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxReference = new System.Windows.Forms.TextBox();
+            this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
             this.SuspendLayout();
             // 
             // buttonOK
@@ -95,21 +97,12 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // taxonSelector
-            // 
-            resources.ApplyResources(this.taxonSelector, "taxonSelector");
-            this.taxonSelector.Cursor = System.Windows.Forms.Cursors.Default;
-            this.taxonSelector.Name = "taxonSelector";
-            this.taxonSelector.UnselectedLabel = "Parent not selected";
-            this.taxonSelector.OnTaxonSelected += new System.EventHandler(this.valueChanged);
-            this.taxonSelector.BeforeTaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxonSelector_BeforeTaxonSelected);
-            // 
             // comboBoxRank
             // 
-            resources.ApplyResources(this.comboBoxRank, "comboBoxRank");
             this.comboBoxRank.DisplayMember = "Name";
             this.comboBoxRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRank.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxRank, "comboBoxRank");
             this.comboBoxRank.Name = "comboBoxRank";
             this.comboBoxRank.ValueMember = "Value";
             // 
@@ -118,9 +111,32 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // textBoxReference
+            // 
+            resources.ApplyResources(this.textBoxReference, "textBoxReference");
+            this.textBoxReference.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxReference.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBoxReference.Name = "textBoxReference";
+            // 
+            // taxonSelector
+            // 
+            this.taxonSelector.AllowSelect = true;
+            resources.ApplyResources(this.taxonSelector, "taxonSelector");
+            this.taxonSelector.Cursor = System.Windows.Forms.Cursors.Default;
+            this.taxonSelector.Format = "F";
+            this.taxonSelector.Name = "taxonSelector";
+            this.taxonSelector.UnselectedLabel = "Parent not selected";
+            this.taxonSelector.OnTaxonSelected += new System.EventHandler(this.valueChanged);
+            this.taxonSelector.BeforeTaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxonSelector_BeforeTaxonSelected);
+            this.taxonSelector.OnTreeLoaded += new System.EventHandler(this.taxonSelector_OnTreeLoaded);
+            // 
             // EditTaxon
             // 
-            this.AcceptButton = this.buttonOK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
@@ -129,7 +145,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxReference);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxLocal);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label4);
@@ -157,5 +175,7 @@
         private Controls.TaxonSelector taxonSelector;
         private System.Windows.Forms.ComboBox comboBoxRank;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxReference;
     }
 }

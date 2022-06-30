@@ -270,7 +270,7 @@ namespace Mayfly.Fish.Explorer
                 if (!modelCalc.IsBusy && !isClosing)
                 {
                     IsBusy = true;
-                    processDisplay.StartProcessing(data.Species.Count, Wild.Resources.Interface.Interface.ModelCalc);
+                    processDisplay.StartProcessing(Wild.Resources.Interface.Interface.ModelCalc);
                     modelCalc.RunWorkerAsync();
                 }
             }
@@ -361,17 +361,17 @@ namespace Mayfly.Fish.Explorer
 
         private void logSpecies_Click(object sender, EventArgs e)
         {
-            loadLog((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadLog((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSpecies_Click(object sender, EventArgs e)
         {
-            loadIndividuals((SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag);
+            loadIndividuals((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void indSuggested_Click(object sender, EventArgs e)
         {
-            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag;
             TreatmentSuggestion sugg = FullStack.GetTreatmentSuggestion(speciesRow, data.Individual.AgeColumn);
             if (sugg != null) loadIndividuals(ModifierKeys.HasFlag(Keys.Shift) ? sugg.GetAll() : sugg.GetSuggested());
         }
@@ -401,14 +401,14 @@ namespace Mayfly.Fish.Explorer
         public void SaveCards()
         {
             IsBusy = true;
-            spreadSheetCard.StartProcessing(changedCards.Count, Wild.Resources.Interface.Process.CardsSaving);
+            spreadSheetCard.StartProcessing(Wild.Resources.Interface.Process.DataSaving);
             dataSaver.RunWorkerAsync();
         }  
 
         public void LoadCards(params string[] entries)
         {
             IsBusy = true;
-            processDisplay.StartProcessing(entries.Length, Wild.Resources.Interface.Process.CardsLoading);            
+            processDisplay.StartProcessing(Wild.Resources.Interface.Process.DataLoading);            
             loaderData.RunWorkerAsync(entries);
         }
 
@@ -508,7 +508,7 @@ namespace Mayfly.Fish.Explorer
 
         #region Species stats
 
-        SpeciesKey.SpeciesRow selectedStatSpc;
+        SpeciesKey.TaxonRow selectedStatSpc;
 
         FishSamplerType selectedTechSamplerType;
 
@@ -755,26 +755,22 @@ namespace Mayfly.Fish.Explorer
 
         #region Species
 
-        SpeciesKey.BaseRow baseSpc;
+        TaxonomicRank baseSpc;
 
-        private void loadTaxaList()
+        private void loadTaxonList()
         {
-            // Clear list
-            comboBoxSpcTaxa.Items.Clear();
-            menuItemSpcTaxa.DropDownItems.Clear();
+            comboBoxSpcTaxon.DataSource = TaxonomicRank.MajorRanks;
+            comboBoxSpcTaxon.SelectedIndex = -1;
+            //comboBoxLogTaxon.DataSource = TaxonomicRank.MajorRanks;
+            //comboBoxLogTaxon.SelectedIndex = -1;
 
-            if (Fish.UserSettings.SpeciesIndex == null) return;
-
-            // Fill list
-            foreach (SpeciesKey.BaseRow baseRow in Fish.UserSettings.SpeciesIndex.Base)
+            foreach (TaxonomicRank rank in TaxonomicRank.MajorRanks)
             {
-                comboBoxSpcTaxa.Items.Add(baseRow);
-
-                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
-                item.Click += (sender, o) =>
+                ToolStripMenuItem item = new ToolStripMenuItem(rank.Name);
+                item.Click += (sender, e) =>
                 {
-                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
-                        baseRow.BaseName, typeof(string), 0);
+                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(rank.Name,
+                        rank.Name, typeof(string), 0);
 
                     foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
                     {
@@ -789,7 +785,43 @@ namespace Mayfly.Fish.Explorer
                             continue;
                         }
 
-                        SpeciesKey.SpeciesRow speciesRow = (gridRow.Cells[columnSpcSpc.Index].Value as Data.SpeciesRow).KeyRecord;
+                        SpeciesKey.TaxonRow spcRow = gridRow.Cells[columnSpcSpc.Index].Value as SpeciesKey.TaxonRow;
+                        SpeciesKey.TaxonRow taxonRow = spcRow.GetParentTaxon(rank);
+                        gridRow.Cells[gridColumn.Index].Value = (taxonRow == null) ?
+                            Species.Resources.Interface.Varia : taxonRow.CommonName;
+                    }
+                };
+                menuItemSpcTaxon.DropDownItems.Add(item);
+            }
+
+            // Clear list
+            menuItemSpcTaxon.DropDownItems.Clear();
+
+            if (Fish.UserSettings.SpeciesIndex == null) return;
+
+            // Fill list
+            foreach (TaxonomicRank baseRow in TaxonomicRank.MajorRanks)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(baseRow.Name);
+                item.Click += (sender, o) =>
+                {
+                    DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.Name,
+                        baseRow.Name, typeof(string), 0, 200);
+
+                    foreach (DataGridViewRow gridRow in spreadSheetSpc.Rows)
+                    {
+                        if (gridRow.Cells[columnSpcSpc.Index].Value == null)
+                        {
+                            continue;
+                        }
+
+                        if (gridRow.Cells[columnSpcSpc.Index].Value as string ==
+                            Species.Resources.Interface.UnidentifiedTitle)
+                        {
+                            continue;
+                        }
+
+                        SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)gridRow.Cells[columnSpcSpc.Index].Value;
 
                         if (speciesRow == null)
                         {
@@ -797,29 +829,28 @@ namespace Mayfly.Fish.Explorer
                         }
                         else
                         {
-                            SpeciesKey.TaxaRow taxaRow = speciesRow.GetTaxon(baseRow);
-                            if (taxaRow != null) gridRow.Cells[gridColumn.Index].Value = taxaRow.TaxonName;
+                            SpeciesKey.TaxonRow taxonRow = speciesRow.GetParentTaxon(baseRow);
+                            if (taxonRow != null) gridRow.Cells[gridColumn.Index].Value = taxonRow.CommonName;
                         }
                     }
                 };
-                menuItemSpcTaxa.DropDownItems.Add(item);
+                menuItemSpcTaxon.DropDownItems.Add(item);
             }
 
-            comboBoxSpcTaxa.Enabled = comboBoxSpcTaxa.Items.Count > 0;
-            menuItemSpcTaxa.Enabled = menuItemSpcTaxa.DropDownItems.Count > 0;
+            menuItemSpcTaxon.Enabled = menuItemSpcTaxon.DropDownItems.Count > 0;
         }
 
         private void loadSpc()
         {
             IsBusy = true;
-            spreadSheetSpc.StartProcessing(100, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetSpc.StartProcessing(Wild.Resources.Interface.Process.LoadSpc);
             spreadSheetSpc.Rows.Clear();
             loaderSpc.RunWorkerAsync();
         }
 
-        private SpeciesKey.SpeciesRow findSpeciesRow(DataGridViewRow gridRow)
+        private SpeciesKey.TaxonRow findSpeciesRow(DataGridViewRow gridRow)
         {
-            return baseSpc == null ? Fish.UserSettings.SpeciesIndex.Species.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
+            return baseSpc == null ? Fish.UserSettings.SpeciesIndex.Taxon.FindByID((int)gridRow.Cells[columnSpcID.Index].Value) : null;
         }
 
         private void updateSpeciesArtifacts(DataGridViewRow gridRow)
@@ -843,10 +874,10 @@ namespace Mayfly.Fish.Explorer
 
         }
 
-        private SpeciesKey.SpeciesRow[] getSpeciesRows(IList rows)
+        private SpeciesKey.TaxonRow[] getSpeciesRows(IList rows)
         {
             spreadSheetLog.EndEdit();
-            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+            List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
             foreach (DataGridViewRow gridRow in rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -887,7 +918,7 @@ namespace Mayfly.Fish.Explorer
         private void loadCards(CardStack stack)
         {
             IsBusy = true;
-            spreadSheetCard.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.CardsProcessing);
+            spreadSheetCard.StartProcessing(Wild.Resources.Interface.Process.LoadCard);
             spreadSheetCard.Rows.Clear();
 
             loaderCard.RunWorkerAsync(stack);
@@ -1196,12 +1227,12 @@ namespace Mayfly.Fish.Explorer
 
         #region Log
 
-        SpeciesKey.BaseRow baseLog;
+        TaxonomicRank baseLog;
 
         private void loadLog(Data.LogRow[] logRows)
         {
             IsBusy = true;
-            spreadSheetLog.StartProcessing(logRows.Length, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.LoadLog);
             spreadSheetLog.Rows.Clear();
             loaderLog.RunWorkerAsync(logRows);
         }
@@ -1211,11 +1242,11 @@ namespace Mayfly.Fish.Explorer
             loadLog(data.Log.Rows.Cast<Data.LogRow>().ToArray());
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
+        private void loadLog(SpeciesKey.TaxonRow[] spcRows, CardStack stack)
         {
             List<Data.LogRow> logRows = new List<Data.LogRow>();
 
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.TaxonRow spcRow in spcRows)
             {
                 logRows.AddRange(stack.GetLogRows(spcRow));
             }
@@ -1223,14 +1254,14 @@ namespace Mayfly.Fish.Explorer
             loadLog(logRows.ToArray());
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow[] spcRows)
+        private void loadLog(SpeciesKey.TaxonRow[] spcRows)
         {
             loadLog(spcRows, FullStack);
         }
 
-        private void loadLog(SpeciesKey.SpeciesRow spcRows)
+        private void loadLog(SpeciesKey.TaxonRow spcRows)
         {
-            loadLog(new SpeciesKey.SpeciesRow[] { spcRows });
+            loadLog(new SpeciesKey.TaxonRow[] { spcRows });
         }
 
         private void loadLog(CardStack stack)
@@ -1342,7 +1373,7 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        //private DataGridViewRow createTaxonLogRow(Data.CardRow cardRow, SpeciesKey.TaxaRow taxaRow)
+        //private DataGridViewRow createTaxonLogRow(Data.CardRow cardRow, SpeciesKey.TaxonRow taxonRow)
         //{
         //    DataGridViewRow result = new DataGridViewRow();
 
@@ -1361,7 +1392,7 @@ namespace Mayfly.Fish.Explorer
         //    {
         //        if (double.IsNaN(cardRow.GetEffort())) continue;
 
-        //        if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
+        //        if (!taxonRow.Includes(logRow.SpeciesRow.Name)) continue;
 
         //        if (!logRow.IsQuantityNull())
         //        {
@@ -1380,7 +1411,7 @@ namespace Mayfly.Fish.Explorer
 
         //    setCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-        //    result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
+        //    result.Cells[columnLogSpc.Index].Value = taxonRow.TaxonName;
 
         //    result.Cells[columnLogQuantity.Index].Value = Q;
         //    result.Cells[columnLogMass.Index].Value = W;
@@ -1392,15 +1423,15 @@ namespace Mayfly.Fish.Explorer
         //    return result;
         //}
 
-        //private void logLoaderTaxa1111_DoWork(object sender, DoWorkEventArgs e)
+        //private void logLoaderTaxon1111_DoWork(object sender, DoWorkEventArgs e)
         //{
         //    // How to analize selectedLogSpcRows???
 
         //    for (int i = 0; i < selectesLogStack.Count; i++)
         //    {
-        //        foreach (SpeciesKey.TaxaRow taxaRow in data.Species.Taxa(baseLog))
+        //        foreach (SpeciesKey.TaxonRow taxonRow in data.Species.Taxon(baseLog))
         //        {
-        //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxaRow);
+        //            DataGridViewRow gridRow = createTaxonLogRow(selectesLogStack[i], taxonRow);
 
         //            if (gridRow == null) continue;
 
@@ -1419,7 +1450,7 @@ namespace Mayfly.Fish.Explorer
 
         #region Individuals
 
-        SpeciesKey.SpeciesRow individualSpecies;
+        SpeciesKey.TaxonRow individualSpecies;
         ContinuousBio growthModel;
         ContinuousBio massModel;
 
@@ -1429,7 +1460,7 @@ namespace Mayfly.Fish.Explorer
             individualSpecies = null;
 
             IsBusy = true;
-            spreadSheetInd.StartProcessing(indRows.Length, Wild.Resources.Interface.Process.IndividualsProcessing);
+            spreadSheetInd.StartProcessing(Wild.Resources.Interface.Process.LoadInd);
             spreadSheetInd.Rows.Clear();
 
             foreach (Data.VariableRow variableRow in data.Variable)
@@ -1451,11 +1482,11 @@ namespace Mayfly.Fish.Explorer
             loadIndividuals(stack.GetIndividualRows());
         }
 
-        private void loadIndividuals(SpeciesKey.SpeciesRow[] spcRows)
+        private void loadIndividuals(SpeciesKey.TaxonRow[] spcRows)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.TaxonRow spcRow in spcRows)
             {
                 result.AddRange(FullStack.GetIndividualRows(spcRow));
             }
@@ -1463,12 +1494,12 @@ namespace Mayfly.Fish.Explorer
             loadIndividuals(result.ToArray());
         }
 
-        private void loadIndividuals(SpeciesKey.SpeciesRow spcRow)
+        private void loadIndividuals(SpeciesKey.TaxonRow spcRow)
         {
-            loadIndividuals(new SpeciesKey.SpeciesRow[] { spcRow });
+            loadIndividuals(new SpeciesKey.TaxonRow[] { spcRow });
             individualSpecies = spcRow;
-            growthModel = data.FindGrowthModel(individualSpecies.Species);
-            massModel = data.FindMassModel(individualSpecies.Species);
+            growthModel = data.FindGrowthModel(individualSpecies.Name);
+            massModel = data.FindMassModel(individualSpecies.Name);
         }
 
         private void loadIndividuals(Data.LogRow[] logRows)
@@ -1627,7 +1658,7 @@ namespace Mayfly.Fish.Explorer
             else individualRow.Age = age.Value;
 
             if ((tabPageSpcStats.Parent != null) && // If stats are loaded
-                (selectedStatSpc.Species == individualRow.Species)) // and selected species is currently editing
+                (selectedStatSpc.Name == individualRow.Species)) // and selected species is currently editing
             {
                 strates_Changed(this, new EventArgs());
             }
@@ -1881,9 +1912,7 @@ namespace Mayfly.Fish.Explorer
         {
             IsBusy = true;
 
-            spreadSheetInd.StartProcessing(individualSpecies == null ?
-                data.Stratified.Quantity : FullStack.QuantityStratified(individualSpecies),
-                Wild.Resources.Interface.Process.StratifiedProcessing);
+            spreadSheetInd.StartProcessing(Wild.Resources.Interface.Process.LoadStratified);
 
             if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
             loaderIndSimulated.RunWorkerAsync(individualSpecies);
@@ -1915,7 +1944,7 @@ namespace Mayfly.Fish.Explorer
         private void loadStratifiedSamples(Data.LogRow[] logRows)
         {
             IsBusy = true;
-            spreadSheetStratified.StartProcessing(data.Stratified.Quantity, Wild.Resources.Interface.Process.StratifiedProcessing);
+            spreadSheetStratified.StartProcessing(Wild.Resources.Interface.Process.LoadStratified);
             spreadSheetStratified.Rows.Clear();
             loaderStratified.RunWorkerAsync(logRows);
         }
@@ -1930,11 +1959,11 @@ namespace Mayfly.Fish.Explorer
             loadStratifiedSamples(FullStack);
         }
 
-        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows, CardStack stack)
+        private void loadStratifiedSamples(SpeciesKey.TaxonRow[] spcRows, CardStack stack)
         {
             List<Data.LogRow> logRows = new List<Data.LogRow>();
 
-            foreach (SpeciesKey.SpeciesRow spcRow in spcRows)
+            foreach (SpeciesKey.TaxonRow spcRow in spcRows)
             {
                 logRows.AddRange(stack.GetLogRows(spcRow));
             }
@@ -1942,7 +1971,7 @@ namespace Mayfly.Fish.Explorer
             loadStratifiedSamples(logRows.ToArray());
         }
 
-        private void loadStratifiedSamples(SpeciesKey.SpeciesRow[] spcRows)
+        private void loadStratifiedSamples(SpeciesKey.TaxonRow[] spcRows)
         {
             loadStratifiedSamples(spcRows, FullStack);
         }

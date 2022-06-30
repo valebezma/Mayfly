@@ -40,7 +40,7 @@ namespace Mayfly.Benthos
         /// <param name="report"></param>
         public static void AddReport(this Data.LogRow logRow, Report report)
         {
-            string speciesPresentation = logRow.SpeciesRow.KeyRecord.ScientificNameReport;
+            string speciesPresentation = logRow.SpeciesRow.KeyRecord.FullNameReport;
             logRow.AddReport(report, speciesPresentation);
         }
 

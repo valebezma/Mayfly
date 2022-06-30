@@ -20,7 +20,7 @@ namespace Mayfly.Fish
     {
         private string filename;
 
-        private SpeciesKey.SpeciesRow SpeciesToOpen;
+        private SpeciesKey.TaxonRow SpeciesToOpen;
 
         private bool preciseMode;
 
@@ -818,7 +818,7 @@ namespace Mayfly.Fish
         {
             Data.LogRow result = GetLogRow(data, gridRow);
 
-            SpeciesKey.SpeciesRow speciesRow = gridRow.Cells[ColumnSpecies.Index].Value as SpeciesKey.SpeciesRow;
+            SpeciesKey.TaxonRow speciesRow = gridRow.Cells[ColumnSpecies.Index].Value as SpeciesKey.TaxonRow;
 
             if (speciesRow == null)
             {
@@ -838,10 +838,10 @@ namespace Mayfly.Fish
             else
             {
                 // There is such species in index you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -1297,7 +1297,7 @@ namespace Mayfly.Fish
 
         public void OpenSpecies(string species)
         {
-            SpeciesToOpen = UserSettings.SpeciesIndex.Species.FindBySpecies(species);
+            SpeciesToOpen = UserSettings.SpeciesIndex.FindBySpecies(species);
             Load += new EventHandler(cardOpenSpecies_Load);
         }
 
@@ -2183,8 +2183,8 @@ namespace Mayfly.Fish
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                SpeciesKey.SpeciesRow clipSpeciesRow = UserSettings.SpeciesIndex
-                    .Species.FindBySpecies(clipLogRow.SpeciesRow.Species);
+                SpeciesKey.TaxonRow clipSpeciesRow = UserSettings.SpeciesIndex
+                    .FindBySpecies(clipLogRow.SpeciesRow.Species);
 
                 if (clipSpeciesRow == null)
                 {
@@ -2195,9 +2195,9 @@ namespace Mayfly.Fish
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

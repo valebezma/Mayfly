@@ -14,7 +14,7 @@ namespace Mayfly.Plankton.Explorer
     {
         SpeciesKey.BaseRow baseLog;
 
-        SpeciesKey.TaxaRow[] taxaLog;
+        SpeciesKey.TaxonRow[] taxonLog;
 
         SpeciesKey.SpeciesRow[] variaLog;
 
@@ -108,13 +108,13 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRow(SpeciesKey.TaxaRow taxaRow)
+        private DataGridViewRow LogRow(SpeciesKey.TaxonRow taxonRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
             result.CreateCells(spreadSheetSpc);
 
-            result.Cells[columnSpcID.Index].Value = taxaRow.ID;
+            result.Cells[columnSpcID.Index].Value = taxonRow.ID;
 
             double Q = 0.0;
             double A = 0.0;
@@ -126,7 +126,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
+                if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
 
                 if (!logRow.IsQuantityNull())
                 {
@@ -148,11 +148,11 @@ namespace Mayfly.Plankton.Explorer
             A = Math.Round(A / data.Card.Count, 3);
             B = Math.Round(B / data.Card.Count, 3);
 
-            result.Cells[columnSpcSpc.Index].Value = taxaRow.TaxonName;
+            result.Cells[columnSpcSpc.Index].Value = taxonRow.TaxonName;
             if (Q > 0) result.Cells[columnSpcQuantity.Index].Value = Q;
             if (A > 0) result.Cells[columnSpcAbundance.Index].Value = A;
             if (B > 0) result.Cells[columnSpcBiomass.Index].Value = B;
-            result.Cells[columnSpcOccurrence.Index].Value = taxaRow.Occurrence(data);
+            result.Cells[columnSpcOccurrence.Index].Value = taxonRow.Occurrence(data);
             result.Cells[columnSpcDiversityA.Index].Value = new Sample(abundances).Diversity();
             result.Cells[columnSpcDiversityB.Index].Value = new Sample(biomasses).Diversity();
 
@@ -207,7 +207,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRow(Data.CardRow cardRow, SpeciesKey.TaxaRow taxaRow)
+        private DataGridViewRow LogRow(Data.CardRow cardRow, SpeciesKey.TaxonRow taxonRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -224,7 +224,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!taxaRow.Includes(logRow.SpeciesRow.Species)) continue;
+                if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
 
                 if (!logRow.IsQuantityNull())
                 {
@@ -242,7 +242,7 @@ namespace Mayfly.Plankton.Explorer
 
             SetCardValue(cardRow, result, spreadSheetLog.GetInsertedColumns());
 
-            result.Cells[columnLogSpc.Index].Value = taxaRow.TaxonName;
+            result.Cells[columnLogSpc.Index].Value = taxonRow.TaxonName;
 
             result.Cells[columnLogAbundance.Index].Value = A;
             result.Cells[columnLogBiomass.Index].Value = B;

@@ -238,7 +238,8 @@ namespace Mayfly.Mathematics
 
             sortableRowGroups.Enabled = sortableColumnGroups.Enabled = listViewValue.Enabled = false;
 
-            Adapter.OperatingSheet.StartProcessing(columnGroups.Length * rowGroups.Length, Resources.Interface.PivotProgress);
+            Adapter.OperatingSheet.StartProcessing(Resources.Interface.PivotProgress);
+            Adapter.OperatingSheet.Display.SetProgressMaximum(columnGroups.Length * rowGroups.Length);
             if (!calculator.IsBusy) calculator.RunWorkerAsync(rowGroups);
         }
 

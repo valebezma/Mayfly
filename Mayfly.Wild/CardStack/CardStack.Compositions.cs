@@ -4,7 +4,7 @@ namespace Mayfly.Wild
 {
     partial class CardStack
     {
-        public SpeciesSwarm GetSwarm(SpeciesKey.SpeciesRow speciesRow)
+        public SpeciesSwarm GetSwarm(SpeciesKey.TaxonRow speciesRow)
         {
             SpeciesSwarm result = new SpeciesSwarm(speciesRow)
             {
@@ -13,7 +13,7 @@ namespace Mayfly.Wild
                 SamplesCount = GetLogRows(speciesRow).Length,
                 Quantity = (int)Quantity(speciesRow),
                 Mass = Mass(speciesRow),
-                Name = speciesRow.Species
+                Name = speciesRow.Name
             };
 
             result.SetSexualComposition(
@@ -26,10 +26,10 @@ namespace Mayfly.Wild
 
         public SpeciesComposition GetBasicCenosisComposition()
         {
-            SpeciesKey.SpeciesRow[] species = GetSpecies();
+            SpeciesKey.TaxonRow[] species = GetSpecies();
             SpeciesComposition result = new SpeciesComposition(Resources.Reports.Caption.Species, species.Length);
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in species)
+            foreach (SpeciesKey.TaxonRow speciesRow in species)
             {
                 result.AddCategory(GetSwarm(speciesRow));
             }
@@ -38,7 +38,7 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public TaxonomicComposition GetBasicTaxonomicComposition(SpeciesKey index, int rank)
+        public TaxonomicComposition GetBasicTaxonomicComposition(SpeciesKey index, TaxonomicRank rank)
         {
             TaxonomicComposition result = new TaxonomicComposition(GetBasicCenosisComposition(), index, rank, true);
 

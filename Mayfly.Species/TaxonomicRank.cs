@@ -50,5 +50,13 @@ namespace Mayfly.Species
                 return GetTaxonomicRanks(11, 21, 31, 41, 51, 61, 71);
             }
         }
+
+        public static TaxonomicRank Species
+        {
+            get
+            {
+                return new TaxonomicRank(91);
+            }
+        }
     }
 }

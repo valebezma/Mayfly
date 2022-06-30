@@ -59,7 +59,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public void Fill(CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public void Fill(CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             #region Prepare data
 
@@ -95,7 +95,7 @@ namespace Mayfly.Fish.Explorer
                     {
                         treated[ac, lc].MassSample = stack.MassSample(speciesRow, size, age.Age);
                         double w = treated[ac, lc].MassSample.Count > 0 ? treated[ac, lc].MassSample.Mean :
-                            stack.Parent.FindMassModel(speciesRow.Species).GetValue(treatedTtl[lc].Size.Midpoint);
+                            stack.Parent.FindMassModel(speciesRow.Name).GetValue(treatedTtl[lc].Size.Midpoint);
                         treated[ac, lc].Mass = treated[ac, lc].Quantity * w / 1000.0;
                     }
                     else
@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer
 
                             case AgeLengthKeyType.Smooth:
                                 // If there is model - get all untreated as obtained if obtained age conforms
-                                ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Species);
+                                ContinuousBio bio = stack.Parent.FindGrowthModel(speciesRow.Name);
                                 if (bio != null)
                                 {
                                     double rec = bio.GetValue(size.Midpoint, true);
@@ -156,7 +156,7 @@ namespace Mayfly.Fish.Explorer
                                 }
                                 else
                                 {
-                                    Log.Write(new ArgumentException("Using smooth age-length key without growth model on " + speciesRow.Species));
+                                    Log.Write(new ArgumentException("Using smooth age-length key without growth model on " + speciesRow.Name));
                                 }
                                 break;
                         }
@@ -164,7 +164,7 @@ namespace Mayfly.Fish.Explorer
                         if (p > 0)
                         {
                             obtained[ac, lc].Quantity = (int)((double)U * p);
-                            double mw = stack.Parent.FindMassModel(speciesRow.Species).GetValue(size.Midpoint);
+                            double mw = stack.Parent.FindMassModel(speciesRow.Name).GetValue(size.Midpoint);
                             obtained[ac, lc].Mass = obtained[ac, lc].Quantity * mw / 1000.0;
                         }
                     }

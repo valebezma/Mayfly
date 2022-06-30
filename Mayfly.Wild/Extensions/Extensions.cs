@@ -129,7 +129,7 @@ namespace Mayfly.Wild
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRootTaxon())
+            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRootTaxonRows())
             {
                 item.DropDownItems.Add(taxonItem(taxonRow, command));
             }

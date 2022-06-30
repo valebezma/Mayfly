@@ -124,7 +124,7 @@ namespace Mayfly.Benthos
         public static string GetDescription(this Data.IndividualRow indRow)
         {
             List<string> result = new List<string>();
-            result.Add(indRow.LogRow.SpeciesRow.KeyRecord.ShortName);
+            result.Add(indRow.LogRow.SpeciesRow.KeyRecord.CommonName);
             if (!indRow.IsTallyNull()) result.Add(string.Format("#{0}", indRow.Tally));
             if (!indRow.IsLengthNull()) result.Add(string.Format("L = {0}", indRow.Length));
             if (!indRow.IsMassNull()) result.Add(string.Format("W = {0}", indRow.Mass));
@@ -146,16 +146,13 @@ namespace Mayfly.Benthos
 
             foreach (Data.SpeciesRow dataSpcRow in dataSpcRows)
             {
-                SpeciesKey.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
-
-                speciesRow.Species = dataSpcRow.Species;
-
-                SpeciesKey.SpeciesRow equivalentRow = dataSpcRow.KeyRecord;
+                SpeciesKey.TaxonRow speciesRow = speciesKey.Taxon.NewSpeciesRow(dataSpcRow.Species);
+                SpeciesKey.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
 
                 if (equivalentRow != null)
                 {
                     if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
-                    if (!equivalentRow.IsNameNull()) speciesRow.Name = equivalentRow.Name;
+                    if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
                 }
 
                 //var logRows = dataSpcRow.GetLogRows();
@@ -212,7 +209,7 @@ namespace Mayfly.Benthos
                 //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
                 //}
 
-                speciesKey.Species.AddSpeciesRow(speciesRow);
+                speciesKey.Taxon.AddTaxonRow(speciesRow);
 
                 //if (Species.UserSettings.VisualConfirmationOnAutoUpdate)
                 //{

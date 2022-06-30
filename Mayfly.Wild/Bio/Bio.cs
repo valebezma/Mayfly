@@ -36,13 +36,13 @@ namespace Mayfly.Wild
 
 
 
-        public Bio(Data data, SpeciesKey.SpeciesRow speciesRow, DataColumn yColumn)
+        public Bio(Data data, SpeciesKey.TaxonRow speciesRow, DataColumn yColumn)
         {
             if (yColumn.DataType != typeof(double))
                 throw new FormatException();
 
             Parent = data;
-            Species = speciesRow.Species;
+            Species = speciesRow.Name;
             nameY = yColumn.Caption;
 
             RefreshMeta();

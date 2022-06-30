@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         //public FishingGearType SelectedSamplerType { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         public AgeComposition Structure { get; internal set; }
 
@@ -59,16 +59,16 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardVirtualPopulation(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
+        public WizardVirtualPopulation(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
+            labelStart.ResetFormatted(SpeciesRow.CommonName);
 
             Log.Write(EventType.WizardStarted, "VPA wizard is started for {0}.", 
-                speciesRow.Species);
+                speciesRow.Name);
         }
 
 
@@ -396,10 +396,10 @@ namespace Mayfly.Fish.Explorer
             //pageCatches.AllowNext = AnnualCompositions.Length > 0;
             //labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            //double m = Service.GetNaturalMortality(SpeciesRow.Species);
+            //double m = Service.GetNaturalMortality(SpeciesRow.Name);
             //if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            //double f = Service.GetFishingMortality(SpeciesRow.Species);
+            //double f = Service.GetFishingMortality(SpeciesRow.Name);
             //if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             ////pageCohorts.SetNavigation(true);
@@ -529,10 +529,10 @@ namespace Mayfly.Fish.Explorer
             pageCatches.AllowNext = AnnualCompositions.Length > 0;
             labelNoData.Visible = AnnualCompositions.Length == 0;
 
-            double m = Service.GetNaturalMortality(SpeciesRow.Species);
+            double m = Service.GetNaturalMortality(SpeciesRow.Name);
             if (!double.IsNaN(m)) numericUpDownM.Value = (decimal)m;
 
-            double f = Service.GetFishingMortality(SpeciesRow.Species);
+            double f = Service.GetFishingMortality(SpeciesRow.Name);
             if (!double.IsNaN(f)) numericUpDownF.Value = (decimal)f;
 
             //pageCohorts.SetNavigation(true);
@@ -583,8 +583,8 @@ namespace Mayfly.Fish.Explorer
 
         private void pageVpa_Commit(object sender, WizardPageConfirmEventArgs e)
         {
-            Service.SaveNaturalMortality(SpeciesRow.Species, (double)numericUpDownM.Value);
-            Service.SaveFishingMortality(SpeciesRow.Species, (double)numericUpDownF.Value);
+            Service.SaveNaturalMortality(SpeciesRow.Name, (double)numericUpDownM.Value);
+            Service.SaveFishingMortality(SpeciesRow.Name, (double)numericUpDownF.Value);
 
             Survivors = new List<AgeComposition>();
 
@@ -701,7 +701,7 @@ namespace Mayfly.Fish.Explorer
             ((Report)e.Result).Run();
             pageReport.SetNavigation(true);
             Log.Write(EventType.WizardEnded, "VPA wizard is finished for {0}. Last years survivors quantity is calculated {1}.",
-                SpeciesRow.Species, Survivors.Last().TotalQuantity);
+                SpeciesRow.Name, Survivors.Last().TotalQuantity);
             if (!UserSettings.KeepWizard) Close();
         }
 

@@ -24,14 +24,6 @@ namespace Mayfly.Controls
 
 
 
-        public void StartProcessing(int max, string process)
-        {
-            SetStatus(process);
-            SetProgressMax(max);
-            SetProgress(0);
-        }
-
-
 
         delegate void TextEventHandler(Label label, string text);
 

@@ -57,7 +57,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Composition GetComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Composition example)
+        public static Composition GetComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Composition example)
         {
             if (example is LengthComposition)
             {
@@ -80,14 +80,14 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static LengthComposition GetLengthCompositionFrame(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, double interval)
+        public static LengthComposition GetLengthCompositionFrame(this CardStack stack, SpeciesKey.TaxonRow speciesRow, double interval)
         {
-            return new LengthComposition(speciesRow.Species,
+            return new LengthComposition(speciesRow.Name,
                 stack.LengthMin(speciesRow), stack.LengthMax(speciesRow),
                 interval);
         }
 
-        public static LengthComposition GetLengthComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, double interval)
+        public static LengthComposition GetLengthComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, double interval)
         {
             return stack.GetLengthComposition(speciesRow, 
                 interval,
@@ -95,10 +95,10 @@ namespace Mayfly.Fish.Explorer
                 stack.LengthMax(speciesRow));
         }
 
-        public static LengthComposition GetLengthComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, 
+        public static LengthComposition GetLengthComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, 
             double interval, double min, double max)
         {
-            LengthComposition result = stack.GetStatisticComposition(speciesRow, interval, min, max, (s, i) => { return stack.Quantity(s, i); }, speciesRow.Species);
+            LengthComposition result = stack.GetStatisticComposition(speciesRow, interval, min, max, (s, i) => { return stack.Quantity(s, i); }, speciesRow.Name);
 
             foreach (SizeClass group in result)
             {
@@ -106,7 +106,7 @@ namespace Mayfly.Fish.Explorer
                 //if (group.Quantity == 0) continue;
                 group.MassSample = stack.MassSample(speciesRow, group.Size);
                 double w = group.MassSample.Count > 0 ? group.MassSample.Mean :
-                   stack.Parent.FindMassModel(speciesRow.Species).GetValue(group.Size.Midpoint);
+                   stack.Parent.FindMassModel(speciesRow.Name).GetValue(group.Size.Midpoint);
                 group.Mass = group.Quantity > 0 ? group.Quantity * w / 1000.0 : 0;
                 group.SetSexualComposition(
                     stack.Quantity(speciesRow, group.Size, Sex.Juvenile),
@@ -117,7 +117,7 @@ namespace Mayfly.Fish.Explorer
             //if (max < min)
             //    throw new AgeArgumentException("Wrong length limits");
 
-            //LengthComposition result = new LengthComposition(speciesRow.Species, 
+            //LengthComposition result = new LengthComposition(speciesRow.Name, 
             //    min, max, interval);
 
             //foreach (SizeClass group in result)
@@ -126,7 +126,7 @@ namespace Mayfly.Fish.Explorer
             //    if (group.Quantity == 0) continue;
             //    group.MassSample = stack.MassSample(speciesRow, group.Size);
             //    double w = group.MassSample.Count > 0 ? group.MassSample.Mean :
-            //        Parent.WeightModels.GetValue(speciesRow.Species, group.Size.Midpoint);
+            //        Parent.WeightModels.GetValue(speciesRow.Name, group.Size.Midpoint);
             //    group.Mass = group.Quantity > 0 ? group.Quantity * w / 1000.0 : 0;
             //    group.SetSexualComposition(
             //        stack.Quantity(speciesRow, group.Size, Sex.Juvenile),
@@ -137,9 +137,9 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, 
+        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, 
             double interval, double min, double max, 
-            Func<SpeciesKey.SpeciesRow, Interval, int> counter, string name)
+            Func<SpeciesKey.TaxonRow, Interval, int> counter, string name)
         {
             return LengthComposition.Get(interval, min, max, (size) => { return counter.Invoke(speciesRow, size); }, name);
 
@@ -157,9 +157,9 @@ namespace Mayfly.Fish.Explorer
             //return result;
         }
 
-        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, 
+        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, 
             double interval, 
-            Func<SpeciesKey.SpeciesRow, Interval, int> counter, string name)
+            Func<SpeciesKey.TaxonRow, Interval, int> counter, string name)
         {
             return stack.GetStatisticComposition(speciesRow, 
                 interval,
@@ -167,8 +167,8 @@ namespace Mayfly.Fish.Explorer
                 stack.LengthMax(speciesRow), counter, name);
         }
 
-        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow,  
-            Func<SpeciesKey.SpeciesRow, Interval, int> counter, string name)
+        public static LengthComposition GetStatisticComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow,  
+            Func<SpeciesKey.TaxonRow, Interval, int> counter, string name)
         {
             return stack.GetStatisticComposition(speciesRow, 
                 UserSettings.SizeInterval,
@@ -178,20 +178,20 @@ namespace Mayfly.Fish.Explorer
          
 
 
-        public static AgeComposition GetAgeCompositionFrame(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static AgeComposition GetAgeCompositionFrame(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
-            return new AgeComposition(speciesRow.Species,
+            return new AgeComposition(speciesRow.Name,
                 stack.AgeMin(speciesRow), stack.AgeMax(speciesRow));
         }
 
-        public static AgeComposition GetAgeComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static AgeComposition GetAgeComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             return stack.GetAgeComposition(speciesRow,
                 stack.AgeMin(speciesRow, true),
                 stack.AgeMax(speciesRow, true));
         }
 
-        public static AgeKey GetAgeComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Age start, Age end)
+        public static AgeKey GetAgeComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Age start, Age end)
         {
             if (end <= start)
                 throw new AgeArgumentException("Wrong age limits");
@@ -215,9 +215,9 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static AgeComposition GetSampleAgeComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static AgeComposition GetSampleAgeComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
-            AgeComposition result = new AgeComposition(speciesRow.Species,
+            AgeComposition result = new AgeComposition(speciesRow.Name,
                 stack.AgeMin(speciesRow, false), stack.AgeMax(speciesRow, false));
 
             foreach (AgeGroup group in result)
@@ -236,7 +236,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, SpeciesKey.SpeciesRow speciesRow,
+        public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, SpeciesKey.TaxonRow speciesRow,
             FishSamplerType samplerType, GearWeightType weightType, ExpressionVariant variant)
         {
             List<CardStack> annualStacks = new List<CardStack>();
@@ -250,7 +250,7 @@ namespace Mayfly.Fish.Explorer
             return stack.GetAnnualAgeCompositions(speciesRow, samplerType, annualStacks.ToArray(), weightType, variant);
         }
 
-        public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, SpeciesKey.SpeciesRow speciesRow,
+        public static List<Composition> GetAnnualAgeCompositions(this CardStack stack, SpeciesKey.TaxonRow speciesRow,
             FishSamplerType samplerType, CardStack[] annualStacks, GearWeightType weightType, ExpressionVariant variant)
         {
             List<Composition> result = new List<Composition>();
@@ -281,7 +281,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static List<Cohort> GetCohorts(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, FishSamplerType samplerType, GearWeightType weightType, ExpressionVariant variant)
+        public static List<Cohort> GetCohorts(this CardStack stack, SpeciesKey.TaxonRow speciesRow, FishSamplerType samplerType, GearWeightType weightType, ExpressionVariant variant)
         {
             Composition[] annualCompositions = stack.GetAnnualAgeCompositions(speciesRow, samplerType, weightType, variant).ToArray();
             return annualCompositions.GetCohorts();
@@ -290,9 +290,9 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Composition GetSexualCompositionFrame(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static Composition GetSexualCompositionFrame(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
-            Composition result = new Composition(speciesRow.Species);
+            Composition result = new Composition(speciesRow.Name);
 
             foreach (Sex sex in new Sex[] { Sex.Juvenile, Sex.Male, Sex.Female })
             {
@@ -303,9 +303,9 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static Composition GetSexualComposition(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static Composition GetSexualComposition(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
-            Composition result = new Composition(speciesRow.Species);
+            Composition result = new Composition(speciesRow.Name);
 
             foreach (Sex sex in new Sex[] { Sex.Juvenile, Sex.Male, Sex.Female })
             {
@@ -361,7 +361,7 @@ namespace Mayfly.Fish.Explorer
         //}
 
 
-        public static SpeciesComposition GetClassedComposition(this IEnumerable<CardStack> classedStacks, SpeciesKey.SpeciesRow speciesRow, FishSamplerType samplerType, UnitEffort ue)
+        public static SpeciesComposition GetClassedComposition(this IEnumerable<CardStack> classedStacks, SpeciesKey.TaxonRow speciesRow, FishSamplerType samplerType, UnitEffort ue)
         {
             SpeciesComposition result = new SpeciesComposition();
 
@@ -398,7 +398,7 @@ namespace Mayfly.Fish.Explorer
 
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, SpeciesKey.SpeciesRow speciesRow)
+            GearWeightType weight, ExpressionVariant variant, Composition example, SpeciesKey.TaxonRow speciesRow)
         {
             CompositionEqualizer result = new CompositionEqualizer(example);
 
@@ -425,7 +425,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static CompositionEqualizer GetWeightedComposition(this CardStack[] classedStacks,
-            GearWeightType weight, ExpressionVariant variant, Composition example, SpeciesKey.SpeciesRow speciesRow, double totalMass)
+            GearWeightType weight, ExpressionVariant variant, Composition example, SpeciesKey.TaxonRow speciesRow, double totalMass)
         {
             CompositionEqualizer result = classedStacks.GetWeightedComposition(weight, variant, example,
                 speciesRow);
@@ -457,7 +457,7 @@ namespace Mayfly.Fish.Explorer
         }
 
         public static Category[] GetWeightedCatches(this CardStack[] classedStacks,
-            GearWeightType weight, FishSamplerType st, ExpressionVariant ev, SpeciesKey.SpeciesRow speciesRow)
+            GearWeightType weight, FishSamplerType st, ExpressionVariant ev, SpeciesKey.TaxonRow speciesRow)
         {
             List<Category> result = new List<Category>();
 

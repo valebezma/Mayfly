@@ -65,21 +65,20 @@ namespace Mayfly.Controls
             {
                 Look.SetStatus(Default);
             }
-
         }
 
         delegate void EventHandler();
 
-        delegate void StatusSetter(int i, string s);
+        delegate void StatusSetter(string s);
 
-        public void StartProcessing(int max, string process)
+        public void StartProcessing(string process)
         {
             if (ProgressBar == null) return;
 
             if (ProgressBar.Owner.InvokeRequired)
             {
                 StatusSetter setter = new StatusSetter(StartProcessing);
-                ProgressBar.Owner.Invoke(setter, new object[] { max, process });
+                ProgressBar.Owner.Invoke(setter, new object[] { process });
             }
             else
             {
@@ -91,8 +90,6 @@ namespace Mayfly.Controls
                         ThumbnailProgressState.Indeterminate);
                 }
 
-                ProgressBar.Minimum = 0;
-                ProgressBar.Maximum = max;
                 ProgressBar.Visible = true;
 
                 if (ProgressBar.ProgressBar.FindForm() != null)
@@ -100,12 +97,34 @@ namespace Mayfly.Controls
 
                 if (Look != null)
                 {
-                    Look.StartProcessing(max, process);
+                    Look.SetStatus(process);
                 }
 
                 Default = process;
-
                 ResetStatus();
+            }
+        }
+
+        delegate void ProgressMaximumSetter(int max);
+
+        public void SetProgressMaximum(int max)
+        {
+            if (ProgressBar == null) return;
+
+            if (ProgressBar.Owner.InvokeRequired)
+            {
+                ProgressMaximumSetter setter = new ProgressMaximumSetter(SetProgressMaximum);
+                ProgressBar.Owner.Invoke(setter, new object[] { max });
+            }
+            else
+            {
+                ProgressBar.Minimum = 0;
+                ProgressBar.Maximum = max;
+
+                if (Look != null)
+                {
+                    Look.SetProgressMax(max);
+                }
             }
         }
 

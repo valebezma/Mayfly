@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         Data Data { get; set; }
 
-        private SpeciesKey.SpeciesRow SelectedSpecies;
+        private SpeciesKey.TaxonRow SelectedSpecies;
 
 
 
@@ -38,13 +38,13 @@ namespace Mayfly.Fish.Explorer
 
             foreach (Data.SpeciesRow speciesRow in Data.Species)
             {
-                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.ShortName);
+                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.CommonName);
             }
 
             UpdateSample(SelectedSpecies);
         }
 
-        private void UpdateSample(SpeciesKey.SpeciesRow speciesRow)
+        private void UpdateSample(SpeciesKey.TaxonRow speciesRow)
         {
             spreadSheetSample.Rows.Clear();
 

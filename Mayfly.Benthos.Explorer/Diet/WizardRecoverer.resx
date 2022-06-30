@@ -328,7 +328,7 @@
     <value>2</value>
   </data>
   <data name="labelLoaded.Text" xml:space="preserve">
-    <value>Extra cards contain data on {0} taxa / species.
+    <value>Extra cards contain data on {0} taxon / species.
 {1} species are in common with diet.</value>
   </data>
   <data name="labelLoaded.Visible" type="System.Boolean, mscorlib">
@@ -506,7 +506,7 @@
     <value>0</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Here is information from extra cards you have loaded. Turn back to load more cards or proceed to specify taxa association. Application of raw individual mass allows to recover weight of individuals anyway if any taxa is associated.</value>
+    <value>Here is information from extra cards you have loaded. Turn back to load more cards or proceed to specify taxon association. Application of raw individual mass allows to recover weight of individuals anyway if any taxon is associated.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -662,7 +662,7 @@
     <value>1</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>Here you may set association between taxa in diet and natural cards. Select row and click "Set association" to select associated species. Click "Reset" to make default association which is according full match of species name. Previously selected taxa also selected.</value>
+    <value>Here you may set association between taxon in diet and natural cards. Select row and click "Set association" to select associated species. Click "Reset" to make default association which is according full match of species name. Previously selected taxon also selected.</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -683,7 +683,7 @@
     <value>True</value>
   </metadata>
   <data name="columnAsscSpecies.HeaderText" xml:space="preserve">
-    <value>Taxa / species</value>
+    <value>Taxon / species</value>
   </data>
   <data name="columnAsscSpecies.Width" type="System.Int32, mscorlib">
     <value>150</value>
@@ -692,7 +692,7 @@
     <value>True</value>
   </metadata>
   <data name="columnAsscAssociate.HeaderText" xml:space="preserve">
-    <value>Associated taxa / species</value>
+    <value>Associated taxon / species</value>
   </data>
   <data name="spreadSheetAssociation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 65</value>
@@ -725,7 +725,7 @@
     <value>4</value>
   </data>
   <data name="wizardPageCoordination.Text" xml:space="preserve">
-    <value>Taxa association</value>
+    <value>Taxon association</value>
   </data>
   <data name="&gt;&gt;wizardPageCoordination.Name" xml:space="preserve">
     <value>wizardPageCoordination</value>

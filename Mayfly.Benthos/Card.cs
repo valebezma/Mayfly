@@ -22,7 +22,7 @@ namespace Mayfly.Benthos
 
         private string filename;
 
-        private SpeciesKey.SpeciesRow SpeciesToOpen;
+        private SpeciesKey.TaxonRow SpeciesToOpen;
 
         public string FileName
         {
@@ -870,7 +870,7 @@ namespace Mayfly.Benthos
 
         Saving:
 
-            SpeciesKey.SpeciesRow speciesRow = UserSettings.SpeciesIndex.FindBySpecies(
+            SpeciesKey.TaxonRow speciesRow = UserSettings.SpeciesIndex.FindBySpecies(
                     gridRow.Cells[ColumnSpecies.Index].Value.ToString());
 
             if (speciesRow == null)
@@ -891,10 +891,10 @@ namespace Mayfly.Benthos
             else
             {
                 // There is such species in index you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -1352,7 +1352,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        public int InsertSpecies(SpeciesKey.SpeciesRow species)
+        public int InsertSpecies(SpeciesKey.TaxonRow species)
         {
             int speciesIndex = -1;
 
@@ -2173,7 +2173,7 @@ namespace Mayfly.Benthos
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                SpeciesKey.SpeciesRow clipSpeciesRow = UserSettings.SpeciesIndex.FindBySpecies(clipLogRow.SpeciesRow.Species);
+                SpeciesKey.TaxonRow clipSpeciesRow = UserSettings.SpeciesIndex.FindBySpecies(clipLogRow.SpeciesRow.Species);
 
                 if (clipSpeciesRow == null)
                 {
@@ -2184,9 +2184,9 @@ namespace Mayfly.Benthos
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

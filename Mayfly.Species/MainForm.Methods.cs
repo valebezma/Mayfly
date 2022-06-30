@@ -37,20 +37,17 @@ namespace Mayfly.Species
 
         public bool IsChanged { set; get; }
 
-        public SpeciesKey.TaxonRow pickedTaxon;
-        ToolTip toolTip = new ToolTip();
-        string message = string.Empty;
+        bool wasPlain;
 
 
 
         private void loadData(string filename)
         {
             FileName = filename;
+            Data.Read(FileName);
 
             listViewRepresence.Groups.Clear();
-            treeViewDerivates.Nodes.Clear();
-            treeViewDerivates.Enabled = false;
-            processDisplay.StartProcessing(100, Resources.Interface.StatusLoadingTree);
+            taxaTreeView.LoadTree();
 
             backTreeLoader.RunWorkerAsync();
         }
@@ -97,9 +94,10 @@ namespace Mayfly.Species
         {
             FileName = null;
             Data = new SpeciesKey();
+            taxaTreeView.Bind(Data);
 
             listViewRepresence.Items.Clear();
-            treeViewDerivates.Nodes.Clear();
+            taxaTreeView.Nodes.Clear();
 
             clearKey();
             clearPictures();
@@ -109,8 +107,9 @@ namespace Mayfly.Species
 
         private ListViewGroup getGroup(SpeciesKey.TaxonRow taxonRow)
         {
-            return new ListViewGroup(taxonRow.InterfaceString)
+            return new ListViewGroup()
             {
+                Header = taxonRow.InterfaceString,
                 Name = taxonRow.Name,
                 HeaderAlignment = HorizontalAlignment.Center,
                 Tag = taxonRow
@@ -132,65 +131,80 @@ namespace Mayfly.Species
 
         private delegate void AddGroupEventHandler(ListViewGroup group);
 
-
-
-        private TreeNode getTaxonTreeNode(SpeciesKey.TaxonRow taxonRow) //, bool representatives)
+        private void applyRename()
         {
-            TreeNode taxonNode = new TreeNode
+            foreach (ListViewGroup group in listViewRepresence.Groups)
             {
-                Tag = taxonRow,
-                Name = taxonRow.ID.ToString(),
-                Text = taxonRow.IsSpecies ? taxonRow.FullName : taxonRow.InterfaceString,
-                ContextMenuStrip = taxonRow.IsSpecies ? contextSpecies : contextTaxon
-            };
-
-            foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
-            {
-                if (derRow.IsSpecies) continue;
-                taxonNode.Nodes.Add(getTaxonTreeNode(derRow));
+                group.Header = group.Tag is SpeciesKey.TaxonRow tr ?
+                    tr.InterfaceString : 
+                    string.Format(Resources.Interface.VariaCount, Data.GetRootSpeciesRows().Length);
             }
-            
-            return taxonNode;
+
+            listViewRepresence.Shine();
         }
 
-        private void addNode(TreeNode node)
+
+
+        private void updateTaxonData(SpeciesKey.TaxonRow taxonRow)
         {
-            if (!treeViewDerivates.InvokeRequired)
+            if (taxonRow == null)
             {
-                treeViewDerivates.Nodes.Add(node);
+                labelSpecies.Text = 
+                labelClassification.Text = 
+                string.Empty;
             }
             else
             {
-                AddNodeEventHandler nodeAdder = new AddNodeEventHandler(addNode);
-                treeViewDerivates.Invoke(nodeAdder, new object[] { node });
+                if (!taxonRow.IsHigher) taxonRow = taxonRow.ValidRecord;
+
+                labelSpecies.Text = taxonRow.FullName;
+                labelClassification.SetPathAsText(taxonRow, "s");
+                updateRepresenceSpecies(taxonRow.GetSpeciesRows(true));
             }
         }
 
-        private delegate void AddNodeEventHandler(TreeNode node);
+        private void updateRepresenceSpecies(SpeciesKey.TaxonRow[] speciesRows)
+        {
+            wasPlain = checkBoxPlain.Checked;
+            taxaTreeView.Enabled = false; 
+            processDisplay.StartProcessing(Resources.Interface.StatusLoadingList);
 
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(backSpcLoader_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backSpcLoader_RunWorkerCompleted);
+            bw.RunWorkerAsync(speciesRows);
+            //if (!backSpcLoader.IsBusy)
+            //{
+            //    backSpcLoader.RunWorkerAsync(speciesRows);
+            //}
+        }
 
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void editSpecies(SpeciesKey.TaxonRow speciesRow)
         {
-            speciesRow = speciesRow.ValidSpeciesRow;
+            speciesRow = speciesRow.ValidRecord; 
 
             foreach (Form form in Application.OpenForms)
             {
-                if (form is EditSpecies editor && editor.SpeciesRow == speciesRow)
+                if (form is EditTaxon editor && editor.TaxonRow == speciesRow)
                 {
                     editor.BringToFront();
                     return;
                 }
             }
 
-            EditSpecies editSpecies = new EditSpecies(speciesRow);
+            EditTaxon editSpecies = new EditTaxon(speciesRow);
             editSpecies.FormClosed += new FormClosedEventHandler(editSpecies_FormClosed);
             editSpecies.Show(this);
         }
 
         private void editSpecies_FormClosed(object sender, FormClosedEventArgs e)
         {
-            EditSpecies editSpecies = (EditSpecies)sender;
+            EditTaxon editSpecies = (EditTaxon)sender;
 
             if (editSpecies.DialogResult == DialogResult.OK)
             {
@@ -198,19 +212,10 @@ namespace Mayfly.Species
 
                 // Update node in treeviewkeys
 
-                TreeNode carryNode = treeViewDerivates.Nodes.Find(editSpecies.SpeciesRow.ID.ToString(), true)?[0];
+                TreeNode carryNode = taxaTreeView.Nodes.Find(editSpecies.TaxonRow.ID.ToString(), true)?[0];
                 carryNode.Remove();
-                carryNode = getTaxonTreeNode(editSpecies.SpeciesRow);
-                if (editSpecies.SpeciesRow.TaxonRowParent == null)
-                {
-                    treeViewDerivates.Nodes.Add(carryNode);
-                }
-                else
-                {
-                    TreeNode dropNode = treeViewDerivates.Nodes.Find(editSpecies.SpeciesRow.TaxonRowParent.ID.ToString(), true)?[0];
-                    dropNode.Nodes.Add(carryNode);
-                }
-                treeViewDerivates.SelectedNode = carryNode;
+                carryNode = taxaTreeView.AddNode(editSpecies.TaxonRow);
+                taxaTreeView.SelectedNode = carryNode;
 
                 applyRename();
 
@@ -218,167 +223,14 @@ namespace Mayfly.Species
 
                 foreach (ListView listView in new ListView[] { listViewRepresence, listViewEngagement })
                 {
-                    ListViewItem item = listView.GetItem(editSpecies.SpeciesRow.ID.ToString());
+                    ListViewItem item = listView.GetItem(editSpecies.TaxonRow.ID.ToString());
                     if (item == null) continue;
 
-                    item.UpdateItem(editSpecies.SpeciesRow);
+                    item.UpdateItem(editSpecies.TaxonRow);
                     listView.Shine();
                 }
             }
         }
-
-        private void notifyInstantly(string format, params object[] values)
-        {
-            Point pt = Cursor.Position;
-            pt.Offset(-this.Location.X + 15, -this.Location.Y);
-            if (message != string.Format(format, values))
-            {
-                message = string.Format(format, values);
-                toolTip.Show(message, this, pt, 5000);
-            }
-        }
-
-        private void updateRepresenceSpecies(SpeciesKey.TaxonRow[] speciesRows)
-        {
-            treeViewDerivates.Enabled = false; 
-            processDisplay.StartProcessing(100, Resources.Interface.StatusLoadingList);
-
-            if (!backSpcLoader.IsBusy)
-            {
-                backSpcLoader.RunWorkerAsync(speciesRows);
-            }
-        }
-
-        private void applyRename(TreeNode node)
-        {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-            bw.RunWorkerAsync(node);
-        }
-
-        private void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            TreeNode node = (TreeNode)e.Argument;
-            SpeciesKey.TaxonRow taxonRow = (SpeciesKey.TaxonRow)((TreeNode)e.Argument).Tag;
-            applyRename(node, taxonRow.IsSpecies ? taxonRow.FullName : taxonRow.InterfaceString);
-            if (node.Parent != null) applyRename(node.Parent);
-        }
-
-        public void applyRename(TreeNode treeNode, string text)
-        {
-            if (treeNode == null || !treeNode.TreeView.InvokeRequired) { treeNode.Text = text; }
-            else {
-                TextSetEventHandler textSetter = new TextSetEventHandler(applyRename);
-                treeNode.TreeView.Invoke(textSetter, new object[] { treeNode, text });
-            }
-        }
-
-        private delegate void TextSetEventHandler(TreeNode treeNode, string text);
-
-        //private void applyRename(SpeciesKey.TaxonRow taxonRow)
-        //{
-        //    listViewRepresence.Groups[taxonRow.Name].Header = taxonRow.InterfaceString;
-        //    if (taxonRow.TaxonRowParent != null) applyRename(taxonRow.TaxonRowParent);
-        //}
-
-        private void applyRename()
-        {
-            foreach (ListViewGroup group in listViewRepresence.Groups)
-            {
-                if (group.Tag is SpeciesKey.TaxonRow tr)
-                {
-                    group.Header = tr.InterfaceString;
-                }
-                else
-                {
-                    group.Header = string.Format(Resources.Interface.VariaCount, Data.GetOrphans().Length);
-                }
-            }
-
-            listViewRepresence.Shine();
-        }
-
-        private void applySort(TreeNodeCollection nodes)
-        {
-            foreach (TreeNode tn in nodes)
-            {
-                if (tn.Tag is SpeciesKey.TaxonRow tr)
-                {
-                    if (tr.IsSpecies) continue;
-
-                    tr.Index = (tn.Index + 1) * 10;
-                    applySort(tn.Nodes);
-                }
-            }
-        }
-
-        private DragDropEffects checkSynonymyAvailability(SpeciesKey.TaxonRow[] minorSpecies, SpeciesKey.TaxonRow majorSpecies)
-        {
-            if (Array.IndexOf(minorSpecies, majorSpecies) > -1) // Carry species to itself
-            {
-                notifyInstantly(Resources.Interface.TipSpcToSpcSynonymUnableItself);
-                return DragDropEffects.None;
-            }
-            else if (!majorSpecies.IsSynonymyAvailable(minorSpecies))
-            {
-                notifyInstantly(Resources.Interface.TipSpcToSpcSynonymUnableSeparateBranch);
-                return DragDropEffects.None;
-            }
-            else
-            {
-                notifyInstantly(Resources.Interface.TipSpcToSpcSynonym,
-                    minorSpecies.Length == 1 ? minorSpecies[0].Name : string.Format(Resources.Interface.TipSpcMultiple, minorSpecies.Length),
-                    majorSpecies);
-                return DragDropEffects.Link;
-            }
-        }
-
-        //private void setSynonyms(SpeciesKey.TaxonRow[] minorSpecies, SpeciesKey.TaxonRow majorSpecies)
-        //{
-        //    foreach (SpeciesKey.TaxonRow speciesRow in minorSpecies)
-        //    {
-        //        if (majorSpecies != speciesRow)
-        //        {
-        //            speciesRow.TaxID = majorSpecies.ID;
-        //        }
-        //    }
-        //}
-
-        private void setParent(SpeciesKey.TaxonRow[] carryTaxonRows, SpeciesKey.TaxonRow targetTaxonRow)
-        {
-            TreeNode[] tt = treeViewDerivates.Nodes.Find(targetTaxonRow.ID.ToString(), true);
-            TreeNode targetNode = tt.Length > 0 ? tt[0] : null;
-
-            foreach (SpeciesKey.TaxonRow speciesRow in carryTaxonRows)
-            {
-                if (targetTaxonRow == speciesRow) continue;
-
-                tt = treeViewDerivates.Nodes.Find(speciesRow.ID.ToString(), true);
-                TreeNode carryNode = tt.Length > 0 ? tt[0] : null;
-
-                tt = treeViewDerivates.Nodes.Find(speciesRow.TaxonRowParent?.ID.ToString(), true);
-
-                speciesRow.TaxonRowParent = targetTaxonRow;
-
-                if (tt.Length > 0) applyRename(tt[0]);
-
-                if (carryNode != null)
-                {
-                    carryNode.Remove();
-                    if (targetNode != null) targetNode.Nodes.Add(getTaxonTreeNode(speciesRow));
-                }
-            }
-
-            //treeViewDerivates.Sort();
-            if (targetNode != null) applyRename(targetNode);
-            applyRename();
-        }
-
-
-
-
-
-
 
 
 

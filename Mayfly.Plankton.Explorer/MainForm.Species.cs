@@ -12,7 +12,7 @@ namespace Mayfly.Plankton.Explorer
     {
         SpeciesKey.BaseRow baseSpc;
 
-        SpeciesKey.TaxaRow[] taxaSpc;
+        SpeciesKey.TaxonRow[] taxonSpc;
 
         SpeciesKey.SpeciesRow[] variaSpc;
 
@@ -47,10 +47,10 @@ namespace Mayfly.Plankton.Explorer
 
                 string species = gridRow.Cells[columnSpcSpc.Index].Value as string;
 
-                SpeciesKey.TaxaRow taxaRow = SpeciesIndex.GetTaxon(species, baseRow);
+                SpeciesKey.TaxonRow taxonRow = SpeciesIndex.GetTaxon(species, baseRow);
 
-                gridRow.Cells[gridColumn.Index].Value = (taxaRow == null) ?
-                    Species.Resources.Interface.Varia : taxaRow.TaxonName;
+                gridRow.Cells[gridColumn.Index].Value = (taxonRow == null) ?
+                    Species.Resources.Interface.Varia : taxonRow.TaxonName;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Mayfly.Plankton.Explorer
         {
             IsBusy = true;
             spreadSheetSpc.StartProcessing(
-                baseSpc == null ? data.Species.Count : (taxaSpc.Length + 1),
+                baseSpc == null ? data.Species.Count : (taxonSpc.Length + 1),
                 Wild.Resources.Interface.Process.SpeciesProcessing);
             spreadSheetSpc.Rows.Clear();
 
@@ -87,7 +87,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private void LoadTaxaList()
+        private void LoadTaxonList()
         {
             // Clear list
             comboBoxSpc.Items.Clear();
@@ -102,10 +102,10 @@ namespace Mayfly.Plankton.Explorer
                 ToolStripMenuItem item = new ToolStripMenuItem(baseRow.BaseName);
                 item.Click += BaseItem_Click;
                 item.Tag = baseRow;
-                menuItemSpcTaxa.DropDownItems.Add(item);
+                menuItemSpcTaxon.DropDownItems.Add(item);
             }
 
-            menuItemSpcTaxa.Enabled = menuItemSpcTaxa.DropDownItems.Count > 0;
+            menuItemSpcTaxon.Enabled = menuItemSpcTaxon.DropDownItems.Count > 0;
         }
 
         private void SpcLoader_DoWork(object sender, DoWorkEventArgs e)
@@ -135,9 +135,9 @@ namespace Mayfly.Plankton.Explorer
             }
             else
             {
-                for (int i = 0; i < taxaSpc.Length; i++)
+                for (int i = 0; i < taxonSpc.Length; i++)
                 {
-                    result.Add(LogRow(taxaSpc[i]));
+                    result.Add(LogRow(taxonSpc[i]));
                     (sender as BackgroundWorker).ReportProgress(i + 1);
                 }
                 result.Add(LogRowVaria());

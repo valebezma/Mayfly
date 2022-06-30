@@ -313,7 +313,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, SpeciesKey.SpeciesRow speciesRow, Data data)
+        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, SpeciesKey.TaxonRow speciesRow, Data data)
         {
             string categoryType = composition.GetCategoryType();
 
@@ -326,7 +326,7 @@ namespace Mayfly.Fish.Explorer
 
             if (composition[0] is AgeGroup)
             {
-                ContinuousBio bio = data.FindGrowthModel(speciesRow.Species);
+                ContinuousBio bio = data.FindGrowthModel(speciesRow.Name);
 
                 if (UserSettings.SuggestAge && bio != null && bio.CombinedData.Regression != null)
                 {
@@ -379,8 +379,8 @@ namespace Mayfly.Fish.Explorer
 
             //if (CatchesComposition.NonEmptyCount > 1)
             //{
-            //    Data.SpeciesRow mostAbundant = Data.Parent.Species.FindBySpecies(CatchesComposition.MostAbundant.Name);
-            //    Data.SpeciesRow mostAbundantByMass = Data.Parent.Species.FindBySpecies(CatchesComposition.MostAbundantByMass.Name);
+            //    Data.SpeciesRow mostAbundant = Data.Parent.FindBySpecies(CatchesComposition.MostAbundant.Name);
+            //    Data.SpeciesRow mostAbundantByMass = Data.Parent.FindBySpecies(CatchesComposition.MostAbundantByMass.Name);
 
             //    report.AddParagraph(
             //        string.Format(Resources.Reports.GearClass.Paragraph2,

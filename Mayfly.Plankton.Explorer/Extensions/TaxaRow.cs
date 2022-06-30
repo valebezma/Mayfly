@@ -9,9 +9,9 @@ using Mayfly.Wild;
 
 namespace Mayfly.Extensions
 {
-    public static class TaxaRowExtensions
+    public static class TaxonRowExtensions
     {
-        public static double Occurrence(this SpeciesKey.TaxaRow taxaRow, Data data)
+        public static double Occurrence(this SpeciesKey.TaxonRow taxonRow, Data data)
         {
             int present = 0;
 
@@ -19,7 +19,7 @@ namespace Mayfly.Extensions
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    if (taxaRow.Includes(logRow.SpeciesRow.Species))
+                    if (taxonRow.Includes(logRow.SpeciesRow.Species))
                     {
                         present++;
                         break;

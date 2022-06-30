@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         public List<Cohort> Cohorts;
 
@@ -46,13 +46,13 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardMortalityCohorts(CardStack data, SpeciesKey.SpeciesRow speciesRow) : this()
+        public WizardMortalityCohorts(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
+            labelStart.ResetFormatted(SpeciesRow.CommonName);
         }
 
 
@@ -304,7 +304,7 @@ namespace Mayfly.Fish.Explorer
         {
             pageReport.SetNavigation(false);
             Log.Write(EventType.WizardEnded, "Growth Wizard is finished for {0} with {1} models.",
-                SpeciesRow.Species, CatchModels.Count);
+                SpeciesRow.Name, CatchModels.Count);
             reporter.RunWorkerAsync();
             e.Cancel = true;
         }

@@ -176,7 +176,7 @@ namespace Mayfly.Wild
                 //table.StartCellOfClass("left", 
                 //    logRow.SpeciesRow.GetKeyRecord(key).ReportShortPresentation);
 
-                string logEntry = logRow.SpeciesRow.KeyRecord.ScientificNameReport;
+                string logEntry = logRow.SpeciesRow.KeyRecord.FullNameReport;
 
                 if (!logRow.IsCommentsNull())
                 {

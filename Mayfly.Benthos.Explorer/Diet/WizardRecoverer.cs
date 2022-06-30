@@ -256,7 +256,7 @@ namespace Mayfly.Benthos.Explorer
             }
             else
             {
-                SpeciesKey.SpeciesRow[] speciesRows = (SpeciesKey.SpeciesRow[])gridCell.Tag;
+                SpeciesKey.TaxonRow[] speciesRows = (SpeciesKey.TaxonRow[])gridCell.Tag;
                 if (speciesRows.Length == 0)
                 {
                     gridCell.Value = null;
@@ -266,12 +266,12 @@ namespace Mayfly.Benthos.Explorer
                 string pool = string.Empty;
                 string toolTip = string.Empty;
 
-                foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+                foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
                 {
-                    pool += string.Format("{0} ({1}); ", speciesRow.Species,
+                    pool += string.Format("{0} ({1}); ", speciesRow.Name,
                         NaturalData.GetStack().Quantity(speciesRow));
 
-                    toolTip += string.Format("{0} ({1})\r\n", speciesRow.Species,
+                    toolTip += string.Format("{0} ({1})\r\n", speciesRow.Name,
                         NaturalData.GetStack().Quantity(speciesRow));
                 }
 
@@ -280,14 +280,14 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private SpeciesKey.SpeciesRow[] Associates(SpeciesKey.SpeciesRow speciesRow)
+        private SpeciesKey.TaxonRow[] Associates(SpeciesKey.TaxonRow speciesRow)
         {
             foreach (DataGridViewRow gridRow in spreadSheetAssociation.Rows)
             {
-                if (((string)gridRow.Cells[columnAsscSpecies.Index].Tag) == speciesRow.Species)
+                if (((string)gridRow.Cells[columnAsscSpecies.Index].Tag) == speciesRow.Name)
                 {
                     if (gridRow.Cells[columnAsscAssociate.Index].Tag == null) return null;
-                    return (SpeciesKey.SpeciesRow[])gridRow.Cells[columnAsscAssociate.Index].Tag;
+                    return (SpeciesKey.TaxonRow[])gridRow.Cells[columnAsscAssociate.Index].Tag;
                 }
             }
 
@@ -344,18 +344,18 @@ namespace Mayfly.Benthos.Explorer
         //    foreach (DataGridViewRow gridRow in spreadSheetPriority.Rows)
         //    {
         //        // Point species
-        //        //SpeciesKey.SpeciesRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
-        //        SpeciesKey.SpeciesRow speciesRow = Benthos.UserSettings.SpeciesIndex.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
+        //        //SpeciesKey.TaxonRow speciesRow = BadData.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
+        //        SpeciesKey.TaxonRow speciesRow = Benthos.UserSettings.SpeciesIndex.Species.FindBySpecies((string)gridRow.Cells[columnInitSpecies.Index].Value);
         //        if (speciesRow == null) continue;
 
         //        // Select associates
-        //        SpeciesKey.SpeciesRow[] associates = Associates(speciesRow);
+        //        SpeciesKey.TaxonRow[] associates = Associates(speciesRow);
 
         //        if (associates == null) continue;
 
         //        // Define all corresponding individuals
         //        List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
-        //        foreach (SpeciesKey.SpeciesRow associate in associates)
+        //        foreach (SpeciesKey.TaxonRow associate in associates)
         //        {
         //            weightedIndividuals.AddRange(associate.GetIndividualRows());
         //        }
@@ -453,7 +453,7 @@ namespace Mayfly.Benthos.Explorer
 
         //                int weighted = 0;// NaturalData.Weighted(speciesRow);
 
-        //                foreach (SpeciesKey.SpeciesRow associate in associates)
+        //                foreach (SpeciesKey.TaxonRow associate in associates)
         //                {
         //                    weighted += NaturalData.GetStack().Weighted(associate);
         //                }
@@ -818,14 +818,14 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        private void taxaSelector_FormClosing(object sender, FormClosingEventArgs e)
+        private void taxonSelector_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SpeciesSelector taxaSelector = (SpeciesSelector)sender;
+            SpeciesSelector taxonSelector = (SpeciesSelector)sender;
             foreach (DataGridViewCell gridCell in spreadSheetAssociation.SelectedCells)
             {
                 if (gridCell.OwningColumn == columnAsscAssociate)
                 {
-                    gridCell.Tag = taxaSelector.SelectedSpecies;
+                    gridCell.Tag = taxonSelector.SelectedSpecies;
                     UpdateAssociates(gridCell);
                 }
             }
@@ -838,8 +838,8 @@ namespace Mayfly.Benthos.Explorer
 
         private void RunCoordination()
         {
-            SpeciesSelector taxaSelector = new SpeciesSelector(NaturalData);
-            taxaSelector.FormClosing += taxaSelector_FormClosing;
+            SpeciesSelector taxonSelector = new SpeciesSelector(NaturalData);
+            taxonSelector.FormClosing += taxonSelector_FormClosing;
 
             List<Data.SpeciesRow> tagged = new List<Data.SpeciesRow>();
             foreach (DataGridViewCell gridCell in spreadSheetAssociation.SelectedCells)
@@ -852,8 +852,8 @@ namespace Mayfly.Benthos.Explorer
                     }
                 }
             }
-            taxaSelector.SelectedSpecies = tagged.ToArray();
-            taxaSelector.ShowDialog(this);
+            taxonSelector.SelectedSpecies = tagged.ToArray();
+            taxonSelector.ShowDialog(this);
 
         }
 
@@ -912,13 +912,13 @@ namespace Mayfly.Benthos.Explorer
             //    Wild.Resources.Interface.MassRecover.ColSample);
             //table1.EndHeader();
 
-            //foreach (SpeciesKey.SpeciesRow speciesRow in BadData.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
+            //foreach (SpeciesKey.TaxonRow speciesRow in BadData.Species.GetPhylogeneticallySorted(Benthos.UserSettings.SpeciesIndex))
             //{
             //    table1.StartRow();
             //    table1.AddCell(speciesRow.Species);
             //    table1.AddCellRight(BadData.GetStack().Quantity(speciesRow));
 
-            //    SpeciesKey.SpeciesRow[] associates = Associates(speciesRow);
+            //    SpeciesKey.TaxonRow[] associates = Associates(speciesRow);
 
             //    if (associates == null)
             //    {
@@ -929,7 +929,7 @@ namespace Mayfly.Benthos.Explorer
             //    {
             //        int associatedSample = 0;
             //        List<string> associateNames = new List<string>();
-            //        foreach (SpeciesKey.SpeciesRow associate in associates)
+            //        foreach (SpeciesKey.TaxonRow associate in associates)
             //        {
             //            associatedSample += associate.TotalQuantity;
             //            associateNames.Add(associate.Species);

@@ -319,56 +319,56 @@ namespace Mayfly.Fish
             {
                 if (logRow == LogRow) continue;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.ShortName);
+                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.CommonName);
                 item.Tag = logRow;
                 item.Click += redefineDomesticSpecies_Click;
                 contextItemRedefine.DropDownItems.Insert(0, item);
             }
 
-            // Insert index
-            contextRedefineAll.DropDownItems.Clear();
-            contextRedefineAll.Visible = UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength;
-            if (UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength)
-            {
-                foreach (SpeciesKey.SpeciesRow speciesRow in UserSettings.SpeciesIndex.Species.Rows)
-                {
-                    ToolStripItem speciesItem = new ToolStripMenuItem();
-                    speciesItem.Tag = speciesRow;
-                    speciesItem.Text = speciesRow.ShortName;
-                    speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
-                    contextRedefineAll.DropDownItems.Add(speciesItem);
-                }
+            //// Insert index
+            //contextRedefineAll.DropDownItems.Clear();
+            //contextRedefineAll.Visible = UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength;
+            //if (UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength)
+            //{
+            //    foreach (SpeciesKey.TaxonRow speciesRow in UserSettings.SpeciesIndex.Species.Rows)
+            //    {
+            //        ToolStripItem speciesItem = new ToolStripMenuItem();
+            //        speciesItem.Tag = speciesRow;
+            //        speciesItem.Text = speciesRow.CommonName;
+            //        speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
+            //        contextRedefineAll.DropDownItems.Add(speciesItem);
+            //    }
 
-                contextRedefineAll.SortItems();
-            }
+            //    contextRedefineAll.SortItems();
+            //}
 
-            foreach (SpeciesKey.BaseRow baseRow in UserSettings.SpeciesIndex.Base.Rows)
-            {
-                ToolStripMenuItem baseItem = new ToolStripMenuItem();
-                baseItem.Text = baseRow.BaseName;
+            //foreach (SpeciesKey.BaseRow baseRow in UserSettings.SpeciesIndex.Base.Rows)
+            //{
+            //    ToolStripMenuItem baseItem = new ToolStripMenuItem();
+            //    baseItem.Text = baseRow.BaseName;
 
-                foreach (SpeciesKey.TaxaRow taxaRow in baseRow.GetTaxaRows())
-                {
-                    ToolStripMenuItem taxaItem = new ToolStripMenuItem();
-                    taxaItem.Text = taxaRow.TaxonName;
+            //    foreach (SpeciesKey.TaxonRow taxonRow in baseRow.GetTaxonRows())
+            //    {
+            //        ToolStripMenuItem taxonItem = new ToolStripMenuItem();
+            //        taxonItem.Text = taxonRow.TaxonName;
 
-                    foreach (SpeciesKey.RepRow representativeRow in taxaRow.GetRepRows())
-                    {
-                        ToolStripItem speciesItem = new ToolStripMenuItem();
-                        speciesItem.Tag = representativeRow.SpeciesRow;
-                        speciesItem.Text = representativeRow.SpeciesRow.ShortName;
-                        speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
+            //        foreach (SpeciesKey.RepRow representativeRow in taxonRow.GetRepRows())
+            //        {
+            //            ToolStripItem speciesItem = new ToolStripMenuItem();
+            //            speciesItem.Tag = representativeRow.SpeciesRow;
+            //            speciesItem.Text = representativeRow.SpeciesRow.ShortName;
+            //            speciesItem.Click += new EventHandler(redefineReferenceSpecies_Click);
 
-                        taxaItem.DropDownItems.Add(speciesItem);
-                    }
+            //            taxonItem.DropDownItems.Add(speciesItem);
+            //        }
 
-                    taxaItem.SortItems();
-                    baseItem.DropDownItems.Add(taxaItem);
-                }
+            //        taxonItem.SortItems();
+            //        baseItem.DropDownItems.Add(taxonItem);
+            //    }
 
-                baseItem.SortItems();
-                contextItemRedefine.DropDownItems.Add(baseItem);
-            }
+            //    baseItem.SortItems();
+            //    contextItemRedefine.DropDownItems.Add(baseItem);
+            //}
         }
 
         private void RedefineSelected(Data.LogRow logRow)
@@ -410,7 +410,7 @@ namespace Mayfly.Fish
 
         private void redefineReferenceSpecies_Click(object sender, EventArgs e)
         {
-            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag;
 
             //Data.LogRow logRow = Data.Log.NewLogRow();
             //logRow.SpeciesRow = speciesRow

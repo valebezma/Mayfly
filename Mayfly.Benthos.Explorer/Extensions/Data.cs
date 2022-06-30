@@ -149,7 +149,7 @@ namespace Mayfly.Extensions
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;

@@ -207,9 +207,10 @@ namespace Mayfly.Controls
         {
             if (IsFilterSet && !Filterator.IsBusy)
             {
-                SpreadSheet.StartProcessing(
-                    SpreadSheet.IsBackgroundTableInitiated ? SpreadSheet.Background.Rows.Count : SpreadSheet.RowCount,
-                    Resources.Interface.Filtering);
+                SpreadSheet.StartProcessing(Resources.Interface.Filtering);
+
+                SpreadSheet.Display.SetProgressMaximum(
+                    SpreadSheet.IsBackgroundTableInitiated ? SpreadSheet.Background.Rows.Count : SpreadSheet.RowCount);
 
                 foreach (Control control in Controls)
                 {

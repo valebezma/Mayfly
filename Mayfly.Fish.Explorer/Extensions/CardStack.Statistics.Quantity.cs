@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
             };
         }
     
-        public static SampleSizeDescriptor GetDescriptor(this CardStack cs, SpeciesKey.SpeciesRow speciesRow)
+        public static SampleSizeDescriptor GetDescriptor(this CardStack cs, SpeciesKey.TaxonRow speciesRow)
         {
             return new SampleSizeDescriptor()
             {
@@ -55,7 +55,7 @@ namespace Mayfly.Fish.Explorer
         {
            int result = 0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.QuantitySampled(speciesRow);
             }
@@ -63,7 +63,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantitySampled(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int QuantitySampled(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -99,7 +99,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantityIndividual(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int QuantityIndividual(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -123,7 +123,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantityStratified(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int QuantityStratified(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -149,13 +149,13 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static int Quantity(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int Quantity(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             return stack.QuantityIndividual(speciesRow, size) +
                 stack.QuantityStratified(speciesRow, size);
         }
 
-        public static int QuantityIndividual(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int QuantityIndividual(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -177,7 +177,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantityStratified(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int QuantityStratified(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -195,7 +195,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static int Quantity(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size, Age age)
+        public static int Quantity(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size, Age age)
         {
             int result = 0;
 
@@ -211,7 +211,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Quantity(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size, Sex sex)
+        public static int Quantity(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size, Sex sex)
         {
             int result = 0;
 
@@ -227,7 +227,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Quantity(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Age age)
+        public static int Quantity(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Age age)
         {
             int result = 0;
 
@@ -241,7 +241,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Quantity(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Sex sex, Age age)
+        public static int Quantity(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Sex sex, Age age)
         {
             int result = 0;
 
@@ -259,7 +259,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static int Treated(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, DataColumn column)
+        public static int Treated(this CardStack stack, SpeciesKey.TaxonRow speciesRow, DataColumn column)
         {
             int result = 0;
 
@@ -272,7 +272,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Treated(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, DataColumn column, Interval size)
+        public static int Treated(this CardStack stack, SpeciesKey.TaxonRow speciesRow, DataColumn column, Interval size)
         {
             int result = 0;
 
@@ -287,7 +287,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int QuantityRegisteredNonAged(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int QuantityRegisteredNonAged(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -332,7 +332,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int MeasuredAnyhow(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int MeasuredAnyhow(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             return stack.Measured(speciesRow) + stack.QuantityStratified(speciesRow);
         }
@@ -349,7 +349,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Weighted(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int Weighted(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -380,7 +380,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Tallied(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int Tallied(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -394,7 +394,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Tallied(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int Tallied(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -422,7 +422,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Aged(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int Aged(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -435,7 +435,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Aged(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int Aged(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -463,7 +463,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Sexed(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int Sexed(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 
@@ -476,7 +476,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Sexed(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, Interval size)
+        public static int Sexed(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
         {
             int result = 0;
 
@@ -505,7 +505,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static int Matured(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int Matured(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 

@@ -1555,7 +1555,7 @@
     <value>0</value>
   </data>
   <data name="labelSpcCount.Text" xml:space="preserve">
-    <value>1;2|taxon;taxa</value>
+    <value>1;2|taxon;taxon</value>
   </data>
   <data name="&gt;&gt;labelSpcCount.Name" xml:space="preserve">
     <value>labelSpcCount</value>
@@ -1585,7 +1585,7 @@
     <value>True</value>
   </metadata>
   <data name="columnSpcSpc.HeaderText" xml:space="preserve">
-    <value>Species / taxa</value>
+    <value>Species / taxon</value>
   </data>
   <data name="columnSpcSpc.Width" type="System.Int32, mscorlib">
     <value>150</value>
@@ -1868,7 +1868,7 @@
     <value>True</value>
   </metadata>
   <data name="columnLogSpc.HeaderText" xml:space="preserve">
-    <value>Species / taxa</value>
+    <value>Species / taxon</value>
   </data>
   <data name="columnLogSpc.Width" type="System.Int32, mscorlib">
     <value>150</value>
@@ -2138,7 +2138,7 @@
     <value>True</value>
   </metadata>
   <data name="columnIndSpecies.HeaderText" xml:space="preserve">
-    <value>Species / taxa</value>
+    <value>Species / taxon</value>
   </data>
   <data name="columnIndSpecies.Width" type="System.Int32, mscorlib">
     <value>200</value>
@@ -2616,11 +2616,11 @@
   <data name="menuItemCards.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemSpcTaxon.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 22</value>
   </data>
-  <data name="menuItemSpcTaxa.Text" xml:space="preserve">
-    <value>Show taxa names</value>
+  <data name="menuItemSpcTaxon.Text" xml:space="preserve">
+    <value>Show taxon names</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 6</value>
@@ -3530,10 +3530,10 @@
   <data name="&gt;&gt;menuItemSpc.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItemSpcTaxa.Name" xml:space="preserve">
-    <value>menuItemSpcTaxa</value>
+  <data name="&gt;&gt;menuItemSpcTaxon.Name" xml:space="preserve">
+    <value>menuItemSpcTaxon</value>
   </data>
-  <data name="&gt;&gt;menuItemSpcTaxa.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItemSpcTaxon.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">

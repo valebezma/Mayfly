@@ -415,7 +415,7 @@
     <value>True</value>
   </metadata>
   <data name="ColumnSpecies.HeaderText" xml:space="preserve">
-    <value>Taxon / Species</value>
+    <value>Definition</value>
   </data>
   <metadata name="ColumnQuantity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2847,30 +2847,6 @@
   <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ColumnID.Name" xml:space="preserve">
-    <value>ColumnID</value>
-  </data>
-  <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnSpecies.Name" xml:space="preserve">
-    <value>ColumnSpecies</value>
-  </data>
-  <data name="&gt;&gt;ColumnSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnQuantity.Name" xml:space="preserve">
-    <value>ColumnQuantity</value>
-  </data>
-  <data name="&gt;&gt;ColumnQuantity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnMass.Name" xml:space="preserve">
-    <value>ColumnMass</value>
-  </data>
-  <data name="&gt;&gt;ColumnMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemIndividuals.Name" xml:space="preserve">
     <value>ToolStripMenuItemIndividuals</value>
   </data>
@@ -3080,6 +3056,30 @@
   </data>
   <data name="&gt;&gt;speciesLogger.Type" xml:space="preserve">
     <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ColumnID.Name" xml:space="preserve">
+    <value>ColumnID</value>
+  </data>
+  <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnSpecies.Name" xml:space="preserve">
+    <value>ColumnSpecies</value>
+  </data>
+  <data name="&gt;&gt;ColumnSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnQuantity.Name" xml:space="preserve">
+    <value>ColumnQuantity</value>
+  </data>
+  <data name="&gt;&gt;ColumnQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColumnMass.Name" xml:space="preserve">
+    <value>ColumnMass</value>
+  </data>
+  <data name="&gt;&gt;ColumnMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Card</value>

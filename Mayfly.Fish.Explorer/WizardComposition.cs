@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         private Composition selectedShoal;
 
@@ -73,10 +73,10 @@ namespace Mayfly.Fish.Explorer
             Frame.SetLines(ColumnCategory);
         }
 
-        public WizardComposition(CardStack data, Composition frame, SpeciesKey.SpeciesRow speciesRow, CompositionColumn column) : this(data, frame)
+        public WizardComposition(CardStack data, Composition frame, SpeciesKey.TaxonRow speciesRow, CompositionColumn column) : this(data, frame)
         {
             SpeciesRow = speciesRow;
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
 
             ColumnL.Visible = column.HasFlag(CompositionColumn.LengthSample);
             ColumnW.Visible = column.HasFlag(CompositionColumn.MassSample);
@@ -125,7 +125,7 @@ namespace Mayfly.Fish.Explorer
 
         internal void Split(int j)
         {
-            CatchesComposition.Split(j, Service.GetMeasure(SpeciesRow.Species) * 10);
+            CatchesComposition.Split(j, Service.GetMeasure(SpeciesRow.Name) * 10);
             CatchesComposition.SetLines(columnComposition);
             CatchesComposition.SetLines(ColumnCategory);
             CatchesComposition.SeparateCompositions.ToArray().UpdateValues(spreadSheetComposition, columnComposition, 
@@ -350,7 +350,7 @@ namespace Mayfly.Fish.Explorer
 
             if (CatchesComposition[ri] is AgeGroup age)
             {
-                double measure = Service.GetMeasure(SpeciesRow.Species) * 10;
+                double measure = Service.GetMeasure(SpeciesRow.Name) * 10;
 
                 contextCompositionSplit.Enabled = (!double.IsNaN(measure) &&
                     age.LengthSample.Count > 0 &&

@@ -847,10 +847,10 @@
   <data name="menuItemSpc.Text" xml:space="preserve">
     <value>Видовой список</value>
   </data>
-  <data name="menuItemSpcTaxa.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menuItemSpcTaxon.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 22</value>
   </data>
-  <data name="menuItemSpcTaxa.Text" xml:space="preserve">
+  <data name="menuItemSpcTaxon.Text" xml:space="preserve">
     <value>Отобразить названия таксонов</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">

@@ -166,7 +166,7 @@ namespace Mayfly.Fish.Explorer
         {
             Data.LogRow result = GetLogRow(data, gridRow);
 
-            SpeciesKey.SpeciesRow speciesRow = Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(
+            SpeciesKey.TaxonRow speciesRow = Fish.UserSettings.SpeciesIndex.FindBySpecies(
                     gridRow.Cells[ColumnSpecies.Index].Value.ToString());
 
             if (speciesRow == null)
@@ -187,10 +187,10 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 // There is such species in index you using
-                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Species);
+                Data.SpeciesRow existingSpeciesRow = data.Species.FindBySpecies(speciesRow.Name);
                 if (existingSpeciesRow == null)
                 {
-                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Species);
+                    existingSpeciesRow = (Data.SpeciesRow)data.Species.Rows.Add(null, speciesRow.Name);
                 }
                 result.SpeciesRow = existingSpeciesRow;
             }
@@ -625,8 +625,8 @@ namespace Mayfly.Fish.Explorer
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                SpeciesKey.SpeciesRow clipSpeciesRow = Fish.UserSettings.SpeciesIndex
-                    .Species.FindBySpecies(clipLogRow.SpeciesRow.Species);
+                SpeciesKey.TaxonRow clipSpeciesRow = Fish.UserSettings.SpeciesIndex
+                    .FindBySpecies(clipLogRow.SpeciesRow.Species);
 
                 if (clipSpeciesRow == null)
                 {
@@ -637,9 +637,9 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    if (Data.Species.FindBySpecies(clipSpeciesRow.Species) == null)
+                    if (Data.Species.FindBySpecies(clipSpeciesRow.Name) == null)
                     {
-                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Species);
+                        Data.Species.Rows.Add(clipSpeciesRow.ID, clipSpeciesRow.Name);
                     }
                     logRow.SpcID = clipSpeciesRow.ID;
                 }

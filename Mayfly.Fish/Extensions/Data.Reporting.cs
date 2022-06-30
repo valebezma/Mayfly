@@ -25,7 +25,7 @@ namespace Mayfly.Fish
             Report.Table table1 = new Report.Table(resources.GetString("tabPageGeneral.Text"));
 
             table1.StartRow();
-            table1.AddCellPrompt(Wild.Resources.Reports.Caption.Species, indRow.LogRow.SpeciesRow.KeyRecord.ScientificNameReport);
+            table1.AddCellPrompt(Wild.Resources.Reports.Caption.Species, indRow.LogRow.SpeciesRow.KeyRecord.FullNameReport);
 
             if (indRow.IsTallyNull())
             {
@@ -782,7 +782,7 @@ namespace Mayfly.Fish
                 report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    string speciesPresentation = logRow.SpeciesRow.KeyRecord.ScientificNameReport;
+                    string speciesPresentation = logRow.SpeciesRow.KeyRecord.FullNameReport;
                     logRow.AddReport(report, level, speciesPresentation, string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
                     if (UserSettings.BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
                 }
@@ -857,7 +857,7 @@ namespace Mayfly.Fish
                     List<Data.LogRow> _logRows = new List<Data.LogRow>();
                     foreach (Data.LogRow logRow in logRows) { if (logRow.SpeciesRow == speciesRow) _logRows.Add(logRow); }
 
-                    string speciesPresentation = speciesRow.KeyRecord.ScientificNameReport;
+                    string speciesPresentation = speciesRow.KeyRecord.FullNameReport;
                     logRows.AddReport(report, level, speciesPresentation,
                         string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
                 }

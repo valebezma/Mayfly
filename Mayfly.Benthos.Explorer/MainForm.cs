@@ -56,7 +56,7 @@ namespace Mayfly.Benthos.Explorer
 
             tabPageCard.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(SpeciesKey.SpeciesRow);
+            columnSpcSpc.ValueType = typeof(SpeciesKey.TaxonRow);
             columnSpcQuantity.ValueType = typeof(int);
             columnSpcMass.ValueType = typeof(double);
             columnSpcAbundance.ValueType = typeof(double);
@@ -66,11 +66,9 @@ namespace Mayfly.Benthos.Explorer
             columnSpcDiversityA.ValueType = typeof(double);
             columnSpcDiversityB.ValueType = typeof(double);
 
-            loadTaxaList();
-
             tabPageSpc.Parent = null;
 
-            columnLogSpc.ValueType = typeof(SpeciesKey.SpeciesRow);
+            columnLogSpc.ValueType = typeof(SpeciesKey.TaxonRow);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);
@@ -100,6 +98,8 @@ namespace Mayfly.Benthos.Explorer
 
             data = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
             FullStack = new CardStack();
+
+            loadTaxonList();
 
             IsEmpty = true;
         }
@@ -182,11 +182,13 @@ namespace Mayfly.Benthos.Explorer
         {
             string[] filenames = (string[])e.Argument;
 
+            processDisplay.SetProgressMaximum(filenames.Length);
+
             for (int i = 0; i < filenames.Length; i++)
             {
                 if (Path.GetExtension(filenames[i]) == Wild.UserSettings.InterfaceBio.Extension)
                 {
-                    processDisplay.SetStatus(Wild.Resources.Interface.Process.SpecLoading);
+                    processDisplay.SetStatus(Wild.Resources.Interface.Process.BioLoading);
 
                     if (data.IsBioLoaded)
                     {
@@ -243,7 +245,7 @@ namespace Mayfly.Benthos.Explorer
         {
             if (!e.Cancelled)
             {
-                processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.ArtifactsProcessing);
+                processDisplay.StartProcessing(Wild.Resources.Interface.Process.ArtifactsProcessing);
             }
             else
             {
@@ -300,6 +302,7 @@ namespace Mayfly.Benthos.Explorer
         private void dataSaver_DoWork(object sender, DoWorkEventArgs e)
         {
             int index = 0;
+            processDisplay.SetProgressMaximum(ChangedCards.Count);
 
             while (ChangedCards.Count > 0)
             {
@@ -610,6 +613,7 @@ namespace Mayfly.Benthos.Explorer
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             CardStack stack = (CardStack)e.Argument;
+            processDisplay.SetProgressMaximum(stack.Count);
 
             for (int i = 0; i < stack.Count; i++)
             {
@@ -769,14 +773,16 @@ namespace Mayfly.Benthos.Explorer
 
             Composition composition;
 
-            if (baseSpc == null)
+            if (rankSpc == null)
             {
                 composition = FullStack.GetCenosisComposition();
             }
             else
             {
-                composition = FullStack.GetCenosisComposition(baseSpc);
+                composition = FullStack.GetCenosisComposition(rankSpc);
             }
+
+            processDisplay.SetProgressMaximum(composition.Count);
 
             for (int i = 0; i < composition.Count; i++)
             {
@@ -786,7 +792,7 @@ namespace Mayfly.Benthos.Explorer
 
                 gridRow.CreateCells(spreadSheetSpc);                
 
-                if (composition is TaxaComposition tc)
+                if (composition is TaxonomicComposition tc)
                 {
                     gridRow.Cells[columnSpcSpc.Index].Value = tc[i].DataRow;
                     gridRow.Cells[columnSpcID.Index].Value = tc[i].DataRow?.ID;
@@ -808,7 +814,7 @@ namespace Mayfly.Benthos.Explorer
                 gridRow.Cells[columnSpcOccurrence.Index].Value = composition[i].Occurrence;
                 gridRow.Cells[columnSpcDominance.Index].Value = composition[i].Dominance;
 
-                if (composition is TaxaComposition composition1)
+                if (composition is TaxonomicComposition composition1)
                 {
                     gridRow.Cells[columnSpcDiversityA.Index].Value = composition1[i].DiversityA;
                     gridRow.Cells[columnSpcDiversityB.Index].Value = composition1[i].DiversityB;
@@ -838,23 +844,23 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void comboBoxSpcTaxa_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxSpcTaxon_SelectedIndexChanged(object sender, EventArgs e)
         {
-            baseSpc = comboBoxSpcTaxa.SelectedItem as SpeciesKey.BaseRow;
+            rankSpc = comboBoxSpcTaxon.SelectedItem as TaxonomicRank;
 
-            menuItemSpcTaxa.Enabled =
-                baseSpc == null;
+            menuItemSpcTaxon.Enabled =
+                rankSpc == null;
 
             columnSpcDiversityA.Visible =
                 columnSpcDiversityB.Visible =
-                baseSpc != null;
+                rankSpc != null;
 
-            if (baseSpc != null)
+            if (rankSpc != null)
             {
                 spreadSheetSpc.ClearInsertedColumns();
             }
 
-            columnSpcSpc.HeaderText = baseSpc == null ? Wild.Resources.Reports.Caption.Species : baseSpc.BaseName;
+            columnSpcSpc.HeaderText = rankSpc == null ? Wild.Resources.Reports.Caption.Species : rankSpc.Name;
 
             loadSpc();
         }
@@ -915,9 +921,7 @@ namespace Mayfly.Benthos.Explorer
                 Species.SpeciesKey speciesKey = new SpeciesKey();
                 foreach (Data.SpeciesRow speciesRow in data.Species)
                 {
-                    Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
-                    newSpeciesRow.Species = speciesRow.Species;
-                    speciesKey.Species.AddSpeciesRow(newSpeciesRow);
+                    speciesKey.Taxon.AddTaxonRow(speciesKey.Taxon.NewSpeciesRow(speciesRow.Species));
                 }
 
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
@@ -943,8 +947,10 @@ namespace Mayfly.Benthos.Explorer
 
             Data.LogRow[] logRows = (Data.LogRow[])e.Argument;
 
-            if (baseLog == null)
+            if (rankLog == null)
             {
+                processDisplay.SetProgressMaximum(logRows.Length);
+
                 for (int i = 0; i < logRows.Length; i++)
                 {
                     DataGridViewRow gridRow = new DataGridViewRow();
@@ -959,11 +965,12 @@ namespace Mayfly.Benthos.Explorer
             else
             {
                 int j = 0;
+                processDisplay.SetProgressMaximum(FullStack.Count * SpeciesIndex.GetTaxonRows(rankLog).Length);
                 foreach (Data.CardRow cardRow in FullStack)
                 {
                     CardStack singleCardStack = new CardStack(new List<Data.CardRow>() { cardRow });
 
-                    TaxaComposition composition = singleCardStack.GetCenosisComposition(baseLog);
+                    TaxonomicComposition composition = singleCardStack.GetCenosisComposition(rankLog);
 
                     for (int i = 0; i < composition.Count; i++)
                     {
@@ -988,9 +995,9 @@ namespace Mayfly.Benthos.Explorer
                         result.Add(gridRow);
                     }
 
-                    //foreach (SpeciesKey.TaxaRow taxaRow in baseLog.GetTaxaRows())
+                    //foreach (SpeciesKey.TaxonRow taxonRow in baseLog.GetTaxonRows())
                     //{
-                    //    DataGridViewRow gridRow = LogRow(cardRow, taxaRow);
+                    //    DataGridViewRow gridRow = LogRow(cardRow, taxonRow);
 
                     //    result.Add(gridRow);
 
@@ -1026,8 +1033,8 @@ namespace Mayfly.Benthos.Explorer
             tabPageLog.Parent = tabControl;
             tabControl.SelectedTab = tabPageLog;
 
-            columnLogDiversityA.Visible = (baseSpc != null);
-            columnLogDiversityB.Visible = (baseSpc != null);
+            columnLogDiversityA.Visible = (rankSpc != null);
+            columnLogDiversityB.Visible = (rankSpc != null);
 
             updateArtifacts();
 
@@ -1042,11 +1049,12 @@ namespace Mayfly.Benthos.Explorer
         private void logExtender_DoWork(object sender, DoWorkEventArgs e)
         {
             ValueSetEventHandler valueSetter = new ValueSetEventHandler(setCardValue);
-            
+            processDisplay.SetProgressMaximum(spreadSheetLog.Rows.Count);
+
             foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
             {
                 gridRow.DataGridView.Invoke(valueSetter, new object[] { 
-                    baseLog == null ? findLogRow(gridRow).CardRow : data.Card.FindByID((int)gridRow.Cells[columnLogID.Index].Value), gridRow, spreadSheetLog.GetInsertedColumns()
+                    rankLog == null ? findLogRow(gridRow).CardRow : data.Card.FindByID((int)gridRow.Cells[columnLogID.Index].Value), gridRow, spreadSheetLog.GetInsertedColumns()
                 });
                 ((BackgroundWorker)sender).ReportProgress(gridRow.Index + 1);
             }
@@ -1054,10 +1062,10 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        private void comboBoxLogTaxa_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxLogTaxon_SelectedIndexChanged(object sender, EventArgs e)
         {
-            baseLog = comboBoxLogTaxa.SelectedItem as SpeciesKey.BaseRow;
-            menuItemSpcTaxa.Enabled = baseLog == null;
+            rankLog = comboBoxLogTaxon.SelectedItem as TaxonomicRank;
+            menuItemSpcTaxon.Enabled = rankLog == null;
             loadLog();
         }
 
@@ -1092,8 +1100,7 @@ namespace Mayfly.Benthos.Explorer
             if (loadCardAddt(spreadSheetLog))
             {
                 IsBusy = true;
-                processDisplay.StartProcessing(spreadSheetLog.RowCount,
-                    Wild.Resources.Interface.Process.ExtSpc);
+                spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.ExtLog);
                 loaderLogExtended.RunWorkerAsync();
             }
         }
@@ -1138,6 +1145,7 @@ namespace Mayfly.Benthos.Explorer
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
             Data.IndividualRow[] indRows = (Data.IndividualRow[])e.Argument;
+            processDisplay.SetProgressMaximum(indRows.Length);
 
             for (int i = 0; i < indRows.Length; i++)
             {
@@ -1205,6 +1213,7 @@ namespace Mayfly.Benthos.Explorer
 
         private void indExtender_DoWork(object sender, DoWorkEventArgs e)
         {
+            processDisplay.SetProgressMaximum(spreadSheetInd.Rows.Count);
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
                 ValueSetEventHandler valueSetter = new ValueSetEventHandler(setCardValue);
@@ -1414,8 +1423,7 @@ namespace Mayfly.Benthos.Explorer
             if (loadCardAddt(spreadSheetInd))
             {
                 IsBusy = true;
-                processDisplay.StartProcessing(spreadSheetInd.RowCount,
-                    Wild.Resources.Interface.Process.ExtInd);
+                spreadSheetInd.StartProcessing(Wild.Resources.Interface.Process.ExtInd);
                 loaderIndExtended.RunWorkerAsync();
             }
         }
@@ -1429,7 +1437,7 @@ namespace Mayfly.Benthos.Explorer
             if (selectionValue.ShowDialog(this) != DialogResult.OK) return;
 
             IsBusy = true;
-            spreadSheetLog.StartProcessing(data.Card.Count, Wild.Resources.Interface.Process.SpeciesProcessing);
+            spreadSheetLog.StartProcessing(Wild.Resources.Interface.Process.LoadLog);
 
             foreach (DataGridViewColumn gridColumn in selectionValue.Picker.SelectedColumns)
             {
@@ -1458,13 +1466,13 @@ namespace Mayfly.Benthos.Explorer
 
                 Composition composition;
 
-                if (baseLog == null)
+                if (rankLog == null)
                 {
                     composition = stack.GetCenosisComposition();
                 }
                 else
                 {
-                    composition = stack.GetCenosisComposition(baseLog);
+                    composition = stack.GetCenosisComposition(rankLog);
                 }
 
                 composition.Name = variant;
@@ -1478,13 +1486,13 @@ namespace Mayfly.Benthos.Explorer
         {
             Composition composition;
 
-            if (baseLog == null)
+            if (rankLog == null)
             {
                 composition = FullStack.GetCenosisComposition();
             }
             else
             {
-                composition = FullStack.GetCenosisComposition(baseLog);
+                composition = FullStack.GetCenosisComposition(rankLog);
             }
 
             CompositionComparison comcom = new CompositionComparison(

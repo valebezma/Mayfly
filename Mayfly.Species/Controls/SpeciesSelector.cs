@@ -109,7 +109,7 @@ namespace Mayfly.Species
             set
             {
                 allowKey = value;
-                toolStripMenuItemKey.Visible = toolStripSeparatorKey.Visible= value;
+                toolStripMenuItemKey.Visible = toolStripSeparatorKey.Visible = value;
             }
         }
 
@@ -231,10 +231,7 @@ namespace Mayfly.Species
         {
             int rowIndex = -1;
 
-            if (typedSpecies.MajorSynonym != null)
-            {
-                typedSpecies = typedSpecies.MajorSynonym;
-            }
+            //typedSpecies = typedSpecies.ValidSpeciesRow;
 
             // Try to find species in the list
             foreach (DataGridViewRow gridRow in Grid.Rows)
@@ -327,11 +324,11 @@ namespace Mayfly.Species
                 toolStripMenuItemAll.SortItems();
             }
 
-            List<TreeNode> result = new List<TreeNode>();
-            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxonRows()) {
-                contextMenuStripSpecies.Items.Add(getTaxonMenuItem(taxonRow, true, true));
-            } foreach (SpeciesKey.TaxonRow speciesRow in Index.GetOrphans()) {
-                contextMenuStripSpecies.Items.Add(getSpeciesMenuItem(speciesRow));
+            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxonRows())
+            {
+                if (taxonRow.IsHigher && !taxonRow.HasChildren) continue;
+                contextMenuStripSpecies.Items.Add(getTaxonMenuItem(taxonRow));
+                if (contextMenuStripSpecies.Items.Count == UserSettings.AllowableSpeciesListLength) break;
             }
         }
 
@@ -340,7 +337,7 @@ namespace Mayfly.Species
             toolStripMenuItemRecent.DropDownItems.Clear();
 
             ToolStripDropDownItem[] recentItems = MostUsedRecent();
-            toolStripSeparatorKey.Visible =
+            //toolStripSeparatorKey.Visible =
             toolStripMenuItemRecent.Visible = recentItems.Length > 0;
             toolStripMenuItemRecent.DropDownItems.AddRange(recentItems);
         }
@@ -399,37 +396,20 @@ namespace Mayfly.Species
             //}
         }
 
-        private ToolStripMenuItem getSpeciesMenuItem(SpeciesKey.TaxonRow spcRow)
-        {
-            return new ToolStripMenuItem
-            {
-                Tag = spcRow,
-                Text = spcRow.FullName
-            };
-        }
-
-        private ToolStripMenuItem getTaxonMenuItem(SpeciesKey.TaxonRow taxonRow, bool derivates, bool representatives)
+        private ToolStripMenuItem getTaxonMenuItem(SpeciesKey.TaxonRow taxonRow)
         {
             ToolStripMenuItem taxonItem = new ToolStripMenuItem
             {
                 Tag = taxonRow,
-                Text = string.Format("{0} ({1})", taxonRow.FullName, taxonRow.GetSpeciesRows(true).Length),
+                Text = taxonRow.CommonName
             };
 
-            if (derivates)
-            {
-                foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
-                {
-                    taxonItem.DropDownItems.Add(getTaxonMenuItem(derRow, derivates, representatives));
-                }
-            }
+            taxonItem.Click += new EventHandler(speciesItem_Click);
 
-            if (representatives)
+            foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
             {
-                foreach (SpeciesKey.TaxonRow repRow in taxonRow.GetSpeciesRows(true))
-                {
-                    taxonItem.DropDownItems.Add(getSpeciesMenuItem(repRow));
-                }
+                if (derRow.IsHigher && !derRow.HasChildren) continue;
+                taxonItem.DropDownItems.Add(getTaxonMenuItem(derRow));
             }
 
             return taxonItem;

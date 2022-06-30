@@ -1055,7 +1055,7 @@
     <value>Right</value>
   </data>
   <data name="ColumnTrpSpecies.HeaderText" xml:space="preserve">
-    <value>Taxa / Species</value>
+    <value>Taxon / Species</value>
   </data>
   <data name="labelSex.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 13</value>
@@ -3098,7 +3098,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ColumnInfSpecies.HeaderText" xml:space="preserve">
-    <value>Taxa / Species</value>
+    <value>Taxon / Species</value>
   </data>
   <data name="&gt;&gt;buttonReport.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

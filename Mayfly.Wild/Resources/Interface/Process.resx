@@ -120,29 +120,23 @@
   <data name="ArtifactsProcessing" xml:space="preserve">
     <value>Looking for artifacts</value>
   </data>
-  <data name="CardsLoading" xml:space="preserve">
-    <value>Cards loading</value>
+  <data name="LoadCard" xml:space="preserve">
+    <value>Loading cards</value>
   </data>
-  <data name="CardsProcessing" xml:space="preserve">
-    <value>Cards log loading</value>
-  </data>
-  <data name="CardsSaving" xml:space="preserve">
-    <value>Cards saving</value>
+  <data name="DataSaving" xml:space="preserve">
+    <value>Saving data</value>
   </data>
   <data name="ExtInd" xml:space="preserve">
-    <value>Individuals data extension</value>
+    <value>Extending individuals</value>
   </data>
-  <data name="ExtSpc" xml:space="preserve">
-    <value>Species log extension</value>
+  <data name="ExtLog" xml:space="preserve">
+    <value>Extending log</value>
   </data>
   <data name="ExtStrat" xml:space="preserve">
-    <value>Stratified samples extension</value>
+    <value>Extending stratified samples</value>
   </data>
-  <data name="IndividualsProcessing" xml:space="preserve">
-    <value>Individuals log processing</value>
-  </data>
-  <data name="RateProcessing" xml:space="preserve">
-    <value>Estimating data rate</value>
+  <data name="LoadInd" xml:space="preserve">
+    <value>Loading individuals</value>
   </data>
   <data name="Searching" xml:space="preserve">
     <value>Filtering</value>
@@ -153,19 +147,25 @@
   <data name="SimCalc" xml:space="preserve">
     <value>Calculating similarity indices</value>
   </data>
-  <data name="SpeciesProcessing" xml:space="preserve">
-    <value>Species log processing</value>
+  <data name="LoadLog" xml:space="preserve">
+    <value>Loading log</value>
   </data>
-  <data name="SpecLoading" xml:space="preserve">
+  <data name="BioLoading" xml:space="preserve">
     <value>Loading bio</value>
   </data>
-  <data name="StratifiedProcessing" xml:space="preserve">
-    <value>Stratified samples loading</value>
+  <data name="LoadStratified" xml:space="preserve">
+    <value>Loading stratified samples</value>
   </data>
   <data name="TotalReportProcessing" xml:space="preserve">
     <value>Total report compilation</value>
   </data>
-  <data name="SpecApply" xml:space="preserve">
+  <data name="BioApply" xml:space="preserve">
     <value>Applying bio</value>
+  </data>
+  <data name="DataLoading" xml:space="preserve">
+    <value>Loading data</value>
+  </data>
+  <data name="LoadSpc" xml:space="preserve">
+    <value>Loading species</value>
   </data>
 </root>

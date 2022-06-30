@@ -167,7 +167,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.LogRow[] GetLogRows(SpeciesKey.SpeciesRow speciesRow)
+        public Data.LogRow[] GetLogRows(SpeciesKey.TaxonRow speciesRow)
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
@@ -196,7 +196,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetIndividualRows(SpeciesKey.SpeciesRow speciesRow)
+        public Data.IndividualRow[] GetIndividualRows(SpeciesKey.TaxonRow speciesRow)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -420,25 +420,24 @@ namespace Mayfly.Wild
         }
 
 
-        public SpeciesKey.SpeciesRow[] GetSpecies()
+        public SpeciesKey.TaxonRow[] GetSpecies()
         {
             return GetSpecies(0);
         }
 
-        public SpeciesKey.SpeciesRow[] GetSpecies(int minimalSample)
+        public SpeciesKey.TaxonRow[] GetSpecies(int minimalSample)
         {
-            List<SpeciesKey.SpeciesRow> result = new List<SpeciesKey.SpeciesRow>();
+            List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
 
             if (Parent != null)
             {
                 foreach (Data.SpeciesRow spcRow in Parent.Species)
                 {
-                    SpeciesKey.SpeciesRow currentRecord = spcRow.KeyRecord;
+                    SpeciesKey.TaxonRow currentRecord = spcRow.KeyRecord;
 
                     if (currentRecord == null)
                     {
-                        SpeciesKey.SpeciesRow newSpcRow = Parent.key.Species.NewSpeciesRow();
-                        newSpcRow.Species = spcRow.Species;
+                        SpeciesKey.TaxonRow newSpcRow = Parent.key.Taxon.NewSpeciesRow(spcRow.Species);
                         currentRecord = newSpcRow;
                     }
 
@@ -456,7 +455,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(SpeciesKey.SpeciesRow[] speciesRows)
+        public int GetOccurrenceCases(SpeciesKey.TaxonRow[] speciesRows)
         {
             int result = 0;
 
@@ -464,7 +463,7 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    foreach (SpeciesKey.SpeciesRow speciesRow in speciesRows)
+                    foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
                     {
                         if (speciesRow.Validate(logRow.SpeciesRow.Species))
                         {
@@ -563,7 +562,7 @@ namespace Mayfly.Wild
         public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
 
 
-        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.SpeciesRow, int> resultsCounter)
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.TaxonRow, int> resultsCounter)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -581,7 +580,7 @@ namespace Mayfly.Wild
 
             int added = 0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in this.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in this.GetSpecies())
             {
                 int s = resultsCounter.Invoke(speciesRow);
 

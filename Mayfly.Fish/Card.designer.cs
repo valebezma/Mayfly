@@ -32,11 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
             Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
             Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelWater = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,10 +133,6 @@
             this.labelWaterConds = new System.Windows.Forms.Label();
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
-            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSpeciesKey = new System.Windows.Forms.ToolStripMenuItem();
@@ -166,6 +162,10 @@
             this.statusCard = new Mayfly.Controls.Status();
             this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
             this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
+            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -920,39 +920,6 @@
             this.spreadSheetLog.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.spreadSheetLog_RowsRemoved);
             this.spreadSheetLog.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.spreadSheetLog_UserDeletedRow);
             // 
-            // ColumnID
-            // 
-            resources.ApplyResources(this.ColumnID, "ColumnID");
-            this.ColumnID.Name = "ColumnID";
-            // 
-            // ColumnSpecies
-            // 
-            this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSpecies.FillWeight = 200F;
-            resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
-            this.ColumnSpecies.Name = "ColumnSpecies";
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnQuantity.FillWeight = 30F;
-            resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            // 
-            // ColumnMass
-            // 
-            this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnMass.FillWeight = 30F;
-            resources.ApplyResources(this.ColumnMass, "ColumnMass");
-            this.ColumnMass.Name = "ColumnMass";
-            // 
             // contextMenuStripLog
             // 
             this.contextMenuStripLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1134,6 +1101,39 @@
             this.speciesLogger.SpeciesSelected += new Mayfly.Species.SpeciesSelectEventHandler(this.speciesLogger_SpeciesSelected);
             this.speciesLogger.DuplicateFound += new Mayfly.Species.DuplicateFoundEventHandler(this.speciesLogger_DuplicateDetected);
             // 
+            // ColumnID
+            // 
+            resources.ApplyResources(this.ColumnID, "ColumnID");
+            this.ColumnID.Name = "ColumnID";
+            // 
+            // ColumnSpecies
+            // 
+            this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnSpecies.FillWeight = 200F;
+            resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
+            this.ColumnSpecies.Name = "ColumnSpecies";
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnQuantity.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            // 
+            // ColumnMass
+            // 
+            this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnMass.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnMass, "ColumnMass");
+            this.ColumnMass.Name = "ColumnMass";
+            // 
             // Card
             // 
             resources.ApplyResources(this, "$this");
@@ -1295,14 +1295,14 @@
         private System.Windows.Forms.ContextMenuStrip contextGear;
         private System.Windows.Forms.TabPage tabPageSampler;
         private System.Windows.Forms.Label labelTag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.TextBox textBoxLabel;
         public Species.SpeciesSelector speciesLogger;
         private System.Windows.Forms.Label labelOperationEnd;
         private System.Windows.Forms.ToolTip toolTipAttention;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
     }
 }

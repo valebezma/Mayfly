@@ -83,7 +83,8 @@ namespace Mayfly.Mathematics
 
             comboBoxRow.Enabled = listViewColumn.Enabled = false;
 
-            Adapter.OperatingSheet.StartProcessing(rowGroups.Length, Resources.Interface.SemipivotProgress);
+            Adapter.OperatingSheet.StartProcessing(Resources.Interface.SemipivotProgress);
+            Adapter.OperatingSheet.Display.SetProgressMaximum(rowGroups.Length);
             if (!calculator.IsBusy) calculator.RunWorkerAsync(rowGroups);
         }
 

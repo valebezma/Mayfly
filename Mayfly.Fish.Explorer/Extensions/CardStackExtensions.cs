@@ -13,7 +13,7 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.SpeciesRow spcRow, string field, object value)
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.TaxonRow spcRow, string field, object value)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -28,7 +28,7 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.SpeciesRow spcRow, string[] field, object[] value)
+        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, SpeciesKey.TaxonRow spcRow, string[] field, object[] value)
         {
             List<Data.IndividualRow[]> packs = new List<Data.IndividualRow[]>();
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
@@ -223,7 +223,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -231,7 +231,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -243,7 +243,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.TaxonRow speciesRow, ExpressionVariant variant)
         {
             double result = 0.0;
 
@@ -259,7 +259,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -267,7 +267,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -279,7 +279,7 @@ namespace Mayfly.Fish.Explorer
             return result / (double)stack.Count;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, ExpressionVariant variant)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.TaxonRow speciesRow, ExpressionVariant variant)
         {
             double result = 0.0;
 
@@ -394,7 +394,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static TreatmentSuggestion GetTreatmentSuggestion(this CardStack stack, SpeciesKey.SpeciesRow speciesRow, System.Data.DataColumn column)
+        public static TreatmentSuggestion GetTreatmentSuggestion(this CardStack stack, SpeciesKey.TaxonRow speciesRow, System.Data.DataColumn column)
         {
             if (column.Table != stack.Parent.Individual)
                 throw new Exception("Column should be of Individuals table.");
@@ -466,7 +466,7 @@ namespace Mayfly.Fish.Explorer
                         // if there is such: checking number of points in it in current interval
                         // If no: just distributing
 
-                        ContinuousBio grBio = stack.Parent.FindGrowthModel(speciesRow.Species);
+                        ContinuousBio grBio = stack.Parent.FindGrowthModel(speciesRow.Name);
 
                         if (grBio != null)
                         {

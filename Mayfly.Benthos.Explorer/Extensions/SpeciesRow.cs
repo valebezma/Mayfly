@@ -24,12 +24,12 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.SpeciesRow speciesRow)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.TaxonRow speciesRow)
         {
             return speciesRow.GetWeightedIndividualRows(new CardStack((Data)speciesRow.Table.DataSet));
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.SpeciesRow speciesRow, CardStack stack)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.TaxonRow speciesRow, CardStack stack)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 

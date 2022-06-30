@@ -30,7 +30,7 @@ namespace Mayfly.Benthos.Explorer
             return new CardConsistencyChecker(cardRow);
         }
 
-        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.SpeciesRow speciesRow, CardStack stack)
+        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.TaxonRow speciesRow, CardStack stack)
         {
             return new SpeciesConsistencyChecker(speciesRow, stack);
         }
@@ -50,7 +50,7 @@ namespace Mayfly.Benthos.Explorer
                 }
             }
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
 
@@ -460,7 +460,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public SpeciesKey.SpeciesRow SpeciesRow { get; set; }
+        public SpeciesKey.TaxonRow SpeciesRow { get; set; }
 
         public bool MissingInReference { get; set; }
 
@@ -539,7 +539,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public SpeciesConsistencyChecker(SpeciesKey.SpeciesRow speciesRow, CardStack stack)
+        public SpeciesConsistencyChecker(SpeciesKey.TaxonRow speciesRow, CardStack stack)
         {
             SpeciesRow = speciesRow;
 
@@ -602,7 +602,7 @@ namespace Mayfly.Benthos.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.ShortName);
+            return base.ToString(SpeciesRow.CommonName);
         }
     }
 }

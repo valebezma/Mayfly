@@ -143,7 +143,10 @@
     <value>Новый вид</value>
   </data>
   <data name="NewTaxon" xml:space="preserve">
-    <value>Новый {0}</value>
+    <value>Новый таксон</value>
+  </data>
+  <data name="ResultSpcToSpcSubpecis" xml:space="preserve">
+    <value>{0:l} теперь подвид {1:l}</value>
   </data>
   <data name="ResultSpcToSpcSynonymized" xml:space="preserve">
     <value>{0:l} синонимизирован к {1:l}</value>
@@ -184,6 +187,9 @@
   </data>
   <data name="Thesis" xml:space="preserve">
     <value>Теза {0}</value>
+  </data>
+  <data name="TipSpcToSpcSubspecies" xml:space="preserve">
+    <value>Установить {0:l} как подвид {1:l}</value>
   </data>
   <data name="TipSpcToSpcSynonym" xml:space="preserve">
     <value>Установить {0:l} как младший синоним {1:l}</value>

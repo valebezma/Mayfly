@@ -34,10 +34,10 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listLoader = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStripSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemKey = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparatorKey = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemRecent = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparatorKey = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemKey = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripSpecies.SuspendLayout();
             // 
             // listSpc
@@ -73,22 +73,12 @@
             // contextMenuStripSpecies
             // 
             this.contextMenuStripSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemKey,
             this.toolStripMenuItemRecent,
             this.toolStripMenuItemAll,
-            this.toolStripSeparatorKey,
-            this.toolStripMenuItemKey});
+            this.toolStripSeparatorKey});
             this.contextMenuStripSpecies.Name = "contextMenuStrip_species";
             resources.ApplyResources(this.contextMenuStripSpecies, "contextMenuStripSpecies");
-            // 
-            // toolStripMenuItemKey
-            // 
-            this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
-            resources.ApplyResources(this.toolStripMenuItemKey, "toolStripMenuItemKey");
-            // 
-            // toolStripSeparatorKey
-            // 
-            this.toolStripSeparatorKey.Name = "toolStripSeparatorKey";
-            resources.ApplyResources(this.toolStripSeparatorKey, "toolStripSeparatorKey");
             // 
             // toolStripMenuItemRecent
             // 
@@ -99,6 +89,16 @@
             // 
             this.toolStripMenuItemAll.Name = "toolStripMenuItemAll";
             resources.ApplyResources(this.toolStripMenuItemAll, "toolStripMenuItemAll");
+            // 
+            // toolStripSeparatorKey
+            // 
+            this.toolStripSeparatorKey.Name = "toolStripSeparatorKey";
+            resources.ApplyResources(this.toolStripSeparatorKey, "toolStripSeparatorKey");
+            // 
+            // toolStripMenuItemKey
+            // 
+            this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
+            resources.ApplyResources(this.toolStripMenuItemKey, "toolStripMenuItemKey");
             this.contextMenuStripSpecies.ResumeLayout(false);
 
         }

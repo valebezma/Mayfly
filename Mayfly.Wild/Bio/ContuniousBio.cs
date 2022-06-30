@@ -51,7 +51,7 @@ namespace Mayfly.Wild
 
 
 
-        public ContinuousBio(Data data, SpeciesKey.SpeciesRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
+        public ContinuousBio(Data data, SpeciesKey.TaxonRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
             base(data, speciesRow, yColumn)
         {
             if (yColumn.DataType != typeof(double))

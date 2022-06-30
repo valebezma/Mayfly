@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesOfInterest { get; set; }
+        public SpeciesKey.TaxonRow SpeciesOfInterest { get; set; }
 
         public FishSamplerType SelectedSamplerType { get; set; }
 
@@ -111,7 +111,7 @@ namespace Mayfly.Fish.Explorer
             //pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
         }
 
-        public WizardGearSet(CardStack data, SpeciesKey.SpeciesRow speciesRow)
+        public WizardGearSet(CardStack data, SpeciesKey.TaxonRow speciesRow)
             : this(data)
         {
             SpeciesOfInterest = speciesRow;
@@ -214,7 +214,7 @@ namespace Mayfly.Fish.Explorer
 
                 spreadSheetEfforts[ColumnClass.Index, i].ToolTipText =
                     speciesOfInterestIsPresent ? string.Empty : 
-                    string.Format(Resources.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.ShortName, 
+                    string.Format(Resources.Interface.SpeciesOfInterestIsAbsent, SpeciesOfInterest.CommonName, 
                     classedStacks[i].Name, spreadSheetEfforts.RowVisibilityKey);
 
             }

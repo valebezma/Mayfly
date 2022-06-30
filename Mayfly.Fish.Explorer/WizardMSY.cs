@@ -22,7 +22,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.SpeciesRow SpeciesRow;
+        public SpeciesKey.TaxonRow SpeciesRow;
 
         public VirtualCohort VirtualCohort;
 
@@ -62,20 +62,20 @@ namespace Mayfly.Fish.Explorer
             ColumnY.ValueType = typeof(double);
         }
 
-        public WizardMSY(CardStack data, SpeciesKey.SpeciesRow speciesRow)
+        public WizardMSY(CardStack data, SpeciesKey.TaxonRow speciesRow)
             : this()
         {
             Data = data;
             SpeciesRow = speciesRow;
 
-            wizardExplorer.ResetTitle(speciesRow.ShortName);
-            labelStart.ResetFormatted(SpeciesRow.ShortName);
+            wizardExplorer.ResetTitle(speciesRow.CommonName);
+            labelStart.ResetFormatted(SpeciesRow.CommonName);
 
             buttonVpa.Enabled =
                 buttonGrowth.Enabled = true;
 
             Log.Write(EventType.WizardStarted, "MSY wizard is started for {0}.", 
-                speciesRow.Species);
+                speciesRow.Name);
         }
 
 
@@ -339,7 +339,7 @@ namespace Mayfly.Fish.Explorer
             pageReport.SetNavigation(true);
             ((Report)e.Result).Run();
             Log.Write(EventType.WizardEnded, "MSY wizard is finished for {0} with MSY = {1}.",
-                SpeciesRow.Species, MaximumSustainableYield);
+                SpeciesRow.Name, MaximumSustainableYield);
             if (!UserSettings.KeepWizard) Close();
         }
 

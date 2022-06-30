@@ -19,7 +19,7 @@ namespace Mayfly.Wild.Resources.Interface {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Process {
@@ -70,34 +70,43 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cards loading.
+        ///   Looks up a localized string similar to Applying bio.
         /// </summary>
-        public static string CardsLoading {
+        public static string BioApply {
             get {
-                return ResourceManager.GetString("CardsLoading", resourceCulture);
+                return ResourceManager.GetString("BioApply", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cards log loading.
+        ///   Looks up a localized string similar to Loading bio.
         /// </summary>
-        public static string CardsProcessing {
+        public static string BioLoading {
             get {
-                return ResourceManager.GetString("CardsProcessing", resourceCulture);
+                return ResourceManager.GetString("BioLoading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cards saving.
+        ///   Looks up a localized string similar to Loading data.
         /// </summary>
-        public static string CardsSaving {
+        public static string DataLoading {
             get {
-                return ResourceManager.GetString("CardsSaving", resourceCulture);
+                return ResourceManager.GetString("DataLoading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Individuals data extension.
+        ///   Looks up a localized string similar to Saving data.
+        /// </summary>
+        public static string DataSaving {
+            get {
+                return ResourceManager.GetString("DataSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extending individuals.
         /// </summary>
         public static string ExtInd {
             get {
@@ -106,16 +115,16 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Species log extension.
+        ///   Looks up a localized string similar to Extending log.
         /// </summary>
-        public static string ExtSpc {
+        public static string ExtLog {
             get {
-                return ResourceManager.GetString("ExtSpc", resourceCulture);
+                return ResourceManager.GetString("ExtLog", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stratified samples extension.
+        ///   Looks up a localized string similar to Extending stratified samples.
         /// </summary>
         public static string ExtStrat {
             get {
@@ -124,20 +133,47 @@ namespace Mayfly.Wild.Resources.Interface {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Individuals log processing.
+        ///   Looks up a localized string similar to Loading cards.
         /// </summary>
-        public static string IndividualsProcessing {
+        public static string LoadCard {
             get {
-                return ResourceManager.GetString("IndividualsProcessing", resourceCulture);
+                return ResourceManager.GetString("LoadCard", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Estimating data rate.
+        ///   Looks up a localized string similar to Loading individuals.
         /// </summary>
-        public static string RateProcessing {
+        public static string LoadInd {
             get {
-                return ResourceManager.GetString("RateProcessing", resourceCulture);
+                return ResourceManager.GetString("LoadInd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading log.
+        /// </summary>
+        public static string LoadLog {
+            get {
+                return ResourceManager.GetString("LoadLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading species.
+        /// </summary>
+        public static string LoadSpc {
+            get {
+                return ResourceManager.GetString("LoadSpc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading stratified samples.
+        /// </summary>
+        public static string LoadStratified {
+            get {
+                return ResourceManager.GetString("LoadStratified", resourceCulture);
             }
         }
         
@@ -165,42 +201,6 @@ namespace Mayfly.Wild.Resources.Interface {
         public static string SimCalc {
             get {
                 return ResourceManager.GetString("SimCalc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applying bio.
-        /// </summary>
-        public static string SpecApply {
-            get {
-                return ResourceManager.GetString("SpecApply", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Species log processing.
-        /// </summary>
-        public static string SpeciesProcessing {
-            get {
-                return ResourceManager.GetString("SpeciesProcessing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Loading bio.
-        /// </summary>
-        public static string SpecLoading {
-            get {
-                return ResourceManager.GetString("SpecLoading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stratified samples loading.
-        /// </summary>
-        public static string StratifiedProcessing {
-            get {
-                return ResourceManager.GetString("StratifiedProcessing", resourceCulture);
             }
         }
         

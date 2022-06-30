@@ -1242,11 +1242,11 @@ namespace Mayfly.Wild
                 }
             }
 
-            public SpeciesKey.SpeciesRow KeyRecord
+            public SpeciesKey.TaxonRow KeyRecord
             {
                 get
                 {
-                    SpeciesKey.SpeciesRow spcRow = ((Data)Table.DataSet).key?.FindBySpecies(this.Species);
+                    SpeciesKey.TaxonRow spcRow = ((Data)Table.DataSet).key?.FindBySpecies(this.Species);
                     if (spcRow == null) return null;
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;

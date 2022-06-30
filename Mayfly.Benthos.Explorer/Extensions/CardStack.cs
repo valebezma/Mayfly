@@ -40,7 +40,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -48,7 +48,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -64,7 +64,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -72,7 +72,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -97,9 +97,9 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static TaxaComposition GetCenosisComposition(this CardStack stack, SpeciesKey.BaseRow baseRow)
+        public static TaxonomicComposition GetCenosisComposition(this CardStack stack, TaxonomicRank rank)
         {
-            TaxaComposition result = new TaxaComposition(stack.GetCenosisComposition(), baseRow, true);
+            TaxonomicComposition result = new TaxonomicComposition(stack.GetCenosisComposition(), Benthos.UserSettings.SpeciesIndex, rank, true);
 
             foreach (SpeciesSwarmPool pool in result)
             {
@@ -121,7 +121,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static int QuantityIndividual(this CardStack stack, SpeciesKey.SpeciesRow speciesRow)
+        public static int QuantityIndividual(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
         {
             int result = 0;
 

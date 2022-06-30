@@ -234,7 +234,7 @@ namespace Mayfly.Fish.Explorer
                     compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();
-                table1.AddCell(speciesRow.KeyRecord.ShortName);
+                table1.AddCell(speciesRow.KeyRecord.CommonName);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Quantity / 1000, ColumnN.DefaultCellStyle.Format);
                 table1.AddCellRight(compositionWizard.CatchesComposition[i].Mass / 1000, ColumnB.DefaultCellStyle.Format);
 
@@ -281,14 +281,14 @@ namespace Mayfly.Fish.Explorer
 
         private void populationSizeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)e.Argument;
+            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetLengthCompositionFrame(speciesRow, UserSettings.SizeInterval), speciesRow);
         }
 
         private void populationAgeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            SpeciesKey.SpeciesRow speciesRow = (SpeciesKey.SpeciesRow)e.Argument;
+            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetAgeCompositionFrame(speciesRow), speciesRow);
         }

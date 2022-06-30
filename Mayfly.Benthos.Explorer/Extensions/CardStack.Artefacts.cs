@@ -32,7 +32,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<SpeciesArtifact> result = new List<SpeciesArtifact>();
 
-            foreach (SpeciesKey.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
             {
                 SpeciesArtifact artifact = new SpeciesArtifact(speciesRow);
                 if (artifact.GetFacts() > 0) result.Add(artifact);
@@ -85,7 +85,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class SpeciesArtifact : ConsistencyChecker
     {
-        public SpeciesKey.SpeciesRow SpeciesRow { get; private set; }
+        public SpeciesKey.TaxonRow SpeciesRow { get; private set; }
 
         public bool ReferenceMissing { get; private set; }
 
@@ -93,11 +93,11 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public SpeciesArtifact(SpeciesKey.SpeciesRow speciesRow)
+        public SpeciesArtifact(SpeciesKey.TaxonRow speciesRow)
         {
             SpeciesRow = speciesRow;
 
-            ReferenceMissing = !Benthos.UserSettings.SpeciesIndex.Contains(speciesRow.Species);
+            ReferenceMissing = !Benthos.UserSettings.SpeciesIndex.Contains(speciesRow.Name);
         }
 
 
@@ -121,7 +121,7 @@ namespace Mayfly.Benthos.Explorer
 
         public override string ToString()
         {
-            return base.ToString(SpeciesRow.Species);
+            return base.ToString(SpeciesRow.Name);
         }
     }
 }

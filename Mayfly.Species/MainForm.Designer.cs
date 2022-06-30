@@ -59,21 +59,13 @@
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTaxon = new System.Windows.Forms.TabPage();
-            this.listViewMinor = new System.Windows.Forms.ListView();
-            this.colSynSpecies = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colSynRef = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colSynName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
+            this.checkBoxPlain = new System.Windows.Forms.CheckBox();
+            this.labelSpecies = new System.Windows.Forms.Label();
             this.listViewRepresence = new System.Windows.Forms.ListView();
             this.colSpcSpecies = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSpcRef = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSpcName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.treeViewDerivates = new System.Windows.Forms.TreeView();
-            this.contextTree = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextTreeNewTaxon = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextTreeNewSpc = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.contextTreeExpand = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextTreeCollapse = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageKey = new System.Windows.Forms.TabPage();
             this.buttonTry = new System.Windows.Forms.Button();
             this.labelEngagedCount = new System.Windows.Forms.Label();
@@ -86,17 +78,9 @@
             this.labelPicCount = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewImages = new System.Windows.Forms.ListView();
-            this.contextTaxon = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextTaxonEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextTaxonDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextTaxonDepart = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextTaxonAddSpecies = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.contextTaxonExpandAll = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextSpeciesEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.contextSpeciesDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextSpeciesDepart = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListKeys = new System.Windows.Forms.ImageList(this.components);
             this.contextStep = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextStepDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,26 +94,20 @@
             this.contextSynonym = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextRemoveSynonym = new System.Windows.Forms.ToolStripMenuItem();
             this.backSpcLoader = new System.ComponentModel.BackgroundWorker();
+            this.backTreeLoader = new System.ComponentModel.BackgroundWorker();
             this.tdSave = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSave = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.status = new Mayfly.Controls.Status();
-            this.backTreeLoader = new System.ComponentModel.BackgroundWorker();
-            this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
-            this.tdDeleteTaxon = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbDeleteConfirm = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbDeleteParentize = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbDeleteOrphanize = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbDeleteCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.labelClassification = new System.Windows.Forms.Label();
+            this.taxaTreeView = new Mayfly.Species.Controls.TaxaTreeView(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageTaxon.SuspendLayout();
-            this.contextTree.SuspendLayout();
             this.tabPageKey.SuspendLayout();
             this.tabPagePictures.SuspendLayout();
-            this.contextTaxon.SuspendLayout();
             this.contextSpecies.SuspendLayout();
             this.contextStep.SuspendLayout();
             this.contextFeature.SuspendLayout();
@@ -268,7 +246,7 @@
             // 
             this.menuItemAddSpecies.Name = "menuItemAddSpecies";
             resources.ApplyResources(this.menuItemAddSpecies, "menuItemAddSpecies");
-            this.menuItemAddSpecies.Click += new System.EventHandler(this.menuItemAddSpecies_Click);
+            this.menuItemAddSpecies.Click += new System.EventHandler(this.menuItemAddTaxon_Click);
             // 
             // menuKey
             // 
@@ -332,40 +310,37 @@
             // 
             // tabPageTaxon
             // 
-            this.tabPageTaxon.Controls.Add(this.listViewMinor);
+            this.tabPageTaxon.Controls.Add(this.labelClassification);
+            this.tabPageTaxon.Controls.Add(this.taxaTreeView);
+            this.tabPageTaxon.Controls.Add(this.checkBoxPlain);
+            this.tabPageTaxon.Controls.Add(this.labelSpecies);
             this.tabPageTaxon.Controls.Add(this.listViewRepresence);
-            this.tabPageTaxon.Controls.Add(this.treeViewDerivates);
             resources.ApplyResources(this.tabPageTaxon, "tabPageTaxon");
             this.tabPageTaxon.Name = "tabPageTaxon";
             this.tabPageTaxon.UseVisualStyleBackColor = true;
             // 
-            // listViewMinor
+            // processDisplay
             // 
-            resources.ApplyResources(this.listViewMinor, "listViewMinor");
-            this.listViewMinor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewMinor.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colSynSpecies,
-            this.colSynRef,
-            this.colSynName});
-            this.listViewMinor.FullRowSelect = true;
-            this.listViewMinor.HideSelection = false;
-            this.listViewMinor.Name = "listViewMinor";
-            this.listViewMinor.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listViewMinor.UseCompatibleStateImageBehavior = false;
-            this.listViewMinor.View = System.Windows.Forms.View.Details;
-            this.listViewMinor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listViewMinor_MouseDown);
+            this.processDisplay.Default = null;
+            this.processDisplay.Look = null;
+            this.processDisplay.MaximalInterval = 2000;
+            this.processDisplay.ProgressBar = this.statusLoading;
+            this.processDisplay.StatusLog = this.statusProcess;
             // 
-            // colSynSpecies
+            // checkBoxPlain
             // 
-            resources.ApplyResources(this.colSynSpecies, "colSynSpecies");
+            resources.ApplyResources(this.checkBoxPlain, "checkBoxPlain");
+            this.checkBoxPlain.Checked = true;
+            this.checkBoxPlain.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPlain.Name = "checkBoxPlain";
+            this.checkBoxPlain.UseVisualStyleBackColor = true;
+            this.checkBoxPlain.CheckedChanged += new System.EventHandler(this.checkBoxGroups_CheckedChanged);
             // 
-            // colSynRef
+            // labelSpecies
             // 
-            resources.ApplyResources(this.colSynRef, "colSynRef");
-            // 
-            // colSynName
-            // 
-            resources.ApplyResources(this.colSynName, "colSynName");
+            resources.ApplyResources(this.labelSpecies, "labelSpecies");
+            this.labelSpecies.Name = "labelSpecies";
+            this.labelSpecies.UseMnemonic = false;
             // 
             // listViewRepresence
             // 
@@ -380,12 +355,12 @@
             this.listViewRepresence.FullRowSelect = true;
             this.listViewRepresence.HideSelection = false;
             this.listViewRepresence.Name = "listViewRepresence";
+            this.listViewRepresence.ShowGroups = false;
             this.listViewRepresence.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewRepresence.UseCompatibleStateImageBehavior = false;
             this.listViewRepresence.View = System.Windows.Forms.View.Details;
             this.listViewRepresence.ItemActivate += new System.EventHandler(this.contextSpeciesEdit_Click);
             this.listViewRepresence.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listViewRepresence_ItemDrag);
-            this.listViewRepresence.SelectedIndexChanged += new System.EventHandler(this.listViewRepresence_SelectedIndexChanged);
             this.listViewRepresence.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewRepresence_DragDrop);
             this.listViewRepresence.DragOver += new System.Windows.Forms.DragEventHandler(this.listViewRepresence_DragOver);
             this.listViewRepresence.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listViewRepresence_MouseDown);
@@ -401,67 +376,6 @@
             // colSpcName
             // 
             resources.ApplyResources(this.colSpcName, "colSpcName");
-            // 
-            // treeViewDerivates
-            // 
-            this.treeViewDerivates.AllowDrop = true;
-            resources.ApplyResources(this.treeViewDerivates, "treeViewDerivates");
-            this.treeViewDerivates.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeViewDerivates.ContextMenuStrip = this.contextTree;
-            this.treeViewDerivates.FullRowSelect = true;
-            this.treeViewDerivates.HideSelection = false;
-            this.treeViewDerivates.HotTracking = true;
-            this.treeViewDerivates.ItemHeight = 23;
-            this.treeViewDerivates.Name = "treeViewDerivates";
-            this.treeViewDerivates.ShowLines = false;
-            this.treeViewDerivates.ShowNodeToolTips = true;
-            this.treeViewDerivates.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
-            this.treeViewDerivates.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeViewDerivates.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
-            this.treeViewDerivates.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseDoubleClick);
-            this.treeViewDerivates.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView_DragDrop);
-            this.treeViewDerivates.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
-            this.treeViewDerivates.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView_DragOver);
-            // 
-            // contextTree
-            // 
-            this.contextTree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextTreeNewTaxon,
-            this.contextTreeNewSpc,
-            this.toolStripSeparator4,
-            this.contextTreeExpand,
-            this.contextTreeCollapse});
-            this.contextTree.Name = "contextTree";
-            resources.ApplyResources(this.contextTree, "contextTree");
-            // 
-            // contextTreeNewTaxon
-            // 
-            this.contextTreeNewTaxon.Name = "contextTreeNewTaxon";
-            resources.ApplyResources(this.contextTreeNewTaxon, "contextTreeNewTaxon");
-            this.contextTreeNewTaxon.Click += new System.EventHandler(this.menuItemAddTaxon_Click);
-            // 
-            // contextTreeNewSpc
-            // 
-            this.contextTreeNewSpc.Name = "contextTreeNewSpc";
-            resources.ApplyResources(this.contextTreeNewSpc, "contextTreeNewSpc");
-            this.contextTreeNewSpc.Click += new System.EventHandler(this.menuItemAddSpecies_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // contextTreeExpand
-            // 
-            this.contextTreeExpand.Name = "contextTreeExpand";
-            resources.ApplyResources(this.contextTreeExpand, "contextTreeExpand");
-            this.contextTreeExpand.Click += new System.EventHandler(this.contextTreeExpand_Click);
-            // 
-            // contextTreeCollapse
-            // 
-            this.contextTreeCollapse.Name = "contextTreeCollapse";
-            resources.ApplyResources(this.contextTreeCollapse, "contextTreeCollapse");
-            this.contextTreeCollapse.Click += new System.EventHandler(this.contextTreeCollapse_Click);
             // 
             // tabPageKey
             // 
@@ -561,63 +475,13 @@
             this.listViewImages.Name = "listViewImages";
             this.listViewImages.UseCompatibleStateImageBehavior = false;
             // 
-            // contextTaxon
-            // 
-            this.contextTaxon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextTaxonEdit,
-            this.contextTaxonDelete,
-            this.contextTaxonDepart,
-            this.contextTaxonAddSpecies,
-            this.toolStripSeparator3,
-            this.contextTaxonExpandAll});
-            this.contextTaxon.Name = "contextMenuStripTaxon";
-            resources.ApplyResources(this.contextTaxon, "contextTaxon");
-            this.contextTaxon.Opening += new System.ComponentModel.CancelEventHandler(this.contextTaxon_Opening);
-            // 
-            // contextTaxonEdit
-            // 
-            resources.ApplyResources(this.contextTaxonEdit, "contextTaxonEdit");
-            this.contextTaxonEdit.Name = "contextTaxonEdit";
-            this.contextTaxonEdit.Click += new System.EventHandler(this.contextTaxonEdit_Click);
-            // 
-            // contextTaxonDelete
-            // 
-            this.contextTaxonDelete.Name = "contextTaxonDelete";
-            resources.ApplyResources(this.contextTaxonDelete, "contextTaxonDelete");
-            this.contextTaxonDelete.Click += new System.EventHandler(this.contextTaxonDelete_Click);
-            // 
-            // contextTaxonDepart
-            // 
-            this.contextTaxonDepart.Name = "contextTaxonDepart";
-            resources.ApplyResources(this.contextTaxonDepart, "contextTaxonDepart");
-            this.contextTaxonDepart.Click += new System.EventHandler(this.contextTaxonDepart_Click);
-            // 
-            // contextTaxonAddSpecies
-            // 
-            this.contextTaxonAddSpecies.Name = "contextTaxonAddSpecies";
-            resources.ApplyResources(this.contextTaxonAddSpecies, "contextTaxonAddSpecies");
-            this.contextTaxonAddSpecies.Click += new System.EventHandler(this.menuItemAddSpecies_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // contextTaxonExpandAll
-            // 
-            this.contextTaxonExpandAll.Name = "contextTaxonExpandAll";
-            resources.ApplyResources(this.contextTaxonExpandAll, "contextTaxonExpandAll");
-            this.contextTaxonExpandAll.Click += new System.EventHandler(this.contextTaxonExpandAll_Click);
-            // 
             // contextSpecies
             // 
             this.contextSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextSpeciesEdit,
-            this.contextSpeciesDelete,
-            this.contextSpeciesDepart});
+            this.contextSpeciesDelete});
             this.contextSpecies.Name = "contextMenuStripWater";
             resources.ApplyResources(this.contextSpecies, "contextSpecies");
-            this.contextSpecies.Opening += new System.ComponentModel.CancelEventHandler(this.contextSpecies_Opening);
             // 
             // contextSpeciesEdit
             // 
@@ -630,12 +494,6 @@
             this.contextSpeciesDelete.Name = "contextSpeciesDelete";
             resources.ApplyResources(this.contextSpeciesDelete, "contextSpeciesDelete");
             this.contextSpeciesDelete.Click += new System.EventHandler(this.contextSpeciesDelete_Click);
-            // 
-            // contextSpeciesDepart
-            // 
-            this.contextSpeciesDepart.Name = "contextSpeciesDepart";
-            resources.ApplyResources(this.contextSpeciesDepart, "contextSpeciesDepart");
-            this.contextSpeciesDepart.Click += new System.EventHandler(this.contextSpeciesDepart_Click);
             // 
             // imageListKeys
             // 
@@ -722,6 +580,11 @@
             this.backSpcLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backSpcLoader_DoWork);
             this.backSpcLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backSpcLoader_RunWorkerCompleted);
             // 
+            // backTreeLoader
+            // 
+            this.backTreeLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backTreeLoader_DoWork);
+            this.backTreeLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backTreeLoader_RunWorkerCompleted);
+            // 
             // tdSave
             // 
             this.tdSave.AllowDialogCancellation = true;
@@ -749,43 +612,33 @@
             this.status.MaximalInterval = 2000;
             this.status.StatusLog = this.statusProcess;
             // 
-            // backTreeLoader
+            // labelClassification
             // 
-            this.backTreeLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backTreeLoader_DoWork);
-            this.backTreeLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backTreeLoader_RunWorkerCompleted);
+            resources.ApplyResources(this.labelClassification, "labelClassification");
+            this.labelClassification.Name = "labelClassification";
             // 
-            // processDisplay
+            // taxaTreeView
             // 
-            this.processDisplay.Default = null;
-            this.processDisplay.Look = null;
-            this.processDisplay.MaximalInterval = 2000;
-            this.processDisplay.ProgressBar = this.statusLoading;
-            this.processDisplay.StatusLog = this.statusProcess;
-            // 
-            // tdDeleteTaxon
-            // 
-            this.tdDeleteTaxon.Buttons.Add(this.tdbDeleteConfirm);
-            this.tdDeleteTaxon.Buttons.Add(this.tdbDeleteParentize);
-            this.tdDeleteTaxon.Buttons.Add(this.tdbDeleteOrphanize);
-            this.tdDeleteTaxon.Buttons.Add(this.tdbDeleteCancel);
-            this.tdDeleteTaxon.CenterParent = true;
-            resources.ApplyResources(this.tdDeleteTaxon, "tdDeleteTaxon");
-            // 
-            // tdbDeleteConfirm
-            // 
-            resources.ApplyResources(this.tdbDeleteConfirm, "tdbDeleteConfirm");
-            // 
-            // tdbDeleteParentize
-            // 
-            resources.ApplyResources(this.tdbDeleteParentize, "tdbDeleteParentize");
-            // 
-            // tdbDeleteOrphanize
-            // 
-            resources.ApplyResources(this.tdbDeleteOrphanize, "tdbDeleteOrphanize");
-            // 
-            // tdbDeleteCancel
-            // 
-            this.tdbDeleteCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
+            this.taxaTreeView.AllowDrop = true;
+            this.taxaTreeView.AllowEdit = true;
+            resources.ApplyResources(this.taxaTreeView, "taxaTreeView");
+            this.taxaTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.taxaTreeView.DeepestRank = null;
+            this.taxaTreeView.Display = this.processDisplay;
+            this.taxaTreeView.FullRowSelect = true;
+            this.taxaTreeView.HideSelection = false;
+            this.taxaTreeView.HigherTaxonFormat = "T";
+            this.taxaTreeView.HotTracking = true;
+            this.taxaTreeView.LowerTaxonColor = System.Drawing.Color.Empty;
+            this.taxaTreeView.LowerTaxonFormat = "F";
+            this.taxaTreeView.Name = "taxaTreeView";
+            this.taxaTreeView.PickedTaxon = null;
+            this.taxaTreeView.RootTaxon = null;
+            this.taxaTreeView.ShowLines = false;
+            this.taxaTreeView.Sorted = true;
+            this.taxaTreeView.TaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonSelected);
+            this.taxaTreeView.Changed += new System.EventHandler(this.taxaTreeView_Changed);
+            this.taxaTreeView.TaxonChanged += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonChanged);
             // 
             // MainForm
             // 
@@ -802,12 +655,11 @@
             this.menuStrip.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tabPageTaxon.ResumeLayout(false);
-            this.contextTree.ResumeLayout(false);
+            this.tabPageTaxon.PerformLayout();
             this.tabPageKey.ResumeLayout(false);
             this.tabPageKey.PerformLayout();
             this.tabPagePictures.ResumeLayout(false);
             this.tabPagePictures.PerformLayout();
-            this.contextTaxon.ResumeLayout(false);
             this.contextSpecies.ResumeLayout(false);
             this.contextStep.ResumeLayout(false);
             this.contextFeature.ResumeLayout(false);
@@ -850,11 +702,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelStpCount;
         private System.Windows.Forms.Label labelPicCount;
-        private System.Windows.Forms.ContextMenuStrip contextTaxon;
-        private System.Windows.Forms.ToolStripMenuItem contextTaxonEdit;
-        private System.Windows.Forms.ToolStripMenuItem contextTaxonDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem contextTaxonAddSpecies;
         private System.Windows.Forms.ContextMenuStrip contextSpecies;
         private System.Windows.Forms.ToolStripMenuItem contextSpeciesEdit;
         private System.Windows.Forms.ToolStripMenuItem contextSpeciesDelete;
@@ -882,34 +729,19 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem contextStepNewFeature;
         private System.Windows.Forms.ToolStripMenuItem menuItemAddStep;
-        private System.Windows.Forms.ListView listViewMinor;
-        private System.Windows.Forms.ColumnHeader colSynSpecies;
-        private System.Windows.Forms.ColumnHeader colSynRef;
         private System.Windows.Forms.ContextMenuStrip contextSynonym;
         private System.Windows.Forms.ToolStripMenuItem contextRemoveSynonym;
         private System.ComponentModel.BackgroundWorker backSpcLoader;
         private System.ComponentModel.BackgroundWorker backTreeLoader;
-        public System.Windows.Forms.TreeView treeViewDerivates;
         private System.Windows.Forms.ToolStripStatusLabel statusTaxon;
         private System.Windows.Forms.ToolStripStatusLabel statusProcess;
         private Mayfly.Controls.ProcessDisplay processDisplay;
         private System.Windows.Forms.ColumnHeader colSpcName;
-        private System.Windows.Forms.ColumnHeader colSynName;
-        private System.Windows.Forms.ToolStripMenuItem contextTaxonDepart;
-        private System.Windows.Forms.ToolStripMenuItem contextSpeciesDepart;
-        private System.Windows.Forms.ToolStripMenuItem contextTaxonExpandAll;
         private System.Windows.Forms.ToolStripProgressBar statusLoading;
-        private System.Windows.Forms.ContextMenuStrip contextTree;
-        private System.Windows.Forms.ToolStripMenuItem contextTreeNewTaxon;
-        private System.Windows.Forms.ToolStripMenuItem contextTreeNewSpc;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem contextTreeExpand;
-        private System.Windows.Forms.ToolStripMenuItem contextTreeCollapse;
-        private TaskDialogs.TaskDialog tdDeleteTaxon;
-        private TaskDialogs.TaskDialogButton tdbDeleteConfirm;
-        private TaskDialogs.TaskDialogButton tdbDeleteParentize;
-        private TaskDialogs.TaskDialogButton tdbDeleteOrphanize;
-        private TaskDialogs.TaskDialogButton tdbDeleteCancel;
         private System.Windows.Forms.ToolStripStatusLabel statusSpecies;
+        private System.Windows.Forms.Label labelSpecies;
+        private System.Windows.Forms.CheckBox checkBoxPlain;
+        private Controls.TaxaTreeView taxaTreeView;
+        private System.Windows.Forms.Label labelClassification;
     }
 }

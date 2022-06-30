@@ -15,7 +15,7 @@ namespace Mayfly.Benthos.Explorer
 {
     partial class CardStackExtensions
     {
-        public static void AddBrief(this CardStack stack, Report report, SpeciesKey.BaseRow baseRow)
+        public static void AddBrief(this CardStack stack, Report report, TaxonomicRank rank)
         {
             stack.AddCommon(report);
 
@@ -36,20 +36,21 @@ namespace Mayfly.Benthos.Explorer
             Report.Table table2 = new Report.Table(Resources.Reports.Cenosis.Header2);
 
             table2.StartRow();
-            table2.AddHeaderCell(baseRow == null ? Wild.Resources.Reports.Caption.Species : baseRow.BaseName, .5);
+            table2.AddHeaderCell(rank == null ? Wild.Resources.Reports.Caption.Species : rank.Name, .5);
             table2.AddHeaderCell(string.Format("{0}, {1}",
                 Benthos.Resources.Reports.Caption.Abundance, Benthos.Resources.Reports.Caption.AbundanceUnits));
             table2.AddHeaderCell(string.Format("{0}, {1}",
                 Benthos.Resources.Reports.Caption.Biomass, Benthos.Resources.Reports.Caption.BiomassUnits));
             table2.EndRow();
 
-            if (baseRow != null)
+            if (rank != null)
             {
-                Composition tax = stack.GetBasicTaxonomicComposition(baseRow);
+                Composition tax = stack.GetBasicTaxonomicComposition(Benthos.UserSettings.SpeciesIndex, rank);
 
-                Category coarse = tax.Find((c) => {
-                        return c.Name.Contains(Resources.Interface.ForageIndicator);
-                    });
+                Category coarse = tax.Find((c) =>
+                {
+                    return c.Name.Contains(Resources.Interface.ForageIndicator);
+                });
 
                 foreach (Category species in tax)
                 {

@@ -16,16 +16,22 @@ namespace Mayfly.Species
         {
             InitializeComponent();
 
-            comboBoxRank.DataSource = TaxonomicRank.HigherRanks;
-            taxonSelector.Data = (SpeciesKey)taxonRow.Table.DataSet;
+
+            textBoxName.AutoCompleteCustomSource.AddRange(((SpeciesKey)taxonRow.Table.DataSet).Genera);
+            textBoxReference.AutoCompleteCustomSource.AddRange(((SpeciesKey)taxonRow.Table.DataSet).References);
 
             TaxonRow = taxonRow;
 
-            comboBoxRank.SelectedValue = taxonRow.Rank;
             textBoxName.Text = TaxonRow.Name;
+            if (!TaxonRow.IsReferenceNull()) textBoxReference.Text = TaxonRow.Reference;
             if (!TaxonRow.IsLocalNull()) textBoxLocal.Text = TaxonRow.Local;
             if (!TaxonRow.IsDescriptionNull()) textBoxDescription.Text = TaxonRow.Description;
-            taxonSelector.Taxon = TaxonRow.IsTaxIDNull() ? null : TaxonRow.TaxonRowParent;
+            taxonSelector.Data = (SpeciesKey)taxonRow.Table.DataSet;
+            comboBoxRank.DataSource = taxonRow.IsHigher ? TaxonomicRank.HigherRanks : TaxonomicRank.AllRanks;
+            comboBoxRank.SelectedIndexChanged += new System.EventHandler(this.comboBoxRank_SelectedIndexChanged);
+            comboBoxRank.SelectedValue = taxonRow.Rank;
+
+            IsChanged = false;
         }
 
 
@@ -34,7 +40,10 @@ namespace Mayfly.Species
         {
             TaxonRow.Rank = (int)comboBoxRank.SelectedValue;
             TaxonRow.Name = textBoxName.Text;
-            
+
+            if (!textBoxReference.Text.IsAcceptable()) TaxonRow.SetReferenceNull();
+            else TaxonRow.Reference = textBoxReference.Text;
+
             if (textBoxLocal.Text.IsAcceptable()) { TaxonRow.Local = textBoxLocal.Text; }
             else { TaxonRow.SetLocalNull(); }
             
@@ -66,7 +75,19 @@ namespace Mayfly.Species
         private void valueChanged(object sender, EventArgs e)
         {
             IsChanged = true;
-            buttonOK.Enabled = textBoxName.Text.IsAcceptable();
+            buttonOK.Enabled = textBoxName.Text.IsAcceptable() &&
+                (TaxonRow.IsHigher || taxonSelector.Taxon != null);
+        }
+
+        private void comboBoxRank_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            taxonSelector.DeepestRank =
+                comboBoxRank.SelectedIndex > 0 ? (TaxonomicRank)comboBoxRank.Items[comboBoxRank.SelectedIndex - 1] : null;
+        }
+
+        private void taxonSelector_OnTreeLoaded(object sender, EventArgs e)
+        {
+            taxonSelector.Taxon = TaxonRow.IsTaxIDNull() ? null : TaxonRow.TaxonRowParent;
         }
     }
 }

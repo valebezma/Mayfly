@@ -117,7 +117,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBoxCoupletChar.ToolTip" xml:space="preserve">
+    <value>Пусто - без группировки</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="labelCoupletChar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 13</value>
+  </data>
+  <data name="labelCoupletChar.Text" xml:space="preserve">
+    <value>Обозначение антитезы</value>
+  </data>
+  <data name="labelCoupletChar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonModern.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="radioButtonModern.Text" xml:space="preserve">
+    <value>Современный</value>
+  </data>
+  <data name="radioButtonModern.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonClassic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="radioButtonClassic.Text" xml:space="preserve">
+    <value>Классический</value>
+  </data>
+  <data name="radioButtonClassic.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelKeyReportView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 13</value>
+  </data>
+  <data name="labelKeyReportView.Text" xml:space="preserve">
+    <value>Вид определителя</value>
+  </data>
+  <data name="labelKeyReportView.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 15</value>
+  </data>
+  <data name="labelPrintCaption.Text" xml:space="preserve">
+    <value>Настройки печати и просмотра</value>
+  </data>
+  <data name="labelPrintCaption.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPagePrint.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="tabPagePrint.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlSettings.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonApply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="buttonApply.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAA0AMDAQAAEABABoBgAA1gAAACAgEAABAAQA6AIAAD4HAAAYGBAAAQAEAOgBAAAmCgAAEBAQAAEA
@@ -1762,46 +1834,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Настройки</value>
   </data>
-  <data name="buttonApply.Text" xml:space="preserve">
-    <value>Применить</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="labelCoupletChar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 13</value>
-  </data>
-  <data name="labelCoupletChar.Text" xml:space="preserve">
-    <value>Обозначение антитезы</value>
-  </data>
-  <data name="labelKeyReportView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
-  </data>
-  <data name="labelKeyReportView.Text" xml:space="preserve">
-    <value>Вид определителя</value>
-  </data>
-  <data name="labelPrintCaption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 15</value>
-  </data>
-  <data name="labelPrintCaption.Text" xml:space="preserve">
-    <value>Настройки печати и просмотра</value>
-  </data>
-  <data name="radioButtonClassic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
-  </data>
-  <data name="radioButtonClassic.Text" xml:space="preserve">
-    <value>Классический</value>
-  </data>
-  <data name="radioButtonModern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 17</value>
-  </data>
-  <data name="radioButtonModern.Text" xml:space="preserve">
-    <value>Современный</value>
-  </data>
-  <data name="tabPagePrint.Text" xml:space="preserve">
-    <value>Печать</value>
-  </data>
-  <data name="textBoxCoupletChar.ToolTip" xml:space="preserve">
-    <value>Пусто - без группировки</value>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
