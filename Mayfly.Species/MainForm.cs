@@ -22,7 +22,7 @@ namespace Mayfly.Species
             treeViewStep.Shine();
             listViewEngagement.Shine();
 
-            Data = new SpeciesKey();
+            Data = new TaxonomicIndex();
             FileName = null;
 
             statusSpecies.ResetFormatted(Constants.Null);
@@ -41,7 +41,7 @@ namespace Mayfly.Species
             taxaTreeView.HigherTaxonFormat = UserSettings.HigherTaxonNameFormat;
             taxaTreeView.LowerTaxonFormat = UserSettings.LowerTaxonNameFormat;
             taxaTreeView.LowerTaxonColor = UserSettings.LowerTaxonColor;
-            taxaTreeView.DeepestRank = UserSettings.FillTreeWithLowerTaxon ? null : new TaxonomicRank(73);
+            taxaTreeView.DeepestRank = UserSettings.FillTreeWithLowerTaxon ? null : TaxonomicRank.Subtribe;
 
             tabPageKey.Parent = null;
             tabPagePictures.Parent = null;
@@ -126,7 +126,7 @@ namespace Mayfly.Species
             {
                 switch (Path.GetExtension(UserSettings.Interface.ExportDialog.FileName))
                 {
-                    case ".sps":
+                    case ".txn":
                         save(UserSettings.Interface.ExportDialog.FileName);
                         break;
                     case ".html":
@@ -158,20 +158,18 @@ namespace Mayfly.Species
 
         private void menuItemAddTaxon_Click(object sender, EventArgs e)
         {
-            SpeciesKey.TaxonRow taxonRow = (sender == menuItemAddTaxon ?
-                Data.Taxon.NewTaxonRow(new TaxonomicRank(61), Resources.Interface.NewTaxon) :
-                Data.Taxon.NewSpeciesRow(Resources.Interface.NewSpecies));
+            TaxonomicIndex.TaxonRow taxonRow = (sender == menuItemAddTaxon ?
+                Data.Taxon.NewTaxonRow((TaxonomicRank)61, Resources.Interface.NewTaxon) :
+                Data.Taxon.NewTaxonRow(TaxonomicRank.Species, Resources.Interface.NewSpecies));
 
             EditTaxon editTaxon = new EditTaxon(taxonRow);
 
             if (editTaxon.ShowDialog(this) == DialogResult.OK)
             {
                 Data.Taxon.AddTaxonRow(taxonRow);
-
                 taxaTreeView.AddNode(taxonRow);
 
-                if (taxonRow.IsHigher)
-                {
+                if (taxonRow.IsHigher) {
                     listViewRepresence.Groups.Add(getGroup(taxonRow));
                 }
 
@@ -213,7 +211,7 @@ namespace Mayfly.Species
 
         private void backTreeLoader_DoWork(object sender, DoWorkEventArgs e)
         {
-            foreach (SpeciesKey.TaxonRow taxonRow in Data.GetHigherTaxonRows(false))
+            foreach (TaxonomicIndex.TaxonRow taxonRow in Data.GetHigherTaxonRows(false))
             {
                 addGroup(getGroup(taxonRow));
             }
@@ -272,6 +270,11 @@ namespace Mayfly.Species
         //    }
         //}
 
+        private void buttonTaxonEdit_Click(object sender, EventArgs e)
+        {
+            taxaTreeView.RunEditing();
+        }
+
         private void checkBoxGroups_CheckedChanged(object sender, EventArgs e)
         {
             listViewRepresence.ShowGroups = !checkBoxPlain.Checked;
@@ -296,11 +299,11 @@ namespace Mayfly.Species
 
         private void listViewRepresence_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            List<SpeciesKey.TaxonRow> speciesRows = new List<SpeciesKey.TaxonRow>();
+            List<TaxonomicIndex.TaxonRow> speciesRows = new List<TaxonomicIndex.TaxonRow>();
 
             foreach (ListViewItem item in (sender as ListView).SelectedItems)
             {
-                speciesRows.Add((SpeciesKey.TaxonRow)item.Tag);
+                speciesRows.Add((TaxonomicIndex.TaxonRow)item.Tag);
             }
 
             listViewRepresence.DoDragDrop(speciesRows.ToArray(), DragDropEffects.Link | DragDropEffects.Copy);
@@ -308,14 +311,14 @@ namespace Mayfly.Species
 
         private void listViewRepresence_DragOver(object sender, DragEventArgs e)
         {
-            if (!e.Data.GetDataPresent(typeof(SpeciesKey.TaxonRow[]))) return;
+            if (!e.Data.GetDataPresent(typeof(TaxonomicIndex.TaxonRow[]))) return;
 
             ListViewItem hoverItem = listViewRepresence.GetHoveringItem(e.X, e.Y);
             if (hoverItem == null) return;
-            SpeciesKey.TaxonRow hoverSpecies = (SpeciesKey.TaxonRow)hoverItem.Tag;
+            TaxonomicIndex.TaxonRow hoverSpecies = (TaxonomicIndex.TaxonRow)hoverItem.Tag;
             if (hoverSpecies == null) return;
 
-            SpeciesKey.TaxonRow[] carrySpecies = (SpeciesKey.TaxonRow[])e.Data.GetData(typeof(SpeciesKey.TaxonRow[]));
+            TaxonomicIndex.TaxonRow[] carrySpecies = (TaxonomicIndex.TaxonRow[])e.Data.GetData(typeof(TaxonomicIndex.TaxonRow[]));
             if (carrySpecies.Length != 1) return;
 
             listViewRepresence.SelectedItems.Clear();
@@ -325,14 +328,14 @@ namespace Mayfly.Species
 
         private void listViewRepresence_DragDrop(object sender, DragEventArgs e)
         {
-            if (!e.Data.GetDataPresent(typeof(SpeciesKey.TaxonRow[]))) return;
+            if (!e.Data.GetDataPresent(typeof(TaxonomicIndex.TaxonRow[]))) return;
 
             ListViewItem dropItem = listViewRepresence.GetHoveringItem(e.X, e.Y);
             if (dropItem == null) return;
-            SpeciesKey.TaxonRow dropSpecies = (SpeciesKey.TaxonRow)dropItem.Tag;
+            TaxonomicIndex.TaxonRow dropSpecies = (TaxonomicIndex.TaxonRow)dropItem.Tag;
             if (dropSpecies == null) return;
 
-            SpeciesKey.TaxonRow[] carrySpecies = (SpeciesKey.TaxonRow[])e.Data.GetData(typeof(SpeciesKey.TaxonRow[]));
+            TaxonomicIndex.TaxonRow[] carrySpecies = (TaxonomicIndex.TaxonRow[])e.Data.GetData(typeof(TaxonomicIndex.TaxonRow[]));
             if (carrySpecies.Length != 1) return;
 
             taxaTreeView.SetParent(carrySpecies, dropSpecies);
@@ -359,7 +362,7 @@ namespace Mayfly.Species
             else
             {
                 List<ListViewItem> result = new List<ListViewItem>();
-                foreach (SpeciesKey.TaxonRow speciesRow in (SpeciesKey.TaxonRow[])e.Argument)
+                foreach (TaxonomicIndex.TaxonRow speciesRow in (TaxonomicIndex.TaxonRow[])e.Argument)
                 {
                     ListViewItem item = new ListViewItem();
                     item.UpdateItem(speciesRow);
@@ -397,7 +400,7 @@ namespace Mayfly.Species
         {
             foreach (ListViewItem item in listViewRepresence.SelectedItems)
             {
-                ((SpeciesKey.TaxonRow)item.Tag).Delete();
+                ((TaxonomicIndex.TaxonRow)item.Tag).Delete();
                 item.Remove();
             }
 
@@ -417,7 +420,7 @@ namespace Mayfly.Species
         {
             if (IsStepNodeSelected)
             {
-                ((SpeciesKey.StepRow)treeViewStep.SelectedNode.Tag).Delete();
+                ((TaxonomicIndex.StepRow)treeViewStep.SelectedNode.Tag).Delete();
                 treeViewStep.Nodes.Remove(treeViewStep.SelectedNode);
                 IsChanged = true;
             }
@@ -442,7 +445,7 @@ namespace Mayfly.Species
         {
             if (IsFeatureNodeSelected)
             {
-                ((SpeciesKey.FeatureRow)treeViewStep.SelectedNode.Tag).Delete();
+                ((TaxonomicIndex.FeatureRow)treeViewStep.SelectedNode.Tag).Delete();
                 treeViewStep.Nodes.Remove(treeViewStep.SelectedNode);
                 IsChanged = true;
             }
@@ -480,7 +483,7 @@ namespace Mayfly.Species
                 {
                     if (!SelectedState.TaxonRow.IsHigher)
                     {
-                        editSpecies((SpeciesKey.TaxonRow)SelectedState.TaxonRow);
+                        editSpecies((TaxonomicIndex.TaxonRow)SelectedState.TaxonRow);
                     }
                 }
             }
@@ -490,7 +493,7 @@ namespace Mayfly.Species
         {
             foreach (ListViewItem item in listViewEngagement.SelectedItems)
             {
-                editSpecies(Data.Taxon.FindByID(item.GetID()) as SpeciesKey.TaxonRow);
+                editSpecies(Data.Taxon.FindByID(item.GetID()) as TaxonomicIndex.TaxonRow);
             }
         }
 

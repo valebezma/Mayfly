@@ -36,7 +36,7 @@ namespace Mayfly.Benthos.Explorer
             Report.Table table2 = new Report.Table(Resources.Reports.Cenosis.Header2);
 
             table2.StartRow();
-            table2.AddHeaderCell(rank == null ? Wild.Resources.Reports.Caption.Species : rank.Name, .5);
+            table2.AddHeaderCell(rank == null ? Wild.Resources.Reports.Caption.Species : rank.ToString(), .5);
             table2.AddHeaderCell(string.Format("{0}, {1}",
                 Benthos.Resources.Reports.Caption.Abundance, Benthos.Resources.Reports.Caption.AbundanceUnits));
             table2.AddHeaderCell(string.Format("{0}, {1}",

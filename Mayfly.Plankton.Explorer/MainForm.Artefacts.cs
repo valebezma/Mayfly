@@ -20,13 +20,13 @@ namespace Mayfly.Plankton.Explorer
         {
             int artifactCount = 0;
 
-            foreach (Data.SpeciesRow speciesRow in data.Species)
+            foreach (Data.DefinitionRow speciesRow in data.Species)
             {
                 double q = data.Quantity(speciesRow);
 
                 #region In key missing
 
-                SpeciesKey.SpeciesRow spcRow = SpeciesIndex.Species.FindBySpecies(
+                TaxonomicIndex.SpeciesRow spcRow = SpeciesIndex.Definition.FindByName(
                     speciesRow.Species);
 
                 if (spcRow == null)
@@ -46,7 +46,7 @@ namespace Mayfly.Plankton.Explorer
         {
             spreadSheetArtifactSpecies.Rows.Clear();
 
-            foreach (Data.SpeciesRow speciesRow in data.Species)
+            foreach (Data.DefinitionRow speciesRow in data.Species)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtifactSpecies);
@@ -76,7 +76,7 @@ namespace Mayfly.Plankton.Explorer
 
             string speciesEntered = (string)gridRow.Cells[gridColumnTyping.Index].Value;
 
-            SpeciesKey.SpeciesRow speciesRow = speciesValidator.Find(speciesEntered);
+            TaxonomicIndex.SpeciesRow speciesRow = speciesValidator.Find(speciesEntered);
 
             if (speciesRow == null)
             {

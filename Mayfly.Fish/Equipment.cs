@@ -28,7 +28,7 @@ namespace Mayfly.Fish
         {
             public override string ToString()
             {
-                Samplers.SamplerRow samplerRow = UserSettings.SamplersIndex.Sampler.FindByID(this.SamplerID);
+                Samplers.SamplerRow samplerRow = UserSettings.ReaderSettings.SamplersIndex.Sampler.FindByID(this.SamplerID);
                 return samplerRow.Sampler + (
                     (this.IsMeshNull() ? string.Empty : this.Mesh.ToString(" ◊ 0")) +
                     (this.IsHookNull() ? string.Empty : this.Hook.ToString(" J 0")) +

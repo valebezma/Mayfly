@@ -149,9 +149,9 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double Abundance(this Data data, Data.SpeciesRow speciesRow)
+        public static double Abundance(this Data data, Data.DefinitionRow speciesRow)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             double result = 0.0;
@@ -171,9 +171,9 @@ namespace Mayfly.Extensions
             return Math.Round((double)logRow.Quantity / (logRow.IsSubsampleNull() ? 1 : logRow.Subsample) / logRow.CardRow.Volume, 3);
         }
 
-        public static double Quantity(this Data data, Data.SpeciesRow speciesRow)
+        public static double Quantity(this Data data, Data.DefinitionRow speciesRow)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             double result = 0.0;
@@ -191,14 +191,14 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        //public static int Quantity(this Data data, Data.SpeciesRow speciesRow, double lengthClass)
+        //public static int Quantity(this Data data, Data.DefinitionRow speciesRow, double lengthClass)
         //{
         //    return speciesRow.GetQuantity(lengthClass);
         //}
 
-        //public static int Quantity(this Data data, Data.SpeciesRow speciesRow, double lengthClass, Sex G)
+        //public static int Quantity(this Data data, Data.DefinitionRow speciesRow, double lengthClass, Sex G)
         //{
-        //    speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+        //    speciesRow = data.Definition.FindByName(speciesRow.Species);
         //    if (speciesRow == null) return 0;
 
         //    int result = 0;
@@ -216,9 +216,9 @@ namespace Mayfly.Extensions
         //    return result;
         //}
 
-        public static int Quantity(this Data data, Data.SpeciesRow speciesRow, Sex G)
+        public static int Quantity(this Data data, Data.DefinitionRow speciesRow, Sex G)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             int result = 0;
@@ -234,9 +234,9 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        //public static int QuantitySexed(this Data data, Data.SpeciesRow speciesRow, double lengthClass)
+        //public static int QuantitySexed(this Data data, Data.DefinitionRow speciesRow, double lengthClass)
         //{
-        //    speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+        //    speciesRow = data.Definition.FindByName(speciesRow.Species);
         //    if (speciesRow == null) return 0;
 
         //    int result = 0;
@@ -253,14 +253,14 @@ namespace Mayfly.Extensions
         //    return result;
         //}
 
-        //public static int Quantity(this Data.IndividualDataTable individual, Data.SpeciesRow speciesRow, Data.VariableRow variableRow)
+        //public static int Quantity(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
         //{
         //    return individual.Quantity(speciesRow.Species, variableRow);
         //}
 
         //public static int Quantity(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
         //{
-        //    Data.SpeciesRow speciesRow = ((Data)individual.DataSet).Species.FindBySpecies(species);
+        //    Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
 
         //    if (speciesRow == null) return 0;
 
@@ -283,14 +283,14 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.SpeciesRow speciesRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
         {
             return individual.Unweighted(speciesRow.Species, variableRow);
         }
 
         public static int Unweighted(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
         {
-            Data.SpeciesRow speciesRow = ((Data)individual.DataSet).Species.FindBySpecies(species);
+            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
 
             if (speciesRow == null) return 0;
 
@@ -318,9 +318,9 @@ namespace Mayfly.Extensions
 
         #region Mass
 
-        //public static double Mass(this Data data, Data.SpeciesRow speciesRow)
+        //public static double Mass(this Data data, Data.DefinitionRow speciesRow)
         //{
-        //    //speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+        //    //speciesRow = data.Definition.FindByName(speciesRow.Species);
         //    //if (speciesRow == null) return 0;
 
         //    double result = 0.0;
@@ -404,9 +404,9 @@ namespace Mayfly.Extensions
         //    return logRow.Mass / (logRow.IsSubsampleNull() ? 1 : logRow.Subsample) / 1000 / logRow.CardRow.Volume;
         //}
 
-        //public static double Biomass(this Data data, Data.SpeciesRow speciesRow)
+        //public static double Biomass(this Data data, Data.DefinitionRow speciesRow)
         //{
-        //    speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+        //    speciesRow = data.Definition.FindByName(speciesRow.Species);
         //    if (speciesRow == null) return 0;
 
         //    double result = 0.0;
@@ -419,9 +419,9 @@ namespace Mayfly.Extensions
         //    return result / (double)data.Card.Count;
         //}
 
-        public static Sample Masses(this Data data, Data.SpeciesRow speciesRow)
+        public static Sample Masses(this Data data, Data.DefinitionRow speciesRow)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
@@ -439,9 +439,9 @@ namespace Mayfly.Extensions
 
         #region Length
 
-        public static Sample Lengths(this Data data, Data.SpeciesRow speciesRow)
+        public static Sample Lengths(this Data data, Data.DefinitionRow speciesRow)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
@@ -459,9 +459,9 @@ namespace Mayfly.Extensions
             else return null;
         }
 
-        public static double LengthAverage(this Data data, Data.SpeciesRow speciesRow, Sex G)
+        public static double LengthAverage(this Data data, Data.DefinitionRow speciesRow, Sex G)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
 
             double result = 0;
@@ -489,9 +489,9 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static Sample Lengths(this Data data, Data.SpeciesRow speciesRow, Sex G)
+        public static Sample Lengths(this Data data, Data.DefinitionRow speciesRow, Sex G)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
@@ -509,9 +509,9 @@ namespace Mayfly.Extensions
             return new Sample(result.ToArray());
         }
 
-        public static double LengthMin(this Data data, Data.SpeciesRow speciesRow, Sex G)
+        public static double LengthMin(this Data data, Data.DefinitionRow speciesRow, Sex G)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
 
             double result = double.MaxValue;
@@ -542,9 +542,9 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static double LengthMax(this Data data, Data.SpeciesRow speciesRow, Sex G)
+        public static double LengthMax(this Data data, Data.DefinitionRow speciesRow, Sex G)
         {
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species);
+            speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
 
             double result = double.MinValue;
@@ -609,10 +609,10 @@ namespace Mayfly.Extensions
 
         #endregion
 
-        public static int Weighted(this Data data, Data.SpeciesRow speciesRow)
+        public static int Weighted(this Data data, Data.DefinitionRow speciesRow)
         {
             int result = 0;
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species); if (speciesRow == null) return 0;
+            speciesRow = data.Definition.FindByName(speciesRow.Species); if (speciesRow == null) return 0;
 
             foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
@@ -623,10 +623,10 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Measured(this Data data, Data.SpeciesRow speciesRow)
+        public static int Measured(this Data data, Data.DefinitionRow speciesRow)
         {
             int result = 0;
-            speciesRow = data.Species.FindBySpecies(speciesRow.Species); if (speciesRow == null) return 0;
+            speciesRow = data.Definition.FindByName(speciesRow.Species); if (speciesRow == null) return 0;
 
             foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
@@ -793,7 +793,7 @@ namespace Mayfly.Extensions
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpeciesRows())
+            foreach (Data.DefinitionRow speciesRow in stack.GetSpeciesRows())
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;

@@ -150,6 +150,13 @@
   <data name="IndRename" xml:space="preserve">
     <value>Подтвердите определение "{0}" как "{1}". Если записи этого вида нет, она будет добавлена.</value>
   </data>
+  <data name="LogBlocked" xml:space="preserve">
+    <value>Журнал заблокирован</value>
+  </data>
+  <data name="LogInstruction" xml:space="preserve">
+    <value>Вы не можете изменить значение, потому что оно вычисляется из значений отдельных особей.
+Вы можете изменить это правило на вкладке "Ввод данных" окна настроек.</value>
+  </data>
   <data name="LogRename" xml:space="preserve">
     <value>Подтвердите перемещение записи журнала из "{0}" в "{1}". Если записи вида нет, она будет добавлена.</value>
   </data>

@@ -21,7 +21,7 @@ namespace Mayfly.Species.Systematics
             }
         }
 
-        public SpeciesKey.StateRow StateRow;
+        public TaxonomicIndex.StateRow StateRow;
 
         public StateEditor()
         {
@@ -30,7 +30,7 @@ namespace Mayfly.Species.Systematics
             textBoxDescription.Focus();
         }
 
-        public StateEditor(SpeciesKey.StateRow stateRow)
+        public StateEditor(TaxonomicIndex.StateRow stateRow)
             : this()
         {
             StateRow = stateRow;
@@ -107,14 +107,14 @@ namespace Mayfly.Species.Systematics
                     // create new step, feature and open feature
                     if (StateRow.IsTaxIDNull())
                     {
-                        EditFeature editFeature = new EditFeature(((SpeciesKey)StateRow.Table.DataSet).Step.NewStepRow());
+                        EditFeature editFeature = new EditFeature(((TaxonomicIndex)StateRow.Table.DataSet).Step.NewStepRow());
                         editFeature.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.NextToHost);
                         editFeature.Show();
                     }
                 }
                 else
                 {
-                    foreach (SpeciesKey.FeatureRow featureRow in StateRow.Next.GetFeatureRows())
+                    foreach (TaxonomicIndex.FeatureRow featureRow in StateRow.Next.GetFeatureRows())
                     {
                         EditFeature editFeature = new EditFeature(featureRow);
                         editFeature.SetFriendlyDesktopLocation(this.FindForm(), FormLocation.NextToHost);

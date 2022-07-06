@@ -26,7 +26,7 @@ namespace Mayfly.Fish.Legal
 
         partial class SpeciesDataTable
         {
-            public SpeciesRow FindBySpecies(string value)
+            public SpeciesRow FindByName(string value)
             {
                 foreach (SpeciesRow speciesRow in Rows)
                 {

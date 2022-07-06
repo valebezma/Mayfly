@@ -147,8 +147,8 @@
             this.tdbSave = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesParasites = new Mayfly.Species.SpeciesSelector(this.components);
-            this.speciesTrophics = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesParasites = new Mayfly.Species.TaxonProvider(this.components);
+            this.speciesTrophics = new Mayfly.Species.TaxonProvider(this.components);
             this.ColumnTrpID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTrpSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTrpQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1031,7 +1031,6 @@
             // 
             // speciesParasites
             // 
-            this.speciesParasites.Button = this.buttonAddParasite;
             this.speciesParasites.CheckDuplicates = false;
             this.speciesParasites.ColumnName = "ColumnPrsSpecies";
             this.speciesParasites.Grid = this.spreadSheetInfection;
@@ -1040,7 +1039,6 @@
             // 
             // speciesTrophics
             // 
-            this.speciesTrophics.Button = this.buttonAddTrophics;
             this.speciesTrophics.CheckDuplicates = false;
             this.speciesTrophics.ColumnName = "ColumnTrpSpecies";
             this.speciesTrophics.Grid = this.spreadSheetTrophics;
@@ -1200,8 +1198,8 @@
         private System.Windows.Forms.ToolStripMenuItem allSectionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFromCardToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private Species.SpeciesSelector speciesParasites;
-        private Species.SpeciesSelector speciesTrophics;
+        private Species.TaxonProvider speciesParasites;
+        private Species.TaxonProvider speciesTrophics;
         private System.Windows.Forms.TabPage tabPageAddt;
         private System.Windows.Forms.Label label1;
         private Mayfly.Controls.SpreadSheet spreadSheetAddt;

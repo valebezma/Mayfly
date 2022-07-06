@@ -172,8 +172,38 @@
     <value>7</value>
   </data>
   <metadata name="MenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>146, 17</value>
+    <value>17, 17</value>
   </metadata>
+  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>564, 24</value>
+  </data>
+  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MenuStrip.Text" xml:space="preserve">
+    <value>menuSampleCard</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
+    <value>MenuStrip</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="menuItemNew.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
@@ -246,6 +276,12 @@
   <data name="menuItemPrint.Text" xml:space="preserve">
     <value>Print...</value>
   </data>
+  <data name="menuItemBlank.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="menuItemBlank.Text" xml:space="preserve">
+    <value>Print form</value>
+  </data>
   <data name="ToolStripMenuItemCardBlank.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 22</value>
   </data>
@@ -258,12 +294,6 @@
   <data name="ToolStripMenuItemIndividualsLogBlank.Text" xml:space="preserve">
     <value>Individuals log</value>
   </data>
-  <data name="menuItemBlank.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 22</value>
-  </data>
-  <data name="menuItemBlank.Text" xml:space="preserve">
-    <value>Print form</value>
-  </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 6</value>
   </data>
@@ -273,11 +303,11 @@
   <data name="menuItemClose.Text" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+  <data name="ToolStripMenuItemData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 20</value>
   </data>
-  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="ToolStripMenuItemData.Text" xml:space="preserve">
+    <value>Data</value>
   </data>
   <data name="addEnvironmentalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 22</value>
@@ -300,11 +330,11 @@
   <data name="menuItemLocation.Text" xml:space="preserve">
     <value>Import location</value>
   </data>
-  <data name="ToolStripMenuItemData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 20</value>
+  <data name="ToolStripMenuItemService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
   </data>
-  <data name="ToolStripMenuItemData.Text" xml:space="preserve">
-    <value>Data</value>
+  <data name="ToolStripMenuItemService.Text" xml:space="preserve">
+    <value>Service</value>
   </data>
   <data name="ToolStripMenuItemWatersRef.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -339,38 +369,62 @@
   <data name="menuItemAbout.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="ToolStripMenuItemService.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
+    <value>buttonAdd</value>
   </data>
-  <data name="ToolStripMenuItemService.Text" xml:space="preserve">
-    <value>Service</value>
+  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
+    <value>tabPageLog</value>
   </data>
-  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>564, 24</value>
-  </data>
-  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="MenuStrip.Text" xml:space="preserve">
-    <value>menuSampleCard</value>
+  <data name="&gt;&gt;spreadSheetLog.Name" xml:space="preserve">
+    <value>spreadSheetLog</value>
   </data>
-  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
-    <value>MenuStrip</value>
+  <data name="&gt;&gt;spreadSheetLog.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;spreadSheetLog.Parent" xml:space="preserve">
+    <value>tabPageLog</value>
   </data>
-  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 45, 45, 45</value>
+  </data>
+  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageLog.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
+    <value>tabPageLog</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="buttonAdd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
+  </data>
+  <data name="buttonAdd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -435,60 +489,6 @@
   <data name="spreadSheetLog.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <metadata name="contextMenuStripLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>363, 17</value>
-  </metadata>
-  <data name="ToolStripMenuItemIndividuals.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt, style=Bold</value>
-  </data>
-  <data name="ToolStripMenuItemIndividuals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemIndividuals.Text" xml:space="preserve">
-    <value>Individuals log</value>
-  </data>
-  <data name="ToolStripMenuItemSpeciesKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemSpeciesKey.Text" xml:space="preserve">
-    <value>Open key</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 6</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCut.Text" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCopy.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="ToolStripMenuItemPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemPaste.Text" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="ToolStripMenuItemDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
-  </data>
-  <data name="ToolStripMenuItemDelete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="contextMenuStripLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 142</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripLog.Name" xml:space="preserve">
-    <value>contextMenuStripLog</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="spreadSheetLog.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
@@ -513,32 +513,164 @@
   <data name="&gt;&gt;spreadSheetLog.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPageLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;labelPosition.Name" xml:space="preserve">
+    <value>labelPosition</value>
   </data>
-  <data name="tabPageLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 45, 45, 45</value>
+  <data name="&gt;&gt;labelPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPageLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
+  <data name="&gt;&gt;labelPosition.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
   </data>
-  <data name="tabPageLog.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;labelPosition.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPageLog.Text" xml:space="preserve">
-    <value>Log</value>
+  <data name="&gt;&gt;labelTag.Name" xml:space="preserve">
+    <value>labelTag</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Name" xml:space="preserve">
-    <value>tabPageLog</value>
+  <data name="&gt;&gt;labelTag.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelTag.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;labelTag.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;waypointControl1.Name" xml:space="preserve">
+    <value>waypointControl1</value>
+  </data>
+  <data name="&gt;&gt;waypointControl1.Type" xml:space="preserve">
+    <value>Mayfly.Geographics.WaypointControl, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waypointControl1.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;waypointControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Name" xml:space="preserve">
+    <value>comboBoxBank</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;comboBoxBank.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Name" xml:space="preserve">
+    <value>waterSelector</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Type" xml:space="preserve">
+    <value>Mayfly.Waters.Controls.WaterSelector, watinvent, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;waterSelector.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCrossSection.Name" xml:space="preserve">
+    <value>comboBoxCrossSection</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCrossSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCrossSection.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;comboBoxCrossSection.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelCrossSection.Name" xml:space="preserve">
+    <value>labelCrossSection</value>
+  </data>
+  <data name="&gt;&gt;labelCrossSection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCrossSection.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;labelCrossSection.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelBank.Name" xml:space="preserve">
+    <value>labelBank</value>
+  </data>
+  <data name="&gt;&gt;labelBank.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBank.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;labelBank.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Name" xml:space="preserve">
+    <value>labelWater</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWater.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;labelWater.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Name" xml:space="preserve">
+    <value>textBoxComments</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;textBoxComments.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Name" xml:space="preserve">
+    <value>labelComments</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelComments.Parent" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;labelComments.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tabPageCollect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageCollect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="tabPageCollect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageCollect.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageCollect.Text" xml:space="preserve">
+    <value>Sampling spot</value>
+  </data>
+  <data name="&gt;&gt;tabPageCollect.Name" xml:space="preserve">
+    <value>tabPageCollect</value>
+  </data>
+  <data name="&gt;&gt;tabPageCollect.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCollect.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageLog.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tabPageCollect.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -924,35 +1056,584 @@
   <data name="&gt;&gt;labelComments.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="tabPageCollect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageCollect.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
-  </data>
-  <data name="tabPageCollect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageCollect.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageCollect.Text" xml:space="preserve">
-    <value>Sampling spot</value>
-  </data>
-  <data name="&gt;&gt;tabPageCollect.Name" xml:space="preserve">
-    <value>tabPageCollect</value>
-  </data>
-  <data name="&gt;&gt;tabPageCollect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageCollect.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageCollect.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Name" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageEnvironment.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Name" xml:space="preserve">
+    <value>tabPageFactors</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 39</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 558</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.Name" xml:space="preserve">
+    <value>comboBoxSampler</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.Type" xml:space="preserve">
+    <value>GroupedComboBox, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;comboBoxSampler.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelTexture.Name" xml:space="preserve">
+    <value>labelTexture</value>
+  </data>
+  <data name="&gt;&gt;labelTexture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTexture.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelTexture.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonSubTexture.Name" xml:space="preserve">
+    <value>buttonSubTexture</value>
+  </data>
+  <data name="&gt;&gt;buttonSubTexture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSubTexture.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;buttonSubTexture.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Name" xml:space="preserve">
+    <value>textBoxDepth</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxDepth.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDebris.Name" xml:space="preserve">
+    <value>numericUpDownDebris</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDebris.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDebris.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownDebris.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Name" xml:space="preserve">
+    <value>labelDepth</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelDepth.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSapropel.Name" xml:space="preserve">
+    <value>numericUpDownSapropel</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSapropel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSapropel.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSapropel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Name" xml:space="preserve">
+    <value>labelMethod</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelMethod.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCPOM.Name" xml:space="preserve">
+    <value>numericUpDownCPOM</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCPOM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCPOM.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCPOM.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFPOM.Name" xml:space="preserve">
+    <value>numericUpDownFPOM</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFPOM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFPOM.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownFPOM.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Name" xml:space="preserve">
+    <value>labelSampler</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelSampler.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLiving.Name" xml:space="preserve">
+    <value>numericUpDownLiving</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLiving.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLiving.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownLiving.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Name" xml:space="preserve">
+    <value>labelMesh</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelMesh.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownWood.Name" xml:space="preserve">
+    <value>numericUpDownWood</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownWood.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownWood.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownWood.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;labelRepeats.Name" xml:space="preserve">
+    <value>labelRepeats</value>
+  </data>
+  <data name="&gt;&gt;labelRepeats.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRepeats.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelRepeats.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebris.Name" xml:space="preserve">
+    <value>checkBoxDebris</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebris.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebris.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebris.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;labelSquare.Name" xml:space="preserve">
+    <value>labelSquare</value>
+  </data>
+  <data name="&gt;&gt;labelSquare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSquare.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelSquare.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPhytal.Name" xml:space="preserve">
+    <value>numericUpDownPhytal</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPhytal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPhytal.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownPhytal.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Name" xml:space="preserve">
+    <value>textBoxMesh</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxMesh.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSapropel.Name" xml:space="preserve">
+    <value>checkBoxSapropel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSapropel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSapropel.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSapropel.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;textBoxSquare.Name" xml:space="preserve">
+    <value>textBoxSquare</value>
+  </data>
+  <data name="&gt;&gt;textBoxSquare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSquare.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;textBoxSquare.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCPOM.Name" xml:space="preserve">
+    <value>checkBoxCPOM</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCPOM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCPOM.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCPOM.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownReps.Name" xml:space="preserve">
+    <value>numericUpDownReps</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownReps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownReps.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownReps.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownClay.Name" xml:space="preserve">
+    <value>numericUpDownClay</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownClay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownClay.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownClay.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;labelMinerals.Name" xml:space="preserve">
+    <value>labelMinerals</value>
+  </data>
+  <data name="&gt;&gt;labelMinerals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelMinerals.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelMinerals.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFPOM.Name" xml:space="preserve">
+    <value>checkBoxFPOM</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFPOM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFPOM.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxFPOM.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;labelOrganics.Name" xml:space="preserve">
+    <value>labelOrganics</value>
+  </data>
+  <data name="&gt;&gt;labelOrganics.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelOrganics.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;labelOrganics.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSilt.Name" xml:space="preserve">
+    <value>numericUpDownSilt</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSilt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSilt.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSilt.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBoulder.Name" xml:space="preserve">
+    <value>checkBoxBoulder</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBoulder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBoulder.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxBoulder.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLiving.Name" xml:space="preserve">
+    <value>checkBoxLiving</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLiving.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLiving.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLiving.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCobble.Name" xml:space="preserve">
+    <value>checkBoxCobble</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCobble.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCobble.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCobble.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSand.Name" xml:space="preserve">
+    <value>numericUpDownSand</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSand.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownSand.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGravel.Name" xml:space="preserve">
+    <value>checkBoxGravel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGravel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGravel.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGravel.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;checkBoxWood.Name" xml:space="preserve">
+    <value>checkBoxWood</value>
+  </data>
+  <data name="&gt;&gt;checkBoxWood.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxWood.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxWood.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownBoulder.Name" xml:space="preserve">
+    <value>numericUpDownBoulder</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownBoulder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownBoulder.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownBoulder.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownGravel.Name" xml:space="preserve">
+    <value>numericUpDownGravel</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownGravel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownGravel.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownGravel.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSand.Name" xml:space="preserve">
+    <value>checkBoxSand</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSand.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSand.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSand.ZOrder" xml:space="preserve">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhytal.Name" xml:space="preserve">
+    <value>checkBoxPhytal</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhytal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhytal.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPhytal.ZOrder" xml:space="preserve">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSilt.Name" xml:space="preserve">
+    <value>checkBoxSilt</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSilt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSilt.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxSilt.ZOrder" xml:space="preserve">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCobble.Name" xml:space="preserve">
+    <value>numericUpDownCobble</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCobble.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCobble.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownCobble.ZOrder" xml:space="preserve">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;checkBoxClay.Name" xml:space="preserve">
+    <value>checkBoxClay</value>
+  </data>
+  <data name="&gt;&gt;checkBoxClay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxClay.Parent" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;checkBoxClay.ZOrder" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="tabPageSampler.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSampler.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>25, 25, 45, 45</value>
+  </data>
+  <data name="tabPageSampler.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 532</value>
+  </data>
+  <data name="tabPageSampler.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="tabPageSampler.Text" xml:space="preserve">
+    <value>Sampling methodics</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
+    <value>tabPageSampler</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSampler.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="comboBoxSampler.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2217,32 +2898,80 @@
   <data name="&gt;&gt;checkBoxClay.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <data name="tabPageSampler.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;aquaControl1.Name" xml:space="preserve">
+    <value>aquaControl1</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;aquaControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Name" xml:space="preserve">
+    <value>weatherControl1</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;weatherControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Name" xml:space="preserve">
+    <value>labelActWeather</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;labelActWeather.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Name" xml:space="preserve">
+    <value>labelWaterConds</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.Parent" xml:space="preserve">
+    <value>tabPageEnvironment</value>
+  </data>
+  <data name="&gt;&gt;labelWaterConds.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabPageEnvironment.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageSampler.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>25, 25, 45, 45</value>
+  <data name="tabPageEnvironment.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageSampler.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageEnvironment.Size" type="System.Drawing.Size, System.Drawing">
     <value>532, 532</value>
   </data>
-  <data name="tabPageSampler.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="tabPageEnvironment.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="tabPageSampler.Text" xml:space="preserve">
-    <value>Sampling methodics</value>
+  <data name="tabPageEnvironment.Text" xml:space="preserve">
+    <value>Environment</value>
   </data>
-  <data name="&gt;&gt;tabPageSampler.Name" xml:space="preserve">
-    <value>tabPageSampler</value>
+  <data name="&gt;&gt;tabPageEnvironment.Name" xml:space="preserve">
+    <value>tabPageEnvironment</value>
   </data>
-  <data name="&gt;&gt;tabPageSampler.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageEnvironment.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSampler.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageEnvironment.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageSampler.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabPageEnvironment.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="aquaControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -2260,7 +2989,7 @@
     <value>aquaControl1</value>
   </data>
   <data name="&gt;&gt;aquaControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.AquaControl, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;aquaControl1.Parent" xml:space="preserve">
     <value>tabPageEnvironment</value>
@@ -2284,7 +3013,7 @@
     <value>weatherControl1</value>
   </data>
   <data name="&gt;&gt;weatherControl1.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Controls.WeatherControl, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;weatherControl1.Parent" xml:space="preserve">
     <value>tabPageEnvironment</value>
@@ -2361,69 +3090,6 @@
   <data name="&gt;&gt;labelWaterConds.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tabPageEnvironment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageEnvironment.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageEnvironment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>532, 532</value>
-  </data>
-  <data name="tabPageEnvironment.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="tabPageEnvironment.Text" xml:space="preserve">
-    <value>Environment</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Name" xml:space="preserve">
-    <value>tabPageEnvironment</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageEnvironment.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="ColumnAddtFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnAddtFactor.HeaderText" xml:space="preserve">
-    <value>Factor</value>
-  </data>
-  <metadata name="ColumnAddtValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="spreadSheetAddt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="spreadSheetAddt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>45, 45</value>
-  </data>
-  <data name="spreadSheetAddt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>45, 65, 45, 45</value>
-  </data>
-  <data name="spreadSheetAddt.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="spreadSheetAddt.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="spreadSheetAddt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>442, 442</value>
-  </data>
-  <data name="spreadSheetAddt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="spreadSheetAddt.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;spreadSheetAddt.Name" xml:space="preserve">
     <value>spreadSheetAddt</value>
   </data>
@@ -2463,30 +3129,78 @@
   <data name="&gt;&gt;tabPageFactors.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 39</value>
+  <metadata name="ColumnAddtFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ColumnAddtValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="spreadSheetAddt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 558</value>
+  <data name="spreadSheetAddt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 45</value>
   </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+  <data name="spreadSheetAddt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>45, 65, 45, 45</value>
+  </data>
+  <data name="spreadSheetAddt.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="spreadSheetAddt.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="spreadSheetAddt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>442, 442</value>
+  </data>
+  <data name="spreadSheetAddt.StatusFormat" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="spreadSheetAddt.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="&gt;&gt;spreadSheetAddt.Name" xml:space="preserve">
+    <value>spreadSheetAddt</value>
   </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;spreadSheetAddt.Type" xml:space="preserve">
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;spreadSheetAddt.Parent" xml:space="preserve">
+    <value>tabPageFactors</value>
   </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;spreadSheetAddt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="ColumnAddtFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnAddtFactor.HeaderText" xml:space="preserve">
+    <value>Factor</value>
+  </data>
+  <metadata name="ColumnAddtValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ColumnAddtValue.HeaderText" xml:space="preserve">
+    <value>Value</value>
   </data>
   <metadata name="contextMenuStripSubstrate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>963, 17</value>
+    <value>665, 17</value>
   </metadata>
+  <data name="contextMenuStripSubstrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 92</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripSubstrate.Name" xml:space="preserve">
+    <value>contextMenuStripSubstrate</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStripSubstrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemSands.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 22</value>
+  </data>
+  <data name="ToolStripMenuItemSands.Text" xml:space="preserve">
+    <value>Sands</value>
+  </data>
   <data name="ItemSubSand.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
   </data>
@@ -2499,11 +3213,11 @@
   <data name="ItemSubLoamySand.Text" xml:space="preserve">
     <value>Loamy sand</value>
   </data>
-  <data name="ToolStripMenuItemSands.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItemSilts.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 22</value>
   </data>
-  <data name="ToolStripMenuItemSands.Text" xml:space="preserve">
-    <value>Sands</value>
+  <data name="ToolStripMenuItemSilts.Text" xml:space="preserve">
+    <value>Silts</value>
   </data>
   <data name="ItemSubSilt.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 22</value>
@@ -2511,11 +3225,11 @@
   <data name="ItemSubSilt.Text" xml:space="preserve">
     <value>Silt</value>
   </data>
-  <data name="ToolStripMenuItemSilts.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItemClays.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 22</value>
   </data>
-  <data name="ToolStripMenuItemSilts.Text" xml:space="preserve">
-    <value>Silts</value>
+  <data name="ToolStripMenuItemClays.Text" xml:space="preserve">
+    <value>Clays</value>
   </data>
   <data name="ItemSubClay.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 22</value>
@@ -2535,11 +3249,11 @@
   <data name="ItemSubSiltyClay.Text" xml:space="preserve">
     <value>Silty clay</value>
   </data>
-  <data name="ToolStripMenuItemClays.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ToolStripMenuItemLoams.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 22</value>
   </data>
-  <data name="ToolStripMenuItemClays.Text" xml:space="preserve">
-    <value>Clays</value>
+  <data name="ToolStripMenuItemLoams.Text" xml:space="preserve">
+    <value>Loams</value>
   </data>
   <data name="ItemSubLoam.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
@@ -2577,24 +3291,33 @@
   <data name="ItemSubSiltLoam.Text" xml:space="preserve">
     <value>Silt loam</value>
   </data>
-  <data name="ToolStripMenuItemLoams.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 22</value>
-  </data>
-  <data name="ToolStripMenuItemLoams.Text" xml:space="preserve">
-    <value>Loams</value>
-  </data>
-  <data name="contextMenuStripSubstrate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 92</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripSubstrate.Name" xml:space="preserve">
-    <value>contextMenuStripSubstrate</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripSubstrate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>254, 17</value>
+    <value>125, 17</value>
   </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 607</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>564, 24</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="StatusLog.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 19</value>
   </data>
@@ -2628,42 +3351,12 @@
   <data name="StatusMass.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 607</value>
-  </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>564, 24</value>
-  </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="toolTipAttention.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>822, 17</value>
+    <value>524, 17</value>
   </metadata>
   <metadata name="taskDialogSaveChanges.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>641, 17</value>
+    <value>343, 17</value>
   </metadata>
-  <data name="tdbSave.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="tdbDiscard.Text" xml:space="preserve">
-    <value>Discard</value>
-  </data>
   <data name="taskDialogSaveChanges.Content" xml:space="preserve">
     <value>There were some changes since last saving. Would you like to save them?</value>
   </data>
@@ -2673,17 +3366,23 @@
   <data name="taskDialogSaveChanges.WindowTitle" xml:space="preserve">
     <value>Benthos Reader</value>
   </data>
+  <data name="tdbSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="tdbDiscard.Text" xml:space="preserve">
+    <value>Discard</value>
+  </data>
   <metadata name="statusCard.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>532, 17</value>
+    <value>234, 17</value>
   </metadata>
-  <metadata name="speciesLogger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="Logger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>578, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>96</value>
+    <value>65</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -2847,47 +3546,29 @@
   <data name="&gt;&gt;menuItemAbout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemIndividuals.Name" xml:space="preserve">
-    <value>ToolStripMenuItemIndividuals</value>
+  <data name="&gt;&gt;ColumnID.Name" xml:space="preserve">
+    <value>ColumnID</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemIndividuals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemSpeciesKey.Name" xml:space="preserve">
-    <value>ToolStripMenuItemSpeciesKey</value>
+  <data name="&gt;&gt;ColumnSpecies.Name" xml:space="preserve">
+    <value>ColumnSpecies</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemSpeciesKey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ColumnSpecies.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
+  <data name="&gt;&gt;ColumnQuantity.Name" xml:space="preserve">
+    <value>ColumnQuantity</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ColumnQuantity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemCut.Name" xml:space="preserve">
-    <value>ToolStripMenuItemCut</value>
+  <data name="&gt;&gt;ColumnMass.Name" xml:space="preserve">
+    <value>ColumnMass</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemCut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemCopy.Name" xml:space="preserve">
-    <value>ToolStripMenuItemCopy</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemPaste.Name" xml:space="preserve">
-    <value>ToolStripMenuItemPaste</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemPaste.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemDelete.Name" xml:space="preserve">
-    <value>ToolStripMenuItemDelete</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ColumnMass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnAddtFactor.Name" xml:space="preserve">
     <value>ColumnAddtFactor</value>
@@ -3051,35 +3732,11 @@
   <data name="&gt;&gt;statusCard.Type" xml:space="preserve">
     <value>Mayfly.Controls.Status, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;speciesLogger.Name" xml:space="preserve">
-    <value>speciesLogger</value>
+  <data name="&gt;&gt;Logger.Name" xml:space="preserve">
+    <value>Logger</value>
   </data>
-  <data name="&gt;&gt;speciesLogger.Type" xml:space="preserve">
-    <value>Mayfly.Species.SpeciesSelector, spinvent, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;ColumnID.Name" xml:space="preserve">
-    <value>ColumnID</value>
-  </data>
-  <data name="&gt;&gt;ColumnID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnSpecies.Name" xml:space="preserve">
-    <value>ColumnSpecies</value>
-  </data>
-  <data name="&gt;&gt;ColumnSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnQuantity.Name" xml:space="preserve">
-    <value>ColumnQuantity</value>
-  </data>
-  <data name="&gt;&gt;ColumnQuantity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColumnMass.Name" xml:space="preserve">
-    <value>ColumnMass</value>
-  </data>
-  <data name="&gt;&gt;ColumnMass.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Logger.Type" xml:space="preserve">
+    <value>Mayfly.Wild.Controls.LogProcessor, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Card</value>

@@ -501,7 +501,7 @@ namespace Mayfly.Fish
             if (gridRow.Cells[ColumnTrpID.Index].Value == null) return;
 
             Data.LogRow logRow = Consumed.Log.FindByID((int)gridRow.Cells[ColumnTrpID.Index].Value);
-            Data.SpeciesRow spcRowInvariant = logRow.SpeciesRow;
+            Data.DefinitionRow spcRowInvariant = logRow.DefinitionRow;
             logRow.Delete();
             spcRowInvariant.Delete();
         }
@@ -626,7 +626,7 @@ namespace Mayfly.Fish
             List<object> LogRowItems = new List<object>(4)
             {
                 logRow.ID,
-                logRow.SpeciesRow.Species
+                logRow.DefinitionRow.Taxon
             };
 
             if (logRow.IsQuantityNull())
@@ -782,31 +782,30 @@ namespace Mayfly.Fish
 
         Saving:
 
-            SpeciesKey.TaxonRow currentSpecies = speciesTrophics.Index.FindBySpecies(
-                gridRow.Cells[ColumnTrpSpecies.Index].Value.ToString());
-
-            if (currentSpecies == null)
+            if (gridRow.Cells[ColumnTrpSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
             {
-                // There is no such species in index
-                if ((string)gridRow.Cells[ColumnTrpSpecies.Index].Value ==
-                    Species.Resources.Interface.UnidentifiedTitle)
+                Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                if (existingSpeciesRow == null)
                 {
-                    result.SetSpcIDNull();
+                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
+                }
+                result.DefID = existingSpeciesRow.ID;
+            }
+            else if ((string)gridRow.Cells[ColumnTrpSpecies.Index].Value is string s)
+            {
+                if (s == Species.Resources.Interface.UnidentifiedTitle)
+                {
+                    result.SetDefIDNull();
                 }
                 else
                 {
-                    result.SpeciesRow = data.Species.AddSpeciesRow(
-                        gridRow.Cells[ColumnTrpSpecies.Index].Value.ToString());
+                    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    if (existingSpeciesRow == null)
+                    {
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                    }
+                    result.DefID = existingSpeciesRow.ID;
                 }
-            }
-            else
-            {
-                // There is such species in index you using
-                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
-                {
-                    data.Species.AddSpeciesRow(currentSpecies.Name);
-                }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
             }
 
             if (gridRow.Cells[ColumnTrpQuantity.Index].Value == null)
@@ -888,7 +887,7 @@ namespace Mayfly.Fish
         {
             if (Consumed != null)
             {
-                SpeciesKey localIndex = Consumed.GetSpeciesKey();
+                TaxonomicIndex localIndex = Consumed.GetSpeciesKey();
                 speciesTrophics.UpdateIndex(localIndex, UserSettings.SpeciesAutoExpandVisual);
             }
 
@@ -974,31 +973,31 @@ namespace Mayfly.Fish
 
             Saving:
 
-            SpeciesKey.TaxonRow currentSpecies = speciesParasites.Index.FindBySpecies(
-                gridRow.Cells[ColumnInfSpecies.Index].Value.ToString());
 
-            if (currentSpecies == null)
+            if (gridRow.Cells[ColumnInfSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
             {
-                // There is no such species in index
-                if ((string)gridRow.Cells[ColumnInfSpecies.Index].Value ==
-                    Species.Resources.Interface.UnidentifiedTitle)
+                Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                if (existingSpeciesRow == null)
                 {
-                    result.SetSpcIDNull();
+                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
+                }
+                result.DefID = existingSpeciesRow.ID;
+            }
+            else if ((string)gridRow.Cells[ColumnInfSpecies.Index].Value is string s)
+            {
+                if (s == Species.Resources.Interface.UnidentifiedTitle)
+                {
+                    result.SetDefIDNull();
                 }
                 else
                 {
-                    result.SpeciesRow = data.Species.AddSpeciesRow(
-                        gridRow.Cells[ColumnInfSpecies.Index].Value.ToString());
+                    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    if (existingSpeciesRow == null)
+                    {
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                    }
+                    result.DefID = existingSpeciesRow.ID;
                 }
-            }
-            else
-            {
-                // There is such species in index you using
-                if (data.Species.FindBySpecies(currentSpecies.Name) == null)
-                {
-                    data.Species.AddSpeciesRow(currentSpecies.Name);
-                }
-                result.SpeciesRow = data.Species.FindBySpecies(currentSpecies.Name);
             }
 
             if (gridRow.Cells[ColumnInfQuantity.Index].Value == null)
@@ -1043,7 +1042,7 @@ namespace Mayfly.Fish
         //    }
         //    else
         //    {
-        //        SpeciesKey.TaxonRow CurrentParasite = UserSettings.ParasitesIndex.Species.FindBySpecies(
+        //        SpeciesKey.TaxonRow CurrentParasite = UserSettings.ParasitesIndex.Definition.FindByName(
         //            gridRow.Cells[ColumnInfSpecies.Index].Value.ToString());
 
         //        if (CurrentParasite == null)
@@ -1167,7 +1166,7 @@ namespace Mayfly.Fish
         {
             if (Infection != null)
             {
-                SpeciesKey localIndex = Infection.GetSpeciesKey();
+                TaxonomicIndex localIndex = Infection.GetSpeciesKey();
                 speciesParasites.UpdateIndex(localIndex, UserSettings.SpeciesAutoExpandVisual);
             }
 
@@ -1478,25 +1477,15 @@ namespace Mayfly.Fish
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Consumed.Card[0];
 
-                SpeciesKey.TaxonRow currentSpeciesRow =
-                    UserSettings.SpeciesIndex.FindBySpecies(clipLogRow.SpeciesRow.Species);
 
-                if (currentSpeciesRow == null)
-                {
-                    Data.SpeciesRow newSpeciesRow = Consumed.Species.AddSpeciesRow(
-                        clipLogRow.SpeciesRow.Species);
 
-                    //Data.MergeWith(UserSettings.SpeciesIndex.Species);
-                    logRow.SpcID = newSpeciesRow.ID;
-                }
-                else
-                {
-                    if (Data.Species.FindBySpecies(currentSpeciesRow.Name) == null)
-                    {
-                        Data.Species.Rows.Add(currentSpeciesRow.ID, currentSpeciesRow.Name);
-                    }
-                    logRow.SpcID = currentSpeciesRow.ID;
-                }
+                TaxonomicIndex.TaxonRow clipSpeciesRow = UserSettings.DietIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
+
+                Data.DefinitionRow newSpeciesRow = (clipSpeciesRow == null ?
+                    Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon) :
+                    Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name));
+
+                logRow.DefID = newSpeciesRow.ID;
 
                 Consumed.Log.AddLogRow(logRow);
 

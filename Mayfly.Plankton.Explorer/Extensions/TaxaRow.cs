@@ -11,7 +11,7 @@ namespace Mayfly.Extensions
 {
     public static class TaxonRowExtensions
     {
-        public static double Occurrence(this SpeciesKey.TaxonRow taxonRow, Data data)
+        public static double Occurrence(this TaxonomicIndex.TaxonRow taxonRow, Data data)
         {
             int present = 0;
 
@@ -19,7 +19,7 @@ namespace Mayfly.Extensions
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    if (taxonRow.Includes(logRow.SpeciesRow.Species))
+                    if (taxonRow.Includes(logRow.DefinitionRow.Taxon))
                     {
                         present++;
                         break;

@@ -10,19 +10,20 @@ using Mayfly.Extensions;
 
 namespace Mayfly.Species
 {
-    public partial class SpeciesSelector : Component
+    public partial class TaxonProvider : Component
     {
-        public SpeciesKey Index { get; internal set; }
+        public TaxonomicIndex Index { get; internal set; }
 
         private DataGridView grid;
-        private Button button;
         private DataGridViewTextBoxColumn column;
         private string columnName = string.Empty;
         private string handEntered = string.Empty;
         private string indexPath = string.Empty;
         private TextBox textBoxValue;
-        private bool allowKey;
         private string valueBeforeEditing = string.Empty;
+        private EventHandler indexChanged;
+        private SpeciesSelectEventHandler speciesSelected;
+        private DuplicateFoundEventHandler duplicateFound;
 
         #region Properties
 
@@ -67,25 +68,6 @@ namespace Mayfly.Species
             }
         }
 
-        [Category("Behaviour"), DefaultValue(null)]
-        public Button Button
-        {
-            get
-            {
-                return button;
-            }
-
-            set
-            {
-                button = value;
-
-                if (Button != null)
-                {
-                    Button.Click += Button_Click;
-                }                
-            }
-        }
-
         [Category("Behaviour"), DefaultValue("")]
         public string ColumnName
         {
@@ -99,17 +81,6 @@ namespace Mayfly.Species
                 columnName = value;
                 if (grid != null && grid.Columns[columnName] != null)
                     grid_CheckColumn(grid, new DataGridViewColumnEventArgs(grid.Columns[columnName]));
-            }
-        }
-
-        [Category("Behaviour"), DefaultValue(true)]
-        public bool AllowKey
-        {
-            get { return allowKey; }
-            set
-            {
-                allowKey = value;
-                toolStripMenuItemKey.Visible = toolStripSeparatorKey.Visible = value;
             }
         }
 
@@ -152,18 +123,17 @@ namespace Mayfly.Species
             {
                 if (string.IsNullOrWhiteSpace(value) || !File.Exists(value))
                 {
-                    if (Button != null) Button.Enabled = false;
                     return;
                 }
 
                 indexPath = value;
 
-                Index = new SpeciesKey();
+                Index = new TaxonomicIndex();
                 Index.Read(IndexPath);
                 UserSettings.Interface.OpenDialog.InitialDirectory = Path.GetDirectoryName(IndexPath);
-                toolStripMenuItemAll.Visible = Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength;
                 CreateList();
-                GetSpeciesList();
+
+                if (indexChanged != null) indexChanged.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -180,30 +150,30 @@ namespace Mayfly.Species
 
         #endregion
 
-        public event SpeciesSelectEventHandler SpeciesSelected;
+        [Category("Mayfly Events")]
+        public event SpeciesSelectEventHandler SpeciesSelected { add { speciesSelected += value; } remove { speciesSelected -= value; } }
 
-        public event DuplicateFoundEventHandler DuplicateFound;
+        [Category("Mayfly Events")]
+        public event DuplicateFoundEventHandler DuplicateFound { add { duplicateFound += value; } remove { duplicateFound -= value; } }
+
+        [Category("Mayfly Events")]
+        public event EventHandler IndexChanged { add { indexChanged += value; } remove { indexChanged -= value; } }
 
 
 
-        public SpeciesSelector()
+        public TaxonProvider()
         {
             InitializeComponent();
 
-            AllowKey = true;
             AllowSuggest = true;
-
-            toolStripMenuItemKey.Click += ToolStripMenuItemKey_Click;
         }
 
-        public SpeciesSelector(IContainer container) : this()
+        public TaxonProvider(IContainer container) : this()
         {
             container.Add(this);        
         }
 
 
-
-        #region Methods
 
         public void CreateList()
         {
@@ -212,26 +182,20 @@ namespace Mayfly.Species
             listSpc.Shine(); 
         }
 
-        public void InsertSpeciesHere(SpeciesKey.TaxonRow speciesRow)
+        public void InsertSpeciesHere(TaxonomicIndex.TaxonRow speciesRow)
         {
             if (Grid.CurrentCell.ColumnIndex == Column.Index)
             {
-                if (speciesRow.MajorSynonym != null) {
-                    speciesRow = speciesRow.MajorSynonym;
-                }
-
                 Grid.CurrentCell.Value = speciesRow;
             }
             
             listSpc.Visible = false;
-            RunSelected(speciesRow.Name);
+            RunSelected(speciesRow);
         }
 
-        public DataGridViewRow InsertSpecies(SpeciesKey.TaxonRow typedSpecies)
+        public DataGridViewRow InsertSpecies(TaxonomicIndex.TaxonRow typedSpecies)
         {
             int rowIndex = -1;
-
-            //typedSpecies = typedSpecies.ValidSpeciesRow;
 
             // Try to find species in the list
             foreach (DataGridViewRow gridRow in Grid.Rows)
@@ -259,7 +223,7 @@ namespace Mayfly.Species
             Grid.ClearSelection();
             Grid.Rows[rowIndex].Selected = true;
             Grid.CurrentCell = Grid[ColumnName, rowIndex];
-            RunSelected(typedSpecies.Name);
+            RunSelected(typedSpecies);
 
             return Grid.Rows[rowIndex];
         }
@@ -295,51 +259,6 @@ namespace Mayfly.Species
                 //Cell = Grid.CurrentCell;
                 valueBeforeEditing = textBoxValue.Text;
             }
-        }
-
-        private void GetSpeciesList()
-        {
-            while (contextMenuStripSpecies.Items.Count > 4)
-            {
-                contextMenuStripSpecies.Items.RemoveAt(1);
-            }
-
-            UpdateRecent();
-
-            toolStripMenuItemAll.DropDownItems.Clear();
-            toolStripMenuItemAll.Visible = Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength;
-            if (Index.AllSpeciesCount <= UserSettings.AllowableSpeciesListLength)
-            {
-                foreach (SpeciesKey.TaxonRow speciesRow in Index.GetSpeciesRows())
-                {
-                    ToolStripItem speciesItem = new ToolStripMenuItem
-                    {
-                        Tag = speciesRow,
-                        Text = speciesRow.CommonName
-                    };
-                    speciesItem.Click += new EventHandler(speciesItem_Click);
-                    toolStripMenuItemAll.DropDownItems.Add(speciesItem);
-                }
-
-                toolStripMenuItemAll.SortItems();
-            }
-
-            foreach (SpeciesKey.TaxonRow taxonRow in Index.GetRootTaxonRows())
-            {
-                if (taxonRow.IsHigher && !taxonRow.HasChildren) continue;
-                contextMenuStripSpecies.Items.Add(getTaxonMenuItem(taxonRow));
-                if (contextMenuStripSpecies.Items.Count == UserSettings.AllowableSpeciesListLength) break;
-            }
-        }
-
-        public void UpdateRecent()
-        {
-            toolStripMenuItemRecent.DropDownItems.Clear();
-
-            ToolStripDropDownItem[] recentItems = MostUsedRecent();
-            //toolStripSeparatorKey.Visible =
-            toolStripMenuItemRecent.Visible = recentItems.Length > 0;
-            toolStripMenuItemRecent.DropDownItems.AddRange(recentItems);
         }
 
         public void FindInKey(DataGridViewRow gridRow)
@@ -386,7 +305,7 @@ namespace Mayfly.Species
             //}
         }
 
-        private void InsertFromKey(string filename)
+        public void InsertFromKey(string filename)
         {
             //Display speciesKey = new Display(filename, true);
 
@@ -396,129 +315,19 @@ namespace Mayfly.Species
             //}
         }
 
-        private ToolStripMenuItem getTaxonMenuItem(SpeciesKey.TaxonRow taxonRow)
+        public TaxonomicIndex.TaxonRow Find(string species)
         {
-            ToolStripMenuItem taxonItem = new ToolStripMenuItem
-            {
-                Tag = taxonRow,
-                Text = taxonRow.CommonName
-            };
-
-            taxonItem.Click += new EventHandler(speciesItem_Click);
-
-            foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
-            {
-                if (derRow.IsHigher && !derRow.HasChildren) continue;
-                taxonItem.DropDownItems.Add(getTaxonMenuItem(derRow));
-            }
-
-            return taxonItem;
+            return Index.FindByName(species);
         }
 
-        public ListViewItem[] SpeciesItems(string pattern)
+        private void RunSelected(TaxonomicIndex.TaxonRow taxonRow)
         {
-            List<ListViewItem> result = new List<ListViewItem>();
-    
-            SpeciesKey.TaxonRow[] speciesRows = Index.GetSpeciesNameContaining(pattern);
-
-            foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
-            {
-                ListViewItem item = new ListViewItem
-                {
-                    Text = speciesRow.ToString(Column.DefaultCellStyle.Format, null),
-                    Tag = speciesRow,
-                    ToolTipText = speciesRow.ToolTip.Merge(Constants.Break)
-                };
-                result.Add(item);
-            }
-
-            List<string> genera = new List<string>();
-
-            foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
-            {
-                string genus = SpeciesKey.Genus(speciesRow.Name);
-                if (genus == null) continue;
-                if (genera.Contains(genus)) continue;
-                genera.Add(genus);
-            }
-
-            foreach (string genus in genera)
-            {
-                if (!genus.ToUpper().Contains(pattern.ToUpper())) continue;
-
-                ListViewItem item = new ListViewItem
-                {
-                    Text = string.Format("{0} sp.", genus),
-                    ToolTipText = string.Format(Resources.Interface.GenusToolTip, genus)
-                };
-                result.Add(item);
-            }
-
-            result.Sort(new SearchResultSorter(pattern));
-
-            return result.ToArray();
-        }
-
-        private ToolStripDropDownItem[] MostUsedRecent()
-        {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(UserSettings.Path).OpenSubKey(Path.GetFileNameWithoutExtension(IndexPath));
-
-            if (key == null) return new ToolStripDropDownItem[0];
-
-            List<string> recentSpecies = new List<string>();
-
-            while (recentSpecies.Count < Math.Min(key.ValueCount, RecentListCount))
-            {
-                int maxUsed = 0;
-                string maxUsedSpecies = string.Empty;
-
-                foreach (string value in key.GetValueNames())
-                {
-                    if (recentSpecies.Contains(value)) continue;
-                    int used = (int)key.GetValue(value);
-                    if (used > maxUsed)
-                    {
-                        maxUsedSpecies = value;
-                        maxUsed = used;
-                    }
-                }
-
-                recentSpecies.Add(maxUsedSpecies);
-            }
-
-            List<ToolStripDropDownItem> recentSpeciesItems = new List<ToolStripDropDownItem>();
-
-            foreach (string recent in recentSpecies)
-            {
-                SpeciesKey.TaxonRow speciesRow = Index.FindBySpecies(recent);
-
-                if (speciesRow == null) continue;
-
-                ToolStripDropDownItem speciesItem = new ToolStripMenuItem
-                {
-                    Tag = speciesRow,
-                    Text = speciesRow.CommonName
-                };
-                speciesItem.Click += new EventHandler(speciesItem_Click);
-                recentSpeciesItems.Add(speciesItem);
-            }
-
-            return recentSpeciesItems.ToArray();
-        }
-
-        public SpeciesKey.TaxonRow Find(string species)
-        {
-            return Index.FindBySpecies(species);
-        }
-
-        private void RunSelected(string species)
-        {
-            object used = UserSetting.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species, null);
+            object used = UserSetting.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, null);
 
             if (used == null) {
-                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species, 1);
+                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, 1);
             } else {
-                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), species, (int)used + 1);
+                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, (int)used + 1);
             }
 
             DataGridViewCell gridCell = Grid.CurrentCell;
@@ -544,21 +353,21 @@ namespace Mayfly.Species
 
                 if (object.Equals(gridCell.Value, gridRow.Cells[Column.Index].Value))
                 {
-                    if (DuplicateFound != null)
+                    if (duplicateFound != null)
                     {
-                        DuplicateFound.Invoke(this, new DuplicateFoundEventArgs(gridCell.OwningRow, gridRow));
+                        duplicateFound.Invoke(this, new DuplicateFoundEventArgs(gridCell.OwningRow, gridRow));
                     }
 
                     break;
                 }
             }
 
-            if (species != valueBeforeEditing && SpeciesSelected != null)
+            if (taxonRow.Name != valueBeforeEditing && speciesSelected != null)
             {
                 Grid.BeginInvoke(new MethodInvoker(() =>
                 {
-                    SpeciesSelected.Invoke(this, new SpeciesSelectEventArgs(valueBeforeEditing,
-                        species, gridCell));
+                    speciesSelected.Invoke(this, new SpeciesSelectEventArgs(valueBeforeEditing,
+                        taxonRow, gridCell));
                 }));
             }
         }
@@ -597,7 +406,7 @@ namespace Mayfly.Species
         //    }
         //}
 
-        public void UpdateIndex(SpeciesKey localIndex, bool inspect)
+        public void UpdateIndex(TaxonomicIndex localIndex, bool inspect)
         {
             localIndex.ImportTo(this.Index, inspect);
             this.Index.SaveToFile(this.IndexPath);
@@ -626,11 +435,54 @@ namespace Mayfly.Species
             return null;
         }
 
-        #endregion
+        public ListViewItem[] SpeciesItems(string pattern)
+        {
+            List<ListViewItem> result = new List<ListViewItem>();
+
+            TaxonomicIndex.TaxonRow[] speciesRows = Index.GetSpeciesNameContaining(pattern);
+
+            foreach (TaxonomicIndex.TaxonRow speciesRow in speciesRows)
+            {
+                ListViewItem item = new ListViewItem
+                {
+                    Text = speciesRow.ToString(Column.DefaultCellStyle.Format, null),
+                    Tag = speciesRow,
+                    ToolTipText = speciesRow.ToolTip.Merge(Constants.Break)
+                };
+                result.Add(item);
+            }
+
+            List<string> genera = new List<string>();
+
+            foreach (TaxonomicIndex.TaxonRow speciesRow in speciesRows)
+            {
+                if (speciesRow.IsHigher) continue;
+
+                string genus = TaxonomicIndex.Genus(speciesRow.Name);
+                if (genus == null) continue;
+                if (genera.Contains(genus)) continue;
+                genera.Add(genus);
+            }
+
+            foreach (string genus in genera)
+            {
+                if (!genus.ToUpper().Contains(pattern.ToUpper())) continue;
+
+                ListViewItem item = new ListViewItem
+                {
+                    Text = string.Format("{0} sp.", genus),
+                    Tag = TaxonomicIndex.GetFakeTaxon(TaxonomicRank.Species, string.Format("{0} sp.", genus)),
+                    ToolTipText = string.Format(Resources.Interface.GenusToolTip, genus)
+                };
+                result.Add(item);
+            }
+
+            result.Sort(new SearchResultSorter(pattern));
+
+            return result.ToArray();
+        }
 
 
-
-        #region Entering value logics
 
         private void textBoxValue_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -669,7 +521,7 @@ namespace Mayfly.Species
 
                 if (Grid.CurrentCell.Value.ToString() != valueBeforeEditing)
                 {
-                    RunSelected(textBoxValue.Text);
+                    RunSelected(TaxonomicIndex.GetFakeTaxon(TaxonomicRank.Species, textBoxValue.Text));
                 }
             }
         }
@@ -693,11 +545,7 @@ namespace Mayfly.Species
             }
         }
 
-        #endregion
 
-
-
-        #region Species list logics
 
         private void listLoader_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -768,11 +616,11 @@ namespace Mayfly.Species
         {
             if (listSpc.SelectedItems.Count == 0) return;
 
-            SpeciesKey.TaxonRow selectedRow = listSpc.SelectedItems[0].Tag as SpeciesKey.TaxonRow;
+            TaxonomicIndex.TaxonRow selectedRow = listSpc.SelectedItems[0].Tag as TaxonomicIndex.TaxonRow;
 
             if (selectedRow == null)
             {
-                selectedRow = Index.Taxon.AddTaxonRow(91, 0, listSpc.SelectedItems[0].Text, null, listSpc.SelectedItems[0].Text, null, null) as SpeciesKey.TaxonRow;
+                selectedRow = Index.Taxon.AddTaxonRow(91, 0, listSpc.SelectedItems[0].Text, null, listSpc.SelectedItems[0].Text, null, null) as TaxonomicIndex.TaxonRow;
             }
 
             if (this.CheckDuplicates)
@@ -808,7 +656,7 @@ namespace Mayfly.Species
                     Grid.ClearSelection();
                     Grid.Rows[rowIndex].Selected = true;
                     Grid.CurrentCell = Grid[ColumnName, rowIndex];
-                    RunSelected(selectedRow.Name);
+                    RunSelected(selectedRow);
                 }
             }
             else
@@ -822,7 +670,7 @@ namespace Mayfly.Species
             if (listSpc.SelectedItems.Count > 0)
             {
                 AllowSuggest = false;
-                Grid.CurrentCell.Value = listSpc.SelectedItems[0].Tag as SpeciesKey.TaxonRow;
+                Grid.CurrentCell.Value = listSpc.SelectedItems[0].Tag as TaxonomicIndex.TaxonRow;
                 AllowSuggest = true;
             }
         }
@@ -859,55 +707,24 @@ namespace Mayfly.Species
         {
             listSpc.Visible = false;
         }
-
-        #endregion
-
-
-
-        #region Button and menu logics
-
-        private void Button_Click(object sender, EventArgs e)
-        {
-            contextMenuStripSpecies.Show(Button, Point.Empty, ToolStripDropDownDirection.AboveRight);
-        }
-
-        private void speciesItem_Click(object sender, EventArgs e)
-        {
-            InsertSpecies((SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag);
-        }
-
-        private void ToolStripMenuItemKey_Click(object sender, EventArgs e)
-        {
-            if (Form.ModifierKeys.HasFlag(Keys.Control))
-            {
-                InsertFromKey(IndexPath);
-            }
-            else
-            {
-                if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
-                {
-                    InsertFromKey(UserSettings.Interface.OpenDialog.FileName);
-                }
-            }
-        }
-
-        #endregion
     }
 
     public class SpeciesSelectEventArgs : EventArgs
     {
         public string OriginalValue { get; set; }
 
-        public string SpeciesName { get; set; }
+        public TaxonomicIndex.TaxonRow SelectedTaxon { get; set; }
+
+        //public string SelectedTaxonName { get; set; }
 
         public DataGridViewColumn Column { get; set; }
 
         public DataGridViewRow Row { get; set; }
 
-        public SpeciesSelectEventArgs(string originalSpc, string spc, DataGridViewCell gridCell)
+        public SpeciesSelectEventArgs(string originalSpc, TaxonomicIndex.TaxonRow selectedTaxon, DataGridViewCell gridCell)
         {
             OriginalValue = originalSpc;
-            SpeciesName = spc;
+            SelectedTaxon = selectedTaxon;
             Column = gridCell.OwningColumn;
             Row = gridCell.OwningRow;
         }

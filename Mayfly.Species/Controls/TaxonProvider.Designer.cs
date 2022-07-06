@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Species
 {
-    partial class SpeciesSelector
+    partial class TaxonProvider
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeciesSelector));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaxonProvider));
             this.listSpc = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listLoader = new System.ComponentModel.BackgroundWorker();
-            this.contextMenuStripSpecies = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemRecent = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparatorKey = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemKey = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripSpecies.SuspendLayout();
             // 
             // listSpc
             // 
@@ -69,37 +62,6 @@
             // 
             this.listLoader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.listLoader_DoWork);
             this.listLoader.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.listLoader_RunWorkerCompleted);
-            // 
-            // contextMenuStripSpecies
-            // 
-            this.contextMenuStripSpecies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemKey,
-            this.toolStripMenuItemRecent,
-            this.toolStripMenuItemAll,
-            this.toolStripSeparatorKey});
-            this.contextMenuStripSpecies.Name = "contextMenuStrip_species";
-            resources.ApplyResources(this.contextMenuStripSpecies, "contextMenuStripSpecies");
-            // 
-            // toolStripMenuItemRecent
-            // 
-            this.toolStripMenuItemRecent.Name = "toolStripMenuItemRecent";
-            resources.ApplyResources(this.toolStripMenuItemRecent, "toolStripMenuItemRecent");
-            // 
-            // toolStripMenuItemAll
-            // 
-            this.toolStripMenuItemAll.Name = "toolStripMenuItemAll";
-            resources.ApplyResources(this.toolStripMenuItemAll, "toolStripMenuItemAll");
-            // 
-            // toolStripSeparatorKey
-            // 
-            this.toolStripSeparatorKey.Name = "toolStripSeparatorKey";
-            resources.ApplyResources(this.toolStripSeparatorKey, "toolStripSeparatorKey");
-            // 
-            // toolStripMenuItemKey
-            // 
-            this.toolStripMenuItemKey.Name = "toolStripMenuItemKey";
-            resources.ApplyResources(this.toolStripMenuItemKey, "toolStripMenuItemKey");
-            this.contextMenuStripSpecies.ResumeLayout(false);
 
         }
 
@@ -108,10 +70,5 @@
         private System.Windows.Forms.ListView listSpc;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.ComponentModel.BackgroundWorker listLoader;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripSpecies;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKey;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorKey;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAll;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRecent;
     }
 }

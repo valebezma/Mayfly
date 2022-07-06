@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Species.Controls
 {
-    partial class TaxaTreeView
+    partial class TaxonTreeView
     {
         /// <summary>
         /// Required designer variable.

@@ -12,20 +12,20 @@ namespace Mayfly.Species
 {
     public partial class EditFeature : Form
     {
-        SpeciesKey.FeatureRow FeatureRow;
+        TaxonomicIndex.FeatureRow FeatureRow;
 
         private EditFeature()
         {
             InitializeComponent();
         }
 
-        public EditFeature(SpeciesKey.StepRow stepRow) : this()
+        public EditFeature(TaxonomicIndex.StepRow stepRow) : this()
         {
-            FeatureRow = ((SpeciesKey)stepRow.Table.DataSet).Feature.NewFeatureRow();
+            FeatureRow = ((TaxonomicIndex)stepRow.Table.DataSet).Feature.NewFeatureRow();
             FeatureRow.StepRow = stepRow;
         }
 
-        public EditFeature(SpeciesKey.FeatureRow featureRow)
+        public EditFeature(TaxonomicIndex.FeatureRow featureRow)
             : this()
         {
             FeatureRow = featureRow;
@@ -34,7 +34,7 @@ namespace Mayfly.Species
             if (!FeatureRow.IsDescriptionNull()) textBoxDescription.Text = FeatureRow.Description;
 
             //flowStates.Controls.Remove(buttonAddState);
-            foreach (SpeciesKey.StateRow stateRow in FeatureRow.GetStateRows())
+            foreach (TaxonomicIndex.StateRow stateRow in FeatureRow.GetStateRows())
             {
                 //StateEditor state = new StateEditor(stateRow);
                 //flowStates.Controls.Add(state);

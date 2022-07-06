@@ -102,7 +102,7 @@
             this.textBoxExpeditor = new System.Windows.Forms.TextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.loaderData = new System.ComponentModel.BackgroundWorker();
-            this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesLogger = new Mayfly.Species.TaxonProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.pageData.SuspendLayout();
             this.pageCircumstances.SuspendLayout();
@@ -958,7 +958,7 @@
         private Controls.SpreadSheet spreadSheetCatches;
         private System.Windows.Forms.ContextMenuStrip contextCatches;
         private System.Windows.Forms.ToolStripMenuItem contextCatchDelete;
-        private Species.SpeciesSelector speciesLogger;
+        private Species.TaxonProvider speciesLogger;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnExploration;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;

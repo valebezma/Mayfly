@@ -56,11 +56,11 @@ namespace Mayfly.Wild
 
     public class SpeciesSwarm : Category
     {
-        public SpeciesKey.TaxonRow SpeciesRow { get; set; }
+        public TaxonomicIndex.TaxonRow SpeciesRow { get; set; }
 
 
 
-        public SpeciesSwarm(SpeciesKey.TaxonRow dataRow)
+        public SpeciesSwarm(TaxonomicIndex.TaxonRow dataRow)
         {
             SpeciesRow = dataRow;
         }

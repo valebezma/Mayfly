@@ -40,24 +40,24 @@ namespace Mayfly.Extensions
 
             data.RefreshBios();
 
-            for (int i = 0; i < data.Species.Count; i++)
+            for (int i = 0; i < data.Definition.Count; i++)
             {
-                ContinuousBio cbm = data.FindMassModel(data.Species[i].Species);
+                ContinuousBio cbm = data.FindMassModel(data.Definition[i].Taxon);
                 bool hasMass = cbm != null && cbm.InternalData.IsRegressionOK;
 
-                ContinuousBio cbg = data.FindGrowthModel(data.Species[i].Species);
+                ContinuousBio cbg = data.FindGrowthModel(data.Definition[i].Taxon);
                 bool hasGrowth = cbg != null && cbg.InternalData.IsRegressionOK;
 
                 if (!hasMass && !hasMass)
                 {
-                    data.Species.RemoveSpeciesRow(data.Species[i]);
+                    data.Definition.RemoveDefinitionRow(data.Definition[i]);
                     i--;
                 }
                 else
                 {
                     for (int j = 0; j < data.Individual.Count; j++)
                     {
-                        if (data.Individual[j].Species != data.Species[i].Species) continue;
+                        if (data.Individual[j].Species != data.Definition[i].Taxon) continue;
 
                         if (!hasMass) data.Individual[j].SetMassNull();
                         if (!hasGrowth) data.Individual[j].SetAgeNull();
@@ -118,7 +118,7 @@ namespace Mayfly.Extensions
                 data.Card[i].SetWeatherNull();
             }
 
-            if (data.Species.Count == 0)
+            if (data.Definition.Count == 0)
                 throw new ArgumentNullException("Regression data", "Data is unsufficient to be used as a bio.");
             
             return data;

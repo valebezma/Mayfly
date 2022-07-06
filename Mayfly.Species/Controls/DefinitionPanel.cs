@@ -15,11 +15,11 @@ namespace Mayfly.Species.Controls
     {
         #region Properties
 
-        public List<SpeciesKey.StateRow> Selections;
+        public List<TaxonomicIndex.StateRow> Selections;
 
-        public SpeciesKey.StepRow CurrentStep;
+        public TaxonomicIndex.StepRow CurrentStep;
 
-        private SpeciesKey Key { get { return (SpeciesKey)CurrentStep.Table.DataSet; } }
+        private TaxonomicIndex Key { get { return (TaxonomicIndex)CurrentStep.Table.DataSet; } }
 
         public List<Feature> Features;
 
@@ -35,7 +35,7 @@ namespace Mayfly.Species.Controls
         {
             InitializeComponent();
             Features = new List<Feature>();
-            Selections = new List<SpeciesKey.StateRow>();
+            Selections = new List<TaxonomicIndex.StateRow>();
         }
 
         #region Methods
@@ -72,7 +72,7 @@ namespace Mayfly.Species.Controls
             {
                 labelError.Visible = false;
 
-                foreach (SpeciesKey.FeatureRow featureRow in
+                foreach (TaxonomicIndex.FeatureRow featureRow in
                     CurrentStep.GetFeatureRows())
                 {
                     AddFeature(featureRow);
@@ -116,7 +116,7 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        public void SetFeatures(SpeciesKey.StepRow stepRow)
+        public void SetFeatures(TaxonomicIndex.StepRow stepRow)
         {
             CurrentStep = stepRow;
 
@@ -151,7 +151,7 @@ namespace Mayfly.Species.Controls
             //}
         }
 
-        public void SetFeatures(SpeciesKey.FeatureRow featureRow)
+        public void SetFeatures(TaxonomicIndex.FeatureRow featureRow)
         {
             SetFeatures(featureRow.StepRow);
 
@@ -168,7 +168,7 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        private Feature AddFeature(SpeciesKey.FeatureRow featureRow)
+        private Feature AddFeature(TaxonomicIndex.FeatureRow featureRow)
         {
             Feature newFeature = new Feature(featureRow);
             newFeature.ExpandedSize = new System.Drawing.Size(this.Width - 
@@ -204,13 +204,13 @@ namespace Mayfly.Species.Controls
         {
             for (int i = 0; i < steps; i++) {
 
-                SpeciesKey.StateRow lastState = Selections.Last();
+                TaxonomicIndex.StateRow lastState = Selections.Last();
                 Selections.Remove(Selections.Last());
                 SetFeatures(lastState.FeatureRow);
             }
         }
 
-        public void GetBack(SpeciesKey.StateRow stateRow)
+        public void GetBack(TaxonomicIndex.StateRow stateRow)
         {
             while (Selections.Last() != stateRow)
             {
@@ -221,7 +221,7 @@ namespace Mayfly.Species.Controls
             SetFeatures(stateRow.FeatureRow);
         }
 
-        public void GetForward(SpeciesKey.StateRow stateRow)
+        public void GetForward(TaxonomicIndex.StateRow stateRow)
         {
             if (CurrentStep.AvailableStates.Contains(stateRow))
             {
@@ -229,7 +229,7 @@ namespace Mayfly.Species.Controls
             }
             else
             {
-                foreach (SpeciesKey.StateRow sttRow in CurrentStep.AvailableStates)
+                foreach (TaxonomicIndex.StateRow sttRow in CurrentStep.AvailableStates)
                 {
                     if (sttRow.DoesLeadTo(stateRow))
                     {
@@ -240,11 +240,11 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        public void GetTo(SpeciesKey.StepRow targetDefinitionRow)
+        public void GetTo(TaxonomicIndex.StepRow targetDefinitionRow)
         {
             while (!CurrentStep.Equals(targetDefinitionRow))
             {
-                foreach (SpeciesKey.StateRow stateRow in
+                foreach (TaxonomicIndex.StateRow stateRow in
                     CurrentStep.AvailableStates)
                 {
                     if (stateRow.DoesLeadTo(targetDefinitionRow))
@@ -258,7 +258,7 @@ namespace Mayfly.Species.Controls
 
             ClearFeatures();
 
-            foreach (SpeciesKey.FeatureRow featureRow in targetDefinitionRow.GetFeatureRows())
+            foreach (TaxonomicIndex.FeatureRow featureRow in targetDefinitionRow.GetFeatureRows())
             {
                 AddFeature(featureRow);
             }
@@ -269,16 +269,16 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        public void GetTo(SpeciesKey.StateRow targetStateRow)
+        public void GetTo(TaxonomicIndex.StateRow targetStateRow)
         {
             GetTo(targetStateRow, false);
         }
 
-        public void GetTo(SpeciesKey.StateRow targetStateRow, bool preventClick)
+        public void GetTo(TaxonomicIndex.StateRow targetStateRow, bool preventClick)
         {
             while (!CurrentStep.AvailableStates.Contains(targetStateRow))
             {
-                foreach (SpeciesKey.StateRow stateRow in 
+                foreach (TaxonomicIndex.StateRow stateRow in 
                     CurrentStep.AvailableStates)
                 {
                     if (stateRow.DoesLeadTo(targetStateRow))
@@ -294,7 +294,7 @@ namespace Mayfly.Species.Controls
             {
                 ClearFeatures();
 
-                foreach (SpeciesKey.FeatureRow featureRow in
+                foreach (TaxonomicIndex.FeatureRow featureRow in
                     targetStateRow.FeatureRow.StepRow.GetFeatureRows())
                 {
                     AddFeature(featureRow);
@@ -312,7 +312,7 @@ namespace Mayfly.Species.Controls
             }
         }
 
-        public State FindState(SpeciesKey.StateRow stateRow)
+        public State FindState(TaxonomicIndex.StateRow stateRow)
         {
             foreach (Feature feature in Features)
             {

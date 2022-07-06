@@ -33,7 +33,7 @@ namespace Mayfly.Species
             }
         }
 
-        public SpeciesKey Data { set; get; }
+        public TaxonomicIndex Data { set; get; }
 
         public bool IsChanged { set; get; }
 
@@ -93,7 +93,7 @@ namespace Mayfly.Species
         private void clear()
         {
             FileName = null;
-            Data = new SpeciesKey();
+            Data = new TaxonomicIndex();
             taxaTreeView.Bind(Data);
 
             listViewRepresence.Items.Clear();
@@ -105,7 +105,7 @@ namespace Mayfly.Species
 
 
 
-        private ListViewGroup getGroup(SpeciesKey.TaxonRow taxonRow)
+        private ListViewGroup getGroup(TaxonomicIndex.TaxonRow taxonRow)
         {
             return new ListViewGroup()
             {
@@ -135,7 +135,7 @@ namespace Mayfly.Species
         {
             foreach (ListViewGroup group in listViewRepresence.Groups)
             {
-                group.Header = group.Tag is SpeciesKey.TaxonRow tr ?
+                group.Header = group.Tag is TaxonomicIndex.TaxonRow tr ?
                     tr.InterfaceString : 
                     string.Format(Resources.Interface.VariaCount, Data.GetRootSpeciesRows().Length);
             }
@@ -145,7 +145,7 @@ namespace Mayfly.Species
 
 
 
-        private void updateTaxonData(SpeciesKey.TaxonRow taxonRow)
+        private void updateTaxonData(TaxonomicIndex.TaxonRow taxonRow)
         {
             if (taxonRow == null)
             {
@@ -163,7 +163,7 @@ namespace Mayfly.Species
             }
         }
 
-        private void updateRepresenceSpecies(SpeciesKey.TaxonRow[] speciesRows)
+        private void updateRepresenceSpecies(TaxonomicIndex.TaxonRow[] speciesRows)
         {
             wasPlain = checkBoxPlain.Checked;
             taxaTreeView.Enabled = false; 
@@ -184,7 +184,7 @@ namespace Mayfly.Species
             throw new NotImplementedException();
         }
 
-        private void editSpecies(SpeciesKey.TaxonRow speciesRow)
+        private void editSpecies(TaxonomicIndex.TaxonRow speciesRow)
         {
             speciesRow = speciesRow.ValidRecord; 
 
@@ -279,54 +279,54 @@ namespace Mayfly.Species
             }
         }
 
-        public SpeciesKey.StepRow SelectedStep
+        public TaxonomicIndex.StepRow SelectedStep
         {
             get
             {
                 if (IsStepNodeSelected)
                 {
-                    return (SpeciesKey.StepRow)treeViewStep.SelectedNode.Tag;
+                    return (TaxonomicIndex.StepRow)treeViewStep.SelectedNode.Tag;
                 }
 
                 if (IsFeatureNodeSelected)
                 {
-                    return (SpeciesKey.StepRow)treeViewStep.SelectedNode.Parent.Tag;
+                    return (TaxonomicIndex.StepRow)treeViewStep.SelectedNode.Parent.Tag;
                 }
 
                 if (IsStateNodeSelected)
                 {
-                    return (SpeciesKey.StepRow)treeViewStep.SelectedNode.Parent.Parent.Tag;
+                    return (TaxonomicIndex.StepRow)treeViewStep.SelectedNode.Parent.Parent.Tag;
                 }
 
                 return null;
             }
         }
 
-        public SpeciesKey.FeatureRow SelectedFeature
+        public TaxonomicIndex.FeatureRow SelectedFeature
         {
             get
             {
                 if (IsFeatureNodeSelected)
                 {
-                    return (SpeciesKey.FeatureRow)treeViewStep.SelectedNode.Tag;
+                    return (TaxonomicIndex.FeatureRow)treeViewStep.SelectedNode.Tag;
                 }
 
                 if (IsStateNodeSelected)
                 {
-                    return (SpeciesKey.FeatureRow)treeViewStep.SelectedNode.Parent.Tag;
+                    return (TaxonomicIndex.FeatureRow)treeViewStep.SelectedNode.Parent.Tag;
                 }
 
                 return null;
             }
         }
 
-        public SpeciesKey.StateRow SelectedState
+        public TaxonomicIndex.StateRow SelectedState
         {
             get
             {
                 if (IsStateNodeSelected)
                 {
-                    return (SpeciesKey.StateRow)treeViewStep.SelectedNode.Tag;
+                    return (TaxonomicIndex.StateRow)treeViewStep.SelectedNode.Tag;
                 }
 
                 return null;
@@ -345,7 +345,7 @@ namespace Mayfly.Species
         {
             treeViewStep.Nodes.Clear();
 
-            foreach (SpeciesKey.StepRow stepRow in Data.Step)
+            foreach (TaxonomicIndex.StepRow stepRow in Data.Step)
             {
                 TreeNode stepNode = new TreeNode();
                 stepNode.Name = stepRow.ID.ToString();
@@ -354,7 +354,7 @@ namespace Mayfly.Species
                 stepNode.ContextMenuStrip = contextStep;
                 treeViewStep.Nodes.Add(stepNode);
 
-                foreach (SpeciesKey.FeatureRow featureRow in stepRow.GetFeatureRows())
+                foreach (TaxonomicIndex.FeatureRow featureRow in stepRow.GetFeatureRows())
                 {
                     TreeNode featureNode = new TreeNode();
                     featureNode.Name = featureRow.ID.ToString();
@@ -363,7 +363,7 @@ namespace Mayfly.Species
                     featureNode.ContextMenuStrip = contextFeature;
                     stepNode.Nodes.Add(featureNode);
 
-                    foreach (SpeciesKey.StateRow stateRow in featureRow.GetStateRows())
+                    foreach (TaxonomicIndex.StateRow stateRow in featureRow.GetStateRows())
                     {
                         TreeNode stateNode = new TreeNode();
                         stateNode.Name = stateRow.ID.ToString();
@@ -385,7 +385,7 @@ namespace Mayfly.Species
 
         private void loadEngagedList()
         {
-            foreach (SpeciesKey.TaxonRow speciesRow in Data.GetSpeciesRows())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in Data.GetSpeciesRows())
             {
                 ListViewItem item = listViewEngagement.CreateItem(speciesRow);
                 item.Group = speciesRow.GetStateRows().Length == 0 ?
@@ -395,7 +395,7 @@ namespace Mayfly.Species
             labelEngagedCount.UpdateStatus(listViewEngagement.Groups[0].Items.Count);
         }
 
-        private void rearrangeEnagagedItems(SpeciesKey.StepRow selectedStep)
+        private void rearrangeEnagagedItems(TaxonomicIndex.StepRow selectedStep)
         {
             //foreach (SpeciesKey.TaxonRow speciesRow in Data.Species)
             //{

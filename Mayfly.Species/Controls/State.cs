@@ -12,9 +12,9 @@ namespace Mayfly.Species.Controls
 {
     public partial class State : UserControl
     {
-        SpeciesKey.StateRow stateRow;
+        TaxonomicIndex.StateRow stateRow;
 
-        public SpeciesKey.StateRow StateRow
+        public TaxonomicIndex.StateRow StateRow
         {
             get { return stateRow; }
 
@@ -51,7 +51,7 @@ namespace Mayfly.Species.Controls
             //hoveredBack = Properties.Resources.hovered;
         }
 
-        public State(SpeciesKey.StateRow stateRow)
+        public State(TaxonomicIndex.StateRow stateRow)
             : this()
         {
             StateRow = stateRow;

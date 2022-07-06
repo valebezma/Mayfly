@@ -12,7 +12,7 @@ namespace Mayfly.Species
     {
         public int Compare(TreeNode tx, TreeNode ty)
         {
-            if (tx.Tag is SpeciesKey.TaxonRow trx && ty.Tag is SpeciesKey.TaxonRow trz)
+            if (tx.Tag is TaxonomicIndex.TaxonRow trx && ty.Tag is TaxonomicIndex.TaxonRow trz)
             {
                 return trx.CompareTo(trz);
             }

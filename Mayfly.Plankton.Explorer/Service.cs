@@ -100,13 +100,13 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        public static void SaveAssociates(Data.SpeciesRow speciesRow, Data.SpeciesRow[] associates)
+        public static void SaveAssociates(Data.DefinitionRow speciesRow, Data.DefinitionRow[] associates)
         {
             if (associates != null)
             {
                 List<string> savedAssociates = new List<string>();
 
-                foreach (Data.SpeciesRow spcRow in associates)
+                foreach (Data.DefinitionRow spcRow in associates)
                 {
                     if (spcRow.Species == speciesRow.Species) continue;
                     savedAssociates.Add(spcRow.Species);

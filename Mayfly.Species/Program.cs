@@ -19,8 +19,6 @@ namespace Mayfly.Species
 
             Log.WriteAppStarted();
 
-            //args = new string[] { @"\\STORE\Public\BioData\Benthos\Benthos.sps", "-edit" };
-
             if (args.Length > 0)
             {
                 if (args.Length == 1) // If filename is given only

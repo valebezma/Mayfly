@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Resources;
 using Mayfly.Extensions;
 using Mayfly.Controls;
-using SpeciesRow = Mayfly.Wild.Data.SpeciesRow;
+using SpeciesRow = Mayfly.Wild.Data.DefinitionRow;
 using Mayfly.Wild;
 
 namespace Mayfly.Plankton.Explorer
@@ -36,7 +36,7 @@ namespace Mayfly.Plankton.Explorer
                 List<SpeciesRow> result = new List<SpeciesRow>();
                 foreach (ListViewItem item in listViewColumns.SelectedItems)
                 {
-                    result.Add(Data.Species.FindBySpecies(item.Name));
+                    result.Add(Data.Definition.FindByName(item.Name));
                 }
                 return result.ToArray();
             }

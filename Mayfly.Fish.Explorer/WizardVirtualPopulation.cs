@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         //public FishingGearType SelectedSamplerType { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         public AgeComposition Structure { get; internal set; }
 
@@ -59,7 +59,7 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardVirtualPopulation(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
+        public WizardVirtualPopulation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;

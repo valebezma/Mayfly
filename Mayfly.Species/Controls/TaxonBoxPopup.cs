@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Mayfly.Species.Controls
 {
-    public partial class TaxonSelectorPopup : Form
+    public partial class TaxonBoxPopup : Form
     {
         EventHandler taxonSelected;
         EventHandler treeLoaded;
@@ -40,14 +40,14 @@ namespace Mayfly.Species.Controls
 
         public TaxonomicRank DeepestRank { get { return taxaTreeView.DeepestRank; } set { taxaTreeView.DeepestRank = value; } }
 
-        public SpeciesKey.TaxonRow Taxon
+        public TaxonomicIndex.TaxonRow Taxon
         {
             set { taxaTreeView.PickedTaxon = value; }
             get { return taxaTreeView.PickedTaxon; }
         }
 
 
-        public TaxonSelectorPopup(SpeciesKey data)
+        public TaxonBoxPopup(TaxonomicIndex data)
         {
             InitializeComponent();
             taxaTreeView.Shine();

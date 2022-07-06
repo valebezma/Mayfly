@@ -7,7 +7,7 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        Data.SpeciesRow individualSpecies;
+        Data.DefinitionRow individualSpecies;
 
         private void UpdateIndTotals()
         {
@@ -28,7 +28,7 @@ namespace Mayfly.Plankton.Explorer
             loaderInd.RunWorkerAsync();
         }
 
-        private void LoadIndLog(Data.SpeciesRow speciesRow)
+        private void LoadIndLog(Data.DefinitionRow speciesRow)
         {
             individualSpecies = speciesRow;
 

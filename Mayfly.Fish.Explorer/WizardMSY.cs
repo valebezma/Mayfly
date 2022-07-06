@@ -22,7 +22,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         public VirtualCohort VirtualCohort;
 
@@ -62,7 +62,7 @@ namespace Mayfly.Fish.Explorer
             ColumnY.ValueType = typeof(double);
         }
 
-        public WizardMSY(CardStack data, SpeciesKey.TaxonRow speciesRow)
+        public WizardMSY(CardStack data, TaxonomicIndex.TaxonRow speciesRow)
             : this()
         {
             Data = data;

@@ -23,9 +23,9 @@ namespace Mayfly.Species.Controls
 
         public List<State> States;
 
-        public SpeciesKey.FeatureRow featureRow;
+        public TaxonomicIndex.FeatureRow featureRow;
 
-        public SpeciesKey.FeatureRow FeatureRow
+        public TaxonomicIndex.FeatureRow FeatureRow
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Mayfly.Species.Controls
                     labelDescription.Text = value.Description;
                     totalWidth = 0;
 
-                    foreach (SpeciesKey.StateRow stateRow in value.GetStateRows())
+                    foreach (TaxonomicIndex.StateRow stateRow in value.GetStateRows())
                     {
                         State state = new State(stateRow);
 
@@ -92,7 +92,7 @@ namespace Mayfly.Species.Controls
             //Collapse();
         }
 
-        public Feature(SpeciesKey.FeatureRow featRow) : this()
+        public Feature(TaxonomicIndex.FeatureRow featRow) : this()
         {
             FeatureRow = featRow;
 

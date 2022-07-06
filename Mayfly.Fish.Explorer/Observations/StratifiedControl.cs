@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         Data Data { get; set; }
 
-        private SpeciesKey.TaxonRow SelectedSpecies;
+        private TaxonomicIndex.TaxonRow SelectedSpecies;
 
 
 
@@ -36,15 +36,15 @@ namespace Mayfly.Fish.Explorer
         {
             Data = data;
 
-            foreach (Data.SpeciesRow speciesRow in Data.Species)
+            foreach (Data.DefinitionRow speciesRow in Data.Definition)
             {
-                listViewSpecies.CreateItem(speciesRow.Species, speciesRow.KeyRecord.CommonName);
+                listViewSpecies.CreateItem(speciesRow.Taxon, speciesRow.KeyRecord.CommonName);
             }
 
             UpdateSample(SelectedSpecies);
         }
 
-        private void UpdateSample(SpeciesKey.TaxonRow speciesRow)
+        private void UpdateSample(TaxonomicIndex.TaxonRow speciesRow)
         {
             spreadSheetSample.Rows.Clear();
 
@@ -117,7 +117,7 @@ namespace Mayfly.Fish.Explorer
             }
             if (listViewSpecies.SelectedItems.Count > 0)
             {
-                SelectedSpecies = Data.Species.FindBySpecies(listViewSpecies.SelectedItems[0].Name).KeyRecord;
+                SelectedSpecies = Data.Definition.FindByName(listViewSpecies.SelectedItems[0].Name).KeyRecord;
                 UpdateSample(SelectedSpecies);
             }
         }

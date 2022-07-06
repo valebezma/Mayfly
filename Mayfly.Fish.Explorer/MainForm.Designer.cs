@@ -493,7 +493,7 @@
             this.tdbSpecClear = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSpecCombine = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSpecCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesValidator = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesValidator = new Mayfly.Species.TaxonProvider(this.components);
             this.mathCard = new Mayfly.Mathematics.MathAdapter(this.components);
             this.mathLog = new Mayfly.Mathematics.MathAdapter(this.components);
             this.mathInd = new Mayfly.Mathematics.MathAdapter(this.components);
@@ -3716,7 +3716,7 @@
         public System.Windows.Forms.ComboBox comboBoxCatchesMesh;
         private System.Windows.Forms.CheckBox checkBoxCatchesMesh;
         private System.Windows.Forms.Button buttonSelectInd;
-        private Species.SpeciesSelector speciesValidator;
+        private Species.TaxonProvider speciesValidator;
         private System.Windows.Forms.ContextMenuStrip contextLog;
         private System.Windows.Forms.ToolStripMenuItem contextLogOpen;
         private System.Windows.Forms.ToolStripMenuItem menuItemCardPrintFull;

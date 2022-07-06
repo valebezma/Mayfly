@@ -14,9 +14,9 @@ namespace Mayfly.Species
 {
     public partial class SpeciesCard : Form
     {
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
-        public SpeciesCard(SpeciesKey.TaxonRow speciesRow)
+        public SpeciesCard(TaxonomicIndex.TaxonRow speciesRow)
         {
             InitializeComponent();
 
@@ -33,7 +33,7 @@ namespace Mayfly.Species
                 Constants.Null : speciesRow.Local.GetLocalizedValue();
 
             labelTaxon.Text = string.Empty;
-            foreach (SpeciesKey.TaxonRow taxonRow in speciesRow.Hierarchy) {
+            foreach (TaxonomicIndex.TaxonRow taxonRow in speciesRow.Hierarchy) {
                 labelTaxon.Text += taxonRow.FullName + Constants.Break;
             }
 
@@ -41,12 +41,12 @@ namespace Mayfly.Species
                 Resources.Interface.DescriptionNull : speciesRow.Description;
 
             labelSynonyms.Text = string.Empty;
-            foreach (SpeciesKey.TaxonRow syn in speciesRow.Synonyms) {
+            foreach (TaxonomicIndex.TaxonRow syn in speciesRow.Synonyms) {
                 labelSynonyms.Text += syn.FullName + Constants.Break;
             }
         }
 
-        public SpeciesCard(SpeciesKey.TaxonRow speciesRow, bool allowSelect) : 
+        public SpeciesCard(TaxonomicIndex.TaxonRow speciesRow, bool allowSelect) : 
             this(speciesRow)
         {
             buttonSelect.Visible = allowSelect;

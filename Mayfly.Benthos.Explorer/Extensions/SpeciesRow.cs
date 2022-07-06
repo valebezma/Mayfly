@@ -11,7 +11,7 @@ namespace Mayfly.Extensions
 {
     public static class SpeciesRowExtensions
     {
-        public static List<Data.IndividualRow> GetUnweightedIndividualRows(this Data.SpeciesRow speciesRow)
+        public static List<Data.IndividualRow> GetUnweightedIndividualRows(this Data.DefinitionRow speciesRow)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -24,12 +24,12 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.TaxonRow speciesRow)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this TaxonomicIndex.TaxonRow speciesRow)
         {
             return speciesRow.GetWeightedIndividualRows(new CardStack((Data)speciesRow.Table.DataSet));
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this SpeciesKey.TaxonRow speciesRow, CardStack stack)
+        public static List<Data.IndividualRow> GetWeightedIndividualRows(this TaxonomicIndex.TaxonRow speciesRow, CardStack stack)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -70,17 +70,17 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Unweighted(this Data.SpeciesRow speciesRow)
+        public static int Unweighted(this Data.DefinitionRow speciesRow)
         {
             return speciesRow.UnweightedIndividuals() + speciesRow.AbstractIndividuals();
         }
 
-        public static int UnweightedIndividuals(this Data.SpeciesRow speciesRow)
+        public static int UnweightedIndividuals(this Data.DefinitionRow speciesRow)
         {
             return speciesRow.GetUnweightedIndividualRows().GetCount();
         }
 
-        public static int AbstractIndividuals(this Data.SpeciesRow speciesRow)
+        public static int AbstractIndividuals(this Data.DefinitionRow speciesRow)
         {
             int result = 0;
 

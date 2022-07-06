@@ -59,7 +59,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public void Fill(CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public void Fill(CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             #region Prepare data
 

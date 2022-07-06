@@ -5,6 +5,7 @@ using System.Text;
 using Mayfly.Wild;
 using System.Windows.Forms;
 using System.IO;
+using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish
 {
@@ -48,6 +49,91 @@ namespace Mayfly.Fish
         private DataGridViewTextBoxColumn columnHeight;
         private Button buttonGearsClear;
         private DataGridViewTextBoxColumn columnOpeningValue;
+
+
+
+        public Settings()
+            : base(UserSettings.ReaderSettings)
+        {
+            InitializeComponent();
+
+            textBoxDiet.Text = UserSettings.DietIndexPath;
+            textBoxParasites.Text = UserSettings.ParasitesIndexPath;
+
+            numericUpDownInterval.Value = (decimal)UserSettings.DefaultStratifiedInterval;
+
+            spreadSheetOpening.StringVariants = ReaderSettings.SamplersIndex.GetSamplerNames('O');
+            columnOpeningGear.ValueType = typeof(string);
+            columnOpeningValue.ValueType = typeof(double);
+
+            columnMesh.ValueType = typeof(int);
+            columnLength.ValueType = typeof(double);
+            columnHeight.ValueType = typeof(double);
+
+            numericUpDownOpeningDefault.Value = 100 * (decimal)UserSettings.DefaultOpening;
+            numericUpDownStdLength.Value = (decimal)UserSettings.GillnetStdLength;
+            numericUpDownStdHeight.Value = (decimal)UserSettings.GillnetStdHeight;
+            numericUpDownStdSoak.Value = UserSettings.GillnetStdExposure;
+
+            spreadSheetOpening.Rows.Clear();
+
+            foreach (Samplers.SamplerRow samplerRow in ReaderSettings.SamplersIndex.Sampler)
+            {
+                LoadOpening(samplerRow);
+            }
+
+            //columnSampler.DataSource = ReaderSettings.SamplersIndex.GetPassives();
+            columnSampler.DataSource = ReaderSettings.SamplersIndex.Sampler.Select();
+            columnSampler.DisplayMember = "Sampler";
+            columnSampler.ValueMember = "ShortName";
+
+            LoadGears();
+        }
+
+
+
+        protected override void SaveSettings()
+        {
+            if (!tabPageReferences.IsDisposed)
+            {
+                UserSettings.DietIndexPath = textBoxDiet.Text;
+                UserSettings.ParasitesIndexPath = textBoxParasites.Text;
+            }
+
+            if (!tabPageGears.IsDisposed)
+            {
+                UserSettings.DefaultOpening = .01 * (double)numericUpDownOpeningDefault.Value;
+
+                UserSetting.ClearFolder(UserSettings.ReaderSettings.Path, nameof(Service.Opening));
+                foreach (DataGridViewRow gridRow in spreadSheetOpening.Rows)
+                {
+                    if (gridRow.IsNewRow) continue;
+                    if (gridRow.Cells[columnOpeningGear.Index].Value == null) continue;
+                    if (gridRow.Cells[columnOpeningValue.Index].Value == null) continue;
+                    if ((double)gridRow.Cells[columnOpeningValue.Index].Value == UserSettings.DefaultOpening) continue;
+                    Service.SaveOpening(((Samplers.SamplerRow)gridRow.Tag).ID, (double)gridRow.Cells[columnOpeningValue.Index].Value);
+                }
+
+                UserSettings.GillnetStdLength = (double)numericUpDownStdLength.Value;
+                UserSettings.GillnetStdHeight = (double)numericUpDownStdHeight.Value;
+                UserSettings.GillnetStdExposure = (int)numericUpDownStdSoak.Value;
+
+                UserSettings.Equipment = new Equipment();
+                foreach (DataGridViewRow gridRow in spreadSheetGears.Rows)
+                {
+                    if (gridRow.IsNewRow) continue;
+                    if (gridRow.Cells[columnSampler.Index].Value == null) continue;
+
+                    Equipment.UnitsRow unitsRow = UserSettings.Equipment.Units.NewUnitsRow();
+                    unitsRow.SamplerID = ReaderSettings.SamplersIndex.Sampler.FindByCode((string)gridRow.Cells[columnSampler.Index].Value).ID;
+                    if (gridRow.Cells[columnMesh.Index].Value != null) unitsRow.Mesh = (int)gridRow.Cells[columnMesh.Index].Value;
+                    if (gridRow.Cells[columnLength.Index].Value != null) unitsRow.Length = (double)gridRow.Cells[columnLength.Index].Value;
+                    if (gridRow.Cells[columnHeight.Index].Value != null) unitsRow.Height = (double)gridRow.Cells[columnHeight.Index].Value;
+                    UserSettings.Equipment.Units.AddUnitsRow(unitsRow);
+                }
+                Service.SaveEquipment();
+            }
+        }
 
         private void InitializeComponent()
         {
@@ -551,87 +637,6 @@ namespace Mayfly.Fish
 
         }
 
-        public Settings()
-            : base()
-        {
-            InitializeComponent();
-
-            SaveSettings = saveSettings;
-            RecentClear = clearRecent;
-
-            #region References
-
-            textBoxWaters.Text = Wild.UserSettings.WatersIndexPath;
-
-            textBoxSpecies.Text = UserSettings.SpeciesIndexPath;
-            checkBoxSpeciesExpand.Checked = UserSettings.SpeciesAutoExpand;
-            checkBoxSpeciesExpandVisualControl.Checked = UserSettings.SpeciesAutoExpandVisual;
-
-            textBoxDiet.Text = UserSettings.DietIndexPath;
-            textBoxParasites.Text = UserSettings.ParasitesIndexPath;
-
-            #endregion
-
-            #region Input
-
-            checkBoxAutoLog.Checked = UserSettings.AutoLogOpen;
-            checkBoxFixTotals.Checked = UserSettings.FixTotals;
-            checkBoxAutoIncreaseBio.Checked = UserSettings.AutoIncreaseBio;
-            checkBoxAutoDecreaseBio.Checked = UserSettings.AutoDecreaseBio;
-            
-            numericUpDownRecentCount.Value = UserSettings.RecentSpeciesCount;
-
-            foreach (string item in UserSettings.AddtVariables)
-            {
-                ListViewItem li = new ListViewItem(item);
-                listViewAddtVars.Items.Add(li);
-            }
-
-            numericUpDownInterval.Value = (decimal)UserSettings.DefaultStratifiedInterval;
-
-            #endregion
-
-            #region Gears
-
-            spreadSheetOpening.StringVariants = UserSettings.SamplersIndex.GetSamplerNames('O');
-            columnOpeningGear.ValueType = typeof(string);
-            columnOpeningValue.ValueType = typeof(double);
-
-            columnMesh.ValueType = typeof(int);
-            columnLength.ValueType = typeof(double);
-            columnHeight.ValueType = typeof(double);
-
-            numericUpDownOpeningDefault.Value = 100 * (decimal)UserSettings.DefaultOpening;
-            numericUpDownStdLength.Value = (decimal)UserSettings.GillnetStdLength;
-            numericUpDownStdHeight.Value = (decimal)UserSettings.GillnetStdHeight;
-            numericUpDownStdSoak.Value = UserSettings.GillnetStdExposure;
-
-            spreadSheetOpening.Rows.Clear();
-
-            foreach (Samplers.SamplerRow samplerRow in UserSettings.SamplersIndex.Sampler)
-            {
-                LoadOpening(samplerRow);
-            }
-
-
-            //columnSampler.DataSource = UserSettings.SamplersIndex.GetPassives();
-            columnSampler.DataSource = UserSettings.SamplersIndex.Sampler.Select(null);
-            columnSampler.DisplayMember = "Sampler";
-            columnSampler.ValueMember = "ShortName";
-
-            LoadGears();
-
-            #endregion
-
-            #region Print
-
-            checkBoxCardOdd.Checked = UserSettings.OddCardStart;
-            checkBoxBreakBeforeIndividuals.Checked = UserSettings.BreakBeforeIndividuals;
-            checkBoxBreakBetweenSpecies.Checked = UserSettings.BreakBetweenSpecies;
-
-            #endregion
-        }
-
 
 
         private void LoadOpening(Samplers.SamplerRow samplerRow)
@@ -658,90 +663,11 @@ namespace Mayfly.Fish
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetGears);
-                if (!unitRow.IsSamplerIDNull()) gridRow.Cells[columnSampler.Index].Value = UserSettings.SamplersIndex.Sampler.FindByID(unitRow.SamplerID).ShortName;
+                if (!unitRow.IsSamplerIDNull()) gridRow.Cells[columnSampler.Index].Value = ReaderSettings.SamplersIndex.Sampler.FindByID(unitRow.SamplerID).ShortName;
                 if (!unitRow.IsMeshNull()) gridRow.Cells[columnMesh.Index].Value = unitRow.Mesh;
                 if (!unitRow.IsLengthNull()) gridRow.Cells[columnLength.Index].Value = unitRow.Length;
                 if (!unitRow.IsHeightNull()) gridRow.Cells[columnHeight.Index].Value = unitRow.Height;
                 spreadSheetGears.Rows.Add(gridRow);
-            }
-        }
-
-        private void saveSettings()
-        {
-            if (!tabPageReferences.IsDisposed)
-            {
-                Wild.UserSettings.WatersIndexPath = textBoxWaters.Text;
-
-                UserSettings.SpeciesIndexPath = textBoxSpecies.Text;
-                UserSettings.SpeciesAutoExpand = checkBoxSpeciesExpand.Checked;
-                UserSettings.SpeciesAutoExpandVisual = checkBoxSpeciesExpandVisualControl.Checked;
-
-                UserSettings.DietIndexPath = textBoxDiet.Text;
-
-                UserSettings.ParasitesIndexPath = textBoxParasites.Text;
-            }
-
-            if (!tabPageInput.IsDisposed)
-            {
-                UserSettings.FixTotals = checkBoxFixTotals.Checked;
-                UserSettings.AutoIncreaseBio = checkBoxAutoIncreaseBio.Checked;
-                UserSettings.AutoDecreaseBio = checkBoxAutoDecreaseBio.Checked;
-                UserSettings.AutoLogOpen = checkBoxAutoLog.Checked;
-                UserSettings.RecentSpeciesCount = (int)numericUpDownRecentCount.Value;
-            }
-
-            if (!tabPageGears.IsDisposed)
-            {
-                UserSettings.DefaultOpening = .01 * (double)numericUpDownOpeningDefault.Value;
-
-                UserSetting.ClearFolder(UserSettings.Path, nameof(Service.Opening));
-                foreach (DataGridViewRow gridRow in spreadSheetOpening.Rows)
-                {
-                    if (gridRow.IsNewRow) continue;
-                    if (gridRow.Cells[columnOpeningGear.Index].Value == null) continue;
-                    if (gridRow.Cells[columnOpeningValue.Index].Value == null) continue;
-                    if ((double)gridRow.Cells[columnOpeningValue.Index].Value == UserSettings.DefaultOpening) continue;
-                    Service.SaveOpening(((Samplers.SamplerRow)gridRow.Tag).ID, (double)gridRow.Cells[columnOpeningValue.Index].Value);
-                }
-
-                UserSettings.GillnetStdLength = (double)numericUpDownStdLength.Value;
-                UserSettings.GillnetStdHeight = (double)numericUpDownStdHeight.Value;
-                UserSettings.GillnetStdExposure = (int)numericUpDownStdSoak.Value;
-
-                UserSettings.Equipment = new Equipment();
-                foreach (DataGridViewRow gridRow in spreadSheetGears.Rows)
-                {
-                    if (gridRow.IsNewRow) continue;
-                    if (gridRow.Cells[columnSampler.Index].Value == null) continue;
-
-                    Equipment.UnitsRow unitsRow = UserSettings.Equipment.Units.NewUnitsRow();
-                    unitsRow.SamplerID = UserSettings.SamplersIndex.Sampler.FindByCode((string)gridRow.Cells[columnSampler.Index].Value).ID;
-                    if (gridRow.Cells[columnMesh.Index].Value != null) unitsRow.Mesh = (int)gridRow.Cells[columnMesh.Index].Value;
-                    if (gridRow.Cells[columnLength.Index].Value != null) unitsRow.Length = (double)gridRow.Cells[columnLength.Index].Value;
-                    if (gridRow.Cells[columnHeight.Index].Value != null) unitsRow.Height = (double)gridRow.Cells[columnHeight.Index].Value;
-                    UserSettings.Equipment.Units.AddUnitsRow(unitsRow);
-                }
-                Service.SaveEquipment();
-            }
-
-            if (!tabPagePrint.IsDisposed)
-            {
-                UserSettings.OddCardStart = checkBoxCardOdd.Checked;
-                UserSettings.BreakBeforeIndividuals = checkBoxBreakBeforeIndividuals.Checked;
-                UserSettings.BreakBetweenSpecies = checkBoxBreakBetweenSpecies.Checked;
-            }
-        }
-
-        private void clearRecent()
-        {
-            string[] species = UserSetting.GetKeys(Species.UserSettings.Path,
-                Path.GetFileNameWithoutExtension(UserSettings.SpeciesIndexPath));
-            tdClearRecent.Content = string.Format(Wild.Resources.Interface.Messages.ClearRecent, species.Length);
-
-            if (tdClearRecent.ShowDialog() == tdbRecentClear)
-            {
-                UserSetting.ClearFolder(UserSettings.Path,
-                    Path.GetFileNameWithoutExtension(UserSettings.SpeciesIndexPath));
             }
         }
 
@@ -751,8 +677,8 @@ namespace Mayfly.Fish
         {
             if (Mayfly.Species.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                UserSettings.DietIndexPath = Mayfly.Species.UserSettings.Interface.OpenDialog.FileName;
-                textBoxDiet.Text = Fish.UserSettings.DietIndexPath;
+                UserSettings.DietIndexPath = Species.UserSettings.Interface.OpenDialog.FileName;
+                textBoxDiet.Text = UserSettings.DietIndexPath;
             }
         }
 
@@ -792,7 +718,7 @@ namespace Mayfly.Fish
 
             if (e.ColumnIndex == columnOpeningGear.Index)
             {
-                Samplers.SamplerRow samplerRow = UserSettings.SamplersIndex.Sampler.FindBySampler((string)value);
+                Samplers.SamplerRow samplerRow = ReaderSettings.SamplersIndex.Sampler.FindBySampler((string)value);
                 spreadSheetOpening.Rows[e.RowIndex].Tag = samplerRow;
             }
         }

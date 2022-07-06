@@ -382,6 +382,31 @@ namespace Mayfly.Extensions
             //}
         }
 
+        private static ToolTip toolTip;
+
+        public static void NotifyInstantly(this Form form, /*string title,*/ string format, params object[] values)
+        {
+            if (toolTip == null) { toolTip = new ToolTip(); }
+            //toolTip.ToolTipTitle = title;
+            Point pt = Cursor.Position;
+            pt.Offset(-form.Location.X + 15, -form.Location.Y);
+            toolTip.Show(string.Format(format, values), form, pt, 5000);
+        }
+
+        //public static void NotifyInstantly(this Form form, string format, params object[] values)
+        //{
+        //    NotifyInstantly(form, string.Empty, format, values);
+        //}
+
+        public static void NotifyInstantly(this Control ctrl, string format, params object[] values)
+        {
+            NotifyInstantly(ctrl.FindForm(), string.Empty, format, values);
+        }
+
+        //public static void NotifyInstantly(this Control ctrl, string title, string format, params object[] values)
+        //{
+        //    NotifyInstantly(ctrl.FindForm(), title, format, values);
+        //}
 
 
         public static void SaveAllCheckStates(this Form form)

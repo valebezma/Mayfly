@@ -95,7 +95,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        private static ToolStripMenuItem taxonItem(SpeciesKey.TaxonRow taxonRow, EventHandler command)
+        private static ToolStripMenuItem taxonItem(TaxonomicIndex.TaxonRow taxonRow, EventHandler command)
         {
             ToolStripMenuItem item = new ToolStripMenuItem()
             {
@@ -105,7 +105,7 @@ namespace Mayfly.Wild
 
             item.Click += command;
 
-            foreach (SpeciesKey.TaxonRow childRow in taxonRow.GetTaxonRows())
+            foreach (TaxonomicIndex.TaxonRow childRow in taxonRow.GetTaxonRows())
             {
                 item.DropDownItems.Add(taxonItem(childRow, command));
             }
@@ -113,7 +113,7 @@ namespace Mayfly.Wild
             return item;
         }
 
-        public static void AddTaxonMenus(this ToolStripMenuItem item, SpeciesKey index, EventHandler command)
+        public static void AddTaxonMenus(this ToolStripMenuItem item, TaxonomicIndex index, EventHandler command)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -129,7 +129,7 @@ namespace Mayfly.Wild
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (SpeciesKey.TaxonRow taxonRow in index.GetRootTaxonRows())
+            foreach (TaxonomicIndex.TaxonRow taxonRow in index.GetRootTaxonRows())
             {
                 item.DropDownItems.Add(taxonItem(taxonRow, command));
             }

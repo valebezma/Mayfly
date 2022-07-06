@@ -17,14 +17,14 @@ namespace Mayfly.Benthos.Explorer
     {
         private Data Data;
 
-        public Data.SpeciesRow[] SelectedSpecies
+        public Data.DefinitionRow[] SelectedSpecies
         {
             set
             {
                 listViewColumns.SelectedItems.Clear();
-                foreach (Data.SpeciesRow speciesRow in value)
+                foreach (Data.DefinitionRow speciesRow in value)
                 {
-                    ListViewItem item = listViewColumns.FindItemWithText(speciesRow.Species);
+                    ListViewItem item = listViewColumns.FindItemWithText(speciesRow.Taxon);
                     item.Selected = true;
                     listViewColumns.EnsureVisible(item.Index);
                 }
@@ -32,10 +32,10 @@ namespace Mayfly.Benthos.Explorer
 
             get
             {
-                List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+                List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
                 foreach (ListViewItem item in listViewColumns.SelectedItems)
                 {
-                    result.Add(Data.Species.FindBySpecies(item.Name));
+                    result.Add(Data.Definition.FindByName(item.Name));
                 }
                 return result.ToArray();
             }
@@ -60,9 +60,9 @@ namespace Mayfly.Benthos.Explorer
         {
             listViewColumns.Items.Clear();
 
-            foreach (Data.SpeciesRow speciesRow in Data.Species)
+            foreach (Data.DefinitionRow speciesRow in Data.Definition)
             {
-                listViewColumns.CreateItem(speciesRow.Species);
+                listViewColumns.CreateItem(speciesRow.Taxon);
             }
 
             listViewColumns.Sort();
@@ -72,10 +72,10 @@ namespace Mayfly.Benthos.Explorer
         {
             listViewColumns.Items.Clear();
 
-            foreach (Data.SpeciesRow speciesRow in Data.Species)
+            foreach (Data.DefinitionRow speciesRow in Data.Definition)
             {
-                if (!speciesRow.Species.ToLowerInvariant().Contains(pattern.ToLowerInvariant())) continue;
-                listViewColumns.CreateItem(speciesRow.Species);
+                if (!speciesRow.Taxon.ToLowerInvariant().Contains(pattern.ToLowerInvariant())) continue;
+                listViewColumns.CreateItem(speciesRow.Taxon);
             }
 
             listViewColumns.Sort();

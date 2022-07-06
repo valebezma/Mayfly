@@ -92,9 +92,9 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.speciesSelectorMeasure = new Mayfly.Species.SpeciesSelector(this.components);
-            this.speciesSelectorCatchability = new Mayfly.Species.SpeciesSelector(this.components);
-            this.speciesSelectorAge = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesSelectorMeasure = new Mayfly.Species.TaxonProvider(this.components);
+            this.speciesSelectorCatchability = new Mayfly.Species.TaxonProvider(this.components);
+            this.speciesSelectorAge = new Mayfly.Species.TaxonProvider(this.components);
             this.buttonBasicSettings = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageTreat.SuspendLayout();
@@ -691,9 +691,9 @@
         private Mayfly.Controls.SpreadSheet spreadSheetAge;
         private Mayfly.Controls.SpreadSheet spreadSheetMeasure;
         private Mayfly.Controls.SpreadSheet spreadSheetCatchability;
-        private Species.SpeciesSelector speciesSelectorMeasure;
-        private Species.SpeciesSelector speciesSelectorCatchability;
-        private Species.SpeciesSelector speciesSelectorAge;
+        private Species.TaxonProvider speciesSelectorMeasure;
+        private Species.TaxonProvider speciesSelectorCatchability;
+        private Species.TaxonProvider speciesSelectorAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAgeSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAgeValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMeasureSpecies;

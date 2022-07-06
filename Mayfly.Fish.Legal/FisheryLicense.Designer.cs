@@ -111,7 +111,7 @@
             this.taskDialogDelete = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbDeleteYes = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDeleteCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesLogger = new Mayfly.Species.TaxonProvider(this.components);
             this.statusLicense = new Mayfly.Controls.Status();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -784,7 +784,7 @@
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.TabPage pageQuotes;
         private Controls.SpreadSheet spreadSheetQuotes;
-        private Species.SpeciesSelector speciesLogger;
+        private Species.TaxonProvider speciesLogger;
         private System.Windows.Forms.Button buttonSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuote;

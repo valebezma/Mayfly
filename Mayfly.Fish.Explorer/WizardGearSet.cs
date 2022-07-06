@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesOfInterest { get; set; }
+        public TaxonomicIndex.TaxonRow SpeciesOfInterest { get; set; }
 
         public FishSamplerType SelectedSamplerType { get; set; }
 
@@ -111,7 +111,7 @@ namespace Mayfly.Fish.Explorer
             //pageSampler.AllowNext = (comboBoxUE.SelectedIndex != -1);
         }
 
-        public WizardGearSet(CardStack data, SpeciesKey.TaxonRow speciesRow)
+        public WizardGearSet(CardStack data, TaxonomicIndex.TaxonRow speciesRow)
             : this(data)
         {
             SpeciesOfInterest = speciesRow;

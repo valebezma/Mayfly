@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         WizardMSY msyWizard;
 
@@ -38,7 +38,7 @@ namespace Mayfly.Fish.Explorer
             labelStart.ResetFormatted("species");
         }
 
-        public WizardPrediction(CardStack data, SpeciesKey.TaxonRow speciesRow)
+        public WizardPrediction(CardStack data, TaxonomicIndex.TaxonRow speciesRow)
             : this()
         {
             Data = data;

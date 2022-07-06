@@ -13,15 +13,15 @@ using Mayfly.Extensions;
 
 namespace Mayfly.Species.Controls
 {
-    public partial class TaxaTreeView : TreeView
+    public partial class TaxonTreeView : TreeView
     {
-        SpeciesKey data;
-        SpeciesKey.TaxonRow rootTaxon;
+        TaxonomicIndex data;
+        TaxonomicIndex.TaxonRow rootTaxon;
         TaxonomicRank deepestRank;
         bool allowEdit;
 
-        SpeciesKey.TaxonRow pickedTaxon;
-        string message = string.Empty;
+        TaxonomicIndex.TaxonRow pickedTaxon;
+        //string message = string.Empty;
 
         TaxonEventHandler beforeTaxonSelected;
         internal bool SelectionAllowed = true;
@@ -113,7 +113,7 @@ namespace Mayfly.Species.Controls
         }
 
         [Category("Behavior"), Browsable(false)]
-        public SpeciesKey.TaxonRow PickedTaxon
+        public TaxonomicIndex.TaxonRow PickedTaxon
         {
             get { return pickedTaxon; }
 
@@ -170,7 +170,7 @@ namespace Mayfly.Species.Controls
         }
 
         [Category("Behavior"), Browsable(false)]
-        public SpeciesKey.TaxonRow RootTaxon
+        public TaxonomicIndex.TaxonRow RootTaxon
         {
             get { return rootTaxon; }
             set { rootTaxon = value;
@@ -189,13 +189,13 @@ namespace Mayfly.Species.Controls
 
 
 
-        public TaxaTreeView()
+        public TaxonTreeView()
         {
             InitializeComponent();
             TreeViewNodeSorter = new TreeNodeSorter();
         }
 
-        public TaxaTreeView(IContainer container)
+        public TaxonTreeView(IContainer container)
         {
             container.Add(this);
 
@@ -225,7 +225,7 @@ namespace Mayfly.Species.Controls
 
 
 
-        public void Bind(SpeciesKey index)
+        public void Bind(TaxonomicIndex index)
         {
             data = index;
         }
@@ -239,9 +239,9 @@ namespace Mayfly.Species.Controls
             loader.RunWorkerAsync();
         }
 
-        public TreeNode AddNode(SpeciesKey.TaxonRow taxonRow)
+        public TreeNode AddNode(TaxonomicIndex.TaxonRow taxonRow)
         {
-            if (DeepestRank != null && taxonRow.Rank > DeepestRank.Value) return null;
+            if (DeepestRank != null && taxonRow.TaxonomicRank > DeepestRank) return null;
 
             if (!InvokeRequired)
             {
@@ -295,7 +295,7 @@ namespace Mayfly.Species.Controls
 
         private delegate void ColorSetEventHandler(TreeNode treeNode, Color color);
 
-        public DragDropEffects CheckTaxonCompatibility(SpeciesKey.TaxonRow carryTaxonRow, SpeciesKey.TaxonRow targetTaxonRow)
+        public DragDropEffects CheckTaxonCompatibility(TaxonomicIndex.TaxonRow carryTaxonRow, TaxonomicIndex.TaxonRow targetTaxonRow)
         {
             if (carryTaxonRow == targetTaxonRow) // Taxon to itself
             {
@@ -311,12 +311,12 @@ namespace Mayfly.Species.Controls
                 {
                     if (targetTaxonRow.IsSynonymyAvailable(carryTaxonRow))
                     {
-                        notifyInstantly(Resources.Interface.TipSynonym, carryTaxonRow, targetTaxonRow);
+                        this.NotifyInstantly(Resources.Interface.TipSynonym, carryTaxonRow, targetTaxonRow);
                         return DragDropEffects.Link;
                     }
                     else
                     {
-                        notifyInstantly(Resources.Interface.TipSynonymUnableSeparateBranch);
+                        this.NotifyInstantly(Resources.Interface.TipSynonymUnableSeparateBranch);
                         return DragDropEffects.None;
                     }
                 }
@@ -324,24 +324,24 @@ namespace Mayfly.Species.Controls
                 {
                     if (carryTaxonRow.IsHigher) // Higher taxon positioning
                     {
-                        notifyInstantly(Resources.Interface.TipSort, carryTaxonRow, targetTaxonRow);
+                        this.NotifyInstantly(Resources.Interface.TipSort, carryTaxonRow, targetTaxonRow);
                         return DragDropEffects.Move;
                     }
-                    else if (carryTaxonRow.Rank == 91) // Species to species subordering
+                    else if (carryTaxonRow.TaxonomicRank == TaxonomicRank.Species) // Species to species subordering
                     {
-                        if (SpeciesKey.Genus(targetTaxonRow.Name) != SpeciesKey.Genus(carryTaxonRow.Name))
+                        if (TaxonomicIndex.Genus(targetTaxonRow.Name) != TaxonomicIndex.Genus(carryTaxonRow.Name))
                         {
-                            notifyInstantly(Resources.Interface.TipSubspeciesUnableNameMismatch, carryTaxonRow, targetTaxonRow);
+                            this.NotifyInstantly(Resources.Interface.TipSubspeciesUnableNameMismatch, carryTaxonRow, targetTaxonRow);
                             return DragDropEffects.None;
                         }
                         else if (targetTaxonRow.IsSynonymyAvailable(carryTaxonRow))
                         {
-                            notifyInstantly(Resources.Interface.TipSubspecies, carryTaxonRow, targetTaxonRow);
+                            this.NotifyInstantly(Resources.Interface.TipSubspecies, carryTaxonRow, targetTaxonRow);
                             return DragDropEffects.Link;
                         }
                         else
                         {
-                            notifyInstantly(Resources.Interface.TipSubspeciesUnableSeparateBranch);
+                            this.NotifyInstantly(Resources.Interface.TipSubspeciesUnableSeparateBranch);
                             return DragDropEffects.None;
                         }
                     }
@@ -349,32 +349,48 @@ namespace Mayfly.Species.Controls
             }
             else if (carryTaxonRow.Rank < targetTaxonRow.Rank) // If rank mismatch
             {
-                notifyInstantly(Resources.Interface.TipIncludeUnableWrongRank, carryTaxonRow, targetTaxonRow);
+                this.NotifyInstantly(Resources.Interface.TipIncludeUnableWrongRank, carryTaxonRow, targetTaxonRow);
                 return DragDropEffects.None;
             }
             else // Rank are fine
             {
-                notifyInstantly(Resources.Interface.TipInclude, carryTaxonRow, targetTaxonRow);
+                this.NotifyInstantly(Resources.Interface.TipInclude, carryTaxonRow, targetTaxonRow);
                 return DragDropEffects.Link;
             }
 
             return DragDropEffects.None;
         }
 
-
-
-        private void notifyInstantly(string format, params object[] values)
+        public void RunEditing()
         {
-            Point pt = Cursor.Position;
-            pt.Offset(-this.FindForm().Location.X + 15, -this.FindForm().Location.Y);
-            if (message != string.Format(format, values))
+            TaxonomicIndex.TaxonRow currentParent = pickedTaxon.TaxonRowParent;
+            EditTaxon taxonEdit = new EditTaxon(pickedTaxon);
+
+            if (taxonEdit.ShowDialog(this) == DialogResult.OK)
             {
-                message = string.Format(format, values);
-                toolTip.Show(message, this.FindForm(), pt, 5000);
+                if (taxonEdit.IsChanged)
+                {
+                    TreeNode carryNode = Nodes.Find(taxonEdit.TaxonRow.ID.ToString(), true)?[0];
+                    if (currentParent != taxonEdit.TaxonRow.TaxonRowParent)
+                    {
+                        carryNode.Remove();
+                        carryNode = AddNode(taxonEdit.TaxonRow);
+                    }
+                    else
+                    {
+                        ApplyRenameAscending(carryNode);
+                    }
+                    SelectedNode = carryNode;
+
+                    if (changed != null) changed.Invoke(this, new EventArgs());
+                    if (taxonChanged != null) taxonChanged.Invoke(this, new TaxonEventArgs(taxonEdit.TaxonRow));
+                }
             }
         }
 
-        private TreeNode getTaxonTreeNode(SpeciesKey.TaxonRow taxonRow)
+
+
+        private TreeNode getTaxonTreeNode(TaxonomicIndex.TaxonRow taxonRow)
         {
             TreeNode taxonNode = new TreeNode
             {
@@ -386,9 +402,9 @@ namespace Mayfly.Species.Controls
 
             if (LowerTaxonColor != null && !taxonRow.IsHigher) taxonNode.ForeColor = LowerTaxonColor;
 
-            foreach (SpeciesKey.TaxonRow derRow in taxonRow.GetTaxonRows())
+            foreach (TaxonomicIndex.TaxonRow derRow in taxonRow.GetTaxonRows())
             {
-                if (DeepestRank != null && derRow.Rank > DeepestRank.Value) continue;
+                if (DeepestRank != null && derRow.TaxonomicRank > DeepestRank) continue;
 
                 taxonNode.Nodes.Add(getTaxonTreeNode(derRow));
             }
@@ -396,14 +412,14 @@ namespace Mayfly.Species.Controls
             return taxonNode;
         }
 
-        private delegate TreeNode AddNodeEventHandler(SpeciesKey.TaxonRow taxonRow);
+        private delegate TreeNode AddNodeEventHandler(TaxonomicIndex.TaxonRow taxonRow);
 
 
         private void applySort(TreeNodeCollection nodes)
         {
             foreach (TreeNode tn in nodes)
             {
-                if (tn.Tag is SpeciesKey.TaxonRow tr)
+                if (tn.Tag is TaxonomicIndex.TaxonRow tr)
                 {
                     if (!tr.IsHigher) continue;
 
@@ -424,7 +440,7 @@ namespace Mayfly.Species.Controls
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             TreeNode node = (TreeNode)e.Argument;
-            SpeciesKey.TaxonRow taxonRow = (SpeciesKey.TaxonRow)((TreeNode)e.Argument).Tag;
+            TaxonomicIndex.TaxonRow taxonRow = (TaxonomicIndex.TaxonRow)((TreeNode)e.Argument).Tag;
             ApplyRename(node, taxonRow.ToString(taxonRow.IsHigher ? HigherTaxonFormat : LowerTaxonFormat));
             if (node.Parent != null) ApplyRenameAscending(node.Parent);
         }
@@ -439,7 +455,7 @@ namespace Mayfly.Species.Controls
         private void bwapp_DoWork(object sender, DoWorkEventArgs e)
         {
             TreeNode node = (TreeNode)e.Argument;
-            SpeciesKey.TaxonRow taxonRow = (SpeciesKey.TaxonRow)((TreeNode)e.Argument).Tag;
+            TaxonomicIndex.TaxonRow taxonRow = (TaxonomicIndex.TaxonRow)((TreeNode)e.Argument).Tag;
 
             ApplyRename(node, taxonRow.ToString(taxonRow.IsHigher ? HigherTaxonFormat : LowerTaxonFormat));
             ApplyAppearance(node, (taxonRow.IsHigher || LowerTaxonColor == null) ? ForeColor : LowerTaxonColor);
@@ -488,12 +504,12 @@ namespace Mayfly.Species.Controls
 
             if (beforeTaxonSelected != null)
             {
-                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(e.Node == null ? null : e.Node.Tag as SpeciesKey.TaxonRow));
+                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(e.Node == null ? null : e.Node.Tag as TaxonomicIndex.TaxonRow));
             }
 
             if (SelectionAllowed)
             {
-                pickedTaxon = e.Node == null ? null : e.Node.Tag as SpeciesKey.TaxonRow;
+                pickedTaxon = e.Node == null ? null : e.Node.Tag as TaxonomicIndex.TaxonRow;
                 if (taxonSelected != null) taxonSelected.Invoke(this, new TaxonEventArgs(pickedTaxon));
             }
 
@@ -511,7 +527,7 @@ namespace Mayfly.Species.Controls
 
             if (!AllowEdit) return;
 
-            DoDragDrop(new SpeciesKey.TaxonRow[] { pickedTaxon }, DragDropEffects.Move | DragDropEffects.Link | DragDropEffects.Copy);
+            DoDragDrop(new TaxonomicIndex.TaxonRow[] { pickedTaxon }, DragDropEffects.Move | DragDropEffects.Link | DragDropEffects.Copy);
         }
 
         protected override void OnDragEnter(DragEventArgs e)
@@ -532,16 +548,16 @@ namespace Mayfly.Species.Controls
             Point dropLocation = PointToClient(new Point(e.X, e.Y));
             TreeNode targetNode = GetNodeAt(dropLocation);
             if (targetNode == null) return;
-            SpeciesKey.TaxonRow targetTaxonRow = targetNode.Tag as SpeciesKey.TaxonRow;
+            TaxonomicIndex.TaxonRow targetTaxonRow = targetNode.Tag as TaxonomicIndex.TaxonRow;
             if (targetTaxonRow == null) return;
-            SpeciesKey.TaxonRow[] carryTaxonRows = (SpeciesKey.TaxonRow[])e.Data.GetData(typeof(SpeciesKey.TaxonRow[]));
+            TaxonomicIndex.TaxonRow[] carryTaxonRows = (TaxonomicIndex.TaxonRow[])e.Data.GetData(typeof(TaxonomicIndex.TaxonRow[]));
 
             if (carryTaxonRows.Length > 1)
             {
                 if (targetTaxonRow.IsHigher) // Multiple species to higher taxon
                 {
                     e.Effect = DragDropEffects.Link;
-                    notifyInstantly(Resources.Interface.TipInclude,
+                    this.NotifyInstantly(Resources.Interface.TipInclude,
                         carryTaxonRows.Length == 1 ? carryTaxonRows[0].Name :
                         string.Format(Resources.Interface.TipMultipleSpecies, carryTaxonRows.Length),
                         targetTaxonRow.FullName);
@@ -559,12 +575,12 @@ namespace Mayfly.Species.Controls
             //AutoScroll();
         }
 
-        public void SetParent(SpeciesKey.TaxonRow[] carryTaxonRows, SpeciesKey.TaxonRow targetTaxonRow)
+        public void SetParent(TaxonomicIndex.TaxonRow[] carryTaxonRows, TaxonomicIndex.TaxonRow targetTaxonRow)
         {
             TreeNode[] tt = Nodes.Find(targetTaxonRow.ID.ToString(), true);
             TreeNode targetNode = tt.Length > 0 ? tt[0] : null;
 
-            foreach (SpeciesKey.TaxonRow carryTaxonRow in carryTaxonRows)
+            foreach (TaxonomicIndex.TaxonRow carryTaxonRow in carryTaxonRows)
             {
                 if (targetTaxonRow == carryTaxonRow) continue; // prevented
 
@@ -576,17 +592,17 @@ namespace Mayfly.Species.Controls
                 carryTaxonRow.TaxonRowParent = targetTaxonRow;
                 if (!carryTaxonRow.IsHigher && !ModifierKeys.HasFlag(Keys.Shift)) // If (sub-)species dropped
                 {
-                    if (targetTaxonRow.Rank == 91) // If dropped to species
+                    if (targetTaxonRow.TaxonomicRank == TaxonomicRank.Species) // If dropped to species
                     {
-                        carryTaxonRow.Rank = 92;
-                        carryTaxonRow.Name = targetTaxonRow.Name + " " + SpeciesKey.SpecificName(carryTaxonRow.Name);
+                        carryTaxonRow.TaxonomicRank = TaxonomicRank.Subspecies;
+                        carryTaxonRow.Name = targetTaxonRow.Name + " " + TaxonomicIndex.SpecificName(carryTaxonRow.Name);
                     }
                     else if (targetTaxonRow.IsHigher) // If dropped to higher taxon
                     {
-                        if (carryTaxonRow.Rank == 92) // If subspecies dropped to higher taxon
+                        if (carryTaxonRow.Rank == TaxonomicRank.Subspecies) // If subspecies dropped to higher taxon
                         {
-                            carryTaxonRow.Rank = 91; // Reset to species
-                            carryTaxonRow.Name = SpeciesKey.Genus(carryTaxonRow.Name) + " " + SpeciesKey.SpecificName(carryTaxonRow.Name);
+                            carryTaxonRow.TaxonomicRank = TaxonomicRank.Species; // Reset to species
+                            carryTaxonRow.Name = TaxonomicIndex.Genus(carryTaxonRow.Name) + " " + TaxonomicIndex.SpecificName(carryTaxonRow.Name);
                         }
                     }
                 }
@@ -618,9 +634,9 @@ namespace Mayfly.Species.Controls
             Point dropLocation = PointToClient(new Point(e.X, e.Y));
             TreeNode targetNode = GetNodeAt(dropLocation);
             if (targetNode == null) return;
-            SpeciesKey.TaxonRow targetTaxonRow = targetNode.Tag as SpeciesKey.TaxonRow;
+            TaxonomicIndex.TaxonRow targetTaxonRow = targetNode.Tag as TaxonomicIndex.TaxonRow;
             if (targetTaxonRow == null) return;
-            SpeciesKey.TaxonRow[] carryTaxonRows = (SpeciesKey.TaxonRow[])e.Data.GetData(typeof(SpeciesKey.TaxonRow[]));
+            TaxonomicIndex.TaxonRow[] carryTaxonRows = (TaxonomicIndex.TaxonRow[])e.Data.GetData(typeof(TaxonomicIndex.TaxonRow[]));
 
             if (carryTaxonRows.Length > 1)
             {
@@ -631,7 +647,7 @@ namespace Mayfly.Species.Controls
             }
             else
             {
-                SpeciesKey.TaxonRow carryTaxonRow = carryTaxonRows[0];
+                TaxonomicIndex.TaxonRow carryTaxonRow = carryTaxonRows[0];
 
                 if (carryTaxonRow.Rank == targetTaxonRow.Rank) // Same rank
                 {
@@ -649,7 +665,7 @@ namespace Mayfly.Species.Controls
                             applySort(Nodes);
                             if (Display != null) Display.Message(Resources.Interface.StatusTreeSorted, carryTaxonRow, targetTaxonRow);
                         }
-                        else if (carryTaxonRow.Rank == 91) // Species to species subordering
+                        else if (carryTaxonRow.TaxonomicRank == TaxonomicRank.Species) // Species to species subordering
                         {
                             SetParent(carryTaxonRows, targetTaxonRow);
                             if (Display != null) Display.Message(Resources.Interface.StatusTreeSubspecies, carryTaxonRow, targetTaxonRow);
@@ -672,12 +688,12 @@ namespace Mayfly.Species.Controls
         {
             if (data == null) return;
 
-            SpeciesKey.TaxonRow[] taxonRows = RootTaxon == null ? data.GetRootTaxonRows() : RootTaxon.GetTaxonRows();
+            TaxonomicIndex.TaxonRow[] taxonRows = RootTaxon == null ? data.GetRootTaxonRows() : RootTaxon.GetTaxonRows();
 
             if (Display != null) Display.SetProgressMaximum(taxonRows.Length);
 
             int i = 1;
-            foreach (SpeciesKey.TaxonRow taxonRow in taxonRows)
+            foreach (TaxonomicIndex.TaxonRow taxonRow in taxonRows)
             {
                 AddNode(taxonRow);
                 loader.ReportProgress(i);
@@ -702,10 +718,10 @@ namespace Mayfly.Species.Controls
 
         private void contextTreeNewTaxon_Click(object sender, EventArgs e)
         {
-            SpeciesKey.TaxonRow taxonRow = data.Taxon.NewTaxonRow(new TaxonomicRank(61), Resources.Interface.NewTaxon);
-            if (pickedTaxon != null) { taxonRow.TaxonRowParent = pickedTaxon; }
+            TaxonomicIndex.TaxonRow taxonRow = data.Taxon.NewTaxonRow((TaxonomicRank)61, Resources.Interface.NewTaxon);
+            if (sender == contextTaxonAddTaxon || sender == contextTaxonAddSpecies) { taxonRow.TaxonRowParent = pickedTaxon; }
 
-            if (sender == contextTaxonAddSpecies) { taxonRow.Rank = 91; }
+            if (sender == contextTaxonAddSpecies) { taxonRow.TaxonomicRank = TaxonomicRank.Species; }
 
             EditTaxon editTaxon = new EditTaxon(taxonRow);
 
@@ -752,34 +768,12 @@ namespace Mayfly.Species.Controls
 
         private void contextTaxonEdit_Click(object sender, EventArgs e)
         {
-            SpeciesKey.TaxonRow currentParent = pickedTaxon.TaxonRowParent;
-            EditTaxon taxonEdit = new EditTaxon(pickedTaxon);
-
-            if (taxonEdit.ShowDialog(this) == DialogResult.OK)
-            {
-                if (taxonEdit.IsChanged)
-                {
-                    TreeNode carryNode = Nodes.Find(taxonEdit.TaxonRow.ID.ToString(), true)?[0];
-                    if (currentParent != taxonEdit.TaxonRow.TaxonRowParent)
-                    {
-                        carryNode.Remove();
-                        carryNode = AddNode(taxonEdit.TaxonRow);
-                    }
-                    else
-                    {
-                        ApplyRenameAscending(carryNode);
-                    }
-                    SelectedNode = carryNode;
-
-                    if (changed != null) changed.Invoke(this, new EventArgs());
-                    if (taxonChanged != null) taxonChanged.Invoke(this, new TaxonEventArgs(taxonEdit.TaxonRow));
-                }
-            }
+            RunEditing();
         }
 
         private void contextTaxonDelete_Click(object sender, EventArgs e)
         {
-            SpeciesKey.TaxonRow[] descs = pickedTaxon.GetTaxonRows();
+            TaxonomicIndex.TaxonRow[] descs = pickedTaxon.GetTaxonRows();
 
             if (descs.Length > 0)
             {
@@ -793,14 +787,14 @@ namespace Mayfly.Species.Controls
 
                 if (b == tdbTaxonDeleteConfirm)
                 {
-                    foreach (SpeciesKey.TaxonRow rep in descs)
+                    foreach (TaxonomicIndex.TaxonRow rep in descs)
                     {
                         rep.Delete();
                     }
                 }
                 else if (b == tdbTaxonDeleteParentize)
                 {
-                    foreach (SpeciesKey.TaxonRow desc in descs)
+                    foreach (TaxonomicIndex.TaxonRow desc in descs)
                     {
                         desc.TaxonRowParent = pickedTaxon.TaxonRowParent;
                         SelectedNode.Parent.Nodes.Add(getTaxonTreeNode(desc));
@@ -808,7 +802,7 @@ namespace Mayfly.Species.Controls
                 }
                 else if (b == tdbTaxonDeleteOrphanize)
                 {
-                    foreach (SpeciesKey.TaxonRow desc in descs)
+                    foreach (TaxonomicIndex.TaxonRow desc in descs)
                     {
                         desc.SetTaxIDNull();
                         AddNode(desc);
@@ -830,7 +824,7 @@ namespace Mayfly.Species.Controls
         private void contextTaxonDepart_Click(object sender, EventArgs e)
         {
             pickedTaxon.SetTaxIDNull();
-            SpeciesKey.TaxonRow tr = pickedTaxon;
+            TaxonomicIndex.TaxonRow tr = pickedTaxon;
             SelectedNode.Remove();
             AddNode(tr);
 

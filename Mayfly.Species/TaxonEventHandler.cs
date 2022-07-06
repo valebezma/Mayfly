@@ -10,12 +10,12 @@ namespace Mayfly.Species
 {
     public class TaxonEventArgs : EventArgs
     {
-        public TaxonEventArgs(SpeciesKey.TaxonRow taxonRow)
+        public TaxonEventArgs(TaxonomicIndex.TaxonRow taxonRow)
         {
             this.TaxonRow = taxonRow;
         }
 
-        public SpeciesKey.TaxonRow TaxonRow { get; private set; }
+        public TaxonomicIndex.TaxonRow TaxonRow { get; private set; }
     }
 
     public delegate void TaxonEventHandler(object sender, TaxonEventArgs e);

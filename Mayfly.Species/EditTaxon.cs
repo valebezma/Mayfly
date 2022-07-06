@@ -8,17 +8,16 @@ namespace Mayfly.Species
     {
         public bool IsChanged = false;
 
-        public SpeciesKey.TaxonRow TaxonRow;
+        public TaxonomicIndex.TaxonRow TaxonRow;
 
 
 
-        public EditTaxon(SpeciesKey.TaxonRow taxonRow)
+        public EditTaxon(TaxonomicIndex.TaxonRow taxonRow)
         {
             InitializeComponent();
 
-
-            textBoxName.AutoCompleteCustomSource.AddRange(((SpeciesKey)taxonRow.Table.DataSet).Genera);
-            textBoxReference.AutoCompleteCustomSource.AddRange(((SpeciesKey)taxonRow.Table.DataSet).References);
+            textBoxName.AutoCompleteCustomSource.AddRange(((TaxonomicIndex)taxonRow.Table.DataSet).Genera);
+            textBoxReference.AutoCompleteCustomSource.AddRange(((TaxonomicIndex)taxonRow.Table.DataSet).References);
 
             TaxonRow = taxonRow;
 
@@ -26,10 +25,10 @@ namespace Mayfly.Species
             if (!TaxonRow.IsReferenceNull()) textBoxReference.Text = TaxonRow.Reference;
             if (!TaxonRow.IsLocalNull()) textBoxLocal.Text = TaxonRow.Local;
             if (!TaxonRow.IsDescriptionNull()) textBoxDescription.Text = TaxonRow.Description;
-            taxonSelector.Data = (SpeciesKey)taxonRow.Table.DataSet;
+            taxonSelector.Data = (TaxonomicIndex)taxonRow.Table.DataSet;
             comboBoxRank.DataSource = taxonRow.IsHigher ? TaxonomicRank.HigherRanks : TaxonomicRank.AllRanks;
             comboBoxRank.SelectedIndexChanged += new System.EventHandler(this.comboBoxRank_SelectedIndexChanged);
-            comboBoxRank.SelectedValue = taxonRow.Rank;
+            comboBoxRank.SelectedItem = taxonRow.TaxonomicRank;
 
             IsChanged = false;
         }
@@ -38,7 +37,7 @@ namespace Mayfly.Species
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            TaxonRow.Rank = (int)comboBoxRank.SelectedValue;
+            TaxonRow.TaxonomicRank = (TaxonomicRank)comboBoxRank.SelectedItem;
             TaxonRow.Name = textBoxName.Text;
 
             if (!textBoxReference.Text.IsAcceptable()) TaxonRow.SetReferenceNull();
@@ -88,6 +87,12 @@ namespace Mayfly.Species
         private void taxonSelector_OnTreeLoaded(object sender, EventArgs e)
         {
             taxonSelector.Taxon = TaxonRow.IsTaxIDNull() ? null : TaxonRow.TaxonRowParent;
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            this.ResetText(string.Format("{0} — {1}", textBoxName.Text, "Edit taxon"), false);
+            valueChanged(sender, e);
         }
     }
 }

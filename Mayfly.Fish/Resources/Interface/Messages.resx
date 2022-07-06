@@ -134,13 +134,6 @@ Double click to restore default opening value</value>
     <value>Specified seining spread of {0} m is too short for gear of length {1} m.
 Double click to fix spread to minimal acceptable</value>
   </data>
-  <data name="LogBlocked" xml:space="preserve">
-    <value>Log is blocked</value>
-  </data>
-  <data name="LogInstruction" xml:space="preserve">
-    <value>You cannot change log value because it is calculated from values on individuals.
-You can change this politic in 'Data input' tab in 'Settings' window.</value>
-  </data>
   <data name="MassSetEqual" xml:space="preserve">
     <value>Single specimen mass is {0:# ##0} g but specified total is {1:# ##0} g.
 Double click to adjust total</value>

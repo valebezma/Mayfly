@@ -11,13 +11,13 @@ namespace Mayfly.Extensions
 {
     public static class ControlExtensions
     {
-        public static void SetPathAsText(this Control c, SpeciesKey.TaxonRow taxon, string f)
+        public static void SetPathAsText(this Control c, TaxonomicIndex.TaxonRow taxon, string f)
         {
             Graphics g = c.CreateGraphics();
             string text = taxon.ToString(f);
             c.Text = (taxon.IsTaxIDNull() ? string.Empty : "... > ") + text;
             int length = 0;
-            SpeciesKey.TaxonRow parent = taxon.TaxonRowParent;
+            TaxonomicIndex.TaxonRow parent = taxon.TaxonRowParent;
 
             while (parent != null)
             {
@@ -29,7 +29,7 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static ListViewItem CreateItem(this ListView listView, SpeciesKey.TaxonRow speciesRow)
+        public static ListViewItem CreateItem(this ListView listView, TaxonomicIndex.TaxonRow speciesRow)
         {
             ListViewItem result = listView.CreateItem(speciesRow.ID.ToString(), speciesRow.Name);
             result.UpdateItem(speciesRow);
@@ -37,7 +37,7 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static void UpdateItem(this ListViewItem item, SpeciesKey.TaxonRow speciesRow)
+        public static void UpdateItem(this ListViewItem item, TaxonomicIndex.TaxonRow speciesRow)
         {
             item.Name = speciesRow.ID.ToString();
             item.Text = speciesRow.Name;

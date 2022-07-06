@@ -13,14 +13,14 @@ namespace Mayfly.Species.Controls
             this.StateRow = state.StateRow;
             this.NextStep = state.StateRow.Next;
         }
-        public SpeciesKey.StateRow StateRow { get; private set; }
-        public SpeciesKey.StepRow NextStep { get; private set; }
+        public TaxonomicIndex.StateRow StateRow { get; private set; }
+        public TaxonomicIndex.StepRow NextStep { get; private set; }
 
         public bool IsSpeciesAttached { get { return !StateRow.IsTaxIDNull(); } }
         //public SpeciesKey.TaxonRow SpeciesRow { get { return StateRow.SpeciesRow; } }
 
         public bool IsTaxonAttached { get { return !StateRow.IsTaxIDNull(); } }
-        public SpeciesKey.TaxonRow TaxonRow { get { return StateRow.TaxonRow; } }
+        public TaxonomicIndex.TaxonRow TaxonRow { get { return StateRow.TaxonRow; } }
     }
 
     public delegate void StateClickedEventHandler(object sender, StateClickedEventArgs e);

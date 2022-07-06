@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
-            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState2 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState2 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
@@ -68,14 +68,10 @@
             this.tabPageLog = new System.Windows.Forms.TabPage();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
-            this.contextMenuStripLog = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemIndividuals = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSpeciesKey = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageCollect = new System.Windows.Forms.TabPage();
             this.labelPosition = new System.Windows.Forms.Label();
             this.labelTag = new System.Windows.Forms.Label();
@@ -167,15 +163,10 @@
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
-            this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
-            this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpecies = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
-            this.contextMenuStripLog.SuspendLayout();
             this.tabPageCollect.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageSampler.SuspendLayout();
@@ -419,70 +410,41 @@
             this.spreadSheetLog.DefaultDecimalPlaces = 0;
             this.spreadSheetLog.Name = "spreadSheetLog";
             this.spreadSheetLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.spreadSheetLog.RowMenu = this.contextMenuStripLog;
-            this.spreadSheetLog.RowMenuLaunchableItemIndex = 0;
             this.spreadSheetLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.spreadSheetLog.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetLog_CellEndEdit);
-            this.spreadSheetLog.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetLog_CellValueChanged);
-            this.spreadSheetLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.spreadSheetLog_RowsAdded);
-            this.spreadSheetLog.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.spreadSheetLog_RowsRemoved);
-            this.spreadSheetLog.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetLog_RowValidated);
-            this.spreadSheetLog.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.spreadSheetLog_UserDeletedRow);
             // 
-            // contextMenuStripLog
+            // ColumnID
             // 
-            this.contextMenuStripLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemIndividuals,
-            this.ToolStripMenuItemSpeciesKey,
-            this.toolStripSeparator1,
-            this.ToolStripMenuItemCut,
-            this.ToolStripMenuItemCopy,
-            this.ToolStripMenuItemPaste,
-            this.ToolStripMenuItemDelete});
-            this.contextMenuStripLog.Name = "contextMenuStripLog";
-            resources.ApplyResources(this.contextMenuStripLog, "contextMenuStripLog");
-            this.contextMenuStripLog.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripLog_Opening);
+            resources.ApplyResources(this.ColumnID, "ColumnID");
+            this.ColumnID.Name = "ColumnID";
             // 
-            // ToolStripMenuItemIndividuals
+            // ColumnSpecies
             // 
-            resources.ApplyResources(this.ToolStripMenuItemIndividuals, "ToolStripMenuItemIndividuals");
-            this.ToolStripMenuItemIndividuals.Name = "ToolStripMenuItemIndividuals";
-            this.ToolStripMenuItemIndividuals.Click += new System.EventHandler(this.ToolStripMenuItemIndividuals_Click);
+            this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Format = "s";
+            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSpecies.FillWeight = 200F;
+            resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
+            this.ColumnSpecies.Name = "ColumnSpecies";
             // 
-            // ToolStripMenuItemSpeciesKey
+            // ColumnQuantity
             // 
-            this.ToolStripMenuItemSpeciesKey.Name = "ToolStripMenuItemSpeciesKey";
-            resources.ApplyResources(this.ToolStripMenuItemSpeciesKey, "ToolStripMenuItemSpeciesKey");
-            this.ToolStripMenuItemSpeciesKey.Click += new System.EventHandler(this.ToolStripMenuItemSpeciesKey_Click);
+            this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnQuantity.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
+            this.ColumnQuantity.Name = "ColumnQuantity";
             // 
-            // toolStripSeparator1
+            // ColumnMass
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // ToolStripMenuItemCut
-            // 
-            this.ToolStripMenuItemCut.Name = "ToolStripMenuItemCut";
-            resources.ApplyResources(this.ToolStripMenuItemCut, "ToolStripMenuItemCut");
-            this.ToolStripMenuItemCut.Click += new System.EventHandler(this.ToolStripMenuItemCut_Click);
-            // 
-            // ToolStripMenuItemCopy
-            // 
-            this.ToolStripMenuItemCopy.Name = "ToolStripMenuItemCopy";
-            resources.ApplyResources(this.ToolStripMenuItemCopy, "ToolStripMenuItemCopy");
-            this.ToolStripMenuItemCopy.Click += new System.EventHandler(this.ToolStripMenuItemCopy_Click);
-            // 
-            // ToolStripMenuItemPaste
-            // 
-            this.ToolStripMenuItemPaste.Name = "ToolStripMenuItemPaste";
-            resources.ApplyResources(this.ToolStripMenuItemPaste, "ToolStripMenuItemPaste");
-            this.ToolStripMenuItemPaste.Click += new System.EventHandler(this.ToolStripMenuItemPaste_Click);
-            // 
-            // ToolStripMenuItemDelete
-            // 
-            this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
-            resources.ApplyResources(this.ToolStripMenuItemDelete, "ToolStripMenuItemDelete");
-            this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItemDelete_Click);
+            this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle8.Format = "N1";
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnMass.FillWeight = 30F;
+            resources.ApplyResources(this.ColumnMass, "ColumnMass");
+            this.ColumnMass.Name = "ColumnMass";
             // 
             // tabPageCollect
             // 
@@ -955,20 +917,20 @@
             // aquaControl1
             // 
             resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState1.Colour = -1;
-            aquaState1.Conductivity = double.NaN;
-            aquaState1.DissolvedOxygen = double.NaN;
-            aquaState1.FlowRate = double.NaN;
-            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.Limpidity = double.NaN;
-            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.OxygenSaturation = double.NaN;
-            aquaState1.pH = double.NaN;
-            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.TemperatureBottom = double.NaN;
-            aquaState1.TemperatureSurface = double.NaN;
-            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
-            this.aquaControl1.AquaState = aquaState1;
+            aquaState2.Colour = -1;
+            aquaState2.Conductivity = double.NaN;
+            aquaState2.DissolvedOxygen = double.NaN;
+            aquaState2.FlowRate = double.NaN;
+            aquaState2.Foam = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState2.Limpidity = double.NaN;
+            aquaState2.Odor = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState2.OxygenSaturation = double.NaN;
+            aquaState2.pH = double.NaN;
+            aquaState2.Sewage = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState2.TemperatureBottom = double.NaN;
+            aquaState2.TemperatureSurface = double.NaN;
+            aquaState2.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
+            this.aquaControl1.AquaState = aquaState2;
             this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
             this.aquaControl1.Name = "aquaControl1";
             this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
@@ -978,17 +940,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weatherState1.AdditionalEvent = 0;
-            weatherState1.Cloudage = double.NaN;
-            weatherState1.Degree = 0;
-            weatherState1.Discretion = 0;
-            weatherState1.Event = 0;
-            weatherState1.Humidity = double.NaN;
-            weatherState1.Pressure = double.NaN;
-            weatherState1.Temperature = double.NaN;
-            weatherState1.WindDirection = double.NaN;
-            weatherState1.WindRate = double.NaN;
-            this.weatherControl1.Weather = weatherState1;
+            weatherState2.AdditionalEvent = 0;
+            weatherState2.Cloudage = double.NaN;
+            weatherState2.Degree = 0;
+            weatherState2.Discretion = 0;
+            weatherState2.Event = 0;
+            weatherState2.Humidity = double.NaN;
+            weatherState2.Pressure = double.NaN;
+            weatherState2.Temperature = double.NaN;
+            weatherState2.WindDirection = double.NaN;
+            weatherState2.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState2;
             this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
             // 
             // labelActWeather
@@ -1027,18 +989,18 @@
             // ColumnAddtFactor
             // 
             this.ColumnAddtFactor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.NullValue = null;
-            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.NullValue = null;
+            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.ColumnAddtFactor, "ColumnAddtFactor");
             this.ColumnAddtFactor.Name = "ColumnAddtFactor";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -1217,48 +1179,17 @@
             this.statusCard.MaximalInterval = 2000;
             this.statusCard.StatusLog = this.StatusLog;
             // 
-            // speciesLogger
+            // Logger
             // 
-            this.speciesLogger.Button = this.buttonAdd;
-            this.speciesLogger.CheckDuplicates = false;
-            this.speciesLogger.ColumnName = "ColumnSpecies";
-            this.speciesLogger.Grid = this.spreadSheetLog;
-            this.speciesLogger.RecentListCount = 0;
-            this.speciesLogger.SpeciesSelected += new Mayfly.Species.SpeciesSelectEventHandler(this.speciesLogger_SpeciesSelected);
-            this.speciesLogger.DuplicateFound += new Mayfly.Species.DuplicateFoundEventHandler(this.speciesLogger_DuplicateDetected);
-            // 
-            // ColumnID
-            // 
-            resources.ApplyResources(this.ColumnID, "ColumnID");
-            this.ColumnID.Name = "ColumnID";
-            // 
-            // ColumnSpecies
-            // 
-            this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnSpecies.FillWeight = 200F;
-            resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
-            this.ColumnSpecies.Name = "ColumnSpecies";
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnQuantity.FillWeight = 30F;
-            resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            // 
-            // ColumnMass
-            // 
-            this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Format = "N1";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnMass.FillWeight = 30F;
-            resources.ApplyResources(this.ColumnMass, "ColumnMass");
-            this.ColumnMass.Name = "ColumnMass";
+            this.Logger.AllowKey = false;
+            this.Logger.AutoLogOpen = false;
+            this.Logger.Button = this.buttonAdd;
+            this.Logger.Grid = this.spreadSheetLog;
+            this.Logger.LabelMass = this.StatusMass;
+            this.Logger.LabelQty = this.StatusCount;
+            this.Logger.Status = this.statusCard;
+            this.Logger.Changed += new System.EventHandler(this.value_Changed);
+            this.Logger.IndividualsRequired += new System.EventHandler(this.logger_IndividualsRequired);
             // 
             // Card
             // 
@@ -1275,7 +1206,6 @@
             this.MenuStrip.PerformLayout();
             this.tabPageLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).EndInit();
-            this.contextMenuStripLog.ResumeLayout(false);
             this.tabPageCollect.ResumeLayout(false);
             this.tabPageCollect.PerformLayout();
             this.tabControl.ResumeLayout(false);
@@ -1326,12 +1256,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemClose;
         private System.Windows.Forms.ToolStripMenuItem menuItemSettings;
         private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripLog;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemDelete;
         private System.Windows.Forms.ToolStripStatusLabel StatusMass;
         private System.Windows.Forms.ToolStripStatusLabel StatusCount;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividuals;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSpeciesKey;
         private System.Windows.Forms.Label labelWater;
         private System.Windows.Forms.Label labelMinerals;
         private System.Windows.Forms.NumericUpDown numericUpDownClay;
@@ -1379,8 +1305,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemPrint;
         private System.Windows.Forms.ToolStripMenuItem menuItemPreview;
         private System.Windows.Forms.ToolStripStatusLabel StatusLog;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemPaste;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.TabPage tabPageFactors;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemData;
         private System.Windows.Forms.ToolStripMenuItem menuItemLocation;
@@ -1389,13 +1313,11 @@
         private Mayfly.TaskDialogs.TaskDialogButton tdbSave;
         private Mayfly.TaskDialogs.TaskDialogButton tdbDiscard;
         private Mayfly.TaskDialogs.TaskDialogButton tdbCancelClose;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCopy;
         private System.Windows.Forms.ToolStripMenuItem addFactorsToolStripMenuItem;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ToolStripMenuItem addEnvironmentalDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.Button buttonSubTexture;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCut;
         private System.Windows.Forms.ToolStripMenuItem menuItemBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
@@ -1413,7 +1335,6 @@
         private Mayfly.Controls.SpreadSheet spreadSheetAddt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtValue;
-        private Species.SpeciesSelector speciesLogger;
         private Wild.Controls.WeatherControl weatherControl1;
         private Wild.Controls.AquaControl aquaControl1;
         private Geographics.WaypointControl waypointControl1;
@@ -1444,5 +1365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
+        internal Wild.Controls.LogProcessor Logger;
     }
 }

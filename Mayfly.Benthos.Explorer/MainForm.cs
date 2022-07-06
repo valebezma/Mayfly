@@ -29,7 +29,7 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetLog.UpdateStatus();
             spreadSheetInd.UpdateStatus();
 
-            SetSpeciesIndex(Benthos.UserSettings.SpeciesIndexPath);
+            SetSpeciesIndex(Benthos.UserSettings.TaxonomicIndexPath);
 
             selectedLogRows = new List<Data.LogRow>();
 
@@ -56,7 +56,7 @@ namespace Mayfly.Benthos.Explorer
 
             tabPageCard.Parent = null;
 
-            columnSpcSpc.ValueType = typeof(SpeciesKey.TaxonRow);
+            columnSpcSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnSpcQuantity.ValueType = typeof(int);
             columnSpcMass.ValueType = typeof(double);
             columnSpcAbundance.ValueType = typeof(double);
@@ -66,9 +66,9 @@ namespace Mayfly.Benthos.Explorer
             columnSpcDiversityA.ValueType = typeof(double);
             columnSpcDiversityB.ValueType = typeof(double);
 
-            tabPageSpc.Parent = null;
+            tabPageComposition.Parent = null;
 
-            columnLogSpc.ValueType = typeof(SpeciesKey.TaxonRow);
+            columnLogSpc.ValueType = typeof(TaxonomicIndex.TaxonRow);
             columnLogQuantity.ValueType = typeof(int);
             columnLogMass.ValueType = typeof(double);
             columnLogAbundance.ValueType = typeof(double);
@@ -162,7 +162,7 @@ namespace Mayfly.Benthos.Explorer
         private void tab_Changed(object sender, EventArgs e)
         {
             menuCards.Visible = (tabControl.SelectedTab == tabPageCard);
-            menuSpc.Visible = (tabControl.SelectedTab == tabPageSpc);
+            menuComposition.Visible = (tabControl.SelectedTab == tabPageComposition);
             menuIndividuals.Visible = (tabControl.SelectedTab == tabPageInd);
         }
 
@@ -412,19 +412,11 @@ namespace Mayfly.Benthos.Explorer
 
         #endregion
 
-        #region Sample
-
-        private void menuItemSample_DropDownOpening(object sender, EventArgs e)
-        {        }
+        #region Materials
 
         private void menuItemCards_Click(object sender, EventArgs e)
         {
             loadCards();
-        }
-
-        private void menuItemSpc_Click(object sender, EventArgs e)
-        {
-            loadSpc();
         }
 
         private void menuItemLog_Click(object sender, EventArgs e)
@@ -438,6 +430,11 @@ namespace Mayfly.Benthos.Explorer
         }
 
         #endregion
+
+        private void menuItemComposition_Click(object sender, EventArgs e)
+        {
+            loadSpc();
+        }
 
         private void menuItemBriefSpecies_Click(object sender, EventArgs e)
         {
@@ -729,7 +726,7 @@ namespace Mayfly.Benthos.Explorer
         {
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                SpeciesKey speciesKey = data.GetSpeciesKey();
+                TaxonomicIndex speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
                 Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
             }
@@ -835,8 +832,8 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetSpc.StopProcessing();
             spreadSheetSpc.UpdateStatus();
 
-            tabPageSpc.Parent = tabControl;
-            tabControl.SelectedTab = tabPageSpc;
+            tabPageComposition.Parent = tabControl;
+            tabControl.SelectedTab = tabPageComposition;
 
             updateArtifacts();
             //spreadSheetSpc.ClearInsertedColumns();
@@ -860,7 +857,7 @@ namespace Mayfly.Benthos.Explorer
                 spreadSheetSpc.ClearInsertedColumns();
             }
 
-            columnSpcSpc.HeaderText = rankSpc == null ? Wild.Resources.Reports.Caption.Species : rankSpc.Name;
+            columnSpcSpc.HeaderText = rankSpc == null ? Wild.Resources.Reports.Caption.Species : rankSpc.ToString();
 
             loadSpc();
         }
@@ -872,22 +869,23 @@ namespace Mayfly.Benthos.Explorer
 
         private void speciesValidator_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
         {
-            //if (string.Equals(e.OriginalValue, e.SpeciesName)) return;
+            if (string.Equals(e.OriginalValue, e.SelectedTaxon.Name)) return;
 
             tdSpecies.Content = string.Format(
                 Wild.Resources.Interface.Messages.SpeciesRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxon.Name);
 
             if (tdSpecies.ShowDialog() == tdbSpcRename)
             {
                 // TODO: If already exist?
 
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.OriginalValue);
-                Data.SpeciesRow spcRow1 = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
+                Data.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow1 == null) // If there is no new species in index
                 {
-                    spcRow.Species = e.SpeciesName;
+                    spcRow.Taxon = e.SelectedTaxon.Name;
+                    spcRow.Rank = e.SelectedTaxon.Rank;
 
                     foreach (Data.LogRow logRow in spcRow.GetLogRows())
                     {
@@ -898,7 +896,7 @@ namespace Mayfly.Benthos.Explorer
                 {
                     foreach (Data.LogRow logRow in spcRow.GetLogRows())
                     {
-                        logRow.SpeciesRow = spcRow1;
+                        logRow.DefinitionRow = spcRow1;
                         rememberChanged(logRow.CardRow);
                     }
 
@@ -918,10 +916,11 @@ namespace Mayfly.Benthos.Explorer
         {
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                Species.SpeciesKey speciesKey = new SpeciesKey();
-                foreach (Data.SpeciesRow speciesRow in data.Species)
+                TaxonomicIndex speciesKey = new TaxonomicIndex();
+
+                foreach (Data.DefinitionRow speciesRow in data.Definition)
                 {
-                    speciesKey.Taxon.AddTaxonRow(speciesKey.Taxon.NewSpeciesRow(speciesRow.Species));
+                    speciesKey.Taxon.AddTaxonRow(speciesKey.Taxon.NewTaxonRow(speciesRow.Rank, speciesRow.Taxon));
                 }
 
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
@@ -937,7 +936,7 @@ namespace Mayfly.Benthos.Explorer
             foreach (Data.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
             {
                 IO.RunFile(logRow.CardRow.Path,
-                    new object[] { logRow.SpeciesRow.Species });
+                    new object[] { logRow.DefinitionRow.Taxon });
             }
         }
 
@@ -1073,19 +1072,19 @@ namespace Mayfly.Benthos.Explorer
         {
             tdLog.Content = string.Format(
                 Wild.Resources.Interface.Messages.LogRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxon.Name);
 
             if (tdLog.ShowDialog() == tdbLogRename)
             {
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow == null)
                 {
-                    spcRow = data.Species.AddSpeciesRow(e.SpeciesName);
+                    spcRow = data.Definition.AddDefinitionRow(e.SelectedTaxon.Rank, e.SelectedTaxon.Name);
                 }
 
                 Data.LogRow logRow = findLogRow(e.Row);
-                logRow.SpeciesRow = spcRow;
+                logRow.DefinitionRow = spcRow;
 
                 rememberChanged(logRow.CardRow);
             }
@@ -1173,7 +1172,7 @@ namespace Mayfly.Benthos.Explorer
             //}
             //else
             //{
-            //    Data.SpeciesRow speciesRow = (Data.SpeciesRow)e.Argument;
+            //    Data.DefinitionRow speciesRow = (Data.DefinitionRow)e.Argument;
             //    Data.IndividualRow[] indRows = speciesRow.GetIndividualRows();
 
             //    for (int i = 0; i < indRows.Length; i++)
@@ -1251,34 +1250,34 @@ namespace Mayfly.Benthos.Explorer
         {
             tdInd.Content = string.Format(
                 Wild.Resources.Interface.Messages.IndRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxon.Name);
 
             if (tdInd.ShowDialog() == tdbIndRename)
             {
                 Data.IndividualRow individualRow = findIndividualRow(e.Row);
 
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow == null)
                 {
-                    spcRow = data.Species.AddSpeciesRow(e.SpeciesName);
+                    spcRow = data.Definition.AddDefinitionRow(e.SelectedTaxon.Rank, e.SelectedTaxon.Name);
                 }
 
                 if (individualRow.LogRow.GetIndividualRows().Length == 1)
                 {
                     // If individual is single - just replace log.species
-                    individualRow.LogRow.SpeciesRow = spcRow;
+                    individualRow.LogRow.DefinitionRow = spcRow;
                 }
                 else
                 {
                     // If there are more individual(-s) - 
                     // create new log                   
-                    Data.LogRow logRow = data.Log.FindByCardIDSpcID(individualRow.LogRow.CardRow.ID, spcRow.ID);
+                    Data.LogRow logRow = data.Log.FindByCardIDDefID(individualRow.LogRow.CardRow.ID, spcRow.ID);
 
                     if (logRow == null)
                     {
                         logRow = data.Log.NewLogRow();
-                        logRow.SpeciesRow = spcRow;
+                        logRow.DefinitionRow = spcRow;
                         logRow.CardRow = individualRow.LogRow.CardRow;
                         logRow.Quantity = 1;
                         data.Log.AddLogRow(logRow);
@@ -1394,7 +1393,7 @@ namespace Mayfly.Benthos.Explorer
                 Data.IndividualRow individualRow = findIndividualRow(gridRow);
 
                 Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
-                    individualRow.LogRow.SpeciesRow.Species);
+                    individualRow.LogRow.DefinitionRow.Taxon);
 
                 // TODO: select row in a log
             }

@@ -124,9 +124,9 @@ namespace Mayfly.Wild
 
             foreach (Data.LogRow logRow in this.GetLogRows())
             {
-                if (!result.Contains(logRow.SpeciesRow.Species))
+                if (!result.Contains(logRow.DefinitionRow.Taxon))
                 {
-                    result.Add(logRow.SpeciesRow.Species);
+                    result.Add(logRow.DefinitionRow.Taxon);
                 }
             }
 
@@ -167,7 +167,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.LogRow[] GetLogRows(SpeciesKey.TaxonRow speciesRow)
+        public Data.LogRow[] GetLogRows(TaxonomicIndex.TaxonRow speciesRow)
         {
             List<Data.LogRow> result = new List<Data.LogRow>();
 
@@ -175,7 +175,7 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in Parent.Log)
                 {
-                    if (!speciesRow.Validate(logRow.SpeciesRow.Species)) continue;
+                    if (!speciesRow.Validate(logRow.DefinitionRow.Taxon)) continue;
                     if (!this.Contains(logRow.CardRow)) continue;
                     result.Add(logRow);
                 }
@@ -196,7 +196,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetIndividualRows(SpeciesKey.TaxonRow speciesRow)
+        public Data.IndividualRow[] GetIndividualRows(TaxonomicIndex.TaxonRow speciesRow)
         {
             List<Data.IndividualRow> result = new List<Data.IndividualRow>();
 
@@ -420,24 +420,24 @@ namespace Mayfly.Wild
         }
 
 
-        public SpeciesKey.TaxonRow[] GetSpecies()
+        public TaxonomicIndex.TaxonRow[] GetSpecies()
         {
             return GetSpecies(0);
         }
 
-        public SpeciesKey.TaxonRow[] GetSpecies(int minimalSample)
+        public TaxonomicIndex.TaxonRow[] GetSpecies(int minimalSample)
         {
-            List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
+            List<TaxonomicIndex.TaxonRow> result = new List<TaxonomicIndex.TaxonRow>();
 
             if (Parent != null)
             {
-                foreach (Data.SpeciesRow spcRow in Parent.Species)
+                foreach (Data.DefinitionRow spcRow in Parent.Definition)
                 {
-                    SpeciesKey.TaxonRow currentRecord = spcRow.KeyRecord;
+                    TaxonomicIndex.TaxonRow currentRecord = spcRow.KeyRecord;
 
                     if (currentRecord == null)
                     {
-                        SpeciesKey.TaxonRow newSpcRow = Parent.key.Taxon.NewSpeciesRow(spcRow.Species);
+                        TaxonomicIndex.TaxonRow newSpcRow = Parent.key.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
                         currentRecord = newSpcRow;
                     }
 
@@ -455,7 +455,7 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(SpeciesKey.TaxonRow[] speciesRows)
+        public int GetOccurrenceCases(TaxonomicIndex.TaxonRow[] speciesRows)
         {
             int result = 0;
 
@@ -463,9 +463,9 @@ namespace Mayfly.Wild
             {
                 foreach (Data.LogRow logRow in cardRow.GetLogRows())
                 {
-                    foreach (SpeciesKey.TaxonRow speciesRow in speciesRows)
+                    foreach (TaxonomicIndex.TaxonRow speciesRow in speciesRows)
                     {
-                        if (speciesRow.Validate(logRow.SpeciesRow.Species))
+                        if (speciesRow.Validate(logRow.DefinitionRow.Taxon))
                         {
                             result++;
                             goto Next;
@@ -562,7 +562,7 @@ namespace Mayfly.Wild
         public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
 
 
-        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<SpeciesKey.TaxonRow, int> resultsCounter)
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<TaxonomicIndex.TaxonRow, int> resultsCounter)
         {
             for (int i = 0; i < item.DropDownItems.Count; i++)
             {
@@ -580,7 +580,7 @@ namespace Mayfly.Wild
 
             int added = 0;
 
-            foreach (SpeciesKey.TaxonRow speciesRow in this.GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in this.GetSpecies())
             {
                 int s = resultsCounter.Invoke(speciesRow);
 

@@ -27,7 +27,7 @@ namespace Mayfly.Fish.Explorer
 
         public CardStack Data { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesRow { set; get; }
+        public TaxonomicIndex.TaxonRow SpeciesRow { set; get; }
 
         public SpeciesSwarm Swarm { set; get; }
 
@@ -66,7 +66,7 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardPopulation(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
+        public WizardPopulation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;

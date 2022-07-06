@@ -1,6 +1,6 @@
 ﻿namespace Mayfly.Species.Controls
 {
-    partial class TaxonSelectorPopup
+    partial class TaxonBoxPopup
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.taxaTreeView = new Mayfly.Species.Controls.TaxaTreeView(this.components);
+            this.taxaTreeView = new Mayfly.Species.Controls.TaxonTreeView(this.components);
             this.SuspendLayout();
             // 
             // taxaTreeView
@@ -71,6 +71,6 @@
 
         #endregion
 
-        private TaxaTreeView taxaTreeView;
+        private TaxonTreeView taxaTreeView;
     }
 }

@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Resources.Interface {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Messages {
@@ -104,25 +104,6 @@ namespace Mayfly.Fish.Resources.Interface {
         public static string FixSpread {
             get {
                 return ResourceManager.GetString("FixSpread", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log is blocked.
-        /// </summary>
-        public static string LogBlocked {
-            get {
-                return ResourceManager.GetString("LogBlocked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You cannot change log value because it is calculated from values on individuals.
-        ///You can change this politic in &apos;Data input&apos; tab in &apos;Settings&apos; window..
-        /// </summary>
-        public static string LogInstruction {
-            get {
-                return ResourceManager.GetString("LogInstruction", resourceCulture);
             }
         }
         

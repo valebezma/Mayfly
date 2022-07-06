@@ -9,17 +9,17 @@ using System.Data;
 
 namespace Mayfly.Species
 {
-    public partial class SpeciesKey
+    public partial class TaxonomicIndex
     {
-        partial class TaxonRow : IComparable<TaxonRow>, IFormattable
+        partial class TaxonRow : IComparable, IFormattable
         {
             public TaxonomicRank TaxonomicRank
             {
-                get { return new TaxonomicRank(Rank); }
-                set { Rank = value.Value; }
+                get { return (TaxonomicRank)Rank; }
+                set { Rank = (int)value; }
             }
 
-            
+
 
             public TaxonRow[] Hierarchy
             {
@@ -31,7 +31,9 @@ namespace Mayfly.Species
 
                     while (parent != null)
                     {
-                        result.Insert(0, parent);
+                        if (parent.IsHigher) {
+                            result.Insert(0, parent);
+                        }
                         parent = parent.TaxonRowParent;
                     }
 
@@ -67,8 +69,8 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsHigher ? 
-                        string.Format("{0} {1}", this?.TaxonomicRank.Name, Name) :
+                    return IsHigher ?
+                        string.Format("{0} {1}", TaxonomicRank, Name) :
                         Name;
                 }
             }
@@ -77,8 +79,8 @@ namespace Mayfly.Species
             {
                 get
                 {
-                    return IsHigher ? 
-                        string.Format("{0} {1}{2}", this?.TaxonomicRank.Name, Name, IsLocalNull() ? string.Empty : " (" + Local.GetLocalizedValue() + ")") :
+                    return IsHigher ?
+                        string.Format("{0} {1}{2}", TaxonomicRank, Name, IsLocalNull() ? string.Empty : " (" + Local.GetLocalizedValue() + ")") :
                         string.Format("{0} {1} {2}", (IsLocalNull() ? string.Empty : Local.GetLocalizedValue()), Name, IsReferenceNull() ? string.Empty : Reference).Trim();
                 }
             }
@@ -104,20 +106,19 @@ namespace Mayfly.Species
                 }
             }
 
+            private string code => string.Format("{0:00} {1:00} ", Rank, (IsIndexNull() ? 99 : Index));
+
             public string SortableString
             {
                 get
                 {
                     string result = string.Empty;
 
-                    foreach (TaxonRow parent in Hierarchy)
-                    {
-                        result += string.Format("{0:000} {1:000} ",
-                            parent.Rank, (parent.IsIndexNull() ? 999 : parent.Index));
+                    foreach (TaxonRow parent in Hierarchy) {
+                        result += parent.code;
                     }
 
-                    return result + string.Format("{0:000} {1:000}",
-                        Rank, (IsIndexNull() ? 999 : Index));
+                    return result += IsHigher ? code : Name;
                 }
             }
 
@@ -130,11 +131,6 @@ namespace Mayfly.Species
                     return this.GetTaxonRows().Length > 0;
                 }
             }
-
-            //public bool IsSpecies
-            //{
-            //    get { return Rank >= 90; }
-            //}
 
             public bool IsHigher
             {
@@ -241,7 +237,7 @@ namespace Mayfly.Species
             {
                 foreach (TaxonRow taxonRow in Hierarchy)
                 {
-                    if (taxonRow.Rank == rank.Value)
+                    if (taxonRow.TaxonomicRank == rank)
                     {
                         return taxonRow;
                     }
@@ -285,7 +281,8 @@ namespace Mayfly.Species
             {
                 //if (taxonRow.IsHigher) return false;
 
-                foreach (TaxonRow parentTaxonRow in Hierarchy) {
+                foreach (TaxonRow parentTaxonRow in Hierarchy)
+                {
                     if (parentTaxonRow.Includes(taxonRow.ValidRecord, false)) return true;
                 }
 
@@ -322,8 +319,76 @@ namespace Mayfly.Species
 
             public int CompareTo(TaxonRow other)
             {
-                if (!IsHigher && !other.IsHigher) return Name.CompareTo(other.Name);
-                else return this.SortableString.CompareTo(other.SortableString);
+                return this.SortableString.CompareTo(other.SortableString);
+            }
+
+            public static bool operator ==(TaxonRow a, TaxonRow b)
+            {
+                // If both are null, or both are same instance, return true.
+                if (Object.ReferenceEquals(a, b))
+                {
+                    return true;
+                }
+
+                // If one is null, but not both, return false.
+                if (((object)a == null) || ((object)b == null))
+                {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return a.ToString("s") == b.ToString("s");
+            }
+
+            public static bool operator !=(TaxonRow a, TaxonRow b)
+            {
+                return !(a == b);
+            }
+
+            int IComparable.CompareTo(object obj)
+            {
+                return Compare(this, (TaxonRow)obj);
+            }
+
+            public static int Compare(TaxonRow value1, TaxonRow value2)
+            {
+                return value1.CompareTo(value2);
+            }
+
+            public override bool Equals(System.Object obj)
+            {
+                // If parameter is null return false.
+                if (obj == null)
+                {
+                    return false;
+                }
+
+                // If parameter cannot be cast return false.
+                TaxonRow p = obj as TaxonRow;
+                if ((Object)p == null)
+                {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return this.CompareTo(p) == 0;
+            }
+
+            public bool Equals(TaxonRow p)
+            {
+                // If parameter is null return false:
+                if ((object)p == null)
+                {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return this.CompareTo(p) == 0;
+            }
+
+            public override int GetHashCode()
+            {
+                return this.ToString("s").GetHashCode();
             }
 
 
@@ -366,14 +431,9 @@ namespace Mayfly.Species
             public TaxonRow NewTaxonRow(TaxonomicRank rank, string name)
             {
                 TaxonRow result = NewTaxonRow();
-                result.Rank = rank.Value;
+                result.Rank = (int)rank;
                 result.Name = name;
                 return result;
-            }
-
-            public TaxonRow NewSpeciesRow(string name)
-            {
-                return NewTaxonRow(TaxonomicRank.Species, name);
             }
         }
 
@@ -448,7 +508,7 @@ namespace Mayfly.Species
                 {
                     List<TaxonRow> result = new List<TaxonRow>();
 
-                    foreach (TaxonRow taxonRow in ((SpeciesKey)this.Table.DataSet).Taxon)
+                    foreach (TaxonRow taxonRow in ((TaxonomicIndex)this.Table.DataSet).Taxon)
                     {
                         if (this.DoesLeadTo(taxonRow))
                         {
@@ -518,7 +578,7 @@ namespace Mayfly.Species
                 get
                 {
                     if (this.IsGotoNull()) return null;
-                    return ((SpeciesKey)this.Table.DataSet).Step.FindByID(this.Goto);
+                    return ((TaxonomicIndex)this.Table.DataSet).Step.FindByID(this.Goto);
                 }
             }
 
@@ -531,7 +591,7 @@ namespace Mayfly.Species
                 if (this.IsGotoNull()) return false;
 
                 // If next step follow to taxonRow
-                return ((SpeciesKey)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(taxonRow);
+                return ((TaxonomicIndex)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(taxonRow);
             }
 
             public bool DoesLeadTo(StepRow stepRow)
@@ -553,7 +613,7 @@ namespace Mayfly.Species
                 if (this.IsGotoNull()) return false;
 
                 // If next step follow to taxonRow
-                return ((SpeciesKey)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(stateRow);
+                return ((TaxonomicIndex)this.Table.DataSet).Step.FindByID(this.Goto).DoesLeadTo(stateRow);
             }
 
             public TaxonRow[] ForestandingTaxon
@@ -562,7 +622,7 @@ namespace Mayfly.Species
                 {
                     List<TaxonRow> result = new List<TaxonRow>();
 
-                    foreach (TaxonRow taxonRow in ((SpeciesKey)this.Table.DataSet).Taxon)
+                    foreach (TaxonRow taxonRow in ((TaxonomicIndex)this.Table.DataSet).Taxon)
                     {
                         if (this.DoesLeadTo(taxonRow))
                         {
@@ -655,12 +715,12 @@ namespace Mayfly.Species
         /// Imports all of species records from current key to another
         /// </summary>
         /// <param name="key">Destination species key</param>
-        public void ImportTo(SpeciesKey key)
+        public void ImportTo(TaxonomicIndex key)
         {
             ImportTo(key, false);
         }
 
-        public void ImportTo(SpeciesKey key, bool inspect)
+        public void ImportTo(TaxonomicIndex key, bool inspect)
         {
             // It will ignore " sp." records
 
@@ -668,7 +728,7 @@ namespace Mayfly.Species
             {
                 if (speciesRow.Name.EndsWith("sp.")) continue;
 
-                TaxonRow destRow = key.FindBySpecies(speciesRow.Name);
+                TaxonRow destRow = key.FindByName(speciesRow.Name);
 
                 if (destRow == null)
                 {
@@ -742,7 +802,7 @@ namespace Mayfly.Species
 
             if (values.Length > 1)
             {
-                return values[values.Length -1];
+                return values[values.Length - 1];
             }
             else
             {
@@ -754,7 +814,7 @@ namespace Mayfly.Species
 
         public TaxonRow[] GetTaxonRows(bool rootOnly, bool derivatedOnly, bool populatedOnly, bool higherOnly, TaxonomicRank rank)
         {
-            if (higherOnly && rank != null && rank.Value > 89)
+            if (higherOnly && rank != null && rank > 89)
                 throw new ArgumentException("Rank specified are misfit higherOnly argument");
 
             List<TaxonRow> result = new List<TaxonRow>();
@@ -765,7 +825,7 @@ namespace Mayfly.Species
                 if (derivatedOnly && !taxonRow.HasChildren) continue;
                 if (populatedOnly && taxonRow.GetSpeciesRows(false).Length == 0) continue;
                 if (higherOnly && !taxonRow.IsHigher) continue;
-                if (rank != null && taxonRow.Rank != rank.Value) continue;
+                if (rank != null && taxonRow.TaxonomicRank != rank) continue;
 
                 result.Add(taxonRow);
             }
@@ -806,6 +866,11 @@ namespace Mayfly.Species
         public TaxonRow[] GetSpeciesRows()
         {
             return GetTaxonRows(false, false, false, false, TaxonomicRank.Species);
+        }
+
+        public static TaxonRow GetFakeTaxon(TaxonomicRank rank, string name)
+        {
+            return new TaxonomicIndex().Taxon.NewTaxonRow(rank, name);
         }
 
 
@@ -865,7 +930,7 @@ namespace Mayfly.Species
         {
             List<TaxonRow> result = new List<TaxonRow>();
 
-            foreach (TaxonRow speciesRow in GetSpeciesRows())
+            foreach (TaxonRow speciesRow in Taxon)// GetSpeciesRows())
             {
                 if (speciesRow.FullName.ToUpperInvariant().Contains(name.ToUpperInvariant()))
                 {
@@ -951,13 +1016,13 @@ namespace Mayfly.Species
             }
         }
 
-        public TaxonRow FindBySpecies(string value)
+        public TaxonRow FindByName(string value)
         {
-            foreach (TaxonRow speciesRow in GetSpeciesRows())
+            foreach (TaxonRow taxonRow in Taxon)
             {
-                if (speciesRow.Name == value)
+                if (taxonRow.Name == value)
                 {
-                    return speciesRow;
+                    return taxonRow;
                 }
             }
 
@@ -967,7 +1032,7 @@ namespace Mayfly.Species
 
         public bool Contains(string species)
         {
-            return FindBySpecies(species) != null;
+            return FindByName(species) != null;
         }
 
         public TaxonRow[] GetByFeatureStates(StateRow[] stateRows)

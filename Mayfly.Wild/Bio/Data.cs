@@ -102,7 +102,7 @@ namespace Mayfly.Wild
                 GrowthModels = new List<ContinuousBio>();
             }
 
-            foreach (SpeciesKey.TaxonRow speciesRow in GetStack().GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in GetStack().GetSpecies())
             {
                 ContinuousBio biom = FindMassModel(speciesRow.Name);
 

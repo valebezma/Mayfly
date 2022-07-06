@@ -21,7 +21,8 @@ namespace Mayfly.Wild
                 if (gridColumn.Name == "ColumnSpecies")
                 {
                     if (gridRow.Cells[gridColumn.Index].Value != null &&
-                        (string)gridRow.Cells[gridColumn.Index].Value != Species.Resources.Interface.UnidentifiedTitle)
+                        gridRow.Cells[gridColumn.Index].Value is string s &&
+                        s != Species.Resources.Interface.UnidentifiedTitle)
                     {
                         return false;
                     }
@@ -434,8 +435,8 @@ namespace Mayfly.Wild
         {
             return GetReferencePath(
                 Species.UserSettings.Interface.OpenDialog,
-                groupName + " (auto).sps",
-                Server.GetUri("get/index/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.sps", Application.CurrentCulture)
+                groupName + " (auto).txn",
+                Server.GetUri("get/index/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.txn", Application.CurrentCulture)
                 );
         }
     }

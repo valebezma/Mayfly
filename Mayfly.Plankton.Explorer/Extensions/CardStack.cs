@@ -39,7 +39,7 @@ namespace Mayfly.Plankton.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (Data.DefinitionRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -47,7 +47,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, Data.DefinitionRow speciesRow)
         {
             double result = 0.0;
 
@@ -63,7 +63,7 @@ namespace Mayfly.Plankton.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.SpeciesRow speciesRow in stack.GetSpecies())
+            foreach (Data.DefinitionRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -71,7 +71,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, Data.SpeciesRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, Data.DefinitionRow speciesRow)
         {
             double result = 0.0;
 
@@ -88,13 +88,13 @@ namespace Mayfly.Plankton.Explorer
             return stack.GetCenosisComposition(Plankton.UserSettings.SpeciesIndex);
         }
 
-        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.SpeciesKey key)
+        public static SpeciesComposition GetCenosisComposition(this CardStack stack, Species.TaxonomicIndex key)
         {
             SpeciesComposition result = stack.GetBasicCenosisComposition();
 
             foreach (SpeciesSwarm category in result)
             {
-                Data.SpeciesRow speciesRow = stack.Parent.Species.FindBySpecies(category.Name);
+                Data.DefinitionRow speciesRow = stack.Parent.Definition.FindByName(category.Name);
 
                 category.SpeciesRow = speciesRow;
 

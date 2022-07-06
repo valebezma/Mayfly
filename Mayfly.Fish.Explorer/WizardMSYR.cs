@@ -19,7 +19,7 @@ namespace Mayfly.Fish.Explorer
     {
         public CardStack Data { get; set; }
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         WizardPopulation growthWizard;
 
@@ -32,7 +32,7 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
         }
 
-        public WizardMSYR(CardStack data, SpeciesKey.TaxonRow speciesRow)
+        public WizardMSYR(CardStack data, TaxonomicIndex.TaxonRow speciesRow)
             : this()
         {
             Data = data;

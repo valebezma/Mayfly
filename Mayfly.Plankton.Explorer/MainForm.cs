@@ -21,7 +21,7 @@ namespace Mayfly.Plankton.Explorer
             SpeciesIndex = Plankton.UserSettings.SpeciesIndex;
             speciesValidator.IndexPath = 
             speciesLog.IndexPath =
-            speciesInd.IndexPath = Plankton.UserSettings.SpeciesIndexPath;
+            speciesInd.IndexPath = Plankton.UserSettings.TaxonomicIndexPath;
 
             listViewWaters.Shine();
             listViewSamplers.Shine();
@@ -91,7 +91,7 @@ namespace Mayfly.Plankton.Explorer
 
             if (UserSettings.AutoLoadBio)
             {
-                processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
+                processDisplay.StartProcessing(Wild.Resources.Interface.Process.BioLoading);
                 backSpecSheetLoader.RunWorkerAsync(UserSettings.Bios);
             }
 
@@ -233,13 +233,13 @@ namespace Mayfly.Plankton.Explorer
 
                     if (tdb != tdbSpecCancel)
                     {
-                        processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
+                        processDisplay.StartProcessing(Wild.Resources.Interface.Process.BioLoading);
                         backSpecSheetLoader.RunWorkerAsync(Wild.UserSettings.InterfaceBio.OpenDialog.FileName);
                     }
                 }
                 else
                 {
-                    processDisplay.StartProcessing(100, Wild.Resources.Interface.Process.SpecLoading);
+                    processDisplay.StartProcessing(Wild.Resources.Interface.Process.BioLoading);
                     backSpecSheetLoader.RunWorkerAsync(Wild.UserSettings.InterfaceBio.OpenDialog.FileName);
                 }
             }
@@ -379,7 +379,7 @@ namespace Mayfly.Plankton.Explorer
         {
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                SpeciesKey speciesKey = data.GetSpeciesKey();
+                TaxonomicIndex speciesKey = data.GetSpeciesKey();
                 speciesKey.SaveToFile(Species.UserSettings.Interface.SaveDialog.FileName);
                 Mayfly.IO.RunFile(Species.UserSettings.Interface.SaveDialog.FileName);
             }
@@ -403,7 +403,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void BaseItem_Click(object sender, EventArgs e)
         {
-            SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
+            TaxonomicIndex.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as TaxonomicIndex.BaseRow;
             DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
                 baseRow.BaseName, typeof(string), 0);
 
@@ -420,7 +420,7 @@ namespace Mayfly.Plankton.Explorer
                     continue;
                 }
 
-                SpeciesKey.SpeciesRow speciesRow = SpeciesIndex.Species.FindBySpecies(
+                TaxonomicIndex.SpeciesRow speciesRow = SpeciesIndex.Definition.FindByName(
                     gridRow.Cells[columnSpcSpc.Index].Value as string);
 
                 if (speciesRow == null)
@@ -429,7 +429,7 @@ namespace Mayfly.Plankton.Explorer
                 }
                 else
                 {
-                    SpeciesKey.TaxonRow taxonRow = speciesRow.GetTaxon(baseRow);
+                    TaxonomicIndex.TaxonRow taxonRow = speciesRow.GetTaxon(baseRow);
                     if (taxonRow != null) gridRow.Cells[gridColumn.Index].Value = taxonRow.TaxonName;
                 }
             }
@@ -621,18 +621,18 @@ namespace Mayfly.Plankton.Explorer
 
             tdSpecies.Content = string.Format(
                 Wild.Resources.Interface.Messages.SpeciesRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxonName);
 
             if (tdSpecies.ShowDialog() == tdbSpcRename)
             {
                 // TODO: If already exist?
 
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.OriginalValue);
-                Data.SpeciesRow spcRow1 = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
+                Data.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow1 == null) // If there is no new species in index
                 {
-                    spcRow.Species = e.SpeciesName;
+                    spcRow.Species = e.SelectedTaxonName;
 
                     foreach (Data.LogRow logRow in spcRow.GetLogRows())
                     {
@@ -643,7 +643,7 @@ namespace Mayfly.Plankton.Explorer
                 {
                     foreach (Data.LogRow logRow in spcRow.GetLogRows())
                     {
-                        logRow.SpeciesRow = spcRow1;
+                        logRow.DefinitionRow = spcRow1;
                         RememberChanged(logRow.CardRow);
                     }
 
@@ -735,7 +735,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void comboBoxSpc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            baseSpc = comboBoxSpc.SelectedItem as SpeciesKey.BaseRow;
+            baseSpc = comboBoxSpc.SelectedItem as TaxonomicIndex.BaseRow;
 
             menuItemSpcTaxon.Enabled = baseSpc == null;
 
@@ -762,10 +762,10 @@ namespace Mayfly.Plankton.Explorer
         {
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                Species.SpeciesKey speciesKey = new SpeciesKey();
-                foreach (Data.SpeciesRow speciesRow in data.Species)
+                Species.TaxonomicIndex speciesKey = new TaxonomicIndex();
+                foreach (Data.DefinitionRow speciesRow in data.Species)
                 {
-                    Species.SpeciesKey.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
+                    Species.TaxonomicIndex.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
                     newSpeciesRow.Species = speciesRow.Species;
                     speciesKey.Species.AddSpeciesRow(newSpeciesRow);
                 }
@@ -779,7 +779,7 @@ namespace Mayfly.Plankton.Explorer
             int rowsToDelete = spreadSheetSpc.SelectedRows.Count;
             while (rowsToDelete > 0)
             {
-                Data.SpeciesRow spcRow = GetSpcRow(spreadSheetSpc.SelectedRows[0]);
+                Data.DefinitionRow spcRow = GetSpcRow(spreadSheetSpc.SelectedRows[0]);
                 data.Species.RemoveSpeciesRow(spcRow);
 
                 spreadSheetSpc.Rows.Remove(spreadSheetSpc.SelectedRows[0]);
@@ -793,7 +793,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void comboBoxLog_SelectedIndexChanged(object sender, EventArgs e)
         {
-            baseLog = comboBoxLog.SelectedItem as SpeciesKey.BaseRow;
+            baseLog = comboBoxLog.SelectedItem as TaxonomicIndex.BaseRow;
 
             menuItemSpcTaxon.Enabled = baseLog == null;
 
@@ -814,7 +814,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 for (int i = 0; i < data.Card.Count; i++)
                 {
-                    foreach (Data.SpeciesRow speciesRow in data.Species)
+                    foreach (Data.DefinitionRow speciesRow in data.Species)
                     {
                         DataGridViewRow gridRow = LogRow(data.Card[i], speciesRow);
 
@@ -833,7 +833,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 for (int i = 0; i < data.Card.Count; i++)
                 {
-                    foreach (SpeciesKey.TaxonRow taxonRow in taxonLog)
+                    foreach (TaxonomicIndex.TaxonRow taxonRow in taxonLog)
                     {
                         DataGridViewRow gridRow = LogRow(data.Card[i], taxonRow);
 
@@ -894,19 +894,19 @@ namespace Mayfly.Plankton.Explorer
         {
             tdLog.Content = string.Format(
                 Wild.Resources.Interface.Messages.LogRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxonName);
 
             if (tdLog.ShowDialog() == tdbLogRename)
             {
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow == null)
                 {
-                    spcRow = data.Species.AddSpeciesRow(e.SpeciesName);
+                    spcRow = data.Species.AddSpeciesRow(e.SelectedTaxonName);
                 }
 
                 Data.LogRow logRow = GetLogRow(e.Row);
-                logRow.SpeciesRow = spcRow;
+                logRow.DefinitionRow = spcRow;
 
                 RememberChanged(logRow.CardRow);
             }
@@ -921,7 +921,7 @@ namespace Mayfly.Plankton.Explorer
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
                 Data.LogRow logRow = GetLogRow(gridRow);
-                Mayfly.IO.RunFile(logRow.CardRow.Path, logRow.SpeciesRow.Species);
+                Mayfly.IO.RunFile(logRow.CardRow.Path, logRow.DefinitionRow.Taxon);
             }
         }
 
@@ -1021,17 +1021,17 @@ namespace Mayfly.Plankton.Explorer
         {
             tdInd.Content = string.Format(
                 Wild.Resources.Interface.Messages.IndRename,
-                e.OriginalValue, e.SpeciesName);
+                e.OriginalValue, e.SelectedTaxonName);
 
             if (tdInd.ShowDialog() == tdbIndRename)
             {
                 Data.IndividualRow individualRow = GetIndividualRow(e.Row);
 
-                Data.SpeciesRow spcRow = data.Species.FindBySpecies(e.SpeciesName);
+                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow == null)
                 {
-                    spcRow = data.Species.AddSpeciesRow(e.SpeciesName);
+                    spcRow = data.Species.AddSpeciesRow(e.SelectedTaxonName);
                 }
 
                 if (individualRow.LogRow.Quantity == 1)
@@ -1047,7 +1047,7 @@ namespace Mayfly.Plankton.Explorer
                     if (logRow == null)
                     {
                         logRow = data.Log.NewLogRow();
-                        logRow.SpeciesRow = spcRow;
+                        logRow.DefinitionRow = spcRow;
                         logRow.CardRow = individualRow.LogRow.CardRow;
                         logRow.Quantity = 1;
                         data.Log.AddLogRow(logRow);

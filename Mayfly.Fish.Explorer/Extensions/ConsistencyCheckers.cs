@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
             return new CardConsistencyChecker(cardRow);
         }
 
-        public static SpeciesConsistencyChecker CheckConsistency(this SpeciesKey.TaxonRow speciesRow, CardStack stack)
+        public static SpeciesConsistencyChecker CheckConsistency(this TaxonomicIndex.TaxonRow speciesRow, CardStack stack)
         {
             return new SpeciesConsistencyChecker(speciesRow, stack);
         }
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
             {
                 SpeciesConsistencyChecker scc = speciesRow.CheckConsistency(stack);
 
@@ -645,7 +645,7 @@ namespace Mayfly.Fish.Explorer
 
     public class SpeciesConsistencyChecker : ConsistencyChecker
     {
-        public SpeciesKey.TaxonRow SpeciesRow { get; set; }
+        public TaxonomicIndex.TaxonRow SpeciesRow { get; set; }
 
         public SpeciesFeatureConsistencyChecker MassInspector { get; set; }
 
@@ -706,7 +706,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesConsistencyChecker(SpeciesKey.TaxonRow speciesRow, CardStack stack)
+        public SpeciesConsistencyChecker(TaxonomicIndex.TaxonRow speciesRow, CardStack stack)
         {
             SpeciesRow = speciesRow;
 

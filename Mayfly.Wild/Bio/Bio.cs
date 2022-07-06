@@ -12,7 +12,7 @@ namespace Mayfly.Wild
     {
         public Data Parent { get; set; }
 
-        //public Data.SpeciesRow Species { get; private set; }
+        //public Data.DefinitionRow Species { get; private set; }
 
         public string Species { get; private set; }
 
@@ -36,7 +36,7 @@ namespace Mayfly.Wild
 
 
 
-        public Bio(Data data, SpeciesKey.TaxonRow speciesRow, DataColumn yColumn)
+        public Bio(Data data, TaxonomicIndex.TaxonRow speciesRow, DataColumn yColumn)
         {
             if (yColumn.DataType != typeof(double))
                 throw new FormatException();

@@ -12,11 +12,11 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        SpeciesKey.BaseRow baseLog;
+        TaxonomicIndex.BaseRow baseLog;
 
-        SpeciesKey.TaxonRow[] taxonLog;
+        TaxonomicIndex.TaxonRow[] taxonLog;
 
-        SpeciesKey.SpeciesRow[] variaLog;
+        TaxonomicIndex.SpeciesRow[] variaLog;
 
 
 
@@ -65,9 +65,9 @@ namespace Mayfly.Plankton.Explorer
         
 
 
-        private DataGridViewRow LogRow(Data.CardRow cardRow, Data.SpeciesRow speciesRow)
+        private DataGridViewRow LogRow(Data.CardRow cardRow, Data.DefinitionRow speciesRow)
         {
-            Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, speciesRow.ID);
+            Data.LogRow logRow = data.Log.FindByCardIDDefID(cardRow.ID, speciesRow.ID);
 
             if (logRow == null)
             {
@@ -95,7 +95,7 @@ namespace Mayfly.Plankton.Explorer
             }
             else
             {
-                result.Cells[columnLogSpc.Index].Value = logRow.SpeciesRow.Species;
+                result.Cells[columnLogSpc.Index].Value = logRow.DefinitionRow.Taxon;
             }
 
             result.Cells[columnLogAbundance.Index].Value = logRow.GetAbundance();
@@ -108,7 +108,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRow(SpeciesKey.TaxonRow taxonRow)
+        private DataGridViewRow LogRow(TaxonomicIndex.TaxonRow taxonRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -126,7 +126,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
+                if (!taxonRow.Includes(logRow.DefinitionRow.Taxon)) continue;
 
                 if (!logRow.IsQuantityNull())
                 {
@@ -177,7 +177,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!variaLog.Contains(SpeciesIndex.Species.FindBySpecies(logRow.SpeciesRow.Species))) continue;
+                if (!variaLog.Contains(SpeciesIndex.Definition.FindByName(logRow.DefinitionRow.Taxon))) continue;
 
                 if (!logRow.IsQuantityNull())
                 {
@@ -207,7 +207,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRow(Data.CardRow cardRow, SpeciesKey.TaxonRow taxonRow)
+        private DataGridViewRow LogRow(Data.CardRow cardRow, TaxonomicIndex.TaxonRow taxonRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -224,7 +224,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
+                if (!taxonRow.Includes(logRow.DefinitionRow.Taxon)) continue;
 
                 if (!logRow.IsQuantityNull())
                 {
@@ -269,7 +269,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
-                if (!variaLog.Contains(SpeciesIndex.Species.FindBySpecies(logRow.SpeciesRow.Species))) continue;
+                if (!variaLog.Contains(SpeciesIndex.Definition.FindByName(logRow.DefinitionRow.Taxon))) continue;
 
                 if (!logRow.IsQuantityNull())
                 {

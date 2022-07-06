@@ -36,7 +36,7 @@ namespace Mayfly.Species
         {
             listViewFits.Items.Clear();
 
-            foreach (SpeciesKey.StateRow stateRow in Panel.CurrentStep.ForestandingTaxonStates)
+            foreach (TaxonomicIndex.StateRow stateRow in Panel.CurrentStep.ForestandingTaxonStates)
             {
                 ListViewItem item = new ListViewItem
                 {
@@ -59,7 +59,7 @@ namespace Mayfly.Species
         private void listViewFits_ItemActivate(object sender, EventArgs e)
         {
             int stateID = Convert.ToInt32(listViewFits.SelectedItems[0].Name);
-            SpeciesKey.StateRow stateRow = ((SpeciesKey)Panel.CurrentStep.Table.DataSet).State.FindByID(stateID);
+            TaxonomicIndex.StateRow stateRow = ((TaxonomicIndex)Panel.CurrentStep.Table.DataSet).State.FindByID(stateID);
             Panel.GetTo(stateRow);
         }
     }

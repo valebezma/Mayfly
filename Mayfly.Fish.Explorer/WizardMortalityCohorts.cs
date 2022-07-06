@@ -20,7 +20,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         public List<Cohort> Cohorts;
 
@@ -46,7 +46,7 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardMortalityCohorts(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
+        public WizardMortalityCohorts(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;

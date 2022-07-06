@@ -31,7 +31,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         private Composition selectedShoal;
 
@@ -73,7 +73,7 @@ namespace Mayfly.Fish.Explorer
             Frame.SetLines(ColumnCategory);
         }
 
-        public WizardComposition(CardStack data, Composition frame, SpeciesKey.TaxonRow speciesRow, CompositionColumn column) : this(data, frame)
+        public WizardComposition(CardStack data, Composition frame, TaxonomicIndex.TaxonRow speciesRow, CompositionColumn column) : this(data, frame)
         {
             SpeciesRow = speciesRow;
             wizardExplorer.ResetTitle(speciesRow.CommonName);

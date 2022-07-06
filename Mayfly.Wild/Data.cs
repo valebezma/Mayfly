@@ -10,12 +10,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace Mayfly.Wild
 {
     public partial class Data
     {
-        internal SpeciesKey key;
+        internal TaxonomicIndex key;
 
         private readonly Samplers samplers;
 
@@ -38,7 +39,7 @@ namespace Mayfly.Wild
 
 
 
-        public Data(SpeciesKey _key, Samplers _samplers) : this()
+        public Data(TaxonomicIndex _key, Samplers _samplers) : this()
         {
             key = _key;
             samplers = _samplers;
@@ -57,11 +58,11 @@ namespace Mayfly.Wild
                 }
             }
 
-            for (int i = 0; i < Species.Count; i++)
+            for (int i = 0; i < Definition.Count; i++)
             {
-                if (Species[i].GetLogRows().Length == 0)
+                if (Definition[i].GetLogRows().Length == 0)
                 {
-                    Species.RemoveSpeciesRow(Species[i]);
+                    Definition.RemoveDefinitionRow(Definition[i]);
                     i--;
                 }
             }
@@ -109,6 +110,19 @@ namespace Mayfly.Wild
             {
                 this.SetAttributable();
                 ReadXml(filename);
+
+                //foreach (SpeciesRow spcRow in Species)
+                //{
+                //    Definition.AddDefinitionRow(spcRow.ID, 91, spcRow.Species);
+
+                //    foreach (LogRow logRow in spcRow.GetLogRows())
+                //    {
+                //        logRow.DefID = spcRow.ID;
+                //        logRow.SetSpcIDNull();
+                //    }
+                //}
+
+                //Species.Clear();
 
                 foreach (CardRow cardRow in this.Card)
                 {
@@ -247,21 +261,21 @@ namespace Mayfly.Wild
 
         public CardRow[] CopyTo(Data extData, bool inheritPath)
         {
-            List<Data.CardRow> result = new List<Data.CardRow>();
+            List<CardRow> result = new List<CardRow>();
 
-            foreach (Data.FactorRow factorRow in this.Factor)
+            foreach (FactorRow factorRow in this.Factor)
             {
                 if (extData.Factor.FindByFactor(factorRow.Factor) == null)
                 {
-                    Data.FactorRow newFactorRow = extData.Factor.NewFactorRow();
+                    FactorRow newFactorRow = extData.Factor.NewFactorRow();
                     newFactorRow.Factor = factorRow.Factor;
                     extData.Factor.AddFactorRow(newFactorRow);
                 }
             }
 
-            foreach (Data.CardRow cardRow in this.Card)
+            foreach (CardRow cardRow in this.Card)
             {
-                Data.CardRow newCardRow = cardRow.CopyTo(extData);
+                CardRow newCardRow = cardRow.CopyTo(extData);
 
                 result.Add(newCardRow);
 
@@ -275,6 +289,121 @@ namespace Mayfly.Wild
             }
 
             return result.ToArray();
+        }
+
+
+        public static TaxonomicIndex GetSpeciesKey(DefinitionRow[] dataSpcRows)
+        {
+            TaxonomicIndex speciesKey = new TaxonomicIndex();
+
+            if (dataSpcRows.Length == 0) return speciesKey;
+
+            Data data = (Data)dataSpcRows[0].Table.DataSet;
+
+            foreach (Data.DefinitionRow dataSpcRow in dataSpcRows)
+            {
+                TaxonomicIndex.TaxonRow speciesRow = speciesKey.Taxon.NewTaxonRow(dataSpcRow.Rank, dataSpcRow.Taxon);
+                TaxonomicIndex.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
+
+                if (equivalentRow != null)
+                {
+                    if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
+                    if (!equivalentRow.IsLocalNull()) speciesRow.Local = equivalentRow.Local;
+                }
+
+                //var logRows = dataSpcRow.GetLogRows();
+
+                //if (logRows.Length > 0)
+                //{
+                //    speciesRow.Description = "Species collected: ";
+
+                //    foreach (Data.LogRow logRow in logRows)
+                //    {
+                //        if (!logRow.CardRow.IsWaterIDNull())
+                //        {
+                //            speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
+                //        }
+
+                //        if (!logRow.CardRow.IsWhenNull())
+                //        {
+                //            speciesRow.Description += logRow.CardRow.When.ToString("d");
+                //        }
+
+                //        Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
+                //        Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
+                //        List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
+
+                //        if (lengths.Count + masses.Count + sexes.Count > 0)
+                //        {
+                //            speciesRow.Description += ": ";
+
+                //            if (lengths.Count > 0)
+                //            {
+                //                speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
+                //            }
+
+                //            if (masses.Count > 0)
+                //            {
+                //                speciesRow.Description += ", ";
+                //                speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
+                //            }
+
+                //            if (sexes.Count > 0)
+                //            {
+                //                speciesRow.Description += ", ";
+                //                speciesRow.Description += "sexes are ";
+                //                foreach (object sex in sexes)
+                //                {
+                //                    speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
+                //                }
+                //            }
+                //        }
+
+                //        speciesRow.Description += "; ";
+                //    }
+
+                //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
+                //}
+
+                speciesKey.Taxon.AddTaxonRow(speciesRow);
+
+                //if (Species.UserSettings.VisualConfirmationOnAutoUpdate)
+                //{
+                //    AddAutoSpecies editSpecies = new AddAutoSpecies(speciesRow);
+
+                //    if (editSpecies.ShowDialog() == DialogResult.OK)
+                //    {
+                //        speciesKey.Species.AddSpeciesRow(speciesRow);
+
+                //        //foreach (SpeciesKey.TaxonRow taxonRow in editSpecies.SelectedTaxon)
+                //        //{
+                //        //    speciesKey.Species.AddSpeciesRow(speciesRow);
+                //        //    dest.Rep.AddRepRow(taxonRow, destRow);
+                //        //}
+                //    }
+                //}
+                //else
+                //{
+                //    speciesKey.Species.AddSpeciesRow(speciesRow);
+                //}
+            }
+
+            return speciesKey;
+        }
+
+        public TaxonomicIndex GetSpeciesKey()
+        {
+            return GetSpeciesKey((DefinitionRow[])Definition.Select());
+        }
+
+        /// <summary>
+        /// Creates report containing Card
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public Report GetReport()
+        {
+            return Solitary.GetReport();
         }
 
 
@@ -314,18 +443,18 @@ namespace Mayfly.Wild
             }
         }
 
-        partial class SpeciesDataTable
+        partial class DefinitionDataTable
         {
-            public SpeciesRow FindBySpecies(string value)
+            public DefinitionRow FindByName(string value)
             {
-                foreach (SpeciesRow speciesRow in Rows)
+                foreach (DefinitionRow speciesRow in Rows)
                 {
-                    if (speciesRow.IsNull(columnSpecies))
+                    if (speciesRow.IsNull(columnTaxon))
                     {
                         continue;
                     }
 
-                    if (speciesRow.Species == value)
+                    if (speciesRow.Taxon == value)
                     {
                         return speciesRow;
                     }
@@ -336,16 +465,16 @@ namespace Mayfly.Wild
 
         partial class LogDataTable
         {
-            public LogRow FindByCardIDSpcID(int cardID, int spcID)
+            public LogRow FindByCardIDDefID(int cardID, int defID)
             {
                 foreach (LogRow logRow in Rows)
                 {
-                    if (logRow.IsSpcIDNull())
+                    if (logRow.IsDefIDNull())
                     {
                         continue;
                     }
 
-                    if (logRow.CardID == cardID && logRow.SpcID == spcID)
+                    if (logRow.CardID == cardID && logRow.DefID == defID)
                     {
                         return logRow;
                     }
@@ -846,11 +975,11 @@ namespace Mayfly.Wild
 
             public CardRow CopyTo(Data extData)
             {
-                Data.CardRow newCardRow = extData.Card.NewCardRow();
+                CardRow newCardRow = extData.Card.NewCardRow();
 
                 if (!this.IsWaterIDNull())
                 {
-                    Data.WaterRow waterRow = extData.Water.Find(this.WaterRow);
+                    WaterRow waterRow = extData.Water.Find(this.WaterRow);
 
                     if (waterRow == null)
                     {
@@ -873,18 +1002,18 @@ namespace Mayfly.Wild
 
                 extData.Card.Rows.Add(newCardRow);
 
-                this.CopyLogTo(newCardRow);
+                CopyLogTo(newCardRow);
 
-                foreach (Data.FactorValueRow factorValueRow in this.GetFactorValueRows())
+                foreach (FactorValueRow factorValueRow in this.GetFactorValueRows())
                 {
                     if (extData.Factor.FindByFactor(factorValueRow.FactorRow.Factor) == null)
                     {
-                        Data.FactorRow newFactorRow = extData.Factor.NewFactorRow();
+                        FactorRow newFactorRow = extData.Factor.NewFactorRow();
                         newFactorRow.Factor = factorValueRow.FactorRow.Factor;
                         extData.Factor.AddFactorRow(newFactorRow);
                     }
 
-                    Data.FactorValueRow newFactorValueRow = extData.FactorValue.NewFactorValueRow();
+                    FactorValueRow newFactorValueRow = extData.FactorValue.NewFactorValueRow();
                     newFactorValueRow.CardRow = newCardRow;
                     newFactorValueRow.FactorRow = extData.Factor.FindByFactor(factorValueRow.FactorRow.Factor);
                     newFactorValueRow.Value = factorValueRow.Value;
@@ -899,39 +1028,39 @@ namespace Mayfly.Wild
                 Data srcData = (Data)this.Table.DataSet;
                 Data dstData = (Data)dstCard.Table.DataSet;
 
-                foreach (Data.VariableRow variableRow in srcData.Variable)
+                foreach (VariableRow variableRow in srcData.Variable)
                 {
                     if (dstData.Variable.FindByVarName(variableRow.Variable) == null)
                     {
-                        Data.VariableRow newVariableRow = dstData.Variable.NewVariableRow();
+                        VariableRow newVariableRow = dstData.Variable.NewVariableRow();
                         newVariableRow.Variable = variableRow.Variable;
                         dstData.Variable.AddVariableRow(newVariableRow);
                     }
                 }
 
-                foreach (Data.LogRow logRow in this.GetLogRows())
+                foreach (LogRow logRow in this.GetLogRows())
                 {
-                    Data.LogRow dstLogRow = dstData.Log.NewLogRow();
+                    LogRow dstLogRow = dstData.Log.NewLogRow();
                     dstLogRow.CardRow = dstCard;
 
-                    if (!logRow.IsSpcIDNull())
+                    if (!logRow.IsDefIDNull())
                     {
-                        Data.SpeciesRow dstSpeciesRow = dstData.Species.FindBySpecies(logRow.SpeciesRow.Species);
-                        if (dstSpeciesRow == null)
+                        DefinitionRow dstDefRow = dstData.Definition.FindByName(logRow.DefinitionRow.Taxon);
+                        if (dstDefRow == null)
                         {
-                            dstLogRow.SpeciesRow = dstData.Species.AddSpeciesRow(logRow.SpeciesRow.Species);
+                            dstLogRow.DefinitionRow = dstData.Definition.AddDefinitionRow(logRow.DefinitionRow.Rank, logRow.DefinitionRow.Taxon);
                             dstData.Log.AddLogRow(dstLogRow);
                         }
                         else
                         {
-                            if (dstData.Log.FindByCardIDSpcID(dstCard.ID, dstSpeciesRow.ID) == null)
+                            if (dstData.Log.FindByCardIDDefID(dstCard.ID, dstDefRow.ID) == null)
                             {
-                                dstLogRow.SpeciesRow = dstSpeciesRow;
+                                dstLogRow.DefinitionRow = dstDefRow;
                                 dstData.Log.AddLogRow(dstLogRow);
                             }
                             else
                             {
-                                dstLogRow = dstData.Log.FindByCardIDSpcID(dstCard.ID, dstSpeciesRow.ID);
+                                dstLogRow = dstData.Log.FindByCardIDDefID(dstCard.ID, dstDefRow.ID);
                             }
                         }
                     }
@@ -1002,9 +1131,34 @@ namespace Mayfly.Wild
                 }
             }
 
+            public void AddReport(Report report, CardReportLevel level) { }
+
+            /// <summary>
+            /// Creates report containing Card with specified detalization level
+            /// </summary>
+            /// <param name="cardRow"></param>
+            /// <returns></returns>
+            public Report GetReport(CardReportLevel level)
+            {
+                Report report = new Report(FriendlyPath);
+                AddReport(report, level);
+                report.End(When.Year, Investigator);
+                return report;
+            }
+
+            /// <summary>
+            /// Creates report containing Card
+            /// </summary>
+            /// <param name="cardRow"></param>
+            /// <returns></returns>
+            public Report GetReport()
+            {
+                return GetReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Stratified | CardReportLevel.Individuals);
+            }
+
             public Report.Table GetLogReport(string massCaption, string logTitle)
             {
-                return this.GetLogRows().GetSpeciesLogReportTable(((Data)Table.DataSet).key, massCaption, logTitle);
+                return GetLogRows().GetSpeciesLogReportTable(massCaption, logTitle);
             }
 
             public Report.Table GetLogReport(string massCaption)
@@ -1169,7 +1323,7 @@ namespace Mayfly.Wild
                                 return double.NaN;
                             }
 
-                            double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.SpeciesRow.Species).GetValue(individualRow.Length);
+                            double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(individualRow.Length);
 
                             if (double.IsNaN(meanWeight))
                             {
@@ -1202,7 +1356,7 @@ namespace Mayfly.Wild
 
                     foreach (StratifiedRow stratifiedRow in this.GetStratifiedRows())
                     {
-                        double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.SpeciesRow.Species).GetValue(stratifiedRow.SizeClass.Midpoint);
+                        double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(stratifiedRow.SizeClass.Midpoint);
 
                         if (double.IsNaN(meanWeight))
                         {
@@ -1223,9 +1377,40 @@ namespace Mayfly.Wild
             /// </summary>
             /// <returns>Returns mass of sample in grams</returns>
             public double DetailedMass => this.MassIndividuals + this.MassStratified;
+
+
+
+            /// <summary>
+            /// Adds Individuals log and Stratified sample with given titles into Report
+            /// </summary>
+            /// <param name="logRow"></param>
+            /// <param name="report"></param>
+            /// <param name="logtitle"></param>
+            /// <param name="stratifiedtitle"></param>
+            public void AddReport(Report report, CardReportLevel level, string logtitle, string stratifiedtitle)
+            {
+                (new Data.LogRow[] { this }).AddReport(report, level, logtitle, stratifiedtitle);
+            }
+
+            /// <summary>
+            /// Creates report containing Individuals log and Stratified sample
+            /// </summary>
+            /// <param name="logRow"></param>
+            /// <returns></returns>
+            public Report GetReport(CardReportLevel level)
+            {
+                Report report = new Report(string.Format("Treatment Log for {0}", DefinitionRow.Taxon));
+                AddReport(report, level, 
+                    string.Format(Resources.Interface.Interface.IndLog, string.Empty),
+                    string.Format(Resources.Reports.Header.StratifiedSample, string.Empty));
+                if (CardRow.IsWhenNull()) report.End();
+                else report.End(CardRow.When.Year, CardRow.Investigator);
+
+                return report;
+            }
         }
 
-        partial class SpeciesRow : IFormattable
+        partial class DefinitionRow : IFormattable
         {
             public int TotalQuantity
             {
@@ -1242,11 +1427,11 @@ namespace Mayfly.Wild
                 }
             }
 
-            public SpeciesKey.TaxonRow KeyRecord
+            public TaxonomicIndex.TaxonRow KeyRecord
             {
                 get
                 {
-                    SpeciesKey.TaxonRow spcRow = ((Data)Table.DataSet).key?.FindBySpecies(this.Species);
+                    TaxonomicIndex.TaxonRow spcRow = ((Data)Table.DataSet).key?.FindByName(this.Taxon);
                     if (spcRow == null) return null;
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;
@@ -1269,7 +1454,7 @@ namespace Mayfly.Wild
 
             public string ToString(string format, IFormatProvider formatProvider)
             {
-                return Species;
+                return Taxon;
             }
 
             public string ToString(string format)
@@ -1297,7 +1482,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return this.LogRow.SpeciesRow.Species;
+                    return this.LogRow.DefinitionRow.Taxon;
                 }
             }
 
@@ -1475,6 +1660,23 @@ namespace Mayfly.Wild
             {
                 this.SetAddtValue(var, double.NaN);
             }
+
+
+
+            public void AddReport(Report report) { }
+
+            /// <summary>
+            /// Creates report containing Individual profile
+            /// </summary>
+            /// <param name="indRow"></param>
+            /// <returns></returns>
+            public Report GetReport()
+            {
+                Report report = new Report(Wild.Resources.Reports.Header.IndividualProfile);
+                AddReport(report);
+                report.End(LogRow.CardRow.When.Year, LogRow.CardRow.Investigator);
+                return report;
+            }
         }
 
         partial class StratifiedRow
@@ -1503,9 +1705,9 @@ namespace Mayfly.Wild
             switch (logOrder)
             {
                 case LogOrder.Alphabetically:
-                    if (x.IsSpcIDNull()) return 1;
-                    if (y.IsSpcIDNull()) return -1;
-                    return string.Compare(x.SpeciesRow.Species, y.SpeciesRow.Species);
+                    if (x.IsDefIDNull()) return 1;
+                    if (y.IsDefIDNull()) return -1;
+                    return string.Compare(x.DefinitionRow.Taxon, y.DefinitionRow.Taxon);
 
                 case LogOrder.ByMass:
                     if (x.IsMassNull()) return 1;
@@ -1516,6 +1718,14 @@ namespace Mayfly.Wild
                     if (x.IsQuantityNull()) return 1;
                     if (y.IsQuantityNull()) return -1;
                     return y.Quantity - x.Quantity;
+
+                case LogOrder.Philogenetically:
+                    if (x.IsDefIDNull()) return 0;
+                    if (x.DefinitionRow.KeyRecord == null) return 0;
+                    if (y.IsDefIDNull()) return 0;
+                    if (y.DefinitionRow.KeyRecord == null) return 0;
+                    return x.DefinitionRow.KeyRecord.CompareTo(y.DefinitionRow.KeyRecord);
+
             }
 
             return 0;

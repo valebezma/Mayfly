@@ -95,6 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Card.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Card.designer.cs">
+      <DependentUpon>Card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Data.Reporting.cs" />
     <Compile Include="Extensions\Data.cs" />
     <Compile Include="Resources\Common.Designer.cs">
@@ -154,12 +160,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Interface.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Card.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Card.designer.cs">
-      <DependentUpon>Card.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

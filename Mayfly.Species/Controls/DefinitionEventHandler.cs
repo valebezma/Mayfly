@@ -8,12 +8,12 @@ namespace Mayfly.Species.Controls
 {
     public class DefinitionEventArgs
     {
-        public DefinitionEventArgs(SpeciesKey.StepRow stepRow)
+        public DefinitionEventArgs(TaxonomicIndex.StepRow stepRow)
         {
             this.CurrentStep = stepRow;
         }
 
-        public SpeciesKey.StepRow CurrentStep { get; private set; }
+        public TaxonomicIndex.StepRow CurrentStep { get; private set; }
     }
 
     public delegate void DefinitionEventHandler(object sender, DefinitionEventArgs e);

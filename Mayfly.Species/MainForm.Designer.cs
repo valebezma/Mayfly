@@ -59,6 +59,9 @@
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageTaxon = new System.Windows.Forms.TabPage();
+            this.buttonTaxonEdit = new System.Windows.Forms.Button();
+            this.labelClassification = new System.Windows.Forms.Label();
+            this.taxaTreeView = new Mayfly.Species.Controls.TaxonTreeView(this.components);
             this.processDisplay = new Mayfly.Controls.ProcessDisplay(this.components);
             this.checkBoxPlain = new System.Windows.Forms.CheckBox();
             this.labelSpecies = new System.Windows.Forms.Label();
@@ -100,8 +103,6 @@
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.status = new Mayfly.Controls.Status();
-            this.labelClassification = new System.Windows.Forms.Label();
-            this.taxaTreeView = new Mayfly.Species.Controls.TaxaTreeView(this.components);
             this.statusStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -310,6 +311,7 @@
             // 
             // tabPageTaxon
             // 
+            this.tabPageTaxon.Controls.Add(this.buttonTaxonEdit);
             this.tabPageTaxon.Controls.Add(this.labelClassification);
             this.tabPageTaxon.Controls.Add(this.taxaTreeView);
             this.tabPageTaxon.Controls.Add(this.checkBoxPlain);
@@ -318,6 +320,41 @@
             resources.ApplyResources(this.tabPageTaxon, "tabPageTaxon");
             this.tabPageTaxon.Name = "tabPageTaxon";
             this.tabPageTaxon.UseVisualStyleBackColor = true;
+            // 
+            // buttonTaxonEdit
+            // 
+            resources.ApplyResources(this.buttonTaxonEdit, "buttonTaxonEdit");
+            this.buttonTaxonEdit.Name = "buttonTaxonEdit";
+            this.buttonTaxonEdit.UseVisualStyleBackColor = true;
+            this.buttonTaxonEdit.Click += new System.EventHandler(this.buttonTaxonEdit_Click);
+            // 
+            // labelClassification
+            // 
+            resources.ApplyResources(this.labelClassification, "labelClassification");
+            this.labelClassification.Name = "labelClassification";
+            // 
+            // taxaTreeView
+            // 
+            this.taxaTreeView.AllowDrop = true;
+            this.taxaTreeView.AllowEdit = true;
+            resources.ApplyResources(this.taxaTreeView, "taxaTreeView");
+            this.taxaTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.taxaTreeView.DeepestRank = null;
+            this.taxaTreeView.Display = this.processDisplay;
+            this.taxaTreeView.FullRowSelect = true;
+            this.taxaTreeView.HideSelection = false;
+            this.taxaTreeView.HigherTaxonFormat = "T";
+            this.taxaTreeView.HotTracking = true;
+            this.taxaTreeView.LowerTaxonColor = System.Drawing.Color.Empty;
+            this.taxaTreeView.LowerTaxonFormat = "F";
+            this.taxaTreeView.Name = "taxaTreeView";
+            this.taxaTreeView.PickedTaxon = null;
+            this.taxaTreeView.RootTaxon = null;
+            this.taxaTreeView.ShowLines = false;
+            this.taxaTreeView.Sorted = true;
+            this.taxaTreeView.TaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonSelected);
+            this.taxaTreeView.Changed += new System.EventHandler(this.taxaTreeView_Changed);
+            this.taxaTreeView.TaxonChanged += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonChanged);
             // 
             // processDisplay
             // 
@@ -612,34 +649,6 @@
             this.status.MaximalInterval = 2000;
             this.status.StatusLog = this.statusProcess;
             // 
-            // labelClassification
-            // 
-            resources.ApplyResources(this.labelClassification, "labelClassification");
-            this.labelClassification.Name = "labelClassification";
-            // 
-            // taxaTreeView
-            // 
-            this.taxaTreeView.AllowDrop = true;
-            this.taxaTreeView.AllowEdit = true;
-            resources.ApplyResources(this.taxaTreeView, "taxaTreeView");
-            this.taxaTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.taxaTreeView.DeepestRank = null;
-            this.taxaTreeView.Display = this.processDisplay;
-            this.taxaTreeView.FullRowSelect = true;
-            this.taxaTreeView.HideSelection = false;
-            this.taxaTreeView.HigherTaxonFormat = "T";
-            this.taxaTreeView.HotTracking = true;
-            this.taxaTreeView.LowerTaxonColor = System.Drawing.Color.Empty;
-            this.taxaTreeView.LowerTaxonFormat = "F";
-            this.taxaTreeView.Name = "taxaTreeView";
-            this.taxaTreeView.PickedTaxon = null;
-            this.taxaTreeView.RootTaxon = null;
-            this.taxaTreeView.ShowLines = false;
-            this.taxaTreeView.Sorted = true;
-            this.taxaTreeView.TaxonSelected += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonSelected);
-            this.taxaTreeView.Changed += new System.EventHandler(this.taxaTreeView_Changed);
-            this.taxaTreeView.TaxonChanged += new Mayfly.Species.TaxonEventHandler(this.taxaTreeView_TaxonChanged);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -741,7 +750,8 @@
         private System.Windows.Forms.ToolStripStatusLabel statusSpecies;
         private System.Windows.Forms.Label labelSpecies;
         private System.Windows.Forms.CheckBox checkBoxPlain;
-        private Controls.TaxaTreeView taxaTreeView;
+        private Controls.TaxonTreeView taxaTreeView;
         private System.Windows.Forms.Label labelClassification;
+        private System.Windows.Forms.Button buttonTaxonEdit;
     }
 }

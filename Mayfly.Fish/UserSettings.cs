@@ -9,37 +9,19 @@ namespace Mayfly.Fish
 {
     public abstract class UserSettings
     {
-        public static string Path
+        private static ReaderUserSettings settings;
+
+        public static ReaderUserSettings ReaderSettings
         {
             get
             {
-                return UserSetting.GetFeatureKey("Mayfly.Fish");
-            }
-        }
-
-        public static FileSystemInterface Interface = new FileSystemInterface(Wild.UserSettings.FieldDataFolder, ".fcd", ".html");
-
-
-        private static Samplers samplersIndex;
-
-        public static Samplers SamplersIndex
-        {
-            get
-            {
-                if (samplersIndex == null)
+                if (settings == null)
                 {
-                    samplersIndex = new Samplers();
-                    samplersIndex.SetAttributable();
-                    samplersIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\samplerfish.ini"));
+                    settings = new ReaderUserSettings(".fcd", "Fish");
                 }
-                return samplersIndex;
-            }
-        }
 
-        public static int SelectedSamplerID
-        {
-            get { return (int)UserSetting.GetValue(Path, nameof(SelectedSamplerID), 7); }
-            set { UserSetting.SetValue(Path, nameof(SelectedSamplerID), value); }
+                return settings;
+            }
         }
 
 
@@ -71,72 +53,12 @@ namespace Mayfly.Fish
         }
 
 
-        public static string SpeciesIndexPath
-        {
-            get
-            {
-                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(SpeciesIndexPath), string.Empty));
-
-                if (string.IsNullOrWhiteSpace(filepath))
-                {
-                    SpeciesIndexPath = Wild.Service.GetReferencePathSpecies("Fish");
-                    return SpeciesIndexPath;
-                }
-                else
-                {
-                    return filepath;
-                }
-            }
-            set
-            {
-                UserSetting.SetValue(Path, nameof(SpeciesIndexPath), value);
-            }
-        }
-
-        private static SpeciesKey speciesIndex;
-
-        public static SpeciesKey SpeciesIndex
-        {
-            get
-            {
-                if (speciesIndex == null)
-                {
-                    speciesIndex = new SpeciesKey();
-
-                    if (SpeciesIndexPath != null)
-                    {
-                        speciesIndex.Read(SpeciesIndexPath);
-                    }
-                }
-
-                return speciesIndex;
-            }
-
-            set
-            {
-                speciesIndex = value;
-            }
-        }
-
-        public static bool SpeciesAutoExpand
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpand), true)); }
-            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpand), value); }
-        }
-
-        public static bool SpeciesAutoExpandVisual
-        {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpandVisual), true)); }
-            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpandVisual), value); }
-        }
-
-
 
         public static string ParasitesIndexPath
         {
             get
             {
-                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(ParasitesIndexPath), string.Empty));
+                string filepath = IO.GetPath(UserSetting.GetValue(ReaderSettings.Path, nameof(ParasitesIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
@@ -150,19 +72,19 @@ namespace Mayfly.Fish
             }
             set
             {
-                UserSetting.SetValue(Path, nameof(ParasitesIndexPath), value);
+                UserSetting.SetValue(ReaderSettings.Path, nameof(ParasitesIndexPath), value);
             }
         }
 
-        private static SpeciesKey parasitesIndex;
+        private static TaxonomicIndex parasitesIndex;
 
-        public static SpeciesKey ParasitesIndex
+        public static TaxonomicIndex ParasitesIndex
         {
             get
             {
                 if (parasitesIndex == null)
                 {
-                    parasitesIndex = new SpeciesKey();
+                    parasitesIndex = new TaxonomicIndex();
 
                     if (ParasitesIndexPath != null)
                     {
@@ -179,7 +101,7 @@ namespace Mayfly.Fish
         {
             get
             {
-                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(DietIndexPath), string.Empty));
+                string filepath = IO.GetPath(UserSetting.GetValue(ReaderSettings.Path, nameof(DietIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath))
                 {
@@ -194,19 +116,19 @@ namespace Mayfly.Fish
 
             set 
             {
-                UserSetting.SetValue(Path, nameof(DietIndexPath), value);
+                UserSetting.SetValue(ReaderSettings.Path, nameof(DietIndexPath), value);
             }
         }
 
-        private static SpeciesKey dietIndex;
+        private static TaxonomicIndex dietIndex;
 
-        public static SpeciesKey DietIndex
+        public static TaxonomicIndex DietIndex
         {
             get
             {
                 if (dietIndex == null)
                 {
-                    dietIndex = new SpeciesKey();
+                    dietIndex = new TaxonomicIndex();
 
                     if (DietIndexPath != null)
                     {
@@ -219,179 +141,37 @@ namespace Mayfly.Fish
         }
 
 
-
-        public static int SelectedWaterID
-        {
-            get { return (int)UserSetting.GetValue(Path, nameof(SelectedWaterID), 0); }
-            set { UserSetting.SetValue(Path, nameof(SelectedWaterID), value); }
-        }
-
-        public static DateTime SelectedDate
-        {
-            get
-            {
-                object SavedDate = UserSetting.GetValue(Path, nameof(SelectedDate), DateTime.Today);
-                if (SavedDate == null) return DateTime.Now.AddSeconds(-DateTime.Now.Second);
-                else return Convert.ToDateTime(SavedDate);
-            }
-            set { UserSetting.SetValue(Path, nameof(SelectedDate), value.ToShortDateString()); }
-        }
-
-        public static string[] AddtVariables
-        {
-            get
-            {
-                return (string[])UserSetting.GetValue(Path, nameof(AddtVariables), new string[] { "TL", "FL" });
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(AddtVariables), value);
-            }
-        }
-
-        public static string[] CurrentVariables
-        {
-            get
-            {
-                return (string[])UserSetting.GetValue(Path, nameof(CurrentVariables), new string[0]);
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(CurrentVariables), value);
-            }
-        }
-
-        public static bool FixTotals
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(FixTotals), false));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(FixTotals), value);
-            }
-        }
-
-        public static bool AutoIncreaseBio
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoIncreaseBio), true));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(AutoIncreaseBio), value);
-            }
-        }
-
-        public static bool AutoDecreaseBio
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoDecreaseBio), true));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(AutoDecreaseBio), value);
-            }
-        }
-
-        public static bool AutoLogOpen
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoLogOpen), false));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(AutoLogOpen), value);
-            }
-        }
-
-        public static bool BreakBeforeIndividuals
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBeforeIndividuals), true));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(BreakBeforeIndividuals), value);
-            }
-        }
-
-        public static bool BreakBetweenSpecies
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBetweenSpecies), false));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(BreakBetweenSpecies), value);
-            }
-        }
-
-        public static bool OddCardStart
-        {
-            get
-            {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(OddCardStart), true));
-            }
-
-            set
-            {
-                UserSetting.SetValue(Path, nameof(OddCardStart), value);
-            }
-        }
-
-        public static int RecentSpeciesCount
-        {
-            get { return (int)UserSetting.GetValue(Path, nameof(RecentSpeciesCount), 15); }
-            set { UserSetting.SetValue(Path, nameof(RecentSpeciesCount), value); }
-        }
-
-
         public static double DefaultOpening
         {
-            get { return (double)(int)UserSetting.GetValue(Path, nameof(DefaultOpening), 60) / 100; }
-            set { UserSetting.SetValue(Path, nameof(DefaultOpening), (int)(value * 100)); }
+            get { return (double)(int)UserSetting.GetValue(ReaderSettings.Path, nameof(DefaultOpening), 60) / 100; }
+            set { UserSetting.SetValue(ReaderSettings.Path, nameof(DefaultOpening), (int)(value * 100)); }
         }
 
 
         public static double GillnetStdLength
         {
-            get { return (double)((int)UserSetting.GetValue(Path, nameof(GillnetStdLength), 3750)) / 100; }
-            set { UserSetting.SetValue(Path, nameof(GillnetStdLength), (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(ReaderSettings.Path, nameof(GillnetStdLength), 3750)) / 100; }
+            set { UserSetting.SetValue(ReaderSettings.Path, nameof(GillnetStdLength), (int)(value * 100)); }
         }
 
         public static double GillnetStdHeight
         {
-            get { return (double)((int)UserSetting.GetValue(Path, nameof(GillnetStdHeight), 200)) / 100; }
-            set { UserSetting.SetValue(Path, nameof(GillnetStdHeight), (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(ReaderSettings.Path, nameof(GillnetStdHeight), 200)) / 100; }
+            set { UserSetting.SetValue(ReaderSettings.Path, nameof(GillnetStdHeight), (int)(value * 100)); }
         }
 
         public static int GillnetStdExposure
         {
-            get { return (int)UserSetting.GetValue(Path, nameof(GillnetStdExposure), 24); }
-            set { UserSetting.SetValue(Path, nameof(GillnetStdExposure), value); }
+            get { return (int)UserSetting.GetValue(ReaderSettings.Path, nameof(GillnetStdExposure), 24); }
+            set { UserSetting.SetValue(ReaderSettings.Path, nameof(GillnetStdExposure), value); }
         }
 
 
 
         public static double DefaultStratifiedInterval
         {
-            get { return (double)((int)UserSetting.GetValue(Path, nameof(DefaultStratifiedInterval), 1000)) / 100; }
-            set { UserSetting.SetValue(Path, nameof(DefaultStratifiedInterval), (int)(value * 100)); }
+            get { return (double)((int)UserSetting.GetValue(ReaderSettings.Path, nameof(DefaultStratifiedInterval), 1000)) / 100; }
+            set { UserSetting.SetValue(ReaderSettings.Path, nameof(DefaultStratifiedInterval), (int)(value * 100)); }
         }
     }
 }

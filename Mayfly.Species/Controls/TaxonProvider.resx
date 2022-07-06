@@ -149,39 +149,6 @@
   <metadata name="listLoader.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
   </metadata>
-  <metadata name="contextMenuStripSpecies.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="toolStripMenuItemKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
-  </data>
-  <data name="toolStripMenuItemKey.Text" xml:space="preserve">
-    <value>Species from key</value>
-  </data>
-  <data name="toolStripMenuItemRecent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
-  </data>
-  <data name="toolStripMenuItemRecent.Text" xml:space="preserve">
-    <value>Recent species</value>
-  </data>
-  <data name="toolStripMenuItemAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
-  </data>
-  <data name="toolStripMenuItemAll.Text" xml:space="preserve">
-    <value>All species</value>
-  </data>
-  <data name="toolStripSeparatorKey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 6</value>
-  </data>
-  <data name="contextMenuStripSpecies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 54</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripSpecies.Name" xml:space="preserve">
-    <value>contextMenuStripSpecies</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStripSpecies.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

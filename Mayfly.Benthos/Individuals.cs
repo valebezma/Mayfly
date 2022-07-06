@@ -219,8 +219,8 @@ namespace Mayfly.Benthos
             Data = (Data)LogRow.Table.DataSet;
 
             Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
-                    logRow.IsSpcIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
-                    logRow.SpeciesRow.Species);
+                    logRow.IsDefIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
+                    logRow.DefinitionRow.Taxon);
 
             if (!LogRow.IsMassNull())
             {
@@ -366,7 +366,7 @@ namespace Mayfly.Benthos
             System.Threading.Thread.Sleep(2000);
         }
 
-        //public EventHandler Updater;
+        public EventHandler Updater;
 
         private void ClearEmptyRows()
         {
@@ -496,13 +496,13 @@ namespace Mayfly.Benthos
             {
                 if (LogLine.DataGridView.FindForm() is Card card)
                 {
-                    card.UpdateStatus();
+                    card.Logger.UpdateStatus();
                 }
 
-                //if (Updater != null)
-                //{
-                //    Updater.Invoke(LogLine, new EventArgs());
-                //}
+                if (Updater != null)
+                {
+                    Updater.Invoke(LogLine, new EventArgs());
+                }
             }
         }
 
@@ -1057,12 +1057,12 @@ namespace Mayfly.Benthos
             Data.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Data.SpeciesRow clipSpeciesRow = clipData.Species.NewSpeciesRow();
-            clipData.Species.AddSpeciesRow(clipSpeciesRow);
+            Data.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
             Data.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
-            clipLogRow.SpeciesRow = clipSpeciesRow;
+            clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
 
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)

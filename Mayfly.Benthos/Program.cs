@@ -32,7 +32,7 @@ namespace Mayfly.Benthos
 
                 if (args.Length > 1)
                 {
-                    card.OpenSpecies(args[1]);
+                    card.Logger.RunDefinition(args[1]);
                 }
 
                 Application.Run(card);

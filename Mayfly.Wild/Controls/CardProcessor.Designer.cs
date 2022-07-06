@@ -1,6 +1,6 @@
-﻿namespace Mayfly.Species.Controls
+﻿namespace Mayfly.Wild.Controls
 {
-    partial class TaxonSelector
+    partial class CardProcessor
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.taskDialogSaveChanges = new Mayfly.TaskDialogs.TaskDialog();
+            // 
+            // taskDialogSaveChanges
+            // 
+            this.taskDialogSaveChanges.CenterParent = true;
+            this.taskDialogSaveChanges.Content = "There were some changes since last saving. Would you like to save them?";
+            this.taskDialogSaveChanges.MainInstruction = "Save changes?";
+            this.taskDialogSaveChanges.WindowTitle = "Fish Reader";
+
         }
 
         #endregion
+
+        private TaskDialogs.TaskDialog taskDialogSaveChanges;
     }
 }

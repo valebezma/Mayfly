@@ -405,13 +405,13 @@ namespace Mayfly.Controls
             if (comboBoxType.Enabled) Column.ValueType = SelectedType;
             Column.DefaultCellStyle.Format = Format;
             Column.DefaultCellStyle.Alignment = Alignment;
-
-            Column.SaveFormat();
+            Column.SaveFormat();            
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
             buttonApply_Click(sender, e);
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

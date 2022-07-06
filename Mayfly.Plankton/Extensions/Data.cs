@@ -16,86 +16,88 @@ namespace Mayfly.Plankton
         /// <returns>Suggested name for data card with extension</returns>
         public static string GetSuggestedName(this Data.CardRow cardRow)
         {
-            return cardRow.GetSuggestedName(UserSettings.Interface.Extension);
+            return cardRow.GetSuggestedName(UserSettings.ReaderSettings.Interface.Extension);
         }
 
-        public static SpeciesKey GetSpeciesKey(this Data data)
+        public static TaxonomicIndex GetSpeciesKey(this Data data)
         {
-            SpeciesKey speciesKey = new SpeciesKey();
+            return Data.GetSpeciesKey((Data.DefinitionRow[])data.Definition.Select());
 
-            foreach (Data.SpeciesRow dataSpcRow in data.Species)
-            {
-                SpeciesKey.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
+            //TaxonomicIndex speciesKey = new TaxonomicIndex();
 
-                speciesRow.Species = dataSpcRow.Species;
+            //foreach (Data.DefinitionRow dataSpcRow in data.Species)
+            //{
+            //    TaxonomicIndex.SpeciesRow speciesRow = speciesKey.Species.NewSpeciesRow();
 
-                SpeciesKey.SpeciesRow equivalentRow = Plankton.UserSettings.SpeciesIndex.Species.FindBySpecies(
-                    dataSpcRow.Species);
+            //    speciesRow.Species = dataSpcRow.Species;
 
-                if (equivalentRow != null)
-                {
-                    if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
-                    if (!equivalentRow.IsNameNull()) speciesRow.Name = equivalentRow.Name;
-                }
+            //    TaxonomicIndex.SpeciesRow equivalentRow = Plankton.UserSettings.SpeciesIndex.Definition.FindByName(
+            //        dataSpcRow.Species);
 
-                //var logRows = dataSpcRow.GetLogRows();
+            //    if (equivalentRow != null)
+            //    {
+            //        if (!equivalentRow.IsReferenceNull()) speciesRow.Reference = equivalentRow.Reference;
+            //        if (!equivalentRow.IsNameNull()) speciesRow.Name = equivalentRow.Name;
+            //    }
 
-                //if (logRows.Length > 0)
-                //{
-                //    speciesRow.Description = "Species collected: ";
+            //    //var logRows = dataSpcRow.GetLogRows();
 
-                //    foreach (Data.LogRow logRow in logRows)
-                //    {
-                //        if (!logRow.CardRow.IsWaterIDNull())
-                //        {
-                //            speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
-                //        }
+            //    //if (logRows.Length > 0)
+            //    //{
+            //    //    speciesRow.Description = "Species collected: ";
 
-                //        if (!logRow.CardRow.IsWhenNull())
-                //        {
-                //            speciesRow.Description += logRow.CardRow.When.ToString("d");
-                //        }
+            //    //    foreach (Data.LogRow logRow in logRows)
+            //    //    {
+            //    //        if (!logRow.CardRow.IsWaterIDNull())
+            //    //        {
+            //    //            speciesRow.Description += string.Format("at {0} ", logRow.CardRow.WaterRow.Presentation);
+            //    //        }
 
-                //        Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
-                //        Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
-                //        List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
+            //    //        if (!logRow.CardRow.IsWhenNull())
+            //    //        {
+            //    //            speciesRow.Description += logRow.CardRow.When.ToString("d");
+            //    //        }
 
-                //        if (lengths.Count + masses.Count + sexes.Count > 0)
-                //        {
-                //            speciesRow.Description += ": ";
+            //    //        Sample lengths = data.Individual.LengthColumn.GetSample(logRow.GetIndividualRows());
+            //    //        Sample masses = data.Individual.MassColumn.GetSample(logRow.GetIndividualRows());
+            //    //        List<object> sexes = data.Individual.SexColumn.GetValues(logRow.GetIndividualRows(), true);
 
-                //            if (lengths.Count > 0)
-                //            {
-                //                speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
-                //            }
+            //    //        if (lengths.Count + masses.Count + sexes.Count > 0)
+            //    //        {
+            //    //            speciesRow.Description += ": ";
 
-                //            if (masses.Count > 0)
-                //            {
-                //                speciesRow.Description += ", ";
-                //                speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
-                //            }
+            //    //            if (lengths.Count > 0)
+            //    //            {
+            //    //                speciesRow.Description += string.Format("L = {0} mm", lengths.ToString("E"));
+            //    //            }
 
-                //            if (sexes.Count > 0)
-                //            {
-                //                speciesRow.Description += ", ";
-                //                speciesRow.Description += "sexes are ";
-                //                foreach (object sex in sexes)
-                //                {
-                //                    speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
-                //                }
-                //            }
-                //        }
+            //    //            if (masses.Count > 0)
+            //    //            {
+            //    //                speciesRow.Description += ", ";
+            //    //                speciesRow.Description += string.Format("W = {0} mg", masses.ToString("E"));
+            //    //            }
 
-                //        speciesRow.Description += "; ";
-                //    }
+            //    //            if (sexes.Count > 0)
+            //    //            {
+            //    //                speciesRow.Description += ", ";
+            //    //                speciesRow.Description += "sexes are ";
+            //    //                foreach (object sex in sexes)
+            //    //                {
+            //    //                    speciesRow.Description += new Sex((int)sex).ToString("C") + ", ";
+            //    //                }
+            //    //            }
+            //    //        }
 
-                //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
-                //}
+            //    //        speciesRow.Description += "; ";
+            //    //    }
 
-                speciesKey.Species.AddSpeciesRow(speciesRow);
-            }
+            //    //    speciesRow.Description = speciesRow.Description.TrimEnd("; ".ToCharArray()) + ".";
+            //    //}
 
-            return speciesKey;
+            //    speciesKey.Species.AddSpeciesRow(speciesRow);
+            //}
+
+            //return speciesKey;
         }
 
         public static List<string> GetSpeciesList(this Data data)
@@ -104,41 +106,41 @@ namespace Mayfly.Plankton
 
             foreach (Data.LogRow logRow in data.Log)
             {
-                if (!result.Contains(logRow.SpeciesRow.Species))
+                if (!result.Contains(logRow.DefinitionRow.Taxon))
                 {
-                    result.Add(logRow.SpeciesRow.Species);
+                    result.Add(logRow.DefinitionRow.Taxon);
                 }
             }
 
             return result;
         }
 
-        public static Data.SpeciesRow[] GetSpeciesForWeightRecovery(this Data data)
+        public static Data.DefinitionRow[] GetSpeciesForWeightRecovery(this Data data)
         {
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
 
             foreach (Data.LogRow logRow in data.Log)
             {
                 if (!logRow.IsMassNull()) continue;
-                if (!result.Contains(logRow.SpeciesRow))
+                if (!result.Contains(logRow.DefinitionRow))
                 {
-                    result.Add(logRow.SpeciesRow);
+                    result.Add(logRow.DefinitionRow);
                 }
             }
 
             return result.ToArray();
         }
 
-        public static Data.SpeciesRow[] GetSpeciesWithUnweightedIndividuals(this Data data)
+        public static Data.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Data data)
         {
-            List<Data.SpeciesRow> result = new List<Data.SpeciesRow>();
+            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
 
             foreach (Data.IndividualRow individualRow in data.Individual)
             {
                 if (!individualRow.IsMassNull()) continue;
-                if (!result.Contains(individualRow.LogRow.SpeciesRow))
+                if (!result.Contains(individualRow.LogRow.DefinitionRow))
                 {
-                    result.Add(individualRow.LogRow.SpeciesRow);
+                    result.Add(individualRow.LogRow.DefinitionRow);
                 }
             }
 
@@ -155,11 +157,11 @@ namespace Mayfly.Plankton
         /// <param name="cardRow"></param>
         /// <param name="speciesRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.CardRow cardRow, Data.SpeciesRow speciesRow)
+        public static double GetAbundance(this Data.CardRow cardRow, Data.DefinitionRow speciesRow)
         {
             foreach (Data.LogRow logRow in cardRow.GetLogRows())
             {
-                if (logRow.SpeciesRow == speciesRow)
+                if (logRow.DefinitionRow == speciesRow)
                 {
                     return logRow.GetAbundance();
                 }

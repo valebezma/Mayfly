@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxReference = new System.Windows.Forms.TextBox();
-            this.taxonSelector = new Mayfly.Species.Controls.TaxonSelector(this.components);
+            this.taxonSelector = new Mayfly.Species.Controls.TaxonBox(this.components);
             this.SuspendLayout();
             // 
             // buttonOK
@@ -72,7 +72,7 @@
             this.textBoxName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBoxName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.TextChanged += new System.EventHandler(this.valueChanged);
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label1
             // 
@@ -99,7 +99,6 @@
             // 
             // comboBoxRank
             // 
-            this.comboBoxRank.DisplayMember = "Name";
             this.comboBoxRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRank.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxRank, "comboBoxRank");
@@ -172,7 +171,7 @@
         private System.Windows.Forms.TextBox textBoxLocal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private Controls.TaxonSelector taxonSelector;
+        private Controls.TaxonBox taxonSelector;
         private System.Windows.Forms.ComboBox comboBoxRank;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;

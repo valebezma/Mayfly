@@ -205,7 +205,9 @@ namespace Mayfly.Fish
             LogRow = logRow;
             Data = (Data)LogRow.Table.DataSet;
 
-            this.ResetFormatted((logRow.IsSpcIDNull() ? Species.Resources.Interface.UnidentifiedTitle : logRow.SpeciesRow.ToString()));
+            Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
+                    logRow.IsDefIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
+                    logRow.DefinitionRow.Taxon);
 
             UpdateValues();
             UpdateTotals();
@@ -319,7 +321,7 @@ namespace Mayfly.Fish
             {
                 if (logRow == LogRow) continue;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(logRow.SpeciesRow.KeyRecord.CommonName);
+                ToolStripMenuItem item = new ToolStripMenuItem(logRow.DefinitionRow.KeyRecord.CommonName);
                 item.Tag = logRow;
                 item.Click += redefineDomesticSpecies_Click;
                 contextItemRedefine.DropDownItems.Insert(0, item);
@@ -378,8 +380,8 @@ namespace Mayfly.Fish
                 Data.IndividualRow indRow = IndividualRow(gridRow);
                 redefinedSpecimen.Add(indRow);
                 indRow.LogRow = logRow;
-                if (indRow.IsCommentsNull()) { indRow.Comments = string.Format(Wild.Resources.Interface.Interface.RedefineComment, LogRow.SpeciesRow.Species); }
-                else { indRow.Comments += string.Format(Environment.NewLine + Wild.Resources.Interface.Interface.RedefineComment, LogRow.SpeciesRow.Species); }
+                if (indRow.IsCommentsNull()) { indRow.Comments = string.Format(Wild.Resources.Interface.Interface.RedefineComment, LogRow.DefinitionRow.Taxon); }
+                else { indRow.Comments += string.Format(Environment.NewLine + Wild.Resources.Interface.Interface.RedefineComment, LogRow.DefinitionRow.Taxon); }
 
                 if (logRow.IsQuantityNull()) logRow.Quantity = 1; else logRow.Quantity += 1;
                 if (logRow.IsMassNull()) logRow.Mass = indRow.Mass / 1000.0; else logRow.Mass += (indRow.Mass / 1000.0);
@@ -394,10 +396,10 @@ namespace Mayfly.Fish
             UpdateLogRow();
 
             Card card = (Card)this.Owner;
-            card.UpdateLogRow(logRow);
+            card.Logger.UpdateLogRow(logRow);
 
             //Individuals newlog = card.OpenIndividuals(logRow);
-            //newlog.LogLine = card.speciesLogger.FindLine(logRow.SpeciesRow.Species);
+            //newlog.LogLine = card.speciesLogger.FindLine(logRow.DefinitionRow.Taxon);
             //newlog.UpdateLogRow();
             //newlog.SetFriendlyDesktopLocation(this, FormLocation.NextToHost);
 
@@ -410,13 +412,13 @@ namespace Mayfly.Fish
 
         private void redefineReferenceSpecies_Click(object sender, EventArgs e)
         {
-            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)((ToolStripMenuItem)sender).Tag;
+            TaxonomicIndex.TaxonRow speciesRow = (TaxonomicIndex.TaxonRow)((ToolStripMenuItem)sender).Tag;
 
             //Data.LogRow logRow = Data.Log.NewLogRow();
-            //logRow.SpeciesRow = speciesRow
+            //logRow.DefinitionRow = speciesRow
 
             Card card = (Card)this.Owner;
-            RedefineSelected(card.SaveLogRow(card.speciesLogger.InsertSpecies(speciesRow)));
+            RedefineSelected(card.Logger.SaveLogRow(card.Logger.Grid.Rows[card.Logger.InsertSpecies(speciesRow)]));
             UpdateRedefineList();
         }
 
@@ -646,7 +648,7 @@ namespace Mayfly.Fish
             {
                 if (LogLine.DataGridView.FindForm() is Card card)
                 {
-                    card.UpdateStatus();
+                    card.Logger.UpdateStatus();
                 }
 
                 if (Updater != null)
@@ -1303,12 +1305,12 @@ namespace Mayfly.Fish
             Data.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Data.SpeciesRow clipSpeciesRow = clipData.Species.NewSpeciesRow();
-            clipData.Species.AddSpeciesRow(clipSpeciesRow);
+            Data.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
             Data.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
-            clipLogRow.SpeciesRow = clipSpeciesRow;
+            clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
 
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
@@ -1433,7 +1435,7 @@ namespace Mayfly.Fish
                             Individuals indlog = card.GetOpenedIndividuals(prevLog);
                             if (indlog != null) { indlog.Hide(); }
 
-                            card.speciesLogger.Remove(prevLog.SpeciesRow.Species);
+                            card.Logger.Provider.Remove(prevLog.DefinitionRow.Taxon);
                             Data.Log.RemoveLogRow(prevLog);
                         }
                     }

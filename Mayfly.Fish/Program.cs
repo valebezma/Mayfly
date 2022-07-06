@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading;
-using System.Globalization;
-using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
@@ -26,8 +23,6 @@ namespace Mayfly.Fish
             }
             else
             {
-                //MessageBox.Show(args.Merge());
-
                 Card card = new Card();
 
                 if (args.Length > 0)
@@ -37,15 +32,7 @@ namespace Mayfly.Fish
 
                 if (args.Length > 1)
                 {
-                    switch (args[1])
-                    {
-                        //case "diet":
-                        //    card.OpenTrophics(args[2], args[3]);
-                        //    break;
-                        default:
-                            card.OpenSpecies(args[1]);
-                            break;
-                    }
+                    card.Logger.RunDefinition(args[1]);
                 }
 
                 Application.Run(card);

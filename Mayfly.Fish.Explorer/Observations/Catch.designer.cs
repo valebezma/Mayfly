@@ -56,7 +56,7 @@
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
             this.buttonSave = new System.Windows.Forms.Button();
-            this.speciesLogger = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesLogger = new Mayfly.Species.TaxonProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
             this.contextMenuStripLog.SuspendLayout();
             this.SuspendLayout();
@@ -273,7 +273,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         private System.Windows.Forms.ToolTip toolTipAttention;
-        private Species.SpeciesSelector speciesLogger;
+        private Species.TaxonProvider speciesLogger;
         private System.Windows.Forms.Button buttonSave;
     }
 }

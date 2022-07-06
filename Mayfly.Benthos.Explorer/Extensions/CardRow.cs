@@ -10,7 +10,7 @@ namespace Mayfly.Extensions
 {
     public static class CardRowExtensions
     {
-        public static int AbundanceRating(this Data.CardRow cardRow, Data.SpeciesRow speciesRow)
+        public static int AbundanceRating(this Data.CardRow cardRow, Data.DefinitionRow speciesRow)
         {
             int s = 0;
 
@@ -19,7 +19,7 @@ namespace Mayfly.Extensions
             {
                 s++;
 
-                if (logRow.SpeciesRow.Species == speciesRow.Species)
+                if (logRow.DefinitionRow.Taxon  == speciesRow.Taxon)
                 {
                     return s;
                 }

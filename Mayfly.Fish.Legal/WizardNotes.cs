@@ -93,7 +93,7 @@ namespace Mayfly.Fish.Legal
             InitializeComponent();
             listViewCards.Shine();
 
-            speciesLogger.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+            speciesLogger.IndexPath = Fish.UserSettings.TaxonomicIndexPath;
 
             Data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
             Data.RefreshBios();
@@ -367,12 +367,12 @@ namespace Mayfly.Fish.Legal
                 if (gridRow.IsNewRow) continue;
 
                 string species = (string)gridRow.Cells[ColumnSpecies.Index].Value;
-                LegalPapers.SpeciesRow speciesRow = Paper.Species.FindBySpecies(species);
+                LegalPapers.SpeciesRow speciesRow = Paper.Definition.FindByName(species);
 
                 if (speciesRow == null)
                 {
-                    Species.SpeciesKey.SpeciesRow refSpeciesRow =
-                        Fish.UserSettings.SpeciesIndex.Species.FindBySpecies(species);
+                    Species.TaxonomicIndex.SpeciesRow refSpeciesRow =
+                        Fish.UserSettings.SpeciesIndex.Definition.FindByName(species);
                     speciesRow = Paper.Species.AddSpeciesRow(species, refSpeciesRow.Name);
                 }
 
@@ -465,7 +465,7 @@ namespace Mayfly.Fish.Legal
 
             spreadSheetCatches.Rows.Clear();
 
-            foreach (Data.SpeciesRow speciesRow in catches.GetSpecies())
+            foreach (Data.DefinitionRow speciesRow in catches.GetSpecies())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCatches);

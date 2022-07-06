@@ -93,7 +93,7 @@ namespace Mayfly.ManualLicenser
                     break;
 
                 case "6":
-                    ConvertFishStats();
+                    //ConvertFishStats();
                     break;
 
                 case "7":
@@ -339,170 +339,170 @@ namespace Mayfly.ManualLicenser
             goto Start;
         }
 
-        static void ConvertFishStats()
-        {
-            Console.WriteLine();
-            Console.WriteLine("===== FISH STAT CONVERT =====");
+        //static void ConvertFishStats()
+        //{
+        //    Console.WriteLine();
+        //    Console.WriteLine("===== FISH STAT CONVERT =====");
 
-        Start:
+        //Start:
 
-            Console.WriteLine();
-            Console.Write("Enter .csv file path: ");
-            string source = Console.ReadLine().Trim(new char[] { '"' });
+        //    Console.WriteLine();
+        //    Console.Write("Enter .csv file path: ");
+        //    string source = Console.ReadLine().Trim(new char[] { '"' });
 
-            if (Path.GetExtension(source) != ".csv")
-            {
-                Console.WriteLine("Could not recognize format.");
-                goto Start;
-            }
+        //    if (Path.GetExtension(source) != ".csv")
+        //    {
+        //        Console.WriteLine("Could not recognize format.");
+        //        goto Start;
+        //    }
 
-            string destination = source.Replace(".csv", "");
-            System.IO.Directory.CreateDirectory(destination);
+        //    string destination = source.Replace(".csv", "");
+        //    System.IO.Directory.CreateDirectory(destination);
 
-            Console.WriteLine();
-            Console.Write("Enter water type (1 - stream, 2 - lake, 3 - res.): ");
-            int watertype = Convert.ToInt32(Console.ReadLine().Trim(new char[] { '"' }));
+        //    Console.WriteLine();
+        //    Console.Write("Enter water type (1 - stream, 2 - lake, 3 - res.): ");
+        //    int watertype = Convert.ToInt32(Console.ReadLine().Trim(new char[] { '"' }));
 
-            //Console.WriteLine();
-            Console.Write("Enter water name (e. g. \"Камское\"): ");
-            string watername = Console.ReadLine().Trim(new char[] { '"' });
+        //    //Console.WriteLine();
+        //    Console.Write("Enter water name (e. g. \"Камское\"): ");
+        //    string watername = Console.ReadLine().Trim(new char[] { '"' });
 
-            //Console.WriteLine();
-            Console.Write("Enter year: ");
-            int year = Convert.ToInt32(Console.ReadLine().Trim(new char[] { '"' }));
-
-
-            Console.Write("\r\n\"{0}\" will be converted to fish cards and placed to {1}. Continue (y)? ", source, destination);
-
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
+        //    //Console.WriteLine();
+        //    Console.Write("Enter year: ");
+        //    int year = Convert.ToInt32(Console.ReadLine().Trim(new char[] { '"' }));
 
 
-                string dataString = new StreamReader(source).ReadToEnd();
-                DataTable dt = new DataTable();
-                string[] lines = dataString.Split('\n');
-                string[] headers = lines[0].Trim('\r').Split(';');
+        //    Console.Write("\r\n\"{0}\" will be converted to fish cards and placed to {1}. Continue (y)? ", source, destination);
 
-                foreach (string header in headers)
-                {
-                    dt.Columns.Add(header);
-                }
-
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    DataRow headRow = dt.NewRow();
-                    string[] pastedCells = lines[i].Trim('\r').Split(';');
-                    headRow.ItemArray = pastedCells;
-                    dt.Rows.Add(headRow);
-                }
-
-                Console.WriteLine("There are {0} rows.", dt.Rows.Count);
+        //    if (Console.ReadKey().Key == ConsoleKey.Y)
+        //    {
 
 
-                List<Spc> pairs = new List<Spc>
-                {
-                    new Spc("лещ", "Abramis brama"),
-                    new Spc("щука", "Esox lucius"),
-                    new Spc("судак", "Stizostedion lucioperca"),
-                    new Spc("налим", "Lota lota"),
-                    new Spc("жерех", "Aspus aspius"),
-                    new Spc("язь", "Leuciscus idus"),
-                    new Spc("плотва", "Rutilua rutilus"),
-                    new Spc("чехонь", "Pelecus cultratus"),
-                    new Spc("синец", "Abramis ballerus"),
-                    new Spc("густера", "Blicca bjoerkna"),
-                    new Spc("окунь", "Perca fluviatilis"),
-                    new Spc("уклея", "Alburnus alburnus"),
-                    new Spc("тюлька", "Clupeonella cultriventris caspia"),
-                    new Spc("карась", "Carassius auratus"),
-                    new Spc("голавль", "Leuciscus cephalus")
-                };
+        //        string dataString = new StreamReader(source).ReadToEnd();
+        //        DataTable dt = new DataTable();
+        //        string[] lines = dataString.Split('\n');
+        //        string[] headers = lines[0].Trim('\r').Split(';');
+
+        //        foreach (string header in headers)
+        //        {
+        //            dt.Columns.Add(header);
+        //        }
+
+        //        for (int i = 1; i < lines.Length; i++)
+        //        {
+        //            DataRow headRow = dt.NewRow();
+        //            string[] pastedCells = lines[i].Trim('\r').Split(';');
+        //            headRow.ItemArray = pastedCells;
+        //            dt.Rows.Add(headRow);
+        //        }
+
+        //        Console.WriteLine("There are {0} rows.", dt.Rows.Count);
 
 
-                string subject = string.Empty;
-                int area = 0;
+        //        List<Spc> pairs = new List<Spc>
+        //        {
+        //            new Spc("лещ", "Abramis brama"),
+        //            new Spc("щука", "Esox lucius"),
+        //            new Spc("судак", "Stizostedion lucioperca"),
+        //            new Spc("налим", "Lota lota"),
+        //            new Spc("жерех", "Aspus aspius"),
+        //            new Spc("язь", "Leuciscus idus"),
+        //            new Spc("плотва", "Rutilua rutilus"),
+        //            new Spc("чехонь", "Pelecus cultratus"),
+        //            new Spc("синец", "Abramis ballerus"),
+        //            new Spc("густера", "Blicca bjoerkna"),
+        //            new Spc("окунь", "Perca fluviatilis"),
+        //            new Spc("уклея", "Alburnus alburnus"),
+        //            new Spc("тюлька", "Clupeonella cultriventris caspia"),
+        //            new Spc("карась", "Carassius auratus"),
+        //            new Spc("голавль", "Leuciscus cephalus")
+        //        };
 
-                foreach (DataRow dr in dt.Rows)
-                {
-                Row:
 
-                    if (!string.IsNullOrWhiteSpace(dr[0].ToString()))
-                    {
-                        try
-                        {
-                            string subj = dr[0].ToString();
-                            Console.Write("Check subject name: ");
-                            SendKeys.SendWait(subj);
-                            subject = Console.ReadLine();
+        //        string subject = string.Empty;
+        //        int area = 0;
 
-                            Console.Write("Enter area, ha: ");
-                            if (subj.Contains("га"))
-                            {
-                                int haind = subj.IndexOf("га");
-                                string before = subj.Substring(0, haind).Trim();
-                                int numind = before.LastIndexOf(" ");
-                                string areapart = before.Substring(numind).Trim();
-                                SendKeys.SendWait(areapart);
-                            }
-                            else
-                            {
-                                SendKeys.SendWait(subj);
-                            }
+        //        foreach (DataRow dr in dt.Rows)
+        //        {
+        //        Row:
 
-                            area = Convert.ToInt32(Console.ReadLine());
-                        }
-                        catch { goto Row; }
-                    }
+        //            if (!string.IsNullOrWhiteSpace(dr[0].ToString()))
+        //            {
+        //                try
+        //                {
+        //                    string subj = dr[0].ToString();
+        //                    Console.Write("Check subject name: ");
+        //                    SendKeys.SendWait(subj);
+        //                    subject = Console.ReadLine();
 
-                    Data data = new Data();
+        //                    Console.Write("Enter area, ha: ");
+        //                    if (subj.Contains("га"))
+        //                    {
+        //                        int haind = subj.IndexOf("га");
+        //                        string before = subj.Substring(0, haind).Trim();
+        //                        int numind = before.LastIndexOf(" ");
+        //                        string areapart = before.Substring(numind).Trim();
+        //                        SendKeys.SendWait(areapart);
+        //                    }
+        //                    else
+        //                    {
+        //                        SendKeys.SendWait(subj);
+        //                    }
 
-                    Data.CardRow cr = data.Card.NewCardRow();
-                    cr.WaterRow = data.Water.AddWaterRow(watertype, watername);
+        //                    area = Convert.ToInt32(Console.ReadLine());
+        //                }
+        //                catch { goto Row; }
+        //            }
 
-                    try {
-                        cr.When = new DateTime(year, Convert.ToDateTime("01." + dr["месяц"] + ".01").Month, 15);
-                    } catch { continue; }
+        //            Data data = new Data();
 
-                    cr.Sign = StringCipher.Encrypt(subject, cr.When.ToString("s"));
-                    //cr.Investigator = Mayfly.UserSettings.Username;
-                    //cr.Sampler = 710;
-                    cr.ExactArea = 10000d * area;
-                    cr.Comments = string.Format("According to {0}", source);
-                    data.Card.AddCardRow(cr);
+        //            Data.CardRow cr = data.Card.NewCardRow();
+        //            cr.WaterRow = data.Water.AddWaterRow(watertype, watername);
 
-                    foreach (Spc spc in pairs)
-                    {
-                        if (!dt.Columns.Contains(spc.rus)) continue;
+        //            try {
+        //                cr.When = new DateTime(year, Convert.ToDateTime("01." + dr["месяц"] + ".01").Month, 15);
+        //            } catch { continue; }
 
-                        if (!string.IsNullOrWhiteSpace(dr[spc.rus].ToString()))
-                        {
-                            Data.SpeciesRow spcRow = data.Species.AddSpeciesRow(spc.lat);
-                            Data.LogRow lr = data.Log.NewLogRow();
-                            lr.CardRow = cr;
-                            lr.SpeciesRow = spcRow;
-                            lr.Mass = 1000 * Convert.ToDouble(dr[spc.rus]);
+        //            cr.Sign = StringCipher.Encrypt(subject, cr.When.ToString("s"));
+        //            //cr.Investigator = Mayfly.UserSettings.Username;
+        //            //cr.Sampler = 710;
+        //            cr.ExactArea = 10000d * area;
+        //            cr.Comments = string.Format("According to {0}", source);
+        //            data.Card.AddCardRow(cr);
 
-                            data.Log.AddLogRow(lr);
-                        }
-                    }
+        //            foreach (Spc spc in pairs)
+        //            {
+        //                if (!dt.Columns.Contains(spc.rus)) continue;
 
-                    data.WriteToFile(Path.Combine(destination, string.Format("{0} {1:yyyy-MM} {2}.fcd",
-                        subject, data.Solitary.When, watername)));
-                }
-            }
+        //                if (!string.IsNullOrWhiteSpace(dr[spc.rus].ToString()))
+        //                {
+        //                    Data.DefinitionRow spcRow = data.Species.AddSpeciesRow(spc.lat);
+        //                    Data.LogRow lr = data.Log.NewLogRow();
+        //                    lr.CardRow = cr;
+        //                    lr.SpeciesRow = spcRow;
+        //                    lr.Mass = 1000 * Convert.ToDouble(dr[spc.rus]);
 
-            //Console.WriteLine();
-            //Console.WriteLine();
+        //                    data.Log.AddLogRow(lr);
+        //                }
+        //            }
 
-            Console.Write("\r\nDone. Exit procedure (y)? ");
+        //            data.WriteToFile(Path.Combine(destination, string.Format("{0} {1:yyyy-MM} {2}.fcd",
+        //                subject, data.Solitary.When, watername)));
+        //        }
+        //    }
 
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                return;
-            }
+        //    //Console.WriteLine();
+        //    //Console.WriteLine();
 
-            goto Start;
-        }
+        //    Console.Write("\r\nDone. Exit procedure (y)? ");
+
+        //    if (Console.ReadKey().Key == ConsoleKey.Y)
+        //    {
+        //        return;
+        //    }
+
+        //    goto Start;
+        //}
 
         static void RearrangeStatCards()
         {
@@ -815,11 +815,11 @@ namespace Mayfly.ManualLicenser
         //                    {
         //                        // Initiate species and log record
 
-        //                        Plankton.Data.SpeciesRow spcRow = data.Species.AddSpeciesRow(Species);
+        //                        Plankton.Data.DefinitionRow spcRow = data.Species.AddSpeciesRow(Species);
 
         //                        Plankton.Data.LogRow logRow = data.Log.NewLogRow();
         //                        logRow.CardRow = data.Solitary;
-        //                        logRow.SpeciesRow = spcRow;
+        //                        logRow.DefinitionRow = spcRow;
         //                        logRow.Quantity = Qty;
 
         //                        // Set dilution
@@ -1102,11 +1102,11 @@ namespace Mayfly.ManualLicenser
                             {
                                 // Initiate species and log record
 
-                                Data.SpeciesRow spcRow = data.Species.AddSpeciesRow(Species);
+                                Data.DefinitionRow spcRow = data.Definition.AddDefinitionRow(91, Species);
 
                                 Data.LogRow logRow = data.Log.NewLogRow();
                                 logRow.CardRow = data.Solitary;
-                                logRow.SpeciesRow = spcRow;
+                                logRow.DefinitionRow = spcRow;
                                 logRow.Quantity = Qty;
 
                                 // Set dilution
@@ -1124,7 +1124,7 @@ namespace Mayfly.ManualLicenser
                                 data.Log.AddLogRow(logRow);
 
                                 Console.WriteLine("{0,-30}{1,5}{2,10:N3}",
-                                    spcRow.Species,
+                                    spcRow.Taxon,
                                     logRow.Quantity,
                                     (logRow.IsSubsampleNull() ? 1 : logRow.Subsample));
 

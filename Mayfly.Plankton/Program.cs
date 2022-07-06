@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mayfly.Plankton
@@ -35,12 +32,7 @@ namespace Mayfly.Plankton
 
                 if (args.Length > 1)
                 {
-                    switch (args[1])
-                    {
-                        default:
-                            card.OpenSpecies(args[1]);
-                            break;
-                    }
+                    card.Logger.RunDefinition(args[1]);
                 }
 
                 Application.Run(card);

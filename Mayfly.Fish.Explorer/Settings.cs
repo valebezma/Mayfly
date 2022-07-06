@@ -32,7 +32,7 @@ namespace Mayfly.Fish.Explorer
                 label7);
 
             comboBoxDiversity.DataSource = Wild.Service.GetDiversityIndices();
-            comboBoxGear.DataSource = Fish.UserSettings.SamplersIndex.Sampler.Select();
+            comboBoxGear.DataSource = Fish.UserSettings.ReaderSettings.SamplersIndex.Sampler.Select();
 
             ColumnAgeSpecies.ValueType = typeof(string);
             ColumnAgeValue.ValueType = typeof(Age);
@@ -56,11 +56,11 @@ namespace Mayfly.Fish.Explorer
 
             if (License.AllowedFeaturesLevel >= FeatureLevel.Advanced)
             {
-                speciesSelectorAge.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                speciesSelectorMeasure.IndexPath = Fish.UserSettings.SpeciesIndexPath;
-                speciesSelectorCatchability.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+                speciesSelectorAge.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
+                speciesSelectorMeasure.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
+                speciesSelectorCatchability.IndexPath = Fish.UserSettings.ReaderSettings.TaxonomicIndexPath;
 
-                foreach (SpeciesKey.TaxonRow speciesRow in Fish.UserSettings.SpeciesIndex.GetSpeciesRows())
+                foreach (TaxonomicIndex.TaxonRow speciesRow in Fish.UserSettings.ReaderSettings.TaxonomicIndex.GetSpeciesRows())
                 {
                     LoadAge(speciesRow);
                     LoadMeasure(speciesRow);
@@ -91,7 +91,7 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void LoadAge(SpeciesKey.TaxonRow speciesRow)
+        private void LoadAge(TaxonomicIndex.TaxonRow speciesRow)
         {
             Age age = Service.GetGamingAge(speciesRow.Name);
 
@@ -105,7 +105,7 @@ namespace Mayfly.Fish.Explorer
             spreadSheetAge.Rows.Add(gridRow);
         }
 
-        private void LoadMeasure(SpeciesKey.TaxonRow speciesRow)
+        private void LoadMeasure(TaxonomicIndex.TaxonRow speciesRow)
         {
             double measure = Service.GetMeasure(speciesRow.Name);
             if (double.IsNaN(measure)) return;
@@ -118,15 +118,15 @@ namespace Mayfly.Fish.Explorer
             spreadSheetMeasure.Rows.Add(gridRow);
         }
 
-        private void LoadCatchability(SpeciesKey.TaxonRow speciesRow)
+        private void LoadCatchability(TaxonomicIndex.TaxonRow speciesRow)
         {
-            foreach (Samplers.SamplerRow samplerRow in Fish.UserSettings.SamplersIndex.Sampler)
+            foreach (Samplers.SamplerRow samplerRow in Fish.UserSettings.ReaderSettings.SamplersIndex.Sampler)
             {
                 LoadCatchability(speciesRow, samplerRow);
             }
         }
 
-        private void LoadCatchability(SpeciesKey.TaxonRow speciesRow, Samplers.SamplerRow samplerRow)
+        private void LoadCatchability(TaxonomicIndex.TaxonRow speciesRow, Samplers.SamplerRow samplerRow)
         {
             double catchability = Service.GetCatchability(samplerRow.GetSamplerType(), speciesRow.Name);
             if (catchability == UserSettings.DefaultCatchability) return;

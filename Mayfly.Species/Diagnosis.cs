@@ -35,7 +35,7 @@ namespace Mayfly.Species
         {
             listViewHistory.Items.Clear();
 
-            foreach (SpeciesKey.StateRow stateRow in Panel.Selections)
+            foreach (TaxonomicIndex.StateRow stateRow in Panel.Selections)
             {
                 ListViewItem stepItem = new ListViewItem();
                 stepItem.Name = stateRow.ID.ToString();
@@ -49,7 +49,7 @@ namespace Mayfly.Species
         private void listViewHistory_ItemActivate(object sender, EventArgs e)
         {
             int stateID = Convert.ToInt32(listViewHistory.SelectedItems[0].Name);
-            Panel.GetBack(((SpeciesKey)Panel.CurrentStep.Table.DataSet).State.FindByID(stateID));
+            Panel.GetBack(((TaxonomicIndex)Panel.CurrentStep.Table.DataSet).State.FindByID(stateID));
         }
     }
 }

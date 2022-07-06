@@ -14,7 +14,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.MassSampled(speciesRow);
             }
@@ -22,7 +22,7 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        public static double MassSampled(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static double MassSampled(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                         return double.NaN;
                     }
 
-                    double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species).GetValue(individualRow.Length);
+                    double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon).GetValue(individualRow.Length);
 
                     if (double.IsNaN(mass))
                     {
@@ -72,7 +72,7 @@ namespace Mayfly.Fish.Explorer
             return result / 1000;
         }
 
-        public static double MassIndividual(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static double MassIndividual(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             double result = 0;
 
@@ -101,7 +101,7 @@ namespace Mayfly.Fish.Explorer
         public static double MassStratified(this Data.LogRow logRow)
         {
             double result = 0;
-            var cb = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.SpeciesRow.Species);
+            var cb = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon);
             if (cb == null) return double.NaN;
 
             foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
@@ -114,7 +114,7 @@ namespace Mayfly.Fish.Explorer
             return result / 1000;
         }
 
-        public static double MassStratified(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static double MassStratified(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             double result = 0;
 
@@ -140,7 +140,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static Sample MassSample(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static Sample MassSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             List<double> result = new List<double>();
 
@@ -153,7 +153,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size)
+        public static Sample MassSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Interval size)
         {
             List<double> result = new List<double>();
 
@@ -168,7 +168,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Age age)
+        public static Sample MassSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Age age)
         {
             List<double> result = new List<double>();
 
@@ -183,7 +183,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Sex sex)
+        public static Sample MassSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Sex sex)
         {
             List<double> result = new List<double>();
 
@@ -198,7 +198,7 @@ namespace Mayfly.Fish.Explorer
             return new Sample(result.ToArray());
         }
 
-        public static Sample MassSample(this CardStack stack, SpeciesKey.TaxonRow speciesRow, Interval size, Age age)
+        public static Sample MassSample(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow, Interval size, Age age)
         {
             List<double> result = new List<double>();
 

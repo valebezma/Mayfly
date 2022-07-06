@@ -150,6 +150,13 @@
   <data name="IndRename" xml:space="preserve">
     <value>Confirm changind identification from "{0}" to "{1}". If species entry doen's exist in card, it will be created.</value>
   </data>
+  <data name="LogBlocked" xml:space="preserve">
+    <value>Log is blocked</value>
+  </data>
+  <data name="LogInstruction" xml:space="preserve">
+    <value>You cannot change log value because it is calculated from values on individuals.
+You can change this politic in 'Data input' tab in 'Settings' window.</value>
+  </data>
   <data name="LogRename" xml:space="preserve">
     <value>Confirm replacing selected log entry from "{0}" to "{1}". If species entry doesn't exist, it will be created.</value>
   </data>

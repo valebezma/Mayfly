@@ -6,12 +6,12 @@ namespace Mayfly.Wild
 {
     public class TaxonomicComposition : Composition
     {
-        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, TaxonomicRank rank, bool includeEmpty)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, TaxonomicIndex index, TaxonomicRank rank, bool includeEmpty)
             : base("Taxonomic")
         {
             List<SpeciesSwarm> essentials = new List<SpeciesSwarm>();
 
-            foreach (SpeciesKey.TaxonRow taxonRow in index.GetTaxonRows(rank))
+            foreach (TaxonomicIndex.TaxonRow taxonRow in index.GetTaxonRows(rank))
             {
                 SpeciesSwarmPool taxonCategory = new SpeciesSwarmPool(taxonRow);
                 List<SpeciesSwarm> swarms = new List<SpeciesSwarm>();
@@ -66,7 +66,7 @@ namespace Mayfly.Wild
             this.SamplesCount = speciesComposition.SamplesCount;
         }
 
-        public TaxonomicComposition(SpeciesComposition speciesComposition, SpeciesKey index, TaxonomicRank rank)
+        public TaxonomicComposition(SpeciesComposition speciesComposition, TaxonomicIndex index, TaxonomicRank rank)
             : this(speciesComposition, index, rank, false)
         { }
 
@@ -81,13 +81,13 @@ namespace Mayfly.Wild
 
     public class SpeciesSwarmPool : Category
     {
-        public SpeciesKey.TaxonRow DataRow { get; set; }
+        public TaxonomicIndex.TaxonRow DataRow { get; set; }
 
-        public SpeciesKey.TaxonRow[] SpeciesRows
+        public TaxonomicIndex.TaxonRow[] SpeciesRows
         {
             get
             {
-                List<SpeciesKey.TaxonRow> result = new List<SpeciesKey.TaxonRow>();
+                List<TaxonomicIndex.TaxonRow> result = new List<TaxonomicIndex.TaxonRow>();
 
                 foreach (SpeciesSwarm swarm in SpeciesSwarms)
                 {
@@ -111,7 +111,7 @@ namespace Mayfly.Wild
             Name = name;
         }
 
-        public SpeciesSwarmPool(SpeciesKey.TaxonRow dataRow) : this(dataRow.CommonName)
+        public SpeciesSwarmPool(TaxonomicIndex.TaxonRow dataRow) : this(dataRow.CommonName)
         {
             DataRow = dataRow;
         }

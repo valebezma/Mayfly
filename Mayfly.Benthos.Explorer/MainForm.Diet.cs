@@ -31,7 +31,7 @@ namespace Mayfly.Benthos.Explorer
 
         public event CardRowSaveEventHandler CardRowSaved;
 
-        private SpeciesKey SpeciesIndex
+        private TaxonomicIndex SpeciesIndex
         { get; set; }
 
         List<Data.LogRow> selectedLogRows;
@@ -44,7 +44,7 @@ namespace Mayfly.Benthos.Explorer
         {
             if (indexPath != null)
             {
-                SpeciesIndex = new SpeciesKey();
+                SpeciesIndex = new TaxonomicIndex();
                 SpeciesIndex.Read(indexPath);
 
                 speciesValidator.IndexPath =
@@ -539,18 +539,18 @@ namespace Mayfly.Benthos.Explorer
         //    loaderSpc.RunWorkerAsync();
         //}
 
-        //private Data.SpeciesRow GetSpcRow(DataGridViewRow gridRow)
+        //private Data.DefinitionRow GetSpcRow(DataGridViewRow gridRow)
         //{
         //    int ID = (int)gridRow.Cells[columnSpcID.Index].Value;
         //    return data.Species.FindByID(ID);
         //}
 
-        //private DataGridViewRow GetSpcRow(Data.SpeciesRow speciesRow)
+        //private DataGridViewRow GetSpcRow(Data.DefinitionRow speciesRow)
         //{
         //    return columnSpcID.GetRow(speciesRow.ID, true, true);
         //}
 
-        //private DataGridViewRow UpdateSpeciesRow(Data.SpeciesRow speciesRow)
+        //private DataGridViewRow UpdateSpeciesRow(Data.DefinitionRow speciesRow)
         //{
         //    DataGridViewRow result = GetSpcRow(speciesRow);
         //    result.Cells[columnSpcSpc.Index].Value = speciesRow.Species;
@@ -627,7 +627,7 @@ namespace Mayfly.Benthos.Explorer
         ////    {
         ////        if (logRow.CardRow.IsSquareNull()) continue;
 
-        ////        if (!taxonRow.DoesInclude(logRow.SpeciesRow.Species)) continue;
+        ////        if (!taxonRow.DoesInclude(logRow.DefinitionRow.Taxon)) continue;
 
         ////        if (!logRow.IsQuantityNull())
         ////        {
@@ -685,7 +685,7 @@ namespace Mayfly.Benthos.Explorer
         ////    {
         ////        if (logRow.CardRow.IsSquareNull()) continue;
 
-        ////        if (!variaSpc.Contains(SpeciesIndex.Species.FindBySpecies(logRow.SpeciesRow.Species))) continue;
+        ////        if (!variaSpc.Contains(SpeciesIndex.Definition.FindByName(logRow.DefinitionRow.Taxon))) continue;
 
         ////        if (!logRow.IsQuantityNull())
         ////        {
@@ -742,7 +742,7 @@ namespace Mayfly.Benthos.Explorer
         //    {
         //        if (logRow.CardRow.IsSquareNull()) continue;
 
-        //        if (!taxonRow.Includes(logRow.SpeciesRow.Species)) continue;
+        //        if (!taxonRow.Includes(logRow.DefinitionRow.Taxon)) continue;
 
         //        if (!logRow.IsQuantityNull())
         //        {
@@ -791,7 +791,7 @@ namespace Mayfly.Benthos.Explorer
         //    {
         //        if (logRow.CardRow.IsSquareNull()) continue;
 
-        //        if (!variaLog.Contains(SpeciesIndex.Species.FindBySpecies(logRow.SpeciesRow.Species))) continue;
+        //        if (!variaLog.Contains(SpeciesIndex.Definition.FindByName(logRow.DefinitionRow.Taxon))) continue;
 
         //        if (!logRow.IsQuantityNull())
         //        {
@@ -824,7 +824,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        //private DataGridViewRow LogRow(Data.CardRow cardRow, Data.SpeciesRow speciesRow)
+        //private DataGridViewRow LogRow(Data.CardRow cardRow, Data.DefinitionRow speciesRow)
         //{
         //    Data.LogRow logRow = data.Log.FindByCardIDSpcID(cardRow.ID, speciesRow.ID);
 
@@ -855,7 +855,7 @@ namespace Mayfly.Benthos.Explorer
         //    }
         //    else
         //    {
-        //        result.Cells[columnLogSpc.Index].Value = logRow.SpeciesRow.Species;
+        //        result.Cells[columnLogSpc.Index].Value = logRow.DefinitionRow.Taxon;
         //    }
 
         //    result.Cells[columnLogQuantity.Index].Value = logRow.Quantity;
@@ -869,7 +869,7 @@ namespace Mayfly.Benthos.Explorer
         //    return result;
         //}
 
-        ////private DataGridViewRow LogRow(Data.SpeciesRow speciesRow)
+        ////private DataGridViewRow LogRow(Data.DefinitionRow speciesRow)
         ////{
         ////    DataGridViewRow result = new DataGridViewRow();
 

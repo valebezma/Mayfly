@@ -42,7 +42,7 @@ namespace Mayfly.Fish.Legal
 
             FileName = null;
 
-            speciesLogger.IndexPath = Fish.UserSettings.SpeciesIndexPath;
+            speciesLogger.IndexPath = Fish.UserSettings.TaxonomicIndexPath;
 
             ColumnSpecies.ValueType = 
                 typeof(string);
@@ -157,10 +157,10 @@ namespace Mayfly.Fish.Legal
                 if (gridRow.IsNewRow) continue;
 
                 string species = (string)gridRow.Cells[ColumnSpecies.Index].Value;
-                LegalPapers.SpeciesRow speciesRow = Paper.Species.FindBySpecies(species);
+                LegalPapers.SpeciesRow speciesRow = Paper.Definition.FindByName(species);
                 if (speciesRow == null)
                 {
-                    Species.SpeciesKey.SpeciesRow refSpecies = speciesLogger.Find(species);
+                    Species.TaxonomicIndex.SpeciesRow refSpecies = speciesLogger.Find(species);
                     speciesRow = Paper.Species.AddSpeciesRow(species, refSpecies == null ? species : refSpecies.Name);
                 }
 

@@ -119,7 +119,7 @@ namespace Mayfly.Fish.Explorer
 
         private void UpdateGamingStock(int i) 
         {
-            Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(
+            Data.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
                 compositionWizard.CatchesComposition[i].Name);            
 
             if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null)
@@ -230,7 +230,7 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)
             {
-                Data.SpeciesRow speciesRow = Data.Parent.Species.FindBySpecies(
+                Data.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
                     compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();
@@ -281,14 +281,14 @@ namespace Mayfly.Fish.Explorer
 
         private void populationSizeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)e.Argument;
+            TaxonomicIndex.TaxonRow speciesRow = (TaxonomicIndex.TaxonRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetLengthCompositionFrame(speciesRow, UserSettings.SizeInterval), speciesRow);
         }
 
         private void populationAgeComposer_DoWork(object sender, DoWorkEventArgs e)
         {
-            SpeciesKey.TaxonRow speciesRow = (SpeciesKey.TaxonRow)e.Argument;
+            TaxonomicIndex.TaxonRow speciesRow = (TaxonomicIndex.TaxonRow)e.Argument;
             e.Result = gearWizard.SelectedStacks.ToArray().GetWeightedComposition(
                 gearWizard.WeightType, gearWizard.SelectedUnit.Variant, Data.GetAgeCompositionFrame(speciesRow), speciesRow);
         }

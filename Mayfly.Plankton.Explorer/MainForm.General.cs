@@ -85,7 +85,7 @@ namespace Mayfly.Plankton.Explorer
         private bool DietExplorer
         { get; set; }
 
-        private SpeciesKey SpeciesIndex
+        private TaxonomicIndex SpeciesIndex
         { get; set; }
 
 
@@ -213,7 +213,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void speciesInd_Click(object sender, EventArgs e)
         {
-            Data.SpeciesRow speciesRow = (Data.SpeciesRow)((ToolStripMenuItem)sender).Tag;
+            Data.DefinitionRow speciesRow = (Data.DefinitionRow)((ToolStripMenuItem)sender).Tag;
             LoadIndLog(speciesRow);
         }
 
@@ -455,7 +455,7 @@ namespace Mayfly.Plankton.Explorer
             chart.Series[0].Points.Clear();
             chart.Legends.Clear();
 
-            foreach (Data.SpeciesRow speciesRow in data.Species)
+            foreach (Data.DefinitionRow speciesRow in data.Species)
             {
                 chart.Series[0].Points.Add(SpeciesDataPoint(speciesRow));
             }
@@ -475,7 +475,7 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private DataPoint SpeciesDataPoint(Data.SpeciesRow speciesRow)
+        private DataPoint SpeciesDataPoint(Data.DefinitionRow speciesRow)
         {
             DataPoint dataPoint = new DataPoint();
             double quantity = speciesRow.TotalQuantity;
@@ -496,7 +496,7 @@ namespace Mayfly.Plankton.Explorer
         {
             if (indexPath != null)
             {
-                SpeciesIndex = new SpeciesKey();
+                SpeciesIndex = new TaxonomicIndex();
                 SpeciesIndex.ReadXml(indexPath);
 
                 speciesValidator.IndexPath =
@@ -534,7 +534,7 @@ namespace Mayfly.Plankton.Explorer
 
             Text = Resources.Interface.DietTitle;
 
-            SpeciesIndex = new SpeciesKey();
+            SpeciesIndex = new TaxonomicIndex();
             SpeciesIndex.ReadXml(trophicsIndex);
             tabPageArtifacts.Parent = tabControl;
             speciesValidator.IndexPath = trophicsIndex;

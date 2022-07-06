@@ -40,7 +40,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -48,7 +48,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -64,7 +64,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (SpeciesKey.TaxonRow speciesRow in stack.GetSpecies())
+            foreach (TaxonomicIndex.TaxonRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -72,7 +72,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             double result = 0.0;
 
@@ -121,7 +121,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static int QuantityIndividual(this CardStack stack, SpeciesKey.TaxonRow speciesRow)
+        public static int QuantityIndividual(this CardStack stack, TaxonomicIndex.TaxonRow speciesRow)
         {
             int result = 0;
 

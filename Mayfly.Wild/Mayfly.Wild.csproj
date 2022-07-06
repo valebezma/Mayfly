@@ -75,6 +75,12 @@
     <Compile Include="Compositions\LengthComposition.cs" />
     <Compile Include="Compositions\SpeciesComposition.cs" />
     <Compile Include="Compositions\TaxonomicComposition.cs" />
+    <Compile Include="Controls\LogProcessor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\LogProcessor.Designer.cs">
+      <DependentUpon>LogProcessor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs">
       <DependentUpon>Data.xsd</DependentUpon>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="Forms\AboutData.Designer.cs">
       <DependentUpon>AboutData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Card.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Card.designer.cs">
+      <DependentUpon>Card.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogReference.cs">
       <SubType>Form</SubType>
@@ -368,11 +380,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\LogProcessor.resx">
+      <DependentUpon>LogProcessor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutData.resx">
       <DependentUpon>AboutData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutData.ru.resx">
       <DependentUpon>AboutData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Card.resx">
+      <DependentUpon>Card.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Card.ru.resx">
+      <DependentUpon>Card.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReference.resx">
       <DependentUpon>DialogReference.cs</DependentUpon>

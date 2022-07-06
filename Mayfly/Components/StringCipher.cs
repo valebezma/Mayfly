@@ -9,7 +9,7 @@ namespace Mayfly
     public static class StringCipher
     {
         // This constant is used to determine the keysize of the encryption algorithm in bits.
-        // We divide this by 8 within the code below to get the Species.FindBySpecies number of bytes.
+        // We divide this by 8 within the code below to get the number of bytes.
         private const int Keysize = 256;
 
         // This constant determines the number of iterations for the password bytes generation function.

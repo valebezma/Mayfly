@@ -15,7 +15,7 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensionsBio
     {
-        public static void ApplyMassRecoveryModel(this Data data, Data.SpeciesRow speciesRow, Data.VariableRow variableRow, Regression model)
+        public static void ApplyMassRecoveryModel(this Data data, Data.DefinitionRow speciesRow, Data.VariableRow variableRow, Regression model)
         {
             data.ApplyMassRecoveryModel(speciesRow.GetIndividualRows(), variableRow, model);
         }
@@ -114,13 +114,13 @@ namespace Mayfly.Extensions
         ///// <param name="referenceData"></param>
         //public static void RecoverMasses(this Data data, Data referenceData)
         //{
-        //    foreach (Data.SpeciesRow speciesRow in data.Species)
+        //    foreach (Data.DefinitionRow speciesRow in data.Species)
         //    {
         //        #region Associates
 
         //        List<SpeciesKey.TaxonRow> associates = new List<SpeciesKey.TaxonRow>();
 
-        //        SpeciesKey.TaxonRow conSpecies = referenceData.Species.FindBySpecies(speciesRow.Species);
+        //        SpeciesKey.TaxonRow conSpecies = referenceData.Definition.FindByName(speciesRow.Species);
 
         //        if (conSpecies != null)
         //        {
@@ -129,7 +129,7 @@ namespace Mayfly.Extensions
 
         //        foreach (string associate in Mayfly.Benthos.Explorer.Service.GetAssociates(speciesRow.Species))
         //        {
-        //            conSpecies = referenceData.Species.FindBySpecies(associate);
+        //            conSpecies = referenceData.Definition.FindByName(associate);
 
         //            if (conSpecies != null)
         //            {
@@ -139,7 +139,7 @@ namespace Mayfly.Extensions
 
         //        if (associates.Count == 0)
         //        {
-        //            Data.SpeciesRow conGenus = referenceData.Species.FindBySpecies(
+        //            Data.DefinitionRow conGenus = referenceData.Definition.FindByName(
         //                Species.SpeciesKey.Genus(speciesRow.Species) + " sp.");
 
         //            if (conGenus != null)
@@ -154,7 +154,7 @@ namespace Mayfly.Extensions
 
         //        List<string> assoc = new List<string>();
 
-        //        foreach (Data.SpeciesRow associate in associates)
+        //        foreach (Data.DefinitionRow associate in associates)
         //        {
         //            assoc.Add(associate.Species);
         //        }
@@ -177,7 +177,7 @@ namespace Mayfly.Extensions
         //        {
         //            List<Data.IndividualRow> natureRows = new List<Data.IndividualRow>();
 
-        //            foreach (Data.SpeciesRow associate in associates)
+        //            foreach (Data.DefinitionRow associate in associates)
         //            {
         //                natureRows.AddRange(associate.GetIndividualRows().GetWeightedAndMeasuredIndividualRows());
         //            }
@@ -216,7 +216,7 @@ namespace Mayfly.Extensions
 
         //        List<Data.IndividualRow> weightedIndividuals = new List<Data.IndividualRow>();
 
-        //        foreach (Data.SpeciesRow associate in associates)
+        //        foreach (Data.DefinitionRow associate in associates)
         //        {
         //            weightedIndividuals.AddRange(associate.GetIndividualRows());
         //        }
@@ -263,7 +263,7 @@ namespace Mayfly.Extensions
         //        {
         //            List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
 
-        //            foreach (Data.SpeciesRow associate in associates)
+        //            foreach (Data.DefinitionRow associate in associates)
         //            {
         //                naturalRows.AddRange(associate.GetIndividualRows()
         //                    .GetMeasuredRows(referenceData.Individual.Columns[dataColumn.ColumnName]));
@@ -314,7 +314,7 @@ namespace Mayfly.Extensions
         //        {
         //            int weighted = 0;
 
-        //            foreach (Data.SpeciesRow associate in associates)
+        //            foreach (Data.DefinitionRow associate in associates)
         //            {
         //                weighted += referenceData.GetStack().Weighted(associate);
         //            }
@@ -325,7 +325,7 @@ namespace Mayfly.Extensions
         //            {
         //                List<Data.IndividualRow> naturalRows = new List<Data.IndividualRow>();
 
-        //                foreach (Data.SpeciesRow associate in associates)
+        //                foreach (Data.DefinitionRow associate in associates)
         //                {
         //                    naturalRows.AddRange(associate.GetWeightedIndividualRows());
         //                }
@@ -373,14 +373,14 @@ namespace Mayfly.Extensions
 
 
 
-        public static int Quantity(this Data.IndividualDataTable individual, Data.SpeciesRow speciesRow, Data.VariableRow variableRow)
+        public static int Quantity(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
         {
-            return individual.Quantity(speciesRow.Species, variableRow);
+            return individual.Quantity(speciesRow.Taxon, variableRow);
         }
 
         public static int Quantity(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
         {
-            Data.SpeciesRow speciesRow = ((Data)individual.DataSet).Species.FindBySpecies(species);
+            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
 
 
 
@@ -403,14 +403,14 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.SpeciesRow speciesRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
         {
-            return individual.Unweighted(speciesRow.Species, variableRow);
+            return individual.Unweighted(speciesRow.Taxon, variableRow);
         }
 
         public static int Unweighted(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
         {
-            Data.SpeciesRow speciesRow = ((Data)individual.DataSet).Species.FindBySpecies(species);
+            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
 
 
 
@@ -477,11 +477,11 @@ namespace Mayfly.Extensions
                 }
             }
 
-            SpeciesKey.TaxonRow[] spclist = data.GetStack().GetSpecies();
+            TaxonomicIndex.TaxonRow[] spclist = data.GetStack().GetSpecies();
 
             for (int i = 0; i < spclist.Length; i++)
             {
-                SpeciesKey.TaxonRow speciesRow = spclist[i];
+                TaxonomicIndex.TaxonRow speciesRow = spclist[i];
 
                 //if (speciesRow.Quantity < 5)
                 //{
@@ -539,7 +539,7 @@ namespace Mayfly.Extensions
                 //}
             }
 
-            if (data.Species.Count == 0)
+            if (data.Definition.Count == 0)
                 throw new ArgumentNullException("Regression data", "Data is unsufficient to be used as bio.");
 
             return data;

@@ -29,7 +29,7 @@ namespace Mayfly.Fish.Explorer
 
         private WizardGearSet gearWizard;
 
-        public SpeciesKey.TaxonRow SpeciesRow;
+        public TaxonomicIndex.TaxonRow SpeciesRow;
 
         public double Area 
         {
@@ -115,7 +115,7 @@ namespace Mayfly.Fish.Explorer
             this.RestoreAllCheckStates();
         }
 
-        public WizardExtrapolation(CardStack data, SpeciesKey.TaxonRow speciesRow) : this()
+        public WizardExtrapolation(CardStack data, TaxonomicIndex.TaxonRow speciesRow) : this()
         {
             Data = data;
             SpeciesRow = speciesRow;

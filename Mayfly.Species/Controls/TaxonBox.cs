@@ -11,20 +11,20 @@ using System.Drawing;
 
 namespace Mayfly.Species.Controls
 {
-    public partial class TaxonSelector : System.Windows.Forms.TextBox
+    public partial class TaxonBox : System.Windows.Forms.TextBox
     {
-        SpeciesKey data;
-        SpeciesKey.TaxonRow taxon;
+        TaxonomicIndex data;
+        TaxonomicIndex.TaxonRow taxon;
         EventHandler taxonSelected;
         EventHandler treeLoaded;
         TaxonEventHandler beforeTaxonSelected;
-        TaxonSelectorPopup selectTaxon;
+        TaxonBoxPopup selectTaxon;
         TaxonomicRank deepestRank;
         internal bool SelectionAllowed = true;
 
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SpeciesKey Data
+        public TaxonomicIndex Data
         {
             set
             {
@@ -32,7 +32,7 @@ namespace Mayfly.Species.Controls
 
                 if (AllowSelect)
                 {
-                    selectTaxon = new TaxonSelectorPopup(data);
+                    selectTaxon = new TaxonBoxPopup(data);
                     selectTaxon.OnTaxonSelected += selectTaxon_OnTaxonSelected;
                     selectTaxon.OnTreeLoaded += selectTaxon_OnTreeLoaded;
                 }
@@ -50,7 +50,7 @@ namespace Mayfly.Species.Controls
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SpeciesKey.TaxonRow Taxon
+        public TaxonomicIndex.TaxonRow Taxon
         {
             set
             {
@@ -164,14 +164,14 @@ namespace Mayfly.Species.Controls
         }
 
 
-        public TaxonSelector()
+        public TaxonBox()
         {
             InitializeComponent();
             base.ReadOnly = true;
             base.WordWrap = false;
         }
 
-        public TaxonSelector(IContainer container)
+        public TaxonBox(IContainer container)
         {
             container.Add(this);
 
@@ -197,7 +197,7 @@ namespace Mayfly.Species.Controls
 
             if (e.KeyChar == (char)Keys.Back)
             {
-                taxon = null;
+                Taxon = null;
             }
             else if (e.KeyChar == (char)Keys.Return)
             {
@@ -247,12 +247,12 @@ namespace Mayfly.Species.Controls
         {
             if (beforeTaxonSelected != null)
             {
-                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(((TaxonSelectorPopup)sender).Taxon));
+                beforeTaxonSelected.Invoke(this, new TaxonEventArgs(((TaxonBoxPopup)sender).Taxon));
             }
 
             if (SelectionAllowed)
             {
-                taxon = ((TaxonSelectorPopup)sender).Taxon;
+                taxon = ((TaxonBoxPopup)sender).Taxon;
                 resetText();
                 if (taxonSelected != null) taxonSelected.Invoke(this, new TaxonEventArgs(taxon));
             }

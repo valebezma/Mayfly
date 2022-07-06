@@ -10,11 +10,11 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        SpeciesKey.BaseRow baseSpc;
+        TaxonomicIndex.BaseRow baseSpc;
 
-        SpeciesKey.TaxonRow[] taxonSpc;
+        TaxonomicIndex.TaxonRow[] taxonSpc;
 
-        SpeciesKey.SpeciesRow[] variaSpc;
+        TaxonomicIndex.SpeciesRow[] variaSpc;
 
 
 
@@ -27,7 +27,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void baseItem_Click(object sender, EventArgs e)
         {
-            SpeciesKey.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as SpeciesKey.BaseRow;
+            TaxonomicIndex.BaseRow baseRow = ((ToolStripMenuItem)sender).Tag as TaxonomicIndex.BaseRow;
 
             DataGridViewColumn gridColumn = spreadSheetSpc.InsertColumn(baseRow.BaseName,
                 baseRow.BaseName, typeof(string), 0);
@@ -47,7 +47,7 @@ namespace Mayfly.Plankton.Explorer
 
                 string species = gridRow.Cells[columnSpcSpc.Index].Value as string;
 
-                SpeciesKey.TaxonRow taxonRow = SpeciesIndex.GetTaxon(species, baseRow);
+                TaxonomicIndex.TaxonRow taxonRow = SpeciesIndex.GetTaxon(species, baseRow);
 
                 gridRow.Cells[gridColumn.Index].Value = (taxonRow == null) ?
                     Species.Resources.Interface.Varia : taxonRow.TaxonName;
@@ -69,18 +69,18 @@ namespace Mayfly.Plankton.Explorer
         }
 
 
-        private DataGridViewRow GetSpcRow(Data.SpeciesRow speciesRow)
+        private DataGridViewRow GetSpcRow(Data.DefinitionRow speciesRow)
         {
             return columnSpcID.GetRow(speciesRow.ID, true, true);
         }
 
-        private Data.SpeciesRow GetSpcRow(DataGridViewRow gridRow)
+        private Data.DefinitionRow GetSpcRow(DataGridViewRow gridRow)
         {
             int ID = (int)gridRow.Cells[columnSpcID.Index].Value;
             return data.Species.FindByID(ID);
         }
 
-        private DataGridViewRow UpdateSpeciesRow(Data.SpeciesRow speciesRow)
+        private DataGridViewRow UpdateSpeciesRow(Data.DefinitionRow speciesRow)
         {
             DataGridViewRow result = GetSpcRow(speciesRow);
             result.Cells[columnSpcSpc.Index].Value = speciesRow;
@@ -95,7 +95,7 @@ namespace Mayfly.Plankton.Explorer
             if (SpeciesIndex == null) return;
 
             // Fill list
-            foreach (SpeciesKey.BaseRow baseRow in SpeciesIndex.Base)
+            foreach (TaxonomicIndex.BaseRow baseRow in SpeciesIndex.Base)
             {
                 comboBoxSpc.Items.Add(baseRow);
 

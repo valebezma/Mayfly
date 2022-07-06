@@ -18,7 +18,7 @@ namespace Mayfly.Benthos
         /// <param name="report"></param>
         public static void AddReport(this Data.IndividualRow[] indRows, Report report, string logtitle)
         {
-            Report.Table logtable = indRows.GetIndividualsLogReportTable(new ResourceManager(typeof(Individuals)), logtitle);
+            Report.Table logtable = indRows.GetIndividualsLogReportTable(logtitle);
             if (logtable != null) report.AddTable(logtable);
         }
 
@@ -40,7 +40,7 @@ namespace Mayfly.Benthos
         /// <param name="report"></param>
         public static void AddReport(this Data.LogRow logRow, Report report)
         {
-            string speciesPresentation = logRow.SpeciesRow.KeyRecord.FullNameReport;
+            string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
             logRow.AddReport(report, speciesPresentation);
         }
 
@@ -310,7 +310,7 @@ namespace Mayfly.Benthos
         /// <returns></returns>
         public static Report GetReport(this Data.LogRow logRow)
         {
-            Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, logRow.SpeciesRow.Species));
+            Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, logRow.DefinitionRow.Taxon));
             logRow.AddReport(report);
             report.End(logRow.CardRow.When.Year, logRow.CardRow.Investigator);
             return report;

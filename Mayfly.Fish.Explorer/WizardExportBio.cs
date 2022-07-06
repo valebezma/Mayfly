@@ -250,9 +250,9 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetGrowth.SelectedRows)
             {
-                Data.SpeciesRow spc = (Data.SpeciesRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Data.DefinitionRow spc = (Data.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
-                Scatterplot scatter = new Scatterplot(Allowed.FindGrowthModel(spc.Species).InternalData);
+                Scatterplot scatter = new Scatterplot(Allowed.FindGrowthModel(spc.Taxon).InternalData);
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Growth;
                 scatter.Properties.ShowPredictionBands = true;
@@ -266,9 +266,9 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetWeight.SelectedRows)
             {
-                Data.SpeciesRow spc = (Data.SpeciesRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Data.DefinitionRow spc = (Data.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
-                Scatterplot scatter = new Scatterplot(Allowed.FindMassModel(spc.Species).InternalData);
+                Scatterplot scatter = new Scatterplot(Allowed.FindMassModel(spc.Taxon).InternalData);
                 scatter.Properties.ShowTrend = true;
                 scatter.Properties.SelectedApproximationType = TrendType.Growth;
                 scatter.Properties.ShowPredictionBands = true;

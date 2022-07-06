@@ -13,7 +13,7 @@ namespace Mayfly.Species
             }
         }
 
-        public static FileSystemInterface Interface = new FileSystemInterface(null, ".sps", ".html");
+        public static FileSystemInterface Interface = new FileSystemInterface(null, ".txn", ".html");
 
         public static bool UseClassicKeyReport 
         {

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Resources;
+﻿using Mayfly.Extensions;
 using Mayfly.Species;
+using Mayfly.Wild;
+using System;
+using System.Collections.Generic;
+using System.Resources;
 
 namespace Mayfly.Wild
 {
     public static partial class DataExtensions
     {
-        public static Report.Table GetIndividualsLogReportTable(this Data.IndividualRow[] individualRows, ResourceManager resources, string title)
+        public static Report.Table GetIndividualsLogReportTable(this Data.IndividualRow[] individualRows, string title)
         {
             if (individualRows.Length > 0)
             {
@@ -156,7 +155,7 @@ namespace Mayfly.Wild
             else return null;
         }
 
-        public static Report.Table GetSpeciesLogReportTable(this Data.LogRow[] logRows, SpeciesKey key, string massCaption, string logTitle)
+        public static Report.Table GetSpeciesLogReportTable(this Data.LogRow[] logRows, string massCaption, string logTitle)
         {
             Report.Table table = new Report.Table(logTitle);
 
@@ -173,10 +172,7 @@ namespace Mayfly.Wild
             {
                 table.StartRow();
 
-                //table.StartCellOfClass("left", 
-                //    logRow.SpeciesRow.GetKeyRecord(key).ReportShortPresentation);
-
-                string logEntry = logRow.SpeciesRow.KeyRecord.FullNameReport;
+                string logEntry = logRow.DefinitionRow.KeyRecord.FullNameReport;
 
                 if (!logRow.IsCommentsNull())
                 {
@@ -221,6 +217,32 @@ namespace Mayfly.Wild
             return table;
         }
 
+        /// <summary>
+        /// Adds Individual profiles and/or Individuals log into Report
+        /// </summary>
+        /// <param name="indRows"></param>
+        /// <param name="report"></param>
+        /// <param name="level"></param>
+        public static void AddReport(this Data.IndividualRow[] indRows, Report report, CardReportLevel level, string logtitle)
+        {
+            if (level.HasFlag(CardReportLevel.Individuals))
+            {
+                Report.Table logtable = indRows.GetIndividualsLogReportTable(logtitle);
+                if (logtable != null) report.AddTable(logtable);
+            }
+
+            if (level.HasFlag(CardReportLevel.Profile))
+            {
+                bool first = true;
+                foreach (Data.IndividualRow individualRow in indRows)
+                {
+                    if (first) { first = false; } else { report.BreakPage(); }
+                    report.AddHeader(Resources.Reports.Header.IndividualProfile);
+                    individualRow.AddReport(report);
+                }
+            }
+        }
+
         public static void AddCribnote(this Report report, Report.Table crib)
         {
             report.AddStyleSheet(@"wild\strates.css");
@@ -229,6 +251,125 @@ namespace Mayfly.Wild
             report.AddTable(crib, "ruler");
             report.UseTableNumeration = tablenum;
         }
+
+        /// <summary>
+        /// Adds Individuals log and/or Stratified sample combined for several LogRows with givn titles into Report
+        /// </summary>
+        /// <param name="logRows"></param>
+        /// <param name="report"></param>
+        /// <param name="level"></param>
+        /// <param name="logtitle"></param>
+        /// <param name="stratifiedtitle"></param>
+        public static void AddReport(this Data.LogRow[] logRows, Report report, CardReportLevel level, string logtitle, string stratifiedtitle)
+        {
+            if (level.HasFlag(CardReportLevel.Individuals))
+            {
+                List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
+
+                foreach (Data.LogRow logRow in logRows)
+                {
+                    indRows.AddRange(logRow.GetIndividualRows());
+                }
+
+                indRows.ToArray().AddReport(report, CardReportLevel.Individuals, logtitle);
+            }
+
+            int str = 0;
+
+            foreach (Data.LogRow logRow in logRows)
+            {
+                str += logRow.QuantityStratified;
+            }
+
+            if (str > 0 && level.HasFlag(CardReportLevel.Stratified))
+            {
+                double min = double.MaxValue;
+                double max = double.MinValue;
+
+                double interval = 0.1;
+
+                foreach (Data.LogRow logRow in logRows)
+                {
+                    if (logRow.QuantityStratified > 0)
+                    {
+                        interval = Math.Max(interval, logRow.Interval);
+                        min = Math.Min(min, logRow.MinStrate.LeftEndpoint);
+                        max = Math.Max(max, logRow.MaxStrate.LeftEndpoint);
+                    }
+                }
+
+                report.AddCribnote(Wild.Service.GetStratifiedNote(stratifiedtitle, min, max, interval, (l) => {
+                    int countSum = 0; foreach (Data.LogRow logRow in logRows)
+                    {
+                        foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) { if (stratifiedRow.SizeClass.LeftClosedContains(l)) countSum += stratifiedRow.Count; }
+                    }
+                    return countSum;
+                }));
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Creates report containing Individuals log and/or Individual profiles
+        /// </summary>
+        /// <param name="indRows"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        public static Report GetReport(this Data.IndividualRow[] indRows, CardReportLevel level)
+        {
+            Report report = new Report(level == CardReportLevel.Profile ? string.Empty : Wild.Resources.Reports.Header.IndividualsLog);
+            indRows.AddReport(report, level, string.Empty);
+            report.EndBranded();
+            return report;
+        }
+
+        /// <summary>
+        /// Creates report containing Individuals log and/or Stratified sample for given LogRows
+        /// </summary>
+        /// <param name="logRows"></param>
+        /// <param name="level"></param>
+        /// <param name="splitSpecies">If true - each species will be reported separately</param>
+        /// <returns></returns>
+        public static Report GetReport(this Data.LogRow[] logRows, CardReportLevel level, bool splitSpecies)
+        {
+            if (splitSpecies)
+            {
+                List<Data.DefinitionRow> speciesRows = new List<Data.DefinitionRow>();
+                foreach (Data.LogRow logRow in logRows) { if (!speciesRows.Contains(logRow.DefinitionRow)) speciesRows.Add(logRow.DefinitionRow); }
+
+                Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, string.Empty));
+                foreach (Data.DefinitionRow speciesRow in speciesRows)
+                {
+                    List<Data.LogRow> _logRows = new List<Data.LogRow>();
+                    foreach (Data.LogRow logRow in logRows) { if (logRow.DefinitionRow == speciesRow) _logRows.Add(logRow); }
+
+                    string speciesPresentation = speciesRow.KeyRecord.FullNameReport;
+                    logRows.AddReport(report, level, speciesPresentation,
+                        string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
+                }
+                return report;
+            }
+            else
+            {
+                Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, string.Empty));
+                logRows.AddReport(report, level, Resources.Reports.Header.FBA, string.Format(Wild.Resources.Reports.Header.StratifiedSample, string.Empty));
+                return report;
+            }
+        }
+
+        /// <summary>
+        /// Creates report containing Individuals log and/or Stratified sample for given LogRows (splitting each species)
+        /// </summary>
+        /// <param name="logRow"></param>
+        /// <returns></returns>
+        public static Report GetReport(this Data.LogRow[] logRows, CardReportLevel level)
+        {
+            return logRows.GetReport(level, true);
+        }
+
+
     }
 
     public enum CardReportLevel

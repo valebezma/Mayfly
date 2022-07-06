@@ -90,17 +90,17 @@
     <Compile Include="Controls\DefinitionPanel.Designer.cs">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TaxaTreeView.cs">
+    <Compile Include="Controls\TaxonTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\TaxaTreeView.Designer.cs">
-      <DependentUpon>TaxaTreeView.cs</DependentUpon>
+    <Compile Include="Controls\TaxonTreeView.Designer.cs">
+      <DependentUpon>TaxonTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TaxonSelectorPopup.cs">
+    <Compile Include="Controls\TaxonBoxPopup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\TaxonSelectorPopup.Designer.cs">
-      <DependentUpon>TaxonSelectorPopup.cs</DependentUpon>
+    <Compile Include="Controls\TaxonBoxPopup.Designer.cs">
+      <DependentUpon>TaxonBoxPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\State.cs">
       <SubType>UserControl</SubType>
@@ -115,11 +115,11 @@
     <Compile Include="Controls\StateEditor.Designer.cs">
       <DependentUpon>StateEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TaxonSelector.cs">
+    <Compile Include="Controls\TaxonBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\TaxonSelector.Designer.cs">
-      <DependentUpon>TaxonSelector.cs</DependentUpon>
+    <Compile Include="Controls\TaxonBox.Designer.cs">
+      <DependentUpon>TaxonBox.cs</DependentUpon>
     </Compile>
     <Compile Include="TaxonomicRank.cs" />
     <Compile Include="Resources\Rank.ru.Designer.cs">
@@ -181,13 +181,13 @@
     <Compile Include="SpeciesCard.Designer.cs">
       <DependentUpon>SpeciesCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpeciesKey.cs">
-      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    <Compile Include="TaxonomicIndex.cs">
+      <DependentUpon>TaxonomicIndex.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SpeciesKey.Designer.cs">
+    <Compile Include="TaxonomicIndex.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+      <DependentUpon>TaxonomicIndex.xsd</DependentUpon>
     </Compile>
     <Compile Include="EditFeature.cs">
       <SubType>Form</SubType>
@@ -213,11 +213,11 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SpeciesSelector.cs">
+    <Compile Include="Controls\TaxonProvider.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\SpeciesSelector.Designer.cs">
-      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    <Compile Include="Controls\TaxonProvider.Designer.cs">
+      <DependentUpon>TaxonProvider.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -237,11 +237,11 @@
     <EmbeddedResource Include="Controls\DefinitionPanel.ru.resx">
       <DependentUpon>DefinitionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TaxaTreeView.resx">
-      <DependentUpon>TaxaTreeView.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TaxonTreeView.resx">
+      <DependentUpon>TaxonTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TaxonSelectorPopup.resx">
-      <DependentUpon>TaxonSelectorPopup.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TaxonBoxPopup.resx">
+      <DependentUpon>TaxonBoxPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\State.resx">
       <DependentUpon>State.cs</DependentUpon>
@@ -308,11 +308,11 @@
     <EmbeddedResource Include="SpeciesCard.ru.resx">
       <DependentUpon>SpeciesCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SpeciesSelector.resx">
-      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TaxonProvider.resx">
+      <DependentUpon>TaxonProvider.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SpeciesSelector.ru.resx">
-      <DependentUpon>SpeciesSelector.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\TaxonProvider.ru.resx">
+      <DependentUpon>TaxonProvider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -338,16 +338,16 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
-    <None Include="SpeciesKey.xsc">
-      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    <None Include="TaxonomicIndex.xsc">
+      <DependentUpon>TaxonomicIndex.xsd</DependentUpon>
     </None>
-    <None Include="SpeciesKey.xsd">
+    <None Include="TaxonomicIndex.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SpeciesKey.Designer.cs</LastGenOutput>
+      <LastGenOutput>TaxonomicIndex.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SpeciesKey.xss">
-      <DependentUpon>SpeciesKey.xsd</DependentUpon>
+    <None Include="TaxonomicIndex.xss">
+      <DependentUpon>TaxonomicIndex.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

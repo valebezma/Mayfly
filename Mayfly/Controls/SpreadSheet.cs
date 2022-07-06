@@ -43,6 +43,7 @@ namespace Mayfly.Controls
         internal bool IsBackgroundTableInitiated = false;
         public ToolStripMenuItem ItemSave;
         internal DataTable Background;
+        private DataGridViewColumnEventHandler formatChanged;
 
         #region Inherited properties
 
@@ -946,6 +947,8 @@ namespace Mayfly.Controls
         [Category("Behavior"), DefaultValue(AutoCompleteMode.None)]
         public AutoCompleteMode AllowStringSuggection { get; set; }
 
+        [Category("Behavior")]
+        public event DataGridViewColumnEventHandler OnFormatChanged { add { formatChanged += value; } remove { formatChanged -= value; } }
 
         [Category("Behavior"), DefaultValue(false)]
         public bool IsLog
@@ -3041,7 +3044,12 @@ namespace Mayfly.Controls
         {
             ColumnProperties properties = new ColumnProperties(ClickedColumn);
             properties.SetFriendlyDesktopLocation(ClickedColumn);
-            properties.ShowDialog();
+            string f = ClickedColumn.DefaultCellStyle.Format;
+            if (properties.ShowDialog() == DialogResult.OK)
+            {
+                if (formatChanged != null && !f.Equals(ClickedColumn.DefaultCellStyle.Format))
+                    formatChanged.Invoke(this, new DataGridViewColumnEventArgs(ClickedColumn));
+            }
         }
 
         private void itemRename_Click(object sender, EventArgs e)

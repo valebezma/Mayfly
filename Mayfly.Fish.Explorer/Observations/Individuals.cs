@@ -178,7 +178,7 @@ namespace Mayfly.Fish.Explorer
 
             LogRow = logRow;
             Data = (Data)LogRow.Table.DataSet;
-            if (logRow.IsSpcIDNull())
+            if (logRow.IsDefIDNull())
             {
                 Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
                     Species.Resources.Interface.UnidentifiedTitle);
@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer
             else
             {
                 Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
-                    logRow.SpeciesRow.Species);
+                    logRow.DefinitionRow.Taxon);
             }
 
             ColumnLength.ValueType = typeof(double);
@@ -935,13 +935,13 @@ namespace Mayfly.Fish.Explorer
             {
                 if (spreadSheetLog[ColumnMass.Index, e.RowIndex].Value == null)
                 {
-                    int weighted = Observations.GetCombinedData().GetStack().Weighted(LogRow.SpeciesRow.KeyRecord, Service.GetStrate(individualRow.Length));
+                    int weighted = Observations.GetCombinedData().GetStack().Weighted(LogRow.DefinitionRow.KeyRecord, Service.GetStrate(individualRow.Length));
                     spreadSheetLog[ColumnMass.Index, e.RowIndex].Style.NullValue = weighted < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
 
                 if (spreadSheetLog[ColumnRegID.Index, e.RowIndex].Value == null)
                 {
-                    int reged = Observations.GetCombinedData().GetStack().Tallied(LogRow.SpeciesRow.KeyRecord, Service.GetStrate(individualRow.Length));
+                    int reged = Observations.GetCombinedData().GetStack().Tallied(LogRow.DefinitionRow.KeyRecord, Service.GetStrate(individualRow.Length));
                     spreadSheetLog[ColumnRegID.Index, e.RowIndex].Style.NullValue = reged < UserSettings.RequiredClassSize ? string.Empty : Resources.Interface.EnoughStamp;
                 }
             }
@@ -1047,12 +1047,12 @@ namespace Mayfly.Fish.Explorer
             Data.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Data.SpeciesRow clipSpeciesRow = clipData.Species.NewSpeciesRow();
-            clipData.Species.AddSpeciesRow(clipSpeciesRow);
+            Data.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
             Data.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
-            clipLogRow.SpeciesRow = clipSpeciesRow;
+            clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
 
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)

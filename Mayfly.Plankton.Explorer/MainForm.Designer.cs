@@ -251,16 +251,16 @@
             this.tdbSaveAll = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesValidator = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesValidator = new Mayfly.Species.TaxonProvider(this.components);
             this.tdSpecies = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbSpcRename = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbSpcCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.fbDialogBackup = new System.Windows.Forms.FolderBrowserDialog();
-            this.speciesLog = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesLog = new Mayfly.Species.TaxonProvider(this.components);
             this.tdLog = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbLogRename = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbLogCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.speciesInd = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesInd = new Mayfly.Species.TaxonProvider(this.components);
             this.tdInd = new Mayfly.TaskDialogs.TaskDialog(this.components);
             this.tdbIndRename = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbIndCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
@@ -276,7 +276,7 @@
             this.tdbSpecCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.specUpdater = new System.ComponentModel.BackgroundWorker();
             this.specTipper = new System.ComponentModel.BackgroundWorker();
-            this.speciesSpc = new Mayfly.Species.SpeciesSelector(this.components);
+            this.speciesSpc = new Mayfly.Species.TaxonProvider(this.components);
             this.tabPageInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtifacts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpcStatus)).BeginInit();
@@ -1904,7 +1904,7 @@
         private TaskDialogs.TaskDialogButton tdbDiscard;
         private TaskDialogs.TaskDialogButton tdbCancelClose;
         private System.Windows.Forms.ToolStripMenuItem menuItemLoadLog;
-        private Species.SpeciesSelector speciesValidator;
+        private Species.TaxonProvider speciesValidator;
         private System.Windows.Forms.Button buttonSelectInd;
         private System.Windows.Forms.ToolStripMenuItem contextCardPrintFull;
         private System.Windows.Forms.ToolStripMenuItem contextCardPrintNote;
@@ -1968,11 +1968,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemBackup;
         private System.Windows.Forms.FolderBrowserDialog fbDialogBackup;
         private System.Windows.Forms.ToolStripMenuItem contextIndRemove;
-        private Species.SpeciesSelector speciesLog;
+        private Species.TaxonProvider speciesLog;
         private TaskDialogs.TaskDialog tdLog;
         private TaskDialogs.TaskDialogButton tdbLogRename;
         private TaskDialogs.TaskDialogButton tdbLogCancel;
-        private Species.SpeciesSelector speciesInd;
+        private Species.TaxonProvider speciesInd;
         private TaskDialogs.TaskDialog tdInd;
         private TaskDialogs.TaskDialogButton tdbIndRename;
         private TaskDialogs.TaskDialogButton tdbIndCancel;
@@ -2063,7 +2063,7 @@
         private System.Windows.Forms.ComboBox comboBoxLog;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaveSet;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private Species.SpeciesSelector speciesSpc;
+        private Species.TaxonProvider speciesSpc;
         private System.Windows.Forms.ToolStripMenuItem menuItemLicenses;
     }
 }
