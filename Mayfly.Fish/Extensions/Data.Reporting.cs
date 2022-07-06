@@ -642,7 +642,7 @@ namespace Mayfly.Fish
                 #endregion
             }
 
-            if (level.HasFlag(CardReportLevel.Species))
+            if (level.HasFlag(CardReportLevel.Log))
             {
                 Data.LogRow[] LogRows = cardRow.GetLogRows();
 

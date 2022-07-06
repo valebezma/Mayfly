@@ -19,66 +19,72 @@ namespace Mayfly.Wild
     public partial class Card : Form
     {
         private string filename;
-        protected delegate void DataSaver();
-        protected DataSaver saveData;
+        private Data data;
+        private bool isChanged;
+        protected EventHandler saved;
+        protected EventHandler waterSelected;
 
 
-        public string FileName
-        {
-            set
-            {
+        public string FileName {
+            set {
                 this.ResetText(value ?? UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
                 menuItemAboutCard.Visible = value != null;
                 filename = value;
             }
 
-            get
-            {
+            get {
                 return filename;
             }
         }
 
-        public Data Data { get; set; }
+        public Data Data {
+            get {
 
-        public Data.CardRow cardRow { get; set; }
+                if (data == null) {
+                    data = new Data(UserSettings.TaxonomicIndex, UserSettings.SamplersIndex);
+                }
 
-        public Samplers.SamplerRow SelectedSampler
-        {
-            get
-            {
+                return data;
+            }
+        }
+
+        public Samplers.SamplerRow SelectedSampler {
+            get {
                 return comboBoxSampler.SelectedItem as Samplers.SamplerRow;
             }
-
-            set
-            {
+            set {
                 comboBoxSampler.SelectedItem = value;
             }
         }
 
-        public bool IsChanged { get; set; }
+        public event EventHandler OnSaved {
+            add { saved += value; }
+            remove { saved -= value; }
+        }
+
+        public event EventHandler OnWaterSelected {
+            add { waterSelected += value; }
+            remove { waterSelected -= value; }
+        }
 
         public ReaderUserSettings UserSettings;
 
 
 
-        public Card()
-        {
+        public Card() {
             InitializeComponent();
 
-            Data = new Data(UserSettings.TaxonomicIndex, UserSettings.SamplersIndex);
             Logger.Data = Data;
             FileName = null;
 
             waterSelector.CreateList();
             waterSelector.Index = Wild.UserSettings.WatersIndex;
 
-            if (Wild.UserSettings.WatersIndex != null && UserSettings.SelectedWaterID != 0)
-            {
+            if (Wild.UserSettings.WatersIndex != null && UserSettings.SelectedWaterID != 0) {
                 WatersKey.WaterRow selectedWater = Wild.UserSettings.WatersIndex.Water.FindByID(
                     UserSettings.SelectedWaterID);
 
-                if (selectedWater != null)
-                {
+                if (selectedWater != null) {
                     waterSelector.WaterObject = selectedWater;
                 }
             }
@@ -112,15 +118,14 @@ namespace Mayfly.Wild
 
             Logger.UpdateStatus();
 
-            IsChanged = false;
+            isChanged = false;
         }
 
 
 
-        private void Clear()
-        {
+        private void clear() {
             FileName = null;
-            Data = null;
+            data = null;
 
             textBoxLabel.Text = string.Empty;
             waterSelector.WaterObject = null;
@@ -132,213 +137,28 @@ namespace Mayfly.Wild
             spreadSheetAddt.Rows.Clear();
         }
 
-        private void Write(string filename)
-        {
-            if (UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global index
-            {
-                Logger.Provider.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
-            }
-
-            string ext = Path.GetExtension(filename);
-
-            if (ext == UserSettings.Interface.Extension)
-            {
-                Data.WriteToFile(filename);
-            }
-            else if (ext == ".html")
-            {
-                Data.GetReport().WriteToFile(filename);
-            }
-
-            statusCard.Message(Resources.Interface.Messages.Saved);
-            FileName = filename;
-            IsChanged = false;
-        }
-
-
-
-        private void saveCollect()
-        {
-            if (textBoxLabel.Text.IsAcceptable())
-            {
-                Data.Solitary.Label = textBoxLabel.Text;
-            }
-            else
-            {
-                Data.Solitary.SetLabelNull();
-            }
-
-            if (waterSelector.IsWaterSelected)
-            {
-                if (Data.Solitary.WaterID == waterSelector.WaterObject.ID)
-                {                }
-                else
-                {
-                    if (Data.Solitary.IsWaterIDNull())
-                    {
-
-
-                    Data.WaterRow newWaterRow = Data.Water.NewWaterRow();
-                    newWaterRow.ID = waterSelector.WaterObject.ID;
-                    newWaterRow.Type = waterSelector.WaterObject.Type;
-                    if (!waterSelector.WaterObject.IsWaterNull())
-                    {
-                        newWaterRow.Water = waterSelector.WaterObject.Water;
-                    }
-
-                    Data.Water.AddWaterRow(newWaterRow);
-                    Data.Solitary.WaterRow = newWaterRow;
-                    }
-                }
-                
-                UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
-            }
-            else
-            {
-                UserSettings.SelectedWaterID = 0;
-                Data.Solitary.SetWaterIDNull();
-                Data.Water.Clear();
-            }
-
-
-
-            waypointControl1.Save();
-            if (!waypointControl1.Waypoint.IsEmpty)
-                Data.Solitary.Where = waypointControl1.Waypoint.Protocol;
-
-
-            if (textBoxComments.Text.IsAcceptable())
-            {
-                Data.Solitary.Comments = textBoxComments.Text.Trim();
-            }
-            else
-            {
-                Data.Solitary.SetCommentsNull();
-            }
-        }
-
-        private void saveSampler()
-        {
-            if (SelectedSampler == null) {
-                cardRow.SetSamplerNull();
-            } else {
-                cardRow.Sampler = SelectedSampler.ID;
-            }
-        }
-
-        private void saveEnvironment()
-        {
-            aquaControl1.Save();
-
-            if (aquaControl1.AquaState != null)
-            {
-                if (aquaControl1.AquaState.IsPhysicalsAvailable) cardRow.Physicals = aquaControl1.AquaState.PhysicalsProtocol;
-                else cardRow.SetPhysicalsNull();
-
-                if (aquaControl1.AquaState.IsChemicalsAvailable) cardRow.Chemicals = aquaControl1.AquaState.ChemicalsProtocol;
-                else cardRow.SetChemicalsNull();
-
-                if (aquaControl1.AquaState.IsOrganolepticsAvailable) cardRow.Organoleptics = aquaControl1.AquaState.OrganolepticsProtocol;
-                else cardRow.SetOrganolepticsNull();
-            }
-            else
-            {
-                cardRow.SetPhysicalsNull();
-                cardRow.SetChemicalsNull();
-                cardRow.SetOrganolepticsNull();
-            }
-
-            weatherControl1.Save();
-
-            if (weatherControl1.Weather.IsAvailable) { cardRow.Weather = weatherControl1.Weather.Protocol; }
-            else { cardRow.SetWeatherNull(); }
-
-        }
-
-        private void saveLog()
-        {
-            Logger.SaveLog();
-        }
-
-        private void saveAddt()
-        {
-            Data.FactorValue.Clear();
-            Data.Factor.Clear();
-
-            foreach (DataGridViewRow gridRow in spreadSheetAddt.Rows)
-            {
-                if (gridRow.IsNewRow) continue;
-
-                if (gridRow.Cells[ColumnAddtFactor.Index].Value == null) continue;
-
-                if (gridRow.Cells[ColumnAddtValue.Index].Value == null) continue;
-
-                string factorName = (string)gridRow.Cells[ColumnAddtFactor.Index].Value;
-
-                double factorValue = (double)gridRow.Cells[ColumnAddtValue.Index].Value;
-
-                Data.FactorValue.AddFactorValueRow(cardRow, Data.Factor.AddFactorRow(factorName), factorValue);
-
-                if (!Wild.UserSettings.AddtFactors.Contains(factorName))
-                {
-                    List<string> factors = new List<string>();
-                    factors.AddRange(Wild.UserSettings.AddtFactors);
-                    factors.Add(factorName);
-                    Wild.UserSettings.AddtFactors = factors.ToArray();
-                }
-            }
-        }
-
-
-
-        private void SaveData()
-        {
-            Data.CardRow cardRow = SaveCardRow();
-
-            if (saveData != null) saveData.Invoke();
-
-            Data.ClearUseless();
-        }
-
-        public void LoadData(string filename)
-        {
-            Clear();
-            Data = new Data(UserSettings.TaxonomicIndex, UserSettings.SamplersIndex);
+        private void load(string filename) {
+            clear();
             Data.Read(filename);
-            LoadData();
-            FileName = filename;
-            Log.Write("Loaded from {0}.", filename);
-            IsChanged = false;
-        }
 
-        private void LoadData()
-        {
             #region Header
 
-            if (Data.Solitary.IsLabelNull())
-            {
+            if (Data.Solitary.IsLabelNull()) {
                 textBoxLabel.Text = String.Empty;
-            }
-            else
-            {
+            } else {
                 textBoxLabel.Text = Data.Solitary.Label;
             }
 
-            if (Data.Solitary.IsWaterIDNull())
-            {
+            if (Data.Solitary.IsWaterIDNull()) {
                 waterSelector.WaterObject = null;
-            }
-            else
-            {
+            } else {
                 WatersKey.WaterRow waterRow = null;
 
-                if (Wild.UserSettings.WatersIndex != null)
-                {
+                if (Wild.UserSettings.WatersIndex != null) {
                     waterRow = Wild.UserSettings.WatersIndex.Water.FindByID(Data.Solitary.WaterID);
                 }
 
-                if (waterRow == null)
-                {
+                if (waterRow == null) {
                     waterRow = waterSelector.Index.Water.NewWaterRow();
                     waterRow.ID = Data.Solitary.WaterRow.ID;
                     if (!Data.Solitary.WaterRow.IsWaterNull()) waterRow.Water = Data.Solitary.WaterRow.Water;
@@ -350,61 +170,46 @@ namespace Mayfly.Wild
 
             #endregion
 
+            #region Location
+
             waypointControl1.Waypoint = Data.Solitary.Position;
             waypointControl1.UpdateValues();
 
+            #endregion
+
             #region Sampling
 
-            if (Data.Solitary.IsSamplerNull())
-            {
+            if (Data.Solitary.IsSamplerNull()) {
                 comboBoxSampler.SelectedIndex = -1;
-            }
-            else
-            {
+            } else {
                 SelectedSampler = Data.Solitary.SamplerRow;
             }
 
             #endregion
 
-            #region Location
-
-            #endregion
-
-            if (Data.Solitary.IsCommentsNull())
-            {
+            if (Data.Solitary.IsCommentsNull()) {
                 textBoxComments.Text = string.Empty;
-            }
-            else
-            {
+            } else {
                 textBoxComments.Text = Data.Solitary.Comments;
             }
 
-            if (Data.Solitary.IsEnvironmentDescribed)
-            {
+            if (Data.Solitary.IsEnvironmentDescribed) {
                 tabPageEnvironment.Parent = tabControl;
 
-                if (Data.Solitary.StateOfWater == null)
-                {
+                if (Data.Solitary.StateOfWater == null) {
                     aquaControl1.Clear();
-                }
-                else
-                {
+                } else {
                     aquaControl1.AquaState = Data.Solitary.StateOfWater;
                     aquaControl1.UpdateValues();
                 }
 
-                if (Data.Solitary.IsWeatherNull())
-                {
+                if (Data.Solitary.IsWeatherNull()) {
                     weatherControl1.Clear();
-                }
-                else
-                {
+                } else {
                     weatherControl1.Weather = Data.Solitary.WeatherConditions;
                     weatherControl1.UpdateValues();
                 }
-            }
-            else
-            {
+            } else {
                 tabPageEnvironment.Parent = null;
             }
 
@@ -414,11 +219,9 @@ namespace Mayfly.Wild
             #region Factors
 
             spreadSheetAddt.Rows.Clear();
-            if (Data.Factor.Count > 0)
-            {
+            if (Data.Factor.Count > 0) {
                 tabPageFactors.Parent = tabControl;
-                foreach (Data.FactorValueRow factorValueRow in Data.FactorValue)
-                {
+                foreach (Data.FactorValueRow factorValueRow in Data.FactorValue) {
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetAddt);
                     gridRow.Cells[ColumnAddtFactor.Index].Value = factorValueRow.FactorRow.Factor;
@@ -426,102 +229,171 @@ namespace Mayfly.Wild
 
                     spreadSheetAddt.Rows.Add(gridRow);
                 }
-            }
-            else
-            {
+            } else {
                 tabPageFactors.Parent = null;
             }
 
             #endregion
 
             Logger.UpdateStatus();
-            IsChanged = false;
+            isChanged = false;
+
+
+            FileName = filename;
+            Log.Write("Loaded from {0}.", filename);
+            isChanged = false;
         }
 
-        private DialogResult CheckAndSave()
-        {
+        private void saveCollect() {
+            if (textBoxLabel.Text.IsAcceptable()) {
+                Data.Solitary.Label = textBoxLabel.Text;
+            } else {
+                Data.Solitary.SetLabelNull();
+            }
+
+            if (waterSelector.IsWaterSelected) {
+                if (Data.Solitary.WaterID == waterSelector.WaterObject.ID) { } else {
+
+                    Data.WaterRow newWaterRow = Data.Water.NewWaterRow();
+                    newWaterRow.ID = waterSelector.WaterObject.ID;
+                    newWaterRow.Type = waterSelector.WaterObject.Type;
+                    if (!waterSelector.WaterObject.IsWaterNull()) {
+                        newWaterRow.Water = waterSelector.WaterObject.Water;
+                    }
+                    Data.Water.AddWaterRow(newWaterRow);
+                    Data.Solitary.WaterRow = newWaterRow;
+                }
+                UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
+            } else {
+                UserSettings.SelectedWaterID = 0;
+                Data.Solitary.SetWaterIDNull();
+                Data.Water.Clear();
+            }
+
+            waypointControl1.Save();
+
+            Data.Solitary.When = waypointControl1.Waypoint.TimeMark;
+            if (!waypointControl1.Waypoint.IsEmpty)
+                Data.Solitary.Where = waypointControl1.Waypoint.Protocol;
+
+            if (FileName == null) {
+                Data.Solitary.AttachSign();
+            } else {
+                Data.Solitary.RenewSign();
+            }
+
+            if (textBoxComments.Text.IsAcceptable()) {
+                Data.Solitary.Comments = textBoxComments.Text.Trim();
+            } else {
+                Data.Solitary.SetCommentsNull();
+            }
+        }
+
+        private void saveSampler() {
+            if (SelectedSampler == null) {
+                Data.Solitary.SetSamplerNull();
+            } else {
+                Data.Solitary.Sampler = SelectedSampler.ID;
+            }
+        }
+
+        private void saveEnvironment() {
+
+            aquaControl1.Save();
+
+            if (aquaControl1.AquaState != null) {
+                if (aquaControl1.AquaState.IsPhysicalsAvailable) Data.Solitary.Physicals = aquaControl1.AquaState.PhysicalsProtocol;
+                else Data.Solitary.SetPhysicalsNull();
+
+                if (aquaControl1.AquaState.IsChemicalsAvailable) Data.Solitary.Chemicals = aquaControl1.AquaState.ChemicalsProtocol;
+                else Data.Solitary.SetChemicalsNull();
+
+                if (aquaControl1.AquaState.IsOrganolepticsAvailable) Data.Solitary.Organoleptics = aquaControl1.AquaState.OrganolepticsProtocol;
+                else Data.Solitary.SetOrganolepticsNull();
+            } else {
+                Data.Solitary.SetPhysicalsNull();
+                Data.Solitary.SetChemicalsNull();
+                Data.Solitary.SetOrganolepticsNull();
+            }
+
+            weatherControl1.Save();
+
+            if (weatherControl1.Weather.IsAvailable) {
+                Data.Solitary.Weather = weatherControl1.Weather.Protocol;
+            } else {
+                Data.Solitary.SetWeatherNull();
+            }
+        }
+
+        private void saveLog() {
+            Logger.SaveLog();
+        }
+
+        private void saveAddt() {
+            Data.FactorValue.Clear();
+            Data.Factor.Clear();
+
+            foreach (DataGridViewRow gridRow in spreadSheetAddt.Rows) {
+                if (gridRow.IsNewRow) continue;
+
+                if (gridRow.Cells[ColumnAddtFactor.Index].Value == null) continue;
+
+                if (gridRow.Cells[ColumnAddtValue.Index].Value == null) continue;
+
+                string factorName = (string)gridRow.Cells[ColumnAddtFactor.Index].Value;
+
+                double factorValue = (double)gridRow.Cells[ColumnAddtValue.Index].Value;
+
+                Data.FactorValue.AddFactorValueRow(Data.Solitary, Data.Factor.AddFactorRow(factorName), factorValue);
+
+                if (!Wild.UserSettings.AddtFactors.Contains(factorName)) {
+                    List<string> factors = new List<string>();
+                    factors.AddRange(Wild.UserSettings.AddtFactors);
+                    factors.Add(factorName);
+                    Wild.UserSettings.AddtFactors = factors.ToArray();
+                }
+            }
+        }
+
+        private void save() {
+            saveCollect();
+            saveSampler();
+            saveEnvironment();
+            saveLog();
+            saveAddt();
+
+            Data.ClearUseless();
+            if (saved != null) saved.Invoke(this, EventArgs.Empty);
+        }
+
+        private void write(string filename) {
+            if (UserSettings.SpeciesAutoExpand) {
+                Logger.Provider.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
+            }
+            Data.WriteToFile(filename);
+            statusCard.Message(Resources.Interface.Messages.Saved);
+            FileName = filename;
+            isChanged = false;
+        }
+
+        private DialogResult checkAndSave() {
             DialogResult result = DialogResult.None;
 
-            if (IsChanged)
-            {
+            if (isChanged) {
                 TaskDialogButton tdbPressed = taskDialogSaveChanges.ShowDialog(this);
 
-                if (tdbPressed == tdbSave)
-                {
+                if (tdbPressed == tdbSave) {
                     menuItemSave_Click(menuItemSave, new EventArgs());
                     result = DialogResult.OK;
-                }
-                else if (tdbPressed == tdbDiscard)
-                {
-                    IsChanged = false;
+                } else if (tdbPressed == tdbDiscard) {
+                    isChanged = false;
                     result = DialogResult.No;
-                }
-                else if (tdbPressed == tdbCancelClose)
-                {
+                } else if (tdbPressed == tdbCancelClose) {
                     result = DialogResult.Cancel;
                 }
             }
 
             return result;
-        }
-
-
-
-        public Data.CardRow SaveCardRow()
-        {
-            if (FileName == null) // If file is saving at the fisrt time
-            {
-                Data.Solitary.When = waypointControl1.Waypoint.TimeMark;
-                Data.Solitary.AttachSign();
-            }
-            else // If file is resaving
-            {
-                Data.Solitary.RenewSign(waypointControl1.Waypoint.TimeMark);
-            }
-
-            return Data.Solitary;
-        }
-
-        private void HandleFactorRow(DataGridViewRow gridRow)
-        {
-            if (gridRow.IsNewRow)
-            {
-                return;
-            }
-
-            if (gridRow.Cells[ColumnAddtFactor.Index].Value == null ||
-                !((string)gridRow.Cells[ColumnAddtFactor.Index].Value).IsAcceptable())
-            {
-                statusCard.Message(Wild.Resources.Interface.Messages.FactorNameRequired);
-            }
-
-            for (int i = 0; i < spreadSheetAddt.RowCount; i++)
-            {
-                DataGridViewRow currentGridRow = spreadSheetAddt.Rows[i];
-
-                if (currentGridRow.IsNewRow)
-                {
-                    continue;
-                }
-
-                if (currentGridRow == gridRow)
-                {
-                    continue;
-                }
-
-                if (object.Equals(gridRow.Cells[ColumnAddtFactor.Index].Value,
-                    currentGridRow.Cells[ColumnAddtFactor.Index].Value))
-                {
-                    if (gridRow.Cells[ColumnAddtValue.Index].Value == null)
-                    {
-                        gridRow.Cells[ColumnAddtValue.Index].Value =
-                            currentGridRow.Cells[ColumnAddtValue.Index].Value;
-                    }
-
-                    spreadSheetAddt.Rows.Remove(currentGridRow);
-                    i--;
-                }
-            }
         }
 
         //private void AddFactorsMenuItems()
@@ -567,128 +439,105 @@ namespace Mayfly.Wild
 
 
 
-        private void Card_Load(object sender, EventArgs e)
-        {
-            IsChanged = false;
+        private void Card_Load(object sender, EventArgs e) {
+            isChanged = false;
             Logger.UpdateStatus();
         }
 
-        private void Card_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = (CheckAndSave() == DialogResult.Cancel);
+        private void Card_FormClosing(object sender, FormClosingEventArgs e) {
+            e.Cancel = (checkAndSave() == DialogResult.Cancel);
         }
 
-        private void value_Changed(object sender, EventArgs e)
-        {
-            IsChanged = true;
+        private void value_Changed(object sender, EventArgs e) {
+            isChanged = true;
         }
 
-        private void value_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void value_KeyPress(object sender, KeyPressEventArgs e) {
             ((Control)sender).HandleInput(e, typeof(double));
         }
 
-        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e) {
             ((ComboBox)sender).HandleInput(e);
         }
 
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl.SelectedTab == tabPageLog)
-            {
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e) {
+            if (tabControl.SelectedTab == tabPageLog) {
                 spreadSheetLog.Focus();
             }
         }
 
         #region File menu
 
-        private void menuItemNew_Click(object sender, EventArgs e)
-        {
-            if (CheckAndSave() != DialogResult.Cancel)
-            {
-                Clear();
+        private void menuItemNew_Click(object sender, EventArgs e) {
+            if (checkAndSave() != DialogResult.Cancel) {
+                clear();
                 tabControl.SelectedTab = tabPageCollect;
-                IsChanged = false;
+                isChanged = false;
             }
         }
 
-        private void menuItemOpen_Click(object sender, EventArgs e)
-        {
-            if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (UserSettings.Interface.OpenDialog.FileName == FileName)
-                {
+        private void menuItemOpen_Click(object sender, EventArgs e) {
+            if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
+                if (UserSettings.Interface.OpenDialog.FileName == FileName) {
                     statusCard.Message(Wild.Resources.Interface.Messages.AlreadyOpened);
-                }
-                else
-                {
-                    if (CheckAndSave() != DialogResult.Cancel)
-                    {
-                        LoadData(UserSettings.Interface.OpenDialog.FileName);
+                } else {
+                    if (checkAndSave() != DialogResult.Cancel) {
+                        load(UserSettings.Interface.OpenDialog.FileName);
                     }
                 }
             }
         }
 
-        private void menuItemSave_Click(object sender, EventArgs e)
-        {
-            if (FileName == null)
-            {
+        private void menuItemSave_Click(object sender, EventArgs e) {
+            if (FileName == null) {
                 menuItemSaveAs_Click(sender, e);
-            }
-            else
-            {
-                SaveData();
-                Write(FileName);
+            } else {
+                save();
+                write(FileName);
             }
         }
 
-        private void menuItemSaveAs_Click(object sender, EventArgs e)
-        {
-            SaveData();
+        private void menuItemSaveAs_Click(object sender, EventArgs e) {
 
-            UserSettings.Interface.ExportDialog.FileName =
-                UserSettings.Interface.SuggestName(Data.Solitary.GetSuggestedName());
+            save();
+            UserSettings.Interface.ExportDialog.FileName = UserSettings.Interface.SuggestName(Data.Solitary.GetSuggestedName());
+            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK) {
 
-            if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
-            {
-                Write(UserSettings.Interface.ExportDialog.FileName);
+                string ext = Path.GetExtension(UserSettings.Interface.ExportDialog.FileName);
+
+                if (ext == UserSettings.Interface.Extension) {
+                    write(UserSettings.Interface.ExportDialog.FileName);
+                } else if (ext == ".html") {
+                    Data.Solitary.GetReport().WriteToFile(UserSettings.Interface.ExportDialog.FileName);
+                }
             }
         }
 
-        private void menuItemPrintPreview_Click(object sender, EventArgs e)
-        {
-            if (IsChanged)
-            {
-                SaveData();
+        private void menuItemPrintPreview_Click(object sender, EventArgs e) {
+            if (isChanged) {
+                save();
             }
 
-            Data.GetReport().Preview();
+            Data.Solitary.GetReport().Preview();
         }
 
-        private void menuItemPrint_Click(object sender, EventArgs e)
-        {
-            if (IsChanged)
-            {
-                SaveData();
+        private void menuItemPrint_Click(object sender, EventArgs e) {
+            if (isChanged) {
+                save();
             }
 
-            Data.GetReport().Print();
+            Data.Solitary.GetReport().Print();
         }
 
-        private void menuItemCardBlank_Click(object sender, EventArgs e)
-        {
+        private void menuItemCardBlank_Click(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
 
-        private void menuItemIndividualsLogBlank_Click(object sender, EventArgs e)
-        {
+        private void menuItemIndividualsLogBlank_Click(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
 
-        private void menuItemClose_Click(object sender, EventArgs e)
-        {
+        private void menuItemClose_Click(object sender, EventArgs e) {
             Close();
         }
 
@@ -696,22 +545,18 @@ namespace Mayfly.Wild
 
         #region Data menu
 
-        private void addEnvironmentalDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void addEnvironmentalDataToolStripMenuItem_Click(object sender, EventArgs e) {
             tabPageEnvironment.Parent = tabControl;
             tabControl.SelectedTab = tabPageEnvironment;
         }
 
-        private void addFactorsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void addFactorsToolStripMenuItem_Click(object sender, EventArgs e) {
             tabPageFactors.Parent = tabControl;
             tabControl.SelectedTab = tabPageFactors;
         }
 
-        private void menuItemLocation_Click(object sender, EventArgs e)
-        {
-            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK)
-            {
+        private void menuItemLocation_Click(object sender, EventArgs e) {
+            if (IO.InterfaceLocation.OpenDialog.ShowDialog() == DialogResult.OK) {
                 waypointControl1.SelectGPS(IO.InterfaceLocation.OpenDialog.FileNames);
             }
         }
@@ -720,43 +565,70 @@ namespace Mayfly.Wild
 
         #region Service menu
 
-        private void menuItemWaters_Click(object sender, EventArgs e)
-        {
+        private void menuItemWaters_Click(object sender, EventArgs e) {
             IO.RunFile(Wild.UserSettings.WatersIndexPath);
         }
 
-        private void menuItemSpecies_Click(object sender, EventArgs e)
-        {
+        private void menuItemSpecies_Click(object sender, EventArgs e) {
             IO.RunFile(UserSettings.TaxonomicIndexPath, "-edit");
         }
 
-        private void menuItemSettings_Click(object sender, EventArgs e)
-        {
+        private void menuItemSettings_Click(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
 
-        private void menuItemAbout_Click(object sender, EventArgs e)
-        {
+        private void menuItemAbout_Click(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
 
-        private void itemAboutCard_Click(object sender, EventArgs e)
-        {
+        private void itemAboutCard_Click(object sender, EventArgs e) {
             AboutData about = new AboutData(Data.Solitary.Investigator);
             about.ShowDialog();
         }
 
         #endregion
 
-        private void waterSelector_WaterSelected(object sender, WaterEventArgs e)
-        {
+        private void waterSelector_WaterSelected(object sender, WaterEventArgs e) {
             statusCard.Message(Resources.Interface.Messages.WaterSet);
+            if (waterSelected != null) waterSelected.Invoke(this, EventArgs.Empty);
         }
 
-        private void spreadSheetAddt_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            IsChanged = true;
-            HandleFactorRow(spreadSheetAddt.Rows[e.RowIndex]);
+        private void spreadSheetAddt_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+
+            isChanged = true;
+            DataGridViewRow gridRow = spreadSheetAddt.Rows[e.RowIndex];
+
+            if (gridRow.IsNewRow) {
+                return;
+            }
+
+            if (gridRow.Cells[ColumnAddtFactor.Index].Value == null ||
+                !((string)gridRow.Cells[ColumnAddtFactor.Index].Value).IsAcceptable()) {
+                this.NotifyInstantly(Resources.Interface.Messages.FactorNameRequired);
+            }
+
+            for (int i = 0; i < spreadSheetAddt.RowCount; i++) {
+                DataGridViewRow currentGridRow = spreadSheetAddt.Rows[i];
+
+                if (currentGridRow.IsNewRow) {
+                    continue;
+                }
+
+                if (currentGridRow == gridRow) {
+                    continue;
+                }
+
+                if (object.Equals(gridRow.Cells[ColumnAddtFactor.Index].Value,
+                    currentGridRow.Cells[ColumnAddtFactor.Index].Value)) {
+                    if (gridRow.Cells[ColumnAddtValue.Index].Value == null) {
+                        gridRow.Cells[ColumnAddtValue.Index].Value =
+                            currentGridRow.Cells[ColumnAddtValue.Index].Value;
+                    }
+
+                    spreadSheetAddt.Rows.Remove(currentGridRow);
+                    i--;
+                }
+            }
         }
     }
 }

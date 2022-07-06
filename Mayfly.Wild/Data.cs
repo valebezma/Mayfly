@@ -396,16 +396,6 @@ namespace Mayfly.Wild
             return GetSpeciesKey((DefinitionRow[])Definition.Select());
         }
 
-        /// <summary>
-        /// Creates report containing Card
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public Report GetReport()
-        {
-            return Solitary.GetReport();
-        }
-
 
         partial class IntestineDataTable
         {
@@ -871,7 +861,7 @@ namespace Mayfly.Wild
                 this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username, this.When.ToString("s"));
             }
 
-            public void RenewSign(DateTime newDateValue)
+            public void RenewSign()
             {
                 string owner = this.Investigator;
 
@@ -883,7 +873,6 @@ namespace Mayfly.Wild
                 }
                 else
                 {
-                    When = newDateValue;
                     Sign = StringCipher.Encrypt(owner, When.ToString("s"));
                 }
             }
@@ -1153,7 +1142,7 @@ namespace Mayfly.Wild
             /// <returns></returns>
             public Report GetReport()
             {
-                return GetReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Stratified | CardReportLevel.Individuals);
+                return GetReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Stratified | CardReportLevel.Individuals);
             }
 
             public Report.Table GetLogReport(string massCaption, string logTitle)

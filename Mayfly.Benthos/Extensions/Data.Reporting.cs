@@ -239,7 +239,7 @@ namespace Mayfly.Benthos
                 #endregion
             }
 
-            if (level.HasFlag(CardReportLevel.Species))
+            if (level.HasFlag(CardReportLevel.Log))
             {
                 Data.LogRow[] logRows = cardRow.GetLogRows(Wild.UserSettings.LogOrder);
 
@@ -336,7 +336,7 @@ namespace Mayfly.Benthos
         /// <returns></returns>
         public static Report GetReport(this Data.CardRow cardRow)
         {
-            return cardRow.GetReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Individuals);
+            return cardRow.GetReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals);
         }
 
         /// <summary>

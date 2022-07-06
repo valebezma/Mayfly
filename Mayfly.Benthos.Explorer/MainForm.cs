@@ -595,12 +595,12 @@ namespace Mayfly.Benthos.Explorer
 
         private void menuItemCardPrint_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species).Run();
+            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log).Run();
         }
 
         private void menuItemCardPrintFull_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Individuals).Run();
+            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals).Run();
         }
 
 
@@ -691,12 +691,12 @@ namespace Mayfly.Benthos.Explorer
 
         private void contextCardPrint_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species).Run();
+            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log).Run();
         }
 
         private void contextCardPrintFull_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Individuals).Run();
+            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals).Run();
         }
 
         private void contextCardExplore_Click(object sender, EventArgs e)

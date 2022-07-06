@@ -358,12 +358,12 @@ namespace Mayfly.Plankton.Explorer
 
         private void menuItemCardPrint_Click(object sender, EventArgs e)
         {
-            PrintCards((IList)spreadSheetCard.Rows, CardReportLevel.Note | CardReportLevel.Species);
+            PrintCards((IList)spreadSheetCard.Rows, CardReportLevel.Note | CardReportLevel.Log);
         }
 
         private void menuItemCardPrintFull_Click(object sender, EventArgs e)
         {
-            PrintCards((IList)spreadSheetCard.Rows, CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Individuals);
+            PrintCards((IList)spreadSheetCard.Rows, CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals);
         }
 
         private void menuItemCardPrintNotes_Click(object sender, EventArgs e)
@@ -716,7 +716,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void contextCardPrint_Click(object sender, EventArgs e)
         {
-            PrintCards((IList)spreadSheetCard.SelectedRows, CardReportLevel.Note | CardReportLevel.Species);
+            PrintCards((IList)spreadSheetCard.SelectedRows, CardReportLevel.Note | CardReportLevel.Log);
         }
 
         private void contextCardPrintNotes_Click(object sender, EventArgs e)
@@ -726,7 +726,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void contextCardPrintFull_Click(object sender, EventArgs e)
         {
-            PrintCards((IList)spreadSheetCard.SelectedRows, CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Individuals);
+            PrintCards((IList)spreadSheetCard.SelectedRows, CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals);
         }
 
         #endregion        

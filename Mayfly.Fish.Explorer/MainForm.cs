@@ -1804,7 +1804,7 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemCardPrintFull_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Stratified | CardReportLevel.Individuals).Run();
+            getCardStack(spreadSheetCard.Rows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Stratified | CardReportLevel.Individuals).Run();
         }
 
         private void menuItemCardCatches_Click(object sender, EventArgs e)
@@ -2015,7 +2015,7 @@ namespace Mayfly.Fish.Explorer
 
         private void contextCardPrintFull_Click(object sender, EventArgs e)
         {
-            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Species | CardReportLevel.Stratified | CardReportLevel.Individuals).Run();
+            getCardStack(spreadSheetCard.SelectedRows).GetCardReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Stratified | CardReportLevel.Individuals).Run();
         }
 
         #endregion
