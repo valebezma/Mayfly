@@ -24,19 +24,7 @@ namespace Mayfly.Wild
         protected EventHandler saved;
         protected EventHandler waterSelected;
 
-
-        public string FileName {
-            set {
-                this.ResetText(value ?? UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
-                menuItemAboutCard.Visible = value != null;
-                filename = value;
-            }
-
-            get {
-                return filename;
-            }
-        }
-
+        [Browsable(false)]
         public Data Data {
             get {
 
@@ -48,6 +36,7 @@ namespace Mayfly.Wild
             }
         }
 
+        [Browsable(false)]
         public Samplers.SamplerRow SelectedSampler {
             get {
                 return comboBoxSampler.SelectedItem as Samplers.SamplerRow;
@@ -57,25 +46,27 @@ namespace Mayfly.Wild
             }
         }
 
+        [Category("Mayfly Events"), Browsable(true)]
         public event EventHandler OnSaved {
             add { saved += value; }
             remove { saved -= value; }
         }
 
+        [Category("Mayfly Events"), Browsable(true)]
         public event EventHandler OnWaterSelected {
             add { waterSelected += value; }
             remove { waterSelected -= value; }
         }
 
-        public ReaderUserSettings UserSettings;
-
 
 
         public Card() {
+
             InitializeComponent();
 
             Logger.Data = Data;
-            FileName = null;
+
+            this.ResetText(UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
 
             waterSelector.CreateList();
             waterSelector.Index = Wild.UserSettings.WatersIndex;
@@ -104,6 +95,9 @@ namespace Mayfly.Wild
             ColumnQuantity.ReadOnly = UserSettings.FixTotals;
             ColumnMass.ReadOnly = UserSettings.FixTotals;
 
+            ToolStripMenuItemWatersRef.Enabled = Wild.UserSettings.WatersIndexPath != null;
+            ToolStripMenuItemSpeciesRef.Enabled = UserSettings.TaxonomicIndexPath != null;
+
             tabPageEnvironment.Parent = null;
 
             tabPageFactors.Parent = null;
@@ -113,9 +107,6 @@ namespace Mayfly.Wild
 
             MenuStrip.SetMenuIcons();
 
-            ToolStripMenuItemWatersRef.Enabled = Wild.UserSettings.WatersIndexPath != null;
-            ToolStripMenuItemSpeciesRef.Enabled = UserSettings.TaxonomicIndexPath != null;
-
             Logger.UpdateStatus();
 
             isChanged = false;
@@ -124,7 +115,8 @@ namespace Mayfly.Wild
 
 
         private void clear() {
-            FileName = null;
+
+            this.ResetText(UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
             data = null;
 
             textBoxLabel.Text = string.Empty;
@@ -239,7 +231,8 @@ namespace Mayfly.Wild
             isChanged = false;
 
 
-            FileName = filename;
+            this.ResetText(filename, EntryAssemblyInfo.Title);
+            menuItemAboutCard.Visible = true;
             Log.Write("Loaded from {0}.", filename);
             isChanged = false;
         }
@@ -276,7 +269,7 @@ namespace Mayfly.Wild
             if (!waypointControl1.Waypoint.IsEmpty)
                 Data.Solitary.Where = waypointControl1.Waypoint.Protocol;
 
-            if (FileName == null) {
+            if (filename == null) {
                 Data.Solitary.AttachSign();
             } else {
                 Data.Solitary.RenewSign();
@@ -366,13 +359,12 @@ namespace Mayfly.Wild
             if (saved != null) saved.Invoke(this, EventArgs.Empty);
         }
 
-        private void write(string filename) {
+        private void write() {
             if (UserSettings.SpeciesAutoExpand) {
                 Logger.Provider.UpdateIndex(Data.GetSpeciesKey(), UserSettings.SpeciesAutoExpandVisual);
             }
             Data.WriteToFile(filename);
             statusCard.Message(Resources.Interface.Messages.Saved);
-            FileName = filename;
             isChanged = false;
         }
 
@@ -478,7 +470,7 @@ namespace Mayfly.Wild
 
         private void menuItemOpen_Click(object sender, EventArgs e) {
             if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
-                if (UserSettings.Interface.OpenDialog.FileName == FileName) {
+                if (UserSettings.Interface.OpenDialog.FileName == filename) {
                     statusCard.Message(Wild.Resources.Interface.Messages.AlreadyOpened);
                 } else {
                     if (checkAndSave() != DialogResult.Cancel) {
@@ -489,11 +481,11 @@ namespace Mayfly.Wild
         }
 
         private void menuItemSave_Click(object sender, EventArgs e) {
-            if (FileName == null) {
+            if (filename == null) {
                 menuItemSaveAs_Click(sender, e);
             } else {
                 save();
-                write(FileName);
+                write();
             }
         }
 
@@ -506,7 +498,8 @@ namespace Mayfly.Wild
                 string ext = Path.GetExtension(UserSettings.Interface.ExportDialog.FileName);
 
                 if (ext == UserSettings.Interface.Extension) {
-                    write(UserSettings.Interface.ExportDialog.FileName);
+                    filename = UserSettings.Interface.ExportDialog.FileName;
+                    write();
                 } else if (ext == ".html") {
                     Data.Solitary.GetReport().WriteToFile(UserSettings.Interface.ExportDialog.FileName);
                 }

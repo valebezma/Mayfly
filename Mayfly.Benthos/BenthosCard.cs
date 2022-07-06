@@ -13,6 +13,7 @@ namespace Mayfly.Benthos
     public partial class BenthosCard : Wild.Card
     {
         public BenthosCard() {
+
             InitializeComponent();
         }
     }
