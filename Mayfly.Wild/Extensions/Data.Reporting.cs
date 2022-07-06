@@ -4,6 +4,7 @@ using Mayfly.Wild;
 using System;
 using System.Collections.Generic;
 using System.Resources;
+using System.Data;
 
 namespace Mayfly.Wild
 {
@@ -19,24 +20,13 @@ namespace Mayfly.Wild
 
                 Report.Table table = new Report.Table(title);
 
-                string[] cols = new string[]
-                {
-                        "Frequency", "Length", "Mass", "Tally", "Age",
-                        "Sex", "Maturity", "Grade", "Instar"
-                };
-
                 #region Compiling headers
 
-                List<string> captions = new List<string>
-                {
-                    "№"
-                };
+                List<string> captions = new List<string> { "№" };
 
-                foreach (string col in cols)
-                {
-                    if (data.IsDataPresented(data.Individual.Columns[col], individualRows))
-                    {
-                        captions.Add(resources.GetString("Column" + col + ".HeaderText"));
+                foreach (DataColumn col in data.Individual.Columns) {
+                    if (data.IsDataPresented(col, individualRows)) {
+                        captions.Add(col.Caption);
                     }
                 }
 
@@ -67,9 +57,9 @@ namespace Mayfly.Wild
 
                     table.AddCellRight(no);
 
-                    foreach (string col in cols)
+                    foreach (DataColumn col in data.Individual.Columns)
                     {
-                        if (data.IsDataPresented(data.Individual.Columns[col], individualRows))
+                        if (data.IsDataPresented(col, individualRows))
                         {
                             if (individualRow.IsNull(col))
                             {
@@ -77,38 +67,34 @@ namespace Mayfly.Wild
                             }
                             else
                             {
-                                switch (col)
+                                switch (col.ColumnName)
                                 {
                                     case "Age":
-                                        table.AddCellValue(new Age(individualRow[col]));
+                                        table.AddCellValue((Age)individualRow[col]);
                                         break;
 
                                     case "Sex":
-                                        table.AddCellValue(new Sex((int)individualRow[col]).ToString("C"));
+                                        table.AddCellValue((Sex)individualRow[col], "C");
                                         break;
 
-                                        // TODO: Grade is Mayfly.Benthos type!!!!!!
                                     //case "Grade":
                                     //    table.AddCellValue(new Grade((int)individualRow[col]).ToString("C"));
                                     //    break;
 
                                     default:
-                                        if (individualRow[col] is double) table.AddCellRight((double)individualRow[col], "N0");
-                                        else table.AddCellRight(individualRow[col]);
+                                        table.AddCellRight(individualRow[col]);
+                                        //if (individualRow[col] is double) table.AddCellRight((double)individualRow[col], "N0");
+                                        //else table.AddCellRight(individualRow[col]);
                                         break;
                                 }
                             }
                         }
                     }
 
-                    foreach (Data.VariableRow variable in variables)
-                    {
-                        if (data.Value.FindByIndIDVarID(individualRow.ID, variable.ID) == null)
-                        {
+                    foreach (Data.VariableRow variable in variables) {
+                        if (data.Value.FindByIndIDVarID(individualRow.ID, variable.ID) == null) {
                             table.AddCell();
-                        }
-                        else
-                        {
+                        } else {
                             table.AddCellRight(data.Value.FindByIndIDVarID(individualRow.ID, variable.ID).Value, 2);
                         }
                     }
@@ -118,14 +104,8 @@ namespace Mayfly.Wild
                     table.EndRow();
 
                     no++;
-
-                    if (!individualRow.IsMassNull())
-                    { mass += individualRow.Mass; }
-
-                    int n = 1;
-                    if (!individualRow.IsFrequencyNull())
-                    { n = individualRow.Frequency; }
-                    count += n;
+                    mass += individualRow.IsMassNull() ? 0 : individualRow.Mass;
+                    count += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
                 }
 
                 table.StartFooter();
@@ -339,7 +319,7 @@ namespace Mayfly.Wild
                 List<Data.DefinitionRow> speciesRows = new List<Data.DefinitionRow>();
                 foreach (Data.LogRow logRow in logRows) { if (!speciesRows.Contains(logRow.DefinitionRow)) speciesRows.Add(logRow.DefinitionRow); }
 
-                Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, string.Empty));
+                Report report = new Report(string.Format(Resources.Interface.Interface.IndLog, string.Empty));
                 foreach (Data.DefinitionRow speciesRow in speciesRows)
                 {
                     List<Data.LogRow> _logRows = new List<Data.LogRow>();
@@ -353,8 +333,8 @@ namespace Mayfly.Wild
             }
             else
             {
-                Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, string.Empty));
-                logRows.AddReport(report, level, Resources.Reports.Header.FBA, string.Format(Wild.Resources.Reports.Header.StratifiedSample, string.Empty));
+                Report report = new Report("Log ---");
+                logRows.AddReport(report, level, string.Format(Resources.Interface.Interface.IndLog, string.Empty), string.Format(Resources.Reports.Header.StratifiedSample, string.Empty));
                 return report;
             }
         }

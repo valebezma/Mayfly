@@ -464,7 +464,6 @@
             this.comboBoxSampler.FormattingEnabled = true;
             this.comboBoxSampler.GroupMember = "OperationDisplay";
             this.comboBoxSampler.Name = "comboBoxSampler";
-            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.sampler_Changed);
             // 
             // labelMethod
             // 

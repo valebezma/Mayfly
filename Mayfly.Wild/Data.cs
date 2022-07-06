@@ -831,7 +831,7 @@ namespace Mayfly.Wild
             /// <summary>
             /// Get suggested name for file with specified extension
             /// </summary>
-            public string GetSuggestedName(string extension)
+            public string GetSuggestedName()
             {
                 string result = string.Empty;
 
@@ -863,7 +863,7 @@ namespace Mayfly.Wild
                     }
                 }
 
-                return result.Trim() + (string.IsNullOrWhiteSpace(extension) ? string.Empty : extension);
+                return result.Trim();
             }
 
             public void AttachSign()

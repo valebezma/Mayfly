@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Individuals));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.contextMenuStripValue = new System.Windows.Forms.ContextMenuStrip();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.contextMenuStripValue = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemClearValue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCopyValue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemPasteValue = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,7 @@
             this.labelMass = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.contextMenuStripAdd = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemNewVar = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemFrequency = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,14 +57,14 @@
             this.ToolStripMenuItemSex = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemGrade = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemInstar = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripVar = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripVar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemClearColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemSaveVars = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxWarningQuantity = new System.Windows.Forms.PictureBox();
             this.pictureBoxWarningMass = new System.Windows.Forms.PictureBox();
-            this.contextMenuStripInd = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStripInd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemDuplicate = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,7 +75,7 @@
             this.labelComments = new System.Windows.Forms.Label();
             this.buttonReport = new System.Windows.Forms.Button();
             this.buttonBlank = new System.Windows.Forms.Button();
-            this.toolTipAttention = new System.Windows.Forms.ToolTip();
+            this.toolTipAttention = new System.Windows.Forms.ToolTip(this.components);
             this.spreadSheetLog = new Mayfly.Controls.SpreadSheet();
             this.ColumnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,11 +86,11 @@
             this.ColumnInstar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewColumn1 = new System.Windows.Forms.DataGridViewColumn();
-            this.taskDialogSave = new Mayfly.TaskDialogs.TaskDialog();
-            this.tdbSaveAllIndividuals = new Mayfly.TaskDialogs.TaskDialogButton();
-            this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton();
-            this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton();
-            this.inputDialogDupl = new Mayfly.TaskDialogs.InputDialog();
+            this.taskDialogSave = new Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbSaveAllIndividuals = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.inputDialogDupl = new Mayfly.TaskDialogs.InputDialog(this.components);
             this.contextMenuStripValue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMass)).BeginInit();
@@ -103,7 +104,6 @@
             // 
             // contextMenuStripValue
             // 
-            resources.ApplyResources(this.contextMenuStripValue, "contextMenuStripValue");
             this.contextMenuStripValue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemClearValue,
             this.ToolStripMenuItemCopyValue,
@@ -111,31 +111,31 @@
             this.toolStripSeparator3,
             this.ToolStripMenuItemCalc});
             this.contextMenuStripValue.Name = "contextMenuStripTranslate";
-            this.toolTipAttention.SetToolTip(this.contextMenuStripValue, resources.GetString("contextMenuStripValue.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripValue, "contextMenuStripValue");
             this.contextMenuStripValue.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripValue_Opening);
             // 
             // ToolStripMenuItemClearValue
             // 
-            resources.ApplyResources(this.ToolStripMenuItemClearValue, "ToolStripMenuItemClearValue");
             this.ToolStripMenuItemClearValue.Name = "ToolStripMenuItemClearValue";
+            resources.ApplyResources(this.ToolStripMenuItemClearValue, "ToolStripMenuItemClearValue");
             this.ToolStripMenuItemClearValue.Click += new System.EventHandler(this.ToolStripMenuItemClearValue_Click);
             // 
             // ToolStripMenuItemCopyValue
             // 
-            resources.ApplyResources(this.ToolStripMenuItemCopyValue, "ToolStripMenuItemCopyValue");
             this.ToolStripMenuItemCopyValue.Name = "ToolStripMenuItemCopyValue";
+            resources.ApplyResources(this.ToolStripMenuItemCopyValue, "ToolStripMenuItemCopyValue");
             this.ToolStripMenuItemCopyValue.Click += new System.EventHandler(this.ToolStripMenuItemCopyValue_Click);
             // 
             // ToolStripMenuItemPasteValue
             // 
-            resources.ApplyResources(this.ToolStripMenuItemPasteValue, "ToolStripMenuItemPasteValue");
             this.ToolStripMenuItemPasteValue.Name = "ToolStripMenuItemPasteValue";
+            resources.ApplyResources(this.ToolStripMenuItemPasteValue, "ToolStripMenuItemPasteValue");
             this.ToolStripMenuItemPasteValue.Click += new System.EventHandler(this.ToolStripMenuItemPasteValue_Click);
             // 
             // toolStripSeparator3
             // 
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // ToolStripMenuItemCalc
             // 
@@ -147,7 +147,6 @@
             // 
             resources.ApplyResources(this.labelQuantity, "labelQuantity");
             this.labelQuantity.Name = "labelQuantity";
-            this.toolTipAttention.SetToolTip(this.labelQuantity, resources.GetString("labelQuantity.ToolTip"));
             // 
             // numericUpDownQuantity
             // 
@@ -158,7 +157,6 @@
             0,
             0});
             this.numericUpDownQuantity.Name = "numericUpDownQuantity";
-            this.toolTipAttention.SetToolTip(this.numericUpDownQuantity, resources.GetString("numericUpDownQuantity.ToolTip"));
             this.numericUpDownQuantity.ValueChanged += new System.EventHandler(this.numericUpDownQuantity_ValueChanged);
             // 
             // numericUpDownMass
@@ -176,20 +174,17 @@
             0,
             0});
             this.numericUpDownMass.Name = "numericUpDownMass";
-            this.toolTipAttention.SetToolTip(this.numericUpDownMass, resources.GetString("numericUpDownMass.ToolTip"));
             this.numericUpDownMass.ValueChanged += new System.EventHandler(this.numericUpDownMass_ValueChanged);
             // 
             // labelMass
             // 
             resources.ApplyResources(this.labelMass, "labelMass");
             this.labelMass.Name = "labelMass";
-            this.toolTipAttention.SetToolTip(this.labelMass, resources.GetString("labelMass.ToolTip"));
             // 
             // buttonAdd
             // 
             resources.ApplyResources(this.buttonAdd, "buttonAdd");
             this.buttonAdd.Name = "buttonAdd";
-            this.toolTipAttention.SetToolTip(this.buttonAdd, resources.GetString("buttonAdd.ToolTip"));
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -198,13 +193,11 @@
             resources.ApplyResources(this.buttonOK, "buttonOK");
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Name = "buttonOK";
-            this.toolTipAttention.SetToolTip(this.buttonOK, resources.GetString("buttonOK.ToolTip"));
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // contextMenuStripAdd
             // 
-            resources.ApplyResources(this.contextMenuStripAdd, "contextMenuStripAdd");
             this.contextMenuStripAdd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemNewVar,
             this.toolStripSeparator1,
@@ -214,92 +207,89 @@
             this.ToolStripMenuItemGrade,
             this.ToolStripMenuItemInstar});
             this.contextMenuStripAdd.Name = "contextMenuStripParameters";
-            this.toolTipAttention.SetToolTip(this.contextMenuStripAdd, resources.GetString("contextMenuStripAdd.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripAdd, "contextMenuStripAdd");
             // 
             // ToolStripMenuItemNewVar
             // 
-            resources.ApplyResources(this.ToolStripMenuItemNewVar, "ToolStripMenuItemNewVar");
             this.ToolStripMenuItemNewVar.Name = "ToolStripMenuItemNewVar";
+            resources.ApplyResources(this.ToolStripMenuItemNewVar, "ToolStripMenuItemNewVar");
             this.ToolStripMenuItemNewVar.Click += new System.EventHandler(this.ToolStripMenuItemNewVar_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // ToolStripMenuItemFrequency
             // 
-            resources.ApplyResources(this.ToolStripMenuItemFrequency, "ToolStripMenuItemFrequency");
             this.ToolStripMenuItemFrequency.Name = "ToolStripMenuItemFrequency";
+            resources.ApplyResources(this.ToolStripMenuItemFrequency, "ToolStripMenuItemFrequency");
             this.ToolStripMenuItemFrequency.Click += new System.EventHandler(this.menuItemAddQ_Click);
             // 
             // ToolStripMenuItemLength
             // 
-            resources.ApplyResources(this.ToolStripMenuItemLength, "ToolStripMenuItemLength");
             this.ToolStripMenuItemLength.Name = "ToolStripMenuItemLength";
+            resources.ApplyResources(this.ToolStripMenuItemLength, "ToolStripMenuItemLength");
             this.ToolStripMenuItemLength.Click += new System.EventHandler(this.ToolStripMenuItemLength_Click);
             // 
             // ToolStripMenuItemSex
             // 
-            resources.ApplyResources(this.ToolStripMenuItemSex, "ToolStripMenuItemSex");
             this.ToolStripMenuItemSex.Name = "ToolStripMenuItemSex";
+            resources.ApplyResources(this.ToolStripMenuItemSex, "ToolStripMenuItemSex");
             this.ToolStripMenuItemSex.Click += new System.EventHandler(this.ToolStripMenuItemSex_Click);
             // 
             // ToolStripMenuItemGrade
             // 
-            resources.ApplyResources(this.ToolStripMenuItemGrade, "ToolStripMenuItemGrade");
             this.ToolStripMenuItemGrade.Name = "ToolStripMenuItemGrade";
+            resources.ApplyResources(this.ToolStripMenuItemGrade, "ToolStripMenuItemGrade");
             this.ToolStripMenuItemGrade.Click += new System.EventHandler(this.ToolStripMenuItemGrade_Click);
             // 
             // ToolStripMenuItemInstar
             // 
-            resources.ApplyResources(this.ToolStripMenuItemInstar, "ToolStripMenuItemInstar");
             this.ToolStripMenuItemInstar.Name = "ToolStripMenuItemInstar";
+            resources.ApplyResources(this.ToolStripMenuItemInstar, "ToolStripMenuItemInstar");
             this.ToolStripMenuItemInstar.Click += new System.EventHandler(this.ToolStripMenuItemInstar_Click);
             // 
             // contextMenuStripVar
             // 
-            resources.ApplyResources(this.contextMenuStripVar, "contextMenuStripVar");
             this.contextMenuStripVar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemRemove,
             this.ToolStripMenuItemClearColumn,
             this.toolStripSeparator2,
             this.ToolStripMenuItemSaveVars});
             this.contextMenuStripVar.Name = "contextMenuStripVar";
-            this.toolTipAttention.SetToolTip(this.contextMenuStripVar, resources.GetString("contextMenuStripVar.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripVar, "contextMenuStripVar");
             this.contextMenuStripVar.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripVar_Opening);
             // 
             // ToolStripMenuItemRemove
             // 
-            resources.ApplyResources(this.ToolStripMenuItemRemove, "ToolStripMenuItemRemove");
             this.ToolStripMenuItemRemove.Name = "ToolStripMenuItemRemove";
+            resources.ApplyResources(this.ToolStripMenuItemRemove, "ToolStripMenuItemRemove");
             this.ToolStripMenuItemRemove.Click += new System.EventHandler(this.ToolStripMenuItemRemove_Click);
             // 
             // ToolStripMenuItemClearColumn
             // 
-            resources.ApplyResources(this.ToolStripMenuItemClearColumn, "ToolStripMenuItemClearColumn");
             this.ToolStripMenuItemClearColumn.Name = "ToolStripMenuItemClearColumn";
+            resources.ApplyResources(this.ToolStripMenuItemClearColumn, "ToolStripMenuItemClearColumn");
             this.ToolStripMenuItemClearColumn.Click += new System.EventHandler(this.ToolStripMenuItemClearColumn_Click);
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // ToolStripMenuItemSaveVars
             // 
-            resources.ApplyResources(this.ToolStripMenuItemSaveVars, "ToolStripMenuItemSaveVars");
             this.ToolStripMenuItemSaveVars.Name = "ToolStripMenuItemSaveVars";
+            resources.ApplyResources(this.ToolStripMenuItemSaveVars, "ToolStripMenuItemSaveVars");
             this.ToolStripMenuItemSaveVars.Click += new System.EventHandler(this.ToolStripMenuItemSaveVars_Click);
             // 
             // pictureBoxWarningQuantity
             // 
             resources.ApplyResources(this.pictureBoxWarningQuantity, "pictureBoxWarningQuantity");
             this.pictureBoxWarningQuantity.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningQuantity.Image = Pictogram.Warning;
             this.pictureBoxWarningQuantity.Name = "pictureBoxWarningQuantity";
             this.pictureBoxWarningQuantity.TabStop = false;
-            this.toolTipAttention.SetToolTip(this.pictureBoxWarningQuantity, resources.GetString("pictureBoxWarningQuantity.ToolTip"));
             this.pictureBoxWarningQuantity.DoubleClick += new System.EventHandler(this.pictureBoxWarningQuantity_DoubleClick);
             this.pictureBoxWarningQuantity.MouseLeave += new System.EventHandler(this.pictureBoxWarningQ_MouseLeave);
             this.pictureBoxWarningQuantity.MouseHover += new System.EventHandler(this.pictureBoxWarningQ_MouseHover);
@@ -308,17 +298,14 @@
             // 
             resources.ApplyResources(this.pictureBoxWarningMass, "pictureBoxWarningMass");
             this.pictureBoxWarningMass.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarningMass.Image = Pictogram.Warning;
             this.pictureBoxWarningMass.Name = "pictureBoxWarningMass";
             this.pictureBoxWarningMass.TabStop = false;
-            this.toolTipAttention.SetToolTip(this.pictureBoxWarningMass, resources.GetString("pictureBoxWarningMass.ToolTip"));
             this.pictureBoxWarningMass.DoubleClick += new System.EventHandler(this.pictureBoxWarningMass_DoubleClick);
             this.pictureBoxWarningMass.MouseLeave += new System.EventHandler(this.pictureBoxWarningM_MouseLeave);
             this.pictureBoxWarningMass.MouseHover += new System.EventHandler(this.pictureBoxWarningM_MouseHover);
             // 
             // contextMenuStripInd
             // 
-            resources.ApplyResources(this.contextMenuStripInd, "contextMenuStripInd");
             this.contextMenuStripInd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemDuplicate,
             this.ToolStripMenuItemDelete,
@@ -327,62 +314,59 @@
             this.ToolStripMenuItemCopy,
             this.ToolStripMenuItemPaste});
             this.contextMenuStripInd.Name = "contextMenuStripInd";
-            this.toolTipAttention.SetToolTip(this.contextMenuStripInd, resources.GetString("contextMenuStripInd.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripInd, "contextMenuStripInd");
             // 
             // ToolStripMenuItemDuplicate
             // 
-            resources.ApplyResources(this.ToolStripMenuItemDuplicate, "ToolStripMenuItemDuplicate");
             this.ToolStripMenuItemDuplicate.Name = "ToolStripMenuItemDuplicate";
+            resources.ApplyResources(this.ToolStripMenuItemDuplicate, "ToolStripMenuItemDuplicate");
             this.ToolStripMenuItemDuplicate.Click += new System.EventHandler(this.ToolStripMenuItemDuplicate_Click);
             // 
             // ToolStripMenuItemDelete
             // 
-            resources.ApplyResources(this.ToolStripMenuItemDelete, "ToolStripMenuItemDelete");
             this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            resources.ApplyResources(this.ToolStripMenuItemDelete, "ToolStripMenuItemDelete");
             this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItemDelete_Click);
             // 
             // toolStripSeparator5
             // 
-            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
             // ToolStripMenuItemCut
             // 
-            resources.ApplyResources(this.ToolStripMenuItemCut, "ToolStripMenuItemCut");
             this.ToolStripMenuItemCut.Name = "ToolStripMenuItemCut";
+            resources.ApplyResources(this.ToolStripMenuItemCut, "ToolStripMenuItemCut");
             this.ToolStripMenuItemCut.Click += new System.EventHandler(this.ToolStripMenuItemCut_Click);
             // 
             // ToolStripMenuItemCopy
             // 
-            resources.ApplyResources(this.ToolStripMenuItemCopy, "ToolStripMenuItemCopy");
             this.ToolStripMenuItemCopy.Name = "ToolStripMenuItemCopy";
+            resources.ApplyResources(this.ToolStripMenuItemCopy, "ToolStripMenuItemCopy");
             this.ToolStripMenuItemCopy.Click += new System.EventHandler(this.ToolStripMenuItemCopy_Click);
             // 
             // ToolStripMenuItemPaste
             // 
-            resources.ApplyResources(this.ToolStripMenuItemPaste, "ToolStripMenuItemPaste");
             this.ToolStripMenuItemPaste.Name = "ToolStripMenuItemPaste";
+            resources.ApplyResources(this.ToolStripMenuItemPaste, "ToolStripMenuItemPaste");
             this.ToolStripMenuItemPaste.Click += new System.EventHandler(this.ToolStripMenuItemPaste_Click);
             // 
             // textBoxComments
             // 
             resources.ApplyResources(this.textBoxComments, "textBoxComments");
             this.textBoxComments.Name = "textBoxComments";
-            this.toolTipAttention.SetToolTip(this.textBoxComments, resources.GetString("textBoxComments.ToolTip"));
             this.textBoxComments.TextChanged += new System.EventHandler(this.textBoxComments_TextChanged);
             // 
             // labelComments
             // 
             resources.ApplyResources(this.labelComments, "labelComments");
             this.labelComments.Name = "labelComments";
-            this.toolTipAttention.SetToolTip(this.labelComments, resources.GetString("labelComments.ToolTip"));
             // 
             // buttonReport
             // 
             resources.ApplyResources(this.buttonReport, "buttonReport");
             this.buttonReport.FlatAppearance.BorderSize = 0;
             this.buttonReport.Name = "buttonReport";
-            this.toolTipAttention.SetToolTip(this.buttonReport, resources.GetString("buttonReport.ToolTip"));
             this.buttonReport.UseVisualStyleBackColor = true;
             this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
             // 
@@ -390,20 +374,18 @@
             // 
             resources.ApplyResources(this.buttonBlank, "buttonBlank");
             this.buttonBlank.FlatAppearance.BorderSize = 0;
-            this.buttonBlank.Image = Pictogram.Blank;
             this.buttonBlank.Name = "buttonBlank";
-            this.toolTipAttention.SetToolTip(this.buttonBlank, resources.GetString("buttonBlank.ToolTip"));
             this.buttonBlank.UseVisualStyleBackColor = true;
             this.buttonBlank.Click += new System.EventHandler(this.buttonBlank_Click);
             // 
             // spreadSheetLog
             // 
-            resources.ApplyResources(this.spreadSheetLog, "spreadSheetLog");
             this.spreadSheetLog.AllowColumnRenaming = true;
             this.spreadSheetLog.AllowUserToAddRows = true;
             this.spreadSheetLog.AllowUserToDeleteColumns = true;
             this.spreadSheetLog.AllowUserToDeleteRows = true;
             this.spreadSheetLog.AllowUserToResizeColumns = false;
+            resources.ApplyResources(this.spreadSheetLog, "spreadSheetLog");
             this.spreadSheetLog.AutoClearEmptyRows = true;
             this.spreadSheetLog.CellMenu = this.contextMenuStripValue;
             this.spreadSheetLog.ColumnMenu = this.contextMenuStripVar;
@@ -419,7 +401,6 @@
             this.spreadSheetLog.DefaultDecimalPlaces = 0;
             this.spreadSheetLog.Name = "spreadSheetLog";
             this.spreadSheetLog.RowMenu = this.contextMenuStripInd;
-            this.toolTipAttention.SetToolTip(this.spreadSheetLog, resources.GetString("spreadSheetLog.ToolTip"));
             this.spreadSheetLog.ColumnRenamed += new Mayfly.Controls.GridColumnRenameEventHandler(this.spreadSheetLog_ColumnRenamed);
             this.spreadSheetLog.RowRemoving += new System.Windows.Forms.DataGridViewRowEventHandler(this.spreadSheetLog_RowRemoving);
             this.spreadSheetLog.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.spreadSheetLog_CellEnter);
@@ -437,60 +418,59 @@
             // 
             // ColumnFrequency
             // 
-            dataGridViewCellStyle8.Format = "N0";
-            this.ColumnFrequency.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Format = "N0";
+            this.ColumnFrequency.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.ColumnFrequency, "ColumnFrequency");
             this.ColumnFrequency.Name = "ColumnFrequency";
             // 
             // ColumnLength
             // 
-            dataGridViewCellStyle9.Format = "N1";
-            this.ColumnLength.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Format = "N1";
+            this.ColumnLength.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.ColumnLength, "ColumnLength");
             this.ColumnLength.Name = "ColumnLength";
             // 
             // ColumnMass
             // 
-            dataGridViewCellStyle10.Format = "N1";
-            dataGridViewCellStyle10.NullValue = null;
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Format = "N1";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
             // 
             // ColumnSex
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnSex.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnSex.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.ColumnSex, "ColumnSex");
             this.ColumnSex.Name = "ColumnSex";
             // 
             // ColumnGrade
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Format = "0";
-            this.ColumnGrade.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "0";
+            this.ColumnGrade.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.ColumnGrade, "ColumnGrade");
             this.ColumnGrade.Name = "ColumnGrade";
             // 
             // ColumnInstar
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Format = "0";
-            this.ColumnInstar.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "0";
+            this.ColumnInstar.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.ColumnInstar, "ColumnInstar");
             this.ColumnInstar.Name = "ColumnInstar";
             // 
             // ColumnComments
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnComments.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnComments.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnComments.FillWeight = 153.1616F;
             resources.ApplyResources(this.ColumnComments, "ColumnComments");
             this.ColumnComments.Name = "ColumnComments";
             // 
             // dataGridViewColumn1
             // 
-            resources.ApplyResources(this.dataGridViewColumn1, "dataGridViewColumn1");
             this.dataGridViewColumn1.Name = "dataGridViewColumn1";
             // 
             // taskDialogSave
@@ -508,7 +488,6 @@
             // tdbCancelClose
             // 
             this.tdbCancelClose.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
-            resources.ApplyResources(this.tdbCancelClose, "tdbCancelClose");
             // 
             // tdbDiscard
             // 
@@ -539,7 +518,6 @@
             this.Controls.Add(this.pictureBoxWarningQuantity);
             this.Name = "Individuals";
             this.ShowIcon = false;
-            this.toolTipAttention.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Individuals_FormClosing);
             this.contextMenuStripValue.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantity)).EndInit();

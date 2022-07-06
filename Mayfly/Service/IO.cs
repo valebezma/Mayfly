@@ -117,46 +117,6 @@ namespace Mayfly
             return FilterFromExt(true, extensions);
         }
 
-
-        public static string GetNewFileCaption(string extension)
-        {
-            return string.Format(Resources.Interface.FileNew, IO.GetFriendlyFiletypeName(extension).ToLower());
-        }
-
-        
-        public static string FolderName(string filename)
-        {
-            if (filename == null) return null;
-            if (!filename.IsAcceptable()) return null;
-            FileInfo fi = new FileInfo(filename);
-            return fi.DirectoryName;
-        }
-
-        public static string SuggestName(string folder, string shortFileName)
-        {
-            if (folder == null) return shortFileName;
-            if (folder == string.Empty) return shortFileName;
-
-            FileInfo result = new FileInfo(string.Format(@"{0}\{1}", folder, shortFileName));
-            if (result.Directory.Exists)
-            {
-                int counter = 2;
-                while (result.Exists)
-                {
-                    result = new FileInfo(string.Format(@"{0}\{1}", folder,
-                        shortFileName.Insert(shortFileName.Length - result.Extension.Length,
-                        counter.ToString(" (0)"))));
-                    counter++;
-                }
-            }
-            else
-            {
-                return shortFileName;
-            }
-
-            return result.Name;
-        }
-
         public static string LocalizedPath(string filename)
         {
             return string.Format("{0}\\{1}\\{2}", Application.StartupPath,
@@ -584,16 +544,63 @@ namespace Mayfly
             }
         }
 
+        public string NewFilename
+        {
+            get
+            {
+                return string.Format(Resources.Interface.FileNew, IO.GetFriendlyFiletypeName(Extension).ToLower());
+            }
+        }
+
+        public string FolderName(string filename)
+        {
+            if (filename == null) return null;
+            if (!filename.IsAcceptable()) return null;
+            FileInfo fi = new FileInfo(filename);
+            return fi.DirectoryName;
+        }
+
+        public string SuggestName(string shortFilename)
+        {
+            string folder = FolderName(SaveDialog.FileName);
+            if (folder == null) return shortFilename + Extension;
+            if (string.IsNullOrEmpty(folder)) return shortFilename + Extension;
+
+            FileInfo result = new FileInfo(string.Format(@"{0}\{1}{2}",
+                folder,
+                shortFilename, 
+                Extension));
+
+            if (result.Directory.Exists)
+            {
+                int counter = 2;
+                while (result.Exists)
+                {
+                    result = new FileInfo(string.Format(@"{0}\{1}{2}",
+                        folder,
+                        shortFilename + counter.ToString(" (0)"), 
+                        Extension));
+                    counter++;
+                }
+            }
+            else
+            {
+                return shortFilename;
+            }
+
+            return result.Name;
+        }
+
 
 
         void openDialog_FileOk(object sender, CancelEventArgs e)
         {
-            OpenDialog.InitialDirectory = IO.FolderName(((OpenFileDialog)sender).FileName);
+            OpenDialog.InitialDirectory = FolderName(((OpenFileDialog)sender).FileName);
         }
 
         void saveDialog_FileOk(object sender, CancelEventArgs e)
         {
-            SaveDialog.InitialDirectory = IO.FolderName(((SaveFileDialog)sender).FileName);
+            SaveDialog.InitialDirectory = FolderName(((SaveFileDialog)sender).FileName);
             if (ExportDialog != null) ExportDialog.InitialDirectory = SaveDialog.InitialDirectory;
         }
     }

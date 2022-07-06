@@ -27,7 +27,7 @@ namespace Mayfly.Wild
         {
             set
             {
-                this.ResetText(value ?? IO.GetNewFileCaption(UserSettings.Interface.Extension), EntryAssemblyInfo.Title);
+                this.ResetText(value ?? UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
                 menuItemAboutCard.Visible = value != null;
                 filename = value;
             }
@@ -649,8 +649,7 @@ namespace Mayfly.Wild
             SaveData();
 
             UserSettings.Interface.ExportDialog.FileName =
-                IO.SuggestName(IO.FolderName(UserSettings.Interface.SaveDialog.FileName),
-                Data.Solitary.GetSuggestedName());
+                UserSettings.Interface.SuggestName(Data.Solitary.GetSuggestedName());
 
             if (UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
@@ -680,12 +679,12 @@ namespace Mayfly.Wild
 
         private void menuItemCardBlank_Click(object sender, EventArgs e)
         {
-            BenthosReport.BlankCard.Run();
+            throw new NotImplementedException();
         }
 
         private void menuItemIndividualsLogBlank_Click(object sender, EventArgs e)
         {
-            BenthosReport.BlankIndividualsLog.Run();
+            throw new NotImplementedException();
         }
 
         private void menuItemClose_Click(object sender, EventArgs e)
@@ -733,43 +732,12 @@ namespace Mayfly.Wild
 
         private void menuItemSettings_Click(object sender, EventArgs e)
         {
-            string currentWaters = Wild.UserSettings.WatersIndexPath;
-            string currentSpc = UserSettings.TaxonomicIndexPath;
-            int currentRecentCount = UserSettings.RecentSpeciesCount;
-
-            Settings settings = new Settings();
-            if (settings.ShowDialog() == DialogResult.OK)
-            {
-                if (currentWaters != Wild.UserSettings.WatersIndexPath)
-                {
-                    Wild.UserSettings.WatersIndex = null;
-                    waterSelector.Index = Wild.UserSettings.WatersIndex;
-                }
-
-                if (currentSpc != UserSettings.TaxonomicIndexPath)
-                {
-                    UserSettings.TaxonomicIndex = null;
-                    Logger.Provider.IndexPath = UserSettings.TaxonomicIndexPath;
-                }
-
-                if (currentSpc != UserSettings.TaxonomicIndexPath ||
-                    currentRecentCount != UserSettings.RecentSpeciesCount)
-                {
-                    Logger.Provider.RecentListCount = UserSettings.RecentSpeciesCount;
-                    Logger.UpdateRecent();
-                }
-            }
-
-            ColumnQuantity.ReadOnly = UserSettings.FixTotals;
-            ColumnMass.ReadOnly = UserSettings.FixTotals;
+            throw new NotImplementedException();
         }
 
         private void menuItemAbout_Click(object sender, EventArgs e)
         {
-            About about = new About(Properties.Resources.logo);
-            about.SetPowered(Properties.Resources.ibiw, Wild.Resources.Interface.Powered.IBIW);
-            //about.SetIcon(Mayfly.Service.GetIcon(Application.ExecutablePath, 0));
-            about.ShowDialog();
+            throw new NotImplementedException();
         }
 
         private void itemAboutCard_Click(object sender, EventArgs e)
@@ -782,29 +750,7 @@ namespace Mayfly.Wild
 
         private void waterSelector_WaterSelected(object sender, WaterEventArgs e)
         {
-            SetCombos(waterSelector.IsWaterSelected ? waterSelector.WaterObject.WaterType : WaterType.None);
-            statusCard.Message(Wild.Resources.Interface.Messages.WaterSet);
-        }
-
-        private void sampler_Changed(object sender, EventArgs e)
-        {
-            BenthosSamplerType kind = SelectedSampler.GetSamplerType();
-
-            textBoxSquare.ReadOnly = labelRepeats.Visible =
-                numericUpDownReps.Visible = kind != BenthosSamplerType.Manual;
-
-            switch (kind)
-            {
-                case BenthosSamplerType.Grabber:
-                    labelRepeats.Text = Resources.Interface.Interface.Repeats;
-                    break;
-                case BenthosSamplerType.Scraper:
-                    labelRepeats.Text = Resources.Interface.Interface.Expanse;
-                    break;
-            }
-
-            SetSquare();
-            IsChanged = true;
+            statusCard.Message(Resources.Interface.Messages.WaterSet);
         }
 
         private void spreadSheetAddt_CellEndEdit(object sender, DataGridViewCellEventArgs e)
