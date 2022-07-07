@@ -511,7 +511,7 @@ namespace Mayfly.Extensions
                 value);
         }
 
-        public static void ResetTitle(this AeroWizard.WizardControl wizard, object value)
+        public static void ResetTitle(this WizardControl wizard, object value)
         {
             if (wizard.FindForm() == null) wizard.Text = value.ToString();
             else wizard.Title = string.Format(

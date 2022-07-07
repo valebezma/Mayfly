@@ -55,7 +55,62 @@ namespace Mayfly.Benthos
         private NumericUpDown numericUpDownClay;
         private Label labelBank;
 
+        private double Square // In square meters
+        {
+            get
+            {
+                if (textBoxSquare.Text.IsDoubleConvertible())
+                {
+                    return Convert.ToDouble(textBoxSquare.Text);
+                }
+                else
+                {
+                    return double.NaN;
+                }
+            }
+
+            set
+            {
+                if (double.IsNaN(value))
+                {
+                    textBoxSquare.Text = string.Empty;
+                }
+                else
+                {
+                    textBoxSquare.Text = value.ToString();//Textual.Mask(4));
+
+                    if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
+                    {
+
+                        switch (SelectedSampler.GetSamplerType())
+                        {
+                            case BenthosSamplerType.Grabber:
+                                // Replies count equals to 
+                                // square divided by [standard effort] of grabber
+                                numericUpDownReps.Value = (decimal)Math.Round(value / SelectedSampler.EffortValue, 0);
+                                break;
+                            case BenthosSamplerType.Scraper:
+                                // Exposure length in centimeters equals to 
+                                // square divided by knife length (standard effort) of creeper multiplied by 100
+                                numericUpDownReps.Value = 100 * (decimal)Math.Round(value / SelectedSampler.EffortValue, 3);
+                                break;
+                            default:
+                                numericUpDownReps.Value = (decimal)Math.Round(value / SelectedSampler.EffortValue, 0);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        statusCard.Message(Resources.Interface.Messages.SamplerUnable);
+                    }
+                }
+            }
+        }
+        private NumericUpDown[] MineralControls => new NumericUpDown[] { numericUpDownBoulder, numericUpDownCobble, numericUpDownGravel, numericUpDownSand, numericUpDownSilt, numericUpDownClay };
+
+
         public BenthosCard() : base() {
+            InitializeComponent();
             Initiate();
         }
 
@@ -263,7 +318,6 @@ namespace Mayfly.Benthos
             this.comboBoxCrossSection.Size = new System.Drawing.Size(142, 21);
             this.comboBoxCrossSection.TabIndex = 6;
             this.comboBoxCrossSection.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrossSection_SelectedIndexChanged);
-            this.comboBoxCrossSection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // comboBoxBank
             // 
@@ -794,32 +848,222 @@ namespace Mayfly.Benthos
 
         }
 
+        private void SetSquare()
+        {
+            if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
+            {
+                switch (SelectedSampler.GetSamplerType())
+                {
+                    case BenthosSamplerType.Grabber:
+                        Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue;
+                        break;
+                    case BenthosSamplerType.Scraper:
+                        Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue / 100;
+                        break;
+                }
+            }
+            else
+            {
+                //Square = double.NaN;
+            }
+        }
+
+        private void SetCombos(WaterType type)
+        {
+            comboBoxCrossSection.Items.Clear();
+            comboBoxCrossSection.Items.AddRange(Wild.Service.CrossSection(type));
+            comboBoxBank.Enabled = type != WaterType.Lake;
+        }
+
+        private void DropSubs()
+        {
+            numericUpDownBoulder.Value = 0;
+            numericUpDownCobble.Value = 0;
+            numericUpDownGravel.Value = 0;
+            numericUpDownSand.Value = 0;
+            numericUpDownSilt.Value = 0;
+            numericUpDownClay.Value = 0;
+
+            numericUpDownPhytal.Value = 0;
+            numericUpDownLiving.Value = 0;
+            numericUpDownWood.Value = 0;
+            numericUpDownCPOM.Value = 0;
+            numericUpDownFPOM.Value = 0;
+            numericUpDownSapropel.Value = 0;
+            numericUpDownDebris.Value = 0;
+        }
+
+        private void ResetSubs()
+        {
+            checkBoxBoulder.Checked = (numericUpDownBoulder.Value > 0);
+            checkBoxCobble.Checked = (numericUpDownCobble.Value > 0);
+            checkBoxGravel.Checked = (numericUpDownGravel.Value > 0);
+            checkBoxSand.Checked = (numericUpDownSand.Value > 0);
+            checkBoxSilt.Checked = (numericUpDownSilt.Value > 0);
+            checkBoxClay.Checked = (numericUpDownClay.Value > 0);
+
+            checkBoxPhytal.Checked = (numericUpDownPhytal.Value > 0);
+            checkBoxLiving.Checked = (numericUpDownLiving.Value > 0);
+            checkBoxWood.Checked = (numericUpDownWood.Value > 0);
+            checkBoxCPOM.Checked = (numericUpDownCPOM.Value > 0);
+            checkBoxFPOM.Checked = (numericUpDownFPOM.Value > 0);
+            checkBoxSapropel.Checked = (numericUpDownSapropel.Value > 0);
+            checkBoxDebris.Checked = (numericUpDownDebris.Value > 0);
+        }
+
+
+
+        private void waterSelector_WaterSelected(object sender, WaterEventArgs e) {
+            SetCombos(waterSelector.IsWaterSelected ? waterSelector.WaterObject.WaterType : WaterType.None);
+            statusCard.Message(Wild.Resources.Interface.Messages.WaterSet);
+        }
+
+        private void sampler_Changed(object sender, EventArgs e) {
+            BenthosSamplerType kind = SelectedSampler.GetSamplerType();
+
+            textBoxSquare.ReadOnly = labelRepeats.Visible =
+                numericUpDownReps.Visible = kind != BenthosSamplerType.Manual;
+
+            switch (kind) {
+                case BenthosSamplerType.Grabber:
+                    labelRepeats.Text = Resources.Interface.Interface.Repeats;
+                    break;
+                case BenthosSamplerType.Scraper:
+                    labelRepeats.Text = Resources.Interface.Interface.Expanse;
+                    break;
+            }
+
+            SetSquare();
+            IsChanged = true;
+        }
+
+
+        private void numericUpDownReps_ValueChanged(object sender, EventArgs e) {
+            if (numericUpDownReps.ContainsFocus) {
+                SetSquare();
+            }
+        }
+
+        private void numericUpDownReps_VisibleChanged(object sender, EventArgs e) {
+            if (!numericUpDownReps.Visible) {
+                //numericUpDownReps.Value = 0;
+                textBoxSquare.Text = string.Empty;
+            }
+        }
+
+        private void textBoxSquare_TextChanged(object sender, EventArgs e) {
+            value_Changed(sender, e);
+            Logger.UpdateStatus();
+        }
+
         private void comboBoxCrossSection_SelectedIndexChanged(object sender, EventArgs e) {
+            if (comboBoxCrossSection.SelectedIndex == -1 ||
+                comboBoxCrossSection.SelectedIndex == comboBoxCrossSection.Items.Count - 1) {
+                labelBank.Enabled = comboBoxBank.Enabled = false;
+            } else {
+                labelBank.Enabled = comboBoxBank.Enabled = true;
+            }
 
+            value_Changed(sender, e);
         }
 
-        private void comboBox_KeyPress(object sender, KeyPressEventArgs e) {
+        private void pictureBoxWarnOpening_MouseHover(object sender, EventArgs e) {
+            if (comboBoxCrossSection.SelectedIndex == -1 ||
+                comboBoxCrossSection.SelectedIndex == comboBoxCrossSection.Items.Count - 1) {
+                labelBank.Enabled = comboBoxBank.Enabled = false;
+            } else {
+                labelBank.Enabled = comboBoxBank.Enabled = true;
+            }
 
+            value_Changed(sender, e);
         }
 
-        private void value_Changed(object sender, EventArgs e) {
 
+
+        private void substrate_ValueChanged(object sender, EventArgs e) {
+            value_Changed(sender, e);
+
+            if (sender is NumericUpDown down && down.ContainsFocus) {
+                int selectedValue = (int)down.Value;
+
+                int rest = 100 - selectedValue;
+
+                int currentRest = 0;
+
+                foreach (NumericUpDown numericUpDown in MineralControls) {
+                    if (numericUpDown == down) continue;
+                    currentRest += (int)numericUpDown.Value;
+                }
+
+                if (currentRest > rest) {
+                    foreach (NumericUpDown numericUpDown in MineralControls) {
+                        if (numericUpDown == down) continue;
+                        if (numericUpDown.Value == 0) continue;
+                        numericUpDown.Value = (int)(numericUpDown.Value * (decimal)rest / (decimal)currentRest);
+                    }
+                }
+            }
+
+            // TODO: get substrate from sand+silt+clay IF checks are checked
+
+            SubstrateSample substrate = new SubstrateSample(
+                (double)numericUpDownSand.Value,
+                (double)numericUpDownSilt.Value,
+                (double)numericUpDownClay.Value);
+
+            labelTexture.Text = substrate.TypeName;
         }
 
         private void checkBoxGranulae_CheckedChanged(object sender, EventArgs e) {
+            Control control = Controls.Find("numericUpDown" +
+                ((CheckBox)sender).Name.Substring(8), true)[0];
 
-        }
+            if (control is NumericUpDown) {
+                control.Visible = ((CheckBox)sender).Checked;
+            }
 
-        private void substrate_ValueChanged(object sender, EventArgs e) {
-
-        }
-
-        private void numericUpDownReps_ValueChanged(object sender, EventArgs e) {
-
+            substrate_ValueChanged(sender, e);
         }
 
         private void buttonSubTexture_Click(object sender, EventArgs e) {
-
+            contextMenuStripSubstrate.Show(buttonSubTexture, new Point(buttonSubTexture.Width, 0), ToolStripDropDownDirection.Right);
         }
+
+        private void ToolStripMenuItemTexture_Click(object sender, EventArgs e) {
+            DropSubs();
+
+            string texture = ((ToolStripMenuItem)sender).Name.Substring(7);
+            SubstrateSample substrate = new SubstrateSample(SubstrateSample.FromName(texture));
+
+            numericUpDownSand.Value = 100 * (decimal)substrate.Sand;
+            numericUpDownSilt.Value = 100 * (decimal)substrate.Silt;
+            numericUpDownClay.Value = 100 * (decimal)substrate.Clay;
+
+            ResetSubs();
+        }
+
+
+
+        private void logger_IndividualsRequired(object sender, EventArgs e) {
+            foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
+                if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
+                    Individuals individuals = new Individuals(Logger.SaveLogRow(gridRow));
+                    individuals.SetColumns(ColumnSpecies, ColumnQuantity, ColumnMass);
+                    individuals.LogLine = gridRow;
+                    individuals.SetFriendlyDesktopLocation(gridRow);
+                    individuals.FormClosing += new FormClosingEventHandler(individuals_FormClosing);
+                    individuals.Show(this);
+                }
+            }
+        }
+
+        private void individuals_FormClosing(object sender, FormClosingEventArgs e) {
+            Individuals individuals = sender as Individuals;
+            if (individuals.DialogResult == DialogResult.OK) {
+                IsChanged |= individuals.ChangesWereMade;
+            }
+        }
+
+
     }
 }

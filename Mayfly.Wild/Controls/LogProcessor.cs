@@ -450,9 +450,8 @@ namespace Mayfly.Wild.Controls
                     (Data == null || Data.Solitary.IsSignNull()) ? Mayfly.UserSettings.Username : Data.Solitary.Investigator);
             }
 
-
-            LabelMass.ResetFormatted(Mass);
-            LabelQty.ResetFormatted(Quantity);
+            LabelMass.Text = string.Format("Total mass: {0:N2} mg", Mass);
+            LabelQty.Text = string.Format("Total quantity: {0} ind.", Quantity);
         }
 
         public void UpdateRecent() {

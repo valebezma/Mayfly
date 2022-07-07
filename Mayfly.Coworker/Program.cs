@@ -88,9 +88,9 @@ namespace Mayfly.ManualLicenser
                     CovertBio();
                     break;
 
-                case "5":
-                    HackBio();
-                    break;
+                //case "5":
+                //    HackBio();
+                //    break;
 
                 case "6":
                     //ConvertFishStats();
@@ -284,60 +284,60 @@ namespace Mayfly.ManualLicenser
             goto Start;
         }
 
-        static void HackBio()
-        {
-            Console.WriteLine();
-            Console.WriteLine("===== HACK BIO =====");
+        //static void HackBio()
+        //{
+        //    Console.WriteLine();
+        //    Console.WriteLine("===== HACK BIO =====");
 
-        Start:
+        //Start:
 
-            Console.WriteLine();
-            Console.Write("Enter .bio file path: ");
-            string source = Console.ReadLine().Trim(new char[] { '"' });
+        //    Console.WriteLine();
+        //    Console.Write("Enter .bio file path: ");
+        //    string source = Console.ReadLine().Trim(new char[] { '"' });
 
-            if (Path.GetExtension(source) != ".bio")
-            {
-                Console.WriteLine("Could not recognize format.");
-                goto Start;
-            }
+        //    if (Path.GetExtension(source) != ".bio")
+        //    {
+        //        Console.WriteLine("Could not recognize format.");
+        //        goto Start;
+        //    }
 
-            string destination = source.Replace(".bio", string.Empty);
+        //    string destination = source.Replace(".bio", string.Empty);
 
-            Console.Write("\r\n\"{0}\" will be disassemled to \"{1}\". Continue (y)? ", source, destination);
+        //    Console.Write("\r\n\"{0}\" will be disassemled to \"{1}\". Continue (y)? ", source, destination);
 
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                Console.Write("Enter extensions for future cards: ");
-                string ext = Console.ReadLine().Trim(new char[] { '"' });
+        //    if (Console.ReadKey().Key == ConsoleKey.Y)
+        //    {
+        //        Console.Write("Enter extensions for future cards: ");
+        //        string ext = Console.ReadLine().Trim(new char[] { '"' });
 
-                Data bio = new Data();
-                string contents = StringCipher.Decrypt(File.ReadAllText(source), "bio");
-                bio.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
+        //        Data bio = new Data();
+        //        string contents = StringCipher.Decrypt(File.ReadAllText(source), "bio");
+        //        bio.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
 
-                Directory.CreateDirectory(destination);
+        //        Directory.CreateDirectory(destination);
 
-                foreach (Data.CardRow cardRow in bio.Card)
-                {
-                    Data data = cardRow.SingleCardDataset();
-                    string filename = IO.SuggestName(destination, cardRow.GetSuggestedName(ext));
-                    data.WriteToFile(Path.Combine(destination, filename));
+        //        foreach (Data.CardRow cardRow in bio.Card)
+        //        {
+        //            Data data = cardRow.SingleCardDataset();
+        //            string filename = IO.SuggestName(destination, cardRow.GetSuggestedName(ext));
+        //            data.WriteToFile(Path.Combine(destination, filename));
 
-                    Console.Write("\r\nCard {0} is written", filename);
-                }
-            }
+        //            Console.Write("\r\nCard {0} is written", filename);
+        //        }
+        //    }
 
-            //Console.WriteLine();
-            //Console.WriteLine();
+        //    //Console.WriteLine();
+        //    //Console.WriteLine();
 
-            Console.Write("\r\nDone. Exit procedure (y)? ");
+        //    Console.Write("\r\nDone. Exit procedure (y)? ");
 
-            if (Console.ReadKey().Key == ConsoleKey.Y)
-            {
-                return;
-            }
+        //    if (Console.ReadKey().Key == ConsoleKey.Y)
+        //    {
+        //        return;
+        //    }
 
-            goto Start;
-        }
+        //    goto Start;
+        //}
 
         //static void ConvertFishStats()
         //{
@@ -920,7 +920,7 @@ namespace Mayfly.ManualLicenser
                                 string filepath = Path.Combine(destination, 
                                     data.Solitary.When.Year.ToString(), 
                                     data.Solitary.WaterRow.Presentation, 
-                                    data.Solitary.GetSuggestedName(".pcd")
+                                    data.Solitary.GetSuggestedName()
                                     );
                                 Directory.CreateDirectory(Path.GetDirectoryName(filepath));
                                 data.WriteToFile(filepath);
