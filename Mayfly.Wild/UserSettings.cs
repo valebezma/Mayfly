@@ -59,27 +59,43 @@ namespace Mayfly.Wild
             set { SetValue(FeatureKey, nameof(Dominance), value); }
         }
 
-        public static string DominanceIndexName
-        {
-            get
-            {
-                ResourceManager resources = new ResourceManager(typeof(Settings));
-                switch (Dominance)
-                {
-                    case 0:
-                        return resources.GetString("comboBoxDominance.Items");
-                    default:
-                        return resources.GetString("comboBoxDominance.Items" + Wild.Dominance);
+        //public static string DominanceIndexName
+        //{
+        //    get
+        //    {
+        //        ResourceManager resources = new ResourceManager(typeof(Settings));
+        //        switch (Dominance)
+        //        {
+        //            case 0:
+        //                return resources.GetString("comboBoxDominance.Items");
+        //            default:
+        //                return resources.GetString("comboBoxDominance.Items" + Wild.Dominance);
+        //        }
+        //    }
+        //}
+
+        private static WeatherEvents weatherIndex;
+
+        public static WeatherEvents WeatherIndex {
+            get {
+                if (weatherIndex == null) {
+                    weatherIndex = new WeatherEvents();
+                    weatherIndex.SetAttributable();
+                    try { weatherIndex.ReadXml(Path.Combine(Application.StartupPath, @"interface\weatherevts.ini")); } catch { Log.Write(EventType.Maintenance, "Can't read weather file."); }
                 }
+
+                return weatherIndex;
             }
         }
+
+
 
         public static string WatersIndexPath {
             get {
                 string filepath = IO.GetPath(GetValue(FeatureKey, nameof(WatersIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
-                    WatersIndexPath = Service.GetReferencePath(Waters.UserSettings.Interface.OpenDialog,
+                    WatersIndexPath = IO.GetIndexPath(Interface.OpenDialog,
                       "Waters (auto).wtr", Server.GetUri("get/index/waters/waters_default.wtr", Application.CurrentCulture));
                     return WatersIndexPath;
                 } else {
@@ -98,7 +114,11 @@ namespace Mayfly.Wild
                 if (watersIndex == null) {
                     watersIndex = new WatersKey();
 
-                    try { watersIndex.ReadXml(WatersIndexPath); } catch { Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", WatersIndexPath); }
+                    try {
+                        watersIndex.ReadXml(WatersIndexPath);
+                    } catch {
+                        Log.Write(EventType.Maintenance, "First call for {0}. File is empty and will be rewritten.", WatersIndexPath);
+                    }
                 }
 
                 return watersIndex;
@@ -106,20 +126,6 @@ namespace Mayfly.Wild
 
             set {
                 watersIndex = value;
-            }
-        }
-
-        private static WeatherEvents weatherIndex;
-
-        public static WeatherEvents WeatherIndex {
-            get {
-                if (weatherIndex == null) {
-                    weatherIndex = new WeatherEvents();
-                    weatherIndex.SetAttributable();
-                    try { weatherIndex.ReadXml(Path.Combine(Application.StartupPath, @"interface\weatherevts.ini")); } catch { Log.Write(EventType.Maintenance, "Can't read weather file."); }
-                }
-
-                return weatherIndex;
             }
         }
 
@@ -150,7 +156,7 @@ namespace Mayfly.Wild
         }
     }
 
-    public abstract class ReaderSettings
+    public static class ReaderSettings
     {
         public static string Feature;
 
@@ -173,7 +179,7 @@ namespace Mayfly.Wild
 
         public static Samplers SamplersIndex {
             get {
-                if (samplersIndex == null) {
+                if (samplersIndex == null && !string.IsNullOrEmpty(Feature)) {
                     samplersIndex = new Samplers();
                     samplersIndex.SetAttributable();
                     samplersIndex.ReadXml(string.Format(@"interface\sampler{0}.ini", Feature.ToLowerInvariant()));
@@ -199,7 +205,7 @@ namespace Mayfly.Wild
                 string filepath = IO.GetPath(GetValue(FeatureKey, nameof(TaxonomicIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
-                    TaxonomicIndexPath = Service.GetReferencePathSpecies(Feature);
+                    TaxonomicIndexPath = Service.GetTaxonomicIndexPath(Feature);
                     return TaxonomicIndexPath;
                 } else {
                     return filepath;

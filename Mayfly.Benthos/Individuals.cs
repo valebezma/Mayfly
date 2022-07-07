@@ -11,6 +11,10 @@ using System.Resources;
 using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
+using static Mayfly.Wild.UserSettings;
+using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.UserSettings;
+using static Mayfly.Waters.UserSettings;
 
 namespace Mayfly.Benthos
 {
@@ -147,7 +151,7 @@ namespace Mayfly.Benthos
         {
             get
             {
-                List<string> result = new List<string>(UserSettings.AddtVariables);
+                List<string> result = new List<string>(AddtVariables);
 
                 foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
                 {
@@ -210,7 +214,7 @@ namespace Mayfly.Benthos
 
             numericUpDownMass.Enabled =
                 numericUpDownQuantity.Enabled = 
-                !UserSettings.FixTotals;
+                !FixTotals;
         }
 
         public Individuals(Data.LogRow logRow) : this()
@@ -309,7 +313,7 @@ namespace Mayfly.Benthos
             PrevDetailedMass = DetailedMass;
             PrevDetailedQuantity = DetailedQuantity;
 
-            if (UserSettings.AutoIncreaseBio)
+            if (AutoIncreaseBio)
             {
                 if (!double.IsNaN(DetailedMass) && DetailedMass > Mass)
                 {
@@ -344,12 +348,12 @@ namespace Mayfly.Benthos
                 }
             }
 
-            if (UserSettings.AutoDecreaseBio && MassDifference < 0)
+            if (AutoDecreaseBio && MassDifference < 0)
             {
                 Mass += MassDifference;
             }
 
-            if (UserSettings.AutoDecreaseBio && QuantityDifference < 0)
+            if (AutoDecreaseBio && QuantityDifference < 0)
             {
                 Quantity += QuantityDifference;
             }
@@ -408,9 +412,9 @@ namespace Mayfly.Benthos
                 contextMenuStripAdd.Items.RemoveAt(newVarPostion + 1);
             }
 
-            if (UserSettings.AddtVariables != null)
+            if (AddtVariables != null)
             {
-                foreach (string addtVar in UserSettings.AddtVariables)
+                foreach (string addtVar in AddtVariables)
                 {
                     ToolStripMenuItem newVarMenu = new ToolStripMenuItem(addtVar);
                     newVarMenu.Click += new EventHandler(CustomVar_Click);
@@ -421,9 +425,9 @@ namespace Mayfly.Benthos
 
         private void InsertCurrentVariableColumns()
         {
-            if (UserSettings.CurrentVariables == null) return;
+            if (CurrentVariables == null) return;
 
-            foreach (string currVar in UserSettings.CurrentVariables)
+            foreach (string currVar in CurrentVariables)
             {
                 DataGridViewColumn currVarColumn = spreadSheetLog.GetColumn(currVar);
                 if (currVarColumn == null)
@@ -1157,8 +1161,8 @@ namespace Mayfly.Benthos
 
         private void ToolStripMenuItemSaveVars_Click(object sender, EventArgs e)
         {
-            UserSettings.AddtVariables = AdditionalVariables;
-            UserSettings.CurrentVariables = CurrentVariables;
+            AddtVariables = AdditionalVariables;
+            ReaderSettings.CurrentVariables = CurrentVariables;
             AddVariableMenuItems();
         }
 

@@ -1,23 +1,21 @@
-﻿using static Mayfly.UserSettings;
+﻿using System.Windows.Forms;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Waters
 {
     public static class UserSettings
     {
-        public static string Path
-        {
-            get
-            {
+        public static string FeatureKey {
+            get {
                 return GetFeatureKey("Waters");
             }
         }
 
         public static FileSystemInterface Interface = new FileSystemInterface(".wtr");
 
-        public static int SearchItemsCount
-        {
-            get { return (int)GetValue(Path, nameof(SearchItemsCount), 15); }
-            set { SetValue(Path, nameof(SearchItemsCount), value); }
+        public static int SearchItemsCount {
+            get { return (int)GetValue(FeatureKey, nameof(SearchItemsCount), 15); }
+            set { SetValue(FeatureKey, nameof(SearchItemsCount), value); }
         }
     }
 }

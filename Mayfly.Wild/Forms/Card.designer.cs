@@ -33,10 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
@@ -82,12 +82,11 @@
             this.labelComments = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageSampler = new System.Windows.Forms.TabPage();
+            this.buttonGear = new System.Windows.Forms.Button();
             this.comboBoxSampler = new GroupedComboBox();
             this.labelMethod = new System.Windows.Forms.Label();
             this.labelSampler = new System.Windows.Forms.Label();
             this.tabPageEnvironment = new System.Windows.Forms.TabPage();
-            this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
-            this.weatherControl1 = new Mayfly.Wild.Controls.WeatherControl();
             this.labelActWeather = new System.Windows.Forms.Label();
             this.labelWaterConds = new System.Windows.Forms.Label();
             this.tabPageFactors = new System.Windows.Forms.TabPage();
@@ -103,8 +102,9 @@
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
+            this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
+            this.weatherControl1 = new Mayfly.Wild.Controls.WeatherControl();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
-            this.buttonGear = new System.Windows.Forms.Button();
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
@@ -454,6 +454,11 @@
             this.tabPageSampler.Name = "tabPageSampler";
             this.tabPageSampler.UseVisualStyleBackColor = true;
             // 
+            // buttonGear
+            // 
+            resources.ApplyResources(this.buttonGear, "buttonGear");
+            this.buttonGear.Name = "buttonGear";
+            // 
             // comboBoxSampler
             // 
             resources.ApplyResources(this.comboBoxSampler, "comboBoxSampler");
@@ -485,45 +490,6 @@
             resources.ApplyResources(this.tabPageEnvironment, "tabPageEnvironment");
             this.tabPageEnvironment.Name = "tabPageEnvironment";
             this.tabPageEnvironment.UseVisualStyleBackColor = true;
-            // 
-            // aquaControl1
-            // 
-            resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState1.Colour = -1;
-            aquaState1.Conductivity = double.NaN;
-            aquaState1.DissolvedOxygen = double.NaN;
-            aquaState1.FlowRate = double.NaN;
-            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.Limpidity = double.NaN;
-            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.OxygenSaturation = double.NaN;
-            aquaState1.pH = double.NaN;
-            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.TemperatureBottom = double.NaN;
-            aquaState1.TemperatureSurface = double.NaN;
-            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
-            this.aquaControl1.AquaState = aquaState1;
-            this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
-            this.aquaControl1.Name = "aquaControl1";
-            this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
-            // 
-            // weatherControl1
-            // 
-            resources.ApplyResources(this.weatherControl1, "weatherControl1");
-            this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
-            this.weatherControl1.Name = "weatherControl1";
-            weatherState1.AdditionalEvent = 0;
-            weatherState1.Cloudage = double.NaN;
-            weatherState1.Degree = 0;
-            weatherState1.Discretion = 0;
-            weatherState1.Event = 0;
-            weatherState1.Humidity = double.NaN;
-            weatherState1.Pressure = double.NaN;
-            weatherState1.Temperature = double.NaN;
-            weatherState1.WindDirection = double.NaN;
-            weatherState1.WindRate = double.NaN;
-            this.weatherControl1.Weather = weatherState1;
-            this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
             // 
             // labelActWeather
             // 
@@ -629,6 +595,45 @@
             this.statusCard.MaximalInterval = 2000;
             this.statusCard.StatusLog = this.StatusLog;
             // 
+            // aquaControl1
+            // 
+            resources.ApplyResources(this.aquaControl1, "aquaControl1");
+            aquaState1.Colour = -1;
+            aquaState1.Conductivity = double.NaN;
+            aquaState1.DissolvedOxygen = double.NaN;
+            aquaState1.FlowRate = double.NaN;
+            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.Limpidity = double.NaN;
+            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.OxygenSaturation = double.NaN;
+            aquaState1.pH = double.NaN;
+            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.TemperatureBottom = double.NaN;
+            aquaState1.TemperatureSurface = double.NaN;
+            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
+            this.aquaControl1.AquaState = aquaState1;
+            this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.aquaControl1.Name = "aquaControl1";
+            this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
+            // 
+            // weatherControl1
+            // 
+            resources.ApplyResources(this.weatherControl1, "weatherControl1");
+            this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.weatherControl1.Name = "weatherControl1";
+            weatherState1.AdditionalEvent = 0;
+            weatherState1.Cloudage = double.NaN;
+            weatherState1.Degree = 0;
+            weatherState1.Discretion = 0;
+            weatherState1.Event = 0;
+            weatherState1.Humidity = double.NaN;
+            weatherState1.Pressure = double.NaN;
+            weatherState1.Temperature = double.NaN;
+            weatherState1.WindDirection = double.NaN;
+            weatherState1.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState1;
+            this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
+            // 
             // Logger
             // 
             this.Logger.AllowKey = false;
@@ -640,11 +645,6 @@
             this.Logger.Status = this.statusCard;
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
             // 
-            // buttonGear
-            // 
-            resources.ApplyResources(this.buttonGear, "buttonGear");
-            this.buttonGear.Name = "buttonGear";
-            // 
             // Card
             // 
             resources.ApplyResources(this, "$this");
@@ -655,7 +655,6 @@
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Card";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.card_FormClosing);
-            this.Load += new System.EventHandler(this.card_Load);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.tabPageLog.ResumeLayout(false);
@@ -677,74 +676,73 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelLabel;
-        private System.Windows.Forms.MenuStrip MenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemService;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemWatersRef;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSpeciesRef;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.TabPage tabPageLog;
-        private System.Windows.Forms.TabPage tabPageCollect;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSave;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSaveAs;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem menuItemClose;
-        private System.Windows.Forms.ToolStripMenuItem menuItemSettings;
-        private System.Windows.Forms.ToolStripMenuItem menuItemAbout;
-        private System.Windows.Forms.ToolStripStatusLabel StatusMass;
-        private System.Windows.Forms.ToolStripStatusLabel StatusCount;
-        private System.Windows.Forms.Label labelWater;
-        private System.Windows.Forms.Label labelComments;
-        private System.Windows.Forms.TabPage tabPageEnvironment;
-        private System.Windows.Forms.Label labelActWeather;
-        private System.Windows.Forms.Label labelWaterConds;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem menuItemPrint;
-        private System.Windows.Forms.ToolStripMenuItem menuItemPreview;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLog;
-        private System.Windows.Forms.TabPage tabPageFactors;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemData;
-        private System.Windows.Forms.ToolStripMenuItem menuItemLocation;
-        private Mayfly.Controls.Status statusCard;
-        private Mayfly.TaskDialogs.TaskDialog taskDialogSaveChanges;
-        private Mayfly.TaskDialogs.TaskDialogButton tdbSave;
-        private Mayfly.TaskDialogs.TaskDialogButton tdbDiscard;
-        private Mayfly.TaskDialogs.TaskDialogButton tdbCancelClose;
-        private System.Windows.Forms.ToolStripMenuItem addFactorsToolStripMenuItem;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.ToolStripMenuItem addEnvironmentalDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem menuItemBlank;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
-        private Mayfly.Controls.SpreadSheet spreadSheetAddt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtValue;
-        private Wild.Controls.WeatherControl weatherControl1;
-        private Wild.Controls.AquaControl aquaControl1;
-        private Geographics.WaypointControl waypointControl1;
-        private Waters.Controls.WaterSelector waterSelector;
-        private System.Windows.Forms.ToolStripMenuItem menuItemAboutCard;
-        private Mayfly.Controls.SpreadSheet spreadSheetLog;
-        private System.Windows.Forms.TabPage tabPageSampler;
-        private System.Windows.Forms.Label labelMethod;
-        private System.Windows.Forms.Label labelSampler;
-        private System.Windows.Forms.Label labelTag;
-        private System.Windows.Forms.Label labelPosition;
-        private System.Windows.Forms.TextBox textBoxLabel;
-        private System.Windows.Forms.TextBox textBoxComments;
-        private System.Windows.Forms.ToolStripMenuItem menuItemNew;
-        private System.Windows.Forms.ToolStripMenuItem menuItemOpen;
-        private GroupedComboBox comboBoxSampler;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
-        internal Wild.Controls.LogProcessor Logger;
-        private System.Windows.Forms.Button buttonGear;
+        protected System.Windows.Forms.TabPage tabPageCollect;
+        protected System.Windows.Forms.Label labelLabel;
+        protected System.Windows.Forms.MenuStrip MenuStrip;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemService;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemWatersRef;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSpeciesRef;
+        protected System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        protected System.Windows.Forms.TabPage tabPageLog;
+        protected System.Windows.Forms.TabControl tabControl;
+        protected System.Windows.Forms.StatusStrip statusStrip;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemSave;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemSaveAs;
+        protected System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemClose;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemSettings;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemAbout;
+        protected System.Windows.Forms.ToolStripStatusLabel StatusMass;
+        protected System.Windows.Forms.ToolStripStatusLabel StatusCount;
+        protected System.Windows.Forms.Label labelWater;
+        protected System.Windows.Forms.Label labelComments;
+        protected System.Windows.Forms.TabPage tabPageEnvironment;
+        protected System.Windows.Forms.Label labelActWeather;
+        protected System.Windows.Forms.Label labelWaterConds;
+        protected System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemPrint;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemPreview;
+        protected System.Windows.Forms.ToolStripStatusLabel StatusLog;
+        protected System.Windows.Forms.TabPage tabPageFactors;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemData;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemLocation;
+        protected Mayfly.Controls.Status statusCard;
+        protected TaskDialogs.TaskDialog taskDialogSaveChanges;
+        protected TaskDialogs.TaskDialogButton tdbSave;
+        protected TaskDialogs.TaskDialogButton tdbDiscard;
+        protected TaskDialogs.TaskDialogButton tdbCancelClose;
+        protected System.Windows.Forms.ToolStripMenuItem addFactorsToolStripMenuItem;
+        protected System.Windows.Forms.Button buttonAdd;
+        protected System.Windows.Forms.ToolStripMenuItem addEnvironmentalDataToolStripMenuItem;
+        protected System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemBlank;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
+        protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
+        protected Mayfly.Controls.SpreadSheet spreadSheetAddt;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtValue;
+        protected Controls.WeatherControl weatherControl1;
+        protected Controls.AquaControl aquaControl1;
+        protected Geographics.WaypointControl waypointControl1;
+        protected Waters.Controls.WaterSelector waterSelector;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemAboutCard;
+        protected Mayfly.Controls.SpreadSheet spreadSheetLog;
+        protected System.Windows.Forms.TabPage tabPageSampler;
+        protected System.Windows.Forms.Label labelMethod;
+        protected System.Windows.Forms.Label labelSampler;
+        protected System.Windows.Forms.Label labelTag;
+        protected System.Windows.Forms.Label labelPosition;
+        protected System.Windows.Forms.TextBox textBoxLabel;
+        protected System.Windows.Forms.TextBox textBoxComments;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemNew;
+        protected System.Windows.Forms.ToolStripMenuItem menuItemOpen;
+        protected GroupedComboBox comboBoxSampler;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
+        protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
+        protected Controls.LogProcessor Logger;
+        protected System.Windows.Forms.Button buttonGear;
     }
 }

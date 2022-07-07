@@ -39,7 +39,7 @@ namespace Mayfly.Fish
                 string filepath = IO.GetPath(GetValue(ReaderSettings.FeatureKey, nameof(ParasitesIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
-                    ParasitesIndexPath = Wild.Service.GetReferencePathSpecies("Fish Parasites");
+                    ParasitesIndexPath = Wild.Service.GetTaxonomicIndexPath("Fish Parasites");
                     return ParasitesIndexPath;
                 } else {
                     return filepath;
@@ -73,7 +73,7 @@ namespace Mayfly.Fish
                 string filepath = IO.GetPath(GetValue(ReaderSettings.FeatureKey, nameof(DietIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
-                    DietIndexPath = Wild.Service.GetReferencePathSpecies("Fish Diet");
+                    DietIndexPath = Wild.Service.GetTaxonomicIndexPath("Fish Diet");
                     return DietIndexPath;
                 } else {
                     return filepath;

@@ -16,7 +16,7 @@ namespace Mayfly.Benthos
         /// <returns>Suggested name for data card with extension</returns>
         public static string GetSuggestedName(this Data.CardRow cardRow)
         {
-            return cardRow.GetSuggestedName(UserSettings.Interface.Extension);            
+            return cardRow.GetSuggestedName();            
         }
 
         public static TaxonomicIndex GetSpeciesKey(this Data data)

@@ -139,7 +139,7 @@ namespace Mayfly.Wild
 
         public void ImportBio(string filename, bool clearExisted)
         {
-            Data data = new Data(key, null);
+            Data data = new Data();
             data.SetAttributable();
             string contents = StringCipher.Decrypt(File.ReadAllText(filename), "bio");
             //string contents = File.ReadAllText(filename);

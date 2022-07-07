@@ -368,6 +368,12 @@
     <Compile Include="Service\Log.cs" />
     <Compile Include="Service\Server.cs" />
     <Compile Include="Service\UI.cs" />
+    <Compile Include="Software\GetIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Software\GetIndex.Designer.cs">
+      <DependentUpon>GetIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Software\Error.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -614,6 +620,12 @@
     <EmbeddedResource Include="Resources\Sounds.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\GetIndex.resx">
+      <DependentUpon>GetIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Software\GetIndex.ru.resx">
+      <DependentUpon>GetIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Software\Error.resx">
       <DependentUpon>Error.cs</DependentUpon>

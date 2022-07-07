@@ -380,6 +380,14 @@ namespace Mayfly
 
 
 
+        public static string GetIndexPath(OpenFileDialog openDialog, string defaultName, Uri uri) {
+            Software.GetIndex dr = new Software.GetIndex(openDialog, defaultName, uri);
+            dr.ShowDialog();
+            return dr.FilePath;
+        }
+
+
+
 
         public static FileSystemInterface InterfacePictures = new FileSystemInterface(".png", ".jpg");
 

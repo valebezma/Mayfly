@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using Mayfly.Wild;
+using static Mayfly.Wild.UserSettings;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos
 {
@@ -109,10 +111,10 @@ namespace Mayfly.Benthos
                 }
                 else
                 {
-                    Samplers.SamplerRow SelectedSampler = Benthos.Service.Sampler(cardRow.Sampler);
+                    Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
 
                     table2.StartRow();
-                    table2.AddCellPrompt(resources.GetString("labelSampler.Text"), SelectedSampler.Sampler, 2);
+                    table2.AddCellPrompt(resources.GetString("labelSampler.Text"), samplerRow.Sampler, 2);
                     table2.EndRow();
 
                     table2.StartRow();
@@ -125,17 +127,17 @@ namespace Mayfly.Benthos
                     {
                         table2.AddCellPrompt(resources.GetString("labelSquare.Text"), cardRow.Square, "N4");
 
-                        switch (SelectedSampler.GetSamplerType())
+                        switch (samplerRow.GetSamplerType())
                         {
                             case BenthosSamplerType.Grabber:
                                 // Replies count equals to 
                                 // square divided by [standard effort] of grabber
-                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, (int)Math.Round(cardRow.Square / SelectedSampler.EffortValue, 0));
+                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
                                 break;
                             case BenthosSamplerType.Scraper:
                                 // Exposure length in centimeters equals to 
                                 // square divided by knife length (standard effort) of creeper multiplied by 100
-                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, 100 * (int)Math.Round(cardRow.Square / SelectedSampler.EffortValue, 0));
+                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, 100 * (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
                                 break;
                             default:
                                 table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
@@ -241,7 +243,7 @@ namespace Mayfly.Benthos
 
             if (level.HasFlag(CardReportLevel.Log))
             {
-                Data.LogRow[] logRows = cardRow.GetLogRows(Wild.UserSettings.LogOrder);
+                Data.LogRow[] logRows = cardRow.GetLogRows(LogOrder);
 
                 report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
@@ -266,12 +268,12 @@ namespace Mayfly.Benthos
             {
                 if (level.HasFlag(CardReportLevel.Individuals))
                 {
-                    if (UserSettings.BreakBeforeIndividuals) { report.BreakPage(); }
+                    if (BreakBeforeIndividuals) { report.BreakPage(); }
                     report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
                     foreach (Data.LogRow logRow in cardRow.GetLogRows())
                     {
                         logRow.AddReport(report);
-                        if (UserSettings.BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
+                        if (BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
                     }
                 }
 
@@ -359,7 +361,7 @@ namespace Mayfly.Benthos
                 ResourceManager resources = new ResourceManager(typeof(Card));
                 Report report = new Report(string.Format(
                     "<span class='pretitle'>{0}.</span> [<span style='float:right'>]</span>",
-                    IO.GetFriendlyFiletypeName(Benthos.UserSettings.Interface.Extension)));
+                    IO.GetFriendlyFiletypeName(ReaderSettings.Interface.Extension)));
 
                 #region Common upper part
 

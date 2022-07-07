@@ -837,8 +837,8 @@ namespace Mayfly.Wild.Controls
             if (Form.ModifierKeys.HasFlag(Keys.Control)) {
                 Provider.InsertFromKey(Provider.IndexPath);
             } else {
-                if (UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
-                    Provider.InsertFromKey(UserSettings.Interface.OpenDialog.FileName);
+                if (ReaderSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
+                    Provider.InsertFromKey(ReaderSettings.Interface.OpenDialog.FileName);
                 }
             }
         }

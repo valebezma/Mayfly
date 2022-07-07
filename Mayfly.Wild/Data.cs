@@ -11,15 +11,12 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Resources;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Wild
 {
     public partial class Data
     {
-        internal TaxonomicIndex key;
-
-        private readonly Samplers samplers;
-
         public CardRow Solitary
         {
             get
@@ -35,14 +32,6 @@ namespace Mayfly.Wild
                     return Card[0];
                 }
             }
-        }
-
-
-
-        public Data(TaxonomicIndex _key, Samplers _samplers) : this()
-        {
-            key = _key;
-            samplers = _samplers;
         }
 
 
@@ -249,7 +238,6 @@ namespace Mayfly.Wild
         {
             Data result = (Data)((DataSet)this).Copy();
             result.SetAttributable();
-            result.key = this.key;
             result.RefreshBios();
             return result;
         }
@@ -632,7 +620,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    return this.IsSamplerNull() ? null : (((Data)tableCard.DataSet).samplers?.Sampler.FindByID(this.Sampler));
+                    return this.IsSamplerNull() ? null : SamplersIndex?.Sampler.FindByID(this.Sampler);
                 }
             }
 
@@ -1420,7 +1408,7 @@ namespace Mayfly.Wild
             {
                 get
                 {
-                    TaxonomicIndex.TaxonRow spcRow = ((Data)Table.DataSet).key?.FindByName(this.Taxon);
+                    TaxonomicIndex.TaxonRow spcRow = ReaderSettings.TaxonomicIndex?.FindByName(this.Taxon);
                     if (spcRow == null) return null;
                     if (spcRow.MajorSynonym != null) spcRow = spcRow.MajorSynonym;
                     return spcRow;

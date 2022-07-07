@@ -13,6 +13,8 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Waters.Controls;
+using static Mayfly.Wild.UserSettings;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos
 {
@@ -77,7 +79,7 @@ namespace Mayfly.Benthos
         {
             set
             {
-                this.ResetText(value ?? Wild.UserSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
+                this.ResetText(value ?? ReaderSettings.Interface.NewFilename, EntryAssemblyInfo.Title);
                 menuItemAboutCard.Visible = value != null;
                 filename = value;
             }
@@ -88,7 +90,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        public Data Data { get; set; }
+        public Data Data = new Data();
 
         public Samplers.SamplerRow SelectedSampler
         {
@@ -111,17 +113,17 @@ namespace Mayfly.Benthos
         {
             InitializeComponent();
 
-            Data = new Data(Wild.UserSettings.TaxonomicIndex, Wild.UserSettings.SamplersIndex);
+            Data = new Data();
             Logger.Data = Data;
             FileName = null;
 
             waterSelector.CreateList();
-            waterSelector.Index = Wild.UserSettings.WatersIndex;
+            waterSelector.Index = WatersIndex;
 
-            if (Wild.UserSettings.WatersIndex != null && Wild.UserSettings.SelectedWaterID != 0)
+            if (WatersIndex != null && SelectedWaterID != 0)
             {
-                WatersKey.WaterRow selectedWater = Wild.UserSettings.WatersIndex.Water.FindByID(
-                    Wild.UserSettings.SelectedWaterID);
+                WatersKey.WaterRow selectedWater = WatersIndex.Water.FindByID(
+                    SelectedWaterID);
 
                 if (selectedWater != null)
                 {
@@ -133,34 +135,34 @@ namespace Mayfly.Benthos
                 SetCombos(WaterType.None);
             }
 
-            comboBoxSampler.DataSource = Wild.UserSettings.SamplersIndex.Sampler.Select();
+            comboBoxSampler.DataSource = SamplersIndex.Sampler.Select();
             comboBoxSampler.SelectedIndex = -1;
 
-            if (Wild.UserSettings.SelectedSampler != null) {
-                SelectedSampler = Wild.UserSettings.SelectedSampler;
+            if (SelectedSampler != null) {
+                SelectedSampler = SelectedSampler;
             }
 
-            if (Wild.UserSettings.SelectedDate != null) {
-                waypointControl1.Waypoint.TimeMark = Wild.UserSettings.SelectedDate;
+            if (SelectedDate != null) {
+                waypointControl1.Waypoint.TimeMark = SelectedDate;
             }
 
-            Logger.Provider.RecentListCount = Wild.UserSettings.RecentSpeciesCount;
-            Logger.Provider.IndexPath = Wild.UserSettings.TaxonomicIndexPath;
+            Logger.Provider.RecentListCount = RecentSpeciesCount;
+            Logger.Provider.IndexPath = TaxonomicIndexPath;
 
-            ColumnQuantity.ReadOnly = Wild.UserSettings.FixTotals;
-            ColumnMass.ReadOnly = Wild.UserSettings.FixTotals;
+            ColumnQuantity.ReadOnly = FixTotals;
+            ColumnMass.ReadOnly = FixTotals;
 
             tabPageEnvironment.Parent = null;
 
             tabPageFactors.Parent = null;
-            spreadSheetAddt.StringVariants = Wild.UserSettings.AddtFactors;
+            spreadSheetAddt.StringVariants = AddtFactors;
             ColumnAddtFactor.ValueType = typeof(string);
             ColumnAddtValue.ValueType = typeof(double);
 
             MenuStrip.SetMenuIcons();
 
-            ToolStripMenuItemWatersRef.Enabled = Wild.UserSettings.WatersIndexPath != null;
-            ToolStripMenuItemSpeciesRef.Enabled = Wild.UserSettings.TaxonomicIndexPath != null;
+            ToolStripMenuItemWatersRef.Enabled = WatersIndexPath != null;
+            ToolStripMenuItemSpeciesRef.Enabled = TaxonomicIndexPath != null;
 
             Logger.UpdateStatus();
 
@@ -230,14 +232,14 @@ namespace Mayfly.Benthos
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data(Wild.UserSettings.TaxonomicIndex, Wild.UserSettings.SamplersIndex);
+            Data = new Data();
         }
 
         private void Write(string filename)
         {
-            if (Wild.UserSettings.SpeciesAutoExpand) // If it is set to automatically expand global index
+            if (SpeciesAutoExpand) // If it is set to automatically expand global index
             {
-                Logger.Provider.UpdateIndex(Data.GetSpeciesKey(), Wild.UserSettings.SpeciesAutoExpandVisual);
+                Logger.Provider.UpdateIndex(Data.GetSpeciesKey(), SpeciesAutoExpandVisual);
             }
 
             switch (Path.GetExtension(filename))
@@ -396,12 +398,12 @@ namespace Mayfly.Benthos
 
                 Data.FactorValue.AddFactorValueRow(Data.Solitary, Data.Factor.AddFactorRow(factorName), factorValue);
 
-                if (!Wild.UserSettings.AddtFactors.Contains(factorName))
+                if (!AddtFactors.Contains(factorName))
                 {
                     List<string> factors = new List<string>();
-                    factors.AddRange(Wild.UserSettings.AddtFactors);
+                    factors.AddRange(AddtFactors);
                     factors.Add(factorName);
-                    Wild.UserSettings.AddtFactors = factors.ToArray();
+                    AddtFactors = factors.ToArray();
                 }
             }
 
@@ -418,7 +420,7 @@ namespace Mayfly.Benthos
 
             if (!waterSelector.IsWaterSelected)
             {
-                Wild.UserSettings.SelectedWaterID = 0;
+                SelectedWaterID = 0;
                 Data.Solitary.SetWaterIDNull();
                 goto WaterSkip;
             }
@@ -431,7 +433,7 @@ namespace Mayfly.Benthos
 
                 if (Data.Solitary.WaterID == waterSelector.WaterObject.ID)
                 {
-                    Wild.UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
+                    SelectedWaterID = waterSelector.WaterObject.ID;
                     goto WaterSkip;
                 }
 
@@ -450,7 +452,7 @@ namespace Mayfly.Benthos
 
             Data.Water.AddWaterRow(newWaterRow);
             Data.Solitary.WaterRow = newWaterRow;
-            Wild.UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
+            SelectedWaterID = waterSelector.WaterObject.ID;
 
         WaterSkip:
 
@@ -527,12 +529,12 @@ namespace Mayfly.Benthos
             if (SelectedSampler == null)
             {
                 Data.Solitary.SetSamplerNull();
-                Wild.UserSettings.SelectedSampler = null;
+                SelectedSampler = null;
             }
             else
             {
                 Data.Solitary.Sampler = SelectedSampler.ID;
-                Wild.UserSettings.SelectedSampler = SelectedSampler;
+                SelectedSampler = SelectedSampler;
             }
 
             if (double.IsNaN(Square))
@@ -608,7 +610,7 @@ namespace Mayfly.Benthos
         public void LoadData(string filename)
         {
             Clear();
-            Data = new Data(Wild.UserSettings.TaxonomicIndex, Wild.UserSettings.SamplersIndex);
+            Data = new Data();
             Data.Read(filename);
             LoadData();
             FileName = filename;
@@ -637,9 +639,9 @@ namespace Mayfly.Benthos
             {
                 WatersKey.WaterRow waterRow = null;
 
-                if (Wild.UserSettings.WatersIndex != null)
+                if (WatersIndex != null)
                 {
-                    waterRow = Wild.UserSettings.WatersIndex.Water.FindByID(Data.Solitary.WaterID);
+                    waterRow = WatersIndex.Water.FindByID(Data.Solitary.WaterID);
                 }
 
                 if (waterRow == null)
@@ -1031,10 +1033,10 @@ namespace Mayfly.Benthos
         //        contextMenuStripFactor.Items.RemoveAt(1);
         //    }
 
-        //    if (Wild.UserSettings.AddtFactors.Length > 0)
+        //    if (AddtFactors.Length > 0)
         //    {
         //        contextMenuStripFactor.Items.Add(new ToolStripSeparator());
-        //        foreach (string addtFactor in Wild.UserSettings.AddtFactors)
+        //        foreach (string addtFactor in AddtFactors)
         //        {
         //            ToolStripMenuItem NewVarMenu = new ToolStripMenuItem(addtFactor);
         //            NewVarMenu.Click += new EventHandler(NewFactorMenu_Click);
@@ -1061,7 +1063,7 @@ namespace Mayfly.Benthos
         //{
         //    factorControl.ValueChanged += new EventHandler(ValueChanged);
         //    factorControl.NameRequired += new EventHandler(FactorControl_NameRequired);
-        //    factorControl.Values.AddRange(Wild.UserSettings.AddtFactors);
+        //    factorControl.Values.AddRange(AddtFactors);
         //    flowLayoutPanelFactors.Controls.Add(factorControl);
         //}
 
@@ -1117,9 +1119,9 @@ namespace Mayfly.Benthos
 
         private void menuItemOpen_Click(object sender, EventArgs e)
         {
-            if (Wild.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (Interface.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                if (Wild.UserSettings.Interface.OpenDialog.FileName == FileName)
+                if (Interface.OpenDialog.FileName == FileName)
                 {
                     statusCard.Message(Wild.Resources.Interface.Messages.AlreadyOpened);
                 }
@@ -1127,7 +1129,7 @@ namespace Mayfly.Benthos
                 {
                     if (CheckAndSave() != DialogResult.Cancel)
                     {
-                        LoadData(Wild.UserSettings.Interface.OpenDialog.FileName);
+                        LoadData(Interface.OpenDialog.FileName);
                     }
                 }
             }
@@ -1150,12 +1152,12 @@ namespace Mayfly.Benthos
         {
             SaveData();
 
-            Wild.UserSettings.Interface.ExportDialog.FileName =
-                Wild.UserSettings.Interface.SuggestName(Data.Solitary.GetSuggestedName());
+            Interface.ExportDialog.FileName =
+                Interface.SuggestName(Data.Solitary.GetSuggestedName());
 
-            if (Wild.UserSettings.Interface.ExportDialog.ShowDialog() == DialogResult.OK)
+            if (Interface.ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                Write(Wild.UserSettings.Interface.ExportDialog.FileName);
+                Write(Interface.ExportDialog.FileName);
             }
         }
 
@@ -1224,45 +1226,45 @@ namespace Mayfly.Benthos
 
         private void menuItemWaters_Click(object sender, EventArgs e)
         {
-            IO.RunFile(Wild.UserSettings.WatersIndexPath);
+            IO.RunFile(WatersIndexPath);
         }
 
         private void menuItemSpecies_Click(object sender, EventArgs e)
         {
-            IO.RunFile(Wild.UserSettings.TaxonomicIndexPath, "-edit");
+            IO.RunFile(TaxonomicIndexPath, "-edit");
         }
 
         private void menuItemSettings_Click(object sender, EventArgs e)
         {
-            string currentWaters = Wild.UserSettings.WatersIndexPath;
-            string currentSpc = Wild.UserSettings.TaxonomicIndexPath;
-            int currentRecentCount = Wild.UserSettings.RecentSpeciesCount;
+            string currentWaters = WatersIndexPath;
+            string currentSpc = TaxonomicIndexPath;
+            int currentRecentCount = RecentSpeciesCount;
 
             Settings settings = new Settings();
             if (settings.ShowDialog() == DialogResult.OK)
             {
-                if (currentWaters != Wild.UserSettings.WatersIndexPath)
+                if (currentWaters != WatersIndexPath)
                 {
-                    Wild.UserSettings.WatersIndex = null;
-                    waterSelector.Index = Wild.UserSettings.WatersIndex;
+                    WatersIndex = null;
+                    waterSelector.Index = WatersIndex;
                 }
 
-                if (currentSpc != Wild.UserSettings.TaxonomicIndexPath)
+                if (currentSpc != TaxonomicIndexPath)
                 {
-                    Wild.UserSettings.TaxonomicIndex = null;
-                    Logger.Provider.IndexPath = Wild.UserSettings.TaxonomicIndexPath;
+                    ReaderSettings.TaxonomicIndex = null;
+                    Logger.Provider.IndexPath = TaxonomicIndexPath;
                 }
 
-                if (currentSpc != Wild.UserSettings.TaxonomicIndexPath ||
-                    currentRecentCount != Wild.UserSettings.RecentSpeciesCount)
+                if (currentSpc != TaxonomicIndexPath ||
+                    currentRecentCount != RecentSpeciesCount)
                 {
-                    Logger.Provider.RecentListCount = Wild.UserSettings.RecentSpeciesCount;
+                    Logger.Provider.RecentListCount = RecentSpeciesCount;
                     Logger.UpdateRecent();
                 }
             }
 
-            ColumnQuantity.ReadOnly = Wild.UserSettings.FixTotals;
-            ColumnMass.ReadOnly = Wild.UserSettings.FixTotals;
+            ColumnQuantity.ReadOnly = FixTotals;
+            ColumnMass.ReadOnly = FixTotals;
         }
 
         private void ToolStripMenuItemAbout_Click(object sender, EventArgs e)

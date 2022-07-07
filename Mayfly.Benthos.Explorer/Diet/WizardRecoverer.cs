@@ -12,6 +12,7 @@ using System.IO;
 using System.Text;
 using Mayfly.Wild;
 using Mayfly.Species;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos.Explorer
 {
@@ -48,8 +49,8 @@ namespace Mayfly.Benthos.Explorer
             columnPriRecoverableP.ValueType = typeof(double);
 
             openNatural.Filter = IO.FilterFromExt(
-                Benthos.UserSettings.Interface.Extension, 
-                Wild.UserSettings.InterfaceBio.Extension);
+                 Interface.Extension, 
+                 Wild.UserSettings.InterfaceBio.Extension);
 
             checkBoxUseRawMass.Checked = UserSettings.MassRecoveryUseRaw;
         }
@@ -57,7 +58,7 @@ namespace Mayfly.Benthos.Explorer
         public WizardRecoverer(Data data) : this()
         {
             BadData = data;
-            NaturalData = new Data(Benthos.UserSettings.SpeciesIndex, Benthos.UserSettings.SamplersIndex);
+            NaturalData = new Data();
             CategorialVariables = new DataColumn[] {
                 NaturalData.Individual.InstarColumn
             };
@@ -669,7 +670,7 @@ namespace Mayfly.Benthos.Explorer
             if (openNatural.ShowDialog(this) == DialogResult.OK)
             {
                 CardsToLoad.AddRange(IO.MaskedNames(openNatural.FileNames,
-                    new string[] { Benthos.UserSettings.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
+                    new string[] { ReaderSettings.Interface.Extension, Wild.UserSettings.InterfaceBio.Extension }));
                 LoadCards();
             }
         }
@@ -752,7 +753,7 @@ namespace Mayfly.Benthos.Explorer
         private void cards_DragDrop(object sender, DragEventArgs e)
         {
             string[] droppedNames = (string[])e.Data.GetData(DataFormats.FileDrop);
-            string[] filenames = IO.MaskedNames(droppedNames, new string[] { Benthos.UserSettings.Interface.Extension, Mayfly.Wild.UserSettings.InterfaceBio.Extension });
+            string[] filenames = IO.MaskedNames(droppedNames, new string[] { Interface.Extension, Wild.UserSettings.InterfaceBio.Extension });
             CardsToLoad.AddRange(filenames);
             LoadCards();
         }

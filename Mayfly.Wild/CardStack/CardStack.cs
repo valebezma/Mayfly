@@ -437,7 +437,7 @@ namespace Mayfly.Wild
 
                     if (currentRecord == null)
                     {
-                        TaxonomicIndex.TaxonRow newSpcRow = Parent.key.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
+                        TaxonomicIndex.TaxonRow newSpcRow = ReaderSettings.TaxonomicIndex.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
                         currentRecord = newSpcRow;
                     }
 

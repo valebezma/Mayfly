@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.Win32;
 using Mayfly.Extensions;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Species
 {
@@ -322,12 +323,12 @@ namespace Mayfly.Species
 
         private void RunSelected(TaxonomicIndex.TaxonRow taxonRow)
         {
-            object used = UserSettings.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, null);
+            object used = GetValue(UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, null);
 
             if (used == null) {
-                UserSettings.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, 1);
+                SetValue(UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, 1);
             } else {
-                UserSettings.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, (int)used + 1);
+                SetValue(UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, (int)used + 1);
             }
 
             DataGridViewCell gridCell = Grid.CurrentCell;

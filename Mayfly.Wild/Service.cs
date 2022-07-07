@@ -424,16 +424,9 @@ namespace Mayfly.Wild
 
 
 
-        public static string GetReferencePath(OpenFileDialog openDialog, string defaultName, Uri uri)
+        public static string GetTaxonomicIndexPath(string groupName)
         {
-            DialogReference dr = new DialogReference(openDialog, defaultName, uri);
-            dr.ShowDialog();
-            return dr.FilePath;
-        }
-
-        public static string GetReferencePathSpecies(string groupName)
-        {
-            return GetReferencePath(
+            return IO.GetIndexPath(
                 Species.UserSettings.Interface.OpenDialog,
                 groupName + " (auto).txn",
                 Server.GetUri("get/index/specieslists/" + groupName.ToLower().Replace(" ", "_") + "_default.txn", Application.CurrentCulture)

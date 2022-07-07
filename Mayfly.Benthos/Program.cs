@@ -20,7 +20,7 @@ namespace Mayfly.Benthos
 
             if (args.Length == 0)
             {
-                Application.Run(new Card());
+                Application.Run(new BenthosCard());
             }
             else
             {

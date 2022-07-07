@@ -1,239 +1,219 @@
 ﻿using Mayfly.Extensions;
-using Mayfly.Geographics;
 using System;
-using System.Windows.Forms;
-using System.IO;
-using System.Resources;
-using System.Globalization;
-using Mayfly.Software;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Windows.Forms;
+using static Mayfly.UserSettings;
+using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Wild.UserSettings;
 
 namespace Mayfly.Wild
 {
-    public abstract partial class Settings : Form
+    public partial class Settings : Form
     {
-        protected abstract void SaveSettings();
+        protected EventHandler saved;
+
+        [Category("Mayfly Events"), Browsable(true)]
+        public event EventHandler OnSaved {
+            add { saved += value; }
+            remove { saved -= value; }
+        }
 
 
 
-        public Settings()
-        {
+        public Settings() {
+
             InitializeComponent();
 
             listViewAddtFctr.Shine();
             listViewAddtVars.Shine();
+        }
+
+
+        protected void Initiate() {
 
             #region references
 
-            textBoxWaters.Text = UserSettings.WatersIndexPath;
-            textBoxSpecies.Text = UserSettings.TaxonomicIndexPath;
+            textBoxWaters.Text = WatersIndexPath;
+            textBoxSpecies.Text = TaxonomicIndexPath;
 
-            checkBoxSpeciesExpand.Checked = UserSettings.SpeciesAutoExpand;
-            checkBoxSpeciesExpandVisualControl.Checked = UserSettings.SpeciesAutoExpandVisual;
+            checkBoxSpeciesExpand.Checked = SpeciesAutoExpand;
+            checkBoxSpeciesExpandVisualControl.Checked = SpeciesAutoExpandVisual;
 
             #endregion
 
             #region input
 
-            checkBoxAutoLog.Checked = UserSettings.AutoLogOpen;
-            checkBoxFixTotals.Checked = UserSettings.FixTotals;
-            checkBoxAutoIncreaseBio.Checked = UserSettings.AutoIncreaseBio;
-            checkBoxAutoDecreaseBio.Checked = UserSettings.AutoDecreaseBio;
+            checkBoxAutoLog.Checked = AutoLogOpen;
+            checkBoxFixTotals.Checked = FixTotals;
+            checkBoxAutoIncreaseBio.Checked = AutoIncreaseBio;
+            checkBoxAutoDecreaseBio.Checked = AutoDecreaseBio;
 
-            foreach (string item in UserSettings.AddtVariables)
-            {
+            foreach (string item in AddtVariables) {
                 ListViewItem li = new ListViewItem(item);
                 listViewAddtVars.Items.Add(li);
             }
 
-            foreach (ListViewItem item in listViewAddtVars.Items)
-            {
-                if (Array.IndexOf(UserSettings.CurrentVariables, item.Text) > -1)
+            foreach (ListViewItem item in listViewAddtVars.Items) {
+                if (Array.IndexOf(CurrentVariables, item.Text) > -1)
                     item.Checked = true;
             }
 
-            numericUpDownRecentCount.Value = UserSettings.RecentSpeciesCount;
+            numericUpDownRecentCount.Value = RecentSpeciesCount;
 
             #endregion
 
             #region print
 
-            checkBoxCardOdd.Checked = UserSettings.OddCardStart;
-            checkBoxBreakBeforeIndividuals.Checked = UserSettings.BreakBeforeIndividuals;
-            checkBoxBreakBetweenSpecies.Checked = UserSettings.BreakBetweenSpecies;
-            checkBoxOrderLog.Checked = UserSettings.LogOrder != LogSortOrder.AsInput;
-            if (UserSettings.LogOrder != LogSortOrder.AsInput)
-                comboBoxLogOrder.SelectedIndex = (int)UserSettings.LogOrder;
+            checkBoxCardOdd.Checked = OddCardStart;
+            checkBoxBreakBeforeIndividuals.Checked = BreakBeforeIndividuals;
+            checkBoxBreakBetweenSpecies.Checked = BreakBetweenSpecies;
+            checkBoxOrderLog.Checked = LogOrder != LogSortOrder.AsInput;
+            if (LogOrder != LogSortOrder.AsInput)
+                comboBoxLogOrder.SelectedIndex = (int)LogOrder;
 
-            #endregion           
+            #endregion
         }
 
 
 
-        private void buttonApply_Click(object sender, EventArgs e)
-        {
-            if (!tabPageReferences.IsDisposed)
-            {
-                UserSettings.WatersIndexPath = textBoxWaters.Text;
-                UserSettings.TaxonomicIndexPath = textBoxSpecies.Text;
-                UserSettings.SpeciesAutoExpand = checkBoxSpeciesExpand.Checked;
-                UserSettings.SpeciesAutoExpandVisual = checkBoxSpeciesExpandVisualControl.Checked;
+        private void buttonApply_Click(object sender, EventArgs e) {
+            if (!tabPageReferences.IsDisposed) {
+                WatersIndexPath = textBoxWaters.Text;
+                TaxonomicIndexPath = textBoxSpecies.Text;
+                SpeciesAutoExpand = checkBoxSpeciesExpand.Checked;
+                SpeciesAutoExpandVisual = checkBoxSpeciesExpandVisualControl.Checked;
             }
 
-            if (!tabPageInput.IsDisposed)
-            {
-                UserSettings.FixTotals = checkBoxFixTotals.Checked;
-                UserSettings.AutoIncreaseBio = checkBoxAutoIncreaseBio.Checked;
-                UserSettings.AutoDecreaseBio = checkBoxAutoDecreaseBio.Checked;
-                UserSettings.AutoLogOpen = checkBoxAutoLog.Checked;
-                UserSettings.RecentSpeciesCount = (int)numericUpDownRecentCount.Value;
+            if (!tabPageInput.IsDisposed) {
+                FixTotals = checkBoxFixTotals.Checked;
+                AutoIncreaseBio = checkBoxAutoIncreaseBio.Checked;
+                AutoDecreaseBio = checkBoxAutoDecreaseBio.Checked;
+                AutoLogOpen = checkBoxAutoLog.Checked;
+                RecentSpeciesCount = (int)numericUpDownRecentCount.Value;
             }
 
             List<string> addvars = new List<string>();
             foreach (ListViewItem item in listViewAddtVars.Items)
                 addvars.Add(item.Text);
-            UserSettings.AddtVariables = addvars.ToArray();
+            AddtVariables = addvars.ToArray();
 
             List<string> currvars = new List<string>();
             foreach (ListViewItem item in listViewAddtVars.CheckedItems)
                 currvars.Add(item.Text);
-            UserSettings.CurrentVariables = currvars.ToArray();
+            CurrentVariables = currvars.ToArray();
 
 
-            if (!tabPagePrint.IsDisposed)
-            {
-                UserSettings.OddCardStart = checkBoxCardOdd.Checked;
-                UserSettings.BreakBeforeIndividuals = checkBoxBreakBeforeIndividuals.Checked;
-                UserSettings.BreakBetweenSpecies = checkBoxBreakBetweenSpecies.Checked;
-                UserSettings.LogOrder = checkBoxOrderLog.Checked ? (LogSortOrder)comboBoxLogOrder.SelectedIndex : LogSortOrder.AsInput;
+            if (!tabPagePrint.IsDisposed) {
+                OddCardStart = checkBoxCardOdd.Checked;
+                BreakBeforeIndividuals = checkBoxBreakBeforeIndividuals.Checked;
+                BreakBetweenSpecies = checkBoxBreakBetweenSpecies.Checked;
+                LogOrder = checkBoxOrderLog.Checked ? (LogSortOrder)comboBoxLogOrder.SelectedIndex : LogSortOrder.AsInput;
             }
 
-            SaveSettings();
+            if (saved != null) saved.Invoke(this, EventArgs.Empty);
 
-            Log.Write(EventType.Maintenance, UserSettings.ObjectType + " settings changed");
+            Log.Write(EventType.Maintenance, "User settings changed");
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
+        private void buttonOK_Click(object sender, EventArgs e) {
             buttonApply_Click(sender, e);
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel; 
+        private void buttonCancel_Click(object sender, EventArgs e) {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        public void buttonBrowseWaters_Click(object sender, EventArgs e)
-        {
-            if (Waters.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
-            { 
+        public void buttonBrowseWaters_Click(object sender, EventArgs e) {
+            if (Waters.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK) {
                 textBoxWaters.Text = Waters.UserSettings.Interface.OpenDialog.FileName;
             }
         }
 
-        private void buttonOpenWaters_Click(object sender, EventArgs e)
-        {
-            IO.RunFile(textBoxWaters.Text); 
+        private void buttonOpenWaters_Click(object sender, EventArgs e) {
+            IO.RunFile(textBoxWaters.Text);
         }
 
-        private void buttonBrowseSpecies_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog SetSpecies = Mayfly.Species.UserSettings.Interface.OpenDialog;
+        private void buttonBrowseSpecies_Click(object sender, EventArgs e) {
+            OpenFileDialog SetSpecies = Species.UserSettings.Interface.OpenDialog;
 
-            if (SetSpecies.ShowDialog() == DialogResult.OK)
-            {
+            if (SetSpecies.ShowDialog() == DialogResult.OK) {
                 textBoxSpecies.Text = SetSpecies.FileName;
             }
         }
 
-        private void buttonOpenSpecies_Click(object sender, EventArgs e)
-        {
+        private void buttonOpenSpecies_Click(object sender, EventArgs e) {
             IO.RunFile(textBoxSpecies.Text);
         }
 
-        private void checkBoxSpeciesExpand_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxSpeciesExpand_CheckedChanged(object sender, EventArgs e) {
             checkBoxSpeciesExpandVisualControl.Enabled = checkBoxSpeciesExpand.Checked;
 
-            if (!checkBoxSpeciesExpand.Checked)
-            {
+            if (!checkBoxSpeciesExpand.Checked) {
                 checkBoxSpeciesExpandVisualControl.Checked = false;
             }
         }
 
-        private void buttonRemoveVar_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem li in listViewAddtVars.SelectedItems)
-            {
+        private void buttonRemoveVar_Click(object sender, EventArgs e) {
+            foreach (ListViewItem li in listViewAddtVars.SelectedItems) {
                 listViewAddtVars.Items.Remove(li);
             }
         }
 
-        private void buttonNewVar_Click(object sender, EventArgs e)
-        {
+        private void buttonNewVar_Click(object sender, EventArgs e) {
             ListViewItem newitem = new ListViewItem();
             listViewAddtVars.Items.Add(newitem);
             newitem.BeginEdit();
         }
 
-        private void listViewAddVars_AfterLabelEdit(object sender, LabelEditEventArgs e)
-        {
+        private void listViewAddVars_AfterLabelEdit(object sender, LabelEditEventArgs e) {
             if (!e.Label.IsAcceptable()) listViewAddtVars.Items[e.Item].Remove();
         }
 
-        private void checkBoxAutoIncreaseBio_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxAutoIncreaseBio_CheckedChanged(object sender, EventArgs e) {
             checkBoxAutoDecreaseBio.Enabled = !checkBoxFixTotals.Checked && checkBoxAutoIncreaseBio.Checked;
 
-            if (!checkBoxAutoIncreaseBio.Checked)
-            {
+            if (!checkBoxAutoIncreaseBio.Checked) {
                 checkBoxAutoDecreaseBio.Checked = false;
             }
         }
 
-        private void checkBoxFixTotals_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxFixTotals_CheckedChanged(object sender, EventArgs e) {
             checkBoxAutoLog.Enabled = !checkBoxFixTotals.Checked;
             checkBoxAutoIncreaseBio.Enabled = !checkBoxFixTotals.Checked;
             checkBoxAutoDecreaseBio.Enabled = !checkBoxFixTotals.Checked;
 
-            if (checkBoxFixTotals.Checked)
-            {
+            if (checkBoxFixTotals.Checked) {
                 checkBoxAutoLog.Checked = true;
                 checkBoxAutoIncreaseBio.Checked = true;
                 checkBoxAutoDecreaseBio.Checked = true;
             }
         }
 
-        private void checkBoxBreakBeforeIndividuals_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxBreakBeforeIndividuals_CheckedChanged(object sender, EventArgs e) {
             checkBoxBreakBetweenSpecies.Enabled = checkBoxBreakBeforeIndividuals.Checked;
             if (!checkBoxBreakBeforeIndividuals.Checked) checkBoxBreakBetweenSpecies.Checked = false;
         }
 
-        private void checkBoxOrderLog_CheckedChanged(object sender, EventArgs e)
-        {
+        private void checkBoxOrderLog_CheckedChanged(object sender, EventArgs e) {
             comboBoxLogOrder.Enabled = checkBoxOrderLog.Checked;
         }
 
-        private void buttonClearRecent_Click(object sender, EventArgs e)
-        {
-            string[] species = UserSettings.GetKeys(Species.UserSettings.Path, Path.GetFileNameWithoutExtension(UserSettings.TaxonomicIndexPath));
+        private void buttonClearRecent_Click(object sender, EventArgs e) {
+            string[] species = GetKeys(Species.UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(TaxonomicIndexPath));
 
             tdClearRecent.Content = string.Format(Resources.Interface.Messages.ClearRecent, species.Length);
 
-            if (tdClearRecent.ShowDialog() == tdbRecentClear)
-            {
-                UserSettings.ClearFolder(UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(UserSettings.TaxonomicIndexPath));
+            if (tdClearRecent.ShowDialog() == tdbRecentClear) {
+                ClearFolder(Species.UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(TaxonomicIndexPath));
             }
         }
 
-        private void buttonBasicSettings_Click(object sender, EventArgs e)
-        {
+        private void buttonBasicSettings_Click(object sender, EventArgs e) {
             Software.Settings settings = new Software.Settings();
             settings.SetFriendlyDesktopLocation(this, FormLocation.NextToHost);
             settings.ShowDialog();
