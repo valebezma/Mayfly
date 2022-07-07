@@ -15,6 +15,7 @@ namespace Mayfly.Plankton
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
+            Wild.ReaderSettings.SetFeature("Plankton", ".pcd");
             Log.WriteAppStarted();
 
             if (args.Length == 0)

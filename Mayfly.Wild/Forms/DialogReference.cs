@@ -42,12 +42,12 @@ namespace Mayfly.Wild
             Icon extIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
             if (extIcon != null) pictureIcon.Image = extIcon.ToBitmap();
 
-            ResetDialog();
+            resetDialog();
         }
 
 
 
-        private void ResetDialog()
+        private void resetDialog()
         {
             taskDialogMissingReference.CustomMainIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(32, 32));
             taskDialogMissingReference.MainInstruction = string.Format(taskDialogMissingReference.MainInstruction, FileTypeFriendlyName);
@@ -62,7 +62,7 @@ namespace Mayfly.Wild
 
 
 
-        private void DialogReference_Load(object sender, EventArgs e)
+        private void dialogReference_Load(object sender, EventArgs e)
         {
             Start:
 
@@ -94,8 +94,8 @@ namespace Mayfly.Wild
 
                     WebClient webClient = new WebClient();
                     FilePath = Path.Combine(UserSettings.FieldDataFolder, Path.GetFileName(DownloadUri.LocalPath));
-                    webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
-                    webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
+                    webClient.DownloadProgressChanged += webClient_DownloadProgressChanged;
+                    webClient.DownloadFileCompleted += webClient_DownloadFileCompleted;
                     webClient.DownloadFileAsync(DownloadUri, FilePath);
                 }
                 catch
@@ -109,12 +109,12 @@ namespace Mayfly.Wild
             }
         }
 
-        private void WebClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private void webClient_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             Close();
         }
 
-        private void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
         }

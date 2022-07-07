@@ -6,66 +6,39 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Mayfly.Species;
+using Mayfly;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Wild
 {
-    public abstract class UserSettings
+    public static class UserSettings
     {
-        private static string type = "Wild";
-        private static FileSystemInterface _interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
-
-        public static string ObjectType {
+        public static string FeatureKey {
             get {
-                return type;
-            }
-            protected set {
-                type = value;
+                return GetFeatureKey("Wild");
             }
         }
 
-        public static string Path {
-            get {
-                return UserSetting.GetFeatureKey("Mayfly." + ObjectType);
-            }
-        }
-
-        public static FileSystemInterface Interface  {
-            get {
-                return _interface;
-            }
-            protected set {
-                _interface = value;
-            }
-        }
-
-
-
-        protected static void setGlobalValues(string _type, string ext) {
-            type = _type; 
-            _interface = new FileSystemInterface(FieldDataFolder, ext, ".html");
-        }
-
-
-        //interfa
+        private static FileSystemInterface Interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
 
         public static FileSystemInterface InterfaceBio = new FileSystemInterface(".bio");
 
         public static string FieldDataFolder {
             get {
-                string result = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "FieldData");
+                string result = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "FieldData");
 
                 if (!Directory.Exists(result)) {
                     Directory.CreateDirectory(result).Attributes = FileAttributes.System;
 
-                    string desktopIniPath = System.IO.Path.Combine(result, "desktop.ini");
-                    File.Create(desktopIniPath).Close();
-                    File.WriteAllLines(desktopIniPath, new string[] {
+                    string desktopIniFeatureKey = Path.Combine(result, "desktop.ini");
+                    File.Create(desktopIniFeatureKey).Close();
+                    File.WriteAllLines(desktopIniFeatureKey, new string[] {
                             "[.ShellClassInfo]",
-                            string.Format("LocalizedResourceName={0}", Resources.Interface.Interface.FieldFolder),
-                            string.Format("InfoTip={0}", Resources.Interface.Interface.FieldFolderTip),
+                            string.Format("LocalizedResourceName={0}", Wild.Resources.Interface.Interface.FieldFolder),
+                            string.Format("InfoTip={0}", Wild.Resources.Interface.Interface.FieldFolderTip),
                             string.Format(@"IconResource={0},0", Assembly.GetExecutingAssembly().Location) },
                             Encoding.Default);
-                    File.SetAttributes(desktopIniPath, FileAttributes.Hidden);
+                    File.SetAttributes(desktopIniFeatureKey, FileAttributes.Hidden);
 
                     Directory.CreateDirectory(result);
                 }
@@ -77,18 +50,33 @@ namespace Mayfly.Wild
 
 
         public static DiversityIndex Diversity {
-            get { return (DiversityIndex)(int)UserSetting.GetValue(Path, nameof(Diversity), (int)DiversityIndex.D1963_Shannon); }
-            set { UserSetting.SetValue(Path, nameof(Diversity), (int)value); }
+            get { return (DiversityIndex)(int)GetValue(FeatureKey, nameof(Diversity), (int)DiversityIndex.D1963_Shannon); }
+            set { SetValue(FeatureKey, nameof(Diversity), (int)value); }
         }
 
         public static int Dominance {
-            get { return (int)UserSetting.GetValue(Path, nameof(Dominance), 0); }
-            set { UserSetting.SetValue(Path, nameof(Dominance), value); }
+            get { return (int)GetValue(FeatureKey, nameof(Dominance), 0); }
+            set { SetValue(FeatureKey, nameof(Dominance), value); }
+        }
+
+        public static string DominanceIndexName
+        {
+            get
+            {
+                ResourceManager resources = new ResourceManager(typeof(Settings));
+                switch (Dominance)
+                {
+                    case 0:
+                        return resources.GetString("comboBoxDominance.Items");
+                    default:
+                        return resources.GetString("comboBoxDominance.Items" + Wild.Dominance);
+                }
+            }
         }
 
         public static string WatersIndexPath {
             get {
-                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(WatersIndexPath), string.Empty));
+                string filepath = IO.GetPath(GetValue(FeatureKey, nameof(WatersIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
                     WatersIndexPath = Service.GetReferencePath(Waters.UserSettings.Interface.OpenDialog,
@@ -99,7 +87,7 @@ namespace Mayfly.Wild
                 }
             }
             set {
-                UserSetting.SetValue(Path, nameof(WatersIndexPath), value);
+                SetValue(FeatureKey, nameof(WatersIndexPath), value);
             }
         }
 
@@ -128,7 +116,7 @@ namespace Mayfly.Wild
                 if (weatherIndex == null) {
                     weatherIndex = new WeatherEvents();
                     weatherIndex.SetAttributable();
-                    try { weatherIndex.ReadXml(System.IO.Path.Combine(Application.StartupPath, @"interface\weatherevts.ini")); } catch { Log.Write(EventType.Maintenance, "Can't read weather file."); }
+                    try { weatherIndex.ReadXml(Path.Combine(Application.StartupPath, @"interface\weatherevts.ini")); } catch { Log.Write(EventType.Maintenance, "Can't read weather file."); }
                 }
 
                 return weatherIndex;
@@ -137,14 +125,58 @@ namespace Mayfly.Wild
 
 
 
-        protected static Samplers samplersIndex;
+        public static int SelectedWaterID {
+            get {
+                return (int)GetValue(FeatureKey, nameof(SelectedWaterID), 0);
+            }
+
+            set {
+                SetValue(FeatureKey, nameof(SelectedWaterID), value);
+            }
+        }
+
+        public static DateTime SelectedDate {
+            get {
+                object SavedDate = GetValue(FeatureKey, nameof(SelectedDate), DateTime.Today);
+                if (SavedDate == null) return DateTime.Now.AddSeconds(-DateTime.Now.Second);
+                else return Convert.ToDateTime(SavedDate);
+            }
+            set { SetValue(FeatureKey, nameof(SelectedDate), value.ToShortDateString()); }
+        }
+
+        public static string[] AddtFactors {
+            get { return (string[])GetValue(FeatureKey, nameof(AddtFactors), new string[0]); }
+            set { SetValue(FeatureKey, nameof(AddtFactors), value); }
+        }
+    }
+
+    public abstract class ReaderSettings
+    {
+        public static string Feature;
+
+        public static string FeatureKey {
+            get {
+                return GetFeatureKey(Feature);
+            }
+        }
+
+        public static FileSystemInterface Interface;
+
+        public static void SetFeature(string feature, string ext) {
+            Feature = feature;
+            Interface = new FileSystemInterface(ext, ".html");
+        }
+
+
+
+        private static Samplers samplersIndex;
 
         public static Samplers SamplersIndex {
             get {
                 if (samplersIndex == null) {
                     samplersIndex = new Samplers();
                     samplersIndex.SetAttributable();
-                    samplersIndex.ReadXml(string.Format(@"interface\sampler{0}.ini", ObjectType.ToLowerInvariant()));
+                    samplersIndex.ReadXml(string.Format(@"interface\sampler{0}.ini", Feature.ToLowerInvariant()));
                 }
                 return samplersIndex;
             }
@@ -152,11 +184,11 @@ namespace Mayfly.Wild
 
         public static Samplers.SamplerRow SelectedSampler {
             get {
-                return SamplersIndex.Sampler.FindByID((int)UserSetting.GetValue(Path, nameof(SelectedSampler), 7));
+                return SamplersIndex.Sampler.FindByID((int)GetValue(FeatureKey, nameof(SelectedSampler), 7));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(SelectedSampler), value.ID);
+                SetValue(FeatureKey, nameof(SelectedSampler), value.ID);
             }
         }
 
@@ -164,21 +196,21 @@ namespace Mayfly.Wild
 
         public static string TaxonomicIndexPath {
             get {
-                string filepath = IO.GetPath(UserSetting.GetValue(Path, nameof(TaxonomicIndexPath), string.Empty));
+                string filepath = IO.GetPath(GetValue(FeatureKey, nameof(TaxonomicIndexPath), string.Empty));
 
                 if (string.IsNullOrWhiteSpace(filepath)) {
-                    TaxonomicIndexPath = Service.GetReferencePathSpecies(ObjectType);
+                    TaxonomicIndexPath = Service.GetReferencePathSpecies(Feature);
                     return TaxonomicIndexPath;
                 } else {
                     return filepath;
                 }
             }
             set {
-                UserSetting.SetValue(Path, nameof(TaxonomicIndexPath), value);
+                SetValue(FeatureKey, nameof(TaxonomicIndexPath), value);
             }
         }
 
-        protected static TaxonomicIndex taxonomicIndex;
+        private static TaxonomicIndex taxonomicIndex;
 
         public static TaxonomicIndex TaxonomicIndex {
             get {
@@ -199,152 +231,220 @@ namespace Mayfly.Wild
         }
 
         public static bool SpeciesAutoExpand {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpand), true)); }
-            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpand), value); }
+            get { return Convert.ToBoolean(GetValue(FeatureKey, nameof(SpeciesAutoExpand), true)); }
+            set { SetValue(FeatureKey, nameof(SpeciesAutoExpand), value); }
         }
 
         public static bool SpeciesAutoExpandVisual {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(SpeciesAutoExpandVisual), true)); }
-            set { UserSetting.SetValue(Path, nameof(SpeciesAutoExpandVisual), value); }
+            get { return Convert.ToBoolean(GetValue(FeatureKey, nameof(SpeciesAutoExpandVisual), true)); }
+            set { SetValue(FeatureKey, nameof(SpeciesAutoExpandVisual), value); }
         }
 
         public static int RecentSpeciesCount {
-            get { return (int)UserSetting.GetValue(Path, nameof(RecentSpeciesCount), 15); }
-            set { UserSetting.SetValue(Path, nameof(RecentSpeciesCount), value); }
-        }
-
-
-
-        public static int SelectedWaterID {
-            get {
-                return (int)UserSetting.GetValue(Path, nameof(SelectedWaterID), 0);
-            }
-
-            set {
-                UserSetting.SetValue(Path, nameof(SelectedWaterID), value);
-            }
-        }
-
-        public static DateTime SelectedDate {
-            get {
-                object SavedDate = UserSetting.GetValue(Path, nameof(SelectedDate), DateTime.Today);
-                if (SavedDate == null) return DateTime.Now.AddSeconds(-DateTime.Now.Second);
-                else return Convert.ToDateTime(SavedDate);
-            }
-            set { UserSetting.SetValue(Path, nameof(SelectedDate), value.ToShortDateString()); }
-        }
-
-        public static string[] AddtFactors {
-            get { return (string[])UserSetting.GetValue(Path, nameof(AddtFactors), new string[0]); }
-            set { UserSetting.SetValue(Path, nameof(AddtFactors), value); }
+            get { return (int)GetValue(FeatureKey, nameof(RecentSpeciesCount), 15); }
+            set { SetValue(FeatureKey, nameof(RecentSpeciesCount), value); }
         }
 
 
 
         public static bool AutoLogOpen {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoLogOpen), false));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(AutoLogOpen), false));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(AutoLogOpen), value);
+                SetValue(FeatureKey, nameof(AutoLogOpen), value);
             }
         }
 
         public static bool FixTotals {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(FixTotals), false));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(FixTotals), false));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(FixTotals), value);
+                SetValue(FeatureKey, nameof(FixTotals), value);
             }
         }
 
         public static bool AutoIncreaseBio {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoIncreaseBio), true));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(AutoIncreaseBio), true));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(AutoIncreaseBio), value);
+                SetValue(FeatureKey, nameof(AutoIncreaseBio), value);
             }
         }
 
         public static bool AutoDecreaseBio {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(AutoDecreaseBio), true));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(AutoDecreaseBio), true));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(AutoDecreaseBio), value);
+                SetValue(FeatureKey, nameof(AutoDecreaseBio), value);
             }
         }
 
         public static string[] AddtVariables {
             get {
-                return (string[])UserSetting.GetValue(Path, nameof(AddtVariables), new string[0]);
+                return (string[])GetValue(FeatureKey, nameof(AddtVariables), new string[0]);
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(AddtVariables), value);
+                SetValue(FeatureKey, nameof(AddtVariables), value);
             }
         }
 
         public static string[] CurrentVariables {
             get {
-                return (string[])UserSetting.GetValue(Path, nameof(CurrentVariables), new string[0]);
+                return (string[])GetValue(FeatureKey, nameof(CurrentVariables), new string[0]);
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(CurrentVariables), value);
+                SetValue(FeatureKey, nameof(CurrentVariables), value);
             }
         }
 
 
 
-        public static LogOrder LogOrder {
-            get { return (LogOrder)(int)UserSetting.GetValue(Path, nameof(LogOrder), LogOrder.Alphabetically); }
-            set { UserSetting.SetValue(Path, nameof(LogOrder), (int)value); }
+        public static LogSortOrder LogOrder {
+            get { return (LogSortOrder)(int)GetValue(FeatureKey, nameof(LogOrder), LogSortOrder.Alphabetically); }
+            set { SetValue(FeatureKey, nameof(LogOrder), (int)value); }
         }
 
         public static bool BreakBeforeIndividuals {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBeforeIndividuals), true));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(BreakBeforeIndividuals), true));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(BreakBeforeIndividuals), value);
+                SetValue(FeatureKey, nameof(BreakBeforeIndividuals), value);
             }
         }
 
         public static bool BreakBetweenSpecies {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(BreakBetweenSpecies), false));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(BreakBetweenSpecies), false));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(BreakBetweenSpecies), value);
+                SetValue(FeatureKey, nameof(BreakBetweenSpecies), value);
             }
         }
 
         public static bool OddCardStart {
             get {
-                return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(OddCardStart), true));
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(OddCardStart), true));
             }
 
             set {
-                UserSetting.SetValue(Path, nameof(OddCardStart), value);
+                SetValue(FeatureKey, nameof(OddCardStart), value);
             }
         }
     }
 
-    public enum LogOrder
+    public static class ExplorerSettings
+    {
+        public static string Feature;
+
+        public static string FeatureKey {
+            get {
+                return GetFeatureKey(Feature);
+            }
+        }
+
+        public static FileSystemInterface Interface;
+
+        public static void SetFeature(string feature, string ext) {
+            ReaderSettings.SetFeature(feature, ext);
+            Feature = feature + ".Explorer";
+            Interface = new FileSystemInterface(ext + "s", ".html");
+        }
+
+        public static bool SuggestMass
+        {
+            get
+            {
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(SuggestMass), true));
+            }
+
+            set
+            {
+                SetValue(FeatureKey, nameof(SuggestMass), value);
+            }
+        }
+
+        public static bool AutoLoadBio
+        {
+            get
+            {
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(AutoLoadBio), false));
+            }
+
+            set
+            {
+                SetValue(FeatureKey, nameof(AutoLoadBio), value);
+            }
+        }
+
+        public static bool KeepWizard
+        {
+            get
+            {
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(KeepWizard), false));
+            }
+            set
+            {
+                SetValue(FeatureKey, nameof(KeepWizard), value);
+            }
+        }
+
+        public static ArtifactCriticality ReportCriticality
+        {
+            get
+            {
+                object o = GetValue(FeatureKey, nameof(ReportCriticality), ArtifactCriticality.Allowed);
+                if (o == null) return ArtifactCriticality.Critical;
+                else return (ArtifactCriticality)(int)o;
+            }
+            set { SetValue(FeatureKey, nameof(ReportCriticality), (int)value); }
+        }
+
+        public static bool CheckConsistency
+        {
+            get
+            {
+                return Convert.ToBoolean(GetValue(FeatureKey, nameof(CheckConsistency), true));
+            }
+            set
+            {
+                SetValue(FeatureKey, nameof(CheckConsistency), value);
+            }
+        }
+
+        public static string[] Bios
+        {
+            get
+            {
+                string[] values = (string[])GetValue(FeatureKey, nameof(Bios), new string[0]);
+                return values.GetOperableFilenames(UserSettings.InterfaceBio.Extension);
+            }
+
+            set
+            {
+                SetValue(FeatureKey, nameof(Bios), value);
+            }
+        }
+    }
+
+    public enum LogSortOrder
     {
         AsInput = -1,
         Alphabetically = 0,
         ByQuantity = 1,
         ByMass = 2,
-        Philogenetically = 3
+        Philogenetically = 4
     }
 }

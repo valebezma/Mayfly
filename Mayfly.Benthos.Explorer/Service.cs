@@ -89,7 +89,7 @@ namespace Mayfly.Benthos.Explorer
 
         public static string[] GetAssociates(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path,
+            object result = UserSettings.GetValue(UserSettings.FeatureKey,
                 new string[] { "Restoration", "Assosiciation" },
                 species, new string[0]);
 
@@ -143,7 +143,7 @@ namespace Mayfly.Benthos.Explorer
 
         public static void SaveAssociates(string species, string[] associates)
         {
-            UserSetting.SetValue(UserSettings.Path,
+            UserSettings.SetValue(UserSettings.FeatureKey,
                 new string[] { "Restoration", "Assosiciation" },
                 species, associates);
         }

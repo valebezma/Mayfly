@@ -431,12 +431,12 @@ namespace Mayfly.Wild
 
 
 
-        private void Card_Load(object sender, EventArgs e) {
+        private void card_Load(object sender, EventArgs e) {
             isChanged = false;
             Logger.UpdateStatus();
         }
 
-        private void Card_FormClosing(object sender, FormClosingEventArgs e) {
+        private void card_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = (checkAndSave() == DialogResult.Cancel);
         }
 

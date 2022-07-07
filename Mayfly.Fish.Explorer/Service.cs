@@ -82,14 +82,14 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveGearSpatialValue(FishSamplerType samplerType, string gearClass, double value)
         {
-            UserSetting.SetValue(UserSettings.Path, new string[] { nameof(GearClass),
+            UserSettings.SetValue(UserSettings.FeatureKey, new string[] { nameof(GearClass),
                 samplerType.ToString() },
                 gearClass, (int)(value * 1000));
         }
 
         public static double GetGearSpatialValue(FishSamplerType samplerType, string gearClass)
         {
-            object result = UserSetting.GetValue(UserSettings.Path,
+            object result = UserSettings.GetValue(UserSettings.FeatureKey,
                 new string[] { nameof(GearClass),
                     samplerType.ToString() },
                 gearClass, null);
@@ -107,7 +107,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double GetCatchability(FishSamplerType samplerType, string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path,
+            object result = UserSettings.GetValue(UserSettings.FeatureKey,
                 new string[] { nameof(Catchability), samplerType.ToString() },
                 species, null);
 
@@ -123,7 +123,7 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveCatchability(FishSamplerType samplerType, string species, double value)
         {
-            UserSetting.SetValue(UserSettings.Path,
+            UserSettings.SetValue(UserSettings.FeatureKey,
                 new string[] { nameof(Catchability), samplerType.ToString() },
                 species, (int)(value * 100));
         }
@@ -131,7 +131,7 @@ namespace Mayfly.Fish.Explorer
 
         public static double GetNaturalMortality(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(NaturalMortality), species, null);
+            object result = UserSettings.GetValue(UserSettings.FeatureKey, nameof(NaturalMortality), species, null);
 
             if (result == null)
             {
@@ -145,13 +145,13 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveNaturalMortality(string species, double value)
         {
-            UserSetting.SetValue(UserSettings.Path, nameof(NaturalMortality), species, (int)(value * 1000));
+            UserSettings.SetValue(UserSettings.FeatureKey, nameof(NaturalMortality), species, (int)(value * 1000));
         }
 
 
         public static double GetFishingMortality(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(FishingMortality), species, null);
+            object result = UserSettings.GetValue(UserSettings.FeatureKey, nameof(FishingMortality), species, null);
 
             if (result == null)
             {
@@ -165,13 +165,13 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveFishingMortality(string species, double value)
         {
-            UserSetting.SetValue(UserSettings.Path, nameof(FishingMortality), species, (int)(value * 1000));
+            UserSettings.SetValue(UserSettings.FeatureKey, nameof(FishingMortality), species, (int)(value * 1000));
         }
 
 
         public static double GetMeasure(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingLength), species, null);
+            object result = UserSettings.GetValue(UserSettings.FeatureKey, nameof(GamingLength), species, null);
 
             if (result == null)
             {
@@ -185,13 +185,13 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveMeasure(string species, double value)
         {
-            UserSetting.SetValue(UserSettings.Path, nameof(GamingLength), species, (int)value);
+            UserSettings.SetValue(UserSettings.FeatureKey, nameof(GamingLength), species, (int)value);
         }
 
 
         public static Age GetGamingAge(string species)
         {
-            object result = UserSetting.GetValue(UserSettings.Path, nameof(GamingAge), species, null);
+            object result = UserSettings.GetValue(UserSettings.FeatureKey, nameof(GamingAge), species, null);
 
             if (result == null)
             {
@@ -205,7 +205,7 @@ namespace Mayfly.Fish.Explorer
 
         public static void SaveGamingAge(string species, Age age)
         {
-            UserSetting.SetValue(UserSettings.Path, nameof(GamingAge), species, age.ToString());
+            UserSettings.SetValue(UserSettings.FeatureKey, nameof(GamingAge), species, age.ToString());
         }
 
         public static List<EquipmentEvent> AvailableEvents(EquipmentEvent equipmentEvent)

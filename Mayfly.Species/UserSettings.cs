@@ -1,60 +1,59 @@
 ﻿using System;
 using System.Drawing;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Species
 {
-    public abstract class UserSettings
+    public static class UserSettings
     {
-        public static string Path
-        {
-            get
-            {
-                return UserSetting.GetFeatureKey("Mayfly.Species");
+        public static string FeatureKey {
+            get {
+                return GetFeatureKey("Species");
             }
         }
 
-        public static FileSystemInterface Interface = new FileSystemInterface(null, ".txn", ".html");
+        public static FileSystemInterface Interface = new FileSystemInterface(".txn", ".html");
 
         public static bool UseClassicKeyReport 
         {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(UseClassicKeyReport), false)); }
-            set { UserSetting.SetValue(Path, nameof(UseClassicKeyReport), value); }
+            get { return Convert.ToBoolean(GetValue(FeatureKey, nameof(UseClassicKeyReport), false)); }
+            set { SetValue(FeatureKey, nameof(UseClassicKeyReport), value); }
         }
 
         public static string CoupletChar 
         {
-            get { return (string)UserSetting.GetValue(Path, nameof(CoupletChar), "'"); }
-            set { UserSetting.SetValue(Path, nameof(CoupletChar), value); }
+            get { return (string)GetValue(FeatureKey, nameof(CoupletChar), "'"); }
+            set { SetValue(FeatureKey, nameof(CoupletChar), value); }
         }
 
         public static int AllowableSpeciesListLength 
         {
-            get { return (int)UserSetting.GetValue(Path, nameof(AllowableSpeciesListLength), 50); }
-            set { UserSetting.SetValue(Path, nameof(AllowableSpeciesListLength), value); }
+            get { return (int)GetValue(FeatureKey, nameof(AllowableSpeciesListLength), 50); }
+            set { SetValue(FeatureKey, nameof(AllowableSpeciesListLength), value); }
         }
 
         public static string HigherTaxonNameFormat
         {
-            get { return (string)UserSetting.GetValue(Path, nameof(HigherTaxonNameFormat), "T"); }
-            set { UserSetting.SetValue(Path, nameof(HigherTaxonNameFormat), value); }
+            get { return (string)GetValue(FeatureKey, nameof(HigherTaxonNameFormat), "T"); }
+            set { SetValue(FeatureKey, nameof(HigherTaxonNameFormat), value); }
         }
 
         public static string LowerTaxonNameFormat
         {
-            get { return (string)UserSetting.GetValue(Path, nameof(LowerTaxonNameFormat), "F"); }
-            set { UserSetting.SetValue(Path, nameof(LowerTaxonNameFormat), value); }
+            get { return (string)GetValue(FeatureKey, nameof(LowerTaxonNameFormat), "F"); }
+            set { SetValue(FeatureKey, nameof(LowerTaxonNameFormat), value); }
         }
 
         public static Color LowerTaxonColor
         {
-            get { return Color.FromArgb((int)UserSetting.GetValue(Path, nameof(LowerTaxonColor), Color.Teal.ToArgb())); }
-            set { UserSetting.SetValue(Path, nameof(LowerTaxonColor), value.ToArgb()); }
+            get { return Color.FromArgb((int)GetValue(FeatureKey, nameof(LowerTaxonColor), Color.Teal.ToArgb())); }
+            set { SetValue(FeatureKey, nameof(LowerTaxonColor), value.ToArgb()); }
         }
 
         public static bool FillTreeWithLowerTaxon
         {
-            get { return Convert.ToBoolean(UserSetting.GetValue(Path, nameof(FillTreeWithLowerTaxon), false)); }
-            set { UserSetting.SetValue(Path, nameof(FillTreeWithLowerTaxon), value); }
+            get { return Convert.ToBoolean(GetValue(FeatureKey, nameof(FillTreeWithLowerTaxon), false)); }
+            set { SetValue(FeatureKey, nameof(FillTreeWithLowerTaxon), value); }
         }
     }
 }

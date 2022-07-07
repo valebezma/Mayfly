@@ -13,39 +13,35 @@ namespace Mayfly.Wild
 {
     public abstract partial class Settings : Form
     {
-        protected ReaderUserSettings ReaderSettings;
-
         protected abstract void SaveSettings();
 
 
 
-        public Settings(ReaderUserSettings readerSettings)
+        public Settings()
         {
             InitializeComponent();
 
             listViewAddtFctr.Shine();
             listViewAddtVars.Shine();
 
-            ReaderSettings = readerSettings;
-
             #region references
 
             textBoxWaters.Text = UserSettings.WatersIndexPath;
-            textBoxSpecies.Text = ReaderSettings.TaxonomicIndexPath;
+            textBoxSpecies.Text = UserSettings.TaxonomicIndexPath;
 
-            checkBoxSpeciesExpand.Checked = ReaderSettings.SpeciesAutoExpand;
-            checkBoxSpeciesExpandVisualControl.Checked = ReaderSettings.SpeciesAutoExpandVisual;
+            checkBoxSpeciesExpand.Checked = UserSettings.SpeciesAutoExpand;
+            checkBoxSpeciesExpandVisualControl.Checked = UserSettings.SpeciesAutoExpandVisual;
 
             #endregion
 
             #region input
 
-            checkBoxAutoLog.Checked = ReaderSettings.AutoLogOpen;
-            checkBoxFixTotals.Checked = ReaderSettings.FixTotals;
-            checkBoxAutoIncreaseBio.Checked = ReaderSettings.AutoIncreaseBio;
-            checkBoxAutoDecreaseBio.Checked = ReaderSettings.AutoDecreaseBio;
+            checkBoxAutoLog.Checked = UserSettings.AutoLogOpen;
+            checkBoxFixTotals.Checked = UserSettings.FixTotals;
+            checkBoxAutoIncreaseBio.Checked = UserSettings.AutoIncreaseBio;
+            checkBoxAutoDecreaseBio.Checked = UserSettings.AutoDecreaseBio;
 
-            foreach (string item in ReaderSettings.AddtVariables)
+            foreach (string item in UserSettings.AddtVariables)
             {
                 ListViewItem li = new ListViewItem(item);
                 listViewAddtVars.Items.Add(li);
@@ -53,21 +49,21 @@ namespace Mayfly.Wild
 
             foreach (ListViewItem item in listViewAddtVars.Items)
             {
-                if (Array.IndexOf(ReaderSettings.CurrentVariables, item.Text) > -1)
+                if (Array.IndexOf(UserSettings.CurrentVariables, item.Text) > -1)
                     item.Checked = true;
             }
 
-            numericUpDownRecentCount.Value = ReaderSettings.RecentSpeciesCount;
+            numericUpDownRecentCount.Value = UserSettings.RecentSpeciesCount;
 
             #endregion
 
             #region print
 
-            checkBoxCardOdd.Checked = ReaderSettings.OddCardStart;
-            checkBoxBreakBeforeIndividuals.Checked = ReaderSettings.BreakBeforeIndividuals;
-            checkBoxBreakBetweenSpecies.Checked = ReaderSettings.BreakBetweenSpecies;
-            checkBoxOrderLog.Checked = UserSettings.LogOrder != LogOrder.AsInput;
-            if (UserSettings.LogOrder != LogOrder.AsInput)
+            checkBoxCardOdd.Checked = UserSettings.OddCardStart;
+            checkBoxBreakBeforeIndividuals.Checked = UserSettings.BreakBeforeIndividuals;
+            checkBoxBreakBetweenSpecies.Checked = UserSettings.BreakBetweenSpecies;
+            checkBoxOrderLog.Checked = UserSettings.LogOrder != LogSortOrder.AsInput;
+            if (UserSettings.LogOrder != LogSortOrder.AsInput)
                 comboBoxLogOrder.SelectedIndex = (int)UserSettings.LogOrder;
 
             #endregion           
@@ -80,42 +76,42 @@ namespace Mayfly.Wild
             if (!tabPageReferences.IsDisposed)
             {
                 UserSettings.WatersIndexPath = textBoxWaters.Text;
-                ReaderSettings.TaxonomicIndexPath = textBoxSpecies.Text;
-                ReaderSettings.SpeciesAutoExpand = checkBoxSpeciesExpand.Checked;
-                ReaderSettings.SpeciesAutoExpandVisual = checkBoxSpeciesExpandVisualControl.Checked;
+                UserSettings.TaxonomicIndexPath = textBoxSpecies.Text;
+                UserSettings.SpeciesAutoExpand = checkBoxSpeciesExpand.Checked;
+                UserSettings.SpeciesAutoExpandVisual = checkBoxSpeciesExpandVisualControl.Checked;
             }
 
             if (!tabPageInput.IsDisposed)
             {
-                ReaderSettings.FixTotals = checkBoxFixTotals.Checked;
-                ReaderSettings.AutoIncreaseBio = checkBoxAutoIncreaseBio.Checked;
-                ReaderSettings.AutoDecreaseBio = checkBoxAutoDecreaseBio.Checked;
-                ReaderSettings.AutoLogOpen = checkBoxAutoLog.Checked;
-                ReaderSettings.RecentSpeciesCount = (int)numericUpDownRecentCount.Value;
+                UserSettings.FixTotals = checkBoxFixTotals.Checked;
+                UserSettings.AutoIncreaseBio = checkBoxAutoIncreaseBio.Checked;
+                UserSettings.AutoDecreaseBio = checkBoxAutoDecreaseBio.Checked;
+                UserSettings.AutoLogOpen = checkBoxAutoLog.Checked;
+                UserSettings.RecentSpeciesCount = (int)numericUpDownRecentCount.Value;
             }
 
             List<string> addvars = new List<string>();
             foreach (ListViewItem item in listViewAddtVars.Items)
                 addvars.Add(item.Text);
-            ReaderSettings.AddtVariables = addvars.ToArray();
+            UserSettings.AddtVariables = addvars.ToArray();
 
             List<string> currvars = new List<string>();
             foreach (ListViewItem item in listViewAddtVars.CheckedItems)
                 currvars.Add(item.Text);
-            ReaderSettings.CurrentVariables = currvars.ToArray();
+            UserSettings.CurrentVariables = currvars.ToArray();
 
 
             if (!tabPagePrint.IsDisposed)
             {
-                ReaderSettings.OddCardStart = checkBoxCardOdd.Checked;
-                ReaderSettings.BreakBeforeIndividuals = checkBoxBreakBeforeIndividuals.Checked;
-                ReaderSettings.BreakBetweenSpecies = checkBoxBreakBetweenSpecies.Checked;
-                UserSettings.LogOrder = checkBoxOrderLog.Checked ? (LogOrder)comboBoxLogOrder.SelectedIndex : LogOrder.AsInput;
+                UserSettings.OddCardStart = checkBoxCardOdd.Checked;
+                UserSettings.BreakBeforeIndividuals = checkBoxBreakBeforeIndividuals.Checked;
+                UserSettings.BreakBetweenSpecies = checkBoxBreakBetweenSpecies.Checked;
+                UserSettings.LogOrder = checkBoxOrderLog.Checked ? (LogSortOrder)comboBoxLogOrder.SelectedIndex : LogSortOrder.AsInput;
             }
 
             SaveSettings();
 
-            Log.Write(EventType.Maintenance, ReaderSettings.ObjectType + " settings changed");
+            Log.Write(EventType.Maintenance, UserSettings.ObjectType + " settings changed");
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -226,13 +222,13 @@ namespace Mayfly.Wild
 
         private void buttonClearRecent_Click(object sender, EventArgs e)
         {
-            string[] species = UserSetting.GetKeys(Species.UserSettings.Path, Path.GetFileNameWithoutExtension(ReaderSettings.TaxonomicIndexPath));
+            string[] species = UserSettings.GetKeys(Species.UserSettings.Path, Path.GetFileNameWithoutExtension(UserSettings.TaxonomicIndexPath));
 
             tdClearRecent.Content = string.Format(Resources.Interface.Messages.ClearRecent, species.Length);
 
             if (tdClearRecent.ShowDialog() == tdbRecentClear)
             {
-                UserSetting.ClearFolder(UserSettings.Path, Path.GetFileNameWithoutExtension(ReaderSettings.TaxonomicIndexPath));
+                UserSettings.ClearFolder(UserSettings.FeatureKey, Path.GetFileNameWithoutExtension(UserSettings.TaxonomicIndexPath));
             }
         }
 

@@ -954,7 +954,7 @@ namespace Mayfly.Wild
                 return data;
             }
 
-            public LogRow[] GetLogRows(LogOrder logOrder)
+            public LogRow[] GetLogRows(LogSortOrder logOrder)
             {
                 List<LogRow> result = new List<LogRow>();
                 result.AddRange(this.GetLogRows());
@@ -1682,9 +1682,9 @@ namespace Mayfly.Wild
 
     public class LogRowSorter : IComparer<Data.LogRow>
     {
-        readonly LogOrder logOrder;
+        readonly LogSortOrder logOrder;
 
-        public LogRowSorter(LogOrder _logOrder)
+        public LogRowSorter(LogSortOrder _logOrder)
         {
             logOrder = _logOrder;
         }
@@ -1693,22 +1693,22 @@ namespace Mayfly.Wild
         {
             switch (logOrder)
             {
-                case LogOrder.Alphabetically:
+                case LogSortOrder.Alphabetically:
                     if (x.IsDefIDNull()) return 1;
                     if (y.IsDefIDNull()) return -1;
                     return string.Compare(x.DefinitionRow.Taxon, y.DefinitionRow.Taxon);
 
-                case LogOrder.ByMass:
+                case LogSortOrder.ByMass:
                     if (x.IsMassNull()) return 1;
                     if (y.IsMassNull()) return -1;
                     return (int)(1000 * y.Mass - 1000 * x.Mass);
 
-                case LogOrder.ByQuantity:
+                case LogSortOrder.ByQuantity:
                     if (x.IsQuantityNull()) return 1;
                     if (y.IsQuantityNull()) return -1;
                     return y.Quantity - x.Quantity;
 
-                case LogOrder.Philogenetically:
+                case LogSortOrder.Philogenetically:
                     if (x.IsDefIDNull()) return 0;
                     if (x.DefinitionRow.KeyRecord == null) return 0;
                     if (y.IsDefIDNull()) return 0;

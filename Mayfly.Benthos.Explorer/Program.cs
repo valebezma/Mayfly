@@ -15,6 +15,7 @@ namespace Mayfly.Benthos.Explorer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Mayfly.Service.Application_ThreadException;
 
+            Wild.ExplorerSettings.SetFeature("Benthos", ".bcd");
             Log.WriteAppStarted();
 
             if (args.Length == 0)

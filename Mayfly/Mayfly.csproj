@@ -520,7 +520,6 @@
     <Compile Include="Software\About.designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSettingInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Components\IconLib\Resource.resx">

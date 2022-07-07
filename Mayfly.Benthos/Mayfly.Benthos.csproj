@@ -156,7 +156,6 @@
     <Compile Include="Individuals.Designer.cs">
       <DependentUpon>Individuals.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSettings.cs" />
     <Compile Include="Resources\Interface\Interface.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

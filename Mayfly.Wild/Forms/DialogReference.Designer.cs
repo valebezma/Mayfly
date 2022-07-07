@@ -91,7 +91,7 @@
             this.MinimizeBox = false;
             this.Name = "DialogReference";
             this.ShowIcon = false;
-            this.Load += new System.EventHandler(this.DialogReference_Load);
+            this.Load += new System.EventHandler(this.dialogReference_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureIcon)).EndInit();
             this.ResumeLayout(false);
 

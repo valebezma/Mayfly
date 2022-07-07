@@ -654,8 +654,8 @@
             this.Controls.Add(this.tabControl);
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Card";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Card_FormClosing);
-            this.Load += new System.EventHandler(this.Card_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.card_FormClosing);
+            this.Load += new System.EventHandler(this.card_Load);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.tabPageLog.ResumeLayout(false);

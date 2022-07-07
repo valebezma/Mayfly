@@ -322,12 +322,12 @@ namespace Mayfly.Species
 
         private void RunSelected(TaxonomicIndex.TaxonRow taxonRow)
         {
-            object used = UserSetting.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, null);
+            object used = UserSettings.GetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, null);
 
             if (used == null) {
-                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, 1);
+                UserSettings.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, 1);
             } else {
-                UserSetting.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, (int)used + 1);
+                UserSettings.SetValue(UserSettings.Path, Path.GetFileNameWithoutExtension(IndexPath), taxonRow.Name, (int)used + 1);
             }
 
             DataGridViewCell gridCell = Grid.CurrentCell;

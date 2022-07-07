@@ -54,7 +54,7 @@ namespace Mayfly
                 return;
             }
 
-            UserSetting.SetValue(
+            UserSettings.SetValue(
                 keyLicenses,
                 this.Feature,
                 "License",
@@ -66,7 +66,7 @@ namespace Mayfly
 
         internal void Uninstall()
         {
-            UserSetting.ClearFolder(keyLicenses, this.Feature);
+            UserSettings.ClearFolder(keyLicenses, this.Feature);
         }
 
         public override string ToString()
@@ -245,8 +245,8 @@ namespace Mayfly
 
         public static DateTime LastLicenseCheckup
         {
-            get { return Convert.ToDateTime(UserSetting.GetValue(keyLicenses, nameof(LastLicenseCheckup), DateTime.Today.AddDays(-2))); }
-            set { UserSetting.SetValue(keyLicenses, nameof(LastLicenseCheckup), value.ToString("s")); }
+            get { return Convert.ToDateTime(UserSettings.GetValue(keyLicenses, nameof(LastLicenseCheckup), DateTime.Today.AddDays(-2))); }
+            set { UserSettings.SetValue(keyLicenses, nameof(LastLicenseCheckup), value.ToString("s")); }
         }
     }
 

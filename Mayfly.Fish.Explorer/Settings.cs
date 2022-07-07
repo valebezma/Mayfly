@@ -146,7 +146,7 @@ namespace Mayfly.Fish.Explorer
 
             UserSettings.DefaultCatchability = (double)numericUpDownCatchabilityDefault.Value;
 
-            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.GamingAge));
+            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.GamingAge));
             foreach (DataGridViewRow gridRow in spreadSheetAge.Rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -156,7 +156,7 @@ namespace Mayfly.Fish.Explorer
                     (Age)gridRow.Cells[ColumnAgeValue.Index].Value);
             }
 
-            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.GamingLength));
+            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.GamingLength));
             foreach (DataGridViewRow gridRow in spreadSheetMeasure.Rows)
             {
                 if (gridRow.IsNewRow) continue;
@@ -166,7 +166,7 @@ namespace Mayfly.Fish.Explorer
                     (double)gridRow.Cells[ColumnMeasureValue.Index].Value);
             }
 
-            UserSetting.ClearFolder(UserSettings.Path, nameof(Service.Catchability));
+            UserSettings.ClearFolder(UserSettings.FeatureKey, nameof(Service.Catchability));
             foreach (DataGridViewRow gridRow in spreadSheetCatchability.Rows)
             {
                 if (gridRow.IsNewRow) continue;

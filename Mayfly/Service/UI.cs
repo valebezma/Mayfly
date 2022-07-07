@@ -22,26 +22,24 @@ namespace Mayfly
         static readonly string keyUI = @"Software\Mayfly\UI";
 
         static readonly string FormatColumn;
-        static readonly string CheckStates;
-
 
 
         public static string GetFormat(string gridName, string columnName, string ifnull)
         {
-            return UserSetting.GetValue(keyUI, new string[] { nameof(FormatColumn), gridName }, columnName, ifnull).ToString();
+            return UserSettings.GetValue(keyUI, new string[] { nameof(FormatColumn), gridName }, columnName, ifnull).ToString();
         }
 
         public static void SaveFormat(string gridName, string columnName, string format)
         {
             if (string.IsNullOrWhiteSpace(format))
             {
-                UserSetting.Remove(keyUI,
+                UserSettings.Remove(keyUI,
                     new string[] { nameof(FormatColumn), gridName }, 
                     columnName);
             }
             else
             {
-                UserSetting.SetValue(keyUI,
+                UserSettings.SetValue(keyUI,
                     new string[] { nameof(FormatColumn), gridName }, 
                     columnName, format);
             }
@@ -55,13 +53,13 @@ namespace Mayfly
 
         public static CheckState GetCheckState(string formName, string checkBoxName, CheckState defaultState)
         {
-            return (CheckState)Convert.ToInt32(UserSetting.GetValue(keyUI,
-                new string[] { nameof(CheckStates), formName }, checkBoxName, defaultState));
+            return (CheckState)Convert.ToInt32(UserSettings.GetValue(keyUI,
+                new string[] { nameof(CheckState), formName }, checkBoxName, defaultState));
         }
 
         public static void SaveCheckState(string formName, string checkBoxName, CheckState state)
         {
-            UserSetting.SetValue(keyUI, new string[] { nameof(CheckStates), formName }, checkBoxName, (int)state);
+            UserSettings.SetValue(keyUI, new string[] { nameof(CheckState), formName }, checkBoxName, (int)state);
         }
 
 
@@ -192,23 +190,23 @@ namespace Mayfly
         {
             get
             {
-                try { return UserSetting.GetValue(keyUI, nameof(FormatCoordinate), "dms").ToString(); }
+                try { return UserSettings.GetValue(keyUI, nameof(FormatCoordinate), "dms").ToString(); }
                 catch { return "d"; }
             }
 
-            set { UserSetting.SetValue(keyUI, nameof(FormatCoordinate), value); }
+            set { UserSettings.SetValue(keyUI, nameof(FormatCoordinate), value); }
         }
 
         public static CultureInfo Language
         {
             get
             {
-                string s = (string)UserSetting.GetValue(keyUI, nameof(Language), string.Empty);
+                string s = (string)UserSettings.GetValue(keyUI, nameof(Language), string.Empty);
                 if (string.IsNullOrEmpty(s)) return CultureInfo.InvariantCulture;
                 return CultureInfo.GetCultureInfo(s);
             }
 
-            set { UserSetting.SetValue(keyUI, nameof(Language), value.ToString()); }
+            set { UserSettings.SetValue(keyUI, nameof(Language), value.ToString()); }
         }
     }
 }
