@@ -7,6 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Mayfly.Extensions;
+using Mayfly.Wild;
+using Mayfly.Geographics;
+using Mayfly.Species;
+using Mayfly.TaskDialogs;
+using Mayfly.Software;
+using Mayfly.Waters;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using Mayfly.Waters.Controls;
+using static Mayfly.Wild.UserSettings;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Benthos
 {
@@ -53,37 +70,45 @@ namespace Mayfly.Benthos
         private CheckBox checkBoxCPOM;
         private Label labelMinerals;
         private NumericUpDown numericUpDownClay;
+        private ContextMenuStrip contextMenuStripSubstrate;
+        private IContainer components;
+        private ToolStripMenuItem ToolStripMenuItemSands;
+        private ToolStripMenuItem ItemSubSand;
+        private ToolStripMenuItem ItemSubLoamySand;
+        private ToolStripMenuItem ToolStripMenuItemSilts;
+        private ToolStripMenuItem ItemSubSilt;
+        private ToolStripMenuItem ToolStripMenuItemClays;
+        private ToolStripMenuItem ItemSubClay;
+        private ToolStripMenuItem ItemSubSandyClay;
+        private ToolStripMenuItem ItemSubSiltyClay;
+        private ToolStripMenuItem ToolStripMenuItemLoams;
+        private ToolStripMenuItem ItemSubLoam;
+        private ToolStripMenuItem ItemSubSandyLoam;
+        private ToolStripMenuItem ItemSubSandyClayLoam;
+        private ToolStripMenuItem ItemSubClayLoam;
+        private ToolStripMenuItem ItemSubSiltyClayLoam;
+        private ToolStripMenuItem ItemSubSiltLoam;
         private Label labelBank;
 
         private double Square // In square meters
         {
-            get
-            {
-                if (textBoxSquare.Text.IsDoubleConvertible())
-                {
+            get {
+                if (textBoxSquare.Text.IsDoubleConvertible()) {
                     return Convert.ToDouble(textBoxSquare.Text);
-                }
-                else
-                {
+                } else {
                     return double.NaN;
                 }
             }
 
-            set
-            {
-                if (double.IsNaN(value))
-                {
+            set {
+                if (double.IsNaN(value)) {
                     textBoxSquare.Text = string.Empty;
-                }
-                else
-                {
+                } else {
                     textBoxSquare.Text = value.ToString();//Textual.Mask(4));
 
-                    if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
-                    {
+                    if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull()) {
 
-                        switch (SelectedSampler.GetSamplerType())
-                        {
+                        switch (SelectedSampler.GetSamplerType()) {
                             case BenthosSamplerType.Grabber:
                                 // Replies count equals to 
                                 // square divided by [standard effort] of grabber
@@ -98,9 +123,7 @@ namespace Mayfly.Benthos
                                 numericUpDownReps.Value = (decimal)Math.Round(value / SelectedSampler.EffortValue, 0);
                                 break;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         statusCard.Message(Resources.Interface.Messages.SamplerUnable);
                     }
                 }
@@ -115,6 +138,7 @@ namespace Mayfly.Benthos
         }
 
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.labelBank = new System.Windows.Forms.Label();
             this.labelCrossSection = new System.Windows.Forms.Label();
             this.comboBoxCrossSection = new System.Windows.Forms.ComboBox();
@@ -157,6 +181,24 @@ namespace Mayfly.Benthos
             this.textBoxDepth = new System.Windows.Forms.TextBox();
             this.buttonSubTexture = new System.Windows.Forms.Button();
             this.labelTexture = new System.Windows.Forms.Label();
+            this.contextMenuStripSubstrate = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemSands = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSand = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubLoamySand = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSilts = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSilt = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemClays = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubClay = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSandyClay = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSiltyClay = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemLoams = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubLoam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSandyLoam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSandyClayLoam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubClayLoam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSiltyClayLoam = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSubSiltLoam = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             this.tabPageCollect.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -176,6 +218,7 @@ namespace Mayfly.Benthos
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCPOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSapropel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDebris)).BeginInit();
+            this.contextMenuStripSubstrate.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPageCollect
@@ -197,6 +240,26 @@ namespace Mayfly.Benthos
             this.tabPageCollect.Controls.SetChildIndex(this.waypointControl1, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelTag, 0);
             this.tabPageCollect.Controls.SetChildIndex(this.labelPosition, 0);
+            // 
+            // taskDialogSaveChanges
+            // 
+            this.taskDialogSaveChanges.ButtonStyle = Mayfly.TaskDialogs.TaskDialogButtonStyle.Standard;
+            this.taskDialogSaveChanges.FooterIcon = Mayfly.TaskDialogs.TaskDialogIcon.Custom;
+            this.taskDialogSaveChanges.MainIcon = Mayfly.TaskDialogs.TaskDialogIcon.Custom;
+            this.taskDialogSaveChanges.ProgressBarState = Mayfly.TaskDialogs.ProgressBarState.Normal;
+            this.taskDialogSaveChanges.ProgressBarStyle = Mayfly.TaskDialogs.ProgressBarStyle.None;
+            // 
+            // tdbSave
+            // 
+            this.tdbSave.ButtonType = Mayfly.TaskDialogs.ButtonType.Custom;
+            // 
+            // tdbDiscard
+            // 
+            this.tdbDiscard.ButtonType = Mayfly.TaskDialogs.ButtonType.Custom;
+            // 
+            // waterSelector
+            // 
+            this.waterSelector.WaterSelected += new Mayfly.Waters.Controls.WaterEventHandler(this.waterSelector_WaterSelected);
             // 
             // tabPageSampler
             // 
@@ -284,6 +347,7 @@ namespace Mayfly.Benthos
             // comboBoxSampler
             // 
             this.comboBoxSampler.TabIndex = 3;
+            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.sampler_Changed);
             // 
             // buttonGear
             // 
@@ -331,8 +395,6 @@ namespace Mayfly.Benthos
             this.comboBoxBank.Name = "comboBoxBank";
             this.comboBoxBank.Size = new System.Drawing.Size(136, 21);
             this.comboBoxBank.TabIndex = 8;
-            this.comboBoxBank.SelectedIndexChanged += new System.EventHandler(this.value_Changed);
-            this.comboBoxBank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // checkBoxClay
             // 
@@ -628,7 +690,6 @@ namespace Mayfly.Benthos
             this.numericUpDownPhytal.TabIndex = 28;
             this.numericUpDownPhytal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownPhytal.Visible = false;
-            this.numericUpDownPhytal.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // labelSquare
             // 
@@ -680,7 +741,6 @@ namespace Mayfly.Benthos
             this.numericUpDownWood.TabIndex = 32;
             this.numericUpDownWood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownWood.Visible = false;
-            this.numericUpDownWood.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // labelMesh
             // 
@@ -706,7 +766,6 @@ namespace Mayfly.Benthos
             this.numericUpDownLiving.TabIndex = 30;
             this.numericUpDownLiving.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownLiving.Visible = false;
-            this.numericUpDownLiving.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownFPOM
             // 
@@ -722,7 +781,6 @@ namespace Mayfly.Benthos
             this.numericUpDownFPOM.TabIndex = 36;
             this.numericUpDownFPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownFPOM.Visible = false;
-            this.numericUpDownFPOM.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownCPOM
             // 
@@ -738,7 +796,6 @@ namespace Mayfly.Benthos
             this.numericUpDownCPOM.TabIndex = 34;
             this.numericUpDownCPOM.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownCPOM.Visible = false;
-            this.numericUpDownCPOM.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // numericUpDownSapropel
             // 
@@ -754,7 +811,6 @@ namespace Mayfly.Benthos
             this.numericUpDownSapropel.TabIndex = 38;
             this.numericUpDownSapropel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownSapropel.Visible = false;
-            this.numericUpDownSapropel.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // labelDepth
             // 
@@ -781,7 +837,6 @@ namespace Mayfly.Benthos
             this.numericUpDownDebris.TabIndex = 40;
             this.numericUpDownDebris.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownDebris.Visible = false;
-            this.numericUpDownDebris.ValueChanged += new System.EventHandler(this.value_Changed);
             // 
             // textBoxDepth
             // 
@@ -816,11 +871,152 @@ namespace Mayfly.Benthos
             this.labelTexture.Text = "Change substrate mineral composition";
             this.labelTexture.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // contextMenuStripSubstrate
+            // 
+            this.contextMenuStripSubstrate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemSands,
+            this.ToolStripMenuItemSilts,
+            this.ToolStripMenuItemClays,
+            this.ToolStripMenuItemLoams});
+            this.contextMenuStripSubstrate.Name = "contextMenuStripSubstrate";
+            this.contextMenuStripSubstrate.Size = new System.Drawing.Size(110, 92);
+            // 
+            // ToolStripMenuItemSands
+            // 
+            this.ToolStripMenuItemSands.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemSubSand,
+            this.ItemSubLoamySand});
+            this.ToolStripMenuItemSands.Name = "ToolStripMenuItemSands";
+            this.ToolStripMenuItemSands.Size = new System.Drawing.Size(109, 22);
+            this.ToolStripMenuItemSands.Text = "Sands";
+            // 
+            // ItemSubSand
+            // 
+            this.ItemSubSand.Name = "ItemSubSand";
+            this.ItemSubSand.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSand.Tag = "";
+            this.ItemSubSand.Text = "Sand";
+            this.ItemSubSand.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubLoamySand
+            // 
+            this.ItemSubLoamySand.Name = "ItemSubLoamySand";
+            this.ItemSubLoamySand.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubLoamySand.Tag = "";
+            this.ItemSubLoamySand.Text = "Loamy sand";
+            this.ItemSubLoamySand.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ToolStripMenuItemSilts
+            // 
+            this.ToolStripMenuItemSilts.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemSubSilt});
+            this.ToolStripMenuItemSilts.Name = "ToolStripMenuItemSilts";
+            this.ToolStripMenuItemSilts.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemSilts.Text = "Silts";
+            // 
+            // ItemSubSilt
+            // 
+            this.ItemSubSilt.Name = "ItemSubSilt";
+            this.ItemSubSilt.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSilt.Tag = "";
+            this.ItemSubSilt.Text = "Silt";
+            this.ItemSubSilt.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ToolStripMenuItemClays
+            // 
+            this.ToolStripMenuItemClays.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemSubClay,
+            this.ItemSubSandyClay,
+            this.ItemSubSiltyClay});
+            this.ToolStripMenuItemClays.Name = "ToolStripMenuItemClays";
+            this.ToolStripMenuItemClays.Size = new System.Drawing.Size(109, 22);
+            this.ToolStripMenuItemClays.Text = "Clays";
+            // 
+            // ItemSubClay
+            // 
+            this.ItemSubClay.Name = "ItemSubClay";
+            this.ItemSubClay.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubClay.Tag = "";
+            this.ItemSubClay.Text = "Clay";
+            this.ItemSubClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSandyClay
+            // 
+            this.ItemSubSandyClay.Name = "ItemSubSandyClay";
+            this.ItemSubSandyClay.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSandyClay.Text = "Sandy clay";
+            this.ItemSubSandyClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSiltyClay
+            // 
+            this.ItemSubSiltyClay.Name = "ItemSubSiltyClay";
+            this.ItemSubSiltyClay.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSiltyClay.Text = "Silty clay";
+            this.ItemSubSiltyClay.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ToolStripMenuItemLoams
+            // 
+            this.ToolStripMenuItemLoams.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemSubLoam,
+            this.ItemSubSandyLoam,
+            this.ItemSubSandyClayLoam,
+            this.ItemSubClayLoam,
+            this.ItemSubSiltyClayLoam,
+            this.ItemSubSiltLoam});
+            this.ToolStripMenuItemLoams.Name = "ToolStripMenuItemLoams";
+            this.ToolStripMenuItemLoams.Size = new System.Drawing.Size(109, 22);
+            this.ToolStripMenuItemLoams.Text = "Loams";
+            // 
+            // ItemSubLoam
+            // 
+            this.ItemSubLoam.Name = "ItemSubLoam";
+            this.ItemSubLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubLoam.Text = "Loam";
+            this.ItemSubLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSandyLoam
+            // 
+            this.ItemSubSandyLoam.Name = "ItemSubSandyLoam";
+            this.ItemSubSandyLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSandyLoam.Text = "Sandy loam";
+            this.ItemSubSandyLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSandyClayLoam
+            // 
+            this.ItemSubSandyClayLoam.Name = "ItemSubSandyClayLoam";
+            this.ItemSubSandyClayLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSandyClayLoam.Text = "Sandy clay loam";
+            this.ItemSubSandyClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubClayLoam
+            // 
+            this.ItemSubClayLoam.Name = "ItemSubClayLoam";
+            this.ItemSubClayLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubClayLoam.Text = "Clay loam";
+            this.ItemSubClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSiltyClayLoam
+            // 
+            this.ItemSubSiltyClayLoam.Name = "ItemSubSiltyClayLoam";
+            this.ItemSubSiltyClayLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSiltyClayLoam.Text = "Silty clay loam";
+            this.ItemSubSiltyClayLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
+            // ItemSubSiltLoam
+            // 
+            this.ItemSubSiltLoam.Name = "ItemSubSiltLoam";
+            this.ItemSubSiltLoam.Size = new System.Drawing.Size(180, 22);
+            this.ItemSubSiltLoam.Text = "Silt loam";
+            this.ItemSubSiltLoam.Click += new System.EventHandler(this.ToolStripMenuItemTexture_Click);
+            // 
             // BenthosCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(564, 631);
             this.Name = "BenthosCard";
+            this.OnSaved += new System.EventHandler(this.BenthosCard_OnSaved);
+            this.Controls.SetChildIndex(this.tabControl, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.tabPageCollect.ResumeLayout(false);
             this.tabPageCollect.PerformLayout();
             this.tabPageLog.ResumeLayout(false);
@@ -843,17 +1039,15 @@ namespace Mayfly.Benthos
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCPOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSapropel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDebris)).EndInit();
+            this.contextMenuStripSubstrate.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private void SetSquare()
-        {
-            if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull())
-            {
-                switch (SelectedSampler.GetSamplerType())
-                {
+        private void SetSquare() {
+            if (SelectedSampler != null && !SelectedSampler.IsEffortValueNull()) {
+                switch (SelectedSampler.GetSamplerType()) {
                     case BenthosSamplerType.Grabber:
                         Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue;
                         break;
@@ -861,22 +1055,18 @@ namespace Mayfly.Benthos
                         Square = (double)numericUpDownReps.Value * SelectedSampler.EffortValue / 100;
                         break;
                 }
-            }
-            else
-            {
+            } else {
                 //Square = double.NaN;
             }
         }
 
-        private void SetCombos(WaterType type)
-        {
+        private void SetCombos(WaterType type) {
             comboBoxCrossSection.Items.Clear();
             comboBoxCrossSection.Items.AddRange(Wild.Service.CrossSection(type));
             comboBoxBank.Enabled = type != WaterType.Lake;
         }
 
-        private void DropSubs()
-        {
+        private void DropSubs() {
             numericUpDownBoulder.Value = 0;
             numericUpDownCobble.Value = 0;
             numericUpDownGravel.Value = 0;
@@ -893,8 +1083,7 @@ namespace Mayfly.Benthos
             numericUpDownDebris.Value = 0;
         }
 
-        private void ResetSubs()
-        {
+        private void ResetSubs() {
             checkBoxBoulder.Checked = (numericUpDownBoulder.Value > 0);
             checkBoxCobble.Checked = (numericUpDownCobble.Value > 0);
             checkBoxGravel.Checked = (numericUpDownGravel.Value > 0);
@@ -912,6 +1101,82 @@ namespace Mayfly.Benthos
         }
 
 
+
+        private void BenthosCard_OnSaved(object sender, EventArgs e) {
+
+
+            #region Save substrate values
+
+            SubstrateSample substrate = new SubstrateSample(0, 0, 0);
+
+            #region Mineral Substrates
+
+            if (checkBoxBoulder.Checked) {
+                substrate.Boulder = (int)numericUpDownBoulder.Value;
+            }
+
+            if (checkBoxCobble.Checked) {
+                substrate.Cobble = (int)numericUpDownCobble.Value;
+            }
+
+            if (checkBoxGravel.Checked) {
+                substrate.Gravel = (int)numericUpDownGravel.Value;
+            }
+
+            if (checkBoxSand.Checked) {
+                substrate.Sand = (int)numericUpDownSand.Value;
+            }
+
+            if (checkBoxSilt.Checked) {
+                substrate.Silt = (int)numericUpDownSilt.Value;
+            }
+
+            if (checkBoxClay.Checked) {
+                substrate.Clay = (int)numericUpDownClay.Value;
+            }
+
+            #endregion
+
+            #region Organic Substrates
+
+            if (checkBoxPhytal.Checked) {
+                substrate.Phytal = (int)numericUpDownPhytal.Value;
+            }
+
+            if (checkBoxLiving.Checked) {
+                substrate.Living = (int)numericUpDownLiving.Value;
+            }
+
+            if (checkBoxWood.Checked) {
+                substrate.Wood = (int)numericUpDownWood.Value;
+            }
+
+            if (checkBoxCPOM.Checked) {
+                substrate.CPOM = (int)numericUpDownCPOM.Value;
+            }
+
+            if (checkBoxFPOM.Checked) {
+                substrate.FPOM = (int)numericUpDownFPOM.Value;
+            }
+
+            if (checkBoxSapropel.Checked) {
+                substrate.Sapropel = (int)numericUpDownSapropel.Value;
+            }
+
+            if (checkBoxDebris.Checked) {
+                substrate.Debris = (int)numericUpDownDebris.Value;
+            }
+
+            #endregion
+
+            if (substrate.IsAvailable) {
+                data.Solitary.Substrate = substrate.Protocol;
+            } else {
+                data.Solitary.SetSubstrateNull();
+            }
+
+            #endregion
+        }
 
         private void waterSelector_WaterSelected(object sender, WaterEventArgs e) {
             SetCombos(waterSelector.IsWaterSelected ? waterSelector.WaterObject.WaterType : WaterType.None);
@@ -934,7 +1199,7 @@ namespace Mayfly.Benthos
             }
 
             SetSquare();
-            IsChanged = true;
+            isChanged = true;
         }
 
 
@@ -1030,15 +1295,13 @@ namespace Mayfly.Benthos
         }
 
         private void ToolStripMenuItemTexture_Click(object sender, EventArgs e) {
-            DropSubs();
 
+            DropSubs();
             string texture = ((ToolStripMenuItem)sender).Name.Substring(7);
             SubstrateSample substrate = new SubstrateSample(SubstrateSample.FromName(texture));
-
             numericUpDownSand.Value = 100 * (decimal)substrate.Sand;
             numericUpDownSilt.Value = 100 * (decimal)substrate.Silt;
             numericUpDownClay.Value = 100 * (decimal)substrate.Clay;
-
             ResetSubs();
         }
 
@@ -1060,10 +1323,8 @@ namespace Mayfly.Benthos
         private void individuals_FormClosing(object sender, FormClosingEventArgs e) {
             Individuals individuals = sender as Individuals;
             if (individuals.DialogResult == DialogResult.OK) {
-                IsChanged |= individuals.ChangesWereMade;
+                isChanged |= individuals.ChangesWereMade;
             }
         }
-
-
     }
 }

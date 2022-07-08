@@ -16,8 +16,8 @@ namespace Mayfly.Wild
     public partial class Card : Form
     {
         private string filename;
-        private Data data = new Data();
-        private bool isChanged;
+        protected Data data = new Data();
+        protected bool isChanged;
         protected EventHandler saved;
         protected EventHandler waterSelected;
 
@@ -331,9 +331,8 @@ namespace Mayfly.Wild
             saveEnvironment();
             saveLog();
             saveAddt();
-
-            data.ClearUseless();
             if (saved != null) saved.Invoke(this, EventArgs.Empty);
+            data.ClearUseless();
         }
 
         private void write() {
@@ -412,7 +411,7 @@ namespace Mayfly.Wild
             e.Cancel = (checkAndSave() == DialogResult.Cancel);
         }
 
-        private void value_Changed(object sender, EventArgs e) {
+        protected void value_Changed(object sender, EventArgs e) {
             isChanged = true;
         }
 
