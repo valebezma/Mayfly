@@ -119,7 +119,7 @@ namespace Mayfly.Fish.Explorer
 
         private void UpdateGamingStock(int i) 
         {
-            Data.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
+            Wild.Survey.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
                 compositionWizard.CatchesComposition[i].Name);            
 
             if (spreadSheetStocks[ColumnGamingLength.Index, i].Value != null)
@@ -230,7 +230,7 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < compositionWizard.CatchesComposition.Count; i++)
             {
-                Data.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
+                Wild.Survey.DefinitionRow speciesRow = Data.Parent.Definition.FindByName(
                     compositionWizard.CatchesComposition[i].Name);
 
                 table1.StartRow();

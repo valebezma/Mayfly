@@ -22,7 +22,7 @@ namespace Mayfly.Plankton.Explorer
 
             spreadSheetCard.Rows.Clear();
 
-            foreach (Data.FactorRow factorRow in data.Factor)
+            foreach (Wild.Survey.FactorRow factorRow in data.Factor)
             {
                 DataGridViewColumn gridColumn = spreadSheetCard.InsertColumn(factorRow.Factor, factorRow.Factor, typeof(double), spreadSheetCard.ColumnCount - 1);
                 gridColumn.Width = gridColumn.GetPreferredWidth(DataGridViewAutoSizeColumnMode.ColumnHeader, true);
@@ -31,30 +31,30 @@ namespace Mayfly.Plankton.Explorer
             loaderCard.RunWorkerAsync();
         }
 
-        private DataGridViewRow GetCardRow(Data.CardRow cardRow)
+        private DataGridViewRow GetCardRow(Wild.Survey.CardRow cardRow)
         {
             return columnCardID.GetRow(cardRow.ID, true, true);
         }
 
-        private Data.CardRow GetCardRow(DataGridViewRow gridRow)
+        private Wild.Survey.CardRow GetCardRow(DataGridViewRow gridRow)
         {
             return GetCardRow(gridRow, columnCardID);
         }
 
-        private Data.CardRow GetCardRow(DataGridViewRow gridRow, DataGridViewColumn gridColumn)
+        private Wild.Survey.CardRow GetCardRow(DataGridViewRow gridRow, DataGridViewColumn gridColumn)
         {
             int id = (int)gridRow.Cells[gridColumn.Index].Value;
             return data.Card.FindByID(id);
         }
 
-        private DataGridViewRow GetLine(Data.CardRow cardRow)
+        private DataGridViewRow GetLine(Wild.Survey.CardRow cardRow)
         {
             return columnCardID.GetRow(cardRow.ID, true, true);
         }
 
         private void SaveCardRow(DataGridViewRow gridRow)
         {
-            Data.CardRow cardRow = GetCardRow(gridRow);
+            Wild.Survey.CardRow cardRow = GetCardRow(gridRow);
 
             if (cardRow == null) return;
 
@@ -81,7 +81,7 @@ namespace Mayfly.Plankton.Explorer
             // Additional factors
             foreach (DataGridViewColumn gridColumn in spreadSheetCard.GetInsertedColumns())
             {
-                Data.FactorRow factorRow = data.Factor.FindByFactor(gridColumn.HeaderText);
+                Wild.Survey.FactorRow factorRow = data.Factor.FindByFactor(gridColumn.HeaderText);
                 if (factorRow == null) continue;
                 object factorValue = gridRow.Cells[gridColumn.Name].Value;
 
@@ -89,7 +89,7 @@ namespace Mayfly.Plankton.Explorer
                 {
                     if (factorRow == null) continue;
 
-                    Data.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(cardRow.ID, factorRow.ID);
+                    Wild.Survey.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(cardRow.ID, factorRow.ID);
 
                     if (factorValueRow == null) continue;
 
@@ -102,7 +102,7 @@ namespace Mayfly.Plankton.Explorer
                         factorRow = data.Factor.AddFactorRow(gridColumn.HeaderText);
                     }
 
-                    Data.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(cardRow.ID, factorRow.ID);
+                    Wild.Survey.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(cardRow.ID, factorRow.ID);
 
                     if (factorValueRow == null)
                     {
@@ -124,7 +124,7 @@ namespace Mayfly.Plankton.Explorer
             RememberChanged(cardRow);
         }
 
-        private DataGridViewRow UpdateCardRow(Data.CardRow cardRow)
+        private DataGridViewRow UpdateCardRow(Wild.Survey.CardRow cardRow)
         {
             DataGridViewRow result = GetCardRow(cardRow);
 
@@ -145,7 +145,7 @@ namespace Mayfly.Plankton.Explorer
             SetCardValue(cardRow, result, columnCardDiversityB, "DiversityB");
             SetCardValue(cardRow, result, columnCardComments, "Comments");
 
-            foreach (Data.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
+            foreach (Wild.Survey.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
             {
                 SetCardValue(cardRow, result, spreadSheetCard.GetColumn(factorValueRow.FactorRow.Factor));
             }
@@ -185,7 +185,7 @@ namespace Mayfly.Plankton.Explorer
                 if (gridRow.IsNewRow) continue;
 
                 report.StartPage(Plankton.UserSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None);
-                Data.CardRow cardRow = GetCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = GetCardRow(gridRow);
                 report.AddHeader(cardRow.Path == null ? String.Empty : System.IO.Path.GetFileNameWithoutExtension(cardRow.Path));
                 //data.AddHTML(report, cardRow, cardReport);
                 report.CloseDiv();

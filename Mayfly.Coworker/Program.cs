@@ -144,7 +144,7 @@ namespace Mayfly.ManualLicenser
 
                 foreach (string filename in filenames)
                 {
-                    Data data = new Data();
+                    Wild.Survey data = new Wild.Survey();
                     data.Read(filename);
                     if (data.Solitary.IsWhenNull()) data.Solitary.When = new DateTime(2000, 01, 01);
                     data.Solitary.Sign = StringCipher.Encrypt(sign, data.Solitary.When.ToString("s"));
@@ -265,7 +265,7 @@ namespace Mayfly.ManualLicenser
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
-                Data bio = new Data();
+                Wild.Survey bio = new Wild.Survey();
                 string contents = StringCipher.Decrypt(File.ReadAllText(source), "BIOREFERENCE");
                 bio.ReadXml(new MemoryStream(Encoding.UTF8.GetBytes(contents)));
                 File.WriteAllText(newfile, StringCipher.Encrypt(bio.GetXml(), "bio"));
@@ -518,16 +518,16 @@ namespace Mayfly.ManualLicenser
             string destination = source + " (Rearranged)";
             Directory.CreateDirectory(destination);
 
-            Data data = new Data();
+            Wild.Survey data = new Wild.Survey();
 
             foreach (string file in Directory.GetFiles(source, "*.fcd", SearchOption.AllDirectories))
             {
-                Data data1 = new Data();
+                Wild.Survey data1 = new Wild.Survey();
                 data1.Read(file);
                 data1.CopyTo(data);
             }
 
-            foreach (Data.WaterRow waterRow in data.Water)
+            foreach (Wild.Survey.WaterRow waterRow in data.Water)
             {
                 string waterpath = Path.Combine(destination, waterRow.Water);
                 Directory.CreateDirectory(waterpath);
@@ -549,7 +549,7 @@ namespace Mayfly.ManualLicenser
                         Directory.CreateDirectory(investpath);
                         Console.WriteLine("Folder for subject {0} created.", invest);
 
-                        foreach (Data.CardRow cardRow in y_stack)
+                        foreach (Wild.Survey.CardRow cardRow in y_stack)
                         {
                             if (cardRow.Investigator != invest) continue;
 
@@ -913,7 +913,7 @@ namespace Mayfly.ManualLicenser
 
                         foreach (ExcelWorksheet sheet in package.Workbook.Worksheets)
                         {
-                            Data data = convertPlankton(sheet, destination, lomo);
+                            Wild.Survey data = convertPlankton(sheet, destination, lomo);
 
                             if (data != null && data.Solitary.Quantity > 0)
                             {
@@ -946,7 +946,7 @@ namespace Mayfly.ManualLicenser
             goto Start;
         }
 
-        static Data convertPlankton(ExcelWorksheet sheet, string destination, bool lomo)
+        static Wild.Survey convertPlankton(ExcelWorksheet sheet, string destination, bool lomo)
         {
             if (destination is null)
             {
@@ -990,7 +990,7 @@ namespace Mayfly.ManualLicenser
 
             if (present)
             {
-                Data data = new Data();
+                Wild.Survey data = new Wild.Survey();
 
                 data.Solitary.Label = Convert.ToString(sheet.Cells[2, 2].Value);
                 data.Solitary.When = (sheet.Cells[9, 2].Value is DateTime) ? Convert.ToDateTime(sheet.Cells[9, 2].Value) :
@@ -1102,9 +1102,9 @@ namespace Mayfly.ManualLicenser
                             {
                                 // Initiate species and log record
 
-                                Data.DefinitionRow spcRow = data.Definition.AddDefinitionRow(91, Species);
+                                Wild.Survey.DefinitionRow spcRow = data.Definition.AddDefinitionRow(91, Species);
 
-                                Data.LogRow logRow = data.Log.NewLogRow();
+                                Wild.Survey.LogRow logRow = data.Log.NewLogRow();
                                 logRow.CardRow = data.Solitary;
                                 logRow.DefinitionRow = spcRow;
                                 logRow.Quantity = Qty;
@@ -1141,7 +1141,7 @@ namespace Mayfly.ManualLicenser
                                     int q = Convert.ToInt32(sheet.Cells[r, col + 2].Value);
                                     if (q == 0) continue;
 
-                                    Data.IndividualRow indRow = data.Individual.NewIndividualRow();
+                                    Wild.Survey.IndividualRow indRow = data.Individual.NewIndividualRow();
 
                                     if (q > 1) indRow.Frequency = q;
                                     indRow.Length = Math.Round(size * convert, 3);
@@ -1198,9 +1198,9 @@ namespace Mayfly.ManualLicenser
 
                 foreach (string filename in filenames)
                 {
-                    Data fdata = new Data();
+                    Wild.Survey fdata = new Wild.Survey();
                     fdata.Read(filename);
-                    foreach (Data.LogRow logrow in fdata.Log)
+                    foreach (Wild.Survey.LogRow logrow in fdata.Log)
                     {
                         logrow.Mass *= 1000;
                     }

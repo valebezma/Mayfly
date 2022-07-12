@@ -20,7 +20,7 @@ namespace Mayfly.Plankton.Explorer
         {
             int artifactCount = 0;
 
-            foreach (Data.DefinitionRow speciesRow in data.Species)
+            foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
             {
                 double q = data.Quantity(speciesRow);
 
@@ -46,7 +46,7 @@ namespace Mayfly.Plankton.Explorer
         {
             spreadSheetArtifactSpecies.Rows.Clear();
 
-            foreach (Data.DefinitionRow speciesRow in data.Species)
+            foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetArtifactSpecies);

@@ -313,7 +313,7 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, TaxonomicIndex.TaxonRow speciesRow, Data data)
+        public static void AppendCategorialCatchesSectionTo(this Composition composition, Report report, TaxonomicIndex.TaxonRow speciesRow, Wild.Survey data)
         {
             string categoryType = composition.GetCategoryType();
 

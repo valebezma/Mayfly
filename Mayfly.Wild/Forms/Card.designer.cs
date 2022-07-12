@@ -82,7 +82,7 @@
             this.labelComments = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageSampler = new System.Windows.Forms.TabPage();
-            this.buttonGear = new System.Windows.Forms.Button();
+            this.buttonEquipment = new System.Windows.Forms.Button();
             this.comboBoxSampler = new GroupedComboBox();
             this.labelMethod = new System.Windows.Forms.Label();
             this.labelSampler = new System.Windows.Forms.Label();
@@ -105,7 +105,7 @@
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
-            this.contextSampler = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextEquipment = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
@@ -447,7 +447,7 @@
             // 
             // tabPageSampler
             // 
-            this.tabPageSampler.Controls.Add(this.buttonGear);
+            this.tabPageSampler.Controls.Add(this.buttonEquipment);
             this.tabPageSampler.Controls.Add(this.comboBoxSampler);
             this.tabPageSampler.Controls.Add(this.labelMethod);
             this.tabPageSampler.Controls.Add(this.labelSampler);
@@ -455,10 +455,10 @@
             this.tabPageSampler.Name = "tabPageSampler";
             this.tabPageSampler.UseVisualStyleBackColor = true;
             // 
-            // buttonGear
+            // buttonEquipment
             // 
-            resources.ApplyResources(this.buttonGear, "buttonGear");
-            this.buttonGear.Name = "buttonGear";
+            resources.ApplyResources(this.buttonEquipment, "buttonEquipment");
+            this.buttonEquipment.Name = "buttonEquipment";
             // 
             // comboBoxSampler
             // 
@@ -646,10 +646,10 @@
             this.Logger.Status = this.statusCard;
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
             // 
-            // contextSampler
+            // contextEquipment
             // 
-            this.contextSampler.Name = "contextGear";
-            resources.ApplyResources(this.contextSampler, "contextSampler");
+            this.contextEquipment.Name = "contextGear";
+            resources.ApplyResources(this.contextEquipment, "contextEquipment");
             // 
             // Card
             // 
@@ -713,7 +713,7 @@
         protected System.Windows.Forms.TabPage tabPageFactors;
         protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemData;
         protected System.Windows.Forms.ToolStripMenuItem menuItemLocation;
-        protected Mayfly.Controls.Status statusCard;
+        protected global::Mayfly.Controls.Status statusCard;
         protected TaskDialogs.TaskDialog taskDialogSaveChanges;
         protected TaskDialogs.TaskDialogButton tdbSave;
         protected TaskDialogs.TaskDialogButton tdbDiscard;
@@ -725,7 +725,7 @@
         protected System.Windows.Forms.ToolStripMenuItem menuItemBlank;
         protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
         protected System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
-        protected Mayfly.Controls.SpreadSheet spreadSheetAddt;
+        protected global::Mayfly.Controls.SpreadSheet spreadSheetAddt;
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtValue;
         protected Controls.WeatherControl weatherControl1;
@@ -733,7 +733,7 @@
         protected Geographics.WaypointControl waypointControl1;
         protected Waters.Controls.WaterSelector waterSelector;
         protected System.Windows.Forms.ToolStripMenuItem menuItemAboutCard;
-        protected Mayfly.Controls.SpreadSheet spreadSheetLog;
+        protected global::Mayfly.Controls.SpreadSheet spreadSheetLog;
         protected System.Windows.Forms.TabPage tabPageSampler;
         protected System.Windows.Forms.Label labelMethod;
         protected System.Windows.Forms.Label labelSampler;
@@ -749,7 +749,7 @@
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         protected Controls.LogProcessor Logger;
-        protected System.Windows.Forms.Button buttonGear;
-        private System.Windows.Forms.ContextMenuStrip contextSampler;
+        protected System.Windows.Forms.Button buttonEquipment;
+        private System.Windows.Forms.ContextMenuStrip contextEquipment;
     }
 }

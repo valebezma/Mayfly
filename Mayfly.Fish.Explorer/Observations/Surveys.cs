@@ -27,7 +27,7 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public Data Anamnesis { get; set; }
+        public Wild.Survey Anamnesis { get; set; }
 
         public bool ContainsCatchData
         {
@@ -91,12 +91,12 @@ namespace Mayfly.Fish.Explorer
                 return string.Format(Resources.Interface.CatchDescription, this.GearRow.ToString(), this.TimelineRow.Timepoint);
             }
 
-            public Data GetCatchData()
+            public Wild.Survey GetCatchData()
             {
                 DateTime now = this.TimelineRow.Timepoint;
                 DateTime since = this.PreviousAction.TimelineRow.Timepoint;
 
-                Data data = new Data();
+                Wild.Survey data = new Wild.Survey();
                 if (!this.IsCatchXMLNull())
                 {
                     data.ReadXml(new StringReader(this.CatchXML));
@@ -123,7 +123,7 @@ namespace Mayfly.Fish.Explorer
 
                     if (!comRow.IsWaterNameNull() || !comRow.IsWaterTypeNull())
                     {
-                        Data.WaterRow wr = data.Water.NewWaterRow();
+                        Wild.Survey.WaterRow wr = data.Water.NewWaterRow();
                         if (!comRow.IsWaterTypeNull()) wr.Type = comRow.WaterType;
                         if (!comRow.IsWaterNameNull()) wr.Water = comRow.WaterName;
                         data.Water.AddWaterRow(wr);
@@ -147,7 +147,7 @@ namespace Mayfly.Fish.Explorer
                     {
                         case EquipmentEvent.Inspection:
                         case EquipmentEvent.Removing:
-                            Data data = actionRow.GetCatchData();
+                            Wild.Survey data = actionRow.GetCatchData();
                             string filename = IO.SuggestName(path, data.Solitary.GetSuggestedName());
                             data.WriteToFile(Path.Combine(path, filename));
                             result.Add(Path.Combine(path, filename));
@@ -172,9 +172,9 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public Data[] GetCards()
+        public Wild.Survey[] GetCards()
         {
-            List<Data> result = new List<Data>();
+            List<Wild.Survey> result = new List<Wild.Survey>();
 
             foreach (ActionRow actionRow in this.Action)
             {
@@ -182,7 +182,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     case EquipmentEvent.Inspection:
                     case EquipmentEvent.Removing:
-                        Data data = actionRow.GetCatchData();
+                        Wild.Survey data = actionRow.GetCatchData();
                         result.Add(data);
                         break;
                 }
@@ -195,7 +195,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            foreach (Data data in GetCards())
+            foreach (Wild.Survey data in GetCards())
             {
                 string filename = IO.SuggestName(path, data.Solitary.GetSuggestedName());
                 data.WriteToFile(Path.Combine(path, filename));
@@ -226,14 +226,14 @@ namespace Mayfly.Fish.Explorer
         //    return result.ToArray();
         //}
 
-        public Data GetCombinedData()
+        public Wild.Survey GetCombinedData()
         {
-            Data result = new Data();
+            Wild.Survey result = new Wild.Survey();
 
             foreach (ActionRow actionRow in Action)
             {
                 if (actionRow.IsCatchXMLNull()) continue;
-                Data data = new Data();
+                Wild.Survey data = new Wild.Survey();
                 data.ReadXml(new StringReader(actionRow.CatchXML));
                 data.CopyTo(result);
             }

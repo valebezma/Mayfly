@@ -175,26 +175,51 @@ namespace Mayfly.Wild
 
 
 
-        private static Samplers samplersIndex;
+        private static Survey samplersIndex;
 
-        public static Samplers SamplersIndex {
+        public static Survey SamplersIndex {
             get {
                 if (samplersIndex == null && !string.IsNullOrEmpty(Feature)) {
-                    samplersIndex = new Samplers();
+                    samplersIndex = new Survey();
                     samplersIndex.SetAttributable();
-                    samplersIndex.ReadXml(string.Format(@"interface\sampler{0}.ini", Feature.ToLowerInvariant()));
+                    string path = string.Format(@"interface\sampler{0}.ini", Feature.ToLowerInvariant());
+                    if (File.Exists(path)) {
+                        samplersIndex.ReadXml(path);
+                    }
                 }
                 return samplersIndex;
             }
         }
 
-        public static Samplers.SamplerRow SelectedSampler {
+        public static Survey.SamplerRow SelectedSampler {
             get {
                 return SamplersIndex.Sampler.FindByID((int)GetValue(FeatureKey, nameof(SelectedSampler), 7));
             }
 
             set {
                 SetValue(FeatureKey, nameof(SelectedSampler), value.ID);
+            }
+        }
+
+
+        private static Survey equiment;
+
+        public static Survey Equipment {
+            get {
+                if (equiment == null) {
+                    equiment = new Survey();
+                    samplersIndex.SetAttributable();
+                    string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", Feature.ToLowerInvariant()));
+                    if (File.Exists(path)) {
+                        equiment.ReadXml(path);
+                    }
+                }
+
+                return equiment;
+            }
+
+            set {
+                equiment = value;
             }
         }
 

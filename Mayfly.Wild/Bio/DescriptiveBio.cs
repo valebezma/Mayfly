@@ -16,7 +16,7 @@ namespace Mayfly.Wild
 
 
 
-        public DescriptiveBio(Data data, TaxonomicIndex.TaxonRow speciesRow, DataColumn xColumn, DataColumn yColumn) :
+        public DescriptiveBio(Survey data, TaxonomicIndex.TaxonRow speciesRow, DataColumn xColumn, DataColumn yColumn) :
             base(data, speciesRow, yColumn)
         {
             nameX = xColumn.Caption;

@@ -14,21 +14,21 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Suggested name for data card with extension</returns>
-        public static string GetSuggestedName(this Data.CardRow cardRow)
+        public static string GetSuggestedName(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.GetSuggestedName();            
         }
 
-        public static TaxonomicIndex GetSpeciesKey(this Data data)
+        public static TaxonomicIndex GetSpeciesKey(this Wild.Survey data)
         {
-            return Data.GetSpeciesKey((Data.DefinitionRow[])data.Definition.Select());
+            return Wild.Survey.GetSpeciesKey((Wild.Survey.DefinitionRow[])data.Definition.Select());
         }
 
-        public static Data.DefinitionRow[] GetUnweightedSpecies(this Data data)
+        public static Wild.Survey.DefinitionRow[] GetUnweightedSpecies(this Wild.Survey data)
         {
-            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
+            List<Wild.Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (!logRow.IsMassNull()) continue;
                 if (!result.Contains(logRow.DefinitionRow))
@@ -40,11 +40,11 @@ namespace Mayfly.Benthos
             return result.ToArray();
         }
 
-        public static Data.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Data data)
+        public static Wild.Survey.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Wild.Survey data)
         {
-            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
+            List<Wild.Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
 
-            foreach (Data.IndividualRow individualRow in data.Individual)
+            foreach (Wild.Survey.IndividualRow individualRow in data.Individual)
             {
                 if (!individualRow.IsMassNull()) continue;
                 if (!result.Contains(individualRow.LogRow.DefinitionRow))
@@ -58,19 +58,19 @@ namespace Mayfly.Benthos
 
 
 
-        public static SubstrateSample GetSubstrate(this Data.CardRow cardRow)
+        public static SubstrateSample GetSubstrate(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.IsSubstrateNull() ? null : new SubstrateSample(cardRow.Substrate);
         }
 
 
 
-        public static double GetAverageMass(this Data.DefinitionRow spcRow)
+        public static double GetAverageMass(this Wild.Survey.DefinitionRow spcRow)
         {
             double result = 0;
             int divider = 0;
 
-            foreach (Data.IndividualRow individualRow in spcRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in spcRow.GetIndividualRows())
             {
                 if (individualRow.IsMassNull()) continue;
                 result += individualRow.Mass;
@@ -94,7 +94,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.LogRow logRow)
+        public static double GetAbundance(this Wild.Survey.LogRow logRow)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             if (logRow.CardRow.IsSquareNull()) return double.NaN;
@@ -112,7 +112,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per square meter in grams</returns>
-        public static double GetBiomass(this Data.LogRow logRow)
+        public static double GetBiomass(this Wild.Survey.LogRow logRow)
         {
             if (logRow.CardRow.IsSquareNull()) return double.NaN;
 
@@ -121,7 +121,7 @@ namespace Mayfly.Benthos
                 logRow.CardRow.Square);
         }
 
-        public static string GetDescription(this Data.IndividualRow indRow)
+        public static string GetDescription(this Wild.Survey.IndividualRow indRow)
         {
             List<string> result = new List<string>();
             result.Add(indRow.LogRow.DefinitionRow.KeyRecord.CommonName);
@@ -131,7 +131,7 @@ namespace Mayfly.Benthos
             return result.Merge();
         }
 
-        public static string GetDescription(this Data.LogRow logRow)
+        public static string GetDescription(this Wild.Survey.LogRow logRow)
         {
             return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
         }

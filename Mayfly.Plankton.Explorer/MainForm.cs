@@ -32,7 +32,7 @@ namespace Mayfly.Plankton.Explorer
             labelLogCount.UpdateStatus(0);
             labelIndCount.UpdateStatus(0);
 
-            selectedLogRows = new List<Data.LogRow>();
+            selectedLogRows = new List<Wild.Survey.LogRow>();
 
             columnCardWater.ValueType = typeof(string);
             columnCardLabel.ValueType = typeof(string);
@@ -98,7 +98,7 @@ namespace Mayfly.Plankton.Explorer
             IsEmpty = true;
         }
 
-        public MainForm(Data _data) : this()
+        public MainForm(Wild.Survey _data) : this()
         {
             data = _data;
         }
@@ -106,7 +106,7 @@ namespace Mayfly.Plankton.Explorer
         public MainForm(CardStack stack)
             : this()
         {
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 cardRow.SingleCardDataset().CopyTo(data);
             }
@@ -124,7 +124,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (data.IsLoaded(filenames[i])) continue;
 
-                Data _data = new Data();
+                Wild.Survey _data = new Wild.Survey();
 
                 if (_data.Read(filenames[i]))
                 {
@@ -132,7 +132,7 @@ namespace Mayfly.Plankton.Explorer
                         Log.Write(string.Format("File is empty: {0}.", filenames[i]));
                     else
                     {
-                        Data.CardRow[] cardRows = _data.CopyTo(data);
+                        Wild.Survey.CardRow[] cardRows = _data.CopyTo(data);
                     }
                 }
 
@@ -206,9 +206,9 @@ namespace Mayfly.Plankton.Explorer
         {
             if (fbDialogBackup.ShowDialog(this) == DialogResult.OK)
             {
-                foreach (Data.CardRow cardRow in data.Card)
+                foreach (Wild.Survey.CardRow cardRow in data.Card)
                 {
-                    Data _data = cardRow.SingleCardDataset();
+                    Wild.Survey _data = cardRow.SingleCardDataset();
                     string filename = IO.SuggestName(fbDialogBackup.SelectedPath, _data.Solitary.GetSuggestedName());
                     _data.WriteToFile(Path.Combine(fbDialogBackup.SelectedPath, filename));
                 }
@@ -351,7 +351,7 @@ namespace Mayfly.Plankton.Explorer
             spreadSheetCard.ClearSelection();
             foreach (DataGridViewRow gridRow in spreadSheetCard.Rows)
             {
-                Data.CardRow cardRow = GetCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = GetCardRow(gridRow);
                 gridRow.Selected = cardRow.GetLogRows().Length == 0;
             }
         }
@@ -627,21 +627,21 @@ namespace Mayfly.Plankton.Explorer
             {
                 // TODO: If already exist?
 
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
-                Data.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxonName);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
+                Wild.Survey.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow1 == null) // If there is no new species in index
                 {
                     spcRow.Species = e.SelectedTaxonName;
 
-                    foreach (Data.LogRow logRow in spcRow.GetLogRows())
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
                     {
                         RememberChanged(logRow.CardRow);
                     }
                 }
                 else // If there is new species already in index
                 {
-                    foreach (Data.LogRow logRow in spcRow.GetLogRows())
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
                     {
                         logRow.DefinitionRow = spcRow1;
                         RememberChanged(logRow.CardRow);
@@ -684,7 +684,7 @@ namespace Mayfly.Plankton.Explorer
 
             foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
             {
-                Data.CardRow cardRow = GetCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = GetCardRow(gridRow);
                 if (cardRow.Path == null) continue;
                 contextCardOpen.Enabled = true;
                 break;
@@ -695,7 +695,7 @@ namespace Mayfly.Plankton.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
             {
-                Data.CardRow cardRow = GetCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = GetCardRow(gridRow);
                 if (cardRow.Path == null) continue;
 
                 if (DietExplorer && !cardRow.IsLabelNull())
@@ -763,7 +763,7 @@ namespace Mayfly.Plankton.Explorer
             if (Species.UserSettings.Interface.SaveDialog.ShowDialog() == DialogResult.OK)
             {
                 Species.TaxonomicIndex speciesKey = new TaxonomicIndex();
-                foreach (Data.DefinitionRow speciesRow in data.Species)
+                foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
                 {
                     Species.TaxonomicIndex.SpeciesRow newSpeciesRow = speciesKey.Species.NewSpeciesRow();
                     newSpeciesRow.Species = speciesRow.Species;
@@ -779,7 +779,7 @@ namespace Mayfly.Plankton.Explorer
             int rowsToDelete = spreadSheetSpc.SelectedRows.Count;
             while (rowsToDelete > 0)
             {
-                Data.DefinitionRow spcRow = GetSpcRow(spreadSheetSpc.SelectedRows[0]);
+                Wild.Survey.DefinitionRow spcRow = GetSpcRow(spreadSheetSpc.SelectedRows[0]);
                 data.Species.RemoveSpeciesRow(spcRow);
 
                 spreadSheetSpc.Rows.Remove(spreadSheetSpc.SelectedRows[0]);
@@ -814,7 +814,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 for (int i = 0; i < data.Card.Count; i++)
                 {
-                    foreach (Data.DefinitionRow speciesRow in data.Species)
+                    foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
                     {
                         DataGridViewRow gridRow = LogRow(data.Card[i], speciesRow);
 
@@ -898,14 +898,14 @@ namespace Mayfly.Plankton.Explorer
 
             if (tdLog.ShowDialog() == tdbLogRename)
             {
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow == null)
                 {
                     spcRow = data.Species.AddSpeciesRow(e.SelectedTaxonName);
                 }
 
-                Data.LogRow logRow = GetLogRow(e.Row);
+                Wild.Survey.LogRow logRow = GetLogRow(e.Row);
                 logRow.DefinitionRow = spcRow;
 
                 RememberChanged(logRow.CardRow);
@@ -920,7 +920,7 @@ namespace Mayfly.Plankton.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
-                Data.LogRow logRow = GetLogRow(gridRow);
+                Wild.Survey.LogRow logRow = GetLogRow(gridRow);
                 Mayfly.IO.RunFile(logRow.CardRow.Path, logRow.DefinitionRow.Taxon);
             }
         }
@@ -1025,9 +1025,9 @@ namespace Mayfly.Plankton.Explorer
 
             if (tdInd.ShowDialog() == tdbIndRename)
             {
-                Data.IndividualRow individualRow = GetIndividualRow(e.Row);
+                Wild.Survey.IndividualRow individualRow = GetIndividualRow(e.Row);
 
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxonName);
 
                 if (spcRow == null)
                 {
@@ -1042,7 +1042,7 @@ namespace Mayfly.Plankton.Explorer
                 else
                 {
                     // If there are more individual(-s) - create new log and replace individual to it                    
-                    Data.LogRow logRow = data.Log.FindByCardIDSpcID(individualRow.LogRow.CardRow.ID, spcRow.ID);
+                    Wild.Survey.LogRow logRow = data.Log.FindByCardIDSpcID(individualRow.LogRow.CardRow.ID, spcRow.ID);
 
                     if (logRow == null)
                     {
@@ -1107,7 +1107,7 @@ namespace Mayfly.Plankton.Explorer
             {
                 if (!gridRow.Visible) continue;
 
-                Data.IndividualRow individualRow = GetIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = GetIndividualRow(gridRow);
                 DataGridViewRow corrRow = columnLogID.GetRow(individualRow.LogID);
 
                 if (corrRow == null) continue;
@@ -1126,7 +1126,7 @@ namespace Mayfly.Plankton.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
             {
-                Data.IndividualRow individualRow = GetIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = GetIndividualRow(gridRow);
 
                 Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
                     individualRow.LogRow.SpeciesRow.Species);
@@ -1139,7 +1139,7 @@ namespace Mayfly.Plankton.Explorer
         {
             while (spreadSheetInd.SelectedRows.Count > 0)
             {
-                Data.IndividualRow individualRow = GetIndividualRow(spreadSheetInd.SelectedRows[0]);
+                Wild.Survey.IndividualRow individualRow = GetIndividualRow(spreadSheetInd.SelectedRows[0]);
                 RememberChanged(individualRow.LogRow.CardRow);
                 data.Individual.Rows.Remove(individualRow);
                 spreadSheetInd.Rows.Remove(spreadSheetInd.SelectedRows[0]);
@@ -1148,7 +1148,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void spreadSheetInd_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            Data.IndividualRow individualRow = GetIndividualRow(e.Row);
+            Wild.Survey.IndividualRow individualRow = GetIndividualRow(e.Row);
             RememberChanged(individualRow.LogRow.CardRow);
             data.Individual.Rows.Remove(individualRow);
         }

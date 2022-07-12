@@ -26,7 +26,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.MassIndividual();
                 result += logRow.MassStratified();
@@ -37,11 +37,11 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static double MassIndividual(this Data.LogRow logRow)
+        public static double MassIndividual(this Wild.Survey.LogRow logRow)
         {
             double result = 0;
 
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 if (individualRow.IsMassNull())
                 {
@@ -51,7 +51,7 @@ namespace Mayfly.Fish.Explorer
                         return double.NaN;
                     }
 
-                    double mass = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon).GetValue(individualRow.Length);
+                    double mass = ((Wild.Survey)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon).GetValue(individualRow.Length);
 
                     if (double.IsNaN(mass))
                     {
@@ -76,7 +76,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.MassIndividual();
             }
@@ -88,7 +88,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows())
             {
                 result += logRow.MassIndividual();
             }
@@ -98,13 +98,13 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public static double MassStratified(this Data.LogRow logRow)
+        public static double MassStratified(this Wild.Survey.LogRow logRow)
         {
             double result = 0;
-            var cb = ((Data)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon);
+            var cb = ((Wild.Survey)logRow.CardRow.Table.DataSet).FindMassModel(logRow.DefinitionRow.Taxon);
             if (cb == null) return double.NaN;
 
-            foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+            foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
             {
                 double mass = cb.GetValue(stratifiedRow.SizeClass.Midpoint);
                 if (double.IsNaN(mass)) return double.NaN;
@@ -118,7 +118,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.MassStratified();
             }
@@ -130,7 +130,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows())
             {
                 result += logRow.MassStratified();
             }
@@ -144,7 +144,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsMassNull()) continue;
                 result.Add(individualRow.Mass);
@@ -157,7 +157,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsMassNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
@@ -172,7 +172,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsAgeNull()) continue;
                 if (individualRow.IsMassNull()) continue;
@@ -187,7 +187,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsSexNull()) continue;
                 if (individualRow.IsMassNull()) continue;
@@ -202,7 +202,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue;
                 if (individualRow.IsAgeNull()) continue;

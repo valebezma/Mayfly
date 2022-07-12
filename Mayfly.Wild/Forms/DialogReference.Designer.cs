@@ -33,10 +33,10 @@
             this.labelGetInstruction = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.pictureIcon = new System.Windows.Forms.PictureBox();
-            this.taskDialogMissingReference = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbBrowse = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbDownload = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbCreate = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.taskDialogMissingReference = new global::Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbBrowse = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbDownload = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbCreate = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             this.taskDialogMissingReference.Buttons.Add(this.tdbBrowse);
             this.taskDialogMissingReference.Buttons.Add(this.tdbDownload);
             this.taskDialogMissingReference.Buttons.Add(this.tdbCreate);
-            this.taskDialogMissingReference.ButtonStyle = Mayfly.TaskDialogs.TaskDialogButtonStyle.CommandLinks;
+            this.taskDialogMissingReference.ButtonStyle = global::Mayfly.TaskDialogs.TaskDialogButtonStyle.CommandLinks;
             this.taskDialogMissingReference.CenterParent = true;
             resources.ApplyResources(this.taskDialogMissingReference, "taskDialogMissingReference");
             this.taskDialogMissingReference.ExpandFooterArea = true;

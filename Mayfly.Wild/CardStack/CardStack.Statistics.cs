@@ -11,9 +11,9 @@ namespace Mayfly.Wild
         {
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsLengthNull()) continue;
                     result.Add(individualRow.Length);
@@ -28,7 +28,7 @@ namespace Mayfly.Wild
             double result = 0;
             double divider = 0;
 
-            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
+            foreach (Survey.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue;
                 result += individualRow.Length;
@@ -50,9 +50,9 @@ namespace Mayfly.Wild
             double result = 0;
             double divider = 0;
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -76,9 +76,9 @@ namespace Mayfly.Wild
         {
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -95,9 +95,9 @@ namespace Mayfly.Wild
             double result = double.MaxValue;
             int i = 0;
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -125,9 +125,9 @@ namespace Mayfly.Wild
             double result = double.MinValue;
             int i = 0;
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -168,7 +168,7 @@ namespace Mayfly.Wild
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
                 // TODO:
                 // In old cards there were  [Mass = double.NaN] when stratified sample is presented.
@@ -193,9 +193,9 @@ namespace Mayfly.Wild
         {
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsMassNull()) continue;
                     result.Add(individualRow.Mass);
@@ -223,7 +223,7 @@ namespace Mayfly.Wild
         {
             int result = 0;
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow))
             {
                 if (logRow.IsQuantityNull())
                 {
@@ -259,7 +259,7 @@ namespace Mayfly.Wild
         {
             int result = 0;
 
-            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
+            foreach (Survey.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsSexNull()) continue;
                 if (individualRow.Sex != G.Value) continue;
@@ -274,7 +274,7 @@ namespace Mayfly.Wild
             int result = 0;
 
 
-            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
+            foreach (Survey.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsMassNull()) continue;
                 result++;
@@ -288,7 +288,7 @@ namespace Mayfly.Wild
             int result = 0;
 
 
-            foreach (Data.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
+            foreach (Survey.IndividualRow individualRow in this.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue;
                 result++;

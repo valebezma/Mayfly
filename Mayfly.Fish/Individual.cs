@@ -19,15 +19,15 @@ namespace Mayfly.Fish
 
 
 
-        public Data.IndividualRow IndividualRow;
+        public Wild.Survey.IndividualRow IndividualRow;
 
-        private Data Data;
+        private Wild.Survey Data;
 
         //public DataGridViewRow LogLine;
 
-        private Data.IntestineRow intestineRow;
+        private Wild.Survey.IntestineRow intestineRow;
 
-        private Data.IntestineRow IntestineRow
+        private Wild.Survey.IntestineRow IntestineRow
         {
             get
             {
@@ -44,9 +44,9 @@ namespace Mayfly.Fish
 
         
 
-        private Data.OrganRow organRow;
+        private Wild.Survey.OrganRow organRow;
 
-        private Data.OrganRow OrganRow
+        private Wild.Survey.OrganRow OrganRow
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Mayfly.Fish
 
 
 
-        private Data Consumed
+        private Wild.Survey Consumed
         {
             get;
             set;
@@ -79,7 +79,7 @@ namespace Mayfly.Fish
             {
                 double result = 0;
 
-                foreach (Data.IntestineRow intestineRow in IndividualRow.GetIntestineRows())
+                foreach (Wild.Survey.IntestineRow intestineRow in IndividualRow.GetIntestineRows())
                 {
                     if (intestineRow == IntestineRow)
                     {
@@ -88,7 +88,7 @@ namespace Mayfly.Fish
 
                     if (!intestineRow.IsConsumedNull())
                     {
-                        Data consumed = new Data();
+                        Wild.Survey consumed = new Wild.Survey();
                         consumed.ReadXml(new StringReader(intestineRow.Consumed));
                         result += consumed.Solitary.Mass;
                     }
@@ -116,7 +116,7 @@ namespace Mayfly.Fish
 
 
 
-        private Data Infection
+        private Wild.Survey Infection
         {
             get;
             set;
@@ -139,7 +139,7 @@ namespace Mayfly.Fish
             InitializeComponent();
             Log.Write("Open individual fish profile.");
 
-            Consumed = new Data();
+            Consumed = new Wild.Survey();
             ColumnTrpSpecies.ValueType = typeof(string);
             ColumnTrpQuantity.ValueType = typeof(int);
             ColumnTrpMass.ValueType = typeof(double);
@@ -159,13 +159,13 @@ namespace Mayfly.Fish
             ColumnAddtValue.ValueType = typeof(double);
         }
 
-        public Individual(Data.IndividualRow individualRow) 
+        public Individual(Wild.Survey.IndividualRow individualRow) 
             : this()
         {
             IndividualRow = individualRow;
             
             IndividualRow.AcceptChanges();
-            Data = (Data)individualRow.Table.DataSet;
+            Data = (Wild.Survey)individualRow.Table.DataSet;
 
             Text = string.Format(Wild.Resources.Interface.Interface.IndWindow, individualRow.Species);
 
@@ -261,7 +261,7 @@ namespace Mayfly.Fish
             if (IndividualRow.IsConsumedMassNull()) textBoxConsumedMass.Text = string.Empty;
             else textBoxConsumedMass.Text = IndividualRow.ConsumedMass.ToString();
 
-            Data.IntestineRow[] Guts = IndividualRow.GetIntestineRows();
+            Wild.Survey.IntestineRow[] Guts = IndividualRow.GetIntestineRows();
 
             if (Guts.Length == 0)
             {
@@ -281,7 +281,7 @@ namespace Mayfly.Fish
 
             #region Parasite
 
-            Data.OrganRow[] Organs = IndividualRow.GetOrganRows();
+            Wild.Survey.OrganRow[] Organs = IndividualRow.GetOrganRows();
             if (Organs.Length > 0)
             {
                 comboBoxOrgan.SelectedIndex = Organs[0].Organ;
@@ -291,7 +291,7 @@ namespace Mayfly.Fish
 
             spreadSheetAddt.Rows.Clear();
 
-            foreach (Data.ValueRow valueRow in IndividualRow.GetValueRows())
+            foreach (Wild.Survey.ValueRow valueRow in IndividualRow.GetValueRows())
             {
                 LoadAddtValue(valueRow.VariableRow.Variable, valueRow.Value);
             }
@@ -492,7 +492,7 @@ namespace Mayfly.Fish
         {
             comboBoxFullness.SelectedIndex = -1;
             comboBoxFermentation.SelectedIndex = -1;
-            Consumed = new Data();
+            Consumed = new Wild.Survey();
             spreadSheetTrophics.Rows.Clear();
         }
 
@@ -500,8 +500,8 @@ namespace Mayfly.Fish
         {
             if (gridRow.Cells[ColumnTrpID.Index].Value == null) return;
 
-            Data.LogRow logRow = Consumed.Log.FindByID((int)gridRow.Cells[ColumnTrpID.Index].Value);
-            Data.DefinitionRow spcRowInvariant = logRow.DefinitionRow;
+            Wild.Survey.LogRow logRow = Consumed.Log.FindByID((int)gridRow.Cells[ColumnTrpID.Index].Value);
+            Wild.Survey.DefinitionRow spcRowInvariant = logRow.DefinitionRow;
             logRow.Delete();
             spcRowInvariant.Delete();
         }
@@ -584,7 +584,7 @@ namespace Mayfly.Fish
             else { Consumed.ClearUseless(); IntestineRow.Consumed = Consumed.GetXml().Replace(Environment.NewLine, " "); }
         }
 
-        private void LoadIntestine(Data.IntestineRow intestineRow)
+        private void LoadIntestine(Wild.Survey.IntestineRow intestineRow)
         {
             if (intestineRow.IsFullnessNull())
             {
@@ -608,20 +608,20 @@ namespace Mayfly.Fish
 
             if (intestineRow.IsConsumedNull())
             {
-                Consumed = new Data();
+                Consumed = new Wild.Survey();
             }
             else
             {
                 Consumed = intestineRow.GetConsumed();
 
-                foreach (Data.LogRow logRow in Consumed.Log)
+                foreach (Wild.Survey.LogRow logRow in Consumed.Log)
                 {
                     InsertLogRow(logRow);
                 }
             }
         }
 
-        private void InsertLogRow(Data.LogRow logRow)
+        private void InsertLogRow(Wild.Survey.LogRow logRow)
         {
             List<object> LogRowItems = new List<object>(4)
             {
@@ -710,7 +710,7 @@ namespace Mayfly.Fish
                     {
                         if (gridRow.Cells[ColumnTrpQuantity.Index].Value != null && (int)gridRow.Cells[ColumnTrpQuantity.Index].Value == 1)
                         {
-                            Data.IndividualRow newIndividualRowFish = Consumed.Individual.NewIndividualRow();
+                            Wild.Survey.IndividualRow newIndividualRowFish = Consumed.Individual.NewIndividualRow();
                             newIndividualRowFish.LogRow = SaveLogRow(gridRow);
                             newIndividualRowFish.Mass = (double)gridRow.Cells[ColumnTrpMass.Index].Value;
                             Consumed.Individual.AddIndividualRow(newIndividualRowFish);
@@ -729,7 +729,7 @@ namespace Mayfly.Fish
                         if (trpGridRow.Cells[ColumnTrpQuantity.Index].Value != null &&
                             (int)trpGridRow.Cells[ColumnTrpQuantity.Index].Value == 1)
                         {
-                            Data.IndividualRow newIndividualRowFish = Consumed.Individual.NewIndividualRow();
+                            Wild.Survey.IndividualRow newIndividualRowFish = Consumed.Individual.NewIndividualRow();
                             newIndividualRowFish.LogRow = SaveLogRow(gridRow);
                             newIndividualRowFish.Mass = (double)gridRow.Cells[ColumnTrpMass.Index].Value;
                             newIndividualRowFish.Comments = Wild.Resources.Interface.Interface.DuplicateDefaultComment;
@@ -757,14 +757,14 @@ namespace Mayfly.Fish
 
 
 
-        private Data.LogRow SaveLogRow(DataGridViewRow gridRow)
+        private Wild.Survey.LogRow SaveLogRow(DataGridViewRow gridRow)
         {
             return SaveLogRow(Consumed, gridRow);
         }
 
-        private Data.LogRow SaveLogRow(Data data, DataGridViewRow gridRow)
+        private Wild.Survey.LogRow SaveLogRow(Wild.Survey data, DataGridViewRow gridRow)
         {
-            Data.LogRow result;
+            Wild.Survey.LogRow result;
             bool IsNew = false;
 
             if (gridRow.Cells[ColumnTrpID.Index].Value != null)
@@ -784,7 +784,7 @@ namespace Mayfly.Fish
 
             if (gridRow.Cells[ColumnTrpSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
             {
-                Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
                 if (existingSpeciesRow == null)
                 {
                     existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
@@ -799,7 +799,7 @@ namespace Mayfly.Fish
                 }
                 else
                 {
-                    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null)
                     {
                         existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
@@ -839,7 +839,7 @@ namespace Mayfly.Fish
 
         private void LoadTrophicData(string filename)
         {
-            Data data = new Data();
+            Wild.Survey data = new Wild.Survey();
             data.Read(filename);            
 
             if (spreadSheetTrophics.RowCount < 2) // If only newrow is in grid
@@ -863,14 +863,14 @@ namespace Mayfly.Fish
             }
         }
 
-        private void InsertTrophicLogRows(Data data, int rowIndex)
+        private void InsertTrophicLogRows(Wild.Survey data, int rowIndex)
         {
             if (rowIndex == -1)
             {
                 rowIndex = spreadSheetTrophics.RowCount - 1;
             }
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 InsertLogRow(logRow);
 
@@ -948,14 +948,14 @@ namespace Mayfly.Fish
             else { Infection.ClearUseless(); OrganRow.Infection = Infection.GetXml(); }
         }
 
-        private Data.LogRow SaveParasitesLogRow(DataGridViewRow gridRow)
+        private Wild.Survey.LogRow SaveParasitesLogRow(DataGridViewRow gridRow)
         {
             return SaveLogRow(Infection, gridRow);
         }
 
-        private Data.LogRow SaveParasitesLogRow(Data data, DataGridViewRow gridRow)
+        private Wild.Survey.LogRow SaveParasitesLogRow(Wild.Survey data, DataGridViewRow gridRow)
         {
-            Data.LogRow result;
+            Wild.Survey.LogRow result;
             bool IsNew = false;
 
             if (gridRow.Cells[ColumnInfID.Index].Value != null)
@@ -976,7 +976,7 @@ namespace Mayfly.Fish
 
             if (gridRow.Cells[ColumnInfSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
             {
-                Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
                 if (existingSpeciesRow == null)
                 {
                     existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
@@ -991,7 +991,7 @@ namespace Mayfly.Fish
                 }
                 else
                 {
-                    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null)
                     {
                         existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
@@ -1143,7 +1143,7 @@ namespace Mayfly.Fish
             }
         }
 
-        private void LoadOrgan(Data.OrganRow organRow)
+        private void LoadOrgan(Wild.Survey.OrganRow organRow)
         {
             spreadSheetInfection.Rows.Clear();
 
@@ -1155,7 +1155,7 @@ namespace Mayfly.Fish
             {
                 Infection = organRow.GetInfection();
 
-                foreach (Data.LogRow logRow in Infection.Log)
+                foreach (Wild.Survey.LogRow logRow in Infection.Log)
                 {
                     InsertLogRow(logRow);
                 }
@@ -1427,23 +1427,23 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            Data clipData = new Data();
-            Data.CardRow clipCardRow = clipData.Card.NewCardRow();
+            Wild.Survey clipData = new Wild.Survey();
+            Wild.Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
             foreach (DataGridViewRow gridRow in spreadSheetTrophics.SelectedRows)
             {
                 if (gridRow.IsNewRow) continue;
 
-                Data.LogRow clipLogRow = SaveLogRow(clipData, gridRow);
-                Data.LogRow existingLogRow = Consumed.Log.FindByID(
+                Wild.Survey.LogRow clipLogRow = SaveLogRow(clipData, gridRow);
+                Wild.Survey.LogRow existingLogRow = Consumed.Log.FindByID(
                     (int)gridRow.Cells[ColumnTrpID.Index].Value);
 
                 if (existingLogRow != null)
                 {
-                    foreach (Data.IndividualRow existingIndividualRow in existingLogRow.GetIndividualRows())
+                    foreach (Wild.Survey.IndividualRow existingIndividualRow in existingLogRow.GetIndividualRows())
                     {
-                        Data.IndividualRow clipIndividualRow =
+                        Wild.Survey.IndividualRow clipIndividualRow =
                             clipData.Individual.NewIndividualRow();
 
                         if (!existingIndividualRow.IsCommentsNull())
@@ -1464,15 +1464,15 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
         {
-            Data clipData = new Data();
+            Wild.Survey clipData = new Wild.Survey();
             clipData.ReadXml(new StringReader(Clipboard.GetText()));
 
             int rowIndex = spreadSheetTrophics.SelectedRows[0].Index;
 
-            foreach (Data.LogRow clipLogRow in clipData.Log)
+            foreach (Wild.Survey.LogRow clipLogRow in clipData.Log)
             {
                 // Copy from Clipboard Data to local Data
-                Data.LogRow logRow = Consumed.Log.NewLogRow();
+                Wild.Survey.LogRow logRow = Consumed.Log.NewLogRow();
                 if (!clipLogRow.IsQuantityNull()) logRow.Quantity = clipLogRow.Quantity;
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Consumed.Card[0];
@@ -1481,7 +1481,7 @@ namespace Mayfly.Fish
 
                 TaxonomicIndex.TaxonRow clipSpeciesRow = UserSettings.DietIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
 
-                Data.DefinitionRow newSpeciesRow = (clipSpeciesRow == null ?
+                Wild.Survey.DefinitionRow newSpeciesRow = (clipSpeciesRow == null ?
                     Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon) :
                     Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name));
 
@@ -1489,9 +1489,9 @@ namespace Mayfly.Fish
 
                 Consumed.Log.AddLogRow(logRow);
 
-                foreach (Data.IndividualRow clipIndividualRow in clipData.Individual)
+                foreach (Wild.Survey.IndividualRow clipIndividualRow in clipData.Individual)
                 {
-                    Data.IndividualRow individualRow = Consumed.Individual.NewIndividualRow();
+                    Wild.Survey.IndividualRow individualRow = Consumed.Individual.NewIndividualRow();
                     if (!clipIndividualRow.IsCommentsNull()) individualRow.Comments = clipIndividualRow.Comments;
                     if (!clipIndividualRow.IsMassNull()) individualRow.Mass = clipIndividualRow.Mass;
                     individualRow.LogRow = logRow;
@@ -1654,7 +1654,7 @@ namespace Mayfly.Fish
                 SelectedOrgan = comboBoxOrgan.SelectedIndex;
 
                 // Load new values if exist
-                Data.OrganRow infectedOrganRow = Data.Organ.FindByIndIDOrgan(IndividualRow.ID, SelectedOrgan);
+                Wild.Survey.OrganRow infectedOrganRow = Data.Organ.FindByIndIDOrgan(IndividualRow.ID, SelectedOrgan);
 
                 if (infectedOrganRow == null)
                 {

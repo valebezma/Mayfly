@@ -10,30 +10,6 @@ namespace Mayfly.Fish
 {
     public static class UserSettings
     {
-        private static Equipment equiment;
-
-        public static Equipment Equipment {
-            get {
-                if (equiment == null) {
-                    equiment = new Equipment();
-
-                    string path = Path.Combine(IO.UserFolder, "equipment.ini");
-
-                    if (File.Exists(path)) {
-                        equiment.ReadXml(path);
-                    }
-                }
-
-                return equiment;
-            }
-
-            set {
-                equiment = value;
-            }
-        }
-
-
-
         public static string ParasitesIndexPath {
             get {
                 string filepath = IO.GetPath(GetValue(ReaderSettings.FeatureKey, nameof(ParasitesIndexPath), string.Empty));

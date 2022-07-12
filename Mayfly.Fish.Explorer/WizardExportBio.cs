@@ -14,7 +14,7 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class WizardExportBio : Form
     {
-        public Data Allowed { get; set; }
+        public Wild.Survey Allowed { get; set; }
 
 
 
@@ -23,7 +23,7 @@ namespace Mayfly.Fish.Explorer
             InitializeComponent();
         }
 
-        public WizardExportBio(Data data)
+        public WizardExportBio(Wild.Survey data)
             : this()
         {
             Allowed = data;
@@ -250,7 +250,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetGrowth.SelectedRows)
             {
-                Data.DefinitionRow spc = (Data.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Wild.Survey.DefinitionRow spc = (Wild.Survey.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
                 Scatterplot scatter = new Scatterplot(Allowed.FindGrowthModel(spc.Taxon).InternalData);
                 scatter.Properties.ShowTrend = true;
@@ -266,7 +266,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetWeight.SelectedRows)
             {
-                Data.DefinitionRow spc = (Data.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
+                Wild.Survey.DefinitionRow spc = (Wild.Survey.DefinitionRow)gridRow.Cells[ColumnGrowthSpecies.Index].Value;
 
                 Scatterplot scatter = new Scatterplot(Allowed.FindMassModel(spc.Taxon).InternalData);
                 scatter.Properties.ShowTrend = true;

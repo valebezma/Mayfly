@@ -198,7 +198,7 @@ namespace Mayfly.Fish.Explorer
         public MainForm(CardStack stack)
             : this()
         {
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 cardRow.SingleCardDataset().CopyTo(data);
             }
@@ -283,7 +283,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     if (data.IsLoaded(filenames[i])) continue;
 
-                    Data _data = new Data();
+                    Wild.Survey _data = new Wild.Survey();
 
                     if (_data.Read(filenames[i]))
                     {
@@ -385,14 +385,14 @@ namespace Mayfly.Fish.Explorer
 
             while (changedCards.Count > 0)
             {
-                Data.CardRow cardRow = changedCards[0];
+                Wild.Survey.CardRow cardRow = changedCards[0];
 
                 index++;
                 dataSaver.ReportProgress(index);
 
                 if (cardRow.Path != null)
                 {
-                    Data _data = cardRow.SingleCardDataset();
+                    Wild.Survey _data = cardRow.SingleCardDataset();
                     _data.WriteToFile(cardRow.Path);
                 }
                 
@@ -450,10 +450,10 @@ namespace Mayfly.Fish.Explorer
                 {
                     data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
                 }
-                else foreach (Data.CardRow cardRow in data.Card)
+                else foreach (Wild.Survey.CardRow cardRow in data.Card)
                     {
                         string filename = IO.SuggestName(fbdBackup.SelectedPath, cardRow.GetSuggestedName());
-                        Data _data = cardRow.SingleCardDataset();
+                        Wild.Survey _data = cardRow.SingleCardDataset();
                         _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                     }
             }
@@ -565,7 +565,7 @@ namespace Mayfly.Fish.Explorer
 
         private void menuItemIndSuggestedAll_Click(object sender, EventArgs e)
         {
-            List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> indRows = new List<Wild.Survey.IndividualRow>();
 
             foreach (TaxonomicIndex.TaxonRow spcRow in FullStack.GetSpecies())
             {
@@ -994,7 +994,7 @@ namespace Mayfly.Fish.Explorer
             switch (htResult.ChartElementType)
             {
                 case ChartElementType.DataPoint:
-                    if (htResult.Series.Points[htResult.PointIndex].Tag is Data.CardRow cardRow)
+                    if (htResult.Series.Points[htResult.PointIndex].Tag is Wild.Survey.CardRow cardRow)
                     {
                         IO.RunFile(cardRow.Path);
                         //string cardName = Data.GetStack().GetInfoRow(cardRow).FileName;
@@ -1705,7 +1705,7 @@ namespace Mayfly.Fish.Explorer
 
             if (spreadSheetInd.Filter != null) spreadSheetInd.Filter.Close();
 
-            List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> indRows = new List<Wild.Survey.IndividualRow>();
 
             foreach (var pair in outliersData)
             {
@@ -1880,7 +1880,7 @@ namespace Mayfly.Fish.Explorer
         {
             DataGridViewRow gridRow = spreadSheetCard.Rows[e.RowIndex];
             int id = (int)gridRow.Cells[columnCardID.Name].Value;
-            Data.CardRow cardRow = data.Card.FindByID(id);
+            Wild.Survey.CardRow cardRow = data.Card.FindByID(id);
 
             if (cardRow.IsSamplerNull())
             { }
@@ -2188,7 +2188,7 @@ namespace Mayfly.Fish.Explorer
             bool hasStratified = false;
             bool hasSampled = false;
 
-            foreach (Data.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
+            foreach (Wild.Survey.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
             {
                 hasStratified |= logRow.QuantityStratified > 0;
                 hasSampled |= logRow.QuantityIndividual() > 0;
@@ -2200,7 +2200,7 @@ namespace Mayfly.Fish.Explorer
 
         private void contextLogOpen_Click(object sender, EventArgs e)
         {
-            foreach (Data.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
+            foreach (Wild.Survey.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
             {
                 IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.DefinitionRow.Taxon });
@@ -2221,7 +2221,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            Data.LogRow[] logRows = (Data.LogRow[])e.Argument;
+            Wild.Survey.LogRow[] logRows = (Wild.Survey.LogRow[])e.Argument;
 
             for (int i = 0; i < logRows.Length; i++)
             {
@@ -2257,7 +2257,7 @@ namespace Mayfly.Fish.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
             {
-                Data.LogRow logRow = findLogRow(gridRow);
+                Wild.Survey.LogRow logRow = findLogRow(gridRow);
                 ValueSetEventHandler valueSetter = new ValueSetEventHandler(setCardValue);
                 gridRow.DataGridView.Invoke(valueSetter,
                     new object[] { logRow.CardRow, gridRow, spreadSheetLog.GetInsertedColumns() });
@@ -2288,7 +2288,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.Rows)
             {
-                Data.IndividualRow indRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow indRow = findIndividualRow(gridRow);
                 if (!indRow.IsDietPresented()) continue;
                 menuItemDietExplorer.Enabled = true;
                 break;
@@ -2380,7 +2380,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            Data.IndividualRow[] indRows = (Data.IndividualRow[])e.Argument;
+            Wild.Survey.IndividualRow[] indRows = (Wild.Survey.IndividualRow[])e.Argument;
 
             for (int i = 0; i < indRows.Length; i++)
             {
@@ -2463,7 +2463,7 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                Data.LogRow[] logRows = FullStack.GetLogRows(individualSpecies);
+                Wild.Survey.LogRow[] logRows = FullStack.GetLogRows(individualSpecies);
 
                 for (int i = 0; i < logRows.Length; i++)
                 {
@@ -2504,7 +2504,7 @@ namespace Mayfly.Fish.Explorer
 
             if (spreadSheetInd.Columns[e.ColumnIndex].ReadOnly) return;
 
-            Data.IndividualRow editedIndividualRow;
+            Wild.Survey.IndividualRow editedIndividualRow;
 
             // If values was typed in
             if (spreadSheetInd.ContainsFocus)
@@ -2616,7 +2616,7 @@ namespace Mayfly.Fish.Explorer
 
         private void bioUpdater_DoWork(object sender, DoWorkEventArgs e)
         {
-            Data.DefinitionRow speciesRow = (Data.DefinitionRow)e.Argument;
+            Wild.Survey.DefinitionRow speciesRow = (Wild.Survey.DefinitionRow)e.Argument;
             data.FindMassModel(speciesRow.Taxon).RefreshInternal();
             data.FindGrowthModel(speciesRow.Taxon).RefreshInternal();
             e.Result = speciesRow;
@@ -2687,7 +2687,7 @@ namespace Mayfly.Fish.Explorer
 
             foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
             {
-                Data.IndividualRow indRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow indRow = findIndividualRow(gridRow);
                 if (!indRow.IsDietPresented()) continue;
                 contextIndExploreDiet.Enabled = true;
                 break;
@@ -2718,7 +2718,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (!gridRow.Visible) continue;
 
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
                 DataGridViewRow corrRow = columnCardID.GetRow(individualRow.LogRow.CardID);
 
                 if (corrRow == null) continue;
@@ -2755,7 +2755,7 @@ namespace Mayfly.Fish.Explorer
             {
                 if (!gridRow.Visible) continue;
 
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
                 DataGridViewRow corrRow = columnLogID.GetRow(individualRow.LogID);
 
                 if (corrRow == null) continue;
@@ -2774,7 +2774,7 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetInd.EndEdit();
 
-            foreach (Data.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
+            foreach (Wild.Survey.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
             {
                 Individual individual = new Individual(individualRow);
                 individual.SetFriendlyDesktopLocation(spreadSheetInd);
@@ -2789,7 +2789,7 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetInd.EndEdit();
 
-            foreach (Data.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
+            foreach (Wild.Survey.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
             {
                 Individual individual = new Individual(individualRow);
                 individual.SetFriendlyDesktopLocation(spreadSheetInd);
@@ -2804,7 +2804,7 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetInd.EndEdit();
 
-            foreach (Data.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
+            foreach (Wild.Survey.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
             {
                 Individual individual = new Individual(individualRow);
                 individual.SetFriendlyDesktopLocation(spreadSheetInd);
@@ -2819,7 +2819,7 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetInd.EndEdit();
 
-            foreach (Data.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
+            foreach (Wild.Survey.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
             {
                 Individual individual = new Individual(individualRow);
                 individual.SetFriendlyDesktopLocation(spreadSheetInd);
@@ -2834,7 +2834,7 @@ namespace Mayfly.Fish.Explorer
         {
             spreadSheetInd.EndEdit();
 
-            foreach (Data.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
+            foreach (Wild.Survey.IndividualRow individualRow in getIndividuals(spreadSheetInd.SelectedRows))
             {
                 Individual individual = new Individual(individualRow);
                 individual.SetFriendlyDesktopLocation(spreadSheetInd);
@@ -2926,16 +2926,16 @@ namespace Mayfly.Fish.Explorer
 
         private void dietCompiler_DoWork(object sender, DoWorkEventArgs e)
         {
-            Data result = new Data();
+            Wild.Survey result = new Wild.Survey();
 
             int index = 0;
 
             foreach (DataGridViewRow gridRow in (IEnumerable)e.Argument)
             {
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
 
                 // If pooled - correct ecological values, if NOT - editable
-                Data indData = individualRow.GetConsumed(!ModifierKeys.HasFlag(Keys.Control));
+                Wild.Survey indData = individualRow.GetConsumed(!ModifierKeys.HasFlag(Keys.Control));
                 indData.CopyTo(result);
 
                 //foreach (Data.IntestineRow intestineRow in individualRow.GetIntestineRows())
@@ -2958,7 +2958,7 @@ namespace Mayfly.Fish.Explorer
             IsBusy = false;
             processDisplay.StopProcessing();
 
-            Benthos.Explorer.MainForm dietExplorer = new Benthos.Explorer.MainForm((Data)e.Result);
+            Benthos.Explorer.MainForm dietExplorer = new Benthos.Explorer.MainForm((Wild.Survey)e.Result);
             dietExplorer.SetSpeciesIndex(Fish.UserSettings.DietIndexPath);
             dietExplorer.CardRowSaved += dietExplorer_CardRowSaved;
             dietExplorer.Sync(this);
@@ -2967,10 +2967,10 @@ namespace Mayfly.Fish.Explorer
             dietExplorer.PerformDietExplorer(FullStack.FriendlyName);
         }
 
-        private void dietExplorer_CardRowSaved(object sender, CardRowSaveEvent e)
+        private void dietExplorer_CardRowSaved(object sender, CardEventArgs e)
         {
-            Data.IntestineRow intestineRow = data.Intestine.FindByID(e.Row.ID);
-            Data consumed = e.Row.SingleCardDataset();
+            Wild.Survey.IntestineRow intestineRow = data.Intestine.FindByID(e.Row.ID);
+            Wild.Survey consumed = e.Row.SingleCardDataset();
             // TODO: Clear consumed from Comments, date, water and other stuff
             intestineRow.Consumed = consumed.GetXml().Replace(System.Environment.NewLine, " ");
             double w = intestineRow.IndividualRow.GetConsumed().GetStack().Mass();
@@ -3002,7 +3002,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            Data.LogRow[] logRows = (Data.LogRow[])e.Argument;
+            Wild.Survey.LogRow[] logRows = (Wild.Survey.LogRow[])e.Argument;
 
             for (int i = 0; i < logRows.Length; i++)
             {
@@ -3065,7 +3065,7 @@ namespace Mayfly.Fish.Explorer
 
                 double interval = 0.1;
 
-                foreach (Data.LogRow logRow in getLogRowsStratified(spreadSheetStratified.SelectedRows))
+                foreach (Wild.Survey.LogRow logRow in getLogRowsStratified(spreadSheetStratified.SelectedRows))
                 {
                     if (logRow.QuantityStratified > 0)
                     {
@@ -3084,7 +3084,7 @@ namespace Mayfly.Fish.Explorer
 
                     foreach (DataGridViewRow gridRow in spreadSheetStratified.SelectedRows)
                     {
-                        foreach (Data.StratifiedRow stratifiedRow in findLogRowStratified(gridRow).GetStratifiedRows())
+                        foreach (Wild.Survey.StratifiedRow stratifiedRow in findLogRowStratified(gridRow).GetStratifiedRows())
                         {
                             if (sizeGroup.LengthInterval.LeftClosedContains(stratifiedRow.SizeClass.Midpoint))
                                 countSum += stratifiedRow.Count;

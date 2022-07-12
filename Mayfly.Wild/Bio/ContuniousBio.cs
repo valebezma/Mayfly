@@ -51,7 +51,7 @@ namespace Mayfly.Wild
 
 
 
-        public ContinuousBio(Data data, TaxonomicIndex.TaxonRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
+        public ContinuousBio(Survey data, TaxonomicIndex.TaxonRow speciesRow, DataColumn xColumn, DataColumn yColumn, TrendType type) :
             base(data, speciesRow, yColumn)
         {
             if (yColumn.DataType != typeof(double))
@@ -81,7 +81,7 @@ namespace Mayfly.Wild
         {
             BivariateSample biSample = new BivariateSample();
 
-            foreach (Data.IndividualRow individualRow in Parent.Definition.FindByName(Species).GetIndividualRows())
+            foreach (Survey.IndividualRow individualRow in Parent.Definition.FindByName(Species).GetIndividualRows())
             {
                 double x = Parent.GetIndividualValue(individualRow, nameX);
                 double y = Parent.GetIndividualValue(individualRow, nameY);

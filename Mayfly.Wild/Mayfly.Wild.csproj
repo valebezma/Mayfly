@@ -81,11 +81,11 @@
     <Compile Include="Controls\LogProcessor.Designer.cs">
       <DependentUpon>LogProcessor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data.cs">
-      <DependentUpon>Data.xsd</DependentUpon>
+    <Compile Include="Survey.cs">
+      <DependentUpon>Survey.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data.Designer.cs">
-      <DependentUpon>Data.xsd</DependentUpon>
+    <Compile Include="Survey.Designer.cs">
+      <DependentUpon>Survey.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -319,14 +319,6 @@
     </Compile>
     <Compile Include="Resources\Interface\Sex.ru.Designer.cs">
       <DependentUpon>Sex.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Samplers.cs">
-      <DependentUpon>Samplers.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Samplers.Designer.cs">
-      <DependentUpon>Samplers.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -603,32 +595,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data.xsc">
-      <DependentUpon>Data.xsd</DependentUpon>
+    <None Include="Survey.xsc">
+      <DependentUpon>Survey.xsd</DependentUpon>
     </None>
-    <None Include="Data.xsd">
+    <None Include="Survey.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Data.Designer.cs</LastGenOutput>
+      <LastGenOutput>Survey.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Data.xss">
-      <DependentUpon>Data.xsd</DependentUpon>
     </None>
     <None Include="interface\weatherevts.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Survey.xss">
+      <DependentUpon>Survey.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
-    <None Include="Samplers.xsc">
-      <DependentUpon>Samplers.xsd</DependentUpon>
-    </None>
-    <None Include="Samplers.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Samplers.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Samplers.xss">
-      <DependentUpon>Samplers.xsd</DependentUpon>
-    </None>
     <None Include="Substrate.xsc">
       <DependentUpon>Substrate.xsd</DependentUpon>
     </None>

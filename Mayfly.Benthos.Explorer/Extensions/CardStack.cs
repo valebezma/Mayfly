@@ -14,7 +14,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
                 if (result.Contains(cardRow.SamplerRow)) continue;
@@ -52,7 +52,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetAbundance();
             }
@@ -76,7 +76,7 @@ namespace Mayfly.Benthos.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetBiomass();
             }
@@ -109,11 +109,11 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static int QuantityIndividual(this Data.LogRow logRow)
+        public static int QuantityIndividual(this Wild.Survey.LogRow logRow)
         {
             int result = 0;
 
-            foreach (Data.IndividualRow indRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow indRow in logRow.GetIndividualRows())
             {
                 result += indRow.IsFrequencyNull() ? 1 : indRow.Frequency;
             }
@@ -125,7 +125,7 @@ namespace Mayfly.Benthos.Explorer
         {
             int result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.QuantityIndividual();
             }
@@ -137,7 +137,7 @@ namespace Mayfly.Benthos.Explorer
         {
             int result = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows())
             {
                 result += logRow.QuantityIndividual();
             }
@@ -145,12 +145,12 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static int Measured(this Data.LogRow logRow)
+        public static int Measured(this Wild.Survey.LogRow logRow)
         {
             int result = 0;
 
 
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 if (individualRow.IsLengthNull()) continue;
                 result++;

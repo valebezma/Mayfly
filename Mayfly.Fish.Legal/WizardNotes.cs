@@ -23,7 +23,7 @@ namespace Mayfly.Fish.Legal
             }
         }
 
-        Data Data;
+        Wild.Survey Data;
 
         public LegalPapers.LegalNoteRow CatchNote { get; private set; }
 
@@ -211,7 +211,7 @@ namespace Mayfly.Fish.Legal
         {
             listViewCards.Items.Clear();
 
-            foreach (Data.CardRow cardRow in Data.Card)
+            foreach (Wild.Survey.CardRow cardRow in Data.Card)
             {
                 ListViewItem li = listViewCards.CreateItem(
                     cardRow.Path, Path.GetFileNameWithoutExtension(cardRow.Path));
@@ -438,7 +438,7 @@ namespace Mayfly.Fish.Legal
             {
                 if (Data.IsLoaded(filenames[i])) continue;
 
-                Data data = new Data();
+                Wild.Survey data = new Wild.Survey();
 
                 data.Read(filenames[i]);
 
@@ -465,7 +465,7 @@ namespace Mayfly.Fish.Legal
 
             spreadSheetCatches.Rows.Clear();
 
-            foreach (Data.DefinitionRow speciesRow in catches.GetSpecies())
+            foreach (Wild.Survey.DefinitionRow speciesRow in catches.GetSpecies())
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(spreadSheetCatches);

@@ -107,7 +107,7 @@ namespace Mayfly.Benthos.Explorer
             Report report = new Report(string.Empty);
 
             bool first = true;
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (first) { first = false; } else { report.BreakPage(Benthos.UserSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
                 report.AddHeader(cardRow.FriendlyPath);

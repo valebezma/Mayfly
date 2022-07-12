@@ -14,9 +14,9 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class Individuals : Form
     {
-        public Data.LogRow LogRow;
+        public Wild.Survey.LogRow LogRow;
 
-        private Data Data { get; set; }
+        private Wild.Survey Data { get; set; }
 
         public bool IsChanged;
 
@@ -172,12 +172,12 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Individuals(Data.LogRow logRow)
+        public Individuals(Wild.Survey.LogRow logRow)
         {
             InitializeComponent();
 
             LogRow = logRow;
-            Data = (Data)LogRow.Table.DataSet;
+            Data = (Wild.Survey)LogRow.Table.DataSet;
             if (logRow.IsDefIDNull())
             {
                 Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
@@ -217,7 +217,7 @@ namespace Mayfly.Fish.Explorer
             AddVariableMenuItems();
             InsertCurrentVariableColumns();
 
-            Data.IndividualRow[] individualRows = LogRow.GetIndividualRows();
+            Wild.Survey.IndividualRow[] individualRows = LogRow.GetIndividualRows();
 
             if (individualRows.Length == 0)
             {
@@ -232,12 +232,12 @@ namespace Mayfly.Fish.Explorer
             }
             else
             {
-                foreach (Data.VariableRow variableRow in Data.Variable.Rows)
+                foreach (Wild.Survey.VariableRow variableRow in Data.Variable.Rows)
                 {
                     spreadSheetLog.InsertColumn(variableRow.Variable, spreadSheetLog.ColumnCount - 1);
                 }
 
-                foreach (Data.IndividualRow individualRow in individualRows)
+                foreach (Wild.Survey.IndividualRow individualRow in individualRows)
                 {
                     InsertIndividualRow(individualRow);
                 }
@@ -252,13 +252,13 @@ namespace Mayfly.Fish.Explorer
                 }
             }
 
-            Data.StratifiedRow[] stratifiedRows = LogRow.GetStratifiedRows();
+            Wild.Survey.StratifiedRow[] stratifiedRows = LogRow.GetStratifiedRows();
 
             if (stratifiedRows.Length > 0)
             {
                 stratifiedSample.Reset(LogRow.MinStrate.LeftEndpoint, LogRow.MaxStrate.LeftEndpoint);
 
-                foreach (Data.StratifiedRow stratifiedRow in stratifiedRows)
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in stratifiedRows)
                 {
                     stratifiedSample.FindCounter(stratifiedRow.Class).Count = stratifiedRow.Count;
                 }
@@ -335,7 +335,7 @@ namespace Mayfly.Fish.Explorer
         {
             if (gridRow.Cells[ColumnID.Index].Value != null)
             {
-                Data.IndividualRow individualRow =
+                Wild.Survey.IndividualRow individualRow =
                     Data.Individual.FindByID(
                     (int)gridRow.Cells[ColumnID.Index].Value);
 
@@ -424,7 +424,7 @@ namespace Mayfly.Fish.Explorer
 
                 foreach (SizeGroup sizeGroup in stratifiedSample.SizeGroups)
                 {
-                    Data.StratifiedRow stratifiedRow = Data.Stratified.FindByLogIDClass(LogRow.ID, 
+                    Wild.Survey.StratifiedRow stratifiedRow = Data.Stratified.FindByLogIDClass(LogRow.ID, 
                         sizeGroup.LeftEndpoint);
 
                     if (stratifiedRow == null)
@@ -510,14 +510,14 @@ namespace Mayfly.Fish.Explorer
             return gridRow.Cells[ColumnID.Index].Value == null;
         }
 
-        private Data.IndividualRow IndividualRow(DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow IndividualRow(DataGridViewRow gridRow)
         {
             return IndividualRow(Data, LogRow, gridRow);
         }
 
-        private Data.IndividualRow IndividualRow(Data data, Data.LogRow logRow, DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow IndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow;
+            Wild.Survey.IndividualRow individualRow;
 
             if (gridRow.Cells[ColumnID.Index].Value != null)
             {
@@ -621,14 +621,14 @@ namespace Mayfly.Fish.Explorer
             return individualRow;
         }
 
-        private Data.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
         {
             return SaveIndividualRow(Data, LogRow, gridRow);
         }
 
-        private Data.IndividualRow SaveIndividualRow(Data data, Data.LogRow logRow, DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow SaveIndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
+            Wild.Survey.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
 
             if (data.Individual.Rows.IndexOf(individualRow) == -1)
             {
@@ -644,17 +644,17 @@ namespace Mayfly.Fish.Explorer
             return individualRow;
         }
 
-        private void SaveAddtValues(Data data, Data.IndividualRow individualRow, DataGridViewRow gridRow)
+        private void SaveAddtValues(Wild.Survey data, Wild.Survey.IndividualRow individualRow, DataGridViewRow gridRow)
         {
             foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
             {
                 if (gridRow.Cells[gridColumn.Index].Value == null)
                 {
-                    Data.VariableRow CurrentVarRow = data.Variable.FindByVarName(gridColumn.HeaderText);
+                    Wild.Survey.VariableRow CurrentVarRow = data.Variable.FindByVarName(gridColumn.HeaderText);
 
                     if (CurrentVarRow == null) continue;
 
-                    Data.ValueRow ValueRow = data.Value.FindByIndIDVarID(individualRow.ID, CurrentVarRow.ID);
+                    Wild.Survey.ValueRow ValueRow = data.Value.FindByIndIDVarID(individualRow.ID, CurrentVarRow.ID);
 
                     if (ValueRow == null) continue;
 
@@ -662,14 +662,14 @@ namespace Mayfly.Fish.Explorer
                 }
                 else
                 {
-                    Data.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
+                    Wild.Survey.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
 
                     if (variableRow == null)
                     {
                         variableRow = data.Variable.AddVariableRow(gridColumn.HeaderText);
                     }
 
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                    Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
 
                     if (valueRow == null)
                     {
@@ -683,7 +683,7 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private DataGridViewRow InsertIndividualRow(Data.IndividualRow individualRow)
+        private DataGridViewRow InsertIndividualRow(Wild.Survey.IndividualRow individualRow)
         {
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetLog);
@@ -753,7 +753,7 @@ namespace Mayfly.Fish.Explorer
                 gridRow.Cells[ColumnComments.Index].Value = individualRow.Comments;
             }
 
-            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+            foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
             {
                 if (!valueRow.IsValueNull())
                 {
@@ -928,7 +928,7 @@ namespace Mayfly.Fish.Explorer
             if (e.ColumnIndex == -1) return;
             if (e.RowIndex == -1) return;
 
-            Data.IndividualRow individualRow = SaveIndividualRow(spreadSheetLog.Rows[e.RowIndex]);
+            Wild.Survey.IndividualRow individualRow = SaveIndividualRow(spreadSheetLog.Rows[e.RowIndex]);
             ActionRow.CatchXML = Data.GetXml();
 
             if (e.ColumnIndex == ColumnLength.Index)
@@ -997,7 +997,7 @@ namespace Mayfly.Fish.Explorer
 
         private void spreadSheetLog_ColumnRenamed(object sender, GridColumnRenameEventArgs e)
         {
-            Data.VariableRow variableRow = Data.Variable.FindByVarName(e.PreviousCaption);
+            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.PreviousCaption);
 
             if (variableRow != null)
             {
@@ -1011,13 +1011,13 @@ namespace Mayfly.Fish.Explorer
         {
             Width -= e.Column.Width;
 
-            Data.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
+            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
 
             if (variableRow != null)
             {
                 for (int i = 0; i < Data.Value.Count; i++)
                 {
-                    Data.ValueRow valueRow = Data.Value[i];
+                    Wild.Survey.ValueRow valueRow = Data.Value[i];
                     if (valueRow.VariableRow == variableRow &&
                         valueRow.IndividualRow.LogRow == LogRow)
                     {
@@ -1042,15 +1042,15 @@ namespace Mayfly.Fish.Explorer
 
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            Data clipData = new Data();
+            Wild.Survey clipData = new Wild.Survey();
 
-            Data.CardRow clipCardRow = clipData.Card.NewCardRow();
+            Wild.Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Data.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            Wild.Survey.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
             clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
-            Data.LogRow clipLogRow = clipData.Log.NewLogRow();
+            Wild.Survey.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
             clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
@@ -1066,17 +1066,17 @@ namespace Mayfly.Fish.Explorer
 
         private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
         {
-            Data clipData = Data.FromClipboard();
+            Wild.Survey clipData = Wild.Survey.FromClipboard();
 
             // If clipData contains Deep tables then insert data and rows 
             // otherwise insert just rows
 
-            foreach (Data.VariableRow clipVariableRow in clipData.Variable.Rows)
+            foreach (Wild.Survey.VariableRow clipVariableRow in clipData.Variable.Rows)
             {
                 spreadSheetLog.InsertColumn(clipVariableRow.Variable);
             }
 
-            foreach (Data.IndividualRow clipIndividualRow in clipData.Individual)
+            foreach (Wild.Survey.IndividualRow clipIndividualRow in clipData.Individual)
             {
                 InsertIndividualRow(clipIndividualRow);
             }

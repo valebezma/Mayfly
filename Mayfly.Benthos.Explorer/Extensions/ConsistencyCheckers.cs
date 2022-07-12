@@ -15,17 +15,17 @@ namespace Mayfly.Benthos.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static IndividualConsistencyChecker CheckConsistency(this Data.IndividualRow individualRow)
+        public static IndividualConsistencyChecker CheckConsistency(this Wild.Survey.IndividualRow individualRow)
         {
             return new IndividualConsistencyChecker(individualRow);
         }
 
-        public static LogConsistencyChecker CheckConsistency(this Data.LogRow logRow)
+        public static LogConsistencyChecker CheckConsistency(this Wild.Survey.LogRow logRow)
         {
             return new LogConsistencyChecker(logRow);
         }
 
-        public static CardConsistencyChecker CheckConsistency(this Data.CardRow cardRow)
+        public static CardConsistencyChecker CheckConsistency(this Wild.Survey.CardRow cardRow)
         {
             return new CardConsistencyChecker(cardRow);
         }
@@ -40,7 +40,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<ConsistencyChecker> result = new List<ConsistencyChecker>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 CardConsistencyChecker ccc = cardRow.CheckConsistency();
 
@@ -66,7 +66,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class IndividualConsistencyChecker : ConsistencyChecker
     {
-        public Data.IndividualRow IndividualRow { get; set; }
+        public Wild.Survey.IndividualRow IndividualRow { get; set; }
 
         public bool HasTally { get; set; }
 
@@ -93,7 +93,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public IndividualConsistencyChecker(Data.IndividualRow individualRow)
+        public IndividualConsistencyChecker(Wild.Survey.IndividualRow individualRow)
         {
             IndividualRow = individualRow;
             HasTally = !individualRow.IsTallyNull();
@@ -176,7 +176,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class LogConsistencyChecker : ConsistencyChecker
     {
-        public Data.LogRow LogRow { get; set; }
+        public Wild.Survey.LogRow LogRow { get; set; }
 
         public bool SpeciesMissing { get; set; }
 
@@ -222,7 +222,7 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public LogConsistencyChecker(Data.LogRow logRow)
+        public LogConsistencyChecker(Wild.Survey.LogRow logRow)
         {
             if (logRow == null) return;
 
@@ -231,7 +231,7 @@ namespace Mayfly.Benthos.Explorer
             SpeciesMissing = LogRow.DefinitionRow.KeyRecord == null;
 
             List<IndividualConsistencyChecker> result = new List<IndividualConsistencyChecker>();
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 IndividualConsistencyChecker indArtifact = individualRow.CheckConsistency();
                 if (indArtifact.ArtifactsCount > 0) result.Add(indArtifact);
@@ -298,7 +298,7 @@ namespace Mayfly.Benthos.Explorer
 
     public class CardConsistencyChecker : ConsistencyChecker
     {
-        public Data.CardRow CardRow { get; set; }
+        public Wild.Survey.CardRow CardRow { get; set; }
 
         public bool SquareMissing { get; set; }
 
@@ -389,14 +389,14 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public CardConsistencyChecker(Data.CardRow cardRow)
+        public CardConsistencyChecker(Wild.Survey.CardRow cardRow)
         {
             CardRow = cardRow;
             SquareMissing = cardRow.IsSquareNull();
             WhereMissing = cardRow.IsWhereNull();
 
             List<LogConsistencyChecker> logArtifacts = new List<LogConsistencyChecker>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
                 if (logArtifact.ArtifactsCount > 0)
@@ -549,7 +549,7 @@ namespace Mayfly.Benthos.Explorer
 
             List<LogConsistencyChecker> result = new List<LogConsistencyChecker>();
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 LogConsistencyChecker logArtifact = logRow.CheckConsistency();
                 if (logArtifact.ArtifactsCount > 0) result.Add(logArtifact);

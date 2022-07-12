@@ -38,7 +38,7 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.backgroundChartBuilder = new System.ComponentModel.BackgroundWorker();
             this.labelLack = new System.Windows.Forms.Label();
-            this.StatChart = new Mayfly.Mathematics.Charts.Plot();
+            this.StatChart = new global::Mayfly.Mathematics.Charts.Plot();
             ((System.ComponentModel.ISupportInitialize)(this.StatChart)).BeginInit();
             this.SuspendLayout();
             // 

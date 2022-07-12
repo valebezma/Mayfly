@@ -31,7 +31,7 @@ namespace Mayfly.Benthos.Explorer
 
             SetSpeciesIndex(Benthos.UserSettings.TaxonomicIndexPath);
 
-            selectedLogRows = new List<Data.LogRow>();
+            selectedLogRows = new List<Wild.Survey.LogRow>();
 
             columnCardWater.ValueType = typeof(string);
             columnCardLabel.ValueType = typeof(string);
@@ -119,7 +119,7 @@ namespace Mayfly.Benthos.Explorer
         public MainForm(CardStack stack)
             : this()
         {
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 cardRow.SingleCardDataset().CopyTo(data);
             }
@@ -127,7 +127,7 @@ namespace Mayfly.Benthos.Explorer
             updateSummary();
         }
 
-        public MainForm(Data _data) : this()
+        public MainForm(Wild.Survey _data) : this()
         {
             data = _data;
             data.RefreshBios();
@@ -210,7 +210,7 @@ namespace Mayfly.Benthos.Explorer
                 {
                     if (data.IsLoaded(filenames[i])) continue;
 
-                    Data _data = new Data();
+                    Wild.Survey _data = new Wild.Survey();
 
                     if (_data.Read(filenames[i]))
                     {
@@ -306,18 +306,18 @@ namespace Mayfly.Benthos.Explorer
 
             while (ChangedCards.Count > 0)
             {
-                Data.CardRow cardRow = ChangedCards[0];
+                Wild.Survey.CardRow cardRow = ChangedCards[0];
 
                 index++;
                 dataSaver.ReportProgress(index);
 
                 if (cardRow.Path != null)
                 {
-                    Data _data = cardRow.SingleCardDataset();
+                    Wild.Survey _data = cardRow.SingleCardDataset();
                     _data.WriteToFile(cardRow.Path);
                 }
 
-                if (CardRowSaved != null) CardRowSaved.Invoke(this, new CardRowSaveEvent(cardRow));
+                if (CardRowSaved != null) CardRowSaved.Invoke(this, new CardEventArgs(cardRow));
 
                 ChangedCards.RemoveAt(0);
             }
@@ -367,10 +367,10 @@ namespace Mayfly.Benthos.Explorer
                 {
                     data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, "backup.xml"));
                 }
-                else foreach (Data.CardRow cardRow in data.Card)
+                else foreach (Wild.Survey.CardRow cardRow in data.Card)
                     {
                         string filename = IO.SuggestName(fbdBackup.SelectedPath, cardRow.GetSuggestedName());
-                        Data _data = cardRow.SingleCardDataset();
+                        Wild.Survey _data = cardRow.SingleCardDataset();
                         _data.WriteToFile(Path.Combine(fbdBackup.SelectedPath, filename));
                     }
             }
@@ -561,11 +561,11 @@ namespace Mayfly.Benthos.Explorer
                         filenames.Add(findCardRow(gridRow).Path);
                     }
 
-                    Data data = new Data();
+                    Wild.Survey data = new Wild.Survey();
 
                     foreach (string filename in filenames)
                     {
-                        Data d = new Data();
+                        Wild.Survey d = new Wild.Survey();
                         d.Read(filename);
                         //d.Solitary.Path = filename;
                         d.CopyTo(data);
@@ -583,7 +583,7 @@ namespace Mayfly.Benthos.Explorer
             spreadSheetCard.ClearSelection();
             foreach (DataGridViewRow gridRow in spreadSheetCard.Rows)
             {
-                Data.CardRow cardRow = findCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 gridRow.Selected = cardRow.GetLogRows().Length == 0;
             }
         }
@@ -659,7 +659,7 @@ namespace Mayfly.Benthos.Explorer
 
             foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
             {
-                Data.CardRow cardRow = findCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 if (cardRow.Path == null) continue;
                 contextCardOpen.Enabled = true;
                 break;
@@ -670,7 +670,7 @@ namespace Mayfly.Benthos.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetCard.SelectedRows)
             {
-                Data.CardRow cardRow = findCardRow(gridRow);
+                Wild.Survey.CardRow cardRow = findCardRow(gridRow);
                 if (cardRow.Path == null) continue;
 
                 if (DietExplorer && !cardRow.IsLabelNull())
@@ -879,22 +879,22 @@ namespace Mayfly.Benthos.Explorer
             {
                 // TODO: If already exist?
 
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
-                Data.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxon.Name);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.OriginalValue);
+                Wild.Survey.DefinitionRow spcRow1 = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow1 == null) // If there is no new species in index
                 {
                     spcRow.Taxon = e.SelectedTaxon.Name;
                     spcRow.Rank = e.SelectedTaxon.Rank;
 
-                    foreach (Data.LogRow logRow in spcRow.GetLogRows())
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
                     {
                         rememberChanged(logRow.CardRow);
                     }
                 }
                 else // If new species is already in index
                 {
-                    foreach (Data.LogRow logRow in spcRow.GetLogRows())
+                    foreach (Wild.Survey.LogRow logRow in spcRow.GetLogRows())
                     {
                         logRow.DefinitionRow = spcRow1;
                         rememberChanged(logRow.CardRow);
@@ -918,7 +918,7 @@ namespace Mayfly.Benthos.Explorer
             {
                 TaxonomicIndex speciesKey = new TaxonomicIndex();
 
-                foreach (Data.DefinitionRow speciesRow in data.Definition)
+                foreach (Wild.Survey.DefinitionRow speciesRow in data.Definition)
                 {
                     speciesKey.Taxon.AddTaxonRow(speciesKey.Taxon.NewTaxonRow(speciesRow.Rank, speciesRow.Taxon));
                 }
@@ -933,7 +933,7 @@ namespace Mayfly.Benthos.Explorer
 
         private void contextLogOpen_Click(object sender, EventArgs e)
         {
-            foreach (Data.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
+            foreach (Wild.Survey.LogRow logRow in getLogRows(spreadSheetLog.SelectedRows))
             {
                 IO.RunFile(logRow.CardRow.Path,
                     new object[] { logRow.DefinitionRow.Taxon });
@@ -944,7 +944,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            Data.LogRow[] logRows = (Data.LogRow[])e.Argument;
+            Wild.Survey.LogRow[] logRows = (Wild.Survey.LogRow[])e.Argument;
 
             if (rankLog == null)
             {
@@ -965,9 +965,9 @@ namespace Mayfly.Benthos.Explorer
             {
                 int j = 0;
                 processDisplay.SetProgressMaximum(FullStack.Count * SpeciesIndex.GetTaxonRows(rankLog).Length);
-                foreach (Data.CardRow cardRow in FullStack)
+                foreach (Wild.Survey.CardRow cardRow in FullStack)
                 {
-                    CardStack singleCardStack = new CardStack(new List<Data.CardRow>() { cardRow });
+                    CardStack singleCardStack = new CardStack(new List<Wild.Survey.CardRow>() { cardRow });
 
                     TaxonomicComposition composition = singleCardStack.GetCenosisComposition(rankLog);
 
@@ -1076,14 +1076,14 @@ namespace Mayfly.Benthos.Explorer
 
             if (tdLog.ShowDialog() == tdbLogRename)
             {
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow == null)
                 {
                     spcRow = data.Definition.AddDefinitionRow(e.SelectedTaxon.Rank, e.SelectedTaxon.Name);
                 }
 
-                Data.LogRow logRow = findLogRow(e.Row);
+                Wild.Survey.LogRow logRow = findLogRow(e.Row);
                 logRow.DefinitionRow = spcRow;
 
                 rememberChanged(logRow.CardRow);
@@ -1130,8 +1130,8 @@ namespace Mayfly.Benthos.Explorer
         private void recoverer_DataRecovered(object sender, EventArgs e)
         {
             WizardRecoverer recoverer = (WizardRecoverer)sender;
-            foreach (Data.IndividualRow indRow in recoverer.RecoveredIndividualRows)
-            {                
+            foreach (Wild.Survey.IndividualRow indRow in recoverer.RecoveredIndividualRows)
+            {
                 updateIndividualRow(columnIndID.GetRow(indRow.ID));
                 rememberChanged(indRow.LogRow.CardRow);
             }
@@ -1143,7 +1143,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
-            Data.IndividualRow[] indRows = (Data.IndividualRow[])e.Argument;
+            Wild.Survey.IndividualRow[] indRows = (Wild.Survey.IndividualRow[])e.Argument;
             processDisplay.SetProgressMaximum(indRows.Length);
 
             for (int i = 0; i < indRows.Length; i++)
@@ -1254,9 +1254,9 @@ namespace Mayfly.Benthos.Explorer
 
             if (tdInd.ShowDialog() == tdbIndRename)
             {
-                Data.IndividualRow individualRow = findIndividualRow(e.Row);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(e.Row);
 
-                Data.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
+                Wild.Survey.DefinitionRow spcRow = data.Definition.FindByName(e.SelectedTaxon.Name);
 
                 if (spcRow == null)
                 {
@@ -1272,7 +1272,7 @@ namespace Mayfly.Benthos.Explorer
                 {
                     // If there are more individual(-s) - 
                     // create new log                   
-                    Data.LogRow logRow = data.Log.FindByCardIDDefID(individualRow.LogRow.CardRow.ID, spcRow.ID);
+                    Wild.Survey.LogRow logRow = data.Log.FindByCardIDDefID(individualRow.LogRow.CardRow.ID, spcRow.ID);
 
                     if (logRow == null)
                     {
@@ -1330,7 +1330,7 @@ namespace Mayfly.Benthos.Explorer
             {
                 if (!gridRow.Visible) continue;
 
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
                 DataGridViewRow corrRow = columnCardID.GetRow(individualRow.LogRow.CardID);
 
                 if (corrRow == null) continue;
@@ -1367,7 +1367,7 @@ namespace Mayfly.Benthos.Explorer
             {
                 if (!gridRow.Visible) continue;
 
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
                 DataGridViewRow corrRow = columnLogID.GetRow(individualRow.LogID);
 
                 if (corrRow == null) continue;
@@ -1390,7 +1390,7 @@ namespace Mayfly.Benthos.Explorer
         {
             foreach (DataGridViewRow gridRow in spreadSheetInd.SelectedRows)
             {
-                Data.IndividualRow individualRow = findIndividualRow(gridRow);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(gridRow);
 
                 Mayfly.IO.RunFile(individualRow.LogRow.CardRow.Path,
                     individualRow.LogRow.DefinitionRow.Taxon);
@@ -1403,7 +1403,7 @@ namespace Mayfly.Benthos.Explorer
         {
             while (spreadSheetInd.SelectedRows.Count > 0)
             {
-                Data.IndividualRow individualRow = findIndividualRow(spreadSheetInd.SelectedRows[0]);
+                Wild.Survey.IndividualRow individualRow = findIndividualRow(spreadSheetInd.SelectedRows[0]);
                 rememberChanged(individualRow.LogRow.CardRow);
                 data.Individual.Rows.Remove(individualRow);
                 spreadSheetInd.Rows.Remove(spreadSheetInd.SelectedRows[0]);
@@ -1412,7 +1412,7 @@ namespace Mayfly.Benthos.Explorer
 
         private void spreadSheetInd_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            Data.IndividualRow individualRow = findIndividualRow(e.Row);
+            Wild.Survey.IndividualRow individualRow = findIndividualRow(e.Row);
             rememberChanged(individualRow.LogRow.CardRow);
             data.Individual.Rows.Remove(individualRow);
         }

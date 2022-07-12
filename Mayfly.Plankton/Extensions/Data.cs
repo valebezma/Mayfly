@@ -14,14 +14,14 @@ namespace Mayfly.Plankton
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Suggested name for data card with extension</returns>
-        public static string GetSuggestedName(this Data.CardRow cardRow)
+        public static string GetSuggestedName(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.GetSuggestedName(UserSettings.ReaderSettings.Interface.Extension);
         }
 
-        public static TaxonomicIndex GetSpeciesKey(this Data data)
+        public static TaxonomicIndex GetSpeciesKey(this Wild.Survey data)
         {
-            return Data.GetSpeciesKey((Data.DefinitionRow[])data.Definition.Select());
+            return Wild.Survey.GetSpeciesKey((Wild.Survey.DefinitionRow[])data.Definition.Select());
 
             //TaxonomicIndex speciesKey = new TaxonomicIndex();
 
@@ -100,11 +100,11 @@ namespace Mayfly.Plankton
             //return speciesKey;
         }
 
-        public static List<string> GetSpeciesList(this Data data)
+        public static List<string> GetSpeciesList(this Wild.Survey data)
         {
             List<string> result = new List<string>();
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (!result.Contains(logRow.DefinitionRow.Taxon))
                 {
@@ -115,11 +115,11 @@ namespace Mayfly.Plankton
             return result;
         }
 
-        public static Data.DefinitionRow[] GetSpeciesForWeightRecovery(this Data data)
+        public static Wild.Survey.DefinitionRow[] GetSpeciesForWeightRecovery(this Wild.Survey data)
         {
-            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
+            List<Wild.Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (!logRow.IsMassNull()) continue;
                 if (!result.Contains(logRow.DefinitionRow))
@@ -131,11 +131,11 @@ namespace Mayfly.Plankton
             return result.ToArray();
         }
 
-        public static Data.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Data data)
+        public static Wild.Survey.DefinitionRow[] GetSpeciesWithUnweightedIndividuals(this Wild.Survey data)
         {
-            List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
+            List<Wild.Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
 
-            foreach (Data.IndividualRow individualRow in data.Individual)
+            foreach (Wild.Survey.IndividualRow individualRow in data.Individual)
             {
                 if (!individualRow.IsMassNull()) continue;
                 if (!result.Contains(individualRow.LogRow.DefinitionRow))
@@ -157,9 +157,9 @@ namespace Mayfly.Plankton
         /// <param name="cardRow"></param>
         /// <param name="speciesRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.CardRow cardRow, Data.DefinitionRow speciesRow)
+        public static double GetAbundance(this Wild.Survey.CardRow cardRow, Wild.Survey.DefinitionRow speciesRow)
         {
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 if (logRow.DefinitionRow == speciesRow)
                 {
@@ -176,7 +176,7 @@ namespace Mayfly.Plankton
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.LogRow logRow)
+        public static double GetAbundance(this Wild.Survey.LogRow logRow)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             if (logRow.CardRow.IsVolumeNull()) return double.NaN;
@@ -191,7 +191,7 @@ namespace Mayfly.Plankton
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Data.LogRow logRow)
+        public static double GetBiomass(this Wild.Survey.LogRow logRow)
         {
             if (logRow.CardRow.IsVolumeNull()) return double.NaN;
 

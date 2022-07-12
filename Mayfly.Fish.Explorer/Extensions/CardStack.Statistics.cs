@@ -12,7 +12,7 @@ namespace Mayfly.Fish.Explorer
         {
             Sample result = new Sample();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (!cardRow.IsMeshNull()) result.Add(cardRow.Mesh);
             }
@@ -24,9 +24,9 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsLengthNull()) continue;
                     result.Add(individualRow.Length);
@@ -40,7 +40,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsAgeNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
@@ -56,7 +56,7 @@ namespace Mayfly.Fish.Explorer
             List<double> result = new List<double>();
 
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsSexNull()) continue;
                 if (individualRow.IsLengthNull()) continue;
@@ -73,9 +73,9 @@ namespace Mayfly.Fish.Explorer
 
             double result = lengths.Count > 0 ? lengths.Minimum : 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
                 {
                     if (result > stratifiedRow.SizeClass.RightEndpoint)
                     {
@@ -93,9 +93,9 @@ namespace Mayfly.Fish.Explorer
 
             double result = lengths.Count > 0 ? lengths.Maximum : 50;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
                 {
                     if (result < stratifiedRow.SizeClass.Midpoint)
                     {
@@ -112,9 +112,9 @@ namespace Mayfly.Fish.Explorer
             double result = double.MinValue;
             int i = 0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (!individualRow.IsAgeNull()) continue;
 
@@ -128,7 +128,7 @@ namespace Mayfly.Fish.Explorer
 
                 }
 
-                foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
+                foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
                 {
                     if (result < stratifiedRow.SizeClass.Midpoint)
                     {
@@ -152,7 +152,7 @@ namespace Mayfly.Fish.Explorer
         {
             double a = 50;
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsAgeNull()) continue;
                 a = Math.Min(a, individualRow.Age);
@@ -180,7 +180,7 @@ namespace Mayfly.Fish.Explorer
         {
             double a = 0.0;
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsAgeNull()) continue;
                 a = Math.Max(a, individualRow.Age);

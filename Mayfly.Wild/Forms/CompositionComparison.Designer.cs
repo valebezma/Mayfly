@@ -33,25 +33,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.spreadSheetA = new Mayfly.Controls.SpreadSheet();
+            this.spreadSheetA = new global::Mayfly.Controls.SpreadSheet();
             this.ColumnSpeciesA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAbundance = new System.Windows.Forms.TabPage();
             this.tabPageBiomasses = new System.Windows.Forms.TabPage();
-            this.spreadSheetB = new Mayfly.Controls.SpreadSheet();
+            this.spreadSheetB = new global::Mayfly.Controls.SpreadSheet();
             this.columnSpeciesB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageOccurrence = new System.Windows.Forms.TabPage();
-            this.spreadSheetO = new Mayfly.Controls.SpreadSheet();
+            this.spreadSheetO = new global::Mayfly.Controls.SpreadSheet();
             this.columnSpeciesO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageDominance = new System.Windows.Forms.TabPage();
-            this.spreadSheetD = new Mayfly.Controls.SpreadSheet();
+            this.spreadSheetD = new global::Mayfly.Controls.SpreadSheet();
             this.columnSpeciesD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageMatrix = new System.Windows.Forms.TabPage();
             this.listViewIndex = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelCombinationsCount = new System.Windows.Forms.Label();
-            this.spreadSheetMatrix = new Mayfly.Controls.SpreadSheet();
-            this.processDisplay = new Mayfly.Controls.ProcessDisplay();
+            this.spreadSheetMatrix = new global::Mayfly.Controls.SpreadSheet();
+            this.processDisplay = new global::Mayfly.Controls.ProcessDisplay();
             this.statusLoading = new System.Windows.Forms.ToolStripProgressBar();
             this.statusProcess = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -333,7 +333,7 @@
 
         #endregion
 
-        private Mayfly.Controls.SpreadSheet spreadSheetA;
+        private global::Mayfly.Controls.SpreadSheet spreadSheetA;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageAbundance;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -342,21 +342,21 @@
         private System.Windows.Forms.ToolStripStatusLabel statusProcess;
         private System.Windows.Forms.ToolStripProgressBar statusLoading;
         private System.Windows.Forms.TabPage tabPageBiomasses;
-        private Mayfly.Controls.SpreadSheet spreadSheetB;
+        private global::Mayfly.Controls.SpreadSheet spreadSheetB;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpeciesA;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpeciesB;
         private System.Windows.Forms.TabPage tabPageMatrix;
         private System.Windows.Forms.Label labelCombinationsCount;
-        private Mayfly.Controls.SpreadSheet spreadSheetMatrix;
+        private global::Mayfly.Controls.SpreadSheet spreadSheetMatrix;
         private System.Windows.Forms.ToolStripMenuItem menuItemSimilarity;
         private System.Windows.Forms.ListView listViewIndex;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.ComponentModel.BackgroundWorker backMatch;
-        private Mayfly.Controls.ProcessDisplay processDisplay;
+        private global::Mayfly.Controls.ProcessDisplay processDisplay;
         private System.Windows.Forms.TabPage tabPageOccurrence;
-        private Mayfly.Controls.SpreadSheet spreadSheetO;
+        private global::Mayfly.Controls.SpreadSheet spreadSheetO;
         private System.Windows.Forms.TabPage tabPageDominance;
-        private Mayfly.Controls.SpreadSheet spreadSheetD;
+        private global::Mayfly.Controls.SpreadSheet spreadSheetD;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpeciesO;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSpeciesD;
     }

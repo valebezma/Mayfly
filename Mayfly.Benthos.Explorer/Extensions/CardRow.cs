@@ -10,12 +10,12 @@ namespace Mayfly.Extensions
 {
     public static class CardRowExtensions
     {
-        public static int AbundanceRating(this Data.CardRow cardRow, Data.DefinitionRow speciesRow)
+        public static int AbundanceRating(this Wild.Survey.CardRow cardRow, Wild.Survey.DefinitionRow speciesRow)
         {
             int s = 0;
 
-            foreach (Data.LogRow logRow in 
-                ((Data)cardRow.Table.DataSet).Log.Select("CardID = " + cardRow.ID, "Quantity desc"))
+            foreach (Wild.Survey.LogRow logRow in 
+                ((Wild.Survey)cardRow.Table.DataSet).Log.Select("CardID = " + cardRow.ID, "Quantity desc"))
             {
                 s++;
 
@@ -28,7 +28,7 @@ namespace Mayfly.Extensions
             return -1;
         }
         
-        public static object Get(this Data.CardRow cardRow, string field)
+        public static object Get(this Wild.Survey.CardRow cardRow, string field)
         {
             switch (field)
             {
@@ -63,11 +63,11 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static double GetTotalAbundance(this Data.CardRow cardRow)
+        public static double GetTotalAbundance(this Wild.Survey.CardRow cardRow)
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 result += logRow.GetAbundance();
             }
@@ -75,11 +75,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double GetTotalBiomass(this Data.CardRow cardRow)
+        public static double GetTotalBiomass(this Wild.Survey.CardRow cardRow)
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 result += logRow.GetBiomass();
             }
@@ -87,20 +87,20 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double DiversityA(this Data.CardRow cardRow)
+        public static double DiversityA(this Wild.Survey.CardRow cardRow)
         {
             List<double> values = new List<double>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 values.Add(logRow.GetAbundance());
             }
             return new Sample(values).Diversity();
         }
 
-        public static double DiversityB(this Data.CardRow cardRow)
+        public static double DiversityB(this Wild.Survey.CardRow cardRow)
         {
             List<double> values = new List<double>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 values.Add(logRow.GetBiomass());
             }

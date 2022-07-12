@@ -73,15 +73,6 @@ namespace Mayfly.Fish
         private TaskDialogs.TaskDialogButton tdbSinking;
         private TaskDialogs.TaskDialogButton tdbRemoval;
 
-        public Samplers.SamplerRow SelectedSampler {
-            get {
-                return comboBoxSampler.SelectedItem as Samplers.SamplerRow;
-            }
-
-            set {
-                comboBoxSampler.SelectedItem = value;
-            }
-        }
         private bool AllowEffortCalculation { get; set; }
         private bool preciseMode;
         private bool PreciseAreaMode {
@@ -241,7 +232,7 @@ namespace Mayfly.Fish
             this.tabPageSampler.Controls.SetChildIndex(this.labelVolume, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.label17, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.buttonGear, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxVolume, 0);
             // 
             // labelSampler
@@ -542,6 +533,8 @@ namespace Mayfly.Fish
             this.Name = "FishCard";
             this.OnSaved += new System.EventHandler(this.fishCard_OnSaved);
             this.OnCleared += new System.EventHandler(this.fishCard_OnCleared);
+            this.OnEquipmentSelected += new Mayfly.Wild.EquipmentEventHandler(this.fishCard_OnEquipmentSelected);
+            this.OnEquipmentSaved += new Mayfly.Wild.EquipmentEventHandler(this.fishCard_OnEquipmentSaved);
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.tabPageCollect.ResumeLayout(false);
             this.tabPageCollect.PerformLayout();
@@ -571,6 +564,7 @@ namespace Mayfly.Fish
             textBoxMesh.Text = string.Empty;
             textBoxHook.Text = string.Empty;
         }
+
         private void clearEffort()
         {
             dateTimePickerStart.Value = waypointControl1.Waypoint.TimeMark.AddHours(-12.0);
@@ -663,70 +657,17 @@ namespace Mayfly.Fish
             }
         }
 
-        private void SaveGear()
-        {
-            if (SelectedSampler == null) return;
+        private void saveGear(Survey.EquipmentRow unitRow) {
 
-            Equipment.UnitsRow unitRow = UserSettings.Equipment.Units.NewUnitsRow();
-            unitRow.SamplerID = SelectedSampler.ID;
+            foreach (Survey.VirtueRow indexVirtueRow in ReaderSettings.SamplersIndex.Virtue) {
+                Survey.VirtueRow virtueRow = ((Survey)unitRow.Table.DataSet).Virtue.AddVirtueRow(indexVirtueRow.Name, indexVirtueRow.Notation);
 
-            if (SelectedSampler.EffortFormula.Contains("M"))
-            {
-                if (textBoxMesh.Text.IsDoubleConvertible()) { unitRow.Mesh = int.Parse(textBoxMesh.Text); }
-                else return;
+                TextBox tb = tabPageSampler.Controls.Find("textBox" + virtueRow.Name, true)?[0] as TextBox;
+
+                if (tb.Text.IsDoubleConvertible()) {
+                    ((Survey)unitRow.Table.DataSet).SamplerVirtue.AddSamplerVirtueRow(unitRow, virtueRow, double.Parse(tb.Text));
+                }
             }
-
-            if (SelectedSampler.EffortFormula.Contains("J"))
-            {
-                if (textBoxHook.Text.IsDoubleConvertible()) { unitRow.Hook = (int)double.Parse(textBoxHook.Text); }
-                else return;
-            }
-
-            if (SelectedSampler.EffortFormula.Contains("H"))
-            {
-                if (textBoxHeight.Text.IsDoubleConvertible()) { unitRow.Height = double.Parse(textBoxHeight.Text); }
-                else return;
-            }
-
-            if (SelectedSampler.EffortFormula.Contains("L"))
-            {
-                if (textBoxLength.Text.IsDoubleConvertible()) { unitRow.Length = double.Parse(textBoxLength.Text); }
-                else return;
-            }
-
-            if (SelectedSampler.EffortFormula.Contains("O") && textBoxOpening.Text.IsDoubleConvertible())
-            {
-                unitRow.Opening = double.Parse(textBoxOpening.Text);
-            }
-
-            if (UserSettings.Equipment.Units.FindDuplicate(unitRow) == null)
-            {
-                UserSettings.Equipment.Units.AddUnitsRow(unitRow);
-                Service.SaveEquipment();
-                LoadEquipment();
-            }
-        }
-
-        private void LoadEquipment()
-        {
-            contextGear.Items.Clear();
-
-            foreach (Equipment.UnitsRow unitRow in UserSettings.Equipment.Units)
-            {
-                ToolStripMenuItem item = new ToolStripMenuItem();
-                item.Text = unitRow.ToString();
-                item.Click += (o, e) => {
-                    comboBoxSampler.SelectedItem =ReaderSettings.SamplersIndex.Sampler.FindByID(unitRow.SamplerID);
-                    if (!unitRow.IsMeshNull()) textBoxMesh.Text = unitRow.Mesh.ToString();
-                    if (!unitRow.IsHookNull()) textBoxHook.Text = unitRow.Hook.ToString();
-                    if (!unitRow.IsLengthNull()) textBoxLength.Text = unitRow.Length.ToString();
-                    if (!unitRow.IsHeightNull()) textBoxHeight.Text = unitRow.Height.ToString();
-                    if (!unitRow.IsOpeningNull()) textBoxOpening.Text = unitRow.Opening.ToString(); 
-                };
-                contextGear.Items.Add(item);
-            }
-
-            buttonGear.Visible = contextGear.Items.Count > 0;
         }
 
         private void setEndpoint(Waypoint waypoint)
@@ -766,6 +707,22 @@ namespace Mayfly.Fish
         private void fishCard_OnCleared(object sender, EventArgs e) {
             clearGear();
             clearEffort();
+        }
+
+        private void fishCard_OnEquipmentSelected(object sender, EquipmentEventArgs e) {
+            Survey.EquipmentRow unitRow = e.Row;
+
+            foreach (Survey.SamplerVirtueRow row in unitRow.GetSamplerVirtueRows()) {
+                TextBox tb = tabPageSampler.Controls.Find("textBox" + row.VirtueRow.Name, true)?[0] as TextBox;
+                tb.Text = row.Value.ToString();
+            }
+        }
+
+        private void fishCard_OnEquipmentSaved(object sender, EquipmentEventArgs e) {
+            saveGear(e.Row);
+            if (ReaderSettings.Equipment.Equipment.FindDuplicate(e.Row) == null) {
+                saveGear(ReaderSettings.Equipment.Equipment.AddEquipmentRow(ReaderSettings.Equipment.Sampler.FindByID(SelectedSampler.ID)));
+            }
         }
 
         private void waypointControl1_Changed(object sender, EventArgs e) {
@@ -855,7 +812,7 @@ namespace Mayfly.Fish
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
                 if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
 
-                    Data.LogRow logRow = Logger.SaveLogRow(gridRow);
+                    Wild.Survey.LogRow logRow = Logger.SaveLogRow(gridRow);
                     Individuals individuals = null;
 
                     foreach (Form form in Application.OpenForms) {
@@ -1001,7 +958,7 @@ namespace Mayfly.Fish
         }
 
         private void buttonGear_Click(object sender, EventArgs e) {
-            contextGear.Show(buttonGear, new Point(0, buttonGear.Height), ToolStripDropDownDirection.BelowRight);
+            contextGear.Show(buttonEquipment, new Point(0, buttonEquipment.Height), ToolStripDropDownDirection.BelowRight);
         }
 
 

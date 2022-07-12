@@ -22,9 +22,9 @@ namespace Mayfly.Benthos
     {
         #region Properties
 
-        public Data.LogRow LogRow;
+        public Wild.Survey.LogRow LogRow;
 
-        private Data Data { get; set; }
+        private Wild.Survey Data { get; set; }
 
         public bool IsChanged;
 
@@ -217,10 +217,10 @@ namespace Mayfly.Benthos
                 !FixTotals;
         }
 
-        public Individuals(Data.LogRow logRow) : this()
+        public Individuals(Wild.Survey.LogRow logRow) : this()
         {
             LogRow = logRow;
-            Data = (Data)LogRow.Table.DataSet;
+            Data = (Wild.Survey)LogRow.Table.DataSet;
 
             Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
                     logRow.IsDefIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
@@ -241,7 +241,7 @@ namespace Mayfly.Benthos
                 textBoxComments.Text = LogRow.Comments;
             }
 
-            Data.IndividualRow[] individualRows = LogRow.GetIndividualRows();
+            Wild.Survey.IndividualRow[] individualRows = LogRow.GetIndividualRows();
 
 
             // If no individuals described 
@@ -259,12 +259,12 @@ namespace Mayfly.Benthos
             }
             else
             {
-                foreach (Data.VariableRow variableRow in Data.Variable.Rows)
+                foreach (Wild.Survey.VariableRow variableRow in Data.Variable.Rows)
                 {
                     spreadSheetLog.InsertColumn(variableRow.Variable, spreadSheetLog.ColumnCount - 1);
                 }
 
-                foreach (Data.IndividualRow individualRow in individualRows)
+                foreach (Wild.Survey.IndividualRow individualRow in individualRows)
                 {
                     InsertIndividualRow(individualRow);
                 }
@@ -389,7 +389,7 @@ namespace Mayfly.Benthos
         private void Clear(DataGridViewRow gridRow)
         {
             if (gridRow.Cells[ColumnID.Index].Value == null) return;
-            Data.IndividualRow individualRow = Data.Individual.FindByID(
+            Wild.Survey.IndividualRow individualRow = Data.Individual.FindByID(
                 (int)gridRow.Cells[ColumnID.Index].Value);
             if (individualRow == null) return;
             individualRow.Delete();
@@ -515,14 +515,14 @@ namespace Mayfly.Benthos
             return gridRow.Cells[ColumnID.Index].Value == null;
         }
 
-        private Data.IndividualRow IndividualRow(DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow IndividualRow(DataGridViewRow gridRow)
         {
             return IndividualRow(Data, LogRow, gridRow);
         }
 
-        private Data.IndividualRow IndividualRow(Data data, Data.LogRow logRow, DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow IndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow;
+            Wild.Survey.IndividualRow individualRow;
 
             if (gridRow.Cells[ColumnID.Index].Value != null)
             {
@@ -608,14 +608,14 @@ namespace Mayfly.Benthos
             return individualRow;
         }
 
-        private Data.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
         {
             return SaveIndividualRow(Data, LogRow, gridRow);
         }
 
-        private Data.IndividualRow SaveIndividualRow(Data data, Data.LogRow logRow, DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow SaveIndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
+            Wild.Survey.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
 
             //if (data.Individual.Rows.IndexOf(individualRow) == -1)
             //{
@@ -631,17 +631,17 @@ namespace Mayfly.Benthos
             return individualRow;
         }
 
-        private void SaveAddtValues(Data data, Data.IndividualRow individualRow, DataGridViewRow gridRow)
+        private void SaveAddtValues(Wild.Survey data, Wild.Survey.IndividualRow individualRow, DataGridViewRow gridRow)
         {
             foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
             {
                 if (gridRow.Cells[gridColumn.Index].Value == null)
                 {
-                    Data.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
+                    Wild.Survey.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
 
                     if (variableRow == null) continue;
 
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                    Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
 
                     if (valueRow == null) continue;
 
@@ -649,14 +649,14 @@ namespace Mayfly.Benthos
                 }
                 else
                 {
-                    Data.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
+                    Wild.Survey.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
 
                     if (variableRow == null)
                     {
                         variableRow = data.Variable.AddVariableRow(gridColumn.HeaderText);
                     }
 
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                    Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
 
                     if (valueRow == null)
                     {
@@ -670,7 +670,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        private DataGridViewRow InsertIndividualRow(Data.IndividualRow individualRow)
+        private DataGridViewRow InsertIndividualRow(Wild.Survey.IndividualRow individualRow)
         {
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetLog);
@@ -720,7 +720,7 @@ namespace Mayfly.Benthos
                 gridRow.Cells[ColumnComments.Index].Value = individualRow.Comments;
             }
 
-            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+            foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
             {
                 if (valueRow.IsValueNull()) { }
                 else
@@ -962,7 +962,7 @@ namespace Mayfly.Benthos
 
         private void spreadSheetLog_ColumnRenamed(object sender, GridColumnRenameEventArgs e)
         {
-            Data.VariableRow variableRow = ((Data)LogRow.Table.DataSet).Variable.FindByVarName(e.PreviousCaption);
+            Wild.Survey.VariableRow variableRow = ((Wild.Survey)LogRow.Table.DataSet).Variable.FindByVarName(e.PreviousCaption);
 
             if (variableRow != null)
             {
@@ -976,13 +976,13 @@ namespace Mayfly.Benthos
         {
             Width -= e.Column.Width;
 
-            Data.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
+            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
 
             if (variableRow != null)
             {
                 for (int i = 0; i < Data.Value.Count; i++)
                 {
-                    Data.ValueRow valueRow = Data.Value[i];
+                    Wild.Survey.ValueRow valueRow = Data.Value[i];
                     if (valueRow.VariableRow == variableRow &&
                         valueRow.IndividualRow.LogRow == LogRow)
                     {
@@ -1002,7 +1002,7 @@ namespace Mayfly.Benthos
         private void contextMenuStripInd_Opening(object sender, CancelEventArgs e)
         {
             ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() &&
-                Data.ContainsIndividuals(Clipboard.GetText());
+                Wild.Survey.ContainsIndividuals(Clipboard.GetText());
         }
 
         private void ToolStripMenuItemInd_Click(object sender, EventArgs e)
@@ -1056,15 +1056,15 @@ namespace Mayfly.Benthos
 
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            Data clipData = new Data();
+            Wild.Survey clipData = new Wild.Survey();
 
-            Data.CardRow clipCardRow = clipData.Card.NewCardRow();
+            Wild.Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Data.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            Wild.Survey.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
             clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
-            Data.LogRow clipLogRow = clipData.Log.NewLogRow();
+            Wild.Survey.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
             clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
@@ -1080,14 +1080,14 @@ namespace Mayfly.Benthos
 
         private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
         {
-            Data clipData = Data.FromClipboard();
+            Wild.Survey clipData = Wild.Survey.FromClipboard();
 
-            foreach (Data.VariableRow clipVariableRow in clipData.Variable.Rows)
+            foreach (Wild.Survey.VariableRow clipVariableRow in clipData.Variable.Rows)
             {
                 spreadSheetLog.InsertColumn(clipVariableRow.Variable);
             }
 
-            foreach (Data.IndividualRow clipIndividualRow in clipData.Individual)
+            foreach (Wild.Survey.IndividualRow clipIndividualRow in clipData.Individual)
             {
                 InsertIndividualRow(clipIndividualRow);
             }
@@ -1135,12 +1135,12 @@ namespace Mayfly.Benthos
             Width -= SelectedColumn.Width;
             spreadSheetLog.Columns.Remove(SelectedColumn);
 
-            Data.VariableRow variableRow = Data.Variable.FindByVarName(SelectedColumn.HeaderText);
+            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(SelectedColumn.HeaderText);
             if (variableRow != null)
             {
                 for (int i = 0; i < Data.Value.Count; i++)
                 {
-                    Data.ValueRow valueRow = Data.Value[i];
+                    Wild.Survey.ValueRow valueRow = Data.Value[i];
                     if (valueRow.VariableRow == variableRow &&
                         valueRow.IndividualRow.LogRow == LogRow)
                     {

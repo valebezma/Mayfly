@@ -15,35 +15,35 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensionsBio
     {
-        public static void ApplyMassRecoveryModel(this Data data, Data.DefinitionRow speciesRow, Data.VariableRow variableRow, Regression model)
+        public static void ApplyMassRecoveryModel(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow, Regression model)
         {
             data.ApplyMassRecoveryModel(speciesRow.GetIndividualRows(), variableRow, model);
         }
 
-        public static void ApplyMassRecoveryModel(this Data data, IList<Data.IndividualRow> individualRows, Data.VariableRow variableRow, Regression model)
+        public static void ApplyMassRecoveryModel(this Wild.Survey data, IList<Wild.Survey.IndividualRow> individualRows, Wild.Survey.VariableRow variableRow, Regression model)
         {
             variableRow = data.Variable.FindByVarName(variableRow.Variable);
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (!individualRow.IsMassNull()) continue;
-                Data.ValueRow valueRoow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                Wild.Survey.ValueRow valueRoow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
                 if (valueRoow == null) continue;
                 individualRow.Mass = Math.Round(model.Predict(valueRoow.Value), 2);
             }
         }
 
-        public static List<Data.IndividualRow> GetIndividualsThatAreMeasuredToo(this DataColumn dataColumn, List<Data.IndividualRow> naturalRows, List<Data.IndividualRow> foodRows)
+        public static List<Wild.Survey.IndividualRow> GetIndividualsThatAreMeasuredToo(this DataColumn dataColumn, List<Wild.Survey.IndividualRow> naturalRows, List<Wild.Survey.IndividualRow> foodRows)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
             if (naturalRows.Count == 0) return result;
 
             if (foodRows.Count == 0) return result;
 
-            List<object> availableValues = ((Data)naturalRows[0].Table.DataSet).Individual.Columns[dataColumn.ColumnName]
+            List<object> availableValues = ((Wild.Survey)naturalRows[0].Table.DataSet).Individual.Columns[dataColumn.ColumnName]
                 .GetValues(naturalRows, true);
 
-            foreach (Data.IndividualRow individualRow in foodRows)
+            foreach (Wild.Survey.IndividualRow individualRow in foodRows)
             {
                 if (individualRow.IsNull(dataColumn)) continue;
                 if (availableValues.Contains(individualRow[dataColumn]))
@@ -56,13 +56,13 @@ namespace Mayfly.Extensions
         }
 
 
-        public static void ApplyMassRecoveryWithModelData(this Data data, List<Data.IndividualRow> individualRows, DataColumn dataColumn, List<Data.IndividualRow> naturalIndividuals)
+        public static void ApplyMassRecoveryWithModelData(this Wild.Survey data, List<Wild.Survey.IndividualRow> individualRows, DataColumn dataColumn, List<Wild.Survey.IndividualRow> naturalIndividuals)
         {
-            Data naturalData = (Data)naturalIndividuals[0].Table.DataSet;
+            Wild.Survey naturalData = (Wild.Survey)naturalIndividuals[0].Table.DataSet;
             DataColumn naturalValues = naturalData.Individual.Columns[dataColumn.ColumnName];
             List<Sample> samples = naturalData.Individual.MassColumn.GetSamples(naturalValues, naturalIndividuals);
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (!individualRow.IsMassNull()) continue;
 
@@ -87,9 +87,9 @@ namespace Mayfly.Extensions
 
 
 
-        public static void RestoreMass(this Data data)
+        public static void RestoreMass(this Wild.Survey data)
         {
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (!logRow.IsMassNull()) continue;
 
@@ -97,9 +97,9 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static void RecalcQuantity(this Data data)
+        public static void RecalcQuantity(this Wild.Survey data)
         {
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (!logRow.IsQuantityNull()) continue;
 
@@ -347,15 +347,15 @@ namespace Mayfly.Extensions
         //    data.RestoreMass();
         //}
 
-        public static Power SearchMassModel(this Data data, Data.VariableRow variableRow, Data.IndividualRow[] individualRows)
+        public static Power SearchMassModel(this Wild.Survey data, Wild.Survey.VariableRow variableRow, Wild.Survey.IndividualRow[] individualRows)
         {
             variableRow = data.Variable.FindByVarName(variableRow.Variable);
             BivariateSample bivariateSample = new BivariateSample();
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (individualRow.IsMassNull()) continue;
-                Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
                 if (valueRow == null) continue;
                 bivariateSample.Add(valueRow.Value, individualRow.Mass);
             }
@@ -373,61 +373,61 @@ namespace Mayfly.Extensions
 
 
 
-        public static int Quantity(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
+        public static int Quantity(this Wild.Survey.IndividualDataTable individual, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow)
         {
             return individual.Quantity(speciesRow.Taxon, variableRow);
         }
 
-        public static int Quantity(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
+        public static int Quantity(this Wild.Survey.IndividualDataTable individual, string species, Wild.Survey.VariableRow variableRow)
         {
-            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
+            Wild.Survey.DefinitionRow speciesRow = ((Wild.Survey)individual.DataSet).Definition.FindByName(species);
 
 
 
             int result = 0;
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 result += individual.Quantity(logRow, variableRow);
             }
             return result;
         }
 
-        public static int Quantity(this Data.IndividualDataTable individual, Data.LogRow logRow, Data.VariableRow variableRow)
+        public static int Quantity(this Wild.Survey.IndividualDataTable individual, Wild.Survey.LogRow logRow, Wild.Survey.VariableRow variableRow)
         {
             int result = 0;
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
-                if (((Data)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
+                if (((Wild.Survey)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow)
         {
             return individual.Unweighted(speciesRow.Taxon, variableRow);
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, string species, Wild.Survey.VariableRow variableRow)
         {
-            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
+            Wild.Survey.DefinitionRow speciesRow = ((Wild.Survey)individual.DataSet).Definition.FindByName(species);
 
 
 
             int result = 0;
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 result += individual.Unweighted(logRow, variableRow);
             }
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.LogRow logRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, Wild.Survey.LogRow logRow, Wild.Survey.VariableRow variableRow)
         {
             int result = 0;
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
-                if (((Data)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
+                if (((Wild.Survey)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
                 if (!individualRow.IsMassNull()) continue;
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
@@ -436,9 +436,9 @@ namespace Mayfly.Extensions
 
         
 
-        public static Data GetBenthosBio(this Data data1)
+        public static Wild.Survey GetBenthosBio(this Wild.Survey data1)
         {
-            Data data = (Data)((DataSet)data1).Copy();
+            Wild.Survey data = (Wild.Survey)((DataSet)data1).Copy();
 
             // Remove unsigned cards
 
@@ -490,15 +490,15 @@ namespace Mayfly.Extensions
                 //    continue;
                 //}
 
-                List<Data.IndividualRow> wRows = speciesRow.GetWeightedIndividualRows();
+                List<Wild.Survey.IndividualRow> wRows = speciesRow.GetWeightedIndividualRows();
 
                 if (wRows.Count == 0) continue;
 
                 string d = "Ширина головной капсулы, мм";
                 string w = "Масса, мг";
-                List<Data.IndividualRow> dRows = wRows.GetMeasuredRows(d);
+                List<Wild.Survey.IndividualRow> dRows = wRows.GetMeasuredRows(d);
                 BivariateSample dSample = new BivariateSample(d, w);
-                foreach (Data.IndividualRow dRow in dRows)
+                foreach (Wild.Survey.IndividualRow dRow in dRows)
                 {
                     dSample.Add(data.GetIndividualValue(dRow, d), dRow.Mass);
                 }

@@ -80,14 +80,6 @@
   <ItemGroup>
     <Compile Include="Extensions\Data.Reporting.cs" />
     <Compile Include="Extensions\Data.cs" />
-    <Compile Include="Equipment.cs">
-      <DependentUpon>Equipment.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Equipment.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Equipment.xsd</DependentUpon>
-    </Compile>
     <Compile Include="FishCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,17 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Equipment.xsc">
-      <DependentUpon>Equipment.xsd</DependentUpon>
-    </None>
-    <None Include="Equipment.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Equipment.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Equipment.xss">
-      <DependentUpon>Equipment.xsd</DependentUpon>
-    </None>
     <None Include="interface\samplerfish.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

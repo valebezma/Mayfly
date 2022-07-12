@@ -10,14 +10,14 @@ namespace Mayfly.Fish
 {
     public static partial class DataExtensions
     {
-        public static string GetSuggestedName(this Data.CardRow cardRow)
+        public static string GetSuggestedName(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.GetSuggestedName(UserSettings.Interface.Extension);
         }
 
-        public static TaxonomicIndex GetSpeciesKey(this Data data)
+        public static TaxonomicIndex GetSpeciesKey(this Wild.Survey data)
         {
-            return Data.GetSpeciesKey((Data.DefinitionRow[])data.Definition.Select());
+            return Wild.Survey.GetSpeciesKey((Wild.Survey.DefinitionRow[])data.Definition.Select());
         }
 
         //public static SpeciesKey GetSpeciesKey(this Data data)
@@ -97,14 +97,14 @@ namespace Mayfly.Fish
 
 
 
-        public static FishSamplerType GetGearType(this Data.CardRow cardRow)
+        public static FishSamplerType GetGearType(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.SamplerRow.GetSamplerType();
         }
 
-        public static string GetSamplerSign(this Data.CardRow cardRow) => cardRow.GetSamplerSign(true);
+        public static string GetSamplerSign(this Wild.Survey.CardRow cardRow) => cardRow.GetSamplerSign(true);
 
-        public static string GetSamplerSign(this Data.CardRow cardRow, bool full)
+        public static string GetSamplerSign(this Wild.Survey.CardRow cardRow, bool full)
         {
             Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
             string result = full ? samplerRow.Sampler : samplerRow.ShortName;
@@ -112,13 +112,13 @@ namespace Mayfly.Fish
             return result;
         }
 
-        public static double GetEffort(this Data.CardRow cardRow)
+        public static double GetEffort(this Wild.Survey.CardRow cardRow)
         {
             if (cardRow.IsSamplerNull()) return double.NaN;
             return GetEffort(cardRow, cardRow.GetGearType().GetDefaultExpression());
         }
 
-        public static double GetEffort(this Data.CardRow cardRow, ExpressionVariant expression)
+        public static double GetEffort(this Wild.Survey.CardRow cardRow, ExpressionVariant expression)
         {
             if (cardRow.IsSamplerNull()) return double.NaN;
             else
@@ -135,7 +135,7 @@ namespace Mayfly.Fish
             return double.NaN;
         }
 
-        public static double GetExposure(this Data.CardRow cardRow)
+        public static double GetExposure(this Wild.Survey.CardRow cardRow)
         {
             if (cardRow.IsVelocityNull()) return double.NaN;
             if (cardRow.IsSpanNull()) return double.NaN;
@@ -143,7 +143,7 @@ namespace Mayfly.Fish
             return cardRow.Velocity * cardRow.Duration.TotalHours * 1000;
         }
 
-        public static double GetSquare(this Data.CardRow cardRow)
+        public static double GetSquare(this Wild.Survey.CardRow cardRow)
         {
             if (!cardRow.IsExactAreaNull()) return cardRow.ExactArea;
 
@@ -359,7 +359,7 @@ namespace Mayfly.Fish
             return double.NaN;
         }
 
-        public static double GetVolume(this Data.CardRow cardRow)
+        public static double GetVolume(this Wild.Survey.CardRow cardRow)
         {
             if (cardRow.IsDepthNull())
             {
@@ -385,7 +385,7 @@ namespace Mayfly.Fish
             }
         }
 
-        public static double GetEffortScore(this Data.CardRow cardRow)
+        public static double GetEffortScore(this Wild.Survey.CardRow cardRow)
         {
             double result = double.NaN;
             if (cardRow.IsSamplerNull()) return result;
@@ -412,7 +412,7 @@ namespace Mayfly.Fish
             return result;
         }
 
-        public static string GetGearClass(this Data.CardRow cardRow)
+        public static string GetGearClass(this Wild.Survey.CardRow cardRow)
         {
             if (cardRow.IsSamplerNull()) return string.Empty;
 
@@ -437,7 +437,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.LogRow logRow)
+        public static double GetAbundance(this Wild.Survey.LogRow logRow)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             return (double)logRow.Quantity / logRow.CardRow.GetEffort();
@@ -448,7 +448,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Data.LogRow logRow, ExpressionVariant variant)
+        public static double GetAbundance(this Wild.Survey.LogRow logRow, ExpressionVariant variant)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             return (double)logRow.Quantity / logRow.CardRow.GetEffort(variant);
@@ -459,7 +459,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Data.LogRow logRow)
+        public static double GetBiomass(this Wild.Survey.LogRow logRow)
         {
             if (logRow.IsMassNull()) return double.NaN;
 
@@ -471,7 +471,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Data.LogRow logRow, ExpressionVariant variant)
+        public static double GetBiomass(this Wild.Survey.LogRow logRow, ExpressionVariant variant)
         {
             if (logRow.IsMassNull()) return double.NaN;
 
@@ -583,7 +583,7 @@ namespace Mayfly.Fish
 
 
 
-        public static string GetDescription(this Data.IndividualRow indRow)
+        public static string GetDescription(this Wild.Survey.IndividualRow indRow)
         {
             List<string> result = new List<string>();
             result.Add(indRow.LogRow.DefinitionRow.KeyRecord.CommonName);
@@ -594,31 +594,31 @@ namespace Mayfly.Fish
             return result.Merge();
         }
 
-        public static string GetDescription(this Data.LogRow logRow)
+        public static string GetDescription(this Wild.Survey.LogRow logRow)
         {
             return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
         }
 
 
-        public static double GetTotalLength(this Data.IndividualRow indRow)
+        public static double GetTotalLength(this Wild.Survey.IndividualRow indRow)
         {
             return indRow.GetAddtValue("TL");
         }
 
-        public static double GetCondition(this Data.IndividualRow indRow)
+        public static double GetCondition(this Wild.Survey.IndividualRow indRow)
         {
             //if (indRow.IsLengthNull()) return double.NaN;
             //if (indRow.IsMassNull()) return double.NaN;
             //return (100.0 * indRow.Mass) / Math.Pow(indRow.Length / 10.0, 3.0);
             if (indRow.IsMassNull()) return double.NaN;
-            Data data = (Data)indRow.Table.DataSet;
+            Wild.Survey data = (Wild.Survey)indRow.Table.DataSet;
             ContinuousBio cb = data.FindMassModel(indRow.Species);
             if (cb == null) return double.NaN;
             double wm = cb.GetValue(indRow.Length);
             return indRow.Mass / wm;
         }
 
-        public static double GetConditionSomatic(this Data.IndividualRow indRow)
+        public static double GetConditionSomatic(this Wild.Survey.IndividualRow indRow)
         {
             //if (indRow.IsLengthNull()) return double.NaN;
             //if (indRow.IsSomaticMassNull()) return double.NaN;
@@ -628,19 +628,19 @@ namespace Mayfly.Fish
         }
 
 
-        public static double GetRelativeFecundity(this Data.IndividualRow indRow)
+        public static double GetRelativeFecundity(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.GetAbsoluteFecundity() / indRow.Mass;
         }
 
-        public static double GetRelativeFecunditySomatic(this Data.IndividualRow indRow)
+        public static double GetRelativeFecunditySomatic(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsSomaticMassNull()) return double.NaN;
             return indRow.GetAbsoluteFecundity() / indRow.SomaticMass;
         }
 
-        public static double GetAbsoluteFecundity(this Data.IndividualRow indRow)
+        public static double GetAbsoluteFecundity(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsGonadSampleNull()) return double.NaN;
@@ -648,21 +648,21 @@ namespace Mayfly.Fish
             return indRow.GonadMass * (indRow.GonadSample / indRow.GonadSampleMass);
         }
 
-        public static double GetGonadIndex(this Data.IndividualRow indRow)
+        public static double GetGonadIndex(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.GonadMass / indRow.Mass;
         }
 
-        public static double GetGonadIndexSomatic(this Data.IndividualRow indRow)
+        public static double GetGonadIndexSomatic(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsSomaticMassNull()) return double.NaN;
             return indRow.GonadMass / indRow.SomaticMass;
         }
 
-        public static double GetAveEggMass(this Data.IndividualRow indRow)
+        public static double GetAveEggMass(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsGonadSampleMassNull()) return double.NaN;
             if (indRow.IsGonadSampleNull()) return double.NaN;
@@ -670,14 +670,14 @@ namespace Mayfly.Fish
         }
 
 
-        public static double GetConsumptionIndex(this Data.IndividualRow indRow)
+        public static double GetConsumptionIndex(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsConsumedMassNull()) return double.NaN;
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.ConsumedMass / indRow.Mass * 10;
         }
 
-        public static int GetDietItemCount(this Data.IndividualRow indRow)
+        public static int GetDietItemCount(this Wild.Survey.IndividualRow indRow)
         {
             if (indRow.IsDietPresented()) {
                 return indRow.GetConsumed().Definition.Count;
@@ -686,32 +686,32 @@ namespace Mayfly.Fish
             return -1;
         }
 
-        public static bool IsDietPresented(this Data.IndividualRow indRow)
+        public static bool IsDietPresented(this Wild.Survey.IndividualRow indRow)
         {
             return (indRow.GetIntestineRows().Length > 0);
         }
 
-        public static Data GetConsumed(this Data.IndividualRow indRow)
+        public static Wild.Survey GetConsumed(this Wild.Survey.IndividualRow indRow)
         {
             return indRow.GetConsumed(false);
         }
 
-        public static Data GetConsumed(this Data.IndividualRow indRow, bool pool)
+        public static Wild.Survey GetConsumed(this Wild.Survey.IndividualRow indRow, bool pool)
         {
-            Data result = new Data(Fish.UserSettings.DietIndex, Benthos.UserSettings.SamplersIndex);
+            Mayfly result = new Data(Fish.UserSettings.DietIndex, Benthos.UserSettings.SamplersIndex);
 
-            foreach (Data.IntestineRow intRow in indRow.GetIntestineRows())
+            foreach (Wild.Survey.IntestineRow intRow in indRow.GetIntestineRows())
             {
-                Data intData = intRow.GetConsumed();
+                Wild.Survey intData = intRow.GetConsumed();
 
                 if (pool)
                 {
                     if (result.Card.Count == 0) { result = intData; }
-                    else { intData.Solitary.CopyLogTo(result.Solitary); }
+                    else { intData.Solitary.CopyLogTo((Wild.Survey.CardRow)result.Solitary); }
                 }
                 else
                 {
-                    intData.CopyTo(result);
+                    intData.CopyTo((Wild.Survey)result);
                 }
             }
 
@@ -723,11 +723,11 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="intRow"></param>
         /// <returns></returns>
-        public static Data GetConsumed(this Data.IntestineRow intRow)
+        public static Wild.Survey GetConsumed(this Wild.Survey.IntestineRow intRow)
         {
-            Data.IndividualRow indRow = intRow.IndividualRow;
+            Wild.Survey.IndividualRow indRow = intRow.IndividualRow;
 
-            Data result = new Data();
+            Wild.Survey result = new Wild.Survey();
 
             if (!intRow.IsConsumedNull()) { result.ReadXml(new StringReader(intRow.Consumed)); }
 
@@ -748,7 +748,7 @@ namespace Mayfly.Fish
             }
             else
             {
-                Data.WaterRow waterRow = result.Water.NewWaterRow();
+                Wild.Survey.WaterRow waterRow = result.Water.NewWaterRow();
                 waterRow.Type = indRow.LogRow.CardRow.WaterRow.Type;
                 waterRow.Water = indRow.LogRow.CardRow.WaterRow.Water;
                 result.Water.AddWaterRow(waterRow);
@@ -759,20 +759,20 @@ namespace Mayfly.Fish
 
             if (!indRow.IsLengthNull())
             {
-                Data.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.LengthUnit);
+                Wild.Survey.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.LengthUnit);
                 if (lengthFactor == null) lengthFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.LengthUnit);
 
-                Data.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, lengthFactor.ID);
+                Wild.Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, lengthFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, lengthFactor, indRow.Length);
                 factorValueRow.Value = indRow.Length;
             }
 
             if (!indRow.IsAgeNull())
             {
-                Data.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.AgeUnit);
+                Wild.Survey.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.AgeUnit);
                 if (ageFactor == null) ageFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.AgeUnit);
 
-                Data.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, ageFactor.ID);
+                Wild.Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, ageFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, ageFactor, indRow.Age);
                 factorValueRow.Value = indRow.Age;
             }
@@ -784,11 +784,11 @@ namespace Mayfly.Fish
 
 
 
-        public static Data GetInfection(this Data.OrganRow organRow)
+        public static Wild.Survey GetInfection(this Wild.Survey.OrganRow organRow)
         {
             if (organRow.IsInfectionNull()) return null;
 
-            Data result = new Data();
+            Wild.Survey result = new Wild.Survey();
             result.ReadXml(new StringReader(organRow.Infection));
 
             if (!organRow.IndividualRow.IsTallyNull())

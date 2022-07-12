@@ -10,33 +10,26 @@ using System.Windows.Forms;
 
 namespace Mayfly.Wild
 {
-    public partial class CardStack : List<Data.CardRow>
+    public partial class CardStack : List<Survey.CardRow>
     {
-        public Data Parent 
-        {
-            get
-            {
-                return this.Count == 0 ? null : (Data)this[0].Table.DataSet;
+        public Survey Parent {
+            get {
+                return this.Count == 0 ? null : (Survey)this[0].Table.DataSet;
             }
         }
 
-        public string CommonPath 
-        {
-            get
-            {
+        public string CommonPath {
+            get {
                 return IO.GetCommonPath(this.GetFilenames());
             }
         }
 
-        public string FriendlyName 
-        {
-            get
-            {
+        public string FriendlyName {
+            get {
                 string result = System.IO.Path.GetFileName(this.CommonPath);
 
-                if (string.IsNullOrWhiteSpace(result))
-                {
-                    result = Mayfly.Resources.Interface.VariousSources;
+                if (string.IsNullOrWhiteSpace(result)) {
+                    result = global::Mayfly.Resources.Interface.VariousSources;
                 }
 
                 return result;
@@ -45,18 +38,14 @@ namespace Mayfly.Wild
 
         public string Name { get; set; }
 
-        public bool IsEmpty 
-        {
-            get
-            {
+        public bool IsEmpty {
+            get {
                 return Parent == null;// GetLogRows().Length == 0;
             }
         }
 
-        public int SpeciesWealth 
-        {
-            get
-            {
+        public int SpeciesWealth {
+            get {
                 return GetSpecies().Length;
             }
         }
@@ -65,9 +54,8 @@ namespace Mayfly.Wild
 
         public CardStack() { }
 
-        public CardStack(IEnumerable<Data.CardRow> cardRows)
-            : this()
-        {
+        public CardStack(IEnumerable<Survey.CardRow> cardRows)
+            : this() {
             //this.Parent = ;
             this.AddRange(cardRows);
             this.Name = string.Format("{0}; {1}.",
@@ -75,13 +63,11 @@ namespace Mayfly.Wild
                 this.GetDates().GetDatesDescription());
         }
 
-        public CardStack(Data data)
-            : this(data.Card)
-        { }
+        public CardStack(Survey data)
+            : this(data.Card) { }
 
 
-        public string ToShortDescription()
-        {
+        public string ToShortDescription() {
             return string.Format("{0}; {1}; {2}.",
                 this.GetInvestigators().Merge(),
                 this.GetWaterNames().Merge(),
@@ -89,12 +75,10 @@ namespace Mayfly.Wild
                 );
         }
 
-        public string[] GetFilenames()
-        {
+        public string[] GetFilenames() {
             List<string> filenames = new List<string>();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.Path == null) continue;
                 if (!filenames.Contains(cardRow.Path))
                     filenames.Add(cardRow.Path);
@@ -105,12 +89,9 @@ namespace Mayfly.Wild
 
 
 
-        public void Merge(CardStack stack)
-        {
-            foreach (Data.CardRow cardRow in stack)
-            {
-                if (!this.Contains(cardRow))
-                {
+        public void Merge(CardStack stack) {
+            foreach (Survey.CardRow cardRow in stack) {
+                if (!this.Contains(cardRow)) {
                     this.Add(cardRow);
                 }
             }
@@ -118,14 +99,11 @@ namespace Mayfly.Wild
 
 
 
-        public List<string> GetSpeciesList()
-        {
+        public List<string> GetSpeciesList() {
             List<string> result = new List<string>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows())
-            {
-                if (!result.Contains(logRow.DefinitionRow.Taxon))
-                {
+            foreach (Survey.LogRow logRow in this.GetLogRows()) {
+                if (!result.Contains(logRow.DefinitionRow.Taxon)) {
                     result.Add(logRow.DefinitionRow.Taxon);
                 }
             }
@@ -133,17 +111,14 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public List<string> GetSpeciesList(CardStack stackToCommon)
-        {
+        public List<string> GetSpeciesList(CardStack stackToCommon) {
             List<string> list1 = this.GetSpeciesList();
             List<string> list2 = stackToCommon.GetSpeciesList();
 
             List<string> result = new List<string>();
 
-            foreach (string species in list1)
-            {
-                if (list2.Contains(species))
-                {
+            foreach (string species in list1) {
+                if (list2.Contains(species)) {
                     result.Add(species);
                 }
             }
@@ -151,14 +126,11 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public Data.LogRow[] GetLogRows()
-        {
-            List<Data.LogRow> result = new List<Data.LogRow>();
+        public Survey.LogRow[] GetLogRows() {
+            List<Survey.LogRow> result = new List<Survey.LogRow>();
 
-            if (Parent != null)
-            {
-                foreach (Data.LogRow logRow in Parent.Log)
-                {
+            if (Parent != null) {
+                foreach (Survey.LogRow logRow in Parent.Log) {
                     if (!this.Contains(logRow.CardRow)) continue;
                     result.Add(logRow);
                 }
@@ -167,14 +139,11 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.LogRow[] GetLogRows(TaxonomicIndex.TaxonRow speciesRow)
-        {
-            List<Data.LogRow> result = new List<Data.LogRow>();
+        public Survey.LogRow[] GetLogRows(TaxonomicIndex.TaxonRow speciesRow) {
+            List<Survey.LogRow> result = new List<Survey.LogRow>();
 
-            if (Parent != null && speciesRow != null)
-            {
-                foreach (Data.LogRow logRow in Parent.Log)
-                {
+            if (Parent != null && speciesRow != null) {
+                foreach (Survey.LogRow logRow in Parent.Log) {
                     if (!speciesRow.Validate(logRow.DefinitionRow.Taxon)) continue;
                     if (!this.Contains(logRow.CardRow)) continue;
                     result.Add(logRow);
@@ -184,37 +153,31 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetIndividualRows()
-        {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+        public Survey.IndividualRow[] GetIndividualRows() {
+            List<Survey.IndividualRow> result = new List<Survey.IndividualRow>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows())
-            {
+            foreach (Survey.LogRow logRow in this.GetLogRows()) {
                 result.AddRange(logRow.GetIndividualRows());
             }
 
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetIndividualRows(TaxonomicIndex.TaxonRow speciesRow)
-        {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+        public Survey.IndividualRow[] GetIndividualRows(TaxonomicIndex.TaxonRow speciesRow) {
+            List<Survey.IndividualRow> result = new List<Survey.IndividualRow>();
 
-            foreach (Data.LogRow logRow in this.GetLogRows(speciesRow))
-            {
+            foreach (Survey.LogRow logRow in this.GetLogRows(speciesRow)) {
                 result.AddRange(logRow.GetIndividualRows());
             }
 
             return result.ToArray();
         }
-        
 
-        
-        public Data.WaterRow[] GetWaters()
-        {
-            List<Data.WaterRow> result = new List<Data.WaterRow>();
-            foreach (Data.CardRow cardRow in this)
-            {
+
+
+        public Survey.WaterRow[] GetWaters() {
+            List<Survey.WaterRow> result = new List<Survey.WaterRow>();
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWaterIDNull()) continue;
                 if (result.Contains(cardRow.WaterRow)) continue;
                 result.Add(cardRow.WaterRow);
@@ -222,11 +185,9 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public string[] GetWaterNames()
-        {
+        public string[] GetWaterNames() {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWaterIDNull()) continue;
                 string waterDescription = cardRow.WaterRow.Presentation;
                 if (result.Contains(waterDescription)) continue;
@@ -236,11 +197,9 @@ namespace Mayfly.Wild
         }
 
 
-        public string[] GetInvestigators()
-        {
+        public string[] GetInvestigators() {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 string investigator = cardRow.Investigator;
                 if (result.Contains(investigator)) continue;
                 result.Add(investigator);
@@ -249,11 +208,9 @@ namespace Mayfly.Wild
         }
 
 
-        public DateTime[] GetDates()
-        {
+        public DateTime[] GetDates() {
             List<DateTime> result = new List<DateTime>();
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWhenNull()) continue;
                 if (result.Contains(cardRow.When.Date)) continue;
                 result.Add(cardRow.When.Date);
@@ -262,14 +219,11 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public DateTime EarliestEvent
-        {
-            get
-            {
+        public DateTime EarliestEvent {
+            get {
                 DateTime result = DateTime.Now;
 
-                foreach (Data.CardRow cardRow in this)
-                {
+                foreach (Survey.CardRow cardRow in this) {
                     if (cardRow.WhenStarted < result) result = cardRow.WhenStarted;
                 }
 
@@ -277,14 +231,11 @@ namespace Mayfly.Wild
             }
         }
 
-        public DateTime LatestEvent
-        {
-            get
-            {
+        public DateTime LatestEvent {
+            get {
                 DateTime result = DateTime.FromOADate(0.0);
 
-                foreach (Data.CardRow cardRow in this)
-                {
+                foreach (Survey.CardRow cardRow in this) {
                     if (cardRow.When > result) result = cardRow.When;
                 }
 
@@ -292,14 +243,11 @@ namespace Mayfly.Wild
             }
         }
 
-        public Waypoint[] GetLocations()
-        {
+        public Waypoint[] GetLocations() {
             List<Waypoint> result = new List<Waypoint>();
 
-            foreach (Data.CardRow cardRow in this)
-            {
-                if (!(cardRow.Position == null))
-                {
+            foreach (Survey.CardRow cardRow in this) {
+                if (!(cardRow.Position == null)) {
                     result.Add(cardRow.Position);
                 }
             }
@@ -307,24 +255,20 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int[] GetYears()
-        {
+        public int[] GetYears() {
             return GetDates().GetYears();
         }
 
-                      
 
-        public static CardStack ConvertFrom(Data data)
-        {
+
+        public static CardStack ConvertFrom(Survey data) {
             return new CardStack(data.Card);
         }
 
-        public CardStack GetStack(DateTime day)
-        {
+        public CardStack GetStack(DateTime day) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWhenNull()) continue;
                 if (cardRow.When.Date != day.Date) continue;
 
@@ -336,12 +280,10 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public CardStack GetStack(DateTime from, DateTime to)
-        {
+        public CardStack GetStack(DateTime from, DateTime to) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWhenNull()) continue;
                 if (cardRow.When.Date < from) continue;
                 if (cardRow.When.Date > to) continue;
@@ -351,12 +293,10 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public CardStack GetStack(int year)
-        {
+        public CardStack GetStack(int year) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWhenNull()) continue;
                 if (cardRow.When.Year != year) continue;
 
@@ -368,14 +308,12 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public CardStack GetStack(Samplers.SamplerRow samplerRow)
-        {
+        public CardStack GetStack(Survey.SamplerRow samplerRow) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
-                if (cardRow.IsSamplerNull()) continue;
-                if (cardRow.Sampler != samplerRow.ID) continue;
+            foreach (Survey.CardRow cardRow in this) {
+                if (cardRow.IsEqpIDNull()) continue;
+                if (cardRow.SamplerRow != samplerRow) continue;
 
                 result.Add(cardRow);
             }
@@ -383,12 +321,10 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public CardStack GetStack(Data.WaterRow waterRow)
-        {
+        public CardStack GetStack(Survey.WaterRow waterRow) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 if (cardRow.IsWaterIDNull()) continue;
                 if (cardRow.WaterRow != waterRow) continue;
 
@@ -398,17 +334,14 @@ namespace Mayfly.Wild
             return result;
         }
 
-        public CardStack GetStack(string field, object value)
-        {
+        public CardStack GetStack(string field, object value) {
             return GetStack(field, value, string.Empty);
         }
 
-        public CardStack GetStack(string field, object value, string format)
-        {
+        public CardStack GetStack(string field, object value, string format) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this)
-            {
+            foreach (Survey.CardRow cardRow in this) {
                 string valueFormatted = value.Format(format);
                 string cardFormatted = cardRow.GetValue(field).Format(format);
 
@@ -420,31 +353,25 @@ namespace Mayfly.Wild
         }
 
 
-        public TaxonomicIndex.TaxonRow[] GetSpecies()
-        {
+        public TaxonomicIndex.TaxonRow[] GetSpecies() {
             return GetSpecies(0);
         }
 
-        public TaxonomicIndex.TaxonRow[] GetSpecies(int minimalSample)
-        {
+        public TaxonomicIndex.TaxonRow[] GetSpecies(int minimalSample) {
             List<TaxonomicIndex.TaxonRow> result = new List<TaxonomicIndex.TaxonRow>();
 
-            if (Parent != null)
-            {
-                foreach (Data.DefinitionRow spcRow in Parent.Definition)
-                {
+            if (Parent != null) {
+                foreach (Survey.DefinitionRow spcRow in Parent.Definition) {
                     TaxonomicIndex.TaxonRow currentRecord = spcRow.KeyRecord;
 
-                    if (currentRecord == null)
-                    {
+                    if (currentRecord == null) {
                         TaxonomicIndex.TaxonRow newSpcRow = ReaderSettings.TaxonomicIndex.Taxon.NewTaxonRow(spcRow.Rank, spcRow.Taxon);
                         currentRecord = newSpcRow;
                     }
 
                     if (minimalSample > 0 && Quantity(currentRecord) < minimalSample) continue;
 
-                    if (!result.Contains(currentRecord))
-                    {
+                    if (!result.Contains(currentRecord)) {
                         result.Add(currentRecord);
                     }
                 }
@@ -455,18 +382,13 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public int GetOccurrenceCases(TaxonomicIndex.TaxonRow[] speciesRows)
-        {
+        public int GetOccurrenceCases(TaxonomicIndex.TaxonRow[] speciesRows) {
             int result = 0;
 
-            foreach (Data.CardRow cardRow in this)
-            {
-                foreach (Data.LogRow logRow in cardRow.GetLogRows())
-                {
-                    foreach (TaxonomicIndex.TaxonRow speciesRow in speciesRows)
-                    {
-                        if (speciesRow.Validate(logRow.DefinitionRow.Taxon))
-                        {
+            foreach (Survey.CardRow cardRow in this) {
+                foreach (Survey.LogRow logRow in cardRow.GetLogRows()) {
+                    foreach (TaxonomicIndex.TaxonRow speciesRow in speciesRows) {
+                        if (speciesRow.Validate(logRow.DefinitionRow.Taxon)) {
                             result++;
                             goto Next;
                         }
@@ -482,13 +404,11 @@ namespace Mayfly.Wild
 
 
 
-        public Samplers.SamplerRow[] GetSamplers()
-        {
-            List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
+        public Survey.SamplerRow[] GetSamplers() {
+            List<Survey.SamplerRow> result = new List<Survey.SamplerRow>();
 
-            foreach (Data.CardRow cardRow in this)
-            {
-                if (cardRow.IsSamplerNull()) continue;
+            foreach (Survey.CardRow cardRow in this) {
+                if (cardRow.IsEqpIDNull()) continue;
                 if (cardRow.SamplerRow == null) continue;
                 if (result.Contains(cardRow.SamplerRow)) continue;
                 result.Add(cardRow.SamplerRow);
@@ -497,40 +417,34 @@ namespace Mayfly.Wild
             return result.ToArray();
         }
 
-        public string[] GetSamplersList()
-        {
+        public string[] GetSamplersList() {
             List<string> result = new List<string>();
 
-            foreach (Samplers.SamplerRow samplerRow in this.GetSamplers())
-            {
-                result.Add(samplerRow.Sampler);
+            foreach (Survey.SamplerRow samplerRow in GetSamplers()) {
+                result.Add(samplerRow.Name);
             }
 
             return result.ToArray();
-        }              
-
-        
-
-        public override string ToString()
-        {
-            return string.Format("{0}: {1} cards", Name, Count);
-        }
-
-        public string ToString(string format)
-        {
-            return string.Format("{0}: {1} cards", Name, Count);
-
-        }
-
-        public string ToString(string format, IFormatProvider provider)
-        {
-            return string.Format("{0}: {1} cards", Name, Count);
         }
 
 
 
-        public void AddCommon(Report report, string[] prompts, string[] values, string[] notices)
-        {
+        public override string ToString() {
+            return string.Format("{0}: {1} cards", Name, Count);
+        }
+
+        public string ToString(string format) {
+            return string.Format("{0}: {1} cards", Name, Count);
+
+        }
+
+        public string ToString(string format, IFormatProvider provider) {
+            return string.Format("{0}: {1} cards", Name, Count);
+        }
+
+
+
+        public void AddCommon(Report report, string[] prompts, string[] values, string[] notices) {
             List<string> _prompts = new List<string>();
             List<string> _values = new List<string>();
 
@@ -549,7 +463,7 @@ namespace Mayfly.Wild
             _values.AddRange(values);
 
             Report.Table t = Report.Table.GetLinedTable(_prompts.ToArray(), _values.ToArray(), notices);
-            t.MarkNotices = false;            
+            t.MarkNotices = false;
             report.AddTable(t, "fill");
         }
 
@@ -562,32 +476,25 @@ namespace Mayfly.Wild
         public void AddCommon(Report report) => this.AddCommon(report, new string[] { }, new string[] { });
 
 
-        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<TaxonomicIndex.TaxonRow, int> resultsCounter)
-        {
-            for (int i = 0; i < item.DropDownItems.Count; i++)
-            {
-                if (item.DropDownItems[i].Tag != null)
-                {
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command, Func<TaxonomicIndex.TaxonRow, int> resultsCounter) {
+            for (int i = 0; i < item.DropDownItems.Count; i++) {
+                if (item.DropDownItems[i].Tag != null) {
                     item.DropDownItems.RemoveAt(i);
                     i--;
                 }
             }
 
-            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator))
-            {
+            if (item.DropDownItems.Count > 0 && !(item.DropDownItems[item.DropDownItems.Count - 1] is ToolStripSeparator)) {
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
             int added = 0;
 
-            foreach (TaxonomicIndex.TaxonRow speciesRow in this.GetSpecies())
-            {
+            foreach (TaxonomicIndex.TaxonRow speciesRow in this.GetSpecies()) {
                 int s = resultsCounter.Invoke(speciesRow);
 
-                if (s != 0)
-                {
-                    ToolStripItem _item = new ToolStripMenuItem
-                    {
+                if (s != 0) {
+                    ToolStripItem _item = new ToolStripMenuItem {
                         Tag = speciesRow
                     };
                     string txt = speciesRow.ToString("s");
@@ -598,8 +505,7 @@ namespace Mayfly.Wild
                 }
             }
 
-            if (added == 0)
-            {
+            if (added == 0) {
                 item.Enabled = false;
             }
 
@@ -607,8 +513,7 @@ namespace Mayfly.Wild
 
         }
 
-        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command)
-        {
+        public void PopulateSpeciesMenu(ToolStripMenuItem item, EventHandler command) {
             PopulateSpeciesMenu(item, command, (s) => { return -1; });
         }
     }

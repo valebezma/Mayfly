@@ -13,16 +13,16 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensions
     {
-        public static string[] GetVariantsOf(this Data data, string field)
+        public static string[] GetVariantsOf(this Wild.Survey data, string field)
         {
             return data.GetVariantsOf(field, string.Empty);
         }
 
-        public static string[] GetVariantsOf(this Data data, string field, string format)
+        public static string[] GetVariantsOf(this Wild.Survey data, string field, string format)
         {
             List<string> result = new List<string>();
 
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 object value = cardRow.Get(field);
 
@@ -43,11 +43,11 @@ namespace Mayfly.Extensions
 
 
 
-        public static int GetCount(this IList<Data.IndividualRow> individualRows)
+        public static int GetCount(this IList<Wild.Survey.IndividualRow> individualRows)
         {
             int result = 0;
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
@@ -55,9 +55,9 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double[] GetMass(this IList<Data.IndividualRow> individualRows)
+        public static double[] GetMass(this IList<Wild.Survey.IndividualRow> individualRows)
         {
-            Data data = (Data)individualRows[0].Table.DataSet;
+            Wild.Survey data = (Wild.Survey)individualRows[0].Table.DataSet;
             return data.Individual.MassColumn.GetDoubles(individualRows).ToArray();
 
             //List<double> result = new List<double>();
@@ -71,7 +71,7 @@ namespace Mayfly.Extensions
             //return result.ToArray();
         }
 
-        public static double GetAverageMass(this IList<Data.IndividualRow> individualRows)
+        public static double GetAverageMass(this IList<Wild.Survey.IndividualRow> individualRows)
         {
             Sample mass = new Sample(GetMass(individualRows));
             return mass.Count > 0 ? mass.Mean : double.NaN;
@@ -95,18 +95,18 @@ namespace Mayfly.Extensions
             //}
         }
 
-        public static List<Data.IndividualRow> GetMeasuredRows(this IList<Data.IndividualRow> rows, string variable)
+        public static List<Wild.Survey.IndividualRow> GetMeasuredRows(this IList<Wild.Survey.IndividualRow> rows, string variable)
         {
-            return rows.GetMeasuredRows(((Data)rows[0].Table.DataSet).Variable.FindByVarName(variable));
+            return rows.GetMeasuredRows(((Wild.Survey)rows[0].Table.DataSet).Variable.FindByVarName(variable));
         }
 
-        public static List<Data.IndividualRow> GetMeasuredRows(this IList<Data.IndividualRow> rows, Data.VariableRow variableRow)
+        public static List<Wild.Survey.IndividualRow> GetMeasuredRows(this IList<Wild.Survey.IndividualRow> rows, Wild.Survey.VariableRow variableRow)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in rows)
+            foreach (Wild.Survey.IndividualRow individualRow in rows)
             {
-                foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+                foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
                 {
                     if (valueRow.VariableRow.Variable == variableRow.Variable && 
                         !valueRow.IsValueNull() && !result.Contains(individualRow))
@@ -120,11 +120,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetMeasuredRows(this IList<Data.IndividualRow> rows, DataColumn dataColumn)
+        public static List<Wild.Survey.IndividualRow> GetMeasuredRows(this IList<Wild.Survey.IndividualRow> rows, DataColumn dataColumn)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in rows)
+            foreach (Wild.Survey.IndividualRow individualRow in rows)
             {
                 if (individualRow.IsNull(dataColumn)) continue;
                 result.Add(individualRow);

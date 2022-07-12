@@ -4,9 +4,9 @@ using Mayfly.Wild;
 
 namespace Mayfly.Fish.Explorer
 {
-    public class IndividualRegSorter : IComparer<Data.IndividualRow>
+    public class IndividualRegSorter : IComparer<Wild.Survey.IndividualRow>
     {
-        public int Compare(Data.IndividualRow x, Data.IndividualRow y)
+        public int Compare(Wild.Survey.IndividualRow x, Wild.Survey.IndividualRow y)
         {
             return new OmniSorter().Compare(x.Tally, y.Tally);
         }

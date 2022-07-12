@@ -9,7 +9,7 @@ using Mayfly.Species;
 
 namespace Mayfly.Wild
 {
-    partial class Data
+    partial class Survey
     {
         public bool IsBioLoaded
         {
@@ -42,7 +42,7 @@ namespace Mayfly.Wild
         public string[] GetAuthors()
         {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in this.Card)
+            foreach (Survey.CardRow cardRow in this.Card)
             {
                 if (string.IsNullOrWhiteSpace(cardRow.Investigator)) continue;
                 string investigator = cardRow.Investigator;
@@ -55,7 +55,7 @@ namespace Mayfly.Wild
         public string[] GetPlaces()
         {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in this.Card)
+            foreach (Survey.CardRow cardRow in this.Card)
             {
                 if (cardRow.IsWaterIDNull()) continue;
                 string waterDescription = cardRow.WaterRow.Presentation;
@@ -68,7 +68,7 @@ namespace Mayfly.Wild
         public DateTime[] GetDates()
         {
             List<DateTime> result = new List<DateTime>();
-            foreach (Data.CardRow cardRow in this.Card)
+            foreach (Survey.CardRow cardRow in this.Card)
             {
                 if (cardRow.IsWhenNull()) continue;
                 if (result.Contains(cardRow.When.Date)) continue;
@@ -139,7 +139,7 @@ namespace Mayfly.Wild
 
         public void ImportBio(string filename, bool clearExisted)
         {
-            Data data = new Data();
+            Survey data = new Survey();
             data.SetAttributable();
             string contents = StringCipher.Decrypt(File.ReadAllText(filename), "bio");
             //string contents = File.ReadAllText(filename);
@@ -178,7 +178,7 @@ namespace Mayfly.Wild
 
             data.Dispose();
 
-            Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(filename));
+            global::Mayfly.Log.Write("Bio {0} is loaded.", Path.GetFileNameWithoutExtension(filename));
         }
 
         public void ImportBio(string filename)

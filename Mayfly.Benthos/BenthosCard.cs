@@ -279,7 +279,7 @@ namespace Mayfly.Benthos
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxDepth, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMethod, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.buttonGear, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
             // 
             // comboBoxSampler
             // 
@@ -288,7 +288,7 @@ namespace Mayfly.Benthos
             // 
             // buttonGear
             // 
-            this.buttonGear.TabIndex = 2;
+            this.buttonEquipment.TabIndex = 2;
             // 
             // labelBank
             // 
@@ -1282,7 +1282,7 @@ namespace Mayfly.Benthos
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
                 if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
 
-                    Data.LogRow logRow = Logger.SaveLogRow(gridRow);
+                    Wild.Survey.LogRow logRow = Logger.SaveLogRow(gridRow);
                     Individuals individuals = null;
 
                     foreach (Form form in Application.OpenForms) {

@@ -60,7 +60,7 @@ namespace Mayfly.Benthos.Explorer
             return result;
         }
 
-        public static ListViewItem[] CardValueItems(Data data)
+        public static ListViewItem[] CardValueItems(Wild.Survey data)
         {
             List<ListViewItem> result = new List<ListViewItem>();
 
@@ -77,7 +77,7 @@ namespace Mayfly.Benthos.Explorer
             result.Add(Service.LocalizedItem("DiversityA"));
             result.Add(Service.LocalizedItem("DiversityB"));
 
-            foreach (Data.FactorRow Factor in data.Factor)
+            foreach (Wild.Survey.FactorRow Factor in data.Factor)
             {
                 result.Add(LocalizedItem(Factor.Factor));
             }
@@ -122,7 +122,7 @@ namespace Mayfly.Benthos.Explorer
             }
         }
 
-        public static void SaveAssociates(Data.DefinitionRow speciesRow, TaxonomicIndex.TaxonRow[] associates)
+        public static void SaveAssociates(Wild.Survey.DefinitionRow speciesRow, TaxonomicIndex.TaxonRow[] associates)
         {
             if (associates != null)
             {

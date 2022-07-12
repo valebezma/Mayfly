@@ -77,7 +77,7 @@ namespace Mayfly.Plankton
             }
         }
 
-        public Data Data { get; set; }
+        public Wild.Survey Data { get; set; }
 
         public Samplers.SamplerRow SelectedSampler
         {
@@ -214,7 +214,7 @@ namespace Mayfly.Plankton
 
         private void SaveData()
         {
-            Data.CardRow cardRow = SaveCardRow();
+            Wild.Survey.CardRow cardRow = SaveCardRow();
 
             #region Save environment data
 
@@ -282,7 +282,7 @@ namespace Mayfly.Plankton
             Data.ClearUseless();
         }
 
-        public Data.CardRow SaveCardRow()
+        public Wild.Survey.CardRow SaveCardRow()
         {
             #region Header
 
@@ -310,7 +310,7 @@ namespace Mayfly.Plankton
 
         WaterSave:
 
-            Data.WaterRow newWaterRow = Data.Water.NewWaterRow();
+            Wild.Survey.WaterRow newWaterRow = Data.Water.NewWaterRow();
             newWaterRow.ID = waterSelector.WaterObject.ID;
             newWaterRow.Type = waterSelector.WaterObject.Type;
             if (!waterSelector.WaterObject.IsWaterNull())
@@ -636,7 +636,7 @@ namespace Mayfly.Plankton
             if (Data.Factor.Count > 0)
             {
                 tabPageFactors.Parent = tabControl;
-                foreach (Data.FactorValueRow factorValueRow in Data.FactorValue)
+                foreach (Wild.Survey.FactorValueRow factorValueRow in Data.FactorValue)
                 {
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetAddt);

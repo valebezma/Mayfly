@@ -15,7 +15,7 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class ExpressCatch : Form
     {
-        public Wild.Data Data { get; set; }
+        public Wild.Survey Data { get; set; }
 
         public Surveys.ActionRow ActionRow { get; set; }
 

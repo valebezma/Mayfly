@@ -13,14 +13,15 @@ using static Mayfly.Wild.UserSettings;
 
 namespace Mayfly.Wild
 {
-    public partial class Card : Form
-    {
+    public partial class Card : Form {
         private string filename;
-        protected Data data = new Data();
+        protected Survey data = new Survey();
         protected bool isChanged;
         protected EventHandler saved;
         protected EventHandler waterSelected;
         protected EventHandler cleared;
+        protected EquipmentEventHandler equipmentSaved;
+        protected EquipmentEventHandler equipmentSelected;
 
         [Category("Mayfly Events"), Browsable(true)]
         public event EventHandler OnSaved {
@@ -38,6 +39,28 @@ namespace Mayfly.Wild
         public event EventHandler OnCleared {
             add { cleared += value; }
             remove { cleared -= value; }
+        }
+
+        [Category("Mayfly Events"), Browsable(true)]
+        public event EquipmentEventHandler OnEquipmentSelected {
+            add { equipmentSelected += value; }
+            remove { equipmentSelected -= value; }
+        }
+
+        [Category("Mayfly Events"), Browsable(true)]
+        public event EquipmentEventHandler OnEquipmentSaved {
+            add { equipmentSaved += value; }
+            remove { equipmentSaved -= value; }
+        }
+
+        public Survey.SamplerRow SelectedSampler {
+            get {
+                return comboBoxSampler.SelectedItem as Survey.SamplerRow;
+            }
+
+            set {
+                comboBoxSampler.SelectedItem = value;
+            }
         }
 
 
@@ -157,7 +180,7 @@ namespace Mayfly.Wild
 
             #region Sampling
 
-            if (data.Solitary.IsSamplerNull()) {
+            if (data.Solitary.IsEqpIDNull()) {
                 comboBoxSampler.SelectedIndex = -1;
             } else {
                 SelectedSampler = data.Solitary.SamplerRow;
@@ -199,7 +222,7 @@ namespace Mayfly.Wild
             spreadSheetAddt.Rows.Clear();
             if (data.Factor.Count > 0) {
                 tabPageFactors.Parent = tabControl;
-                foreach (Data.FactorValueRow factorValueRow in data.FactorValue) {
+                foreach (Survey.FactorValueRow factorValueRow in data.FactorValue) {
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetAddt);
                     gridRow.Cells[ColumnAddtFactor.Index].Value = factorValueRow.FactorRow.Factor;
@@ -224,24 +247,23 @@ namespace Mayfly.Wild
         }
 
         private void loadEquipment() {
-            contextSampler.Items.Clear();
-
-            foreach (Equipment.UnitsRow unitRow in UserSettings.Equipment.Units) {
+            contextEquipment.Items.Clear();
+            foreach (Survey.EquipmentRow eqpRow in Equipment.Equipment) {
                 ToolStripMenuItem item = new ToolStripMenuItem();
-                item.Text = unitRow.ToString();
+                item.Text = eqpRow.ToString();
                 item.Click += (o, e) => {
-                    comboBoxSampler.SelectedItem = ReaderSettings.SamplersIndex.Sampler.FindByID(unitRow.SamplerID);
-                    if (!unitRow.IsMeshNull()) textBoxMesh.Text = unitRow.Mesh.ToString();
-                    if (!unitRow.IsHookNull()) textBoxHook.Text = unitRow.Hook.ToString();
-                    if (!unitRow.IsLengthNull()) textBoxLength.Text = unitRow.Length.ToString();
-                    if (!unitRow.IsHeightNull()) textBoxHeight.Text = unitRow.Height.ToString();
-                    if (!unitRow.IsOpeningNull()) textBoxOpening.Text = unitRow.Opening.ToString();
+                    comboBoxSampler.SelectedItem = SamplersIndex.Sampler.FindByID(eqpRow.SmpID);
+                    if (equipmentSelected != null) equipmentSelected.Invoke(this, new EquipmentEventArgs(eqpRow));
+                    //if (!unitRow.IsMeshNull()) textBoxMesh.Text = unitRow.Mesh.ToString();
+                    //if (!unitRow.IsHookNull()) textBoxHook.Text = unitRow.Hook.ToString();
+                    //if (!unitRow.IsLengthNull()) textBoxLength.Text = unitRow.Length.ToString();
+                    //if (!unitRow.IsHeightNull()) textBoxHeight.Text = unitRow.Height.ToString();
+                    //if (!unitRow.IsOpeningNull()) textBoxOpening.Text = unitRow.Opening.ToString();
                 };
-                contextGear.Items.Add(item);
+                contextEquipment.Items.Add(item);
             }
 
-            buttonGear.Visible = contextGear.Items.Count > 0;
-
+            buttonEquipment.Visible = contextEquipment.Items.Count > 0;
         }
 
         private void saveCollect() {
@@ -254,7 +276,7 @@ namespace Mayfly.Wild
             if (waterSelector.IsWaterSelected) {
                 if (data.Solitary.WaterID == waterSelector.WaterObject.ID) { } else {
 
-                    Data.WaterRow newWaterRow = data.Water.NewWaterRow();
+                    Survey.WaterRow newWaterRow = data.Water.NewWaterRow();
                     newWaterRow.ID = waterSelector.WaterObject.ID;
                     newWaterRow.Type = waterSelector.WaterObject.Type;
                     if (!waterSelector.WaterObject.IsWaterNull()) {
@@ -290,11 +312,21 @@ namespace Mayfly.Wild
         }
 
         private void saveSampler() {
+
+            data.Virtue.Clear();
+            data.SamplerVirtue.Clear();
+            data.Sampler.Clear();
+            data.Equipment.Clear();
+
             if (SelectedSampler == null) {
-                data.Solitary.SetSamplerNull();
-            } else {
-                data.Solitary.Sampler = SelectedSampler.ID;
+                data.Solitary.SetEqpIDNull();
+                return;
             }
+
+            Survey.SamplerRow sampleRow = SelectedSampler.CopyTo(data.Sampler);
+            data.Solitary.EquipmentRow = data.Equipment.AddEquipmentRow(sampleRow);
+            if (equipmentSaved != null) equipmentSaved.Invoke(this, new EquipmentEventArgs(data.Solitary.EquipmentRow));
+            loadEquipment();
         }
 
         private void saveEnvironment() {

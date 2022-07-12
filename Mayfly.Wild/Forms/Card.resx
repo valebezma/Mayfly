@@ -792,34 +792,34 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="buttonGear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonEquipment.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonGear.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonEquipment.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 61</value>
   </data>
-  <data name="buttonGear.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonEquipment.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="buttonGear.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonEquipment.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="buttonGear.Text" xml:space="preserve">
+  <data name="buttonEquipment.Text" xml:space="preserve">
     <value>Equipment</value>
   </data>
-  <data name="buttonGear.Visible" type="System.Boolean, mscorlib">
+  <data name="buttonEquipment.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;buttonGear.Name" xml:space="preserve">
-    <value>buttonGear</value>
+  <data name="&gt;&gt;buttonEquipment.Name" xml:space="preserve">
+    <value>buttonEquipment</value>
   </data>
-  <data name="&gt;&gt;buttonGear.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonEquipment.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonGear.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonEquipment.Parent" xml:space="preserve">
     <value>tabPageSampler</value>
   </data>
-  <data name="&gt;&gt;buttonGear.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonEquipment.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="comboBoxSampler.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1263,16 +1263,16 @@
   <metadata name="Logger.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>524, 17</value>
   </metadata>
-  <metadata name="contextSampler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="contextEquipment.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>614, 17</value>
   </metadata>
-  <data name="contextSampler.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextEquipment.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 26</value>
   </data>
-  <data name="&gt;&gt;contextSampler.Name" xml:space="preserve">
-    <value>contextSampler</value>
+  <data name="&gt;&gt;contextEquipment.Name" xml:space="preserve">
+    <value>contextEquipment</value>
   </data>
-  <data name="&gt;&gt;contextSampler.Type" xml:space="preserve">
+  <data name="&gt;&gt;contextEquipment.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

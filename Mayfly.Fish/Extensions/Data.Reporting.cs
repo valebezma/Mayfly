@@ -12,9 +12,9 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="indRow"></param>
         /// <param name="report"></param>
-        public static void AddReport(this Data.IndividualRow indRow, Report report)
+        public static void AddReport(this Wild.Survey.IndividualRow indRow, Report report)
         {
-            Data.CardRow cardRow = indRow.LogRow.CardRow;
+            Wild.Survey.CardRow cardRow = indRow.LogRow.CardRow;
 
             ResourceManager resources = new ResourceManager(typeof(Individual));
             ResourceManager cardResources = new ResourceManager(typeof(Card));
@@ -333,7 +333,7 @@ namespace Mayfly.Fish
 
             for (int section = -1; section < 6; section++)
             {
-                Data.IntestineRow intestineRow = ((Data)indRow.Table.DataSet).Intestine.FindByIndIDSection(indRow.ID, section);
+                Wild.Survey.IntestineRow intestineRow = ((Wild.Survey)indRow.Table.DataSet).Intestine.FindByIndIDSection(indRow.ID, section);
 
                 table6.StartRow();
 
@@ -378,16 +378,16 @@ namespace Mayfly.Fish
 
             //report.BreakPage();
 
-            foreach (Data.IntestineRow intestineRow in indRow.GetIntestineRows())
+            foreach (Wild.Survey.IntestineRow intestineRow in indRow.GetIntestineRows())
             {
                 if (!intestineRow.IsConsumedNull())
                 {
-                    Data consumedData = intestineRow.GetConsumed();
+                    Wild.Survey consumedData = intestineRow.GetConsumed();
                     // Add log
                     report.AddTable(consumedData.Solitary.GetLogReport(resources.GetString("ColumnTrpMass.HeaderText"), Service.Section(intestineRow.Section)));
 
                     // Add consumed individuals log for each food component
-                    foreach (Data.LogRow logRow in consumedData.Log.Rows)
+                    foreach (Wild.Survey.LogRow logRow in consumedData.Log.Rows)
                     {
                         Benthos.DataExtensions.AddReport(logRow, report);
                         // It adds log like fish
@@ -410,7 +410,7 @@ namespace Mayfly.Fish
                         resources.GetString("ColumnParasiteComments.HeaderText") },
                     new double[] { .40, .20, .40 });
 
-                foreach (Data.OrganRow infectedOrganRow in indRow.GetOrganRows())
+                foreach (Wild.Survey.OrganRow infectedOrganRow in indRow.GetOrganRows())
                 {
                     report.WriteLine("<tbody>");
 
@@ -428,7 +428,7 @@ namespace Mayfly.Fish
 
                     table7.EndRow();
 
-                    foreach (Data.LogRow logRow in infectedOrganRow.GetInfection().Log)
+                    foreach (Wild.Survey.LogRow logRow in infectedOrganRow.GetInfection().Log)
                     {
                         table7.StartRow();
 
@@ -465,7 +465,7 @@ namespace Mayfly.Fish
             if (indRow.GetValueRows().Length > 0)
             {
                 Report.Table table8 = new Report.Table(resources.GetString("tabPageAddt.Text"));
-                foreach (Data.ValueRow valueRow in indRow.GetValueRows())
+                foreach (Wild.Survey.ValueRow valueRow in indRow.GetValueRows())
                 {
                     table8.StartRow();
                     table8.AddCellPrompt(valueRow.VariableRow.Variable,
@@ -482,7 +482,7 @@ namespace Mayfly.Fish
         /// <param name="cardRow"></param>
         /// <param name="report"></param>
         /// <param name="level"></param>
-        public static void AddReport(this Data.CardRow cardRow, Report report, CardReportLevel level)
+        public static void AddReport(this Wild.Survey.CardRow cardRow, Report report, CardReportLevel level)
         {
             ResourceManager resources = new ResourceManager(typeof(Card));
 
@@ -618,7 +618,7 @@ namespace Mayfly.Fish
                     table5.AddHeader(new string[]{ Wild.Resources.Reports.Caption.Factor,
                             Wild.Resources.Reports.Caption.FactorValue }, new double[] { .80 });
 
-                    foreach (Data.FactorValueRow FVR in cardRow.GetFactorValueRows())
+                    foreach (Wild.Survey.FactorValueRow FVR in cardRow.GetFactorValueRows())
                     {
                         table5.StartRow();
                         table5.AddCell(FVR.FactorRow.Factor);
@@ -644,7 +644,7 @@ namespace Mayfly.Fish
 
             if (level.HasFlag(CardReportLevel.Log))
             {
-                Data.LogRow[] LogRows = cardRow.GetLogRows();
+                Wild.Survey.LogRow[] LogRows = cardRow.GetLogRows();
 
                 report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
@@ -659,14 +659,14 @@ namespace Mayfly.Fish
                 }
             }
 
-            List<Data.IndividualRow> individualRows = new List<Data.IndividualRow>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            List<Wild.Survey.IndividualRow> individualRows = new List<Wild.Survey.IndividualRow>();
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 individualRows.AddRange(logRow.GetIndividualRows());
             }
 
-            List<Data.StratifiedRow> stratifiedRows = new List<Data.StratifiedRow>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            List<Wild.Survey.StratifiedRow> stratifiedRows = new List<Wild.Survey.StratifiedRow>();
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 stratifiedRows.AddRange(logRow.GetStratifiedRows());
             }
@@ -675,7 +675,7 @@ namespace Mayfly.Fish
             {
                 if (UserSettings.ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
                 report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
-                foreach (Data.LogRow logRow in cardRow.GetLogRows())
+                foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
                 {
                     string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
                     logRow.AddReport(report, level, speciesPresentation, string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));

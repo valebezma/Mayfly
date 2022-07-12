@@ -10,11 +10,11 @@ namespace Mayfly.Extensions
 {
     public static class LogRowExtensions
     {
-        public static List<Data.IndividualRow> GetUnweightedIndividualRows(this Data.LogRow logRow)
+        public static List<Wild.Survey.IndividualRow> GetUnweightedIndividualRows(this Wild.Survey.LogRow logRow)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
                 if (!individualRow.IsMassNull()) continue;
                 result.Add(individualRow);
@@ -23,7 +23,7 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Unweighted(this Data.LogRow logRow)
+        public static int Unweighted(this Wild.Survey.LogRow logRow)
         {
             int result = 0;
 
@@ -42,7 +42,7 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int UnweightedIndividuals(this Data.LogRow logRow)
+        public static int UnweightedIndividuals(this Wild.Survey.LogRow logRow)
         {
             return logRow.GetUnweightedIndividualRows().GetCount();
         }

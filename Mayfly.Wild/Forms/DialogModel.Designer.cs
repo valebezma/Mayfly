@@ -36,7 +36,7 @@
             this.buttonTrend = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.statChart1 = new Mayfly.Mathematics.Charts.Plot();
+            this.statChart1 = new global::Mayfly.Mathematics.Charts.Plot();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statChart1)).BeginInit();
             this.SuspendLayout();

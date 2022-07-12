@@ -115,7 +115,7 @@ namespace Mayfly.Wild.Controls
         }
 
         [Browsable(false)]
-        public Data Data;
+        public Survey Data;
 
         [Browsable(false)]
         public int Wealth => Definitions.Length;
@@ -190,10 +190,10 @@ namespace Mayfly.Wild.Controls
 
         private void clear(DataGridViewRow gridRow) {
             if (gridRow.Cells[columnID.Index].Value != null) {
-                Data.LogRow logRow = Data.Log.FindByID((int)gridRow.Cells[columnID.Index].Value);
+                Survey.LogRow logRow = Data.Log.FindByID((int)gridRow.Cells[columnID.Index].Value);
 
                 if (logRow != null) {
-                    Data.DefinitionRow spcRow = logRow.DefinitionRow;
+                    Survey.DefinitionRow spcRow = logRow.DefinitionRow;
                     logRow.Delete();
 
                     if (spcRow.GetLogRows().Length == 0) {
@@ -226,12 +226,12 @@ namespace Mayfly.Wild.Controls
             }
         }
 
-        private Data.LogRow logRow(DataGridViewRow gridRow) {
+        private Survey.LogRow logRow(DataGridViewRow gridRow) {
             return logRow(Data, gridRow);
         }
 
-        private Data.LogRow logRow(Data data, DataGridViewRow gridRow) {
-            Data.LogRow result;
+        private Survey.LogRow logRow(Survey data, DataGridViewRow gridRow) {
+            Survey.LogRow result;
 
             if (data == Data) {
                 if (gridRow.Cells[columnID.Index].Value != null) {
@@ -248,18 +248,18 @@ namespace Mayfly.Wild.Controls
         Saving:
 
             if (gridRow.Cells[columnDefinition.Index].Value is TaxonomicIndex.TaxonRow tr) {
-                Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
                 if (existingSpeciesRow == null) {
-                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
+                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name, null);
                 }
                 result.DefID = existingSpeciesRow.ID;
             } else if ((string)gridRow.Cells[columnDefinition.Index].Value is string s) {
                 if (s == Species.Resources.Interface.UnidentifiedTitle) {
                     result.SetDefIDNull();
                 } else {
-                    Data.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null) {
-                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s, null);
                     }
                     result.DefID = existingSpeciesRow.ID;
                 }
@@ -306,14 +306,14 @@ namespace Mayfly.Wild.Controls
             return result;
         }
 
-        private Data.LogRow saveLogRow(Data data, DataGridViewRow gridRow) {
-            Data.LogRow result = logRow(data, gridRow);
+        private Survey.LogRow saveLogRow(Survey data, DataGridViewRow gridRow) {
+            Survey.LogRow result = logRow(data, gridRow);
             if (data.Log.Rows.IndexOf(result) == -1) data.Log.AddLogRow(result);
             if (data == Data) gridRow.Cells[columnID.Index].Value = result.ID;
             return result;
         }
 
-        private void insertLogRow(Data.LogRow logRow, int rowIndex) {
+        private void insertLogRow(Survey.LogRow logRow, int rowIndex) {
             DataGridViewRow gridRow = columnID.GetRow(logRow.ID);
 
             if (gridRow == null) {
@@ -328,7 +328,7 @@ namespace Mayfly.Wild.Controls
             handleLogRow(gridRow);
         }
 
-        private void updateLogRow(DataGridViewRow gridRow, Data.LogRow logRow) {
+        private void updateLogRow(DataGridViewRow gridRow, Survey.LogRow logRow) {
             gridRow.Cells[columnDefinition.Index].Value = logRow.DefinitionRow.KeyRecord;
 
             if (logRow.IsQuantityNull()) gridRow.Cells[columnQty.Index].Value = null;
@@ -447,7 +447,7 @@ namespace Mayfly.Wild.Controls
             } else {
                 Status.Default = string.Format("© {0:yyyy} {1}",
                     (Data == null || Data.Solitary.IsWhenNull()) ? DateTime.Today : Data.Solitary.When,
-                    (Data == null || Data.Solitary.IsSignNull()) ? Mayfly.UserSettings.Username : Data.Solitary.Investigator);
+                    (Data == null || Data.Solitary.IsSignNull()) ? global::Mayfly.UserSettings.Username : Data.Solitary.Investigator);
             }
 
             LabelMass.Text = string.Format("Total mass: {0:N2} mg", Mass);
@@ -471,12 +471,12 @@ namespace Mayfly.Wild.Controls
             }
         }
 
-        public void InsertLogRows(Data data, int rowIndex) {
+        public void InsertLogRows(Survey data, int rowIndex) {
             if (rowIndex == -1) {
                 rowIndex = Grid.RowCount - 1;
             }
 
-            foreach (Data.LogRow logRow in data.Log.Rows) {
+            foreach (Survey.LogRow logRow in data.Log.Rows) {
                 insertLogRow(logRow, rowIndex);
 
                 if (rowIndex < Grid.RowCount - 1) {
@@ -485,7 +485,7 @@ namespace Mayfly.Wild.Controls
             }
         }
 
-        public void UpdateLogRow(Data.LogRow logRow) {
+        public void UpdateLogRow(Survey.LogRow logRow) {
             updateLogRow(Provider.FindLine(logRow.DefinitionRow.Taxon), logRow);
         }
 
@@ -504,7 +504,7 @@ namespace Mayfly.Wild.Controls
 
             // If there is no such species - insert the new row
             if (speciesIndex == -1) {
-                Data.Definition.AddDefinitionRow(species.Rank, species.Name);
+                Data.Definition.AddDefinitionRow(species.Rank, species.Name, null);
                 speciesIndex = Grid.Rows.Add(null, species);
             }
 
@@ -519,7 +519,7 @@ namespace Mayfly.Wild.Controls
             return speciesIndex;
         }
 
-        public Data.LogRow SaveLogRow(DataGridViewRow gridRow) {
+        public Survey.LogRow SaveLogRow(DataGridViewRow gridRow) {
             return saveLogRow(Data, gridRow);
         }
 
@@ -578,8 +578,8 @@ namespace Mayfly.Wild.Controls
             int q = 0;
             double w = 0;
 
-            Data.LogRow editedLogRow = SaveLogRow(e.EditedRow);
-            Data.LogRow duplicateLogRow = logRow(e.DuplicateRow);
+            Survey.LogRow editedLogRow = SaveLogRow(e.EditedRow);
+            Survey.LogRow duplicateLogRow = logRow(e.DuplicateRow);
 
             // If quantity is already set in edited row
             if (e.EditedRow.Cells[columnQty.Index].Value != null) {
@@ -597,7 +597,7 @@ namespace Mayfly.Wild.Controls
                     (int)e.EditedRow.Cells[columnQty.Index].Value == 1 &&
                     editedLogRow.GetIndividualRows().Length == 0) {
                     // Create new individual record with that mass
-                    Data.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                    Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
                     newIndividualRow.LogRow = editedLogRow;
                     newIndividualRow.Mass = (double)e.EditedRow.Cells[columnMass.Index].Value;
                     Data.Individual.AddIndividualRow(newIndividualRow);
@@ -620,7 +620,7 @@ namespace Mayfly.Wild.Controls
                     (int)e.DuplicateRow.Cells[columnQty.Index].Value == 1 &&
                     duplicateLogRow.GetIndividualRows().Length == 0) {
                     // Create new individual record with that mass and add it to new log row
-                    Data.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                    Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
                     newIndividualRow.LogRow = editedLogRow;
                     if (e.EditedRow.Cells[columnMass.Index].Value != null) {
                         newIndividualRow.Mass = (double)e.EditedRow.Cells[columnMass.Index].Value;
@@ -638,7 +638,7 @@ namespace Mayfly.Wild.Controls
                 e.EditedRow.Cells[columnMass.Index].Value = w;
             }
 
-            foreach (Data.IndividualRow individualRow in duplicateLogRow.GetIndividualRows()) {
+            foreach (Survey.IndividualRow individualRow in duplicateLogRow.GetIndividualRows()) {
                 individualRow.LogRow = editedLogRow;
             }
 
@@ -652,7 +652,7 @@ namespace Mayfly.Wild.Controls
 
 
         private void contextLog_Opening(object sender, CancelEventArgs e) {
-            ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() && Data.ContainsLog(Clipboard.GetText());
+            ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() && Survey.ContainsLog(Clipboard.GetText());
         }
 
         private void menuItemIndividuals_Click(object sender, EventArgs e) {
@@ -667,8 +667,8 @@ namespace Mayfly.Wild.Controls
         }
 
         private void menuItemCopy_Click(object sender, EventArgs e) {
-            Data clipData = new Data();
-            Data.CardRow clipCardRow = clipData.Card.NewCardRow();
+            Survey clipData = new Survey();
+            Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
             foreach (DataGridViewRow selectedRow in Grid.SelectedRows) {
@@ -676,13 +676,13 @@ namespace Mayfly.Wild.Controls
                     continue;
                 }
 
-                Data.LogRow clipLogRow = saveLogRow(clipData, selectedRow);
+                Survey.LogRow clipLogRow = saveLogRow(clipData, selectedRow);
 
                 if (selectedRow.Cells[columnID.Index].Value != null) {
-                    Data.LogRow logRow = Data.Log.FindByID((int)selectedRow.Cells[columnID.Index].Value);
+                    Survey.LogRow logRow = Data.Log.FindByID((int)selectedRow.Cells[columnID.Index].Value);
 
                     if (logRow != null) {
-                        foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows()) {
+                        foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows()) {
                             individualRow.CopyTo(clipLogRow);
                         }
 
@@ -703,24 +703,24 @@ namespace Mayfly.Wild.Controls
         }
 
         private void menuItemPaste_Click(object sender, EventArgs e) {
-            Data clipData = new Data();
+            Survey clipData = new Survey();
             clipData.ReadXml(new StringReader(Clipboard.GetText()));
 
             int rowIndex = Grid.SelectedRows[0].Index;
 
-            foreach (Data.LogRow clipLogRow in clipData.Log) {
+            foreach (Survey.LogRow clipLogRow in clipData.Log) {
                 // Copy from Clipboard Data to local Data
 
-                Data.DefinitionRow definitionRow = Data.Definition.FindByName(clipLogRow.DefinitionRow.Taxon);
+                Survey.DefinitionRow definitionRow = Data.Definition.FindByName(clipLogRow.DefinitionRow.Taxon);
 
                 if (definitionRow == null) {
                     TaxonomicIndex.TaxonRow clipSpeciesRow = Provider.Index.FindByName(clipLogRow.DefinitionRow.Taxon);
                     definitionRow = (clipSpeciesRow == null ?
-                        Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon) :
-                        Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name));
+                        Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon, null) :
+                        Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name, null));
                 }
 
-                Data.LogRow logRow = Data.Log.FindByCardIDDefID(Data.Solitary.ID, definitionRow.ID);
+                Survey.LogRow logRow = Data.Log.FindByCardIDDefID(Data.Solitary.ID, definitionRow.ID);
 
                 if (logRow == null) {
                     logRow = Data.Log.NewLogRow();
@@ -736,11 +736,11 @@ namespace Mayfly.Wild.Controls
                     if (!clipLogRow.IsMassNull()) logRow.Mass = logRow.IsMassNull() ? clipLogRow.Mass : logRow.Mass + clipLogRow.Mass;
                 }
 
-                foreach (Data.IndividualRow clipIndividualRow in clipLogRow.GetIndividualRows()) {
+                foreach (Survey.IndividualRow clipIndividualRow in clipLogRow.GetIndividualRows()) {
                     clipIndividualRow.CopyTo(logRow);
                 }
 
-                foreach (Data.StratifiedRow clipStratifiedRow in clipData.Stratified) {
+                foreach (Survey.StratifiedRow clipStratifiedRow in clipData.Stratified) {
                     //Data.StratifiedRow stratifiedRow = Data.Stratified.NewStratifiedRow();
 
                     //stratifiedRow.Class = clipStratifiedRow.Class;

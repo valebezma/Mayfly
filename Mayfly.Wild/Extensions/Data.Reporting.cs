@@ -10,11 +10,11 @@ namespace Mayfly.Wild
 {
     public static partial class DataExtensions
     {
-        public static Report.Table GetIndividualsLogReportTable(this Data.IndividualRow[] individualRows, string title) {
+        public static Report.Table GetIndividualsLogReportTable(this Survey.IndividualRow[] individualRows, string title) {
             if (individualRows.Length > 0) {
-                Data data = (Data)individualRows[0].Table.DataSet;
+                Survey data = (Survey)individualRows[0].Table.DataSet;
 
-                Data.VariableRow[] variables = data.Variable.FindByIndividuals(individualRows);
+                Survey.VariableRow[] variables = data.Variable.FindByIndividuals(individualRows);
 
                 Report.Table table = new Report.Table(title);
 
@@ -48,7 +48,7 @@ namespace Mayfly.Wild
                 double mass = 0.0;
                 int count = 0;
 
-                foreach (Data.IndividualRow individualRow in individualRows) {
+                foreach (Survey.IndividualRow individualRow in individualRows) {
                     table.StartRow();
 
                     table.AddCellRight(no);
@@ -81,7 +81,7 @@ namespace Mayfly.Wild
                         }
                     }
 
-                    foreach (Data.VariableRow variable in variables) {
+                    foreach (Survey.VariableRow variable in variables) {
                         if (data.Value.FindByIndIDVarID(individualRow.ID, variable.ID) == null) {
                             table.AddCell();
                         } else {
@@ -118,7 +118,7 @@ namespace Mayfly.Wild
             } else return null;
         }
 
-        public static Report.Table GetSpeciesLogReportTable(this Data.LogRow[] logRows, string massCaption, string logTitle) {
+        public static Report.Table GetSpeciesLogReportTable(this Survey.LogRow[] logRows, string massCaption, string logTitle) {
             Report.Table table = new Report.Table(logTitle);
 
             table.AddHeader(new string[]{
@@ -130,7 +130,7 @@ namespace Mayfly.Wild
             double q = 0;
             double w = 0;
 
-            foreach (Data.LogRow logRow in logRows) {
+            foreach (Survey.LogRow logRow in logRows) {
                 table.StartRow();
 
                 string logEntry = logRow.DefinitionRow.KeyRecord.FullNameReport;
@@ -162,7 +162,7 @@ namespace Mayfly.Wild
 
             table.StartFooter();
             table.StartRow();
-            table.AddCell(Mayfly.Resources.Interface.Total);
+            table.AddCell(global::Mayfly.Resources.Interface.Total);
             table.AddCellRight(q);
             table.AddCellRight(w, 2);
             table.EndRow();
@@ -177,7 +177,7 @@ namespace Mayfly.Wild
         /// <param name="indRows"></param>
         /// <param name="report"></param>
         /// <param name="level"></param>
-        public static void AddReport(this Data.IndividualRow[] indRows, Report report, CardReportLevel level, string logtitle) {
+        public static void AddReport(this Survey.IndividualRow[] indRows, Report report, CardReportLevel level, string logtitle) {
             if (level.HasFlag(CardReportLevel.Individuals)) {
                 Report.Table logtable = indRows.GetIndividualsLogReportTable(logtitle);
                 if (logtable != null) report.AddTable(logtable);
@@ -185,7 +185,7 @@ namespace Mayfly.Wild
 
             if (level.HasFlag(CardReportLevel.Profile)) {
                 bool first = true;
-                foreach (Data.IndividualRow individualRow in indRows) {
+                foreach (Survey.IndividualRow individualRow in indRows) {
                     if (first) { first = false; } else { report.BreakPage(); }
                     report.AddHeader(Resources.Reports.Header.IndividualProfile);
                     individualRow.AddReport(report);
@@ -209,11 +209,11 @@ namespace Mayfly.Wild
         /// <param name="level"></param>
         /// <param name="logtitle"></param>
         /// <param name="stratifiedtitle"></param>
-        public static void AddReport(this Data.LogRow[] logRows, Report report, CardReportLevel level, string logtitle, string stratifiedtitle) {
+        public static void AddReport(this Survey.LogRow[] logRows, Report report, CardReportLevel level, string logtitle, string stratifiedtitle) {
             if (level.HasFlag(CardReportLevel.Individuals)) {
-                List<Data.IndividualRow> indRows = new List<Data.IndividualRow>();
+                List<Survey.IndividualRow> indRows = new List<Survey.IndividualRow>();
 
-                foreach (Data.LogRow logRow in logRows) {
+                foreach (Survey.LogRow logRow in logRows) {
                     indRows.AddRange(logRow.GetIndividualRows());
                 }
 
@@ -222,7 +222,7 @@ namespace Mayfly.Wild
 
             int str = 0;
 
-            foreach (Data.LogRow logRow in logRows) {
+            foreach (Survey.LogRow logRow in logRows) {
                 str += logRow.QuantityStratified;
             }
 
@@ -232,7 +232,7 @@ namespace Mayfly.Wild
 
                 double interval = 0.1;
 
-                foreach (Data.LogRow logRow in logRows) {
+                foreach (Survey.LogRow logRow in logRows) {
                     if (logRow.QuantityStratified > 0) {
                         interval = Math.Max(interval, logRow.Interval);
                         min = Math.Min(min, logRow.MinStrate.LeftEndpoint);
@@ -241,8 +241,8 @@ namespace Mayfly.Wild
                 }
 
                 report.AddCribnote(Wild.Service.GetStratifiedNote(stratifiedtitle, min, max, interval, (l) => {
-                    int countSum = 0; foreach (Data.LogRow logRow in logRows) {
-                        foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) { if (stratifiedRow.SizeClass.LeftClosedContains(l)) countSum += stratifiedRow.Count; }
+                    int countSum = 0; foreach (Survey.LogRow logRow in logRows) {
+                        foreach (Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) { if (stratifiedRow.SizeClass.LeftClosedContains(l)) countSum += stratifiedRow.Count; }
                     }
                     return countSum;
                 }));
@@ -255,7 +255,7 @@ namespace Mayfly.Wild
         /// <param name="indRows"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.IndividualRow[] indRows, CardReportLevel level) {
+        public static Report GetReport(this Survey.IndividualRow[] indRows, CardReportLevel level) {
             Report report = new Report(level == CardReportLevel.Profile ? string.Empty : Wild.Resources.Reports.Header.IndividualsLog);
             indRows.AddReport(report, level, string.Empty);
             report.EndBranded();
@@ -269,15 +269,15 @@ namespace Mayfly.Wild
         /// <param name="level"></param>
         /// <param name="splitSpecies">If true - each species will be reported separately</param>
         /// <returns></returns>
-        public static Report GetReport(this Data.LogRow[] logRows, CardReportLevel level, bool splitSpecies) {
+        public static Report GetReport(this Survey.LogRow[] logRows, CardReportLevel level, bool splitSpecies) {
             if (splitSpecies) {
-                List<Data.DefinitionRow> speciesRows = new List<Data.DefinitionRow>();
-                foreach (Data.LogRow logRow in logRows) { if (!speciesRows.Contains(logRow.DefinitionRow)) speciesRows.Add(logRow.DefinitionRow); }
+                List<Survey.DefinitionRow> speciesRows = new List<Survey.DefinitionRow>();
+                foreach (Survey.LogRow logRow in logRows) { if (!speciesRows.Contains(logRow.DefinitionRow)) speciesRows.Add(logRow.DefinitionRow); }
 
                 Report report = new Report(string.Format(Resources.Interface.Interface.IndLog, string.Empty));
-                foreach (Data.DefinitionRow speciesRow in speciesRows) {
-                    List<Data.LogRow> _logRows = new List<Data.LogRow>();
-                    foreach (Data.LogRow logRow in logRows) { if (logRow.DefinitionRow == speciesRow) _logRows.Add(logRow); }
+                foreach (Survey.DefinitionRow speciesRow in speciesRows) {
+                    List<Survey.LogRow> _logRows = new List<Survey.LogRow>();
+                    foreach (Survey.LogRow logRow in logRows) { if (logRow.DefinitionRow == speciesRow) _logRows.Add(logRow); }
 
                     string speciesPresentation = speciesRow.KeyRecord.FullNameReport;
                     logRows.AddReport(report, level, speciesPresentation,
@@ -296,7 +296,7 @@ namespace Mayfly.Wild
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.LogRow[] logRows, CardReportLevel level) {
+        public static Report GetReport(this Survey.LogRow[] logRows, CardReportLevel level) {
             return logRows.GetReport(level, true);
         }
     }

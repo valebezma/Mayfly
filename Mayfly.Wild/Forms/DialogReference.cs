@@ -39,7 +39,7 @@ namespace Mayfly.Wild
             //FileTypeIcon = Mayfly.Service.GetIcon(FileSystem.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
 
             labelGetInstruction.ResetFormatted(FileTypeFriendlyName, DownloadUri);
-            Icon extIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
+            Icon extIcon = global::Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(128, 128));
             if (extIcon != null) pictureIcon.Image = extIcon.ToBitmap();
 
             resetDialog();
@@ -49,7 +49,7 @@ namespace Mayfly.Wild
 
         private void resetDialog()
         {
-            taskDialogMissingReference.CustomMainIcon = Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(32, 32));
+            taskDialogMissingReference.CustomMainIcon = global::Mayfly.Service.GetIcon(IO.GetIconSource(Path.GetExtension(DefaultName)), new Size(32, 32));
             taskDialogMissingReference.MainInstruction = string.Format(taskDialogMissingReference.MainInstruction, FileTypeFriendlyName);
             tdbBrowse.CommandLinkNote = string.Format(tdbBrowse.CommandLinkNote, FileTypeFriendlyName);
             tdbDownload.CommandLinkNote = string.Format(tdbDownload.CommandLinkNote, FileTypeFriendlyName);

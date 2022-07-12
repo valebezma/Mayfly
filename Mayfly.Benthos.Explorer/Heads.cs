@@ -34,9 +34,9 @@ namespace Mayfly.Benthos.Explorer
         {
             Species = speciesRow;
 
-            List<Data.IndividualRow> wRows = speciesRow.GetWeightedIndividualRows();
-            List<Data.IndividualRow> vsRows = speciesRow.GetWeightedIndividualRows(vsStack);
-            List<Data.IndividualRow> vlRows = speciesRow.GetWeightedIndividualRows(vlStack);
+            List<Wild.Survey.IndividualRow> wRows = speciesRow.GetWeightedIndividualRows();
+            List<Wild.Survey.IndividualRow> vsRows = speciesRow.GetWeightedIndividualRows(vsStack);
+            List<Wild.Survey.IndividualRow> vlRows = speciesRow.GetWeightedIndividualRows(vlStack);
 
             TotalSample = new HeadSample(wRows, "Обобщенная выборка", "Общ");
             if (vsRows.Count >= limit) VystitysSample = new HeadSample(vsRows, "Озеро Виштынецкое", "Вшт");
@@ -60,12 +60,12 @@ namespace Mayfly.Benthos.Explorer
 
 
 
-        public HeadSample(List<Data.IndividualRow> wRows, string name, string legend)
+        public HeadSample(List<Wild.Survey.IndividualRow> wRows, string name, string legend)
         {
             string l = "Длина, мм";
             string d = "Ширина головной капсулы, мм";
             string w = "Масса, мг";
-            Data data = (Data)wRows[0].Table.DataSet;
+            Wild.Survey data = (Wild.Survey)wRows[0].Table.DataSet;
             Name = name;
             Legend = legend;
 
@@ -80,7 +80,7 @@ namespace Mayfly.Benthos.Explorer
 
             Count = wRows.Count;
 
-            List<Data.IndividualRow> iRows = wRows.GetMeasuredRows(data.Individual.InstarColumn);
+            List<Wild.Survey.IndividualRow> iRows = wRows.GetMeasuredRows(data.Individual.InstarColumn);
 
             Instars = new List<HeadInstarSample>();
 
@@ -96,9 +96,9 @@ namespace Mayfly.Benthos.Explorer
 
                     List<double> iii = new List<double>();
 
-                    foreach (Data.IndividualRow indRow in irows)
+                    foreach (Wild.Survey.IndividualRow indRow in irows)
                     {
-                        Data.ValueRow vr = data.Value.FindByIndIDVarID(indRow.ID,
+                        Wild.Survey.ValueRow vr = data.Value.FindByIndIDVarID(indRow.ID,
                             data.Variable.FindByVarName(d).ID);
                         if (vr != null) iii.Add(vr.Value);
                     }
@@ -118,19 +118,19 @@ namespace Mayfly.Benthos.Explorer
                 Instars.Sort();
             }
 
-            List<Data.IndividualRow> lRows = wRows.GetMeasuredRows(data.Individual.LengthColumn);
+            List<Wild.Survey.IndividualRow> lRows = wRows.GetMeasuredRows(data.Individual.LengthColumn);
 
             BivariateSample lSample = new BivariateSample(l, w);
-            foreach (Data.IndividualRow lRow in lRows)
+            foreach (Wild.Survey.IndividualRow lRow in lRows)
             {
                 lSample.Add(lRow.Length, lRow.Mass);
             }
 
             lw = new Power(lSample);
 
-            List<Data.IndividualRow> dRows = wRows.GetMeasuredRows(d);
+            List<Wild.Survey.IndividualRow> dRows = wRows.GetMeasuredRows(d);
             BivariateSample dSample = new BivariateSample(d, w);
-            foreach (Data.IndividualRow dRow in dRows)
+            foreach (Wild.Survey.IndividualRow dRow in dRows)
             {
                 dSample.Add(data.GetIndividualValue(dRow, d), dRow.Mass);
             }

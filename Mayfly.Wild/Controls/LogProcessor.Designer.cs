@@ -42,7 +42,7 @@
             this.toolStripMenuItemRecent = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorKey = new System.Windows.Forms.ToolStripSeparator();
-            this.Provider = new Mayfly.Species.TaxonProvider();
+            this.Provider = new global::Mayfly.Species.TaxonProvider();
             this.toolTipAttention = new System.Windows.Forms.ToolTip();
             this.contextLog.SuspendLayout();
             this.contextMenuStripSpecies.SuspendLayout();
@@ -151,8 +151,8 @@
             this.Provider.CheckDuplicates = false;
             this.Provider.ColumnName = "ColumnSpecies";
             this.Provider.RecentListCount = 0;
-            this.Provider.SpeciesSelected += new Mayfly.Species.SpeciesSelectEventHandler(this.provider_SpeciesSelected);
-            this.Provider.DuplicateFound += new Mayfly.Species.DuplicateFoundEventHandler(this.provider_DuplicateDetected);
+            this.Provider.SpeciesSelected += new global::Mayfly.Species.SpeciesSelectEventHandler(this.provider_SpeciesSelected);
+            this.Provider.DuplicateFound += new global::Mayfly.Species.DuplicateFoundEventHandler(this.provider_DuplicateDetected);
             this.Provider.IndexChanged += new System.EventHandler(this.provider_IndexChanged);
             this.contextLog.ResumeLayout(false);
             this.contextMenuStripSpecies.ResumeLayout(false);

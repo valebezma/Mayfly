@@ -279,7 +279,7 @@ namespace Mayfly.Wild
 
                         spreadSheetMatrix[i, j].Style.BackColor = 
                             double.IsNaN(result[i, j]) || double.IsInfinity(result[i, j]) || double.IsNegativeInfinity(result[i, j]) ?
-                            defaultColor : Mayfly.Service.Map(result[i, j]);
+                            defaultColor : global::Mayfly.Service.Map(result[i, j]);
                     }
                 }
             }

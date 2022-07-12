@@ -84,7 +84,7 @@ namespace Mayfly.Plankton
             this.tabPageSampler.Controls.SetChildIndex(this.labelSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMethod, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.buttonGear, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
             // 
             // comboBox1
             // 

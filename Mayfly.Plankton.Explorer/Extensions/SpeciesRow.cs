@@ -10,11 +10,11 @@ namespace Mayfly.Extensions
 {
     public static class SpeciesRowExtensions
     {
-        public static List<Data.IndividualRow> GetUnweightedIndividualRows(this Data.DefinitionRow speciesRow)
+        public static List<Wild.Survey.IndividualRow> GetUnweightedIndividualRows(this Wild.Survey.DefinitionRow speciesRow)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
                 if (!individualRow.IsMassNull()) continue;
                 result.Add(individualRow);
@@ -23,11 +23,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetWeightedIndividualRows(this Data.DefinitionRow speciesRow)
+        public static List<Wild.Survey.IndividualRow> GetWeightedIndividualRows(this Wild.Survey.DefinitionRow speciesRow)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
                 if (individualRow.IsMassNull()) continue;
                 result.Add(individualRow);
@@ -36,11 +36,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetWeightedAndMeasuredIndividualRows(this IEnumerable<Data.IndividualRow> individualRows)
+        public static List<Wild.Survey.IndividualRow> GetWeightedAndMeasuredIndividualRows(this IEnumerable<Wild.Survey.IndividualRow> individualRows)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (individualRow.IsLengthNull()) continue;
                 if (individualRow.IsMassNull()) continue;
@@ -50,11 +50,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetUnweightedAndMeasuredIndividualRows(this IEnumerable<Data.IndividualRow> individualRows)
+        public static List<Wild.Survey.IndividualRow> GetUnweightedAndMeasuredIndividualRows(this IEnumerable<Wild.Survey.IndividualRow> individualRows)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (individualRow.IsLengthNull()) continue;
                 if (!individualRow.IsMassNull()) continue;
@@ -64,21 +64,21 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Unweighted(this Data.DefinitionRow speciesRow)
+        public static int Unweighted(this Wild.Survey.DefinitionRow speciesRow)
         {
             return speciesRow.UnweightedIndividuals() + speciesRow.AbstractIndividuals();
         }
 
-        public static int UnweightedIndividuals(this Data.DefinitionRow speciesRow)
+        public static int UnweightedIndividuals(this Wild.Survey.DefinitionRow speciesRow)
         {
             return speciesRow.GetUnweightedIndividualRows().GetCount();
         }
 
-        public static int AbstractIndividuals(this Data.DefinitionRow speciesRow)
+        public static int AbstractIndividuals(this Wild.Survey.DefinitionRow speciesRow)
         {
             int result = 0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 if (logRow.GetIndividualRows().Length == 0)
                 {

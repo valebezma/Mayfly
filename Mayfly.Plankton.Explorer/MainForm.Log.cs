@@ -37,18 +37,18 @@ namespace Mayfly.Plankton.Explorer
             loaderLog.RunWorkerAsync();
         }
 
-        private DataGridViewRow GetLogRow(Data.LogRow logRow)
+        private DataGridViewRow GetLogRow(Wild.Survey.LogRow logRow)
         {
             return columnLogID.GetRow(logRow.ID, true, true);
         }
 
-        private Data.LogRow GetLogRow(DataGridViewRow gridRow)
+        private Wild.Survey.LogRow GetLogRow(DataGridViewRow gridRow)
         {
             int ID = (int)gridRow.Cells[columnLogID.Index].Value;
             return data.Log.FindByID(ID);
         }
 
-        private DataGridViewRow[] GetCardLogRows(Data.CardRow cardRow)
+        private DataGridViewRow[] GetCardLogRows(Wild.Survey.CardRow cardRow)
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
@@ -65,9 +65,9 @@ namespace Mayfly.Plankton.Explorer
         
 
 
-        private DataGridViewRow LogRow(Data.CardRow cardRow, Data.DefinitionRow speciesRow)
+        private DataGridViewRow LogRow(Wild.Survey.CardRow cardRow, Wild.Survey.DefinitionRow speciesRow)
         {
-            Data.LogRow logRow = data.Log.FindByCardIDDefID(cardRow.ID, speciesRow.ID);
+            Wild.Survey.LogRow logRow = data.Log.FindByCardIDDefID(cardRow.ID, speciesRow.ID);
 
             if (logRow == null)
             {
@@ -86,7 +86,7 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private DataGridViewRow UpdateLogRow(Data.LogRow logRow)
+        private DataGridViewRow UpdateLogRow(Wild.Survey.LogRow logRow)
         {
             DataGridViewRow result = GetLogRow(logRow);
             if (logRow.IsSpcIDNull())
@@ -122,7 +122,7 @@ namespace Mayfly.Plankton.Explorer
             List<double> abundances = new List<double>();
             List<double> biomasses = new List<double>();
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
@@ -173,7 +173,7 @@ namespace Mayfly.Plankton.Explorer
             List<double> Abundances = new List<double>();
             List<double> Biomasses = new List<double>();
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
@@ -207,7 +207,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRow(Data.CardRow cardRow, TaxonomicIndex.TaxonRow taxonRow)
+        private DataGridViewRow LogRow(Wild.Survey.CardRow cardRow, TaxonomicIndex.TaxonRow taxonRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -220,7 +220,7 @@ namespace Mayfly.Plankton.Explorer
             List<double> abundances = new List<double>();
             List<double> biomasses = new List<double>();
 
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 
@@ -252,7 +252,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow LogRowVaria(Data.CardRow cardRow)
+        private DataGridViewRow LogRowVaria(Wild.Survey.CardRow cardRow)
         {
             DataGridViewRow result = new DataGridViewRow();
 
@@ -265,7 +265,7 @@ namespace Mayfly.Plankton.Explorer
             List<double> abundances = new List<double>();
             List<double> biomasses = new List<double>();
 
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 if (logRow.CardRow.IsVolumeNull()) continue;
 

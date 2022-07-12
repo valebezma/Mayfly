@@ -14,9 +14,9 @@ namespace Mayfly.Extensions
 {
     public static partial class DataExtensions
     {
-        public static Data GetFishBio(this Data data1)
+        public static Wild.Survey GetFishBio(this Wild.Survey data1)
         {
-            Data data = data1.Copy();
+            Wild.Survey data = data1.Copy();
 
             // Remove unsigned cards
 

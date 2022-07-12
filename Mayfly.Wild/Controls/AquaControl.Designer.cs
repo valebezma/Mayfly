@@ -50,7 +50,7 @@
             this.textBoxOxygenSaturation = new System.Windows.Forms.TextBox();
             this.textBoxDissolvedOxygen = new System.Windows.Forms.TextBox();
             this.textBoxLimpidity = new System.Windows.Forms.TextBox();
-            this.colorPicker1 = new Mayfly.Wild.Controls.ColorPicker();
+            this.colorPicker1 = new global::Mayfly.Wild.Controls.ColorPicker();
             this.SuspendLayout();
             // 
             // checkBoxSewage

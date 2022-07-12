@@ -18,7 +18,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="indRows"></param>
         /// <param name="report"></param>
-        public static void AddReport(this Data.IndividualRow[] indRows, Report report, string logtitle)
+        public static void AddReport(this Wild.Survey.IndividualRow[] indRows, Report report, string logtitle)
         {
             Report.Table logtable = indRows.GetIndividualsLogReportTable(logtitle);
             if (logtable != null) report.AddTable(logtable);
@@ -30,7 +30,7 @@ namespace Mayfly.Benthos
         /// <param name="logRow"></param>
         /// <param name="report"></param>
         /// <param name="logtitle"></param>
-        public static void AddReport(this Data.LogRow logRow, Report report, string logtitle)
+        public static void AddReport(this Wild.Survey.LogRow logRow, Report report, string logtitle)
         {
             logRow.GetIndividualRows().AddReport(report, logtitle);
         }
@@ -40,7 +40,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="logRow"></param>
         /// <param name="report"></param>
-        public static void AddReport(this Data.LogRow logRow, Report report)
+        public static void AddReport(this Wild.Survey.LogRow logRow, Report report)
         {
             string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
             logRow.AddReport(report, speciesPresentation);
@@ -52,7 +52,7 @@ namespace Mayfly.Benthos
         /// <param name="cardRow"></param>
         /// <param name="report"></param>
         /// <param name="level"></param>
-        public static void AddReport(this Data.CardRow cardRow, Report report, CardReportLevel level)
+        public static void AddReport(this Wild.Survey.CardRow cardRow, Report report, CardReportLevel level)
         {
             ResourceManager resources = new ResourceManager(typeof(Card));
 
@@ -209,7 +209,7 @@ namespace Mayfly.Benthos
                     table4.AddHeader(new string[]{ Wild.Resources.Reports.Caption.Factor,
                             Wild.Resources.Reports.Caption.FactorValue }, new double[] { .80 });
 
-                    foreach (Data.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
+                    foreach (Wild.Survey.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
                     {
                         table4.StartRow();
                         table4.AddCell(factorValueRow.FactorRow.Factor);
@@ -243,7 +243,7 @@ namespace Mayfly.Benthos
 
             if (level.HasFlag(CardReportLevel.Log))
             {
-                Data.LogRow[] logRows = cardRow.GetLogRows(LogOrder);
+                Wild.Survey.LogRow[] logRows = cardRow.GetLogRows(LogOrder);
 
                 report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
@@ -258,8 +258,8 @@ namespace Mayfly.Benthos
                 }
             }
 
-            List<Data.IndividualRow> individualRows = new List<Data.IndividualRow>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            List<Wild.Survey.IndividualRow> individualRows = new List<Wild.Survey.IndividualRow>();
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 individualRows.AddRange(logRow.GetIndividualRows());
             }
@@ -270,7 +270,7 @@ namespace Mayfly.Benthos
                 {
                     if (BreakBeforeIndividuals) { report.BreakPage(); }
                     report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
-                    foreach (Data.LogRow logRow in cardRow.GetLogRows())
+                    foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
                     {
                         logRow.AddReport(report);
                         if (BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
@@ -297,7 +297,7 @@ namespace Mayfly.Benthos
         /// <param name="indRows"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.IndividualRow[] indRows)
+        public static Report GetReport(this Wild.Survey.IndividualRow[] indRows)
         {
             Report report = new Report(Wild.Resources.Reports.Header.IndividualsLog);
             indRows.AddReport(report, string.Empty);
@@ -310,7 +310,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.LogRow logRow)
+        public static Report GetReport(this Wild.Survey.LogRow logRow)
         {
             Report report = new Report(string.Format(Wild.Resources.Interface.Interface.IndLog, logRow.DefinitionRow.Taxon));
             logRow.AddReport(report);
@@ -323,7 +323,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="cardRow"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.CardRow cardRow, CardReportLevel level)
+        public static Report GetReport(this Wild.Survey.CardRow cardRow, CardReportLevel level)
         {
             Report report = new Report(cardRow.FriendlyPath);
             cardRow.AddReport(report, level);
@@ -336,7 +336,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="cardRow"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data.CardRow cardRow)
+        public static Report GetReport(this Wild.Survey.CardRow cardRow)
         {
             return cardRow.GetReport(CardReportLevel.Note | CardReportLevel.Log | CardReportLevel.Individuals);
         }
@@ -346,7 +346,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static Report GetReport(this Data data)
+        public static Report GetReport(this Wild.Survey data)
         {
             return data.Solitary.GetReport();
         }

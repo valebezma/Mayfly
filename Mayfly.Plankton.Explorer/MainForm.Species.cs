@@ -69,18 +69,18 @@ namespace Mayfly.Plankton.Explorer
         }
 
 
-        private DataGridViewRow GetSpcRow(Data.DefinitionRow speciesRow)
+        private DataGridViewRow GetSpcRow(Wild.Survey.DefinitionRow speciesRow)
         {
             return columnSpcID.GetRow(speciesRow.ID, true, true);
         }
 
-        private Data.DefinitionRow GetSpcRow(DataGridViewRow gridRow)
+        private Wild.Survey.DefinitionRow GetSpcRow(DataGridViewRow gridRow)
         {
             int ID = (int)gridRow.Cells[columnSpcID.Index].Value;
             return data.Species.FindByID(ID);
         }
 
-        private DataGridViewRow UpdateSpeciesRow(Data.DefinitionRow speciesRow)
+        private DataGridViewRow UpdateSpeciesRow(Wild.Survey.DefinitionRow speciesRow)
         {
             DataGridViewRow result = GetSpcRow(speciesRow);
             result.Cells[columnSpcSpc.Index].Value = speciesRow;

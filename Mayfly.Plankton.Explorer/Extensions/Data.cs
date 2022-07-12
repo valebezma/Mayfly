@@ -13,11 +13,11 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensions
     {
-        public static object[] GetVariantsOf(this Data data, string field)
+        public static object[] GetVariantsOf(this Wild.Survey data, string field)
         {
             List<object> variants = new List<object>();
 
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 object value = cardRow.Get(field);
 
@@ -32,10 +32,10 @@ namespace Mayfly.Extensions
             return variants.ToArray();
         }
         
-        public static string[] GetInvestigators(this Data data)
+        public static string[] GetInvestigators(this Wild.Survey data)
         {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 string investigator = cardRow.Investigator;
                 if (result.Contains(investigator)) continue;
@@ -44,10 +44,10 @@ namespace Mayfly.Extensions
             return result.ToArray();
         }
 
-        public static string[] GetWaters(this Data data)
+        public static string[] GetWaters(this Wild.Survey data)
         {
             List<string> result = new List<string>();
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 if (cardRow.IsWaterIDNull()) continue;
                 string waterDescription = cardRow.WaterRow.Presentation;
@@ -57,10 +57,10 @@ namespace Mayfly.Extensions
             return result.ToArray();
         }
 
-        public static DateTime[] GetDates(this Data data)
+        public static DateTime[] GetDates(this Wild.Survey data)
         {
             List<DateTime> result = new List<DateTime>();
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 if (cardRow.IsWhenNull()) continue;
                 if (result.Contains(cardRow.When.Date)) continue;
@@ -70,11 +70,11 @@ namespace Mayfly.Extensions
             return result.ToArray();
         }
 
-        public static Samplers.SamplerRow[] GetSamplers(this Data data)
+        public static Samplers.SamplerRow[] GetSamplers(this Wild.Survey data)
         {
             List<Samplers.SamplerRow> Result = new List<Samplers.SamplerRow>();
 
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 if (cardRow.IsSamplerNull()) continue;
                 Samplers.SamplerRow samplerRow = Plankton.Service.Sampler(cardRow.Sampler);
@@ -86,7 +86,7 @@ namespace Mayfly.Extensions
             return Result.ToArray();
         }
 
-        public static string[] GetSamplersList(this Data data)
+        public static string[] GetSamplersList(this Wild.Survey data)
         {
             List<string> result = new List<string>();
 
@@ -98,7 +98,7 @@ namespace Mayfly.Extensions
             return result.ToArray();
         }
 
-        public static int GetSpeciesWealth(this Data data)
+        public static int GetSpeciesWealth(this Wild.Survey data)
         {
             return data.Log.SpcIDColumn.SelectDistinctInteger().Length;
         }
@@ -109,11 +109,11 @@ namespace Mayfly.Extensions
 
         #region Quantity
 
-        public static double Quantity(this Data data)
+        public static double Quantity(this Wild.Survey data)
         {
             double result = 0;
 
-            foreach (Data.LogRow logRow in data.Log)
+            foreach (Wild.Survey.LogRow logRow in data.Log)
             {
                 if (logRow.IsQuantityNull()) return double.NaN;
 
@@ -138,10 +138,10 @@ namespace Mayfly.Extensions
         //    return Math.Round(result, 2);
         //}
 
-        public static double Abundance(this Data data, Data.CardRow cardRow)
+        public static double Abundance(this Wild.Survey data, Wild.Survey.CardRow cardRow)
         {
             double result = 0;
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 result += data.Abundance(logRow);
                 if (double.IsNaN(result)) { return result; }
@@ -149,14 +149,14 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double Abundance(this Data data, Data.DefinitionRow speciesRow)
+        public static double Abundance(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 result += data.Abundance(logRow);
             }
@@ -164,21 +164,21 @@ namespace Mayfly.Extensions
             return Math.Round(result / (double)data.Card.Count, 2);
         }
 
-        public static double Abundance(this Data data, Data.LogRow logRow)
+        public static double Abundance(this Wild.Survey data, Wild.Survey.LogRow logRow)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             if (logRow.CardRow.IsVolumeNull()) return double.NaN;
             return Math.Round((double)logRow.Quantity / (logRow.IsSubsampleNull() ? 1 : logRow.Subsample) / logRow.CardRow.Volume, 3);
         }
 
-        public static double Quantity(this Data data, Data.DefinitionRow speciesRow)
+        public static double Quantity(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 if (logRow.IsQuantityNull())
                 {
@@ -216,15 +216,15 @@ namespace Mayfly.Extensions
         //    return result;
         //}
 
-        public static int Quantity(this Data data, Data.DefinitionRow speciesRow, Sex G)
+        public static int Quantity(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Sex G)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return 0;
 
             int result = 0;
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.Sex != G.Value) continue;
@@ -272,42 +272,42 @@ namespace Mayfly.Extensions
         //    return result;
         //}
 
-        public static int Quantity(this Data.IndividualDataTable individual, Data.LogRow logRow, Data.VariableRow variableRow)
+        public static int Quantity(this Wild.Survey.IndividualDataTable individual, Wild.Survey.LogRow logRow, Wild.Survey.VariableRow variableRow)
         {
             int result = 0;
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
-                if (((Data)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
+                if (((Wild.Survey)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.DefinitionRow speciesRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, Wild.Survey.DefinitionRow speciesRow, Wild.Survey.VariableRow variableRow)
         {
             return individual.Unweighted(speciesRow.Species, variableRow);
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, string species, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, string species, Wild.Survey.VariableRow variableRow)
         {
-            Data.DefinitionRow speciesRow = ((Data)individual.DataSet).Definition.FindByName(species);
+            Wild.Survey.DefinitionRow speciesRow = ((Wild.Survey)individual.DataSet).Definition.FindByName(species);
 
             if (speciesRow == null) return 0;
 
             int result = 0;
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
                 result += individual.Unweighted(logRow, variableRow);
             }
             return result;
         }
 
-        public static int Unweighted(this Data.IndividualDataTable individual, Data.LogRow logRow, Data.VariableRow variableRow)
+        public static int Unweighted(this Wild.Survey.IndividualDataTable individual, Wild.Survey.LogRow logRow, Wild.Survey.VariableRow variableRow)
         {
             int result = 0;
-            foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
             {
-                if (((Data)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
+                if (((Wild.Survey)individual.DataSet).Value.FindByIndIDVarID(individualRow.ID, variableRow.ID) == null) continue;
                 if (!individualRow.IsMassNull()) continue;
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
@@ -419,14 +419,14 @@ namespace Mayfly.Extensions
         //    return result / (double)data.Card.Count;
         //}
 
-        public static Sample Masses(this Data data, Data.DefinitionRow speciesRow)
+        public static Sample Masses(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
                 if (individualRow.IsMassNull()) continue;
                 result.Add(individualRow.Mass);
@@ -439,16 +439,16 @@ namespace Mayfly.Extensions
 
         #region Length
 
-        public static Sample Lengths(this Data data, Data.DefinitionRow speciesRow)
+        public static Sample Lengths(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsLengthNull()) continue;
                     result.Add(individualRow.Length);
@@ -459,7 +459,7 @@ namespace Mayfly.Extensions
             else return null;
         }
 
-        public static double LengthAverage(this Data data, Data.DefinitionRow speciesRow, Sex G)
+        public static double LengthAverage(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Sex G)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
@@ -467,9 +467,9 @@ namespace Mayfly.Extensions
             double result = 0;
             double divider = 0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -489,16 +489,16 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static Sample Lengths(this Data data, Data.DefinitionRow speciesRow, Sex G)
+        public static Sample Lengths(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Sex G)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return new Sample();
 
             List<double> result = new List<double>();
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -509,7 +509,7 @@ namespace Mayfly.Extensions
             return new Sample(result.ToArray());
         }
 
-        public static double LengthMin(this Data data, Data.DefinitionRow speciesRow, Sex G)
+        public static double LengthMin(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Sex G)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
@@ -517,9 +517,9 @@ namespace Mayfly.Extensions
             double result = double.MaxValue;
             int i = 0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -542,7 +542,7 @@ namespace Mayfly.Extensions
             }
         }
 
-        public static double LengthMax(this Data data, Data.DefinitionRow speciesRow, Sex G)
+        public static double LengthMax(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow, Sex G)
         {
             speciesRow = data.Definition.FindByName(speciesRow.Species);
             if (speciesRow == null) return double.NaN;
@@ -550,9 +550,9 @@ namespace Mayfly.Extensions
             double result = double.MinValue;
             int i = 0;
 
-            foreach (Data.LogRow logRow in speciesRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in speciesRow.GetLogRows())
             {
-                foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows())
+                foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
                 {
                     if (individualRow.IsSexNull()) continue;
                     if (individualRow.IsLengthNull()) continue;
@@ -579,15 +579,15 @@ namespace Mayfly.Extensions
 
         #region Diversity
 
-        public static double Wealth(this Data data, Data.CardRow cardRow)
+        public static double Wealth(this Wild.Survey data, Wild.Survey.CardRow cardRow)
         {
             return cardRow.GetLogRows().Length;
         }
 
-        public static double DiversityA(this Data data, Data.CardRow cardRow)
+        public static double DiversityA(this Wild.Survey data, Wild.Survey.CardRow cardRow)
         {
             List<double> values = new List<double>();
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 values.Add(data.Abundance(logRow));
             }
@@ -595,11 +595,11 @@ namespace Mayfly.Extensions
             return values.Count == 0 ? double.NaN : new Sample(values).Diversity();
         }
 
-        public static double DiversityB(this Data data, Data.CardRow cardRow)
+        public static double DiversityB(this Wild.Survey data, Wild.Survey.CardRow cardRow)
         {
             List<double> values = new List<double>();
 
-            foreach (Data.LogRow logRow in cardRow.GetLogRows())
+            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
             {
                 values.Add(logRow.GetBiomass());
             }
@@ -609,12 +609,12 @@ namespace Mayfly.Extensions
 
         #endregion
 
-        public static int Weighted(this Data data, Data.DefinitionRow speciesRow)
+        public static int Weighted(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             int result = 0;
             speciesRow = data.Definition.FindByName(speciesRow.Species); if (speciesRow == null) return 0;
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
                 if (individualRow.IsMassNull()) continue;
                 result++;
@@ -623,12 +623,12 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static int Measured(this Data data, Data.DefinitionRow speciesRow)
+        public static int Measured(this Wild.Survey data, Wild.Survey.DefinitionRow speciesRow)
         {
             int result = 0;
             speciesRow = data.Definition.FindByName(speciesRow.Species); if (speciesRow == null) return 0;
 
-            foreach (Data.IndividualRow individualRow in speciesRow.GetIndividualRows())
+            foreach (Wild.Survey.IndividualRow individualRow in speciesRow.GetIndividualRows())
             {
                 if (individualRow.IsLengthNull()) continue;
                 result++;
@@ -641,7 +641,7 @@ namespace Mayfly.Extensions
 
 
 
-        public static string[] InCommon(this Data data, Data toCompare)
+        public static string[] InCommon(this Wild.Survey data, Wild.Survey toCompare)
         {
             List<string> list1 = data.GetSpeciesList();
             List<string> list2 = toCompare.GetSpeciesList();
@@ -661,15 +661,15 @@ namespace Mayfly.Extensions
 
 
 
-        public static Power SearchMassModel(this Data data, Data.VariableRow variableRow, Data.IndividualRow[] individualRows)
+        public static Power SearchMassModel(this Wild.Survey data, Wild.Survey.VariableRow variableRow, Wild.Survey.IndividualRow[] individualRows)
         {
             variableRow = data.Variable.FindByVarName(variableRow.Variable);
             BivariateSample bivariateSample = new BivariateSample();
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 if (individualRow.IsMassNull()) continue;
-                Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
                 if (valueRow == null) continue;
                 bivariateSample.Add(valueRow.Value, individualRow.Mass);
             }
@@ -685,11 +685,11 @@ namespace Mayfly.Extensions
         
 
 
-        public static int GetCount(this IList<Data.IndividualRow> individualRows)
+        public static int GetCount(this IList<Wild.Survey.IndividualRow> individualRows)
         {
             int result = 0;
 
-            foreach (Data.IndividualRow individualRow in individualRows)
+            foreach (Wild.Survey.IndividualRow individualRow in individualRows)
             {
                 result += individualRow.IsFrequencyNull() ? 1 : individualRow.Frequency;
             }
@@ -697,9 +697,9 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static double[] GetMass(this IList<Data.IndividualRow> individualRows)
+        public static double[] GetMass(this IList<Wild.Survey.IndividualRow> individualRows)
         {
-            Data data = (Data)individualRows[0].Table.DataSet;
+            Wild.Survey data = (Wild.Survey)individualRows[0].Table.DataSet;
             return data.Individual.MassColumn.GetDoubles(individualRows).ToArray();
 
             //List<double> result = new List<double>();
@@ -713,7 +713,7 @@ namespace Mayfly.Extensions
             //return result.ToArray();
         }
 
-        public static double GetAverageMass(this IList<Data.IndividualRow> individualRows)
+        public static double GetAverageMass(this IList<Wild.Survey.IndividualRow> individualRows)
         {
             Sample mass = new Sample(GetMass(individualRows));
             return mass.Count > 0 ? mass.Mean : double.NaN;
@@ -737,13 +737,13 @@ namespace Mayfly.Extensions
             //}
         }
 
-        public static List<Data.IndividualRow> GetMeasuredRows(this IList<Data.IndividualRow> rows, Data.VariableRow variableRow)
+        public static List<Wild.Survey.IndividualRow> GetMeasuredRows(this IList<Wild.Survey.IndividualRow> rows, Wild.Survey.VariableRow variableRow)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in rows)
+            foreach (Wild.Survey.IndividualRow individualRow in rows)
             {
-                foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+                foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
                 {
                     if (valueRow.VariableRow.Variable == variableRow.Variable &&
                         !valueRow.IsValueNull() && !result.Contains(individualRow))
@@ -757,11 +757,11 @@ namespace Mayfly.Extensions
             return result;
         }
 
-        public static List<Data.IndividualRow> GetMeasuredRows(this IList<Data.IndividualRow> rows, DataColumn dataColumn)
+        public static List<Wild.Survey.IndividualRow> GetMeasuredRows(this IList<Wild.Survey.IndividualRow> rows, DataColumn dataColumn)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow individualRow in rows)
+            foreach (Wild.Survey.IndividualRow individualRow in rows)
             {
                 if (individualRow.IsNull(dataColumn)) continue;
                 result.Add(individualRow);
@@ -772,7 +772,7 @@ namespace Mayfly.Extensions
         
         
 
-        public static Composition GetCenosisComposition(this Data data)
+        public static Composition GetCenosisComposition(this Wild.Survey data)
         {
             return data.GetStack().GetBasicCenosisComposition();
         }
@@ -793,7 +793,7 @@ namespace Mayfly.Extensions
                 item.DropDownItems.Add(new ToolStripSeparator());
             }
 
-            foreach (Data.DefinitionRow speciesRow in stack.GetSpeciesRows())
+            foreach (Wild.Survey.DefinitionRow speciesRow in stack.GetSpeciesRows())
             {
                 ToolStripItem _item = new ToolStripMenuItem();
                 _item.Tag = speciesRow;

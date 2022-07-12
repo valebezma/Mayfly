@@ -13,11 +13,11 @@ namespace Mayfly.Fish.Explorer
 {
     public static partial class CardStackExtensions
     {
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, TaxonomicIndex.TaxonRow spcRow, string field, object value)
+        public static Wild.Survey.IndividualRow[] GetIndividuals(this CardStack stack, TaxonomicIndex.TaxonRow spcRow, string field, object value)
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
-            foreach (Data.IndividualRow indRow in stack.GetIndividualRows(spcRow))
+            foreach (Wild.Survey.IndividualRow indRow in stack.GetIndividualRows(spcRow))
             {
                 if (indRow[field].Equals(value))
                 {
@@ -28,17 +28,17 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public static Data.IndividualRow[] GetIndividuals(this CardStack stack, TaxonomicIndex.TaxonRow spcRow, string[] field, object[] value)
+        public static Wild.Survey.IndividualRow[] GetIndividuals(this CardStack stack, TaxonomicIndex.TaxonRow spcRow, string[] field, object[] value)
         {
-            List<Data.IndividualRow[]> packs = new List<Data.IndividualRow[]>();
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow[]> packs = new List<Wild.Survey.IndividualRow[]>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
 
             for (int i = 0; i < field.Length; i++)
             {
-                Data.IndividualRow[] pack = stack.GetIndividuals(spcRow, field[i], value[i]);
+                Wild.Survey.IndividualRow[] pack = stack.GetIndividuals(spcRow, field[i], value[i]);
                 packs.Add(pack);
 
-                foreach (Data.IndividualRow indRow in pack)
+                foreach (Wild.Survey.IndividualRow indRow in pack)
                 {
                     if (!result.Contains(indRow))
                     {
@@ -49,7 +49,7 @@ namespace Mayfly.Fish.Explorer
 
             for (int i = 0; i < result.Count; i++)// (Data.IndividualRow indRow in result)
             {
-                foreach (Data.IndividualRow[] pack in packs)
+                foreach (Wild.Survey.IndividualRow[] pack in packs)
                 {
                     if (!pack.Contains(result[i]))
                     {
@@ -72,7 +72,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
                 if (result.Contains(cardRow.SamplerRow)) continue;
@@ -127,7 +127,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
                 string gearClass = cardRow.GetGearClass();
@@ -143,7 +143,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.Sampler != samplerRow.ID) continue;
                 string gearClass = cardRow.GetGearClass();
@@ -161,7 +161,7 @@ namespace Mayfly.Fish.Explorer
         {
             List<string> result = new List<string>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
                 string _class = cardRow.GetGearClass();
@@ -182,7 +182,7 @@ namespace Mayfly.Fish.Explorer
 
             FishSamplerType samplerType = FishSamplerType.None;
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (samplerType == FishSamplerType.None)
                 {
@@ -209,7 +209,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0;
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
                 result += cardRow.GetEffort(expression);
@@ -235,7 +235,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetAbundance();
             }
@@ -247,7 +247,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetAbundance(variant);
             }
@@ -271,7 +271,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetBiomass();
             }
@@ -283,7 +283,7 @@ namespace Mayfly.Fish.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetBiomass(variant);
             }
@@ -296,7 +296,7 @@ namespace Mayfly.Fish.Explorer
         {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
 
@@ -311,7 +311,7 @@ namespace Mayfly.Fish.Explorer
         public static CardStack GetStack(this CardStack stack, FishSamplerType samplerType, string gearClass)
         {
             CardStack result = new CardStack();
-            foreach (Data.CardRow cardRow in stack) {
+            foreach (Wild.Survey.CardRow cardRow in stack) {
                 if (cardRow.GetGearType() != samplerType) continue;
                 if (cardRow.GetGearClass() != gearClass) continue;
                 result.Add(cardRow);
@@ -324,7 +324,7 @@ namespace Mayfly.Fish.Explorer
         {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
 
@@ -381,7 +381,7 @@ namespace Mayfly.Fish.Explorer
         {
             EnvironmentMonitor result = new EnvironmentMonitor();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.IsEnvironmentDescribed)
                 {
@@ -399,9 +399,9 @@ namespace Mayfly.Fish.Explorer
             if (column.Table != stack.Parent.Individual)
                 throw new Exception("Column should be of Individuals table.");
 
-            List<Data.IndividualRow> untreated = new List<Data.IndividualRow>(); // Untreated are specimen with sampe number and studying value
+            List<Wild.Survey.IndividualRow> untreated = new List<Wild.Survey.IndividualRow>(); // Untreated are specimen with sampe number and studying value
 
-            foreach (Data.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
+            foreach (Wild.Survey.IndividualRow individualRow in stack.GetIndividualRows(speciesRow))
             {
                 if (individualRow.IsLengthNull()) continue; // No length - skip
                 if (individualRow.IsTallyNull()) continue; // No sample number - skip
@@ -411,9 +411,9 @@ namespace Mayfly.Fish.Explorer
 
             if (untreated.Count == 0) return null; // If there is no untreated individuals - end.
 
-            List<Data.IndividualRow> primary = new List<Data.IndividualRow>(); // Primaries are specimen most urgent to be studied to suggest model nature
-            List<Data.IndividualRow[]> secondary = new List<Data.IndividualRow[]>(); // 
-            List<Data.IndividualRow> ignore = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> primary = new List<Wild.Survey.IndividualRow>(); // Primaries are specimen most urgent to be studied to suggest model nature
+            List<Wild.Survey.IndividualRow[]> secondary = new List<Wild.Survey.IndividualRow[]>(); // 
+            List<Wild.Survey.IndividualRow> ignore = new List<Wild.Survey.IndividualRow>();
 
             TreatmentSuggestion result = new TreatmentSuggestion();
 
@@ -432,7 +432,7 @@ namespace Mayfly.Fish.Explorer
                 // Secondaries will be created in each round untill 
                 // they will be enough numerous to satisfy Required level
 
-                List<Data.IndividualRow> sec = new List<Data.IndividualRow>();
+                List<Wild.Survey.IndividualRow> sec = new List<Wild.Survey.IndividualRow>();
 
                 // Along with length range
 
@@ -440,7 +440,7 @@ namespace Mayfly.Fish.Explorer
                 {
                     Interval strate = Interval.FromEndpointAndWidth(l, interval);
 
-                    foreach (Data.IndividualRow individualRow in untreated)
+                    foreach (Wild.Survey.IndividualRow individualRow in untreated)
                     {
                         // Skip if length is not appropriate
 
@@ -453,7 +453,7 @@ namespace Mayfly.Fish.Explorer
 
                         // If individual is already in one of the secondaries - skip it
 
-                        foreach (Data.IndividualRow[] _sec in secondary)
+                        foreach (Wild.Survey.IndividualRow[] _sec in secondary)
                         {
                             if (_sec.Contains(individualRow)) goto Next;
                         }
@@ -518,11 +518,11 @@ namespace Mayfly.Fish.Explorer
 
     public class TreatmentSuggestion
     {
-        public Data.IndividualRow[] Primaries;
+        public Wild.Survey.IndividualRow[] Primaries;
 
-        public Data.IndividualRow[][] Secondaries;
+        public Wild.Survey.IndividualRow[][] Secondaries;
 
-        public Data.IndividualRow[] Ignorables;
+        public Wild.Survey.IndividualRow[] Ignorables;
 
         public int Registered
         {
@@ -541,37 +541,37 @@ namespace Mayfly.Fish.Explorer
 
         public TreatmentSuggestion()
         {
-            Primaries = new Data.IndividualRow[0];
-            Ignorables = new Data.IndividualRow[0];
-            Secondaries = new Data.IndividualRow[0][];
+            Primaries = new Wild.Survey.IndividualRow[0];
+            Ignorables = new Wild.Survey.IndividualRow[0];
+            Secondaries = new Wild.Survey.IndividualRow[0][];
         }
 
 
 
         public void SortSuggestions()
         {
-            List<Data.IndividualRow> list = new List<Data.IndividualRow>(this.Primaries);
+            List<Wild.Survey.IndividualRow> list = new List<Wild.Survey.IndividualRow>(this.Primaries);
             list.Sort(new IndividualRegSorter());
             this.Primaries = list.ToArray();
 
             for (int i = 0; i < Secondaries.Length; i++)
             {
-                list = new List<Data.IndividualRow>(this.Secondaries[i]);
+                list = new List<Wild.Survey.IndividualRow>(this.Secondaries[i]);
                 list.Sort(new IndividualRegSorter());
                 this.Secondaries[i] = list.ToArray();
             }
 
-            list = new List<Data.IndividualRow>(this.Ignorables);
+            list = new List<Wild.Survey.IndividualRow>(this.Ignorables);
             list.Sort(new IndividualRegSorter());
             this.Ignorables = list.ToArray();
 
         }
 
-        public static string[] GetTags(Data.IndividualRow[] indRows)
+        public static string[] GetTags(Wild.Survey.IndividualRow[] indRows)
         {
             List<string> regs = new List<string>();
 
-            foreach (Data.IndividualRow indRow in indRows)
+            foreach (Wild.Survey.IndividualRow indRow in indRows)
             {
                 regs.Add(indRow.Tally);
             }
@@ -581,9 +581,9 @@ namespace Mayfly.Fish.Explorer
             return regs.ToArray();
         }
 
-        public Data.IndividualRow[] GetSuggested()
+        public Wild.Survey.IndividualRow[] GetSuggested()
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
             result.AddRange(Primaries);
             for (int i = 0; i < Secondaries.Length; i++)
             {
@@ -592,9 +592,9 @@ namespace Mayfly.Fish.Explorer
             return result.ToArray();
         }
 
-        public Data.IndividualRow[] GetAll()
+        public Wild.Survey.IndividualRow[] GetAll()
         {
-            List<Data.IndividualRow> result = new List<Data.IndividualRow>();
+            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
             result.AddRange(this.GetSuggested());
             result.AddRange(Ignorables);
             return result.ToArray();

@@ -29,14 +29,14 @@ namespace Mayfly.Benthos.Explorer
             set;
         }
 
-        public event CardRowSaveEventHandler CardRowSaved;
+        public event CardEventHandler CardRowSaved;
 
         private TaxonomicIndex SpeciesIndex
         { get; set; }
 
-        List<Data.LogRow> selectedLogRows;
+        List<Wild.Survey.LogRow> selectedLogRows;
 
-        List<Data.CardRow> ChangedCards = new List<Data.CardRow>();
+        List<Wild.Survey.CardRow> ChangedCards = new List<Wild.Survey.CardRow>();
 
         private ResourceManager localizer = new ResourceManager(typeof(MainForm));
 

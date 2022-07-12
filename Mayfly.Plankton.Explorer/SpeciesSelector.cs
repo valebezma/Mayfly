@@ -9,14 +9,14 @@ using System.Windows.Forms;
 using System.Resources;
 using Mayfly.Extensions;
 using Mayfly.Controls;
-using SpeciesRow = Mayfly.Wild.Data.DefinitionRow;
+using SpeciesRow = Mayfly.Wild.Survey.DefinitionRow;
 using Mayfly.Wild;
 
 namespace Mayfly.Plankton.Explorer
 {
     public partial class SpeciesSelector : Form
     {
-        private Data Data;
+        private Wild.Survey Data;
 
         public SpeciesRow[] SelectedSpecies
         {
@@ -46,7 +46,7 @@ namespace Mayfly.Plankton.Explorer
 
         public SpeciesSelector(
             //DataGridViewCell gridCell, 
-            Data data)
+            Wild.Survey data)
         {
             InitializeComponent();
             listViewColumns.Shine();

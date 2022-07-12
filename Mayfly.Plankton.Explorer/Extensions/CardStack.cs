@@ -13,7 +13,7 @@ namespace Mayfly.Plankton.Explorer
         {
             List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.IsSamplerNull()) continue;
                 if (result.Contains(cardRow.SamplerRow)) continue;
@@ -39,7 +39,7 @@ namespace Mayfly.Plankton.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.DefinitionRow speciesRow in stack.GetSpecies())
+            foreach (Wild.Survey.DefinitionRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageAbundance(speciesRow);
             }
@@ -47,11 +47,11 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        public static double GetAverageAbundance(this CardStack stack, Data.DefinitionRow speciesRow)
+        public static double GetAverageAbundance(this CardStack stack, Wild.Survey.DefinitionRow speciesRow)
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetAbundance();
             }
@@ -63,7 +63,7 @@ namespace Mayfly.Plankton.Explorer
         {
             double result = 0.0;
 
-            foreach (Data.DefinitionRow speciesRow in stack.GetSpecies())
+            foreach (Wild.Survey.DefinitionRow speciesRow in stack.GetSpecies())
             {
                 result += stack.GetAverageBiomass(speciesRow);
             }
@@ -71,11 +71,11 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        public static double GetAverageBiomass(this CardStack stack, Data.DefinitionRow speciesRow)
+        public static double GetAverageBiomass(this CardStack stack, Wild.Survey.DefinitionRow speciesRow)
         {
             double result = 0.0;
 
-            foreach (Data.LogRow logRow in stack.GetLogRows(speciesRow))
+            foreach (Wild.Survey.LogRow logRow in stack.GetLogRows(speciesRow))
             {
                 result += logRow.GetBiomass();
             }
@@ -94,7 +94,7 @@ namespace Mayfly.Plankton.Explorer
 
             foreach (SpeciesSwarm category in result)
             {
-                Data.DefinitionRow speciesRow = stack.Parent.Definition.FindByName(category.Name);
+                Wild.Survey.DefinitionRow speciesRow = stack.Parent.Definition.FindByName(category.Name);
 
                 category.SpeciesRow = speciesRow;
 

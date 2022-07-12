@@ -186,7 +186,7 @@ namespace Mayfly.Fish.Explorer
             Report report = new Report(string.Empty);
 
             bool first = true;
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (first) { first = false; } else { report.BreakPage(Fish.UserSettings.OddCardStart ? PageBreakOption.Odd : PageBreakOption.None); }
                 report.AddHeader(cardRow.FriendlyPath);
@@ -298,7 +298,7 @@ namespace Mayfly.Fish.Explorer
 
             report.AddSectionTitle(Resources.Reports.Sections.SampleDetailed.Subtitle);
             int no = 1;
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 if (cardRow.GetGearType() != samplerType) continue;
 
@@ -310,7 +310,7 @@ namespace Mayfly.Fish.Explorer
                 // TODO: Add gillnet parameters, time of setting etc.
 
 
-                foreach (Data.LogRow logRow in cardRow.GetLogRows())
+                foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
                 {
                     bool justregistered = logRow.DetailedQuantity== 0;
 
@@ -528,9 +528,9 @@ namespace Mayfly.Fish.Explorer
             {
                 report.AddSectionTitle(Resources.Reports.Sections.SpeciesStats.Header2);
                 int no = 1;
-                foreach (Data.CardRow cardRow in stack)
+                foreach (Wild.Survey.CardRow cardRow in stack)
                 {
-                    Data.LogRow logRow = stack.Parent.Log.FindByCardIDDefID(cardRow.ID, speciesRow.ID);
+                    Wild.Survey.LogRow logRow = stack.Parent.Log.FindByCardIDDefID(cardRow.ID, speciesRow.ID);
 
                     if (logRow == null) continue;
 

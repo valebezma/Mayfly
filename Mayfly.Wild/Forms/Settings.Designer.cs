@@ -77,9 +77,9 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
-            this.tdClearRecent = new Mayfly.TaskDialogs.TaskDialog(this.components);
-            this.tdbRecentClear = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
-            this.tdbRecentCancel = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdClearRecent = new global::Mayfly.TaskDialogs.TaskDialog(this.components);
+            this.tdbRecentClear = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
+            this.tdbRecentCancel = new global::Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.buttonBasicSettings = new System.Windows.Forms.Button();
             this.tabControlSettings.SuspendLayout();
             this.tabPageReferences.SuspendLayout();
@@ -469,7 +469,7 @@
             // 
             // tdbRecentCancel
             // 
-            this.tdbRecentCancel.ButtonType = Mayfly.TaskDialogs.ButtonType.Cancel;
+            this.tdbRecentCancel.ButtonType = global::Mayfly.TaskDialogs.ButtonType.Cancel;
             resources.ApplyResources(this.tdbRecentCancel, "tdbRecentCancel");
             // 
             // buttonBasicSettings

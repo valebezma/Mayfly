@@ -17,13 +17,13 @@ namespace Mayfly.Fish.Explorer
 {
     public partial class StratifiedControl : Form
     {
-        Data Data { get; set; }
+        Wild.Survey Data { get; set; }
 
         private TaxonomicIndex.TaxonRow SelectedSpecies;
 
 
 
-        public StratifiedControl(Data data)
+        public StratifiedControl(Wild.Survey data)
         {
             InitializeComponent();
             listViewSpecies.Shine();
@@ -32,11 +32,11 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public void UpdateSample(Data data)
+        public void UpdateSample(Wild.Survey data)
         {
             Data = data;
 
-            foreach (Data.DefinitionRow speciesRow in Data.Definition)
+            foreach (Wild.Survey.DefinitionRow speciesRow in Data.Definition)
             {
                 listViewSpecies.CreateItem(speciesRow.Taxon, speciesRow.KeyRecord.CommonName);
             }

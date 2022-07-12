@@ -15,14 +15,14 @@ namespace Mayfly.Benthos.Explorer
 {
     public partial class SpeciesSelector : Form
     {
-        private Data Data;
+        private Wild.Survey Data;
 
-        public Data.DefinitionRow[] SelectedSpecies
+        public Wild.Survey.DefinitionRow[] SelectedSpecies
         {
             set
             {
                 listViewColumns.SelectedItems.Clear();
-                foreach (Data.DefinitionRow speciesRow in value)
+                foreach (Wild.Survey.DefinitionRow speciesRow in value)
                 {
                     ListViewItem item = listViewColumns.FindItemWithText(speciesRow.Taxon);
                     item.Selected = true;
@@ -32,7 +32,7 @@ namespace Mayfly.Benthos.Explorer
 
             get
             {
-                List<Data.DefinitionRow> result = new List<Data.DefinitionRow>();
+                List<Wild.Survey.DefinitionRow> result = new List<Wild.Survey.DefinitionRow>();
                 foreach (ListViewItem item in listViewColumns.SelectedItems)
                 {
                     result.Add(Data.Definition.FindByName(item.Name));
@@ -45,7 +45,7 @@ namespace Mayfly.Benthos.Explorer
 
         public SpeciesSelector(
             //DataGridViewCell gridCell, 
-            Data data)
+            Wild.Survey data)
         {
             InitializeComponent();
             listViewColumns.Shine();
@@ -60,7 +60,7 @@ namespace Mayfly.Benthos.Explorer
         {
             listViewColumns.Items.Clear();
 
-            foreach (Data.DefinitionRow speciesRow in Data.Definition)
+            foreach (Wild.Survey.DefinitionRow speciesRow in Data.Definition)
             {
                 listViewColumns.CreateItem(speciesRow.Taxon);
             }
@@ -72,7 +72,7 @@ namespace Mayfly.Benthos.Explorer
         {
             listViewColumns.Items.Clear();
 
-            foreach (Data.DefinitionRow speciesRow in Data.Definition)
+            foreach (Wild.Survey.DefinitionRow speciesRow in Data.Definition)
             {
                 if (!speciesRow.Taxon.ToLowerInvariant().Contains(pattern.ToLowerInvariant())) continue;
                 listViewColumns.CreateItem(speciesRow.Taxon);

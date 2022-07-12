@@ -90,7 +90,7 @@ namespace Mayfly.Benthos
             }
         }
 
-        public Data Data = new Data();
+        public Wild.Survey Data = new Wild.Survey();
 
         public Samplers.SamplerRow SelectedSampler
         {
@@ -113,7 +113,7 @@ namespace Mayfly.Benthos
         {
             InitializeComponent();
 
-            Data = new Data();
+            Data = new Wild.Survey();
             Logger.Data = Data;
             FileName = null;
 
@@ -232,7 +232,7 @@ namespace Mayfly.Benthos
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
 
-            Data = new Data();
+            Data = new Wild.Survey();
         }
 
         private void Write(string filename)
@@ -260,7 +260,7 @@ namespace Mayfly.Benthos
 
         private void SaveData()
         {
-            Data.CardRow cardRow = SaveCardRow();
+            Wild.Survey.CardRow cardRow = SaveCardRow();
 
             #region Save environment data
 
@@ -414,7 +414,7 @@ namespace Mayfly.Benthos
             Data.ClearUseless();
         }
 
-        public Data.CardRow SaveCardRow()
+        public Wild.Survey.CardRow SaveCardRow()
         {
             #region Header
 
@@ -442,7 +442,7 @@ namespace Mayfly.Benthos
 
         WaterSave:
 
-            Data.WaterRow newWaterRow = Data.Water.NewWaterRow();
+            Wild.Survey.WaterRow newWaterRow = Data.Water.NewWaterRow();
             newWaterRow.ID = waterSelector.WaterObject.ID;
             newWaterRow.Type = waterSelector.WaterObject.Type;
             if (!waterSelector.WaterObject.IsWaterNull())
@@ -610,7 +610,7 @@ namespace Mayfly.Benthos
         public void LoadData(string filename)
         {
             Clear();
-            Data = new Data();
+            Data = new Wild.Survey();
             Data.Read(filename);
             LoadData();
             FileName = filename;
@@ -913,7 +913,7 @@ namespace Mayfly.Benthos
             if (Data.Factor.Count > 0)
             {
                 tabPageFactors.Parent = tabControl;
-                foreach (Data.FactorValueRow factorValueRow in Data.FactorValue)
+                foreach (Wild.Survey.FactorValueRow factorValueRow in Data.FactorValue)
                 {
                     DataGridViewRow gridRow = new DataGridViewRow();
                     gridRow.CreateCells(spreadSheetAddt);

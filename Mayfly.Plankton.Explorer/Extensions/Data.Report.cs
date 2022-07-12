@@ -11,17 +11,17 @@ namespace Mayfly.Extensions
 {
     public static class DataExtensionsReport
     {
-        public static void AddCommon(this Data data, Report report)
+        public static void AddCommon(this Wild.Survey data, Report report)
         {
             data.AddCommon(report, new string[] { }, new string[] { });
         }
 
-        public static void AddCommon(this Data data, Report report, string prompt, string value)
+        public static void AddCommon(this Wild.Survey data, Report report, string prompt, string value)
         {
             data.AddCommon(report, new string[] { prompt }, new string[] { value });
         }
 
-        public static void AddCommon(this Data data, Report report, string[] prompts, string[] values)
+        public static void AddCommon(this Wild.Survey data, Report report, string[] prompts, string[] values)
         {
             Report.Table table1 = new Report.Table();
             table1.StartRow();

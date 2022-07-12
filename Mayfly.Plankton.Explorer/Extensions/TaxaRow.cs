@@ -11,13 +11,13 @@ namespace Mayfly.Extensions
 {
     public static class TaxonRowExtensions
     {
-        public static double Occurrence(this TaxonomicIndex.TaxonRow taxonRow, Data data)
+        public static double Occurrence(this TaxonomicIndex.TaxonRow taxonRow, Wild.Survey data)
         {
             int present = 0;
 
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
-                foreach (Data.LogRow logRow in cardRow.GetLogRows())
+                foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
                 {
                     if (taxonRow.Includes(logRow.DefinitionRow.Taxon))
                     {

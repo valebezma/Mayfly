@@ -96,7 +96,7 @@ namespace Mayfly.Wild
             }
 
             table.StartRow();
-            table.AddCell(Mayfly.Resources.Interface.Total);
+            table.AddCell(global::Mayfly.Resources.Interface.Total);
             table.AddCell();
             table.AddCell();
             table.EndRow();

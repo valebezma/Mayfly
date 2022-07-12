@@ -15,7 +15,7 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        public Data data = new Data(Plankton.UserSettings.SpeciesIndex, Plankton.UserSettings.SamplersIndex);
+        public Wild.Survey data = new Data(Plankton.UserSettings.SpeciesIndex, Plankton.UserSettings.SamplersIndex);
 
         public CardStack FullStack { get; private set; }
 
@@ -90,7 +90,7 @@ namespace Mayfly.Plankton.Explorer
 
 
 
-        List<Data.LogRow> selectedLogRows;
+        List<Wild.Survey.LogRow> selectedLogRows;
 
         bool busy;
 
@@ -140,7 +140,7 @@ namespace Mayfly.Plankton.Explorer
 
                 spreadSheetCard.ClearInsertedColumns();
 
-                foreach (Data.FactorRow factorRow in data.Factor)
+                foreach (Wild.Survey.FactorRow factorRow in data.Factor)
                 {
                     DataGridViewColumn gridColumn = spreadSheetCard.InsertColumn(factorRow.Factor, factorRow.Factor, typeof(double), spreadSheetCard.ColumnCount - 1);
                     gridColumn.Width = gridColumn.GetPreferredWidth(DataGridViewAutoSizeColumnMode.ColumnHeader, true);
@@ -169,7 +169,7 @@ namespace Mayfly.Plankton.Explorer
                 labelSample.Text = FullStack.Quantity().ToString();
 
                 listViewWaters.Items.Clear();
-                foreach (Data.WaterRow waterRow in data.Water)
+                foreach (Wild.Survey.WaterRow waterRow in data.Water)
                 {
                     if (waterRow.IsWaterNull())
                     {
@@ -213,7 +213,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void speciesInd_Click(object sender, EventArgs e)
         {
-            Data.DefinitionRow speciesRow = (Data.DefinitionRow)((ToolStripMenuItem)sender).Tag;
+            Wild.Survey.DefinitionRow speciesRow = (Wild.Survey.DefinitionRow)((ToolStripMenuItem)sender).Tag;
             LoadIndLog(speciesRow);
         }
 
@@ -258,7 +258,7 @@ namespace Mayfly.Plankton.Explorer
         private void SaveCards(BackgroundWorker worker, DoWorkEventArgs e)
         {
             int index = 0;
-            foreach (Data.CardRow cardRow in data.Card)
+            foreach (Wild.Survey.CardRow cardRow in data.Card)
             {
                 if (ChangedCards.Contains(cardRow.Path))
                 {
@@ -270,13 +270,13 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private void SaveCard(Data.CardRow cardRow)
+        private void SaveCard(Wild.Survey.CardRow cardRow)
         {
             if (cardRow.Path == null) return;
 
             if (ChangedCards.Contains(cardRow.Path))
             {
-                Data data = cardRow.SingleCardDataset();
+                Wild.Survey data = cardRow.SingleCardDataset();
                 if (data != null)
                 {
                     data.WriteToFile(cardRow.Path);
@@ -325,7 +325,7 @@ namespace Mayfly.Plankton.Explorer
             return newInserted;
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns)
+        private void SetCardValue(Wild.Survey.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns)
         {
             foreach (DataGridViewColumn gridColumn in gridColumns)
             {
@@ -334,12 +334,12 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn)
+        private void SetCardValue(Wild.Survey.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn)
         {
             SetCardValue(cardRow, gridRow, gridColumn, gridColumn.Name);
         }
 
-        private void SetCardValue(Data.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn, string field)
+        private void SetCardValue(Wild.Survey.CardRow cardRow, DataGridViewRow gridRow, DataGridViewColumn gridColumn, string field)
         {
             try
             {
@@ -445,7 +445,7 @@ namespace Mayfly.Plankton.Explorer
             //}
         }
 
-        private delegate void ValueSetEventHandler(Data.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns);
+        private delegate void ValueSetEventHandler(Wild.Survey.CardRow cardRow, DataGridViewRow gridRow, IEnumerable<DataGridViewColumn> gridColumns);
 
         private void UpdateSpeciesChart(Chart chart, bool showLegend)
         {
@@ -455,7 +455,7 @@ namespace Mayfly.Plankton.Explorer
             chart.Series[0].Points.Clear();
             chart.Legends.Clear();
 
-            foreach (Data.DefinitionRow speciesRow in data.Species)
+            foreach (Wild.Survey.DefinitionRow speciesRow in data.Species)
             {
                 chart.Series[0].Points.Add(SpeciesDataPoint(speciesRow));
             }
@@ -475,7 +475,7 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        private DataPoint SpeciesDataPoint(Data.DefinitionRow speciesRow)
+        private DataPoint SpeciesDataPoint(Wild.Survey.DefinitionRow speciesRow)
         {
             DataPoint dataPoint = new DataPoint();
             double quantity = speciesRow.TotalQuantity;
@@ -516,7 +516,7 @@ namespace Mayfly.Plankton.Explorer
             }
         }
         
-        private void RememberChanged(Data.CardRow cardRow)
+        private void RememberChanged(Wild.Survey.CardRow cardRow)
         {
             if (cardRow.Path == null) return;
 

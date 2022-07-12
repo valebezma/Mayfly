@@ -19,7 +19,7 @@ namespace Mayfly.Benthos.Explorer
         {
             List<CardArtifact> result = new List<CardArtifact>();
 
-            foreach (Data.CardRow cardRow in stack)
+            foreach (Wild.Survey.CardRow cardRow in stack)
             {
                 CardArtifact artifact = new CardArtifact(cardRow);
                 if (artifact.GetFacts() > 0) result.Add(artifact);
@@ -45,13 +45,13 @@ namespace Mayfly.Benthos.Explorer
 
     public class CardArtifact : ConsistencyChecker
     {
-        public Data.CardRow Card { get; private set; }
+        public Wild.Survey.CardRow Card { get; private set; }
 
         public bool SamplingSquareMissing { get; private set; }
 
 
 
-        public CardArtifact(Data.CardRow cardRow)
+        public CardArtifact(Wild.Survey.CardRow cardRow)
         {
             Card = cardRow;
 

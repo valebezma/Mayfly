@@ -7,7 +7,7 @@ namespace Mayfly.Plankton.Explorer
 {
     partial class MainForm
     {
-        Data.DefinitionRow individualSpecies;
+        Wild.Survey.DefinitionRow individualSpecies;
 
         private void UpdateIndTotals()
         {
@@ -19,7 +19,7 @@ namespace Mayfly.Plankton.Explorer
             IsBusy = true;
             spreadSheetInd.StartProcessing(data.Individual.Count, Wild.Resources.Interface.Process.IndividualsProcessing);
             spreadSheetInd.Rows.Clear();
-            foreach (Data.VariableRow variableRow in data.Variable)
+            foreach (Wild.Survey.VariableRow variableRow in data.Variable)
             {
                 spreadSheetInd.InsertColumn("Var_" + variableRow.Variable,
                     variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
@@ -28,7 +28,7 @@ namespace Mayfly.Plankton.Explorer
             loaderInd.RunWorkerAsync();
         }
 
-        private void LoadIndLog(Data.DefinitionRow speciesRow)
+        private void LoadIndLog(Wild.Survey.DefinitionRow speciesRow)
         {
             individualSpecies = speciesRow;
 
@@ -37,7 +37,7 @@ namespace Mayfly.Plankton.Explorer
                 Wild.Resources.Interface.Process.IndividualsProcessing);
             spreadSheetInd.Rows.Clear();
 
-            foreach (Data.VariableRow variableRow in data.Variable)
+            foreach (Wild.Survey.VariableRow variableRow in data.Variable)
             {
                 spreadSheetInd.InsertColumn("Var_" + variableRow.Variable,
                     variableRow.Variable, typeof(double), spreadSheetInd.ColumnCount - 1);
@@ -49,12 +49,12 @@ namespace Mayfly.Plankton.Explorer
 
 
 
-        private DataGridViewRow GetIndividualRow(Data.IndividualRow individualRow)
+        private DataGridViewRow GetIndividualRow(Wild.Survey.IndividualRow individualRow)
         {
             return columnIndID.GetRow(individualRow.ID, true, true);
         }
 
-        private DataGridViewRow GetLine(Data.IndividualRow individualRow)
+        private DataGridViewRow GetLine(Wild.Survey.IndividualRow individualRow)
         {
             DataGridViewRow result = new DataGridViewRow();
             result.CreateCells(spreadSheetInd);
@@ -66,7 +66,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow[] GetCardIndividualRows(Data.CardRow cardRow)
+        private DataGridViewRow[] GetCardIndividualRows(Wild.Survey.CardRow cardRow)
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
@@ -81,7 +81,7 @@ namespace Mayfly.Plankton.Explorer
             return result.ToArray();
         }
 
-        private DataGridViewRow[] GetLogIndividualRows(Data.LogRow logRow)
+        private DataGridViewRow[] GetLogIndividualRows(Wild.Survey.LogRow logRow)
         {
             List<DataGridViewRow> result = new List<DataGridViewRow>();
 
@@ -96,7 +96,7 @@ namespace Mayfly.Plankton.Explorer
             return result.ToArray();
         }
 
-        private Data.IndividualRow GetIndividualRow(DataGridViewRow gridRow)
+        private Wild.Survey.IndividualRow GetIndividualRow(DataGridViewRow gridRow)
         {
             int ID = (int)gridRow.Cells[columnIndID.Name].Value;
             return data.Individual.FindByID(ID);
@@ -104,7 +104,7 @@ namespace Mayfly.Plankton.Explorer
 
         private void SaveIndRow(DataGridViewRow gridRow)
         {
-            Data.IndividualRow individualRow = GetIndividualRow(gridRow);
+            Wild.Survey.IndividualRow individualRow = GetIndividualRow(gridRow);
 
             if (individualRow == null) return;
 
@@ -150,7 +150,7 @@ namespace Mayfly.Plankton.Explorer
             // Additional variables
             foreach (DataGridViewColumn gridColumn in spreadSheetInd.GetColumns("Var_"))
             {
-                Data.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
+                Wild.Survey.VariableRow variableRow = data.Variable.FindByVarName(gridColumn.HeaderText);
 
                 object varValue = gridRow.Cells[gridColumn.Name].Value;
 
@@ -158,7 +158,7 @@ namespace Mayfly.Plankton.Explorer
                 {
                     if (variableRow == null) continue;
 
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                    Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
 
                     if (valueRow == null) continue;
 
@@ -171,7 +171,7 @@ namespace Mayfly.Plankton.Explorer
                         variableRow = data.Variable.AddVariableRow(gridColumn.HeaderText);
                     }
 
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
+                    Wild.Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(individualRow.ID, variableRow.ID);
 
                     if (valueRow == null)
                     {
@@ -187,7 +187,7 @@ namespace Mayfly.Plankton.Explorer
             RememberChanged(individualRow.LogRow.CardRow);
         }
 
-        private DataGridViewRow UpdateIndividualRow(DataGridViewRow result, Data.IndividualRow individualRow)
+        private DataGridViewRow UpdateIndividualRow(DataGridViewRow result, Wild.Survey.IndividualRow individualRow)
         {
             // = GetLine(individualRow);
 
@@ -232,7 +232,7 @@ namespace Mayfly.Plankton.Explorer
 
             SetCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
 
-            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+            foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
             {
                 if (!valueRow.IsValueNull())
                 {
@@ -243,7 +243,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        private DataGridViewRow UpdateIndividualRow(Data.IndividualRow individualRow)
+        private DataGridViewRow UpdateIndividualRow(Wild.Survey.IndividualRow individualRow)
         {
             DataGridViewRow result = GetIndividualRow(individualRow);
 
@@ -293,7 +293,7 @@ namespace Mayfly.Plankton.Explorer
 
             SetCardValue(individualRow.LogRow.CardRow, result, spreadSheetInd.GetInsertedColumns());
 
-            foreach (Data.ValueRow valueRow in individualRow.GetValueRows())
+            foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
             {
                 if (!valueRow.IsValueNull())
                 {
@@ -309,7 +309,7 @@ namespace Mayfly.Plankton.Explorer
             SetIndividualMassTip(gridRow, GetIndividualRow(gridRow));
         }
 
-        private void SetIndividualMassTip(DataGridViewRow gridRow, Data.IndividualRow individualRow)
+        private void SetIndividualMassTip(DataGridViewRow gridRow, Wild.Survey.IndividualRow individualRow)
         {
             if (individualRow.IsLengthNull())
             {

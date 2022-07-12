@@ -57,7 +57,7 @@ namespace Mayfly.Plankton.Explorer
             return result;
         }
 
-        public static ListViewItem[] CardValueItems(Data data)
+        public static ListViewItem[] CardValueItems(Wild.Survey data)
         {
             List<ListViewItem> result = new List<ListViewItem>();
 
@@ -74,7 +74,7 @@ namespace Mayfly.Plankton.Explorer
             result.Add(Service.LocalizedItem("DiversityA"));
             result.Add(Service.LocalizedItem("DiversityB"));
 
-            foreach (Data.FactorRow Factor in data.Factor)
+            foreach (Wild.Survey.FactorRow Factor in data.Factor)
             {
                 result.Add(LocalizedItem(Factor.Factor));
             }
@@ -100,13 +100,13 @@ namespace Mayfly.Plankton.Explorer
             }
         }
 
-        public static void SaveAssociates(Data.DefinitionRow speciesRow, Data.DefinitionRow[] associates)
+        public static void SaveAssociates(Wild.Survey.DefinitionRow speciesRow, Wild.Survey.DefinitionRow[] associates)
         {
             if (associates != null)
             {
                 List<string> savedAssociates = new List<string>();
 
-                foreach (Data.DefinitionRow spcRow in associates)
+                foreach (Wild.Survey.DefinitionRow spcRow in associates)
                 {
                     if (spcRow.Species == speciesRow.Species) continue;
                     savedAssociates.Add(spcRow.Species);

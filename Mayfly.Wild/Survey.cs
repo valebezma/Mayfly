@@ -15,7 +15,11 @@ using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Wild
 {
-    public partial class Data
+}
+
+namespace Mayfly.Wild
+{
+    public partial class Survey
     {
         public CardRow Solitary {
             get {
@@ -121,8 +125,8 @@ namespace Mayfly.Wild
             File.WriteAllText(filename, GetXml());
         }
 
-        public static Data FromClipboard() {
-            Data data = new Data();
+        public static Survey FromClipboard() {
+            Survey data = new Survey();
             data.ReadXml(new StringReader(Clipboard.GetText()));
             return data;
         }
@@ -130,7 +134,7 @@ namespace Mayfly.Wild
         public string[] GetFilenames() {
             List<string> filenames = new List<string>();
 
-            foreach (Data.CardRow cardRow in this.Card) {
+            foreach (Survey.CardRow cardRow in this.Card) {
                 if (cardRow.Path == null) continue;
                 if (!filenames.Contains(cardRow.Path))
                     filenames.Add(cardRow.Path);
@@ -148,7 +152,7 @@ namespace Mayfly.Wild
         public CardStack GetNotIncluded(CardStack stack) {
             CardStack result = new CardStack();
 
-            foreach (Data.CardRow cardRow in this.Card) {
+            foreach (Survey.CardRow cardRow in this.Card) {
                 if (stack.Contains(cardRow)) continue;
                 result.Add(cardRow);
             }
@@ -166,7 +170,7 @@ namespace Mayfly.Wild
         }
 
         public bool IsLoaded(string filename) {
-            foreach (Data.CardRow cardRow in this.Card) {
+            foreach (Survey.CardRow cardRow in this.Card) {
                 if (cardRow.Path == null) continue;
                 if (cardRow.Path == filename) return true;
             }
@@ -176,7 +180,7 @@ namespace Mayfly.Wild
 
         public static bool ContainsLog(string xml) {
             try {
-                Data data = new Data();
+                Survey data = new Survey();
                 data.ReadXml(new StringReader(xml));
                 return data.Log.Count > 0;
             } catch { return false; }
@@ -184,7 +188,7 @@ namespace Mayfly.Wild
 
         public static bool ContainsIndividuals(string xml) {
             try {
-                Data data = new Data();
+                Survey data = new Survey();
                 data.ReadXml(new StringReader(xml));
                 return data.Individual.Count > 0;
             } catch {
@@ -193,18 +197,18 @@ namespace Mayfly.Wild
         }
 
 
-        public new Data Copy() {
-            Data result = (Data)((DataSet)this).Copy();
+        public new Survey Copy() {
+            Survey result = (Survey)((DataSet)this).Copy();
             result.SetAttributable();
             result.RefreshBios();
             return result;
         }
 
-        public CardRow[] CopyTo(Data extData) {
+        public CardRow[] CopyTo(Survey extData) {
             return this.CopyTo(extData, true);
         }
 
-        public CardRow[] CopyTo(Data extData, bool inheritPath) {
+        public CardRow[] CopyTo(Survey extData, bool inheritPath) {
             List<CardRow> result = new List<CardRow>();
 
             foreach (FactorRow factorRow in this.Factor) {
@@ -236,9 +240,9 @@ namespace Mayfly.Wild
 
             if (dataSpcRows.Length == 0) return speciesKey;
 
-            Data data = (Data)dataSpcRows[0].Table.DataSet;
+            Survey data = (Survey)dataSpcRows[0].Table.DataSet;
 
-            foreach (Data.DefinitionRow dataSpcRow in dataSpcRows) {
+            foreach (Survey.DefinitionRow dataSpcRow in dataSpcRows) {
                 TaxonomicIndex.TaxonRow speciesRow = speciesKey.Taxon.NewTaxonRow(dataSpcRow.Rank, dataSpcRow.Taxon);
                 TaxonomicIndex.TaxonRow equivalentRow = dataSpcRow.KeyRecord;
 
@@ -458,6 +462,16 @@ namespace Mayfly.Wild
             }
         }
 
+        partial class EquipmentDataTable
+        {
+            public EquipmentRow FindDuplicate(EquipmentRow eqpRow) {
+                foreach (EquipmentRow row in this) {
+                    if (row == eqpRow) return row;
+                }
+                return null;
+            }
+        }
+
 
 
         partial class WaterRow
@@ -499,6 +513,16 @@ namespace Mayfly.Wild
             }
         }
 
+        partial class SamplerRow
+        {
+            public SamplerRow CopyTo(SamplerDataTable dt) {
+                SamplerRow result = dt.NewSamplerRow();
+                result.Name = this.Name;
+                result.ShortName = this.ShortName;
+                return result;
+            }
+        }
+
         partial class CardRow : IComparable, IFormattable
         {
             string investigator;
@@ -510,9 +534,9 @@ namespace Mayfly.Wild
                     if (investigator == null) {
                         try {
                             string author = StringCipher.Decrypt(this.Sign, this.When.ToString("s"));
-                            investigator = string.IsNullOrWhiteSpace(author) ? Mayfly.Resources.Interface.InvestigatorNotApproved : author;
+                            investigator = string.IsNullOrWhiteSpace(author) ? global::Mayfly.Resources.Interface.InvestigatorNotApproved : author;
                         } catch {
-                            investigator = Mayfly.Resources.Interface.InvestigatorNotApproved;
+                            investigator = global::Mayfly.Resources.Interface.InvestigatorNotApproved;
                         }
                     }
 
@@ -520,33 +544,31 @@ namespace Mayfly.Wild
                 }
             }
 
-            public Samplers.SamplerRow SamplerRow {
+            public SamplerRow SamplerRow {
                 get {
-                    return this.IsSamplerNull() ? null : SamplersIndex?.Sampler.FindByID(this.Sampler);
+                    return IsEqpIDNull() ? null : this.EquipmentRow.SamplerRow;
                 }
             }
 
             public string SamplerDetails {
                 get {
-                    return IsSamplerNull() ? string.Empty : (
-                        SamplerRow.IsEffortFormulaNull() ? string.Empty : (
-                        SamplerRow.EffortFormula.Contains("M") ? (IsMeshNull() ? string.Empty : Mesh.ToString("◊ 0")) : (
-                        SamplerRow.EffortFormula.Contains("J") ? (IsHookNull() ? string.Empty : Hook.ToString("ʔ 0")) : When.ToString("yyyy MMMM")
-                        )
-                        )
-                        );
+                    string result = string.Empty;
+                    foreach (Survey.SamplerVirtueRow row in this.EquipmentRow.GetSamplerVirtueRows()) {
+                        result += string.Format(" {0} {1}", row.VirtueRow.Notation, row.Value);
+                    }
+                    return result.Trim();
                 }
             }
 
             public string SamplerShortPresentation {
                 get {
-                    return IsSamplerNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.ShortName, SamplerDetails).TrimEnd();
+                    return IsEqpIDNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.ShortName, SamplerDetails).TrimEnd();
                 }
             }
 
             public string SamplerFullPresentation {
                 get {
-                    return IsSamplerNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.Sampler, SamplerDetails).TrimEnd();
+                    return IsEqpIDNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.Name, SamplerDetails).TrimEnd();
                 }
             }
 
@@ -555,7 +577,7 @@ namespace Mayfly.Wild
 
                 set {
                     path = value;
-                    tableCard.CommonPath = IO.GetCommonPath(((Data)this.tableCard.DataSet).GetFilenames());
+                    tableCard.CommonPath = IO.GetCommonPath(((Survey)this.tableCard.DataSet).GetFilenames());
                 }
             }
 
@@ -637,7 +659,7 @@ namespace Mayfly.Wild
 
                     //Data data = (Data)this.tableCard.DataSet;
 
-                    foreach (Data.LogRow logRow in this.GetLogRows()) {
+                    foreach (Survey.LogRow logRow in this.GetLogRows()) {
                         if (logRow.IsQuantityNull()) continue;
                         //{
                         //    if (logRow.GetIndividualRows().Length == 0) continue; // It is just notice of species presence
@@ -655,7 +677,7 @@ namespace Mayfly.Wild
                 get {
                     double result = 0;
 
-                    foreach (Data.LogRow logRow in this.GetLogRows()) {
+                    foreach (Survey.LogRow logRow in this.GetLogRows()) {
                         if (logRow.IsMassNull()) return double.NaN;
 
                         result += logRow.Mass;
@@ -687,7 +709,7 @@ namespace Mayfly.Wild
                     result += this.Label + " ";
                 }
 
-                if (!this.IsSamplerNull()) {
+                if (!this.IsEqpIDNull()) {
                     result += SamplerShortPresentation + " ";
                 }
 
@@ -705,13 +727,13 @@ namespace Mayfly.Wild
             }
 
             public void AttachSign() {
-                this.Sign = StringCipher.Encrypt(Mayfly.UserSettings.Username, this.When.ToString("s"));
+                this.Sign = StringCipher.Encrypt(global::Mayfly.UserSettings.Username, this.When.ToString("s"));
             }
 
             public void RenewSign() {
                 string owner = this.Investigator;
 
-                if (owner == Mayfly.Resources.Interface.InvestigatorNotApproved) {
+                if (owner == global::Mayfly.Resources.Interface.InvestigatorNotApproved) {
                     SetSignNull();
                     investigator = null;
                     return;
@@ -721,7 +743,7 @@ namespace Mayfly.Wild
             }
 
             public object GetValue(string field) {
-                Data data = ((Data)this.Table.DataSet);
+                Survey data = ((Survey)this.Table.DataSet);
 
                 if (data.Card.Columns[field] != null) {
                     if (this.IsNull(field)) {
@@ -749,7 +771,7 @@ namespace Mayfly.Wild
                                 return this[field];
                         }
                 } else if (data.Factor.FindByFactor(field) != null) {
-                    Data.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(
+                    Survey.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(
                         this.ID, data.Factor.FindByFactor(field).ID);
                     return factorValueRow == null ? double.NaN : factorValueRow.Value;
                 } else {
@@ -779,8 +801,8 @@ namespace Mayfly.Wild
                 throw new ArgumentNullException(field, string.Format("Field '{0}' is not found in dataset.", field));
             }
 
-            public Data SingleCardDataset() {
-                Data data = new Data();
+            public Survey SingleCardDataset() {
+                Survey data = new Survey();
                 this.CopyTo(data);
                 data.ClearUseless();
                 return data;
@@ -793,7 +815,7 @@ namespace Mayfly.Wild
                 return result.ToArray();
             }
 
-            public CardRow CopyTo(Data extData) {
+            public CardRow CopyTo(Survey extData) {
                 CardRow newCardRow = extData.Card.NewCardRow();
 
                 if (!this.IsWaterIDNull()) {
@@ -838,8 +860,8 @@ namespace Mayfly.Wild
             }
 
             public void CopyLogTo(CardRow dstCard) {
-                Data srcData = (Data)this.Table.DataSet;
-                Data dstData = (Data)dstCard.Table.DataSet;
+                Survey srcData = (Survey)this.Table.DataSet;
+                Survey dstData = (Survey)dstCard.Table.DataSet;
 
                 foreach (VariableRow variableRow in srcData.Variable) {
                     if (dstData.Variable.FindByVarName(variableRow.Variable) == null) {
@@ -856,7 +878,7 @@ namespace Mayfly.Wild
                     if (!logRow.IsDefIDNull()) {
                         DefinitionRow dstDefRow = dstData.Definition.FindByName(logRow.DefinitionRow.Taxon);
                         if (dstDefRow == null) {
-                            dstLogRow.DefinitionRow = dstData.Definition.AddDefinitionRow(logRow.DefinitionRow.Rank, logRow.DefinitionRow.Taxon);
+                            dstLogRow.DefinitionRow = dstData.Definition.AddDefinitionRow(logRow.DefinitionRow.Rank, logRow.DefinitionRow.Taxon, null);
                             dstData.Log.AddLogRow(dstLogRow);
                         } else {
                             if (dstData.Log.FindByCardIDDefID(dstCard.ID, dstDefRow.ID) == null) {
@@ -902,12 +924,12 @@ namespace Mayfly.Wild
 
                     //dstData.Log.AddLogRow(dstLogRow);
 
-                    foreach (Data.IndividualRow individualRow in logRow.GetIndividualRows()) {
+                    foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows()) {
                         individualRow.CopyTo(dstLogRow);
                     }
 
-                    foreach (Data.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
-                        Data.StratifiedRow newStratifiedRow = dstData.Stratified.NewStratifiedRow();
+                    foreach (Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
+                        Survey.StratifiedRow newStratifiedRow = dstData.Stratified.NewStratifiedRow();
                         newStratifiedRow.LogRow = dstLogRow;
                         newStratifiedRow.Count = stratifiedRow.Count;
                         newStratifiedRow.Class = stratifiedRow.Class;
@@ -997,7 +1019,7 @@ namespace Mayfly.Wild
                     Interval result = Meta.Numerics.Interval.FromEndpoints(double.MaxValue, double.MaxValue);
                     int i = 0;
 
-                    foreach (Data.StratifiedRow stratifiedRow in this.GetStratifiedRows()) {
+                    foreach (Survey.StratifiedRow stratifiedRow in this.GetStratifiedRows()) {
                         if (result.LeftEndpoint > stratifiedRow.Class) {
                             result = stratifiedRow.SizeClass;
                             i++;
@@ -1017,7 +1039,7 @@ namespace Mayfly.Wild
                     Interval result = Meta.Numerics.Interval.FromEndpoints(double.MinValue, double.MinValue);
                     int i = 0;
 
-                    foreach (Data.StratifiedRow stratifiedRow in this.GetStratifiedRows()) {
+                    foreach (Survey.StratifiedRow stratifiedRow in this.GetStratifiedRows()) {
                         if (result.RightEndpoint < stratifiedRow.SizeClass.RightEndpoint) {
                             result = stratifiedRow.SizeClass;
                             i++;
@@ -1073,7 +1095,7 @@ namespace Mayfly.Wild
                                 return double.NaN;
                             }
 
-                            double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(individualRow.Length);
+                            double meanWeight = ((Survey)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(individualRow.Length);
 
                             if (double.IsNaN(meanWeight)) {
                                 return double.NaN;
@@ -1098,7 +1120,7 @@ namespace Mayfly.Wild
                     double result = 0;
 
                     foreach (StratifiedRow stratifiedRow in this.GetStratifiedRows()) {
-                        double meanWeight = ((Data)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(stratifiedRow.SizeClass.Midpoint);
+                        double meanWeight = ((Survey)this.Table.DataSet).FindMassModel(this.DefinitionRow.Taxon).GetValue(stratifiedRow.SizeClass.Midpoint);
 
                         if (double.IsNaN(meanWeight)) {
                             return double.NaN;
@@ -1127,7 +1149,7 @@ namespace Mayfly.Wild
             /// <param name="logtitle"></param>
             /// <param name="stratifiedtitle"></param>
             public void AddReport(Report report, CardReportLevel level, string logtitle, string stratifiedtitle) {
-                (new Data.LogRow[] { this }).AddReport(report, level, logtitle, stratifiedtitle);
+                (new Survey.LogRow[] { this }).AddReport(report, level, logtitle, stratifiedtitle);
             }
 
             /// <summary>
@@ -1244,8 +1266,8 @@ namespace Mayfly.Wild
             }
 
             public IndividualRow CopyTo(LogRow dstLogRow) {
-                Data dstData = (Data)dstLogRow.Table.DataSet;
-                Data.IndividualRow newIndRow = dstData.Individual.NewIndividualRow();
+                Survey dstData = (Survey)dstLogRow.Table.DataSet;
+                Survey.IndividualRow newIndRow = dstData.Individual.NewIndividualRow();
                 newIndRow.LogRow = dstLogRow;
 
                 foreach (DataColumn col in this.Table.Columns) {
@@ -1280,8 +1302,8 @@ namespace Mayfly.Wild
             }
 
             public void CopyTrophicsTo(IndividualRow dstRow) {
-                Data srcData = (Data)this.tableIndividual.DataSet;
-                Data dstData = (Data)dstRow.Table.DataSet;
+                Survey srcData = (Survey)this.tableIndividual.DataSet;
+                Survey dstData = (Survey)dstRow.Table.DataSet;
 
                 foreach (IntestineRow Row in this.GetIntestineRows()) {
                     IntestineRow NewRow = dstData.Intestine.NewIntestineRow();
@@ -1301,8 +1323,8 @@ namespace Mayfly.Wild
             }
 
             public void CopyParasitesTo(IndividualRow dstRow) {
-                Data srcData = (Data)this.tableIndividual.DataSet;
-                Data dstData = (Data)dstRow.Table.DataSet;
+                Survey srcData = (Survey)this.tableIndividual.DataSet;
+                Survey dstData = (Survey)dstRow.Table.DataSet;
 
                 foreach (OrganRow Row in this.GetOrganRows()) {
                     OrganRow NewRow = dstData.Organ.NewOrganRow();
@@ -1320,7 +1342,7 @@ namespace Mayfly.Wild
             }
 
             public double GetAddtValue(string var) {
-                foreach (Data.ValueRow valueRow in this.GetValueRows()) {
+                foreach (Survey.ValueRow valueRow in this.GetValueRows()) {
                     if (valueRow.VariableRow.Variable == var)
                         return valueRow.Value;
                 }
@@ -1329,20 +1351,20 @@ namespace Mayfly.Wild
             }
 
             public void SetAddtValue(string var, double value) {
-                Data data = (Data)this.Table.DataSet;
+                Survey data = (Survey)this.Table.DataSet;
 
                 if (double.IsNaN(value)) {
-                    Data.VariableRow CurrentVarRow = data.Variable.FindByVarName(var);
+                    Survey.VariableRow CurrentVarRow = data.Variable.FindByVarName(var);
                     if (CurrentVarRow == null) return;
-                    Data.ValueRow ValueRow = data.Value.FindByIndIDVarID(this.ID, CurrentVarRow.ID);
+                    Survey.ValueRow ValueRow = data.Value.FindByIndIDVarID(this.ID, CurrentVarRow.ID);
                     if (ValueRow == null) return;
                     ValueRow.Delete();
                 } else {
-                    Data.VariableRow variableRow = data.Variable.FindByVarName(var);
+                    Survey.VariableRow variableRow = data.Variable.FindByVarName(var);
                     if (variableRow == null) {
                         variableRow = data.Variable.AddVariableRow(var);
                     }
-                    Data.ValueRow valueRow = data.Value.FindByIndIDVarID(this.ID, variableRow.ID);
+                    Survey.ValueRow valueRow = data.Value.FindByIndIDVarID(this.ID, variableRow.ID);
                     if (valueRow == null) {
                         data.Value.AddValueRow(this, variableRow, value);
                     } else {
@@ -1380,9 +1402,104 @@ namespace Mayfly.Wild
                 }
             }
         }
+
+        partial class EquipmentRow : IComparable, IFormattable
+        {
+            public int CompareTo(EquipmentRow other) {
+                return this.ToString().CompareTo(other.ToString());
+            }
+
+            public static bool operator ==(EquipmentRow a, EquipmentRow b) {
+                // If both are null, or both are same instance, return true.
+                if (Object.ReferenceEquals(a, b)) {
+                    return true;
+                }
+
+                // If one is null, but not both, return false.
+                if (((object)a == null) || ((object)b == null)) {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return a.CompareTo(b) == 0;
+            }
+
+            public static bool operator !=(EquipmentRow a, EquipmentRow b) {
+                return !(a == b);
+            }
+
+            int IComparable.CompareTo(object obj) {
+                return Compare(this, (EquipmentRow)obj);
+            }
+
+            public static int Compare(EquipmentRow value1, EquipmentRow value2) {
+                return value1.CompareTo(value2);
+            }
+
+            public override bool Equals(System.Object obj) {
+                // If parameter is null return false.
+                if (obj == null) {
+                    return false;
+                }
+
+                // If parameter cannot be cast return false.
+                EquipmentRow p = obj as EquipmentRow;
+                if ((Object)p == null) {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return this.CompareTo(p) == 0;
+            }
+
+            public bool Equals(EquipmentRow p) {
+                // If parameter is null return false:
+                if ((object)p == null) {
+                    return false;
+                }
+
+                // Return true if the fields match:
+                return this.CompareTo(p) == 0;
+            }
+
+            public override int GetHashCode() {
+                return this.ToString().GetHashCode();
+            }
+
+
+            public override string ToString() {
+                return SamplerRow.ShortName;
+            }
+
+            public string ToString(string format, IFormatProvider formatProvider) {
+                if (string.IsNullOrEmpty(format)) format = string.Empty;
+
+                switch (format.ToLowerInvariant()) {
+                    case "c":
+                        return CommonName;
+
+                    case "s":
+                        return SevereName;
+
+                    case "f":
+                        return FullName;
+
+                    case "i":
+                        return InterfaceString;
+
+                    default:
+                        return Name;
+                }
+            }
+
+            public string ToString(string format) {
+                return ToString(format, CultureInfo.CurrentCulture);
+            }
+
+        }
     }
 
-    public class LogRowSorter : IComparer<Data.LogRow>
+    public class LogRowSorter : IComparer<Survey.LogRow>
     {
         readonly LogSortOrder logOrder;
 
@@ -1390,7 +1507,7 @@ namespace Mayfly.Wild
             logOrder = _logOrder;
         }
 
-        public int Compare(Data.LogRow x, Data.LogRow y) {
+        public int Compare(Survey.LogRow x, Survey.LogRow y) {
             switch (logOrder) {
                 case LogSortOrder.Alphabetically:
                     if (x.IsDefIDNull()) return 1;
@@ -1420,17 +1537,34 @@ namespace Mayfly.Wild
         }
     }
 
-    public delegate void CardRowSaveEventHandler(object sender, CardRowSaveEvent e);
+    public delegate void CardEventHandler(object sender, CardEventArgs e);
 
-    public class CardRowSaveEvent : global::System.EventArgs
+    public class CardEventArgs : EventArgs
     {
-        private readonly Data.CardRow eventRow;
+        private readonly Survey.CardRow eventRow;
 
-        public CardRowSaveEvent(Data.CardRow row) {
+        public CardEventArgs(Survey.CardRow row) {
             this.eventRow = row;
         }
 
-        public Data.CardRow Row {
+        public Survey.CardRow Row {
+            get {
+                return this.eventRow;
+            }
+        }
+    }
+
+    public delegate void EquipmentEventHandler(object sender, EquipmentEventArgs e);
+
+    public class EquipmentEventArgs : EventArgs
+    {
+        private readonly Survey.EquipmentRow eventRow;
+
+        public EquipmentEventArgs(Survey.EquipmentRow row) {
+            this.eventRow = row;
+        }
+
+        public Survey.EquipmentRow Row {
             get {
                 return this.eventRow;
             }
