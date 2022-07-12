@@ -1207,7 +1207,7 @@ namespace Mayfly.Fish
         private void ToolStripMenuItemSettings_Click(object sender, EventArgs e)
         {
             string currentWaters = Wild.UserSettings.WatersIndexPath;
-            string currentSpc =ReaderSettings.TaxonomicIndexPath;
+            string currentSpc = ReaderSettings.TaxonomicIndexPath;
             int currentRecentCount =ReaderSettings.RecentSpeciesCount;
 
             Settings settings = new Settings();

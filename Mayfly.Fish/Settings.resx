@@ -739,7 +739,7 @@
     <value>spreadSheetGears</value>
   </data>
   <data name="&gt;&gt;spreadSheetGears.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetGears.Parent" xml:space="preserve">
     <value>tabPageEquipment</value>
@@ -817,7 +817,7 @@
     <value>spreadSheetOpening</value>
   </data>
   <data name="&gt;&gt;spreadSheetOpening.Type" xml:space="preserve">
-    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Controls.SpreadSheet, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;spreadSheetOpening.Parent" xml:space="preserve">
     <value>tabPageActive</value>
@@ -1717,13 +1717,13 @@
     <value>tdClearRecent</value>
   </data>
   <data name="&gt;&gt;tdClearRecent.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialog, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tdbRecentClear.Name" xml:space="preserve">
     <value>tdbRecentClear</value>
   </data>
   <data name="&gt;&gt;tdbRecentClear.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">
     <value>columnHeader1</value>
@@ -1735,7 +1735,7 @@
     <value>tdbRecentCancel</value>
   </data>
   <data name="&gt;&gt;tdbRecentCancel.Type" xml:space="preserve">
-    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.4.27.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.TaskDialogs.TaskDialogButton, Mayfly, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;columnHeader2.Name" xml:space="preserve">
     <value>columnHeader2</value>
@@ -1783,6 +1783,6 @@
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Mayfly.Wild.Settings, Mayfly.Wild, Version=1.2.6.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mayfly.Wild.Settings, Mayfly.Wild, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

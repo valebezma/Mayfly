@@ -6,6 +6,8 @@ using Mayfly.Wild;
 using System.Windows.Forms;
 using System.IO;
 using static Mayfly.Fish.UserSettings;
+using static Mayfly.Wild.UserSettings;
+using static Mayfly.UserSettings;
 
 namespace Mayfly.Fish
 {
@@ -53,9 +55,9 @@ namespace Mayfly.Fish
 
 
         public Settings()
-            : base(UserSettings.ReaderSettings)
         {
             InitializeComponent();
+            Initiate();
 
             textBoxDiet.Text = UserSettings.DietIndexPath;
             textBoxParasites.Text = UserSettings.ParasitesIndexPath;
@@ -79,7 +81,7 @@ namespace Mayfly.Fish
 
             foreach (Samplers.SamplerRow samplerRow in ReaderSettings.SamplersIndex.Sampler)
             {
-                LoadOpening(samplerRow);
+                loadOpening(samplerRow);
             }
 
             //columnSampler.DataSource = ReaderSettings.SamplersIndex.GetPassives();
@@ -87,52 +89,7 @@ namespace Mayfly.Fish
             columnSampler.DisplayMember = "Sampler";
             columnSampler.ValueMember = "ShortName";
 
-            LoadGears();
-        }
-
-
-
-        protected override void SaveSettings()
-        {
-            if (!tabPageReferences.IsDisposed)
-            {
-                UserSettings.DietIndexPath = textBoxDiet.Text;
-                UserSettings.ParasitesIndexPath = textBoxParasites.Text;
-            }
-
-            if (!tabPageGears.IsDisposed)
-            {
-                UserSettings.DefaultOpening = .01 * (double)numericUpDownOpeningDefault.Value;
-
-                UserSettings.ClearFolder(UserSettings.ReaderSettings.Path, nameof(Service.Opening));
-                foreach (DataGridViewRow gridRow in spreadSheetOpening.Rows)
-                {
-                    if (gridRow.IsNewRow) continue;
-                    if (gridRow.Cells[columnOpeningGear.Index].Value == null) continue;
-                    if (gridRow.Cells[columnOpeningValue.Index].Value == null) continue;
-                    if ((double)gridRow.Cells[columnOpeningValue.Index].Value == UserSettings.DefaultOpening) continue;
-                    Service.SaveOpening(((Samplers.SamplerRow)gridRow.Tag).ID, (double)gridRow.Cells[columnOpeningValue.Index].Value);
-                }
-
-                UserSettings.GillnetStdLength = (double)numericUpDownStdLength.Value;
-                UserSettings.GillnetStdHeight = (double)numericUpDownStdHeight.Value;
-                UserSettings.GillnetStdExposure = (int)numericUpDownStdSoak.Value;
-
-                UserSettings.Equipment = new Equipment();
-                foreach (DataGridViewRow gridRow in spreadSheetGears.Rows)
-                {
-                    if (gridRow.IsNewRow) continue;
-                    if (gridRow.Cells[columnSampler.Index].Value == null) continue;
-
-                    Equipment.UnitsRow unitsRow = UserSettings.Equipment.Units.NewUnitsRow();
-                    unitsRow.SamplerID = ReaderSettings.SamplersIndex.Sampler.FindByCode((string)gridRow.Cells[columnSampler.Index].Value).ID;
-                    if (gridRow.Cells[columnMesh.Index].Value != null) unitsRow.Mesh = (int)gridRow.Cells[columnMesh.Index].Value;
-                    if (gridRow.Cells[columnLength.Index].Value != null) unitsRow.Length = (double)gridRow.Cells[columnLength.Index].Value;
-                    if (gridRow.Cells[columnHeight.Index].Value != null) unitsRow.Height = (double)gridRow.Cells[columnHeight.Index].Value;
-                    UserSettings.Equipment.Units.AddUnitsRow(unitsRow);
-                }
-                Service.SaveEquipment();
-            }
+            loadGears();
         }
 
         private void InitializeComponent()
@@ -603,6 +560,7 @@ namespace Mayfly.Fish
             // 
             resources.ApplyResources(this, "$this");
             this.Name = "Settings";
+            this.OnSaved += new System.EventHandler(this.Settings_OnSaved);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRecentCount)).EndInit();
             this.tabPageReferences.ResumeLayout(false);
             this.tabPageReferences.PerformLayout();
@@ -639,7 +597,7 @@ namespace Mayfly.Fish
 
 
 
-        private void LoadOpening(Samplers.SamplerRow samplerRow)
+        private void loadOpening(Samplers.SamplerRow samplerRow)
         {
             double open = Service.DefaultOpening(samplerRow.ID);
             if (double.IsNaN(open)) return;
@@ -652,10 +610,10 @@ namespace Mayfly.Fish
             gridRow.Tag = samplerRow;
             spreadSheetOpening.Rows.Add(gridRow);
             
-            LoadGears();
+            loadGears();
         }
 
-        private void LoadGears()
+        private void loadGears()
         {
             spreadSheetGears.Rows.Clear();
 
@@ -721,6 +679,49 @@ namespace Mayfly.Fish
                 Samplers.SamplerRow samplerRow = ReaderSettings.SamplersIndex.Sampler.FindBySampler((string)value);
                 spreadSheetOpening.Rows[e.RowIndex].Tag = samplerRow;
             }
+        }
+
+        private void Settings_OnSaved(object sender, EventArgs e) {
+            if (!tabPageReferences.IsDisposed)
+            {
+                DietIndexPath = textBoxDiet.Text;
+                ParasitesIndexPath = textBoxParasites.Text;
+            }
+
+            if (!tabPageGears.IsDisposed)
+            {
+                DefaultOpening = .01 * (double)numericUpDownOpeningDefault.Value;
+
+                ClearFolder(ReaderSettings.FeatureKey, nameof(Service.Opening));
+                foreach (DataGridViewRow gridRow in spreadSheetOpening.Rows)
+                {
+                    if (gridRow.IsNewRow) continue;
+                    if (gridRow.Cells[columnOpeningGear.Index].Value == null) continue;
+                    if (gridRow.Cells[columnOpeningValue.Index].Value == null) continue;
+                    if ((double)gridRow.Cells[columnOpeningValue.Index].Value == UserSettings.DefaultOpening) continue;
+                    Service.SaveOpening(((Samplers.SamplerRow)gridRow.Tag).ID, (double)gridRow.Cells[columnOpeningValue.Index].Value);
+                }
+
+                GillnetStdLength = (double)numericUpDownStdLength.Value;
+                GillnetStdHeight = (double)numericUpDownStdHeight.Value;
+                GillnetStdExposure = (int)numericUpDownStdSoak.Value;
+
+                UserSettings.Equipment = new Equipment();
+                foreach (DataGridViewRow gridRow in spreadSheetGears.Rows)
+                {
+                    if (gridRow.IsNewRow) continue;
+                    if (gridRow.Cells[columnSampler.Index].Value == null) continue;
+
+                    Equipment.UnitsRow unitsRow = UserSettings.Equipment.Units.NewUnitsRow();
+                    unitsRow.SamplerID = ReaderSettings.SamplersIndex.Sampler.FindByCode((string)gridRow.Cells[columnSampler.Index].Value).ID;
+                    if (gridRow.Cells[columnMesh.Index].Value != null) unitsRow.Mesh = (int)gridRow.Cells[columnMesh.Index].Value;
+                    if (gridRow.Cells[columnLength.Index].Value != null) unitsRow.Length = (double)gridRow.Cells[columnLength.Index].Value;
+                    if (gridRow.Cells[columnHeight.Index].Value != null) unitsRow.Height = (double)gridRow.Cells[columnHeight.Index].Value;
+                    UserSettings.Equipment.Units.AddUnitsRow(unitsRow);
+                }
+                Service.SaveEquipment();
+            }
+
         }
     }
 }

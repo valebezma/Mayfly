@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
-            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState3 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState3 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelWater = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +70,6 @@
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.textBoxMesh = new System.Windows.Forms.TextBox();
-            this.labelMesh = new System.Windows.Forms.Label();
             this.menuItemAddInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusLog = new System.Windows.Forms.ToolStripStatusLabel();
@@ -90,41 +88,8 @@
             this.textBoxComments = new System.Windows.Forms.TextBox();
             this.waypointControl1 = new Mayfly.Geographics.WaypointControl();
             this.tabPageSampler = new System.Windows.Forms.TabPage();
-            this.textBoxVolume = new System.Windows.Forms.TextBox();
-            this.labelEffort = new System.Windows.Forms.Label();
-            this.labelVolume = new System.Windows.Forms.Label();
             this.buttonGear = new System.Windows.Forms.Button();
-            this.textBoxEfforts = new System.Windows.Forms.TextBox();
-            this.labelEfforts = new System.Windows.Forms.Label();
-            this.textBoxArea = new System.Windows.Forms.TextBox();
-            this.labelArea = new System.Windows.Forms.Label();
             this.labelMethod = new System.Windows.Forms.Label();
-            this.labelOpening = new System.Windows.Forms.Label();
-            this.labelSampler = new System.Windows.Forms.Label();
-            this.textBoxHeight = new System.Windows.Forms.TextBox();
-            this.textBoxSquare = new System.Windows.Forms.TextBox();
-            this.labelSquare = new System.Windows.Forms.Label();
-            this.labelHook = new System.Windows.Forms.Label();
-            this.labelHeight = new System.Windows.Forms.Label();
-            this.textBoxHook = new System.Windows.Forms.TextBox();
-            this.textBoxOpening = new System.Windows.Forms.TextBox();
-            this.textBoxLength = new System.Windows.Forms.TextBox();
-            this.pictureBoxWarnOpening = new System.Windows.Forms.PictureBox();
-            this.labelLength = new System.Windows.Forms.Label();
-            this.panelLS = new System.Windows.Forms.Panel();
-            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.pictureBoxWarnExposure = new System.Windows.Forms.PictureBox();
-            this.labelExposure = new System.Windows.Forms.Label();
-            this.textBoxExposure = new System.Windows.Forms.TextBox();
-            this.textBoxVelocity = new System.Windows.Forms.TextBox();
-            this.labelVelocity = new System.Windows.Forms.Label();
-            this.labelOperationEnd = new System.Windows.Forms.Label();
-            this.labelOperation = new System.Windows.Forms.Label();
-            this.labelDuration = new System.Windows.Forms.Label();
-            this.panelGeoData = new System.Windows.Forms.Panel();
-            this.textBoxExactArea = new System.Windows.Forms.TextBox();
-            this.labelExactArea = new System.Windows.Forms.Label();
             this.comboBoxSampler = new GroupedComboBox();
             this.tabPageEnvironment = new System.Windows.Forms.TabPage();
             this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
@@ -157,20 +122,68 @@
             this.tdbRemoval = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
+            this.textBoxVolume = new System.Windows.Forms.TextBox();
+            this.labelEffort = new System.Windows.Forms.Label();
+            this.labelVolume = new System.Windows.Forms.Label();
+            this.textBoxEfforts = new System.Windows.Forms.TextBox();
+            this.labelEfforts = new System.Windows.Forms.Label();
+            this.textBoxArea = new System.Windows.Forms.TextBox();
+            this.labelArea = new System.Windows.Forms.Label();
+            this.labelOpening = new System.Windows.Forms.Label();
+            this.labelSampler = new System.Windows.Forms.Label();
+            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.labelMesh = new System.Windows.Forms.Label();
+            this.textBoxSquare = new System.Windows.Forms.TextBox();
+            this.textBoxMesh = new System.Windows.Forms.TextBox();
+            this.labelSquare = new System.Windows.Forms.Label();
+            this.labelHook = new System.Windows.Forms.Label();
+            this.labelHeight = new System.Windows.Forms.Label();
+            this.textBoxOpening = new System.Windows.Forms.TextBox();
+            this.textBoxLength = new System.Windows.Forms.TextBox();
+            this.pictureBoxWarnOpening = new System.Windows.Forms.PictureBox();
+            this.labelLength = new System.Windows.Forms.Label();
+            this.panelLS = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelDuration = new System.Windows.Forms.Label();
+            this.labelOperation = new System.Windows.Forms.Label();
+            this.labelOperationEnd = new System.Windows.Forms.Label();
+            this.labelVelocity = new System.Windows.Forms.Label();
+            this.textBoxVelocity = new System.Windows.Forms.TextBox();
+            this.textBoxExposure = new System.Windows.Forms.TextBox();
+            this.labelExposure = new System.Windows.Forms.Label();
+            this.pictureBoxWarnExposure = new System.Windows.Forms.PictureBox();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.panelGeoData = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelExactArea = new System.Windows.Forms.Label();
+            this.textBoxExactArea = new System.Windows.Forms.TextBox();
+            this.textBoxHook = new System.Windows.Forms.TextBox();
             this.MenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageCollect.SuspendLayout();
             this.tabPageSampler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).BeginInit();
-            this.panelLS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).BeginInit();
-            this.panelGeoData.SuspendLayout();
             this.tabPageEnvironment.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
             this.tabPageFactors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetAddt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).BeginInit();
+            this.panelLS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).BeginInit();
+            this.panelGeoData.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelWater
@@ -393,19 +406,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // textBoxMesh
-            // 
-            resources.ApplyResources(this.textBoxMesh, "textBoxMesh");
-            this.textBoxMesh.Name = "textBoxMesh";
-            this.textBoxMesh.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxMesh.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxMesh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelMesh
-            // 
-            resources.ApplyResources(this.labelMesh, "labelMesh");
-            this.labelMesh.Name = "labelMesh";
-            // 
             // menuItemAddInfo
             // 
             resources.ApplyResources(this.menuItemAddInfo, "menuItemAddInfo");
@@ -441,10 +441,10 @@
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPageCollect);
-            this.tabControl.Controls.Add(this.tabPageSampler);
             this.tabControl.Controls.Add(this.tabPageEnvironment);
             this.tabControl.Controls.Add(this.tabPageLog);
             this.tabControl.Controls.Add(this.tabPageFactors);
+            this.tabControl.Controls.Add(this.tabPageSampler);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
@@ -557,31 +557,12 @@
             this.tabPageSampler.Controls.Add(this.textBoxLength);
             this.tabPageSampler.Controls.Add(this.pictureBoxWarnOpening);
             this.tabPageSampler.Controls.Add(this.labelLength);
-            this.tabPageSampler.Controls.Add(this.panelLS);
             this.tabPageSampler.Controls.Add(this.panelGeoData);
             this.tabPageSampler.Controls.Add(this.comboBoxSampler);
+            this.tabPageSampler.Controls.Add(this.panelLS);
             resources.ApplyResources(this.tabPageSampler, "tabPageSampler");
             this.tabPageSampler.Name = "tabPageSampler";
             this.tabPageSampler.UseVisualStyleBackColor = true;
-            // 
-            // textBoxVolume
-            // 
-            resources.ApplyResources(this.textBoxVolume, "textBoxVolume");
-            this.textBoxVolume.Name = "textBoxVolume";
-            this.textBoxVolume.ReadOnly = true;
-            this.textBoxVolume.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelEffort
-            // 
-            resources.ApplyResources(this.labelEffort, "labelEffort");
-            this.labelEffort.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelEffort.Name = "labelEffort";
-            // 
-            // labelVolume
-            // 
-            resources.ApplyResources(this.labelVolume, "labelVolume");
-            this.labelVolume.Name = "labelVolume";
             // 
             // buttonGear
             // 
@@ -589,221 +570,11 @@
             this.buttonGear.Name = "buttonGear";
             this.buttonGear.Click += new System.EventHandler(this.buttonGear_Click);
             // 
-            // textBoxEfforts
-            // 
-            resources.ApplyResources(this.textBoxEfforts, "textBoxEfforts");
-            this.textBoxEfforts.Name = "textBoxEfforts";
-            this.textBoxEfforts.ReadOnly = true;
-            this.textBoxEfforts.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxEfforts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelEfforts
-            // 
-            resources.ApplyResources(this.labelEfforts, "labelEfforts");
-            this.labelEfforts.Name = "labelEfforts";
-            // 
-            // textBoxArea
-            // 
-            resources.ApplyResources(this.textBoxArea, "textBoxArea");
-            this.textBoxArea.Name = "textBoxArea";
-            this.textBoxArea.ReadOnly = true;
-            this.textBoxArea.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelArea
-            // 
-            resources.ApplyResources(this.labelArea, "labelArea");
-            this.labelArea.Name = "labelArea";
-            // 
             // labelMethod
             // 
             resources.ApplyResources(this.labelMethod, "labelMethod");
             this.labelMethod.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelMethod.Name = "labelMethod";
-            // 
-            // labelOpening
-            // 
-            resources.ApplyResources(this.labelOpening, "labelOpening");
-            this.labelOpening.Name = "labelOpening";
-            // 
-            // labelSampler
-            // 
-            resources.ApplyResources(this.labelSampler, "labelSampler");
-            this.labelSampler.Name = "labelSampler";
-            // 
-            // textBoxHeight
-            // 
-            resources.ApplyResources(this.textBoxHeight, "textBoxHeight");
-            this.textBoxHeight.Name = "textBoxHeight";
-            this.textBoxHeight.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxHeight.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // textBoxSquare
-            // 
-            resources.ApplyResources(this.textBoxSquare, "textBoxSquare");
-            this.textBoxSquare.Name = "textBoxSquare";
-            this.textBoxSquare.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxSquare.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxSquare.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelSquare
-            // 
-            resources.ApplyResources(this.labelSquare, "labelSquare");
-            this.labelSquare.Name = "labelSquare";
-            // 
-            // labelHook
-            // 
-            resources.ApplyResources(this.labelHook, "labelHook");
-            this.labelHook.Name = "labelHook";
-            // 
-            // labelHeight
-            // 
-            resources.ApplyResources(this.labelHeight, "labelHeight");
-            this.labelHeight.Name = "labelHeight";
-            // 
-            // textBoxHook
-            // 
-            resources.ApplyResources(this.textBoxHook, "textBoxHook");
-            this.textBoxHook.Name = "textBoxHook";
-            this.textBoxHook.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxHook.TextChanged += new System.EventHandler(this.value_Changed);
-            this.textBoxHook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // textBoxOpening
-            // 
-            resources.ApplyResources(this.textBoxOpening, "textBoxOpening");
-            this.textBoxOpening.Name = "textBoxOpening";
-            this.textBoxOpening.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxOpening.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxOpening.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // textBoxLength
-            // 
-            resources.ApplyResources(this.textBoxLength, "textBoxLength");
-            this.textBoxLength.Name = "textBoxLength";
-            this.textBoxLength.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxLength.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // pictureBoxWarnOpening
-            // 
-            resources.ApplyResources(this.pictureBoxWarnOpening, "pictureBoxWarnOpening");
-            this.pictureBoxWarnOpening.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarnOpening.Name = "pictureBoxWarnOpening";
-            this.pictureBoxWarnOpening.TabStop = false;
-            this.pictureBoxWarnOpening.DoubleClick += new System.EventHandler(this.pictureBoxWarnOpening_DoubleClick);
-            this.pictureBoxWarnOpening.MouseLeave += new System.EventHandler(this.pictureBoxWarnOpening_MouseLeave);
-            this.pictureBoxWarnOpening.MouseHover += new System.EventHandler(this.pictureBoxWarnOpening_MouseHover);
-            // 
-            // labelLength
-            // 
-            resources.ApplyResources(this.labelLength, "labelLength");
-            this.labelLength.Name = "labelLength";
-            // 
-            // panelLS
-            // 
-            resources.ApplyResources(this.panelLS, "panelLS");
-            this.panelLS.Controls.Add(this.dateTimePickerEnd);
-            this.panelLS.Controls.Add(this.dateTimePickerStart);
-            this.panelLS.Controls.Add(this.pictureBoxWarnExposure);
-            this.panelLS.Controls.Add(this.labelExposure);
-            this.panelLS.Controls.Add(this.textBoxExposure);
-            this.panelLS.Controls.Add(this.textBoxVelocity);
-            this.panelLS.Controls.Add(this.labelVelocity);
-            this.panelLS.Controls.Add(this.labelOperationEnd);
-            this.panelLS.Controls.Add(this.labelOperation);
-            this.panelLS.Controls.Add(this.labelDuration);
-            this.panelLS.Name = "panelLS";
-            // 
-            // dateTimePickerEnd
-            // 
-            resources.ApplyResources(this.dateTimePickerEnd, "dateTimePickerEnd");
-            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.ValueChanged += new System.EventHandler(this.dateTimePickerEnd_ValueChanged);
-            this.dateTimePickerEnd.EnabledChanged += new System.EventHandler(this.dateTimePickerStart_EnabledChanged);
-            // 
-            // dateTimePickerStart
-            // 
-            resources.ApplyResources(this.dateTimePickerStart, "dateTimePickerStart");
-            this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
-            this.dateTimePickerStart.EnabledChanged += new System.EventHandler(this.dateTimePickerStart_EnabledChanged);
-            // 
-            // pictureBoxWarnExposure
-            // 
-            resources.ApplyResources(this.pictureBoxWarnExposure, "pictureBoxWarnExposure");
-            this.pictureBoxWarnExposure.BackColor = System.Drawing.Color.White;
-            this.pictureBoxWarnExposure.Name = "pictureBoxWarnExposure";
-            this.pictureBoxWarnExposure.TabStop = false;
-            this.pictureBoxWarnExposure.DoubleClick += new System.EventHandler(this.pictureBoxWarnExposure_DoubleClick);
-            this.pictureBoxWarnExposure.MouseLeave += new System.EventHandler(this.pictureBoxWarnExposure_MouseLeave);
-            this.pictureBoxWarnExposure.MouseHover += new System.EventHandler(this.pictureBoxWarnExposure_MouseHover);
-            // 
-            // labelExposure
-            // 
-            resources.ApplyResources(this.labelExposure, "labelExposure");
-            this.labelExposure.Name = "labelExposure";
-            // 
-            // textBoxExposure
-            // 
-            resources.ApplyResources(this.textBoxExposure, "textBoxExposure");
-            this.textBoxExposure.Name = "textBoxExposure";
-            this.textBoxExposure.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxExposure.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxExposure.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // textBoxVelocity
-            // 
-            resources.ApplyResources(this.textBoxVelocity, "textBoxVelocity");
-            this.textBoxVelocity.Name = "textBoxVelocity";
-            this.textBoxVelocity.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxVelocity.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxVelocity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelVelocity
-            // 
-            resources.ApplyResources(this.labelVelocity, "labelVelocity");
-            this.labelVelocity.Name = "labelVelocity";
-            // 
-            // labelOperationEnd
-            // 
-            resources.ApplyResources(this.labelOperationEnd, "labelOperationEnd");
-            this.labelOperationEnd.Name = "labelOperationEnd";
-            // 
-            // labelOperation
-            // 
-            resources.ApplyResources(this.labelOperation, "labelOperation");
-            this.labelOperation.Name = "labelOperation";
-            // 
-            // labelDuration
-            // 
-            resources.ApplyResources(this.labelDuration, "labelDuration");
-            this.labelDuration.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelDuration.Name = "labelDuration";
-            // 
-            // panelGeoData
-            // 
-            resources.ApplyResources(this.panelGeoData, "panelGeoData");
-            this.panelGeoData.Controls.Add(this.textBoxExactArea);
-            this.panelGeoData.Controls.Add(this.labelExactArea);
-            this.panelGeoData.Name = "panelGeoData";
-            // 
-            // textBoxExactArea
-            // 
-            resources.ApplyResources(this.textBoxExactArea, "textBoxExactArea");
-            this.textBoxExactArea.Name = "textBoxExactArea";
-            this.textBoxExactArea.ReadOnly = true;
-            this.textBoxExactArea.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            this.textBoxExactArea.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
-            this.textBoxExactArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
-            // 
-            // labelExactArea
-            // 
-            resources.ApplyResources(this.labelExactArea, "labelExactArea");
-            this.labelExactArea.Name = "labelExactArea";
             // 
             // comboBoxSampler
             // 
@@ -830,20 +601,20 @@
             // aquaControl1
             // 
             resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState1.Colour = -1;
-            aquaState1.Conductivity = double.NaN;
-            aquaState1.DissolvedOxygen = double.NaN;
-            aquaState1.FlowRate = double.NaN;
-            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.Limpidity = double.NaN;
-            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.OxygenSaturation = double.NaN;
-            aquaState1.pH = double.NaN;
-            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.TemperatureBottom = double.NaN;
-            aquaState1.TemperatureSurface = double.NaN;
-            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
-            this.aquaControl1.AquaState = aquaState1;
+            aquaState3.Colour = -1;
+            aquaState3.Conductivity = double.NaN;
+            aquaState3.DissolvedOxygen = double.NaN;
+            aquaState3.FlowRate = double.NaN;
+            aquaState3.Foam = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState3.Limpidity = double.NaN;
+            aquaState3.Odor = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState3.OxygenSaturation = double.NaN;
+            aquaState3.pH = double.NaN;
+            aquaState3.Sewage = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState3.TemperatureBottom = double.NaN;
+            aquaState3.TemperatureSurface = double.NaN;
+            aquaState3.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
+            this.aquaControl1.AquaState = aquaState3;
             this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
             this.aquaControl1.Name = "aquaControl1";
             // 
@@ -852,17 +623,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weatherState1.AdditionalEvent = 0;
-            weatherState1.Cloudage = double.NaN;
-            weatherState1.Degree = 0;
-            weatherState1.Discretion = 0;
-            weatherState1.Event = 0;
-            weatherState1.Humidity = double.NaN;
-            weatherState1.Pressure = double.NaN;
-            weatherState1.Temperature = double.NaN;
-            weatherState1.WindDirection = double.NaN;
-            weatherState1.WindRate = double.NaN;
-            this.weatherControl1.Weather = weatherState1;
+            weatherState3.AdditionalEvent = 0;
+            weatherState3.Cloudage = double.NaN;
+            weatherState3.Degree = 0;
+            weatherState3.Discretion = 0;
+            weatherState3.Event = 0;
+            weatherState3.Humidity = double.NaN;
+            weatherState3.Pressure = double.NaN;
+            weatherState3.Temperature = double.NaN;
+            weatherState3.WindDirection = double.NaN;
+            weatherState3.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState3;
             this.weatherControl1.Changed += new System.EventHandler(this.weatherControl1_Changed);
             // 
             // labelActWeather
@@ -910,8 +681,8 @@
             // ColumnSpecies
             // 
             this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle11;
             this.ColumnSpecies.FillWeight = 200F;
             resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
             this.ColumnSpecies.Name = "ColumnSpecies";
@@ -919,8 +690,8 @@
             // ColumnQuantity
             // 
             this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle12;
             this.ColumnQuantity.FillWeight = 30F;
             resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
             this.ColumnQuantity.Name = "ColumnQuantity";
@@ -928,9 +699,9 @@
             // ColumnMass
             // 
             this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle13;
             this.ColumnMass.FillWeight = 30F;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
@@ -965,18 +736,18 @@
             // ColumnAddtFactor
             // 
             this.ColumnAddtFactor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.NullValue = null;
-            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.NullValue = null;
+            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.ColumnAddtFactor, "ColumnAddtFactor");
             this.ColumnAddtFactor.Name = "ColumnAddtFactor";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -1063,6 +834,314 @@
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
             this.Logger.IndividualsRequired += new System.EventHandler(this.logger_IndividualsRequired);
             // 
+            // textBoxVolume
+            // 
+            resources.ApplyResources(this.textBoxVolume, "textBoxVolume");
+            this.textBoxVolume.Name = "textBoxVolume";
+            this.textBoxVolume.ReadOnly = true;
+            this.textBoxVolume.TextChanged += new System.EventHandler(this.value_Changed);
+            this.textBoxVolume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelEffort
+            // 
+            resources.ApplyResources(this.labelEffort, "labelEffort");
+            this.labelEffort.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.labelEffort.Name = "labelEffort";
+            // 
+            // labelVolume
+            // 
+            resources.ApplyResources(this.labelVolume, "labelVolume");
+            this.labelVolume.Name = "labelVolume";
+            // 
+            // textBoxEfforts
+            // 
+            resources.ApplyResources(this.textBoxEfforts, "textBoxEfforts");
+            this.textBoxEfforts.Name = "textBoxEfforts";
+            this.textBoxEfforts.ReadOnly = true;
+            this.textBoxEfforts.TextChanged += new System.EventHandler(this.value_Changed);
+            this.textBoxEfforts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelEfforts
+            // 
+            resources.ApplyResources(this.labelEfforts, "labelEfforts");
+            this.labelEfforts.Name = "labelEfforts";
+            // 
+            // textBoxArea
+            // 
+            resources.ApplyResources(this.textBoxArea, "textBoxArea");
+            this.textBoxArea.Name = "textBoxArea";
+            this.textBoxArea.ReadOnly = true;
+            this.textBoxArea.TextChanged += new System.EventHandler(this.value_Changed);
+            this.textBoxArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelArea
+            // 
+            resources.ApplyResources(this.labelArea, "labelArea");
+            this.labelArea.Name = "labelArea";
+            // 
+            // labelOpening
+            // 
+            resources.ApplyResources(this.labelOpening, "labelOpening");
+            this.labelOpening.Name = "labelOpening";
+            // 
+            // labelSampler
+            // 
+            resources.ApplyResources(this.labelSampler, "labelSampler");
+            this.labelSampler.Name = "labelSampler";
+            // 
+            // textBoxHeight
+            // 
+            resources.ApplyResources(this.textBoxHeight, "textBoxHeight");
+            this.textBoxHeight.Name = "textBoxHeight";
+            this.textBoxHeight.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxHeight.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelMesh
+            // 
+            resources.ApplyResources(this.labelMesh, "labelMesh");
+            this.labelMesh.Name = "labelMesh";
+            // 
+            // textBoxSquare
+            // 
+            resources.ApplyResources(this.textBoxSquare, "textBoxSquare");
+            this.textBoxSquare.Name = "textBoxSquare";
+            this.textBoxSquare.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxSquare.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxSquare.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // textBoxMesh
+            // 
+            resources.ApplyResources(this.textBoxMesh, "textBoxMesh");
+            this.textBoxMesh.Name = "textBoxMesh";
+            this.textBoxMesh.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxMesh.TextChanged += new System.EventHandler(this.value_Changed);
+            this.textBoxMesh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelSquare
+            // 
+            resources.ApplyResources(this.labelSquare, "labelSquare");
+            this.labelSquare.Name = "labelSquare";
+            // 
+            // labelHook
+            // 
+            resources.ApplyResources(this.labelHook, "labelHook");
+            this.labelHook.Name = "labelHook";
+            // 
+            // labelHeight
+            // 
+            resources.ApplyResources(this.labelHeight, "labelHeight");
+            this.labelHeight.Name = "labelHeight";
+            // 
+            // textBoxOpening
+            // 
+            resources.ApplyResources(this.textBoxOpening, "textBoxOpening");
+            this.textBoxOpening.Name = "textBoxOpening";
+            this.textBoxOpening.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxOpening.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxOpening.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // textBoxLength
+            // 
+            resources.ApplyResources(this.textBoxLength, "textBoxLength");
+            this.textBoxLength.Name = "textBoxLength";
+            this.textBoxLength.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxLength.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // pictureBoxWarnOpening
+            // 
+            resources.ApplyResources(this.pictureBoxWarnOpening, "pictureBoxWarnOpening");
+            this.pictureBoxWarnOpening.BackColor = System.Drawing.Color.White;
+            this.pictureBoxWarnOpening.Name = "pictureBoxWarnOpening";
+            this.pictureBoxWarnOpening.TabStop = false;
+            this.pictureBoxWarnOpening.DoubleClick += new System.EventHandler(this.pictureBoxWarnOpening_DoubleClick);
+            this.pictureBoxWarnOpening.MouseLeave += new System.EventHandler(this.pictureBoxWarnOpening_MouseLeave);
+            this.pictureBoxWarnOpening.MouseHover += new System.EventHandler(this.pictureBoxWarnOpening_MouseHover);
+            // 
+            // labelLength
+            // 
+            resources.ApplyResources(this.labelLength, "labelLength");
+            this.labelLength.Name = "labelLength";
+            // 
+            // panelLS
+            // 
+            resources.ApplyResources(this.panelLS, "panelLS");
+            this.panelLS.Controls.Add(this.dateTimePickerEnd);
+            this.panelLS.Controls.Add(this.dateTimePickerStart);
+            this.panelLS.Controls.Add(this.pictureBoxWarnExposure);
+            this.panelLS.Controls.Add(this.labelExposure);
+            this.panelLS.Controls.Add(this.textBoxExposure);
+            this.panelLS.Controls.Add(this.textBoxVelocity);
+            this.panelLS.Controls.Add(this.labelVelocity);
+            this.panelLS.Controls.Add(this.labelOperationEnd);
+            this.panelLS.Controls.Add(this.labelOperation);
+            this.panelLS.Controls.Add(this.labelDuration);
+            this.panelLS.Name = "panelLS";
+            // 
+            // dateTimePicker1
+            // 
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            // 
+            // dateTimePicker2
+            // 
+            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // textBox3
+            // 
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Name = "label6";
+            // 
+            // labelDuration
+            // 
+            resources.ApplyResources(this.labelDuration, "labelDuration");
+            this.labelDuration.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelDuration.Name = "labelDuration";
+            // 
+            // labelOperation
+            // 
+            resources.ApplyResources(this.labelOperation, "labelOperation");
+            this.labelOperation.Name = "labelOperation";
+            // 
+            // labelOperationEnd
+            // 
+            resources.ApplyResources(this.labelOperationEnd, "labelOperationEnd");
+            this.labelOperationEnd.Name = "labelOperationEnd";
+            // 
+            // labelVelocity
+            // 
+            resources.ApplyResources(this.labelVelocity, "labelVelocity");
+            this.labelVelocity.Name = "labelVelocity";
+            // 
+            // textBoxVelocity
+            // 
+            resources.ApplyResources(this.textBoxVelocity, "textBoxVelocity");
+            this.textBoxVelocity.Name = "textBoxVelocity";
+            this.textBoxVelocity.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxVelocity.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxVelocity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // textBoxExposure
+            // 
+            resources.ApplyResources(this.textBoxExposure, "textBoxExposure");
+            this.textBoxExposure.Name = "textBoxExposure";
+            this.textBoxExposure.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxExposure.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxExposure.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // labelExposure
+            // 
+            resources.ApplyResources(this.labelExposure, "labelExposure");
+            this.labelExposure.Name = "labelExposure";
+            // 
+            // pictureBoxWarnExposure
+            // 
+            resources.ApplyResources(this.pictureBoxWarnExposure, "pictureBoxWarnExposure");
+            this.pictureBoxWarnExposure.BackColor = System.Drawing.Color.White;
+            this.pictureBoxWarnExposure.Name = "pictureBoxWarnExposure";
+            this.pictureBoxWarnExposure.TabStop = false;
+            this.pictureBoxWarnExposure.DoubleClick += new System.EventHandler(this.pictureBoxWarnExposure_DoubleClick);
+            this.pictureBoxWarnExposure.MouseLeave += new System.EventHandler(this.pictureBoxWarnExposure_MouseLeave);
+            this.pictureBoxWarnExposure.MouseHover += new System.EventHandler(this.pictureBoxWarnExposure_MouseHover);
+            // 
+            // dateTimePickerStart
+            // 
+            resources.ApplyResources(this.dateTimePickerStart, "dateTimePickerStart");
+            this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
+            this.dateTimePickerStart.EnabledChanged += new System.EventHandler(this.dateTimePickerStart_EnabledChanged);
+            // 
+            // dateTimePickerEnd
+            // 
+            resources.ApplyResources(this.dateTimePickerEnd, "dateTimePickerEnd");
+            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.ValueChanged += new System.EventHandler(this.dateTimePickerEnd_ValueChanged);
+            this.dateTimePickerEnd.EnabledChanged += new System.EventHandler(this.dateTimePickerStart_EnabledChanged);
+            // 
+            // panelGeoData
+            // 
+            resources.ApplyResources(this.panelGeoData, "panelGeoData");
+            this.panelGeoData.Controls.Add(this.textBoxExactArea);
+            this.panelGeoData.Controls.Add(this.labelExactArea);
+            this.panelGeoData.Name = "panelGeoData";
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // labelExactArea
+            // 
+            resources.ApplyResources(this.labelExactArea, "labelExactArea");
+            this.labelExactArea.Name = "labelExactArea";
+            // 
+            // textBoxExactArea
+            // 
+            resources.ApplyResources(this.textBoxExactArea, "textBoxExactArea");
+            this.textBoxExactArea.Name = "textBoxExactArea";
+            this.textBoxExactArea.ReadOnly = true;
+            this.textBoxExactArea.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxExactArea.TextChanged += new System.EventHandler(this.sampler_ValueChanged);
+            this.textBoxExactArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
+            // textBoxHook
+            // 
+            resources.ApplyResources(this.textBoxHook, "textBoxHook");
+            this.textBoxHook.Name = "textBoxHook";
+            this.textBoxHook.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
+            this.textBoxHook.TextChanged += new System.EventHandler(this.value_Changed);
+            this.textBoxHook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.value_KeyPress);
+            // 
             // Card
             // 
             resources.ApplyResources(this, "$this");
@@ -1084,18 +1163,19 @@
             this.tabPageCollect.PerformLayout();
             this.tabPageSampler.ResumeLayout(false);
             this.tabPageSampler.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).EndInit();
-            this.panelLS.ResumeLayout(false);
-            this.panelLS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).EndInit();
-            this.panelGeoData.ResumeLayout(false);
-            this.panelGeoData.PerformLayout();
             this.tabPageEnvironment.ResumeLayout(false);
             this.tabPageEnvironment.PerformLayout();
             this.tabPageLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).EndInit();
             this.tabPageFactors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetAddt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).EndInit();
+            this.panelLS.ResumeLayout(false);
+            this.panelLS.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).EndInit();
+            this.panelGeoData.ResumeLayout(false);
+            this.panelGeoData.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1108,7 +1188,6 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemFile;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemService;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.Label labelMesh;
         private System.Windows.Forms.ToolStripMenuItem menuItemAddInfo;
         private System.Windows.Forms.TabPage tabPageCollect;
         private System.Windows.Forms.ToolStripMenuItem menuItemSave;
@@ -1123,7 +1202,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelMethod;
-        private System.Windows.Forms.Label labelSampler;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem menuItemPrint;
         private System.Windows.Forms.ToolStripMenuItem menuItemPreview;
@@ -1151,49 +1229,18 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCardBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualsLogBlank;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemIndividualProfileBlank;
-        private System.Windows.Forms.Label labelOpening;
-        private System.Windows.Forms.Label labelLength;
-        private System.Windows.Forms.Label labelHeight;
-        private System.Windows.Forms.PictureBox pictureBoxWarnExposure;
-        private System.Windows.Forms.Label labelExposure;
-        private System.Windows.Forms.Label labelSquare;
-        private System.Windows.Forms.Label labelHook;
-        private System.Windows.Forms.Label labelVelocity;
-        private System.Windows.Forms.Label labelOperation;
         private System.Windows.Forms.Label labelDepth;
-        private System.Windows.Forms.PictureBox pictureBoxWarnOpening;
-        private System.Windows.Forms.Label labelVolume;
-        private System.Windows.Forms.Label labelArea;
-        private System.Windows.Forms.Label labelEfforts;
         private System.Windows.Forms.ToolStripMenuItem menuItemNew;
         private Mayfly.Controls.SpreadSheet spreadSheetAddt;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddtValue;
         private System.Windows.Forms.Label labelComments;
-        private System.Windows.Forms.Panel panelLS;
-        private System.Windows.Forms.Panel panelGeoData;
-        private System.Windows.Forms.Label labelExactArea;
         private Wild.Controls.WeatherControl weatherControl1;
-        private System.Windows.Forms.Label labelEffort;
-        private System.Windows.Forms.Label labelDuration;
         private System.Windows.Forms.ToolStripMenuItem menuItemOpen;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageLog;
         private System.Windows.Forms.TextBox textBoxComments;
-        private System.Windows.Forms.TextBox textBoxMesh;
-        private System.Windows.Forms.TextBox textBoxOpening;
-        private System.Windows.Forms.TextBox textBoxLength;
-        private System.Windows.Forms.TextBox textBoxHeight;
-        private System.Windows.Forms.TextBox textBoxExposure;
-        private System.Windows.Forms.TextBox textBoxSquare;
-        private System.Windows.Forms.TextBox textBoxHook;
-        private System.Windows.Forms.TextBox textBoxVelocity;
         private System.Windows.Forms.TextBox textBoxDepth;
-        private System.Windows.Forms.TextBox textBoxVolume;
-        private System.Windows.Forms.TextBox textBoxArea;
-        private System.Windows.Forms.TextBox textBoxEfforts;
-        private System.Windows.Forms.TextBox textBoxExactArea;
-        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
         private System.Windows.Forms.Label labelLabel;
         private Wild.Controls.AquaControl aquaControl1;
         private Geographics.WaypointControl waypointControl1;
@@ -1215,13 +1262,58 @@
         private System.Windows.Forms.ContextMenuStrip contextGear;
         private System.Windows.Forms.TabPage tabPageSampler;
         private System.Windows.Forms.Label labelTag;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.TextBox textBoxLabel;
-        private System.Windows.Forms.Label labelOperationEnd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         internal Wild.Controls.LogProcessor Logger;
+        private System.Windows.Forms.TextBox textBoxVolume;
+        private System.Windows.Forms.Label labelEffort;
+        private System.Windows.Forms.Label labelVolume;
+        private System.Windows.Forms.TextBox textBoxEfforts;
+        private System.Windows.Forms.Label labelEfforts;
+        private System.Windows.Forms.TextBox textBoxArea;
+        private System.Windows.Forms.Label labelArea;
+        private System.Windows.Forms.Label labelOpening;
+        private System.Windows.Forms.Label labelSampler;
+        private System.Windows.Forms.TextBox textBoxHeight;
+        private System.Windows.Forms.Label labelMesh;
+        private System.Windows.Forms.TextBox textBoxSquare;
+        private System.Windows.Forms.TextBox textBoxMesh;
+        private System.Windows.Forms.Label labelSquare;
+        private System.Windows.Forms.Label labelHook;
+        private System.Windows.Forms.Label labelHeight;
+        private System.Windows.Forms.TextBox textBoxHook;
+        private System.Windows.Forms.TextBox textBoxOpening;
+        private System.Windows.Forms.TextBox textBoxLength;
+        private System.Windows.Forms.PictureBox pictureBoxWarnOpening;
+        private System.Windows.Forms.Label labelLength;
+        private System.Windows.Forms.Panel panelLS;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        private System.Windows.Forms.PictureBox pictureBoxWarnExposure;
+        private System.Windows.Forms.Label labelExposure;
+        private System.Windows.Forms.TextBox textBoxExposure;
+        private System.Windows.Forms.TextBox textBoxVelocity;
+        private System.Windows.Forms.Label labelVelocity;
+        private System.Windows.Forms.Label labelOperationEnd;
+        private System.Windows.Forms.Label labelOperation;
+        private System.Windows.Forms.Label labelDuration;
+        private System.Windows.Forms.Panel panelGeoData;
+        private System.Windows.Forms.TextBox textBoxExactArea;
+        private System.Windows.Forms.Label labelExactArea;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

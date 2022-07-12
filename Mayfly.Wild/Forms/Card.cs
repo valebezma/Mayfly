@@ -20,6 +20,7 @@ namespace Mayfly.Wild
         protected bool isChanged;
         protected EventHandler saved;
         protected EventHandler waterSelected;
+        protected EventHandler cleared;
 
         [Category("Mayfly Events"), Browsable(true)]
         public event EventHandler OnSaved {
@@ -31,6 +32,12 @@ namespace Mayfly.Wild
         public event EventHandler OnWaterSelected {
             add { waterSelected += value; }
             remove { waterSelected -= value; }
+        }
+
+        [Category("Mayfly Events"), Browsable(true)]
+        public event EventHandler OnCleared {
+            add { cleared += value; }
+            remove { cleared -= value; }
         }
 
 
@@ -104,6 +111,8 @@ namespace Mayfly.Wild
             weatherControl1.Clear();
             spreadSheetLog.Rows.Clear();
             spreadSheetAddt.Rows.Clear();
+
+            if (cleared != null) cleared.Invoke(this, EventArgs.Empty);
         }
 
         private void load(string filename) {
@@ -212,6 +221,27 @@ namespace Mayfly.Wild
             menuItemAboutCard.Visible = true;
             Log.Write("Loaded from {0}.", filename);
             isChanged = false;
+        }
+
+        private void loadEquipment() {
+            contextSampler.Items.Clear();
+
+            foreach (Equipment.UnitsRow unitRow in UserSettings.Equipment.Units) {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = unitRow.ToString();
+                item.Click += (o, e) => {
+                    comboBoxSampler.SelectedItem = ReaderSettings.SamplersIndex.Sampler.FindByID(unitRow.SamplerID);
+                    if (!unitRow.IsMeshNull()) textBoxMesh.Text = unitRow.Mesh.ToString();
+                    if (!unitRow.IsHookNull()) textBoxHook.Text = unitRow.Hook.ToString();
+                    if (!unitRow.IsLengthNull()) textBoxLength.Text = unitRow.Length.ToString();
+                    if (!unitRow.IsHeightNull()) textBoxHeight.Text = unitRow.Height.ToString();
+                    if (!unitRow.IsOpeningNull()) textBoxOpening.Text = unitRow.Opening.ToString();
+                };
+                contextGear.Items.Add(item);
+            }
+
+            buttonGear.Visible = contextGear.Items.Count > 0;
+
         }
 
         private void saveCollect() {

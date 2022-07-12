@@ -33,10 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
             Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
@@ -87,6 +87,8 @@
             this.labelMethod = new System.Windows.Forms.Label();
             this.labelSampler = new System.Windows.Forms.Label();
             this.tabPageEnvironment = new System.Windows.Forms.TabPage();
+            this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
+            this.weatherControl1 = new Mayfly.Wild.Controls.WeatherControl();
             this.labelActWeather = new System.Windows.Forms.Label();
             this.labelWaterConds = new System.Windows.Forms.Label();
             this.tabPageFactors = new System.Windows.Forms.TabPage();
@@ -102,9 +104,8 @@
             this.tdbDiscard = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
-            this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
-            this.weatherControl1 = new Mayfly.Wild.Controls.WeatherControl();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
+            this.contextSampler = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
@@ -491,6 +492,45 @@
             this.tabPageEnvironment.Name = "tabPageEnvironment";
             this.tabPageEnvironment.UseVisualStyleBackColor = true;
             // 
+            // aquaControl1
+            // 
+            resources.ApplyResources(this.aquaControl1, "aquaControl1");
+            aquaState1.Colour = -1;
+            aquaState1.Conductivity = double.NaN;
+            aquaState1.DissolvedOxygen = double.NaN;
+            aquaState1.FlowRate = double.NaN;
+            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.Limpidity = double.NaN;
+            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.OxygenSaturation = double.NaN;
+            aquaState1.pH = double.NaN;
+            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
+            aquaState1.TemperatureBottom = double.NaN;
+            aquaState1.TemperatureSurface = double.NaN;
+            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
+            this.aquaControl1.AquaState = aquaState1;
+            this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.aquaControl1.Name = "aquaControl1";
+            this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
+            // 
+            // weatherControl1
+            // 
+            resources.ApplyResources(this.weatherControl1, "weatherControl1");
+            this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
+            this.weatherControl1.Name = "weatherControl1";
+            weatherState1.AdditionalEvent = 0;
+            weatherState1.Cloudage = double.NaN;
+            weatherState1.Degree = 0;
+            weatherState1.Discretion = 0;
+            weatherState1.Event = 0;
+            weatherState1.Humidity = double.NaN;
+            weatherState1.Pressure = double.NaN;
+            weatherState1.Temperature = double.NaN;
+            weatherState1.WindDirection = double.NaN;
+            weatherState1.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState1;
+            this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
+            // 
             // labelActWeather
             // 
             resources.ApplyResources(this.labelActWeather, "labelActWeather");
@@ -595,45 +635,6 @@
             this.statusCard.MaximalInterval = 2000;
             this.statusCard.StatusLog = this.StatusLog;
             // 
-            // aquaControl1
-            // 
-            resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState1.Colour = -1;
-            aquaState1.Conductivity = double.NaN;
-            aquaState1.DissolvedOxygen = double.NaN;
-            aquaState1.FlowRate = double.NaN;
-            aquaState1.Foam = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.Limpidity = double.NaN;
-            aquaState1.Odor = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.OxygenSaturation = double.NaN;
-            aquaState1.pH = double.NaN;
-            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.Absent;
-            aquaState1.TemperatureBottom = double.NaN;
-            aquaState1.TemperatureSurface = double.NaN;
-            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.Absent;
-            this.aquaControl1.AquaState = aquaState1;
-            this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
-            this.aquaControl1.Name = "aquaControl1";
-            this.aquaControl1.Changed += new System.EventHandler(this.value_Changed);
-            // 
-            // weatherControl1
-            // 
-            resources.ApplyResources(this.weatherControl1, "weatherControl1");
-            this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
-            this.weatherControl1.Name = "weatherControl1";
-            weatherState1.AdditionalEvent = 0;
-            weatherState1.Cloudage = double.NaN;
-            weatherState1.Degree = 0;
-            weatherState1.Discretion = 0;
-            weatherState1.Event = 0;
-            weatherState1.Humidity = double.NaN;
-            weatherState1.Pressure = double.NaN;
-            weatherState1.Temperature = double.NaN;
-            weatherState1.WindDirection = double.NaN;
-            weatherState1.WindRate = double.NaN;
-            this.weatherControl1.Weather = weatherState1;
-            this.weatherControl1.Changed += new System.EventHandler(this.value_Changed);
-            // 
             // Logger
             // 
             this.Logger.AllowKey = false;
@@ -644,6 +645,11 @@
             this.Logger.LabelQty = this.StatusCount;
             this.Logger.Status = this.statusCard;
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
+            // 
+            // contextSampler
+            // 
+            this.contextSampler.Name = "contextGear";
+            resources.ApplyResources(this.contextSampler, "contextSampler");
             // 
             // Card
             // 
@@ -744,5 +750,6 @@
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
         protected Controls.LogProcessor Logger;
         protected System.Windows.Forms.Button buttonGear;
+        private System.Windows.Forms.ContextMenuStrip contextSampler;
     }
 }

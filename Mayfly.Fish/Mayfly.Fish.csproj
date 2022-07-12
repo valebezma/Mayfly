@@ -88,6 +88,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Equipment.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FishCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Maturity.cs" />
     <Compile Include="Resources\Common.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -163,6 +166,9 @@
     <EmbeddedResource Include="Card.ru.resx">
       <DependentUpon>Card.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FishCard.resx">
+      <DependentUpon>FishCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Individual.resx">
       <DependentUpon>Individual.cs</DependentUpon>

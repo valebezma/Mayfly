@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Card));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            Mayfly.Wild.AquaState aquaState3 = new Mayfly.Wild.AquaState();
-            Mayfly.Wild.WeatherState weatherState3 = new Mayfly.Wild.WeatherState();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            Mayfly.Wild.AquaState aquaState1 = new Mayfly.Wild.AquaState();
+            Mayfly.Wild.WeatherState weatherState1 = new Mayfly.Wild.WeatherState();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
@@ -79,11 +79,7 @@
             this.labelPosition = new System.Windows.Forms.Label();
             this.waypointControl1 = new Mayfly.Geographics.WaypointControl();
             this.waterSelector = new Mayfly.Waters.Controls.WaterSelector();
-            this.comboBoxBank = new System.Windows.Forms.ComboBox();
-            this.comboBoxCrossSection = new System.Windows.Forms.ComboBox();
-            this.labelCrossSection = new System.Windows.Forms.Label();
             this.labelWater = new System.Windows.Forms.Label();
-            this.labelBank = new System.Windows.Forms.Label();
             this.textBoxComments = new System.Windows.Forms.TextBox();
             this.labelComments = new System.Windows.Forms.Label();
             this.labelTag = new System.Windows.Forms.Label();
@@ -94,11 +90,7 @@
             this.labelDepth = new System.Windows.Forms.Label();
             this.labelMethod = new System.Windows.Forms.Label();
             this.labelSampler = new System.Windows.Forms.Label();
-            this.labelMesh = new System.Windows.Forms.Label();
             this.labelPortion = new System.Windows.Forms.Label();
-            this.labelVolume = new System.Windows.Forms.Label();
-            this.textBoxMesh = new System.Windows.Forms.TextBox();
-            this.textBoxVolume = new System.Windows.Forms.TextBox();
             this.numericUpDownPortion = new System.Windows.Forms.NumericUpDown();
             this.tabPageEnvironment = new System.Windows.Forms.TabPage();
             this.aquaControl1 = new Mayfly.Wild.Controls.AquaControl();
@@ -119,6 +111,10 @@
             this.tdbCancelClose = new Mayfly.TaskDialogs.TaskDialogButton(this.components);
             this.statusCard = new Mayfly.Controls.Status();
             this.Logger = new Mayfly.Wild.Controls.LogProcessor(this.components);
+            this.labelMesh = new System.Windows.Forms.Label();
+            this.labelVolume = new System.Windows.Forms.Label();
+            this.textBoxMesh = new System.Windows.Forms.TextBox();
+            this.textBoxVolume = new System.Windows.Forms.TextBox();
             this.MenuStrip.SuspendLayout();
             this.tabPageLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spreadSheetLog)).BeginInit();
@@ -360,7 +356,6 @@
             this.spreadSheetLog.DefaultDecimalPlaces = 0;
             this.spreadSheetLog.Name = "spreadSheetLog";
             this.spreadSheetLog.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.spreadSheetLog.RowMenuLaunchableItemIndex = 0;
             this.spreadSheetLog.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ColumnID
@@ -371,8 +366,8 @@
             // ColumnSpecies
             // 
             this.ColumnSpecies.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnSpecies.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnSpecies.FillWeight = 200F;
             resources.ApplyResources(this.ColumnSpecies, "ColumnSpecies");
             this.ColumnSpecies.Name = "ColumnSpecies";
@@ -380,9 +375,9 @@
             // ColumnSubsample
             // 
             this.ColumnSubsample.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Format = "P1";
-            dataGridViewCellStyle14.NullValue = "Неразб.";
-            this.ColumnSubsample.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Format = "P1";
+            dataGridViewCellStyle2.NullValue = "Неразб.";
+            this.ColumnSubsample.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSubsample.FillWeight = 30F;
             resources.ApplyResources(this.ColumnSubsample, "ColumnSubsample");
             this.ColumnSubsample.Name = "ColumnSubsample";
@@ -390,8 +385,8 @@
             // ColumnQuantity
             // 
             this.ColumnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnQuantity.FillWeight = 30F;
             resources.ApplyResources(this.ColumnQuantity, "ColumnQuantity");
             this.ColumnQuantity.Name = "ColumnQuantity";
@@ -399,9 +394,9 @@
             // ColumnMass
             // 
             this.ColumnMass.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle16.Format = "N2";
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.ColumnMass.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnMass.FillWeight = 30F;
             resources.ApplyResources(this.ColumnMass, "ColumnMass");
             this.ColumnMass.Name = "ColumnMass";
@@ -411,13 +406,9 @@
             this.tabPageCollect.Controls.Add(this.labelPosition);
             this.tabPageCollect.Controls.Add(this.waypointControl1);
             this.tabPageCollect.Controls.Add(this.waterSelector);
-            this.tabPageCollect.Controls.Add(this.comboBoxBank);
-            this.tabPageCollect.Controls.Add(this.comboBoxCrossSection);
             this.tabPageCollect.Controls.Add(this.labelLabel);
-            this.tabPageCollect.Controls.Add(this.labelCrossSection);
             this.tabPageCollect.Controls.Add(this.textBoxLabel);
             this.tabPageCollect.Controls.Add(this.labelWater);
-            this.tabPageCollect.Controls.Add(this.labelBank);
             this.tabPageCollect.Controls.Add(this.textBoxComments);
             this.tabPageCollect.Controls.Add(this.labelComments);
             this.tabPageCollect.Controls.Add(this.labelTag);
@@ -443,46 +434,14 @@
             // waterSelector
             // 
             resources.ApplyResources(this.waterSelector, "waterSelector");
-            this.waterSelector.Index = null;
             this.waterSelector.Name = "waterSelector";
             this.waterSelector.WaterObject = null;
             this.waterSelector.WaterSelected += new Mayfly.Waters.Controls.WaterEventHandler(this.waterSelector_WaterSelected);
-            // 
-            // comboBoxBank
-            // 
-            resources.ApplyResources(this.comboBoxBank, "comboBoxBank");
-            this.comboBoxBank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBank.FormattingEnabled = true;
-            this.comboBoxBank.Items.AddRange(new object[] {
-            resources.GetString("comboBoxBank.Items"),
-            resources.GetString("comboBoxBank.Items1")});
-            this.comboBoxBank.Name = "comboBoxBank";
-            this.comboBoxBank.SelectedIndexChanged += new System.EventHandler(this.value_Changed);
-            this.comboBoxBank.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
-            // 
-            // comboBoxCrossSection
-            // 
-            resources.ApplyResources(this.comboBoxCrossSection, "comboBoxCrossSection");
-            this.comboBoxCrossSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCrossSection.FormattingEnabled = true;
-            this.comboBoxCrossSection.Name = "comboBoxCrossSection";
-            this.comboBoxCrossSection.SelectedIndexChanged += new System.EventHandler(this.comboBoxCrossSection_SelectedIndexChanged);
-            this.comboBoxCrossSection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
-            // 
-            // labelCrossSection
-            // 
-            resources.ApplyResources(this.labelCrossSection, "labelCrossSection");
-            this.labelCrossSection.Name = "labelCrossSection";
             // 
             // labelWater
             // 
             resources.ApplyResources(this.labelWater, "labelWater");
             this.labelWater.Name = "labelWater";
-            // 
-            // labelBank
-            // 
-            resources.ApplyResources(this.labelBank, "labelBank");
-            this.labelBank.Name = "labelBank";
             // 
             // textBoxComments
             // 
@@ -564,33 +523,10 @@
             resources.ApplyResources(this.labelSampler, "labelSampler");
             this.labelSampler.Name = "labelSampler";
             // 
-            // labelMesh
-            // 
-            resources.ApplyResources(this.labelMesh, "labelMesh");
-            this.labelMesh.Name = "labelMesh";
-            // 
             // labelPortion
             // 
             resources.ApplyResources(this.labelPortion, "labelPortion");
             this.labelPortion.Name = "labelPortion";
-            // 
-            // labelVolume
-            // 
-            resources.ApplyResources(this.labelVolume, "labelVolume");
-            this.labelVolume.Name = "labelVolume";
-            // 
-            // textBoxMesh
-            // 
-            resources.ApplyResources(this.textBoxMesh, "textBoxMesh");
-            this.textBoxMesh.Name = "textBoxMesh";
-            this.textBoxMesh.TextChanged += new System.EventHandler(this.value_Changed);
-            // 
-            // textBoxVolume
-            // 
-            resources.ApplyResources(this.textBoxVolume, "textBoxVolume");
-            this.textBoxVolume.Name = "textBoxVolume";
-            this.textBoxVolume.ReadOnly = true;
-            this.textBoxVolume.TextChanged += new System.EventHandler(this.textBoxVolume_TextChanged);
             // 
             // numericUpDownPortion
             // 
@@ -627,20 +563,20 @@
             // aquaControl1
             // 
             resources.ApplyResources(this.aquaControl1, "aquaControl1");
-            aquaState3.Colour = -1;
-            aquaState3.Conductivity = double.NaN;
-            aquaState3.DissolvedOxygen = double.NaN;
-            aquaState3.FlowRate = double.NaN;
-            aquaState3.Foam = Mayfly.Wild.OrganolepticState.NotInvestigated;
-            aquaState3.Limpidity = double.NaN;
-            aquaState3.Odor = Mayfly.Wild.OrganolepticState.NotInvestigated;
-            aquaState3.OxygenSaturation = double.NaN;
-            aquaState3.pH = double.NaN;
-            aquaState3.Sewage = Mayfly.Wild.OrganolepticState.NotInvestigated;
-            aquaState3.TemperatureBottom = double.NaN;
-            aquaState3.TemperatureSurface = double.NaN;
-            aquaState3.Turbidity = Mayfly.Wild.OrganolepticState.NotInvestigated;
-            this.aquaControl1.AquaState = aquaState3;
+            aquaState1.Colour = -1;
+            aquaState1.Conductivity = double.NaN;
+            aquaState1.DissolvedOxygen = double.NaN;
+            aquaState1.FlowRate = double.NaN;
+            aquaState1.Foam = Mayfly.Wild.OrganolepticState.NotInvestigated;
+            aquaState1.Limpidity = double.NaN;
+            aquaState1.Odor = Mayfly.Wild.OrganolepticState.NotInvestigated;
+            aquaState1.OxygenSaturation = double.NaN;
+            aquaState1.pH = double.NaN;
+            aquaState1.Sewage = Mayfly.Wild.OrganolepticState.NotInvestigated;
+            aquaState1.TemperatureBottom = double.NaN;
+            aquaState1.TemperatureSurface = double.NaN;
+            aquaState1.Turbidity = Mayfly.Wild.OrganolepticState.NotInvestigated;
+            this.aquaControl1.AquaState = aquaState1;
             this.aquaControl1.BackColor = System.Drawing.SystemColors.Window;
             this.aquaControl1.Name = "aquaControl1";
             // 
@@ -649,17 +585,17 @@
             resources.ApplyResources(this.weatherControl1, "weatherControl1");
             this.weatherControl1.BackColor = System.Drawing.SystemColors.Window;
             this.weatherControl1.Name = "weatherControl1";
-            weatherState3.AdditionalEvent = 0;
-            weatherState3.Cloudage = double.NaN;
-            weatherState3.Degree = 0;
-            weatherState3.Discretion = 0;
-            weatherState3.Event = 0;
-            weatherState3.Humidity = double.NaN;
-            weatherState3.Pressure = double.NaN;
-            weatherState3.Temperature = double.NaN;
-            weatherState3.WindDirection = double.NaN;
-            weatherState3.WindRate = double.NaN;
-            this.weatherControl1.Weather = weatherState3;
+            weatherState1.AdditionalEvent = 0;
+            weatherState1.Cloudage = double.NaN;
+            weatherState1.Degree = 0;
+            weatherState1.Discretion = 0;
+            weatherState1.Event = 0;
+            weatherState1.Humidity = double.NaN;
+            weatherState1.Pressure = double.NaN;
+            weatherState1.Temperature = double.NaN;
+            weatherState1.WindDirection = double.NaN;
+            weatherState1.WindRate = double.NaN;
+            this.weatherControl1.Weather = weatherState1;
             // 
             // labelActWeather
             // 
@@ -697,18 +633,18 @@
             // ColumnAddtFactor
             // 
             this.ColumnAddtFactor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.NullValue = null;
-            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.NullValue = null;
+            this.ColumnAddtFactor.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.ColumnAddtFactor, "ColumnAddtFactor");
             this.ColumnAddtFactor.Name = "ColumnAddtFactor";
             // 
             // ColumnAddtValue
             // 
             this.ColumnAddtValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N1";
-            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N1";
+            this.ColumnAddtValue.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.ColumnAddtValue, "ColumnAddtValue");
             this.ColumnAddtValue.Name = "ColumnAddtValue";
             // 
@@ -767,14 +703,38 @@
             // 
             // Logger
             // 
+            this.Logger.AllowKey = false;
             this.Logger.AutoLogOpen = false;
             this.Logger.Button = this.buttonAdd;
-            this.Logger.Grid = this.spreadSheetLog;
+            this.Logger.Grid = null;
             this.Logger.LabelMass = this.StatusMass;
             this.Logger.LabelQty = this.StatusCount;
-            this.Logger.Status = this.statusCard;
+            this.Logger.Status = null;
             this.Logger.Changed += new System.EventHandler(this.value_Changed);
             this.Logger.IndividualsRequired += new System.EventHandler(this.logger_IndividualsRequired);
+            // 
+            // labelMesh
+            // 
+            resources.ApplyResources(this.labelMesh, "labelMesh");
+            this.labelMesh.Name = "labelMesh";
+            // 
+            // labelVolume
+            // 
+            resources.ApplyResources(this.labelVolume, "labelVolume");
+            this.labelVolume.Name = "labelVolume";
+            // 
+            // textBoxMesh
+            // 
+            resources.ApplyResources(this.textBoxMesh, "textBoxMesh");
+            this.textBoxMesh.Name = "textBoxMesh";
+            this.textBoxMesh.TextChanged += new System.EventHandler(this.value_Changed);
+            // 
+            // textBoxVolume
+            // 
+            resources.ApplyResources(this.textBoxVolume, "textBoxVolume");
+            this.textBoxVolume.Name = "textBoxVolume";
+            this.textBoxVolume.ReadOnly = true;
+            this.textBoxVolume.TextChanged += new System.EventHandler(this.textBoxVolume_TextChanged);
             // 
             // Card
             // 
@@ -832,8 +792,6 @@
         private System.Windows.Forms.Label labelTag;
         private System.Windows.Forms.Label labelWater;
         private System.Windows.Forms.Label labelComments;
-        private System.Windows.Forms.Label labelCrossSection;
-        private System.Windows.Forms.Label labelBank;
         private System.Windows.Forms.TabPage tabPageEnvironment;
         private System.Windows.Forms.Label labelActWeather;
         private System.Windows.Forms.Label labelWaterConds;
@@ -869,15 +827,10 @@
         private System.Windows.Forms.Label labelDepth;
         private System.Windows.Forms.Label labelMethod;
         private System.Windows.Forms.Label labelSampler;
-        private System.Windows.Forms.Label labelMesh;
         private System.Windows.Forms.Label labelPortion;
-        private System.Windows.Forms.Label labelVolume;
-        private System.Windows.Forms.TextBox textBoxVolume;
         private System.Windows.Forms.NumericUpDown numericUpDownPortion;
         private System.Windows.Forms.TextBox textBoxLabel;
         private System.Windows.Forms.Label labelPosition;
-        private System.Windows.Forms.ComboBox comboBoxCrossSection;
-        private System.Windows.Forms.TextBox textBoxMesh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubsample;
@@ -886,10 +839,13 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemNew;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemOpen;
         private System.Windows.Forms.TextBox textBoxComments;
-        private System.Windows.Forms.ComboBox comboBoxBank;
         private Controls.SpreadSheet spreadSheetLog;
         private System.Windows.Forms.TextBox textBoxDepth;
         private GroupedComboBox comboBoxSampler;
         internal Wild.Controls.LogProcessor Logger;
+        private System.Windows.Forms.Label labelMesh;
+        private System.Windows.Forms.Label labelVolume;
+        private System.Windows.Forms.TextBox textBoxMesh;
+        private System.Windows.Forms.TextBox textBoxVolume;
     }
 }

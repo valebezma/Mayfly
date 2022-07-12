@@ -59,6 +59,9 @@
     <EmbeddedResource Include="Individuals.ru.resx">
       <DependentUpon>Individuals.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlanktonCard.resx">
+      <DependentUpon>PlanktonCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Interface.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Interface.Designer.cs</LastGenOutput>
@@ -81,6 +84,9 @@
     </Compile>
     <Compile Include="Individuals.Designer.cs">
       <DependentUpon>Individuals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanktonCard.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

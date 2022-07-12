@@ -20,7 +20,7 @@ namespace Mayfly.Fish
 
             if (args.Length == 0)
             {
-                Application.Run(new Card());
+                Application.Run(new FishCard());
             }
             else
             {
