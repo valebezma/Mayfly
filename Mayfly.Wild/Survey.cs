@@ -606,17 +606,49 @@ namespace Mayfly.Wild
                 }
             }
 
+
+            public int Portions {
+                get {
+                    if (EquipmentRow.EffortType != EffortType.Portion)
+                        return  -1;
+
+                    if (IsEffortNull())
+                        return -1;
+
+                    return (int)Effort;
+                }
+            }
+
+            public double Exposure {
+                get {
+                    if (EquipmentRow.EffortType != EffortType.Exposure)
+                        return double.NaN;
+
+                    if (IsEffortNull())
+                        return double.NaN;
+
+                    return Effort;
+                }
+            }
+
             public TimeSpan Duration {
                 get {
-                    return TimeSpan.FromMinutes(this.Span);
+                    if (EquipmentRow.EffortType != EffortType.Exposition)
+                        return TimeSpan.Zero;
+
+                    if (IsEffortNull())
+                        return TimeSpan.Zero;
+
+                    return TimeSpan.FromMinutes(Effort);
                 }
             }
 
             public DateTime WhenStarted {
                 get {
-                    return (!this.IsSpanNull()) ? this.When - this.Duration : this.When;
+                    return (!IsEffortNull()) ? When - Duration : When;
                 }
             }
+
 
             public bool IsEnvironmentDescribed {
                 get {
@@ -739,58 +771,58 @@ namespace Mayfly.Wild
             }
 
             public object GetValue(string field) {
-                Survey data = ((Survey)this.Table.DataSet);
+                Survey data = (Survey)tableCard.DataSet;
 
                 if (data.Card.Columns[field] != null) {
-                    if (this.IsNull(field)) {
+                    if (IsNull(field)) {
                         return null;
                     } else switch (field) {
                             case "Where":
-                                if (this.IsWhereNull()) return null;
-                                else return this.Position;
+                                if (IsWhereNull()) return null;
+                                else return Position;
 
                             case "CrossSection":
-                                if (this.IsWaterIDNull()) return null;
-                                else return Service.CrossSection((WaterType)this.WaterRow.Type, this.CrossSection);
+                                if (IsWaterIDNull()) return null;
+                                else return Service.CrossSection((WaterType)WaterRow.Type, CrossSection);
 
                             case "Bank":
-                                return Service.Bank(this.Bank);
+                                return Service.Bank(Bank);
 
                             case "Span":
-                                if (this.IsSpanNull()) return null;
-                                else return this.Duration;
+                                if (IsEffortNull()) return null;
+                                else return Duration;
 
                             case "Weather":
-                                return this.WeatherConditions;
+                                return WeatherConditions;
 
                             default:
                                 return this[field];
                         }
                 } else if (data.Factor.FindByFactor(field) != null) {
-                    Survey.FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(
-                        this.ID, data.Factor.FindByFactor(field).ID);
+                    FactorValueRow factorValueRow = data.FactorValue.FindByCardIDFactorID(
+                        ID, data.Factor.FindByFactor(field).ID);
                     return factorValueRow == null ? double.NaN : factorValueRow.Value;
                 } else {
                     switch (field) {
                         case "Investigator":
-                            return this.Investigator;
+                            return Investigator;
 
                         case "Water":
-                            if (this.IsWaterIDNull() || this.WaterRow.IsWaterNull()) return null;
-                            else return this.WaterRow.Water;
+                            if (IsWaterIDNull() || WaterRow.IsWaterNull()) return null;
+                            else return WaterRow.Water;
 
                         case "Wealth":
-                            return this.Wealth;
+                            return Wealth;
 
                         case "Quantity":
-                            return this.Quantity;
+                            return Quantity;
 
                         case "Mass":
-                            return this.Mass;
+                            return Mass;
 
                         case "Surface":
-                            if (this.StateOfWater.IsTemperatureSurfaceNull()) return null;
-                            else return this.StateOfWater.TemperatureSurface;
+                            if (StateOfWater.IsTemperatureSurfaceNull()) return null;
+                            else return StateOfWater.TemperatureSurface;
                     }
                 }
 
@@ -1626,6 +1658,11 @@ namespace Mayfly.Wild
                 }
             }
 
+            public EffortType EffortType {
+                get {
+                    return SamplerRow.IsEffortTypeNull() ? EffortType.Portion : (EffortType)SamplerRow.EffortType;
+                }
+            }
 
             public double GetValue(string virtue) {
                 foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
@@ -1730,6 +1767,15 @@ namespace Mayfly.Wild
                 List<VirtueRow> result = new List<VirtueRow>();
                 foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
                     result.Add(samplerVirtueRow.VirtueRow);
+                }
+                return result.ToArray();
+            }
+
+            public VirtueRow[] GetEffortVirtueRows() {
+
+                List<VirtueRow> result = new List<VirtueRow>();
+                foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                    if (samplerVirtueRow.Effort) result.Add(samplerVirtueRow.VirtueRow);
                 }
                 return result.ToArray();
             }
@@ -1857,5 +1903,11 @@ namespace Mayfly.Wild
             }
         }
     }
+}
 
+public enum EffortType
+{
+    Portion = 0,    // Size of environment captured by single portion is known from its virtues
+    Exposure = 1,   // Size of environment harvested by sampler is defined by its virtues and harvesting exposure
+    Exposition = 2  // Size of environment harvested by sampler is estimated by its virtues and soaktime
 }

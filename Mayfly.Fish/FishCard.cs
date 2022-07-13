@@ -553,20 +553,18 @@ namespace Mayfly.Fish
             }
 
             if (preciseAreaMode) {
+
                 if (textBoxArea.Text.IsDoubleConvertible())
-                    data.Solitary.Square = 10000d * double.Parse(textBoxArea.Text);
+                    data.Solitary.Effort = -10000d * double.Parse(textBoxArea.Text);
+
             } else {
 
                 if (dateTimePickerEnd.Enabled) {
-                    data.Solitary.Span = (int)(waypointControl1.Waypoint.TimeMark - dateTimePickerStart.Value).TotalMinutes;
+                    data.Solitary.Effort = (int)(waypointControl1.Waypoint.TimeMark - dateTimePickerStart.Value).TotalMinutes;
+                } else if (textBoxExposure.Enabled) {
+                    data.Solitary.Effort = double.Parse(textBoxExposure.Text);
                 } else {
-                    data.Solitary.SetSpanNull();
-                }
-
-                if (textBoxExposure.Enabled) {
-                    data.Solitary.Exposure = double.Parse(textBoxExposure.Text);
-                } else {
-                    data.Solitary.SetExposureNull();
+                    data.Solitary.SetEffortNull();
                 }
             }
         }
@@ -641,6 +639,7 @@ namespace Mayfly.Fish
         }
 
         private void locationData_Selected(object sender, LocationEventArgs e) {
+
             if (e.LocationObject is Waypoint waypoint) {
                 preciseAreaMode = false;
                 setEndpoint(waypoint);
@@ -651,7 +650,7 @@ namespace Mayfly.Fish
 
                 //HandlePolygon((Polygon)e.LocationObject);
             } else if (e.LocationObject is Track) {
-                tdbAsPoly.Enabled = !SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Time);
+                tdbAsPoly.Enabled = (EffortValueSource)SelectedSampler.EffortType == EffortValueSource.Exposure;
 
                 TaskDialogButton tdb = taskDialogTrackHandle.ShowDialog();
 
@@ -672,8 +671,8 @@ namespace Mayfly.Fish
                     setEndpoint(wpts.Last());
 
                     textBoxExposure.Text = Track.TotalLength(tracks).ToString("N1");
-                    if (SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Time)) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
-                    if (SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Velocity)) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
+                    if ((EffortValueSource)SelectedSampler.EffortType == EffortValueSource.Exposition) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
+                    if (SelectedSampler.HasVirtue("Velocity")) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
                 } else if (tdb == tdbAsPoly) {
                     // Behave like polygon
 
@@ -739,7 +738,7 @@ namespace Mayfly.Fish
 
             sampler_ValueChanged(sender, e);
 
-            if (!data.Solitary.IsSpanNull()) {
+            if (data.Solitary.Duration != TimeSpan.Zero) {
                 labelDuration.ResetFormatted(Math.Floor(data.Solitary.Duration.TotalHours),
                     data.Solitary.Duration.Minutes, data.Solitary.Duration.TotalHours);
             }
@@ -758,7 +757,7 @@ namespace Mayfly.Fish
 
             sampler_ValueChanged(sender, e);
 
-            if (!data.Solitary.IsSpanNull()) {
+            if (data.Solitary.Duration != TimeSpan.Zero) {
                 labelDuration.ResetFormatted(Math.Floor(data.Solitary.Duration.TotalHours),
                     data.Solitary.Duration.Minutes, data.Solitary.Duration.TotalHours);
             }
@@ -804,12 +803,12 @@ namespace Mayfly.Fish
                     pictureBoxWarnExposure.Visible = false;
                 }
 
-                if (textBoxExposure.Enabled && textBoxExposure.ReadOnly) {
-                    textBoxExposure.Text = data.Solitary.GetExposure().ToString("0.####");
-                }
+                //if (textBoxExposure.Enabled && textBoxExposure.ReadOnly) {
+                //    textBoxExposure.Text = data.Solitary.Exposure.ToString("0.####");
+                //}
 
                 textBoxEfforts.Text = data.Solitary.GetEffort(ExpressionVariant.Efforts).ToString("0.####");
-                textBoxArea.Text = data.Solitary.GetEffort(ExpressionVariant.Square).ToString("0.####");
+                textBoxArea.Text = data.Solitary.GetEffort(ExpressionVariant.Area).ToString("0.####");
                 textBoxVolume.Text = data.Solitary.GetEffort(ExpressionVariant.Volume).ToString("0.####");
             }
 
@@ -824,13 +823,12 @@ namespace Mayfly.Fish
 
         private void sampler_Changed(object sender, EventArgs e) {
             if (SelectedSampler == null) return;
-            if (SelectedSampler.IsEffortByNull()) return;
 
-            EffortValueSource effort = SelectedSampler.GetEffortSource();
-            labelOperation.Enabled = dateTimePickerStart.Enabled = effort.HasFlag(EffortValueSource.Time);
-            labelVelocity.Enabled = textBoxVelocity.Enabled = effort.HasFlag(EffortValueSource.Velocity);
-            labelExposure.Enabled = textBoxExposure.Enabled = effort.HasFlag(EffortValueSource.Exposure);
-            textBoxExposure.ReadOnly = effort.HasFlag(EffortValueSource.Velocity) && effort.HasFlag(EffortValueSource.Time);
+            EffortValueSource effort = (EffortValueSource)SelectedSampler.EffortType;
+
+            labelOperation.Enabled = dateTimePickerStart.Enabled = effort == EffortValueSource.Exposition;
+            labelExposure.Enabled = textBoxExposure.Enabled = effort == EffortValueSource.Exposure;
+            textBoxExposure.ReadOnly = effort == EffortValueSource.Exposition;
             sampler_ValueChanged(sender, e);
         }
 

@@ -14,10 +14,6 @@ namespace Mayfly.Fish
             return (FishSamplerType)samplerRow.Type;
         }
 
-        public static EffortValueSource GetEffortSource(this Survey.SamplerRow samplerRow) {
-            return (EffortValueSource)samplerRow.EffortBy;
-        }
-
 
         public static bool IsPassive(this FishSamplerType type) {
             switch (type) {
@@ -124,7 +120,7 @@ namespace Mayfly.Fish
                     return ExpressionVariant.Efforts;
 
                 default:
-                    return ExpressionVariant.Square;
+                    return ExpressionVariant.Area;
             }
         }
 

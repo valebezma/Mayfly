@@ -1434,8 +1434,8 @@ namespace Mayfly.Fish
                         {
                             Card card = (Card)Owner;
 
-                            Individuals indlog = card.GetOpenedIndividuals(prevLog);
-                            if (indlog != null) { indlog.Hide(); }
+                            //Individuals indlog = card.GetOpenedIndividuals(prevLog);
+                            //if (indlog != null) { indlog.Hide(); }
 
                             card.Logger.Provider.Remove(prevLog.DefinitionRow.Taxon);
                             Data.Log.RemoveLogRow(prevLog);

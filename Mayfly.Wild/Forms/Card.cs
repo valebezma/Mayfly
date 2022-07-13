@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static Mayfly.Wild.ReaderSettings;
-using static Mayfly.Wild.UserSettings;
+//using static Mayfly.Wild.UserSettings;
 
 namespace Mayfly.Wild
 {
@@ -81,10 +81,10 @@ namespace Mayfly.Wild
             this.ResetText(Interface.NewFilename, EntryAssemblyInfo.Title);
 
             waterSelector.CreateList();
-            waterSelector.Index = WatersIndex;
+            waterSelector.Index = UserSettings.WatersIndex;
 
-            if (WatersIndex != null && SelectedWaterID != 0) {
-                WatersKey.WaterRow selectedWater = WatersIndex.Water.FindByID(SelectedWaterID);
+            if (UserSettings.WatersIndex != null && UserSettings.SelectedWaterID != 0) {
+                WatersKey.WaterRow selectedWater = UserSettings.WatersIndex.Water.FindByID(UserSettings.SelectedWaterID);
 
                 if (selectedWater != null) {
                     waterSelector.WaterObject = selectedWater;
@@ -96,8 +96,8 @@ namespace Mayfly.Wild
                 comboBoxSampler.SelectedIndex = -1;
             }
 
-            if (SelectedDate != null) {
-                waypointControl1.Waypoint.TimeMark = SelectedDate;
+            if (UserSettings.SelectedDate != null) {
+                waypointControl1.Waypoint.TimeMark = UserSettings.SelectedDate;
             }
 
             Logger.Provider.RecentListCount = RecentSpeciesCount;
@@ -106,9 +106,9 @@ namespace Mayfly.Wild
             ColumnQuantity.ReadOnly = FixTotals;
             ColumnMass.ReadOnly = FixTotals;
 
-            ToolStripMenuItemWatersRef.Enabled = WatersIndexPath != null;
+            ToolStripMenuItemWatersRef.Enabled = UserSettings.WatersIndexPath != null;
             ToolStripMenuItemSpeciesRef.Enabled = TaxonomicIndexPath != null;
-            spreadSheetAddt.StringVariants = AddtFactors;
+            spreadSheetAddt.StringVariants = UserSettings.AddtFactors;
 
             tabPageEnvironment.Parent = null;
             tabPageFactors.Parent = null;
@@ -156,8 +156,8 @@ namespace Mayfly.Wild
             } else {
                 WatersKey.WaterRow waterRow = null;
 
-                if (WatersIndex != null) {
-                    waterRow = WatersIndex.Water.FindByID(data.Solitary.WaterID);
+                if (UserSettings.WatersIndex != null) {
+                    waterRow = UserSettings.WatersIndex.Water.FindByID(data.Solitary.WaterID);
                 }
 
                 if (waterRow == null) {
@@ -281,9 +281,9 @@ namespace Mayfly.Wild
                     data.Water.AddWaterRow(newWaterRow);
                     data.Solitary.WaterRow = newWaterRow;
                 }
-                SelectedWaterID = waterSelector.WaterObject.ID;
+                UserSettings.SelectedWaterID = waterSelector.WaterObject.ID;
             } else {
-                SelectedWaterID = 0;
+                UserSettings.SelectedWaterID = 0;
                 data.Solitary.SetWaterIDNull();
                 data.Water.Clear();
             }
@@ -613,7 +613,7 @@ namespace Mayfly.Wild
         #region Service menu
 
         private void menuItemWaters_Click(object sender, EventArgs e) {
-            IO.RunFile(WatersIndexPath);
+            IO.RunFile(UserSettings.WatersIndexPath);
         }
 
         private void menuItemSpecies_Click(object sender, EventArgs e) {

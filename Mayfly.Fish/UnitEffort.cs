@@ -15,22 +15,17 @@ namespace Mayfly.Fish
 
         public string UnitDescription { set; get; }
 
-        public string Unit
-        {
-            get
-            {
+        public string Unit {
+            get {
                 return Resources.Interface.EU.ResourceManager.GetString("Unit" +
                     Enum.GetName(typeof(ExpressionVariant), Variant));
             }
         }
 
-        public double UnitCost
-        {
-            get
-            {
-                switch (Variant)
-                {
-                    case ExpressionVariant.Square:
+        public double UnitCost {
+            get {
+                switch (Variant) {
+                    case ExpressionVariant.Area:
                         return SquareUnitCost;
 
                     case ExpressionVariant.Volume:
@@ -46,13 +41,11 @@ namespace Mayfly.Fish
 
 
 
-        public UnitEffort(ExpressionVariant variant)
-        {
+        public UnitEffort(ExpressionVariant variant) {
             Variant = variant;
         }
 
-        public UnitEffort(FishSamplerType samplerType, ExpressionVariant variant)
-        {
+        public UnitEffort(FishSamplerType samplerType, ExpressionVariant variant) {
             GearType = samplerType;
             Variant = variant;
             UnitDescription = GetUnitDescription(GearType, Variant);
@@ -64,32 +57,24 @@ namespace Mayfly.Fish
 
         public static double VolumeUnitCost { get { return 1000.0; } }
 
-        public static string GetDefaultUnit(FishSamplerType samplerType)
-        {
+        public static string GetDefaultUnit(FishSamplerType samplerType) {
             return Resources.Interface.EU.ResourceManager.GetString("Unit" +
                 Enum.GetName(typeof(ExpressionVariant), samplerType));
         }
 
-        public static void SwitchUE(ComboBox comboBox, FishSamplerType samplerType)
-        {
+        public static void SwitchUE(ComboBox comboBox, FishSamplerType samplerType) {
             int selectedIndex = comboBox.SelectedIndex;
 
             comboBox.Items.Clear();
             comboBox.Items.AddRange(samplerType.GetUnitEfforts());
             comboBox.Enabled = true;
 
-            if (comboBox.Items.Count > selectedIndex)
-            {
+            if (comboBox.Items.Count > selectedIndex) {
                 comboBox.SelectedIndex = selectedIndex;
-            }
-            else
-            {
-                if (comboBox.Items.Count > 0)
-                {
+            } else {
+                if (comboBox.Items.Count > 0) {
                     comboBox.SelectedIndex = 0;
-                }
-                else
-                {
+                } else {
                     comboBox.Enabled = false;
                 }
             }
@@ -97,26 +82,22 @@ namespace Mayfly.Fish
             if (comboBox.SelectedIndex == -1) comboBox.SelectedIndex = comboBox.FindStringExact(samplerType.GetDefaultUnitEffort().UnitDescription);
         }
 
-        private static string GetUnitDescription(FishSamplerType samplerType, ExpressionVariant variant)
-        {
-            switch (variant)
-            {
+        private static string GetUnitDescription(FishSamplerType samplerType, ExpressionVariant variant) {
+            switch (variant) {
                 case ExpressionVariant.Efforts:
-                    switch (samplerType)
-                    {
+                    switch (samplerType) {
                         case FishSamplerType.Hook:
                         case FishSamplerType.Trap:
-                            return Fish.Resources.Interface.EU.NominalSpan;
+                            return Resources.Interface.EU.NominalSpan;
 
                         case FishSamplerType.Gillnet:
-                            return Fish.Resources.Interface.EU.NominalEfforts;
+                            return Resources.Interface.EU.NominalEfforts;
 
                         default: return null;
                     }
 
-                case ExpressionVariant.Square:
-                    switch (samplerType)
-                    {
+                case ExpressionVariant.Area:
+                    switch (samplerType) {
                         case FishSamplerType.Dredge:
                         case FishSamplerType.Driftnet:
                         case FishSamplerType.FallingGear:
@@ -133,8 +114,7 @@ namespace Mayfly.Fish
                     }
 
                 case ExpressionVariant.Volume:
-                    switch (samplerType)
-                    {
+                    switch (samplerType) {
                         case FishSamplerType.Dredge:
                         case FishSamplerType.Driftnet:
                         case FishSamplerType.FallingGear:
@@ -155,17 +135,16 @@ namespace Mayfly.Fish
         }
     }
 
-    public enum ExpressionVariant
+    public enum EffortValueSource
     {
-        Square,
-        Volume,
-        Efforts
+        Exposition = 1,
+        Exposure = 2
     }
 
-    [Flags]
-    public enum EffortValueSource {
-        Time = 1,
-        Velocity = 2,
-        Exposure = 3
+    public enum ExpressionVariant
+    {
+        Area,
+        Volume,
+        Efforts
     }
 }

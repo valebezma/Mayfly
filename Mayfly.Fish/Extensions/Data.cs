@@ -95,6 +95,10 @@ namespace Mayfly.Fish
             return cardRow.SamplerRow.GetSamplerType();
         }
 
+        public static double GetSquare(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetValue("Square");
+        }
+
         public static double GetHeight(this Survey.EquipmentRow eqpRow) {
             return eqpRow.GetValue("Height");
         }
@@ -103,209 +107,198 @@ namespace Mayfly.Fish
             return eqpRow.GetValue("Length");
         }
 
+        public static double GetOpening(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetValue("Opening");
+        }
+
         public static double GetVelocity(this Survey.EquipmentRow eqpRow) {
             return eqpRow.GetValue("Velocity");
         }
 
-        public static double GetEffort(this Survey.CardRow cardRow) {
-            if (cardRow.IsEqpIDNull()) return double.NaN;
-            return GetEffort(cardRow, cardRow.GetGearType().GetDefaultExpression());
+        public static double GetOutscribedCircleArea(this Survey.EquipmentRow eqpRow) {
+
+            double d = eqpRow.GetLength();
+            return double.IsNaN(d) ? double.NaN : d * d * .25 * Math.PI;
         }
 
-        public static double GetEffort(this Survey.CardRow cardRow, ExpressionVariant expression) {
-            if (cardRow.IsEqpIDNull()) return double.NaN;
-            else
-                switch (expression) {
-                    case ExpressionVariant.Square:
-                        return cardRow.GetSquare() / UnitEffort.SquareUnitCost;
-                    case ExpressionVariant.Volume:
-                        return cardRow.GetVolume() / UnitEffort.VolumeUnitCost;
-                    case ExpressionVariant.Efforts:
-                        return cardRow.GetEffortScore() / cardRow.GetGearType().GetEffortStdScore();
-                }
+        public static double GetExposureArea(this Survey.EquipmentRow eqpRow, double e) {
+
+            if (double.IsNaN(e)) return double.NaN;
+
+            double l = eqpRow.GetLength();
+            double o = eqpRow.GetOpening();
+
+            return double.IsNaN(o) ? (double.IsNaN(l) ? double.NaN : l * e) : o * e;
+        }
+
+        public static double GetTowedArea(this Survey.EquipmentRow eqpRow, TimeSpan duration) {
+
+            if (duration == TimeSpan.Zero) return double.NaN;
+
+            double e = eqpRow.GetVelocity() * 1000 * duration.TotalHours;
+
+            return eqpRow.GetExposureArea(e);
+        }
+
+        public static double GetCoveredArea(this Survey.EquipmentRow eqpRow, int replications) {
+
+            if (replications == -1) return double.NaN;
+
+            return replications * eqpRow.GetSquare();
+        }
+
+        public static double GetSeinArea(this Survey.EquipmentRow eqpRow, WaterType waterType, double e) {
+
+            if (double.IsNaN(e)) return double.NaN;
+
+            if (waterType == WaterType.None) return eqpRow.GetExposureArea(e);
+
+            double l = eqpRow.GetLength();
+            if (double.IsNaN(l)) return double.NaN;
+
+            double o = eqpRow.GetOpening();
+
+            switch (waterType) {
+
+                case WaterType.Stream:
+                    if (double.IsNaN(o)) {
+                        if (e < 2 * l / Math.PI) {
+                            return double.NaN;
+                        } else {
+                            // Automatic effective opening of sein
+                            double r = 2 * l / Math.PI;
+
+                            // First and third segments. Sein opening and closing
+                            double s1 = (Math.Pow(r, 2) * Math.PI) / 4;
+
+                            // Second segment. Sein exposure
+                            double s2 = r * (e - 2 * r);
+
+                            return 2 * s1 + s2;
+                        }
+                    } else {
+                        if (e < 2 * o / Math.PI) {
+                            return double.NaN;
+                        } else {
+                            // First and last segment - opening and closure
+                            double s1 = Math.Pow(o, 2) * Math.PI / 4;
+
+                            // Seconde segment - exposure
+                            double s2 = o * (e - 2 * o);
+
+                            return 2 * s1 + s2;
+
+
+                            //// First segment. Sein opening
+                            //// With Huygens formulae
+                            //double z = (6 * eqpRow.GetLength() + 2 * eqpRow.GetOpening()) / 8;
+                            //double r = Math.Sqrt((z - eqpRow.GetOpening()) * (z + eqpRow.GetOpening()));
+                            //double s1 = (r * eqpRow.GetOpening() * Math.PI) / 4;
+
+                            //// Second segment. Sein exposure
+                            //double s2 = eqpRow.GetOpening() * (exposure - eqpRow.GetOpening() - r);
+
+                            //// Third segment. Sein closing
+                            //double s3 = Math.Pow(eqpRow.GetOpening(), 2) * Math.PI / 4;
+
+                            //return s1 + s2 + s3;
+                        }
+                    }
+
+                case WaterType.Lake:
+                case WaterType.Tank:
+                    if (e < l) {
+                        return l * e / 2;
+                    } else {
+                        double s = 0;
+                        if (double.IsNaN(o)) {
+                            // First segment. Sein exposure
+                            s += l * (e - l);
+
+                            // Second segment. Sein closing
+                            s += Math.Pow(l, 2) / 2;
+                        } else {
+                            // First segment. Sein opening
+                            // With Huygens formulae
+                            double z = (3 * l + o) / 8;
+                            double x = Math.Sqrt((z - o / 2) * (z + o / 2));
+                            s += x * (l - o);
+
+                            // Second segment. Sein exposure
+                            s += o * (e - o);
+
+                            // Third segment. Sein closing
+                            s += o * o  * .5;
+                        }
+
+                        return s;
+                    }
+            }
 
             return double.NaN;
         }
 
-        public static double GetExposure(this Survey.CardRow cardRow) {
-            if (cardRow.IsSpanNull()) return double.NaN;
-            return cardRow.EquipmentRow.GetVelocity() * cardRow.Duration.TotalHours * 1000;
+        public static double GetDriftArea(this Survey.EquipmentRow eqpRow, double e) {
+
+            if (double.IsNaN(e)) return double.NaN;
+
+            double l = eqpRow.GetLength();
+            double o = eqpRow.GetOpening();
+
+            if (!double.IsNaN(o)) {
+
+                if (!double.IsNaN(l)) {
+                    // First segment. Net opening
+                    // With Huygens formulae
+                    double z = (3 * l + o) / 8;
+                    double x = Math.Sqrt((z - o / 2) * (z + o / 2));
+                    double s = x * (l - o);
+
+                    // Second segment. Net exposure
+                    s += o * e;
+
+                    return s;
+                } else {
+                    // Only segment
+                    return e * o;
+                }
+            }
+
+            return double.NaN;
         }
 
-        public static double GetSquare(this Survey.CardRow cardRow) {
-
-            if (!cardRow.IsSquareNull()) return cardRow.Square;
+        public static double GetArea(this Survey.CardRow cardRow) {
 
             if (cardRow.IsEqpIDNull()) return double.NaN;
 
-            if (cardRow.SamplerRow.IsEffortFormulaNull()) return double.NaN;
+            if (cardRow.Effort < 0) return -cardRow.Effort;
 
-            switch (cardRow.SamplerRow.EffortFormula) {
-                case "EL":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
-                        return cardRow.Length * cardRow.Exposure;
-                    }
-                    break;
-                case "MLH":
-                    if (!cardRow.IsLengthNull()) {
-                        return Math.Pow(cardRow.Length, 2) / (4 * Math.PI);
-                    }
-                    break;
-                case "MTLH":
-                    if (cardRow.Sampler == 730) {
-                        // Encircling gillnet
+            switch (cardRow.SamplerRow.GetSamplerType()) {
 
-                        //if (!_this.IsLengthNull())
-                        //{
-                        //    Square = Math.Pow(_this.Length, 2) / (4 * Math.PI);
-                        //}
+                case FishSamplerType.Driftnet:
+                    return cardRow.EquipmentRow.GetDriftArea(cardRow.Exposure);
 
-                    } else {
-                        // Except 730
-                        if (!cardRow.IsLengthNull() && !cardRow.IsSpanNull()) {
-                            return Math.PI * 0.25 * Math.Pow(cardRow.Length, 2) * cardRow.Duration.TotalDays;
-                        }
-                    }
-                    break;
+                case FishSamplerType.Gillnet:
+                case FishSamplerType.Trap:
+                case FishSamplerType.Hook:
+                    return cardRow.EquipmentRow.GetOutscribedCircleArea() * cardRow.Duration.TotalDays;
 
-                case "MTVELOH":
-                    if (!cardRow.IsOpeningNull() && !cardRow.IsVelocityNull() &&
-                        !cardRow.IsSpanNull()) {
-                        return cardRow.Duration.TotalHours * cardRow.Velocity * 1000 * cardRow.Opening;
-                    }
-                    break;
+                case FishSamplerType.LiftNet:
+                case FishSamplerType.FallingGear:
+                    return cardRow.EquipmentRow.GetCoveredArea(cardRow.Portions);
 
-                case "MTVELH":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsVelocityNull() &&
-                        !cardRow.IsSpanNull()) {
-                        return cardRow.Duration.TotalHours * cardRow.Velocity * 1000 * cardRow.Length;
-                    }
-                    break;
+                case FishSamplerType.Sein:
+                    return cardRow.EquipmentRow.GetSeinArea(cardRow.IsWaterIDNull() ? WaterType.None : (WaterType)cardRow.WaterRow.Type, cardRow.Exposure);
 
-                case "MS":
-                    if (!cardRow.IsSquareNull()) {
-                        return cardRow.Square;
-                    }
-                    break;
+                case FishSamplerType.Dredge:
+                case FishSamplerType.Trawl:
+                    return cardRow.EquipmentRow.GetTowedArea(cardRow.Duration);
 
-                case "MELOH":
-                case "MELO":
-                case "ELO":
-                    switch (cardRow.Sampler) {
-                        case 720: // driftnet
-                            if (!cardRow.IsOpeningNull() && !cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
-                                // First segment. Net opening
-                                // With Huygens formulae
-                                double z = (3 * cardRow.Length + cardRow.Opening) / 8;
-                                double x = Math.Sqrt((z - cardRow.Opening / 2) * (z + cardRow.Opening / 2));
-                                double s = x * (cardRow.Length - cardRow.Opening);
+                case FishSamplerType.Electrofishing:
+                    return cardRow.EquipmentRow.GetExposureArea(cardRow.Exposure);
 
-                                // Second segment. Net exposure
-                                s += cardRow.Opening * cardRow.Exposure;
-
-                                return s;
-                            } else if (!cardRow.IsOpeningNull() && !cardRow.IsExposureNull()) {
-                                // Only segment
-                                return cardRow.Exposure * cardRow.Opening;
-                            }
-                            break;
-
-                        default: // all sein nets
-                            if (cardRow.IsWaterIDNull()) {
-                                if (cardRow.IsExposureNull()) return double.NaN;
-
-                                if (cardRow.IsOpeningNull()) { return cardRow.IsLengthNull() ? double.NaN : cardRow.Length * cardRow.Exposure; } else { return cardRow.Opening * cardRow.Exposure; }
-                            } else {
-                                switch ((WaterType)cardRow.WaterRow.Type) {
-                                    case WaterType.Stream:
-                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
-                                            if (cardRow.IsOpeningNull()) {
-                                                if (cardRow.Exposure < 2 * cardRow.Length / Math.PI) {
-                                                    return double.NaN;
-                                                } else {
-                                                    // Automatic effective opening of sein
-                                                    double r = 2 * cardRow.Length / Math.PI;
-
-                                                    // First and third segments. Sein opening and closing
-                                                    double s1 = (Math.Pow(r, 2) * Math.PI) / 4;
-
-                                                    // Second segment. Sein exposure
-                                                    double s2 = r * (cardRow.Exposure - 2 * r);
-
-                                                    return 2 * s1 + s2;
-                                                }
-                                            } else {
-                                                if (cardRow.Exposure < 2 * cardRow.Opening / Math.PI) {
-                                                    return double.NaN;
-                                                } else {
-                                                    // First and last segment - opening and closure
-                                                    double s1 = Math.Pow(cardRow.Opening, 2) * Math.PI / 4;
-
-                                                    // Seconde segment - exposure
-                                                    double s2 = cardRow.Opening * (cardRow.Exposure - 2 * cardRow.Opening);
-
-                                                    return 2 * s1 + s2;
-
-
-                                                    //// First segment. Sein opening
-                                                    //// With Huygens formulae
-                                                    //double z = (6 * cardRow.Length + 2 * cardRow.Opening) / 8;
-                                                    //double r = Math.Sqrt((z - cardRow.Opening) * (z + cardRow.Opening));
-                                                    //double s1 = (r * cardRow.Opening * Math.PI) / 4;
-
-                                                    //// Second segment. Sein exposure
-                                                    //double s2 = cardRow.Opening * (cardRow.Exposure - cardRow.Opening - r);
-
-                                                    //// Third segment. Sein closing
-                                                    //double s3 = Math.Pow(cardRow.Opening, 2) * Math.PI / 4;
-
-                                                    //return s1 + s2 + s3;
-                                                }
-                                            }
-                                        }
-                                        break;
-                                    case WaterType.Lake:
-                                    case WaterType.Tank:
-                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
-                                            if (cardRow.Exposure < cardRow.Length) {
-                                                return cardRow.Length * cardRow.Exposure / 2;
-                                            } else {
-                                                double s = 0;
-                                                if (cardRow.IsOpeningNull()) {
-                                                    // First segment. Sein exposure
-                                                    s += cardRow.Length * (cardRow.Exposure - cardRow.Length);
-
-                                                    // Second segment. Sein closing
-                                                    s += Math.Pow(cardRow.Length, 2) / 2;
-                                                } else {
-                                                    // First segment. Sein opening
-                                                    // With Huygens formulae
-                                                    double z = (3 * cardRow.Length + cardRow.Opening) / 8;
-                                                    double x = Math.Sqrt((z - cardRow.Opening / 2) * (z + cardRow.Opening / 2));
-                                                    s += x * (cardRow.Length - cardRow.Opening);
-
-                                                    // Second segment. Sein exposure
-                                                    s += cardRow.Opening * (cardRow.Exposure - cardRow.Opening);
-
-                                                    // Third segment. Sein closing
-                                                    s += Math.Pow(cardRow.Opening, 2) / 2;
-                                                }
-
-                                                return s;
-                                            }
-                                        }
-                                        break;
-                                }
-                            }
-                            break;
-                    }
-                    break;
-
-                case "MELH":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
-                        return cardRow.Exposure * cardRow.Length;
-                    }
-                    break;
+                case FishSamplerType.SurroundingNet:
+                    return cardRow.EquipmentRow.GetOutscribedCircleArea();
             }
 
             return double.NaN;
@@ -314,31 +307,47 @@ namespace Mayfly.Fish
         public static double GetVolume(this Survey.CardRow cardRow) {
 
             double h = cardRow.IsDepthNull() ? cardRow.EquipmentRow.GetHeight() : Math.Min(cardRow.Depth, cardRow.EquipmentRow.GetHeight());
-            return h * cardRow.GetSquare();
+            return h * cardRow.GetArea();
+        }
+
+        public static double GetEffort(this Survey.CardRow cardRow, ExpressionVariant expression) {
+            if (cardRow.IsEqpIDNull()) return double.NaN;
+            else {
+                switch (expression) {
+                    case ExpressionVariant.Area:
+                        return cardRow.GetArea() / UnitEffort.SquareUnitCost;
+                    case ExpressionVariant.Volume:
+                        return cardRow.GetVolume() / UnitEffort.VolumeUnitCost;
+                    case ExpressionVariant.Efforts:
+                        return cardRow.GetEffortScore() / cardRow.GetGearType().GetEffortStdScore();
+                }
+            }
+
+            return double.NaN;
+        }
+
+        public static double GetEffort(this Survey.CardRow cardRow) {
+            if (cardRow.IsEqpIDNull()) return double.NaN;
+            return GetEffort(cardRow, cardRow.GetGearType().GetDefaultExpression());
         }
 
         public static double GetEffortScore(this Survey.CardRow cardRow) {
-            double result = double.NaN;
-            if (cardRow.IsEqpIDNull()) return result;
-            if (cardRow.SamplerRow.IsEffortFormulaNull()) return result;
 
-            switch (cardRow.SamplerRow.EffortFormula) {
-                case "MTLH": // effort from time
-                    if (!cardRow.IsLengthNull() && !cardRow.IsHeightNull() && !cardRow.IsSpanNull()) {
-                        result = (cardRow.Length * cardRow.Height * cardRow.Duration.TotalHours);
-                    }
-                    break;
+            if (cardRow.IsEqpIDNull()) return double.NaN;
 
-                case "TJ":
-                case "T":
-                    if (!cardRow.IsSpanNull()) {
-                        result = cardRow.Duration.TotalHours;
-                    }
-                    break;
+            switch (cardRow.SamplerRow.GetSamplerType()) {
+
+                case FishSamplerType.Gillnet:
+                    return cardRow.EquipmentRow.GetLength() * cardRow.EquipmentRow.GetHeight() * cardRow.Duration.TotalHours;
+
+                case FishSamplerType.Hook:
+                    return cardRow.Duration.TotalHours;
             }
 
-            return result;
+            return double.NaN;
         }
+
+
 
 
         /// <summary>
