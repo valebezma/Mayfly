@@ -470,6 +470,7 @@
             this.comboBoxSampler.FormattingEnabled = true;
             this.comboBoxSampler.GroupMember = "OperationDisplay";
             this.comboBoxSampler.Name = "comboBoxSampler";
+            this.comboBoxSampler.SelectedIndexChanged += new System.EventHandler(this.comboBoxSampler_SelectedIndexChanged);
             // 
             // labelMethod
             // 
@@ -748,8 +749,8 @@
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpecies;
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         protected System.Windows.Forms.DataGridViewTextBoxColumn ColumnMass;
-        protected Controls.LogProcessor Logger;
         protected System.Windows.Forms.Button buttonEquipment;
         private System.Windows.Forms.ContextMenuStrip contextEquipment;
+        public Controls.LogProcessor Logger;
     }
 }

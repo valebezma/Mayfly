@@ -24,17 +24,12 @@ namespace Mayfly.Benthos
             }
             else
             {
-                Card card = new Card();
+                BenthosCard card = new BenthosCard(args[0]);
 
-                if (args.Length > 0)
-                {
-                    card.LoadData(args[0]);
-                }
-
-                if (args.Length > 1)
-                {
-                    card.Logger.RunDefinition(args[1]);
-                }
+                //if (args.Length > 1)
+                //{
+                //    card.Logger.RunDefinition(args[1]);
+                //}
 
                 Application.Run(card);
             }

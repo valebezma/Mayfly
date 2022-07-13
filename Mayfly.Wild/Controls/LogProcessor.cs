@@ -250,7 +250,7 @@ namespace Mayfly.Wild.Controls
             if (gridRow.Cells[columnDefinition.Index].Value is TaxonomicIndex.TaxonRow tr) {
                 Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
                 if (existingSpeciesRow == null) {
-                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name, null);
+                    existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
                 }
                 result.DefID = existingSpeciesRow.ID;
             } else if ((string)gridRow.Cells[columnDefinition.Index].Value is string s) {
@@ -259,7 +259,7 @@ namespace Mayfly.Wild.Controls
                 } else {
                     Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null) {
-                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s, null);
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(s);
                     }
                     result.DefID = existingSpeciesRow.ID;
                 }
@@ -504,7 +504,7 @@ namespace Mayfly.Wild.Controls
 
             // If there is no such species - insert the new row
             if (speciesIndex == -1) {
-                Data.Definition.AddDefinitionRow(species.Rank, species.Name, null);
+                Data.Definition.AddDefinitionRow(species.Rank, species.Name);
                 speciesIndex = Grid.Rows.Add(null, species);
             }
 
@@ -716,8 +716,8 @@ namespace Mayfly.Wild.Controls
                 if (definitionRow == null) {
                     TaxonomicIndex.TaxonRow clipSpeciesRow = Provider.Index.FindByName(clipLogRow.DefinitionRow.Taxon);
                     definitionRow = (clipSpeciesRow == null ?
-                        Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon, null) :
-                        Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name, null));
+                        Data.Definition.AddDefinitionRow(clipLogRow.DefinitionRow.Taxon) :
+                        Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name));
                 }
 
                 Survey.LogRow logRow = Data.Log.FindByCardIDDefID(Data.Solitary.ID, definitionRow.ID);

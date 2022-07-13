@@ -120,9 +120,6 @@
   <data name="AllTract" xml:space="preserve">
     <value>Весь кишечник</value>
   </data>
-  <data name="EmptySample" xml:space="preserve">
-    <value>Без улова</value>
-  </data>
   <data name="SizeUnits" xml:space="preserve">
     <value>Размерный класс, мм</value>
   </data>

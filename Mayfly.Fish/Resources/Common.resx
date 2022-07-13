@@ -120,9 +120,6 @@
   <data name="AllTract" xml:space="preserve">
     <value>Whole tract</value>
   </data>
-  <data name="EmptySample" xml:space="preserve">
-    <value>Catch is empty</value>
-  </data>
   <data name="SizeUnits" xml:space="preserve">
     <value>Size class, mm</value>
   </data>

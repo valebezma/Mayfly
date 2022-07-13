@@ -94,7 +94,7 @@ namespace Mayfly.Benthos
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Wild.Survey.LogRow logRow)
+        public static double GetAbundance(this Survey.LogRow logRow)
         {
             if (logRow.IsQuantityNull()) return double.NaN;
             if (logRow.CardRow.IsSquareNull()) return double.NaN;

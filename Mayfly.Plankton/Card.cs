@@ -11,7 +11,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static Mayfly.Plankton.UserSettings;
 
 namespace Mayfly.Plankton
 {
@@ -78,19 +77,6 @@ namespace Mayfly.Plankton
         }
 
         public Wild.Survey Data { get; set; }
-
-        public Samplers.SamplerRow SelectedSampler
-        {
-            get
-            {
-                return comboBoxSampler.SelectedItem as Samplers.SamplerRow;
-            }
-
-            set
-            {
-                comboBoxSampler.SelectedItem = value;
-            }
-        }
 
         public bool IsChanged { get; set; }
 

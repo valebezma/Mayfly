@@ -13,35 +13,30 @@ using System.Linq;
 using System.Windows.Forms;
 using Mayfly.Extensions;
 using Mayfly.Controls;
+using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish.Explorer
 {
     public partial class Catch : Form
     {
-        public Wild.Survey Data { get; set; }
+        public Survey Data { get; set; }
 
         public bool IsChanged { get; set; }
 
-        public int SpeciesCount
-        {
-            get
-            {
+        public int SpeciesCount {
+            get {
                 return SpeciesList.Length;
             }
         }
 
-        public string[] SpeciesList
-        {
-            get
-            {
+        public string[] SpeciesList {
+            get {
                 List<string> result = new List<string>();
-                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-                {
-                    if (gridRow.Cells[ColumnSpecies.Name].Value != null)
-                    {
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows) {
+                    if (gridRow.Cells[ColumnSpecies.Name].Value != null) {
                         string speciesName = gridRow.Cells[ColumnSpecies.Name].Value.ToString();
-                        if (!result.Contains(speciesName))
-                        {
+                        if (!result.Contains(speciesName)) {
                             result.Add(speciesName);
                         }
                     }
@@ -50,15 +45,11 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private double Mass
-        {
-            get
-            {
+        private double Mass {
+            get {
                 double result = 0;
-                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-                {
-                    if (gridRow.Cells[ColumnMass.Name].Value is double @double)
-                    {
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows) {
+                    if (gridRow.Cells[ColumnMass.Name].Value is double @double) {
                         result += @double;
                     }
                 }
@@ -66,15 +57,11 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private double Quantity
-        {
-            get
-            {
+        private double Quantity {
+            get {
                 double result = 0;
-                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-                {
-                    if (gridRow.Cells[ColumnQuantity.Name].Value is int @int)
-                    {
+                foreach (DataGridViewRow gridRow in spreadSheetLog.Rows) {
+                    if (gridRow.Cells[ColumnQuantity.Name].Value is int @int) {
                         result += @int;
                     }
                 }
@@ -90,202 +77,165 @@ namespace Mayfly.Fish.Explorer
 
 
 
-        public Catch(Surveys.ActionRow actionRow)
-        {
+        public Catch(Surveys.ActionRow actionRow) {
             InitializeComponent();
 
             // Show in caption Gear and time
-        
-            ActionRow = actionRow;
-            Data = new Data(Fish.UserSettings.SpeciesIndex, Fish.UserSettings.SamplersIndex);
 
-            if (!ActionRow.IsCatchXMLNull())
-            {
+            ActionRow = actionRow;
+            Data = new Survey();
+
+            if (!ActionRow.IsCatchXMLNull()) {
                 Data.ReadXml(new StringReader(ActionRow.CatchXML));
                 LoadData();
             }
 
-            Text = String.Format("{0} - {1}", ActionRow.GetShortDescription(), Text);
+            Text = string.Format("{0} - {1}", ActionRow.GetShortDescription(), Text);
 
             ColumnSpecies.ValueType = typeof(string);
             ColumnQuantity.ValueType = typeof(int);
             ColumnMass.ValueType = typeof(double);
 
-            speciesLogger.RecentListCount = Fish.UserSettings.RecentSpeciesCount;
-            speciesLogger.IndexPath = Fish.UserSettings.TaxonomicIndexPath;
+            speciesLogger.RecentListCount = RecentSpeciesCount;
+            speciesLogger.IndexPath = TaxonomicIndexPath;
 
-            ColumnQuantity.ReadOnly = Fish.UserSettings.FixTotals;
-            ColumnMass.ReadOnly = Fish.UserSettings.FixTotals;
+            ColumnQuantity.ReadOnly = FixTotals;
+            ColumnMass.ReadOnly = FixTotals;
 
             UpdateStatus();
             IsChanged = false;
         }
 
         public Catch(TextAndImageCell gridCell)
-            : this(gridCell.Tag as Surveys.ActionRow)
-        {
+            : this(gridCell.Tag as Surveys.ActionRow) {
             this.GridCell = gridCell;
             this.SetFriendlyDesktopLocation(gridCell);
         }
-        
 
 
-        private void SaveData()
-        {
+
+        private void SaveData() {
             SaveLog();
             Data.ClearUseless();
         }
 
-        private void SaveLog()
-        {
-            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
-            {
+        private void SaveLog() {
+            foreach (DataGridViewRow gridRow in spreadSheetLog.Rows) {
                 if (gridRow.IsNewRow) continue;
 
                 SaveLogRow(gridRow);
             }
         }
 
-        private void Clear(DataGridViewRow gridRow)
-        {
-            if (gridRow.Cells[ColumnID.Index].Value != null)
-            {
-                Wild.Survey.LogRow logRow = Data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value);
-                Wild.Survey.DefinitionRow spcRow = logRow.DefinitionRow;
+        private void Clear(DataGridViewRow gridRow) {
+            if (gridRow.Cells[ColumnID.Index].Value != null) {
+                Survey.LogRow logRow = Data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value);
+                Survey.DefinitionRow spcRow = logRow.DefinitionRow;
                 logRow.Delete();
                 if (spcRow != null) spcRow.Delete();
             }
         }
 
-        private Wild.Survey.LogRow LogRow(DataGridViewRow gridRow)
-        {
+        private Survey.LogRow LogRow(DataGridViewRow gridRow) {
             return LogRow(Data, gridRow);
         }
 
-        private Wild.Survey.LogRow LogRow(Wild.Survey data, DataGridViewRow gridRow)
-        {
-            Wild.Survey.LogRow result = GetLogRow(data, gridRow);
+        private Survey.LogRow LogRow(Survey data, DataGridViewRow gridRow) {
+            Survey.LogRow result = GetLogRow(data, gridRow);
 
-            if (gridRow.Cells[ColumnSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
-            {
-                Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
-                if (existingSpeciesRow == null)
-                {
+            if (gridRow.Cells[ColumnSpecies.Index].Value is TaxonomicIndex.TaxonRow tr) {
+                Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                if (existingSpeciesRow == null) {
                     existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
                 }
                 result.DefID = existingSpeciesRow.ID;
-            }
-            else if ((string)gridRow.Cells[ColumnSpecies.Index].Value is string s)
-            {
-                if (s == Species.Resources.Interface.UnidentifiedTitle)
-                {
+            } else if ((string)gridRow.Cells[ColumnSpecies.Index].Value is string s) {
+                if (s == Species.Resources.Interface.UnidentifiedTitle) {
                     result.SetDefIDNull();
-                }
-                else
-                {
-                    Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
-                    if (existingSpeciesRow == null)
-                    {
-                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                } else {
+                    Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
+                    if (existingSpeciesRow == null) {
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(s);
                     }
                     result.DefID = existingSpeciesRow.ID;
                 }
             }
 
-            if (gridRow.Cells[ColumnQuantity.Index].Value == null)
-            {
+            if (gridRow.Cells[ColumnQuantity.Index].Value == null) {
                 result.SetQuantityNull();
-            }
-            else
-            {
+            } else {
                 result.Quantity = (int)gridRow.Cells[ColumnQuantity.Index].Value;
             }
 
-            if (gridRow.Cells[ColumnMass.Index].Value == null)
-            {
+            if (gridRow.Cells[ColumnMass.Index].Value == null) {
                 result.SetMassNull();
-            }
-            else
-            {
+            } else {
                 result.Mass = (double)gridRow.Cells[ColumnMass.Index].Value;
             }
 
             return result;
         }
 
-        private Wild.Survey.LogRow SaveLogRow(DataGridViewRow gridRow)
-        {
+        private Survey.LogRow SaveLogRow(DataGridViewRow gridRow) {
             return SaveLogRow(Data, gridRow);
         }
 
-        private Wild.Survey.LogRow SaveLogRow(Wild.Survey data, DataGridViewRow gridRow)
-        {
-            Wild.Survey.LogRow result = LogRow(data, gridRow);
+        private Survey.LogRow SaveLogRow(Survey data, DataGridViewRow gridRow) {
+            Survey.LogRow result = LogRow(data, gridRow);
             if (data.Log.Rows.IndexOf(result) == -1) data.Log.AddLogRow(result);
             if (data == Data) gridRow.Cells[ColumnID.Index].Value = result.ID;
             return result;
         }
 
-        private Wild.Survey.LogRow GetLogRow(DataGridViewRow gridRow)
-        {
+        private Survey.LogRow GetLogRow(DataGridViewRow gridRow) {
             return GetLogRow(Data, gridRow);
         }
 
-        private Wild.Survey.LogRow GetLogRow(Wild.Survey data, DataGridViewRow gridRow)
-        {
-            Wild.Survey.LogRow result;
+        private Survey.LogRow GetLogRow(Survey data, DataGridViewRow gridRow) {
+            Survey.LogRow result;
 
             if (gridRow.Cells[ColumnID.Index].Value == null ||
-                data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value) == null)
-            {
+                data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value) == null) {
                 result = data.Log.NewLogRow();
                 result.CardRow = data.Solitary;
                 data.Log.AddLogRow(result);
-            }
-            else
-            {
+            } else {
                 result = data.Log.FindByID((int)gridRow.Cells[ColumnID.Index].Value);
             }
 
             return result;
         }
 
-        private void LoadData()
-        {
+        private void LoadData() {
             spreadSheetLog.Rows.Clear();
             InsertLogRows(Data, 0);
             IsChanged = false;
         }
 
-        private void InsertLogRows(Wild.Survey data, int rowIndex)
-        {
-            if (rowIndex == -1)
-            {
+        private void InsertLogRows(Survey data, int rowIndex) {
+            if (rowIndex == -1) {
                 rowIndex = spreadSheetLog.RowCount - 1;
             }
 
-            foreach (Wild.Survey.LogRow logRow in data.Log.Rows)
-            {
+            foreach (Survey.LogRow logRow in data.Log.Rows) {
                 InsertLogRow(logRow, rowIndex);
 
-                if (rowIndex < spreadSheetLog.RowCount - 1)
-                {
+                if (rowIndex < spreadSheetLog.RowCount - 1) {
                     rowIndex++;
                 }
             }
         }
 
-        private void InsertLogRow(Wild.Survey.LogRow logRow, int rowIndex)
-        {
+        private void InsertLogRow(Survey.LogRow logRow, int rowIndex) {
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetLog);
             gridRow.Cells[ColumnID.Index].Value = logRow.ID;
             gridRow.Cells[ColumnSpecies.Index].Value = logRow.DefinitionRow.Taxon;
 
-            if (!logRow.IsQuantityNull()) 
+            if (!logRow.IsQuantityNull())
                 gridRow.Cells[ColumnQuantity.Index].Value = logRow.Quantity;
 
-            if (!logRow.IsMassNull()) 
+            if (!logRow.IsMassNull())
                 gridRow.Cells[ColumnMass.Index].Value = logRow.Mass;
 
             if (!logRow.IsCommentsNull())
@@ -293,23 +243,19 @@ namespace Mayfly.Fish.Explorer
 
             spreadSheetLog.Rows.Insert(rowIndex, gridRow);
 
-            for (int i = 0; i < spreadSheetLog.RowCount; i++)
-            {
+            for (int i = 0; i < spreadSheetLog.RowCount; i++) {
                 DataGridViewRow currentGridRow = spreadSheetLog.Rows[i];
 
-                if (currentGridRow.IsNewRow)
-                {
+                if (currentGridRow.IsNewRow) {
                     continue;
                 }
 
-                if (currentGridRow == gridRow)
-                {
+                if (currentGridRow == gridRow) {
                     continue;
                 }
 
                 if (object.Equals(gridRow.Cells[ColumnSpecies.Index].Value,
-                    currentGridRow.Cells[ColumnSpecies.Index].Value))
-                {
+                    currentGridRow.Cells[ColumnSpecies.Index].Value)) {
                     speciesLogger_DuplicateDetected(spreadSheetLog,
                         new DuplicateFoundEventArgs(gridRow, currentGridRow));
                     i--;
@@ -317,37 +263,27 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        public static bool IsDataPresented(string text)
-        {
-            try
-            {
-                Wild.Survey data = new Wild.Survey();
+        public static bool IsDataPresented(string text) {
+            try {
+                Survey data = new Survey();
                 data.ReadXml(new StringReader(text));
                 return data.Log.Count > 0;
-            }
-            catch { return false; }
+            } catch { return false; }
         }
 
-        private DialogResult CheckAndSave()
-        {
+        private DialogResult CheckAndSave() {
             DialogResult result = DialogResult.None;
 
-            if (IsChanged)
-            {
+            if (IsChanged) {
                 TaskDialogButton tdbPressed = taskDialogSaveChanges.ShowDialog(this);
 
-                if (tdbPressed == tdbSave)
-                {
+                if (tdbPressed == tdbSave) {
                     buttonSave_Click(buttonSave, new EventArgs());
                     result = DialogResult.OK;
-                }
-                else if (tdbPressed == tdbDiscard)
-                {
+                } else if (tdbPressed == tdbDiscard) {
                     IsChanged = false;
                     result = DialogResult.No;
-                }
-                else if (tdbPressed == tdbCancelClose)
-                {
+                } else if (tdbPressed == tdbCancelClose) {
                     result = DialogResult.Cancel;
                 }
             }
@@ -355,16 +291,14 @@ namespace Mayfly.Fish.Explorer
             return result;
         }
 
-        private void OpenIndividuals(DataGridViewRow gridRow)
-        {
+        private void OpenIndividuals(DataGridViewRow gridRow) {
             if (gridRow.Cells[ColumnSpecies.Name].Value == null) return;
             Individuals individuals = OpenIndividuals(SaveLogRow(gridRow));
             individuals.LogLine = gridRow;
             individuals.SetFriendlyDesktopLocation(gridRow);
         }
 
-        private Individuals OpenIndividuals(Wild.Survey.LogRow logRow)
-        {
+        private Individuals OpenIndividuals(Survey.LogRow logRow) {
             Individuals individuals = new Individuals(logRow);
             individuals.Observations = (Surveys)ActionRow.Table.DataSet;
             individuals.ActionRow = this.ActionRow;
@@ -374,48 +308,39 @@ namespace Mayfly.Fish.Explorer
             return individuals;
         }
 
-        private void individuals_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void individuals_FormClosing(object sender, FormClosingEventArgs e) {
             Individuals individuals = sender as Individuals;
-            if (individuals.DialogResult == DialogResult.OK)
-            {
+            if (individuals.DialogResult == DialogResult.OK) {
                 IsChanged |= individuals.ChangesWereMade;
             }
         }
 
-        private void UpdateStatus()
-        {
-            if (TotalChanged != null)
-            {
+        private void UpdateStatus() {
+            if (TotalChanged != null) {
                 TotalChanged.Invoke(this, new EventArgs());
             }
         }
 
 
 
-        private void Card_Load(object sender, EventArgs e)
-        {
+        private void Card_Load(object sender, EventArgs e) {
             IsChanged = false;
 
         }
 
-        private void Card_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void Card_FormClosing(object sender, FormClosingEventArgs e) {
             e.Cancel = (CheckAndSave() == DialogResult.Cancel);
         }
 
-        private void ValueChanged(object sender, EventArgs e)
-        {
+        private void ValueChanged(object sender, EventArgs e) {
             IsChanged = true;
         }
 
 
-        private void speciesLogger_SpeciesSelected(object sender, SpeciesSelectEventArgs e)
-        {
+        private void speciesLogger_SpeciesSelected(object sender, SpeciesSelectEventArgs e) {
             ValueChanged(sender, e);
 
-            if (Fish.UserSettings.AutoLogOpen)
-            {
+            if (AutoLogOpen) {
                 spreadSheetLog.ClearSelection();
                 e.Row.Selected = true;
                 OpenIndividuals(e.Row);
@@ -423,23 +348,19 @@ namespace Mayfly.Fish.Explorer
             }
         }
 
-        private void speciesLogger_DuplicateDetected(object sender, DuplicateFoundEventArgs e)
-        {
+        private void speciesLogger_DuplicateDetected(object sender, DuplicateFoundEventArgs e) {
             int q = 0;
             double w = 0;
 
-            if (e.EditedRow.Cells[ColumnQuantity.Index].Value != null)
-            {
+            if (e.EditedRow.Cells[ColumnQuantity.Index].Value != null) {
                 q += (int)e.EditedRow.Cells[ColumnQuantity.Name].Value;
             }
 
-            if (e.EditedRow.Cells[ColumnMass.Index].Value != null)
-            {
+            if (e.EditedRow.Cells[ColumnMass.Index].Value != null) {
                 if (e.EditedRow.Cells[ColumnQuantity.Index].Value != null &&
                     (int)e.EditedRow.Cells[ColumnQuantity.Index].Value == 1 &&
-                    LogRow(e.EditedRow).GetIndividualRows().Length == 0)
-                {
-                    Wild.Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                    LogRow(e.EditedRow).GetIndividualRows().Length == 0) {
+                    Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
                     newIndividualRow.LogRow = LogRow(e.EditedRow);
                     newIndividualRow.Mass = (double)e.EditedRow.Cells[ColumnMass.Index].Value;
                     Data.Individual.AddIndividualRow(newIndividualRow);
@@ -448,21 +369,17 @@ namespace Mayfly.Fish.Explorer
                 w += (double)e.EditedRow.Cells[ColumnMass.Name].Value;
             }
 
-            if (e.DuplicateRow.Cells[ColumnQuantity.Index].Value != null)
-            {
+            if (e.DuplicateRow.Cells[ColumnQuantity.Index].Value != null) {
                 q += (int)e.DuplicateRow.Cells[ColumnQuantity.Name].Value;
             }
 
-            if (e.DuplicateRow.Cells[ColumnMass.Index].Value != null)
-            {
+            if (e.DuplicateRow.Cells[ColumnMass.Index].Value != null) {
                 if (e.DuplicateRow.Cells[ColumnQuantity.Index].Value != null &&
                     (int)e.DuplicateRow.Cells[ColumnQuantity.Index].Value == 1 &&
-                    LogRow(e.DuplicateRow).GetIndividualRows().Length == 0)
-                {
-                    Wild.Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
+                    LogRow(e.DuplicateRow).GetIndividualRows().Length == 0) {
+                    Survey.IndividualRow newIndividualRow = Data.Individual.NewIndividualRow();
                     newIndividualRow.LogRow = LogRow(e.EditedRow);
-                    if (e.EditedRow.Cells[ColumnMass.Index].Value != null)
-                    {
+                    if (e.EditedRow.Cells[ColumnMass.Index].Value != null) {
                         newIndividualRow.Mass = (double)e.EditedRow.Cells[ColumnMass.Index].Value;
                     }
                     newIndividualRow.Comments = Wild.Resources.Interface.Interface.DuplicateDefaultComment;
@@ -472,18 +389,15 @@ namespace Mayfly.Fish.Explorer
                 w += (double)e.DuplicateRow.Cells[ColumnMass.Name].Value;
             }
 
-            if (q > 0)
-            {
+            if (q > 0) {
                 e.EditedRow.Cells[ColumnQuantity.Index].Value = q;
             }
 
-            if (w > 0)
-            {
+            if (w > 0) {
                 e.EditedRow.Cells[ColumnMass.Index].Value = w;
             }
 
-            foreach (Wild.Survey.IndividualRow individualRow in LogRow(e.DuplicateRow).GetIndividualRows())
-            {
+            foreach (Survey.IndividualRow individualRow in LogRow(e.DuplicateRow).GetIndividualRows()) {
                 individualRow.LogRow = LogRow(e.EditedRow);
             }
 
@@ -491,8 +405,7 @@ namespace Mayfly.Fish.Explorer
             Clear(e.DuplicateRow);
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+        private void buttonSave_Click(object sender, EventArgs e) {
             SaveData();
             ActionRow.CatchXML = Data.GetXml();
             IsChanged = false;
@@ -502,40 +415,34 @@ namespace Mayfly.Fish.Explorer
 
         #region Log grid logics
 
-        private void spreadSheetLog_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
+        private void spreadSheetLog_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
             IsChanged = true;
         }
 
-        private void spreadSheetLog_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
+        private void spreadSheetLog_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             UpdateStatus();
         }
 
-        private void spreadSheetLog_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
+        private void spreadSheetLog_UserDeletedRow(object sender, DataGridViewRowEventArgs e) {
             Clear(e.Row);
             IsChanged = true;
             UpdateStatus();
         }
 
-        private void spreadSheetLog_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
+        private void spreadSheetLog_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
             UpdateStatus();
             IsChanged = true;
         }
 
-        private void spreadSheetLog_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
+        private void spreadSheetLog_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) {
             UpdateStatus();
             IsChanged = true;
         }
 
-        private void spreadSheetLog_InputFailed(object sender, DataGridViewCellEventArgs e)
-        {
-            toolTipAttention.ToolTipTitle = Fish.Resources.Interface.Messages.LogBlocked;
+        private void spreadSheetLog_InputFailed(object sender, DataGridViewCellEventArgs e) {
+            toolTipAttention.ToolTipTitle = Wild.Resources.Interface.Messages.LogBlocked;
             Rectangle rect = spreadSheetLog.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-            toolTipAttention.Show(Fish.Resources.Interface.Messages.LogInstruction, this,
+            toolTipAttention.Show(Wild.Resources.Interface.Messages.LogInstruction, this,
                 rect.Left + spreadSheetLog.Left, rect.Bottom + spreadSheetLog.Top, 5000);
         }
 
@@ -543,57 +450,46 @@ namespace Mayfly.Fish.Explorer
 
         #region Log menu logics
 
-        private void contextMenuStripLog_Opening(object sender, CancelEventArgs e)
-        {
+        private void contextMenuStripLog_Opening(object sender, CancelEventArgs e) {
             ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() &&
-                Wild.Survey.ContainsLog(Clipboard.GetText());
+                Survey.ContainsLog(Clipboard.GetText());
         }
 
-        private void ToolStripMenuItemIndividuals_Click(object sender, EventArgs e)
-        {
+        private void ToolStripMenuItemIndividuals_Click(object sender, EventArgs e) {
             spreadSheetLog.EndEdit();
 
-            foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
-            {
+            foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows) {
                 OpenIndividuals(gridRow);
             }
         }
 
-        private void ToolStripMenuItemCut_Click(object sender, EventArgs e)
-        {
+        private void ToolStripMenuItemCut_Click(object sender, EventArgs e) {
             ToolStripMenuItemCopy_Click(sender, e);
             ToolStripMenuItemDelete_Click(sender, e);
         }
 
-        private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
-        {
-            Wild.Survey clipData = new Wild.Survey();
-            Wild.Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
+        private void ToolStripMenuItemCopy_Click(object sender, EventArgs e) {
+            Survey clipData = new Survey();
+            Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows)
-            {
-                if (selectedRow.IsNewRow)
-                {
+            foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows) {
+                if (selectedRow.IsNewRow) {
                     continue;
                 }
 
-                Wild.Survey.LogRow clipLogRow = LogRow(clipData, selectedRow);
+                Survey.LogRow clipLogRow = LogRow(clipData, selectedRow);
 
-                if (selectedRow.Cells[ColumnID.Index].Value != null)
-                {
-                    Wild.Survey.LogRow logRow = Data.Log.FindByID((int)selectedRow.Cells[ColumnID.Index].Value);
+                if (selectedRow.Cells[ColumnID.Index].Value != null) {
+                    Survey.LogRow logRow = Data.Log.FindByID((int)selectedRow.Cells[ColumnID.Index].Value);
 
-                    if (logRow != null)
-                    {
-                        foreach (Wild.Survey.IndividualRow individualRow in logRow.GetIndividualRows())
-                        {
+                    if (logRow != null) {
+                        foreach (Survey.IndividualRow individualRow in logRow.GetIndividualRows()) {
                             individualRow.CopyTo(clipLogRow);
                         }
 
-                        foreach (Wild.Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows())
-                        {
-                            Wild.Survey.StratifiedRow clipStratifiedRow = clipData.Stratified.NewStratifiedRow();
+                        foreach (Survey.StratifiedRow stratifiedRow in logRow.GetStratifiedRows()) {
+                            Survey.StratifiedRow clipStratifiedRow = clipData.Stratified.NewStratifiedRow();
 
                             clipStratifiedRow.Class = stratifiedRow.Class;
                             if (!stratifiedRow.IsCountNull()) clipStratifiedRow.Count = stratifiedRow.Count;
@@ -607,35 +503,28 @@ namespace Mayfly.Fish.Explorer
             Clipboard.SetText(clipData.GetXml());
         }
 
-        private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
-        {
-            Wild.Survey clipData = new Wild.Survey();
+        private void ToolStripMenuItemPaste_Click(object sender, EventArgs e) {
+            Survey clipData = new Survey();
             clipData.ReadXml(new StringReader(Clipboard.GetText()));
 
             int rowIndex = spreadSheetLog.SelectedRows[0].Index;
 
-            foreach (Wild.Survey.LogRow clipLogRow in clipData.Log)
-            {
+            foreach (Survey.LogRow clipLogRow in clipData.Log) {
                 // Copy from Clipboard Data to local Data
-                Wild.Survey.LogRow logRow = Data.Log.NewLogRow();
+                Survey.LogRow logRow = Data.Log.NewLogRow();
                 if (!clipLogRow.IsQuantityNull()) logRow.Quantity = clipLogRow.Quantity;
                 if (!clipLogRow.IsMassNull()) logRow.Mass = clipLogRow.Mass;
                 logRow.CardRow = Data.Solitary;
 
-                TaxonomicIndex.TaxonRow clipSpeciesRow = Fish.UserSettings.SpeciesIndex
-                    .FindByName(clipLogRow.DefinitionRow.Taxon);
+                TaxonomicIndex.TaxonRow clipSpeciesRow = ReaderSettings.TaxonomicIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
 
-                if (clipSpeciesRow == null)
-                {
-                    Wild.Survey.DefinitionRow newSpeciesRow = Data.Definition.AddDefinitionRow(
+                if (clipSpeciesRow == null) {
+                    Survey.DefinitionRow newSpeciesRow = Data.Definition.AddDefinitionRow(
                         clipLogRow.DefinitionRow.Rank, clipLogRow.DefinitionRow.Taxon);
 
                     logRow.DefID = newSpeciesRow.ID;
-                }
-                else
-                {
-                    if (Data.Definition.FindByName(clipSpeciesRow.Name) == null)
-                    {
+                } else {
+                    if (Data.Definition.FindByName(clipSpeciesRow.Name) == null) {
                         Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name);
                     }
                     logRow.DefID = clipSpeciesRow.ID;
@@ -643,14 +532,12 @@ namespace Mayfly.Fish.Explorer
 
                 Data.Log.AddLogRow(logRow);
 
-                foreach (Wild.Survey.IndividualRow clipIndividualRow in clipLogRow.GetIndividualRows())
-                {
+                foreach (Survey.IndividualRow clipIndividualRow in clipLogRow.GetIndividualRows()) {
                     clipIndividualRow.CopyTo(logRow);
                 }
 
-                foreach (Wild.Survey.StratifiedRow clipStratifiedRow in clipData.Stratified)
-                {
-                    Wild.Survey.StratifiedRow stratifiedRow = Data.Stratified.NewStratifiedRow();
+                foreach (Survey.StratifiedRow clipStratifiedRow in clipData.Stratified) {
+                    Survey.StratifiedRow stratifiedRow = Data.Stratified.NewStratifiedRow();
                     stratifiedRow.Class = clipStratifiedRow.Class;
                     if (!clipStratifiedRow.IsCountNull()) stratifiedRow.Count = clipStratifiedRow.Count;
                     stratifiedRow.LogRow = logRow;
@@ -659,8 +546,7 @@ namespace Mayfly.Fish.Explorer
 
                 InsertLogRow(logRow, rowIndex);
 
-                if (rowIndex < spreadSheetLog.RowCount - 1)
-                {
+                if (rowIndex < spreadSheetLog.RowCount - 1) {
                     rowIndex++;
                 }
             }
@@ -670,11 +556,9 @@ namespace Mayfly.Fish.Explorer
             Clipboard.Clear();
         }
 
-        private void ToolStripMenuItemDelete_Click(object sender, EventArgs e)
-        {
+        private void ToolStripMenuItemDelete_Click(object sender, EventArgs e) {
             int rowsToDelete = spreadSheetLog.SelectedRows.Count;
-            while (rowsToDelete > 0)
-            {
+            while (rowsToDelete > 0) {
                 Clear(spreadSheetLog.SelectedRows[0]);
                 spreadSheetLog.Rows.Remove(spreadSheetLog.SelectedRows[0]);
                 rowsToDelete--;
@@ -684,10 +568,8 @@ namespace Mayfly.Fish.Explorer
             UpdateStatus();
         }
 
-        private void ToolStripMenuItemSpeciesKey_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows)
-            {
+        private void ToolStripMenuItemSpeciesKey_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow selectedRow in spreadSheetLog.SelectedRows) {
                 speciesLogger.FindInKey(selectedRow);
             }
         }

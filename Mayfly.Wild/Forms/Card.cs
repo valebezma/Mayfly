@@ -138,8 +138,9 @@ namespace Mayfly.Wild
             if (cleared != null) cleared.Invoke(this, EventArgs.Empty);
         }
 
-        private void load(string filename) {
+        public void load(string _filename) {
             clear();
+            filename = _filename;
             data.Read(filename);
 
             #region Header
@@ -254,11 +255,6 @@ namespace Mayfly.Wild
                 item.Click += (o, e) => {
                     comboBoxSampler.SelectedItem = SamplersIndex.Sampler.FindByID(eqpRow.SmpID);
                     if (equipmentSelected != null) equipmentSelected.Invoke(this, new EquipmentEventArgs(eqpRow));
-                    //if (!unitRow.IsMeshNull()) textBoxMesh.Text = unitRow.Mesh.ToString();
-                    //if (!unitRow.IsHookNull()) textBoxHook.Text = unitRow.Hook.ToString();
-                    //if (!unitRow.IsLengthNull()) textBoxLength.Text = unitRow.Length.ToString();
-                    //if (!unitRow.IsHeightNull()) textBoxHeight.Text = unitRow.Height.ToString();
-                    //if (!unitRow.IsOpeningNull()) textBoxOpening.Text = unitRow.Opening.ToString();
                 };
                 contextEquipment.Items.Add(item);
             }
@@ -311,6 +307,20 @@ namespace Mayfly.Wild
             }
         }
 
+        private void saveSampler(Survey.EquipmentRow eqpRow) {
+
+            Survey _data = (Survey)eqpRow.Table.DataSet;
+            foreach (Survey.VirtueRow indexVirtueRow in SamplersIndex.Virtue) {
+                Survey.VirtueRow virtueRow = _data.Virtue.AddVirtueRow(indexVirtueRow.Name, indexVirtueRow.Notation);
+                TextBox tb = tabPageSampler.Controls.Find("textBox" + virtueRow.Name, true)?[0] as TextBox;
+                if (tb == null) continue;
+                if (!tb.Enabled) continue;
+                if (tb.Text.IsDoubleConvertible()) {
+                    _data.EquipmentVirtue.AddEquipmentVirtueRow(data.Solitary.EquipmentRow, virtueRow, double.Parse(tb.Text));
+                }
+            }
+        }
+
         private void saveSampler() {
 
             data.Virtue.Clear();
@@ -320,11 +330,22 @@ namespace Mayfly.Wild
 
             if (SelectedSampler == null) {
                 data.Solitary.SetEqpIDNull();
+                ReaderSettings.SelectedSampler = null;
                 return;
             }
 
             Survey.SamplerRow sampleRow = SelectedSampler.CopyTo(data.Sampler);
             data.Solitary.EquipmentRow = data.Equipment.AddEquipmentRow(sampleRow);
+            saveSampler(data.Solitary.EquipmentRow);
+
+            if (Equipment.Equipment.FindDuplicate(data.Solitary.EquipmentRow) == null) {
+                Survey.SamplerRow eqpSamplerRow = Equipment.Sampler.FindByID(SelectedSampler.ID);
+                if (eqpSamplerRow == null) {
+                    SelectedSampler.CopyTo(Equipment.Sampler);
+                }
+                saveSampler(Equipment.Equipment.AddEquipmentRow(eqpSamplerRow));
+            }
+
             if (equipmentSaved != null) equipmentSaved.Invoke(this, new EquipmentEventArgs(data.Solitary.EquipmentRow));
             loadEquipment();
         }
@@ -655,6 +676,35 @@ namespace Mayfly.Wild
                     i--;
                 }
             }
+        }
+
+        private void comboBoxSampler_SelectedIndexChanged(object sender, EventArgs e) {
+
+            foreach (Control ctrl in tabPageSampler.Controls) {
+                if (ctrl is TextBox tb) {
+
+                    tb.Enabled = false;
+                    foreach (string virtue in SelectedSampler.GetVirtues()) {
+                        if (tb.Name == "textBox" + virtue) {
+                            tb.Enabled = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (ctrl is Label lb) {
+
+                    lb.Enabled = false;
+                    foreach (string virtue in SelectedSampler.GetVirtues()) {
+                        if (lb.Name == "label" + virtue) {
+                            lb.Enabled = true;
+                            break;
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 }

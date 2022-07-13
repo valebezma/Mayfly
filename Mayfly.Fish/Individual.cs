@@ -10,6 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Data;
 using Mayfly.Benthos;
+using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Fish
 {
@@ -784,7 +785,7 @@ namespace Mayfly.Fish
 
             if (gridRow.Cells[ColumnTrpSpecies.Index].Value is TaxonomicIndex.TaxonRow tr)
             {
-                Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
+                Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(tr.Name);
                 if (existingSpeciesRow == null)
                 {
                     existingSpeciesRow = data.Definition.AddDefinitionRow(tr.Rank, tr.Name);
@@ -802,7 +803,7 @@ namespace Mayfly.Fish
                     Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null)
                     {
-                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(s);
                     }
                     result.DefID = existingSpeciesRow.ID;
                 }
@@ -888,7 +889,7 @@ namespace Mayfly.Fish
             if (Consumed != null)
             {
                 TaxonomicIndex localIndex = Consumed.GetSpeciesKey();
-                speciesTrophics.UpdateIndex(localIndex, UserSettings.SpeciesAutoExpandVisual);
+                speciesTrophics.UpdateIndex(localIndex, SpeciesAutoExpandVisual);
             }
 
         }
@@ -994,7 +995,7 @@ namespace Mayfly.Fish
                     Wild.Survey.DefinitionRow existingSpeciesRow = data.Definition.FindByName(s);
                     if (existingSpeciesRow == null)
                     {
-                        existingSpeciesRow = data.Definition.AddDefinitionRow(TaxonomicRank.Species, s);
+                        existingSpeciesRow = data.Definition.AddDefinitionRow(s);
                     }
                     result.DefID = existingSpeciesRow.ID;
                 }
@@ -1167,7 +1168,7 @@ namespace Mayfly.Fish
             if (Infection != null)
             {
                 TaxonomicIndex localIndex = Infection.GetSpeciesKey();
-                speciesParasites.UpdateIndex(localIndex, UserSettings.SpeciesAutoExpandVisual);
+                speciesParasites.UpdateIndex(localIndex, SpeciesAutoExpandVisual);
             }
 
         }
@@ -1481,17 +1482,17 @@ namespace Mayfly.Fish
 
                 TaxonomicIndex.TaxonRow clipSpeciesRow = UserSettings.DietIndex.FindByName(clipLogRow.DefinitionRow.Taxon);
 
-                Wild.Survey.DefinitionRow newSpeciesRow = (clipSpeciesRow == null ?
-                    Data.Definition.AddDefinitionRow(TaxonomicRank.Species, clipLogRow.DefinitionRow.Taxon) :
+                Survey.DefinitionRow newSpeciesRow = (clipSpeciesRow == null ?
+                    Data.Definition.AddDefinitionRow(clipLogRow.DefinitionRow.Taxon) :
                     Data.Definition.AddDefinitionRow(clipSpeciesRow.Rank, clipSpeciesRow.Name));
 
                 logRow.DefID = newSpeciesRow.ID;
 
                 Consumed.Log.AddLogRow(logRow);
 
-                foreach (Wild.Survey.IndividualRow clipIndividualRow in clipData.Individual)
+                foreach (Survey.IndividualRow clipIndividualRow in clipData.Individual)
                 {
-                    Wild.Survey.IndividualRow individualRow = Consumed.Individual.NewIndividualRow();
+                    Survey.IndividualRow individualRow = Consumed.Individual.NewIndividualRow();
                     if (!clipIndividualRow.IsCommentsNull()) individualRow.Comments = clipIndividualRow.Comments;
                     if (!clipIndividualRow.IsMassNull()) individualRow.Mass = clipIndividualRow.Mass;
                     individualRow.LogRow = logRow;
@@ -1597,9 +1598,9 @@ namespace Mayfly.Fish
 
         private void buttonLoadData_Click(object sender, EventArgs e)
         {
-            if (Wild.UserSettings.Interface.OpenDialog.ShowDialog() == DialogResult.OK)
+            if (Interface.OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                foreach (string filename in Wild.UserSettings.Interface.OpenDialog.FileNames)
+                foreach (string filename in Interface.OpenDialog.FileNames)
                 {
                     LoadTrophicData(filename);
                 }

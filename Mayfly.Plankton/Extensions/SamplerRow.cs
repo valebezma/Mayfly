@@ -9,7 +9,7 @@ namespace Mayfly.Plankton
 {
     public static class SamplerRowExtensions
     {
-        public static PlanktonSamplerType GetSamplerType(this Samplers.SamplerRow samplerRow)
+        public static PlanktonSamplerType GetSamplerType(this Survey.SamplerRow samplerRow)
         {
             if (samplerRow == null) return PlanktonSamplerType.None;
             if (samplerRow.IsTypeNull()) return PlanktonSamplerType.None;

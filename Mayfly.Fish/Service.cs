@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using Mayfly;
 using System.Resources;
 using Meta.Numerics;
+using static Mayfly.UserSettings;
+using System.IO;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
@@ -13,14 +16,14 @@ namespace Mayfly.Fish
     {
         public static string Opening;
 
-        public static Samplers.SamplerRow Sampler(int samplerID)
+        public static Survey.SamplerRow Sampler(int samplerID)
         {
-            return UserSettings.SamplersIndex.Sampler.FindByID(samplerID);
+            return ReaderSettings.SamplersIndex.Sampler.FindByID(samplerID);
         }
 
         public static double DefaultOpening()
         {
-            object result = UserSettings.GetValue(UserSettings.Path, nameof(Opening), 600);
+            object result = GetValue(ReaderSettings.FeatureKey, nameof(Opening), 600);
 
             if (result == null)
             {
@@ -34,7 +37,7 @@ namespace Mayfly.Fish
 
         public static double DefaultOpening(int samplerID)
         {
-            object result = UserSettings.GetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName, 600);
+            object result = GetValue(ReaderSettings.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 600);
 
             if (result == null)
             {
@@ -48,7 +51,7 @@ namespace Mayfly.Fish
 
         public static void SaveOpening(int samplerID, double value)
         {
-            UserSettings.SetValue(UserSettings.Path, nameof(Opening), Sampler(samplerID).ShortName, 
+            SetValue(ReaderSettings.FeatureKey, nameof(Opening), Sampler(samplerID).ShortName, 
                 (int)(value * 100));
         }
 
@@ -69,7 +72,11 @@ namespace Mayfly.Fish
 
         public static void SaveEquipment()
         {
-            UserSettings.Equipment.WriteXml(System.IO.Path.Combine(Mayfly.IO.UserFolder, "equipment.ini"));
+            ReaderSettings.Equipment.SetAttributable();
+            string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", ReaderSettings.Feature.ToLowerInvariant()));
+            if (File.Exists(path)) {
+                ReaderSettings.Equipment.ReadXml(path);
+            }
         }
     }
 }

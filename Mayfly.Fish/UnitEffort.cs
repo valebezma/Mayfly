@@ -161,4 +161,11 @@ namespace Mayfly.Fish
         Volume,
         Efforts
     }
+
+    [Flags]
+    public enum EffortValueSource {
+        Time = 1,
+        Velocity = 2,
+        Exposure = 3
+    }
 }

@@ -606,9 +606,6 @@
     <None Include="interface\weatherevts.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Survey.xss">
-      <DependentUpon>Survey.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Substrate.xsc">
       <DependentUpon>Substrate.xsd</DependentUpon>
@@ -620,6 +617,9 @@
     </None>
     <None Include="Substrate.xss">
       <DependentUpon>Substrate.xsd</DependentUpon>
+    </None>
+    <None Include="Survey.xss">
+      <DependentUpon>Survey.xsd</DependentUpon>
     </None>
     <None Include="WeatherEvents.xsc">
       <DependentUpon>WeatherEvents.xsd</DependentUpon>

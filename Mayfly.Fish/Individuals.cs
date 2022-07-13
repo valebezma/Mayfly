@@ -13,14 +13,16 @@ using Mayfly.Extensions;
 using Mayfly.Controls;
 using Mayfly.Species;
 using System.Collections;
+using static Mayfly.Wild.ReaderSettings;
+using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish
 {
     public partial class Individuals : Form
     {
-        public Wild.Survey.LogRow LogRow;
+        public Survey.LogRow LogRow;
 
-        private Wild.Survey Data { get; set; }
+        private Survey Data { get; set; }
 
         public bool IsChanged;
 
@@ -134,7 +136,7 @@ namespace Mayfly.Fish
         {
             get
             {
-                List<string> result = new List<string>(UserSettings.AddtVariables);
+                List<string> result = new List<string>(AddtVariables);
 
                 foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
                 {
@@ -147,7 +149,7 @@ namespace Mayfly.Fish
             }
         }
 
-        public string[] CurrentVariables
+        private string[] currentVariables
         {
             get
             {
@@ -168,7 +170,7 @@ namespace Mayfly.Fish
 
         private int PrevDetailedQuantity;
 
-        List<Wild.Survey.IndividualRow> redefinedSpecimen = new List<Wild.Survey.IndividualRow>();
+        List<Survey.IndividualRow> redefinedSpecimen = new List<Survey.IndividualRow>();
 
 
 
@@ -177,7 +179,7 @@ namespace Mayfly.Fish
             InitializeComponent();
             Log.Write("Open individuals form.");
 
-            stratifiedSample.Interval = UserSettings.DefaultStratifiedInterval;
+            stratifiedSample.Interval = DefaultStratifiedInterval;
 
             ColumnLength.ValueType = typeof(double);
             ColumnMass.ValueType = typeof(double);
@@ -197,13 +199,13 @@ namespace Mayfly.Fish
 
             numericUpDownMass.Enabled =
                 numericUpDownQuantity.Enabled = 
-                !UserSettings.FixTotals;
+                !FixTotals;
         }
 
-        public Individuals(Wild.Survey.LogRow logRow) : this()
+        public Individuals(Survey.LogRow logRow) : this()
         {
             LogRow = logRow;
-            Data = (Wild.Survey)LogRow.Table.DataSet;
+            Data = (Survey)LogRow.Table.DataSet;
 
             Text = string.Format(Wild.Resources.Interface.Interface.IndLog,
                     logRow.IsDefIDNull() ? Species.Resources.Interface.UnidentifiedTitle :
@@ -239,7 +241,7 @@ namespace Mayfly.Fish
 
             spreadSheetLog.Rows.Clear();
 
-            Wild.Survey.IndividualRow[] individualRows = LogRow.GetIndividualRows();
+            Survey.IndividualRow[] individualRows = LogRow.GetIndividualRows();
 
             if (individualRows.Length == 0)
             {
@@ -254,12 +256,12 @@ namespace Mayfly.Fish
             }
             else
             {
-                foreach (Wild.Survey.VariableRow variableRow in Data.Variable.Rows)
+                foreach (Survey.VariableRow variableRow in Data.Variable.Rows)
                 {
                     spreadSheetLog.InsertColumn(variableRow.Variable, spreadSheetLog.ColumnCount - 1);
                 }
 
-                foreach (Wild.Survey.IndividualRow individualRow in individualRows)
+                foreach (Survey.IndividualRow individualRow in individualRows)
                 {
                     InsertIndividualRow(individualRow);
                 }
@@ -274,7 +276,7 @@ namespace Mayfly.Fish
                 }
             }
 
-            Wild.Survey.StratifiedRow[] stratifiedRows = LogRow.GetStratifiedRows();
+            Survey.StratifiedRow[] stratifiedRows = LogRow.GetStratifiedRows();
 
             if (stratifiedRows.Length > 0)
             {
@@ -284,7 +286,7 @@ namespace Mayfly.Fish
                 stratifiedSample.Interval = LogRow.Interval;
                 stratifiedSample.Reset(min, max, true);
 
-                foreach (Wild.Survey.StratifiedRow stratifiedRow in stratifiedRows)
+                foreach (Survey.StratifiedRow stratifiedRow in stratifiedRows)
                 {
                     stratifiedSample.FindCounter(stratifiedRow.Class).Count = stratifiedRow.Count;
                 }
@@ -317,7 +319,7 @@ namespace Mayfly.Fish
 
 
             // Insert domestic
-            foreach (Wild.Survey.LogRow logRow in LogRow.CardRow.GetLogRows())
+            foreach (Survey.LogRow logRow in LogRow.CardRow.GetLogRows())
             {
                 if (logRow == LogRow) continue;
 
@@ -329,10 +331,10 @@ namespace Mayfly.Fish
 
             //// Insert index
             //contextRedefineAll.DropDownItems.Clear();
-            //contextRedefineAll.Visible = UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength;
-            //if (UserSettings.SpeciesIndex.Species.Count <= Species.UserSettings.AllowableSpeciesListLength)
+            //contextRedefineAll.Visible = SpeciesIndex.Species.Count <= Species.AllowableSpeciesListLength;
+            //if (SpeciesIndex.Species.Count <= Species.AllowableSpeciesListLength)
             //{
-            //    foreach (SpeciesKey.TaxonRow speciesRow in UserSettings.SpeciesIndex.Species.Rows)
+            //    foreach (SpeciesKey.TaxonRow speciesRow in SpeciesIndex.Species.Rows)
             //    {
             //        ToolStripItem speciesItem = new ToolStripMenuItem();
             //        speciesItem.Tag = speciesRow;
@@ -344,7 +346,7 @@ namespace Mayfly.Fish
             //    contextRedefineAll.SortItems();
             //}
 
-            //foreach (SpeciesKey.BaseRow baseRow in UserSettings.SpeciesIndex.Base.Rows)
+            //foreach (SpeciesKey.BaseRow baseRow in SpeciesIndex.Base.Rows)
             //{
             //    ToolStripMenuItem baseItem = new ToolStripMenuItem();
             //    baseItem.Text = baseRow.BaseName;
@@ -373,11 +375,11 @@ namespace Mayfly.Fish
             //}
         }
 
-        private void RedefineSelected(Wild.Survey.LogRow logRow)
+        private void RedefineSelected(Survey.LogRow logRow)
         {
             foreach (DataGridViewRow gridRow in spreadSheetLog.SelectedRows)
             {
-                Wild.Survey.IndividualRow indRow = IndividualRow(gridRow);
+                Survey.IndividualRow indRow = IndividualRow(gridRow);
                 redefinedSpecimen.Add(indRow);
                 indRow.LogRow = logRow;
                 if (indRow.IsCommentsNull()) { indRow.Comments = string.Format(Wild.Resources.Interface.Interface.RedefineComment, LogRow.DefinitionRow.Taxon); }
@@ -407,7 +409,7 @@ namespace Mayfly.Fish
 
         private void redefineDomesticSpecies_Click(object sender, EventArgs e)
         {
-            RedefineSelected((Wild.Survey.LogRow)((ToolStripMenuItem)sender).Tag);
+            RedefineSelected((Survey.LogRow)((ToolStripMenuItem)sender).Tag);
         }
 
         private void redefineReferenceSpecies_Click(object sender, EventArgs e)
@@ -430,14 +432,14 @@ namespace Mayfly.Fish
             PrevDetailedMass = DetailedMass;
             PrevDetailedQuantity = DetailedQuantity;
 
-            if (UserSettings.FixTotals)
+            if (ReaderSettings.FixTotals)
             {
                 Mass = DetailedMass / 1000;
                 Quantity = DetailedQuantity;
             }
             else
             {
-                if (UserSettings.AutoIncreaseBio)
+                if (AutoIncreaseBio)
                 {
                     if (!double.IsNaN(DetailedMass) && DetailedMass > Mass * 1000)
                     {
@@ -455,12 +457,12 @@ namespace Mayfly.Fish
                     pictureBoxWarningMass.Visible = (DetailedMass > (1000 * Mass));
                 }
 
-                if (UserSettings.AutoDecreaseBio && MassDifference < 0)
+                if (AutoDecreaseBio && MassDifference < 0)
                 {
                     Mass += (MassDifference / 1000);
                 }
 
-                if (UserSettings.AutoDecreaseBio && QuantityDifference < 0)
+                if (AutoDecreaseBio && QuantityDifference < 0)
                 {
                     Quantity += QuantityDifference;
                 }
@@ -487,7 +489,7 @@ namespace Mayfly.Fish
         {
             if (gridRow.Cells[ColumnID.Index].Value != null)
             {
-                Wild.Survey.IndividualRow individualRow =
+                Survey.IndividualRow individualRow =
                     Data.Individual.FindByID(
                     (int)gridRow.Cells[ColumnID.Index].Value);
 
@@ -534,9 +536,9 @@ namespace Mayfly.Fish
                 contextMenuStripAdd.Items.RemoveAt(7);
             }
 
-            if (UserSettings.AddtVariables != null)
+            if (AddtVariables != null)
             {
-                foreach (string addtVar in UserSettings.AddtVariables)
+                foreach (string addtVar in AddtVariables)
                 {
                     ToolStripMenuItem newVarMenu = new ToolStripMenuItem(addtVar);
                     newVarMenu.Click += new EventHandler(CustomVar_Click);
@@ -547,9 +549,9 @@ namespace Mayfly.Fish
 
         private void InsertCurrentVariableColumns()
         {
-            if (UserSettings.CurrentVariables != null)
+            if (CurrentVariables != null)
             {
-                foreach (string currVar in UserSettings.CurrentVariables)
+                foreach (string currVar in CurrentVariables)
                 {
                     spreadSheetLog.InsertColumn(currVar, spreadSheetLog.ColumnCount - 1);
                 }
@@ -576,7 +578,7 @@ namespace Mayfly.Fish
 
                 foreach (SizeGroup sizeGroup in stratifiedSample.SizeGroups)
                 {
-                    Wild.Survey.StratifiedRow stratifiedRow = Data.Stratified.FindByLogIDClass(LogRow.ID, sizeGroup.LeftEndpoint);
+                    Survey.StratifiedRow stratifiedRow = Data.Stratified.FindByLogIDClass(LogRow.ID, sizeGroup.LeftEndpoint);
                     if (stratifiedRow == null)
                     {
                         if (sizeGroup.Count > 0)
@@ -663,14 +665,14 @@ namespace Mayfly.Fish
             return gridRow.Cells[ColumnID.Index].Value == null;
         }
 
-        private Wild.Survey.IndividualRow IndividualRow(DataGridViewRow gridRow)
+        private Survey.IndividualRow IndividualRow(DataGridViewRow gridRow)
         {
             return IndividualRow(Data, LogRow, gridRow);
         }
 
-        private Wild.Survey.IndividualRow IndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
+        private Survey.IndividualRow IndividualRow(Survey data, Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Wild.Survey.IndividualRow individualRow;
+            Survey.IndividualRow individualRow;
 
             if (gridRow.Cells[ColumnID.Index].Value != null)
             {
@@ -801,14 +803,14 @@ namespace Mayfly.Fish
             return individualRow;
         }
 
-        private Wild.Survey.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
+        private Survey.IndividualRow SaveIndividualRow(DataGridViewRow gridRow)
         {
             return SaveIndividualRow(Data, LogRow, gridRow);
         }
 
-        private Wild.Survey.IndividualRow SaveIndividualRow(Wild.Survey data, Wild.Survey.LogRow logRow, DataGridViewRow gridRow)
+        private Survey.IndividualRow SaveIndividualRow(Survey data, Survey.LogRow logRow, DataGridViewRow gridRow)
         {
-            Wild.Survey.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
+            Survey.IndividualRow individualRow = IndividualRow(data, logRow, gridRow);
 
             if (data.Individual.Rows.IndexOf(individualRow) == -1)
             {
@@ -824,7 +826,7 @@ namespace Mayfly.Fish
             return individualRow;
         }
 
-        private void SaveAddtValues(Wild.Survey.IndividualRow individualRow, DataGridViewRow gridRow)
+        private void SaveAddtValues(Survey.IndividualRow individualRow, DataGridViewRow gridRow)
         {
             foreach (DataGridViewColumn gridColumn in spreadSheetLog.GetInsertedColumns())
             {
@@ -839,7 +841,7 @@ namespace Mayfly.Fish
             }
         }
 
-        private DataGridViewRow InsertIndividualRow(Wild.Survey.IndividualRow individualRow)
+        private DataGridViewRow InsertIndividualRow(Survey.IndividualRow individualRow)
         {
             DataGridViewRow gridRow = new DataGridViewRow();
             gridRow.CreateCells(spreadSheetLog);
@@ -849,7 +851,7 @@ namespace Mayfly.Fish
             return gridRow;
         }
 
-        private DataGridViewRow FindIndividualRow(Wild.Survey.IndividualRow individualRow)
+        private DataGridViewRow FindIndividualRow(Survey.IndividualRow individualRow)
         {
             foreach (DataGridViewRow gridRow in spreadSheetLog.Rows)
             {
@@ -864,12 +866,12 @@ namespace Mayfly.Fish
             return null;
         }
 
-        private void UpdateIndividualRow(Wild.Survey.IndividualRow individualRow)
+        private void UpdateIndividualRow(Survey.IndividualRow individualRow)
         {
             UpdateIndividualRow(FindIndividualRow(individualRow), individualRow);
         }
 
-        private void UpdateIndividualRow(DataGridViewRow gridRow, Wild.Survey.IndividualRow individualRow)
+        private void UpdateIndividualRow(DataGridViewRow gridRow, Survey.IndividualRow individualRow)
         {
             if (individualRow.IsLengthNull()) { }
             else
@@ -952,7 +954,7 @@ namespace Mayfly.Fish
                 gridRow.Cells[ColumnComments.Index].Value = individualRow.Comments;
             }
 
-            foreach (Wild.Survey.ValueRow valueRow in individualRow.GetValueRows())
+            foreach (Survey.ValueRow valueRow in individualRow.GetValueRows())
             {
                 if (!valueRow.IsValueNull())
                 {
@@ -962,16 +964,16 @@ namespace Mayfly.Fish
             }
         }
 
-        private Wild.Survey.IndividualRow[] GetIndividuals(IList rows)
+        private Survey.IndividualRow[] GetIndividuals(IList rows)
         {
             spreadSheetLog.EndEdit();
-            List<Wild.Survey.IndividualRow> result = new List<Wild.Survey.IndividualRow>();
+            List<Survey.IndividualRow> result = new List<Survey.IndividualRow>();
 
             foreach (DataGridViewRow gridRow in rows)
             {
                 if (!gridRow.Visible) continue;
                 if (gridRow.IsNewRow) continue;
-                Wild.Survey.IndividualRow individualRow = IndividualRow(gridRow);
+                Survey.IndividualRow individualRow = IndividualRow(gridRow);
                 if (individualRow == null) continue;
 
                 result.Add(individualRow);
@@ -1201,7 +1203,7 @@ namespace Mayfly.Fish
 
         private void spreadSheetLog_ColumnRenamed(object sender, GridColumnRenameEventArgs e)
         {
-            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.PreviousCaption);
+            Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.PreviousCaption);
 
             if (variableRow != null)
             {
@@ -1215,13 +1217,13 @@ namespace Mayfly.Fish
         {
             Width -= e.Column.Width;
 
-            Wild.Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
+            Survey.VariableRow variableRow = Data.Variable.FindByVarName(e.Column.HeaderText);
 
             if (variableRow != null)
             {
                 for (int i = 0; i < Data.Value.Count; i++)
                 {
-                    Wild.Survey.ValueRow valueRow = Data.Value[i];
+                    Survey.ValueRow valueRow = Data.Value[i];
                     if (valueRow.VariableRow == variableRow &&
                         valueRow.IndividualRow.LogRow == LogRow)
                     {
@@ -1241,7 +1243,7 @@ namespace Mayfly.Fish
         private void contextMenuStripInd_Opening(object sender, CancelEventArgs e)
         {
             ToolStripMenuItemPaste.Enabled = Clipboard.ContainsText() &&
-                Wild.Survey.ContainsIndividuals(Clipboard.GetText());
+                Survey.ContainsIndividuals(Clipboard.GetText());
         }
 
         private void ToolStripMenuItemInd_Click(object sender, EventArgs e)
@@ -1300,15 +1302,15 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
-            Wild.Survey clipData = new Wild.Survey();
+            Survey clipData = new Survey();
 
-            Wild.Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
+            Survey.CardRow clipCardRow = clipData.Card.NewCardRow();
             clipData.Card.AddCardRow(clipCardRow);
 
-            Wild.Survey.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
+            Survey.DefinitionRow clipSpeciesRow = clipData.Definition.NewDefinitionRow();
             clipData.Definition.AddDefinitionRow(clipSpeciesRow);
 
-            Wild.Survey.LogRow clipLogRow = clipData.Log.NewLogRow();
+            Survey.LogRow clipLogRow = clipData.Log.NewLogRow();
             clipLogRow.CardRow = clipCardRow;
             clipLogRow.DefinitionRow = clipSpeciesRow;
             clipData.Log.AddLogRow(clipLogRow);
@@ -1324,17 +1326,17 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemPaste_Click(object sender, EventArgs e)
         {
-            Wild.Survey clipData = Wild.Survey.FromClipboard();
+            Survey clipData = Survey.FromClipboard();
 
             // If clipData contains Deep tables then insert data and rows 
             // otherwise insert just rows
 
-            foreach (Wild.Survey.VariableRow clipVariableRow in clipData.Variable.Rows)
+            foreach (Survey.VariableRow clipVariableRow in clipData.Variable.Rows)
             {
                 spreadSheetLog.InsertColumn(clipVariableRow.Variable);
             }
 
-            foreach (Wild.Survey.IndividualRow clipIndividualRow in clipData.Individual)
+            foreach (Survey.IndividualRow clipIndividualRow in clipData.Individual)
             {
                 InsertIndividualRow(clipIndividualRow);
             }
@@ -1385,9 +1387,9 @@ namespace Mayfly.Fish
 
         private void ToolStripMenuItemSaveVars_Click(object sender, EventArgs e)
         {
-            UserSettings.AddtVariables = AdditionalVariables;
+            AddtVariables = AdditionalVariables;
             AddVariableMenuItems();
-            UserSettings.CurrentVariables = CurrentVariables;
+            CurrentVariables = currentVariables;
         }
 
         #endregion
@@ -1422,15 +1424,15 @@ namespace Mayfly.Fish
                 }
                 else if (b == tdbDiscard)
                 {
-                    foreach (Wild.Survey.IndividualRow indRow in redefinedSpecimen)
+                    foreach (Survey.IndividualRow indRow in redefinedSpecimen)
                     {
-                        Wild.Survey.LogRow prevLog = indRow.LogRow;
+                        Survey.LogRow prevLog = indRow.LogRow;
 
                         indRow.LogRow = LogRow;
 
                         if (prevLog.Quantity == 1)
                         {
-                            Card card = (Card)this.Owner;
+                            Card card = (Card)Owner;
 
                             Individuals indlog = card.GetOpenedIndividuals(prevLog);
                             if (indlog != null) { indlog.Hide(); }

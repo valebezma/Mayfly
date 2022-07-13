@@ -1009,18 +1009,18 @@ namespace Mayfly.ManualLicenser
                 {
                     data.Solitary.Volume = Convert.ToDouble(sheet.Cells[8, 2].Value);
 
-                    if (sheet.Cells[8, 2].Formula.Contains("0.125^2"))
-                    {
-                        data.Solitary.Sampler = 1;
-                    }
-                    else if (sheet.Cells[8, 2].Formula.Contains("0.06^2"))
-                    {
-                        data.Solitary.Sampler = 5;
-                    }
-                    else
-                    {
-                        data.Solitary.Sampler = 6;
-                    }
+                    //if (sheet.Cells[8, 2].Formula.Contains("0.125^2"))
+                    //{
+                    //    data.Solitary.Sampler = 1;
+                    //}
+                    //else if (sheet.Cells[8, 2].Formula.Contains("0.06^2"))
+                    //{
+                    //    data.Solitary.Sampler = 5;
+                    //}
+                    //else
+                    //{
+                    //    data.Solitary.Sampler = 6;
+                    //}
                 }
 
                 if (sheet.Cells[5, 2].Value != null) data.Solitary.Depth = Convert.ToDouble(sheet.Cells[5, 2].Value);
@@ -1053,7 +1053,7 @@ namespace Mayfly.ManualLicenser
                     data.Solitary.WaterRow.Presentation,
                     data.Solitary.Label,
                     data.Solitary.When,
-                    data.Solitary.SamplerShortPresentation,
+                    data.Solitary.SamplerRow,
                     data.Solitary.Volume * 1000);
 
 

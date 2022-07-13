@@ -1,23 +1,17 @@
-﻿using Mayfly.Species;
-using Mayfly.Wild;
-using System.Collections.Generic;
-using System;
+﻿using Mayfly.Extensions;
+using Mayfly.Species;
 using Mayfly.Waters;
+using Mayfly.Wild;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
     public static partial class DataExtensions
     {
-        public static string GetSuggestedName(this Wild.Survey.CardRow cardRow)
-        {
-            return cardRow.GetSuggestedName(UserSettings.Interface.Extension);
-        }
-
-        public static TaxonomicIndex GetSpeciesKey(this Wild.Survey data)
-        {
-            return Wild.Survey.GetSpeciesKey((Wild.Survey.DefinitionRow[])data.Definition.Select());
+        public static TaxonomicIndex GetSpeciesKey(this Survey data) {
+            return Survey.GetSpeciesKey((Survey.DefinitionRow[])data.Definition.Select());
         }
 
         //public static SpeciesKey GetSpeciesKey(this Data data)
@@ -97,33 +91,31 @@ namespace Mayfly.Fish
 
 
 
-        public static FishSamplerType GetGearType(this Wild.Survey.CardRow cardRow)
-        {
+        public static FishSamplerType GetGearType(this Survey.CardRow cardRow) {
             return cardRow.SamplerRow.GetSamplerType();
         }
 
-        public static string GetSamplerSign(this Wild.Survey.CardRow cardRow) => cardRow.GetSamplerSign(true);
-
-        public static string GetSamplerSign(this Wild.Survey.CardRow cardRow, bool full)
-        {
-            Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
-            string result = full ? samplerRow.Sampler : samplerRow.ShortName;
-            result += " " + cardRow.GetGearClass();
-            return result;
+        public static double GetHeight(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetValue("Height");
         }
 
-        public static double GetEffort(this Wild.Survey.CardRow cardRow)
-        {
-            if (cardRow.IsSamplerNull()) return double.NaN;
+        public static double GetLength(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetValue("Length");
+        }
+
+        public static double GetVelocity(this Survey.EquipmentRow eqpRow) {
+            return eqpRow.GetValue("Velocity");
+        }
+
+        public static double GetEffort(this Survey.CardRow cardRow) {
+            if (cardRow.IsEqpIDNull()) return double.NaN;
             return GetEffort(cardRow, cardRow.GetGearType().GetDefaultExpression());
         }
 
-        public static double GetEffort(this Wild.Survey.CardRow cardRow, ExpressionVariant expression)
-        {
-            if (cardRow.IsSamplerNull()) return double.NaN;
+        public static double GetEffort(this Survey.CardRow cardRow, ExpressionVariant expression) {
+            if (cardRow.IsEqpIDNull()) return double.NaN;
             else
-                switch (expression)
-                {
+                switch (expression) {
                     case ExpressionVariant.Square:
                         return cardRow.GetSquare() / UnitEffort.SquareUnitCost;
                     case ExpressionVariant.Volume:
@@ -135,39 +127,32 @@ namespace Mayfly.Fish
             return double.NaN;
         }
 
-        public static double GetExposure(this Wild.Survey.CardRow cardRow)
-        {
-            if (cardRow.IsVelocityNull()) return double.NaN;
+        public static double GetExposure(this Survey.CardRow cardRow) {
             if (cardRow.IsSpanNull()) return double.NaN;
-
-            return cardRow.Velocity * cardRow.Duration.TotalHours * 1000;
+            return cardRow.EquipmentRow.GetVelocity() * cardRow.Duration.TotalHours * 1000;
         }
 
-        public static double GetSquare(this Wild.Survey.CardRow cardRow)
-        {
-            if (!cardRow.IsExactAreaNull()) return cardRow.ExactArea;
+        public static double GetSquare(this Survey.CardRow cardRow) {
 
-            if (cardRow.IsSamplerNull()) return double.NaN;
+            if (!cardRow.IsSquareNull()) return cardRow.Square;
+
+            if (cardRow.IsEqpIDNull()) return double.NaN;
 
             if (cardRow.SamplerRow.IsEffortFormulaNull()) return double.NaN;
 
-            switch (cardRow.SamplerRow.EffortFormula)
-            {
+            switch (cardRow.SamplerRow.EffortFormula) {
                 case "EL":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull())
-                    {
+                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
                         return cardRow.Length * cardRow.Exposure;
                     }
                     break;
                 case "MLH":
-                    if (!cardRow.IsLengthNull())
-                    {
+                    if (!cardRow.IsLengthNull()) {
                         return Math.Pow(cardRow.Length, 2) / (4 * Math.PI);
                     }
                     break;
                 case "MTLH":
-                    if (cardRow.Sampler == 730)
-                    {
+                    if (cardRow.Sampler == 730) {
                         // Encircling gillnet
 
                         //if (!_this.IsLengthNull())
@@ -175,12 +160,9 @@ namespace Mayfly.Fish
                         //    Square = Math.Pow(_this.Length, 2) / (4 * Math.PI);
                         //}
 
-                    }
-                    else
-                    {
+                    } else {
                         // Except 730
-                        if (!cardRow.IsLengthNull() && !cardRow.IsSpanNull())
-                        {
+                        if (!cardRow.IsLengthNull() && !cardRow.IsSpanNull()) {
                             return Math.PI * 0.25 * Math.Pow(cardRow.Length, 2) * cardRow.Duration.TotalDays;
                         }
                     }
@@ -188,23 +170,20 @@ namespace Mayfly.Fish
 
                 case "MTVELOH":
                     if (!cardRow.IsOpeningNull() && !cardRow.IsVelocityNull() &&
-                        !cardRow.IsSpanNull())
-                    {
+                        !cardRow.IsSpanNull()) {
                         return cardRow.Duration.TotalHours * cardRow.Velocity * 1000 * cardRow.Opening;
                     }
                     break;
 
                 case "MTVELH":
                     if (!cardRow.IsLengthNull() && !cardRow.IsVelocityNull() &&
-                        !cardRow.IsSpanNull())
-                    {
+                        !cardRow.IsSpanNull()) {
                         return cardRow.Duration.TotalHours * cardRow.Velocity * 1000 * cardRow.Length;
                     }
                     break;
 
                 case "MS":
-                    if (!cardRow.IsSquareNull())
-                    {
+                    if (!cardRow.IsSquareNull()) {
                         return cardRow.Square;
                     }
                     break;
@@ -212,11 +191,9 @@ namespace Mayfly.Fish
                 case "MELOH":
                 case "MELO":
                 case "ELO":
-                    switch (cardRow.Sampler)
-                    {
+                    switch (cardRow.Sampler) {
                         case 720: // driftnet
-                            if (!cardRow.IsOpeningNull() && !cardRow.IsLengthNull() && !cardRow.IsExposureNull())
-                            {
+                            if (!cardRow.IsOpeningNull() && !cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
                                 // First segment. Net opening
                                 // With Huygens formulae
                                 double z = (3 * cardRow.Length + cardRow.Opening) / 8;
@@ -227,37 +204,25 @@ namespace Mayfly.Fish
                                 s += cardRow.Opening * cardRow.Exposure;
 
                                 return s;
-                            }
-                            else if (!cardRow.IsOpeningNull() && !cardRow.IsExposureNull())
-                            {
+                            } else if (!cardRow.IsOpeningNull() && !cardRow.IsExposureNull()) {
                                 // Only segment
                                 return cardRow.Exposure * cardRow.Opening;
                             }
                             break;
 
                         default: // all sein nets
-                            if (cardRow.IsWaterIDNull())
-                            {
+                            if (cardRow.IsWaterIDNull()) {
                                 if (cardRow.IsExposureNull()) return double.NaN;
 
-                                if (cardRow.IsOpeningNull()) { return cardRow.IsLengthNull() ? double.NaN : cardRow.Length * cardRow.Exposure; }
-                                else { return cardRow.Opening * cardRow.Exposure; }
-                            }
-                            else
-                            {
-                                switch ((WaterType)cardRow.WaterRow.Type)
-                                {
+                                if (cardRow.IsOpeningNull()) { return cardRow.IsLengthNull() ? double.NaN : cardRow.Length * cardRow.Exposure; } else { return cardRow.Opening * cardRow.Exposure; }
+                            } else {
+                                switch ((WaterType)cardRow.WaterRow.Type) {
                                     case WaterType.Stream:
-                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull())
-                                        {
-                                            if (cardRow.IsOpeningNull())
-                                            {
-                                                if (cardRow.Exposure < 2 * cardRow.Length / Math.PI)
-                                                {
+                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
+                                            if (cardRow.IsOpeningNull()) {
+                                                if (cardRow.Exposure < 2 * cardRow.Length / Math.PI) {
                                                     return double.NaN;
-                                                }
-                                                else
-                                                {
+                                                } else {
                                                     // Automatic effective opening of sein
                                                     double r = 2 * cardRow.Length / Math.PI;
 
@@ -269,15 +234,10 @@ namespace Mayfly.Fish
 
                                                     return 2 * s1 + s2;
                                                 }
-                                            }
-                                            else
-                                            {
-                                                if (cardRow.Exposure < 2 * cardRow.Opening / Math.PI)
-                                                {
+                                            } else {
+                                                if (cardRow.Exposure < 2 * cardRow.Opening / Math.PI) {
                                                     return double.NaN;
-                                                }
-                                                else
-                                                {
+                                                } else {
                                                     // First and last segment - opening and closure
                                                     double s1 = Math.Pow(cardRow.Opening, 2) * Math.PI / 4;
 
@@ -306,25 +266,18 @@ namespace Mayfly.Fish
                                         break;
                                     case WaterType.Lake:
                                     case WaterType.Tank:
-                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull())
-                                        {
-                                            if (cardRow.Exposure < cardRow.Length)
-                                            {
+                                        if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
+                                            if (cardRow.Exposure < cardRow.Length) {
                                                 return cardRow.Length * cardRow.Exposure / 2;
-                                            }
-                                            else
-                                            {
+                                            } else {
                                                 double s = 0;
-                                                if (cardRow.IsOpeningNull())
-                                                {
+                                                if (cardRow.IsOpeningNull()) {
                                                     // First segment. Sein exposure
                                                     s += cardRow.Length * (cardRow.Exposure - cardRow.Length);
 
                                                     // Second segment. Sein closing
                                                     s += Math.Pow(cardRow.Length, 2) / 2;
-                                                }
-                                                else
-                                                {
+                                                } else {
                                                     // First segment. Sein opening
                                                     // With Huygens formulae
                                                     double z = (3 * cardRow.Length + cardRow.Opening) / 8;
@@ -349,8 +302,7 @@ namespace Mayfly.Fish
                     break;
 
                 case "MELH":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull())
-                    {
+                    if (!cardRow.IsLengthNull() && !cardRow.IsExposureNull()) {
                         return cardRow.Exposure * cardRow.Length;
                     }
                     break;
@@ -359,51 +311,27 @@ namespace Mayfly.Fish
             return double.NaN;
         }
 
-        public static double GetVolume(this Wild.Survey.CardRow cardRow)
-        {
-            if (cardRow.IsDepthNull())
-            {
-                if (cardRow.IsHeightNull())
-                {
-                    return double.NaN;
-                }
-                else
-                {
-                    return cardRow.GetSquare() * cardRow.Height;
-                }
-            }
-            else
-            {
-                if (cardRow.IsHeightNull())
-                {
-                    return cardRow.GetSquare() * cardRow.Depth;
-                }
-                else
-                {
-                    return cardRow.GetSquare() * Math.Min(cardRow.Depth, cardRow.Height);
-                }
-            }
+        public static double GetVolume(this Survey.CardRow cardRow) {
+
+            double h = cardRow.IsDepthNull() ? cardRow.EquipmentRow.GetHeight() : Math.Min(cardRow.Depth, cardRow.EquipmentRow.GetHeight());
+            return h * cardRow.GetSquare();
         }
 
-        public static double GetEffortScore(this Wild.Survey.CardRow cardRow)
-        {
+        public static double GetEffortScore(this Survey.CardRow cardRow) {
             double result = double.NaN;
-            if (cardRow.IsSamplerNull()) return result;
+            if (cardRow.IsEqpIDNull()) return result;
             if (cardRow.SamplerRow.IsEffortFormulaNull()) return result;
 
-            switch (cardRow.SamplerRow.EffortFormula)
-            {
-                case "MTLH":
-                    if (!cardRow.IsLengthNull() && !cardRow.IsHeightNull() && !cardRow.IsSpanNull())
-                    {
+            switch (cardRow.SamplerRow.EffortFormula) {
+                case "MTLH": // effort from time
+                    if (!cardRow.IsLengthNull() && !cardRow.IsHeightNull() && !cardRow.IsSpanNull()) {
                         result = (cardRow.Length * cardRow.Height * cardRow.Duration.TotalHours);
                     }
                     break;
 
                 case "TJ":
                 case "T":
-                    if (!cardRow.IsSpanNull())
-                    {
+                    if (!cardRow.IsSpanNull()) {
                         result = cardRow.Duration.TotalHours;
                     }
                     break;
@@ -412,33 +340,13 @@ namespace Mayfly.Fish
             return result;
         }
 
-        public static string GetGearClass(this Wild.Survey.CardRow cardRow)
-        {
-            if (cardRow.IsSamplerNull()) return string.Empty;
-
-            if (cardRow.SamplerRow.EffortFormula.Contains("M"))
-            {
-                return cardRow.IsMeshNull() ? string.Empty : cardRow.Mesh.ToString("◊ 0");
-            }
-            else if (cardRow.SamplerRow.EffortFormula.Contains("J"))
-            {
-                return cardRow.IsHookNull() ? string.Empty : cardRow.Hook.ToString("ʔ 0");
-            }
-            else
-            {
-                return cardRow.When.ToString("yyyy MMMM");
-            }
-        }
-
-
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Wild.Survey.LogRow logRow)
-        {
+        public static double GetAbundance(this Survey.LogRow logRow) {
             if (logRow.IsQuantityNull()) return double.NaN;
             return (double)logRow.Quantity / logRow.CardRow.GetEffort();
         }
@@ -448,8 +356,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Quantity per cubic meter in individuals</returns>
-        public static double GetAbundance(this Wild.Survey.LogRow logRow, ExpressionVariant variant)
-        {
+        public static double GetAbundance(this Survey.LogRow logRow, ExpressionVariant variant) {
             if (logRow.IsQuantityNull()) return double.NaN;
             return (double)logRow.Quantity / logRow.CardRow.GetEffort(variant);
         }
@@ -459,8 +366,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Wild.Survey.LogRow logRow)
-        {
+        public static double GetBiomass(this Survey.LogRow logRow) {
             if (logRow.IsMassNull()) return double.NaN;
 
             return logRow.Mass / logRow.CardRow.GetEffort();
@@ -471,8 +377,7 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="logRow"></param>
         /// <returns>Mass per cubic meter in grams</returns>
-        public static double GetBiomass(this Wild.Survey.LogRow logRow, ExpressionVariant variant)
-        {
+        public static double GetBiomass(this Survey.LogRow logRow, ExpressionVariant variant) {
             if (logRow.IsMassNull()) return double.NaN;
 
             return logRow.Mass / logRow.CardRow.GetEffort(variant);
@@ -583,8 +488,7 @@ namespace Mayfly.Fish
 
 
 
-        public static string GetDescription(this Wild.Survey.IndividualRow indRow)
-        {
+        public static string GetDescription(this Survey.IndividualRow indRow) {
             List<string> result = new List<string>();
             result.Add(indRow.LogRow.DefinitionRow.KeyRecord.CommonName);
             if (!indRow.IsTallyNull()) result.Add(string.Format("#{0}", indRow.Tally));
@@ -594,32 +498,28 @@ namespace Mayfly.Fish
             return result.Merge();
         }
 
-        public static string GetDescription(this Wild.Survey.LogRow logRow)
-        {
+        public static string GetDescription(this Survey.LogRow logRow) {
             return string.Format(Wild.Resources.Interface.Interface.LogMask, logRow.DefinitionRow.KeyRecord, logRow.CardRow);
         }
 
 
-        public static double GetTotalLength(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetTotalLength(this Survey.IndividualRow indRow) {
             return indRow.GetAddtValue("TL");
         }
 
-        public static double GetCondition(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetCondition(this Survey.IndividualRow indRow) {
             //if (indRow.IsLengthNull()) return double.NaN;
             //if (indRow.IsMassNull()) return double.NaN;
             //return (100.0 * indRow.Mass) / Math.Pow(indRow.Length / 10.0, 3.0);
             if (indRow.IsMassNull()) return double.NaN;
-            Wild.Survey data = (Wild.Survey)indRow.Table.DataSet;
+            Survey data = (Survey)indRow.Table.DataSet;
             ContinuousBio cb = data.FindMassModel(indRow.Species);
             if (cb == null) return double.NaN;
             double wm = cb.GetValue(indRow.Length);
             return indRow.Mass / wm;
         }
 
-        public static double GetConditionSomatic(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetConditionSomatic(this Survey.IndividualRow indRow) {
             //if (indRow.IsLengthNull()) return double.NaN;
             //if (indRow.IsSomaticMassNull()) return double.NaN;
             //return (100.0 * indRow.SomaticMass) / Math.Pow(indRow.Length / 10.0, 3.0);
@@ -628,57 +528,49 @@ namespace Mayfly.Fish
         }
 
 
-        public static double GetRelativeFecundity(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetRelativeFecundity(this Survey.IndividualRow indRow) {
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.GetAbsoluteFecundity() / indRow.Mass;
         }
 
-        public static double GetRelativeFecunditySomatic(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetRelativeFecunditySomatic(this Survey.IndividualRow indRow) {
             if (indRow.IsSomaticMassNull()) return double.NaN;
             return indRow.GetAbsoluteFecundity() / indRow.SomaticMass;
         }
 
-        public static double GetAbsoluteFecundity(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetAbsoluteFecundity(this Survey.IndividualRow indRow) {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsGonadSampleNull()) return double.NaN;
             if (indRow.IsGonadSampleMassNull()) return double.NaN;
             return indRow.GonadMass * (indRow.GonadSample / indRow.GonadSampleMass);
         }
 
-        public static double GetGonadIndex(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetGonadIndex(this Survey.IndividualRow indRow) {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.GonadMass / indRow.Mass;
         }
 
-        public static double GetGonadIndexSomatic(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetGonadIndexSomatic(this Survey.IndividualRow indRow) {
             if (indRow.IsGonadMassNull()) return double.NaN;
             if (indRow.IsSomaticMassNull()) return double.NaN;
             return indRow.GonadMass / indRow.SomaticMass;
         }
 
-        public static double GetAveEggMass(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetAveEggMass(this Survey.IndividualRow indRow) {
             if (indRow.IsGonadSampleMassNull()) return double.NaN;
             if (indRow.IsGonadSampleNull()) return double.NaN;
             return indRow.GonadSampleMass / indRow.GonadSample;
         }
 
 
-        public static double GetConsumptionIndex(this Wild.Survey.IndividualRow indRow)
-        {
+        public static double GetConsumptionIndex(this Survey.IndividualRow indRow) {
             if (indRow.IsConsumedMassNull()) return double.NaN;
             if (indRow.IsMassNull()) return double.NaN;
             return indRow.ConsumedMass / indRow.Mass * 10;
         }
 
-        public static int GetDietItemCount(this Wild.Survey.IndividualRow indRow)
-        {
+        public static int GetDietItemCount(this Survey.IndividualRow indRow) {
             if (indRow.IsDietPresented()) {
                 return indRow.GetConsumed().Definition.Count;
             }
@@ -686,32 +578,24 @@ namespace Mayfly.Fish
             return -1;
         }
 
-        public static bool IsDietPresented(this Wild.Survey.IndividualRow indRow)
-        {
+        public static bool IsDietPresented(this Survey.IndividualRow indRow) {
             return (indRow.GetIntestineRows().Length > 0);
         }
 
-        public static Wild.Survey GetConsumed(this Wild.Survey.IndividualRow indRow)
-        {
+        public static Survey GetConsumed(this Survey.IndividualRow indRow) {
             return indRow.GetConsumed(false);
         }
 
-        public static Wild.Survey GetConsumed(this Wild.Survey.IndividualRow indRow, bool pool)
-        {
-            Mayfly result = new Data(Fish.UserSettings.DietIndex, Benthos.UserSettings.SamplersIndex);
+        public static Survey GetConsumed(this Survey.IndividualRow indRow, bool pool) {
+            Survey result = new Survey();
 
-            foreach (Wild.Survey.IntestineRow intRow in indRow.GetIntestineRows())
-            {
-                Wild.Survey intData = intRow.GetConsumed();
+            foreach (Survey.IntestineRow intRow in indRow.GetIntestineRows()) {
+                Survey intData = intRow.GetConsumed();
 
-                if (pool)
-                {
-                    if (result.Card.Count == 0) { result = intData; }
-                    else { intData.Solitary.CopyLogTo((Wild.Survey.CardRow)result.Solitary); }
-                }
-                else
-                {
-                    intData.CopyTo((Wild.Survey)result);
+                if (pool) {
+                    if (result.Card.Count == 0) { result = intData; } else { intData.Solitary.CopyLogTo(result.Solitary); }
+                } else {
+                    intData.CopyTo(result);
                 }
             }
 
@@ -723,32 +607,25 @@ namespace Mayfly.Fish
         /// </summary>
         /// <param name="intRow"></param>
         /// <returns></returns>
-        public static Wild.Survey GetConsumed(this Wild.Survey.IntestineRow intRow)
-        {
-            Wild.Survey.IndividualRow indRow = intRow.IndividualRow;
+        public static Survey GetConsumed(this Survey.IntestineRow intRow) {
+            Survey.IndividualRow indRow = intRow.IndividualRow;
 
-            Wild.Survey result = new Wild.Survey();
+            Survey result = new Survey();
 
             if (!intRow.IsConsumedNull()) { result.ReadXml(new StringReader(intRow.Consumed)); }
 
-            result.Solitary.Sampler = 0;
+            //result.Solitary.Sampler = 0;
 
-            if (indRow.IsTallyNull()) { result.Solitary.SetLabelNull(); }
-            else { result.Solitary.Label = indRow.Tally; }
+            if (indRow.IsTallyNull()) { result.Solitary.SetLabelNull(); } else { result.Solitary.Label = indRow.Tally; }
 
-            if (indRow.IsMassNull()) { result.Solitary.SetSquareNull(); }
-            else { result.Solitary.Square = indRow.Mass; }
+            //if (indRow.IsMassNull()) { result.Solitary.SetSquareNull(); } else { result.Solitary.Square = indRow.Mass; }
 
-            if (indRow.LogRow.CardRow.IsWhenNull()) { result.Solitary.SetWhenNull(); }
-            else { result.Solitary.When = indRow.LogRow.CardRow.When; }
+            if (indRow.LogRow.CardRow.IsWhenNull()) { result.Solitary.SetWhenNull(); } else { result.Solitary.When = indRow.LogRow.CardRow.When; }
 
-            if (indRow.LogRow.CardRow.IsWaterIDNull() || indRow.LogRow.CardRow.WaterRow.IsWaterNull())
-            {
+            if (indRow.LogRow.CardRow.IsWaterIDNull() || indRow.LogRow.CardRow.WaterRow.IsWaterNull()) {
                 result.Solitary.SetWaterIDNull();
-            }
-            else
-            {
-                Wild.Survey.WaterRow waterRow = result.Water.NewWaterRow();
+            } else {
+                Survey.WaterRow waterRow = result.Water.NewWaterRow();
                 waterRow.Type = indRow.LogRow.CardRow.WaterRow.Type;
                 waterRow.Water = indRow.LogRow.CardRow.WaterRow.Water;
                 result.Water.AddWaterRow(waterRow);
@@ -757,22 +634,20 @@ namespace Mayfly.Fish
 
             result.Solitary.Comments = indRow.GetDescription();
 
-            if (!indRow.IsLengthNull())
-            {
-                Wild.Survey.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.LengthUnit);
+            if (!indRow.IsLengthNull()) {
+                Survey.FactorRow lengthFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.LengthUnit);
                 if (lengthFactor == null) lengthFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.LengthUnit);
 
-                Wild.Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, lengthFactor.ID);
+                Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, lengthFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, lengthFactor, indRow.Length);
                 factorValueRow.Value = indRow.Length;
             }
 
-            if (!indRow.IsAgeNull())
-            {
-                Wild.Survey.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.AgeUnit);
+            if (!indRow.IsAgeNull()) {
+                Survey.FactorRow ageFactor = result.Factor.FindByFactor(Wild.Resources.Reports.Caption.AgeUnit);
                 if (ageFactor == null) ageFactor = result.Factor.AddFactorRow(Wild.Resources.Reports.Caption.AgeUnit);
 
-                Wild.Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, ageFactor.ID);
+                Survey.FactorValueRow factorValueRow = result.FactorValue.FindByCardIDFactorID(result.Solitary.ID, ageFactor.ID);
                 if (factorValueRow == null) factorValueRow = result.FactorValue.AddFactorValueRow(result.Solitary, ageFactor, indRow.Age);
                 factorValueRow.Value = indRow.Age;
             }
@@ -784,15 +659,13 @@ namespace Mayfly.Fish
 
 
 
-        public static Wild.Survey GetInfection(this Wild.Survey.OrganRow organRow)
-        {
+        public static Survey GetInfection(this Survey.OrganRow organRow) {
             if (organRow.IsInfectionNull()) return null;
 
-            Wild.Survey result = new Wild.Survey();
+            Survey result = new Survey();
             result.ReadXml(new StringReader(organRow.Infection));
 
-            if (!organRow.IndividualRow.IsTallyNull())
-            {
+            if (!organRow.IndividualRow.IsTallyNull()) {
                 result.Solitary.Label = organRow.IndividualRow.Tally;
             }
 
@@ -802,4 +675,3 @@ namespace Mayfly.Fish
         }
     }
 }
-

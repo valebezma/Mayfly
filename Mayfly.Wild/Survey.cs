@@ -15,10 +15,6 @@ using static Mayfly.Wild.ReaderSettings;
 
 namespace Mayfly.Wild
 {
-}
-
-namespace Mayfly.Wild
-{
     public partial class Survey
     {
         public CardRow Solitary {
@@ -380,6 +376,14 @@ namespace Mayfly.Wild
                 }
                 return null;
             }
+
+            public DefinitionRow AddDefinitionRow(int rank, string name) {
+                return AddDefinitionRow(rank, name, null);
+            }
+
+            public DefinitionRow AddDefinitionRow(string name) {
+                return AddDefinitionRow(TaxonomicRank.Species, name);
+            }
         }
 
         partial class LogDataTable
@@ -462,6 +466,30 @@ namespace Mayfly.Wild
             }
         }
 
+        partial class SamplerDataTable
+        {
+            public SamplerRow FindByName(string name) {
+                foreach (SamplerRow sampleRow in Rows) {
+                    if (sampleRow.Name == name) {
+                        return sampleRow;
+                    }
+                }
+                return null;
+            }
+        }
+
+        partial class VirtueDataTable
+        {
+            public VirtueRow FindByName(string name) {
+                foreach (VirtueRow virtueRow in Rows) {
+                    if (virtueRow.Name == name) {
+                        return virtueRow;
+                    }
+                }
+                return null;
+            }
+        }
+
         partial class EquipmentDataTable
         {
             public EquipmentRow FindDuplicate(EquipmentRow eqpRow) {
@@ -513,16 +541,6 @@ namespace Mayfly.Wild
             }
         }
 
-        partial class SamplerRow
-        {
-            public SamplerRow CopyTo(SamplerDataTable dt) {
-                SamplerRow result = dt.NewSamplerRow();
-                result.Name = this.Name;
-                result.ShortName = this.ShortName;
-                return result;
-            }
-        }
-
         partial class CardRow : IComparable, IFormattable
         {
             string investigator;
@@ -547,28 +565,6 @@ namespace Mayfly.Wild
             public SamplerRow SamplerRow {
                 get {
                     return IsEqpIDNull() ? null : this.EquipmentRow.SamplerRow;
-                }
-            }
-
-            public string SamplerDetails {
-                get {
-                    string result = string.Empty;
-                    foreach (Survey.SamplerVirtueRow row in this.EquipmentRow.GetSamplerVirtueRows()) {
-                        result += string.Format(" {0} {1}", row.VirtueRow.Notation, row.Value);
-                    }
-                    return result.Trim();
-                }
-            }
-
-            public string SamplerShortPresentation {
-                get {
-                    return IsEqpIDNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.ShortName, SamplerDetails).TrimEnd();
-                }
-            }
-
-            public string SamplerFullPresentation {
-                get {
-                    return IsEqpIDNull() ? Constants.Null : string.Format("{0} {1}", SamplerRow.Name, SamplerDetails).TrimEnd();
                 }
             }
 
@@ -701,20 +697,20 @@ namespace Mayfly.Wild
             public string GetSuggestedName() {
                 string result = string.Empty;
 
-                if (!this.IsWhenNull()) {
-                    result += this.When.ToString("yyyy-MM-dd") + " ";
+                if (!IsWhenNull()) {
+                    result += When.ToString("yyyy-MM-dd") + " ";
                 }
 
-                if (!this.IsLabelNull()) {
-                    result += this.Label + " ";
+                if (!IsLabelNull()) {
+                    result += Label + " ";
                 }
 
-                if (!this.IsEqpIDNull()) {
-                    result += SamplerShortPresentation + " ";
+                if (!IsEqpIDNull()) {
+                    result += EquipmentRow.ShortPresentation + " ";
                 }
 
-                if (!this.IsWaterIDNull()) {
-                    result += this.WaterRow.Presentation + " ";
+                if (!IsWaterIDNull()) {
+                    result += WaterRow.Presentation + " ";
                 }
 
                 foreach (char s in System.IO.Path.GetInvalidFileNameChars()) {
@@ -878,7 +874,7 @@ namespace Mayfly.Wild
                     if (!logRow.IsDefIDNull()) {
                         DefinitionRow dstDefRow = dstData.Definition.FindByName(logRow.DefinitionRow.Taxon);
                         if (dstDefRow == null) {
-                            dstLogRow.DefinitionRow = dstData.Definition.AddDefinitionRow(logRow.DefinitionRow.Rank, logRow.DefinitionRow.Taxon, null);
+                            dstLogRow.DefinitionRow = dstData.Definition.AddDefinitionRow(logRow.DefinitionRow.Rank, logRow.DefinitionRow.Taxon);
                             dstData.Log.AddLogRow(dstLogRow);
                         } else {
                             if (dstData.Log.FindByCardIDDefID(dstCard.ID, dstDefRow.ID) == null) {
@@ -938,7 +934,212 @@ namespace Mayfly.Wild
                 }
             }
 
-            public void AddReport(Report report, CardReportLevel level) { }
+            public void AddReport(Report report, CardReportLevel level) {
+
+                ResourceManager resources = new ResourceManager(typeof(Card));
+
+                if (level.HasFlag(CardReportLevel.Note)) {
+
+                    report.AddSectionTitle(Wild.Resources.Reports.Header.SampleNote);
+
+                    #region Common
+
+                    Report.Table table1 = new Report.Table(Resources.Reports.Header.Common);
+
+                    table1.StartRow();
+                    table1.AddCellPrompt(Wild.Resources.Reports.Card.Investigator, Investigator, 2);
+                    table1.EndRow();
+
+                    table1.StartRow();
+                    table1.AddCellPrompt(resources.GetString("labelWater.Text"),
+                        IsWaterIDNull() ? Constants.Null : WaterRow.Presentation, 2);
+                    table1.EndRow();
+
+                    table1.StartRow();
+                    table1.AddCellPrompt(resources.GetString("labelLabel.Text"),
+                            IsLabelNull() ? Constants.Null : Label);
+                    table1.AddCellPrompt(Resources.Reports.Card.When, IsWhenNull() ? Constants.Null :
+                            (When.ToShortDateString() + " " + When.ToString("HH:mm")));
+                    table1.EndRow();
+
+                    table1.StartRow();
+                    table1.AddCellPrompt(Resources.Reports.Card.Where, Position.GetHTMLReference(UI.FormatCoordinate), 2);
+                    table1.EndRow();
+                    report.AddTable(table1);
+
+                    //if (IsDepthNull())
+                    //{
+                    //    table1.AddCellPrompt(resources.GetString("labelDepth.Text"));
+                    //}
+                    //else
+                    //{
+                    //    table1.AddCellPrompt(resources.GetString("labelDepth.Text"), Depth);
+                    //}
+
+                    #endregion
+
+                    #region Sampler
+
+                    Report.Table table2 = new Report.Table(resources.GetString("labelMethod.Text"));
+
+                    if (!IsEqpIDNull()) {
+
+                        table2.StartRow();
+                        table2.AddCellPrompt(resources.GetString("labelSampler.Text"), SamplerRow, 2);
+                        table2.EndRow();
+
+                        int t = 0;
+
+                        foreach (SamplerVirtueRow svr in SamplerRow.GetSamplerVirtueRows()) {
+
+                            if (t == 0) {
+                                table2.StartRow();
+                            }
+
+                            EquipmentVirtueRow evr = ((Survey)tableCard.DataSet).EquipmentVirtue.FindByEqpIDVrtID(EqpID, svr.VrtID);
+                            table2.AddCellPrompt(resources.GetString("label" + svr.VirtueRow.Name + ".Text"),
+                                evr == null ? Constants.Null : evr.Value.ToString());
+                            t++;
+
+                            if (t == 2) {
+                                table2.EndRow();
+                                t = 0;
+                            }
+                        }
+
+
+                        //table2.StartRow();
+                        //table2.AddCellPrompt(resources.GetString("labelMesh.Text"), IsMeshNull() ? Constants.Null : Mesh.ToString());
+                        //table2.AddCellPrompt(resources.GetString("labelHook.Text"), IsHookNull() ? Constants.Null : Hook.ToString());
+                        //table2.EndRow();
+
+                        //table2.StartRow();
+                        //table2.AddCellPrompt(resources.GetString("labelLength.Text"), IsLengthNull() ? Constants.Null : Length.ToString());
+                        //table2.AddCellPrompt(resources.GetString("labelOpening.Text"), IsOpeningNull() ? Constants.Null : Opening.ToString());
+                        //table2.EndRow();
+
+                        //table2.StartRow();
+                        //table2.AddCellPrompt(resources.GetString("labelHeight.Text"), IsHeightNull() ? Constants.Null : Height.ToString());
+                        //table2.AddCellPrompt(resources.GetString("labelSquare.Text"), IsSquareNull() ? Constants.Null : Square.ToString());
+                        //table2.EndRow();
+
+                        report.AddTable(table2);
+
+                        //Report.Table table3 = new Report.Table(resources.GetString("labelEffort.Text"));
+
+                        //table3.StartRow();
+                        //if (IsSpanNull()) {
+                        //    table3.AddCellPrompt(resources.GetString("labelOperation.Text"));
+                        //    table3.AddCellPrompt(Resources.Reports.Card.Duration);
+                        //} else {
+                        //    table3.AddCellPrompt(resources.GetString("labelOperation.Text"), (WhenStarted.ToShortDateString() + " " + WhenStarted.ToString("HH:mm")));
+                        //    table3.AddCellPrompt(Resources.Reports.Card.Duration, string.Format("{0:N0}:{1:mm}", Duration.TotalHours, Duration));
+                        //}
+                        //table3.EndRow();
+
+                        //table3.StartRow();
+                        //table3.AddCellPrompt(resources.GetString("labelVelocity.Text"),
+                        //    IsVelocityNull() ? Constants.Null : Velocity.ToString());
+                        //table3.AddCellPrompt(resources.GetString("labelExposure.Text"),
+                        //    IsExposureNull() ? Constants.Null : Exposure.ToString());
+                        //table3.EndRow();
+
+                        //table3.StartRow();
+                        //table3.AddCellPrompt(resources.GetString("labelArea.Text"),
+                        //    GetSquare().ToString("N3"));
+                        //table3.AddCellPrompt(resources.GetString("labelVolume.Text"),
+                        //    GetVolume().ToString("N3"));
+                        //table3.EndRow();
+
+                        //table3.StartRow();
+                        //table3.AddCellPrompt(resources.GetString("labelEfforts.Text"),
+                        //    GetEffort().ToString("N3"), 2);
+                        //table3.EndRow();
+
+                        //report.AddTable(table3);
+                    }
+
+                    #endregion
+
+                    #region Environment
+
+                    if (IsEnvironmentDescribed) {
+                        report.AddTable(StateOfWater.GetReport());
+                        report.AddTable(WeatherConditions.GetReport());
+                    }
+
+                    #endregion
+
+                    #region Additional Factors
+
+                    if (GetFactorValueRows().Length > 0) {
+                        Report.Table table5 = new Report.Table(resources.GetString("labelFactors.Text"));
+
+                        table5.AddHeader(new string[]{ Wild.Resources.Reports.Caption.Factor,
+                            Wild.Resources.Reports.Caption.FactorValue }, new double[] { .80 });
+
+                        foreach (Wild.Survey.FactorValueRow FVR in GetFactorValueRows()) {
+                            table5.StartRow();
+                            table5.AddCell(FVR.FactorRow.Factor);
+                            table5.AddCellRight(FVR.Value);
+                            table5.EndRow();
+                        }
+
+                        report.AddTable(table5);
+                    }
+
+                    #endregion
+
+                    #region Comments
+
+                    Report.Table table4 = new Report.Table(Wild.Resources.Reports.Card.Comments);
+                    table4.StartRow();
+                    table4.AddCell(IsCommentsNull() ? Constants.Null : Comments);
+                    table4.EndRow();
+                    report.AddTable(table4);
+
+                    #endregion
+                }
+
+                if (level.HasFlag(CardReportLevel.Log)) {
+
+                    LogRow[] LogRows = GetLogRows();
+
+                    report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
+
+                    if (LogRows.Length == 0) {
+                        report.AddParagraph(Resources.Common.EmptySample);
+                    } else {
+                        //report.BreakPage();
+                        report.AddTable(GetLogReport(resources.GetString("ColumnMass.HeaderText"), string.Empty));
+                    }
+                }
+
+                List<IndividualRow> individualRows = new List<IndividualRow>();
+                foreach (LogRow logRow in GetLogRows()) {
+                    individualRows.AddRange(logRow.GetIndividualRows());
+                }
+
+                List<StratifiedRow> stratifiedRows = new List<StratifiedRow>();
+                foreach (LogRow logRow in GetLogRows()) {
+                    stratifiedRows.AddRange(logRow.GetStratifiedRows());
+                }
+
+                if ((individualRows.Count + stratifiedRows.Count) > 0 && (level.HasFlag(CardReportLevel.Individuals) || level.HasFlag(CardReportLevel.Stratified))) {
+                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
+                    report.AddSectionTitle(Resources.Reports.Header.IndividualsLog);
+                    foreach (LogRow logRow in GetLogRows()) {
+                        string speciesPresentation = logRow.DefinitionRow.KeyRecord.FullNameReport;
+                        logRow.AddReport(report, level, speciesPresentation, string.Format(Wild.Resources.Reports.Header.StratifiedSample, speciesPresentation));
+                        if (ReaderSettings.BreakBetweenSpecies && GetLogRows().Last() != logRow) { report.BreakPage(); }
+                    }
+                }
+
+                if (individualRows.Count > 0 && level.HasFlag(CardReportLevel.Profile)) {
+                    if (ReaderSettings.BreakBeforeIndividuals) { report.BreakPage(); }
+                    individualRows.ToArray().AddReport(report, CardReportLevel.Profile, string.Empty);
+                }
+            }
 
             /// <summary>
             /// Creates report containing Card with specified detalization level
@@ -995,19 +1196,17 @@ namespace Mayfly.Wild
             public virtual string ToString(string format) => ToString(format, CultureInfo.CurrentCulture);
 
             public virtual string ToString(string format, IFormatProvider provider) {
-                switch (format) {
-                    case "F":
+                switch (format.ToLowerInvariant()) {
                     case "f":
-                        return this.Path;
+                        return Path;
 
-                    case "S":
                     case "s":
-                        return this.FriendlyPath;
+                        return FriendlyPath;
 
                     default:
                         return string.Format(Resources.Interface.Interface.SampleFormat,
-                            When, When, WaterRow == null ? Resources.Interface.Interface.WaterUnknown : WaterRow.Presentation,
-                            Investigator, SamplerFullPresentation);
+                            When, When, (IsWaterIDNull() ? Resources.Interface.Interface.WaterUnknown : WaterRow.Presentation),
+                            Investigator, (IsEqpIDNull() ? string.Empty : EquipmentRow.ShortPresentation));
                 }
             }
         }
@@ -1405,6 +1604,37 @@ namespace Mayfly.Wild
 
         partial class EquipmentRow : IComparable, IFormattable
         {
+            public string VirtueDescription {
+                get {
+                    string result = string.Empty;
+                    foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
+                        result += string.Format(" {0} {1}", row.VirtueRow.Notation, row.Value);
+                    }
+                    return result.Trim();
+                }
+            }
+
+            public string ShortPresentation {
+                get {
+                    return string.Format("{0} {1}", SamplerRow.ShortName, VirtueDescription);
+                }
+            }
+
+            public string FullPresentation {
+                get {
+                    return string.Format("{0} {1}", SamplerRow.Name, VirtueDescription);
+                }
+            }
+
+
+            public double GetValue(string virtue) {
+                foreach (EquipmentVirtueRow row in GetEquipmentVirtueRows()) {
+                    if (row.VirtueRow.Name == virtue) return row.Value;
+                }
+                return double.NaN;
+            }
+
+
             public int CompareTo(EquipmentRow other) {
                 return this.ToString().CompareTo(other.ToString());
             }
@@ -1475,20 +1705,15 @@ namespace Mayfly.Wild
                 if (string.IsNullOrEmpty(format)) format = string.Empty;
 
                 switch (format.ToLowerInvariant()) {
-                    case "c":
-                        return CommonName;
 
                     case "s":
-                        return SevereName;
+                        return ShortPresentation;
 
                     case "f":
-                        return FullName;
-
-                    case "i":
-                        return InterfaceString;
+                        return FullPresentation;
 
                     default:
-                        return Name;
+                        return SamplerRow.Name;
                 }
             }
 
@@ -1496,6 +1721,68 @@ namespace Mayfly.Wild
                 return ToString(format, CultureInfo.CurrentCulture);
             }
 
+        }
+
+        partial class SamplerRow
+        {
+            public VirtueRow[] GetVirtueRows() {
+
+                List<VirtueRow> result = new List<VirtueRow>();
+                foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                    result.Add(samplerVirtueRow.VirtueRow);
+                }
+                return result.ToArray();
+            }
+
+            public string[] GetVirtues() {
+
+                List<string> result = new List<string>();
+                foreach (VirtueRow virtueRow in GetVirtueRows()) {
+                    result.Add(virtueRow.Name);
+                }
+                return result.ToArray();
+            }
+
+            public bool HasVirtue(string virtue) {
+
+                foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                    if (samplerVirtueRow.VirtueRow.Name == virtue) return true;
+                }
+
+                return false;
+            }
+
+            public SamplerRow CopyTo(SamplerDataTable dt) {
+                SamplerRow result = dt.NewSamplerRow();
+                result.Name = this.Name;
+                result.ShortName = this.ShortName;
+                return result;
+            }
+        }
+
+        partial class VirtueRow
+        {
+            public SamplerRow[] GetSamplerRows() {
+                List<SamplerRow> result = new List<SamplerRow>();
+
+                foreach (SamplerVirtueRow samplerVirtueRow in GetSamplerVirtueRows()) {
+                    result.Add(samplerVirtueRow.SamplerRow);
+                }
+
+
+                return result.ToArray();
+
+            }
+
+            public string[] GetSamplers() {
+
+                List<string> result = new List<string>();
+                foreach (SamplerRow samplerRow in GetSamplerRows()) {
+                    result.Add(samplerRow.Name);
+                }
+                return result.ToArray();
+
+            }
         }
     }
 

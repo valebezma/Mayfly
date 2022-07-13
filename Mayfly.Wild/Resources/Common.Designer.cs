@@ -70,6 +70,15 @@ namespace Mayfly.Wild.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sample is empty.
+        /// </summary>
+        public static string EmptySample {
+            get {
+                return ResourceManager.GetString("EmptySample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Frequency.
         /// </summary>
         public static string Frequency {

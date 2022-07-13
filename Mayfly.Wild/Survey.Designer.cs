@@ -54,9 +54,11 @@ namespace Mayfly.Wild {
         
         private SamplerDataTable tableSampler;
         
-        private UnitDataTable tableUnit;
-        
         private EquipmentDataTable tableEquipment;
+        
+        private EquipmentVirtueDataTable tableEquipmentVirtue;
+        
+        private UnitDataTable tableUnit;
         
         private SamplerVirtueDataTable tableSamplerVirtue;
         
@@ -84,13 +86,17 @@ namespace Mayfly.Wild {
         
         private global::System.Data.DataRelation relationFK_Type_Sampler;
         
-        private global::System.Data.DataRelation relationFK_t_Gear_t_Unit;
-        
         private global::System.Data.DataRelation relationFK_Sampler_Equipment;
         
         private global::System.Data.DataRelation relationFK_Equipment_SamplerVirtue;
         
         private global::System.Data.DataRelation relationFK_Virtue_SamplerVirtue;
+        
+        private global::System.Data.DataRelation relationFK_t_Gear_t_Unit;
+        
+        private global::System.Data.DataRelation relationFK_Sampler_SampleVirtue;
+        
+        private global::System.Data.DataRelation relationFK_Virtue_SampleVirtue;
         
         private global::System.Data.DataRelation relationFK_Individual_Organ;
         
@@ -167,11 +173,14 @@ namespace Mayfly.Wild {
                 if ((ds.Tables["Sampler"] != null)) {
                     base.Tables.Add(new SamplerDataTable(ds.Tables["Sampler"]));
                 }
-                if ((ds.Tables["Unit"] != null)) {
-                    base.Tables.Add(new UnitDataTable(ds.Tables["Unit"]));
-                }
                 if ((ds.Tables["Equipment"] != null)) {
                     base.Tables.Add(new EquipmentDataTable(ds.Tables["Equipment"]));
+                }
+                if ((ds.Tables["EquipmentVirtue"] != null)) {
+                    base.Tables.Add(new EquipmentVirtueDataTable(ds.Tables["EquipmentVirtue"]));
+                }
+                if ((ds.Tables["Unit"] != null)) {
+                    base.Tables.Add(new UnitDataTable(ds.Tables["Unit"]));
                 }
                 if ((ds.Tables["SamplerVirtue"] != null)) {
                     base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
@@ -348,9 +357,9 @@ namespace Mayfly.Wild {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public UnitDataTable Unit {
+        public EquipmentDataTable Equipment {
             get {
-                return this.tableUnit;
+                return this.tableEquipment;
             }
         }
         
@@ -358,9 +367,19 @@ namespace Mayfly.Wild {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public EquipmentDataTable Equipment {
+        public EquipmentVirtueDataTable EquipmentVirtue {
             get {
-                return this.tableEquipment;
+                return this.tableEquipmentVirtue;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public UnitDataTable Unit {
+            get {
+                return this.tableUnit;
             }
         }
         
@@ -486,11 +505,14 @@ namespace Mayfly.Wild {
                 if ((ds.Tables["Sampler"] != null)) {
                     base.Tables.Add(new SamplerDataTable(ds.Tables["Sampler"]));
                 }
-                if ((ds.Tables["Unit"] != null)) {
-                    base.Tables.Add(new UnitDataTable(ds.Tables["Unit"]));
-                }
                 if ((ds.Tables["Equipment"] != null)) {
                     base.Tables.Add(new EquipmentDataTable(ds.Tables["Equipment"]));
+                }
+                if ((ds.Tables["EquipmentVirtue"] != null)) {
+                    base.Tables.Add(new EquipmentVirtueDataTable(ds.Tables["EquipmentVirtue"]));
+                }
+                if ((ds.Tables["Unit"] != null)) {
+                    base.Tables.Add(new UnitDataTable(ds.Tables["Unit"]));
                 }
                 if ((ds.Tables["SamplerVirtue"] != null)) {
                     base.Tables.Add(new SamplerVirtueDataTable(ds.Tables["SamplerVirtue"]));
@@ -618,16 +640,22 @@ namespace Mayfly.Wild {
                     this.tableSampler.InitVars();
                 }
             }
-            this.tableUnit = ((UnitDataTable)(base.Tables["Unit"]));
-            if ((initTable == true)) {
-                if ((this.tableUnit != null)) {
-                    this.tableUnit.InitVars();
-                }
-            }
             this.tableEquipment = ((EquipmentDataTable)(base.Tables["Equipment"]));
             if ((initTable == true)) {
                 if ((this.tableEquipment != null)) {
                     this.tableEquipment.InitVars();
+                }
+            }
+            this.tableEquipmentVirtue = ((EquipmentVirtueDataTable)(base.Tables["EquipmentVirtue"]));
+            if ((initTable == true)) {
+                if ((this.tableEquipmentVirtue != null)) {
+                    this.tableEquipmentVirtue.InitVars();
+                }
+            }
+            this.tableUnit = ((UnitDataTable)(base.Tables["Unit"]));
+            if ((initTable == true)) {
+                if ((this.tableUnit != null)) {
+                    this.tableUnit.InitVars();
                 }
             }
             this.tableSamplerVirtue = ((SamplerVirtueDataTable)(base.Tables["SamplerVirtue"]));
@@ -648,10 +676,12 @@ namespace Mayfly.Wild {
             this.relationFK_Variable_Value = this.Relations["FK_Variable_Value"];
             this.relationIndividual_Value = this.Relations["Individual_Value"];
             this.relationFK_Type_Sampler = this.Relations["FK_Type_Sampler"];
-            this.relationFK_t_Gear_t_Unit = this.Relations["FK_t_Gear_t_Unit"];
             this.relationFK_Sampler_Equipment = this.Relations["FK_Sampler_Equipment"];
             this.relationFK_Equipment_SamplerVirtue = this.Relations["FK_Equipment_SamplerVirtue"];
             this.relationFK_Virtue_SamplerVirtue = this.Relations["FK_Virtue_SamplerVirtue"];
+            this.relationFK_t_Gear_t_Unit = this.Relations["FK_t_Gear_t_Unit"];
+            this.relationFK_Sampler_SampleVirtue = this.Relations["FK_Sampler_SampleVirtue"];
+            this.relationFK_Virtue_SampleVirtue = this.Relations["FK_Virtue_SampleVirtue"];
             this.relationFK_Individual_Organ = this.Relations["FK_Individual_Organ"];
         }
         
@@ -693,10 +723,12 @@ namespace Mayfly.Wild {
             base.Tables.Add(this.tableType);
             this.tableSampler = new SamplerDataTable();
             base.Tables.Add(this.tableSampler);
-            this.tableUnit = new UnitDataTable();
-            base.Tables.Add(this.tableUnit);
             this.tableEquipment = new EquipmentDataTable();
             base.Tables.Add(this.tableEquipment);
+            this.tableEquipmentVirtue = new EquipmentVirtueDataTable();
+            base.Tables.Add(this.tableEquipmentVirtue);
+            this.tableUnit = new UnitDataTable();
+            base.Tables.Add(this.tableUnit);
             this.tableSamplerVirtue = new SamplerVirtueDataTable();
             base.Tables.Add(this.tableSamplerVirtue);
             global::System.Data.ForeignKeyConstraint fkc;
@@ -784,13 +816,6 @@ namespace Mayfly.Wild {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_t_Gear_t_Unit", new global::System.Data.DataColumn[] {
-                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableUnit.SmpIDColumn});
-            this.tableUnit.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Sampler_Equipment", new global::System.Data.DataColumn[] {
                         this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableEquipment.SmpIDColumn});
@@ -800,16 +825,37 @@ namespace Mayfly.Wild {
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Equipment_SamplerVirtue", new global::System.Data.DataColumn[] {
                         this.tableEquipment.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.EqpIDColumn});
-            this.tableSamplerVirtue.Constraints.Add(fkc);
+                        this.tableEquipmentVirtue.EqpIDColumn});
+            this.tableEquipmentVirtue.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Virtue_SamplerVirtue", new global::System.Data.DataColumn[] {
                         this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableEquipmentVirtue.VrtIDColumn});
+            this.tableEquipmentVirtue.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_t_Gear_t_Unit", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUnit.SmpIDColumn});
+            this.tableUnit.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.SmpIDColumn});
+            this.tableSamplerVirtue.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableSamplerVirtue.VrtIDColumn});
             this.tableSamplerVirtue.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.Cascade;
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Factor_FactorValue = new global::System.Data.DataRelation("FK_Factor_FactorValue", new global::System.Data.DataColumn[] {
@@ -868,11 +914,6 @@ namespace Mayfly.Wild {
                         this.tableSampler.TypeColumn}, false);
             this.relationFK_Type_Sampler.Nested = true;
             this.Relations.Add(this.relationFK_Type_Sampler);
-            this.relationFK_t_Gear_t_Unit = new global::System.Data.DataRelation("FK_t_Gear_t_Unit", new global::System.Data.DataColumn[] {
-                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableUnit.SmpIDColumn}, false);
-            this.relationFK_t_Gear_t_Unit.Nested = true;
-            this.Relations.Add(this.relationFK_t_Gear_t_Unit);
             this.relationFK_Sampler_Equipment = new global::System.Data.DataRelation("FK_Sampler_Equipment", new global::System.Data.DataColumn[] {
                         this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableEquipment.SmpIDColumn}, false);
@@ -880,13 +921,26 @@ namespace Mayfly.Wild {
             this.Relations.Add(this.relationFK_Sampler_Equipment);
             this.relationFK_Equipment_SamplerVirtue = new global::System.Data.DataRelation("FK_Equipment_SamplerVirtue", new global::System.Data.DataColumn[] {
                         this.tableEquipment.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.EqpIDColumn}, false);
+                        this.tableEquipmentVirtue.EqpIDColumn}, false);
             this.relationFK_Equipment_SamplerVirtue.Nested = true;
             this.Relations.Add(this.relationFK_Equipment_SamplerVirtue);
             this.relationFK_Virtue_SamplerVirtue = new global::System.Data.DataRelation("FK_Virtue_SamplerVirtue", new global::System.Data.DataColumn[] {
                         this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableSamplerVirtue.VrtIDColumn}, false);
+                        this.tableEquipmentVirtue.VrtIDColumn}, false);
             this.Relations.Add(this.relationFK_Virtue_SamplerVirtue);
+            this.relationFK_t_Gear_t_Unit = new global::System.Data.DataRelation("FK_t_Gear_t_Unit", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUnit.SmpIDColumn}, false);
+            this.relationFK_t_Gear_t_Unit.Nested = true;
+            this.Relations.Add(this.relationFK_t_Gear_t_Unit);
+            this.relationFK_Sampler_SampleVirtue = new global::System.Data.DataRelation("FK_Sampler_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableSampler.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.SmpIDColumn}, false);
+            this.Relations.Add(this.relationFK_Sampler_SampleVirtue);
+            this.relationFK_Virtue_SampleVirtue = new global::System.Data.DataRelation("FK_Virtue_SampleVirtue", new global::System.Data.DataColumn[] {
+                        this.tableVirtue.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSamplerVirtue.VrtIDColumn}, false);
+            this.Relations.Add(this.relationFK_Virtue_SampleVirtue);
             this.relationFK_Individual_Organ = new global::System.Data.DataRelation("FK_Individual_Organ", new global::System.Data.DataColumn[] {
                         this.tableIndividual.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableOrgan.IndIDColumn}, false);
@@ -986,13 +1040,19 @@ namespace Mayfly.Wild {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeUnit() {
+        private bool ShouldSerializeEquipment() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeEquipment() {
+        private bool ShouldSerializeEquipmentVirtue() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeUnit() {
             return false;
         }
         
@@ -1103,10 +1163,13 @@ namespace Mayfly.Wild {
         public delegate void SamplerRowChangeEventHandler(object sender, SamplerRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void UnitRowChangeEventHandler(object sender, UnitRowChangeEvent e);
+        public delegate void EquipmentRowChangeEventHandler(object sender, EquipmentRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void EquipmentRowChangeEventHandler(object sender, EquipmentRowChangeEvent e);
+        public delegate void EquipmentVirtueRowChangeEventHandler(object sender, EquipmentVirtueRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void UnitRowChangeEventHandler(object sender, UnitRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void SamplerVirtueRowChangeEventHandler(object sender, SamplerVirtueRowChangeEvent e);
@@ -1992,13 +2055,11 @@ namespace Mayfly.Wild {
             
             private global::System.Data.DataColumn columnEqpID;
             
-            private global::System.Data.DataColumn columnExactArea;
+            private global::System.Data.DataColumn columnSquare;
             
             private global::System.Data.DataColumn columnVolume;
             
             private global::System.Data.DataColumn columnSpan;
-            
-            private global::System.Data.DataColumn columnVelocity;
             
             private global::System.Data.DataColumn columnExposure;
             
@@ -2105,9 +2166,9 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ExactAreaColumn {
+            public global::System.Data.DataColumn SquareColumn {
                 get {
-                    return this.columnExactArea;
+                    return this.columnSquare;
                 }
             }
             
@@ -2124,14 +2185,6 @@ namespace Mayfly.Wild {
             public global::System.Data.DataColumn SpanColumn {
                 get {
                     return this.columnSpan;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VelocityColumn {
-                get {
-                    return this.columnVelocity;
                 }
             }
             
@@ -2266,10 +2319,9 @@ namespace Mayfly.Wild {
                         System.DateTime When, 
                         string Where, 
                         EquipmentRow parentEquipmentRowByFK_Equipment_Card, 
-                        double ExactArea, 
+                        double Square, 
                         double Volume, 
                         int Span, 
-                        double Velocity, 
                         double Exposure, 
                         double Depth, 
                         int CrossSection, 
@@ -2289,10 +2341,9 @@ namespace Mayfly.Wild {
                         When,
                         Where,
                         null,
-                        ExactArea,
+                        Square,
                         Volume,
                         Span,
-                        Velocity,
                         Exposure,
                         Depth,
                         CrossSection,
@@ -2345,10 +2396,9 @@ namespace Mayfly.Wild {
                 this.columnWhen = base.Columns["When"];
                 this.columnWhere = base.Columns["Where"];
                 this.columnEqpID = base.Columns["EqpID"];
-                this.columnExactArea = base.Columns["ExactArea"];
+                this.columnSquare = base.Columns["Square"];
                 this.columnVolume = base.Columns["Volume"];
                 this.columnSpan = base.Columns["Span"];
-                this.columnVelocity = base.Columns["Velocity"];
                 this.columnExposure = base.Columns["Exposure"];
                 this.columnDepth = base.Columns["Depth"];
                 this.columnCrossSection = base.Columns["CrossSection"];
@@ -2377,14 +2427,12 @@ namespace Mayfly.Wild {
                 base.Columns.Add(this.columnWhere);
                 this.columnEqpID = new global::System.Data.DataColumn("EqpID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEqpID);
-                this.columnExactArea = new global::System.Data.DataColumn("ExactArea", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnExactArea);
+                this.columnSquare = new global::System.Data.DataColumn("Square", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSquare);
                 this.columnVolume = new global::System.Data.DataColumn("Volume", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVolume);
                 this.columnSpan = new global::System.Data.DataColumn("Span", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSpan);
-                this.columnVelocity = new global::System.Data.DataColumn("Velocity", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVelocity);
                 this.columnExposure = new global::System.Data.DataColumn("Exposure", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExposure);
                 this.columnDepth = new global::System.Data.DataColumn("Depth", typeof(double), null, global::System.Data.MappingType.Element);
@@ -5880,6 +5928,8 @@ namespace Mayfly.Wild {
             
             private global::System.Data.DataColumn columnReference;
             
+            private global::System.Data.DataColumn columnEffortBy;
+            
             private global::System.Data.DataColumn columnEffortValue;
             
             private global::System.Data.DataColumn columnImage;
@@ -5961,6 +6011,14 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EffortByColumn {
+                get {
+                    return this.columnEffortBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn EffortValueColumn {
                 get {
                     return this.columnEffortValue;
@@ -6020,7 +6078,7 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerRow AddSamplerRow(int ID, TypeRow parentTypeRowByFK_Type_Sampler, string Name, string ShortName, string Reference, double EffortValue, byte[] Image, string Description) {
+            public SamplerRow AddSamplerRow(int ID, TypeRow parentTypeRowByFK_Type_Sampler, string Name, string ShortName, string Reference, int EffortBy, double EffortValue, byte[] Image, string Description) {
                 SamplerRow rowSamplerRow = ((SamplerRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -6028,6 +6086,7 @@ namespace Mayfly.Wild {
                         Name,
                         ShortName,
                         Reference,
+                        EffortBy,
                         EffortValue,
                         Image,
                         Description};
@@ -6068,6 +6127,7 @@ namespace Mayfly.Wild {
                 this.columnName = base.Columns["Name"];
                 this.columnShortName = base.Columns["ShortName"];
                 this.columnReference = base.Columns["Reference"];
+                this.columnEffortBy = base.Columns["EffortBy"];
                 this.columnEffortValue = base.Columns["EffortValue"];
                 this.columnImage = base.Columns["Image"];
                 this.columnDescription = base.Columns["Description"];
@@ -6086,6 +6146,8 @@ namespace Mayfly.Wild {
                 base.Columns.Add(this.columnShortName);
                 this.columnReference = new global::System.Data.DataColumn("Reference", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReference);
+                this.columnEffortBy = new global::System.Data.DataColumn("EffortBy", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEffortBy);
                 this.columnEffortValue = new global::System.Data.DataColumn("EffortValue", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEffortValue);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
@@ -6183,6 +6245,579 @@ namespace Mayfly.Wild {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "SamplerDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class EquipmentDataTable : global::System.Data.TypedTableBase<EquipmentRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnSmpID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentDataTable() {
+                this.TableName = "Equipment";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal EquipmentDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected EquipmentDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SmpIDColumn {
+                get {
+                    return this.columnSmpID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow this[int index] {
+                get {
+                    return ((EquipmentRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentRowChangeEventHandler EquipmentRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentRowChangeEventHandler EquipmentRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentRowChangeEventHandler EquipmentRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentRowChangeEventHandler EquipmentRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddEquipmentRow(EquipmentRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow AddEquipmentRow(SamplerRow parentSamplerRowByFK_Sampler_Equipment) {
+                EquipmentRow rowEquipmentRow = ((EquipmentRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null};
+                if ((parentSamplerRowByFK_Sampler_Equipment != null)) {
+                    columnValuesArray[1] = parentSamplerRowByFK_Sampler_Equipment[0];
+                }
+                rowEquipmentRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEquipmentRow);
+                return rowEquipmentRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow FindByID(int ID) {
+                return ((EquipmentRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                EquipmentDataTable cln = ((EquipmentDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new EquipmentDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnSmpID = base.Columns["SmpID"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnSmpID = new global::System.Data.DataColumn("SmpID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSmpID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
+                this.columnSmpID.Caption = "Sampler";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow NewEquipmentRow() {
+                return ((EquipmentRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new EquipmentRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(EquipmentRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.EquipmentRowChanged != null)) {
+                    this.EquipmentRowChanged(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.EquipmentRowChanging != null)) {
+                    this.EquipmentRowChanging(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.EquipmentRowDeleted != null)) {
+                    this.EquipmentRowDeleted(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.EquipmentRowDeleting != null)) {
+                    this.EquipmentRowDeleting(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveEquipmentRow(EquipmentRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "EquipmentDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class EquipmentVirtueDataTable : global::System.Data.TypedTableBase<EquipmentVirtueRow> {
+            
+            private global::System.Data.DataColumn columnEqpID;
+            
+            private global::System.Data.DataColumn columnVrtID;
+            
+            private global::System.Data.DataColumn columnValue;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueDataTable() {
+                this.TableName = "EquipmentVirtue";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal EquipmentVirtueDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected EquipmentVirtueDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EqpIDColumn {
+                get {
+                    return this.columnEqpID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VrtIDColumn {
+                get {
+                    return this.columnVrtID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ValueColumn {
+                get {
+                    return this.columnValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow this[int index] {
+                get {
+                    return ((EquipmentVirtueRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentVirtueRowChangeEventHandler EquipmentVirtueRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentVirtueRowChangeEventHandler EquipmentVirtueRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentVirtueRowChangeEventHandler EquipmentVirtueRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event EquipmentVirtueRowChangeEventHandler EquipmentVirtueRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddEquipmentVirtueRow(EquipmentVirtueRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow AddEquipmentVirtueRow(EquipmentRow parentEquipmentRowByFK_Equipment_SamplerVirtue, VirtueRow parentVirtueRowByFK_Virtue_SamplerVirtue, double Value) {
+                EquipmentVirtueRow rowEquipmentVirtueRow = ((EquipmentVirtueRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        Value};
+                if ((parentEquipmentRowByFK_Equipment_SamplerVirtue != null)) {
+                    columnValuesArray[0] = parentEquipmentRowByFK_Equipment_SamplerVirtue[0];
+                }
+                if ((parentVirtueRowByFK_Virtue_SamplerVirtue != null)) {
+                    columnValuesArray[1] = parentVirtueRowByFK_Virtue_SamplerVirtue[0];
+                }
+                rowEquipmentVirtueRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEquipmentVirtueRow);
+                return rowEquipmentVirtueRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow FindByEqpIDVrtID(int EqpID, int VrtID) {
+                return ((EquipmentVirtueRow)(this.Rows.Find(new object[] {
+                            EqpID,
+                            VrtID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                EquipmentVirtueDataTable cln = ((EquipmentVirtueDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new EquipmentVirtueDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnEqpID = base.Columns["EqpID"];
+                this.columnVrtID = base.Columns["VrtID"];
+                this.columnValue = base.Columns["Value"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnEqpID = new global::System.Data.DataColumn("EqpID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEqpID);
+                this.columnVrtID = new global::System.Data.DataColumn("VrtID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVrtID);
+                this.columnValue = new global::System.Data.DataColumn("Value", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValue);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnEqpID,
+                                this.columnVrtID}, true));
+                this.columnEqpID.AllowDBNull = false;
+                this.columnVrtID.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow NewEquipmentVirtueRow() {
+                return ((EquipmentVirtueRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new EquipmentVirtueRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(EquipmentVirtueRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.EquipmentVirtueRowChanged != null)) {
+                    this.EquipmentVirtueRowChanged(this, new EquipmentVirtueRowChangeEvent(((EquipmentVirtueRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.EquipmentVirtueRowChanging != null)) {
+                    this.EquipmentVirtueRowChanging(this, new EquipmentVirtueRowChangeEvent(((EquipmentVirtueRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.EquipmentVirtueRowDeleted != null)) {
+                    this.EquipmentVirtueRowDeleted(this, new EquipmentVirtueRowChangeEvent(((EquipmentVirtueRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.EquipmentVirtueRowDeleting != null)) {
+                    this.EquipmentVirtueRowDeleting(this, new EquipmentVirtueRowChangeEvent(((EquipmentVirtueRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveEquipmentVirtueRow(EquipmentVirtueRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Survey ds = new Survey();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "EquipmentVirtueDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -6587,292 +7222,15 @@ namespace Mayfly.Wild {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EquipmentDataTable : global::System.Data.TypedTableBase<EquipmentRow> {
-            
-            private global::System.Data.DataColumn columnID;
+        public partial class SamplerVirtueDataTable : global::System.Data.TypedTableBase<SamplerVirtueRow> {
             
             private global::System.Data.DataColumn columnSmpID;
             
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentDataTable() {
-                this.TableName = "Equipment";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal EquipmentDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected EquipmentDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SmpIDColumn {
-                get {
-                    return this.columnSmpID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow this[int index] {
-                get {
-                    return ((EquipmentRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EquipmentRowChangeEventHandler EquipmentRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EquipmentRowChangeEventHandler EquipmentRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EquipmentRowChangeEventHandler EquipmentRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event EquipmentRowChangeEventHandler EquipmentRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddEquipmentRow(EquipmentRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow AddEquipmentRow(SamplerRow parentSamplerRowByFK_Sampler_Equipment) {
-                EquipmentRow rowEquipmentRow = ((EquipmentRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null};
-                if ((parentSamplerRowByFK_Sampler_Equipment != null)) {
-                    columnValuesArray[1] = parentSamplerRowByFK_Sampler_Equipment[0];
-                }
-                rowEquipmentRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowEquipmentRow);
-                return rowEquipmentRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow FindByID(int ID) {
-                return ((EquipmentRow)(this.Rows.Find(new object[] {
-                            ID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                EquipmentDataTable cln = ((EquipmentDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new EquipmentDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnSmpID = base.Columns["SmpID"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnSmpID = new global::System.Data.DataColumn("SmpID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSmpID);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
-                this.columnSmpID.Caption = "Sampler";
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow NewEquipmentRow() {
-                return ((EquipmentRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new EquipmentRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(EquipmentRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.EquipmentRowChanged != null)) {
-                    this.EquipmentRowChanged(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.EquipmentRowChanging != null)) {
-                    this.EquipmentRowChanging(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.EquipmentRowDeleted != null)) {
-                    this.EquipmentRowDeleted(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.EquipmentRowDeleting != null)) {
-                    this.EquipmentRowDeleting(this, new EquipmentRowChangeEvent(((EquipmentRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveEquipmentRow(EquipmentRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Survey ds = new Survey();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "EquipmentDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SamplerVirtueDataTable : global::System.Data.TypedTableBase<SamplerVirtueRow> {
-            
-            private global::System.Data.DataColumn columnEqpID;
-            
             private global::System.Data.DataColumn columnVrtID;
             
-            private global::System.Data.DataColumn columnValue;
+            private global::System.Data.DataColumn columnClass;
+            
+            private global::System.Data.DataColumn columnEffort;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -6909,9 +7267,9 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EqpIDColumn {
+            public global::System.Data.DataColumn SmpIDColumn {
                 get {
-                    return this.columnEqpID;
+                    return this.columnSmpID;
                 }
             }
             
@@ -6925,9 +7283,17 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ValueColumn {
+            public global::System.Data.DataColumn ClassColumn {
                 get {
-                    return this.columnValue;
+                    return this.columnClass;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EffortColumn {
+                get {
+                    return this.columnEffort;
                 }
             }
             
@@ -6968,17 +7334,18 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow AddSamplerVirtueRow(EquipmentRow parentEquipmentRowByFK_Equipment_SamplerVirtue, VirtueRow parentVirtueRowByFK_Virtue_SamplerVirtue, double Value) {
+            public SamplerVirtueRow AddSamplerVirtueRow(SamplerRow parentSamplerRowByFK_Sampler_SampleVirtue, VirtueRow parentVirtueRowByFK_Virtue_SampleVirtue, bool Class, bool Effort) {
                 SamplerVirtueRow rowSamplerVirtueRow = ((SamplerVirtueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        Value};
-                if ((parentEquipmentRowByFK_Equipment_SamplerVirtue != null)) {
-                    columnValuesArray[0] = parentEquipmentRowByFK_Equipment_SamplerVirtue[0];
+                        Class,
+                        Effort};
+                if ((parentSamplerRowByFK_Sampler_SampleVirtue != null)) {
+                    columnValuesArray[0] = parentSamplerRowByFK_Sampler_SampleVirtue[0];
                 }
-                if ((parentVirtueRowByFK_Virtue_SamplerVirtue != null)) {
-                    columnValuesArray[1] = parentVirtueRowByFK_Virtue_SamplerVirtue[0];
+                if ((parentVirtueRowByFK_Virtue_SampleVirtue != null)) {
+                    columnValuesArray[1] = parentVirtueRowByFK_Virtue_SampleVirtue[0];
                 }
                 rowSamplerVirtueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSamplerVirtueRow);
@@ -6987,9 +7354,9 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow FindByEqpIDVrtID(int EqpID, int VrtID) {
+            public SamplerVirtueRow FindBySmpIDVrtID(int SmpID, int VrtID) {
                 return ((SamplerVirtueRow)(this.Rows.Find(new object[] {
-                            EqpID,
+                            SmpID,
                             VrtID})));
             }
             
@@ -7010,24 +7377,27 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnEqpID = base.Columns["EqpID"];
+                this.columnSmpID = base.Columns["SmpID"];
                 this.columnVrtID = base.Columns["VrtID"];
-                this.columnValue = base.Columns["Value"];
+                this.columnClass = base.Columns["Class"];
+                this.columnEffort = base.Columns["Effort"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnEqpID = new global::System.Data.DataColumn("EqpID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEqpID);
+                this.columnSmpID = new global::System.Data.DataColumn("SmpID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSmpID);
                 this.columnVrtID = new global::System.Data.DataColumn("VrtID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVrtID);
-                this.columnValue = new global::System.Data.DataColumn("Value", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnValue);
+                this.columnClass = new global::System.Data.DataColumn("Class", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClass);
+                this.columnEffort = new global::System.Data.DataColumn("Effort", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEffort);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnEqpID,
+                                this.columnSmpID,
                                 this.columnVrtID}, true));
-                this.columnEqpID.AllowDBNull = false;
+                this.columnSmpID.AllowDBNull = false;
                 this.columnVrtID.AllowDBNull = false;
             }
             
@@ -7490,17 +7860,17 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double ExactArea {
+            public double Square {
                 get {
                     try {
-                        return ((double)(this[this.tableCard.ExactAreaColumn]));
+                        return ((double)(this[this.tableCard.SquareColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ExactArea\' in table \'Card\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Square\' in table \'Card\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCard.ExactAreaColumn] = value;
+                    this[this.tableCard.SquareColumn] = value;
                 }
             }
             
@@ -7533,22 +7903,6 @@ namespace Mayfly.Wild {
                 }
                 set {
                     this[this.tableCard.SpanColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Velocity {
-                get {
-                    try {
-                        return ((double)(this[this.tableCard.VelocityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Velocity\' in table \'Card\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCard.VelocityColumn] = value;
                 }
             }
             
@@ -7812,14 +8166,14 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsExactAreaNull() {
-                return this.IsNull(this.tableCard.ExactAreaColumn);
+            public bool IsSquareNull() {
+                return this.IsNull(this.tableCard.SquareColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetExactAreaNull() {
-                this[this.tableCard.ExactAreaColumn] = global::System.Convert.DBNull;
+            public void SetSquareNull() {
+                this[this.tableCard.SquareColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7844,18 +8198,6 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetSpanNull() {
                 this[this.tableCard.SpanColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsVelocityNull() {
-                return this.IsNull(this.tableCard.VelocityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetVelocityNull() {
-                this[this.tableCard.VelocityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9566,11 +9908,22 @@ namespace Mayfly.Wild {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SamplerVirtueRow[] GetSamplerVirtueRows() {
-                if ((this.Table.ChildRelations["FK_Virtue_SamplerVirtue"] == null)) {
+                if ((this.Table.ChildRelations["FK_Virtue_SampleVirtue"] == null)) {
                     return new SamplerVirtueRow[0];
                 }
                 else {
-                    return ((SamplerVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Virtue_SamplerVirtue"])));
+                    return ((SamplerVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Virtue_SampleVirtue"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow[] GetEquipmentVirtueRows() {
+                if ((this.Table.ChildRelations["FK_Virtue_SamplerVirtue"] == null)) {
+                    return new EquipmentVirtueRow[0];
+                }
+                else {
+                    return ((EquipmentVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Virtue_SamplerVirtue"])));
                 }
             }
         }
@@ -9714,6 +10067,22 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int EffortBy {
+                get {
+                    try {
+                        return ((int)(this[this.tableSampler.EffortByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EffortBy\' in table \'Sampler\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSampler.EffortByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public double EffortValue {
                 get {
                     try {
@@ -9821,6 +10190,18 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEffortByNull() {
+                return this.IsNull(this.tableSampler.EffortByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEffortByNull() {
+                this[this.tableSampler.EffortByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEffortValueNull() {
                 return this.IsNull(this.tableSampler.EffortValueColumn);
             }
@@ -9857,6 +10238,17 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow[] GetEquipmentRows() {
+                if ((this.Table.ChildRelations["FK_Sampler_Equipment"] == null)) {
+                    return new EquipmentRow[0];
+                }
+                else {
+                    return ((EquipmentRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Sampler_Equipment"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public UnitRow[] GetUnitRows() {
                 if ((this.Table.ChildRelations["FK_t_Gear_t_Unit"] == null)) {
                     return new UnitRow[0];
@@ -9868,13 +10260,187 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow[] GetEquipmentRows() {
-                if ((this.Table.ChildRelations["FK_Sampler_Equipment"] == null)) {
-                    return new EquipmentRow[0];
+            public SamplerVirtueRow[] GetSamplerVirtueRows() {
+                if ((this.Table.ChildRelations["FK_Sampler_SampleVirtue"] == null)) {
+                    return new SamplerVirtueRow[0];
                 }
                 else {
-                    return ((EquipmentRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Sampler_Equipment"])));
+                    return ((SamplerVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Sampler_SampleVirtue"])));
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class EquipmentRow : global::System.Data.DataRow {
+            
+            private EquipmentDataTable tableEquipment;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal EquipmentRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableEquipment = ((EquipmentDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableEquipment.IDColumn]));
+                }
+                set {
+                    this[this.tableEquipment.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SmpID {
+                get {
+                    try {
+                        return ((int)(this[this.tableEquipment.SmpIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SmpID\' in table \'Equipment\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEquipment.SmpIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerRow SamplerRow {
+                get {
+                    return ((SamplerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sampler_Equipment"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Sampler_Equipment"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSmpIDNull() {
+                return this.IsNull(this.tableEquipment.SmpIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSmpIDNull() {
+                this[this.tableEquipment.SmpIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentVirtueRow[] GetEquipmentVirtueRows() {
+                if ((this.Table.ChildRelations["FK_Equipment_SamplerVirtue"] == null)) {
+                    return new EquipmentVirtueRow[0];
+                }
+                else {
+                    return ((EquipmentVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipment_SamplerVirtue"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public CardRow[] GetCardRows() {
+                if ((this.Table.ChildRelations["FK_Equipment_Card"] == null)) {
+                    return new CardRow[0];
+                }
+                else {
+                    return ((CardRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipment_Card"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class EquipmentVirtueRow : global::System.Data.DataRow {
+            
+            private EquipmentVirtueDataTable tableEquipmentVirtue;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal EquipmentVirtueRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableEquipmentVirtue = ((EquipmentVirtueDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int EqpID {
+                get {
+                    return ((int)(this[this.tableEquipmentVirtue.EqpIDColumn]));
+                }
+                set {
+                    this[this.tableEquipmentVirtue.EqpIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int VrtID {
+                get {
+                    return ((int)(this[this.tableEquipmentVirtue.VrtIDColumn]));
+                }
+                set {
+                    this[this.tableEquipmentVirtue.VrtIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Value {
+                get {
+                    try {
+                        return ((double)(this[this.tableEquipmentVirtue.ValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Value\' in table \'EquipmentVirtue\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEquipmentVirtue.ValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public EquipmentRow EquipmentRow {
+                get {
+                    return ((EquipmentRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipment_SamplerVirtue"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipment_SamplerVirtue"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VirtueRow VirtueRow {
+                get {
+                    return ((VirtueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Virtue_SamplerVirtue"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Virtue_SamplerVirtue"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsValueNull() {
+                return this.IsNull(this.tableEquipmentVirtue.ValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetValueNull() {
+                this[this.tableEquipmentVirtue.ValueColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10114,93 +10680,6 @@ namespace Mayfly.Wild {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class EquipmentRow : global::System.Data.DataRow {
-            
-            private EquipmentDataTable tableEquipment;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal EquipmentRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableEquipment = ((EquipmentDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableEquipment.IDColumn]));
-                }
-                set {
-                    this[this.tableEquipment.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int SmpID {
-                get {
-                    try {
-                        return ((int)(this[this.tableEquipment.SmpIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SmpID\' in table \'Equipment\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableEquipment.SmpIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerRow SamplerRow {
-                get {
-                    return ((SamplerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sampler_Equipment"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Sampler_Equipment"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSmpIDNull() {
-                return this.IsNull(this.tableEquipment.SmpIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSmpIDNull() {
-                this[this.tableEquipment.SmpIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SamplerVirtueRow[] GetSamplerVirtueRows() {
-                if ((this.Table.ChildRelations["FK_Equipment_SamplerVirtue"] == null)) {
-                    return new SamplerVirtueRow[0];
-                }
-                else {
-                    return ((SamplerVirtueRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipment_SamplerVirtue"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public CardRow[] GetCardRows() {
-                if ((this.Table.ChildRelations["FK_Equipment_Card"] == null)) {
-                    return new CardRow[0];
-                }
-                else {
-                    return ((CardRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipment_Card"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class SamplerVirtueRow : global::System.Data.DataRow {
             
             private SamplerVirtueDataTable tableSamplerVirtue;
@@ -10214,12 +10693,12 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int EqpID {
+            public int SmpID {
                 get {
-                    return ((int)(this[this.tableSamplerVirtue.EqpIDColumn]));
+                    return ((int)(this[this.tableSamplerVirtue.SmpIDColumn]));
                 }
                 set {
-                    this[this.tableSamplerVirtue.EqpIDColumn] = value;
+                    this[this.tableSamplerVirtue.SmpIDColumn] = value;
                 }
             }
             
@@ -10236,28 +10715,44 @@ namespace Mayfly.Wild {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Value {
+            public bool Class {
                 get {
                     try {
-                        return ((double)(this[this.tableSamplerVirtue.ValueColumn]));
+                        return ((bool)(this[this.tableSamplerVirtue.ClassColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Value\' in table \'SamplerVirtue\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Class\' in table \'SamplerVirtue\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSamplerVirtue.ValueColumn] = value;
+                    this[this.tableSamplerVirtue.ClassColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow EquipmentRow {
+            public bool Effort {
                 get {
-                    return ((EquipmentRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipment_SamplerVirtue"])));
+                    try {
+                        return ((bool)(this[this.tableSamplerVirtue.EffortColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Effort\' in table \'SamplerVirtue\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipment_SamplerVirtue"]);
+                    this[this.tableSamplerVirtue.EffortColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SamplerRow SamplerRow {
+                get {
+                    return ((SamplerRow)(this.GetParentRow(this.Table.ParentRelations["FK_Sampler_SampleVirtue"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Sampler_SampleVirtue"]);
                 }
             }
             
@@ -10265,23 +10760,35 @@ namespace Mayfly.Wild {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public VirtueRow VirtueRow {
                 get {
-                    return ((VirtueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Virtue_SamplerVirtue"])));
+                    return ((VirtueRow)(this.GetParentRow(this.Table.ParentRelations["FK_Virtue_SampleVirtue"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Virtue_SamplerVirtue"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Virtue_SampleVirtue"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsValueNull() {
-                return this.IsNull(this.tableSamplerVirtue.ValueColumn);
+            public bool IsClassNull() {
+                return this.IsNull(this.tableSamplerVirtue.ClassColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetValueNull() {
-                this[this.tableSamplerVirtue.ValueColumn] = global::System.Convert.DBNull;
+            public void SetClassNull() {
+                this[this.tableSamplerVirtue.ClassColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEffortNull() {
+                return this.IsNull(this.tableSamplerVirtue.EffortColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEffortNull() {
+                this[this.tableSamplerVirtue.EffortColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10799,22 +11306,22 @@ namespace Mayfly.Wild {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class UnitRowChangeEvent : global::System.EventArgs {
+        public class EquipmentRowChangeEvent : global::System.EventArgs {
             
-            private UnitRow eventRow;
+            private EquipmentRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public UnitRowChangeEvent(UnitRow row, global::System.Data.DataRowAction action) {
+            public EquipmentRowChangeEvent(EquipmentRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public UnitRow Row {
+            public EquipmentRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10833,22 +11340,56 @@ namespace Mayfly.Wild {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class EquipmentRowChangeEvent : global::System.EventArgs {
+        public class EquipmentVirtueRowChangeEvent : global::System.EventArgs {
             
-            private EquipmentRow eventRow;
+            private EquipmentVirtueRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRowChangeEvent(EquipmentRow row, global::System.Data.DataRowAction action) {
+            public EquipmentVirtueRowChangeEvent(EquipmentVirtueRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EquipmentRow Row {
+            public EquipmentVirtueRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class UnitRowChangeEvent : global::System.EventArgs {
+            
+            private UnitRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UnitRowChangeEvent(UnitRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UnitRow Row {
                 get {
                     return this.eventRow;
                 }

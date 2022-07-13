@@ -138,6 +138,10 @@ namespace Mayfly.Benthos
             Initiate();
         }
 
+        public BenthosCard(string filename) : this() {
+            load(filename);
+        }
+
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.labelBank = new System.Windows.Forms.Label();

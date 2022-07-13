@@ -120,6 +120,9 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="EmptySample" xml:space="preserve">
+    <value>Sample is empty</value>
+  </data>
   <data name="Frequency" xml:space="preserve">
     <value>Frequency</value>
   </data>

@@ -19,7 +19,7 @@ namespace Mayfly.Wild
             }
         }
 
-        private static FileSystemInterface Interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
+        public static FileSystemInterface Interface = new FileSystemInterface(new string[] { ".fcd", ".bcd", ".pcd" }, new string[] { ".html" });
 
         public static FileSystemInterface InterfaceBio = new FileSystemInterface(".bio");
 
@@ -208,7 +208,7 @@ namespace Mayfly.Wild
             get {
                 if (equiment == null) {
                     equiment = new Survey();
-                    samplersIndex.SetAttributable();
+                    equiment.SetAttributable();
                     string path = Path.Combine(IO.UserFolder, string.Format(@"equipment{0}.ini", Feature.ToLowerInvariant()));
                     if (File.Exists(path)) {
                         equiment.ReadXml(path);
@@ -329,6 +329,7 @@ namespace Mayfly.Wild
         }
 
         public static string[] CurrentVariables {
+
             get {
                 return (string[])GetValue(FeatureKey, nameof(CurrentVariables), new string[0]);
             }

@@ -46,246 +46,246 @@ namespace Mayfly.Benthos
             logRow.AddReport(report, speciesPresentation);
         }
 
-        /// <summary>
-        /// Adds Card (with specified detalization level) into Report
-        /// </summary>
-        /// <param name="cardRow"></param>
-        /// <param name="report"></param>
-        /// <param name="level"></param>
-        public static void AddReport(this Wild.Survey.CardRow cardRow, Report report, CardReportLevel level)
-        {
-            ResourceManager resources = new ResourceManager(typeof(Card));
+        ///// <summary>
+        ///// Adds Card (with specified detalization level) into Report
+        ///// </summary>
+        ///// <param name="cardRow"></param>
+        ///// <param name="report"></param>
+        ///// <param name="level"></param>
+        //public static void AddReport(this Wild.Survey.CardRow cardRow, Report report, CardReportLevel level)
+        //{
+        //    ResourceManager resources = new ResourceManager(typeof(Card));
 
-            if (level.HasFlag(CardReportLevel.Note))
-            {
-                report.AddSectionTitle(Wild.Resources.Reports.Header.SampleNote);
+        //    if (level.HasFlag(CardReportLevel.Note))
+        //    {
+        //        report.AddSectionTitle(Wild.Resources.Reports.Header.SampleNote);
 
-                #region Common
+        //        #region Common
 
-                Report.Table table1 = new Report.Table(Wild.Resources.Reports.Header.Common);
+        //        Report.Table table1 = new Report.Table(Wild.Resources.Reports.Header.Common);
 
-                table1.StartRow();
-                table1.AddCellPrompt(Wild.Resources.Reports.Card.Investigator,
-                    cardRow.Investigator, 2);
-                table1.EndRow();
+        //        table1.StartRow();
+        //        table1.AddCellPrompt(Wild.Resources.Reports.Card.Investigator,
+        //            cardRow.Investigator, 2);
+        //        table1.EndRow();
 
-                table1.StartRow();
-                table1.AddCellPrompt(resources.GetString("labelWater.Text"),
-                    cardRow.IsWaterIDNull() ? Constants.Null : cardRow.WaterRow.Presentation, 2);
-                table1.EndRow();
+        //        table1.StartRow();
+        //        table1.AddCellPrompt(resources.GetString("labelWater.Text"),
+        //            cardRow.IsWaterIDNull() ? Constants.Null : cardRow.WaterRow.Presentation, 2);
+        //        table1.EndRow();
 
-                table1.StartRow();
-                table1.AddCellPrompt(resources.GetString("labelLabel.Text"),
-                        cardRow.IsLabelNull() ? Constants.Null : cardRow.Label);
-                table1.AddCellPrompt(Wild.Resources.Reports.Card.When, cardRow.IsWhenNull() ? Constants.Null :
-                        (cardRow.When.ToShortDateString() + " " + cardRow.When.ToString("HH:mm")));
-                table1.EndRow();
+        //        table1.StartRow();
+        //        table1.AddCellPrompt(resources.GetString("labelLabel.Text"),
+        //                cardRow.IsLabelNull() ? Constants.Null : cardRow.Label);
+        //        table1.AddCellPrompt(Wild.Resources.Reports.Card.When, cardRow.IsWhenNull() ? Constants.Null :
+        //                (cardRow.When.ToShortDateString() + " " + cardRow.When.ToString("HH:mm")));
+        //        table1.EndRow();
 
-                table1.StartRow();
-                table1.AddCellPrompt(Wild.Resources.Reports.Card.Where,
-                    cardRow.IsWhereNull() ? Constants.Null : cardRow.Position.GetHTMLReference(), 2);
-                table1.EndRow();
-                report.AddTable(table1);
+        //        table1.StartRow();
+        //        table1.AddCellPrompt(Wild.Resources.Reports.Card.Where,
+        //            cardRow.IsWhereNull() ? Constants.Null : cardRow.Position.GetHTMLReference(), 2);
+        //        table1.EndRow();
+        //        report.AddTable(table1);
 
-                #endregion
+        //        #endregion
 
-                #region Sampler
+        //        #region Sampler
 
-                Report.Table table2 = new Report.Table(resources.GetString("labelMethod.Text"));
+        //        Report.Table table2 = new Report.Table(resources.GetString("labelMethod.Text"));
 
-                if (cardRow.IsSamplerNull())
-                {
-                    table2.StartRow();
-                    table2.AddCellPrompt(resources.GetString("labelSampler.Text"), Constants.Null, 2);
-                    table2.EndRow();
+        //        if (cardRow.IsSamplerNull())
+        //        {
+        //            table2.StartRow();
+        //            table2.AddCellPrompt(resources.GetString("labelSampler.Text"), Constants.Null, 2);
+        //            table2.EndRow();
 
-                    table2.StartRow();
-                    table2.AddCellPromptEmpty(resources.GetString("labelSquare.Text"));
-                    table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
-                    table2.EndRow();
+        //            table2.StartRow();
+        //            table2.AddCellPromptEmpty(resources.GetString("labelSquare.Text"));
+        //            table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
+        //            table2.EndRow();
 
-                    table2.StartRow();
-                    table2.AddCellPromptEmpty(resources.GetString("labelMesh.Text"));
-                    table2.AddCellPromptEmpty(resources.GetString("labelDepth.Text"));
-                    table2.EndRow();
-                }
-                else
-                {
-                    Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
+        //            table2.StartRow();
+        //            table2.AddCellPromptEmpty(resources.GetString("labelMesh.Text"));
+        //            table2.AddCellPromptEmpty(resources.GetString("labelDepth.Text"));
+        //            table2.EndRow();
+        //        }
+        //        else
+        //        {
+        //            Samplers.SamplerRow samplerRow = cardRow.SamplerRow;
 
-                    table2.StartRow();
-                    table2.AddCellPrompt(resources.GetString("labelSampler.Text"), samplerRow.Sampler, 2);
-                    table2.EndRow();
+        //            table2.StartRow();
+        //            table2.AddCellPrompt(resources.GetString("labelSampler.Text"), samplerRow.Sampler, 2);
+        //            table2.EndRow();
 
-                    table2.StartRow();
-                    if (cardRow.IsSquareNull())
-                    {
-                        table2.AddCellPromptEmpty(resources.GetString("labelSquare.Text"));
-                        table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
-                    }
-                    else
-                    {
-                        table2.AddCellPrompt(resources.GetString("labelSquare.Text"), cardRow.Square, "N4");
+        //            table2.StartRow();
+        //            if (cardRow.IsSquareNull())
+        //            {
+        //                table2.AddCellPromptEmpty(resources.GetString("labelSquare.Text"));
+        //                table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
+        //            }
+        //            else
+        //            {
+        //                table2.AddCellPrompt(resources.GetString("labelSquare.Text"), cardRow.Square, "N4");
 
-                        switch (samplerRow.GetSamplerType())
-                        {
-                            case BenthosSamplerType.Grabber:
-                                // Replies count equals to 
-                                // square divided by [standard effort] of grabber
-                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
-                                break;
-                            case BenthosSamplerType.Scraper:
-                                // Exposure length in centimeters equals to 
-                                // square divided by knife length (standard effort) of creeper multiplied by 100
-                                table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, 100 * (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
-                                break;
-                            default:
-                                table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
-                                break;
-                        }
-                    }
-                    table2.EndRow();
+        //                switch (samplerRow.GetSamplerType())
+        //                {
+        //                    case BenthosSamplerType.Grabber:
+        //                        // Replies count equals to 
+        //                        // square divided by [standard effort] of grabber
+        //                        table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
+        //                        break;
+        //                    case BenthosSamplerType.Scraper:
+        //                        // Exposure length in centimeters equals to 
+        //                        // square divided by knife length (standard effort) of creeper multiplied by 100
+        //                        table2.AddCellPrompt(Benthos.Resources.Interface.Interface.Repeats, 100 * (int)Math.Round(cardRow.Square / samplerRow.EffortValue, 0));
+        //                        break;
+        //                    default:
+        //                        table2.AddCellPromptEmpty(Benthos.Resources.Interface.Interface.Repeats);
+        //                        break;
+        //                }
+        //            }
+        //            table2.EndRow();
 
-                    table2.StartRow();
+        //            table2.StartRow();
 
-                    if (cardRow.IsMeshNull()) { table2.AddCellPromptEmpty(resources.GetString("labelMesh.Text")); }
-                    else { table2.AddCellPrompt(resources.GetString("labelMesh.Text"), cardRow.Mesh); }
+        //            if (cardRow.IsMeshNull()) { table2.AddCellPromptEmpty(resources.GetString("labelMesh.Text")); }
+        //            else { table2.AddCellPrompt(resources.GetString("labelMesh.Text"), cardRow.Mesh); }
 
-                    if (cardRow.IsDepthNull()) { table2.AddCellPromptEmpty(resources.GetString("labelDepth.Text")); }
-                    else { table2.AddCellPrompt(resources.GetString("labelDepth.Text"), cardRow.Depth); }
+        //            if (cardRow.IsDepthNull()) { table2.AddCellPromptEmpty(resources.GetString("labelDepth.Text")); }
+        //            else { table2.AddCellPrompt(resources.GetString("labelDepth.Text"), cardRow.Depth); }
 
-                    table2.EndRow();
-                }
-                report.AddTable(table2);
+        //            table2.EndRow();
+        //        }
+        //        report.AddTable(table2);
 
-                #endregion
+        //        #endregion
 
-                #region Site
+        //        #region Site
 
-                Report.Table table3 = new Report.Table(resources.GetString("labelSite.Text"));
+        //        Report.Table table3 = new Report.Table(resources.GetString("labelSite.Text"));
 
-                table3.StartRow();
-                if (cardRow.IsCrossSectionNull())
-                {
-                    table3.AddCellPromptEmpty(resources.GetString("labelCrossSection.Text"));
-                }
-                else
-                {
-                    WaterType waterType = cardRow.IsWaterIDNull() ? WaterType.None : (WaterType)cardRow.WaterRow.Type;
-                    table3.AddCellPrompt(resources.GetString("labelCrossSection.Text"), Wild.Service.CrossSection(waterType, cardRow.CrossSection));
-                }
-                if (cardRow.IsBankNull())
-                {
-                    table3.AddCellPromptEmpty(resources.GetString("labelBank.Text"));
-                }
-                else
-                {
-                    table3.AddCellPrompt(resources.GetString("labelBank.Text"), Wild.Service.Bank(cardRow.Bank));
-                }
-                table3.EndRow();
+        //        table3.StartRow();
+        //        if (cardRow.IsCrossSectionNull())
+        //        {
+        //            table3.AddCellPromptEmpty(resources.GetString("labelCrossSection.Text"));
+        //        }
+        //        else
+        //        {
+        //            WaterType waterType = cardRow.IsWaterIDNull() ? WaterType.None : (WaterType)cardRow.WaterRow.Type;
+        //            table3.AddCellPrompt(resources.GetString("labelCrossSection.Text"), Wild.Service.CrossSection(waterType, cardRow.CrossSection));
+        //        }
+        //        if (cardRow.IsBankNull())
+        //        {
+        //            table3.AddCellPromptEmpty(resources.GetString("labelBank.Text"));
+        //        }
+        //        else
+        //        {
+        //            table3.AddCellPrompt(resources.GetString("labelBank.Text"), Wild.Service.Bank(cardRow.Bank));
+        //        }
+        //        table3.EndRow();
 
-                report.AddTable(table3);
+        //        report.AddTable(table3);
 
-                #endregion
+        //        #endregion
 
-                if (!cardRow.IsSubstrateNull())
-                {
-                    report.AddTable(cardRow.GetSubstrate().GetReport());
-                }
+        //        if (!cardRow.IsSubstrateNull())
+        //        {
+        //            report.AddTable(cardRow.GetSubstrate().GetReport());
+        //        }
 
-                if (cardRow.IsEnvironmentDescribed)
-                {
-                    //Report.Table table1 = new Report.Table(resources.GetString("tabPageEnvironment.Text"));
+        //        if (cardRow.IsEnvironmentDescribed)
+        //        {
+        //            //Report.Table table1 = new Report.Table(resources.GetString("tabPageEnvironment.Text"));
 
-                    report.AddTable(cardRow.StateOfWater.GetReport());
-                    report.AddTable(cardRow.WeatherConditions.GetReport());
-                }
+        //            report.AddTable(cardRow.StateOfWater.GetReport());
+        //            report.AddTable(cardRow.WeatherConditions.GetReport());
+        //        }
 
-                #region Additional Factors
+        //        #region Additional Factors
 
-                if (cardRow.GetFactorValueRows().Length > 0)
-                {
-                    Report.Table table4 = new Report.Table(resources.GetString("labelFactors.Text"));
-                    table4.AddHeader(new string[]{ Wild.Resources.Reports.Caption.Factor,
-                            Wild.Resources.Reports.Caption.FactorValue }, new double[] { .80 });
+        //        if (cardRow.GetFactorValueRows().Length > 0)
+        //        {
+        //            Report.Table table4 = new Report.Table(resources.GetString("labelFactors.Text"));
+        //            table4.AddHeader(new string[]{ Wild.Resources.Reports.Caption.Factor,
+        //                    Wild.Resources.Reports.Caption.FactorValue }, new double[] { .80 });
 
-                    foreach (Wild.Survey.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
-                    {
-                        table4.StartRow();
-                        table4.AddCell(factorValueRow.FactorRow.Factor);
-                        table4.AddCellRight(factorValueRow.Value);
-                        table4.EndRow();
-                    }
+        //            foreach (Wild.Survey.FactorValueRow factorValueRow in cardRow.GetFactorValueRows())
+        //            {
+        //                table4.StartRow();
+        //                table4.AddCell(factorValueRow.FactorRow.Factor);
+        //                table4.AddCellRight(factorValueRow.Value);
+        //                table4.EndRow();
+        //            }
 
-                    report.AddTable(table4);
-                }
+        //            report.AddTable(table4);
+        //        }
 
-                #endregion
+        //        #endregion
 
-                #region Comments
+        //        #region Comments
 
-                Report.Table table5 = new Report.Table(Wild.Resources.Reports.Card.Comments);
+        //        Report.Table table5 = new Report.Table(Wild.Resources.Reports.Card.Comments);
 
-                table5.StartRow();
-                if (cardRow.IsCommentsNull())
-                {
-                    table5.AddCell(Constants.Null);
-                }
-                else
-                {
-                    table5.AddCell(cardRow.Comments);
-                }
-                table5.EndRow();
-                report.AddTable(table5);
+        //        table5.StartRow();
+        //        if (cardRow.IsCommentsNull())
+        //        {
+        //            table5.AddCell(Constants.Null);
+        //        }
+        //        else
+        //        {
+        //            table5.AddCell(cardRow.Comments);
+        //        }
+        //        table5.EndRow();
+        //        report.AddTable(table5);
 
-                #endregion
-            }
+        //        #endregion
+        //    }
 
-            if (level.HasFlag(CardReportLevel.Log))
-            {
-                Wild.Survey.LogRow[] logRows = cardRow.GetLogRows(LogOrder);
+        //    if (level.HasFlag(CardReportLevel.Log))
+        //    {
+        //        Wild.Survey.LogRow[] logRows = cardRow.GetLogRows(LogOrder);
 
-                report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
+        //        report.AddSectionTitle(resources.GetString("tabPageLog.Text"));
 
-                if (logRows.Length == 0)
-                {
-                    report.AddParagraph(Resources.Common.EmptySample);
-                }
-                else
-                {
-                    //report.BreakPage();
-                    report.AddTable(cardRow.GetLogReport(resources.GetString("ColumnMass.HeaderText"), string.Empty));
-                }
-            }
+        //        if (logRows.Length == 0)
+        //        {
+        //            report.AddParagraph(Resources.Common.EmptySample);
+        //        }
+        //        else
+        //        {
+        //            //report.BreakPage();
+        //            report.AddTable(cardRow.GetLogReport(resources.GetString("ColumnMass.HeaderText"), string.Empty));
+        //        }
+        //    }
 
-            List<Wild.Survey.IndividualRow> individualRows = new List<Wild.Survey.IndividualRow>();
-            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
-            {
-                individualRows.AddRange(logRow.GetIndividualRows());
-            }
+        //    List<Wild.Survey.IndividualRow> individualRows = new List<Wild.Survey.IndividualRow>();
+        //    foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
+        //    {
+        //        individualRows.AddRange(logRow.GetIndividualRows());
+        //    }
 
-            if (individualRows.Count > 0)
-            {
-                if (level.HasFlag(CardReportLevel.Individuals))
-                {
-                    if (BreakBeforeIndividuals) { report.BreakPage(); }
-                    report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
-                    foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
-                    {
-                        logRow.AddReport(report);
-                        if (BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
-                    }
-                }
+        //    if (individualRows.Count > 0)
+        //    {
+        //        if (level.HasFlag(CardReportLevel.Individuals))
+        //        {
+        //            if (BreakBeforeIndividuals) { report.BreakPage(); }
+        //            report.AddSectionTitle(Wild.Resources.Reports.Header.IndividualsLog);
+        //            foreach (Wild.Survey.LogRow logRow in cardRow.GetLogRows())
+        //            {
+        //                logRow.AddReport(report);
+        //                if (BreakBetweenSpecies && cardRow.GetLogRows().Last() != logRow) { report.BreakPage(); }
+        //            }
+        //        }
 
 
-                if (level.HasFlag(CardReportLevel.Profile))
-                {
-                    // TODO: Implement individual reports when 
-                    // individual profiles will be implemented
-                }
+        //        if (level.HasFlag(CardReportLevel.Profile))
+        //        {
+        //            // TODO: Implement individual reports when 
+        //            // individual profiles will be implemented
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
 
 

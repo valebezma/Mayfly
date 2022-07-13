@@ -71,12 +71,6 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Messages.ru.resx" />
-    <Compile Include="Card.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Card.designer.cs">
-      <DependentUpon>Card.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\Data.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="Individuals.cs">
@@ -115,14 +109,6 @@
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Card.resx">
-      <DependentUpon>Card.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Card.ru.resx">
-      <DependentUpon>Card.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

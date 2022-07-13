@@ -288,7 +288,7 @@ namespace Mayfly.Benthos
 
         public Report.Table GetReport()
         {
-            ResourceManager resources = new ResourceManager(typeof(Card));
+            ResourceManager resources = new ResourceManager(typeof(BenthosCard));
 
             Report.Table table1 = new Report.Table(resources.GetString("tabPageSubstrate.Text"));
 
@@ -540,7 +540,7 @@ namespace Mayfly.Benthos
 
         public static string TypeTrivia(SubstrateType type)
         {
-            ResourceManager resources = new ResourceManager(typeof(Card));
+            ResourceManager resources = new ResourceManager(typeof(BenthosCard));
             return resources.GetString("ItemSub" + type.ToString() + ".Text");
         }
     }

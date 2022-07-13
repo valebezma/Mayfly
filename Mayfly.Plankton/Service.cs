@@ -8,9 +8,9 @@ namespace Mayfly.Plankton
 {
     public abstract class Service
     {
-        public static Samplers.SamplerRow Sampler(int id)
+        public static Survey.SamplerRow Sampler(int id)
         {
-            return UserSettings.SamplersIndex.Sampler.FindByID(id);
+            return ReaderSettings.SamplersIndex.Sampler.FindByID(id);
         }
 
         public static double GetStrate(double length)

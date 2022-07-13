@@ -21,12 +21,12 @@ using System.Windows.Forms;
 using static Mayfly.Fish.UserSettings;
 using static Mayfly.Wild.UserSettings;
 using static Mayfly.UserSettings;
+using Mayfly.Extensions;
 
 namespace Mayfly.Fish
 {
     public class FishCard : Wild.Card
     {
-        private System.Windows.Forms.Panel panelLS;
         private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
         private System.Windows.Forms.DateTimePicker dateTimePickerStart;
         private System.Windows.Forms.PictureBox pictureBoxWarnExposure;
@@ -43,9 +43,6 @@ namespace Mayfly.Fish
         private System.Windows.Forms.TextBox textBoxEfforts;
         private System.Windows.Forms.TextBox textBoxHook;
         private System.Windows.Forms.Label labelEfforts;
-        private System.Windows.Forms.Panel panelGeoData;
-        private System.Windows.Forms.TextBox textBoxExactArea;
-        private System.Windows.Forms.Label labelExactArea;
         private System.Windows.Forms.TextBox textBoxArea;
         private System.Windows.Forms.Label labelArea;
         private System.Windows.Forms.Label labelLength;
@@ -75,27 +72,29 @@ namespace Mayfly.Fish
 
         private bool AllowEffortCalculation { get; set; }
         private bool preciseMode;
-        private bool PreciseAreaMode {
+        private bool preciseAreaMode {
             get {
                 return preciseMode;
             }
 
             set {
                 preciseMode = value;
-
-                panelLS.Visible = !preciseMode;
-                panelGeoData.Visible = preciseMode;
-
-                //if (value)
-                //{
-                //    panelH.Top = 257+26;
-                //}
-                //else
-                //{
-                //    panelH.Top = 336;
-                //}
-
+                dateTimePickerStart.Enabled =
+                    dateTimePickerEnd.Enabled =
+                    textBoxExposure.Enabled =
+                    !preciseMode;
             }
+        }
+
+
+
+        public FishCard() : base() {
+            InitializeComponent();
+            Initiate();
+        }
+
+        public FishCard(string filename) : this() {
+            load(filename);
         }
 
 
@@ -104,9 +103,6 @@ namespace Mayfly.Fish
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FishCard));
             this.textBoxHook = new System.Windows.Forms.TextBox();
-            this.textBoxExactArea = new System.Windows.Forms.TextBox();
-            this.labelExactArea = new System.Windows.Forms.Label();
-            this.panelGeoData = new System.Windows.Forms.Panel();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.pictureBoxWarnExposure = new System.Windows.Forms.PictureBox();
@@ -117,7 +113,6 @@ namespace Mayfly.Fish
             this.labelOperationEnd = new System.Windows.Forms.Label();
             this.labelOperation = new System.Windows.Forms.Label();
             this.labelDuration = new System.Windows.Forms.Label();
-            this.panelLS = new System.Windows.Forms.Panel();
             this.labelLength = new System.Windows.Forms.Label();
             this.pictureBoxWarnOpening = new System.Windows.Forms.PictureBox();
             this.textBoxLength = new System.Windows.Forms.TextBox();
@@ -154,9 +149,7 @@ namespace Mayfly.Fish
             this.tabControl.SuspendLayout();
             this.tabPageEnvironment.SuspendLayout();
             this.tabPageSampler.SuspendLayout();
-            this.panelGeoData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).BeginInit();
-            this.panelLS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,13 +176,22 @@ namespace Mayfly.Fish
             // 
             // tabPageSampler
             // 
+            this.tabPageSampler.Controls.Add(this.dateTimePickerEnd);
             this.tabPageSampler.Controls.Add(this.textBoxVolume);
+            this.tabPageSampler.Controls.Add(this.dateTimePickerStart);
+            this.tabPageSampler.Controls.Add(this.pictureBoxWarnExposure);
             this.tabPageSampler.Controls.Add(this.label17);
+            this.tabPageSampler.Controls.Add(this.labelExposure);
+            this.tabPageSampler.Controls.Add(this.textBoxExposure);
             this.tabPageSampler.Controls.Add(this.labelVolume);
+            this.tabPageSampler.Controls.Add(this.labelOperationEnd);
+            this.tabPageSampler.Controls.Add(this.textBoxVelocity);
+            this.tabPageSampler.Controls.Add(this.labelOperation);
+            this.tabPageSampler.Controls.Add(this.labelDuration);
+            this.tabPageSampler.Controls.Add(this.labelVelocity);
             this.tabPageSampler.Controls.Add(this.textBoxEfforts);
             this.tabPageSampler.Controls.Add(this.textBoxHook);
             this.tabPageSampler.Controls.Add(this.labelEfforts);
-            this.tabPageSampler.Controls.Add(this.panelGeoData);
             this.tabPageSampler.Controls.Add(this.textBoxArea);
             this.tabPageSampler.Controls.Add(this.labelArea);
             this.tabPageSampler.Controls.Add(this.labelLength);
@@ -205,9 +207,7 @@ namespace Mayfly.Fish
             this.tabPageSampler.Controls.Add(this.textBoxSquare);
             this.tabPageSampler.Controls.Add(this.labelSquare);
             this.tabPageSampler.Controls.Add(this.textBoxMesh);
-            this.tabPageSampler.Controls.Add(this.panelLS);
             this.tabPageSampler.TextChanged += new System.EventHandler(this.sampler_Changed);
-            this.tabPageSampler.Controls.SetChildIndex(this.panelLS, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxMesh, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSquare, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxSquare, 0);
@@ -223,17 +223,26 @@ namespace Mayfly.Fish
             this.tabPageSampler.Controls.SetChildIndex(this.labelLength, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelArea, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxArea, 0);
-            this.tabPageSampler.Controls.SetChildIndex(this.panelGeoData, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelEfforts, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxHook, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxEfforts, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelSampler, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelMethod, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelVelocity, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelDuration, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelOperation, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.textBoxVelocity, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelOperationEnd, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.labelVolume, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.textBoxExposure, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.comboBoxSampler, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.labelExposure, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.label17, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.pictureBoxWarnExposure, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.buttonEquipment, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.dateTimePickerStart, 0);
             this.tabPageSampler.Controls.SetChildIndex(this.textBoxVolume, 0);
+            this.tabPageSampler.Controls.SetChildIndex(this.dateTimePickerEnd, 0);
             // 
             // labelSampler
             // 
@@ -253,25 +262,6 @@ namespace Mayfly.Fish
             this.textBoxHook.Name = "textBoxHook";
             this.textBoxHook.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
             this.textBoxHook.TextChanged += new System.EventHandler(this.textBoxValue_TextChanged);
-            // 
-            // textBoxExactArea
-            // 
-            resources.ApplyResources(this.textBoxExactArea, "textBoxExactArea");
-            this.textBoxExactArea.Name = "textBoxExactArea";
-            this.textBoxExactArea.ReadOnly = true;
-            this.textBoxExactArea.EnabledChanged += new System.EventHandler(this.samplerValue_EnabledChanged);
-            // 
-            // labelExactArea
-            // 
-            resources.ApplyResources(this.labelExactArea, "labelExactArea");
-            this.labelExactArea.Name = "labelExactArea";
-            // 
-            // panelGeoData
-            // 
-            resources.ApplyResources(this.panelGeoData, "panelGeoData");
-            this.panelGeoData.Controls.Add(this.textBoxExactArea);
-            this.panelGeoData.Controls.Add(this.labelExactArea);
-            this.panelGeoData.Name = "panelGeoData";
             // 
             // dateTimePickerEnd
             // 
@@ -337,21 +327,6 @@ namespace Mayfly.Fish
             resources.ApplyResources(this.labelDuration, "labelDuration");
             this.labelDuration.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelDuration.Name = "labelDuration";
-            // 
-            // panelLS
-            // 
-            resources.ApplyResources(this.panelLS, "panelLS");
-            this.panelLS.Controls.Add(this.dateTimePickerEnd);
-            this.panelLS.Controls.Add(this.dateTimePickerStart);
-            this.panelLS.Controls.Add(this.pictureBoxWarnExposure);
-            this.panelLS.Controls.Add(this.labelExposure);
-            this.panelLS.Controls.Add(this.textBoxExposure);
-            this.panelLS.Controls.Add(this.textBoxVelocity);
-            this.panelLS.Controls.Add(this.labelVelocity);
-            this.panelLS.Controls.Add(this.labelOperationEnd);
-            this.panelLS.Controls.Add(this.labelOperation);
-            this.panelLS.Controls.Add(this.labelDuration);
-            this.panelLS.Name = "panelLS";
             // 
             // labelLength
             // 
@@ -544,11 +519,7 @@ namespace Mayfly.Fish
             this.tabPageEnvironment.PerformLayout();
             this.tabPageSampler.ResumeLayout(false);
             this.tabPageSampler.PerformLayout();
-            this.panelGeoData.ResumeLayout(false);
-            this.panelGeoData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnExposure)).EndInit();
-            this.panelLS.ResumeLayout(false);
-            this.panelLS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarnOpening)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -573,32 +544,7 @@ namespace Mayfly.Fish
             textBoxDepth.Text = string.Empty;
         }
 
-        private void saveSamplerValues() { 
-
-            if (SelectedSampler == null) {
-                data.Solitary.SetSamplerNull();
-                ReaderSettings.SelectedSampler = null;
-            } else {
-                data.Solitary.Sampler = SelectedSampler.ID;
-                ReaderSettings.SelectedSampler = SelectedSampler;
-
-                if (textBoxMesh.Enabled && textBoxMesh.Text.IsDoubleConvertible()) {
-                    data.Solitary.Mesh = (int)double.Parse(textBoxMesh.Text);
-                } else {
-                    data.Solitary.SetMeshNull();
-                }
-            }
-
-            if (PreciseAreaMode) {
-                if (textBoxExactArea.Text.IsDoubleConvertible())
-                    data.Solitary.ExactArea = 10000d * double.Parse(textBoxExactArea.Text);
-            }
-
-            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("H") && textBoxHeight.Text.IsDoubleConvertible()) {
-                data.Solitary.Height = double.Parse(textBoxHeight.Text);
-            } else {
-                data.Solitary.SetHeightNull();
-            }
+        private void saveEffort() {
 
             if (textBoxDepth.Text.IsDoubleConvertible()) {
                 data.Solitary.Depth = double.Parse(textBoxDepth.Text);
@@ -606,50 +552,18 @@ namespace Mayfly.Fish
                 data.Solitary.SetDepthNull();
             }
 
-            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("M") && textBoxMesh.Text.IsDoubleConvertible()) {
-                data.Solitary.Mesh = int.Parse(textBoxMesh.Text);
+            if (preciseAreaMode) {
+                if (textBoxArea.Text.IsDoubleConvertible())
+                    data.Solitary.Square = 10000d * double.Parse(textBoxArea.Text);
             } else {
-                data.Solitary.SetMeshNull();
-            }
 
-            if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("J") && textBoxHook.Text.IsDoubleConvertible()) {
-                data.Solitary.Hook = (int)double.Parse(textBoxHook.Text);
-            } else {
-                data.Solitary.SetHookNull();
-            }
-
-            if (data.Solitary.IsExactAreaNull()) {
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("L") && textBoxLength.Text.IsDoubleConvertible()) {
-                    data.Solitary.Length = double.Parse(textBoxLength.Text);
-                } else {
-                    data.Solitary.SetLengthNull();
-                }
-
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("O") && textBoxOpening.Text.IsDoubleConvertible()) {
-                    data.Solitary.Opening = double.Parse(textBoxOpening.Text);
-                } else {
-                    data.Solitary.SetOpeningNull();
-                }
-
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("S") && textBoxSquare.Text.IsDoubleConvertible()) {
-                    data.Solitary.Square = double.Parse(textBoxSquare.Text);
-                } else {
-                    data.Solitary.SetSquareNull();
-                }
-
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("T")) {
+                if (dateTimePickerEnd.Enabled) {
                     data.Solitary.Span = (int)(waypointControl1.Waypoint.TimeMark - dateTimePickerStart.Value).TotalMinutes;
                 } else {
                     data.Solitary.SetSpanNull();
                 }
 
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("V") && textBoxVelocity.Text.IsDoubleConvertible()) {
-                    data.Solitary.Velocity = double.Parse(textBoxVelocity.Text);
-                } else {
-                    data.Solitary.SetVelocityNull();
-                }
-
-                if (SelectedSampler != null && SelectedSampler.EffortFormula.Contains("E") && textBoxExposure.Text.IsDoubleConvertible()) {
+                if (textBoxExposure.Enabled) {
                     data.Solitary.Exposure = double.Parse(textBoxExposure.Text);
                 } else {
                     data.Solitary.SetExposureNull();
@@ -657,33 +571,14 @@ namespace Mayfly.Fish
             }
         }
 
-        private void saveGear(Survey.EquipmentRow unitRow) {
-
-            foreach (Survey.VirtueRow indexVirtueRow in ReaderSettings.SamplersIndex.Virtue) {
-                Survey.VirtueRow virtueRow = ((Survey)unitRow.Table.DataSet).Virtue.AddVirtueRow(indexVirtueRow.Name, indexVirtueRow.Notation);
-
-                TextBox tb = tabPageSampler.Controls.Find("textBox" + virtueRow.Name, true)?[0] as TextBox;
-
-                if (tb.Text.IsDoubleConvertible()) {
-                    ((Survey)unitRow.Table.DataSet).SamplerVirtue.AddSamplerVirtueRow(unitRow, virtueRow, double.Parse(tb.Text));
-                }
-            }
-        }
-
-        private void setEndpoint(Waypoint waypoint)
-        {
+        private void setEndpoint(Waypoint waypoint) {
             waypointControl1.Waypoint.Latitude = waypoint.Latitude;
             waypointControl1.Waypoint.Longitude = waypoint.Longitude;
 
-            if (!waypoint.IsTimeMarkNull)
-            {
-                if (data.Solitary.SamplerRow.IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking)
-                {
+            if (!waypoint.IsTimeMarkNull) {
+                if (data.Solitary.SamplerRow.IsPassive() && taskDialogLocationHandle.ShowDialog(this) == tdbSinking) {
                     dateTimePickerStart.Value = waypoint.TimeMark;
-                    //sampler_Changed(dateTimePickerStart, new EventArgs());
-                }
-                else
-                {
+                } else {
                     waypointControl1.Waypoint.TimeMark = waypoint.TimeMark;
                     dateTimePickerEnd.Value = waypoint.TimeMark;
                 }
@@ -691,9 +586,7 @@ namespace Mayfly.Fish
 
             waypointControl1.UpdateValues();
 
-            if (waypoint.IsNameNull) { }
-            else
-            {
+            if (waypoint.IsNameNull) { } else {
                 textBoxLabel.Text = waypoint.Name;
             }
         }
@@ -701,7 +594,7 @@ namespace Mayfly.Fish
 
 
         private void fishCard_OnSaved(object sender, EventArgs e) {
-            saveSamplerValues();
+            saveEffort();
         }
 
         private void fishCard_OnCleared(object sender, EventArgs e) {
@@ -710,19 +603,15 @@ namespace Mayfly.Fish
         }
 
         private void fishCard_OnEquipmentSelected(object sender, EquipmentEventArgs e) {
-            Survey.EquipmentRow unitRow = e.Row;
 
-            foreach (Survey.SamplerVirtueRow row in unitRow.GetSamplerVirtueRows()) {
+            foreach (Survey.EquipmentVirtueRow row in e.Row.GetEquipmentVirtueRows()) {
                 TextBox tb = tabPageSampler.Controls.Find("textBox" + row.VirtueRow.Name, true)?[0] as TextBox;
                 tb.Text = row.Value.ToString();
             }
         }
 
         private void fishCard_OnEquipmentSaved(object sender, EquipmentEventArgs e) {
-            saveGear(e.Row);
-            if (ReaderSettings.Equipment.Equipment.FindDuplicate(e.Row) == null) {
-                saveGear(ReaderSettings.Equipment.Equipment.AddEquipmentRow(ReaderSettings.Equipment.Sampler.FindByID(SelectedSampler.ID)));
-            }
+            saveEffort();
         }
 
         private void waypointControl1_Changed(object sender, EventArgs e) {
@@ -732,8 +621,7 @@ namespace Mayfly.Fish
         }
 
         private void waypointControl1_LocationImported(object sender, LocationDataEventArgs e) {
-            if (!SelectedSampler.IsEffortFormulaNull() &&
-                SelectedSampler.EffortFormula.Contains('E')) {
+            if (!SelectedSampler.HasVirtue("Exposure")) {
                 ListLocation locationSelection = new ListLocation(e.Filenames);
                 locationSelection.SetFriendlyDesktopLocation(waypointControl1, FormLocation.Centered);
                 locationSelection.LocationSelected += new LocationEventHandler(locationData_Selected);
@@ -742,7 +630,7 @@ namespace Mayfly.Fish
                 ListWaypoints waypoints = new ListWaypoints(e.Filenames);
 
                 if (waypoints.Count == 0) { } else if (waypoints.Count == 1) {
-                    PreciseAreaMode = false;
+                    preciseAreaMode = false;
                     setEndpoint(waypoints.Value);
                 } else {
                     waypoints.SetFriendlyDesktopLocation(waypointControl1, FormLocation.Centered);
@@ -754,21 +642,20 @@ namespace Mayfly.Fish
 
         private void locationData_Selected(object sender, LocationEventArgs e) {
             if (e.LocationObject is Waypoint waypoint) {
-                PreciseAreaMode = false;
+                preciseAreaMode = false;
                 setEndpoint(waypoint);
-            } else if (e.LocationObject is Polygon) {
-                Polygon poly = (Polygon)e.LocationObject;
-                PreciseAreaMode = true;
-                textBoxExactArea.Text = (poly.Area / 10000d).ToString("N4");
+            } else if (e.LocationObject is Polygon poly) {
+                preciseAreaMode = true;
+                textBoxArea.Text = (poly.Area / 10000d).ToString("N4");
                 setEndpoint(poly.Points.Last());
 
                 //HandlePolygon((Polygon)e.LocationObject);
             } else if (e.LocationObject is Track) {
-                tdbAsPoly.Enabled = !SelectedSampler.EffortFormula.Contains("T");
+                tdbAsPoly.Enabled = !SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Time);
 
                 TaskDialogButton tdb = taskDialogTrackHandle.ShowDialog();
 
-                PreciseAreaMode = tdb == tdbAsPoly;
+                preciseAreaMode = tdb == tdbAsPoly;
 
                 //Track track = (Track)e.LocationObject;
                 Track[] tracks = (Track[])e.LocationObjects;
@@ -785,19 +672,19 @@ namespace Mayfly.Fish
                     setEndpoint(wpts.Last());
 
                     textBoxExposure.Text = Track.TotalLength(tracks).ToString("N1");
-                    if (SelectedSampler.EffortFormula.Contains("T")) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
-                    if (SelectedSampler.EffortFormula.Contains("V")) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
+                    if (SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Time)) dateTimePickerStart.Value = tracks[0].Points[0].TimeMark;
+                    if (SelectedSampler.GetEffortSource().HasFlag(EffortValueSource.Velocity)) textBoxVelocity.Text = Track.AverageKmph(tracks).ToString("N3");
                 } else if (tdb == tdbAsPoly) {
                     // Behave like polygon
 
                     double s = 0;
                     foreach (Track track in tracks) {
-                        Polygon poly = new Polygon(track);
-                        s += poly.Area;
+                        Polygon polygon = new Polygon(track);
+                        s += polygon.Area;
                     }
 
-                    PreciseAreaMode = true;
-                    textBoxExactArea.Text = (s / 10000d).ToString("N4");
+                    preciseAreaMode = true;
+                    textBoxArea.Text = (s / 10000d).ToString("N4");
                     setEndpoint(wpts.Last());
 
                     //HandlePolygon(new Polygon(track));
@@ -883,7 +770,7 @@ namespace Mayfly.Fish
 
         private void sampler_ValueChanged(object sender, EventArgs e) {
             if (AllowEffortCalculation) {
-                saveSamplerValues();
+                saveEffort();
 
                 if (textBoxOpening.Enabled) {
                     if (textBoxLength.Text.IsDoubleConvertible()) {
@@ -937,28 +824,14 @@ namespace Mayfly.Fish
 
         private void sampler_Changed(object sender, EventArgs e) {
             if (SelectedSampler == null) return;
+            if (SelectedSampler.IsEffortByNull()) return;
 
-            if (SelectedSampler.IsEffortFormulaNull()) return;
-
-            labelLength.Enabled = textBoxLength.Enabled = SelectedSampler.EffortFormula.Contains("L");
-            labelOpening.Enabled = textBoxOpening.Enabled = SelectedSampler.EffortFormula.Contains("O");
-            labelHeight.Enabled = textBoxHeight.Enabled = SelectedSampler.EffortFormula.Contains("H");
-            labelSquare.Enabled = textBoxSquare.Enabled = SelectedSampler.EffortFormula.Contains("S");
-
-            labelMesh.Enabled = textBoxMesh.Enabled = SelectedSampler.EffortFormula.Contains("M");
-            labelHook.Enabled = textBoxHook.Enabled = SelectedSampler.EffortFormula.Contains("J");
-
-            //labelOperation.Enabled = maskedTextBoxOperation.Enabled = SelectedSampler.EffortFormula.Contains("T");
-            labelOperation.Enabled = dateTimePickerStart.Enabled = SelectedSampler.EffortFormula.Contains("T");
-            labelVelocity.Enabled = textBoxVelocity.Enabled = SelectedSampler.EffortFormula.Contains("V");
-            labelExposure.Enabled = textBoxExposure.Enabled = SelectedSampler.EffortFormula.Contains("E");
-            textBoxExposure.ReadOnly = SelectedSampler.EffortFormula.Contains("V") && SelectedSampler.EffortFormula.Contains("T");
-
+            EffortValueSource effort = SelectedSampler.GetEffortSource();
+            labelOperation.Enabled = dateTimePickerStart.Enabled = effort.HasFlag(EffortValueSource.Time);
+            labelVelocity.Enabled = textBoxVelocity.Enabled = effort.HasFlag(EffortValueSource.Velocity);
+            labelExposure.Enabled = textBoxExposure.Enabled = effort.HasFlag(EffortValueSource.Exposure);
+            textBoxExposure.ReadOnly = effort.HasFlag(EffortValueSource.Velocity) && effort.HasFlag(EffortValueSource.Time);
             sampler_ValueChanged(sender, e);
-        }
-
-        private void buttonGear_Click(object sender, EventArgs e) {
-            contextGear.Show(buttonEquipment, new Point(0, buttonEquipment.Height), ToolStripDropDownDirection.BelowRight);
         }
 
 

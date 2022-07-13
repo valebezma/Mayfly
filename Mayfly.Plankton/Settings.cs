@@ -10,11 +10,8 @@ namespace Mayfly.Plankton
 {
     public class Settings : Wild.Settings
     {
-        public Settings()
-            : base(UserSettings.ReaderSettings)
-        { }
-
-        protected override void SaveSettings()
-        { }
+        public Settings() {
+            Initiate();
+        }
     }
 }

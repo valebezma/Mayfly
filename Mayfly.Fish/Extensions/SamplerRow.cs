@@ -1,31 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Mayfly.Extensions;
 using Mayfly.Wild;
-using System.Reflection;
-using System.ComponentModel;
-using System.Globalization;
-using System.Resources;
-using Mayfly.Extensions;
+using System;
+using System.Collections.Generic;
+using static Mayfly.Fish.UserSettings;
 
 namespace Mayfly.Fish
 {
     public static class SamplerRowExtensions
     {
-        public static FishSamplerType GetSamplerType(this Samplers.SamplerRow samplerRow)
-        {
+        public static FishSamplerType GetSamplerType(this Survey.SamplerRow samplerRow) {
             if (samplerRow == null) return FishSamplerType.None;
             if (samplerRow.IsTypeNull()) return FishSamplerType.None;
             return (FishSamplerType)samplerRow.Type;
         }
 
+        public static EffortValueSource GetEffortSource(this Survey.SamplerRow samplerRow) {
+            return (EffortValueSource)samplerRow.EffortBy;
+        }
 
-        public static bool IsPassive(this FishSamplerType type)
-        {
-            switch (type)
-            {
+
+        public static bool IsPassive(this FishSamplerType type) {
+            switch (type) {
                 case FishSamplerType.Dredge:
                 case FishSamplerType.Driftnet:
                 case FishSamplerType.FallingGear:
@@ -41,20 +36,16 @@ namespace Mayfly.Fish
             }
         }
 
-        public static bool IsPassive(this Samplers.SamplerRow samplerRow)
-        {
+        public static bool IsPassive(this Survey.SamplerRow samplerRow) {
             return samplerRow.GetSamplerType().IsPassive();
         }
 
-        public static bool IsMesh(this Samplers.SamplerRow samplerRow)
-        {
+        public static bool IsMesh(this Survey.SamplerRow samplerRow) {
             return samplerRow.GetSamplerType().IsMesh();
         }
 
-        public static bool IsMesh(this FishSamplerType type)
-        {
-            switch (type)
-            {
+        public static bool IsMesh(this FishSamplerType type) {
+            switch (type) {
                 case FishSamplerType.Dredge:
                 case FishSamplerType.Driftnet:
                 case FishSamplerType.FallingGear:
@@ -70,14 +61,11 @@ namespace Mayfly.Fish
             }
         }
 
-        public static Samplers.SamplerRow[] GetPassives(this Samplers samplers)
-        {
-            List<Samplers.SamplerRow> result = new List<Samplers.SamplerRow>();
+        public static Survey.SamplerRow[] GetPassives(this Survey samplers) {
+            List<Survey.SamplerRow> result = new List<Survey.SamplerRow>();
 
-            foreach (Samplers.SamplerRow samplerRow in samplers.Sampler.Rows)
-            {
-                if (samplerRow.IsPassive())
-                {
+            foreach (Survey.SamplerRow samplerRow in samplers.Sampler.Rows) {
+                if (samplerRow.IsPassive()) {
                     result.Add(samplerRow);
                 }
             }
@@ -85,61 +73,34 @@ namespace Mayfly.Fish
             return result.ToArray();
         }
 
-        public static string[] GetSamplerNames(this Samplers samplers, char c)
-        {
-            List<string> result = new List<string>();
-
-            foreach (Samplers.SamplerRow samplerRow in samplers.Sampler)
-            {
-                if (samplerRow.IsEffortFormulaNull()) continue;
-
-                if (samplerRow.EffortFormula.Contains(c))
-                {
-                    result.Add(samplerRow.Sampler);
-                }
-            }
-
-            return result.ToArray();
-        }
-
-        public static double GetEffortsUnitCost(this FishSamplerType type)
-        {
-            switch (type)
-            {
+        public static double GetEffortsUnitCost(this FishSamplerType type) {
+            switch (type) {
                 case FishSamplerType.Gillnet:
-                    return UserSettings.GillnetStdHeight * Math.PI *
-                        Math.Pow(UserSettings.GillnetStdLength / 2, 2) *
-                        (UserSettings.GillnetStdExposure / 24);
+                    return GillnetStdHeight * Math.PI * Math.Pow(GillnetStdLength / 2, 2) * (GillnetStdExposure / 24);
 
                 default:
                     return 1;
             }
         }
 
-        public static double GetEffortStdScore(this FishSamplerType type)
-        {
-            switch (type)
-            {
+        public static double GetEffortStdScore(this FishSamplerType type) {
+            switch (type) {
                 case FishSamplerType.Trap:
                 case FishSamplerType.Hook:
                     return 24;
 
                 case FishSamplerType.Gillnet:
-                    return UserSettings.GillnetStdHeight *
-                        UserSettings.GillnetStdLength *
-                        UserSettings.GillnetStdExposure;
+                    return GillnetStdHeight * GillnetStdLength * GillnetStdExposure;
 
                 default:
                     return 1;
             }
         }
 
-        public static UnitEffort[] GetUnitEfforts(this FishSamplerType type)
-        {
+        public static UnitEffort[] GetUnitEfforts(this FishSamplerType type) {
             List<UnitEffort> result = new List<UnitEffort>();
 
-            foreach (ExpressionVariant variant in Enum.GetValues(typeof(ExpressionVariant)))
-            {
+            foreach (ExpressionVariant variant in Enum.GetValues(typeof(ExpressionVariant))) {
                 UnitEffort ue = new UnitEffort(type, variant);
                 if (ue.UnitDescription != null) result.Add(ue);
             }
@@ -147,15 +108,12 @@ namespace Mayfly.Fish
             return result.ToArray();
         }
 
-        public static UnitEffort GetDefaultUnitEffort(this FishSamplerType type)
-        {
+        public static UnitEffort GetDefaultUnitEffort(this FishSamplerType type) {
             return new UnitEffort(type, type.GetDefaultExpression());
         }
 
-        public static ExpressionVariant GetDefaultExpression(this FishSamplerType type)
-        {
-            switch (type)
-            {
+        public static ExpressionVariant GetDefaultExpression(this FishSamplerType type) {
+            switch (type) {
                 case FishSamplerType.SurroundingNet:
                 case FishSamplerType.Trawl:
                     return ExpressionVariant.Volume;
@@ -170,10 +128,9 @@ namespace Mayfly.Fish
             }
         }
 
-        public static string ToDisplay(this FishSamplerType type)
-        {
+        public static string ToDisplay(this FishSamplerType type) {
             if (type == FishSamplerType.None) return string.Empty;
-            return UserSettings.SamplersIndex.Type.FindByID((int)type).Display.GetLocalizedValue();
+            return ReaderSettings.SamplersIndex.Type.FindByID((int)type).Display.GetLocalizedValue();
         }
     }
 
@@ -181,13 +138,11 @@ namespace Mayfly.Fish
     {
         public FishSamplerType Type;
 
-        public FishSamplerTypeDisplay(FishSamplerType type)
-        {
+        public FishSamplerTypeDisplay(FishSamplerType type) {
             Type = type;
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return Type.ToDisplay();
         }
     }

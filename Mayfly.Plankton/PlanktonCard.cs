@@ -21,7 +21,17 @@ namespace Mayfly.Plankton
         private System.Windows.Forms.NumericUpDown numericUpDownPortion;
         private System.Windows.Forms.Label label1;
 
+        public PlanktonCard() : base() {
+            InitializeComponent();
+            Initiate();
+        }
+
+        public PlanktonCard(string filename) : this() {
+            load(filename);
+        }
+
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanktonCard));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -88,111 +98,65 @@ namespace Mayfly.Plankton
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Left",
-            "Right"});
-            this.comboBox1.Location = new System.Drawing.Point(348, 114);
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1")});
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(136, 21);
-            this.comboBox1.TabIndex = 8;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(270, 117);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Bank";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(45, 117);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Section";
             // 
             // comboBox2
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.comboBox2, "comboBox2");
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(122, 114);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(142, 21);
-            this.comboBox2.TabIndex = 6;
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(214, 141);
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(50, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(214, 115);
+            resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(50, 20);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(45, 144);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Sampling volume, l";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(45, 118);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Mesh opening, µm";
             // 
             // textBox3
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(214, 89);
+            resources.ApplyResources(this.textBox3, "textBox3");
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(50, 20);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(45, 92);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Open diameter, mm";
             // 
             // numericUpDownPortion
             // 
-            this.numericUpDownPortion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownPortion.Location = new System.Drawing.Point(434, 90);
+            resources.ApplyResources(this.numericUpDownPortion, "numericUpDownPortion");
             this.numericUpDownPortion.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -204,34 +168,22 @@ namespace Mayfly.Plankton
             0,
             0});
             this.numericUpDownPortion.Name = "numericUpDownPortion";
-            this.numericUpDownPortion.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDownPortion.TabIndex = 6;
-            this.numericUpDownPortion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownPortion.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownPortion.Visible = false;
             this.numericUpDownPortion.ValueChanged += new System.EventHandler(this.numericUpDownReps_ValueChanged);
             this.numericUpDownPortion.VisibleChanged += new System.EventHandler(this.numericUpDownReps_VisibleChanged);
             // 
             // labelPortion
             // 
-            this.labelPortion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelPortion.AutoSize = true;
-            this.labelPortion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelPortion.Location = new System.Drawing.Point(270, 93);
+            resources.ApplyResources(this.labelPortion, "labelPortion");
             this.labelPortion.Name = "labelPortion";
-            this.labelPortion.Size = new System.Drawing.Size(45, 13);
-            this.labelPortion.TabIndex = 5;
-            this.labelPortion.Text = "Portions";
-            this.labelPortion.Visible = false;
             // 
             // PlanktonCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(564, 631);
+            resources.ApplyResources(this, "$this");
             this.Name = "PlanktonCard";
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
             this.tabPageCollect.ResumeLayout(false);
